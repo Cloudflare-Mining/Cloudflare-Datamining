@@ -1,0 +1,458 @@
+<div class="mb2 gray5">8 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1n4ravvON3si9kIH6GXZsE/acaa36cacdd361c362e44d5597858aea/image1.png" alt="">
+<div class="post-content lh-copy gray1">
+	<p>In the world of cybersecurity, a single data point is rarely the whole story. Modern attackers don’t just knock on the front door; they probe your APIs, flood your network with "noise" to distract your team, and attempt to slide through applications and servers using stolen credentials.</p>
+	<p>To stop these multi-vector attacks, you need the full picture. By using Cloudflare Log Explorer to conduct security forensics, you get 360-degree visibility through the integration of 14 new datasets, covering the full surface of Cloudflare’s Application Services and Cloudflare One product portfolios. By correlating telemetry from application-layer HTTP requests, network-layer DDoS and Firewall logs, and Zero Trust Access events, security analysts can significantly reduce Mean Time to Detect (MTTD) and effectively unmask sophisticated, multi-layered attacks.</p>
+	<p>Read on to learn more about how Log Explorer gives security teams the ultimate landscape for rapid, deep-dive forensics.</p>
+	<div class="flex anchor relative">
+		<h2 id="the-flight-recorder-for-your-entire-stack">The flight recorder for your entire stack</h2>
+		<a href="https://blog.cloudflare.com/#the-flight-recorder-for-your-entire-stack" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>The contemporary digital landscape requires deep, correlated telemetry to defend against adversaries using multiple attack vectors. Raw logs serve as the "flight recorder" for an application, capturing every single interaction, attack attempt, and performance bottleneck. And because Cloudflare sits at the edge, between your users and your servers, all of these events are logged before the requests even reach your infrastructure.&nbsp;</p>
+	<p>Cloudflare Log Explorer centralizes these logs into a unified interface for rapid investigation.</p>
+	<div class="flex anchor relative">
+		<h3 id="log-types-supported">Log Types Supported</h3>
+		<a href="https://blog.cloudflare.com/#log-types-supported" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+
+	<div class="flex anchor relative">
+		<h4 id="zone-scoped-logs">Zone-Scoped Logs</h4>
+		<a href="https://blog.cloudflare.com/#zone-scoped-logs" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p><i>Focus: Website traffic, security events, and edge performance.</i></p>
+	<table>
+		<tbody>
+			<tr>
+				<td>
+					<p><b>HTTP Requests</b></p>
+				</td>
+				<td>
+					<p>As the most comprehensive dataset, it serves as the "primary record" of all application-layer traffic, enabling the reconstruction of session activity, exploit attempts, and bot patterns.</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p><b>Firewall Events</b></p>
+				</td>
+				<td>
+					<p>Provides critical evidence of blocked or challenged threats, allowing analysts to identify the specific WAF rules, IP reputations, or custom filters that intercepted an attack.</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p><b>DNS Logs</b></p>
+				</td>
+				<td>
+					<p>Identify cache poisoning attempts, domain hijacking, and infrastructure-level reconnaissance by tracking every query resolved at the authoritative edge.</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p><b>NEL (Network Error Logging) Reports</b></p>
+				</td>
+				<td>
+					<p>Distinguish between a coordinated Layer 7 DDoS attack and legitimate network connectivity issues by tracking client-side browser errors.</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p><b>Spectrum Events</b></p>
+				</td>
+				<td>
+					<p>For non-web applications, these logs provide visibility into L4 traffic (TCP/UDP), helping to identify anomalies or brute-force attacks against protocols like SSH, RDP, or custom gaming traffic.</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p><b>Page Shield</b></p>
+				</td>
+				<td>
+					<p>Track and audit unauthorized changes to your site's client-side environment such as JavaScript, outbound connections.</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p><b>Zaraz Events</b></p>
+				</td>
+				<td>
+					<p>Examine how third-party tools and trackers are interacting with user data, which is vital for auditing privacy compliance and detecting unauthorized script behaviors.</p>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+	<div class="flex anchor relative">
+		<h4 id="account-scoped-logs">Account-Scoped Logs</h4>
+		<a href="https://blog.cloudflare.com/#account-scoped-logs" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p><i>Focus: Internal security, Zero Trust, administrative changes, and network activity.</i></p>
+	<table>
+		<tbody>
+			<tr>
+				<td>
+					<p><b>Access Requests</b></p>
+				</td>
+				<td>
+					<p>Tracks identity-based authentication events to determine which users accessed specific internal applications and whether those attempts were authorized.</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p><b>Audit Logs</b></p>
+				</td>
+				<td>
+					<p>Provides a trail of configuration changes within the Cloudflare dashboard to identify unauthorized administrative actions or modifications.</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p><b>CASB Findings</b></p>
+				</td>
+				<td>
+					<p>Identifies security misconfigurations and data risks within SaaS applications (like Google Drive or Microsoft 365) to prevent unauthorized data exposure.</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p><b>Magic Transit / IPSec Logs</b></p>
+				</td>
+				<td>
+					<p>Helps network engineers perform network-level (L3) monitoring such as reviewing tunnel health and view BGP routing changes.</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p><b>Browser Isolation Logs</b></p>
+				</td>
+				<td>
+					<p>Tracks user actions <i>inside</i> an isolated browser session (e.g., copy-paste, print, or file uploads) to prevent data leaks on untrusted sites&nbsp;</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p><b>Device Posture Results&nbsp;</b></p>
+				</td>
+				<td>
+					<p>Details the security health and compliance status of devices connecting to your network, helping to identify compromised or non-compliant endpoints.</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p><b>DEX Application Tests&nbsp;</b></p>
+				</td>
+				<td>
+					<p>Monitors application performance from the user's perspective, which can help distinguish between a security-related outage and a standard performance degradation.</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p><b>DEX Device State Events</b></p>
+				</td>
+				<td>
+					<p>Provides telemetry on the physical state of user devices, useful for correlating hardware or OS-level anomalies with potential security incidents.</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p><b>DNS Firewall Logs</b></p>
+				</td>
+				<td>
+					<p>Tracks DNS queries filtered through the DNS Firewall to identify communication with known malicious domains or command-and-control (C2) servers.</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p><b>Email Security Alerts</b></p>
+				</td>
+				<td>
+					<p>Logs malicious email activity and phishing attempts detected at the gateway to trace the origin of email-based entry vectors.</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p><b>Gateway DNS</b></p>
+				</td>
+				<td>
+					<p>Monitors every DNS query made by users on your network to identify shadow IT, malware callbacks, or domain-generation algorithms (DGAs).</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p><b>Gateway HTTP</b></p>
+				</td>
+				<td>
+					<p>Provides full visibility into encrypted and unencrypted web traffic to detect hidden payloads, malicious file downloads, or unauthorized SaaS usage.</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p><b>Gateway Network</b></p>
+				</td>
+				<td>
+					<p>Tracks L3/L4 network traffic (non-HTTP) to identify unauthorized port usage, protocol anomalies, or lateral movement within the network.</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p><b>IPSec Logs</b></p>
+				</td>
+				<td>
+					<p>Monitors the status and traffic of encrypted site-to-site tunnels to ensure the integrity and availability of secure network connections.</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p><b>Magic IDS Detections</b></p>
+				</td>
+				<td>
+					<p>Surfaces matches against intrusion detection signatures to alert investigators to known exploit patterns or malware behavior traversing the network.</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p><b>Network Analytics Logs</b></p>
+				</td>
+				<td>
+					<p>Provides high-level visibility into packet-level data to identify volumetric DDoS attacks or unusual traffic spikes targeting specific infrastructure.</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p><b>Sinkhole HTTP Logs</b></p>
+				</td>
+				<td>
+					<p>Captures traffic directed to "sinkholed" IP addresses to confirm which internal devices are attempting to communicate with known botnet infrastructure.</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p><b>WARP Config Changes</b></p>
+				</td>
+				<td>
+					<p>Tracks modifications to the WARP client settings on end-user devices to ensure that security agents haven't been tampered with or disabled.</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p><b>WARP Toggle Changes</b></p>
+				</td>
+				<td>
+					<p>Specifically logs when users enable or disable their secure connectivity, helping to identify periods where a device may have been unprotected.</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p><b>Zero Trust Network Session Logs</b></p>
+				</td>
+				<td>
+					<p>Logs the duration and status of authenticated user sessions to map out the complete lifecycle of a user's access within the protected perimeter.</p>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+	<div class="flex anchor relative">
+		<h2 id="log-explorer-can-identify-malicious-activity-at-every-stage">Log Explorer can identify malicious activity at every stage</h2>
+		<a href="https://blog.cloudflare.com/#log-explorer-can-identify-malicious-activity-at-every-stage" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Get granular application layer visibility with <b>HTTP Requests</b>, <b>Firewall Events</b>, and <b>DNS logs</b> to see exactly how traffic is hitting your public-facing properties.<b> </b>Track internal movement with <b>Access Requests</b>, <b>Gateway logs</b>, and <b>Audit logs</b>. If a credential is compromised, you’ll see where they went. Use <b>Magic IDS</b> and <b>Network Analytics logs</b> to spot volumetric attacks and "East-West" lateral movement within your private network.</p>
+	<div class="flex anchor relative">
+		<h3 id="identify-the-reconnaissance">Identify the reconnaissance</h3>
+		<a href="https://blog.cloudflare.com/#identify-the-reconnaissance" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Attackers use scanners and other tools to look for entry points, hidden directories, or software vulnerabilities. To identify this, using Log Explorer, you can query <code>http_requests</code> for any <code>EdgeResponseStatus</code> codes of 401, 403, or 404 coming from a single IP, or requests to sensitive paths (e.g. <code>/.env</code>, <code>/.git</code>, <code>/wp-admin</code>).&nbsp;</p>
+	<p>Additionally, <code>magic_ids_detections</code> logs can also be used to identify scanning at the network layer. These logs provide packet-level visibility into threats targeting your network. Unlike standard HTTP logs, these logs focus on <b>signature-based detections</b> at the network and transport layers (IP, TCP, UDP). Query to discover cases where a single <code>SourceIP</code> is triggering multiple unique detections across a wide range of <code>DestinationPort</code> values in a short timeframe. Magic IDS signatures can specifically flag activities like Nmap scans or SYN stealth scans.</p>
+	<div class="flex anchor relative">
+		<h3 id="check-for-diversions">Check for diversions</h3>
+		<a href="https://blog.cloudflare.com/#check-for-diversions" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>While the attacker is conducting reconnaissance, they may attempt to disguise this with a simultaneous network flood. Pivot to <code>network_analytics_logs</code> to see if a volumetric attack is being used as a smokescreen.</p>
+	<div class="flex anchor relative">
+		<h3 id="identify-the-approach">Identify the approach&nbsp;</h3>
+		<a href="https://blog.cloudflare.com/#identify-the-approach" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Once attackers identify a potential vulnerability, they begin to craft their weapon. The attacker sends malicious payloads (e.g. SQL injection or large/corrupt file uploads) to confirm the vulnerability. Review <code>http_requests</code> and/or <code>fw_events</code> to identify any Cloudflare detection tools that have triggered. Cloudflare logs security signals in these datasets to easily identify requests with malicious payloads using fields such as <code>WAFAttackScore</code>, <code>WAFSQLiAttackScore</code>, <code>FraudAttack</code>, <code>ContentScanJobResults</code>, and several more. Review <a href="https://developers.cloudflare.com/logs/logpush/logpush-job/datasets/zone/http_requests"><u>our documentation</u></a> to get a full understanding of these fields. The <code>fw_events</code> logs can be used to determine whether these requests made it past Cloudflare’s defenses by examining the <code>action</code>, <code>source</code>, and <code>ruleID</code> fields. Cloudflare’s managed rules by default blocks many of these payloads by default. Review Application Security Overview to know if your application is protected.</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1zpFguYrnbOPwyASGQCqZK/63f398acce2226e453a5eea1cc749241/image3.png" alt="Showing the Managed rules Insight that displays on Security Overview if the current zone does not have Managed Rules enabled" class="kg-image" width="1117" height="124" loading="lazy">
+	</figure>
+	<p><sup><i>Showing the Managed rules Insight that displays on Security Overview if the current zone does not have Managed Rules enabled</i></sup></p>
+	<div class="flex anchor relative">
+		<h3 id="audit-the-identity">Audit the identity</h3>
+		<a href="https://blog.cloudflare.com/#audit-the-identity" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Did that suspicious IP manage to log in? Use the <code>ClientIP</code> to search <code>access_requests</code>. If you see a "<code>Decision: Allow</code>" for a sensitive internal app, you know you have a compromised account.</p>
+	<div class="flex anchor relative">
+		<h3 id="stop-the-leak-data-exfiltration">Stop the leak (data exfiltration)</h3>
+		<a href="https://blog.cloudflare.com/#stop-the-leak-data-exfiltration" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Attackers sometimes use DNS tunneling to bypass firewalls by encoding sensitive data (like passwords or SSH keys) into DNS queries. Instead of a normal request like <code>google.com</code>, the logs will show long, encoded strings. Look for an unusually high volume of queries for unique, long, and high-entropy subdomains by examining the fields: <code>QueryName</code>: Look for strings like <a href="http://h3ldo293js92.example.com"><code><u>h3ldo293js92.example.com</u></code></a>, <code>QueryType</code>: Often uses <code>TXT</code>, <code>CNAME</code>, or <code>NULL</code> records to carry the payload, and <code>ClientIP</code>: Identify if a single internal host is generating thousands of these unique requests.</p>
+	<p>Additionally, attackers may attempt to leak sensitive data by hiding it within non-standard protocols or by using common protocols (like DNS or ICMP) in unusual ways to bypass standard firewalls. Discover this by querying the <code>magic_ids_detections</code> logs to look for signatures that flag protocol anomalies, such as "ICMP tunneling" or "DNS tunneling" detections in the <code>SignatureMessage</code>.</p>
+	<p>Whether you are investigating a zero-day vulnerability or tracking a sophisticated botnet, the data you need is now at your fingertips.</p>
+	<div class="flex anchor relative">
+		<h2 id="correlate-across-datasets">Correlate across datasets</h2>
+		<a href="https://blog.cloudflare.com/#correlate-across-datasets" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Investigate malicious activity across multiple datasets by pivoting between multiple concurrent searches. With Log Explorer, you can now work with multiple queries simultaneously with the new Tabs feature. Switch between tabs to query different datasets or Pivot and adjust queries using filtering via your query results.</p>
+	<div style="position: relative; padding-top: 45.348837209302324%;">
+		<iframe src="https://customer-eq7kiuol0tk9chox.cloudflarestream.com/fdce57563737015fcb27147c4b44ac70/iframe?muted=true&amp;preload=true&amp;loop=true&amp;autoplay=true&amp;poster=https%3A%2F%2Fcustomer-eq7kiuol0tk9chox.cloudflarestream.com%2Ffdce57563737015fcb27147c4b44ac70%2Fthumbnails%2Fthumbnail.jpg%3Ftime%3D%26height%3D600" loading="lazy" style="border: none; position: absolute; top: 0; left: 0; height: 100%; width: 100%;" allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;" allowfullscreen="true"></iframe>
+	</div>
+	<p></p>
+	<p>When you correlate data across multiple Cloudflare log sources, you can detect sophisticated multi-stage attacks that appear benign when viewed in isolation. This cross-dataset analysis allows you to see the full attack chain from reconnaissance to exfiltration.</p>
+	<div class="flex anchor relative">
+		<h3 id="session-hijacking-token-theft">Session hijacking (token theft)</h3>
+		<a href="https://blog.cloudflare.com/#session-hijacking-token-theft" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p><b>Scenario:</b> A user authenticates via Cloudflare Access, but their subsequent HTTP_request traffic looks like a bot.</p>
+	<p><b>Step 1:</b> Identify high-risk sessions in <code>http_requests</code>.</p>
+	<pre class="language-SQL"><code class="language-SQL">SELECT RayID, ClientIP, ClientRequestUserAgent, BotScore
+FROM http_requests
+WHERE date = '2026-02-22' 
+  AND BotScore &lt; 20 
+LIMIT 100</code></pre>
+	<p><b>Step 2:</b> Copy the <code>RayID</code> and search <code>access_requests</code> to see which user account is associated with that suspicious bot activity.</p>
+	<pre class="language-SQL"><code class="language-SQL">
+SELECT Email, IPAddress, Allowed
+FROM access_requests
+WHERE date = '2026-02-22' 
+  AND RayID = 'INSERT_RAY_ID_HERE'</code></pre>
+
+	<div class="flex anchor relative">
+		<h3 id="post-phishing-c2-beaconing">Post-phishing C2 beaconing</h3>
+		<a href="https://blog.cloudflare.com/#post-phishing-c2-beaconing" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p><b>Scenario:</b> An employee clicked a link in a phishing email which resulted in compromising their workstation. This workstation sends a DNS query for a known malicious domain, then immediately triggers an IDS alert.</p>
+	<p><b>Step 1:</b> Find phishing attacks by examining email_security_alerts for violations.&nbsp;</p>
+	<pre class="language-SQL"><code class="language-SQL">SELECT Timestamp, Threatcategories, To, Alertreason
+FROM email_security_alerts
+WHERE date = '2026-02-22' 
+  AND Threatcategories LIKE 'phishing'</code></pre>
+	<p><b>Step 2:</b> Use Access logs to correlate the user’s email (To) to their IP Address.</p>
+	<pre class="language-SQL"><code class="language-SQL">SELECT Email, IPAddress
+FROM access_requests
+WHERE date = '2026-02-22' </code></pre>
+	<p><b>Step 3:</b> Find internal IPs querying a specific malicious domain in <code>gateway_dns</code> logs.</p>
+	<pre class="language-SQL"><code class="language-SQL">
+SELECT SrcIP, QueryName, DstIP, 
+FROM gateway_dns
+WHERE date = '2026-02-22' 
+  AND SrcIP = 'INSERT_IP_FROM_PREVIOUS_QUERY'
+  AND QueryName LIKE '%malicious_domain_name%'</code></pre>
+
+	<div class="flex anchor relative">
+		<h3 id="lateral-movement-access-network-probing">Lateral movement (Access → network probing)</h3>
+		<a href="https://blog.cloudflare.com/#lateral-movement-access-network-probing" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p><b>Scenario:</b> A user logs in via Zero Trust and then tries to scan the internal network.</p>
+	<p><b>Step 1:</b> Find successful logins from unexpected locations in <code>access_requests</code>.</p>
+	<pre class="language-SQL"><code class="language-SQL">SELECT IPAddress, Email, Country
+FROM access_requests
+WHERE date = '2026-02-22' 
+  AND Allowed = true 
+  AND Country != 'US' -- Replace with your HQ country</code></pre>
+	<p><b>Step 2:</b> Check if that <code>IPAddress</code> is triggering network-level signatures in <code>magic_ids_detections</code>.</p>
+	<pre class="language-SQL"><code class="language-SQL">SELECT SignatureMessage, DestinationIP, Protocol
+FROM magic_ids_detections
+WHERE date = '2026-02-22' 
+  AND SourceIP = 'INSERT_IP_ADDRESS_HERE'</code></pre>
+
+	<div class="flex anchor relative">
+		<h3 id="opening-doors-for-more-data">Opening doors for more data&nbsp;</h3>
+		<a href="https://blog.cloudflare.com/#opening-doors-for-more-data" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>From the beginning, Log Explorer was designed with extensibility in mind. Every dataset schema is defined using JSON Schema, a widely-adopted standard for describing the structure and types of JSON data. This design decision has enabled us to easily expand beyond HTTP Requests and Firewall Events to the full breadth of Cloudflare's telemetry. The same schema-driven approach that powered our initial datasets scaled naturally to accommodate Zero Trust logs, network analytics, email security alerts, and everything in between.</p>
+	<p>More importantly, this standardization opens the door to ingesting data beyond Cloudflare's native telemetry. Because our ingestion pipeline is schema-driven rather than hard-coded, we're positioned to accept any structured data that can be expressed in JSON format. For security teams managing hybrid environments, this means Log Explorer could eventually serve as a single pane of glass, correlating Cloudflare's edge telemetry with logs from third-party sources, all queryable through the same SQL interface. While today's release focuses on completing coverage of Cloudflare's product portfolio, the architectural groundwork is laid for a future where customers can bring their own data sources with custom schemas.</p>
+	<div class="flex anchor relative">
+		<h3 id="faster-data-faster-response-architectural-upgrades">Faster data, faster response: architectural upgrades</h3>
+		<a href="https://blog.cloudflare.com/#faster-data-faster-response-architectural-upgrades" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>To investigate a multi-vector attack effectively, timing is everything. A delay of even a few minutes in the log availability can be the difference between proactive defense and reactive damage control.</p>
+	<p>That is why we have optimized our ingestion for better speed and resilience. By increasing concurrency in one part of our ingestion path, we have eliminated bottlenecks that could cause “noisy neighbor” issues, ensuring that one client’s data surge doesn’t slow down another’s visibility. This architectural work has reduced our P99 ingestion latency by approximately 55%, and our P50 by 25%, cutting the time it takes for an event at the edge to become available for your SQL queries.</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/41M2eWP0BwrQFSZW4GzZbV/7a6139354abb561aba17e77d83beb17a/image4.png" alt="Grafana chart displaying the drop in ingest latency after architectural upgrades" class="kg-image" width="1999" height="882" loading="lazy">
+	</figure>
+	<p><sup><i>Grafana chart displaying the drop in ingest latency after architectural upgrades</i></sup></p>
+	<div class="flex anchor relative">
+		<h2 id="follow-along-for-more-updates">Follow along for more updates</h2>
+		<a href="https://blog.cloudflare.com/#follow-along-for-more-updates" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>We're just getting started. We're actively working on even more powerful features to further enhance your experience with Log Explorer, including the ability to run these detection queries on a custom defined schedule.&nbsp;</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2JIOu9PXDwVAVcmbgq456q/1eace4b5d38bb705e82442a4ee8045dc/Scheduled_Queries_List.png" alt="" class="kg-image" width="4536" height="2739" loading="lazy">
+	</figure>
+	<p><sup><i>Design mockup of upcoming Log Explorer Scheduled Queries feature</i></sup></p>
+	<p><a href="https://blog.cloudflare.com"><u>Subscribe to the blog</u></a> and keep an eye out for more Log Explorer updates soon in our <a href="https://developers.cloudflare.com/changelog/product/log-explorer"><u>Change Log</u></a>.&nbsp;</p>
+	<div class="flex anchor relative">
+		<h2 id="get-access-to-log-explorer">Get access to Log Explorer</h2>
+		<a href="https://blog.cloudflare.com/#get-access-to-log-explorer" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>To get access to Log Explorer, you can purchase self-serve directly from the dash or for contract customers, reach out for a <a href="https://www.cloudflare.com/application-services/products/log-explorer"><u>consultation</u></a> or contact your account manager. Additionally, you can read more in our <a href="https://developers.cloudflare.com/logs/log-explorer"><u>Developer Documentation</u></a>.</p>
+</div>

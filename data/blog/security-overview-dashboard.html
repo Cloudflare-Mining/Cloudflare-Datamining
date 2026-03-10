@@ -1,0 +1,244 @@
+<div class="mb2 gray5">9 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/MgbORgf6ycNoMgXIhS22D/7440a3cabbf0db3c036ff368687d0d5d/image8.png" alt="">
+<div class="post-content lh-copy gray1">
+	<p></p>
+	<p>For years, the industry’s answer to threats was “more visibility.” But more visibility without context is just more noise. For the modern security team, the biggest challenge is no longer a lack of data; it is the overwhelming surplus of it. Most security professionals start their day navigating a sea of dashboards, hunting through disparate logs to answer a single, deceptively simple question: "What now?"</p>
+	<p>When you are forced to pivot between different tools just to identify a single misconfiguration, you’re losing the window of opportunity to prevent an incident. That’s why we built a revamped Security Overview dashboard: a single interface designed to empower defenders, by moving from reactive monitoring to proactive control.</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/48MDFWpOUvJ1oHgj1SpHtf/6753298792d1a4cbfb7fb0766d255431/image7.png" alt="BLOG-3168 image 1" class="kg-image" width="1921" height="958" loading="lazy">
+	</figure>
+	<p><sup><i>The new Security Overview dashboard.</i></sup></p>
+	<div class="flex anchor relative">
+		<h2 id="from-noise-to-action-rethinking-the-security-overview">From noise to action: rethinking the security overview&nbsp;</h2>
+		<a href="https://blog.cloudflare.com/#from-noise-to-action-rethinking-the-security-overview" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Historically, dashboards focused on showing you <i>everything</i> that was happening. But for a busy security analyst, the more important question is, "What do I need to fix right now?"</p>
+	<p>To solve this, we are introducing Security Action Items. This feature acts as a functional bridge between detection and investigation, surfacing vulnerabilities, so you no longer have to hunt for them. To help you triage effectively, items are ranked by criticality:</p>
+	<ul>
+		<li>
+			<p>Critical: Urgent risks requiring immediate attention to prevent exploitation.</p>
+		</li>
+		<li>
+			<p>Moderate: Issues that should be addressed to maintain a strong security posture.</p>
+		</li>
+		<li>
+			<p>Low: Best-practice optimizations and hardening suggestions.</p>
+		</li>
+	</ul>
+	<p>By filtering by Insight Type (such as Suspicious Activity or Insecure Configuration), you can tailor your workflow to the specific threats your organization faces most.</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/15hwrdwgNlDPvxCk96FZJr/7951b2e27767082b61d835e929d57bb9/image1.png" alt="" class="kg-image" width="1104" height="555" loading="lazy">
+	</figure>
+	<p>One of the most common causes of a breach isn't the absence of a security tool, it’s the fact that the tool was never turned on or was configured incorrectly. We call this the configuration gap.</p>
+	<p>The new Detection Tools module eliminates this blind spot. Instead of digging through nested settings pages to see if your traffic is actually being inspected, we provide a high-level status of your entire Cloudflare security stack in one view:</p>
+	<ul>
+		<li>
+			<p>Are your primary shields active, or are you in "Log Only" mode during a period of increased volatility?&nbsp;</p>
+		</li>
+		<li>
+			<p>Are you discovering shadow APIs, or are you flying blind?</p>
+		</li>
+	</ul>
+	<p>By surfacing these tools directly alongside your Security Action Items, we move the conversation from <i>"</i>Do we have this tool?" to "Is this tool actively protecting us right now?"</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/yXmNWAN2vDNQ02fw2spLL/4ece4d88e8a58826e2c8f472ba9aaac9/Screenshot_2026-03-09_at_18.48.17.png" alt="" class="kg-image" width="2014" height="742" loading="lazy">
+	</figure>
+	<p>A high-level summary is only as good as the data behind it. To make the transition from a red flag to a solution seamless, we have unified the visibility of our Suspicious Activity cards. These cards now live in two strategic places: the Security Overview and the Security Analytics page.</p>
+	<p>If you spot a Suspicious Activity card on your Overview page that piques your interest, there is no need to manually navigate to Analytics and re-create your filters. By clicking on the card, you are deep-linked directly into the Security Analytics dashboard with all the relevant filters automatically applied. This eliminates the "tab switching tax" that slows down incident response, keeping your workflow fluid and your response times fast.</p>
+	<div class="flex anchor relative">
+		<h2 id="how-we-built-our-new-security-overview-dashboard">How we built our new security overview dashboard</h2>
+		<a href="https://blog.cloudflare.com/#how-we-built-our-new-security-overview-dashboard" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>To maintain a proactive defense, our engine produces and refreshes over 10 million actionable insights every day to ensure protection is always current.</p>
+	<p>Operating at this level presents two distinct engineering challenges. The first is scale: processing massive volumes of data seamlessly. The second and arguably harder challenge, is breadth. True security is horizontal, spanning your entire stack. To generate actionable insights that give you a comprehensive view of your risks and vulnerabilities, our engine must validate everything from simple SSL certificates to complex AI bot configurations.</p>
+	<p>To solve this, we built a system composed of smaller, specialized micro services, which we call checkers. Each checker is a subject-matter expert for a specific part of your stack, such as DNS records. The distribution of our checkers allows them to scale independently, hooked into the system in two ways: scheduled configuration checks or real-time listeners that flag a risk the instant an event occurs.</p>
+	<p><b>1. Scheduled checks</b>: We deploy this mode for risks that need deep inspection. These are triggered by an orchestrator (scheduler), which periodically pushes tasks for the checkers to execute. We distribute the checker workload across a massively parallel system. For example, a task sent to the DNS checker might be: "Scan all the DNS related configurations of zone <a href="http://xyz.com">xyz.com</a> and find anomalies."</p>
+	<p>The checkers pick up these tasks independently. They use their specialized intelligence to scan through the assets and configurations. In the case of the DNS checker, it uses specialized and intelligent rules to scan all the DNS assets and configurations of a zone, be it A/AAAA/CNAME records or DMARC or SPF records.&nbsp;</p>
+	<p>This is what the insight lifecycle looks like:&nbsp;</p>
+	<ol>
+		<li>
+			<p>The checker activates when a message is received.&nbsp;</p>
+		</li>
+		<li>
+			<p>The checker collects relevant assets (e.g., DNS records) about the zone or account.</p>
+		</li>
+		<li>
+			<p>The checker runs several checks to verify the status of the asset, e.g., if a CNAME record points to a server.</p>
+		</li>
+		<li>
+			<p>If the state or configuration doesn’t meet the required threshold, an insight is flagged.</p>
+		</li>
+		<li>
+			<p>During the next check, if the insight persists, the timestamp is updated.</p>
+		</li>
+		<li>
+			<p>If the insight has been remedied during the next check, it will be removed from the database.</p>
+		</li>
+	</ol>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1YwJ45kqLIdiHWoT29x6tR/13d3d31f58325776a781c7465d5f6aa3/image4.png" alt="" class="kg-image" width="2164" height="1374" loading="lazy">
+	</figure>
+	<p><b>2. Event handlers: </b>The checkers operate on a schedule round the clock, whereas the event handlers function in real-time. They listen to signals and events from our control plane.</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6qUqsqqth0RZag7GDNeK1/8f09a8275d5ea8ca4223718e22c0e9f1/image5.jpg" alt="" class="kg-image" width="1999" height="830" loading="lazy">
+	</figure>
+	<p>This is what the real-time ruleset insight lifecycle looks like:</p>
+	<ol>
+		<li>
+			<p>A WAF rule configuration is modified.</p>
+		</li>
+		<li>
+			<p>An event containing details of the change is triggered immediately.</p>
+		</li>
+		<li>
+			<p>The ruleset handler, which is actively listening, kicks into action.</p>
+		</li>
+		<li>
+			<p>The handler detects an anomaly, e.g, you have enabled the Cloudflare Managed Ruleset but left it in "Log Only" mode.</p>
+		</li>
+		<li>
+			<p>The handler deduces that the attacks are being recorded but not blocked.</p>
+		</li>
+		<li>
+			<p>The handler registers an insight and makes it available on the dashboard.</p>
+		</li>
+		<li>
+			<p>If the configuration has been updated to a secure setting, the handler clears the insight.</p>
+		</li>
+	</ol>
+	<p>The real-time nature of Ruleset handlers allow us to flag a misconfiguration or confirm a fix instantly.</p>
+	<div class="flex anchor relative">
+		<h3 id="unifying-security-visibility-with-contextual-insights">Unifying security visibility with contextual insights</h3>
+		<a href="https://blog.cloudflare.com/#unifying-security-visibility-with-contextual-insights" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Our customers have consistently asked for more than just visibility: they’ve asked for context. While a notification that a record is misconfigured is helpful, it’s only half the story. To take immediate, confident action, defenders need to know the "so what?" including the business impact and the technical root cause. To address this, we have developed Contextual Insights for our detection engine. By surfacing data like traffic volume to a broken A record, we ensure that every insight is an invitation to act.</p>
+	<p>We are starting this journey of Contextual Insights by expanding the depth of our DNS insights. Instead of just flagging a broken record, we correlate the dangling signal with additional context and real-time traffic data to provide the “why” and the “how”:</p>
+	<ul>
+		<li>
+			<p>Target Context: We identify exactly which deleted resource (e.g., an old S3 bucket or cloud instance) the record points to.</p>
+		</li>
+		<li>
+			<p>Impact Context: We show you exactly how many users are still trying to reach that broken record.</p>
+		</li>
+	</ul>
+	<p>Let’s explore the ‘Dangling A/AAAA/CNAME record’ insights as an example.&nbsp;</p>
+	<p>To provide these insights, we must analyze the massive amount of data flowing through our network every second. To give you an idea of the work happening behind the scenes:</p>
+	<p>100+ million DNS records are scanned weekly by our engine. In the past week, our engine identified over 1 million dangling DNS records. The majority (97%) are Dangling A/AAAA records and the remaining 3% are Dangling CNAME records.</p>
+	<p>Of the 31,000 dangling CNAME records:</p>
+	<ul>
+		<li>
+			<p>95% point to Microsoft Azure services.</p>
+		</li>
+		<li>
+			<p>3% point to AWS Elastic Beanstalk.</p>
+		</li>
+	</ul>
+	<p>This signals that these are high-priority targets for a subdomain takeover. An attacker can claim these abandoned cloud resources and immediately control your subdomain, allowing them to launch phishing attacks or spread misinformation under your trusted brand. With thousands of hits, a dangling record presents a high-priority risk for a subdomain takeover, necessitating immediate remediation to instantly gauge and mitigate the threat.</p>
+	<p>Our DNS checker uses a two-step process to generate these insights</p>
+	<ul>
+		<li>
+			<p>Step 1: Active Insight detection</p>
+			<ul>
+				<li>
+					<p>The checker starts verification as soon as it gets the message to start a scan. This process has been described in <a href="https://docs.google.com/document/d/1zpAjKdCU_80KZtIXwpHnlq05xGV54gTA-KehiOvlVc0/edit?tab=t.0#bookmark=id.fmv2o2tkjmvj"><u>an earlier section</u></a>.</p>
+				</li>
+			</ul>
+		</li>
+		<li>
+			<p>Step 2: Contextual enrichment</p>
+			<ul>
+				<li>
+					<p>Once the insight is generated, the checkers gather relevant contextual data for the insight that helps the customer in understanding the impact of the security insight.</p>
+				</li>
+			</ul>
+		</li>
+	</ul>
+	<p>Let’s explore in depth how the dangling DNS record insights are generated, focusing on the two-phase process involved.&nbsp;</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6XNrfkKD9isLHsatUWb7tU/d8117d53a02e82b799da97563be30576/image3.jpg" alt="" class="kg-image" width="1999" height="1097" loading="lazy">
+	</figure>
+	<div class="flex anchor relative">
+		<h4 id="phase-1-active-verification">Phase 1: Active Verification</h4>
+		<a href="https://blog.cloudflare.com/#phase-1-active-verification" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>A DNS record pointing to an IP address often looks perfectly valid on paper, even if the server behind it was decommissioned months ago. To confirm if a risk is real, our engine has to step outside the network and probe the destination in real-time. The checks performed can be categorized as follows:</p>
+	<p><b>The dead server check (A/AAAA records): </b>For records pointing directly to IP addresses, we verify if the destination is still active. Our engine spins up a dedicated egress proxy to attempt a connection to the origin over HTTP and HTTPS. By using this special gateway, we simulate how a real user would connect from outside Cloudflare’s network. If the connection times out or the server returns a "404 Not Found" error, we confirm the resource is dead. This proves the DNS record is "dangling", a live signpost pointing to an empty lot.</p>
+	<p><b>The takeover check (CNAME records): </b>Domain aliases (CNAMEs) often delegate traffic to third-party services, like a helpdesk or storage bucket. If you cancel that service but forget to delete the DNS record, you create a "dangling" link that attackers can claim.</p>
+	<p>To find these, our engine performs a 3-step process:</p>
+	<ol>
+		<li>
+			<p>First, we trace the chain by recursively resolving the CNAME record to find its final destination (e.g., <code>my-bucket.s3.amazonaws.com</code>).</p>
+		</li>
+		<li>
+			<p>Next, we identify the provider by checking if that destination belongs to a known cloud service like AWS, Azure, or Shopify.</p>
+		</li>
+		<li>
+			<p>Finally, we confirm vacancy. Each cloud provider returns specific error patterns when a resource doesn't exist&nbsp; (e.g., S3's "NoSuchBucket"). We probe the destination URL and match against these patterns to confirm if the resource is claimable.</p>
+		</li>
+	</ol>
+	<p>If our engine detects that a resource has been released but the DNS record remains, we create an insight, prompting you to remove the record before an attacker can take over your subdomain.&nbsp;</p>
+	<div class="flex anchor relative">
+		<h4 id="phase-2-context-enrichment">Phase 2: Context Enrichment</h4>
+		<a href="https://blog.cloudflare.com/#phase-2-context-enrichment" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Once a record is verified as broken, we add the necessary context to the insight that helps you take better action. The checker connects to different systems to gather the required context. For dangling insights, we focus on three critical dimensions:</p>
+	<ul>
+		<li>
+			<p><b>Traffic Volume (The Impact) </b>Our global ClickHouse clusters are a treasure trove of information. To understand if the record is actually in use, the checker queries our global ClickHouse clusters to sum up the total DNS queries for that record over the last 7 days. This valuable context lets you prioritize the remedy. A record with 0 queries can be fixed when you have time; a record with 10,000 queries is an active vulnerability that needs to be patched immediately.</p>
+		</li>
+	</ul>
+	<p>Query to the clickhouse looks like:&nbsp;</p>
+	<pre class="language-SQL"><code class="language-SQL">SELECT query_name,
+       sum(_sample_interval) as total
+  FROM &lt;dnslogs_table_name&gt;
+ WHERE account_id = {{account_id}}
+   AND zone_id = {{zone_id}}
+   AND timestamp &gt;= subtractDays(today(), 7)
+   AND timestamp &lt; today()
+   AND query_name in ('{{record1}}', '{{record2}}', ...)
+ GROUP BY query_name</code></pre>
+	<p>The query asks “How many times has this specific broken record been requested by real users in the last seven days?”</p>
+	<ul>
+		<li>
+			<p><b>Infrastructure owner (The Target) </b>Knowing <i>who</i> owns the destination infrastructure is&nbsp; &nbsp; vital for both remediation and severity assessment.&nbsp;</p>
+		</li>
+	</ul>
+	<p><b>For IP records (A/AAAA):</b> We identify the network owner (ASN) through the latest geolocation data from a Cloudflare <b>R2 bucket</b> and performing high-speed lookups in memory. It tells you exactly where the dead resource lived (e.g., "Google Cloud" vs. "DigitalOcean"), speeding up your investigation.&nbsp;</p>
+	<p><b>For CNAME Records:</b> We identify the specific <b>Hosting Provider</b> (e.g., AWS S3, Shopify). This dictates the risk level. If a record points to a provider known for easy takeovers (like S3), we mark it as <b>Critical</b>; otherwise, it is <b>Moderate</b>.</p>
+	<ul>
+		<li>
+			<p><b>DNS TTL </b>We also extract the TTL (Time To Live) value directly from the record configuration.</p>
+		</li>
+	</ul>
+	<p>This tells you the "lag time" of your fix. If you delete a dangling record with a high TTL (e.g., 24 hours), it will remain cached in resolvers around the world for a full day, meaning the vulnerability stays open even after you patch it. Knowing this helps you manage expectations during an incident response.</p>
+	<div class="flex anchor relative">
+		<h2 id="looking-forward">Looking forward</h2>
+		<a href="https://blog.cloudflare.com/#looking-forward" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>While this experience is launching at the domain level today, we know that for enterprise customers, security isn't managed just one domain at a time. Our roadmap is focused on bringing this intelligence to the account level next. Soon, security teams can use a centralized view that aggregates security action items and prioritizes the most critical risks to remediate across all of their Cloudflare domains.</p>
+	<p>Security shouldn't feel like a game of catch-up. For too long, the complexity of managing application security has given the advantage to the attacker. Through our architecture of specialized checkers and real-time event handlers, we detect potential risks and enrich them with critical context, ensuring defenders can respond with speed and precision.</p>
+	<p>The new Security Overview is now the starting point for your day, a place where risk data is transformed into a prioritized strategy. <a href="https://dash.cloudflare.com"><u>Log in to the Cloudflare dashboard</u></a> today to explore your new Application Security Overview page!</p>
+</div>
