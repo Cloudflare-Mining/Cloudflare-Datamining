@@ -130,7 +130,8 @@
 														"enum": [
 															"text",
 															"number",
-															"boolean"
+															"boolean",
+															"datetime"
 														],
 														"type": "string"
 													},
@@ -353,7 +354,7 @@
 													"items": {
 														"properties": {
 															"direction": {
-																"description": "Boost direction. 'desc' = higher values rank higher (e.g. newer timestamps). 'asc' = lower values rank higher. 'exists' = boost chunks that have the field. 'not_exists' = boost chunks that lack the field. Optional ��� defaults to 'asc' for numeric fields, 'exists' for text/boolean fields.",
+																"description": "Boost direction. 'desc' = higher values rank higher (e.g. newer timestamps). 'asc' = lower values rank higher. 'exists' = boost chunks that have the field. 'not_exists' = boost chunks that lack the field. Optional ��� defaults to 'asc' for numeric/datetime fields, 'exists' for text/boolean fields.",
 																"enum": [
 																	"asc",
 																	"desc",
@@ -363,7 +364,7 @@
 																"type": "string"
 															},
 															"field": {
-																"description": "Metadata field name to boost by. Use 'timestamp' for document freshness, or any custom_metadata field. Numeric fields support asc/desc directions; text/boolean fields support exists/not_exists.",
+																"description": "Metadata field name to boost by. Use 'timestamp' for document freshness, or any custom_metadata field. Numeric and datetime fields support asc/desc directions; text/boolean fields support exists/not_exists.",
 																"example": "timestamp",
 																"maxLength": 64,
 																"minLength": 1,
@@ -645,15 +646,10 @@
 											],
 											"type": "string",
 											"x-auditable": true
-										},
-										"vectorize_name": {
-											"readOnly": true,
-											"type": "string"
 										}
 									},
 									"required": [
 										"id",
-										"vectorize_name",
 										"created_at",
 										"modified_at"
 									],
@@ -911,7 +907,8 @@
 															"enum": [
 																"text",
 																"number",
-																"boolean"
+																"boolean",
+																"datetime"
 															],
 															"type": "string"
 														},
@@ -1134,7 +1131,7 @@
 														"items": {
 															"properties": {
 																"direction": {
-																	"description": "Boost direction. 'desc' = higher values rank higher (e.g. newer timestamps). 'asc' = lower values rank higher. 'exists' = boost chunks that have the field. 'not_exists' = boost chunks that lack the field. Optional ��� defaults to 'asc' for numeric fields, 'exists' for text/boolean fields.",
+																	"description": "Boost direction. 'desc' = higher values rank higher (e.g. newer timestamps). 'asc' = lower values rank higher. 'exists' = boost chunks that have the field. 'not_exists' = boost chunks that lack the field. Optional ��� defaults to 'asc' for numeric/datetime fields, 'exists' for text/boolean fields.",
 																	"enum": [
 																		"asc",
 																		"desc",
@@ -1144,7 +1141,7 @@
 																	"type": "string"
 																},
 																"field": {
-																	"description": "Metadata field name to boost by. Use 'timestamp' for document freshness, or any custom_metadata field. Numeric fields support asc/desc directions; text/boolean fields support exists/not_exists.",
+																	"description": "Metadata field name to boost by. Use 'timestamp' for document freshness, or any custom_metadata field. Numeric and datetime fields support asc/desc directions; text/boolean fields support exists/not_exists.",
 																	"example": "timestamp",
 																	"maxLength": 64,
 																	"minLength": 1,
@@ -1426,15 +1423,10 @@
 												],
 												"type": "string",
 												"x-auditable": true
-											},
-											"vectorize_name": {
-												"readOnly": true,
-												"type": "string"
 											}
 										},
 										"required": [
 											"id",
-											"vectorize_name",
 											"created_at",
 											"modified_at"
 										],
@@ -1660,7 +1652,8 @@
 														"enum": [
 															"text",
 															"number",
-															"boolean"
+															"boolean",
+															"datetime"
 														],
 														"type": "string"
 													},
@@ -1883,7 +1876,7 @@
 													"items": {
 														"properties": {
 															"direction": {
-																"description": "Boost direction. 'desc' = higher values rank higher (e.g. newer timestamps). 'asc' = lower values rank higher. 'exists' = boost chunks that have the field. 'not_exists' = boost chunks that lack the field. Optional ��� defaults to 'asc' for numeric fields, 'exists' for text/boolean fields.",
+																"description": "Boost direction. 'desc' = higher values rank higher (e.g. newer timestamps). 'asc' = lower values rank higher. 'exists' = boost chunks that have the field. 'not_exists' = boost chunks that lack the field. Optional ��� defaults to 'asc' for numeric/datetime fields, 'exists' for text/boolean fields.",
 																"enum": [
 																	"asc",
 																	"desc",
@@ -1893,7 +1886,7 @@
 																"type": "string"
 															},
 															"field": {
-																"description": "Metadata field name to boost by. Use 'timestamp' for document freshness, or any custom_metadata field. Numeric fields support asc/desc directions; text/boolean fields support exists/not_exists.",
+																"description": "Metadata field name to boost by. Use 'timestamp' for document freshness, or any custom_metadata field. Numeric and datetime fields support asc/desc directions; text/boolean fields support exists/not_exists.",
 																"example": "timestamp",
 																"maxLength": 64,
 																"minLength": 1,
@@ -2175,15 +2168,10 @@
 											],
 											"type": "string",
 											"x-auditable": true
-										},
-										"vectorize_name": {
-											"readOnly": true,
-											"type": "string"
 										}
 									},
 									"required": [
 										"id",
-										"vectorize_name",
 										"created_at",
 										"modified_at"
 									],
@@ -2571,7 +2559,8 @@
 											"enum": [
 												"text",
 												"number",
-												"boolean"
+												"boolean",
+												"datetime"
 											],
 											"type": "string"
 										},
@@ -2763,7 +2752,7 @@
 										"items": {
 											"properties": {
 												"direction": {
-													"description": "Boost direction. 'desc' = higher values rank higher (e.g. newer timestamps). 'asc' = lower values rank higher. 'exists' = boost chunks that have the field. 'not_exists' = boost chunks that lack the field. Optional ��� defaults to 'asc' for numeric fields, 'exists' for text/boolean fields.",
+													"description": "Boost direction. 'desc' = higher values rank higher (e.g. newer timestamps). 'asc' = lower values rank higher. 'exists' = boost chunks that have the field. 'not_exists' = boost chunks that lack the field. Optional ��� defaults to 'asc' for numeric/datetime fields, 'exists' for text/boolean fields.",
 													"enum": [
 														"asc",
 														"desc",
@@ -2773,7 +2762,7 @@
 													"type": "string"
 												},
 												"field": {
-													"description": "Metadata field name to boost by. Use 'timestamp' for document freshness, or any custom_metadata field. Numeric fields support asc/desc directions; text/boolean fields support exists/not_exists.",
+													"description": "Metadata field name to boost by. Use 'timestamp' for document freshness, or any custom_metadata field. Numeric and datetime fields support asc/desc directions; text/boolean fields support exists/not_exists.",
 													"example": "timestamp",
 													"maxLength": 64,
 													"minLength": 1,
@@ -3162,7 +3151,8 @@
 														"enum": [
 															"text",
 															"number",
-															"boolean"
+															"boolean",
+															"datetime"
 														],
 														"type": "string"
 													},
@@ -3385,7 +3375,7 @@
 													"items": {
 														"properties": {
 															"direction": {
-																"description": "Boost direction. 'desc' = higher values rank higher (e.g. newer timestamps). 'asc' = lower values rank higher. 'exists' = boost chunks that have the field. 'not_exists' = boost chunks that lack the field. Optional ��� defaults to 'asc' for numeric fields, 'exists' for text/boolean fields.",
+																"description": "Boost direction. 'desc' = higher values rank higher (e.g. newer timestamps). 'asc' = lower values rank higher. 'exists' = boost chunks that have the field. 'not_exists' = boost chunks that lack the field. Optional ��� defaults to 'asc' for numeric/datetime fields, 'exists' for text/boolean fields.",
 																"enum": [
 																	"asc",
 																	"desc",
@@ -3395,7 +3385,7 @@
 																"type": "string"
 															},
 															"field": {
-																"description": "Metadata field name to boost by. Use 'timestamp' for document freshness, or any custom_metadata field. Numeric fields support asc/desc directions; text/boolean fields support exists/not_exists.",
+																"description": "Metadata field name to boost by. Use 'timestamp' for document freshness, or any custom_metadata field. Numeric and datetime fields support asc/desc directions; text/boolean fields support exists/not_exists.",
 																"example": "timestamp",
 																"maxLength": 64,
 																"minLength": 1,
@@ -3677,15 +3667,10 @@
 											],
 											"type": "string",
 											"x-auditable": true
-										},
-										"vectorize_name": {
-											"readOnly": true,
-											"type": "string"
 										}
 									},
 									"required": [
 										"id",
-										"vectorize_name",
 										"created_at",
 										"modified_at"
 									],
@@ -3901,7 +3886,7 @@
 									"retrieval": {
 										"properties": {
 											"boost_by": {
-												"description": "Metadata fields to boost search results by. Overrides the instance-level boost_by config. Direction defaults to 'asc' for numeric fields, 'exists' for text/boolean fields. Fields must match 'timestamp' or a defined custom_metadata field.",
+												"description": "Metadata fields to boost search results by. Overrides the instance-level boost_by config. Direction defaults to 'asc' for numeric/datetime fields, 'exists' for text/boolean fields. Fields must match 'timestamp' or a defined custom_metadata field.",
 												"example": [
 													{
 														"direction": "desc",
@@ -3911,7 +3896,7 @@
 												"items": {
 													"properties": {
 														"direction": {
-															"description": "Boost direction. 'desc' = higher values rank higher (e.g. newer timestamps). 'asc' = lower values rank higher. 'exists' = boost chunks that have the field. 'not_exists' = boost chunks that lack the field. Optional ��� defaults to 'asc' for numeric fields, 'exists' for text/boolean fields.",
+															"description": "Boost direction. 'desc' = higher values rank higher (e.g. newer timestamps). 'asc' = lower values rank higher. 'exists' = boost chunks that have the field. 'not_exists' = boost chunks that lack the field. Optional ��� defaults to 'asc' for numeric/datetime fields, 'exists' for text/boolean fields.",
 															"enum": [
 																"asc",
 																"desc",
@@ -3921,7 +3906,7 @@
 															"type": "string"
 														},
 														"field": {
-															"description": "Metadata field name to boost by. Use 'timestamp' for document freshness, or any custom_metadata field. Numeric fields support asc/desc directions; text/boolean fields support exists/not_exists.",
+															"description": "Metadata field name to boost by. Use 'timestamp' for document freshness, or any custom_metadata field. Numeric and datetime fields support asc/desc directions; text/boolean fields support exists/not_exists.",
 															"example": "timestamp",
 															"maxLength": 64,
 															"minLength": 1,
@@ -4398,7 +4383,7 @@
 									"retrieval": {
 										"properties": {
 											"boost_by": {
-												"description": "Metadata fields to boost search results by. Overrides the instance-level boost_by config. Direction defaults to 'asc' for numeric fields, 'exists' for text/boolean fields. Fields must match 'timestamp' or a defined custom_metadata field.",
+												"description": "Metadata fields to boost search results by. Overrides the instance-level boost_by config. Direction defaults to 'asc' for numeric/datetime fields, 'exists' for text/boolean fields. Fields must match 'timestamp' or a defined custom_metadata field.",
 												"example": [
 													{
 														"direction": "desc",
@@ -4408,7 +4393,7 @@
 												"items": {
 													"properties": {
 														"direction": {
-															"description": "Boost direction. 'desc' = higher values rank higher (e.g. newer timestamps). 'asc' = lower values rank higher. 'exists' = boost chunks that have the field. 'not_exists' = boost chunks that lack the field. Optional ��� defaults to 'asc' for numeric fields, 'exists' for text/boolean fields.",
+															"description": "Boost direction. 'desc' = higher values rank higher (e.g. newer timestamps). 'asc' = lower values rank higher. 'exists' = boost chunks that have the field. 'not_exists' = boost chunks that lack the field. Optional ��� defaults to 'asc' for numeric/datetime fields, 'exists' for text/boolean fields.",
 															"enum": [
 																"asc",
 																"desc",
@@ -4418,7 +4403,7 @@
 															"type": "string"
 														},
 														"field": {
-															"description": "Metadata field name to boost by. Use 'timestamp' for document freshness, or any custom_metadata field. Numeric fields support asc/desc directions; text/boolean fields support exists/not_exists.",
+															"description": "Metadata field name to boost by. Use 'timestamp' for document freshness, or any custom_metadata field. Numeric and datetime fields support asc/desc directions; text/boolean fields support exists/not_exists.",
 															"example": "timestamp",
 															"maxLength": 64,
 															"minLength": 1,
@@ -4818,7 +4803,8 @@
 											"enum": [
 												"text",
 												"number",
-												"boolean"
+												"boolean",
+												"datetime"
 											],
 											"type": "string"
 										},
@@ -5006,7 +4992,7 @@
 										"items": {
 											"properties": {
 												"direction": {
-													"description": "Boost direction. 'desc' = higher values rank higher (e.g. newer timestamps). 'asc' = lower values rank higher. 'exists' = boost chunks that have the field. 'not_exists' = boost chunks that lack the field. Optional ��� defaults to 'asc' for numeric fields, 'exists' for text/boolean fields.",
+													"description": "Boost direction. 'desc' = higher values rank higher (e.g. newer timestamps). 'asc' = lower values rank higher. 'exists' = boost chunks that have the field. 'not_exists' = boost chunks that lack the field. Optional ��� defaults to 'asc' for numeric/datetime fields, 'exists' for text/boolean fields.",
 													"enum": [
 														"asc",
 														"desc",
@@ -5016,7 +5002,7 @@
 													"type": "string"
 												},
 												"field": {
-													"description": "Metadata field name to boost by. Use 'timestamp' for document freshness, or any custom_metadata field. Numeric fields support asc/desc directions; text/boolean fields support exists/not_exists.",
+													"description": "Metadata field name to boost by. Use 'timestamp' for document freshness, or any custom_metadata field. Numeric and datetime fields support asc/desc directions; text/boolean fields support exists/not_exists.",
 													"example": "timestamp",
 													"maxLength": 64,
 													"minLength": 1,
@@ -5453,7 +5439,8 @@
 														"enum": [
 															"text",
 															"number",
-															"boolean"
+															"boolean",
+															"datetime"
 														],
 														"type": "string"
 													},
@@ -5676,7 +5663,7 @@
 													"items": {
 														"properties": {
 															"direction": {
-																"description": "Boost direction. 'desc' = higher values rank higher (e.g. newer timestamps). 'asc' = lower values rank higher. 'exists' = boost chunks that have the field. 'not_exists' = boost chunks that lack the field. Optional ��� defaults to 'asc' for numeric fields, 'exists' for text/boolean fields.",
+																"description": "Boost direction. 'desc' = higher values rank higher (e.g. newer timestamps). 'asc' = lower values rank higher. 'exists' = boost chunks that have the field. 'not_exists' = boost chunks that lack the field. Optional ��� defaults to 'asc' for numeric/datetime fields, 'exists' for text/boolean fields.",
 																"enum": [
 																	"asc",
 																	"desc",
@@ -5686,7 +5673,7 @@
 																"type": "string"
 															},
 															"field": {
-																"description": "Metadata field name to boost by. Use 'timestamp' for document freshness, or any custom_metadata field. Numeric fields support asc/desc directions; text/boolean fields support exists/not_exists.",
+																"description": "Metadata field name to boost by. Use 'timestamp' for document freshness, or any custom_metadata field. Numeric and datetime fields support asc/desc directions; text/boolean fields support exists/not_exists.",
 																"example": "timestamp",
 																"maxLength": 64,
 																"minLength": 1,
@@ -5968,15 +5955,10 @@
 											],
 											"type": "string",
 											"x-auditable": true
-										},
-										"vectorize_name": {
-											"readOnly": true,
-											"type": "string"
 										}
 									},
 									"required": [
 										"id",
-										"vectorize_name",
 										"created_at",
 										"modified_at"
 									],
