@@ -717,6 +717,7 @@
 					"description": "The type of mitigation",
 					"enum": [
 						"legal_block",
+						"misleading_interstitial",
 						"phishing_interstitial",
 						"network_block",
 						"rate_limit_cache",
@@ -852,6 +853,7 @@
 														"description": "The type of mitigation",
 														"enum": [
 															"legal_block",
+															"misleading_interstitial",
 															"phishing_interstitial",
 															"network_block",
 															"rate_limit_cache",
@@ -1672,6 +1674,7 @@
 												"description": "The type of mitigation",
 												"enum": [
 													"legal_block",
+													"misleading_interstitial",
 													"phishing_interstitial",
 													"network_block",
 													"rate_limit_cache",
