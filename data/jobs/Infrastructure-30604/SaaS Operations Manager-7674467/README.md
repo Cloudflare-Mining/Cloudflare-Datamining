@@ -5,34 +5,36 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<p><strong>Available Locations: Austin, TX - Hybrid</strong></p>
-<p><strong>About the Department:</strong></p>
-<p>Cloudflare’s Business Intelligence team plays a critical role in providing the advanced data analytics solution for the company’s business teams. We are responsible for building a centralized cloud data analytics platform using open source technologies that are used by our internal Business Partners and Machine Learning teams. Our goal is to democratize data, support Cloudflare’s critical business needs, and provide reporting and analytics self-service tools to fuel existing and new business critical initiatives.</p>
-<p><strong>About the Role:</strong></p>
-<p>We are looking for a self-motivated Technical Program Manager to join our Data Intelligence and Analytics (DIA) team. You will work with our technical leads in driving the delivery of various initiatives, including AI/ML projects, as well as supporting the roadmap tracking of our teams.&nbsp; This role is solely dedicated to supporting the building of internal data environments or the data products that serve internal data customers. The ideal candidate is process driven but remains flexible and iterative, able to manage internal and external stakeholders, and is able to adapt to quickly evolving situations.&nbsp;</p>
-<p><strong>What You’ll Do</strong></p>
+<p><strong>Available Locations: </strong>Austin, TX, Atlanta, GA, Seattle, WA - Hybrid</p>
+<h3><strong>About the Role</strong></h3>
+<p>Cloudflare is seeking an autonomous <strong>SaaS Operations Manager</strong> to take ownership of the day-to-day execution of our Software Asset Management (SAM) practice.</p>
+<p>While the Lead Principal defines the enterprise-wide strategy, governance frameworks, and high-level financial goals, you will be the operational engine that ensures these strategies are realized. You will independently manage our tooling ecosystem (Zylo), drive data accuracy, and serve as the primary liaison for application owners to ensure they are equipped to make cost-effective decisions.</p>
+<p>We need a self-starter who can take a strategic directive—such as "reduce shadow IT risk"—and independently build the workflows, reporting, and stakeholder outreach plans to get it done.</p>
+<h3><strong>Responsibilities</strong></h3>
+<p><strong>System Ownership &amp; Data Operations (Zylo)</strong></p>
 <ul>
-	<li>Engage with various operations teams to plan, track, and manage the execution of programs and initiatives.</li>
-	<li>Develop clear and transparent communication channels to align with business stakeholders and other delivery teams and ensure relevant audiences receive appropriate updates on programs and projects.</li>
-	<li>Support DIA managers in requirements gathering, project tracking, meeting alignment, documentation and requisite follow-up.</li>
-	<li>Actively partner with DIA managers and team members on quarterly planning and roadmap tracking of our engineering teams.</li>
-	<li>Collaborate with team leads to develop executive reporting materials (e.g., executive steer co, weekly updates, key artifacts, etc.).</li>
-	<li>Facilitate communication between business stakeholders and the development team.</li>
-	<li>Support the management of data sourcing schedules, timelines, and milestones for the implementation and delivery of the projects and programs.</li>
-	<li>Organize daily activities: meetings, reporting, follow-up, to support the ongoing management of programs in flight.</li>
-	<li>Support the operational development of program management within the DIA team, and lend support to various operational functions.</li>
+	<li><strong>Platform Management:</strong> Serve as the technical owner of Zylo, our system of record. You will independently manage the health of the platform, including SSO integrations, finance connectors, and feature updates.</li>
+	<li><strong>Inventory Accuracy:</strong> Take full responsibility for the quality of our data. You will maintain accurate license inventories by proactively identifying and resolving gaps in ownership, cost center mapping, and contract metadata.</li>
+	<li><strong>Shadow IT Detection:</strong> Operationalize our Shadow IT monitoring. You will review expense data to identify unmanaged tools and execute the outreach process to bring them into the corporate fold.</li>
 </ul>
-<p><strong>Required skills, knowledge, and experience:</strong></p>
+<p><strong>Stakeholder Enablement &amp; Renewal Support</strong></p>
 <ul>
-	<li>BA/BS in Business Administration or Computer Science, or an equivalent combination of education and experience.</li>
-	<li>3-5 years experience in planning and prioritization for highly cross functional teams</li>
-	<li>Excellent oral and written communication, proven track record of effective communication at various levels including executive level.</li>
-	<li>Strong competency with project management tools (Confluence, JIRA) and various development methodologies (Agile, Waterfall, Scrum, etc).</li>
-	<li>Comfortable managing tight deadlines, changing priorities, and ambiguity.</li>
-	<li>Knowledge of technical program management and a desire for continuous improvement.</li>
-	<li>Cooperative leader who has successfully gained authority with peers by demonstrating empathy, providing support, and motivating others.&nbsp;</li>
-	<li>Role is based in Austin and you will be working with teams in various time zones.&nbsp; Expectation to be able to attend day-long in-office sessions.</li>
+	<li><strong>Operational Liaison:</strong> Act as the first line of defense for Application Owners. While the Lead Principal manages executive relationships, you will work directly with functional owners to interpret their usage data and answer licensing questions.</li>
+	<li><strong>Renewal Readiness:</strong> Partner with Application Owners to create "Renewal Prep Kits" 90 days prior to contract expiration. You will work alongside stakeholders to interpret their usage vs. spend data, helping them build a valid forecast and negotiation strategy based on actual consumption.</li>
+	<li><strong>Process Improvement:</strong> Independently identify friction points in our software onboarding/offboarding workflows and partner with IT and Procurement to streamline them.</li>
 </ul>
+<p><strong>Analysis &amp; Operational Reporting</strong></p>
+<ul>
+	<li><strong>Usage Analysis:</strong> Go deep into the data to analyze software usage trends. You will not just report numbers; you will interpret them to flag specific optimization opportunities (e.g., "We have 200 users on 'Pro' who only use 'Basic' features").</li>
+	<li><strong>Metric Tracking:</strong> Develop and maintain the operational dashboards that track the team’s KPIs (e.g., Utilization Rates, Reclamation Savings, Shadow IT mitigation), providing the data that feeds into the Lead Principal’s executive reporting.</li>
+</ul>
+<h3><strong>Qualifications</strong></h3>
+<ul>
+	<li><strong>Experience:</strong> 3-5 years of experience in SaaS Operations, IT Asset Management, or Technology Procurement.</li>
+	<li><strong>Operational Autonomy:</strong> Proven ability to work independently. You can take a broad objective (e.g., "Clean up our Zoom licensing") and execute the entire project end-to-end without daily oversight.</li>
+	<li><strong>Technical Proficiency:</strong> Advanced proficiency with SaaS Management Platforms (Zylo experience preferred) and Excel/Sheets. You are comfortable manipulating large datasets to find the story within the numbers.</li>
+</ul>
+<p><strong>Soft Skills:</strong> Strong ability to influence without authority. You can explain SaaS licensing models and compliance requirements to non-technical stakeholders in a way that encourages cooperation.</p>
 <p>&nbsp;</p>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
