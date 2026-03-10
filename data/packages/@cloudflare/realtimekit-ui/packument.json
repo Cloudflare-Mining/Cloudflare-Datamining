@@ -1,8 +1,8 @@
 {
 	"name": "@cloudflare/realtimekit-ui",
 	"dist-tags": {
-		"latest": "1.1.0",
-		"staging": "1.1.1-staging.2"
+		"latest": "1.1.1",
+		"staging": "1.1.1-staging.4"
 	},
 	"versions": {
 		"0.0.0": {
@@ -1898,6 +1898,78 @@
 			"name": "@cloudflare/realtimekit-ui",
 			"version": "1.1.1-staging.2",
 			"dependencies": {
+				"hark": "^1.2.3",
+				"hls.js": "^1.5.17",
+				"lodash-es": "^4.17.21",
+				"@floating-ui/dom": "^1.7.4",
+				"resize-observer-polyfill": "^1.5.1"
+			},
+			"dist": {
+				"shasum": "8cdeee901d949610edb0376132bf851ace20f43e",
+				"tarball": "https://registry.npmjs.org/@cloudflare/realtimekit-ui/-/realtimekit-ui-1.1.1-staging.2.tgz",
+				"fileCount": 1236,
+				"integrity": "sha512-jfLBTb1thkMSiI66myUYnxHVNy3lk6TSfJdEnNriU3yO3SaAorn81SmnmH2EhYHABWqll7dxVrd/f+TlMP9MjQ==",
+				"signatures": [
+					{
+						"sig": "MEYCIQCP97lQLwCDvu7aWJbvr4bWlZZG6dfAAnuDRqok7QUvUAIhAKQif4qrjBcYvWVSy8lbn1RKGYezBPHIIdSTZDKZnzMz",
+						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
+					}
+				],
+				"unpackedSize": 30292524
+			}
+		},
+		"1.1.1-staging.3": {
+			"name": "@cloudflare/realtimekit-ui",
+			"version": "1.1.1-staging.3",
+			"dependencies": {
+				"hark": "^1.2.3",
+				"hls.js": "^1.5.17",
+				"lodash-es": "^4.17.21",
+				"@floating-ui/dom": "^1.7.4",
+				"resize-observer-polyfill": "^1.5.1"
+			},
+			"dist": {
+				"shasum": "cbb3877b8cbd2d216e80ad8deeb20aa1ae58c29e",
+				"tarball": "https://registry.npmjs.org/@cloudflare/realtimekit-ui/-/realtimekit-ui-1.1.1-staging.3.tgz",
+				"fileCount": 1236,
+				"integrity": "sha512-UqdHYsOGDF/Mt1Rd+hidOH/6fW0ZDU8hMoiVifyuoeaUlgw86CXOh1iAj1D7X1TXD9mXLtUqzEZnAFVfxl7/hw==",
+				"signatures": [
+					{
+						"sig": "MEUCIHHIrChk1MX7HqXoh3aeylMGWC6wetR5o3BsI4I5JubQAiEA4ZIXQKZ2o/TsPRO6Kicc2yUUqMk4pvHMHOWuQ8GIEIs=",
+						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
+					}
+				],
+				"unpackedSize": 30293056
+			}
+		},
+		"1.1.1-staging.4": {
+			"name": "@cloudflare/realtimekit-ui",
+			"version": "1.1.1-staging.4",
+			"dependencies": {
+				"hark": "^1.2.3",
+				"hls.js": "^1.5.17",
+				"lodash-es": "^4.17.21",
+				"@floating-ui/dom": "^1.7.4",
+				"resize-observer-polyfill": "^1.5.1"
+			},
+			"dist": {
+				"shasum": "cb5970c10fafb634200c2bc6b3af5c44f54259c0",
+				"tarball": "https://registry.npmjs.org/@cloudflare/realtimekit-ui/-/realtimekit-ui-1.1.1-staging.4.tgz",
+				"fileCount": 1236,
+				"integrity": "sha512-KIfEQjUeIeQyjWfY408KxhAH24lvM9t6dNa3PdLeeTnhFH8ebboqjVuORcZgSn+MZso/jBjps2ia7icgVExqnw==",
+				"signatures": [
+					{
+						"sig": "MEYCIQD7nkiJPEfDth9cckkszxPnqkwLtEQZa+Qw2eZPQph/zAIhAJ9UrgvZs+4N5O9FrM8X33OTTM65si7JsZBmFLwpl4nr",
+						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
+					}
+				],
+				"unpackedSize": 30293056
+			}
+		},
+		"1.1.1": {
+			"name": "@cloudflare/realtimekit-ui",
+			"version": "1.1.1",
+			"dependencies": {
 				"@floating-ui/dom": "^1.7.4",
 				"hark": "^1.2.3",
 				"hls.js": "^1.5.17",
@@ -1905,15 +1977,15 @@
 				"resize-observer-polyfill": "^1.5.1"
 			},
 			"dist": {
-				"integrity": "sha512-jfLBTb1thkMSiI66myUYnxHVNy3lk6TSfJdEnNriU3yO3SaAorn81SmnmH2EhYHABWqll7dxVrd/f+TlMP9MjQ==",
-				"shasum": "8cdeee901d949610edb0376132bf851ace20f43e",
-				"tarball": "https://registry.npmjs.org/@cloudflare/realtimekit-ui/-/realtimekit-ui-1.1.1-staging.2.tgz",
+				"integrity": "sha512-ZX7hF9mrCVZ9QunwlCppFNar9J3YzWiF/QsToRF4edEDzIVHD09Q4NtB7xgz8i+3hT/hRLCVFhclwWhCmSsWBA==",
+				"shasum": "4429ce63afd542affe5924d6a64c366de0919f32",
+				"tarball": "https://registry.npmjs.org/@cloudflare/realtimekit-ui/-/realtimekit-ui-1.1.1.tgz",
 				"fileCount": 1236,
-				"unpackedSize": 30292524,
+				"unpackedSize": 30293069,
 				"signatures": [
 					{
 						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U",
-						"sig": "MEYCIQCP97lQLwCDvu7aWJbvr4bWlZZG6dfAAnuDRqok7QUvUAIhAKQif4qrjBcYvWVSy8lbn1RKGYezBPHIIdSTZDKZnzMz"
+						"sig": "MEUCIQDmxF65j3PQ44NLOpZqFspvm9e/ePqSMpVhyqcfHIaM6wIgFT0HJGl/rDjkLLZzxTlzEdkByB6kb7Ame7T8BVrCdp0="
 					}
 				]
 			}

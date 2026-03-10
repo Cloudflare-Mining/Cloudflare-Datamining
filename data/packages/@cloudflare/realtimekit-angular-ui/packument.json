@@ -1,8 +1,8 @@
 {
 	"name": "@cloudflare/realtimekit-angular-ui",
 	"dist-tags": {
-		"latest": "1.1.0",
-		"staging": "1.1.0-staging.15"
+		"latest": "1.1.1",
+		"staging": "1.1.1-staging.4"
 	},
 	"versions": {
 		"0.0.0": {
@@ -1905,19 +1905,94 @@
 				"@cloudflare/realtimekit-ui": "1.1.0"
 			},
 			"peerDependencies": {
+				"@angular/core": ">=12",
+				"@angular/common": ">=12"
+			},
+			"dist": {
+				"shasum": "ea5a01f23408f383bbcad5c7214bd61ad9bfd8cd",
+				"tarball": "https://registry.npmjs.org/@cloudflare/realtimekit-angular-ui/-/realtimekit-angular-ui-1.1.0.tgz",
+				"fileCount": 18,
+				"integrity": "sha512-DlG050Wdh9ou3PSnZt/Jf9WoWsD0tMm1r3kRWaGovK1ckgIdpn4k33qftwmHWCIpitGD6ktxliRmPPkSJjmDug==",
+				"signatures": [
+					{
+						"sig": "MEQCIDqnEuA5EYOmsBdgZ9svBEPUM4Sfbj+SdCPLiyX8bWudAiBmDTR7u8M7vxbziD+0rTHZzfab95DZdm+sfiN7J43vug==",
+						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
+					}
+				],
+				"unpackedSize": 1706647
+			}
+		},
+		"1.1.1-staging.3": {
+			"name": "@cloudflare/realtimekit-angular-ui",
+			"version": "1.1.1-staging.3",
+			"dependencies": {
+				"tslib": "^2.3.0",
+				"@cloudflare/realtimekit-ui": "1.1.1-staging.3"
+			},
+			"peerDependencies": {
+				"@angular/core": ">=12",
+				"@angular/common": ">=12"
+			},
+			"dist": {
+				"shasum": "788a928be5222f2fef8a8a791bfbe9b1369f7ae9",
+				"tarball": "https://registry.npmjs.org/@cloudflare/realtimekit-angular-ui/-/realtimekit-angular-ui-1.1.1-staging.3.tgz",
+				"fileCount": 18,
+				"integrity": "sha512-wXSuSI9rmeKARfNISmwndkD8SidufIIWgJ/1UWLC54S1f9z3pehRa6HijCcEWRnOnUU9Tmc1LpbGXqdD8H0Hvg==",
+				"signatures": [
+					{
+						"sig": "MEQCIHiPJy6ITKq5R3ZDaNU30Ly88c8qVe9tqlDMbk/Q4Ek5AiAMN8+esRNHzqhizYkCYb6CxxqhqBKvNGfwyImSyUHj7w==",
+						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
+					}
+				],
+				"unpackedSize": 1706910
+			}
+		},
+		"1.1.1-staging.4": {
+			"name": "@cloudflare/realtimekit-angular-ui",
+			"version": "1.1.1-staging.4",
+			"dependencies": {
+				"tslib": "^2.3.0",
+				"@cloudflare/realtimekit-ui": "1.1.1-staging.4"
+			},
+			"peerDependencies": {
+				"@angular/core": ">=12",
+				"@angular/common": ">=12"
+			},
+			"dist": {
+				"shasum": "4075f8c41827578ae1204ef259f82379001ff850",
+				"tarball": "https://registry.npmjs.org/@cloudflare/realtimekit-angular-ui/-/realtimekit-angular-ui-1.1.1-staging.4.tgz",
+				"fileCount": 18,
+				"integrity": "sha512-U8xyDgEFQbAIxtLAq5m0VHMFss+unGPI3LII2B880Mdm9wtjk/rcrN3+2tC8OZWYGFrRiR42i98Duj7e+3qz+A==",
+				"signatures": [
+					{
+						"sig": "MEQCIBdHp+flIJFwOvwZVDYR75I/Xw8C6IiFsbDba1z4B+2CAiBHMrONV/Z8H3xHMFyul0V8w0uPoQdMBN0uYXLiv6SBnA==",
+						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
+					}
+				],
+				"unpackedSize": 1706910
+			}
+		},
+		"1.1.1": {
+			"name": "@cloudflare/realtimekit-angular-ui",
+			"version": "1.1.1",
+			"dependencies": {
+				"tslib": "^2.3.0",
+				"@cloudflare/realtimekit-ui": "1.1.1"
+			},
+			"peerDependencies": {
 				"@angular/common": ">=12",
 				"@angular/core": ">=12"
 			},
 			"dist": {
-				"integrity": "sha512-DlG050Wdh9ou3PSnZt/Jf9WoWsD0tMm1r3kRWaGovK1ckgIdpn4k33qftwmHWCIpitGD6ktxliRmPPkSJjmDug==",
-				"shasum": "ea5a01f23408f383bbcad5c7214bd61ad9bfd8cd",
-				"tarball": "https://registry.npmjs.org/@cloudflare/realtimekit-angular-ui/-/realtimekit-angular-ui-1.1.0.tgz",
+				"integrity": "sha512-hXSXheONqqfE85LCHuuMXTM8sSvM0qVNtAv0zTLLvA6fPtbVbFqiMFyb9M6EbSCMZX3WzQmZ8oVReAAXxb931Q==",
+				"shasum": "c55310ef9423fc2ebaa8f7a9fc12d7f93afa7c84",
+				"tarball": "https://registry.npmjs.org/@cloudflare/realtimekit-angular-ui/-/realtimekit-angular-ui-1.1.1.tgz",
 				"fileCount": 18,
-				"unpackedSize": 1706647,
+				"unpackedSize": 1706913,
 				"signatures": [
 					{
 						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U",
-						"sig": "MEQCIDqnEuA5EYOmsBdgZ9svBEPUM4Sfbj+SdCPLiyX8bWudAiBmDTR7u8M7vxbziD+0rTHZzfab95DZdm+sfiN7J43vug=="
+						"sig": "MEQCIHrXmN5BMfZ6iWQpIVJzIWWZTIx5p8vNBZUhF5w+Z4j6AiBrIF/XnFneXsPMFrW2kkwiZFRGJLOXy7+SDQNFB3Ve1w=="
 					}
 				]
 			}
