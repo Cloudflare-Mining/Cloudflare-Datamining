@@ -5,24 +5,34 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<p><strong>Available Locations: <span class="il">Bengaluru</span></strong></p>
-<p><strong><span class="il">About The Team</span></strong></p>
-<p><span class="il">Cloudflare’s Infrastructure Team builds and runs the systems and software that support our solutions that handle trillions of requests per month. We ensure that all of the new and existing features and functionality that Cloudflare offers can be managed at scale and meet the needs of our massively growing, global customer base.</span></p>
-<p><strong>About The Role&nbsp;</strong></p>
-<p>As a Engineer: Resiliency, you will be part of a team responsible for developing and maintaining the systems that manage Cloudflare’s infrastructure at scale. You will work on expanding and evolving the suite of automations that allow our Infrastructure Operations partners to provision, expand, repair, and decommission our rapidly growing fleet of servers. Your work will contribute to an increasingly autonomous system that reduces manual effort and supports Cloudflare’s growth. You will play a key role in the development of the infrastructure that powers Cloudflare’s scale.</p>
-<p>You will collaborate with the team to understand business needs and develop technical solutions. You will thrive in a fast-paced iterative engineering environment and work closely with internal customers to understand their requirements.</p>
-<p><strong>Examples of desirable skills, knowledge and experience.</strong></p>
+<h4><strong>About the team</strong></h4>
+<p>The Data Intelligence &amp; Analytics organization builds the core data platform and internal products that power decision-making across the company. We design and operate large-scale data systems, own the company’s data lake, ingestion infrastructure, and platform tooling, and develop end-to-end applications that transform complex datasets into fast, reliable, business-critical products used daily by go-to-market, product, and engineering teams. Our work sits at the intersection of data platforms, distributed systems, and product development, giving engineers the opportunity to own meaningful problems across the stack and build systems that truly run the business.</p>
+<h4><strong>About the role</strong></h4>
+<p>We are looking for an experienced Data Engineer to join our Bengaluru team and help scale the development of our internal data products. In this role, you will build data-driven applications that empower teams across the company, including go-to-market, engineering, and product. Because the products we build are initiated and owned by the team, you will be involved end-to-end — from shaping requirements and designing features to implementation and long-term ownership.</p>
+<p>You will work on building scalable, reliable systems that solve critical business problems, partnering closely with full-stack engineers to develop new features and operate the data pipelines and services behind our applications. Our stack spans multiple languages and technologies, including Go, Scala, and ClickHouse, and continues to evolve. Many of our products also incorporate strong AI components, giving you opportunities to work with modern AI infrastructure and tools such as vector databases, MCP-based services, and Workers AI.</p>
+<p>&nbsp;</p>
+<p><strong>What you'll do</strong></p>
 <ul>
-	<li>At least 5+ years of hands-on software development experience on meaningfully complex systems.</li>
-	<li>Excellent proficiency in one of Python, Go, or Rust, with deep understanding of the language and its best practices.</li>
-	<li>Experience working with Linux systems</li>
-	<li>Basic networking knowledge, like VLAN, Routing, DNS, etc</li>
-	<li>Experience building both backend systems and frontend widgets.</li>
-	<li>Ability to contribute to planning, development, and execution to meet commitments and deliver with predictability.</li>
-	<li>Experience implementing tools, processes, internal instrumentation, and methodologies.</li>
-	<li>Comfortable working on projects with tight deadlines and short release cycles.</li>
-	<li>Experience with DCIM, CMDB, IPAM, and other Data Center and Asset Lifecycle Management tools is a plus</li>
-	<li>Excellent verbal and written English language skills.</li>
+	<li>Design and implement core components of our data pipelines and services in Go and Scala, with a focus on scalability, performance, and long-term maintainability.<br><br></li>
+	<li>Partner closely with engineers, analysts, and product stakeholders to design solutions for strategic initiatives and business-critical data products.<br><br></li>
+	<li>Contribute to the evolution of our data platform architecture, improving scalability, reliability, observability, and data correctness across the stack.<br><br></li>
+	<li>Build and curate high-quality, well-modeled datasets that power internal products, analytics, and AI-enabled features at company scale.<br><br></li>
+	<li>Develop a deep understanding of the company’s data ecosystem — including source systems, tooling, and data flows — and collaborate closely with the data engineering teams in Austin and San Francisco to improve data ingestion, quality, and governance.<br><br></li>
+	<li>Lead by example through design reviews, knowledge sharing, and mentorship, helping raise the technical bar and data engineering practices across the organization.</li>
+</ul>
+<p><br><br></p>
+<p><strong>Examples of desirable skills, knowledge and experience</strong></p>
+<ul>
+	<li>B.S. or M.S. in Computer Science, Engineering, Statistics, Mathematics, or a related quantitative field, or equivalent practical experience.<br><br></li>
+	<li>7+ years of professional experience in data engineering, software engineering, or related roles, building and operating production data systems.<br><br></li>
+	<li>Strong programming expertise in Go, Python, or JVM-based languages, with experience writing high-quality, production-grade services and pipelines.<br><br></li>
+	<li>Deep knowledge of SQL and hands-on experience designing data models and working with relational and/or analytical databases (e.g., PostgreSQL, MySQL, ClickHouse).<br><br></li>
+	<li>Experience building scalable, reliable, and observable data pipelines, with an understanding of performance, data quality, and operational best practices.<br><br></li>
+	<li>Proven problem-solving and communication skills, with a track record of driving projects in ambiguous environments and partnering effectively with cross-functional teams.<br><br></li>
+</ul>
+<p><strong>Bonus Points</strong></p>
+<ul>
+	<li>Familiarity with container based deployments such as Docker &amp; K</li>
 </ul>
 <p class="p1"><strong>Fraud Alert:</strong>&nbsp;<em>Do not fall victim to recruitment fraud. Cloudflare never charges application fees or requires candidates to purchase third-party certifications or training as a condition of employment. All official communication comes strictly from @</em><a href="http://cloudflare.com/"><span class="s1"><em>cloudflare.com</em></span></a><em>&nbsp;email addresses.</em></p>
 <div class="content-conclusion">
