@@ -1,0 +1,1090 @@
+{
+	"DELETE /accounts/{account_id}/scim/v2/Groups/{group_id}": {
+		"description": "Deletes a SCIM Group (custom user groups only). System groups backed by Cloudflare permission groups cannot be deleted via SCIM. Returns 204 No Content on success.\n",
+		"operationId": "scim-groups-delete",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"allOf": [
+						{
+							"description": "Identifier",
+							"example": "023e105f4ecef8ad9ca31a8372d0c353",
+							"maxLength": 32,
+							"minLength": 32,
+							"type": "string",
+							"x-auditable": true
+						}
+					],
+					"description": "Account identifier tag.",
+					"title": "Account Identifier"
+				}
+			},
+			{
+				"in": "path",
+				"name": "group_id",
+				"required": true,
+				"schema": {
+					"description": "The group identifier for a SCIM Group resource. For system groups this is prefixed `cloudflare-v1-<permissionGroupTag>`; for custom user groups this is a UUID-style tag.\n",
+					"example": "cloudflare-v1-023e105f4ecef8ad9ca31a8372d0c353",
+					"title": "SCIM Group Identifier",
+					"type": "string"
+				}
+			}
+		],
+		"responses": {
+			"204": {
+				"description": "Delete SCIM Group response (no content)"
+			},
+			"4XX": {
+				"content": {
+					"application/scim+json": {
+						"schema": {
+							"description": "SCIM error envelope (RFC 7644 Section 3.12). Returned on all 4XX and 5XX responses from SCIM endpoints.\n",
+							"properties": {
+								"detail": {
+									"description": "A human-readable message describing the error.",
+									"example": "Invalid SCIM request: userName is required",
+									"type": "string"
+								},
+								"schemas": {
+									"example": [
+										"urn:ietf:params:scim:api:messages:2.0:Error"
+									],
+									"items": {
+										"type": "string"
+									},
+									"type": "array"
+								},
+								"scimType": {
+									"description": "A SCIM detail error keyword (RFC 7644 Section 3.12). Only present for specific error conditions (e.g. `uniqueness` for duplicate member).\n",
+									"example": "uniqueness",
+									"type": "string"
+								},
+								"status": {
+									"description": "The HTTP status code as a string.",
+									"example": "400",
+									"type": "string"
+								}
+							},
+							"required": [
+								"schemas",
+								"status"
+							],
+							"title": "SCIM Error Response",
+							"type": "object"
+						}
+					}
+				},
+				"description": "Delete SCIM Group response failure"
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			}
+		],
+		"summary": "Delete SCIM Group",
+		"tags": [
+			"SCIM Groups"
+		],
+		"x-api-token-group": [
+			"SCIM Provisioning",
+			"Account Settings Write"
+		],
+		"x-cfPermissionsRequired": {
+			"enum": [
+				"com.cloudflare.api.account.member.delete"
+			]
+		},
+		"x-cfPlanAvailability": {
+			"business": false,
+			"enterprise": true,
+			"free": false,
+			"pro": false
+		}
+	},
+	"GET /accounts/{account_id}/scim/v2/Groups": {
+		"description": "Lists SCIM Group resources for the account. Returns both system groups (backed by Cloudflare permission groups, prefixed `cloudflare-v1-`) and custom user groups. Supports filtering by `displayName` using SCIM filter syntax.\n",
+		"operationId": "scim-groups-list",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"allOf": [
+						{
+							"description": "Identifier",
+							"example": "023e105f4ecef8ad9ca31a8372d0c353",
+							"maxLength": 32,
+							"minLength": 32,
+							"type": "string",
+							"x-auditable": true
+						}
+					],
+					"description": "Account identifier tag.",
+					"title": "Account Identifier"
+				}
+			},
+			{
+				"in": "query",
+				"name": "startIndex",
+				"schema": {
+					"default": 1,
+					"description": "The 1-based index of the first result in the current set of list results. Values less than 1 are treated as 1.\n",
+					"minimum": 1,
+					"type": "integer"
+				}
+			},
+			{
+				"in": "query",
+				"name": "count",
+				"schema": {
+					"description": "Specifies the desired maximum number of query results per page.\n",
+					"minimum": 0,
+					"type": "integer"
+				}
+			},
+			{
+				"in": "query",
+				"name": "filter",
+				"schema": {
+					"description": "SCIM filter expression (RFC 7644 Section 3.4.2.2). Only `displayName eq \"value\"` is supported.\n",
+					"example": "displayName eq \"My Group\"",
+					"type": "string"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/scim+json": {
+						"schema": {
+							"description": "SCIM ListResponse envelope for Group resources (RFC 7644 Section 3.4.2).\n",
+							"properties": {
+								"Resources": {
+									"items": {
+										"description": "A SCIM 2.0 Group resource as returned in list responses. Does not include members; use the individual GET endpoint to retrieve members.",
+										"properties": {
+											"displayName": {
+												"description": "A human-readable name for the Group.",
+												"example": "Administrators",
+												"type": "string",
+												"x-auditable": true
+											},
+											"externalId": {
+												"description": "Identifier for the Group as defined by the provisioning client (IdP).",
+												"example": "idp-group-456",
+												"type": "string",
+												"x-auditable": true
+											},
+											"id": {
+												"description": "Unique identifier for the Group, assigned by Cloudflare. System groups are prefixed `cloudflare-v1-<permissionGroupTag>`; custom groups use a UUID-style tag.",
+												"example": "cloudflare-v1-023e105f4ecef8ad9ca31a8372d0c353",
+												"readOnly": true,
+												"type": "string",
+												"x-auditable": true
+											},
+											"meta": {
+												"description": "Resource metadata for a SCIM Group.",
+												"properties": {
+													"resourceType": {
+														"description": "The name of the resource type.",
+														"example": "Group",
+														"type": "string"
+													}
+												},
+												"readOnly": true,
+												"title": "SCIM Group Meta",
+												"type": "object"
+											},
+											"schemas": {
+												"description": "Must contain `urn:ietf:params:scim:schemas:core:2.0:Group`.",
+												"example": [
+													"urn:ietf:params:scim:schemas:core:2.0:Group"
+												],
+												"items": {
+													"type": "string"
+												},
+												"type": "array"
+											}
+										},
+										"required": [
+											"schemas",
+											"id",
+											"displayName"
+										],
+										"title": "SCIM Group Summary",
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"itemsPerPage": {
+									"description": "The number of resources returned in this page.",
+									"example": 5,
+									"type": "integer"
+								},
+								"schemas": {
+									"example": [
+										"urn:ietf:params:scim:api:messages:2.0:ListResponse"
+									],
+									"items": {
+										"type": "string"
+									},
+									"type": "array"
+								},
+								"startIndex": {
+									"description": "The 1-based index of the first result in this set.",
+									"example": 1,
+									"type": "integer"
+								},
+								"totalResults": {
+									"description": "The total number of results matching the query.",
+									"example": 5,
+									"type": "integer"
+								}
+							},
+							"required": [
+								"schemas",
+								"totalResults",
+								"Resources"
+							],
+							"title": "SCIM Group List Response",
+							"type": "object"
+						}
+					}
+				},
+				"description": "List SCIM Groups response"
+			},
+			"4XX": {
+				"content": {
+					"application/scim+json": {
+						"schema": {
+							"description": "SCIM error envelope (RFC 7644 Section 3.12). Returned on all 4XX and 5XX responses from SCIM endpoints.\n",
+							"properties": {
+								"detail": {
+									"description": "A human-readable message describing the error.",
+									"example": "Invalid SCIM request: userName is required",
+									"type": "string"
+								},
+								"schemas": {
+									"example": [
+										"urn:ietf:params:scim:api:messages:2.0:Error"
+									],
+									"items": {
+										"type": "string"
+									},
+									"type": "array"
+								},
+								"scimType": {
+									"description": "A SCIM detail error keyword (RFC 7644 Section 3.12). Only present for specific error conditions (e.g. `uniqueness` for duplicate member).\n",
+									"example": "uniqueness",
+									"type": "string"
+								},
+								"status": {
+									"description": "The HTTP status code as a string.",
+									"example": "400",
+									"type": "string"
+								}
+							},
+							"required": [
+								"schemas",
+								"status"
+							],
+							"title": "SCIM Error Response",
+							"type": "object"
+						}
+					}
+				},
+				"description": "List SCIM Groups response failure"
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			}
+		],
+		"summary": "List SCIM Groups",
+		"tags": [
+			"SCIM Groups"
+		],
+		"x-api-token-group": [
+			"SCIM Provisioning",
+			"Account Settings Write",
+			"Account Settings Read"
+		],
+		"x-cfPermissionsRequired": {
+			"enum": [
+				"com.cloudflare.api.account.member.list"
+			]
+		},
+		"x-cfPlanAvailability": {
+			"business": true,
+			"enterprise": true,
+			"free": true,
+			"pro": true
+		}
+	},
+	"GET /accounts/{account_id}/scim/v2/Groups/{group_id}": {
+		"description": "Retrieves a single SCIM Group resource by group ID.",
+		"operationId": "scim-groups-get",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"allOf": [
+						{
+							"description": "Identifier",
+							"example": "023e105f4ecef8ad9ca31a8372d0c353",
+							"maxLength": 32,
+							"minLength": 32,
+							"type": "string",
+							"x-auditable": true
+						}
+					],
+					"description": "Account identifier tag.",
+					"title": "Account Identifier"
+				}
+			},
+			{
+				"in": "path",
+				"name": "group_id",
+				"required": true,
+				"schema": {
+					"description": "The group identifier for a SCIM Group resource. For system groups this is prefixed `cloudflare-v1-<permissionGroupTag>`; for custom user groups this is a UUID-style tag.\n",
+					"example": "cloudflare-v1-023e105f4ecef8ad9ca31a8372d0c353",
+					"title": "SCIM Group Identifier",
+					"type": "string"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/scim+json": {
+						"schema": {
+							"description": "A SCIM 2.0 Group resource representing an account user group (RFC 7643 Section 4.2). May be a system group (backed by a Cloudflare permission group, read-only except for member management) or a custom user group (full CRUD).",
+							"properties": {
+								"displayName": {
+									"description": "A human-readable name for the Group.",
+									"example": "Administrators",
+									"type": "string",
+									"x-auditable": true
+								},
+								"externalId": {
+									"description": "Identifier for the Group as defined by the provisioning client (IdP).",
+									"example": "idp-group-456",
+									"type": "string",
+									"x-auditable": true
+								},
+								"id": {
+									"description": "Unique identifier for the Group, assigned by Cloudflare. System groups are prefixed `cloudflare-v1-<permissionGroupTag>`; custom groups use a UUID-style tag.",
+									"example": "cloudflare-v1-023e105f4ecef8ad9ca31a8372d0c353",
+									"readOnly": true,
+									"type": "string",
+									"x-auditable": true
+								},
+								"members": {
+									"description": "A list of members of the Group. Only populated for custom (Phase 2) groups on individual GET requests. Each member object contains a `value` (user tag) and optional `display` (email).",
+									"example": [
+										{
+											"display": "user@example.com",
+											"value": "023e105f4ecef8ad9ca31a8372d0c353"
+										}
+									],
+									"items": {
+										"properties": {
+											"display": {
+												"description": "The display name (email) of the group member.",
+												"example": "user@example.com",
+												"type": "string"
+											},
+											"value": {
+												"description": "The user tag identifier of the group member.",
+												"example": "023e105f4ecef8ad9ca31a8372d0c353",
+												"type": "string"
+											}
+										},
+										"type": "object"
+									},
+									"readOnly": true,
+									"type": "array"
+								},
+								"meta": {
+									"description": "Resource metadata for a SCIM Group.",
+									"properties": {
+										"resourceType": {
+											"description": "The name of the resource type.",
+											"example": "Group",
+											"type": "string"
+										}
+									},
+									"readOnly": true,
+									"title": "SCIM Group Meta",
+									"type": "object"
+								},
+								"schemas": {
+									"example": [
+										"urn:ietf:params:scim:schemas:core:2.0:Group"
+									],
+									"items": {
+										"type": "string"
+									},
+									"type": "array"
+								}
+							},
+							"required": [
+								"schemas",
+								"id",
+								"displayName"
+							],
+							"title": "SCIM Group",
+							"type": "object"
+						}
+					}
+				},
+				"description": "Get SCIM Group response"
+			},
+			"4XX": {
+				"content": {
+					"application/scim+json": {
+						"schema": {
+							"description": "SCIM error envelope (RFC 7644 Section 3.12). Returned on all 4XX and 5XX responses from SCIM endpoints.\n",
+							"properties": {
+								"detail": {
+									"description": "A human-readable message describing the error.",
+									"example": "Invalid SCIM request: userName is required",
+									"type": "string"
+								},
+								"schemas": {
+									"example": [
+										"urn:ietf:params:scim:api:messages:2.0:Error"
+									],
+									"items": {
+										"type": "string"
+									},
+									"type": "array"
+								},
+								"scimType": {
+									"description": "A SCIM detail error keyword (RFC 7644 Section 3.12). Only present for specific error conditions (e.g. `uniqueness` for duplicate member).\n",
+									"example": "uniqueness",
+									"type": "string"
+								},
+								"status": {
+									"description": "The HTTP status code as a string.",
+									"example": "400",
+									"type": "string"
+								}
+							},
+							"required": [
+								"schemas",
+								"status"
+							],
+							"title": "SCIM Error Response",
+							"type": "object"
+						}
+					}
+				},
+				"description": "Get SCIM Group response failure"
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			}
+		],
+		"summary": "Get SCIM Group",
+		"tags": [
+			"SCIM Groups"
+		],
+		"x-api-token-group": [
+			"SCIM Provisioning",
+			"Account Settings Write",
+			"Account Settings Read"
+		],
+		"x-cfPermissionsRequired": {
+			"enum": [
+				"com.cloudflare.api.account.member.list"
+			]
+		},
+		"x-cfPlanAvailability": {
+			"business": true,
+			"enterprise": true,
+			"free": true,
+			"pro": true
+		}
+	},
+	"PATCH /accounts/{account_id}/scim/v2/Groups/{group_id}": {
+		"description": "Partially updates a SCIM Group via PATCH operations (RFC 7644 Section 3.5.2). Supports add, remove, and replace operations on `members`, `displayName`, and `externalId`. For system groups (prefixed `cloudflare-v1-`), only member management operations are supported.\n",
+		"operationId": "scim-groups-patch",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"allOf": [
+						{
+							"description": "Identifier",
+							"example": "023e105f4ecef8ad9ca31a8372d0c353",
+							"maxLength": 32,
+							"minLength": 32,
+							"type": "string",
+							"x-auditable": true
+						}
+					],
+					"description": "Account identifier tag.",
+					"title": "Account Identifier"
+				}
+			},
+			{
+				"in": "path",
+				"name": "group_id",
+				"required": true,
+				"schema": {
+					"description": "The group identifier for a SCIM Group resource. For system groups this is prefixed `cloudflare-v1-<permissionGroupTag>`; for custom user groups this is a UUID-style tag.\n",
+					"example": "cloudflare-v1-023e105f4ecef8ad9ca31a8372d0c353",
+					"title": "SCIM Group Identifier",
+					"type": "string"
+				}
+			}
+		],
+		"requestBody": {
+			"content": {
+				"application/scim+json": {
+					"examples": {
+						"add-members": {
+							"summary": "Add members to group",
+							"value": {
+								"Operations": [
+									{
+										"op": "add",
+										"path": "members",
+										"value": [
+											{
+												"value": "023e105f4ecef8ad9ca31a8372d0c353"
+											}
+										]
+									}
+								],
+								"schemas": [
+									"urn:ietf:params:scim:api:messages:2.0:PatchOp"
+								]
+							}
+						},
+						"remove-member": {
+							"summary": "Remove member from group",
+							"value": {
+								"Operations": [
+									{
+										"op": "remove",
+										"path": "members[value eq \"023e105f4ecef8ad9ca31a8372d0c353\"]"
+									}
+								],
+								"schemas": [
+									"urn:ietf:params:scim:api:messages:2.0:PatchOp"
+								]
+							}
+						},
+						"replace-members": {
+							"summary": "Replace all members",
+							"value": {
+								"Operations": [
+									{
+										"op": "replace",
+										"path": "members",
+										"value": [
+											{
+												"value": "user-tag-1"
+											},
+											{
+												"value": "user-tag-2"
+											}
+										]
+									}
+								],
+								"schemas": [
+									"urn:ietf:params:scim:api:messages:2.0:PatchOp"
+								]
+							}
+						},
+						"update-displayname": {
+							"summary": "Update group name",
+							"value": {
+								"Operations": [
+									{
+										"op": "replace",
+										"path": "displayName",
+										"value": "New Group Name"
+									}
+								],
+								"schemas": [
+									"urn:ietf:params:scim:api:messages:2.0:PatchOp"
+								]
+							}
+						}
+					},
+					"schema": {
+						"description": "Request body for a SCIM PATCH operation on a Group resource (RFC 7644 Section 3.5.2).\n",
+						"properties": {
+							"Operations": {
+								"description": "List of PATCH operations to apply.",
+								"example": [
+									{
+										"op": "add",
+										"path": "members",
+										"value": [
+											{
+												"value": "023e105f4ecef8ad9ca31a8372d0c353"
+											}
+										]
+									}
+								],
+								"items": {
+									"description": "A single PATCH operation for a Group resource. Supports `add`, `remove`, and `replace` on `members`, `displayName`, and `externalId`.\n",
+									"properties": {
+										"op": {
+											"description": "The operation to perform.",
+											"enum": [
+												"add",
+												"remove",
+												"replace"
+											],
+											"example": "add",
+											"type": "string",
+											"x-auditable": true
+										},
+										"path": {
+											"description": "Attribute path targeted by this operation. Use `members` to modify group membership. May also include a filter expression to target specific members, e.g. `members[value eq \"userTag\"]`.\n",
+											"example": "members",
+											"type": "string",
+											"x-auditable": true
+										},
+										"value": {
+											"description": "The value(s) for the operation. For member add/replace operations, an array of member value objects. For `displayName` or `externalId` updates, a string value.\n",
+											"example": [
+												{
+													"value": "023e105f4ecef8ad9ca31a8372d0c353"
+												}
+											],
+											"oneOf": [
+												{
+													"items": {
+														"description": "A member value object used in Group PATCH operations.",
+														"properties": {
+															"value": {
+																"description": "The user tag of the member to add or remove.",
+																"example": "023e105f4ecef8ad9ca31a8372d0c353",
+																"type": "string",
+																"x-auditable": true
+															}
+														},
+														"title": "SCIM Group Patch Member Value",
+														"type": "object"
+													},
+													"type": "array"
+												},
+												{
+													"type": "string"
+												}
+											]
+										}
+									},
+									"required": [
+										"op"
+									],
+									"title": "SCIM Group Patch Operation",
+									"type": "object"
+								},
+								"type": "array"
+							},
+							"schemas": {
+								"example": [
+									"urn:ietf:params:scim:api:messages:2.0:PatchOp"
+								],
+								"items": {
+									"type": "string"
+								},
+								"type": "array"
+							}
+						},
+						"required": [
+							"schemas",
+							"Operations"
+						],
+						"title": "SCIM PatchOp Request (Groups)",
+						"type": "object"
+					}
+				}
+			},
+			"required": true
+		},
+		"responses": {
+			"200": {
+				"content": {
+					"application/scim+json": {
+						"schema": {
+							"description": "A SCIM 2.0 Group resource representing an account user group (RFC 7643 Section 4.2). May be a system group (backed by a Cloudflare permission group, read-only except for member management) or a custom user group (full CRUD).",
+							"properties": {
+								"displayName": {
+									"description": "A human-readable name for the Group.",
+									"example": "Administrators",
+									"type": "string",
+									"x-auditable": true
+								},
+								"externalId": {
+									"description": "Identifier for the Group as defined by the provisioning client (IdP).",
+									"example": "idp-group-456",
+									"type": "string",
+									"x-auditable": true
+								},
+								"id": {
+									"description": "Unique identifier for the Group, assigned by Cloudflare. System groups are prefixed `cloudflare-v1-<permissionGroupTag>`; custom groups use a UUID-style tag.",
+									"example": "cloudflare-v1-023e105f4ecef8ad9ca31a8372d0c353",
+									"readOnly": true,
+									"type": "string",
+									"x-auditable": true
+								},
+								"members": {
+									"description": "A list of members of the Group. Only populated for custom (Phase 2) groups on individual GET requests. Each member object contains a `value` (user tag) and optional `display` (email).",
+									"example": [
+										{
+											"display": "user@example.com",
+											"value": "023e105f4ecef8ad9ca31a8372d0c353"
+										}
+									],
+									"items": {
+										"properties": {
+											"display": {
+												"description": "The display name (email) of the group member.",
+												"example": "user@example.com",
+												"type": "string"
+											},
+											"value": {
+												"description": "The user tag identifier of the group member.",
+												"example": "023e105f4ecef8ad9ca31a8372d0c353",
+												"type": "string"
+											}
+										},
+										"type": "object"
+									},
+									"readOnly": true,
+									"type": "array"
+								},
+								"meta": {
+									"description": "Resource metadata for a SCIM Group.",
+									"properties": {
+										"resourceType": {
+											"description": "The name of the resource type.",
+											"example": "Group",
+											"type": "string"
+										}
+									},
+									"readOnly": true,
+									"title": "SCIM Group Meta",
+									"type": "object"
+								},
+								"schemas": {
+									"example": [
+										"urn:ietf:params:scim:schemas:core:2.0:Group"
+									],
+									"items": {
+										"type": "string"
+									},
+									"type": "array"
+								}
+							},
+							"required": [
+								"schemas",
+								"id",
+								"displayName"
+							],
+							"title": "SCIM Group",
+							"type": "object"
+						}
+					}
+				},
+				"description": "Patch SCIM Group response"
+			},
+			"4XX": {
+				"content": {
+					"application/scim+json": {
+						"schema": {
+							"description": "SCIM error envelope (RFC 7644 Section 3.12). Returned on all 4XX and 5XX responses from SCIM endpoints.\n",
+							"properties": {
+								"detail": {
+									"description": "A human-readable message describing the error.",
+									"example": "Invalid SCIM request: userName is required",
+									"type": "string"
+								},
+								"schemas": {
+									"example": [
+										"urn:ietf:params:scim:api:messages:2.0:Error"
+									],
+									"items": {
+										"type": "string"
+									},
+									"type": "array"
+								},
+								"scimType": {
+									"description": "A SCIM detail error keyword (RFC 7644 Section 3.12). Only present for specific error conditions (e.g. `uniqueness` for duplicate member).\n",
+									"example": "uniqueness",
+									"type": "string"
+								},
+								"status": {
+									"description": "The HTTP status code as a string.",
+									"example": "400",
+									"type": "string"
+								}
+							},
+							"required": [
+								"schemas",
+								"status"
+							],
+							"title": "SCIM Error Response",
+							"type": "object"
+						}
+					}
+				},
+				"description": "Patch SCIM Group response failure"
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			}
+		],
+		"summary": "Patch SCIM Group",
+		"tags": [
+			"SCIM Groups"
+		],
+		"x-api-token-group": [
+			"SCIM Provisioning",
+			"Account Settings Write"
+		],
+		"x-cfPermissionsRequired": {
+			"enum": [
+				"com.cloudflare.api.account.member.update"
+			]
+		},
+		"x-cfPlanAvailability": {
+			"business": false,
+			"enterprise": true,
+			"free": false,
+			"pro": false
+		}
+	},
+	"POST /accounts/{account_id}/scim/v2/Groups": {
+		"description": "Creates a new SCIM Group (user group) for the account. The `displayName` must not be empty and must not begin with `CF` (reserved for system groups).\n",
+		"operationId": "scim-groups-create",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"allOf": [
+						{
+							"description": "Identifier",
+							"example": "023e105f4ecef8ad9ca31a8372d0c353",
+							"maxLength": 32,
+							"minLength": 32,
+							"type": "string",
+							"x-auditable": true
+						}
+					],
+					"description": "Account identifier tag.",
+					"title": "Account Identifier"
+				}
+			}
+		],
+		"requestBody": {
+			"content": {
+				"application/scim+json": {
+					"schema": {
+						"description": "Request body for creating a SCIM Group. The `displayName` must not be empty and must not begin with `CF` (reserved for system groups).\n",
+						"properties": {
+							"displayName": {
+								"description": "A human-readable name for the Group. REQUIRED. Must not start with `CF` (reserved prefix for Cloudflare-managed virtual groups).\n",
+								"example": "My IdP Group",
+								"type": "string",
+								"x-auditable": true
+							},
+							"externalId": {
+								"description": "Identifier for the Group as defined by the provisioning client (IdP).",
+								"example": "idp-group-456",
+								"type": "string",
+								"x-auditable": true
+							}
+						},
+						"required": [
+							"displayName"
+						],
+						"title": "SCIM Group Create Request",
+						"type": "object"
+					}
+				}
+			},
+			"required": true
+		},
+		"responses": {
+			"201": {
+				"content": {
+					"application/scim+json": {
+						"schema": {
+							"description": "A SCIM 2.0 Group resource representing an account user group (RFC 7643 Section 4.2). May be a system group (backed by a Cloudflare permission group, read-only except for member management) or a custom user group (full CRUD).",
+							"properties": {
+								"displayName": {
+									"description": "A human-readable name for the Group.",
+									"example": "Administrators",
+									"type": "string",
+									"x-auditable": true
+								},
+								"externalId": {
+									"description": "Identifier for the Group as defined by the provisioning client (IdP).",
+									"example": "idp-group-456",
+									"type": "string",
+									"x-auditable": true
+								},
+								"id": {
+									"description": "Unique identifier for the Group, assigned by Cloudflare. System groups are prefixed `cloudflare-v1-<permissionGroupTag>`; custom groups use a UUID-style tag.",
+									"example": "cloudflare-v1-023e105f4ecef8ad9ca31a8372d0c353",
+									"readOnly": true,
+									"type": "string",
+									"x-auditable": true
+								},
+								"members": {
+									"description": "A list of members of the Group. Only populated for custom (Phase 2) groups on individual GET requests. Each member object contains a `value` (user tag) and optional `display` (email).",
+									"example": [
+										{
+											"display": "user@example.com",
+											"value": "023e105f4ecef8ad9ca31a8372d0c353"
+										}
+									],
+									"items": {
+										"properties": {
+											"display": {
+												"description": "The display name (email) of the group member.",
+												"example": "user@example.com",
+												"type": "string"
+											},
+											"value": {
+												"description": "The user tag identifier of the group member.",
+												"example": "023e105f4ecef8ad9ca31a8372d0c353",
+												"type": "string"
+											}
+										},
+										"type": "object"
+									},
+									"readOnly": true,
+									"type": "array"
+								},
+								"meta": {
+									"description": "Resource metadata for a SCIM Group.",
+									"properties": {
+										"resourceType": {
+											"description": "The name of the resource type.",
+											"example": "Group",
+											"type": "string"
+										}
+									},
+									"readOnly": true,
+									"title": "SCIM Group Meta",
+									"type": "object"
+								},
+								"schemas": {
+									"example": [
+										"urn:ietf:params:scim:schemas:core:2.0:Group"
+									],
+									"items": {
+										"type": "string"
+									},
+									"type": "array"
+								}
+							},
+							"required": [
+								"schemas",
+								"id",
+								"displayName"
+							],
+							"title": "SCIM Group",
+							"type": "object"
+						}
+					}
+				},
+				"description": "Create SCIM Group response"
+			},
+			"4XX": {
+				"content": {
+					"application/scim+json": {
+						"schema": {
+							"description": "SCIM error envelope (RFC 7644 Section 3.12). Returned on all 4XX and 5XX responses from SCIM endpoints.\n",
+							"properties": {
+								"detail": {
+									"description": "A human-readable message describing the error.",
+									"example": "Invalid SCIM request: userName is required",
+									"type": "string"
+								},
+								"schemas": {
+									"example": [
+										"urn:ietf:params:scim:api:messages:2.0:Error"
+									],
+									"items": {
+										"type": "string"
+									},
+									"type": "array"
+								},
+								"scimType": {
+									"description": "A SCIM detail error keyword (RFC 7644 Section 3.12). Only present for specific error conditions (e.g. `uniqueness` for duplicate member).\n",
+									"example": "uniqueness",
+									"type": "string"
+								},
+								"status": {
+									"description": "The HTTP status code as a string.",
+									"example": "400",
+									"type": "string"
+								}
+							},
+							"required": [
+								"schemas",
+								"status"
+							],
+							"title": "SCIM Error Response",
+							"type": "object"
+						}
+					}
+				},
+				"description": "Create SCIM Group response failure"
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			}
+		],
+		"summary": "Create SCIM Group",
+		"tags": [
+			"SCIM Groups"
+		],
+		"x-api-token-group": [
+			"SCIM Provisioning",
+			"Account Settings Write"
+		],
+		"x-cfPermissionsRequired": {
+			"enum": [
+				"com.cloudflare.api.account.member.create"
+			]
+		},
+		"x-cfPlanAvailability": {
+			"business": false,
+			"enterprise": true,
+			"free": false,
+			"pro": false
+		}
+	}
+}

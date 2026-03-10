@@ -1,0 +1,1593 @@
+{
+	"GET /accounts/{account_id}/scim/v2/Users": {
+		"description": "Lists account members as SCIM User resources. Supports optional filtering by `userName` (email) using the SCIM filter syntax (e.g. `userName eq \"user@example.com\"`). Pagination is controlled via `startIndex` and `count` query parameters per RFC 7644 Section 3.4.2.4.\n",
+		"operationId": "scim-users-list",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"allOf": [
+						{
+							"description": "Identifier",
+							"example": "023e105f4ecef8ad9ca31a8372d0c353",
+							"maxLength": 32,
+							"minLength": 32,
+							"type": "string",
+							"x-auditable": true
+						}
+					],
+					"description": "Account identifier tag.",
+					"title": "Account Identifier"
+				}
+			},
+			{
+				"in": "query",
+				"name": "startIndex",
+				"schema": {
+					"default": 1,
+					"description": "The 1-based index of the first result in the current set of list results. Values less than 1 are treated as 1.\n",
+					"minimum": 1,
+					"type": "integer"
+				}
+			},
+			{
+				"in": "query",
+				"name": "count",
+				"schema": {
+					"description": "Specifies the desired maximum number of query results per page.\n",
+					"minimum": 0,
+					"type": "integer"
+				}
+			},
+			{
+				"in": "query",
+				"name": "filter",
+				"schema": {
+					"description": "SCIM filter expression (RFC 7644 Section 3.4.2.2). Only `userName eq \"value\"` is supported.\n",
+					"example": "userName eq \"user@example.com\"",
+					"type": "string"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/scim+json": {
+						"schema": {
+							"description": "SCIM ListResponse envelope for User resources (RFC 7644 Section 3.4.2).\n",
+							"properties": {
+								"Resources": {
+									"items": {
+										"description": "A SCIM 2.0 User resource representing an account member (RFC 7643 Section 4.1).\n",
+										"properties": {
+											"active": {
+												"description": "A Boolean value indicating the user's administrative status. Set to `false` to deprovision the user, removing their membership from the account.",
+												"example": true,
+												"type": "boolean",
+												"x-auditable": true
+											},
+											"displayName": {
+												"description": "The display name shown for the user. Falls back to formatted name or userName if not set.",
+												"example": "Jane Smith",
+												"type": "string",
+												"x-auditable": true
+											},
+											"emails": {
+												"description": "Always contains a single primary work email matching `userName`.",
+												"items": {
+													"description": "An email address entry for a SCIM User.",
+													"properties": {
+														"primary": {
+															"description": "A Boolean value indicating the preferred email address.",
+															"example": true,
+															"type": "boolean"
+														},
+														"type": {
+															"description": "A label indicating the attribute's function, e.g., \"work\" or \"home\".",
+															"example": "work",
+															"type": "string"
+														},
+														"value": {
+															"description": "The email address value.",
+															"example": "user@example.com",
+															"format": "email",
+															"type": "string"
+														}
+													},
+													"required": [
+														"value"
+													],
+													"title": "SCIM User Email",
+													"type": "object"
+												},
+												"type": "array"
+											},
+											"externalId": {
+												"description": "An identifier for the user as defined by the provisioning client (IdP). This value is stored and returned but not interpreted by Cloudflare.",
+												"example": "idp-user-abc123",
+												"type": "string",
+												"x-auditable": true
+											},
+											"groups": {
+												"description": "A list of group identifiers to which the user belongs. Includes both system group tags (prefixed `cloudflare-v1-`) and custom user group tags.",
+												"example": [
+													"cloudflare-v1-023e105f4ecef8ad9ca31a8372d0c353"
+												],
+												"items": {
+													"type": "string"
+												},
+												"readOnly": true,
+												"type": "array"
+											},
+											"id": {
+												"description": "Unique identifier for the user, assigned by Cloudflare (user tag).",
+												"example": "023e105f4ecef8ad9ca31a8372d0c353",
+												"readOnly": true,
+												"type": "string",
+												"x-auditable": true
+											},
+											"meta": {
+												"description": "Resource metadata for a SCIM User.",
+												"properties": {
+													"resourceType": {
+														"description": "The name of the resource type.",
+														"example": "User",
+														"type": "string"
+													}
+												},
+												"readOnly": true,
+												"type": "object"
+											},
+											"name": {
+												"description": "The components of the user's real name.",
+												"properties": {
+													"familyName": {
+														"description": "The family name (last name) of the user.",
+														"example": "Smith",
+														"type": "string",
+														"x-auditable": true
+													},
+													"formatted": {
+														"description": "The full name, including all middle names, titles, and suffixes as appropriate, formatted for display.",
+														"example": "Jane Smith",
+														"readOnly": true,
+														"type": "string"
+													},
+													"givenName": {
+														"description": "The given name (first name) of the user.",
+														"example": "Jane",
+														"type": "string",
+														"x-auditable": true
+													}
+												},
+												"title": "SCIM User Name",
+												"type": "object"
+											},
+											"schemas": {
+												"description": "Must contain `urn:ietf:params:scim:schemas:core:2.0:User`.",
+												"example": [
+													"urn:ietf:params:scim:schemas:core:2.0:User"
+												],
+												"items": {
+													"type": "string"
+												},
+												"type": "array"
+											},
+											"userName": {
+												"description": "Unique identifier for the user, equal to the user's email address.",
+												"example": "user@example.com",
+												"format": "email",
+												"type": "string",
+												"x-auditable": true
+											}
+										},
+										"required": [
+											"schemas",
+											"id",
+											"userName",
+											"active"
+										],
+										"title": "SCIM User",
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"itemsPerPage": {
+									"description": "The number of resources returned in this page.",
+									"example": 3,
+									"type": "integer"
+								},
+								"schemas": {
+									"example": [
+										"urn:ietf:params:scim:api:messages:2.0:ListResponse"
+									],
+									"items": {
+										"type": "string"
+									},
+									"type": "array"
+								},
+								"startIndex": {
+									"description": "The 1-based index of the first result in this set.",
+									"example": 1,
+									"type": "integer"
+								},
+								"totalResults": {
+									"description": "The total number of results matching the query.",
+									"example": 3,
+									"type": "integer"
+								}
+							},
+							"required": [
+								"schemas",
+								"totalResults",
+								"Resources"
+							],
+							"title": "SCIM User List Response",
+							"type": "object"
+						}
+					}
+				},
+				"description": "List SCIM Users response"
+			},
+			"4XX": {
+				"content": {
+					"application/scim+json": {
+						"schema": {
+							"description": "SCIM error envelope (RFC 7644 Section 3.12). Returned on all 4XX and 5XX responses from SCIM endpoints.\n",
+							"properties": {
+								"detail": {
+									"description": "A human-readable message describing the error.",
+									"example": "Invalid SCIM request: userName is required",
+									"type": "string"
+								},
+								"schemas": {
+									"example": [
+										"urn:ietf:params:scim:api:messages:2.0:Error"
+									],
+									"items": {
+										"type": "string"
+									},
+									"type": "array"
+								},
+								"scimType": {
+									"description": "A SCIM detail error keyword (RFC 7644 Section 3.12). Only present for specific error conditions (e.g. `uniqueness` for duplicate member).\n",
+									"example": "uniqueness",
+									"type": "string"
+								},
+								"status": {
+									"description": "The HTTP status code as a string.",
+									"example": "400",
+									"type": "string"
+								}
+							},
+							"required": [
+								"schemas",
+								"status"
+							],
+							"title": "SCIM Error Response",
+							"type": "object"
+						}
+					}
+				},
+				"description": "List SCIM Users response failure"
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			}
+		],
+		"summary": "List SCIM Users",
+		"tags": [
+			"SCIM Users"
+		],
+		"x-api-token-group": [
+			"SCIM Provisioning",
+			"Account Settings Write",
+			"Account Settings Read"
+		],
+		"x-cfPermissionsRequired": {
+			"enum": [
+				"com.cloudflare.api.account.member.list"
+			]
+		},
+		"x-cfPlanAvailability": {
+			"business": true,
+			"enterprise": true,
+			"free": true,
+			"pro": true
+		}
+	},
+	"GET /accounts/{account_id}/scim/v2/Users/{user_id}": {
+		"description": "Retrieves a single account member as a SCIM User resource by user tag.",
+		"operationId": "scim-users-get",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"allOf": [
+						{
+							"description": "Identifier",
+							"example": "023e105f4ecef8ad9ca31a8372d0c353",
+							"maxLength": 32,
+							"minLength": 32,
+							"type": "string",
+							"x-auditable": true
+						}
+					],
+					"description": "Account identifier tag.",
+					"title": "Account Identifier"
+				}
+			},
+			{
+				"in": "path",
+				"name": "user_id",
+				"required": true,
+				"schema": {
+					"description": "The user tag identifying a SCIM User resource (account member).",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"title": "SCIM User Identifier",
+					"type": "string"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/scim+json": {
+						"schema": {
+							"description": "A SCIM 2.0 User resource representing an account member (RFC 7643 Section 4.1).\n",
+							"properties": {
+								"active": {
+									"description": "A Boolean value indicating the user's administrative status. Set to `false` to deprovision the user, removing their membership from the account.",
+									"example": true,
+									"type": "boolean",
+									"x-auditable": true
+								},
+								"displayName": {
+									"description": "The display name shown for the user. Falls back to formatted name or userName if not set.",
+									"example": "Jane Smith",
+									"type": "string",
+									"x-auditable": true
+								},
+								"emails": {
+									"description": "Always contains a single primary work email matching `userName`.",
+									"items": {
+										"description": "An email address entry for a SCIM User.",
+										"properties": {
+											"primary": {
+												"description": "A Boolean value indicating the preferred email address.",
+												"example": true,
+												"type": "boolean"
+											},
+											"type": {
+												"description": "A label indicating the attribute's function, e.g., \"work\" or \"home\".",
+												"example": "work",
+												"type": "string"
+											},
+											"value": {
+												"description": "The email address value.",
+												"example": "user@example.com",
+												"format": "email",
+												"type": "string"
+											}
+										},
+										"required": [
+											"value"
+										],
+										"title": "SCIM User Email",
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"externalId": {
+									"description": "An identifier for the user as defined by the provisioning client (IdP). This value is stored and returned but not interpreted by Cloudflare.",
+									"example": "idp-user-abc123",
+									"type": "string",
+									"x-auditable": true
+								},
+								"groups": {
+									"description": "A list of group identifiers to which the user belongs. Includes both system group tags (prefixed `cloudflare-v1-`) and custom user group tags.",
+									"example": [
+										"cloudflare-v1-023e105f4ecef8ad9ca31a8372d0c353"
+									],
+									"items": {
+										"type": "string"
+									},
+									"readOnly": true,
+									"type": "array"
+								},
+								"id": {
+									"description": "Unique identifier for the user, assigned by Cloudflare (user tag).",
+									"example": "023e105f4ecef8ad9ca31a8372d0c353",
+									"readOnly": true,
+									"type": "string",
+									"x-auditable": true
+								},
+								"meta": {
+									"description": "Resource metadata for a SCIM User.",
+									"properties": {
+										"resourceType": {
+											"description": "The name of the resource type.",
+											"example": "User",
+											"type": "string"
+										}
+									},
+									"readOnly": true,
+									"type": "object"
+								},
+								"name": {
+									"description": "The components of the user's real name.",
+									"properties": {
+										"familyName": {
+											"description": "The family name (last name) of the user.",
+											"example": "Smith",
+											"type": "string",
+											"x-auditable": true
+										},
+										"formatted": {
+											"description": "The full name, including all middle names, titles, and suffixes as appropriate, formatted for display.",
+											"example": "Jane Smith",
+											"readOnly": true,
+											"type": "string"
+										},
+										"givenName": {
+											"description": "The given name (first name) of the user.",
+											"example": "Jane",
+											"type": "string",
+											"x-auditable": true
+										}
+									},
+									"title": "SCIM User Name",
+									"type": "object"
+								},
+								"schemas": {
+									"description": "Must contain `urn:ietf:params:scim:schemas:core:2.0:User`.",
+									"example": [
+										"urn:ietf:params:scim:schemas:core:2.0:User"
+									],
+									"items": {
+										"type": "string"
+									},
+									"type": "array"
+								},
+								"userName": {
+									"description": "Unique identifier for the user, equal to the user's email address.",
+									"example": "user@example.com",
+									"format": "email",
+									"type": "string",
+									"x-auditable": true
+								}
+							},
+							"required": [
+								"schemas",
+								"id",
+								"userName",
+								"active"
+							],
+							"title": "SCIM User",
+							"type": "object"
+						}
+					}
+				},
+				"description": "Get SCIM User response"
+			},
+			"4XX": {
+				"content": {
+					"application/scim+json": {
+						"schema": {
+							"description": "SCIM error envelope (RFC 7644 Section 3.12). Returned on all 4XX and 5XX responses from SCIM endpoints.\n",
+							"properties": {
+								"detail": {
+									"description": "A human-readable message describing the error.",
+									"example": "Invalid SCIM request: userName is required",
+									"type": "string"
+								},
+								"schemas": {
+									"example": [
+										"urn:ietf:params:scim:api:messages:2.0:Error"
+									],
+									"items": {
+										"type": "string"
+									},
+									"type": "array"
+								},
+								"scimType": {
+									"description": "A SCIM detail error keyword (RFC 7644 Section 3.12). Only present for specific error conditions (e.g. `uniqueness` for duplicate member).\n",
+									"example": "uniqueness",
+									"type": "string"
+								},
+								"status": {
+									"description": "The HTTP status code as a string.",
+									"example": "400",
+									"type": "string"
+								}
+							},
+							"required": [
+								"schemas",
+								"status"
+							],
+							"title": "SCIM Error Response",
+							"type": "object"
+						}
+					}
+				},
+				"description": "Get SCIM User response failure"
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			}
+		],
+		"summary": "Get SCIM User",
+		"tags": [
+			"SCIM Users"
+		],
+		"x-api-token-group": [
+			"SCIM Provisioning",
+			"Account Settings Write",
+			"Account Settings Read"
+		],
+		"x-cfPermissionsRequired": {
+			"enum": [
+				"com.cloudflare.api.account.member.read"
+			]
+		},
+		"x-cfPlanAvailability": {
+			"business": true,
+			"enterprise": true,
+			"free": true,
+			"pro": true
+		}
+	},
+	"PATCH /accounts/{account_id}/scim/v2/Users/{user_id}": {
+		"description": "Partially updates a SCIM User via PATCH operations (RFC 7644 Section 3.5.2). Supports updating `userName`, `name.givenName`, `name.familyName`, and `active`. Setting `active: false` deprovisions the user (removes them from the account). For IdP compatibility, `emails[type eq \"work\"].value` is also accepted as an alias for `userName`.\n",
+		"operationId": "scim-users-patch",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"allOf": [
+						{
+							"description": "Identifier",
+							"example": "023e105f4ecef8ad9ca31a8372d0c353",
+							"maxLength": 32,
+							"minLength": 32,
+							"type": "string",
+							"x-auditable": true
+						}
+					],
+					"description": "Account identifier tag.",
+					"title": "Account Identifier"
+				}
+			},
+			{
+				"in": "path",
+				"name": "user_id",
+				"required": true,
+				"schema": {
+					"description": "The user tag identifying a SCIM User resource (account member).",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"title": "SCIM User Identifier",
+					"type": "string"
+				}
+			}
+		],
+		"requestBody": {
+			"content": {
+				"application/scim+json": {
+					"examples": {
+						"path-based": {
+							"summary": "Path-based style",
+							"value": {
+								"Operations": [
+									{
+										"op": "replace",
+										"path": "active",
+										"value": false
+									}
+								],
+								"schemas": [
+									"urn:ietf:params:scim:api:messages:2.0:PatchOp"
+								]
+							}
+						},
+						"value-object": {
+							"summary": "Value-object style (no path)",
+							"value": {
+								"Operations": [
+									{
+										"op": "replace",
+										"value": {
+											"active": false
+										}
+									}
+								],
+								"schemas": [
+									"urn:ietf:params:scim:api:messages:2.0:PatchOp"
+								]
+							}
+						}
+					},
+					"schema": {
+						"description": "Request body for a SCIM PATCH operation on a User resource (RFC 7644 Section 3.5.2).\n",
+						"properties": {
+							"Operations": {
+								"description": "List of PATCH operations to apply.",
+								"example": [
+									{
+										"op": "replace",
+										"value": {
+											"active": false
+										}
+									}
+								],
+								"items": {
+									"description": "A single PATCH operation (RFC 7644 Section 3.5.2).",
+									"properties": {
+										"op": {
+											"description": "The operation to perform. Only `replace` is currently supported; `add` and `remove` are accepted without error but have no effect. Matched case-insensitively.\n",
+											"enum": [
+												"add",
+												"remove",
+												"replace"
+											],
+											"example": "replace",
+											"type": "string",
+											"x-auditable": true
+										},
+										"path": {
+											"description": "Attribute path targeted by this operation. When absent, `value` must be a singular complex attribute.\n",
+											"example": "active",
+											"type": "string",
+											"x-auditable": true
+										},
+										"value": {
+											"description": "The value(s) for the operation. For `replace` without a path, this should be an object of attribute name/value pairs. For member path operations, this should be an array of member value objects.\n",
+											"example": {
+												"active": false
+											}
+										}
+									},
+									"required": [
+										"op"
+									],
+									"title": "SCIM Patch Operation",
+									"type": "object"
+								},
+								"type": "array"
+							},
+							"schemas": {
+								"description": "Must contain `urn:ietf:params:scim:api:messages:2.0:PatchOp`.",
+								"example": [
+									"urn:ietf:params:scim:api:messages:2.0:PatchOp"
+								],
+								"items": {
+									"type": "string"
+								},
+								"type": "array"
+							}
+						},
+						"required": [
+							"schemas",
+							"Operations"
+						],
+						"title": "SCIM PatchOp Request (Users)",
+						"type": "object"
+					}
+				}
+			},
+			"required": true
+		},
+		"responses": {
+			"200": {
+				"content": {
+					"application/scim+json": {
+						"schema": {
+							"description": "A SCIM 2.0 User resource representing an account member (RFC 7643 Section 4.1).\n",
+							"properties": {
+								"active": {
+									"description": "A Boolean value indicating the user's administrative status. Set to `false` to deprovision the user, removing their membership from the account.",
+									"example": true,
+									"type": "boolean",
+									"x-auditable": true
+								},
+								"displayName": {
+									"description": "The display name shown for the user. Falls back to formatted name or userName if not set.",
+									"example": "Jane Smith",
+									"type": "string",
+									"x-auditable": true
+								},
+								"emails": {
+									"description": "Always contains a single primary work email matching `userName`.",
+									"items": {
+										"description": "An email address entry for a SCIM User.",
+										"properties": {
+											"primary": {
+												"description": "A Boolean value indicating the preferred email address.",
+												"example": true,
+												"type": "boolean"
+											},
+											"type": {
+												"description": "A label indicating the attribute's function, e.g., \"work\" or \"home\".",
+												"example": "work",
+												"type": "string"
+											},
+											"value": {
+												"description": "The email address value.",
+												"example": "user@example.com",
+												"format": "email",
+												"type": "string"
+											}
+										},
+										"required": [
+											"value"
+										],
+										"title": "SCIM User Email",
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"externalId": {
+									"description": "An identifier for the user as defined by the provisioning client (IdP). This value is stored and returned but not interpreted by Cloudflare.",
+									"example": "idp-user-abc123",
+									"type": "string",
+									"x-auditable": true
+								},
+								"groups": {
+									"description": "A list of group identifiers to which the user belongs. Includes both system group tags (prefixed `cloudflare-v1-`) and custom user group tags.",
+									"example": [
+										"cloudflare-v1-023e105f4ecef8ad9ca31a8372d0c353"
+									],
+									"items": {
+										"type": "string"
+									},
+									"readOnly": true,
+									"type": "array"
+								},
+								"id": {
+									"description": "Unique identifier for the user, assigned by Cloudflare (user tag).",
+									"example": "023e105f4ecef8ad9ca31a8372d0c353",
+									"readOnly": true,
+									"type": "string",
+									"x-auditable": true
+								},
+								"meta": {
+									"description": "Resource metadata for a SCIM User.",
+									"properties": {
+										"resourceType": {
+											"description": "The name of the resource type.",
+											"example": "User",
+											"type": "string"
+										}
+									},
+									"readOnly": true,
+									"type": "object"
+								},
+								"name": {
+									"description": "The components of the user's real name.",
+									"properties": {
+										"familyName": {
+											"description": "The family name (last name) of the user.",
+											"example": "Smith",
+											"type": "string",
+											"x-auditable": true
+										},
+										"formatted": {
+											"description": "The full name, including all middle names, titles, and suffixes as appropriate, formatted for display.",
+											"example": "Jane Smith",
+											"readOnly": true,
+											"type": "string"
+										},
+										"givenName": {
+											"description": "The given name (first name) of the user.",
+											"example": "Jane",
+											"type": "string",
+											"x-auditable": true
+										}
+									},
+									"title": "SCIM User Name",
+									"type": "object"
+								},
+								"schemas": {
+									"description": "Must contain `urn:ietf:params:scim:schemas:core:2.0:User`.",
+									"example": [
+										"urn:ietf:params:scim:schemas:core:2.0:User"
+									],
+									"items": {
+										"type": "string"
+									},
+									"type": "array"
+								},
+								"userName": {
+									"description": "Unique identifier for the user, equal to the user's email address.",
+									"example": "user@example.com",
+									"format": "email",
+									"type": "string",
+									"x-auditable": true
+								}
+							},
+							"required": [
+								"schemas",
+								"id",
+								"userName",
+								"active"
+							],
+							"title": "SCIM User",
+							"type": "object"
+						}
+					}
+				},
+				"description": "Patch SCIM User response"
+			},
+			"4XX": {
+				"content": {
+					"application/scim+json": {
+						"schema": {
+							"description": "SCIM error envelope (RFC 7644 Section 3.12). Returned on all 4XX and 5XX responses from SCIM endpoints.\n",
+							"properties": {
+								"detail": {
+									"description": "A human-readable message describing the error.",
+									"example": "Invalid SCIM request: userName is required",
+									"type": "string"
+								},
+								"schemas": {
+									"example": [
+										"urn:ietf:params:scim:api:messages:2.0:Error"
+									],
+									"items": {
+										"type": "string"
+									},
+									"type": "array"
+								},
+								"scimType": {
+									"description": "A SCIM detail error keyword (RFC 7644 Section 3.12). Only present for specific error conditions (e.g. `uniqueness` for duplicate member).\n",
+									"example": "uniqueness",
+									"type": "string"
+								},
+								"status": {
+									"description": "The HTTP status code as a string.",
+									"example": "400",
+									"type": "string"
+								}
+							},
+							"required": [
+								"schemas",
+								"status"
+							],
+							"title": "SCIM Error Response",
+							"type": "object"
+						}
+					}
+				},
+				"description": "Patch SCIM User response failure"
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			}
+		],
+		"summary": "Patch SCIM User",
+		"tags": [
+			"SCIM Users"
+		],
+		"x-api-token-group": [
+			"SCIM Provisioning",
+			"Account Settings Write"
+		],
+		"x-cfPermissionsRequired": {
+			"enum": [
+				"com.cloudflare.api.account.member.update"
+			]
+		},
+		"x-cfPlanAvailability": {
+			"business": false,
+			"enterprise": true,
+			"free": false,
+			"pro": false
+		}
+	},
+	"POST /accounts/{account_id}/scim/v2/Users": {
+		"description": "Provisions a new account member via SCIM. The `userName` field must be a valid email address and must match the primary email in `emails`. The account must be an Enterprise account with SCIM entitlements enabled.\n",
+		"operationId": "scim-users-create",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"allOf": [
+						{
+							"description": "Identifier",
+							"example": "023e105f4ecef8ad9ca31a8372d0c353",
+							"maxLength": 32,
+							"minLength": 32,
+							"type": "string",
+							"x-auditable": true
+						}
+					],
+					"description": "Account identifier tag.",
+					"title": "Account Identifier"
+				}
+			}
+		],
+		"requestBody": {
+			"content": {
+				"application/scim+json": {
+					"schema": {
+						"description": "Request body for creating a SCIM User (POST). The `emails` field is required with a primary email matching `userName`, and `active` must be `true`.\n",
+						"properties": {
+							"active": {
+								"description": "A Boolean value indicating the user's administrative status. Must be `true` for user creation.",
+								"example": true,
+								"type": "boolean",
+								"x-auditable": true
+							},
+							"displayName": {
+								"description": "The name of the user, suitable for display to end-users. If not explicitly set, falls back to the formatted name or userName.",
+								"example": "Jane Smith",
+								"type": "string",
+								"x-auditable": true
+							},
+							"emails": {
+								"description": "Email addresses for the user. The primary email must match `userName`.",
+								"items": {
+									"description": "An email address entry for a SCIM User.",
+									"properties": {
+										"primary": {
+											"description": "A Boolean value indicating the preferred email address.",
+											"example": true,
+											"type": "boolean"
+										},
+										"type": {
+											"description": "A label indicating the attribute's function, e.g., \"work\" or \"home\".",
+											"example": "work",
+											"type": "string"
+										},
+										"value": {
+											"description": "The email address value.",
+											"example": "user@example.com",
+											"format": "email",
+											"type": "string"
+										}
+									},
+									"required": [
+										"value"
+									],
+									"title": "SCIM User Email",
+									"type": "object"
+								},
+								"type": "array"
+							},
+							"externalId": {
+								"description": "An identifier for the user as defined by the provisioning client (IdP). This value is stored and returned but not interpreted by Cloudflare.",
+								"example": "idp-user-abc123",
+								"type": "string",
+								"x-auditable": true
+							},
+							"name": {
+								"description": "The components of the user's real name.",
+								"properties": {
+									"familyName": {
+										"description": "The family name (last name) of the user.",
+										"example": "Smith",
+										"type": "string",
+										"x-auditable": true
+									},
+									"formatted": {
+										"description": "The full name, including all middle names, titles, and suffixes as appropriate, formatted for display.",
+										"example": "Jane Smith",
+										"readOnly": true,
+										"type": "string"
+									},
+									"givenName": {
+										"description": "The given name (first name) of the user.",
+										"example": "Jane",
+										"type": "string",
+										"x-auditable": true
+									}
+								},
+								"title": "SCIM User Name",
+								"type": "object"
+							},
+							"schemas": {
+								"description": "Must contain `urn:ietf:params:scim:schemas:core:2.0:User`.",
+								"example": [
+									"urn:ietf:params:scim:schemas:core:2.0:User"
+								],
+								"items": {
+									"type": "string"
+								},
+								"type": "array"
+							},
+							"userName": {
+								"description": "Unique identifier for the user, equal to the user's email address.",
+								"example": "user@example.com",
+								"format": "email",
+								"type": "string",
+								"x-auditable": true
+							}
+						},
+						"required": [
+							"schemas",
+							"userName",
+							"emails",
+							"active"
+						],
+						"title": "SCIM User Create Request",
+						"type": "object"
+					}
+				}
+			},
+			"required": true
+		},
+		"responses": {
+			"201": {
+				"content": {
+					"application/scim+json": {
+						"schema": {
+							"description": "A SCIM 2.0 User resource representing an account member (RFC 7643 Section 4.1).\n",
+							"properties": {
+								"active": {
+									"description": "A Boolean value indicating the user's administrative status. Set to `false` to deprovision the user, removing their membership from the account.",
+									"example": true,
+									"type": "boolean",
+									"x-auditable": true
+								},
+								"displayName": {
+									"description": "The display name shown for the user. Falls back to formatted name or userName if not set.",
+									"example": "Jane Smith",
+									"type": "string",
+									"x-auditable": true
+								},
+								"emails": {
+									"description": "Always contains a single primary work email matching `userName`.",
+									"items": {
+										"description": "An email address entry for a SCIM User.",
+										"properties": {
+											"primary": {
+												"description": "A Boolean value indicating the preferred email address.",
+												"example": true,
+												"type": "boolean"
+											},
+											"type": {
+												"description": "A label indicating the attribute's function, e.g., \"work\" or \"home\".",
+												"example": "work",
+												"type": "string"
+											},
+											"value": {
+												"description": "The email address value.",
+												"example": "user@example.com",
+												"format": "email",
+												"type": "string"
+											}
+										},
+										"required": [
+											"value"
+										],
+										"title": "SCIM User Email",
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"externalId": {
+									"description": "An identifier for the user as defined by the provisioning client (IdP). This value is stored and returned but not interpreted by Cloudflare.",
+									"example": "idp-user-abc123",
+									"type": "string",
+									"x-auditable": true
+								},
+								"groups": {
+									"description": "A list of group identifiers to which the user belongs. Includes both system group tags (prefixed `cloudflare-v1-`) and custom user group tags.",
+									"example": [
+										"cloudflare-v1-023e105f4ecef8ad9ca31a8372d0c353"
+									],
+									"items": {
+										"type": "string"
+									},
+									"readOnly": true,
+									"type": "array"
+								},
+								"id": {
+									"description": "Unique identifier for the user, assigned by Cloudflare (user tag).",
+									"example": "023e105f4ecef8ad9ca31a8372d0c353",
+									"readOnly": true,
+									"type": "string",
+									"x-auditable": true
+								},
+								"meta": {
+									"description": "Resource metadata for a SCIM User.",
+									"properties": {
+										"resourceType": {
+											"description": "The name of the resource type.",
+											"example": "User",
+											"type": "string"
+										}
+									},
+									"readOnly": true,
+									"type": "object"
+								},
+								"name": {
+									"description": "The components of the user's real name.",
+									"properties": {
+										"familyName": {
+											"description": "The family name (last name) of the user.",
+											"example": "Smith",
+											"type": "string",
+											"x-auditable": true
+										},
+										"formatted": {
+											"description": "The full name, including all middle names, titles, and suffixes as appropriate, formatted for display.",
+											"example": "Jane Smith",
+											"readOnly": true,
+											"type": "string"
+										},
+										"givenName": {
+											"description": "The given name (first name) of the user.",
+											"example": "Jane",
+											"type": "string",
+											"x-auditable": true
+										}
+									},
+									"title": "SCIM User Name",
+									"type": "object"
+								},
+								"schemas": {
+									"description": "Must contain `urn:ietf:params:scim:schemas:core:2.0:User`.",
+									"example": [
+										"urn:ietf:params:scim:schemas:core:2.0:User"
+									],
+									"items": {
+										"type": "string"
+									},
+									"type": "array"
+								},
+								"userName": {
+									"description": "Unique identifier for the user, equal to the user's email address.",
+									"example": "user@example.com",
+									"format": "email",
+									"type": "string",
+									"x-auditable": true
+								}
+							},
+							"required": [
+								"schemas",
+								"id",
+								"userName",
+								"active"
+							],
+							"title": "SCIM User",
+							"type": "object"
+						}
+					}
+				},
+				"description": "Create SCIM User response"
+			},
+			"4XX": {
+				"content": {
+					"application/scim+json": {
+						"schema": {
+							"description": "SCIM error envelope (RFC 7644 Section 3.12). Returned on all 4XX and 5XX responses from SCIM endpoints.\n",
+							"properties": {
+								"detail": {
+									"description": "A human-readable message describing the error.",
+									"example": "Invalid SCIM request: userName is required",
+									"type": "string"
+								},
+								"schemas": {
+									"example": [
+										"urn:ietf:params:scim:api:messages:2.0:Error"
+									],
+									"items": {
+										"type": "string"
+									},
+									"type": "array"
+								},
+								"scimType": {
+									"description": "A SCIM detail error keyword (RFC 7644 Section 3.12). Only present for specific error conditions (e.g. `uniqueness` for duplicate member).\n",
+									"example": "uniqueness",
+									"type": "string"
+								},
+								"status": {
+									"description": "The HTTP status code as a string.",
+									"example": "400",
+									"type": "string"
+								}
+							},
+							"required": [
+								"schemas",
+								"status"
+							],
+							"title": "SCIM Error Response",
+							"type": "object"
+						}
+					}
+				},
+				"description": "Create SCIM User response failure"
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			}
+		],
+		"summary": "Create SCIM User",
+		"tags": [
+			"SCIM Users"
+		],
+		"x-api-token-group": [
+			"SCIM Provisioning",
+			"Account Settings Write"
+		],
+		"x-cfPermissionsRequired": {
+			"enum": [
+				"com.cloudflare.api.account.member.create"
+			]
+		},
+		"x-cfPlanAvailability": {
+			"business": false,
+			"enterprise": true,
+			"free": false,
+			"pro": false
+		}
+	},
+	"PUT /accounts/{account_id}/scim/v2/Users/{user_id}": {
+		"description": "Replaces a SCIM User resource (RFC 7644 Section 3.5.1). Fully replaces the mutable attributes of the user. Supports updating `userName`, `name`, `emails`, and `active`.\n",
+		"operationId": "scim-users-put",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"allOf": [
+						{
+							"description": "Identifier",
+							"example": "023e105f4ecef8ad9ca31a8372d0c353",
+							"maxLength": 32,
+							"minLength": 32,
+							"type": "string",
+							"x-auditable": true
+						}
+					],
+					"description": "Account identifier tag.",
+					"title": "Account Identifier"
+				}
+			},
+			{
+				"in": "path",
+				"name": "user_id",
+				"required": true,
+				"schema": {
+					"description": "The user tag identifying a SCIM User resource (account member).",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"title": "SCIM User Identifier",
+					"type": "string"
+				}
+			}
+		],
+		"requestBody": {
+			"content": {
+				"application/scim+json": {
+					"schema": {
+						"description": "Request body for replacing a SCIM User (PUT). Only `schemas` and `userName` are required; other fields are optional.\n",
+						"properties": {
+							"active": {
+								"description": "A Boolean value indicating the user's administrative status. Optional; if omitted, the current value is preserved. Set to `false` to deprovision the user, removing their membership from the account.",
+								"example": true,
+								"type": "boolean",
+								"x-auditable": true
+							},
+							"displayName": {
+								"description": "The name of the user, suitable for display to end-users. If not explicitly set, falls back to the formatted name or userName.",
+								"example": "Jane Smith",
+								"type": "string",
+								"x-auditable": true
+							},
+							"emails": {
+								"description": "Email addresses for the user. If a primary email is provided, it must match `userName`.",
+								"items": {
+									"description": "An email address entry for a SCIM User.",
+									"properties": {
+										"primary": {
+											"description": "A Boolean value indicating the preferred email address.",
+											"example": true,
+											"type": "boolean"
+										},
+										"type": {
+											"description": "A label indicating the attribute's function, e.g., \"work\" or \"home\".",
+											"example": "work",
+											"type": "string"
+										},
+										"value": {
+											"description": "The email address value.",
+											"example": "user@example.com",
+											"format": "email",
+											"type": "string"
+										}
+									},
+									"required": [
+										"value"
+									],
+									"title": "SCIM User Email",
+									"type": "object"
+								},
+								"type": "array"
+							},
+							"externalId": {
+								"description": "An identifier for the user as defined by the provisioning client (IdP). This value is stored and returned but not interpreted by Cloudflare.",
+								"example": "idp-user-abc123",
+								"type": "string",
+								"x-auditable": true
+							},
+							"name": {
+								"description": "The components of the user's real name.",
+								"properties": {
+									"familyName": {
+										"description": "The family name (last name) of the user.",
+										"example": "Smith",
+										"type": "string",
+										"x-auditable": true
+									},
+									"formatted": {
+										"description": "The full name, including all middle names, titles, and suffixes as appropriate, formatted for display.",
+										"example": "Jane Smith",
+										"readOnly": true,
+										"type": "string"
+									},
+									"givenName": {
+										"description": "The given name (first name) of the user.",
+										"example": "Jane",
+										"type": "string",
+										"x-auditable": true
+									}
+								},
+								"title": "SCIM User Name",
+								"type": "object"
+							},
+							"schemas": {
+								"description": "Must contain `urn:ietf:params:scim:schemas:core:2.0:User`.",
+								"example": [
+									"urn:ietf:params:scim:schemas:core:2.0:User"
+								],
+								"items": {
+									"type": "string"
+								},
+								"type": "array"
+							},
+							"userName": {
+								"description": "Unique identifier for the user, equal to the user's email address.",
+								"example": "user@example.com",
+								"format": "email",
+								"type": "string",
+								"x-auditable": true
+							}
+						},
+						"required": [
+							"schemas",
+							"userName"
+						],
+						"title": "SCIM User Replace Request",
+						"type": "object"
+					}
+				}
+			},
+			"required": true
+		},
+		"responses": {
+			"200": {
+				"content": {
+					"application/scim+json": {
+						"schema": {
+							"description": "A SCIM 2.0 User resource representing an account member (RFC 7643 Section 4.1).\n",
+							"properties": {
+								"active": {
+									"description": "A Boolean value indicating the user's administrative status. Set to `false` to deprovision the user, removing their membership from the account.",
+									"example": true,
+									"type": "boolean",
+									"x-auditable": true
+								},
+								"displayName": {
+									"description": "The display name shown for the user. Falls back to formatted name or userName if not set.",
+									"example": "Jane Smith",
+									"type": "string",
+									"x-auditable": true
+								},
+								"emails": {
+									"description": "Always contains a single primary work email matching `userName`.",
+									"items": {
+										"description": "An email address entry for a SCIM User.",
+										"properties": {
+											"primary": {
+												"description": "A Boolean value indicating the preferred email address.",
+												"example": true,
+												"type": "boolean"
+											},
+											"type": {
+												"description": "A label indicating the attribute's function, e.g., \"work\" or \"home\".",
+												"example": "work",
+												"type": "string"
+											},
+											"value": {
+												"description": "The email address value.",
+												"example": "user@example.com",
+												"format": "email",
+												"type": "string"
+											}
+										},
+										"required": [
+											"value"
+										],
+										"title": "SCIM User Email",
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"externalId": {
+									"description": "An identifier for the user as defined by the provisioning client (IdP). This value is stored and returned but not interpreted by Cloudflare.",
+									"example": "idp-user-abc123",
+									"type": "string",
+									"x-auditable": true
+								},
+								"groups": {
+									"description": "A list of group identifiers to which the user belongs. Includes both system group tags (prefixed `cloudflare-v1-`) and custom user group tags.",
+									"example": [
+										"cloudflare-v1-023e105f4ecef8ad9ca31a8372d0c353"
+									],
+									"items": {
+										"type": "string"
+									},
+									"readOnly": true,
+									"type": "array"
+								},
+								"id": {
+									"description": "Unique identifier for the user, assigned by Cloudflare (user tag).",
+									"example": "023e105f4ecef8ad9ca31a8372d0c353",
+									"readOnly": true,
+									"type": "string",
+									"x-auditable": true
+								},
+								"meta": {
+									"description": "Resource metadata for a SCIM User.",
+									"properties": {
+										"resourceType": {
+											"description": "The name of the resource type.",
+											"example": "User",
+											"type": "string"
+										}
+									},
+									"readOnly": true,
+									"type": "object"
+								},
+								"name": {
+									"description": "The components of the user's real name.",
+									"properties": {
+										"familyName": {
+											"description": "The family name (last name) of the user.",
+											"example": "Smith",
+											"type": "string",
+											"x-auditable": true
+										},
+										"formatted": {
+											"description": "The full name, including all middle names, titles, and suffixes as appropriate, formatted for display.",
+											"example": "Jane Smith",
+											"readOnly": true,
+											"type": "string"
+										},
+										"givenName": {
+											"description": "The given name (first name) of the user.",
+											"example": "Jane",
+											"type": "string",
+											"x-auditable": true
+										}
+									},
+									"title": "SCIM User Name",
+									"type": "object"
+								},
+								"schemas": {
+									"description": "Must contain `urn:ietf:params:scim:schemas:core:2.0:User`.",
+									"example": [
+										"urn:ietf:params:scim:schemas:core:2.0:User"
+									],
+									"items": {
+										"type": "string"
+									},
+									"type": "array"
+								},
+								"userName": {
+									"description": "Unique identifier for the user, equal to the user's email address.",
+									"example": "user@example.com",
+									"format": "email",
+									"type": "string",
+									"x-auditable": true
+								}
+							},
+							"required": [
+								"schemas",
+								"id",
+								"userName",
+								"active"
+							],
+							"title": "SCIM User",
+							"type": "object"
+						}
+					}
+				},
+				"description": "Replace SCIM User response"
+			},
+			"4XX": {
+				"content": {
+					"application/scim+json": {
+						"schema": {
+							"description": "SCIM error envelope (RFC 7644 Section 3.12). Returned on all 4XX and 5XX responses from SCIM endpoints.\n",
+							"properties": {
+								"detail": {
+									"description": "A human-readable message describing the error.",
+									"example": "Invalid SCIM request: userName is required",
+									"type": "string"
+								},
+								"schemas": {
+									"example": [
+										"urn:ietf:params:scim:api:messages:2.0:Error"
+									],
+									"items": {
+										"type": "string"
+									},
+									"type": "array"
+								},
+								"scimType": {
+									"description": "A SCIM detail error keyword (RFC 7644 Section 3.12). Only present for specific error conditions (e.g. `uniqueness` for duplicate member).\n",
+									"example": "uniqueness",
+									"type": "string"
+								},
+								"status": {
+									"description": "The HTTP status code as a string.",
+									"example": "400",
+									"type": "string"
+								}
+							},
+							"required": [
+								"schemas",
+								"status"
+							],
+							"title": "SCIM Error Response",
+							"type": "object"
+						}
+					}
+				},
+				"description": "Replace SCIM User response failure"
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			}
+		],
+		"summary": "Replace SCIM User",
+		"tags": [
+			"SCIM Users"
+		],
+		"x-api-token-group": [
+			"SCIM Provisioning",
+			"Account Settings Write"
+		],
+		"x-cfPermissionsRequired": {
+			"enum": [
+				"com.cloudflare.api.account.member.update"
+			]
+		},
+		"x-cfPlanAvailability": {
+			"business": false,
+			"enterprise": true,
+			"free": false,
+			"pro": false
+		}
+	}
+}
