@@ -1,0 +1,62 @@
+{
+	"name": "@cloudflare/worker-bundler",
+	"dist-tags": {
+		"latest": "0.0.3"
+	},
+	"versions": {
+		"0.0.0": {
+			"name": "@cloudflare/worker-bundler",
+			"version": "0.0.0",
+			"dist": {
+				"shasum": "20e6263ae670859ea1215ae2047e87257403d2c0",
+				"tarball": "https://registry.npmjs.org/@cloudflare/worker-bundler/-/worker-bundler-0.0.0.tgz",
+				"fileCount": 1,
+				"integrity": "sha512-+4vm5KCC8zhZbDDu7mwgs+DXjg1J3F+yRNG+kkhk7bHYsopnh3O8VIPz556k8SeukSyNLKJRkoNt8aemLIQnFQ==",
+				"signatures": [
+					{
+						"sig": "MEYCIQDilX1kyU2jrHZCcZQ6Fb9GJPKARquD5L1XRjnwUHalZQIhAIURbRGkF7vEqpxdDBBLbC5ljqG1gntokHxYYFSehOsB",
+						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
+					}
+				],
+				"unpackedSize": 262
+			}
+		},
+		"0.0.3": {
+			"name": "@cloudflare/worker-bundler",
+			"version": "0.0.3",
+			"dependencies": {
+				"es-module-lexer": "^2.0.0",
+				"esbuild-wasm": "0.27.3",
+				"resolve.exports": "^2.0.3",
+				"semver": "^7.7.4",
+				"smol-toml": "^1.6.0",
+				"sucrase": "^3.35.1"
+			},
+			"devDependencies": {
+				"@types/semver": "^7.7.1"
+			},
+			"dist": {
+				"integrity": "sha512-4idr5feGUUqxaAEkxrLzrjDvd638iov27CwBpMKmcYEgI9DuXFx3dqiYN69ncucgb1+lDOJusPHlSL80POETPQ==",
+				"shasum": "871ef44f69fc07178cfbed3402fbc06426b296ca",
+				"tarball": "https://registry.npmjs.org/@cloudflare/worker-bundler/-/worker-bundler-0.0.3.tgz",
+				"fileCount": 6,
+				"unpackedSize": 13759348,
+				"attestations": {
+					"url": "https://registry.npmjs.org/-/npm/v1/attestations/@cloudflare%2fworker-bundler@0.0.3",
+					"provenance": {
+						"predicateType": "https://slsa.dev/provenance/v1"
+					}
+				},
+				"signatures": [
+					{
+						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U",
+						"sig": "MEUCIHdg8l7RDPIH1eGjCYqDyI0RWcFPvr3flGOJ0cwlrt4oAiEAzLLXFK0IaJiBKLrOyOr1nfr6O1KfPQXb4RiE9QUW4Po="
+					}
+				]
+			},
+			"engines": {
+				"node": ">=22"
+			}
+		}
+	}
+}
