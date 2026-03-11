@@ -11,8 +11,7 @@
 <p>We don't just manage one company's traffic; they manage traffic for numerous products and&nbsp; millions of customers, from individual websites to major enterprises. This team is at the heart of Cloudflare's mission to make the internet faster, safer, and more reliable.</p>
 <p><strong>Role Responsibilities</strong></p>
 <p>As a member of the team you will build and extend various traffic management and supporting systems. You will work closely with Network Engineering, Product Engineering, Network Strategy, and other teams to collaborate on ambitious initiatives to make the best use of Cloudflare’s global network.</p>
-<p><strong>&nbsp;</strong></p>
-<p>You will participate in all stages of the software development lifecycle: from designing and documenting systems, to writing code and automated tests, to planning, managing, and monitoring production software deployments. You will work with a wide range of technologies and programming languages, including Go, Python, Rust, eBPF, ClickHouse, Salt, PostgreSQL, Prometheus, Kubernetes, and more.</p>
+<p>You will participate in all stages of the software development lifecycle: from designing and documenting systems, to writing code and automated tests, to planning, managing, and monitoring production software deployments. You will work with a wide range of technologies and programming languages, including Go, Python, Rust, eBPF, ClickHouse, Salt, PostgreSQL, Prometheus, Kubernetes, and more. You will use AI-powered tools and systems as part of your daily workflow to analyze and extend codebases, introspect production systems and datasets, and accelerate problem-solving.</p>
 <p>Our team at Cloudflare operates under a "Run What You Build" model. This means we are responsible for the health of our systems and actively participate in our team's on-call rotation as part of our operational duties.</p>
 <p>Because you’ll be solving problems of massive scale and significance, and shaping the future of reliability and performance on the Internet, you are a growth-oriented individual who enjoys being outside of your comfort zone. You are comfortable in a fast-paced but sensible work environment. You value curiosity and empathy and lead with these values.</p>
 <p><strong>Role Requirements</strong></p>
@@ -24,6 +23,7 @@
 	<li>Knowledge/interest in HTTP, TLS, and CDN networks.</li>
 	<li>Experience/interest in network performance monitoring and tuning</li>
 	<li>Strong collaboration and communication skills.</li>
+	<li>Willingness to adopt and integrate AI tools and systems into your engineering workflow</li>
 </ul>
 <p><strong>Bonus Points</strong></p>
 <ul>
@@ -33,8 +33,8 @@
 	<li>Experience building tools and APIs.</li>
 	<li>Experience with monitoring, alerting, and debugging large-scale distributed systems</li>
 	<li>Experience participating in an on-call rotation.</li>
+	<li>Experience using AI-assisted development tools (e.g., code completion, codebase analysis, log/data exploration) in a professional setting.</li>
 </ul>
-<p>&nbsp;</p>
 <p><strong>Equity</strong></p>
 <p>This role is eligible to participate in Cloudflare’s equity plan.</p>
 <p><strong>Benefits</strong></p>

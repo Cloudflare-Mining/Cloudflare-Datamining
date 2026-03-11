@@ -8,10 +8,10 @@
 <p><strong>What You’ll Do</strong></p>
 <p>The Argo team was formed to own a very important aspect of Cloudflare's systems: enable more reliable network connectivity for Cloudflare’s products than the Internet itself provides.<br><br>Almost all products in Cloudflare’s portfolio are or will be powered by Argo technology, including CDN, Spectrum, Magic Transit, Stream, Workers, Workers AI, R2, WARP, and more. As a member of the Argo team, you’ll be a key technical contributor to the cutting edge network software infrastructure used by those products.</p>
 <p>You will work closely with various Engineering teams to translate their requirements into new capabilities on the platform. Likewise you will partner with Network Engineering and SRE to ensure that the technology makes the best use of Cloudflare's world-class edge network.</p>
-<p>You will participate in all stages of the software development lifecycle, from designing and documenting systems, to writing code and automated tests, to planning, managing, and monitoring production software deployments. You will work with a wide range of technologies and programming languages, including Rust, Go, Linux networking, ClickHouse, PostgreSQL, Grafana, Kubernetes, and more.</p>
+<p>You will participate in all stages of the software development lifecycle, from designing and documenting systems, to writing code and automated tests, to planning, managing, and monitoring production software deployments. You will work with a wide range of technologies and programming languages, including Rust, Go, Linux networking, ClickHouse, PostgreSQL, Grafana, Kubernetes, and more. You will use AI-powered tools and systems as part of your daily workflow to analyze and extend codebases, introspect production systems and datasets, and accelerate problem-solving.</p>
 <p>Engineering teams at Cloudflare operate a Run What You Build model, including ours. We are responsible for the health of our system and participate in our team's on-call rotation as part of operational responsibilities.</p>
 <p>Because you’ll be solving problems of massive scale and significance, you are a growth-oriented individual who enjoys being outside of your comfort zone. You are comfortable in a fast-paced but sensible work environment. You value curiosity and empathy and lead with these values.</p>
-<p><strong>Examples of Desirable Skills, Knowledge, and Experience</strong></p>
+<p><strong>Must-Have Skills</strong></p>
 <ul>
 	<li>Systems-level programming experience in Go, Rust, C, or C++. We use Rust extensively, and while experience with the language isn't required a willingness to learn it is.</li>
 	<li>A solid grasp of networking protocols in Layers 3 and 4 of the OSI Model.</li>
@@ -20,7 +20,8 @@
 	<li>Strong ability to debug issues in complex systems.</li>
 	<li>Strong collaboration and communication skills.</li>
 	<li>Experience/interest in HTTP networking and VPN technologies.</li>
-	<li>Experience/interest in network performance monitoring and tuning</li>
+	<li>Experience/interest in network performance monitoring and tuning.</li>
+	<li>Willingness to adopt and integrate AI tools and systems into your engineering workflow.</li>
 </ul>
 <p><strong>Bonus Points</strong></p>
 <ul>
@@ -30,6 +31,7 @@
 	<li>Experience building tools and APIs.</li>
 	<li>Experience with monitoring, alerting, and debugging large-scale distributed systems</li>
 	<li>Experience participating in an on-call rotation.</li>
+	<li>Experience using AI-assisted development tools (e.g., code completion, codebase analysis, log/data exploration) in a professional setting.</li>
 </ul>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
