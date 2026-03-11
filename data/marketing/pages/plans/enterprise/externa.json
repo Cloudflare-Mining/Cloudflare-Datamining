@@ -52,7 +52,7 @@
 				},
 				"sys": {
 					"createdAt": "2025-08-11T18:59:45.287Z",
-					"updatedAt": "2025-10-17T21:56:26.799Z"
+					"updatedAt": "2026-03-11T07:14:54.262Z"
 				},
 				"contentfulId": "6O1eLrL5oftt7ZvkNUWxlq",
 				"contentTypeId": "page",
@@ -63,6 +63,12 @@
 				"proactivePopup": null,
 				"template": null,
 				"relatedBlades": [
+					{
+						"contentTypeId": "bladeHtml",
+						"contentfulId": "8A4qEfhFabQQaTrcwjKmg",
+						"htmlContent": "<style>\n    .wrapper {\n        background-color: #003682;\n        margin: 0;\n        padding: 20px;\n        width: 100vw;\n        margin-left: calc((100vw - 100%) / -2);\n    }\n    .content {\n        color: #ffffff;\n        margin: 0px auto;\n        width: fit-content;\n    }\n    .link-helper {\n        color: #ffffff !important;\n        margin-left: 5px;\n        text-decoration: underline !important;\n        text-underline-offset: 4px;\n    }\n    .link-helper:hover {\n        text-decoration: underline;\n        color: #ffffff !important;\n        text-underline-offset: 4px;\n    }\n</style>\n\n<section class=\"wrapper application-security-performance-psa-banner\" id=\"contentful-psa-banner\">\n    <div class=\"content\">\n        <span>AI Security for Apps is now generally available </span>\n\n        <a class=\"link-helper\" href=\"https://www.cloudflare.com/application-services/products/ai-security-for-apps/\">\n           <strong>Learn more></strong>\n        </a>\n    </div>\n</section>",
+						"htmlId": null
+					},
 					{
 						"contentfulId": "dLfFl3lj7AlymFo5Hp9cS",
 						"contentTypeId": "bladeHeroAnimation",
@@ -6333,6 +6339,34 @@
 													"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/5GZLM7xRKzn4zMbsDWCa0C/116b236c684d2a2c1a21b2d64d5ac69b/ip-truncation-tile.svg"
 												},
 												"description": "ip truncation tile icon orange background"
+											},
+											"brandfolderAsset": null,
+											"brandfolderAssetMobile": null
+										},
+										"imageAssetFile": null
+									},
+									{
+										"contentTypeId": "feature",
+										"title": null,
+										"description": null,
+										"displayBorder": false,
+										"learnMoreUrl": "/application-services/products/ai-security-for-apps/",
+										"learnMoreText": "AI Security for Apps",
+										"streamId": null,
+										"openLinkInNewTab": false,
+										"streamThumbnail": null,
+										"icon": null,
+										"iconAssetFile": {
+											"id": "01e0fd85-52d6-542e-9ef4-55cee78669a0",
+											"altText": null,
+											"title": null,
+											"activeAsset": "Contentful Asset",
+											"locale": "en-US",
+											"contentfulAsset": {
+												"file": {
+													"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/7iGyYqnQBNFdsppoGQRGjc/34e7fd44715c58780cb92aa2844bfb3d/chat-tile.svg"
+												},
+												"description": ""
 											},
 											"brandfolderAsset": null,
 											"brandfolderAssetMobile": null
