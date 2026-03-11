@@ -20,6 +20,7 @@
 	<li>Participate in the team’s on-call schedule to ensure uptime of our production systems</li>
 	<li>Investigating customer issues that are escalated to the Egress team for triage and resolution</li>
 	<li>Responding to questions from other teams in the Egress team’s internal, public chat room</li>
+	<li>Using AI-powered tools and systems as part of your daily workflow to analyze and extend codebases, introspect production systems and datasets, and accelerate problem-solving</li>
 </ul>
 <p><strong>Role Requirements</strong></p>
 <p><strong>Must-Have Skills</strong></p>
@@ -31,7 +32,8 @@
 	<li>Strong ability to debug issues in complex systems.</li>
 	<li>Strong collaboration and communication skills.</li>
 	<li>Experience/interest in HTTP networking and VPN technologies.</li>
-	<li>Experience/interest in network performance monitoring and tuning</li>
+	<li>Experience/interest in network performance monitoring and tuning.</li>
+	<li>Willingness to adopt and integrate AI tools and systems into your engineering workflow.</li>
 </ul>
 <p><strong>Bonus Points</strong></p>
 <ul>
@@ -40,6 +42,7 @@
 	<li>Experience building tools and APIs.</li>
 	<li>Experience with monitoring, alerting, and debugging large-scale distributed systems</li>
 	<li>Experience participating in an on-call rotation.</li>
+	<li>Experience using AI-assisted development tools (e.g., code completion, codebase analysis, log/data exploration) in a professional setting.</li>
 </ul>
 <p>&nbsp;</p>
 <div class="content-conclusion">
