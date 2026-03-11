@@ -809,6 +809,9 @@
 	"dns-gql-analytics-for-all": {
 		"enabled": true
 	},
+	"dns-kumoify": {
+		"enabled": false
+	},
 	"dns-optimisations": {
 		"enabled": true
 	},
@@ -2279,7 +2282,7 @@
 		"enabled": false
 	},
 	"threat-events-industry-graph": {
-		"enabled": false
+		"enabled": true
 	},
 	"timezone-preference": {
 		"enabled": true
@@ -2448,7 +2451,7 @@
 		"enabled": false
 	},
 	"wam-discovery-for-all": {
-		"enabled": false
+		"enabled": true
 	},
 	"wci-create-name-pr": {
 		"enabled": false
