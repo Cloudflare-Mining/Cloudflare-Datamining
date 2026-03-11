@@ -1330,6 +1330,7 @@
 		]
 	},
 	"GET /accounts/{account_id}/profile": {
+		"description": "Retrieves the profile information for a specific Cloudflare account, including organization details, settings, and metadata. This endpoint is commonly used to verify account access and retrieve account-level configuration.",
 		"operationId": "Accounts_getAccountProfile",
 		"parameters": [
 			{
@@ -2673,6 +2674,7 @@
 		}
 	},
 	"PUT /accounts/{account_id}/profile": {
+		"description": "Updates the profile information for a Cloudflare account. Allows modification of account-level settings and organizational details. Requires Account Settings Write permission.",
 		"operationId": "Accounts_modifyAccountProfile",
 		"parameters": [
 			{

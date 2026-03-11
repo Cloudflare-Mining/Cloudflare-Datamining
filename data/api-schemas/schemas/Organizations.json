@@ -1058,6 +1058,31 @@
 				}
 			},
 			{
+				"description": "Field to order results by. Currently supported values: `account_name`.\nWhen not specified, results are ordered by internal account ID.",
+				"explode": false,
+				"in": "query",
+				"name": "order_by",
+				"schema": {
+					"enum": [
+						"account_name"
+					],
+					"type": "string"
+				}
+			},
+			{
+				"description": "Sort direction for the order_by field. Valid values: `asc`, `desc`.\nDefaults to `asc` when order_by is specified.",
+				"explode": false,
+				"in": "query",
+				"name": "direction",
+				"schema": {
+					"enum": [
+						"asc",
+						"desc"
+					],
+					"type": "string"
+				}
+			},
+			{
 				"description": "An opaque token returned from the last list response that when\nprovided will retrieve the next page.\n\nParameters used to filter the retrieved list must remain in subsequent\nrequests with a page token.",
 				"explode": false,
 				"in": "query",
