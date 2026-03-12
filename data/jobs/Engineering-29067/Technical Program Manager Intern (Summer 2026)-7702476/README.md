@@ -5,33 +5,33 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<p><strong>Available Locations:&nbsp;</strong>Singapore</p>
-<p><strong>About the Role</strong></p>
-<p>Cloudflare is looking for an enthusiastic and analytically-minded intern to join our Network Strategy team. This role is designed to provide a comprehensive introduction to the fundamental principles of Network Strategy at Cloudflare, with a focus on developing the skills necessary for long-term growth within the team. The intern will support key initiatives by executing on special projects designed to advance and improve operational efficiency. They will also provide essential day-to-day operational support to our Interconnection Managers and Network Acquisition Managers.</p>
-<h4><strong>Responsibilities</strong></h4>
+<p><strong>Available location(s): London, UK</strong></p>
+<p><strong>About the TPgM team and internship role</strong></p>
+<p>The Technical Program Manager (TPgM) intern will contribute to fast-paced, cross-functional projects, helping to define scope, track progress, and communicate updates to stakeholders. They will collaborate closely with Engineering, Product, Customer Support Engineer, Security, Special Projects, ETI, and Design teams to ensure projects are delivered efficiently and on time. This role provides exposure to the entire product lifecycle and technical operations at Cloudflare. We are looking for a highly organized, proactive, and effective communicator who is eager to learn how to manage complex technical programs. The ideal candidate has a strong analytical mindset and a genuine passion for technology and process improvement. We are looking for interns who are adept at communicating, hungry to learn, and proficient in forms of automation tooling, including utilizing AI.&nbsp;</p>
+<p><strong>Role Responsibilities</strong></p>
 <ul>
-	<li><strong>Special Project Execution:</strong> Assist in the execution of special projects focused on advancing and improving the Network Strategy team's operational processes.</li>
-	<li><strong>Interconnection Operational Support:</strong> Provide direct operational support to Interconnection Managers, helping to manage and track key peering and transit relationships.</li>
-	<li><strong>Network Acquisition Assistance:</strong> Support Network Acquisition Managers with administrative and logistical tasks related to acquiring new network capacity and infrastructure.</li>
-	<li><strong>Strategic Data Analysis and Research:</strong> Conduct data analysis and research to inform strategic decisions related to network growth, performance, and cost efficiency.</li>
-	<li><strong>Documentation and Internal Reporting:</strong> Contribute to internal documentation and reporting, ensuring clarity and accuracy of information shared across the team.</li>
-	<li><strong>KPI Tracking and Progress Reporting:</strong> Track key performance indicators (KPIs) for ongoing projects and report progress to relevant stakeholders.</li>
+	<li>Work with a mentor TPgM who will guide them throughout the internship and advise their projects.&nbsp;</li>
+	<li>Be tasked with a wide range of projects and teams to work with, either for process improvements, small projects/tasks, and creating efficiencies in getting things done.&nbsp;</li>
+	<li>Learn to communicate effectively, manage stakeholder expectations, and shadow projects with a wide pool of experienced TPgMs from different backgrounds and expertise.</li>
+	<li>Learn how products and initiatives are delivered effectively in a fast paced every changing environment.</li>
+	<li>Become proficient in tools and methodologies to start your career as a TPgM.</li>
 </ul>
-<h4><strong>Role Requirements (Must-Have Skills):</strong></h4>
+<p>You can check out our <a href="https://blog.cloudflare.com/tag/internship-experience/">internship blogs</a> to learn more about our program and hear directly from our past interns.</p>
+<p><strong>Role Requirements&nbsp;</strong></p>
+<p><strong>Must-Have Skills</strong></p>
 <ul>
-	<li>Currently pursuing a Bachelor's or Master's degree in a quantitative, analytical, or strategic field (e.g., Business, Finance, Economics, Data Science, Engineering, or equivalent).</li>
-	<li>Available for a full-time 12-week internship, working from the Singapore office 3-5 days a week during the summer months (May-August).</li>
-	<li>Demonstrated strong analytical and problem-solving skills, with a focus on data-driven decision-making.</li>
-	<li>Excellent written and verbal communication skills, capable of explaining complex ideas clearly and concisely.</li>
-	<li>Proficiency in data manipulation and analysis tools (e.g., Google Sheets/Excel, or basic SQL/Python is a plus).</li>
-	<li>Ability to work effectively both independently and collaboratively within a fast-paced, global team environment.</li>
-	<li>Proven capacity for taking initiative, owning tasks, and managing time effectively to meet deadlines.</li>
+	<li>Currently pursuing a Bachelors or Masters program in MIS, Data Analytics, Engineering, Business with deep level of technical curiosity, or relevant experience</li>
+	<li>Excellent written and verbal communication skills</li>
+	<li>Willingness to learn, iterate, and take feedback well&nbsp;</li>
+	<li>Can read the room&nbsp;</li>
+	<li>Curiosity of our technical stack and be able to understand/learn how to work with multiple functions (development, design, product, operations,etc)</li>
+	<li>Ability to commit to a minimum 12 week summer internship</li>
+	<li>In office 3-5 days a week</li>
 </ul>
 <p><strong>Nice-to-Have Skills</strong></p>
 <ul>
-	<li>A basic understanding of the Internet ecosystem, including concepts like IP networking, peering, transit, and data centers.</li>
-	<li>Prior experience or coursework related to telecommunications, network infrastructure, or technology strategy.</li>
-	<li>Familiarity with project management principles or tools</li>
+	<li>Ability to grok knowledge/data into presentations, summaries, status reports, narratives&nbsp;&nbsp;</li>
+	<li>Software development experience</li>
 </ul>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
