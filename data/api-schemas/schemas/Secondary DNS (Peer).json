@@ -387,9 +387,12 @@
 		"tags": [
 			"Secondary DNS (Peer)"
 		],
-		"x-api-token-group": [
-			"Account Settings Write"
-		],
+		"x-cfPermissionsRequired": {
+			"enum": [
+				"#dns_records:edit",
+				"#organization:read"
+			]
+		},
 		"x-cfPlanAvailability": {
 			"business": false,
 			"enterprise": true,
@@ -902,10 +905,12 @@
 		"tags": [
 			"Secondary DNS (Peer)"
 		],
-		"x-api-token-group": [
-			"Account Settings Write",
-			"Account Settings Read"
-		],
+		"x-cfPermissionsRequired": {
+			"enum": [
+				"#dns_records:read",
+				"#organization:read"
+			]
+		},
 		"x-cfPlanAvailability": {
 			"business": false,
 			"enterprise": true,
@@ -1363,10 +1368,12 @@
 		"tags": [
 			"Secondary DNS (Peer)"
 		],
-		"x-api-token-group": [
-			"Account Settings Write",
-			"Account Settings Read"
-		],
+		"x-cfPermissionsRequired": {
+			"enum": [
+				"#dns_records:read",
+				"#organization:read"
+			]
+		},
 		"x-cfPlanAvailability": {
 			"business": false,
 			"enterprise": true,
@@ -1834,9 +1841,12 @@
 		"tags": [
 			"Secondary DNS (Peer)"
 		],
-		"x-api-token-group": [
-			"Account Settings Write"
-		],
+		"x-cfPermissionsRequired": {
+			"enum": [
+				"#dns_records:edit",
+				"#organization:read"
+			]
+		},
 		"x-cfPlanAvailability": {
 			"business": false,
 			"enterprise": true,
@@ -2346,9 +2356,12 @@
 		"tags": [
 			"Secondary DNS (Peer)"
 		],
-		"x-api-token-group": [
-			"Account Settings Write"
-		],
+		"x-cfPermissionsRequired": {
+			"enum": [
+				"#dns_records:edit",
+				"#organization:read"
+			]
+		},
 		"x-cfPlanAvailability": {
 			"business": false,
 			"enterprise": true,

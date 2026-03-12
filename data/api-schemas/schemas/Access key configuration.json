@@ -271,10 +271,6 @@
 		"summary": "Get the Access key configuration",
 		"tags": [
 			"Access key configuration"
-		],
-		"x-api-token-group": [
-			"Access: Organizations, Identity Providers, and Groups Write",
-			"Access: Organizations, Identity Providers, and Groups Read"
 		]
 	},
 	"POST /accounts/{account_id}/access/keys/rotate": {
@@ -549,9 +545,6 @@
 		"summary": "Rotate Access keys",
 		"tags": [
 			"Access key configuration"
-		],
-		"x-api-token-group": [
-			"Access: Organizations, Identity Providers, and Groups Write"
 		]
 	},
 	"PUT /accounts/{account_id}/access/keys": {
@@ -848,9 +841,6 @@
 		"summary": "Update the Access key configuration",
 		"tags": [
 			"Access key configuration"
-		],
-		"x-api-token-group": [
-			"Access: Organizations, Identity Providers, and Groups Write"
 		]
 	}
 }

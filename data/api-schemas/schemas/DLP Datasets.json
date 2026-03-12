@@ -149,9 +149,6 @@
 		"summary": "Delete a dataset",
 		"tags": [
 			"DLP Datasets"
-		],
-		"x-api-token-group": [
-			"Zero Trust Write"
 		]
 	},
 	"GET /accounts/{account_id}/dlp/datasets": {
@@ -529,10 +526,6 @@
 		"summary": "Fetch all datasets",
 		"tags": [
 			"DLP Datasets"
-		],
-		"x-api-token-group": [
-			"Zero Trust Read",
-			"Zero Trust Write"
 		]
 	},
 	"GET /accounts/{account_id}/dlp/datasets/{dataset_id}": {
@@ -916,10 +909,6 @@
 		"summary": "Fetch a specific dataset",
 		"tags": [
 			"DLP Datasets"
-		],
-		"x-api-token-group": [
-			"Zero Trust Read",
-			"Zero Trust Write"
 		]
 	},
 	"POST /accounts/{account_id}/dlp/datasets": {
@@ -1364,9 +1353,6 @@
 		"summary": "Create a new dataset",
 		"tags": [
 			"DLP Datasets"
-		],
-		"x-api-token-group": [
-			"Zero Trust Write"
 		]
 	},
 	"POST /accounts/{account_id}/dlp/datasets/{dataset_id}/upload": {
@@ -1685,9 +1671,6 @@
 		"summary": "Prepare to upload a new version of a dataset",
 		"tags": [
 			"DLP Datasets"
-		],
-		"x-api-token-group": [
-			"Zero Trust Write"
 		]
 	},
 	"POST /accounts/{account_id}/dlp/datasets/{dataset_id}/upload/{version}": {
@@ -2093,9 +2076,6 @@
 		"summary": "Upload a new version of a dataset",
 		"tags": [
 			"DLP Datasets"
-		],
-		"x-api-token-group": [
-			"Zero Trust Write"
 		]
 	},
 	"POST /accounts/{account_id}/dlp/datasets/{dataset_id}/versions/{version}": {
@@ -2453,9 +2433,6 @@
 		"summary": "Sets the column information for a multi-column upload",
 		"tags": [
 			"DLP Datasets"
-		],
-		"x-api-token-group": [
-			"Zero Trust Write"
 		]
 	},
 	"POST /accounts/{account_id}/dlp/datasets/{dataset_id}/versions/{version}/entries/{entry_id}": {
@@ -2771,9 +2748,6 @@
 		"summary": "Upload a new version of a multi-column dataset",
 		"tags": [
 			"DLP Datasets"
-		],
-		"x-api-token-group": [
-			"Zero Trust Write"
 		]
 	},
 	"PUT /accounts/{account_id}/dlp/datasets/{dataset_id}": {
@@ -3184,9 +3158,6 @@
 		"summary": "Update details about a dataset",
 		"tags": [
 			"DLP Datasets"
-		],
-		"x-api-token-group": [
-			"Zero Trust Write"
 		]
 	}
 }

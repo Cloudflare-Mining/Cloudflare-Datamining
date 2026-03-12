@@ -265,9 +265,11 @@
 		"tags": [
 			"DEX Rules"
 		],
-		"x-api-token-group": [
-			"Cloudflare DEX Write"
-		]
+		"x-cfPermissionsRequired": {
+			"enum": [
+				"#dex:edit"
+			]
+		}
 	},
 	"GET /accounts/{account_id}/dex/rules": {
 		"description": "List DEX Rules",
@@ -720,12 +722,12 @@
 		"tags": [
 			"DEX Rules"
 		],
-		"x-api-token-group": [
-			"Cloudflare DEX Write",
-			"Cloudflare DEX Read",
-			"Zero Trust Report",
-			"Zero Trust Read"
-		]
+		"x-cfPermissionsRequired": {
+			"enum": [
+				"#dex:read",
+				"#teams:report"
+			]
+		}
 	},
 	"GET /accounts/{account_id}/dex/rules/{rule_id}": {
 		"description": "Get details for a DEX Rule",
@@ -1096,12 +1098,12 @@
 		"tags": [
 			"DEX Rules"
 		],
-		"x-api-token-group": [
-			"Cloudflare DEX Write",
-			"Cloudflare DEX Read",
-			"Zero Trust Report",
-			"Zero Trust Read"
-		]
+		"x-cfPermissionsRequired": {
+			"enum": [
+				"#dex:read",
+				"#teams:report"
+			]
+		}
 	},
 	"PATCH /accounts/{account_id}/dex/rules/{rule_id}": {
 		"description": "Update a DEX Rule",
@@ -1497,9 +1499,11 @@
 		"tags": [
 			"DEX Rules"
 		],
-		"x-api-token-group": [
-			"Cloudflare DEX Write"
-		]
+		"x-cfPermissionsRequired": {
+			"enum": [
+				"#dex:edit"
+			]
+		}
 	},
 	"POST /accounts/{account_id}/dex/rules": {
 		"description": "Create a DEX Rule",
@@ -1887,8 +1891,10 @@
 		"tags": [
 			"DEX Rules"
 		],
-		"x-api-token-group": [
-			"Cloudflare DEX Write"
-		]
+		"x-cfPermissionsRequired": {
+			"enum": [
+				"#dex:edit"
+			]
+		}
 	}
 }

@@ -135,9 +135,11 @@
 		"tags": [
 			"Email Sending subdomains"
 		],
-		"x-api-token-group": [
-			"Zone Settings Write"
-		],
+		"x-cfPermissionsRequired": {
+			"enum": [
+				"com.cloudflare.api.account.zone.email.routing.config.update"
+			]
+		},
 		"x-cfPlanAvailability": {
 			"business": true,
 			"enterprise": true,
@@ -373,10 +375,11 @@
 		"tags": [
 			"Email Sending subdomains"
 		],
-		"x-api-token-group": [
-			"Zone Settings Write",
-			"Zone Settings Read"
-		],
+		"x-cfPermissionsRequired": {
+			"enum": [
+				"com.cloudflare.api.account.zone.email.routing.config.read"
+			]
+		},
 		"x-cfPlanAvailability": {
 			"business": true,
 			"enterprise": true,
@@ -592,10 +595,11 @@
 		"tags": [
 			"Email Sending subdomains"
 		],
-		"x-api-token-group": [
-			"Zone Settings Write",
-			"Zone Settings Read"
-		],
+		"x-cfPermissionsRequired": {
+			"enum": [
+				"com.cloudflare.api.account.zone.email.routing.config.read"
+			]
+		},
 		"x-cfPlanAvailability": {
 			"business": true,
 			"enterprise": true,
@@ -853,10 +857,11 @@
 		"tags": [
 			"Email Sending subdomains"
 		],
-		"x-api-token-group": [
-			"Zone Settings Write",
-			"Zone Settings Read"
-		],
+		"x-cfPermissionsRequired": {
+			"enum": [
+				"com.cloudflare.api.account.zone.email.routing.config.read"
+			]
+		},
 		"x-cfPlanAvailability": {
 			"business": true,
 			"enterprise": true,
@@ -1079,9 +1084,11 @@
 		"tags": [
 			"Email Sending subdomains"
 		],
-		"x-api-token-group": [
-			"Zone Settings Write"
-		],
+		"x-cfPermissionsRequired": {
+			"enum": [
+				"com.cloudflare.api.account.zone.email.routing.config.update"
+			]
+		},
 		"x-cfPlanAvailability": {
 			"business": true,
 			"enterprise": true,
@@ -1574,10 +1581,11 @@
 		"tags": [
 			"Email Sending subdomains"
 		],
-		"x-api-token-group": [
-			"Zone Settings Write",
-			"Zone Settings Read"
-		],
+		"x-cfPermissionsRequired": {
+			"enum": [
+				"com.cloudflare.api.account.zone.email.routing.config.read"
+			]
+		},
 		"x-cfPlanAvailability": {
 			"business": true,
 			"enterprise": true,

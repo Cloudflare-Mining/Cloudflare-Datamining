@@ -103,10 +103,6 @@
 		"tags": [
 			"Live streams",
 			"LivestreamAnalytics"
-		],
-		"x-api-token-group": [
-			"Realtime Admin",
-			"Realtime"
 		]
 	},
 	"GET /accounts/{account_id}/realtime/kit/{app_id}/livestreams": {
@@ -312,10 +308,6 @@
 		"summary": "Fetch all livestreams",
 		"tags": [
 			"Live streams"
-		],
-		"x-api-token-group": [
-			"Realtime Admin",
-			"Realtime"
 		]
 	},
 	"GET /accounts/{account_id}/realtime/kit/{app_id}/livestreams/{livestream_id}": {
@@ -555,10 +547,6 @@
 		"summary": "Fetch livestream details using livestream ID",
 		"tags": [
 			"Live streams"
-		],
-		"x-api-token-group": [
-			"Realtime Admin",
-			"Realtime"
 		]
 	},
 	"GET /accounts/{account_id}/realtime/kit/{app_id}/livestreams/{livestream_id}/active-livestream-session": {
@@ -758,10 +746,6 @@
 		"summary": "Fetch active livestream session details",
 		"tags": [
 			"Live streams"
-		],
-		"x-api-token-group": [
-			"Realtime Admin",
-			"Realtime"
 		]
 	},
 	"GET /accounts/{account_id}/realtime/kit/{app_id}/livestreams/sessions/{livestream-session-id}": {
@@ -885,10 +869,6 @@
 		"summary": "Fetch livestream session details using livestream session ID",
 		"tags": [
 			"Live streams"
-		],
-		"x-api-token-group": [
-			"Realtime Admin",
-			"Realtime"
 		]
 	},
 	"GET /accounts/{account_id}/realtime/kit/{app_id}/meetings/{meeting_id}/active-livestream": {
@@ -1000,10 +980,6 @@
 		"summary": "Fetch active livestreams for a meeting",
 		"tags": [
 			"Live streams"
-		],
-		"x-api-token-group": [
-			"Realtime Admin",
-			"Realtime"
 		]
 	},
 	"GET /accounts/{account_id}/realtime/kit/{app_id}/meetings/{meeting_id}/livestream": {
@@ -1226,10 +1202,6 @@
 		"summary": "Fetch livestream session details for a meeting",
 		"tags": [
 			"Live streams"
-		],
-		"x-api-token-group": [
-			"Realtime Admin",
-			"Realtime"
 		]
 	},
 	"GET /accounts/{account_id}/realtime/kit/{app_id}/sessions/{session_id}/livestream-sessions": {
@@ -1401,10 +1373,6 @@
 		"summary": "Fetch livestream session details using a session ID",
 		"tags": [
 			"Live streams"
-		],
-		"x-api-token-group": [
-			"Realtime Admin",
-			"Realtime"
 		]
 	},
 	"POST /accounts/{account_id}/realtime/kit/{app_id}/livestreams": {
@@ -1517,10 +1485,6 @@
 		"summary": "Create an independent livestream",
 		"tags": [
 			"Live streams"
-		],
-		"x-api-token-group": [
-			"Realtime Admin",
-			"Realtime"
 		]
 	},
 	"POST /accounts/{account_id}/realtime/kit/{app_id}/meetings/{meeting_id}/active-livestream/stop": {
@@ -1584,10 +1548,6 @@
 		"summary": "Stop livestreaming a meeting",
 		"tags": [
 			"Live streams"
-		],
-		"x-api-token-group": [
-			"Realtime Admin",
-			"Realtime"
 		]
 	},
 	"POST /accounts/{account_id}/realtime/kit/{app_id}/meetings/{meeting_id}/livestreams": {
@@ -1711,10 +1671,6 @@
 		"summary": "Start livestreaming a meeting",
 		"tags": [
 			"Live streams"
-		],
-		"x-api-token-group": [
-			"Realtime Admin",
-			"Realtime"
 		]
 	}
 }

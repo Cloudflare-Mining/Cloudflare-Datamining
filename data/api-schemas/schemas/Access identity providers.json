@@ -268,9 +268,6 @@
 		"summary": "Delete an Access identity provider",
 		"tags": [
 			"Access identity providers"
-		],
-		"x-api-token-group": [
-			"Access: Organizations, Identity Providers, and Groups Write"
 		]
 	},
 	"GET /accounts/{account_id}/access/identity_providers": {
@@ -2613,10 +2610,6 @@
 		"summary": "List Access identity providers",
 		"tags": [
 			"Access identity providers"
-		],
-		"x-api-token-group": [
-			"Access: Organizations, Identity Providers, and Groups Write",
-			"Access: Organizations, Identity Providers, and Groups Read"
 		]
 	},
 	"GET /accounts/{account_id}/access/identity_providers/{identity_provider_id}": {
@@ -5034,10 +5027,6 @@
 		"summary": "Get an Access identity provider",
 		"tags": [
 			"Access identity providers"
-		],
-		"x-api-token-group": [
-			"Access: Organizations, Identity Providers, and Groups Write",
-			"Access: Organizations, Identity Providers, and Groups Read"
 		]
 	},
 	"GET /accounts/{account_id}/access/identity_providers/{identity_provider_id}/scim/groups": {
@@ -5423,10 +5412,6 @@
 		"summary": "List SCIM Group resources",
 		"tags": [
 			"Access identity providers"
-		],
-		"x-api-token-group": [
-			"Access: Organizations, Identity Providers, and Groups Write",
-			"Access: Organizations, Identity Providers, and Groups Read"
 		]
 	},
 	"GET /accounts/{account_id}/access/identity_providers/{identity_provider_id}/scim/users": {
@@ -5859,10 +5844,6 @@
 		"summary": "List SCIM User resources",
 		"tags": [
 			"Access identity providers"
-		],
-		"x-api-token-group": [
-			"Access: Organizations, Identity Providers, and Groups Write",
-			"Access: Organizations, Identity Providers, and Groups Read"
 		]
 	},
 	"POST /accounts/{account_id}/access/identity_providers": {
@@ -10433,9 +10414,6 @@
 		"summary": "Add an Access identity provider",
 		"tags": [
 			"Access identity providers"
-		],
-		"x-api-token-group": [
-			"Access: Organizations, Identity Providers, and Groups Write"
 		]
 	},
 	"PUT /accounts/{account_id}/access/identity_providers/{identity_provider_id}": {
@@ -15018,9 +14996,6 @@
 		"summary": "Update an Access identity provider",
 		"tags": [
 			"Access identity providers"
-		],
-		"x-api-token-group": [
-			"Access: Organizations, Identity Providers, and Groups Write"
 		]
 	}
 }

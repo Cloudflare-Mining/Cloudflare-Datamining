@@ -429,10 +429,6 @@
 		"tags": [
 			"Magic Site LANs"
 		],
-		"x-api-token-group": [
-			"Magic WAN Write",
-			"Magic Transit Write"
-		],
 		"x-cfPermissionsRequired": {
 			"enum": [
 				"#organization:edit"
@@ -859,12 +855,6 @@
 		"summary": "List Site LANs",
 		"tags": [
 			"Magic Site LANs"
-		],
-		"x-api-token-group": [
-			"Magic WAN Write",
-			"Magic WAN Read",
-			"Magic Transit Read",
-			"Magic Transit Write"
 		],
 		"x-cfPlanAvailability": {
 			"business": false,
@@ -1296,12 +1286,6 @@
 		"summary": "Site LAN Details",
 		"tags": [
 			"Magic Site LANs"
-		],
-		"x-api-token-group": [
-			"Magic WAN Write",
-			"Magic WAN Read",
-			"Magic Transit Read",
-			"Magic Transit Write"
 		],
 		"x-cfPermissionsRequired": {
 			"enum": [
@@ -1896,10 +1880,6 @@
 		"tags": [
 			"Magic Site LANs"
 		],
-		"x-api-token-group": [
-			"Magic WAN Write",
-			"Magic Transit Write"
-		],
 		"x-cfPermissionsRequired": {
 			"enum": [
 				"#organization:edit"
@@ -2488,10 +2468,6 @@
 		"tags": [
 			"Magic Site LANs"
 		],
-		"x-api-token-group": [
-			"Magic WAN Write",
-			"Magic Transit Write"
-		],
 		"x-cfPlanAvailability": {
 			"business": false,
 			"enterprise": true,
@@ -3079,10 +3055,6 @@
 		"summary": "Update Site LAN",
 		"tags": [
 			"Magic Site LANs"
-		],
-		"x-api-token-group": [
-			"Magic WAN Write",
-			"Magic Transit Write"
 		],
 		"x-cfPermissionsRequired": {
 			"enum": [

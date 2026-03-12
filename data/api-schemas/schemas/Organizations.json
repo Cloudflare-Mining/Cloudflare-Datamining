@@ -306,10 +306,6 @@
 		"tags": [
 			"Analytics",
 			"Organizations"
-		],
-		"x-api-token-group": [
-			"Realtime Admin",
-			"Realtime"
 		]
 	},
 	"GET /organizations": {
@@ -697,10 +693,6 @@
 		"summary": "List organizations the user has access to",
 		"tags": [
 			"Organizations"
-		],
-		"x-api-token-group": [
-			"User Details Write",
-			"User Details Read"
 		]
 	},
 	"GET /organizations/{organization_id}": {
@@ -1858,9 +1850,6 @@
 		"summary": "Create organization",
 		"tags": [
 			"Organizations"
-		],
-		"x-api-token-group": [
-			"User Details Write"
 		]
 	},
 	"PUT /organizations/{organization_id}": {

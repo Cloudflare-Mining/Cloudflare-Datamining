@@ -399,9 +399,6 @@
 		"tags": [
 			"API Shield Client Certificates for a Zone"
 		],
-		"x-api-token-group": [
-			"SSL and Certificates Write"
-		],
 		"x-cfPermissionsRequired": {
 			"enum": [
 				"#ssl:edit"
@@ -689,10 +686,11 @@
 		"tags": [
 			"API Shield Client Certificates for a Zone"
 		],
-		"x-api-token-group": [
-			"SSL and Certificates Write",
-			"SSL and Certificates Read"
-		],
+		"x-cfPermissionsRequired": {
+			"enum": [
+				"#ssl:read"
+			]
+		},
 		"x-cfPlanAvailability": {
 			"business": true,
 			"enterprise": true,
@@ -1179,10 +1177,6 @@
 		"tags": [
 			"API Shield Client Certificates for a Zone"
 		],
-		"x-api-token-group": [
-			"SSL and Certificates Write",
-			"SSL and Certificates Read"
-		],
 		"x-cfPermissionsRequired": {
 			"enum": [
 				"#ssl:read"
@@ -1594,10 +1588,6 @@
 		"summary": "Client Certificate Details",
 		"tags": [
 			"API Shield Client Certificates for a Zone"
-		],
-		"x-api-token-group": [
-			"SSL and Certificates Write",
-			"SSL and Certificates Read"
 		],
 		"x-cfPermissionsRequired": {
 			"enum": [
@@ -2026,9 +2016,6 @@
 		"summary": "Reactivate Client Certificate",
 		"tags": [
 			"API Shield Client Certificates for a Zone"
-		],
-		"x-api-token-group": [
-			"SSL and Certificates Write"
 		],
 		"x-cfPermissionsRequired": {
 			"enum": [
@@ -2698,9 +2685,6 @@
 		"tags": [
 			"API Shield Client Certificates for a Zone"
 		],
-		"x-api-token-group": [
-			"SSL and Certificates Write"
-		],
 		"x-cfPermissionsRequired": {
 			"enum": [
 				"#ssl:edit"
@@ -3000,9 +2984,11 @@
 		"tags": [
 			"API Shield Client Certificates for a Zone"
 		],
-		"x-api-token-group": [
-			"SSL and Certificates Write"
-		],
+		"x-cfPermissionsRequired": {
+			"enum": [
+				"#ssl:edit"
+			]
+		},
 		"x-cfPlanAvailability": {
 			"business": true,
 			"enterprise": true,

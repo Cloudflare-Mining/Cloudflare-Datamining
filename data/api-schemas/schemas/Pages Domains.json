@@ -272,9 +272,6 @@
 		"summary": "Delete domain",
 		"tags": [
 			"Pages Domains"
-		],
-		"x-api-token-group": [
-			"Pages Write"
 		]
 	},
 	"GET /accounts/{account_id}/pages/projects/{project_name}/domains": {
@@ -702,10 +699,6 @@
 		"summary": "Get domains",
 		"tags": [
 			"Pages Domains"
-		],
-		"x-api-token-group": [
-			"Pages Read",
-			"Pages Write"
 		]
 	},
 	"GET /accounts/{account_id}/pages/projects/{project_name}/domains/{domain_name}": {
@@ -1107,10 +1100,6 @@
 		"summary": "Get domain",
 		"tags": [
 			"Pages Domains"
-		],
-		"x-api-token-group": [
-			"Pages Read",
-			"Pages Write"
 		]
 	},
 	"PATCH /accounts/{account_id}/pages/projects/{project_name}/domains/{domain_name}": {
@@ -1512,9 +1501,6 @@
 		"summary": "Patch domain",
 		"tags": [
 			"Pages Domains"
-		],
-		"x-api-token-group": [
-			"Pages Write"
 		]
 	},
 	"POST /accounts/{account_id}/pages/projects/{project_name}/domains": {
@@ -1926,9 +1912,6 @@
 		"summary": "Add domain",
 		"tags": [
 			"Pages Domains"
-		],
-		"x-api-token-group": [
-			"Pages Write"
 		]
 	}
 }

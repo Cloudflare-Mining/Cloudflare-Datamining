@@ -89,9 +89,6 @@
 		"summary": "Delete a group for an account",
 		"tags": [
 			"Groups"
-		],
-		"x-api-token-group": [
-			"Cloudforce One Write"
 		]
 	},
 	"DELETE /accounts/{account_id}/cloudforce-one/events/dataset/-/groups/{group_id}/members/{member_id}": {
@@ -193,9 +190,6 @@
 		"summary": "Delete a group member",
 		"tags": [
 			"Groups"
-		],
-		"x-api-token-group": [
-			"Cloudforce One Write"
 		]
 	},
 	"GET /accounts/{account_id}/cloudforce-one/events/dataset/-/groups": {
@@ -305,10 +299,6 @@
 		"summary": "List groups for an account",
 		"tags": [
 			"Groups"
-		],
-		"x-api-token-group": [
-			"Cloudforce One Write",
-			"Cloudforce One Read"
 		]
 	},
 	"GET /accounts/{account_id}/cloudforce-one/events/dataset/-/groups/{group_id}": {
@@ -460,10 +450,6 @@
 		"summary": "Read a group for an account",
 		"tags": [
 			"Groups"
-		],
-		"x-api-token-group": [
-			"Cloudforce One Write",
-			"Cloudforce One Read"
 		]
 	},
 	"GET /accounts/{account_id}/cloudforce-one/events/dataset/-/groups/{group_id}/members": {
@@ -580,10 +566,6 @@
 		"summary": "List group members",
 		"tags": [
 			"Groups"
-		],
-		"x-api-token-group": [
-			"Cloudforce One Write",
-			"Cloudforce One Read"
 		]
 	},
 	"POST /accounts/{account_id}/cloudforce-one/events/dataset/-/groups": {
@@ -713,10 +695,6 @@
 		"summary": "Create a group",
 		"tags": [
 			"Groups"
-		],
-		"x-api-token-group": [
-			"Cloudforce One Write",
-			"Cloudforce One Read"
 		]
 	},
 	"POST /accounts/{account_id}/cloudforce-one/events/dataset/-/groups/{group_id}/members": {
@@ -848,10 +826,6 @@
 		"summary": "Create a group member",
 		"tags": [
 			"Groups"
-		],
-		"x-api-token-group": [
-			"Cloudforce One Write",
-			"Cloudforce One Read"
 		]
 	},
 	"PUT /accounts/{account_id}/cloudforce-one/events/dataset/-/groups/{group_id}": {
@@ -990,9 +964,6 @@
 		"summary": "Update a group",
 		"tags": [
 			"Groups"
-		],
-		"x-api-token-group": [
-			"Cloudforce One Write"
 		]
 	}
 }

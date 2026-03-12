@@ -406,10 +406,6 @@
 		"tags": [
 			"Magic Site ACLs"
 		],
-		"x-api-token-group": [
-			"Magic WAN Write",
-			"Magic Transit Write"
-		],
 		"x-cfPermissionsRequired": {
 			"enum": [
 				"#organization:edit"
@@ -813,12 +809,6 @@
 		"summary": "List Site ACLs",
 		"tags": [
 			"Magic Site ACLs"
-		],
-		"x-api-token-group": [
-			"Magic WAN Write",
-			"Magic WAN Read",
-			"Magic Transit Read",
-			"Magic Transit Write"
 		],
 		"x-cfPlanAvailability": {
 			"business": false,
@@ -1227,12 +1217,6 @@
 		"summary": "Site ACL Details",
 		"tags": [
 			"Magic Site ACLs"
-		],
-		"x-api-token-group": [
-			"Magic WAN Write",
-			"Magic WAN Read",
-			"Magic Transit Read",
-			"Magic Transit Write"
 		],
 		"x-cfPermissionsRequired": {
 			"enum": [
@@ -1791,10 +1775,6 @@
 		"tags": [
 			"Magic Site ACLs"
 		],
-		"x-api-token-group": [
-			"Magic WAN Write",
-			"Magic Transit Write"
-		],
 		"x-cfPermissionsRequired": {
 			"enum": [
 				"#organization:edit"
@@ -2345,10 +2325,6 @@
 		"summary": "Create a new Site ACL",
 		"tags": [
 			"Magic Site ACLs"
-		],
-		"x-api-token-group": [
-			"Magic WAN Write",
-			"Magic Transit Write"
 		],
 		"x-cfPlanAvailability": {
 			"business": false,
@@ -2901,10 +2877,6 @@
 		"summary": "Update Site ACL",
 		"tags": [
 			"Magic Site ACLs"
-		],
-		"x-api-token-group": [
-			"Magic WAN Write",
-			"Magic Transit Write"
 		],
 		"x-cfPermissionsRequired": {
 			"enum": [

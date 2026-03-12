@@ -473,9 +473,6 @@
 		"summary": "Delete account configuration",
 		"tags": [
 			"Magic Network Monitoring Configuration"
-		],
-		"x-api-token-group": [
-			"Magic Network Monitoring Admin"
 		]
 	},
 	"GET /accounts/{account_id}/mnm/config": {
@@ -946,11 +943,6 @@
 		"summary": "List account configuration",
 		"tags": [
 			"Magic Network Monitoring Configuration"
-		],
-		"x-api-token-group": [
-			"Magic Network Monitoring Admin",
-			"Magic Network Monitoring Config Write",
-			"Magic Network Monitoring Config Read"
 		]
 	},
 	"GET /accounts/{account_id}/mnm/config/full": {
@@ -1421,11 +1413,6 @@
 		"summary": "List rules and account configuration",
 		"tags": [
 			"Magic Network Monitoring Configuration"
-		],
-		"x-api-token-group": [
-			"Magic Network Monitoring Admin",
-			"Magic Network Monitoring Config Write",
-			"Magic Network Monitoring Config Read"
 		]
 	},
 	"PATCH /accounts/{account_id}/mnm/config": {
@@ -1962,10 +1949,6 @@
 		"summary": "Update account configuration fields",
 		"tags": [
 			"Magic Network Monitoring Configuration"
-		],
-		"x-api-token-group": [
-			"Magic Network Monitoring Admin",
-			"Magic Network Monitoring Config Write"
 		]
 	},
 	"POST /accounts/{account_id}/mnm/config": {
@@ -2506,9 +2489,6 @@
 		"summary": "Create account configuration",
 		"tags": [
 			"Magic Network Monitoring Configuration"
-		],
-		"x-api-token-group": [
-			"Magic Network Monitoring Admin"
 		]
 	},
 	"PUT /accounts/{account_id}/mnm/config": {
@@ -3049,10 +3029,6 @@
 		"summary": "Update an entire account configuration",
 		"tags": [
 			"Magic Network Monitoring Configuration"
-		],
-		"x-api-token-group": [
-			"Magic Network Monitoring Admin",
-			"Magic Network Monitoring Config Write"
 		]
 	}
 }

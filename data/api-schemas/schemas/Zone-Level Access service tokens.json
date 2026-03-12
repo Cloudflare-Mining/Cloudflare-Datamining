@@ -314,9 +314,6 @@
 		"summary": "Delete a service token",
 		"tags": [
 			"Zone-Level Access service tokens"
-		],
-		"x-api-token-group": [
-			"Access: Service Tokens Write"
 		]
 	},
 	"GET /zones/{zone_id}/access/service_tokens": {
@@ -655,10 +652,6 @@
 		"summary": "List service tokens",
 		"tags": [
 			"Zone-Level Access service tokens"
-		],
-		"x-api-token-group": [
-			"Access: Service Tokens Write",
-			"Access: Service Tokens Read"
 		]
 	},
 	"GET /zones/{zone_id}/access/service_tokens/{service_token_id}": {
@@ -976,10 +969,6 @@
 		"summary": "Get a service token",
 		"tags": [
 			"Zone-Level Access service tokens"
-		],
-		"x-api-token-group": [
-			"Access: Service Tokens Write",
-			"Access: Service Tokens Read"
 		]
 	},
 	"POST /zones/{zone_id}/access/service_tokens": {
@@ -1306,9 +1295,6 @@
 		"summary": "Create a service token",
 		"tags": [
 			"Zone-Level Access service tokens"
-		],
-		"x-api-token-group": [
-			"Access: Service Tokens Write"
 		]
 	},
 	"PUT /zones/{zone_id}/access/service_tokens/{service_token_id}": {
@@ -1661,9 +1647,6 @@
 		"summary": "Update a service token",
 		"tags": [
 			"Zone-Level Access service tokens"
-		],
-		"x-api-token-group": [
-			"Access: Service Tokens Write"
 		]
 	}
 }

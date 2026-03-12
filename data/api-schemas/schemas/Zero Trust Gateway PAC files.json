@@ -297,9 +297,6 @@
 		"summary": "Delete a PAC file",
 		"tags": [
 			"Zero Trust Gateway PAC files"
-		],
-		"x-api-token-group": [
-			"Zero Trust Write"
 		]
 	},
 	"GET /accounts/{account_id}/gateway/pacfiles": {
@@ -744,10 +741,6 @@
 		"summary": "List PAC files",
 		"tags": [
 			"Zero Trust Gateway PAC files"
-		],
-		"x-api-token-group": [
-			"Zero Trust Read",
-			"Zero Trust Write"
 		]
 	},
 	"GET /accounts/{account_id}/gateway/pacfiles/{pacfile_id}": {
@@ -1148,10 +1141,6 @@
 		"summary": "Get a PAC file",
 		"tags": [
 			"Zero Trust Gateway PAC files"
-		],
-		"x-api-token-group": [
-			"Zero Trust Read",
-			"Zero Trust Write"
 		]
 	},
 	"POST /accounts/{account_id}/gateway/pacfiles": {
@@ -1582,9 +1571,6 @@
 		"summary": "Create a PAC file",
 		"tags": [
 			"Zero Trust Gateway PAC files"
-		],
-		"x-api-token-group": [
-			"Zero Trust Write"
 		]
 	},
 	"PUT /accounts/{account_id}/gateway/pacfiles/{pacfile_id}": {
@@ -2020,9 +2006,6 @@
 		"summary": "Update a Zero Trust Gateway PAC file",
 		"tags": [
 			"Zero Trust Gateway PAC files"
-		],
-		"x-api-token-group": [
-			"Zero Trust Write"
 		]
 	}
 }

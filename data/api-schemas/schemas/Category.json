@@ -91,9 +91,6 @@
 		"summary": "Deletes a category",
 		"tags": [
 			"Category"
-		],
-		"x-api-token-group": [
-			"Cloudforce One Write"
 		]
 	},
 	"GET /accounts/{account_id}/cloudforce-one/events/categories": {
@@ -212,10 +209,6 @@
 		"summary": "Lists categories across multiple datasets",
 		"tags": [
 			"Category"
-		],
-		"x-api-token-group": [
-			"Cloudforce One Write",
-			"Cloudforce One Read"
 		]
 	},
 	"GET /accounts/{account_id}/cloudforce-one/events/categories/{category_id}": {
@@ -330,10 +323,6 @@
 		"summary": "Reads a category",
 		"tags": [
 			"Category"
-		],
-		"x-api-token-group": [
-			"Cloudforce One Write",
-			"Cloudforce One Read"
 		]
 	},
 	"GET /accounts/{account_id}/cloudforce-one/events/categories/catalog": {
@@ -440,10 +429,6 @@
 		"summary": "Lists categories",
 		"tags": [
 			"Category"
-		],
-		"x-api-token-group": [
-			"Cloudforce One Write",
-			"Cloudforce One Read"
 		]
 	},
 	"GET /accounts/{accountId}/resource-library/categories": {
@@ -1403,9 +1388,6 @@
 		"summary": "Updates a category",
 		"tags": [
 			"Category"
-		],
-		"x-api-token-group": [
-			"Cloudforce One Write"
 		]
 	},
 	"POST /accounts/{account_id}/cloudforce-one/events/categories/{category_id}": {
@@ -1549,10 +1531,6 @@
 		"summary": "Updates a category",
 		"tags": [
 			"Category"
-		],
-		"x-api-token-group": [
-			"Cloudforce One Write",
-			"Cloudforce One Read"
 		]
 	},
 	"POST /accounts/{account_id}/cloudforce-one/events/categories/create": {
@@ -1689,10 +1667,6 @@
 		"summary": "Creates a new category",
 		"tags": [
 			"Category"
-		],
-		"x-api-token-group": [
-			"Cloudforce One Write",
-			"Cloudforce One Read"
 		]
 	}
 }

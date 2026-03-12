@@ -250,10 +250,6 @@
 		"summary": "Retrieves Security Center Issues Types",
 		"tags": [
 			"Security Center Insights"
-		],
-		"x-api-token-group": [
-			"Intel Write",
-			"Intel Read"
 		]
 	},
 	"GET /accounts/{account_id}/intel/attack-surface-report/issues": {
@@ -817,10 +813,6 @@
 		"summary": "Retrieves Security Center Issues",
 		"tags": [
 			"Security Center Insights"
-		],
-		"x-api-token-group": [
-			"Intel Write",
-			"Intel Read"
 		]
 	},
 	"GET /accounts/{account_id}/intel/attack-surface-report/issues/class": {
@@ -1267,10 +1259,6 @@
 		"summary": "Retrieves Security Center Issue Counts by Class",
 		"tags": [
 			"Security Center Insights"
-		],
-		"x-api-token-group": [
-			"Intel Write",
-			"Intel Read"
 		]
 	},
 	"GET /accounts/{account_id}/intel/attack-surface-report/issues/severity": {
@@ -1717,10 +1705,6 @@
 		"summary": "Retrieves Security Center Issue Counts by Severity",
 		"tags": [
 			"Security Center Insights"
-		],
-		"x-api-token-group": [
-			"Intel Write",
-			"Intel Read"
 		]
 	},
 	"GET /accounts/{account_id}/intel/attack-surface-report/issues/type": {
@@ -2167,10 +2151,6 @@
 		"summary": "Retrieves Security Center Issue Counts by Type",
 		"tags": [
 			"Security Center Insights"
-		],
-		"x-api-token-group": [
-			"Intel Write",
-			"Intel Read"
 		]
 	},
 	"GET /accounts/{account_id}/security-center/insights": {
@@ -4886,10 +4866,6 @@
 		"summary": "Retrieves Zone Security Center Insights",
 		"tags": [
 			"Security Center Insights"
-		],
-		"x-api-token-group": [
-			"Zone Settings Write",
-			"Zone Settings Read"
 		]
 	},
 	"GET /zones/{zone_id}/security-center/insights/class": {
@@ -5335,10 +5311,6 @@
 		"summary": "Retrieves Zone Security Center Insight Counts by Class",
 		"tags": [
 			"Security Center Insights"
-		],
-		"x-api-token-group": [
-			"Zone Settings Write",
-			"Zone Settings Read"
 		]
 	},
 	"GET /zones/{zone_id}/security-center/insights/severity": {
@@ -5784,10 +5756,6 @@
 		"summary": "Retrieves Zone Security Center Insight Counts by Severity",
 		"tags": [
 			"Security Center Insights"
-		],
-		"x-api-token-group": [
-			"Zone Settings Write",
-			"Zone Settings Read"
 		]
 	},
 	"GET /zones/{zone_id}/security-center/insights/type": {
@@ -6233,10 +6201,6 @@
 		"summary": "Retrieves Zone Security Center Insight Counts by Type",
 		"tags": [
 			"Security Center Insights"
-		],
-		"x-api-token-group": [
-			"Zone Settings Write",
-			"Zone Settings Read"
 		]
 	},
 	"PUT /accounts/{account_id}/intel/attack-surface-report/{issue_id}/dismiss": {
@@ -7042,9 +7006,6 @@
 		"summary": "Archives Zone Security Center Insight",
 		"tags": [
 			"Security Center Insights"
-		],
-		"x-api-token-group": [
-			"Zone Settings Write"
 		]
 	}
 }

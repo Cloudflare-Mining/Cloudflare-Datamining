@@ -223,10 +223,6 @@
 		"tags": [
 			"API Shield Schema Validation 2.0"
 		],
-		"x-api-token-group": [
-			"Account API Gateway",
-			"Domain API Gateway"
-		],
 		"x-stainless-deprecation-message": "Use [Schema Validation API](https://developers.cloudflare.com/api/resources/schema_validation/) instead."
 	},
 	"GET /zones/{zone_id}/api_gateway/operations/{operation_id}/schema_validation": {
@@ -400,12 +396,6 @@
 		"tags": [
 			"API Shield Schema Validation 2.0"
 		],
-		"x-api-token-group": [
-			"Account API Gateway",
-			"Account API Gateway Read",
-			"Domain API Gateway",
-			"Domain API Gateway Read"
-		],
 		"x-stainless-deprecation-message": "Use [Schema Validation API](https://developers.cloudflare.com/api/resources/schema_validation/) instead."
 	},
 	"GET /zones/{zone_id}/api_gateway/settings/schema_validation": {
@@ -571,12 +561,6 @@
 		"summary": "Retrieve zone level schema validation settings",
 		"tags": [
 			"API Shield Schema Validation 2.0"
-		],
-		"x-api-token-group": [
-			"Account API Gateway",
-			"Account API Gateway Read",
-			"Domain API Gateway",
-			"Domain API Gateway Read"
 		],
 		"x-stainless-deprecation-message": "Use [Schema Validation API](https://developers.cloudflare.com/api/resources/schema_validation/) instead."
 	},
@@ -962,12 +946,6 @@
 		"tags": [
 			"API Shield Schema Validation 2.0"
 		],
-		"x-api-token-group": [
-			"Account API Gateway",
-			"Account API Gateway Read",
-			"Domain API Gateway",
-			"Domain API Gateway Read"
-		],
 		"x-stainless-deprecation-message": "Use [Schema Validation API](https://developers.cloudflare.com/api/resources/schema_validation/) instead."
 	},
 	"GET /zones/{zone_id}/api_gateway/user_schemas/{schema_id}": {
@@ -1279,12 +1257,6 @@
 		"summary": "Retrieve information about a specific schema on a zone",
 		"tags": [
 			"API Shield Schema Validation 2.0"
-		],
-		"x-api-token-group": [
-			"Account API Gateway",
-			"Account API Gateway Read",
-			"Domain API Gateway",
-			"Domain API Gateway Read"
 		],
 		"x-stainless-deprecation-message": "Use [Schema Validation API](https://developers.cloudflare.com/api/resources/schema_validation/) instead."
 	},
@@ -2160,12 +2132,6 @@
 		"tags": [
 			"API Shield Schema Validation 2.0"
 		],
-		"x-api-token-group": [
-			"Account API Gateway",
-			"Account API Gateway Read",
-			"Domain API Gateway",
-			"Domain API Gateway Read"
-		],
 		"x-stainless-deprecation-message": "Use [Schema Validation API](https://developers.cloudflare.com/api/resources/schema_validation/) instead."
 	},
 	"GET /zones/{zone_id}/api_gateway/user_schemas/hosts": {
@@ -2488,12 +2454,6 @@
 		"tags": [
 			"API Shield Schema Validation 2.0"
 		],
-		"x-api-token-group": [
-			"Account API Gateway",
-			"Account API Gateway Read",
-			"Domain API Gateway",
-			"Domain API Gateway Read"
-		],
 		"x-stainless-deprecation-message": "Use [Schema Validation API](https://developers.cloudflare.com/api/resources/schema_validation/) instead."
 	},
 	"PATCH /zones/{zone_id}/api_gateway/operations/schema_validation": {
@@ -2798,10 +2758,6 @@
 		"tags": [
 			"API Shield Schema Validation 2.0"
 		],
-		"x-api-token-group": [
-			"Account API Gateway",
-			"Domain API Gateway"
-		],
 		"x-stainless-deprecation-message": "Use [Schema Validation API](https://developers.cloudflare.com/api/resources/schema_validation/) instead."
 	},
 	"PATCH /zones/{zone_id}/api_gateway/settings/schema_validation": {
@@ -3004,10 +2960,6 @@
 		"summary": "Update zone level schema validation settings",
 		"tags": [
 			"API Shield Schema Validation 2.0"
-		],
-		"x-api-token-group": [
-			"Account API Gateway",
-			"Domain API Gateway"
 		],
 		"x-stainless-deprecation-message": "Use [Schema Validation API](https://developers.cloudflare.com/api/resources/schema_validation/) instead."
 	},
@@ -3335,10 +3287,6 @@
 		"summary": "Enable validation for a schema",
 		"tags": [
 			"API Shield Schema Validation 2.0"
-		],
-		"x-api-token-group": [
-			"Account API Gateway",
-			"Domain API Gateway"
 		],
 		"x-stainless-deprecation-message": "Use [Schema Validation API](https://developers.cloudflare.com/api/resources/schema_validation/) instead."
 	},
@@ -3812,10 +3760,6 @@
 		"tags": [
 			"API Shield Schema Validation 2.0"
 		],
-		"x-api-token-group": [
-			"Account API Gateway",
-			"Domain API Gateway"
-		],
 		"x-stainless-deprecation-message": "Use [Schema Validation API](https://developers.cloudflare.com/api/resources/schema_validation/) instead."
 	},
 	"PUT /zones/{zone_id}/api_gateway/operations/{operation_id}/schema_validation": {
@@ -4013,10 +3957,6 @@
 		"summary": "Update operation-level schema validation settings",
 		"tags": [
 			"API Shield Schema Validation 2.0"
-		],
-		"x-api-token-group": [
-			"Account API Gateway",
-			"Domain API Gateway"
 		],
 		"x-stainless-deprecation-message": "Use [Schema Validation API](https://developers.cloudflare.com/api/resources/schema_validation/) instead."
 	},
@@ -4221,10 +4161,6 @@
 		"summary": "Update zone level schema validation settings",
 		"tags": [
 			"API Shield Schema Validation 2.0"
-		],
-		"x-api-token-group": [
-			"Account API Gateway",
-			"Domain API Gateway"
 		],
 		"x-stainless-deprecation-message": "Use [Schema Validation API](https://developers.cloudflare.com/api/resources/schema_validation/) instead."
 	}

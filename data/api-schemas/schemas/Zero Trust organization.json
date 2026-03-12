@@ -431,11 +431,6 @@
 		"summary": "Get your Zero Trust organization",
 		"tags": [
 			"Zero Trust organization"
-		],
-		"x-api-token-group": [
-			"Access: Organizations, Identity Providers, and Groups Revoke",
-			"Access: Organizations, Identity Providers, and Groups Write",
-			"Access: Organizations, Identity Providers, and Groups Read"
 		]
 	},
 	"GET /accounts/{account_id}/access/organizations/doh": {
@@ -783,11 +778,6 @@
 		"summary": "Get your Zero Trust organization DoH settings",
 		"tags": [
 			"Zero Trust organization"
-		],
-		"x-api-token-group": [
-			"Access: Organizations, Identity Providers, and Groups Revoke",
-			"Access: Organizations, Identity Providers, and Groups Write",
-			"Access: Organizations, Identity Providers, and Groups Read"
 		]
 	},
 	"POST /accounts/{account_id}/access/organizations": {
@@ -1375,9 +1365,6 @@
 		"summary": "Create your Zero Trust organization",
 		"tags": [
 			"Zero Trust organization"
-		],
-		"x-api-token-group": [
-			"Access: Organizations, Identity Providers, and Groups Write"
 		]
 	},
 	"POST /accounts/{account_id}/access/organizations/revoke_user": {
@@ -1597,9 +1584,6 @@
 		"summary": "Revoke all Access tokens for a user",
 		"tags": [
 			"Zero Trust organization"
-		],
-		"x-api-token-group": [
-			"Access: Organizations, Identity Providers, and Groups Write"
 		]
 	},
 	"PUT /accounts/{account_id}/access/organizations": {
@@ -2198,9 +2182,6 @@
 		"summary": "Update your Zero Trust organization",
 		"tags": [
 			"Zero Trust organization"
-		],
-		"x-api-token-group": [
-			"Access: Organizations, Identity Providers, and Groups Write"
 		]
 	},
 	"PUT /accounts/{account_id}/access/organizations/doh": {
@@ -2570,9 +2551,6 @@
 		"summary": "Update your Zero Trust organization DoH settings",
 		"tags": [
 			"Zero Trust organization"
-		],
-		"x-api-token-group": [
-			"Access: Organizations, Identity Providers, and Groups Write"
 		]
 	}
 }

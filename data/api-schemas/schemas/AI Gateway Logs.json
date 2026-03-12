@@ -214,9 +214,6 @@
 		"tags": [
 			"AI Gateway Logs"
 		],
-		"x-api-token-group": [
-			"AI Gateway Write"
-		],
 		"x-cfPermissionsRequired": {
 			"enum": [
 				"com.cloudflare.api.account.aig"
@@ -784,10 +781,6 @@
 		"tags": [
 			"AI Gateway Logs"
 		],
-		"x-api-token-group": [
-			"AI Gateway Write",
-			"AI Gateway Read"
-		],
 		"x-cfPermissionsRequired": {
 			"enum": [
 				"com.cloudflare.api.account.aig"
@@ -1004,10 +997,6 @@
 		"tags": [
 			"AI Gateway Logs"
 		],
-		"x-api-token-group": [
-			"AI Gateway Write",
-			"AI Gateway Read"
-		],
 		"x-cfPermissionsRequired": {
 			"enum": [
 				"com.cloudflare.api.account.aig"
@@ -1120,10 +1109,6 @@
 		"tags": [
 			"AI Gateway Logs"
 		],
-		"x-api-token-group": [
-			"AI Gateway Write",
-			"AI Gateway Read"
-		],
 		"x-cfPermissionsRequired": {
 			"enum": [
 				"com.cloudflare.api.account.aig"
@@ -1235,10 +1220,6 @@
 		"summary": "Get Gateway Log Response",
 		"tags": [
 			"AI Gateway Logs"
-		],
-		"x-api-token-group": [
-			"AI Gateway Write",
-			"AI Gateway Read"
 		],
 		"x-cfPermissionsRequired": {
 			"enum": [
@@ -1403,9 +1384,6 @@
 		"summary": "Patch Gateway Log",
 		"tags": [
 			"AI Gateway Logs"
-		],
-		"x-api-token-group": [
-			"AI Gateway Write"
 		],
 		"x-cfPermissionsRequired": {
 			"enum": [

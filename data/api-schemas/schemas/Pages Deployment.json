@@ -272,9 +272,6 @@
 		"summary": "Delete deployment",
 		"tags": [
 			"Pages Deployment"
-		],
-		"x-api-token-group": [
-			"Pages Write"
 		]
 	},
 	"GET /accounts/{account_id}/pages/projects/{project_name}/deployments": {
@@ -1178,10 +1175,6 @@
 		"summary": "Get deployments",
 		"tags": [
 			"Pages Deployment"
-		],
-		"x-api-token-group": [
-			"Pages Read",
-			"Pages Write"
 		]
 	},
 	"GET /accounts/{account_id}/pages/projects/{project_name}/deployments/{deployment_id}": {
@@ -2028,10 +2021,6 @@
 		"summary": "Get deployment info",
 		"tags": [
 			"Pages Deployment"
-		],
-		"x-api-token-group": [
-			"Pages Read",
-			"Pages Write"
 		]
 	},
 	"GET /accounts/{account_id}/pages/projects/{project_name}/deployments/{deployment_id}/history/logs": {
@@ -2467,10 +2456,6 @@
 		"summary": "Get deployment logs",
 		"tags": [
 			"Pages Deployment"
-		],
-		"x-api-token-group": [
-			"Pages Read",
-			"Pages Write"
 		]
 	},
 	"POST /accounts/{account_id}/pages/projects/{project_name}/deployments": {
@@ -3409,9 +3394,6 @@
 		"summary": "Create deployment",
 		"tags": [
 			"Pages Deployment"
-		],
-		"x-api-token-group": [
-			"Pages Write"
 		]
 	},
 	"POST /accounts/{account_id}/pages/projects/{project_name}/deployments/{deployment_id}/retry": {
@@ -4258,9 +4240,6 @@
 		"summary": "Retry deployment",
 		"tags": [
 			"Pages Deployment"
-		],
-		"x-api-token-group": [
-			"Pages Write"
 		]
 	},
 	"POST /accounts/{account_id}/pages/projects/{project_name}/deployments/{deployment_id}/rollback": {
@@ -5107,9 +5086,6 @@
 		"summary": "Rollback deployment",
 		"tags": [
 			"Pages Deployment"
-		],
-		"x-api-token-group": [
-			"Pages Write"
 		]
 	}
 }

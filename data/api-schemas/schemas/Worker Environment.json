@@ -176,11 +176,6 @@
 		"summary": "Get script content",
 		"tags": [
 			"Worker Environment"
-		],
-		"x-api-token-group": [
-			"Workers Tail Read",
-			"Workers Scripts Write",
-			"Workers Scripts Read"
 		]
 	},
 	"GET /accounts/{account_id}/workers/services/{service_name}/environments/{environment_name}/settings": {
@@ -607,11 +602,6 @@
 		"summary": "Get Script Settings",
 		"tags": [
 			"Worker Environment"
-		],
-		"x-api-token-group": [
-			"Workers Tail Read",
-			"Workers Scripts Write",
-			"Workers Scripts Read"
 		]
 	},
 	"PATCH /accounts/{account_id}/workers/services/{service_name}/environments/{environment_name}/settings": {
@@ -2174,9 +2164,6 @@
 		"summary": "Put script content",
 		"tags": [
 			"Worker Environment"
-		],
-		"x-api-token-group": [
-			"Workers Scripts Write"
 		]
 	}
 }

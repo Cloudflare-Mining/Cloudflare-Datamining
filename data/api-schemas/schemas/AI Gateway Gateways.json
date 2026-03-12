@@ -369,9 +369,6 @@
 		"tags": [
 			"AI Gateway Gateways"
 		],
-		"x-api-token-group": [
-			"AI Gateway Write"
-		],
 		"x-cfPermissionsRequired": {
 			"enum": [
 				"com.cloudflare.api.account.aig"
@@ -769,10 +766,6 @@
 		"tags": [
 			"AI Gateway Gateways"
 		],
-		"x-api-token-group": [
-			"AI Gateway Write",
-			"AI Gateway Read"
-		],
 		"x-cfPermissionsRequired": {
 			"enum": [
 				"com.cloudflare.api.account.aig"
@@ -896,10 +889,6 @@
 		"summary": "Get Gateway URL",
 		"tags": [
 			"AI Gateway Gateways"
-		],
-		"x-api-token-group": [
-			"AI Gateway Write",
-			"AI Gateway Read"
 		],
 		"x-cfPermissionsRequired": {
 			"enum": [
@@ -1282,10 +1271,6 @@
 		"summary": "Fetch a Gateway",
 		"tags": [
 			"AI Gateway Gateways"
-		],
-		"x-api-token-group": [
-			"AI Gateway Write",
-			"AI Gateway Read"
 		],
 		"x-cfPermissionsRequired": {
 			"enum": [
@@ -1770,9 +1755,6 @@
 		"summary": "Create a new Gateway",
 		"tags": [
 			"AI Gateway Gateways"
-		],
-		"x-api-token-group": [
-			"AI Gateway Write"
 		],
 		"x-cfPermissionsRequired": {
 			"enum": [
@@ -2453,9 +2435,6 @@
 		"summary": "Update a Gateway",
 		"tags": [
 			"AI Gateway Gateways"
-		],
-		"x-api-token-group": [
-			"AI Gateway Write"
 		],
 		"x-cfPermissionsRequired": {
 			"enum": [

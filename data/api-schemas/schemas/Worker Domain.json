@@ -58,9 +58,6 @@
 		"summary": "Detach from Domain",
 		"tags": [
 			"Worker Domain"
-		],
-		"x-api-token-group": [
-			"Workers Scripts Write"
 		]
 	},
 	"GET /accounts/{account_id}/workers/domains": {
@@ -537,10 +534,6 @@
 		"summary": "List Domains",
 		"tags": [
 			"Worker Domain"
-		],
-		"x-api-token-group": [
-			"Workers Scripts Write",
-			"Workers Scripts Read"
 		]
 	},
 	"GET /accounts/{account_id}/workers/domains/{domain_id}": {
@@ -974,10 +967,6 @@
 		"summary": "Get a Domain",
 		"tags": [
 			"Worker Domain"
-		],
-		"x-api-token-group": [
-			"Workers Scripts Write",
-			"Workers Scripts Read"
 		]
 	},
 	"PUT /accounts/{account_id}/workers/domains": {
@@ -1442,9 +1431,6 @@
 		"summary": "Attach to Domain",
 		"tags": [
 			"Worker Domain"
-		],
-		"x-api-token-group": [
-			"Workers Scripts Write"
 		]
 	}
 }

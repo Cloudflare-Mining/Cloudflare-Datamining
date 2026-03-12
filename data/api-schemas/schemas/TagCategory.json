@@ -129,9 +129,6 @@
 		"summary": "Deletes a tag category (SoT)",
 		"tags": [
 			"TagCategory"
-		],
-		"x-api-token-group": [
-			"Cloudforce One Write"
 		]
 	},
 	"GET /accounts/{account_id}/cloudforce-one/events/tags/categories": {
@@ -248,10 +245,6 @@
 		"summary": "Lists all tag categories (SoT)",
 		"tags": [
 			"TagCategory"
-		],
-		"x-api-token-group": [
-			"Cloudforce One Write",
-			"Cloudforce One Read"
 		]
 	},
 	"PATCH /accounts/{account_id}/cloudforce-one/events/tags/categories/{category_uuid}": {
@@ -453,9 +446,6 @@
 		"summary": "Updates a tag category (SoT)",
 		"tags": [
 			"TagCategory"
-		],
-		"x-api-token-group": [
-			"Cloudforce One Write"
 		]
 	},
 	"POST /accounts/{account_id}/cloudforce-one/events/tags/categories/create": {
@@ -613,10 +603,6 @@
 		"summary": "Creates a new tag category (SoT)",
 		"tags": [
 			"TagCategory"
-		],
-		"x-api-token-group": [
-			"Cloudforce One Write",
-			"Cloudforce One Read"
 		]
 	}
 }

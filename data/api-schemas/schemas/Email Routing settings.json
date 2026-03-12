@@ -345,9 +345,11 @@
 		"tags": [
 			"Email Routing settings"
 		],
-		"x-api-token-group": [
-			"Zone Settings Write"
-		],
+		"x-cfPermissionsRequired": {
+			"enum": [
+				"com.cloudflare.api.account.zone.email.routing.config.update"
+			]
+		},
 		"x-cfPlanAvailability": {
 			"business": true,
 			"enterprise": true,
@@ -570,10 +572,6 @@
 		"summary": "Get Email Routing settings",
 		"tags": [
 			"Email Routing settings"
-		],
-		"x-api-token-group": [
-			"Zone Settings Write",
-			"Zone Settings Read"
 		],
 		"x-cfPermissionsRequired": {
 			"enum": [
@@ -1129,10 +1127,6 @@
 		"tags": [
 			"Email Routing settings"
 		],
-		"x-api-token-group": [
-			"Zone Settings Write",
-			"Zone Settings Read"
-		],
 		"x-cfPermissionsRequired": {
 			"enum": [
 				"com.cloudflare.api.account.zone.email.routing.config.read"
@@ -1379,9 +1373,6 @@
 		"tags": [
 			"Email Routing settings"
 		],
-		"x-api-token-group": [
-			"Zone Settings Write"
-		],
 		"x-cfPermissionsRequired": {
 			"enum": [
 				"com.cloudflare.api.account.zone.email.routing.config.update"
@@ -1616,9 +1607,6 @@
 		"summary": "Disable Email Routing",
 		"tags": [
 			"Email Routing settings"
-		],
-		"x-api-token-group": [
-			"Zone Settings Write"
 		],
 		"x-cfPermissionsRequired": {
 			"enum": [
@@ -1866,9 +1854,6 @@
 		"tags": [
 			"Email Routing settings"
 		],
-		"x-api-token-group": [
-			"Zone Settings Write"
-		],
 		"x-cfPermissionsRequired": {
 			"enum": [
 				"com.cloudflare.api.account.zone.email.routing.config.update"
@@ -2103,9 +2088,6 @@
 		"summary": "Enable Email Routing",
 		"tags": [
 			"Email Routing settings"
-		],
-		"x-api-token-group": [
-			"Zone Settings Write"
 		],
 		"x-cfPermissionsRequired": {
 			"enum": [

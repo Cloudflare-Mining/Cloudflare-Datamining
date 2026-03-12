@@ -314,10 +314,11 @@
 		"tags": [
 			"Queue"
 		],
-		"x-api-token-group": [
-			"Queues Write",
-			"Workers Scripts Write"
-		]
+		"x-cfPermissionsRequired": {
+			"enum": [
+				"com.cloudflare.edge.worker.queue.create"
+			]
+		}
 	},
 	"DELETE /accounts/{account_id}/queues/{queue_id}": {
 		"description": "Deletes a queue",
@@ -477,10 +478,6 @@
 		"summary": "Delete Queue",
 		"tags": [
 			"Queue"
-		],
-		"x-api-token-group": [
-			"Queues Write",
-			"Workers Scripts Write"
 		],
 		"x-cfPermissionsRequired": {
 			"enum": [
@@ -659,10 +656,6 @@
 		"summary": "Delete Queue Consumer",
 		"tags": [
 			"Queue"
-		],
-		"x-api-token-group": [
-			"Queues Write",
-			"Workers Scripts Write"
 		],
 		"x-cfPermissionsRequired": {
 			"enum": [
@@ -1114,12 +1107,11 @@
 		"tags": [
 			"Queue"
 		],
-		"x-api-token-group": [
-			"Queues Write",
-			"Queues Read",
-			"Workers Scripts Write",
-			"Workers Scripts Read"
-		]
+		"x-cfPermissionsRequired": {
+			"enum": [
+				"com.cloudflare.edge.worker.queue.read"
+			]
+		}
 	},
 	"GET /accounts/{account_id}/event_subscriptions/subscriptions/{subscription_id}": {
 		"description": "Get details about an existing event subscription",
@@ -1494,10 +1486,11 @@
 		"tags": [
 			"Queue"
 		],
-		"x-api-token-group": [
-			"Queues Write",
-			"Workers Scripts Write"
-		]
+		"x-cfPermissionsRequired": {
+			"enum": [
+				"com.cloudflare.edge.worker.queue.create"
+			]
+		}
 	},
 	"GET /accounts/{account_id}/queues": {
 		"description": "Returns the queues owned by an account.",
@@ -1943,12 +1936,6 @@
 		"tags": [
 			"Queue"
 		],
-		"x-api-token-group": [
-			"Queues Write",
-			"Queues Read",
-			"Workers Scripts Write",
-			"Workers Scripts Read"
-		],
 		"x-cfPermissionsRequired": {
 			"enum": [
 				"com.cloudflare.edge.worker.queue.list"
@@ -2379,12 +2366,6 @@
 		"tags": [
 			"Queue"
 		],
-		"x-api-token-group": [
-			"Queues Write",
-			"Queues Read",
-			"Workers Scripts Write",
-			"Workers Scripts Read"
-		],
 		"x-cfPermissionsRequired": {
 			"enum": [
 				"com.cloudflare.edge.worker.queue.read"
@@ -2715,12 +2696,6 @@
 		"summary": "List Queue Consumers",
 		"tags": [
 			"Queue"
-		],
-		"x-api-token-group": [
-			"Queues Write",
-			"Queues Read",
-			"Workers Scripts Write",
-			"Workers Scripts Read"
 		],
 		"x-cfPermissionsRequired": {
 			"enum": [
@@ -3063,12 +3038,6 @@
 		"tags": [
 			"Queue"
 		],
-		"x-api-token-group": [
-			"Queues Write",
-			"Queues Read",
-			"Workers Scripts Write",
-			"Workers Scripts Read"
-		],
 		"x-cfPermissionsRequired": {
 			"enum": [
 				"com.cloudflare.edge.worker.queue.read"
@@ -3260,12 +3229,6 @@
 		"summary": "Get Queue Purge Status",
 		"tags": [
 			"Queue"
-		],
-		"x-api-token-group": [
-			"Queues Write",
-			"Queues Read",
-			"Workers Scripts Write",
-			"Workers Scripts Read"
 		],
 		"x-cfPermissionsRequired": {
 			"enum": [
@@ -3763,10 +3726,11 @@
 		"tags": [
 			"Queue"
 		],
-		"x-api-token-group": [
-			"Queues Write",
-			"Workers Scripts Write"
-		]
+		"x-cfPermissionsRequired": {
+			"enum": [
+				"com.cloudflare.edge.worker.queue.create"
+			]
+		}
 	},
 	"PATCH /accounts/{account_id}/queues/{queue_id}": {
 		"description": "Updates a Queue.",
@@ -4458,10 +4422,6 @@
 		"tags": [
 			"Queue"
 		],
-		"x-api-token-group": [
-			"Queues Write",
-			"Workers Scripts Write"
-		],
 		"x-cfPermissionsRequired": {
 			"enum": [
 				"com.cloudflare.edge.worker.queue.update"
@@ -5128,10 +5088,11 @@
 		"tags": [
 			"Queue"
 		],
-		"x-api-token-group": [
-			"Queues Write",
-			"Workers Scripts Write"
-		]
+		"x-cfPermissionsRequired": {
+			"enum": [
+				"com.cloudflare.edge.worker.queue.create"
+			]
+		}
 	},
 	"POST /accounts/{account_id}/queues": {
 		"description": "Create a new queue",
@@ -5562,10 +5523,6 @@
 		"summary": "Create Queue",
 		"tags": [
 			"Queue"
-		],
-		"x-api-token-group": [
-			"Queues Write",
-			"Workers Scripts Write"
 		],
 		"x-cfPermissionsRequired": {
 			"enum": [
@@ -6025,10 +5982,6 @@
 		"tags": [
 			"Queue"
 		],
-		"x-api-token-group": [
-			"Queues Write",
-			"Workers Scripts Write"
-		],
 		"x-cfPermissionsRequired": {
 			"enum": [
 				"com.cloudflare.edge.worker.queue.create"
@@ -6248,10 +6201,6 @@
 		"summary": "Push Message",
 		"tags": [
 			"Queue"
-		],
-		"x-api-token-group": [
-			"Queues Write",
-			"Workers Scripts Write"
 		],
 		"x-auditable": false,
 		"x-cfPermissionsRequired": {
@@ -6495,10 +6444,6 @@
 		"tags": [
 			"Queue"
 		],
-		"x-api-token-group": [
-			"Queues Write",
-			"Workers Scripts Write"
-		],
 		"x-auditable": false,
 		"x-cfPermissionsRequired": {
 			"enum": [
@@ -6734,11 +6679,12 @@
 		"tags": [
 			"Queue"
 		],
-		"x-api-token-group": [
-			"Queues Write",
-			"Workers Scripts Write"
-		],
-		"x-auditable": false
+		"x-auditable": false,
+		"x-cfPermissionsRequired": {
+			"enum": [
+				"com.cloudflare.edge.worker.queue.update"
+			]
+		}
 	},
 	"POST /accounts/{account_id}/queues/{queue_id}/messages/pull": {
 		"description": "Pull a batch of messages from a Queue",
@@ -6986,10 +6932,6 @@
 		"summary": "Pull Queue Messages",
 		"tags": [
 			"Queue"
-		],
-		"x-api-token-group": [
-			"Queues Write",
-			"Workers Scripts Write"
 		],
 		"x-auditable": false,
 		"x-cfPermissionsRequired": {
@@ -7443,10 +7385,6 @@
 		"summary": "Purge Queue",
 		"tags": [
 			"Queue"
-		],
-		"x-api-token-group": [
-			"Queues Write",
-			"Workers Scripts Write"
 		],
 		"x-cfPermissionsRequired": {
 			"enum": [
@@ -8144,10 +8082,6 @@
 		"tags": [
 			"Queue"
 		],
-		"x-api-token-group": [
-			"Queues Write",
-			"Workers Scripts Write"
-		],
 		"x-cfPermissionsRequired": {
 			"enum": [
 				"com.cloudflare.edge.worker.queue.update"
@@ -8619,10 +8553,6 @@
 		"summary": "Update Queue Consumer",
 		"tags": [
 			"Queue"
-		],
-		"x-api-token-group": [
-			"Queues Write",
-			"Workers Scripts Write"
 		],
 		"x-cfPermissionsRequired": {
 			"enum": [

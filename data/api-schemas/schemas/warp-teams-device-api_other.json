@@ -101,9 +101,6 @@
 		"summary": "Delete IP profile",
 		"tags": [
 			"warp-teams-device-api_other"
-		],
-		"x-api-token-group": [
-			"Zero Trust Write"
 		]
 	},
 	"GET /accounts/{account_id}/devices/ip-profiles": {
@@ -311,10 +308,6 @@
 		"summary": "List IP profiles",
 		"tags": [
 			"warp-teams-device-api_other"
-		],
-		"x-api-token-group": [
-			"Zero Trust Read",
-			"Zero Trust Write"
 		]
 	},
 	"GET /accounts/{account_id}/devices/ip-profiles/{profile_id}": {
@@ -478,10 +471,6 @@
 		"summary": "Get IP profile",
 		"tags": [
 			"warp-teams-device-api_other"
-		],
-		"x-api-token-group": [
-			"Zero Trust Read",
-			"Zero Trust Write"
 		]
 	},
 	"GET /accounts/{account_id}/devices/registrations/{registration_id}/override_codes": {
@@ -585,10 +574,6 @@
 		"summary": "Get override codes",
 		"tags": [
 			"warp-teams-device-api_other"
-		],
-		"x-api-token-group": [
-			"Zero Trust Read",
-			"Zero Trust Write"
 		]
 	},
 	"PATCH /accounts/{account_id}/devices/ip-profiles/{profile_id}": {
@@ -801,9 +786,6 @@
 		"summary": "Update IP profile",
 		"tags": [
 			"warp-teams-device-api_other"
-		],
-		"x-api-token-group": [
-			"Zero Trust Write"
 		]
 	},
 	"POST /accounts/{account_id}/devices/ip-profiles": {
@@ -1016,9 +998,6 @@
 		"summary": "Create IP profile",
 		"tags": [
 			"warp-teams-device-api_other"
-		],
-		"x-api-token-group": [
-			"Zero Trust Write"
 		]
 	}
 }

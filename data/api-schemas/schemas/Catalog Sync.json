@@ -3346,9 +3346,6 @@
 		"summary": "Delete Catalog Sync",
 		"tags": [
 			"Catalog Sync"
-		],
-		"x-api-token-group": [
-			"Magic WAN Write"
 		]
 	},
 	"GET /accounts/{account_id}/magic/cloud/catalog-syncs": {
@@ -6480,10 +6477,6 @@
 		"summary": "List Catalog Syncs",
 		"tags": [
 			"Catalog Sync"
-		],
-		"x-api-token-group": [
-			"Magic WAN Write",
-			"Magic WAN Read"
 		]
 	},
 	"GET /accounts/{account_id}/magic/cloud/catalog-syncs/{sync_id}": {
@@ -9621,10 +9614,6 @@
 		"summary": "Read Catalog Sync",
 		"tags": [
 			"Catalog Sync"
-		],
-		"x-api-token-group": [
-			"Magic WAN Write",
-			"Magic WAN Read"
 		]
 	},
 	"GET /accounts/{account_id}/magic/cloud/catalog-syncs/prebuilt-policies": {
@@ -12053,10 +12042,6 @@
 		"summary": "List Prebuilt Policies",
 		"tags": [
 			"Catalog Sync"
-		],
-		"x-api-token-group": [
-			"Magic WAN Write",
-			"Magic WAN Read"
 		]
 	},
 	"PATCH /accounts/{account_id}/magic/cloud/catalog-syncs/{sync_id}": {
@@ -16163,9 +16148,6 @@
 		"summary": "Patch Catalog Sync",
 		"tags": [
 			"Catalog Sync"
-		],
-		"x-api-token-group": [
-			"Magic WAN Write"
 		]
 	},
 	"POST /accounts/{account_id}/magic/cloud/catalog-syncs": {
@@ -19821,9 +19803,6 @@
 		"summary": "Create Catalog Sync",
 		"tags": [
 			"Catalog Sync"
-		],
-		"x-api-token-group": [
-			"Magic WAN Write"
 		]
 	},
 	"POST /accounts/{account_id}/magic/cloud/catalog-syncs/{sync_id}/refresh": {
@@ -23627,9 +23606,6 @@
 		"summary": "Run Catalog Sync",
 		"tags": [
 			"Catalog Sync"
-		],
-		"x-api-token-group": [
-			"Magic WAN Write"
 		]
 	},
 	"PUT /accounts/{account_id}/magic/cloud/catalog-syncs/{sync_id}": {
@@ -27736,9 +27712,6 @@
 		"summary": "Update Catalog Sync",
 		"tags": [
 			"Catalog Sync"
-		],
-		"x-api-token-group": [
-			"Magic WAN Write"
 		]
 	}
 }

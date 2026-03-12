@@ -40,9 +40,6 @@
 		"summary": "Delete brands by ID",
 		"tags": [
 			"brand_protection"
-		],
-		"x-api-token-group": [
-			"Intel Write"
 		]
 	},
 	"DELETE /accounts/{account_id}/brand-protection/brands/patterns": {
@@ -86,9 +83,6 @@
 		"summary": "Delete patterns for brands by ID",
 		"tags": [
 			"brand_protection"
-		],
-		"x-api-token-group": [
-			"Intel Write"
 		]
 	},
 	"GET /accounts/{account_id}/brand-protection/alerts": {
@@ -132,10 +126,6 @@
 		"summary": "Read all alerts on submitted domains",
 		"tags": [
 			"brand_protection"
-		],
-		"x-api-token-group": [
-			"Intel Write",
-			"Intel Read"
 		]
 	},
 	"GET /accounts/{account_id}/brand-protection/brands": {
@@ -179,10 +169,6 @@
 		"summary": "Read all brands",
 		"tags": [
 			"brand_protection"
-		],
-		"x-api-token-group": [
-			"Intel Write",
-			"Intel Read"
 		]
 	},
 	"GET /accounts/{account_id}/brand-protection/brands/patterns": {
@@ -226,10 +212,6 @@
 		"summary": "Read patterns for brands by ID",
 		"tags": [
 			"brand_protection"
-		],
-		"x-api-token-group": [
-			"Intel Write",
-			"Intel Read"
 		]
 	},
 	"GET /accounts/{account_id}/brand-protection/domain-info": {
@@ -273,10 +255,6 @@
 		"summary": "Read submitted domains by ID",
 		"tags": [
 			"brand_protection"
-		],
-		"x-api-token-group": [
-			"Intel Write",
-			"Intel Read"
 		]
 	},
 	"GET /accounts/{account_id}/brand-protection/recent-submissions": {
@@ -320,10 +298,6 @@
 		"summary": "Read recent URL submissions",
 		"tags": [
 			"brand_protection"
-		],
-		"x-api-token-group": [
-			"Intel Write",
-			"Intel Read"
 		]
 	},
 	"GET /accounts/{account_id}/brand-protection/submission-info": {
@@ -367,10 +341,6 @@
 		"summary": "Read URL submissions by ID",
 		"tags": [
 			"brand_protection"
-		],
-		"x-api-token-group": [
-			"Intel Write",
-			"Intel Read"
 		]
 	},
 	"GET /accounts/{account_id}/brand-protection/tracked-domains": {
@@ -414,10 +384,6 @@
 		"summary": "Read submitted domains by pattern",
 		"tags": [
 			"brand_protection"
-		],
-		"x-api-token-group": [
-			"Intel Write",
-			"Intel Read"
 		]
 	},
 	"GET /accounts/{account_id}/brand-protection/url-info": {
@@ -480,10 +446,6 @@
 		"summary": "Read submitted URLs by ID",
 		"tags": [
 			"brand_protection"
-		],
-		"x-api-token-group": [
-			"Intel Write",
-			"Intel Read"
 		]
 	},
 	"GET /live": {
@@ -613,9 +575,6 @@
 		"summary": "Update alerts on submitted domains by ID",
 		"tags": [
 			"brand_protection"
-		],
-		"x-api-token-group": [
-			"Intel Write"
 		]
 	},
 	"PATCH /accounts/{account_id}/brand-protection/alerts/clear": {
@@ -659,9 +618,6 @@
 		"summary": "Update verification statuses of tracked URLs to awaiting by ID",
 		"tags": [
 			"brand_protection"
-		],
-		"x-api-token-group": [
-			"Intel Write"
 		]
 	},
 	"PATCH /accounts/{account_id}/brand-protection/alerts/refute": {
@@ -705,9 +661,6 @@
 		"summary": "Update verification statuses of tracked URLs to disproven by ID",
 		"tags": [
 			"brand_protection"
-		],
-		"x-api-token-group": [
-			"Intel Write"
 		]
 	},
 	"PATCH /accounts/{account_id}/brand-protection/alerts/verify": {
@@ -751,9 +704,6 @@
 		"summary": "Update verification statuses of tracked URLs to confirmed by ID",
 		"tags": [
 			"brand_protection"
-		],
-		"x-api-token-group": [
-			"Intel Write"
 		]
 	},
 	"PATCH /accounts/{account_id}/brand-protection/clear": {
@@ -797,9 +747,6 @@
 		"summary": "Update verification statuses of submitted URLs to awaiting by ID",
 		"tags": [
 			"brand_protection"
-		],
-		"x-api-token-group": [
-			"Intel Write"
 		]
 	},
 	"PATCH /accounts/{account_id}/brand-protection/refute": {
@@ -843,9 +790,6 @@
 		"summary": "Update verification statuses of submitted URLs to disproven by ID",
 		"tags": [
 			"brand_protection"
-		],
-		"x-api-token-group": [
-			"Intel Write"
 		]
 	},
 	"PATCH /accounts/{account_id}/brand-protection/verify": {
@@ -889,9 +833,6 @@
 		"summary": "Update verification statuses of submitted URLs to confirmed by ID",
 		"tags": [
 			"brand_protection"
-		],
-		"x-api-token-group": [
-			"Intel Write"
 		]
 	},
 	"POST /accounts/{account_id}/brand-protection/brands": {
@@ -935,9 +876,6 @@
 		"summary": "Create new brands",
 		"tags": [
 			"brand_protection"
-		],
-		"x-api-token-group": [
-			"Intel Write"
 		]
 	},
 	"POST /accounts/{account_id}/brand-protection/brands/patterns": {
@@ -981,9 +919,6 @@
 		"summary": "Create new patterns for brands by ID",
 		"tags": [
 			"brand_protection"
-		],
-		"x-api-token-group": [
-			"Intel Write"
 		]
 	},
 	"POST /accounts/{account_id}/brand-protection/submit": {
@@ -1053,9 +988,6 @@
 		"summary": "Create new URL submissions",
 		"tags": [
 			"brand_protection"
-		],
-		"x-api-token-group": [
-			"Intel Write"
 		]
 	},
 	"POST /internal/submit": {

@@ -234,10 +234,6 @@
 		"summary": "Delete a zone token validation rule",
 		"tags": [
 			"Token Validation Token Rules"
-		],
-		"x-api-token-group": [
-			"Account API Gateway",
-			"Domain API Gateway"
 		]
 	},
 	"GET /zones/{zone_id}/token_validation/rules": {
@@ -827,12 +823,6 @@
 		"summary": "List token validation rules",
 		"tags": [
 			"Token Validation Token Rules"
-		],
-		"x-api-token-group": [
-			"Account API Gateway",
-			"Account API Gateway Read",
-			"Domain API Gateway",
-			"Domain API Gateway Read"
 		]
 	},
 	"GET /zones/{zone_id}/token_validation/rules/{rule_id}": {
@@ -1232,12 +1222,6 @@
 		"summary": "Get a zone token validation rule",
 		"tags": [
 			"Token Validation Token Rules"
-		],
-		"x-api-token-group": [
-			"Account API Gateway",
-			"Account API Gateway Read",
-			"Domain API Gateway",
-			"Domain API Gateway Read"
 		]
 	},
 	"PATCH /zones/{zone_id}/token_validation/rules/{rule_id}": {
@@ -1815,10 +1799,6 @@
 		"summary": "Edit a zone token validation rule",
 		"tags": [
 			"Token Validation Token Rules"
-		],
-		"x-api-token-group": [
-			"Account API Gateway",
-			"Domain API Gateway"
 		]
 	},
 	"PATCH /zones/{zone_id}/token_validation/rules/bulk": {
@@ -2452,10 +2432,6 @@
 		"summary": "Bulk edit token validation rules",
 		"tags": [
 			"Token Validation Token Rules"
-		],
-		"x-api-token-group": [
-			"Account API Gateway",
-			"Domain API Gateway"
 		]
 	},
 	"POST /zones/{zone_id}/token_validation/rules": {
@@ -2990,10 +2966,6 @@
 		"summary": "Create a token validation rule",
 		"tags": [
 			"Token Validation Token Rules"
-		],
-		"x-api-token-group": [
-			"Account API Gateway",
-			"Domain API Gateway"
 		]
 	},
 	"POST /zones/{zone_id}/token_validation/rules/bulk": {
@@ -3564,10 +3536,6 @@
 		"summary": "Bulk create token validation rules",
 		"tags": [
 			"Token Validation Token Rules"
-		],
-		"x-api-token-group": [
-			"Account API Gateway",
-			"Domain API Gateway"
 		]
 	},
 	"POST /zones/{zone_id}/token_validation/rules/preview": {
@@ -4180,12 +4148,6 @@
 		"summary": "Preview operations covered by a Token Validation rule",
 		"tags": [
 			"Token Validation Token Rules"
-		],
-		"x-api-token-group": [
-			"Account API Gateway",
-			"Account API Gateway Read",
-			"Domain API Gateway",
-			"Domain API Gateway Read"
 		]
 	}
 }

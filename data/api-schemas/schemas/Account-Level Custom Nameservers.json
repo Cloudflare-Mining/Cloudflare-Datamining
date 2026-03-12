@@ -446,6 +446,11 @@
 		"tags": [
 			"Account-Level Custom Nameservers"
 		],
+		"x-cfPermissionsRequired": {
+			"enum": [
+				"#organization:edit"
+			]
+		},
 		"x-cfPlanAvailability": {
 			"business": true,
 			"enterprise": true,
@@ -1019,10 +1024,6 @@
 		"tags": [
 			"Account-Level Custom Nameservers"
 		],
-		"x-api-token-group": [
-			"Account Settings Write",
-			"Account Settings Read"
-		],
 		"x-cfPermissionsRequired": {
 			"enum": [
 				"#organization:read"
@@ -1565,9 +1566,6 @@
 		"summary": "Add Account Custom Nameserver",
 		"tags": [
 			"Account-Level Custom Nameservers"
-		],
-		"x-api-token-group": [
-			"Account Settings Write"
 		],
 		"x-cfPermissionsRequired": {
 			"enum": [

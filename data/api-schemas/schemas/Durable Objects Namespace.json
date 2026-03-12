@@ -475,10 +475,6 @@
 		"summary": "List Namespaces",
 		"tags": [
 			"Durable Objects Namespace"
-		],
-		"x-api-token-group": [
-			"Workers Scripts Write",
-			"Workers Scripts Read"
 		]
 	},
 	"GET /accounts/{account_id}/workers/durable_objects/namespaces/{id}/objects": {
@@ -988,10 +984,6 @@
 		"summary": "List Objects",
 		"tags": [
 			"Durable Objects Namespace"
-		],
-		"x-api-token-group": [
-			"Workers Scripts Write",
-			"Workers Scripts Read"
 		]
 	}
 }

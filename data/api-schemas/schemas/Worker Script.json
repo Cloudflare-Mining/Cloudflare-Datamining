@@ -274,9 +274,6 @@
 		"summary": "Delete Worker",
 		"tags": [
 			"Worker Script"
-		],
-		"x-api-token-group": [
-			"Workers Scripts Write"
 		]
 	},
 	"DELETE /accounts/{account_id}/workers/scripts/{script_name}/secrets/{secret_name}": {
@@ -563,9 +560,6 @@
 		"summary": "Delete script secret",
 		"tags": [
 			"Worker Script"
-		],
-		"x-api-token-group": [
-			"Workers Scripts Write"
 		]
 	},
 	"DELETE /accounts/{account_id}/workers/scripts/{script_name}/subdomain": {
@@ -849,9 +843,6 @@
 		"summary": "Delete Worker subdomain",
 		"tags": [
 			"Worker Script"
-		],
-		"x-api-token-group": [
-			"Workers Scripts Write"
 		]
 	},
 	"GET /accounts/{account_id}/workers/scripts": {
@@ -1683,11 +1674,6 @@
 		"summary": "List Workers",
 		"tags": [
 			"Worker Script"
-		],
-		"x-api-token-group": [
-			"Workers Tail Read",
-			"Workers Scripts Write",
-			"Workers Scripts Read"
 		]
 	},
 	"GET /accounts/{account_id}/workers/scripts-search": {
@@ -2083,11 +2069,6 @@
 		"summary": "Search Workers",
 		"tags": [
 			"Worker Script"
-		],
-		"x-api-token-group": [
-			"Workers Tail Read",
-			"Workers Scripts Write",
-			"Workers Scripts Read"
 		]
 	},
 	"GET /accounts/{account_id}/workers/scripts/{script_name}": {
@@ -2267,11 +2248,6 @@
 		"summary": "Download Worker",
 		"tags": [
 			"Worker Script"
-		],
-		"x-api-token-group": [
-			"Workers Tail Read",
-			"Workers Scripts Write",
-			"Workers Scripts Read"
 		]
 	},
 	"GET /accounts/{account_id}/workers/scripts/{script_name}/content/v2": {
@@ -2441,11 +2417,6 @@
 		"summary": "Get script content",
 		"tags": [
 			"Worker Script"
-		],
-		"x-api-token-group": [
-			"Workers Tail Read",
-			"Workers Scripts Write",
-			"Workers Scripts Read"
 		]
 	},
 	"GET /accounts/{account_id}/workers/scripts/{script_name}/script-settings": {
@@ -2862,11 +2833,6 @@
 		"summary": "Get Script Settings",
 		"tags": [
 			"Worker Script"
-		],
-		"x-api-token-group": [
-			"Workers Tail Read",
-			"Workers Scripts Write",
-			"Workers Scripts Read"
 		]
 	},
 	"GET /accounts/{account_id}/workers/scripts/{script_name}/secrets": {
@@ -3248,11 +3214,6 @@
 		"summary": "List script secrets",
 		"tags": [
 			"Worker Script"
-		],
-		"x-api-token-group": [
-			"Workers Tail Read",
-			"Workers Scripts Write",
-			"Workers Scripts Read"
 		]
 	},
 	"GET /accounts/{account_id}/workers/scripts/{script_name}/secrets/{secret_name}": {
@@ -6907,11 +6868,6 @@
 		"summary": "Get Settings",
 		"tags": [
 			"Worker Script"
-		],
-		"x-api-token-group": [
-			"Workers Tail Read",
-			"Workers Scripts Write",
-			"Workers Scripts Read"
 		]
 	},
 	"GET /accounts/{account_id}/workers/scripts/{script_name}/subdomain": {
@@ -7195,11 +7151,6 @@
 		"summary": "Get Worker subdomain",
 		"tags": [
 			"Worker Script"
-		],
-		"x-api-token-group": [
-			"Workers Tail Read",
-			"Workers Scripts Write",
-			"Workers Scripts Read"
 		]
 	},
 	"GET /accounts/{account_id}/workers/scripts/{script_name}/usage-model": {
@@ -7489,11 +7440,6 @@
 		"summary": "Fetch Usage Model",
 		"tags": [
 			"Worker Script"
-		],
-		"x-api-token-group": [
-			"Workers Tail Read",
-			"Workers Scripts Write",
-			"Workers Scripts Read"
 		]
 	},
 	"PATCH /accounts/{account_id}/workers/scripts/{script_name}/script-settings": {
@@ -8074,9 +8020,6 @@
 		"summary": "Patch Script Settings",
 		"tags": [
 			"Worker Script"
-		],
-		"x-api-token-group": [
-			"Workers Scripts Write"
 		]
 	},
 	"PATCH /accounts/{account_id}/workers/scripts/{script_name}/settings": {
@@ -14341,9 +14284,6 @@
 		"summary": "Patch Settings",
 		"tags": [
 			"Worker Script"
-		],
-		"x-api-token-group": [
-			"Workers Scripts Write"
 		]
 	},
 	"POST /accounts/{account_id}/workers/assets/upload": {
@@ -15163,9 +15103,6 @@
 		"summary": "Create Assets Upload Session",
 		"tags": [
 			"Worker Script"
-		],
-		"x-api-token-group": [
-			"Workers Scripts Write"
 		]
 	},
 	"POST /accounts/{account_id}/workers/scripts/{script_name}/subdomain": {
@@ -15477,9 +15414,6 @@
 		"summary": "Post Worker subdomain",
 		"tags": [
 			"Worker Script"
-		],
-		"x-api-token-group": [
-			"Workers Scripts Write"
 		]
 	},
 	"PUT /accounts/{account_id}/workers/scripts/{script_name}": {
@@ -18292,9 +18226,6 @@
 		"summary": "Upload Worker Module",
 		"tags": [
 			"Worker Script"
-		],
-		"x-api-token-group": [
-			"Workers Scripts Write"
 		]
 	},
 	"PUT /accounts/{account_id}/workers/scripts/{script_name}/content": {
@@ -19163,9 +19094,6 @@
 		"summary": "Put script content",
 		"tags": [
 			"Worker Script"
-		],
-		"x-api-token-group": [
-			"Workers Scripts Write"
 		]
 	},
 	"PUT /accounts/{account_id}/workers/scripts/{script_name}/secrets": {
@@ -19673,9 +19601,6 @@
 		"summary": "Add script secret",
 		"tags": [
 			"Worker Script"
-		],
-		"x-api-token-group": [
-			"Workers Scripts Write"
 		]
 	},
 	"PUT /accounts/{account_id}/workers/scripts/{script_name}/usage-model": {
@@ -20002,9 +19927,6 @@
 		"summary": "Update Usage Model",
 		"tags": [
 			"Worker Script"
-		],
-		"x-api-token-group": [
-			"Workers Scripts Write"
 		]
 	}
 }

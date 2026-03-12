@@ -74,10 +74,6 @@
 		"summary": "Retrieves a file from Binary Storage",
 		"tags": [
 			"BinDB"
-		],
-		"x-api-token-group": [
-			"Cloudforce One Write",
-			"Cloudforce One Read"
 		]
 	},
 	"POST /accounts/{account_id}/cloudforce-one/binary": {
@@ -197,10 +193,6 @@
 		"summary": "Posts a file to Binary Storage",
 		"tags": [
 			"BinDB"
-		],
-		"x-api-token-group": [
-			"Cloudforce One Write",
-			"Cloudforce One Read"
 		]
 	}
 }

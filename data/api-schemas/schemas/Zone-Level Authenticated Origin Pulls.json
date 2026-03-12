@@ -557,9 +557,11 @@
 		"tags": [
 			"Zone-Level Authenticated Origin Pulls"
 		],
-		"x-api-token-group": [
-			"SSL and Certificates Write"
-		],
+		"x-cfPermissionsRequired": {
+			"enum": [
+				"#ssl:edit"
+			]
+		},
 		"x-cfPlanAvailability": {
 			"business": true,
 			"enterprise": true,
@@ -1173,10 +1175,6 @@
 		"tags": [
 			"Zone-Level Authenticated Origin Pulls"
 		],
-		"x-api-token-group": [
-			"SSL and Certificates Write",
-			"SSL and Certificates Read"
-		],
 		"x-cfPermissionsRequired": {
 			"enum": [
 				"#ssl:read"
@@ -1741,10 +1739,11 @@
 		"tags": [
 			"Zone-Level Authenticated Origin Pulls"
 		],
-		"x-api-token-group": [
-			"SSL and Certificates Write",
-			"SSL and Certificates Read"
-		],
+		"x-cfPermissionsRequired": {
+			"enum": [
+				"#ssl:read"
+			]
+		},
 		"x-cfPlanAvailability": {
 			"business": true,
 			"enterprise": true,
@@ -2118,10 +2117,11 @@
 		"tags": [
 			"Zone-Level Authenticated Origin Pulls"
 		],
-		"x-api-token-group": [
-			"SSL and Certificates Write",
-			"SSL and Certificates Read"
-		],
+		"x-cfPermissionsRequired": {
+			"enum": [
+				"#ssl:read"
+			]
+		},
 		"x-cfPlanAvailability": {
 			"business": true,
 			"enterprise": true,
@@ -2699,9 +2699,6 @@
 		"tags": [
 			"Zone-Level Authenticated Origin Pulls"
 		],
-		"x-api-token-group": [
-			"SSL and Certificates Write"
-		],
 		"x-cfPermissionsRequired": {
 			"enum": [
 				"#ssl:edit"
@@ -3101,9 +3098,11 @@
 		"tags": [
 			"Zone-Level Authenticated Origin Pulls"
 		],
-		"x-api-token-group": [
-			"SSL and Certificates Write"
-		],
+		"x-cfPermissionsRequired": {
+			"enum": [
+				"#ssl:edit"
+			]
+		},
 		"x-cfPlanAvailability": {
 			"business": true,
 			"enterprise": true,

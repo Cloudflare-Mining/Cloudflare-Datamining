@@ -253,9 +253,6 @@
 		"summary": "Delete custom entry",
 		"tags": [
 			"DLP Entries"
-		],
-		"x-api-token-group": [
-			"Zero Trust Write"
 		]
 	},
 	"GET /accounts/{account_id}/dlp/entries": {
@@ -929,10 +926,6 @@
 		"summary": "List all entries",
 		"tags": [
 			"DLP Entries"
-		],
-		"x-api-token-group": [
-			"Zero Trust Read",
-			"Zero Trust Write"
 		]
 	},
 	"GET /accounts/{account_id}/dlp/entries/{entry_id}": {
@@ -1645,10 +1638,6 @@
 		"summary": "Get DLP Entry",
 		"tags": [
 			"DLP Entries"
-		],
-		"x-api-token-group": [
-			"Zero Trust Read",
-			"Zero Trust Write"
 		]
 	},
 	"POST /accounts/{account_id}/dlp/entries": {
@@ -2010,9 +1999,6 @@
 		"summary": "Create custom entry",
 		"tags": [
 			"DLP Entries"
-		],
-		"x-api-token-group": [
-			"Zero Trust Write"
 		]
 	},
 	"PUT /accounts/{account_id}/dlp/entries/{entry_id}": {
@@ -2778,9 +2764,6 @@
 		"summary": "Update entry",
 		"tags": [
 			"DLP Entries"
-		],
-		"x-api-token-group": [
-			"Zero Trust Write"
 		]
 	},
 	"PUT /accounts/{account_id}/dlp/entries/custom/{entry_id}": {
@@ -3158,9 +3141,6 @@
 		"summary": "Update custom entry",
 		"tags": [
 			"DLP Entries"
-		],
-		"x-api-token-group": [
-			"Zero Trust Write"
 		]
 	},
 	"PUT /accounts/{account_id}/dlp/entries/predefined/{entry_id}": {
@@ -3510,9 +3490,6 @@
 		"summary": "Update predefined entry",
 		"tags": [
 			"DLP Entries"
-		],
-		"x-api-token-group": [
-			"Zero Trust Write"
 		]
 	}
 }

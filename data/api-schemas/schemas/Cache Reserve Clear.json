@@ -338,12 +338,6 @@
 		"tags": [
 			"Cache Reserve Clear"
 		],
-		"x-api-token-group": [
-			"Zone Settings Write",
-			"Zone Settings Read",
-			"Zone Read",
-			"Zone Write"
-		],
 		"x-cfPermissionsRequired": {
 			"enum": [
 				"#zone_settings:read"
@@ -690,10 +684,6 @@
 		"summary": "Start Cache Reserve Clear",
 		"tags": [
 			"Cache Reserve Clear"
-		],
-		"x-api-token-group": [
-			"Zone Settings Write",
-			"Zone Write"
 		],
 		"x-cfPermissionsRequired": {
 			"enum": [

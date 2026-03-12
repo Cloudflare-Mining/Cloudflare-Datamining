@@ -731,9 +731,6 @@
 		"summary": "Delete Worker",
 		"tags": [
 			"Workers"
-		],
-		"x-api-token-group": [
-			"Workers Scripts Write"
 		]
 	},
 	"GET /accounts/{account_id}/builds/workers/{external_script_id}/builds": {
@@ -1185,10 +1182,6 @@
 		"summary": "List builds by script",
 		"tags": [
 			"Workers"
-		],
-		"x-api-token-group": [
-			"Workers CI Write",
-			"Workers CI Read"
 		]
 	},
 	"GET /accounts/{account_id}/builds/workers/{external_script_id}/triggers": {
@@ -1457,10 +1450,6 @@
 		"summary": "List triggers by script",
 		"tags": [
 			"Workers"
-		],
-		"x-api-token-group": [
-			"Workers CI Write",
-			"Workers CI Read"
 		]
 	},
 	"GET /accounts/{account_id}/workers/workers": {
@@ -2310,11 +2299,6 @@
 		"summary": "List Workers",
 		"tags": [
 			"Workers"
-		],
-		"x-api-token-group": [
-			"Workers Tail Read",
-			"Workers Scripts Write",
-			"Workers Scripts Read"
 		]
 	},
 	"GET /accounts/{account_id}/workers/workers/{worker_id}": {
@@ -3245,11 +3229,6 @@
 		"summary": "Get Worker",
 		"tags": [
 			"Workers"
-		],
-		"x-api-token-group": [
-			"Workers Tail Read",
-			"Workers Scripts Write",
-			"Workers Scripts Read"
 		]
 	},
 	"PATCH /accounts/{account_id}/workers/workers/{worker_id}": {
@@ -7238,9 +7217,6 @@
 		"summary": "Create Worker",
 		"tags": [
 			"Workers"
-		],
-		"x-api-token-group": [
-			"Workers Scripts Write"
 		]
 	},
 	"PUT /accounts/{account_id}/workers/workers/{worker_id}": {
@@ -9155,9 +9131,6 @@
 		"summary": "Update Worker",
 		"tags": [
 			"Workers"
-		],
-		"x-api-token-group": [
-			"Workers Scripts Write"
 		]
 	}
 }

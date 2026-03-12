@@ -107,10 +107,6 @@
 		"tags": [
 			"Workers AI Image Classification"
 		],
-		"x-api-token-group": [
-			"Workers AI Write",
-			"Workers AI Read"
-		],
 		"x-cfPermissionsRequired": {
 			"enum": [
 				"com.cloudflare.api.account.ai"
@@ -230,10 +226,6 @@
 		"summary": "Execute @cf/microsoft/resnet-50 model.",
 		"tags": [
 			"Workers AI Image Classification"
-		],
-		"x-api-token-group": [
-			"Workers AI Write",
-			"Workers AI Read"
 		],
 		"x-cfPermissionsRequired": {
 			"enum": [

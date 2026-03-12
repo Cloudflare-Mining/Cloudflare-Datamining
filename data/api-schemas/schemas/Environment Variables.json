@@ -189,9 +189,6 @@
 		"summary": "Delete environment variable",
 		"tags": [
 			"Environment Variables"
-		],
-		"x-api-token-group": [
-			"Workers CI Write"
 		]
 	},
 	"GET /accounts/{account_id}/builds/triggers/{trigger_uuid}/environment_variables": {
@@ -352,10 +349,6 @@
 		"summary": "List environment variables",
 		"tags": [
 			"Environment Variables"
-		],
-		"x-api-token-group": [
-			"Workers CI Write",
-			"Workers CI Read"
 		]
 	},
 	"PATCH /accounts/{account_id}/builds/triggers/{trigger_uuid}/environment_variables": {
@@ -615,9 +608,6 @@
 		"summary": "Upsert environment variables",
 		"tags": [
 			"Environment Variables"
-		],
-		"x-api-token-group": [
-			"Workers CI Write"
 		]
 	}
 }
