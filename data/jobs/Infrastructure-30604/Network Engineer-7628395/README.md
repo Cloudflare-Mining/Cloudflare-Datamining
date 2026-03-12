@@ -5,35 +5,35 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<p><strong>About the Team:</strong></p>
-<p><strong>Location: India Bengaluru</strong></p>
-<div>As customer zero, we evangelize our products to drive maximum business value while serving as the "glue" that aligns cross-functional stakeholders with our technical ecosystem. We operate with an <strong>automation-first mindset</strong>, purposefully outgrowing yesterday’s processes to create the headspace needed to solve tomorrow’s problems. On this team, you won't just maintain the status quo—you'll foster the collaboration and innovation necessary to ensure our products and people work better together.</div>
-<div><strong>&nbsp;</strong></div>
-<div><strong>Enablement</strong>: We evangelize and elevate awareness around our product offerings and opportunities to leverage our own product for business value capabilities<br><br><strong>Be the glue</strong>: Like the many products we have, it only works if it all works well together.&nbsp; Finding common ground to enhanced cross-functional collaboration and alignment with business stakeholders will strengthen customer and product common ground.<br><br><strong>Automation First mindset:</strong>&nbsp; We can only truly do our best work when we have the space to reimagine how we solve tomorrow's problems today.&nbsp; It's okay that what worked well yesterday may not be what we need for tomorrow.</div>
-<div>&nbsp;</div>
-<div>&nbsp;</div>
-<p><strong>About this Role:</strong></p>
-<p>We are seeking a highly experienced Software Developer to join our team. In this role, you will be responsible for designing solutions and executing the roadmap with a particular focus on enabling Model Context Protocol (MCP) adoption across Enterprise Applications. You will play a pivotal role in connecting our AI assistants to our internal systems.</p>
-<p><strong>Responsibilities:</strong></p>
+<p><strong>Responsibilities</strong>:</p>
+<p>We are looking for a Network Engineer to join our team (5+yrs). Cloudflare is building one of the largest, most resilient networks that spans over 335 cities spread across all regions and we plan to continue our expansion at a rapid pace. You will have the opportunity to (literally) build a faster, safer Internet for our millions of users and the billions of web surfers that visit their sites each month.</p>
+<p>This position will be responsible for :&nbsp;</p>
 <ul>
-	<li>Work with leadership to organize a backlog of MCP servers needing to be built for various Enterprise Applications.</li>
-	<li>Design and develop MCP servers for both SaaS and on-premise applications, ensuring secure and efficient context retrieval.</li>
-	<li>Provide feedback and feature enhancements to improve the patterns by which we develop MCP servers. Enable other developers who may follow.</li>
-	<li>Partner closely with our internal MCP server rollout team to co-develop solutions or explore new opportunities for secure enablement.</li>
-	<li>Use your experience working cross-functionally to work closely with system owners so existing processes can be adapted to work with MCP development outcomes.</li>
+	<li>Technical operation and engineering of the Cloudflare network, including the provisioning and management of the network hardware and software,</li>
+	<li>Day to day network operations and monitoring, working closely with internal teams such as System Reliability Engineering, Infrastructure Engineering and Customer Support teams,</li>
+	<li>Creating and maintaining documentation,&nbsp; SOP’s, knowledge base,</li>
+	<li>Interacting with our network peers to assist with their inquiries, and subsequently provide meaningful data on performance degradation.<br><br></li>
 </ul>
-<p><strong>Requirements:</strong></p>
+<p><strong>Requirements</strong>:</p>
 <ul>
-	<li>3-5+ years of experience with design, development, and streamlining of Enterprise processes using automation and technical enablement.</li>
-	<li><strong>Specific experience in developing MCP servers for SaaS and on-prem applications.</strong></li>
-	<li>Advanced programming experience with Typescript, Python, or Go, including Microservice, REST, open API specs, and Integration design.</li>
-	<li>Strong knowledge and experience with configuration management tools and Infrastructure as Code methods, such as Terraform, Ansible, Chef, etc.</li>
-	<li>Strong knowledge and experience with build-deploy pipeline development and best practices in tools like GitLab or GitHub.</li>
-	<li>Experience and expertise in Agile methodology.</li>
-	<li>Excellent interpersonal and communication skills in written and spoken English.</li>
-	<li>Prior experience working on enterprise MCP engineering teams.</li>
+	<li>Capable of learning new technologies / systems / features under guidance of mentors,</li>
+	<li>Proficient in multiple network vendor operating systems , Associate level network certification(s) (JNCIA , CCNA , etc) or higher,</li>
+	<li>Understanding of BGP, Knowledge of the OSI-model and experience isolating network, hardware and software issues,</li>
+	<li>Experience writing scripts in Bash, Python, or other scripting language,</li>
+	<li>Experience in working as part of a team in a customer-facing role,</li>
+	<li>Ability to prioritise when faced with high pressure scenarios.</li>
 </ul>
-<p class="p1"><strong>Fraud Alert:</strong>&nbsp;<em>Do not fall victim to recruitment fraud. Cloudflare never charges application fees or requires candidates to purchase third-party certifications or training as a condition of employment. All official communication comes strictly from @</em><a href="http://cloudflare.com/"><span class="s1"><em>cloudflare.com</em></span></a><em>&nbsp;email addresses.</em></p>
+<p><strong>Bonus Points but not required:</strong></p>
+<ul>
+	<li>Understanding of anycast routing,</li>
+	<li>Good working knowledge of&nbsp; Junos, IOS-XR,NX-OS, EOS and SONIC,</li>
+	<li>Experience writing network configuration and design documentation,</li>
+	<li>Experience solving problems through automation,</li>
+	<li>Experience with optical transport technologies such as CWDM/DWDM,</li>
+	<li>Linux system administration,</li>
+	<li>Multilingual.</li>
+</ul>
+<p><br><br><br><br><br></p>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
 	<p><span style="font-weight: 400;">We’re not just a highly ambitious, large-scale technology company. We’re a highly ambitious, large-scale technology company with a soul. Fundamental to our mission to help build a better Internet is protecting the free and open Internet.</span></p>
