@@ -30,7 +30,7 @@
 	<p>D1 GA has focused on reliability and developer experience. Now, we plan on extending D1 to better support globally-distributed applications.</p>
 	<p>In the Workers model, an incoming request invokes serverless execution in the closest data center. A Worker application can scale globally with user requests. Application data, however, remains stored in centralized databases, and global user traffic must account for access round trips to data locations. For example, a D1 database today resides in a single location.</p>
 	<p>Workers support <a href="https://developers.cloudflare.com/workers/configuration/smart-placement">Smart Placement</a> to account for frequently accessed data locality. Smart Placement invokes a Worker closer to centralized backend services like databases to lower latency and improve application performance. We’ve addressed Workers placement in global applications, but need to solve data placement.</p>
-	<p>The question, then, is how can D1, as Cloudflare’s built-in database solution, better support data placement for global applications? The answer is asynchronous read replication.</p>
+	<p>The question, then, is how can D1, as Cloudflare’s <a href="https://www.cloudflare.com/developer-platform/products/d1">built-in database solution</a>, better support data placement for global applications? The answer is asynchronous read replication.</p>
 	<figure class="kg-card kg-image-card ">
 
 		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1I58tQFeSOcIyqrGfv9UnB/c1bc267b8cd2eb09332ae909429aeb5b/image4-30.png" alt="" class="kg-image" width="1800" height="590" loading="lazy">

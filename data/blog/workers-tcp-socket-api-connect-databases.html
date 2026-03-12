@@ -127,7 +127,7 @@ const socket = connect("address:port", { secureTransport: "use" })</code></pre>
 			</svg>
 		</a>
 	</div>
-	<p>Many serverless databases <a href="https://developers.cloudflare.com/workers/learning/integrations/databases">already work on Workers</a>, allowing clients to connect over HTTP or over <a href="https://blog.cloudflare.com/neon-postgres-database-from-workers">WebSockets</a>. But most databases don’t “speak” HTTP, including databases hosted on most cloud providers.</p>
+	<p>Many <a href="https://www.cloudflare.com/developer-platform/products/d1">serverless databases</a> already work on Workers, allowing clients to connect over HTTP or over <a href="https://blog.cloudflare.com/neon-postgres-database-from-workers">WebSockets</a>. But most databases don’t “speak” HTTP, including databases hosted on most cloud providers.</p>
 	<p>Databases each have their own “wire protocol”, and open-source database “drivers” that speak this protocol, sending and receiving data over a TCP socket. Developers rely on these drivers in their own code, as do database ORMs. Our goal is to make sure that you can use the same drivers and ORMs you might use in other runtimes and on other platforms on Workers.</p>
 	<div class="flex anchor relative">
 		<h2 id="try-it-now-connect-to-postgresql-from-workers">Try it now — connect to PostgreSQL from Workers</h2>
@@ -218,4 +218,5 @@ export default {
 	</div>
 	<!--kg-card-begin: html-->
 	<div style="position: relative; padding-top: 56.25%;"><iframe src="https://customer-rhnwzxvb3mg4wz3v.cloudflarestream.com/e87f8536439db9b5eea7dfd33ad2f11e/iframe?preload=true&amp;poster=https%3A%2F%2Fcustomer-rhnwzxvb3mg4wz3v.cloudflarestream.com%2Fe87f8536439db9b5eea7dfd33ad2f11e%2Fthumbnails%2Fthumbnail.jpg%3Ftime%3D1s%26height%3D600" style="border: none; position: absolute; top: 0; left: 0; height: 100%; width: 100%;" allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;" allowfullscreen="true"></iframe></div><!--kg-card-end: html-->
+	<p></p>
 </div>

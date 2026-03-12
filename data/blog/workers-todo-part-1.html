@@ -27,7 +27,7 @@
 			</svg>
 		</a>
 	</div>
-	<p>First off, we’re going to need a D1 database set up, with a schema for our todo application to run on. If you’re not familiar with D1, it’s Cloudflare’s serverless database offering - explained in more detail <a href="https://blog.cloudflare.com/introducing-d1">here</a>. To get started, we use the <code>wrangler d1</code> command to create a new database:</p>
+	<p>First off, we’re going to need a D1 database set up, with a schema for our todo application to run on. If you’re not familiar with D1, it’s <a href="https://www.cloudflare.com/developer-platform/products/d1">Cloudflare’s serverless database offering</a> - explained in more detail <a href="https://blog.cloudflare.com/introducing-d1">here</a>. To get started, we use the <code>wrangler d1</code> command to create a new database:</p>
 	<pre class="language-bash"><code class="language-bash">npx wrangler d1 create &lt;todo | custom-database-name&gt;</code></pre>
 	<p>After executing this command, you will be asked to add a snippet of code to your <code><b>wrangler.toml</b></code> file that looks something like this:</p>
 	<pre class="language-bash"><code class="language-bash">[[ d1_databases ]]
@@ -192,4 +192,5 @@ Published todo-gateway (0.51 sec)
 	</div>
 	<!--kg-card-begin: html-->
 	<div style="position: relative; padding-top: 56.25%;"><iframe src="https://customer-rhnwzxvb3mg4wz3v.cloudflarestream.com/c35956709f26ab593a8b5446cb452804/iframe?preload=true&amp;poster=https%3A%2F%2Fcustomer-rhnwzxvb3mg4wz3v.cloudflarestream.com%2Fc35956709f26ab593a8b5446cb452804%2Fthumbnails%2Fthumbnail.jpg%3Ftime%3D2s%26height%3D600" style="border: none; position: absolute; top: 0; left: 0; height: 100%; width: 100%;" allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;" allowfullscreen="true"></iframe></div><!--kg-card-end: html-->
+	<p></p>
 </div>

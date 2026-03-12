@@ -83,7 +83,7 @@ export default buildConfig({
 			</svg>
 		</a>
 	</div>
-	<p>With Postgres working, we next sought to add support for <a href="https://developers.cloudflare.com/d1"><u>D1</u></a>, Cloudflare’s managed serverless database, built on top of SQLite.</p>
+	<p>With Postgres working, we next sought to add support for <a href="https://developers.cloudflare.com/d1"><u>D1</u></a>, Cloudflare’s <a href="https://www.cloudflare.com/developer-platform/products/d1">managed serverless database</a>, built on top of SQLite.</p>
 	<p>Payload doesn’t support D1 out of the box, but has support for SQLite via the <code>@payloadcms/db-sqlite</code> adapter, which uses <a href="https://orm.drizzle.team"><u>Drizzle ORM</u></a> alongside libSQL. Thankfully, Drizzle also has support for D1, so we decided to build a custom adapter for D1, using the SQLite one as a base.</p>
 	<p>The main difference between D1 and libSQL is on the result object, so we built a small method to map the result from D1 into the format expected by libSQL:</p>
 	<pre class="language-TypeScript"><code class="language-TypeScript">export const execute: Execute&lt;any&gt; = function execute({ db, drizzle, raw, sql: statement }) {
