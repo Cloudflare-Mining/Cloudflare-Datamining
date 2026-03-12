@@ -161,6 +161,9 @@
 		"tags": [
 			"AI Gateway Provider Configs"
 		],
+		"x-api-token-group": [
+			"Secrets Store Write"
+		],
 		"x-cfPermissionsRequired": {
 			"enum": [
 				"com.cloudflare.api.account.aig"
@@ -562,6 +565,9 @@
 		"tags": [
 			"AI Gateway Provider Configs"
 		],
+		"x-api-token-group": [
+			"Secrets Store Write"
+		],
 		"x-cfPermissionsRequired": {
 			"enum": [
 				"com.cloudflare.api.account.aig"
@@ -799,6 +805,9 @@
 		"summary": "Update a Provider Configs",
 		"tags": [
 			"AI Gateway Provider Configs"
+		],
+		"x-api-token-group": [
+			"Secrets Store Write"
 		],
 		"x-cfPermissionsRequired": {
 			"enum": [

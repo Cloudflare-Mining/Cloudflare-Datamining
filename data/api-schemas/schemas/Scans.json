@@ -181,6 +181,9 @@
 		"summary": "Delete a Scan Config",
 		"tags": [
 			"Scans"
+		],
+		"x-api-token-group": [
+			"Cloudforce One Write"
 		]
 	},
 	"GET /accounts/{account_id}/cloudforce-one/scans/config": {
@@ -472,6 +475,10 @@
 		"summary": "List Scan Configs",
 		"tags": [
 			"Scans"
+		],
+		"x-api-token-group": [
+			"Cloudforce One Write",
+			"Cloudforce One Read"
 		]
 	},
 	"GET /accounts/{account_id}/cloudforce-one/scans/results/{config_id}": {
@@ -687,6 +694,10 @@
 		"summary": "Get the Latest Scan Result",
 		"tags": [
 			"Scans"
+		],
+		"x-api-token-group": [
+			"Cloudforce One Write",
+			"Cloudforce One Read"
 		]
 	},
 	"PATCH /accounts/{account_id}/cloudforce-one/scans/config/{config_id}": {
@@ -1027,6 +1038,9 @@
 		"summary": "Update an existing Scan Config",
 		"tags": [
 			"Scans"
+		],
+		"x-api-token-group": [
+			"Cloudforce One Write"
 		]
 	},
 	"POST /accounts/{account_id}/cloudforce-one/scans/config": {
@@ -1360,6 +1374,9 @@
 		"summary": "Create a new Scan Config",
 		"tags": [
 			"Scans"
+		],
+		"x-api-token-group": [
+			"Cloudforce One Write"
 		]
 	}
 }

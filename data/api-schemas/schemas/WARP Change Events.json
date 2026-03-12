@@ -504,11 +504,11 @@
 		"tags": [
 			"WARP Change Events"
 		],
-		"x-cfPermissionsRequired": {
-			"enum": [
-				"#dex:read",
-				"#teams:report"
-			]
-		}
+		"x-api-token-group": [
+			"Cloudflare DEX Write",
+			"Cloudflare DEX Read",
+			"Zero Trust Report",
+			"Zero Trust Read"
+		]
 	}
 }

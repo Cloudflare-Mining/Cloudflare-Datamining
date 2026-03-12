@@ -856,6 +856,9 @@
 		"tags": [
 			"Rate limits for a zone"
 		],
+		"x-api-token-group": [
+			"Firewall Services Write"
+		],
 		"x-cfPlanAvailability": {
 			"business": true,
 			"enterprise": true,
@@ -1725,6 +1728,10 @@
 		"tags": [
 			"Rate limits for a zone"
 		],
+		"x-api-token-group": [
+			"Firewall Services Write",
+			"Firewall Services Read"
+		],
 		"x-cfPlanAvailability": {
 			"business": true,
 			"enterprise": true,
@@ -2538,6 +2545,10 @@
 		"summary": "Get a rate limit",
 		"tags": [
 			"Rate limits for a zone"
+		],
+		"x-api-token-group": [
+			"Firewall Services Write",
+			"Firewall Services Read"
 		],
 		"x-cfPlanAvailability": {
 			"business": true,
@@ -3529,6 +3540,9 @@
 		"summary": "Create a rate limit",
 		"tags": [
 			"Rate limits for a zone"
+		],
+		"x-api-token-group": [
+			"Firewall Services Write"
 		],
 		"x-cfPlanAvailability": {
 			"business": true,
@@ -4532,6 +4546,9 @@
 		"summary": "Update a rate limit",
 		"tags": [
 			"Rate limits for a zone"
+		],
+		"x-api-token-group": [
+			"Firewall Services Write"
 		],
 		"x-cfPlanAvailability": {
 			"business": true,

@@ -189,6 +189,10 @@
 		"tags": [
 			"Workers AI Text Embeddings"
 		],
+		"x-api-token-group": [
+			"Workers AI Write",
+			"Workers AI Read"
+		],
 		"x-cfPermissionsRequired": {
 			"enum": [
 				"com.cloudflare.api.account.ai"
@@ -390,6 +394,10 @@
 		"summary": "Execute @cf/baai/bge-large-en-v1.5 model.",
 		"tags": [
 			"Workers AI Text Embeddings"
+		],
+		"x-api-token-group": [
+			"Workers AI Write",
+			"Workers AI Read"
 		],
 		"x-cfPermissionsRequired": {
 			"enum": [
@@ -656,6 +664,10 @@
 		"tags": [
 			"Workers AI Text Embeddings"
 		],
+		"x-api-token-group": [
+			"Workers AI Write",
+			"Workers AI Read"
+		],
 		"x-cfPermissionsRequired": {
 			"enum": [
 				"com.cloudflare.api.account.ai"
@@ -857,6 +869,10 @@
 		"summary": "Execute @cf/baai/bge-small-en-v1.5 model.",
 		"tags": [
 			"Workers AI Text Embeddings"
+		],
+		"x-api-token-group": [
+			"Workers AI Write",
+			"Workers AI Read"
 		],
 		"x-cfPermissionsRequired": {
 			"enum": [
@@ -1060,6 +1076,10 @@
 		"tags": [
 			"Workers AI Text Embeddings"
 		],
+		"x-api-token-group": [
+			"Workers AI Write",
+			"Workers AI Read"
+		],
 		"x-cfPermissionsRequired": {
 			"enum": [
 				"com.cloudflare.api.account.ai"
@@ -1261,6 +1281,10 @@
 		"summary": "Execute @cf/baai/omni-bge-large-en-v1.5 model.",
 		"tags": [
 			"Workers AI Text Embeddings"
+		],
+		"x-api-token-group": [
+			"Workers AI Write",
+			"Workers AI Read"
 		],
 		"x-cfPermissionsRequired": {
 			"enum": [
@@ -1527,6 +1551,10 @@
 		"tags": [
 			"Workers AI Text Embeddings"
 		],
+		"x-api-token-group": [
+			"Workers AI Write",
+			"Workers AI Read"
+		],
 		"x-cfPermissionsRequired": {
 			"enum": [
 				"com.cloudflare.api.account.ai"
@@ -1728,6 +1756,10 @@
 		"summary": "Execute @cf/baai/omni-bge-small-en-v1.5 model.",
 		"tags": [
 			"Workers AI Text Embeddings"
+		],
+		"x-api-token-group": [
+			"Workers AI Write",
+			"Workers AI Read"
 		],
 		"x-cfPermissionsRequired": {
 			"enum": [
@@ -1931,6 +1963,10 @@
 		"tags": [
 			"Workers AI Text Embeddings"
 		],
+		"x-api-token-group": [
+			"Workers AI Write",
+			"Workers AI Read"
+		],
 		"x-cfPermissionsRequired": {
 			"enum": [
 				"com.cloudflare.api.account.ai"
@@ -2074,6 +2110,10 @@
 		"tags": [
 			"Workers AI Text Embeddings"
 		],
+		"x-api-token-group": [
+			"Workers AI Write",
+			"Workers AI Read"
+		],
 		"x-cfPermissionsRequired": {
 			"enum": [
 				"com.cloudflare.api.account.ai"
@@ -2212,6 +2252,10 @@
 		"tags": [
 			"Workers AI Text Embeddings"
 		],
+		"x-api-token-group": [
+			"Workers AI Write",
+			"Workers AI Read"
+		],
 		"x-cfPermissionsRequired": {
 			"enum": [
 				"com.cloudflare.api.account.ai"
@@ -2349,6 +2393,10 @@
 		"summary": "Execute @cf/pfnet/plamo-embedding-1b model.",
 		"tags": [
 			"Workers AI Text Embeddings"
+		],
+		"x-api-token-group": [
+			"Workers AI Write",
+			"Workers AI Read"
 		],
 		"x-cfPermissionsRequired": {
 			"enum": [
@@ -2529,6 +2577,10 @@
 		"summary": "Execute @cf/qwen/qwen3-embedding-0.6b model.",
 		"tags": [
 			"Workers AI Text Embeddings"
+		],
+		"x-api-token-group": [
+			"Workers AI Write",
+			"Workers AI Read"
 		],
 		"x-cfPermissionsRequired": {
 			"enum": [

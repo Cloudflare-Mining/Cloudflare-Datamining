@@ -446,6 +446,12 @@
 		"summary": "Retrieve discovered operations on a zone rendered as OpenAPI schemas",
 		"tags": [
 			"API Shield API Discovery"
+		],
+		"x-api-token-group": [
+			"Account API Gateway",
+			"Account API Gateway Read",
+			"Domain API Gateway",
+			"Domain API Gateway Read"
 		]
 	},
 	"GET /zones/{zone_id}/api_gateway/discovery/operations": {
@@ -1004,6 +1010,12 @@
 		"summary": "Retrieve discovered operations on a zone",
 		"tags": [
 			"API Shield API Discovery"
+		],
+		"x-api-token-group": [
+			"Account API Gateway",
+			"Account API Gateway Read",
+			"Domain API Gateway",
+			"Domain API Gateway Read"
 		]
 	},
 	"PATCH /zones/{zone_id}/api_gateway/discovery/operations": {
@@ -1294,6 +1306,10 @@
 		"summary": "Patch discovered operations",
 		"tags": [
 			"API Shield API Discovery"
+		],
+		"x-api-token-group": [
+			"Account API Gateway",
+			"Domain API Gateway"
 		]
 	},
 	"PATCH /zones/{zone_id}/api_gateway/discovery/operations/{operation_id}": {
@@ -1565,6 +1581,10 @@
 		"summary": "Patch discovered operation",
 		"tags": [
 			"API Shield API Discovery"
+		],
+		"x-api-token-group": [
+			"Account API Gateway",
+			"Domain API Gateway"
 		]
 	}
 }

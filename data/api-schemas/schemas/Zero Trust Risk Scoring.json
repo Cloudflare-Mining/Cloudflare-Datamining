@@ -344,6 +344,9 @@
 		"summary": "Get risk event/score information for a specific user",
 		"tags": [
 			"Zero Trust Risk Scoring"
+		],
+		"x-api-token-group": [
+			"Zero Trust: PII Read"
 		]
 	},
 	"GET /accounts/{account_id}/zt_risk_scoring/behaviors": {
@@ -625,6 +628,10 @@
 		"summary": "Get all behaviors and associated configuration",
 		"tags": [
 			"Zero Trust Risk Scoring"
+		],
+		"x-api-token-group": [
+			"Zero Trust Read",
+			"Zero Trust Write"
 		]
 	},
 	"GET /accounts/{account_id}/zt_risk_scoring/summary": {
@@ -947,6 +954,9 @@
 		"summary": "Get risk score info for all users in the account",
 		"tags": [
 			"Zero Trust Risk Scoring"
+		],
+		"x-api-token-group": [
+			"Zero Trust: PII Read"
 		]
 	},
 	"POST /accounts/{account_id}/zt_risk_scoring/{user_id}/reset": {
@@ -1202,6 +1212,9 @@
 		"summary": "Clear the risk score for a particular user",
 		"tags": [
 			"Zero Trust Risk Scoring"
+		],
+		"x-api-token-group": [
+			"Zero Trust Write"
 		]
 	},
 	"PUT /accounts/{account_id}/zt_risk_scoring/behaviors": {
@@ -1515,6 +1528,9 @@
 		"summary": "Update configuration for risk behaviors",
 		"tags": [
 			"Zero Trust Risk Scoring"
+		],
+		"x-api-token-group": [
+			"Zero Trust Write"
 		]
 	}
 }

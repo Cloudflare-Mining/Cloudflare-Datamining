@@ -238,6 +238,9 @@
 		"tags": [
 			"Web Analytics"
 		],
+		"x-api-token-group": [
+			"Account Settings Write"
+		],
 		"x-cfPlanAvailability": {
 			"business": true,
 			"enterprise": true,
@@ -847,6 +850,9 @@
 		"tags": [
 			"Web Analytics"
 		],
+		"x-api-token-group": [
+			"Account Settings Read"
+		],
 		"x-cfPlanAvailability": {
 			"business": true,
 			"enterprise": true,
@@ -1252,6 +1258,9 @@
 		"summary": "List Web Analytics sites",
 		"tags": [
 			"Web Analytics"
+		],
+		"x-api-token-group": [
+			"Account Settings Read"
 		],
 		"x-cfPlanAvailability": {
 			"business": true,
@@ -1817,6 +1826,10 @@
 		"tags": [
 			"Web Analytics"
 		],
+		"x-api-token-group": [
+			"Zone Settings Write",
+			"Zone Settings Read"
+		],
 		"x-cfPlanAvailability": {
 			"business": true,
 			"enterprise": true,
@@ -2076,6 +2089,9 @@
 		"summary": "Toggle RUM on/off for a zone",
 		"tags": [
 			"Web Analytics"
+		],
+		"x-api-token-group": [
+			"Zone Settings Write"
 		],
 		"x-cfPlanAvailability": {
 			"business": true,
@@ -2447,6 +2463,9 @@
 		"summary": "Create a Web Analytics site",
 		"tags": [
 			"Web Analytics"
+		],
+		"x-api-token-group": [
+			"Account Settings Write"
 		],
 		"x-cfPlanAvailability": {
 			"business": true,
@@ -3148,6 +3167,9 @@
 		"tags": [
 			"Web Analytics"
 		],
+		"x-api-token-group": [
+			"Account Settings Write"
+		],
 		"x-cfPlanAvailability": {
 			"business": true,
 			"enterprise": true,
@@ -3541,6 +3563,9 @@
 		"summary": "Update a Web Analytics site",
 		"tags": [
 			"Web Analytics"
+		],
+		"x-api-token-group": [
+			"Account Settings Write"
 		],
 		"x-cfPlanAvailability": {
 			"business": true,

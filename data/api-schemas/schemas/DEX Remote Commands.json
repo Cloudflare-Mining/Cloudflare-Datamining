@@ -402,12 +402,12 @@
 		"tags": [
 			"DEX Remote Commands"
 		],
-		"x-cfPermissionsRequired": {
-			"enum": [
-				"#dex:read",
-				"#teams:report"
-			]
-		}
+		"x-api-token-group": [
+			"Cloudflare DEX Write",
+			"Cloudflare DEX Read",
+			"Zero Trust Report",
+			"Zero Trust Read"
+		]
 	},
 	"GET /accounts/{account_id}/dex/commands/{command_id}/downloads/{filename}": {
 		"description": "Downloads artifacts for an executed command. Bulk downloads are not supported",
@@ -639,12 +639,12 @@
 		"tags": [
 			"DEX Remote Commands"
 		],
-		"x-cfPermissionsRequired": {
-			"enum": [
-				"#dex:read",
-				"#teams:report"
-			]
-		}
+		"x-api-token-group": [
+			"Cloudflare DEX Write",
+			"Cloudflare DEX Read",
+			"Zero Trust Report",
+			"Zero Trust Read"
+		]
 	},
 	"GET /accounts/{account_id}/dex/commands/devices": {
 		"description": "List devices with WARP client support for remote captures which have been connected in the last 1 hour.",
@@ -1013,12 +1013,12 @@
 		"tags": [
 			"DEX Remote Commands"
 		],
-		"x-cfPermissionsRequired": {
-			"enum": [
-				"#dex:read",
-				"#teams:report"
-			]
-		}
+		"x-api-token-group": [
+			"Cloudflare DEX Write",
+			"Cloudflare DEX Read",
+			"Zero Trust Report",
+			"Zero Trust Read"
+		]
 	},
 	"GET /accounts/{account_id}/dex/commands/quota": {
 		"description": "Retrieves the current quota usage and limits for device commands within a specific account, including the time when the quota will reset",
@@ -1323,12 +1323,12 @@
 		"tags": [
 			"DEX Remote Commands"
 		],
-		"x-cfPermissionsRequired": {
-			"enum": [
-				"#dex:read",
-				"#teams:report"
-			]
-		}
+		"x-api-token-group": [
+			"Cloudflare DEX Write",
+			"Cloudflare DEX Read",
+			"Zero Trust Report",
+			"Zero Trust Read"
+		]
 	},
 	"POST /accounts/{account_id}/dex/commands": {
 		"description": "Initiate commands for up to 10 devices per account",
@@ -1754,11 +1754,8 @@
 		"tags": [
 			"DEX Remote Commands"
 		],
-		"x-cfPermissionsRequired": {
-			"enum": [
-				"#dex:read",
-				"#teams:report"
-			]
-		}
+		"x-api-token-group": [
+			"Cloudflare DEX Write"
+		]
 	}
 }

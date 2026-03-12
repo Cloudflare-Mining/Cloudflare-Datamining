@@ -274,6 +274,9 @@
 		"tags": [
 			"Access Bookmark applications (Deprecated)"
 		],
+		"x-api-token-group": [
+			"Access: Apps and Policies Write"
+		],
 		"x-cfDeprecation": {
 			"description": "This endpoint is deprecated in favor of using a specialized Access Application App Type.",
 			"display": true,
@@ -618,6 +621,11 @@
 		"tags": [
 			"Access Bookmark applications (Deprecated)"
 		],
+		"x-api-token-group": [
+			"Access: Apps and Policies Revoke",
+			"Access: Apps and Policies Write",
+			"Access: Apps and Policies Read"
+		],
 		"x-cfDeprecation": {
 			"description": "This endpoint is deprecated in favor of using a specialized Access Application App Type.",
 			"display": true,
@@ -940,6 +948,10 @@
 		"summary": "Get a Bookmark application",
 		"tags": [
 			"Access Bookmark applications (Deprecated)"
+		],
+		"x-api-token-group": [
+			"Access: Apps and Policies Write",
+			"Access: Apps and Policies Read"
 		],
 		"x-cfDeprecation": {
 			"description": "This endpoint is deprecated in favor of using a specialized Access Application App Type.",
@@ -1598,6 +1610,9 @@
 		"summary": "Update a Bookmark application",
 		"tags": [
 			"Access Bookmark applications (Deprecated)"
+		],
+		"x-api-token-group": [
+			"Access: Apps and Policies Write"
 		],
 		"x-cfDeprecation": {
 			"description": "This endpoint is deprecated in favor of using a specialized Access Application App Type.",

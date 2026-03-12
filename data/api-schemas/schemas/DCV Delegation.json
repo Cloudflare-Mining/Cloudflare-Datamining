@@ -375,11 +375,10 @@
 		"tags": [
 			"DCV Delegation"
 		],
-		"x-cfPermissionsRequired": {
-			"enum": [
-				"#ssl:read"
-			]
-		},
+		"x-api-token-group": [
+			"SSL and Certificates Write",
+			"SSL and Certificates Read"
+		],
 		"x-cfPlanAvailability": {
 			"business": true,
 			"enterprise": true,

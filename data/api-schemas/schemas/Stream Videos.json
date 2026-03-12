@@ -58,6 +58,9 @@
 		"summary": "Delete video",
 		"tags": [
 			"Stream Videos"
+		],
+		"x-api-token-group": [
+			"Stream Write"
 		]
 	},
 	"GET /accounts/{account_id}/stream": {
@@ -711,6 +714,10 @@
 		"summary": "List videos",
 		"tags": [
 			"Stream Videos"
+		],
+		"x-api-token-group": [
+			"Stream Write",
+			"Stream Read"
 		]
 	},
 	"GET /accounts/{account_id}/stream/{identifier}": {
@@ -1263,6 +1270,10 @@
 		"summary": "Retrieve video details",
 		"tags": [
 			"Stream Videos"
+		],
+		"x-api-token-group": [
+			"Stream Write",
+			"Stream Read"
 		]
 	},
 	"GET /accounts/{account_id}/stream/{identifier}/embed": {
@@ -1430,6 +1441,10 @@
 		"summary": "Retrieve embed Code HTML",
 		"tags": [
 			"Stream Videos"
+		],
+		"x-api-token-group": [
+			"Stream Write",
+			"Stream Read"
 		]
 	},
 	"GET /accounts/{account_id}/stream/storage-usage": {
@@ -1712,6 +1727,10 @@
 		"summary": "Storage use",
 		"tags": [
 			"Stream Videos"
+		],
+		"x-api-token-group": [
+			"Stream Write",
+			"Stream Read"
 		]
 	},
 	"POST /accounts/{account_id}/stream": {
@@ -1818,6 +1837,9 @@
 		"summary": "Initiate video uploads using TUS",
 		"tags": [
 			"Stream Videos"
+		],
+		"x-api-token-group": [
+			"Stream Write"
 		]
 	},
 	"POST /accounts/{account_id}/stream/{identifier}": {
@@ -3453,6 +3475,9 @@
 		"summary": "Upload videos from a URL",
 		"tags": [
 			"Stream Videos"
+		],
+		"x-api-token-group": [
+			"Stream Write"
 		]
 	},
 	"POST /accounts/{account_id}/stream/direct_upload": {
@@ -3907,6 +3932,9 @@
 		"summary": "Upload videos via direct upload URLs",
 		"tags": [
 			"Stream Videos"
+		],
+		"x-api-token-group": [
+			"Stream Write"
 		]
 	}
 }

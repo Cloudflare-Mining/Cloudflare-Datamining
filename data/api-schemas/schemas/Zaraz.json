@@ -1732,11 +1732,11 @@
 		"tags": [
 			"Zaraz"
 		],
-		"x-cfPermissionsRequired": {
-			"enum": [
-				"#zaraz:read"
-			]
-		}
+		"x-api-token-group": [
+			"Zaraz Edit",
+			"Zaraz Read",
+			"Zaraz Admin"
+		]
 	},
 	"GET /zones/{zone_id}/settings/zaraz/default": {
 		"description": "Gets default Zaraz configuration for a zone.",
@@ -3471,11 +3471,11 @@
 		"tags": [
 			"Zaraz"
 		],
-		"x-cfPermissionsRequired": {
-			"enum": [
-				"#zaraz:read"
-			]
-		}
+		"x-api-token-group": [
+			"Zaraz Edit",
+			"Zaraz Read",
+			"Zaraz Admin"
+		]
 	},
 	"GET /zones/{zone_id}/settings/zaraz/export": {
 		"description": "Exports full current published Zaraz configuration for a zone, secret variables included.",
@@ -5129,11 +5129,11 @@
 		"tags": [
 			"Zaraz"
 		],
-		"x-cfPermissionsRequired": {
-			"enum": [
-				"#zaraz:publish"
-			]
-		}
+		"x-api-token-group": [
+			"Zaraz Edit",
+			"Zaraz Read",
+			"Zaraz Admin"
+		]
 	},
 	"GET /zones/{zone_id}/settings/zaraz/history": {
 		"description": "Lists a history of published Zaraz configuration records for a zone.",
@@ -5483,11 +5483,11 @@
 		"tags": [
 			"Zaraz"
 		],
-		"x-cfPermissionsRequired": {
-			"enum": [
-				"#zaraz:publish"
-			]
-		}
+		"x-api-token-group": [
+			"Zaraz Edit",
+			"Zaraz Read",
+			"Zaraz Admin"
+		]
 	},
 	"GET /zones/{zone_id}/settings/zaraz/history/configs": {
 		"description": "Gets a history of published Zaraz configurations by ID(s) for a zone.",
@@ -7369,11 +7369,11 @@
 		"tags": [
 			"Zaraz"
 		],
-		"x-cfPermissionsRequired": {
-			"enum": [
-				"#zaraz:read"
-			]
-		}
+		"x-api-token-group": [
+			"Zaraz Edit",
+			"Zaraz Read",
+			"Zaraz Admin"
+		]
 	},
 	"GET /zones/{zone_id}/settings/zaraz/workflow": {
 		"description": "Gets Zaraz workflow for a zone.",
@@ -7625,11 +7625,11 @@
 		"tags": [
 			"Zaraz"
 		],
-		"x-cfPermissionsRequired": {
-			"enum": [
-				"#zaraz:read"
-			]
-		}
+		"x-api-token-group": [
+			"Zaraz Edit",
+			"Zaraz Read",
+			"Zaraz Admin"
+		]
 	},
 	"POST /zones/{zone_id}/settings/zaraz/publish": {
 		"description": "Publish current Zaraz preview configuration for a zone.",
@@ -7886,6 +7886,9 @@
 		"summary": "Publish Zaraz preview configuration",
 		"tags": [
 			"Zaraz"
+		],
+		"x-api-token-group": [
+			"Zaraz Admin"
 		],
 		"x-cfPermissionsRequired": {
 			"enum": [
@@ -11125,11 +11128,10 @@
 		"tags": [
 			"Zaraz"
 		],
-		"x-cfPermissionsRequired": {
-			"enum": [
-				"#zaraz:edit"
-			]
-		}
+		"x-api-token-group": [
+			"Zaraz Edit",
+			"Zaraz Admin"
+		]
 	},
 	"PUT /zones/{zone_id}/settings/zaraz/history": {
 		"description": "Restores a historical published Zaraz configuration by ID for a zone.",
@@ -12877,11 +12879,10 @@
 		"tags": [
 			"Zaraz"
 		],
-		"x-cfPermissionsRequired": {
-			"enum": [
-				"#zaraz:publish"
-			]
-		}
+		"x-api-token-group": [
+			"Zaraz Edit",
+			"Zaraz Admin"
+		]
 	},
 	"PUT /zones/{zone_id}/settings/zaraz/workflow": {
 		"description": "Updates Zaraz workflow for a zone.",
@@ -13149,10 +13150,9 @@
 		"tags": [
 			"Zaraz"
 		],
-		"x-cfPermissionsRequired": {
-			"enum": [
-				"#zaraz:publish"
-			]
-		}
+		"x-api-token-group": [
+			"Zaraz Edit",
+			"Zaraz Admin"
+		]
 	}
 }

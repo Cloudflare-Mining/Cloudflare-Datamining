@@ -95,6 +95,9 @@
 		"summary": "Delete saved string queries by ID",
 		"tags": [
 			"domain_search"
+		],
+		"x-api-token-group": [
+			"Intel Write"
 		]
 	},
 	"GET /accounts/{account_id}/brand-protection/matches": {
@@ -219,6 +222,10 @@
 		"summary": "Read matches for string queries by ID",
 		"tags": [
 			"domain_search"
+		],
+		"x-api-token-group": [
+			"Intel Write",
+			"Intel Read"
 		]
 	},
 	"GET /accounts/{account_id}/brand-protection/matches/download": {
@@ -343,6 +350,10 @@
 		"summary": "Download matches for string queries by ID",
 		"tags": [
 			"domain_search"
+		],
+		"x-api-token-group": [
+			"Intel Write",
+			"Intel Read"
 		]
 	},
 	"GET /accounts/{account_id}/brand-protection/queries": {
@@ -386,6 +397,10 @@
 		"summary": "Read string queries by ID",
 		"tags": [
 			"domain_search"
+		],
+		"x-api-token-group": [
+			"Intel Write",
+			"Intel Read"
 		]
 	},
 	"GET /accounts/{account_id}/brand-protection/total-queries": {
@@ -429,6 +444,10 @@
 		"summary": "Read the total number of saved string queries",
 		"tags": [
 			"domain_search"
+		],
+		"x-api-token-group": [
+			"Intel Write",
+			"Intel Read"
 		]
 	},
 	"PATCH /accounts/{account_id}/brand-protection/queries": {
@@ -472,6 +491,9 @@
 		"summary": "Update saved string queries by ID",
 		"tags": [
 			"domain_search"
+		],
+		"x-api-token-group": [
+			"Intel Write"
 		]
 	},
 	"POST /accounts/{account_id}/brand-protection/queries": {
@@ -599,6 +621,9 @@
 		"summary": "Create new saved string queries",
 		"tags": [
 			"domain_search"
+		],
+		"x-api-token-group": [
+			"Intel Write"
 		]
 	},
 	"POST /accounts/{account_id}/brand-protection/queries/bulk": {
@@ -693,6 +718,9 @@
 		"summary": "Create new saved string queries in bulk",
 		"tags": [
 			"domain_search"
+		],
+		"x-api-token-group": [
+			"Intel Write"
 		]
 	},
 	"POST /accounts/{account_id}/brand-protection/search": {
@@ -736,6 +764,9 @@
 		"summary": "Create new string queries",
 		"tags": [
 			"domain_search"
+		],
+		"x-api-token-group": [
+			"Intel Write"
 		]
 	}
 }

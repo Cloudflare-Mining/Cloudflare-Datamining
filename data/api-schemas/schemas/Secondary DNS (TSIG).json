@@ -387,12 +387,9 @@
 		"tags": [
 			"Secondary DNS (TSIG)"
 		],
-		"x-cfPermissionsRequired": {
-			"enum": [
-				"#dns_records:edit",
-				"#organization:read"
-			]
-		},
+		"x-api-token-group": [
+			"Account Settings Write"
+		],
 		"x-cfPlanAvailability": {
 			"business": false,
 			"enterprise": true,
@@ -885,12 +882,10 @@
 		"tags": [
 			"Secondary DNS (TSIG)"
 		],
-		"x-cfPermissionsRequired": {
-			"enum": [
-				"#dns_records:read",
-				"#organization:read"
-			]
-		},
+		"x-api-token-group": [
+			"Account Settings Write",
+			"Account Settings Read"
+		],
 		"x-cfPlanAvailability": {
 			"business": false,
 			"enterprise": true,
@@ -1328,12 +1323,10 @@
 		"tags": [
 			"Secondary DNS (TSIG)"
 		],
-		"x-cfPermissionsRequired": {
-			"enum": [
-				"#dns_records:read",
-				"#organization:read"
-			]
-		},
+		"x-api-token-group": [
+			"Account Settings Write",
+			"Account Settings Read"
+		],
 		"x-cfPlanAvailability": {
 			"business": false,
 			"enterprise": true,
@@ -1802,12 +1795,9 @@
 		"tags": [
 			"Secondary DNS (TSIG)"
 		],
-		"x-cfPermissionsRequired": {
-			"enum": [
-				"#dns_records:edit",
-				"#organization:read"
-			]
-		},
+		"x-api-token-group": [
+			"Account Settings Write"
+		],
 		"x-cfPlanAvailability": {
 			"business": false,
 			"enterprise": true,
@@ -2287,12 +2277,9 @@
 		"tags": [
 			"Secondary DNS (TSIG)"
 		],
-		"x-cfPermissionsRequired": {
-			"enum": [
-				"#dns_records:edit",
-				"#organization:read"
-			]
-		},
+		"x-api-token-group": [
+			"Account Settings Write"
+		],
 		"x-cfPlanAvailability": {
 			"business": false,
 			"enterprise": true,

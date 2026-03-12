@@ -356,6 +356,9 @@
 		"summary": "Delete email scanner rule",
 		"tags": [
 			"DLP Email"
+		],
+		"x-api-token-group": [
+			"Zero Trust Write"
 		]
 	},
 	"GET /accounts/{account_id}/dlp/email/account_mapping": {
@@ -650,6 +653,10 @@
 		"summary": "Get mapping",
 		"tags": [
 			"DLP Email"
+		],
+		"x-api-token-group": [
+			"Zero Trust Read",
+			"Zero Trust Write"
 		]
 	},
 	"GET /accounts/{account_id}/dlp/email/rules": {
@@ -1004,6 +1011,10 @@
 		"summary": "List all email scanner rules",
 		"tags": [
 			"DLP Email"
+		],
+		"x-api-token-group": [
+			"Zero Trust Read",
+			"Zero Trust Write"
 		]
 	},
 	"GET /accounts/{account_id}/dlp/email/rules/{rule_id}": {
@@ -1363,6 +1374,10 @@
 		"summary": "Get an email scanner rule",
 		"tags": [
 			"DLP Email"
+		],
+		"x-api-token-group": [
+			"Zero Trust Read",
+			"Zero Trust Write"
 		]
 	},
 	"PATCH /accounts/{account_id}/dlp/email/rules": {
@@ -1738,6 +1753,9 @@
 		"summary": "Update email scanner rule priorities",
 		"tags": [
 			"DLP Email"
+		],
+		"x-api-token-group": [
+			"Zero Trust Write"
 		]
 	},
 	"POST /accounts/{account_id}/dlp/email/account_mapping": {
@@ -2087,6 +2105,9 @@
 		"summary": "Create mapping",
 		"tags": [
 			"DLP Email"
+		],
+		"x-api-token-group": [
+			"Zero Trust Write"
 		]
 	},
 	"POST /accounts/{account_id}/dlp/email/rules": {
@@ -2532,6 +2553,9 @@
 		"summary": "Create email scanner rule",
 		"tags": [
 			"DLP Email"
+		],
+		"x-api-token-group": [
+			"Zero Trust Write"
 		]
 	},
 	"PUT /accounts/{account_id}/dlp/email/rules/{rule_id}": {
@@ -2986,6 +3010,9 @@
 		"summary": "Update email scanner rule",
 		"tags": [
 			"DLP Email"
+		],
+		"x-api-token-group": [
+			"Zero Trust Write"
 		]
 	}
 }

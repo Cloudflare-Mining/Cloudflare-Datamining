@@ -260,6 +260,10 @@
 		"tags": [
 			"Logs Received"
 		],
+		"x-api-token-group": [
+			"Logs Write",
+			"Logs Read"
+		],
 		"x-cfPermissionsRequired": {
 			"enum": [
 				"#logs:read",
@@ -477,11 +481,10 @@
 		"tags": [
 			"Logs Received"
 		],
-		"x-cfPermissionsRequired": {
-			"enum": [
-				"#logs:read"
-			]
-		},
+		"x-api-token-group": [
+			"Logs Write",
+			"Logs Read"
+		],
 		"x-cfPlanAvailability": {
 			"business": false,
 			"enterprise": true,
@@ -737,6 +740,10 @@
 		"tags": [
 			"Logs Received"
 		],
+		"x-api-token-group": [
+			"Logs Write",
+			"Logs Read"
+		],
 		"x-cfPermissionsRequired": {
 			"enum": [
 				"#logs:read"
@@ -913,11 +920,10 @@
 		"tags": [
 			"Logs Received"
 		],
-		"x-cfPermissionsRequired": {
-			"enum": [
-				"#logs:read"
-			]
-		},
+		"x-api-token-group": [
+			"Logs Write",
+			"Logs Read"
+		],
 		"x-cfPlanAvailability": {
 			"business": false,
 			"enterprise": true,
@@ -1204,6 +1210,9 @@
 		"summary": "Update log retention flag",
 		"tags": [
 			"Logs Received"
+		],
+		"x-api-token-group": [
+			"Logs Write"
 		],
 		"x-cfPermissionsRequired": {
 			"enum": [

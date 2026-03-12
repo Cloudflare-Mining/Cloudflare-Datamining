@@ -455,6 +455,9 @@
 		"tags": [
 			"AI Gateway Dynamic Routes"
 		],
+		"x-api-token-group": [
+			"AI Gateway Write"
+		],
 		"x-cfPermissionsRequired": {
 			"enum": [
 				"com.cloudflare.api.account.aig"
@@ -1001,6 +1004,10 @@
 		"tags": [
 			"AI Gateway Dynamic Routes"
 		],
+		"x-api-token-group": [
+			"AI Gateway Write",
+			"AI Gateway Read"
+		],
 		"x-cfPermissionsRequired": {
 			"enum": [
 				"com.cloudflare.api.account.aig"
@@ -1525,6 +1532,10 @@
 		"tags": [
 			"AI Gateway Dynamic Routes"
 		],
+		"x-api-token-group": [
+			"AI Gateway Write",
+			"AI Gateway Read"
+		],
 		"x-cfPermissionsRequired": {
 			"enum": [
 				"com.cloudflare.api.account.aig"
@@ -1690,6 +1701,10 @@
 		"summary": "List all AI Gateway Dynamic Route Deployments.",
 		"tags": [
 			"AI Gateway Dynamic Routes"
+		],
+		"x-api-token-group": [
+			"AI Gateway Write",
+			"AI Gateway Read"
 		],
 		"x-cfPermissionsRequired": {
 			"enum": [
@@ -1864,6 +1879,10 @@
 		"summary": "List all AI Gateway Dynamic Route Versions.",
 		"tags": [
 			"AI Gateway Dynamic Routes"
+		],
+		"x-api-token-group": [
+			"AI Gateway Write",
+			"AI Gateway Read"
 		],
 		"x-cfPermissionsRequired": {
 			"enum": [
@@ -2360,6 +2379,10 @@
 		"summary": "Get an AI Gateway Dynamic Route Version.",
 		"tags": [
 			"AI Gateway Dynamic Routes"
+		],
+		"x-api-token-group": [
+			"AI Gateway Write",
+			"AI Gateway Read"
 		],
 		"x-cfPermissionsRequired": {
 			"enum": [
@@ -3244,6 +3267,9 @@
 		"tags": [
 			"AI Gateway Dynamic Routes"
 		],
+		"x-api-token-group": [
+			"AI Gateway Write"
+		],
 		"x-cfPermissionsRequired": {
 			"enum": [
 				"com.cloudflare.api.account.aig"
@@ -4099,6 +4125,9 @@
 		"tags": [
 			"AI Gateway Dynamic Routes"
 		],
+		"x-api-token-group": [
+			"AI Gateway Write"
+		],
 		"x-cfPermissionsRequired": {
 			"enum": [
 				"com.cloudflare.api.account.aig"
@@ -4589,6 +4618,9 @@
 		"summary": "Create a new AI Gateway Dynamic Route Deployment.",
 		"tags": [
 			"AI Gateway Dynamic Routes"
+		],
+		"x-api-token-group": [
+			"AI Gateway Write"
 		],
 		"x-cfPermissionsRequired": {
 			"enum": [
@@ -5398,6 +5430,9 @@
 		"summary": "Create a new AI Gateway Dynamic Route Version.",
 		"tags": [
 			"AI Gateway Dynamic Routes"
+		],
+		"x-api-token-group": [
+			"AI Gateway Write"
 		],
 		"x-cfPermissionsRequired": {
 			"enum": [

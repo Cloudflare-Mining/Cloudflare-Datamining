@@ -377,6 +377,10 @@
 		"summary": "List abuse reports",
 		"tags": [
 			"tseng-abuse-complaint-processor_other"
+		],
+		"x-api-token-group": [
+			"Trust and Safety Write",
+			"Trust and Safety Read"
 		]
 	},
 	"GET /accounts/{account_id}/abuse-reports/{report_id}/emails": {
@@ -640,6 +644,10 @@
 		"summary": "List abuse report emails",
 		"tags": [
 			"tseng-abuse-complaint-processor_other"
+		],
+		"x-api-token-group": [
+			"Trust and Safety Write",
+			"Trust and Safety Read"
 		]
 	},
 	"GET /accounts/{account_id}/abuse-reports/{report_id}/mitigations": {
@@ -968,6 +976,10 @@
 		"summary": "List abuse report mitigations",
 		"tags": [
 			"tseng-abuse-complaint-processor_other"
+		],
+		"x-api-token-group": [
+			"Trust and Safety Write",
+			"Trust and Safety Read"
 		]
 	},
 	"GET /accounts/{account_id}/abuse-reports/{report_param}": {
@@ -1518,6 +1530,10 @@
 		"summary": "Abuse Report Details",
 		"tags": [
 			"tseng-abuse-complaint-processor_other"
+		],
+		"x-api-token-group": [
+			"Trust and Safety Write",
+			"Trust and Safety Read"
 		]
 	},
 	"POST /accounts/{account_id}/abuse-reports/{report_id}/mitigations/appeal": {
@@ -1776,6 +1792,9 @@
 		"summary": "Request review on mitigations",
 		"tags": [
 			"tseng-abuse-complaint-processor_other"
+		],
+		"x-api-token-group": [
+			"Trust and Safety Write"
 		]
 	},
 	"POST /accounts/{account_id}/abuse-reports/{report_param}": {

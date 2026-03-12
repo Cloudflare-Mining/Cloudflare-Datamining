@@ -353,6 +353,9 @@
 		"tags": [
 			"IP Access rules for an account"
 		],
+		"x-api-token-group": [
+			"Account Firewall Access Rules Write"
+		],
 		"x-cfPermissionsRequired": {
 			"enum": [
 				"#waf:edit"
@@ -1318,6 +1321,10 @@
 		"tags": [
 			"IP Access rules for an account"
 		],
+		"x-api-token-group": [
+			"Account Firewall Access Rules Write",
+			"Account Firewall Access Rules Read"
+		],
 		"x-cfPermissionsRequired": {
 			"enum": [
 				"#waf:read"
@@ -2139,6 +2146,10 @@
 		"summary": "Get an IP Access rule",
 		"tags": [
 			"IP Access rules for an account"
+		],
+		"x-api-token-group": [
+			"Account Firewall Access Rules Write",
+			"Account Firewall Access Rules Read"
 		],
 		"x-cfPermissionsRequired": {
 			"enum": [
@@ -3195,6 +3206,9 @@
 		"tags": [
 			"IP Access rules for an account"
 		],
+		"x-api-token-group": [
+			"Account Firewall Access Rules Write"
+		],
 		"x-cfPermissionsRequired": {
 			"enum": [
 				"#waf:edit"
@@ -4149,6 +4163,9 @@
 		"summary": "Create an IP Access rule",
 		"tags": [
 			"IP Access rules for an account"
+		],
+		"x-api-token-group": [
+			"Account Firewall Access Rules Write"
 		],
 		"x-cfPermissionsRequired": {
 			"enum": [

@@ -100,6 +100,9 @@
 		"summary": "Deletes an indicator",
 		"tags": [
 			"Indicator"
+		],
+		"x-api-token-group": [
+			"Cloudforce One Write"
 		]
 	},
 	"GET /accounts/{account_id}/cloudforce-one/events/dataset/{dataset_id}/indicators": {
@@ -296,6 +299,10 @@
 		"summary": "Lists indicators",
 		"tags": [
 			"Indicator"
+		],
+		"x-api-token-group": [
+			"Cloudforce One Write",
+			"Cloudforce One Read"
 		]
 	},
 	"GET /accounts/{account_id}/cloudforce-one/events/dataset/{dataset_id}/indicators/{indicator_id}": {
@@ -464,6 +471,10 @@
 		"summary": "Reads an indicator",
 		"tags": [
 			"Indicator"
+		],
+		"x-api-token-group": [
+			"Cloudforce One Write",
+			"Cloudforce One Read"
 		]
 	},
 	"GET /accounts/{account_id}/cloudforce-one/events/dataset/{dataset_id}/indicators/tags": {
@@ -629,6 +640,10 @@
 		"summary": "List mirrored tags for an indicator dataset",
 		"tags": [
 			"Indicator"
+		],
+		"x-api-token-group": [
+			"Cloudforce One Write",
+			"Cloudforce One Read"
 		]
 	},
 	"GET /accounts/{account_id}/cloudforce-one/events/indicators": {
@@ -1010,6 +1025,10 @@
 		"summary": "Lists indicators across multiple datasets",
 		"tags": [
 			"Indicator"
+		],
+		"x-api-token-group": [
+			"Cloudforce One Write",
+			"Cloudforce One Read"
 		]
 	},
 	"PATCH /accounts/{account_id}/cloudforce-one/events/dataset/{dataset_id}/indicators/{indicator_id}": {
@@ -1279,6 +1298,9 @@
 		"summary": "Updates an indicator",
 		"tags": [
 			"Indicator"
+		],
+		"x-api-token-group": [
+			"Cloudforce One Write"
 		]
 	},
 	"POST /accounts/{account_id}/cloudforce-one/events/dataset/{dataset_id}/indicators/bulk": {
@@ -1452,6 +1474,10 @@
 		"summary": "Creates multiple indicators in bulk",
 		"tags": [
 			"Indicator"
+		],
+		"x-api-token-group": [
+			"Cloudforce One Write",
+			"Cloudforce One Read"
 		]
 	},
 	"POST /accounts/{account_id}/cloudforce-one/events/dataset/{dataset_id}/indicators/create": {
@@ -1682,6 +1708,10 @@
 		"summary": "Creates a new indicator",
 		"tags": [
 			"Indicator"
+		],
+		"x-api-token-group": [
+			"Cloudforce One Write",
+			"Cloudforce One Read"
 		]
 	}
 }

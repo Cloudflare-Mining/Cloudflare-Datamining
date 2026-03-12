@@ -385,6 +385,9 @@
 		"tags": [
 			"Account Subscriptions"
 		],
+		"x-api-token-group": [
+			"Billing Write"
+		],
 		"x-cfPermissionsRequired": {
 			"enum": [
 				"#billing:edit"
@@ -1173,6 +1176,10 @@
 		"summary": "List Subscriptions",
 		"tags": [
 			"Account Subscriptions"
+		],
+		"x-api-token-group": [
+			"Billing Write",
+			"Billing Read"
 		],
 		"x-cfPermissionsRequired": {
 			"enum": [
@@ -2127,6 +2134,9 @@
 		"summary": "Create Subscription",
 		"tags": [
 			"Account Subscriptions"
+		],
+		"x-api-token-group": [
+			"Billing Write"
 		],
 		"x-cfPermissionsRequired": {
 			"enum": [
@@ -3095,6 +3105,9 @@
 		"summary": "Update Subscription",
 		"tags": [
 			"Account Subscriptions"
+		],
+		"x-api-token-group": [
+			"Billing Write"
 		],
 		"x-cfPermissionsRequired": {
 			"enum": [

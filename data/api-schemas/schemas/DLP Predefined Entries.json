@@ -253,6 +253,9 @@
 		"summary": "Delete predefined entry",
 		"tags": [
 			"DLP Predefined Entries"
+		],
+		"x-api-token-group": [
+			"Zero Trust Write"
 		]
 	},
 	"POST /accounts/{account_id}/dlp/entries/predefined": {
@@ -605,6 +608,9 @@
 		"summary": "Create predefined entry",
 		"tags": [
 			"DLP Predefined Entries"
+		],
+		"x-api-token-group": [
+			"Zero Trust Write"
 		]
 	}
 }

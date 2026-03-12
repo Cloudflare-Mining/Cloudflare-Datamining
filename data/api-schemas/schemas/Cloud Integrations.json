@@ -2871,6 +2871,9 @@
 		"summary": "Delete Cloud Integration",
 		"tags": [
 			"Cloud Integrations"
+		],
+		"x-api-token-group": [
+			"Magic WAN Write"
 		]
 	},
 	"GET /accounts/{account_id}/magic/cloud/providers": {
@@ -5530,6 +5533,10 @@
 		"summary": "List Cloud Integrations",
 		"tags": [
 			"Cloud Integrations"
+		],
+		"x-api-token-group": [
+			"Magic WAN Write",
+			"Magic WAN Read"
 		]
 	},
 	"GET /accounts/{account_id}/magic/cloud/providers/{provider_id}": {
@@ -8644,6 +8651,10 @@
 		"summary": "Read Cloud Integration",
 		"tags": [
 			"Cloud Integrations"
+		],
+		"x-api-token-group": [
+			"Magic WAN Write",
+			"Magic WAN Read"
 		]
 	},
 	"GET /accounts/{account_id}/magic/cloud/providers/{provider_id}/initial_setup": {
@@ -11575,6 +11586,10 @@
 		"summary": "Get Cloud Integration Setup Config",
 		"tags": [
 			"Cloud Integrations"
+		],
+		"x-api-token-group": [
+			"Magic WAN Write",
+			"Magic WAN Read"
 		]
 	},
 	"PATCH /accounts/{account_id}/magic/cloud/providers/{provider_id}": {
@@ -15662,6 +15677,9 @@
 		"summary": "Patch Cloud Integration",
 		"tags": [
 			"Cloud Integrations"
+		],
+		"x-api-token-group": [
+			"Magic WAN Write"
 		]
 	},
 	"POST /accounts/{account_id}/magic/cloud/providers": {
@@ -19278,6 +19296,9 @@
 		"summary": "Create Cloud Integration",
 		"tags": [
 			"Cloud Integrations"
+		],
+		"x-api-token-group": [
+			"Magic WAN Write"
 		]
 	},
 	"POST /accounts/{account_id}/magic/cloud/providers/{provider_id}/discover": {
@@ -25447,6 +25468,9 @@
 		"summary": "Run Discovery for All Integrations",
 		"tags": [
 			"Cloud Integrations"
+		],
+		"x-api-token-group": [
+			"Magic WAN Write"
 		]
 	},
 	"PUT /accounts/{account_id}/magic/cloud/providers/{provider_id}": {
@@ -29534,6 +29558,9 @@
 		"summary": "Update Cloud Integration",
 		"tags": [
 			"Cloud Integrations"
+		],
+		"x-api-token-group": [
+			"Magic WAN Write"
 		]
 	}
 }

@@ -179,6 +179,9 @@
 		"summary": "Delete trigger",
 		"tags": [
 			"Triggers"
+		],
+		"x-api-token-group": [
+			"Workers CI Write"
 		]
 	},
 	"PATCH /accounts/{account_id}/builds/triggers/{trigger_uuid}": {
@@ -580,6 +583,9 @@
 		"summary": "Update trigger",
 		"tags": [
 			"Triggers"
+		],
+		"x-api-token-group": [
+			"Workers CI Write"
 		]
 	},
 	"POST /accounts/{account_id}/builds/triggers": {
@@ -932,6 +938,9 @@
 		"summary": "Create trigger",
 		"tags": [
 			"Triggers"
+		],
+		"x-api-token-group": [
+			"Workers CI Write"
 		]
 	},
 	"POST /accounts/{account_id}/builds/triggers/{trigger_uuid}/builds": {
@@ -1178,6 +1187,9 @@
 		"summary": "Create manual build",
 		"tags": [
 			"Triggers"
+		],
+		"x-api-token-group": [
+			"Workers CI Write"
 		]
 	},
 	"POST /accounts/{account_id}/builds/triggers/{trigger_uuid}/purge_build_cache": {
@@ -1360,6 +1372,9 @@
 		"summary": "Purge build cache",
 		"tags": [
 			"Triggers"
+		],
+		"x-api-token-group": [
+			"Workers CI Write"
 		]
 	}
 }

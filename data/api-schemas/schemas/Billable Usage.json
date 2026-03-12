@@ -306,11 +306,10 @@
 		"tags": [
 			"Billable Usage"
 		],
-		"x-cfPermissionsRequired": {
-			"enum": [
-				"#billing:read"
-			]
-		},
+		"x-api-token-group": [
+			"Billing Write",
+			"Billing Read"
+		],
 		"x-cfPlanAvailability": {
 			"business": true,
 			"enterprise": false,

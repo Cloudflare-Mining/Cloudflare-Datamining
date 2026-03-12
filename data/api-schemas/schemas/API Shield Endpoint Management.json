@@ -268,6 +268,10 @@
 		"summary": "Delete multiple operations",
 		"tags": [
 			"API Shield Endpoint Management"
+		],
+		"x-api-token-group": [
+			"Account API Gateway",
+			"Domain API Gateway"
 		]
 	},
 	"DELETE /zones/{zone_id}/api_gateway/operations/{operation_id}": {
@@ -487,6 +491,10 @@
 		"summary": "Delete an operation",
 		"tags": [
 			"API Shield Endpoint Management"
+		],
+		"x-api-token-group": [
+			"Account API Gateway",
+			"Domain API Gateway"
 		]
 	},
 	"GET /zones/{zone_id}/api_gateway/operations": {
@@ -1330,6 +1338,12 @@
 		"summary": "Retrieve information about all operations on a zone",
 		"tags": [
 			"API Shield Endpoint Management"
+		],
+		"x-api-token-group": [
+			"Account API Gateway",
+			"Account API Gateway Read",
+			"Domain API Gateway",
+			"Domain API Gateway Read"
 		]
 	},
 	"GET /zones/{zone_id}/api_gateway/operations/{operation_id}": {
@@ -2051,6 +2065,12 @@
 		"summary": "Retrieve information about an operation",
 		"tags": [
 			"API Shield Endpoint Management"
+		],
+		"x-api-token-group": [
+			"Account API Gateway",
+			"Account API Gateway Read",
+			"Domain API Gateway",
+			"Domain API Gateway Read"
 		]
 	},
 	"GET /zones/{zone_id}/api_gateway/schemas": {
@@ -2362,6 +2382,12 @@
 		"summary": "Retrieve operations and features as OpenAPI schemas",
 		"tags": [
 			"API Shield Endpoint Management"
+		],
+		"x-api-token-group": [
+			"Account API Gateway",
+			"Account API Gateway Read",
+			"Domain API Gateway",
+			"Domain API Gateway Read"
 		]
 	},
 	"POST /zones/{zone_id}/api_gateway/operations": {
@@ -3113,6 +3139,10 @@
 		"summary": "Add operations to a zone",
 		"tags": [
 			"API Shield Endpoint Management"
+		],
+		"x-api-token-group": [
+			"Account API Gateway",
+			"Domain API Gateway"
 		]
 	},
 	"POST /zones/{zone_id}/api_gateway/operations/item": {
@@ -3862,6 +3892,10 @@
 		"summary": "Add one operation to a zone",
 		"tags": [
 			"API Shield Endpoint Management"
+		],
+		"x-api-token-group": [
+			"Account API Gateway",
+			"Domain API Gateway"
 		]
 	}
 }

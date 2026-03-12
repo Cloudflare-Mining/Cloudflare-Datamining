@@ -503,10 +503,9 @@
 		"tags": [
 			"Namespace Management"
 		],
-		"x-cfPermissionsRequired": {
-			"enum": [
-				"com.cloudflare.edge.r2.bucket.warehouse.read"
-			]
-		}
+		"x-api-token-group": [
+			"Workers R2 Data Catalog Write",
+			"Workers R2 Data Catalog Read"
+		]
 	}
 }

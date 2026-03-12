@@ -262,6 +262,9 @@
 		"summary": "Delete an mTLS certificate",
 		"tags": [
 			"Zone-Level Access mTLS authentication"
+		],
+		"x-api-token-group": [
+			"Access: Mutual TLS Certificates Write"
 		]
 	},
 	"GET /zones/{zone_id}/access/certificates": {
@@ -586,6 +589,10 @@
 		"summary": "List mTLS certificates",
 		"tags": [
 			"Zone-Level Access mTLS authentication"
+		],
+		"x-api-token-group": [
+			"Access: Mutual TLS Certificates Write",
+			"Access: Mutual TLS Certificates Read"
 		]
 	},
 	"GET /zones/{zone_id}/access/certificates/{certificate_id}": {
@@ -889,6 +896,10 @@
 		"summary": "Get an mTLS certificate",
 		"tags": [
 			"Zone-Level Access mTLS authentication"
+		],
+		"x-api-token-group": [
+			"Access: Mutual TLS Certificates Write",
+			"Access: Mutual TLS Certificates Read"
 		]
 	},
 	"GET /zones/{zone_id}/access/certificates/settings": {
@@ -1195,6 +1206,10 @@
 		"summary": "List all mTLS hostname settings",
 		"tags": [
 			"Zone-Level Access mTLS authentication"
+		],
+		"x-api-token-group": [
+			"Access: Mutual TLS Certificates Write",
+			"Access: Mutual TLS Certificates Read"
 		]
 	},
 	"POST /zones/{zone_id}/access/certificates": {
@@ -1520,6 +1535,9 @@
 		"summary": "Add an mTLS certificate",
 		"tags": [
 			"Zone-Level Access mTLS authentication"
+		],
+		"x-api-token-group": [
+			"Access: Mutual TLS Certificates Write"
 		]
 	},
 	"PUT /zones/{zone_id}/access/certificates/{certificate_id}": {
@@ -1851,6 +1869,9 @@
 		"summary": "Update an mTLS certificate",
 		"tags": [
 			"Zone-Level Access mTLS authentication"
+		],
+		"x-api-token-group": [
+			"Access: Mutual TLS Certificates Write"
 		]
 	},
 	"PUT /zones/{zone_id}/access/certificates/settings": {
@@ -2202,6 +2223,9 @@
 		"summary": "Update an mTLS certificate's hostname settings",
 		"tags": [
 			"Zone-Level Access mTLS authentication"
+		],
+		"x-api-token-group": [
+			"Access: Mutual TLS Certificates Write"
 		]
 	}
 }

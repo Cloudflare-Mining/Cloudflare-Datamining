@@ -252,6 +252,10 @@
 		"summary": "Delete per-operation schema validation setting",
 		"tags": [
 			"Schema Validation Settings"
+		],
+		"x-api-token-group": [
+			"Account API Gateway",
+			"Domain API Gateway"
 		]
 	},
 	"GET /zones/{zone_id}/schema_validation/settings": {
@@ -518,6 +522,12 @@
 		"summary": "Get global schema validation settings",
 		"tags": [
 			"Schema Validation Settings"
+		],
+		"x-api-token-group": [
+			"Account API Gateway",
+			"Account API Gateway Read",
+			"Domain API Gateway",
+			"Domain API Gateway Read"
 		]
 	},
 	"GET /zones/{zone_id}/schema_validation/settings/operations": {
@@ -849,6 +859,12 @@
 		"summary": "List per-operation schema validation settings",
 		"tags": [
 			"Schema Validation Settings"
+		],
+		"x-api-token-group": [
+			"Account API Gateway",
+			"Account API Gateway Read",
+			"Domain API Gateway",
+			"Domain API Gateway Read"
 		]
 	},
 	"GET /zones/{zone_id}/schema_validation/settings/operations/{operation_id}": {
@@ -1119,6 +1135,12 @@
 		"summary": "Get per-operation schema validation setting",
 		"tags": [
 			"Schema Validation Settings"
+		],
+		"x-api-token-group": [
+			"Account API Gateway",
+			"Account API Gateway Read",
+			"Domain API Gateway",
+			"Domain API Gateway Read"
 		]
 	},
 	"PATCH /zones/{zone_id}/schema_validation/settings": {
@@ -1418,6 +1440,10 @@
 		"summary": "Edit global schema validation settings",
 		"tags": [
 			"Schema Validation Settings"
+		],
+		"x-api-token-group": [
+			"Account API Gateway",
+			"Domain API Gateway"
 		]
 	},
 	"PATCH /zones/{zone_id}/schema_validation/settings/operations": {
@@ -1736,6 +1762,10 @@
 		"summary": "Bulk edit per-operation schema validation settings",
 		"tags": [
 			"Schema Validation Settings"
+		],
+		"x-api-token-group": [
+			"Account API Gateway",
+			"Domain API Gateway"
 		]
 	},
 	"PUT /zones/{zone_id}/schema_validation/settings": {
@@ -2046,6 +2076,10 @@
 		"summary": "Update global schema validation settings",
 		"tags": [
 			"Schema Validation Settings"
+		],
+		"x-api-token-group": [
+			"Account API Gateway",
+			"Domain API Gateway"
 		]
 	},
 	"PUT /zones/{zone_id}/schema_validation/settings/operations/{operation_id}": {
@@ -2352,6 +2386,10 @@
 		"summary": "Update per-operation schema validation setting",
 		"tags": [
 			"Schema Validation Settings"
+		],
+		"x-api-token-group": [
+			"Account API Gateway",
+			"Domain API Gateway"
 		]
 	}
 }

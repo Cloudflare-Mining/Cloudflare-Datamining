@@ -220,6 +220,9 @@
 		"summary": "Remove a Namespace",
 		"tags": [
 			"Workers KV Namespace"
+		],
+		"x-api-token-group": [
+			"Workers KV Storage Write"
 		]
 	},
 	"DELETE /accounts/{account_id}/storage/kv/namespaces/{namespace_id}/bulk": {
@@ -498,6 +501,9 @@
 		"summary": "Delete multiple key-value pairs",
 		"tags": [
 			"Workers KV Namespace"
+		],
+		"x-api-token-group": [
+			"Workers KV Storage Write"
 		]
 	},
 	"DELETE /accounts/{account_id}/storage/kv/namespaces/{namespace_id}/values/{key_name}": {
@@ -732,6 +738,9 @@
 		"summary": "Delete key-value pair",
 		"tags": [
 			"Workers KV Namespace"
+		],
+		"x-api-token-group": [
+			"Workers KV Storage Write"
 		]
 	},
 	"GET /accounts/{account_id}/storage/kv/namespaces": {
@@ -1047,6 +1056,10 @@
 		"summary": "List Namespaces",
 		"tags": [
 			"Workers KV Namespace"
+		],
+		"x-api-token-group": [
+			"Workers KV Storage Write",
+			"Workers KV Storage Read"
 		]
 	},
 	"GET /accounts/{account_id}/storage/kv/namespaces/{namespace_id}": {
@@ -1290,6 +1303,10 @@
 		"summary": "Get a Namespace",
 		"tags": [
 			"Workers KV Namespace"
+		],
+		"x-api-token-group": [
+			"Workers KV Storage Write",
+			"Workers KV Storage Read"
 		]
 	},
 	"GET /accounts/{account_id}/storage/kv/namespaces/{namespace_id}/keys": {
@@ -1616,6 +1633,10 @@
 		"summary": "List a Namespace's Keys",
 		"tags": [
 			"Workers KV Namespace"
+		],
+		"x-api-token-group": [
+			"Workers KV Storage Write",
+			"Workers KV Storage Read"
 		]
 	},
 	"GET /accounts/{account_id}/storage/kv/namespaces/{namespace_id}/metadata/{key_name}": {
@@ -1877,6 +1898,10 @@
 		"summary": "Read the metadata for a key",
 		"tags": [
 			"Workers KV Namespace"
+		],
+		"x-api-token-group": [
+			"Workers KV Storage Write",
+			"Workers KV Storage Read"
 		]
 	},
 	"GET /accounts/{account_id}/storage/kv/namespaces/{namespace_id}/values/{key_name}": {
@@ -2044,6 +2069,10 @@
 		"summary": "Read key-value pair",
 		"tags": [
 			"Workers KV Namespace"
+		],
+		"x-api-token-group": [
+			"Workers KV Storage Write",
+			"Workers KV Storage Read"
 		]
 	},
 	"POST /accounts/{account_id}/storage/kv/namespaces": {
@@ -2296,6 +2325,9 @@
 		"summary": "Create a Namespace",
 		"tags": [
 			"Workers KV Namespace"
+		],
+		"x-api-token-group": [
+			"Workers KV Storage Write"
 		]
 	},
 	"POST /accounts/{account_id}/storage/kv/namespaces/{namespace_id}/bulk/delete": {
@@ -2573,6 +2605,9 @@
 		"summary": "Delete multiple key-value pairs",
 		"tags": [
 			"Workers KV Namespace"
+		],
+		"x-api-token-group": [
+			"Workers KV Storage Write"
 		]
 	},
 	"POST /accounts/{account_id}/storage/kv/namespaces/{namespace_id}/bulk/get": {
@@ -2983,6 +3018,10 @@
 		"summary": "Get multiple key-value pairs",
 		"tags": [
 			"Workers KV Namespace"
+		],
+		"x-api-token-group": [
+			"Workers KV Storage Write",
+			"Workers KV Storage Read"
 		]
 	},
 	"PUT /accounts/{account_id}/storage/kv/namespaces/{namespace_id}": {
@@ -3251,6 +3290,9 @@
 		"summary": "Rename a Namespace",
 		"tags": [
 			"Workers KV Namespace"
+		],
+		"x-api-token-group": [
+			"Workers KV Storage Write"
 		]
 	},
 	"PUT /accounts/{account_id}/storage/kv/namespaces/{namespace_id}/bulk": {
@@ -3597,6 +3639,9 @@
 		"summary": "Write multiple key-value pairs",
 		"tags": [
 			"Workers KV Namespace"
+		],
+		"x-api-token-group": [
+			"Workers KV Storage Write"
 		]
 	},
 	"PUT /accounts/{account_id}/storage/kv/namespaces/{namespace_id}/values/{key_name}": {
@@ -3933,6 +3978,9 @@
 		"summary": "Write key-value pair with optional metadata",
 		"tags": [
 			"Workers KV Namespace"
+		],
+		"x-api-token-group": [
+			"Workers KV Storage Write"
 		]
 	}
 }

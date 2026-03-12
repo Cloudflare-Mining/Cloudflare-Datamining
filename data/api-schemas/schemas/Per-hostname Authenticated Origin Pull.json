@@ -503,11 +503,9 @@
 		"tags": [
 			"Per-hostname Authenticated Origin Pull"
 		],
-		"x-cfPermissionsRequired": {
-			"enum": [
-				"#ssl:edit"
-			]
-		},
+		"x-api-token-group": [
+			"SSL and Certificates Write"
+		],
 		"x-cfPlanAvailability": {
 			"business": true,
 			"enterprise": true,
@@ -1121,11 +1119,10 @@
 		"tags": [
 			"Per-hostname Authenticated Origin Pull"
 		],
-		"x-cfPermissionsRequired": {
-			"enum": [
-				"#ssl:read"
-			]
-		},
+		"x-api-token-group": [
+			"SSL and Certificates Write",
+			"SSL and Certificates Read"
+		],
 		"x-cfPlanAvailability": {
 			"business": true,
 			"enterprise": true,
@@ -1685,11 +1682,10 @@
 		"tags": [
 			"Per-hostname Authenticated Origin Pull"
 		],
-		"x-cfPermissionsRequired": {
-			"enum": [
-				"#ssl:read"
-			]
-		},
+		"x-api-token-group": [
+			"SSL and Certificates Write",
+			"SSL and Certificates Read"
+		],
 		"x-cfPlanAvailability": {
 			"business": true,
 			"enterprise": true,
@@ -2195,11 +2191,10 @@
 		"tags": [
 			"Per-hostname Authenticated Origin Pull"
 		],
-		"x-cfPermissionsRequired": {
-			"enum": [
-				"#ssl:read"
-			]
-		},
+		"x-api-token-group": [
+			"SSL and Certificates Write",
+			"SSL and Certificates Read"
+		],
 		"x-cfPlanAvailability": {
 			"business": true,
 			"enterprise": true,
@@ -2723,11 +2718,9 @@
 		"tags": [
 			"Per-hostname Authenticated Origin Pull"
 		],
-		"x-cfPermissionsRequired": {
-			"enum": [
-				"#ssl:edit"
-			]
-		},
+		"x-api-token-group": [
+			"SSL and Certificates Write"
+		],
 		"x-cfPlanAvailability": {
 			"business": true,
 			"enterprise": true,
@@ -3536,11 +3529,9 @@
 		"tags": [
 			"Per-hostname Authenticated Origin Pull"
 		],
-		"x-cfPermissionsRequired": {
-			"enum": [
-				"#ssl:edit"
-			]
-		},
+		"x-api-token-group": [
+			"SSL and Certificates Write"
+		],
 		"x-cfPlanAvailability": {
 			"business": true,
 			"enterprise": true,

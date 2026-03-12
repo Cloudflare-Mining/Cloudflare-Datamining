@@ -43,6 +43,9 @@
 		"summary": "Delete saved logo queries by ID",
 		"tags": [
 			"logo_match"
+		],
+		"x-api-token-group": [
+			"Intel Write"
 		]
 	},
 	"GET /accounts/{account_id}/brand-protection/logo-matches": {
@@ -165,6 +168,10 @@
 		"summary": "Read matches for logo queries by ID",
 		"tags": [
 			"logo_match"
+		],
+		"x-api-token-group": [
+			"Intel Write",
+			"Intel Read"
 		]
 	},
 	"GET /accounts/{account_id}/brand-protection/logo-matches/download": {
@@ -287,6 +294,10 @@
 		"summary": "Download matches for logo queries by ID",
 		"tags": [
 			"logo_match"
+		],
+		"x-api-token-group": [
+			"Intel Write",
+			"Intel Read"
 		]
 	},
 	"GET /accounts/{account_id}/brand-protection/logos": {
@@ -330,6 +341,10 @@
 		"summary": "Read all saved logo queries",
 		"tags": [
 			"logo_match"
+		],
+		"x-api-token-group": [
+			"Intel Write",
+			"Intel Read"
 		]
 	},
 	"GET /accounts/{account_id}/brand-protection/logos/{logo_id}": {
@@ -373,6 +388,10 @@
 		"summary": "Read saved logo queries by ID",
 		"tags": [
 			"logo_match"
+		],
+		"x-api-token-group": [
+			"Intel Write",
+			"Intel Read"
 		]
 	},
 	"GET /signed-url": {
@@ -547,6 +566,9 @@
 		"summary": "Create new saved logo queries from image files",
 		"tags": [
 			"logo_match"
+		],
+		"x-api-token-group": [
+			"Intel Write"
 		]
 	},
 	"POST /accounts/{account_id}/brand-protection/scan-logo": {
@@ -590,6 +612,9 @@
 		"summary": "Create new logo queries from image files",
 		"tags": [
 			"logo_match"
+		],
+		"x-api-token-group": [
+			"Intel Write"
 		]
 	},
 	"POST /accounts/{account_id}/brand-protection/scan-page": {
@@ -633,6 +658,9 @@
 		"summary": "Create new logo queries from URLs",
 		"tags": [
 			"logo_match"
+		],
+		"x-api-token-group": [
+			"Intel Write"
 		]
 	}
 }

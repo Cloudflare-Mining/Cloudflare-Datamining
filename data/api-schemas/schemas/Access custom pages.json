@@ -263,6 +263,9 @@
 		"summary": "Delete a custom page",
 		"tags": [
 			"Access custom pages"
+		],
+		"x-api-token-group": [
+			"Access: Custom Pages Write"
 		]
 	},
 	"GET /accounts/{account_id}/access/custom_pages": {
@@ -623,6 +626,10 @@
 		"summary": "List custom pages",
 		"tags": [
 			"Access custom pages"
+		],
+		"x-api-token-group": [
+			"Access: Custom Pages Write",
+			"Access: Custom Pages Read"
 		]
 	},
 	"GET /accounts/{account_id}/access/custom_pages/{custom_page_id}": {
@@ -951,6 +958,10 @@
 		"summary": "Get a custom page",
 		"tags": [
 			"Access custom pages"
+		],
+		"x-api-token-group": [
+			"Access: Custom Pages Write",
+			"Access: Custom Pages Read"
 		]
 	},
 	"POST /accounts/{account_id}/access/custom_pages": {
@@ -1335,6 +1346,9 @@
 		"summary": "Create a custom page",
 		"tags": [
 			"Access custom pages"
+		],
+		"x-api-token-group": [
+			"Access: Custom Pages Write"
 		]
 	},
 	"PUT /accounts/{account_id}/access/custom_pages/{custom_page_id}": {
@@ -1731,6 +1745,9 @@
 		"summary": "Update a custom page",
 		"tags": [
 			"Access custom pages"
+		],
+		"x-api-token-group": [
+			"Access: Custom Pages Write"
 		]
 	}
 }

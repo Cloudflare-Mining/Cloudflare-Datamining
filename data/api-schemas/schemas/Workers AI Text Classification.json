@@ -136,6 +136,10 @@
 		"tags": [
 			"Workers AI Text Classification"
 		],
+		"x-api-token-group": [
+			"Workers AI Write",
+			"Workers AI Read"
+		],
 		"x-cfPermissionsRequired": {
 			"enum": [
 				"com.cloudflare.api.account.ai"
@@ -265,6 +269,10 @@
 		"tags": [
 			"Workers AI Text Classification"
 		],
+		"x-api-token-group": [
+			"Workers AI Write",
+			"Workers AI Read"
+		],
 		"x-cfPermissionsRequired": {
 			"enum": [
 				"com.cloudflare.api.account.ai"
@@ -393,6 +401,10 @@
 		"summary": "Execute @cf/huggingface/nonomni-distilbert-sst-2-int8 model.",
 		"tags": [
 			"Workers AI Text Classification"
+		],
+		"x-api-token-group": [
+			"Workers AI Write",
+			"Workers AI Read"
 		],
 		"x-cfPermissionsRequired": {
 			"enum": [

@@ -187,6 +187,9 @@
 		"tags": [
 			"WAF overrides"
 		],
+		"x-api-token-group": [
+			"Zone Settings Write"
+		],
 		"x-cfPlanAvailability": {
 			"business": false,
 			"enterprise": true,
@@ -884,6 +887,10 @@
 		"tags": [
 			"WAF overrides"
 		],
+		"x-api-token-group": [
+			"Zone Settings Write",
+			"Zone Settings Read"
+		],
 		"x-cfPlanAvailability": {
 			"business": false,
 			"enterprise": true,
@@ -1526,6 +1533,10 @@
 		"summary": "Get a WAF override",
 		"tags": [
 			"WAF overrides"
+		],
+		"x-api-token-group": [
+			"Zone Settings Write",
+			"Zone Settings Read"
 		],
 		"x-cfPlanAvailability": {
 			"business": false,
@@ -2180,6 +2191,9 @@
 		"summary": "Create a WAF override",
 		"tags": [
 			"WAF overrides"
+		],
+		"x-api-token-group": [
+			"Zone Settings Write"
 		],
 		"x-cfPlanAvailability": {
 			"business": false,
@@ -2940,6 +2954,9 @@
 		"summary": "Update WAF override",
 		"tags": [
 			"WAF overrides"
+		],
+		"x-api-token-group": [
+			"Zone Settings Write"
 		],
 		"x-cfPlanAvailability": {
 			"business": false,

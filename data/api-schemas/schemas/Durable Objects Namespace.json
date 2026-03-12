@@ -150,6 +150,11 @@
 															"description": "Total results available without any search parameters.",
 															"example": 2000,
 															"type": "number"
+														},
+														"total_pages": {
+															"description": "The number of total pages in the entire result set.",
+															"example": 100,
+															"type": "number"
 														}
 													},
 													"type": "object"
@@ -308,6 +313,11 @@
 																"total_count": {
 																	"description": "Total results available without any search parameters.",
 																	"example": 2000,
+																	"type": "number"
+																},
+																"total_pages": {
+																	"description": "The number of total pages in the entire result set.",
+																	"example": 100,
 																	"type": "number"
 																}
 															},
@@ -475,6 +485,10 @@
 		"summary": "List Namespaces",
 		"tags": [
 			"Durable Objects Namespace"
+		],
+		"x-api-token-group": [
+			"Workers Scripts Write",
+			"Workers Scripts Read"
 		]
 	},
 	"GET /accounts/{account_id}/workers/durable_objects/namespaces/{id}/objects": {
@@ -636,6 +650,11 @@
 														"total_count": {
 															"description": "Total results available without any search parameters.",
 															"example": 2000,
+															"type": "number"
+														},
+														"total_pages": {
+															"description": "The number of total pages in the entire result set.",
+															"example": 100,
 															"type": "number"
 														}
 													},
@@ -806,6 +825,11 @@
 																"total_count": {
 																	"description": "Total results available without any search parameters.",
 																	"example": 2000,
+																	"type": "number"
+																},
+																"total_pages": {
+																	"description": "The number of total pages in the entire result set.",
+																	"example": 100,
 																	"type": "number"
 																}
 															},
@@ -984,6 +1008,10 @@
 		"summary": "List Objects",
 		"tags": [
 			"Durable Objects Namespace"
+		],
+		"x-api-token-group": [
+			"Workers Scripts Write",
+			"Workers Scripts Read"
 		]
 	}
 }

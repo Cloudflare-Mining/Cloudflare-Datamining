@@ -240,6 +240,9 @@
 		"summary": "Delete a Priority Intelligence Requirement",
 		"tags": [
 			"Priority Intelligence Requirements (PIR)"
+		],
+		"x-api-token-group": [
+			"Cloudforce One Write"
 		]
 	},
 	"GET /accounts/{account_id}/cloudforce-one/requests/priority/{priority_id}": {
@@ -605,6 +608,10 @@
 		"summary": "Get a Priority Intelligence Requirement",
 		"tags": [
 			"Priority Intelligence Requirements (PIR)"
+		],
+		"x-api-token-group": [
+			"Cloudforce One Write",
+			"Cloudforce One Read"
 		]
 	},
 	"GET /accounts/{account_id}/cloudforce-one/requests/priority/quota": {
@@ -892,6 +899,10 @@
 		"summary": "Get Priority Intelligence Requirement Quota",
 		"tags": [
 			"Priority Intelligence Requirements (PIR)"
+		],
+		"x-api-token-group": [
+			"Cloudforce One Write",
+			"Cloudforce One Read"
 		]
 	},
 	"POST /accounts/{account_id}/cloudforce-one/requests/priority": {
@@ -1243,6 +1254,9 @@
 		"summary": "List Priority Intelligence Requirements",
 		"tags": [
 			"Priority Intelligence Requirements (PIR)"
+		],
+		"x-api-token-group": [
+			"Cloudforce One Write"
 		]
 	},
 	"POST /accounts/{account_id}/cloudforce-one/requests/priority/new": {
@@ -1622,6 +1636,9 @@
 		"summary": "Create a New Priority Intelligence Requirement",
 		"tags": [
 			"Priority Intelligence Requirements (PIR)"
+		],
+		"x-api-token-group": [
+			"Cloudforce One Write"
 		]
 	},
 	"PUT /accounts/{account_id}/cloudforce-one/requests/priority/{priority_id}": {
@@ -2044,6 +2061,9 @@
 		"summary": "Update a Priority Intelligence Requirement",
 		"tags": [
 			"Priority Intelligence Requirements (PIR)"
+		],
+		"x-api-token-group": [
+			"Cloudforce One Write"
 		]
 	}
 }

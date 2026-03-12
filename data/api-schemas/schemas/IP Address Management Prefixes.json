@@ -373,6 +373,9 @@
 		"summary": "Delete Prefix",
 		"tags": [
 			"IP Address Management Prefixes"
+		],
+		"x-api-token-group": [
+			"Magic Transit Write"
 		]
 	},
 	"GET /accounts/{account_id}/addressing/loa_documents/{loa_document_id}/download": {
@@ -545,6 +548,10 @@
 		"summary": "Download LOA Document",
 		"tags": [
 			"IP Address Management Prefixes"
+		],
+		"x-api-token-group": [
+			"Magic Transit Read",
+			"Magic Transit Write"
 		]
 	},
 	"GET /accounts/{account_id}/addressing/prefixes": {
@@ -1155,6 +1162,14 @@
 		"summary": "List Prefixes",
 		"tags": [
 			"IP Address Management Prefixes"
+		],
+		"x-api-token-group": [
+			"Magic Transit Read",
+			"Magic Transit Write",
+			"IP Prefixes: Write",
+			"IP Prefixes: Read",
+			"IP Prefixes: BGP On Demand Write",
+			"IP Prefixes: BGP On Demand Read"
 		]
 	},
 	"GET /accounts/{account_id}/addressing/prefixes/{prefix_id}": {
@@ -1771,6 +1786,14 @@
 		"summary": "Prefix Details",
 		"tags": [
 			"IP Address Management Prefixes"
+		],
+		"x-api-token-group": [
+			"Magic Transit Read",
+			"Magic Transit Write",
+			"IP Prefixes: Write",
+			"IP Prefixes: Read",
+			"IP Prefixes: BGP On Demand Write",
+			"IP Prefixes: BGP On Demand Read"
 		]
 	},
 	"PATCH /accounts/{account_id}/addressing/prefixes/{prefix_id}": {
@@ -2408,6 +2431,10 @@
 		"summary": "Update Prefix Description",
 		"tags": [
 			"IP Address Management Prefixes"
+		],
+		"x-api-token-group": [
+			"Magic Transit Write",
+			"IP Prefixes: Write"
 		]
 	},
 	"POST /accounts/{account_id}/addressing/loa_documents": {
@@ -2886,6 +2913,9 @@
 		"summary": "Upload LOA Document",
 		"tags": [
 			"IP Address Management Prefixes"
+		],
+		"x-api-token-group": [
+			"Magic Transit Write"
 		]
 	},
 	"POST /accounts/{account_id}/addressing/prefixes": {
@@ -3539,7 +3569,8 @@
 		"summary": "Add Prefix",
 		"tags": [
 			"IP Address Management Prefixes"
-		]
+		],
+		"x-api-token-group": null
 	},
 	"POST /accounts/{account_id}/addressing/prefixes/{prefix_id}/validate": {
 		"description": "Triggers a new prefix validation. The checks are run asynchronously and include IRR, RPKI, and prefix ownership.",
@@ -4155,6 +4186,10 @@
 		"summary": "Validate Prefix",
 		"tags": [
 			"IP Address Management Prefixes"
+		],
+		"x-api-token-group": [
+			"Magic Transit Write",
+			"IP Prefixes: Write"
 		]
 	}
 }

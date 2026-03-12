@@ -104,6 +104,10 @@
 		"summary": "Lists all target industries for a specific dataset",
 		"tags": [
 			"Target Industry"
+		],
+		"x-api-token-group": [
+			"Cloudforce One Write",
+			"Cloudforce One Read"
 		]
 	},
 	"GET /accounts/{account_id}/cloudforce-one/events/targetIndustries": {
@@ -212,6 +216,10 @@
 		"summary": "Lists target industries across multiple datasets",
 		"tags": [
 			"Target Industry"
+		],
+		"x-api-token-group": [
+			"Cloudforce One Write",
+			"Cloudforce One Read"
 		]
 	},
 	"GET /accounts/{account_id}/cloudforce-one/events/targetIndustries/catalog": {
@@ -308,6 +316,10 @@
 		"summary": "Lists all target industries from industry map catalog",
 		"tags": [
 			"Target Industry"
+		],
+		"x-api-token-group": [
+			"Cloudforce One Write",
+			"Cloudforce One Read"
 		]
 	}
 }

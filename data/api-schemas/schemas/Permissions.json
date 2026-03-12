@@ -138,6 +138,9 @@
 		"summary": "Delete a permission for dataset",
 		"tags": [
 			"Permissions"
+		],
+		"x-api-token-group": [
+			"Cloudforce One Write"
 		]
 	},
 	"GET /accounts/{account_id}/cloudforce-one/events/dataset/{dataset_id}/permissions": {
@@ -322,6 +325,10 @@
 		"summary": "List permissions for dataset",
 		"tags": [
 			"Permissions"
+		],
+		"x-api-token-group": [
+			"Cloudforce One Write",
+			"Cloudforce One Read"
 		]
 	},
 	"POST /accounts/{account_id}/cloudforce-one/events/dataset/{dataset_id}/permissions": {
@@ -501,6 +508,10 @@
 		"summary": "Create a permission for dataset",
 		"tags": [
 			"Permissions"
+		],
+		"x-api-token-group": [
+			"Cloudforce One Write",
+			"Cloudforce One Read"
 		]
 	},
 	"PUT /accounts/{account_id}/cloudforce-one/events/dataset/{dataset_id}/permissions/{grant_id}": {
@@ -664,6 +675,9 @@
 		"summary": "Update a permission for dataset",
 		"tags": [
 			"Permissions"
+		],
+		"x-api-token-group": [
+			"Cloudforce One Write"
 		]
 	}
 }

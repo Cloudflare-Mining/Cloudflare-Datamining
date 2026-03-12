@@ -134,6 +134,9 @@
 		"summary": "Delete a dataset",
 		"tags": [
 			"Dataset"
+		],
+		"x-api-token-group": [
+			"Cloudforce One Write"
 		]
 	},
 	"GET /accounts/{account_id}/cloudforce-one/events/dataset": {
@@ -230,6 +233,10 @@
 		"summary": "Lists all datasets in an account",
 		"tags": [
 			"Dataset"
+		],
+		"x-api-token-group": [
+			"Cloudforce One Write",
+			"Cloudforce One Read"
 		]
 	},
 	"GET /accounts/{account_id}/cloudforce-one/events/dataset/{dataset_id}": {
@@ -334,6 +341,10 @@
 		"summary": "Reads a dataset",
 		"tags": [
 			"Dataset"
+		],
+		"x-api-token-group": [
+			"Cloudforce One Write",
+			"Cloudforce One Read"
 		]
 	},
 	"PATCH /accounts/{account_id}/cloudforce-one/events/dataset/{dataset_id}": {
@@ -462,6 +473,9 @@
 		"summary": "Updates an existing dataset",
 		"tags": [
 			"Dataset"
+		],
+		"x-api-token-group": [
+			"Cloudforce One Write"
 		]
 	},
 	"POST /accounts/{account_id}/cloudforce-one/events/dataset/{dataset_id}": {
@@ -590,6 +604,10 @@
 		"summary": "Updates an existing dataset",
 		"tags": [
 			"Dataset"
+		],
+		"x-api-token-group": [
+			"Cloudforce One Write",
+			"Cloudforce One Read"
 		]
 	},
 	"POST /accounts/{account_id}/cloudforce-one/events/dataset/create": {
@@ -707,6 +725,10 @@
 		"summary": "Creates a dataset",
 		"tags": [
 			"Dataset"
+		],
+		"x-api-token-group": [
+			"Cloudforce One Write",
+			"Cloudforce One Read"
 		]
 	}
 }

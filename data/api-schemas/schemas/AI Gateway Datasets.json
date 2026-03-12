@@ -212,6 +212,9 @@
 		"tags": [
 			"AI Gateway Datasets"
 		],
+		"x-api-token-group": [
+			"AI Gateway Write"
+		],
 		"x-cfPermissionsRequired": {
 			"enum": [
 				"com.cloudflare.api.account.aig"
@@ -473,6 +476,10 @@
 		"tags": [
 			"AI Gateway Datasets"
 		],
+		"x-api-token-group": [
+			"AI Gateway Write",
+			"AI Gateway Read"
+		],
 		"x-cfPermissionsRequired": {
 			"enum": [
 				"com.cloudflare.api.account.aig"
@@ -697,6 +704,10 @@
 		"summary": "Fetch a Dataset",
 		"tags": [
 			"AI Gateway Datasets"
+		],
+		"x-api-token-group": [
+			"AI Gateway Write",
+			"AI Gateway Read"
 		],
 		"x-cfPermissionsRequired": {
 			"enum": [
@@ -1005,6 +1016,9 @@
 		"summary": "Create a new Dataset",
 		"tags": [
 			"AI Gateway Datasets"
+		],
+		"x-api-token-group": [
+			"AI Gateway Write"
 		],
 		"x-cfPermissionsRequired": {
 			"enum": [
@@ -1361,6 +1375,9 @@
 		"summary": "Update a Dataset",
 		"tags": [
 			"AI Gateway Datasets"
+		],
+		"x-api-token-group": [
+			"AI Gateway Write"
 		],
 		"x-cfPermissionsRequired": {
 			"enum": [

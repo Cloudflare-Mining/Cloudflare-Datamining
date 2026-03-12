@@ -255,6 +255,10 @@
 		"summary": "Delete Token Configuration",
 		"tags": [
 			"Token Validation Token Configuration"
+		],
+		"x-api-token-group": [
+			"Account API Gateway",
+			"Domain API Gateway"
 		]
 	},
 	"GET /zones/{zone_id}/token_validation/config": {
@@ -893,6 +897,12 @@
 		"summary": "List token validation configurations",
 		"tags": [
 			"Token Validation Token Configuration"
+		],
+		"x-api-token-group": [
+			"Account API Gateway",
+			"Account API Gateway Read",
+			"Domain API Gateway",
+			"Domain API Gateway Read"
 		]
 	},
 	"GET /zones/{zone_id}/token_validation/config/{config_id}": {
@@ -1470,6 +1480,12 @@
 		"summary": "Get a single Token Configuration",
 		"tags": [
 			"Token Validation Token Configuration"
+		],
+		"x-api-token-group": [
+			"Account API Gateway",
+			"Account API Gateway Read",
+			"Domain API Gateway",
+			"Domain API Gateway Read"
 		]
 	},
 	"PATCH /zones/{zone_id}/token_validation/config/{config_id}": {
@@ -1818,6 +1834,10 @@
 		"summary": "Edit an existing Token Configuration",
 		"tags": [
 			"Token Validation Token Configuration"
+		],
+		"x-api-token-group": [
+			"Account API Gateway",
+			"Domain API Gateway"
 		]
 	},
 	"POST /zones/{zone_id}/token_validation/config": {
@@ -2693,6 +2713,10 @@
 		"summary": "Create a new Token Validation configuration",
 		"tags": [
 			"Token Validation Token Configuration"
+		],
+		"x-api-token-group": [
+			"Account API Gateway",
+			"Domain API Gateway"
 		]
 	},
 	"PUT /zones/{zone_id}/token_validation/config/{config_id}/credentials": {
@@ -3393,6 +3417,10 @@
 		"summary": "Update Token Configuration credentials",
 		"tags": [
 			"Token Validation Token Configuration"
+		],
+		"x-api-token-group": [
+			"Account API Gateway",
+			"Domain API Gateway"
 		]
 	}
 }

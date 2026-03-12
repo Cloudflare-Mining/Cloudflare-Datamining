@@ -260,6 +260,9 @@
 		"summary": "Delete dispatch namespace",
 		"tags": [
 			"Workers for Platforms"
+		],
+		"x-api-token-group": [
+			"Workers Scripts Write"
 		]
 	},
 	"DELETE /accounts/{account_id}/workers/dispatch/namespaces/{dispatch_namespace}/scripts": {
@@ -472,6 +475,9 @@
 		"summary": "Delete Scripts in Namespace",
 		"tags": [
 			"Workers for Platforms"
+		],
+		"x-api-token-group": [
+			"Workers Scripts Write"
 		]
 	},
 	"DELETE /accounts/{account_id}/workers/dispatch/namespaces/{dispatch_namespace}/scripts/{script_name}": {
@@ -761,6 +767,9 @@
 		"summary": "Delete Worker",
 		"tags": [
 			"Workers for Platforms"
+		],
+		"x-api-token-group": [
+			"Workers Scripts Write"
 		]
 	},
 	"DELETE /accounts/{account_id}/workers/dispatch/namespaces/{dispatch_namespace}/scripts/{script_name}/secrets/{secret_name}": {
@@ -1059,6 +1068,9 @@
 		"summary": "Delete script secret",
 		"tags": [
 			"Workers for Platforms"
+		],
+		"x-api-token-group": [
+			"Workers Scripts Write"
 		]
 	},
 	"DELETE /accounts/{account_id}/workers/dispatch/namespaces/{dispatch_namespace}/scripts/{script_name}/tags/{tag}": {
@@ -1345,6 +1357,9 @@
 		"summary": "Delete Script Tag",
 		"tags": [
 			"Workers for Platforms"
+		],
+		"x-api-token-group": [
+			"Workers Scripts Write"
 		]
 	},
 	"GET /accounts/{account_id}/workers/dispatch/namespaces": {
@@ -1653,6 +1668,11 @@
 		"summary": "List dispatch namespaces",
 		"tags": [
 			"Workers for Platforms"
+		],
+		"x-api-token-group": [
+			"Workers Tail Read",
+			"Workers Scripts Write",
+			"Workers Scripts Read"
 		]
 	},
 	"GET /accounts/{account_id}/workers/dispatch/namespaces/{dispatch_namespace}": {
@@ -1970,6 +1990,11 @@
 		"summary": "Get dispatch namespace",
 		"tags": [
 			"Workers for Platforms"
+		],
+		"x-api-token-group": [
+			"Workers Tail Read",
+			"Workers Scripts Write",
+			"Workers Scripts Read"
 		]
 	},
 	"GET /accounts/{account_id}/workers/dispatch/namespaces/{dispatch_namespace}/scripts": {
@@ -2795,6 +2820,11 @@
 		"summary": "List Scripts in Namespace",
 		"tags": [
 			"Workers for Platforms"
+		],
+		"x-api-token-group": [
+			"Workers Tail Read",
+			"Workers Scripts Write",
+			"Workers Scripts Read"
 		]
 	},
 	"GET /accounts/{account_id}/workers/dispatch/namespaces/{dispatch_namespace}/scripts/{script_name}": {
@@ -3620,6 +3650,11 @@
 		"summary": "Worker Details",
 		"tags": [
 			"Workers for Platforms"
+		],
+		"x-api-token-group": [
+			"Workers Tail Read",
+			"Workers Scripts Write",
+			"Workers Scripts Read"
 		]
 	},
 	"GET /accounts/{account_id}/workers/dispatch/namespaces/{dispatch_namespace}/scripts/{script_name}/bindings": {
@@ -5034,6 +5069,11 @@
 		"summary": "Get Script Bindings",
 		"tags": [
 			"Workers for Platforms"
+		],
+		"x-api-token-group": [
+			"Workers Tail Read",
+			"Workers Scripts Write",
+			"Workers Scripts Read"
 		]
 	},
 	"GET /accounts/{account_id}/workers/dispatch/namespaces/{dispatch_namespace}/scripts/{script_name}/content": {
@@ -5215,6 +5255,11 @@
 		"summary": "Get Script Content",
 		"tags": [
 			"Workers for Platforms"
+		],
+		"x-api-token-group": [
+			"Workers Tail Read",
+			"Workers Scripts Write",
+			"Workers Scripts Read"
 		]
 	},
 	"GET /accounts/{account_id}/workers/dispatch/namespaces/{dispatch_namespace}/scripts/{script_name}/secrets": {
@@ -5611,6 +5656,11 @@
 		"summary": "List Script Secrets",
 		"tags": [
 			"Workers for Platforms"
+		],
+		"x-api-token-group": [
+			"Workers Tail Read",
+			"Workers Scripts Write",
+			"Workers Scripts Read"
 		]
 	},
 	"GET /accounts/{account_id}/workers/dispatch/namespaces/{dispatch_namespace}/scripts/{script_name}/secrets/{secret_name}": {
@@ -6027,6 +6077,11 @@
 		"summary": "Get secret binding",
 		"tags": [
 			"Workers for Platforms"
+		],
+		"x-api-token-group": [
+			"Workers Tail Read",
+			"Workers Scripts Write",
+			"Workers Scripts Read"
 		]
 	},
 	"GET /accounts/{account_id}/workers/dispatch/namespaces/{dispatch_namespace}/scripts/{script_name}/settings": {
@@ -9266,6 +9321,11 @@
 		"summary": "Get Script Settings",
 		"tags": [
 			"Workers for Platforms"
+		],
+		"x-api-token-group": [
+			"Workers Tail Read",
+			"Workers Scripts Write",
+			"Workers Scripts Read"
 		]
 	},
 	"GET /accounts/{account_id}/workers/dispatch/namespaces/{dispatch_namespace}/scripts/{script_name}/tags": {
@@ -9547,6 +9607,11 @@
 		"summary": "Get Script Tags",
 		"tags": [
 			"Workers for Platforms"
+		],
+		"x-api-token-group": [
+			"Workers Tail Read",
+			"Workers Scripts Write",
+			"Workers Scripts Read"
 		]
 	},
 	"PATCH /accounts/{account_id}/workers/dispatch/namespaces/{dispatch_namespace}": {
@@ -9889,6 +9954,9 @@
 		"summary": "Patch dispatch namespace",
 		"tags": [
 			"Workers for Platforms"
+		],
+		"x-api-token-group": [
+			"Workers Scripts Write"
 		]
 	},
 	"PATCH /accounts/{account_id}/workers/dispatch/namespaces/{dispatch_namespace}/scripts/{script_name}/settings": {
@@ -16116,6 +16184,9 @@
 		"summary": "Patch Script Settings",
 		"tags": [
 			"Workers for Platforms"
+		],
+		"x-api-token-group": [
+			"Workers Scripts Write"
 		]
 	},
 	"POST /accounts/{account_id}/workers/dispatch/namespaces": {
@@ -16439,6 +16510,9 @@
 		"summary": "Create dispatch namespace",
 		"tags": [
 			"Workers for Platforms"
+		],
+		"x-api-token-group": [
+			"Workers Scripts Write"
 		]
 	},
 	"POST /accounts/{account_id}/workers/dispatch/namespaces/{dispatch_namespace}/scripts/{script_name}/assets-upload-session": {
@@ -17109,6 +17183,9 @@
 		"summary": "Update dispatch namespace",
 		"tags": [
 			"Workers for Platforms"
+		],
+		"x-api-token-group": [
+			"Workers Scripts Write"
 		]
 	},
 	"PUT /accounts/{account_id}/workers/dispatch/namespaces/{dispatch_namespace}/scripts/{script_name}": {
@@ -19901,6 +19978,9 @@
 		"summary": "Upload Worker Module",
 		"tags": [
 			"Workers for Platforms"
+		],
+		"x-api-token-group": [
+			"Workers Scripts Write"
 		]
 	},
 	"PUT /accounts/{account_id}/workers/dispatch/namespaces/{dispatch_namespace}/scripts/{script_name}/content": {
@@ -20781,6 +20861,9 @@
 		"summary": "Put Script Content",
 		"tags": [
 			"Workers for Platforms"
+		],
+		"x-api-token-group": [
+			"Workers Scripts Write"
 		]
 	},
 	"PUT /accounts/{account_id}/workers/dispatch/namespaces/{dispatch_namespace}/scripts/{script_name}/secrets": {
@@ -21303,6 +21386,9 @@
 		"summary": "Add script secret",
 		"tags": [
 			"Workers for Platforms"
+		],
+		"x-api-token-group": [
+			"Workers Scripts Write"
 		]
 	},
 	"PUT /accounts/{account_id}/workers/dispatch/namespaces/{dispatch_namespace}/scripts/{script_name}/tags": {
@@ -21611,6 +21697,9 @@
 		"summary": "Put Script Tags",
 		"tags": [
 			"Workers for Platforms"
+		],
+		"x-api-token-group": [
+			"Workers Scripts Write"
 		]
 	},
 	"PUT /accounts/{account_id}/workers/dispatch/namespaces/{dispatch_namespace}/scripts/{script_name}/tags/{tag}": {
@@ -21897,6 +21986,9 @@
 		"summary": "Put Script Tag",
 		"tags": [
 			"Workers for Platforms"
+		],
+		"x-api-token-group": [
+			"Workers Scripts Write"
 		]
 	}
 }

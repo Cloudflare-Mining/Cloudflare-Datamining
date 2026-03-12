@@ -451,6 +451,9 @@
 		"tags": [
 			"Custom Hostname Fallback Origin for a Zone"
 		],
+		"x-api-token-group": [
+			"SSL and Certificates Write"
+		],
 		"x-cfPermissionsRequired": {
 			"enum": [
 				"#ssl:edit"
@@ -908,6 +911,10 @@
 		"summary": "Get Fallback Origin for Custom Hostnames",
 		"tags": [
 			"Custom Hostname Fallback Origin for a Zone"
+		],
+		"x-api-token-group": [
+			"SSL and Certificates Write",
+			"SSL and Certificates Read"
 		],
 		"x-cfPermissionsRequired": {
 			"enum": [
@@ -1388,6 +1395,9 @@
 		"summary": "Update Fallback Origin for Custom Hostnames",
 		"tags": [
 			"Custom Hostname Fallback Origin for a Zone"
+		],
+		"x-api-token-group": [
+			"SSL and Certificates Write"
 		],
 		"x-cfPermissionsRequired": {
 			"enum": [

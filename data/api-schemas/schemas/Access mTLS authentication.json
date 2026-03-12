@@ -263,6 +263,9 @@
 		"summary": "Delete an mTLS certificate",
 		"tags": [
 			"Access mTLS authentication"
+		],
+		"x-api-token-group": [
+			"Access: Mutual TLS Certificates Write"
 		]
 	},
 	"GET /accounts/{account_id}/access/certificates": {
@@ -624,6 +627,10 @@
 		"summary": "List mTLS certificates",
 		"tags": [
 			"Access mTLS authentication"
+		],
+		"x-api-token-group": [
+			"Access: Mutual TLS Certificates Write",
+			"Access: Mutual TLS Certificates Read"
 		]
 	},
 	"GET /accounts/{account_id}/access/certificates/{certificate_id}": {
@@ -946,6 +953,10 @@
 		"summary": "Get an mTLS certificate",
 		"tags": [
 			"Access mTLS authentication"
+		],
+		"x-api-token-group": [
+			"Access: Mutual TLS Certificates Write",
+			"Access: Mutual TLS Certificates Read"
 		]
 	},
 	"GET /accounts/{account_id}/access/certificates/settings": {
@@ -1256,6 +1267,10 @@
 		"summary": "List all mTLS hostname settings",
 		"tags": [
 			"Access mTLS authentication"
+		],
+		"x-api-token-group": [
+			"Access: Mutual TLS Certificates Write",
+			"Access: Mutual TLS Certificates Read"
 		]
 	},
 	"POST /accounts/{account_id}/access/certificates": {
@@ -1602,6 +1617,9 @@
 		"summary": "Add an mTLS certificate",
 		"tags": [
 			"Access mTLS authentication"
+		],
+		"x-api-token-group": [
+			"Access: Mutual TLS Certificates Write"
 		]
 	},
 	"PUT /accounts/{account_id}/access/certificates/{certificate_id}": {
@@ -1954,6 +1972,9 @@
 		"summary": "Update an mTLS certificate",
 		"tags": [
 			"Access mTLS authentication"
+		],
+		"x-api-token-group": [
+			"Access: Mutual TLS Certificates Write"
 		]
 	},
 	"PUT /accounts/{account_id}/access/certificates/settings": {
@@ -2312,6 +2333,9 @@
 		"summary": "Update an mTLS certificate's hostname settings",
 		"tags": [
 			"Access mTLS authentication"
+		],
+		"x-api-token-group": [
+			"Access: Mutual TLS Certificates Write"
 		]
 	}
 }

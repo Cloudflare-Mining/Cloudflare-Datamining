@@ -3355,6 +3355,9 @@
 		"summary": "Delete On-ramp",
 		"tags": [
 			"On-ramps"
+		],
+		"x-api-token-group": [
+			"Magic WAN Write"
 		]
 	},
 	"GET /accounts/{account_id}/magic/cloud/onramps": {
@@ -8377,6 +8380,10 @@
 		"summary": "List On-ramps",
 		"tags": [
 			"On-ramps"
+		],
+		"x-api-token-group": [
+			"Magic WAN Write",
+			"Magic WAN Read"
 		]
 	},
 	"GET /accounts/{account_id}/magic/cloud/onramps/{onramp_id}": {
@@ -13875,6 +13882,10 @@
 		"summary": "Read On-ramp",
 		"tags": [
 			"On-ramps"
+		],
+		"x-api-token-group": [
+			"Magic WAN Write",
+			"Magic WAN Read"
 		]
 	},
 	"GET /accounts/{account_id}/magic/cloud/onramps/magic_wan_address_space": {
@@ -16743,6 +16754,10 @@
 		"summary": "Read Magic WAN Address Space",
 		"tags": [
 			"On-ramps"
+		],
+		"x-api-token-group": [
+			"Magic WAN Write",
+			"Magic WAN Read"
 		]
 	},
 	"PATCH /accounts/{account_id}/magic/cloud/onramps/{onramp_id}": {
@@ -23206,6 +23221,9 @@
 		"summary": "Patch On-ramp",
 		"tags": [
 			"On-ramps"
+		],
+		"x-api-token-group": [
+			"Magic WAN Write"
 		]
 	},
 	"PATCH /accounts/{account_id}/magic/cloud/onramps/magic_wan_address_space": {
@@ -26568,6 +26586,9 @@
 		"summary": "Patch Magic WAN Address Space",
 		"tags": [
 			"On-ramps"
+		],
+		"x-api-token-group": [
+			"Magic WAN Write"
 		]
 	},
 	"POST /accounts/{account_id}/magic/cloud/onramps": {
@@ -32618,6 +32639,9 @@
 		"summary": "Create On-ramp",
 		"tags": [
 			"On-ramps"
+		],
+		"x-api-token-group": [
+			"Magic WAN Write"
 		]
 	},
 	"POST /accounts/{account_id}/magic/cloud/onramps/{onramp_id}/apply": {
@@ -35939,6 +35963,9 @@
 		"summary": "Apply On-ramp",
 		"tags": [
 			"On-ramps"
+		],
+		"x-api-token-group": [
+			"Magic WAN Write"
 		]
 	},
 	"POST /accounts/{account_id}/magic/cloud/onramps/{onramp_id}/export": {
@@ -38816,6 +38843,9 @@
 		"summary": "Export as Terraform",
 		"tags": [
 			"On-ramps"
+		],
+		"x-api-token-group": [
+			"Magic WAN Write"
 		]
 	},
 	"POST /accounts/{account_id}/magic/cloud/onramps/{onramp_id}/plan": {
@@ -42137,6 +42167,9 @@
 		"summary": "Plan On-ramp",
 		"tags": [
 			"On-ramps"
+		],
+		"x-api-token-group": [
+			"Magic WAN Write"
 		]
 	},
 	"PUT /accounts/{account_id}/magic/cloud/onramps/{onramp_id}": {
@@ -48600,6 +48633,9 @@
 		"summary": "Update On-ramp",
 		"tags": [
 			"On-ramps"
+		],
+		"x-api-token-group": [
+			"Magic WAN Write"
 		]
 	},
 	"PUT /accounts/{account_id}/magic/cloud/onramps/magic_wan_address_space": {
@@ -51962,6 +51998,9 @@
 		"summary": "Update Magic WAN Address Space",
 		"tags": [
 			"On-ramps"
+		],
+		"x-api-token-group": [
+			"Magic WAN Write"
 		]
 	}
 }

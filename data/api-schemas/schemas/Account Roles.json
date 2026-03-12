@@ -587,6 +587,11 @@
 		"tags": [
 			"Account Roles"
 		],
+		"x-api-token-group": [
+			"SCIM Provisioning",
+			"Account Settings Write",
+			"Account Settings Read"
+		],
 		"x-cfPermissionsRequired": {
 			"enum": [
 				"#organization:read"
@@ -1139,6 +1144,11 @@
 		"summary": "Role Details",
 		"tags": [
 			"Account Roles"
+		],
+		"x-api-token-group": [
+			"SCIM Provisioning",
+			"Account Settings Write",
+			"Account Settings Read"
 		],
 		"x-cfPermissionsRequired": {
 			"enum": [

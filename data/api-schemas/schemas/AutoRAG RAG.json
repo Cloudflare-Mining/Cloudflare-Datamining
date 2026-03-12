@@ -227,6 +227,10 @@
 		"tags": [
 			"AutoRAG RAG"
 		],
+		"x-api-token-group": [
+			"Auto Rag Write",
+			"Auto Rag Read"
+		],
 		"x-cfPermissionsRequired": {
 			"enum": [
 				"com.cloudflare.api.account.rag"
@@ -478,6 +482,9 @@
 		"summary": "Sync",
 		"tags": [
 			"AutoRAG RAG"
+		],
+		"x-api-token-group": [
+			"Auto Rag Write"
 		],
 		"x-cfPermissionsRequired": {
 			"enum": [

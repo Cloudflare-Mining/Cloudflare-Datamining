@@ -690,6 +690,10 @@
 		"summary": "Delete a preset",
 		"tags": [
 			"Presets"
+		],
+		"x-api-token-group": [
+			"Realtime Admin",
+			"Realtime"
 		]
 	},
 	"GET /accounts/{account_id}/realtime/kit/{app_id}/presets": {
@@ -839,6 +843,10 @@
 		"summary": "Fetch all presets",
 		"tags": [
 			"Presets"
+		],
+		"x-api-token-group": [
+			"Realtime Admin",
+			"Realtime"
 		]
 	},
 	"GET /accounts/{account_id}/realtime/kit/{app_id}/presets/{preset_id}": {
@@ -1532,6 +1540,10 @@
 		"summary": "Fetch details of a preset",
 		"tags": [
 			"Presets"
+		],
+		"x-api-token-group": [
+			"Realtime Admin",
+			"Realtime"
 		]
 	},
 	"PATCH /accounts/{account_id}/realtime/kit/{app_id}/presets/{preset_id}": {
@@ -2672,6 +2684,10 @@
 		"summary": "Update a preset",
 		"tags": [
 			"Presets"
+		],
+		"x-api-token-group": [
+			"Realtime Admin",
+			"Realtime"
 		]
 	},
 	"POST /accounts/{account_id}/realtime/kit/{app_id}/presets": {
@@ -3953,6 +3969,10 @@
 		"summary": "Create a preset",
 		"tags": [
 			"Presets"
+		],
+		"x-api-token-group": [
+			"Realtime Admin",
+			"Realtime"
 		]
 	}
 }

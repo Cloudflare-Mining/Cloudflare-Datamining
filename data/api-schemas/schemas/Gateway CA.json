@@ -268,6 +268,9 @@
 		"summary": "Delete an SSH Certificate Authority (CA)",
 		"tags": [
 			"Gateway CA"
+		],
+		"x-api-token-group": [
+			"Access: SSH Auditing Write"
 		]
 	},
 	"GET /accounts/{account_id}/access/gateway_ca": {
@@ -562,6 +565,10 @@
 		"summary": "List SSH Certificate Authorities (CA)",
 		"tags": [
 			"Gateway CA"
+		],
+		"x-api-token-group": [
+			"Access: SSH Auditing Write",
+			"Access: SSH Auditing Read"
 		]
 	},
 	"POST /accounts/{account_id}/access/gateway_ca": {
@@ -823,6 +830,9 @@
 		"summary": "Add a new SSH Certificate Authority (CA)",
 		"tags": [
 			"Gateway CA"
+		],
+		"x-api-token-group": [
+			"Access: SSH Auditing Write"
 		]
 	}
 }

@@ -207,6 +207,9 @@
 		"tags": [
 			"DNS Internal Views for an Account"
 		],
+		"x-api-token-group": [
+			"DNS View Write"
+		],
 		"x-cfPermissionsRequired": {
 			"enum": [
 				"#dns.view:delete"
@@ -900,6 +903,10 @@
 		"tags": [
 			"DNS Internal Views for an Account"
 		],
+		"x-api-token-group": [
+			"DNS View Write",
+			"DNS View Read"
+		],
 		"x-cfPermissionsRequired": {
 			"enum": [
 				"#dns.view:list"
@@ -1412,6 +1419,10 @@
 		"summary": "DNS Internal View Details",
 		"tags": [
 			"DNS Internal Views for an Account"
+		],
+		"x-api-token-group": [
+			"DNS View Write",
+			"DNS View Read"
 		],
 		"x-cfPermissionsRequired": {
 			"enum": [
@@ -1980,6 +1991,9 @@
 		"tags": [
 			"DNS Internal Views for an Account"
 		],
+		"x-api-token-group": [
+			"DNS View Write"
+		],
 		"x-cfPermissionsRequired": {
 			"enum": [
 				"#dns.view:update"
@@ -2538,6 +2552,9 @@
 		"summary": "Create Internal DNS View",
 		"tags": [
 			"DNS Internal Views for an Account"
+		],
+		"x-api-token-group": [
+			"DNS View Write"
 		],
 		"x-cfPermissionsRequired": {
 			"enum": [

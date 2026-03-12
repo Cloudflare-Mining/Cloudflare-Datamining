@@ -449,6 +449,10 @@
 		"summary": "Fetch all recordings for an App",
 		"tags": [
 			"Recordings"
+		],
+		"x-api-token-group": [
+			"Realtime Admin",
+			"Realtime"
 		]
 	},
 	"GET /accounts/{account_id}/realtime/kit/{app_id}/recordings/{recording_id}": {
@@ -785,6 +789,10 @@
 		"summary": "Fetch details of a recording",
 		"tags": [
 			"Recordings"
+		],
+		"x-api-token-group": [
+			"Realtime Admin",
+			"Realtime"
 		]
 	},
 	"GET /accounts/{account_id}/realtime/kit/{app_id}/recordings/active-recording/{meeting_id}": {
@@ -1005,6 +1013,10 @@
 		"summary": "Fetch active recording",
 		"tags": [
 			"Recordings"
+		],
+		"x-api-token-group": [
+			"Realtime Admin",
+			"Realtime"
 		]
 	},
 	"POST /accounts/{account_id}/realtime/kit/{app_id}/recordings": {
@@ -1618,6 +1630,10 @@
 		"summary": "Start recording a meeting",
 		"tags": [
 			"Recordings"
+		],
+		"x-api-token-group": [
+			"Realtime Admin",
+			"Realtime"
 		]
 	},
 	"POST /accounts/{account_id}/realtime/kit/{app_id}/recordings/track": {
@@ -1814,6 +1830,10 @@
 		"summary": "Start recording audio and video tracks",
 		"tags": [
 			"Recordings"
+		],
+		"x-api-token-group": [
+			"Realtime Admin",
+			"Realtime"
 		]
 	},
 	"PUT /accounts/{account_id}/realtime/kit/{app_id}/recordings/{recording_id}": {
@@ -2175,6 +2195,10 @@
 		"summary": "Pause/Resume/Stop recording",
 		"tags": [
 			"Recordings"
+		],
+		"x-api-token-group": [
+			"Realtime Admin",
+			"Realtime"
 		]
 	}
 }

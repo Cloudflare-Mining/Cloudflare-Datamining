@@ -269,6 +269,9 @@
 		"summary": "Delete a short-lived certificate CA",
 		"tags": [
 			"Access short-lived certificate CAs"
+		],
+		"x-api-token-group": [
+			"Access: Apps and Policies Write"
 		]
 	},
 	"GET /accounts/{account_id}/access/apps/{app_id}/ca": {
@@ -555,6 +558,10 @@
 		"summary": "Get a short-lived certificate CA",
 		"tags": [
 			"Access short-lived certificate CAs"
+		],
+		"x-api-token-group": [
+			"Access: Apps and Policies Write",
+			"Access: Apps and Policies Read"
 		]
 	},
 	"GET /accounts/{account_id}/access/apps/ca": {
@@ -880,6 +887,10 @@
 		"summary": "List short-lived certificate CAs",
 		"tags": [
 			"Access short-lived certificate CAs"
+		],
+		"x-api-token-group": [
+			"Access: Apps and Policies Write",
+			"Access: Apps and Policies Read"
 		]
 	},
 	"POST /accounts/{account_id}/access/apps/{app_id}/ca": {
@@ -1166,6 +1177,9 @@
 		"summary": "Create a short-lived certificate CA",
 		"tags": [
 			"Access short-lived certificate CAs"
+		],
+		"x-api-token-group": [
+			"Access: Apps and Policies Write"
 		]
 	}
 }

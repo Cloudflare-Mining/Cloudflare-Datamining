@@ -260,6 +260,9 @@
 		"summary": "Delete project",
 		"tags": [
 			"Pages Project"
+		],
+		"x-api-token-group": [
+			"Pages Write"
 		]
 	},
 	"GET /accounts/{account_id}/pages/projects": {
@@ -2970,6 +2973,10 @@
 		"summary": "Get projects",
 		"tags": [
 			"Pages Project"
+		],
+		"x-api-token-group": [
+			"Pages Read",
+			"Pages Write"
 		]
 	},
 	"GET /accounts/{account_id}/pages/projects/{project_name}": {
@@ -5636,6 +5643,10 @@
 		"summary": "Get project",
 		"tags": [
 			"Pages Project"
+		],
+		"x-api-token-group": [
+			"Pages Read",
+			"Pages Write"
 		]
 	},
 	"PATCH /accounts/{account_id}/pages/projects/{project_name}": {
@@ -9464,6 +9475,9 @@
 		"summary": "Update project",
 		"tags": [
 			"Pages Project"
+		],
+		"x-api-token-group": [
+			"Pages Write"
 		]
 	},
 	"POST /accounts/{account_id}/pages/projects": {
@@ -13264,6 +13278,9 @@
 		"summary": "Create project",
 		"tags": [
 			"Pages Project"
+		],
+		"x-api-token-group": [
+			"Pages Write"
 		]
 	}
 }
