@@ -25,7 +25,7 @@
 <p><strong>Role Requirements</strong></p>
 <p><strong>Must-Have Skills</strong></p>
 <ul>
-	<li>Systems-level programming experience in Go, Rust, C, or C++. We use Rust extensively, and while experience with the language isn't required a willingness to learn it is.</li>
+	<li>Programming experience in Go or Rust and a desire to improve your skills in both.</li>
 	<li>A solid grasp of networking protocols in Layers 3 and 4 of the OSI Model.</li>
 	<li>Knowledge of HTTP, TLS, and CDN networks.</li>
 	<li>Experience in implementing secure and highly-available distributed systems.</li>
