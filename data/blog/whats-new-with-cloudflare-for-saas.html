@@ -85,7 +85,7 @@
 		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4Y7NGTSMfEDIQU0c1lmamk/4a36f05ef3b828febad17945c0d8f045/image5.png" alt="" class="kg-image" width="1076" height="790" loading="lazy">
 
 	</figure>
-	<p>Now let’s switch gears to TLS certificate management and the improvements our team has been working on.</p>
+	<p>Now let’s switch gears to <a href="https://www.cloudflare.com/application-services/products/ssl">TLS certificate management</a> and the improvements our team has been working on.</p>
 	<div class="flex anchor relative">
 		<h3 id="tls-management-for-all">TLS Management for All</h3>
 		<a href="https://blog.cloudflare.com/#tls-management-for-all" aria-hidden="true" class="relative sm:absolute sm:-start-5">
@@ -94,7 +94,7 @@
 			</svg>
 		</a>
 	</div>
-	<p>SSL for SaaS was built to reduce the burden of certificate management for SaaS providers. The initial functionality was meant to serve most customers and their need to issue, maintain, and renew certificates on their customers’ behalf. But one size does not fit all, and some of our customers have more specific needs for their certificate management — and we want to make sure we accommodate them.</p>
+	<p>SSL for SaaS was built to <a href="https://www.cloudflare.com/application-services/solutions/certificate-lifecycle-management">reduce the burden of certificate management</a> for SaaS providers. The initial functionality was meant to serve most customers and their need to issue, maintain, and renew certificates on their customers’ behalf. But one size does not fit all, and some of our customers have more specific needs for their certificate management — and we want to make sure we accommodate them.</p>
 	<div class="flex anchor relative">
 		<h3 id="csr-support-custom-certs">CSR Support/Custom certs</h3>
 		<a href="https://blog.cloudflare.com/#csr-support-custom-certs" aria-hidden="true" class="relative sm:absolute sm:-start-5">
@@ -103,7 +103,7 @@
 			</svg>
 		</a>
 	</div>
-	<p>One of the superpowers of SSL for SaaS is that it allows Cloudflare to manage all the certificate issuance and renewals on behalf of our customers and their customers. However, some customers want to allow their end customers to upload their own certificates.</p>
+	<p>One of the superpowers of <a href="https://www.cloudflare.com/application-services/products/ssl-for-saas-providers">SSL for SaaS</a> is that it allows Cloudflare to manage all the certificate issuance and renewals on behalf of our customers and their customers. However, some customers want to allow their end customers to upload their own certificates.</p>
 	<p>For example, a bank may only trust certain certificate authorities (CAs) for their certificate issuance. Alternatively, the SaaS provider may have initially built out TLS support for their customers and now their customers expect that functionality to be available. Regardless of the reasoning, we have given our customers a few options that satisfy these requirements.</p>
 	<p>For customers who want to maintain control over their TLS private keys or give their customers the flexibility to use their certification authority (CA) of choice, we allow the SaaS provider to upload their customer’s certificate.</p>
 	<p>If you are a SaaS provider and one of your customers does not allow third parties to generate keys on their behalf, then you want to allow that customer to <a href="https://developers.cloudflare.com/ssl/ssl-for-saas/uploading-certificates">upload their own certificate</a>. Cloudflare allows SaaS providers to upload their customers’ certificates to any of their custom hostnames — in just one API call!</p>

@@ -61,7 +61,7 @@
 		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4ISeaNc9XgwhFEpdVP8Mce/33527712a89e3fa7bef47095259f00a9/chain.jpg.scaled500_1.jpg" alt="Chain" class="kg-image" width="220" height="165" loading="lazy">
 
 	</figure>
-	<p>The SSL Bundler allows us to take a customer's own SSL certificate and compute the <a href="https://blog.cloudflare.com/what-we-just-did-to-make-ssl-even-faster">fastest, shortest chain of intermediate certificates</a> that can be used to verify the connection. When someone uploads a custom SSL certificate, we use our directory of intermediate certificates to build all the possible chains from the uploaded cert to a trusted browser root. We then rank these chains based on a number of factors including:</p>
+	<p>The SSL Bundler allows us to take a customer's own <a href="https://www.cloudflare.com/application-services/products/ssl">SSL certificate</a> and compute the <a href="https://blog.cloudflare.com/what-we-just-did-to-make-ssl-even-faster">fastest, shortest chain of intermediate certificates</a> that can be used to verify the connection. When someone uploads a custom SSL certificate, we use our directory of intermediate certificates to build all the possible chains from the uploaded cert to a trusted browser root. We then rank these chains based on a number of factors including:</p>
 	<ol>
 		<li>
 			<p>The length of the certificate chain</p>

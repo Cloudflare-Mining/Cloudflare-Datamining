@@ -28,7 +28,7 @@
 			</svg>
 		</a>
 	</div>
-	<p>TLS is used in two ways in IoT devices: First, TLS is used to encrypt data in transit. This is used for data privacy and to make it harder to reverse engineer the communications used by the device. Second, devices store client TLS certificates that are used to authenticate the devices to the application - makes it one step harder to fake a device.</p>
+	<p>TLS is used in two ways in IoT devices: First, TLS is used to encrypt data in transit. This is used for data privacy and to make it harder to reverse engineer the communications used by the device. Second, devices store client <a href="https://www.cloudflare.com/application-services/products/ssl">TLS certificates</a> that are used to authenticate the devices to the application - makes it one step harder to fake a device.</p>
 	<p>There are three problems developers run into when they want to implement TLS in IoT. The first is that while IoT traffic needs to be quick and lightweight, TLS adds an additional two round trips to the start of every session. The second is that certificates can be large files, and device memory is limited in IoT. And the third is that some of the protocols that are being developed for IoT are plaintext by default.</p>
 	<div class="flex anchor relative">
 		<h3 id="tls-isnt-lightweight">TLS Isn’t Lightweight</h3>

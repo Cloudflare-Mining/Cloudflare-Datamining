@@ -1,7 +1,7 @@
 <div class="mb2 gray5">5 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/28uRYoQ606AbWa9WAHdDNN/f71b182a19e0edcc0d0add79cf6db034/tracing-soon-to-expire-federal-gov-certificates-with-ct-logs.png" alt="">
 <div class="post-content lh-copy gray1">
 	<p>As of December 22, 2018, parts of the US Government have “shut down” because of a lapse in appropriation. The shutdown has caused the furlough of employees across the government and has affected federal contracts. An unexpected side-effect of this shutdown has been the expiration of TLS certificates on some .gov websites. This side-effect has emphasized a common issue on the Internet: the usage of expired certificates and their erosion of trust.</p>
-	<p>For an entity to provide a secure website, it needs a valid TLS certificate attached to the website server. These TLS certificates have both start dates and expiry dates. Normally certificates are renewed prior to their expiration. However, if there’s no one to execute this process, then websites serve expired certificates--a poor security practice.</p>
+	<p>For an entity to provide a secure website, it needs a valid <a href="https://www.cloudflare.com/application-services/products/ssl">TLS certificate</a> attached to the website server. These TLS certificates have both start dates and expiry dates. Normally certificates are renewed prior to their expiration. However, if there’s no one to execute this process, then websites serve expired certificates--a poor security practice.</p>
 	<p>This means that people looking for government information or resources may encounter alarming error messages when visiting important .gov websites:</p>
 	<figure class="kg-card kg-image-card ">
 
@@ -59,7 +59,7 @@
 		</a>
 	</div>
 	<p>The presence of .gov expired certificates means that either (1) .gov certificates are manually renewed, or (2) .gov certificates cost money to renew, and the shutdown prevented spending on this important web security measure.</p>
-	<p>Automatic certificate issuance has become a standard for many domains, and services like Cloudflare offer automatic certificate renewal when you use <a href="https://www.cloudflare.com/ssl">Universal SSL</a> or get a Cloudflare-issued certificate. CAs like Let’s Encrypt also offer automatic certificate renewal, which works as long as you run the certbot daemon on your webserver. Furthermore, automatic certificate renewal is free with both of these approaches.</p>
+	<p><a href="https://www.cloudflare.com/application-services/solutions/certificate-lifecycle-management">Automatic certificate issuance</a> has become a standard for many domains, and services like Cloudflare offer automatic certificate renewal when you use <a href="https://www.cloudflare.com/ssl">Universal SSL</a> or get a Cloudflare-issued certificate. CAs like Let’s Encrypt also offer automatic certificate renewal, which works as long as you run the certbot daemon on your webserver. Furthermore, automatic certificate renewal is free with both of these approaches.</p>
 	<p>Automating certificate renewals makes expired certificates and mis-configured TLS a problem of the past. We hope that this interesting blip with a few .gov certificates has encouraged domain owners to automate their certificate handling. If you haven’t automated your domain’s certificate renewal, try Universal SSL or Cloudflare certificates today!</p>
 	<p><i>Many thanks to Alissa Starzak for her help in filtering .gov domains for this blog post.</i></p>
 </div>

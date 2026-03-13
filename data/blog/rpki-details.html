@@ -36,7 +36,7 @@
 	<p><b>The Internet Routing Registries (IRR)</b> are semi-public databases used by network operators to register their assigned Internet resources. Some database maintainers do not check whether the entry was actually made by the owner, nor check if the prefix has been transferred to somebody else. This makes them prone to error and not completely reliable.</p>
 	<p><b>Resource Public Key Infrastructure (RPKI)</b> is similar to the IRR “route” objects, but adding the authentication with cryptography.</p>
 	<p>Here’s how it works: each RIR has a root certificate. They can generate a signed certificate for a Local Internet Registry (LIR, a.k.a. a network operator) with all the resources they are assigned (IPs and ASNs). The LIR then signs the prefix containing the origin AS that they intend to use: a ROA (Route Object Authorization) is created. ROAs are just simple X.509 certificates.</p>
-	<p>If you are used to SSL/TLS certificates used by browsers to authenticate the holder of a website, then ROAs are the equivalent in the Internet routing world.</p>
+	<p>If you are used to <a href="https://www.cloudflare.com/application-services/products/ssl">SSL/TLS certificates</a> used by browsers to authenticate the holder of a website, then ROAs are the equivalent in the Internet routing world.</p>
 	<figure class="kg-card kg-image-card ">
 
 		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/790gd4F1LviExZpxP0HAFk/f1430645a7c769788129fb47c3b9dca6/roas_3x-1.png" alt="" class="kg-image" width="1471" height="1032" loading="lazy">
@@ -134,4 +134,5 @@
 		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1H1JDnSWx28sdAjdF3sd0Z/b5425cf515b60c2c3a9be6b2420d8a3b/CRYPTO-WEEK-banner_2x.png" alt="" class="kg-image" width="1808" height="925" loading="lazy">
 
 	</figure>
+	<p></p>
 </div>

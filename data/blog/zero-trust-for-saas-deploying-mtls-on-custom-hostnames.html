@@ -10,7 +10,7 @@
 			</svg>
 		</a>
 	</div>
-	<p>When you connect to a website, you should see a lock icon in the address bar — that’s your browser telling you that you’re connecting to a website over a secure connection and that the website has a valid public TLS certificate. TLS certificates keep Internet traffic encrypted using a public/private key pair to encrypt and decrypt traffic. They also provide authentication, proving to clients that they are connecting to the correct server.</p>
+	<p>When you connect to a website, you should see a lock icon in the address bar — that’s your browser telling you that you’re connecting to a website over a secure connection and that the website has a valid public TLS certificate. <a href="https://www.cloudflare.com/application-services/products/ssl">TLS certificates</a> keep Internet traffic encrypted using a public/private key pair to encrypt and decrypt traffic. They also provide authentication, proving to clients that they are connecting to the correct server.</p>
 	<p>To make a secure connection, a <a href="https://www.cloudflare.com/learning/ssl/what-happens-in-a-tls-handshake">TLS handshake</a> needs to take place. During the handshake, the client and the server exchange cryptographic keys, the client authenticates the identity of the server, and both the client and the server generate session keys that are later used to encrypt traffic.</p>
 	<p>A TLS handshake looks like this:</p>
 	<figure class="kg-card kg-image-card ">
@@ -47,7 +47,7 @@
 	</div>
 	<p><a href="https://blog.cloudflare.com/cloudflare-for-saas">Cloudflare for SaaS</a> enables SaaS providers to extend the benefits of the Cloudflare network to their customers’ domains. These domains are not owned by the SaaS provider, but they do use the SaaS provider’s service, routing traffic back to the SaaS provider’s origin.</p>
 	<p>By doing this, SaaS providers take on the responsibility of providing their customers with the highest uptime, lightning fast performance, and unparalleled security — something they can easily extend to their customers through Cloudflare.</p>
-	<p>Cloudflare for SaaS actually started out as <a href="https://blog.cloudflare.com/introducing-ssl-for-saas">SSL for SaaS</a>. We built SSL for SaaS to give SaaS providers the ability to issue TLS certificates for their customers, keeping the SaaS provider’s customers safe and secure.</p>
+	<p>Cloudflare for SaaS actually started out as <a href="https://blog.cloudflare.com/introducing-ssl-for-saas">SSL for SaaS</a>. We built <a href="https://www.cloudflare.com/application-services/products/ssl-for-saas-providers">SSL for SaaS</a> to give SaaS providers the ability to issue TLS certificates for their customers, keeping the SaaS provider’s customers safe and secure.</p>
 	<p>Since then, our SaaS customers have come to us with a new request: extend the mTLS support that we built out for our direct customers, but to their customers.</p>
 	<div class="flex anchor relative">
 		<h3 id="why-would-saas-providers-want-to-use-mtls">Why would SaaS providers want to use mTLS?</h3>
