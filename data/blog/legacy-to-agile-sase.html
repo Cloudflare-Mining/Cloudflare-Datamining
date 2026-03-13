@@ -1,0 +1,195 @@
+<div class="mb2 gray5">5 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6YBZZg4MLbnavKyH4oQE0N/548cb6616a67d99a805a5b25c61d907a/image1.png" alt="">
+<div class="post-content lh-copy gray1">
+	<p>For a network engineer, the cutover weekend is often the most stressful 48 hours of their career. Imagine a 30,000-user organization attempting to flip 1,000+ legacy applications from fragmented VPNs to a new architecture in a single window. The stakes are immense: a single misconfigured firewall rule or a timed-out session can halt essential services and lead to operational gridlock.</p>
+	<p>This "big bang" migration risk is the single greatest barrier to <a href="https://www.cloudflare.com/sase"><u>Zero Trust adoption</u></a>. Organizations often feel trapped between an aging, vulnerable infrastructure and a migration process that feels too risky to attempt.</p>
+	<p>Cloudflare and Technology Solutions Provider <a href="https://www.cdw.com"><u>CDW</u></a> are changing this narrative. We believe that a successful transition to SASE (Secure Access Service Edge) shouldn't feel like a leap into the dark. By combining Cloudflare’s global Zero Trust platform with CDW’s experience navigating the industry’s most complex deployment failures, we provide the strategic roadmap to de-risk the journey. We don't just move your "plumbing" — we ensure your legacy debt is transformed into a modern, agile security posture without the downtime.</p>
+	<div class="flex anchor relative">
+		<h3 id="leveraging-partner-expertise-to-avoid-migration-traps">Leveraging partner expertise to avoid migration traps</h3>
+		<a href="https://blog.cloudflare.com/#leveraging-partner-expertise-to-avoid-migration-traps" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Traditional migrations often fail because they treat the network as simple plumbing rather than a complex ecosystem of applications. Without a granular strategy, many organizations fall into the "lift and shift" trap — attempting to move hundreds of applications simultaneously without understanding their back-end dependencies.</p>
+	<p>To avoid this, CDW uses a risk-aware, tiered methodology. This approach categorizes every application in your environment by its technical complexity. We move simple, modern apps first to build momentum while saving complex, legacy systems for a more controlled, later stage.</p>
+	<p>A recent large-scale public sector project serves as a cautionary example of what can happen without this structure. In this case, a team attempted to migrate 500 applications at once. Because they lacked a tiered methodology to prioritize their 4,000+ applications, the move led to systemic service disruptions.</p>
+	<p>CDW’s role is to act as the architect that prevents these failures. CDW strategists, many of whom are former security practitioners, analyze these industry-wide failure points to identify recurring anti-patterns that derail <a href="https://www.cloudflare.com/the-net/roadmap-zerotrust"><u>Zero Trust journeys</u></a> and build a more resilient migration blueprint. By treating migration as an <a href="https://www.cloudflare.com/learning/cloud/application-modernization"><u>application modernization</u></a> project rather than a single connectivity swap, CDW ensures that security requirements are built into the foundation of the move rather than bolted on as an afterthought.</p>
+	<div class="flex anchor relative">
+		<h3 id="modernizing-legacy-apps-with-cloudflare-access">Modernizing legacy apps with Cloudflare Access</h3>
+		<a href="https://blog.cloudflare.com/#modernizing-legacy-apps-with-cloudflare-access" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>To move away from the all-or-nothing risks of the past, we start with the foundation of the solution: <a href="https://www.cloudflare.com/sase/products/access"><u>Cloudflare Access</u></a>. Before we look at how to migrate complex legacy applications, it’s important to understand the value of the platform itself. Cloudflare Access replaces the broad, vulnerable perimeter of a traditional VPN with a Zero Trust model. Instead of granting a user access to an entire network segment, Access evaluates every single request based on identity, device posture, and other <a href="https://blog.cloudflare.com/adaptive-access-user-risk-scoring"><u>contextual signals</u></a>. This significantly reduces the attack surface and prevents the lateral movement that leads to the kind of systemic outages we discussed earlier.</p>
+	<p>Once this security layer is in place, we can begin "wrapping" legacy applications in Cloudflare Access. This allows us to modernize the security posture of an old app without actually rewriting its code.</p>
+	<p>We do this wrapping in <a href="https://www.cloudflare.com/sase/products/access"><u>Cloudflare Access</u></a> using a specific logic:</p>
+	<ul>
+		<li>
+			<p><b>Problem</b>: A legacy application with no built-in Multi-Factor Authentication (MFA) is exposed via a standard VPN, creating a high-risk entry point for attackers.</p>
+		</li>
+		<li>
+			<p><b>Mitigation</b>: Using Cloudflare Tunnel, we create an outbound-only connection with both Single Sign-On (SSO) and MFA built-in. This effectively hides the application from the public Internet, as it no longer has a public IP address to scan or attack.</p>
+		</li>
+		<li>
+			<p><b>Policy</b>: We then apply a Cloudflare Access policy at the edge. This requires an endpoint hardware-based MFA check and a device health scan before a single packet ever reaches your server.</p>
+		</li>
+	</ul>
+	<p>By using this wrapping technique, CDW and Cloudflare make it possible for organizations to migrate at their own pace. You get the immediate security benefits of a modern cloud environment, while your legacy apps continue to run safely in the background.</p>
+	<div class="flex anchor relative">
+		<h3 id="pre-migration-audit">Pre-migration audit</h3>
+		<a href="https://blog.cloudflare.com/#pre-migration-audit" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Before launching a pilot, IT leaders must audit the environment for architectural readiness, ensuring legacy systems are technically compatible with modern security protocols. “For large deployments, we focus on application modernization,” says Eric Marchewitz, a security solutions executive at CDW. “Many legacy applications could break if least privilege access was applied without proper preparation."</p>
+	<div class="flex anchor relative">
+		<h4 id="1-architectural-identity-assessment">1. Architectural &amp; identity assessment</h4>
+		<a href="https://blog.cloudflare.com/#1-architectural-identity-assessment" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<ul>
+		<li>
+			<p><b>Determine identity providers</b>: Confirm which applications rely on a federated Identity Provider (such as Okta) versus those using legacy local directories.</p>
+		</li>
+		<li>
+			<p><b>Map dependencies</b>: Document backend database and API dependencies for each application to prevent service interruptions. This data identifies the hidden API calls that typically break during a cutover if service token-based Tunnel connectivity is not maintained on the backend.</p>
+		</li>
+	</ul>
+	<div class="flex anchor relative">
+		<h4 id="2-establish-firebreak">2. Establish firebreak</h4>
+		<a href="https://blog.cloudflare.com/#2-establish-firebreak" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Separate the project into a Strategy Group (focused on security standards) and an Implementation Group (focused on efficiency). This ensures that high-level security requirements, like those needed to prevent lateral movement, are not bypassed for the sake of deployment speed.</p>
+	<div class="flex anchor relative">
+		<h4 id="3-persistent-session-stress-test">3. Persistent session stress test</h4>
+		<a href="https://blog.cloudflare.com/#3-persistent-session-stress-test" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Identify applications using legacy architectures to maintain session persistence and avoid connection drops during cellular tower switching. Cloudflare’s architecture, supported by Dynamic <a href="https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/warp/deployment/mdm-deployment/path-mtu-discovery"><u>Path MTU Discovery</u></a> (PMTUD), maintains a persistent session at the edge even as the client IP changes. Identifying these users during the audit allows us to displace expensive, rigid legacy hardware with a modern, single-pass architecture.</p>
+	<div class="flex anchor relative">
+		<h4 id="4-categorization-timeline-setting">4. Categorization &amp; timeline setting</h4>
+		<a href="https://blog.cloudflare.com/#4-categorization-timeline-setting" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Once complete, the remaining stack is tiered to set realistic implementation timelines:</p>
+	<table>
+		<tbody>
+			<tr>
+				<td>
+					<p><b>Application Tier</b></p>
+				</td>
+				<td>
+					<p><b>Description</b></p>
+				</td>
+				<td>
+					<p><b>Estimated Migration Effort</b></p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>Tier 0 (Modern SaaS Apps)</p>
+				</td>
+				<td>
+					<p>Native SAML/OIDC support so Cloudflare acts as a clientless identity provider proxy during authentication</p>
+				</td>
+				<td>
+					<p>1–3 hours per app</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>Tier 1 (Internal Web Apps)</p>
+				</td>
+				<td>
+					<p>Standard identity headers and modern web protocols support a clientless reverse proxy deployment with Cloudflare Tunnel&nbsp;</p>
+				</td>
+				<td>
+					<p>3–6 hours per app</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>Tier 2 (Non-Web Client-Server Apps)</p>
+				</td>
+				<td>
+					<p>Specific port/protocol support or thick-client configurations required so both Cloudflare One Client and Cloudflare Tunnel deployments are used</p>
+				</td>
+				<td>
+					<p>4–8 hours per app</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>Tier 3 (Legacy Enterprise Apps)</p>
+				</td>
+				<td>
+					<p>Complex server-side connectivity (e.g. peer-to-peer, bidirectional) or back-end dependency requirements so Cloudflare Mesh or WAN deployments may complement Cloudflare Tunnel to support.</p>
+				</td>
+				<td>
+					<p>1–3 days per app; may require code revisions</p>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+	<div class="flex anchor relative">
+		<h3 id="the-roadmap-to-escape-velocity">The roadmap to escape velocity</h3>
+		<a href="https://blog.cloudflare.com/#the-roadmap-to-escape-velocity" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>To achieve "escape velocity" from legacy hardware, CDW follows a phased rollout that prioritizes coexistence over replacement.</p>
+	<ol>
+		<li>
+			<p><b>Phase 1: Strategy &amp; Infrastructure</b>: Formation of strategy and implementation teams. This phase includes identifying CDW strategists — former CISOs and architects — to act as peer sounding boards.</p>
+		</li>
+		<li>
+			<p><b>Phase 2: Pilot Rollout</b>: Deployment of the Cloudflare One Client to a pilot group of employees. During this phase, we address common friction points like the "latency tax,"&nbsp; ensuring performance doesn't compromise security.</p>
+		</li>
+		<li>
+			<p><b>Phase 3: Production Scaling</b>: Full scaling across the organization. We maintain a dual-client period where users run both legacy VPN and Cloudflare Access in tandem, ensuring a safe rollback path and an easier end-user transition to the new Zero Trust approach.</p>
+		</li>
+	</ol>
+	<div class="flex anchor relative">
+		<h3 id="performance-as-a-security-feature">Performance as a security feature</h3>
+		<a href="https://blog.cloudflare.com/#performance-as-a-security-feature" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Cloudflare’s single-pass architecture runs every security check simultaneously.&nbsp;</p>
+	<p>"When we talk to customers about the connectivity cloud, the most impactful change isn't just the modern security posture. It's the operational velocity,” notes Annika Garbers, Head of Cloudflare One GTM. “Moving to a single control plane allows a security team to stop being a bottleneck.”</p>
+	<p>By building on a <a href="https://blog.cloudflare.com/post-quantum-sase"><u>post-quantum</u></a> encrypted foundation, we ensure this bridge is future-proofed against the next generation of threats.</p>
+	<div class="flex anchor relative">
+		<h3 id="build-your-bridge-with-cloudflare-ones-agile-sase">Build your bridge with Cloudflare One's agile SASE</h3>
+		<a href="https://blog.cloudflare.com/#build-your-bridge-with-cloudflare-ones-agile-sase" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Modernization is about building a bridge, not a "big bang." This methodology is refined through our Partner Technical Advisory Board, where partner feedback informs our product roadmap directly. By focusing on application modernization and a phased rollout, organizations can regain architectural control and eliminate the fragmentation penalty for good.</p>
+	<p>The combination of Cloudflare’s SASE platform and CDW’s migration expertise provides a safety net for the journey. You get the immediate security benefits of identity-based access and phish-resistant MFA, without the operational gridlock of a massive, unmapped cutover.</p>
+	<p>The goal isn't just to move your applications to the cloud. It’s to ensure that when you get there, your environment is more resilient, more visible, and significantly harder to breach.</p>
+	<p>Ready to de-risk your journey to a zero trust architecture? Use CDW’s Zero Trust Maturity Assessment to identify the hidden dependencies in your environment. Reach out to a Cloudflare One <a href="https://www.cloudflare.com/contact/sase"><u>expert</u></a> to start your transition with a proven blueprint.</p>
+</div>
