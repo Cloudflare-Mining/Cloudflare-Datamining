@@ -5,39 +5,30 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<p><strong>Available Locations:&nbsp; Lisbon or London (Hybrid)</strong></p>
-<h3><strong>About the Team</strong></h3>
-<p>The Cloudflare Vectorize team builds our managed, global vector database designed to power the next generation of AI-driven applications. Vectorize enables developers to store and query high-dimensional vector embeddings, providing the "long-term memory" required for Large Language Models (LLMs) and semantic search. Integrated directly into the Cloudflare Workers and Workers AI ecosystem, Vectorize allows developers to build full-stack AI applications—from generating embeddings to performing similarity searches—entirely on Cloudflare’s global network.</p>
-<p>Vectorize is a critical component of our Developer Platform and features:</p>
+<p><strong>Available Locations: Lisbon, Portugal&nbsp;</strong></p>
+<p><strong>About Cloudflare's Data &amp; Technology Team</strong></p>
+<p>At Cloudflare, we are helping build a better Internet, and our Data &amp; Technology Team is at the heart of that mission. We are looking for a highly organized, tech-savvy <strong>Operations and AI Innovation</strong> intern who will help modernize our workflows by integrating AI-driven automation into our everyday processes. In this role, you will be a key contributor to our strategic goals by identifying manual bottlenecks and building the technical bridges needed to automate them.</p>
+<p><strong>About the Internship Program</strong></p>
+<p>As an Operations and AI Innovation Intern on the Data &amp; Technology Team, you will:</p>
 <ul>
-	<li><strong>High-Performance Vector Search:</strong> Optimized for low-latency similarity search using Approximate Nearest Neighbor (ANN) algorithms (like HNSW).</li>
-	<li><strong>Metadata Filtering:</strong> Support for storing and filtering on metadata alongside vectors to provide precise, context-aware query results.</li>
-	<li><strong>Global Distribution:</strong> Built on top of Cloudflare’s distributed infrastructure to ensure that AI applications remain fast and responsive regardless of where the user is located.</li>
+	<li>Process Analysis &amp; Innovation: Audit current manual workflows to identify opportunities for automation. You will map out complex business processes (such as internal privacy and vendor assessments, data subject requests, etc.) and provide recommendations on where AI can drive maximum efficiency.&nbsp;</li>
+	<li>AI Agent Development: Develop and refine AI agents and “Gems” to automate manual tasks. This includes prompt engineering, defining agent personas, and iteratively testing outputs to ensure they meet quality standards.</li>
+	<li>Operational Monitoring &amp; Insights: Define and develop data queries and dashboards to track key performance indicators and analyze operational metrics using tools such as Google Looker Studio or Tableau.&nbsp;</li>
+	<li>Communication Automation: Design and deploy automated triage and response systems for high-volume inbound requests received through emails, ticketing systems, and other shared departmental channels.&nbsp;</li>
+	<li>Knowledge Integration: Help map internal data sources, such as internal Wikis, Sales answer banks, and technical documentation into the automation knowledge base to improve response accuracy.</li>
 </ul>
-<p>The team is geographically located in the UK.</p>
-<h3><strong>What you'll do</strong></h3>
-<p>We are looking for an Engineering Manager to join the Vectorize team. You will lead a group of engineers who are defining how stateful AI applications are built at the edge. You will play a pivotal role in scaling Vectorize to support billions of vectors and hundreds of thousands of indexes while maintaining the performance and reliability Cloudflare is known for.</p>
-<p>You will work closely with product and engineering teams to implement cutting-edge indexing strategies and improve the developer experience for RAG (Retrieval Augmented Generation) workflows. You bring a passion for making complex AI infrastructure accessible to every developer. You thrive in a fast-paced environment where you are building the foundations of the AI era. Most importantly, you have a track record of leading technical teams with a focus on high-quality execution and engineer career development.</p>
-<h3><strong>Examples of desirable skills, knowledge and experience</strong></h3>
+<p>You can check out our <a href="https://blog.cloudflare.com/tag/internship-experience/">internship blogs</a> to learn more about our program and hear directly from our past interns.</p>
+<p><strong>Examples of desirable skills, knowledge and experience</strong></p>
 <ul>
-	<li><strong>Strong communication skills</strong> – Ability to build a shared understanding of complex topics like vector quantization, indexing trade-offs, and distributed state.</li>
-	<li><strong>Leading Distributed Systems</strong> – Experience leading and hiring teams that build and operate high-availability distributed databases or search engines.</li>
-	<li><strong>Navigating the AI Landscape</strong> – Comfort working in the rapidly evolving world of AI/ML, understanding how vector databases fit into the broader LLM and RAG ecosystem.</li>
-	<li><strong>Execution &amp; Predictability</strong> – Excel at planning, roadmap execution, and managing the lifecycle of a high-growth developer product.</li>
-	<li><strong>Developer-First Mindset</strong> – Experience building APIs and tools that simplify complex backend operations for frontend and full-stack developers.</li>
-	<li><strong>Technical Leadership</strong> – A track record of leading teams through hiring, onboarding, and mentorship. You can explain the "why" behind architectural decisions to both engineers and stakeholders.</li>
-	<li><strong>Systems Programming</strong> – Professional experience with <strong>Rust, Go, or TypeScript</strong>.&nbsp;</li>
-</ul>
-<h3><strong>Bonus Points</strong></h3>
-<ul>
-	<li>
-		<ul>
-			<li><strong>Search &amp; Indexing Expertise</strong> – Experience with vector search libraries (e.g., Faiss, HNSWlib) or traditional search engines (e.g., Elasticsearch, Lucene).</li>
-			<li><strong>AI/ML Infrastructure</strong> – Experience building or managing platforms that serve machine learning models or manage embeddings at scale.</li>
-			<li><strong>Database Internals</strong> – Familiarity with storage engines, query optimization, or distributed consistency models.</li>
-			<li><strong>Serverless Ecosystem</strong> – Experience working with Cloudflare Workers or other serverless platforms to build stateful applications.</li>
-		</ul>
-	</li>
+	<li>Currently pursuing a Bachelor's degree in a technical field.</li>
+	<li>Technical Curiosity: Experience using LLM interfaces (such as Gemini) and prompt engineering, paired with a strong interest in the emerging field of AI agents.</li>
+	<li>Problem-Solving Mindset: Ability to analyze manual processes and envision an automated solution.</li>
+	<li>Communication: Ability to distill complex legal or technical requirements into clear actionable insights.</li>
+	<li>Intellectual Curiosity: A natural drive to explore new technologies and a "figure it out" mindset.&nbsp;</li>
+	<li>Process Documentation: Ability to draft clear technical specifications and Standard Operating Procedures (SOPs) to ensure automated workflows and reporting systems are sustainable and easy for others to maintain.</li>
+	<li>Familiarity with API integrations, Opencode or Windsurf.&nbsp;</li>
+	<li>Ability to commit to a minimum 12 week summer internship.</li>
+	<li>In office 3-5 days a week in the Lisbon office.</li>
 </ul>
 <p>&nbsp;</p>
 <div class="content-conclusion">
