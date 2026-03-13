@@ -1,7 +1,7 @@
 {
 	"name": "@cloudflare/playwright",
 	"dist-tags": {
-		"latest": "1.1.1"
+		"latest": "1.1.2"
 	},
 	"versions": {
 		"0.0.0-test": {
@@ -251,20 +251,42 @@
 			"name": "@cloudflare/playwright",
 			"version": "1.1.1",
 			"devDependencies": {
+				"vite": "^6.1.0",
+				"pkg-pr-new": "^0.0.59",
+				"@tsconfig/node18": "^18.2.6"
+			},
+			"dist": {
+				"shasum": "72a214e56f9492e673b29e87356c37fcc6cd3b35",
+				"tarball": "https://registry.npmjs.org/@cloudflare/playwright/-/playwright-1.1.1.tgz",
+				"fileCount": 317,
+				"integrity": "sha512-NZtbwe+1HfnDK+8ZW4Ys5bth7/qJOsA5Khvy1oNVbsw1w7p3tC6mrEIyhsvF7ZeRhTb4B5cvkMBB2cxvQpOviA==",
+				"signatures": [
+					{
+						"sig": "MEQCIH0LL/g5YzXKy5EU9oL0UKicSQDoZkq9fb6bqX1GdZwIAiB5AnsP15GzYdemetepNsNPOQhli7zRYTmwlR09kLP0EA==",
+						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
+					}
+				],
+				"unpackedSize": 6087928
+			}
+		},
+		"1.1.2": {
+			"name": "@cloudflare/playwright",
+			"version": "1.1.2",
+			"devDependencies": {
 				"@tsconfig/node18": "^18.2.6",
 				"pkg-pr-new": "^0.0.59",
 				"vite": "^6.1.0"
 			},
 			"dist": {
-				"integrity": "sha512-NZtbwe+1HfnDK+8ZW4Ys5bth7/qJOsA5Khvy1oNVbsw1w7p3tC6mrEIyhsvF7ZeRhTb4B5cvkMBB2cxvQpOviA==",
-				"shasum": "72a214e56f9492e673b29e87356c37fcc6cd3b35",
-				"tarball": "https://registry.npmjs.org/@cloudflare/playwright/-/playwright-1.1.1.tgz",
-				"fileCount": 317,
-				"unpackedSize": 6087928,
+				"integrity": "sha512-zorpfs5r/WtGKkL8cnABEMJjCrfHcFmlOCOTYQ54hlIr6SCI8rr35OxSlnmEe7GCCv23kc4yqGdCSakqOW4SKQ==",
+				"shasum": "45ae2aa5e9117129d19ec4ca35285263afbc94df",
+				"tarball": "https://registry.npmjs.org/@cloudflare/playwright/-/playwright-1.1.2.tgz",
+				"fileCount": 320,
+				"unpackedSize": 6084699,
 				"signatures": [
 					{
 						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U",
-						"sig": "MEQCIH0LL/g5YzXKy5EU9oL0UKicSQDoZkq9fb6bqX1GdZwIAiB5AnsP15GzYdemetepNsNPOQhli7zRYTmwlR09kLP0EA=="
+						"sig": "MEUCIEGXSwe7RHJuZz4aGpBebD25SvHW6bKLVaNjtOIQUc1PAiEA13rO1KVhYda4ujzm/RHNYwE5yUd/Cf5wqAX2GSWyLnI="
 					}
 				]
 			}

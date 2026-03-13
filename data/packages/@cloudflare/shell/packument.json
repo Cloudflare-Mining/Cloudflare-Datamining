@@ -1,0 +1,72 @@
+{
+	"name": "@cloudflare/shell",
+	"dist-tags": {
+		"latest": "0.0.2"
+	},
+	"versions": {
+		"0.0.0": {
+			"name": "@cloudflare/shell",
+			"version": "0.0.0",
+			"dist": {
+				"shasum": "7320bcbe600a972f20b17f8e2ffcc71b36f33fb1",
+				"tarball": "https://registry.npmjs.org/@cloudflare/shell/-/shell-0.0.0.tgz",
+				"fileCount": 1,
+				"integrity": "sha512-w2+J0wGkGCGb1vvwjfGQuvzWYC32Qjvm5V02j2xVUoSy9e8/L/5bfJ5r7/7xgEq8BkicLqYxCu5ROisu0QGzIw==",
+				"signatures": [
+					{
+						"sig": "MEUCIQCSgSO9bo/XgX11mXXpfB0HIllIB+FHoByGY0M8QDE44wIgVytYKILPP8W+FITMFsy9PqJGqrXu5v6MWP6rtKHgtHs=",
+						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
+					}
+				],
+				"unpackedSize": 253
+			}
+		},
+		"0.0.2": {
+			"name": "@cloudflare/shell",
+			"version": "0.0.2",
+			"dependencies": {
+				"diff": "^8.0.3",
+				"file-type": "^20.4.1",
+				"minimatch": "^10.0.1",
+				"re2js": "^1.2.2",
+				"sprintf-js": "^1.1.3"
+			},
+			"devDependencies": {
+				"@playwright/test": "^1.58.2",
+				"@types/turndown": "^5.0.6",
+				"better-sqlite3": "^12.6.2",
+				"pyodide": "^0.29.3",
+				"quickjs-emscripten": "^0.32.0",
+				"tsdown": "^0.21.1",
+				"turndown": "^7.2.2",
+				"typescript": "^5.9.3",
+				"vitest": "3.2.4"
+			},
+			"peerDependencies": {
+				"better-sqlite3": ">=11",
+				"pyodide": ">=0.26",
+				"quickjs-emscripten": ">=0.29",
+				"turndown": ">=7"
+			},
+			"dist": {
+				"integrity": "sha512-pXEre+Oj636yTnQM+WYI36T4FKgShHLugoTLh5+sOv+0oDpTi93vP9KkWGOsMNbR4jqIk3DClM7T+MIcDyDTQw==",
+				"shasum": "51a4a3c8a42051db003411bbae5aedb0c8db0544",
+				"tarball": "https://registry.npmjs.org/@cloudflare/shell/-/shell-0.0.2.tgz",
+				"fileCount": 206,
+				"unpackedSize": 5428845,
+				"attestations": {
+					"url": "https://registry.npmjs.org/-/npm/v1/attestations/@cloudflare%2fshell@0.0.2",
+					"provenance": {
+						"predicateType": "https://slsa.dev/provenance/v1"
+					}
+				},
+				"signatures": [
+					{
+						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U",
+						"sig": "MEUCICE9+/INPe0kmOOHkXByuh2pID8HWXh9jhe44jn1M6GbAiEAz0E7aLDeBHTgEF0IOI7v6Jz5cGaK4FpjE+A4NDilido="
+					}
+				]
+			}
+		}
+	}
+}
