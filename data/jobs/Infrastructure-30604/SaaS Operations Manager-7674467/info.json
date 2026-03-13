@@ -1,5 +1,5 @@
 {
-	"absolute_url": "https://boards.greenhouse.io/cloudflare/jobs/7450196?gh_jid=7450196",
+	"absolute_url": "https://boards.greenhouse.io/cloudflare/jobs/7674467?gh_jid=7674467",
 	"data_compliance": [
 		{
 			"type": "gdpr",
@@ -10,7 +10,8 @@
 			"demographic_data_consent_applies": false
 		}
 	],
-	"internal_job_id": 3311630,
+	"education": "education_optional",
+	"internal_job_id": 3376679,
 	"location": {
 		"name": "Hybrid"
 	},
@@ -18,15 +19,16 @@
 		{
 			"id": 825338,
 			"name": "Cost Center",
-			"value": "5610 - Pricing",
+			"value": "6700 - Ent Infra and Operations",
 			"value_type": "single_select"
 		},
 		{
 			"id": 8654220,
 			"name": "Job Posting Location",
 			"value": [
+				"Atlanta, US",
 				"Austin, US",
-				"San Francisco, US"
+				"Seattle, US"
 			],
 			"value_type": "multi_select"
 		},
@@ -34,22 +36,22 @@
 			"id": 46546702,
 			"name": "Career Site Department",
 			"value": [
-				"Pricing & Monetization"
+				"Infrastructure"
 			],
 			"value_type": "multi_select"
 		}
 	],
-	"id": 7450196,
-	"updated_at": "2026-02-06T10:04:45-05:00",
-	"requisition_id": null,
-	"title": "Senior or Principal Pricing Manager ",
+	"id": 7674467,
+	"updated_at": "2026-03-12T20:28:10-04:00",
+	"requisition_id": "821",
+	"title": "SaaS Operations Manager",
 	"company_name": "Cloudflare",
-	"first_published": "2025-12-11T13:03:26-05:00",
+	"first_published": "2026-03-10T16:32:27-04:00",
 	"language": "en",
 	"departments": [
 		{
-			"id": 83286,
-			"name": "Pricing and Monetization",
+			"id": 30604,
+			"name": "Infrastructure",
 			"child_ids": [],
 			"parent_id": null
 		}
@@ -63,9 +65,16 @@
 			"parent_id": 48752
 		},
 		{
-			"id": 19991,
-			"name": "San Francisco, CA",
-			"location": "San Francisco, CA, United States",
+			"id": 66815,
+			"name": "Atlanta, GA",
+			"location": null,
+			"child_ids": [],
+			"parent_id": 48752
+		},
+		{
+			"id": 72960,
+			"name": "Seattle, WA",
+			"location": null,
 			"child_ids": [],
 			"parent_id": 48752
 		}

@@ -5,41 +5,37 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<p><strong>Available Locations:&nbsp;Singapore</strong></p>
-<div><strong>About the role</strong></div>
-<p>Cloudflare is looking for an Administrative Assistant to support members of our senior leadership team. We are looking for a dynamic dedicated candidate, preferably with experience of supporting VP level Executives or higher. The candidate must be comfortable with multi-tasking and prioritisation in a fast-speed environment with close attention to detail, accuracy, and timeliness.</p>
-<p>Your job is to keep our leader organised, prioritised and productive while we grow in the region. This role requires superior attention to detail, great organisational skills, and the ability to juggle multiple high-priority requests. It also requires the ability to work with team members at all levels, sometimes under pressure. A high level of integrity and discretion in handling confidential information is important, as is a positive attitude. The ideal candidate is a seasoned EA who understands the value in cultivating relationships and prides themselves in being a career EA.&nbsp;</p>
-<p><strong>Responsibilities</strong></p>
+<p><strong>Available Locations: </strong>Austin, TX, Atlanta, GA, Seattle, WA - Hybrid</p>
+<h3><strong>About the Role</strong></h3>
+<p>Cloudflare is seeking an autonomous <strong>SaaS Operations Manager</strong> to take ownership of the day-to-day execution of our Software Asset Management (SAM) practice.</p>
+<p>While the Lead Principal defines the enterprise-wide strategy, governance frameworks, and high-level financial goals, you will be the operational engine that ensures these strategies are realized. You will independently manage our tooling ecosystem (Zylo), drive data accuracy, and serve as the primary liaison for application owners to ensure they are equipped to make cost-effective decisions.</p>
+<p>We need a self-starter who can take a strategic directive—such as "reduce shadow IT risk"—and independently build the workflows, reporting, and stakeholder outreach plans to get it done.</p>
+<h3><strong>Responsibilities</strong></h3>
+<p><strong>System Ownership &amp; Data Operations (Zylo)</strong></p>
 <ul>
-	<li>
-		<p><strong>Admin:</strong>&nbsp;Provide excellent administrative support to our leaders primarily with some level of admin support to 1-2 of their&nbsp;directs, exercising high attention to detail and discretion to every matter. Plan, coordinate and execute meeting set-up and events. Provide agendas, detailed data, information and resources to the executive in preparation for meetings. Prepare and manage expense reports.</p>
-	</li>
-	<li>
-		<p><strong>Calendar:</strong>&nbsp;Proactively own and flawlessly execute on our executives' calendar, prioritising with purpose, deflecting with tact, and understanding both the short and long-term impacts of each confirmed, declined, and rescheduled meeting. Ensure the executives are equipped with all the necessary meeting information and manage inbound and outbound requests.&nbsp;</p>
-	</li>
-	<li>
-		<p><strong>Travel:&nbsp;</strong>Plan all aspects of domestic and international travel, optimising and balancing executives' time with cost of travel; monitoring flights for up to the minute changes; ensuring all documents are secured and up-to-date.</p>
-	</li>
-	<li>
-		<p><strong>Special Projects</strong>: Coordinate and organise APJC-wide internal events (including our regular All-Hands and Leadership meetings). Support Cloudflare TV sessions for APJC region&nbsp;</p>
-	</li>
-	<li>
-		<p><strong>EA Team</strong>: Our EA team has a high degree of camaraderie and so the ideal candidate will enjoy partnering closely with their peers and foster teamwork.</p>
-	</li>
+	<li><strong>Platform Management:</strong> Serve as the technical owner of Zylo, our system of record. You will independently manage the health of the platform, including SSO integrations, finance connectors, and feature updates.</li>
+	<li><strong>Inventory Accuracy:</strong> Take full responsibility for the quality of our data. You will maintain accurate license inventories by proactively identifying and resolving gaps in ownership, cost center mapping, and contract metadata.</li>
+	<li><strong>Shadow IT Detection:</strong> Operationalize our Shadow IT monitoring. You will review expense data to identify unmanaged tools and execute the outreach process to bring them into the corporate fold.</li>
 </ul>
-<p><strong>Requirements</strong></p>
+<p><strong>Stakeholder Enablement &amp; Renewal Support</strong></p>
 <ul>
-	<li>You have 7+ years experience as an Executive Assistant in a high growth environment, prior experience supporting the VP levels</li>
-	<li>Strong written and verbal communication skills in English is necessary</li>
-	<li>Working knowledge of Google Suite, NetSuite, and major airline carrier’s platforms</li>
-	<li>Exhibit a strong work ethic, professionalism, confidentiality and good judgment</li>
-	<li>Incredibly organised and resourceful, able to juggle and multi-task with acute attention to detail and follow through</li>
-	<li>Strong sense of urgency and organisation</li>
-	<li>Ability to manage their own time with limited or no supervision</li>
-	<li>A "no task is too small" attitude</li>
-	<li>Ability to hit the ground running and take charge of the position will be highly advantageous</li>
-	<li>Start-up background is a plus</li>
+	<li><strong>Operational Liaison:</strong> Act as the first line of defense for Application Owners. While the Lead Principal manages executive relationships, you will work directly with functional owners to interpret their usage data and answer licensing questions.</li>
+	<li><strong>Renewal Readiness:</strong> Partner with Application Owners to create "Renewal Prep Kits" 90 days prior to contract expiration. You will work alongside stakeholders to interpret their usage vs. spend data, helping them build a valid forecast and negotiation strategy based on actual consumption.</li>
+	<li><strong>Process Improvement:</strong> Independently identify friction points in our software onboarding/offboarding workflows and partner with IT and Procurement to streamline them.</li>
 </ul>
+<p><strong>Analysis &amp; Operational Reporting</strong></p>
+<ul>
+	<li><strong>Usage Analysis:</strong> Go deep into the data to analyze software usage trends. You will not just report numbers; you will interpret them to flag specific optimization opportunities (e.g., "We have 200 users on 'Pro' who only use 'Basic' features").</li>
+	<li><strong>Metric Tracking:</strong> Develop and maintain the operational dashboards that track the team’s KPIs (e.g., Utilization Rates, Reclamation Savings, Shadow IT mitigation), providing the data that feeds into the Lead Principal’s executive reporting.</li>
+</ul>
+<h3><strong>Qualifications</strong></h3>
+<ul>
+	<li><strong>Experience:</strong> 3-5 years of experience in SaaS Operations, IT Asset Management, or Technology Procurement.</li>
+	<li><strong>Operational Autonomy:</strong> Proven ability to work independently. You can take a broad objective (e.g., "Clean up our Zoom licensing") and execute the entire project end-to-end without daily oversight.</li>
+	<li><strong>Technical Proficiency:</strong> Advanced proficiency with SaaS Management Platforms (Zylo experience preferred) and Excel/Sheets. You are comfortable manipulating large datasets to find the story within the numbers.</li>
+</ul>
+<p><strong>Soft Skills:</strong> Strong ability to influence without authority. You can explain SaaS licensing models and compliance requirements to non-technical stakeholders in a way that encourages cooperation.</p>
+<p>&nbsp;</p>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
 	<p><span style="font-weight: 400;">We’re not just a highly ambitious, large-scale technology company. We’re a highly ambitious, large-scale technology company with a soul. Fundamental to our mission to help build a better Internet is protecting the free and open Internet.</span></p>
