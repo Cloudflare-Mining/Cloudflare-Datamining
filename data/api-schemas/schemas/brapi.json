@@ -2814,10 +2814,6 @@
 												"format": "uri",
 												"type": "string"
 											},
-											"userAgent": {
-												"default": "CloudflareBrowserRenderingCrawler/1.0",
-												"type": "string"
-											},
 											"viewport": {
 												"default": {
 													"height": 1080,
@@ -3091,10 +3087,6 @@
 											"url": {
 												"description": "URL to navigate to, eg. `https://example.com`.",
 												"format": "uri",
-												"type": "string"
-											},
-											"userAgent": {
-												"default": "CloudflareBrowserRenderingCrawler/1.0",
 												"type": "string"
 											}
 										},
