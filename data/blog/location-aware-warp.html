@@ -40,7 +40,7 @@
 		</a>
 	</div>
 	<p>Cloudflare needs to be able to decide what network a device is using in a way that can’t easily be spoofed by someone looking to skirt policy. To solve that challenge, today’s release introduces the ability to define a known TLS endpoint which Cloudflare’s agent can reach. In just a few minutes, an administrator can create a certificate-validated check to indicate a device is operating within a <a href="https://developers.cloudflare.com/cloudflare-one/connections/connect-devices/warp/configure-warp/managed-networks">managed network</a>.</p>
-	<p>First, an administrator can create a TLS certificate that Cloudflare will use and match based on the SHA-256 hash of the certificate. You can leverage existing infrastructure or create a new TLS endpoint via the following example:</p>
+	<p>First, an administrator can create a <a href="https://www.cloudflare.com/application-services/products/ssl">TLS certificate</a> that Cloudflare will use and match based on the SHA-256 hash of the certificate. You can leverage existing infrastructure or create a new TLS endpoint via the following example:</p>
 	<p>1. Create a local certificate you can use</p>
 	<pre class="language-bash"><code class="language-bash">openssl req -x509 -newkey rsa:4096 -sha256 -days 3650 -nodes -keyout example.key -out example.pem -subj "/CN=example.com" -addext "subjectAltName=DNS:example.com"</code></pre>
 	<p>2. Extract the sha256 thumbprint of that certificate</p>

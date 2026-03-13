@@ -27,7 +27,7 @@
 		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/45KOue4Z7Pqt5PT5yUSVqw/1478d3b8a9bce8d50eab6f22b321bbbf/Customer-uploading-their-TLS-certificate-and-private-key-to-be-stored-in-all-datacenters.png" alt="Customer uploading their TLS certificate and private key to be stored in all data centers" class="kg-image" width="1600" height="730" loading="lazy">
 
 	</figure>
-	<p>Customer uploading their TLS certificate and private key to be stored in all data centers</p>
+	<p>Customer uploading their <a href="https://www.cloudflare.com/application-services/products/ssl">TLS certificate</a> and private key to be stored in all data centers</p>
 	<p>This bank however, wants its key to be stored only in EU data centers. In order to allow this to happen, we have three options.</p>
 	<p>The first option is to ensure that only EU data centers can receive this key and terminate the handshake. All other machines proxy TLS requests to an EU server for processing. This would require giving each machine only a subset of the entire keyset stored in Quicksilver, which challenges core design decisions Cloudflare has made over the years that assume the entire dataset is replicated on every machine.</p>
 	<figure class="kg-card kg-image-card kg-width-wide">

@@ -123,7 +123,7 @@ $ apt-get install gokeyless</code></pre>
 	<p>Lastly, start the keyless server.</p>
 	<pre class="language-bash"><code class="language-bash">$ service gokeyless start</code></pre>
 	<p>Go back to the Azure portal and open the required TCP ports for the Azure VM. Go to your VM → Networking → Add inbound port rule. Make sure you allow traffic on any source port and indicate Port 2407 for the destination port.</p>
-	<p>Save the change, then go to the Cloudflare dashboard to upload your SSL certificate. You should see “Upload Keyless SSL Certificate” in the Edge Certificates section of the SSL/TLS tab. There, enter the fields with the key server label, the hostname in the YAML file, the key server port-- 2407 is the default port, and paste the SSL certificate.</p>
+	<p>Save the change, then go to the Cloudflare dashboard to upload your <a href="https://www.cloudflare.com/application-services/products/ssl">SSL certificate</a>. You should see “Upload Keyless SSL Certificate” in the Edge Certificates section of the SSL/TLS tab. There, enter the fields with the key server label, the hostname in the YAML file, the key server port-- 2407 is the default port, and paste the SSL certificate.</p>
 	<p>Next you’re ready to test! Run <code>curl -v https://zone.com</code> and check that the TLS handshake is successfully completed.</p>
 	<div class="flex anchor relative">
 		<h3 id="microsoft-azure-dedicated-hsm">Microsoft Azure Dedicated HSM</h3>

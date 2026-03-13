@@ -19,7 +19,7 @@
 			</svg>
 		</a>
 	</div>
-	<p>SSL certificates form the core of trust on the web by assuring the identity of websites. This trust is built by digitally binding a cryptographic key to an organization’s identity. An SSL certificate will bind domain names to server names, and company names to locations. This ensures that if you go to your bank’s web site, for example, you know for sure it is your bank, and you are not giving out your information to a phishing scam.</p>
+	<p><a href="https://www.cloudflare.com/application-services/products/ssl">SSL certificates</a> form the core of trust on the web by assuring the identity of websites. This trust is built by digitally binding a cryptographic key to an organization’s identity. An SSL certificate will bind domain names to server names, and company names to locations. This ensures that if you go to your bank’s web site, for example, you know for sure it is your bank, and you are not giving out your information to a phishing scam.</p>
 	<p>A certificate is a file that contains a public key which is bound to a record of its owner. The mechanism that makes this binding trustworthy is called the <a href="https://en.wikipedia.org/wiki/Public_key_infrastructure">Public Key Infrastructure</a> and public-key cryptography is the glue that makes this possible.</p>
 	<p>A certificate is associated with a private key that corresponds to the certificate's public key, which is stored separately. The certificate comes with a digital signature from a trusted third-party called a certificate authority or CA. Let's examine the <a href="https://www.cloudflare.com">cloudflare.com</a> certificate.</p>
 	<figure class="kg-card kg-image-card ">
@@ -164,7 +164,7 @@
 	<p>$ cfssl sign -ca-key=test-key.pem -ca=test-cert.pem <a href="http://www.example.com">www.example.com</a> example.csr</p>
 	<p>Alternatively, a POST request containing the CSR and hostname can be sent to the CFSSL service via the <code>/api/v1/cfssl/sign</code> endpoint. To run the service call the <code>serve</code> command as follows:</p>
 	<p>$ cfssl serve -address=localhost -port=8888 -ca-key=test-key.pem -ca=test-cert.pem</p>
-	<p>If you already have a CFSSL instance running (in this case on localhost, but it can be anywhere), you can automate certificate creation with the gencert command’s <code>-remote</code> option. For example, if CFSSL is running on localhost, running the following gives you a private key and a certificate signed by the CA:</p>
+	<p>If you already have a CFSSL instance running (in this case on localhost, but it can be anywhere), you can <a href="https://www.cloudflare.com/application-services/solutions/certificate-lifecycle-management">automate certificate creation</a> with the gencert command’s <code>-remote</code> option. For example, if CFSSL is running on localhost, running the following gives you a private key and a certificate signed by the CA:</p>
 	<p>$ cfssl gencert -remote="localhost:8888" <a href="http://www.example.com">www.example.com</a> csr.json</p>
 	<p>At CloudFlare we use CFSSL heavily for <a href="https://www.cloudflare.com/railgun">Railgun</a> and other internal services. Special thanks go to <a href="https://twitter.com/kyleisom">Kyle Isom</a>, <a href="https://twitter.com/lziest">Zi Lin</a>, <a href="https://twitter.com/sebp">Sebastien Pahl</a>, and <a href="https://twitter.com/dok2001">Dane Knecht</a>, and the rest of the CloudFlare team for making this release possible.</p>
 	<div class="flex anchor relative">
