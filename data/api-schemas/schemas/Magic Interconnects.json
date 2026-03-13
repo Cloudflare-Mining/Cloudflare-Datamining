@@ -268,6 +268,22 @@
 																"description": "The name of the interconnect. The name cannot share a name with other tunnels.",
 																"example": "pni_ord",
 																"type": "string"
+															},
+															"virtual_port_reservation_id": {
+																"allOf": [
+																	{
+																		"description": "Identifier",
+																		"example": "c4a7362d577a6c3019a474fd6f485821",
+																		"maxLength": 32,
+																		"readOnly": true,
+																		"type": "string",
+																		"x-auditable": true
+																	},
+																	{
+																		"description": "An identifier that correlates this interconnect with the corresponding V2 CNI interconnect resource.",
+																		"readOnly": true
+																	}
+																]
 															}
 														},
 														"type": "object"
@@ -529,6 +545,22 @@
 																		"description": "The name of the interconnect. The name cannot share a name with other tunnels.",
 																		"example": "pni_ord",
 																		"type": "string"
+																	},
+																	"virtual_port_reservation_id": {
+																		"allOf": [
+																			{
+																				"description": "Identifier",
+																				"example": "c4a7362d577a6c3019a474fd6f485821",
+																				"maxLength": 32,
+																				"readOnly": true,
+																				"type": "string",
+																				"x-auditable": true
+																			},
+																			{
+																				"description": "An identifier that correlates this interconnect with the corresponding V2 CNI interconnect resource.",
+																				"readOnly": true
+																			}
+																		]
 																	}
 																},
 																"type": "object"
@@ -936,6 +968,22 @@
 															"description": "The name of the interconnect. The name cannot share a name with other tunnels.",
 															"example": "pni_ord",
 															"type": "string"
+														},
+														"virtual_port_reservation_id": {
+															"allOf": [
+																{
+																	"description": "Identifier",
+																	"example": "c4a7362d577a6c3019a474fd6f485821",
+																	"maxLength": 32,
+																	"readOnly": true,
+																	"type": "string",
+																	"x-auditable": true
+																},
+																{
+																	"description": "An identifier that correlates this interconnect with the corresponding V2 CNI interconnect resource.",
+																	"readOnly": true
+																}
+															]
 														}
 													},
 													"type": "object"
@@ -1195,6 +1243,22 @@
 																	"description": "The name of the interconnect. The name cannot share a name with other tunnels.",
 																	"example": "pni_ord",
 																	"type": "string"
+																},
+																"virtual_port_reservation_id": {
+																	"allOf": [
+																		{
+																			"description": "Identifier",
+																			"example": "c4a7362d577a6c3019a474fd6f485821",
+																			"maxLength": 32,
+																			"readOnly": true,
+																			"type": "string",
+																			"x-auditable": true
+																		},
+																		{
+																			"description": "An identifier that correlates this interconnect with the corresponding V2 CNI interconnect resource.",
+																			"readOnly": true
+																		}
+																	]
 																}
 															},
 															"type": "object"
@@ -1606,6 +1670,22 @@
 																"description": "The name of the interconnect. The name cannot share a name with other tunnels.",
 																"example": "pni_ord",
 																"type": "string"
+															},
+															"virtual_port_reservation_id": {
+																"allOf": [
+																	{
+																		"description": "Identifier",
+																		"example": "c4a7362d577a6c3019a474fd6f485821",
+																		"maxLength": 32,
+																		"readOnly": true,
+																		"type": "string",
+																		"x-auditable": true
+																	},
+																	{
+																		"description": "An identifier that correlates this interconnect with the corresponding V2 CNI interconnect resource.",
+																		"readOnly": true
+																	}
+																]
 															}
 														},
 														"type": "object"
@@ -1871,6 +1951,22 @@
 																		"description": "The name of the interconnect. The name cannot share a name with other tunnels.",
 																		"example": "pni_ord",
 																		"type": "string"
+																	},
+																	"virtual_port_reservation_id": {
+																		"allOf": [
+																			{
+																				"description": "Identifier",
+																				"example": "c4a7362d577a6c3019a474fd6f485821",
+																				"maxLength": 32,
+																				"readOnly": true,
+																				"type": "string",
+																				"x-auditable": true
+																			},
+																			{
+																				"description": "An identifier that correlates this interconnect with the corresponding V2 CNI interconnect resource.",
+																				"readOnly": true
+																			}
+																		]
 																	}
 																},
 																"type": "object"
@@ -2139,6 +2235,11 @@
 								"default": 1476,
 								"description": "The Maximum Transmission Unit (MTU) in bytes for the interconnect. The minimum value is 576.",
 								"type": "integer"
+							},
+							"name": {
+								"description": "The name of the interconnect. The name cannot share a name with other tunnels.",
+								"example": "pni_ord",
+								"type": "string"
 							}
 						},
 						"type": "object"
@@ -2394,6 +2495,22 @@
 															"description": "The name of the interconnect. The name cannot share a name with other tunnels.",
 															"example": "pni_ord",
 															"type": "string"
+														},
+														"virtual_port_reservation_id": {
+															"allOf": [
+																{
+																	"description": "Identifier",
+																	"example": "c4a7362d577a6c3019a474fd6f485821",
+																	"maxLength": 32,
+																	"readOnly": true,
+																	"type": "string",
+																	"x-auditable": true
+																},
+																{
+																	"description": "An identifier that correlates this interconnect with the corresponding V2 CNI interconnect resource.",
+																	"readOnly": true
+																}
+															]
 														}
 													},
 													"type": "object"
@@ -2657,6 +2774,22 @@
 																	"description": "The name of the interconnect. The name cannot share a name with other tunnels.",
 																	"example": "pni_ord",
 																	"type": "string"
+																},
+																"virtual_port_reservation_id": {
+																	"allOf": [
+																		{
+																			"description": "Identifier",
+																			"example": "c4a7362d577a6c3019a474fd6f485821",
+																			"maxLength": 32,
+																			"readOnly": true,
+																			"type": "string",
+																			"x-auditable": true
+																		},
+																		{
+																			"description": "An identifier that correlates this interconnect with the corresponding V2 CNI interconnect resource.",
+																			"readOnly": true
+																		}
+																	]
 																}
 															},
 															"type": "object"
