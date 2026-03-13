@@ -1,7 +1,7 @@
 {
 	"name": "@cloudflare/codemode",
 	"dist-tags": {
-		"latest": "0.1.3"
+		"latest": "0.2.0"
 	},
 	"versions": {
 		"0.0.1": {
@@ -349,6 +349,43 @@
 				"acorn": "^8.16.0"
 			},
 			"devDependencies": {
+				"ai": "^6.0.116",
+				"zod": "^4.3.6",
+				"vitest": "3.2.4",
+				"@playwright/test": "^1.58.2"
+			},
+			"peerDependencies": {
+				"ai": "^6.0.0",
+				"zod": "^3.25.0 || ^4.0.0"
+			},
+			"dist": {
+				"shasum": "1d99c180b4464248126f12889708ec7894aeabf3",
+				"tarball": "https://registry.npmjs.org/@cloudflare/codemode/-/codemode-0.1.3.tgz",
+				"fileCount": 11,
+				"integrity": "sha512-+clN/UPBSf9HwgevOkl8MbXUzbc6+PQXcMJ73navdum7xq9EvPdC/slLLD885pE6lfYvV/j2juEmNq9DdaT2lA==",
+				"signatures": [
+					{
+						"sig": "MEUCIQDTek6iWUGOIX5eWkVfFocy7LkRRgOuVN2D3yv2T65R2gIgKN7YQ5WqsovGouXslWp2HVPa2x+ljPz0pdARI/Gc/ec=",
+						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
+					}
+				],
+				"attestations": {
+					"url": "https://registry.npmjs.org/-/npm/v1/attestations/@cloudflare%2fcodemode@0.1.3",
+					"provenance": {
+						"predicateType": "https://slsa.dev/provenance/v1"
+					}
+				},
+				"unpackedSize": 83764
+			}
+		},
+		"0.2.0": {
+			"name": "@cloudflare/codemode",
+			"version": "0.2.0",
+			"dependencies": {
+				"@types/json-schema": "^7.0.15",
+				"acorn": "^8.16.0"
+			},
+			"devDependencies": {
 				"@playwright/test": "^1.58.2",
 				"ai": "^6.0.116",
 				"vitest": "3.2.4",
@@ -359,13 +396,13 @@
 				"zod": "^3.25.0 || ^4.0.0"
 			},
 			"dist": {
-				"integrity": "sha512-+clN/UPBSf9HwgevOkl8MbXUzbc6+PQXcMJ73navdum7xq9EvPdC/slLLD885pE6lfYvV/j2juEmNq9DdaT2lA==",
-				"shasum": "1d99c180b4464248126f12889708ec7894aeabf3",
-				"tarball": "https://registry.npmjs.org/@cloudflare/codemode/-/codemode-0.1.3.tgz",
+				"integrity": "sha512-RWfp2Chs1Fb1RxKizdVrq8KEHe2FFqE2ZscpY0RSahCNwoBl7MvdF9prmeN7jlzx75Q2yEvgBXDNmL+MLsOYVA==",
+				"shasum": "58bb28c4d1602cce9a118a70cf62258ca2ad579a",
+				"tarball": "https://registry.npmjs.org/@cloudflare/codemode/-/codemode-0.2.0.tgz",
 				"fileCount": 11,
-				"unpackedSize": 83764,
+				"unpackedSize": 93844,
 				"attestations": {
-					"url": "https://registry.npmjs.org/-/npm/v1/attestations/@cloudflare%2fcodemode@0.1.3",
+					"url": "https://registry.npmjs.org/-/npm/v1/attestations/@cloudflare%2fcodemode@0.2.0",
 					"provenance": {
 						"predicateType": "https://slsa.dev/provenance/v1"
 					}
@@ -373,7 +410,7 @@
 				"signatures": [
 					{
 						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U",
-						"sig": "MEUCIQDTek6iWUGOIX5eWkVfFocy7LkRRgOuVN2D3yv2T65R2gIgKN7YQ5WqsovGouXslWp2HVPa2x+ljPz0pdARI/Gc/ec="
+						"sig": "MEUCIQDdxvZdgkJqGWKJzBPJ706R8g7k66DtX0UQ/BNPKAhS4QIgWsvj5Gd/SUpB9akdX4bvuFc5RhCXJ75f67GdVe2Rth0="
 					}
 				]
 			}
