@@ -1,5 +1,6 @@
 {
 	"GET /accounts/{account_id}/intel/attack-surface-report/issue-types": {
+		"description": "Lists all available issue types in Security Center, describing categories of security issues.",
 		"operationId": "get-security-center-issue-types",
 		"parameters": [
 			{
@@ -258,6 +259,7 @@
 	},
 	"GET /accounts/{account_id}/intel/attack-surface-report/issues": {
 		"deprecated": true,
+		"description": "Lists all Security Center issues for the account, showing active security problems requiring attention.",
 		"operationId": "get-security-center-issues",
 		"parameters": [
 			{
@@ -825,6 +827,7 @@
 	},
 	"GET /accounts/{account_id}/intel/attack-surface-report/issues/class": {
 		"deprecated": true,
+		"description": "Retrieves Security Center issue counts aggregated by classification class.",
 		"operationId": "get-security-center-issue-counts-by-class",
 		"parameters": [
 			{
@@ -1275,6 +1278,7 @@
 	},
 	"GET /accounts/{account_id}/intel/attack-surface-report/issues/severity": {
 		"deprecated": true,
+		"description": "Retrieves Security Center issue counts aggregated by severity level.",
 		"operationId": "get-security-center-issue-counts-by-severity",
 		"parameters": [
 			{
@@ -1725,6 +1729,7 @@
 	},
 	"GET /accounts/{account_id}/intel/attack-surface-report/issues/type": {
 		"deprecated": true,
+		"description": "Retrieves Security Center issue counts aggregated by issue type.",
 		"operationId": "get-security-center-issue-counts-by-type",
 		"parameters": [
 			{
@@ -2174,6 +2179,7 @@
 		]
 	},
 	"GET /accounts/{account_id}/security-center/insights": {
+		"description": "Lists all Security Center insights for the account, showing security findings and recommendations.",
 		"operationId": "get-security-center-insights",
 		"parameters": [
 			{
@@ -2992,6 +2998,7 @@
 		]
 	},
 	"GET /accounts/{account_id}/security-center/insights/class": {
+		"description": "Retrieves Security Center insight counts aggregated by classification class.",
 		"operationId": "get-security-center-insight-counts-by-class",
 		"parameters": [
 			{
@@ -3437,6 +3444,7 @@
 		]
 	},
 	"GET /accounts/{account_id}/security-center/insights/severity": {
+		"description": "Retrieves Security Center insight counts aggregated by severity level (critical, high, medium, low).",
 		"operationId": "get-security-center-insight-counts-by-severity",
 		"parameters": [
 			{
@@ -3882,6 +3890,7 @@
 		]
 	},
 	"GET /accounts/{account_id}/security-center/insights/type": {
+		"description": "Retrieves Security Center insight counts aggregated by insight type.",
 		"operationId": "get-security-center-insight-counts-by-type",
 		"parameters": [
 			{
@@ -4327,6 +4336,7 @@
 		]
 	},
 	"GET /zones/{zone_id}/security-center/insights": {
+		"description": "Lists Security Center insights for a specific zone, showing zone-level security findings.",
 		"operationId": "get-zone-security-center-insights",
 		"parameters": [
 			{
@@ -4893,6 +4903,7 @@
 		]
 	},
 	"GET /zones/{zone_id}/security-center/insights/class": {
+		"description": "Retrieves zone-specific Security Center insight counts aggregated by classification class.",
 		"operationId": "get-zone-security-center-insight-counts-by-class",
 		"parameters": [
 			{
@@ -5342,6 +5353,7 @@
 		]
 	},
 	"GET /zones/{zone_id}/security-center/insights/severity": {
+		"description": "Retrieves zone-specific Security Center insight counts aggregated by severity level.",
 		"operationId": "get-zone-security-center-insight-counts-by-severity",
 		"parameters": [
 			{
@@ -5791,6 +5803,7 @@
 		]
 	},
 	"GET /zones/{zone_id}/security-center/insights/type": {
+		"description": "Retrieves zone-specific Security Center insight counts aggregated by insight type.",
 		"operationId": "get-zone-security-center-insight-counts-by-type",
 		"parameters": [
 			{
@@ -6241,6 +6254,7 @@
 	},
 	"PUT /accounts/{account_id}/intel/attack-surface-report/{issue_id}/dismiss": {
 		"deprecated": true,
+		"description": "Deprecated endpoint for archiving Security Center insights. Use the newer archive-security-center-insight endpoint instead.",
 		"operationId": "archive-security-center-insight-deprecated",
 		"parameters": [
 			{
@@ -6509,6 +6523,7 @@
 		]
 	},
 	"PUT /accounts/{account_id}/security-center/insights/{issue_id}/dismiss": {
+		"description": "Archives a Security Center insight for an account, removing it from the active insights list while preserving historical data.",
 		"operationId": "archive-security-center-insight",
 		"parameters": [
 			{
@@ -6777,6 +6792,7 @@
 		]
 	},
 	"PUT /zones/{zone_id}/security-center/insights/{issue_id}/dismiss": {
+		"description": "Archives a zone-specific Security Center insight, removing it from the active zone insights while preserving historical data.",
 		"operationId": "archive-zone-security-center-insight",
 		"parameters": [
 			{

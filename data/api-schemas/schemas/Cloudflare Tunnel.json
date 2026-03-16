@@ -7358,6 +7358,617 @@
 			"Cloudflare One Connector: WARP Read"
 		]
 	},
+	"GET /accounts/{account_id}/warp_connector/{tunnel_id}/connections": {
+		"description": "Fetches connection details for a WARP Connector Tunnel.",
+		"operationId": "cloudflare-tunnel-list-warp-connector-tunnel-connections",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"description": "Cloudflare account ID",
+					"example": "699d98642c564d2e855e9661899b7252",
+					"maxLength": 32,
+					"readOnly": true,
+					"type": "string",
+					"x-auditable": true
+				}
+			},
+			{
+				"in": "path",
+				"name": "tunnel_id",
+				"required": true,
+				"schema": {
+					"description": "UUID of the tunnel.",
+					"example": "f70ff985-a4ef-4643-bbbc-4a0ed4fc8415",
+					"format": "uuid",
+					"maxLength": 36,
+					"readOnly": true,
+					"type": "string",
+					"x-auditable": true
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"properties": {
+												"errors": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"messages": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"result": {
+													"anyOf": [
+														{
+															"type": "object"
+														},
+														{
+															"items": {},
+															"type": "array"
+														},
+														{
+															"type": "string"
+														}
+													]
+												},
+												"success": {
+													"description": "Whether the API call was successful",
+													"enum": [
+														true
+													],
+													"example": true,
+													"type": "boolean"
+												}
+											},
+											"required": [
+												"success",
+												"errors",
+												"messages",
+												"result"
+											],
+											"type": "object"
+										},
+										{
+											"properties": {
+												"result": {
+													"items": {},
+													"nullable": true,
+													"type": "array"
+												},
+												"result_info": {
+													"properties": {
+														"count": {
+															"description": "Total number of results for the requested service",
+															"example": 1,
+															"type": "number"
+														},
+														"page": {
+															"description": "Current page within paginated list of results",
+															"example": 1,
+															"type": "number"
+														},
+														"per_page": {
+															"description": "Number of results per page of results",
+															"example": 20,
+															"type": "number"
+														},
+														"total_count": {
+															"description": "Total results available without any search parameters",
+															"example": 2000,
+															"type": "number"
+														}
+													},
+													"type": "object"
+												}
+											}
+										}
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"result": {
+											"items": {
+												"description": "A WARP Connector client that maintains a connection to a Cloudflare data center.",
+												"properties": {
+													"arch": {
+														"description": "The cloudflared OS architecture used to establish this connection.",
+														"example": "linux_amd64",
+														"type": "string"
+													},
+													"conns": {
+														"description": "The WARP Connector Tunnel connections between your origin and Cloudflare's edge.",
+														"items": {
+															"properties": {
+																"client_id": {
+																	"description": "UUID of the Cloudflare Tunnel connector.",
+																	"example": "1bedc50d-42b3-473c-b108-ff3d10c0d925",
+																	"format": "uuid",
+																	"maxLength": 36,
+																	"readOnly": true,
+																	"type": "string",
+																	"x-auditable": true
+																},
+																"client_version": {
+																	"description": "The cloudflared version used to establish this connection.",
+																	"example": "2022.7.1",
+																	"type": "string"
+																},
+																"colo_name": {
+																	"description": "The Cloudflare data center used for this connection.",
+																	"example": "DFW",
+																	"type": "string"
+																},
+																"id": {
+																	"description": "UUID of the Cloudflare Tunnel connection.",
+																	"example": "1bedc50d-42b3-473c-b108-ff3d10c0d925",
+																	"format": "uuid",
+																	"maxLength": 36,
+																	"readOnly": true,
+																	"type": "string",
+																	"x-auditable": true
+																},
+																"opened_at": {
+																	"description": "Timestamp of when the connection was established.",
+																	"example": "2021-01-25T18:22:34.317854Z",
+																	"format": "date-time",
+																	"type": "string"
+																},
+																"origin_ip": {
+																	"allOf": [
+																		{
+																			"example": "10.1.0.137",
+																			"type": "string"
+																		}
+																	],
+																	"description": "The public IP address of the host running WARP Connector."
+																}
+															}
+														},
+														"type": "array"
+													},
+													"features": {
+														"description": "Features enabled for the Cloudflare Tunnel.",
+														"items": {
+															"example": "ha-origin",
+															"type": "string"
+														},
+														"type": "array"
+													},
+													"ha_status": {
+														"description": "The HA status of a WARP Connector client.",
+														"enum": [
+															"offline",
+															"passive",
+															"active"
+														],
+														"type": "string",
+														"x-auditable": true
+													},
+													"id": {
+														"description": "UUID of the Cloudflare Tunnel connector.",
+														"example": "1bedc50d-42b3-473c-b108-ff3d10c0d925",
+														"format": "uuid",
+														"maxLength": 36,
+														"readOnly": true,
+														"type": "string",
+														"x-auditable": true
+													},
+													"run_at": {
+														"description": "Timestamp of when the tunnel connection was started.",
+														"example": "2009-11-10T23:00:00Z",
+														"format": "date-time",
+														"type": "string"
+													},
+													"version": {
+														"description": "The cloudflared version used to establish this connection.",
+														"example": "2022.7.1",
+														"type": "string"
+													}
+												},
+												"type": "object"
+											},
+											"type": "array"
+										}
+									},
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "List WARP Connector Tunnel connections response"
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"allOf": [
+												{
+													"properties": {
+														"errors": {
+															"example": [],
+															"items": {
+																"properties": {
+																	"code": {
+																		"minimum": 1000,
+																		"type": "integer"
+																	},
+																	"message": {
+																		"type": "string"
+																	}
+																},
+																"required": [
+																	"code",
+																	"message"
+																],
+																"type": "object",
+																"uniqueItems": true
+															},
+															"type": "array"
+														},
+														"messages": {
+															"example": [],
+															"items": {
+																"properties": {
+																	"code": {
+																		"minimum": 1000,
+																		"type": "integer"
+																	},
+																	"message": {
+																		"type": "string"
+																	}
+																},
+																"required": [
+																	"code",
+																	"message"
+																],
+																"type": "object",
+																"uniqueItems": true
+															},
+															"type": "array"
+														},
+														"result": {
+															"anyOf": [
+																{
+																	"type": "object"
+																},
+																{
+																	"items": {},
+																	"type": "array"
+																},
+																{
+																	"type": "string"
+																}
+															]
+														},
+														"success": {
+															"description": "Whether the API call was successful",
+															"enum": [
+																true
+															],
+															"example": true,
+															"type": "boolean"
+														}
+													},
+													"required": [
+														"success",
+														"errors",
+														"messages",
+														"result"
+													],
+													"type": "object"
+												},
+												{
+													"properties": {
+														"result": {
+															"items": {},
+															"nullable": true,
+															"type": "array"
+														},
+														"result_info": {
+															"properties": {
+																"count": {
+																	"description": "Total number of results for the requested service",
+																	"example": 1,
+																	"type": "number"
+																},
+																"page": {
+																	"description": "Current page within paginated list of results",
+																	"example": 1,
+																	"type": "number"
+																},
+																"per_page": {
+																	"description": "Number of results per page of results",
+																	"example": 20,
+																	"type": "number"
+																},
+																"total_count": {
+																	"description": "Total results available without any search parameters",
+																	"example": 2000,
+																	"type": "number"
+																}
+															},
+															"type": "object"
+														}
+													}
+												}
+											],
+											"type": "object"
+										},
+										{
+											"properties": {
+												"result": {
+													"items": {
+														"description": "A WARP Connector client that maintains a connection to a Cloudflare data center.",
+														"properties": {
+															"arch": {
+																"description": "The cloudflared OS architecture used to establish this connection.",
+																"example": "linux_amd64",
+																"type": "string"
+															},
+															"conns": {
+																"description": "The WARP Connector Tunnel connections between your origin and Cloudflare's edge.",
+																"items": {
+																	"properties": {
+																		"client_id": {
+																			"description": "UUID of the Cloudflare Tunnel connector.",
+																			"example": "1bedc50d-42b3-473c-b108-ff3d10c0d925",
+																			"format": "uuid",
+																			"maxLength": 36,
+																			"readOnly": true,
+																			"type": "string",
+																			"x-auditable": true
+																		},
+																		"client_version": {
+																			"description": "The cloudflared version used to establish this connection.",
+																			"example": "2022.7.1",
+																			"type": "string"
+																		},
+																		"colo_name": {
+																			"description": "The Cloudflare data center used for this connection.",
+																			"example": "DFW",
+																			"type": "string"
+																		},
+																		"id": {
+																			"description": "UUID of the Cloudflare Tunnel connection.",
+																			"example": "1bedc50d-42b3-473c-b108-ff3d10c0d925",
+																			"format": "uuid",
+																			"maxLength": 36,
+																			"readOnly": true,
+																			"type": "string",
+																			"x-auditable": true
+																		},
+																		"opened_at": {
+																			"description": "Timestamp of when the connection was established.",
+																			"example": "2021-01-25T18:22:34.317854Z",
+																			"format": "date-time",
+																			"type": "string"
+																		},
+																		"origin_ip": {
+																			"allOf": [
+																				{
+																					"example": "10.1.0.137",
+																					"type": "string"
+																				}
+																			],
+																			"description": "The public IP address of the host running WARP Connector."
+																		}
+																	}
+																},
+																"type": "array"
+															},
+															"features": {
+																"description": "Features enabled for the Cloudflare Tunnel.",
+																"items": {
+																	"example": "ha-origin",
+																	"type": "string"
+																},
+																"type": "array"
+															},
+															"ha_status": {
+																"description": "The HA status of a WARP Connector client.",
+																"enum": [
+																	"offline",
+																	"passive",
+																	"active"
+																],
+																"type": "string",
+																"x-auditable": true
+															},
+															"id": {
+																"description": "UUID of the Cloudflare Tunnel connector.",
+																"example": "1bedc50d-42b3-473c-b108-ff3d10c0d925",
+																"format": "uuid",
+																"maxLength": 36,
+																"readOnly": true,
+																"type": "string",
+																"x-auditable": true
+															},
+															"run_at": {
+																"description": "Timestamp of when the tunnel connection was started.",
+																"example": "2009-11-10T23:00:00Z",
+																"format": "date-time",
+																"type": "string"
+															},
+															"version": {
+																"description": "The cloudflared version used to establish this connection.",
+																"example": "2022.7.1",
+																"type": "string"
+															}
+														},
+														"type": "object"
+													},
+													"type": "array"
+												}
+											},
+											"type": "object"
+										}
+									]
+								},
+								{
+									"properties": {
+										"errors": {
+											"allOf": [
+												{
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												}
+											],
+											"example": [
+												{
+													"code": 7003,
+													"message": "No route for the URI"
+												}
+											],
+											"minLength": 1
+										},
+										"messages": {
+											"allOf": [
+												{
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												}
+											],
+											"example": []
+										},
+										"result": {
+											"enum": [
+												null
+											],
+											"nullable": true,
+											"type": "object"
+										},
+										"success": {
+											"description": "Whether the API call was successful",
+											"enum": [
+												false
+											],
+											"example": false,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
+									],
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "List WARP Connector connections response failure"
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			},
+			{
+				"api_token": []
+			},
+			{
+				"user_service_key": []
+			}
+		],
+		"summary": "List WARP Connector Tunnel connections",
+		"tags": [
+			"Cloudflare Tunnel"
+		],
+		"x-api-token-group": [
+			"Cloudflare One Connectors Write",
+			"Cloudflare One Connectors Read",
+			"Cloudflare One Connector: WARP Write",
+			"Cloudflare One Connector: WARP Read"
+		]
+	},
 	"GET /accounts/{account_id}/warp_connector/{tunnel_id}/token": {
 		"description": "Gets the token used to associate warp device with a specific Warp Connector tunnel.",
 		"operationId": "cloudflare-tunnel-get-a-warp-connector-tunnel-token",
@@ -10120,6 +10731,11 @@
 				"application/json": {
 					"schema": {
 						"properties": {
+							"ha": {
+								"default": false,
+								"description": "Indicates that the tunnel will be created to be highly available. If omitted, defaults to false.",
+								"type": "boolean"
+							},
 							"name": {
 								"description": "A user-friendly name for a tunnel.",
 								"example": "blog",

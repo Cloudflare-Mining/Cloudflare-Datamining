@@ -160,6 +160,7 @@
 														"@cf/baai/bge-large-en-v1.5",
 														"@cf/google/embeddinggemma-300m",
 														"google-ai-studio/gemini-embedding-001",
+														"google-ai-studio/gemini-embedding-2-preview",
 														"openai/text-embedding-3-small",
 														"openai/text-embedding-3-large"
 													],
@@ -937,6 +938,7 @@
 															"@cf/baai/bge-large-en-v1.5",
 															"@cf/google/embeddinggemma-300m",
 															"google-ai-studio/gemini-embedding-001",
+															"google-ai-studio/gemini-embedding-2-preview",
 															"openai/text-embedding-3-small",
 															"openai/text-embedding-3-large"
 														],
@@ -1682,6 +1684,7 @@
 														"@cf/baai/bge-large-en-v1.5",
 														"@cf/google/embeddinggemma-300m",
 														"google-ai-studio/gemini-embedding-001",
+														"google-ai-studio/gemini-embedding-2-preview",
 														"openai/text-embedding-3-small",
 														"openai/text-embedding-3-large"
 													],
@@ -2589,6 +2592,7 @@
 											"@cf/baai/bge-large-en-v1.5",
 											"@cf/google/embeddinggemma-300m",
 											"google-ai-studio/gemini-embedding-001",
+											"google-ai-studio/gemini-embedding-2-preview",
 											"openai/text-embedding-3-small",
 											"openai/text-embedding-3-large"
 										],
@@ -3181,6 +3185,7 @@
 														"@cf/baai/bge-large-en-v1.5",
 														"@cf/google/embeddinggemma-300m",
 														"google-ai-studio/gemini-embedding-001",
+														"google-ai-studio/gemini-embedding-2-preview",
 														"openai/text-embedding-3-small",
 														"openai/text-embedding-3-large"
 													],
@@ -3800,6 +3805,23 @@
 						"properties": {
 							"ai_search_options": {
 								"properties": {
+									"cache": {
+										"properties": {
+											"cache_threshold": {
+												"enum": [
+													"super_strict_match",
+													"close_enough",
+													"flexible_friend",
+													"anything_goes"
+												],
+												"type": "string"
+											},
+											"enabled": {
+												"type": "boolean"
+											}
+										},
+										"type": "object"
+									},
 									"query_rewrite": {
 										"properties": {
 											"enabled": {
@@ -4297,6 +4319,23 @@
 						"properties": {
 							"ai_search_options": {
 								"properties": {
+									"cache": {
+										"properties": {
+											"cache_threshold": {
+												"enum": [
+													"super_strict_match",
+													"close_enough",
+													"flexible_friend",
+													"anything_goes"
+												],
+												"type": "string"
+											},
+											"enabled": {
+												"type": "boolean"
+											}
+										},
+										"type": "object"
+									},
 									"query_rewrite": {
 										"properties": {
 											"enabled": {
@@ -4833,6 +4872,7 @@
 											"@cf/baai/bge-large-en-v1.5",
 											"@cf/google/embeddinggemma-300m",
 											"google-ai-studio/gemini-embedding-001",
+											"google-ai-studio/gemini-embedding-2-preview",
 											"openai/text-embedding-3-small",
 											"openai/text-embedding-3-large"
 										],
@@ -5469,6 +5509,7 @@
 														"@cf/baai/bge-large-en-v1.5",
 														"@cf/google/embeddinggemma-300m",
 														"google-ai-studio/gemini-embedding-001",
+														"google-ai-studio/gemini-embedding-2-preview",
 														"openai/text-embedding-3-small",
 														"openai/text-embedding-3-large"
 													],

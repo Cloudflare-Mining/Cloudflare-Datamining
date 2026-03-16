@@ -1,5 +1,6 @@
 {
 	"DELETE /zones/{zone_id}/security-center/securitytxt": {
+		"description": "Removes the security.txt file configuration for a zone. The /.well-known/security.txt endpoint will no longer be served.",
 		"operationId": "delete-security-txt",
 		"parameters": [
 			{
@@ -246,6 +247,7 @@
 		]
 	},
 	"GET /zones/{zone_id}/security-center/securitytxt": {
+		"description": "Retrieves the current security.txt file configuration for a zone, used for security vulnerability reporting.",
 		"operationId": "get-security-txt",
 		"parameters": [
 			{
@@ -586,6 +588,7 @@
 		]
 	},
 	"PUT /zones/{zone_id}/security-center/securitytxt": {
+		"description": "Updates the security.txt file configuration for a zone, which provides security researchers with vulnerability reporting information.",
 		"operationId": "update-security-txt",
 		"parameters": [
 			{
