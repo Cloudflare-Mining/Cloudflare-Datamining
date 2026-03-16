@@ -1699,7 +1699,7 @@
 		"txBytes": "Confidence interval for the corresponding point estimate"
 	},
 	"AccountD1AnalyticsAdaptiveGroups": {
-		"__description": "Beta. Aggregated D1 analytics with adaptive sampling",
+		"__description": "Aggregated D1 analytics with adaptive sampling",
 		"avg": "The average value for a metric per dimension",
 		"confidence": "ALPHA - DO NOT USE",
 		"count": "Number of requests to D1 processed",
@@ -1762,7 +1762,7 @@
 		"writeQueries": "Confidence interval for the corresponding point estimate"
 	},
 	"AccountD1QueriesAdaptiveGroups": {
-		"__description": "Beta. D1 query metrics with adaptive sampling",
+		"__description": "D1 query metrics with adaptive sampling",
 		"avg": "The average value for a metric per dimension",
 		"confidence": "ALPHA - DO NOT USE",
 		"count": "Number of D1 queries processed",
@@ -1826,7 +1826,7 @@
 		"rowsWritten": "Confidence interval for the corresponding point estimate"
 	},
 	"AccountD1StorageAdaptiveGroups": {
-		"__description": "Beta. D1 storage with adaptive sampling",
+		"__description": "D1 storage with adaptive sampling",
 		"dimensions": "List of dimensions to group by",
 		"max": "The max of values for a metric per dimension"
 	},
@@ -6776,6 +6776,7 @@
 		"mitigationReason": "Reason for applying a mitigation to the packet, if any",
 		"mitigationScope": "Whether the packet matched a local or global mitigation, if any (possible values: local, global)",
 		"outcome": "The action that was taken on the packet (possible values: pass, drop)",
+		"pfpCustomTag": "The custom network analytics tag set by Programmable Flow Protection program",
 		"prefixTag": "IP prefix tag associated with the packet",
 		"sampleInterval": "ABR sample interval",
 		"sourceAsn": "ASN associated with the source IP of the packet, or 0 if there was no mapping available",
@@ -9853,7 +9854,8 @@
 		"datetime": "The date and time the source email was received",
 		"dkim": "DKIM check status of the source email",
 		"dmarc": "DMARC check status of the source email",
-		"envelopeTos": "The envelope recipient email address",
+		"envelopeTo": "The envelope recipient email address",
+		"envelopeTos": "<small>DEPRECATED (Use envelopeTo instead):</small> The envelope recipient email address",
 		"errorCause": "Error type (if any)",
 		"errorDetail": "Detailed error message (if any)",
 		"eventType": "Origin of email (incoming|forward|reply|newEmail)",
@@ -9895,7 +9897,8 @@
 		"datetimeMinute": "The date and time the source email was received truncated to the minute",
 		"dkim": "DKIM check status of the source email",
 		"dmarc": "DMARC check status of the source email",
-		"envelopeTos": "The envelope recipient email address",
+		"envelopeTo": "The envelope recipient email address",
+		"envelopeTos": "<small>DEPRECATED (Use envelopeTo instead):</small> The envelope recipient email address",
 		"errorCause": "Error type (if any)",
 		"eventType": "Origin of email (incoming|forward|reply|newEmail)",
 		"isLastEvent": "Is this the last event for this email?",
@@ -12075,9 +12078,9 @@
 		"cloudchamberMetricsAdaptiveGroups": "Metrics for Cloudchamber applications and deployments",
 		"cloudflareTunnelsAnalyticsAdaptiveGroups": "Cloudflare tunnel Device Analytics",
 		"containersMetricsAdaptiveGroups": "Metrics for Cloudchamber applications and deployments",
-		"d1AnalyticsAdaptiveGroups": "Beta. Aggregated D1 analytics with adaptive sampling",
-		"d1QueriesAdaptiveGroups": "Beta. D1 query metrics with adaptive sampling",
-		"d1StorageAdaptiveGroups": "Beta. D1 storage with adaptive sampling",
+		"d1AnalyticsAdaptiveGroups": "Aggregated D1 analytics with adaptive sampling",
+		"d1QueriesAdaptiveGroups": "D1 query metrics with adaptive sampling",
+		"d1StorageAdaptiveGroups": "D1 storage with adaptive sampling",
 		"dnsAnalyticsAdaptive": "Analytics data for DNS queries",
 		"dnsAnalyticsAdaptiveGroups": "Analytics data for DNS queries",
 		"dnsFirewallAnalyticsAdaptive": "Analytics data for DNS Firewall queries",
