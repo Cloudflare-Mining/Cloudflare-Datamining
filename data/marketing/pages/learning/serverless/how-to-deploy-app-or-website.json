@@ -1,26 +1,26 @@
 {
 	"componentChunkName": "component---src-components-learning-center-templates-learning-center-article-template-tsx",
-	"path": "/learning/serverless/serverless-performance/",
+	"path": "/learning/serverless/how-to-deploy-app-or-website/",
 	"result": {
 		"data": {
 			"learningCenterArticle": {
 				"contentTypeId": "learningCenterArticle",
-				"contentfulId": "5cMjGJdeZVUIlTJlfO5eI0",
-				"urlSlug": "serverless/serverless-performance",
+				"contentfulId": "6G076PXHL0SuuPyIS9gry8",
+				"urlSlug": "serverless/how-to-deploy-app-or-website",
 				"metaTags": {
-					"metaTitle": "How can serverless computing improve performance? | Lambda performance",
-					"metaDescription": "Applications built using serverless computing can run code at the edge for reduced latency. Compare the performance of AWS Lambda, Lambda@Edge, and Cloudflare Workers.",
+					"metaTitle": "How to build and deploy your web app fast",
+					"metaDescription": "Learn how to build and deploy a new website or app in minutes on Cloudflare using serverless functions, object storage, and easy domain registration.",
 					"twitterCustomImage": null,
 					"metaImage": {
 						"file": {
-							"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/74MHZrHc8CeHc6VLJlUUi3/592e1f6580976f8557f702588e65c1a3/serverless-lc.png"
+							"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/53qCYhQbir5WtIU0VDWESo/954a48bfb17f429acf469e5f14345d83/unnamed-3.png"
 						},
-						"description": "Learning Center Serverless OG Image"
+						"description": "DO NOT REMOVE, THIS IS CLOUDFLARE'S GLOBAL OG META ASSET"
 					},
 					"facebookCustomImage": null
 				},
-				"metaTitle": "How Can Serverless Computing Improve Performance? | Lambda Performance",
-				"metaDescription": "Applications built using serverless computing can run code at the edge for reduced latency. Compare AWS Lambda performance, Lambda@Edge, and Cloudflare Workers.",
+				"metaTitle": null,
+				"metaDescription": null,
 				"learningCenterArticleSubHeader": {
 					"contentTypeId": "learningCenterArticleSubHeader",
 					"contentfulId": "2yFAcD3wN6bkocasu9HVrM",
@@ -382,28 +382,16 @@
 						]
 					}
 				},
-				"header": "How can serverless computing improve performance? | Lambda performance",
-				"blurbSubHeader": "In a serverless architecture, having more points of presence makes a large positive impact on performance.",
-				"objectivesHeader": "Serverless Performance",
+				"header": "How to build and deploy your web app fast",
+				"blurbSubHeader": "It is possible to build and deploy a web app in minutes, not hours or days, with certain hosting providers.",
+				"objectivesHeader": "Fast Deployment",
 				"objectivesList": [
-					"Learn about AWS Lambda, Lambda@Edge, and Cloudflare Workers",
-					"See the differences in performance between the platforms",
-					"Understand latency and points of presence"
+					"Describe how serverless computing allows developers to deploy applications in minutes",
+					"Understand how to avoid unnecessary fees or delays for domain name registration and data storage",
+					"List the advantages of static sites"
 				],
 				"relatedContentLinkText": "Related Content",
 				"relatedContent": [
-					{
-						"contentTypeId": "learningCenterArticleLink",
-						"contentfulId": "46iTW2ix0P3U6zWFZx00JD",
-						"displayText": "Function as a Service (FaaS)",
-						"url": "/learning/serverless/glossary/function-as-a-service-faas/"
-					},
-					{
-						"contentTypeId": "learningCenterArticleLink",
-						"contentfulId": "1Wykxx90XeaCbvYk2bPsKT",
-						"displayText": "Platform as a Service (PaaS)",
-						"url": "/learning/serverless/glossary/platform-as-a-service-paas/"
-					},
 					{
 						"contentTypeId": "learningCenterArticleLink",
 						"contentfulId": "71NMvpFJOUs45fSw3PDOfl",
@@ -418,27 +406,39 @@
 					},
 					{
 						"contentTypeId": "learningCenterArticleLink",
-						"contentfulId": "3pCK2azXiNCHImPKOwvYkV",
-						"displayText": "Edge Computing",
-						"url": "/learning/serverless/glossary/what-is-edge-computing/"
+						"contentfulId": "hLUJOUJGRVSMOK6IWmyiF",
+						"displayText": "CI/CD",
+						"url": "/learning/serverless/glossary/what-is-ci-cd/"
+					},
+					{
+						"contentTypeId": "learningCenterArticleLink",
+						"contentfulId": "46iTW2ix0P3U6zWFZx00JD",
+						"displayText": "Function as a Service (FaaS)",
+						"url": "/learning/serverless/glossary/function-as-a-service-faas/"
+					},
+					{
+						"contentTypeId": "learningCenterArticleLink",
+						"contentfulId": "5sh7Y7dmHEADtazgliYnup",
+						"displayText": "Backend as a Service (BaaS)",
+						"url": "/learning/serverless/glossary/backend-as-a-service-baas/"
 					}
 				],
 				"enablementBlade": null,
-				"desktopMainContent": "<h2 class=\"learning-content-h2\" itemprop=\"headline\">How can serverless improve performance?</h2>\n                    <p>One of the advantages of <a href='/learning/serverless/what-is-serverless/'>serverless computing</a> is the ability to run application code from anywhere. By definition, in a serverless architecture there are no <a href='/learning/cdn/glossary/origin-server/'>origin servers</a>; therefore, it is possible for code to run on <a href='/learning/serverless/glossary/what-is-edge-computing/'>edge locations</a> close to end users. Two serverless platforms that take advantage of this ability and the resulting reduction in <a href='/learning/performance/glossary/what-is-latency/'>latency</a> are AWS Lambda@Edge and <a href='/products/cloudflare-workers/'>Cloudflare Workers</a>. By measuring Lambda performance compared to the performance of Cloudflare Workers and Lambda@Edge, it is possible to observe the effects of deploying serverless applications at the edge. Test results (below) indicate that Cloudflare Workers usually have a faster response.</p>\n                  <h2 class=\"learning-content-h2\" itemprop=\"headline\">What is AWS Lambda?</h2>\n                    <p>AWS Lambda is a serverless infrastructure service provided by Amazon Web Services. Lambda hosts event-driven application <a href='/learning/serverless/glossary/function-as-a-service-faas/'>functions</a> written in a variety of languages, and it starts up and runs them when they are needed.</p>\n                  <h2 class=\"learning-content-h2\" itemprop=\"headline\">Where is AWS Lambda deployed?</h2>\n                    <p>AWS offers a number of regions for deployment around the world. Typically a Lambda-hosted application will be hosted in only one of these regions.</p>\n                  <h2 class=\"learning-content-h2\" itemprop=\"headline\">What is AWS Lambda@Edge?</h2>\n                    <p>AWS Lambda@Edge is Lambda deployed on all globally distributed AWS regions instead of in one local geographic region. While Lambda supports multiple languages, Lambda@Edge functions run on Node.js, a run-time environment for executing JavaScript. When a Lambda@Edge function is triggered, it runs within the AWS region closest to the source of the triggering event, meaning that it runs as close as possible to the person or machine using the application.</p>\n                    <p>For example, suppose a user in Chicago requests some information using an application with a serverless architecture. If the serverless application's infrastructure is hosted using AWS Lambda within the US-East-1 region (in Virginia), the request will have to travel all the way to an AWS center in Virginia, and the response will travel all the way from there back to Chicago. But if the application is hosted using AWS Lambda@Edge, then the request and response will only have to travel to and from the closest AWS region, US-East-2, which is in Ohio. This decrease in distance reduces latency compared to AWS Lambda.</p>\n                  <h2 class=\"learning-content-h2\" itemprop=\"headline\">AWS Lambda@Edge vs. Cloudflare Workers</h2>\n                    <p>Similar to AWS Lambda@Edge, Cloudflare Workers are event-driven JavaScript functions hosted from data centers around the world. However, there are many important differences between the two serverless infrastructure services. Cloudflare Workers run on <a href='/learning/serverless/glossary/what-is-chrome-v8/'>Chrome V8</a> directly rather than Node.js, and Cloudflare has data centers in 200 cities around the world. Because they use V8 directly, Cloudflare Workers can start much faster and consume much fewer resources than other serverless platforms. In the example above, if the user in Chicago were trying to get a response from an application built with Cloudflare Workers, the request would travel to the Cloudflare PoP in Chicago rather than Ohio.</p>\n                  <h2 class=\"learning-content-h2\" itemprop=\"headline\">What is latency? How does latency affect user behavior?</h2>\n                    <p>In networking, 'latency' is the length of the delay before requested information loads. As latency increases, the amount of users who leave the webpage increases as well.</p>\n                    <p>Even small decreases in load time greatly increase user engagement. For example, a study by Walmart showed that each improvement of one second in page load time increased conversions by 2%. Conversely, as latency increases, users are more likely to stop using a website or an application. Latency becomes lower as the distance information has to travel is reduced.</p>\n                  <h2 class=\"learning-content-h2\" itemprop=\"headline\">What are points of presence (PoP)?</h2>\n                    <p>A point of presence (PoP) is a place where communications networks interconnect, and in the context of the Internet it's a place where the hardware (routers, switches, servers, and so on) that allows people to connect to the Internet lives. When speaking about an edge network, a point of presence is an edge server location. More PoPs on the edge result in faster responses for a greater number of users, because the likelihood that a PoP is geographically near a user increases with more PoPs.</p>\n                  <h2 class=\"learning-content-h2\" itemprop=\"headline\">How quickly do serverless functions respond on average?</h2>\n                    <p>Cloudflare performed tests comparing AWS Lambda, Lambda@Edge, and Cloudflare Workers in order to demonstrate serverless responsiveness and test the effectiveness of deploying serverless functions across multiple PoPs. (The test functions were simple scripts that responded with the current time of day when they were run.)</p>\n                    <p>The chart below displays function response times from AWS Lambda (blue), AWS Lambda@Edge (green), and Cloudflare Workers (red). For this test, the AWS Lambda functions were hosted in the US-East-1 region.</p>\n                    <img class=\"responsive-image\" title=\"aws-lambda-vs-cloudflare-workers\" alt=\"aws-lambda-vs-cloudflare-workers\" src=\"/img/learning/serverless/serverless-performance/aws-lambda-lambda-edge-workers-performance-graph-1.svg\" itemprop=\"image\" />\n                    <p>In a serverless architecture, where code runs (geographically speaking) has an impact on latency. If application code runs closer to the user, the application's performance improves because information does not have to travel as far, and the application responds more quickly. Though response times varied for all three services, Cloudflare Workers responses were usually the quickest. Lambda@Edge was next-fastest, exemplifying the benefits of running serverless functions in multiple locations.</p>\n                    <p>Although AWS regions are spread out across the globe, Cloudflare has more total PoPs. Cloudflare also performed tests that were limited to North America, and delays caused by DNS resolving were filtered out. The results, displayed below, are another example of how more PoPs reduce latency and improve performance. Note that Cloudflare Workers responses take the least amount of time.</p>\n                    <img class=\"responsive-image\" title=\"lambda-vs-workers\" alt=\"lambda-vs-workers\" src=\"/img/learning/serverless/serverless-performance/aws-lambda-lambda-edge-workers-performance-graph-2.svg\" itemprop=\"image\" />\n                  <h2 class=\"learning-content-h2\" itemprop=\"headline\">Serverless cold starts: How quickly do new processes respond in a serverless architecture?</h2>\n                    <p>In serverless computing, a 'cold start' refers to when a function that has not been run recently has to respond to an event. Such functions need to be 'spun up' before they can run, which takes a few milliseconds typically. This can cause additional latency issues.</p>\n                    <p>Cloudflare Workers has eliminated cold starts entirely, meaning they need zero spin up time. This is the case in every location in Cloudflare's global network. In contrast, both Lambda and Lambda@Edge functions can take over a second to respond from a cold start.</p>\n                    <p>The differences are largely due to the fact that Cloudflare Workers run on Chrome V8 rather than Node.js. Node.js is built on top of Chrome V8, takes longer to spin up, and has more memory overhead. Usually V8 instances take less than 5 milliseconds to spin up.</p>\n                    <p>Learn more about <a href='/products/cloudflare-workers/'>Cloudflare Workers</a>.</p>",
+				"desktopMainContent": "<h2 class=\"learning-content-h2\" itemprop=\"headline\">How to build and deploy your web app fast</h2>\n\n<p>There was a time when launching a new web app or a website was a laborious and expensive process that involved working with multiple vendors to reserve a domain name, pay for web hosting, and set up databases, in addition to coding the actual application and finally, deploying. Today, options like <a href='/learning/serverless/what-is-serverless/'>serverless computing</a>, <a href='/learning/cloud/what-is-object-storage/'>object storage</a>, <a href='/learning/performance/static-site-generator/'>static sites</a>, and integrated <a href='/learning/dns/how-to-buy-a-domain-name/'>domain registration</a> mean the whole process can take minutes. Some developers even use AI-based <a href='/learning/ai/ai-vibe-coding/'>vibe coding</a> to speed up the process of building the application.</p>\n\n<p>To build and deploy a web app quickly:</p>\n\n<ul class=\"learning-list\">\n  <li>Determine what problem the app will solve</li>\n  <li>Reserve a <a href='/learning/dns/glossary/what-is-a-domain-name/'>domain name</a></li>\n  <li>Write or generate code for the app, with functionality built in to solve the problem identified in the first step</li>\n  <li>Use a serverless platform like <a href='https://workers.cloudflare.com/' target='_blank'>Cloudflare Workers</a> for the backend to deploy functionality in seconds and keep costs low</li>\n  <li>Use cheap and fast object storage (like <a href='/developer-platform/products/r2/' target='_blank'>R2</a>) to host data</li>\n  <li>Use a static frontend platform like Cloudflare that deploys in seconds</li>\n  <li>Deploy on a platform with needed services like <a href='/learning/cdn/what-is-a-cdn/'>CDN</a> caching (for faster page load times) and <a href='https://workers.cloudflare.com/product/ai-search/' target='_blank'>SEO/AEO</a> (for more impressions and organic traffic) built in</li>\n</ul>\n\n<p>Apps need to be tested, refined, and <a href='/learning/security/what-is-web-application-security/'>secured</a> as well, and these can be ongoing processes. But an integrated and fast <a href='/developer-platform/' target='_blank'>developer platform</a> can help to quickly get up a first version of an app.</p>\n\n<h2 class=\"learning-content-h2\" itemprop=\"headline\">How to buy a domain name</h2>\n\n<p>A domain name is the name of a website, and domain names are leased through <a href='/learning/dns/glossary/what-is-a-domain-name-registrar/'>domain name registrars</a>. When bundled with other hosting services for web apps, domain names are often marked up. But some registrars allow anyone to select a domain name at cost, with no additional fees.</p>\n\n<p>To buy a domain name for a web app, search for the domain name on the registrar of your choice to see if it is available, view the terms of registering the domain, and register.</p>\n\n<p>Learn more about <a href='/learning/dns/glossary/choose-the-best-domain-name-registrar/'>choosing a domain name registrar</a>, or <a href='/products/registrar/'>search for a domain on Cloudflare Registrar</a>, which offers domain names at cost.</p>\n\n<h2 class=\"learning-content-h2\" itemprop=\"headline\">What is serverless?</h2>\n\n<p><a href='/learning/serverless/what-is-serverless/'>Serverless computing</a> is a <a href='/learning/cloud/what-is-the-cloud/'>cloud</a> service model that allows developers to write and deploy code that runs on an as-needed basis, and without managing any of the servers that run the code. In a serverless model, app developers do not have to pay for a fixed amount of bandwidth, compute power, or servers. They can simply write and deploy functions that run on demand, and they only pay for the compute power that is actually used.</p>\n\n<h2 class=\"learning-content-h2\" itemprop=\"headline\">How to deploy an app with a serverless backend</h2>\n\n<p>Many app developers choose serverless computing because they can launch app functionality without provisioning any servers, and indeed doing so is one of the fastest ways to get an app up and running. Cloudflare Workers, for instance, allows developers to deploy serverless functions in minutes. To deploy with <a href='https://workers.cloudflare.com/' target='_blank'>Cloudflare Workers</a>:</p>\n\n<ol class=\"learning-list\">\n  <li><a href='https://dash.cloudflare.com/sign-up' target='_blank'>Sign up for a Cloudflare account</a> (you may have created one while registering your domain as described above)</li>\n  <li>Select \"Create application\" in the Cloudflare dashboard, then either select a template or connect to a Git repository</li>\n  <li>Select \"Deploy\"</li>\n</ol>\n\n<p><a href='https://developers.cloudflare.com/workers/get-started/dashboard/' target='_blank'>This page has more in-depth instructions</a> on deploying a Workers application using the Cloudflare dashboard.</p>\n\n<h2 class=\"learning-content-h2\" itemprop=\"headline\">What is object storage? What are egress fees?</h2>\n\n<p><a href='/learning/cloud/what-is-object-storage/'>Object storage</a> is data storage in the cloud. Easy to configure, object storage allows for virtually unlimited data storage. Object storage is a convenient way to store application data, or to store training data for <a href='/learning/ai/what-is-artificial-intelligence/'>AI</a>-based applications. Despite these advantages, one of the downsides of object storage is that some providers charge for <a href='/learning/cloud/what-are-data-egress-fees/'>data egress</a>: when data is taken out of object storage.</p>\n\n<h4 class=\"learning-content-h4\">How to avoid egress fees</h4>\n\n<p>To avoid egress fees, use an object storage provider that does not charge any such fees. <a href='/developer-platform/products/r2/' target='_blank'>Cloudflare R2</a> is object storage without egress fees. It allows developers to bundle their long-term application data storage together with <a href='/developer-platform/solutions/hosting/' target='_blank'>hosting</a> and app functionality in one platform, while saving money on fees.</p>\n\n<h2 class=\"learning-content-h2\" itemprop=\"headline\">What is a static website?</h2>\n\n<p>A static website is composed of simple HTML webpages that load quickly, with little to no JavaScript executing in the user's browser. Static sites can be deployed rapidly — on some platforms, in seconds. Web apps today tend to be dynamic, but dynamic functionality can be built into static sites via APIs or serverless functions.</p>\n\n<h2 class=\"learning-content-h2\" itemprop=\"headline\">How to deploy a static website</h2>\n\n<p>Cloudflare Workers also enables developers to create static websites or full-stack applications and instantly deploy them to the Cloudflare global network. Cloudflare Workers is compatible with <a href='https://developers.cloudflare.com/workers/framework-guides/' target='_blank'>common frameworks</a> including Next.js, React, Vue, Svelte, and Astro.</p>\n\n<p>Cloudflare lets developers create and deploy new projects from the command line or via Git integration. If desired, developers can even upload prebuilt files and just click \"Deploy\" in the Cloudflare dashboard. <a href='https://developers.cloudflare.com/workers/static-assets/' target='_blank'>See the documentation for deploying static assets</a>.</p>\n\n<h2 class=\"learning-content-h2\" itemprop=\"headline\">How to launch a website or app on Cloudflare</h2>\n\n<p>In addition to these services for launching a web app quickly, the Cloudflare platform comes with easy-to-configure services for optimization and security like <a href='https://workers.cloudflare.com/product/ai-search/'>AI Search</a> for AEO, a <a href='/application-services/products/waf/'>web application firewall (WAF)</a> to block the latest attacks, <a href='/ddos/'>DDoS mitigation</a>, and a <a href='/application-services/products/cdn/'>CDN</a>.</p>\n\n<p>To launch on Cloudflare:</p>\n\n<ul class=\"learning-list\">\n  <li>Sign up for a Cloudflare account</li>\n  <li>Click to the relevant sections of the Cloudflare dashboard (including registering domain names, deploying serverless functions, configuring CDN and WAF rules, or deploying static sites if desired)</li>\n  <li>Deploy in minutes</li>\n</ul>\n\n<p><a href='https://dash.cloudflare.com/sign-up/workers-and-pages'>Start building for free</a>.</p>\n\n<p>&nbsp;</p>\n\n<h2>FAQs</h2>\n<h4>How can I speed up the process of launching a new web application?</h4>\n<p>You can accelerate deployment by using cloud services like serverless computing, object storage, and integrated domain registration. These tools allow you to move from development to a live site in minutes rather than going through the traditional, expensive process of coordinating with multiple different vendors.</p>\n\n<h4>What are the advantages of using serverless computing for an application backend?</h4>\n<p>Serverless computing is highly efficient because it eliminates the need for developers to manage or provision backend services. They only pay for the specific compute power their code uses as it runs on demand, rather than paying for fixed amounts of bandwidth or servers.</p>\n\n<h4>Is it possible to build a dynamic web application using a static site platform?</h4>\n<p>While static websites are primarily made of simple HTML pages that load very quickly, developers can add dynamic features to them by integrating APIs or serverless functions. Cloudflare Workers is compatible with popular frameworks such as React, Next.js, and Vue to help developers build these full-stack experiences.</p>\n\n<h4>What is the fastest way to get a new website up and running?</h4>\n<p>Sign up for Cloudflare, get a domain name for cheap, upload or connect the website's assets, and click Deploy. The process should take minutes.</p>\n\n<h4>How does the Cloudflare platform help protect and optimize a new site?</h4>\n<p>Beyond just hosting, the platform includes built-in tools like a content delivery network (CDN) for faster loading and a web application firewall (WAF) to block potential attacks. It also offers features like DDoS mitigation and AI Search to help improve your site's visibility and security.</p>\n\n<script type=\"application/ld+json\">\n{\n  \"@context\": \"https://schema.org\",\n  \"@type\": \"FAQPage\",\n  \"mainEntity\": [\n    {\n      \"@type\": \"Question\",\n      \"name\": \"How can I speed up the process of launching a new web application?\",\n      \"acceptedAnswer\": {\n        \"@type\": \"Answer\",\n        \"text\": \"You can accelerate deployment by using cloud services like serverless computing, object storage, and integrated domain registration. These tools allow you to move from development to a live site in minutes rather than going through the traditional, expensive process of coordinating with multiple different vendors.\"\n      }\n    },\n    {\n      \"@type\": \"Question\",\n      \"name\": \"What are the advantages of using serverless computing for an application backend?\",\n      \"acceptedAnswer\": {\n        \"@type\": \"Answer\",\n        \"text\": \"Serverless computing is highly efficient because it eliminates the need for developers to manage or provision backend services. They only pay for the specific compute power their code uses as it runs on demand, rather than paying for fixed amounts of bandwidth or servers.\"\n      }\n    },\n    {\n      \"@type\": \"Question\",\n      \"name\": \"Is it possible to build a dynamic web application using a static site platform?\",\n      \"acceptedAnswer\": {\n        \"@type\": \"Answer\",\n        \"text\": \"While static websites are primarily made of simple HTML pages that load very quickly, developers can add dynamic features to them by integrating APIs or serverless functions. Cloudflare Workers is compatible with popular frameworks such as React, Next.js, and Vue to help developers build these full-stack experiences.\"\n      }\n    },\n    {\n      \"@type\": \"Question\",\n      \"name\": \"What is the fastest way to get a new website up and running?\",\n      \"acceptedAnswer\": {\n        \"@type\": \"Answer\",\n        \"text\": \"Sign up for Cloudflare, get a domain name for cheap, upload or connect the website's assets, and click Deploy. The process should take minutes.\"\n      }\n    },\n    {\n      \"@type\": \"Question\",\n      \"name\": \"How does the Cloudflare platform help protect and optimize a new site?\",\n      \"acceptedAnswer\": {\n        \"@type\": \"Answer\",\n        \"text\": \"Beyond just hosting, the platform includes built-in tools like a content delivery network (CDN) for faster loading and a web application firewall (WAF) to block potential attacks. It also offers features like DDoS mitigation and AI Search to help improve your site's visibility and security.\"\n      }\n    }\n  ]\n}\n</script>\n",
 				"availableLocales": null,
-				"localized": true,
+				"localized": null,
 				"localeList": {
 					"enUS": "English for Locale",
-					"zhCN": "Translated for Locale",
-					"zhTW": "Translated for Locale",
-					"frFR": "Translated for Locale",
-					"deDE": "Translated for Locale",
-					"itIT": "Translated for Locale",
-					"jaJP": "Translated for Locale",
-					"koKR": "Translated for Locale",
-					"ptBR": "Translated for Locale",
-					"esES": "Translated for Locale",
-					"esLA": "Translated for Locale",
+					"zhCN": "English for Locale",
+					"zhTW": "English for Locale",
+					"frFR": "English for Locale",
+					"deDE": "English for Locale",
+					"itIT": "English for Locale",
+					"jaJP": "English for Locale",
+					"koKR": "English for Locale",
+					"ptBR": "English for Locale",
+					"esES": "English for Locale",
+					"esLA": "English for Locale",
 					"enAU": "English for Locale",
 					"enCA": "English for Locale",
 					"enIN": "English for Locale",
@@ -450,65 +450,20 @@
 					"svSE": "English for Locale",
 					"viVN": "English for Locale",
 					"trTR": "English for Locale",
-					"zhHansCN": "Translated for Locale",
+					"zhHansCN": "English for Locale",
 					"plPL": "English for Locale"
 				},
 				"proactivePopup": null,
-				"sidebarForm": {
-					"contentTypeId": "learningCenterArticleSidebarForm",
-					"contentfulId": "4ad3l3edBzH8KRefyi225g",
-					"heading": "Want to keep learning?",
-					"postSubmissionHeading": "Thank you for subscribing",
-					"description": "Subscribe to theNET, Cloudflare's monthly recap of the Internet's most popular insights!",
-					"postSubmissionDescription": "We're looking forward to sharing content with you.",
-					"marketoForm": {
-						"contentTypeId": "marketoEmbeddedForm",
-						"contentfulId": "4N6NOUDQwA5AAjxuGTnCMu",
-						"bladeName": "Form-Marketo Single Inline - Learning Center Newsletter Form",
-						"backgroundColor": "blue",
-						"marketoFormId": 2459,
-						"marketoFormLeadSource": "Inbound - Blog Subscriber",
-						"marketoFormLeadSourceDetail": "[BRD] Q4'24 WEB - GBL - Learning Center Subscription",
-						"marketoFormAssetName": null,
-						"marketoFormHeaderText": null,
-						"marketoFormDefaultComment": null,
-						"showCommentBox": null,
-						"marketoFormThankYouText": "Thank you for subscribing!",
-						"marketoFormCustomSuccessMessage": "We're looking forward to sharing content with you.",
-						"marketoFormPdfDownload": null,
-						"marketoFormPdfDownloadI18n": [],
-						"marketoFormAssetDownloadButtonText": null,
-						"marketoFormSuccessRedirectUrl": null,
-						"sendAdRoll": null,
-						"meta_adRollCustomSegment": null,
-						"enableSandbox": null,
-						"marketoFormSubmitButtonText": "Subscribe  to theNET",
-						"marketoFormSubmitButtonColor": null,
-						"enableEmailVerification": null,
-						"disableEnterpriseEmailNotification": null,
-						"enableRingout": null
-					}
-				}
+				"sidebarForm": null
 			}
 		},
 		"pageContext": {
 			"locale": "en-US",
-			"contentfulId": "5cMjGJdeZVUIlTJlfO5eI0",
-			"pathname": "/learning/serverless/serverless-performance/",
+			"contentfulId": "6G076PXHL0SuuPyIS9gry8",
+			"pathname": "/learning/serverless/how-to-deploy-app-or-website/",
 			"baseURL": "https://www.cloudflare.com",
 			"allowedHrefLangs": [
-				"en-US",
-				"zh-CN",
-				"zh-TW",
-				"fr-FR",
-				"de-DE",
-				"it-IT",
-				"ja-JP",
-				"ko-KR",
-				"pt-BR",
-				"es-ES",
-				"es-LA",
-				"zh-Hans-CN"
+				"en-US"
 			]
 		}
 	}

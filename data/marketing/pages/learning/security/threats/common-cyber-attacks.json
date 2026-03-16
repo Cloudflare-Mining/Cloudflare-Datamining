@@ -1,15 +1,15 @@
 {
 	"componentChunkName": "component---src-components-learning-center-templates-learning-center-article-template-tsx",
-	"path": "/learning/security/threats/cross-site-request-forgery/",
+	"path": "/learning/security/threats/common-cyber-attacks/",
 	"result": {
 		"data": {
 			"learningCenterArticle": {
 				"contentTypeId": "learningCenterArticle",
-				"contentfulId": "1XBl5XHpv651Yc4s3SJRYH",
-				"urlSlug": "security/threats/cross-site-request-forgery",
+				"contentfulId": "33j4WHr4SxsjwwYIv3KmE5",
+				"urlSlug": "security/threats/common-cyber-attacks",
 				"metaTags": {
-					"metaTitle": "CSRF explained | What is cross-site request forgery?",
-					"metaDescription": "CSRF, or cross-site request forgery, is a cyber attack that tricks users into executing unwanted actions. Learn how to protect your applications from CSRF.",
+					"metaTitle": "Common cyber attacks: A guide to detection and prevention",
+					"metaDescription": "The most common types of cyber attacks include phishing, DDoS attacks, ransomware, and SQL injection. Learn how to detect and prevent these attacks.",
 					"twitterCustomImage": null,
 					"metaImage": {
 						"file": {
@@ -19,8 +19,8 @@
 					},
 					"facebookCustomImage": null
 				},
-				"metaTitle": "What is Cross-Site Request Forgery?",
-				"metaDescription": "What is cross-site request forgery? How to stop cross-site request forgery attacks.",
+				"metaTitle": null,
+				"metaDescription": null,
 				"learningCenterArticleSubHeader": {
 					"contentTypeId": "learningCenterArticleSubHeader",
 					"contentfulId": "2AptEr2bqQDzL0VuYp3VhQ",
@@ -1038,21 +1038,32 @@
 						]
 					}
 				},
-				"header": "What is cross-site request forgery?",
-				"blurbSubHeader": "A cross-site request forgery attack tricks a victim into using their credentials to invoke a state-changing activity.",
-				"objectivesHeader": "Cross-Site Request Forgery",
+				"header": "Common cyber attacks: A guide to detection and prevention",
+				"blurbSubHeader": "The most common types of cyber attacks include phishing, DDoS attacks, ransomware, account takeover, and SQL injection.",
+				"objectivesHeader": "Common Cyber Attacks",
 				"objectivesList": [
-					"Define cross-site request forgery (CSRF)",
-					"Explain how a CSRF attack works",
-					"Explore ways to mitigate CSRF attacks"
+					"List the most common types of cyber attacks",
+					"Describe how to reduce the risk posed by each kind of attack"
 				],
-				"relatedContentLinkText": "Related Contet",
+				"relatedContentLinkText": "Related Content",
 				"relatedContent": [
 					{
 						"contentTypeId": "learningCenterArticleLink",
-						"contentfulId": "7esVgOhtx4g1wc9j085HEg",
-						"displayText": "What is web application security?",
-						"url": "/learning/security/what-is-web-application-security/"
+						"contentfulId": "7B34gNUdmG55POcpXlcGLo",
+						"displayText": "Ransomware",
+						"url": "/learning/security/ransomware/what-is-ransomware/"
+					},
+					{
+						"contentTypeId": "learningCenterArticleLink",
+						"contentfulId": "265Cektgw28NG3ss1yKbCQ",
+						"displayText": "How to prevent ransomware attacks",
+						"url": "/learning/security/ransomware/how-to-prevent-ransomware/"
+					},
+					{
+						"contentTypeId": "learningCenterArticleLink",
+						"contentfulId": "2Js72mbwH2vie0ch67lGm6",
+						"displayText": "How to prevent SQL injection",
+						"url": "/learning/security/threats/how-to-prevent-sql-injection/"
 					},
 					{
 						"contentTypeId": "learningCenterArticleLink",
@@ -1062,39 +1073,27 @@
 					},
 					{
 						"contentTypeId": "learningCenterArticleLink",
-						"contentfulId": "4Iu9iZ8JoQuMdcLsZeMa1g",
-						"displayText": "Brute force attack",
-						"url": "/learning/bots/brute-force-attack/"
-					},
-					{
-						"contentTypeId": "learningCenterArticleLink",
-						"contentfulId": "6XPhbYmE7dwzO6WII8TzfE",
-						"displayText": "Data breach",
-						"url": "/learning/security/what-is-a-data-breach/"
-					},
-					{
-						"contentTypeId": "learningCenterArticleLink",
-						"contentfulId": "29Fkw1XKWHACE0x4W0BypM",
-						"displayText": "What is SQL injection?",
-						"url": "/learning/security/threats/sql-injection/"
+						"contentfulId": "5AX3kxdgXjJCUN3uv7mvzJ",
+						"displayText": "Cross-site request forgery",
+						"url": "/learning/security/threats/cross-site-request-forgery/"
 					}
 				],
 				"enablementBlade": null,
-				"desktopMainContent": "<h2 class=\"learning-content-h2 learning-content-h2--margin-top-16px\" itemprop=\"headline\">What is Cross-Site Request Forgery (CSRF)?</h2>\n\n<p>A cross site request forgery attack is a type of confused deputy* cyber attack that tricks a user into accidentally using their credentials to invoke a state changing activity, such as transferring funds from their account, changing their email address and password, or some other undesired action.</p>\n\n<p>While the potential impact against a regular user is substantial, a successful CSRF attack against an administrative account can compromise an entire server, potentially resulting in complete takeover of a web application, API, or other service.</p>\n\n<h2 class=\"learning-content-h2\" itemprop=\"headline\">How does Cross-Site Request Forgery Work?</h2>\n\n<p>This attack focuses on targeting state-changing requests, which refers to the type of request that results in data being changed from one value to another. For example, a targeted request might make a purchase or change a value in an account. Interestingly, this is a \"blind attack\", and does not return data to the attacker, making it a poor choice for <a href=\"/learning/security/what-is-a-data-breach/\">data theft</a>.</p>\n\n<p>Here is an example of the 4 steps in a cross-site request forgery attack:</p>\n\n<ol class=\"learning-list\">\n  <li>An attacker creates a forged request that, when run, will transfer $10,000 from a particular bank into the attacker's account.</li>\n  <li>The attacker embeds the forged request into a hyperlink and sends it out in bulk emails and also embeds it into websites.</li>\n  <li>A victim clicks on an email or website link placed by the attacker,  resulting in the victim making a request to the bank to transfer $10,000.</li>\n  <li>The bank server receives the request, and because the victim is properly authorized, it treats the request as legitimate and transfers the funds.</li>\n</ol>\n\n<img class=\"responsive-image\" title=\"A Forged Request\" alt=\"A Forged Request\" src=\"/img/learning/security/threats/cross-site-request-forgery/forged-request.png\" itemprop=\"image\"/>\n\n<p>CSRF attacks vary in methodology, but typically have the following characteristics:</p>\n\n<ol class=\"learning-list\">\n  <li>They exploit websites that rely on a user's identity</li>\n  <li>They trick the user's browser into sending <a href=\"/learning/ddos/glossary/hypertext-transfer-protocol-http/\">HTTP</a> requests to the targeted site</li>\n  <li>They involve using HTTP requests that have side effects and do not have the proper CSRF protections in place</li>\n</ol>\n\n<p>Different HTTP verbs have varying vulnerability to CSRF attacks, resulting in variable protection strategies. This is due to the way that web browsers handle the verbs differently.</p>\n\n<p>HTTP GET requests have embedded parameters, such as those inside image tags, which can be manipulated and exploited. Typically, GET requests do not modify state, making them ineffective as targets of CSRF for a properly implemented web application or other resource.</p>\n\n<p>HTTP POST is used to change state, resulting in increased need for protection. To this end, web browsers implement security measures called the same origin policy (SOP) and cross origin resource sharing (CORS) which contains the cross origin security policy. SOP allows only requests from the same origin and CORS allows only certain types of requests to come from a different origin. The combination of these implementations helps to prevent CSRF attacks (among others) by limiting the ability of a request or webpage to interact with a different origin.</p>\n\n<p>Other HTTP verbs such as PUT and DELETE,  can only be run using SOP and CORS, mitigating many cross-site attacks.</p>\n\n<p>Though it's uncommon, some websites will explicitly disable these security measures, and it's possible to disable them inside of a web browser as well.</p>\n\n<h2 class=\"learning-content-h2\" itemprop=\"headline\">How can Cross-Site Request Forgery be mitigated?</h2>\n\n<p>The most common methodology for mitigating CSRF attacks involves using Anti-CSRF  tokens using one of two methods. While the token implementations are slightly different, the underlying principle remains the same; by creating and then comparing a randomly generated token string, an attacker is less likely to be able to perform an attack without an exceptionally unlikely guess.</p>\n\n<h4 class=\"learning-content-h4\">Synchronizer token pattern:</h4>\n\n<p>When a user visits a web page, such as the bank  webpage that allows for the transfer of funds, the bank's website embeds a random token into the form. When the user submits the form, the random token is returned and the bank is able to check to see if the two tokens match. If the tokens match, the transfer occurs. The attacker has no way to access the random token value created in the webpage, and if they request the page,  the same origin policy would prevent the attacker from reading the response.</p>\n\n<p>The downside of this method mitigation is it increases the burden on the <a href='/learning/serverless/glossary/client-side-vs-server-side/'>server side</a> to check the validity of tokens with each request.  It can also create issues if a user has multiple browser windows or other conditions that involve different software making the request. By expanding the scope of the token to be per session instead of per request, some of this difficulty can be avoided.</p>\n\n<h4 class=\"learning-content-h4\">Cookie-to-header token:</h4>\n\n<p>Another method involves issuing a cookie to the visitor's web browser that contains a random token. JavaScript operating on the client side will read the value of the token in the cookie and copy it into an HTTP header that will be sent with each request. If a genuine request is sent from the user, the value in header can be verified by the server. Any other instances will fail, mitigating a successful attack.</p>\n\n<p>By using custom rules through a <a href=\"/learning/ddos/glossary/web-application-firewall-waf/\">WAF</a>, users are able to help prevent certain CSRF attacks. Explore <a href=\"/waf/\">Cloudflare's Web Application Firewall</a>.</p>\n\n<h2 class=\"learning-content-h2\" itemprop=\"headline\">*Confused Deputy problem</h2>\n\n<p>A confused deputy refers to a computer program that is fooled into misusing its authority. This risk associated with this sort of vulnerability is why capability-based security helps reduce the risks associated with misuse. When installing software, for example, most computers today require the user to login. This helps prevent code from being executed unintentionally when the user accidentally uses their authority to authorize an installation.</p>\n\n<h2>FAQs</h2>\n<h4>What is cross-site request forgery (CSRF)?</h4>\n<p>CSRF is a cyber attack that tricks a user into using their credentials to perform unintended actions on a web application where they are authenticated.</p>\n<h4>What is the confused deputy problem?</h4>\n<p>The confused deputy problem is a security vulnerability where a less-privileged program manipulates a more-privileged program into misusing its authority.</p>\n<h4>What are anti-CSRF tokens?</h4>\n<p>Anti-CSRF tokens are one way to mitigate cross-site request forgery (CSRF) attacks. They are tokens containing randomized values added to web requests to verify their legitimacy. Attackers are highly unlikely to be able to guess the random values and forge valid requests.</p>\n<h4>What is the same origin policy (SOP)?</h4>\n<p>The same origin policy is a browser security mechanism that restricts webpage interactions to the same origin, helping prevent cross-site attacks like CSRF.</p>\n<h4>How do HTTP Verbs affect CSRF vulnerability?</h4>\n<p>Different HTTP verbs (GET, POST, PUT, DELETE) have varying vulnerability to CSRF. POST requests, because they are used to change state, are more commonly targeted and require stronger protection.</p>\n\n<script type=\"application/ld+json\">\n{\n  \"@context\": \"https://schema.org\",\n  \"@type\": \"FAQPage\",\n  \"mainEntity\": [\n    {\n      \"@type\": \"Question\",\n      \"name\": \"What is cross-site request forgery (CSRF)?\",\n      \"acceptedAnswer\": {\n        \"@type\": \"Answer\",\n        \"text\": \"CSRF is a cyber attack that tricks a user into using their credentials to perform unintended actions on a web application where they are authenticated.\"\n      }\n    },\n    {\n      \"@type\": \"Question\",\n      \"name\": \"What is the confused deputy problem?\",\n      \"acceptedAnswer\": {\n        \"@type\": \"Answer\",\n        \"text\": \"The confused deputy problem is a security vulnerability where a less-privileged program manipulates a more-privileged program into misusing its authority.\"\n      }\n    },\n    {\n      \"@type\": \"Question\",\n      \"name\": \"What are anti-CSRF tokens?\",\n      \"acceptedAnswer\": {\n        \"@type\": \"Answer\",\n        \"text\": \"Anti-CSRF tokens are one way to mitigate cross-site request forgery (CSRF) attacks. They are tokens containing randomized values added to web requests to verify their legitimacy. Attackers are highly unlikely to be able to guess the random values and forge valid requests.\"\n      }\n    },\n    {\n      \"@type\": \"Question\",\n      \"name\": \"What is the same origin policy (SOP)?\",\n      \"acceptedAnswer\": {\n        \"@type\": \"Answer\",\n        \"text\": \"The same origin policy is a browser security mechanism that restricts webpage interactions to the same origin, helping prevent cross-site attacks like CSRF.\"\n      }\n    },\n    {\n      \"@type\": \"Question\",\n      \"name\": \"How do HTTP Verbs affect CSRF vulnerability?\",\n      \"acceptedAnswer\": {\n        \"@type\": \"Answer\",\n        \"text\": \"Different HTTP verbs (GET, POST, PUT, DELETE) have varying vulnerability to CSRF. POST requests, because they are used to change state, are more commonly targeted and require stronger protection.\"\n      }\n    }\n  ]\n}\n</script>\n",
+				"desktopMainContent": "<h2 class=\"learning-content-h2 learning-content-h2--margin-top-16px\" itemprop=\"headline\">The most common types of cyber attacks</h2>\n\n<p>A cyber attack is any action that has the intent of changing, stealing, destroying, or disrupting data and processes within a digital system. Cyber attacks pose less physical risk to criminals than committing crimes in the non-digital world, and they can be (in some cases) highly profitable, so they are only increasing in popularity. There are dozens of types of cyber attacks, and often they are chained together in a larger attack campaign. Some of the most common cyber attacks include:</p>\n\n<ol class=\"learning-list\">\n  <li><a href='#phishing'>Phishing</a></li>\n  <li><a href='#dosandddosattacks'>DoS and DDoS attacks</a></li>\n  <li><a href='#ransomware'>Ransomware</a></li>\n  <li><a href='#accounttakeover'>Account takeover</a></li>\n  <li><a href='#sqlinjection'>SQL injection</a></li>\n  <li><a href='#xssandcsrf'>XSS and CSRF</a></li>\n  <li><a href='#insiderthreats'>Insider threats</a></li>\n  <li><a href='#supplychainattacks'>Supply chain attacks</a></li>\n  <li><a href='#vulnerabilityexploits'>Vulnerability exploits</a></li>\n  <li><a href='#onpathattacks'>On-path attacks</a></li>\n</ol>\n\n<a id='phishing'><h2 class=\"learning-content-h2\" itemprop=\"headline\">1. Phishing</h2></a>\n\n<p><a href='/learning/access-management/phishing-attack/'>Phishing</a> refers to attempts to steal sensitive information, especially user credentials or financial information, through the use of fraudulent messages. Phishing attacks are most often thought of as occurring over <a href='/learning/email-security/what-is-email/'>email</a>, but attackers can use other channels for their phishing messages as well, from <a href='/learning/email-security/what-is-vishing/'>phone calls</a> and <a href='/learning/access-management/smishing/'>text messages</a> to <a href='/learning/security/what-is-quishing/'>QR codes</a>.</p>\n\n<p>Some phishing messages are sent in bulk, while other types of phishing attacks are highly targeted and personalized: these include <a href='/learning/access-management/spear-phishing/'>spear phishing</a> and <a href='/learning/access-management/whaling-attack/'>whale phishing</a>.</p>\n\n<p>Many of the other attacks listed below are often preceded by phishing attacks. An attacker may use phishing to get a foothold inside a larger organization, then infect that organization with ransomware, for example.</p>\n\n<h4 class=\"learning-content-h4\">How to prevent phishing</h4>\n\n<p><strong>Secure email gateway (SEG):</strong> This can help to close off email-based <a href='/learning/security/glossary/attack-vector/'>attack vectors</a>, although phishing attacks can come over other channels as well. Ideally, a <a href='/learning/email-security/secure-email-gateway-seg/'>secure email gateway</a> will not just block known <a href='/learning/email-security/how-to-stop-spam-emails/'>spam</a> or emails from <a href='/learning/email-security/what-is-email-spoofing/'>spoofed domains</a>, but also use <a href='/learning/ai/what-is-machine-learning/'>machine learning</a> to identify suspicious emails even from known sources.</p>\n\n<p><strong>DNS filtering and browser isolation:</strong> <a href='/learning/access-management/what-is-dns-filtering/'>DNS filtering</a> can prevent spoofed login webpages or other malicious phishing links from loading, while <a href='/learning/access-management/what-is-browser-isolation/'>browser isolation</a> helps block drive-by downloads from any malicious links that do happen to load.</p>\n\n<p><strong>User training:</strong> Users should be educated regularly on <a href='/learning/email-security/how-to-prevent-phishing/'>how to identify phishing emails</a>. Human error cannot be completely eliminated, but the better users are at spotting phishing emails, the less likely it is that an attack will be successful.</p>\n\n<a id='dosandddosattacks'><h2 class=\"learning-content-h2\" itemprop=\"headline\">2. DoS and DDoS attacks</h2></a>\n\n<p><a href='/learning/ddos/glossary/denial-of-service/'>Denial-of-service (DoS)</a> and <a href='/learning/ddos/what-is-a-ddos-attack/'>distributed denial-of-service (DDoS)</a> attacks are when an attacker floods a server, application, or network with junk traffic so that the target crashes or cannot serve legitimate users. DDoS attacks can knock an application offline or even take down wide swathes of the Internet if the attacker is targeting foundational systems like <a href='/learning/dns/what-is-dns/'>DNS</a>.</p>\n\n<p>DDoS attacks continue to increase in size: the <a href='/learning/ddos/glossary/aisuru-kimwolf-botnet/'>Aisuru-Kimwolf botnet</a> has sent attacks of well over 30 Tbps at its targets.</p>\n\n<h4 class=\"learning-content-h4\">How to mitigate DoS and DDoS attacks</h4>\n\n<p>Both <a href='/learning/ddos/glossary/web-application-firewall-waf/'>web application firewalls (WAFs)</a> and DDoS mitigation services can block illegitimate network traffic and absorb large attacks. <a href='/ddos/'>Cloudflare DDoS mitigation</a> blocked the Aisuru-Kimwolf attacks mentioned above, and the service is available to <a href='/plans/'>anyone with a domain name for free</a>.</p>\n\n<a id='ransomware'><h2 class=\"learning-content-h2\" itemprop=\"headline\">3. Ransomware</h2></a>\n\n<p><a href='/learning/security/ransomware/what-is-ransomware/'>Ransomware</a> is <a href='/learning/ddos/glossary/malware/'>malware</a>, or malicious software, that when executed encrypts the contents of a file system or a hard drive so that the owners of the data cannot open or use the data. The parties controlling the ransomware then demand a payment for unlocking the data. There is, of course, no guarantee that paying the ransom means the attackers will actually unlock the data.</p>\n\n<p>Because of its quick and often hefty payouts, ransomware is a highly popular form of cyber attack.</p>\n\n<h4 class=\"learning-content-h4\">How to prevent ransomware</h4>\n\n<p>Ransomware does not spontaneously generate inside a device or a system: it enters through a wide range of attack vectors. Phishing is a major vector, as are vulnerability exploits, account takeover attacks, and previous malware-based attacks. Taking actions to detect and stop attacks through these vectors can help reduce the risk of ransomware.</p>\n\n<p>Another crucial security measure is having a backup plan. Regular backups of systems and data ensure that, even if the original data is lost through a ransomware attack, an organization can revert to the backup copy and carry on without paying the ransom. Learn more about <a href='/learning/security/ransomware/how-to-prevent-ransomware/'>how to prevent ransomware</a>.</p>\n\n<a id='accounttakeover'><h2 class=\"learning-content-h2\" itemprop=\"headline\">4. Account takeover (ATO)</h2></a>\n\n<p><a href='/learning/access-management/account-takeover/'>Account takeover (ATO) attacks</a> are attempts to gain control of a user's account. Attackers have a number of methods at their disposal for gaining entry to an account:</p>\n\n<ul class=\"learning-list\">\n  <li><a href='/learning/bots/what-is-credential-stuffing/'>Credential stuffing</a>, which is when attackers use <a href='/learning/bots/what-is-a-bot/'>bots</a> to automatically and rapidly attempt to log in to a user account using a list of common or breached passwords</li>\n  <li><a href='/learning/bots/brute-force-attack/'>Brute force attacks</a>, in which attackers use trial-and-error to guess user passwords</li>\n  <li>Phishing, described above</li>\n  <li>Stolen <a href='/learning/privacy/what-are-cookies/'>cookies</a>, which enable attackers to take over a user's web browsing session</li>\n  <li>Malware infections, which can log user activity and record their credentials, then send them to the attacker</li>\n</ul>\n\n<p>Account takeover can impact more than just the compromised account. Attackers can use the account to reach the user's other accounts, to <a href='/learning/security/glossary/what-is-lateral-movement/'>move laterally</a> within an organization's network and compromise additional systems, to carry out phishing attacks, or to steal sensitive data.</p>\n\n<h4 class=\"learning-content-h4\">How to prevent account takeover</h4>\n\n<p>Basic security measures like strong password policies, the use of <a href='/learning/access-management/what-is-multi-factor-authentication/'>multi-factor authentication (MFA)</a>, <a href='/learning/bots/what-is-rate-limiting/'>rate limiting, and <a href='/learning/email-security/what-is-email-security/'>email security</a> filters can stop many ATO attacks. For businesses and organizations, a <a href='/learning/security/glossary/what-is-zero-trust/'>zero trust security</a> architecture can contain the damage from a successful ATO attack by segmenting the internal network to prevent lateral movement and further compromise.</p>\n\n<a id='sqlinjection'><h2 class=\"learning-content-h2\" itemprop=\"headline\">5. SQL injection</h2></a>\n\n<p><a href='/learning/security/threats/sql-injection/'>Structured Query Language (SQL)</a> injection is a common attack that can be directed against any web application that allows user inputs. By entering specialized SQL statements into an entry field, an attacker can execute commands that allow for the retrieval of data from the database or the destruction of that data. SQL injections work by taking advantage of applications that expect one type of data but instead receive a SQL command and do not have sufficient protections on the server side to recognize and block such commands.</p>\n\n<h4 class=\"learning-content-h4\">How to prevent SQL injection</h4>\n\n<p>There are a number of specific steps an application developer can take to architect their application backend in ways that prevent SQL injection attacks, including escaping user inputs, using prepared statements and stored procedures, and enforcing <a href='/learning/access-management/principle-of-least-privilege/'>least-privilege access</a>. But additionally, a WAF can block most SQL injection attacks before they reach applications. <a href='https://dash.cloudflare.com/sign-up'>Sign up for the Cloudflare WAF</a>.</p>\n\n<a id='xssandcsrf'><h2 class=\"learning-content-h2\" itemprop=\"headline\">6. Cross-site scripting (XSS) and cross-site request forgery (CSRF)</h2></a>\n\n<p>These attacks target web browser activity. In a <a href='/learning/security/threats/cross-site-scripting/'>cross-site scripting (XSS) attack</a>, an attacker attaches malicious code to a legitimate website that executes when a user loads the website. In a <a href='/learning/security/threats/cross-site-request-forgery/'>cross-site request forgery (CSRF) attack</a>, an attacker forges a user request and attaches it to a link. When the link is loaded, the request is carried out.</p>\n\n<h4 class=\"learning-content-h4\">How to prevent XSS and CSRF</h4>\n\n<p><a href='/learning/ddos/glossary/web-application-firewall-waf/'>WAF</a> rules can block many types of XSS and CSRF attacks. In addition, application developers should bear these attacks in mind when constructing their applications and build in mitigations. Finally, users should be suspicious of links they are sent via email or other sources, and always load the actual URL of the website or app they are trying to use.</p>\n\n<p>See the <a href='/learning/security/threats/owasp-top-10/'>OWASP Top 10</a> for a more complete list of web application threats.</p>\n\n<a id='insiderthreats'><h2 class=\"learning-content-h2\" itemprop=\"headline\">7. Insider threats</h2></a>\n\n<p>\"<a href='/learning/access-management/what-is-an-insider-threat/'>Insiders</a>,\" or persons within an organization, can pose just as much of a threat as outside attackers by:</p>\n\n<ul class=\"learning-list\">\n  <li>Stealing or leaking data</li>\n  <li>Destroying data</li>\n  <li>Installing malware</li>\n  <li>Misconfiguring security settings</li>\n  <li>Selling company secrets</li>\n  <li>Sharing internal secrets with foreign adversaries</li>\n</ul>\n\n<h4 class=\"learning-content-h4\">How to detect and prevent insider threats</h4>\n\n<p>Zero trust security ensures no insider has more access than they need, which limits the damage a malicious insider can inflict on internal systems and data.</p>\n\n<p><a href='/learning/access-management/what-is-dlp/'>Data loss prevention (DLP)</a> can detect sensitive data and block attempts to copy, download, upload, or email that data.</p>\n\n<a id='supplychainattacks'><h2 class=\"learning-content-h2\" itemprop=\"headline\">8. Supply chain attacks</h2></a>\n\n<p>Attackers can go after an organization or application indirectly instead of directly, by compromising components of their supply chain. This could mean compromising third-party application dependencies (any integrated applications or <a href='/learning/security/api/what-is-an-api/'>APIs</a>), third-party software, open-source code, or hardware vendors. Attackers have even been known to target a cybersecurity vendor and add malicious code to their software, which is then sent out in a system update to that vendor's clients.</p>\n\n<h4 class=\"learning-content-h4\">How to prevent supply chain attacks</h4>\n\n<p><a href='/learning/security/what-is-a-supply-chain-attack/'>Supply chain attacks</a> are a particularly difficult problem in today's highly interconnected IT landscape, but these security measures can help to reduce the risk:</p>\n\n<ul class=\"learning-list\">\n  <li>Implement zero trust security</li>\n  <li>Run third-party risk assessments</li>\n  <li>Identify <a href='/learning/access-management/what-is-shadow-it/'>shadow IT</a></li>\n  <li>Apply system updates and vulnerability patches as soon as possible</li>\n  <li>Load third-party code outside of the user's browser (a service provided by <a href='/application-services/products/zaraz/'>Cloudflare Zaraz</a>)</li>\n</ul>\n\n<p>Learn more about <a href='/learning/security/what-is-a-supply-chain-attack/'>supply chain attacks and their prevention</a>.</p>\n\n<a id='vulnerabilityexploits'><h2 class=\"learning-content-h2\" itemprop=\"headline\">9. Vulnerability exploits</h2></a>\n\n<p>All software has flaws, and some of those flaws can leave the software open to attacks — such flaws are called vulnerabilities. Vulnerability exploits are attacks that take advantage of vulnerabilities and allow the attacker to gain control of a system or view sensitive data.</p>\n\n<h4 class=\"learning-content-h4\">How to prevent vulnerability exploits</h4>\n\n<p>Software vendors frequently issue patches and updates that eliminate vulnerabilities in their software. Applying those updates as soon as possible blocks many exploits. For web applications, a WAF can defend against common vulnerability exploits, as attackers often use the same exploits across multiple applications in attempts to compromise them.</p>\n\n<p>Some vulnerabilities are not yet known to software vendors or to the security community at large: these are called <a href='/learning/security/threats/zero-day-exploit/'>zero-days</a>. There is no foolproof defense against zero-days, but a WAF can stop many types of unknown attacks, and browser isolation can defend user devices against untrusted code.</p>\n\n<a id='onpathattacks'><h2 class=\"learning-content-h2\" itemprop=\"headline\">10. On-path attacks</h2></a>\n\n<p>In an <a href='/learning/security/threats/on-path-attack/'>on-path attack</a>, the attacker is positioned between two parties that trust each other and impersonates each party to the other. This allows the attacker to intercept data.</p>\n\n<h4 class=\"learning-content-h4\">How to prevent on-path attacks</h4>\n\n<p>One of the most foundational on-path attack prevention methods is the use of <a href='/learning/ssl/transport-layer-security-tls/'>TLS</a> (previously called \"SSL\") on websites. This protocol uses digital signatures to verify the identity of the web server to which the user is connected, ensuring that the user is not sending their data to an impostor. Users should also avoid sending sensitive data over public WiFi networks, which are a common site for on-path attacks. Cloudflare automatically enables <a href='/application-services/products/ssl/'>free TLS</a> for all domains that are connected to the Cloudflare network.\n\n<p><a href='/plans/'>Sign up for a Cloudflare plan</a>.</p>",
 				"availableLocales": null,
 				"localized": null,
 				"localeList": {
 					"enUS": "English for Locale",
-					"zhCN": "Translated for Locale",
-					"zhTW": "Translated for Locale",
-					"frFR": "Translated for Locale",
-					"deDE": "Translated for Locale",
-					"itIT": "Translated for Locale",
-					"jaJP": "Translated for Locale",
-					"koKR": "Translated for Locale",
-					"ptBR": "Translated for Locale",
-					"esES": "Translated for Locale",
-					"esLA": "Translated for Locale",
+					"zhCN": "English for Locale",
+					"zhTW": "English for Locale",
+					"frFR": "English for Locale",
+					"deDE": "English for Locale",
+					"itIT": "English for Locale",
+					"jaJP": "English for Locale",
+					"koKR": "English for Locale",
+					"ptBR": "English for Locale",
+					"esES": "English for Locale",
+					"esLA": "English for Locale",
 					"enAU": "English for Locale",
 					"enCA": "English for Locale",
 					"enIN": "English for Locale",
@@ -1106,65 +1105,20 @@
 					"svSE": "English for Locale",
 					"viVN": "English for Locale",
 					"trTR": "English for Locale",
-					"zhHansCN": "Translated for Locale",
+					"zhHansCN": "English for Locale",
 					"plPL": "English for Locale"
 				},
 				"proactivePopup": null,
-				"sidebarForm": {
-					"contentTypeId": "learningCenterArticleSidebarForm",
-					"contentfulId": "4ad3l3edBzH8KRefyi225g",
-					"heading": "Want to keep learning?",
-					"postSubmissionHeading": "Thank you for subscribing",
-					"description": "Subscribe to theNET, Cloudflare's monthly recap of the Internet's most popular insights!",
-					"postSubmissionDescription": "We're looking forward to sharing content with you.",
-					"marketoForm": {
-						"contentTypeId": "marketoEmbeddedForm",
-						"contentfulId": "4N6NOUDQwA5AAjxuGTnCMu",
-						"bladeName": "Form-Marketo Single Inline - Learning Center Newsletter Form",
-						"backgroundColor": "blue",
-						"marketoFormId": 2459,
-						"marketoFormLeadSource": "Inbound - Blog Subscriber",
-						"marketoFormLeadSourceDetail": "[BRD] Q4'24 WEB - GBL - Learning Center Subscription",
-						"marketoFormAssetName": null,
-						"marketoFormHeaderText": null,
-						"marketoFormDefaultComment": null,
-						"showCommentBox": null,
-						"marketoFormThankYouText": "Thank you for subscribing!",
-						"marketoFormCustomSuccessMessage": "We're looking forward to sharing content with you.",
-						"marketoFormPdfDownload": null,
-						"marketoFormPdfDownloadI18n": [],
-						"marketoFormAssetDownloadButtonText": null,
-						"marketoFormSuccessRedirectUrl": null,
-						"sendAdRoll": null,
-						"meta_adRollCustomSegment": null,
-						"enableSandbox": null,
-						"marketoFormSubmitButtonText": "Subscribe  to theNET",
-						"marketoFormSubmitButtonColor": null,
-						"enableEmailVerification": null,
-						"disableEnterpriseEmailNotification": null,
-						"enableRingout": null
-					}
-				}
+				"sidebarForm": null
 			}
 		},
 		"pageContext": {
 			"locale": "en-US",
-			"contentfulId": "1XBl5XHpv651Yc4s3SJRYH",
-			"pathname": "/learning/security/threats/cross-site-request-forgery/",
+			"contentfulId": "33j4WHr4SxsjwwYIv3KmE5",
+			"pathname": "/learning/security/threats/common-cyber-attacks/",
 			"baseURL": "https://www.cloudflare.com",
 			"allowedHrefLangs": [
-				"en-US",
-				"zh-CN",
-				"zh-TW",
-				"fr-FR",
-				"de-DE",
-				"it-IT",
-				"ja-JP",
-				"ko-KR",
-				"pt-BR",
-				"es-ES",
-				"es-LA",
-				"zh-Hans-CN"
+				"en-US"
 			]
 		}
 	}
