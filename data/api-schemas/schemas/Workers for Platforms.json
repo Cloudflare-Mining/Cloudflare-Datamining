@@ -3814,6 +3814,7 @@
 														"inherit": "#/components/schemas/workers_binding_kind_inherit",
 														"json": "#/components/schemas/workers_binding_kind_json",
 														"kv_namespace": "#/components/schemas/workers_binding_kind_kv_namespace",
+														"media": "#/components/schemas/workers_binding_kind_media",
 														"mtls_certificate": "#/components/schemas/workers_binding_kind_mtls_certificate",
 														"pipelines": "#/components/schemas/workers_binding_kind_pipelines",
 														"plain_text": "#/components/schemas/workers_binding_kind_plain_text",
@@ -4281,6 +4282,29 @@
 															"name",
 															"type",
 															"namespace_id"
+														],
+														"type": "object"
+													},
+													{
+														"properties": {
+															"name": {
+																"description": "A JavaScript variable name for the binding.",
+																"example": "myBinding",
+																"type": "string",
+																"x-auditable": true
+															},
+															"type": {
+																"description": "The kind of resource that the binding provides.",
+																"enum": [
+																	"media"
+																],
+																"type": "string",
+																"x-auditable": true
+															}
+														},
+														"required": [
+															"name",
+															"type"
 														],
 														"type": "object"
 													},
@@ -6246,6 +6270,7 @@
 																		"inherit": "#/components/schemas/workers_binding_kind_inherit",
 																		"json": "#/components/schemas/workers_binding_kind_json",
 																		"kv_namespace": "#/components/schemas/workers_binding_kind_kv_namespace",
+																		"media": "#/components/schemas/workers_binding_kind_media",
 																		"mtls_certificate": "#/components/schemas/workers_binding_kind_mtls_certificate",
 																		"pipelines": "#/components/schemas/workers_binding_kind_pipelines",
 																		"plain_text": "#/components/schemas/workers_binding_kind_plain_text",
@@ -6713,6 +6738,29 @@
 																			"name",
 																			"type",
 																			"namespace_id"
+																		],
+																		"type": "object"
+																	},
+																	{
+																		"properties": {
+																			"name": {
+																				"description": "A JavaScript variable name for the binding.",
+																				"example": "myBinding",
+																				"type": "string",
+																				"x-auditable": true
+																			},
+																			"type": {
+																				"description": "The kind of resource that the binding provides.",
+																				"enum": [
+																					"media"
+																				],
+																				"type": "string",
+																				"x-auditable": true
+																			}
+																		},
+																		"required": [
+																			"name",
+																			"type"
 																		],
 																		"type": "object"
 																	},
@@ -7382,6 +7430,7 @@
 																		"inherit": "#/components/schemas/workers_binding_kind_inherit",
 																		"json": "#/components/schemas/workers_binding_kind_json",
 																		"kv_namespace": "#/components/schemas/workers_binding_kind_kv_namespace",
+																		"media": "#/components/schemas/workers_binding_kind_media",
 																		"mtls_certificate": "#/components/schemas/workers_binding_kind_mtls_certificate",
 																		"pipelines": "#/components/schemas/workers_binding_kind_pipelines",
 																		"plain_text": "#/components/schemas/workers_binding_kind_plain_text",
@@ -7849,6 +7898,29 @@
 																			"name",
 																			"type",
 																			"namespace_id"
+																		],
+																		"type": "object"
+																	},
+																	{
+																		"properties": {
+																			"name": {
+																				"description": "A JavaScript variable name for the binding.",
+																				"example": "myBinding",
+																				"type": "string",
+																				"x-auditable": true
+																			},
+																			"type": {
+																				"description": "The kind of resource that the binding provides.",
+																				"enum": [
+																					"media"
+																				],
+																				"type": "string",
+																				"x-auditable": true
+																			}
+																		},
+																		"required": [
+																			"name",
+																			"type"
 																		],
 																		"type": "object"
 																	},
@@ -10041,6 +10113,7 @@
 															"inherit": "#/components/schemas/workers_binding_kind_inherit",
 															"json": "#/components/schemas/workers_binding_kind_json",
 															"kv_namespace": "#/components/schemas/workers_binding_kind_kv_namespace",
+															"media": "#/components/schemas/workers_binding_kind_media",
 															"mtls_certificate": "#/components/schemas/workers_binding_kind_mtls_certificate",
 															"pipelines": "#/components/schemas/workers_binding_kind_pipelines",
 															"plain_text": "#/components/schemas/workers_binding_kind_plain_text",
@@ -10508,6 +10581,29 @@
 																"name",
 																"type",
 																"namespace_id"
+															],
+															"type": "object"
+														},
+														{
+															"properties": {
+																"name": {
+																	"description": "A JavaScript variable name for the binding.",
+																	"example": "myBinding",
+																	"type": "string",
+																	"x-auditable": true
+																},
+																"type": {
+																	"description": "The kind of resource that the binding provides.",
+																	"enum": [
+																		"media"
+																	],
+																	"type": "string",
+																	"x-auditable": true
+																}
+															},
+															"required": [
+																"name",
+																"type"
 															],
 															"type": "object"
 														},
@@ -11177,6 +11273,7 @@
 															"inherit": "#/components/schemas/workers_binding_kind_inherit",
 															"json": "#/components/schemas/workers_binding_kind_json",
 															"kv_namespace": "#/components/schemas/workers_binding_kind_kv_namespace",
+															"media": "#/components/schemas/workers_binding_kind_media",
 															"mtls_certificate": "#/components/schemas/workers_binding_kind_mtls_certificate",
 															"pipelines": "#/components/schemas/workers_binding_kind_pipelines",
 															"plain_text": "#/components/schemas/workers_binding_kind_plain_text",
@@ -11644,6 +11741,29 @@
 																"name",
 																"type",
 																"namespace_id"
+															],
+															"type": "object"
+														},
+														{
+															"properties": {
+																"name": {
+																	"description": "A JavaScript variable name for the binding.",
+																	"example": "myBinding",
+																	"type": "string",
+																	"x-auditable": true
+																},
+																"type": {
+																	"description": "The kind of resource that the binding provides.",
+																	"enum": [
+																		"media"
+																	],
+																	"type": "string",
+																	"x-auditable": true
+																}
+															},
+															"required": [
+																"name",
+																"type"
 															],
 															"type": "object"
 														},
@@ -13109,6 +13229,7 @@
 																		"inherit": "#/components/schemas/workers_binding_kind_inherit",
 																		"json": "#/components/schemas/workers_binding_kind_json",
 																		"kv_namespace": "#/components/schemas/workers_binding_kind_kv_namespace",
+																		"media": "#/components/schemas/workers_binding_kind_media",
 																		"mtls_certificate": "#/components/schemas/workers_binding_kind_mtls_certificate",
 																		"pipelines": "#/components/schemas/workers_binding_kind_pipelines",
 																		"plain_text": "#/components/schemas/workers_binding_kind_plain_text",
@@ -13576,6 +13697,29 @@
 																			"name",
 																			"type",
 																			"namespace_id"
+																		],
+																		"type": "object"
+																	},
+																	{
+																		"properties": {
+																			"name": {
+																				"description": "A JavaScript variable name for the binding.",
+																				"example": "myBinding",
+																				"type": "string",
+																				"x-auditable": true
+																			},
+																			"type": {
+																				"description": "The kind of resource that the binding provides.",
+																				"enum": [
+																					"media"
+																				],
+																				"type": "string",
+																				"x-auditable": true
+																			}
+																		},
+																		"required": [
+																			"name",
+																			"type"
 																		],
 																		"type": "object"
 																	},
@@ -14245,6 +14389,7 @@
 																		"inherit": "#/components/schemas/workers_binding_kind_inherit",
 																		"json": "#/components/schemas/workers_binding_kind_json",
 																		"kv_namespace": "#/components/schemas/workers_binding_kind_kv_namespace",
+																		"media": "#/components/schemas/workers_binding_kind_media",
 																		"mtls_certificate": "#/components/schemas/workers_binding_kind_mtls_certificate",
 																		"pipelines": "#/components/schemas/workers_binding_kind_pipelines",
 																		"plain_text": "#/components/schemas/workers_binding_kind_plain_text",
@@ -14712,6 +14857,29 @@
 																			"name",
 																			"type",
 																			"namespace_id"
+																		],
+																		"type": "object"
+																	},
+																	{
+																		"properties": {
+																			"name": {
+																				"description": "A JavaScript variable name for the binding.",
+																				"example": "myBinding",
+																				"type": "string",
+																				"x-auditable": true
+																			},
+																			"type": {
+																				"description": "The kind of resource that the binding provides.",
+																				"enum": [
+																					"media"
+																				],
+																				"type": "string",
+																				"x-auditable": true
+																			}
+																		},
+																		"required": [
+																			"name",
+																			"type"
 																		],
 																		"type": "object"
 																	},
@@ -17381,6 +17549,7 @@
 													"inherit": "#/components/schemas/workers_binding_kind_inherit",
 													"json": "#/components/schemas/workers_binding_kind_json",
 													"kv_namespace": "#/components/schemas/workers_binding_kind_kv_namespace",
+													"media": "#/components/schemas/workers_binding_kind_media",
 													"mtls_certificate": "#/components/schemas/workers_binding_kind_mtls_certificate",
 													"pipelines": "#/components/schemas/workers_binding_kind_pipelines",
 													"plain_text": "#/components/schemas/workers_binding_kind_plain_text",
@@ -17848,6 +18017,29 @@
 														"name",
 														"type",
 														"namespace_id"
+													],
+													"type": "object"
+												},
+												{
+													"properties": {
+														"name": {
+															"description": "A JavaScript variable name for the binding.",
+															"example": "myBinding",
+															"type": "string",
+															"x-auditable": true
+														},
+														"type": {
+															"description": "The kind of resource that the binding provides.",
+															"enum": [
+																"media"
+															],
+															"type": "string",
+															"x-auditable": true
+														}
+													},
+													"required": [
+														"name",
+														"type"
 													],
 													"type": "object"
 												},

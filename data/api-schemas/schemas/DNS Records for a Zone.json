@@ -812,6 +812,13 @@
 																						"type": "string",
 																						"x-auditable": true
 																					},
+																					"private_routing": {
+																						"default": false,
+																						"description": "Enables private network routing to the origin.",
+																						"example": true,
+																						"type": "boolean",
+																						"x-auditable": true
+																					},
 																					"type": {
 																						"description": "Record type.",
 																						"enum": [
@@ -916,6 +923,13 @@
 																						"example": "2400:cb00:2049::1",
 																						"format": "ipv6",
 																						"type": "string",
+																						"x-auditable": true
+																					},
+																					"private_routing": {
+																						"default": false,
+																						"description": "Enables private network routing to the origin.",
+																						"example": true,
+																						"type": "boolean",
 																						"x-auditable": true
 																					},
 																					"type": {
@@ -3774,6 +3788,13 @@
 																								"type": "string",
 																								"x-auditable": true
 																							},
+																							"private_routing": {
+																								"default": false,
+																								"description": "Enables private network routing to the origin.",
+																								"example": true,
+																								"type": "boolean",
+																								"x-auditable": true
+																							},
 																							"type": {
 																								"description": "Record type.",
 																								"enum": [
@@ -3878,6 +3899,13 @@
 																								"example": "2400:cb00:2049::1",
 																								"format": "ipv6",
 																								"type": "string",
+																								"x-auditable": true
+																							},
+																							"private_routing": {
+																								"default": false,
+																								"description": "Enables private network routing to the origin.",
+																								"example": true,
+																								"type": "boolean",
 																								"x-auditable": true
 																							},
 																							"type": {
@@ -6866,6 +6894,13 @@
 																					"type": "string",
 																					"x-auditable": true
 																				},
+																				"private_routing": {
+																					"default": false,
+																					"description": "Enables private network routing to the origin.",
+																					"example": true,
+																					"type": "boolean",
+																					"x-auditable": true
+																				},
 																				"type": {
 																					"description": "Record type.",
 																					"enum": [
@@ -6970,6 +7005,13 @@
 																					"example": "2400:cb00:2049::1",
 																					"format": "ipv6",
 																					"type": "string",
+																					"x-auditable": true
+																				},
+																				"private_routing": {
+																					"default": false,
+																					"description": "Enables private network routing to the origin.",
+																					"example": true,
+																					"type": "boolean",
 																					"x-auditable": true
 																				},
 																				"type": {
@@ -9790,6 +9832,13 @@
 																							"type": "string",
 																							"x-auditable": true
 																						},
+																						"private_routing": {
+																							"default": false,
+																							"description": "Enables private network routing to the origin.",
+																							"example": true,
+																							"type": "boolean",
+																							"x-auditable": true
+																						},
 																						"type": {
 																							"description": "Record type.",
 																							"enum": [
@@ -9894,6 +9943,13 @@
 																							"example": "2400:cb00:2049::1",
 																							"format": "ipv6",
 																							"type": "string",
+																							"x-auditable": true
+																						},
+																						"private_routing": {
+																							"default": false,
+																							"description": "Enables private network routing to the origin.",
+																							"example": true,
+																							"type": "boolean",
 																							"x-auditable": true
 																						},
 																						"type": {
@@ -13078,6 +13134,13 @@
 																						"type": "string",
 																						"x-auditable": true
 																					},
+																					"private_routing": {
+																						"default": false,
+																						"description": "Enables private network routing to the origin.",
+																						"example": true,
+																						"type": "boolean",
+																						"x-auditable": true
+																					},
 																					"type": {
 																						"description": "Record type.",
 																						"enum": [
@@ -13182,6 +13245,13 @@
 																						"example": "2400:cb00:2049::1",
 																						"format": "ipv6",
 																						"type": "string",
+																						"x-auditable": true
+																					},
+																					"private_routing": {
+																						"default": false,
+																						"description": "Enables private network routing to the origin.",
+																						"example": true,
+																						"type": "boolean",
 																						"x-auditable": true
 																					},
 																					"type": {
@@ -16486,6 +16556,13 @@
 														"type": "string",
 														"x-auditable": true
 													},
+													"private_routing": {
+														"default": false,
+														"description": "Enables private network routing to the origin.",
+														"example": true,
+														"type": "boolean",
+														"x-auditable": true
+													},
 													"type": {
 														"description": "Record type.",
 														"enum": [
@@ -16590,6 +16667,13 @@
 														"example": "2400:cb00:2049::1",
 														"format": "ipv6",
 														"type": "string",
+														"x-auditable": true
+													},
+													"private_routing": {
+														"default": false,
+														"description": "Enables private network routing to the origin.",
+														"example": true,
+														"type": "boolean",
 														"x-auditable": true
 													},
 													"type": {
@@ -19322,6 +19406,13 @@
 																					"type": "string",
 																					"x-auditable": true
 																				},
+																				"private_routing": {
+																					"default": false,
+																					"description": "Enables private network routing to the origin.",
+																					"example": true,
+																					"type": "boolean",
+																					"x-auditable": true
+																				},
 																				"type": {
 																					"description": "Record type.",
 																					"enum": [
@@ -19426,6 +19517,13 @@
 																					"example": "2400:cb00:2049::1",
 																					"format": "ipv6",
 																					"type": "string",
+																					"x-auditable": true
+																				},
+																				"private_routing": {
+																					"default": false,
+																					"description": "Enables private network routing to the origin.",
+																					"example": true,
+																					"type": "boolean",
 																					"x-auditable": true
 																				},
 																				"type": {
@@ -22246,6 +22344,13 @@
 																							"type": "string",
 																							"x-auditable": true
 																						},
+																						"private_routing": {
+																							"default": false,
+																							"description": "Enables private network routing to the origin.",
+																							"example": true,
+																							"type": "boolean",
+																							"x-auditable": true
+																						},
 																						"type": {
 																							"description": "Record type.",
 																							"enum": [
@@ -22350,6 +22455,13 @@
 																							"example": "2400:cb00:2049::1",
 																							"format": "ipv6",
 																							"type": "string",
+																							"x-auditable": true
+																						},
+																						"private_routing": {
+																							"default": false,
+																							"description": "Enables private network routing to the origin.",
+																							"example": true,
+																							"type": "boolean",
 																							"x-auditable": true
 																						},
 																						"type": {
@@ -25230,6 +25342,13 @@
 														"type": "string",
 														"x-auditable": true
 													},
+													"private_routing": {
+														"default": false,
+														"description": "Enables private network routing to the origin.",
+														"example": true,
+														"type": "boolean",
+														"x-auditable": true
+													},
 													"type": {
 														"description": "Record type.",
 														"enum": [
@@ -25334,6 +25453,13 @@
 														"example": "2400:cb00:2049::1",
 														"format": "ipv6",
 														"type": "string",
+														"x-auditable": true
+													},
+													"private_routing": {
+														"default": false,
+														"description": "Enables private network routing to the origin.",
+														"example": true,
+														"type": "boolean",
 														"x-auditable": true
 													},
 													"type": {
@@ -28066,6 +28192,13 @@
 																					"type": "string",
 																					"x-auditable": true
 																				},
+																				"private_routing": {
+																					"default": false,
+																					"description": "Enables private network routing to the origin.",
+																					"example": true,
+																					"type": "boolean",
+																					"x-auditable": true
+																				},
 																				"type": {
 																					"description": "Record type.",
 																					"enum": [
@@ -28170,6 +28303,13 @@
 																					"example": "2400:cb00:2049::1",
 																					"format": "ipv6",
 																					"type": "string",
+																					"x-auditable": true
+																				},
+																				"private_routing": {
+																					"default": false,
+																					"description": "Enables private network routing to the origin.",
+																					"example": true,
+																					"type": "boolean",
 																					"x-auditable": true
 																				},
 																				"type": {
@@ -30990,6 +31130,13 @@
 																							"type": "string",
 																							"x-auditable": true
 																						},
+																						"private_routing": {
+																							"default": false,
+																							"description": "Enables private network routing to the origin.",
+																							"example": true,
+																							"type": "boolean",
+																							"x-auditable": true
+																						},
 																						"type": {
 																							"description": "Record type.",
 																							"enum": [
@@ -31094,6 +31241,13 @@
 																							"example": "2400:cb00:2049::1",
 																							"format": "ipv6",
 																							"type": "string",
+																							"x-auditable": true
+																						},
+																						"private_routing": {
+																							"default": false,
+																							"description": "Enables private network routing to the origin.",
+																							"example": true,
+																							"type": "boolean",
 																							"x-auditable": true
 																						},
 																						"type": {
@@ -34002,6 +34156,13 @@
 																			"type": "string",
 																			"x-auditable": true
 																		},
+																		"private_routing": {
+																			"default": false,
+																			"description": "Enables private network routing to the origin.",
+																			"example": true,
+																			"type": "boolean",
+																			"x-auditable": true
+																		},
 																		"type": {
 																			"description": "Record type.",
 																			"enum": [
@@ -34106,6 +34267,13 @@
 																			"example": "2400:cb00:2049::1",
 																			"format": "ipv6",
 																			"type": "string",
+																			"x-auditable": true
+																		},
+																		"private_routing": {
+																			"default": false,
+																			"description": "Enables private network routing to the origin.",
+																			"example": true,
+																			"type": "boolean",
 																			"x-auditable": true
 																		},
 																		"type": {
@@ -36757,6 +36925,13 @@
 																			"type": "string",
 																			"x-auditable": true
 																		},
+																		"private_routing": {
+																			"default": false,
+																			"description": "Enables private network routing to the origin.",
+																			"example": true,
+																			"type": "boolean",
+																			"x-auditable": true
+																		},
 																		"type": {
 																			"description": "Record type.",
 																			"enum": [
@@ -36861,6 +37036,13 @@
 																			"example": "2400:cb00:2049::1",
 																			"format": "ipv6",
 																			"type": "string",
+																			"x-auditable": true
+																		},
+																		"private_routing": {
+																			"default": false,
+																			"description": "Enables private network routing to the origin.",
+																			"example": true,
+																			"type": "boolean",
 																			"x-auditable": true
 																		},
 																		"type": {
@@ -39500,6 +39682,13 @@
 																			"type": "string",
 																			"x-auditable": true
 																		},
+																		"private_routing": {
+																			"default": false,
+																			"description": "Enables private network routing to the origin.",
+																			"example": true,
+																			"type": "boolean",
+																			"x-auditable": true
+																		},
 																		"type": {
 																			"description": "Record type.",
 																			"enum": [
@@ -39604,6 +39793,13 @@
 																			"example": "2400:cb00:2049::1",
 																			"format": "ipv6",
 																			"type": "string",
+																			"x-auditable": true
+																		},
+																		"private_routing": {
+																			"default": false,
+																			"description": "Enables private network routing to the origin.",
+																			"example": true,
+																			"type": "boolean",
 																			"x-auditable": true
 																		},
 																		"type": {
@@ -42359,6 +42555,13 @@
 																								"type": "string",
 																								"x-auditable": true
 																							},
+																							"private_routing": {
+																								"default": false,
+																								"description": "Enables private network routing to the origin.",
+																								"example": true,
+																								"type": "boolean",
+																								"x-auditable": true
+																							},
 																							"type": {
 																								"description": "Record type.",
 																								"enum": [
@@ -42463,6 +42666,13 @@
 																								"example": "2400:cb00:2049::1",
 																								"format": "ipv6",
 																								"type": "string",
+																								"x-auditable": true
+																							},
+																							"private_routing": {
+																								"default": false,
+																								"description": "Enables private network routing to the origin.",
+																								"example": true,
+																								"type": "boolean",
 																								"x-auditable": true
 																							},
 																							"type": {
@@ -45180,6 +45390,13 @@
 																								"type": "string",
 																								"x-auditable": true
 																							},
+																							"private_routing": {
+																								"default": false,
+																								"description": "Enables private network routing to the origin.",
+																								"example": true,
+																								"type": "boolean",
+																								"x-auditable": true
+																							},
 																							"type": {
 																								"description": "Record type.",
 																								"enum": [
@@ -45284,6 +45501,13 @@
 																								"example": "2400:cb00:2049::1",
 																								"format": "ipv6",
 																								"type": "string",
+																								"x-auditable": true
+																							},
+																							"private_routing": {
+																								"default": false,
+																								"description": "Enables private network routing to the origin.",
+																								"example": true,
+																								"type": "boolean",
 																								"x-auditable": true
 																							},
 																							"type": {
@@ -48001,6 +48225,13 @@
 																								"type": "string",
 																								"x-auditable": true
 																							},
+																							"private_routing": {
+																								"default": false,
+																								"description": "Enables private network routing to the origin.",
+																								"example": true,
+																								"type": "boolean",
+																								"x-auditable": true
+																							},
 																							"type": {
 																								"description": "Record type.",
 																								"enum": [
@@ -48105,6 +48336,13 @@
 																								"example": "2400:cb00:2049::1",
 																								"format": "ipv6",
 																								"type": "string",
+																								"x-auditable": true
+																							},
+																							"private_routing": {
+																								"default": false,
+																								"description": "Enables private network routing to the origin.",
+																								"example": true,
+																								"type": "boolean",
 																								"x-auditable": true
 																							},
 																							"type": {
@@ -50822,6 +51060,13 @@
 																								"type": "string",
 																								"x-auditable": true
 																							},
+																							"private_routing": {
+																								"default": false,
+																								"description": "Enables private network routing to the origin.",
+																								"example": true,
+																								"type": "boolean",
+																								"x-auditable": true
+																							},
 																							"type": {
 																								"description": "Record type.",
 																								"enum": [
@@ -50926,6 +51171,13 @@
 																								"example": "2400:cb00:2049::1",
 																								"format": "ipv6",
 																								"type": "string",
+																								"x-auditable": true
+																							},
+																							"private_routing": {
+																								"default": false,
+																								"description": "Enables private network routing to the origin.",
+																								"example": true,
+																								"type": "boolean",
 																								"x-auditable": true
 																							},
 																							"type": {
@@ -54651,6 +54903,13 @@
 																			"type": "string",
 																			"x-auditable": true
 																		},
+																		"private_routing": {
+																			"default": false,
+																			"description": "Enables private network routing to the origin.",
+																			"example": true,
+																			"type": "boolean",
+																			"x-auditable": true
+																		},
 																		"type": {
 																			"description": "Record type.",
 																			"enum": [
@@ -54755,6 +55014,13 @@
 																			"example": "2400:cb00:2049::1",
 																			"format": "ipv6",
 																			"type": "string",
+																			"x-auditable": true
+																		},
+																		"private_routing": {
+																			"default": false,
+																			"description": "Enables private network routing to the origin.",
+																			"example": true,
+																			"type": "boolean",
 																			"x-auditable": true
 																		},
 																		"type": {
@@ -57521,6 +57787,13 @@
 																								"type": "string",
 																								"x-auditable": true
 																							},
+																							"private_routing": {
+																								"default": false,
+																								"description": "Enables private network routing to the origin.",
+																								"example": true,
+																								"type": "boolean",
+																								"x-auditable": true
+																							},
 																							"type": {
 																								"description": "Record type.",
 																								"enum": [
@@ -57625,6 +57898,13 @@
 																								"example": "2400:cb00:2049::1",
 																								"format": "ipv6",
 																								"type": "string",
+																								"x-auditable": true
+																							},
+																							"private_routing": {
+																								"default": false,
+																								"description": "Enables private network routing to the origin.",
+																								"example": true,
+																								"type": "boolean",
 																								"x-auditable": true
 																							},
 																							"type": {
@@ -60897,6 +61177,13 @@
 														"type": "string",
 														"x-auditable": true
 													},
+													"private_routing": {
+														"default": false,
+														"description": "Enables private network routing to the origin.",
+														"example": true,
+														"type": "boolean",
+														"x-auditable": true
+													},
 													"type": {
 														"description": "Record type.",
 														"enum": [
@@ -61001,6 +61288,13 @@
 														"example": "2400:cb00:2049::1",
 														"format": "ipv6",
 														"type": "string",
+														"x-auditable": true
+													},
+													"private_routing": {
+														"default": false,
+														"description": "Enables private network routing to the origin.",
+														"example": true,
+														"type": "boolean",
 														"x-auditable": true
 													},
 													"type": {
@@ -63733,6 +64027,13 @@
 																					"type": "string",
 																					"x-auditable": true
 																				},
+																				"private_routing": {
+																					"default": false,
+																					"description": "Enables private network routing to the origin.",
+																					"example": true,
+																					"type": "boolean",
+																					"x-auditable": true
+																				},
 																				"type": {
 																					"description": "Record type.",
 																					"enum": [
@@ -63837,6 +64138,13 @@
 																					"example": "2400:cb00:2049::1",
 																					"format": "ipv6",
 																					"type": "string",
+																					"x-auditable": true
+																				},
+																				"private_routing": {
+																					"default": false,
+																					"description": "Enables private network routing to the origin.",
+																					"example": true,
+																					"type": "boolean",
 																					"x-auditable": true
 																				},
 																				"type": {
@@ -66657,6 +66965,13 @@
 																							"type": "string",
 																							"x-auditable": true
 																						},
+																						"private_routing": {
+																							"default": false,
+																							"description": "Enables private network routing to the origin.",
+																							"example": true,
+																							"type": "boolean",
+																							"x-auditable": true
+																						},
 																						"type": {
 																							"description": "Record type.",
 																							"enum": [
@@ -66761,6 +67076,13 @@
 																							"example": "2400:cb00:2049::1",
 																							"format": "ipv6",
 																							"type": "string",
+																							"x-auditable": true
+																						},
+																						"private_routing": {
+																							"default": false,
+																							"description": "Enables private network routing to the origin.",
+																							"example": true,
+																							"type": "boolean",
 																							"x-auditable": true
 																						},
 																						"type": {

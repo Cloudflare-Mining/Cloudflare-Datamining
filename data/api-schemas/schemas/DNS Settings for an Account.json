@@ -113,6 +113,12 @@
 									"properties": {
 										"result": {
 											"properties": {
+												"enforce_dns_only": {
+													"description": "Whether to enforce DNS-only records for the entire account. Omitted when account settings are unavailable.",
+													"example": false,
+													"type": "boolean",
+													"x-auditable": true
+												},
 												"zone_defaults": {
 													"allOf": [
 														{
@@ -512,6 +518,12 @@
 											"properties": {
 												"result": {
 													"properties": {
+														"enforce_dns_only": {
+															"description": "Whether to enforce DNS-only records for the entire account. Omitted when account settings are unavailable.",
+															"example": false,
+															"type": "boolean",
+															"x-auditable": true
+														},
 														"zone_defaults": {
 															"allOf": [
 																{
@@ -974,6 +986,12 @@
 				"application/json": {
 					"schema": {
 						"properties": {
+							"enforce_dns_only": {
+								"description": "Whether to enforce DNS-only records for the entire account.",
+								"example": false,
+								"type": "boolean",
+								"x-auditable": true
+							},
 							"zone_defaults": {
 								"allOf": [
 									{
@@ -1235,6 +1253,12 @@
 									"properties": {
 										"result": {
 											"properties": {
+												"enforce_dns_only": {
+													"description": "Whether to enforce DNS-only records for the entire account. Omitted when account settings are unavailable.",
+													"example": false,
+													"type": "boolean",
+													"x-auditable": true
+												},
 												"zone_defaults": {
 													"allOf": [
 														{
@@ -1634,6 +1658,12 @@
 											"properties": {
 												"result": {
 													"properties": {
+														"enforce_dns_only": {
+															"description": "Whether to enforce DNS-only records for the entire account. Omitted when account settings are unavailable.",
+															"example": false,
+															"type": "boolean",
+															"x-auditable": true
+														},
 														"zone_defaults": {
 															"allOf": [
 																{

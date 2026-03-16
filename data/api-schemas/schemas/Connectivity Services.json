@@ -22,7 +22,7 @@
 		],
 		"responses": {
 			"200": {
-				"description": "Successfully deleted connectivity service"
+				"description": "Successfully deleted Workers VPC connectivity service"
 			},
 			"4XX": {
 				"content": {
@@ -135,7 +135,7 @@
 						}
 					}
 				},
-				"description": "Failed to delete connectivity service"
+				"description": "Failed to delete Workers VPC connectivity service"
 			}
 		},
 		"security": [
@@ -145,7 +145,7 @@
 				"api_token": []
 			}
 		],
-		"summary": "Delete connectivity service",
+		"summary": "Delete Workers VPC connectivity service",
 		"tags": [
 			"Connectivity Services"
 		]
@@ -317,6 +317,11 @@
 														"total_count": {
 															"description": "Total results available without any search parameters.",
 															"example": 2000,
+															"type": "number"
+														},
+														"total_pages": {
+															"description": "The number of total pages in the entire result set.",
+															"example": 100,
 															"type": "number"
 														}
 													},
@@ -571,7 +576,7 @@
 						}
 					}
 				},
-				"description": "Successfully retrieved connectivity services"
+				"description": "Successfully retrieved Workers VPC connectivity services"
 			},
 			"4XX": {
 				"content": {
@@ -684,7 +689,7 @@
 						}
 					}
 				},
-				"description": "Failed to retrieve connectivity services"
+				"description": "Failed to retrieve Workers VPC connectivity services"
 			}
 		},
 		"security": [
@@ -694,7 +699,7 @@
 				"api_token": []
 			}
 		],
-		"summary": "List connectivity services",
+		"summary": "List Workers VPC connectivity services",
 		"tags": [
 			"Connectivity Services"
 		]
@@ -1053,7 +1058,7 @@
 						}
 					}
 				},
-				"description": "Successfully retrieved connectivity service"
+				"description": "Successfully retrieved Workers VPC connectivity service"
 			},
 			"4XX": {
 				"content": {
@@ -1166,7 +1171,7 @@
 						}
 					}
 				},
-				"description": "Failed to retrieve connectivity service"
+				"description": "Failed to retrieve Workers VPC connectivity service"
 			}
 		},
 		"security": [
@@ -1176,7 +1181,7 @@
 				"api_token": []
 			}
 		],
-		"summary": "Get connectivity service",
+		"summary": "Get Workers VPC connectivity service",
 		"tags": [
 			"Connectivity Services"
 		]
@@ -1839,7 +1844,7 @@
 						}
 					}
 				},
-				"description": "Successfully created connectivity service"
+				"description": "Successfully created Workers VPC connectivity service"
 			},
 			"4XX": {
 				"content": {
@@ -1952,7 +1957,7 @@
 						}
 					}
 				},
-				"description": "Failed to create connectivity service"
+				"description": "Failed to create Workers VPC connectivity service"
 			}
 		},
 		"security": [
@@ -1962,7 +1967,7 @@
 				"api_token": []
 			}
 		],
-		"summary": "Create connectivity service",
+		"summary": "Create Workers VPC connectivity service",
 		"tags": [
 			"Connectivity Services"
 		]
@@ -2559,7 +2564,7 @@
 						}
 					}
 				},
-				"description": "Successfully updated connectivity service"
+				"description": "Successfully updated Workers VPC connectivity service"
 			},
 			"4XX": {
 				"content": {
@@ -2672,7 +2677,7 @@
 						}
 					}
 				},
-				"description": "Failed to update connectivity service"
+				"description": "Failed to update Workers VPC connectivity service"
 			}
 		},
 		"security": [
@@ -2682,7 +2687,7 @@
 				"api_token": []
 			}
 		],
-		"summary": "Update connectivity service",
+		"summary": "Update Workers VPC connectivity service",
 		"tags": [
 			"Connectivity Services"
 		]
