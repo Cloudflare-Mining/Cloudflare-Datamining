@@ -3742,6 +3742,7 @@ export interface WorkerLoader {
     name: string | null,
     getCode: () => WorkerLoaderWorkerCode | Promise<WorkerLoaderWorkerCode>,
   ): WorkerStub;
+  load(code: WorkerLoaderWorkerCode): WorkerStub;
 }
 export interface WorkerLoaderModule {
   js?: string;

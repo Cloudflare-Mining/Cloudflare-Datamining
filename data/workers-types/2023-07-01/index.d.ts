@@ -3843,6 +3843,7 @@ interface WorkerLoader {
     name: string | null,
     getCode: () => WorkerLoaderWorkerCode | Promise<WorkerLoaderWorkerCode>,
   ): WorkerStub;
+  load(code: WorkerLoaderWorkerCode): WorkerStub;
 }
 interface WorkerLoaderModule {
   js?: string;
