@@ -512,6 +512,11 @@
 															"description": "Total results available without any search parameters.",
 															"example": 2000,
 															"type": "number"
+														},
+														"total_pages": {
+															"description": "The number of total pages in the entire result set.",
+															"example": 100,
+															"type": "number"
 														}
 													},
 													"type": "object"
@@ -2137,6 +2142,11 @@
 															"description": "Total results available without any search parameters.",
 															"example": 2000,
 															"type": "number"
+														},
+														"total_pages": {
+															"description": "The number of total pages in the entire result set.",
+															"example": 100,
+															"type": "number"
 														}
 													},
 													"type": "object"
@@ -3249,6 +3259,11 @@
 															"description": "Total results available without any search parameters.",
 															"example": 2000,
 															"type": "number"
+														},
+														"total_pages": {
+															"description": "The number of total pages in the entire result set.",
+															"example": 100,
+															"type": "number"
 														}
 													},
 													"type": "object"
@@ -3890,6 +3905,11 @@
 														"total_count": {
 															"description": "Total results available without any search parameters.",
 															"example": 2000,
+															"type": "number"
+														},
+														"total_pages": {
+															"description": "The number of total pages in the entire result set.",
+															"example": 100,
 															"type": "number"
 														}
 													},

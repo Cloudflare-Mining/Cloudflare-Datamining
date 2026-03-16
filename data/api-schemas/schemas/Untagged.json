@@ -944,6 +944,192 @@
 			}
 		}
 	],
+	"PARAMETERS /zones/{zone_id}/api_gateway/labels": [
+		{
+			"in": "path",
+			"name": "zone_id",
+			"required": true,
+			"schema": {
+				"allOf": [
+					{
+						"description": "Identifier.",
+						"example": "023e105f4ecef8ad9ca31a8372d0c353",
+						"maxLength": 32,
+						"type": "string",
+						"x-auditable": true
+					},
+					{
+						"readOnly": true,
+						"type": "string",
+						"x-auditable": true
+					}
+				]
+			}
+		}
+	],
+	"PARAMETERS /zones/{zone_id}/api_gateway/labels/managed/{name}": [
+		{
+			"in": "path",
+			"name": "zone_id",
+			"required": true,
+			"schema": {
+				"allOf": [
+					{
+						"description": "Identifier.",
+						"example": "023e105f4ecef8ad9ca31a8372d0c353",
+						"maxLength": 32,
+						"type": "string",
+						"x-auditable": true
+					},
+					{
+						"readOnly": true,
+						"type": "string",
+						"x-auditable": true
+					}
+				]
+			}
+		},
+		{
+			"description": "The label name",
+			"in": "path",
+			"name": "name",
+			"required": true,
+			"schema": {
+				"description": "The name of the label",
+				"example": "login",
+				"type": "string",
+				"x-auditable": true
+			}
+		}
+	],
+	"PARAMETERS /zones/{zone_id}/api_gateway/labels/managed/{name}/resources/operation": [
+		{
+			"in": "path",
+			"name": "zone_id",
+			"required": true,
+			"schema": {
+				"allOf": [
+					{
+						"description": "Identifier.",
+						"example": "023e105f4ecef8ad9ca31a8372d0c353",
+						"maxLength": 32,
+						"type": "string",
+						"x-auditable": true
+					},
+					{
+						"readOnly": true,
+						"type": "string",
+						"x-auditable": true
+					}
+				]
+			}
+		},
+		{
+			"description": "The label name",
+			"in": "path",
+			"name": "name",
+			"required": true,
+			"schema": {
+				"description": "The name of the label",
+				"example": "login",
+				"type": "string",
+				"x-auditable": true
+			}
+		}
+	],
+	"PARAMETERS /zones/{zone_id}/api_gateway/labels/user": [
+		{
+			"in": "path",
+			"name": "zone_id",
+			"required": true,
+			"schema": {
+				"allOf": [
+					{
+						"description": "Identifier.",
+						"example": "023e105f4ecef8ad9ca31a8372d0c353",
+						"maxLength": 32,
+						"type": "string",
+						"x-auditable": true
+					},
+					{
+						"readOnly": true,
+						"type": "string",
+						"x-auditable": true
+					}
+				]
+			}
+		}
+	],
+	"PARAMETERS /zones/{zone_id}/api_gateway/labels/user/{name}": [
+		{
+			"in": "path",
+			"name": "zone_id",
+			"required": true,
+			"schema": {
+				"allOf": [
+					{
+						"description": "Identifier.",
+						"example": "023e105f4ecef8ad9ca31a8372d0c353",
+						"maxLength": 32,
+						"type": "string",
+						"x-auditable": true
+					},
+					{
+						"readOnly": true,
+						"type": "string",
+						"x-auditable": true
+					}
+				]
+			}
+		},
+		{
+			"description": "The label name",
+			"in": "path",
+			"name": "name",
+			"required": true,
+			"schema": {
+				"description": "The name of the label",
+				"example": "login",
+				"type": "string",
+				"x-auditable": true
+			}
+		}
+	],
+	"PARAMETERS /zones/{zone_id}/api_gateway/labels/user/{name}/resources/operation": [
+		{
+			"in": "path",
+			"name": "zone_id",
+			"required": true,
+			"schema": {
+				"allOf": [
+					{
+						"description": "Identifier.",
+						"example": "023e105f4ecef8ad9ca31a8372d0c353",
+						"maxLength": 32,
+						"type": "string",
+						"x-auditable": true
+					},
+					{
+						"readOnly": true,
+						"type": "string",
+						"x-auditable": true
+					}
+				]
+			}
+		},
+		{
+			"description": "The label name",
+			"in": "path",
+			"name": "name",
+			"required": true,
+			"schema": {
+				"description": "The name of the label",
+				"example": "login",
+				"type": "string",
+				"x-auditable": true
+			}
+		}
+	],
 	"PARAMETERS /zones/{zone_id}/api_gateway/operations": [
 		{
 			"in": "path",
@@ -968,6 +1154,43 @@
 		}
 	],
 	"PARAMETERS /zones/{zone_id}/api_gateway/operations/{operation_id}": [
+		{
+			"in": "path",
+			"name": "zone_id",
+			"required": true,
+			"schema": {
+				"allOf": [
+					{
+						"description": "Identifier.",
+						"example": "023e105f4ecef8ad9ca31a8372d0c353",
+						"maxLength": 32,
+						"type": "string",
+						"x-auditable": true
+					},
+					{
+						"readOnly": true,
+						"type": "string",
+						"x-auditable": true
+					}
+				]
+			}
+		},
+		{
+			"description": "Identifier for the operation",
+			"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
+			"in": "path",
+			"name": "operation_id",
+			"required": true,
+			"schema": {
+				"description": "UUID.",
+				"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
+				"maxLength": 36,
+				"type": "string",
+				"x-auditable": true
+			}
+		}
+	],
+	"PARAMETERS /zones/{zone_id}/api_gateway/operations/{operation_id}/labels": [
 		{
 			"in": "path",
 			"name": "zone_id",
@@ -1042,6 +1265,29 @@
 		}
 	],
 	"PARAMETERS /zones/{zone_id}/api_gateway/operations/item": [
+		{
+			"in": "path",
+			"name": "zone_id",
+			"required": true,
+			"schema": {
+				"allOf": [
+					{
+						"description": "Identifier.",
+						"example": "023e105f4ecef8ad9ca31a8372d0c353",
+						"maxLength": 32,
+						"type": "string",
+						"x-auditable": true
+					},
+					{
+						"readOnly": true,
+						"type": "string",
+						"x-auditable": true
+					}
+				]
+			}
+		}
+	],
+	"PARAMETERS /zones/{zone_id}/api_gateway/operations/labels": [
 		{
 			"in": "path",
 			"name": "zone_id",
