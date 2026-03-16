@@ -1,0 +1,90 @@
+<div class="mb2 gray5">5 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6NBIz7bUJkDV62KxuUDa83/bb2306342b4bd9557430cb2edac09e8a/image2.png" alt="">
+<div class="post-content lh-copy gray1">
+	<p>At Cloudflare, our mission is to help build a better Internet. Usually, that means rolling out new services to our millions of users or defending the web against the world’s largest cyber attacks. But sometimes, building a better Internet requires us to stand up against laws or regulations that threaten its fundamental architecture.</p>
+	<p>Last week, Cloudflare continued its legal battle against "Piracy Shield,” a misguided Italian regulatory scheme designed to protect large rightsholder interests at the expense of the broader Internet. After Cloudflare resisted registering for Piracy Shield and challenged it in court, the Italian communications regulator, AGCOM, fined Cloudflare a staggering €14 million (~$17 million). We appealed that fine on March 8, and we continue to challenge the legality of Piracy Shield itself.&nbsp;</p>
+	<p>While the fine is significant, the principles at stake are even larger. This case isn't just about a single penalty; it’s about whether a handful of private entities can prioritize their own economic interests over those of Internet users by forcing global infrastructure providers to block large swaths of the Internet without oversight, transparency, or due process.</p>
+	<div class="flex anchor relative">
+		<h3 id="what-is-piracy-shield">What is Piracy Shield?</h3>
+		<a href="https://blog.cloudflare.com/#what-is-piracy-shield" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>To understand why we are fighting this, it’s necessary to take a step back and understand Piracy Shield. Marketed by AGCOM as an innovative tool to fight copyright infringement, the system is better understood as a blunt tool for rightsholders to control what is available on the Internet without any traditional legal safeguards.</p>
+	<p>Piracy Shield is an unsupervised electronic portal through which an unidentified set of Italian media companies can submit websites and IP addresses that online service providers registered with Piracy Shield are then required to block within 30 minutes. Piracy Shield operates as a “black box” because there is:</p>
+	<ul>
+		<li>
+			<p><b>No judicial oversight:</b> Private companies, not judges or government officials, decide what gets blocked.</p>
+		</li>
+		<li>
+			<p><b>No transparency:</b> The public, and even the service providers themselves, are often left in the dark about who requested a block or why.</p>
+		</li>
+		<li>
+			<p><b>No due process:</b> There is no mechanism for a website owner to challenge a block before their site becomes unavailable on the Italian web.</p>
+		</li>
+		<li>
+			<p><b>No redress:</b> Along with a complete lack of transparency or due process, Piracy Shield offers no effective way for impacted parties to seek redress from erroneous blocking.</p>
+		</li>
+	</ul>
+	<p>It’s not entirely surprising that Piracy Shield so clearly prioritizes the economic interests of media companies over the rights of Italian Internet users. The system was “donated” to the Italian government by SP Tech, an arm of the law firm that represents several of Piracy Shield’s major direct beneficiaries, including Lega Nazionale Professionisti Serie A (Italy’s major soccer league).</p>
+	<div class="flex anchor relative">
+		<h3 id="the-high-cost-of-piracy-shield">The high cost of Piracy Shield</h3>
+		<a href="https://blog.cloudflare.com/#the-high-cost-of-piracy-shield" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Almost immediately after Piracy Shield was rolled out, there were significant problems. In addition to the unworkable 30-minute deadline and the lack of safeguards described above, the scheme requires service providers to engage in IP address blocking. This creates an unavoidable risk of <a href="https://blog.cloudflare.com/consequences-of-ip-blocking"><u>overblocking innocent websites</u></a> due to the fact that IP addresses are regularly and necessarily shared by thousands of websites. Not surprisingly, within a few months of its launch, Piracy Shield caused major outages for people and businesses who had done nothing wrong.&nbsp;</p>
+	<p>Notable failures include:</p>
+	<ul>
+		<li>
+			<p><b>Government and educational blackouts: </b>Tens of thousands of legitimate sites were rendered inaccessible from Italy, including Ukrainian government websites for schools and scientific research.</p>
+		</li>
+		<li>
+			<p><b>Small business &amp; NGO disruption:</b> A wide range of European small businesses and NGOs focused on social programs for women and children were inadvertently blocked.</p>
+		</li>
+		<li>
+			<p><b>Loss of essential services:</b> The system blocked access to Google Drive for over 12 hours, preventing thousands of Italian students and professionals from accessing critical files.</p>
+		</li>
+		<li>
+			<p><b>Persistent collateral blocking:</b> A September 2025 <a href="https://research.utwente.nl/en/publications/90th-minute-a-first-look-to-collateral-damages-and-efficacy-of-th"><u>study</u></a> by the University of Twente confirmed that the system routinely blocks legitimate websites for months at a time.</p>
+		</li>
+	</ul>
+	<p>Even when faced with clear evidence that Piracy Shield has caused significant and repeated overblocking, AGCOM did not change course. Rather, it chose to <i>expand</i> Piracy Shield to apply to global DNS providers and VPNs, services which are closely associated with privacy and free expression. AGCOM also started taking increasingly aggressive steps to force global service providers, even ones with no legal or operational presence in Italy, to register with Piracy Shield.</p>
+	<div class="flex anchor relative">
+		<h3 id="cloudflares-principled-challenge">Cloudflare’s principled challenge</h3>
+		<a href="https://blog.cloudflare.com/#cloudflares-principled-challenge" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Cloudflare has been clear about the risks posed by Piracy Shield from the beginning. In 2024, we met with AGCOM to highlight the scheme’s structural flaws and <a href="https://labs.ripe.net/author/antonio-prado/live-event-blocking-at-scale-effectiveness-vs-collateral-damage-in-italys-piracy-shield"><u>consequences</u></a> and proposed <a href="https://blog.cloudflare.com/h1-2025-transparency-report"><u>more effective ways to collaborate</u></a> that wouldn't break the Internet’s core architecture.&nbsp;&nbsp;</p>
+	<p>When these concerns were ignored, we moved on to legal action. We challenged AGCOM’s effort to force Cloudflare to join Piracy Shield in the Italian administrative courts and, along with the Computer &amp; Communications Industry Association (CCIA), we filed a complaint with the European Commission. More informally, we have continued to reach out to government officials both in Italy and at the EU level to explain our position and make our concerns known. Our position has been consistent and remains that Piracy Shield is incompatible with EU law, most notably the Digital Services Act (DSA), which requires that any content restriction be proportionate and subject to strict procedural safeguards.</p>
+	<p>The European Commission, following our complaint, expressed similar concerns, issuing a <a href="https://assets.ctfassets.net/zkvhlag99gkb/2GPYK05HVkVtsXNlZG4VsP/f4a0b571e8be3bb43e28b20973f0a1cb/2025-148-it-en-6852dc2dd741b167827775.pdf"><u>letter</u></a> on June 13, 2025, criticizing the lack of oversight inherent in the Piracy Shield framework. And on December 23, 2025, the Italian administrative court issued an encouraging ruling requiring AGCOM to share with Cloudflare all the records that purportedly support Piracy Shield blocking orders. While we have not yet received those records, we expect them to shed significant light on Piracy Shield’s operations.&nbsp;</p>
+	<div class="flex anchor relative">
+		<h3 id="an-excessive-fine-and-still-no-transparency">An excessive fine and still no transparency</h3>
+		<a href="https://blog.cloudflare.com/#an-excessive-fine-and-still-no-transparency" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Rather than awaiting the outcome of our legal challenges, and less than one week after being ordered to disclose Piracy Shield records to Cloudflare, AGCOM moved on December 29, 2025, to issue its fine. The fine’s timing was not the only eyebrow-raising thing about it. The math behind the penalty is as flawed as the system it is seeking to enforce.</p>
+	<p>Under Italian law, fines for non-compliance are capped at 2% of a company’s revenue <i>within the relevant jurisdiction</i>. Based on Cloudflare’s Italian earnings, that cap should have limited any fine to approximately €140,000. Instead, AGCOM calculated the fine based on our <i>global</i> revenue, resulting in a penalty nearly 100 times higher than the legal limit.</p>
+	<p>This disproportionate approach sends a chilling message to the global tech community: if you question a flawed regulatory system or defend the rights of your users and the global Internet, you risk facing punitive and excessive financial retaliation.</p>
+	<p>At the same time, AGCOM still has not shared with Cloudflare the Piracy Shield records that it was ordered to disclose. Instead, just four days before the deadline for disclosure, AGCOM informed us that it would make some of the records available for inspection at an AGCOM facility in Naples, subject to supervision by AGCOM officials. These limitations are not just unreasonably burdensome and contrary to the letter and spirit of the disclosure order; they raise real questions about why AGCOM is so intent on resisting transparency.</p>
+	<div class="flex anchor relative">
+		<h3 id="next-steps-the-path-forward">Next steps: the path forward</h3>
+		<a href="https://blog.cloudflare.com/#next-steps-the-path-forward" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>We are not backing down. Cloudflare is appealing the €14 million fine, pushing for full access to AGCOM’s Piracy Shield records, and will continue to challenge the underlying legality of the Piracy Shield blocking orders in the Italian administrative courts.</p>
+	<p>We recognize that rightsholders have a legitimate interest in protecting their content. In fact, we work with rightsholders every day to address infringement in ways that are precise and effective. But those interests cannot override the basic requirements of legal due process or the technical integrity of the global Internet and our network.</p>
+	<p>We will continue to pursue this challenge in the Italian courts and through the European Commission. Global connectivity is too important to be governed by "black boxes" with 30-minute deadlines that result in widespread overblocking with no means of redress. Cloudflare remains committed to building a better Internet: one where the rules are transparent, the regulators are accountable, and the infrastructure that connects the world remains free, open, and secure.</p>
+</div>
