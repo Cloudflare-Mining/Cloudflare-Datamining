@@ -496,9 +496,6 @@
 	"control-plane-large-orgs-v1": {
 		"enabled": false
 	},
-	"converged-usage-model": {
-		"enabled": true
-	},
 	"csam-scanner-third-party": {
 		"enabled": true
 	},
@@ -721,6 +718,9 @@
 	},
 	"deseng-members-ui": {
 		"enabled": true
+	},
+	"deseng-support-portal": {
+		"enabled": false
 	},
 	"deseng-workers-architecture": {
 		"enabled": true
@@ -1483,9 +1483,6 @@
 	"pages-asset-uploading": {
 		"enabled": false
 	},
-	"pages-config-file": {
-		"enabled": true
-	},
 	"pages-smart-placement": {
 		"enabled": true
 	},
@@ -1923,6 +1920,9 @@
 			"baseline",
 			"experiment"
 		]
+	},
+	"r2-data-catalog-check-enablement": {
+		"enabled": false
 	},
 	"r2-data-catalog-standalone-ui": {
 		"enabled": true
