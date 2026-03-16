@@ -1,5 +1,6 @@
 {
 	"GET /accounts/{account_id}/slurper/jobs": {
+		"description": "Lists all R2 Super Slurper migration jobs for the account with their status.",
 		"operationId": "slurper-list-jobs",
 		"parameters": [
 			{
@@ -313,6 +314,7 @@
 		]
 	},
 	"GET /accounts/{account_id}/slurper/jobs/{job_id}": {
+		"description": "Retrieves detailed status and configuration for a specific R2 Super Slurper migration job.",
 		"operationId": "slurper-get-job",
 		"parameters": [
 			{
@@ -616,6 +618,7 @@
 		]
 	},
 	"GET /accounts/{account_id}/slurper/jobs/{job_id}/logs": {
+		"description": "Gets log entries for an R2 Super Slurper migration job, showing migration status changes, errors, etc.",
 		"operationId": "slurper-get-job-logs",
 		"parameters": [
 			{
@@ -832,6 +835,7 @@
 		]
 	},
 	"GET /accounts/{account_id}/slurper/jobs/{job_id}/progress": {
+		"description": "Retrieves current progress metrics for an R2 Super Slurper migration job",
 		"operationId": "slurper-get-job-progress",
 		"parameters": [
 			{
@@ -1023,6 +1027,7 @@
 		]
 	},
 	"POST /accounts/{account_id}/slurper/jobs": {
+		"description": "Creates a new R2 Super Slurper migration job to transfer objects from a source bucket (e.g. S3, GCS, R2) to R2.",
 		"operationId": "slurper-create-job",
 		"parameters": [
 			{
@@ -1461,6 +1466,7 @@
 		]
 	},
 	"PUT /accounts/{account_id}/slurper/jobs/{job_id}/abort": {
+		"description": "Cancels a specific R2 Super Slurper migration job. Any objects in the middle of a transfer will finish, but no new objects will start transferring.",
 		"operationId": "slurper-abort-job",
 		"parameters": [
 			{
@@ -1623,6 +1629,7 @@
 		]
 	},
 	"PUT /accounts/{account_id}/slurper/jobs/{job_id}/pause": {
+		"description": "Pauses a running R2 Super Slurper migration job. The job can be resumed later to continue transferring.",
 		"operationId": "slurper-pause-job",
 		"parameters": [
 			{
@@ -1843,6 +1850,7 @@
 		]
 	},
 	"PUT /accounts/{account_id}/slurper/jobs/{job_id}/resume": {
+		"description": "Resumes a paused R2 Super Slurper migration job, continuing the transfer from where it stopped.",
 		"operationId": "slurper-resume-job",
 		"parameters": [
 			{
@@ -2005,6 +2013,7 @@
 		]
 	},
 	"PUT /accounts/{account_id}/slurper/jobs/abortAll": {
+		"description": "Cancels all running R2 Super Slurper migration jobs for the account. Any objects in the middle of a transfer will finish, but no new objects will start transferring.",
 		"operationId": "slurper-abort-all-jobs",
 		"parameters": [
 			{
