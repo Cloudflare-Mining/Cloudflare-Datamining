@@ -1191,6 +1191,10 @@
 										"created_at": {
 											"type": "string"
 										},
+										"failure_reason": {
+											"description": "Indicates the reason for the failure of the Pipeline.",
+											"type": "string"
+										},
 										"id": {
 											"description": "Indicates a unique identifier for this pipeline.",
 											"example": "01234567890123457689012345678901",
