@@ -1491,6 +1491,10 @@
 				"read": true,
 				"edit": false
 			},
+			"organization": {
+				"read": true,
+				"edit": false
+			},
 			"teams_device": {
 				"read": true,
 				"edit": false
@@ -1523,10 +1527,6 @@
 				"read": true,
 				"edit": false
 			},
-			"organization": {
-				"read": true,
-				"edit": false
-			},
 			"subscription": {
 				"read": true,
 				"edit": false
@@ -1556,6 +1556,10 @@
 				"edit": true,
 				"ces_enroll": true,
 				"casb_enroll": true
+			},
+			"organization": {
+				"read": true,
+				"edit": true
 			},
 			"teams_device": {
 				"read": true,
@@ -1610,10 +1614,6 @@
 				"edit": true
 			},
 			"zone": {
-				"read": true,
-				"edit": false
-			},
-			"organization": {
 				"read": true,
 				"edit": false
 			},
@@ -2220,6 +2220,10 @@
 				"edit": false,
 				"report": true
 			},
+			"organization": {
+				"read": true,
+				"edit": true
+			},
 			"teams_device": {
 				"read": true,
 				"edit": false
@@ -2233,10 +2237,6 @@
 				"edit": true
 			},
 			"zone": {
-				"read": true,
-				"edit": false
-			},
-			"organization": {
 				"read": true,
 				"edit": false
 			},
