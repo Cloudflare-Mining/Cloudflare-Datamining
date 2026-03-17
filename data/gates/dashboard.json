@@ -915,6 +915,13 @@
 			"experiment"
 		]
 	},
+	"dx-domain-onboarding-experiment": {
+		"enabled": false,
+		"branches": [
+			"baseline",
+			"experiment"
+		]
+	},
 	"dx-dunning-banner": {
 		"enabled": true
 	},
@@ -951,6 +958,9 @@
 			"social-auth-upfront",
 			"blue-google"
 		]
+	},
+	"dx-manage-domain-refactor": {
+		"enabled": true
 	},
 	"dx-message-inbox": {
 		"enabled": false
@@ -1287,7 +1297,7 @@
 		"enabled": true
 	},
 	"kumo-user-api-tokens": {
-		"enabled": false
+		"enabled": true
 	},
 	"kumoify-rules": {
 		"enabled": false
