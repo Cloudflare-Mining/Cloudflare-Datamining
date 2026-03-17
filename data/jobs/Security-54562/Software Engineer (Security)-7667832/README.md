@@ -5,34 +5,42 @@
 		<p>At Cloudflare, we’re not looking for people who wait for a polished roadmap; we’re looking for the builders who see the cracks in the Internet that everyone else has simply learned to live with. We value candidates who have the instinct to spot a "normalized" problem and the AI-native curiosity to create a solution using the latest tools. Our culture is built on iteration, leveraging AI to ship faster today to make it better tomorrow, while ensuring that every improvement, no matter how small, is shared across the team to lift everyone up. If you’re the type of person who values curiosity over bureaucracy, and that AI is a partner in solving tough problems to keep the Internet moving forward, you’ll fit right in.</p>
 	</div>
 </div>
-<p><strong>Available locations: Lisbon&nbsp;</strong></p>
-<p>Cloudflare helps build the future of the Internet. The Emerging Technology and Incubation (ETI) team invents, launches, and brings to market the technologies required to reach that goal. ETI ships software that changes the Internet. The world's fastest DNS resolver, 1.1.1.1, Cloudflare WARP, Email Routing, Radar, Cloudflare Workers, D1, R2, and Workers AI are examples of our launches.</p>
-<p>The team members in ETI make this possible. The group consists of engineers, product managers, developer advocates and researchers who share a common passion for helping build a better Internet. The ETI organization encourages individual team members to be ambitious and bold in how we find and solve problems. We move quickly and shape our products based on customer usage and feedback, while leveraging the massive scale and reliability of our global network.</p>
-<p>ETI also helps drive our Innovation Weeks at Cloudflare and contributes with new products, features, and visions for helping build a better Internet. Doing that requires all of ETI to execute on releases that customers will use today, tell our story as part of Cloudflare’s larger mission, and to build products that allow Cloudflare’s customers to realize that 1+1 can equal 3 when using all of these features together.</p>
-<p>We are looking for a Systems Engineer to join our Cloudflare Workflows’ team. You will work with a team of passionate, talented engineers that are building the systems that decentralize applications deployed on millions of sites, services and applications. You will play an active part in shaping product features based on what’s technically possible. You will change the way people build applications. Furthermore, you will make sure our company hits our ambitious goals from an engineering standpoint.&nbsp;</p>
-<p>You bring a passion for meeting business needs by building technical, innovative solutions. You excel to understand how big-picture goals inform technical details. You thrive in a fast-paced iterative engineering environment.</p>
-<p><strong>Examples of desirable skills, knowledge and experience:</strong></p>
+<p><strong>Location(s) Available: Bengaluru</strong><br><br><strong>About The Team</strong><br><br>Join Cloudflare’s Security Automation Engineering Team with the following with the following focus areas :&nbsp;</p>
 <ul>
-	<li>Bachelor’s degree or equivalent in Computer Science, Engineering, or a related field;</li>
-	<li>Proven experience in software development (+3 years);</li>
-	<li>TypeScript experience in a production system;</li>
-	<li>Solid understanding of systems engineering principles and practices;</li>
-	<li>Active usage of AI development tools to enhance your development workflow;</li>
-	<li>Strong problem-solving skills and attention to detail;</li>
-	<li>Excellent communication and interpersonal skills, with the ability to work effectively in a team environment;</li>
-	<li>Passion for learning and exploring new technologies;</li>
-	<li>Creative thinker with the ability to propose innovative solutions to complex problems;</li>
-	<li>An operational mindset - we don't just write code, we also own it in production;</li>
-	<li>Experience with Git.</li>
+	<li><strong>Active Defense using Continuous Threat Automation</strong></li>
+	<li><strong>Unified Security Observability&nbsp;</strong></li>
+	<li><strong>Intelligence for Mean Time to Respond (MTTR) Reduction</strong></li>
+	<li><strong>UEBA &amp; Analytical Insight</strong></li>
+	<li><strong>Compliance &amp; Audit Readiness</strong><br><br></li>
 </ul>
-<p><strong>Bonus Points:</strong></p>
+<p><strong>About the role</strong></p>
+<p>Performs duties as a Developer and Automation Engineers. Your mission is to build the next generation of our cybersecurity defense layer using Cloudflare’s Workers platform. You will work on the development of real-time analytical engines, Security Information and Event Management (SIEM) integrations, and User and Entity Behavior Analytics (UEBA) tools to protect our global infrastructure and to help cater to fast growing threats and vulnerabilities by providing the right data/analysis/action using automation</p>
+<p><strong>What You’ll Do</strong></p>
 <ul>
-	<li>Projects built with the Cloudflare Developer Platform (Workers, Durable Objects, Queues, etc);</li>
-	<li>Experience with Python, Rust, or Go;</li>
-	<li>Experience building high performance distributed systems;</li>
-	<li>Knowledge of SQL.</li>
+	<li><strong>Development and Automation:</strong> Design and implement high-performance serverless applications on <strong>Cloudflare Workers</strong> (Workers, KV, Durable Objects, and R2) for security monitoring and remediation.</li>
+	<li><strong>Cybersecurity Analytics:</strong> Drive the creation of data pipelines that ingest edge logs to build comprehensive <strong>SIEM dashboards</strong> and <strong>UEBA models</strong> for anomaly detection.</li>
+	<li><strong>Automation:</strong> Replace manual security workflows with automated triggers, utilizing Cloudflare’s edge compute to intercept and analyze traffic in real-time.</li>
+	<li><strong>Dashboarding &amp; Visibility:</strong> Build high-fidelity dashboards that provide the CISO and SOC teams with actionable insights into global threat patterns and edge performance</li>
 </ul>
-<p>This role may require flexibility to be on-call outside of standard working hours to address technical issues as needed.</p>
+<p><strong>Requirements</strong></p>
+<ul>
+	<li>Either advanced studies in Cybersecurity, Computer Science, Information Systems, or similar</li>
+	<li>Good written and verbal communication skills, including the ability to effectively collaborate with technical and senior business staff and management.</li>
+	<li><strong>3+ years</strong> of experience in information security, with <strong>1+ years</strong> focused on Devops Environment&nbsp;</li>
+	<li>Good Working knowledge of <strong>Cloudflare Ecosystem</strong> (Workers, WAF, Zero Trust, Pages)</li>
+	<li><strong>Languages </strong>Proficiency in <strong>TypeScript/JavaScript</strong> (Node.js) or <strong>Rust</strong> (optimized for Workers)</li>
+	<li><strong>Security Tech </strong>Experience with <strong>SIEM/SOAR</strong> tools and building <strong>UEBA</strong> logic (behavioral baselining) preferred</li>
+	<li><strong>Data &amp; Analytics</strong>Experience with analytical databases (e.g., ClickHouse, Snowflake) and visualization tools (Grafana, Tableau) preferred</li>
+	<li><strong>DevOps Ops</strong>Strong CI/CD background (GitHub Actions, GitLab CI) and Infrastructure as Code (Terraform/Wrangler) preferred</li>
+	<li>Good to have an understanding of regulatory and compliance frameworks related to data protection and packaging&nbsp;</li>
+</ul>
+<p><strong>Preferred</strong></p>
+<ul>
+	<li>Certifications: CISSP, CISM, or CCSP.&nbsp;</li>
+	<li>Worked on similar organisations in the past as Cloudflare</li>
+	<li>Prior experience building custom log-push integrations or edge-based security products.</li>
+	<li>Background in <strong>Data Engineering</strong> or <strong>Data Science</strong>, specifically relating to security datasets preferred</li>
+</ul>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
 	<p><span style="font-weight: 400;">We’re not just a highly ambitious, large-scale technology company. We’re a highly ambitious, large-scale technology company with a soul. Fundamental to our mission to help build a better Internet is protecting the free and open Internet.</span></p>
