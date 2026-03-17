@@ -41,20 +41,6 @@
 		"name": "string",
 		"of": "function"
 	},
-	"ArrayBuffer": {
-		"__proto": "function",
-		"__type": "function",
-		"_prototype": {
-			"isView": "undefined",
-			"length": "undefined",
-			"name": "undefined",
-			"prototype": "undefined"
-		},
-		"isView": "function",
-		"length": "number",
-		"name": "string"
-	},
-	"Atomics": {},
 	"BigInt": {
 		"__proto": "function",
 		"__type": "function",
@@ -519,13 +505,6 @@
 			"prototype": "undefined",
 			"stack": "string"
 		},
-		"length": "number",
-		"name": "string"
-	},
-	"DataView": {
-		"__proto": "function",
-		"__type": "function",
-		"_prototype": {},
 		"length": "number",
 		"name": "string"
 	},
@@ -1084,7 +1063,6 @@
 			"supportedLocalesOf": "function"
 		}
 	},
-	"JSON": {},
 	"Map": {
 		"__proto": "function",
 		"__type": "function",
@@ -1235,20 +1213,115 @@
 		"setPrototypeOf": "function",
 		"values": "function"
 	},
-	"Promise": {
+	"Performance": {
 		"__proto": "function",
 		"__type": "function",
-		"_prototype": {},
-		"all": "function",
-		"allSettled": "function",
-		"any": "function",
+		"_prototype": "object",
+		"length": "number",
+		"name": "string"
+	},
+	"PerformanceEntry": {
+		"__proto": "function",
+		"__type": "function",
+		"_prototype": "object",
+		"length": "number",
+		"name": "string"
+	},
+	"PerformanceMark": {
+		"__proto": "function",
+		"__type": "function",
+		"_prototype": {
+			"detail": "object",
+			"duration": "number",
+			"entryType": "string",
+			"length": "undefined",
+			"name": "string",
+			"prototype": "undefined",
+			"startTime": "number",
+			"toJSON": "function"
+		},
+		"length": "number",
+		"name": "string"
+	},
+	"PerformanceMeasure": {
+		"__proto": "function",
+		"__type": "function",
+		"_prototype": "object",
+		"length": "number",
+		"name": "string"
+	},
+	"PerformanceObserver": {
+		"__proto": "function",
+		"__type": "function",
+		"_prototype": {
+			"disconnect": {
+				"__proto": "function",
+				"__type": "function",
+				"length": "number",
+				"name": "string"
+			},
+			"length": "undefined",
+			"name": "undefined",
+			"observe": {
+				"__proto": "function",
+				"__type": "function",
+				"length": "number",
+				"name": "string"
+			},
+			"prototype": "undefined",
+			"supportedEntryTypes": "undefined",
+			"takeRecords": {
+				"__proto": "function",
+				"__type": "function",
+				"length": "number",
+				"name": "string"
+			}
+		},
 		"length": "number",
 		"name": "string",
-		"race": "function",
-		"reject": "function",
-		"resolve": "function",
-		"try": "function",
-		"withResolvers": "function"
+		"supportedEntryTypes": {
+			"0": {
+				"__proto": "object",
+				"__type": "string"
+			},
+			"1": {
+				"__proto": "object",
+				"__type": "string"
+			}
+		}
+	},
+	"PerformanceObserverEntryList": {
+		"__proto": "function",
+		"__type": "function",
+		"_prototype": {
+			"getEntries": {
+				"__proto": "function",
+				"__type": "function",
+				"length": "number",
+				"name": "string"
+			},
+			"getEntriesByName": {
+				"__proto": "function",
+				"__type": "function",
+				"length": "number",
+				"name": "string"
+			},
+			"getEntriesByType": {
+				"__proto": "function",
+				"__type": "function",
+				"length": "number",
+				"name": "string"
+			}
+		},
+		"length": "number",
+		"name": "string"
+	},
+	"PerformanceResourceTiming": {
+		"__proto": "function",
+		"__type": "function",
+		"_prototype": "object",
+		"length": "number",
+		"name": "string"
 	},
 	"PromiseRejectionEvent": {
 		"__proto": "function",
@@ -1361,17 +1434,6 @@
 		"name": "string"
 	},
 	"Set": {
-		"__proto": "function",
-		"__type": "function",
-		"_prototype": {
-			"length": "undefined",
-			"name": "undefined",
-			"prototype": "undefined"
-		},
-		"length": "number",
-		"name": "string"
-	},
-	"SharedArrayBuffer": {
 		"__proto": "function",
 		"__type": "function",
 		"_prototype": {
@@ -1715,17 +1777,6 @@
 		"name": "string"
 	},
 	"WeakMap": {
-		"__proto": "function",
-		"__type": "function",
-		"_prototype": {
-			"length": "undefined",
-			"name": "undefined",
-			"prototype": "undefined"
-		},
-		"length": "number",
-		"name": "string"
-	},
-	"WeakSet": {
 		"__proto": "function",
 		"__type": "function",
 		"_prototype": {
@@ -2210,13 +2261,6 @@
 				"writing": "boolean"
 			},
 			"_writev": {},
-			"addListener": {
-				"__proto": "function",
-				"__type": "function",
-				"_prototype": {},
-				"length": "number",
-				"name": "string"
-			},
 			"cork": {
 				"__proto": "function",
 				"__type": "function",
@@ -2231,17 +2275,6 @@
 				"length": "number",
 				"name": "string"
 			},
-			"emit": {
-				"__proto": "function",
-				"__type": "function",
-				"_prototype": {
-					"length": "undefined",
-					"name": "undefined",
-					"prototype": "undefined"
-				},
-				"length": "number",
-				"name": "string"
-			},
 			"end": {
 				"__proto": "function",
 				"__type": "function",
@@ -2250,31 +2283,6 @@
 				"name": "string"
 			},
 			"fd": "number",
-			"getMaxListeners": {
-				"__proto": "function",
-				"__type": "function",
-				"_prototype": {
-					"length": "undefined",
-					"name": "undefined",
-					"prototype": "undefined"
-				},
-				"length": "number",
-				"name": "string"
-			},
-			"on": {
-				"__proto": "function",
-				"__type": "function",
-				"_prototype": {},
-				"length": "number",
-				"name": "string"
-			},
-			"once": {
-				"__proto": "function",
-				"__type": "function",
-				"_prototype": {},
-				"length": "number",
-				"name": "string"
-			},
 			"pipe": {
 				"__proto": "function",
 				"__type": "function",
@@ -2282,28 +2290,7 @@
 				"length": "number",
 				"name": "string"
 			},
-			"prependListener": {
-				"__proto": "function",
-				"__type": "function",
-				"_prototype": {},
-				"length": "number",
-				"name": "string"
-			},
-			"prependOnceListener": {
-				"__proto": "function",
-				"__type": "function",
-				"_prototype": {},
-				"length": "number",
-				"name": "string"
-			},
 			"readable": "boolean",
-			"removeListener": {
-				"__proto": "function",
-				"__type": "function",
-				"_prototype": {},
-				"length": "number",
-				"name": "string"
-			},
 			"setDefaultEncoding": {
 				"__proto": "function",
 				"__type": "function",
@@ -2354,7 +2341,6 @@
 				"finish": "undefined",
 				"prefinish": "undefined"
 			},
-			"_eventsCount": "number",
 			"_isStdio": "boolean",
 			"_maxListeners": "undefined",
 			"_type": {
@@ -2422,13 +2408,6 @@
 				"writing": "boolean"
 			},
 			"_writev": {},
-			"addListener": {
-				"__proto": "function",
-				"__type": "function",
-				"_prototype": {},
-				"length": "number",
-				"name": "string"
-			},
 			"cork": {
 				"__proto": "function",
 				"__type": "function",
@@ -2443,17 +2422,6 @@
 				"length": "number",
 				"name": "string"
 			},
-			"emit": {
-				"__proto": "function",
-				"__type": "function",
-				"_prototype": {
-					"length": "undefined",
-					"name": "undefined",
-					"prototype": "undefined"
-				},
-				"length": "number",
-				"name": "string"
-			},
 			"end": {
 				"__proto": "function",
 				"__type": "function",
@@ -2462,46 +2430,7 @@
 				"name": "string"
 			},
 			"fd": "number",
-			"getMaxListeners": {
-				"__proto": "function",
-				"__type": "function",
-				"_prototype": {
-					"length": "undefined",
-					"name": "undefined",
-					"prototype": "undefined"
-				},
-				"length": "number",
-				"name": "string"
-			},
-			"on": {
-				"__proto": "function",
-				"__type": "function",
-				"_prototype": {},
-				"length": "number",
-				"name": "string"
-			},
-			"once": {
-				"__proto": "function",
-				"__type": "function",
-				"_prototype": {},
-				"length": "number",
-				"name": "string"
-			},
 			"pipe": {
-				"__proto": "function",
-				"__type": "function",
-				"_prototype": {},
-				"length": "number",
-				"name": "string"
-			},
-			"prependListener": {
-				"__proto": "function",
-				"__type": "function",
-				"_prototype": {},
-				"length": "number",
-				"name": "string"
-			},
-			"prependOnceListener": {
 				"__proto": "function",
 				"__type": "function",
 				"_prototype": {},
@@ -2510,13 +2439,6 @@
 			},
 			"readable": "boolean",
 			"setDefaultEncoding": {
-				"__proto": "function",
-				"__type": "function",
-				"_prototype": {},
-				"length": "number",
-				"name": "string"
-			},
-			"setMaxListeners": {
 				"__proto": "function",
 				"__type": "function",
 				"_prototype": {},
@@ -2839,13 +2761,178 @@
 		"__type": "string"
 	},
 	"performance": {
+		"addEventListener": {
+			"__proto": "function",
+			"__type": "function",
+			"length": "number",
+			"name": "string"
+		},
+		"clearMarks": {
+			"__proto": "function",
+			"__type": "function",
+			"length": "number",
+			"name": "string"
+		},
+		"clearMeasures": {
+			"__proto": "function",
+			"__type": "function",
+			"length": "number",
+			"name": "string"
+		},
+		"clearResourceTimings": {
+			"__proto": "function",
+			"__type": "function",
+			"length": "number",
+			"name": "string"
+		},
+		"dispatchEvent": {
+			"__proto": "function",
+			"__type": "function",
+			"length": "number",
+			"name": "string"
+		},
+		"eventCounts": {
+			"entries": {
+				"__proto": "function",
+				"__type": "function",
+				"length": "number",
+				"name": "string"
+			},
+			"forEach": {
+				"__proto": "function",
+				"__type": "function",
+				"length": "number",
+				"name": "string"
+			},
+			"get": {
+				"__proto": "function",
+				"__type": "function",
+				"length": "number",
+				"name": "string"
+			},
+			"has": {
+				"__proto": "function",
+				"__type": "function",
+				"length": "number",
+				"name": "string"
+			},
+			"keys": {
+				"__proto": "function",
+				"__type": "function",
+				"length": "number",
+				"name": "string"
+			},
+			"size": "number",
+			"values": {
+				"__proto": "function",
+				"__type": "function",
+				"length": "number",
+				"name": "string"
+			}
+		},
+		"eventLoopUtilization": {
+			"__proto": "function",
+			"__type": "function",
+			"length": "number",
+			"name": "string"
+		},
+		"getEntries": {
+			"__proto": "function",
+			"__type": "function",
+			"length": "number",
+			"name": "string"
+		},
+		"getEntriesByName": {
+			"__proto": "function",
+			"__type": "function",
+			"length": "number",
+			"name": "string"
+		},
+		"getEntriesByType": {
+			"__proto": "function",
+			"__type": "function",
+			"length": "number",
+			"name": "string"
+		},
+		"mark": {
+			"__proto": "function",
+			"__type": "function",
+			"length": "number",
+			"name": "string"
+		},
+		"markResourceTiming": {
+			"__proto": "function",
+			"__type": "function",
+			"length": "number",
+			"name": "string"
+		},
+		"measure": {
+			"__proto": "function",
+			"__type": "function",
+			"length": "number",
+			"name": "string"
+		},
+		"nodeTiming": {
+			"bootstrapComplete": "number",
+			"duration": "number",
+			"entryType": {
+				"__proto": "object",
+				"__type": "string"
+			},
+			"environment": "number",
+			"idleTime": "number",
+			"loopExit": "number",
+			"loopStart": "number",
+			"name": {
+				"__proto": "object",
+				"__type": "string"
+			},
+			"nodeStart": "number",
+			"startTime": "number",
+			"toJSON": {
+				"__proto": "function",
+				"__type": "function",
+				"length": "number",
+				"name": "string"
+			},
+			"uvMetricsInfo": {
+				"events": "number",
+				"eventsWaiting": "number",
+				"loopCount": "number"
+			},
+			"v8Start": "number"
+		},
 		"now": {
 			"__proto": "function",
 			"__type": "function",
 			"length": "number",
 			"name": "string"
 		},
-		"timeOrigin": "number"
+		"removeEventListener": {
+			"__proto": "function",
+			"__type": "function",
+			"length": "number",
+			"name": "string"
+		},
+		"setResourceTimingBufferSize": {
+			"__proto": "function",
+			"__type": "function",
+			"length": "number",
+			"name": "string"
+		},
+		"timeOrigin": "number",
+		"timerify": {
+			"__proto": "function",
+			"__type": "function",
+			"length": "number",
+			"name": "string"
+		},
+		"toJSON": {
+			"__proto": "function",
+			"__type": "function",
+			"length": "number",
+			"name": "string"
+		}
 	},
 	"queueMicrotask": {
 		"__proto": "function",
@@ -3313,6 +3400,13 @@
 		"Navigator",
 		"Number",
 		"Object",
+		"Performance",
+		"PerformanceEntry",
+		"PerformanceMark",
+		"PerformanceMeasure",
+		"PerformanceObserver",
+		"PerformanceObserverEntryList",
+		"PerformanceResourceTiming",
 		"Promise",
 		"PromiseRejectionEvent",
 		"Proxy",
