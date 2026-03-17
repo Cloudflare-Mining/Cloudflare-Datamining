@@ -886,9 +886,9 @@
 			"pro": true
 		}
 	},
-	"POST /accounts/{account_id}/ai/run/@cf/baai/omni-bge-base-en-v1.5": {
-		"description": "Runs inference on the @cf/baai/omni-bge-base-en-v1.5 model.",
-		"operationId": "workers-ai-post-run-cf-baai-omni-bge-base-en-v1-5",
+	"POST /accounts/{account_id}/ai/run/@cf/baai/nonomni-bge-base-en-v1.5": {
+		"description": "Runs inference on the @cf/baai/nonomni-bge-base-en-v1.5 model.",
+		"operationId": "workers-ai-post-run-cf-baai-nonomni-bge-base-en-v1-5",
 		"parameters": [
 			{
 				"in": "path",
@@ -1072,7 +1072,7 @@
 				"api_key": []
 			}
 		],
-		"summary": "Execute @cf/baai/omni-bge-base-en-v1.5 model.",
+		"summary": "Execute @cf/baai/nonomni-bge-base-en-v1.5 model.",
 		"tags": [
 			"Workers AI Text Embeddings"
 		],
@@ -1092,9 +1092,9 @@
 			"pro": true
 		}
 	},
-	"POST /accounts/{account_id}/ai/run/@cf/baai/omni-bge-large-en-v1.5": {
-		"description": "Runs inference on the @cf/baai/omni-bge-large-en-v1.5 model.",
-		"operationId": "workers-ai-post-run-cf-baai-omni-bge-large-en-v1-5",
+	"POST /accounts/{account_id}/ai/run/@cf/baai/nonomni-bge-large-en-v1.5": {
+		"description": "Runs inference on the @cf/baai/nonomni-bge-large-en-v1.5 model.",
+		"operationId": "workers-ai-post-run-cf-baai-nonomni-bge-large-en-v1-5",
 		"parameters": [
 			{
 				"in": "path",
@@ -1278,7 +1278,7 @@
 				"api_key": []
 			}
 		],
-		"summary": "Execute @cf/baai/omni-bge-large-en-v1.5 model.",
+		"summary": "Execute @cf/baai/nonomni-bge-large-en-v1.5 model.",
 		"tags": [
 			"Workers AI Text Embeddings"
 		],
@@ -1298,9 +1298,9 @@
 			"pro": true
 		}
 	},
-	"POST /accounts/{account_id}/ai/run/@cf/baai/omni-bge-m3": {
-		"description": "Runs inference on the @cf/baai/omni-bge-m3 model.",
-		"operationId": "workers-ai-post-run-cf-baai-omni-bge-m3",
+	"POST /accounts/{account_id}/ai/run/@cf/baai/nonomni-bge-m3": {
+		"description": "Runs inference on the @cf/baai/nonomni-bge-m3 model.",
+		"operationId": "workers-ai-post-run-cf-baai-nonomni-bge-m3",
 		"parameters": [
 			{
 				"in": "path",
@@ -1547,7 +1547,7 @@
 				"api_key": []
 			}
 		],
-		"summary": "Execute @cf/baai/omni-bge-m3 model.",
+		"summary": "Execute @cf/baai/nonomni-bge-m3 model.",
 		"tags": [
 			"Workers AI Text Embeddings"
 		],
@@ -1567,9 +1567,9 @@
 			"pro": true
 		}
 	},
-	"POST /accounts/{account_id}/ai/run/@cf/baai/omni-bge-small-en-v1.5": {
-		"description": "Runs inference on the @cf/baai/omni-bge-small-en-v1.5 model.",
-		"operationId": "workers-ai-post-run-cf-baai-omni-bge-small-en-v1-5",
+	"POST /accounts/{account_id}/ai/run/@cf/baai/nonomni-bge-small-en-v1.5": {
+		"description": "Runs inference on the @cf/baai/nonomni-bge-small-en-v1.5 model.",
+		"operationId": "workers-ai-post-run-cf-baai-nonomni-bge-small-en-v1-5",
 		"parameters": [
 			{
 				"in": "path",
@@ -1753,213 +1753,7 @@
 				"api_key": []
 			}
 		],
-		"summary": "Execute @cf/baai/omni-bge-small-en-v1.5 model.",
-		"tags": [
-			"Workers AI Text Embeddings"
-		],
-		"x-api-token-group": [
-			"Workers AI Write",
-			"Workers AI Read"
-		],
-		"x-cfPermissionsRequired": {
-			"enum": [
-				"com.cloudflare.api.account.ai"
-			]
-		},
-		"x-cfPlanAvailability": {
-			"business": true,
-			"enterprise": true,
-			"free": true,
-			"pro": true
-		}
-	},
-	"POST /accounts/{account_id}/ai/run/@cf/baai/ray-bge-large-en-v1.5": {
-		"description": "Runs inference on the @cf/baai/ray-bge-large-en-v1.5 model.",
-		"operationId": "workers-ai-post-run-cf-baai-ray-bge-large-en-v1-5",
-		"parameters": [
-			{
-				"in": "path",
-				"name": "account_id",
-				"required": true,
-				"schema": {
-					"example": "023e105f4ecef8ad9ca31a8372d0c353",
-					"type": "string",
-					"x-auditable": true
-				}
-			},
-			{
-				"in": "query",
-				"name": "queueRequest",
-				"schema": {
-					"example": "true",
-					"type": "string",
-					"x-auditable": true
-				}
-			},
-			{
-				"in": "query",
-				"name": "tags",
-				"schema": {
-					"example": "tag1,tag2,tag3",
-					"type": "string"
-				}
-			}
-		],
-		"requestBody": {
-			"content": {
-				"application/json": {
-					"schema": {
-						"oneOf": [
-							{
-								"properties": {
-									"pooling": {
-										"default": "mean",
-										"description": "The pooling method used in the embedding process. `cls` pooling will generate more accurate embeddings on larger inputs - however, embeddings created with cls pooling are not compatible with embeddings generated with mean pooling. The default pooling method is `mean` in order for this to not be a breaking change, but we highly suggest using the new `cls` pooling for better accuracy.",
-										"enum": [
-											"mean",
-											"cls"
-										],
-										"type": "string"
-									},
-									"text": {
-										"oneOf": [
-											{
-												"description": "The text to embed",
-												"minLength": 1,
-												"type": "string"
-											},
-											{
-												"description": "Batch of text values to embed",
-												"items": {
-													"description": "The text to embed",
-													"minLength": 1,
-													"type": "string"
-												},
-												"maxItems": 100,
-												"type": "array"
-											}
-										]
-									}
-								},
-								"required": [
-									"text"
-								]
-							},
-							{
-								"properties": {
-									"requests": {
-										"description": "Batch of the embeddings requests to run using async-queue",
-										"items": {
-											"properties": {
-												"pooling": {
-													"default": "mean",
-													"description": "The pooling method used in the embedding process. `cls` pooling will generate more accurate embeddings on larger inputs - however, embeddings created with cls pooling are not compatible with embeddings generated with mean pooling. The default pooling method is `mean` in order for this to not be a breaking change, but we highly suggest using the new `cls` pooling for better accuracy.",
-													"enum": [
-														"mean",
-														"cls"
-													],
-													"type": "string"
-												},
-												"text": {
-													"oneOf": [
-														{
-															"description": "The text to embed",
-															"minLength": 1,
-															"type": "string"
-														},
-														{
-															"description": "Batch of text values to embed",
-															"items": {
-																"description": "The text to embed",
-																"minLength": 1,
-																"type": "string"
-															},
-															"maxItems": 100,
-															"type": "array"
-														}
-													]
-												}
-											},
-											"required": [
-												"text"
-											]
-										},
-										"type": "array"
-									}
-								},
-								"required": [
-									"requests"
-								]
-							}
-						],
-						"type": "object"
-					}
-				}
-			}
-		},
-		"responses": {
-			"200": {
-				"content": {
-					"application/json": {
-						"schema": {
-							"type": "object"
-						}
-					}
-				},
-				"description": "Object with user data."
-			},
-			"400": {
-				"content": {
-					"application/json": {
-						"schema": {
-							"properties": {
-								"errors": {
-									"items": {
-										"properties": {
-											"code": {
-												"type": "string"
-											},
-											"message": {
-												"type": "string"
-											}
-										},
-										"required": [
-											"code",
-											"message"
-										],
-										"type": "object"
-									},
-									"type": "array"
-								},
-								"result": {
-									"type": "object"
-								},
-								"success": {
-									"type": "boolean"
-								}
-							},
-							"required": [
-								"errors",
-								"success",
-								"result"
-							],
-							"type": "object"
-						}
-					}
-				},
-				"description": "Bad request"
-			}
-		},
-		"security": [
-			{
-				"api_token": []
-			},
-			{
-				"api_email": [],
-				"api_key": []
-			}
-		],
-		"summary": "Execute @cf/baai/ray-bge-large-en-v1.5 model.",
+		"summary": "Execute @cf/baai/nonomni-bge-small-en-v1.5 model.",
 		"tags": [
 			"Workers AI Text Embeddings"
 		],
@@ -2126,9 +1920,9 @@
 			"pro": true
 		}
 	},
-	"POST /accounts/{account_id}/ai/run/@cf/google/omni-embeddinggemma-300m": {
-		"description": "Runs inference on the @cf/google/omni-embeddinggemma-300m model.",
-		"operationId": "workers-ai-post-run-cf-google-omni-embeddinggemma-300m",
+	"POST /accounts/{account_id}/ai/run/@cf/google/nonomni-embeddinggemma-300m": {
+		"description": "Runs inference on the @cf/google/nonomni-embeddinggemma-300m model.",
+		"operationId": "workers-ai-post-run-cf-google-nonomni-embeddinggemma-300m",
 		"parameters": [
 			{
 				"in": "path",
@@ -2248,7 +2042,7 @@
 				"api_key": []
 			}
 		],
-		"summary": "Execute @cf/google/omni-embeddinggemma-300m model.",
+		"summary": "Execute @cf/google/nonomni-embeddinggemma-300m model.",
 		"tags": [
 			"Workers AI Text Embeddings"
 		],

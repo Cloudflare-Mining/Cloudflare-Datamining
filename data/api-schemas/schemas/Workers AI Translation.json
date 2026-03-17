@@ -183,9 +183,9 @@
 			"pro": true
 		}
 	},
-	"POST /accounts/{account_id}/ai/run/@cf/ai4bharat/omni-indictrans2-en-indic-1b": {
-		"description": "Runs inference on the @cf/ai4bharat/omni-indictrans2-en-indic-1b model.",
-		"operationId": "workers-ai-post-run-cf-ai4bharat-omni-indictrans2-en-indic-1b",
+	"POST /accounts/{account_id}/ai/run/@cf/ai4bharat/nonomni-indictrans2-en-indic-1b": {
+		"description": "Runs inference on the @cf/ai4bharat/nonomni-indictrans2-en-indic-1b model.",
+		"operationId": "workers-ai-post-run-cf-ai4bharat-nonomni-indictrans2-en-indic-1b",
 		"parameters": [
 			{
 				"in": "path",
@@ -347,7 +347,7 @@
 				"api_key": []
 			}
 		],
-		"summary": "Execute @cf/ai4bharat/omni-indictrans2-en-indic-1b model.",
+		"summary": "Execute @cf/ai4bharat/nonomni-indictrans2-en-indic-1b model.",
 		"tags": [
 			"Workers AI Translation"
 		],
