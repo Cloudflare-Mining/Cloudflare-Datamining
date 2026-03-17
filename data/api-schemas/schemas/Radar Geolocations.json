@@ -1,6 +1,6 @@
 {
 	"GET /radar/geolocations": {
-		"description": "Retrieves a list of geolocations.",
+		"description": "Retrieves a list of geolocations. Geolocation names can be localized by sending an `Accept-Language` HTTP header with a BCP 47 language tag (e.g., `Accept-Language: pt-PT`). The full quality-value chain is supported (e.g., `pt-PT,pt;q=0.9,en;q=0.8`).",
 		"operationId": "radar-get-geolocations",
 		"parameters": [
 			{
@@ -86,6 +86,11 @@
 														"pattern": "^\\d+$",
 														"type": "string"
 													},
+													"locale": {
+														"description": "BCP 47 locale code used for the geolocation name translation",
+														"example": "pt-PT",
+														"type": "string"
+													},
 													"longitude": {
 														"description": "A numeric string.",
 														"example": "10",
@@ -99,17 +104,22 @@
 													"parent": {
 														"properties": {
 															"code": {
-																"example": "PT",
+																"example": "PT-11",
 																"type": "string"
 															},
 															"geoId": {
-																"example": "2264397",
+																"example": "2267056",
 																"type": "string"
 															},
 															"latitude": {
 																"description": "A numeric string.",
 																"example": "10",
 																"pattern": "^\\d+$",
+																"type": "string"
+															},
+															"locale": {
+																"description": "BCP 47 locale code used for the geolocation name translation",
+																"example": "pt-PT",
 																"type": "string"
 															},
 															"longitude": {
@@ -119,23 +129,28 @@
 																"type": "string"
 															},
 															"name": {
-																"example": "Portugal",
+																"example": "Lisbon",
 																"type": "string"
 															},
 															"parent": {
 																"properties": {
 																	"code": {
-																		"example": "EU",
+																		"example": "PT-11",
 																		"type": "string"
 																	},
 																	"geoId": {
-																		"example": "6255148",
+																		"example": "2267056",
 																		"type": "string"
 																	},
 																	"latitude": {
 																		"description": "A numeric string.",
 																		"example": "10",
 																		"pattern": "^\\d+$",
+																		"type": "string"
+																	},
+																	"locale": {
+																		"description": "BCP 47 locale code used for the geolocation name translation",
+																		"example": "pt-PT",
 																		"type": "string"
 																	},
 																	"longitude": {
@@ -145,7 +160,7 @@
 																		"type": "string"
 																	},
 																	"name": {
-																		"example": "Europe",
+																		"example": "Lisbon",
 																		"type": "string"
 																	},
 																	"type": {
@@ -292,7 +307,7 @@
 		}
 	},
 	"GET /radar/geolocations/{geo_id}": {
-		"description": "Retrieves the requested Geolocation information.",
+		"description": "Retrieves the requested Geolocation information. Geolocation names can be localized by sending an `Accept-Language` HTTP header with a BCP 47 language tag (e.g., `Accept-Language: pt-PT`). The full quality-value chain is supported (e.g., `pt-PT,pt;q=0.9,en;q=0.8`).",
 		"operationId": "radar-get-geolocation-details",
 		"parameters": [
 			{
@@ -346,6 +361,11 @@
 													"pattern": "^\\d+$",
 													"type": "string"
 												},
+												"locale": {
+													"description": "BCP 47 locale code used for the geolocation name translation",
+													"example": "pt-PT",
+													"type": "string"
+												},
 												"longitude": {
 													"description": "A numeric string.",
 													"example": "10",
@@ -359,17 +379,22 @@
 												"parent": {
 													"properties": {
 														"code": {
-															"example": "PT",
+															"example": "PT-11",
 															"type": "string"
 														},
 														"geoId": {
-															"example": "2264397",
+															"example": "2267056",
 															"type": "string"
 														},
 														"latitude": {
 															"description": "A numeric string.",
 															"example": "10",
 															"pattern": "^\\d+$",
+															"type": "string"
+														},
+														"locale": {
+															"description": "BCP 47 locale code used for the geolocation name translation",
+															"example": "pt-PT",
 															"type": "string"
 														},
 														"longitude": {
@@ -379,23 +404,28 @@
 															"type": "string"
 														},
 														"name": {
-															"example": "Portugal",
+															"example": "Lisbon",
 															"type": "string"
 														},
 														"parent": {
 															"properties": {
 																"code": {
-																	"example": "EU",
+																	"example": "PT-11",
 																	"type": "string"
 																},
 																"geoId": {
-																	"example": "6255148",
+																	"example": "2267056",
 																	"type": "string"
 																},
 																"latitude": {
 																	"description": "A numeric string.",
 																	"example": "10",
 																	"pattern": "^\\d+$",
+																	"type": "string"
+																},
+																"locale": {
+																	"description": "BCP 47 locale code used for the geolocation name translation",
+																	"example": "pt-PT",
 																	"type": "string"
 																},
 																"longitude": {
@@ -405,7 +435,7 @@
 																	"type": "string"
 																},
 																"name": {
-																	"example": "Europe",
+																	"example": "Lisbon",
 																	"type": "string"
 																},
 																"type": {

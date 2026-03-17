@@ -451,7 +451,51 @@
 		]
 	},
 	"PATCH /accounts/{account_id}/brand-protection/queries": {
-		"description": "Return a success message after updating saved string queries by ID",
+		"description": "Update a saved query's tag, scan setting, or string_matches (pattern). When string_matches is provided, the query parameters and hash are updated. At least one of tag, scan, or string_matches is required.",
+		"requestBody": {
+			"content": {
+				"application/json": {
+					"schema": {
+						"properties": {
+							"id": {
+								"description": "The query ID to update (required when updating tag or scan)",
+								"type": "integer"
+							},
+							"scan": {
+								"description": "Whether to scan matches",
+								"type": "boolean"
+							},
+							"string_matches": {
+								"description": "Updated pattern match constraints. When provided, replaces the existing string_matches.",
+								"items": {
+									"properties": {
+										"max_edit_distance": {
+											"description": "Maximum Levenshtein edit distance for fuzzy matching",
+											"type": "number"
+										},
+										"pattern": {
+											"description": "The pattern to match against",
+											"type": "string"
+										}
+									},
+									"required": [
+										"pattern"
+									],
+									"type": "object"
+								},
+								"type": "array"
+							},
+							"tag": {
+								"description": "Query tag. Required as identifier when updating string_matches.",
+								"type": "string"
+							}
+						},
+						"type": "object"
+					}
+				}
+			},
+			"required": true
+		},
 		"responses": {
 			"default": {
 				"content": {
