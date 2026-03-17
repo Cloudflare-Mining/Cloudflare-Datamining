@@ -1,5 +1,6 @@
 {
 	"DELETE /accounts/{account_id}/access/ai-controls/mcp/portals/{id}": {
+		"description": "Deletes an MCP portal from the account.",
 		"operationId": "mcp-portals-api-delete-portals",
 		"parameters": [
 			{
@@ -33,6 +34,12 @@
 							"properties": {
 								"result": {
 									"properties": {
+										"allow_code_mode": {
+											"default": true,
+											"description": "Allow remote code execution in Dynamic Workers (beta)",
+											"example": true,
+											"type": "boolean"
+										},
 										"created_at": {
 											"format": "date-time",
 											"readOnly": true,
@@ -75,6 +82,7 @@
 											"type": "string"
 										},
 										"secure_web_gateway": {
+											"default": false,
 											"description": "Route outbound MCP traffic through Zero Trust Secure Web Gateway",
 											"example": false,
 											"type": "boolean"
@@ -170,6 +178,7 @@
 		}
 	},
 	"GET /accounts/{account_id}/access/ai-controls/mcp/portals": {
+		"description": "Lists all MCP portals configured for the account.",
 		"operationId": "mcp-portals-api-list-portals",
 		"parameters": [
 			{
@@ -218,6 +227,12 @@
 								"result": {
 									"items": {
 										"properties": {
+											"allow_code_mode": {
+												"default": true,
+												"description": "Allow remote code execution in Dynamic Workers (beta)",
+												"example": true,
+												"type": "boolean"
+											},
 											"created_at": {
 												"format": "date-time",
 												"readOnly": true,
@@ -260,15 +275,161 @@
 												"type": "string"
 											},
 											"secure_web_gateway": {
+												"default": false,
 												"description": "Route outbound MCP traffic through Zero Trust Secure Web Gateway",
 												"example": false,
 												"type": "boolean"
+											},
+											"servers": {
+												"items": {
+													"properties": {
+														"auth_type": {
+															"enum": [
+																"oauth",
+																"bearer",
+																"unauthenticated"
+															],
+															"example": "unauthenticated",
+															"type": "string"
+														},
+														"created_at": {
+															"format": "date-time",
+															"readOnly": true,
+															"type": "string"
+														},
+														"created_by": {
+															"readOnly": true,
+															"type": "string"
+														},
+														"default_disabled": {
+															"default": false,
+															"type": "boolean"
+														},
+														"description": {
+															"example": "This is one remote mcp server",
+															"maxLength": 512,
+															"nullable": true,
+															"type": "string"
+														},
+														"error": {
+															"readOnly": true,
+															"type": "string"
+														},
+														"hostname": {
+															"example": "https://example.com/mcp",
+															"format": "uri",
+															"type": "string"
+														},
+														"id": {
+															"description": "server id",
+															"example": "my-mcp-server",
+															"maxLength": 32,
+															"minLength": 1,
+															"pattern": "^[a-z0-9_]+(?:-[a-z0-9_]+)*$",
+															"type": "string"
+														},
+														"last_successful_sync": {
+															"format": "date-time",
+															"readOnly": true,
+															"type": "string"
+														},
+														"last_synced": {
+															"format": "date-time",
+															"readOnly": true,
+															"type": "string"
+														},
+														"modified_at": {
+															"format": "date-time",
+															"readOnly": true,
+															"type": "string"
+														},
+														"modified_by": {
+															"readOnly": true,
+															"type": "string"
+														},
+														"name": {
+															"example": "My MCP Server",
+															"maxLength": 350,
+															"type": "string"
+														},
+														"on_behalf": {
+															"default": true,
+															"type": "boolean"
+														},
+														"prompts": {
+															"items": {
+																"additionalProperties": {},
+																"type": "object"
+															},
+															"readOnly": true,
+															"type": "array"
+														},
+														"status": {
+															"default": "waiting",
+															"readOnly": true,
+															"type": "string"
+														},
+														"tools": {
+															"items": {
+																"additionalProperties": {},
+																"type": "object"
+															},
+															"readOnly": true,
+															"type": "array"
+														},
+														"updated_prompts": {
+															"items": {
+																"additionalProperties": {
+																	"anyOf": [
+																		{
+																			"type": "number"
+																		},
+																		{
+																			"type": "string"
+																		}
+																	]
+																},
+																"type": "object"
+															},
+															"type": "array"
+														},
+														"updated_tools": {
+															"items": {
+																"additionalProperties": {
+																	"anyOf": [
+																		{
+																			"type": "number"
+																		},
+																		{
+																			"type": "string"
+																		}
+																	]
+																},
+																"type": "object"
+															},
+															"type": "array"
+														}
+													},
+													"required": [
+														"id",
+														"name",
+														"hostname",
+														"auth_type",
+														"tools",
+														"prompts",
+														"updated_tools",
+														"updated_prompts"
+													],
+													"type": "object"
+												},
+												"type": "array"
 											}
 										},
 										"required": [
 											"id",
 											"name",
-											"hostname"
+											"hostname",
+											"servers"
 										],
 										"type": "object"
 									},
@@ -386,6 +547,12 @@
 							"properties": {
 								"result": {
 									"properties": {
+										"allow_code_mode": {
+											"default": true,
+											"description": "Allow remote code execution in Dynamic Workers (beta)",
+											"example": true,
+											"type": "boolean"
+										},
 										"created_at": {
 											"format": "date-time",
 											"readOnly": true,
@@ -428,6 +595,7 @@
 											"type": "string"
 										},
 										"secure_web_gateway": {
+											"default": false,
 											"description": "Route outbound MCP traffic through Zero Trust Secure Web Gateway",
 											"example": false,
 											"type": "boolean"
@@ -468,7 +636,7 @@
 														"type": "string"
 													},
 													"hostname": {
-														"example": "https://exmaple.com/mcp",
+														"example": "https://example.com/mcp",
 														"format": "uri",
 														"type": "string"
 													},
@@ -668,6 +836,7 @@
 		}
 	},
 	"POST /accounts/{account_id}/access/ai-controls/mcp/portals": {
+		"description": "Creates a new MCP portal for managing AI tool access through Cloudflare Access.",
 		"operationId": "mcp-portals-api-create-portals",
 		"parameters": [
 			{
@@ -685,6 +854,12 @@
 				"application/json": {
 					"schema": {
 						"properties": {
+							"allow_code_mode": {
+								"default": true,
+								"description": "Allow remote code execution in Dynamic Workers (beta)",
+								"example": true,
+								"type": "boolean"
+							},
 							"description": {
 								"example": "This is my custom MCP Portal",
 								"maxLength": 512,
@@ -709,6 +884,7 @@
 								"type": "string"
 							},
 							"secure_web_gateway": {
+								"default": false,
 								"description": "Route outbound MCP traffic through Zero Trust Secure Web Gateway",
 								"example": false,
 								"type": "boolean"
@@ -735,6 +911,12 @@
 										"updated_prompts": {
 											"items": {
 												"properties": {
+													"alias": {
+														"example": "my-custom-alias",
+														"maxLength": 40,
+														"pattern": "^[a-zA-Z0-9]+([_-][a-zA-Z0-9]+)*$",
+														"type": "string"
+													},
 													"description": {
 														"type": "string"
 													},
@@ -755,6 +937,12 @@
 										"updated_tools": {
 											"items": {
 												"properties": {
+													"alias": {
+														"example": "my-custom-alias",
+														"maxLength": 40,
+														"pattern": "^[a-zA-Z0-9]+([_-][a-zA-Z0-9]+)*$",
+														"type": "string"
+													},
 													"description": {
 														"type": "string"
 													},
@@ -800,6 +988,12 @@
 							"properties": {
 								"result": {
 									"properties": {
+										"allow_code_mode": {
+											"default": true,
+											"description": "Allow remote code execution in Dynamic Workers (beta)",
+											"example": true,
+											"type": "boolean"
+										},
 										"created_at": {
 											"format": "date-time",
 											"readOnly": true,
@@ -842,6 +1036,7 @@
 											"type": "string"
 										},
 										"secure_web_gateway": {
+											"default": false,
 											"description": "Route outbound MCP traffic through Zero Trust Secure Web Gateway",
 											"example": false,
 											"type": "boolean"
@@ -945,6 +1140,7 @@
 		}
 	},
 	"PUT /accounts/{account_id}/access/ai-controls/mcp/portals/{id}": {
+		"description": "Updates an MCP portal configuration.",
 		"operationId": "mcp-portals-api-update-portals",
 		"parameters": [
 			{
@@ -975,6 +1171,12 @@
 				"application/json": {
 					"schema": {
 						"properties": {
+							"allow_code_mode": {
+								"default": true,
+								"description": "Allow remote code execution in Dynamic Workers (beta)",
+								"example": true,
+								"type": "boolean"
+							},
 							"description": {
 								"example": "This is my custom MCP Portal",
 								"maxLength": 512,
@@ -991,6 +1193,7 @@
 								"type": "string"
 							},
 							"secure_web_gateway": {
+								"default": false,
 								"description": "Route outbound MCP traffic through Zero Trust Secure Web Gateway",
 								"example": false,
 								"type": "boolean"
@@ -1017,6 +1220,12 @@
 										"updated_prompts": {
 											"items": {
 												"properties": {
+													"alias": {
+														"example": "my-custom-alias",
+														"maxLength": 40,
+														"pattern": "^[a-zA-Z0-9]+([_-][a-zA-Z0-9]+)*$",
+														"type": "string"
+													},
 													"description": {
 														"type": "string"
 													},
@@ -1037,6 +1246,12 @@
 										"updated_tools": {
 											"items": {
 												"properties": {
+													"alias": {
+														"example": "my-custom-alias",
+														"maxLength": 40,
+														"pattern": "^[a-zA-Z0-9]+([_-][a-zA-Z0-9]+)*$",
+														"type": "string"
+													},
 													"description": {
 														"type": "string"
 													},
@@ -1077,6 +1292,12 @@
 							"properties": {
 								"result": {
 									"properties": {
+										"allow_code_mode": {
+											"default": true,
+											"description": "Allow remote code execution in Dynamic Workers (beta)",
+											"example": true,
+											"type": "boolean"
+										},
 										"created_at": {
 											"format": "date-time",
 											"readOnly": true,
@@ -1119,6 +1340,7 @@
 											"type": "string"
 										},
 										"secure_web_gateway": {
+											"default": false,
 											"description": "Route outbound MCP traffic through Zero Trust Secure Web Gateway",
 											"example": false,
 											"type": "boolean"

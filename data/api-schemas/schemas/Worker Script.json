@@ -1152,6 +1152,44 @@
 																			"invocation_logs"
 																		],
 																		"type": "object"
+																	},
+																	"traces": {
+																		"description": "Trace settings for the Worker.",
+																		"nullable": true,
+																		"properties": {
+																			"destinations": {
+																				"description": "A list of destinations where traces will be exported to.",
+																				"example": [
+																					"cloudflare"
+																				],
+																				"items": {
+																					"type": "string"
+																				},
+																				"type": "array",
+																				"x-auditable": true
+																			},
+																			"enabled": {
+																				"description": "Whether traces are enabled for the Worker.",
+																				"example": true,
+																				"type": "boolean",
+																				"x-auditable": true
+																			},
+																			"head_sampling_rate": {
+																				"description": "The sampling rate for traces. From 0 to 1 (1 = 100%, 0.1 = 10%). Default is 1.",
+																				"example": 0.1,
+																				"nullable": true,
+																				"type": "number",
+																				"x-auditable": true
+																			},
+																			"persist": {
+																				"default": true,
+																				"description": "Whether trace persistence is enabled for the Worker.",
+																				"example": true,
+																				"type": "boolean",
+																				"x-auditable": true
+																			}
+																		},
+																		"type": "object"
 																	}
 																},
 																"required": [
@@ -2645,6 +2683,44 @@
 																		"enabled",
 																		"invocation_logs"
 																	],
+																	"type": "object"
+																},
+																"traces": {
+																	"description": "Trace settings for the Worker.",
+																	"nullable": true,
+																	"properties": {
+																		"destinations": {
+																			"description": "A list of destinations where traces will be exported to.",
+																			"example": [
+																				"cloudflare"
+																			],
+																			"items": {
+																				"type": "string"
+																			},
+																			"type": "array",
+																			"x-auditable": true
+																		},
+																		"enabled": {
+																			"description": "Whether traces are enabled for the Worker.",
+																			"example": true,
+																			"type": "boolean",
+																			"x-auditable": true
+																		},
+																		"head_sampling_rate": {
+																			"description": "The sampling rate for traces. From 0 to 1 (1 = 100%, 0.1 = 10%). Default is 1.",
+																			"example": 0.1,
+																			"nullable": true,
+																			"type": "number",
+																			"x-auditable": true
+																		},
+																		"persist": {
+																			"default": true,
+																			"description": "Whether trace persistence is enabled for the Worker.",
+																			"example": true,
+																			"type": "boolean",
+																			"x-auditable": true
+																		}
+																	},
 																	"type": "object"
 																}
 															},
@@ -6479,6 +6555,44 @@
 																"invocation_logs"
 															],
 															"type": "object"
+														},
+														"traces": {
+															"description": "Trace settings for the Worker.",
+															"nullable": true,
+															"properties": {
+																"destinations": {
+																	"description": "A list of destinations where traces will be exported to.",
+																	"example": [
+																		"cloudflare"
+																	],
+																	"items": {
+																		"type": "string"
+																	},
+																	"type": "array",
+																	"x-auditable": true
+																},
+																"enabled": {
+																	"description": "Whether traces are enabled for the Worker.",
+																	"example": true,
+																	"type": "boolean",
+																	"x-auditable": true
+																},
+																"head_sampling_rate": {
+																	"description": "The sampling rate for traces. From 0 to 1 (1 = 100%, 0.1 = 10%). Default is 1.",
+																	"example": 0.1,
+																	"nullable": true,
+																	"type": "number",
+																	"x-auditable": true
+																},
+																"persist": {
+																	"default": true,
+																	"description": "Whether trace persistence is enabled for the Worker.",
+																	"example": true,
+																	"type": "boolean",
+																	"x-auditable": true
+																}
+															},
+															"type": "object"
 														}
 													},
 													"required": [
@@ -7655,6 +7769,44 @@
 													"invocation_logs"
 												],
 												"type": "object"
+											},
+											"traces": {
+												"description": "Trace settings for the Worker.",
+												"nullable": true,
+												"properties": {
+													"destinations": {
+														"description": "A list of destinations where traces will be exported to.",
+														"example": [
+															"cloudflare"
+														],
+														"items": {
+															"type": "string"
+														},
+														"type": "array",
+														"x-auditable": true
+													},
+													"enabled": {
+														"description": "Whether traces are enabled for the Worker.",
+														"example": true,
+														"type": "boolean",
+														"x-auditable": true
+													},
+													"head_sampling_rate": {
+														"description": "The sampling rate for traces. From 0 to 1 (1 = 100%, 0.1 = 10%). Default is 1.",
+														"example": 0.1,
+														"nullable": true,
+														"type": "number",
+														"x-auditable": true
+													},
+													"persist": {
+														"default": true,
+														"description": "Whether trace persistence is enabled for the Worker.",
+														"example": true,
+														"type": "boolean",
+														"x-auditable": true
+													}
+												},
+												"type": "object"
 											}
 										},
 										"required": [
@@ -7905,6 +8057,44 @@
 																		"enabled",
 																		"invocation_logs"
 																	],
+																	"type": "object"
+																},
+																"traces": {
+																	"description": "Trace settings for the Worker.",
+																	"nullable": true,
+																	"properties": {
+																		"destinations": {
+																			"description": "A list of destinations where traces will be exported to.",
+																			"example": [
+																				"cloudflare"
+																			],
+																			"items": {
+																				"type": "string"
+																			},
+																			"type": "array",
+																			"x-auditable": true
+																		},
+																		"enabled": {
+																			"description": "Whether traces are enabled for the Worker.",
+																			"example": true,
+																			"type": "boolean",
+																			"x-auditable": true
+																		},
+																		"head_sampling_rate": {
+																			"description": "The sampling rate for traces. From 0 to 1 (1 = 100%, 0.1 = 10%). Default is 1.",
+																			"example": 0.1,
+																			"nullable": true,
+																			"type": "number",
+																			"x-auditable": true
+																		},
+																		"persist": {
+																			"default": true,
+																			"description": "Whether trace persistence is enabled for the Worker.",
+																			"example": true,
+																			"type": "boolean",
+																			"x-auditable": true
+																		}
+																	},
 																	"type": "object"
 																}
 															},
@@ -10869,6 +11059,44 @@
 													"enabled",
 													"invocation_logs"
 												],
+												"type": "object"
+											},
+											"traces": {
+												"description": "Trace settings for the Worker.",
+												"nullable": true,
+												"properties": {
+													"destinations": {
+														"description": "A list of destinations where traces will be exported to.",
+														"example": [
+															"cloudflare"
+														],
+														"items": {
+															"type": "string"
+														},
+														"type": "array",
+														"x-auditable": true
+													},
+													"enabled": {
+														"description": "Whether traces are enabled for the Worker.",
+														"example": true,
+														"type": "boolean",
+														"x-auditable": true
+													},
+													"head_sampling_rate": {
+														"description": "The sampling rate for traces. From 0 to 1 (1 = 100%, 0.1 = 10%). Default is 1.",
+														"example": 0.1,
+														"nullable": true,
+														"type": "number",
+														"x-auditable": true
+													},
+													"persist": {
+														"default": true,
+														"description": "Whether trace persistence is enabled for the Worker.",
+														"example": true,
+														"type": "boolean",
+														"x-auditable": true
+													}
+												},
 												"type": "object"
 											}
 										},
@@ -14008,6 +14236,44 @@
 																"enabled",
 																"invocation_logs"
 															],
+															"type": "object"
+														},
+														"traces": {
+															"description": "Trace settings for the Worker.",
+															"nullable": true,
+															"properties": {
+																"destinations": {
+																	"description": "A list of destinations where traces will be exported to.",
+																	"example": [
+																		"cloudflare"
+																	],
+																	"items": {
+																		"type": "string"
+																	},
+																	"type": "array",
+																	"x-auditable": true
+																},
+																"enabled": {
+																	"description": "Whether traces are enabled for the Worker.",
+																	"example": true,
+																	"type": "boolean",
+																	"x-auditable": true
+																},
+																"head_sampling_rate": {
+																	"description": "The sampling rate for traces. From 0 to 1 (1 = 100%, 0.1 = 10%). Default is 1.",
+																	"example": 0.1,
+																	"nullable": true,
+																	"type": "number",
+																	"x-auditable": true
+																},
+																"persist": {
+																	"default": true,
+																	"description": "Whether trace persistence is enabled for the Worker.",
+																	"example": true,
+																	"type": "boolean",
+																	"x-auditable": true
+																}
+															},
 															"type": "object"
 														}
 													},
@@ -17298,6 +17564,44 @@
 															"invocation_logs"
 														],
 														"type": "object"
+													},
+													"traces": {
+														"description": "Trace settings for the Worker.",
+														"nullable": true,
+														"properties": {
+															"destinations": {
+																"description": "A list of destinations where traces will be exported to.",
+																"example": [
+																	"cloudflare"
+																],
+																"items": {
+																	"type": "string"
+																},
+																"type": "array",
+																"x-auditable": true
+															},
+															"enabled": {
+																"description": "Whether traces are enabled for the Worker.",
+																"example": true,
+																"type": "boolean",
+																"x-auditable": true
+															},
+															"head_sampling_rate": {
+																"description": "The sampling rate for traces. From 0 to 1 (1 = 100%, 0.1 = 10%). Default is 1.",
+																"example": 0.1,
+																"nullable": true,
+																"type": "number",
+																"x-auditable": true
+															},
+															"persist": {
+																"default": true,
+																"description": "Whether trace persistence is enabled for the Worker.",
+																"example": true,
+																"type": "boolean",
+																"x-auditable": true
+															}
+														},
+														"type": "object"
 													}
 												},
 												"required": [
@@ -17912,6 +18216,44 @@
 																				"enabled",
 																				"invocation_logs"
 																			],
+																			"type": "object"
+																		},
+																		"traces": {
+																			"description": "Trace settings for the Worker.",
+																			"nullable": true,
+																			"properties": {
+																				"destinations": {
+																					"description": "A list of destinations where traces will be exported to.",
+																					"example": [
+																						"cloudflare"
+																					],
+																					"items": {
+																						"type": "string"
+																					},
+																					"type": "array",
+																					"x-auditable": true
+																				},
+																				"enabled": {
+																					"description": "Whether traces are enabled for the Worker.",
+																					"example": true,
+																					"type": "boolean",
+																					"x-auditable": true
+																				},
+																				"head_sampling_rate": {
+																					"description": "The sampling rate for traces. From 0 to 1 (1 = 100%, 0.1 = 10%). Default is 1.",
+																					"example": 0.1,
+																					"nullable": true,
+																					"type": "number",
+																					"x-auditable": true
+																				},
+																				"persist": {
+																					"default": true,
+																					"description": "Whether trace persistence is enabled for the Worker.",
+																					"example": true,
+																					"type": "boolean",
+																					"x-auditable": true
+																				}
+																			},
 																			"type": "object"
 																		}
 																	},
@@ -18836,6 +19178,44 @@
 																"enabled",
 																"invocation_logs"
 															],
+															"type": "object"
+														},
+														"traces": {
+															"description": "Trace settings for the Worker.",
+															"nullable": true,
+															"properties": {
+																"destinations": {
+																	"description": "A list of destinations where traces will be exported to.",
+																	"example": [
+																		"cloudflare"
+																	],
+																	"items": {
+																		"type": "string"
+																	},
+																	"type": "array",
+																	"x-auditable": true
+																},
+																"enabled": {
+																	"description": "Whether traces are enabled for the Worker.",
+																	"example": true,
+																	"type": "boolean",
+																	"x-auditable": true
+																},
+																"head_sampling_rate": {
+																	"description": "The sampling rate for traces. From 0 to 1 (1 = 100%, 0.1 = 10%). Default is 1.",
+																	"example": 0.1,
+																	"nullable": true,
+																	"type": "number",
+																	"x-auditable": true
+																},
+																"persist": {
+																	"default": true,
+																	"description": "Whether trace persistence is enabled for the Worker.",
+																	"example": true,
+																	"type": "boolean",
+																	"x-auditable": true
+																}
+															},
 															"type": "object"
 														}
 													},

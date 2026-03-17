@@ -1,5 +1,6 @@
 {
 	"DELETE /accounts/{account_id}/access/ai-controls/mcp/servers/{id}": {
+		"description": "Deletes an MCP portal from the account.",
 		"operationId": "mcp-portals-api-delete-servers",
 		"parameters": [
 			{
@@ -62,7 +63,7 @@
 											"type": "string"
 										},
 										"hostname": {
-											"example": "https://exmaple.com/mcp",
+											"example": "https://example.com/mcp",
 											"format": "uri",
 											"type": "string"
 										},
@@ -213,6 +214,7 @@
 		}
 	},
 	"GET /accounts/{account_id}/access/ai-controls/mcp/servers": {
+		"description": "Lists all MCP portals configured for the account.",
 		"operationId": "mcp-portals-api-list-servers",
 		"parameters": [
 			{
@@ -290,7 +292,7 @@
 												"type": "string"
 											},
 											"hostname": {
-												"example": "https://exmaple.com/mcp",
+												"example": "https://example.com/mcp",
 												"format": "uri",
 												"type": "string"
 											},
@@ -439,6 +441,7 @@
 		}
 	},
 	"GET /accounts/{account_id}/access/ai-controls/mcp/servers/{id}": {
+		"description": "Retrieves gateway configuration for MCP portals.",
 		"operationId": "mcp-portals-api-fetch-servers",
 		"parameters": [
 			{
@@ -501,7 +504,7 @@
 											"type": "string"
 										},
 										"hostname": {
-											"example": "https://exmaple.com/mcp",
+											"example": "https://example.com/mcp",
 											"format": "uri",
 											"type": "string"
 										},
@@ -652,6 +655,7 @@
 		}
 	},
 	"POST /accounts/{account_id}/access/ai-controls/mcp/servers": {
+		"description": "Creates a new MCP portal for managing AI tool access through Cloudflare Access.",
 		"operationId": "mcp-portals-api-create-servers",
 		"parameters": [
 			{
@@ -688,7 +692,7 @@
 								"type": "string"
 							},
 							"hostname": {
-								"example": "https://exmaple.com/mcp",
+								"example": "https://example.com/mcp",
 								"format": "uri",
 								"type": "string"
 							},
@@ -754,7 +758,7 @@
 											"type": "string"
 										},
 										"hostname": {
-											"example": "https://exmaple.com/mcp",
+											"example": "https://example.com/mcp",
 											"format": "uri",
 											"type": "string"
 										},
@@ -913,6 +917,7 @@
 		}
 	},
 	"POST /accounts/{account_id}/access/ai-controls/mcp/servers/{id}/sync": {
+		"description": "Syncs an MCP server's tool catalog with the portal.",
 		"operationId": "mcp-portals-api-sync-server",
 		"parameters": [
 			{
@@ -1030,6 +1035,7 @@
 		}
 	},
 	"PUT /accounts/{account_id}/access/ai-controls/mcp/servers/{id}": {
+		"description": "Updates an MCP portal configuration.",
 		"operationId": "mcp-portals-api-update-servers",
 		"parameters": [
 			{
@@ -1117,7 +1123,7 @@
 											"type": "string"
 										},
 										"hostname": {
-											"example": "https://exmaple.com/mcp",
+											"example": "https://example.com/mcp",
 											"format": "uri",
 											"type": "string"
 										},

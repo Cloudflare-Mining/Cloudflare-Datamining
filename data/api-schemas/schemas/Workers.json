@@ -1715,6 +1715,15 @@
 															"logs": {
 																"description": "Log settings for the Worker.",
 																"properties": {
+																	"destinations": {
+																		"default": [],
+																		"description": "A list of destinations where logs will be exported to.",
+																		"items": {
+																			"type": "string"
+																		},
+																		"type": "array",
+																		"x-auditable": true
+																	},
 																	"enabled": {
 																		"default": false,
 																		"description": "Whether logs are enabled for the Worker.",
@@ -1731,6 +1740,46 @@
 																	"invocation_logs": {
 																		"default": true,
 																		"description": "Whether [invocation logs](https://developers.cloudflare.com/workers/observability/logs/workers-logs/#invocation-logs) are enabled for the Worker.",
+																		"type": "boolean",
+																		"x-auditable": true
+																	},
+																	"persist": {
+																		"default": true,
+																		"description": "Whether log persistence is enabled for the Worker.",
+																		"type": "boolean",
+																		"x-auditable": true
+																	}
+																},
+																"type": "object"
+															},
+															"traces": {
+																"description": "Trace settings for the Worker.",
+																"properties": {
+																	"destinations": {
+																		"default": [],
+																		"description": "A list of destinations where traces will be exported to.",
+																		"items": {
+																			"type": "string"
+																		},
+																		"type": "array",
+																		"x-auditable": true
+																	},
+																	"enabled": {
+																		"default": false,
+																		"description": "Whether traces are enabled for the Worker.",
+																		"type": "boolean",
+																		"x-auditable": true
+																	},
+																	"head_sampling_rate": {
+																		"default": 1,
+																		"description": "The sampling rate for traces. From 0 to 1 (1 = 100%, 0.1 = 10%).",
+																		"example": 1,
+																		"type": "number",
+																		"x-auditable": true
+																	},
+																	"persist": {
+																		"default": true,
+																		"description": "Whether trace persistence is enabled for the Worker.",
 																		"type": "boolean",
 																		"x-auditable": true
 																	}
@@ -2493,6 +2542,15 @@
 														"logs": {
 															"description": "Log settings for the Worker.",
 															"properties": {
+																"destinations": {
+																	"default": [],
+																	"description": "A list of destinations where logs will be exported to.",
+																	"items": {
+																		"type": "string"
+																	},
+																	"type": "array",
+																	"x-auditable": true
+																},
 																"enabled": {
 																	"default": false,
 																	"description": "Whether logs are enabled for the Worker.",
@@ -2509,6 +2567,46 @@
 																"invocation_logs": {
 																	"default": true,
 																	"description": "Whether [invocation logs](https://developers.cloudflare.com/workers/observability/logs/workers-logs/#invocation-logs) are enabled for the Worker.",
+																	"type": "boolean",
+																	"x-auditable": true
+																},
+																"persist": {
+																	"default": true,
+																	"description": "Whether log persistence is enabled for the Worker.",
+																	"type": "boolean",
+																	"x-auditable": true
+																}
+															},
+															"type": "object"
+														},
+														"traces": {
+															"description": "Trace settings for the Worker.",
+															"properties": {
+																"destinations": {
+																	"default": [],
+																	"description": "A list of destinations where traces will be exported to.",
+																	"items": {
+																		"type": "string"
+																	},
+																	"type": "array",
+																	"x-auditable": true
+																},
+																"enabled": {
+																	"default": false,
+																	"description": "Whether traces are enabled for the Worker.",
+																	"type": "boolean",
+																	"x-auditable": true
+																},
+																"head_sampling_rate": {
+																	"default": 1,
+																	"description": "The sampling rate for traces. From 0 to 1 (1 = 100%, 0.1 = 10%).",
+																	"example": 1,
+																	"type": "number",
+																	"x-auditable": true
+																},
+																"persist": {
+																	"default": true,
+																	"description": "Whether trace persistence is enabled for the Worker.",
 																	"type": "boolean",
 																	"x-auditable": true
 																}
@@ -3343,6 +3441,15 @@
 											"logs": {
 												"description": "Log settings for the Worker.",
 												"properties": {
+													"destinations": {
+														"default": [],
+														"description": "A list of destinations where logs will be exported to.",
+														"items": {
+															"type": "string"
+														},
+														"type": "array",
+														"x-auditable": true
+													},
 													"enabled": {
 														"default": false,
 														"description": "Whether logs are enabled for the Worker.",
@@ -3359,6 +3466,46 @@
 													"invocation_logs": {
 														"default": true,
 														"description": "Whether [invocation logs](https://developers.cloudflare.com/workers/observability/logs/workers-logs/#invocation-logs) are enabled for the Worker.",
+														"type": "boolean",
+														"x-auditable": true
+													},
+													"persist": {
+														"default": true,
+														"description": "Whether log persistence is enabled for the Worker.",
+														"type": "boolean",
+														"x-auditable": true
+													}
+												},
+												"type": "object"
+											},
+											"traces": {
+												"description": "Trace settings for the Worker.",
+												"properties": {
+													"destinations": {
+														"default": [],
+														"description": "A list of destinations where traces will be exported to.",
+														"items": {
+															"type": "string"
+														},
+														"type": "array",
+														"x-auditable": true
+													},
+													"enabled": {
+														"default": false,
+														"description": "Whether traces are enabled for the Worker.",
+														"type": "boolean",
+														"x-auditable": true
+													},
+													"head_sampling_rate": {
+														"default": 1,
+														"description": "The sampling rate for traces. From 0 to 1 (1 = 100%, 0.1 = 10%).",
+														"example": 1,
+														"type": "number",
+														"x-auditable": true
+													},
+													"persist": {
+														"default": true,
+														"description": "Whether trace persistence is enabled for the Worker.",
 														"type": "boolean",
 														"x-auditable": true
 													}
@@ -3684,6 +3831,15 @@
 											"logs": {
 												"description": "Log settings for the Worker.",
 												"properties": {
+													"destinations": {
+														"default": [],
+														"description": "A list of destinations where logs will be exported to.",
+														"items": {
+															"type": "string"
+														},
+														"type": "array",
+														"x-auditable": true
+													},
 													"enabled": {
 														"default": false,
 														"description": "Whether logs are enabled for the Worker.",
@@ -3700,6 +3856,46 @@
 													"invocation_logs": {
 														"default": true,
 														"description": "Whether [invocation logs](https://developers.cloudflare.com/workers/observability/logs/workers-logs/#invocation-logs) are enabled for the Worker.",
+														"type": "boolean",
+														"x-auditable": true
+													},
+													"persist": {
+														"default": true,
+														"description": "Whether log persistence is enabled for the Worker.",
+														"type": "boolean",
+														"x-auditable": true
+													}
+												},
+												"type": "object"
+											},
+											"traces": {
+												"description": "Trace settings for the Worker.",
+												"properties": {
+													"destinations": {
+														"default": [],
+														"description": "A list of destinations where traces will be exported to.",
+														"items": {
+															"type": "string"
+														},
+														"type": "array",
+														"x-auditable": true
+													},
+													"enabled": {
+														"default": false,
+														"description": "Whether traces are enabled for the Worker.",
+														"type": "boolean",
+														"x-auditable": true
+													},
+													"head_sampling_rate": {
+														"default": 1,
+														"description": "The sampling rate for traces. From 0 to 1 (1 = 100%, 0.1 = 10%).",
+														"example": 1,
+														"type": "number",
+														"x-auditable": true
+													},
+													"persist": {
+														"default": true,
+														"description": "Whether trace persistence is enabled for the Worker.",
 														"type": "boolean",
 														"x-auditable": true
 													}
@@ -4116,6 +4312,15 @@
 														"logs": {
 															"description": "Log settings for the Worker.",
 															"properties": {
+																"destinations": {
+																	"default": [],
+																	"description": "A list of destinations where logs will be exported to.",
+																	"items": {
+																		"type": "string"
+																	},
+																	"type": "array",
+																	"x-auditable": true
+																},
 																"enabled": {
 																	"default": false,
 																	"description": "Whether logs are enabled for the Worker.",
@@ -4132,6 +4337,46 @@
 																"invocation_logs": {
 																	"default": true,
 																	"description": "Whether [invocation logs](https://developers.cloudflare.com/workers/observability/logs/workers-logs/#invocation-logs) are enabled for the Worker.",
+																	"type": "boolean",
+																	"x-auditable": true
+																},
+																"persist": {
+																	"default": true,
+																	"description": "Whether log persistence is enabled for the Worker.",
+																	"type": "boolean",
+																	"x-auditable": true
+																}
+															},
+															"type": "object"
+														},
+														"traces": {
+															"description": "Trace settings for the Worker.",
+															"properties": {
+																"destinations": {
+																	"default": [],
+																	"description": "A list of destinations where traces will be exported to.",
+																	"items": {
+																		"type": "string"
+																	},
+																	"type": "array",
+																	"x-auditable": true
+																},
+																"enabled": {
+																	"default": false,
+																	"description": "Whether traces are enabled for the Worker.",
+																	"type": "boolean",
+																	"x-auditable": true
+																},
+																"head_sampling_rate": {
+																	"default": 1,
+																	"description": "The sampling rate for traces. From 0 to 1 (1 = 100%, 0.1 = 10%).",
+																	"example": 1,
+																	"type": "number",
+																	"x-auditable": true
+																},
+																"persist": {
+																	"default": true,
+																	"description": "Whether trace persistence is enabled for the Worker.",
 																	"type": "boolean",
 																	"x-auditable": true
 																}
@@ -5586,6 +5831,15 @@
 											"logs": {
 												"description": "Log settings for the Worker.",
 												"properties": {
+													"destinations": {
+														"default": [],
+														"description": "A list of destinations where logs will be exported to.",
+														"items": {
+															"type": "string"
+														},
+														"type": "array",
+														"x-auditable": true
+													},
 													"enabled": {
 														"default": false,
 														"description": "Whether logs are enabled for the Worker.",
@@ -5602,6 +5856,46 @@
 													"invocation_logs": {
 														"default": true,
 														"description": "Whether [invocation logs](https://developers.cloudflare.com/workers/observability/logs/workers-logs/#invocation-logs) are enabled for the Worker.",
+														"type": "boolean",
+														"x-auditable": true
+													},
+													"persist": {
+														"default": true,
+														"description": "Whether log persistence is enabled for the Worker.",
+														"type": "boolean",
+														"x-auditable": true
+													}
+												},
+												"type": "object"
+											},
+											"traces": {
+												"description": "Trace settings for the Worker.",
+												"properties": {
+													"destinations": {
+														"default": [],
+														"description": "A list of destinations where traces will be exported to.",
+														"items": {
+															"type": "string"
+														},
+														"type": "array",
+														"x-auditable": true
+													},
+													"enabled": {
+														"default": false,
+														"description": "Whether traces are enabled for the Worker.",
+														"type": "boolean",
+														"x-auditable": true
+													},
+													"head_sampling_rate": {
+														"default": 1,
+														"description": "The sampling rate for traces. From 0 to 1 (1 = 100%, 0.1 = 10%).",
+														"example": 1,
+														"type": "number",
+														"x-auditable": true
+													},
+													"persist": {
+														"default": true,
+														"description": "Whether trace persistence is enabled for the Worker.",
 														"type": "boolean",
 														"x-auditable": true
 													}
@@ -6021,6 +6315,15 @@
 														"logs": {
 															"description": "Log settings for the Worker.",
 															"properties": {
+																"destinations": {
+																	"default": [],
+																	"description": "A list of destinations where logs will be exported to.",
+																	"items": {
+																		"type": "string"
+																	},
+																	"type": "array",
+																	"x-auditable": true
+																},
 																"enabled": {
 																	"default": false,
 																	"description": "Whether logs are enabled for the Worker.",
@@ -6037,6 +6340,46 @@
 																"invocation_logs": {
 																	"default": true,
 																	"description": "Whether [invocation logs](https://developers.cloudflare.com/workers/observability/logs/workers-logs/#invocation-logs) are enabled for the Worker.",
+																	"type": "boolean",
+																	"x-auditable": true
+																},
+																"persist": {
+																	"default": true,
+																	"description": "Whether log persistence is enabled for the Worker.",
+																	"type": "boolean",
+																	"x-auditable": true
+																}
+															},
+															"type": "object"
+														},
+														"traces": {
+															"description": "Trace settings for the Worker.",
+															"properties": {
+																"destinations": {
+																	"default": [],
+																	"description": "A list of destinations where traces will be exported to.",
+																	"items": {
+																		"type": "string"
+																	},
+																	"type": "array",
+																	"x-auditable": true
+																},
+																"enabled": {
+																	"default": false,
+																	"description": "Whether traces are enabled for the Worker.",
+																	"type": "boolean",
+																	"x-auditable": true
+																},
+																"head_sampling_rate": {
+																	"default": 1,
+																	"description": "The sampling rate for traces. From 0 to 1 (1 = 100%, 0.1 = 10%).",
+																	"example": 1,
+																	"type": "number",
+																	"x-auditable": true
+																},
+																"persist": {
+																	"default": true,
+																	"description": "Whether trace persistence is enabled for the Worker.",
 																	"type": "boolean",
 																	"x-auditable": true
 																}
@@ -7334,6 +7677,15 @@
 											"logs": {
 												"description": "Log settings for the Worker.",
 												"properties": {
+													"destinations": {
+														"default": [],
+														"description": "A list of destinations where logs will be exported to.",
+														"items": {
+															"type": "string"
+														},
+														"type": "array",
+														"x-auditable": true
+													},
 													"enabled": {
 														"default": false,
 														"description": "Whether logs are enabled for the Worker.",
@@ -7350,6 +7702,46 @@
 													"invocation_logs": {
 														"default": true,
 														"description": "Whether [invocation logs](https://developers.cloudflare.com/workers/observability/logs/workers-logs/#invocation-logs) are enabled for the Worker.",
+														"type": "boolean",
+														"x-auditable": true
+													},
+													"persist": {
+														"default": true,
+														"description": "Whether log persistence is enabled for the Worker.",
+														"type": "boolean",
+														"x-auditable": true
+													}
+												},
+												"type": "object"
+											},
+											"traces": {
+												"description": "Trace settings for the Worker.",
+												"properties": {
+													"destinations": {
+														"default": [],
+														"description": "A list of destinations where traces will be exported to.",
+														"items": {
+															"type": "string"
+														},
+														"type": "array",
+														"x-auditable": true
+													},
+													"enabled": {
+														"default": false,
+														"description": "Whether traces are enabled for the Worker.",
+														"type": "boolean",
+														"x-auditable": true
+													},
+													"head_sampling_rate": {
+														"default": 1,
+														"description": "The sampling rate for traces. From 0 to 1 (1 = 100%, 0.1 = 10%).",
+														"example": 1,
+														"type": "number",
+														"x-auditable": true
+													},
+													"persist": {
+														"default": true,
+														"description": "Whether trace persistence is enabled for the Worker.",
 														"type": "boolean",
 														"x-auditable": true
 													}
@@ -7769,6 +8161,15 @@
 														"logs": {
 															"description": "Log settings for the Worker.",
 															"properties": {
+																"destinations": {
+																	"default": [],
+																	"description": "A list of destinations where logs will be exported to.",
+																	"items": {
+																		"type": "string"
+																	},
+																	"type": "array",
+																	"x-auditable": true
+																},
 																"enabled": {
 																	"default": false,
 																	"description": "Whether logs are enabled for the Worker.",
@@ -7785,6 +8186,46 @@
 																"invocation_logs": {
 																	"default": true,
 																	"description": "Whether [invocation logs](https://developers.cloudflare.com/workers/observability/logs/workers-logs/#invocation-logs) are enabled for the Worker.",
+																	"type": "boolean",
+																	"x-auditable": true
+																},
+																"persist": {
+																	"default": true,
+																	"description": "Whether log persistence is enabled for the Worker.",
+																	"type": "boolean",
+																	"x-auditable": true
+																}
+															},
+															"type": "object"
+														},
+														"traces": {
+															"description": "Trace settings for the Worker.",
+															"properties": {
+																"destinations": {
+																	"default": [],
+																	"description": "A list of destinations where traces will be exported to.",
+																	"items": {
+																		"type": "string"
+																	},
+																	"type": "array",
+																	"x-auditable": true
+																},
+																"enabled": {
+																	"default": false,
+																	"description": "Whether traces are enabled for the Worker.",
+																	"type": "boolean",
+																	"x-auditable": true
+																},
+																"head_sampling_rate": {
+																	"default": 1,
+																	"description": "The sampling rate for traces. From 0 to 1 (1 = 100%, 0.1 = 10%).",
+																	"example": 1,
+																	"type": "number",
+																	"x-auditable": true
+																},
+																"persist": {
+																	"default": true,
+																	"description": "Whether trace persistence is enabled for the Worker.",
 																	"type": "boolean",
 																	"x-auditable": true
 																}

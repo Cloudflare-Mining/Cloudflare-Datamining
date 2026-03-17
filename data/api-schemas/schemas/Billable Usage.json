@@ -1,6 +1,6 @@
 {
 	"GET /accounts/{account_id}/billing/usage/paygo": {
-		"description": "Returns billable usage data for PayGo (self-serve) accounts.\nWhen no query parameters are provided, returns usage for the current\nbilling period. \n\nSupports two mutually exclusive query modes:\n\n**Billing period mode:** Use `last_year_period_start` and\n`last_month_period_start` to query a specific billing period.\n\n**Date range mode:** Use `from` and `to` to query a custom date range\n(maximum 62 days).\n\nThis endpoint is currently in beta and access is restricted to select\naccounts.\n",
+		"description": "Returns billable usage data for PayGo (self-serve) accounts.\nWhen no query parameters are provided, returns usage for the current\nbilling period.\nThis endpoint is currently in beta and access is restricted to select\naccounts.\n",
 		"operationId": "billable-usage-get-paygo-account-usage",
 		"parameters": [
 			{
@@ -34,26 +34,6 @@
 					"example": "2025-03-01",
 					"format": "date",
 					"type": "string"
-				}
-			},
-			{
-				"description": "Specifies the year of the billing period to query (e.g., 2025). Must be provided together with last_month_period_start. Mutually exclusive with from/to.",
-				"in": "query",
-				"name": "last_year_period_start",
-				"schema": {
-					"example": 2025,
-					"type": "integer"
-				}
-			},
-			{
-				"description": "Specifies the month of the billing period to query (1-12). Must be provided together with last_year_period_start. Mutually exclusive with from/to.",
-				"in": "query",
-				"name": "last_month_period_start",
-				"schema": {
-					"example": 6,
-					"maximum": 12,
-					"minimum": 1,
-					"type": "integer"
 				}
 			}
 		],
