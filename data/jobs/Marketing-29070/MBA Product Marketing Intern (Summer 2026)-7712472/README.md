@@ -5,23 +5,43 @@
 		<p>At Cloudflare, we’re not looking for people who wait for a polished roadmap; we’re looking for the builders who see the cracks in the Internet that everyone else has simply learned to live with. We value candidates who have the instinct to spot a "normalized" problem and the AI-native curiosity to create a solution using the latest tools. Our culture is built on iteration, leveraging AI to ship faster today to make it better tomorrow, while ensuring that every improvement, no matter how small, is shared across the team to lift everyone up. If you’re the type of person who values curiosity over bureaucracy, and that AI is a partner in solving tough problems to keep the Internet moving forward, you’ll fit right in.</p>
 	</div>
 </div>
-<h3><strong>Locations: Austin, TX | Seattle, WA | Lisbon, PT | London, UK</strong></h3>
-<h3><strong>About the Department</strong></h3>
-<p>Emerging Technologies &amp; Incubation (ETI) is where new and bold products are built and released within Cloudflare. Rather than being constrained by the structures which make Cloudflare a massively successful business, we are able to leverage them to deliver entirely new tools and products to our customers. Cloudflare’s edge and network make it possible to solve problems at massive scale and efficiency which would be impossible for almost any other organization.</p>
-<h3><strong>About the Team</strong></h3>
-<p>R2 is Cloudflare’s object storage platform, designed to offer developers a durable and reliable storage solution that integrates seamlessly with Cloudflare’s Developer Platform, including Workers and other compute products. The R2 team builds foundational infrastructure that operates at massive scale and powers critical workloads across Cloudflare’s global network–designing and maintaining distributed systems that handle high throughput, provide strong consistency and durability guarantees, and support a growing number of developer-facing features.</p>
-<p>You’ll be joining a highly motivated team that is building the next generation of object storage.</p>
-<h3><strong>What You’ll Do</strong></h3>
-<p>In this role, you will help us build out the next generation of our globally distributed object storage system. You will own your code from inception to release, delivering solutions at all layers of the software stack to empower Cloudflare customers. On any given day, you might write a design document that outlines how you plan to solve a specific problem, implement a new feature, or fix a bug that's impacting our users. You can expect to interact with a variety of languages and technologies including Rust, Go, and TypeScript.</p>
-<h3><strong>Examples of desirable skills, knowledge, and experience</strong></h3>
+<p><strong>Available Locations: New York, NY; Austin, TX</strong></p>
+<p><strong>About Product Marketing, Cloudflare One / SASE</strong></p>
+<p>Cloudflare One is the agile secure access service edge (SASE) platform, helping organizations simplify security and modernize connectivity across their people, apps, networks, and AI agents. The Cloudflare One Product Marketing team exists to own messaging and instigate change across product, marketing, and revenue teams to drive go-to-market alignment and new product releases. The PMM does this by:</p>
 <ul>
-	<li>Strong programming skills with languages like Typescript, Rust, or Go</li>
-	<li>A solid understanding of distributed systems concepts such as consistency, consensus, data replication, and partition tolerance</li>
-	<li>Experience with distributed storage systems</li>
-	<li>Strong written and verbal communication skills and ability to explain technical decisions clearly</li>
-	<li>Experience building and maintaining high-throughput, low-latency systems</li>
-	<li>Comfortable operating in fast-paced environments with tight deadlines and evolving priorities</li>
+	<li><strong>Positioning</strong>: Defining a cohesive "source of truth" that defines the SASE category for Cloudflare One to target audiences</li>
+	<li><strong>Validating</strong>: Ensure technical roadmaps can translate into launches that solve immediate pain points and drive early adoption</li>
+	<li><strong>Influencing</strong>: Shape industry analyst perception to validate our product vision and cement Cloudflare as a visionary/leader</li>
+	<li><strong>Empowering</strong>: Build the stories, tools, and confidence needed for sellers and partners to win SASE opportunities</li>
+	<li><strong>Optimizing</strong>: Gather field insights and competitor data to inform product strategy and refine marketing tactics in real-time</li>
 </ul>
+<p>These focus areas help accelerate Cloudflare’s brand authority and category leadership for SASE, while driving higher quality pipeline and revenue attainment.</p>
+<p><strong>About the Role:</strong><br><br></p>
+<p>As a Product Marketing MBA intern, you will contribute to high-value projects supporting the Cloudflare One go-to-market. These projects will challenge your growth in key product marketing capabilities, including research for customer insights, strategic positioning, content development, and enablement. While exact projects will depend on internal priorities at the time of the internship, potential areas of focus include:</p>
+<ul>
+	<li><strong>AI-enabled marketing:</strong> Experiment with AI to help support content creation, market and competitive research, sales enablement, and more.</li>
+	<li><strong>Channel enablement:</strong> Refine Cloudflare One’s joint value proposition with channel partners. Build content for channel partner campaigns and enablement. Recommend and evangelize best practices to strengthen collaboration between PMM and channel-facing roles.</li>
+	<li><strong>Cross-sell acceleration: </strong>Help accelerate expansion of SASE into Cloudflare’s existing customer base by analyzing the buyer journey, identifying gaps in current marketing approach, and delivering high-impact assets based on your recommendations.</li>
+	<li><strong>Quantifying customer impacts:</strong> Uncover and build a process to consistently identify quantifiable benefits in customer deployments in collaboration with our customer advocacy team.</li>
+	<li><strong>Product-led growth:</strong> Identify cross-sell and upsell paths from Cloudflare’s freemium (pay-as-you-go) plans to larger enterprise deployments.</li>
+	<li><strong>Vertical-specific messaging and content</strong>: Adapt messaging for specific high-growth verticals and partner with cross-functional teams to activate campaigns.</li>
+</ul>
+<p>You can check out our <a href="https://blog.cloudflare.com/tag/internship-experience/">internship blogs</a> to learn more about our program and hear directly from our past interns.</p>
+<h4><strong>Desirable Skills, Knowledge, and Experience:</strong></h4>
+<ul>
+	<li>Currently enrolled in an MBA program or graduate degree program in a relevant field.</li>
+	<li>Prior functional experiences in strategic marketing or go-to-market strategy roles.</li>
+	<li>Prior industry experiences in B2B SaaS organizations, preferably in cybersecurity, IT, and networking or knowledge of how those teams operate.</li>
+	<li>Demonstrated ability leveraging AI to enhance personal or organizational productivity.</li>
+	<li>Ability to quickly learn technical products and articulate complex ideas clearly.</li>
+	<li>An execution mindset—moving between strategy and getting your hands dirty.</li>
+	<li>A self-starter with a high degree of intellectual curiosity and a proactive approach to problem-solving.</li>
+	<li>Strong communication skills not only to connect with customers and partners, but also to drive internal cross-functional alignment.</li>
+	<li>Ability to commit to a 12-week summer internship.</li>
+	<li>In office 3-5 days a week in either New York, NY or Austin, TX.</li>
+</ul>
+<p><strong>Compensation</strong></p>
+<p>Compensation for this role is <strong data-path-to-node="6,0,0" data-index-in-node="39">$50–$55/hr</strong>, depending on level of experience.</p>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
 	<p><span style="font-weight: 400;">We’re not just a highly ambitious, large-scale technology company. We’re a highly ambitious, large-scale technology company with a soul. Fundamental to our mission to help build a better Internet is protecting the free and open Internet.</span></p>

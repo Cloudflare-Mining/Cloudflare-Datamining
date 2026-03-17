@@ -5,36 +5,31 @@
 		<p>At Cloudflare, we’re not looking for people who wait for a polished roadmap; we’re looking for the builders who see the cracks in the Internet that everyone else has simply learned to live with. We value candidates who have the instinct to spot a "normalized" problem and the AI-native curiosity to create a solution using the latest tools. Our culture is built on iteration, leveraging AI to ship faster today to make it better tomorrow, while ensuring that every improvement, no matter how small, is shared across the team to lift everyone up. If you’re the type of person who values curiosity over bureaucracy, and that AI is a partner in solving tough problems to keep the Internet moving forward, you’ll fit right in.</p>
 	</div>
 </div>
-<p><strong>Available Locations:</strong> Hybrid - Austin&nbsp;</p>
-<h4><strong>About the Department</strong></h4>
-<p>Cloudflare’s Engineering Team builds and runs the software that handles large volumes of HTTP requests on the Internet today. We also build and run the internal tools that power our software. Within this organization, the <strong>Identity and Access Management (IAM)</strong> team is the foundation of our Control Plane. We are responsible for the security, scalability, and reliability of how every customer and internal service interacts with the Cloudflare ecosystem.</p>
-<h4><strong>What You'll Do</strong></h4>
-<p>As a Principal Engineer, you will be the technical north star for our IAM and Control Plane strategy. Your role transcends individual features; you will be responsible for the long-term health and architectural evolution of our identity systems.</p>
+<p><strong>Available Locations: Lisbon or London (Hybrid)</strong></p>
+<h3>About the Role</h3>
+<p>The internet is moving beyond simple “Bot Management” and legacy Fraud Detection methods. Application owners need to verify Visitor Integrity (are you who you present as?) and Visitor Trust (assessment of intent). Cloudflare is responsible for providing this intelligence to Customers, while operating in a world where authentic users now utilize AI automations in their genuine workflows, and when adversaries are more advanced than they have ever been.</p>
+<p>We are looking for a Sr. Product Manager to own the vision, strategy, and execution of our Adaptive Intelligence Decision Platform, supporting Cloudflare’s best-in-class Application Security products. You will guide a newly formed team to build a closed-loop system where every interaction automatically refines our global threat models.</p>
+<h3>You will:</h3>
 <ul>
-	<li><strong>Architectural Leadership:</strong> Lead the design and evolution of high-throughput, low-latency IAM systems that power both customer-facing and internal service APIs.</li>
-	<li><strong>Technical Strategy:</strong> Define the roadmap for migrating or scaling our legacy authentication and authorization systems into modern, distributed architectures.</li>
-	<li><strong>Cross-Functional Influence:</strong> Work closely with Product, Security, and UX teams to translate complex business requirements into robust, secure technical specifications.</li>
-	<li><strong>Mentorship &amp; Excellence:</strong> Set the standard for engineering excellence through deep code reviews, technical design documents, and mentoring senior engineers.</li>
-	<li><strong>Operational Stewardship:</strong> Oversee the reliability of a platform under constant load, ensuring observability and resilience are baked into the core of the system.</li>
+	<li>Help build out the strategy, architecture, and User Interface of one of the most ambitious programs in security.</li>
+	<li>Work directly with some of the largest Enterprises in the world to build best-in-class solutions that solve real problems.</li>
+	<li>Help define and guide internal and external thought leadership around the way we think about Ground Truth in an adversarial environment.</li>
+	<li>Work directly with Cloudflare’s Data Science team to invent the future of application security, and fraud &amp; abuse detection.</li>
 </ul>
-<h4><strong>Required Experience (Must-Have Skills)</strong></h4>
+<h3>Key Qualifications</h3>
 <ul>
-	<li><strong>Extensive Experience:</strong> 10+ years of professional experience building and managing software applications at a massive scale (with at least 5 years at a Senior or Staff level).</li>
-	<li><strong>Identity Domain Expertise:</strong> Deep understanding of IAM protocols (OAuth2, OIDC, SAML), RBAC/ABAC models, and the security implications of session management at the edge.</li>
-	<li><strong>Distributed Systems Mastery:</strong> Proven track record in designing, architecting, and debugging large-scale distributed systems that handle global traffic.</li>
-	<li><strong>Language Proficiency:</strong> Deep knowledge of <strong>Go</strong> (our primary backend language), though expertise in TypeScript, Rust, C++, or similar is highly valued.</li>
-	<li><strong>Database &amp; Storage:</strong> Expert-level knowledge of relational databases (PostgreSQL) and distributed caching/storage strategies.</li>
-	<li><strong>API Stewardship:</strong> Significant experience designing and versioning public-facing APIs that are used by millions of developers.</li>
+	<li>8+ years of experience as a Product Manager, Technical Program Manager, Data Scientist, Threat Analyst, or equivalent delivering solutions that focus on distilling and deriving insights out of enormous, real time signal sets</li>
+	<li>“Customer focus”. At Cloudflare, we serve the needs of customers large and small, and our product managers need to be comfortable understanding how to design for enterprises without compromising the experience for individuals and small businesses.</li>
+	<li>“Adversarial Mindset” - You are accustomed to assuming the Feedback Loop is under attack. You think like a hacker.</li>
+	<li>“Data Fluency” - You can lead teams, not by writing code, but by defining the Outcomes to achieve, while understanding the technical challenges in achieving those Outcomes.</li>
 </ul>
-<h4><strong>Desirable Skills &amp; Experience</strong></h4>
+<h3>Experience we value</h3>
 <ul>
-	<li><strong>Cloudflare Ecosystem:</strong> Experience building on <strong>Cloudflare Workers</strong> or similar serverless/edge computing environments.</li>
-	<li><strong>Observability Advocate:</strong> A passion for building "observable" systems using Prometheus, Grafana, and Kibana to proactively identify failures.</li>
-	<li><strong>Infrastructure as Code:</strong> Experience with modern containerized deployment (Docker &amp; Kubernetes), <strong>Terraform</strong>, and infrastructure automation.</li>
-	<li><strong>Security Mindset:</strong> A background in security engineering or formal verification of protocol implementations.</li>
-	<li><strong>Strategic Delivery:</strong> A history of leading multi-quarter projects from conception to global rollout in partnership with product owners.</li>
+	<li>Background in AdTech (Real-Time Bidding, Bid Optimization, Attribution, IVT detection)</li>
+	<li>FinTech (Fraud or Risk Engines)</li>
+	<li>Trust &amp; Safety (Abuse Detection, Account Integrity)</li>
+	<li>Active Analytics (Behavioral Modeling, Anomaly Detection, Network Graphing, Sequence Analysis)</li>
 </ul>
-<p>&nbsp;</p>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
 	<p><span style="font-weight: 400;">We’re not just a highly ambitious, large-scale technology company. We’re a highly ambitious, large-scale technology company with a soul. Fundamental to our mission to help build a better Internet is protecting the free and open Internet.</span></p>
