@@ -1,5 +1,6 @@
 {
 	"GET /accounts/{account_id}/ai/authors/search": {
+		"description": "Searches Workers AI models by author or organization name.",
 		"operationId": "workers-ai-search-author",
 		"parameters": [
 			{
@@ -286,6 +287,7 @@
 		}
 	},
 	"GET /accounts/{account_id}/ai/models/search": {
+		"description": "Searches Workers AI models by name or description.",
 		"operationId": "workers-ai-search-model",
 		"parameters": [
 			{
@@ -454,6 +456,7 @@
 		}
 	},
 	"GET /accounts/{account_id}/ai/tasks/search": {
+		"description": "Searches Workers AI models by task type (e.g., text-generation, embeddings).",
 		"operationId": "workers-ai-search-task",
 		"parameters": [
 			{

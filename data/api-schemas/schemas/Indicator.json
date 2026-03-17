@@ -106,7 +106,8 @@
 		]
 	},
 	"GET /accounts/{account_id}/cloudforce-one/events/dataset/{dataset_id}/indicators": {
-		"description": "Retrieves a paginated list of indicators for the account.",
+		"deprecated": true,
+		"description": "This method is deprecated. Please use /events/indicators to retrieve a paginated list of indicators.",
 		"operationId": "get_IndicatorListLegacy",
 		"parameters": [
 			{

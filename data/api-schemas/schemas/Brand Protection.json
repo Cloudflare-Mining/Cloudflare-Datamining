@@ -1,0 +1,866 @@
+{
+	"DELETE /accounts/{account_id}/cloudforce-one/v2/brand-protection/logo/queries/{query_id}": {
+		"description": "Delete a saved brand protection logo query. Returns 404 if the query ID doesn't exist.",
+		"operationId": "delete_DeleteLogoQuery",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"minLength": 1,
+					"type": "string"
+				}
+			},
+			{
+				"in": "path",
+				"name": "query_id",
+				"required": true,
+				"schema": {
+					"minLength": 1,
+					"type": "string"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"message": {
+									"type": "string"
+								},
+								"success": {
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"message"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Logo query deleted successfully"
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			}
+		],
+		"summary": "Delete logo query",
+		"tags": [
+			"Brand Protection"
+		],
+		"x-api-token-group": [
+			"Cloudforce One Write"
+		]
+	},
+	"GET /accounts/{account_id}/cloudforce-one/v2/brand-protection/domain/matches": {
+		"description": "Get paginated list of domain matches for a specific brand protection query",
+		"operationId": "get_DomainMatchList",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"minLength": 1,
+					"type": "string"
+				}
+			},
+			{
+				"in": "query",
+				"name": "offset",
+				"schema": {
+					"default": "0",
+					"type": "string"
+				}
+			},
+			{
+				"in": "query",
+				"name": "limit",
+				"schema": {
+					"default": "50",
+					"type": "string"
+				}
+			},
+			{
+				"in": "query",
+				"name": "query_id",
+				"required": true,
+				"schema": {
+					"minLength": 1,
+					"type": "string"
+				}
+			},
+			{
+				"in": "query",
+				"name": "include_domain_id",
+				"schema": {
+					"default": "false",
+					"type": "string"
+				}
+			},
+			{
+				"in": "query",
+				"name": "include_dismissed",
+				"schema": {
+					"type": "string"
+				}
+			},
+			{
+				"in": "query",
+				"name": "orderBy",
+				"schema": {
+					"description": "Column to sort by. Options: 'domain' or 'first_seen'",
+					"enum": [
+						"domain",
+						"first_seen"
+					],
+					"type": "string"
+				}
+			},
+			{
+				"in": "query",
+				"name": "order",
+				"schema": {
+					"description": "Sort order. Options: 'asc' (ascending) or 'desc' (descending)",
+					"enum": [
+						"asc",
+						"desc"
+					],
+					"type": "string"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"matches": {
+									"items": {
+										"properties": {
+											"dismissed": {
+												"type": "boolean"
+											},
+											"domain": {
+												"type": "string"
+											},
+											"first_seen": {
+												"type": "string"
+											},
+											"public_scans": {
+												"nullable": true,
+												"properties": {
+													"submission_id": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"submission_id"
+												],
+												"type": "object"
+											},
+											"scan_status": {
+												"type": "string"
+											},
+											"scan_submission_id": {
+												"nullable": true,
+												"type": "integer"
+											},
+											"source": {
+												"nullable": true,
+												"type": "string"
+											}
+										},
+										"required": [
+											"domain",
+											"first_seen",
+											"public_scans",
+											"scan_status",
+											"scan_submission_id",
+											"source",
+											"dismissed"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"total": {
+									"minimum": 0,
+									"type": "integer"
+								}
+							},
+							"required": [
+								"matches",
+								"total"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Successfully retrieved query matches"
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			}
+		],
+		"summary": "List saved query matches",
+		"tags": [
+			"Brand Protection"
+		],
+		"x-api-token-group": [
+			"Cloudforce One Write",
+			"Cloudforce One Read"
+		]
+	},
+	"GET /accounts/{account_id}/cloudforce-one/v2/brand-protection/domain/queries": {
+		"description": "Get all saved brand protection queries for an account",
+		"operationId": "get_GetDomainQueries",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"minLength": 1,
+					"type": "string"
+				}
+			},
+			{
+				"in": "query",
+				"name": "id",
+				"schema": {
+					"type": "string"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"items": {
+								"properties": {
+									"created": {
+										"type": "string"
+									},
+									"parameters": {
+										"nullable": true,
+										"properties": {
+											"max_time": {
+												"type": "string"
+											},
+											"min_time": {
+												"type": "string"
+											},
+											"string_matches": {
+												"items": {
+													"properties": {
+														"max_edit_distance": {
+															"maximum": 1,
+															"minimum": 0,
+															"type": "number"
+														},
+														"pattern": {
+															"minLength": 1,
+															"type": "string"
+														}
+													},
+													"required": [
+														"pattern",
+														"max_edit_distance"
+													],
+													"type": "object"
+												},
+												"type": "array"
+											}
+										},
+										"required": [
+											"string_matches"
+										],
+										"type": "object"
+									},
+									"query_id": {
+										"type": "integer"
+									},
+									"query_tag": {
+										"type": "string"
+									},
+									"scan": {
+										"type": "boolean"
+									},
+									"updated": {
+										"type": "string"
+									}
+								},
+								"required": [
+									"query_id",
+									"query_tag",
+									"scan",
+									"parameters",
+									"created",
+									"updated"
+								],
+								"type": "object"
+							},
+							"type": "array"
+						}
+					}
+				},
+				"description": "Successfully retrieved queries"
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			}
+		],
+		"summary": "Get queries",
+		"tags": [
+			"Brand Protection"
+		],
+		"x-api-token-group": [
+			"Cloudforce One Write",
+			"Cloudforce One Read"
+		]
+	},
+	"GET /accounts/{account_id}/cloudforce-one/v2/brand-protection/logo/matches": {
+		"description": "Get paginated list of logo matches for a specific brand protection logo query",
+		"operationId": "get_LogoMatchList",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"minLength": 1,
+					"type": "string"
+				}
+			},
+			{
+				"in": "query",
+				"name": "offset",
+				"schema": {
+					"default": "0",
+					"type": "string"
+				}
+			},
+			{
+				"in": "query",
+				"name": "limit",
+				"schema": {
+					"default": "50",
+					"type": "string"
+				}
+			},
+			{
+				"in": "query",
+				"name": "query_id",
+				"required": true,
+				"schema": {
+					"minLength": 1,
+					"type": "string"
+				}
+			},
+			{
+				"in": "query",
+				"name": "download",
+				"schema": {
+					"type": "string"
+				}
+			},
+			{
+				"in": "query",
+				"name": "orderBy",
+				"schema": {
+					"description": "Column to sort by. Options: 'tag' or 'date'",
+					"enum": [
+						"tag",
+						"date"
+					],
+					"type": "string"
+				}
+			},
+			{
+				"in": "query",
+				"name": "order",
+				"schema": {
+					"description": "Sort order. Options: 'asc' (ascending) or 'desc' (descending)",
+					"enum": [
+						"asc",
+						"desc"
+					],
+					"type": "string"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"matches": {
+									"items": {
+										"properties": {
+											"content_type": {
+												"type": "string"
+											},
+											"domain": {
+												"nullable": true,
+												"type": "string"
+											},
+											"id": {
+												"type": "integer"
+											},
+											"image_data": {
+												"type": "string"
+											},
+											"matched_at": {
+												"nullable": true,
+												"type": "string"
+											},
+											"query_id": {
+												"type": "integer"
+											},
+											"similarity_score": {
+												"type": "number"
+											},
+											"url_scan_id": {
+												"nullable": true,
+												"type": "string"
+											}
+										},
+										"required": [
+											"id",
+											"query_id",
+											"url_scan_id",
+											"similarity_score",
+											"matched_at"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"total": {
+									"minimum": 0,
+									"type": "integer"
+								}
+							},
+							"required": [
+								"matches",
+								"total"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Successfully retrieved logo matches"
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			}
+		],
+		"summary": "List logo matches",
+		"tags": [
+			"Brand Protection"
+		],
+		"x-api-token-group": [
+			"Cloudforce One Write",
+			"Cloudforce One Read"
+		]
+	},
+	"GET /accounts/{account_id}/cloudforce-one/v2/brand-protection/logo/queries": {
+		"description": "Get all saved brand protection logo queries for an account. Optionally specify id to get a single query. Set download=true to include base64-encoded image data.",
+		"operationId": "get_GetLogoQueries",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"minLength": 1,
+					"type": "string"
+				}
+			},
+			{
+				"description": "Optional query ID to retrieve a specific logo query",
+				"in": "query",
+				"name": "id",
+				"schema": {
+					"description": "Optional query ID to retrieve a specific logo query",
+					"type": "string"
+				}
+			},
+			{
+				"description": "If true, include base64-encoded image data in the response",
+				"in": "query",
+				"name": "download",
+				"schema": {
+					"description": "If true, include base64-encoded image data in the response",
+					"type": "string"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"items": {
+								"properties": {
+									"content_type": {
+										"description": "MIME type of the image (only present when download=true)",
+										"type": "string"
+									},
+									"id": {
+										"type": "integer"
+									},
+									"image_data": {
+										"description": "Base64-encoded image data (only present when download=true)",
+										"type": "string"
+									},
+									"r2_path": {
+										"type": "string"
+									},
+									"similarity_threshold": {
+										"type": "number"
+									},
+									"tag": {
+										"type": "string"
+									},
+									"uploaded_at": {
+										"nullable": true,
+										"type": "string"
+									}
+								},
+								"required": [
+									"id",
+									"tag",
+									"r2_path",
+									"similarity_threshold",
+									"uploaded_at"
+								],
+								"type": "object"
+							},
+							"type": "array"
+						}
+					}
+				},
+				"description": "Successfully retrieved logo queries"
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			}
+		],
+		"summary": "Get logo queries",
+		"tags": [
+			"Brand Protection"
+		],
+		"x-api-token-group": [
+			"Cloudforce One Write",
+			"Cloudforce One Read"
+		]
+	},
+	"GET /accounts/{account_id}/cloudforce-one/v2/brand-protection/total-queries": {
+		"description": "Get the total number of saved brand protection queries (domain + logo) for an account",
+		"operationId": "get_TotalQueries",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"minLength": 1,
+					"type": "string"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"items": {
+								"properties": {
+									"total_queries": {
+										"minimum": 0,
+										"type": "integer"
+									}
+								},
+								"required": [
+									"total_queries"
+								],
+								"type": "object"
+							},
+							"type": "array"
+						}
+					}
+				},
+				"description": "Successfully retrieved total query count"
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			}
+		],
+		"summary": "Get total queries",
+		"tags": [
+			"Brand Protection"
+		],
+		"x-api-token-group": [
+			"Cloudforce One Write",
+			"Cloudforce One Read"
+		]
+	},
+	"POST /accounts/{account_id}/cloudforce-one/v2/brand-protection/logo/queries": {
+		"description": "Create a new saved brand protection logo query for visual similarity matching",
+		"operationId": "post_InsertLogoQuery",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"minLength": 1,
+					"type": "string"
+				}
+			}
+		],
+		"requestBody": {
+			"content": {
+				"application/json": {
+					"schema": {
+						"properties": {
+							"image_data": {
+								"description": "Base64 encoded image data. Can include data URI prefix (e.g., 'data:image/png;base64,...') or just the base64 string.",
+								"minLength": 1,
+								"type": "string"
+							},
+							"search_lookback": {
+								"default": true,
+								"description": "If true, search historic scanned images for matches above the similarity threshold",
+								"type": "boolean"
+							},
+							"similarity_threshold": {
+								"description": "Minimum similarity score (0-1) required for visual matches",
+								"maximum": 1,
+								"minimum": 0,
+								"type": "number"
+							},
+							"tag": {
+								"description": "Unique identifier for the logo query",
+								"minLength": 1,
+								"type": "string"
+							}
+						},
+						"required": [
+							"tag",
+							"image_data",
+							"similarity_threshold"
+						],
+						"type": "object"
+					}
+				}
+			}
+		},
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"message": {
+									"type": "string"
+								},
+								"query_id": {
+									"type": "integer"
+								},
+								"success": {
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"message"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Logo query inserted successfully"
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			}
+		],
+		"summary": "Insert logo query",
+		"tags": [
+			"Brand Protection"
+		],
+		"x-api-token-group": [
+			"Cloudforce One Write"
+		]
+	},
+	"POST /accounts/{account_id}/cloudforce-one/v2/brand-protection/logo/search": {
+		"description": "Submit an image and find the n closest matches from the scanned images index without creating any match records. Returns similarity scores and metadata for each match.",
+		"operationId": "post_SearchLogoSimilarity",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"minLength": 1,
+					"type": "string"
+				}
+			},
+			{
+				"description": "Include scanned images without domain metadata (historic data). Default: false (only show images with domain)",
+				"in": "query",
+				"name": "showHistoric",
+				"schema": {
+					"default": "false",
+					"description": "Include scanned images without domain metadata (historic data). Default: false (only show images with domain)",
+					"type": "string"
+				}
+			},
+			{
+				"description": "If true, include base64-encoded image data in the response",
+				"in": "query",
+				"name": "download",
+				"schema": {
+					"description": "If true, include base64-encoded image data in the response",
+					"type": "string"
+				}
+			}
+		],
+		"requestBody": {
+			"content": {
+				"application/json": {
+					"schema": {
+						"properties": {
+							"image_data": {
+								"description": "Base64 encoded image data. Can include data URI prefix (e.g., 'data:image/png;base64,...') or just the base64 string.",
+								"minLength": 1,
+								"type": "string"
+							},
+							"score_threshold": {
+								"default": 0,
+								"description": "Minimum similarity score threshold for matches (0-1, default: 0)",
+								"maximum": 1,
+								"minimum": 0,
+								"type": "number"
+							},
+							"top_k": {
+								"default": 10,
+								"description": "Number of closest matches to return (1-100, default: 10)",
+								"maximum": 100,
+								"minimum": 1,
+								"type": "integer"
+							}
+						},
+						"required": [
+							"image_data"
+						],
+						"type": "object"
+					}
+				}
+			}
+		},
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"matches": {
+									"items": {
+										"properties": {
+											"account_id": {
+												"type": "string"
+											},
+											"content_type": {
+												"description": "MIME type of the image (only present when download=true)",
+												"type": "string"
+											},
+											"domain": {
+												"type": "string"
+											},
+											"image_data": {
+												"description": "Base64-encoded image data (only present when download=true)",
+												"type": "string"
+											},
+											"query_id": {
+												"type": "integer"
+											},
+											"r2_path": {
+												"type": "string"
+											},
+											"similarity_score": {
+												"type": "number"
+											},
+											"similarity_threshold": {
+												"type": "number"
+											},
+											"tag": {
+												"type": "string"
+											},
+											"timestamp": {
+												"type": "number"
+											},
+											"url_scan_id": {
+												"type": "string"
+											},
+											"vector_id": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"similarity_score"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								}
+							},
+							"required": [
+								"matches"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Scanned images search completed successfully"
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			}
+		],
+		"summary": "Search scanned images",
+		"tags": [
+			"Brand Protection"
+		],
+		"x-api-token-group": [
+			"Cloudforce One Write"
+		]
+	}
+}

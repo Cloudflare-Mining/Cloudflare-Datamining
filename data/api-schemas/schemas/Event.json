@@ -2697,7 +2697,7 @@
 						}
 					}
 				},
-				"description": "Not Found."
+				"description": "Bad Request."
 			},
 			"500": {
 				"content": {
@@ -2735,7 +2735,7 @@
 						}
 					}
 				},
-				"description": "Internal Server Error."
+				"description": "Bad Request."
 			}
 		},
 		"security": [
@@ -2800,6 +2800,7 @@
 								"type": "string"
 							},
 							"datasetId": {
+								"description": "Dataset ID containing the event to update.",
 								"example": "9b769969-a211-466c-8ac3-cb91266a066a",
 								"type": "string"
 							},
@@ -2855,6 +2856,9 @@
 								"type": "string"
 							}
 						},
+						"required": [
+							"datasetId"
+						],
 						"type": "object"
 					}
 				}
@@ -3626,6 +3630,225 @@
 			"Cloudforce One Write"
 		]
 	},
+	"PATCH /accounts/{account_id}/cloudforce-one/events/update/bulk": {
+		"description": "Updates multiple events with the same field values. Maximum 100 events per request.",
+		"operationId": "patch_EventUpdateBulk",
+		"parameters": [
+			{
+				"description": "Account ID.",
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"description": "Account ID.",
+					"type": "string"
+				}
+			}
+		],
+		"requestBody": {
+			"content": {
+				"application/json": {
+					"schema": {
+						"properties": {
+							"datasetId": {
+								"description": "Dataset ID containing the events to update. Required to prevent cross-account modifications.",
+								"example": "9b769969-a211-466c-8ac3-cb91266a066a",
+								"type": "string"
+							},
+							"eventIds": {
+								"description": "List of event UUIDs to update (1-100)",
+								"example": [
+									"uuid-1",
+									"uuid-2",
+									"uuid-3"
+								],
+								"items": {
+									"example": "12345678-1234-1234-1234-1234567890ab",
+									"type": "string"
+								},
+								"maxItems": 100,
+								"minItems": 1,
+								"type": "array"
+							},
+							"updates": {
+								"description": "Fields to update on all specified events. All fields including 'insight' are supported, except 'date' which requires shard migration.",
+								"properties": {
+									"attacker": {
+										"example": "Flying Yeti",
+										"nullable": true,
+										"type": "string"
+									},
+									"attackerCountry": {
+										"example": "CN",
+										"type": "string"
+									},
+									"category": {
+										"example": "Domain Resolution",
+										"type": "string"
+									},
+									"createdAt": {
+										"example": "2025-12-19T00:00:00Z",
+										"format": "date-time",
+										"type": "string"
+									},
+									"event": {
+										"example": "An attacker registered the domain domain.com",
+										"type": "string"
+									},
+									"indicator": {
+										"example": "domain2.com",
+										"type": "string"
+									},
+									"indicatorType": {
+										"example": "domain",
+										"type": "string"
+									},
+									"insight": {
+										"example": "This event indicates a potential phishing campaign",
+										"type": "string"
+									},
+									"raw": {
+										"properties": {
+											"data": {
+												"additionalProperties": true,
+												"nullable": true,
+												"type": "object"
+											},
+											"source": {
+												"example": "example.com",
+												"type": "string"
+											},
+											"tlp": {
+												"example": "amber",
+												"type": "string"
+											}
+										},
+										"type": "object"
+									},
+									"targetCountry": {
+										"example": "US",
+										"type": "string"
+									},
+									"targetIndustry": {
+										"example": "Insurance",
+										"type": "string"
+									},
+									"tlp": {
+										"example": "amber",
+										"type": "string"
+									}
+								},
+								"type": "object"
+							}
+						},
+						"required": [
+							"eventIds",
+							"datasetId",
+							"updates"
+						],
+						"type": "object"
+					}
+				}
+			}
+		},
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"failedCount": {
+									"example": 1,
+									"type": "number"
+								},
+								"failures": {
+									"description": "List of events that failed to update with error messages",
+									"items": {
+										"properties": {
+											"error": {
+												"example": "Event not found",
+												"type": "string"
+											},
+											"eventId": {
+												"example": "12345678-1234-1234-1234-1234567890ab",
+												"type": "string"
+											}
+										},
+										"required": [
+											"eventId",
+											"error"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"updatedCount": {
+									"example": 5,
+									"type": "number"
+								}
+							},
+							"required": [
+								"updatedCount",
+								"failedCount"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Returns the count of updated events and any failures."
+			},
+			"400": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"message": {
+												"example": "An error occurred.",
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"result": {
+									"type": "object"
+								},
+								"success": {
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"result",
+								"success",
+								"errors"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Bad Request."
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			}
+		],
+		"summary": "Bulk update events",
+		"tags": [
+			"Event"
+		],
+		"x-api-token-group": [
+			"Cloudforce One Write"
+		]
+	},
 	"POST /accounts/{account_id}/cloudforce-one/events/{dataset_id}/revert-do": {
 		"operationId": "post_EventDoRevert",
 		"parameters": [
@@ -3871,6 +4094,7 @@
 								"type": "string"
 							},
 							"datasetId": {
+								"description": "Dataset ID containing the event to update.",
 								"example": "9b769969-a211-466c-8ac3-cb91266a066a",
 								"type": "string"
 							},
@@ -3926,6 +4150,9 @@
 								"type": "string"
 							}
 						},
+						"required": [
+							"datasetId"
+						],
 						"type": "object"
 					}
 				}
@@ -5179,6 +5406,173 @@
 			"Cloudforce One Read"
 		]
 	},
+	"POST /accounts/{account_id}/cloudforce-one/events/dataset/{dataset_id}/copy": {
+		"operationId": "post_EventCopyToNewDS",
+		"parameters": [
+			{
+				"description": "Account ID.",
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"description": "Account ID.",
+					"type": "string"
+				}
+			},
+			{
+				"description": "Dataset UUID.",
+				"in": "path",
+				"name": "dataset_id",
+				"required": true,
+				"schema": {
+					"description": "Dataset UUID.",
+					"format": "uuid",
+					"type": "string"
+				}
+			},
+			{
+				"description": "If true, copies raw data to the destination dataset. Default is false (raw data is stripped/not copied).",
+				"in": "query",
+				"name": "keepRawData",
+				"schema": {
+					"description": "If true, copies raw data to the destination dataset. Default is false (raw data is stripped/not copied).",
+					"type": "boolean"
+				}
+			}
+		],
+		"requestBody": {
+			"content": {
+				"application/json": {
+					"schema": {
+						"properties": {
+							"destDatasetId": {
+								"example": "12345678-1234-1234-1234-1234567890ab",
+								"type": "string"
+							},
+							"eventIds": {
+								"items": {
+									"example": "7632a037-fdef-4899-9b12-148470aae772",
+									"type": "string"
+								},
+								"type": "array"
+							}
+						},
+						"required": [
+							"destDatasetId",
+							"eventIds"
+						],
+						"type": "object"
+					}
+				}
+			}
+		},
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"copied": {
+									"description": "Number of events successfully copied",
+									"example": 2,
+									"type": "number"
+								},
+								"indicatorsCopied": {
+									"description": "Number of indicators successfully copied",
+									"example": 5,
+									"type": "number"
+								},
+								"insertFailures": {
+									"description": "Array of events that failed to insert into destination",
+									"items": {
+										"properties": {
+											"index": {
+												"description": "Index of the event that failed to insert",
+												"type": "number"
+											},
+											"reason": {
+												"description": "Reason for the failure",
+												"type": "string"
+											}
+										},
+										"required": [
+											"index",
+											"reason"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"relationshipsCopied": {
+									"description": "Number of relationships successfully copied",
+									"example": 3,
+									"type": "number"
+								}
+							},
+							"required": [
+								"copied",
+								"indicatorsCopied",
+								"relationshipsCopied"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Returns the number of copied events"
+			},
+			"400": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"message": {
+												"example": "An error occurred.",
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"result": {
+									"type": "object"
+								},
+								"success": {
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"result",
+								"success",
+								"errors"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Bad Request."
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			}
+		],
+		"summary": "Copies specified events from one dataset to another dataset",
+		"tags": [
+			"Event"
+		],
+		"x-api-token-group": [
+			"Cloudforce One Write",
+			"Cloudforce One Read"
+		]
+	},
 	"POST /accounts/{account_id}/cloudforce-one/events/dataset/{dataset_id}/move": {
 		"operationId": "post_EventMoveToNewDS",
 		"parameters": [
@@ -5231,7 +5625,8 @@
 							}
 						},
 						"required": [
-							"destDatasetId"
+							"destDatasetId",
+							"eventIds"
 						],
 						"type": "object"
 					}
@@ -5243,8 +5638,71 @@
 				"content": {
 					"application/json": {
 						"schema": {
-							"example": 150,
-							"type": "number"
+							"properties": {
+								"deletionFailures": {
+									"description": "Array of source datasets where deletion failed",
+									"items": {
+										"properties": {
+											"datasetId": {
+												"description": "Dataset ID where deletion failed",
+												"type": "string"
+											},
+											"reason": {
+												"description": "Reason for the deletion failure",
+												"type": "string"
+											}
+										},
+										"required": [
+											"datasetId",
+											"reason"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"indicatorsCopied": {
+									"description": "Number of indicators successfully copied",
+									"example": 5,
+									"type": "number"
+								},
+								"insertFailures": {
+									"description": "Array of events that failed to insert into destination",
+									"items": {
+										"properties": {
+											"index": {
+												"description": "Index of the event that failed to insert",
+												"type": "number"
+											},
+											"reason": {
+												"description": "Reason for the failure",
+												"type": "string"
+											}
+										},
+										"required": [
+											"index",
+											"reason"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"moved": {
+									"description": "Number of events successfully moved",
+									"example": 2,
+									"type": "number"
+								},
+								"relationshipsCopied": {
+									"description": "Number of relationships successfully copied",
+									"example": 3,
+									"type": "number"
+								}
+							},
+							"required": [
+								"moved",
+								"indicatorsCopied",
+								"relationshipsCopied"
+							],
+							"type": "object"
 						}
 					}
 				},
@@ -5426,6 +5884,98 @@
 			}
 		],
 		"summary": "Adds a tag to an event",
+		"tags": [
+			"Event"
+		],
+		"x-api-token-group": [
+			"Cloudforce One Write",
+			"Cloudforce One Read"
+		]
+	},
+	"POST /accounts/{account_id}/cloudforce-one/events/graphql": {
+		"description": "Execute GraphQL aggregations over threat events. Supports multi-dimensional group-bys, optional date range filtering, and multi-dataset aggregation.",
+		"operationId": "post_EventGraphQL",
+		"parameters": [
+			{
+				"description": "Account ID.",
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"description": "Account ID.",
+					"type": "string"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"data": {
+									"nullable": true,
+									"type": "object"
+								},
+								"errors": {
+									"items": {
+										"type": "object"
+									},
+									"nullable": true,
+									"type": "array"
+								}
+							},
+							"type": "object"
+						}
+					}
+				},
+				"description": "GraphQL response payload (data and errors)."
+			},
+			"400": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"message": {
+												"example": "An error occurred.",
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"result": {
+									"type": "object"
+								},
+								"success": {
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"result",
+								"success",
+								"errors"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Bad Request."
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			}
+		],
+		"summary": "GraphQL endpoint for event aggregation",
 		"tags": [
 			"Event"
 		],
@@ -6568,7 +7118,7 @@
 	},
 	"POST /accounts/{account_id}/cloudforce-one/v2/events/graphql": {
 		"description": "Execute GraphQL aggregations over threat events. Supports multi-dimensional group-bys, optional date range filtering, and multi-dataset aggregation.",
-		"operationId": "post_EventGraphQL",
+		"operationId": "post_EventGraphQLV2",
 		"parameters": [
 			{
 				"description": "Account ID.",

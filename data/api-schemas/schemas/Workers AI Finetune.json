@@ -1,5 +1,6 @@
 {
 	"GET /accounts/{account_id}/ai/finetunes": {
+		"description": "Lists all fine-tuning jobs created by the account, including status and metrics.",
 		"operationId": "workers-ai-list-finetunes",
 		"parameters": [
 			{
@@ -137,6 +138,7 @@
 		}
 	},
 	"GET /accounts/{account_id}/ai/finetunes/public": {
+		"description": "Lists publicly available fine-tuned models that can be used with Workers AI.",
 		"operationId": "workers-ai-list-public-finetunes",
 		"parameters": [
 			{
@@ -309,6 +311,7 @@
 		}
 	},
 	"POST /accounts/{account_id}/ai/finetunes": {
+		"description": "Creates a new fine-tuning job for a Workers AI model using custom training data.",
 		"operationId": "workers-ai-create-finetune",
 		"parameters": [
 			{
@@ -468,6 +471,7 @@
 		}
 	},
 	"POST /accounts/{account_id}/ai/finetunes/{finetune_id}/finetune-assets": {
+		"description": "Uploads training data assets for a Workers AI fine-tuning job.",
 		"operationId": "workers-ai-upload-finetune-asset",
 		"parameters": [
 			{
