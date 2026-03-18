@@ -2399,6 +2399,39 @@
 												},
 												"type": "array"
 											},
+											"crawlPurposes": {
+												"default": [
+													"search",
+													"ai-input",
+													"ai-train"
+												],
+												"description": "List of crawl purposes to respect Content-Signal directives in robots.txt. Allowed values: 'search', 'ai-input', 'ai-train'. Learn more: https://contentsignals.org/. Default: ['search', 'ai-input', 'ai-train'].",
+												"items": {
+													"anyOf": [
+														{
+															"enum": [
+																"search"
+															],
+															"type": "string"
+														},
+														{
+															"enum": [
+																"ai-input"
+															],
+															"type": "string"
+														},
+														{
+															"enum": [
+																"ai-train"
+															],
+															"type": "string"
+														}
+													]
+												},
+												"maxItems": 3,
+												"minItems": 1,
+												"type": "array"
+											},
 											"depth": {
 												"default": 100000,
 												"description": "Maximum number of levels deep the crawler will traverse from the starting URL.",
@@ -2888,6 +2921,39 @@
 									{
 										"additionalProperties": false,
 										"properties": {
+											"crawlPurposes": {
+												"default": [
+													"search",
+													"ai-input",
+													"ai-train"
+												],
+												"description": "List of crawl purposes to respect Content-Signal directives in robots.txt. Allowed values: 'search', 'ai-input', 'ai-train'. Learn more: https://contentsignals.org/. Default: ['search', 'ai-input', 'ai-train'].",
+												"items": {
+													"anyOf": [
+														{
+															"enum": [
+																"search"
+															],
+															"type": "string"
+														},
+														{
+															"enum": [
+																"ai-input"
+															],
+															"type": "string"
+														},
+														{
+															"enum": [
+																"ai-train"
+															],
+															"type": "string"
+														}
+													]
+												},
+												"maxItems": 3,
+												"minItems": 1,
+												"type": "array"
+											},
 											"depth": {
 												"default": 100000,
 												"description": "Maximum number of levels deep the crawler will traverse from the starting URL.",
