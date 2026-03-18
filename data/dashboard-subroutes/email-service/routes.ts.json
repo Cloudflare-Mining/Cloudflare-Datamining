@@ -47,6 +47,10 @@
 	"/zones/[id]/email/sending/disable",
 	"/zones/[id]/email/sending/dns",
 	"/zones/[id]/email/sending/enable",
+	"/zones/[id]/email/sending/subdomains",
+	"/zones/[id]/email/sending/subdomains/[id]/*",
+	"/zones/[id]/email/sending/subdomains/[id]/dns",
+	"/zones/[id]/email/sending/subdomains/preview",
 	"/zones/[id]/email/sending/suppression",
 	"/zones/[id]/email/sending/suppression/[id]/*",
 	"/zones/[id]/email/sending/unlock"

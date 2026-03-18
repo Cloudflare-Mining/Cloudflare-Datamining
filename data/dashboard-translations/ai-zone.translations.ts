@@ -14,10 +14,11 @@
 		},
 		markdown_conversion_card: {
 			title: "Markdown for Agents",
-			toggle: {
-				title: "Markdown for Agents",
-				description: "Automatically convert HTML to Markdown for requests that use content negotiation headers (Accept: text/markdown)"
-			}
+			description: "Automatically convert HTML to Markdown for requests that use content negotiation headers (Accept: text/markdown)"
+		},
+		redirects_for_ai_training_card: {
+			title: "Redirects for AI Training",
+			description: "Redirect AI training crawlers to canonical versions of outdated content"
 		},
 		violations_card: {
 			title: "Robots.txt violations",
@@ -171,7 +172,8 @@
 				custom_rule_disabled: "AI Crawl Control security rule is disabled. Please <0>re-enable</0> it.",
 				max_rules_toast: "You have used all <b>%{maxRules}</b> security custom rules available on the plan. To enable blocking individual AI Crawlers you need to <0>delete a rule</0> or upgrade your plan.",
 				max_rules_notification: "No security custom rules available. To block individual AI Crawlers you need to <0>delete a rule</0> or upgrade your plan.",
-				custom_response_no_rule: "You must block one or more <0>Crawlers</0> in order to set a custom response."
+				custom_response_no_rule: "You must block one or more <0>Crawlers</0> in order to set a custom response.",
+				expression_parse_failed: "Could not update path exclusions — the WAF expression could not be parsed. Your other changes were saved."
 			},
 			read_only: "You don't have permissions to change this setting.",
 			pay_per_crawl_disabled: "Pay Per Crawl is disabled. <0>Enable</0>",
@@ -542,6 +544,10 @@
 				response_message_length: "Response message content is too large. (2KB maximum)",
 				response_message_parsing: "Error parsing block response message",
 				response_code_empty: "Select a response code"
+			},
+			path_exclusions: {
+				title: "Allowed paths",
+				description: "Paths excluded from blocking. Crawlers can still access these even when blocked."
 			},
 			alert: {
 				title: "Custom message will be removed.",

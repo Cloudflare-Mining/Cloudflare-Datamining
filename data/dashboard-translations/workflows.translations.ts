@@ -185,7 +185,9 @@
 			noInstancesWithStateInTimePeriod: "No instances found in the state '%{state}' in the %{timePeriod}",
 			noInstancesWithStateInTimeRange: "No instances found in the state '%{state}' between %{startTime} and %{endTime}",
 			changeTimePeriod: "Change time period",
-			clearFilters: "Clear filters"
+			clearFilters: "Clear filters",
+			noMoreInstances: "No more instances found on this page.",
+			goBack: "Go back"
 		},
 		backgroundTime: "Background time:",
 		backgroundTimeTooltip: "Background time includes the time that the instance was queued and paused."

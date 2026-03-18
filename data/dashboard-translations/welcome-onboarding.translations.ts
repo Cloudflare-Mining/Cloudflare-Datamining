@@ -2,6 +2,7 @@
 	survey: {
 		intro: {
 			title: "Welcome! How do you plan to use Cloudflare?",
+			title_minimal: "How do you plan to use Cloudflare?",
 			cards: {
 				personal: "Personal",
 				professional: "Professional",
@@ -42,16 +43,19 @@
 		cards: {
 			build: {
 				title: "Build and scale apps globally",
+				title_minimal: "Build and scale apps",
 				description: "Deploy simple sites or full-stack apps with integrated compute, AI, storage, and media services",
 				cta: "Start building"
 			},
 			protect: {
 				title: "Protect your apps and users",
+				title_minimal: "Protect apps and users",
 				description: "Shield your websites, apps, and users from attackers and unwanted traffic like AI crawlers",
 				cta: "Start protecting"
 			},
 			connect: {
 				title: "Connect and accelerate traffic",
+				title_minimal: "Accelerate traffic",
 				description: "Establish and speed up connections between your websites, apps, and users",
 				cta: "Start connecting"
 			}
@@ -61,7 +65,7 @@
 		title: "How would you like to start building?",
 		cards: {
 			compute: {
-				title: "Start with code or a template",
+				title: "Connect git repo or use template",
 				description: "Launch a simple website or full-stack app in minutes",
 				cta: "Workers Compute"
 			},
@@ -134,6 +138,15 @@
 	},
 	links: {
 		skip: "Skip",
-		back: "Back"
+		back: "Back",
+		aiSidebar: "I'm looking for something else",
+		apiOnboarding: {
+			label: "Get started with the Cloudflare API",
+			title: "Get started with our API",
+			accountIdStep: "1) Copy your account ID:",
+			apiTokenStep: "2) Create <0>API Token</0>",
+			developerDocsStep: "3) View <0>API Documentation</0>",
+			close: "Close"
+		}
 	}
 }
