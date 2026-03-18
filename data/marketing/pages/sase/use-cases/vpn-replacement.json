@@ -52,7 +52,7 @@
 				},
 				"sys": {
 					"createdAt": "2022-01-24T18:28:54.967Z",
-					"updatedAt": "2026-03-14T05:01:07.491Z"
+					"updatedAt": "2026-03-18T12:23:26.378Z"
 				},
 				"contentfulId": "62xMZ1ricakE06Y0AZrMkT",
 				"contentTypeId": "page",
@@ -2759,9 +2759,9 @@
 						"contentTypeId": "bladeHeroAnimation",
 						"title": "Replace your VPN with Cloudflare",
 						"titleSize": null,
-						"subtitle": "Strengthen security with fast, reliable Zero Trust Network Access",
+						"subtitle": "Modernize remote access without the friction",
 						"subtitleSize": null,
-						"copy": "Cloudflare's connectivity cloud helps you accelerate Zero Trust adoption. Augment — and eventually replace — your VPN, offloading your highest-risk users and apps quickly.\n",
+						"copy": "Accelerate zero trust adoption with Cloudflare's agile SASE platform. Augment — and eventually replace — your clunky, insecure VPN by quickly offloading your highest-risk users and applications.\n",
 						"buttonColor": "orange",
 						"buttonColor2": "orange-outline",
 						"buttonText1": "Contact Sales",
@@ -2776,8 +2776,8 @@
 						"bladeBorder": "none",
 						"htmlId": null,
 						"textColor": "black",
-						"includeVideo": false,
-						"streamVideoId": null,
+						"includeVideo": true,
+						"streamVideoId": "01401eb5df5804bfb3f1c479ac285d34",
 						"streamOptions": [
 							"controls"
 						],
@@ -2789,7 +2789,12 @@
 						"streamThumbnails": null,
 						"sectionPadding": null,
 						"streamPosterAssetFile": null,
-						"streamPoster": null,
+						"streamPoster": {
+							"file": {
+								"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/1S58yU6YXZhxhk2MzZjbyF/dc6097357ab00aaf76af65539ec6ef89/Stop-hosting-your-own-VPN-service.png"
+							},
+							"description": ""
+						},
 						"imageSize": "Large",
 						"imagePosition": null,
 						"leftLinkUrl": null,
@@ -2802,14 +2807,14 @@
 						"imageLayout": null,
 						"image": null,
 						"imageAssetFile": {
-							"id": "eb6978ee-a226-54dc-94c3-bb080edb2a97",
-							"altText": null,
-							"title": null,
+							"id": "fb9a1f90-991f-5842-b049-cc4042de75d6",
+							"altText": "VPN Replacement - HOW IT WORKS - Vide - Thumbnail",
+							"title": "VPN Replacement - HOW IT WORKS - Vide - Thumbnail",
 							"activeAsset": "Contentful Asset",
 							"locale": "en-US",
 							"contentfulAsset": {
 								"file": {
-									"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/5ndq5Lx6daFOEdqlqP8MLE/b7a8e7b7b9700d5d46e6517f8b706fd7/teams-access-zero-trust-spot-illustration.svg"
+									"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/3IizDUkvjhYAtd7oNS0hdn/e7c000d40bb639d15dc9cab3f15ce068/Replace-your-legacy-VPN-with-ZTNA.png"
 								},
 								"description": ""
 							},
@@ -2994,10 +2999,24 @@
 							"controls"
 						],
 						"streamCaptions": "en",
-						"streamVideoId": "ebf32a7d9bd2ec543228f5202ca86499",
-						"streamThumbnails": "1s",
+						"streamVideoId": "9def266d168884b52a9741bb9755452a",
+						"streamThumbnails": null,
 						"streamPoster": null,
-						"streamPosterAssetFile": null,
+						"streamPosterAssetFile": {
+							"id": "fb9a1f90-991f-5842-b049-cc4042de75d6",
+							"altText": "VPN Replacement - HOW IT WORKS - Vide - Thumbnail",
+							"title": "VPN Replacement - HOW IT WORKS - Vide - Thumbnail",
+							"activeAsset": "Contentful Asset",
+							"locale": "en-US",
+							"contentfulAsset": {
+								"file": {
+									"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/3IizDUkvjhYAtd7oNS0hdn/e7c000d40bb639d15dc9cab3f15ce068/Replace-your-legacy-VPN-with-ZTNA.png"
+								},
+								"description": ""
+							},
+							"brandfolderAsset": null,
+							"brandfolderAssetMobile": null
+						},
 						"image": null,
 						"imageAssetFile": null,
 						"featureList": [],
@@ -3521,10 +3540,46 @@
 						"bladeStyle": null,
 						"bladeBorder": "none",
 						"sectionPadding": "tile--no-top-padding",
-						"carouselSlidesToShow": null,
+						"carouselSlidesToShow": 3,
 						"carouselSlidesToScroll": null,
 						"locale": "en-US",
 						"features": [
+							{
+								"contentTypeId": "feature",
+								"contentfulId": "IiSn6wfNIh4sEnNJinovk",
+								"title": "See VPN replacement in action",
+								"makeTitleLink": false,
+								"titleUrl": null,
+								"titleSize": null,
+								"description": "Watch architecture lightboard, explainer, and product demo videos to better understand how to implement zero trust network access.",
+								"learnMoreUrl": "https://www.cloudflare.com/sase/demos/ ",
+								"learnMoreText": "Visit the demo hub",
+								"displayBorder": false,
+								"openLinkInNewTab": false,
+								"removeCardBorder": false,
+								"icon": null,
+								"iconAssetFile": null,
+								"imageOverlaySuperheader": null,
+								"imageOverlayText": null,
+								"imageAssetFile": {
+									"id": "2ea2b03b-b35f-525f-8903-0fa37d95a7e3",
+									"altText": "Resources card - Thin top orange line  - image",
+									"title": "Resources card - Thin top orange line  - image",
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/1YGMIqqtWyen0H9EPX70CL/47fb34c9a8aae1587b6eda9384e36139/element-feature-topbar-image-2.png"
+										},
+										"description": "Resources card - Thin top orange line  - image"
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								},
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
+							},
 							{
 								"contentTypeId": "feature",
 								"contentfulId": "3f1p2nb0Hpizvz2CWOxtnr",
