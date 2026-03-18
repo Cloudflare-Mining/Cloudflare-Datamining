@@ -155,6 +155,7 @@
 		]
 	},
 	"GET /accounts/{account_id}/dlp/datasets": {
+		"description": "Lists all DLP datasets configured for the account, including custom word lists and EDM datasets.",
 		"operationId": "dlp-datasets-read-all",
 		"parameters": [
 			{
@@ -923,6 +924,7 @@
 		]
 	},
 	"POST /accounts/{account_id}/dlp/datasets": {
+		"description": "Creates a new DLP (Data Loss Prevention) dataset for storing custom detection patterns. Datasets can contain exact match data, word lists, or EDM (Exact Data Match) configurations.",
 		"operationId": "dlp-datasets-create",
 		"parameters": [
 			{
@@ -1370,6 +1372,7 @@
 		]
 	},
 	"POST /accounts/{account_id}/dlp/datasets/{dataset_id}/upload": {
+		"description": "Creates a new version of a DLP dataset, allowing you to stage changes before activation. Used for single-column EDM and custom word lists.",
 		"operationId": "dlp-datasets-create-version",
 		"parameters": [
 			{
@@ -2777,6 +2780,7 @@
 		]
 	},
 	"PUT /accounts/{account_id}/dlp/datasets/{dataset_id}": {
+		"description": "Updates the configuration of an existing DLP dataset, such as its name, description, or detection settings.",
 		"operationId": "dlp-datasets-update",
 		"parameters": [
 			{

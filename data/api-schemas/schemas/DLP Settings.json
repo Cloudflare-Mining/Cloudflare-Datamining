@@ -295,6 +295,7 @@
 		]
 	},
 	"GET /accounts/{account_id}/dlp/limits": {
+		"description": "Retrieves current DLP usage limits and quotas for the account, including dataset limits and scan quotas.",
 		"operationId": "dlp-limits-get",
 		"parameters": [
 			{
@@ -554,6 +555,7 @@
 		]
 	},
 	"GET /accounts/{account_id}/dlp/payload_log": {
+		"description": "Gets the current payload logging configuration for DLP, showing whether matched content is being logged.",
 		"operationId": "dlp-payload-log-get",
 		"parameters": [
 			{
@@ -1766,6 +1768,7 @@
 		]
 	},
 	"PUT /accounts/{account_id}/dlp/payload_log": {
+		"description": "Enables or disables payload logging for DLP matches. When enabled, matched content is stored for review.",
 		"operationId": "dlp-payload-log-put",
 		"parameters": [
 			{

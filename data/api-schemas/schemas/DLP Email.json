@@ -1,5 +1,6 @@
 {
 	"DELETE /accounts/{account_id}/dlp/email/rules/{rule_id}": {
+		"description": "Removes a DLP email scanning rule. The rule will no longer be applied to email messages.",
 		"operationId": "dlp-email-scanner-delete-rule",
 		"parameters": [
 			{
@@ -362,6 +363,7 @@
 		]
 	},
 	"GET /accounts/{account_id}/dlp/email/account_mapping": {
+		"description": "Retrieves the email provider mapping configuration for DLP email scanning.",
 		"operationId": "dlp-email-scanner-get-account-mapping",
 		"parameters": [
 			{
@@ -1018,6 +1020,7 @@
 		]
 	},
 	"GET /accounts/{account_id}/dlp/email/rules/{rule_id}": {
+		"description": "Gets detailed configuration for a specific DLP email scanning rule, including detection patterns and actions.",
 		"operationId": "dlp-email-scanner-get-rule",
 		"parameters": [
 			{
@@ -1381,6 +1384,7 @@
 		]
 	},
 	"PATCH /accounts/{account_id}/dlp/email/rules": {
+		"description": "Reorders DLP email scanning rules by updating their priority values. Higher priority rules are evaluated first.",
 		"operationId": "dlp-email-scanner-update-rule-priorities",
 		"parameters": [
 			{
@@ -1759,6 +1763,7 @@
 		]
 	},
 	"POST /accounts/{account_id}/dlp/email/account_mapping": {
+		"description": "Creates a mapping between a Cloudflare account and an email provider for DLP email scanning integration.",
 		"operationId": "dlp-email-scanner-create-account-mapping",
 		"parameters": [
 			{
@@ -2111,6 +2116,7 @@
 		]
 	},
 	"POST /accounts/{account_id}/dlp/email/rules": {
+		"description": "Creates a new DLP email scanning rule that defines what content patterns to detect in email messages and what actions to take.",
 		"operationId": "dlp-email-scanner-create-rule",
 		"parameters": [
 			{

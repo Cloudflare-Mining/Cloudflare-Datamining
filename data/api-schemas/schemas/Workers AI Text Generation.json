@@ -9608,7 +9608,7 @@
 													"type": "string"
 												},
 												"tool_call_id": {
-													"description": "The tool call id. Must be supplied for tool calls for Mistral-3. If you don't know what to put here you can fall back to 000000001",
+													"description": "The tool call id. If you don't know what to put here you can fall back to 000000001",
 													"type": "string"
 												}
 											},
@@ -17037,6 +17037,11 @@
 						"schema": {
 							"type": "object"
 						}
+					},
+					"text/event-stream": {
+						"schema": {
+							"type": "object"
+						}
 					}
 				},
 				"description": "Object with user data."
@@ -17632,6 +17637,11 @@
 			"200": {
 				"content": {
 					"application/json": {
+						"schema": {
+							"type": "object"
+						}
+					},
+					"text/event-stream": {
 						"schema": {
 							"type": "object"
 						}
@@ -21787,7 +21797,7 @@
 													"type": "string"
 												},
 												"tool_call_id": {
-													"description": "The tool call id. Must be supplied for tool calls for Mistral-3. If you don't know what to put here you can fall back to 000000001",
+													"description": "The tool call id. If you don't know what to put here you can fall back to 000000001",
 													"type": "string"
 												}
 											},

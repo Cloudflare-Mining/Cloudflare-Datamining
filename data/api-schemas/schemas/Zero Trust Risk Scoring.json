@@ -1,5 +1,6 @@
 {
 	"GET /accounts/{account_id}/zt_risk_scoring/{user_id}": {
+		"description": "Retrieves the detailed risk score breakdown for a specific user, including contributing factors.",
 		"operationId": "dlp-risk-score-summary-get-for-user",
 		"parameters": [
 			{
@@ -132,6 +133,11 @@
 														"total_count": {
 															"description": "Total results available without any search parameters.",
 															"example": 2000,
+															"type": "number"
+														},
+														"total_pages": {
+															"description": "The number of total pages in the entire result set.",
+															"example": 100,
 															"type": "number"
 														}
 													},
@@ -350,6 +356,7 @@
 		]
 	},
 	"GET /accounts/{account_id}/zt_risk_scoring/behaviors": {
+		"description": "Retrieves configured risk score behaviors that define how user actions affect their overall risk score.",
 		"operationId": "dlp-risk-score-behaviors-get",
 		"parameters": [
 			{
@@ -635,6 +642,7 @@
 		]
 	},
 	"GET /accounts/{account_id}/zt_risk_scoring/summary": {
+		"description": "Gets an aggregate summary of risk scores across the account, including distribution and trends.",
 		"operationId": "dlp-risk-score-summary-get",
 		"parameters": [
 			{
@@ -758,6 +766,11 @@
 														"total_count": {
 															"description": "Total results available without any search parameters.",
 															"example": 2000,
+															"type": "number"
+														},
+														"total_pages": {
+															"description": "The number of total pages in the entire result set.",
+															"example": 100,
 															"type": "number"
 														}
 													},
@@ -960,6 +973,7 @@
 		]
 	},
 	"POST /accounts/{account_id}/zt_risk_scoring/{user_id}/reset": {
+		"description": "Resets risk scores for specified users, clearing their accumulated risk history.",
 		"operationId": "dlp-risk-score-reset-post",
 		"parameters": [
 			{
@@ -1218,6 +1232,7 @@
 		]
 	},
 	"PUT /accounts/{account_id}/zt_risk_scoring/behaviors": {
+		"description": "Updates risk score behavior configurations, defining weights and thresholds for risk calculation.",
 		"operationId": "dlp-risk-score-behaviors-put",
 		"parameters": [
 			{

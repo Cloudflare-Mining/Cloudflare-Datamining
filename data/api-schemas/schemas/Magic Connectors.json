@@ -4257,6 +4257,10 @@
 													"description": "Time spent in user mode (milliseconds)",
 													"type": "number"
 												},
+												"delta": {
+													"description": "Number of network operations applied during state transition",
+													"type": "number"
+												},
 												"dhcp_leases": {
 													"items": {
 														"description": "Snapshot DHCP lease",
@@ -4410,6 +4414,10 @@
 														"type": "object"
 													},
 													"type": "array"
+												},
+												"epsilon": {
+													"description": "Simulated number of network operations applied during state transition",
+													"type": "number"
 												},
 												"ha_state": {
 													"description": "Name of high availability state",
@@ -5823,6 +5831,10 @@
 																"description": "Time spent in user mode (milliseconds)",
 																"type": "number"
 															},
+															"delta": {
+																"description": "Number of network operations applied during state transition",
+																"type": "number"
+															},
 															"dhcp_leases": {
 																"items": {
 																	"description": "Snapshot DHCP lease",
@@ -5976,6 +5988,10 @@
 																	"type": "object"
 																},
 																"type": "array"
+															},
+															"epsilon": {
+																"description": "Simulated number of network operations applied during state transition",
+																"type": "number"
 															},
 															"ha_state": {
 																"description": "Name of high availability state",

@@ -1,5 +1,6 @@
 {
 	"DELETE /accounts/{account_id}/dlp/document_fingerprints/{document_fingerprint_id}": {
+		"description": "Removes a document fingerprint from DLP configuration. Documents matching this fingerprint will no longer be detected.",
 		"operationId": "dlp-document-fingerprints-delete",
 		"parameters": [
 			{
@@ -154,6 +155,7 @@
 		]
 	},
 	"GET /accounts/{account_id}/dlp/document_fingerprints": {
+		"description": "Lists all document fingerprints configured for DLP scanning in the account.",
 		"operationId": "dlp-document-fingerprints-read-all",
 		"parameters": [
 			{
@@ -782,6 +784,7 @@
 		]
 	},
 	"POST /accounts/{account_id}/dlp/document_fingerprints": {
+		"description": "Creates a new document fingerprint for DLP scanning. Document fingerprints detect documents that are structurally similar to the uploaded sample.",
 		"operationId": "dlp-document-fingerprints-create",
 		"parameters": [
 			{
@@ -1117,6 +1120,7 @@
 		]
 	},
 	"POST /accounts/{account_id}/dlp/document_fingerprints/{document_fingerprint_id}": {
+		"description": "Updates metadata for an existing document fingerprint, such as its name or description.",
 		"operationId": "dlp-document-fingerprints-update",
 		"parameters": [
 			{
@@ -1459,6 +1463,7 @@
 		]
 	},
 	"PUT /accounts/{account_id}/dlp/document_fingerprints/{document_fingerprint_id}": {
+		"description": "Uploads a new document to create or update a fingerprint. The document structure is analyzed to enable detection of similar documents.",
 		"operationId": "dlp-document-fingerprints-upload",
 		"parameters": [
 			{
