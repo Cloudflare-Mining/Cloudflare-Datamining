@@ -885,6 +885,9 @@
 			"baseline"
 		]
 	},
+	"dx-account-home-unique-visitors": {
+		"enabled": true
+	},
 	"dx-account-overview-audit-logs-widget": {
 		"enabled": true
 	},
@@ -1818,7 +1821,7 @@
 		]
 	},
 	"prg-sign-up-main-experiment": {
-		"enabled": false,
+		"enabled": true,
 		"branches": [
 			"baseline",
 			"variant-a"
@@ -1828,28 +1831,28 @@
 		"enabled": true
 	},
 	"prg-sign-up-pages-experiment": {
-		"enabled": false,
+		"enabled": true,
 		"branches": [
 			"baseline",
 			"variant-a"
 		]
 	},
 	"prg-sign-up-r2-experiment": {
-		"enabled": false,
+		"enabled": true,
 		"branches": [
 			"baseline",
 			"variant-a"
 		]
 	},
 	"prg-sign-up-stream-experiment": {
-		"enabled": false,
+		"enabled": true,
 		"branches": [
 			"baseline",
 			"variant-a"
 		]
 	},
 	"prg-sign-up-zero-trust-experiment": {
-		"enabled": false,
+		"enabled": true,
 		"branches": [
 			"baseline",
 			"variant-a"

@@ -312,6 +312,9 @@
 		"wireframe-grid-onboarding": 10,
 		"sequenced-onboarding": 10
 	},
+	"dx-account-home-unique-visitors": {
+		"false": 100
+	},
 	"dx-add-site-copy": {
 		"experiment": 100
 	},
@@ -636,8 +639,28 @@
 	"prg-remove-stream-bundle": {
 		"true": 100
 	},
+	"prg-sign-up-main-experiment": {
+		"baseline": 95,
+		"variant-a": 5
+	},
 	"prg-sign-up-marketing-update": {
 		"true": 100
+	},
+	"prg-sign-up-pages-experiment": {
+		"baseline": 50,
+		"variant-a": 50
+	},
+	"prg-sign-up-r2-experiment": {
+		"baseline": 89,
+		"variant-a": 11
+	},
+	"prg-sign-up-stream-experiment": {
+		"baseline": 50,
+		"variant-a": 50
+	},
+	"prg-sign-up-zero-trust-experiment": {
+		"baseline": 50,
+		"variant-a": 50
 	},
 	"prg-streaming-checkout-consolidation-experiment": {
 		"experiment": 100
