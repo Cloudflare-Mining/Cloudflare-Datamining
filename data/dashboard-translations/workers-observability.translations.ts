@@ -307,8 +307,7 @@
 			events: "Browse individual log events",
 			invocations: "View events grouped by invocation",
 			traces: "Analyze performance with traces",
-			visualizations: "Create and view charts and graphs",
-			agents: "View your agents events"
+			visualizations: "Create and view charts and graphs"
 		}
 	},
 	liveTail: {

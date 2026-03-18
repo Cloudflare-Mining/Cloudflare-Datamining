@@ -85,16 +85,6 @@
 		smart_shield_advanced: "Smart Shield Advanced",
 		smart_shield_argo: "Smart Shield + Argo"
 	},
-	prod_client_side_security: {
-		client_side_security: "Client-side Security Advanced",
-		usage_pricing: "%{price} per 100k requests with 1k requests increment",
-		usage_pricing_enterprise: "%{price} per 1M requests",
-		feature_script_monitoring: "Script monitoring",
-		feature_malicious_detection: "Malicious script detection and alerting",
-		feature_code_change_detection: "Code change detection and alerting",
-		feature_policies: "Number of policies (positive blocking)",
-		feature_pci_dss_compliance: "Help meet PCI DSS v4 compliance"
-	},
 	prod_stream: {
 		images_stream_starter_bundle: "Cloudflare Images Stream Starter Bundle",
 		images_stream_creator_bundle: "Cloudflare Images Stream Creator Bundle",

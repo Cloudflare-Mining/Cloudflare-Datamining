@@ -20,14 +20,19 @@
 		}
 	},
 	gettingStarted: {
-		title: "Get Started",
+		title: "Send your first request",
+		description: "Get started with our OpenAI-compatible endpoint. Use existing OpenAI SDKs with minimal code changes while accessing multiple AI providers.",
+		codeExample: "Replace your OpenAI base URL with this endpoint:",
+		collapse: "Hide getting started",
+		expand: "Show getting started",
 		features: {
-			title: "What you get with AI Gateway",
+			title: "What you get with AI Gateway:",
 			analytics: "Real-time cost and usage analytics across all providers",
 			logging: "Full request logging with prompt and response storage",
 			caching: "Response caching to reduce latency and costs",
 			rateLimit: "Rate limiting to control spend and prevent abuse"
-		}
+		},
+		docsLink: "View full documentation"
 	},
 	banners: {
 		logs_limit: "Logs now persist and you can store up to 10M logs per gateway. See docs to <0>learn more</0>.",
@@ -92,10 +97,6 @@
 			tokens: "Tokens",
 			costs: "Costs",
 			logsStored: "Logs stored"
-		},
-		actions: {
-			upgrade_plan: "Upgrade Plan",
-			paid_plan: "Paid Plan"
 		}
 	},
 	createGateway: {
@@ -283,7 +284,7 @@
 			auto_delection: {
 				title: "Automatic deletion",
 				new_logs: "When gateway storage limit is reached new logs will stop being saved.",
-				new_logs_label: "Stop storing new logs",
+				new_logs_label: "Stop store new logs",
 				old_logs: "Automatically delete the oldest logs when gateway storage limit is reached to ensure new logs are always saved.",
 				old_logs_label: "Delete oldest logs",
 				resume_label: (0, i.p)(p())
@@ -296,9 +297,7 @@
 		log_push: {
 			title: "Export AI Gateway Logs",
 			description: "Securely export logs to an external storage location using Logpush.",
-			enable: "Enable Export",
-			disable: "Disable",
-			edit_key: "Edit Public Key",
+			button: "Public Key",
 			modal: {
 				title: "Update Public Key",
 				description: "Upload the public key you generated to encrypt your logs.",
@@ -363,7 +362,7 @@
 			title: "Authenticated Gateway",
 			tooltipEnabled: "Authentication is <strong>enabled</strong> for this gateway. Requires an authorization token in each request header. <0>Settings</0>",
 			tooltipDisabled: "Authentication is <strong>disabled</strong> for this gateway. Enabling it requires an authorization token in each request header. <0>Settings</0>",
-			description: "<span>Enabling authentication for this gateway requires an authorization token in each request header.</span> <0>Create authentication token</0>",
+			description: "Enabling authentication for this gateway requires an authorization token in each request header. <0>Create authentication token</0>",
 			modal: {
 				title: {
 					enable: "Enable authentication for <strong>%{gateway}</strong>?",
@@ -460,16 +459,10 @@
 		},
 		remove_gateway: {
 			title: "Delete Gateway",
-			description: "Deleting Gateway <strong>%{gateway}</strong> is permanent and cannot be undone. You will no longer be able to send any requests through it, and all logs and metrics related to it will be lost.",
+			description: "Deleting\xa0Gateway <strong>%{gateway}</strong>\xa0is permanent and cannot be undone. You will no longer be able to send any requests through it, and all logs and metrics related to it will be lost.",
 			modal: {
 				title: "Delete Gateway?",
-				description: "Deleting <strong>%{gateway}</strong> is permanent and cannot be undone. You will no longer be able to send any requests through it, and all logs and metrics related to it will be lost.",
-				type_to_confirm: "To confirm, type <strong>%{gateway}</strong> in the field below.",
-				input_placeholder: "Enter gateway name",
-				error: {
-					mismatch: 'The gateway name you entered does not match "%{gateway}".',
-					delete_failed: "Failed to delete gateway. Please try again."
-				}
+				description: "Deleting <strong>%{gateway}</strong> is permanent and cannot be undone. You will no longer be able to add or modify any models in this project."
 			}
 		},
 		toast: {
@@ -492,8 +485,6 @@
 			interval: "requests over a",
 			technique: "period",
 			cache_custom: (0, i.p)(_()),
-			custom_seconds: "Custom (seconds)",
-			seconds: "seconds",
 			ratelimiting_fixed: "Fixed",
 			ratelimiting_sliding: "Sliding",
 			change: "Change"
@@ -579,11 +570,7 @@
 			cancel: "Cancel",
 			delete: "Delete",
 			error: "Failed to delete route. Please try again."
-		},
-		save_version: {
-			invalid_schema_warning: "Route has validation errors. You can save, but deploying is disabled until errors are fixed."
-		},
-		deploy_disabled_tooltip: "Fix validation errors before deploying"
+		}
 	},
 	gateway_modal: {
 		title: "Create a new AI Gateway",
@@ -707,7 +694,7 @@
 		},
 		gateway_endpoint: {
 			title: "Your Gateway Endpoint",
-			description: "Make requests directly to this endpoint with curl or any HTTP client. For OpenAI SDKs, use the base URL (up to and including /compat) as your baseURL. The SDK appends the path automatically.",
+			description: "The easiest way to get started with AI Gateway is through our OpenAI-compatible endpoint. This allows you to use existing OpenAI SDKs and tools with minimal code changes while gaining access to multiple AI providers.",
 			learn_more: "<0>Get started with AI Gateway</0>",
 			supported_providers: "Supported with Unified Billing:"
 		},
@@ -863,7 +850,6 @@
 		docs: "Documentation",
 		back: "Back",
 		beta: "Beta",
-		copy: "Copy",
 		no_data: "No data available",
 		customTtl: "Custom: %{value} seconds",
 		log: "Log",

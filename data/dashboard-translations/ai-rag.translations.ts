@@ -74,9 +74,42 @@
 			}
 		}
 	},
+	template_created: {
+		title: "Your AI Search is created",
+		description: "We are crawling and indexing your website. This may take longer for larger websites."
+	},
+	resume_card: {
+		title: "Try out NLWeb",
+		description: "We have deployed a Worker for you to test out the NLWeb search. Search results are limited to the pages we have indexed so far.",
+		pages_indexed: "pages indexed so far. Search will become more comprehensive as we discover and process more content",
+		add_to_website: "Add NLWeb to your website",
+		snippet_description: "Copy and paste this snippet into your website to embed the NLWeb search experience.",
+		see_in_action: "See it in action",
+		info_tooltip: "You can find this information again by clicking 'Connect' in the Dashboard",
+		info_text: 'Need to find this information again? Click "Connect" in the AI Search Dashboard.',
+		indexing_finished: "pages indexed. Your RAG finished indexing",
+		production_workflows_contact: "This is a public preview ideal for experimentation. If you're interested in running this in production workflows, please contact us at "
+	},
+	mode_selection: {
+		title: "Create a new AI Search",
+		description: "Set up AI powered search with your data. How would you like to start?"
+	},
 	create_rag: {
 		title: "Create a new AI Search",
 		description: "Connect your data source to get started. AI Search will index your content automatically once created.",
+		mode_selection: {
+			divider: "Or use template",
+			normal: {
+				title: "Create a RAG",
+				description: "Set up a new retrieval augmented generation pipeline with your data. Connect a data source, choose embedding, and adjust retrieval and generation settings to shape results.",
+				button: "Get Started"
+			},
+			nlweb: {
+				title: "NLWeb for Websites",
+				description: "Try out NLWeb, an open project developed by Microsoft, to enable conversational search on your website. We index your content with tuned defaults and deploy a Worker that provides a ready-to-use interface with an MCP server.",
+				button: "Use Template"
+			}
+		},
 		steps: {
 			step1: "Connect your data source",
 			step2: "Connect an AI Gateway",
@@ -89,8 +122,7 @@
 			types: {
 				r2: "R2 Bucket",
 				br: "Website",
-				d1: "D1 Database",
-				managed: "Managed Instance"
+				d1: "D1 Database"
 			},
 			filter_items: {
 				title: "Path Filters",
@@ -307,10 +339,6 @@
 				threshold: {
 					title: "Match threshold",
 					description: "Control the minimum score required for a result to be considered a match. Higher = stricter matching."
-				},
-				boost_by: {
-					title: "Boost by",
-					description: "Boost search results by ranking documents with specific metadata field values higher."
 				}
 			},
 			cache: {
@@ -339,12 +367,6 @@
 				description: "Add custom metadata fields to your AI Search instance for filtering and organization.",
 				field_name: "Field Name",
 				field_type: "Field Type",
-				field_type_labels: {
-					text: "Text",
-					number: "Number",
-					boolean: "Boolean",
-					datetime: "Datetime"
-				},
 				add_button: "Add Metadata",
 				remove_button: "Remove",
 				max_items_error: "Maximum 5 custom metadata entries allowed",
@@ -472,28 +494,6 @@
 			max_results: {
 				title: "Maximum number of results",
 				description: "Control the maximum number of results that can be returned for each query. Higher = more results."
-			},
-			boost_by: {
-				title: "Boost by",
-				description: "Boost search results by ranking documents with specific metadata field values higher.",
-				no_boost_by: "Not configured",
-				add_button: "Add field",
-				remove_button: "Remove",
-				field_label: "Field",
-				direction_label: "Direction",
-				max_items_error: "Maximum 3 boost fields allowed",
-				no_fields_available: "No fields available. Add custom metadata fields first.",
-				timestamp_field_label: "timestamp (system)",
-				direction_options: {
-					asc: "Ascending",
-					desc: "Descending",
-					exists: "Exists",
-					not_exists: "Not exists"
-				},
-				drawer: {
-					title: "Boost by",
-					description: "Boost search ranking by metadata field values. Numeric and datetime fields support ascending/descending sorting. Text and boolean fields only support exists/not exists."
-				}
 			}
 		},
 		search_configuration: {
@@ -501,7 +501,7 @@
 			description: "Configure the model and system prompt used to generate responses.",
 			model: "Generation model",
 			system_prompt: "System prompt",
-			note: (0, r.p)(a()),
+			note: (0, o.p)(a()),
 			drawer: {
 				title: "Generation model"
 			}
@@ -527,8 +527,6 @@
 			rate_limiting: "Rate limiting",
 			rate_limiting_description: "Limit the number of requests to your public endpoint.",
 			authorized_hosts: "Authorized hosts",
-			authorized_hosts_warning: "You are opening this endpoint to the public internet.",
-			authorized_hosts_warning_description: "To prevent unauthorized access, you can add an authenticated host to restrict traffic to known sources.",
 			mcp_server: "MCP Server",
 			mcp_server_description: "Expose this AI Search as an MCP (Model Context Protocol) server.",
 			mcp_tool_description: "Tool Description",
@@ -578,12 +576,6 @@
 			description: "Add custom metadata fields to your AI Search instance for filtering and organization.",
 			field_name: "Field Name",
 			field_type: "Field Type",
-			field_type_labels: {
-				text: "Text",
-				number: "Number",
-				boolean: "Boolean",
-				datetime: "Datetime"
-			},
 			add_button: "Add Metadata",
 			remove_button: "Remove",
 			max_items_error: "Maximum 5 custom metadata entries allowed",
@@ -601,18 +593,12 @@
 	playground: {
 		common: {
 			ai_search: "Search with AI",
-			chat_completions: "Chat",
 			search: "Search",
 			try_question: "Try asking a question to get started",
-			expand_settings: "Expand settings",
-			collapse_settings: "Collapse settings",
-			type_your_message: "Type your message...",
 			errors: {
+				still_indexing: "Sorry still indexing files",
 				not_found: "Sorry no results found",
-				no_response: "No response received from the model.",
 				not_found_description: "Either the data has not yet been indexed or no data is available for this specific search.",
-				authentication_error: "Authentication failed. Please go to {link} and create a new API token for this instance.",
-				authentication_error_link: "Settings",
 				api: {
 					workers_ai_timeout: "Workers AI took too long to respond. Please try again.",
 					ai_gateway_timeout: "AI Gateway took too long to respond. Please try again.",
@@ -642,9 +628,7 @@
 			},
 			generation_model: {
 				title: "Generation model",
-				description: "Select an LLM model to generate the responses.",
-				show_more_models: "View more models",
-				show_less_models: "View less"
+				description: "Select an LLM model to generate the responses."
 			},
 			match_threshold: {
 				title: "Match threshold",
@@ -653,30 +637,9 @@
 			max_results: {
 				title: "Maximum number of results",
 				description: "Control the maximum number of results that can be returned for each query. Higher = more results."
-			},
-			context_expansion: {
-				title: "Context expansion",
-				description: "Control the amount of surrounding context returned with each chunk. Higher = more context."
 			}
 		},
 		search: {
-			input_placeholder: "Search your documents...",
-			card: {
-				show_more: "Show full content",
-				title: "Title",
-				description: "Description",
-				source: "Source",
-				score: "Score",
-				timestamp: "Last updated",
-				chunk_id: "Chunk ID",
-				modal_title: "Full Content",
-				copy: "Copy",
-				copied: "Copied!",
-				close: "Close"
-			},
-			show_more_results: "Show more",
-			no_results: "No results found",
-			no_results_description: "Try adjusting your search query or settings and search again",
 			table: {
 				columns: {
 					item: "Item key",
@@ -685,11 +648,6 @@
 					content: "Content"
 				}
 			}
-		},
-		chat: {
-			sources: "Sources",
-			show_all_sources: "Show all sources",
-			show_less: "Show less"
 		}
 	},
 	jobs: {
@@ -720,14 +678,6 @@
 		trigger: {
 			user: "User",
 			schedule: "Schedule"
-		},
-		sync_modal: {
-			title: "Sync index",
-			description: "Start a full sync of your data source. You can optionally add a note to this job.",
-			note_label: "Note",
-			note_title: "Note",
-			note_placeholder: "Add an optional note for this sync job...",
-			confirm: "Sync"
 		}
 	},
 	overview_rag: {
@@ -764,12 +714,61 @@
 			}
 		}
 	},
-	snippet_card: {
-		title: "Try Our Search Components",
-		description: "Connect your data and deliver natural language search in your applications. Beautiful, customizable components with zero dependencies.",
-		public_url_label: "Your Public URL:",
-		try_configurator: "Try Configurator",
-		enable_public_url: "Enable Public URL"
+	how_to: {
+		title: "Connect AI Search",
+		description: "Add AI Search to your application.",
+		tabs: {
+			binding: "Binding",
+			api: "API",
+			nlweb: "NLWeb"
+		},
+		steps: {
+			worker: {
+				title: "Create with Workers",
+				description: "If you don’t already have a Worker, you can create one with the command line. <0>Learn more</0> about Workers."
+			},
+			binding: {
+				title: "Binding",
+				description: "Add the AI Search binding to your Worker’s Wrangler configuration file."
+			},
+			type: {
+				title: "Usecase",
+				ai_search: "Search with AI",
+				search: "Search"
+			},
+			query: {
+				title: "Query",
+				description: "Enter a query to test call."
+			},
+			snippet: {
+				title: "Snippet",
+				description_binding: "Add this snippet to your Worker to call this AI Search.",
+				description_api: "Add this snippet to your Worker to call this AI Search."
+			},
+			api_token: {
+				title: "AI Search API Token",
+				description: "Create an API token with AI Search Read permissions to authenticate AI Search API requests.",
+				button: "Create an AI Search API Token",
+				note: "Copy this token to access the Cloudflare API. For security this will not be shown again."
+			},
+			nlweb: {
+				title: "Your NLWeb Search Experience",
+				description: "A Worker connected to your AI Search has been deployed to your account with the NLWeb interface. Test it out:",
+				button: "Go to Worker",
+				endpoints: {
+					title: "Available Endpoints",
+					ask_description: "NLWeb's standard ask endpoint that powers the searches.",
+					mcp_description: "Use this endpoint as an MCP server.",
+					see_api_docs: "See API docs",
+					try_ai_playground: "Try it out in AI playground"
+				},
+				embed: {
+					title: "Embed NLWeb on Your Website",
+					description: "Copy and paste this snippet to add the NLWeb search experience to your website.",
+					preview_widget: "Preview widget"
+				}
+			}
+		}
 	},
 	resources: {
 		docs: "Get started with AI Search",
@@ -782,14 +781,18 @@
 		delete: "Delete",
 		paused_index: "Pause",
 		resume_index: "Resume",
+		create_rag: "Create",
+		use_autorag: "Connect",
 		tooltip: {
 			resume: "Resume indexing",
-			pause: "Pause indexing"
+			pause: "Pause indexing",
+			sync_index: "Check the data source for updates and index changes."
 		}
 	},
 	status: {
 		queued: "Queued",
 		ready: "Ready",
+		failed: "Failed",
 		error: "Error",
 		errors: "Errors",
 		errored: "Errored",
