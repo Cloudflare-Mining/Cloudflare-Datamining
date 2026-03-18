@@ -1,0 +1,1178 @@
+{
+	"POST /accounts/{account_id}/email/sending/send": {
+		"operationId": "email-sending-account-send-builder",
+		"parameters": [
+			{
+				"description": "Identifier of the account.",
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"description": "Identifier of the account.",
+					"type": "string"
+				}
+			}
+		],
+		"requestBody": {
+			"content": {
+				"application/json": {
+					"schema": {
+						"additionalProperties": false,
+						"example": {
+							"attachments": [
+								{
+									"content": "JVBERi0xLjQK...",
+									"disposition": "attachment",
+									"filename": "report.pdf",
+									"type": "application/pdf"
+								}
+							],
+							"from": "sender@example.com",
+							"html": "<h1>Hello</h1><p>Please find your report attached.</p>",
+							"subject": "Monthly Report",
+							"text": "Hello\n\nPlease find your report attached.",
+							"to": [
+								"recipient@example.com"
+							]
+						},
+						"properties": {
+							"attachments": {
+								"description": "File attachments and inline images.",
+								"items": {
+									"discriminator": {
+										"mapping": {
+											"attachment": "#/components/schemas/email-sending_EmailAttachment",
+											"inline": "#/components/schemas/email-sending_EmailInlineAttachment"
+										},
+										"propertyName": "disposition"
+									},
+									"oneOf": [
+										{
+											"example": {
+												"content": "iVBORw0KGgoAAAANSUhEUgAA...",
+												"content_id": "logo",
+												"disposition": "inline",
+												"filename": "logo.png",
+												"type": "image/png"
+											},
+											"properties": {
+												"content": {
+													"description": "Base64-encoded content of the attachment.",
+													"example": "iVBORw0KGgoAAAANSUhEUgAA...",
+													"type": "string"
+												},
+												"content_id": {
+													"description": "Content ID used to reference this attachment in HTML via cid: URI (e.g., <img src=\"cid:logo\">).",
+													"example": "logo",
+													"type": "string"
+												},
+												"disposition": {
+													"description": "Must be 'inline'. Indicates the attachment is embedded in the email body.",
+													"enum": [
+														"inline"
+													],
+													"type": "string"
+												},
+												"filename": {
+													"description": "Filename for the attachment.",
+													"example": "logo.png",
+													"type": "string"
+												},
+												"type": {
+													"description": "MIME type of the attachment (e.g., 'image/png', 'text/plain').",
+													"example": "image/png",
+													"type": "string"
+												}
+											},
+											"required": [
+												"disposition",
+												"content_id",
+												"filename",
+												"type",
+												"content"
+											],
+											"type": "object"
+										},
+										{
+											"example": {
+												"content": "JVBERi0xLjQK...",
+												"disposition": "attachment",
+												"filename": "report.pdf",
+												"type": "application/pdf"
+											},
+											"properties": {
+												"content": {
+													"description": "Base64-encoded content of the attachment.",
+													"example": "JVBERi0xLjQK...",
+													"type": "string"
+												},
+												"disposition": {
+													"description": "Must be 'attachment'. Indicates a standard file attachment.",
+													"enum": [
+														"attachment"
+													],
+													"type": "string"
+												},
+												"filename": {
+													"description": "Filename for the attachment.",
+													"example": "report.pdf",
+													"type": "string"
+												},
+												"type": {
+													"description": "MIME type of the attachment (e.g., 'application/pdf', 'text/plain').",
+													"example": "application/pdf",
+													"type": "string"
+												}
+											},
+											"required": [
+												"disposition",
+												"filename",
+												"type",
+												"content"
+											],
+											"type": "object"
+										}
+									]
+								},
+								"type": "array"
+							},
+							"bcc": {
+								"description": "BCC recipient(s). A single email string or an array of email strings.",
+								"oneOf": [
+									{
+										"description": "An email address as a plain string.",
+										"example": "user@example.com",
+										"type": "string"
+									},
+									{
+										"description": "A list of email address strings.",
+										"example": [
+											"recipient-a@example.com",
+											"recipient-b@example.com"
+										],
+										"items": {
+											"type": "string"
+										},
+										"type": "array"
+									}
+								]
+							},
+							"cc": {
+								"description": "CC recipient(s). A single email string or an array of email strings.",
+								"oneOf": [
+									{
+										"description": "An email address as a plain string.",
+										"example": "user@example.com",
+										"type": "string"
+									},
+									{
+										"description": "A list of email address strings.",
+										"example": [
+											"recipient-a@example.com",
+											"recipient-b@example.com"
+										],
+										"items": {
+											"type": "string"
+										},
+										"type": "array"
+									}
+								]
+							},
+							"from": {
+								"description": "Sender email address. Either a plain string or an object with address and name.",
+								"oneOf": [
+									{
+										"description": "An email address as a plain string.",
+										"example": "user@example.com",
+										"type": "string"
+									},
+									{
+										"example": {
+											"address": "user@example.com",
+											"name": "John Doe"
+										},
+										"properties": {
+											"address": {
+												"description": "Email address (e.g., 'user@example.com').",
+												"example": "user@example.com",
+												"type": "string"
+											},
+											"name": {
+												"description": "Display name for the email address (e.g., 'John Doe').",
+												"example": "John Doe",
+												"type": "string"
+											}
+										},
+										"required": [
+											"address",
+											"name"
+										],
+										"type": "object"
+									}
+								]
+							},
+							"headers": {
+								"additionalProperties": {
+									"type": "string"
+								},
+								"description": "Custom email headers as key-value pairs.",
+								"example": {
+									"X-Custom-Header": "value"
+								},
+								"type": "object"
+							},
+							"html": {
+								"description": "HTML body of the email. At least one of text or html must be provided.",
+								"example": "<h1>Hello</h1><p>Please find your report attached.</p>",
+								"type": "string"
+							},
+							"reply_to": {
+								"description": "Reply-to address. Either a plain string or an object with address and name.",
+								"oneOf": [
+									{
+										"description": "An email address as a plain string.",
+										"example": "user@example.com",
+										"type": "string"
+									},
+									{
+										"example": {
+											"address": "user@example.com",
+											"name": "John Doe"
+										},
+										"properties": {
+											"address": {
+												"description": "Email address (e.g., 'user@example.com').",
+												"example": "user@example.com",
+												"type": "string"
+											},
+											"name": {
+												"description": "Display name for the email address (e.g., 'John Doe').",
+												"example": "John Doe",
+												"type": "string"
+											}
+										},
+										"required": [
+											"address",
+											"name"
+										],
+										"type": "object"
+									}
+								]
+							},
+							"subject": {
+								"description": "Email subject line.",
+								"example": "Monthly Report",
+								"type": "string"
+							},
+							"text": {
+								"description": "Plain text body of the email. At least one of text or html must be provided.",
+								"example": "Hello\n\nPlease find your report attached.",
+								"type": "string"
+							},
+							"to": {
+								"description": "Recipient(s). A single email string or an array of email strings.",
+								"oneOf": [
+									{
+										"description": "An email address as a plain string.",
+										"example": "user@example.com",
+										"type": "string"
+									},
+									{
+										"description": "A list of email address strings.",
+										"example": [
+											"recipient-a@example.com",
+											"recipient-b@example.com"
+										],
+										"items": {
+											"type": "string"
+										},
+										"type": "array"
+									}
+								]
+							}
+						},
+						"required": [
+							"from",
+							"to",
+							"subject"
+						],
+						"type": "object"
+					}
+				}
+			},
+			"required": true
+		},
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"code": {
+												"type": "number"
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"messages": {
+									"items": {
+										"properties": {
+											"code": {
+												"type": "number"
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"result": {
+									"example": {
+										"delivered": [
+											"recipient@example.com"
+										],
+										"permanent_bounces": [],
+										"queued": []
+									},
+									"properties": {
+										"delivered": {
+											"description": "Email addresses to which the message was delivered immediately.",
+											"example": [
+												"recipient@example.com"
+											],
+											"items": {
+												"format": "email",
+												"type": "string"
+											},
+											"type": "array"
+										},
+										"permanent_bounces": {
+											"description": "Email addresses that permanently bounced.",
+											"example": [],
+											"items": {
+												"format": "email",
+												"type": "string"
+											},
+											"type": "array"
+										},
+										"queued": {
+											"description": "Email addresses for which delivery was queued for later.",
+											"example": [],
+											"items": {
+												"format": "email",
+												"type": "string"
+											},
+											"type": "array"
+										}
+									},
+									"required": [
+										"delivered",
+										"queued",
+										"permanent_bounces"
+									],
+									"type": "object"
+								},
+								"result_info": {
+									"properties": {
+										"count": {
+											"type": "number"
+										},
+										"cursor": {
+											"type": "string"
+										},
+										"page": {
+											"type": "number"
+										},
+										"per_page": {
+											"type": "number"
+										},
+										"total_count": {
+											"type": "number"
+										}
+									},
+									"required": [
+										"per_page",
+										"count",
+										"total_count"
+									],
+									"type": "object"
+								},
+								"success": {
+									"enum": [
+										true
+									],
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"result",
+								"messages"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Email sending results."
+			},
+			"400": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"code": {
+												"enum": [
+													"10001",
+													"10200",
+													"10201",
+													"10202"
+												],
+												"type": "string"
+											},
+											"message": {
+												"enum": [
+													"email.sending.error.invalid_request_schema",
+													"email.sending.error.email.invalid",
+													"email.sending.error.email.no_content_length",
+													"email.sending.error.email.too_big"
+												],
+												"type": "string"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"messages": {
+									"items": {
+										"type": "string"
+									},
+									"type": "array"
+								},
+								"result": {
+									"enum": [
+										null
+									],
+									"nullable": true,
+									"type": "object"
+								},
+								"success": {
+									"enum": [
+										false
+									],
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"messages",
+								"errors",
+								"result"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Invalid request, generally because of the format/content of the email send request. No email will be sent when this happens."
+			},
+			"403": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"code": {
+												"enum": [
+													10203
+												],
+												"type": "number"
+											},
+											"message": {
+												"enum": [
+													"email.sending.error.email.sending_disabled"
+												],
+												"type": "string"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"messages": {
+									"items": {
+										"type": "string"
+									},
+									"type": "array"
+								},
+								"result": {
+									"enum": [
+										null
+									],
+									"nullable": true,
+									"type": "object"
+								},
+								"success": {
+									"enum": [
+										false
+									],
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"messages",
+								"errors",
+								"result"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Email sending is disabled for this zone/account."
+			},
+			"429": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"code": {
+												"enum": [
+													10004
+												],
+												"type": "number"
+											},
+											"message": {
+												"enum": [
+													"email.sending.error.throttled"
+												],
+												"type": "string"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"messages": {
+									"items": {
+										"type": "string"
+									},
+									"type": "array"
+								},
+								"result": {
+									"enum": [
+										null
+									],
+									"nullable": true,
+									"type": "object"
+								},
+								"success": {
+									"enum": [
+										false
+									],
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"messages",
+								"errors",
+								"result"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Account/zone has surpassed the rate at which it can send email, please try again later. No email will be sent when this happens."
+			},
+			"500": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"code": {
+												"enum": [
+													10002
+												],
+												"type": "number"
+											},
+											"message": {
+												"enum": [
+													"email.sending.error.internal_server"
+												],
+												"type": "string"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"messages": {
+									"items": {
+										"type": "string"
+									},
+									"type": "array"
+								},
+								"result": {
+									"enum": [
+										null
+									],
+									"nullable": true,
+									"type": "object"
+								},
+								"success": {
+									"enum": [
+										false
+									],
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"messages",
+								"errors",
+								"result"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "An unexpected error while processing the email send request. No email will be sent when this happens."
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": [],
+				"api_token": []
+			}
+		],
+		"summary": "Send an email using the builder.",
+		"tags": [
+			"Email Sending"
+		],
+		"x-cfPermissionsRequired": {
+			"enum": [
+				"com.cloudflare.api.account.email.sending.create"
+			]
+		},
+		"x-cfPlanAvailability": {
+			"business": true,
+			"enterprise": true,
+			"free": false,
+			"pro": true
+		}
+	},
+	"POST /accounts/{account_id}/email/sending/send_raw": {
+		"operationId": "email-sending-account-send-raw-message",
+		"parameters": [
+			{
+				"description": "Identifier of the account.",
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"description": "Identifier of the account.",
+					"type": "string"
+				}
+			}
+		],
+		"requestBody": {
+			"content": {
+				"application/json": {
+					"schema": {
+						"additionalProperties": false,
+						"example": {
+							"from": "sender@example.com",
+							"mime_message": "From: sender@example.com\r\nTo: recipient@example.com\r\nSubject: Hello\r\nContent-Type: text/plain\r\n\r\nHello, World!",
+							"recipients": [
+								"recipient@example.com"
+							]
+						},
+						"properties": {
+							"from": {
+								"description": "Sender email address.",
+								"example": "sender@example.com",
+								"format": "email",
+								"type": "string"
+							},
+							"mime_message": {
+								"description": "The full MIME-encoded email message. Should include standard RFC 5322 headers such as From, To, Subject, and Content-Type. The from and recipients fields in the request body control SMTP envelope routing; the From and To headers in the MIME message control what the recipient's email client displays.",
+								"example": "From: sender@example.com\r\nTo: recipient@example.com\r\nSubject: Hello\r\nContent-Type: text/plain\r\n\r\nHello, World!",
+								"type": "string"
+							},
+							"recipients": {
+								"description": "List of recipient email addresses.",
+								"example": [
+									"recipient@example.com"
+								],
+								"items": {
+									"format": "email",
+									"type": "string"
+								},
+								"type": "array"
+							}
+						},
+						"required": [
+							"from",
+							"recipients",
+							"mime_message"
+						],
+						"type": "object"
+					}
+				}
+			},
+			"required": true
+		},
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"code": {
+												"type": "number"
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"messages": {
+									"items": {
+										"properties": {
+											"code": {
+												"type": "number"
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"result": {
+									"example": {
+										"delivered": [
+											"recipient@example.com"
+										],
+										"permanent_bounces": [],
+										"queued": []
+									},
+									"properties": {
+										"delivered": {
+											"description": "Email addresses to which the message was delivered immediately.",
+											"example": [
+												"recipient@example.com"
+											],
+											"items": {
+												"format": "email",
+												"type": "string"
+											},
+											"type": "array"
+										},
+										"permanent_bounces": {
+											"description": "Email addresses that permanently bounced.",
+											"example": [],
+											"items": {
+												"format": "email",
+												"type": "string"
+											},
+											"type": "array"
+										},
+										"queued": {
+											"description": "Email addresses for which delivery was queued for later.",
+											"example": [],
+											"items": {
+												"format": "email",
+												"type": "string"
+											},
+											"type": "array"
+										}
+									},
+									"required": [
+										"delivered",
+										"queued",
+										"permanent_bounces"
+									],
+									"type": "object"
+								},
+								"result_info": {
+									"properties": {
+										"count": {
+											"type": "number"
+										},
+										"cursor": {
+											"type": "string"
+										},
+										"page": {
+											"type": "number"
+										},
+										"per_page": {
+											"type": "number"
+										},
+										"total_count": {
+											"type": "number"
+										}
+									},
+									"required": [
+										"per_page",
+										"count",
+										"total_count"
+									],
+									"type": "object"
+								},
+								"success": {
+									"enum": [
+										true
+									],
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"result",
+								"messages"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Email sending results."
+			},
+			"400": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"code": {
+												"enum": [
+													"10001",
+													"10200",
+													"10201",
+													"10202"
+												],
+												"type": "string"
+											},
+											"message": {
+												"enum": [
+													"email.sending.error.invalid_request_schema",
+													"email.sending.error.email.invalid",
+													"email.sending.error.email.no_content_length",
+													"email.sending.error.email.too_big"
+												],
+												"type": "string"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"messages": {
+									"items": {
+										"type": "string"
+									},
+									"type": "array"
+								},
+								"result": {
+									"enum": [
+										null
+									],
+									"nullable": true,
+									"type": "object"
+								},
+								"success": {
+									"enum": [
+										false
+									],
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"messages",
+								"errors",
+								"result"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Invalid request, generally because of the format/content of the email send request. No email will be sent when this happens."
+			},
+			"403": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"code": {
+												"enum": [
+													10203
+												],
+												"type": "number"
+											},
+											"message": {
+												"enum": [
+													"email.sending.error.email.sending_disabled"
+												],
+												"type": "string"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"messages": {
+									"items": {
+										"type": "string"
+									},
+									"type": "array"
+								},
+								"result": {
+									"enum": [
+										null
+									],
+									"nullable": true,
+									"type": "object"
+								},
+								"success": {
+									"enum": [
+										false
+									],
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"messages",
+								"errors",
+								"result"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Email sending is disabled for this zone/account."
+			},
+			"429": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"code": {
+												"enum": [
+													10004
+												],
+												"type": "number"
+											},
+											"message": {
+												"enum": [
+													"email.sending.error.throttled"
+												],
+												"type": "string"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"messages": {
+									"items": {
+										"type": "string"
+									},
+									"type": "array"
+								},
+								"result": {
+									"enum": [
+										null
+									],
+									"nullable": true,
+									"type": "object"
+								},
+								"success": {
+									"enum": [
+										false
+									],
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"messages",
+								"errors",
+								"result"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Account/zone has surpassed the rate at which it can send email, please try again later. No email will be sent when this happens."
+			},
+			"500": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"code": {
+												"enum": [
+													10002
+												],
+												"type": "number"
+											},
+											"message": {
+												"enum": [
+													"email.sending.error.internal_server"
+												],
+												"type": "string"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"messages": {
+									"items": {
+										"type": "string"
+									},
+									"type": "array"
+								},
+								"result": {
+									"enum": [
+										null
+									],
+									"nullable": true,
+									"type": "object"
+								},
+								"success": {
+									"enum": [
+										false
+									],
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"messages",
+								"errors",
+								"result"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "An unexpected error while processing the email send request. No email will be sent when this happens."
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": [],
+				"api_token": []
+			}
+		],
+		"summary": "Send a raw MIME email message.",
+		"tags": [
+			"Email Sending"
+		],
+		"x-cfPermissionsRequired": {
+			"enum": [
+				"com.cloudflare.api.account.email.sending.create"
+			]
+		},
+		"x-cfPlanAvailability": {
+			"business": true,
+			"enterprise": true,
+			"free": false,
+			"pro": true
+		}
+	}
+}
