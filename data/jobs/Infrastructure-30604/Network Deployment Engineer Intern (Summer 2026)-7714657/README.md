@@ -5,20 +5,31 @@
 		<p>At Cloudflare, we’re not looking for people who wait for a polished roadmap; we’re looking for the builders who see the cracks in the Internet that everyone else has simply learned to live with. We value candidates who have the instinct to spot a "normalized" problem and the AI-native curiosity to create a solution using the latest tools. Our culture is built on iteration, leveraging AI to ship faster today to make it better tomorrow, while ensuring that every improvement, no matter how small, is shared across the team to lift everyone up. If you’re the type of person who values curiosity over bureaucracy, and that AI is a partner in solving tough problems to keep the Internet moving forward, you’ll fit right in.</p>
 	</div>
 </div>
-<h3><strong>Locations: Austin, TX | London, UK</strong></h3>
-<h3><strong>About the Department</strong></h3>
-<p>At Cloudflare, the <strong>Emerging Technologies &amp; Incubation (ETI)</strong> department is our innovation engine. This is where we conceive, build, and launch groundbreaking new products that leverage Cloudflare's unique global network and edge capabilities. Free from the constraints of established business structures, ETI teams harness Cloudflare's massive scale and efficiency to deliver entirely new tools and solutions to our customers—solving problems that would be impossible for almost any other organization. Join us to work on the bleeding edge of internet technology.</p>
-<h3><strong>About the Team: R2</strong></h3>
-<p>The <strong>R2 team</strong> is at the heart of Cloudflare's developer platform, building and maintaining our robust object storage solution. R2 provides developers with a durable, reliable, and highly integrated storage platform that seamlessly connects with Cloudflare Workers and our broader compute ecosystem. We are responsible for foundational infrastructure that operates at an immense scale, powering critical workloads across Cloudflare's global network. Our work involves designing and maintaining sophisticated distributed systems that ensure high throughput, strong consistency, and unparalleled durability, all while supporting a rapidly expanding suite of developer-facing features.</p>
-<p>You'll be joining a <strong>highly motivated and collaborative team</strong> that owns the <strong>full stack of R2</strong>. We thrive on tackling the most complex challenges in distributed systems, with an unwavering focus on reliability, performance, and global scale.</p>
-<h3><strong>What You'll Do</strong></h3>
-<p>As a key technical leader on the R2 team, you will:</p>
+<p><strong>Available location(s): Singapore</strong></p>
+<p><strong>About the Team &amp; Role</strong>&nbsp;</p>
+<p>In this role, you will help support the build-out and expansion of our global network. As an intern, you will be paired with a dedicated mentor from the Network Deployment team who will guide you through the end-to-end lifecycle of infrastructure planning and execution.</p>
+<p>This is a highly practical, hands-on opportunity designed to bridge the gap between academic theory and real-world application. You will take ownership of small-scale network deployment projects, write scripts to automate our workflows, and physically deploy hardware in local data centers. If you are eager to learn, willing to get your hands dirty, and want to help build a faster, safer Internet for millions of users, this is the place for you.</p>
+<p><strong>About the Internship Program</strong></p>
+<p><strong>As a Network Deployment Engineering intern on the Infrastructure Team, you will…</strong></p>
 <ul>
-	<li><strong>Define Technical Direction:</strong> Architect and set the technical strategy for some of Cloudflare's most critical and complex infrastructure projects within R2.</li>
-	<li><strong>Drive Architectural Decisions:</strong> Lead large-scale architectural discussions and decisions that impact multiple teams and services across Cloudflare.</li>
-	<li><strong>Engineer Scalable Systems:</strong> Design, implement, and optimize distributed systems that operate reliably under extreme load and at massive, global scale.</li>
-	<li><strong>Solve Ambiguous Problems:</strong> Lead technical investigations, breaking down complex and ambiguous challenges into clear, actionable plans.</li>
-	<li><strong>Foster Collaboration:</strong> Work closely with engineers across various teams, product managers, and infrastructure stakeholders to align goals, drive consensus, and ensure timely delivery.</li>
+	<li><strong>Mentored Project Execution:</strong> Take ownership of small-scale network deployment projects from planning to turn-up, under the close guidance of a senior engineering mentor.</li>
+	<li><strong>Hands-On Field Deployment:</strong> Get away from the keyboard! Visit local data centers to perform physical deployment activities, including racking and stacking hardware, running cables, and troubleshooting physical layer issues.</li>
+	<li><strong>Scripting &amp; Automation:</strong> Work on simple scripting or automation projects (using Python, Bash, or automation frameworks) to eliminate manual tasks, build internal tools or workflows and improve our team's deployment speed.</li>
+	<li><strong>Remote Administration:</strong> Assist with server administration tasks remotely using IPMI/BMC tools, including server provisioning, monitoring, and firmware updates.</li>
+	<li><strong>Network Configuration:</strong> Support the team in preparing and pushing network configurations for greenfield deployments and brownfield migrations.</li>
+	<li><strong>Vendor Coordination:</strong> Help coordinate with remote contractors, datacenter providers, and logistics partners during hardware installations across our 700+ global locations.</li>
+</ul>
+<p><strong>Documentation:</strong> Assist in creating and updating vital documentation, including Standard Operating Procedures (SOPs) and Methods of Procedure (MOPs).</p>
+<p>You can check out our <a href="https://blog.cloudflare.com/tag/internship-experience/">internship blogs</a> to learn more about our program and hear directly from our past interns.</p>
+<p><strong>Examples of desirable skills, knowledge and experience</strong></p>
+<ul>
+	<li>Currently enrolled in (or recently graduated from) a Bachelor’s or Master’s degree program in Computer Science, Telecommunications, Network Engineering, Information Systems, or a related field.</li>
+	<li><strong>Foundational Knowledge:</strong> Solid academic understanding of the OSI model, basic network protocols (TCP/IP, DNS, DHCP), and network topologies.</li>
+	<li><strong>Coding/Scripting Basics:</strong> Introductory experience with at least one scripting language (like Python or Bash) and a strong desire to learn how to apply it to infrastructure automation.</li>
+	<li><strong>Hands-On Mentality:</strong> Comfort with physical labor in a data center environment (lifting hardware, running cables, working in noisy/cooled environments).</li>
+	<li><strong>Linux Basics:</strong> Familiarity with basic Linux/Unix command-line navigation and troubleshooting.</li>
+	<li>Ability to commit to a minimum 12 week summer internship.</li>
+	<li>In office 3-5 days a week in Singapore.</li>
 </ul>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>

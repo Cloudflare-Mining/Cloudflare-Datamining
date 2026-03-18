@@ -5,58 +5,40 @@
 		<p>At Cloudflare, we’re not looking for people who wait for a polished roadmap; we’re looking for the builders who see the cracks in the Internet that everyone else has simply learned to live with. We value candidates who have the instinct to spot a "normalized" problem and the AI-native curiosity to create a solution using the latest tools. Our culture is built on iteration, leveraging AI to ship faster today to make it better tomorrow, while ensuring that every improvement, no matter how small, is shared across the team to lift everyone up. If you’re the type of person who values curiosity over bureaucracy, and that AI is a partner in solving tough problems to keep the Internet moving forward, you’ll fit right in.</p>
 	</div>
 </div>
-<h3><strong>Available Locations: Austin, TX | Seattle, WA | London, UK</strong></h3>
-<h3><strong>About the Team: R2</strong></h3>
-<p>R2 is Cloudflare's object storage platform and one of the fastest-growing products in the company's history. The Gateway team owns the surface area that developers interact with: the S3-compatible API, Workers bindings, data migration tools, public buckets, custom domains, event notifications, and the tooling that ties it all together. R2 is experiencing explosive growth with some of the most demanding workloads on the internet, and there is still a lot to build. If a developer touches R2, they're touching code the Gateway team wrote.</p>
-<h3><strong>What You'll Do</strong></h3>
-<p>As the Engineering Manager for the R2 Gateway team, you will own the developer experience of R2. You will lead and grow the team, setting technical direction and hiring to expand. Your team is responsible for a wide surface area, from API compatibility and Workers integration to data migration and custom domains, and you'll thrive on navigating across these domains. You will be the face of R2 for developers: engaging with customers in chat, joining calls with R2's largest accounts, writing blog posts, and often being the go-to person for internal teams building on R2. You will drive a roadmap that balances feature delivery with the reliability and performance work that keeps R2 trustworthy, shipping features that leverage Cloudflare's global network in ways other object stores cannot.</p>
-<h3><strong>Examples of Desirable Skills, Knowledge and Experience</strong></h3>
+<p><strong>Available Locations: Austin, TX</strong></p>
+<p><strong>About the Role</strong></p>
+<p>Our US Public Sector Segment is investing in our U.S. SLED Region Go To Market team to grow Cloudflare’s market share across State, Local, and Education customers and prospects. While an emerging market for Cloudflare, the SLED Regional Manager will have a foundation of successful sales and deployments across government and education to build upon.&nbsp;</p>
+<p><strong>What you’ll do</strong></p>
+<p>As the SLED Senior Manager: you will lead our US SLED Mid Market team reporting directly to the Head of US SLED Sales. We are seeking a highly experienced and talented SLED Go To Market Leader to help us manage and grow the organization with overall responsibility for driving Cloudflare's revenue, hiring and brand awareness while maintaining the Cloudflare Culture. Change Agents, Builders, and Evangelists interested in continuing Cloudflare’s journey towards becoming a world class SLED GTM organization will thrive in this role and environment.</p>
 <ul>
-	<li>Minimum 5 years of software engineering experience, with experience building or operating developer-facing data systems (object stores, databases, message queues, or similar).</li>
-	<li>Experience leading engineering teams, either as a manager or as a senior technical lead. We are open to both experienced managers and strong engineers stepping into management.</li>
-	<li>A track record of shipping developer-facing features where API design, ergonomics, and migration experience meaningfully impacted adoption.</li>
-	<li>Comfort engaging directly with developers through customer calls, community forums, blog posts, or open-source. You're energized by understanding how developers actually use your product.</li>
-	<li>Familiarity with distributed systems concepts. The Gateway codebase is primarily TypeScript on Cloudflare Workers, with Go in adjacent services.</li>
+	<li>Drive sales growth through successful leadership, organizational planning, customer service, and outstanding execution of all regional go-to-market programs (sales, channel, customer success, solutions engineering, business development, support and field marketing).</li>
+	<li>Lead a diverse sales team supporting volume and velocity sales motions across State, Local and Education (HiEd and K-12) accounts</li>
+	<li>Continue to grow and build the U.S. Sales team and drive the hiring needs through partnering with global functional leadership and recruiting resources.</li>
+	<li>Adopt and influence the company's sales methodology/process and drive best practices on selling, forecasting, and account management.</li>
+	<li>Represent Cloudflare as the single point of contact for all operational concerns, ensuring proper and timely escalation and resolution.</li>
+	<li>Ensure that corporate policy and regulatory initiatives are consistently applied and followed by the sales organization.</li>
+	<li>Drive business cadence for forecast calls, functional review meetings, deal review, customer account reviews, weekly team meetings and periodic company-wide kick offs.</li>
+	<li>Represent Cloudflare as appropriate at external conferences, media and PR events. Maintain relationships with the NASCIO, NASTD, and other related associations.</li>
+	<li>Travel within the U.S. will be expected.</li>
 </ul>
-<h3><strong>Bonus Points</strong></h3>
+<p><strong>Examples of desired skills, knowledge and qualifications</strong></p>
 <ul>
-	<li>Experience with S3-compatible APIs, object storage systems, or cloud storage platforms.</li>
-	<li>Experience building or improving data migration tools where the goal was making a complex process feel simple.</li>
-	<li>Experience working with edge networks or CDN architecture.</li>
-	<li>Experience growing a team through hiring while delivering on an ambitious roadmap.</li>
+	<li>Minimum 5 years of senior level sales leadership experience, coupled with 10+ years of selling experience to a wide variety of SLED accounts.</li>
+	<li>Experience managing longer, complex sales cycles but driving a quarterly cadence.</li>
+	<li>Experience driving velocity sales activities within the SLED market.</li>
+	<li>Established relationships with partner communities working with SLED organizations.</li>
+	<li>Proven ability to sell solutions to strategic customers.</li>
+	<li>Strong understanding of sales process/methodology, pipeline management, accurate forecasting and delivering results quarterly.</li>
+	<li>Individuals that have been promoted to sales leadership within companies is a plus with a proven track record of significant over-quota achievement and demonstrated career stability.</li>
+	<li>Experience in network performance and security, “how the Internet works”, corporate networking and SD-WAN as well as industry concepts such as Zero Trust and SASE.</li>
+	<li>Aptitude for learning technical concepts/terms (technical background in engineering, computer science, or IT is a plus).</li>
+	<li>Strong interpersonal communication and organizational skills.</li>
+	<li>Excellent presentation skills to executives &amp; individual contributors.</li>
+	<li>Self-motivated, entrepreneurial spirit, and start-up experience are a plus.</li>
+	<li>Comfortable working in a fast paced dynamic environment.</li>
 </ul>
-<h3><strong>Compensation</strong></h3>
-<p>Compensation may be adjusted depending on work location.</p>
-<ul>
-	<li>For New York City, New Jersey, Washington, Washington DC, and California (excluding Bay Area) based hires: Estimated annual salary of $220,000 - $303,000</li>
-</ul>
-<h3><strong>Equity</strong></h3>
-<p>This role is eligible to participate in Cloudflare’s equity plan.</p>
-<h3><strong>Benefits</strong></h3>
-<p>Cloudflare offers a complete package of benefits and programs to support you and your family.&nbsp; Our benefits programs can help you pay health care expenses, support caregiving, build capital for the future and make life a little easier and fun!&nbsp; The below is a description of our benefits for employees in the United States, and benefits may vary for employees based outside the U.S.</p>
-<h3><strong>Health &amp; Welfare Benefits</strong></h3>
-<ul>
-	<li>Medical/Rx Insurance</li>
-	<li>Dental Insurance</li>
-	<li>Vision Insurance</li>
-	<li>Flexible Spending Accounts</li>
-	<li>Commuter Spending Accounts</li>
-	<li>Fertility &amp; Family Forming Benefits</li>
-	<li>On-demand mental health support and Employee Assistance Program</li>
-	<li>Global Travel Medical Insurance</li>
-</ul>
-<h3><strong>Financial Benefits</strong></h3>
-<ul>
-	<li>Short and Long Term Disability Insurance</li>
-	<li>Life &amp; Accident Insurance</li>
-	<li>401(k) Retirement Savings Plan</li>
-	<li>Employee Stock Participation Plan</li>
-</ul>
-<h3><strong>Time Off</strong></h3>
-<ul>
-	<li>Flexible paid time off covering vacation and sick leave</li>
-	<li>Leave programs, including parental, pregnancy health, medical, and bereavement leave</li>
-</ul>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
 	<p><span style="font-weight: 400;">We’re not just a highly ambitious, large-scale technology company. We’re a highly ambitious, large-scale technology company with a soul. Fundamental to our mission to help build a better Internet is protecting the free and open Internet.</span></p>
