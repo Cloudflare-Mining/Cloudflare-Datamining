@@ -5,36 +5,29 @@
 		<p>At Cloudflare, we’re not looking for people who wait for a polished roadmap; we’re looking for the builders who see the cracks in the Internet that everyone else has simply learned to live with. We value candidates who have the instinct to spot a "normalized" problem and the AI-native curiosity to create a solution using the latest tools. Our culture is built on iteration, leveraging AI to ship faster today to make it better tomorrow, while ensuring that every improvement, no matter how small, is shared across the team to lift everyone up. If you’re the type of person who values curiosity over bureaucracy, and that AI is a partner in solving tough problems to keep the Internet moving forward, you’ll fit right in.</p>
 	</div>
 </div>
-<p><strong>Available Location : </strong>Austin, TX (Hybrid)</p>
-<p><strong>Role Summary</strong></p>
-<p>Reporting to the Vulnerability Manager, the VM&nbsp; Engineer will be responsible for identifying, analysing, and supporting the remediation of vulnerabilities across Cloudflare's Infrastructure and cloud environments.You will work closely with Engineering, Infrastructure, cloud and compliance teams to identify, triage, and drive timely and effective remediation of security vulnerabilities in line with defined SLAs. A key focus of the role will be supporting DOD IL4 and Fedramp preparation, ensuring vulnerability processes, evidence, and tooling align with regulatory and assurance requirements. We are looking for a proactive, detail oriented individual with the ability to manage multiple remediation activities in parallel.</p>
-<p><strong>Role Responsibilities</strong></p>
+<p><strong>Available Locations:&nbsp;</strong>Hybrid - Lisbon or London</p>
+<h2>About Product Management at Cloudflare</h2>
+<p>As a Product Manager at Cloudflare, you are responsible for building products that improve the way that the Internet works. Product Managers at Cloudflare sit at the intersection of software development, design, and business strategy. We shape high-level product goals but also get our hands dirty. On an average day, you might pitch a concept to senior leadership, create a launch plan with marketing, work with designers to conduct user research, prototype a new feature, iterate on a spec, analyze usage data, or pair with an engineer on implementation. We have ultimate responsibility for understanding our client needs, influencing business strategy, feature specification, and working with engineering to develop our software.</p>
+<h3>About the Role</h3>
+<p>As a Product Manager at Cloudflare, you will be responsible for building products that improve the way that the Internet works. Product Managers at Cloudflare shape high-level product goals but also get our hands dirty. On an average day, you might pitch a concept to senior leadership, collaborate with marketing, work with designers to conduct user research, prototype a new feature, iterate on a spec, analyze usage data, and pair with an engineer on implementation.</p>
+<p>We are seeking a strategic and technical Senior Product Manager to lead the vision, strategy, and evolution of our DDoS Protection portfolio. Your mission is to seamlessly block volumetric attacks and ensure the availability and resilience of the world’s most critical infrastructure against increasingly sophisticated and massive-scale disruptions. In this role, you will own the end-to-end roadmap for our mitigation engines, balancing automated, high-performance defense with the granular control required by global enterprises.</p>
+<p>You will be responsible for translating the rapidly shifting threat landscape (from massive terabit-scale floods to complex Layer 7 resource exhaustion) into intuitive, "set-and-forget" protection features. Beyond technical execution, you will serve as a bridge between engineering excellence and market success, working closely with Sales, Customer Success and our Customers to drive adoption and defend our position as a market leader. Your success will be measured by the seamless efficacy of our mitigation platform.</p>
+<p>You will:</p>
 <ul>
-	<li>Conduct vulnerability scanning, and perform in-depth analysis of&nbsp; findings from scanning tools (e.g., Qualys, Nessus, Rapid7), to verify accuracy, identify systemic patterns, and filter out false positives.</li>
-	<li>Triage, validate and prioritise vulnerabilities using risk based approaches to determine real business impact, and working with engineering and compliance teams to agree remediation actions and timelines.</li>
-	<li>Develop, document, and deliver technical remediation guidance and solutions to enable application and infrastructure teams to remediate efficiently and consistently.</li>
-	<li>Support DOD IL4 and Fedramp preparation, by ensuring vulnerability management processes, evidence, reporting, and controls meet regulatory and assurance expectations.</li>
-	<li>Work closely with engineering and service teams to embed vulnerability management into delivery pipelines , operational processes and change management.&nbsp;</li>
-	<li>Establish strong relationships with engineering teams to track and report status and remediation progress</li>
-	<li>Manage and track the remediation backlog, maintaining focus on risk reduction and measurable progress.</li>
-	<li>Contribute to the continuous improvement of vulnerability management standards, procedures, and playbooks, ensuring alignment with IL4, Fedramp and other compliance requirements.</li>
+	<li>Own your space. You will own the priorities and scope for a high performing engineering team focusing on detecting large scale global volumetric attacks.&nbsp;</li>
+	<li>Connect the pieces. Product managers are a nerve center at Cloudflare, responsible for connecting engineering, program management, marketing, revenue, and partners to make sure that our ships go out on time and with the maximum impact.&nbsp;</li>
+	<li>Excel across teams. Enterprise capabilities cut across all of our product verticals, so you should be comfortable working with product managers across the company to prioritize systemic improvements that our enterprise customers need.</li>
+	<li>Be customer obsessed. You will be responsible for directly engaging with customers and understanding how they use our products. You’ll bring these insights back to the team to build a great roadmap.&nbsp;</li>
+	<li>Join pre-sales and post-sales calls with customers, sales, support, etc., to assist with, and help understand all phases of the customer lifecycle</li>
+	<li>Be data driven. You should be comfortable working with data, and analyzing data to quantify the impact of problems and opportunities in your space.&nbsp;</li>
 </ul>
-<p><strong>Role Requirements (Must-Have Skills)</strong></p>
-<p><strong>Must-Have Skills</strong></p>
+<h3>Key qualifications and skills</h3>
 <ul>
-	<li>Solid understanding of DoD Impact level IL4, FedRAMP, SOC-2, and PCI&nbsp; frameworks.</li>
-	<li>3+ years&nbsp; Vulnerability Management experience in a heavily regulated environment.</li>
-	<li>Bachelor's degree in Computer Science, Information Security, or security certifications in a related field.</li>
-	<li>Strong communication (written and verbal) and interpersonal skills, with the ability to effectively collaborate with technical and non-technical teams.</li>
-	<li>A strong understanding of CVSS (Common Vulnerability Scoring System) and how to apply risk assessment methodologies in a business context to support remediation..</li>
-	<li>Hands-on experience with vulnerability scanning platforms (e.g., Qualys, Nessus, Rapid7 InsightVM).</li>
-	<li>Strong analytical skills to identify patterns in data and distinguish between theoretical risk and actual exploitability.</li>
-</ul>
-<p><strong>Nice-to-Have Skills</strong></p>
-<ul>
-	<li>Experience with scripting languages (e.g., Python) for automation.</li>
-	<li>Proficiency in using ticketing tools like JIRA for managing tickets and tasks.</li>
-	<li>Hands on experience with Infrastructure pentesting tools.</li>
+	<li>5+ years of experience as a product manager delivering solutions in the cloud at scale for a technical audience&nbsp;</li>
+	<li>Customer focus. At Cloudflare, we serve the needs of customers large and small, and our product managers need to be comfortable understanding how to design for enterprises without compromising the experience for individuals and small businesses.&nbsp;</li>
+	<li>Stakeholder management. You should bring hands-on experience in managing complex escalations and leading high-profile engagements (such as Quarterly Business Reviews). This includes delivering product updates to executive stakeholders (both internal and external), maintaining proactive communication during incidents, setting clear and realistic expectations, and driving cross-functional initiatives.</li>
+	<li>Technical Acumen. You must have the ability to grasp complex technical concepts and be able to effectively translate these complex ideas for customers through various channels, including calls, blog posts, and reports. You must be comfortable engaging in deep technical discussions with engineering teams.</li>
+	<li>Preferred: candidate with professional experience in DDoS mitigation, network security, and/or general networking concepts.</li>
 </ul>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>

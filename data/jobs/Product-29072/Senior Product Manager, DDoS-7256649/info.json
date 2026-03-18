@@ -1,5 +1,5 @@
 {
-	"absolute_url": "https://boards.greenhouse.io/cloudflare/jobs/7579269?gh_jid=7579269",
+	"absolute_url": "https://boards.greenhouse.io/cloudflare/jobs/7256649?gh_jid=7256649",
 	"data_compliance": [
 		{
 			"type": "gdpr",
@@ -10,8 +10,7 @@
 			"demographic_data_consent_applies": false
 		}
 	],
-	"education": "education_optional",
-	"internal_job_id": 3350949,
+	"internal_job_id": 3248881,
 	"location": {
 		"name": "Hybrid"
 	},
@@ -19,14 +18,15 @@
 		{
 			"id": 825338,
 			"name": "Cost Center",
-			"value": "4700 - Security",
+			"value": "4400 - Product",
 			"value_type": "single_select"
 		},
 		{
 			"id": 8654220,
 			"name": "Job Posting Location",
 			"value": [
-				"Austin, US"
+				"Lisbon, Portugal",
+				"London, UK"
 			],
 			"value_type": "multi_select"
 		},
@@ -34,33 +34,40 @@
 			"id": 46546702,
 			"name": "Career Site Department",
 			"value": [
-				"Security"
+				"Product"
 			],
 			"value_type": "multi_select"
 		}
 	],
-	"id": 7579269,
-	"updated_at": "2026-02-06T10:04:45-05:00",
-	"requisition_id": "773",
-	"title": "Vulnerability Management Engineer",
+	"id": 7256649,
+	"updated_at": "2026-03-18T11:29:45-04:00",
+	"requisition_id": null,
+	"title": "Senior Product Manager, DDoS",
 	"company_name": "Cloudflare",
-	"first_published": "2026-02-05T16:31:40-05:00",
+	"first_published": "2025-09-18T03:37:40-04:00",
 	"language": "en",
 	"departments": [
 		{
-			"id": 54562,
-			"name": "Security",
+			"id": 29072,
+			"name": "Product",
 			"child_ids": [],
 			"parent_id": null
 		}
 	],
 	"offices": [
 		{
-			"id": 19983,
-			"name": "Austin, TX",
-			"location": "Austin, TX, United States",
+			"id": 19988,
+			"name": "London, United Kingdom",
+			"location": "London, United Kingdom",
 			"child_ids": [],
-			"parent_id": 48752
+			"parent_id": 74843
+		},
+		{
+			"id": 63782,
+			"name": "Lisbon, Portugal",
+			"location": "Lisboa, Lisboa, Portugal",
+			"child_ids": [],
+			"parent_id": 74843
 		}
 	]
 }
