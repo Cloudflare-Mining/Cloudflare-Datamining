@@ -4,7 +4,7 @@
 	api_tokens: "API Tokens",
 	api_spec: "API Spec",
 	api_spec_description: "Review the Workers AI API spec to build your application using the REST API",
-	beta_banner: (0, o.p)(i()),
+	beta_banner: (0, i.p)(a()),
 	build_your_first_ai_application: "Build your AI application",
 	browse_model_catalog: "Browse Model Catalog",
 	authors: "Authors",
@@ -23,24 +23,24 @@
 			cost: "All Models",
 			neuros: "All Models"
 		},
-		period: (0, o.p)(a(), "days", "iniDate"),
-		daily_usage: (0, o.p)(l(), "neuronsUsed"),
-		daily_usage_with_limit: (0, o.p)(c(), "neuronsUsed", "neuronsDailyLimit"),
+		period: (0, i.p)(s(), "days", "iniDate"),
+		daily_usage: (0, i.p)(l(), "neuronsUsed"),
+		daily_usage_with_limit: (0, i.p)(c(), "neuronsUsed", "neuronsDailyLimit"),
 		usage_message: "Daily usage (resets at 00:00 UTC)",
-		neurons_summary: (0, o.p)(u(), "neuronsTotal")
+		neurons_summary: (0, i.p)(u(), "neuronsTotal")
 	},
 	models: {
 		labels: {
 			beta: "Beta",
 			lora: "LoRA",
 			function_calling: "Function calling",
-			deprecating: (0, o.p)(d(), "date"),
+			deprecating: (0, i.p)(d(), "date"),
 			max_content: "max context",
 			async_queue: "Batch"
 		},
-		date_added: (0, o.p)(p(), "date"),
-		created_at: (0, o.p)(m(), "date"),
-		pricing: (0, o.p)(_())
+		date_added: (0, i.p)(_(), "date"),
+		created_at: (0, i.p)(p(), "date"),
+		pricing: (0, i.p)(m())
 	},
 	sidebar: {
 		cost_summary: {
@@ -72,14 +72,14 @@
 		},
 		neurons_card: {
 			title: "Estimated Daily Neurons",
-			neurons_tooltip: (0, o.p)(f(), "neurons_daily_total", "neurons_daily_total", "neurons_coefficient", "neurons_daily_total"),
-			note: (0, o.p)(g())
+			neurons_tooltip: (0, i.p)(f(), "neurons_daily_total", "neurons_daily_total", "neurons_coefficient", "neurons_daily_total"),
+			note: (0, i.p)(g())
 		},
 		neurons: "Neurons",
 		today: "Today"
 	},
 	banner: {
-		daily_neuron_exceeded: (0, o.p)(h(), "neuronLimit")
+		daily_neuron_exceeded: (0, i.p)(h(), "neuronLimit")
 	},
 	pagination: {
 		models: {
@@ -103,7 +103,10 @@
 		input: "Input",
 		output: "Output",
 		model_details: "Model Details",
+		context_length: "Context length",
 		context_window: "Context Window",
+		max_output: "Max output",
+		batch_support: "Batch support",
 		tokens: "tokens",
 		unit_pricing: "Unit Pricing",
 		terms: "Terms",
@@ -111,7 +114,13 @@
 		resources: "Resources",
 		documentation: "Documentation",
 		pricing_details: "Pricing Details",
-		copy_id: "Copy ID"
+		pricing: "Pricing",
+		model_info: "Model Info",
+		parameters: "Parameters",
+		api_details: "API Details",
+		quick_start: "Quick Start",
+		copy_id: "Copy ID",
+		generate_api_token: "Generate API Token"
 	},
 	common: {
 		no_data: "No data available"
@@ -133,7 +142,7 @@
 		no_results_found: "No results found",
 		sort_by_name: "Name",
 		sort_by_date_added: "Date added",
-		models_found: (0, o.p)(v(), "count")
+		models_found: (0, i.p)(k(), "count")
 	},
 	create_ai_worker: "Create an AI Model Worker",
 	create_ai_worker_description: "Choose an AI application template.",
@@ -143,7 +152,7 @@
 	create_workers_ai_api_token: "Create a Workers AI API Token",
 	create_workers_ai_api_token_description: "Get read and edit access to the <0>Workers AI REST API</0>",
 	get_api_token: "Get API Token",
-	get_api_token_description: "To use Workers AI API, create a custom token with the correct *Read* permissions:",
+	get_api_token_description: "To use Cloudflare AI with a client or the REST API, create a custom token.",
 	get_account_id_header: "Get Account ID",
 	get_account_id_description: "Use this account ID to make API calls to the Workers AI REST API.",
 	join_waitlist: "Join Waitlist",
@@ -155,11 +164,11 @@
 	},
 	model_catalog: "Model Catalog",
 	using_workers_ai_rest_api: "Using Workers AI REST API",
-	using_workers_ai_rest_api_description: (0, o.p)(y()),
+	using_workers_ai_rest_api_description: (0, i.p)(A()),
 	product_title: "Workers AI",
 	models_title: "Models",
 	models_tagline: "Browse and discover AI models available through Cloudflare",
-	provided_by: (0, o.p)(w(), "provider"),
+	provided_by: (0, i.p)(y(), "provider"),
 	request_access: "Request access",
 	reserve_a_full_access_seat: "Reserve spot on waitlist",
 	reserve_a_full_access_seat_description: "Join the waitlist for access to production scale Workers AI ",
@@ -207,10 +216,10 @@
 	workers_ai_examples_description: "Get inspired by projects build by the Cloudflare developer community ",
 	workers_ai_workers_templates: "Create from a Worker Template",
 	workers_ai_workers_templates_description: "Select from a set of model or task specific templates to deploy a Workers AI Worker",
-	use_rest_api: "{ } REST API",
+	use_rest_api: "REST API",
 	using_templates: "Build and deploy a Llama 3 Worker",
 	using_templates_description: "Get started with everything you need to run a Llama 3 model from a Worker.",
-	workers_ai_pricing_default: (0, o.p)(b(), "neurons_coefficient", "neurons_daily_total"),
+	workers_ai_pricing_default: (0, i.p)(I(), "neurons_coefficient", "neurons_daily_total"),
 	learn_more: "Learn More",
 	modelTasks: {
 		"Feature Extraction": "Feature Extraction",

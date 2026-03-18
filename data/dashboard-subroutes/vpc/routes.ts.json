@@ -2,6 +2,8 @@
 	"/[id]/tunnels/create",
 	"/[id]/workers/vpc",
 	"/[id]/workers/vpc/services",
+	"/[id]/workers/vpc/services/[id]/*",
+	"/[id]/workers/vpc/services/[id]/settings",
 	"/[id]/workers/vpc/services/create",
 	"/[id]/workers/vpc/tunnels",
 	"/accounts/[id]/cfd_tunnel",
