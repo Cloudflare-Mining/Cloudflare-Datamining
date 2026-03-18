@@ -1,5 +1,11 @@
 # Change Log
 
+## 8.1.0
+
+### Minor Changes
+
+- e3bac57301: Update `DropdownLink` to only fall back to `'#'` when `to` is `null` or `undefined`, so an empty string `to=""` is preserved.
+
 ## 8.0.4
 
 ### Patch Changes
