@@ -117,7 +117,7 @@
 	},
 	domain_page: {
 		title: (0, o.p)(v(), "domainName"),
-		back: "Back to Manage Domains",
+		back: "Back to Domain registrations",
 		registration: "Registration",
 		contacts: "Contacts",
 		configuration: "Configuration",
@@ -1357,7 +1357,7 @@
 	},
 	transfer_domains_header: {
 		title: "Transfer domains",
-		description: "Review, prepare, and select your domains for transfer. Each transfer includes a one-year registration extension, and we've enabled auto-renew by default to keep your domains protected.",
+		description: "Review, prepare, and select your domains for transfer.",
 		onboard_domain: "Onboard a domain",
 		resources: "Resources",
 		resources_transfer_help: "Help documentation",

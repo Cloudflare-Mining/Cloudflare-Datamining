@@ -856,7 +856,15 @@
 	custom_providers: {
 		title: "Custom Providers",
 		subtitle: "Custom providers allow you to use private providers / providers unsupported by default with AI Gateway.",
-		add_provider_modal_header: "Add Custom Provider"
+		add_provider: "Add Provider",
+		add_provider_modal_header: "Add Custom Provider",
+		configure: "Configure",
+		table: {
+			base_url: "Base URL"
+		},
+		empty_state: "No custom providers found, add one to get started",
+		confirm_delete_title: "Confirm Delete",
+		confirm_delete_description: "Are you sure you want to delete this custom provider? This action cannot be undone."
 	},
 	common: {
 		documentation: "AI Gateway Documentation",

@@ -18,6 +18,12 @@
 	product: "Product",
 	resource_type: "Resource type",
 	recipient_accounts: "Recipient account(s)",
+	empty_state: {
+		title: "No shared configurations",
+		description_sent: "Get started by visiting a product page to share configurations with other accounts in your organization.",
+		description_received: "No configurations have been shared with this account yet.",
+		description_org: "No configurations have been shared within this organization yet."
+	},
 	delete: {
 		confirm_title: "Are you sure you want to delete this shared configuration?",
 		confirm_description: "Deleting this shared configuration will remove it from all accounts it is shared with."

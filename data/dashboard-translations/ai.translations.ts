@@ -120,7 +120,8 @@
 		api_details: "API Details",
 		quick_start: "Quick Start",
 		copy_id: "Copy ID",
-		generate_api_token: "Generate API Token"
+		generate_api_token: "Generate API Token",
+		select_example_aria_label: "Select an example"
 	},
 	common: {
 		no_data: "No data available"
