@@ -21,7 +21,7 @@
 								"type": "boolean"
 							},
 							"granularity": {
-								"description": "Time granularity for aggregating results (in milliseconds). Controls the bucketing of time-series data",
+								"description": "This is only used when the view is calculations. Leaving it empty lets Workers Observability detect the correct granularity.",
 								"type": "number"
 							},
 							"ignoreSeries": {
@@ -31,16 +31,16 @@
 							},
 							"limit": {
 								"default": 50,
-								"description": "Maximum number of events to return.",
+								"description": "Use this limit to cap the number of events returned when the view is events.",
 								"maximum": 2000,
 								"type": "number"
 							},
 							"offset": {
-								"description": "Cursor for pagination to retrieve the next set of results",
+								"description": "Cursor pagination for event/trace/invocation views. Pass the last item's $metadata.id as the next offset.",
 								"type": "string"
 							},
 							"offsetBy": {
-								"description": "Number of events to skip for pagination. Used in conjunction with offset",
+								"description": "Numeric offset for pattern results (top-N list). Use with limit to page pattern groups; not used by cursor pagination.",
 								"type": "number"
 							},
 							"offsetDirection": {
@@ -58,6 +58,7 @@
 													"type": "string"
 												},
 												"key": {
+													"description": "The key to use for the calculation. This key must exist in the logs. Use the observability_keys response to confirm. Do not guess keys.",
 													"type": "string"
 												},
 												"keyType": {
@@ -138,72 +139,117 @@
 										"type": "string"
 									},
 									"filters": {
-										"description": "Configure the Filters to apply to the query.",
+										"description": "Configure the Filters to apply to the query. Supports nested groups via kind: 'group'. Maximum nesting depth is 4.",
 										"items": {
-											"properties": {
-												"key": {
-													"type": "string"
-												},
-												"operation": {
-													"enum": [
-														"includes",
-														"not_includes",
-														"starts_with",
-														"regex",
-														"exists",
-														"is_null",
-														"in",
-														"not_in",
-														"eq",
-														"neq",
-														"gt",
-														"gte",
-														"lt",
-														"lte",
-														"=",
-														"!=",
-														">",
-														">=",
-														"<",
-														"<=",
-														"INCLUDES",
-														"DOES_NOT_INCLUDE",
-														"MATCH_REGEX",
-														"EXISTS",
-														"DOES_NOT_EXIST",
-														"IN",
-														"NOT_IN",
-														"STARTS_WITH"
-													],
-													"type": "string"
-												},
-												"type": {
-													"enum": [
-														"string",
-														"number",
-														"boolean"
-													],
-													"type": "string"
-												},
-												"value": {
-													"anyOf": [
-														{
+											"anyOf": [
+												{
+													"properties": {
+														"filterCombination": {
+															"enum": [
+																"and",
+																"or",
+																"AND",
+																"OR"
+															],
 															"type": "string"
 														},
-														{
-															"type": "number"
+														"filters": {
+															"items": "[Circular ~.POST /accounts/{account_id}/workers/observability/telemetry/query.requestBody.content.application/json.schema.properties.parameters.properties.filters.items]",
+															"minItems": 1,
+															"type": "array"
 														},
-														{
-															"type": "boolean"
+														"kind": {
+															"enum": [
+																"group"
+															],
+															"type": "string"
 														}
-													]
+													},
+													"required": [
+														"kind",
+														"filterCombination",
+														"filters"
+													],
+													"type": "object"
+												},
+												{
+													"description": "Filtering best practices: use observability_keys and observability_values to confirm available fields and values. If searching for errors, filter for $metadata.error exists.",
+													"properties": {
+														"key": {
+															"description": "Filter field name. IMPORTANT: do not guess keys. Always use verified keys from previous query results or the observability_keys response. Preferred keys: $metadata.service, $metadata.origin, $metadata.trigger, $metadata.message, $metadata.error.",
+															"type": "string"
+														},
+														"kind": {
+															"enum": [
+																"filter"
+															],
+															"type": "string"
+														},
+														"operation": {
+															"enum": [
+																"includes",
+																"not_includes",
+																"starts_with",
+																"regex",
+																"exists",
+																"is_null",
+																"in",
+																"not_in",
+																"eq",
+																"neq",
+																"gt",
+																"gte",
+																"lt",
+																"lte",
+																"=",
+																"!=",
+																">",
+																">=",
+																"<",
+																"<=",
+																"INCLUDES",
+																"DOES_NOT_INCLUDE",
+																"MATCH_REGEX",
+																"EXISTS",
+																"DOES_NOT_EXIST",
+																"IN",
+																"NOT_IN",
+																"STARTS_WITH"
+															],
+															"type": "string"
+														},
+														"type": {
+															"enum": [
+																"string",
+																"number",
+																"boolean"
+															],
+															"type": "string"
+														},
+														"value": {
+															"anyOf": [
+																{
+																	"type": "string"
+																},
+																{
+																	"type": "number"
+																},
+																{
+																	"type": "boolean"
+																}
+															],
+															"description": "Filter comparison value. IMPORTANT: must match actual values in your logs. Verify using previous query results or the /values endpoint. Ensure value type matches the field type. String comparisons are case-sensitive unless using specific operations. Regex uses ClickHouse RE2 syntax (no lookaheads/lookbehinds); examples: ^5\\d{2}$ for HTTP 5xx, \\bERROR\\b for word boundary."
+														}
+													},
+													"required": [
+														"key",
+														"operation",
+														"type"
+													],
+													"type": "object"
 												}
-											},
-											"required": [
-												"key",
-												"operation",
-												"type"
 											],
+											"description": "Supports nested groups via kind: 'group'. Maximum nesting depth is 4.",
 											"type": "object"
 										},
 										"type": "array"
@@ -329,20 +375,12 @@
 								},
 								"type": "object"
 							},
-							"patternType": {
-								"description": "Type of pattern to search for when using pattern-based views",
-								"enum": [
-									"message",
-									"error"
-								],
-								"type": "string"
-							},
 							"queryId": {
 								"description": "Unique identifier for the query to execute",
 								"type": "string"
 							},
 							"timeframe": {
-								"description": "Time range for the query execution",
+								"description": "Timeframe for your query using Unix timestamps in milliseconds. Provide from/to epoch ms; narrower timeframes provide faster responses and more specific results.",
 								"properties": {
 									"from": {
 										"description": "Start timestamp for the query timeframe (Unix timestamp in milliseconds)",
@@ -361,14 +399,14 @@
 							},
 							"view": {
 								"default": "calculations",
-								"description": "View type for presenting the query results.",
+								"description": "Examples by view type. Events: show errors for a worker in the last 30 minutes. Calculations: p99 of wall time or count by status code. Invocations: find a specific request that resulted in a 500.",
 								"enum": [
 									"traces",
 									"events",
 									"calculations",
 									"invocations",
 									"requests",
-									"patterns"
+									"agents"
 								],
 								"type": "string"
 							}
@@ -423,6 +461,51 @@
 								},
 								"result": {
 									"properties": {
+										"agents": {
+											"items": {
+												"properties": {
+													"agentClass": {
+														"type": "string"
+													},
+													"eventTypeCounts": {
+														"additionalProperties": {
+															"type": "number"
+														},
+														"type": "object"
+													},
+													"firstEventMs": {
+														"type": "number"
+													},
+													"hasErrors": {
+														"type": "boolean"
+													},
+													"lastEventMs": {
+														"type": "number"
+													},
+													"namespace": {
+														"type": "string"
+													},
+													"service": {
+														"type": "string"
+													},
+													"totalEvents": {
+														"type": "number"
+													}
+												},
+												"required": [
+													"namespace",
+													"agentClass",
+													"service",
+													"lastEventMs",
+													"firstEventMs",
+													"totalEvents",
+													"eventTypeCounts",
+													"hasErrors"
+												],
+												"type": "object"
+											},
+											"type": "array"
+										},
 										"calculations": {
 											"items": {
 												"properties": {
@@ -543,9 +626,7 @@
 																			"value",
 																			"count",
 																			"interval",
-																			"sampleInterval",
-																			"firstSeen",
-																			"lastSeen"
+																			"sampleInterval"
 																		],
 																		"type": "object"
 																	},
@@ -693,9 +774,7 @@
 																			"value",
 																			"count",
 																			"interval",
-																			"sampleInterval",
-																			"firstSeen",
-																			"lastSeen"
+																			"sampleInterval"
 																		],
 																		"type": "object"
 																	},
@@ -774,6 +853,7 @@
 																		"type": "string"
 																	},
 																	"id": {
+																		"description": "Unique event ID. Use as the cursor for offset-based pagination.",
 																		"type": "string"
 																	},
 																	"level": {
@@ -861,67 +941,7 @@
 																				"type": "string"
 																			},
 																			"event": {
-																				"additionalProperties": {
-																					"anyOf": [
-																						{
-																							"type": "string"
-																						},
-																						{
-																							"type": "number"
-																						},
-																						{
-																							"type": "boolean"
-																						},
-																						{
-																							"additionalProperties": {
-																								"anyOf": [
-																									{
-																										"type": "string"
-																									},
-																									{
-																										"type": "number"
-																									},
-																									{
-																										"type": "boolean"
-																									},
-																									{
-																										"additionalProperties": {
-																											"anyOf": [
-																												{
-																													"items": {
-																														"anyOf": [
-																															{
-																																"type": "string"
-																															},
-																															{
-																																"type": "number"
-																															},
-																															{
-																																"type": "boolean"
-																															}
-																														]
-																													},
-																													"type": "array"
-																												},
-																												{
-																													"type": "string"
-																												},
-																												{
-																													"type": "number"
-																												},
-																												{
-																													"type": "boolean"
-																												}
-																											]
-																										},
-																										"type": "object"
-																									}
-																								]
-																							},
-																							"type": "object"
-																						}
-																					]
-																				},
+																				"additionalProperties": true,
 																				"type": "object"
 																			},
 																			"eventType": {
@@ -1017,19 +1037,7 @@
 																				"type": "string"
 																			},
 																			"event": {
-																				"additionalProperties": {
-																					"anyOf": [
-																						{
-																							"type": "string"
-																						},
-																						{
-																							"type": "number"
-																						},
-																						{
-																							"type": "boolean"
-																						}
-																					]
-																				},
+																				"additionalProperties": true,
 																				"type": "object"
 																			},
 																			"eventType": {
@@ -1165,7 +1173,7 @@
 																					"deprecated": true,
 																					"exclusiveMinimum": true,
 																					"minimum": 0,
-																					"type": "integer"
+																					"type": "number"
 																				},
 																				"_lastSeen": {
 																					"deprecated": true,
@@ -1178,9 +1186,7 @@
 																			},
 																			"required": [
 																				"_count",
-																				"_interval",
-																				"_firstSeen",
-																				"_lastSeen"
+																				"_interval"
 																			],
 																			"type": "object"
 																		},
@@ -1286,6 +1292,7 @@
 																	"type": "string"
 																},
 																"id": {
+																	"description": "Unique event ID. Use as the cursor for offset-based pagination.",
 																	"type": "string"
 																},
 																"level": {
@@ -1373,67 +1380,7 @@
 																			"type": "string"
 																		},
 																		"event": {
-																			"additionalProperties": {
-																				"anyOf": [
-																					{
-																						"type": "string"
-																					},
-																					{
-																						"type": "number"
-																					},
-																					{
-																						"type": "boolean"
-																					},
-																					{
-																						"additionalProperties": {
-																							"anyOf": [
-																								{
-																									"type": "string"
-																								},
-																								{
-																									"type": "number"
-																								},
-																								{
-																									"type": "boolean"
-																								},
-																								{
-																									"additionalProperties": {
-																										"anyOf": [
-																											{
-																												"items": {
-																													"anyOf": [
-																														{
-																															"type": "string"
-																														},
-																														{
-																															"type": "number"
-																														},
-																														{
-																															"type": "boolean"
-																														}
-																													]
-																												},
-																												"type": "array"
-																											},
-																											{
-																												"type": "string"
-																											},
-																											{
-																												"type": "number"
-																											},
-																											{
-																												"type": "boolean"
-																											}
-																										]
-																									},
-																									"type": "object"
-																								}
-																							]
-																						},
-																						"type": "object"
-																					}
-																				]
-																			},
+																			"additionalProperties": true,
 																			"type": "object"
 																		},
 																		"eventType": {
@@ -1529,19 +1476,7 @@
 																			"type": "string"
 																		},
 																		"event": {
-																			"additionalProperties": {
-																				"anyOf": [
-																					{
-																						"type": "string"
-																					},
-																					{
-																						"type": "number"
-																					},
-																					{
-																						"type": "boolean"
-																					}
-																				]
-																			},
+																			"additionalProperties": true,
 																			"type": "object"
 																		},
 																		"eventType": {
@@ -1639,95 +1574,6 @@
 											},
 											"type": "object"
 										},
-										"patterns": {
-											"items": {
-												"properties": {
-													"count": {
-														"type": "number"
-													},
-													"pattern": {
-														"type": "string"
-													},
-													"series": {
-														"items": {
-															"properties": {
-																"data": {
-																	"properties": {
-																		"count": {
-																			"type": "number"
-																		},
-																		"groups": {
-																			"items": {
-																				"properties": {
-																					"key": {
-																						"type": "string"
-																					},
-																					"value": {
-																						"anyOf": [
-																							{
-																								"type": "string"
-																							},
-																							{
-																								"type": "number"
-																							},
-																							{
-																								"type": "boolean"
-																							}
-																						]
-																					}
-																				},
-																				"required": [
-																					"key",
-																					"value"
-																				],
-																				"type": "object"
-																			},
-																			"type": "array"
-																		},
-																		"interval": {
-																			"type": "number"
-																		},
-																		"sampleInterval": {
-																			"type": "number"
-																		},
-																		"value": {
-																			"type": "number"
-																		}
-																	},
-																	"required": [
-																		"value",
-																		"count",
-																		"interval",
-																		"sampleInterval"
-																	],
-																	"type": "object"
-																},
-																"time": {
-																	"type": "string"
-																}
-															},
-															"required": [
-																"time",
-																"data"
-															],
-															"type": "object"
-														},
-														"type": "array"
-													},
-													"service": {
-														"type": "string"
-													}
-												},
-												"required": [
-													"service",
-													"pattern",
-													"count",
-													"series"
-												],
-												"type": "object"
-											},
-											"type": "array"
-										},
 										"run": {
 											"description": "A Workers Observability Query Object",
 											"properties": {
@@ -1740,10 +1586,6 @@
 												"dry": {
 													"type": "boolean"
 												},
-												"environmentId": {
-													"deprecated": true,
-													"type": "string"
-												},
 												"granularity": {
 													"type": "number"
 												},
@@ -1751,352 +1593,427 @@
 													"type": "string"
 												},
 												"query": {
-													"properties": {
-														"created": {
-															"type": "string"
-														},
-														"description": {
-															"example": "Query description",
-															"maxLength": 1000,
-															"nullable": true,
-															"type": "string"
-														},
-														"environmentId": {
-															"description": "ID of your environment",
-															"example": "my-environment",
-															"maxLength": 64,
-															"minLength": 1,
-															"pattern": "^[a-z0-9_]+(?:-[a-z0-9_]+)*$",
-															"type": "string"
-														},
-														"generated": {
-															"description": "Flag for alerts automatically created",
-															"nullable": true,
-															"type": "boolean"
-														},
-														"id": {
-															"description": "ID of the query",
-															"example": "query-1",
-															"maxLength": 64,
-															"minLength": 1,
-															"pattern": "^[a-z0-9_]+(?:-[a-z0-9_]+)*$",
-															"type": "string"
-														},
-														"name": {
-															"description": "Query name",
-															"nullable": true,
-															"type": "string"
-														},
-														"parameters": {
+													"allOf": [
+														{
 															"properties": {
-																"calculations": {
-																	"description": "Create Calculations to compute as part of the query.",
-																	"items": {
-																		"properties": {
-																			"alias": {
-																				"type": "string"
-																			},
-																			"key": {
-																				"type": "string"
-																			},
-																			"keyType": {
-																				"enum": [
-																					"string",
-																					"number",
-																					"boolean"
-																				],
-																				"type": "string"
-																			},
-																			"operator": {
-																				"enum": [
-																					"uniq",
-																					"count",
-																					"max",
-																					"min",
-																					"sum",
-																					"avg",
-																					"median",
-																					"p001",
-																					"p01",
-																					"p05",
-																					"p10",
-																					"p25",
-																					"p75",
-																					"p90",
-																					"p95",
-																					"p99",
-																					"p999",
-																					"stddev",
-																					"variance",
-																					"COUNT_DISTINCT",
-																					"COUNT",
-																					"MAX",
-																					"MIN",
-																					"SUM",
-																					"AVG",
-																					"MEDIAN",
-																					"P001",
-																					"P01",
-																					"P05",
-																					"P10",
-																					"P25",
-																					"P75",
-																					"P90",
-																					"P95",
-																					"P99",
-																					"P999",
-																					"STDDEV",
-																					"VARIANCE"
-																				],
-																				"type": "string"
-																			}
-																		},
-																		"required": [
-																			"operator"
-																		],
-																		"type": "object"
-																	},
-																	"type": "array"
-																},
-																"datasets": {
-																	"description": "Set the Datasets to query. Leave it empty to query all the datasets.",
-																	"example": [],
-																	"items": {
-																		"type": "string"
-																	},
-																	"type": "array"
-																},
-																"filterCombination": {
-																	"description": "Set a Flag to describe how to combine the filters on the query.",
-																	"enum": [
-																		"and",
-																		"or",
-																		"AND",
-																		"OR"
-																	],
+																"created": {
 																	"type": "string"
 																},
-																"filters": {
-																	"description": "Configure the Filters to apply to the query.",
-																	"items": {
-																		"properties": {
-																			"key": {
-																				"type": "string"
-																			},
-																			"operation": {
-																				"enum": [
-																					"includes",
-																					"not_includes",
-																					"starts_with",
-																					"regex",
-																					"exists",
-																					"is_null",
-																					"in",
-																					"not_in",
-																					"eq",
-																					"neq",
-																					"gt",
-																					"gte",
-																					"lt",
-																					"lte",
-																					"=",
-																					"!=",
-																					">",
-																					">=",
-																					"<",
-																					"<=",
-																					"INCLUDES",
-																					"DOES_NOT_INCLUDE",
-																					"MATCH_REGEX",
-																					"EXISTS",
-																					"DOES_NOT_EXIST",
-																					"IN",
-																					"NOT_IN",
-																					"STARTS_WITH"
-																				],
-																				"type": "string"
-																			},
-																			"type": {
-																				"enum": [
-																					"string",
-																					"number",
-																					"boolean"
-																				],
-																				"type": "string"
-																			},
-																			"value": {
-																				"anyOf": [
-																					{
+																"description": {
+																	"example": "Query description",
+																	"maxLength": 1000,
+																	"nullable": true,
+																	"type": "string"
+																},
+																"environmentId": {
+																	"description": "ID of your environment",
+																	"example": "my-environment",
+																	"maxLength": 64,
+																	"minLength": 1,
+																	"pattern": "^[a-z0-9_]+(?:-[a-z0-9_]+)*$",
+																	"type": "string"
+																},
+																"generated": {
+																	"description": "Flag for alerts automatically created",
+																	"nullable": true,
+																	"type": "boolean"
+																},
+																"id": {
+																	"description": "ID of the query",
+																	"example": "query-1",
+																	"maxLength": 64,
+																	"minLength": 1,
+																	"pattern": "^[a-z0-9_]+(?:-[a-z0-9_]+)*$",
+																	"type": "string"
+																},
+																"name": {
+																	"description": "Query name",
+																	"nullable": true,
+																	"type": "string"
+																},
+																"parameters": {
+																	"properties": {
+																		"calculations": {
+																			"description": "Create Calculations to compute as part of the query.",
+																			"items": {
+																				"properties": {
+																					"alias": {
 																						"type": "string"
 																					},
-																					{
-																						"type": "number"
+																					"key": {
+																						"description": "The key to use for the calculation. This key must exist in the logs. Use the observability_keys response to confirm. Do not guess keys.",
+																						"type": "string"
 																					},
-																					{
-																						"type": "boolean"
+																					"keyType": {
+																						"enum": [
+																							"string",
+																							"number",
+																							"boolean"
+																						],
+																						"type": "string"
+																					},
+																					"operator": {
+																						"enum": [
+																							"uniq",
+																							"count",
+																							"max",
+																							"min",
+																							"sum",
+																							"avg",
+																							"median",
+																							"p001",
+																							"p01",
+																							"p05",
+																							"p10",
+																							"p25",
+																							"p75",
+																							"p90",
+																							"p95",
+																							"p99",
+																							"p999",
+																							"stddev",
+																							"variance",
+																							"COUNT_DISTINCT",
+																							"COUNT",
+																							"MAX",
+																							"MIN",
+																							"SUM",
+																							"AVG",
+																							"MEDIAN",
+																							"P001",
+																							"P01",
+																							"P05",
+																							"P10",
+																							"P25",
+																							"P75",
+																							"P90",
+																							"P95",
+																							"P99",
+																							"P999",
+																							"STDDEV",
+																							"VARIANCE"
+																						],
+																						"type": "string"
 																					}
-																				]
-																			}
-																		},
-																		"required": [
-																			"key",
-																			"operation",
-																			"type"
-																		],
-																		"type": "object"
-																	},
-																	"type": "array"
-																},
-																"groupBys": {
-																	"description": "Define how to group the results of the query.",
-																	"items": {
-																		"properties": {
-																			"type": {
-																				"enum": [
-																					"string",
-																					"number",
-																					"boolean"
-																				],
-																				"type": "string"
-																			},
-																			"value": {
-																				"type": "string"
-																			}
-																		},
-																		"required": [
-																			"type",
-																			"value"
-																		],
-																		"type": "object"
-																	},
-																	"type": "array"
-																},
-																"havings": {
-																	"description": "Configure the Having clauses that filter on calculations in the query result.",
-																	"items": {
-																		"properties": {
-																			"key": {
-																				"type": "string"
-																			},
-																			"operation": {
-																				"enum": [
-																					"eq",
-																					"neq",
-																					"gt",
-																					"gte",
-																					"lt",
-																					"lte"
-																				],
-																				"type": "string"
-																			},
-																			"value": {
-																				"type": "number"
-																			}
-																		},
-																		"required": [
-																			"key",
-																			"operation",
-																			"value"
-																		],
-																		"type": "object"
-																	},
-																	"type": "array"
-																},
-																"limit": {
-																	"description": "Set a limit on the number of results / records returned by the query",
-																	"maximum": 2000,
-																	"minimum": 0,
-																	"type": "integer"
-																},
-																"needle": {
-																	"description": "Define an expression to search using full-text search.",
-																	"properties": {
-																		"isRegex": {
-																			"type": "boolean"
-																		},
-																		"matchCase": {
-																			"type": "boolean"
-																		},
-																		"value": {
-																			"allOf": [
-																				{
-																					"anyOf": [
-																						{
-																							"type": "string"
-																						},
-																						{
-																							"type": "number"
-																						},
-																						{
-																							"type": "boolean"
-																						}
-																					]
 																				},
-																				{
-																					"maxLength": 1000,
-																					"type": "string"
-																				}
-																			]
-																		}
-																	},
-																	"required": [
-																		"value"
-																	],
-																	"type": "object"
-																},
-																"orderBy": {
-																	"description": "Configure the order of the results returned by the query.",
-																	"properties": {
-																		"order": {
-																			"description": "Set the order of the results",
+																				"required": [
+																					"operator"
+																				],
+																				"type": "object"
+																			},
+																			"type": "array"
+																		},
+																		"datasets": {
+																			"description": "Set the Datasets to query. Leave it empty to query all the datasets.",
+																			"example": [],
+																			"items": {
+																				"type": "string"
+																			},
+																			"type": "array"
+																		},
+																		"filterCombination": {
+																			"description": "Set a Flag to describe how to combine the filters on the query.",
 																			"enum": [
-																				"asc",
-																				"desc"
+																				"and",
+																				"or",
+																				"AND",
+																				"OR"
 																			],
 																			"type": "string"
 																		},
-																		"value": {
-																			"description": "Configure which Calculation to order the results by.",
-																			"type": "string"
+																		"filters": {
+																			"description": "Configure the Filters to apply to the query. Supports nested groups via kind: 'group'. Maximum nesting depth is 4.",
+																			"items": {
+																				"anyOf": [
+																					{
+																						"properties": {
+																							"filterCombination": {
+																								"enum": [
+																									"and",
+																									"or",
+																									"AND",
+																									"OR"
+																								],
+																								"type": "string"
+																							},
+																							"filters": {
+																								"items": "[Circular ~.POST /accounts/{account_id}/workers/observability/telemetry/query.responses.200.content.application/json.schema.properties.result.properties.run.properties.query.allOf.0.properties.parameters.properties.filters.items]",
+																								"minItems": 1,
+																								"type": "array"
+																							},
+																							"kind": {
+																								"enum": [
+																									"group"
+																								],
+																								"type": "string"
+																							}
+																						},
+																						"required": [
+																							"kind",
+																							"filterCombination",
+																							"filters"
+																						],
+																						"type": "object"
+																					},
+																					{
+																						"description": "Filtering best practices: use observability_keys and observability_values to confirm available fields and values. If searching for errors, filter for $metadata.error exists.",
+																						"properties": {
+																							"key": {
+																								"description": "Filter field name. IMPORTANT: do not guess keys. Always use verified keys from previous query results or the observability_keys response. Preferred keys: $metadata.service, $metadata.origin, $metadata.trigger, $metadata.message, $metadata.error.",
+																								"type": "string"
+																							},
+																							"kind": {
+																								"enum": [
+																									"filter"
+																								],
+																								"type": "string"
+																							},
+																							"operation": {
+																								"enum": [
+																									"includes",
+																									"not_includes",
+																									"starts_with",
+																									"regex",
+																									"exists",
+																									"is_null",
+																									"in",
+																									"not_in",
+																									"eq",
+																									"neq",
+																									"gt",
+																									"gte",
+																									"lt",
+																									"lte",
+																									"=",
+																									"!=",
+																									">",
+																									">=",
+																									"<",
+																									"<=",
+																									"INCLUDES",
+																									"DOES_NOT_INCLUDE",
+																									"MATCH_REGEX",
+																									"EXISTS",
+																									"DOES_NOT_EXIST",
+																									"IN",
+																									"NOT_IN",
+																									"STARTS_WITH"
+																								],
+																								"type": "string"
+																							},
+																							"type": {
+																								"enum": [
+																									"string",
+																									"number",
+																									"boolean"
+																								],
+																								"type": "string"
+																							},
+																							"value": {
+																								"anyOf": [
+																									{
+																										"type": "string"
+																									},
+																									{
+																										"type": "number"
+																									},
+																									{
+																										"type": "boolean"
+																									}
+																								],
+																								"description": "Filter comparison value. IMPORTANT: must match actual values in your logs. Verify using previous query results or the /values endpoint. Ensure value type matches the field type. String comparisons are case-sensitive unless using specific operations. Regex uses ClickHouse RE2 syntax (no lookaheads/lookbehinds); examples: ^5\\d{2}$ for HTTP 5xx, \\bERROR\\b for word boundary."
+																							}
+																						},
+																						"required": [
+																							"key",
+																							"operation",
+																							"type"
+																						],
+																						"type": "object"
+																					}
+																				],
+																				"description": "Supports nested groups via kind: 'group'. Maximum nesting depth is 4.",
+																				"type": "object"
+																			},
+																			"type": "array"
+																		},
+																		"groupBys": {
+																			"description": "Define how to group the results of the query.",
+																			"items": {
+																				"properties": {
+																					"type": {
+																						"enum": [
+																							"string",
+																							"number",
+																							"boolean"
+																						],
+																						"type": "string"
+																					},
+																					"value": {
+																						"type": "string"
+																					}
+																				},
+																				"required": [
+																					"type",
+																					"value"
+																				],
+																				"type": "object"
+																			},
+																			"type": "array"
+																		},
+																		"havings": {
+																			"description": "Configure the Having clauses that filter on calculations in the query result.",
+																			"items": {
+																				"properties": {
+																					"key": {
+																						"type": "string"
+																					},
+																					"operation": {
+																						"enum": [
+																							"eq",
+																							"neq",
+																							"gt",
+																							"gte",
+																							"lt",
+																							"lte"
+																						],
+																						"type": "string"
+																					},
+																					"value": {
+																						"type": "number"
+																					}
+																				},
+																				"required": [
+																					"key",
+																					"operation",
+																					"value"
+																				],
+																				"type": "object"
+																			},
+																			"type": "array"
+																		},
+																		"limit": {
+																			"description": "Set a limit on the number of results / records returned by the query",
+																			"maximum": 2000,
+																			"minimum": 0,
+																			"type": "integer"
+																		},
+																		"needle": {
+																			"description": "Define an expression to search using full-text search.",
+																			"properties": {
+																				"isRegex": {
+																					"type": "boolean"
+																				},
+																				"matchCase": {
+																					"type": "boolean"
+																				},
+																				"value": {
+																					"allOf": [
+																						{
+																							"anyOf": [
+																								{
+																									"type": "string"
+																								},
+																								{
+																									"type": "number"
+																								},
+																								{
+																									"type": "boolean"
+																								}
+																							]
+																						},
+																						{
+																							"maxLength": 1000,
+																							"type": "string"
+																						}
+																					]
+																				}
+																			},
+																			"required": [
+																				"value"
+																			],
+																			"type": "object"
+																		},
+																		"orderBy": {
+																			"description": "Configure the order of the results returned by the query.",
+																			"properties": {
+																				"order": {
+																					"description": "Set the order of the results",
+																					"enum": [
+																						"asc",
+																						"desc"
+																					],
+																					"type": "string"
+																				},
+																				"value": {
+																					"description": "Configure which Calculation to order the results by.",
+																					"type": "string"
+																				}
+																			},
+																			"required": [
+																				"value"
+																			],
+																			"type": "object"
 																		}
 																	},
-																	"required": [
-																		"value"
-																	],
 																	"type": "object"
+																},
+																"updated": {
+																	"type": "string"
+																},
+																"userId": {
+																	"example": "JY2UKXLO60AEV94R",
+																	"type": "string"
+																},
+																"workspaceId": {
+																	"description": "ID of your workspace",
+																	"example": "my-workspace",
+																	"maxLength": 64,
+																	"minLength": 1,
+																	"pattern": "^[a-z0-9_]+(?:-[a-z0-9_]+)*$",
+																	"type": "string"
+																}
+															},
+															"required": [
+																"id",
+																"workspaceId",
+																"environmentId",
+																"userId",
+																"description",
+																"name",
+																"generated",
+																"parameters",
+																"created",
+																"updated"
+															],
+															"type": "object"
+														},
+														{
+															"properties": {
+																"created": {
+																	"anyOf": [
+																		{
+																			"type": "string"
+																		},
+																		{
+																			"type": "string"
+																		}
+																	]
+																},
+																"updated": {
+																	"anyOf": [
+																		{
+																			"type": "string"
+																		},
+																		{
+																			"type": "string"
+																		}
+																	]
 																}
 															},
 															"type": "object"
-														},
-														"updated": {
-															"type": "string"
-														},
-														"userId": {
-															"example": "JY2UKXLO60AEV94R",
-															"type": "string"
-														},
-														"workspaceId": {
-															"description": "ID of your workspace",
-															"example": "my-workspace",
-															"maxLength": 64,
-															"minLength": 1,
-															"pattern": "^[a-z0-9_]+(?:-[a-z0-9_]+)*$",
-															"type": "string"
 														}
-													},
-													"required": [
-														"id",
-														"workspaceId",
-														"environmentId",
-														"userId",
-														"description",
-														"name",
-														"generated",
-														"parameters",
-														"created",
-														"updated"
-													],
-													"type": "object"
+													]
 												},
 												"statistics": {
 													"properties": {
@@ -2154,17 +2071,11 @@
 												},
 												"userId": {
 													"type": "string"
-												},
-												"workspaceId": {
-													"deprecated": true,
-													"type": "string"
 												}
 											},
 											"required": [
 												"id",
 												"query",
-												"workspaceId",
-												"environmentId",
 												"accountId",
 												"timeframe",
 												"userId",
