@@ -23,7 +23,8 @@
 <p>You can check out our <a href="https://blog.cloudflare.com/tag/internship-experience/">internship blogs</a> to learn more about our program and hear directly from our past interns.</p>
 <p><strong>Examples of desirable skills, knowledge and experience</strong></p>
 <ul>
-	<li>Currently enrolled in (or recently graduated from) a Bachelor’s or Master’s degree program in Computer Science, Telecommunications, Network Engineering, Information Systems, or a related field.</li>
+	<li>Currently enrolled in (or recently graduated from) a Bachelor’s or Master’s degree program in Telecommunications, Network Engineering, Information Systems, or a related field.</li>
+	<li><strong>Big plus point if you have, or are currently in the midst of acquiring these certifications: CCNA, CompTIA Network+ / Server+ (or similar).</strong></li>
 	<li><strong>Foundational Knowledge:</strong> Solid academic understanding of the OSI model, basic network protocols (TCP/IP, DNS, DHCP), and network topologies.</li>
 	<li><strong>Coding/Scripting Basics:</strong> Introductory experience with at least one scripting language (like Python or Bash) and a strong desire to learn how to apply it to infrastructure automation.</li>
 	<li><strong>Hands-On Mentality:</strong> Comfort with physical labor in a data center environment (lifting hardware, running cables, working in noisy/cooled environments).</li>
