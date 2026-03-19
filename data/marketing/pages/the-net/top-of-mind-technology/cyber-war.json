@@ -4,7 +4,7 @@
 	"result": {
 		"data": {
 			"page": {
-				"pageName": "theNET - CIO response to 'Cyber War' headlines - Page",
+				"pageName": "theNET - Responding to \"cyber war\" headlines - Page",
 				"localeList": {
 					"enUS": "English for Locale",
 					"zhCN": "Translated for Locale",
@@ -38,7 +38,7 @@
 				"topNavButtonUrl": null,
 				"footerOptions": "default",
 				"metaTags": {
-					"metaTitle": "theNET | CIO response to 'Cyber War' headlines",
+					"metaTitle": "theNET | Responding to \"cyber war\" headlines",
 					"metaDescription": "Regardless of the country you operate in, as stewards of enterprise infrastructure and data, CIOs and CISOs should now scrutinize their environments for these prevalent pitfalls—and take prompt action to mitigate risks.",
 					"twitterCustomImage": null,
 					"metaImage": {
@@ -48,17 +48,11 @@
 						"description": "CIO response to cyber war headlines"
 					},
 					"facebookCustomImage": null,
-					"author": [
-						{
-							"authorName": "John Engates",
-							"authorProfileLink": "https://www.cloudflare.com/the-net/top-of-mind-technology/",
-							"jobTitle": "Field CTO, Cloudflare"
-						}
-					]
+					"author": []
 				},
 				"sys": {
 					"createdAt": "2023-11-16T19:36:36.184Z",
-					"updatedAt": "2025-10-22T23:25:14.462Z"
+					"updatedAt": "2026-03-18T22:44:39.445Z"
 				},
 				"contentfulId": "5bd6FzzHlChT4V7af0CI55",
 				"contentTypeId": "page",
@@ -446,6 +440,52 @@
 									"nodeType": "document",
 									"content": [
 										{
+											"nodeType": "heading-1",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "Responding to \"cyber war\" headlines",
+													"marks": [
+														{
+															"type": "bold"
+														}
+													],
+													"content": null
+												}
+											]
+										},
+										{
+											"nodeType": "heading-4",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "Assessing and strengthening enterprise security",
+													"marks": [],
+													"content": null
+												}
+											]
+										},
+										{
 											"nodeType": "embedded-asset-block",
 											"data": {
 												"target": {
@@ -485,7 +525,7 @@
 											"content": []
 										},
 										{
-											"nodeType": "heading-1",
+											"nodeType": "paragraph",
 											"data": {
 												"target": null,
 												"uri": null
@@ -499,28 +539,7 @@
 														"target": null,
 														"uri": null
 													},
-													"value": "\nCIO response to 'Cyber War' headlines",
-													"marks": [],
-													"content": null
-												}
-											]
-										},
-										{
-											"nodeType": "heading-4",
-											"data": {
-												"target": null,
-												"uri": null
-											},
-											"value": null,
-											"marks": null,
-											"content": [
-												{
-													"nodeType": "text",
-													"data": {
-														"target": null,
-														"uri": null
-													},
-													"value": "Assessing and strengthening enterprise security\n",
+													"value": "",
 													"marks": [],
 													"content": null
 												}
@@ -541,7 +560,7 @@
 														"target": null,
 														"uri": null
 													},
-													"value": "Recently, the CIO of the Transportation Security Administration (TSA) said the ",
+													"value": "In 2023, the CIO of the Transportation Security Administration (TSA) said the ",
 													"marks": [],
 													"content": null
 												},
@@ -560,7 +579,7 @@
 																"target": null,
 																"uri": null
 															},
-															"value": "U.S. is in a 'Cyber War.'",
+															"value": "U.S. was in a \"cyber war\"",
 															"marks": [],
 															"content": null
 														}
@@ -572,7 +591,7 @@
 														"target": null,
 														"uri": null
 													},
-													"value": " The same day, a ",
+													"value": ". The same day, a ",
 													"marks": [],
 													"content": null
 												},
@@ -603,7 +622,7 @@
 														"target": null,
 														"uri": null
 													},
-													"value": " Red and Blue Teams underscored major network security gaps leaving organizations vulnerable to cyber threats. Regardless of the country you operate in, as stewards of enterprise infrastructure and data, CIOs and CISOs should now scrutinize their environments for these prevalent pitfalls—and take prompt action to ",
+													"value": " Red and Blue Teams underscored major network security gaps leaving organizations vulnerable to cyber threats. Regardless of the country you operate in, as stewards of enterprise infrastructure and data, CIOs and CISOs should now scrutinize their environments for these prevalent pitfalls — and take prompt action to ",
 													"marks": [],
 													"content": null
 												},
@@ -975,7 +994,7 @@
 														"target": null,
 														"uri": null
 													},
-													"value": "Services exposed to the Internet: Don't be low-hanging fruit",
+													"value": "Protecting services exposed to the Internet",
 													"marks": [
 														{
 															"type": "bold"
@@ -1000,7 +1019,31 @@
 														"target": null,
 														"uri": null
 													},
-													"value": "Nothing invites trouble more than serving internal resources over the public Internet without adequate access controls. Simple misconfigurations often grant unauthorized access to databases, file shares, backup systems, admin consoles, and other services – and attackers are all too eager to take advantage.",
+													"value": "Nothing invites trouble more than serving internal resources over the public Internet without adequate access controls. Simple misconfigurations often grant unauthorized access to databases, file shares, backup systems, admin consoles, and other services ",
+													"marks": [],
+													"content": null
+												},
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "— ",
+													"marks": [
+														{
+															"type": "italic"
+														}
+													],
+													"content": null
+												},
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "and attackers are all too eager to take advantage.",
 													"marks": [],
 													"content": null
 												}
@@ -1052,7 +1095,7 @@
 														"target": null,
 														"uri": null
 													},
-													"value": " for external access and DDoS protection, security teams gain consistent visibility and enforcement. They can take back control, and valuable data can be protected from prying eyes.",
+													"value": " for external access and distributed denial-of-service (DDoS) protection, security teams gain consistent visibility and enforcement. They can take back control, and valuable data can be protected from prying eyes.",
 													"marks": [],
 													"content": null
 												}
@@ -1104,7 +1147,7 @@
 														"target": null,
 														"uri": null
 													},
-													"value": "Visibility and segmentation: No free movement for threats",
+													"value": "Improving visibility and implementing segmentation",
 													"marks": [
 														{
 															"type": "bold"
@@ -1202,7 +1245,7 @@
 														"target": null,
 														"uri": null
 													},
-													"value": "Vulnerable code and services: Shrink the attack surface",
+													"value": "Shrinking the attack surface",
 													"marks": [
 														{
 															"type": "bold"
@@ -1227,7 +1270,7 @@
 														"target": null,
 														"uri": null
 													},
-													"value": "Basic cyber hygiene remains essential—yet NSA and CISA's warning shows organizations still struggle with tasks like patching vulnerable software in a timely manner. Modern platform-as-a-service offerings allow enterprises to reduce attack surface by running only the code required and isolating execution.",
+													"value": "Basic cyber hygiene remains essential — yet NSA and CISA's warning shows organizations still struggle with tasks like patching vulnerable software in a timely manner. Modern platform-as-a-service offerings allow enterprises to reduce attack surface by running only the code required and isolating execution.",
 													"marks": [],
 													"content": null
 												}
@@ -1325,7 +1368,7 @@
 														"target": null,
 														"uri": null
 													},
-													"value": "The vulnerabilities spotlighted by CISA and NSA provide an urgent reminder for CIOs and CISOs. Now is the time to thoroughly examine internal and external network exposures—and ",
+													"value": "The vulnerabilities spotlighted by CISA and NSA provide an urgent reminder for CIOs and CISOs. Now is the time to thoroughly examine internal and external network exposures — and ",
 													"marks": [],
 													"content": null
 												},
@@ -1377,7 +1420,7 @@
 														"target": null,
 														"uri": null
 													},
-													"value": "Here are 6 specific steps that CIOs and CISOs can take to remediate the risks identified:",
+													"value": "Here are six specific steps that CIOs and CISOs can take to remediate the risks identified:",
 													"marks": [],
 													"content": null
 												}
@@ -1812,7 +1855,7 @@
 														"target": null,
 														"uri": null
 													},
-													"value": " is purpose-built to help leaders address many of the highlighted security concerns holistically. By leveraging Cloudflare capabilities for zero trust, network visibility & segmentation, securing internal applications and APIs, reducing attack surface, and more, organizations can meaningfully improve security posture across hybrid and distributed environments.",
+													"value": " is purpose-built to help leaders address many of the highlighted security concerns holistically. By leveraging Cloudflare capabilities for implementing zero trust; improving network visibility and segmentation; securing internal applications and APIs; and reducing attack surfaces organizations can meaningfully improve security posture across hybrid and distributed environments.",
 													"marks": [],
 													"content": null
 												}
@@ -1833,7 +1876,7 @@
 														"target": null,
 														"uri": null
 													},
-													"value": "Rather than rely on point solutions in silos, CISOs can turn to Cloudflare as a platform for securing the entire enterprise, both on-prem and in the cloud. As stewards of business-critical infrastructure and data, modern IT leaders would be prudent to evaluate how best to mitigate the security gaps leaving them dangerously exposed. The moment to strengthen network defenses is now.",
+													"value": "Rather than rely on point solutions in silos, CISOs can turn to Cloudflare as a platform for securing the entire enterprise, both on-premises and in the cloud. As stewards of business-critical infrastructure and data, modern IT leaders would be prudent to evaluate how best to mitigate the security gaps leaving them dangerously exposed. The moment to strengthen network defenses is now.",
 													"marks": [],
 													"content": null
 												}
@@ -1923,6 +1966,87 @@
 											"content": []
 										},
 										{
+											"nodeType": "heading-2",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "Dive deeper into this topic.",
+													"marks": [
+														{
+															"type": "bold"
+														}
+													],
+													"content": null
+												}
+											]
+										},
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "\nLearn how Cloudflare's connectivity cloud can help you strengthen security for current and future threats with the ",
+													"marks": [],
+													"content": null
+												},
+												{
+													"nodeType": "hyperlink",
+													"data": {
+														"target": null,
+														"uri": "https://www.cloudflare.com/lp/modernizing-security-for-the-ai-era/"
+													},
+													"value": null,
+													"marks": null,
+													"content": [
+														{
+															"nodeType": "text",
+															"data": {
+																"target": null,
+																"uri": null
+															},
+															"value": "Modernizing security for the AI era",
+															"marks": [
+																{
+																	"type": "italic"
+																}
+															],
+															"content": null
+														}
+													]
+												},
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": " ebook.",
+													"marks": [],
+													"content": null
+												}
+											]
+										},
+										{
 											"nodeType": "paragraph",
 											"data": {
 												"target": null,
@@ -1970,90 +2094,7 @@
 														"target": null,
 														"uri": null
 													},
-													"value": "Author",
-													"marks": [],
-													"content": null
-												}
-											]
-										},
-										{
-											"nodeType": "paragraph",
-											"data": {
-												"target": null,
-												"uri": null
-											},
-											"value": null,
-											"marks": null,
-											"content": [
-												{
-													"nodeType": "text",
-													"data": {
-														"target": null,
-														"uri": null
-													},
-													"value": "",
-													"marks": [],
-													"content": null
-												},
-												{
-													"nodeType": "hyperlink",
-													"data": {
-														"target": null,
-														"uri": "https://www.cloudflare.com/the-net/top-of-mind-technology/"
-													},
-													"value": null,
-													"marks": null,
-													"content": [
-														{
-															"nodeType": "text",
-															"data": {
-																"target": null,
-																"uri": null
-															},
-															"value": "John Engates",
-															"marks": [],
-															"content": null
-														}
-													]
-												},
-												{
-													"nodeType": "text",
-													"data": {
-														"target": null,
-														"uri": null
-													},
-													"value": "\nFormer Field CTO, Cloudflare",
-													"marks": [],
-													"content": null
-												}
-											]
-										},
-										{
-											"nodeType": "hr",
-											"data": {
-												"target": null,
-												"uri": null
-											},
-											"value": null,
-											"marks": null,
-											"content": []
-										},
-										{
-											"nodeType": "heading-5",
-											"data": {
-												"target": null,
-												"uri": null
-											},
-											"value": null,
-											"marks": null,
-											"content": [
-												{
-													"nodeType": "text",
-													"data": {
-														"target": null,
-														"uri": null
-													},
-													"value": "\nKey takeaways",
+													"value": "Key takeaways",
 													"marks": [],
 													"content": null
 												}
@@ -2335,7 +2376,7 @@
 																	"nodeType": "hyperlink",
 																	"data": {
 																		"target": null,
-																		"uri": "https://www.cloudflare.com/the-net/top-of-mind-technology/security-boardroom/"
+																		"uri": "https://www.cloudflare.com/lp/modernizing-security-for-the-ai-era/"
 																	},
 																	"value": null,
 																	"marks": null,
@@ -2346,7 +2387,7 @@
 																				"target": null,
 																				"uri": null
 																			},
-																			"value": "Transform cybersecurity in the boardroom",
+																			"value": "Modernizing security for the AI era",
 																			"marks": [],
 																			"content": null
 																		}
@@ -2398,7 +2439,7 @@
 																	"nodeType": "hyperlink",
 																	"data": {
 																		"target": null,
-																		"uri": "https://www.cloudflare.com/the-net/top-of-mind-technology/demystifying-zero-trust/"
+																		"uri": "https://www.cloudflare.com/the-net/security-signals/building-cyber-resiliency/"
 																	},
 																	"value": null,
 																	"marks": null,
@@ -2409,8 +2450,12 @@
 																				"target": null,
 																				"uri": null
 																			},
-																			"value": "From acronyms to action: Demystifying zero trust",
-																			"marks": [],
+																			"value": "Reimagining cyber resilience",
+																			"marks": [
+																				{
+																					"type": "underline"
+																				}
+																			],
 																			"content": null
 																		}
 																	]
@@ -2461,7 +2506,7 @@
 																	"nodeType": "hyperlink",
 																	"data": {
 																		"target": null,
-																		"uri": "https://www.cloudflare.com/the-net/top-of-mind-technology/security-business-value/"
+																		"uri": "https://www.cloudflare.com/the-net/year-in-review-25/"
 																	},
 																	"value": null,
 																	"marks": null,
@@ -2472,8 +2517,12 @@
 																				"target": null,
 																				"uri": null
 																			},
-																			"value": "Connecting cybersecurity to strategic business value",
-																			"marks": [],
+																			"value": "Navigating 2026's cybersecurity landscape",
+																			"marks": [
+																				{
+																					"type": "underline"
+																				}
+																			],
 																			"content": null
 																		}
 																	]
