@@ -3772,6 +3772,38 @@
 															}
 														]
 													},
+													"escalated_as": {
+														"allOf": [
+															{
+																"enum": [
+																	"MALICIOUS",
+																	"MALICIOUS-BEC",
+																	"SUSPICIOUS",
+																	"SPOOF",
+																	"SPAM",
+																	"BULK",
+																	"ENCRYPTED",
+																	"EXTERNAL",
+																	"UNKNOWN",
+																	"NONE"
+																],
+																"type": "string"
+															},
+															{
+																"nullable": true,
+																"type": "string"
+															}
+														]
+													},
+													"escalated_at": {
+														"format": "date-time",
+														"nullable": true,
+														"type": "string"
+													},
+													"escalated_by": {
+														"nullable": true,
+														"type": "string"
+													},
 													"original_disposition": {
 														"allOf": [
 															{
