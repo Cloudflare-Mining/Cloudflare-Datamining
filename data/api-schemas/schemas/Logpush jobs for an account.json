@@ -1072,12 +1072,13 @@
 																"x-auditable": true
 															},
 															"timestamp_format": {
-																"description": "String to specify the format for timestamps, such as `unixnano`, `unix`, `rfc3339` or `rfc3339nano`.",
+																"description": "String to specify the format for timestamps, such as `unixnano`, `unix`, `rfc3339`, `rfc3339ms` or `rfc3339ns`.",
 																"enum": [
 																	"unixnano",
 																	"unix",
 																	"rfc3339",
-																	"rfc3339nano"
+																	"rfc3339ms",
+																	"rfc3339ns"
 																],
 																"type": "string",
 																"x-auditable": true
@@ -1662,12 +1663,13 @@
 																"x-auditable": true
 															},
 															"timestamp_format": {
-																"description": "String to specify the format for timestamps, such as `unixnano`, `unix`, `rfc3339` or `rfc3339nano`.",
+																"description": "String to specify the format for timestamps, such as `unixnano`, `unix`, `rfc3339`, `rfc3339ms` or `rfc3339ns`.",
 																"enum": [
 																	"unixnano",
 																	"unix",
 																	"rfc3339",
-																	"rfc3339nano"
+																	"rfc3339ms",
+																	"rfc3339ns"
 																],
 																"type": "string",
 																"x-auditable": true
@@ -2265,12 +2267,13 @@
 															"x-auditable": true
 														},
 														"timestamp_format": {
-															"description": "String to specify the format for timestamps, such as `unixnano`, `unix`, `rfc3339` or `rfc3339nano`.",
+															"description": "String to specify the format for timestamps, such as `unixnano`, `unix`, `rfc3339`, `rfc3339ms` or `rfc3339ns`.",
 															"enum": [
 																"unixnano",
 																"unix",
 																"rfc3339",
-																"rfc3339nano"
+																"rfc3339ms",
+																"rfc3339ns"
 															],
 															"type": "string",
 															"x-auditable": true
@@ -2734,12 +2737,13 @@
 										"x-auditable": true
 									},
 									"timestamp_format": {
-										"description": "String to specify the format for timestamps, such as `unixnano`, `unix`, `rfc3339` or `rfc3339nano`.",
+										"description": "String to specify the format for timestamps, such as `unixnano`, `unix`, `rfc3339`, `rfc3339ms` or `rfc3339ns`.",
 										"enum": [
 											"unixnano",
 											"unix",
 											"rfc3339",
-											"rfc3339nano"
+											"rfc3339ms",
+											"rfc3339ns"
 										],
 										"type": "string",
 										"x-auditable": true
@@ -3169,12 +3173,13 @@
 															"x-auditable": true
 														},
 														"timestamp_format": {
-															"description": "String to specify the format for timestamps, such as `unixnano`, `unix`, `rfc3339` or `rfc3339nano`.",
+															"description": "String to specify the format for timestamps, such as `unixnano`, `unix`, `rfc3339`, `rfc3339ms` or `rfc3339ns`.",
 															"enum": [
 																"unixnano",
 																"unix",
 																"rfc3339",
-																"rfc3339nano"
+																"rfc3339ms",
+																"rfc3339ns"
 															],
 															"type": "string",
 															"x-auditable": true
@@ -5104,12 +5109,13 @@
 										"x-auditable": true
 									},
 									"timestamp_format": {
-										"description": "String to specify the format for timestamps, such as `unixnano`, `unix`, `rfc3339` or `rfc3339nano`.",
+										"description": "String to specify the format for timestamps, such as `unixnano`, `unix`, `rfc3339`, `rfc3339ms` or `rfc3339ns`.",
 										"enum": [
 											"unixnano",
 											"unix",
 											"rfc3339",
-											"rfc3339nano"
+											"rfc3339ms",
+											"rfc3339ns"
 										],
 										"type": "string",
 										"x-auditable": true
@@ -5536,12 +5542,13 @@
 															"x-auditable": true
 														},
 														"timestamp_format": {
-															"description": "String to specify the format for timestamps, such as `unixnano`, `unix`, `rfc3339` or `rfc3339nano`.",
+															"description": "String to specify the format for timestamps, such as `unixnano`, `unix`, `rfc3339`, `rfc3339ms` or `rfc3339ns`.",
 															"enum": [
 																"unixnano",
 																"unix",
 																"rfc3339",
-																"rfc3339nano"
+																"rfc3339ms",
+																"rfc3339ns"
 															],
 															"type": "string",
 															"x-auditable": true
