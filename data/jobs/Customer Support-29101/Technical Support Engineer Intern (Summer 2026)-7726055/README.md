@@ -5,36 +5,48 @@
 		<p>At Cloudflare, we’re not looking for people who wait for a polished roadmap; we’re looking for the builders who see the cracks in the Internet that everyone else has simply learned to live with. We value candidates who have the instinct to spot a "normalized" problem and the AI-native curiosity to create a solution using the latest tools. Our culture is built on iteration, leveraging AI to ship faster today to make it better tomorrow, while ensuring that every improvement, no matter how small, is shared across the team to lift everyone up. If you’re the type of person who values curiosity over bureaucracy, and that AI is a partner in solving tough problems to keep the Internet moving forward, you’ll fit right in.</p>
 	</div>
 </div>
-<p><strong>Available Locations: Austin Texas, Washington D.C.</strong></p>
-<p><strong>About Us</strong></p>
-<p>At Cloudflare, we have our eyes set on an ambitious goal: to help build a better Internet. Today the company runs one of the world’s largest networks that powers approximately 25 million Internet properties, for customers ranging from individual bloggers to SMBs to Fortune 500 companies. Cloudflare protects and accelerates any Internet application online without adding hardware, installing software, or changing a line of code. Internet properties powered by Cloudflare all have web traffic routed through its intelligent global network, which gets smarter with every request. As a result, they see significant improvement in performance and a decrease in spam and other attacks. Cloudflare was named to Entrepreneur Magazine’s Top Company Cultures list and ranked among the World’s Most Innovative Companies by Fast Company.&nbsp;</p>
-<p>We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</p>
-<h4><strong>Technical Program Manager - Infrastructure Engineering</strong></h4>
-<h4>Cloudflare is seeking a highly skilled and self-motivated Technical Program Manager to lead and manage various company-wide initiatives and projects spanning multiple quarters and teams within Infrastructure Engineering. Your main responsibility will be to work cross functionally across product, engineering, security, technical operations, and more to build and execute on the overall strategy.&nbsp;</h4>
-<p>You will play an active part in collecting requirements, setting up deliverables, reporting progress, managing stakeholder expectations, and working with various functions to deliver success. You will partner with various product and engineering counterparts to determine available options, manage stakeholder expectations, and execute against the roadmap.</p>
-<p>This job involves managing multiple stakeholders and accommodating teams dispersed across multiple time zones.&nbsp;</p>
-<p>The ideal candidate is process driven but remains flexible and iterative, someone who loves to tackle new challenges, really enjoys bringing people together as a team, and driving them towards success.&nbsp;</p>
-<p><strong>This position will be based in the US. You will be reporting into the Infrastructure Engineering organization.</strong></p>
+<p><strong>Available location: Austin, Texas</strong></p>
+<p><strong><em>This role requires you to be able to come into our Austin office 3x a week.</em></strong></p>
+<p><strong>About the Department</strong></p>
+<p>The Customer Support Team solves complicated problems and answers technical inquiries via phone, email, chat, and social media. Whether it is a Wordpress blogger using our services for free or a global Enterprise business with petabytes of web traffic, our team is always eager to assist. We are the eyes and ears of Cloudflare, acting as the real-time voice of the customer to help communicate their needs and real-world use cases back to the rest of the company - to help build a better service and future product development.</p>
 <p>&nbsp;</p>
-<p><strong>Major areas of responsibilities</strong></p>
+<p><strong>What You’ll do</strong></p>
+<p>Do you love solving complex technical problems and interacting with people? As a Technical Support Engineer Intern at Cloudflare, you’ll work directly with customers and cross-functional teams to tackle a variety of technical challenges. You’ll gain hands-on experience with our products, learn the inner workings of Cloudflare’s offerings, and deepen your understanding of internet technologies. This role also provides opportunities to develop valuable technical and professional skills, as well as job shadowing experiences to explore different roles within the company. Join us to enhance your skill set while making a real impact!</p>
+<p>&nbsp;</p>
+<p><strong>Responsibilities</strong>&nbsp;</p>
 <ul>
-	<li>Possess a working knowledge of data center infrastructure components like servers, storage, networking, connectivities, and their interdependencies to identify technical risks and potential roadblocks for programs.</li>
-	<li>Work with stakeholders to align on inputs for Infrastructure programs which includes alignment of deliverables.</li>
-	<li>Develop reports and dashboards for tracking and delivery of KPIs</li>
-	<li>Ability to communicate effectively to all members of teams, programs and senior leadership. Ability to collaborate<strong> </strong>and work effectively with cross-functional teams.&nbsp;</li>
-	<li>Provide clear documentation for infrastructure deliverables (including status reports), processes, and project plans, and provide regular status updates to stakeholders and executives.</li>
+	<li>Collaborate with senior engineers to analyze and troubleshoot customer issues</li>
+	<li>Track support requests using our ticketing system</li>
+	<li>Participate in team meetings to discuss and share feedback</li>
+	<li>Help create and update technical documentation and run books&nbsp;</li>
+	<li>Provide feedback on our product and potential improvements based on customer interactions</li>
+	<li>Support the team in testing new releases and reporting bugs</li>
+	<li>Perform other duties/projects as assigned&nbsp;</li>
 </ul>
-<p><strong>Desirable skills and knowledge&nbsp;</strong></p>
+<p><strong>Skills and Requirements</strong></p>
 <ul>
-	<li>BS+ in Computer Science, Information Technology, Information Security or related field or equivalent experience&nbsp;</li>
-	<li>5-10+ years experience in technical program management and a desire for continuous improvement</li>
-	<li>Proven track record of creating realistic project plans, managing dependencies, and overseeing execution to meet commitments and deliver with predictability</li>
-	<li>Excellent oral and written communication, proven track record of effective communication at various levels including executive level</li>
-	<li>Experience working with multiple time zones and multiple cross functional teams</li>
-	<li>Strong competency with Excel/Google Sheet, Smartsheet, Confluence, JIRA, and various development methodologies (Agile, Waterfall, Kaizen, Scrum, etc)&nbsp;&nbsp;</li>
-	<li>Servant leader who has successfully gained authority with peers by demonstrating empathy, providing support and motivating others</li>
-	<li>Comfortable managing tight deadlines, changing priorities, and ambiguity.</li>
+	<li>Currently pursuing an undergraduate degree in a Computer Sciences or related field</li>
+	<li>Self-driven and capable of learning new technologies/systems/features with some guidance</li>
+	<li>Fundamental understanding of how the Internet works (OSI Model); Cloudflare has a variety of products that presently impact Layers 3, 4 &amp; 7</li>
+	<li>Experience using Linux&nbsp;</li>
+	<li>Experience in command line and tools, including curl, dig, traceroute, openssl and git</li>
+	<li>Experience writing scripts in Bash, Python, JavaScript, or other scripting languages</li>
+	<li>Awareness of what DNS, SSL/TLS and HTTP is and how these function</li>
+	<li>Awareness of or experience installing and configuring web servers like Apache, Nginx, and IIS</li>
+	<li>Must be able to work 40 hours a week</li>
+	<li>Must be able to commit to a 12 week program</li>
 </ul>
+<p><strong>Bonus Points</strong></p>
+<ul>
+	<li>Experience troubleshooting network connectivity issues, BGP routing, and GRE tunnels</li>
+	<li>You are familiar with Cloudflare and have a site actively using our platform</li>
+</ul>
+<p><strong>Super Bonus Points</strong></p>
+<ul>
+	<li>You are fluent and can troubleshoot in Mandarin, Spanish, and Portuguese</li>
+</ul>
+<p>&nbsp;</p>
+<p>You can check out our <a href="https://blog.cloudflare.com/tag/internship-experience/">internship blogs</a> to learn more about our program and hear directly from our past interns.</p>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
 	<p><span style="font-weight: 400;">We’re not just a highly ambitious, large-scale technology company. We’re a highly ambitious, large-scale technology company with a soul. Fundamental to our mission to help build a better Internet is protecting the free and open Internet.</span></p>

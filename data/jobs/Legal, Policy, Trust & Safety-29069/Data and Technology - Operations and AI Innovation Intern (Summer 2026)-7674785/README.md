@@ -5,42 +5,32 @@
 		<p>At Cloudflare, we’re not looking for people who wait for a polished roadmap; we’re looking for the builders who see the cracks in the Internet that everyone else has simply learned to live with. We value candidates who have the instinct to spot a "normalized" problem and the AI-native curiosity to create a solution using the latest tools. Our culture is built on iteration, leveraging AI to ship faster today to make it better tomorrow, while ensuring that every improvement, no matter how small, is shared across the team to lift everyone up. If you’re the type of person who values curiosity over bureaucracy, and that AI is a partner in solving tough problems to keep the Internet moving forward, you’ll fit right in.</p>
 	</div>
 </div>
-<p><strong>Available Location: Austin, TX</strong></p>
-<p><strong>About the Role</strong></p>
-<p>We are looking for an enthusiastic Threat Investigations Intern to join Cloudflare’s Trust and Safety team. If you’re passionate about making the web safer, fascinated by cyber threats, and eager to learn how to investigate and mitigate them, we’d love to talk.</p>
-<p>In this role, you will support real-world investigations, learn how to analyze abuse trends, and assist our technical teams in maintaining a secure platform. You’ll learn and grow alongside talented teammates who share your attention to detail and appetite for problem-solving. A passion for Trust &amp; Safety or Information Security, a high degree of curiosity, and a foundational understanding of web technologies are essential for this role.</p>
-<h3><strong>What you'll do&nbsp;</strong></h3>
-<p>As a Threats Investigation intern, you won’t just be checking boxes. Over 12 weeks, you will:</p>
+<p><strong>Available Locations: Washington D.C.</strong></p>
+<p><strong>About Cloudflare's Data &amp; Technology Team</strong></p>
+<p>At Cloudflare, we are helping build a better Internet, and our Data &amp; Technology Team is at the heart of that mission. We are looking for a highly organized, tech-savvy <strong>Operations and AI Innovation</strong> intern who will help modernize our workflows by integrating AI-driven automation into our everyday processes. In this role, you will be a key contributor to our strategic goals by identifying manual bottlenecks and building the technical bridges needed to automate them.</p>
+<p><strong>About the Internship Program</strong></p>
+<p>As an Operations and AI Innovation Intern on the Data &amp; Technology Team, you will:</p>
 <ul>
-	<li>Assist in Investigations: Support senior investigators in conducting threat investigations related to the potential misuse of Cloudflare’s platform.</li>
-	<li>Analyze Trends: Help gather and analyze data on external abuse trends to provide insights for the Trust &amp; Safety and Cloudforce One teams.</li>
-	<li>System Maintenance &amp; Tooling: Help identify gaps where new tooling could improve team efficiency.</li>
-	<li>Reporting: Contribute to the creation of high-quality reports and briefings on abuse trends and investigative findings.</li>
-	<li>Research: Conduct guided research into emerging threats, tools, and methodologies to help enhance our platform abuse monitoring.</li>
-	<li>Documentation: Contribute to Trust &amp; Safety policies, procedures, and internal documentation.</li>
-	<li>Collaboration: Actively participate in cross-functional projects, coordinating and collaborating with various teams across the company, including the Trust &amp; Safety Engineering and Cloudforce One threat intelligence teams.</li>
-</ul>
-<p><strong>Examples of desirable skills, knowledge and experience</strong></p>
-<ul>
-	<li>Education: Currently pursuing a degree in Cybersecurity, Computer Science, Information Systems, or a related field (or equivalent bootcamp/self-taught experience).</li>
-	<li>Curiosity &amp; Problem-Solving: A critical thinker who enjoys solving complex puzzles and learning new technical concepts.</li>
-	<li>Adaptability: Comfortable in a fast-paced environment and willing to roll up your sleeves to dig into the data.</li>
-	<li>Foundational Knowledge: A basic understanding of web infrastructure, web services architecture, and general security principles.</li>
-	<li>Communication: Strong written and verbal communication skills, with the ability to explain technical concepts clearly.</li>
-	<li>Data Skills: Familiarity with basic data analysis. You should be eager to learn how to query and manipulate large datasets.</li>
-	<li>Technical Exposure: Exposure to, or coursework involving, one or more of the following languages or technologies: Python, JavaScript, Go, Node.js, shell scripting, SQL.</li>
-	<li>Ability to commit to a minimum 12 week summer internship.</li>
-	<li>In the office 3-5 days a week in the Austin office</li>
-</ul>
-<h3><strong>Bonus Points</strong></h3>
-<ul>
-	<li>You understand DNS and the fundamentals of how the Internet works.</li>
-	<li>You have an interest in the intersection of technology, public policy, and the law.</li>
-	<li>You understand the basic responsibilities and requirements of being a hosting provider.</li>
-	<li>You have experience operating or building your own websites or home lab.</li>
-	<li>You have experience with our developer platform using <a href="https://www.cloudflare.com/students/">Cloudflare for Students</a>.</li>
+	<li>Process Analysis &amp; Innovation: Audit current manual workflows to identify opportunities for automation. You will map out complex business processes (such as internal privacy and vendor assessments, data subject requests, etc.) and provide recommendations on where AI can drive maximum efficiency.&nbsp;</li>
+	<li>AI Agent Development: Develop and refine AI agents and “Gems” to automate manual tasks. This includes prompt engineering, defining agent personas, and iteratively testing outputs to ensure they meet quality standards.</li>
+	<li>Operational Monitoring &amp; Insights: Define and develop data queries and dashboards to track key performance indicators and analyze operational metrics using tools such as Google Looker Studio or Tableau.&nbsp;</li>
+	<li>Communication Automation: Design and deploy automated triage and response systems for high-volume inbound requests received through emails, ticketing systems, and other shared departmental channels.&nbsp;</li>
+	<li>Knowledge Integration: Help map internal data sources, such as internal Wikis, Sales answer banks, and technical documentation into the automation knowledge base to improve response accuracy.</li>
 </ul>
 <p>You can check out our <a href="https://blog.cloudflare.com/tag/internship-experience/">internship blogs</a> to learn more about our program and hear directly from our past interns.</p>
+<p><strong>Examples of desirable skills, knowledge and experience</strong></p>
+<ul>
+	<li>Currently pursuing a Bachelor's degree in a technical field.</li>
+	<li>Technical Curiosity: Experience using LLM interfaces (such as Gemini) and prompt engineering, paired with a strong interest in the emerging field of AI agents.</li>
+	<li>Problem-Solving Mindset: Ability to analyze manual processes and envision an automated solution.</li>
+	<li>Communication: Ability to distill complex legal or technical requirements into clear actionable insights.</li>
+	<li>Intellectual Curiosity: A natural drive to explore new technologies and a "figure it out" mindset.&nbsp;</li>
+	<li>Process Documentation: Ability to draft clear technical specifications and Standard Operating Procedures (SOPs) to ensure automated workflows and reporting systems are sustainable and easy for others to maintain.</li>
+	<li>Familiarity with API integrations, Opencode or Windsurf.&nbsp;</li>
+	<li>Ability to commit to a minimum 12 week summer internship.</li>
+	<li>In office 3-5 days a week in the Washington D.C. office.</li>
+</ul>
+<p>&nbsp;</p>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
 	<p><span style="font-weight: 400;">We’re not just a highly ambitious, large-scale technology company. We’re a highly ambitious, large-scale technology company with a soul. Fundamental to our mission to help build a better Internet is protecting the free and open Internet.</span></p>
