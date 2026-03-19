@@ -1,0 +1,146 @@
+<div class="mb2 gray5">7 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3PkoXqOyf4XJ2kpj8aENq4/31c29ef20b6d697ebd38bf316a132027/BLOG-3247_1.png" alt="">
+<div class="post-content lh-copy gray1">
+	<p>We're making Cloudflare the best place for building and deploying agents. But reliable agents aren't built on prompts alone; they require a robust, coordinated infrastructure of underlying primitives. </p>
+	<p>At Cloudflare, we have been building these primitives for years: <a href="https://developers.cloudflare.com/durable-objects"><u>Durable Objects</u></a> for state persistence, <a href="https://developers.cloudflare.com/workflows"><u>Workflows</u></a> for long running tasks, and <a href="https://developers.cloudflare.com/workers/runtime-apis/bindings/worker-loader"><u>Dynamic Workers</u></a> or <a href="https://developers.cloudflare.com/sandbox"><u>Sandbox</u></a> containers for secure execution. Powerful abstractions like the <a href="https://developers.cloudflare.com/agents"><u>Agents SDK</u></a> are designed to help you build agents on top of Cloudflare’s Developer Platform.</p>
+	<p>But these primitives only provided the execution environment. The agent still needed a model capable of powering it.&nbsp;</p>
+	<p>Starting today, Workers AI is officially in the big models game. We now offer frontier open-source models on our AI inference platform. We’re starting by releasing <a href="https://www.kimi.com/blog/kimi-k2-5"><u>Moonshot AI’s Kimi K2.5</u></a> model <a href="https://developers.cloudflare.com/workers-ai/models/kimi-k2.5"><u>on Workers AI</u></a>. With a full 256k context window and support for multi-turn tool calling, vision inputs, and structured outputs, the Kimi K2.5 model is excellent for all kinds of agentic tasks. By bringing a frontier-scale model directly into the Cloudflare Developer Platform, we’re making it possible to run the entire agent lifecycle on a single, unified platform.</p>
+	<p>The heart of an agent is the AI model that powers it, and that model needs to be smart, with high reasoning capabilities and a large context window. Workers AI now runs those models.</p>
+	<div class="flex anchor relative">
+		<h2 id="the-price-performance-sweet-spot">The price-performance sweet spot</h2>
+		<a href="https://blog.cloudflare.com/#the-price-performance-sweet-spot" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>We spent the last few weeks testing Kimi K2.5 as the engine for our internal development tools. Within our <a href="https://opencode.ai"><u>OpenCode</u></a> environment, Cloudflare engineers use Kimi as a daily driver for agentic coding tasks. We have also integrated the model into our automated code review pipeline; you can see this in action via our public code review agent, <a href="https://github.com/ask-bonk/ask-bonk"><u>Bonk</u></a>, on Cloudflare GitHub repos. In production, the model has proven to be a fast, efficient alternative to larger proprietary models without sacrificing quality.</p>
+	<p>Serving Kimi K2.5 began as an experiment, but it quickly became critical after reviewing how the model performs and how cost-efficient it is. As an illustrative example: we have an agent that does security reviews of Cloudflare’s codebases. This agent processes over 7B tokens per day, and using Kimi, it has caught more than 15 confirmed issues in a single codebase. Doing some rough math, if we had run this agent on a mid-tier proprietary model, we would have spent $2.4M a year for this single use case, on a single codebase. Running this agent with Kimi K2.5 cost just a fraction of that: we cut costs by 77% simply by making the switch to Workers AI.</p>
+	<p>As AI adoption increases, we are seeing a fundamental shift not only in how engineering teams are operating, but how individuals are operating. It is becoming increasingly common for people to have a personal agent like <a href="https://openclaw.ai"><u>OpenClaw</u></a> running 24/7. The volume of inference is skyrocketing.</p>
+	<p>This new rise in personal and coding agents means that cost is no longer a secondary concern; it is the primary blocker to scaling. When every employee has multiple agents processing hundreds of thousands of tokens per hour, the math for proprietary models stops working. Enterprises will look to transition to open-source models that offer frontier-level reasoning without the proprietary price tag. Workers AI is here to facilitate this shift, providing everything from serverless endpoints for a personal agent to dedicated instances powering autonomous agents across an entire organization.</p>
+	<div class="flex anchor relative">
+		<h2 id="the-large-model-inference-stack">The large model inference stack</h2>
+		<a href="https://blog.cloudflare.com/#the-large-model-inference-stack" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Workers AI has served models, including LLMs, since its launch two years ago, but we’ve historically prioritized smaller models. Part of the reason was that for some time, open-source LLMs fell far behind the models from frontier model labs. This changed with models like Kimi K2.5, but to serve this type of very large LLM, we had to make changes to our inference stack. We wanted to share with you some of what goes on behind the scenes to support a model like Kimi.</p>
+	<p>We’ve been working on custom kernels for Kimi K2.5 to optimize how we serve the model, which is built on top of our proprietary <a href="https://blog.cloudflare.com/cloudflares-most-efficient-ai-inference-engine"><u>Infire inference engine</u></a>. Custom kernels improve the model’s performance and GPU utilization, unlocking gains that would otherwise go unclaimed if you were just running the model out of the box. There are also multiple techniques and hardware configurations that can be leveraged to serve a large model. Developers typically use a combination of data, tensor, and expert parallelization techniques to optimize model performance. Strategies like disaggregated prefill are also important, in which you separate the prefill and generation stages onto different machines in order to get better throughput or higher GPU utilization. Implementing these techniques and incorporating them into the inference stack takes a lot of dedicated experience to get right.&nbsp;</p>
+	<p>Workers AI has already done the experimentation with serving techniques to yield excellent throughput on Kimi K2.5. A lot of this does not come out of the box when you self-host an open-source model. The benefit of using a platform like Workers AI is that you don’t need to be a Machine Learning Engineer, a DevOps expert, or a Site Reliability Engineer to do the optimizations required to host it: we’ve already done the hard part, you just need to call an API.</p>
+	<div class="flex anchor relative">
+		<h2 id="beyond-the-model-platform-improvements-for-agentic-workloads">Beyond the model — platform improvements for agentic workloads</h2>
+		<a href="https://blog.cloudflare.com/#beyond-the-model-platform-improvements-for-agentic-workloads" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>In concert with this launch, we’ve also improved our platform and are releasing several new features to help you build better agents.</p>
+	<div class="flex anchor relative">
+		<h3 id="prefix-caching-and-surfacing-cached-tokens">Prefix caching and surfacing cached tokens</h3>
+		<a href="https://blog.cloudflare.com/#prefix-caching-and-surfacing-cached-tokens" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>When you work with agents, you are likely sending a large number of input tokens as part of the context: this could be detailed system prompts, tool definitions, MCP server tools, or entire codebases. Inputs can be as large as the model context window, so in theory, you could be sending requests with almost 256k input tokens. That’s a lot of tokens.</p>
+	<p>When an LLM processes a request, the request is broken down into two stages: the prefill stage processes input tokens and the output stage generates output tokens. These stages are usually sequential, where input tokens have to be fully processed before you can generate output tokens. This means that sometimes the GPU is not fully utilized while the model is doing prefill.</p>
+	<p>With multi-turn conversations, when you send a new prompt, the client sends all the previous prompts, tools, and context from the session to the model as well. The delta between consecutive requests is usually just a few new lines of input; all the other context has already gone through the prefill stage during a previous request. This is where prefix caching helps. Instead of doing prefill on the entire request, we can cache the input tensors from a previous request, and only do prefill on the new input tokens. This saves a lot of time and compute from the prefill stage, which means a faster Time to First Token (TTFT) and a higher Tokens Per Second (TPS) throughput as you’re not blocked on prefill.</p>
+	<p>Workers AI has always done prefix caching, but we are now surfacing cached tokens as a usage metric and offering a discount on cached tokens compared to input tokens. (Pricing can be found on the <a href="https://developers.cloudflare.com/workers-ai/models/kimi-k2.5"><u>model page</u></a>.) We also have new techniques for you to leverage in order to get a higher prefix cache hit rate, reducing your costs.</p>
+	<div class="flex anchor relative">
+		<h3 id="new-session-affinity-header-for-higher-cache-hit-rates">New session affinity header for higher cache hit rates</h3>
+		<a href="https://blog.cloudflare.com/#new-session-affinity-header-for-higher-cache-hit-rates" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>In order to route to the same model instance and take advantage of prefix caching, we use a new <code>x-session-affinity</code> header. When you send this header, you’ll improve your cache hit ratio, leading to more cached tokens and subsequently, faster TTFT, TPS, and lower inference costs.</p>
+	<p>You can pass the new header like below, with a unique string per session or per agent. Some clients like OpenCode implement this automatically out of the box. Our <a href="https://github.com/cloudflare/agents-starter"><u>Agents SDK starter</u></a> has already set up the wiring to do this for you, too.</p>
+	<pre class="language-shell"><code class="language-shell">curl -X POST \
+"https://api.cloudflare.com/client/v4/accounts/{ACCOUNT_ID}/ai/run/@cf/moonshotai/kimi-k2.5" \
+  -H "Authorization: Bearer {API_TOKEN}" \
+  -H "Content-Type: application/json" \
+  -H "x-session-affinity: ses_12345678" \
+  -d '{
+    "messages": [
+      {
+        "role": "system",
+        "content": "You are a helpful assistant."
+      },
+      {
+        "role": "user",
+        "content": "What is prefix caching and why does it matter?"
+      }
+    ],
+    "max_tokens": 2400,
+    "stream": true
+  }'
+</code></pre>
+
+	<div class="flex anchor relative">
+		<h3 id="redesigned-async-apis">Redesigned async APIs</h3>
+		<a href="https://blog.cloudflare.com/#redesigned-async-apis" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Serverless inference is really hard. With a pay-per-token business model, it’s cheaper on a single request basis because you don’t need to pay for entire GPUs to service your requests. But there’s a trade-off: you have to contend with other people’s traffic and capacity constraints, and there’s no strict guarantee that your request will be processed. This is not unique to Workers AI — it’s evidently the case across serverless model providers, given the frequent news reports of overloaded providers and service disruptions. While we always strive to serve your request and have built-in autoscaling and rebalancing, there are hard limitations (like hardware) that make this a challenge.</p>
+	<p>For volumes of requests that would exceed synchronous rate limits, you can submit batches of inferences to be completed asynchronously. We’re introducing a revamped Asynchronous API, which means that for asynchronous use cases, you won’t run into Out of Capacity errors and inference will execute durably at some point. Our async API looks more like flex processing than a batch API, where we process requests in the async queue as long as we have headroom in our model instances. With internal testing, our async requests usually execute within 5 minutes, but this will depend on what live traffic looks like. As we bring Kimi to the public, we will tune our scaling accordingly, but the async API is the best way to make sure you don’t run into capacity errors in durable workflows. This is perfect for use cases that are not real-time, such as code scanning agents or research agents.</p>
+	<p>Workers AI previously had an asynchronous API, but we’ve recently revamped the systems under the hood. We now rely on a pull-based system versus the historical push-based system, allowing us to pull in queued requests as soon as we have capacity. We’ve also added better controls to tune the throughput of async requests, monitoring GPU utilization in real-time and pulling in async requests when utilization is low, so that critical synchronous requests get priority while still processing asynchronous requests efficiently.</p>
+	<p>To use the asynchronous API, you would send your requests as seen below. We also have a way to <a href="https://developers.cloudflare.com/workers-ai/platform/event-subscriptions"><u>set up event notifications</u></a> so that you can know when the inference is complete instead of polling for the request.&nbsp;</p>
+	<pre class="language-javascript"><code class="language-javascript">// (1.) Push a request in queue
+// pass queueRequest: true
+let res = await env.AI.run("@cf/moonshotai/kimi-k2.5", {
+  "requests": [{
+    "messages": [{
+      "role": "user",
+      "content": "Tell me a joke"
+    }]
+  }, {
+    "messages": [{
+      "role": "user",
+      "content": "Explain the Pythagoras theorem"
+    }]
+  }, ...{&lt;add more requests in a batch&gt;} ];
+}, {
+  queueRequest: true,
+});
+
+
+// (2.) grab the request id
+let request_id;
+if(res &amp;&amp; res.request_id){
+  request_id = res.request_id;
+}
+// (3.) poll the status
+let res = await env.AI.run("@cf/moonshotai/kimi-k2.5", {
+  request_id: request_id
+});
+
+if(res &amp;&amp; res.status === "queued" || res.status === "running") {
+ // retry by polling again
+ ...
+}
+else 
+ return Response.json(res); // This will contain the final completed response 
+</code></pre>
+
+	<div class="flex anchor relative">
+		<h2 id="try-it-out-today">Try it out today</h2>
+		<a href="https://blog.cloudflare.com/#try-it-out-today" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Get started with Kimi K2.5 on Workers AI today. You can read our developer docs to find out <a href="https://developers.cloudflare.com/workers-ai/models/kimi-k2.5"><u>model information and pricing</u></a>, and how to take advantage of <a href="https://developers.cloudflare.com/workers-ai/features/prompt-caching"><u>prompt caching via session affinity headers</u></a> and <a href="https://developers.cloudflare.com/workers-ai/features/batch-api"><u>asynchronous API</u></a>. The <a href="https://github.com/cloudflare/agents-starter"><u>Agents SDK starter</u></a> also now uses Kimi K2.5 as its default model. You can also <a href="https://opencode.ai/docs/providers"><u>connect to Kimi K2.5 on Workers AI via Opencode</u></a>. For a live demo, try it in our <a href="https://playground.ai.cloudflare.com"><u>playground</u></a>.</p>
+	<p>And if this set of problems around serverless inference, ML optimizations, and GPU infrastructure sound&nbsp; interesting to you — <a href="https://job-boards.greenhouse.io/cloudflare/jobs/6297179?gh_jid=6297179"><u>we’re hiring</u></a>!</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/36JzF0zePj2z7kZQK8Q2fg/73b0a7206d46f0eef170ffd1494dc4b3/BLOG-3247_2.png" alt="BLOG-3247 2" class="kg-image" width="1999" height="533" loading="lazy">
+	</figure>
+	<p></p>
+</div>
