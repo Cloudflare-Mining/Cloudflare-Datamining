@@ -45,22 +45,22 @@
 		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
 	},
 	"binutils": {
-		"version": "2.42-4ubuntu2.8",
+		"version": "2.42-4ubuntu2.10",
 		"short_description": "GNU assembler, linker and binary utilities",
 		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
 	},
 	"binutils-common:amd64": {
-		"version": "2.42-4ubuntu2.8",
+		"version": "2.42-4ubuntu2.10",
 		"short_description": "Common files for the GNU assembler, linker and binary utilities",
 		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
 	},
 	"binutils-x86-64-linux-gnu": {
-		"version": "2.42-4ubuntu2.8",
+		"version": "2.42-4ubuntu2.10",
 		"short_description": "GNU binary utilities, for x86-64-linux-gnu target",
 		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
 	},
 	"bsdutils": {
-		"version": "1:2.39.3-9ubuntu6.4",
+		"version": "1:2.39.3-9ubuntu6.5",
 		"short_description": "basic utilities from 4.4BSD-Lite",
 		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
 	},
@@ -90,7 +90,7 @@
 		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
 	},
 	"containerd.io": {
-		"version": "2.2.1-1~ubuntu.24.04~noble",
+		"version": "2.2.2-1~ubuntu.24.04~noble",
 		"short_description": "An open and reliable container runtime",
 		"author": "Containerd team <help@containerd.io>"
 	},
@@ -120,7 +120,7 @@
 		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
 	},
 	"curl": {
-		"version": "8.5.0-2ubuntu10.7",
+		"version": "8.5.0-2ubuntu10.8",
 		"short_description": "command line tool for transferring data with URL syntax",
 		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
 	},
@@ -680,17 +680,17 @@
 		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
 	},
 	"libbinutils:amd64": {
-		"version": "2.42-4ubuntu2.8",
+		"version": "2.42-4ubuntu2.10",
 		"short_description": "GNU binary utilities (private shared library)",
 		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
 	},
 	"libblkid-dev:amd64": {
-		"version": "2.39.3-9ubuntu6.4",
+		"version": "2.39.3-9ubuntu6.5",
 		"short_description": "block device ID library - headers",
 		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
 	},
 	"libblkid1:amd64": {
-		"version": "2.39.3-9ubuntu6.4",
+		"version": "2.39.3-9ubuntu6.5",
 		"short_description": "block device ID library",
 		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
 	},
@@ -850,12 +850,12 @@
 		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
 	},
 	"libctf-nobfd0:amd64": {
-		"version": "2.42-4ubuntu2.8",
+		"version": "2.42-4ubuntu2.10",
 		"short_description": "Compact C Type Format library (runtime, no BFD dependency)",
 		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
 	},
 	"libctf0:amd64": {
-		"version": "2.42-4ubuntu2.8",
+		"version": "2.42-4ubuntu2.10",
 		"short_description": "Compact C Type Format library (runtime, BFD dependency)",
 		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
 	},
@@ -865,17 +865,17 @@
 		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
 	},
 	"libcurl3t64-gnutls:amd64": {
-		"version": "8.5.0-2ubuntu10.7",
+		"version": "8.5.0-2ubuntu10.8",
 		"short_description": "easy-to-use client-side URL transfer library (GnuTLS flavour)",
 		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
 	},
 	"libcurl4-openssl-dev:amd64": {
-		"version": "8.5.0-2ubuntu10.7",
+		"version": "8.5.0-2ubuntu10.8",
 		"short_description": "development files and documentation for libcurl (OpenSSL flavour)",
 		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
 	},
 	"libcurl4t64:amd64": {
-		"version": "8.5.0-2ubuntu10.7",
+		"version": "8.5.0-2ubuntu10.8",
 		"short_description": "easy-to-use client-side URL transfer library (OpenSSL flavour)",
 		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
 	},
@@ -1045,7 +1045,7 @@
 		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
 	},
 	"libfdisk1:amd64": {
-		"version": "2.39.3-9ubuntu6.4",
+		"version": "2.39.3-9ubuntu6.5",
 		"short_description": "fdisk partitioning library",
 		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
 	},
@@ -1115,12 +1115,12 @@
 		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
 	},
 	"libfreetype-dev:amd64": {
-		"version": "2.13.2+dfsg-1build3",
+		"version": "2.13.2+dfsg-1ubuntu0.1",
 		"short_description": "FreeType 2 font engine, development files",
 		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
 	},
 	"libfreetype6:amd64": {
-		"version": "2.13.2+dfsg-1build3",
+		"version": "2.13.2+dfsg-1ubuntu0.1",
 		"short_description": "FreeType 2 font engine, shared library files",
 		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
 	},
@@ -1255,7 +1255,7 @@
 		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
 	},
 	"libgprofng0:amd64": {
-		"version": "2.42-4ubuntu2.8",
+		"version": "2.42-4ubuntu2.10",
 		"short_description": "GNU Next Generation profiler (runtime library)",
 		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
 	},
@@ -1730,12 +1730,12 @@
 		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
 	},
 	"libmount-dev:amd64": {
-		"version": "2.39.3-9ubuntu6.4",
+		"version": "2.39.3-9ubuntu6.5",
 		"short_description": "device mounting library - headers",
 		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
 	},
 	"libmount1:amd64": {
-		"version": "2.39.3-9ubuntu6.4",
+		"version": "2.39.3-9ubuntu6.5",
 		"short_description": "device mounting library",
 		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
 	},
@@ -1780,7 +1780,7 @@
 		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
 	},
 	"libnftables1:amd64": {
-		"version": "1.0.9-1build1",
+		"version": "1.0.9-1ubuntu0.1",
 		"short_description": "Netfilter nftables high level userspace API library",
 		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
 	},
@@ -2035,12 +2035,12 @@
 		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
 	},
 	"libpython3.12-minimal:amd64": {
-		"version": "3.12.3-1ubuntu0.11",
+		"version": "3.12.3-1ubuntu0.12",
 		"short_description": "Minimal subset of the Python language (version 3.12)",
 		"author": "Ubuntu Core Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
 	},
 	"libpython3.12-stdlib:amd64": {
-		"version": "3.12.3-1ubuntu0.11",
+		"version": "3.12.3-1ubuntu0.12",
 		"short_description": "Interactive high-level object-oriented language (standard library, version 3.12)",
 		"author": "Ubuntu Core Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
 	},
@@ -2140,7 +2140,7 @@
 		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
 	},
 	"libsframe1:amd64": {
-		"version": "2.42-4ubuntu2.8",
+		"version": "2.42-4ubuntu2.10",
 		"short_description": "Library to handle the SFrame format (runtime library)",
 		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
 	},
@@ -2170,7 +2170,7 @@
 		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
 	},
 	"libsmartcols1:amd64": {
-		"version": "2.39.3-9ubuntu6.4",
+		"version": "2.39.3-9ubuntu6.5",
 		"short_description": "smart column output alignment library",
 		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
 	},
@@ -2200,7 +2200,7 @@
 		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
 	},
 	"libssh-4:amd64": {
-		"version": "0.10.6-2ubuntu0.3",
+		"version": "0.10.6-2ubuntu0.4",
 		"short_description": "tiny C SSH library (OpenSSL flavor)",
 		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
 	},
@@ -2315,7 +2315,7 @@
 		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
 	},
 	"libuuid1:amd64": {
-		"version": "2.39.3-9ubuntu6.4",
+		"version": "2.39.3-9ubuntu6.5",
 		"short_description": "Universally Unique ID library",
 		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
 	},
@@ -2570,7 +2570,7 @@
 		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
 	},
 	"linux-libc-dev:amd64": {
-		"version": "6.8.0-101.101",
+		"version": "6.8.0-106.106",
 		"short_description": "Linux Kernel Headers for development",
 		"author": "Ubuntu Kernel Team <kernel-team@lists.ubuntu.com>"
 	},
@@ -2625,7 +2625,7 @@
 		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
 	},
 	"mount": {
-		"version": "2.39.3-9ubuntu6.4",
+		"version": "2.39.3-9ubuntu6.5",
 		"short_description": "tools for mounting and manipulating filesystems",
 		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
 	},
@@ -2655,12 +2655,12 @@
 		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
 	},
 	"nftables": {
-		"version": "1.0.9-1build1",
+		"version": "1.0.9-1ubuntu0.1",
 		"short_description": "Program to control packet filtering rules by Netfilter project",
 		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
 	},
 	"openssh-client": {
-		"version": "1:9.6p1-3ubuntu13.14",
+		"version": "1:9.6p1-3ubuntu13.15",
 		"short_description": "secure shell (SSH) client, for secure access to remote machines",
 		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
 	},
@@ -2745,12 +2745,12 @@
 		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
 	},
 	"python3.12": {
-		"version": "3.12.3-1ubuntu0.11",
+		"version": "3.12.3-1ubuntu0.12",
 		"short_description": "Interactive high-level object-oriented language (version 3.12)",
 		"author": "Ubuntu Core Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
 	},
 	"python3.12-minimal": {
-		"version": "3.12.3-1ubuntu0.11",
+		"version": "3.12.3-1ubuntu0.12",
 		"short_description": "Minimal subset of the Python language (version 3.12)",
 		"author": "Ubuntu Core Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
 	},
@@ -2855,12 +2855,12 @@
 		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
 	},
 	"util-linux": {
-		"version": "2.39.3-9ubuntu6.4",
+		"version": "2.39.3-9ubuntu6.5",
 		"short_description": "miscellaneous system utilities",
 		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
 	},
 	"uuid-dev:amd64": {
-		"version": "2.39.3-9ubuntu6.4",
+		"version": "2.39.3-9ubuntu6.5",
 		"short_description": "Universally Unique ID library - headers and static libraries",
 		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
 	},
