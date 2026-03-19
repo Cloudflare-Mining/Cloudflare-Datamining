@@ -275,6 +275,15 @@ Workers AI supports four configuration modes:
 
 Third-party providers (OpenAI, Anthropic, Gemini, Grok, OpenRouter) only support the gateway modes.
 
+All Workers AI config modes also accept `sessionAffinity` to route requests with the same key to the same backend replica for prefix-cache optimization:
+
+```typescript
+const adapter = createWorkersAiChat("@cf/meta/llama-3.3-70b-instruct-fp8-fast", {
+	binding: env.AI,
+	sessionAffinity: "my-unique-session-id",
+});
+```
+
 ## Links
 
 - [TanStack AI Documentation](https://tanstack.com/ai)
