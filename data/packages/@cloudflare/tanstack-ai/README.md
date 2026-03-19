@@ -68,6 +68,39 @@ const adapter = createWorkersAiChat("@cf/meta/llama-4-scout-17b-16e-instruct", {
 });
 ```
 
+### Vision (Image Inputs)
+
+Send images to vision-capable chat models:
+
+```typescript
+const adapter = createWorkersAiChat("@cf/meta/llama-4-scout-17b-16e-instruct", {
+	accountId: "your-account-id",
+	apiKey: "your-api-key",
+});
+
+const response = chat({
+	adapter,
+	stream: true,
+	messages: [
+		{
+			role: "user",
+			content: [
+				{ type: "text", content: "What's in this image?" },
+				{ type: "image", source: { type: "data", value: base64String, mimeType: "image/png" } },
+			],
+		},
+	],
+});
+```
+
+URL sources are also supported:
+
+```typescript
+{ type: "image", source: { type: "url", value: "https://example.com/photo.jpg" } }
+```
+
+Works with all configuration modes (binding, REST, and AI Gateway).
+
 ### Image Generation
 
 ```typescript
