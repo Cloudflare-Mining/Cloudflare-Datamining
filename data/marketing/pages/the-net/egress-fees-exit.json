@@ -48,17 +48,11 @@
 						"description": null
 					},
 					"facebookCustomImage": null,
-					"author": [
-						{
-							"authorName": "John Engates",
-							"authorProfileLink": "https://www.cloudflare.com/the-net/top-of-mind-technology/",
-							"jobTitle": "Field CTO, Cloudflare"
-						}
-					]
+					"author": []
 				},
 				"sys": {
 					"createdAt": "2023-09-05T17:15:45.271Z",
-					"updatedAt": "2026-03-12T23:39:46.337Z"
+					"updatedAt": "2026-03-19T20:41:25.437Z"
 				},
 				"contentfulId": "2tDkT8Tr7bGr9d7jwHrLPz",
 				"contentTypeId": "page",
@@ -446,22 +440,43 @@
 									"nodeType": "document",
 									"content": [
 										{
+											"nodeType": "heading-1",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "Showing egress fees the exit",
+													"marks": [],
+													"content": null
+												}
+											]
+										},
+										{
 											"nodeType": "embedded-asset-block",
 											"data": {
 												"target": {
 													"sys": {
-														"id": "39OkXxsrXrB7RHF45nnh6t",
+														"id": "1H50agV53qyW2lhDgWPoxC",
 														"type": "Link",
 														"linkType": "Asset"
 													},
 													"related_asset": [
 														{
-															"contentfulId": "39OkXxsrXrB7RHF45nnh6t",
+															"contentfulId": "1H50agV53qyW2lhDgWPoxC",
 															"locale": "en-US",
-															"title": "theNET - CxO Digital Magazine - Future Internet - AI is here: How can businesses stay secure? - Image",
+															"title": "theNET - CxO Digital Magazine - Series page - Showing egress fees the exit - Image",
 															"file": {
-																"name": "1200-680-JohnEngates_1 (5).png",
-																"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/39OkXxsrXrB7RHF45nnh6t/185b7c17197d6438aebd0233e1eaaae4/1200-680-JohnEngates_1__5_.png",
+																"name": "showingegressfeestheexit.png",
+																"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/1H50agV53qyW2lhDgWPoxC/b5aea5b770d7e6e7a0b87db9b2f17ba6/showingegressfeestheexit.png",
 																"internal": {
 																	"mediaType": "image/png"
 																}
@@ -485,7 +500,7 @@
 											"content": []
 										},
 										{
-											"nodeType": "paragraph",
+											"nodeType": "heading-1",
 											"data": {
 												"target": null,
 												"uri": null
@@ -506,27 +521,6 @@
 											]
 										},
 										{
-											"nodeType": "heading-1",
-											"data": {
-												"target": null,
-												"uri": null
-											},
-											"value": null,
-											"marks": null,
-											"content": [
-												{
-													"nodeType": "text",
-													"data": {
-														"target": null,
-														"uri": null
-													},
-													"value": "Showing egress fees the exit",
-													"marks": [],
-													"content": null
-												}
-											]
-										},
-										{
 											"nodeType": "paragraph",
 											"data": {
 												"target": null,
@@ -541,28 +535,7 @@
 														"target": null,
 														"uri": null
 													},
-													"value": "The explosion of interest in artificial intelligence (AI) has sent shockwaves across the entire business world. Whole sectors are falling over themselves to figure out the ramifications of investing in AI for the future — and the implications of failing to do so.  ",
-													"marks": [],
-													"content": null
-												}
-											]
-										},
-										{
-											"nodeType": "paragraph",
-											"data": {
-												"target": null,
-												"uri": null
-											},
-											"value": null,
-											"marks": null,
-											"content": [
-												{
-													"nodeType": "text",
-													"data": {
-														"target": null,
-														"uri": null
-													},
-													"value": "Much of the coverage in recent months has revolved around generative AI to produce content at speed. However, for those looking to ",
+													"value": "Initially the media coverage  revolved around using generative AI (GenAI) to produce content at speed. However, for those looking to ",
 													"marks": [],
 													"content": null
 												},
@@ -593,7 +566,7 @@
 														"target": null,
 														"uri": null
 													},
-													"value": " — and not just one that can send out the odd email —  it's a whole different ball game. For this technology to have the kind of impact people are imagining, AI needs access to plenty of training data from which it can learn — and significant computing power. ",
+													"value": " — and not just one that can send out the odd email — it's a whole different ball game. For this technology to have the kind of impact people are imagining, AI needs access to plenty of training data from which it can learn — and significant computing power.",
 													"marks": [],
 													"content": null
 												}
@@ -666,7 +639,7 @@
 														"target": null,
 														"uri": null
 													},
-													"value": "Cloud storage and AI – a match made in digital heaven",
+													"value": "Cloud storage and AI – the perfect digital match",
 													"marks": [
 														{
 															"type": "bold"
@@ -837,7 +810,7 @@
 														"target": null,
 														"uri": null
 													},
-													"value": "As the project grows, the bank may choose to employ multiple clouds for its anti-fraud AI system to help keep a lid on costs and ensure it complies with financial regulations. As the project gains momentum, the bank may decide to use one cloud platform for running the training phase that allows the AI program to 'learn' from the data…and another during the 'inference' phase when it makes its fraud-busting predictions.",
+													"value": "As the project grows, the bank may choose to employ multiple clouds for its anti-fraud AI system to help keep a lid on costs and ensure it complies with financial regulations. As the project gains momentum, the bank may decide to use one cloud platform for running the training phase that allows the AI program to \"learn\" from the data. It might use another cloud during the \"inference\" phase, when it makes its fraud-busting predictions.",
 													"marks": [],
 													"content": null
 												}
@@ -1039,7 +1012,7 @@
 														"target": null,
 														"uri": null
 													},
-													"value": "To minimize egress fees — which are sometimes viewed as a 'tax' on data transfers  — some cloud providers are encouraging their customers to store data and train AI models solely within their cloud. Yes, this negates the need for egress fees. But this approach is not always viable.  Nor is it necessarily best practice. ",
+													"value": "To minimize egress fees — which are sometimes viewed as a \"tax\" on data transfers  — some cloud providers are encouraging their customers to store data and train AI models solely within their cloud. Yes, this negates the need for egress fees. But this approach is not always viable.  Nor is it necessarily best practice. ",
 													"marks": [],
 													"content": null
 												}
@@ -1158,7 +1131,7 @@
 														"target": null,
 														"uri": null
 													},
-													"value": "Once implemented, a zero egress fee cloud storage model would result in significant cost savings for organizations, freeing up resources for other essential business areas. It also eliminates the risk associated with relying on a single cloud provider, ensuring greater reliability and better protection against outages.",
+													"value": "Once implemented, a zero-egress-fee cloud storage model would result in significant cost savings for organizations, freeing up resources for other essential business areas. It would also eliminate the risk associated with relying on a single cloud provider, ensuring greater reliability and better protection against outages.",
 													"marks": [],
 													"content": null
 												}
@@ -1179,7 +1152,7 @@
 														"target": null,
 														"uri": null
 													},
-													"value": "Perhaps most importantly, scrapping egress fees would fuel innovation. The flexibility offered by a multi-cloud architecture allows businesses to effortlessly select the most suitable provider for specific tasks. This would enable organizations to focus on experimentation and innovation, leveraging AI and other cutting-edge technologies without being hindered by costs or limitations. ",
+													"value": "Perhaps most importantly, scrapping egress fees would fuel innovation. The flexibility offered by a multi-cloud architecture would allow businesses to effortlessly select the most suitable provider for specific tasks. This would enable organizations to focus on experimentation and innovation, leveraging AI and other cutting-edge technologies without being hindered by costs or limitations. ",
 													"marks": [],
 													"content": null
 												}
@@ -1231,7 +1204,7 @@
 														"target": null,
 														"uri": null
 													},
-													"value": "Scrapping egress fees would unleash AI's full potential",
+													"value": "Unleashing AI's full potential",
 													"marks": [
 														{
 															"type": "bold"
@@ -1277,7 +1250,7 @@
 														"target": null,
 														"uri": null
 													},
-													"value": "As already highlighted, egress fees aren't just costly. They are a barrier to innovation. If we're to create a brighter future for AI in the cloud, eliminating egress fees is essential. It's part of the reason why in 2018, Cloudflare joined the likes of Azure, Google Cloud, Oracle, Alibaba Cloud, and others to found the ",
+													"value": "Egress fees aren't just costly. They are a barrier to innovation. If we're to create a brighter future for AI in the cloud, eliminating egress fees is essential. It's part of the reason why in 2018, Cloudflare joined the likes of Azure, Google Cloud, Oracle, Alibaba Cloud, and others to found the ",
 													"marks": [],
 													"content": null
 												},
@@ -1487,21 +1460,9 @@
 													"content": null
 												}
 											]
-										}
-									]
-								}
-							},
-							{
-								"contentTypeId": "elementRichText",
-								"contentfulId": "6wMNGXj9uuiF9AEdqnTQhY",
-								"title": null,
-								"htmlId": null,
-								"elementPosition": null,
-								"column": {
-									"nodeType": "document",
-									"content": [
+										},
 										{
-											"nodeType": "heading-5",
+											"nodeType": "heading-1",
 											"data": {
 												"target": null,
 												"uri": null
@@ -1515,8 +1476,12 @@
 														"target": null,
 														"uri": null
 													},
-													"value": "Author",
-													"marks": [],
+													"value": "Dive deeper into this topic.",
+													"marks": [
+														{
+															"type": "bold"
+														}
+													],
 													"content": null
 												}
 											]
@@ -1536,7 +1501,7 @@
 														"target": null,
 														"uri": null
 													},
-													"value": "",
+													"value": "Learn more about the problems with egress fees and how Cloudflare can help you leave those fees behind in the ebook ",
 													"marks": [],
 													"content": null
 												},
@@ -1544,7 +1509,7 @@
 													"nodeType": "hyperlink",
 													"data": {
 														"target": null,
-														"uri": "https://www.cloudflare.com/the-net/top-of-mind-technology/"
+														"uri": "https://www.cloudflare.com/lp/say-goodbye-to-egress-fees/"
 													},
 													"value": null,
 													"marks": null,
@@ -1555,8 +1520,15 @@
 																"target": null,
 																"uri": null
 															},
-															"value": "John Engates",
-															"marks": [],
+															"value": "Say Goodbye to Egress Fees",
+															"marks": [
+																{
+																	"type": "underline"
+																},
+																{
+																	"type": "italic"
+																}
+															],
 															"content": null
 														}
 													]
@@ -1567,7 +1539,102 @@
 														"target": null,
 														"uri": null
 													},
-													"value": "\nFormer Field CTO, Cloudflare",
+													"value": ".\n\n",
+													"marks": [],
+													"content": null
+												}
+											]
+										},
+										{
+											"nodeType": "embedded-entry-block",
+											"data": {
+												"target": {
+													"sys": {
+														"id": "5bbEprT08cQVZ2Ydd9dfvV",
+														"type": "Link",
+														"linkType": "Entry"
+													},
+													"related_asset": [],
+													"entry_elementMarkdown": [],
+													"entry_assetFile": [],
+													"entry_button": [
+														{
+															"buttonAssetFile": null,
+															"buttonTextLoggedIn": null,
+															"contentTypeId": "button",
+															"contentfulId": "5bbEprT08cQVZ2Ydd9dfvV",
+															"elementName": "theNET - Showing egress fees the exit - Dive Deeper - Button",
+															"standardText": null,
+															"text": "Get the ebook!",
+															"url": "https://www.cloudflare.com/lp/say-goodbye-to-egress-fees/",
+															"loggedInUrl": null,
+															"buttonModal": null,
+															"openInNewTab": true,
+															"locale": "en-US"
+														}
+													],
+													"entry_elementLink": [],
+													"entry_page": [],
+													"entry_elementIcon": [],
+													"entry_bladeTable": [],
+													"entry_bladeThreeFeatures": [],
+													"entry_bladeFourFeatures": []
+												},
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": []
+										},
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "",
+													"marks": [],
+													"content": null
+												}
+											]
+										}
+									]
+								}
+							},
+							{
+								"contentTypeId": "elementRichText",
+								"contentfulId": "6wMNGXj9uuiF9AEdqnTQhY",
+								"title": null,
+								"htmlId": null,
+								"elementPosition": null,
+								"column": {
+									"nodeType": "document",
+									"content": [
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "",
 													"marks": [],
 													"content": null
 												}
@@ -1888,7 +1955,7 @@
 																	"nodeType": "hyperlink",
 																	"data": {
 																		"target": null,
-																		"uri": "https://www.cloudflare.com/the-net/top-of-mind-security/ai/"
+																		"uri": "https://www.cloudflare.com/lp/say-goodbye-to-egress-fees/"
 																	},
 																	"value": null,
 																	"marks": null,
@@ -1899,70 +1966,7 @@
 																				"target": null,
 																				"uri": null
 																			},
-																			"value": "Securing the AI revolution",
-																			"marks": [],
-																			"content": null
-																		}
-																	]
-																},
-																{
-																	"nodeType": "text",
-																	"data": {
-																		"target": null,
-																		"uri": null
-																	},
-																	"value": "",
-																	"marks": [],
-																	"content": null
-																}
-															]
-														}
-													]
-												},
-												{
-													"nodeType": "list-item",
-													"data": {
-														"target": null,
-														"uri": null
-													},
-													"value": null,
-													"marks": null,
-													"content": [
-														{
-															"nodeType": "paragraph",
-															"data": {
-																"target": null,
-																"uri": null
-															},
-															"value": null,
-															"marks": null,
-															"content": [
-																{
-																	"nodeType": "text",
-																	"data": {
-																		"target": null,
-																		"uri": null
-																	},
-																	"value": "",
-																	"marks": [],
-																	"content": null
-																},
-																{
-																	"nodeType": "hyperlink",
-																	"data": {
-																		"target": null,
-																		"uri": "https://www.cloudflare.com/the-net/cloud-storage-egress/"
-																	},
-																	"value": null,
-																	"marks": null,
-																	"content": [
-																		{
-																			"nodeType": "text",
-																			"data": {
-																				"target": null,
-																				"uri": null
-																			},
-																			"value": "Trading egress for opportunity",
+																			"value": "Say Goodbye to Egress Fees",
 																			"marks": [],
 																			"content": null
 																		}
