@@ -1,7 +1,7 @@
 {
 	"name": "@cloudflare/kumo",
 	"dist-tags": {
-		"latest": "1.14.0"
+		"latest": "1.14.1"
 	},
 	"versions": {
 		"1.0.0": {
@@ -1299,6 +1299,83 @@
 			"name": "@cloudflare/kumo",
 			"version": "1.14.0",
 			"dependencies": {
+				"clsx": "^2.1.1",
+				"shiki": "^4.0.0",
+				"motion": "^12.34.1",
+				"@base-ui/react": "^1.2.0",
+				"@shikijs/langs": "^4.0.0",
+				"tailwind-merge": "^3.4.0",
+				"@shikijs/themes": "^4.0.0",
+				"react-day-picker": "^9.13.2"
+			},
+			"devDependencies": {
+				"tsx": "^4.19.2",
+				"zod": "^4.0.0",
+				"glob": "13.0.0",
+				"plop": "4.0.4",
+				"vite": "^7.1.7",
+				"oxlint": "1.42.0",
+				"vitest": "^4.0.18",
+				"esbuild": "0.27.2",
+				"wrangler": "^4.59.1",
+				"happy-dom": "^20.0.2",
+				"@vitest/ui": "^4.0.18",
+				"playwright": "^1.57.0",
+				"typescript": "^5.9.2",
+				"@types/glob": "9.0.0",
+				"@types/node": "^22.10.2",
+				"tailwindcss": "^4.1.17",
+				"@types/react": "19.2.4",
+				"oxlint-tsgolint": "0.11.3",
+				"svg-path-parser": "^1.1.0",
+				"vite-plugin-dts": "^4.3.0",
+				"@tailwindcss/cli": "^4.1.17",
+				"@types/react-dom": "19.2.3",
+				"@tailwindcss/vite": "^4.1.17",
+				"@vitejs/plugin-react": "^5.1.4",
+				"vitest-browser-react": "^2.0.5",
+				"@testing-library/react": "16.3.1",
+				"@types/svg-path-parser": "^1.1.6",
+				"eslint-plugin-jsx-a11y": "^6.10.2",
+				"ts-json-schema-generator": "2.4.0",
+				"@vitest/browser-playwright": "^4.0.18",
+				"@testing-library/user-event": "14.6.1",
+				"rollup-plugin-preserve-directives": "0.4.0"
+			},
+			"peerDependencies": {
+				"zod": "^4.0.0",
+				"react": "^18.0.0 || ^19.0.0",
+				"echarts": "^6.0.0",
+				"react-dom": "^18.0.0 || ^19.0.0",
+				"@phosphor-icons/react": "^2.1.10"
+			},
+			"bin": {
+				"kumo": "bin/kumo.js"
+			},
+			"dist": {
+				"shasum": "ea081e59070acc87e214a043a5af80dfd2d1330a",
+				"tarball": "https://registry.npmjs.org/@cloudflare/kumo/-/kumo-1.14.0.tgz",
+				"fileCount": 703,
+				"integrity": "sha512-/ALKVni1qQvRangP2AhPTQxoruJmq7O7GpeIvSi16E6/zozzRJwRyCVejLvgzUzHQQ8EW1U4b5xg4lCt7OfsXA==",
+				"signatures": [
+					{
+						"sig": "MEYCIQCafiEl8ZSMC+1D3NvQujyiZavuuf4c8gItm3fmWW+fkAIhAIKVlOHSTbLdtM2t69ROenl7rLRZDa9e/D3WVjfyiJo/",
+						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
+					}
+				],
+				"attestations": {
+					"url": "https://registry.npmjs.org/-/npm/v1/attestations/@cloudflare%2fkumo@1.14.0",
+					"provenance": {
+						"predicateType": "https://slsa.dev/provenance/v1"
+					}
+				},
+				"unpackedSize": 12720973
+			}
+		},
+		"1.14.1": {
+			"name": "@cloudflare/kumo",
+			"version": "1.14.1",
+			"dependencies": {
 				"@base-ui/react": "^1.2.0",
 				"@shikijs/langs": "^4.0.0",
 				"@shikijs/themes": "^4.0.0",
@@ -1353,13 +1430,13 @@
 				"kumo": "bin/kumo.js"
 			},
 			"dist": {
-				"integrity": "sha512-/ALKVni1qQvRangP2AhPTQxoruJmq7O7GpeIvSi16E6/zozzRJwRyCVejLvgzUzHQQ8EW1U4b5xg4lCt7OfsXA==",
-				"shasum": "ea081e59070acc87e214a043a5af80dfd2d1330a",
-				"tarball": "https://registry.npmjs.org/@cloudflare/kumo/-/kumo-1.14.0.tgz",
+				"integrity": "sha512-hHKOy01SG248ppVSZ/iAT104SPbDYHrcRKmZGpLfS5qpClc7Jgalzsp8NN+49cTf5acEDxl+KBs7RZAf0ZMvaA==",
+				"shasum": "d3e143b048225ba420c140faab0cf1552628eb66",
+				"tarball": "https://registry.npmjs.org/@cloudflare/kumo/-/kumo-1.14.1.tgz",
 				"fileCount": 703,
-				"unpackedSize": 12720973,
+				"unpackedSize": 12721323,
 				"attestations": {
-					"url": "https://registry.npmjs.org/-/npm/v1/attestations/@cloudflare%2fkumo@1.14.0",
+					"url": "https://registry.npmjs.org/-/npm/v1/attestations/@cloudflare%2fkumo@1.14.1",
 					"provenance": {
 						"predicateType": "https://slsa.dev/provenance/v1"
 					}
@@ -1367,7 +1444,7 @@
 				"signatures": [
 					{
 						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U",
-						"sig": "MEYCIQCafiEl8ZSMC+1D3NvQujyiZavuuf4c8gItm3fmWW+fkAIhAIKVlOHSTbLdtM2t69ROenl7rLRZDa9e/D3WVjfyiJo/"
+						"sig": "MEQCIEJU3KsCDQT4NA8ACcmkeh6KruvuA0Yt7PUqTHllyESkAiA4dDFu8GxP8iL5bcOqTOrBDeMrLQWlK0q8cBb6iIOtMQ=="
 					}
 				]
 			}
