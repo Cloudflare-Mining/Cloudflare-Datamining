@@ -5,43 +5,45 @@
 		<p>At Cloudflare, we’re not looking for people who wait for a polished roadmap; we’re looking for the builders who see the cracks in the Internet that everyone else has simply learned to live with. We value candidates who have the instinct to spot a "normalized" problem and the AI-native curiosity to create a solution using the latest tools. Our culture is built on iteration, leveraging AI to ship faster today to make it better tomorrow, while ensuring that every improvement, no matter how small, is shared across the team to lift everyone up. If you’re the type of person who values curiosity over bureaucracy, and that AI is a partner in solving tough problems to keep the Internet moving forward, you’ll fit right in.</p>
 	</div>
 </div>
-<p><strong>Available Locations: Northeastern States</strong></p>
-<p><strong>About the Position</strong></p>
-<p>The Cloudflare Field CISO will have expertise in Cloud technologies and cloud-native computing trends as well as enterprise computing, security, and networking technologies. The person in this role will possess a passion for helping people and communities connect to our platform and achieve their short- and long-term technology goals. The ideal candidate will enjoy educating and influencing broad audiences about new technologies and their benefits and will deliver outstanding content, technical expertise and support in a variety of formats. The candidate will work closely with our most critical clients and prospects to articulate the Cloudflare Global Platform message and drive deeper technical engagement and market adoption. The Field CISO will partner closely with Cloudflare’s Engineering, Product, and go to market teams to drive the impact and adoption of our security and performance platform.</p>
-<p>We are seeking a highly skilled Field CISO with a storied history in the technological sector. Reporting to the Chief Cyber Solutions Officer, this role is a regional leadership role that will be responsible for delivering against corporate objectives and meeting the growth targets for the business. The role will act as both a technology and business expert, making decisions that will impact the current and future strategy and operations of the company. The role will be a public facing persona representing the organization at a regional or global level at conferences, media engagements, analyst conferences and other key industry events.</p>
-<p><strong>What You’ll Do</strong></p>
+<p><strong>Available Locations: Washington, DC</strong></p>
+<p><strong>About the role</strong></p>
+<h4><strong>Public Policy at Cloudflare</strong></h4>
+<p>Cloudflare is one of the most dynamic and innovative companies providing services on the Internet. As regulation of the Internet across a number of technologies and jurisdictions is exploding, Cloudflare is seeking to be a leader and trusted voice for understanding the implications of these new technologies around the globe. We’re looking for a new team member who can help foster our unique corporate philosophy and approach, in which the security and privacy of our customers are paramount.&nbsp;</p>
+<p>This is a fast-moving work environment with goals that are closely linked to business priorities, however, policy issues are typically within the areas of cybersecurity, AI, data protection/privacy and intermediary liability.</p>
+<h4><strong>What you'll do</strong></h4>
+<p>Cloudflare’s Public Policy team helps the company by anticipating regulatory challenges, acting as an external advocate for Cloudflare on priority policy issues, advising our internal teams on public policy challenges and opportunities, and identifying opportunities to build relationships with external partners. For our Director, Head of US Public Policy, we’re looking for someone who can foster our unique corporate philosophy, develop public policy solutions to challenging technology issues and be comfortable giving front line support on issues requiring engagement.&nbsp;&nbsp;&nbsp;</p>
+<p>The Director, Head of US&nbsp; Public Policy will be primarily focused on addressing US policy issues. Because of the scope, complexity, and diversity of the company’s work, our Public Policy team members must be flexible, talented and able to work collaboratively across multi-functional teams to find and present policy solutions, to carry the Cloudflare narrative, and promote the public policy brand externally.&nbsp;</p>
+<h4><strong>Responsibilities</strong></h4>
 <ul>
-	<li>Work directly with customers and prospects to deliver executive level demonstrations, and partner with strategic sales to implement concepts and solutions within customer environments. Evangelize our technology platform relative to the status quo.</li>
-	<li>Develop and implement a technology-informed go-to-market strategy for the region, ensuring it integrates with the overall company strategic roadmap.</li>
-	<li>Define and simplify the Cloudflare offering to key market segments and deliver key messaging to the market.</li>
-	<li>Build an awareness of key market conditions and the competitive landscape.</li>
-	<li>Work with International Leadership peers on key company initiatives.</li>
-	<li>Introduce new innovations to the market through traditional and social media (press interviews, Twitter, Hacker News, etc.), blogs, and analyst briefings.</li>
-	<li>Drive and contribute to key business activities including: Business Reviews, Pipeline generation and Assist with Deal Closure.</li>
-	<li>Engage with strategic accounts by building strong relationships with the senior leaders and decision makers within customer companies and help drive product adoption.</li>
-	<li>Work with Cloudflare global leaders to help define company regional priorities to best deliver company success.</li>
-	<li>Work within the Cloudflare Regional Leadership team to formulate tactical and long-term strategic plans to increase technology awareness, drive market development and contribute to company growth targets.</li>
-	<li>Be willing to work remotely as required and travel regularly (at least 30%) to engage with customers.</li>
-	<li>Be a company technical voice working with solution engineering to evolve the product to meet the needs of the market &amp; customer segments</li>
+	<li>Lead Cloudflare’s government-facing advocacy in the United States.</li>
+	<li>Evaluate US policy conversations and legislative developments, and work to understand the impact on Cloudflare across its full product set.</li>
+	<li>Develop US policy strategy that is aligned with Cloudflare's international public policy efforts and global business priorities.</li>
+	<li>Participate in and shape Cloudflare’s engagement with trade associations, including building and crafting positioning and key initiatives<strong>.</strong></li>
+	<li>Develop talking points, policy narratives and presentation materials for use at external events and meetings and for other communication purposes (company blog, position papers etc.).</li>
+	<li>Articulate Cloudflare’s positioning to relevant policy makers and officials.</li>
+	<li>Work to build and maintain relationships with key US policy makers, and to find engagement opportunities with business, civil society entities, and other third party organisations.</li>
+	<li>Provide timely updates to colleagues from the Cloudflare Public Policy, Legal, Trust &amp; Safety Teams and other internal stakeholders.</li>
 </ul>
-<p><strong>Examples of Desirable Skills, Knowledge &amp; Experience</strong></p>
+<h4><strong>Desirable Skills, Knowledge, and Experience:</strong></h4>
 <ul>
-	<li>10+ years of experience within the IT, Cyber Security, Consultancy, Service Provider, or Telecommunications industry, with a minimum of three years of experience in a similar position.</li>
-	<li>Own CxO level relationships both at the business and technical level and have strong existing executive customer, partner and industry associations and relationships that can be leveraged.</li>
-	<li>Desirable background in a technology start-up organization leading to significant business growth or acquisition.</li>
-	<li>Have solid experience in shaping and translating a technology-enabled vision into delivery of successful business outcomes and led a company through key digital transitions.</li>
-	<li>Have a strong understanding and experience in managing cloud-based models including Saas, Paas and Iaas and worked with customers through digital and cloud transformation.</li>
-	<li>Has experience in working with Web-Scale organizations or Large Service Providers.</li>
-	<li>Has a strong background in Cyber Security, Security Operations and IT Risk Governance.</li>
-	<li>Has experience in speaking at public forums and presenting at key industry events.</li>
-	<li>Proven track record in building and managing high performing technical teams.</li>
-	<li>Highly skilled communicator and influencer with the ability to reflect and question positively and effectively.</li>
-	<li>Advanced technological skillset and a demonstrated history with technology.</li>
-	<li>Extensive industry knowledge with an eye towards the future.</li>
-	<li>Proven ability to forge and sustain effective partnerships internally and externally.</li>
-	<li>Proven ability to articulate a clear vision for change and manage the process while supporting people.</li>
+	<li>BA with strong academic credentials required, JD or applicable graduate degree desirable</li>
+	<li>12+ years of experience working closely with US federal regulators and officials, as well trade associations and industry groups. Experience within a tech or telecoms company is preferred.</li>
+	<li>Deep understanding of US laws, regulations and policy developments important to Cloudflare as well as associated rule making and legislative processes.</li>
+	<li>Experience drafting or substantively reviewing proposed legislative text, regulatory comments, and formal policy submissions.</li>
+	<li>Strong network of US regulators, officials, peers, and industry stakeholders</li>
+	<li>Fluency in and proven passion for cutting edge technology.</li>
+	<li>Strong communications (written and oral) and interpersonal skills. Proven ability to articulate complex policy issues to executive audiences.</li>
+	<li>Curiosity and willingness to experiment with new technologies, ways of working, and policy approaches.</li>
+	<li>Management experience preferred.</li>
+	<li>Team player, and a sense of humor</li>
+	<li>Detail oriented, well organized and a sense of initiative</li>
+	<li>The ability to manage many issues and engage with multiple teams within Cloudflare</li>
 </ul>
-<p>&nbsp;</p>
+<p><strong>Compensation</strong></p>
+<p>Compensation may be adjusted depending on work location.</p>
+<ul>
+	<li>For Washington, DC Metro: Estimated annual salary of $238,000 - $327,000</li>
+</ul>
 <p><strong>Equity</strong></p>
 <p>This role is eligible to participate in Cloudflare’s equity plan.</p>
 <p><strong>Benefits</strong></p>

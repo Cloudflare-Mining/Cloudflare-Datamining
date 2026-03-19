@@ -36,8 +36,8 @@
 </ul>
 <p><strong>Compensation</strong></p>
 <ul>
-	<li>For San Francisco/ Bay Area hires salary range: $254,000 -$310,000</li>
-	<li>For New York City hires salary range: $241,000 -$295,000</li>
+	<li>For San Francisco/ Bay Area hires salary range: $266,000 -$340,000</li>
+	<li>For New York City hires salary range: $241,000 -$310,000</li>
 </ul>
 <p><strong>Equity</strong></p>
 <p>This role is eligible to participate in Cloudflare’s equity plan.</p>
