@@ -243,6 +243,33 @@
 											"type": "string",
 											"x-auditable": true
 										},
+										"retry_backoff": {
+											"description": "Backoff strategy for retry delays",
+											"enum": [
+												"constant",
+												"linear",
+												"exponential"
+											],
+											"nullable": true,
+											"type": "string",
+											"x-auditable": true
+										},
+										"retry_delay": {
+											"description": "Delay between retry attempts in milliseconds (0-5000)",
+											"maximum": 5000,
+											"minimum": 0,
+											"nullable": true,
+											"type": "integer",
+											"x-auditable": true
+										},
+										"retry_max_attempts": {
+											"description": "Maximum number of retry attempts for failed requests (1-5)",
+											"maximum": 5,
+											"minimum": 1,
+											"nullable": true,
+											"type": "integer",
+											"x-auditable": true
+										},
 										"store_id": {
 											"nullable": true,
 											"type": "string"
@@ -639,6 +666,33 @@
 												],
 												"nullable": true,
 												"type": "string",
+												"x-auditable": true
+											},
+											"retry_backoff": {
+												"description": "Backoff strategy for retry delays",
+												"enum": [
+													"constant",
+													"linear",
+													"exponential"
+												],
+												"nullable": true,
+												"type": "string",
+												"x-auditable": true
+											},
+											"retry_delay": {
+												"description": "Delay between retry attempts in milliseconds (0-5000)",
+												"maximum": 5000,
+												"minimum": 0,
+												"nullable": true,
+												"type": "integer",
+												"x-auditable": true
+											},
+											"retry_max_attempts": {
+												"description": "Maximum number of retry attempts for failed requests (1-5)",
+												"maximum": 5,
+												"minimum": 1,
+												"nullable": true,
+												"type": "integer",
 												"x-auditable": true
 											},
 											"store_id": {
@@ -1155,6 +1209,33 @@
 											"type": "string",
 											"x-auditable": true
 										},
+										"retry_backoff": {
+											"description": "Backoff strategy for retry delays",
+											"enum": [
+												"constant",
+												"linear",
+												"exponential"
+											],
+											"nullable": true,
+											"type": "string",
+											"x-auditable": true
+										},
+										"retry_delay": {
+											"description": "Delay between retry attempts in milliseconds (0-5000)",
+											"maximum": 5000,
+											"minimum": 0,
+											"nullable": true,
+											"type": "integer",
+											"x-auditable": true
+										},
+										"retry_max_attempts": {
+											"description": "Maximum number of retry attempts for failed requests (1-5)",
+											"maximum": 5,
+											"minimum": 1,
+											"nullable": true,
+											"type": "integer",
+											"x-auditable": true
+										},
 										"store_id": {
 											"nullable": true,
 											"type": "string"
@@ -1388,6 +1469,33 @@
 								],
 								"nullable": true,
 								"type": "string",
+								"x-auditable": true
+							},
+							"retry_backoff": {
+								"description": "Backoff strategy for retry delays",
+								"enum": [
+									"constant",
+									"linear",
+									"exponential"
+								],
+								"nullable": true,
+								"type": "string",
+								"x-auditable": true
+							},
+							"retry_delay": {
+								"description": "Delay between retry attempts in milliseconds (0-5000)",
+								"maximum": 5000,
+								"minimum": 0,
+								"nullable": true,
+								"type": "integer",
+								"x-auditable": true
+							},
+							"retry_max_attempts": {
+								"description": "Maximum number of retry attempts for failed requests (1-5)",
+								"maximum": 5,
+								"minimum": 1,
+								"nullable": true,
+								"type": "integer",
 								"x-auditable": true
 							},
 							"workers_ai_billing_mode": {
@@ -1631,6 +1739,33 @@
 											],
 											"nullable": true,
 											"type": "string",
+											"x-auditable": true
+										},
+										"retry_backoff": {
+											"description": "Backoff strategy for retry delays",
+											"enum": [
+												"constant",
+												"linear",
+												"exponential"
+											],
+											"nullable": true,
+											"type": "string",
+											"x-auditable": true
+										},
+										"retry_delay": {
+											"description": "Delay between retry attempts in milliseconds (0-5000)",
+											"maximum": 5000,
+											"minimum": 0,
+											"nullable": true,
+											"type": "integer",
+											"x-auditable": true
+										},
+										"retry_max_attempts": {
+											"description": "Maximum number of retry attempts for failed requests (1-5)",
+											"maximum": 5,
+											"minimum": 1,
+											"nullable": true,
+											"type": "integer",
 											"x-auditable": true
 										},
 										"store_id": {
@@ -2001,6 +2136,33 @@
 								"type": "string",
 								"x-auditable": true
 							},
+							"retry_backoff": {
+								"description": "Backoff strategy for retry delays",
+								"enum": [
+									"constant",
+									"linear",
+									"exponential"
+								],
+								"nullable": true,
+								"type": "string",
+								"x-auditable": true
+							},
+							"retry_delay": {
+								"description": "Delay between retry attempts in milliseconds (0-5000)",
+								"maximum": 5000,
+								"minimum": 0,
+								"nullable": true,
+								"type": "integer",
+								"x-auditable": true
+							},
+							"retry_max_attempts": {
+								"description": "Maximum number of retry attempts for failed requests (1-5)",
+								"maximum": 5,
+								"minimum": 1,
+								"nullable": true,
+								"type": "integer",
+								"x-auditable": true
+							},
 							"store_id": {
 								"nullable": true,
 								"type": "string"
@@ -2273,6 +2435,33 @@
 											],
 											"nullable": true,
 											"type": "string",
+											"x-auditable": true
+										},
+										"retry_backoff": {
+											"description": "Backoff strategy for retry delays",
+											"enum": [
+												"constant",
+												"linear",
+												"exponential"
+											],
+											"nullable": true,
+											"type": "string",
+											"x-auditable": true
+										},
+										"retry_delay": {
+											"description": "Delay between retry attempts in milliseconds (0-5000)",
+											"maximum": 5000,
+											"minimum": 0,
+											"nullable": true,
+											"type": "integer",
+											"x-auditable": true
+										},
+										"retry_max_attempts": {
+											"description": "Maximum number of retry attempts for failed requests (1-5)",
+											"maximum": 5,
+											"minimum": 1,
+											"nullable": true,
+											"type": "integer",
 											"x-auditable": true
 										},
 										"store_id": {
