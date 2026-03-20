@@ -151,6 +151,10 @@
 						domain_not_owned_by_user: "The domain needs to belong to this account.",
 						forbidden_robots_txt: "Failed to fetch robots.txt: The file is inaccessible.",
 						forbidden_sitemap: "Failed to fetch your sitemap: The file is inaccessible."
+					},
+					include_images: {
+						title: "Include images",
+						description: "Convert embedded image content during parsing."
 					}
 				},
 				custom_headers: {
@@ -416,6 +420,10 @@
 					description: "Define path-to-selector mappings to extract specific content from crawled pages. Each entry pairs a URL glob pattern with a CSS selector. The first matching path wins. Only the matched HTML fragment is stored and indexed."
 				}
 			},
+			include_images: {
+				title: "Include images",
+				description: "Convert embedded image content during parsing."
+			},
 			crawl_options: {
 				title: "Crawl options",
 				drawer: {
@@ -501,7 +509,7 @@
 			description: "Configure the model and system prompt used to generate responses.",
 			model: "Generation model",
 			system_prompt: "System prompt",
-			note: (0, r.p)(a()),
+			note: (0, r.p)(n()),
 			drawer: {
 				title: "Generation model"
 			}
