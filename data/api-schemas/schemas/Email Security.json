@@ -3769,6 +3769,10 @@
 																	"unreviewed"
 																],
 																"type": "string"
+															},
+															{
+																"nullable": true,
+																"type": "string"
 															}
 														]
 													},
@@ -3804,6 +3808,10 @@
 														"nullable": true,
 														"type": "string"
 													},
+													"escalated_submission_id": {
+														"nullable": true,
+														"type": "string"
+													},
 													"original_disposition": {
 														"allOf": [
 															{
@@ -3828,6 +3836,10 @@
 														]
 													},
 													"original_edf_hash": {
+														"nullable": true,
+														"type": "string"
+													},
+													"original_postfix_id": {
 														"nullable": true,
 														"type": "string"
 													},
@@ -3858,6 +3870,11 @@
 															}
 														]
 													},
+													"requested_at": {
+														"format": "date-time",
+														"nullable": true,
+														"type": "string"
+													},
 													"requested_by": {
 														"nullable": true,
 														"type": "string"
@@ -3886,6 +3903,8 @@
 														]
 													},
 													"requested_ts": {
+														"deprecated": true,
+														"description": "deprecated as of 2026-04-01, use `requested_at` instead.",
 														"format": "date-time",
 														"type": "string"
 													},
