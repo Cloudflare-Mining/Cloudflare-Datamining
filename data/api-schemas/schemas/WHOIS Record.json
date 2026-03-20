@@ -1,5 +1,6 @@
 {
 	"GET /accounts/{account_id}/intel/whois": {
+		"description": "Retrieves WHOIS registration data for a domain, including registrant and nameserver information.",
 		"operationId": "whois-record-get-whois-record",
 		"parameters": [
 			{
