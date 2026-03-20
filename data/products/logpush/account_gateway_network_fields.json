@@ -27,6 +27,7 @@
 	"SourceIPCountryCode": "string; Country code of the source IP of the network session (for example, 'US').",
 	"SourceInternalIP": "string; Local LAN IP of the device. Only available when connected via a GRE/IPsec tunnel on-ramp.",
 	"SourcePort": "int; Source port of the network session.",
+	"TenantID": "string; The tenant ID of the network session, if exists.",
 	"Transport": "string; Transport protocol used for this session. Possible values are tcp | quic | udp. Deprecated, please use TransportProtocol instead.",
 	"TransportProtocol": "string; Transport protocol used for this session. Possible values are tcp | quic | udp.",
 	"UserID": "string; User identity where the network session originated from.",

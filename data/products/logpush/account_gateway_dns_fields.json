@@ -70,10 +70,12 @@
 	"ResolverPolicyName": "string; Resolver policy name, if any matched.",
 	"ResourceRecords": "array[object]; The rdata objects (for example, [{\"type\":\"5\",\"data\":\"dns-packet-placeholder...\"}]).",
 	"ResourceRecordsJSON": "string; String that represents the JSON array with the returned resource records (for example, '[{\"name\": \"example.com\", \"type\": \"CNAME\", \"class\": \"IN\", \"ttl\": 3600, \"rdata\": \"cname.example.com.\"}]').",
+	"ResponseTimeMs": "int; Total response time of the DNS request in milliseconds.",
 	"SrcIP": "string; The source IP address making the DNS query (for example, '104.16.132.229').",
 	"SrcIPContinentCode": "string; Continent code of the source IP address making the DNS query (for example, 'NA').",
 	"SrcIPCountryCode": "string; Country code of the source IP address making the DNS query (for example, 'US').",
 	"SrcPort": "int; The port used by the client when they sent the DNS request (for example, 0).",
+	"TenantID": "string; The tenant ID of the DNS request, if exists.",
 	"TimeZone": "string; Time zone used to calculate the current time, if a matched rule was scheduled with it.",
 	"TimeZoneInferredMethod": "string; Method used to pick the time zone for the schedule (from rule/ from user ip/ from local time).",
 	"UserID": "string; User identity where the HTTP request originated from (for example, '00000000-0000-0000-0000-000000000000')."
