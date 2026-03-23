@@ -259,174 +259,111 @@
 	</ul>
 	<p>The configuration that ultimately provided the most value was <b>AMD’s Platform Quality of Service (PQOS). PQOS </b>extensions enable fine-grained regulation of shared resources like cache and memory bandwidth. Since Turin processors consist of one I/O Die and up to 12 Core Complex Dies (CCDs), each sharing an L3 cache across up to 16 cores, we put this to the test. Here is how the different experimental configurations performed.&nbsp;</p>
 	<p>First, we used PQOS to allocate a dedicated L3 cache share within a single CCD for FL1, the gains were minimal. However, when we scaled the concept to the socket level, dedicating an <i>entire</i> CCD strictly to FL1, we saw meaningful throughput gains while keeping latency acceptable.</p>
-	<div style="margin-left:0pt;" dir="ltr" align="center">
+	<div dir="ltr" style="margin-left: 0pt;" align="center">
 		<figure class="table">
-			<table class="ck-table-resized" style="border-collapse:collapse;border-style:none;">
+			<table class="ck-table-resized" style="border-collapse: collapse; border-style: none;">
 				<colgroup>
-					<col style="width:25%;" width="116">
-					<col style="width:25%;" width="122">
-					<col style="width:25%;" width="320">
-					<col style="width:25%;" width="136">
+					<col style="width: 25%;" width="116">
+					<col style="width: 25%;" width="122">
+					<col style="width: 25%;" width="320">
+					<col style="width: 25%;" width="136">
 				</colgroup>
 				<tbody>
-					<tr style="height:0pt;">
-						<td style="background-color:#f38020;border-color:#000000;border-width:1pt;overflow-wrap:break-word;overflow:hidden;padding:5pt;vertical-align:top;">
-							<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt;" dir="ltr">
-								<span style="background-color:transparent;color:#000000;font-family:Arial,sans-serif;font-size:11pt;"><span style="font-style:normal;font-variant:normal;font-weight:400;text-decoration:none;vertical-align:baseline;white-space:pre-wrap;">Configuration</span></span>
-							</p>
+					<tr style="height: 0pt;">
+						<td style="background-color: #f38020; border-color: #000000; border-width: 1pt; overflow-wrap: break-word; overflow: hidden; padding: 5pt; vertical-align: top;">
+							<p dir="ltr" style="line-height: 1.2; margin-bottom: 0pt; margin-top: 0pt;"><span style="background-color: transparent; color: #000000; font-family: Arial,sans-serif; font-size: 11pt;"><span style="font-style: normal; font-variant: normal; font-weight: 400; text-decoration: none; vertical-align: baseline; white-space: pre-wrap;">Configuration</span></span></p>
 						</td>
-						<td style="border-color:#000000;border-width:1pt;overflow-wrap:break-word;overflow:hidden;padding:5pt;vertical-align:top;">
-							<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt;" dir="ltr">
-								<span style="background-color:transparent;color:#000000;font-family:Arial,sans-serif;font-size:11pt;"><span style="font-style:normal;font-variant:normal;font-weight:400;text-decoration:none;vertical-align:baseline;white-space:pre-wrap;">Description</span></span>
-							</p>
+						<td style="border-color: #000000; border-width: 1pt; overflow-wrap: break-word; overflow: hidden; padding: 5pt; vertical-align: top;">
+							<p dir="ltr" style="line-height: 1.2; margin-bottom: 0pt; margin-top: 0pt;"><span style="background-color: transparent; color: #000000; font-family: Arial,sans-serif; font-size: 11pt;"><span style="font-style: normal; font-variant: normal; font-weight: 400; text-decoration: none; vertical-align: baseline; white-space: pre-wrap;">Description</span></span></p>
 						</td>
-						<td style="border-color:#000000;border-width:1pt;overflow-wrap:break-word;overflow:hidden;padding:5pt;vertical-align:top;">
-							<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt;" dir="ltr">
-								<span style="background-color:transparent;color:#000000;font-family:Arial,sans-serif;font-size:11pt;"><span style="font-style:normal;font-variant:normal;font-weight:400;text-decoration:none;vertical-align:baseline;white-space:pre-wrap;">Illustration</span></span>
-							</p>
+						<td style="border-color: #000000; border-width: 1pt; overflow-wrap: break-word; overflow: hidden; padding: 5pt; vertical-align: top;">
+							<p dir="ltr" style="line-height: 1.2; margin-bottom: 0pt; margin-top: 0pt;"><span style="background-color: transparent; color: #000000; font-family: Arial,sans-serif; font-size: 11pt;"><span style="font-style: normal; font-variant: normal; font-weight: 400; text-decoration: none; vertical-align: baseline; white-space: pre-wrap;">Illustration</span></span></p>
 						</td>
-						<td style="border-color:#000000;border-width:1pt;overflow-wrap:break-word;overflow:hidden;padding:5pt;vertical-align:top;">
-							<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt;" dir="ltr">
-								<span style="background-color:transparent;color:#000000;font-family:Arial,sans-serif;font-size:11pt;"><span style="font-style:normal;font-variant:normal;font-weight:400;text-decoration:none;vertical-align:baseline;white-space:pre-wrap;">Performance gain</span></span>
-							</p>
+						<td style="border-color: #000000; border-width: 1pt; overflow-wrap: break-word; overflow: hidden; padding: 5pt; vertical-align: top;">
+							<p dir="ltr" style="line-height: 1.2; margin-bottom: 0pt; margin-top: 0pt;"><span style="background-color: transparent; color: #000000; font-family: Arial,sans-serif; font-size: 11pt;"><span style="font-style: normal; font-variant: normal; font-weight: 400; text-decoration: none; vertical-align: baseline; white-space: pre-wrap;">Performance gain</span></span></p>
 						</td>
 					</tr>
-					<tr style="height:0pt;">
-						<td style="background-color:#f38020;border-color:#000000;border-width:1pt;overflow-wrap:break-word;overflow:hidden;padding:5pt;vertical-align:top;">
-							<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt;" dir="ltr">
-								<span style="background-color:transparent;color:#000000;font-family:Arial,sans-serif;font-size:11pt;"><span style="font-style:normal;font-variant:normal;font-weight:400;text-decoration:none;vertical-align:baseline;white-space:pre-wrap;">NUMA-aware core affinity&nbsp;</span></span><br>
-								<span style="background-color:transparent;color:#000000;font-family:Arial,sans-serif;font-size:11pt;"><span style="font-style:normal;font-variant:normal;font-weight:400;text-decoration:none;vertical-align:baseline;white-space:pre-wrap;">(equivalent to PQOS at socket level)</span></span>
-							</p>
+					<tr style="height: 0pt;">
+						<td style="background-color: #f38020; border-color: #000000; border-width: 1pt; overflow-wrap: break-word; overflow: hidden; padding: 5pt; vertical-align: top;">
+							<p dir="ltr" style="line-height: 1.2; margin-bottom: 0pt; margin-top: 0pt;"><span style="background-color: transparent; color: #000000; font-family: Arial,sans-serif; font-size: 11pt;"><span style="font-style: normal; font-variant: normal; font-weight: 400; text-decoration: none; vertical-align: baseline; white-space: pre-wrap;">NUMA-aware core affinity&nbsp;</span></span><br><span style="background-color: transparent; color: #000000; font-family: Arial,sans-serif; font-size: 11pt;"><span style="font-style: normal; font-variant: normal; font-weight: 400; text-decoration: none; vertical-align: baseline; white-space: pre-wrap;">(equivalent to PQOS at socket level)</span></span></p>
 						</td>
-						<td style="border-color:#000000;border-width:1pt;overflow-wrap:break-word;overflow:hidden;padding:5pt;vertical-align:top;">
-							<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt;" dir="ltr">
-								<span style="background-color:transparent;color:#000000;font-family:Arial,sans-serif;font-size:11pt;"><span style="font-style:normal;font-variant:normal;font-weight:400;text-decoration:none;vertical-align:baseline;white-space:pre-wrap;">6 out of 12 CCD (aligned with NUMA domain) run FL.</span></span>
-							</p>
-							<p>
-								&nbsp;
-							</p>
-							<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt;" dir="ltr">
-								<span style="background-color:transparent;color:#000000;font-family:Arial,sans-serif;font-size:11pt;"><span style="font-style:normal;font-variant:normal;font-weight:400;text-decoration:none;vertical-align:baseline;white-space:pre-wrap;">32MB L3 cache in each CCD shared among all cores.&nbsp;</span></span>
-							</p>
+						<td style="border-color: #000000; border-width: 1pt; overflow-wrap: break-word; overflow: hidden; padding: 5pt; vertical-align: top;">
+							<p dir="ltr" style="line-height: 1.2; margin-bottom: 0pt; margin-top: 0pt;"><span style="background-color: transparent; color: #000000; font-family: Arial,sans-serif; font-size: 11pt;"><span style="font-style: normal; font-variant: normal; font-weight: 400; text-decoration: none; vertical-align: baseline; white-space: pre-wrap;">6 out of 12 CCD (aligned with NUMA domain) run FL.</span></span></p>
+							<p>&nbsp;</p>
+							<p dir="ltr" style="line-height: 1.2; margin-bottom: 0pt; margin-top: 0pt;"><span style="background-color: transparent; color: #000000; font-family: Arial,sans-serif; font-size: 11pt;"><span style="font-style: normal; font-variant: normal; font-weight: 400; text-decoration: none; vertical-align: baseline; white-space: pre-wrap;">32MB L3 cache in each CCD shared among all cores.&nbsp;</span></span></p>
 						</td>
-						<td style="border-color:#000000;border-width:1pt;overflow-wrap:break-word;overflow:hidden;padding:5pt;vertical-align:top;">
-							<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt;" dir="ltr">
-								<span style="background-color:transparent;color:#000000;font-family:Arial,sans-serif;font-size:11pt;"><span style="border-style:none;display:inline-block;font-style:normal;font-variant:normal;font-weight:400;height:795px;overflow:hidden;text-decoration:none;vertical-align:baseline;white-space:pre-wrap;width:304px;">
+						<td style="border-color: #000000; border-width: 1pt; overflow-wrap: break-word; overflow: hidden; padding: 5pt; vertical-align: top;">
+							<p dir="ltr" style="line-height: 1.2; margin-bottom: 0pt; margin-top: 0pt;"><span style="background-color: transparent; color: #000000; font-family: Arial,sans-serif; font-size: 11pt;"><span style="border-style: none; display: inline-block; font-style: normal; font-variant: normal; font-weight: 400; height: 795px; overflow: hidden; text-decoration: none; vertical-align: baseline; white-space: pre-wrap; width: 304px;">
 										<picture>
-											<source srcset="https://ckbox.cloud/4f7e53e78dfe76b58745/assets/ScAsYReXHQlI/images/80.webp 80w,https://ckbox.cloud/4f7e53e78dfe76b58745/assets/ScAsYReXHQlI/images/160.webp 160w,https://ckbox.cloud/4f7e53e78dfe76b58745/assets/ScAsYReXHQlI/images/240.webp 240w,https://ckbox.cloud/4f7e53e78dfe76b58745/assets/ScAsYReXHQlI/images/320.webp 320w,https://images.ctfassets.net/zkvhlag99gkb/4CBSHY02oIZOiENgFrzLSz/0c6c2ac8ef0096894ff4827e30d25851/image3.png 367w" sizes="(max-width: 367px) 100vw, 367px" type="image/webp"><img style="margin-left:0px;margin-top:0px;" src="https://images.ctfassets.net/zkvhlag99gkb/4CBSHY02oIZOiENgFrzLSz/0c6c2ac8ef0096894ff4827e30d25851/image3.png" width="304" height="795" uploadprocessed="true" data-ckbox-resource-id="ScAsYReXHQlI" alt="">
+											<source srcset="https://images.ctfassets.net/zkvhlag99gkb/4CBSHY02oIZOiENgFrzLSz/0c6c2ac8ef0096894ff4827e30d25851/image3.png 80w,https://images.ctfassets.net/zkvhlag99gkb/4CBSHY02oIZOiENgFrzLSz/0c6c2ac8ef0096894ff4827e30d25851/image3.png 160w,https://images.ctfassets.net/zkvhlag99gkb/4CBSHY02oIZOiENgFrzLSz/0c6c2ac8ef0096894ff4827e30d25851/image3.png 240w,https://images.ctfassets.net/zkvhlag99gkb/4CBSHY02oIZOiENgFrzLSz/0c6c2ac8ef0096894ff4827e30d25851/image3.png 320w,https://images.ctfassets.net/zkvhlag99gkb/4CBSHY02oIZOiENgFrzLSz/0c6c2ac8ef0096894ff4827e30d25851/image3.png 367w" type="image/webp" sizes="(max-width: 367px) 100vw, 367px"><img style="margin-left: 0px; margin-top: 0px;" src="https://images.ctfassets.net/zkvhlag99gkb/4CBSHY02oIZOiENgFrzLSz/0c6c2ac8ef0096894ff4827e30d25851/image3.png" width="304" height="795" data-ckbox-resource-id="ScAsYReXHQlI" alt="">
 										</picture>
-									</span></span>
-							</p>
+									</span></span></p>
 						</td>
-						<td style="border-color:#000000;border-width:1pt;overflow-wrap:break-word;overflow:hidden;padding:5pt;vertical-align:top;">
-							<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt;" dir="ltr">
-								<span style="background-color:transparent;color:#000000;font-family:Arial,sans-serif;font-size:11pt;"><span style="font-style:normal;font-variant:normal;font-weight:400;text-decoration:none;vertical-align:baseline;white-space:pre-wrap;">&gt;15% incremental&nbsp;</span></span>
-							</p>
-							<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt;" dir="ltr">
-								<span style="background-color:transparent;color:#000000;font-family:Arial,sans-serif;font-size:11pt;"><span style="font-style:normal;font-variant:normal;font-weight:400;text-decoration:none;vertical-align:baseline;white-space:pre-wrap;">throughput gain</span></span>
-							</p>
+						<td style="border-color: #000000; border-width: 1pt; overflow-wrap: break-word; overflow: hidden; padding: 5pt; vertical-align: top;">
+							<p dir="ltr" style="line-height: 1.2; margin-bottom: 0pt; margin-top: 0pt;"><span style="background-color: transparent; color: #000000; font-family: Arial,sans-serif; font-size: 11pt;"><span style="font-style: normal; font-variant: normal; font-weight: 400; text-decoration: none; vertical-align: baseline; white-space: pre-wrap;">&gt;15% incremental&nbsp;</span></span></p>
+							<p dir="ltr" style="line-height: 1.2; margin-bottom: 0pt; margin-top: 0pt;"><span style="background-color: transparent; color: #000000; font-family: Arial,sans-serif; font-size: 11pt;"><span style="font-style: normal; font-variant: normal; font-weight: 400; text-decoration: none; vertical-align: baseline; white-space: pre-wrap;">throughput gain</span></span></p>
 						</td>
 					</tr>
-					<tr style="height:0pt;">
-						<td style="background-color:#f38020;border-color:#000000;border-width:1pt;overflow-wrap:break-word;overflow:hidden;padding:5pt;vertical-align:top;">
-							<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt;" dir="ltr">
-								<span style="background-color:transparent;color:#000000;font-family:Arial,sans-serif;font-size:11pt;"><span style="font-style:normal;font-variant:normal;font-weight:400;text-decoration:none;vertical-align:baseline;white-space:pre-wrap;">PQOS config 1</span></span>
-							</p>
+					<tr style="height: 0pt;">
+						<td style="background-color: #f38020; border-color: #000000; border-width: 1pt; overflow-wrap: break-word; overflow: hidden; padding: 5pt; vertical-align: top;">
+							<p dir="ltr" style="line-height: 1.2; margin-bottom: 0pt; margin-top: 0pt;"><span style="background-color: transparent; color: #000000; font-family: Arial,sans-serif; font-size: 11pt;"><span style="font-style: normal; font-variant: normal; font-weight: 400; text-decoration: none; vertical-align: baseline; white-space: pre-wrap;">PQOS config 1</span></span></p>
 						</td>
-						<td style="border-color:#000000;border-width:1pt;overflow-wrap:break-word;overflow:hidden;padding:5pt;vertical-align:top;">
-							<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt;" dir="ltr">
-								<span style="background-color:transparent;color:#000000;font-family:Arial,sans-serif;font-size:11pt;"><span style="font-style:normal;font-variant:normal;font-weight:400;text-decoration:none;vertical-align:baseline;white-space:pre-wrap;">1 of 2 vCPU on each physical core in each CCD runs FL.&nbsp;</span></span>
-							</p>
-							<p>
-								&nbsp;
-							</p>
-							<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt;" dir="ltr">
-								<span style="background-color:transparent;color:#000000;font-family:Arial,sans-serif;font-size:11pt;"><span style="font-style:normal;font-variant:normal;font-weight:400;text-decoration:none;vertical-align:baseline;white-space:pre-wrap;">FL gets 75% of the 32MB L3 cache of each CCD.</span></span>
-							</p>
+						<td style="border-color: #000000; border-width: 1pt; overflow-wrap: break-word; overflow: hidden; padding: 5pt; vertical-align: top;">
+							<p dir="ltr" style="line-height: 1.2; margin-bottom: 0pt; margin-top: 0pt;"><span style="background-color: transparent; color: #000000; font-family: Arial,sans-serif; font-size: 11pt;"><span style="font-style: normal; font-variant: normal; font-weight: 400; text-decoration: none; vertical-align: baseline; white-space: pre-wrap;">1 of 2 vCPU on each physical core in each CCD runs FL.&nbsp;</span></span></p>
+							<p>&nbsp;</p>
+							<p dir="ltr" style="line-height: 1.2; margin-bottom: 0pt; margin-top: 0pt;"><span style="background-color: transparent; color: #000000; font-family: Arial,sans-serif; font-size: 11pt;"><span style="font-style: normal; font-variant: normal; font-weight: 400; text-decoration: none; vertical-align: baseline; white-space: pre-wrap;">FL gets 75% of the 32MB L3 cache of each CCD.</span></span></p>
 						</td>
-						<td style="border-color:#000000;border-width:1pt;overflow-wrap:break-word;overflow:hidden;padding:5pt;vertical-align:top;">
-							<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt;" dir="ltr">
-								<span style="background-color:transparent;color:#000000;font-family:Arial,sans-serif;font-size:11pt;"><span style="border-style:none;display:inline-block;font-style:normal;font-variant:normal;font-weight:400;height:390px;overflow:hidden;text-decoration:none;vertical-align:baseline;white-space:pre-wrap;width:302px;">
+						<td style="border-color: #000000; border-width: 1pt; overflow-wrap: break-word; overflow: hidden; padding: 5pt; vertical-align: top;">
+							<p dir="ltr" style="line-height: 1.2; margin-bottom: 0pt; margin-top: 0pt;"><span style="background-color: transparent; color: #000000; font-family: Arial,sans-serif; font-size: 11pt;"><span style="border-style: none; display: inline-block; font-style: normal; font-variant: normal; font-weight: 400; height: 390px; overflow: hidden; text-decoration: none; vertical-align: baseline; white-space: pre-wrap; width: 302px;">
 										<picture>
-											<source srcset="https://ckbox.cloud/4f7e53e78dfe76b58745/assets/Nl0jNxumjs7w/images/80.webp 80w,https://ckbox.cloud/4f7e53e78dfe76b58745/assets/Nl0jNxumjs7w/images/160.webp 160w,https://ckbox.cloud/4f7e53e78dfe76b58745/assets/Nl0jNxumjs7w/images/240.webp 240w,https://ckbox.cloud/4f7e53e78dfe76b58745/assets/Nl0jNxumjs7w/images/320.webp 320w,https://ckbox.cloud/4f7e53e78dfe76b58745/assets/Nl0jNxumjs7w/images/368.webp 368w" sizes="(max-width: 368px) 100vw, 368px" type="image/webp"><img style="margin-left:0px;margin-top:0px;" src="https://ckbox.cloud/4f7e53e78dfe76b58745/assets/Nl0jNxumjs7w/images/368.png" width="302" height="390" uploadprocessed="true" data-ckbox-resource-id="Nl0jNxumjs7w" alt="">
+											<source srcset="https://images.ctfassets.net/zkvhlag99gkb/3iJo1BBRueQRy92R3aXbGx/596c3231fa0e66f20de70ea02615f9a7/image2.png80w,https://images.ctfassets.net/zkvhlag99gkb/3iJo1BBRueQRy92R3aXbGx/596c3231fa0e66f20de70ea02615f9a7/image2.png 160w,https://images.ctfassets.net/zkvhlag99gkb/3iJo1BBRueQRy92R3aXbGx/596c3231fa0e66f20de70ea02615f9a7/image2.png 240w,https://images.ctfassets.net/zkvhlag99gkb/3iJo1BBRueQRy92R3aXbGx/596c3231fa0e66f20de70ea02615f9a7/image2.png 320w,https://images.ctfassets.net/zkvhlag99gkb/3iJo1BBRueQRy92R3aXbGx/596c3231fa0e66f20de70ea02615f9a7/image2.png 368w" type="image/webp" sizes="(max-width: 368px) 100vw, 368px"><img style="margin-left: 0px; margin-top: 0px;" src="https://images.ctfassets.net/zkvhlag99gkb/3iJo1BBRueQRy92R3aXbGx/596c3231fa0e66f20de70ea02615f9a7/image2.png" width="368" height="476" data-ckbox-resource-id="Nl0jNxumjs7w" alt="">
 										</picture>
-									</span></span>
-							</p>
+									</span></span></p>
 						</td>
-						<td style="border-color:#000000;border-width:1pt;overflow-wrap:break-word;overflow:hidden;padding:5pt;vertical-align:top;">
-							<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt;" dir="ltr">
-								<span style="background-color:transparent;color:#000000;font-family:Arial,sans-serif;font-size:11pt;"><span style="font-style:normal;font-variant:normal;font-weight:400;text-decoration:none;vertical-align:baseline;white-space:pre-wrap;">&lt; 5% incremental throughput gain</span></span>
-							</p>
-							<p>
-								&nbsp;
-							</p>
-							<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt;" dir="ltr">
-								<span style="background-color:transparent;color:#000000;font-family:Arial,sans-serif;font-size:11pt;"><span style="font-style:normal;font-variant:normal;font-weight:400;text-decoration:none;vertical-align:baseline;white-space:pre-wrap;">Other services show minor signs of degradation</span></span>
-							</p>
+						<td style="border-color: #000000; border-width: 1pt; overflow-wrap: break-word; overflow: hidden; padding: 5pt; vertical-align: top;">
+							<p dir="ltr" style="line-height: 1.2; margin-bottom: 0pt; margin-top: 0pt;"><span style="background-color: transparent; color: #000000; font-family: Arial,sans-serif; font-size: 11pt;"><span style="font-style: normal; font-variant: normal; font-weight: 400; text-decoration: none; vertical-align: baseline; white-space: pre-wrap;">&lt; 5% incremental throughput gain</span></span></p>
+							<p>&nbsp;</p>
+							<p dir="ltr" style="line-height: 1.2; margin-bottom: 0pt; margin-top: 0pt;"><span style="background-color: transparent; color: #000000; font-family: Arial,sans-serif; font-size: 11pt;"><span style="font-style: normal; font-variant: normal; font-weight: 400; text-decoration: none; vertical-align: baseline; white-space: pre-wrap;">Other services show minor signs of degradation</span></span></p>
 						</td>
 					</tr>
-					<tr style="height:0pt;">
-						<td style="background-color:#f38020;border-color:#000000;border-width:1pt;overflow-wrap:break-word;overflow:hidden;padding:5pt;vertical-align:top;">
-							<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt;" dir="ltr">
-								<span style="background-color:transparent;color:#000000;font-family:Arial,sans-serif;font-size:11pt;"><span style="font-style:normal;font-variant:normal;font-weight:400;text-decoration:none;vertical-align:baseline;white-space:pre-wrap;">PQOS config 2</span></span>
-							</p>
+					<tr style="height: 0pt;">
+						<td style="background-color: #f38020; border-color: #000000; border-width: 1pt; overflow-wrap: break-word; overflow: hidden; padding: 5pt; vertical-align: top;">
+							<p dir="ltr" style="line-height: 1.2; margin-bottom: 0pt; margin-top: 0pt;"><span style="background-color: transparent; color: #000000; font-family: Arial,sans-serif; font-size: 11pt;"><span style="font-style: normal; font-variant: normal; font-weight: 400; text-decoration: none; vertical-align: baseline; white-space: pre-wrap;">PQOS config 2</span></span></p>
 						</td>
-						<td style="border-color:#000000;border-width:1pt;overflow-wrap:break-word;overflow:hidden;padding:5pt;vertical-align:top;">
-							<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt;" dir="ltr">
-								<span style="background-color:transparent;color:#000000;font-family:Arial,sans-serif;font-size:11pt;"><span style="font-style:normal;font-variant:normal;font-weight:400;text-decoration:none;vertical-align:baseline;white-space:pre-wrap;">1 of 2 vCPU in each physical core in each CCD runs FL.</span></span>
-							</p>
-							<p>
-								&nbsp;
-							</p>
-							<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt;" dir="ltr">
-								<span style="background-color:transparent;color:#000000;font-family:Arial,sans-serif;font-size:11pt;"><span style="font-style:normal;font-variant:normal;font-weight:400;text-decoration:none;vertical-align:baseline;white-space:pre-wrap;">FL gets 50% of the 32MB L3 cache of each CCD.</span></span>
-							</p>
+						<td style="border-color: #000000; border-width: 1pt; overflow-wrap: break-word; overflow: hidden; padding: 5pt; vertical-align: top;">
+							<p dir="ltr" style="line-height: 1.2; margin-bottom: 0pt; margin-top: 0pt;"><span style="background-color: transparent; color: #000000; font-family: Arial,sans-serif; font-size: 11pt;"><span style="font-style: normal; font-variant: normal; font-weight: 400; text-decoration: none; vertical-align: baseline; white-space: pre-wrap;">1 of 2 vCPU in each physical core in each CCD runs FL.</span></span></p>
+							<p>&nbsp;</p>
+							<p dir="ltr" style="line-height: 1.2; margin-bottom: 0pt; margin-top: 0pt;"><span style="background-color: transparent; color: #000000; font-family: Arial,sans-serif; font-size: 11pt;"><span style="font-style: normal; font-variant: normal; font-weight: 400; text-decoration: none; vertical-align: baseline; white-space: pre-wrap;">FL gets 50% of the 32MB L3 cache of each CCD.</span></span></p>
 						</td>
-						<td style="border-color:#000000;border-width:1pt;overflow-wrap:break-word;overflow:hidden;padding:5pt;vertical-align:top;">
-							<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt;" dir="ltr">
-								<span style="background-color:transparent;color:#000000;font-family:Arial,sans-serif;font-size:11pt;"><span style="border-style:none;display:inline-block;font-style:normal;font-variant:normal;font-weight:400;height:388px;overflow:hidden;text-decoration:none;vertical-align:baseline;white-space:pre-wrap;width:300px;">
+						<td style="border-color: #000000; border-width: 1pt; overflow-wrap: break-word; overflow: hidden; padding: 5pt; vertical-align: top;">
+							<p dir="ltr" style="line-height: 1.2; margin-bottom: 0pt; margin-top: 0pt;"><span style="background-color: transparent; color: #000000; font-family: Arial,sans-serif; font-size: 11pt;"><span style="border-style: none; display: inline-block; font-style: normal; font-variant: normal; font-weight: 400; height: 388px; overflow: hidden; text-decoration: none; vertical-align: baseline; white-space: pre-wrap; width: 300px;">
 										<picture>
-											<source srcset="https://ckbox.cloud/4f7e53e78dfe76b58745/assets/6Es1KpqJZTZw/images/80.webp 80w,https://ckbox.cloud/4f7e53e78dfe76b58745/assets/6Es1KpqJZTZw/images/160.webp 160w,https://ckbox.cloud/4f7e53e78dfe76b58745/assets/6Es1KpqJZTZw/images/240.webp 240w,https://ckbox.cloud/4f7e53e78dfe76b58745/assets/6Es1KpqJZTZw/images/320.webp 320w,https://ckbox.cloud/4f7e53e78dfe76b58745/assets/6Es1KpqJZTZw/images/369.webp 369w" sizes="(max-width: 369px) 100vw, 369px" type="image/webp"><img style="margin-left:0px;margin-top:0px;" src="https://ckbox.cloud/4f7e53e78dfe76b58745/assets/6Es1KpqJZTZw/images/369.png" width="300" height="388" uploadprocessed="true" data-ckbox-resource-id="6Es1KpqJZTZw" alt="">
+											<source srcset="https://images.ctfassets.net/zkvhlag99gkb/3iJo1BBRueQRy92R3aXbGx/596c3231fa0e66f20de70ea02615f9a7/image2.png 80w,https://images.ctfassets.net/zkvhlag99gkb/3iJo1BBRueQRy92R3aXbGx/596c3231fa0e66f20de70ea02615f9a7/image2.png 160w,https://images.ctfassets.net/zkvhlag99gkb/3iJo1BBRueQRy92R3aXbGx/596c3231fa0e66f20de70ea02615f9a7/image2.png 240w,https://images.ctfassets.net/zkvhlag99gkb/3iJo1BBRueQRy92R3aXbGx/596c3231fa0e66f20de70ea02615f9a7/image2.png 320w,https://images.ctfassets.net/zkvhlag99gkb/3iJo1BBRueQRy92R3aXbGx/596c3231fa0e66f20de70ea02615f9a7/image2.png 369w" type="image/webp" sizes="(max-width: 369px) 100vw, 369px"><img style="margin-left: 0px; margin-top: 0px;" src="https://images.ctfassets.net/zkvhlag99gkb/3iJo1BBRueQRy92R3aXbGx/596c3231fa0e66f20de70ea02615f9a7/image2.png" width="368" height="476" data-ckbox-resource-id="6Es1KpqJZTZw" alt="">
 										</picture>
-									</span></span>
-							</p>
+									</span></span></p>
 						</td>
-						<td style="border-color:#000000;border-width:1pt;overflow-wrap:break-word;overflow:hidden;padding:5pt;vertical-align:top;">
-							<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt;" dir="ltr">
-								<span style="background-color:transparent;color:#000000;font-family:Arial,sans-serif;font-size:11pt;"><span style="font-style:normal;font-variant:normal;font-weight:400;text-decoration:none;vertical-align:baseline;white-space:pre-wrap;">&lt; 5% incremental throughput gain</span></span>
-							</p>
+						<td style="border-color: #000000; border-width: 1pt; overflow-wrap: break-word; overflow: hidden; padding: 5pt; vertical-align: top;">
+							<p dir="ltr" style="line-height: 1.2; margin-bottom: 0pt; margin-top: 0pt;"><span style="background-color: transparent; color: #000000; font-family: Arial,sans-serif; font-size: 11pt;"><span style="font-style: normal; font-variant: normal; font-weight: 400; text-decoration: none; vertical-align: baseline; white-space: pre-wrap;">&lt; 5% incremental throughput gain</span></span></p>
 						</td>
 					</tr>
-					<tr style="height:0pt;">
-						<td style="background-color:#f38020;border-color:#000000;border-width:1pt;overflow-wrap:break-word;overflow:hidden;padding:5pt;vertical-align:top;">
-							<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt;" dir="ltr">
-								<span style="background-color:transparent;color:#000000;font-family:Arial,sans-serif;font-size:11pt;"><span style="font-style:normal;font-variant:normal;font-weight:400;text-decoration:none;vertical-align:baseline;white-space:pre-wrap;">PQOS config 3</span></span>
-							</p>
+					<tr style="height: 0pt;">
+						<td style="background-color: #f38020; border-color: #000000; border-width: 1pt; overflow-wrap: break-word; overflow: hidden; padding: 5pt; vertical-align: top;">
+							<p dir="ltr" style="line-height: 1.2; margin-bottom: 0pt; margin-top: 0pt;"><span style="background-color: transparent; color: #000000; font-family: Arial,sans-serif; font-size: 11pt;"><span style="font-style: normal; font-variant: normal; font-weight: 400; text-decoration: none; vertical-align: baseline; white-space: pre-wrap;">PQOS config 3</span></span></p>
 						</td>
-						<td style="border-color:#000000;border-width:1pt;overflow-wrap:break-word;overflow:hidden;padding:5pt;vertical-align:top;">
-							<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt;" dir="ltr">
-								<span style="background-color:transparent;color:#000000;font-family:Arial,sans-serif;font-size:11pt;"><span style="font-style:normal;font-variant:normal;font-weight:400;text-decoration:none;vertical-align:baseline;white-space:pre-wrap;">2 vCPU on 50% of the physical core in each CCD runs FL.&nbsp;</span></span>
-							</p>
-							<p>
-								&nbsp;
-							</p>
-							<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt;" dir="ltr">
-								<span style="background-color:transparent;color:#000000;font-family:Arial,sans-serif;font-size:11pt;"><span style="font-style:normal;font-variant:normal;font-weight:400;text-decoration:none;vertical-align:baseline;white-space:pre-wrap;">FL gets 50% of&nbsp; the 32MB L3 cache of each CCD.</span></span>
-							</p>
+						<td style="border-color: #000000; border-width: 1pt; overflow-wrap: break-word; overflow: hidden; padding: 5pt; vertical-align: top;">
+							<p dir="ltr" style="line-height: 1.2; margin-bottom: 0pt; margin-top: 0pt;"><span style="background-color: transparent; color: #000000; font-family: Arial,sans-serif; font-size: 11pt;"><span style="font-style: normal; font-variant: normal; font-weight: 400; text-decoration: none; vertical-align: baseline; white-space: pre-wrap;">2 vCPU on 50% of the physical core in each CCD runs FL.&nbsp;</span></span></p>
+							<p>&nbsp;</p>
+							<p dir="ltr" style="line-height: 1.2; margin-bottom: 0pt; margin-top: 0pt;"><span style="background-color: transparent; color: #000000; font-family: Arial,sans-serif; font-size: 11pt;"><span style="font-style: normal; font-variant: normal; font-weight: 400; text-decoration: none; vertical-align: baseline; white-space: pre-wrap;">FL gets 50% of&nbsp; the 32MB L3 cache of each CCD.</span></span></p>
 						</td>
-						<td style="border-color:#000000;border-width:1pt;overflow-wrap:break-word;overflow:hidden;padding:5pt;vertical-align:top;">
-							<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt;" dir="ltr">
-								<span style="background-color:transparent;color:#000000;font-family:Arial,sans-serif;font-size:11pt;"><span style="border-style:none;display:inline-block;font-style:normal;font-variant:normal;font-weight:400;height:396px;overflow:hidden;text-decoration:none;vertical-align:baseline;white-space:pre-wrap;width:304px;">
+						<td style="border-color: #000000; border-width: 1pt; overflow-wrap: break-word; overflow: hidden; padding: 5pt; vertical-align: top;">
+							<p dir="ltr" style="line-height: 1.2; margin-bottom: 0pt; margin-top: 0pt;"><span style="background-color: transparent; color: #000000; font-family: Arial,sans-serif; font-size: 11pt;"><span style="border-style: none; display: inline-block; font-style: normal; font-variant: normal; font-weight: 400; height: 396px; overflow: hidden; text-decoration: none; vertical-align: baseline; white-space: pre-wrap; width: 304px;">
 										<picture>
-											<source srcset="https://ckbox.cloud/4f7e53e78dfe76b58745/assets/EA8Pplzp2IQX/images/80.webp 80w,https://ckbox.cloud/4f7e53e78dfe76b58745/assets/EA8Pplzp2IQX/images/160.webp 160w,https://ckbox.cloud/4f7e53e78dfe76b58745/assets/EA8Pplzp2IQX/images/240.webp 240w,https://ckbox.cloud/4f7e53e78dfe76b58745/assets/EA8Pplzp2IQX/images/320.webp 320w,https://ckbox.cloud/4f7e53e78dfe76b58745/assets/EA8Pplzp2IQX/images/367.webp 367w" sizes="(max-width: 367px) 100vw, 367px" type="image/webp"><img style="margin-left:0px;margin-top:0px;" src="https://ckbox.cloud/4f7e53e78dfe76b58745/assets/EA8Pplzp2IQX/images/367.png" width="304" height="396" uploadprocessed="true" data-ckbox-resource-id="EA8Pplzp2IQX" alt="">
+											<source srcset="https://images.ctfassets.net/zkvhlag99gkb/7FKLfSxnSNUlXJCw8CJGzU/69c7b81b6cee5a2c7040ecc96748084b/image5.png 80w,https://images.ctfassets.net/zkvhlag99gkb/7FKLfSxnSNUlXJCw8CJGzU/69c7b81b6cee5a2c7040ecc96748084b/image5.png 160w,https://images.ctfassets.net/zkvhlag99gkb/7FKLfSxnSNUlXJCw8CJGzU/69c7b81b6cee5a2c7040ecc96748084b/image5.png 240w,https://images.ctfassets.net/zkvhlag99gkb/7FKLfSxnSNUlXJCw8CJGzU/69c7b81b6cee5a2c7040ecc96748084b/image5.png 320w,https://images.ctfassets.net/zkvhlag99gkb/7FKLfSxnSNUlXJCw8CJGzU/69c7b81b6cee5a2c7040ecc96748084b/image5.png 367w" type="image/webp" sizes="(max-width: 367px) 100vw, 367px"><img style="margin-left: 0px; margin-top: 0px;" src="https://images.ctfassets.net/zkvhlag99gkb/7FKLfSxnSNUlXJCw8CJGzU/69c7b81b6cee5a2c7040ecc96748084b/image5.png" width="367" height="478" data-ckbox-resource-id="EA8Pplzp2IQX" alt="">
 										</picture>
-									</span></span>
-							</p>
+									</span></span></p>
 						</td>
-						<td style="border-color:#000000;border-width:1pt;overflow-wrap:break-word;overflow:hidden;padding:5pt;vertical-align:top;">
-							<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt;" dir="ltr">
-								<span style="background-color:transparent;color:#000000;font-family:Arial,sans-serif;font-size:11pt;"><span style="font-style:normal;font-variant:normal;font-weight:400;text-decoration:none;vertical-align:baseline;white-space:pre-wrap;">&lt; 5% incremental throughput gain</span></span>
-							</p>
+						<td style="border-color: #000000; border-width: 1pt; overflow-wrap: break-word; overflow: hidden; padding: 5pt; vertical-align: top;">
+							<p dir="ltr" style="line-height: 1.2; margin-bottom: 0pt; margin-top: 0pt;"><span style="background-color: transparent; color: #000000; font-family: Arial,sans-serif; font-size: 11pt;"><span style="font-style: normal; font-variant: normal; font-weight: 400; text-decoration: none; vertical-align: baseline; white-space: pre-wrap;">&lt; 5% incremental throughput gain</span></span></p>
 						</td>
 					</tr>
 				</tbody>
@@ -505,7 +442,7 @@
 	<p>The out-of-the-box efficiency gains on our new FL2 stack were substantial, even before any system optimizations. FL2 slashed the latency penalty by 70%, allowing us to push Gen 13 to higher CPU utilization while strictly meeting our latency SLAs. Under FL1, this would have been impossible.</p>
 	<p>By effectively eliminating the cache bottleneck, FL2 enables our throughput to scale linearly with core count. The impact is undeniable on the high-density AMD Turin 9965: we achieved a 2x performance gain, unlocking the true potential of the hardware. With further system tuning, we expect to squeeze even more power out of our Gen 13 fleet.</p>
 	<figure class="kg-card kg-image-card">
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1jV1q0n9PgmbbNzDl8E1J1/2ead24a20cc10836ba041f73a16f3883/image6.png" alt="" class="kg-image" width="1999" height="1125" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1jV1q0n9PgmbbNzDl8E1J1/2ead24a20cc10836ba041f73a16f3883/image6.png" alt="Generational improvement with Gen 13" class="kg-image" width="1999" height="1125" loading="lazy">
 	</figure>
 	<div class="flex anchor relative">
 		<h2 id="generational-improvement-with-gen-13">Generational improvement with Gen 13</h2>
