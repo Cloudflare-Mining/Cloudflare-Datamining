@@ -555,10 +555,12 @@
 					"items": {
 						"properties": {
 							"field": {
+								"description": "Event field to search on. Allowed: attacker, attackerCountry, category, createdAt, date, event, indicator, indicatorType, killChain, mitreAttack, tags, targetCountry, targetIndustry, tlp, uuid.",
 								"example": "attackerCountry",
 								"type": "string"
 							},
 							"op": {
+								"description": "Search operator. Use 'in' for bulk lookup of up to 100 values at once, e.g. {field:'tags', op:'in', value:['malware','apt']}.",
 								"enum": [
 									"equals",
 									"not",
@@ -599,7 +601,8 @@
 										},
 										"type": "array"
 									}
-								]
+								],
+								"description": "Search value. String or number for most operators. Array for 'in' operator (max 100 items)."
 							}
 						},
 						"type": "object"
@@ -729,6 +732,13 @@
 										},
 										"type": "array"
 									},
+									"mitreCapec": {
+										"items": {
+											"example": " ",
+											"type": "string"
+										},
+										"type": "array"
+									},
 									"numReferenced": {
 										"type": "number"
 									},
@@ -813,6 +823,7 @@
 									"tags",
 									"killChain",
 									"mitreAttack",
+									"mitreCapec",
 									"referencedIds",
 									"referencesIds",
 									"hasChildren",
@@ -963,6 +974,13 @@
 									},
 									"type": "array"
 								},
+								"mitreCapec": {
+									"items": {
+										"example": " ",
+										"type": "string"
+									},
+									"type": "array"
+								},
 								"numReferenced": {
 									"type": "number"
 								},
@@ -1047,6 +1065,7 @@
 								"tags",
 								"killChain",
 								"mitreAttack",
+								"mitreCapec",
 								"referencedIds",
 								"referencesIds",
 								"hasChildren",
@@ -1415,6 +1434,13 @@
 										},
 										"type": "array"
 									},
+									"mitreCapec": {
+										"items": {
+											"example": " ",
+											"type": "string"
+										},
+										"type": "array"
+									},
 									"numReferenced": {
 										"type": "number"
 									},
@@ -1499,6 +1525,7 @@
 									"tags",
 									"killChain",
 									"mitreAttack",
+									"mitreCapec",
 									"referencedIds",
 									"referencesIds",
 									"hasChildren",
@@ -1590,22 +1617,15 @@
 				}
 			},
 			{
-				"description": "Dataset ID(s) to filter by. Can be a single dataset ID or array of dataset IDs. If not provided, uses default dataset",
+				"description": "Dataset ID(s) to filter by. Can be a single dataset ID, comma-separated list, or array. If not provided, uses default dataset",
 				"in": "query",
 				"name": "datasetId",
 				"schema": {
-					"anyOf": [
-						{
-							"type": "string"
-						},
-						{
-							"items": {
-								"type": "string"
-							},
-							"type": "array"
-						}
-					],
-					"description": "Dataset ID(s) to filter by. Can be a single dataset ID or array of dataset IDs. If not provided, uses default dataset"
+					"description": "Dataset ID(s) to filter by. Can be a single dataset ID, comma-separated list, or array. If not provided, uses default dataset",
+					"items": {
+						"type": "string"
+					},
+					"type": "array"
 				}
 			},
 			{
@@ -1861,6 +1881,13 @@
 									},
 									"type": "array"
 								},
+								"mitreCapec": {
+									"items": {
+										"example": " ",
+										"type": "string"
+									},
+									"type": "array"
+								},
 								"numReferenced": {
 									"type": "number"
 								},
@@ -1945,6 +1972,7 @@
 								"tags",
 								"killChain",
 								"mitreAttack",
+								"mitreCapec",
 								"referencedIds",
 								"referencesIds",
 								"hasChildren",
@@ -2922,6 +2950,13 @@
 									},
 									"type": "array"
 								},
+								"mitreCapec": {
+									"items": {
+										"example": " ",
+										"type": "string"
+									},
+									"type": "array"
+								},
 								"numReferenced": {
 									"type": "number"
 								},
@@ -3006,6 +3041,7 @@
 								"tags",
 								"killChain",
 								"mitreAttack",
+								"mitreCapec",
 								"referencedIds",
 								"referencesIds",
 								"hasChildren",
@@ -4216,6 +4252,13 @@
 									},
 									"type": "array"
 								},
+								"mitreCapec": {
+									"items": {
+										"example": " ",
+										"type": "string"
+									},
+									"type": "array"
+								},
 								"numReferenced": {
 									"type": "number"
 								},
@@ -4300,6 +4343,7 @@
 								"tags",
 								"killChain",
 								"mitreAttack",
+								"mitreCapec",
 								"referencedIds",
 								"referencesIds",
 								"hasChildren",
@@ -4693,6 +4737,13 @@
 									},
 									"type": "array"
 								},
+								"mitreCapec": {
+									"items": {
+										"example": " ",
+										"type": "string"
+									},
+									"type": "array"
+								},
 								"numReferenced": {
 									"type": "number"
 								},
@@ -4777,6 +4828,7 @@
 								"tags",
 								"killChain",
 								"mitreAttack",
+								"mitreCapec",
 								"referencedIds",
 								"referencesIds",
 								"hasChildren",

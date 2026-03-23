@@ -357,13 +357,13 @@
 												"example": "123",
 												"type": "string"
 											},
+											"accountTag": {
+												"example": "5e785ae7a11e4c3c8df4bce13f1b9c02",
+												"type": "string"
+											},
 											"createdAt": {
 												"example": "2022-04-01T00:00:00Z",
 												"format": "date-time",
-												"type": "string"
-											},
-											"groupId": {
-												"example": "12345678-1234-1234-1234-1234567890ab",
 												"type": "string"
 											},
 											"updatedAt": {
@@ -378,7 +378,6 @@
 										},
 										"required": [
 											"uuid",
-											"groupId",
 											"accountId"
 										],
 										"type": "object"
@@ -501,13 +500,13 @@
 										"example": "123",
 										"type": "string"
 									},
+									"accountTag": {
+										"example": "5e785ae7a11e4c3c8df4bce13f1b9c02",
+										"type": "string"
+									},
 									"createdAt": {
 										"example": "2022-04-01T00:00:00Z",
 										"format": "date-time",
-										"type": "string"
-									},
-									"groupId": {
-										"example": "12345678-1234-1234-1234-1234567890ab",
 										"type": "string"
 									},
 									"updatedAt": {
@@ -522,7 +521,6 @@
 								},
 								"required": [
 									"uuid",
-									"groupId",
 									"accountId"
 								],
 								"type": "object"
@@ -751,11 +749,12 @@
 							"accountId": {
 								"example": "123",
 								"type": "string"
+							},
+							"accountTag": {
+								"example": "5e785ae7a11e4c3c8df4bce13f1b9c02",
+								"type": "string"
 							}
 						},
-						"required": [
-							"accountId"
-						],
 						"type": "object"
 					}
 				}
@@ -771,13 +770,13 @@
 									"example": "123",
 									"type": "string"
 								},
+								"accountTag": {
+									"example": "5e785ae7a11e4c3c8df4bce13f1b9c02",
+									"type": "string"
+								},
 								"createdAt": {
 									"example": "2022-04-01T00:00:00Z",
 									"format": "date-time",
-									"type": "string"
-								},
-								"groupId": {
-									"example": "12345678-1234-1234-1234-1234567890ab",
 									"type": "string"
 								},
 								"updatedAt": {
@@ -792,7 +791,6 @@
 							},
 							"required": [
 								"uuid",
-								"groupId",
 								"accountId"
 							],
 							"type": "object"
