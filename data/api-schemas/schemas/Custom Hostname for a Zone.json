@@ -621,6 +621,15 @@
 			},
 			{
 				"in": "query",
+				"name": "custom_origin_server",
+				"schema": {
+					"description": "Filter by custom origin server name.",
+					"example": "origin2.example.com",
+					"type": "string"
+				}
+			},
+			{
+				"in": "query",
 				"name": "ssl",
 				"schema": {
 					"default": "0",
