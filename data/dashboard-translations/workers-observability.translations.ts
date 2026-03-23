@@ -331,6 +331,10 @@
 		emptyState: {
 			title: "No checks found",
 			description: "It might take a few moments for your alert to run its first check."
+		},
+		metricsEmptyState: {
+			title: "No metrics yet",
+			description: "Metrics will appear here once your alert has completed its first check."
 		}
 	},
 	alerts: {
@@ -351,6 +355,7 @@
 			fired: "Fired",
 			resolved: "Resolved"
 		},
+		noDescription: "No description",
 		currentState: "Current State",
 		statusSince: "since",
 		checkAt: "at",

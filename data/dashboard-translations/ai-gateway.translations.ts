@@ -169,7 +169,13 @@
 			request_full_content: "Request too large (%{value})",
 			response_full_content: "Response too large (%{value})",
 			response_not_available: "Not available",
-			request_not_available: "Not available"
+			request_not_available: "Not available",
+			request_type: "Type",
+			billing_type: "Billing",
+			model_type: "Model Type",
+			location: "Location",
+			step: "Fallback Step",
+			response_type: "Response"
 		},
 		common: {
 			custom_cost: "Custom cost",

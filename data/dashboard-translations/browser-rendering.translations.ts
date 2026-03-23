@@ -21,7 +21,8 @@
 	tabs: {
 		overview: "Overview",
 		logs: "Logs",
-		examples: "Examples"
+		examples: "Examples",
+		playground: "Playground"
 	},
 	browser_close_reasons: {
 		no_reason: "",
@@ -43,7 +44,8 @@
 		browser_start: "Browser Start",
 		connection_start: "Connection Start",
 		connection_end: "Connection End",
-		connection_close: "Browser Close"
+		connection_close: "Connection Close",
+		browser_close: "Browser Close"
 	},
 	sidebar: {
 		usage: {
@@ -113,6 +115,31 @@
 		no_data_title: "No data found",
 		no_data_description: "The session Id you looked up does not exist or has expired.",
 		go_back: "Go back to sessions"
+	},
+	crawl: {
+		invalid_job_id: "Invalid crawl job ID",
+		no_pages_crawled: "No pages crawled yet",
+		load_more: "Load more",
+		no_content_available: "No content available",
+		showing_first_records: (0, s.p)(l(), "count"),
+		failed_to_load_detail: "Failed to load crawl job detail.",
+		view_records: "View Records",
+		col_title: "Title",
+		col_url: "URL",
+		col_status: "Status",
+		col_http: "HTTP",
+		label_job_id: "Job ID",
+		label_status: "Status",
+		label_progress: "Progress",
+		label_browser_seconds: "Browser seconds",
+		label_start_time: "Request Start time",
+		label_end_time: "Request End time",
+		label_connection_id: "Connection ID",
+		label_event_time: "Event Time",
+		label_request_id: "Request ID",
+		label_type: "Type",
+		label_target_url: "Target URL",
+		label_duration: "Duration"
 	},
 	onboarding: {
 		title: "Cloudflare Browser Rendering",
