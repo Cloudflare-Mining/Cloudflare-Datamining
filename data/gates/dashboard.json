@@ -735,7 +735,7 @@
 		"enabled": true
 	},
 	"deseng-kumofy-kv-pairs": {
-		"enabled": false
+		"enabled": true
 	},
 	"deseng-logout-on-403-from-must-succeed-endpoints": {
 		"enabled": false
@@ -1481,6 +1481,9 @@
 	"mesh": {
 		"enabled": false
 	},
+	"metadata-authz-enabled": {
+		"enabled": false
+	},
 	"moq-load-tester-ui": {
 		"enabled": false
 	},
@@ -1725,7 +1728,7 @@
 		"enabled": false
 	},
 	"prg-lb-setup-banner": {
-		"enabled": false,
+		"enabled": true,
 		"branches": [
 			"baseline",
 			"variant-a"
