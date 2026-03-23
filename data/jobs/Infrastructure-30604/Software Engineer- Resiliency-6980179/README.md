@@ -11,6 +11,7 @@
 <p><strong>About The Role&nbsp;</strong></p>
 <p>As a Engineer: Resiliency, you will be part of a team responsible for developing and maintaining the systems that manage Cloudflare’s infrastructure at scale. You will work on expanding and evolving the suite of automations that allow our Infrastructure Operations partners to provision, expand, repair, and decommission our rapidly growing fleet of servers. Your work will contribute to an increasingly autonomous system that reduces manual effort and supports Cloudflare’s growth. You will play a key role in the development of the infrastructure that powers Cloudflare’s scale.</p>
 <p>You will collaborate with the team to understand business needs and develop technical solutions. You will thrive in a fast-paced iterative engineering environment and work closely with internal customers to understand their requirements.</p>
+<p><strong>The "AI-First" Mandate:</strong> In this role, AI is a tool for strategic mastery. You will be expected to integrate AI into your workflow—utilizing LLMs and predictive analytics to synthesize partner intelligence, monitor regulatory shifts, and automate regional reporting. This allows you to maintain high-level diplomacy while scaling your impact across the broader APAC and EMEA regions.</p>
 <p><strong>Examples of desirable skills, knowledge and experience.</strong></p>
 <ul>
 	<li>At least 5+ years of hands-on software development experience on meaningfully complex systems.</li>

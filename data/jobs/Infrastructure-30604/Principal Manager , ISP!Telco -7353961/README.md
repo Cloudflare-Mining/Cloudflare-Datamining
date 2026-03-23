@@ -5,43 +5,38 @@
 		<p>At Cloudflare, we’re not looking for people who wait for a polished roadmap; we’re looking for the builders who see the cracks in the Internet that everyone else has simply learned to live with. We value candidates who have the instinct to spot a "normalized" problem and the AI-native curiosity to create a solution using the latest tools. Our culture is built on iteration, leveraging AI to ship faster today to make it better tomorrow, while ensuring that every improvement, no matter how small, is shared across the team to lift everyone up. If you’re the type of person who values curiosity over bureaucracy, and that AI is a partner in solving tough problems to keep the Internet moving forward, you’ll fit right in.</p>
 	</div>
 </div>
-<p>Team: Integrated Network Strategy</p>
-<p>Type: Full-time</p>
+<p><strong>Location:</strong> 🇮🇳 Bengaluru</p>
+<p><strong>Team:</strong> Integrated Network Strategy</p>
+<p><strong>Type:</strong> Full-time</p>
 <h3><strong>Role Summary and Scope</strong></h3>
-<p>Cloudflare seeks an exceptional, action-oriented leader to serve as the strategic bridge between our core infrastructure and the largest <strong>Internet Service Providers (ISPs) and telecom operators</strong>. This is a high-impact role within the <strong>Integrated Network Strategy</strong> team, demanding a blend of deep technical knowledge, executive-level commercial negotiation skill, the ability to mitigate major network risks, and a proven ability to <strong>identify and foster mutual growth opportunities</strong> with partners.</p>
-<p>The role carries a <strong>critical and non-negotiable focus on leading network strategy and partner engagement within India</strong>. However, the successful candidate will be expected to rapidly <strong>scale their leadership and responsibility to cover the broader Asia-Pacific (APAC) region, including the Middle East and Africa (MEA)</strong>, ensuring the health, capacity, and advanced capability of Cloudflare’s network across these high-growth markets.</p>
+<p>Cloudflare is looking for an exceptional, action-oriented leader to serve as the <strong>primary strategic diplomat</strong> for our India infrastructure footprint. This role is the critical bridge between our Global Connectivity Cloud and India’s largest Internet Service Providers (ISPs) and telecom operators.</p>
+<p>Rather than focusing on the transactional aspects of partnership management—which are handled by our dedicated commercial teams—you will serve as the <strong>local Point of Contact (PoC) and high-level envoy</strong>. You will provide the "insider guidance" and regional SME (Subject Matter Expertise) necessary to navigate the complex Indian telco landscape, providing critical leverage to our global architecture and commercial teams.</p>
+<p><strong>The "AI-First" Mandate:</strong> In this role, AI is a tool for strategic mastery. You will be expected to integrate AI into your workflow—utilizing LLMs and predictive analytics to synthesize partner intelligence, monitor regulatory shifts, and automate regional reporting. This allows you to maintain high-level diplomacy while scaling your impact across the broader APAC and MEA regions.</p>
 <h3><strong>Core Responsibilities (What You'll Drive)</strong></h3>
 <ul>
-	<li><strong>Executive Partner Leadership:</strong> <strong>Cultivate and expand C-level and SVP-level relationships</strong> across major Indian and regional telcos to guarantee the long-term health, capacity, and strategic positioning of Cloudflare’s network, including <strong>identifying and exploring potential product or service resale partnerships.</strong></li>
-	<li><strong>Advanced Edge Enablement:</strong> Drive strategic deployments and technical integration to enable <strong>Edge Compute, Storage, and GPU resources</strong> within partner infrastructure, supporting sophisticated <strong>AI and developer workloads</strong> across the region.</li>
-	<li><strong>Capacity &amp; Commercial Strategy:</strong> Drive the long-term capacity planning process, providing actionable intelligence and <strong>negotiating competitive unit rates</strong> by deeply understanding the associated <strong>cost impacts</strong>.</li>
-	<li><strong>Infrastructure Optimization:</strong> Strategically balance <strong>server efficiency, compute robustness, and data center colocation constraints</strong> to ensure highly scalable service delivery across all served networks.</li>
-	<li><strong>Advanced Network Engineering:</strong> Apply a <strong>deep technical understanding of BGP routing</strong> and the <strong>commercial cause-and-effect of traffic management policies</strong> between ASNs to ensure optimal and resilient flow across the expanded territory.</li>
-	<li><strong>Resiliency &amp; Risk Mitigation (CRITICAL):</strong></li>
-	<ul>
-		<li>Act as the single point of contact during severe network incidents, coordinating urgent cross-functional resolution efforts.</li>
-		<li>Diagnose root causes and proactively mitigate recurrence risk, including assessing the <strong>resiliency of backbone infrastructure (domestic vs. international and terrestrial vs. submarine assets).</strong></li>
-		<li>Oversee and execute <strong>embedded partner deployments</strong> and <strong>CDN/edge caching integration</strong> requirements.</li>
-	</ul>
+	<li><strong>Strategic &amp; Regulatory Diplomacy:</strong> Act as the face of Cloudflare to C-level stakeholders within Indian telcos and, when necessary, engage with regulatory and government officials. You will monitor local regulatory events and ensure Cloudflare’s infrastructure strategy aligns with the evolving Indian legal landscape.</li>
+	<li><strong>Technical Advisory on Compliance:</strong> Serve as a lead consultant to Telco engineering teams on the technical execution of government directives. You will <strong>coach partners on sophisticated content-blocking methodologies</strong> (e.g., SNI-based filtering) to ensure compliance while preventing the "over-blocking" of IP addresses that could cause collateral damage to unrelated services.</li>
+	<li><strong>Internal SME &amp; Guidance:</strong> Serve as the "boots on the ground" expert for our global Architecture and Commercial Negotiation teams. Provide the cultural, regulatory, and technical context required to navigate the Indian market and close complex infrastructure deals.</li>
+	<li><strong>Revenue Enablement &amp; Leadership:</strong> Provide strategic leverage to adjacent revenue-focused teams. Act as a consultant to Sales and Channel leadership, identifying "win-win" growth opportunities that align with our infrastructure goals.</li>
+	<li><strong>Advanced Edge &amp; AI Enablement:</strong> Lead the deployment of Edge Compute, Storage, and GPU resources within partner networks to support the next generation of AI workloads in India.</li>
+	<li><strong>AI-Augmented Intelligence:</strong> Use AI tools to monitor regulatory filings, analyze partner sentiment, and provide data-driven forecasts that inform our global network strategy.</li>
+	<li><strong>Crisis Diplomacy:</strong> Lead regional representation during severe network incidents or regulatory crises, managing the high-level partner relationship while technical teams drive resolution.</li>
 </ul>
 <h3><strong>Essential Qualifications &amp; Experience</strong></h3>
 <ul>
-	<li><strong>Executive Presence:</strong> 15+ years of experience in telecom, infrastructure, or cloud technology, with a focus on network build-out across APJC.</li>
-	<li><strong>India Market Expertise:</strong> <strong>Mandatory, established executive-level relationships with top ISPs and telecom operators in India.</strong></li>
-	<li><strong>Edge &amp; Compute Expertise:</strong> Extensive experience managing <strong>embedded partner deployments for edge caching and CDN requirements</strong>. This must include technical knowledge of deploying infrastructure to support <strong>Edge Compute, Storage, and GPU enablement</strong> for modern AI and developer applications.</li>
-	<li><strong>CDN &amp; Colocation Knowledge:</strong> Proven knowledge of <strong>server hardware efficiency</strong> (density, power draw, performance/watt) and the technical/commercial requirements of <strong>carrier-neutral data center colocation.</strong></li>
-	<li><strong>Network Depth:</strong> Deep technical proficiency in <strong>BGP routing, peering relationships, and traffic management policy</strong> and its direct impact on network performance and commercial metrics.</li>
-	<li><strong>Crisis Leadership:</strong> Strong crisis management skills and demonstrated ability to lead urgent, cross-functional resolution efforts under intense pressure.</li>
-	<li><strong>Strategic Partnership Acumen:</strong> <strong>Proven experience in building strategic business relationships with large Telcos or ISPs, including identifying and fostering potential joint go-to-market or channel opportunities.</strong></li>
+	<li><strong>Executive Presence &amp; Diplomacy:</strong> 15+ years of experience in telecom, infrastructure, or regulatory affairs. You must be a "diplomat" first—capable of navigating complex, long-term institutional and governmental relationships.</li>
+	<li><strong>Regulatory Acumen:</strong> Deep familiarity with the Indian regulatory environment (DoT, TRAI, etc.) and experience managing the technical implementation of government compliance orders.</li>
+	<li><strong>Technical SME:</strong> A strong understanding of BGP routing, DNS, and traffic management. Specifically, expertise in content-filtering technologies and how to mitigate the impact of broad-scale IP blocks.</li>
+	<li><strong>India Market Authority:</strong> Mandatory, deep-rooted executive-level relationships with top ISPs and telecom operators in India.</li>
+	<li><strong>AI Fluency:</strong> Demonstrated ability to incorporate AI tools (e.g., LLMs for document synthesis, automated data modeling) into your workflow to increase operational velocity.</li>
+	<li><strong>Strategic Leverage:</strong> Proven ability to support Sales and Revenue teams by translating infrastructure health and regulatory stability into commercial value.</li>
 </ul>
 <h3><strong>What Makes This Role Exceptional</strong></h3>
 <ul>
-	<li><strong>Strategic Growth Trajectory:</strong> <strong>Own the critical India market while rapidly growing your responsibilities to drive infrastructure strategy across the wider APAC, Middle East, and Africa regions.</strong></li>
-	<li><strong>Next-Gen Impact:</strong> Be the leader responsible for scaling Cloudflare’s infrastructure, transitioning it from a high-capacity network to a next-generation <strong>compute and AI-ready platform</strong>.</li>
-	<li><strong>Global Visibility:</strong> Drive real-time business outcomes with senior-level visibility and collaboration across global infrastructure and product teams.</li>
+	<li><strong>The Envoy Advantage:</strong> Focus on high-level strategy, regulatory health, and relationship-building, leaving the transactional heavy lifting to dedicated supporting teams.</li>
+	<li><strong>Guardians of the Internet:</strong> Play a pivotal role in keeping the Indian internet open and resilient by teaching partners how to manage compliance without sacrificing network integrity.</li>
+	<li><strong>Future-Proof Platform:</strong> Lead the evolution of our infrastructure into a <strong>Global AI-native compute platform</strong> within one of the world's most dynamic and complex markets.</li>
 </ul>
-<p>Fraud Alert:&nbsp;Do not fall victim to recruitment fraud. Cloudflare never charges application fees or requires candidates to purchase third-party certifications or training as a condition of employment. All official communication comes strictly from @<a href="http://cloudflare.com/" target="_blank" data-saferedirecturl="https://www.google.com/url?q=http://cloudflare.com&amp;source=gmail&amp;ust=1772638388456000&amp;usg=AOvVaw2OaFHNU_bwe1VCKwheTbXx">cloudflare.com</a>&nbsp;email addresses.</p>
-<p>&nbsp;</p>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
 	<p><span style="font-weight: 400;">We’re not just a highly ambitious, large-scale technology company. We’re a highly ambitious, large-scale technology company with a soul. Fundamental to our mission to help build a better Internet is protecting the free and open Internet.</span></p>
