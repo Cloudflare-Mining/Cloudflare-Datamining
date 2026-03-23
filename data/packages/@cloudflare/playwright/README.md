@@ -4,7 +4,7 @@
 
 Fork of [Playwright](https://github.com/microsoft/playwright/) that was modified to be compatible with [Cloudflare Workers](https://developers.cloudflare.com/workers/) and [Browser Rendering](https://developers.cloudflare.com/browser-rendering/).
 
-🏷️ Upstream Playwright version: [1.57.0](https://github.com/microsoft/playwright/releases/tag/v1.57.0)
+🏷️ Upstream Playwright version: [1.58.2](https://github.com/microsoft/playwright/releases/tag/v1.58.2)
 
 ## Getting Started
 
