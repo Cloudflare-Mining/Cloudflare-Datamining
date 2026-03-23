@@ -22,7 +22,7 @@ export class ChatAgent extends AIChatAgent {
     const workersai = createWorkersAI({ binding: this.env.AI });
 
     const result = streamText({
-      model: workersai("@cf/zai-org/glm-4.7-flash"),
+      model: workersai("@cf/moonshotai/kimi-k2.5"),
       messages: await convertToModelMessages(this.messages)
     });
 
@@ -110,7 +110,7 @@ export class ChatAgent extends AIChatAgent {
     const workersai = createWorkersAI({ binding: this.env.AI });
 
     const result = streamText({
-      model: workersai("@cf/zai-org/glm-4.7-flash"),
+      model: workersai("@cf/moonshotai/kimi-k2.5"),
       messages: await convertToModelMessages(this.messages),
       tools: {
         getWeather: tool({
@@ -233,7 +233,7 @@ export class ChatAgent extends AIChatAgent {
     const workersai = createWorkersAI({ binding: this.env.AI });
 
     const result = streamText({
-      model: workersai("@cf/zai-org/glm-4.7-flash"),
+      model: workersai("@cf/moonshotai/kimi-k2.5"),
       messages: pruneMessages({
         messages: await convertToModelMessages(this.messages),
         reasoning: "before-last-message",
@@ -281,13 +281,16 @@ async onChatMessage(onFinish, options) {
 
 Extends `Agent` from the `agents` package.
 
-| Property / Method                    | Type                  | Description                                                                 |
-| ------------------------------------ | --------------------- | --------------------------------------------------------------------------- |
-| `messages`                           | `UIMessage[]`         | Current conversation messages (loaded from SQLite)                          |
-| `maxPersistedMessages`               | `number \| undefined` | Max messages to keep in SQLite. Default: unlimited                          |
-| `onChatMessage(onFinish?, options?)` | Override              | Handle incoming chat messages. Return a `Response`. `onFinish` is optional. |
-| `persistMessages(messages)`          | `Promise<void>`       | Manually persist messages (usually automatic)                               |
-| `saveMessages(messages)`             | `Promise<void>`       | Persist messages and trigger `onChatMessage`                                |
+| Property / Method                    | Type                  | Description                                                                     |
+| ------------------------------------ | --------------------- | ------------------------------------------------------------------------------- |
+| `messages`                           | `UIMessage[]`         | Current conversation messages (loaded from SQLite)                              |
+| `maxPersistedMessages`               | `number \| undefined` | Max messages to keep in SQLite. Default: unlimited                              |
+| `onChatMessage(onFinish?, options?)` | Override              | Handle incoming chat messages. Return a `Response`. `onFinish` is optional.     |
+| `persistMessages(messages)`          | `Promise<void>`       | Manually persist messages (usually automatic)                                   |
+| `saveMessages(messages)`             | `Promise<void>`       | Persist messages and trigger `onChatMessage`                                    |
+| `waitUntilStable()`                  | `Promise<boolean>`    | Protected helper to wait until the conversation is fully stable                 |
+| `resetTurnState()`                   | `void`                | Protected helper to abort the active turn and invalidate queued continuations   |
+| `hasPendingInteraction()`            | `boolean`             | Protected helper to detect pending tool input or approval in assistant messages |
 
 ### `useAgentChat(options)`
 
