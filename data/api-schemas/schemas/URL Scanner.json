@@ -1770,6 +1770,20 @@
 													],
 													"type": "object"
 												},
+												"phishing_v2": {
+													"properties": {
+														"data": {
+															"items": {
+																"type": "string"
+															},
+															"type": "array"
+														}
+													},
+													"required": [
+														"data"
+													],
+													"type": "object"
+												},
 												"radarRank": {
 													"properties": {
 														"data": {
