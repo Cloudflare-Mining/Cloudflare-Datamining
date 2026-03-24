@@ -107,6 +107,132 @@
 					"format": "uuid",
 					"type": "string"
 				}
+			},
+			{
+				"description": "Operator for the `allowed` filter.",
+				"in": "query",
+				"name": "allowedOp",
+				"schema": {
+					"default": "eq",
+					"enum": [
+						"eq",
+						"neq"
+					],
+					"type": "string"
+				}
+			},
+			{
+				"description": "Operator for the `country_code` filter.",
+				"in": "query",
+				"name": "country_codeOp",
+				"schema": {
+					"default": "eq",
+					"enum": [
+						"eq",
+						"neq"
+					],
+					"type": "string"
+				}
+			},
+			{
+				"description": "Operator for the `app_type` filter.",
+				"in": "query",
+				"name": "app_typeOp",
+				"schema": {
+					"default": "eq",
+					"enum": [
+						"eq",
+						"neq"
+					],
+					"type": "string"
+				}
+			},
+			{
+				"description": "Operator for the `app_uid` filter.",
+				"in": "query",
+				"name": "app_uidOp",
+				"schema": {
+					"default": "eq",
+					"enum": [
+						"eq",
+						"neq"
+					],
+					"type": "string"
+				}
+			},
+			{
+				"description": "Operator for the `ray_id` filter.",
+				"in": "query",
+				"name": "ray_idOp",
+				"schema": {
+					"default": "eq",
+					"enum": [
+						"eq",
+						"neq"
+					],
+					"type": "string"
+				}
+			},
+			{
+				"description": "Operator for the `email` filter.",
+				"in": "query",
+				"name": "emailOp",
+				"schema": {
+					"default": "eq",
+					"enum": [
+						"eq",
+						"neq"
+					],
+					"type": "string"
+				}
+			},
+			{
+				"description": "Operator for the `idp` filter.",
+				"in": "query",
+				"name": "idpOp",
+				"schema": {
+					"default": "eq",
+					"enum": [
+						"eq",
+						"neq"
+					],
+					"type": "string"
+				}
+			},
+			{
+				"description": "Operator for the `non_identity` filter.",
+				"in": "query",
+				"name": "non_identityOp",
+				"schema": {
+					"default": "eq",
+					"enum": [
+						"eq",
+						"neq"
+					],
+					"type": "string"
+				}
+			},
+			{
+				"description": "Operator for the `user_id` filter.",
+				"in": "query",
+				"name": "user_idOp",
+				"schema": {
+					"default": "eq",
+					"enum": [
+						"eq",
+						"neq"
+					],
+					"type": "string"
+				}
+			},
+			{
+				"description": "Comma-separated list of fields to include in the response.\nWhen omitted, all fields are returned.\n",
+				"example": "action,allowed,app_name,country,created_at,ray_id,user_email",
+				"in": "query",
+				"name": "fields",
+				"schema": {
+					"type": "string"
+				}
 			}
 		],
 		"responses": {
