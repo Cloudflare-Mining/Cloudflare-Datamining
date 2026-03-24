@@ -5,31 +5,42 @@
 		<p>At Cloudflare, we’re not looking for people who wait for a polished roadmap; we’re looking for the builders who see the cracks in the Internet that everyone else has simply learned to live with. We value candidates who have the instinct to spot a "normalized" problem and the AI-native curiosity to create a solution using the latest tools. Our culture is built on iteration, leveraging AI to ship faster today to make it better tomorrow, while ensuring that every improvement, no matter how small, is shared across the team to lift everyone up. If you’re the type of person who values curiosity over bureaucracy, and that AI is a partner in solving tough problems to keep the Internet moving forward, you’ll fit right in.</p>
 	</div>
 </div>
-<p><strong>Available Locations: Austin. TX</strong></p>
-<p><strong>About the role:</strong></p>
-<p>We are currently seeking a highly skilled Floating Administrative Assistant to join our team. This individual will provide comprehensive backup administrative support to executives across various organizations as needed. The ideal candidate will possess a dynamic and adaptable personality, demonstrating a genuine enthusiasm for engaging with various individuals, departments, and facets of our organization. With a minimum of 3-5 years of experience in supporting VP-level executives, the successful candidate will play a pivotal role in ensuring seamless operations and providing invaluable assistance across diverse functions.<br><br><strong>Key Responsibilities:</strong></p>
+<p><strong>Available Locations:&nbsp;</strong>Hybrid - Austin, Seattle, Lisbon, Toronto&nbsp;</p>
+<p><strong>Role Summary</strong></p>
+<p>Join the Cloudflare One team as the Product Manager for Gateway DNS, a critical component of our rapidly expanding SASE business. We are seeking a highly technical, entrepreneurial PM to truly own our DNS filtering product and drive its global strategy and execution at massive scale.</p>
+<p><strong>Role Responsibilities</strong></p>
+<p>You'll be the product manager owning the <a href="https://developers.cloudflare.com/cloudflare-one/traffic-policies/">DNS Filtering</a> business inside <a href="https://www.cloudflare.com/zero-trust/">Cloudflare One</a>. Acting as the “CEO of the Product”, you’ll be responsible for ensuring success of the product end to end. This includes working alongside sales, support, design, engineering, solution engineering, technical writers, and all pieces of the sales cycle. You will spend the most time with customers and your engineering partners.</p>
+<p>We operate with small teams of highly motivated, technical, and experienced engineers. The ideal candidate will have experience with DNS systems, and as a product manager owning a B2B product at scale.</p>
+<p>This position requires you to be a self-starter with the ability to take ownership, work with tight timelines, handle various tasks simultaneously while maintaining a positive attitude. You are able to have deep technical discussions with internal and external engineering stakeholders. You also have the soft skills necessary to navigate organizational dependencies and promote your team. In addition, great oral communication and written documentation skills are valuable for this role for promoting ideas throughout the company.</p>
+<p>Some of your responsibilities will include:</p>
 <ul>
-	<li>Provide comprehensive backup administrative support to executives, demonstrating proficiency in calendar management, travel arrangements (both domestic and international), and handling confidential information with utmost discretion.</li>
-	<li>Exhibit exceptional multitasking abilities and adeptness in prioritizing tasks within a fast-paced environment, while maintaining meticulous attention to detail, accuracy, and adherence to deadlines.</li>
-	<li>Serve as a liaison between executives and internal/external stakeholders, facilitating effective communication and collaboration across all levels of the organization.</li>
-	<li>Contribute to the efficiency of office operations by anticipating needs, proactively identifying solutions, and implementing streamlined processes as necessary.</li>
-	<li>Handle ad hoc projects and assignments with professionalism and efficiency, demonstrating flexibility and resourcefulness in addressing evolving priorities.</li>
+	<li>Write requirements documents and work with engineering and design to build, ship, and support enterprise class software</li>
+	<li>Work inside the larger SWG / Firewall team to think about how your piece fits in the larger SASE platform play</li>
+	<li>Join pre-sales and post-sales calls with customers, sales, support, etc., to assist with, and help understand all phases of the customer lifecycle</li>
+	<li>Support a global engineering, sales, support, customers and partners with a flexible schedule (expect North America and Western Europe engineering team engagements)</li>
+	<li>Work in a fast paced, dynamic and interrupt driven environment</li>
 </ul>
-<p>Requirements</p>
+<p><strong>Role Requirements (Must-Have Skills)</strong></p>
+<p><strong>Must-Have Skills</strong></p>
 <ul>
-	<li>
-		<ul>
-			<li>3-5+ years of experience as an Administrative Assistant</li>
-			<li>Strong written and verbal communication skills</li>
-			<li>Detail oriented</li>
-			<li>Strong sense of urgency and proactiveness</li>
-			<li>Strong organizational skills</li>
-		</ul>
-	</li>
+	<li>Technical understanding of DNS and DNS Filtering (what, why, how)</li>
+	<li>2-5 years working as a product/program manager shipping B2B software/services at scale</li>
+	<li>Experience working alongside engineering, design, and other parts of a traditional SaaS business to ship products to customers</li>
+	<li>Excellent customer facing skills (empathy, problem solving, clear and succinct communicator)</li>
+	<li>Understanding of TCP/IP fundamentals (routing, protocols, etc.)</li>
 </ul>
-<p>&nbsp;</p>
+<p><strong>Nice-to-Have Skills</strong></p>
+<ul>
+	<li>Experience with building, supporting, or deploying SASE, SSE, or legacy VPN solutions</li>
+	<li>Familiarity with endpoint devices, device clients, and differences in enterprise deployments vs. consumer deployments.</li>
+	<li>Experience with large-scale distributed systems and cloud-native architectures.</li>
+	<li>Active participation in industry conferences, publications, or open-source projects related to networking or security</li>
+</ul>
 <p><strong>Compensation</strong></p>
 <p>Compensation may be adjusted depending on work location.</p>
+<ul>
+	<li>For Seattle-based hires: Estimated annual salary of $158,000-$193,000</li>
+</ul>
 <p><strong>Equity</strong></p>
 <p>This role is eligible to participate in Cloudflare’s equity plan.</p>
 <p><strong>Benefits</strong></p>

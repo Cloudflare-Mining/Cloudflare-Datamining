@@ -1,5 +1,5 @@
 {
-	"absolute_url": "https://boards.greenhouse.io/cloudflare/jobs/7635977?gh_jid=7635977",
+	"absolute_url": "https://boards.greenhouse.io/cloudflare/jobs/7555611?gh_jid=7555611",
 	"data_compliance": [
 		{
 			"type": "gdpr",
@@ -10,7 +10,7 @@
 			"demographic_data_consent_applies": false
 		}
 	],
-	"internal_job_id": 3366865,
+	"internal_job_id": 3343472,
 	"location": {
 		"name": "Hybrid"
 	},
@@ -18,14 +18,17 @@
 		{
 			"id": 825338,
 			"name": "Cost Center",
-			"value": "6100 - Admin",
+			"value": "4400 - Product",
 			"value_type": "single_select"
 		},
 		{
 			"id": 8654220,
 			"name": "Job Posting Location",
 			"value": [
-				"Austin, US"
+				"Austin, US",
+				"Lisbon, Portugal",
+				"Seattle, US",
+				"Toronto, Canada"
 			],
 			"value_type": "multi_select"
 		},
@@ -33,22 +36,22 @@
 			"id": 46546702,
 			"name": "Career Site Department",
 			"value": [
-				"Admin"
+				"Product"
 			],
 			"value_type": "multi_select"
 		}
 	],
-	"id": 7635977,
-	"updated_at": "2026-03-02T10:45:31-05:00",
-	"requisition_id": null,
-	"title": "Senior Administrative Assistant - Floater",
+	"id": 7555611,
+	"updated_at": "2026-03-24T15:10:14-04:00",
+	"requisition_id": "783",
+	"title": "Product Manager, Gateway DNS",
 	"company_name": "Cloudflare",
-	"first_published": "2026-03-02T10:44:50-05:00",
+	"first_published": "2026-01-22T17:04:48-05:00",
 	"language": "en",
 	"departments": [
 		{
-			"id": 39632,
-			"name": "Admin",
+			"id": 29072,
+			"name": "Product",
 			"child_ids": [],
 			"parent_id": null
 		}
@@ -60,6 +63,27 @@
 			"location": "Austin, TX, United States",
 			"child_ids": [],
 			"parent_id": 48752
+		},
+		{
+			"id": 63782,
+			"name": "Lisbon, Portugal",
+			"location": "Lisboa, Lisboa, Portugal",
+			"child_ids": [],
+			"parent_id": 74843
+		},
+		{
+			"id": 72960,
+			"name": "Seattle, WA",
+			"location": null,
+			"child_ids": [],
+			"parent_id": 48752
+		},
+		{
+			"id": 73335,
+			"name": "Toronto, ON",
+			"location": "Toronto, Ontario, Canada",
+			"child_ids": [],
+			"parent_id": 75883
 		}
 	]
 }
