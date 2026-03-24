@@ -525,10 +525,6 @@
 													},
 													"deployment": {
 														"properties": {
-															"comment": {
-																"nullable": true,
-																"type": "string"
-															},
 															"created_at": {
 																"type": "string"
 															},
@@ -890,10 +886,6 @@
 																],
 																"type": "string"
 															},
-															"comment": {
-																"nullable": true,
-																"type": "string"
-															},
 															"created_at": {
 																"type": "string"
 															},
@@ -1066,10 +1058,6 @@
 										},
 										"deployment": {
 											"properties": {
-												"comment": {
-													"nullable": true,
-													"type": "string"
-												},
 												"created_at": {
 													"type": "string"
 												},
@@ -1431,10 +1419,6 @@
 													],
 													"type": "string"
 												},
-												"comment": {
-													"nullable": true,
-													"type": "string"
-												},
 												"created_at": {
 													"type": "string"
 												},
@@ -1591,10 +1575,6 @@
 										"deployments": {
 											"items": {
 												"properties": {
-													"comment": {
-														"nullable": true,
-														"type": "string"
-													},
 													"created_at": {
 														"type": "string"
 													},
@@ -1780,10 +1760,6 @@
 														],
 														"type": "string"
 													},
-													"comment": {
-														"nullable": true,
-														"type": "string"
-													},
 													"created_at": {
 														"type": "string"
 													},
@@ -1950,10 +1926,6 @@
 												"true",
 												"false"
 											],
-											"type": "string"
-										},
-										"comment": {
-											"nullable": true,
 											"type": "string"
 										},
 										"created_at": {
@@ -2463,10 +2435,6 @@
 										},
 										"deployment": {
 											"properties": {
-												"comment": {
-													"nullable": true,
-													"type": "string"
-												},
 												"created_at": {
 													"type": "string"
 												},
@@ -2826,10 +2794,6 @@
 														"true",
 														"false"
 													],
-													"type": "string"
-												},
-												"comment": {
-													"nullable": true,
 													"type": "string"
 												},
 												"created_at": {
@@ -3659,10 +3623,6 @@
 										},
 										"deployment": {
 											"properties": {
-												"comment": {
-													"nullable": true,
-													"type": "string"
-												},
 												"created_at": {
 													"type": "string"
 												},
@@ -4024,10 +3984,6 @@
 													],
 													"type": "string"
 												},
-												"comment": {
-													"nullable": true,
-													"type": "string"
-												},
 												"created_at": {
 													"type": "string"
 												},
@@ -4177,18 +4133,13 @@
 				"application/json": {
 					"schema": {
 						"properties": {
-							"comment": {
-								"example": "Route Deployment Comment",
-								"type": "string"
-							},
 							"version_id": {
 								"example": "54442216",
 								"type": "string"
 							}
 						},
 						"required": [
-							"version_id",
-							"comment"
+							"version_id"
 						],
 						"type": "object"
 					}
@@ -4671,10 +4622,6 @@
 				"application/json": {
 					"schema": {
 						"properties": {
-							"comment": {
-								"example": "Route Version Comment",
-								"type": "string"
-							},
 							"elements": {
 								"items": {
 									"oneOf": [
@@ -4999,8 +4946,7 @@
 							}
 						},
 						"required": [
-							"elements",
-							"comment"
+							"elements"
 						],
 						"type": "object"
 					}
