@@ -70,7 +70,8 @@
 				analyticsDeliveryFailed: "Delivery Failed",
 				analyticsRejected: "Rejected",
 				analyticsOther: "Other",
-				analyticsTotal: "Total received"
+				analyticsTotal: "Total received",
+				analyticsNoData: "No data available"
 			},
 			activityLog: {
 				title: "Activity Log",

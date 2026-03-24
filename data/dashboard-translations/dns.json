@@ -485,7 +485,7 @@
 	"dns.private_origin.label": "private",
 	"dns.private_routing.label": "Use private\nnetwork routing",
 	"dns.private_routing.tooltip": "When enabled, traffic to this origin will be routed through your private network tunnel (Magic WAN, WARP Connector, IPSec, GRE, or CNI) instead of the public internet.",
-	"dns.private_routing.no_route_warning": "Private network routing is enabled, but no tunnel is configured for this IP. Traffic will fail to reach the origin. <0>Set up a tunnel →</0>",
+	"dns.private_routing.no_route_warning": "Private network routing is enabled, but no connector is configured for this IP. Traffic will fail to reach the origin. <0>Set up a tunnel →</0>",
 	"dns.status.paused.warning": "%{zoneName} is <0>paused</0>, meaning traffic is not proxied and security and performance services are inactive. Learn more about <1>pausing domains.</1>",
 	"dns.status.pending.warning": "%{zoneName} is <0>pending</0> until you complete the instructions on the <1>Overview page</1> and we are able to verify ownership. Learn more about <2>pending domains.</2>",
 	"dns.delete_record.confirmation_modal.title": "Delete record for %{name}",

@@ -328,6 +328,28 @@
 			configuration_3: "period.",
 			resume: (0, i.p)(m())
 		},
+		retry: {
+			title: "Retry Requests",
+			description: "Automatically retry failed requests to improve reliability. Per-request headers can override these defaults.",
+			configuration_attempts: "Retry up to",
+			configuration_delay: "times with",
+			configuration_backoff: "delay using",
+			configuration_end: "backoff.",
+			resume: (0, i.p)(_()),
+			delay_options: {
+				5e3: "5 seconds",
+				3e3: "3 seconds",
+				2e3: "2 seconds",
+				1e3: "1 second",
+				500: "500ms",
+				100: "100ms"
+			},
+			backoff_options: {
+				constant: "Constant",
+				linear: "Linear",
+				exponential: "Exponential"
+			}
+		},
 		rename_gateway: {
 			title: "Edit Gateway",
 			description: "Update the name and URL slug of Gateway %{gateway}.",
@@ -497,7 +519,7 @@
 			limit: "Limit requests when rate exceeds",
 			interval: "requests over a",
 			technique: "period",
-			cache_custom: (0, i.p)(_()),
+			cache_custom: (0, i.p)(y()),
 			custom_seconds: "Custom (seconds)",
 			seconds: "seconds",
 			ratelimiting_fixed: "Fixed",
@@ -599,7 +621,7 @@
 	},
 	providers_modal: {
 		title: "Connect to your applications with API Endpoints",
-		description: (0, i.p)(y()),
+		description: (0, i.p)(h()),
 		provider: "Platform",
 		api_endpoint: "API Endpoint",
 		example: "Use the code snippet below to test your endpoint:"
@@ -748,7 +770,7 @@
 		}
 	},
 	toast: {
-		no_gateways: (0, i.p)(h()),
+		no_gateways: (0, i.p)(f()),
 		limits: {
 			free: {
 				almost_full: "You are nearing the limit of logs that can be stored for <b>the free plan (100k per account)</b>. See <0>docs</0> to learn more.",

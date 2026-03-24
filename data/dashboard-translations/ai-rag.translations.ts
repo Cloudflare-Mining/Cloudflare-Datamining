@@ -768,7 +768,8 @@
 				queued: "Queued",
 				running: "Processing",
 				skipped: "Skipped",
-				error: "Errored"
+				error: "Errored",
+				outdated: "Outdated"
 			}
 		}
 	},
@@ -806,7 +807,8 @@
 		skipped: "Skipped",
 		paused: "Paused",
 		successful: "Successful",
-		processing: "Processing"
+		processing: "Processing",
+		outdated: "Outdated"
 	},
 	semantic_cache: {
 		super_strict_match: {
