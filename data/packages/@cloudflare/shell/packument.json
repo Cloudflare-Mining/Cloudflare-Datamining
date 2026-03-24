@@ -1,7 +1,7 @@
 {
 	"name": "@cloudflare/shell",
 	"dist-tags": {
-		"latest": "0.2.0"
+		"latest": "0.3.0"
 	},
 	"versions": {
 		"0.0.0": {
@@ -135,17 +135,48 @@
 				"@cloudflare/codemode": "^0.3.0"
 			},
 			"devDependencies": {
-				"@cloudflare/vitest-pool-workers": "^0.13.3",
-				"vitest": "4.1.0"
+				"vitest": "4.1.0",
+				"@cloudflare/vitest-pool-workers": "^0.13.3"
 			},
 			"dist": {
-				"integrity": "sha512-dGOQJ/4QO6R91ds5wM8IhtIM7qUDTReTTpAjihrPx3SvDXK1HBICSaF927xohGDVM9BAopRepcnCR8+1EY/x4g==",
 				"shasum": "2e2dc9049451792f54a0a64d06693a59f90f0aee",
 				"tarball": "https://registry.npmjs.org/@cloudflare/shell/-/shell-0.2.0.tgz",
 				"fileCount": 11,
-				"unpackedSize": 362000,
+				"integrity": "sha512-dGOQJ/4QO6R91ds5wM8IhtIM7qUDTReTTpAjihrPx3SvDXK1HBICSaF927xohGDVM9BAopRepcnCR8+1EY/x4g==",
+				"signatures": [
+					{
+						"sig": "MEUCIQCkvi1B3COISLZTy4Z0jSE8VJCVwHPFxlt/hJhUwemPnQIgEu4qIHvepGCAQaY0h/ViDQfM0wi8qlXurbKu3I+QMj0=",
+						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
+					}
+				],
 				"attestations": {
 					"url": "https://registry.npmjs.org/-/npm/v1/attestations/@cloudflare%2fshell@0.2.0",
+					"provenance": {
+						"predicateType": "https://slsa.dev/provenance/v1"
+					}
+				},
+				"unpackedSize": 362000
+			}
+		},
+		"0.3.0": {
+			"name": "@cloudflare/shell",
+			"version": "0.3.0",
+			"dependencies": {
+				"@cloudflare/codemode": "^0.3.0",
+				"isomorphic-git": "^1.37.4"
+			},
+			"devDependencies": {
+				"@cloudflare/vitest-pool-workers": "^0.13.4",
+				"vitest": "4.1.1"
+			},
+			"dist": {
+				"integrity": "sha512-yEWE7Xch8cScauP2MslgFbHjNUrX0BkPylDCkr4sbOL6EfWVtSvvFSbleed27CQqfx+Mvel7R7jIA5LVT+1rfg==",
+				"shasum": "8db54329a1a454762e51bc2fe7b914224cc977e2",
+				"tarball": "https://registry.npmjs.org/@cloudflare/shell/-/shell-0.3.0.tgz",
+				"fileCount": 18,
+				"unpackedSize": 414168,
+				"attestations": {
+					"url": "https://registry.npmjs.org/-/npm/v1/attestations/@cloudflare%2fshell@0.3.0",
 					"provenance": {
 						"predicateType": "https://slsa.dev/provenance/v1"
 					}
@@ -153,7 +184,7 @@
 				"signatures": [
 					{
 						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U",
-						"sig": "MEUCIQCkvi1B3COISLZTy4Z0jSE8VJCVwHPFxlt/hJhUwemPnQIgEu4qIHvepGCAQaY0h/ViDQfM0wi8qlXurbKu3I+QMj0="
+						"sig": "MEUCIQCgqL6Wop/uozE/ok+dlRCliUYVnipVNhq5qQlKO3JAIQIgQvtpeP0+dlqb1ADoiZE8OQfTCmoS4X/kIzYy1OFBNUE="
 					}
 				]
 			}
