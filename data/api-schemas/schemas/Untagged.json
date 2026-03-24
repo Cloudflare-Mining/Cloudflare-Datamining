@@ -1518,6 +1518,57 @@
 			}
 		}
 	],
+	"PARAMETERS /zones/{zone_id}/environments": [
+		{
+			"description": "Identifier of the zone.",
+			"in": "path",
+			"name": "zone_id",
+			"required": true,
+			"schema": {
+				"type": "string"
+			}
+		}
+	],
+	"PARAMETERS /zones/{zone_id}/environments/{environment_id}": [
+		{
+			"description": "Identifier of the zone.",
+			"in": "path",
+			"name": "zone_id",
+			"required": true,
+			"schema": {
+				"type": "string"
+			}
+		},
+		{
+			"description": "Reference identifier for the environment.",
+			"in": "path",
+			"name": "environment_id",
+			"required": true,
+			"schema": {
+				"type": "string"
+			}
+		}
+	],
+	"PARAMETERS /zones/{zone_id}/environments/{environment_id}/rollback": [
+		{
+			"description": "Identifier of the zone.",
+			"in": "path",
+			"name": "zone_id",
+			"required": true,
+			"schema": {
+				"type": "string"
+			}
+		},
+		{
+			"description": "Reference identifier for the environment.",
+			"in": "path",
+			"name": "environment_id",
+			"required": true,
+			"schema": {
+				"type": "string"
+			}
+		}
+	],
 	"PARAMETERS /zones/{zone_id}/schema_validation/schemas": [
 		{
 			"in": "path",
