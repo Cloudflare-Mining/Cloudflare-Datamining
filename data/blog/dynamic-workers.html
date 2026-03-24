@@ -296,7 +296,7 @@ return generateText({
 			</svg>
 		</a>
 	</div>
-	<p>Dynamic Workers expect pre-bundled modules. <a href="https://www.npmjs.com/package/@cloudflare/worker-bundler"><code>@cloudflare/worker-bundler</code></a> handles that for you: give it source files and a <code>package.jso</code>n, and it resolves npm dependencies from the registry, bundles everything with <code>esbuild</code>, and returns the module map the Worker Loader expects.</p>
+	<p>Dynamic Workers expect pre-bundled modules. <a href="https://www.npmjs.com/package/@cloudflare/worker-bundler"><code>@cloudflare/worker-bundler</code></a> handles that for you: give it source files and a <code>package.json</code>, and it resolves npm dependencies from the registry, bundles everything with <code>esbuild</code>, and returns the module map the Worker Loader expects.</p>
 	<pre class="language-Typescript"><code class="language-Typescript">import { createWorker } from "@cloudflare/worker-bundler";
 
 const worker = env.LOADER.get("my-worker", async () =&gt; {
@@ -334,7 +334,7 @@ await worker.getEntrypoint().fetch(request);
 			</svg>
 		</a>
 	</div>
-	<p><a href="https://developers.cloudflare.com/dynamic-workers"><code>@cloudflare/shell</code></a> gives your agent a virtual filesystem inside a Dynamic Worker. Agent code calls typed methods on a <code>state</code> object — read, write, search, replace, diff, glob, JSON query/update, archive — with structured inputs and outputs instead of string parsing.</p>
+	<p><a href="https://www.npmjs.com/package/@cloudflare/shell"><code>@cloudflare/shell</code></a> gives your agent a virtual filesystem inside a Dynamic Worker. Agent code calls typed methods on a <code>state</code> object — read, write, search, replace, diff, glob, JSON query/update, archive — with structured inputs and outputs instead of string parsing.</p>
 	<p>Storage is backed by a durable <code>Workspace</code> (SQLite + R2), so files persist across executions. Coarse operations like <code>searchFiles</code>, <code>replaceInFiles</code>, and <code>planEdits</code> minimize RPC round-trips — the agent issues one call instead of looping over individual files. Batch writes are transactional by default: if any write fails, earlier writes roll back automatically.</p>
 	<pre class="language-Typescript"><code class="language-Typescript">import { Workspace } from "@cloudflare/shell";
 import { stateTools } from "@cloudflare/shell/workers";
