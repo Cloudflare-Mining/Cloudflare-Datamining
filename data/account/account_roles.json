@@ -1443,7 +1443,7 @@
 		"description": "Can access Cloudflare for Zero Trust reporting data.",
 		"permissions": {
 			"teams": {
-				"read": false,
+				"read": true,
 				"edit": false,
 				"report": true
 			},
@@ -1538,6 +1538,11 @@
 		"name": "Cloudflare Zero Trust",
 		"description": "Can edit Cloudflare Zero Trust.",
 		"permissions": {
+			"teams": {
+				"read": true,
+				"edit": true,
+				"report": true
+			},
 			"ces_submissions": {
 				"read": true,
 				"edit": true
@@ -1545,11 +1550,6 @@
 			"access": {
 				"read": true,
 				"edit": true
-			},
-			"teams": {
-				"read": true,
-				"edit": true,
-				"report": true
 			},
 			"cf1_integration": {
 				"read": true,
@@ -1649,6 +1649,12 @@
 		"name": "Super Administrator - All Privileges",
 		"description": "Can edit any Cloudflare setting, make purchases, update billing, and manage memberships. Super Administrators can revoke the access of other Super Administrators.",
 		"permissions": {
+			"teams": {
+				"read": true,
+				"edit": true,
+				"report": true,
+				"pii": true
+			},
 			"worker": {
 				"read": true,
 				"edit": true
@@ -1660,12 +1666,6 @@
 			"ces_submissions": {
 				"read": true,
 				"edit": true
-			},
-			"teams": {
-				"read": true,
-				"edit": true,
-				"report": true,
-				"pii": true
 			},
 			"waf": {
 				"read": true,
@@ -2363,6 +2363,11 @@
 		"name": "Administrator Read Only",
 		"description": "Can access the full account in read only mode",
 		"permissions": {
+			"teams": {
+				"read": true,
+				"edit": false,
+				"report": true
+			},
 			"worker": {
 				"read": true,
 				"edit": false
@@ -2370,11 +2375,6 @@
 			"access": {
 				"read": true,
 				"edit": false
-			},
-			"teams": {
-				"read": true,
-				"edit": false,
-				"report": true
 			},
 			"waf": {
 				"read": true,
@@ -2586,6 +2586,11 @@
 		"name": "Administrator",
 		"description": "Can access the full account and edit subscriptions. Cannot manage memberships nor billing profile.",
 		"permissions": {
+			"teams": {
+				"read": true,
+				"edit": true,
+				"report": true
+			},
 			"worker": {
 				"read": true,
 				"edit": true
@@ -2597,11 +2602,6 @@
 			"ces_submissions": {
 				"read": true,
 				"edit": true
-			},
-			"teams": {
-				"read": true,
-				"edit": true,
-				"report": true
 			},
 			"waf": {
 				"read": true,
