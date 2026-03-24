@@ -169,16 +169,36 @@
 			"filter_options": []
 		},
 		{
+			"display_name": "Cloudforce One Stakeout Credential Leak Alert",
+			"type": "stakeout_credential_leak_alert",
+			"description": "Get notifications when leaked credentials matching your domain are detected",
+			"filter_options": []
+		},
+		{
 			"display_name": "Cloudforce One Threat Events Saved Query Daily Digest Alert",
 			"type": "stakeout_saved_query_daily_digest_alert",
 			"description": "Get daily notifications with new threat events that were detected for your saved queries",
-			"filter_options": []
+			"filter_options": [
+				{
+					"Key": "query_id",
+					"ComparisonOperator": "==",
+					"Range": "1-1",
+					"AvailableValues": null
+				}
+			]
 		},
 		{
 			"display_name": "Cloudforce One Threat Events Saved Query Immediate Alert",
 			"type": "stakeout_saved_query_immediate_alert",
 			"description": "Get immediate notifications when new threat events for your saved queries are detected",
-			"filter_options": []
+			"filter_options": [
+				{
+					"Key": "query_id",
+					"ComparisonOperator": "==",
+					"Range": "1-1",
+					"AvailableValues": null
+				}
+			]
 		}
 	],
 	"DoS Protection": [
