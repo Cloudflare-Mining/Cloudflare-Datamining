@@ -1548,7 +1548,8 @@
 											"client_key": {
 												"description": "The Uptycs client secret.",
 												"example": "example client key",
-												"type": "string"
+												"type": "string",
+												"x-sensitive": true
 											},
 											"client_secret": {
 												"description": "The Uptycs client secret.",
@@ -2334,7 +2335,8 @@
 											"client_key": {
 												"description": "The Uptycs client secret.",
 												"example": "example client key",
-												"type": "string"
+												"type": "string",
+												"x-sensitive": true
 											},
 											"client_secret": {
 												"description": "The Uptycs client secret.",

@@ -846,7 +846,8 @@
 														"example": "s3://mybucket/logs?region=us-west-2",
 														"format": "uri",
 														"maxLength": 4096,
-														"type": "string"
+														"type": "string",
+														"x-sensitive": true
 													},
 													"enabled": {
 														"default": false,
@@ -1443,7 +1444,8 @@
 														"example": "s3://mybucket/logs?region=us-west-2",
 														"format": "uri",
 														"maxLength": 4096,
-														"type": "string"
+														"type": "string",
+														"x-sensitive": true
 													},
 													"enabled": {
 														"default": false,
@@ -2053,7 +2055,8 @@
 													"example": "s3://mybucket/logs?region=us-west-2",
 													"format": "uri",
 													"maxLength": 4096,
-													"type": "string"
+													"type": "string",
+													"x-sensitive": true
 												},
 												"enabled": {
 													"default": false,
@@ -2549,7 +2552,8 @@
 								"example": "s3://mybucket/logs?region=us-west-2",
 								"format": "uri",
 								"maxLength": 4096,
-								"type": "string"
+								"type": "string",
+								"x-sensitive": true
 							},
 							"enabled": {
 								"default": false,
@@ -2971,7 +2975,8 @@
 													"example": "s3://mybucket/logs?region=us-west-2",
 													"format": "uri",
 													"maxLength": 4096,
-													"type": "string"
+													"type": "string",
+													"x-sensitive": true
 												},
 												"enabled": {
 													"default": false,
@@ -3398,7 +3403,8 @@
 								"example": "s3://mybucket/logs?region=us-west-2",
 								"format": "uri",
 								"maxLength": 4096,
-								"type": "string"
+								"type": "string",
+								"x-sensitive": true
 							}
 						},
 						"required": [
@@ -3701,7 +3707,8 @@
 								"example": "s3://mybucket/logs?region=us-west-2",
 								"format": "uri",
 								"maxLength": 4096,
-								"type": "string"
+								"type": "string",
+								"x-sensitive": true
 							},
 							"ownership_challenge": {
 								"description": "Ownership challenge token to prove destination ownership.",
@@ -4003,7 +4010,8 @@
 								"example": "s3://mybucket/logs?region=us-west-2",
 								"format": "uri",
 								"maxLength": 4096,
-								"type": "string"
+								"type": "string",
+								"x-sensitive": true
 							}
 						},
 						"required": [
@@ -4301,7 +4309,8 @@
 								"example": "s3://mybucket/logs?region=us-west-2",
 								"format": "uri",
 								"maxLength": 4096,
-								"type": "string"
+								"type": "string",
+								"x-sensitive": true
 							}
 						},
 						"required": [
@@ -4933,7 +4942,8 @@
 								"example": "s3://mybucket/logs?region=us-west-2",
 								"format": "uri",
 								"maxLength": 4096,
-								"type": "string"
+								"type": "string",
+								"x-sensitive": true
 							},
 							"enabled": {
 								"default": false,
@@ -5352,7 +5362,8 @@
 													"example": "s3://mybucket/logs?region=us-west-2",
 													"format": "uri",
 													"maxLength": 4096,
-													"type": "string"
+													"type": "string",
+													"x-sensitive": true
 												},
 												"enabled": {
 													"default": false,
