@@ -18,116 +18,123 @@
 								"default": [],
 								"description": "Apply filters before listing values. Supports nested groups via kind: 'group'. Maximum nesting depth is 4.",
 								"items": {
-									"anyOf": [
+									"allOf": [
 										{
-											"properties": {
-												"filterCombination": {
-													"enum": [
-														"and",
-														"or",
-														"AND",
-														"OR"
+											"anyOf": [
+												{
+													"properties": {
+														"filterCombination": {
+															"enum": [
+																"and",
+																"or",
+																"AND",
+																"OR"
+															],
+															"type": "string"
+														},
+														"filters": {
+															"items": "[Circular ~.POST /accounts/{account_id}/workers/observability/telemetry/values.requestBody.content.application/json.schema.properties.filters.items.allOf.0]",
+															"minItems": 1,
+															"type": "array"
+														},
+														"kind": {
+															"enum": [
+																"group"
+															],
+															"type": "string"
+														}
+													},
+													"required": [
+														"kind",
+														"filterCombination",
+														"filters"
 													],
-													"type": "string"
+													"type": "object"
 												},
-												"filters": {
-													"items": "[Circular ~.POST /accounts/{account_id}/workers/observability/telemetry/values.requestBody.content.application/json.schema.properties.filters.items]",
-													"minItems": 1,
-													"type": "array"
-												},
-												"kind": {
-													"enum": [
-														"group"
+												{
+													"description": "Filtering best practices: use observability_keys and observability_values to confirm available fields and values. If searching for errors, filter for $metadata.error exists.",
+													"properties": {
+														"key": {
+															"description": "Filter field name. IMPORTANT: do not guess keys. Always use verified keys from previous query results or the observability_keys response. Preferred keys: $metadata.service, $metadata.origin, $metadata.trigger, $metadata.message, $metadata.error.",
+															"type": "string"
+														},
+														"kind": {
+															"enum": [
+																"filter"
+															],
+															"type": "string"
+														},
+														"operation": {
+															"enum": [
+																"includes",
+																"not_includes",
+																"starts_with",
+																"regex",
+																"exists",
+																"is_null",
+																"in",
+																"not_in",
+																"eq",
+																"neq",
+																"gt",
+																"gte",
+																"lt",
+																"lte",
+																"=",
+																"!=",
+																">",
+																">=",
+																"<",
+																"<=",
+																"INCLUDES",
+																"DOES_NOT_INCLUDE",
+																"MATCH_REGEX",
+																"EXISTS",
+																"DOES_NOT_EXIST",
+																"IN",
+																"NOT_IN",
+																"STARTS_WITH"
+															],
+															"type": "string"
+														},
+														"type": {
+															"enum": [
+																"string",
+																"number",
+																"boolean"
+															],
+															"type": "string"
+														},
+														"value": {
+															"anyOf": [
+																{
+																	"type": "string"
+																},
+																{
+																	"type": "number"
+																},
+																{
+																	"type": "boolean"
+																}
+															],
+															"description": "Filter comparison value. IMPORTANT: must match actual values in your logs. Verify using previous query results or the /values endpoint. Ensure value type matches the field type. String comparisons are case-sensitive unless using specific operations. Regex uses ClickHouse RE2 syntax (no lookaheads/lookbehinds); examples: ^5\\d{2}$ for HTTP 5xx, \\bERROR\\b for word boundary."
+														}
+													},
+													"required": [
+														"key",
+														"operation",
+														"type"
 													],
-													"type": "string"
+													"type": "object"
 												}
-											},
-											"required": [
-												"kind",
-												"filterCombination",
-												"filters"
 											],
+											"description": "Supports nested groups via kind: 'group'.",
 											"type": "object"
 										},
 										{
-											"description": "Filtering best practices: use observability_keys and observability_values to confirm available fields and values. If searching for errors, filter for $metadata.error exists.",
-											"properties": {
-												"key": {
-													"description": "Filter field name. IMPORTANT: do not guess keys. Always use verified keys from previous query results or the observability_keys response. Preferred keys: $metadata.service, $metadata.origin, $metadata.trigger, $metadata.message, $metadata.error.",
-													"type": "string"
-												},
-												"kind": {
-													"enum": [
-														"filter"
-													],
-													"type": "string"
-												},
-												"operation": {
-													"enum": [
-														"includes",
-														"not_includes",
-														"starts_with",
-														"regex",
-														"exists",
-														"is_null",
-														"in",
-														"not_in",
-														"eq",
-														"neq",
-														"gt",
-														"gte",
-														"lt",
-														"lte",
-														"=",
-														"!=",
-														">",
-														">=",
-														"<",
-														"<=",
-														"INCLUDES",
-														"DOES_NOT_INCLUDE",
-														"MATCH_REGEX",
-														"EXISTS",
-														"DOES_NOT_EXIST",
-														"IN",
-														"NOT_IN",
-														"STARTS_WITH"
-													],
-													"type": "string"
-												},
-												"type": {
-													"enum": [
-														"string",
-														"number",
-														"boolean"
-													],
-													"type": "string"
-												},
-												"value": {
-													"anyOf": [
-														{
-															"type": "string"
-														},
-														{
-															"type": "number"
-														},
-														{
-															"type": "boolean"
-														}
-													],
-													"description": "Filter comparison value. IMPORTANT: must match actual values in your logs. Verify using previous query results or the /values endpoint. Ensure value type matches the field type. String comparisons are case-sensitive unless using specific operations. Regex uses ClickHouse RE2 syntax (no lookaheads/lookbehinds); examples: ^5\\d{2}$ for HTTP 5xx, \\bERROR\\b for word boundary."
-												}
-											},
-											"required": [
-												"key",
-												"operation",
-												"type"
-											],
-											"type": "object"
+											"description": "Supports nested groups via kind: 'group'. Maximum nesting depth is 4."
 										}
-									],
-									"description": "Supports nested groups via kind: 'group'. Maximum nesting depth is 4.",
-									"type": "object"
+									]
 								},
 								"type": "array"
 							},

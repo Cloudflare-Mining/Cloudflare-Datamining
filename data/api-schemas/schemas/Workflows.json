@@ -1546,7 +1546,8 @@
 																"type": "string"
 															},
 															"output": {
-																"type": "object"
+																"nullable": true,
+																"type": "string"
 															},
 															"start": {
 																"format": "date-time",
@@ -1679,20 +1680,7 @@
 																"type": "string"
 															},
 															"output": {
-																"anyOf": [
-																	{
-																		"type": "object"
-																	},
-																	{
-																		"type": "string"
-																	},
-																	{
-																		"type": "number"
-																	},
-																	{
-																		"type": "boolean"
-																	}
-																]
+																"type": "string"
 															},
 															"start": {
 																"format": "date-time",
@@ -1711,7 +1699,6 @@
 															"end",
 															"finished",
 															"type",
-															"output",
 															"error"
 														],
 														"type": "object"

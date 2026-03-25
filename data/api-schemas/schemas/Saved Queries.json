@@ -1,0 +1,3854 @@
+{
+	"DELETE /accounts/{account_id}/workers/observability/queries/{queryId}": {
+		"description": "Delete a saved query.",
+		"operationId": "queries.delete",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "queryId",
+				"required": true,
+				"schema": {
+					"type": "string"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"messages": {
+									"items": {
+										"properties": {
+											"message": {
+												"enum": [
+													"Successful request"
+												],
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"result": {
+									"properties": {
+										"adhoc": {
+											"description": "If the query wasn't explcitly saved",
+											"type": "boolean"
+										},
+										"created": {
+											"type": "string"
+										},
+										"createdBy": {
+											"type": "string"
+										},
+										"description": {
+											"example": "Query description",
+											"maxLength": 1000,
+											"nullable": true,
+											"type": "string"
+										},
+										"id": {
+											"type": "string"
+										},
+										"name": {
+											"description": "Query name",
+											"maxLength": 250,
+											"minLength": 1,
+											"type": "string"
+										},
+										"parameters": {
+											"properties": {
+												"calculations": {
+													"description": "Create Calculations to compute as part of the query.",
+													"items": {
+														"properties": {
+															"alias": {
+																"type": "string"
+															},
+															"key": {
+																"type": "string"
+															},
+															"keyType": {
+																"enum": [
+																	"string",
+																	"number",
+																	"boolean"
+																],
+																"type": "string"
+															},
+															"operator": {
+																"enum": [
+																	"uniq",
+																	"count",
+																	"max",
+																	"min",
+																	"sum",
+																	"avg",
+																	"median",
+																	"p001",
+																	"p01",
+																	"p05",
+																	"p10",
+																	"p25",
+																	"p75",
+																	"p90",
+																	"p95",
+																	"p99",
+																	"p999",
+																	"stddev",
+																	"variance",
+																	"COUNT_DISTINCT",
+																	"COUNT",
+																	"MAX",
+																	"MIN",
+																	"SUM",
+																	"AVG",
+																	"MEDIAN",
+																	"P001",
+																	"P01",
+																	"P05",
+																	"P10",
+																	"P25",
+																	"P75",
+																	"P90",
+																	"P95",
+																	"P99",
+																	"P999",
+																	"STDDEV",
+																	"VARIANCE"
+																],
+																"type": "string"
+															}
+														},
+														"required": [
+															"operator"
+														],
+														"type": "object"
+													},
+													"type": "array"
+												},
+												"datasets": {
+													"description": "Set the Datasets to query. Leave it empty to query all the datasets.",
+													"example": [],
+													"items": {
+														"type": "string"
+													},
+													"type": "array"
+												},
+												"filterCombination": {
+													"description": "Set a Flag to describe how to combine the filters on the query.",
+													"enum": [
+														"and",
+														"or",
+														"AND",
+														"OR"
+													],
+													"type": "string"
+												},
+												"filters": {
+													"description": "Configure the Filters to apply to the query. Supports nested groups via kind: 'group'.",
+													"items": {
+														"anyOf": [
+															{
+																"properties": {
+																	"filterCombination": {
+																		"enum": [
+																			"and",
+																			"or",
+																			"AND",
+																			"OR"
+																		],
+																		"type": "string"
+																	},
+																	"filters": {
+																		"items": "[Circular ~.DELETE /accounts/{account_id}/workers/observability/queries/{queryId}.responses.200.content.application/json.schema.properties.result.properties.parameters.properties.filters.items]",
+																		"minItems": 1,
+																		"type": "array"
+																	},
+																	"kind": {
+																		"enum": [
+																			"group"
+																		],
+																		"type": "string"
+																	}
+																},
+																"required": [
+																	"kind",
+																	"filterCombination",
+																	"filters"
+																],
+																"type": "object"
+															},
+															{
+																"description": "Filtering best practices: use observability_keys and observability_values to confirm available fields and values. If searching for errors, filter for $metadata.error exists.",
+																"properties": {
+																	"key": {
+																		"description": "Filter field name. IMPORTANT: do not guess keys. Always use verified keys from previous query results or the observability_keys response. Preferred keys: $metadata.service, $metadata.origin, $metadata.trigger, $metadata.message, $metadata.error.",
+																		"type": "string"
+																	},
+																	"kind": {
+																		"enum": [
+																			"filter"
+																		],
+																		"type": "string"
+																	},
+																	"operation": {
+																		"enum": [
+																			"includes",
+																			"not_includes",
+																			"starts_with",
+																			"regex",
+																			"exists",
+																			"is_null",
+																			"in",
+																			"not_in",
+																			"eq",
+																			"neq",
+																			"gt",
+																			"gte",
+																			"lt",
+																			"lte",
+																			"=",
+																			"!=",
+																			">",
+																			">=",
+																			"<",
+																			"<=",
+																			"INCLUDES",
+																			"DOES_NOT_INCLUDE",
+																			"MATCH_REGEX",
+																			"EXISTS",
+																			"DOES_NOT_EXIST",
+																			"IN",
+																			"NOT_IN",
+																			"STARTS_WITH"
+																		],
+																		"type": "string"
+																	},
+																	"type": {
+																		"enum": [
+																			"string",
+																			"number",
+																			"boolean"
+																		],
+																		"type": "string"
+																	},
+																	"value": {
+																		"anyOf": [
+																			{
+																				"type": "string"
+																			},
+																			{
+																				"type": "number"
+																			},
+																			{
+																				"type": "boolean"
+																			}
+																		],
+																		"description": "Filter comparison value. IMPORTANT: must match actual values in your logs. Verify using previous query results or the /values endpoint. Ensure value type matches the field type. String comparisons are case-sensitive unless using specific operations. Regex uses ClickHouse RE2 syntax (no lookaheads/lookbehinds); examples: ^5\\d{2}$ for HTTP 5xx, \\bERROR\\b for word boundary."
+																	}
+																},
+																"required": [
+																	"key",
+																	"operation",
+																	"type"
+																],
+																"type": "object"
+															}
+														],
+														"description": "Supports nested groups via kind: 'group'.",
+														"type": "object"
+													},
+													"type": "array"
+												},
+												"groupBys": {
+													"description": "Define how to group the results of the query.",
+													"items": {
+														"properties": {
+															"type": {
+																"enum": [
+																	"string",
+																	"number",
+																	"boolean"
+																],
+																"type": "string"
+															},
+															"value": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"type",
+															"value"
+														],
+														"type": "object"
+													},
+													"type": "array"
+												},
+												"havings": {
+													"description": "Configure the Having clauses that filter on calculations in the query result.",
+													"items": {
+														"properties": {
+															"key": {
+																"type": "string"
+															},
+															"operation": {
+																"enum": [
+																	"eq",
+																	"neq",
+																	"gt",
+																	"gte",
+																	"lt",
+																	"lte"
+																],
+																"type": "string"
+															},
+															"value": {
+																"type": "number"
+															}
+														},
+														"required": [
+															"key",
+															"operation",
+															"value"
+														],
+														"type": "object"
+													},
+													"type": "array"
+												},
+												"limit": {
+													"description": "Set a limit on the number of results / records returned by the query",
+													"maximum": 100,
+													"minimum": 0,
+													"type": "integer"
+												},
+												"needle": {
+													"description": "Define an expression to search using full-text search.",
+													"properties": {
+														"isRegex": {
+															"type": "boolean"
+														},
+														"matchCase": {
+															"type": "boolean"
+														},
+														"value": {
+															"allOf": [
+																{
+																	"anyOf": [
+																		{
+																			"type": "string"
+																		},
+																		{
+																			"type": "number"
+																		},
+																		{
+																			"type": "boolean"
+																		}
+																	]
+																},
+																{
+																	"maxLength": 1000,
+																	"type": "string"
+																}
+															]
+														}
+													},
+													"required": [
+														"value"
+													],
+													"type": "object"
+												},
+												"orderBy": {
+													"description": "Configure the order of the results returned by the query.",
+													"properties": {
+														"order": {
+															"description": "Set the order of the results",
+															"enum": [
+																"asc",
+																"desc"
+															],
+															"type": "string"
+														},
+														"value": {
+															"description": "Configure which Calculation to order the results by.",
+															"type": "string"
+														}
+													},
+													"required": [
+														"value"
+													],
+													"type": "object"
+												}
+											},
+											"type": "object"
+										},
+										"updated": {
+											"type": "string"
+										},
+										"updatedBy": {
+											"type": "string"
+										}
+									},
+									"required": [
+										"id",
+										"name",
+										"description",
+										"adhoc",
+										"parameters",
+										"created",
+										"createdBy",
+										"updated",
+										"updatedBy"
+									],
+									"type": "object"
+								},
+								"success": {
+									"enum": [
+										true
+									],
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"messages",
+								"success",
+								"errors",
+								"result"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Successful request"
+			},
+			"401": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"detail": {
+												"type": "string"
+											},
+											"message": {
+												"enum": [
+													"Unauthorized"
+												],
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"messages": {
+									"items": {
+										"properties": {
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"success": {
+									"enum": [
+										false
+									],
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"errors",
+								"success",
+								"messages"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Unauthorized"
+			},
+			"404": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"detail": {
+												"type": "string"
+											},
+											"message": {
+												"enum": [
+													"Not found"
+												],
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"messages": {
+									"items": {
+										"properties": {
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"success": {
+									"enum": [
+										false
+									],
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"errors",
+								"success",
+								"messages"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Not found"
+			},
+			"500": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"detail": {
+												"type": "string"
+											},
+											"message": {
+												"enum": [
+													"Internal error"
+												],
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"messages": {
+									"items": {
+										"properties": {
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"success": {
+									"enum": [
+										false
+									],
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"errors",
+								"success",
+								"messages"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Internal error"
+			}
+		},
+		"summary": "Delete query",
+		"tags": [
+			"Saved Queries"
+		],
+		"x-api-token-group": [
+			"Workers Observability Write"
+		]
+	},
+	"GET /accounts/{account_id}/workers/observability/queries": {
+		"description": "List saved queries.",
+		"operationId": "queries.list",
+		"parameters": [
+			{
+				"in": "query",
+				"name": "page",
+				"schema": {
+					"default": 1,
+					"minimum": 1,
+					"type": "number"
+				}
+			},
+			{
+				"in": "query",
+				"name": "perPage",
+				"schema": {
+					"default": 20,
+					"maximum": 50,
+					"minimum": 5,
+					"type": "number"
+				}
+			},
+			{
+				"in": "query",
+				"name": "order",
+				"schema": {
+					"default": "desc",
+					"enum": [
+						"asc",
+						"desc"
+					],
+					"type": "string"
+				}
+			},
+			{
+				"in": "query",
+				"name": "orderBy",
+				"schema": {
+					"default": "updated",
+					"enum": [
+						"created",
+						"updated"
+					],
+					"type": "string"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"messages": {
+									"items": {
+										"properties": {
+											"message": {
+												"enum": [
+													"Successful request"
+												],
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"result": {
+									"items": {
+										"properties": {
+											"adhoc": {
+												"description": "If the query wasn't explcitly saved",
+												"type": "boolean"
+											},
+											"created": {
+												"type": "string"
+											},
+											"createdBy": {
+												"type": "string"
+											},
+											"description": {
+												"example": "Query description",
+												"maxLength": 1000,
+												"nullable": true,
+												"type": "string"
+											},
+											"id": {
+												"type": "string"
+											},
+											"name": {
+												"description": "Query name",
+												"maxLength": 250,
+												"minLength": 1,
+												"type": "string"
+											},
+											"parameters": {
+												"properties": {
+													"calculations": {
+														"description": "Create Calculations to compute as part of the query.",
+														"items": {
+															"properties": {
+																"alias": {
+																	"type": "string"
+																},
+																"key": {
+																	"type": "string"
+																},
+																"keyType": {
+																	"enum": [
+																		"string",
+																		"number",
+																		"boolean"
+																	],
+																	"type": "string"
+																},
+																"operator": {
+																	"enum": [
+																		"uniq",
+																		"count",
+																		"max",
+																		"min",
+																		"sum",
+																		"avg",
+																		"median",
+																		"p001",
+																		"p01",
+																		"p05",
+																		"p10",
+																		"p25",
+																		"p75",
+																		"p90",
+																		"p95",
+																		"p99",
+																		"p999",
+																		"stddev",
+																		"variance",
+																		"COUNT_DISTINCT",
+																		"COUNT",
+																		"MAX",
+																		"MIN",
+																		"SUM",
+																		"AVG",
+																		"MEDIAN",
+																		"P001",
+																		"P01",
+																		"P05",
+																		"P10",
+																		"P25",
+																		"P75",
+																		"P90",
+																		"P95",
+																		"P99",
+																		"P999",
+																		"STDDEV",
+																		"VARIANCE"
+																	],
+																	"type": "string"
+																}
+															},
+															"required": [
+																"operator"
+															],
+															"type": "object"
+														},
+														"type": "array"
+													},
+													"datasets": {
+														"description": "Set the Datasets to query. Leave it empty to query all the datasets.",
+														"example": [],
+														"items": {
+															"type": "string"
+														},
+														"type": "array"
+													},
+													"filterCombination": {
+														"description": "Set a Flag to describe how to combine the filters on the query.",
+														"enum": [
+															"and",
+															"or",
+															"AND",
+															"OR"
+														],
+														"type": "string"
+													},
+													"filters": {
+														"description": "Configure the Filters to apply to the query. Supports nested groups via kind: 'group'.",
+														"items": {
+															"anyOf": [
+																{
+																	"properties": {
+																		"filterCombination": {
+																			"enum": [
+																				"and",
+																				"or",
+																				"AND",
+																				"OR"
+																			],
+																			"type": "string"
+																		},
+																		"filters": {
+																			"items": "[Circular ~.GET /accounts/{account_id}/workers/observability/queries.responses.200.content.application/json.schema.properties.result.items.properties.parameters.properties.filters.items]",
+																			"minItems": 1,
+																			"type": "array"
+																		},
+																		"kind": {
+																			"enum": [
+																				"group"
+																			],
+																			"type": "string"
+																		}
+																	},
+																	"required": [
+																		"kind",
+																		"filterCombination",
+																		"filters"
+																	],
+																	"type": "object"
+																},
+																{
+																	"description": "Filtering best practices: use observability_keys and observability_values to confirm available fields and values. If searching for errors, filter for $metadata.error exists.",
+																	"properties": {
+																		"key": {
+																			"description": "Filter field name. IMPORTANT: do not guess keys. Always use verified keys from previous query results or the observability_keys response. Preferred keys: $metadata.service, $metadata.origin, $metadata.trigger, $metadata.message, $metadata.error.",
+																			"type": "string"
+																		},
+																		"kind": {
+																			"enum": [
+																				"filter"
+																			],
+																			"type": "string"
+																		},
+																		"operation": {
+																			"enum": [
+																				"includes",
+																				"not_includes",
+																				"starts_with",
+																				"regex",
+																				"exists",
+																				"is_null",
+																				"in",
+																				"not_in",
+																				"eq",
+																				"neq",
+																				"gt",
+																				"gte",
+																				"lt",
+																				"lte",
+																				"=",
+																				"!=",
+																				">",
+																				">=",
+																				"<",
+																				"<=",
+																				"INCLUDES",
+																				"DOES_NOT_INCLUDE",
+																				"MATCH_REGEX",
+																				"EXISTS",
+																				"DOES_NOT_EXIST",
+																				"IN",
+																				"NOT_IN",
+																				"STARTS_WITH"
+																			],
+																			"type": "string"
+																		},
+																		"type": {
+																			"enum": [
+																				"string",
+																				"number",
+																				"boolean"
+																			],
+																			"type": "string"
+																		},
+																		"value": {
+																			"anyOf": [
+																				{
+																					"type": "string"
+																				},
+																				{
+																					"type": "number"
+																				},
+																				{
+																					"type": "boolean"
+																				}
+																			],
+																			"description": "Filter comparison value. IMPORTANT: must match actual values in your logs. Verify using previous query results or the /values endpoint. Ensure value type matches the field type. String comparisons are case-sensitive unless using specific operations. Regex uses ClickHouse RE2 syntax (no lookaheads/lookbehinds); examples: ^5\\d{2}$ for HTTP 5xx, \\bERROR\\b for word boundary."
+																		}
+																	},
+																	"required": [
+																		"key",
+																		"operation",
+																		"type"
+																	],
+																	"type": "object"
+																}
+															],
+															"description": "Supports nested groups via kind: 'group'.",
+															"type": "object"
+														},
+														"type": "array"
+													},
+													"groupBys": {
+														"description": "Define how to group the results of the query.",
+														"items": {
+															"properties": {
+																"type": {
+																	"enum": [
+																		"string",
+																		"number",
+																		"boolean"
+																	],
+																	"type": "string"
+																},
+																"value": {
+																	"type": "string"
+																}
+															},
+															"required": [
+																"type",
+																"value"
+															],
+															"type": "object"
+														},
+														"type": "array"
+													},
+													"havings": {
+														"description": "Configure the Having clauses that filter on calculations in the query result.",
+														"items": {
+															"properties": {
+																"key": {
+																	"type": "string"
+																},
+																"operation": {
+																	"enum": [
+																		"eq",
+																		"neq",
+																		"gt",
+																		"gte",
+																		"lt",
+																		"lte"
+																	],
+																	"type": "string"
+																},
+																"value": {
+																	"type": "number"
+																}
+															},
+															"required": [
+																"key",
+																"operation",
+																"value"
+															],
+															"type": "object"
+														},
+														"type": "array"
+													},
+													"limit": {
+														"description": "Set a limit on the number of results / records returned by the query",
+														"maximum": 100,
+														"minimum": 0,
+														"type": "integer"
+													},
+													"needle": {
+														"description": "Define an expression to search using full-text search.",
+														"properties": {
+															"isRegex": {
+																"type": "boolean"
+															},
+															"matchCase": {
+																"type": "boolean"
+															},
+															"value": {
+																"allOf": [
+																	{
+																		"anyOf": [
+																			{
+																				"type": "string"
+																			},
+																			{
+																				"type": "number"
+																			},
+																			{
+																				"type": "boolean"
+																			}
+																		]
+																	},
+																	{
+																		"maxLength": 1000,
+																		"type": "string"
+																	}
+																]
+															}
+														},
+														"required": [
+															"value"
+														],
+														"type": "object"
+													},
+													"orderBy": {
+														"description": "Configure the order of the results returned by the query.",
+														"properties": {
+															"order": {
+																"description": "Set the order of the results",
+																"enum": [
+																	"asc",
+																	"desc"
+																],
+																"type": "string"
+															},
+															"value": {
+																"description": "Configure which Calculation to order the results by.",
+																"type": "string"
+															}
+														},
+														"required": [
+															"value"
+														],
+														"type": "object"
+													}
+												},
+												"type": "object"
+											},
+											"updated": {
+												"type": "string"
+											},
+											"updatedBy": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"id",
+											"name",
+											"description",
+											"adhoc",
+											"parameters",
+											"created",
+											"createdBy",
+											"updated",
+											"updatedBy"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"success": {
+									"enum": [
+										true
+									],
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"messages",
+								"success",
+								"errors",
+								"result"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Successful request"
+			},
+			"401": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"detail": {
+												"type": "string"
+											},
+											"message": {
+												"enum": [
+													"Unauthorized"
+												],
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"messages": {
+									"items": {
+										"properties": {
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"success": {
+									"enum": [
+										false
+									],
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"errors",
+								"success",
+								"messages"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Unauthorized"
+			},
+			"404": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"detail": {
+												"type": "string"
+											},
+											"message": {
+												"enum": [
+													"Not found"
+												],
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"messages": {
+									"items": {
+										"properties": {
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"success": {
+									"enum": [
+										false
+									],
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"errors",
+								"success",
+								"messages"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Not found"
+			},
+			"500": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"detail": {
+												"type": "string"
+											},
+											"message": {
+												"enum": [
+													"Internal error"
+												],
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"messages": {
+									"items": {
+										"properties": {
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"success": {
+									"enum": [
+										false
+									],
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"errors",
+								"success",
+								"messages"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Internal error"
+			}
+		},
+		"summary": "List queries",
+		"tags": [
+			"Saved Queries"
+		],
+		"x-api-token-group": [
+			"Workers Observability Write",
+			"Workers Observability Read"
+		]
+	},
+	"GET /accounts/{account_id}/workers/observability/queries/{queryId}": {
+		"description": "Retrieve a saved query.",
+		"operationId": "queries.get",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "queryId",
+				"required": true,
+				"schema": {
+					"type": "string"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"messages": {
+									"items": {
+										"properties": {
+											"message": {
+												"enum": [
+													"Successful request"
+												],
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"result": {
+									"properties": {
+										"adhoc": {
+											"description": "If the query wasn't explcitly saved",
+											"type": "boolean"
+										},
+										"created": {
+											"type": "string"
+										},
+										"createdBy": {
+											"type": "string"
+										},
+										"description": {
+											"example": "Query description",
+											"maxLength": 1000,
+											"nullable": true,
+											"type": "string"
+										},
+										"id": {
+											"type": "string"
+										},
+										"name": {
+											"description": "Query name",
+											"maxLength": 250,
+											"minLength": 1,
+											"type": "string"
+										},
+										"parameters": {
+											"properties": {
+												"calculations": {
+													"description": "Create Calculations to compute as part of the query.",
+													"items": {
+														"properties": {
+															"alias": {
+																"type": "string"
+															},
+															"key": {
+																"type": "string"
+															},
+															"keyType": {
+																"enum": [
+																	"string",
+																	"number",
+																	"boolean"
+																],
+																"type": "string"
+															},
+															"operator": {
+																"enum": [
+																	"uniq",
+																	"count",
+																	"max",
+																	"min",
+																	"sum",
+																	"avg",
+																	"median",
+																	"p001",
+																	"p01",
+																	"p05",
+																	"p10",
+																	"p25",
+																	"p75",
+																	"p90",
+																	"p95",
+																	"p99",
+																	"p999",
+																	"stddev",
+																	"variance",
+																	"COUNT_DISTINCT",
+																	"COUNT",
+																	"MAX",
+																	"MIN",
+																	"SUM",
+																	"AVG",
+																	"MEDIAN",
+																	"P001",
+																	"P01",
+																	"P05",
+																	"P10",
+																	"P25",
+																	"P75",
+																	"P90",
+																	"P95",
+																	"P99",
+																	"P999",
+																	"STDDEV",
+																	"VARIANCE"
+																],
+																"type": "string"
+															}
+														},
+														"required": [
+															"operator"
+														],
+														"type": "object"
+													},
+													"type": "array"
+												},
+												"datasets": {
+													"description": "Set the Datasets to query. Leave it empty to query all the datasets.",
+													"example": [],
+													"items": {
+														"type": "string"
+													},
+													"type": "array"
+												},
+												"filterCombination": {
+													"description": "Set a Flag to describe how to combine the filters on the query.",
+													"enum": [
+														"and",
+														"or",
+														"AND",
+														"OR"
+													],
+													"type": "string"
+												},
+												"filters": {
+													"description": "Configure the Filters to apply to the query. Supports nested groups via kind: 'group'.",
+													"items": {
+														"anyOf": [
+															{
+																"properties": {
+																	"filterCombination": {
+																		"enum": [
+																			"and",
+																			"or",
+																			"AND",
+																			"OR"
+																		],
+																		"type": "string"
+																	},
+																	"filters": {
+																		"items": "[Circular ~.GET /accounts/{account_id}/workers/observability/queries/{queryId}.responses.200.content.application/json.schema.properties.result.properties.parameters.properties.filters.items]",
+																		"minItems": 1,
+																		"type": "array"
+																	},
+																	"kind": {
+																		"enum": [
+																			"group"
+																		],
+																		"type": "string"
+																	}
+																},
+																"required": [
+																	"kind",
+																	"filterCombination",
+																	"filters"
+																],
+																"type": "object"
+															},
+															{
+																"description": "Filtering best practices: use observability_keys and observability_values to confirm available fields and values. If searching for errors, filter for $metadata.error exists.",
+																"properties": {
+																	"key": {
+																		"description": "Filter field name. IMPORTANT: do not guess keys. Always use verified keys from previous query results or the observability_keys response. Preferred keys: $metadata.service, $metadata.origin, $metadata.trigger, $metadata.message, $metadata.error.",
+																		"type": "string"
+																	},
+																	"kind": {
+																		"enum": [
+																			"filter"
+																		],
+																		"type": "string"
+																	},
+																	"operation": {
+																		"enum": [
+																			"includes",
+																			"not_includes",
+																			"starts_with",
+																			"regex",
+																			"exists",
+																			"is_null",
+																			"in",
+																			"not_in",
+																			"eq",
+																			"neq",
+																			"gt",
+																			"gte",
+																			"lt",
+																			"lte",
+																			"=",
+																			"!=",
+																			">",
+																			">=",
+																			"<",
+																			"<=",
+																			"INCLUDES",
+																			"DOES_NOT_INCLUDE",
+																			"MATCH_REGEX",
+																			"EXISTS",
+																			"DOES_NOT_EXIST",
+																			"IN",
+																			"NOT_IN",
+																			"STARTS_WITH"
+																		],
+																		"type": "string"
+																	},
+																	"type": {
+																		"enum": [
+																			"string",
+																			"number",
+																			"boolean"
+																		],
+																		"type": "string"
+																	},
+																	"value": {
+																		"anyOf": [
+																			{
+																				"type": "string"
+																			},
+																			{
+																				"type": "number"
+																			},
+																			{
+																				"type": "boolean"
+																			}
+																		],
+																		"description": "Filter comparison value. IMPORTANT: must match actual values in your logs. Verify using previous query results or the /values endpoint. Ensure value type matches the field type. String comparisons are case-sensitive unless using specific operations. Regex uses ClickHouse RE2 syntax (no lookaheads/lookbehinds); examples: ^5\\d{2}$ for HTTP 5xx, \\bERROR\\b for word boundary."
+																	}
+																},
+																"required": [
+																	"key",
+																	"operation",
+																	"type"
+																],
+																"type": "object"
+															}
+														],
+														"description": "Supports nested groups via kind: 'group'.",
+														"type": "object"
+													},
+													"type": "array"
+												},
+												"groupBys": {
+													"description": "Define how to group the results of the query.",
+													"items": {
+														"properties": {
+															"type": {
+																"enum": [
+																	"string",
+																	"number",
+																	"boolean"
+																],
+																"type": "string"
+															},
+															"value": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"type",
+															"value"
+														],
+														"type": "object"
+													},
+													"type": "array"
+												},
+												"havings": {
+													"description": "Configure the Having clauses that filter on calculations in the query result.",
+													"items": {
+														"properties": {
+															"key": {
+																"type": "string"
+															},
+															"operation": {
+																"enum": [
+																	"eq",
+																	"neq",
+																	"gt",
+																	"gte",
+																	"lt",
+																	"lte"
+																],
+																"type": "string"
+															},
+															"value": {
+																"type": "number"
+															}
+														},
+														"required": [
+															"key",
+															"operation",
+															"value"
+														],
+														"type": "object"
+													},
+													"type": "array"
+												},
+												"limit": {
+													"description": "Set a limit on the number of results / records returned by the query",
+													"maximum": 100,
+													"minimum": 0,
+													"type": "integer"
+												},
+												"needle": {
+													"description": "Define an expression to search using full-text search.",
+													"properties": {
+														"isRegex": {
+															"type": "boolean"
+														},
+														"matchCase": {
+															"type": "boolean"
+														},
+														"value": {
+															"allOf": [
+																{
+																	"anyOf": [
+																		{
+																			"type": "string"
+																		},
+																		{
+																			"type": "number"
+																		},
+																		{
+																			"type": "boolean"
+																		}
+																	]
+																},
+																{
+																	"maxLength": 1000,
+																	"type": "string"
+																}
+															]
+														}
+													},
+													"required": [
+														"value"
+													],
+													"type": "object"
+												},
+												"orderBy": {
+													"description": "Configure the order of the results returned by the query.",
+													"properties": {
+														"order": {
+															"description": "Set the order of the results",
+															"enum": [
+																"asc",
+																"desc"
+															],
+															"type": "string"
+														},
+														"value": {
+															"description": "Configure which Calculation to order the results by.",
+															"type": "string"
+														}
+													},
+													"required": [
+														"value"
+													],
+													"type": "object"
+												}
+											},
+											"type": "object"
+										},
+										"updated": {
+											"type": "string"
+										},
+										"updatedBy": {
+											"type": "string"
+										}
+									},
+									"required": [
+										"id",
+										"name",
+										"description",
+										"adhoc",
+										"parameters",
+										"created",
+										"createdBy",
+										"updated",
+										"updatedBy"
+									],
+									"type": "object"
+								},
+								"success": {
+									"enum": [
+										true
+									],
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"messages",
+								"success",
+								"errors",
+								"result"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Successful request"
+			},
+			"401": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"detail": {
+												"type": "string"
+											},
+											"message": {
+												"enum": [
+													"Unauthorized"
+												],
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"messages": {
+									"items": {
+										"properties": {
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"success": {
+									"enum": [
+										false
+									],
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"errors",
+								"success",
+								"messages"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Unauthorized"
+			},
+			"404": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"detail": {
+												"type": "string"
+											},
+											"message": {
+												"enum": [
+													"Not found"
+												],
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"messages": {
+									"items": {
+										"properties": {
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"success": {
+									"enum": [
+										false
+									],
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"errors",
+								"success",
+								"messages"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Not found"
+			},
+			"500": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"detail": {
+												"type": "string"
+											},
+											"message": {
+												"enum": [
+													"Internal error"
+												],
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"messages": {
+									"items": {
+										"properties": {
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"success": {
+									"enum": [
+										false
+									],
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"errors",
+								"success",
+								"messages"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Internal error"
+			}
+		},
+		"summary": "Get query",
+		"tags": [
+			"Saved Queries"
+		],
+		"x-api-token-group": [
+			"Workers Observability Write",
+			"Workers Observability Read"
+		]
+	},
+	"PATCH /accounts/{account_id}/workers/observability/queries/{queryId}": {
+		"description": "Update saved query.",
+		"operationId": "queries.patch",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "queryId",
+				"required": true,
+				"schema": {
+					"type": "string"
+				}
+			}
+		],
+		"requestBody": {
+			"content": {
+				"application/json": {
+					"schema": {
+						"properties": {
+							"description": {
+								"example": "Query description",
+								"maxLength": 1000,
+								"nullable": true,
+								"type": "string"
+							},
+							"name": {
+								"description": "Query name",
+								"maxLength": 250,
+								"minLength": 1,
+								"type": "string"
+							},
+							"parameters": {
+								"properties": {
+									"calculations": {
+										"description": "Create Calculations to compute as part of the query.",
+										"items": {
+											"properties": {
+												"alias": {
+													"type": "string"
+												},
+												"key": {
+													"type": "string"
+												},
+												"keyType": {
+													"enum": [
+														"string",
+														"number",
+														"boolean"
+													],
+													"type": "string"
+												},
+												"operator": {
+													"enum": [
+														"uniq",
+														"count",
+														"max",
+														"min",
+														"sum",
+														"avg",
+														"median",
+														"p001",
+														"p01",
+														"p05",
+														"p10",
+														"p25",
+														"p75",
+														"p90",
+														"p95",
+														"p99",
+														"p999",
+														"stddev",
+														"variance",
+														"COUNT_DISTINCT",
+														"COUNT",
+														"MAX",
+														"MIN",
+														"SUM",
+														"AVG",
+														"MEDIAN",
+														"P001",
+														"P01",
+														"P05",
+														"P10",
+														"P25",
+														"P75",
+														"P90",
+														"P95",
+														"P99",
+														"P999",
+														"STDDEV",
+														"VARIANCE"
+													],
+													"type": "string"
+												}
+											},
+											"required": [
+												"operator"
+											],
+											"type": "object"
+										},
+										"type": "array"
+									},
+									"datasets": {
+										"description": "Set the Datasets to query. Leave it empty to query all the datasets.",
+										"example": [],
+										"items": {
+											"type": "string"
+										},
+										"type": "array"
+									},
+									"filterCombination": {
+										"description": "Set a Flag to describe how to combine the filters on the query.",
+										"enum": [
+											"and",
+											"or",
+											"AND",
+											"OR"
+										],
+										"type": "string"
+									},
+									"filters": {
+										"description": "Configure the Filters to apply to the query. Supports nested groups via kind: 'group'.",
+										"items": {
+											"anyOf": [
+												{
+													"properties": {
+														"filterCombination": {
+															"enum": [
+																"and",
+																"or",
+																"AND",
+																"OR"
+															],
+															"type": "string"
+														},
+														"filters": {
+															"items": "[Circular ~.PATCH /accounts/{account_id}/workers/observability/queries/{queryId}.requestBody.content.application/json.schema.properties.parameters.properties.filters.items]",
+															"minItems": 1,
+															"type": "array"
+														},
+														"kind": {
+															"enum": [
+																"group"
+															],
+															"type": "string"
+														}
+													},
+													"required": [
+														"kind",
+														"filterCombination",
+														"filters"
+													],
+													"type": "object"
+												},
+												{
+													"description": "Filtering best practices: use observability_keys and observability_values to confirm available fields and values. If searching for errors, filter for $metadata.error exists.",
+													"properties": {
+														"key": {
+															"description": "Filter field name. IMPORTANT: do not guess keys. Always use verified keys from previous query results or the observability_keys response. Preferred keys: $metadata.service, $metadata.origin, $metadata.trigger, $metadata.message, $metadata.error.",
+															"type": "string"
+														},
+														"kind": {
+															"enum": [
+																"filter"
+															],
+															"type": "string"
+														},
+														"operation": {
+															"enum": [
+																"includes",
+																"not_includes",
+																"starts_with",
+																"regex",
+																"exists",
+																"is_null",
+																"in",
+																"not_in",
+																"eq",
+																"neq",
+																"gt",
+																"gte",
+																"lt",
+																"lte",
+																"=",
+																"!=",
+																">",
+																">=",
+																"<",
+																"<=",
+																"INCLUDES",
+																"DOES_NOT_INCLUDE",
+																"MATCH_REGEX",
+																"EXISTS",
+																"DOES_NOT_EXIST",
+																"IN",
+																"NOT_IN",
+																"STARTS_WITH"
+															],
+															"type": "string"
+														},
+														"type": {
+															"enum": [
+																"string",
+																"number",
+																"boolean"
+															],
+															"type": "string"
+														},
+														"value": {
+															"anyOf": [
+																{
+																	"type": "string"
+																},
+																{
+																	"type": "number"
+																},
+																{
+																	"type": "boolean"
+																}
+															],
+															"description": "Filter comparison value. IMPORTANT: must match actual values in your logs. Verify using previous query results or the /values endpoint. Ensure value type matches the field type. String comparisons are case-sensitive unless using specific operations. Regex uses ClickHouse RE2 syntax (no lookaheads/lookbehinds); examples: ^5\\d{2}$ for HTTP 5xx, \\bERROR\\b for word boundary."
+														}
+													},
+													"required": [
+														"key",
+														"operation",
+														"type"
+													],
+													"type": "object"
+												}
+											],
+											"description": "Supports nested groups via kind: 'group'.",
+											"type": "object"
+										},
+										"type": "array"
+									},
+									"groupBys": {
+										"description": "Define how to group the results of the query.",
+										"items": {
+											"properties": {
+												"type": {
+													"enum": [
+														"string",
+														"number",
+														"boolean"
+													],
+													"type": "string"
+												},
+												"value": {
+													"type": "string"
+												}
+											},
+											"required": [
+												"type",
+												"value"
+											],
+											"type": "object"
+										},
+										"type": "array"
+									},
+									"havings": {
+										"description": "Configure the Having clauses that filter on calculations in the query result.",
+										"items": {
+											"properties": {
+												"key": {
+													"type": "string"
+												},
+												"operation": {
+													"enum": [
+														"eq",
+														"neq",
+														"gt",
+														"gte",
+														"lt",
+														"lte"
+													],
+													"type": "string"
+												},
+												"value": {
+													"type": "number"
+												}
+											},
+											"required": [
+												"key",
+												"operation",
+												"value"
+											],
+											"type": "object"
+										},
+										"type": "array"
+									},
+									"limit": {
+										"description": "Set a limit on the number of results / records returned by the query",
+										"maximum": 100,
+										"minimum": 0,
+										"type": "integer"
+									},
+									"needle": {
+										"description": "Define an expression to search using full-text search.",
+										"properties": {
+											"isRegex": {
+												"type": "boolean"
+											},
+											"matchCase": {
+												"type": "boolean"
+											},
+											"value": {
+												"allOf": [
+													{
+														"anyOf": [
+															{
+																"type": "string"
+															},
+															{
+																"type": "number"
+															},
+															{
+																"type": "boolean"
+															}
+														]
+													},
+													{
+														"maxLength": 1000,
+														"type": "string"
+													}
+												]
+											}
+										},
+										"required": [
+											"value"
+										],
+										"type": "object"
+									},
+									"orderBy": {
+										"description": "Configure the order of the results returned by the query.",
+										"properties": {
+											"order": {
+												"description": "Set the order of the results",
+												"enum": [
+													"asc",
+													"desc"
+												],
+												"type": "string"
+											},
+											"value": {
+												"description": "Configure which Calculation to order the results by.",
+												"type": "string"
+											}
+										},
+										"required": [
+											"value"
+										],
+										"type": "object"
+									}
+								},
+								"type": "object"
+							}
+						},
+						"required": [
+							"description",
+							"name",
+							"parameters"
+						],
+						"type": "object"
+					}
+				}
+			},
+			"description": "Specify the new contents of the query.",
+			"required": true
+		},
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"messages": {
+									"items": {
+										"properties": {
+											"message": {
+												"enum": [
+													"Successful request"
+												],
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"result": {
+									"properties": {
+										"adhoc": {
+											"description": "If the query wasn't explcitly saved",
+											"type": "boolean"
+										},
+										"created": {
+											"type": "string"
+										},
+										"createdBy": {
+											"type": "string"
+										},
+										"description": {
+											"example": "Query description",
+											"maxLength": 1000,
+											"nullable": true,
+											"type": "string"
+										},
+										"id": {
+											"type": "string"
+										},
+										"name": {
+											"description": "Query name",
+											"maxLength": 250,
+											"minLength": 1,
+											"type": "string"
+										},
+										"parameters": {
+											"properties": {
+												"calculations": {
+													"description": "Create Calculations to compute as part of the query.",
+													"items": {
+														"properties": {
+															"alias": {
+																"type": "string"
+															},
+															"key": {
+																"type": "string"
+															},
+															"keyType": {
+																"enum": [
+																	"string",
+																	"number",
+																	"boolean"
+																],
+																"type": "string"
+															},
+															"operator": {
+																"enum": [
+																	"uniq",
+																	"count",
+																	"max",
+																	"min",
+																	"sum",
+																	"avg",
+																	"median",
+																	"p001",
+																	"p01",
+																	"p05",
+																	"p10",
+																	"p25",
+																	"p75",
+																	"p90",
+																	"p95",
+																	"p99",
+																	"p999",
+																	"stddev",
+																	"variance",
+																	"COUNT_DISTINCT",
+																	"COUNT",
+																	"MAX",
+																	"MIN",
+																	"SUM",
+																	"AVG",
+																	"MEDIAN",
+																	"P001",
+																	"P01",
+																	"P05",
+																	"P10",
+																	"P25",
+																	"P75",
+																	"P90",
+																	"P95",
+																	"P99",
+																	"P999",
+																	"STDDEV",
+																	"VARIANCE"
+																],
+																"type": "string"
+															}
+														},
+														"required": [
+															"operator"
+														],
+														"type": "object"
+													},
+													"type": "array"
+												},
+												"datasets": {
+													"description": "Set the Datasets to query. Leave it empty to query all the datasets.",
+													"example": [],
+													"items": {
+														"type": "string"
+													},
+													"type": "array"
+												},
+												"filterCombination": {
+													"description": "Set a Flag to describe how to combine the filters on the query.",
+													"enum": [
+														"and",
+														"or",
+														"AND",
+														"OR"
+													],
+													"type": "string"
+												},
+												"filters": {
+													"description": "Configure the Filters to apply to the query. Supports nested groups via kind: 'group'.",
+													"items": {
+														"anyOf": [
+															{
+																"properties": {
+																	"filterCombination": {
+																		"enum": [
+																			"and",
+																			"or",
+																			"AND",
+																			"OR"
+																		],
+																		"type": "string"
+																	},
+																	"filters": {
+																		"items": "[Circular ~.PATCH /accounts/{account_id}/workers/observability/queries/{queryId}.responses.200.content.application/json.schema.properties.result.properties.parameters.properties.filters.items]",
+																		"minItems": 1,
+																		"type": "array"
+																	},
+																	"kind": {
+																		"enum": [
+																			"group"
+																		],
+																		"type": "string"
+																	}
+																},
+																"required": [
+																	"kind",
+																	"filterCombination",
+																	"filters"
+																],
+																"type": "object"
+															},
+															{
+																"description": "Filtering best practices: use observability_keys and observability_values to confirm available fields and values. If searching for errors, filter for $metadata.error exists.",
+																"properties": {
+																	"key": {
+																		"description": "Filter field name. IMPORTANT: do not guess keys. Always use verified keys from previous query results or the observability_keys response. Preferred keys: $metadata.service, $metadata.origin, $metadata.trigger, $metadata.message, $metadata.error.",
+																		"type": "string"
+																	},
+																	"kind": {
+																		"enum": [
+																			"filter"
+																		],
+																		"type": "string"
+																	},
+																	"operation": {
+																		"enum": [
+																			"includes",
+																			"not_includes",
+																			"starts_with",
+																			"regex",
+																			"exists",
+																			"is_null",
+																			"in",
+																			"not_in",
+																			"eq",
+																			"neq",
+																			"gt",
+																			"gte",
+																			"lt",
+																			"lte",
+																			"=",
+																			"!=",
+																			">",
+																			">=",
+																			"<",
+																			"<=",
+																			"INCLUDES",
+																			"DOES_NOT_INCLUDE",
+																			"MATCH_REGEX",
+																			"EXISTS",
+																			"DOES_NOT_EXIST",
+																			"IN",
+																			"NOT_IN",
+																			"STARTS_WITH"
+																		],
+																		"type": "string"
+																	},
+																	"type": {
+																		"enum": [
+																			"string",
+																			"number",
+																			"boolean"
+																		],
+																		"type": "string"
+																	},
+																	"value": {
+																		"anyOf": [
+																			{
+																				"type": "string"
+																			},
+																			{
+																				"type": "number"
+																			},
+																			{
+																				"type": "boolean"
+																			}
+																		],
+																		"description": "Filter comparison value. IMPORTANT: must match actual values in your logs. Verify using previous query results or the /values endpoint. Ensure value type matches the field type. String comparisons are case-sensitive unless using specific operations. Regex uses ClickHouse RE2 syntax (no lookaheads/lookbehinds); examples: ^5\\d{2}$ for HTTP 5xx, \\bERROR\\b for word boundary."
+																	}
+																},
+																"required": [
+																	"key",
+																	"operation",
+																	"type"
+																],
+																"type": "object"
+															}
+														],
+														"description": "Supports nested groups via kind: 'group'.",
+														"type": "object"
+													},
+													"type": "array"
+												},
+												"groupBys": {
+													"description": "Define how to group the results of the query.",
+													"items": {
+														"properties": {
+															"type": {
+																"enum": [
+																	"string",
+																	"number",
+																	"boolean"
+																],
+																"type": "string"
+															},
+															"value": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"type",
+															"value"
+														],
+														"type": "object"
+													},
+													"type": "array"
+												},
+												"havings": {
+													"description": "Configure the Having clauses that filter on calculations in the query result.",
+													"items": {
+														"properties": {
+															"key": {
+																"type": "string"
+															},
+															"operation": {
+																"enum": [
+																	"eq",
+																	"neq",
+																	"gt",
+																	"gte",
+																	"lt",
+																	"lte"
+																],
+																"type": "string"
+															},
+															"value": {
+																"type": "number"
+															}
+														},
+														"required": [
+															"key",
+															"operation",
+															"value"
+														],
+														"type": "object"
+													},
+													"type": "array"
+												},
+												"limit": {
+													"description": "Set a limit on the number of results / records returned by the query",
+													"maximum": 100,
+													"minimum": 0,
+													"type": "integer"
+												},
+												"needle": {
+													"description": "Define an expression to search using full-text search.",
+													"properties": {
+														"isRegex": {
+															"type": "boolean"
+														},
+														"matchCase": {
+															"type": "boolean"
+														},
+														"value": {
+															"allOf": [
+																{
+																	"anyOf": [
+																		{
+																			"type": "string"
+																		},
+																		{
+																			"type": "number"
+																		},
+																		{
+																			"type": "boolean"
+																		}
+																	]
+																},
+																{
+																	"maxLength": 1000,
+																	"type": "string"
+																}
+															]
+														}
+													},
+													"required": [
+														"value"
+													],
+													"type": "object"
+												},
+												"orderBy": {
+													"description": "Configure the order of the results returned by the query.",
+													"properties": {
+														"order": {
+															"description": "Set the order of the results",
+															"enum": [
+																"asc",
+																"desc"
+															],
+															"type": "string"
+														},
+														"value": {
+															"description": "Configure which Calculation to order the results by.",
+															"type": "string"
+														}
+													},
+													"required": [
+														"value"
+													],
+													"type": "object"
+												}
+											},
+											"type": "object"
+										},
+										"updated": {
+											"type": "string"
+										},
+										"updatedBy": {
+											"type": "string"
+										}
+									},
+									"required": [
+										"id",
+										"name",
+										"description",
+										"adhoc",
+										"parameters",
+										"created",
+										"createdBy",
+										"updated",
+										"updatedBy"
+									],
+									"type": "object"
+								},
+								"success": {
+									"enum": [
+										true
+									],
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"messages",
+								"success",
+								"errors",
+								"result"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Successful request"
+			},
+			"401": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"detail": {
+												"type": "string"
+											},
+											"message": {
+												"enum": [
+													"Unauthorized"
+												],
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"messages": {
+									"items": {
+										"properties": {
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"success": {
+									"enum": [
+										false
+									],
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"errors",
+								"success",
+								"messages"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Unauthorized"
+			},
+			"404": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"detail": {
+												"type": "string"
+											},
+											"message": {
+												"enum": [
+													"Not found"
+												],
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"messages": {
+									"items": {
+										"properties": {
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"success": {
+									"enum": [
+										false
+									],
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"errors",
+								"success",
+								"messages"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Not found"
+			},
+			"500": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"detail": {
+												"type": "string"
+											},
+											"message": {
+												"enum": [
+													"Internal error"
+												],
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"messages": {
+									"items": {
+										"properties": {
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"success": {
+									"enum": [
+										false
+									],
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"errors",
+								"success",
+								"messages"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Internal error"
+			}
+		},
+		"summary": "Update query",
+		"tags": [
+			"Saved Queries"
+		],
+		"x-api-token-group": [
+			"Workers Observability Write"
+		]
+	},
+	"POST /accounts/{account_id}/workers/observability/queries": {
+		"description": "Persist query for later use.",
+		"operationId": "queries.post",
+		"requestBody": {
+			"content": {
+				"application/json": {
+					"schema": {
+						"properties": {
+							"description": {
+								"example": "Query description",
+								"maxLength": 1000,
+								"nullable": true,
+								"type": "string"
+							},
+							"name": {
+								"description": "Query name",
+								"maxLength": 250,
+								"minLength": 1,
+								"type": "string"
+							},
+							"parameters": {
+								"properties": {
+									"calculations": {
+										"description": "Create Calculations to compute as part of the query.",
+										"items": {
+											"properties": {
+												"alias": {
+													"type": "string"
+												},
+												"key": {
+													"type": "string"
+												},
+												"keyType": {
+													"enum": [
+														"string",
+														"number",
+														"boolean"
+													],
+													"type": "string"
+												},
+												"operator": {
+													"enum": [
+														"uniq",
+														"count",
+														"max",
+														"min",
+														"sum",
+														"avg",
+														"median",
+														"p001",
+														"p01",
+														"p05",
+														"p10",
+														"p25",
+														"p75",
+														"p90",
+														"p95",
+														"p99",
+														"p999",
+														"stddev",
+														"variance",
+														"COUNT_DISTINCT",
+														"COUNT",
+														"MAX",
+														"MIN",
+														"SUM",
+														"AVG",
+														"MEDIAN",
+														"P001",
+														"P01",
+														"P05",
+														"P10",
+														"P25",
+														"P75",
+														"P90",
+														"P95",
+														"P99",
+														"P999",
+														"STDDEV",
+														"VARIANCE"
+													],
+													"type": "string"
+												}
+											},
+											"required": [
+												"operator"
+											],
+											"type": "object"
+										},
+										"type": "array"
+									},
+									"datasets": {
+										"description": "Set the Datasets to query. Leave it empty to query all the datasets.",
+										"example": [],
+										"items": {
+											"type": "string"
+										},
+										"type": "array"
+									},
+									"filterCombination": {
+										"description": "Set a Flag to describe how to combine the filters on the query.",
+										"enum": [
+											"and",
+											"or",
+											"AND",
+											"OR"
+										],
+										"type": "string"
+									},
+									"filters": {
+										"description": "Configure the Filters to apply to the query. Supports nested groups via kind: 'group'.",
+										"items": {
+											"anyOf": [
+												{
+													"properties": {
+														"filterCombination": {
+															"enum": [
+																"and",
+																"or",
+																"AND",
+																"OR"
+															],
+															"type": "string"
+														},
+														"filters": {
+															"items": "[Circular ~.POST /accounts/{account_id}/workers/observability/queries.requestBody.content.application/json.schema.properties.parameters.properties.filters.items]",
+															"minItems": 1,
+															"type": "array"
+														},
+														"kind": {
+															"enum": [
+																"group"
+															],
+															"type": "string"
+														}
+													},
+													"required": [
+														"kind",
+														"filterCombination",
+														"filters"
+													],
+													"type": "object"
+												},
+												{
+													"description": "Filtering best practices: use observability_keys and observability_values to confirm available fields and values. If searching for errors, filter for $metadata.error exists.",
+													"properties": {
+														"key": {
+															"description": "Filter field name. IMPORTANT: do not guess keys. Always use verified keys from previous query results or the observability_keys response. Preferred keys: $metadata.service, $metadata.origin, $metadata.trigger, $metadata.message, $metadata.error.",
+															"type": "string"
+														},
+														"kind": {
+															"enum": [
+																"filter"
+															],
+															"type": "string"
+														},
+														"operation": {
+															"enum": [
+																"includes",
+																"not_includes",
+																"starts_with",
+																"regex",
+																"exists",
+																"is_null",
+																"in",
+																"not_in",
+																"eq",
+																"neq",
+																"gt",
+																"gte",
+																"lt",
+																"lte",
+																"=",
+																"!=",
+																">",
+																">=",
+																"<",
+																"<=",
+																"INCLUDES",
+																"DOES_NOT_INCLUDE",
+																"MATCH_REGEX",
+																"EXISTS",
+																"DOES_NOT_EXIST",
+																"IN",
+																"NOT_IN",
+																"STARTS_WITH"
+															],
+															"type": "string"
+														},
+														"type": {
+															"enum": [
+																"string",
+																"number",
+																"boolean"
+															],
+															"type": "string"
+														},
+														"value": {
+															"anyOf": [
+																{
+																	"type": "string"
+																},
+																{
+																	"type": "number"
+																},
+																{
+																	"type": "boolean"
+																}
+															],
+															"description": "Filter comparison value. IMPORTANT: must match actual values in your logs. Verify using previous query results or the /values endpoint. Ensure value type matches the field type. String comparisons are case-sensitive unless using specific operations. Regex uses ClickHouse RE2 syntax (no lookaheads/lookbehinds); examples: ^5\\d{2}$ for HTTP 5xx, \\bERROR\\b for word boundary."
+														}
+													},
+													"required": [
+														"key",
+														"operation",
+														"type"
+													],
+													"type": "object"
+												}
+											],
+											"description": "Supports nested groups via kind: 'group'.",
+											"type": "object"
+										},
+										"type": "array"
+									},
+									"groupBys": {
+										"description": "Define how to group the results of the query.",
+										"items": {
+											"properties": {
+												"type": {
+													"enum": [
+														"string",
+														"number",
+														"boolean"
+													],
+													"type": "string"
+												},
+												"value": {
+													"type": "string"
+												}
+											},
+											"required": [
+												"type",
+												"value"
+											],
+											"type": "object"
+										},
+										"type": "array"
+									},
+									"havings": {
+										"description": "Configure the Having clauses that filter on calculations in the query result.",
+										"items": {
+											"properties": {
+												"key": {
+													"type": "string"
+												},
+												"operation": {
+													"enum": [
+														"eq",
+														"neq",
+														"gt",
+														"gte",
+														"lt",
+														"lte"
+													],
+													"type": "string"
+												},
+												"value": {
+													"type": "number"
+												}
+											},
+											"required": [
+												"key",
+												"operation",
+												"value"
+											],
+											"type": "object"
+										},
+										"type": "array"
+									},
+									"limit": {
+										"description": "Set a limit on the number of results / records returned by the query",
+										"maximum": 100,
+										"minimum": 0,
+										"type": "integer"
+									},
+									"needle": {
+										"description": "Define an expression to search using full-text search.",
+										"properties": {
+											"isRegex": {
+												"type": "boolean"
+											},
+											"matchCase": {
+												"type": "boolean"
+											},
+											"value": {
+												"allOf": [
+													{
+														"anyOf": [
+															{
+																"type": "string"
+															},
+															{
+																"type": "number"
+															},
+															{
+																"type": "boolean"
+															}
+														]
+													},
+													{
+														"maxLength": 1000,
+														"type": "string"
+													}
+												]
+											}
+										},
+										"required": [
+											"value"
+										],
+										"type": "object"
+									},
+									"orderBy": {
+										"description": "Configure the order of the results returned by the query.",
+										"properties": {
+											"order": {
+												"description": "Set the order of the results",
+												"enum": [
+													"asc",
+													"desc"
+												],
+												"type": "string"
+											},
+											"value": {
+												"description": "Configure which Calculation to order the results by.",
+												"type": "string"
+											}
+										},
+										"required": [
+											"value"
+										],
+										"type": "object"
+									}
+								},
+								"type": "object"
+							}
+						},
+						"required": [
+							"description",
+							"name",
+							"parameters"
+						],
+						"type": "object"
+					}
+				}
+			},
+			"description": "Specify the new contents of the query.",
+			"required": true
+		},
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"messages": {
+									"items": {
+										"properties": {
+											"message": {
+												"enum": [
+													"Successful request"
+												],
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"result": {
+									"properties": {
+										"adhoc": {
+											"description": "If the query wasn't explcitly saved",
+											"type": "boolean"
+										},
+										"created": {
+											"type": "string"
+										},
+										"createdBy": {
+											"type": "string"
+										},
+										"description": {
+											"example": "Query description",
+											"maxLength": 1000,
+											"nullable": true,
+											"type": "string"
+										},
+										"id": {
+											"type": "string"
+										},
+										"name": {
+											"description": "Query name",
+											"maxLength": 250,
+											"minLength": 1,
+											"type": "string"
+										},
+										"parameters": {
+											"properties": {
+												"calculations": {
+													"description": "Create Calculations to compute as part of the query.",
+													"items": {
+														"properties": {
+															"alias": {
+																"type": "string"
+															},
+															"key": {
+																"type": "string"
+															},
+															"keyType": {
+																"enum": [
+																	"string",
+																	"number",
+																	"boolean"
+																],
+																"type": "string"
+															},
+															"operator": {
+																"enum": [
+																	"uniq",
+																	"count",
+																	"max",
+																	"min",
+																	"sum",
+																	"avg",
+																	"median",
+																	"p001",
+																	"p01",
+																	"p05",
+																	"p10",
+																	"p25",
+																	"p75",
+																	"p90",
+																	"p95",
+																	"p99",
+																	"p999",
+																	"stddev",
+																	"variance",
+																	"COUNT_DISTINCT",
+																	"COUNT",
+																	"MAX",
+																	"MIN",
+																	"SUM",
+																	"AVG",
+																	"MEDIAN",
+																	"P001",
+																	"P01",
+																	"P05",
+																	"P10",
+																	"P25",
+																	"P75",
+																	"P90",
+																	"P95",
+																	"P99",
+																	"P999",
+																	"STDDEV",
+																	"VARIANCE"
+																],
+																"type": "string"
+															}
+														},
+														"required": [
+															"operator"
+														],
+														"type": "object"
+													},
+													"type": "array"
+												},
+												"datasets": {
+													"description": "Set the Datasets to query. Leave it empty to query all the datasets.",
+													"example": [],
+													"items": {
+														"type": "string"
+													},
+													"type": "array"
+												},
+												"filterCombination": {
+													"description": "Set a Flag to describe how to combine the filters on the query.",
+													"enum": [
+														"and",
+														"or",
+														"AND",
+														"OR"
+													],
+													"type": "string"
+												},
+												"filters": {
+													"description": "Configure the Filters to apply to the query. Supports nested groups via kind: 'group'.",
+													"items": {
+														"anyOf": [
+															{
+																"properties": {
+																	"filterCombination": {
+																		"enum": [
+																			"and",
+																			"or",
+																			"AND",
+																			"OR"
+																		],
+																		"type": "string"
+																	},
+																	"filters": {
+																		"items": "[Circular ~.POST /accounts/{account_id}/workers/observability/queries.responses.200.content.application/json.schema.properties.result.properties.parameters.properties.filters.items]",
+																		"minItems": 1,
+																		"type": "array"
+																	},
+																	"kind": {
+																		"enum": [
+																			"group"
+																		],
+																		"type": "string"
+																	}
+																},
+																"required": [
+																	"kind",
+																	"filterCombination",
+																	"filters"
+																],
+																"type": "object"
+															},
+															{
+																"description": "Filtering best practices: use observability_keys and observability_values to confirm available fields and values. If searching for errors, filter for $metadata.error exists.",
+																"properties": {
+																	"key": {
+																		"description": "Filter field name. IMPORTANT: do not guess keys. Always use verified keys from previous query results or the observability_keys response. Preferred keys: $metadata.service, $metadata.origin, $metadata.trigger, $metadata.message, $metadata.error.",
+																		"type": "string"
+																	},
+																	"kind": {
+																		"enum": [
+																			"filter"
+																		],
+																		"type": "string"
+																	},
+																	"operation": {
+																		"enum": [
+																			"includes",
+																			"not_includes",
+																			"starts_with",
+																			"regex",
+																			"exists",
+																			"is_null",
+																			"in",
+																			"not_in",
+																			"eq",
+																			"neq",
+																			"gt",
+																			"gte",
+																			"lt",
+																			"lte",
+																			"=",
+																			"!=",
+																			">",
+																			">=",
+																			"<",
+																			"<=",
+																			"INCLUDES",
+																			"DOES_NOT_INCLUDE",
+																			"MATCH_REGEX",
+																			"EXISTS",
+																			"DOES_NOT_EXIST",
+																			"IN",
+																			"NOT_IN",
+																			"STARTS_WITH"
+																		],
+																		"type": "string"
+																	},
+																	"type": {
+																		"enum": [
+																			"string",
+																			"number",
+																			"boolean"
+																		],
+																		"type": "string"
+																	},
+																	"value": {
+																		"anyOf": [
+																			{
+																				"type": "string"
+																			},
+																			{
+																				"type": "number"
+																			},
+																			{
+																				"type": "boolean"
+																			}
+																		],
+																		"description": "Filter comparison value. IMPORTANT: must match actual values in your logs. Verify using previous query results or the /values endpoint. Ensure value type matches the field type. String comparisons are case-sensitive unless using specific operations. Regex uses ClickHouse RE2 syntax (no lookaheads/lookbehinds); examples: ^5\\d{2}$ for HTTP 5xx, \\bERROR\\b for word boundary."
+																	}
+																},
+																"required": [
+																	"key",
+																	"operation",
+																	"type"
+																],
+																"type": "object"
+															}
+														],
+														"description": "Supports nested groups via kind: 'group'.",
+														"type": "object"
+													},
+													"type": "array"
+												},
+												"groupBys": {
+													"description": "Define how to group the results of the query.",
+													"items": {
+														"properties": {
+															"type": {
+																"enum": [
+																	"string",
+																	"number",
+																	"boolean"
+																],
+																"type": "string"
+															},
+															"value": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"type",
+															"value"
+														],
+														"type": "object"
+													},
+													"type": "array"
+												},
+												"havings": {
+													"description": "Configure the Having clauses that filter on calculations in the query result.",
+													"items": {
+														"properties": {
+															"key": {
+																"type": "string"
+															},
+															"operation": {
+																"enum": [
+																	"eq",
+																	"neq",
+																	"gt",
+																	"gte",
+																	"lt",
+																	"lte"
+																],
+																"type": "string"
+															},
+															"value": {
+																"type": "number"
+															}
+														},
+														"required": [
+															"key",
+															"operation",
+															"value"
+														],
+														"type": "object"
+													},
+													"type": "array"
+												},
+												"limit": {
+													"description": "Set a limit on the number of results / records returned by the query",
+													"maximum": 100,
+													"minimum": 0,
+													"type": "integer"
+												},
+												"needle": {
+													"description": "Define an expression to search using full-text search.",
+													"properties": {
+														"isRegex": {
+															"type": "boolean"
+														},
+														"matchCase": {
+															"type": "boolean"
+														},
+														"value": {
+															"allOf": [
+																{
+																	"anyOf": [
+																		{
+																			"type": "string"
+																		},
+																		{
+																			"type": "number"
+																		},
+																		{
+																			"type": "boolean"
+																		}
+																	]
+																},
+																{
+																	"maxLength": 1000,
+																	"type": "string"
+																}
+															]
+														}
+													},
+													"required": [
+														"value"
+													],
+													"type": "object"
+												},
+												"orderBy": {
+													"description": "Configure the order of the results returned by the query.",
+													"properties": {
+														"order": {
+															"description": "Set the order of the results",
+															"enum": [
+																"asc",
+																"desc"
+															],
+															"type": "string"
+														},
+														"value": {
+															"description": "Configure which Calculation to order the results by.",
+															"type": "string"
+														}
+													},
+													"required": [
+														"value"
+													],
+													"type": "object"
+												}
+											},
+											"type": "object"
+										},
+										"updated": {
+											"type": "string"
+										},
+										"updatedBy": {
+											"type": "string"
+										}
+									},
+									"required": [
+										"id",
+										"name",
+										"description",
+										"adhoc",
+										"parameters",
+										"created",
+										"createdBy",
+										"updated",
+										"updatedBy"
+									],
+									"type": "object"
+								},
+								"success": {
+									"enum": [
+										true
+									],
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"messages",
+								"success",
+								"errors",
+								"result"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Successful request"
+			},
+			"401": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"detail": {
+												"type": "string"
+											},
+											"message": {
+												"enum": [
+													"Unauthorized"
+												],
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"messages": {
+									"items": {
+										"properties": {
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"success": {
+									"enum": [
+										false
+									],
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"errors",
+								"success",
+								"messages"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Unauthorized"
+			},
+			"409": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"detail": {
+												"type": "string"
+											},
+											"message": {
+												"enum": [
+													"Conflict"
+												],
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"messages": {
+									"items": {
+										"properties": {
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"success": {
+									"enum": [
+										false
+									],
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"errors",
+								"success",
+								"messages"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Conflict"
+			},
+			"500": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"detail": {
+												"type": "string"
+											},
+											"message": {
+												"enum": [
+													"Internal error"
+												],
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"messages": {
+									"items": {
+										"properties": {
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"success": {
+									"enum": [
+										false
+									],
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"errors",
+								"success",
+								"messages"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Internal error"
+			}
+		},
+		"summary": "Save query",
+		"tags": [
+			"Saved Queries"
+		],
+		"x-api-token-group": [
+			"Workers Observability Write"
+		]
+	}
+}

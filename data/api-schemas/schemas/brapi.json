@@ -14,12 +14,12 @@
 				}
 			},
 			{
-				"description": "The ID of the crawl job to cancel",
+				"description": "The ID of the crawl job to cancel.",
 				"in": "path",
 				"name": "job_id",
 				"required": true,
 				"schema": {
-					"description": "The ID of the crawl job to cancel",
+					"description": "The ID of the crawl job to cancel.",
 					"type": "string"
 				}
 			}
@@ -34,11 +34,11 @@
 									"items": {
 										"properties": {
 											"code": {
-												"description": "Error code",
+												"description": "Error code.",
 												"type": "number"
 											},
 											"message": {
-												"description": "Error Message",
+												"description": "Error message.",
 												"type": "string"
 											}
 										},
@@ -53,11 +53,11 @@
 								"result": {
 									"properties": {
 										"job_id": {
-											"description": "The ID of the cancelled job",
+											"description": "The ID of the cancelled job.",
 											"type": "string"
 										},
 										"message": {
-											"description": "Cancellation confirmation message",
+											"description": "Cancellation confirmation message.",
 											"type": "string"
 										}
 									},
@@ -68,7 +68,7 @@
 									"type": "object"
 								},
 								"success": {
-									"description": "Response status",
+									"description": "Response status.",
 									"type": "boolean"
 								}
 							},
@@ -80,7 +80,7 @@
 						}
 					}
 				},
-				"description": "Crawl job cancelled successfully"
+				"description": "Crawl job cancelled successfully."
 			},
 			"400": {
 				"content": {
@@ -91,11 +91,11 @@
 									"items": {
 										"properties": {
 											"code": {
-												"description": "Error code",
+												"description": "Error code.",
 												"type": "number"
 											},
 											"message": {
-												"description": "Error Message",
+												"description": "Error message.",
 												"type": "string"
 											}
 										},
@@ -108,7 +108,7 @@
 									"type": "array"
 								},
 								"success": {
-									"description": "Response status",
+									"description": "Response status.",
 									"type": "boolean"
 								}
 							},
@@ -119,7 +119,7 @@
 						}
 					}
 				},
-				"description": "Job is already in final status and cannot be cancelled"
+				"description": "Job is already in final status and cannot be cancelled."
 			},
 			"404": {
 				"content": {
@@ -130,11 +130,11 @@
 									"items": {
 										"properties": {
 											"code": {
-												"description": "Error code",
+												"description": "Error code.",
 												"type": "number"
 											},
 											"message": {
-												"description": "Error Message",
+												"description": "Error message.",
 												"type": "string"
 											}
 										},
@@ -147,7 +147,7 @@
 									"type": "array"
 								},
 								"success": {
-									"description": "Response status",
+									"description": "Response status.",
 									"type": "boolean"
 								}
 							},
@@ -158,7 +158,7 @@
 						}
 					}
 				},
-				"description": "Crawl job not found"
+				"description": "Crawl job not found."
 			},
 			"500": {
 				"content": {
@@ -169,11 +169,11 @@
 									"items": {
 										"properties": {
 											"code": {
-												"description": "Error code",
+												"description": "Error code.",
 												"type": "number"
 											},
 											"message": {
-												"description": "Error Message",
+												"description": "Error message.",
 												"type": "string"
 											}
 										},
@@ -186,7 +186,7 @@
 									"type": "array"
 								},
 								"success": {
-									"description": "Response status",
+									"description": "Response status.",
 									"type": "boolean"
 								}
 							},
@@ -197,7 +197,7 @@
 						}
 					}
 				},
-				"description": "Internal server error"
+				"description": "Internal server error."
 			}
 		},
 		"security": [
@@ -308,11 +308,11 @@
 									"items": {
 										"properties": {
 											"code": {
-												"description": "Error code",
+												"description": "Error code.",
 												"type": "number"
 											},
 											"message": {
-												"description": "Error Message",
+												"description": "Error message.",
 												"type": "string"
 											}
 										},
@@ -436,7 +436,7 @@
 									"type": "object"
 								},
 								"success": {
-									"description": "Response status",
+									"description": "Response status.",
 									"type": "boolean"
 								}
 							},
@@ -448,7 +448,7 @@
 						}
 					}
 				},
-				"description": "Returns the result of a crawl job"
+				"description": "Returns the result of a crawl job."
 			},
 			"400": {
 				"content": {
@@ -459,11 +459,11 @@
 									"items": {
 										"properties": {
 											"code": {
-												"description": "Error code",
+												"description": "Error code.",
 												"type": "number"
 											},
 											"message": {
-												"description": "Error Message",
+												"description": "Error message.",
 												"type": "string"
 											}
 										},
@@ -476,7 +476,7 @@
 									"type": "array"
 								},
 								"success": {
-									"description": "Response status",
+									"description": "Response status.",
 									"type": "boolean"
 								}
 							},
@@ -498,11 +498,11 @@
 									"items": {
 										"properties": {
 											"code": {
-												"description": "Error code",
+												"description": "Error code.",
 												"type": "number"
 											},
 											"message": {
-												"description": "Error Message",
+												"description": "Error message.",
 												"type": "string"
 											}
 										},
@@ -515,7 +515,7 @@
 									"type": "array"
 								},
 								"success": {
-									"description": "Response status",
+									"description": "Response status.",
 									"type": "boolean"
 								}
 							},
@@ -526,7 +526,7 @@
 						}
 					}
 				},
-				"description": "Internal server error"
+				"description": "Internal server error."
 			}
 		},
 		"security": [
@@ -801,6 +801,7 @@
 															"type": "boolean"
 														},
 														"name": {
+															"description": "Cookie name.",
 															"type": "string"
 														},
 														"partitionKey": {
@@ -1397,6 +1398,7 @@
 															"type": "boolean"
 														},
 														"name": {
+															"description": "Cookie name.",
 															"type": "string"
 														},
 														"partitionKey": {
@@ -1807,11 +1809,11 @@
 									"items": {
 										"properties": {
 											"code": {
-												"description": "Error code",
+												"description": "Error code.",
 												"type": "number"
 											},
 											"message": {
-												"description": "Error Message",
+												"description": "Error message.",
 												"type": "string"
 											}
 										},
@@ -1835,11 +1837,11 @@
 									"type": "object"
 								},
 								"result": {
-									"description": "HTML content",
+									"description": "HTML content.",
 									"type": "string"
 								},
 								"success": {
-									"description": "Response status",
+									"description": "Response status.",
 									"type": "boolean"
 								}
 							},
@@ -1851,7 +1853,7 @@
 						}
 					}
 				},
-				"description": "Returns the page's content"
+				"description": "Returns the page's content."
 			},
 			"400": {
 				"content": {
@@ -1862,11 +1864,11 @@
 									"items": {
 										"properties": {
 											"code": {
-												"description": "Error code",
+												"description": "Error code.",
 												"type": "number"
 											},
 											"message": {
-												"description": "Error Message",
+												"description": "Error message.",
 												"type": "string"
 											}
 										},
@@ -1879,7 +1881,7 @@
 									"type": "array"
 								},
 								"success": {
-									"description": "Response status",
+									"description": "Response status.",
 									"type": "boolean"
 								}
 							},
@@ -1901,11 +1903,11 @@
 									"items": {
 										"properties": {
 											"code": {
-												"description": "Error code",
+												"description": "Error code.",
 												"type": "number"
 											},
 											"message": {
-												"description": "Error Message",
+												"description": "Error message.",
 												"type": "string"
 											}
 										},
@@ -1918,7 +1920,7 @@
 									"type": "array"
 								},
 								"success": {
-									"description": "Response status",
+									"description": "Response status.",
 									"type": "boolean"
 								}
 							},
@@ -1949,11 +1951,11 @@
 									"items": {
 										"properties": {
 											"code": {
-												"description": "Error code",
+												"description": "Error code.",
 												"type": "number"
 											},
 											"message": {
-												"description": "Error Message",
+												"description": "Error message.",
 												"type": "string"
 											}
 										},
@@ -1966,7 +1968,7 @@
 									"type": "array"
 								},
 								"success": {
-									"description": "Response status",
+									"description": "Response status.",
 									"type": "boolean"
 								}
 							},
@@ -1980,10 +1982,10 @@
 				"description": "Request failed due to rate limiting. The Retry-After header indicates when the client should retry the request.",
 				"headers": {
 					"Retry-After": {
-						"description": "Number of seconds to wait before retrying the request",
+						"description": "Number of seconds to wait before retrying the request.",
 						"required": true,
 						"schema": {
-							"description": "Number of seconds to wait before retrying the request",
+							"description": "Number of seconds to wait before retrying the request.",
 							"example": 60,
 							"type": "number"
 						}
@@ -1999,11 +2001,11 @@
 									"items": {
 										"properties": {
 											"code": {
-												"description": "Error code",
+												"description": "Error code.",
 												"type": "number"
 											},
 											"message": {
-												"description": "Error Message",
+												"description": "Error message.",
 												"type": "string"
 											}
 										},
@@ -2016,7 +2018,7 @@
 									"type": "array"
 								},
 								"success": {
-									"description": "Response status",
+									"description": "Response status.",
 									"type": "boolean"
 								}
 							},
@@ -2027,7 +2029,7 @@
 						}
 					}
 				},
-				"description": "Internal server error"
+				"description": "Internal server error."
 			}
 		},
 		"security": [
@@ -2301,6 +2303,7 @@
 															"type": "boolean"
 														},
 														"name": {
+															"description": "Cookie name.",
 															"type": "string"
 														},
 														"partitionKey": {
@@ -2562,7 +2565,7 @@
 																	"type": "string"
 																},
 																"model": {
-																	"description": "AI model to use for the request. Must be formed as `<provider>/<model_name>`, e.g. `workers-ai/@cf/meta/llama-3.3-70b-instruct-fp8-fast`",
+																	"description": "AI model to use for the request. Must be formed as `<provider>/<model_name>`, e.g. `workers-ai/@cf/meta/llama-3.3-70b-instruct-fp8-fast`.",
 																	"type": "string"
 																}
 															},
@@ -2602,7 +2605,7 @@
 																		}
 																	]
 																},
-																"description": "Schema for the response format. More information here: https://developers.cloudflare.com/workers-ai/json-mode/",
+																"description": "Schema for the response format. More information here: https://developers.cloudflare.com/workers-ai/json-mode/.",
 																"nullable": true,
 																"type": "object"
 															},
@@ -3003,7 +3006,7 @@
 																	"type": "string"
 																},
 																"model": {
-																	"description": "AI model to use for the request. Must be formed as `<provider>/<model_name>`, e.g. `workers-ai/@cf/meta/llama-3.3-70b-instruct-fp8-fast`",
+																	"description": "AI model to use for the request. Must be formed as `<provider>/<model_name>`, e.g. `workers-ai/@cf/meta/llama-3.3-70b-instruct-fp8-fast`.",
 																	"type": "string"
 																}
 															},
@@ -3043,7 +3046,7 @@
 																		}
 																	]
 																},
-																"description": "Schema for the response format. More information here: https://developers.cloudflare.com/workers-ai/json-mode/",
+																"description": "Schema for the response format. More information here: https://developers.cloudflare.com/workers-ai/json-mode/.",
 																"nullable": true,
 																"type": "object"
 															},
@@ -3180,11 +3183,11 @@
 									"items": {
 										"properties": {
 											"code": {
-												"description": "Error code",
+												"description": "Error code.",
 												"type": "number"
 											},
 											"message": {
-												"description": "Error Message",
+												"description": "Error message.",
 												"type": "string"
 											}
 										},
@@ -3197,11 +3200,11 @@
 									"type": "array"
 								},
 								"result": {
-									"description": "Crawl job id",
+									"description": "Crawl job ID.",
 									"type": "string"
 								},
 								"success": {
-									"description": "Response status",
+									"description": "Response status.",
 									"type": "boolean"
 								}
 							},
@@ -3213,7 +3216,7 @@
 						}
 					}
 				},
-				"description": "Returns the id for the started crawl job"
+				"description": "Returns the ID for the started crawl job."
 			},
 			"400": {
 				"content": {
@@ -3224,11 +3227,11 @@
 									"items": {
 										"properties": {
 											"code": {
-												"description": "Error code",
+												"description": "Error code.",
 												"type": "number"
 											},
 											"message": {
-												"description": "Error Message",
+												"description": "Error message.",
 												"type": "string"
 											}
 										},
@@ -3241,7 +3244,7 @@
 									"type": "array"
 								},
 								"success": {
-									"description": "Response status",
+									"description": "Response status.",
 									"type": "boolean"
 								}
 							},
@@ -3272,11 +3275,11 @@
 									"items": {
 										"properties": {
 											"code": {
-												"description": "Error code",
+												"description": "Error code.",
 												"type": "number"
 											},
 											"message": {
-												"description": "Error Message",
+												"description": "Error message.",
 												"type": "string"
 											}
 										},
@@ -3289,7 +3292,7 @@
 									"type": "array"
 								},
 								"success": {
-									"description": "Response status",
+									"description": "Response status.",
 									"type": "boolean"
 								}
 							},
@@ -3303,10 +3306,10 @@
 				"description": "Request failed due to rate limiting. The Retry-After header indicates when the client should retry the request.",
 				"headers": {
 					"Retry-After": {
-						"description": "Number of seconds to wait before retrying the request",
+						"description": "Number of seconds to wait before retrying the request.",
 						"required": true,
 						"schema": {
-							"description": "Number of seconds to wait before retrying the request",
+							"description": "Number of seconds to wait before retrying the request.",
 							"example": 60,
 							"type": "number"
 						}
@@ -3322,11 +3325,11 @@
 									"items": {
 										"properties": {
 											"code": {
-												"description": "Error code",
+												"description": "Error code.",
 												"type": "number"
 											},
 											"message": {
-												"description": "Error Message",
+												"description": "Error message.",
 												"type": "string"
 											}
 										},
@@ -3339,7 +3342,7 @@
 									"type": "array"
 								},
 								"success": {
-									"description": "Response status",
+									"description": "Response status.",
 									"type": "boolean"
 								}
 							},
@@ -3350,7 +3353,7 @@
 						}
 					}
 				},
-				"description": "Internal server error"
+				"description": "Internal server error."
 			}
 		},
 		"security": [
@@ -3624,6 +3627,7 @@
 															"type": "boolean"
 														},
 														"name": {
+															"description": "Cookie name.",
 															"type": "string"
 														},
 														"partitionKey": {
@@ -3731,7 +3735,7 @@
 															"type": "string"
 														},
 														"model": {
-															"description": "AI model to use for the request. Must be formed as `<provider>/<model_name>`, e.g. `workers-ai/@cf/meta/llama-3.3-70b-instruct-fp8-fast`",
+															"description": "AI model to use for the request. Must be formed as `<provider>/<model_name>`, e.g. `workers-ai/@cf/meta/llama-3.3-70b-instruct-fp8-fast`.",
 															"type": "string"
 														}
 													},
@@ -3981,7 +3985,7 @@
 																}
 															]
 														},
-														"description": "Schema for the response format. More information here: https://developers.cloudflare.com/workers-ai/json-mode/",
+														"description": "Schema for the response format. More information here: https://developers.cloudflare.com/workers-ai/json-mode/.",
 														"nullable": true,
 														"type": "object"
 													},
@@ -4282,6 +4286,7 @@
 															"type": "boolean"
 														},
 														"name": {
+															"description": "Cookie name.",
 															"type": "string"
 														},
 														"partitionKey": {
@@ -4389,7 +4394,7 @@
 															"type": "string"
 														},
 														"model": {
-															"description": "AI model to use for the request. Must be formed as `<provider>/<model_name>`, e.g. `workers-ai/@cf/meta/llama-3.3-70b-instruct-fp8-fast`",
+															"description": "AI model to use for the request. Must be formed as `<provider>/<model_name>`, e.g. `workers-ai/@cf/meta/llama-3.3-70b-instruct-fp8-fast`.",
 															"type": "string"
 														}
 													},
@@ -4633,7 +4638,7 @@
 																}
 															]
 														},
-														"description": "Schema for the response format. More information here: https://developers.cloudflare.com/workers-ai/json-mode/",
+														"description": "Schema for the response format. More information here: https://developers.cloudflare.com/workers-ai/json-mode/.",
 														"nullable": true,
 														"type": "object"
 													},
@@ -4754,11 +4759,11 @@
 									"items": {
 										"properties": {
 											"code": {
-												"description": "Error code",
+												"description": "Error code.",
 												"type": "number"
 											},
 											"message": {
-												"description": "Error Message",
+												"description": "Error message.",
 												"type": "string"
 											}
 										},
@@ -4778,7 +4783,7 @@
 									"type": "object"
 								},
 								"success": {
-									"description": "Response status",
+									"description": "Response status.",
 									"type": "boolean"
 								}
 							},
@@ -4790,7 +4795,7 @@
 						}
 					}
 				},
-				"description": "Returns the JSON based on a user prompt or json schema"
+				"description": "Returns the JSON based on a user prompt or JSON schema."
 			},
 			"400": {
 				"content": {
@@ -4801,11 +4806,11 @@
 									"items": {
 										"properties": {
 											"code": {
-												"description": "Error code",
+												"description": "Error code.",
 												"type": "number"
 											},
 											"message": {
-												"description": "Error Message",
+												"description": "Error message.",
 												"type": "string"
 											}
 										},
@@ -4818,7 +4823,7 @@
 									"type": "array"
 								},
 								"success": {
-									"description": "Response status",
+									"description": "Response status.",
 									"type": "boolean"
 								}
 							},
@@ -4840,11 +4845,11 @@
 									"items": {
 										"properties": {
 											"code": {
-												"description": "Error code",
+												"description": "Error code.",
 												"type": "number"
 											},
 											"message": {
-												"description": "Error Message",
+												"description": "Error message.",
 												"type": "string"
 											}
 										},
@@ -4861,7 +4866,7 @@
 									"type": "string"
 								},
 								"success": {
-									"description": "Response status",
+									"description": "Response status.",
 									"type": "boolean"
 								}
 							},
@@ -4892,11 +4897,11 @@
 									"items": {
 										"properties": {
 											"code": {
-												"description": "Error code",
+												"description": "Error code.",
 												"type": "number"
 											},
 											"message": {
-												"description": "Error Message",
+												"description": "Error message.",
 												"type": "string"
 											}
 										},
@@ -4909,7 +4914,7 @@
 									"type": "array"
 								},
 								"success": {
-									"description": "Response status",
+									"description": "Response status.",
 									"type": "boolean"
 								}
 							},
@@ -4923,10 +4928,10 @@
 				"description": "Request failed due to rate limiting. The Retry-After header indicates when the client should retry the request.",
 				"headers": {
 					"Retry-After": {
-						"description": "Number of seconds to wait before retrying the request",
+						"description": "Number of seconds to wait before retrying the request.",
 						"required": true,
 						"schema": {
-							"description": "Number of seconds to wait before retrying the request",
+							"description": "Number of seconds to wait before retrying the request.",
 							"example": 60,
 							"type": "number"
 						}
@@ -4942,11 +4947,11 @@
 									"items": {
 										"properties": {
 											"code": {
-												"description": "Error code",
+												"description": "Error code.",
 												"type": "number"
 											},
 											"message": {
-												"description": "Error Message",
+												"description": "Error message.",
 												"type": "string"
 											}
 										},
@@ -4959,7 +4964,7 @@
 									"type": "array"
 								},
 								"success": {
-									"description": "Response status",
+									"description": "Response status.",
 									"type": "boolean"
 								}
 							},
@@ -4970,7 +4975,7 @@
 						}
 					}
 				},
-				"description": "Internal server error"
+				"description": "Internal server error."
 			}
 		},
 		"security": [
@@ -5244,6 +5249,7 @@
 															"type": "boolean"
 														},
 														"name": {
+															"description": "Cookie name.",
 															"type": "string"
 														},
 														"partitionKey": {
@@ -5848,6 +5854,7 @@
 															"type": "boolean"
 														},
 														"name": {
+															"description": "Cookie name.",
 															"type": "string"
 														},
 														"partitionKey": {
@@ -6266,11 +6273,11 @@
 									"items": {
 										"properties": {
 											"code": {
-												"description": "Error code",
+												"description": "Error code.",
 												"type": "number"
 											},
 											"message": {
-												"description": "Error Message",
+												"description": "Error message.",
 												"type": "string"
 											}
 										},
@@ -6289,7 +6296,7 @@
 									"type": "array"
 								},
 								"success": {
-									"description": "Response status",
+									"description": "Response status.",
 									"type": "boolean"
 								}
 							},
@@ -6301,7 +6308,7 @@
 						}
 					}
 				},
-				"description": "Returns the links"
+				"description": "Returns the links."
 			},
 			"400": {
 				"content": {
@@ -6312,11 +6319,11 @@
 									"items": {
 										"properties": {
 											"code": {
-												"description": "Error code",
+												"description": "Error code.",
 												"type": "number"
 											},
 											"message": {
-												"description": "Error Message",
+												"description": "Error message.",
 												"type": "string"
 											}
 										},
@@ -6329,7 +6336,7 @@
 									"type": "array"
 								},
 								"success": {
-									"description": "Response status",
+									"description": "Response status.",
 									"type": "boolean"
 								}
 							},
@@ -6351,11 +6358,11 @@
 									"items": {
 										"properties": {
 											"code": {
-												"description": "Error code",
+												"description": "Error code.",
 												"type": "number"
 											},
 											"message": {
-												"description": "Error Message",
+												"description": "Error message.",
 												"type": "string"
 											}
 										},
@@ -6368,7 +6375,7 @@
 									"type": "array"
 								},
 								"success": {
-									"description": "Response status",
+									"description": "Response status.",
 									"type": "boolean"
 								}
 							},
@@ -6399,11 +6406,11 @@
 									"items": {
 										"properties": {
 											"code": {
-												"description": "Error code",
+												"description": "Error code.",
 												"type": "number"
 											},
 											"message": {
-												"description": "Error Message",
+												"description": "Error message.",
 												"type": "string"
 											}
 										},
@@ -6416,7 +6423,7 @@
 									"type": "array"
 								},
 								"success": {
-									"description": "Response status",
+									"description": "Response status.",
 									"type": "boolean"
 								}
 							},
@@ -6430,10 +6437,10 @@
 				"description": "Request failed due to rate limiting. The Retry-After header indicates when the client should retry the request.",
 				"headers": {
 					"Retry-After": {
-						"description": "Number of seconds to wait before retrying the request",
+						"description": "Number of seconds to wait before retrying the request.",
 						"required": true,
 						"schema": {
-							"description": "Number of seconds to wait before retrying the request",
+							"description": "Number of seconds to wait before retrying the request.",
 							"example": 60,
 							"type": "number"
 						}
@@ -6449,11 +6456,11 @@
 									"items": {
 										"properties": {
 											"code": {
-												"description": "Error code",
+												"description": "Error code.",
 												"type": "number"
 											},
 											"message": {
-												"description": "Error Message",
+												"description": "Error message.",
 												"type": "string"
 											}
 										},
@@ -6466,7 +6473,7 @@
 									"type": "array"
 								},
 								"success": {
-									"description": "Response status",
+									"description": "Response status.",
 									"type": "boolean"
 								}
 							},
@@ -6477,7 +6484,7 @@
 						}
 					}
 				},
-				"description": "Internal server error"
+				"description": "Internal server error."
 			}
 		},
 		"security": [
@@ -6751,6 +6758,7 @@
 															"type": "boolean"
 														},
 														"name": {
+															"description": "Cookie name.",
 															"type": "string"
 														},
 														"partitionKey": {
@@ -7347,6 +7355,7 @@
 															"type": "boolean"
 														},
 														"name": {
+															"description": "Cookie name.",
 															"type": "string"
 														},
 														"partitionKey": {
@@ -7757,11 +7766,11 @@
 									"items": {
 										"properties": {
 											"code": {
-												"description": "Error code",
+												"description": "Error code.",
 												"type": "number"
 											},
 											"message": {
-												"description": "Error Message",
+												"description": "Error message.",
 												"type": "string"
 											}
 										},
@@ -7774,11 +7783,11 @@
 									"type": "array"
 								},
 								"result": {
-									"description": "Markdown",
+									"description": "Markdown content.",
 									"type": "string"
 								},
 								"success": {
-									"description": "Response status",
+									"description": "Response status.",
 									"type": "boolean"
 								}
 							},
@@ -7789,7 +7798,7 @@
 						}
 					}
 				},
-				"description": "Returns the page markdown"
+				"description": "Returns the page markdown."
 			},
 			"400": {
 				"content": {
@@ -7800,11 +7809,11 @@
 									"items": {
 										"properties": {
 											"code": {
-												"description": "Error code",
+												"description": "Error code.",
 												"type": "number"
 											},
 											"message": {
-												"description": "Error Message",
+												"description": "Error message.",
 												"type": "string"
 											}
 										},
@@ -7817,7 +7826,7 @@
 									"type": "array"
 								},
 								"success": {
-									"description": "Response status",
+									"description": "Response status.",
 									"type": "boolean"
 								}
 							},
@@ -7839,11 +7848,11 @@
 									"items": {
 										"properties": {
 											"code": {
-												"description": "Error code",
+												"description": "Error code.",
 												"type": "number"
 											},
 											"message": {
-												"description": "Error Message",
+												"description": "Error message.",
 												"type": "string"
 											}
 										},
@@ -7856,7 +7865,7 @@
 									"type": "array"
 								},
 								"success": {
-									"description": "Response status",
+									"description": "Response status.",
 									"type": "boolean"
 								}
 							},
@@ -7887,11 +7896,11 @@
 									"items": {
 										"properties": {
 											"code": {
-												"description": "Error code",
+												"description": "Error code.",
 												"type": "number"
 											},
 											"message": {
-												"description": "Error Message",
+												"description": "Error message.",
 												"type": "string"
 											}
 										},
@@ -7904,7 +7913,7 @@
 									"type": "array"
 								},
 								"success": {
-									"description": "Response status",
+									"description": "Response status.",
 									"type": "boolean"
 								}
 							},
@@ -7918,10 +7927,10 @@
 				"description": "Request failed due to rate limiting. The Retry-After header indicates when the client should retry the request.",
 				"headers": {
 					"Retry-After": {
-						"description": "Number of seconds to wait before retrying the request",
+						"description": "Number of seconds to wait before retrying the request.",
 						"required": true,
 						"schema": {
-							"description": "Number of seconds to wait before retrying the request",
+							"description": "Number of seconds to wait before retrying the request.",
 							"example": 60,
 							"type": "number"
 						}
@@ -7937,11 +7946,11 @@
 									"items": {
 										"properties": {
 											"code": {
-												"description": "Error code",
+												"description": "Error code.",
 												"type": "number"
 											},
 											"message": {
-												"description": "Error Message",
+												"description": "Error message.",
 												"type": "string"
 											}
 										},
@@ -7954,7 +7963,7 @@
 									"type": "array"
 								},
 								"success": {
-									"description": "Response status",
+									"description": "Response status.",
 									"type": "boolean"
 								}
 							},
@@ -7965,7 +7974,7 @@
 						}
 					}
 				},
-				"description": "Internal server error"
+				"description": "Internal server error."
 			}
 		},
 		"security": [
@@ -8239,6 +8248,7 @@
 															"type": "boolean"
 														},
 														"name": {
+															"description": "Cookie name.",
 															"type": "string"
 														},
 														"partitionKey": {
@@ -8988,6 +8998,7 @@
 															"type": "boolean"
 														},
 														"name": {
+															"description": "Cookie name.",
 															"type": "string"
 														},
 														"partitionKey": {
@@ -9546,12 +9557,12 @@
 				"content": {
 					"application/pdf": {
 						"schema": {
-							"description": "Pdf binary",
+							"description": "PDF binary.",
 							"type": "string"
 						}
 					}
 				},
-				"description": "Returns the pdf"
+				"description": "Returns the PDF."
 			},
 			"400": {
 				"content": {
@@ -9562,11 +9573,11 @@
 									"items": {
 										"properties": {
 											"code": {
-												"description": "Error code",
+												"description": "Error code.",
 												"type": "number"
 											},
 											"message": {
-												"description": "Error Message",
+												"description": "Error message.",
 												"type": "string"
 											}
 										},
@@ -9579,7 +9590,7 @@
 									"type": "array"
 								},
 								"success": {
-									"description": "Response status",
+									"description": "Response status.",
 									"type": "boolean"
 								}
 							},
@@ -9601,11 +9612,11 @@
 									"items": {
 										"properties": {
 											"code": {
-												"description": "Error code",
+												"description": "Error code.",
 												"type": "number"
 											},
 											"message": {
-												"description": "Error Message",
+												"description": "Error message.",
 												"type": "string"
 											}
 										},
@@ -9618,7 +9629,7 @@
 									"type": "array"
 								},
 								"success": {
-									"description": "Response status",
+									"description": "Response status.",
 									"type": "boolean"
 								}
 							},
@@ -9649,11 +9660,11 @@
 									"items": {
 										"properties": {
 											"code": {
-												"description": "Error code",
+												"description": "Error code.",
 												"type": "number"
 											},
 											"message": {
-												"description": "Error Message",
+												"description": "Error message.",
 												"type": "string"
 											}
 										},
@@ -9666,7 +9677,7 @@
 									"type": "array"
 								},
 								"success": {
-									"description": "Response status",
+									"description": "Response status.",
 									"type": "boolean"
 								}
 							},
@@ -9680,10 +9691,10 @@
 				"description": "Request failed due to rate limiting. The Retry-After header indicates when the client should retry the request.",
 				"headers": {
 					"Retry-After": {
-						"description": "Number of seconds to wait before retrying the request",
+						"description": "Number of seconds to wait before retrying the request.",
 						"required": true,
 						"schema": {
-							"description": "Number of seconds to wait before retrying the request",
+							"description": "Number of seconds to wait before retrying the request.",
 							"example": 60,
 							"type": "number"
 						}
@@ -9699,11 +9710,11 @@
 									"items": {
 										"properties": {
 											"code": {
-												"description": "Error code",
+												"description": "Error code.",
 												"type": "number"
 											},
 											"message": {
-												"description": "Error Message",
+												"description": "Error message.",
 												"type": "string"
 											}
 										},
@@ -9716,7 +9727,7 @@
 									"type": "array"
 								},
 								"success": {
-									"description": "Response status",
+									"description": "Response status.",
 									"type": "boolean"
 								}
 							},
@@ -9727,7 +9738,7 @@
 						}
 					}
 				},
-				"description": "Internal server error"
+				"description": "Internal server error."
 			}
 		},
 		"security": [
@@ -10006,6 +10017,7 @@
 															"type": "boolean"
 														},
 														"name": {
+															"description": "Cookie name.",
 															"type": "string"
 														},
 														"partitionKey": {
@@ -10618,6 +10630,7 @@
 															"type": "boolean"
 														},
 														"name": {
+															"description": "Cookie name.",
 															"type": "string"
 														},
 														"partitionKey": {
@@ -11044,11 +11057,11 @@
 									"items": {
 										"properties": {
 											"code": {
-												"description": "Error code",
+												"description": "Error code.",
 												"type": "number"
 											},
 											"message": {
-												"description": "Error Message",
+												"description": "Error message.",
 												"type": "string"
 											}
 										},
@@ -11069,11 +11082,11 @@
 														"items": {
 															"properties": {
 																"name": {
-																	"description": "Attribute name",
+																	"description": "Attribute name.",
 																	"type": "string"
 																},
 																"value": {
-																	"description": "Attribute value",
+																	"description": "Attribute value.",
 																	"type": "string"
 																}
 															},
@@ -11086,27 +11099,27 @@
 														"type": "array"
 													},
 													"height": {
-														"description": "Element height",
+														"description": "Element height.",
 														"type": "number"
 													},
 													"html": {
-														"description": "Html content",
+														"description": "HTML content.",
 														"type": "string"
 													},
 													"left": {
-														"description": "Element left",
+														"description": "Element left.",
 														"type": "number"
 													},
 													"text": {
-														"description": "Text content",
+														"description": "Text content.",
 														"type": "string"
 													},
 													"top": {
-														"description": "Element top",
+														"description": "Element top.",
 														"type": "number"
 													},
 													"width": {
-														"description": "Element width",
+														"description": "Element width.",
 														"type": "number"
 													}
 												},
@@ -11122,7 +11135,7 @@
 												"type": "object"
 											},
 											"selector": {
-												"description": "Selector",
+												"description": "Selector.",
 												"type": "string"
 											}
 										},
@@ -11135,7 +11148,7 @@
 									"type": "array"
 								},
 								"success": {
-									"description": "Response status",
+									"description": "Response status.",
 									"type": "boolean"
 								}
 							},
@@ -11147,7 +11160,7 @@
 						}
 					}
 				},
-				"description": "Returns the scraped elements"
+				"description": "Returns the scraped elements."
 			},
 			"400": {
 				"content": {
@@ -11158,11 +11171,11 @@
 									"items": {
 										"properties": {
 											"code": {
-												"description": "Error code",
+												"description": "Error code.",
 												"type": "number"
 											},
 											"message": {
-												"description": "Error Message",
+												"description": "Error message.",
 												"type": "string"
 											}
 										},
@@ -11175,7 +11188,7 @@
 									"type": "array"
 								},
 								"success": {
-									"description": "Response status",
+									"description": "Response status.",
 									"type": "boolean"
 								}
 							},
@@ -11197,11 +11210,11 @@
 									"items": {
 										"properties": {
 											"code": {
-												"description": "Error code",
+												"description": "Error code.",
 												"type": "number"
 											},
 											"message": {
-												"description": "Error Message",
+												"description": "Error message.",
 												"type": "string"
 											}
 										},
@@ -11214,7 +11227,7 @@
 									"type": "array"
 								},
 								"success": {
-									"description": "Response status",
+									"description": "Response status.",
 									"type": "boolean"
 								}
 							},
@@ -11245,11 +11258,11 @@
 									"items": {
 										"properties": {
 											"code": {
-												"description": "Error code",
+												"description": "Error code.",
 												"type": "number"
 											},
 											"message": {
-												"description": "Error Message",
+												"description": "Error message.",
 												"type": "string"
 											}
 										},
@@ -11262,7 +11275,7 @@
 									"type": "array"
 								},
 								"success": {
-									"description": "Response status",
+									"description": "Response status.",
 									"type": "boolean"
 								}
 							},
@@ -11276,10 +11289,10 @@
 				"description": "Request failed due to rate limiting. The Retry-After header indicates when the client should retry the request.",
 				"headers": {
 					"Retry-After": {
-						"description": "Number of seconds to wait before retrying the request",
+						"description": "Number of seconds to wait before retrying the request.",
 						"required": true,
 						"schema": {
-							"description": "Number of seconds to wait before retrying the request",
+							"description": "Number of seconds to wait before retrying the request.",
 							"example": 60,
 							"type": "number"
 						}
@@ -11295,11 +11308,11 @@
 									"items": {
 										"properties": {
 											"code": {
-												"description": "Error code",
+												"description": "Error code.",
 												"type": "number"
 											},
 											"message": {
-												"description": "Error Message",
+												"description": "Error message.",
 												"type": "string"
 											}
 										},
@@ -11312,7 +11325,7 @@
 									"type": "array"
 								},
 								"success": {
-									"description": "Response status",
+									"description": "Response status.",
 									"type": "boolean"
 								}
 							},
@@ -11323,7 +11336,7 @@
 						}
 					}
 				},
-				"description": "Internal server error"
+				"description": "Internal server error."
 			}
 		},
 		"security": [
@@ -11597,6 +11610,7 @@
 															"type": "boolean"
 														},
 														"name": {
+															"description": "Cookie name.",
 															"type": "string"
 														},
 														"partitionKey": {
@@ -12291,6 +12305,7 @@
 															"type": "boolean"
 														},
 														"name": {
+															"description": "Cookie name.",
 															"type": "string"
 														},
 														"partitionKey": {
@@ -12799,11 +12814,11 @@
 									"items": {
 										"properties": {
 											"code": {
-												"description": "Error code",
+												"description": "Error code.",
 												"type": "number"
 											},
 											"message": {
-												"description": "Error Message",
+												"description": "Error message.",
 												"type": "string"
 											}
 										},
@@ -12816,7 +12831,7 @@
 									"type": "array"
 								},
 								"success": {
-									"description": "Response status",
+									"description": "Response status.",
 									"type": "boolean"
 								}
 							},
@@ -12828,30 +12843,30 @@
 					},
 					"image/jpg": {
 						"schema": {
-							"description": "Jpeg binary",
+							"description": "JPEG binary.",
 							"type": "string"
 						}
 					},
 					"image/png": {
 						"schema": {
-							"description": "Png binary",
+							"description": "PNG binary.",
 							"type": "string"
 						}
 					},
 					"image/webp": {
 						"schema": {
-							"description": "Webp binary",
+							"description": "WebP binary.",
 							"type": "string"
 						}
 					},
 					"text/plain": {
 						"schema": {
-							"description": "Base64 encoded",
+							"description": "Base64 encoded.",
 							"type": "string"
 						}
 					}
 				},
-				"description": "Returns the screenshot"
+				"description": "Returns the screenshot."
 			},
 			"400": {
 				"content": {
@@ -12862,11 +12877,11 @@
 									"items": {
 										"properties": {
 											"code": {
-												"description": "Error code",
+												"description": "Error code.",
 												"type": "number"
 											},
 											"message": {
-												"description": "Error Message",
+												"description": "Error message.",
 												"type": "string"
 											}
 										},
@@ -12879,7 +12894,7 @@
 									"type": "array"
 								},
 								"success": {
-									"description": "Response status",
+									"description": "Response status.",
 									"type": "boolean"
 								}
 							},
@@ -12901,11 +12916,11 @@
 									"items": {
 										"properties": {
 											"code": {
-												"description": "Error code",
+												"description": "Error code.",
 												"type": "number"
 											},
 											"message": {
-												"description": "Error Message",
+												"description": "Error message.",
 												"type": "string"
 											}
 										},
@@ -12918,7 +12933,7 @@
 									"type": "array"
 								},
 								"success": {
-									"description": "Response status",
+									"description": "Response status.",
 									"type": "boolean"
 								}
 							},
@@ -12949,11 +12964,11 @@
 									"items": {
 										"properties": {
 											"code": {
-												"description": "Error code",
+												"description": "Error code.",
 												"type": "number"
 											},
 											"message": {
-												"description": "Error Message",
+												"description": "Error message.",
 												"type": "string"
 											}
 										},
@@ -12966,7 +12981,7 @@
 									"type": "array"
 								},
 								"success": {
-									"description": "Response status",
+									"description": "Response status.",
 									"type": "boolean"
 								}
 							},
@@ -12980,10 +12995,10 @@
 				"description": "Request failed due to rate limiting. The Retry-After header indicates when the client should retry the request.",
 				"headers": {
 					"Retry-After": {
-						"description": "Number of seconds to wait before retrying the request",
+						"description": "Number of seconds to wait before retrying the request.",
 						"required": true,
 						"schema": {
-							"description": "Number of seconds to wait before retrying the request",
+							"description": "Number of seconds to wait before retrying the request.",
 							"example": 60,
 							"type": "number"
 						}
@@ -12999,11 +13014,11 @@
 									"items": {
 										"properties": {
 											"code": {
-												"description": "Error code",
+												"description": "Error code.",
 												"type": "number"
 											},
 											"message": {
-												"description": "Error Message",
+												"description": "Error message.",
 												"type": "string"
 											}
 										},
@@ -13016,7 +13031,7 @@
 									"type": "array"
 								},
 								"success": {
-									"description": "Response status",
+									"description": "Response status.",
 									"type": "boolean"
 								}
 							},
@@ -13027,7 +13042,7 @@
 						}
 					}
 				},
-				"description": "Internal server error"
+				"description": "Internal server error."
 			}
 		},
 		"security": [
@@ -13301,6 +13316,7 @@
 															"type": "boolean"
 														},
 														"name": {
+															"description": "Cookie name.",
 															"type": "string"
 														},
 														"partitionKey": {
@@ -13971,6 +13987,7 @@
 															"type": "boolean"
 														},
 														"name": {
+															"description": "Cookie name.",
 															"type": "string"
 														},
 														"partitionKey": {
@@ -14455,11 +14472,11 @@
 									"items": {
 										"properties": {
 											"code": {
-												"description": "Error code",
+												"description": "Error code.",
 												"type": "number"
 											},
 											"message": {
-												"description": "Error Message",
+												"description": "Error message.",
 												"type": "string"
 											}
 										},
@@ -14485,11 +14502,11 @@
 								"result": {
 									"properties": {
 										"content": {
-											"description": "HTML content",
+											"description": "HTML content.",
 											"type": "string"
 										},
 										"screenshot": {
-											"description": "Base64 encoded image",
+											"description": "Base64 encoded image.",
 											"type": "string"
 										}
 									},
@@ -14500,7 +14517,7 @@
 									"type": "object"
 								},
 								"success": {
-									"description": "Response status",
+									"description": "Response status.",
 									"type": "boolean"
 								}
 							},
@@ -14512,7 +14529,7 @@
 						}
 					}
 				},
-				"description": "Returns the screenshot"
+				"description": "Returns the screenshot."
 			},
 			"400": {
 				"content": {
@@ -14523,11 +14540,11 @@
 									"items": {
 										"properties": {
 											"code": {
-												"description": "Error code",
+												"description": "Error code.",
 												"type": "number"
 											},
 											"message": {
-												"description": "Error Message",
+												"description": "Error message.",
 												"type": "string"
 											}
 										},
@@ -14540,7 +14557,7 @@
 									"type": "array"
 								},
 								"success": {
-									"description": "Response status",
+									"description": "Response status.",
 									"type": "boolean"
 								}
 							},
@@ -14562,11 +14579,11 @@
 									"items": {
 										"properties": {
 											"code": {
-												"description": "Error code",
+												"description": "Error code.",
 												"type": "number"
 											},
 											"message": {
-												"description": "Error Message",
+												"description": "Error message.",
 												"type": "string"
 											}
 										},
@@ -14579,7 +14596,7 @@
 									"type": "array"
 								},
 								"success": {
-									"description": "Response status",
+									"description": "Response status.",
 									"type": "boolean"
 								}
 							},
@@ -14610,11 +14627,11 @@
 									"items": {
 										"properties": {
 											"code": {
-												"description": "Error code",
+												"description": "Error code.",
 												"type": "number"
 											},
 											"message": {
-												"description": "Error Message",
+												"description": "Error message.",
 												"type": "string"
 											}
 										},
@@ -14627,7 +14644,7 @@
 									"type": "array"
 								},
 								"success": {
-									"description": "Response status",
+									"description": "Response status.",
 									"type": "boolean"
 								}
 							},
@@ -14641,10 +14658,10 @@
 				"description": "Request failed due to rate limiting. The Retry-After header indicates when the client should retry the request.",
 				"headers": {
 					"Retry-After": {
-						"description": "Number of seconds to wait before retrying the request",
+						"description": "Number of seconds to wait before retrying the request.",
 						"required": true,
 						"schema": {
-							"description": "Number of seconds to wait before retrying the request",
+							"description": "Number of seconds to wait before retrying the request.",
 							"example": 60,
 							"type": "number"
 						}
@@ -14660,11 +14677,11 @@
 									"items": {
 										"properties": {
 											"code": {
-												"description": "Error code",
+												"description": "Error code.",
 												"type": "number"
 											},
 											"message": {
-												"description": "Error Message",
+												"description": "Error message.",
 												"type": "string"
 											}
 										},
@@ -14677,7 +14694,7 @@
 									"type": "array"
 								},
 								"success": {
-									"description": "Response status",
+									"description": "Response status.",
 									"type": "boolean"
 								}
 							},
@@ -14688,7 +14705,7 @@
 						}
 					}
 				},
-				"description": "Internal server error"
+				"description": "Internal server error."
 			}
 		},
 		"security": [
