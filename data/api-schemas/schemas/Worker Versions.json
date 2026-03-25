@@ -824,6 +824,8 @@
 																				"discriminator": {
 																					"mapping": {
 																						"ai": "#/components/schemas/workers_binding_kind_ai",
+																						"ai_search": "#/components/schemas/workers_binding_kind_ai_search",
+																						"ai_search_namespace": "#/components/schemas/workers_binding_kind_ai_search_namespace",
 																						"analytics_engine": "#/components/schemas/workers_binding_kind_analytics_engine",
 																						"assets": "#/components/schemas/workers_binding_kind_assets",
 																						"browser": "#/components/schemas/workers_binding_kind_browser",
@@ -878,6 +880,72 @@
 																						"required": [
 																							"name",
 																							"type"
+																						],
+																						"type": "object"
+																					},
+																					{
+																						"properties": {
+																							"instance_name": {
+																								"description": "The user-chosen instance name. Must exist at deploy time. The worker can search, chat, update, and manage items/jobs on this instance.",
+																								"example": "cloudflare-blog",
+																								"type": "string",
+																								"x-auditable": true
+																							},
+																							"name": {
+																								"description": "A JavaScript variable name for the binding.",
+																								"example": "myBinding",
+																								"type": "string",
+																								"x-auditable": true
+																							},
+																							"namespace": {
+																								"description": "The namespace the instance belongs to. Defaults to \"default\" if omitted. Customers who don't use namespaces can simply omit this field.",
+																								"example": "production",
+																								"type": "string",
+																								"x-auditable": true
+																							},
+																							"type": {
+																								"description": "The kind of resource that the binding provides.",
+																								"enum": [
+																									"ai_search"
+																								],
+																								"type": "string",
+																								"x-auditable": true
+																							}
+																						},
+																						"required": [
+																							"name",
+																							"type",
+																							"instance_name"
+																						],
+																						"type": "object"
+																					},
+																					{
+																						"properties": {
+																							"name": {
+																								"description": "A JavaScript variable name for the binding.",
+																								"example": "myBinding",
+																								"type": "string",
+																								"x-auditable": true
+																							},
+																							"namespace": {
+																								"description": "The user-chosen namespace name. Must exist before deploy -- Wrangler handles auto-creation on deploy failure (R2 bucket pattern). The \"default\" namespace is auto-created by config-api for new accounts. Grants full access (CRUD + search + chat) to all instances within the namespace.",
+																								"example": "production",
+																								"type": "string",
+																								"x-auditable": true
+																							},
+																							"type": {
+																								"description": "The kind of resource that the binding provides.",
+																								"enum": [
+																									"ai_search_namespace"
+																								],
+																								"type": "string",
+																								"x-auditable": true
+																							}
+																						},
+																						"required": [
+																							"name",
+																							"type",
+																							"namespace"
 																						],
 																						"type": "object"
 																					},
@@ -2377,6 +2445,8 @@
 																						"discriminator": {
 																							"mapping": {
 																								"ai": "#/components/schemas/workers_binding_kind_ai",
+																								"ai_search": "#/components/schemas/workers_binding_kind_ai_search",
+																								"ai_search_namespace": "#/components/schemas/workers_binding_kind_ai_search_namespace",
 																								"analytics_engine": "#/components/schemas/workers_binding_kind_analytics_engine",
 																								"assets": "#/components/schemas/workers_binding_kind_assets",
 																								"browser": "#/components/schemas/workers_binding_kind_browser",
@@ -2431,6 +2501,72 @@
 																								"required": [
 																									"name",
 																									"type"
+																								],
+																								"type": "object"
+																							},
+																							{
+																								"properties": {
+																									"instance_name": {
+																										"description": "The user-chosen instance name. Must exist at deploy time. The worker can search, chat, update, and manage items/jobs on this instance.",
+																										"example": "cloudflare-blog",
+																										"type": "string",
+																										"x-auditable": true
+																									},
+																									"name": {
+																										"description": "A JavaScript variable name for the binding.",
+																										"example": "myBinding",
+																										"type": "string",
+																										"x-auditable": true
+																									},
+																									"namespace": {
+																										"description": "The namespace the instance belongs to. Defaults to \"default\" if omitted. Customers who don't use namespaces can simply omit this field.",
+																										"example": "production",
+																										"type": "string",
+																										"x-auditable": true
+																									},
+																									"type": {
+																										"description": "The kind of resource that the binding provides.",
+																										"enum": [
+																											"ai_search"
+																										],
+																										"type": "string",
+																										"x-auditable": true
+																									}
+																								},
+																								"required": [
+																									"name",
+																									"type",
+																									"instance_name"
+																								],
+																								"type": "object"
+																							},
+																							{
+																								"properties": {
+																									"name": {
+																										"description": "A JavaScript variable name for the binding.",
+																										"example": "myBinding",
+																										"type": "string",
+																										"x-auditable": true
+																									},
+																									"namespace": {
+																										"description": "The user-chosen namespace name. Must exist before deploy -- Wrangler handles auto-creation on deploy failure (R2 bucket pattern). The \"default\" namespace is auto-created by config-api for new accounts. Grants full access (CRUD + search + chat) to all instances within the namespace.",
+																										"example": "production",
+																										"type": "string",
+																										"x-auditable": true
+																									},
+																									"type": {
+																										"description": "The kind of resource that the binding provides.",
+																										"enum": [
+																											"ai_search_namespace"
+																										],
+																										"type": "string",
+																										"x-auditable": true
+																									}
+																								},
+																								"required": [
+																									"name",
+																									"type",
+																									"namespace"
 																								],
 																								"type": "object"
 																							},
@@ -3943,6 +4079,8 @@
 											"discriminator": {
 												"mapping": {
 													"ai": "#/components/schemas/workers_binding_kind_ai",
+													"ai_search": "#/components/schemas/workers_binding_kind_ai_search",
+													"ai_search_namespace": "#/components/schemas/workers_binding_kind_ai_search_namespace",
 													"analytics_engine": "#/components/schemas/workers_binding_kind_analytics_engine",
 													"assets": "#/components/schemas/workers_binding_kind_assets",
 													"browser": "#/components/schemas/workers_binding_kind_browser",
@@ -3997,6 +4135,72 @@
 													"required": [
 														"name",
 														"type"
+													],
+													"type": "object"
+												},
+												{
+													"properties": {
+														"instance_name": {
+															"description": "The user-chosen instance name. Must exist at deploy time. The worker can search, chat, update, and manage items/jobs on this instance.",
+															"example": "cloudflare-blog",
+															"type": "string",
+															"x-auditable": true
+														},
+														"name": {
+															"description": "A JavaScript variable name for the binding.",
+															"example": "myBinding",
+															"type": "string",
+															"x-auditable": true
+														},
+														"namespace": {
+															"description": "The namespace the instance belongs to. Defaults to \"default\" if omitted. Customers who don't use namespaces can simply omit this field.",
+															"example": "production",
+															"type": "string",
+															"x-auditable": true
+														},
+														"type": {
+															"description": "The kind of resource that the binding provides.",
+															"enum": [
+																"ai_search"
+															],
+															"type": "string",
+															"x-auditable": true
+														}
+													},
+													"required": [
+														"name",
+														"type",
+														"instance_name"
+													],
+													"type": "object"
+												},
+												{
+													"properties": {
+														"name": {
+															"description": "A JavaScript variable name for the binding.",
+															"example": "myBinding",
+															"type": "string",
+															"x-auditable": true
+														},
+														"namespace": {
+															"description": "The user-chosen namespace name. Must exist before deploy -- Wrangler handles auto-creation on deploy failure (R2 bucket pattern). The \"default\" namespace is auto-created by config-api for new accounts. Grants full access (CRUD + search + chat) to all instances within the namespace.",
+															"example": "production",
+															"type": "string",
+															"x-auditable": true
+														},
+														"type": {
+															"description": "The kind of resource that the binding provides.",
+															"enum": [
+																"ai_search_namespace"
+															],
+															"type": "string",
+															"x-auditable": true
+														}
+													},
+													"required": [
+														"name",
+														"type",
+														"namespace"
 													],
 													"type": "object"
 												},
@@ -5375,6 +5579,8 @@
 																						"discriminator": {
 																							"mapping": {
 																								"ai": "#/components/schemas/workers_binding_kind_ai",
+																								"ai_search": "#/components/schemas/workers_binding_kind_ai_search",
+																								"ai_search_namespace": "#/components/schemas/workers_binding_kind_ai_search_namespace",
 																								"analytics_engine": "#/components/schemas/workers_binding_kind_analytics_engine",
 																								"assets": "#/components/schemas/workers_binding_kind_assets",
 																								"browser": "#/components/schemas/workers_binding_kind_browser",
@@ -5429,6 +5635,72 @@
 																								"required": [
 																									"name",
 																									"type"
+																								],
+																								"type": "object"
+																							},
+																							{
+																								"properties": {
+																									"instance_name": {
+																										"description": "The user-chosen instance name. Must exist at deploy time. The worker can search, chat, update, and manage items/jobs on this instance.",
+																										"example": "cloudflare-blog",
+																										"type": "string",
+																										"x-auditable": true
+																									},
+																									"name": {
+																										"description": "A JavaScript variable name for the binding.",
+																										"example": "myBinding",
+																										"type": "string",
+																										"x-auditable": true
+																									},
+																									"namespace": {
+																										"description": "The namespace the instance belongs to. Defaults to \"default\" if omitted. Customers who don't use namespaces can simply omit this field.",
+																										"example": "production",
+																										"type": "string",
+																										"x-auditable": true
+																									},
+																									"type": {
+																										"description": "The kind of resource that the binding provides.",
+																										"enum": [
+																											"ai_search"
+																										],
+																										"type": "string",
+																										"x-auditable": true
+																									}
+																								},
+																								"required": [
+																									"name",
+																									"type",
+																									"instance_name"
+																								],
+																								"type": "object"
+																							},
+																							{
+																								"properties": {
+																									"name": {
+																										"description": "A JavaScript variable name for the binding.",
+																										"example": "myBinding",
+																										"type": "string",
+																										"x-auditable": true
+																									},
+																									"namespace": {
+																										"description": "The user-chosen namespace name. Must exist before deploy -- Wrangler handles auto-creation on deploy failure (R2 bucket pattern). The \"default\" namespace is auto-created by config-api for new accounts. Grants full access (CRUD + search + chat) to all instances within the namespace.",
+																										"example": "production",
+																										"type": "string",
+																										"x-auditable": true
+																									},
+																									"type": {
+																										"description": "The kind of resource that the binding provides.",
+																										"enum": [
+																											"ai_search_namespace"
+																										],
+																										"type": "string",
+																										"x-auditable": true
+																									}
+																								},
+																								"required": [
+																									"name",
+																									"type",
+																									"namespace"
 																								],
 																								"type": "object"
 																							},
@@ -6945,6 +7217,8 @@
 																								"discriminator": {
 																									"mapping": {
 																										"ai": "#/components/schemas/workers_binding_kind_ai",
+																										"ai_search": "#/components/schemas/workers_binding_kind_ai_search",
+																										"ai_search_namespace": "#/components/schemas/workers_binding_kind_ai_search_namespace",
 																										"analytics_engine": "#/components/schemas/workers_binding_kind_analytics_engine",
 																										"assets": "#/components/schemas/workers_binding_kind_assets",
 																										"browser": "#/components/schemas/workers_binding_kind_browser",
@@ -6999,6 +7273,72 @@
 																										"required": [
 																											"name",
 																											"type"
+																										],
+																										"type": "object"
+																									},
+																									{
+																										"properties": {
+																											"instance_name": {
+																												"description": "The user-chosen instance name. Must exist at deploy time. The worker can search, chat, update, and manage items/jobs on this instance.",
+																												"example": "cloudflare-blog",
+																												"type": "string",
+																												"x-auditable": true
+																											},
+																											"name": {
+																												"description": "A JavaScript variable name for the binding.",
+																												"example": "myBinding",
+																												"type": "string",
+																												"x-auditable": true
+																											},
+																											"namespace": {
+																												"description": "The namespace the instance belongs to. Defaults to \"default\" if omitted. Customers who don't use namespaces can simply omit this field.",
+																												"example": "production",
+																												"type": "string",
+																												"x-auditable": true
+																											},
+																											"type": {
+																												"description": "The kind of resource that the binding provides.",
+																												"enum": [
+																													"ai_search"
+																												],
+																												"type": "string",
+																												"x-auditable": true
+																											}
+																										},
+																										"required": [
+																											"name",
+																											"type",
+																											"instance_name"
+																										],
+																										"type": "object"
+																									},
+																									{
+																										"properties": {
+																											"name": {
+																												"description": "A JavaScript variable name for the binding.",
+																												"example": "myBinding",
+																												"type": "string",
+																												"x-auditable": true
+																											},
+																											"namespace": {
+																												"description": "The user-chosen namespace name. Must exist before deploy -- Wrangler handles auto-creation on deploy failure (R2 bucket pattern). The \"default\" namespace is auto-created by config-api for new accounts. Grants full access (CRUD + search + chat) to all instances within the namespace.",
+																												"example": "production",
+																												"type": "string",
+																												"x-auditable": true
+																											},
+																											"type": {
+																												"description": "The kind of resource that the binding provides.",
+																												"enum": [
+																													"ai_search_namespace"
+																												],
+																												"type": "string",
+																												"x-auditable": true
+																											}
+																										},
+																										"required": [
+																											"name",
+																											"type",
+																											"namespace"
 																										],
 																										"type": "object"
 																									},

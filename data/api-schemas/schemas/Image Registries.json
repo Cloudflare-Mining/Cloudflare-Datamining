@@ -29,7 +29,8 @@
 									"description": "Specifies what permissions the credentials will have.",
 									"enum": [
 										"pull",
-										"push"
+										"push",
+										"library_push"
 									],
 									"type": "string"
 								},
@@ -280,6 +281,28 @@
 					}
 				},
 				"description": "Bad Request for Public API."
+			},
+			"403": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"description": "The requested token permissions are not allowed for this account",
+							"properties": {
+								"error": {
+									"enum": [
+										"TOKEN_PERMISSIONS_NOT_ALLOWED"
+									],
+									"type": "string"
+								}
+							},
+							"required": [
+								"error"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "The requested token permissions are not allowed for this account"
 			},
 			"404": {
 				"content": {
