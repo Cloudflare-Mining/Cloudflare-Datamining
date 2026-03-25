@@ -51,7 +51,7 @@
 				footer: (0, o.p)(m())
 			},
 			page_shield: {
-				title: "Page Shield",
+				title: "Client-side security",
 				description: "Ensure the safety and privacy of your visitors by monitoring third-party scripts, connections, and cookies loaded in web browsers."
 			},
 			managed_rules: {

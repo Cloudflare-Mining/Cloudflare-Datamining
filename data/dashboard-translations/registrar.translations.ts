@@ -117,7 +117,7 @@
 	},
 	domain_page: {
 		title: (0, o.p)(v(), "domainName"),
-		back: "Back to Domain registrations",
+		back: "Back to Registrations",
 		registration: "Registration",
 		contacts: "Contacts",
 		configuration: "Configuration",
@@ -831,6 +831,7 @@
 	validation_is_available: "Domain is not registered or registration has expired",
 	validation_zone_inactive: "Domain is not using Cloudflare nameservers",
 	validation_tld_unsupported: "TLD is not supported",
+	validation_subdomain_cannot_transfer: "Subdomains are not eligible for transfer.",
 	validation_transfer_in_progress: "Domain transfer is in progress",
 	validation_requires_full_zone: "Full DNS Setup is required. Please point your domain to Cloudflare's nameservers.",
 	cannot_transfer_domain_year_limit_exceeded: "This domain cannot be transferred as it would exceed the %{yearLimit}-year maximum registration period for this TLD.",

@@ -1,6 +1,7 @@
 {
 	page_title: "Abuse Reports",
-	page_description: "View abuse reports accepted against this account and any mitigations in place for potential terms of service violations. Once you have addressed a mitigation, or if you believe the mitigation was made in error, you can request review by Cloudflare's Trust & Safety team.",
+	page_description: "View abuse reports accepted against this account and any mitigations in place for potential terms of service violations.",
+	reports_table_description: "Click into a report to view details, email correspondence, and mitigations. Once you have addressed a mitigation, or if you believe the mitigation was made in error, you can request review by Cloudflare's Trust & Safety team.",
 	abuse_contact_email: "Abuse contact email",
 	maintenance_banner: {
 		title: "Maintenance in progress",
@@ -12,7 +13,10 @@
 		empty_state: {
 			default: "You have no abuse reports.",
 			search: "There are no matching results.",
-			error: "Error fetching abuse reports. Please try again."
+			attention_needed: {
+				title: "You have no abuse reports needing attention.",
+				description: 'To view all abuse reports, check the "All reports" tab above.'
+			}
 		},
 		column_name: {
 			[i.Xt.Id]: "Report ID",
@@ -39,6 +43,10 @@
 			[i.Xt.Type]: "Report type",
 			mitigation_status: "Mitigation status"
 		}
+	},
+	reports_tabs: {
+		attention_needed: "Attention needed",
+		all: "All reports"
 	},
 	mitigations_table: {
 		empty_state: {

@@ -108,6 +108,9 @@
 				copy_detection_ids: "Copy Detection ID |||| Copy Detection IDs",
 				copy_directives: "Copy Directive |||| Copy Directives"
 			}
+		},
+		clobber_warning: {
+			description: "This rule has been modified outside AI Crawl Control. Changes made here will recreate the rule and may remove custom modifications. <0>View in Security rules</0>"
 		}
 	},
 	categories: {

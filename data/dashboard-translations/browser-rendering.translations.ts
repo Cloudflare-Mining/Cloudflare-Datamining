@@ -1,9 +1,9 @@
 {
-	banner: (0, s.p)(a()),
+	banner: (0, t.p)(a()),
 	common: {
 		title: "Browser Rendering",
 		description: "The Workers Browser Rendering API allows developers to programmatically control and interact with a headless browser instance and create automation flows for their applications and products. ",
-		documentation: (0, s.p)(i()),
+		documentation: (0, t.p)(i()),
 		labels: {
 			beta: "Beta",
 			documentation: "Browser Rendering documentation"
@@ -67,6 +67,9 @@
 		}
 	},
 	tables: {
+		filters: {
+			select_all: "Select All"
+		},
 		logs: {
 			head: {
 				session_id: "Session ID",
@@ -121,7 +124,7 @@
 		no_pages_crawled: "No pages crawled yet",
 		load_more: "Load more",
 		no_content_available: "No content available",
-		showing_first_records: (0, s.p)(l(), "count"),
+		showing_first_records: (0, t.p)(l(), "count"),
 		failed_to_load_detail: "Failed to load crawl job detail.",
 		view_records: "View Records",
 		col_title: "Title",
