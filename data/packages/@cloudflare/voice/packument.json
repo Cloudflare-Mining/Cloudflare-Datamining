@@ -1,7 +1,7 @@
 {
 	"name": "@cloudflare/voice",
 	"dist-tags": {
-		"latest": "0.0.3"
+		"latest": "0.0.4"
 	},
 	"versions": {
 		"0.0.0": {
@@ -25,18 +25,46 @@
 			"name": "@cloudflare/voice",
 			"version": "0.0.3",
 			"peerDependencies": {
+				"react": "^19.0.0",
 				"agents": "^0.7.6",
+				"partysocket": "*"
+			},
+			"dist": {
+				"shasum": "9acb64c639adca133f74a5af40b7e3a59ec51208",
+				"tarball": "https://registry.npmjs.org/@cloudflare/voice/-/voice-0.0.3.tgz",
+				"fileCount": 14,
+				"integrity": "sha512-cUq8TcIimHnqayyQARG6n4qSNc7ncwgWsuTNzrgbD0jwA7mbnwt2CNj5vk9hbODzT6SnydE00t+lYC1GEAmrSw==",
+				"signatures": [
+					{
+						"sig": "MEYCIQCm9r7TKUVg8C2cBIqKJcszMGqRuO5phAggdNqHaYZJ/wIhALKmG+235OFeYucYMC1i6Of+olQtOoxqJdJ2CzuMapTl",
+						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
+					}
+				],
+				"attestations": {
+					"url": "https://registry.npmjs.org/-/npm/v1/attestations/@cloudflare%2fvoice@0.0.3",
+					"provenance": {
+						"predicateType": "https://slsa.dev/provenance/v1"
+					}
+				},
+				"unpackedSize": 329759
+			}
+		},
+		"0.0.4": {
+			"name": "@cloudflare/voice",
+			"version": "0.0.4",
+			"peerDependencies": {
+				"agents": "^0.8.5",
 				"partysocket": "*",
 				"react": "^19.0.0"
 			},
 			"dist": {
-				"integrity": "sha512-cUq8TcIimHnqayyQARG6n4qSNc7ncwgWsuTNzrgbD0jwA7mbnwt2CNj5vk9hbODzT6SnydE00t+lYC1GEAmrSw==",
-				"shasum": "9acb64c639adca133f74a5af40b7e3a59ec51208",
-				"tarball": "https://registry.npmjs.org/@cloudflare/voice/-/voice-0.0.3.tgz",
+				"integrity": "sha512-PNxnRppAEYrP9MpdAiubj1riawn+xKItnfxMxWCICvkxKZPuQNBwaaG+IAGlr5yC8OLW9EKWidV/YwzsspEgrg==",
+				"shasum": "177fc5de7d86e89c2573d78d39149b2a9c7e9f1b",
+				"tarball": "https://registry.npmjs.org/@cloudflare/voice/-/voice-0.0.4.tgz",
 				"fileCount": 14,
-				"unpackedSize": 329759,
+				"unpackedSize": 325821,
 				"attestations": {
-					"url": "https://registry.npmjs.org/-/npm/v1/attestations/@cloudflare%2fvoice@0.0.3",
+					"url": "https://registry.npmjs.org/-/npm/v1/attestations/@cloudflare%2fvoice@0.0.4",
 					"provenance": {
 						"predicateType": "https://slsa.dev/provenance/v1"
 					}
@@ -44,7 +72,7 @@
 				"signatures": [
 					{
 						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U",
-						"sig": "MEYCIQCm9r7TKUVg8C2cBIqKJcszMGqRuO5phAggdNqHaYZJ/wIhALKmG+235OFeYucYMC1i6Of+olQtOoxqJdJ2CzuMapTl"
+						"sig": "MEQCIDq3GTspbJeiz7U6bdSrVn7Zg9ypVDDNBp+Gdt2omL+VAiBy10FQWBaP4ViZE7SS4lGzOo6I3DTdmhmazCoQRikXGw=="
 					}
 				]
 			}
