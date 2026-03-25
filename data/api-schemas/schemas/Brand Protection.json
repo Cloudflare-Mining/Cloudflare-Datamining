@@ -382,10 +382,11 @@
 				"in": "query",
 				"name": "orderBy",
 				"schema": {
-					"description": "Column to sort by. Options: 'tag' or 'date'",
+					"description": "Column to sort by. Options: 'matchedAt', 'domain', or 'similarityScore'",
 					"enum": [
-						"tag",
-						"date"
+						"matchedAt",
+						"domain",
+						"similarityScore"
 					],
 					"type": "string"
 				}
