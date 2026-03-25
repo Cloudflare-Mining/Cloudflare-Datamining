@@ -118,7 +118,7 @@
 														"target": null,
 														"uri": null
 													},
-													"value": "Last updated August 11, 2025",
+													"value": "Last updated March 24, 2026",
 													"marks": [
 														{
 															"type": "bold"
@@ -1575,6 +1575,51 @@
 														"uri": null
 													},
 													"value": ".",
+													"marks": [],
+													"content": null
+												}
+											]
+										},
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "\"",
+													"marks": [],
+													"content": null
+												},
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "LLM Request",
+													"marks": [
+														{
+															"type": "bold"
+														}
+													],
+													"content": null
+												},
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "\" is defined as a request, containing up to 1,000 tokens, that is received by Cloudflare's edge and destined to an LLM endpoint. LLM Requests exceeding 1,000 tokens will be calculated by dividing the total token count by 1,000 and rounding up to the next whole number (e.g., a single request of 17,000 tokens shall be counted as 17 LLM Requests).",
 													"marks": [],
 													"content": null
 												}
@@ -7193,17 +7238,7 @@
 														"target": null,
 														"uri": null
 													},
-													"value": "China Service",
-													"marks": [],
-													"content": null
-												},
-												{
-													"nodeType": "text",
-													"data": {
-														"target": null,
-														"uri": null
-													},
-													"value": "; China Global Acceleration Service",
+													"value": "China Service; China Global Acceleration Service; China Network Traffic Management and Bandwidth Overage",
 													"marks": [
 														{
 															"type": "bold"
@@ -7456,33 +7491,202 @@
 																		"target": null,
 																		"uri": null
 																	},
-																	"value": "Notwithstanding any provision of the Agreement to the contrary, the China Service and the China Global Acceleration Service are provided to Customer \"AS-IS,\" with all faults, and without warranty, obligation, or service level of any kind, and unless otherwise explicitly agreed to in writing, any custom security requirements that have been negotiated between Customer and Cloudflare will not apply to the China Service. Cloudflare, its China Service Partner, and its China Service Provider reserve the right to terminate or suspend the Service in China, ",
-																	"marks": [],
-																	"content": null
-																},
-																{
-																	"nodeType": "text",
-																	"data": {
-																		"target": null,
-																		"uri": null
-																	},
-																	"value": "including by routing Customer traffic outside of China, at",
-																	"marks": [],
-																	"content": null
-																},
-																{
-																	"nodeType": "text",
-																	"data": {
-																		"target": null,
-																		"uri": null
-																	},
-																	"value": " any time and without liability, in response to Chinese law, rule, regulation, or if needed to protect the Services or the infrastructure supporting the Services; provided, that (a) Cloudflare provides notice to Customer of such termination or suspension as soon as reasonably practicable, and (b) Cloudflare works to promptly route Customer's traffic to the next nearest data center(s) outside of China. Termination or suspension of the China Service and/or the China Global Acceleration Service will have no effect upon any other Services provided to Customer under the Agreement, which will remain in full force and effect. Customer's use of the China Service and the China Global Acceleration Service is subject to Chinese law including laws governing the dissemination of certain types of content.",
+																	"value": "Notwithstanding any provision of the Agreement to the contrary, the China Service and the China Global Acceleration Service are provided to Customer \"AS-IS,\" with all faults, and without warranty, obligation, or service level of any kind, and unless otherwise explicitly agreed to in writing, any custom security requirements that have been negotiated between Customer and Cloudflare will not apply to the China Service. Cloudflare, its China Service Partner, and its China Service Provider reserve the right to terminate or suspend the Service in China, including by routing Customer traffic outside of China, at any time and without liability, in response to Chinese law, rule, regulation, or if needed to protect the Services or the infrastructure supporting the Services; provided, that (a) Cloudflare provides notice to Customer of such termination or suspension as soon as reasonably practicable, and (b) Cloudflare works to promptly route Customer's traffic to the next nearest data center(s) outside of China. Termination or suspension of the China Service and/or the China Global Acceleration Service will have no effect upon any other Services provided to Customer under the Agreement, which will remain in full force and effect. Customer's use of the China Service and the China Global Acceleration Service is subject to Chinese law including laws governing the dissemination of certain types of content.",
 																	"marks": [],
 																	"content": null
 																}
 															]
 														}
 													]
+												},
+												{
+													"nodeType": "list-item",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": null,
+													"marks": null,
+													"content": [
+														{
+															"nodeType": "paragraph",
+															"data": {
+																"target": null,
+																"uri": null
+															},
+															"value": null,
+															"marks": null,
+															"content": [
+																{
+																	"nodeType": "text",
+																	"data": {
+																		"target": null,
+																		"uri": null
+																	},
+																	"value": "China Network Traffic Management and Bandwidth Overage",
+																	"marks": [
+																		{
+																			"type": "bold"
+																		}
+																	],
+																	"content": null
+																}
+															]
+														}
+													]
+												}
+											]
+										},
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "4.1 Traffic Management. ",
+													"marks": [
+														{
+															"type": "bold"
+														}
+													],
+													"content": null
+												},
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "In the event that Customer's traffic within the China Network exceeds fifteen (15) Gbps of bandwidth (the \"",
+													"marks": [],
+													"content": null
+												},
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "Bandwidth Threshold",
+													"marks": [
+														{
+															"type": "bold"
+														}
+													],
+													"content": null
+												},
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "\"), Cloudflare reserves the right, in its sole discretion, to perform traffic management actions to prevent network saturation and ensure availability. Such actions may include, but are not limited to, rate limiting, temporary suspension, or re-routing of specific network paths.",
+													"marks": [],
+													"content": null
+												}
+											]
+										},
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "4.2 Bandwidth Measurement (95th Percentile)",
+													"marks": [
+														{
+															"type": "bold"
+														}
+													],
+													"content": null
+												},
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": ". Customer's bandwidth usage on the China Network will be measured by Cloudflare at the 95th percentile to determine compliance with the Bandwidth Threshold and any applicable overage fees. To establish Customer's bandwidth at the 95th percentile, Cloudflare will measure and record Customer's bandwidth usage within the China Network at five (5) minute intervals from 00:00 on the first day of each month until 24:00:00 on the same date of the next month (as based on the UTC+8 time zone). Customer's bandwidth usage records (all clean bandwidth valued for the Customer's traffic within the China Network) for the entire month will then be sorted by Cloudflare in descending order and the top 5% of the recorded bandwidth values will be discarded. The highest bandwidth value in the remaining records will be deemed the \"",
+													"marks": [],
+													"content": null
+												},
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "Billable Bandwidth",
+													"marks": [
+														{
+															"type": "bold"
+														}
+													],
+													"content": null
+												},
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "\" for that month. By way of example, in a month with 30 days, Cloudflare would measure Customer's bandwidth 8,640 times (i.e. 12 x 24 x 30). After sorting all of the bandwidth measurements from highest to lowest, and discarding the top 5% of such measurements, the Billable Bandwidth would be the 433rd highest value (i.e. 8,640 x 5%).",
+													"marks": [],
+													"content": null
+												}
+											]
+										},
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "4.3 Overage Fees. ",
+													"marks": [
+														{
+															"type": "bold"
+														}
+													],
+													"content": null
+												},
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "If the Billable Bandwidth for any month exceeds the Bandwidth Threshold of 15 Gbps, Customer shall pay an exceeding bandwidth charge calculated at the rate of USD $5.00 per hour (or fraction thereof) per Gbps (or fraction thereof) for all bandwidth utilization in excess of the Bandwidth Threshold",
+													"marks": [],
+													"content": null
 												}
 											]
 										},
@@ -8098,7 +8302,7 @@
 																		"target": null,
 																		"uri": null
 																	},
-																	"value": "Cloudflare will not transfer outside the configured region(s) any Customer Logs arising from Covered Services.  Customer is responsible for all configurations related to CMB. ",
+																	"value": "Cloudflare will not transfer outside the configured region(s) any End User Customer Logs arising from Covered Services. Customer is responsible for all configurations related to CMB.",
 																	"marks": [],
 																	"content": null
 																}
