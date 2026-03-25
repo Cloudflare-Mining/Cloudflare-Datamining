@@ -4,27 +4,27 @@
 		"operationId": "ai-search-delete-instances",
 		"parameters": [
 			{
+				"description": "AI Search instance ID. Lowercase alphanumeric, hyphens, and underscores.",
+				"in": "path",
+				"name": "id",
+				"required": true,
+				"schema": {
+					"description": "AI Search instance ID. Lowercase alphanumeric, hyphens, and underscores.",
+					"example": "my-ai-search",
+					"maxLength": 64,
+					"minLength": 1,
+					"pattern": "^[a-z0-9_]+(?:-[a-z0-9_]+)*$",
+					"type": "string",
+					"x-auditable": true
+				}
+			},
+			{
 				"in": "path",
 				"name": "account_id",
 				"required": true,
 				"schema": {
 					"example": "c3dc5f0b34a14ff8e1b3ec04895e1b22",
 					"type": "string"
-				}
-			},
-			{
-				"description": "Use your AI Search ID.",
-				"in": "path",
-				"name": "id",
-				"required": true,
-				"schema": {
-					"description": "Use your AI Search ID.",
-					"example": "my-ai-search",
-					"maxLength": 32,
-					"minLength": 1,
-					"pattern": "^[a-z0-9_]+(?:-[a-z0-9_]+)*$",
-					"type": "string",
-					"x-auditable": true
 				}
 			}
 		],
@@ -42,46 +42,39 @@
 											"x-auditable": true
 										},
 										"ai_search_model": {
-											"anyOf": [
-												{
-													"enum": [
-														"@cf/meta/llama-3.3-70b-instruct-fp8-fast",
-														"@cf/zai-org/glm-4.7-flash",
-														"@cf/meta/llama-3.1-8b-instruct-fast",
-														"@cf/meta/llama-3.1-8b-instruct-fp8",
-														"@cf/meta/llama-4-scout-17b-16e-instruct",
-														"@cf/qwen/qwen3-30b-a3b-fp8",
-														"@cf/deepseek-ai/deepseek-r1-distill-qwen-32b",
-														"@cf/moonshotai/kimi-k2-instruct",
-														"@cf/google/gemma-3-12b-it",
-														"anthropic/claude-3-7-sonnet",
-														"anthropic/claude-sonnet-4",
-														"anthropic/claude-opus-4",
-														"anthropic/claude-3-5-haiku",
-														"cerebras/qwen-3-235b-a22b-instruct",
-														"cerebras/qwen-3-235b-a22b-thinking",
-														"cerebras/llama-3.3-70b",
-														"cerebras/llama-4-maverick-17b-128e-instruct",
-														"cerebras/llama-4-scout-17b-16e-instruct",
-														"cerebras/gpt-oss-120b",
-														"google-ai-studio/gemini-2.5-flash",
-														"google-ai-studio/gemini-2.5-pro",
-														"grok/grok-4",
-														"groq/llama-3.3-70b-versatile",
-														"groq/llama-3.1-8b-instant",
-														"openai/gpt-5",
-														"openai/gpt-5-mini",
-														"openai/gpt-5-nano"
-													],
-													"type": "string"
-												},
-												{
-													"enum": [
-														""
-													],
-													"type": "string"
-												}
+											"enum": [
+												"@cf/meta/llama-3.3-70b-instruct-fp8-fast",
+												"@cf/zai-org/glm-4.7-flash",
+												"@cf/meta/llama-3.1-8b-instruct-fast",
+												"@cf/meta/llama-3.1-8b-instruct-fp8",
+												"@cf/meta/llama-4-scout-17b-16e-instruct",
+												"@cf/qwen/qwen3-30b-a3b-fp8",
+												"@cf/deepseek-ai/deepseek-r1-distill-qwen-32b",
+												"@cf/moonshotai/kimi-k2-instruct",
+												"@cf/google/gemma-3-12b-it",
+												"anthropic/claude-3-7-sonnet",
+												"anthropic/claude-sonnet-4",
+												"anthropic/claude-opus-4",
+												"anthropic/claude-3-5-haiku",
+												"cerebras/qwen-3-235b-a22b-instruct",
+												"cerebras/qwen-3-235b-a22b-thinking",
+												"cerebras/llama-3.3-70b",
+												"cerebras/llama-4-maverick-17b-128e-instruct",
+												"cerebras/llama-4-scout-17b-16e-instruct",
+												"cerebras/gpt-oss-120b",
+												"google-ai-studio/gemini-2.5-flash",
+												"google-ai-studio/gemini-2.5-pro",
+												"grok/grok-4",
+												"groq/llama-3.3-70b-versatile",
+												"groq/llama-3.1-8b-instant",
+												"openai/gpt-5",
+												"openai/gpt-5-mini",
+												"openai/gpt-5-nano",
+												"",
+												null
 											],
+											"nullable": true,
+											"type": "string",
 											"x-auditable": true
 										},
 										"cache": {
@@ -152,27 +145,20 @@
 											"x-auditable": true
 										},
 										"embedding_model": {
-											"anyOf": [
-												{
-													"enum": [
-														"@cf/qwen/qwen3-embedding-0.6b",
-														"@cf/baai/bge-m3",
-														"@cf/baai/bge-large-en-v1.5",
-														"@cf/google/embeddinggemma-300m",
-														"google-ai-studio/gemini-embedding-001",
-														"google-ai-studio/gemini-embedding-2-preview",
-														"openai/text-embedding-3-small",
-														"openai/text-embedding-3-large"
-													],
-													"type": "string"
-												},
-												{
-													"enum": [
-														""
-													],
-													"type": "string"
-												}
+											"enum": [
+												"@cf/qwen/qwen3-embedding-0.6b",
+												"@cf/baai/bge-m3",
+												"@cf/baai/bge-large-en-v1.5",
+												"@cf/google/embeddinggemma-300m",
+												"google-ai-studio/gemini-embedding-001",
+												"google-ai-studio/gemini-embedding-2-preview",
+												"openai/text-embedding-3-small",
+												"openai/text-embedding-3-large",
+												"",
+												null
 											],
+											"nullable": true,
+											"type": "string",
 											"x-auditable": true
 										},
 										"enable": {
@@ -195,12 +181,28 @@
 											"x-auditable": true
 										},
 										"id": {
-											"description": "Use your AI Search ID.",
+											"description": "AI Search instance ID. Lowercase alphanumeric, hyphens, and underscores.",
 											"example": "my-ai-search",
-											"maxLength": 32,
+											"maxLength": 64,
 											"minLength": 1,
 											"pattern": "^[a-z0-9_]+(?:-[a-z0-9_]+)*$",
 											"type": "string",
+											"x-auditable": true
+										},
+										"indexing_options": {
+											"nullable": true,
+											"properties": {
+												"keyword_tokenizer": {
+													"default": "porter",
+													"description": "Tokenizer used for keyword search indexing. porter provides word-level tokenization with Porter stemming (good for natural language queries). trigram enables character-level substring matching (good for partial matches, code, identifiers). Changing this triggers a full re-index. Defaults to porter.",
+													"enum": [
+														"porter",
+														"trigram"
+													],
+													"type": "string"
+												}
+											},
+											"type": "object",
 											"x-auditable": true
 										},
 										"last_activity": {
@@ -235,6 +237,14 @@
 										},
 										"modified_by": {
 											"nullable": true,
+											"readOnly": true,
+											"type": "string"
+										},
+										"namespace": {
+											"maxLength": 32,
+											"minLength": 1,
+											"nullable": true,
+											"pattern": "^[a-z0-9_]+(?:-[a-z0-9_]+)*$",
 											"readOnly": true,
 											"type": "string"
 										},
@@ -325,20 +335,13 @@
 											"x-auditable": true
 										},
 										"reranking_model": {
-											"anyOf": [
-												{
-													"enum": [
-														"@cf/baai/bge-reranker-base"
-													],
-													"type": "string"
-												},
-												{
-													"enum": [
-														""
-													],
-													"type": "string"
-												}
+											"enum": [
+												"@cf/baai/bge-reranker-base",
+												"",
+												null
 											],
+											"nullable": true,
+											"type": "string",
 											"x-auditable": true
 										},
 										"retrieval_options": {
@@ -394,46 +397,39 @@
 											"x-auditable": true
 										},
 										"rewrite_model": {
-											"anyOf": [
-												{
-													"enum": [
-														"@cf/meta/llama-3.3-70b-instruct-fp8-fast",
-														"@cf/zai-org/glm-4.7-flash",
-														"@cf/meta/llama-3.1-8b-instruct-fast",
-														"@cf/meta/llama-3.1-8b-instruct-fp8",
-														"@cf/meta/llama-4-scout-17b-16e-instruct",
-														"@cf/qwen/qwen3-30b-a3b-fp8",
-														"@cf/deepseek-ai/deepseek-r1-distill-qwen-32b",
-														"@cf/moonshotai/kimi-k2-instruct",
-														"@cf/google/gemma-3-12b-it",
-														"anthropic/claude-3-7-sonnet",
-														"anthropic/claude-sonnet-4",
-														"anthropic/claude-opus-4",
-														"anthropic/claude-3-5-haiku",
-														"cerebras/qwen-3-235b-a22b-instruct",
-														"cerebras/qwen-3-235b-a22b-thinking",
-														"cerebras/llama-3.3-70b",
-														"cerebras/llama-4-maverick-17b-128e-instruct",
-														"cerebras/llama-4-scout-17b-16e-instruct",
-														"cerebras/gpt-oss-120b",
-														"google-ai-studio/gemini-2.5-flash",
-														"google-ai-studio/gemini-2.5-pro",
-														"grok/grok-4",
-														"groq/llama-3.3-70b-versatile",
-														"groq/llama-3.1-8b-instant",
-														"openai/gpt-5",
-														"openai/gpt-5-mini",
-														"openai/gpt-5-nano"
-													],
-													"type": "string"
-												},
-												{
-													"enum": [
-														""
-													],
-													"type": "string"
-												}
+											"enum": [
+												"@cf/meta/llama-3.3-70b-instruct-fp8-fast",
+												"@cf/zai-org/glm-4.7-flash",
+												"@cf/meta/llama-3.1-8b-instruct-fast",
+												"@cf/meta/llama-3.1-8b-instruct-fp8",
+												"@cf/meta/llama-4-scout-17b-16e-instruct",
+												"@cf/qwen/qwen3-30b-a3b-fp8",
+												"@cf/deepseek-ai/deepseek-r1-distill-qwen-32b",
+												"@cf/moonshotai/kimi-k2-instruct",
+												"@cf/google/gemma-3-12b-it",
+												"anthropic/claude-3-7-sonnet",
+												"anthropic/claude-sonnet-4",
+												"anthropic/claude-opus-4",
+												"anthropic/claude-3-5-haiku",
+												"cerebras/qwen-3-235b-a22b-instruct",
+												"cerebras/qwen-3-235b-a22b-thinking",
+												"cerebras/llama-3.3-70b",
+												"cerebras/llama-4-maverick-17b-128e-instruct",
+												"cerebras/llama-4-scout-17b-16e-instruct",
+												"cerebras/gpt-oss-120b",
+												"google-ai-studio/gemini-2.5-flash",
+												"google-ai-studio/gemini-2.5-pro",
+												"grok/grok-4",
+												"groq/llama-3.3-70b-versatile",
+												"groq/llama-3.1-8b-instant",
+												"openai/gpt-5",
+												"openai/gpt-5-mini",
+												"openai/gpt-5-nano",
+												"",
+												null
 											],
+											"nullable": true,
+											"type": "string",
 											"x-auditable": true
 										},
 										"rewrite_query": {
@@ -769,6 +765,18 @@
 				}
 			},
 			{
+				"in": "query",
+				"name": "namespace",
+				"schema": {
+					"maxLength": 32,
+					"minLength": 1,
+					"nullable": true,
+					"pattern": "^[a-z0-9_]+(?:-[a-z0-9_]+)*$",
+					"readOnly": true,
+					"type": "string"
+				}
+			},
+			{
 				"description": "Search by id",
 				"in": "query",
 				"name": "search",
@@ -820,46 +828,39 @@
 												"x-auditable": true
 											},
 											"ai_search_model": {
-												"anyOf": [
-													{
-														"enum": [
-															"@cf/meta/llama-3.3-70b-instruct-fp8-fast",
-															"@cf/zai-org/glm-4.7-flash",
-															"@cf/meta/llama-3.1-8b-instruct-fast",
-															"@cf/meta/llama-3.1-8b-instruct-fp8",
-															"@cf/meta/llama-4-scout-17b-16e-instruct",
-															"@cf/qwen/qwen3-30b-a3b-fp8",
-															"@cf/deepseek-ai/deepseek-r1-distill-qwen-32b",
-															"@cf/moonshotai/kimi-k2-instruct",
-															"@cf/google/gemma-3-12b-it",
-															"anthropic/claude-3-7-sonnet",
-															"anthropic/claude-sonnet-4",
-															"anthropic/claude-opus-4",
-															"anthropic/claude-3-5-haiku",
-															"cerebras/qwen-3-235b-a22b-instruct",
-															"cerebras/qwen-3-235b-a22b-thinking",
-															"cerebras/llama-3.3-70b",
-															"cerebras/llama-4-maverick-17b-128e-instruct",
-															"cerebras/llama-4-scout-17b-16e-instruct",
-															"cerebras/gpt-oss-120b",
-															"google-ai-studio/gemini-2.5-flash",
-															"google-ai-studio/gemini-2.5-pro",
-															"grok/grok-4",
-															"groq/llama-3.3-70b-versatile",
-															"groq/llama-3.1-8b-instant",
-															"openai/gpt-5",
-															"openai/gpt-5-mini",
-															"openai/gpt-5-nano"
-														],
-														"type": "string"
-													},
-													{
-														"enum": [
-															""
-														],
-														"type": "string"
-													}
+												"enum": [
+													"@cf/meta/llama-3.3-70b-instruct-fp8-fast",
+													"@cf/zai-org/glm-4.7-flash",
+													"@cf/meta/llama-3.1-8b-instruct-fast",
+													"@cf/meta/llama-3.1-8b-instruct-fp8",
+													"@cf/meta/llama-4-scout-17b-16e-instruct",
+													"@cf/qwen/qwen3-30b-a3b-fp8",
+													"@cf/deepseek-ai/deepseek-r1-distill-qwen-32b",
+													"@cf/moonshotai/kimi-k2-instruct",
+													"@cf/google/gemma-3-12b-it",
+													"anthropic/claude-3-7-sonnet",
+													"anthropic/claude-sonnet-4",
+													"anthropic/claude-opus-4",
+													"anthropic/claude-3-5-haiku",
+													"cerebras/qwen-3-235b-a22b-instruct",
+													"cerebras/qwen-3-235b-a22b-thinking",
+													"cerebras/llama-3.3-70b",
+													"cerebras/llama-4-maverick-17b-128e-instruct",
+													"cerebras/llama-4-scout-17b-16e-instruct",
+													"cerebras/gpt-oss-120b",
+													"google-ai-studio/gemini-2.5-flash",
+													"google-ai-studio/gemini-2.5-pro",
+													"grok/grok-4",
+													"groq/llama-3.3-70b-versatile",
+													"groq/llama-3.1-8b-instant",
+													"openai/gpt-5",
+													"openai/gpt-5-mini",
+													"openai/gpt-5-nano",
+													"",
+													null
 												],
+												"nullable": true,
+												"type": "string",
 												"x-auditable": true
 											},
 											"cache": {
@@ -930,27 +931,20 @@
 												"x-auditable": true
 											},
 											"embedding_model": {
-												"anyOf": [
-													{
-														"enum": [
-															"@cf/qwen/qwen3-embedding-0.6b",
-															"@cf/baai/bge-m3",
-															"@cf/baai/bge-large-en-v1.5",
-															"@cf/google/embeddinggemma-300m",
-															"google-ai-studio/gemini-embedding-001",
-															"google-ai-studio/gemini-embedding-2-preview",
-															"openai/text-embedding-3-small",
-															"openai/text-embedding-3-large"
-														],
-														"type": "string"
-													},
-													{
-														"enum": [
-															""
-														],
-														"type": "string"
-													}
+												"enum": [
+													"@cf/qwen/qwen3-embedding-0.6b",
+													"@cf/baai/bge-m3",
+													"@cf/baai/bge-large-en-v1.5",
+													"@cf/google/embeddinggemma-300m",
+													"google-ai-studio/gemini-embedding-001",
+													"google-ai-studio/gemini-embedding-2-preview",
+													"openai/text-embedding-3-small",
+													"openai/text-embedding-3-large",
+													"",
+													null
 												],
+												"nullable": true,
+												"type": "string",
 												"x-auditable": true
 											},
 											"enable": {
@@ -973,12 +967,28 @@
 												"x-auditable": true
 											},
 											"id": {
-												"description": "Use your AI Search ID.",
+												"description": "AI Search instance ID. Lowercase alphanumeric, hyphens, and underscores.",
 												"example": "my-ai-search",
-												"maxLength": 32,
+												"maxLength": 64,
 												"minLength": 1,
 												"pattern": "^[a-z0-9_]+(?:-[a-z0-9_]+)*$",
 												"type": "string",
+												"x-auditable": true
+											},
+											"indexing_options": {
+												"nullable": true,
+												"properties": {
+													"keyword_tokenizer": {
+														"default": "porter",
+														"description": "Tokenizer used for keyword search indexing. porter provides word-level tokenization with Porter stemming (good for natural language queries). trigram enables character-level substring matching (good for partial matches, code, identifiers). Changing this triggers a full re-index. Defaults to porter.",
+														"enum": [
+															"porter",
+															"trigram"
+														],
+														"type": "string"
+													}
+												},
+												"type": "object",
 												"x-auditable": true
 											},
 											"last_activity": {
@@ -1013,6 +1023,14 @@
 											},
 											"modified_by": {
 												"nullable": true,
+												"readOnly": true,
+												"type": "string"
+											},
+											"namespace": {
+												"maxLength": 32,
+												"minLength": 1,
+												"nullable": true,
+												"pattern": "^[a-z0-9_]+(?:-[a-z0-9_]+)*$",
 												"readOnly": true,
 												"type": "string"
 											},
@@ -1103,20 +1121,13 @@
 												"x-auditable": true
 											},
 											"reranking_model": {
-												"anyOf": [
-													{
-														"enum": [
-															"@cf/baai/bge-reranker-base"
-														],
-														"type": "string"
-													},
-													{
-														"enum": [
-															""
-														],
-														"type": "string"
-													}
+												"enum": [
+													"@cf/baai/bge-reranker-base",
+													"",
+													null
 												],
+												"nullable": true,
+												"type": "string",
 												"x-auditable": true
 											},
 											"retrieval_options": {
@@ -1172,46 +1183,39 @@
 												"x-auditable": true
 											},
 											"rewrite_model": {
-												"anyOf": [
-													{
-														"enum": [
-															"@cf/meta/llama-3.3-70b-instruct-fp8-fast",
-															"@cf/zai-org/glm-4.7-flash",
-															"@cf/meta/llama-3.1-8b-instruct-fast",
-															"@cf/meta/llama-3.1-8b-instruct-fp8",
-															"@cf/meta/llama-4-scout-17b-16e-instruct",
-															"@cf/qwen/qwen3-30b-a3b-fp8",
-															"@cf/deepseek-ai/deepseek-r1-distill-qwen-32b",
-															"@cf/moonshotai/kimi-k2-instruct",
-															"@cf/google/gemma-3-12b-it",
-															"anthropic/claude-3-7-sonnet",
-															"anthropic/claude-sonnet-4",
-															"anthropic/claude-opus-4",
-															"anthropic/claude-3-5-haiku",
-															"cerebras/qwen-3-235b-a22b-instruct",
-															"cerebras/qwen-3-235b-a22b-thinking",
-															"cerebras/llama-3.3-70b",
-															"cerebras/llama-4-maverick-17b-128e-instruct",
-															"cerebras/llama-4-scout-17b-16e-instruct",
-															"cerebras/gpt-oss-120b",
-															"google-ai-studio/gemini-2.5-flash",
-															"google-ai-studio/gemini-2.5-pro",
-															"grok/grok-4",
-															"groq/llama-3.3-70b-versatile",
-															"groq/llama-3.1-8b-instant",
-															"openai/gpt-5",
-															"openai/gpt-5-mini",
-															"openai/gpt-5-nano"
-														],
-														"type": "string"
-													},
-													{
-														"enum": [
-															""
-														],
-														"type": "string"
-													}
+												"enum": [
+													"@cf/meta/llama-3.3-70b-instruct-fp8-fast",
+													"@cf/zai-org/glm-4.7-flash",
+													"@cf/meta/llama-3.1-8b-instruct-fast",
+													"@cf/meta/llama-3.1-8b-instruct-fp8",
+													"@cf/meta/llama-4-scout-17b-16e-instruct",
+													"@cf/qwen/qwen3-30b-a3b-fp8",
+													"@cf/deepseek-ai/deepseek-r1-distill-qwen-32b",
+													"@cf/moonshotai/kimi-k2-instruct",
+													"@cf/google/gemma-3-12b-it",
+													"anthropic/claude-3-7-sonnet",
+													"anthropic/claude-sonnet-4",
+													"anthropic/claude-opus-4",
+													"anthropic/claude-3-5-haiku",
+													"cerebras/qwen-3-235b-a22b-instruct",
+													"cerebras/qwen-3-235b-a22b-thinking",
+													"cerebras/llama-3.3-70b",
+													"cerebras/llama-4-maverick-17b-128e-instruct",
+													"cerebras/llama-4-scout-17b-16e-instruct",
+													"cerebras/gpt-oss-120b",
+													"google-ai-studio/gemini-2.5-flash",
+													"google-ai-studio/gemini-2.5-pro",
+													"grok/grok-4",
+													"groq/llama-3.3-70b-versatile",
+													"groq/llama-3.1-8b-instant",
+													"openai/gpt-5",
+													"openai/gpt-5-mini",
+													"openai/gpt-5-nano",
+													"",
+													null
 												],
+												"nullable": true,
+												"type": "string",
 												"x-auditable": true
 											},
 											"rewrite_query": {
@@ -1528,27 +1532,27 @@
 		"operationId": "ai-search-fetch-instances",
 		"parameters": [
 			{
+				"description": "AI Search instance ID. Lowercase alphanumeric, hyphens, and underscores.",
+				"in": "path",
+				"name": "id",
+				"required": true,
+				"schema": {
+					"description": "AI Search instance ID. Lowercase alphanumeric, hyphens, and underscores.",
+					"example": "my-ai-search",
+					"maxLength": 64,
+					"minLength": 1,
+					"pattern": "^[a-z0-9_]+(?:-[a-z0-9_]+)*$",
+					"type": "string",
+					"x-auditable": true
+				}
+			},
+			{
 				"in": "path",
 				"name": "account_id",
 				"required": true,
 				"schema": {
 					"example": "c3dc5f0b34a14ff8e1b3ec04895e1b22",
 					"type": "string"
-				}
-			},
-			{
-				"description": "Use your AI Search ID.",
-				"in": "path",
-				"name": "id",
-				"required": true,
-				"schema": {
-					"description": "Use your AI Search ID.",
-					"example": "my-ai-search",
-					"maxLength": 32,
-					"minLength": 1,
-					"pattern": "^[a-z0-9_]+(?:-[a-z0-9_]+)*$",
-					"type": "string",
-					"x-auditable": true
 				}
 			}
 		],
@@ -1566,46 +1570,39 @@
 											"x-auditable": true
 										},
 										"ai_search_model": {
-											"anyOf": [
-												{
-													"enum": [
-														"@cf/meta/llama-3.3-70b-instruct-fp8-fast",
-														"@cf/zai-org/glm-4.7-flash",
-														"@cf/meta/llama-3.1-8b-instruct-fast",
-														"@cf/meta/llama-3.1-8b-instruct-fp8",
-														"@cf/meta/llama-4-scout-17b-16e-instruct",
-														"@cf/qwen/qwen3-30b-a3b-fp8",
-														"@cf/deepseek-ai/deepseek-r1-distill-qwen-32b",
-														"@cf/moonshotai/kimi-k2-instruct",
-														"@cf/google/gemma-3-12b-it",
-														"anthropic/claude-3-7-sonnet",
-														"anthropic/claude-sonnet-4",
-														"anthropic/claude-opus-4",
-														"anthropic/claude-3-5-haiku",
-														"cerebras/qwen-3-235b-a22b-instruct",
-														"cerebras/qwen-3-235b-a22b-thinking",
-														"cerebras/llama-3.3-70b",
-														"cerebras/llama-4-maverick-17b-128e-instruct",
-														"cerebras/llama-4-scout-17b-16e-instruct",
-														"cerebras/gpt-oss-120b",
-														"google-ai-studio/gemini-2.5-flash",
-														"google-ai-studio/gemini-2.5-pro",
-														"grok/grok-4",
-														"groq/llama-3.3-70b-versatile",
-														"groq/llama-3.1-8b-instant",
-														"openai/gpt-5",
-														"openai/gpt-5-mini",
-														"openai/gpt-5-nano"
-													],
-													"type": "string"
-												},
-												{
-													"enum": [
-														""
-													],
-													"type": "string"
-												}
+											"enum": [
+												"@cf/meta/llama-3.3-70b-instruct-fp8-fast",
+												"@cf/zai-org/glm-4.7-flash",
+												"@cf/meta/llama-3.1-8b-instruct-fast",
+												"@cf/meta/llama-3.1-8b-instruct-fp8",
+												"@cf/meta/llama-4-scout-17b-16e-instruct",
+												"@cf/qwen/qwen3-30b-a3b-fp8",
+												"@cf/deepseek-ai/deepseek-r1-distill-qwen-32b",
+												"@cf/moonshotai/kimi-k2-instruct",
+												"@cf/google/gemma-3-12b-it",
+												"anthropic/claude-3-7-sonnet",
+												"anthropic/claude-sonnet-4",
+												"anthropic/claude-opus-4",
+												"anthropic/claude-3-5-haiku",
+												"cerebras/qwen-3-235b-a22b-instruct",
+												"cerebras/qwen-3-235b-a22b-thinking",
+												"cerebras/llama-3.3-70b",
+												"cerebras/llama-4-maverick-17b-128e-instruct",
+												"cerebras/llama-4-scout-17b-16e-instruct",
+												"cerebras/gpt-oss-120b",
+												"google-ai-studio/gemini-2.5-flash",
+												"google-ai-studio/gemini-2.5-pro",
+												"grok/grok-4",
+												"groq/llama-3.3-70b-versatile",
+												"groq/llama-3.1-8b-instant",
+												"openai/gpt-5",
+												"openai/gpt-5-mini",
+												"openai/gpt-5-nano",
+												"",
+												null
 											],
+											"nullable": true,
+											"type": "string",
 											"x-auditable": true
 										},
 										"cache": {
@@ -1676,27 +1673,20 @@
 											"x-auditable": true
 										},
 										"embedding_model": {
-											"anyOf": [
-												{
-													"enum": [
-														"@cf/qwen/qwen3-embedding-0.6b",
-														"@cf/baai/bge-m3",
-														"@cf/baai/bge-large-en-v1.5",
-														"@cf/google/embeddinggemma-300m",
-														"google-ai-studio/gemini-embedding-001",
-														"google-ai-studio/gemini-embedding-2-preview",
-														"openai/text-embedding-3-small",
-														"openai/text-embedding-3-large"
-													],
-													"type": "string"
-												},
-												{
-													"enum": [
-														""
-													],
-													"type": "string"
-												}
+											"enum": [
+												"@cf/qwen/qwen3-embedding-0.6b",
+												"@cf/baai/bge-m3",
+												"@cf/baai/bge-large-en-v1.5",
+												"@cf/google/embeddinggemma-300m",
+												"google-ai-studio/gemini-embedding-001",
+												"google-ai-studio/gemini-embedding-2-preview",
+												"openai/text-embedding-3-small",
+												"openai/text-embedding-3-large",
+												"",
+												null
 											],
+											"nullable": true,
+											"type": "string",
 											"x-auditable": true
 										},
 										"enable": {
@@ -1719,12 +1709,28 @@
 											"x-auditable": true
 										},
 										"id": {
-											"description": "Use your AI Search ID.",
+											"description": "AI Search instance ID. Lowercase alphanumeric, hyphens, and underscores.",
 											"example": "my-ai-search",
-											"maxLength": 32,
+											"maxLength": 64,
 											"minLength": 1,
 											"pattern": "^[a-z0-9_]+(?:-[a-z0-9_]+)*$",
 											"type": "string",
+											"x-auditable": true
+										},
+										"indexing_options": {
+											"nullable": true,
+											"properties": {
+												"keyword_tokenizer": {
+													"default": "porter",
+													"description": "Tokenizer used for keyword search indexing. porter provides word-level tokenization with Porter stemming (good for natural language queries). trigram enables character-level substring matching (good for partial matches, code, identifiers). Changing this triggers a full re-index. Defaults to porter.",
+													"enum": [
+														"porter",
+														"trigram"
+													],
+													"type": "string"
+												}
+											},
+											"type": "object",
 											"x-auditable": true
 										},
 										"last_activity": {
@@ -1759,6 +1765,14 @@
 										},
 										"modified_by": {
 											"nullable": true,
+											"readOnly": true,
+											"type": "string"
+										},
+										"namespace": {
+											"maxLength": 32,
+											"minLength": 1,
+											"nullable": true,
+											"pattern": "^[a-z0-9_]+(?:-[a-z0-9_]+)*$",
 											"readOnly": true,
 											"type": "string"
 										},
@@ -1849,20 +1863,13 @@
 											"x-auditable": true
 										},
 										"reranking_model": {
-											"anyOf": [
-												{
-													"enum": [
-														"@cf/baai/bge-reranker-base"
-													],
-													"type": "string"
-												},
-												{
-													"enum": [
-														""
-													],
-													"type": "string"
-												}
+											"enum": [
+												"@cf/baai/bge-reranker-base",
+												"",
+												null
 											],
+											"nullable": true,
+											"type": "string",
 											"x-auditable": true
 										},
 										"retrieval_options": {
@@ -1918,46 +1925,39 @@
 											"x-auditable": true
 										},
 										"rewrite_model": {
-											"anyOf": [
-												{
-													"enum": [
-														"@cf/meta/llama-3.3-70b-instruct-fp8-fast",
-														"@cf/zai-org/glm-4.7-flash",
-														"@cf/meta/llama-3.1-8b-instruct-fast",
-														"@cf/meta/llama-3.1-8b-instruct-fp8",
-														"@cf/meta/llama-4-scout-17b-16e-instruct",
-														"@cf/qwen/qwen3-30b-a3b-fp8",
-														"@cf/deepseek-ai/deepseek-r1-distill-qwen-32b",
-														"@cf/moonshotai/kimi-k2-instruct",
-														"@cf/google/gemma-3-12b-it",
-														"anthropic/claude-3-7-sonnet",
-														"anthropic/claude-sonnet-4",
-														"anthropic/claude-opus-4",
-														"anthropic/claude-3-5-haiku",
-														"cerebras/qwen-3-235b-a22b-instruct",
-														"cerebras/qwen-3-235b-a22b-thinking",
-														"cerebras/llama-3.3-70b",
-														"cerebras/llama-4-maverick-17b-128e-instruct",
-														"cerebras/llama-4-scout-17b-16e-instruct",
-														"cerebras/gpt-oss-120b",
-														"google-ai-studio/gemini-2.5-flash",
-														"google-ai-studio/gemini-2.5-pro",
-														"grok/grok-4",
-														"groq/llama-3.3-70b-versatile",
-														"groq/llama-3.1-8b-instant",
-														"openai/gpt-5",
-														"openai/gpt-5-mini",
-														"openai/gpt-5-nano"
-													],
-													"type": "string"
-												},
-												{
-													"enum": [
-														""
-													],
-													"type": "string"
-												}
+											"enum": [
+												"@cf/meta/llama-3.3-70b-instruct-fp8-fast",
+												"@cf/zai-org/glm-4.7-flash",
+												"@cf/meta/llama-3.1-8b-instruct-fast",
+												"@cf/meta/llama-3.1-8b-instruct-fp8",
+												"@cf/meta/llama-4-scout-17b-16e-instruct",
+												"@cf/qwen/qwen3-30b-a3b-fp8",
+												"@cf/deepseek-ai/deepseek-r1-distill-qwen-32b",
+												"@cf/moonshotai/kimi-k2-instruct",
+												"@cf/google/gemma-3-12b-it",
+												"anthropic/claude-3-7-sonnet",
+												"anthropic/claude-sonnet-4",
+												"anthropic/claude-opus-4",
+												"anthropic/claude-3-5-haiku",
+												"cerebras/qwen-3-235b-a22b-instruct",
+												"cerebras/qwen-3-235b-a22b-thinking",
+												"cerebras/llama-3.3-70b",
+												"cerebras/llama-4-maverick-17b-128e-instruct",
+												"cerebras/llama-4-scout-17b-16e-instruct",
+												"cerebras/gpt-oss-120b",
+												"google-ai-studio/gemini-2.5-flash",
+												"google-ai-studio/gemini-2.5-pro",
+												"grok/grok-4",
+												"groq/llama-3.3-70b-versatile",
+												"groq/llama-3.1-8b-instant",
+												"openai/gpt-5",
+												"openai/gpt-5-mini",
+												"openai/gpt-5-nano",
+												"",
+												null
 											],
+											"nullable": true,
+											"type": "string",
 											"x-auditable": true
 										},
 										"rewrite_query": {
@@ -2312,14 +2312,14 @@
 		"operationId": "ai-search-stats",
 		"parameters": [
 			{
-				"description": "Use your AI Search ID.",
+				"description": "AI Search instance ID. Lowercase alphanumeric, hyphens, and underscores.",
 				"in": "path",
 				"name": "id",
 				"required": true,
 				"schema": {
-					"description": "Use your AI Search ID.",
+					"description": "AI Search instance ID. Lowercase alphanumeric, hyphens, and underscores.",
 					"example": "my-ai-search",
-					"maxLength": 32,
+					"maxLength": 64,
 					"minLength": 1,
 					"pattern": "^[a-z0-9_]+(?:-[a-z0-9_]+)*$",
 					"type": "string",
@@ -2361,6 +2361,9 @@
 										"last_activity": {
 											"format": "date-time",
 											"type": "string"
+										},
+										"outdated": {
+											"type": "integer"
 										},
 										"queued": {
 											"type": "integer"
@@ -2479,46 +2482,39 @@
 								"x-auditable": true
 							},
 							"ai_search_model": {
-								"anyOf": [
-									{
-										"enum": [
-											"@cf/meta/llama-3.3-70b-instruct-fp8-fast",
-											"@cf/zai-org/glm-4.7-flash",
-											"@cf/meta/llama-3.1-8b-instruct-fast",
-											"@cf/meta/llama-3.1-8b-instruct-fp8",
-											"@cf/meta/llama-4-scout-17b-16e-instruct",
-											"@cf/qwen/qwen3-30b-a3b-fp8",
-											"@cf/deepseek-ai/deepseek-r1-distill-qwen-32b",
-											"@cf/moonshotai/kimi-k2-instruct",
-											"@cf/google/gemma-3-12b-it",
-											"anthropic/claude-3-7-sonnet",
-											"anthropic/claude-sonnet-4",
-											"anthropic/claude-opus-4",
-											"anthropic/claude-3-5-haiku",
-											"cerebras/qwen-3-235b-a22b-instruct",
-											"cerebras/qwen-3-235b-a22b-thinking",
-											"cerebras/llama-3.3-70b",
-											"cerebras/llama-4-maverick-17b-128e-instruct",
-											"cerebras/llama-4-scout-17b-16e-instruct",
-											"cerebras/gpt-oss-120b",
-											"google-ai-studio/gemini-2.5-flash",
-											"google-ai-studio/gemini-2.5-pro",
-											"grok/grok-4",
-											"groq/llama-3.3-70b-versatile",
-											"groq/llama-3.1-8b-instant",
-											"openai/gpt-5",
-											"openai/gpt-5-mini",
-											"openai/gpt-5-nano"
-										],
-										"type": "string"
-									},
-									{
-										"enum": [
-											""
-										],
-										"type": "string"
-									}
+								"enum": [
+									"@cf/meta/llama-3.3-70b-instruct-fp8-fast",
+									"@cf/zai-org/glm-4.7-flash",
+									"@cf/meta/llama-3.1-8b-instruct-fast",
+									"@cf/meta/llama-3.1-8b-instruct-fp8",
+									"@cf/meta/llama-4-scout-17b-16e-instruct",
+									"@cf/qwen/qwen3-30b-a3b-fp8",
+									"@cf/deepseek-ai/deepseek-r1-distill-qwen-32b",
+									"@cf/moonshotai/kimi-k2-instruct",
+									"@cf/google/gemma-3-12b-it",
+									"anthropic/claude-3-7-sonnet",
+									"anthropic/claude-sonnet-4",
+									"anthropic/claude-opus-4",
+									"anthropic/claude-3-5-haiku",
+									"cerebras/qwen-3-235b-a22b-instruct",
+									"cerebras/qwen-3-235b-a22b-thinking",
+									"cerebras/llama-3.3-70b",
+									"cerebras/llama-4-maverick-17b-128e-instruct",
+									"cerebras/llama-4-scout-17b-16e-instruct",
+									"cerebras/gpt-oss-120b",
+									"google-ai-studio/gemini-2.5-flash",
+									"google-ai-studio/gemini-2.5-pro",
+									"grok/grok-4",
+									"groq/llama-3.3-70b-versatile",
+									"groq/llama-3.1-8b-instant",
+									"openai/gpt-5",
+									"openai/gpt-5-mini",
+									"openai/gpt-5-nano",
+									"",
+									null
 								],
+								"nullable": true,
+								"type": "string",
 								"x-auditable": true
 							},
 							"cache": {
@@ -2584,27 +2580,20 @@
 								"x-auditable": true
 							},
 							"embedding_model": {
-								"anyOf": [
-									{
-										"enum": [
-											"@cf/qwen/qwen3-embedding-0.6b",
-											"@cf/baai/bge-m3",
-											"@cf/baai/bge-large-en-v1.5",
-											"@cf/google/embeddinggemma-300m",
-											"google-ai-studio/gemini-embedding-001",
-											"google-ai-studio/gemini-embedding-2-preview",
-											"openai/text-embedding-3-small",
-											"openai/text-embedding-3-large"
-										],
-										"type": "string"
-									},
-									{
-										"enum": [
-											""
-										],
-										"type": "string"
-									}
+								"enum": [
+									"@cf/qwen/qwen3-embedding-0.6b",
+									"@cf/baai/bge-m3",
+									"@cf/baai/bge-large-en-v1.5",
+									"@cf/google/embeddinggemma-300m",
+									"google-ai-studio/gemini-embedding-001",
+									"google-ai-studio/gemini-embedding-2-preview",
+									"openai/text-embedding-3-small",
+									"openai/text-embedding-3-large",
+									"",
+									null
 								],
+								"nullable": true,
+								"type": "string",
 								"x-auditable": true
 							},
 							"fusion_method": {
@@ -2622,12 +2611,28 @@
 								"x-auditable": true
 							},
 							"id": {
-								"description": "Use your AI Search ID.",
+								"description": "AI Search instance ID. Lowercase alphanumeric, hyphens, and underscores.",
 								"example": "my-ai-search",
-								"maxLength": 32,
+								"maxLength": 64,
 								"minLength": 1,
 								"pattern": "^[a-z0-9_]+(?:-[a-z0-9_]+)*$",
 								"type": "string",
+								"x-auditable": true
+							},
+							"indexing_options": {
+								"nullable": true,
+								"properties": {
+									"keyword_tokenizer": {
+										"default": "porter",
+										"description": "Tokenizer used for keyword search indexing. porter provides word-level tokenization with Porter stemming (good for natural language queries). trigram enables character-level substring matching (good for partial matches, code, identifiers). Changing this triggers a full re-index. Defaults to porter.",
+										"enum": [
+											"porter",
+											"trigram"
+										],
+										"type": "string"
+									}
+								},
+								"type": "object",
 								"x-auditable": true
 							},
 							"max_num_results": {
@@ -2648,6 +2653,14 @@
 								},
 								"type": "object",
 								"x-auditable": true
+							},
+							"namespace": {
+								"maxLength": 32,
+								"minLength": 1,
+								"nullable": true,
+								"pattern": "^[a-z0-9_]+(?:-[a-z0-9_]+)*$",
+								"readOnly": true,
+								"type": "string"
 							},
 							"public_endpoint_params": {
 								"properties": {
@@ -2726,20 +2739,13 @@
 								"x-auditable": true
 							},
 							"reranking_model": {
-								"anyOf": [
-									{
-										"enum": [
-											"@cf/baai/bge-reranker-base"
-										],
-										"type": "string"
-									},
-									{
-										"enum": [
-											""
-										],
-										"type": "string"
-									}
+								"enum": [
+									"@cf/baai/bge-reranker-base",
+									"",
+									null
 								],
+								"nullable": true,
+								"type": "string",
 								"x-auditable": true
 							},
 							"retrieval_options": {
@@ -2795,46 +2801,39 @@
 								"x-auditable": true
 							},
 							"rewrite_model": {
-								"anyOf": [
-									{
-										"enum": [
-											"@cf/meta/llama-3.3-70b-instruct-fp8-fast",
-											"@cf/zai-org/glm-4.7-flash",
-											"@cf/meta/llama-3.1-8b-instruct-fast",
-											"@cf/meta/llama-3.1-8b-instruct-fp8",
-											"@cf/meta/llama-4-scout-17b-16e-instruct",
-											"@cf/qwen/qwen3-30b-a3b-fp8",
-											"@cf/deepseek-ai/deepseek-r1-distill-qwen-32b",
-											"@cf/moonshotai/kimi-k2-instruct",
-											"@cf/google/gemma-3-12b-it",
-											"anthropic/claude-3-7-sonnet",
-											"anthropic/claude-sonnet-4",
-											"anthropic/claude-opus-4",
-											"anthropic/claude-3-5-haiku",
-											"cerebras/qwen-3-235b-a22b-instruct",
-											"cerebras/qwen-3-235b-a22b-thinking",
-											"cerebras/llama-3.3-70b",
-											"cerebras/llama-4-maverick-17b-128e-instruct",
-											"cerebras/llama-4-scout-17b-16e-instruct",
-											"cerebras/gpt-oss-120b",
-											"google-ai-studio/gemini-2.5-flash",
-											"google-ai-studio/gemini-2.5-pro",
-											"grok/grok-4",
-											"groq/llama-3.3-70b-versatile",
-											"groq/llama-3.1-8b-instant",
-											"openai/gpt-5",
-											"openai/gpt-5-mini",
-											"openai/gpt-5-nano"
-										],
-										"type": "string"
-									},
-									{
-										"enum": [
-											""
-										],
-										"type": "string"
-									}
+								"enum": [
+									"@cf/meta/llama-3.3-70b-instruct-fp8-fast",
+									"@cf/zai-org/glm-4.7-flash",
+									"@cf/meta/llama-3.1-8b-instruct-fast",
+									"@cf/meta/llama-3.1-8b-instruct-fp8",
+									"@cf/meta/llama-4-scout-17b-16e-instruct",
+									"@cf/qwen/qwen3-30b-a3b-fp8",
+									"@cf/deepseek-ai/deepseek-r1-distill-qwen-32b",
+									"@cf/moonshotai/kimi-k2-instruct",
+									"@cf/google/gemma-3-12b-it",
+									"anthropic/claude-3-7-sonnet",
+									"anthropic/claude-sonnet-4",
+									"anthropic/claude-opus-4",
+									"anthropic/claude-3-5-haiku",
+									"cerebras/qwen-3-235b-a22b-instruct",
+									"cerebras/qwen-3-235b-a22b-thinking",
+									"cerebras/llama-3.3-70b",
+									"cerebras/llama-4-maverick-17b-128e-instruct",
+									"cerebras/llama-4-scout-17b-16e-instruct",
+									"cerebras/gpt-oss-120b",
+									"google-ai-studio/gemini-2.5-flash",
+									"google-ai-studio/gemini-2.5-pro",
+									"grok/grok-4",
+									"groq/llama-3.3-70b-versatile",
+									"groq/llama-3.1-8b-instant",
+									"openai/gpt-5",
+									"openai/gpt-5-mini",
+									"openai/gpt-5-nano",
+									"",
+									null
 								],
+								"nullable": true,
+								"type": "string",
 								"x-auditable": true
 							},
 							"rewrite_query": {
@@ -3067,46 +3066,39 @@
 											"x-auditable": true
 										},
 										"ai_search_model": {
-											"anyOf": [
-												{
-													"enum": [
-														"@cf/meta/llama-3.3-70b-instruct-fp8-fast",
-														"@cf/zai-org/glm-4.7-flash",
-														"@cf/meta/llama-3.1-8b-instruct-fast",
-														"@cf/meta/llama-3.1-8b-instruct-fp8",
-														"@cf/meta/llama-4-scout-17b-16e-instruct",
-														"@cf/qwen/qwen3-30b-a3b-fp8",
-														"@cf/deepseek-ai/deepseek-r1-distill-qwen-32b",
-														"@cf/moonshotai/kimi-k2-instruct",
-														"@cf/google/gemma-3-12b-it",
-														"anthropic/claude-3-7-sonnet",
-														"anthropic/claude-sonnet-4",
-														"anthropic/claude-opus-4",
-														"anthropic/claude-3-5-haiku",
-														"cerebras/qwen-3-235b-a22b-instruct",
-														"cerebras/qwen-3-235b-a22b-thinking",
-														"cerebras/llama-3.3-70b",
-														"cerebras/llama-4-maverick-17b-128e-instruct",
-														"cerebras/llama-4-scout-17b-16e-instruct",
-														"cerebras/gpt-oss-120b",
-														"google-ai-studio/gemini-2.5-flash",
-														"google-ai-studio/gemini-2.5-pro",
-														"grok/grok-4",
-														"groq/llama-3.3-70b-versatile",
-														"groq/llama-3.1-8b-instant",
-														"openai/gpt-5",
-														"openai/gpt-5-mini",
-														"openai/gpt-5-nano"
-													],
-													"type": "string"
-												},
-												{
-													"enum": [
-														""
-													],
-													"type": "string"
-												}
+											"enum": [
+												"@cf/meta/llama-3.3-70b-instruct-fp8-fast",
+												"@cf/zai-org/glm-4.7-flash",
+												"@cf/meta/llama-3.1-8b-instruct-fast",
+												"@cf/meta/llama-3.1-8b-instruct-fp8",
+												"@cf/meta/llama-4-scout-17b-16e-instruct",
+												"@cf/qwen/qwen3-30b-a3b-fp8",
+												"@cf/deepseek-ai/deepseek-r1-distill-qwen-32b",
+												"@cf/moonshotai/kimi-k2-instruct",
+												"@cf/google/gemma-3-12b-it",
+												"anthropic/claude-3-7-sonnet",
+												"anthropic/claude-sonnet-4",
+												"anthropic/claude-opus-4",
+												"anthropic/claude-3-5-haiku",
+												"cerebras/qwen-3-235b-a22b-instruct",
+												"cerebras/qwen-3-235b-a22b-thinking",
+												"cerebras/llama-3.3-70b",
+												"cerebras/llama-4-maverick-17b-128e-instruct",
+												"cerebras/llama-4-scout-17b-16e-instruct",
+												"cerebras/gpt-oss-120b",
+												"google-ai-studio/gemini-2.5-flash",
+												"google-ai-studio/gemini-2.5-pro",
+												"grok/grok-4",
+												"groq/llama-3.3-70b-versatile",
+												"groq/llama-3.1-8b-instant",
+												"openai/gpt-5",
+												"openai/gpt-5-mini",
+												"openai/gpt-5-nano",
+												"",
+												null
 											],
+											"nullable": true,
+											"type": "string",
 											"x-auditable": true
 										},
 										"cache": {
@@ -3177,27 +3169,20 @@
 											"x-auditable": true
 										},
 										"embedding_model": {
-											"anyOf": [
-												{
-													"enum": [
-														"@cf/qwen/qwen3-embedding-0.6b",
-														"@cf/baai/bge-m3",
-														"@cf/baai/bge-large-en-v1.5",
-														"@cf/google/embeddinggemma-300m",
-														"google-ai-studio/gemini-embedding-001",
-														"google-ai-studio/gemini-embedding-2-preview",
-														"openai/text-embedding-3-small",
-														"openai/text-embedding-3-large"
-													],
-													"type": "string"
-												},
-												{
-													"enum": [
-														""
-													],
-													"type": "string"
-												}
+											"enum": [
+												"@cf/qwen/qwen3-embedding-0.6b",
+												"@cf/baai/bge-m3",
+												"@cf/baai/bge-large-en-v1.5",
+												"@cf/google/embeddinggemma-300m",
+												"google-ai-studio/gemini-embedding-001",
+												"google-ai-studio/gemini-embedding-2-preview",
+												"openai/text-embedding-3-small",
+												"openai/text-embedding-3-large",
+												"",
+												null
 											],
+											"nullable": true,
+											"type": "string",
 											"x-auditable": true
 										},
 										"enable": {
@@ -3220,12 +3205,28 @@
 											"x-auditable": true
 										},
 										"id": {
-											"description": "Use your AI Search ID.",
+											"description": "AI Search instance ID. Lowercase alphanumeric, hyphens, and underscores.",
 											"example": "my-ai-search",
-											"maxLength": 32,
+											"maxLength": 64,
 											"minLength": 1,
 											"pattern": "^[a-z0-9_]+(?:-[a-z0-9_]+)*$",
 											"type": "string",
+											"x-auditable": true
+										},
+										"indexing_options": {
+											"nullable": true,
+											"properties": {
+												"keyword_tokenizer": {
+													"default": "porter",
+													"description": "Tokenizer used for keyword search indexing. porter provides word-level tokenization with Porter stemming (good for natural language queries). trigram enables character-level substring matching (good for partial matches, code, identifiers). Changing this triggers a full re-index. Defaults to porter.",
+													"enum": [
+														"porter",
+														"trigram"
+													],
+													"type": "string"
+												}
+											},
+											"type": "object",
 											"x-auditable": true
 										},
 										"last_activity": {
@@ -3260,6 +3261,14 @@
 										},
 										"modified_by": {
 											"nullable": true,
+											"readOnly": true,
+											"type": "string"
+										},
+										"namespace": {
+											"maxLength": 32,
+											"minLength": 1,
+											"nullable": true,
+											"pattern": "^[a-z0-9_]+(?:-[a-z0-9_]+)*$",
 											"readOnly": true,
 											"type": "string"
 										},
@@ -3350,20 +3359,13 @@
 											"x-auditable": true
 										},
 										"reranking_model": {
-											"anyOf": [
-												{
-													"enum": [
-														"@cf/baai/bge-reranker-base"
-													],
-													"type": "string"
-												},
-												{
-													"enum": [
-														""
-													],
-													"type": "string"
-												}
+											"enum": [
+												"@cf/baai/bge-reranker-base",
+												"",
+												null
 											],
+											"nullable": true,
+											"type": "string",
 											"x-auditable": true
 										},
 										"retrieval_options": {
@@ -3419,46 +3421,39 @@
 											"x-auditable": true
 										},
 										"rewrite_model": {
-											"anyOf": [
-												{
-													"enum": [
-														"@cf/meta/llama-3.3-70b-instruct-fp8-fast",
-														"@cf/zai-org/glm-4.7-flash",
-														"@cf/meta/llama-3.1-8b-instruct-fast",
-														"@cf/meta/llama-3.1-8b-instruct-fp8",
-														"@cf/meta/llama-4-scout-17b-16e-instruct",
-														"@cf/qwen/qwen3-30b-a3b-fp8",
-														"@cf/deepseek-ai/deepseek-r1-distill-qwen-32b",
-														"@cf/moonshotai/kimi-k2-instruct",
-														"@cf/google/gemma-3-12b-it",
-														"anthropic/claude-3-7-sonnet",
-														"anthropic/claude-sonnet-4",
-														"anthropic/claude-opus-4",
-														"anthropic/claude-3-5-haiku",
-														"cerebras/qwen-3-235b-a22b-instruct",
-														"cerebras/qwen-3-235b-a22b-thinking",
-														"cerebras/llama-3.3-70b",
-														"cerebras/llama-4-maverick-17b-128e-instruct",
-														"cerebras/llama-4-scout-17b-16e-instruct",
-														"cerebras/gpt-oss-120b",
-														"google-ai-studio/gemini-2.5-flash",
-														"google-ai-studio/gemini-2.5-pro",
-														"grok/grok-4",
-														"groq/llama-3.3-70b-versatile",
-														"groq/llama-3.1-8b-instant",
-														"openai/gpt-5",
-														"openai/gpt-5-mini",
-														"openai/gpt-5-nano"
-													],
-													"type": "string"
-												},
-												{
-													"enum": [
-														""
-													],
-													"type": "string"
-												}
+											"enum": [
+												"@cf/meta/llama-3.3-70b-instruct-fp8-fast",
+												"@cf/zai-org/glm-4.7-flash",
+												"@cf/meta/llama-3.1-8b-instruct-fast",
+												"@cf/meta/llama-3.1-8b-instruct-fp8",
+												"@cf/meta/llama-4-scout-17b-16e-instruct",
+												"@cf/qwen/qwen3-30b-a3b-fp8",
+												"@cf/deepseek-ai/deepseek-r1-distill-qwen-32b",
+												"@cf/moonshotai/kimi-k2-instruct",
+												"@cf/google/gemma-3-12b-it",
+												"anthropic/claude-3-7-sonnet",
+												"anthropic/claude-sonnet-4",
+												"anthropic/claude-opus-4",
+												"anthropic/claude-3-5-haiku",
+												"cerebras/qwen-3-235b-a22b-instruct",
+												"cerebras/qwen-3-235b-a22b-thinking",
+												"cerebras/llama-3.3-70b",
+												"cerebras/llama-4-maverick-17b-128e-instruct",
+												"cerebras/llama-4-scout-17b-16e-instruct",
+												"cerebras/gpt-oss-120b",
+												"google-ai-studio/gemini-2.5-flash",
+												"google-ai-studio/gemini-2.5-pro",
+												"grok/grok-4",
+												"groq/llama-3.3-70b-versatile",
+												"groq/llama-3.1-8b-instant",
+												"openai/gpt-5",
+												"openai/gpt-5-mini",
+												"openai/gpt-5-nano",
+												"",
+												null
 											],
+											"nullable": true,
+											"type": "string",
 											"x-auditable": true
 										},
 										"rewrite_query": {
@@ -3773,14 +3768,14 @@
 		"operationId": "ai-search-instance-chat-completion",
 		"parameters": [
 			{
-				"description": "Use your AI Search ID.",
+				"description": "AI Search instance ID. Lowercase alphanumeric, hyphens, and underscores.",
 				"in": "path",
 				"name": "id",
 				"required": true,
 				"schema": {
-					"description": "Use your AI Search ID.",
+					"description": "AI Search instance ID. Lowercase alphanumeric, hyphens, and underscores.",
 					"example": "my-ai-search",
-					"maxLength": 32,
+					"maxLength": 64,
 					"minLength": 1,
 					"pattern": "^[a-z0-9_]+(?:-[a-z0-9_]+)*$",
 					"type": "string",
@@ -4157,6 +4152,13 @@
 											},
 											"scoring_details": {
 												"properties": {
+													"fusion_method": {
+														"enum": [
+															"rrf",
+															"max"
+														],
+														"type": "string"
+													},
 													"keyword_rank": {
 														"type": "number"
 													},
@@ -4288,14 +4290,14 @@
 		"operationId": "ai-search-instance-search",
 		"parameters": [
 			{
-				"description": "Use your AI Search ID.",
+				"description": "AI Search instance ID. Lowercase alphanumeric, hyphens, and underscores.",
 				"in": "path",
 				"name": "id",
 				"required": true,
 				"schema": {
-					"description": "Use your AI Search ID.",
+					"description": "AI Search instance ID. Lowercase alphanumeric, hyphens, and underscores.",
 					"example": "my-ai-search",
-					"maxLength": 32,
+					"maxLength": 64,
 					"minLength": 1,
 					"pattern": "^[a-z0-9_]+(?:-[a-z0-9_]+)*$",
 					"type": "string",
@@ -4589,6 +4591,13 @@
 													},
 													"scoring_details": {
 														"properties": {
+															"fusion_method": {
+																"enum": [
+																	"rrf",
+																	"max"
+																],
+																"type": "string"
+															},
 															"keyword_rank": {
 																"type": "number"
 															},
@@ -4733,14 +4742,14 @@
 				}
 			},
 			{
-				"description": "Use your AI Search ID.",
+				"description": "AI Search instance ID. Lowercase alphanumeric, hyphens, and underscores.",
 				"in": "path",
 				"name": "id",
 				"required": true,
 				"schema": {
-					"description": "Use your AI Search ID.",
+					"description": "AI Search instance ID. Lowercase alphanumeric, hyphens, and underscores.",
 					"example": "my-ai-search",
-					"maxLength": 32,
+					"maxLength": 64,
 					"minLength": 1,
 					"pattern": "^[a-z0-9_]+(?:-[a-z0-9_]+)*$",
 					"type": "string",
@@ -4759,46 +4768,39 @@
 								"x-auditable": true
 							},
 							"ai_search_model": {
-								"anyOf": [
-									{
-										"enum": [
-											"@cf/meta/llama-3.3-70b-instruct-fp8-fast",
-											"@cf/zai-org/glm-4.7-flash",
-											"@cf/meta/llama-3.1-8b-instruct-fast",
-											"@cf/meta/llama-3.1-8b-instruct-fp8",
-											"@cf/meta/llama-4-scout-17b-16e-instruct",
-											"@cf/qwen/qwen3-30b-a3b-fp8",
-											"@cf/deepseek-ai/deepseek-r1-distill-qwen-32b",
-											"@cf/moonshotai/kimi-k2-instruct",
-											"@cf/google/gemma-3-12b-it",
-											"anthropic/claude-3-7-sonnet",
-											"anthropic/claude-sonnet-4",
-											"anthropic/claude-opus-4",
-											"anthropic/claude-3-5-haiku",
-											"cerebras/qwen-3-235b-a22b-instruct",
-											"cerebras/qwen-3-235b-a22b-thinking",
-											"cerebras/llama-3.3-70b",
-											"cerebras/llama-4-maverick-17b-128e-instruct",
-											"cerebras/llama-4-scout-17b-16e-instruct",
-											"cerebras/gpt-oss-120b",
-											"google-ai-studio/gemini-2.5-flash",
-											"google-ai-studio/gemini-2.5-pro",
-											"grok/grok-4",
-											"groq/llama-3.3-70b-versatile",
-											"groq/llama-3.1-8b-instant",
-											"openai/gpt-5",
-											"openai/gpt-5-mini",
-											"openai/gpt-5-nano"
-										],
-										"type": "string"
-									},
-									{
-										"enum": [
-											""
-										],
-										"type": "string"
-									}
+								"enum": [
+									"@cf/meta/llama-3.3-70b-instruct-fp8-fast",
+									"@cf/zai-org/glm-4.7-flash",
+									"@cf/meta/llama-3.1-8b-instruct-fast",
+									"@cf/meta/llama-3.1-8b-instruct-fp8",
+									"@cf/meta/llama-4-scout-17b-16e-instruct",
+									"@cf/qwen/qwen3-30b-a3b-fp8",
+									"@cf/deepseek-ai/deepseek-r1-distill-qwen-32b",
+									"@cf/moonshotai/kimi-k2-instruct",
+									"@cf/google/gemma-3-12b-it",
+									"anthropic/claude-3-7-sonnet",
+									"anthropic/claude-sonnet-4",
+									"anthropic/claude-opus-4",
+									"anthropic/claude-3-5-haiku",
+									"cerebras/qwen-3-235b-a22b-instruct",
+									"cerebras/qwen-3-235b-a22b-thinking",
+									"cerebras/llama-3.3-70b",
+									"cerebras/llama-4-maverick-17b-128e-instruct",
+									"cerebras/llama-4-scout-17b-16e-instruct",
+									"cerebras/gpt-oss-120b",
+									"google-ai-studio/gemini-2.5-flash",
+									"google-ai-studio/gemini-2.5-pro",
+									"grok/grok-4",
+									"groq/llama-3.3-70b-versatile",
+									"groq/llama-3.1-8b-instant",
+									"openai/gpt-5",
+									"openai/gpt-5-mini",
+									"openai/gpt-5-nano",
+									"",
+									null
 								],
+								"nullable": true,
+								"type": "string",
 								"x-auditable": true
 							},
 							"cache": {
@@ -4864,27 +4866,20 @@
 								"x-auditable": true
 							},
 							"embedding_model": {
-								"anyOf": [
-									{
-										"enum": [
-											"@cf/qwen/qwen3-embedding-0.6b",
-											"@cf/baai/bge-m3",
-											"@cf/baai/bge-large-en-v1.5",
-											"@cf/google/embeddinggemma-300m",
-											"google-ai-studio/gemini-embedding-001",
-											"google-ai-studio/gemini-embedding-2-preview",
-											"openai/text-embedding-3-small",
-											"openai/text-embedding-3-large"
-										],
-										"type": "string"
-									},
-									{
-										"enum": [
-											""
-										],
-										"type": "string"
-									}
+								"enum": [
+									"@cf/qwen/qwen3-embedding-0.6b",
+									"@cf/baai/bge-m3",
+									"@cf/baai/bge-large-en-v1.5",
+									"@cf/google/embeddinggemma-300m",
+									"google-ai-studio/gemini-embedding-001",
+									"google-ai-studio/gemini-embedding-2-preview",
+									"openai/text-embedding-3-small",
+									"openai/text-embedding-3-large",
+									"",
+									null
 								],
+								"nullable": true,
+								"type": "string",
 								"x-auditable": true
 							},
 							"fusion_method": {
@@ -4899,6 +4894,22 @@
 							"hybrid_search_enabled": {
 								"default": false,
 								"type": "boolean",
+								"x-auditable": true
+							},
+							"indexing_options": {
+								"nullable": true,
+								"properties": {
+									"keyword_tokenizer": {
+										"default": "porter",
+										"description": "Tokenizer used for keyword search indexing. porter provides word-level tokenization with Porter stemming (good for natural language queries). trigram enables character-level substring matching (good for partial matches, code, identifiers). Changing this triggers a full re-index. Defaults to porter.",
+										"enum": [
+											"porter",
+											"trigram"
+										],
+										"type": "string"
+									}
+								},
+								"type": "object",
 								"x-auditable": true
 							},
 							"max_num_results": {
@@ -5002,20 +5013,13 @@
 								"x-auditable": true
 							},
 							"reranking_model": {
-								"anyOf": [
-									{
-										"enum": [
-											"@cf/baai/bge-reranker-base"
-										],
-										"type": "string"
-									},
-									{
-										"enum": [
-											""
-										],
-										"type": "string"
-									}
+								"enum": [
+									"@cf/baai/bge-reranker-base",
+									"",
+									null
 								],
+								"nullable": true,
+								"type": "string",
 								"x-auditable": true
 							},
 							"retrieval_options": {
@@ -5071,46 +5075,39 @@
 								"x-auditable": true
 							},
 							"rewrite_model": {
-								"anyOf": [
-									{
-										"enum": [
-											"@cf/meta/llama-3.3-70b-instruct-fp8-fast",
-											"@cf/zai-org/glm-4.7-flash",
-											"@cf/meta/llama-3.1-8b-instruct-fast",
-											"@cf/meta/llama-3.1-8b-instruct-fp8",
-											"@cf/meta/llama-4-scout-17b-16e-instruct",
-											"@cf/qwen/qwen3-30b-a3b-fp8",
-											"@cf/deepseek-ai/deepseek-r1-distill-qwen-32b",
-											"@cf/moonshotai/kimi-k2-instruct",
-											"@cf/google/gemma-3-12b-it",
-											"anthropic/claude-3-7-sonnet",
-											"anthropic/claude-sonnet-4",
-											"anthropic/claude-opus-4",
-											"anthropic/claude-3-5-haiku",
-											"cerebras/qwen-3-235b-a22b-instruct",
-											"cerebras/qwen-3-235b-a22b-thinking",
-											"cerebras/llama-3.3-70b",
-											"cerebras/llama-4-maverick-17b-128e-instruct",
-											"cerebras/llama-4-scout-17b-16e-instruct",
-											"cerebras/gpt-oss-120b",
-											"google-ai-studio/gemini-2.5-flash",
-											"google-ai-studio/gemini-2.5-pro",
-											"grok/grok-4",
-											"groq/llama-3.3-70b-versatile",
-											"groq/llama-3.1-8b-instant",
-											"openai/gpt-5",
-											"openai/gpt-5-mini",
-											"openai/gpt-5-nano"
-										],
-										"type": "string"
-									},
-									{
-										"enum": [
-											""
-										],
-										"type": "string"
-									}
+								"enum": [
+									"@cf/meta/llama-3.3-70b-instruct-fp8-fast",
+									"@cf/zai-org/glm-4.7-flash",
+									"@cf/meta/llama-3.1-8b-instruct-fast",
+									"@cf/meta/llama-3.1-8b-instruct-fp8",
+									"@cf/meta/llama-4-scout-17b-16e-instruct",
+									"@cf/qwen/qwen3-30b-a3b-fp8",
+									"@cf/deepseek-ai/deepseek-r1-distill-qwen-32b",
+									"@cf/moonshotai/kimi-k2-instruct",
+									"@cf/google/gemma-3-12b-it",
+									"anthropic/claude-3-7-sonnet",
+									"anthropic/claude-sonnet-4",
+									"anthropic/claude-opus-4",
+									"anthropic/claude-3-5-haiku",
+									"cerebras/qwen-3-235b-a22b-instruct",
+									"cerebras/qwen-3-235b-a22b-thinking",
+									"cerebras/llama-3.3-70b",
+									"cerebras/llama-4-maverick-17b-128e-instruct",
+									"cerebras/llama-4-scout-17b-16e-instruct",
+									"cerebras/gpt-oss-120b",
+									"google-ai-studio/gemini-2.5-flash",
+									"google-ai-studio/gemini-2.5-pro",
+									"grok/grok-4",
+									"groq/llama-3.3-70b-versatile",
+									"groq/llama-3.1-8b-instant",
+									"openai/gpt-5",
+									"openai/gpt-5-mini",
+									"openai/gpt-5-nano",
+									"",
+									null
 								],
+								"nullable": true,
+								"type": "string",
 								"x-auditable": true
 							},
 							"rewrite_query": {
@@ -5309,46 +5306,39 @@
 								"x-auditable": true
 							},
 							"summarization_model": {
-								"anyOf": [
-									{
-										"enum": [
-											"@cf/meta/llama-3.3-70b-instruct-fp8-fast",
-											"@cf/zai-org/glm-4.7-flash",
-											"@cf/meta/llama-3.1-8b-instruct-fast",
-											"@cf/meta/llama-3.1-8b-instruct-fp8",
-											"@cf/meta/llama-4-scout-17b-16e-instruct",
-											"@cf/qwen/qwen3-30b-a3b-fp8",
-											"@cf/deepseek-ai/deepseek-r1-distill-qwen-32b",
-											"@cf/moonshotai/kimi-k2-instruct",
-											"@cf/google/gemma-3-12b-it",
-											"anthropic/claude-3-7-sonnet",
-											"anthropic/claude-sonnet-4",
-											"anthropic/claude-opus-4",
-											"anthropic/claude-3-5-haiku",
-											"cerebras/qwen-3-235b-a22b-instruct",
-											"cerebras/qwen-3-235b-a22b-thinking",
-											"cerebras/llama-3.3-70b",
-											"cerebras/llama-4-maverick-17b-128e-instruct",
-											"cerebras/llama-4-scout-17b-16e-instruct",
-											"cerebras/gpt-oss-120b",
-											"google-ai-studio/gemini-2.5-flash",
-											"google-ai-studio/gemini-2.5-pro",
-											"grok/grok-4",
-											"groq/llama-3.3-70b-versatile",
-											"groq/llama-3.1-8b-instant",
-											"openai/gpt-5",
-											"openai/gpt-5-mini",
-											"openai/gpt-5-nano"
-										],
-										"type": "string"
-									},
-									{
-										"enum": [
-											""
-										],
-										"type": "string"
-									}
+								"enum": [
+									"@cf/meta/llama-3.3-70b-instruct-fp8-fast",
+									"@cf/zai-org/glm-4.7-flash",
+									"@cf/meta/llama-3.1-8b-instruct-fast",
+									"@cf/meta/llama-3.1-8b-instruct-fp8",
+									"@cf/meta/llama-4-scout-17b-16e-instruct",
+									"@cf/qwen/qwen3-30b-a3b-fp8",
+									"@cf/deepseek-ai/deepseek-r1-distill-qwen-32b",
+									"@cf/moonshotai/kimi-k2-instruct",
+									"@cf/google/gemma-3-12b-it",
+									"anthropic/claude-3-7-sonnet",
+									"anthropic/claude-sonnet-4",
+									"anthropic/claude-opus-4",
+									"anthropic/claude-3-5-haiku",
+									"cerebras/qwen-3-235b-a22b-instruct",
+									"cerebras/qwen-3-235b-a22b-thinking",
+									"cerebras/llama-3.3-70b",
+									"cerebras/llama-4-maverick-17b-128e-instruct",
+									"cerebras/llama-4-scout-17b-16e-instruct",
+									"cerebras/gpt-oss-120b",
+									"google-ai-studio/gemini-2.5-flash",
+									"google-ai-studio/gemini-2.5-pro",
+									"grok/grok-4",
+									"groq/llama-3.3-70b-versatile",
+									"groq/llama-3.1-8b-instant",
+									"openai/gpt-5",
+									"openai/gpt-5-mini",
+									"openai/gpt-5-nano",
+									"",
+									null
 								],
+								"nullable": true,
+								"type": "string",
 								"x-auditable": true
 							},
 							"system_prompt_ai_search": {
@@ -5391,46 +5381,39 @@
 											"x-auditable": true
 										},
 										"ai_search_model": {
-											"anyOf": [
-												{
-													"enum": [
-														"@cf/meta/llama-3.3-70b-instruct-fp8-fast",
-														"@cf/zai-org/glm-4.7-flash",
-														"@cf/meta/llama-3.1-8b-instruct-fast",
-														"@cf/meta/llama-3.1-8b-instruct-fp8",
-														"@cf/meta/llama-4-scout-17b-16e-instruct",
-														"@cf/qwen/qwen3-30b-a3b-fp8",
-														"@cf/deepseek-ai/deepseek-r1-distill-qwen-32b",
-														"@cf/moonshotai/kimi-k2-instruct",
-														"@cf/google/gemma-3-12b-it",
-														"anthropic/claude-3-7-sonnet",
-														"anthropic/claude-sonnet-4",
-														"anthropic/claude-opus-4",
-														"anthropic/claude-3-5-haiku",
-														"cerebras/qwen-3-235b-a22b-instruct",
-														"cerebras/qwen-3-235b-a22b-thinking",
-														"cerebras/llama-3.3-70b",
-														"cerebras/llama-4-maverick-17b-128e-instruct",
-														"cerebras/llama-4-scout-17b-16e-instruct",
-														"cerebras/gpt-oss-120b",
-														"google-ai-studio/gemini-2.5-flash",
-														"google-ai-studio/gemini-2.5-pro",
-														"grok/grok-4",
-														"groq/llama-3.3-70b-versatile",
-														"groq/llama-3.1-8b-instant",
-														"openai/gpt-5",
-														"openai/gpt-5-mini",
-														"openai/gpt-5-nano"
-													],
-													"type": "string"
-												},
-												{
-													"enum": [
-														""
-													],
-													"type": "string"
-												}
+											"enum": [
+												"@cf/meta/llama-3.3-70b-instruct-fp8-fast",
+												"@cf/zai-org/glm-4.7-flash",
+												"@cf/meta/llama-3.1-8b-instruct-fast",
+												"@cf/meta/llama-3.1-8b-instruct-fp8",
+												"@cf/meta/llama-4-scout-17b-16e-instruct",
+												"@cf/qwen/qwen3-30b-a3b-fp8",
+												"@cf/deepseek-ai/deepseek-r1-distill-qwen-32b",
+												"@cf/moonshotai/kimi-k2-instruct",
+												"@cf/google/gemma-3-12b-it",
+												"anthropic/claude-3-7-sonnet",
+												"anthropic/claude-sonnet-4",
+												"anthropic/claude-opus-4",
+												"anthropic/claude-3-5-haiku",
+												"cerebras/qwen-3-235b-a22b-instruct",
+												"cerebras/qwen-3-235b-a22b-thinking",
+												"cerebras/llama-3.3-70b",
+												"cerebras/llama-4-maverick-17b-128e-instruct",
+												"cerebras/llama-4-scout-17b-16e-instruct",
+												"cerebras/gpt-oss-120b",
+												"google-ai-studio/gemini-2.5-flash",
+												"google-ai-studio/gemini-2.5-pro",
+												"grok/grok-4",
+												"groq/llama-3.3-70b-versatile",
+												"groq/llama-3.1-8b-instant",
+												"openai/gpt-5",
+												"openai/gpt-5-mini",
+												"openai/gpt-5-nano",
+												"",
+												null
 											],
+											"nullable": true,
+											"type": "string",
 											"x-auditable": true
 										},
 										"cache": {
@@ -5501,27 +5484,20 @@
 											"x-auditable": true
 										},
 										"embedding_model": {
-											"anyOf": [
-												{
-													"enum": [
-														"@cf/qwen/qwen3-embedding-0.6b",
-														"@cf/baai/bge-m3",
-														"@cf/baai/bge-large-en-v1.5",
-														"@cf/google/embeddinggemma-300m",
-														"google-ai-studio/gemini-embedding-001",
-														"google-ai-studio/gemini-embedding-2-preview",
-														"openai/text-embedding-3-small",
-														"openai/text-embedding-3-large"
-													],
-													"type": "string"
-												},
-												{
-													"enum": [
-														""
-													],
-													"type": "string"
-												}
+											"enum": [
+												"@cf/qwen/qwen3-embedding-0.6b",
+												"@cf/baai/bge-m3",
+												"@cf/baai/bge-large-en-v1.5",
+												"@cf/google/embeddinggemma-300m",
+												"google-ai-studio/gemini-embedding-001",
+												"google-ai-studio/gemini-embedding-2-preview",
+												"openai/text-embedding-3-small",
+												"openai/text-embedding-3-large",
+												"",
+												null
 											],
+											"nullable": true,
+											"type": "string",
 											"x-auditable": true
 										},
 										"enable": {
@@ -5544,12 +5520,28 @@
 											"x-auditable": true
 										},
 										"id": {
-											"description": "Use your AI Search ID.",
+											"description": "AI Search instance ID. Lowercase alphanumeric, hyphens, and underscores.",
 											"example": "my-ai-search",
-											"maxLength": 32,
+											"maxLength": 64,
 											"minLength": 1,
 											"pattern": "^[a-z0-9_]+(?:-[a-z0-9_]+)*$",
 											"type": "string",
+											"x-auditable": true
+										},
+										"indexing_options": {
+											"nullable": true,
+											"properties": {
+												"keyword_tokenizer": {
+													"default": "porter",
+													"description": "Tokenizer used for keyword search indexing. porter provides word-level tokenization with Porter stemming (good for natural language queries). trigram enables character-level substring matching (good for partial matches, code, identifiers). Changing this triggers a full re-index. Defaults to porter.",
+													"enum": [
+														"porter",
+														"trigram"
+													],
+													"type": "string"
+												}
+											},
+											"type": "object",
 											"x-auditable": true
 										},
 										"last_activity": {
@@ -5584,6 +5576,14 @@
 										},
 										"modified_by": {
 											"nullable": true,
+											"readOnly": true,
+											"type": "string"
+										},
+										"namespace": {
+											"maxLength": 32,
+											"minLength": 1,
+											"nullable": true,
+											"pattern": "^[a-z0-9_]+(?:-[a-z0-9_]+)*$",
 											"readOnly": true,
 											"type": "string"
 										},
@@ -5674,20 +5674,13 @@
 											"x-auditable": true
 										},
 										"reranking_model": {
-											"anyOf": [
-												{
-													"enum": [
-														"@cf/baai/bge-reranker-base"
-													],
-													"type": "string"
-												},
-												{
-													"enum": [
-														""
-													],
-													"type": "string"
-												}
+											"enum": [
+												"@cf/baai/bge-reranker-base",
+												"",
+												null
 											],
+											"nullable": true,
+											"type": "string",
 											"x-auditable": true
 										},
 										"retrieval_options": {
@@ -5743,46 +5736,39 @@
 											"x-auditable": true
 										},
 										"rewrite_model": {
-											"anyOf": [
-												{
-													"enum": [
-														"@cf/meta/llama-3.3-70b-instruct-fp8-fast",
-														"@cf/zai-org/glm-4.7-flash",
-														"@cf/meta/llama-3.1-8b-instruct-fast",
-														"@cf/meta/llama-3.1-8b-instruct-fp8",
-														"@cf/meta/llama-4-scout-17b-16e-instruct",
-														"@cf/qwen/qwen3-30b-a3b-fp8",
-														"@cf/deepseek-ai/deepseek-r1-distill-qwen-32b",
-														"@cf/moonshotai/kimi-k2-instruct",
-														"@cf/google/gemma-3-12b-it",
-														"anthropic/claude-3-7-sonnet",
-														"anthropic/claude-sonnet-4",
-														"anthropic/claude-opus-4",
-														"anthropic/claude-3-5-haiku",
-														"cerebras/qwen-3-235b-a22b-instruct",
-														"cerebras/qwen-3-235b-a22b-thinking",
-														"cerebras/llama-3.3-70b",
-														"cerebras/llama-4-maverick-17b-128e-instruct",
-														"cerebras/llama-4-scout-17b-16e-instruct",
-														"cerebras/gpt-oss-120b",
-														"google-ai-studio/gemini-2.5-flash",
-														"google-ai-studio/gemini-2.5-pro",
-														"grok/grok-4",
-														"groq/llama-3.3-70b-versatile",
-														"groq/llama-3.1-8b-instant",
-														"openai/gpt-5",
-														"openai/gpt-5-mini",
-														"openai/gpt-5-nano"
-													],
-													"type": "string"
-												},
-												{
-													"enum": [
-														""
-													],
-													"type": "string"
-												}
+											"enum": [
+												"@cf/meta/llama-3.3-70b-instruct-fp8-fast",
+												"@cf/zai-org/glm-4.7-flash",
+												"@cf/meta/llama-3.1-8b-instruct-fast",
+												"@cf/meta/llama-3.1-8b-instruct-fp8",
+												"@cf/meta/llama-4-scout-17b-16e-instruct",
+												"@cf/qwen/qwen3-30b-a3b-fp8",
+												"@cf/deepseek-ai/deepseek-r1-distill-qwen-32b",
+												"@cf/moonshotai/kimi-k2-instruct",
+												"@cf/google/gemma-3-12b-it",
+												"anthropic/claude-3-7-sonnet",
+												"anthropic/claude-sonnet-4",
+												"anthropic/claude-opus-4",
+												"anthropic/claude-3-5-haiku",
+												"cerebras/qwen-3-235b-a22b-instruct",
+												"cerebras/qwen-3-235b-a22b-thinking",
+												"cerebras/llama-3.3-70b",
+												"cerebras/llama-4-maverick-17b-128e-instruct",
+												"cerebras/llama-4-scout-17b-16e-instruct",
+												"cerebras/gpt-oss-120b",
+												"google-ai-studio/gemini-2.5-flash",
+												"google-ai-studio/gemini-2.5-pro",
+												"grok/grok-4",
+												"groq/llama-3.3-70b-versatile",
+												"groq/llama-3.1-8b-instant",
+												"openai/gpt-5",
+												"openai/gpt-5-mini",
+												"openai/gpt-5-nano",
+												"",
+												null
 											],
+											"nullable": true,
+											"type": "string",
 											"x-auditable": true
 										},
 										"rewrite_query": {
@@ -6027,76 +6013,27 @@
 								"errors": {
 									"items": {
 										"properties": {
-											"code": {
-												"type": "number"
-											},
-											"message": {
-												"type": "string"
-											},
-											"path": {
-												"items": {
-													"type": "string"
-												},
-												"type": "array"
-											}
-										},
-										"required": [
-											"code",
-											"message",
-											"path"
-										],
-										"type": "object"
-									},
-									"type": "array"
-								},
-								"success": {
-									"enum": [
-										false
-									],
-									"type": "boolean"
-								}
-							},
-							"required": [
-								"success",
-								"errors"
-							],
-							"type": "object"
-						}
-					}
-				},
-				"description": "Input Validation Error"
-			},
-			"404": {
-				"content": {
-					"application/json": {
-						"schema": {
-							"properties": {
-								"errors": {
-									"items": {
-										"properties": {
-											"code": {
-												"type": "number"
-											},
 											"message": {
 												"type": "string"
 											}
 										},
 										"required": [
-											"code",
 											"message"
 										],
 										"type": "object"
 									},
 									"type": "array"
 								},
+								"result": {
+									"type": "object"
+								},
 								"success": {
-									"enum": [
-										false
-									],
+									"example": false,
 									"type": "boolean"
 								}
 							},
 							"required": [
+								"result",
 								"success",
 								"errors"
 							],
@@ -6104,7 +6041,7 @@
 						}
 					}
 				},
-				"description": "Not Found"
+				"description": "Bad Request."
 			}
 		},
 		"security": [

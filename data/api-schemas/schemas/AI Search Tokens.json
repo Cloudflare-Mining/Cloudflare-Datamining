@@ -924,76 +924,27 @@
 								"errors": {
 									"items": {
 										"properties": {
-											"code": {
-												"type": "number"
-											},
-											"message": {
-												"type": "string"
-											},
-											"path": {
-												"items": {
-													"type": "string"
-												},
-												"type": "array"
-											}
-										},
-										"required": [
-											"code",
-											"message",
-											"path"
-										],
-										"type": "object"
-									},
-									"type": "array"
-								},
-								"success": {
-									"enum": [
-										false
-									],
-									"type": "boolean"
-								}
-							},
-							"required": [
-								"success",
-								"errors"
-							],
-							"type": "object"
-						}
-					}
-				},
-				"description": "Input Validation Error"
-			},
-			"404": {
-				"content": {
-					"application/json": {
-						"schema": {
-							"properties": {
-								"errors": {
-									"items": {
-										"properties": {
-											"code": {
-												"type": "number"
-											},
 											"message": {
 												"type": "string"
 											}
 										},
 										"required": [
-											"code",
 											"message"
 										],
 										"type": "object"
 									},
 									"type": "array"
 								},
+								"result": {
+									"type": "object"
+								},
 								"success": {
-									"enum": [
-										false
-									],
+									"example": false,
 									"type": "boolean"
 								}
 							},
 							"required": [
+								"result",
 								"success",
 								"errors"
 							],
@@ -1001,7 +952,7 @@
 						}
 					}
 				},
-				"description": "Not Found"
+				"description": "Bad Request."
 			}
 		},
 		"security": [

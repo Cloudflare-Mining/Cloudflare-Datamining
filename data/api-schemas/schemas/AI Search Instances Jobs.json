@@ -4,14 +4,14 @@
 		"operationId": "ai-search-instance-list-jobs",
 		"parameters": [
 			{
-				"description": "Use your AI Search ID.",
+				"description": "AI Search instance ID. Lowercase alphanumeric, hyphens, and underscores.",
 				"in": "path",
 				"name": "id",
 				"required": true,
 				"schema": {
-					"description": "Use your AI Search ID.",
+					"description": "AI Search instance ID. Lowercase alphanumeric, hyphens, and underscores.",
 					"example": "my-ai-search",
-					"maxLength": 32,
+					"maxLength": 64,
 					"minLength": 1,
 					"pattern": "^[a-z0-9_]+(?:-[a-z0-9_]+)*$",
 					"type": "string",
@@ -239,14 +239,14 @@
 		"operationId": "ai-search-instance-get-job",
 		"parameters": [
 			{
-				"description": "Use your AI Search ID.",
+				"description": "AI Search instance ID. Lowercase alphanumeric, hyphens, and underscores.",
 				"in": "path",
 				"name": "id",
 				"required": true,
 				"schema": {
-					"description": "Use your AI Search ID.",
+					"description": "AI Search instance ID. Lowercase alphanumeric, hyphens, and underscores.",
 					"example": "my-ai-search",
-					"maxLength": 32,
+					"maxLength": 64,
 					"minLength": 1,
 					"pattern": "^[a-z0-9_]+(?:-[a-z0-9_]+)*$",
 					"type": "string",
@@ -436,14 +436,14 @@
 		"operationId": "ai-search-instance-list-job-logs",
 		"parameters": [
 			{
-				"description": "Use your AI Search ID.",
+				"description": "AI Search instance ID. Lowercase alphanumeric, hyphens, and underscores.",
 				"in": "path",
 				"name": "id",
 				"required": true,
 				"schema": {
-					"description": "Use your AI Search ID.",
+					"description": "AI Search instance ID. Lowercase alphanumeric, hyphens, and underscores.",
 					"example": "my-ai-search",
-					"maxLength": 32,
+					"maxLength": 64,
 					"minLength": 1,
 					"pattern": "^[a-z0-9_]+(?:-[a-z0-9_]+)*$",
 					"type": "string",
@@ -666,14 +666,14 @@
 		"operationId": "ai-search-instance-change-job-status",
 		"parameters": [
 			{
-				"description": "Use your AI Search ID.",
+				"description": "AI Search instance ID. Lowercase alphanumeric, hyphens, and underscores.",
 				"in": "path",
 				"name": "id",
 				"required": true,
 				"schema": {
-					"description": "Use your AI Search ID.",
+					"description": "AI Search instance ID. Lowercase alphanumeric, hyphens, and underscores.",
 					"example": "my-ai-search",
-					"maxLength": 32,
+					"maxLength": 64,
 					"minLength": 1,
 					"pattern": "^[a-z0-9_]+(?:-[a-z0-9_]+)*$",
 					"type": "string",
@@ -883,14 +883,14 @@
 		"operationId": "ai-search-instance-create-job",
 		"parameters": [
 			{
-				"description": "Use your AI Search ID.",
+				"description": "AI Search instance ID. Lowercase alphanumeric, hyphens, and underscores.",
 				"in": "path",
 				"name": "id",
 				"required": true,
 				"schema": {
-					"description": "Use your AI Search ID.",
+					"description": "AI Search instance ID. Lowercase alphanumeric, hyphens, and underscores.",
 					"example": "my-ai-search",
-					"maxLength": 32,
+					"maxLength": 64,
 					"minLength": 1,
 					"pattern": "^[a-z0-9_]+(?:-[a-z0-9_]+)*$",
 					"type": "string",
