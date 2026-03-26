@@ -25,7 +25,6 @@ yarn add @cloudflare/realtimekit-utils
 ```typescript
 import {
   getDefaultPresetV2,
-  convertHybridPresetToV1,
   convertHybridPresetToV2
 } from '@cloudflare/realtimekit-utils';
 
