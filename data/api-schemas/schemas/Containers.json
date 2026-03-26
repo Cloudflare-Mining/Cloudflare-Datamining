@@ -164,7 +164,7 @@
 														"description": "Specifies either a pre-set instance type or a custom resource allocation.",
 														"oneOf": [
 															{
-																"description": "Custom resource allocation with explicit vcpu, memory, and disk. Custom resource allocations must adhere to the following limits:\n- At least 1 vCPU\n- At least 3 GiB memory for each vCPU\n- Disk GB can be at most 2x memory in GiB\n",
+																"description": "Custom resource allocation with explicit vcpu, memory, and disk. Custom resource allocations must adhere to the following limits:\n- At least 1 vCPU\n- At least 3 GiB memory for each of the first 4 vCPUs (minimum 12 GiB when exceeding 4 vCPUs)\n- Disk GB can be at most 2x memory in GiB\n",
 																"properties": {
 																	"disk_mb": {
 																		"description": "The disk size in MB.",

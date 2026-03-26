@@ -2528,6 +2528,10 @@
 												"t": {
 													"description": "Time the Event was recorded (seconds since the Unix epoch)",
 													"type": "number"
+												},
+												"v": {
+													"description": "Version",
+													"type": "string"
 												}
 											},
 											"required": [
@@ -3242,6 +3246,10 @@
 															"t": {
 																"description": "Time the Event was recorded (seconds since the Unix epoch)",
 																"type": "number"
+															},
+															"v": {
+																"description": "Version",
+																"type": "string"
 															}
 														},
 														"required": [
@@ -4269,10 +4277,6 @@
 																"description": "Client ID of the device the IP Address was leased to",
 																"type": "string"
 															},
-															"connector_id": {
-																"description": "Connector identifier",
-																"type": "string"
-															},
 															"expiry_time": {
 																"description": "Expiry time of the DHCP lease (seconds since the Unix epoch)",
 																"type": "number"
@@ -4310,10 +4314,6 @@
 													"items": {
 														"description": "Snapshot Disk",
 														"properties": {
-															"connector_id": {
-																"description": "Connector identifier",
-																"type": "string"
-															},
 															"discards": {
 																"description": "Discards completed successfully",
 																"type": "number"
@@ -4431,18 +4431,10 @@
 													"items": {
 														"description": "Snapshot Interface",
 														"properties": {
-															"connector_id": {
-																"description": "Connector identifier",
-																"type": "string"
-															},
 															"ip_addresses": {
 																"items": {
 																	"description": "Snapshot Interface Address",
 																	"properties": {
-																		"connector_id": {
-																			"description": "Connector identifier",
-																			"type": "string"
-																		},
 																		"interface_name": {
 																			"description": "Name of the network interface",
 																			"type": "string"
@@ -4777,10 +4769,6 @@
 																"description": "Available disk size (bytes)",
 																"type": "number"
 															},
-															"connector_id": {
-																"description": "Connector identifier",
-																"type": "string"
-															},
 															"file_system": {
 																"description": "File system on disk (EXT4, NTFS, etc.)",
 																"type": "string"
@@ -4824,10 +4812,6 @@
 													"items": {
 														"description": "Snapshot Netdev",
 														"properties": {
-															"connector_id": {
-																"description": "Connector identifier",
-																"type": "string"
-															},
 															"name": {
 																"description": "Name of the network device",
 																"type": "string"
@@ -5188,10 +5172,6 @@
 													"items": {
 														"description": "Snapshot Thermal",
 														"properties": {
-															"connector_id": {
-																"description": "Connector identifier",
-																"type": "string"
-															},
 															"critical_celcius": {
 																"description": "Critical failure temperature of the component (degrees Celsius)",
 																"type": "number"
@@ -5220,10 +5200,6 @@
 													"items": {
 														"description": "Snapshot Tunnels",
 														"properties": {
-															"connector_id": {
-																"description": "Connector identifier",
-																"type": "string"
-															},
 															"health_state": {
 																"description": "Name of tunnel health state (unknown, healthy, degraded, down)",
 																"type": "string"
@@ -5843,10 +5819,6 @@
 																			"description": "Client ID of the device the IP Address was leased to",
 																			"type": "string"
 																		},
-																		"connector_id": {
-																			"description": "Connector identifier",
-																			"type": "string"
-																		},
 																		"expiry_time": {
 																			"description": "Expiry time of the DHCP lease (seconds since the Unix epoch)",
 																			"type": "number"
@@ -5884,10 +5856,6 @@
 																"items": {
 																	"description": "Snapshot Disk",
 																	"properties": {
-																		"connector_id": {
-																			"description": "Connector identifier",
-																			"type": "string"
-																		},
 																		"discards": {
 																			"description": "Discards completed successfully",
 																			"type": "number"
@@ -6005,18 +5973,10 @@
 																"items": {
 																	"description": "Snapshot Interface",
 																	"properties": {
-																		"connector_id": {
-																			"description": "Connector identifier",
-																			"type": "string"
-																		},
 																		"ip_addresses": {
 																			"items": {
 																				"description": "Snapshot Interface Address",
 																				"properties": {
-																					"connector_id": {
-																						"description": "Connector identifier",
-																						"type": "string"
-																					},
 																					"interface_name": {
 																						"description": "Name of the network interface",
 																						"type": "string"
@@ -6351,10 +6311,6 @@
 																			"description": "Available disk size (bytes)",
 																			"type": "number"
 																		},
-																		"connector_id": {
-																			"description": "Connector identifier",
-																			"type": "string"
-																		},
 																		"file_system": {
 																			"description": "File system on disk (EXT4, NTFS, etc.)",
 																			"type": "string"
@@ -6398,10 +6354,6 @@
 																"items": {
 																	"description": "Snapshot Netdev",
 																	"properties": {
-																		"connector_id": {
-																			"description": "Connector identifier",
-																			"type": "string"
-																		},
 																		"name": {
 																			"description": "Name of the network device",
 																			"type": "string"
@@ -6762,10 +6714,6 @@
 																"items": {
 																	"description": "Snapshot Thermal",
 																	"properties": {
-																		"connector_id": {
-																			"description": "Connector identifier",
-																			"type": "string"
-																		},
 																		"critical_celcius": {
 																			"description": "Critical failure temperature of the component (degrees Celsius)",
 																			"type": "number"
@@ -6794,10 +6742,6 @@
 																"items": {
 																	"description": "Snapshot Tunnels",
 																	"properties": {
-																		"connector_id": {
-																			"description": "Connector identifier",
-																			"type": "string"
-																		},
 																		"health_state": {
 																			"description": "Name of tunnel health state (unknown, healthy, degraded, down)",
 																			"type": "string"
