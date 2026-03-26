@@ -286,10 +286,6 @@
 		"tags": [
 			"Zone Cache Settings"
 		],
-		"x-api-token-group": [
-			"Zone Settings Write",
-			"Zone Write"
-		],
 		"x-cfPermissionsRequired": {
 			"enum": [
 				"#zone_settings:edit"
@@ -647,12 +643,6 @@
 		"tags": [
 			"Zone Cache Settings"
 		],
-		"x-api-token-group": [
-			"Zone Settings Write",
-			"Zone Settings Read",
-			"Zone Read",
-			"Zone Write"
-		],
 		"x-cfPermissionsRequired": {
 			"enum": [
 				"#zone_settings:read"
@@ -997,12 +987,6 @@
 		"tags": [
 			"Zone Cache Settings"
 		],
-		"x-api-token-group": [
-			"Zone Settings Write",
-			"Zone Settings Read",
-			"Zone Read",
-			"Zone Write"
-		],
 		"x-cfPermissionsRequired": {
 			"enum": [
 				"#zone_settings:read"
@@ -1330,12 +1314,6 @@
 		"summary": "Get Regional Tiered Cache setting",
 		"tags": [
 			"Zone Cache Settings"
-		],
-		"x-api-token-group": [
-			"Zone Settings Write",
-			"Zone Settings Read",
-			"Zone Read",
-			"Zone Write"
 		],
 		"x-cfPermissionsRequired": {
 			"enum": [
@@ -1804,12 +1782,6 @@
 		"tags": [
 			"Zone Cache Settings"
 		],
-		"x-api-token-group": [
-			"Zone Settings Write",
-			"Zone Settings Read",
-			"Zone Read",
-			"Zone Write"
-		],
 		"x-cfPermissionsRequired": {
 			"enum": [
 				"#zone_settings:read"
@@ -2192,10 +2164,6 @@
 		"tags": [
 			"Zone Cache Settings"
 		],
-		"x-api-token-group": [
-			"Zone Settings Write",
-			"Zone Write"
-		],
 		"x-cfPermissionsRequired": {
 			"enum": [
 				"#zone_settings:edit"
@@ -2548,10 +2516,6 @@
 		"summary": "Change Regional Tiered Cache setting",
 		"tags": [
 			"Zone Cache Settings"
-		],
-		"x-api-token-group": [
-			"Zone Settings Write",
-			"Zone Write"
 		],
 		"x-cfPermissionsRequired": {
 			"enum": [
@@ -3184,10 +3148,6 @@
 		"tags": [
 			"Zone Cache Settings"
 		],
-		"x-api-token-group": [
-			"Zone Settings Write",
-			"Zone Write"
-		],
 		"x-cfPermissionsRequired": {
 			"enum": [
 				"#zone_settings:edit"
@@ -3527,10 +3487,6 @@
 		"summary": "Start Cache Reserve Clear",
 		"tags": [
 			"Zone Cache Settings"
-		],
-		"x-api-token-group": [
-			"Zone Settings Write",
-			"Zone Write"
 		],
 		"x-cfPermissionsRequired": {
 			"enum": [

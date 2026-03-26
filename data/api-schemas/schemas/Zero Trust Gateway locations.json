@@ -303,10 +303,6 @@
 		"summary": "Delete a Zero Trust Gateway location",
 		"tags": [
 			"Zero Trust Gateway locations"
-		],
-		"x-api-token-group": [
-			"Cloudflare Zero Trust Secure DNS Locations Write",
-			"Zero Trust Write"
 		]
 	},
 	"GET /accounts/{account_id}/gateway/locations": {
@@ -1123,11 +1119,6 @@
 		"summary": "List Zero Trust Gateway locations",
 		"tags": [
 			"Zero Trust Gateway locations"
-		],
-		"x-api-token-group": [
-			"Cloudflare Zero Trust Secure DNS Locations Write",
-			"Zero Trust Read",
-			"Zero Trust Write"
 		]
 	},
 	"GET /accounts/{account_id}/gateway/locations/{location_id}": {
@@ -1888,11 +1879,6 @@
 		"summary": "Get Zero Trust Gateway location details",
 		"tags": [
 			"Zero Trust Gateway locations"
-		],
-		"x-api-token-group": [
-			"Cloudflare Zero Trust Secure DNS Locations Write",
-			"Zero Trust Read",
-			"Zero Trust Write"
 		]
 	},
 	"POST /accounts/{account_id}/gateway/locations": {
@@ -2834,10 +2820,6 @@
 		"summary": "Create a Zero Trust Gateway location",
 		"tags": [
 			"Zero Trust Gateway locations"
-		],
-		"x-api-token-group": [
-			"Cloudflare Zero Trust Secure DNS Locations Write",
-			"Zero Trust Write"
 		]
 	},
 	"PUT /accounts/{account_id}/gateway/locations/{location_id}": {
@@ -3789,10 +3771,6 @@
 		"summary": "Update a Zero Trust Gateway location",
 		"tags": [
 			"Zero Trust Gateway locations"
-		],
-		"x-api-token-group": [
-			"Cloudflare Zero Trust Secure DNS Locations Write",
-			"Zero Trust Write"
 		]
 	}
 }

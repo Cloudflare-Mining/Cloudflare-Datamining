@@ -250,10 +250,6 @@
 		"summary": "Fetch all sessions of an App",
 		"tags": [
 			"Sessions"
-		],
-		"x-api-token-group": [
-			"Realtime Admin",
-			"Realtime"
 		]
 	},
 	"GET /accounts/{account_id}/realtime/kit/{app_id}/sessions/{session_id}": {
@@ -422,10 +418,6 @@
 		"summary": "Fetch details of a session",
 		"tags": [
 			"Sessions"
-		],
-		"x-api-token-group": [
-			"Realtime Admin",
-			"Realtime"
 		]
 	},
 	"GET /accounts/{account_id}/realtime/kit/{app_id}/sessions/{session_id}/chat": {
@@ -507,10 +499,6 @@
 		"summary": "Fetch all chat messages of a session",
 		"tags": [
 			"Sessions"
-		],
-		"x-api-token-group": [
-			"Realtime Admin",
-			"Realtime"
 		]
 	},
 	"GET /accounts/{account_id}/realtime/kit/{app_id}/sessions/{session_id}/participants": {
@@ -812,10 +800,6 @@
 		"summary": "Fetch participants list of a session",
 		"tags": [
 			"Sessions"
-		],
-		"x-api-token-group": [
-			"Realtime Admin",
-			"Realtime"
 		]
 	},
 	"GET /accounts/{account_id}/realtime/kit/{app_id}/sessions/{session_id}/participants/{participant_id}": {
@@ -1193,10 +1177,6 @@
 		"summary": "Fetch details of a participant",
 		"tags": [
 			"Sessions"
-		],
-		"x-api-token-group": [
-			"Realtime Admin",
-			"Realtime"
 		]
 	},
 	"GET /accounts/{account_id}/realtime/kit/{app_id}/sessions/{session_id}/summary": {
@@ -1282,10 +1262,6 @@
 		"summary": "Fetch summary of transcripts for a session",
 		"tags": [
 			"Sessions"
-		],
-		"x-api-token-group": [
-			"Realtime Admin",
-			"Realtime"
 		]
 	},
 	"GET /accounts/{account_id}/realtime/kit/{app_id}/sessions/{session_id}/transcript": {
@@ -1371,10 +1347,6 @@
 		"summary": "Fetch the complete transcript for a session",
 		"tags": [
 			"Sessions"
-		],
-		"x-api-token-group": [
-			"Realtime Admin",
-			"Realtime"
 		]
 	},
 	"GET /accounts/{account_id}/realtime/kit/{app_id}/sessions/peer-report/{peer_id}": {
@@ -2180,10 +2152,6 @@
 		"summary": "Fetch details of peer",
 		"tags": [
 			"Sessions"
-		],
-		"x-api-token-group": [
-			"Realtime Admin",
-			"Realtime"
 		]
 	},
 	"POST /accounts/{account_id}/realtime/kit/{app_id}/sessions/{session_id}/summary": {
@@ -2258,10 +2226,6 @@
 		"summary": "Generate summary of Transcripts for the session",
 		"tags": [
 			"Sessions"
-		],
-		"x-api-token-group": [
-			"Realtime Admin",
-			"Realtime"
 		]
 	}
 }

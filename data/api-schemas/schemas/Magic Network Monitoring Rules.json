@@ -588,9 +588,6 @@
 		"summary": "Delete rule",
 		"tags": [
 			"Magic Network Monitoring Rules"
-		],
-		"x-api-token-group": [
-			"Magic Network Monitoring Admin"
 		]
 	},
 	"GET /accounts/{account_id}/mnm/rules": {
@@ -1207,11 +1204,6 @@
 		"summary": "List rules",
 		"tags": [
 			"Magic Network Monitoring Rules"
-		],
-		"x-api-token-group": [
-			"Magic Network Monitoring Admin",
-			"Magic Network Monitoring Config Write",
-			"Magic Network Monitoring Config Read"
 		]
 	},
 	"GET /accounts/{account_id}/mnm/rules/{rule_id}": {
@@ -1797,11 +1789,6 @@
 		"summary": "Get rule",
 		"tags": [
 			"Magic Network Monitoring Rules"
-		],
-		"x-api-token-group": [
-			"Magic Network Monitoring Admin",
-			"Magic Network Monitoring Config Write",
-			"Magic Network Monitoring Config Read"
 		]
 	},
 	"PATCH /accounts/{account_id}/mnm/rules/{rule_id}": {
@@ -2452,10 +2439,6 @@
 		"summary": "Update rule",
 		"tags": [
 			"Magic Network Monitoring Rules"
-		],
-		"x-api-token-group": [
-			"Magic Network Monitoring Admin",
-			"Magic Network Monitoring Config Write"
 		]
 	},
 	"PATCH /accounts/{account_id}/mnm/rules/{rule_id}/advertisement": {
@@ -2845,10 +2828,6 @@
 		"summary": "Update advertisement for rule",
 		"tags": [
 			"Magic Network Monitoring Rules"
-		],
-		"x-api-token-group": [
-			"Magic Network Monitoring Admin",
-			"Magic Network Monitoring Config Write"
 		]
 	},
 	"POST /accounts/{account_id}/mnm/rules": {
@@ -3492,9 +3471,6 @@
 		"summary": "Create rules",
 		"tags": [
 			"Magic Network Monitoring Rules"
-		],
-		"x-api-token-group": [
-			"Magic Network Monitoring Admin"
 		]
 	},
 	"PUT /accounts/{account_id}/mnm/rules": {
@@ -4145,10 +4121,6 @@
 		"summary": "Update rules",
 		"tags": [
 			"Magic Network Monitoring Rules"
-		],
-		"x-api-token-group": [
-			"Magic Network Monitoring Admin",
-			"Magic Network Monitoring Config Write"
 		]
 	}
 }

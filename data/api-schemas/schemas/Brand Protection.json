@@ -54,9 +54,6 @@
 		"summary": "Delete logo query",
 		"tags": [
 			"Brand Protection"
-		],
-		"x-api-token-group": [
-			"Cloudforce One Write"
 		]
 	},
 	"GET /accounts/{account_id}/cloudforce-one/v2/brand-protection/domain/matches": {
@@ -216,10 +213,6 @@
 		"summary": "List saved query matches",
 		"tags": [
 			"Brand Protection"
-		],
-		"x-api-token-group": [
-			"Cloudforce One Write",
-			"Cloudforce One Read"
 		]
 	},
 	"GET /accounts/{account_id}/cloudforce-one/v2/brand-protection/domain/queries": {
@@ -327,10 +320,6 @@
 		"summary": "Get queries",
 		"tags": [
 			"Brand Protection"
-		],
-		"x-api-token-group": [
-			"Cloudforce One Write",
-			"Cloudforce One Read"
 		]
 	},
 	"GET /accounts/{account_id}/cloudforce-one/v2/brand-protection/logo/matches": {
@@ -476,10 +465,6 @@
 		"summary": "List logo matches",
 		"tags": [
 			"Brand Protection"
-		],
-		"x-api-token-group": [
-			"Cloudforce One Write",
-			"Cloudforce One Read"
 		]
 	},
 	"GET /accounts/{account_id}/cloudforce-one/v2/brand-protection/logo/queries": {
@@ -570,10 +555,6 @@
 		"summary": "Get logo queries",
 		"tags": [
 			"Brand Protection"
-		],
-		"x-api-token-group": [
-			"Cloudforce One Write",
-			"Cloudforce One Read"
 		]
 	},
 	"GET /accounts/{account_id}/cloudforce-one/v2/brand-protection/total-queries": {
@@ -622,10 +603,6 @@
 		"summary": "Get total queries",
 		"tags": [
 			"Brand Protection"
-		],
-		"x-api-token-group": [
-			"Cloudforce One Write",
-			"Cloudforce One Read"
 		]
 	},
 	"POST /accounts/{account_id}/cloudforce-one/v2/brand-protection/logo/queries": {
@@ -714,9 +691,6 @@
 		"summary": "Insert logo query",
 		"tags": [
 			"Brand Protection"
-		],
-		"x-api-token-group": [
-			"Cloudforce One Write"
 		]
 	},
 	"POST /accounts/{account_id}/cloudforce-one/v2/brand-protection/logo/search": {
@@ -859,9 +833,6 @@
 		"summary": "Search scanned images",
 		"tags": [
 			"Brand Protection"
-		],
-		"x-api-token-group": [
-			"Cloudforce One Write"
 		]
 	}
 }

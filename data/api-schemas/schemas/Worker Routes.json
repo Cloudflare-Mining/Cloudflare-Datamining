@@ -269,9 +269,6 @@
 		"summary": "Delete Route",
 		"tags": [
 			"Worker Routes"
-		],
-		"x-api-token-group": [
-			"Workers Routes Write"
 		]
 	},
 	"GET /zones/{zone_id}/workers/routes": {
@@ -556,10 +553,6 @@
 		"summary": "List Routes",
 		"tags": [
 			"Worker Routes"
-		],
-		"x-api-token-group": [
-			"Workers Routes Write",
-			"Workers Routes Read"
 		]
 	},
 	"GET /zones/{zone_id}/workers/routes/{route_id}": {
@@ -853,10 +846,6 @@
 		"summary": "Get Route",
 		"tags": [
 			"Worker Routes"
-		],
-		"x-api-token-group": [
-			"Workers Routes Write",
-			"Workers Routes Read"
 		]
 	},
 	"POST /zones/{zone_id}/workers/routes": {
@@ -1178,9 +1167,6 @@
 		"summary": "Create Route",
 		"tags": [
 			"Worker Routes"
-		],
-		"x-api-token-group": [
-			"Workers Routes Write"
 		]
 	},
 	"PUT /zones/{zone_id}/workers/routes/{route_id}": {
@@ -1514,9 +1500,6 @@
 		"summary": "Update Route",
 		"tags": [
 			"Worker Routes"
-		],
-		"x-api-token-group": [
-			"Workers Routes Write"
 		]
 	}
 }

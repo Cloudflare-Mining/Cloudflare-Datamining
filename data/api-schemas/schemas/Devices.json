@@ -1207,9 +1207,6 @@
 		"summary": "Delete a device settings profile",
 		"tags": [
 			"Devices"
-		],
-		"x-api-token-group": [
-			"Zero Trust Write"
 		]
 	},
 	"GET /accounts/{account_id}/devices": {
@@ -3014,10 +3011,6 @@
 		"summary": "Get override codes (deprecated)\n",
 		"tags": [
 			"Devices"
-		],
-		"x-api-token-group": [
-			"Zero Trust Read",
-			"Zero Trust Write"
 		]
 	},
 	"GET /accounts/{account_id}/devices/policies": {
@@ -9656,10 +9649,6 @@
 		"summary": "Get device certificate provisioning status",
 		"tags": [
 			"Devices"
-		],
-		"x-api-token-group": [
-			"SSL and Certificates Write",
-			"SSL and Certificates Read"
 		]
 	},
 	"PATCH /accounts/{account_id}/devices/policy": {
@@ -10916,9 +10905,6 @@
 		"summary": "Update the default device settings profile",
 		"tags": [
 			"Devices"
-		],
-		"x-api-token-group": [
-			"Zero Trust Write"
 		]
 	},
 	"PATCH /accounts/{account_id}/devices/policy/{policy_id}": {
@@ -12324,9 +12310,6 @@
 		"summary": "Update a device settings profile",
 		"tags": [
 			"Devices"
-		],
-		"x-api-token-group": [
-			"Zero Trust Write"
 		]
 	},
 	"PATCH /zones/{zone_id}/devices/policy/certificates": {
@@ -12718,9 +12701,6 @@
 		"summary": "Update device certificate provisioning status",
 		"tags": [
 			"Devices"
-		],
-		"x-api-token-group": [
-			"SSL and Certificates Write"
 		]
 	},
 	"POST /accounts/{account_id}/devices/policy": {
@@ -14128,9 +14108,6 @@
 		"summary": "Create a device settings profile",
 		"tags": [
 			"Devices"
-		],
-		"x-api-token-group": [
-			"Zero Trust Write"
 		]
 	},
 	"POST /accounts/{account_id}/devices/revoke": {
@@ -14478,9 +14455,6 @@
 		"summary": "Revoke devices (deprecated)",
 		"tags": [
 			"Devices"
-		],
-		"x-api-token-group": [
-			"Zero Trust Write"
 		]
 	},
 	"POST /accounts/{account_id}/devices/unrevoke": {
@@ -14828,9 +14802,6 @@
 		"summary": "Unrevoke devices (deprecated)",
 		"tags": [
 			"Devices"
-		],
-		"x-api-token-group": [
-			"Zero Trust Write"
 		]
 	},
 	"PUT /accounts/{account_id}/devices/policy/{policy_id}/exclude": {
@@ -15384,9 +15355,6 @@
 		"summary": "Set the Split Tunnel exclude list for a device settings profile",
 		"tags": [
 			"Devices"
-		],
-		"x-api-token-group": [
-			"Zero Trust Write"
 		]
 	},
 	"PUT /accounts/{account_id}/devices/policy/{policy_id}/fallback_domains": {
@@ -15892,9 +15860,6 @@
 		"summary": "Set the Local Domain Fallback list for a device settings profile",
 		"tags": [
 			"Devices"
-		],
-		"x-api-token-group": [
-			"Zero Trust Write"
 		]
 	},
 	"PUT /accounts/{account_id}/devices/policy/{policy_id}/include": {
@@ -16448,9 +16413,6 @@
 		"summary": "Set the Split Tunnel include list for a device settings profile",
 		"tags": [
 			"Devices"
-		],
-		"x-api-token-group": [
-			"Zero Trust Write"
 		]
 	},
 	"PUT /accounts/{account_id}/devices/policy/exclude": {
@@ -16993,9 +16955,6 @@
 		"summary": "Set the Split Tunnel exclude list",
 		"tags": [
 			"Devices"
-		],
-		"x-api-token-group": [
-			"Zero Trust Write"
 		]
 	},
 	"PUT /accounts/{account_id}/devices/policy/fallback_domains": {
@@ -17490,9 +17449,6 @@
 		"summary": "Set your Local Domain Fallback list",
 		"tags": [
 			"Devices"
-		],
-		"x-api-token-group": [
-			"Zero Trust Write"
 		]
 	},
 	"PUT /accounts/{account_id}/devices/policy/include": {
@@ -18035,9 +17991,6 @@
 		"summary": "Set the Split Tunnel include list",
 		"tags": [
 			"Devices"
-		],
-		"x-api-token-group": [
-			"Zero Trust Write"
 		]
 	}
 }

@@ -121,10 +121,6 @@
 		"tags": [
 			"Workers AI Summarization"
 		],
-		"x-api-token-group": [
-			"Workers AI Write",
-			"Workers AI Read"
-		],
 		"x-cfPermissionsRequired": {
 			"enum": [
 				"com.cloudflare.api.account.ai"
@@ -258,10 +254,6 @@
 		"summary": "Execute @cf/facebook/nonomni-bart-large-cnn model.",
 		"tags": [
 			"Workers AI Summarization"
-		],
-		"x-api-token-group": [
-			"Workers AI Write",
-			"Workers AI Read"
 		],
 		"x-cfPermissionsRequired": {
 			"enum": [

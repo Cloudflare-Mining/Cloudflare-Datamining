@@ -348,9 +348,11 @@
 		"tags": [
 			"Argo Analytics for Geolocation"
 		],
-		"x-api-token-group": [
-			"Analytics Read"
-		],
+		"x-cfPermissionsRequired": {
+			"enum": [
+				"#analytics:read"
+			]
+		},
 		"x-cfPlanAvailability": {
 			"business": true,
 			"enterprise": true,

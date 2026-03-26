@@ -379,9 +379,6 @@
 		"summary": "Delete image",
 		"tags": [
 			"Cloudflare Images"
-		],
-		"x-api-token-group": [
-			"Images Write"
 		]
 	},
 	"GET /accounts/{account_id}/images/v1": {
@@ -924,10 +921,6 @@
 		"summary": "List images",
 		"tags": [
 			"Cloudflare Images"
-		],
-		"x-api-token-group": [
-			"Images Read",
-			"Images Write"
 		]
 	},
 	"GET /accounts/{account_id}/images/v1/{image_id}": {
@@ -1474,10 +1467,6 @@
 		"summary": "Image details",
 		"tags": [
 			"Cloudflare Images"
-		],
-		"x-api-token-group": [
-			"Images Read",
-			"Images Write"
 		]
 	},
 	"GET /accounts/{account_id}/images/v1/{image_id}/blob": {
@@ -1647,10 +1636,6 @@
 		"summary": "Base image",
 		"tags": [
 			"Cloudflare Images"
-		],
-		"x-api-token-group": [
-			"Images Read",
-			"Images Write"
 		]
 	},
 	"GET /accounts/{account_id}/images/v1/stats": {
@@ -2054,10 +2039,6 @@
 		"summary": "Images usage statistics",
 		"tags": [
 			"Cloudflare Images"
-		],
-		"x-api-token-group": [
-			"Images Read",
-			"Images Write"
 		]
 	},
 	"GET /accounts/{account_id}/images/v2": {
@@ -3009,10 +2990,6 @@
 		"summary": "List images V2",
 		"tags": [
 			"Cloudflare Images"
-		],
-		"x-api-token-group": [
-			"Images Read",
-			"Images Write"
 		]
 	},
 	"PATCH /accounts/{account_id}/images/v1/{image_id}": {
@@ -3585,9 +3562,6 @@
 		"summary": "Update image",
 		"tags": [
 			"Cloudflare Images"
-		],
-		"x-api-token-group": [
-			"Images Write"
 		]
 	},
 	"POST /accounts/{account_id}/images/v1": {
@@ -4166,9 +4140,6 @@
 		"summary": "Upload an image",
 		"tags": [
 			"Cloudflare Images"
-		],
-		"x-api-token-group": [
-			"Images Write"
 		]
 	},
 	"POST /accounts/{account_id}/images/v2/direct_upload": {
@@ -4602,9 +4573,6 @@
 		"summary": "Create authenticated direct upload URL V2",
 		"tags": [
 			"Cloudflare Images"
-		],
-		"x-api-token-group": [
-			"Images Write"
 		]
 	}
 }

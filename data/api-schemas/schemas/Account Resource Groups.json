@@ -291,10 +291,6 @@
 		"tags": [
 			"Account Resource Groups"
 		],
-		"x-api-token-group": [
-			"SCIM Provisioning",
-			"Account Settings Write"
-		],
 		"x-cfPermissionsRequired": {
 			"enum": [
 				"com.cloudflare.api.iam.resource-group.delete"
@@ -671,11 +667,6 @@
 		"tags": [
 			"Account Resource Groups"
 		],
-		"x-api-token-group": [
-			"SCIM Provisioning",
-			"Account Settings Write",
-			"Account Settings Read"
-		],
 		"x-cfPermissionsRequired": {
 			"enum": [
 				"com.cloudflare.api.iam.resource-group.list"
@@ -1039,11 +1030,6 @@
 		"summary": "Resource Group Details",
 		"tags": [
 			"Account Resource Groups"
-		],
-		"x-api-token-group": [
-			"SCIM Provisioning",
-			"Account Settings Write",
-			"Account Settings Read"
 		],
 		"x-cfPermissionsRequired": {
 			"enum": [
@@ -1442,10 +1428,6 @@
 		"summary": "Create Resource Group",
 		"tags": [
 			"Account Resource Groups"
-		],
-		"x-api-token-group": [
-			"SCIM Provisioning",
-			"Account Settings Write"
 		],
 		"x-cfPermissionsRequired": {
 			"enum": [
@@ -1859,10 +1841,6 @@
 		"summary": "Update Resource Group",
 		"tags": [
 			"Account Resource Groups"
-		],
-		"x-api-token-group": [
-			"SCIM Provisioning",
-			"Account Settings Write"
 		],
 		"x-cfPermissionsRequired": {
 			"enum": [

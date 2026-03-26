@@ -149,9 +149,6 @@
 		"summary": "Delete a single document fingerprint.",
 		"tags": [
 			"DLP Document Fingerprints"
-		],
-		"x-api-token-group": [
-			"Zero Trust Write"
 		]
 	},
 	"GET /accounts/{account_id}/dlp/document_fingerprints": {
@@ -460,10 +457,6 @@
 		"summary": "Retrieve data about all document fingerprints.",
 		"tags": [
 			"DLP Document Fingerprints"
-		],
-		"x-api-token-group": [
-			"Zero Trust Read",
-			"Zero Trust Write"
 		]
 	},
 	"GET /accounts/{account_id}/dlp/document_fingerprints/{document_fingerprint_id}": {
@@ -777,10 +770,6 @@
 		"summary": "Retrieve data about a specific document fingerprint.",
 		"tags": [
 			"DLP Document Fingerprints"
-		],
-		"x-api-token-group": [
-			"Zero Trust Read",
-			"Zero Trust Write"
 		]
 	},
 	"POST /accounts/{account_id}/dlp/document_fingerprints": {
@@ -1114,9 +1103,6 @@
 		"summary": "Creates a new document fingerprint.",
 		"tags": [
 			"DLP Document Fingerprints"
-		],
-		"x-api-token-group": [
-			"Zero Trust Write"
 		]
 	},
 	"POST /accounts/{account_id}/dlp/document_fingerprints/{document_fingerprint_id}": {
@@ -1457,9 +1443,6 @@
 		"summary": "Update the attributes of a single document fingerprint.",
 		"tags": [
 			"DLP Document Fingerprints"
-		],
-		"x-api-token-group": [
-			"Zero Trust Write"
 		]
 	},
 	"PUT /accounts/{account_id}/dlp/document_fingerprints/{document_fingerprint_id}": {
@@ -1793,9 +1776,6 @@
 		"summary": "Uploads a new version for a document fingerprint.",
 		"tags": [
 			"DLP Document Fingerprints"
-		],
-		"x-api-token-group": [
-			"Zero Trust Write"
 		]
 	}
 }

@@ -273,9 +273,6 @@
 		"summary": "Delete captions or subtitles",
 		"tags": [
 			"Stream Subtitles/Captions"
-		],
-		"x-api-token-group": [
-			"Stream Write"
 		]
 	},
 	"GET /accounts/{account_id}/stream/{identifier}/captions": {
@@ -566,10 +563,6 @@
 		"summary": "List captions or subtitles",
 		"tags": [
 			"Stream Subtitles/Captions"
-		],
-		"x-api-token-group": [
-			"Stream Write",
-			"Stream Read"
 		]
 	},
 	"GET /accounts/{account_id}/stream/{identifier}/captions/{language}": {
@@ -873,10 +866,6 @@
 		"summary": "List captions or subtitles for a provided language",
 		"tags": [
 			"Stream Subtitles/Captions"
-		],
-		"x-api-token-group": [
-			"Stream Write",
-			"Stream Read"
 		]
 	},
 	"GET /accounts/{account_id}/stream/{identifier}/captions/{language}/vtt": {
@@ -1061,10 +1050,6 @@
 		"summary": "Return WebVTT captions for a provided language",
 		"tags": [
 			"Stream Subtitles/Captions"
-		],
-		"x-api-token-group": [
-			"Stream Write",
-			"Stream Read"
 		]
 	},
 	"POST /accounts/{account_id}/stream/{identifier}/captions/{language}/generate": {
@@ -1692,9 +1677,6 @@
 		"summary": "Upload captions or subtitles",
 		"tags": [
 			"Stream Subtitles/Captions"
-		],
-		"x-api-token-group": [
-			"Stream Write"
 		]
 	}
 }

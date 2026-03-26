@@ -53,12 +53,6 @@
 		"summary": "Get the current settings for the active account",
 		"tags": [
 			"Settings"
-		],
-		"x-api-token-group": [
-			"Magic WAN Write",
-			"Magic WAN Read",
-			"Magic Transit Read",
-			"Magic Transit Write"
 		]
 	},
 	"PUT /accounts/{account_id}/cni/settings": {
@@ -133,10 +127,6 @@
 		"summary": "Update the current settings for the active account",
 		"tags": [
 			"Settings"
-		],
-		"x-api-token-group": [
-			"Magic WAN Write",
-			"Magic Transit Write"
 		]
 	}
 }

@@ -204,9 +204,6 @@
 		"summary": "Delete an email allow policy",
 		"tags": [
 			"Email Security Settings"
-		],
-		"x-api-token-group": [
-			"Cloud Email Security: Write"
 		]
 	},
 	"DELETE /accounts/{account_id}/email-security/settings/block_senders/{pattern_id}": {
@@ -414,9 +411,6 @@
 		"summary": "Delete a blocked email sender",
 		"tags": [
 			"Email Security Settings"
-		],
-		"x-api-token-group": [
-			"Cloud Email Security: Write"
 		]
 	},
 	"DELETE /accounts/{account_id}/email-security/settings/domains": {
@@ -640,9 +634,6 @@
 		"summary": "Unprotect multiple email domains",
 		"tags": [
 			"Email Security Settings"
-		],
-		"x-api-token-group": [
-			"Cloud Email Security: Write"
 		]
 	},
 	"DELETE /accounts/{account_id}/email-security/settings/domains/{domain_id}": {
@@ -847,9 +838,6 @@
 		"summary": "Unprotect an email domain",
 		"tags": [
 			"Email Security Settings"
-		],
-		"x-api-token-group": [
-			"Cloud Email Security: Write"
 		]
 	},
 	"DELETE /accounts/{account_id}/email-security/settings/impersonation_registry/{display_name_id}": {
@@ -1055,9 +1043,6 @@
 		"summary": "Delete an entry from impersonation registry",
 		"tags": [
 			"Email Security Settings"
-		],
-		"x-api-token-group": [
-			"Cloud Email Security: Write"
 		]
 	},
 	"DELETE /accounts/{account_id}/email-security/settings/trusted_domains/{trusted_domain_id}": {
@@ -1265,9 +1250,6 @@
 		"summary": "Delete a trusted email domain",
 		"tags": [
 			"Email Security Settings"
-		],
-		"x-api-token-group": [
-			"Cloud Email Security: Write"
 		]
 	},
 	"GET /accounts/{account_id}/email-security/settings/allow_policies": {
@@ -1756,10 +1738,6 @@
 		"summary": "List email allow policies",
 		"tags": [
 			"Email Security Settings"
-		],
-		"x-api-token-group": [
-			"Cloud Email Security: Write",
-			"Cloud Email Security: Read"
 		]
 	},
 	"GET /accounts/{account_id}/email-security/settings/allow_policies/{policy_id}": {
@@ -2087,10 +2065,6 @@
 		"summary": "Get an email allow policy",
 		"tags": [
 			"Email Security Settings"
-		],
-		"x-api-token-group": [
-			"Cloud Email Security: Write",
-			"Cloud Email Security: Read"
 		]
 	},
 	"GET /accounts/{account_id}/email-security/settings/block_senders": {
@@ -2474,10 +2448,6 @@
 		"summary": "List blocked email senders",
 		"tags": [
 			"Email Security Settings"
-		],
-		"x-api-token-group": [
-			"Cloud Email Security: Write",
-			"Cloud Email Security: Read"
 		]
 	},
 	"GET /accounts/{account_id}/email-security/settings/block_senders/{pattern_id}": {
@@ -2752,10 +2722,6 @@
 		"summary": "Get a blocked email sender",
 		"tags": [
 			"Email Security Settings"
-		],
-		"x-api-token-group": [
-			"Cloud Email Security: Write",
-			"Cloud Email Security: Read"
 		]
 	},
 	"GET /accounts/{account_id}/email-security/settings/domains": {
@@ -3357,10 +3323,6 @@
 		"summary": "List protected email domains",
 		"tags": [
 			"Email Security Settings"
-		],
-		"x-api-token-group": [
-			"Cloud Email Security: Write",
-			"Cloud Email Security: Read"
 		]
 	},
 	"GET /accounts/{account_id}/email-security/settings/domains/{domain_id}": {
@@ -3817,10 +3779,6 @@
 		"summary": "Get an email domain",
 		"tags": [
 			"Email Security Settings"
-		],
-		"x-api-token-group": [
-			"Cloud Email Security: Write",
-			"Cloud Email Security: Read"
 		]
 	},
 	"GET /accounts/{account_id}/email-security/settings/impersonation_registry": {
@@ -4204,10 +4162,6 @@
 		"summary": "List entries in impersonation registry",
 		"tags": [
 			"Email Security Settings"
-		],
-		"x-api-token-group": [
-			"Cloud Email Security: Write",
-			"Cloud Email Security: Read"
 		]
 	},
 	"GET /accounts/{account_id}/email-security/settings/impersonation_registry/{display_name_id}": {
@@ -4487,10 +4441,6 @@
 		"summary": "Get an entry in impersonation registry",
 		"tags": [
 			"Email Security Settings"
-		],
-		"x-api-token-group": [
-			"Cloud Email Security: Write",
-			"Cloud Email Security: Read"
 		]
 	},
 	"GET /accounts/{account_id}/email-security/settings/trusted_domains": {
@@ -4875,10 +4825,6 @@
 		"summary": "List trusted email domains",
 		"tags": [
 			"Email Security Settings"
-		],
-		"x-api-token-group": [
-			"Cloud Email Security: Write",
-			"Cloud Email Security: Read"
 		]
 	},
 	"GET /accounts/{account_id}/email-security/settings/trusted_domains/{trusted_domain_id}": {
@@ -5157,10 +5103,6 @@
 		"summary": "Get a trusted email domain",
 		"tags": [
 			"Email Security Settings"
-		],
-		"x-api-token-group": [
-			"Cloud Email Security: Write",
-			"Cloud Email Security: Read"
 		]
 	},
 	"PATCH /accounts/{account_id}/email-security/settings/allow_policies/{policy_id}": {
@@ -5560,9 +5502,6 @@
 		"summary": "Update an email allow policy",
 		"tags": [
 			"Email Security Settings"
-		],
-		"x-api-token-group": [
-			"Cloud Email Security: Write"
 		]
 	},
 	"PATCH /accounts/{account_id}/email-security/settings/block_senders/{pattern_id}": {
@@ -5883,9 +5822,6 @@
 		"summary": "Update a blocked email sender",
 		"tags": [
 			"Email Security Settings"
-		],
-		"x-api-token-group": [
-			"Cloud Email Security: Write"
 		]
 	},
 	"PATCH /accounts/{account_id}/email-security/settings/domains/{domain_id}": {
@@ -6452,9 +6388,6 @@
 		"summary": "Update an email domain",
 		"tags": [
 			"Email Security Settings"
-		],
-		"x-api-token-group": [
-			"Cloud Email Security: Write"
 		]
 	},
 	"PATCH /accounts/{account_id}/email-security/settings/impersonation_registry/{display_name_id}": {
@@ -6763,9 +6696,6 @@
 		"summary": "Update an entry in impersonation registry",
 		"tags": [
 			"Email Security Settings"
-		],
-		"x-api-token-group": [
-			"Cloud Email Security: Write"
 		]
 	},
 	"PATCH /accounts/{account_id}/email-security/settings/trusted_domains/{trusted_domain_id}": {
@@ -7082,9 +7012,6 @@
 		"summary": "Update a trusted email domain",
 		"tags": [
 			"Email Security Settings"
-		],
-		"x-api-token-group": [
-			"Cloud Email Security: Write"
 		]
 	},
 	"POST /accounts/{account_id}/email-security/settings/allow_policies": {
@@ -7495,9 +7422,6 @@
 		"summary": "Create an email allow policy",
 		"tags": [
 			"Email Security Settings"
-		],
-		"x-api-token-group": [
-			"Cloud Email Security: Write"
 		]
 	},
 	"POST /accounts/{account_id}/email-security/settings/allow_policies/batch": {
@@ -8445,9 +8369,6 @@
 		"summary": "Batch Allow Policies",
 		"tags": [
 			"Email Security Settings"
-		],
-		"x-api-token-group": [
-			"Cloud Email Security: Write"
 		]
 	},
 	"POST /accounts/{account_id}/email-security/settings/block_senders": {
@@ -8759,9 +8680,6 @@
 		"summary": "Create a blocked email sender",
 		"tags": [
 			"Email Security Settings"
-		],
-		"x-api-token-group": [
-			"Cloud Email Security: Write"
 		]
 	},
 	"POST /accounts/{account_id}/email-security/settings/block_senders/batch": {
@@ -9432,9 +9350,6 @@
 		"summary": "Batch Block Senders",
 		"tags": [
 			"Email Security Settings"
-		],
-		"x-api-token-group": [
-			"Cloud Email Security: Write"
 		]
 	},
 	"POST /accounts/{account_id}/email-security/settings/impersonation_registry": {
@@ -9733,9 +9648,6 @@
 		"summary": "Create an entry in impersonation registry",
 		"tags": [
 			"Email Security Settings"
-		],
-		"x-api-token-group": [
-			"Cloud Email Security: Write"
 		]
 	},
 	"POST /accounts/{account_id}/email-security/settings/sending_domain_restrictions/batch": {
@@ -9971,9 +9883,6 @@
 		"summary": "Batch Sending Domain Restrictions",
 		"tags": [
 			"Email Security Settings"
-		],
-		"x-api-token-group": [
-			"Cloud Email Security: Write"
 		]
 	},
 	"POST /accounts/{account_id}/email-security/settings/trusted_domains": {
@@ -10437,9 +10346,6 @@
 		"summary": "Create a trusted email domain",
 		"tags": [
 			"Email Security Settings"
-		],
-		"x-api-token-group": [
-			"Cloud Email Security: Write"
 		]
 	},
 	"POST /accounts/{account_id}/email-security/settings/trusted_domains/batch": {
@@ -11120,9 +11026,6 @@
 		"summary": "Batch Trusted Domains",
 		"tags": [
 			"Email Security Settings"
-		],
-		"x-api-token-group": [
-			"Cloud Email Security: Write"
 		]
 	}
 }

@@ -378,9 +378,6 @@
 		"summary": "Delete a variant",
 		"tags": [
 			"Cloudflare Images Variants"
-		],
-		"x-api-token-group": [
-			"Images Write"
 		]
 	},
 	"GET /accounts/{account_id}/images/v1/variants": {
@@ -864,10 +861,6 @@
 		"summary": "List variants",
 		"tags": [
 			"Cloudflare Images Variants"
-		],
-		"x-api-token-group": [
-			"Images Read",
-			"Images Write"
 		]
 	},
 	"GET /accounts/{account_id}/images/v1/variants/{variant_id}": {
@@ -1391,10 +1384,6 @@
 		"summary": "Variant details",
 		"tags": [
 			"Cloudflare Images Variants"
-		],
-		"x-api-token-group": [
-			"Images Read",
-			"Images Write"
 		]
 	},
 	"GET /accounts/{account_id}/images/v1/variants/{variant_id}/flat": {
@@ -1908,10 +1897,6 @@
 		"summary": "Variant details (flat)",
 		"tags": [
 			"Cloudflare Images Variants"
-		],
-		"x-api-token-group": [
-			"Images Read",
-			"Images Write"
 		]
 	},
 	"PATCH /accounts/{account_id}/images/v1/variants/{variant_id}": {
@@ -2507,9 +2492,6 @@
 		"summary": "Update a variant",
 		"tags": [
 			"Cloudflare Images Variants"
-		],
-		"x-api-token-group": [
-			"Images Write"
 		]
 	},
 	"POST /accounts/{account_id}/images/v1/variants": {
@@ -3101,9 +3083,6 @@
 		"summary": "Create a variant",
 		"tags": [
 			"Cloudflare Images Variants"
-		],
-		"x-api-token-group": [
-			"Images Write"
 		]
 	}
 }

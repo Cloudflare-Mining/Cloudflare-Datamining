@@ -260,8 +260,7 @@
 		"summary": "Delete a user",
 		"tags": [
 			"Zero Trust users"
-		],
-		"x-api-token-group": null
+		]
 	},
 	"DELETE /accounts/{account_id}/access/users/{user_id}/mfa_authenticators/{authenticator_id}": {
 		"description": "Deletes a specific MFA device for a user. This action is only available if MFA is turned on for the organization.",
@@ -534,8 +533,7 @@
 		"summary": "Delete a user's MFA device",
 		"tags": [
 			"Zero Trust users"
-		],
-		"x-api-token-group": null
+		]
 	},
 	"GET /accounts/{account_id}/access/users": {
 		"description": "Gets a list of users for an account.",
@@ -947,9 +945,6 @@
 		"summary": "Get users",
 		"tags": [
 			"Zero Trust users"
-		],
-		"x-api-token-group": [
-			"Access: Audit Logs Read"
 		]
 	},
 	"GET /accounts/{account_id}/access/users/{user_id}": {
@@ -1273,9 +1268,6 @@
 		"summary": "Get a user",
 		"tags": [
 			"Zero Trust users"
-		],
-		"x-api-token-group": [
-			"Access: Audit Logs Read"
 		]
 	},
 	"GET /accounts/{account_id}/access/users/{user_id}/active_sessions": {
@@ -1630,9 +1622,6 @@
 		"summary": "Get active sessions",
 		"tags": [
 			"Zero Trust users"
-		],
-		"x-api-token-group": [
-			"Access: Audit Logs Read"
 		]
 	},
 	"GET /accounts/{account_id}/access/users/{user_id}/active_sessions/{nonce}": {
@@ -2083,9 +2072,6 @@
 		"summary": "Get single active session",
 		"tags": [
 			"Zero Trust users"
-		],
-		"x-api-token-group": [
-			"Access: Audit Logs Read"
 		]
 	},
 	"GET /accounts/{account_id}/access/users/{user_id}/failed_logins": {
@@ -2402,9 +2388,6 @@
 		"summary": "Get failed logins",
 		"tags": [
 			"Zero Trust users"
-		],
-		"x-api-token-group": [
-			"Access: Audit Logs Read"
 		]
 	},
 	"GET /accounts/{account_id}/access/users/{user_id}/last_seen_identity": {
@@ -2837,9 +2820,6 @@
 		"summary": "Get last seen identity",
 		"tags": [
 			"Zero Trust users"
-		],
-		"x-api-token-group": [
-			"Access: Audit Logs Read"
 		]
 	},
 	"POST /accounts/{account_id}/access/users": {
@@ -3176,8 +3156,7 @@
 		"summary": "Create a user",
 		"tags": [
 			"Zero Trust users"
-		],
-		"x-api-token-group": null
+		]
 	},
 	"PUT /accounts/{account_id}/access/users/{user_id}": {
 		"description": "Updates a specific user's name for an account. Requires the user's current email as confirmation (email cannot be changed).",
@@ -3526,9 +3505,6 @@
 		"summary": "Update a user",
 		"tags": [
 			"Zero Trust users"
-		],
-		"x-api-token-group": [
-			"Zero Trust: Seats Write"
 		]
 	}
 }

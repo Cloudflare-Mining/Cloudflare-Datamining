@@ -249,10 +249,6 @@
 		"summary": "Delete a schema",
 		"tags": [
 			"Schema Validation"
-		],
-		"x-api-token-group": [
-			"Account API Gateway",
-			"Domain API Gateway"
 		]
 	},
 	"GET /zones/{zone_id}/schema_validation/schemas": {
@@ -655,12 +651,6 @@
 		"summary": "List all uploaded schemas",
 		"tags": [
 			"Schema Validation"
-		],
-		"x-api-token-group": [
-			"Account API Gateway",
-			"Account API Gateway Read",
-			"Domain API Gateway",
-			"Domain API Gateway Read"
 		]
 	},
 	"GET /zones/{zone_id}/schema_validation/schemas/{schema_id}": {
@@ -991,12 +981,6 @@
 		"summary": "Get details of a schema",
 		"tags": [
 			"Schema Validation"
-		],
-		"x-api-token-group": [
-			"Account API Gateway",
-			"Account API Gateway Read",
-			"Domain API Gateway",
-			"Domain API Gateway Read"
 		]
 	},
 	"GET /zones/{zone_id}/schema_validation/schemas/{schema_id}/operations": {
@@ -1877,12 +1861,6 @@
 		"summary": "Retrieve all operations from the schema.",
 		"tags": [
 			"Schema Validation"
-		],
-		"x-api-token-group": [
-			"Account API Gateway",
-			"Account API Gateway Read",
-			"Domain API Gateway",
-			"Domain API Gateway Read"
 		]
 	},
 	"GET /zones/{zone_id}/schema_validation/schemas/hosts": {
@@ -2253,12 +2231,6 @@
 		"summary": "List hosts covered by uploaded schemas",
 		"tags": [
 			"Schema Validation"
-		],
-		"x-api-token-group": [
-			"Account API Gateway",
-			"Account API Gateway Read",
-			"Domain API Gateway",
-			"Domain API Gateway Read"
 		]
 	},
 	"PATCH /zones/{zone_id}/schema_validation/schemas/{schema_id}": {
@@ -2594,10 +2566,6 @@
 		"summary": "Edit details of a schema to enable validation",
 		"tags": [
 			"Schema Validation"
-		],
-		"x-api-token-group": [
-			"Account API Gateway",
-			"Domain API Gateway"
 		]
 	},
 	"POST /zones/{zone_id}/schema_validation/schemas": {
@@ -3127,10 +3095,6 @@
 		"summary": "Upload a schema",
 		"tags": [
 			"Schema Validation"
-		],
-		"x-api-token-group": [
-			"Account API Gateway",
-			"Domain API Gateway"
 		]
 	}
 }

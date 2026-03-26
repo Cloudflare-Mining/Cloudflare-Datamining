@@ -146,9 +146,6 @@
 		"summary": "Delete Subdomain",
 		"tags": [
 			"Worker Subdomain"
-		],
-		"x-api-token-group": [
-			"Workers Scripts Write"
 		]
 	},
 	"GET /accounts/{account_id}/workers/subdomain": {
@@ -409,10 +406,6 @@
 		"summary": "Get Subdomain",
 		"tags": [
 			"Worker Subdomain"
-		],
-		"x-api-token-group": [
-			"Workers Scripts Write",
-			"Workers Scripts Read"
 		]
 	},
 	"PUT /accounts/{account_id}/workers/subdomain": {
@@ -693,9 +686,6 @@
 		"summary": "Create Subdomain",
 		"tags": [
 			"Worker Subdomain"
-		],
-		"x-api-token-group": [
-			"Workers Scripts Write"
 		]
 	}
 }

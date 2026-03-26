@@ -808,10 +808,6 @@
 		"tags": [
 			"Zone Subscription"
 		],
-		"x-api-token-group": [
-			"Billing Write",
-			"Billing Read"
-		],
 		"x-cfPermissionsRequired": {
 			"enum": [
 				"#billing:read"
@@ -1833,9 +1829,6 @@
 		"summary": "Create Zone Subscription",
 		"tags": [
 			"Zone Subscription"
-		],
-		"x-api-token-group": [
-			"Billing Write"
 		],
 		"x-cfPermissionsRequired": {
 			"enum": [
@@ -2859,9 +2852,6 @@
 		"summary": "Update Zone Subscription",
 		"tags": [
 			"Zone Subscription"
-		],
-		"x-api-token-group": [
-			"Billing Write"
 		],
 		"x-cfPermissionsRequired": {
 			"enum": [

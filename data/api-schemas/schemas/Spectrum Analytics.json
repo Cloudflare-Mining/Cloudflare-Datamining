@@ -309,9 +309,6 @@
 		"summary": "Get current aggregated analytics",
 		"tags": [
 			"Spectrum Analytics"
-		],
-		"x-api-token-group": [
-			"Analytics Read"
 		]
 	},
 	"GET /zones/{zone_id}/spectrum/analytics/events/bytime": {
@@ -895,9 +892,6 @@
 		"summary": "Get analytics by time",
 		"tags": [
 			"Spectrum Analytics"
-		],
-		"x-api-token-group": [
-			"Analytics Read"
 		]
 	},
 	"GET /zones/{zone_id}/spectrum/analytics/events/summary": {
@@ -1461,9 +1455,6 @@
 		"summary": "Get analytics summary",
 		"tags": [
 			"Spectrum Analytics"
-		],
-		"x-api-token-group": [
-			"Analytics Read"
 		]
 	}
 }

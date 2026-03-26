@@ -253,9 +253,6 @@
 		"summary": "Delete a risk score integration.",
 		"tags": [
 			"Zero Trust Risk Scoring Integrations"
-		],
-		"x-api-token-group": [
-			"Zero Trust Write"
 		]
 	},
 	"GET /accounts/{account_id}/zt_risk_scoring/integrations": {
@@ -553,10 +550,6 @@
 		"summary": "List all risk score integrations for the account.",
 		"tags": [
 			"Zero Trust Risk Scoring Integrations"
-		],
-		"x-api-token-group": [
-			"Zero Trust Read",
-			"Zero Trust Write"
 		]
 	},
 	"GET /accounts/{account_id}/zt_risk_scoring/integrations/{integration_id}": {
@@ -859,10 +852,6 @@
 		"summary": "Get risk score integration by id.",
 		"tags": [
 			"Zero Trust Risk Scoring Integrations"
-		],
-		"x-api-token-group": [
-			"Zero Trust Read",
-			"Zero Trust Write"
 		]
 	},
 	"GET /accounts/{account_id}/zt_risk_scoring/integrations/reference_id/{reference_id}": {
@@ -1165,10 +1154,6 @@
 		"summary": "Get risk score integration by reference id.",
 		"tags": [
 			"Zero Trust Risk Scoring Integrations"
-		],
-		"x-api-token-group": [
-			"Zero Trust Read",
-			"Zero Trust Write"
 		]
 	},
 	"POST /accounts/{account_id}/zt_risk_scoring/integrations": {
@@ -1495,9 +1480,6 @@
 		"summary": "Create new risk score integration.",
 		"tags": [
 			"Zero Trust Risk Scoring Integrations"
-		],
-		"x-api-token-group": [
-			"Zero Trust Write"
 		]
 	},
 	"PUT /accounts/{account_id}/zt_risk_scoring/integrations/{integration_id}": {
@@ -1831,9 +1813,6 @@
 		"summary": "Update a risk score integration.",
 		"tags": [
 			"Zero Trust Risk Scoring Integrations"
-		],
-		"x-api-token-group": [
-			"Zero Trust Write"
 		]
 	}
 }

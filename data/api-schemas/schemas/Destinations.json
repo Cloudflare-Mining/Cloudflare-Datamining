@@ -313,9 +313,6 @@
 		"summary": "Delete Destination",
 		"tags": [
 			"Destinations"
-		],
-		"x-api-token-group": [
-			"Workers Observability Write"
 		]
 	},
 	"GET /accounts/{account_id}/workers/observability/destinations": {
@@ -694,10 +691,6 @@
 		"summary": "Get Destinations",
 		"tags": [
 			"Destinations"
-		],
-		"x-api-token-group": [
-			"Workers Observability Write",
-			"Workers Observability Read"
 		]
 	},
 	"PATCH /accounts/{account_id}/workers/observability/destinations/{slug}": {
@@ -1115,9 +1108,6 @@
 		"summary": "Update Destination",
 		"tags": [
 			"Destinations"
-		],
-		"x-api-token-group": [
-			"Workers Observability Write"
 		]
 	},
 	"POST /accounts/{account_id}/workers/observability/destinations": {
@@ -1493,9 +1483,6 @@
 		"summary": "Create Destination",
 		"tags": [
 			"Destinations"
-		],
-		"x-api-token-group": [
-			"Workers Observability Write"
 		]
 	}
 }

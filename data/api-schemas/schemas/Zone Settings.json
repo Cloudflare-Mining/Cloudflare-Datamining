@@ -4029,10 +4029,6 @@
 		"tags": [
 			"Zone Settings"
 		],
-		"x-api-token-group": [
-			"Zone Settings Write",
-			"Zone Settings Read"
-		],
 		"x-cfPermissionsRequired": {
 			"enum": [
 				"#zone_settings:read"
@@ -8145,10 +8141,6 @@
 		"tags": [
 			"Zone Settings"
 		],
-		"x-api-token-group": [
-			"Zone Settings Write",
-			"Zone Settings Read"
-		],
 		"x-cfPermissionsRequired": {
 			"enum": [
 				"#zone_settings:read"
@@ -8471,12 +8463,6 @@
 		"tags": [
 			"Zone Settings"
 		],
-		"x-api-token-group": [
-			"Zone Settings Write",
-			"Zone Settings Read",
-			"Zone Read",
-			"Zone Write"
-		],
 		"x-cfPermissionsRequired": {
 			"enum": [
 				"#zone_settings:read"
@@ -8758,10 +8744,6 @@
 		"summary": "Get Cloudflare Fonts setting",
 		"tags": [
 			"Zone Settings"
-		],
-		"x-api-token-group": [
-			"Zone Settings Write",
-			"Zone Settings Read"
 		],
 		"x-cfPermissionsRequired": {
 			"enum": [
@@ -9062,12 +9044,6 @@
 		"summary": "Get Origin H2 Max Streams Setting",
 		"tags": [
 			"Zone Settings"
-		],
-		"x-api-token-group": [
-			"Zone Settings Write",
-			"Zone Settings Read",
-			"Zone Read",
-			"Zone Write"
 		],
 		"x-cfPermissionsRequired": {
 			"enum": [
@@ -9412,12 +9388,6 @@
 		"tags": [
 			"Zone Settings"
 		],
-		"x-api-token-group": [
-			"Zone Settings Write",
-			"Zone Settings Read",
-			"Zone Read",
-			"Zone Write"
-		],
 		"x-cfPermissionsRequired": {
 			"enum": [
 				"#zone_settings:read"
@@ -9683,10 +9653,6 @@
 		"summary": "Get Cloudflare Speed Brain setting",
 		"tags": [
 			"Zone Settings"
-		],
-		"x-api-token-group": [
-			"Zone Settings Write",
-			"Zone Settings Read"
 		],
 		"x-cfPermissionsRequired": {
 			"enum": [
@@ -17460,9 +17426,6 @@
 		"tags": [
 			"Zone Settings"
 		],
-		"x-api-token-group": [
-			"Zone Settings Write"
-		],
 		"x-cfPermissionsRequired": {
 			"enum": [
 				"#zone_settings:edit"
@@ -22296,9 +22259,6 @@
 		"tags": [
 			"Zone Settings"
 		],
-		"x-api-token-group": [
-			"Zone Settings Write"
-		],
 		"x-cfPermissionsRequired": {
 			"enum": [
 				"#zone_settings:read"
@@ -22653,10 +22613,6 @@
 		"tags": [
 			"Zone Settings"
 		],
-		"x-api-token-group": [
-			"Zone Settings Write",
-			"Zone Write"
-		],
 		"x-cfPermissionsRequired": {
 			"enum": [
 				"#zone_settings:edit"
@@ -22963,9 +22919,6 @@
 		"summary": "Change Cloudflare Fonts setting",
 		"tags": [
 			"Zone Settings"
-		],
-		"x-api-token-group": [
-			"Zone Settings Write"
 		],
 		"x-cfPermissionsRequired": {
 			"enum": [
@@ -23289,10 +23242,6 @@
 		"summary": "Change Origin H2 Max Streams Setting",
 		"tags": [
 			"Zone Settings"
-		],
-		"x-api-token-group": [
-			"Zone Settings Write",
-			"Zone Write"
 		],
 		"x-cfPermissionsRequired": {
 			"enum": [
@@ -23661,10 +23610,6 @@
 		"tags": [
 			"Zone Settings"
 		],
-		"x-api-token-group": [
-			"Zone Settings Write",
-			"Zone Write"
-		],
 		"x-cfPermissionsRequired": {
 			"enum": [
 				"#zone_settings:edit"
@@ -23953,9 +23898,6 @@
 		"summary": "Change Cloudflare Speed Brain setting",
 		"tags": [
 			"Zone Settings"
-		],
-		"x-api-token-group": [
-			"Zone Settings Write"
 		],
 		"x-cfPermissionsRequired": {
 			"enum": [

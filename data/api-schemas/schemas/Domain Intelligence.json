@@ -657,10 +657,6 @@
 		"summary": "Get Domain Details",
 		"tags": [
 			"Domain Intelligence"
-		],
-		"x-api-token-group": [
-			"Intel Write",
-			"Intel Read"
 		]
 	},
 	"GET /accounts/{account_id}/intel/domain/bulk": {
@@ -1383,10 +1379,6 @@
 		"summary": "Get Multiple Domain Details",
 		"tags": [
 			"Domain Intelligence"
-		],
-		"x-api-token-group": [
-			"Intel Write",
-			"Intel Read"
 		]
 	}
 }

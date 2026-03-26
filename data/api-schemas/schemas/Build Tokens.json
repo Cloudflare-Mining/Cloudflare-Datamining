@@ -179,9 +179,6 @@
 		"summary": "Delete build token",
 		"tags": [
 			"Build Tokens"
-		],
-		"x-api-token-group": [
-			"Workers CI Write"
 		]
 	},
 	"GET /accounts/{account_id}/builds/tokens": {
@@ -366,10 +363,6 @@
 		"summary": "List build tokens",
 		"tags": [
 			"Build Tokens"
-		],
-		"x-api-token-group": [
-			"Workers CI Write",
-			"Workers CI Read"
 		]
 	},
 	"POST /accounts/{account_id}/builds/tokens": {
@@ -534,9 +527,6 @@
 		"summary": "Create build token",
 		"tags": [
 			"Build Tokens"
-		],
-		"x-api-token-group": [
-			"Workers CI Write"
 		]
 	}
 }
