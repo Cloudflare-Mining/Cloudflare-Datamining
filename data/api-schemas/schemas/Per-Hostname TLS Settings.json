@@ -519,6 +519,9 @@
 		"tags": [
 			"Per-Hostname TLS Settings"
 		],
+		"x-api-token-group": [
+			"SSL and Certificates Write"
+		],
 		"x-cfPermissionsRequired": {
 			"enum": [
 				"#ssl:edit"
@@ -1158,6 +1161,10 @@
 		"tags": [
 			"Per-Hostname TLS Settings"
 		],
+		"x-api-token-group": [
+			"SSL and Certificates Write",
+			"SSL and Certificates Read"
+		],
 		"x-cfPermissionsRequired": {
 			"enum": [
 				"#ssl:read"
@@ -1690,11 +1697,6 @@
 		"tags": [
 			"Per-Hostname TLS Settings"
 		],
-		"x-cfPermissionsRequired": {
-			"enum": [
-				"#ssl:read"
-			]
-		},
 		"x-cfPlanAvailability": {
 			"business": true,
 			"enterprise": true,
@@ -2275,6 +2277,9 @@
 		"summary": "Edit TLS setting for hostname",
 		"tags": [
 			"Per-Hostname TLS Settings"
+		],
+		"x-api-token-group": [
+			"SSL and Certificates Write"
 		],
 		"x-cfPermissionsRequired": {
 			"enum": [

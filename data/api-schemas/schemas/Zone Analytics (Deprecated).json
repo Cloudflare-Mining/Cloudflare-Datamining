@@ -965,6 +965,9 @@
 		"tags": [
 			"Zone Analytics (Deprecated)"
 		],
+		"x-api-token-group": [
+			"Analytics Read"
+		],
 		"x-cfDeprecation": {
 			"description": "Please use the new GraphQL Analytics API instead: https://developers.cloudflare.com/analytics/graphql-api/. It provides equivalent data and more features, including the ability to select only the metrics you need. Migration guide: https://developers.cloudflare.com/analytics/migration-guides/zone-analytics/.",
 			"display": true,
@@ -2492,6 +2495,9 @@
 		"summary": "Get dashboard",
 		"tags": [
 			"Zone Analytics (Deprecated)"
+		],
+		"x-api-token-group": [
+			"Analytics Read"
 		],
 		"x-cfDeprecation": {
 			"description": "Please use the new GraphQL Analytics API instead: https://developers.cloudflare.com/analytics/graphql-api/. It provides equivalent data and more features, including the ability to select only the metrics you need. Migration guide: https://developers.cloudflare.com/analytics/migration-guides/zone-analytics/.",

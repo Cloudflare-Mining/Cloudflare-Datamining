@@ -220,6 +220,9 @@
 		"summary": "Delete D1 Database",
 		"tags": [
 			"D1"
+		],
+		"x-api-token-group": [
+			"D1 Write"
 		]
 	},
 	"GET /accounts/{account_id}/d1/database": {
@@ -525,6 +528,10 @@
 		"summary": "List D1 Databases",
 		"tags": [
 			"D1"
+		],
+		"x-api-token-group": [
+			"D1 Read",
+			"D1 Write"
 		]
 	},
 	"GET /accounts/{account_id}/d1/database/{database_id}": {
@@ -827,6 +834,10 @@
 		"summary": "Get D1 Database",
 		"tags": [
 			"D1"
+		],
+		"x-api-token-group": [
+			"D1 Read",
+			"D1 Write"
 		]
 	},
 	"GET /accounts/{account_id}/d1/database/{database_id}/time_travel/bookmark": {
@@ -1066,6 +1077,10 @@
 		"summary": "Get D1 database bookmark",
 		"tags": [
 			"D1"
+		],
+		"x-api-token-group": [
+			"D1 Read",
+			"D1 Write"
 		]
 	},
 	"PATCH /accounts/{account_id}/d1/database/{database_id}": {
@@ -1388,6 +1403,9 @@
 		"summary": "Update D1 Database partially",
 		"tags": [
 			"D1"
+		],
+		"x-api-token-group": [
+			"D1 Write"
 		]
 	},
 	"POST /accounts/{account_id}/d1/database": {
@@ -1713,6 +1731,9 @@
 		"summary": "Create D1 Database",
 		"tags": [
 			"D1"
+		],
+		"x-api-token-group": [
+			"D1 Write"
 		]
 	},
 	"POST /accounts/{account_id}/d1/database/{database_id}/export": {
@@ -3095,6 +3116,10 @@
 		"summary": "Query D1 Database",
 		"tags": [
 			"D1"
+		],
+		"x-api-token-group": [
+			"D1 Read",
+			"D1 Write"
 		]
 	},
 	"POST /accounts/{account_id}/d1/database/{database_id}/raw": {
@@ -3502,6 +3527,10 @@
 		"summary": "Raw D1 Database query",
 		"tags": [
 			"D1"
+		],
+		"x-api-token-group": [
+			"D1 Read",
+			"D1 Write"
 		]
 	},
 	"POST /accounts/{account_id}/d1/database/{database_id}/time_travel/restore": {
@@ -4104,6 +4133,9 @@
 		"summary": "Update D1 Database",
 		"tags": [
 			"D1"
+		],
+		"x-api-token-group": [
+			"D1 Write"
 		]
 	}
 }

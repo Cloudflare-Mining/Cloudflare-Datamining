@@ -129,6 +129,9 @@
 		"summary": "Deletes a tag (SoT)",
 		"tags": [
 			"Tag"
+		],
+		"x-api-token-group": [
+			"Cloudforce One Write"
 		]
 	},
 	"GET /accounts/{account_id}/cloudforce-one/events/dataset/{dataset_id}/tags/{tag_uuid}/indicators": {
@@ -442,6 +445,10 @@
 		"summary": "List indicators related to a tag",
 		"tags": [
 			"Tag"
+		],
+		"x-api-token-group": [
+			"Cloudforce One Write",
+			"Cloudforce One Read"
 		]
 	},
 	"GET /accounts/{account_id}/cloudforce-one/events/tags": {
@@ -653,6 +660,10 @@
 		"summary": "Lists all tags (SoT)",
 		"tags": [
 			"Tag"
+		],
+		"x-api-token-group": [
+			"Cloudforce One Write",
+			"Cloudforce One Read"
 		]
 	},
 	"PATCH /accounts/{account_id}/cloudforce-one/events/tags/{tag_uuid}": {
@@ -919,6 +930,9 @@
 		"summary": "Updates a tag (SoT)",
 		"tags": [
 			"Tag"
+		],
+		"x-api-token-group": [
+			"Cloudforce One Write"
 		]
 	},
 	"POST /accounts/{account_id}/cloudforce-one/events/tags/create": {
@@ -1178,6 +1192,10 @@
 		"summary": "Creates a new tag",
 		"tags": [
 			"Tag"
+		],
+		"x-api-token-group": [
+			"Cloudforce One Write",
+			"Cloudforce One Read"
 		]
 	}
 }

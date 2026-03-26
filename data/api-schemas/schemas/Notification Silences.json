@@ -302,6 +302,10 @@
 		"summary": "Delete Silence",
 		"tags": [
 			"Notification Silences"
+		],
+		"x-api-token-group": [
+			"Notifications Write",
+			"Account Settings Write"
 		]
 	},
 	"GET /accounts/{account_id}/alerting/v3/silences": {
@@ -652,6 +656,13 @@
 		"summary": "List Silences",
 		"tags": [
 			"Notification Silences"
+		],
+		"x-api-token-group": [
+			"Zero Trust: PII Read",
+			"Notifications Write",
+			"Notifications Read",
+			"Account Settings Write",
+			"Account Settings Read"
 		]
 	},
 	"GET /accounts/{account_id}/alerting/v3/silences/{silence_id}": {
@@ -1008,6 +1019,13 @@
 		"summary": "Get Silence",
 		"tags": [
 			"Notification Silences"
+		],
+		"x-api-token-group": [
+			"Zero Trust: PII Read",
+			"Notifications Write",
+			"Notifications Read",
+			"Account Settings Write",
+			"Account Settings Read"
 		]
 	},
 	"POST /accounts/{account_id}/alerting/v3/silences": {
@@ -1338,6 +1356,10 @@
 		"summary": "Create Silences",
 		"tags": [
 			"Notification Silences"
+		],
+		"x-api-token-group": [
+			"Notifications Write",
+			"Account Settings Write"
 		]
 	},
 	"PUT /accounts/{account_id}/alerting/v3/silences": {
@@ -1722,6 +1744,10 @@
 		"summary": "Update Silences",
 		"tags": [
 			"Notification Silences"
+		],
+		"x-api-token-group": [
+			"Notifications Write",
+			"Account Settings Write"
 		]
 	}
 }

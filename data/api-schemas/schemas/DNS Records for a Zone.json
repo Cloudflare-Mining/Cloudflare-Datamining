@@ -207,6 +207,9 @@
 		"tags": [
 			"DNS Records for a Zone"
 		],
+		"x-api-token-group": [
+			"DNS Write"
+		],
 		"x-cfPermissionsRequired": {
 			"enum": [
 				"#dns_records:edit"
@@ -1152,7 +1155,7 @@
 																						"x-auditable": true
 																					},
 																					"priority": {
-																						"description": "Required for MX, SRV and URI records; unused by other record types. Records with lower priorities are preferred.",
+																						"description": "Required for MX and URI records; ignored for other record types (but may still be returned by the API). Records with lower priorities are preferred. This field is to be deprecated in favor of the priority field within the data map.",
 																						"example": 10,
 																						"maximum": 65535,
 																						"minimum": 0,
@@ -2881,7 +2884,7 @@
 																								"x-auditable": true
 																							},
 																							"priority": {
-																								"description": "Required for MX, SRV and URI records; unused by other record types. Records with lower priorities are preferred.",
+																								"description": "Required for MX and URI records; ignored for other record types (but may still be returned by the API). Records with lower priorities are preferred. This field is to be deprecated in favor of the priority field within the data map.",
 																								"example": 10,
 																								"maximum": 65535,
 																								"minimum": 0,
@@ -3435,7 +3438,7 @@
 																						"type": "object"
 																					},
 																					"priority": {
-																						"description": "Required for MX, SRV and URI records; unused by other record types. Records with lower priorities are preferred.",
+																						"description": "Required for MX and URI records; ignored for other record types (but may still be returned by the API). Records with lower priorities are preferred. This field is to be deprecated in favor of the priority field within the data map.",
 																						"example": 10,
 																						"maximum": 65535,
 																						"minimum": 0,
@@ -4128,7 +4131,7 @@
 																								"x-auditable": true
 																							},
 																							"priority": {
-																								"description": "Required for MX, SRV and URI records; unused by other record types. Records with lower priorities are preferred.",
+																								"description": "Required for MX and URI records; ignored for other record types (but may still be returned by the API). Records with lower priorities are preferred. This field is to be deprecated in favor of the priority field within the data map.",
 																								"example": 10,
 																								"maximum": 65535,
 																								"minimum": 0,
@@ -5857,7 +5860,7 @@
 																										"x-auditable": true
 																									},
 																									"priority": {
-																										"description": "Required for MX, SRV and URI records; unused by other record types. Records with lower priorities are preferred.",
+																										"description": "Required for MX and URI records; ignored for other record types (but may still be returned by the API). Records with lower priorities are preferred. This field is to be deprecated in favor of the priority field within the data map.",
 																										"example": 10,
 																										"maximum": 65535,
 																										"minimum": 0,
@@ -6411,7 +6414,7 @@
 																								"type": "object"
 																							},
 																							"priority": {
-																								"description": "Required for MX, SRV and URI records; unused by other record types. Records with lower priorities are preferred.",
+																								"description": "Required for MX and URI records; ignored for other record types (but may still be returned by the API). Records with lower priorities are preferred. This field is to be deprecated in favor of the priority field within the data map.",
 																								"example": 10,
 																								"maximum": 65535,
 																								"minimum": 0,
@@ -6655,6 +6658,10 @@
 		"summary": "List DNS Records",
 		"tags": [
 			"DNS Records for a Zone"
+		],
+		"x-api-token-group": [
+			"DNS Read",
+			"DNS Write"
 		],
 		"x-cfPermissionsRequired": {
 			"enum": [
@@ -7230,7 +7237,7 @@
 																					"x-auditable": true
 																				},
 																				"priority": {
-																					"description": "Required for MX, SRV and URI records; unused by other record types. Records with lower priorities are preferred.",
+																					"description": "Required for MX and URI records; ignored for other record types (but may still be returned by the API). Records with lower priorities are preferred. This field is to be deprecated in favor of the priority field within the data map.",
 																					"example": 10,
 																					"maximum": 65535,
 																					"minimum": 0,
@@ -8959,7 +8966,7 @@
 																							"x-auditable": true
 																						},
 																						"priority": {
-																							"description": "Required for MX, SRV and URI records; unused by other record types. Records with lower priorities are preferred.",
+																							"description": "Required for MX and URI records; ignored for other record types (but may still be returned by the API). Records with lower priorities are preferred. This field is to be deprecated in favor of the priority field within the data map.",
 																							"example": 10,
 																							"maximum": 65535,
 																							"minimum": 0,
@@ -9513,7 +9520,7 @@
 																					"type": "object"
 																				},
 																				"priority": {
-																					"description": "Required for MX, SRV and URI records; unused by other record types. Records with lower priorities are preferred.",
+																					"description": "Required for MX and URI records; ignored for other record types (but may still be returned by the API). Records with lower priorities are preferred. This field is to be deprecated in favor of the priority field within the data map.",
 																					"example": 10,
 																					"maximum": 65535,
 																					"minimum": 0,
@@ -10168,7 +10175,7 @@
 																							"x-auditable": true
 																						},
 																						"priority": {
-																							"description": "Required for MX, SRV and URI records; unused by other record types. Records with lower priorities are preferred.",
+																							"description": "Required for MX and URI records; ignored for other record types (but may still be returned by the API). Records with lower priorities are preferred. This field is to be deprecated in favor of the priority field within the data map.",
 																							"example": 10,
 																							"maximum": 65535,
 																							"minimum": 0,
@@ -11897,7 +11904,7 @@
 																									"x-auditable": true
 																								},
 																								"priority": {
-																									"description": "Required for MX, SRV and URI records; unused by other record types. Records with lower priorities are preferred.",
+																									"description": "Required for MX and URI records; ignored for other record types (but may still be returned by the API). Records with lower priorities are preferred. This field is to be deprecated in favor of the priority field within the data map.",
 																									"example": 10,
 																									"maximum": 65535,
 																									"minimum": 0,
@@ -12451,7 +12458,7 @@
 																							"type": "object"
 																						},
 																						"priority": {
-																							"description": "Required for MX, SRV and URI records; unused by other record types. Records with lower priorities are preferred.",
+																							"description": "Required for MX and URI records; ignored for other record types (but may still be returned by the API). Records with lower priorities are preferred. This field is to be deprecated in favor of the priority field within the data map.",
 																							"example": 10,
 																							"maximum": 65535,
 																							"minimum": 0,
@@ -12694,6 +12701,10 @@
 		"tags": [
 			"DNS Records for a Zone"
 		],
+		"x-api-token-group": [
+			"DNS Read",
+			"DNS Write"
+		],
 		"x-cfPermissionsRequired": {
 			"enum": [
 				"#dns_records:read"
@@ -12862,6 +12873,10 @@
 		"summary": "Export DNS Records",
 		"tags": [
 			"DNS Records for a Zone"
+		],
+		"x-api-token-group": [
+			"DNS Read",
+			"DNS Write"
 		],
 		"x-cfPermissionsRequired": {
 			"enum": [
@@ -13462,7 +13477,7 @@
 																						"x-auditable": true
 																					},
 																					"priority": {
-																						"description": "Required for MX, SRV and URI records; unused by other record types. Records with lower priorities are preferred.",
+																						"description": "Required for MX and URI records; ignored for other record types (but may still be returned by the API). Records with lower priorities are preferred. This field is to be deprecated in favor of the priority field within the data map.",
 																						"example": 10,
 																						"maximum": 65535,
 																						"minimum": 0,
@@ -15191,7 +15206,7 @@
 																								"x-auditable": true
 																							},
 																							"priority": {
-																								"description": "Required for MX, SRV and URI records; unused by other record types. Records with lower priorities are preferred.",
+																								"description": "Required for MX and URI records; ignored for other record types (but may still be returned by the API). Records with lower priorities are preferred. This field is to be deprecated in favor of the priority field within the data map.",
 																								"example": 10,
 																								"maximum": 65535,
 																								"minimum": 0,
@@ -15745,7 +15760,7 @@
 																						"type": "object"
 																					},
 																					"priority": {
-																						"description": "Required for MX, SRV and URI records; unused by other record types. Records with lower priorities are preferred.",
+																						"description": "Required for MX and URI records; ignored for other record types (but may still be returned by the API). Records with lower priorities are preferred. This field is to be deprecated in favor of the priority field within the data map.",
 																						"example": 10,
 																						"maximum": 65535,
 																						"minimum": 0,
@@ -15993,6 +16008,10 @@
 		"summary": "List Scanned DNS Records",
 		"tags": [
 			"DNS Records for a Zone"
+		],
+		"x-api-token-group": [
+			"DNS Read",
+			"DNS Write"
 		],
 		"x-cfPermissionsRequired": {
 			"enum": [
@@ -16392,6 +16411,12 @@
 		"summary": "Get DNS Record Usage",
 		"tags": [
 			"DNS Records for a Zone"
+		],
+		"x-api-token-group": [
+			"Zone DNS Settings Write",
+			"Zone DNS Settings Read",
+			"DNS Read",
+			"DNS Write"
 		],
 		"x-cfPermissionsRequired": {
 			"enum": [
@@ -16874,7 +16899,7 @@
 														"x-auditable": true
 													},
 													"priority": {
-														"description": "Required for MX, SRV and URI records; unused by other record types. Records with lower priorities are preferred.",
+														"description": "Required for MX and URI records; ignored for other record types (but may still be returned by the API). Records with lower priorities are preferred. This field is to be deprecated in favor of the priority field within the data map.",
 														"example": 10,
 														"maximum": 65535,
 														"minimum": 0,
@@ -18603,7 +18628,7 @@
 																"x-auditable": true
 															},
 															"priority": {
-																"description": "Required for MX, SRV and URI records; unused by other record types. Records with lower priorities are preferred.",
+																"description": "Required for MX and URI records; ignored for other record types (but may still be returned by the API). Records with lower priorities are preferred. This field is to be deprecated in favor of the priority field within the data map.",
 																"example": 10,
 																"maximum": 65535,
 																"minimum": 0,
@@ -19157,7 +19182,7 @@
 														"type": "object"
 													},
 													"priority": {
-														"description": "Required for MX, SRV and URI records; unused by other record types. Records with lower priorities are preferred.",
+														"description": "Required for MX and URI records; ignored for other record types (but may still be returned by the API). Records with lower priorities are preferred. This field is to be deprecated in favor of the priority field within the data map.",
 														"example": 10,
 														"maximum": 65535,
 														"minimum": 0,
@@ -19724,7 +19749,7 @@
 																					"x-auditable": true
 																				},
 																				"priority": {
-																					"description": "Required for MX, SRV and URI records; unused by other record types. Records with lower priorities are preferred.",
+																					"description": "Required for MX and URI records; ignored for other record types (but may still be returned by the API). Records with lower priorities are preferred. This field is to be deprecated in favor of the priority field within the data map.",
 																					"example": 10,
 																					"maximum": 65535,
 																					"minimum": 0,
@@ -21453,7 +21478,7 @@
 																							"x-auditable": true
 																						},
 																						"priority": {
-																							"description": "Required for MX, SRV and URI records; unused by other record types. Records with lower priorities are preferred.",
+																							"description": "Required for MX and URI records; ignored for other record types (but may still be returned by the API). Records with lower priorities are preferred. This field is to be deprecated in favor of the priority field within the data map.",
 																							"example": 10,
 																							"maximum": 65535,
 																							"minimum": 0,
@@ -22007,7 +22032,7 @@
 																					"type": "object"
 																				},
 																				"priority": {
-																					"description": "Required for MX, SRV and URI records; unused by other record types. Records with lower priorities are preferred.",
+																					"description": "Required for MX and URI records; ignored for other record types (but may still be returned by the API). Records with lower priorities are preferred. This field is to be deprecated in favor of the priority field within the data map.",
 																					"example": 10,
 																					"maximum": 65535,
 																					"minimum": 0,
@@ -22662,7 +22687,7 @@
 																							"x-auditable": true
 																						},
 																						"priority": {
-																							"description": "Required for MX, SRV and URI records; unused by other record types. Records with lower priorities are preferred.",
+																							"description": "Required for MX and URI records; ignored for other record types (but may still be returned by the API). Records with lower priorities are preferred. This field is to be deprecated in favor of the priority field within the data map.",
 																							"example": 10,
 																							"maximum": 65535,
 																							"minimum": 0,
@@ -24391,7 +24416,7 @@
 																									"x-auditable": true
 																								},
 																								"priority": {
-																									"description": "Required for MX, SRV and URI records; unused by other record types. Records with lower priorities are preferred.",
+																									"description": "Required for MX and URI records; ignored for other record types (but may still be returned by the API). Records with lower priorities are preferred. This field is to be deprecated in favor of the priority field within the data map.",
 																									"example": 10,
 																									"maximum": 65535,
 																									"minimum": 0,
@@ -24945,7 +24970,7 @@
 																							"type": "object"
 																						},
 																						"priority": {
-																							"description": "Required for MX, SRV and URI records; unused by other record types. Records with lower priorities are preferred.",
+																							"description": "Required for MX and URI records; ignored for other record types (but may still be returned by the API). Records with lower priorities are preferred. This field is to be deprecated in favor of the priority field within the data map.",
 																							"example": 10,
 																							"maximum": 65535,
 																							"minimum": 0,
@@ -25187,6 +25212,9 @@
 		"summary": "Update DNS Record",
 		"tags": [
 			"DNS Records for a Zone"
+		],
+		"x-api-token-group": [
+			"DNS Write"
 		],
 		"x-cfPermissionsRequired": {
 			"enum": [
@@ -25657,7 +25685,7 @@
 														"x-auditable": true
 													},
 													"priority": {
-														"description": "Required for MX, SRV and URI records; unused by other record types. Records with lower priorities are preferred.",
+														"description": "Required for MX and URI records; ignored for other record types (but may still be returned by the API). Records with lower priorities are preferred. This field is to be deprecated in favor of the priority field within the data map.",
 														"example": 10,
 														"maximum": 65535,
 														"minimum": 0,
@@ -27386,7 +27414,7 @@
 																"x-auditable": true
 															},
 															"priority": {
-																"description": "Required for MX, SRV and URI records; unused by other record types. Records with lower priorities are preferred.",
+																"description": "Required for MX and URI records; ignored for other record types (but may still be returned by the API). Records with lower priorities are preferred. This field is to be deprecated in favor of the priority field within the data map.",
 																"example": 10,
 																"maximum": 65535,
 																"minimum": 0,
@@ -27940,7 +27968,7 @@
 														"type": "object"
 													},
 													"priority": {
-														"description": "Required for MX, SRV and URI records; unused by other record types. Records with lower priorities are preferred.",
+														"description": "Required for MX and URI records; ignored for other record types (but may still be returned by the API). Records with lower priorities are preferred. This field is to be deprecated in favor of the priority field within the data map.",
 														"example": 10,
 														"maximum": 65535,
 														"minimum": 0,
@@ -28507,7 +28535,7 @@
 																					"x-auditable": true
 																				},
 																				"priority": {
-																					"description": "Required for MX, SRV and URI records; unused by other record types. Records with lower priorities are preferred.",
+																					"description": "Required for MX and URI records; ignored for other record types (but may still be returned by the API). Records with lower priorities are preferred. This field is to be deprecated in favor of the priority field within the data map.",
 																					"example": 10,
 																					"maximum": 65535,
 																					"minimum": 0,
@@ -30236,7 +30264,7 @@
 																							"x-auditable": true
 																						},
 																						"priority": {
-																							"description": "Required for MX, SRV and URI records; unused by other record types. Records with lower priorities are preferred.",
+																							"description": "Required for MX and URI records; ignored for other record types (but may still be returned by the API). Records with lower priorities are preferred. This field is to be deprecated in favor of the priority field within the data map.",
 																							"example": 10,
 																							"maximum": 65535,
 																							"minimum": 0,
@@ -30790,7 +30818,7 @@
 																					"type": "object"
 																				},
 																				"priority": {
-																					"description": "Required for MX, SRV and URI records; unused by other record types. Records with lower priorities are preferred.",
+																					"description": "Required for MX and URI records; ignored for other record types (but may still be returned by the API). Records with lower priorities are preferred. This field is to be deprecated in favor of the priority field within the data map.",
 																					"example": 10,
 																					"maximum": 65535,
 																					"minimum": 0,
@@ -31445,7 +31473,7 @@
 																							"x-auditable": true
 																						},
 																						"priority": {
-																							"description": "Required for MX, SRV and URI records; unused by other record types. Records with lower priorities are preferred.",
+																							"description": "Required for MX and URI records; ignored for other record types (but may still be returned by the API). Records with lower priorities are preferred. This field is to be deprecated in favor of the priority field within the data map.",
 																							"example": 10,
 																							"maximum": 65535,
 																							"minimum": 0,
@@ -33174,7 +33202,7 @@
 																									"x-auditable": true
 																								},
 																								"priority": {
-																									"description": "Required for MX, SRV and URI records; unused by other record types. Records with lower priorities are preferred.",
+																									"description": "Required for MX and URI records; ignored for other record types (but may still be returned by the API). Records with lower priorities are preferred. This field is to be deprecated in favor of the priority field within the data map.",
 																									"example": 10,
 																									"maximum": 65535,
 																									"minimum": 0,
@@ -33728,7 +33756,7 @@
 																							"type": "object"
 																						},
 																						"priority": {
-																							"description": "Required for MX, SRV and URI records; unused by other record types. Records with lower priorities are preferred.",
+																							"description": "Required for MX and URI records; ignored for other record types (but may still be returned by the API). Records with lower priorities are preferred. This field is to be deprecated in favor of the priority field within the data map.",
 																							"example": 10,
 																							"maximum": 65535,
 																							"minimum": 0,
@@ -33970,6 +33998,9 @@
 		"summary": "Create DNS Record",
 		"tags": [
 			"DNS Records for a Zone"
+		],
+		"x-api-token-group": [
+			"DNS Write"
 		],
 		"x-cfPermissionsRequired": {
 			"enum": [
@@ -34468,7 +34499,7 @@
 																			"x-auditable": true
 																		},
 																		"priority": {
-																			"description": "Required for MX, SRV and URI records; unused by other record types. Records with lower priorities are preferred.",
+																			"description": "Required for MX and URI records; ignored for other record types (but may still be returned by the API). Records with lower priorities are preferred. This field is to be deprecated in favor of the priority field within the data map.",
 																			"example": 10,
 																			"maximum": 65535,
 																			"minimum": 0,
@@ -36197,7 +36228,7 @@
 																					"x-auditable": true
 																				},
 																				"priority": {
-																					"description": "Required for MX, SRV and URI records; unused by other record types. Records with lower priorities are preferred.",
+																					"description": "Required for MX and URI records; ignored for other record types (but may still be returned by the API). Records with lower priorities are preferred. This field is to be deprecated in favor of the priority field within the data map.",
 																					"example": 10,
 																					"maximum": 65535,
 																					"minimum": 0,
@@ -36751,7 +36782,7 @@
 																			"type": "object"
 																		},
 																		"priority": {
-																			"description": "Required for MX, SRV and URI records; unused by other record types. Records with lower priorities are preferred.",
+																			"description": "Required for MX and URI records; ignored for other record types (but may still be returned by the API). Records with lower priorities are preferred. This field is to be deprecated in favor of the priority field within the data map.",
 																			"example": 10,
 																			"maximum": 65535,
 																			"minimum": 0,
@@ -37237,7 +37268,7 @@
 																			"x-auditable": true
 																		},
 																		"priority": {
-																			"description": "Required for MX, SRV and URI records; unused by other record types. Records with lower priorities are preferred.",
+																			"description": "Required for MX and URI records; ignored for other record types (but may still be returned by the API). Records with lower priorities are preferred. This field is to be deprecated in favor of the priority field within the data map.",
 																			"example": 10,
 																			"maximum": 65535,
 																			"minimum": 0,
@@ -38966,7 +38997,7 @@
 																					"x-auditable": true
 																				},
 																				"priority": {
-																					"description": "Required for MX, SRV and URI records; unused by other record types. Records with lower priorities are preferred.",
+																					"description": "Required for MX and URI records; ignored for other record types (but may still be returned by the API). Records with lower priorities are preferred. This field is to be deprecated in favor of the priority field within the data map.",
 																					"example": 10,
 																					"maximum": 65535,
 																					"minimum": 0,
@@ -39520,7 +39551,7 @@
 																			"type": "object"
 																		},
 																		"priority": {
-																			"description": "Required for MX, SRV and URI records; unused by other record types. Records with lower priorities are preferred.",
+																			"description": "Required for MX and URI records; ignored for other record types (but may still be returned by the API). Records with lower priorities are preferred. This field is to be deprecated in favor of the priority field within the data map.",
 																			"example": 10,
 																			"maximum": 65535,
 																			"minimum": 0,
@@ -39994,7 +40025,7 @@
 																			"x-auditable": true
 																		},
 																		"priority": {
-																			"description": "Required for MX, SRV and URI records; unused by other record types. Records with lower priorities are preferred.",
+																			"description": "Required for MX and URI records; ignored for other record types (but may still be returned by the API). Records with lower priorities are preferred. This field is to be deprecated in favor of the priority field within the data map.",
 																			"example": 10,
 																			"maximum": 65535,
 																			"minimum": 0,
@@ -41723,7 +41754,7 @@
 																					"x-auditable": true
 																				},
 																				"priority": {
-																					"description": "Required for MX, SRV and URI records; unused by other record types. Records with lower priorities are preferred.",
+																					"description": "Required for MX and URI records; ignored for other record types (but may still be returned by the API). Records with lower priorities are preferred. This field is to be deprecated in favor of the priority field within the data map.",
 																					"example": 10,
 																					"maximum": 65535,
 																					"minimum": 0,
@@ -42277,7 +42308,7 @@
 																			"type": "object"
 																		},
 																		"priority": {
-																			"description": "Required for MX, SRV and URI records; unused by other record types. Records with lower priorities are preferred.",
+																			"description": "Required for MX and URI records; ignored for other record types (but may still be returned by the API). Records with lower priorities are preferred. This field is to be deprecated in favor of the priority field within the data map.",
 																			"example": 10,
 																			"maximum": 65535,
 																			"minimum": 0,
@@ -42867,7 +42898,7 @@
 																								"x-auditable": true
 																							},
 																							"priority": {
-																								"description": "Required for MX, SRV and URI records; unused by other record types. Records with lower priorities are preferred.",
+																								"description": "Required for MX and URI records; ignored for other record types (but may still be returned by the API). Records with lower priorities are preferred. This field is to be deprecated in favor of the priority field within the data map.",
 																								"example": 10,
 																								"maximum": 65535,
 																								"minimum": 0,
@@ -44596,7 +44627,7 @@
 																										"x-auditable": true
 																									},
 																									"priority": {
-																										"description": "Required for MX, SRV and URI records; unused by other record types. Records with lower priorities are preferred.",
+																										"description": "Required for MX and URI records; ignored for other record types (but may still be returned by the API). Records with lower priorities are preferred. This field is to be deprecated in favor of the priority field within the data map.",
 																										"example": 10,
 																										"maximum": 65535,
 																										"minimum": 0,
@@ -45150,7 +45181,7 @@
 																								"type": "object"
 																							},
 																							"priority": {
-																								"description": "Required for MX, SRV and URI records; unused by other record types. Records with lower priorities are preferred.",
+																								"description": "Required for MX and URI records; ignored for other record types (but may still be returned by the API). Records with lower priorities are preferred. This field is to be deprecated in favor of the priority field within the data map.",
 																								"example": 10,
 																								"maximum": 65535,
 																								"minimum": 0,
@@ -45702,7 +45733,7 @@
 																								"x-auditable": true
 																							},
 																							"priority": {
-																								"description": "Required for MX, SRV and URI records; unused by other record types. Records with lower priorities are preferred.",
+																								"description": "Required for MX and URI records; ignored for other record types (but may still be returned by the API). Records with lower priorities are preferred. This field is to be deprecated in favor of the priority field within the data map.",
 																								"example": 10,
 																								"maximum": 65535,
 																								"minimum": 0,
@@ -47431,7 +47462,7 @@
 																										"x-auditable": true
 																									},
 																									"priority": {
-																										"description": "Required for MX, SRV and URI records; unused by other record types. Records with lower priorities are preferred.",
+																										"description": "Required for MX and URI records; ignored for other record types (but may still be returned by the API). Records with lower priorities are preferred. This field is to be deprecated in favor of the priority field within the data map.",
 																										"example": 10,
 																										"maximum": 65535,
 																										"minimum": 0,
@@ -47985,7 +48016,7 @@
 																								"type": "object"
 																							},
 																							"priority": {
-																								"description": "Required for MX, SRV and URI records; unused by other record types. Records with lower priorities are preferred.",
+																								"description": "Required for MX and URI records; ignored for other record types (but may still be returned by the API). Records with lower priorities are preferred. This field is to be deprecated in favor of the priority field within the data map.",
 																								"example": 10,
 																								"maximum": 65535,
 																								"minimum": 0,
@@ -48537,7 +48568,7 @@
 																								"x-auditable": true
 																							},
 																							"priority": {
-																								"description": "Required for MX, SRV and URI records; unused by other record types. Records with lower priorities are preferred.",
+																								"description": "Required for MX and URI records; ignored for other record types (but may still be returned by the API). Records with lower priorities are preferred. This field is to be deprecated in favor of the priority field within the data map.",
 																								"example": 10,
 																								"maximum": 65535,
 																								"minimum": 0,
@@ -50266,7 +50297,7 @@
 																										"x-auditable": true
 																									},
 																									"priority": {
-																										"description": "Required for MX, SRV and URI records; unused by other record types. Records with lower priorities are preferred.",
+																										"description": "Required for MX and URI records; ignored for other record types (but may still be returned by the API). Records with lower priorities are preferred. This field is to be deprecated in favor of the priority field within the data map.",
 																										"example": 10,
 																										"maximum": 65535,
 																										"minimum": 0,
@@ -50820,7 +50851,7 @@
 																								"type": "object"
 																							},
 																							"priority": {
-																								"description": "Required for MX, SRV and URI records; unused by other record types. Records with lower priorities are preferred.",
+																								"description": "Required for MX and URI records; ignored for other record types (but may still be returned by the API). Records with lower priorities are preferred. This field is to be deprecated in favor of the priority field within the data map.",
 																								"example": 10,
 																								"maximum": 65535,
 																								"minimum": 0,
@@ -51372,7 +51403,7 @@
 																								"x-auditable": true
 																							},
 																							"priority": {
-																								"description": "Required for MX, SRV and URI records; unused by other record types. Records with lower priorities are preferred.",
+																								"description": "Required for MX and URI records; ignored for other record types (but may still be returned by the API). Records with lower priorities are preferred. This field is to be deprecated in favor of the priority field within the data map.",
 																								"example": 10,
 																								"maximum": 65535,
 																								"minimum": 0,
@@ -53101,7 +53132,7 @@
 																										"x-auditable": true
 																									},
 																									"priority": {
-																										"description": "Required for MX, SRV and URI records; unused by other record types. Records with lower priorities are preferred.",
+																										"description": "Required for MX and URI records; ignored for other record types (but may still be returned by the API). Records with lower priorities are preferred. This field is to be deprecated in favor of the priority field within the data map.",
 																										"example": 10,
 																										"maximum": 65535,
 																										"minimum": 0,
@@ -53655,7 +53686,7 @@
 																								"type": "object"
 																							},
 																							"priority": {
-																								"description": "Required for MX, SRV and URI records; unused by other record types. Records with lower priorities are preferred.",
+																								"description": "Required for MX and URI records; ignored for other record types (but may still be returned by the API). Records with lower priorities are preferred. This field is to be deprecated in favor of the priority field within the data map.",
 																								"example": 10,
 																								"maximum": 65535,
 																								"minimum": 0,
@@ -53911,6 +53942,9 @@
 		"summary": "Batch DNS Records",
 		"tags": [
 			"DNS Records for a Zone"
+		],
+		"x-api-token-group": [
+			"DNS Write"
 		],
 		"x-cfPermissionsRequired": {
 			"enum": [
@@ -54331,6 +54365,9 @@
 		"tags": [
 			"DNS Records for a Zone"
 		],
+		"x-api-token-group": [
+			"DNS Write"
+		],
 		"x-cfPermissionsRequired": {
 			"enum": [
 				"#dns_records:edit"
@@ -54730,6 +54767,9 @@
 		"summary": "Scan DNS Records",
 		"tags": [
 			"DNS Records for a Zone"
+		],
+		"x-api-token-group": [
+			"DNS Write"
 		],
 		"x-cfPermissionsRequired": {
 			"enum": [
@@ -55206,7 +55246,7 @@
 																			"x-auditable": true
 																		},
 																		"priority": {
-																			"description": "Required for MX, SRV and URI records; unused by other record types. Records with lower priorities are preferred.",
+																			"description": "Required for MX and URI records; ignored for other record types (but may still be returned by the API). Records with lower priorities are preferred. This field is to be deprecated in favor of the priority field within the data map.",
 																			"example": 10,
 																			"maximum": 65535,
 																			"minimum": 0,
@@ -56935,7 +56975,7 @@
 																					"x-auditable": true
 																				},
 																				"priority": {
-																					"description": "Required for MX, SRV and URI records; unused by other record types. Records with lower priorities are preferred.",
+																					"description": "Required for MX and URI records; ignored for other record types (but may still be returned by the API). Records with lower priorities are preferred. This field is to be deprecated in favor of the priority field within the data map.",
 																					"example": 10,
 																					"maximum": 65535,
 																					"minimum": 0,
@@ -57489,7 +57529,7 @@
 																			"type": "object"
 																		},
 																		"priority": {
-																			"description": "Required for MX, SRV and URI records; unused by other record types. Records with lower priorities are preferred.",
+																			"description": "Required for MX and URI records; ignored for other record types (but may still be returned by the API). Records with lower priorities are preferred. This field is to be deprecated in favor of the priority field within the data map.",
 																			"example": 10,
 																			"maximum": 65535,
 																			"minimum": 0,
@@ -58090,7 +58130,7 @@
 																								"x-auditable": true
 																							},
 																							"priority": {
-																								"description": "Required for MX, SRV and URI records; unused by other record types. Records with lower priorities are preferred.",
+																								"description": "Required for MX and URI records; ignored for other record types (but may still be returned by the API). Records with lower priorities are preferred. This field is to be deprecated in favor of the priority field within the data map.",
 																								"example": 10,
 																								"maximum": 65535,
 																								"minimum": 0,
@@ -59819,7 +59859,7 @@
 																										"x-auditable": true
 																									},
 																									"priority": {
-																										"description": "Required for MX, SRV and URI records; unused by other record types. Records with lower priorities are preferred.",
+																										"description": "Required for MX and URI records; ignored for other record types (but may still be returned by the API). Records with lower priorities are preferred. This field is to be deprecated in favor of the priority field within the data map.",
 																										"example": 10,
 																										"maximum": 65535,
 																										"minimum": 0,
@@ -60373,7 +60413,7 @@
 																								"type": "object"
 																							},
 																							"priority": {
-																								"description": "Required for MX, SRV and URI records; unused by other record types. Records with lower priorities are preferred.",
+																								"description": "Required for MX and URI records; ignored for other record types (but may still be returned by the API). Records with lower priorities are preferred. This field is to be deprecated in favor of the priority field within the data map.",
 																								"example": 10,
 																								"maximum": 65535,
 																								"minimum": 0,
@@ -60634,6 +60674,9 @@
 		"summary": "Review Scanned DNS Records",
 		"tags": [
 			"DNS Records for a Zone"
+		],
+		"x-api-token-group": [
+			"DNS Write"
 		],
 		"x-cfPermissionsRequired": {
 			"enum": [
@@ -60992,6 +61035,9 @@
 		"summary": "Trigger DNS Record Scan",
 		"tags": [
 			"DNS Records for a Zone"
+		],
+		"x-api-token-group": [
+			"DNS Write"
 		],
 		"x-cfPermissionsRequired": {
 			"enum": [
@@ -61474,7 +61520,7 @@
 														"x-auditable": true
 													},
 													"priority": {
-														"description": "Required for MX, SRV and URI records; unused by other record types. Records with lower priorities are preferred.",
+														"description": "Required for MX and URI records; ignored for other record types (but may still be returned by the API). Records with lower priorities are preferred. This field is to be deprecated in favor of the priority field within the data map.",
 														"example": 10,
 														"maximum": 65535,
 														"minimum": 0,
@@ -63203,7 +63249,7 @@
 																"x-auditable": true
 															},
 															"priority": {
-																"description": "Required for MX, SRV and URI records; unused by other record types. Records with lower priorities are preferred.",
+																"description": "Required for MX and URI records; ignored for other record types (but may still be returned by the API). Records with lower priorities are preferred. This field is to be deprecated in favor of the priority field within the data map.",
 																"example": 10,
 																"maximum": 65535,
 																"minimum": 0,
@@ -63757,7 +63803,7 @@
 														"type": "object"
 													},
 													"priority": {
-														"description": "Required for MX, SRV and URI records; unused by other record types. Records with lower priorities are preferred.",
+														"description": "Required for MX and URI records; ignored for other record types (but may still be returned by the API). Records with lower priorities are preferred. This field is to be deprecated in favor of the priority field within the data map.",
 														"example": 10,
 														"maximum": 65535,
 														"minimum": 0,
@@ -64324,7 +64370,7 @@
 																					"x-auditable": true
 																				},
 																				"priority": {
-																					"description": "Required for MX, SRV and URI records; unused by other record types. Records with lower priorities are preferred.",
+																					"description": "Required for MX and URI records; ignored for other record types (but may still be returned by the API). Records with lower priorities are preferred. This field is to be deprecated in favor of the priority field within the data map.",
 																					"example": 10,
 																					"maximum": 65535,
 																					"minimum": 0,
@@ -66053,7 +66099,7 @@
 																							"x-auditable": true
 																						},
 																						"priority": {
-																							"description": "Required for MX, SRV and URI records; unused by other record types. Records with lower priorities are preferred.",
+																							"description": "Required for MX and URI records; ignored for other record types (but may still be returned by the API). Records with lower priorities are preferred. This field is to be deprecated in favor of the priority field within the data map.",
 																							"example": 10,
 																							"maximum": 65535,
 																							"minimum": 0,
@@ -66607,7 +66653,7 @@
 																					"type": "object"
 																				},
 																				"priority": {
-																					"description": "Required for MX, SRV and URI records; unused by other record types. Records with lower priorities are preferred.",
+																					"description": "Required for MX and URI records; ignored for other record types (but may still be returned by the API). Records with lower priorities are preferred. This field is to be deprecated in favor of the priority field within the data map.",
 																					"example": 10,
 																					"maximum": 65535,
 																					"minimum": 0,
@@ -67262,7 +67308,7 @@
 																							"x-auditable": true
 																						},
 																						"priority": {
-																							"description": "Required for MX, SRV and URI records; unused by other record types. Records with lower priorities are preferred.",
+																							"description": "Required for MX and URI records; ignored for other record types (but may still be returned by the API). Records with lower priorities are preferred. This field is to be deprecated in favor of the priority field within the data map.",
 																							"example": 10,
 																							"maximum": 65535,
 																							"minimum": 0,
@@ -68991,7 +69037,7 @@
 																									"x-auditable": true
 																								},
 																								"priority": {
-																									"description": "Required for MX, SRV and URI records; unused by other record types. Records with lower priorities are preferred.",
+																									"description": "Required for MX and URI records; ignored for other record types (but may still be returned by the API). Records with lower priorities are preferred. This field is to be deprecated in favor of the priority field within the data map.",
 																									"example": 10,
 																									"maximum": 65535,
 																									"minimum": 0,
@@ -69545,7 +69591,7 @@
 																							"type": "object"
 																						},
 																						"priority": {
-																							"description": "Required for MX, SRV and URI records; unused by other record types. Records with lower priorities are preferred.",
+																							"description": "Required for MX and URI records; ignored for other record types (but may still be returned by the API). Records with lower priorities are preferred. This field is to be deprecated in favor of the priority field within the data map.",
 																							"example": 10,
 																							"maximum": 65535,
 																							"minimum": 0,
@@ -69787,6 +69833,9 @@
 		"summary": "Overwrite DNS Record",
 		"tags": [
 			"DNS Records for a Zone"
+		],
+		"x-api-token-group": [
+			"DNS Write"
 		],
 		"x-cfPermissionsRequired": {
 			"enum": [

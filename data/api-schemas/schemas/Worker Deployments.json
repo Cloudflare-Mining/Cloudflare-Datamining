@@ -253,6 +253,9 @@
 		"summary": "Delete Deployment",
 		"tags": [
 			"Worker Deployments"
+		],
+		"x-api-token-group": [
+			"Workers Scripts Write"
 		]
 	},
 	"GET /accounts/{account_id}/workers/scripts/{script_name}/deployments": {
@@ -609,6 +612,11 @@
 		"summary": "List Deployments",
 		"tags": [
 			"Worker Deployments"
+		],
+		"x-api-token-group": [
+			"Workers Tail Read",
+			"Workers Scripts Write",
+			"Workers Scripts Read"
 		]
 	},
 	"GET /accounts/{account_id}/workers/scripts/{script_name}/deployments/{deployment_id}": {
@@ -963,6 +971,11 @@
 		"summary": "Get Deployment",
 		"tags": [
 			"Worker Deployments"
+		],
+		"x-api-token-group": [
+			"Workers Tail Read",
+			"Workers Scripts Write",
+			"Workers Scripts Read"
 		]
 	},
 	"POST /accounts/{account_id}/workers/scripts/{script_name}/deployments": {
@@ -1409,6 +1422,9 @@
 		"summary": "Create Deployment",
 		"tags": [
 			"Worker Deployments"
+		],
+		"x-api-token-group": [
+			"Workers Scripts Write"
 		]
 	}
 }

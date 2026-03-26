@@ -251,6 +251,9 @@
 		"summary": "Delete Regional Hostname",
 		"tags": [
 			"DLS Regional Services"
+		],
+		"x-api-token-group": [
+			"DNS Write"
 		]
 	},
 	"GET /accounts/{account_id}/addressing/regional_hostnames/regions": {
@@ -557,6 +560,10 @@
 		"summary": "List Regions",
 		"tags": [
 			"DLS Regional Services"
+		],
+		"x-api-token-group": [
+			"DNS Read",
+			"DNS Write"
 		]
 	},
 	"GET /zones/{zone_id}/addressing/regional_hostnames": {
@@ -892,6 +899,10 @@
 		"summary": "List Regional Hostnames",
 		"tags": [
 			"DLS Regional Services"
+		],
+		"x-api-token-group": [
+			"DNS Read",
+			"DNS Write"
 		]
 	},
 	"GET /zones/{zone_id}/addressing/regional_hostnames/{hostname}": {
@@ -1201,6 +1212,10 @@
 		"summary": "Fetch Regional Hostname",
 		"tags": [
 			"DLS Regional Services"
+		],
+		"x-api-token-group": [
+			"DNS Read",
+			"DNS Write"
 		]
 	},
 	"PATCH /zones/{zone_id}/addressing/regional_hostnames/{hostname}": {
@@ -1525,6 +1540,9 @@
 		"summary": "Update Regional Hostname",
 		"tags": [
 			"DLS Regional Services"
+		],
+		"x-api-token-group": [
+			"DNS Write"
 		]
 	},
 	"POST /zones/{zone_id}/addressing/regional_hostnames": {
@@ -1852,6 +1870,9 @@
 		"summary": "Create Regional Hostname",
 		"tags": [
 			"DLS Regional Services"
+		],
+		"x-api-token-group": [
+			"DNS Write"
 		]
 	}
 }

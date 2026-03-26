@@ -45,6 +45,10 @@
 		"summary": "Delete an interconnect object",
 		"tags": [
 			"Interconnects"
+		],
+		"x-api-token-group": [
+			"Magic WAN Write",
+			"Magic Transit Write"
 		]
 	},
 	"GET /accounts/{account_id}/cni/interconnects": {
@@ -274,6 +278,12 @@
 		"summary": "List existing interconnects",
 		"tags": [
 			"Interconnects"
+		],
+		"x-api-token-group": [
+			"Magic WAN Write",
+			"Magic WAN Read",
+			"Magic Transit Read",
+			"Magic Transit Write"
 		]
 	},
 	"GET /accounts/{account_id}/cni/interconnects/{icon}": {
@@ -463,6 +473,12 @@
 		"summary": "Get information about an interconnect object",
 		"tags": [
 			"Interconnects"
+		],
+		"x-api-token-group": [
+			"Magic WAN Write",
+			"Magic WAN Read",
+			"Magic Transit Read",
+			"Magic Transit Write"
 		]
 	},
 	"GET /accounts/{account_id}/cni/interconnects/{icon}/loa": {
@@ -511,6 +527,12 @@
 		"summary": "Generate the Letter of Authorization (LOA) for a given interconnect",
 		"tags": [
 			"Interconnects"
+		],
+		"x-api-token-group": [
+			"Magic WAN Write",
+			"Magic WAN Read",
+			"Magic Transit Read",
+			"Magic Transit Write"
 		]
 	},
 	"GET /accounts/{account_id}/cni/interconnects/{icon}/status": {
@@ -637,6 +659,12 @@
 		"summary": "Get the current status of an interconnect object",
 		"tags": [
 			"Interconnects"
+		],
+		"x-api-token-group": [
+			"Magic WAN Write",
+			"Magic WAN Read",
+			"Magic Transit Read",
+			"Magic Transit Write"
 		]
 	},
 	"POST /accounts/{account_id}/cni/interconnects": {
@@ -922,6 +950,10 @@
 		"summary": "Create a new interconnect",
 		"tags": [
 			"Interconnects"
+		],
+		"x-api-token-group": [
+			"Magic WAN Write",
+			"Magic Transit Write"
 		]
 	}
 }

@@ -290,6 +290,10 @@
 		"summary": "Get Cron Triggers",
 		"tags": [
 			"Worker Cron Trigger"
+		],
+		"x-api-token-group": [
+			"Workers Scripts Write",
+			"Workers Scripts Read"
 		]
 	},
 	"PUT /accounts/{account_id}/workers/scripts/{script_name}/schedules": {
@@ -616,6 +620,9 @@
 		"summary": "Update Cron Triggers",
 		"tags": [
 			"Worker Cron Trigger"
+		],
+		"x-api-token-group": [
+			"Workers Scripts Write"
 		]
 	}
 }

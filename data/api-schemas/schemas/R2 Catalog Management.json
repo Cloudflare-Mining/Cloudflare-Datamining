@@ -445,11 +445,10 @@
 		"tags": [
 			"R2 Catalog Management"
 		],
-		"x-cfPermissionsRequired": {
-			"enum": [
-				"com.cloudflare.edge.r2.bucket.warehouse.read"
-			]
-		}
+		"x-api-token-group": [
+			"Workers R2 Data Catalog Write",
+			"Workers R2 Data Catalog Read"
+		]
 	},
 	"GET /accounts/{account_id}/r2-catalog/{bucket_name}": {
 		"description": "Retrieve detailed information about a specific R2 catalog by bucket name.\nReturns catalog status, maintenance configuration, and credential status.\n",
@@ -917,11 +916,10 @@
 		"tags": [
 			"R2 Catalog Management"
 		],
-		"x-cfPermissionsRequired": {
-			"enum": [
-				"com.cloudflare.edge.r2.bucket.warehouse.read"
-			]
-		}
+		"x-api-token-group": [
+			"Workers R2 Data Catalog Write",
+			"Workers R2 Data Catalog Read"
+		]
 	},
 	"POST /accounts/{account_id}/r2-catalog/{bucket_name}/disable": {
 		"description": "Disable an R2 bucket as a catalog. This operation deactivates the catalog\nbut preserves existing metadata and data files. The catalog can be\nre-enabled later.\n",
@@ -1167,11 +1165,9 @@
 		"tags": [
 			"R2 Catalog Management"
 		],
-		"x-cfPermissionsRequired": {
-			"enum": [
-				"com.cloudflare.edge.r2.bucket.warehouse.delete"
-			]
-		}
+		"x-api-token-group": [
+			"Workers R2 Data Catalog Write"
+		]
 	},
 	"POST /accounts/{account_id}/r2-catalog/{bucket_name}/enable": {
 		"description": "Enable an R2 bucket as an Apache Iceberg catalog. This operation creates\nthe necessary catalog infrastructure and activates the bucket for storing\nIceberg metadata and data files.\n",
@@ -1517,10 +1513,8 @@
 		"tags": [
 			"R2 Catalog Management"
 		],
-		"x-cfPermissionsRequired": {
-			"enum": [
-				"com.cloudflare.edge.r2.bucket.warehouse.create"
-			]
-		}
+		"x-api-token-group": [
+			"Workers R2 Data Catalog Write"
+		]
 	}
 }

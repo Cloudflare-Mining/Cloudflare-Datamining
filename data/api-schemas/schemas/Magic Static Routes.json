@@ -575,6 +575,10 @@
 		"tags": [
 			"Magic Static Routes"
 		],
+		"x-api-token-group": [
+			"Magic WAN Write",
+			"Magic Transit Write"
+		],
 		"x-cfPermissionsRequired": {
 			"enum": [
 				"#organization:edit"
@@ -1141,6 +1145,10 @@
 		"tags": [
 			"Magic Static Routes"
 		],
+		"x-api-token-group": [
+			"Magic WAN Write",
+			"Magic Transit Write"
+		],
 		"x-cfPermissionsRequired": {
 			"enum": [
 				"#organization:edit"
@@ -1684,6 +1692,12 @@
 		"summary": "List Routes",
 		"tags": [
 			"Magic Static Routes"
+		],
+		"x-api-token-group": [
+			"Magic WAN Write",
+			"Magic WAN Read",
+			"Magic Transit Read",
+			"Magic Transit Write"
 		],
 		"x-cfPlanAvailability": {
 			"business": false,
@@ -2231,6 +2245,12 @@
 		"summary": "Route Details",
 		"tags": [
 			"Magic Static Routes"
+		],
+		"x-api-token-group": [
+			"Magic WAN Write",
+			"Magic WAN Read",
+			"Magic Transit Read",
+			"Magic Transit Write"
 		],
 		"x-cfPermissionsRequired": {
 			"enum": [
@@ -2840,6 +2860,10 @@
 		"summary": "Create a Route",
 		"tags": [
 			"Magic Static Routes"
+		],
+		"x-api-token-group": [
+			"Magic WAN Write",
+			"Magic Transit Write"
 		],
 		"x-cfPermissionsRequired": {
 			"enum": [
@@ -3494,6 +3518,10 @@
 		"tags": [
 			"Magic Static Routes"
 		],
+		"x-api-token-group": [
+			"Magic WAN Write",
+			"Magic Transit Write"
+		],
 		"x-cfPermissionsRequired": {
 			"enum": [
 				"#organization:edit"
@@ -4129,6 +4157,10 @@
 		"summary": "Update Route",
 		"tags": [
 			"Magic Static Routes"
+		],
+		"x-api-token-group": [
+			"Magic WAN Write",
+			"Magic Transit Write"
 		],
 		"x-cfPermissionsRequired": {
 			"enum": [

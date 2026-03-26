@@ -376,6 +376,9 @@
 		"tags": [
 			"AutoRAG RAG Search"
 		],
+		"x-api-token-group": [
+			"Auto Rag Write"
+		],
 		"x-cfPermissionsRequired": {
 			"enum": [
 				"com.cloudflare.api.account.rag"
@@ -713,6 +716,9 @@
 		"summary": "Search",
 		"tags": [
 			"AutoRAG RAG Search"
+		],
+		"x-api-token-group": [
+			"Auto Rag Write"
 		],
 		"x-cfPermissionsRequired": {
 			"enum": [

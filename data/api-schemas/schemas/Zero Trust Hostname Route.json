@@ -418,6 +418,10 @@
 		"summary": "Delete hostname route",
 		"tags": [
 			"Zero Trust Hostname Route"
+		],
+		"x-api-token-group": [
+			"Cloudflare One Networks Write",
+			"Cloudflare Tunnel Write"
 		]
 	},
 	"GET /accounts/{account_id}/zerotrust/routes/hostname": {
@@ -995,6 +999,12 @@
 		"summary": "List hostname routes",
 		"tags": [
 			"Zero Trust Hostname Route"
+		],
+		"x-api-token-group": [
+			"Cloudflare One Networks Write",
+			"Cloudflare One Networks Read",
+			"Cloudflare Tunnel Write",
+			"Cloudflare Tunnel Read"
 		]
 	},
 	"GET /accounts/{account_id}/zerotrust/routes/hostname/{hostname_route_id}": {
@@ -1416,6 +1426,12 @@
 		"summary": "Get hostname route",
 		"tags": [
 			"Zero Trust Hostname Route"
+		],
+		"x-api-token-group": [
+			"Cloudflare One Networks Write",
+			"Cloudflare One Networks Read",
+			"Cloudflare Tunnel Write",
+			"Cloudflare Tunnel Read"
 		]
 	},
 	"PATCH /accounts/{account_id}/zerotrust/routes/hostname/{hostname_route_id}": {
@@ -1869,6 +1885,10 @@
 		"summary": "Update hostname route",
 		"tags": [
 			"Zero Trust Hostname Route"
+		],
+		"x-api-token-group": [
+			"Cloudflare One Networks Write",
+			"Cloudflare Tunnel Write"
 		]
 	},
 	"POST /accounts/{account_id}/zerotrust/routes/hostname": {
@@ -2310,6 +2330,10 @@
 		"summary": "Create hostname route",
 		"tags": [
 			"Zero Trust Hostname Route"
+		],
+		"x-api-token-group": [
+			"Cloudflare One Networks Write",
+			"Cloudflare Tunnel Write"
 		]
 	}
 }

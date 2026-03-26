@@ -4060,6 +4060,10 @@
 		"summary": "List Resources",
 		"tags": [
 			"Resources"
+		],
+		"x-api-token-group": [
+			"Magic WAN Write",
+			"Magic WAN Read"
 		]
 	},
 	"GET /accounts/{account_id}/magic/cloud/resources/{resource_id}": {
@@ -7901,6 +7905,10 @@
 		"summary": "Read Resource",
 		"tags": [
 			"Resources"
+		],
+		"x-api-token-group": [
+			"Magic WAN Write",
+			"Magic WAN Read"
 		]
 	},
 	"GET /accounts/{account_id}/magic/cloud/resources/export": {
@@ -10433,6 +10441,10 @@
 		"summary": "Export Resources",
 		"tags": [
 			"Resources"
+		],
+		"x-api-token-group": [
+			"Magic WAN Write",
+			"Magic WAN Read"
 		]
 	},
 	"POST /accounts/{account_id}/magic/cloud/resources/policy-preview": {

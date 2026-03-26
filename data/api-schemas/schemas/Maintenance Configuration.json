@@ -420,11 +420,10 @@
 		"tags": [
 			"Maintenance Configuration"
 		],
-		"x-cfPermissionsRequired": {
-			"enum": [
-				"com.cloudflare.edge.r2.bucket.warehouse.read"
-			]
-		}
+		"x-api-token-group": [
+			"Workers R2 Data Catalog Write",
+			"Workers R2 Data Catalog Read"
+		]
 	},
 	"POST /accounts/{account_id}/r2-catalog/{bucket_name}/maintenance-configs": {
 		"description": "Update the maintenance configuration for a catalog. This allows you to\nenable or disable compaction and adjust target file sizes for optimization.\n",
@@ -921,10 +920,8 @@
 		"tags": [
 			"Maintenance Configuration"
 		],
-		"x-cfPermissionsRequired": {
-			"enum": [
-				"com.cloudflare.edge.r2.bucket.warehouse.create"
-			]
-		}
+		"x-api-token-group": [
+			"Workers R2 Data Catalog Write"
+		]
 	}
 }

@@ -166,6 +166,11 @@
 											"type": "boolean",
 											"x-auditable": true
 										},
+										"engine_version": {
+											"default": 2,
+											"readOnly": true,
+											"type": "number"
+										},
 										"fusion_method": {
 											"default": "rrf",
 											"enum": [
@@ -384,11 +389,11 @@
 													"type": "array"
 												},
 												"keyword_match_mode": {
-													"default": "exact_match",
-													"description": "Controls how keyword search terms are matched. exact_match requires all terms to appear (AND); fuzzy_match returns results containing any term (OR). Defaults to exact_match.",
+													"default": "and",
+													"description": "Controls which documents are candidates for BM25 scoring. 'and' restricts candidates to documents containing all query terms; 'or' includes any document containing at least one term, ranked by BM25 relevance. Defaults to 'and'. Legacy values 'exact_match' and 'fuzzy_match' are accepted and map to 'and' and 'or' respectively.",
 													"enum": [
-														"exact_match",
-														"fuzzy_match"
+														"and",
+														"or"
 													],
 													"type": "string"
 												}
@@ -445,6 +450,7 @@
 											"x-auditable": true
 										},
 										"source": {
+											"nullable": true,
 											"type": "string",
 											"x-auditable": true
 										},
@@ -639,8 +645,10 @@
 										"type": {
 											"enum": [
 												"r2",
-												"web-crawler"
+												"web-crawler",
+												null
 											],
+											"nullable": true,
 											"type": "string",
 											"x-auditable": true
 										}
@@ -952,6 +960,11 @@
 												"type": "boolean",
 												"x-auditable": true
 											},
+											"engine_version": {
+												"default": 2,
+												"readOnly": true,
+												"type": "number"
+											},
 											"fusion_method": {
 												"default": "rrf",
 												"enum": [
@@ -1170,11 +1183,11 @@
 														"type": "array"
 													},
 													"keyword_match_mode": {
-														"default": "exact_match",
-														"description": "Controls how keyword search terms are matched. exact_match requires all terms to appear (AND); fuzzy_match returns results containing any term (OR). Defaults to exact_match.",
+														"default": "and",
+														"description": "Controls which documents are candidates for BM25 scoring. 'and' restricts candidates to documents containing all query terms; 'or' includes any document containing at least one term, ranked by BM25 relevance. Defaults to 'and'. Legacy values 'exact_match' and 'fuzzy_match' are accepted and map to 'and' and 'or' respectively.",
 														"enum": [
-															"exact_match",
-															"fuzzy_match"
+															"and",
+															"or"
 														],
 														"type": "string"
 													}
@@ -1231,6 +1244,7 @@
 												"x-auditable": true
 											},
 											"source": {
+												"nullable": true,
 												"type": "string",
 												"x-auditable": true
 											},
@@ -1425,8 +1439,10 @@
 											"type": {
 												"enum": [
 													"r2",
-													"web-crawler"
+													"web-crawler",
+													null
 												],
+												"nullable": true,
 												"type": "string",
 												"x-auditable": true
 											}
@@ -1694,6 +1710,11 @@
 											"type": "boolean",
 											"x-auditable": true
 										},
+										"engine_version": {
+											"default": 2,
+											"readOnly": true,
+											"type": "number"
+										},
 										"fusion_method": {
 											"default": "rrf",
 											"enum": [
@@ -1912,11 +1933,11 @@
 													"type": "array"
 												},
 												"keyword_match_mode": {
-													"default": "exact_match",
-													"description": "Controls how keyword search terms are matched. exact_match requires all terms to appear (AND); fuzzy_match returns results containing any term (OR). Defaults to exact_match.",
+													"default": "and",
+													"description": "Controls which documents are candidates for BM25 scoring. 'and' restricts candidates to documents containing all query terms; 'or' includes any document containing at least one term, ranked by BM25 relevance. Defaults to 'and'. Legacy values 'exact_match' and 'fuzzy_match' are accepted and map to 'and' and 'or' respectively.",
 													"enum": [
-														"exact_match",
-														"fuzzy_match"
+														"and",
+														"or"
 													],
 													"type": "string"
 												}
@@ -1973,6 +1994,7 @@
 											"x-auditable": true
 										},
 										"source": {
+											"nullable": true,
 											"type": "string",
 											"x-auditable": true
 										},
@@ -2167,8 +2189,10 @@
 										"type": {
 											"enum": [
 												"r2",
-												"web-crawler"
+												"web-crawler",
+												null
 											],
+											"nullable": true,
 											"type": "string",
 											"x-auditable": true
 										}
@@ -2788,11 +2812,11 @@
 										"type": "array"
 									},
 									"keyword_match_mode": {
-										"default": "exact_match",
-										"description": "Controls how keyword search terms are matched. exact_match requires all terms to appear (AND); fuzzy_match returns results containing any term (OR). Defaults to exact_match.",
+										"default": "and",
+										"description": "Controls which documents are candidates for BM25 scoring. 'and' restricts candidates to documents containing all query terms; 'or' includes any document containing at least one term, ranked by BM25 relevance. Defaults to 'and'. Legacy values 'exact_match' and 'fuzzy_match' are accepted and map to 'and' and 'or' respectively.",
 										"enum": [
-											"exact_match",
-											"fuzzy_match"
+											"and",
+											"or"
 										],
 										"type": "string"
 									}
@@ -2849,6 +2873,7 @@
 								"x-auditable": true
 							},
 							"source": {
+								"nullable": true,
 								"type": "string",
 								"x-auditable": true
 							},
@@ -3038,8 +3063,10 @@
 							"type": {
 								"enum": [
 									"r2",
-									"web-crawler"
+									"web-crawler",
+									null
 								],
+								"nullable": true,
 								"type": "string",
 								"x-auditable": true
 							}
@@ -3189,6 +3216,11 @@
 											"default": true,
 											"type": "boolean",
 											"x-auditable": true
+										},
+										"engine_version": {
+											"default": 2,
+											"readOnly": true,
+											"type": "number"
 										},
 										"fusion_method": {
 											"default": "rrf",
@@ -3408,11 +3440,11 @@
 													"type": "array"
 												},
 												"keyword_match_mode": {
-													"default": "exact_match",
-													"description": "Controls how keyword search terms are matched. exact_match requires all terms to appear (AND); fuzzy_match returns results containing any term (OR). Defaults to exact_match.",
+													"default": "and",
+													"description": "Controls which documents are candidates for BM25 scoring. 'and' restricts candidates to documents containing all query terms; 'or' includes any document containing at least one term, ranked by BM25 relevance. Defaults to 'and'. Legacy values 'exact_match' and 'fuzzy_match' are accepted and map to 'and' and 'or' respectively.",
 													"enum": [
-														"exact_match",
-														"fuzzy_match"
+														"and",
+														"or"
 													],
 													"type": "string"
 												}
@@ -3469,6 +3501,7 @@
 											"x-auditable": true
 										},
 										"source": {
+											"nullable": true,
 											"type": "string",
 											"x-auditable": true
 										},
@@ -3663,8 +3696,10 @@
 										"type": {
 											"enum": [
 												"r2",
-												"web-crawler"
+												"web-crawler",
+												null
 											],
+											"nullable": true,
 											"type": "string",
 											"x-auditable": true
 										}
@@ -3956,11 +3991,11 @@
 												"type": "string"
 											},
 											"keyword_match_mode": {
-												"default": "exact_match",
-												"description": "Controls how keyword search terms are matched. exact_match requires all terms to appear (AND); fuzzy_match returns results containing any term (OR). Defaults to exact_match.",
+												"default": "and",
+												"description": "Controls which documents are candidates for BM25 scoring. 'and' restricts candidates to documents containing all query terms; 'or' includes any document containing at least one term, ranked by BM25 relevance. Defaults to 'and'. Legacy values 'exact_match' and 'fuzzy_match' are accepted and map to 'and' and 'or' respectively.",
 												"enum": [
-													"exact_match",
-													"fuzzy_match"
+													"and",
+													"or"
 												],
 												"type": "string"
 											},
@@ -4477,11 +4512,11 @@
 												"type": "string"
 											},
 											"keyword_match_mode": {
-												"default": "exact_match",
-												"description": "Controls how keyword search terms are matched. exact_match requires all terms to appear (AND); fuzzy_match returns results containing any term (OR). Defaults to exact_match.",
+												"default": "and",
+												"description": "Controls which documents are candidates for BM25 scoring. 'and' restricts candidates to documents containing all query terms; 'or' includes any document containing at least one term, ranked by BM25 relevance. Defaults to 'and'. Legacy values 'exact_match' and 'fuzzy_match' are accepted and map to 'and' and 'or' respectively.",
 												"enum": [
-													"exact_match",
-													"fuzzy_match"
+													"and",
+													"or"
 												],
 												"type": "string"
 											},
@@ -5062,11 +5097,11 @@
 										"type": "array"
 									},
 									"keyword_match_mode": {
-										"default": "exact_match",
-										"description": "Controls how keyword search terms are matched. exact_match requires all terms to appear (AND); fuzzy_match returns results containing any term (OR). Defaults to exact_match.",
+										"default": "and",
+										"description": "Controls which documents are candidates for BM25 scoring. 'and' restricts candidates to documents containing all query terms; 'or' includes any document containing at least one term, ranked by BM25 relevance. Defaults to 'and'. Legacy values 'exact_match' and 'fuzzy_match' are accepted and map to 'and' and 'or' respectively.",
 										"enum": [
-											"exact_match",
-											"fuzzy_match"
+											"and",
+											"or"
 										],
 										"type": "string"
 									}
@@ -5505,6 +5540,11 @@
 											"type": "boolean",
 											"x-auditable": true
 										},
+										"engine_version": {
+											"default": 2,
+											"readOnly": true,
+											"type": "number"
+										},
 										"fusion_method": {
 											"default": "rrf",
 											"enum": [
@@ -5723,11 +5763,11 @@
 													"type": "array"
 												},
 												"keyword_match_mode": {
-													"default": "exact_match",
-													"description": "Controls how keyword search terms are matched. exact_match requires all terms to appear (AND); fuzzy_match returns results containing any term (OR). Defaults to exact_match.",
+													"default": "and",
+													"description": "Controls which documents are candidates for BM25 scoring. 'and' restricts candidates to documents containing all query terms; 'or' includes any document containing at least one term, ranked by BM25 relevance. Defaults to 'and'. Legacy values 'exact_match' and 'fuzzy_match' are accepted and map to 'and' and 'or' respectively.",
 													"enum": [
-														"exact_match",
-														"fuzzy_match"
+														"and",
+														"or"
 													],
 													"type": "string"
 												}
@@ -5784,6 +5824,7 @@
 											"x-auditable": true
 										},
 										"source": {
+											"nullable": true,
 											"type": "string",
 											"x-auditable": true
 										},
@@ -5978,8 +6019,10 @@
 										"type": {
 											"enum": [
 												"r2",
-												"web-crawler"
+												"web-crawler",
+												null
 											],
+											"nullable": true,
 											"type": "string",
 											"x-auditable": true
 										}

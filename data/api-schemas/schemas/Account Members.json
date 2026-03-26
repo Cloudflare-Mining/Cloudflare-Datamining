@@ -282,6 +282,10 @@
 		"tags": [
 			"Account Members"
 		],
+		"x-api-token-group": [
+			"SCIM Provisioning",
+			"Account Settings Write"
+		],
 		"x-cfPermissionsRequired": {
 			"enum": [
 				"#organization:edit"
@@ -1176,6 +1180,11 @@
 		"tags": [
 			"Account Members"
 		],
+		"x-api-token-group": [
+			"SCIM Provisioning",
+			"Account Settings Write",
+			"Account Settings Read"
+		],
 		"x-cfPermissionsRequired": {
 			"enum": [
 				"#organization:read"
@@ -1988,6 +1997,11 @@
 		"summary": "Member Details",
 		"tags": [
 			"Account Members"
+		],
+		"x-api-token-group": [
+			"SCIM Provisioning",
+			"Account Settings Write",
+			"Account Settings Read"
 		],
 		"x-cfPermissionsRequired": {
 			"enum": [
@@ -2943,6 +2957,10 @@
 		"summary": "Add Member",
 		"tags": [
 			"Account Members"
+		],
+		"x-api-token-group": [
+			"SCIM Provisioning",
+			"Account Settings Write"
 		],
 		"x-cfPermissionsRequired": {
 			"enum": [
@@ -4213,6 +4231,10 @@
 		"summary": "Update Member",
 		"tags": [
 			"Account Members"
+		],
+		"x-api-token-group": [
+			"SCIM Provisioning",
+			"Account Settings Write"
 		],
 		"x-cfPermissionsRequired": {
 			"enum": [

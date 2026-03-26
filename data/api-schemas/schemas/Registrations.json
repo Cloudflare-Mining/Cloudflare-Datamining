@@ -93,6 +93,9 @@
 		"summary": "Delete registration",
 		"tags": [
 			"Registrations"
+		],
+		"x-api-token-group": [
+			"Zero Trust Write"
 		]
 	},
 	"GET /accounts/{account_id}/devices/registrations": {
@@ -956,6 +959,9 @@
 		"summary": "Revoke registrations",
 		"tags": [
 			"Registrations"
+		],
+		"x-api-token-group": [
+			"Zero Trust Write"
 		]
 	},
 	"POST /accounts/{account_id}/devices/registrations/unrevoke": {
@@ -1091,6 +1097,9 @@
 		"summary": "Unrevoke registrations",
 		"tags": [
 			"Registrations"
+		],
+		"x-api-token-group": [
+			"Zero Trust Write"
 		]
 	}
 }

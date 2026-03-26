@@ -260,6 +260,9 @@
 		"summary": "Delete downloads",
 		"tags": [
 			"Stream MP4 Downloads"
+		],
+		"x-api-token-group": [
+			"Stream Write"
 		]
 	},
 	"DELETE /accounts/{account_id}/stream/{identifier}/downloads/{download_type}": {
@@ -539,6 +542,9 @@
 		"summary": "Delete download",
 		"tags": [
 			"Stream MP4 Downloads"
+		],
+		"x-api-token-group": [
+			"Stream Write"
 		]
 	},
 	"GET /accounts/{account_id}/stream/{identifier}/downloads": {
@@ -872,6 +878,10 @@
 		"summary": "List downloads",
 		"tags": [
 			"Stream MP4 Downloads"
+		],
+		"x-api-token-group": [
+			"Stream Write",
+			"Stream Read"
 		]
 	},
 	"POST /accounts/{account_id}/stream/{identifier}/downloads": {

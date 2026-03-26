@@ -406,6 +406,9 @@
 		"tags": [
 			"IP Access rules for a zone"
 		],
+		"x-api-token-group": [
+			"Firewall Services Write"
+		],
 		"x-cfPlanAvailability": {
 			"business": true,
 			"enterprise": true,
@@ -1273,6 +1276,10 @@
 		"tags": [
 			"IP Access rules for a zone"
 		],
+		"x-api-token-group": [
+			"Firewall Services Write",
+			"Firewall Services Read"
+		],
 		"x-cfPlanAvailability": {
 			"business": true,
 			"enterprise": true,
@@ -2027,6 +2034,9 @@
 		"summary": "Update an IP Access rule",
 		"tags": [
 			"IP Access rules for a zone"
+		],
+		"x-api-token-group": [
+			"Firewall Services Write"
 		],
 		"x-cfPlanAvailability": {
 			"business": true,
@@ -2884,6 +2894,9 @@
 		"summary": "Create an IP Access rule",
 		"tags": [
 			"IP Access rules for a zone"
+		],
+		"x-api-token-group": [
+			"Firewall Services Write"
 		],
 		"x-cfPlanAvailability": {
 			"business": true,

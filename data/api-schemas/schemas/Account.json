@@ -126,6 +126,10 @@
 		"summary": "Get account limits",
 		"tags": [
 			"Account"
+		],
+		"x-api-token-group": [
+			"Workers CI Write",
+			"Workers CI Read"
 		]
 	}
 }

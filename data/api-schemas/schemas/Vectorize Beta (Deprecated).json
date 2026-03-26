@@ -363,6 +363,9 @@
 		"tags": [
 			"Vectorize Beta (Deprecated)"
 		],
+		"x-api-token-group": [
+			"Vectorize Write"
+		],
 		"x-cfDeprecation": {
 			"description": "This endpoint is deprecated in favor of the DELETE `/accounts/{account_id}/vectorize/v2/indexes/{index_name}` endpoint.",
 			"display": true,
@@ -764,6 +767,10 @@
 		"summary": "List Vectorize Indexes (Deprecated)",
 		"tags": [
 			"Vectorize Beta (Deprecated)"
+		],
+		"x-api-token-group": [
+			"Vectorize Write",
+			"Vectorize Read"
 		],
 		"x-cfDeprecation": {
 			"description": "This endpoint is deprecated in favor of the GET `/accounts/{account_id}/vectorize/v2/indexes` endpoint.",
@@ -1195,6 +1202,10 @@
 		"summary": "Get Vectorize Index (Deprecated)",
 		"tags": [
 			"Vectorize Beta (Deprecated)"
+		],
+		"x-api-token-group": [
+			"Vectorize Write",
+			"Vectorize Read"
 		],
 		"x-cfDeprecation": {
 			"description": "This endpoint is deprecated in favor of the GET `/accounts/{account_id}/vectorize/v2/indexes/{index_name}` endpoint.",
@@ -1701,6 +1712,9 @@
 		"tags": [
 			"Vectorize Beta (Deprecated)"
 		],
+		"x-api-token-group": [
+			"Vectorize Write"
+		],
 		"x-cfDeprecation": {
 			"description": "This endpoint is deprecated in favor of the POST `/accounts/{account_id}/vectorize/v2/indexes` endpoint.",
 			"display": true,
@@ -2120,15 +2134,13 @@
 		"tags": [
 			"Vectorize Beta (Deprecated)"
 		],
+		"x-api-token-group": [
+			"Vectorize Write"
+		],
 		"x-cfDeprecation": {
 			"description": "This endpoint is deprecated in favor of the POST `/accounts/{account_id}/vectorize/v2/indexes/{index_name}/delete_by_ids` endpoint.",
 			"display": true,
 			"id": "vectorize_delete_by_ids_deprecation"
-		},
-		"x-cfPermissionsRequired": {
-			"enum": [
-				"com.cloudflare.edge.vectorize.index.update"
-			]
 		}
 	},
 	"POST /accounts/{account_id}/vectorize/indexes/{index_name}/get-by-ids": {
@@ -2574,15 +2586,14 @@
 		"tags": [
 			"Vectorize Beta (Deprecated)"
 		],
+		"x-api-token-group": [
+			"Vectorize Write",
+			"Vectorize Read"
+		],
 		"x-cfDeprecation": {
 			"description": "This endpoint is deprecated in favor of the POST `/accounts/{account_id}/vectorize/v2/indexes/{index_name}/get_by_ids` endpoint.",
 			"display": true,
 			"id": "vectorize_get_by_ids_deprecation"
-		},
-		"x-cfPermissionsRequired": {
-			"enum": [
-				"com.cloudflare.edge.vectorize.index.read"
-			]
 		}
 	},
 	"POST /accounts/{account_id}/vectorize/indexes/{index_name}/insert": {
@@ -2979,6 +2990,9 @@
 		"summary": "Insert Vectors (Deprecated)",
 		"tags": [
 			"Vectorize Beta (Deprecated)"
+		],
+		"x-api-token-group": [
+			"Vectorize Write"
 		],
 		"x-cfDeprecation": {
 			"description": "This endpoint is deprecated in favor of the POST `/accounts/{account_id}/vectorize/v2/indexes/{index_name}/insert` endpoint.",
@@ -3444,6 +3458,10 @@
 		"tags": [
 			"Vectorize Beta (Deprecated)"
 		],
+		"x-api-token-group": [
+			"Vectorize Write",
+			"Vectorize Read"
+		],
 		"x-cfDeprecation": {
 			"description": "This endpoint is deprecated in favor of the POST `/accounts/{account_id}/vectorize/v2/indexes/{index_name}/query` endpoint.",
 			"display": true,
@@ -3850,15 +3868,13 @@
 		"tags": [
 			"Vectorize Beta (Deprecated)"
 		],
+		"x-api-token-group": [
+			"Vectorize Write"
+		],
 		"x-cfDeprecation": {
 			"description": "This endpoint is deprecated in favor of the POST `/accounts/{account_id}/vectorize/v2/indexes/{index_name}/upsert` endpoint.",
 			"display": true,
 			"id": "vectorize_upsert_deprecation"
-		},
-		"x-cfPermissionsRequired": {
-			"enum": [
-				"com.cloudflare.edge.vectorize.index.update"
-			]
 		}
 	},
 	"PUT /accounts/{account_id}/vectorize/indexes/{index_name}": {
@@ -4301,6 +4317,9 @@
 		"summary": "Update Vectorize Index (Deprecated)",
 		"tags": [
 			"Vectorize Beta (Deprecated)"
+		],
+		"x-api-token-group": [
+			"Vectorize Write"
 		],
 		"x-cfDeprecation": {
 			"description": "This endpoint has been deprecated and will soon be removed.",

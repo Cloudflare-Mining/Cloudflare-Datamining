@@ -514,6 +514,9 @@
 		"tags": [
 			"User Agent Blocking rules"
 		],
+		"x-api-token-group": [
+			"Firewall Services Write"
+		],
 		"x-cfPlanAvailability": {
 			"business": true,
 			"enterprise": true,
@@ -1072,6 +1075,10 @@
 		"tags": [
 			"User Agent Blocking rules"
 		],
+		"x-api-token-group": [
+			"Firewall Services Write",
+			"Firewall Services Read"
+		],
 		"x-cfPlanAvailability": {
 			"business": true,
 			"enterprise": true,
@@ -1543,6 +1550,10 @@
 		"summary": "Get a User Agent Blocking rule",
 		"tags": [
 			"User Agent Blocking rules"
+		],
+		"x-api-token-group": [
+			"Firewall Services Write",
+			"Firewall Services Read"
 		],
 		"x-cfPlanAvailability": {
 			"business": true,
@@ -2064,6 +2075,9 @@
 		"summary": "Create a User Agent Blocking rule",
 		"tags": [
 			"User Agent Blocking rules"
+		],
+		"x-api-token-group": [
+			"Firewall Services Write"
 		],
 		"x-cfPlanAvailability": {
 			"business": true,
@@ -2688,6 +2702,9 @@
 		"summary": "Update a User Agent Blocking rule",
 		"tags": [
 			"User Agent Blocking rules"
+		],
+		"x-api-token-group": [
+			"Firewall Services Write"
 		],
 		"x-cfPlanAvailability": {
 			"business": true,

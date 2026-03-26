@@ -46,6 +46,10 @@
 		"summary": "Delete a specified CNI object",
 		"tags": [
 			"CNIs"
+		],
+		"x-api-token-group": [
+			"Magic WAN Write",
+			"Magic Transit Write"
 		]
 	},
 	"GET /accounts/{account_id}/cni/cnis": {
@@ -225,6 +229,12 @@
 		"summary": "List existing CNI objects",
 		"tags": [
 			"CNIs"
+		],
+		"x-api-token-group": [
+			"Magic WAN Write",
+			"Magic WAN Read",
+			"Magic Transit Read",
+			"Magic Transit Write"
 		]
 	},
 	"GET /accounts/{account_id}/cni/cnis/{cni}": {
@@ -365,6 +375,12 @@
 		"summary": "Get information about a CNI object",
 		"tags": [
 			"CNIs"
+		],
+		"x-api-token-group": [
+			"Magic WAN Write",
+			"Magic WAN Read",
+			"Magic Transit Read",
+			"Magic Transit Write"
 		]
 	},
 	"POST /accounts/{account_id}/cni/cnis": {
@@ -569,6 +585,10 @@
 		"summary": "Create a new CNI object",
 		"tags": [
 			"CNIs"
+		],
+		"x-api-token-group": [
+			"Magic WAN Write",
+			"Magic Transit Write"
 		]
 	},
 	"PUT /accounts/{account_id}/cni/cnis/{cni}": {
@@ -803,6 +823,10 @@
 		"summary": "Modify stored information about a CNI object",
 		"tags": [
 			"CNIs"
+		],
+		"x-api-token-group": [
+			"Magic WAN Write",
+			"Magic Transit Write"
 		]
 	}
 }

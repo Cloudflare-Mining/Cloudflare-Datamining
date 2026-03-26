@@ -376,11 +376,11 @@
 		"tags": [
 			"Secondary DNS (Secondary Zone)"
 		],
-		"x-cfPermissionsRequired": {
-			"enum": [
-				"#dns_records:edit"
-			]
-		},
+		"x-api-token-group": [
+			"Zone Settings Write",
+			"Zone Write",
+			"DNS Write"
+		],
 		"x-cfPlanAvailability": {
 			"business": false,
 			"enterprise": true,
@@ -865,11 +865,13 @@
 		"tags": [
 			"Secondary DNS (Secondary Zone)"
 		],
-		"x-cfPermissionsRequired": {
-			"enum": [
-				"#dns_records:read"
-			]
-		},
+		"x-api-token-group": [
+			"Zone Settings Write",
+			"Zone Settings Read",
+			"DNS Read",
+			"Zone Write",
+			"DNS Write"
+		],
 		"x-cfPlanAvailability": {
 			"business": false,
 			"enterprise": true,
@@ -1244,11 +1246,11 @@
 		"tags": [
 			"Secondary DNS (Secondary Zone)"
 		],
-		"x-cfPermissionsRequired": {
-			"enum": [
-				"#dns_records:edit"
-			]
-		},
+		"x-api-token-group": [
+			"Zone Settings Write",
+			"Zone Write",
+			"DNS Write"
+		],
 		"x-cfPlanAvailability": {
 			"business": false,
 			"enterprise": true,
@@ -1786,11 +1788,11 @@
 		"tags": [
 			"Secondary DNS (Secondary Zone)"
 		],
-		"x-cfPermissionsRequired": {
-			"enum": [
-				"#dns_records:edit"
-			]
-		},
+		"x-api-token-group": [
+			"Zone Settings Write",
+			"Zone Write",
+			"DNS Write"
+		],
 		"x-cfPlanAvailability": {
 			"business": false,
 			"enterprise": true,
@@ -2328,11 +2330,11 @@
 		"tags": [
 			"Secondary DNS (Secondary Zone)"
 		],
-		"x-cfPermissionsRequired": {
-			"enum": [
-				"#dns_records:edit"
-			]
-		},
+		"x-api-token-group": [
+			"Zone Settings Write",
+			"Zone Write",
+			"DNS Write"
+		],
 		"x-cfPlanAvailability": {
 			"business": false,
 			"enterprise": true,

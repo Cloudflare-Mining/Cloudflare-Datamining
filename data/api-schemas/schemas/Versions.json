@@ -2464,6 +2464,11 @@
 		"summary": "List Versions",
 		"tags": [
 			"Versions"
+		],
+		"x-api-token-group": [
+			"Workers Tail Read",
+			"Workers Scripts Write",
+			"Workers Scripts Read"
 		]
 	},
 	"GET /accounts/{account_id}/workers/workers/{worker_id}/versions/{version_id}": {
@@ -4634,6 +4639,11 @@
 		"summary": "Get Version",
 		"tags": [
 			"Versions"
+		],
+		"x-api-token-group": [
+			"Workers Tail Read",
+			"Workers Scripts Write",
+			"Workers Scripts Read"
 		]
 	},
 	"POST /accounts/{account_id}/workers/workers/{worker_id}/versions": {
@@ -8694,6 +8704,9 @@
 		"summary": "Create Version",
 		"tags": [
 			"Versions"
+		],
+		"x-api-token-group": [
+			"Workers Scripts Write"
 		]
 	}
 }

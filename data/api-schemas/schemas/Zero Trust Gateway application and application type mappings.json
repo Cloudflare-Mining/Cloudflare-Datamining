@@ -464,6 +464,10 @@
 		"summary": "List application and application type mappings",
 		"tags": [
 			"Zero Trust Gateway application and application type mappings"
+		],
+		"x-api-token-group": [
+			"Zero Trust Read",
+			"Zero Trust Write"
 		]
 	}
 }

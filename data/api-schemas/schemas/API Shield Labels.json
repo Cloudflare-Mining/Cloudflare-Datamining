@@ -362,6 +362,10 @@
 		"summary": "Delete user labels",
 		"tags": [
 			"API Shield Labels"
+		],
+		"x-api-token-group": [
+			"Account API Gateway",
+			"Domain API Gateway"
 		]
 	},
 	"DELETE /zones/{zone_id}/api_gateway/labels/user/{name}": {
@@ -669,6 +673,10 @@
 		"summary": "Delete user label",
 		"tags": [
 			"API Shield Labels"
+		],
+		"x-api-token-group": [
+			"Account API Gateway",
+			"Domain API Gateway"
 		]
 	},
 	"DELETE /zones/{zone_id}/api_gateway/operations/{operation_id}/labels": {
@@ -1108,6 +1116,10 @@
 		"summary": "Remove label(s) on an operation in endpoint management",
 		"tags": [
 			"API Shield Labels"
+		],
+		"x-api-token-group": [
+			"Account API Gateway",
+			"Domain API Gateway"
 		]
 	},
 	"DELETE /zones/{zone_id}/api_gateway/operations/labels": {
@@ -1600,6 +1612,10 @@
 		"summary": "Bulk remove label(s) on operation(s) in endpoint management",
 		"tags": [
 			"API Shield Labels"
+		],
+		"x-api-token-group": [
+			"Account API Gateway",
+			"Domain API Gateway"
 		]
 	},
 	"GET /zones/{zone_id}/api_gateway/labels": {
@@ -2051,6 +2067,12 @@
 		"summary": "Retrieve all labels",
 		"tags": [
 			"API Shield Labels"
+		],
+		"x-api-token-group": [
+			"Account API Gateway",
+			"Account API Gateway Read",
+			"Domain API Gateway",
+			"Domain API Gateway Read"
 		]
 	},
 	"GET /zones/{zone_id}/api_gateway/labels/managed/{name}": {
@@ -2398,6 +2420,12 @@
 		"summary": "Retrieve managed label",
 		"tags": [
 			"API Shield Labels"
+		],
+		"x-api-token-group": [
+			"Account API Gateway",
+			"Account API Gateway Read",
+			"Domain API Gateway",
+			"Domain API Gateway Read"
 		]
 	},
 	"GET /zones/{zone_id}/api_gateway/labels/user/{name}": {
@@ -2733,6 +2761,12 @@
 		"summary": "Retrieve user label",
 		"tags": [
 			"API Shield Labels"
+		],
+		"x-api-token-group": [
+			"Account API Gateway",
+			"Account API Gateway Read",
+			"Domain API Gateway",
+			"Domain API Gateway Read"
 		]
 	},
 	"PATCH /zones/{zone_id}/api_gateway/labels/user/{name}": {
@@ -3065,6 +3099,10 @@
 		"summary": "Patch user label",
 		"tags": [
 			"API Shield Labels"
+		],
+		"x-api-token-group": [
+			"Account API Gateway",
+			"Domain API Gateway"
 		]
 	},
 	"POST /zones/{zone_id}/api_gateway/labels/user": {
@@ -3451,6 +3489,10 @@
 		"summary": "Create user labels",
 		"tags": [
 			"API Shield Labels"
+		],
+		"x-api-token-group": [
+			"Account API Gateway",
+			"Domain API Gateway"
 		]
 	},
 	"POST /zones/{zone_id}/api_gateway/operations/{operation_id}/labels": {
@@ -3892,6 +3934,10 @@
 		"summary": "Attach label(s) on an operation in endpoint management",
 		"tags": [
 			"API Shield Labels"
+		],
+		"x-api-token-group": [
+			"Account API Gateway",
+			"Domain API Gateway"
 		]
 	},
 	"POST /zones/{zone_id}/api_gateway/operations/labels": {
@@ -4386,6 +4432,10 @@
 		"summary": "Bulk attach label(s) on operation(s) in endpoint management",
 		"tags": [
 			"API Shield Labels"
+		],
+		"x-api-token-group": [
+			"Account API Gateway",
+			"Domain API Gateway"
 		]
 	},
 	"PUT /zones/{zone_id}/api_gateway/labels/managed/{name}/resources/operation": {
@@ -4773,6 +4823,10 @@
 		"summary": "Replace operation(s) attached to a managed label",
 		"tags": [
 			"API Shield Labels"
+		],
+		"x-api-token-group": [
+			"Account API Gateway",
+			"Domain API Gateway"
 		]
 	},
 	"PUT /zones/{zone_id}/api_gateway/labels/user/{name}": {
@@ -5105,6 +5159,10 @@
 		"summary": "Update user label",
 		"tags": [
 			"API Shield Labels"
+		],
+		"x-api-token-group": [
+			"Account API Gateway",
+			"Domain API Gateway"
 		]
 	},
 	"PUT /zones/{zone_id}/api_gateway/labels/user/{name}/resources/operation": {
@@ -5480,6 +5538,10 @@
 		"summary": "Replace operation(s) attached to a user label",
 		"tags": [
 			"API Shield Labels"
+		],
+		"x-api-token-group": [
+			"Account API Gateway",
+			"Domain API Gateway"
 		]
 	},
 	"PUT /zones/{zone_id}/api_gateway/operations/{operation_id}/labels": {
@@ -5919,6 +5981,10 @@
 		"summary": "Replace label(s) on an operation in endpoint management",
 		"tags": [
 			"API Shield Labels"
+		],
+		"x-api-token-group": [
+			"Account API Gateway",
+			"Domain API Gateway"
 		]
 	},
 	"PUT /zones/{zone_id}/api_gateway/operations/labels": {
@@ -6421,6 +6487,10 @@
 		"summary": "Bulk replace label(s) on operation(s) in endpoint management",
 		"tags": [
 			"API Shield Labels"
+		],
+		"x-api-token-group": [
+			"Account API Gateway",
+			"Domain API Gateway"
 		]
 	}
 }

@@ -253,6 +253,12 @@
 		"summary": "Retrieve Global WARP override state",
 		"tags": [
 			"Devices Resilience"
+		],
+		"x-api-token-group": [
+			"Zero Trust Resilience Read",
+			"Zero Trust Resilience Write",
+			"Zero Trust Read",
+			"Zero Trust Write"
 		]
 	},
 	"POST /accounts/{account_id}/devices/resilience/disconnect": {
@@ -537,6 +543,9 @@
 		"summary": "Set Global WARP override state",
 		"tags": [
 			"Devices Resilience"
+		],
+		"x-api-token-group": [
+			"Zero Trust Resilience Write"
 		]
 	}
 }

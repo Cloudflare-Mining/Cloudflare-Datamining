@@ -97,6 +97,9 @@
 		"summary": "Deletes one or more events",
 		"tags": [
 			"Event"
+		],
+		"x-api-token-group": [
+			"Cloudforce One Write"
 		]
 	},
 	"DELETE /accounts/{account_id}/cloudforce-one/events/event_tag/{event_id}": {
@@ -224,6 +227,9 @@
 		"summary": "Removes a tag from an event",
 		"tags": [
 			"Event"
+		],
+		"x-api-token-group": [
+			"Cloudforce One Write"
 		]
 	},
 	"DELETE /accounts/{account_id}/cloudforce-one/events/queries/{query_id}": {
@@ -302,6 +308,9 @@
 		"summary": "Delete a saved event query",
 		"tags": [
 			"Event"
+		],
+		"x-api-token-group": [
+			"Cloudforce One Write"
 		]
 	},
 	"DELETE /accounts/{account_id}/cloudforce-one/events/queries/alerts/{alert_id}": {
@@ -380,6 +389,9 @@
 		"summary": "Delete an event query alert",
 		"tags": [
 			"Event"
+		],
+		"x-api-token-group": [
+			"Cloudforce One Write"
 		]
 	},
 	"DELETE /accounts/{account_id}/cloudforce-one/events/relate/{event_id}": {
@@ -507,6 +519,9 @@
 		"summary": "Removes an event reference",
 		"tags": [
 			"Event"
+		],
+		"x-api-token-group": [
+			"Cloudforce One Write"
 		]
 	},
 	"GET /accounts/{account_id}/cloudforce-one/events": {
@@ -869,6 +884,10 @@
 		"summary": "Filter and list events",
 		"tags": [
 			"Event"
+		],
+		"x-api-token-group": [
+			"Cloudforce One Write",
+			"Cloudforce One Read"
 		]
 	},
 	"GET /accounts/{account_id}/cloudforce-one/events/{event_id}": {
@@ -1105,6 +1124,10 @@
 		"summary": "Reads an event",
 		"tags": [
 			"Event"
+		],
+		"x-api-token-group": [
+			"Cloudforce One Write",
+			"Cloudforce One Read"
 		]
 	},
 	"GET /accounts/{account_id}/cloudforce-one/events/{event_id}/raw/{raw_id}": {
@@ -1232,6 +1255,10 @@
 		"summary": "Reads data for a raw event",
 		"tags": [
 			"Event"
+		],
+		"x-api-token-group": [
+			"Cloudforce One Write",
+			"Cloudforce One Read"
 		]
 	},
 	"GET /accounts/{account_id}/cloudforce-one/events/{event_id}/relationships": {
@@ -1559,6 +1586,10 @@
 		"summary": "Filter and list events related to specific event",
 		"tags": [
 			"Event"
+		],
+		"x-api-token-group": [
+			"Cloudforce One Write",
+			"Cloudforce One Read"
 		]
 	},
 	"GET /accounts/{account_id}/cloudforce-one/events/aggregate": {
@@ -1751,6 +1782,10 @@
 		"summary": "Aggregate events by single or multiple columns with optional date filtering",
 		"tags": [
 			"Event"
+		],
+		"x-api-token-group": [
+			"Cloudforce One Write",
+			"Cloudforce One Read"
 		]
 	},
 	"GET /accounts/{account_id}/cloudforce-one/events/dataset/{dataset_id}/events/{event_id}": {
@@ -1996,6 +2031,10 @@
 		"summary": "Reads an event",
 		"tags": [
 			"Event"
+		],
+		"x-api-token-group": [
+			"Cloudforce One Write",
+			"Cloudforce One Read"
 		]
 	},
 	"GET /accounts/{account_id}/cloudforce-one/events/queries": {
@@ -2132,6 +2171,10 @@
 		"summary": "List all saved event queries",
 		"tags": [
 			"Event"
+		],
+		"x-api-token-group": [
+			"Cloudforce One Write",
+			"Cloudforce One Read"
 		]
 	},
 	"GET /accounts/{account_id}/cloudforce-one/events/queries/{query_id}": {
@@ -2275,6 +2318,10 @@
 		"summary": "Read a saved event query",
 		"tags": [
 			"Event"
+		],
+		"x-api-token-group": [
+			"Cloudforce One Write",
+			"Cloudforce One Read"
 		]
 	},
 	"GET /accounts/{account_id}/cloudforce-one/events/queries/alerts": {
@@ -2410,6 +2457,10 @@
 		"summary": "List all event query alerts",
 		"tags": [
 			"Event"
+		],
+		"x-api-token-group": [
+			"Cloudforce One Write",
+			"Cloudforce One Read"
 		]
 	},
 	"GET /accounts/{account_id}/cloudforce-one/events/queries/alerts/{alert_id}": {
@@ -2552,6 +2603,10 @@
 		"summary": "Read an event query alert",
 		"tags": [
 			"Event"
+		],
+		"x-api-token-group": [
+			"Cloudforce One Write",
+			"Cloudforce One Read"
 		]
 	},
 	"GET /accounts/{account_id}/cloudforce-one/events/raw/{dataset_id}/{event_id}": {
@@ -2719,6 +2774,10 @@
 		"summary": "Reads raw data for an event by UUID",
 		"tags": [
 			"Event"
+		],
+		"x-api-token-group": [
+			"Cloudforce One Write",
+			"Cloudforce One Read"
 		]
 	},
 	"PATCH /accounts/{account_id}/cloudforce-one/events/{event_id}": {
@@ -3041,6 +3100,9 @@
 		"summary": "Updates an event",
 		"tags": [
 			"Event"
+		],
+		"x-api-token-group": [
+			"Cloudforce One Write"
 		]
 	},
 	"PATCH /accounts/{account_id}/cloudforce-one/events/{event_id}/raw/{raw_id}": {
@@ -3170,6 +3232,9 @@
 		"summary": "Updates a raw event",
 		"tags": [
 			"Event"
+		],
+		"x-api-token-group": [
+			"Cloudforce One Write"
 		]
 	},
 	"PATCH /accounts/{account_id}/cloudforce-one/events/queries/{query_id}": {
@@ -3386,6 +3451,9 @@
 		"summary": "Update a saved event query",
 		"tags": [
 			"Event"
+		],
+		"x-api-token-group": [
+			"Cloudforce One Write"
 		]
 	},
 	"PATCH /accounts/{account_id}/cloudforce-one/events/queries/alerts/{alert_id}": {
@@ -3593,6 +3661,9 @@
 		"summary": "Update an event query alert",
 		"tags": [
 			"Event"
+		],
+		"x-api-token-group": [
+			"Cloudforce One Write"
 		]
 	},
 	"PATCH /accounts/{account_id}/cloudforce-one/events/update/bulk": {
@@ -3809,6 +3880,9 @@
 		"summary": "Bulk update events",
 		"tags": [
 			"Event"
+		],
+		"x-api-token-group": [
+			"Cloudforce One Write"
 		]
 	},
 	"POST /accounts/{account_id}/cloudforce-one/events/{dataset_id}/revert-do": {
@@ -4002,6 +4076,10 @@
 		"summary": "Revert an Events Durable Object to a point in time",
 		"tags": [
 			"Event"
+		],
+		"x-api-token-group": [
+			"Cloudforce One Write",
+			"Cloudforce One Read"
 		]
 	},
 	"POST /accounts/{account_id}/cloudforce-one/events/{event_id}": {
@@ -4324,6 +4402,10 @@
 		"summary": "Updates an event",
 		"tags": [
 			"Event"
+		],
+		"x-api-token-group": [
+			"Cloudforce One Write",
+			"Cloudforce One Read"
 		]
 	},
 	"POST /accounts/{account_id}/cloudforce-one/events/{event_id}/raw/{raw_id}": {
@@ -4453,6 +4535,10 @@
 		"summary": "Updates a raw event",
 		"tags": [
 			"Event"
+		],
+		"x-api-token-group": [
+			"Cloudforce One Write",
+			"Cloudforce One Read"
 		]
 	},
 	"POST /accounts/{account_id}/cloudforce-one/events/create": {
@@ -4801,6 +4887,10 @@
 		"summary": "Creates a new event",
 		"tags": [
 			"Event"
+		],
+		"x-api-token-group": [
+			"Cloudforce One Write",
+			"Cloudforce One Read"
 		]
 	},
 	"POST /accounts/{account_id}/cloudforce-one/events/create/bulk": {
@@ -5097,6 +5187,10 @@
 		"summary": "Creates bulk events",
 		"tags": [
 			"Event"
+		],
+		"x-api-token-group": [
+			"Cloudforce One Write",
+			"Cloudforce One Read"
 		]
 	},
 	"POST /accounts/{account_id}/cloudforce-one/events/create/bulk/relationships": {
@@ -5358,6 +5452,10 @@
 		"summary": "Creates bulk DOS event with relationships and indicators",
 		"tags": [
 			"Event"
+		],
+		"x-api-token-group": [
+			"Cloudforce One Write",
+			"Cloudforce One Read"
 		]
 	},
 	"POST /accounts/{account_id}/cloudforce-one/events/dataset/{dataset_id}/copy": {
@@ -5521,6 +5619,10 @@
 		"summary": "Copies specified events from one dataset to another dataset",
 		"tags": [
 			"Event"
+		],
+		"x-api-token-group": [
+			"Cloudforce One Write",
+			"Cloudforce One Read"
 		]
 	},
 	"POST /accounts/{account_id}/cloudforce-one/events/dataset/{dataset_id}/move": {
@@ -5705,6 +5807,10 @@
 		"summary": "Moves specified events from one dataset to another dataset",
 		"tags": [
 			"Event"
+		],
+		"x-api-token-group": [
+			"Cloudforce One Write",
+			"Cloudforce One Read"
 		]
 	},
 	"POST /accounts/{account_id}/cloudforce-one/events/event_tag/{event_id}/create": {
@@ -5832,6 +5938,10 @@
 		"summary": "Adds a tag to an event",
 		"tags": [
 			"Event"
+		],
+		"x-api-token-group": [
+			"Cloudforce One Write",
+			"Cloudforce One Read"
 		]
 	},
 	"POST /accounts/{account_id}/cloudforce-one/events/graphql": {
@@ -5920,6 +6030,10 @@
 		"summary": "GraphQL endpoint for event aggregation",
 		"tags": [
 			"Event"
+		],
+		"x-api-token-group": [
+			"Cloudforce One Write",
+			"Cloudforce One Read"
 		]
 	},
 	"POST /accounts/{account_id}/cloudforce-one/events/queries/{query_id}": {
@@ -6136,6 +6250,10 @@
 		"summary": "Update a saved event query",
 		"tags": [
 			"Event"
+		],
+		"x-api-token-group": [
+			"Cloudforce One Write",
+			"Cloudforce One Read"
 		]
 	},
 	"POST /accounts/{account_id}/cloudforce-one/events/queries/alerts/{alert_id}": {
@@ -6343,6 +6461,10 @@
 		"summary": "Update an event query alert",
 		"tags": [
 			"Event"
+		],
+		"x-api-token-group": [
+			"Cloudforce One Write",
+			"Cloudforce One Read"
 		]
 	},
 	"POST /accounts/{account_id}/cloudforce-one/events/queries/alerts/create": {
@@ -6511,6 +6633,10 @@
 		"summary": "Create an event query alert",
 		"tags": [
 			"Event"
+		],
+		"x-api-token-group": [
+			"Cloudforce One Write",
+			"Cloudforce One Read"
 		]
 	},
 	"POST /accounts/{account_id}/cloudforce-one/events/queries/create": {
@@ -6686,6 +6812,10 @@
 		"summary": "Create a saved event query",
 		"tags": [
 			"Event"
+		],
+		"x-api-token-group": [
+			"Cloudforce One Write",
+			"Cloudforce One Read"
 		]
 	},
 	"POST /accounts/{account_id}/cloudforce-one/events/relate/{event_id}/create": {
@@ -6813,6 +6943,10 @@
 		"summary": "Creates event references for a event",
 		"tags": [
 			"Event"
+		],
+		"x-api-token-group": [
+			"Cloudforce One Write",
+			"Cloudforce One Read"
 		]
 	},
 	"POST /accounts/{account_id}/cloudforce-one/events/relationships/create": {
@@ -7028,6 +7162,10 @@
 		"summary": "Create a relationship between two events",
 		"tags": [
 			"Event"
+		],
+		"x-api-token-group": [
+			"Cloudforce One Write",
+			"Cloudforce One Read"
 		]
 	},
 	"POST /accounts/{account_id}/cloudforce-one/v2/events/graphql": {
@@ -7116,6 +7254,9 @@
 		"summary": "GraphQL endpoint for event aggregation",
 		"tags": [
 			"Event"
+		],
+		"x-api-token-group": [
+			"Cloudforce One Write"
 		]
 	}
 }

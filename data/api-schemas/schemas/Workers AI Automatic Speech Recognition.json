@@ -488,6 +488,10 @@
 		"tags": [
 			"Workers AI Automatic Speech Recognition"
 		],
+		"x-api-token-group": [
+			"Workers AI Write",
+			"Workers AI Read"
+		],
 		"x-cfPermissionsRequired": {
 			"enum": [
 				"com.cloudflare.api.account.ai"
@@ -790,6 +794,10 @@
 		"tags": [
 			"Workers AI Automatic Speech Recognition"
 		],
+		"x-api-token-group": [
+			"Workers AI Write",
+			"Workers AI Read"
+		],
 		"x-cfPermissionsRequired": {
 			"enum": [
 				"com.cloudflare.api.account.ai"
@@ -909,6 +917,10 @@
 		"summary": "Execute @cf/openai/whisper model.",
 		"tags": [
 			"Workers AI Automatic Speech Recognition"
+		],
+		"x-api-token-group": [
+			"Workers AI Write",
+			"Workers AI Read"
 		],
 		"x-cfPermissionsRequired": {
 			"enum": [
@@ -1104,6 +1116,10 @@
 		"tags": [
 			"Workers AI Automatic Speech Recognition"
 		],
+		"x-api-token-group": [
+			"Workers AI Write",
+			"Workers AI Read"
+		],
 		"x-cfPermissionsRequired": {
 			"enum": [
 				"com.cloudflare.api.account.ai"
@@ -1223,6 +1239,10 @@
 		"summary": "Execute @cf/openai/whisper-tiny-en model.",
 		"tags": [
 			"Workers AI Automatic Speech Recognition"
+		],
+		"x-api-token-group": [
+			"Workers AI Write",
+			"Workers AI Read"
 		],
 		"x-cfPermissionsRequired": {
 			"enum": [

@@ -403,6 +403,9 @@
 		"summary": "Delete Address Map",
 		"tags": [
 			"IP Address Management Address Maps"
+		],
+		"x-api-token-group": [
+			"Address Maps Write"
 		]
 	},
 	"DELETE /accounts/{account_id}/addressing/address_maps/{address_map_id}/accounts/{account_id}": {
@@ -809,6 +812,9 @@
 		"summary": "Remove an account membership from an Address Map",
 		"tags": [
 			"IP Address Management Address Maps"
+		],
+		"x-api-token-group": [
+			"Address Maps Write"
 		]
 	},
 	"DELETE /accounts/{account_id}/addressing/address_maps/{address_map_id}/ips/{ip_address}": {
@@ -1226,6 +1232,9 @@
 		"summary": "Remove an IP from an Address Map",
 		"tags": [
 			"IP Address Management Address Maps"
+		],
+		"x-api-token-group": [
+			"Address Maps Write"
 		]
 	},
 	"DELETE /accounts/{account_id}/addressing/address_maps/{address_map_id}/zones/{zone_id}": {
@@ -1644,6 +1653,9 @@
 		"summary": "Remove a zone membership from an Address Map",
 		"tags": [
 			"IP Address Management Address Maps"
+		],
+		"x-api-token-group": [
+			"Address Maps Write"
 		]
 	},
 	"GET /accounts/{account_id}/addressing/address_maps": {
@@ -2174,6 +2186,10 @@
 		"summary": "List Address Maps",
 		"tags": [
 			"IP Address Management Address Maps"
+		],
+		"x-api-token-group": [
+			"Address Maps Write",
+			"Address Maps Read"
 		]
 	},
 	"GET /accounts/{account_id}/addressing/address_maps/{address_map_id}": {
@@ -2790,6 +2806,10 @@
 		"summary": "Address Map Details",
 		"tags": [
 			"IP Address Management Address Maps"
+		],
+		"x-api-token-group": [
+			"Address Maps Write",
+			"Address Maps Read"
 		]
 	},
 	"PATCH /accounts/{account_id}/addressing/address_maps/{address_map_id}": {
@@ -3299,6 +3319,9 @@
 		"summary": "Update Address Map",
 		"tags": [
 			"IP Address Management Address Maps"
+		],
+		"x-api-token-group": [
+			"Address Maps Write"
 		]
 	},
 	"POST /accounts/{account_id}/addressing/address_maps": {
@@ -3973,6 +3996,9 @@
 		"summary": "Create Address Map",
 		"tags": [
 			"IP Address Management Address Maps"
+		],
+		"x-api-token-group": [
+			"Address Maps Write"
 		]
 	},
 	"PUT /accounts/{account_id}/addressing/address_maps/{address_map_id}/accounts/{account_id}": {
@@ -4796,6 +4822,9 @@
 		"summary": "Add an IP to an Address Map",
 		"tags": [
 			"IP Address Management Address Maps"
+		],
+		"x-api-token-group": [
+			"Address Maps Write"
 		]
 	},
 	"PUT /accounts/{account_id}/addressing/address_maps/{address_map_id}/zones/{zone_id}": {

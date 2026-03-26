@@ -361,6 +361,9 @@
 		"tags": [
 			"DNSSEC"
 		],
+		"x-api-token-group": [
+			"DNS Write"
+		],
 		"x-cfPermissionsRequired": {
 			"enum": [
 				"#zone_settings:edit"
@@ -952,6 +955,10 @@
 		"summary": "DNSSEC Details",
 		"tags": [
 			"DNSSEC"
+		],
+		"x-api-token-group": [
+			"DNS Read",
+			"DNS Write"
 		],
 		"x-cfPermissionsRequired": {
 			"enum": [
@@ -1583,6 +1590,9 @@
 		"summary": "Edit DNSSEC Status",
 		"tags": [
 			"DNSSEC"
+		],
+		"x-api-token-group": [
+			"DNS Write"
 		],
 		"x-cfPermissionsRequired": {
 			"enum": [

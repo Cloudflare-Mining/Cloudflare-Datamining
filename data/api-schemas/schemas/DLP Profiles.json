@@ -253,6 +253,9 @@
 		"summary": "Delete custom profile",
 		"tags": [
 			"DLP Profiles"
+		],
+		"x-api-token-group": [
+			"Zero Trust Write"
 		]
 	},
 	"DELETE /accounts/{account_id}/dlp/profiles/predefined/{profile_id}": {
@@ -509,6 +512,9 @@
 		"summary": "Delete predefined profile",
 		"tags": [
 			"DLP Profiles"
+		],
+		"x-api-token-group": [
+			"Zero Trust Write"
 		]
 	},
 	"GET /accounts/{account_id}/dlp/profiles": {
@@ -3100,6 +3106,10 @@
 		"summary": "List all profiles",
 		"tags": [
 			"DLP Profiles"
+		],
+		"x-api-token-group": [
+			"Zero Trust Read",
+			"Zero Trust Write"
 		]
 	},
 	"GET /accounts/{account_id}/dlp/profiles/{profile_id}": {
@@ -5689,6 +5699,10 @@
 		"summary": "Get DLP Profile",
 		"tags": [
 			"DLP Profiles"
+		],
+		"x-api-token-group": [
+			"Zero Trust Read",
+			"Zero Trust Write"
 		]
 	},
 	"GET /accounts/{account_id}/dlp/profiles/custom": {
@@ -6882,6 +6896,10 @@
 		"summary": "List all custom profiles",
 		"tags": [
 			"DLP Profiles"
+		],
+		"x-api-token-group": [
+			"Zero Trust Read",
+			"Zero Trust Write"
 		]
 	},
 	"GET /accounts/{account_id}/dlp/profiles/custom/{profile_id}": {
@@ -9471,6 +9489,10 @@
 		"summary": "Get custom profile",
 		"tags": [
 			"DLP Profiles"
+		],
+		"x-api-token-group": [
+			"Zero Trust Read",
+			"Zero Trust Write"
 		]
 	},
 	"GET /accounts/{account_id}/dlp/profiles/predefined/{profile_id}": {
@@ -12060,6 +12082,10 @@
 		"summary": "Get predefined profile",
 		"tags": [
 			"DLP Profiles"
+		],
+		"x-api-token-group": [
+			"Zero Trust Read",
+			"Zero Trust Write"
 		]
 	},
 	"GET /accounts/{account_id}/dlp/profiles/predefined/{profile_id}/config": {
@@ -12770,6 +12796,10 @@
 		"summary": "Get predefined profile config",
 		"tags": [
 			"DLP Profiles"
+		],
+		"x-api-token-group": [
+			"Zero Trust Read",
+			"Zero Trust Write"
 		]
 	},
 	"POST /accounts/{account_id}/dlp/profiles/custom": {
@@ -15553,6 +15583,9 @@
 		"summary": "Create custom profile",
 		"tags": [
 			"DLP Profiles"
+		],
+		"x-api-token-group": [
+			"Zero Trust Write"
 		]
 	},
 	"POST /accounts/{account_id}/dlp/profiles/predefined": {
@@ -18232,6 +18265,9 @@
 		"summary": "Create predefined profile",
 		"tags": [
 			"DLP Profiles"
+		],
+		"x-api-token-group": [
+			"Zero Trust Write"
 		]
 	},
 	"POST /accounts/{account_id}/dlp/profiles/predefined/{profile_id}/config": {
@@ -19006,6 +19042,9 @@
 		"summary": "Create predefined profile",
 		"tags": [
 			"DLP Profiles"
+		],
+		"x-api-token-group": [
+			"Zero Trust Write"
 		]
 	},
 	"PUT /accounts/{account_id}/dlp/profiles/custom/{profile_id}": {
@@ -21833,6 +21872,9 @@
 		"summary": "Update custom profile",
 		"tags": [
 			"DLP Profiles"
+		],
+		"x-api-token-group": [
+			"Zero Trust Write"
 		]
 	},
 	"PUT /accounts/{account_id}/dlp/profiles/predefined/{profile_id}": {
@@ -24505,6 +24547,9 @@
 		"summary": "Update predefined profile",
 		"tags": [
 			"DLP Profiles"
+		],
+		"x-api-token-group": [
+			"Zero Trust Write"
 		]
 	},
 	"PUT /accounts/{account_id}/dlp/profiles/predefined/{profile_id}/config": {
@@ -25279,6 +25324,9 @@
 		"summary": "Update predefined profile config",
 		"tags": [
 			"DLP Profiles"
+		],
+		"x-api-token-group": [
+			"Zero Trust Write"
 		]
 	}
 }
