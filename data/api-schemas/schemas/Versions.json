@@ -562,6 +562,7 @@
 																	"text_blob": "#/components/schemas/workers_binding_kind_text_blob",
 																	"vectorize": "#/components/schemas/workers_binding_kind_vectorize",
 																	"version_metadata": "#/components/schemas/workers_binding_kind_version_metadata",
+																	"vpc_network": "#/components/schemas/workers_binding_kind_vpc_network",
 																	"vpc_service": "#/components/schemas/workers_binding_kind_vpc_service",
 																	"wasm_module": "#/components/schemas/workers_binding_kind_wasm_module",
 																	"workflow": "#/components/schemas/workers_binding_kind_workflow"
@@ -1748,6 +1749,41 @@
 																		"service_id"
 																	],
 																	"type": "object"
+																},
+																{
+																	"properties": {
+																		"name": {
+																			"description": "A JavaScript variable name for the binding.",
+																			"example": "myBinding",
+																			"type": "string",
+																			"x-auditable": true
+																		},
+																		"network_id": {
+																			"description": "Identifier of the network to bind to. Only \"cf1:network\" is currently supported. Mutually exclusive with tunnel_id.\n",
+																			"example": "cf1:network",
+																			"type": "string",
+																			"x-auditable": true
+																		},
+																		"tunnel_id": {
+																			"description": "UUID of the Cloudflare Tunnel to bind to. Mutually exclusive with network_id.\n",
+																			"example": "abcd1234-5678-90ef-ghij-klmnopqrstuv",
+																			"type": "string",
+																			"x-auditable": true
+																		},
+																		"type": {
+																			"description": "The kind of resource that the binding provides.",
+																			"enum": [
+																				"vpc_network"
+																			],
+																			"type": "string",
+																			"x-auditable": true
+																		}
+																	},
+																	"required": [
+																		"name",
+																		"type"
+																	],
+																	"type": "object"
 																}
 															],
 															"type": "object"
@@ -2739,6 +2775,7 @@
 																"text_blob": "#/components/schemas/workers_binding_kind_text_blob",
 																"vectorize": "#/components/schemas/workers_binding_kind_vectorize",
 																"version_metadata": "#/components/schemas/workers_binding_kind_version_metadata",
+																"vpc_network": "#/components/schemas/workers_binding_kind_vpc_network",
 																"vpc_service": "#/components/schemas/workers_binding_kind_vpc_service",
 																"wasm_module": "#/components/schemas/workers_binding_kind_wasm_module",
 																"workflow": "#/components/schemas/workers_binding_kind_workflow"
@@ -3925,6 +3962,41 @@
 																	"service_id"
 																],
 																"type": "object"
+															},
+															{
+																"properties": {
+																	"name": {
+																		"description": "A JavaScript variable name for the binding.",
+																		"example": "myBinding",
+																		"type": "string",
+																		"x-auditable": true
+																	},
+																	"network_id": {
+																		"description": "Identifier of the network to bind to. Only \"cf1:network\" is currently supported. Mutually exclusive with tunnel_id.\n",
+																		"example": "cf1:network",
+																		"type": "string",
+																		"x-auditable": true
+																	},
+																	"tunnel_id": {
+																		"description": "UUID of the Cloudflare Tunnel to bind to. Mutually exclusive with network_id.\n",
+																		"example": "abcd1234-5678-90ef-ghij-klmnopqrstuv",
+																		"type": "string",
+																		"x-auditable": true
+																	},
+																	"type": {
+																		"description": "The kind of resource that the binding provides.",
+																		"enum": [
+																			"vpc_network"
+																		],
+																		"type": "string",
+																		"x-auditable": true
+																	}
+																},
+																"required": [
+																	"name",
+																	"type"
+																],
+																"type": "object"
 															}
 														],
 														"type": "object"
@@ -4815,6 +4887,7 @@
 											"text_blob": "#/components/schemas/workers_binding_kind_text_blob",
 											"vectorize": "#/components/schemas/workers_binding_kind_vectorize",
 											"version_metadata": "#/components/schemas/workers_binding_kind_version_metadata",
+											"vpc_network": "#/components/schemas/workers_binding_kind_vpc_network",
 											"vpc_service": "#/components/schemas/workers_binding_kind_vpc_service",
 											"wasm_module": "#/components/schemas/workers_binding_kind_wasm_module",
 											"workflow": "#/components/schemas/workers_binding_kind_workflow"
@@ -6001,6 +6074,41 @@
 												"service_id"
 											],
 											"type": "object"
+										},
+										{
+											"properties": {
+												"name": {
+													"description": "A JavaScript variable name for the binding.",
+													"example": "myBinding",
+													"type": "string",
+													"x-auditable": true
+												},
+												"network_id": {
+													"description": "Identifier of the network to bind to. Only \"cf1:network\" is currently supported. Mutually exclusive with tunnel_id.\n",
+													"example": "cf1:network",
+													"type": "string",
+													"x-auditable": true
+												},
+												"tunnel_id": {
+													"description": "UUID of the Cloudflare Tunnel to bind to. Mutually exclusive with network_id.\n",
+													"example": "abcd1234-5678-90ef-ghij-klmnopqrstuv",
+													"type": "string",
+													"x-auditable": true
+												},
+												"type": {
+													"description": "The kind of resource that the binding provides.",
+													"enum": [
+														"vpc_network"
+													],
+													"type": "string",
+													"x-auditable": true
+												}
+											},
+											"required": [
+												"name",
+												"type"
+											],
+											"type": "object"
 										}
 									],
 									"type": "object"
@@ -6804,6 +6912,7 @@
 																"text_blob": "#/components/schemas/workers_binding_kind_text_blob",
 																"vectorize": "#/components/schemas/workers_binding_kind_vectorize",
 																"version_metadata": "#/components/schemas/workers_binding_kind_version_metadata",
+																"vpc_network": "#/components/schemas/workers_binding_kind_vpc_network",
 																"vpc_service": "#/components/schemas/workers_binding_kind_vpc_service",
 																"wasm_module": "#/components/schemas/workers_binding_kind_wasm_module",
 																"workflow": "#/components/schemas/workers_binding_kind_workflow"
@@ -7988,6 +8097,41 @@
 																	"name",
 																	"type",
 																	"service_id"
+																],
+																"type": "object"
+															},
+															{
+																"properties": {
+																	"name": {
+																		"description": "A JavaScript variable name for the binding.",
+																		"example": "myBinding",
+																		"type": "string",
+																		"x-auditable": true
+																	},
+																	"network_id": {
+																		"description": "Identifier of the network to bind to. Only \"cf1:network\" is currently supported. Mutually exclusive with tunnel_id.\n",
+																		"example": "cf1:network",
+																		"type": "string",
+																		"x-auditable": true
+																	},
+																	"tunnel_id": {
+																		"description": "UUID of the Cloudflare Tunnel to bind to. Mutually exclusive with network_id.\n",
+																		"example": "abcd1234-5678-90ef-ghij-klmnopqrstuv",
+																		"type": "string",
+																		"x-auditable": true
+																	},
+																	"type": {
+																		"description": "The kind of resource that the binding provides.",
+																		"enum": [
+																			"vpc_network"
+																		],
+																		"type": "string",
+																		"x-auditable": true
+																	}
+																},
+																"required": [
+																	"name",
+																	"type"
 																],
 																"type": "object"
 															}
