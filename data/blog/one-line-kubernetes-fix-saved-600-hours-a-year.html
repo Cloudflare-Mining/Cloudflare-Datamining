@@ -1,6 +1,6 @@
 <div class="mb2 gray5">4 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/75Lx3wkH3K18X5nhVmQ9lC/a0377ee61613db2c9c08983d56be622f/unnamed__48_.png" alt="">
 <div class="post-content lh-copy gray1">
-	<p>Every time we restarted Atlantis, the tool we use to plan and apply Terraform changes, we’d be stuck for 30 minutes waiting for it to come back up. No plans, no applies, no infrastructure changes for any repository managed by Atlantis. With roughly 100 restarts a month for credential rotations and unboarding, that added up to over <b>50 hours of blocked engineering time every month</b>, and paged the on-call engineer every time.</p>
+	<p>Every time we restarted Atlantis, the tool we use to plan and apply Terraform changes, we’d be stuck for 30 minutes waiting for it to come back up. No plans, no applies, no infrastructure changes for any repository managed by Atlantis. With roughly 100 restarts a month for credential rotations and onboarding, that added up to over <b>50 hours of blocked engineering time every month</b>, and paged the on-call engineer every time.</p>
 	<p>This was ultimately caused by a safe default in Kubernetes that had silently become a bottleneck as the persistent volume used by Atlantis grew to millions of files. Here’s how we tracked it down and fixed it with a one-line change.</p>
 	<div class="flex anchor relative">
 		<h3 id="mysteriously-slow-restarts">Mysteriously slow restarts</h3>
