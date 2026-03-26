@@ -22,7 +22,7 @@
 <p><strong>Skills &amp; Qualifications</strong></p>
 <ul>
 	<li>Currently pursuing a Bachelor's degree in Marketing, Communications, Business, or a related field.</li>
-	<li>Available for a full-time 12-week internship, working from our London office 3-5 days a week during the summer (May-Aug).</li>
+	<li>Available for a full-time 12-week internship, working from our London office 3-5 days a week during the fall (Sept-Dec).</li>
 	<li>Strong organizational skills with a keen eye for detail and the ability to manage multiple tasks simultaneously.</li>
 	<li>Excellent written and verbal communication skills.</li>
 	<li>Familiarity with digital marketing concepts and platforms is a plus.</li>
