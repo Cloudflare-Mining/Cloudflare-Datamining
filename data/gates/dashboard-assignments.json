@@ -472,6 +472,9 @@
 	"loui-sentry-debug-error": {
 		"false": 100
 	},
+	"loui-ssl-byoca": {
+		"false": 100
+	},
 	"magic-alerts-stepper-flow": {
 		"true": 100
 	},
@@ -658,8 +661,8 @@
 		"true": 100
 	},
 	"prg-sign-up-main-experiment": {
-		"baseline": 85,
-		"variant-a": 15
+		"baseline": 50,
+		"variant-a": 50
 	},
 	"prg-sign-up-marketing-update": {
 		"true": 100
@@ -669,8 +672,8 @@
 		"variant-a": 50
 	},
 	"prg-sign-up-r2-experiment": {
-		"baseline": 75,
-		"variant-a": 25
+		"variant-a": 50,
+		"baseline": 50
 	},
 	"prg-sign-up-stream-experiment": {
 		"baseline": 50,
