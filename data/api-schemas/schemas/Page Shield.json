@@ -2821,11 +2821,16 @@
 														"type": "integer"
 													},
 													"dataflow_score": {
-														"description": "The dataflow score of the JavaScript content.",
-														"maximum": 99,
-														"minimum": 1,
-														"nullable": true,
-														"type": "integer"
+														"allOf": [
+															{
+																"description": "The dataflow score of the JavaScript content. This field has been deprecated in favour of js_integrity_score.",
+																"maximum": 99,
+																"minimum": 1,
+																"nullable": true,
+																"type": "integer"
+															}
+														],
+														"deprecated": true
 													},
 													"domain_reported_malicious": {
 														"example": false,
@@ -2909,11 +2914,16 @@
 														"type": "integer"
 													},
 													"obfuscation_score": {
-														"description": "The obfuscation score of the JavaScript content.",
-														"maximum": 99,
-														"minimum": 1,
-														"nullable": true,
-														"type": "integer"
+														"allOf": [
+															{
+																"description": "The obfuscation score of the JavaScript content. This field has been deprecated in favour of js_integrity_score.",
+																"maximum": 99,
+																"minimum": 1,
+																"nullable": true,
+																"type": "integer"
+															}
+														],
+														"deprecated": true
 													},
 													"page_urls": {
 														"example": [
@@ -3188,11 +3198,16 @@
 															"type": "integer"
 														},
 														"dataflow_score": {
-															"description": "The dataflow score of the JavaScript content.",
-															"maximum": 99,
-															"minimum": 1,
-															"nullable": true,
-															"type": "integer"
+															"allOf": [
+																{
+																	"description": "The dataflow score of the JavaScript content. This field has been deprecated in favour of js_integrity_score.",
+																	"maximum": 99,
+																	"minimum": 1,
+																	"nullable": true,
+																	"type": "integer"
+																}
+															],
+															"deprecated": true
 														},
 														"domain_reported_malicious": {
 															"example": false,
@@ -3276,11 +3291,16 @@
 															"type": "integer"
 														},
 														"obfuscation_score": {
-															"description": "The obfuscation score of the JavaScript content.",
-															"maximum": 99,
-															"minimum": 1,
-															"nullable": true,
-															"type": "integer"
+															"allOf": [
+																{
+																	"description": "The obfuscation score of the JavaScript content. This field has been deprecated in favour of js_integrity_score.",
+																	"maximum": 99,
+																	"minimum": 1,
+																	"nullable": true,
+																	"type": "integer"
+																}
+															],
+															"deprecated": true
 														},
 														"page_urls": {
 															"example": [
@@ -3321,13 +3341,11 @@
 															"example": [
 																{
 																	"cryptomining_score": 20,
-																	"dataflow_score": 2,
 																	"fetched_at": "2021-08-18T10:51:08Z",
 																	"hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b423",
 																	"js_integrity_score": 2,
 																	"magecart_score": 10,
-																	"malware_score": 5,
-																	"obfuscation_score": 10
+																	"malware_score": 5
 																}
 															],
 															"items": {
@@ -3341,11 +3359,16 @@
 																		"type": "integer"
 																	},
 																	"dataflow_score": {
-																		"description": "The dataflow score of the JavaScript content.",
-																		"maximum": 99,
-																		"minimum": 1,
-																		"nullable": true,
-																		"type": "integer"
+																		"allOf": [
+																			{
+																				"description": "The dataflow score of the JavaScript content. This field has been deprecated in favour of js_integrity_score.",
+																				"maximum": 99,
+																				"minimum": 1,
+																				"nullable": true,
+																				"type": "integer"
+																			}
+																		],
+																		"deprecated": true
 																	},
 																	"fetched_at": {
 																		"description": "The timestamp of when the script was last fetched.",
@@ -3381,11 +3404,16 @@
 																		"type": "integer"
 																	},
 																	"obfuscation_score": {
-																		"description": "The obfuscation score of the JavaScript content.",
-																		"maximum": 99,
-																		"minimum": 1,
-																		"nullable": true,
-																		"type": "integer"
+																		"allOf": [
+																			{
+																				"description": "The obfuscation score of the JavaScript content. This field has been deprecated in favour of js_integrity_score.",
+																				"maximum": 99,
+																				"minimum": 1,
+																				"nullable": true,
+																				"type": "integer"
+																			}
+																		],
+																		"deprecated": true
 																	}
 																},
 																"type": "object"
