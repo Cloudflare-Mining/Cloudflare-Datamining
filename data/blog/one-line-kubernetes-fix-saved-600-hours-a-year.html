@@ -1,0 +1,84 @@
+<div class="mb2 gray5">4 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/75Lx3wkH3K18X5nhVmQ9lC/a0377ee61613db2c9c08983d56be622f/unnamed__48_.png" alt="">
+<div class="post-content lh-copy gray1">
+	<p>Every time we restarted Atlantis, the tool we use to plan and apply Terraform changes, we’d be stuck for 30 minutes waiting for it to come back up. No plans, no applies, no infrastructure changes for any repository managed by Atlantis. With roughly 100 restarts a month for credential rotations and unboarding, that added up to over <b>50 hours of blocked engineering time every month</b>, and paged the on-call engineer every time.</p>
+	<p>This was ultimately caused by a safe default in Kubernetes that had silently become a bottleneck as the persistent volume used by Atlantis grew to millions of files. Here’s how we tracked it down and fixed it with a one-line change.</p>
+	<div class="flex anchor relative">
+		<h3 id="mysteriously-slow-restarts">Mysteriously slow restarts</h3>
+		<a href="https://blog.cloudflare.com/#mysteriously-slow-restarts" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>We manage dozens of Terraform projects with GitLab merge requests (MRs) using <a href="https://www.runatlantis.io"><u>Atlantis</u></a>, which handles planning and applying. It enforces locking to ensure that only one MR can modify a project at a time.&nbsp;</p>
+	<p>It runs on Kubernetes as a singleton StatefulSet and relies on a Kubernetes PersistentVolume (PV) to keep track of repository state on disk. Whenever a Terraform project needs to be onboarded or offboarded, or credentials used by Terraform are updated, we have to restart Atlantis to pick up those changes — a process that can take 30 minutes.</p>
+	<p>The slow restart was apparent when we recently ran out of inodes on the persistent storage used by Atlantis, forcing us to restart it to resize the volume. Inodes are consumed by each file and directory entry on disk, and the number available to a filesystem is determined by parameters passed when creating it. The Ceph persistent storage implementation provided by our Kubernetes platform does not expose a way to pass flags to <code>mkfs</code>, so we’re at the mercy of default values: growing the filesystem is the only way to grow available inodes, and restarting a PV requires a pod restart.&nbsp;</p>
+	<p>We talked about extending the alert window, but that would just mask the problem and delay our response to actual issues. Instead, we decided to investigate exactly why it was taking so long.</p>
+	<div class="flex anchor relative">
+		<h3 id="bad-behavior">Bad behavior</h3>
+		<a href="https://blog.cloudflare.com/#bad-behavior" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>When we were asked to do a rolling restart of Atlantis to pick up a change to the secrets it uses, we would run <code>kubectl rollout restart statefulset atlantis</code>, which would gracefully terminate the existing Atlantis pod before spinning up a new one. The new pod would appear almost immediately, but looking at it would show:</p>
+	<pre class="language-Shell"><code class="language-Shell">$ kubectl get pod atlantis-0
+atlantis-0                                                        0/1     
+Init:0/1     0             30m
+</code></pre>
+	<p>...so what gives? Naturally, the first thing to check would be events for that pod. It's waiting around for an init container to run, so maybe the pod events would illuminate why?</p>
+	<pre class="language-Shell"><code class="language-Shell">$ kubectl events --for=pod/atlantis-0
+LAST SEEN   TYPE      REASON                   OBJECT                   MESSAGE
+30m         Normal    Killing                  Pod/atlantis-0   Stopping container atlantis-server
+30m        Normal    Scheduled                Pod/atlantis-0   Successfully assigned atlantis/atlantis-0 to 36com1167.cfops.net
+22s         Normal    Pulling                  Pod/atlantis-0   Pulling image "oci.example.com/git-sync/master:v4.1.0"
+22s         Normal    Pulled                   Pod/atlantis-0   Successfully pulled image "oci.example.com/git-sync/master:v4.1.0" in 632ms (632ms including waiting). Image size: 58518579 bytes.</code></pre>
+	<p>That looks almost normal... but what's taking so long between scheduling the pod and actually starting to pull the image for the init container? Unfortunately that was all the data we had to go on from Kubernetes itself. But surely there <i>had</i> to be something more that can tell us why it's taking so long to actually start running the pod.</p>
+	<div class="flex anchor relative">
+		<h3 id="going-deeper">Going deeper</h3>
+		<a href="https://blog.cloudflare.com/#going-deeper" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>In Kubernetes, a component called <code>kubelet</code> that runs on each node is responsible for coordinating pod creation, mounting persistent volumes, and many other things. From my time on our Kubernetes team, I know that <code>kubelet</code> runs as a systemd service and so its logs should be available to us in Kibana. Since the pod has been scheduled, we know the host name we're interested in, and the log messages from <code>kubelet</code> include the associated object, so we could filter for <code>atlantis</code> to narrow down the log messages to anything we found interesting.</p>
+	<p>We were able to observe the Atlantis PV being mounted shortly after the pod was scheduled. We also observed all the secret volumes mount without issue. However, there was still a big unexplained gap in the logs. We saw:</p>
+	<pre class="language-Rust"><code class="language-Rust">[operation_generator.go:664] "MountVolume.MountDevice succeeded for volume \"pvc-94b75052-8d70-4c67-993a-9238613f3b99\" (UniqueName: \"kubernetes.io/csi/rook-ceph-nvme.rbd.csi.ceph.com^0001-000e-rook-ceph-nvme-0000000000000002-a6163184-670f-422b-a135-a1246dba4695\") pod \"atlantis-0\" (UID: \"83089f13-2d9b-46ed-a4d3-cba885f9f48a\") device mount path \"/state/var/lib/kubelet/plugins/kubernetes.io/csi/rook-ceph-nvme.rbd.csi.ceph.com/d42dcb508f87fa241a49c4f589c03d80de2f720a87e36932aedc4c07840e2dfc/globalmount\"" pod="atlantis/atlantis-0"
+[pod_workers.go:1298] "Error syncing pod, skipping" err="unmounted volumes=[atlantis-storage], unattached volumes=[], failed to process volumes=[]: context deadline exceeded" pod="atlantis/atlantis-0" podUID="83089f13-2d9b-46ed-a4d3-cba885f9f48a"
+[util.go:30] "No sandbox for pod can be found. Need to start a new one" pod="atlantis/atlantis-0"</code></pre>
+	<p>The last two messages looped several times until eventually we observed the pod actually start up properly.</p>
+	<p>So <code>kubelet</code> thinks that the pod is otherwise ready to go, but it's not starting it and something's timing out.</p>
+	<div class="flex anchor relative">
+		<h3 id="the-missing-piece">The missing piece</h3>
+		<a href="https://blog.cloudflare.com/#the-missing-piece" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>The lowest-level logs we had on the pod didn't show us what's going on. What else do we have to look at? Well, the last message before it hangs is the PV being mounted onto the node. Ordinarily, if the PV has issues mounting (e.g. due to still being stuck mounted on another node), that will bubble up as an event. But something's still going on here, and the only thing we have left to drill down on is the PV itself. So I plug that into Kibana, since the PV name is unique enough to make a good search term... and immediately something jumps out:</p>
+	<pre class="language-Rust"><code class="language-Rust">[volume_linux.go:49] Setting volume ownership for /state/var/lib/kubelet/pods/83089f13-2d9b-46ed-a4d3-cba885f9f48a/volumes/kubernetes.io~csi/pvc-94b75052-8d70-4c67-993a-9238613f3b99/mount and fsGroup set. If the volume has a lot of files then setting volume ownership could be slow, see https://github.com/kubernetes/kubernetes/issues/69699</code></pre>
+	<p>Remember how I said at the beginning we'd just run out of inodes? In other words, we have a <i>lot</i> of files on this PV. When the PV is mounted, <code>kubelet</code> is running <code>chgrp -R</code>&nbsp;to recursively change the group on every file and folder across this filesystem. No wonder it was taking so long — that's a ton of entries to traverse even on fast flash storage!</p>
+	<p>The pod's <code>spec.securityContext</code> included <code>fsGroup: 1</code>, which ensures that processes running under GID 1 can access files on the volume. Atlantis runs as a non-root user, so without this setting it wouldn’t have permission to read or write to the PV. The way Kubernetes enforces this is by recursively updating ownership on the entire PV <i>every time it's mounted</i>.</p>
+	<div class="flex anchor relative">
+		<h3 id="the-fix">The fix</h3>
+		<a href="https://blog.cloudflare.com/#the-fix" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Fixing this was heroically...boring. Since version 1.20, Kubernetes has supported an additional field on <code>pod.spec.securityContext</code> called <code>fsGroupChangePolicy</code>. This field defaults to <code>Always</code>, which leads to the exact behavior we see here. It has another option, <code>OnRootMismatch</code>, to only change permissions if the root directory of the PV doesn't have the right permissions. If you don’t know exactly how files are created on your PV, do not set <code>fsGroupChangePolicy</code>: <code>OnRootMismatch</code>. We checked to make sure that nothing should be changing the group on anything in the PV, and then set that field: </p>
+	<pre class="language-Rust"><code class="language-Rust">spec:
+  template:
+    spec:
+      securityContext:
+        fsGroupChangePolicy: OnRootMismatch</code></pre>
+	<p>Now, it takes about 30 seconds to restart Atlantis, down from the 30 minutes it was when we started.</p>
+	<p>Default Kubernetes settings are sensible for small volumes, but they can become bottlenecks as data grows. For us, this one-line change to <code>fsGroupChangePolicy</code> reclaimed nearly 50 hours of blocked engineering time per month. This was time our teams had been spending waiting for infrastructure changes to go through, and time that our on-call engineers had been spending responding to false alarms. That’s roughly 600 hours a year returned to productive work, from a fix that took longer to diagnose than deploy.</p>
+	<p>Safe defaults in Kubernetes are designed for small, simple workloads. But as you scale, they can slowly become bottlenecks. If you’re running workloads with large persistent volumes, it’s worth checking whether recursive permission changes like this are silently eating your restart time. Audit your <code>securityContext</code> settings, especially <code>fsGroup</code> and <code>fsGroupChangePolicy</code>. <code>OnRootMismatch</code> has been available since v1.20.</p>
+	<p>Not every fix is heroic or complex, and it’s usually worth asking “why does the system behave this way?”</p>
+	<p>If debugging infrastructure problems at scale sounds interesting, <a href="https://cloudflare.com/careers"><u>we’re hiring</u></a>. Come join us on the <a href="https://community.cloudflare.com"><u>Cloudflare Community</u></a> or our <a href="https://discord.cloudflare.com"><u>Discord</u></a> to talk shop.</p>
+</div>
