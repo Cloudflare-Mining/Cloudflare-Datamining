@@ -10,7 +10,7 @@
 <p>Account Executives, Channel Account Managers, Business Development Representatives, Solution Engineers, Product Specialists, Customer Success, and Sales Operations - all working together help our customers adopt Cloudflare and create great Internet-enabled experiences. The sales team at Cloudflare helps customers solve real, technical problems while creating the revenue streams that help the company provide free service to millions in our community.</p>
 <p>Our Product Specialization &amp; Growth team provides deep subject matter expertise on converging Network and Security services in our Cloudflare One (CF1) portfolio, including Secure Access Service Edge (SASE), Security Service Edge (SSE), Zero Trust Network Access (ZTNA), Secure Web Gateway (SWG), Cloud Access Security Broker (CASB), Remote Browser Isolation (RBI), Data Protection (including DLP), and Email Security (CES).</p>
 <p><strong>What you’ll do</strong></p>
-<p>As a <strong>Senior</strong> <strong>Product Specialist</strong> you will be responsible for growing CloudflareOne (CF1) revenue and product adoption. In this role, you will serve as the segment lead for CF1 sales. You will advise the sales leaders on opportunities and programs to grow CF1 revenue, partner with the technical sales teams, enable account executives on product positioning and competitive intelligence, grow partner engagement around CF1, form a tight feedback loop with product and PMM, and support strategic deals from discovery to close. The ideal candidate possesses a consultative mindset, strong selling skills, and a deep technical background to drive engagement internally among the sales organization and externally with decision-makers and influencers within security, networking, and IT and operations.</p>
+<p>As a <strong>Senior Cloudflare One GTM </strong><strong>Specialist</strong> you will be responsible for growing CloudflareOne (CF1) revenue and product adoption. In this role, you will serve as the segment lead for CF1 sales. You will advise the sales leaders on opportunities and programs to grow CF1 revenue, partner with the technical sales teams, enable account executives on product positioning and competitive intelligence, grow partner engagement around CF1, form a tight feedback loop with product and PMM, and support strategic deals from discovery to close. The ideal candidate possesses a consultative mindset, strong selling skills, and a deep technical background to drive engagement internally among the sales organization and externally with decision-makers and influencers within security, networking, and IT and operations.</p>
 <ul>
 	<li>Present to strategic customers as an expert of our SASE, SSE, and Email solutions.</li>
 	<li>Align Director and C-Level perceived business value with Cloudflare solutions in the transformational objectives of securing remote work, corporate network modernization, adoption of SASE/SSE, and data protection</li>
@@ -20,7 +20,7 @@
 	<li>Generate a succinct feedback loop with PM, PMM, Demand Generation, Enablement, Programs, and Partner Organization to deliver relevant CF1 anecdotes and data points.</li>
 	<li>Lead New Product Introduction with a sales lens to ensure emerging products in the CF1 space begin and maintain healthy adoption across current and net-new customers</li>
 </ul>
-<p>The Senior Product Specialist Role is a consultative sales excellence role that directly supports sales delivery of regional CF1 quota. In order to be successful, you will need to become a thought leader, trusted advisor, and spokesperson for Cloudflare One - Cloudflare's SASE platform.</p>
+<p>The Senior Cloudflare One GTM Specialist Role is a consultative sales excellence role that directly supports sales delivery of regional CF1 quota. In order to be successful, you will need to become a thought leader, trusted advisor, and spokesperson for Cloudflare One - Cloudflare's SASE platform.</p>
 <h4><strong>Requirements</strong></h4>
 <ul>
 	<li>Minimum 7 years of experience selling or supporting the sales of cyber security, networking, identity management, cloud or SaaS solutions.</li>
@@ -34,7 +34,7 @@
 	<li>Bachelor’s Degree</li>
 	<li>10 - 20% travel</li>
 </ul>
-<p></p>
+<p>&nbsp;</p>
 <p><strong>Compensation</strong></p>
 <p>Compensation may be adjusted depending on work location.</p>
 <ul>
@@ -68,7 +68,7 @@
 	<li>Flexible paid time off covering vacation and sick leave</li>
 	<li>Leave programs, including parental, pregnancy health, medical, and bereavement leave</li>
 </ul>
-<p></p>
+<p>&nbsp;</p>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
 	<p><span style="font-weight: 400;">We’re not just a highly ambitious, large-scale technology company. We’re a highly ambitious, large-scale technology company with a soul. Fundamental to our mission to help build a better Internet is protecting the free and open Internet.</span></p>
