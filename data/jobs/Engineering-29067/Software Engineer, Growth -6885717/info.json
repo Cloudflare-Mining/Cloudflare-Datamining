@@ -1,5 +1,5 @@
 {
-	"absolute_url": "https://boards.greenhouse.io/cloudflare/jobs/7729606?gh_jid=7729606",
+	"absolute_url": "https://boards.greenhouse.io/cloudflare/jobs/6885717?gh_jid=6885717",
 	"data_compliance": [
 		{
 			"type": "gdpr",
@@ -10,23 +10,25 @@
 			"demographic_data_consent_applies": false
 		}
 	],
-	"internal_job_id": 3392505,
+	"internal_job_id": 3147259,
 	"location": {
-		"name": "In-Office"
+		"name": "Hybrid"
 	},
 	"metadata": [
 		{
 			"id": 825338,
 			"name": "Cost Center",
-			"value": "5991 - S&M Interns",
+			"value": "4300 - Systems Engineering",
 			"value_type": "single_select"
 		},
 		{
 			"id": 8654220,
 			"name": "Job Posting Location",
 			"value": [
+				"Atlanta, US",
 				"Austin, US",
-				"San Francisco, US"
+				"Denver, US",
+				"Washington DC, US"
 			],
 			"value_type": "multi_select"
 		},
@@ -34,24 +36,22 @@
 			"id": 46546702,
 			"name": "Career Site Department",
 			"value": [
-				"Early Talent",
-				"Marketing",
-				"Sales"
+				"Engineering"
 			],
 			"value_type": "multi_select"
 		}
 	],
-	"id": 7729606,
-	"updated_at": "2026-03-27T11:24:07-04:00",
-	"requisition_id": null,
-	"title": "Sales/Marketing Project Manager Intern (AI Innovation) (Summer 2026)",
+	"id": 6885717,
+	"updated_at": "2026-03-27T12:30:10-04:00",
+	"requisition_id": "792",
+	"title": "Software Engineer, Growth ",
 	"company_name": "Cloudflare",
-	"first_published": "2026-03-25T16:13:50-04:00",
+	"first_published": "2025-05-19T15:06:27-04:00",
 	"language": "en",
 	"departments": [
 		{
-			"id": 70480,
-			"name": "University",
+			"id": 29067,
+			"name": "Engineering",
 			"child_ids": [],
 			"parent_id": null
 		}
@@ -65,9 +65,23 @@
 			"parent_id": 48752
 		},
 		{
-			"id": 19991,
-			"name": "San Francisco, CA",
-			"location": "San Francisco, CA, United States",
+			"id": 19994,
+			"name": "Washington, DC",
+			"location": "Washington, DC, United States",
+			"child_ids": [],
+			"parent_id": 48752
+		},
+		{
+			"id": 65527,
+			"name": "Denver, CO",
+			"location": "Denver, Colorado, United States",
+			"child_ids": [],
+			"parent_id": 48752
+		},
+		{
+			"id": 66815,
+			"name": "Atlanta, GA",
+			"location": null,
 			"child_ids": [],
 			"parent_id": 48752
 		}
