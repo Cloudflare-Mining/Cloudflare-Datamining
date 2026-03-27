@@ -5,7 +5,7 @@
 		<p>At Cloudflare, we’re not looking for people who wait for a polished roadmap; we’re looking for the builders who see the cracks in the Internet that everyone else has simply learned to live with. We value candidates who have the instinct to spot a "normalized" problem and the AI-native curiosity to create a solution using the latest tools. Our culture is built on iteration, leveraging AI to ship faster today to make it better tomorrow, while ensuring that every improvement, no matter how small, is shared across the team to lift everyone up. If you’re the type of person who values curiosity over bureaucracy, and that AI is a partner in solving tough problems to keep the Internet moving forward, you’ll fit right in.</p>
 	</div>
 </div>
-<p><strong>Locations:&nbsp;</strong>Austin, New York, San Francisco, London, Lisbon</p>
+<p>Available Location:<strong> Austin / Seattle / Denver / Atlanta / DC / Toronto / New York / San Francisco</strong></p>
 <p>&nbsp;</p>
 <p><strong>About the role</strong></p>
 <p>&nbsp;</p>
@@ -47,11 +47,9 @@
 	<li>Experience with cloud-managed hardware products.</li>
 </ul>
 <p>&nbsp;</p>
-<p><strong>Compensation</strong></p>
-<p>Compensation may be adjusted depending on work location.</p>
-<ul>
-	<li><span data-sheets-root="1">For Bay Area &amp; New York based hires: Estimated annual salary of $220,000 base</span></li>
-</ul>
+<p><strong>Compensation</strong><br>Compensation may be adjusted depending on work location.</p>
+<p>For Colorado, Hawaii, and Illinois &nbsp;based hires: Estimated annual salary of $156,000 - $200,000<br>For New York City, New Jersey, Washington, Washington DC, and California (excluding Bay Area) based hires: Estimated annual salary of $172,000 - $227,000<br>For Bay Area-based hires: Estimated annual salary of $179,000 - $236,000</p>
+<p>&nbsp;</p>
 <p><strong>Equity</strong></p>
 <p>This role is eligible to participate in Cloudflare’s equity plan.</p>
 <p><strong>Benefits</strong></p>

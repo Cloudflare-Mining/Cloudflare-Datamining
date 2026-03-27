@@ -5,39 +5,31 @@
 		<p>At Cloudflare, we’re not looking for people who wait for a polished roadmap; we’re looking for the builders who see the cracks in the Internet that everyone else has simply learned to live with. We value candidates who have the instinct to spot a "normalized" problem and the AI-native curiosity to create a solution using the latest tools. Our culture is built on iteration, leveraging AI to ship faster today to make it better tomorrow, while ensuring that every improvement, no matter how small, is shared across the team to lift everyone up. If you’re the type of person who values curiosity over bureaucracy, and that AI is a partner in solving tough problems to keep the Internet moving forward, you’ll fit right in.</p>
 	</div>
 </div>
-<p><strong>Available Locations: Austin, TX or Lisbon, Portugal or London, UK</strong></p>
-<p><strong>About the Team: </strong></p>
-<p>Technical Program Managers at Cloudflare are part of the Technical Program Management Office (PMO).&nbsp; We are data-driven, technical, process improvement experts who enjoy bringing people together to form an amazing team, and driving them towards successful delivery. We are passionate about technical program management and are the hubs bringing all of our departments.&nbsp;</p>
-<p><strong>What You'll Do:&nbsp;</strong></p>
-<p>Cloudflare is looking for a dynamic and passionate leader to join our Technical Program Management Office (PMO). This role will mainly support initiatives related to the Customer Support organization, with potential to take on additional, cross-departmental portfolio of programs. The ideal candidate will partner with the regional Customer Support leadership to define, scope, and measure strategic programs that will have a direct impact on the success of the Customer Support and other business impacting initiatives. They will be responsible for leading all major programs for their area, with emphasis on tooling, process improvement, customer satisfaction, and delivery quality.&nbsp;</p>
-<p>The ideal candidate thrives in the gray. You are a master of context switching, capable of pivoting instantly from high-level strategic planning to urgent tactical problem-solving. You are process and data-driven, enjoy bringing people together to form an amazing team, and driving them towards successful delivery. You must also be an expert negotiator, comfortable in a fast-paced environment, and willing to pivot quickly as business needs change. You are passionate about technical program management and growing next generation leaders in this field.</p>
-<p><strong>Responsibilities:</strong></p>
+<p><strong>Available location(s): </strong>Austin, Texas</p>
+<p><strong>About the Role</strong></p>
+<p>The Revenue Operations Enablement Intern will support initiatives that improve how revenue teams access the knowledge, tools, and training needed to effectively engage customers, focusing on developing enablement resources, streamlining documentation, and supporting programs that improve productivity across sales, customer success, and services teams by creating onboarding modules, maintaining sales playbooks, and ensuring the entire Go-To-Market (GTM) organization has the necessary resources to be productive.</p>
+<p><strong>Responsibilities</strong></p>
 <ul>
-	<li>Manage and mentor a team of Technical Program Managers (TPMs), fostering a culture of high performance and continuous improvement</li>
-	<li>Collaborate with Customer Support leadership to define the strategic direction, vision, and roadmap of programs for their organization, acting as a trusted advisor to help navigate evolving business needs.</li>
-	<li>Masterfully manage competing priorities and context switch seamlessly between projects, ensuring the team focuses on the most critical initiatives even as requirements change.</li>
-	<li>Identify bottlenecks, areas for improvement and develop proposals that provide recommendations to drive change</li>
-	<li>Turn recommendations into strategic initiatives to streamline operations and enhance productivity across multiple organizations&nbsp;</li>
-	<li>Work with the AI PM to implement AI-powered automation and copilot solutions and AI-driven self-service for customers to solve their own product issues</li>
-	<li>Ensure your team of TPMs follows the standard SDLC for Support Tooling, adhering to a consistent approach to requirements gathering, UAT, and deployment across the TPM team</li>
-	<li>Work alongside Customer Support Regional leaders to design, align on, and deploy process change for global consistency in delivery, with a focus on customer satisfaction</li>
-	<li>Define, monitor, and report on program impact, including key success metrics and KPI improvement</li>
-	<li>Comfortable managing a team that spans multiple geographies and disciplines, and building out responsibilities&nbsp;</li>
+	<li>Assist in creating and organizing enablement materials, documentation, and training resources</li>
+	<li>Support initiatives that improve knowledge sharing across revenue teams</li>
+	<li>Help maintain internal knowledge bases and enablement content</li>
+	<li>Partner with stakeholders to gather feedback and identify opportunities to improve team productivity</li>
+	<li>Support operational projects that improve onboarding and ongoing enablement for revenue teams</li>
 </ul>
-<p><strong>Requirements:</strong></p>
+<p><strong>Skills &amp; Qualifications</strong></p>
 <ul>
-	<li>7–10+ years in Support Strategy, Technical Program Management, Business Operations, or Strategic Program Management roles in fast-paced B2B SaaS or enterprise tech companies, with at least 5+ years managing people</li>
-	<li>7 - 10 years experience working with engineering or other technical teams, managing technical roadmaps and prioritizing against competing initiatives</li>
-	<li>Track record of supporting global or large-scale Support organizations with strategy, program execution and leading cross functional initiatives</li>
-	<li>Deep knowledge of Salesforce, BI Tools (Tableau, Power BI), Jira and Confluence</li>
-	<li>Operational mindset with a strategic outlook — able to both zoom in and out</li>
-	<li>Exceptional written and verbal communication; can simplify complexity into clear business narratives</li>
-	<li>Comfortable navigating ambiguity and setting direction in evolving environments.</li>
-	<li>Ability to thrive and be flexible in a fast-paced environment&nbsp;</li>
-	<li>Experience supporting global teams and rolling out programs and change management&nbsp;</li>
-	<li>Familiarity with Cloudflare Product sets or networking/security/cloud infrastructure domains</li>
+	<li>Pursuing a degree in Business, Operations, Communications, or related field</li>
+	<li>Strong organizational and communication skills</li>
+	<li>Interest in revenue operations, enablement, or program management</li>
+	<li>Ability to work cross-functionally and manage multiple tasks</li>
+	<li>Available for a full-time 12-week internship, working from our Austin office 3-5 days a week during the summer (May-Aug).</li>
 </ul>
-<p>&nbsp;</p>
+<p><strong>Compensation</strong></p>
+<p>Compensation may be adjusted depending on work location.</p>
+<ul>
+	<li><span data-sheets-value="{&quot;1&quot;:3,&quot;3&quot;:157000}" data-sheets-userformat="{&quot;2&quot;:14589,&quot;3&quot;:{&quot;1&quot;:2,&quot;2&quot;:&quot;#,##0&quot;,&quot;3&quot;:1},&quot;5&quot;:{&quot;1&quot;:[{&quot;1&quot;:2,&quot;2&quot;:0,&quot;5&quot;:{&quot;1&quot;:2,&quot;2&quot;:0}},{&quot;1&quot;:0,&quot;2&quot;:0,&quot;3&quot;:3},{&quot;1&quot;:1,&quot;2&quot;:0,&quot;4&quot;:1}]},&quot;6&quot;:{&quot;1&quot;:[{&quot;1&quot;:2,&quot;2&quot;:0,&quot;5&quot;:{&quot;1&quot;:2,&quot;2&quot;:0}},{&quot;1&quot;:0,&quot;2&quot;:0,&quot;3&quot;:3},{&quot;1&quot;:1,&quot;2&quot;:0,&quot;4&quot;:1}]},&quot;7&quot;:{&quot;1&quot;:[{&quot;1&quot;:2,&quot;2&quot;:0,&quot;5&quot;:{&quot;1&quot;:2,&quot;2&quot;:0}},{&quot;1&quot;:0,&quot;2&quot;:0,&quot;3&quot;:3},{&quot;1&quot;:1,&quot;2&quot;:0,&quot;4&quot;:1}]},&quot;8&quot;:{&quot;1&quot;:[{&quot;1&quot;:2,&quot;2&quot;:0,&quot;5&quot;:{&quot;1&quot;:2,&quot;2&quot;:0}},{&quot;1&quot;:0,&quot;2&quot;:0,&quot;3&quot;:3},{&quot;1&quot;:1,&quot;2&quot;:0,&quot;4&quot;:1}]},&quot;9&quot;:1,&quot;10&quot;:1,&quot;14&quot;:{&quot;1&quot;:3,&quot;3&quot;:1},&quot;15&quot;:&quot;Open Sans&quot;,&quot;16&quot;:11}" data-sheets-formula="=if(if(R[-10]C[-2]=&quot;Hire&quot;,iferror(round(R[0]C[-1]*1.1,-3),&quot;&quot;),iferror(round(R[0]C[-1]*1.2,-3),&quot;&quot;))=0,&quot;&quot;,if(R[-10]C[-2]=&quot;Hire&quot;,iferror(round(R[0]C[-1]*1.1,-3),&quot;&quot;),iferror(round(R[0]C[-1]*1.2,-3),&quot;&quot;)))"><span data-sheets-value="{&quot;1&quot;:3,&quot;3&quot;:212000}" data-sheets-userformat="{&quot;2&quot;:14845,&quot;3&quot;:{&quot;1&quot;:2,&quot;2&quot;:&quot;#,##0&quot;,&quot;3&quot;:1},&quot;5&quot;:{&quot;1&quot;:[{&quot;1&quot;:2,&quot;2&quot;:0,&quot;5&quot;:{&quot;1&quot;:2,&quot;2&quot;:0}},{&quot;1&quot;:0,&quot;2&quot;:0,&quot;3&quot;:3},{&quot;1&quot;:1,&quot;2&quot;:0,&quot;4&quot;:1}]},&quot;6&quot;:{&quot;1&quot;:[{&quot;1&quot;:2,&quot;2&quot;:0,&quot;5&quot;:{&quot;1&quot;:2,&quot;2&quot;:0}},{&quot;1&quot;:0,&quot;2&quot;:0,&quot;3&quot;:3},{&quot;1&quot;:1,&quot;2&quot;:0,&quot;4&quot;:1}]},&quot;7&quot;:{&quot;1&quot;:[{&quot;1&quot;:2,&quot;2&quot;:0,&quot;5&quot;:{&quot;1&quot;:2,&quot;2&quot;:0}},{&quot;1&quot;:0,&quot;2&quot;:0,&quot;3&quot;:3},{&quot;1&quot;:1,&quot;2&quot;:0,&quot;4&quot;:1}]},&quot;8&quot;:{&quot;1&quot;:[{&quot;1&quot;:2,&quot;2&quot;:0,&quot;5&quot;:{&quot;1&quot;:2,&quot;2&quot;:0}},{&quot;1&quot;:0,&quot;2&quot;:0,&quot;3&quot;:3},{&quot;1&quot;:1,&quot;2&quot;:0,&quot;4&quot;:1}]},&quot;9&quot;:1,&quot;10&quot;:1,&quot;11&quot;:4,&quot;14&quot;:{&quot;1&quot;:3,&quot;3&quot;:1},&quot;15&quot;:&quot;Open Sans&quot;,&quot;16&quot;:11}" data-sheets-formula="=if(if(R[-10]C[0]=&quot;Hire&quot;,iferror(round(R[0]C[1]*0.9,-3),&quot;&quot;),iferror(round(R[0]C[1]*0.8,-3),&quot;&quot;))=0,&quot;&quot;,if(R[-10]C[0]=&quot;Hire&quot;,iferror(round(R[0]C[1]*0.9,-3),&quot;&quot;),iferror(round(R[0]C[1]*0.8,-3),&quot;&quot;)))">Estimated hourly pay of $24/hour.</span></span></li>
+</ul>
+<p>You can check out our <a href="https://blog.cloudflare.com/tag/internship-experience/">internship blogs</a> to learn more about our program and hear directly from our past interns.</p>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
 	<p><span style="font-weight: 400;">We’re not just a highly ambitious, large-scale technology company. We’re a highly ambitious, large-scale technology company with a soul. Fundamental to our mission to help build a better Internet is protecting the free and open Internet.</span></p>

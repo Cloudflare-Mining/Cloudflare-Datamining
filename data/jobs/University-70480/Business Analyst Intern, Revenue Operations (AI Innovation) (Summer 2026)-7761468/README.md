@@ -5,69 +5,30 @@
 		<p>At Cloudflare, we’re not looking for people who wait for a polished roadmap; we’re looking for the builders who see the cracks in the Internet that everyone else has simply learned to live with. We value candidates who have the instinct to spot a "normalized" problem and the AI-native curiosity to create a solution using the latest tools. Our culture is built on iteration, leveraging AI to ship faster today to make it better tomorrow, while ensuring that every improvement, no matter how small, is shared across the team to lift everyone up. If you’re the type of person who values curiosity over bureaucracy, and that AI is a partner in solving tough problems to keep the Internet moving forward, you’ll fit right in.</p>
 	</div>
 </div>
-<p><strong>Available Locations:&nbsp;</strong>Hybrid - Austin, Seattle, Lisbon, Toronto&nbsp;</p>
-<p><strong>Role Summary</strong></p>
-<p>Join the Cloudflare One team as the Product Manager for Gateway DNS, a critical component of our rapidly expanding SASE business. We are seeking a highly technical, entrepreneurial PM to truly own our DNS filtering product and drive its global strategy and execution at massive scale.</p>
-<p><strong>Role Responsibilities</strong></p>
-<p>You'll be the product manager owning the <a href="https://developers.cloudflare.com/cloudflare-one/traffic-policies/">DNS Filtering</a> business inside <a href="https://www.cloudflare.com/zero-trust/">Cloudflare One</a>. Acting as the “CEO of the Product”, you’ll be responsible for ensuring success of the product end to end. This includes working alongside sales, support, design, engineering, solution engineering, technical writers, and all pieces of the sales cycle. You will spend the most time with customers and your engineering partners.</p>
-<p>We operate with small teams of highly motivated, technical, and experienced engineers. The ideal candidate will have experience with DNS systems, and as a product manager owning a B2B product at scale.</p>
-<p>This position requires you to be a self-starter with the ability to take ownership, work with tight timelines, handle various tasks simultaneously while maintaining a positive attitude. You are able to have deep technical discussions with internal and external engineering stakeholders. You also have the soft skills necessary to navigate organizational dependencies and promote your team. In addition, great oral communication and written documentation skills are valuable for this role for promoting ideas throughout the company.</p>
-<p>Some of your responsibilities will include:</p>
+<p><strong>Available location(s): </strong>Austin, Texas&nbsp;</p>
+<p><strong>About the Role</strong></p>
+<p>As a Business Analyst Intern on our Revenue Operations team, you will play a crucial role in transforming complex business data into actionable insights that drive strategic decision-making. You will be responsible for synthesizing data from various workstreams to evaluate the effectiveness of our corporate programs. You won't just be managing spreadsheets; you will be identifying the trends that define our business's trajectory. Your work will involve building compelling data visualizations and reports to help leadership understand performance across sales, success, and service initiatives. This internship offers a unique opportunity to apply analytical and strategic skills in a fast-paced, high-impact environment, directly contributing to Cloudflare's operational excellence and growth.</p>
+<p><strong>Responsibilities</strong></p>
 <ul>
-	<li>Write requirements documents and work with engineering and design to build, ship, and support enterprise class software</li>
-	<li>Work inside the larger SWG / Firewall team to think about how your piece fits in the larger SASE platform play</li>
-	<li>Join pre-sales and post-sales calls with customers, sales, support, etc., to assist with, and help understand all phases of the customer lifecycle</li>
-	<li>Support a global engineering, sales, support, customers and partners with a flexible schedule (expect North America and Western Europe engineering team engagements)</li>
-	<li>Work in a fast paced, dynamic and interrupt driven environment</li>
+	<li>Aggregate data from multiple program sources (e.g., Sales Enablement, GTM systems) to provide a "big picture" view of organizational performance.</li>
+	<li>Monitor shifts in business data to proactively identify areas of excellence or needed intervention within our Go-to-Market (GTM) functions.</li>
+	<li>Draft high-level summaries and "Executive Highlights" based on program completion rates, system adoption data, and historical benchmarks.</li>
+	<li>Transform complex datasets into intuitive dashboards or slide decks that clearly communicate business impact to stakeholders using tools like Tableau or PowerBI.</li>
+	<li>Collaborate with cross-functional teams to understand business questions and translate them into analytical solutions.</li>
+	<li>Support data-driven decision-making by providing timely and accurate insights into GTM performance and business operations.</li>
+	<li>Contribute to the continuous improvement of data collection, analysis, and process optimization across the Revenue Operations tech stack.</li>
 </ul>
-<p><strong>Role Requirements (Must-Have Skills)</strong></p>
-<p><strong>Must-Have Skills</strong></p>
+<p><strong>Requirements</strong></p>
 <ul>
-	<li>Technical understanding of DNS and DNS Filtering (what, why, how)</li>
-	<li>2-5 years working as a product/program manager shipping B2B software/services at scale</li>
-	<li>Experience working alongside engineering, design, and other parts of a traditional SaaS business to ship products to customers</li>
-	<li>Excellent customer facing skills (empathy, problem solving, clear and succinct communicator)</li>
-	<li>Understanding of TCP/IP fundamentals (routing, protocols, etc.)</li>
+	<li>Currently pursuing a Bachelor's or Master's degree in Economics, Finance, Data Analytics, Business Administration, or a related quantitative field.</li>
+	<li>Demonstrated proficiency in Microsoft Excel, including advanced functions such as Pivot Tables and VLOOKUPs.</li>
+	<li>Strong analytical and problem-solving skills with an ability to interpret complex datasets.</li>
+	<li>Excellent communication skills, both written and verbal, with the ability to articulate findings to both technical and non-technical audiences.</li>
+	<li>Curiosity and a proactive approach to learning new tools and methodologies.</li>
+	<li>Available for a full-time 12-week internship, working from our Austin office 3-5 days a week during the summer (May-Aug).</li>
 </ul>
-<p><strong>Nice-to-Have Skills</strong></p>
-<ul>
-	<li>Experience with building, supporting, or deploying SASE, SSE, or legacy VPN solutions</li>
-	<li>Familiarity with endpoint devices, device clients, and differences in enterprise deployments vs. consumer deployments.</li>
-	<li>Experience with large-scale distributed systems and cloud-native architectures.</li>
-	<li>Active participation in industry conferences, publications, or open-source projects related to networking or security</li>
-</ul>
-<p><strong>Compensation</strong></p>
-<p>Compensation may be adjusted depending on work location.</p>
-<ul>
-	<li>For Seattle-based hires: Estimated annual salary of $158,000-$193,000</li>
-</ul>
-<p><strong>Equity</strong></p>
-<p>This role is eligible to participate in Cloudflare’s equity plan.</p>
-<p><strong>Benefits</strong></p>
-<p>Cloudflare offers a complete package of benefits and programs to support you and your family.&nbsp; Our benefits programs can help you pay health care expenses, support caregiving, build capital for the future and make life a little easier and fun!&nbsp; The below is a description of our benefits for employees in the United States, and benefits may vary for employees based outside the U.S.</p>
-<p><strong>Health &amp; Welfare Benefits</strong></p>
-<ul>
-	<li>Medical/Rx Insurance</li>
-	<li>Dental Insurance</li>
-	<li>Vision Insurance</li>
-	<li>Flexible Spending Accounts</li>
-	<li>Commuter Spending Accounts</li>
-	<li>Fertility &amp; Family Forming Benefits</li>
-	<li>On-demand mental health support and Employee Assistance Program</li>
-	<li>Global Travel Medical Insurance</li>
-</ul>
-<p><strong>Financial Benefits</strong></p>
-<ul>
-	<li>Short and Long Term Disability Insurance</li>
-	<li>Life &amp; Accident Insurance</li>
-	<li>401(k) Retirement Savings Plan</li>
-	<li>Employee Stock Participation Plan</li>
-</ul>
-<p><strong>Time Off</strong></p>
-<ul>
-	<li>Flexible paid time off covering vacation and sick leave</li>
-	<li>Leave programs, including parental, pregnancy health, medical, and bereavement leave</li>
-</ul>
+<p>&nbsp;</p>
+<p>You can check out our <a href="https://blog.cloudflare.com/tag/internship-experience/">internship blogs</a> to learn more about our program and hear directly from our past interns.</p>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
 	<p><span style="font-weight: 400;">We’re not just a highly ambitious, large-scale technology company. We’re a highly ambitious, large-scale technology company with a soul. Fundamental to our mission to help build a better Internet is protecting the free and open Internet.</span></p>
