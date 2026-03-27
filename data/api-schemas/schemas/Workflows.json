@@ -3087,8 +3087,765 @@
 											"format": "date-time",
 											"type": "string"
 										},
-										"dag": {
+										"graph": {
+											"description": "Versioned workflow graph payload.",
 											"nullable": true,
+											"properties": {
+												"version": {
+													"type": "number"
+												},
+												"workflow": {
+													"description": "A parsed workflow entrypoint with its step graph.",
+													"properties": {
+														"class_name": {
+															"type": "string"
+														},
+														"functions": {
+															"additionalProperties": {
+																"properties": {
+																	"name": {
+																		"type": "string"
+																	},
+																	"nodes": {
+																		"description": "Child nodes (recursive).",
+																		"items": {
+																			"type": "object"
+																		},
+																		"type": "array"
+																	},
+																	"type": {
+																		"enum": [
+																			"function_def"
+																		],
+																		"type": "string"
+																	}
+																},
+																"required": [
+																	"type",
+																	"name",
+																	"nodes"
+																],
+																"type": "object"
+															},
+															"type": "object"
+														},
+														"nodes": {
+															"items": {
+																"oneOf": [
+																	{
+																		"properties": {
+																			"duration": {
+																				"anyOf": [
+																					{
+																						"type": "number"
+																					},
+																					{
+																						"type": "string"
+																					}
+																				],
+																				"description": "Duration as milliseconds (number) or human-readable string."
+																			},
+																			"name": {
+																				"type": "string"
+																			},
+																			"resolves": {
+																				"type": "number"
+																			},
+																			"starts": {
+																				"type": "number"
+																			},
+																			"type": {
+																				"enum": [
+																					"step_sleep"
+																				],
+																				"type": "string"
+																			}
+																		},
+																		"required": [
+																			"type",
+																			"name",
+																			"duration"
+																		],
+																		"type": "object"
+																	},
+																	{
+																		"properties": {
+																			"config": {
+																				"description": "Configuration for a step (retries and timeout).",
+																				"properties": {
+																					"retries": {
+																						"description": "Retry policy for a step.",
+																						"properties": {
+																							"backoff": {
+																								"description": "Backoff strategy for step retries.",
+																								"enum": [
+																									"constant",
+																									"linear",
+																									"exponential"
+																								],
+																								"type": "string"
+																							},
+																							"delay": {
+																								"anyOf": [
+																									{
+																										"type": "number"
+																									},
+																									{
+																										"type": "string"
+																									}
+																								],
+																								"description": "Duration as milliseconds (number) or human-readable string."
+																							},
+																							"limit": {
+																								"type": "number"
+																							}
+																						},
+																						"required": [
+																							"limit",
+																							"delay",
+																							"backoff"
+																						],
+																						"type": "object"
+																					},
+																					"timeout": {
+																						"anyOf": [
+																							{
+																								"type": "number"
+																							},
+																							{
+																								"type": "string"
+																							}
+																						],
+																						"description": "Duration as milliseconds (number) or human-readable string."
+																					}
+																				},
+																				"required": [
+																					"retries",
+																					"timeout"
+																				],
+																				"type": "object"
+																			},
+																			"name": {
+																				"type": "string"
+																			},
+																			"nodes": {
+																				"description": "Child nodes (recursive).",
+																				"items": {
+																					"type": "object"
+																				},
+																				"type": "array"
+																			},
+																			"resolves": {
+																				"type": "number"
+																			},
+																			"starts": {
+																				"type": "number"
+																			},
+																			"type": {
+																				"enum": [
+																					"step_do"
+																				],
+																				"type": "string"
+																			}
+																		},
+																		"required": [
+																			"type",
+																			"name",
+																			"config",
+																			"nodes"
+																		],
+																		"type": "object"
+																	},
+																	{
+																		"properties": {
+																			"name": {
+																				"type": "string"
+																			},
+																			"options": {
+																				"description": "Options for a waitForEvent step.",
+																				"nullable": true,
+																				"properties": {
+																					"event_type": {
+																						"type": "string"
+																					},
+																					"timeout": {
+																						"anyOf": [
+																							{
+																								"type": "number"
+																							},
+																							{
+																								"type": "string"
+																							}
+																						],
+																						"description": "Duration as milliseconds (number) or human-readable string."
+																					}
+																				},
+																				"required": [
+																					"event_type",
+																					"timeout"
+																				],
+																				"type": "object"
+																			},
+																			"payload": {
+																				"anyOf": [
+																					{
+																						"properties": {
+																							"type": {
+																								"enum": [
+																									"unknown"
+																								],
+																								"type": "string"
+																							}
+																						},
+																						"required": [
+																							"type"
+																						],
+																						"type": "object"
+																					},
+																					{
+																						"properties": {
+																							"fields": {
+																								"additionalProperties": {
+																									"type": "object"
+																								},
+																								"description": "Nested JsonShape fields (recursive structure).",
+																								"type": "object"
+																							},
+																							"type": {
+																								"enum": [
+																									"object"
+																								],
+																								"type": "string"
+																							}
+																						},
+																						"required": [
+																							"type",
+																							"fields"
+																						],
+																						"type": "object"
+																					}
+																				],
+																				"description": "Shape descriptor for JSON payloads."
+																			},
+																			"resolves": {
+																				"type": "number"
+																			},
+																			"starts": {
+																				"type": "number"
+																			},
+																			"type": {
+																				"enum": [
+																					"step_wait_for_event"
+																				],
+																				"type": "string"
+																			}
+																		},
+																		"required": [
+																			"type",
+																			"name",
+																			"options"
+																		],
+																		"type": "object"
+																	},
+																	{
+																		"properties": {
+																			"name": {
+																				"type": "string"
+																			},
+																			"resolves": {
+																				"type": "number"
+																			},
+																			"starts": {
+																				"type": "number"
+																			},
+																			"timestamp": {
+																				"type": "string"
+																			},
+																			"type": {
+																				"enum": [
+																					"step_sleep_until"
+																				],
+																				"type": "string"
+																			}
+																		},
+																		"required": [
+																			"type",
+																			"name",
+																			"timestamp"
+																		],
+																		"type": "object"
+																	},
+																	{
+																		"properties": {
+																			"nodes": {
+																				"description": "Child nodes (recursive).",
+																				"items": {
+																					"type": "object"
+																				},
+																				"type": "array"
+																			},
+																			"type": {
+																				"enum": [
+																					"loop"
+																				],
+																				"type": "string"
+																			}
+																		},
+																		"required": [
+																			"type",
+																			"nodes"
+																		],
+																		"type": "object"
+																	},
+																	{
+																		"properties": {
+																			"kind": {
+																				"description": "Parallel execution strategy.",
+																				"enum": [
+																					"all",
+																					"any",
+																					"all_settled",
+																					"race"
+																				],
+																				"type": "string"
+																			},
+																			"nodes": {
+																				"description": "Child nodes (recursive).",
+																				"items": {
+																					"type": "object"
+																				},
+																				"type": "array"
+																			},
+																			"type": {
+																				"enum": [
+																					"parallel"
+																				],
+																				"type": "string"
+																			}
+																		},
+																		"required": [
+																			"type",
+																			"kind",
+																			"nodes"
+																		],
+																		"type": "object"
+																	},
+																	{
+																		"properties": {
+																			"catch_block": {
+																				"nullable": true,
+																				"properties": {
+																					"nodes": {
+																						"description": "Child nodes (recursive).",
+																						"items": {
+																							"type": "object"
+																						},
+																						"type": "array"
+																					},
+																					"type": {
+																						"enum": [
+																							"block"
+																						],
+																						"type": "string"
+																					}
+																				},
+																				"required": [
+																					"type",
+																					"nodes"
+																				],
+																				"type": "object"
+																			},
+																			"finally_block": {
+																				"nullable": true,
+																				"properties": {
+																					"nodes": {
+																						"description": "Child nodes (recursive).",
+																						"items": {
+																							"type": "object"
+																						},
+																						"type": "array"
+																					},
+																					"type": {
+																						"enum": [
+																							"block"
+																						],
+																						"type": "string"
+																					}
+																				},
+																				"required": [
+																					"type",
+																					"nodes"
+																				],
+																				"type": "object"
+																			},
+																			"try_block": {
+																				"nullable": true,
+																				"properties": {
+																					"nodes": {
+																						"description": "Child nodes (recursive).",
+																						"items": {
+																							"type": "object"
+																						},
+																						"type": "array"
+																					},
+																					"type": {
+																						"enum": [
+																							"block"
+																						],
+																						"type": "string"
+																					}
+																				},
+																				"required": [
+																					"type",
+																					"nodes"
+																				],
+																				"type": "object"
+																			},
+																			"type": {
+																				"enum": [
+																					"try"
+																				],
+																				"type": "string"
+																			}
+																		},
+																		"required": [
+																			"type",
+																			"try_block",
+																			"catch_block",
+																			"finally_block"
+																		],
+																		"type": "object"
+																	},
+																	{
+																		"properties": {
+																			"nodes": {
+																				"description": "Child nodes (recursive).",
+																				"items": {
+																					"type": "object"
+																				},
+																				"type": "array"
+																			},
+																			"type": {
+																				"enum": [
+																					"block"
+																				],
+																				"type": "string"
+																			}
+																		},
+																		"required": [
+																			"type",
+																			"nodes"
+																		],
+																		"type": "object"
+																	},
+																	{
+																		"properties": {
+																			"branches": {
+																				"items": {
+																					"properties": {
+																						"condition": {
+																							"nullable": true,
+																							"type": "string"
+																						},
+																						"nodes": {
+																							"description": "Child nodes (recursive).",
+																							"items": {
+																								"type": "object"
+																							},
+																							"type": "array"
+																						}
+																					},
+																					"required": [
+																						"condition",
+																						"nodes"
+																					],
+																					"type": "object"
+																				},
+																				"type": "array"
+																			},
+																			"type": {
+																				"enum": [
+																					"if"
+																				],
+																				"type": "string"
+																			}
+																		},
+																		"required": [
+																			"type",
+																			"branches"
+																		],
+																		"type": "object"
+																	},
+																	{
+																		"properties": {
+																			"branches": {
+																				"items": {
+																					"properties": {
+																						"condition": {
+																							"nullable": true,
+																							"type": "string"
+																						},
+																						"nodes": {
+																							"description": "Child nodes (recursive).",
+																							"items": {
+																								"type": "object"
+																							},
+																							"type": "array"
+																						}
+																					},
+																					"required": [
+																						"condition",
+																						"nodes"
+																					],
+																					"type": "object"
+																				},
+																				"type": "array"
+																			},
+																			"discriminant": {
+																				"type": "string"
+																			},
+																			"type": {
+																				"enum": [
+																					"switch"
+																				],
+																				"type": "string"
+																			}
+																		},
+																		"required": [
+																			"type",
+																			"discriminant",
+																			"branches"
+																		],
+																		"type": "object"
+																	},
+																	{
+																		"properties": {
+																			"class_name": {
+																				"type": "string"
+																			},
+																			"functions": {
+																				"additionalProperties": {
+																					"properties": {
+																						"name": {
+																							"type": "string"
+																						},
+																						"nodes": {
+																							"description": "Child nodes (recursive).",
+																							"items": {
+																								"type": "object"
+																							},
+																							"type": "array"
+																						},
+																						"type": {
+																							"enum": [
+																								"function_def"
+																							],
+																							"type": "string"
+																						}
+																					},
+																					"required": [
+																						"type",
+																						"name",
+																						"nodes"
+																					],
+																					"type": "object"
+																				},
+																				"type": "object"
+																			},
+																			"nodes": {
+																				"description": "Child nodes (recursive).",
+																				"items": {
+																					"type": "object"
+																				},
+																				"type": "array"
+																			},
+																			"payload": {
+																				"anyOf": [
+																					{
+																						"properties": {
+																							"type": {
+																								"enum": [
+																									"unknown"
+																								],
+																								"type": "string"
+																							}
+																						},
+																						"required": [
+																							"type"
+																						],
+																						"type": "object"
+																					},
+																					{
+																						"properties": {
+																							"fields": {
+																								"additionalProperties": {
+																									"type": "object"
+																								},
+																								"description": "Nested JsonShape fields (recursive structure).",
+																								"type": "object"
+																							},
+																							"type": {
+																								"enum": [
+																									"object"
+																								],
+																								"type": "string"
+																							}
+																						},
+																						"required": [
+																							"type",
+																							"fields"
+																						],
+																						"type": "object"
+																					}
+																				],
+																				"description": "Shape descriptor for JSON payloads."
+																			},
+																			"type": {
+																				"enum": [
+																					"start"
+																				],
+																				"type": "string"
+																			}
+																		},
+																		"required": [
+																			"type",
+																			"class_name",
+																			"functions",
+																			"nodes"
+																		],
+																		"type": "object"
+																	},
+																	{
+																		"properties": {
+																			"name": {
+																				"type": "string"
+																			},
+																			"resolves": {
+																				"type": "number"
+																			},
+																			"starts": {
+																				"type": "number"
+																			},
+																			"type": {
+																				"enum": [
+																					"function_call"
+																				],
+																				"type": "string"
+																			}
+																		},
+																		"required": [
+																			"type",
+																			"name"
+																		],
+																		"type": "object"
+																	},
+																	{
+																		"properties": {
+																			"name": {
+																				"type": "string"
+																			},
+																			"nodes": {
+																				"description": "Child nodes (recursive).",
+																				"items": {
+																					"type": "object"
+																				},
+																				"type": "array"
+																			},
+																			"type": {
+																				"enum": [
+																					"function_def"
+																				],
+																				"type": "string"
+																			}
+																		},
+																		"required": [
+																			"type",
+																			"name",
+																			"nodes"
+																		],
+																		"type": "object"
+																	},
+																	{
+																		"properties": {
+																			"kind": {
+																				"description": "Break or return from a loop.",
+																				"enum": [
+																					"break",
+																					"return"
+																				],
+																				"type": "string"
+																			},
+																			"type": {
+																				"enum": [
+																					"break"
+																				],
+																				"type": "string"
+																			}
+																		},
+																		"required": [
+																			"type",
+																			"kind"
+																		],
+																		"type": "object"
+																	}
+																]
+															},
+															"type": "array"
+														},
+														"payload": {
+															"anyOf": [
+																{
+																	"properties": {
+																		"type": {
+																			"enum": [
+																				"unknown"
+																			],
+																			"type": "string"
+																		}
+																	},
+																	"required": [
+																		"type"
+																	],
+																	"type": "object"
+																},
+																{
+																	"properties": {
+																		"fields": {
+																			"additionalProperties": {
+																				"type": "object"
+																			},
+																			"description": "Nested JsonShape fields (recursive structure).",
+																			"type": "object"
+																		},
+																		"type": {
+																			"enum": [
+																				"object"
+																			],
+																			"type": "string"
+																		}
+																	},
+																	"required": [
+																		"type",
+																		"fields"
+																	],
+																	"type": "object"
+																}
+															],
+															"description": "Shape descriptor for JSON payloads."
+														}
+													},
+													"required": [
+														"class_name",
+														"functions",
+														"nodes"
+													],
+													"type": "object"
+												}
+											},
+											"required": [
+												"version",
+												"workflow"
+											],
 											"type": "object"
 										},
 										"id": {
@@ -3110,7 +3867,7 @@
 										"id",
 										"workflow_id",
 										"class_name",
-										"dag"
+										"graph"
 									],
 									"type": "object"
 								},
