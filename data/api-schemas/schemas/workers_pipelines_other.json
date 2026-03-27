@@ -5165,7 +5165,8 @@
 														"description": "Cloudflare Account ID for the bucket",
 														"format": "var-str",
 														"title": "Access Key ID",
-														"type": "string"
+														"type": "string",
+														"x-sensitive": true
 													}
 												},
 												"required": [
@@ -5324,7 +5325,8 @@
 												"description": "Authentication token",
 												"example": "\"asdfkj2h34kjhkj\"",
 												"format": "var-str",
-												"type": "string"
+												"type": "string",
+												"x-sensitive": true
 											}
 										},
 										"required": [
@@ -5842,7 +5844,8 @@
 																	"description": "Cloudflare Account ID for the bucket",
 																	"format": "var-str",
 																	"title": "Access Key ID",
-																	"type": "string"
+																	"type": "string",
+																	"x-sensitive": true
 																}
 															},
 															"required": [
@@ -6001,7 +6004,8 @@
 															"description": "Authentication token",
 															"example": "\"asdfkj2h34kjhkj\"",
 															"format": "var-str",
-															"type": "string"
+															"type": "string",
+															"x-sensitive": true
 														}
 													},
 													"required": [

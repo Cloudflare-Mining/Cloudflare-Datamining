@@ -1,0 +1,1374 @@
+{
+	"DELETE /accounts/{account_id}/cloudforce-one/rules": {
+		"description": "Delete all rules in an account.",
+		"operationId": "cloudforce-one-delete-all-rules",
+		"parameters": [
+			{
+				"description": "Cloudflare account ID.",
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"type": "string"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"deleted": {
+									"example": 10,
+									"type": "number"
+								}
+							},
+							"required": [
+								"deleted"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "All rules deleted."
+			},
+			"401": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"error": {
+									"example": "Not found",
+									"type": "string"
+								}
+							},
+							"required": [
+								"error"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Unauthorized."
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Delete all rules",
+		"tags": [
+			"Rules"
+		]
+	},
+	"DELETE /accounts/{account_id}/cloudforce-one/rules/{id}": {
+		"description": "Delete an existing rule.",
+		"operationId": "cloudforce-one-delete-rule",
+		"parameters": [
+			{
+				"description": "Cloudflare account ID.",
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"type": "string"
+				}
+			},
+			{
+				"description": "The unique identifier for the rule.",
+				"in": "path",
+				"name": "id",
+				"required": true,
+				"schema": {
+					"description": "The unique identifier for the rule.",
+					"example": "550e8400-e29b-41d4-a716-446655440000",
+					"format": "uuid",
+					"type": "string"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"success": {
+									"example": true,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Rule deleted (customer accounts)."
+			},
+			"202": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"approval_id": {
+									"example": 1,
+									"type": "number"
+								},
+								"message": {
+									"example": "Rule creation pending approval",
+									"type": "string"
+								}
+							},
+							"required": [
+								"approval_id",
+								"message"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Deletion pending approval (internal accounts)."
+			},
+			"401": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"error": {
+									"example": "Not found",
+									"type": "string"
+								}
+							},
+							"required": [
+								"error"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Unauthorized."
+			},
+			"404": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"error": {
+									"example": "Not found",
+									"type": "string"
+								}
+							},
+							"required": [
+								"error"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Rule not found."
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Delete a rule",
+		"tags": [
+			"Rules"
+		]
+	},
+	"GET /accounts/{account_id}/cloudforce-one/rules": {
+		"description": "List all rules for an account with optional filtering.",
+		"operationId": "cloudforce-one-list-rules",
+		"parameters": [
+			{
+				"description": "Cloudflare account ID.",
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"type": "string"
+				}
+			},
+			{
+				"in": "query",
+				"name": "namespace",
+				"schema": {
+					"example": "yara/workers",
+					"type": "string"
+				}
+			},
+			{
+				"in": "query",
+				"name": "recursive",
+				"schema": {
+					"enum": [
+						"true",
+						"false"
+					],
+					"example": "true",
+					"type": "string"
+				}
+			},
+			{
+				"in": "query",
+				"name": "search",
+				"schema": {
+					"example": "malicious",
+					"type": "string"
+				}
+			},
+			{
+				"description": "Filter by public visibility.",
+				"in": "query",
+				"name": "is_public",
+				"schema": {
+					"description": "Filter by public visibility.",
+					"enum": [
+						"true",
+						"false"
+					],
+					"example": "true",
+					"type": "string"
+				}
+			},
+			{
+				"in": "query",
+				"name": "limit",
+				"schema": {
+					"default": 50,
+					"example": 50,
+					"maximum": 100,
+					"minimum": 1,
+					"type": "number"
+				}
+			},
+			{
+				"in": "query",
+				"name": "offset",
+				"schema": {
+					"default": 0,
+					"example": 0,
+					"minimum": 0,
+					"nullable": true,
+					"type": "number"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"rules": {
+									"items": {
+										"properties": {
+											"content": {
+												"example": "rule example { condition: true }",
+												"type": "string"
+											},
+											"created_at": {
+												"example": 1679529600000,
+												"type": "number",
+												"x-auditable": true
+											},
+											"created_by": {
+												"example": "user@example.com",
+												"type": "string",
+												"x-auditable": true
+											},
+											"enabled": {
+												"description": "Whether this rule is active for dice consumers.",
+												"example": true,
+												"type": "boolean"
+											},
+											"id": {
+												"example": "550e8400-e29b-41d4-a716-446655440000",
+												"format": "uuid",
+												"type": "string",
+												"x-auditable": true
+											},
+											"is_public": {
+												"description": "Whether this rule is visible to other internal accounts.",
+												"example": false,
+												"type": "boolean",
+												"x-auditable": true
+											},
+											"name": {
+												"example": "block-malicious-workers",
+												"type": "string",
+												"x-auditable": true
+											},
+											"namespaces": {
+												"example": [
+													"yara/workers"
+												],
+												"items": {
+													"type": "string"
+												},
+												"type": "array",
+												"x-auditable": true
+											},
+											"updated_at": {
+												"example": 1679529600000,
+												"type": "number",
+												"x-auditable": true
+											},
+											"updated_by": {
+												"example": "user@example.com",
+												"type": "string",
+												"x-auditable": true
+											}
+										},
+										"required": [
+											"id",
+											"name",
+											"namespaces",
+											"content",
+											"is_public",
+											"enabled",
+											"created_at",
+											"updated_at",
+											"created_by",
+											"updated_by"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"total": {
+									"example": 100,
+									"type": "number"
+								}
+							},
+							"required": [
+								"rules",
+								"total"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "List of rules."
+			},
+			"401": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"error": {
+									"example": "Not found",
+									"type": "string"
+								}
+							},
+							"required": [
+								"error"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Unauthorized."
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "List rules",
+		"tags": [
+			"Rules"
+		]
+	},
+	"GET /accounts/{account_id}/cloudforce-one/rules/{id}": {
+		"description": "Get a single rule by ID.",
+		"operationId": "cloudforce-one-get-rule",
+		"parameters": [
+			{
+				"description": "Cloudflare account ID.",
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"type": "string"
+				}
+			},
+			{
+				"description": "The unique identifier for the rule.",
+				"in": "path",
+				"name": "id",
+				"required": true,
+				"schema": {
+					"description": "The unique identifier for the rule.",
+					"example": "550e8400-e29b-41d4-a716-446655440000",
+					"format": "uuid",
+					"type": "string"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"content": {
+									"example": "rule example { condition: true }",
+									"type": "string"
+								},
+								"created_at": {
+									"example": 1679529600000,
+									"type": "number",
+									"x-auditable": true
+								},
+								"created_by": {
+									"example": "user@example.com",
+									"type": "string",
+									"x-auditable": true
+								},
+								"enabled": {
+									"description": "Whether this rule is active for dice consumers.",
+									"example": true,
+									"type": "boolean"
+								},
+								"id": {
+									"example": "550e8400-e29b-41d4-a716-446655440000",
+									"format": "uuid",
+									"type": "string",
+									"x-auditable": true
+								},
+								"is_public": {
+									"description": "Whether this rule is visible to other internal accounts.",
+									"example": false,
+									"type": "boolean",
+									"x-auditable": true
+								},
+								"name": {
+									"example": "block-malicious-workers",
+									"type": "string",
+									"x-auditable": true
+								},
+								"namespaces": {
+									"example": [
+										"yara/workers"
+									],
+									"items": {
+										"type": "string"
+									},
+									"type": "array",
+									"x-auditable": true
+								},
+								"updated_at": {
+									"example": 1679529600000,
+									"type": "number",
+									"x-auditable": true
+								},
+								"updated_by": {
+									"example": "user@example.com",
+									"type": "string",
+									"x-auditable": true
+								}
+							},
+							"required": [
+								"id",
+								"name",
+								"namespaces",
+								"content",
+								"is_public",
+								"enabled",
+								"created_at",
+								"updated_at",
+								"created_by",
+								"updated_by"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Rule details."
+			},
+			"401": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"error": {
+									"example": "Not found",
+									"type": "string"
+								}
+							},
+							"required": [
+								"error"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Unauthorized."
+			},
+			"404": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"error": {
+									"example": "Not found",
+									"type": "string"
+								}
+							},
+							"required": [
+								"error"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Rule not found."
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Get a rule",
+		"tags": [
+			"Rules"
+		]
+	},
+	"GET /accounts/{account_id}/cloudforce-one/rules/stats": {
+		"description": "Get statistics about rules for the dashboard.",
+		"operationId": "cloudforce-one-get-rule-stats",
+		"parameters": [
+			{
+				"description": "Cloudflare account ID.",
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"type": "string"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"pending_approvals": {
+									"example": 5,
+									"type": "number"
+								},
+								"rules_by_namespace": {
+									"additionalProperties": {
+										"type": "number"
+									},
+									"example": {
+										"yara/dns_record": 12,
+										"yara/workers": 30
+									},
+									"type": "object"
+								},
+								"total_rules": {
+									"example": 42,
+									"type": "number"
+								}
+							},
+							"required": [
+								"total_rules",
+								"rules_by_namespace",
+								"pending_approvals"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Dashboard statistics."
+			},
+			"401": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"error": {
+									"example": "Not found",
+									"type": "string"
+								}
+							},
+							"required": [
+								"error"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Unauthorized."
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Get dashboard stats",
+		"tags": [
+			"Rules"
+		]
+	},
+	"GET /accounts/{account_id}/cloudforce-one/rules/tree": {
+		"description": "Get the folder tree structure for rules navigation.",
+		"operationId": "cloudforce-one-get-rule-tree",
+		"parameters": [
+			{
+				"description": "Cloudflare account ID.",
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"type": "string"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"tree": {
+									"items": {
+										"properties": {
+											"children": {
+												"items": "[Circular ~.GET /accounts/{account_id}/cloudforce-one/rules/tree.responses.200.content.application/json.schema.properties.tree.items]",
+												"type": "array"
+											},
+											"count": {
+												"example": 15,
+												"type": "number"
+											},
+											"name": {
+												"example": "workers",
+												"type": "string"
+											},
+											"path": {
+												"example": "yara/workers",
+												"type": "string"
+											}
+										},
+										"required": [
+											"name",
+											"path",
+											"count",
+											"children"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								}
+							},
+							"required": [
+								"tree"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Folder tree structure."
+			},
+			"401": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"error": {
+									"example": "Not found",
+									"type": "string"
+								}
+							},
+							"required": [
+								"error"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Unauthorized."
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Get folder tree structure",
+		"tags": [
+			"Rules"
+		]
+	},
+	"POST /accounts/{account_id}/cloudforce-one/rules": {
+		"description": "Create a new detection rule.",
+		"operationId": "cloudforce-one-create-rule",
+		"parameters": [
+			{
+				"description": "Cloudflare account ID.",
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"type": "string"
+				}
+			}
+		],
+		"requestBody": {
+			"content": {
+				"application/json": {
+					"schema": {
+						"properties": {
+							"actions": {
+								"items": {
+									"properties": {
+										"action_config": {
+											"additionalProperties": {
+												"anyOf": [
+													{
+														"type": "string"
+													},
+													{
+														"type": "number"
+													},
+													{
+														"type": "boolean"
+													},
+													{
+														"items": {
+															"type": "string"
+														},
+														"type": "array"
+													},
+													{
+														"additionalProperties": {
+															"type": "string"
+														},
+														"type": "object"
+													}
+												]
+											},
+											"description": "Action-specific configuration parameters.",
+											"type": "object"
+										},
+										"action_type": {
+											"enum": [
+												"alert_gchat",
+												"webhook",
+												"logging",
+												"email",
+												"pipeline",
+												"remediation",
+												"throttle",
+												"delete"
+											],
+											"example": "alert_gchat",
+											"type": "string"
+										},
+										"enabled": {
+											"default": true,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"action_type",
+										"action_config"
+									],
+									"type": "object"
+								},
+								"type": "array"
+							},
+							"content": {
+								"example": "rule example { condition: true }",
+								"minLength": 1,
+								"type": "string"
+							},
+							"enabled": {
+								"default": true,
+								"description": "Whether this rule is active for dice consumers.",
+								"example": true,
+								"type": "boolean"
+							},
+							"is_public": {
+								"default": false,
+								"description": "Whether this rule is visible to other internal accounts.",
+								"example": false,
+								"type": "boolean",
+								"x-auditable": true
+							},
+							"name": {
+								"example": "block-malicious-workers",
+								"maxLength": 255,
+								"minLength": 1,
+								"type": "string",
+								"x-auditable": true
+							},
+							"namespaces": {
+								"example": [
+									"yara/workers"
+								],
+								"items": {
+									"maxLength": 255,
+									"minLength": 1,
+									"type": "string"
+								},
+								"minItems": 1,
+								"type": "array",
+								"x-auditable": true
+							}
+						},
+						"required": [
+							"name",
+							"namespaces",
+							"content"
+						],
+						"type": "object"
+					}
+				}
+			}
+		},
+		"responses": {
+			"201": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"content": {
+									"example": "rule example { condition: true }",
+									"type": "string"
+								},
+								"created_at": {
+									"example": 1679529600000,
+									"type": "number",
+									"x-auditable": true
+								},
+								"created_by": {
+									"example": "user@example.com",
+									"type": "string",
+									"x-auditable": true
+								},
+								"enabled": {
+									"description": "Whether this rule is active for dice consumers.",
+									"example": true,
+									"type": "boolean"
+								},
+								"id": {
+									"example": "550e8400-e29b-41d4-a716-446655440000",
+									"format": "uuid",
+									"type": "string",
+									"x-auditable": true
+								},
+								"is_public": {
+									"description": "Whether this rule is visible to other internal accounts.",
+									"example": false,
+									"type": "boolean",
+									"x-auditable": true
+								},
+								"name": {
+									"example": "block-malicious-workers",
+									"type": "string",
+									"x-auditable": true
+								},
+								"namespaces": {
+									"example": [
+										"yara/workers"
+									],
+									"items": {
+										"type": "string"
+									},
+									"type": "array",
+									"x-auditable": true
+								},
+								"updated_at": {
+									"example": 1679529600000,
+									"type": "number",
+									"x-auditable": true
+								},
+								"updated_by": {
+									"example": "user@example.com",
+									"type": "string",
+									"x-auditable": true
+								}
+							},
+							"required": [
+								"id",
+								"name",
+								"namespaces",
+								"content",
+								"is_public",
+								"enabled",
+								"created_at",
+								"updated_at",
+								"created_by",
+								"updated_by"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Rule created (customer accounts)."
+			},
+			"202": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"approval_id": {
+									"example": 1,
+									"type": "number"
+								},
+								"message": {
+									"example": "Rule creation pending approval",
+									"type": "string"
+								}
+							},
+							"required": [
+								"approval_id",
+								"message"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Rule pending approval (internal accounts)."
+			},
+			"400": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"error": {
+									"example": "Not found",
+									"type": "string"
+								}
+							},
+							"required": [
+								"error"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Validation error."
+			},
+			"401": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"error": {
+									"example": "Not found",
+									"type": "string"
+								}
+							},
+							"required": [
+								"error"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Unauthorized."
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Create a rule",
+		"tags": [
+			"Rules"
+		]
+	},
+	"POST /accounts/{account_id}/cloudforce-one/rules/validate": {
+		"description": "Validate rule syntax, name uniqueness, namespace, and meta checks.",
+		"operationId": "cloudforce-one-validate-rule",
+		"parameters": [
+			{
+				"description": "Cloudflare account ID.",
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"type": "string"
+				}
+			}
+		],
+		"requestBody": {
+			"content": {
+				"application/json": {
+					"schema": {
+						"properties": {
+							"content": {
+								"minLength": 1,
+								"type": "string"
+							},
+							"excludeRuleId": {
+								"format": "uuid",
+								"type": "string"
+							},
+							"name": {
+								"maxLength": 255,
+								"minLength": 1,
+								"type": "string"
+							},
+							"namespaces": {
+								"items": {
+									"maxLength": 255,
+									"minLength": 1,
+									"type": "string"
+								},
+								"minItems": 1,
+								"type": "array"
+							}
+						},
+						"required": [
+							"name",
+							"namespaces",
+							"content"
+						],
+						"type": "object"
+					}
+				}
+			}
+		},
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"error": {
+									"example": "Invalid YARA syntax",
+									"type": "string"
+								},
+								"valid": {
+									"example": true,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"valid"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Validation result."
+			},
+			"401": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"error": {
+									"example": "Not found",
+									"type": "string"
+								}
+							},
+							"required": [
+								"error"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Unauthorized."
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Validate rule with context",
+		"tags": [
+			"Rules"
+		]
+	},
+	"PUT /accounts/{account_id}/cloudforce-one/rules/{id}": {
+		"description": "Update an existing rule.",
+		"operationId": "cloudforce-one-update-rule",
+		"parameters": [
+			{
+				"description": "Cloudflare account ID.",
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"type": "string"
+				}
+			},
+			{
+				"description": "The unique identifier for the rule.",
+				"in": "path",
+				"name": "id",
+				"required": true,
+				"schema": {
+					"description": "The unique identifier for the rule.",
+					"example": "550e8400-e29b-41d4-a716-446655440000",
+					"format": "uuid",
+					"type": "string"
+				}
+			}
+		],
+		"requestBody": {
+			"content": {
+				"application/json": {
+					"schema": {
+						"properties": {
+							"content": {
+								"example": "rule example { condition: true }",
+								"minLength": 1,
+								"type": "string"
+							},
+							"enabled": {
+								"description": "Whether this rule is active for dice consumers.",
+								"example": true,
+								"type": "boolean"
+							},
+							"is_public": {
+								"description": "Whether this rule is visible to other internal accounts.",
+								"example": false,
+								"type": "boolean",
+								"x-auditable": true
+							},
+							"name": {
+								"example": "block-malicious-workers",
+								"maxLength": 255,
+								"minLength": 1,
+								"type": "string",
+								"x-auditable": true
+							},
+							"namespaces": {
+								"example": [
+									"yara/workers"
+								],
+								"items": {
+									"maxLength": 255,
+									"minLength": 1,
+									"type": "string"
+								},
+								"type": "array",
+								"x-auditable": true
+							}
+						},
+						"type": "object"
+					}
+				}
+			}
+		},
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"content": {
+									"example": "rule example { condition: true }",
+									"type": "string"
+								},
+								"created_at": {
+									"example": 1679529600000,
+									"type": "number",
+									"x-auditable": true
+								},
+								"created_by": {
+									"example": "user@example.com",
+									"type": "string",
+									"x-auditable": true
+								},
+								"enabled": {
+									"description": "Whether this rule is active for dice consumers.",
+									"example": true,
+									"type": "boolean"
+								},
+								"id": {
+									"example": "550e8400-e29b-41d4-a716-446655440000",
+									"format": "uuid",
+									"type": "string",
+									"x-auditable": true
+								},
+								"is_public": {
+									"description": "Whether this rule is visible to other internal accounts.",
+									"example": false,
+									"type": "boolean",
+									"x-auditable": true
+								},
+								"name": {
+									"example": "block-malicious-workers",
+									"type": "string",
+									"x-auditable": true
+								},
+								"namespaces": {
+									"example": [
+										"yara/workers"
+									],
+									"items": {
+										"type": "string"
+									},
+									"type": "array",
+									"x-auditable": true
+								},
+								"updated_at": {
+									"example": 1679529600000,
+									"type": "number",
+									"x-auditable": true
+								},
+								"updated_by": {
+									"example": "user@example.com",
+									"type": "string",
+									"x-auditable": true
+								}
+							},
+							"required": [
+								"id",
+								"name",
+								"namespaces",
+								"content",
+								"is_public",
+								"enabled",
+								"created_at",
+								"updated_at",
+								"created_by",
+								"updated_by"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Rule updated (customer accounts)."
+			},
+			"202": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"approval_id": {
+									"example": 1,
+									"type": "number"
+								},
+								"message": {
+									"example": "Rule creation pending approval",
+									"type": "string"
+								}
+							},
+							"required": [
+								"approval_id",
+								"message"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Update pending approval (internal accounts)."
+			},
+			"401": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"error": {
+									"example": "Not found",
+									"type": "string"
+								}
+							},
+							"required": [
+								"error"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Unauthorized."
+			},
+			"404": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"error": {
+									"example": "Not found",
+									"type": "string"
+								}
+							},
+							"required": [
+								"error"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Rule not found."
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Update a rule",
+		"tags": [
+			"Rules"
+		]
+	}
+}
