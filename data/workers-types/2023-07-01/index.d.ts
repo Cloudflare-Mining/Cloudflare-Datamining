@@ -486,6 +486,11 @@ type ExportedHandlerFetchHandler<
   env: Env,
   ctx: ExecutionContext<Props>,
 ) => Response | Promise<Response>;
+type ExportedHandlerConnectHandler<Env = unknown, Props = unknown> = (
+  socket: Socket,
+  env: Env,
+  ctx: ExecutionContext<Props>,
+) => void | Promise<void>;
 type ExportedHandlerTailHandler<Env = unknown, Props = unknown> = (
   events: TraceItem[],
   env: Env,
@@ -527,6 +532,7 @@ interface ExportedHandler<
   Props = unknown,
 > {
   fetch?: ExportedHandlerFetchHandler<Env, CfHostMetadata, Props>;
+  connect?: ExportedHandlerConnectHandler<Env, Props>;
   tail?: ExportedHandlerTailHandler<Env, Props>;
   trace?: ExportedHandlerTraceHandler<Env, Props>;
   tailStream?: ExportedHandlerTailStreamHandler<Env, Props>;
@@ -546,12 +552,14 @@ declare abstract class Navigator {
 interface AlarmInvocationInfo {
   readonly isRetry: boolean;
   readonly retryCount: number;
+  readonly scheduledTime: number;
 }
 interface Cloudflare {
   readonly compatibilityFlags: Record<string, boolean>;
 }
 interface DurableObject {
   fetch(request: Request): Response | Promise<Response>;
+  connect?(socket: Socket): void | Promise<void>;
   alarm?(alarmInfo?: AlarmInvocationInfo): void | Promise<void>;
   webSocketMessage?(
     ws: WebSocket,
@@ -569,7 +577,7 @@ type DurableObjectStub<
   T extends Rpc.DurableObjectBranded | undefined = undefined,
 > = Fetcher<
   T,
-  "alarm" | "webSocketMessage" | "webSocketClose" | "webSocketError"
+  "alarm" | "connect" | "webSocketMessage" | "webSocketClose" | "webSocketError"
 > & {
   readonly id: DurableObjectId;
   readonly name?: string;
@@ -578,6 +586,7 @@ interface DurableObjectId {
   toString(): string;
   equals(other: DurableObjectId): boolean;
   readonly name?: string;
+  readonly jurisdiction?: string;
 }
 declare abstract class DurableObjectNamespace<
   T extends Rpc.DurableObjectBranded | undefined = undefined,
@@ -3108,6 +3117,7 @@ interface TraceItem {
     | (
         | TraceItemFetchEventInfo
         | TraceItemJsRpcEventInfo
+        | TraceItemConnectEventInfo
         | TraceItemScheduledEventInfo
         | TraceItemAlarmEventInfo
         | TraceItemQueueEventInfo
@@ -3126,6 +3136,7 @@ interface TraceItem {
   readonly scriptVersion?: ScriptVersion;
   readonly dispatchNamespace?: string;
   readonly scriptTags?: string[];
+  readonly tailAttributes?: Record<string, boolean | number | string>;
   readonly durableObjectId?: string;
   readonly outcome: string;
   readonly executionModel: string;
@@ -3136,6 +3147,7 @@ interface TraceItem {
 interface TraceItemAlarmEventInfo {
   readonly scheduledTime: Date;
 }
+interface TraceItemConnectEventInfo {}
 interface TraceItemCustomEventInfo {}
 interface TraceItemScheduledEventInfo {
   readonly scheduledTime: number;
@@ -3756,7 +3768,7 @@ interface ContainerStartupOptions {
   entrypoint?: string[];
   enableInternet: boolean;
   env?: Record<string, string>;
-  hardTimeout?: number | bigint;
+  labels?: Record<string, string>;
 }
 /**
  * The **`MessagePort`** interface of the Channel Messaging API represents one of the two ports of a MessageChannel, allowing messages to be sent from one port and listening out for them arriving at the other.
@@ -4326,6 +4338,400 @@ declare abstract class BaseAiTranslation {
   postProcessedOutputs: AiTranslationOutput;
 }
 /**
+ * Workers AI support for OpenAI's Chat Completions API
+ */
+type ChatCompletionContentPartText = {
+  type: "text";
+  text: string;
+};
+type ChatCompletionContentPartImage = {
+  type: "image_url";
+  image_url: {
+    url: string;
+    detail?: "auto" | "low" | "high";
+  };
+};
+type ChatCompletionContentPartInputAudio = {
+  type: "input_audio";
+  input_audio: {
+    /** Base64 encoded audio data. */
+    data: string;
+    format: "wav" | "mp3";
+  };
+};
+type ChatCompletionContentPartFile = {
+  type: "file";
+  file: {
+    /** Base64 encoded file data. */
+    file_data?: string;
+    /** The ID of an uploaded file. */
+    file_id?: string;
+    filename?: string;
+  };
+};
+type ChatCompletionContentPartRefusal = {
+  type: "refusal";
+  refusal: string;
+};
+type ChatCompletionContentPart =
+  | ChatCompletionContentPartText
+  | ChatCompletionContentPartImage
+  | ChatCompletionContentPartInputAudio
+  | ChatCompletionContentPartFile;
+type FunctionDefinition = {
+  name: string;
+  description?: string;
+  parameters?: Record<string, unknown>;
+  strict?: boolean | null;
+};
+type ChatCompletionFunctionTool = {
+  type: "function";
+  function: FunctionDefinition;
+};
+type ChatCompletionCustomToolGrammarFormat = {
+  type: "grammar";
+  grammar: {
+    definition: string;
+    syntax: "lark" | "regex";
+  };
+};
+type ChatCompletionCustomToolTextFormat = {
+  type: "text";
+};
+type ChatCompletionCustomToolFormat =
+  | ChatCompletionCustomToolTextFormat
+  | ChatCompletionCustomToolGrammarFormat;
+type ChatCompletionCustomTool = {
+  type: "custom";
+  custom: {
+    name: string;
+    description?: string;
+    format?: ChatCompletionCustomToolFormat;
+  };
+};
+type ChatCompletionTool = ChatCompletionFunctionTool | ChatCompletionCustomTool;
+type ChatCompletionMessageFunctionToolCall = {
+  id: string;
+  type: "function";
+  function: {
+    name: string;
+    /** JSON-encoded arguments string. */
+    arguments: string;
+  };
+};
+type ChatCompletionMessageCustomToolCall = {
+  id: string;
+  type: "custom";
+  custom: {
+    name: string;
+    input: string;
+  };
+};
+type ChatCompletionMessageToolCall =
+  | ChatCompletionMessageFunctionToolCall
+  | ChatCompletionMessageCustomToolCall;
+type ChatCompletionToolChoiceFunction = {
+  type: "function";
+  function: {
+    name: string;
+  };
+};
+type ChatCompletionToolChoiceCustom = {
+  type: "custom";
+  custom: {
+    name: string;
+  };
+};
+type ChatCompletionToolChoiceAllowedTools = {
+  type: "allowed_tools";
+  allowed_tools: {
+    mode: "auto" | "required";
+    tools: Array<Record<string, unknown>>;
+  };
+};
+type ChatCompletionToolChoiceOption =
+  | "none"
+  | "auto"
+  | "required"
+  | ChatCompletionToolChoiceFunction
+  | ChatCompletionToolChoiceCustom
+  | ChatCompletionToolChoiceAllowedTools;
+type DeveloperMessage = {
+  role: "developer";
+  content:
+    | string
+    | Array<{
+        type: "text";
+        text: string;
+      }>;
+  name?: string;
+};
+type SystemMessage = {
+  role: "system";
+  content:
+    | string
+    | Array<{
+        type: "text";
+        text: string;
+      }>;
+  name?: string;
+};
+/**
+ * Permissive merged content part used inside UserMessage arrays.
+ *
+ * Cabidela has a limitation where anyOf/oneOf with enum-based discrimination
+ * inside nested array items does not correctly match different branches for
+ * different array elements, so the schema uses a single merged object.
+ */
+type UserMessageContentPart = {
+  type: "text" | "image_url" | "input_audio" | "file";
+  text?: string;
+  image_url?: {
+    url?: string;
+    detail?: "auto" | "low" | "high";
+  };
+  input_audio?: {
+    data?: string;
+    format?: "wav" | "mp3";
+  };
+  file?: {
+    file_data?: string;
+    file_id?: string;
+    filename?: string;
+  };
+};
+type UserMessage = {
+  role: "user";
+  content: string | Array<UserMessageContentPart>;
+  name?: string;
+};
+type AssistantMessageContentPart = {
+  type: "text" | "refusal";
+  text?: string;
+  refusal?: string;
+};
+type AssistantMessage = {
+  role: "assistant";
+  content?: string | null | Array<AssistantMessageContentPart>;
+  refusal?: string | null;
+  name?: string;
+  audio?: {
+    id: string;
+  };
+  tool_calls?: Array<ChatCompletionMessageToolCall>;
+  function_call?: {
+    name: string;
+    arguments: string;
+  };
+};
+type ToolMessage = {
+  role: "tool";
+  content:
+    | string
+    | Array<{
+        type: "text";
+        text: string;
+      }>;
+  tool_call_id: string;
+};
+type FunctionMessage = {
+  role: "function";
+  content: string;
+  name: string;
+};
+type ChatCompletionMessageParam =
+  | DeveloperMessage
+  | SystemMessage
+  | UserMessage
+  | AssistantMessage
+  | ToolMessage
+  | FunctionMessage;
+type ChatCompletionsResponseFormatText = {
+  type: "text";
+};
+type ChatCompletionsResponseFormatJSONObject = {
+  type: "json_object";
+};
+type ResponseFormatJSONSchema = {
+  type: "json_schema";
+  json_schema: {
+    name: string;
+    description?: string;
+    schema?: Record<string, unknown>;
+    strict?: boolean | null;
+  };
+};
+type ResponseFormat =
+  | ChatCompletionsResponseFormatText
+  | ChatCompletionsResponseFormatJSONObject
+  | ResponseFormatJSONSchema;
+type ChatCompletionsStreamOptions = {
+  include_usage?: boolean;
+  include_obfuscation?: boolean;
+};
+type PredictionContent = {
+  type: "content";
+  content:
+    | string
+    | Array<{
+        type: "text";
+        text: string;
+      }>;
+};
+type AudioParams = {
+  voice:
+    | string
+    | {
+        id: string;
+      };
+  format: "wav" | "aac" | "mp3" | "flac" | "opus" | "pcm16";
+};
+type WebSearchUserLocation = {
+  type: "approximate";
+  approximate: {
+    city?: string;
+    country?: string;
+    region?: string;
+    timezone?: string;
+  };
+};
+type WebSearchOptions = {
+  search_context_size?: "low" | "medium" | "high";
+  user_location?: WebSearchUserLocation;
+};
+type ChatTemplateKwargs = {
+  /** Whether to enable reasoning, enabled by default. */
+  enable_thinking?: boolean;
+  /** If false, preserves reasoning context between turns. */
+  clear_thinking?: boolean;
+};
+/** Shared optional properties used by both Prompt and Messages input branches. */
+type ChatCompletionsCommonOptions = {
+  model?: string;
+  audio?: AudioParams;
+  frequency_penalty?: number | null;
+  logit_bias?: Record<string, unknown> | null;
+  logprobs?: boolean | null;
+  top_logprobs?: number | null;
+  max_tokens?: number | null;
+  max_completion_tokens?: number | null;
+  metadata?: Record<string, unknown> | null;
+  modalities?: Array<"text" | "audio"> | null;
+  n?: number | null;
+  parallel_tool_calls?: boolean;
+  prediction?: PredictionContent;
+  presence_penalty?: number | null;
+  reasoning_effort?: "low" | "medium" | "high" | null;
+  chat_template_kwargs?: ChatTemplateKwargs;
+  response_format?: ResponseFormat;
+  seed?: number | null;
+  service_tier?: "auto" | "default" | "flex" | "scale" | "priority" | null;
+  stop?: string | Array<string> | null;
+  store?: boolean | null;
+  stream?: boolean | null;
+  stream_options?: ChatCompletionsStreamOptions;
+  temperature?: number | null;
+  tool_choice?: ChatCompletionToolChoiceOption;
+  tools?: Array<ChatCompletionTool>;
+  top_p?: number | null;
+  user?: string;
+  web_search_options?: WebSearchOptions;
+  function_call?:
+    | "none"
+    | "auto"
+    | {
+        name: string;
+      };
+  functions?: Array<FunctionDefinition>;
+};
+type PromptTokensDetails = {
+  cached_tokens?: number;
+  audio_tokens?: number;
+};
+type CompletionTokensDetails = {
+  reasoning_tokens?: number;
+  audio_tokens?: number;
+  accepted_prediction_tokens?: number;
+  rejected_prediction_tokens?: number;
+};
+type CompletionUsage = {
+  prompt_tokens: number;
+  completion_tokens: number;
+  total_tokens: number;
+  prompt_tokens_details?: PromptTokensDetails;
+  completion_tokens_details?: CompletionTokensDetails;
+};
+type ChatCompletionTopLogprob = {
+  token: string;
+  logprob: number;
+  bytes: Array<number> | null;
+};
+type ChatCompletionTokenLogprob = {
+  token: string;
+  logprob: number;
+  bytes: Array<number> | null;
+  top_logprobs: Array<ChatCompletionTopLogprob>;
+};
+type ChatCompletionAudio = {
+  id: string;
+  /** Base64 encoded audio bytes. */
+  data: string;
+  expires_at: number;
+  transcript: string;
+};
+type ChatCompletionUrlCitation = {
+  type: "url_citation";
+  url_citation: {
+    url: string;
+    title: string;
+    start_index: number;
+    end_index: number;
+  };
+};
+type ChatCompletionResponseMessage = {
+  role: "assistant";
+  content: string | null;
+  refusal: string | null;
+  annotations?: Array<ChatCompletionUrlCitation>;
+  audio?: ChatCompletionAudio;
+  tool_calls?: Array<ChatCompletionMessageToolCall>;
+  function_call?: {
+    name: string;
+    arguments: string;
+  } | null;
+};
+type ChatCompletionLogprobs = {
+  content: Array<ChatCompletionTokenLogprob> | null;
+  refusal?: Array<ChatCompletionTokenLogprob> | null;
+};
+type ChatCompletionChoice = {
+  index: number;
+  message: ChatCompletionResponseMessage;
+  finish_reason:
+    | "stop"
+    | "length"
+    | "tool_calls"
+    | "content_filter"
+    | "function_call";
+  logprobs: ChatCompletionLogprobs | null;
+};
+type ChatCompletionsPromptInput = {
+  prompt: string;
+} & ChatCompletionsCommonOptions;
+type ChatCompletionsMessagesInput = {
+  messages: Array<ChatCompletionMessageParam>;
+} & ChatCompletionsCommonOptions;
+type ChatCompletionsOutput = {
+  id: string;
+  object: string;
+  created: number;
+  model: string;
+  choices: Array<ChatCompletionChoice>;
+  usage?: CompletionUsage;
+  system_fingerprint?: string | null;
+  service_tier?: "auto" | "default" | "flex" | "scale" | "priority" | null;
+};
+/**
  * Workers AI support for OpenAI's Responses API
  * Reference: https://github.com/openai/openai-node/blob/master/src/resources/responses/responses.ts
  *
@@ -4746,6 +5152,12 @@ type ReasoningEffort = "minimal" | "low" | "medium" | "high" | null;
 type StreamOptions = {
   include_obfuscation?: boolean;
 };
+/** Marks keys from T that aren't in U as optional never */
+type Without<T, U> = {
+  [P in Exclude<keyof T, keyof U>]?: never;
+};
+/** Either T or U, but not both (mutually exclusive) */
+type XOR<T, U> = (T & Without<U, T>) | (U & Without<T, U>);
 type Ai_Cf_Baai_Bge_Base_En_V1_5_Input =
   | {
       text: string | string[];
@@ -5038,10 +5450,12 @@ declare abstract class Base_Ai_Cf_Openai_Whisper_Tiny_En {
   postProcessedOutputs: Ai_Cf_Openai_Whisper_Tiny_En_Output;
 }
 interface Ai_Cf_Openai_Whisper_Large_V3_Turbo_Input {
-  /**
-   * Base64 encoded value of the audio data.
-   */
-  audio: string;
+  audio:
+    | string
+    | {
+        body?: object;
+        contentType?: string;
+      };
   /**
    * Supported tasks are 'translate' or 'transcribe'.
    */
@@ -5059,9 +5473,33 @@ interface Ai_Cf_Openai_Whisper_Large_V3_Turbo_Input {
    */
   initial_prompt?: string;
   /**
-   * The prefix it appended the the beginning of the output of the transcription and can guide the transcription result.
+   * The prefix appended to the beginning of the output of the transcription and can guide the transcription result.
    */
   prefix?: string;
+  /**
+   * The number of beams to use in beam search decoding. Higher values may improve accuracy at the cost of speed.
+   */
+  beam_size?: number;
+  /**
+   * Whether to condition on previous text during transcription. Setting to false may help prevent hallucination loops.
+   */
+  condition_on_previous_text?: boolean;
+  /**
+   * Threshold for detecting no-speech segments. Segments with no-speech probability above this value are skipped.
+   */
+  no_speech_threshold?: number;
+  /**
+   * Threshold for filtering out segments with high compression ratio, which often indicate repetitive or hallucinated text.
+   */
+  compression_ratio_threshold?: number;
+  /**
+   * Threshold for filtering out segments with low average log probability, indicating low confidence.
+   */
+  log_prob_threshold?: number;
+  /**
+   * Optional threshold (in seconds) to skip silent periods that may cause hallucinations.
+   */
+  hallucination_silence_threshold?: number;
 }
 interface Ai_Cf_Openai_Whisper_Large_V3_Turbo_Output {
   transcription_info?: {
@@ -5208,11 +5646,11 @@ interface Ai_Cf_Baai_Bge_M3_Input_Embedding_1 {
   truncate_inputs?: boolean;
 }
 type Ai_Cf_Baai_Bge_M3_Output =
-  | Ai_Cf_Baai_Bge_M3_Ouput_Query
+  | Ai_Cf_Baai_Bge_M3_Output_Query
   | Ai_Cf_Baai_Bge_M3_Output_EmbeddingFor_Contexts
-  | Ai_Cf_Baai_Bge_M3_Ouput_Embedding
+  | Ai_Cf_Baai_Bge_M3_Output_Embedding
   | Ai_Cf_Baai_Bge_M3_AsyncResponse;
-interface Ai_Cf_Baai_Bge_M3_Ouput_Query {
+interface Ai_Cf_Baai_Bge_M3_Output_Query {
   response?: {
     /**
      * Index of the context in the request
@@ -5232,7 +5670,7 @@ interface Ai_Cf_Baai_Bge_M3_Output_EmbeddingFor_Contexts {
    */
   pooling?: "mean" | "cls";
 }
-interface Ai_Cf_Baai_Bge_M3_Ouput_Embedding {
+interface Ai_Cf_Baai_Bge_M3_Output_Embedding {
   shape?: number[];
   /**
    * Embeddings of the requested text values
@@ -5337,7 +5775,7 @@ interface Ai_Cf_Meta_Llama_3_2_11B_Vision_Instruct_Messages {
      */
     role?: string;
     /**
-     * The tool call id. Must be supplied for tool calls for Mistral-3. If you don't know what to put here you can fall back to 000000001
+     * The tool call id. If you don't know what to put here you can fall back to 000000001
      */
     tool_call_id?: string;
     content?:
@@ -5592,10 +6030,18 @@ interface Ai_Cf_Meta_Llama_3_3_70B_Instruct_Fp8_Fast_Messages {
      * The role of the message sender (e.g., 'user', 'assistant', 'system', 'tool').
      */
     role: string;
-    /**
-     * The content of the message as a string.
-     */
-    content: string;
+    content:
+      | string
+      | {
+          /**
+           * Type of the content (text)
+           */
+          type?: string;
+          /**
+           * Text content
+           */
+          text?: string;
+        }[];
   }[];
   functions?: {
     name: string;
@@ -6251,7 +6697,7 @@ interface Ai_Cf_Qwen_Qwq_32B_Messages {
      */
     role?: string;
     /**
-     * The tool call id. Must be supplied for tool calls for Mistral-3. If you don't know what to put here you can fall back to 000000001
+     * The tool call id. If you don't know what to put here you can fall back to 000000001
      */
     tool_call_id?: string;
     content?:
@@ -6378,7 +6824,7 @@ interface Ai_Cf_Qwen_Qwq_32B_Messages {
       }
   )[];
   /**
-   * JSON schema that should be fulfilled for the response.
+   * JSON schema that should be fufilled for the response.
    */
   guided_json?: object;
   /**
@@ -6652,7 +7098,7 @@ interface Ai_Cf_Mistralai_Mistral_Small_3_1_24B_Instruct_Messages {
       }
   )[];
   /**
-   * JSON schema that should be fulfilled for the response.
+   * JSON schema that should be fufilled for the response.
    */
   guided_json?: object;
   /**
@@ -6745,7 +7191,7 @@ interface Ai_Cf_Google_Gemma_3_12B_It_Prompt {
    */
   prompt: string;
   /**
-   * JSON schema that should be fulfilled for the response.
+   * JSON schema that should be fufilled for the response.
    */
   guided_json?: object;
   /**
@@ -6909,7 +7355,7 @@ interface Ai_Cf_Google_Gemma_3_12B_It_Messages {
       }
   )[];
   /**
-   * JSON schema that should be fulfilled for the response.
+   * JSON schema that should be fufilled for the response.
    */
   guided_json?: object;
   /**
@@ -7190,7 +7636,7 @@ interface Ai_Cf_Meta_Llama_4_Scout_17B_16E_Instruct_Messages {
   )[];
   response_format?: Ai_Cf_Meta_Llama_4_Scout_17B_16E_Instruct_JSON_Mode;
   /**
-   * JSON schema that should be fulfilled for the response.
+   * JSON schema that should be fufilled for the response.
    */
   guided_json?: object;
   /**
@@ -7429,7 +7875,7 @@ interface Ai_Cf_Meta_Llama_4_Scout_17B_16E_Instruct_Messages_Inner {
   )[];
   response_format?: Ai_Cf_Meta_Llama_4_Scout_17B_16E_Instruct_JSON_Mode;
   /**
-   * JSON schema that should be fulfilled for the response.
+   * JSON schema that should be fufilled for the response.
    */
   guided_json?: object;
   /**
@@ -7594,10 +8040,18 @@ interface Ai_Cf_Qwen_Qwen3_30B_A3B_Fp8_Messages {
      * The role of the message sender (e.g., 'user', 'assistant', 'system', 'tool').
      */
     role: string;
-    /**
-     * The content of the message as a string.
-     */
-    content: string;
+    content:
+      | string
+      | {
+          /**
+           * Type of the content (text)
+           */
+          type?: string;
+          /**
+           * Text content
+           */
+          text?: string;
+        }[];
   }[];
   functions?: {
     name: string;
@@ -7809,10 +8263,18 @@ interface Ai_Cf_Qwen_Qwen3_30B_A3B_Fp8_Messages_1 {
      * The role of the message sender (e.g., 'user', 'assistant', 'system', 'tool').
      */
     role: string;
-    /**
-     * The content of the message as a string.
-     */
-    content: string;
+    content:
+      | string
+      | {
+          /**
+           * Type of the content (text)
+           */
+          type?: string;
+          /**
+           * Text content
+           */
+          text?: string;
+        }[];
   }[];
   functions?: {
     name: string;
@@ -8380,12 +8842,12 @@ declare abstract class Base_Ai_Cf_Pipecat_Ai_Smart_Turn_V2 {
   postProcessedOutputs: Ai_Cf_Pipecat_Ai_Smart_Turn_V2_Output;
 }
 declare abstract class Base_Ai_Cf_Openai_Gpt_Oss_120B {
-  inputs: ResponsesInput;
-  postProcessedOutputs: ResponsesOutput;
+  inputs: XOR<ResponsesInput, ChatCompletionsInput>;
+  postProcessedOutputs: XOR<ResponsesOutput, ChatCompletionsOutput>;
 }
 declare abstract class Base_Ai_Cf_Openai_Gpt_Oss_20B {
-  inputs: ResponsesInput;
-  postProcessedOutputs: ResponsesOutput;
+  inputs: XOR<ResponsesInput, ChatCompletionsInput>;
+  postProcessedOutputs: XOR<ResponsesOutput, ChatCompletionsOutput>;
 }
 interface Ai_Cf_Leonardo_Phoenix_1_0_Input {
   /**
@@ -8517,7 +8979,7 @@ interface Ai_Cf_Ai4Bharat_Indictrans2_En_Indic_1B_Input {
    */
   text: string | string[];
   /**
-   * Target language to translate to
+   * Target langauge to translate to
    */
   target_language:
     | "asm_Beng"
@@ -8633,10 +9095,18 @@ interface Ai_Cf_Aisingapore_Gemma_Sea_Lion_V4_27B_It_Messages {
      * The role of the message sender (e.g., 'user', 'assistant', 'system', 'tool').
      */
     role: string;
-    /**
-     * The content of the message as a string.
-     */
-    content: string;
+    content:
+      | string
+      | {
+          /**
+           * Type of the content (text)
+           */
+          type?: string;
+          /**
+           * Text content
+           */
+          text?: string;
+        }[];
   }[];
   functions?: {
     name: string;
@@ -8848,10 +9318,18 @@ interface Ai_Cf_Aisingapore_Gemma_Sea_Lion_V4_27B_It_Messages_1 {
      * The role of the message sender (e.g., 'user', 'assistant', 'system', 'tool').
      */
     role: string;
-    /**
-     * The content of the message as a string.
-     */
-    content: string;
+    content:
+      | string
+      | {
+          /**
+           * Type of the content (text)
+           */
+          type?: string;
+          /**
+           * Text content
+           */
+          text?: string;
+        }[];
   }[];
   functions?: {
     name: string;
@@ -9406,6 +9884,66 @@ declare abstract class Base_Ai_Cf_Deepgram_Aura_2_Es {
   inputs: Ai_Cf_Deepgram_Aura_2_Es_Input;
   postProcessedOutputs: Ai_Cf_Deepgram_Aura_2_Es_Output;
 }
+interface Ai_Cf_Black_Forest_Labs_Flux_2_Dev_Input {
+  multipart: {
+    body?: object;
+    contentType?: string;
+  };
+}
+interface Ai_Cf_Black_Forest_Labs_Flux_2_Dev_Output {
+  /**
+   * Generated image as Base64 string.
+   */
+  image?: string;
+}
+declare abstract class Base_Ai_Cf_Black_Forest_Labs_Flux_2_Dev {
+  inputs: Ai_Cf_Black_Forest_Labs_Flux_2_Dev_Input;
+  postProcessedOutputs: Ai_Cf_Black_Forest_Labs_Flux_2_Dev_Output;
+}
+interface Ai_Cf_Black_Forest_Labs_Flux_2_Klein_4B_Input {
+  multipart: {
+    body?: object;
+    contentType?: string;
+  };
+}
+interface Ai_Cf_Black_Forest_Labs_Flux_2_Klein_4B_Output {
+  /**
+   * Generated image as Base64 string.
+   */
+  image?: string;
+}
+declare abstract class Base_Ai_Cf_Black_Forest_Labs_Flux_2_Klein_4B {
+  inputs: Ai_Cf_Black_Forest_Labs_Flux_2_Klein_4B_Input;
+  postProcessedOutputs: Ai_Cf_Black_Forest_Labs_Flux_2_Klein_4B_Output;
+}
+interface Ai_Cf_Black_Forest_Labs_Flux_2_Klein_9B_Input {
+  multipart: {
+    body?: object;
+    contentType?: string;
+  };
+}
+interface Ai_Cf_Black_Forest_Labs_Flux_2_Klein_9B_Output {
+  /**
+   * Generated image as Base64 string.
+   */
+  image?: string;
+}
+declare abstract class Base_Ai_Cf_Black_Forest_Labs_Flux_2_Klein_9B {
+  inputs: Ai_Cf_Black_Forest_Labs_Flux_2_Klein_9B_Input;
+  postProcessedOutputs: Ai_Cf_Black_Forest_Labs_Flux_2_Klein_9B_Output;
+}
+declare abstract class Base_Ai_Cf_Zai_Org_Glm_4_7_Flash {
+  inputs: ChatCompletionsInput;
+  postProcessedOutputs: ChatCompletionsOutput;
+}
+declare abstract class Base_Ai_Cf_Moonshotai_Kimi_K2_5 {
+  inputs: ChatCompletionsInput;
+  postProcessedOutputs: ChatCompletionsOutput;
+}
+declare abstract class Base_Ai_Cf_Nvidia_Nemotron_3_120B_A12B {
+  inputs: ChatCompletionsInput;
+  postProcessedOutputs: ChatCompletionsOutput;
+}
 interface AiModels {
   "@cf/huggingface/distilbert-sst-2-int8": BaseAiTextClassification;
   "@cf/stabilityai/stable-diffusion-xl-base-1.0": BaseAiTextToImage;
@@ -9424,7 +9962,6 @@ interface AiModels {
   "@hf/thebloke/zephyr-7b-beta-awq": BaseAiTextGeneration;
   "@hf/thebloke/openhermes-2.5-mistral-7b-awq": BaseAiTextGeneration;
   "@hf/thebloke/neural-chat-7b-v3-1-awq": BaseAiTextGeneration;
-  "@hf/thebloke/llamaguard-7b-awq": BaseAiTextGeneration;
   "@hf/thebloke/deepseek-coder-6.7b-base-awq": BaseAiTextGeneration;
   "@hf/thebloke/deepseek-coder-6.7b-instruct-awq": BaseAiTextGeneration;
   "@cf/deepseek-ai/deepseek-math-7b-instruct": BaseAiTextGeneration;
@@ -9491,6 +10028,12 @@ interface AiModels {
   "@cf/deepgram/flux": Base_Ai_Cf_Deepgram_Flux;
   "@cf/deepgram/aura-2-en": Base_Ai_Cf_Deepgram_Aura_2_En;
   "@cf/deepgram/aura-2-es": Base_Ai_Cf_Deepgram_Aura_2_Es;
+  "@cf/black-forest-labs/flux-2-dev": Base_Ai_Cf_Black_Forest_Labs_Flux_2_Dev;
+  "@cf/black-forest-labs/flux-2-klein-4b": Base_Ai_Cf_Black_Forest_Labs_Flux_2_Klein_4B;
+  "@cf/black-forest-labs/flux-2-klein-9b": Base_Ai_Cf_Black_Forest_Labs_Flux_2_Klein_9B;
+  "@cf/zai-org/glm-4.7-flash": Base_Ai_Cf_Zai_Org_Glm_4_7_Flash;
+  "@cf/moonshotai/kimi-k2.5": Base_Ai_Cf_Moonshotai_Kimi_K2_5;
+  "@cf/nvidia/nemotron-3-120b-a12b": Base_Ai_Cf_Nvidia_Nemotron_3_120B_A12B;
 }
 type AiOptions = {
   /**
@@ -9542,6 +10085,16 @@ type AiModelsSearchObject = {
     value: string;
   }[];
 };
+type ChatCompletionsBase = XOR<
+  ChatCompletionsPromptInput,
+  ChatCompletionsMessagesInput
+>;
+type ChatCompletionsInput = XOR<
+  ChatCompletionsBase,
+  {
+    requests: ChatCompletionsBase[];
+  }
+>;
 interface InferenceUpstreamError extends Error {}
 interface AiInternalError extends Error {}
 type AiModelListType = Record<string, any>;
@@ -10016,6 +10569,41 @@ interface RequestInitCfProperties extends Record<string, unknown> {
    * (e.g. { '200-299': 86400, '404': 1, '500-599': 0 })
    */
   cacheTtlByStatus?: Record<string, number>;
+  /**
+   * Explicit Cache-Control header value to set on the response stored in cache.
+   * This gives full control over cache directives (e.g. 'public, max-age=3600, s-maxage=86400').
+   *
+   * Cannot be used together with `cacheTtl` or the `cache` request option (`no-store`/`no-cache`),
+   * as these are mutually exclusive cache control mechanisms. Setting both will throw a TypeError.
+   *
+   * Can be used together with `cacheTtlByStatus`.
+   */
+  cacheControl?: string;
+  /**
+   * Whether the response should be eligible for Cache Reserve storage.
+   */
+  cacheReserveEligible?: boolean;
+  /**
+   * Whether to respect strong ETags (as opposed to weak ETags) from the origin.
+   */
+  respectStrongEtag?: boolean;
+  /**
+   * Whether to strip ETag headers from the origin response before caching.
+   */
+  stripEtags?: boolean;
+  /**
+   * Whether to strip Last-Modified headers from the origin response before caching.
+   */
+  stripLastModified?: boolean;
+  /**
+   * Whether to enable Cache Deception Armor, which protects against web cache
+   * deception attacks by verifying the Content-Type matches the URL extension.
+   */
+  cacheDeceptionArmor?: boolean;
+  /**
+   * Minimum file size in bytes for a response to be eligible for Cache Reserve storage.
+   */
+  cacheReserveMinimumFileSize?: number;
   scrapeShield?: boolean;
   apps?: boolean;
   image?: RequestInitCfPropertiesImage;
@@ -11928,6 +12516,7 @@ declare namespace CloudflareWorkersModule {
     constructor(ctx: ExecutionContext, env: Env);
     email?(message: ForwardableEmailMessage): void | Promise<void>;
     fetch?(request: Request): Response | Promise<Response>;
+    connect?(socket: Socket): void | Promise<void>;
     queue?(batch: MessageBatch<unknown>): void | Promise<void>;
     scheduled?(controller: ScheduledController): void | Promise<void>;
     tail?(events: TraceItem[]): void | Promise<void>;
@@ -11948,6 +12537,7 @@ declare namespace CloudflareWorkersModule {
     constructor(ctx: DurableObjectState, env: Env);
     alarm?(alarmInfo?: AlarmInvocationInfo): void | Promise<void>;
     fetch?(request: Request): Response | Promise<Response>;
+    connect?(socket: Socket): void | Promise<void>;
     webSocketMessage?(
       ws: WebSocket,
       message: string | ArrayBuffer,
@@ -12098,17 +12688,6 @@ interface StreamBinding {
    * @returns A handle for per-video operations.
    */
   video(id: string): StreamVideoHandle;
-  /**
-   * Uploads a new video from a File.
-   * @param file The video file to upload.
-   * @returns The uploaded video details.
-   * @throws {BadRequestError} if the upload parameter is invalid
-   * @throws {QuotaReachedError} if the account storage capacity is exceeded
-   * @throws {MaxFileSizeError} if the file size is too large
-   * @throws {RateLimitedError} if the server received too many requests
-   * @throws {InternalError} if an unexpected error occurs
-   */
-  upload(file: File): Promise<StreamVideo>;
   /**
    * Uploads a new video from a provided URL.
    * @param url The URL to upload from.
@@ -12958,6 +13537,9 @@ declare namespace TailStream {
     readonly type: "fetch";
     readonly statusCode: number;
   }
+  interface ConnectEventInfo {
+    readonly type: "connect";
+  }
   type EventOutcome =
     | "ok"
     | "canceled"
@@ -12988,6 +13570,7 @@ declare namespace TailStream {
     readonly scriptVersion?: ScriptVersion;
     readonly info:
       | FetchEventInfo
+      | ConnectEventInfo
       | JsRpcEventInfo
       | ScheduledEventInfo
       | AlarmEventInfo
