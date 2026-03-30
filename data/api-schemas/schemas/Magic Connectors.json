@@ -4904,6 +4904,10 @@
 													},
 													"type": "array"
 												},
+												"platform": {
+													"description": "Platform identifier",
+													"type": "string"
+												},
 												"snmp_icmp_in_addr_mask_reps": {
 													"description": "Number of ICMP Address Mask Reply messages received",
 													"type": "number"
@@ -6445,6 +6449,10 @@
 																	"type": "object"
 																},
 																"type": "array"
+															},
+															"platform": {
+																"description": "Platform identifier",
+																"type": "string"
 															},
 															"snmp_icmp_in_addr_mask_reps": {
 																"description": "Number of ICMP Address Mask Reply messages received",
