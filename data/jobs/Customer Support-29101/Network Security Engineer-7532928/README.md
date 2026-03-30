@@ -22,7 +22,7 @@
 <ul>
 	<li>You have a minimum of 4 years experience working as a Network Security Engineer / Technical Support Engineer / Sr. Support Engineer supporting networking or web security products.</li>
 	<li>Exceptional troubleshooting and problem-solving skills, with the ability to simplify complex concepts for customers.</li>
-	<li>Strong customer service orientation and communication skills, both written and verbal, fluent in English and preferably a second language like Mandarin, Hindi, Tamil, Korean or Japanese.</li>
+	<li>Strong customer service orientation and communication skills.</li>
 	<li>Ability to work independently and collaboratively in a fast-paced, dynamic environment.</li>
 	<li>Strong understanding of network protocols, including TCP/IP, DNS, HTTP/S, and BGP, with a particular focus on anycast routing concepts and implementation, as well as tools such as iptables and looking glass.</li>
 	<li>Proven experience troubleshooting network connectivity issues, BGP routing, and GRE tunnels, and performing packet capture analysis</li>

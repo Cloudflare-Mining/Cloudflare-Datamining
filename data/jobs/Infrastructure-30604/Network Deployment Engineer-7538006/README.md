@@ -56,7 +56,7 @@
 </ul>
 <p><strong>Bonus Points</strong></p>
 <ul>
-	<li>Multi-lingual; experience working with infrastructure in multiple countries.</li>
+	<li>Experience working with infrastructure in multiple countries.</li>
 	<li>Professional level network certification(s) (JNCIP, CCNP, etc) or higher.</li>
 	<li>Linux certifications.</li>
 	<li>Experience with continuous / rapid deployment.</li>
