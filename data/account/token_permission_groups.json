@@ -1368,6 +1368,22 @@
 		]
 	},
 	{
+		"id": "da5bb637b72a4a29886c23489398b770",
+		"name": "Email Routing Suppressions Read",
+		"description": "Grants read access to Email Routing target suppression\n",
+		"scopes": [
+			"com.cloudflare.api.account"
+		]
+	},
+	{
+		"id": "b714141b1e1941cebb38c017036262a6",
+		"name": "Email Routing Suppressions Write",
+		"description": "Grants full access to Email Routing target suppressions\n",
+		"scopes": [
+			"com.cloudflare.api.account"
+		]
+	},
+	{
 		"id": "1047880d37b649b49db4a504a245896f",
 		"name": "Email Security DMARC Reports Read",
 		"description": "Grants read access to Email Security dmarc reports\n",
