@@ -182,6 +182,8 @@
 										},
 										"hybrid_search_enabled": {
 											"default": false,
+											"deprecated": true,
+											"description": "Deprecated — use index_method instead.",
 											"type": "boolean",
 											"x-auditable": true
 										},
@@ -192,6 +194,29 @@
 											"minLength": 1,
 											"pattern": "^[a-z0-9_]+(?:-[a-z0-9_]+)*$",
 											"type": "string",
+											"x-auditable": true
+										},
+										"index_method": {
+											"default": {
+												"keyword": false,
+												"vector": true
+											},
+											"description": "Controls which storage backends are used during indexing. Defaults to vector-only.",
+											"properties": {
+												"keyword": {
+													"description": "Enable keyword (BM25) storage backend.",
+													"type": "boolean"
+												},
+												"vector": {
+													"description": "Enable vector (embedding) storage backend.",
+													"type": "boolean"
+												}
+											},
+											"required": [
+												"vector",
+												"keyword"
+											],
+											"type": "object",
 											"x-auditable": true
 										},
 										"indexing_options": {
@@ -246,10 +271,8 @@
 											"type": "string"
 										},
 										"namespace": {
-											"maxLength": 32,
-											"minLength": 1,
 											"nullable": true,
-											"pattern": "^[a-z0-9_]+(?:-[a-z0-9_]+)*$",
+											"pattern": "^[a-z0-9]([a-z0-9-]{0,26}[a-z0-9])?$",
 											"readOnly": true,
 											"type": "string"
 										},
@@ -776,10 +799,8 @@
 				"in": "query",
 				"name": "namespace",
 				"schema": {
-					"maxLength": 32,
-					"minLength": 1,
 					"nullable": true,
-					"pattern": "^[a-z0-9_]+(?:-[a-z0-9_]+)*$",
+					"pattern": "^[a-z0-9]([a-z0-9-]{0,26}[a-z0-9])?$",
 					"readOnly": true,
 					"type": "string"
 				}
@@ -976,6 +997,8 @@
 											},
 											"hybrid_search_enabled": {
 												"default": false,
+												"deprecated": true,
+												"description": "Deprecated — use index_method instead.",
 												"type": "boolean",
 												"x-auditable": true
 											},
@@ -986,6 +1009,29 @@
 												"minLength": 1,
 												"pattern": "^[a-z0-9_]+(?:-[a-z0-9_]+)*$",
 												"type": "string",
+												"x-auditable": true
+											},
+											"index_method": {
+												"default": {
+													"keyword": false,
+													"vector": true
+												},
+												"description": "Controls which storage backends are used during indexing. Defaults to vector-only.",
+												"properties": {
+													"keyword": {
+														"description": "Enable keyword (BM25) storage backend.",
+														"type": "boolean"
+													},
+													"vector": {
+														"description": "Enable vector (embedding) storage backend.",
+														"type": "boolean"
+													}
+												},
+												"required": [
+													"vector",
+													"keyword"
+												],
+												"type": "object",
 												"x-auditable": true
 											},
 											"indexing_options": {
@@ -1040,10 +1086,8 @@
 												"type": "string"
 											},
 											"namespace": {
-												"maxLength": 32,
-												"minLength": 1,
 												"nullable": true,
-												"pattern": "^[a-z0-9_]+(?:-[a-z0-9_]+)*$",
+												"pattern": "^[a-z0-9]([a-z0-9-]{0,26}[a-z0-9])?$",
 												"readOnly": true,
 												"type": "string"
 											},
@@ -1726,6 +1770,8 @@
 										},
 										"hybrid_search_enabled": {
 											"default": false,
+											"deprecated": true,
+											"description": "Deprecated — use index_method instead.",
 											"type": "boolean",
 											"x-auditable": true
 										},
@@ -1736,6 +1782,29 @@
 											"minLength": 1,
 											"pattern": "^[a-z0-9_]+(?:-[a-z0-9_]+)*$",
 											"type": "string",
+											"x-auditable": true
+										},
+										"index_method": {
+											"default": {
+												"keyword": false,
+												"vector": true
+											},
+											"description": "Controls which storage backends are used during indexing. Defaults to vector-only.",
+											"properties": {
+												"keyword": {
+													"description": "Enable keyword (BM25) storage backend.",
+													"type": "boolean"
+												},
+												"vector": {
+													"description": "Enable vector (embedding) storage backend.",
+													"type": "boolean"
+												}
+											},
+											"required": [
+												"vector",
+												"keyword"
+											],
+											"type": "object",
 											"x-auditable": true
 										},
 										"indexing_options": {
@@ -1790,10 +1859,8 @@
 											"type": "string"
 										},
 										"namespace": {
-											"maxLength": 32,
-											"minLength": 1,
 											"nullable": true,
-											"pattern": "^[a-z0-9_]+(?:-[a-z0-9_]+)*$",
+											"pattern": "^[a-z0-9]([a-z0-9-]{0,26}[a-z0-9])?$",
 											"readOnly": true,
 											"type": "string"
 										},
@@ -2629,11 +2696,6 @@
 								"type": "string",
 								"x-auditable": true
 							},
-							"hybrid_search_enabled": {
-								"default": false,
-								"type": "boolean",
-								"x-auditable": true
-							},
 							"id": {
 								"description": "AI Search instance ID. Lowercase alphanumeric, hyphens, and underscores.",
 								"example": "my-ai-search",
@@ -2641,6 +2703,29 @@
 								"minLength": 1,
 								"pattern": "^[a-z0-9_]+(?:-[a-z0-9_]+)*$",
 								"type": "string",
+								"x-auditable": true
+							},
+							"index_method": {
+								"default": {
+									"keyword": false,
+									"vector": true
+								},
+								"description": "Controls which storage backends are used during indexing. Defaults to vector-only.",
+								"properties": {
+									"keyword": {
+										"description": "Enable keyword (BM25) storage backend.",
+										"type": "boolean"
+									},
+									"vector": {
+										"description": "Enable vector (embedding) storage backend.",
+										"type": "boolean"
+									}
+								},
+								"required": [
+									"vector",
+									"keyword"
+								],
+								"type": "object",
 								"x-auditable": true
 							},
 							"indexing_options": {
@@ -2679,10 +2764,8 @@
 								"x-auditable": true
 							},
 							"namespace": {
-								"maxLength": 32,
-								"minLength": 1,
 								"nullable": true,
-								"pattern": "^[a-z0-9_]+(?:-[a-z0-9_]+)*$",
+								"pattern": "^[a-z0-9]([a-z0-9-]{0,26}[a-z0-9])?$",
 								"readOnly": true,
 								"type": "string"
 							},
@@ -3233,6 +3316,8 @@
 										},
 										"hybrid_search_enabled": {
 											"default": false,
+											"deprecated": true,
+											"description": "Deprecated — use index_method instead.",
 											"type": "boolean",
 											"x-auditable": true
 										},
@@ -3243,6 +3328,29 @@
 											"minLength": 1,
 											"pattern": "^[a-z0-9_]+(?:-[a-z0-9_]+)*$",
 											"type": "string",
+											"x-auditable": true
+										},
+										"index_method": {
+											"default": {
+												"keyword": false,
+												"vector": true
+											},
+											"description": "Controls which storage backends are used during indexing. Defaults to vector-only.",
+											"properties": {
+												"keyword": {
+													"description": "Enable keyword (BM25) storage backend.",
+													"type": "boolean"
+												},
+												"vector": {
+													"description": "Enable vector (embedding) storage backend.",
+													"type": "boolean"
+												}
+											},
+											"required": [
+												"vector",
+												"keyword"
+											],
+											"type": "object",
 											"x-auditable": true
 										},
 										"indexing_options": {
@@ -3297,10 +3405,8 @@
 											"type": "string"
 										},
 										"namespace": {
-											"maxLength": 32,
-											"minLength": 1,
 											"nullable": true,
-											"pattern": "^[a-z0-9_]+(?:-[a-z0-9_]+)*$",
+											"pattern": "^[a-z0-9]([a-z0-9-]{0,26}[a-z0-9])?$",
 											"readOnly": true,
 											"type": "string"
 										},
@@ -4926,9 +5032,27 @@
 								"type": "string",
 								"x-auditable": true
 							},
-							"hybrid_search_enabled": {
-								"default": false,
-								"type": "boolean",
+							"index_method": {
+								"default": {
+									"keyword": false,
+									"vector": true
+								},
+								"description": "Controls which storage backends are used during indexing. Defaults to vector-only.",
+								"properties": {
+									"keyword": {
+										"description": "Enable keyword (BM25) storage backend.",
+										"type": "boolean"
+									},
+									"vector": {
+										"description": "Enable vector (embedding) storage backend.",
+										"type": "boolean"
+									}
+								},
+								"required": [
+									"vector",
+									"keyword"
+								],
+								"type": "object",
 								"x-auditable": true
 							},
 							"indexing_options": {
@@ -5556,6 +5680,8 @@
 										},
 										"hybrid_search_enabled": {
 											"default": false,
+											"deprecated": true,
+											"description": "Deprecated — use index_method instead.",
 											"type": "boolean",
 											"x-auditable": true
 										},
@@ -5566,6 +5692,29 @@
 											"minLength": 1,
 											"pattern": "^[a-z0-9_]+(?:-[a-z0-9_]+)*$",
 											"type": "string",
+											"x-auditable": true
+										},
+										"index_method": {
+											"default": {
+												"keyword": false,
+												"vector": true
+											},
+											"description": "Controls which storage backends are used during indexing. Defaults to vector-only.",
+											"properties": {
+												"keyword": {
+													"description": "Enable keyword (BM25) storage backend.",
+													"type": "boolean"
+												},
+												"vector": {
+													"description": "Enable vector (embedding) storage backend.",
+													"type": "boolean"
+												}
+											},
+											"required": [
+												"vector",
+												"keyword"
+											],
+											"type": "object",
 											"x-auditable": true
 										},
 										"indexing_options": {
@@ -5620,10 +5769,8 @@
 											"type": "string"
 										},
 										"namespace": {
-											"maxLength": 32,
-											"minLength": 1,
 											"nullable": true,
-											"pattern": "^[a-z0-9_]+(?:-[a-z0-9_]+)*$",
+											"pattern": "^[a-z0-9]([a-z0-9-]{0,26}[a-z0-9])?$",
 											"readOnly": true,
 											"type": "string"
 										},

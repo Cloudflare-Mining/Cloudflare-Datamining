@@ -173,6 +173,7 @@
 					"oneOf": [
 						{
 							"enum": [
+								"tcp",
 								"http"
 							],
 							"type": "string"
@@ -339,7 +340,8 @@
 											"items": {
 												"discriminator": {
 													"mapping": {
-														"http": "#/components/schemas/infra_HttpServiceConfig"
+														"http": "#/components/schemas/infra_HttpServiceConfig",
+														"tcp": "#/components/schemas/infra_TcpServiceConfig"
 													},
 													"propertyName": "type"
 												},
@@ -512,8 +514,29 @@
 																		"readOnly": true,
 																		"type": "string"
 																	},
+																	"tls_settings": {
+																		"allOf": [
+																			{
+																				"description": "TLS settings for a connectivity service.\n\nIf omitted, the default mode (`verify_full`) is used.",
+																				"properties": {
+																					"cert_verification_mode": {
+																						"description": "TLS certificate verification mode for the connection to the origin.\n\n- `\"verify_full\"` — verify certificate chain and hostname (default)\n- `\"verify_ca\"` — verify certificate chain only, skip hostname check\n- `\"disabled\"` — do not verify the server certificate at all",
+																						"example": "verify_full",
+																						"type": "string"
+																					}
+																				},
+																				"required": [
+																					"cert_verification_mode"
+																				],
+																				"type": "object"
+																			}
+																		],
+																		"nullable": true,
+																		"type": "object"
+																	},
 																	"type": {
 																		"enum": [
+																			"tcp",
 																			"http"
 																		],
 																		"type": "string"
@@ -563,6 +586,249 @@
 															"https_port": 8443,
 															"name": "web-app",
 															"type": "http"
+														}
+													},
+													{
+														"allOf": [
+															{
+																"properties": {
+																	"created_at": {
+																		"example": "2024-01-15T09:30:00Z",
+																		"format": "date-time",
+																		"readOnly": true,
+																		"type": "string"
+																	},
+																	"host": {
+																		"oneOf": [
+																			{
+																				"example": {
+																					"ipv4": "10.0.0.1",
+																					"network": {
+																						"tunnel_id": "0191dce4-9ab4-7fce-b660-8e5dec5172da"
+																					}
+																				},
+																				"properties": {
+																					"ipv4": {
+																						"example": "10.0.0.1",
+																						"type": "string"
+																					},
+																					"network": {
+																						"properties": {
+																							"tunnel_id": {
+																								"example": "0191dce4-9ab4-7fce-b660-8e5dec5172da",
+																								"format": "uuid",
+																								"type": "string"
+																							}
+																						},
+																						"required": [
+																							"tunnel_id"
+																						],
+																						"type": "object"
+																					}
+																				},
+																				"required": [
+																					"ipv4",
+																					"network"
+																				],
+																				"type": "object"
+																			},
+																			{
+																				"example": {
+																					"ipv6": "fe80::1",
+																					"network": {
+																						"tunnel_id": "0191dce4-9ab4-7fce-b660-8e5dec5172da"
+																					}
+																				},
+																				"properties": {
+																					"ipv6": {
+																						"example": "fe80::1",
+																						"type": "string"
+																					},
+																					"network": {
+																						"properties": {
+																							"tunnel_id": {
+																								"example": "0191dce4-9ab4-7fce-b660-8e5dec5172da",
+																								"format": "uuid",
+																								"type": "string"
+																							}
+																						},
+																						"required": [
+																							"tunnel_id"
+																						],
+																						"type": "object"
+																					}
+																				},
+																				"required": [
+																					"ipv6",
+																					"network"
+																				],
+																				"type": "object"
+																			},
+																			{
+																				"example": {
+																					"ipv4": "10.0.0.1",
+																					"ipv6": "fe80::1",
+																					"network": {
+																						"tunnel_id": "0191dce4-9ab4-7fce-b660-8e5dec5172da"
+																					}
+																				},
+																				"properties": {
+																					"ipv4": {
+																						"example": "10.0.0.1",
+																						"type": "string"
+																					},
+																					"ipv6": {
+																						"example": "fe80::1",
+																						"type": "string"
+																					},
+																					"network": {
+																						"properties": {
+																							"tunnel_id": {
+																								"example": "0191dce4-9ab4-7fce-b660-8e5dec5172da",
+																								"format": "uuid",
+																								"type": "string"
+																							}
+																						},
+																						"required": [
+																							"tunnel_id"
+																						],
+																						"type": "object"
+																					}
+																				},
+																				"required": [
+																					"ipv4",
+																					"ipv6",
+																					"network"
+																				],
+																				"type": "object"
+																			},
+																			{
+																				"example": {
+																					"hostname": "example.com",
+																					"resolver_network": {
+																						"resolver_ips": [
+																							"10.0.0.1"
+																						],
+																						"tunnel_id": "0191dce4-9ab4-7fce-b660-8e5dec5172da"
+																					}
+																				},
+																				"properties": {
+																					"hostname": {
+																						"example": "example.com",
+																						"type": "string"
+																					},
+																					"resolver_network": {
+																						"properties": {
+																							"resolver_ips": {
+																								"items": {
+																									"type": "string"
+																								},
+																								"nullable": true,
+																								"type": "array"
+																							},
+																							"tunnel_id": {
+																								"example": "0191dce4-9ab4-7fce-b660-8e5dec5172da",
+																								"format": "uuid",
+																								"type": "string"
+																							}
+																						},
+																						"required": [
+																							"tunnel_id"
+																						],
+																						"type": "object"
+																					}
+																				},
+																				"required": [
+																					"hostname",
+																					"resolver_network"
+																				],
+																				"type": "object"
+																			}
+																		]
+																	},
+																	"name": {
+																		"example": "web-server",
+																		"type": "string"
+																	},
+																	"service_id": {
+																		"example": "550e8400-e29b-41d4-a716-446655440000",
+																		"format": "uuid",
+																		"readOnly": true,
+																		"type": "string"
+																	},
+																	"tls_settings": {
+																		"allOf": [
+																			{
+																				"description": "TLS settings for a connectivity service.\n\nIf omitted, the default mode (`verify_full`) is used.",
+																				"properties": {
+																					"cert_verification_mode": {
+																						"description": "TLS certificate verification mode for the connection to the origin.\n\n- `\"verify_full\"` — verify certificate chain and hostname (default)\n- `\"verify_ca\"` — verify certificate chain only, skip hostname check\n- `\"disabled\"` — do not verify the server certificate at all",
+																						"example": "verify_full",
+																						"type": "string"
+																					}
+																				},
+																				"required": [
+																					"cert_verification_mode"
+																				],
+																				"type": "object"
+																			}
+																		],
+																		"nullable": true,
+																		"type": "object"
+																	},
+																	"type": {
+																		"enum": [
+																			"tcp",
+																			"http"
+																		],
+																		"type": "string"
+																	},
+																	"updated_at": {
+																		"example": "2024-01-15T10:45:00Z",
+																		"format": "date-time",
+																		"readOnly": true,
+																		"type": "string"
+																	}
+																},
+																"required": [
+																	"name",
+																	"type",
+																	"host"
+																],
+																"type": "object"
+															},
+															{
+																"properties": {
+																	"app_protocol": {
+																		"enum": [
+																			"postgresql",
+																			"mysql"
+																		],
+																		"example": "postgresql",
+																		"nullable": true,
+																		"type": "string"
+																	},
+																	"tcp_port": {
+																		"example": 5432,
+																		"format": "int32",
+																		"minimum": 1,
+																		"nullable": true,
+																		"type": "integer"
+																	}
+																},
+																"type": "object"
+															}
+														],
+														"example": {
+															"host": {
+																"ipv4": "10.0.0.1",
+																"network": {
+																	"tunnel_id": "0191dce4-9ab4-7fce-b660-8e5dec5172da"
+																}
+															},
+															"name": "postgres-db",
+															"tcp_port": 5432,
+															"type": "tcp"
 														}
 													}
 												]
@@ -823,7 +1089,8 @@
 										"result": {
 											"discriminator": {
 												"mapping": {
-													"http": "#/components/schemas/infra_HttpServiceConfig"
+													"http": "#/components/schemas/infra_HttpServiceConfig",
+													"tcp": "#/components/schemas/infra_TcpServiceConfig"
 												},
 												"propertyName": "type"
 											},
@@ -996,8 +1263,29 @@
 																	"readOnly": true,
 																	"type": "string"
 																},
+																"tls_settings": {
+																	"allOf": [
+																		{
+																			"description": "TLS settings for a connectivity service.\n\nIf omitted, the default mode (`verify_full`) is used.",
+																			"properties": {
+																				"cert_verification_mode": {
+																					"description": "TLS certificate verification mode for the connection to the origin.\n\n- `\"verify_full\"` — verify certificate chain and hostname (default)\n- `\"verify_ca\"` — verify certificate chain only, skip hostname check\n- `\"disabled\"` — do not verify the server certificate at all",
+																					"example": "verify_full",
+																					"type": "string"
+																				}
+																			},
+																			"required": [
+																				"cert_verification_mode"
+																			],
+																			"type": "object"
+																		}
+																	],
+																	"nullable": true,
+																	"type": "object"
+																},
 																"type": {
 																	"enum": [
+																		"tcp",
 																		"http"
 																	],
 																	"type": "string"
@@ -1047,6 +1335,249 @@
 														"https_port": 8443,
 														"name": "web-app",
 														"type": "http"
+													}
+												},
+												{
+													"allOf": [
+														{
+															"properties": {
+																"created_at": {
+																	"example": "2024-01-15T09:30:00Z",
+																	"format": "date-time",
+																	"readOnly": true,
+																	"type": "string"
+																},
+																"host": {
+																	"oneOf": [
+																		{
+																			"example": {
+																				"ipv4": "10.0.0.1",
+																				"network": {
+																					"tunnel_id": "0191dce4-9ab4-7fce-b660-8e5dec5172da"
+																				}
+																			},
+																			"properties": {
+																				"ipv4": {
+																					"example": "10.0.0.1",
+																					"type": "string"
+																				},
+																				"network": {
+																					"properties": {
+																						"tunnel_id": {
+																							"example": "0191dce4-9ab4-7fce-b660-8e5dec5172da",
+																							"format": "uuid",
+																							"type": "string"
+																						}
+																					},
+																					"required": [
+																						"tunnel_id"
+																					],
+																					"type": "object"
+																				}
+																			},
+																			"required": [
+																				"ipv4",
+																				"network"
+																			],
+																			"type": "object"
+																		},
+																		{
+																			"example": {
+																				"ipv6": "fe80::1",
+																				"network": {
+																					"tunnel_id": "0191dce4-9ab4-7fce-b660-8e5dec5172da"
+																				}
+																			},
+																			"properties": {
+																				"ipv6": {
+																					"example": "fe80::1",
+																					"type": "string"
+																				},
+																				"network": {
+																					"properties": {
+																						"tunnel_id": {
+																							"example": "0191dce4-9ab4-7fce-b660-8e5dec5172da",
+																							"format": "uuid",
+																							"type": "string"
+																						}
+																					},
+																					"required": [
+																						"tunnel_id"
+																					],
+																					"type": "object"
+																				}
+																			},
+																			"required": [
+																				"ipv6",
+																				"network"
+																			],
+																			"type": "object"
+																		},
+																		{
+																			"example": {
+																				"ipv4": "10.0.0.1",
+																				"ipv6": "fe80::1",
+																				"network": {
+																					"tunnel_id": "0191dce4-9ab4-7fce-b660-8e5dec5172da"
+																				}
+																			},
+																			"properties": {
+																				"ipv4": {
+																					"example": "10.0.0.1",
+																					"type": "string"
+																				},
+																				"ipv6": {
+																					"example": "fe80::1",
+																					"type": "string"
+																				},
+																				"network": {
+																					"properties": {
+																						"tunnel_id": {
+																							"example": "0191dce4-9ab4-7fce-b660-8e5dec5172da",
+																							"format": "uuid",
+																							"type": "string"
+																						}
+																					},
+																					"required": [
+																						"tunnel_id"
+																					],
+																					"type": "object"
+																				}
+																			},
+																			"required": [
+																				"ipv4",
+																				"ipv6",
+																				"network"
+																			],
+																			"type": "object"
+																		},
+																		{
+																			"example": {
+																				"hostname": "example.com",
+																				"resolver_network": {
+																					"resolver_ips": [
+																						"10.0.0.1"
+																					],
+																					"tunnel_id": "0191dce4-9ab4-7fce-b660-8e5dec5172da"
+																				}
+																			},
+																			"properties": {
+																				"hostname": {
+																					"example": "example.com",
+																					"type": "string"
+																				},
+																				"resolver_network": {
+																					"properties": {
+																						"resolver_ips": {
+																							"items": {
+																								"type": "string"
+																							},
+																							"nullable": true,
+																							"type": "array"
+																						},
+																						"tunnel_id": {
+																							"example": "0191dce4-9ab4-7fce-b660-8e5dec5172da",
+																							"format": "uuid",
+																							"type": "string"
+																						}
+																					},
+																					"required": [
+																						"tunnel_id"
+																					],
+																					"type": "object"
+																				}
+																			},
+																			"required": [
+																				"hostname",
+																				"resolver_network"
+																			],
+																			"type": "object"
+																		}
+																	]
+																},
+																"name": {
+																	"example": "web-server",
+																	"type": "string"
+																},
+																"service_id": {
+																	"example": "550e8400-e29b-41d4-a716-446655440000",
+																	"format": "uuid",
+																	"readOnly": true,
+																	"type": "string"
+																},
+																"tls_settings": {
+																	"allOf": [
+																		{
+																			"description": "TLS settings for a connectivity service.\n\nIf omitted, the default mode (`verify_full`) is used.",
+																			"properties": {
+																				"cert_verification_mode": {
+																					"description": "TLS certificate verification mode for the connection to the origin.\n\n- `\"verify_full\"` — verify certificate chain and hostname (default)\n- `\"verify_ca\"` — verify certificate chain only, skip hostname check\n- `\"disabled\"` — do not verify the server certificate at all",
+																					"example": "verify_full",
+																					"type": "string"
+																				}
+																			},
+																			"required": [
+																				"cert_verification_mode"
+																			],
+																			"type": "object"
+																		}
+																	],
+																	"nullable": true,
+																	"type": "object"
+																},
+																"type": {
+																	"enum": [
+																		"tcp",
+																		"http"
+																	],
+																	"type": "string"
+																},
+																"updated_at": {
+																	"example": "2024-01-15T10:45:00Z",
+																	"format": "date-time",
+																	"readOnly": true,
+																	"type": "string"
+																}
+															},
+															"required": [
+																"name",
+																"type",
+																"host"
+															],
+															"type": "object"
+														},
+														{
+															"properties": {
+																"app_protocol": {
+																	"enum": [
+																		"postgresql",
+																		"mysql"
+																	],
+																	"example": "postgresql",
+																	"nullable": true,
+																	"type": "string"
+																},
+																"tcp_port": {
+																	"example": 5432,
+																	"format": "int32",
+																	"minimum": 1,
+																	"nullable": true,
+																	"type": "integer"
+																}
+															},
+															"type": "object"
+														}
+													],
+													"example": {
+														"host": {
+															"ipv4": "10.0.0.1",
+															"network": {
+																"tunnel_id": "0191dce4-9ab4-7fce-b660-8e5dec5172da"
+															}
+														},
+														"name": "postgres-db",
+														"tcp_port": 5432,
+														"type": "tcp"
 													}
 												}
 											]
@@ -1251,12 +1782,42 @@
 								"name": "web-server",
 								"type": "http"
 							}
+						},
+						"tcp-with-port": {
+							"summary": "TCP service with explicit port",
+							"value": {
+								"host": {
+									"ipv4": "10.0.0.1",
+									"network": {
+										"tunnel_id": "0191dce4-9ab4-7fce-b660-8e5dec5172da"
+									}
+								},
+								"name": "postgres-db",
+								"tcp_port": 5432,
+								"type": "tcp"
+							}
+						},
+						"tcp-with-protocol": {
+							"summary": "TCP service with app protocol",
+							"value": {
+								"app_protocol": "postgresql",
+								"host": {
+									"hostname": "db.example.com",
+									"resolver_network": {
+										"tunnel_id": "0191dce4-9ab4-7fce-b660-8e5dec5172da"
+									}
+								},
+								"name": "postgres-db",
+								"tcp_port": 5432,
+								"type": "tcp"
+							}
 						}
 					},
 					"schema": {
 						"discriminator": {
 							"mapping": {
-								"http": "#/components/schemas/infra_HttpServiceConfig"
+								"http": "#/components/schemas/infra_HttpServiceConfig",
+								"tcp": "#/components/schemas/infra_TcpServiceConfig"
 							},
 							"propertyName": "type"
 						},
@@ -1429,8 +1990,29 @@
 												"readOnly": true,
 												"type": "string"
 											},
+											"tls_settings": {
+												"allOf": [
+													{
+														"description": "TLS settings for a connectivity service.\n\nIf omitted, the default mode (`verify_full`) is used.",
+														"properties": {
+															"cert_verification_mode": {
+																"description": "TLS certificate verification mode for the connection to the origin.\n\n- `\"verify_full\"` — verify certificate chain and hostname (default)\n- `\"verify_ca\"` — verify certificate chain only, skip hostname check\n- `\"disabled\"` — do not verify the server certificate at all",
+																"example": "verify_full",
+																"type": "string"
+															}
+														},
+														"required": [
+															"cert_verification_mode"
+														],
+														"type": "object"
+													}
+												],
+												"nullable": true,
+												"type": "object"
+											},
 											"type": {
 												"enum": [
+													"tcp",
 													"http"
 												],
 												"type": "string"
@@ -1481,6 +2063,249 @@
 									"name": "web-app",
 									"type": "http"
 								}
+							},
+							{
+								"allOf": [
+									{
+										"properties": {
+											"created_at": {
+												"example": "2024-01-15T09:30:00Z",
+												"format": "date-time",
+												"readOnly": true,
+												"type": "string"
+											},
+											"host": {
+												"oneOf": [
+													{
+														"example": {
+															"ipv4": "10.0.0.1",
+															"network": {
+																"tunnel_id": "0191dce4-9ab4-7fce-b660-8e5dec5172da"
+															}
+														},
+														"properties": {
+															"ipv4": {
+																"example": "10.0.0.1",
+																"type": "string"
+															},
+															"network": {
+																"properties": {
+																	"tunnel_id": {
+																		"example": "0191dce4-9ab4-7fce-b660-8e5dec5172da",
+																		"format": "uuid",
+																		"type": "string"
+																	}
+																},
+																"required": [
+																	"tunnel_id"
+																],
+																"type": "object"
+															}
+														},
+														"required": [
+															"ipv4",
+															"network"
+														],
+														"type": "object"
+													},
+													{
+														"example": {
+															"ipv6": "fe80::1",
+															"network": {
+																"tunnel_id": "0191dce4-9ab4-7fce-b660-8e5dec5172da"
+															}
+														},
+														"properties": {
+															"ipv6": {
+																"example": "fe80::1",
+																"type": "string"
+															},
+															"network": {
+																"properties": {
+																	"tunnel_id": {
+																		"example": "0191dce4-9ab4-7fce-b660-8e5dec5172da",
+																		"format": "uuid",
+																		"type": "string"
+																	}
+																},
+																"required": [
+																	"tunnel_id"
+																],
+																"type": "object"
+															}
+														},
+														"required": [
+															"ipv6",
+															"network"
+														],
+														"type": "object"
+													},
+													{
+														"example": {
+															"ipv4": "10.0.0.1",
+															"ipv6": "fe80::1",
+															"network": {
+																"tunnel_id": "0191dce4-9ab4-7fce-b660-8e5dec5172da"
+															}
+														},
+														"properties": {
+															"ipv4": {
+																"example": "10.0.0.1",
+																"type": "string"
+															},
+															"ipv6": {
+																"example": "fe80::1",
+																"type": "string"
+															},
+															"network": {
+																"properties": {
+																	"tunnel_id": {
+																		"example": "0191dce4-9ab4-7fce-b660-8e5dec5172da",
+																		"format": "uuid",
+																		"type": "string"
+																	}
+																},
+																"required": [
+																	"tunnel_id"
+																],
+																"type": "object"
+															}
+														},
+														"required": [
+															"ipv4",
+															"ipv6",
+															"network"
+														],
+														"type": "object"
+													},
+													{
+														"example": {
+															"hostname": "example.com",
+															"resolver_network": {
+																"resolver_ips": [
+																	"10.0.0.1"
+																],
+																"tunnel_id": "0191dce4-9ab4-7fce-b660-8e5dec5172da"
+															}
+														},
+														"properties": {
+															"hostname": {
+																"example": "example.com",
+																"type": "string"
+															},
+															"resolver_network": {
+																"properties": {
+																	"resolver_ips": {
+																		"items": {
+																			"type": "string"
+																		},
+																		"nullable": true,
+																		"type": "array"
+																	},
+																	"tunnel_id": {
+																		"example": "0191dce4-9ab4-7fce-b660-8e5dec5172da",
+																		"format": "uuid",
+																		"type": "string"
+																	}
+																},
+																"required": [
+																	"tunnel_id"
+																],
+																"type": "object"
+															}
+														},
+														"required": [
+															"hostname",
+															"resolver_network"
+														],
+														"type": "object"
+													}
+												]
+											},
+											"name": {
+												"example": "web-server",
+												"type": "string"
+											},
+											"service_id": {
+												"example": "550e8400-e29b-41d4-a716-446655440000",
+												"format": "uuid",
+												"readOnly": true,
+												"type": "string"
+											},
+											"tls_settings": {
+												"allOf": [
+													{
+														"description": "TLS settings for a connectivity service.\n\nIf omitted, the default mode (`verify_full`) is used.",
+														"properties": {
+															"cert_verification_mode": {
+																"description": "TLS certificate verification mode for the connection to the origin.\n\n- `\"verify_full\"` — verify certificate chain and hostname (default)\n- `\"verify_ca\"` — verify certificate chain only, skip hostname check\n- `\"disabled\"` — do not verify the server certificate at all",
+																"example": "verify_full",
+																"type": "string"
+															}
+														},
+														"required": [
+															"cert_verification_mode"
+														],
+														"type": "object"
+													}
+												],
+												"nullable": true,
+												"type": "object"
+											},
+											"type": {
+												"enum": [
+													"tcp",
+													"http"
+												],
+												"type": "string"
+											},
+											"updated_at": {
+												"example": "2024-01-15T10:45:00Z",
+												"format": "date-time",
+												"readOnly": true,
+												"type": "string"
+											}
+										},
+										"required": [
+											"name",
+											"type",
+											"host"
+										],
+										"type": "object"
+									},
+									{
+										"properties": {
+											"app_protocol": {
+												"enum": [
+													"postgresql",
+													"mysql"
+												],
+												"example": "postgresql",
+												"nullable": true,
+												"type": "string"
+											},
+											"tcp_port": {
+												"example": 5432,
+												"format": "int32",
+												"minimum": 1,
+												"nullable": true,
+												"type": "integer"
+											}
+										},
+										"type": "object"
+									}
+								],
+								"example": {
+									"host": {
+										"ipv4": "10.0.0.1",
+										"network": {
+											"tunnel_id": "0191dce4-9ab4-7fce-b660-8e5dec5172da"
+										}
+									},
+									"name": "postgres-db",
+									"tcp_port": 5432,
+									"type": "tcp"
+								}
 							}
 						]
 					}
@@ -1509,6 +2334,28 @@
 										"name": "web-server",
 										"service_id": "550e8400-e29b-41d4-a716-446655440000",
 										"type": "http",
+										"updated_at": "2024-01-15T09:30:00Z"
+									},
+									"success": true
+								}
+							},
+							"tcp-service-created": {
+								"summary": "Successfully created TCP service",
+								"value": {
+									"errors": [],
+									"messages": [],
+									"result": {
+										"created_at": "2024-01-15T09:30:00Z",
+										"host": {
+											"ipv4": "10.0.0.1",
+											"network": {
+												"tunnel_id": "0191dce4-9ab4-7fce-b660-8e5dec5172da"
+											}
+										},
+										"name": "postgres-db",
+										"service_id": "550e8400-e29b-41d4-a716-446655440001",
+										"tcp_port": 5432,
+										"type": "tcp",
 										"updated_at": "2024-01-15T09:30:00Z"
 									},
 									"success": true
@@ -1609,7 +2456,8 @@
 										"result": {
 											"discriminator": {
 												"mapping": {
-													"http": "#/components/schemas/infra_HttpServiceConfig"
+													"http": "#/components/schemas/infra_HttpServiceConfig",
+													"tcp": "#/components/schemas/infra_TcpServiceConfig"
 												},
 												"propertyName": "type"
 											},
@@ -1782,8 +2630,29 @@
 																	"readOnly": true,
 																	"type": "string"
 																},
+																"tls_settings": {
+																	"allOf": [
+																		{
+																			"description": "TLS settings for a connectivity service.\n\nIf omitted, the default mode (`verify_full`) is used.",
+																			"properties": {
+																				"cert_verification_mode": {
+																					"description": "TLS certificate verification mode for the connection to the origin.\n\n- `\"verify_full\"` — verify certificate chain and hostname (default)\n- `\"verify_ca\"` — verify certificate chain only, skip hostname check\n- `\"disabled\"` — do not verify the server certificate at all",
+																					"example": "verify_full",
+																					"type": "string"
+																				}
+																			},
+																			"required": [
+																				"cert_verification_mode"
+																			],
+																			"type": "object"
+																		}
+																	],
+																	"nullable": true,
+																	"type": "object"
+																},
 																"type": {
 																	"enum": [
+																		"tcp",
 																		"http"
 																	],
 																	"type": "string"
@@ -1833,6 +2702,249 @@
 														"https_port": 8443,
 														"name": "web-app",
 														"type": "http"
+													}
+												},
+												{
+													"allOf": [
+														{
+															"properties": {
+																"created_at": {
+																	"example": "2024-01-15T09:30:00Z",
+																	"format": "date-time",
+																	"readOnly": true,
+																	"type": "string"
+																},
+																"host": {
+																	"oneOf": [
+																		{
+																			"example": {
+																				"ipv4": "10.0.0.1",
+																				"network": {
+																					"tunnel_id": "0191dce4-9ab4-7fce-b660-8e5dec5172da"
+																				}
+																			},
+																			"properties": {
+																				"ipv4": {
+																					"example": "10.0.0.1",
+																					"type": "string"
+																				},
+																				"network": {
+																					"properties": {
+																						"tunnel_id": {
+																							"example": "0191dce4-9ab4-7fce-b660-8e5dec5172da",
+																							"format": "uuid",
+																							"type": "string"
+																						}
+																					},
+																					"required": [
+																						"tunnel_id"
+																					],
+																					"type": "object"
+																				}
+																			},
+																			"required": [
+																				"ipv4",
+																				"network"
+																			],
+																			"type": "object"
+																		},
+																		{
+																			"example": {
+																				"ipv6": "fe80::1",
+																				"network": {
+																					"tunnel_id": "0191dce4-9ab4-7fce-b660-8e5dec5172da"
+																				}
+																			},
+																			"properties": {
+																				"ipv6": {
+																					"example": "fe80::1",
+																					"type": "string"
+																				},
+																				"network": {
+																					"properties": {
+																						"tunnel_id": {
+																							"example": "0191dce4-9ab4-7fce-b660-8e5dec5172da",
+																							"format": "uuid",
+																							"type": "string"
+																						}
+																					},
+																					"required": [
+																						"tunnel_id"
+																					],
+																					"type": "object"
+																				}
+																			},
+																			"required": [
+																				"ipv6",
+																				"network"
+																			],
+																			"type": "object"
+																		},
+																		{
+																			"example": {
+																				"ipv4": "10.0.0.1",
+																				"ipv6": "fe80::1",
+																				"network": {
+																					"tunnel_id": "0191dce4-9ab4-7fce-b660-8e5dec5172da"
+																				}
+																			},
+																			"properties": {
+																				"ipv4": {
+																					"example": "10.0.0.1",
+																					"type": "string"
+																				},
+																				"ipv6": {
+																					"example": "fe80::1",
+																					"type": "string"
+																				},
+																				"network": {
+																					"properties": {
+																						"tunnel_id": {
+																							"example": "0191dce4-9ab4-7fce-b660-8e5dec5172da",
+																							"format": "uuid",
+																							"type": "string"
+																						}
+																					},
+																					"required": [
+																						"tunnel_id"
+																					],
+																					"type": "object"
+																				}
+																			},
+																			"required": [
+																				"ipv4",
+																				"ipv6",
+																				"network"
+																			],
+																			"type": "object"
+																		},
+																		{
+																			"example": {
+																				"hostname": "example.com",
+																				"resolver_network": {
+																					"resolver_ips": [
+																						"10.0.0.1"
+																					],
+																					"tunnel_id": "0191dce4-9ab4-7fce-b660-8e5dec5172da"
+																				}
+																			},
+																			"properties": {
+																				"hostname": {
+																					"example": "example.com",
+																					"type": "string"
+																				},
+																				"resolver_network": {
+																					"properties": {
+																						"resolver_ips": {
+																							"items": {
+																								"type": "string"
+																							},
+																							"nullable": true,
+																							"type": "array"
+																						},
+																						"tunnel_id": {
+																							"example": "0191dce4-9ab4-7fce-b660-8e5dec5172da",
+																							"format": "uuid",
+																							"type": "string"
+																						}
+																					},
+																					"required": [
+																						"tunnel_id"
+																					],
+																					"type": "object"
+																				}
+																			},
+																			"required": [
+																				"hostname",
+																				"resolver_network"
+																			],
+																			"type": "object"
+																		}
+																	]
+																},
+																"name": {
+																	"example": "web-server",
+																	"type": "string"
+																},
+																"service_id": {
+																	"example": "550e8400-e29b-41d4-a716-446655440000",
+																	"format": "uuid",
+																	"readOnly": true,
+																	"type": "string"
+																},
+																"tls_settings": {
+																	"allOf": [
+																		{
+																			"description": "TLS settings for a connectivity service.\n\nIf omitted, the default mode (`verify_full`) is used.",
+																			"properties": {
+																				"cert_verification_mode": {
+																					"description": "TLS certificate verification mode for the connection to the origin.\n\n- `\"verify_full\"` — verify certificate chain and hostname (default)\n- `\"verify_ca\"` — verify certificate chain only, skip hostname check\n- `\"disabled\"` — do not verify the server certificate at all",
+																					"example": "verify_full",
+																					"type": "string"
+																				}
+																			},
+																			"required": [
+																				"cert_verification_mode"
+																			],
+																			"type": "object"
+																		}
+																	],
+																	"nullable": true,
+																	"type": "object"
+																},
+																"type": {
+																	"enum": [
+																		"tcp",
+																		"http"
+																	],
+																	"type": "string"
+																},
+																"updated_at": {
+																	"example": "2024-01-15T10:45:00Z",
+																	"format": "date-time",
+																	"readOnly": true,
+																	"type": "string"
+																}
+															},
+															"required": [
+																"name",
+																"type",
+																"host"
+															],
+															"type": "object"
+														},
+														{
+															"properties": {
+																"app_protocol": {
+																	"enum": [
+																		"postgresql",
+																		"mysql"
+																	],
+																	"example": "postgresql",
+																	"nullable": true,
+																	"type": "string"
+																},
+																"tcp_port": {
+																	"example": 5432,
+																	"format": "int32",
+																	"minimum": 1,
+																	"nullable": true,
+																	"type": "integer"
+																}
+															},
+															"type": "object"
+														}
+													],
+													"example": {
+														"host": {
+															"ipv4": "10.0.0.1",
+															"network": {
+																"tunnel_id": "0191dce4-9ab4-7fce-b660-8e5dec5172da"
+															}
+														},
+														"name": "postgres-db",
+														"tcp_port": 5432,
+														"type": "tcp"
 													}
 												}
 											]
@@ -1996,10 +3108,42 @@
 		"requestBody": {
 			"content": {
 				"application/json": {
+					"examples": {
+						"tcp-with-port": {
+							"summary": "TCP service with explicit port",
+							"value": {
+								"host": {
+									"ipv4": "10.0.0.1",
+									"network": {
+										"tunnel_id": "0191dce4-9ab4-7fce-b660-8e5dec5172da"
+									}
+								},
+								"name": "postgres-db",
+								"tcp_port": 5432,
+								"type": "tcp"
+							}
+						},
+						"tcp-with-protocol": {
+							"summary": "TCP service with app protocol",
+							"value": {
+								"app_protocol": "postgresql",
+								"host": {
+									"hostname": "db.example.com",
+									"resolver_network": {
+										"tunnel_id": "0191dce4-9ab4-7fce-b660-8e5dec5172da"
+									}
+								},
+								"name": "postgres-db",
+								"tcp_port": 5432,
+								"type": "tcp"
+							}
+						}
+					},
 					"schema": {
 						"discriminator": {
 							"mapping": {
-								"http": "#/components/schemas/infra_HttpServiceConfig"
+								"http": "#/components/schemas/infra_HttpServiceConfig",
+								"tcp": "#/components/schemas/infra_TcpServiceConfig"
 							},
 							"propertyName": "type"
 						},
@@ -2172,8 +3316,29 @@
 												"readOnly": true,
 												"type": "string"
 											},
+											"tls_settings": {
+												"allOf": [
+													{
+														"description": "TLS settings for a connectivity service.\n\nIf omitted, the default mode (`verify_full`) is used.",
+														"properties": {
+															"cert_verification_mode": {
+																"description": "TLS certificate verification mode for the connection to the origin.\n\n- `\"verify_full\"` — verify certificate chain and hostname (default)\n- `\"verify_ca\"` — verify certificate chain only, skip hostname check\n- `\"disabled\"` — do not verify the server certificate at all",
+																"example": "verify_full",
+																"type": "string"
+															}
+														},
+														"required": [
+															"cert_verification_mode"
+														],
+														"type": "object"
+													}
+												],
+												"nullable": true,
+												"type": "object"
+											},
 											"type": {
 												"enum": [
+													"tcp",
 													"http"
 												],
 												"type": "string"
@@ -2223,6 +3388,249 @@
 									"https_port": 8443,
 									"name": "web-app",
 									"type": "http"
+								}
+							},
+							{
+								"allOf": [
+									{
+										"properties": {
+											"created_at": {
+												"example": "2024-01-15T09:30:00Z",
+												"format": "date-time",
+												"readOnly": true,
+												"type": "string"
+											},
+											"host": {
+												"oneOf": [
+													{
+														"example": {
+															"ipv4": "10.0.0.1",
+															"network": {
+																"tunnel_id": "0191dce4-9ab4-7fce-b660-8e5dec5172da"
+															}
+														},
+														"properties": {
+															"ipv4": {
+																"example": "10.0.0.1",
+																"type": "string"
+															},
+															"network": {
+																"properties": {
+																	"tunnel_id": {
+																		"example": "0191dce4-9ab4-7fce-b660-8e5dec5172da",
+																		"format": "uuid",
+																		"type": "string"
+																	}
+																},
+																"required": [
+																	"tunnel_id"
+																],
+																"type": "object"
+															}
+														},
+														"required": [
+															"ipv4",
+															"network"
+														],
+														"type": "object"
+													},
+													{
+														"example": {
+															"ipv6": "fe80::1",
+															"network": {
+																"tunnel_id": "0191dce4-9ab4-7fce-b660-8e5dec5172da"
+															}
+														},
+														"properties": {
+															"ipv6": {
+																"example": "fe80::1",
+																"type": "string"
+															},
+															"network": {
+																"properties": {
+																	"tunnel_id": {
+																		"example": "0191dce4-9ab4-7fce-b660-8e5dec5172da",
+																		"format": "uuid",
+																		"type": "string"
+																	}
+																},
+																"required": [
+																	"tunnel_id"
+																],
+																"type": "object"
+															}
+														},
+														"required": [
+															"ipv6",
+															"network"
+														],
+														"type": "object"
+													},
+													{
+														"example": {
+															"ipv4": "10.0.0.1",
+															"ipv6": "fe80::1",
+															"network": {
+																"tunnel_id": "0191dce4-9ab4-7fce-b660-8e5dec5172da"
+															}
+														},
+														"properties": {
+															"ipv4": {
+																"example": "10.0.0.1",
+																"type": "string"
+															},
+															"ipv6": {
+																"example": "fe80::1",
+																"type": "string"
+															},
+															"network": {
+																"properties": {
+																	"tunnel_id": {
+																		"example": "0191dce4-9ab4-7fce-b660-8e5dec5172da",
+																		"format": "uuid",
+																		"type": "string"
+																	}
+																},
+																"required": [
+																	"tunnel_id"
+																],
+																"type": "object"
+															}
+														},
+														"required": [
+															"ipv4",
+															"ipv6",
+															"network"
+														],
+														"type": "object"
+													},
+													{
+														"example": {
+															"hostname": "example.com",
+															"resolver_network": {
+																"resolver_ips": [
+																	"10.0.0.1"
+																],
+																"tunnel_id": "0191dce4-9ab4-7fce-b660-8e5dec5172da"
+															}
+														},
+														"properties": {
+															"hostname": {
+																"example": "example.com",
+																"type": "string"
+															},
+															"resolver_network": {
+																"properties": {
+																	"resolver_ips": {
+																		"items": {
+																			"type": "string"
+																		},
+																		"nullable": true,
+																		"type": "array"
+																	},
+																	"tunnel_id": {
+																		"example": "0191dce4-9ab4-7fce-b660-8e5dec5172da",
+																		"format": "uuid",
+																		"type": "string"
+																	}
+																},
+																"required": [
+																	"tunnel_id"
+																],
+																"type": "object"
+															}
+														},
+														"required": [
+															"hostname",
+															"resolver_network"
+														],
+														"type": "object"
+													}
+												]
+											},
+											"name": {
+												"example": "web-server",
+												"type": "string"
+											},
+											"service_id": {
+												"example": "550e8400-e29b-41d4-a716-446655440000",
+												"format": "uuid",
+												"readOnly": true,
+												"type": "string"
+											},
+											"tls_settings": {
+												"allOf": [
+													{
+														"description": "TLS settings for a connectivity service.\n\nIf omitted, the default mode (`verify_full`) is used.",
+														"properties": {
+															"cert_verification_mode": {
+																"description": "TLS certificate verification mode for the connection to the origin.\n\n- `\"verify_full\"` — verify certificate chain and hostname (default)\n- `\"verify_ca\"` — verify certificate chain only, skip hostname check\n- `\"disabled\"` — do not verify the server certificate at all",
+																"example": "verify_full",
+																"type": "string"
+															}
+														},
+														"required": [
+															"cert_verification_mode"
+														],
+														"type": "object"
+													}
+												],
+												"nullable": true,
+												"type": "object"
+											},
+											"type": {
+												"enum": [
+													"tcp",
+													"http"
+												],
+												"type": "string"
+											},
+											"updated_at": {
+												"example": "2024-01-15T10:45:00Z",
+												"format": "date-time",
+												"readOnly": true,
+												"type": "string"
+											}
+										},
+										"required": [
+											"name",
+											"type",
+											"host"
+										],
+										"type": "object"
+									},
+									{
+										"properties": {
+											"app_protocol": {
+												"enum": [
+													"postgresql",
+													"mysql"
+												],
+												"example": "postgresql",
+												"nullable": true,
+												"type": "string"
+											},
+											"tcp_port": {
+												"example": 5432,
+												"format": "int32",
+												"minimum": 1,
+												"nullable": true,
+												"type": "integer"
+											}
+										},
+										"type": "object"
+									}
+								],
+								"example": {
+									"host": {
+										"ipv4": "10.0.0.1",
+										"network": {
+											"tunnel_id": "0191dce4-9ab4-7fce-b660-8e5dec5172da"
+										}
+									},
+									"name": "postgres-db",
+									"tcp_port": 5432,
+									"type": "tcp"
 								}
 							}
 						]
@@ -2329,7 +3737,8 @@
 										"result": {
 											"discriminator": {
 												"mapping": {
-													"http": "#/components/schemas/infra_HttpServiceConfig"
+													"http": "#/components/schemas/infra_HttpServiceConfig",
+													"tcp": "#/components/schemas/infra_TcpServiceConfig"
 												},
 												"propertyName": "type"
 											},
@@ -2502,8 +3911,29 @@
 																	"readOnly": true,
 																	"type": "string"
 																},
+																"tls_settings": {
+																	"allOf": [
+																		{
+																			"description": "TLS settings for a connectivity service.\n\nIf omitted, the default mode (`verify_full`) is used.",
+																			"properties": {
+																				"cert_verification_mode": {
+																					"description": "TLS certificate verification mode for the connection to the origin.\n\n- `\"verify_full\"` — verify certificate chain and hostname (default)\n- `\"verify_ca\"` — verify certificate chain only, skip hostname check\n- `\"disabled\"` — do not verify the server certificate at all",
+																					"example": "verify_full",
+																					"type": "string"
+																				}
+																			},
+																			"required": [
+																				"cert_verification_mode"
+																			],
+																			"type": "object"
+																		}
+																	],
+																	"nullable": true,
+																	"type": "object"
+																},
 																"type": {
 																	"enum": [
+																		"tcp",
 																		"http"
 																	],
 																	"type": "string"
@@ -2553,6 +3983,249 @@
 														"https_port": 8443,
 														"name": "web-app",
 														"type": "http"
+													}
+												},
+												{
+													"allOf": [
+														{
+															"properties": {
+																"created_at": {
+																	"example": "2024-01-15T09:30:00Z",
+																	"format": "date-time",
+																	"readOnly": true,
+																	"type": "string"
+																},
+																"host": {
+																	"oneOf": [
+																		{
+																			"example": {
+																				"ipv4": "10.0.0.1",
+																				"network": {
+																					"tunnel_id": "0191dce4-9ab4-7fce-b660-8e5dec5172da"
+																				}
+																			},
+																			"properties": {
+																				"ipv4": {
+																					"example": "10.0.0.1",
+																					"type": "string"
+																				},
+																				"network": {
+																					"properties": {
+																						"tunnel_id": {
+																							"example": "0191dce4-9ab4-7fce-b660-8e5dec5172da",
+																							"format": "uuid",
+																							"type": "string"
+																						}
+																					},
+																					"required": [
+																						"tunnel_id"
+																					],
+																					"type": "object"
+																				}
+																			},
+																			"required": [
+																				"ipv4",
+																				"network"
+																			],
+																			"type": "object"
+																		},
+																		{
+																			"example": {
+																				"ipv6": "fe80::1",
+																				"network": {
+																					"tunnel_id": "0191dce4-9ab4-7fce-b660-8e5dec5172da"
+																				}
+																			},
+																			"properties": {
+																				"ipv6": {
+																					"example": "fe80::1",
+																					"type": "string"
+																				},
+																				"network": {
+																					"properties": {
+																						"tunnel_id": {
+																							"example": "0191dce4-9ab4-7fce-b660-8e5dec5172da",
+																							"format": "uuid",
+																							"type": "string"
+																						}
+																					},
+																					"required": [
+																						"tunnel_id"
+																					],
+																					"type": "object"
+																				}
+																			},
+																			"required": [
+																				"ipv6",
+																				"network"
+																			],
+																			"type": "object"
+																		},
+																		{
+																			"example": {
+																				"ipv4": "10.0.0.1",
+																				"ipv6": "fe80::1",
+																				"network": {
+																					"tunnel_id": "0191dce4-9ab4-7fce-b660-8e5dec5172da"
+																				}
+																			},
+																			"properties": {
+																				"ipv4": {
+																					"example": "10.0.0.1",
+																					"type": "string"
+																				},
+																				"ipv6": {
+																					"example": "fe80::1",
+																					"type": "string"
+																				},
+																				"network": {
+																					"properties": {
+																						"tunnel_id": {
+																							"example": "0191dce4-9ab4-7fce-b660-8e5dec5172da",
+																							"format": "uuid",
+																							"type": "string"
+																						}
+																					},
+																					"required": [
+																						"tunnel_id"
+																					],
+																					"type": "object"
+																				}
+																			},
+																			"required": [
+																				"ipv4",
+																				"ipv6",
+																				"network"
+																			],
+																			"type": "object"
+																		},
+																		{
+																			"example": {
+																				"hostname": "example.com",
+																				"resolver_network": {
+																					"resolver_ips": [
+																						"10.0.0.1"
+																					],
+																					"tunnel_id": "0191dce4-9ab4-7fce-b660-8e5dec5172da"
+																				}
+																			},
+																			"properties": {
+																				"hostname": {
+																					"example": "example.com",
+																					"type": "string"
+																				},
+																				"resolver_network": {
+																					"properties": {
+																						"resolver_ips": {
+																							"items": {
+																								"type": "string"
+																							},
+																							"nullable": true,
+																							"type": "array"
+																						},
+																						"tunnel_id": {
+																							"example": "0191dce4-9ab4-7fce-b660-8e5dec5172da",
+																							"format": "uuid",
+																							"type": "string"
+																						}
+																					},
+																					"required": [
+																						"tunnel_id"
+																					],
+																					"type": "object"
+																				}
+																			},
+																			"required": [
+																				"hostname",
+																				"resolver_network"
+																			],
+																			"type": "object"
+																		}
+																	]
+																},
+																"name": {
+																	"example": "web-server",
+																	"type": "string"
+																},
+																"service_id": {
+																	"example": "550e8400-e29b-41d4-a716-446655440000",
+																	"format": "uuid",
+																	"readOnly": true,
+																	"type": "string"
+																},
+																"tls_settings": {
+																	"allOf": [
+																		{
+																			"description": "TLS settings for a connectivity service.\n\nIf omitted, the default mode (`verify_full`) is used.",
+																			"properties": {
+																				"cert_verification_mode": {
+																					"description": "TLS certificate verification mode for the connection to the origin.\n\n- `\"verify_full\"` — verify certificate chain and hostname (default)\n- `\"verify_ca\"` — verify certificate chain only, skip hostname check\n- `\"disabled\"` — do not verify the server certificate at all",
+																					"example": "verify_full",
+																					"type": "string"
+																				}
+																			},
+																			"required": [
+																				"cert_verification_mode"
+																			],
+																			"type": "object"
+																		}
+																	],
+																	"nullable": true,
+																	"type": "object"
+																},
+																"type": {
+																	"enum": [
+																		"tcp",
+																		"http"
+																	],
+																	"type": "string"
+																},
+																"updated_at": {
+																	"example": "2024-01-15T10:45:00Z",
+																	"format": "date-time",
+																	"readOnly": true,
+																	"type": "string"
+																}
+															},
+															"required": [
+																"name",
+																"type",
+																"host"
+															],
+															"type": "object"
+														},
+														{
+															"properties": {
+																"app_protocol": {
+																	"enum": [
+																		"postgresql",
+																		"mysql"
+																	],
+																	"example": "postgresql",
+																	"nullable": true,
+																	"type": "string"
+																},
+																"tcp_port": {
+																	"example": 5432,
+																	"format": "int32",
+																	"minimum": 1,
+																	"nullable": true,
+																	"type": "integer"
+																}
+															},
+															"type": "object"
+														}
+													],
+													"example": {
+														"host": {
+															"ipv4": "10.0.0.1",
+															"network": {
+																"tunnel_id": "0191dce4-9ab4-7fce-b660-8e5dec5172da"
+															}
+														},
+														"name": "postgres-db",
+														"tcp_port": 5432,
+														"type": "tcp"
 													}
 												}
 											]
