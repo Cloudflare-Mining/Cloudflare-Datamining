@@ -1145,21 +1145,24 @@
 																		"type": "boolean"
 																	},
 																	"sensitivity_levels": {
-																		"description": "Sensitivity levels associated with this profile as (group_id, level_id) tuples.",
+																		"description": "Sensitivity levels associated with this profile.",
 																		"items": {
-																			"items": {
-																				"allOf": [
-																					{
-																						"format": "uuid",
-																						"type": "string"
-																					},
-																					{
-																						"format": "uuid",
-																						"type": "string"
-																					}
-																				]
+																			"description": "A reference pairing a sensitivity group with a specific level within that group.",
+																			"properties": {
+																				"group_id": {
+																					"format": "uuid",
+																					"type": "string"
+																				},
+																				"level_id": {
+																					"format": "uuid",
+																					"type": "string"
+																				}
 																			},
-																			"type": "array"
+																			"required": [
+																				"group_id",
+																				"level_id"
+																			],
+																			"type": "object"
 																		},
 																		"type": "array"
 																	},
@@ -3740,21 +3743,24 @@
 																	"type": "boolean"
 																},
 																"sensitivity_levels": {
-																	"description": "Sensitivity levels associated with this profile as (group_id, level_id) tuples.",
+																	"description": "Sensitivity levels associated with this profile.",
 																	"items": {
-																		"items": {
-																			"allOf": [
-																				{
-																					"format": "uuid",
-																					"type": "string"
-																				},
-																				{
-																					"format": "uuid",
-																					"type": "string"
-																				}
-																			]
+																		"description": "A reference pairing a sensitivity group with a specific level within that group.",
+																		"properties": {
+																			"group_id": {
+																				"format": "uuid",
+																				"type": "string"
+																			},
+																			"level_id": {
+																				"format": "uuid",
+																				"type": "string"
+																			}
 																		},
-																		"type": "array"
+																		"required": [
+																			"group_id",
+																			"level_id"
+																		],
+																		"type": "object"
 																	},
 																	"type": "array"
 																},
@@ -6321,21 +6327,24 @@
 														"type": "boolean"
 													},
 													"sensitivity_levels": {
-														"description": "Sensitivity levels associated with this profile as (group_id, level_id) tuples.",
+														"description": "Sensitivity levels associated with this profile.",
 														"items": {
-															"items": {
-																"allOf": [
-																	{
-																		"format": "uuid",
-																		"type": "string"
-																	},
-																	{
-																		"format": "uuid",
-																		"type": "string"
-																	}
-																]
+															"description": "A reference pairing a sensitivity group with a specific level within that group.",
+															"properties": {
+																"group_id": {
+																	"format": "uuid",
+																	"type": "string"
+																},
+																"level_id": {
+																	"format": "uuid",
+																	"type": "string"
+																}
 															},
-															"type": "array"
+															"required": [
+																"group_id",
+																"level_id"
+															],
+															"type": "object"
 														},
 														"type": "array"
 													},
@@ -7530,21 +7539,24 @@
 																	"type": "boolean"
 																},
 																"sensitivity_levels": {
-																	"description": "Sensitivity levels associated with this profile as (group_id, level_id) tuples.",
+																	"description": "Sensitivity levels associated with this profile.",
 																	"items": {
-																		"items": {
-																			"allOf": [
-																				{
-																					"format": "uuid",
-																					"type": "string"
-																				},
-																				{
-																					"format": "uuid",
-																					"type": "string"
-																				}
-																			]
+																		"description": "A reference pairing a sensitivity group with a specific level within that group.",
+																		"properties": {
+																			"group_id": {
+																				"format": "uuid",
+																				"type": "string"
+																			},
+																			"level_id": {
+																				"format": "uuid",
+																				"type": "string"
+																			}
 																		},
-																		"type": "array"
+																		"required": [
+																			"group_id",
+																			"level_id"
+																		],
+																		"type": "object"
 																	},
 																	"type": "array"
 																},
@@ -10123,21 +10135,24 @@
 																	"type": "boolean"
 																},
 																"sensitivity_levels": {
-																	"description": "Sensitivity levels associated with this profile as (group_id, level_id) tuples.",
+																	"description": "Sensitivity levels associated with this profile.",
 																	"items": {
-																		"items": {
-																			"allOf": [
-																				{
-																					"format": "uuid",
-																					"type": "string"
-																				},
-																				{
-																					"format": "uuid",
-																					"type": "string"
-																				}
-																			]
+																		"description": "A reference pairing a sensitivity group with a specific level within that group.",
+																		"properties": {
+																			"group_id": {
+																				"format": "uuid",
+																				"type": "string"
+																			},
+																			"level_id": {
+																				"format": "uuid",
+																				"type": "string"
+																			}
 																		},
-																		"type": "array"
+																		"required": [
+																			"group_id",
+																			"level_id"
+																		],
+																		"type": "object"
 																	},
 																	"type": "array"
 																},
@@ -12969,21 +12984,24 @@
 								"type": "boolean"
 							},
 							"sensitivity_levels": {
-								"description": "Sensitivity levels to associate with the profile as (group_id, level_id) tuples.",
+								"description": "Sensitivity levels to associate with the profile.",
 								"items": {
-									"items": {
-										"allOf": [
-											{
-												"format": "uuid",
-												"type": "string"
-											},
-											{
-												"format": "uuid",
-												"type": "string"
-											}
-										]
+									"description": "A reference pairing a sensitivity group with a specific level within that group.",
+									"properties": {
+										"group_id": {
+											"format": "uuid",
+											"type": "string"
+										},
+										"level_id": {
+											"format": "uuid",
+											"type": "string"
+										}
 									},
-									"type": "array"
+									"required": [
+										"group_id",
+										"level_id"
+									],
+									"type": "object"
 								},
 								"type": "array"
 							},
@@ -13624,21 +13642,24 @@
 																	"type": "boolean"
 																},
 																"sensitivity_levels": {
-																	"description": "Sensitivity levels associated with this profile as (group_id, level_id) tuples.",
+																	"description": "Sensitivity levels associated with this profile.",
 																	"items": {
-																		"items": {
-																			"allOf": [
-																				{
-																					"format": "uuid",
-																					"type": "string"
-																				},
-																				{
-																					"format": "uuid",
-																					"type": "string"
-																				}
-																			]
+																		"description": "A reference pairing a sensitivity group with a specific level within that group.",
+																		"properties": {
+																			"group_id": {
+																				"format": "uuid",
+																				"type": "string"
+																			},
+																			"level_id": {
+																				"format": "uuid",
+																				"type": "string"
+																			}
 																		},
-																		"type": "array"
+																		"required": [
+																			"group_id",
+																			"level_id"
+																		],
+																		"type": "object"
 																	},
 																	"type": "array"
 																},
@@ -16306,21 +16327,24 @@
 																	"type": "boolean"
 																},
 																"sensitivity_levels": {
-																	"description": "Sensitivity levels associated with this profile as (group_id, level_id) tuples.",
+																	"description": "Sensitivity levels associated with this profile.",
 																	"items": {
-																		"items": {
-																			"allOf": [
-																				{
-																					"format": "uuid",
-																					"type": "string"
-																				},
-																				{
-																					"format": "uuid",
-																					"type": "string"
-																				}
-																			]
+																		"description": "A reference pairing a sensitivity group with a specific level within that group.",
+																		"properties": {
+																			"group_id": {
+																				"format": "uuid",
+																				"type": "string"
+																			},
+																			"level_id": {
+																				"format": "uuid",
+																				"type": "string"
+																			}
 																		},
-																		"type": "array"
+																		"required": [
+																			"group_id",
+																			"level_id"
+																		],
+																		"type": "object"
 																	},
 																	"type": "array"
 																},
@@ -19259,19 +19283,22 @@
 							"sensitivity_levels": {
 								"description": "Sensitivity levels to associate with the profile. If omitted, existing associations are unchanged.",
 								"items": {
-									"items": {
-										"allOf": [
-											{
-												"format": "uuid",
-												"type": "string"
-											},
-											{
-												"format": "uuid",
-												"type": "string"
-											}
-										]
+									"description": "A reference pairing a sensitivity group with a specific level within that group.",
+									"properties": {
+										"group_id": {
+											"format": "uuid",
+											"type": "string"
+										},
+										"level_id": {
+											"format": "uuid",
+											"type": "string"
+										}
 									},
-									"type": "array"
+									"required": [
+										"group_id",
+										"level_id"
+									],
+									"type": "object"
 								},
 								"nullable": true,
 								"type": "array"
@@ -19913,21 +19940,24 @@
 																	"type": "boolean"
 																},
 																"sensitivity_levels": {
-																	"description": "Sensitivity levels associated with this profile as (group_id, level_id) tuples.",
+																	"description": "Sensitivity levels associated with this profile.",
 																	"items": {
-																		"items": {
-																			"allOf": [
-																				{
-																					"format": "uuid",
-																					"type": "string"
-																				},
-																				{
-																					"format": "uuid",
-																					"type": "string"
-																				}
-																			]
+																		"description": "A reference pairing a sensitivity group with a specific level within that group.",
+																		"properties": {
+																			"group_id": {
+																				"format": "uuid",
+																				"type": "string"
+																			},
+																			"level_id": {
+																				"format": "uuid",
+																				"type": "string"
+																			}
 																		},
-																		"type": "array"
+																		"required": [
+																			"group_id",
+																			"level_id"
+																		],
+																		"type": "object"
 																	},
 																	"type": "array"
 																},
@@ -22588,21 +22618,24 @@
 																	"type": "boolean"
 																},
 																"sensitivity_levels": {
-																	"description": "Sensitivity levels associated with this profile as (group_id, level_id) tuples.",
+																	"description": "Sensitivity levels associated with this profile.",
 																	"items": {
-																		"items": {
-																			"allOf": [
-																				{
-																					"format": "uuid",
-																					"type": "string"
-																				},
-																				{
-																					"format": "uuid",
-																					"type": "string"
-																				}
-																			]
+																		"description": "A reference pairing a sensitivity group with a specific level within that group.",
+																		"properties": {
+																			"group_id": {
+																				"format": "uuid",
+																				"type": "string"
+																			},
+																			"level_id": {
+																				"format": "uuid",
+																				"type": "string"
+																			}
 																		},
-																		"type": "array"
+																		"required": [
+																			"group_id",
+																			"level_id"
+																		],
+																		"type": "object"
 																	},
 																	"type": "array"
 																},
