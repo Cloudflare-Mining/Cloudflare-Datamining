@@ -24,9 +24,8 @@
 	<li>Communicate campaign results to key stakeholders&nbsp;</li>
 	<li>Reporting into the Vice President of APAC and Japan Marketing based in Singapore&nbsp;</li>
 </ul>
-<p><br>Examples of desirable skills, knowledge and experience:&nbsp;</p>
+<p><br>Examples of desirable skills, knowledge and experience:</p>
 <ul>
-	<li>Fluency in the English language (both spoken and written) a must.&nbsp;</li>
 	<li>8 years proven experience in B2B marketing: enterprise software, SaaS, regional marketing, developer and/or cybersecurity experience a plus&nbsp;</li>
 	<li>Strategy, planning, budgeting and managing trade shows, events, campaigns and ABM programs from start to finish&nbsp;</li>
 	<li>Track record of launching successful online and offline marketing campaigns and driving qualified leads in the funnel&nbsp;</li>
