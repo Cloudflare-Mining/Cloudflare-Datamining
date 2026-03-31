@@ -1,15 +1,15 @@
 {
 	"componentChunkName": "component---src-components-learning-center-templates-learning-center-article-template-tsx",
-	"path": "/learning/network-layer/what-is-mpls/",
+	"path": "/learning/network-layer/how-to-migrate-from-mpls/",
 	"result": {
 		"data": {
 			"learningCenterArticle": {
 				"contentTypeId": "learningCenterArticle",
-				"contentfulId": "6rIOw3m5yiopXxm5MqgZbT",
-				"urlSlug": "network-layer/what-is-mpls",
+				"contentfulId": "1TlUbdsMLlWl3qxNr6X1YT",
+				"urlSlug": "network-layer/how-to-migrate-from-mpls",
 				"metaTags": {
-					"metaTitle": "What is MPLS (multiprotocol label switching)?",
-					"metaDescription": "Multiprotocol label switching, or MPLS, is a method for setting up fast, dedicated paths across networks. Learn how MPLS networks work.",
+					"metaTitle": "How to migrate from MPLS",
+					"metaDescription": "Organizations are often constrained by MPLS. These are the steps for migrating from MPLS to more scalable, secure, and cost-effective network architecture.",
 					"twitterCustomImage": null,
 					"metaImage": {
 						"file": {
@@ -19,8 +19,8 @@
 					},
 					"facebookCustomImage": null
 				},
-				"metaTitle": "What is MPLS (multiprotocol label switching)?",
-				"metaDescription": "Multiprotocol label switching, or MPLS, is a method for setting up fast, dedicated paths across networks. Learn how MPLS networks work.",
+				"metaTitle": null,
+				"metaDescription": null,
 				"learningCenterArticleSubHeader": {
 					"contentTypeId": "learningCenterArticleSubHeader",
 					"contentfulId": "2NTNgGsYPl9HfIDs724JbF",
@@ -676,63 +676,63 @@
 						]
 					}
 				},
-				"header": "What is MPLS (multiprotocol label switching)?",
-				"blurbSubHeader": "Multiprotocol label switching (MPLS) is a method for setting up dedicated paths across networks without relying on the typical routing process.",
-				"objectivesHeader": "MPLS",
+				"header": "How to migrate from MPLS",
+				"blurbSubHeader": "Organizations are often constrained by their reliance on MPLS. These are the steps for migrating from MPLS to more flexible, scalable, secure, and cost-effective network architecture.",
+				"objectivesHeader": "MPLS Migration",
 				"objectivesList": [
-					"Understand how multiprotocol label switching (MPLS) works",
-					"Contrast MPLS with the typical Internet routing process",
-					"Explore the uses for and drawbacks of MPLS"
+					"Explain why organizations migrate from MPLS to more flexible network architecture",
+					"List the main steps for migrating from MPLS to SD-WAN",
+					"List the main steps for migrating from MPLS to SASE"
 				],
 				"relatedContentLinkText": "Related Content",
 				"relatedContent": [
 					{
 						"contentTypeId": "learningCenterArticleLink",
-						"contentfulId": "6RLQUAhE7el2jcCAJnGOQy",
-						"displayText": "What is a protocol?",
-						"url": "/learning/network-layer/what-is-a-protocol/"
+						"contentfulId": "msCIoUjRRe010vqjDTHS0",
+						"displayText": "SD-WAN vs. MPLS",
+						"url": "/learning/network-layer/sd-wan-vs-mpls/"
 					},
 					{
 						"contentTypeId": "learningCenterArticleLink",
-						"contentfulId": "19nTg1iwyawlo5bSpU8Xe9",
-						"displayText": "Internet Protocol (IP)",
-						"url": "/learning/network-layer/internet-protocol/"
+						"contentfulId": "3PyQRFTSqD6pdvuwhOa1bV",
+						"displayText": "How to prepare for modernization",
+						"url": "/learning/network-layer/how-to-prepare-for-network-modernization-projects/"
 					},
 					{
 						"contentTypeId": "learningCenterArticleLink",
-						"contentfulId": "314nljr3GHR35lcUUgTbeF",
-						"displayText": "What is IGMP?",
-						"url": "/learning/network-layer/what-is-igmp/"
+						"contentfulId": "1zXUavp2wMc1wd8R3zpAWC",
+						"displayText": "Network modernization",
+						"url": "/learning/network-layer/network-modernization/"
 					},
 					{
 						"contentTypeId": "learningCenterArticleLink",
-						"contentfulId": "4YmH7UVzSMAvbcI6sPyyK",
-						"displayText": "Network switch",
-						"url": "/learning/network-layer/what-is-a-network-switch/"
+						"contentfulId": "5uhocF5vOQSt8EmdiRWkq1",
+						"displayText": "What is MPLS?",
+						"url": "/learning/network-layer/what-is-mpls/"
 					},
 					{
 						"contentTypeId": "learningCenterArticleLink",
-						"contentfulId": "7yJyIRZ7RyZUMnE6Iz178d",
-						"displayText": "What is routing?",
-						"url": "/learning/network-layer/what-is-routing/"
+						"contentfulId": "69FyYu2Nl7lx7PPxWIxkIx",
+						"displayText": "SD-WAN",
+						"url": "/learning/network-layer/what-is-an-sd-wan/"
 					}
 				],
 				"enablementBlade": null,
-				"desktopMainContent": "<style>\n    a:hover { background-size: 100% 4em !important; color: var(--inline-link-color);\n }\n\n @media (max-width: 40rem) {.cards-wrapper-lcnew { grid-template-columns: 1fr; } }\n\n .cards-banner-lcnew { background-image: url('https://cf-assets.www.cloudflare.com/slt3lc6tev37/6bNeiYhSx0RGvbzxS5Fi8c/3ff83bcc36e86e85170201f8264b2c1c/banner-new.png'); background-repeat: no-repeat;\n     background-size: cover; background-position: center; border-radius: 8px;  margin: 64px 0px; box-shadow: 5px 5px 12px 3px rgba(0, 0, 0, 0.2); overflow: hidden; display: grid;  grid-template-columns: 75% 1fr;}\n .card_content-banner-lcnew { padding: 1rem;  display: grid;  grid-gap: 10px;}\n .btn-lcnew-banner { margin-bottom: 0.5rem; align-self: end; margin-top: 0.5rem; border-radius: 6px;}\n   .btn-lcnew-banner a {font-size: 12px;font-weight: 500; cursor: pointer; background-color: white; padding: 14px 18px 14px 18px; border-radius: 6px; color: #000000 !important; text-decoration: none;}\n .card_title-banner-lcnew  { color: #ffffff; font-size: 12px; font-weight: 700; margin: 0px;}\n .card_title-banner-lcnew span  {text-transform:uppercase; font-weight: 500 !important}\n .card_text-banner-lcnew  { color: #000000; font-size: 16px; line-height: 24px ; font-weight: 600;  }\n .card_content-banner-bt { align-self: center; justify-self: center;}\n .helper { grid-template-columns: 70% 1fr;}\n\n @media (max-width: 40rem) {\n   .cards-banner-lcnew {\n     grid-template-columns: unset;\n     padding: 0.75rem; display: flex; flex-direction: column;\n   }\n\n   .card_text-banner-lcnew {\n     line-height: 18px;\n   }\n   .card_content-banner-lcnew { padding: 0.4rem; grid-gap: 10px;}\n   .card_content-banner-bt {align-self: end;}\n }\n\n </style> \n\n<h2 class=\"learning-content-h2 learning-content-h2--margin-top-16px\" itemprop=\"headline\">What is multiprotocol label switching (MPLS)?</h2>\n\n<p>Multiprotocol label switching (MPLS) is a technique for setting up long-range network connections, first developed in the 1990s. The public Internet functions by forwarding <a href='/learning/network-layer/what-is-a-packet/'>packets</a> from one <a href='/learning/network-layer/what-is-a-router/'>router</a> to the next until the packets reach their destination. MLPS, on the other hand, sends packets along predetermined network paths. Ideally, the result is that routers do not have to decide where to forward each packet, and packets take the same path every time. The result is highly reliable network paths that can connect far-flung branch locations within a corporate <a href='/learning/network-layer/what-is-a-wan/'>wide area network (WAN)</a>.</p>\n\n<p>Consider the process of planning a long drive. Instead of identifying which towns and cities one must drive through in order to reach the destination, it is usually more efficient to identify the roads that go in the correct direction. Similarly, MPLS identifies paths — network \"roads\" — rather than a series of intermediary destinations.</p>\n\n<p>MPLS is considered to operate at <a href='/learning/ddos/glossary/open-systems-interconnection-model-osi/'>OSI</a> layer \"2.5\", below the <a href='/learning/network-layer/what-is-the-network-layer/'>network layer</a> (layer 3) and above the data link layer (layer 2).</p>\n\n<div class=\"cards-banner-lcnew\">\n    <div class=\"card_content-banner-lcnew \">\n        <div class=\"card_title-banner-lcnew\"><span>Start building</span></div>\n        <div class=\"card_text-banner-lcnew\">Build, deploy, and deliver trusted applications</div>\n    </div>\n    <div class=\"card_content-banner-bt\">\n        <div class=\"btn-lcnew-banner  card_btn\"><a href=\"/lp/pg-developer-platform-multi-sku/\" data-tracking-action=\"click\"\n                data-tracking-label=\"Get started - /lp/pg-developer-platform-multi-sku/\" data-tracking-category=\"card3\">Get started</a>\n        </div>\n    </div>\n</div>\n\n<h2 class=\"learning-content-h2\" itemprop=\"headline\">How does routing normally work?</h2>\n\n<p>Anything sent from one computer to another over the Internet is divided up into smaller pieces called packets, instead of getting sent all at once. For example, this webpage was sent to your computer or device in a series of packets that your device reassembled and then displayed. Each packet has an attached header that contains information about where the packet is from and where it is going, including its destination <a href='/learning/dns/glossary/what-is-my-ip-address/'>IP address</a> (like the address on a piece of mail).</p>\n\n<p>For a packet to reach its intended destination, routers have to forward it from one network to the next until it finally arrives at the network that contains its destination IP address. That network will then forward the packet to that address and the associated device.</p>\n\n<p>Before routers can forward a packet to its final IP address, they must first determine where the packet needs to go. Routers do this by referencing and maintaining a routing table, which tells them how to forward each packet. Each router examines the packet's headers, consults its internal routing table, and forwards the packet to the next network. A router in the next network goes through the same process, and the process repeats until the packet arrives at its destination.</p>\n\n<p>This approach to <a href='/learning/network-layer/what-is-routing/'>routing</a> works well for most purposes; most of the Internet runs using IP addresses and routing tables. However, some users or organizations want their data to travel over paths they can directly control. This is particularly the case when organizations need to ensure reliable connectivity to their internal network at different branch offices, campuses, retail locations, or other remote locations.</p>\n\n<div class=\"cards-banner-lcnew helper\">\n    <div class=\"card_content-banner-lcnew \">\n        <div class=\"card_title-banner-lcnew\"><span>Whitepaper</span></div>\n        <div class=\"card_text-banner-lcnew\">Developing a strategy for your network modernization</div>\n    </div>\n    <div class=\"card_content-banner-bt\">\n        <div class=\"btn-lcnew-banner  card_btn\"><a href=\"/lp/developing-a-strategy-for-network-modernization/\" data-tracking-action=\"click\"\n                data-tracking-label=\"Read the whitepaper - /lp/developing-a-strategy-for-network-modernization/\" data-tracking-category=\"card3\">Read the whitepaper</a>\n        </div>\n    </div>\n</div>\n\n<h2 class=\"learning-content-h2\" itemprop=\"headline\">How does routing work in MPLS?</h2>\n\n<p>In typical Internet routing, each individual router makes decisions independently based on its own internal routing table. Even if two packets come from the same place and are going to the same destination, they may take different network paths if a router updates its routing table after the first packet passes through. However, with MPLS, packets take the same path every time.</p>\n\n<p>In a network that uses MPLS, each packet is assigned to a class called a forwarding equivalence class (FEC). The network paths that packets can take are called label-switched paths (LSP). A packet's class (FEC) determines which path (LSP) the packet will be assigned to. Packets with the same FEC follow the same LSP.</p>\n\n<p>Each packet has one or more labels attached, and all labels are contained in an MPLS header, which is added on top of all the other headers attached to a packet. FECs are listed within each packet's labels. Routers do not examine the packet's other headers; they can essentially ignore the IP header. Instead, they examine the packet's label and direct the packet to the right LSP.</p>\n\n<p>Because MPLS-supporting routers only need to see the MPLS labels attached to a given packet, MPLS can work with almost any protocol (hence the name \"multiprotocol\"). It does not matter how the rest of the packet is formatted, as long as the router can read the MPLS labels at the front of the packet.</p>\n\n<h2 class=\"learning-content-h2\" itemprop=\"headline\">Is an MPLS network a 'private' network?</h2>\n\n<p>MPLS can be \"private\" in the sense that only one organization uses certain MPLS paths. However, MPLS does not <a href='/learning/ssl/what-is-encryption/'>encrypt</a> traffic. If packets are intercepted along the paths, they can be read. A <a href='/learning/access-management/what-is-a-vpn/'>virtual private network (VPN)</a> does provide encryption and is one method for keeping network connections truly private. But whether a VPN or some other security service is used, MPLS is not secure by default.</p>\n\n<h2 class=\"learning-content-h2\" itemprop=\"headline\">What are the drawbacks of MPLS?</h2>\n\n<p><strong>Cost:</strong> MPLS is more expensive than regular Internet service.</p>\n\n<p><strong>Long setup time:</strong> Setting up complicated dedicated paths across one or more large networks takes time. LSPs have to be manually configured by the MPLS vendor or by the organization using MPLS. This makes it difficult for organizations to scale up their networks quickly.</p>\n\n<p><strong>Complexity:</strong> MPLS is usually a managed service offered by Internet service providers (ISPs). Since ISPs have different coverage areas, this makes MPLS a region-specific service, and it has to be negotiated with multiple different providers for WANs that span a country or the globe.</p>\n\n<p><strong>Lack of encryption:</strong> MPLS is not encrypted; any attacker that intercepts packets on MPLS paths can read them in plaintext. Encryption has to be set up separately.</p>\n\n<p><strong>Cloud challenges:</strong> Organizations that rely on <a href='/learning/cloud/what-is-the-cloud/'>cloud services</a> may not be able to set up direct network connections to their cloud servers, as they do not have access to the specific servers where their data and applications live.</p>\n\n<h2 class=\"learning-content-h2\" itemprop=\"headline\">When is MPLS used?</h2>\n\n<p>MPLS has often been used to set up wide area networks (WANs) for <a href='/learning/network-layer/what-is-branch-networking/'>branch networking</a>, connecting various locations to a central headquarters or data center. Branch networks built with MPLS allow spread-out branch offices, restaurants, or campuses to exchange information and access the applications they need.</p>\n\n<p>However, WANs built on MPLS are costly, complex, and difficult to scale up. And because routes are predetermined, network traffic must often be backhauled to central locations, resulting in network bottlenecks and inefficiencies. Many corporate WANs are undergoing a process of <a href='/learning/network-layer/network-modernization/'>network modernization</a> to better support cloud computing, remote work, and the use of <a href='/learning/ddos/glossary/internet-of-things-iot/'>Internet of Things (IoT)</a> devices.</p>\n\n<p>To <a href='/learning/network-layer/how-to-migrate-from-mpls/'>replace MPLS</a>, some organizations adopt managed <a href='/learning/network-layer/what-is-an-sd-wan/'>software-defined WAN (SD-WAN)</a> services, which are often more flexible and less expensive. Others are turning to <a href='/learning/access-management/what-is-sase/'>secure access service edge (SASE)</a> vendors for even better support for the cloud and hybrid work, with security built in instead of tacked on.</p>\n\n<p>Cloudflare WAN replaces or augments MPLS connections with a cloud-based network that is easy to set up and does not rely on expensive hardware appliances. Learn more about <a href='/magic-wan'>Cloudflare WAN</a>.</p>\n",
+				"desktopMainContent": "<style>\n\n    .cards-wrapper-lcnew  { display: grid; grid-template-columns: 1fr 1fr; grid-gap: 20px; margin: 64px 0px;}\n    .cards_item-lcnew { background-image: url('https://cf-assets.www.cloudflare.com/slt3lc6tev37/2fMg89go9MegG1EDg39mNy/5a42817cd388ae352f77f56e53b1ff81/card-new.png'); background-repeat: no-repeat; background-size: cover;  background-position: center;  border-radius: 8px;  box-shadow: 10px 10px 20px -14px rgba(0, 0, 0, 1.0);  overflow: hidden;}\n    .btn-lcnew { margin-bottom: 0.5rem; align-self: end; margin-top: 0.5rem; border-radius: 6px;}\n    .btn-lcnew a {font-size: 12px;font-weight: 500; cursor: pointer; background-color: white; padding: 14px 18px 14px 18px; border-radius: 6px; color: #000000 !important; text-decoration: none;}\n    .btn:hover { background-color: rgba(255, 255, 255, 0.12);}\n    .card_content-lcnew  { padding: 1rem; display: flex; flex-direction: column;}\n    .card_title-lcnew  { color: #ffffff; font-size: 12px; margin: 0px; line-height: 18px; text-transform: uppercase;}\n    .card_title-lcnew span  {font-weight: 500}\n    .card_text-lcnew  { color: #000000; font-size: 16px; line-height: 24px ; margin-bottom: 1rem; margin-top: 1rem; font-weight: 600;}\n     a:hover {background-size: 100% 4em !important; color: var(--inline-link-color);}\n\n    @media (max-width: 40rem) \n    {.cards-wrapper-lcnew { grid-template-columns: 1fr; } }\n\n    .cards-banner-lcnew { background-image: url('https://cf-assets.www.cloudflare.com/slt3lc6tev37/6bNeiYhSx0RGvbzxS5Fi8c/3ff83bcc36e86e85170201f8264b2c1c/banner-new.png'); background-repeat: no-repeat;background-size: cover; background-position: center; border-radius: 8px;  margin: 64px 0px; box-shadow: 5px 5px 12px 3px rgba(0, 0, 0, 0.2); overflow: hidden; display: grid;  grid-template-columns: 75% 1fr;}\n    .card_content-banner-lcnew { padding: 1rem;  display: grid; grid-template-rows: 1fr 1fr; grid-gap: 10px;}\n    .btn-lcnew-banner { margin-bottom: 0.5rem; align-self: end; margin-top: 0.5rem; border-radius: 6px;}\n    .btn-lcnew-banner a {font-size: 12px;font-weight: 500; cursor: pointer; background-color: white; padding: 14px 18px 14px 18px; border-radius: 6px; color: #000000 !important; text-decoration: none;}\n    .card_title-banner-lcnew  { color: #ffffff; font-size: 12px; font-weight: 700; margin: 0px;}\n    .card_title-banner-lcnew span  {text-transform: uppercase; font-weight: 500 !important}\n    .card_text-banner-lcnew  { color: #000000; font-size: 16px; line-height: 24px ; font-weight: 600;  }\n    .card_content-banner-bt { align-self: center; justify-self: center;}\n\n    @media (max-width: 40rem) \n    { .cards-banner-lcnew { grid-template-columns: unset; padding: 0.75rem; display: flex; flex-direction: column; }\n      .card_text-banner-lcnew { line-height: 18px; }\n      .card_content-banner-lcnew { padding: 0.4rem; grid-gap: 10px;}\n      .card_content-banner-bt {align-self: end;}\n    }\n\n    </style> \n\n<h2 class=\"learning-content-h2\" itemprop=\"headline\">How to migrate from MPLS</h2>\n <p><a href=\"/learning/network-layer/what-is-mpls/\">Multiprotocol label switching (MPLS)</a> offers stability and predictable service levels while allowing enterprises to connect their <a href=\"/learning/network-layer/what-is-branch-networking/\">branch offices</a>. However, its static nature makes it a poor fit for modern ways of working, for <a href=\"/learning/cloud/what-is-the-cloud/\">cloud computing</a>, and especially for integrating <a href=\"/learning/ai/what-is-artificial-intelligence/\">artificial intelligence (AI)</a> into workflows.</p>\n <p>To increase network flexibility, scalability, and security, enterprises often modernize their networks by migrating from MPLS to alternative networking models, including <a href=\"/learning/network-layer/what-is-an-sd-wan/\">SD-WAN</a> or <a href=\"/learning/access-management/what-is-sase/\">SASE</a> (the latter of which natively integrates <a href=\"/learning/security/glossary/what-is-zero-trust/\">zero trust security</a> principles). The move to SD-WAN was a common step in the 2010s for many businesses, although organizations today find that SD-WAN on its own has limitations, and are looking to modernize further by moving straight to SASE.</p>\n <p><a href=\"/learning/network-layer/network-modernization/\">Network modernization</a> can be an intensive process that takes weeks or months, but organizations can reap the benefits of it for years to come, including:</p>\n <ul class=\"learning-list\"><li>Simpler connectivity</li>\n<li>Faster application and network performance</li>\n<li>Scalable security</li>\n<li>Increased agility</li>\n<li>Lower operational costs</li>\n</ul>\n <h2 class=\"learning-content-h2\" itemprop=\"headline\">How to migrate from MPLS to SD-WAN</h2>\n <h4 class=\"learning-content-h4\">1. Assess and document the current network setup</h4>\n <p>Document bandwidth needs, business-critical applications, and network topology. Recording a baseline of network performance is critical, as that provides a comparison point as the SD-WAN migration is first tested.</p>\n <h4 class=\"learning-content-h4\">2. Choose an SD-WAN provider</h4>\n <p>Different providers offer different features and levels of support; ensure the selected vendor can support business-critical applications and other must-haves.</p>\n <p>Many organizations have critical systems or infrastructure that cannot be moved off of MPLS. Partial migration to SD-WAN can still help optimize much of their network. In such cases, enterprises should ensure they select a vendor who can support hybrid network environments.</p>\n <h4 class=\"learning-content-h4\">3. Create a migration plan</h4>\n <p>Define the future state of the migrated network, determine which steps to take to reach that state, then decide what aspects of the network should be migrated first. Set a schedule for migration</p>\n <h4 class=\"learning-content-h4\">4. Execute the migration</h4>\n <p>Start switching over parts of the network to the SD-WAN provider in accordance with the plan from step 3; many organizations start with a single branch network, followed by performance testing, before migrating other parts of the network. Maintain legacy systems as a backup before fully cutting over to the new network.</p>\n <h4 class=\"learning-content-h4\">5. Monitor post-migration performance</h4>\n <p>Before switching off legacy systems completely, make sure the new configuration is performing better than the baseline documented in step 1.</p>\n <h2 class=\"learning-content-h2\" itemprop=\"headline\">Why SASE has evolved out of SD-WAN</h2>\n <p>Though SD-WAN is often thought of as the next stage for organizations as they <a href=\"/learning/network-layer/how-to-prepare-for-network-modernization-projects/\">modernize their networks</a>, on its own it has many performance and security gaps that can continue to hinder organizational growth. In particular, SD-WAN is designed to connect buildings, not people. As a result, relying solely on SD-WAN means connectivity is fundamentally location-bound. This is less than ideal for the way many modern organizations work. A SASE model replaces location-dependent rules with a unified set of policies and experiences that remains identical whether a user is at an office desk or on the move.</p>\n <p>Secure access service edge (SASE) is the next logical step in network modernization. SASE, in addition to a flexible, software-defined networking model, has security built in. It is a cloud-based architecture that converges network connectivity and comprehensive zero trust security in a single, unified platform.</p>\n <h2 class=\"learning-content-h2\" itemprop=\"headline\">How to migrate from MPLS to SASE</h2>\n\n <div class=\"cards-banner-lcnew\">\n    <div class=\"card_content-banner-lcnew \">\n        <div class=\"card_title-banner-lcnew\"><span>Ebook</span></div>\n        <div class=\"card_text-banner-lcnew\">The 10 key milestones for the journey to full SASE architecture</div>\n    </div>\n    <div class=\"card_content-banner-bt\">\n        <div class=\"btn-lcnew-banner  card_btn\"><a href=\"/lp/10-steps-sase-journey/\" data-tracking-action=\"click\" data-tracking-label=\"Get the guide - /lp/10-steps-sase-journey/\" data-tracking-category=\"card1\">Get the guide</a>\n        </div>\n    </div>\n</div>\n\n <h4 class=\"learning-content-h4\">1. Modernize user-to-app access</h4>\n <p>Switch to a policy that connects users only to the specific apps they are authorized to use, via zero trust network access (<a href=\"/learning/access-management/what-is-ztna/\">ZTNA</a>) controls, instead of the broad access offered through VPNs. For flexibility, SASE relies on a range of connectivity methods, not exclusively private circuits; internal data, applications, networks, and users therefore need to be protected regardless of location or how they are connected. Start by:</p>\n <ul class=\"learning-list\"><li>Enforcing <a href=\"/learning/access-management/what-is-multi-factor-authentication/\">multi-factor authentication (MFA)</a> for critical applications</li>\n<li>Applying zero trust policies for access to critical applications</li>\n<li>Applying advanced <a href=\"/learning/access-management/phishing-attack/\">phishing</a> filters to email traffic</li>\n<li>Closing all inbound ports open to the Internet for application delivery</li>\n<li>Using global <a href=\"/learning/access-management/what-is-dns-filtering/\">DNS filtering</a> to block risky requests</li>\n</ul>\n <h4 class=\"learning-content-h4\">2. Replace private circuits with broadband Internet access for branch connectivity</h4>\n <p>The goal here is to switch from private circuits to cloud-delivered network services, with network traffic and applications protected by ZTNA instead of <a href=\"/learning/access-management/what-is-a-vpn/\">VPNs</a> and on-premises point solutions at branch networks. Steps include:</p>\n <ol class=\"learning-list\"><li>Choose two MPLS-connected locations to start with, and ensure they have Internet connectivity.</li>\n<li>Measure network performance at these locations to establish a baseline.</li>\n<li>Select a cloud-based WAN or <a href=\"/learning/network-layer/network-as-a-service-naas/\">network-as-a-service (NaaS)</a> provider.</li>\n<li>Establish a pair of redundant Anycast <a href=\"/learning/network-layer/what-is-gre-tunneling/\">GRE</a> or <a href=\"/learning/network-layer/what-is-ipsec/\">IPsec</a> tunnels over Internet circuits to the cloud WAN provider's network. (Anycast specifically addresses reliability concerns by routing traffic to the nearest healthy data center rather than a fixed point.)</li>\n<li>Test performance (throughput, <a href=\"/learning/performance/glossary/what-is-latency/\">latency</a>, packet loss, jitter) of those tunnels.</li>\n<li>Change <a href=\"/learning/network-layer/what-is-routing/\">routing</a> policies to migrate production traffic from MPLS to Internet tunnels.</li>\n<li>Repeat at next MPLS-connected location.</li>\n<li>Decommission MPLS circuits as needed.</li>\n</ol>\n <h4 class=\"learning-content-h4\">3. Secure cloud environments</h4>\n <p>At this point, multi-cloud environments should be connected following a similar process to that described above:</p>\n <ol class=\"learning-list\"><li>Choose one cloud environment to start with, and measure app performance to establish a baseline.</li>\n<li>Establish a connection to the cloud-based WAN or NaaS provider.</li>\n<li>Test performance via this connection.</li>\n<li>Change routing policies to migrate cloud production traffic through WAN/NaaS provider.</li>\n<li>Repeat for all cloud deployments.</li>\n<li>Then, use a service like <a href=\"https://developers.cloudflare.com/multi-cloud-networking/\" target=\"_blank\">Multi-Cloud Networking</a> to discover, manage, and secure all data and workloads in the cloud.</li>\n</ol>\n <h4 class=\"learning-content-h4\">4. Decommission hardware appliances and private circuits</h4>\n <p>Not all organizations will be able to, or even desire to, reach the point of turning off all on-premises infrastructure and hardware-based networking and security. However, migrating to SASE does give organizations the opportunity to do so, for increased flexibility and scalability with minimal latency.</p>\n <h2 class=\"learning-content-h2\" itemprop=\"headline\">How to start modernizing MPLS networks with Cloudflare</h2>\n <p>The Cloudflare connectivity cloud delivers secure, fast, and reliable service to any point in the world, and easily adapts to new business requirements. Here's how:</p>\n <ul class=\"learning-list\"><li>Cloudflare handles <a href=\"/learning/security/glossary/what-is-bgp/\">BGP</a> traffic by allowing customer edge routers (CPE) to peer directly with the Cloudflare network. This replaces the need for static routes and allows for dynamic failover.</li>\n<li>Customers establish a BGP session over their existing connectivity, via GRE tunnels, <a href=\"/learning/network-layer/what-is-ipsec/\">IPsec</a> tunnels, or a Cloudflare Network Interconnect (CNI).</li>\n<li>Customer routers advertise their internal prefixes (e.g. branch office subnets) to Cloudflare.</li>\n<li>Cloudflare then updates its Virtual Network routing table across all %{DataCenterCount}-plus global data centers.</li>\n</ul>\n <p>Use Cloudflare for networking and security to strengthen business continuity, improve the user experience, and reduce operating costs. Learn <a href=\"/coffee-shop-networking/\">how to start modernizing networks with Cloudflare</a>.</p>\n<p>&nbsp;</p>\n<h2>FAQs</h2>\n<h4>Why are traditional multiprotocol label switching (MPLS) networks less effective for modern businesses?</h4>\n<p>While MPLS provides reliable connectivity for branch offices, its rigid design struggles to keep up with the demands of cloud computing and the integration of artificial intelligence (AI) into daily operations. Modern work environments require more flexibility than these static networks can offer.</p>\n<h4>What are the primary advantages of upgrading to a more modern network architecture?</h4>\n<p>Transitioning away from legacy systems allows organizations to experience better application performance, simplified connectivity, and improved agility. Additionally, these updates can lower overall operational costs while providing security that scales alongside the business.</p>\n<h4>How does a secure access service edge (SASE) model differ from software-defined wide area networking (SD-WAN)?</h4>\n<p>SD-WAN was primarily built to link physical buildings, which can restrict users to specific locations. In contrast, SASE is a cloud-native framework that combines networking with zero trust security. This ensures that employees have a consistent and secure experience whether they are working from a branch office, working from home, or traveling.</p>\n<h4>What initial steps should an organization take when starting a migration to SD-WAN?</h4>\n<p>The process begins by documenting the current network topology, bandwidth requirements, and most important applications to establish a performance baseline. Organizations must then choose a provider that aligns with their specific technical needs, especially if they require a hybrid setup to maintain certain legacy systems.</p>\n<h4>What is the recommended process for transitioning branch offices to a SASE-based model? </h4>\n<p>Organizations should start by establishing Internet connectivity at a few locations and measuring their performance baseline. After selecting a cloud-based provider, they can create secure Anycast GRE or IPsec tunnels to route traffic. Once these tunnels are tested and production traffic is successfully moved to the new Internet-based paths, the old private circuits can be decommissioned.</p>\n<script type=\"application/ld+json\">\n{\n\"@context\": \"https://schema.org\"\n,\n\"@type\": \"FAQPage\"\n,\n\"mainEntity\": [\n{\n\"@type\": \"Question\"\n,\n\"name\": \"Why are traditional multiprotocol label switching (MPLS) networks less effective for modern businesses?\"\n,\n\"acceptedAnswer\": {\n\"@type\": \"Answer\"\n,\n\"text\": \"While MPLS provides reliable connectivity for branch offices, its rigid design struggles to keep up with the demands of cloud computing and the integration of artificial intelligence (AI) into daily operations. Modern work environments require more flexibility than these static networks can offer.\n\"\n}\n},\n{\n\"@type\": \"Question\"\n,\n\"name\": \"What are the primary advantages of upgrading to a more modern network architecture?\"\n,\n\"acceptedAnswer\": {\n\"@type\": \"Answer\"\n,\n\"text\": \"Transitioning away from legacy systems allows organizations to experience better application performance, simplified connectivity, and improved agility. Additionally, these updates can lower overall operational costs while providing security that scales alongside the business.\n\"\n}\n},\n{\n\"@type\": \"Question\"\n,\n\"name\": \"How does a secure access service edge (SASE) model differ from software-defined wide area networking (SD-WAN)?\"\n,\n\"acceptedAnswer\": {\n\"@type\": \"Answer\"\n,\n\"text\": \"SD-WAN was primarily built to link physical buildings, which can restrict users to specific locations. In contrast, SASE is a cloud-native framework that combines networking with zero trust security. This ensures that employees have a consistent and secure experience whether they are working from a branch office, working from home, or traveling.\n\"\n}\n},\n{\n\"@type\": \"Question\"\n,\n\"name\": \"What initial steps should an organization take when starting a migration to SD-WAN?\"\n,\n\"acceptedAnswer\": {\n\"@type\": \"Answer\"\n,\n\"text\": \"The process begins by documenting the current network topology, bandwidth requirements, and most important applications to establish a performance baseline. Organizations must then choose a provider that aligns with their specific technical needs, especially if they require a hybrid setup to maintain certain legacy systems.\n\"\n}\n},\n{\n\"@type\": \"Question\"\n,\n\"name\": \"What is the recommended process for transitioning branch offices to a SASE-based model?\"\n,\n\"acceptedAnswer\": {\n\"@type\": \"Answer\"\n,\n\"text\": \"Organizations should start by establishing Internet connectivity at a few locations and measuring their performance baseline. After selecting a cloud-based provider, they can create secure Anycast GRE or IPsec tunnels to route traffic. Once these tunnels are tested and production traffic is successfully moved to the new Internet-based paths, the old private circuits can be decommissioned.\n\"\n}\n}\n]\n}\n</script>",
 				"availableLocales": null,
 				"localized": null,
 				"localeList": {
 					"enUS": "English for Locale",
-					"zhCN": "Translated for Locale",
-					"zhTW": "Translated for Locale",
-					"frFR": "Translated for Locale",
-					"deDE": "Translated for Locale",
-					"itIT": "Translated for Locale",
-					"jaJP": "Translated for Locale",
-					"koKR": "Translated for Locale",
-					"ptBR": "Translated for Locale",
-					"esES": "Translated for Locale",
-					"esLA": "Translated for Locale",
+					"zhCN": "English for Locale",
+					"zhTW": "English for Locale",
+					"frFR": "English for Locale",
+					"deDE": "English for Locale",
+					"itIT": "English for Locale",
+					"jaJP": "English for Locale",
+					"koKR": "English for Locale",
+					"ptBR": "English for Locale",
+					"esES": "English for Locale",
+					"esLA": "English for Locale",
 					"enAU": "English for Locale",
 					"enCA": "English for Locale",
 					"enIN": "English for Locale",
@@ -744,100 +744,20 @@
 					"svSE": "English for Locale",
 					"viVN": "English for Locale",
 					"trTR": "English for Locale",
-					"zhHansCN": "Translated for Locale",
+					"zhHansCN": "English for Locale",
 					"plPL": "English for Locale"
 				},
-				"proactivePopup": {
-					"contentTypeId": "proactivePopup",
-					"contentfulId": "4g1Pt1sKrA9BOPdZsrimQK",
-					"headerText": "Subscribe to theNET",
-					"subHeadingText": "Receive a monthly recap of the most popular Internet insights!",
-					"hasMarketoForm": true,
-					"marketoForm": {
-						"contentTypeId": "marketoEmbeddedForm",
-						"contentfulId": "3soF5uZQQ3FUQig9wvpk69",
-						"bladeName": "theNET - Trending Stories - Form: Proactive Pop-up - Subscribe (Learning Center version)",
-						"backgroundColor": "white",
-						"marketoFormId": 2459,
-						"marketoFormLeadSource": "Inbound - Blog Subscriber",
-						"marketoFormLeadSourceDetail": "[BRD] Q4'24 WEB - GBL - Learning Center Subscription",
-						"marketoFormAssetName": null,
-						"marketoFormHeaderText": "Receive a monthly recap of the most popular Internet insights!",
-						"marketoFormDefaultComment": null,
-						"showCommentBox": false,
-						"marketoFormThankYouText": null,
-						"marketoFormCustomSuccessMessage": "We're looking forward to sharing content with you.",
-						"marketoFormPdfDownload": null,
-						"marketoFormPdfDownloadI18n": [],
-						"marketoFormAssetDownloadButtonText": null,
-						"marketoFormSuccessRedirectUrl": null,
-						"sendAdRoll": null,
-						"meta_adRollCustomSegment": null,
-						"enableSandbox": null,
-						"marketoFormSubmitButtonText": "Subscribe",
-						"marketoFormSubmitButtonColor": "orange",
-						"enableEmailVerification": null,
-						"disableEnterpriseEmailNotification": null,
-						"enableRingout": null
-					},
-					"timeDelay": 1500,
-					"ctaButton": null
-				},
-				"sidebarForm": {
-					"contentTypeId": "learningCenterArticleSidebarForm",
-					"contentfulId": "4ad3l3edBzH8KRefyi225g",
-					"heading": "Want to keep learning?",
-					"postSubmissionHeading": "Thank you for subscribing",
-					"description": "Subscribe to theNET, Cloudflare's monthly recap of the Internet's most popular insights!",
-					"postSubmissionDescription": "We're looking forward to sharing content with you.",
-					"marketoForm": {
-						"contentTypeId": "marketoEmbeddedForm",
-						"contentfulId": "4N6NOUDQwA5AAjxuGTnCMu",
-						"bladeName": "Form-Marketo Single Inline - Learning Center Newsletter Form",
-						"backgroundColor": "blue",
-						"marketoFormId": 2459,
-						"marketoFormLeadSource": "Inbound - Blog Subscriber",
-						"marketoFormLeadSourceDetail": "[BRD] Q4'24 WEB - GBL - Learning Center Subscription",
-						"marketoFormAssetName": null,
-						"marketoFormHeaderText": null,
-						"marketoFormDefaultComment": null,
-						"showCommentBox": null,
-						"marketoFormThankYouText": "Thank you for subscribing!",
-						"marketoFormCustomSuccessMessage": "We're looking forward to sharing content with you.",
-						"marketoFormPdfDownload": null,
-						"marketoFormPdfDownloadI18n": [],
-						"marketoFormAssetDownloadButtonText": null,
-						"marketoFormSuccessRedirectUrl": null,
-						"sendAdRoll": null,
-						"meta_adRollCustomSegment": null,
-						"enableSandbox": null,
-						"marketoFormSubmitButtonText": "Subscribe  to theNET",
-						"marketoFormSubmitButtonColor": null,
-						"enableEmailVerification": null,
-						"disableEnterpriseEmailNotification": null,
-						"enableRingout": null
-					}
-				}
+				"proactivePopup": null,
+				"sidebarForm": null
 			}
 		},
 		"pageContext": {
 			"locale": "en-US",
-			"contentfulId": "6rIOw3m5yiopXxm5MqgZbT",
-			"pathname": "/learning/network-layer/what-is-mpls/",
+			"contentfulId": "1TlUbdsMLlWl3qxNr6X1YT",
+			"pathname": "/learning/network-layer/how-to-migrate-from-mpls/",
 			"baseURL": "https://www.cloudflare.com",
 			"allowedHrefLangs": [
-				"en-US",
-				"zh-CN",
-				"zh-TW",
-				"fr-FR",
-				"de-DE",
-				"it-IT",
-				"ja-JP",
-				"ko-KR",
-				"pt-BR",
-				"es-ES",
-				"es-LA",
-				"zh-Hans-CN"
+				"en-US"
 			]
 		}
 	}
