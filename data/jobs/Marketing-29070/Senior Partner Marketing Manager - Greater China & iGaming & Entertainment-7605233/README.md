@@ -9,7 +9,7 @@
 <p><strong>Role Summary</strong></p>
 <p>Cloudflare is looking for a <strong>results-driven, hands-on Senior Partner Marketing Manager</strong> to lead and execute partner marketing across Greater China and iGaming &amp; Entertainment. This role is responsible for designing and delivering integrated partner marketing programs that drive partner-sourced pipeline, accelerate revenue growth, and strengthen partner engagement across Cloudflare’s security and connectivity solutions.</p>
 <p>You will be laser-focused on growing partner revenue, activating and scaling repeatable joint go-to-market programs, and embedding partner marketing into the region’s broader growth strategy. Working closely with regional partners, partner sales, and internal marketing teams, you will execute high-impact campaigns, build strong partner communities, and optimize performance through data-driven insights.</p>
-<p>The ideal candidate is a highly motivated self-starter with proven experience in B2B and cybersecurity partner marketing, strong attention to detail, and a passion for working across diverse partner ecosystems. You thrive in fast-growth environments, are obsessed with measurable results, and consistently turn strategy into tangible outcomes.</p>
+<p>The ideal candidate is a highly motivated self-starter with proven experience in B2B and cybersecurity partner marketing, strong attention to detail, and a passion for working across diverse partner ecosystems. You thrive in fast-growth environments, are obsessed with measurable results, and consistently turn strategy into tangible outcomes. This role requires the ability to communicate with Mandarin speaking clients and stakeholders in the Greater China region.</p>
 <p><strong>Role Responsibilities</strong></p>
 <ul>
 	<li><strong>Stakeholder Collaboration:</strong> Partner with regional Partner Sales Directors, Partner Account Managers, and internal marketing teams to align marketing activities with regional targets and business priorities.</li>
@@ -33,7 +33,6 @@
 	<li><strong>Cybersecurity Market Insight:</strong> Deep understanding of enterprise cybersecurity challenges across APAC.</li>
 	<li><strong>Analytical &amp; Creative Thinking:</strong> Ability to analyze data, identify opportunities, and execute innovative partner marketing campaigns.</li>
 	<li><strong>Project Leadership:</strong> Proven ability to manage multiple complex projects across different time zones.</li>
-	<li><strong>Language Skills:</strong> Fluency in English and Mandarin.</li>
 	<li><strong>Travel:</strong> Ability to travel up to 20% domestically and internationally.</li>
 </ul>
 <p><strong>Nice-to-Have Skills</strong></p>
