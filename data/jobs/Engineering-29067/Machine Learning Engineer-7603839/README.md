@@ -5,37 +5,62 @@
 		<p>At Cloudflare, we’re not looking for people who wait for a polished roadmap; we’re looking for the builders who see the cracks in the Internet that everyone else has simply learned to live with. We value candidates who have the instinct to spot a "normalized" problem and the AI-native curiosity to create a solution using the latest tools. Our culture is built on iteration, leveraging AI to ship faster today to make it better tomorrow, while ensuring that every improvement, no matter how small, is shared across the team to lift everyone up. If you’re the type of person who values curiosity over bureaucracy, and that AI is a partner in solving tough problems to keep the Internet moving forward, you’ll fit right in.</p>
 	</div>
 </div>
-<p><strong>Available Location:</strong> Austin</p>
-<p><strong>Role Summary</strong> This critical role is responsible for ensuring smooth financial operations throughout the close cycles by maintaining the stability, security, and high performance of Oracle EPM environments. The EPM Administrator &amp; Dev Platform Lead will absorb knowledge transfer from implementation partners and serve as the primary operational lead for Financial Consolidation and Close (FCCS), Account Reconciliation (ARCS), and Enterprise Data Management (EDMCS). A core aspect of the job involves collaborating cross-functionally with IT and business teams to understand downstream system impacts, manage critical system handshakes, and oversee regular maintenance. Partnering closely with Financial Systems leadership, you will help translate the strategic roadmap into reality.&nbsp;</p>
-<p><strong>Role Responsibilities</strong></p>
+<p><strong>Available Locations: Austin</strong></p>
+<h2>About the Team</h2>
+<p>The Core Data team’s mission is building a centralized data platform for Cloudflare that provides&nbsp; secure, democratized access to data for internal customers throughout the company. We operate infrastructure and craft tools to empower both technical and non-technical users to answer their most important questions. We facilitate access to data from federated sources across the company for dashboarding, ad-hoc querying and in-product use cases. We power data pipelines and data products, secure and monitor data, and drive data governance at Cloudflare. Our work enables every individual at the company to act with greater information and make more informed decisions.&nbsp;</p>
+<h2>About the Role</h2>
+<p>We are looking for a Machine Learning Engineer to lead the transformation of our data lakehouse into a semantically-aware intelligence platform. Instead of traditional ETL, this role focuses on building the software layer that extracts meaning from our vast data stores. You will be responsible for developing and leveraging a Semantic Knowledge Graph to power LLM-driven applications, discovery tools, and automated reasoning systems that serve business needs across Product, Marketing, and Billing.</p>
+<h2>What You'll Do</h2>
 <ul>
-	<li><strong>Cross-Functional System Execution:</strong> Work closely with finance, IT, and cross-functional teams to implement roadmap initiatives and evaluate downstream impacts.</li>
-	<li><strong>Troubleshooting &amp; Resolution:</strong> Investigate and resolve data load, mapping, validation, and calculation issues. Track and resolve recurring or critical issues through Oracle Service Requests (SRs).</li>
-	<li><strong>Configuration &amp; Enhancements:</strong> Maintain and update metadata, including hierarchies, properties, accounts, and node types. Configure web forms, dashboards, workflow rules, and match rules as business needs evolve.</li>
-	<li><strong>Data Integration Management:</strong> Administer Data Exchange pipelines, import/export definitions, and update EDM subscriptions to keep metadata aligned. Manage calculation rules, consolidations, and cash flow mappings.</li>
-	<li><strong>Maintenance &amp; Patching:</strong> Review release notes and perform patch regression testing on monthly EPM patches, promoting updates safely across DEV, TEST, and PROD pods.</li>
-	<li><strong>System Support &amp; Operations:</strong> Manage and monitor user access control, including assigning predefined and application roles. Provide functional support during close cycles, assisting users with application navigation, workflows, and Smart View queries.</li>
-	<li><strong>Solution Architecture &amp; Development:</strong> Partner with leadership to design, build, and optimize scalable EPM data models and solutions. Translate business requirements into technical architecture and execute complex development work across FCCS, ARCS, and EDMCS.</li>
+	<li>Architect Semantic Layers: Design and develop the software infrastructure to layer semantic meaning over our existing data stack, including Kubernetes, Trino, and Iceberg.</li>
+	<li>Build Knowledge Graphs: Construct and maintain large-scale knowledge graphs from unstructured and structured sources to enable advanced reasoning.</li>
+	<li>Develop AI Software: Build production-grade software and APIs that leverage LLMs and Graph RAG pipelines to solve complex business queries.</li>
+	<li>Enhance Data Intelligence: Implement embedding-based retrieval and semantic deduplication to improve the precision and reliability of AI agents.</li>
+	<li>Collaborate on AI Solutions: Work with cross-functional teams to deploy conversational agents and automated diagnostics tools that turn data into actionable business value.</li>
 </ul>
-<p><strong>Role Requirements (Must-Have Skills)</strong></p>
+<h2>Requirements</h2>
 <ul>
-	<li><strong>Active Oracle Cloud EPM Certification(s)</strong> (e.g., Financial Consolidation and Close (FCCS), Account Reconciliation (ARCS), Enterprise Data Management (EDMCS), or EPM Data Integration).</li>
-	<li>6+ years of experience managing and supporting Oracle EPM applications, specifically FCCS, ARCS, and EDMCS.</li>
-	<li>Proven ability to manage daily operations, including integrations, consolidations, and reconciliations.</li>
-	<li>Exceptional troubleshooting skills, specifically regarding Smart View installations, connection settings, and resolving setup conflicts.</li>
-	<li>Experience managing user security, access roles, and maintaining compliance governance.</li>
-	<li>Ability to perform monthly/quarterly close operations and execute environment health checks.</li>
-	<li>Exceptional communication skills with the ability to partner effectively with cross-functional IT and business teams to evaluate inbound and outbound data flows and build architectural solutions.</li>
+	<li>3-5+ years of experience in software or machine learning engineering with a focus on AI-driven applications.</li>
+	<li>Expertise in Knowledge Representation: Proven experience building knowledge graphs (e.g., HNSW, Neptune) and using graph-based reasoning for AI.</li>
+	<li>Proficiency with LLMs &amp; GenAI: Hands-on experience with RAG pipelines, fine-tuning (SFT/LoRA), and LLM-as-a-judge evaluation frameworks.</li>
+	<li>Strong Backend Skills: Proficient in Python, Go, or TypeScript, with the ability to build and debug complex software systems.</li>
+	<li>Analytical Mindset: Strong ability to understand how semantic data structures drive business value and improve user decision-making.</li>
+	<li>B.S. or M.S. in Computer Science, Engineering, Mathematics, or related fields.</li>
+	<li>Solid understanding of systems engineering principles and practices.</li>
 </ul>
-<p><strong>Nice-to-Have Skills</strong></p>
+<h2>Desirable Skills</h2>
 <ul>
-	<li>Familiarity with Oracle Integration Cloud (OIC).</li>
-	<li>Familiarity or experience with Oracle Tax Reporting (TRCS), as future roadmap capabilities may expand into this area.</li>
-	<li>Experience with Risk Control Matrix (RCM) functionality to monitor Segregation of Duties (SOD) controls between ERP and EPM systems.</li>
-	<li>Prior experience with other Finance Planning tools (e.g., PBCS, Adaptive Planning, Planful, Pigment, SAP, IBM, OneStream, etc is a plus).</li>
+	<li>Experience with Semantic Search and hybrid vector search query engines.</li>
+	<li>Familiarity with MLOps and deploying models within Kubernetes environments.</li>
+	<li>Published research or a strong background in Applied ML or Computational Intelligence.</li>
 </ul>
+<p>&nbsp;</p>
+<p><strong>Equity</strong></p>
+<p>This role is eligible to participate in Cloudflare’s equity plan.</p>
+<p><strong>Benefits</strong></p>
+<p>Cloudflare offers a complete package of benefits and programs to support you and your family.&nbsp; Our benefits programs can help you pay health care expenses, support caregiving, build capital for the future and make life a little easier and fun!&nbsp; The below is a description of our benefits for employees in the United States, and benefits may vary for employees based outside the U.S.</p>
+<p><strong>Health &amp; Welfare Benefits</strong></p>
 <ul>
-	<li>Conceptual understanding of Generative AI, Large Language Models (LLMs), or Agentic AI frameworks</li>
+	<li>Medical/Rx Insurance</li>
+	<li>Dental Insurance</li>
+	<li>Vision Insurance</li>
+	<li>Flexible Spending Accounts</li>
+	<li>Commuter Spending Accounts</li>
+	<li>Fertility &amp; Family Forming Benefits</li>
+	<li>On-demand mental health support and Employee Assistance Program</li>
+	<li>Global Travel Medical Insurance</li>
+</ul>
+<p><strong>Financial Benefits</strong></p>
+<ul>
+	<li>Short and Long Term Disability Insurance</li>
+	<li>Life &amp; Accident Insurance</li>
+	<li>401(k) Retirement Savings Plan</li>
+	<li>Employee Stock Participation Plan</li>
+</ul>
+<p><strong>Time Off</strong></p>
+<ul>
+	<li>Flexible paid time off covering vacation and sick leave</li>
+	<li>Leave programs, including parental, pregnancy health, medical, and bereavement leave</li>
 </ul>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>

@@ -5,35 +5,32 @@
 		<p>At Cloudflare, we’re not looking for people who wait for a polished roadmap; we’re looking for the builders who see the cracks in the Internet that everyone else has simply learned to live with. We value candidates who have the instinct to spot a "normalized" problem and the AI-native curiosity to create a solution using the latest tools. Our culture is built on iteration, leveraging AI to ship faster today to make it better tomorrow, while ensuring that every improvement, no matter how small, is shared across the team to lift everyone up. If you’re the type of person who values curiosity over bureaucracy, and that AI is a partner in solving tough problems to keep the Internet moving forward, you’ll fit right in.</p>
 	</div>
 </div>
-<p><strong>Available location:&nbsp;</strong>Austin, Texas, San Francisco, CA, Washington D.C.</p>
-<p><strong>About the Team</strong></p>
-<p>The Marketing team at Cloudflare is at the forefront of sharing our mission to help build a better internet. We are a dynamic and fast-paced team dedicated to showcasing Cloudflare's innovative products and solutions to a global audience. Through strategic campaigns, engaging events, and compelling content, we drive awareness, generate demand, and support our company's rapid growth. As an intern, you'll gain hands-on experience and contribute directly to our efforts in making an impact.</p>
+<p><strong>Available location(s): </strong>Austin, Texas, San Francisco, CA</p>
 <p><strong>About the Role</strong></p>
-<p>As a Marketing Events &amp; Campaigns Intern, you will play a crucial supporting role in the successful execution of Cloudflare's marketing initiatives. This is an exciting opportunity to gain hands-on experience across a variety of marketing channels, including webinars, trade shows, and digital advertising. You will contribute to the end-to-end process, from logistical coordination to ensuring our creative assets are polished and ready for launch. Your work will directly support lead generation efforts and help deliver impactful marketing experiences to our prospects and customers.</p>
+<p>The Customer Advocacy Intern will support the team responsible for building, managing and growing customer marketing programs. Reporting to the Head of Customer Advocacy, the ideal candidate will be interested in a focus on both customer engagement and scaling customer programs in high growth SaaS companies. This is a fantastic opportunity to join a high growth company with a mission to help build a better Internet.&nbsp;You will shadow the Customer Advocacy Managers cross functionally and globally in building customer participation with enterprise customers across many industries and partnering closely with stakeholders in Sales, Customer Success, Marketing, Product, and PR/AR.&nbsp;</p>
+<p>The candidate is an entry level intern who will work closely with the global Customer Advocacy team, who are driving all Customer Marketing and Customer Advocacy programs. Success is measured by the ability to drive forward efficiently and at the speed of the business, focused on quantity and quality of content, deep engagement with top accounts, brand equity, and levels/titles of participating customers.</p>
+<p>The main projects are:</p>
+<p><strong>Customer References:</strong><br>Support and fulfill sales 1:1 and RFP requests for customer references working across customer advocacy and account teams<br>Manage/track customer references requests via customer marketing tools<br>Support customer reference requests from key stakeholders across events, campaigns, product, analyst, and public relations teams&nbsp;<br><br><strong>Customer Advocacy:&nbsp;</strong><br>Qualify, develop and maintain a targeted pipeline of strategic customer relationships&nbsp;<br>Manage and qualify incoming nominations &nbsp;<br>Contribute to the development of high quality, world-class customer story content<br><br><strong>Advisory Boards and Councils:&nbsp;</strong><br>Shadow the process and contribute to our customer advisory boards/councils&nbsp;<br>Coordinate across many teams and executives, pre/post event success &nbsp;<br>Develop documents and reporting pre/post event<br>Assist in onsite, in-person, best-in-class customer experiences&nbsp;</p>
 <p><strong>Responsibilities</strong></p>
 <ul>
-	<li>Assist with the logistical planning and execution of virtual webinars and in-person trade shows, including scheduling, vendor coordination, and materials preparation.</li>
-	<li>Support the development and deployment of digital ad campaigns across various platforms, ensuring proper tracking and optimization.</li>
-	<li>Coordinate the readiness of marketing assets, such as website banners, email communications, and landing pages, collaborating with design and content teams.</li>
-	<li>Help manage and track leads generated from events and campaigns, ensuring data accuracy and timely follow-up.</li>
-	<li>Contribute to post-event and campaign reporting by gathering data and assisting with performance analysis.</li>
-	<li>Participate in team meetings and contribute ideas for improving marketing processes and campaign effectiveness.</li>
+	<li>Collaborate with the GTM teams to develop and execute customer marketing strategies that align with business goals.</li>
+	<li>Support the research, writing, and editing of engaging case studies, customer interviews, and other marketing collateral.</li>
+	<li>Learn and support marketing and customer advocacy tech stack.</li>
+	<li>Contribute to planning and brainstorming sessions, bringing creative ideas and new efficiencies using AI to the table.</li>
+	<li>Support the team in analyzing advocacy activity performance and identifying opportunities for improvement.</li>
+	<li>Contribute to monthly and quarterly reporting, including newsletters</li>
 </ul>
 <p><strong>Skills &amp; Qualifications</strong></p>
 <ul>
-	<li>Currently pursuing a Bachelor's degree in Marketing, Communications, Business, or a related field.</li>
-	<li>Available for a full-time 12-week internship, working from one of our US hub offices 3-5 days a week during the summer (May-Aug).</li>
-	<li>Strong organizational skills with a keen eye for detail and the ability to manage multiple tasks simultaneously.</li>
-	<li>Excellent written and verbal communication skills.</li>
-	<li>Familiarity with digital marketing concepts and platforms is a plus.</li>
-	<li>Proactive attitude with a desire to learn and contribute in a fast-paced environment.</li>
-	<li>Ability to collaborate effectively within a team and with cross-functional partners.</li>
-	<li>Proficiency with standard office productivity tools (e.g., Google Workspace, Microsoft Office).</li>
-</ul>
-<p><strong>Bonus Points</strong></p>
-<ul>
-	<li>Previous experience (academic or professional) with event coordination or digital campaign support.</li>
-	<li>Understanding of lead tracking and CRM systems.</li>
+	<li>Currently pursuing a degree in Journalism, English, Marketing, Communications, or a related field.</li>
+	<li>Available for a full-time 12-week internship, working from our Austin or San Francisco office 3-5 days a week during the summer (May-Aug).</li>
+	<li>A strong portfolio showcasing your writing samples across different formats (e.g., blog posts, articles, essays).</li>
+	<li>Ability to write clearly, concisely, and adaptably for various digital platforms and audiences.</li>
+	<li>Strong project management skills.</li>
+	<li>Strong research skills and a keen eye for detail.</li>
+	<li>Excellent communication and collaboration skills.</li>
+	<li>Curiosity and a proactive approach to learning and problem-solving.</li>
+	<li>A passion for technology and its impact on the internet is desirable.</li>
 </ul>
 <p><strong>Compensation</strong></p>
 <p>Compensation may be adjusted depending on work location.</p>

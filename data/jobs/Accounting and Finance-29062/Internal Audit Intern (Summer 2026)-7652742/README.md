@@ -34,6 +34,10 @@
 	<li>Ability to commit to a minimum 12 week summer internship.</li>
 	<li>In office 3-5 days a week in Austin, TX.</li>
 </ul>
+<p><strong>Estimated Salary:</strong></p>
+<ul>
+	<li>$24/hr</li>
+</ul>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
 	<p><span style="font-weight: 400;">We’re not just a highly ambitious, large-scale technology company. We’re a highly ambitious, large-scale technology company with a soul. Fundamental to our mission to help build a better Internet is protecting the free and open Internet.</span></p>
