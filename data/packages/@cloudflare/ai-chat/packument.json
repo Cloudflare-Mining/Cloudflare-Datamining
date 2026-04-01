@@ -1,7 +1,7 @@
 {
 	"name": "@cloudflare/ai-chat",
 	"dist-tags": {
-		"latest": "0.3.1"
+		"latest": "0.3.2"
 	},
 	"versions": {
 		"0.0.1": {
@@ -927,28 +927,66 @@
 			"name": "@cloudflare/ai-chat",
 			"version": "0.3.1",
 			"devDependencies": {
-				"@playwright/test": "^1.58.2",
-				"@types/react": "^19.2.14",
 				"ai": "^6.0.141",
+				"zod": "^4.3.6",
+				"react": "^19.2.4",
+				"@types/react": "^19.2.14",
+				"@playwright/test": "^1.58.2",
+				"vitest-browser-react": "^2.1.0"
+			},
+			"peerDependencies": {
+				"ai": "^6.0.0",
+				"zod": "^4.0.0",
+				"react": "^19.0.0",
+				"agents": "^0.8.7",
+				"@ai-sdk/react": "^3.0.0"
+			},
+			"dist": {
+				"shasum": "5b61433c13da7b8e4822f4a4840d615e0563793e",
+				"tarball": "https://registry.npmjs.org/@cloudflare/ai-chat/-/ai-chat-0.3.1.tgz",
+				"fileCount": 20,
+				"integrity": "sha512-UfK0iPhwJYVk4Wl0ONY4tU7kcws0+SDr2FpXzCE7Ra5BCyootoIVGNoyw40tA7TgJl7QRmzrn0DL7MZ45Y8qDA==",
+				"signatures": [
+					{
+						"sig": "MEQCIBB6mgpI70nWZrVvzIVGK+xpHVwhHwOkPLhzevlV5xLDAiB8e6u7zwQv0X3UoWzOP/w8RxA1Sb4rr/UD/4tgyvt9lw==",
+						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
+					}
+				],
+				"attestations": {
+					"url": "https://registry.npmjs.org/-/npm/v1/attestations/@cloudflare%2fai-chat@0.3.1",
+					"provenance": {
+						"predicateType": "https://slsa.dev/provenance/v1"
+					}
+				},
+				"unpackedSize": 553559
+			}
+		},
+		"0.3.2": {
+			"name": "@cloudflare/ai-chat",
+			"version": "0.3.2",
+			"devDependencies": {
+				"@playwright/test": "^1.59.0",
+				"@types/react": "^19.2.14",
+				"ai": "^6.0.142",
 				"react": "^19.2.4",
 				"vitest-browser-react": "^2.1.0",
 				"zod": "^4.3.6"
 			},
 			"peerDependencies": {
 				"@ai-sdk/react": "^3.0.0",
-				"agents": "^0.8.7",
+				"agents": "^0.9.0",
 				"ai": "^6.0.0",
 				"react": "^19.0.0",
 				"zod": "^4.0.0"
 			},
 			"dist": {
-				"integrity": "sha512-UfK0iPhwJYVk4Wl0ONY4tU7kcws0+SDr2FpXzCE7Ra5BCyootoIVGNoyw40tA7TgJl7QRmzrn0DL7MZ45Y8qDA==",
-				"shasum": "5b61433c13da7b8e4822f4a4840d615e0563793e",
-				"tarball": "https://registry.npmjs.org/@cloudflare/ai-chat/-/ai-chat-0.3.1.tgz",
-				"fileCount": 20,
-				"unpackedSize": 553559,
+				"integrity": "sha512-E41BnXJ6MGG7yINhEYr3Wa6LXTIsdOVUI3sTivgF+JC9BQRk3MfNpzvlh0eLJGRp8yxd7YIBbs1N/eZFZA49bQ==",
+				"shasum": "beb37d72c74422ba7fe0cd77eedd18e68e521837",
+				"tarball": "https://registry.npmjs.org/@cloudflare/ai-chat/-/ai-chat-0.3.2.tgz",
+				"fileCount": 17,
+				"unpackedSize": 452218,
 				"attestations": {
-					"url": "https://registry.npmjs.org/-/npm/v1/attestations/@cloudflare%2fai-chat@0.3.1",
+					"url": "https://registry.npmjs.org/-/npm/v1/attestations/@cloudflare%2fai-chat@0.3.2",
 					"provenance": {
 						"predicateType": "https://slsa.dev/provenance/v1"
 					}
@@ -956,7 +994,7 @@
 				"signatures": [
 					{
 						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U",
-						"sig": "MEQCIBB6mgpI70nWZrVvzIVGK+xpHVwhHwOkPLhzevlV5xLDAiB8e6u7zwQv0X3UoWzOP/w8RxA1Sb4rr/UD/4tgyvt9lw=="
+						"sig": "MEQCICjA5hYsTGeZbbnOdPUyluQkgDclra6JGGQr+jvks+rXAiB6bymbfIfbi85sPBV+ISZfUjx0Hb2KJ9OOMxmQvJDTbw=="
 					}
 				]
 			}
