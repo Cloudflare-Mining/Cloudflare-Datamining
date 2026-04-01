@@ -3,7 +3,13 @@ import { existsSync, readdirSync } from 'node:fs';
 import path from 'node:path';
 
 import { Message } from 'capnp-es';
-import { CodeGeneratorRequest, Field_Which, Node_Which, Type_Which, Value_Which } from 'capnp-es/capnp/schema';
+import {
+	CodeGeneratorRequest,
+	Field_Which,
+	Node_Which,
+	Type_Which,
+	Value_Which,
+} from 'capnp-es/capnp/schema';
 
 function extractAnnotations(annotations, nodeMap) {
 	const result = {};
@@ -147,14 +153,16 @@ function runCapnpc(files, importFlags, cwd) {
 		const errorFiles = new Set();
 		for (const line of stderr.split('\n')) {
 			const match = line.match(/^(.+\.capnp):\d+/);
-			if (match) { errorFiles.add(match[1]); }
+			if (match) {
+				errorFiles.add(match[1]);
+			}
 		}
 
 		if (errorFiles.size === 0) { throw error; }
 
-		const remaining = files.filter((f) => {
+		const remaining = files.filter((file) => {
 			for (const ef of errorFiles) {
-				if (f === ef || f.endsWith(`/${ef}`)) { return false; }
+				if (file === ef || file.endsWith(`/${ef}`)) { return false; }
 			}
 			return true;
 		});
@@ -207,17 +215,17 @@ export function parseWorkerdCapnp(workerdDir) {
 				if (node.struct.isGroup) { break; }
 				structs.push({
 					name,
-					fields: Array.from(node.struct.fields, (field) => fieldToObject(field, nodeMap)),
+					fields: Array.from(node.struct.fields, field => fieldToObject(field, nodeMap)),
 				});
 				break;
 			}
 			case Node_Which.ENUM: {
 				enums.push({
 					name,
-					enumerants: Array.from(node.enum.enumerants, (e) => {
+					enumerants: Array.from(node.enum.enumerants, (enumerant) => {
 						return {
-							name: e.name,
-							annotations: extractAnnotations(e.annotations, nodeMap),
+							name: enumerant.name,
+							annotations: extractAnnotations(enumerant.annotations, nodeMap),
 						};
 					}),
 				});
@@ -226,14 +234,14 @@ export function parseWorkerdCapnp(workerdDir) {
 			case Node_Which.INTERFACE: {
 				interfaces.push({
 					name,
-					methods: Array.from(node.interface.methods, (m) => {
-						const paramNode = nodeMap.get(m.paramStructType);
-						const resultNode = nodeMap.get(m.resultStructType);
+					methods: Array.from(node.interface.methods, (method) => {
+						const paramNode = nodeMap.get(method.paramStructType);
+						const resultNode = nodeMap.get(method.resultStructType);
 						return {
-							name: m.name,
+							name: method.name,
 							paramType: paramNode?.displayName ?? null,
 							resultType: resultNode?.displayName ?? null,
-							annotations: extractAnnotations(m.annotations, nodeMap),
+							annotations: extractAnnotations(method.annotations, nodeMap),
 						};
 					}),
 				});
