@@ -41,3 +41,10 @@ jobs:
           npm run mine:workerd
         env:
           DISCORD_WEBHOOK_WORKERD: ${{ secrets.DISCORD_WEBHOOK_WORKERD }}
+
+      - name: Upload parsed output
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: workerd-parsed
+          path: data/workerd/parsed.json
