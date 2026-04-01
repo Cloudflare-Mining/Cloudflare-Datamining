@@ -5,33 +5,46 @@
 		<p>At Cloudflare, we’re not looking for people who wait for a polished roadmap; we’re looking for the builders who see the cracks in the Internet that everyone else has simply learned to live with. We value candidates who have the instinct to spot a "normalized" problem and the AI-native curiosity to create a solution using the latest tools. Our culture is built on iteration, leveraging AI to ship faster today to make it better tomorrow, while ensuring that every improvement, no matter how small, is shared across the team to lift everyone up. If you’re the type of person who values curiosity over bureaucracy, and that AI is a partner in solving tough problems to keep the Internet moving forward, you’ll fit right in.</p>
 	</div>
 </div>
-<p><strong>Available Location: Lisbon, Portugal or London, UK</strong></p>
+<p><strong>Available Locations: London, UK or Lisbon, Portugal&nbsp;</strong></p>
 <p><strong>Role Summary</strong></p>
-<p>As a Senior Jira Systems Administrator, you will serve as the primary architect and guardian of our Atlassian Data Center environment, ensuring peak performance, security, and scalability. You will collaborate closely with cross-functional internal teams to translate complex business needs into streamlined workflows while leveraging Groovy and ScriptRunner to automate advanced logic. We are looking for a meticulous, "uptime-focused" technical expert who balances deep infrastructure knowledge with a commitment to maintaining a clean, well-governed instance.</p>
-<p><strong>Role Responsibilities:</strong><strong><br></strong></p>
+<p>The Egress team was formed to own a very important aspect of Cloudflare's network-as-a-service: Egress connectivity for our vast portfolio of products.</p>
+<p>As a member of the Egress team, you will be a key technical contributor to a cutting edge network software infrastructure used by a growing number of Cloudflare products to connect to any destination from Cloudflare's network. Among the products powered by this technology is WARP, our Zero Trust platform, and Cloudflare's egress proxy for the <a href="https://blog.cloudflare.com/icloud-private-relay/">iCloud Private Relay</a> product.</p>
+<p>You will work closely with various Engineering teams to translate their requirements into new capabilities on the platform. Likewise you will partner with Network Engineering and SRE to ensure that the technology makes the best use of Cloudflare's world-class edge network.</p>
+<p>You will participate in all stages of the software development lifecycle, from designing and documenting systems, to writing code and automated tests, to planning, managing, and monitoring production software deployments. You will work with a wide range of technologies and programming languages, including Rust, Go, Linux networking, ClickHouse, PostgreSQL, Grafana, Kubernetes, and more.</p>
+<p>Engineering teams at Cloudflare operate a Run What You Build model, including ours. We are responsible for the health of our system and participate in our team's on-call rotation as part of operational responsibilities.</p>
+<p>Because you’ll be solving problems of massive scale and significance, you are a growth-oriented individual who enjoys being outside of your comfort zone. You are comfortable in a fast-paced but sensible work environment. You value curiosity and empathy and lead with these values.</p>
+<p><strong>Role Responsibilities</strong></p>
 <ul>
-	<li><strong>System Maintenance &amp; Security:</strong> Lead the end-to-end patching process for Jira Data Center/Server instances. Monitor Atlassian Security Advisories and perform version upgrades to ensure the environment is secure and performant.</li>
-	<li><strong>Instance Governance:</strong> Serve as the primary gatekeeper for the Jira configuration. Manage global settings, including workflows, permission schemes, screen schemes, and custom field consolidation.</li>
-	<li><strong>Automation &amp; Customization:</strong> Develop and maintain complex scripts using <strong>ScriptRunner (Groovy)</strong> to automate business logic, extend Jira’s native capabilities, and integrate with external APIs.</li>
-	<li><strong>Performance Monitoring:</strong> Conduct regular health checks, JVM tuning, and re-indexing. Troubleshoot system-level issues (logs, database connectivity, or plugin conflicts) to minimize downtime.</li>
-	<li><strong>User Support &amp; Training:</strong> Provide "Tier 3" support for internal teams, helping them translate business requirements into efficient Jira projects without creating "configuration bloat."</li>
+	<li>Make daily progress on assigned engineering tasks, such as designing systems, writing specs, writing and pushing code via git, writing release plans for complex changes, rolling out production releases and working with other teams to coordinate system actions</li>
+	<li>Participate in daily and ad-hoc team meetings to share progress and collaborate</li>
+	<li>Participate in the team’s on-call schedule to ensure uptime of our production systems</li>
+	<li>Investigating customer issues that are escalated to the Egress team for triage and resolution</li>
+	<li>Responding to questions from other teams in the Egress team’s internal, public chat room</li>
+	<li>Using AI-powered tools and systems as part of your daily workflow to analyze and extend codebases, introspect production systems and datasets, and accelerate problem-solving</li>
 </ul>
-<p><strong>Role Requirements (Must-Have Skills)</strong></p>
+<p><strong>Role Requirements</strong></p>
 <p><strong>Must-Have Skills</strong></p>
 <ul>
-	<li><strong>Atlassian Expertise:</strong> 3–5+ years of experience as a Jira Systems Administrator, with specific experience both in<strong> </strong>On-Prem (Data Center or Server) environments AND cloud migration experience.&nbsp;</li>
-	<li><strong>Scripting Proficiency:</strong> Advanced knowledge of Groovy and the ScriptRunner plugin. You should be comfortable writing scripts that interact with the Jira API.</li>
-	<li><strong>Infrastructure Knowledge:</strong> Strong understanding of the underlying tech stack: Linux/Windows servers, SQL databases (PostgreSQL/SQL Server), and SSL/Certificate management.</li>
-	<li><strong>Technical Troubleshooting:</strong> Ability to analyze log files (atlassian-jira.log) and thread dumps to identify the root cause of system instability.</li>
-	<li><strong>Change Management:</strong> Experience operating in a production environment where "uptime is king," following strict change-control processes for all patches and updates.</li>
+	<li>Programming experience in Go or Rust and a desire to improve your skills in both.</li>
+	<li>A solid grasp of networking protocols in Layers 3 and 4 of the OSI Model.</li>
+	<li>Knowledge of HTTP, TLS, and CDN networks.</li>
+	<li>Experience in implementing secure and highly-available distributed systems.</li>
+	<li>Strong ability to debug issues in complex systems.</li>
+	<li>Strong collaboration and communication skills.</li>
+	<li>Experience/interest in HTTP networking and VPN technologies.</li>
+	<li>Experience/interest in network performance monitoring and tuning.</li>
+	<li>Willingness to adopt and integrate AI tools and systems into your engineering workflow.</li>
 </ul>
-<p><strong>Nice-to-Have Skills</strong></p>
+<p><strong>Bonus Points</strong></p>
 <ul>
-	<li><strong>Atlassian Certified Professional (ACP):</strong> Current certifications such as ACP-100 (Jira Admin for Data Center) or ACP-120 (Jira Admin for Cloud).</li>
-	<li><strong>Identity Management:</strong> Experience with Atlassian Guard (Access) and configuring SSO/SAML (e.g., Okta, Azure AD) for user provisioning.</li>
-	<li><strong>Ecosystem Breadth:</strong> Familiarity with administering other Atlassian tools like Confluence, Bitbucket, or Jira Service Management (JSM).</li>
-	<li><strong>Project Management Savvy:</strong> Experience with Agile methodologies (Scrum/Kanban) to help teams optimize their boards and reporting.</li>
+	<li>Knowledge of TCP/IP and Internet routing.</li>
+	<li>Professional systems-level programming experience in Rust.</li>
+	<li>Experience building tools and APIs.</li>
+	<li>Experience with monitoring, alerting, and debugging large-scale distributed systems</li>
+	<li>Experience participating in an on-call rotation.</li>
+	<li>Experience using AI-assisted development tools (e.g., code completion, codebase analysis, log/data exploration) in a professional setting.</li>
 </ul>
+<p>&nbsp;</p>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
 	<p><span style="font-weight: 400;">We’re not just a highly ambitious, large-scale technology company. We’re a highly ambitious, large-scale technology company with a soul. Fundamental to our mission to help build a better Internet is protecting the free and open Internet.</span></p>
