@@ -1,0 +1,221 @@
+<div class="mb2 gray5">11 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5VnjnsSUePsv89JB4JiwI/1d69cc5560e220b4e9445aa21b939d83/EmDash-big.png" alt="">
+<div class="post-content lh-copy gray1">
+	<p></p>
+	<p>The cost of building software has drastically decreased. We recently <a href="https://blog.cloudflare.com/vinext"><u>rebuilt Next.js in one week</u></a> using AI coding agents. But for the past two months our agents have been working on an even more ambitious project:&nbsp;rebuilding the WordPress open source project from the ground up.</p>
+	<p>WordPress powers <a href="https://w3techs.com/technologies/details/cm-wordpress"><u>over 40% of the Internet</u></a>. It is a massive success that has enabled anyone to be a publisher, and created a global community of WordPress developers. But the WordPress open source project will be 24 years old this year. Hosting a website has changed dramatically during that time. When WordPress was born, AWS EC2 didn’t exist. In the intervening years, that task has gone from renting virtual private servers, to uploading a JavaScript bundle to a globally distributed network at virtually no cost. It’s time to upgrade the most popular CMS on the Internet to take advantage of this change.</p>
+	<p>Our name for this new CMS is EmDash. We think of it as the spiritual successor to WordPress. It’s written entirely in TypeScript. It is serverless, but you can run it on your own hardware or any platform you choose. Plugins are securely sandboxed and can run in their own <a href="https://developers.cloudflare.com/workers/reference/how-workers-works"><u>isolate</u></a>, via <a href="https://developers.cloudflare.com/workers/runtime-apis/bindings/worker-loader"><u>Dynamic Workers</u></a>, solving the fundamental security problem with the WordPress plugin architecture. And under the hood, EmDash is powered by <a href="https://astro.build"><u>Astro</u></a>, the fastest web framework for content-driven websites.</p>
+	<p>EmDash is fully open source, MIT licensed, and <a href="https://github.com/emdash-cms/emdash"><u>available on GitHub</u></a>. While EmDash aims to be compatible with WordPress functionality, no WordPress code was used to create EmDash. That allows us to license the open source project under the more permissive MIT license. We hope that allows more developers to adapt, extend, and participate in EmDash’s development.</p>
+	<p>You can deploy the EmDash v0.1.0 preview to your own Cloudflare account, or to any Node.js server today as part of our early developer beta:</p><a href="https://deploy.workers.cloudflare.com/?url=https%3A%2F%2Fgithub.com%2Femdash-cms%2Ftemplates%2Ftree%2Fmain%2Fblog-cloudflare"><img src="https://deploy.workers.cloudflare.com/button" alt="Deploy to Cloudflare"></a>
+	<p></p>
+	<p>Or you can try out the admin interface here in the <a href="https://emdashcms.com"><u>EmDash Playground</u></a>:</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/50n8mewREzoxOFq2jDzpT9/6a38dbfbaeec2d21040137e574a935ad/CleanShot_2026-04-01_at_07.45.29_2x.png" alt="" class="kg-image" width="3616" height="2692" loading="lazy">
+	</figure>
+	<div class="flex anchor relative">
+		<h3 id="what-wordpress-has-accomplished">What WordPress has accomplished</h3>
+		<a href="https://blog.cloudflare.com/#what-wordpress-has-accomplished" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>The story of WordPress is a triumph of open source that enabled publishing at a scale never before seen. Few projects have had the same recognisable impact on the generation raised on the Internet. The contributors to WordPress’s core, and its many thousands of plugin and theme developers have built a platform that democratised publishing for millions; many lives and livelihoods being transformed by this ubiquitous software.</p>
+	<p>There will always be a place for WordPress, but there is also a lot more space for the world of content publishing to grow. A decade ago, people picking up a keyboard universally learned to publish their blogs with WordPress. Today it’s just as likely that person picks up Astro, or another TypeScript framework to learn and build with. The ecosystem needs an option that empowers a wide audience, in the same way it needed WordPress 23 years ago.&nbsp;</p>
+	<p>EmDash is committed to building on what WordPress created: an open source publishing stack that anyone can install and use at little cost, while fixing the core problems that WordPress cannot solve.&nbsp;</p>
+	<div class="flex anchor relative">
+		<h3 id="solving-the-wordpress-plugin-security-crisis">Solving the WordPress plugin security crisis</h3>
+		<a href="https://blog.cloudflare.com/#solving-the-wordpress-plugin-security-crisis" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>WordPress’ plugin architecture is fundamentally insecure. <a href="https://patchstack.com/whitepaper/state-of-wordpress-security-in-2025"><u>96% of security issues</u></a> for WordPress sites originate in plugins. In 2025, more high severity vulnerabilities <a href="https://patchstack.com/whitepaper/state-of-wordpress-security-in-2026"><u>were found in the WordPress ecosystem</u></a> than the previous two years combined.</p>
+	<p>Why, after over two decades, is WordPress plugin security so problematic?</p>
+	<p>A WordPress plugin is a PHP script that hooks directly into WordPress to add or modify functionality. There is no isolation: a WordPress plugin has direct access to the WordPress site’s database and filesystem. When you install a WordPress plugin, you are trusting it with access to nearly everything, and trusting it to handle every malicious input or edge case perfectly.</p>
+	<p>EmDash solves this. In EmDash, each plugin runs in its own isolated sandbox:&nbsp;a <a href="https://developers.cloudflare.com/dynamic-workers"><u>Dynamic Worker</u></a>. Rather than giving direct access to underlying data, EmDash provides the plugin with <a href="https://blog.cloudflare.com/workers-environment-live-object-bindings"><u>capabilities via bindings</u></a>, based on what the plugin explicitly declares that it needs in its manifest. This security model has a strict guarantee: an EmDash plugin can only perform the actions explicitly declared in its manifest. You can know and trust upfront, before installing a plugin, exactly what you are granting it permission to do, similar to going through an OAuth flow and granting a 3rd party app a specific set of scoped permissions.</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4JDq2oEgwONHL8uUJsrof2/fb2ae5fcacd5371aaab575c35ca2ce2e/image8.png" alt="" class="kg-image" width="1999" height="1181" loading="lazy">
+	</figure>
+	<p>For example, a plugin that sends an email after a content item gets saved looks like this:</p>
+	<pre class="language-JavaScript"><code class="language-JavaScript">import { definePlugin } from "emdash";
+
+export default () =&gt;
+  definePlugin({
+    id: "notify-on-publish",
+    version: "1.0.0",
+    capabilities: ["read:content", "email:send"],
+    hooks: {
+      "content:afterSave": async (event, ctx) =&gt; {
+        if (event.collection !== "posts" || event.content.status !==    "published") return;
+
+        await ctx.email!.send({
+          to: "editors@example.com",
+          subject: `New post published: ${event.content.title}`,
+          text: `"${event.content.title}" is now live.`,
+         });
+
+        ctx.log.info(`Notified editors about ${event.content.id}`);
+      },
+    },
+  });</code></pre>
+	<p>This plugin explicitly requests two capabilities: <code>content:afterSave</code> to hook into the content lifecycle, and <code>email:send</code> to access the <code>ctx.email</code> function. It is impossible for the plugin to do anything other than use these capabilities. It has no external network access. If it does need network access, it can specify the exact hostname it needs to talk to, as part of its definition, and be granted only the ability to communicate with a particular hostname.</p>
+	<p>And in all cases, because the plugin’s needs are declared statically, upfront, it can always be clear exactly what the plugin is asking for permission to be able to do, at install time. A platform or administrator could define rules for what plugins are or aren’t allowed to be installed by certain groups of users, based on what permissions they request, rather than an allowlist of approved or safe plugins.</p>
+	<div class="flex anchor relative">
+		<h3 id="solving-plugin-security-means-solving-marketplace-lock-in">Solving plugin security means solving marketplace lock-in</h3>
+		<a href="https://blog.cloudflare.com/#solving-plugin-security-means-solving-marketplace-lock-in" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>WordPress plugin security is such a real risk that Wordpress.com <a href="https://developer.wordpress.org/plugins/wordpress-org/plugin-developer-faq/#where-do-i-submit-my-plugin"><u>manually reviews and approves each plugin</u></a> in its marketplace. At the time of writing, that review queue is over 800 plugins long, and takes at least two weeks to traverse. The vulnerability surface area of WordPress plugins is so wide that in practice, all parties rely on marketplace reputation, ratings and reviews. And because WordPress plugins run in the same execution context as WordPress itself and are so deeply intertwined with WordPress code, some argue they must carry forward WordPress’ GPL license.</p>
+	<p>These realities combine to create a chilling effect on developers building plugins, and on platforms hosting WordPress sites.</p>
+	<p>Plugin security is the root of this problem. Marketplace businesses provide trust when parties otherwise cannot easily trust each other. In the case of the WordPress marketplace, the plugin security risk is so large and probable that many of your customers can only reasonably trust your plugin via the marketplace. But in order to be part of the marketplace your code must be licensed in a way that forces you to give it away for free everywhere other than that marketplace. You are locked in.</p>
+	<p>EmDash plugins have two important properties that mitigate this marketplace lock-in:</p>
+	<ol>
+		<li>
+			<p><b>Plugins can have any license</b>: they run independently of EmDash and share no code. It’s the plugin author’s choice.</p>
+		</li>
+		<li>
+			<p><b>Plugin code runs independently in a secure sandbox</b>: a plugin can be provided to an EmDash site, and trusted, without the EmDash site ever seeing the code.</p>
+		</li>
+	</ol>
+	<p>The first part is straightforward — as the plugin author,&nbsp;you choose what license you want. The same way you can when publishing to NPM, PyPi, Packagist or any other registry. It’s an open ecosystem for all, and up to the community,&nbsp;not the EmDash project, what license you use for plugins and themes.</p>
+	<p>The second part is where EmDash’s plugin architecture breaks free of the centralized marketplace.</p>
+	<p>Developers need to rely on a third party marketplace having vetted the plugin far less to be able to make decisions about whether to use or trust it. Consider the example plugin above that sends emails after content is saved; the plugin declares three things:</p>
+	<ul>
+		<li>
+			<p>It only runs on the <code>content:afterSave</code> hook</p>
+		</li>
+		<li>
+			<p>It has the <code>read:content</code> capability</p>
+		</li>
+		<li>
+			<p>It has the <code>email:send</code> capability</p>
+		</li>
+	</ul>
+	<p>The plugin can have tens of thousands of lines of code in it, but unlike a WordPress plugin that has access to everything and can talk to the public Internet, the person adding the plugin knows exactly what access they are granting to it. The clearly defined boundaries allow you to make informed decisions about security risks and to zoom in on more specific risks that relate directly to the capabilities the plugin is given.</p>
+	<p>The more that both sites and platforms can trust the security model to provide constraints, the more that sites and platforms can trust plugins, and break free of centralized control of marketplaces and reputation. Put another way: if you trust that food safety is enforced in your city, you’ll be adventurous and try new places. If you can’t trust that there might be a staple in your soup, you’ll be consulting Google before every new place you try, and it’s harder for everyone to open new restaurants.</p>
+	<div class="flex anchor relative">
+		<h3 id="every-emdash-site-has-x402-support-built-in-charge-for-access-to-content">Every EmDash site has x402 support built in&nbsp;— charge for access to content</h3>
+		<a href="https://blog.cloudflare.com/#every-emdash-site-has-x402-support-built-in-charge-for-access-to-content" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>The business model of the web <a href="https://blog.cloudflare.com/content-independence-day-no-ai-crawl-without-compensation"><u>is at risk</u></a>, particularly for content creators and publishers. The old way of making content widely accessible, allowing all clients free access in exchange for traffic, breaks when there is no human looking at a site to advertise to, and the client is instead their agent accessing the web on their behalf. Creators need ways to continue to make money in this new world of agents, and to build new kinds of websites that serve what people’s agents need and will pay for. Decades ago a new wave of creators created websites that became great businesses (often using WordPress to power them) and a similar opportunity exists today.</p>
+	<p><a href="https://www.x402.org"><u>x402</u></a> is an open, neutral standard for Internet-native payments. It lets anyone on the Internet easily charge, and any client pay on-demand, on a pay-per-use basis. A client, such as an agent, sends a HTTP request and receives a HTTP 402 Payment Required status code. In response, the client pays for access on-demand, and the server can let the client through to the requested content.</p>
+	<p>EmDash has built-in support for x402. This means anyone with an EmDash site can charge for access to their content without requiring subscriptions and with zero engineering work. All you need to do is configure which content should require payment, set how much to charge, and provide a Wallet address. The request/response flow ends up looking like this:</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3IKfYGHF6Pgi3jQf1ERRQC/48815ffec3e204f4f2c6f7a40f232a93/image4.png" alt="" class="kg-image" width="1999" height="1678" loading="lazy">
+	</figure>
+	<p>Every EmDash site has a built-in business model for the AI era.</p>
+	<div class="flex anchor relative">
+		<h3 id="solving-scale-to-zero-for-wordpress-hosting-platforms">Solving scale-to-zero for WordPress hosting platforms</h3>
+		<a href="https://blog.cloudflare.com/#solving-scale-to-zero-for-wordpress-hosting-platforms" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>WordPress is not serverless: it requires provisioning and managing servers, scaling them up and down like a traditional web application. To maximize performance, and to be able to handle traffic spikes, there’s no avoiding the need to pre-provision instances and run some amount of idle compute, or share resources in ways that limit performance. This is particularly true for sites with content that must be server rendered and cannot be cached.</p>
+	<p>EmDash is different: it’s built to run on serverless platforms, and make the most out of the <a href="https://developers.cloudflare.com/workers/reference/how-workers-works"><u>v8 isolate architecture</u></a> of Cloudflare’s open source runtime&nbsp;<a href="https://github.com/cloudflare/workerd"><u>workerd</u></a>. On an incoming request, the Workers runtime instantly spins up an isolate to execute code and serve a response. It scales back down to zero if there are no requests. And it <a href="https://blog.cloudflare.com/workers-pricing-scale-to-zero"><u>only bills for CPU time</u></a> (time spent doing actual work).</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3yIX0whveiJ7xQ9P20TeyA/84462e6ec58cab27fbd6bf1703efeabc/image7.png" alt="" class="kg-image" width="1795" height="703" loading="lazy">
+	</figure>
+	<p>You can run EmDash anywhere, on any Node.js server — but on Cloudflare you can run millions of instances of EmDash using <a href="https://developers.cloudflare.com/cloudflare-for-platforms"><u>Cloudflare for Platforms</u></a> that each instantly scale fully to zero or up to as many RPS as you need to handle, using the exact same network and runtime that the biggest websites in the world rely on.</p>
+	<p>Beyond cost optimizations and performance benefits, we’ve bet on this architecture at Cloudflare in part because we believe in having low cost and free tiers, and that everyone should be able to build websites that scale. We’re excited to help platforms extend the benefits of this architecture to their own customers, both big and small.</p>
+	<div class="flex anchor relative">
+		<h3 id="modern-frontend-theming-and-architecture-via-astro">Modern frontend theming and architecture via Astro</h3>
+		<a href="https://blog.cloudflare.com/#modern-frontend-theming-and-architecture-via-astro" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>EmDash is powered by Astro, the web framework for content-driven websites. To create an EmDash theme, you create an Astro project that includes:</p>
+	<ul>
+		<li>
+			<p><b>Pages</b>: Astro routes for rendering content (homepage, blog posts, archives, etc.)</p>
+		</li>
+		<li>
+			<p><b>Layouts:</b> Shared HTML structure</p>
+		</li>
+		<li>
+			<p><b>Components:</b> Reusable UI elements (navigation, cards, footers)</p>
+		</li>
+		<li>
+			<p><b>Styles:</b> CSS or Tailwind configuration</p>
+		</li>
+		<li>
+			<p><b>A seed file:</b> JSON that tells the CMS what content types and fields to create</p>
+		</li>
+	</ul>
+	<p>This makes creating themes familiar to frontend developers who are <a href="https://npm-stat.com/charts.html?package=astro&amp;from=2024-01-01&amp;to=2026-03-30"><u>increasingly choosing Astro</u></a>, and to LLMs which are already trained on Astro.</p>
+	<p>WordPress themes, though incredibly flexible, operate with a lot of the same security risks as plugins, and the more popular and commonplace your theme, the more of a target it is. Themes run through integrating with <code>functions.php</code> which is an all-encompassing execution environment, enabling your theme to be both incredibly powerful and potentially dangerous. EmDash themes, as with dynamic plugins, turns this expectation on its head. Your theme can never perform database operations.</p>
+	<div class="flex anchor relative">
+		<h3 id="an-ai-native-cms-mcp-cli-and-skills-for-emdash">An AI Native CMS —&nbsp;MCP, CLI, and Skills for EmDash</h3>
+		<a href="https://blog.cloudflare.com/#an-ai-native-cms-mcp-cli-and-skills-for-emdash" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>The least fun part about working with any CMS is doing the rote migration of content: finding and replacing strings, migrating custom fields from one format to another, renaming, reordering and moving things around. This is either boring repetitive work or requires one-off scripts and&nbsp; “single-use” plugins and tools that are usually neither fun to write nor to use.</p>
+	<p>EmDash is designed to be managed programmatically by your AI agents. It provides the context and the tools that your agents need, including:</p>
+	<ol>
+		<li>
+			<p><b>Agent Skills:</b> Each EmDash instance includes <a href="https://agentskills.io/home"><u>Agent Skills</u></a> that describe to your agent the capabilities EmDash can provide to plugins, the hooks that can trigger plugins, <a href="https://github.com/emdash-cms/emdash/blob/main/skills/creating-plugins/SKILL.md"><u>guidance on how to structure a plugin</u></a>, and even <a href="https://github.com/emdash-cms/emdash/blob/main/skills/wordpress-theme-to-emdash/SKILL.md"><u>how to port legacy WordPress themes to EmDash natively</u></a>. When you give an agent an EmDash codebase, EmDash provides everything the agent needs to be able to customize your site in the way you need.</p>
+		</li>
+		<li>
+			<p><b>EmDash CLI:</b> The <a href="https://github.com/emdash-cms/emdash/blob/main/docs/src/content/docs/reference/cli.mdx"><u>EmDash CLI</u></a> enables your agent to interact programmatically with your local or remote instance of EmDash. You can <a href="https://github.com/emdash-cms/emdash/blob/main/docs/src/content/docs/reference/cli.mdx#media-upload-file"><u>upload media</u></a>, <a href="https://github.com/emdash-cms/emdash/blob/main/docs/src/content/docs/reference/cli.mdx#emdash-search"><u>search for content</u></a>, <a href="https://github.com/emdash-cms/emdash/blob/main/docs/src/content/docs/reference/cli.mdx#schema-create-collection"><u>create and manage schemas</u></a>, and do the same set of things you can do in the Admin UI.</p>
+		</li>
+		<li>
+			<p><b>Built-in MCP Server:</b> Every EmDash instance provides its own remote Model Context Protocol (MCP) server, allowing you to do the same set of things you can do in the Admin UI.</p>
+		</li>
+	</ol>
+	<div class="flex anchor relative">
+		<h3 id="pluggable-authentication-with-passkeys-by-default">Pluggable authentication, with Passkeys by default</h3>
+		<a href="https://blog.cloudflare.com/#pluggable-authentication-with-passkeys-by-default" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>EmDash uses passkey-based authentication by default, meaning there are no passwords to leak and no brute-force vectors to defend against. User management includes familiar role-based access control out of the box: administrators, editors, authors, and contributors, each scoped strictly to the actions they need. Authentication is pluggable, so you can set EmDash up to work with your SSO provider, and automatically provision access based on IdP metadata.</p>
+	<div class="flex anchor relative">
+		<h3 id="import-your-wordpress-sites-to-emdash">Import your WordPress sites to EmDash</h3>
+		<a href="https://blog.cloudflare.com/#import-your-wordpress-sites-to-emdash" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>You can import an existing WordPress site by either going to WordPress admin and exporting a WXR file, or by installing the <a href="https://github.com/emdash-cms/wp-emdash/tree/main/plugins/emdash-exporter"><u>EmDash Exporter plugin</u></a> on a WordPress site, which configures a secure endpoint that is only exposed to you, and protected by a WordPress Application Password you control. Migrating content takes just a few minutes, and automatically works to bring any attached media into EmDash’s media library.</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/SUFaWUIoEFSN2z9rclKZW/28870489d502cff34e35ab3b59f19eae/image1.png" alt="" class="kg-image" width="1999" height="1249" loading="lazy">
+	</figure>
+	<p>Creating any custom content types on WordPress that are not a Post or a Page has meant installing heavy plugins like Advanced Custom Fields, and squeezing the result into a crowded WordPress posts table. EmDash does things differently: you can define a schema directly in the admin panel, which will create entirely new EmDash collections for you, separately ordered in the database. On import, you can use the same capabilities to take any custom post types from WordPress, and create an EmDash content type from it.&nbsp;</p>
+	<p>For bespoke blocks, you can use the <a href="https://github.com/emdash-cms/emdash/blob/main/skills/creating-plugins/references/block-kit.md"><u>EmDash Block Kit Agent Skill</u></a> to instruct your agent of choice and build them for EmDash.</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5xutdF9nvHYMYlN6XfqRGu/1db0e0d73327e926d606f92fdd7aabec/image3.png" alt="" class="kg-image" width="1200" height="319" loading="lazy">
+	</figure>
+	<div class="flex anchor relative">
+		<h3 id="try-it">Try it</h3>
+		<a href="https://blog.cloudflare.com/#try-it" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>EmDash is v0.1.0 preview, and we’d love you to try it, give feedback, and we welcome contributions to the <a href="https://github.com/emdash-cms/emdash"><u>EmDash GitHub repository</u></a>.</p>
+	<p>If you’re just playing around and want to first understand what’s possible — try out the admin interface in the <a href="https://emdashcms.com"><u>EmDash Playground</u></a>.</p>
+	<p>To create a new EmDash site locally, via the CLI, run:</p>
+	<p><code>npm create emdash@latest</code></p>
+	<p>Or you can do the same via the Cloudflare dashboard below:</p><a href="https://deploy.workers.cloudflare.com/?url=https%3A%2F%2Fgithub.com%2Femdash-cms%2Ftemplates%2Ftree%2Fmain%2Fblog-cloudflare"><img src="https://deploy.workers.cloudflare.com/button" alt="Deploy to Cloudflare"></a>
+	<p></p>
+	<p>We’re excited to see what you build, and if you're active in the WordPress community, as a hosting platform, a plugin or theme author, or otherwise — we’d love to hear from you. Email us at emdash@cloudflare.com, and tell us what you’d like to see from the EmDash project.</p>
+	<p>If you want to stay up to date with major EmDash developments, you can leave your email address <a href="https://forms.gle/ofE1LYRYxkpAPqjE7"><u>here</u></a>.</p>
+</div>
