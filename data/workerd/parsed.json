@@ -5,183 +5,228 @@
 			"fields": [
 				{
 					"name": "accountId",
-					"annotations": {}
+					"annotations": {},
+					"type": "Int64"
 				},
 				{
 					"name": "dataset",
-					"annotations": {}
+					"annotations": {},
+					"type": "Data"
 				},
 				{
 					"name": "schemaVersion",
-					"annotations": {}
+					"annotations": {},
+					"type": "Int64"
 				},
 				{
 					"name": "index1",
-					"annotations": {}
+					"annotations": {},
+					"type": "Data"
 				},
 				{
 					"name": "timestamp",
-					"annotations": {}
+					"annotations": {},
+					"type": "Int64"
 				},
 				{
 					"name": "double1",
-					"annotations": {}
+					"annotations": {},
+					"type": "Float64"
 				},
 				{
 					"name": "double2",
-					"annotations": {}
+					"annotations": {},
+					"type": "Float64"
 				},
 				{
 					"name": "double3",
-					"annotations": {}
+					"annotations": {},
+					"type": "Float64"
 				},
 				{
 					"name": "double4",
-					"annotations": {}
+					"annotations": {},
+					"type": "Float64"
 				},
 				{
 					"name": "double5",
-					"annotations": {}
+					"annotations": {},
+					"type": "Float64"
 				},
 				{
 					"name": "double6",
-					"annotations": {}
+					"annotations": {},
+					"type": "Float64"
 				},
 				{
 					"name": "double7",
-					"annotations": {}
+					"annotations": {},
+					"type": "Float64"
 				},
 				{
 					"name": "double8",
-					"annotations": {}
+					"annotations": {},
+					"type": "Float64"
 				},
 				{
 					"name": "double9",
-					"annotations": {}
+					"annotations": {},
+					"type": "Float64"
 				},
 				{
 					"name": "double10",
-					"annotations": {}
+					"annotations": {},
+					"type": "Float64"
 				},
 				{
 					"name": "double11",
-					"annotations": {}
+					"annotations": {},
+					"type": "Float64"
 				},
 				{
 					"name": "double12",
-					"annotations": {}
+					"annotations": {},
+					"type": "Float64"
 				},
 				{
 					"name": "double13",
-					"annotations": {}
+					"annotations": {},
+					"type": "Float64"
 				},
 				{
 					"name": "double14",
-					"annotations": {}
+					"annotations": {},
+					"type": "Float64"
 				},
 				{
 					"name": "double15",
-					"annotations": {}
+					"annotations": {},
+					"type": "Float64"
 				},
 				{
 					"name": "double16",
-					"annotations": {}
+					"annotations": {},
+					"type": "Float64"
 				},
 				{
 					"name": "double17",
-					"annotations": {}
+					"annotations": {},
+					"type": "Float64"
 				},
 				{
 					"name": "double18",
-					"annotations": {}
+					"annotations": {},
+					"type": "Float64"
 				},
 				{
 					"name": "double19",
-					"annotations": {}
+					"annotations": {},
+					"type": "Float64"
 				},
 				{
 					"name": "double20",
-					"annotations": {}
+					"annotations": {},
+					"type": "Float64"
 				},
 				{
 					"name": "blob1",
-					"annotations": {}
+					"annotations": {},
+					"type": "Data"
 				},
 				{
 					"name": "blob2",
-					"annotations": {}
+					"annotations": {},
+					"type": "Data"
 				},
 				{
 					"name": "blob3",
-					"annotations": {}
+					"annotations": {},
+					"type": "Data"
 				},
 				{
 					"name": "blob4",
-					"annotations": {}
+					"annotations": {},
+					"type": "Data"
 				},
 				{
 					"name": "blob5",
-					"annotations": {}
+					"annotations": {},
+					"type": "Data"
 				},
 				{
 					"name": "blob6",
-					"annotations": {}
+					"annotations": {},
+					"type": "Data"
 				},
 				{
 					"name": "blob7",
-					"annotations": {}
+					"annotations": {},
+					"type": "Data"
 				},
 				{
 					"name": "blob8",
-					"annotations": {}
+					"annotations": {},
+					"type": "Data"
 				},
 				{
 					"name": "blob9",
-					"annotations": {}
+					"annotations": {},
+					"type": "Data"
 				},
 				{
 					"name": "blob10",
-					"annotations": {}
+					"annotations": {},
+					"type": "Data"
 				},
 				{
 					"name": "blob11",
-					"annotations": {}
+					"annotations": {},
+					"type": "Data"
 				},
 				{
 					"name": "blob12",
-					"annotations": {}
+					"annotations": {},
+					"type": "Data"
 				},
 				{
 					"name": "blob13",
-					"annotations": {}
+					"annotations": {},
+					"type": "Data"
 				},
 				{
 					"name": "blob14",
-					"annotations": {}
+					"annotations": {},
+					"type": "Data"
 				},
 				{
 					"name": "blob15",
-					"annotations": {}
+					"annotations": {},
+					"type": "Data"
 				},
 				{
 					"name": "blob16",
-					"annotations": {}
+					"annotations": {},
+					"type": "Data"
 				},
 				{
 					"name": "blob17",
-					"annotations": {}
+					"annotations": {},
+					"type": "Data"
 				},
 				{
 					"name": "blob18",
-					"annotations": {}
+					"annotations": {},
+					"type": "Data"
 				},
 				{
 					"name": "blob19",
-					"annotations": {}
+					"annotations": {},
+					"type": "Data"
 				},
 				{
 					"name": "blob20",
-					"annotations": {}
+					"annotations": {},
+					"type": "Data"
 				}
 			]
 		},
@@ -190,7 +235,8 @@
 			"fields": [
 				{
 					"name": "object",
-					"annotations": {}
+					"annotations": {},
+					"type": "Text"
 				}
 			]
 		},
@@ -199,23 +245,28 @@
 			"fields": [
 				{
 					"name": "object",
-					"annotations": {}
+					"annotations": {},
+					"type": "Text"
 				},
 				{
 					"name": "range",
-					"annotations": {}
+					"annotations": {},
+					"type": "workerd/src/workerd/api/r2-api.capnp:R2Range"
 				},
 				{
 					"name": "onlyIf",
-					"annotations": {}
+					"annotations": {},
+					"type": "workerd/src/workerd/api/r2-api.capnp:R2Conditional"
 				},
 				{
 					"name": "rangeHeader",
-					"annotations": {}
+					"annotations": {},
+					"type": "Text"
 				},
 				{
 					"name": "ssec",
-					"annotations": {}
+					"annotations": {},
+					"type": "workerd/src/workerd/api/r2-api.capnp:R2SSECOptions"
 				}
 			]
 		},
@@ -224,57 +275,68 @@
 			"fields": [
 				{
 					"name": "object",
-					"annotations": {}
+					"annotations": {},
+					"type": "Text"
 				},
 				{
 					"name": "customFields",
-					"annotations": {}
+					"annotations": {},
+					"type": "List(workerd/src/workerd/api/r2-api.capnp:Record)"
 				},
 				{
 					"name": "httpFields",
-					"annotations": {}
+					"annotations": {},
+					"type": "workerd/src/workerd/api/r2-api.capnp:R2HttpFields"
 				},
 				{
 					"name": "onlyIf",
-					"annotations": {}
+					"annotations": {},
+					"type": "workerd/src/workerd/api/r2-api.capnp:R2Conditional"
 				},
 				{
 					"name": "md5",
 					"annotations": {
-						"base64": "true"
-					}
+						"base64": true
+					},
+					"type": "Data"
 				},
 				{
 					"name": "sha1",
 					"annotations": {
-						"hex": "true"
-					}
+						"hex": true
+					},
+					"type": "Data"
 				},
 				{
 					"name": "sha256",
 					"annotations": {
-						"hex": "true"
-					}
+						"hex": true
+					},
+					"type": "Data"
 				},
 				{
 					"name": "sha384",
 					"annotations": {
-						"hex": "true"
-					}
+						"hex": true
+					},
+					"type": "Data"
 				},
 				{
 					"name": "sha512",
 					"annotations": {
-						"hex": "true"
-					}
+						"hex": true
+					},
+					"type": "Data"
 				},
 				{
 					"name": "storageClass",
-					"annotations": {}
+					"annotations": {},
+					"type": "Text"
 				},
 				{
 					"name": "ssec",
-					"annotations": {}
+					"annotations": {},
+					"type": "workerd/src/workerd/api/r2-api.capnp:R2SSECOptions"
 				}
 			]
 		},
@@ -283,31 +345,38 @@
 			"fields": [
 				{
 					"name": "limit",
-					"annotations": {}
+					"annotations": {},
+					"type": "UInt32"
 				},
 				{
 					"name": "prefix",
-					"annotations": {}
+					"annotations": {},
+					"type": "Text"
 				},
 				{
 					"name": "cursor",
-					"annotations": {}
+					"annotations": {},
+					"type": "Text"
 				},
 				{
 					"name": "delimiter",
-					"annotations": {}
+					"annotations": {},
+					"type": "Text"
 				},
 				{
 					"name": "startAfter",
-					"annotations": {}
+					"annotations": {},
+					"type": "Text"
 				},
 				{
 					"name": "include",
-					"annotations": {}
+					"annotations": {},
+					"type": "List(UInt16)"
 				},
 				{
 					"name": "newRuntime",
-					"annotations": {}
+					"annotations": {},
+					"type": "Bool"
 				}
 			]
 		},
@@ -316,11 +385,13 @@
 			"fields": [
 				{
 					"name": "object",
-					"annotations": {}
+					"annotations": {},
+					"type": "Text"
 				},
 				{
 					"name": "objects",
-					"annotations": {}
+					"annotations": {},
+					"type": "List(Text)"
 				}
 			]
 		},
@@ -329,7 +400,8 @@
 			"fields": [
 				{
 					"name": "bucket",
-					"annotations": {}
+					"annotations": {},
+					"type": "Text"
 				}
 			]
 		},
@@ -338,15 +410,18 @@
 			"fields": [
 				{
 					"name": "limit",
-					"annotations": {}
+					"annotations": {},
+					"type": "UInt32"
 				},
 				{
 					"name": "prefix",
-					"annotations": {}
+					"annotations": {},
+					"type": "Text"
 				},
 				{
 					"name": "cursor",
-					"annotations": {}
+					"annotations": {},
+					"type": "Text"
 				}
 			]
 		},
@@ -355,7 +430,8 @@
 			"fields": [
 				{
 					"name": "bucket",
-					"annotations": {}
+					"annotations": {},
+					"type": "Text"
 				}
 			]
 		},
@@ -364,23 +440,28 @@
 			"fields": [
 				{
 					"name": "object",
-					"annotations": {}
+					"annotations": {},
+					"type": "Text"
 				},
 				{
 					"name": "customFields",
-					"annotations": {}
+					"annotations": {},
+					"type": "List(workerd/src/workerd/api/r2-api.capnp:Record)"
 				},
 				{
 					"name": "httpFields",
-					"annotations": {}
+					"annotations": {},
+					"type": "workerd/src/workerd/api/r2-api.capnp:R2HttpFields"
 				},
 				{
 					"name": "storageClass",
-					"annotations": {}
+					"annotations": {},
+					"type": "Text"
 				},
 				{
 					"name": "ssec",
-					"annotations": {}
+					"annotations": {},
+					"type": "workerd/src/workerd/api/r2-api.capnp:R2SSECOptions"
 				}
 			]
 		},
@@ -389,19 +470,23 @@
 			"fields": [
 				{
 					"name": "object",
-					"annotations": {}
+					"annotations": {},
+					"type": "Text"
 				},
 				{
 					"name": "uploadId",
-					"annotations": {}
+					"annotations": {},
+					"type": "Text"
 				},
 				{
 					"name": "partNumber",
-					"annotations": {}
+					"annotations": {},
+					"type": "UInt32"
 				},
 				{
 					"name": "ssec",
-					"annotations": {}
+					"annotations": {},
+					"type": "workerd/src/workerd/api/r2-api.capnp:R2SSECOptions"
 				}
 			]
 		},
@@ -410,15 +495,18 @@
 			"fields": [
 				{
 					"name": "object",
-					"annotations": {}
+					"annotations": {},
+					"type": "Text"
 				},
 				{
 					"name": "uploadId",
-					"annotations": {}
+					"annotations": {},
+					"type": "Text"
 				},
 				{
 					"name": "parts",
-					"annotations": {}
+					"annotations": {},
+					"type": "List(workerd/src/workerd/api/r2-api.capnp:R2PublishedPart)"
 				}
 			]
 		},
@@ -427,11 +515,13 @@
 			"fields": [
 				{
 					"name": "object",
-					"annotations": {}
+					"annotations": {},
+					"type": "Text"
 				},
 				{
 					"name": "uploadId",
-					"annotations": {}
+					"annotations": {},
+					"type": "Text"
 				}
 			]
 		},
@@ -440,91 +530,13 @@
 			"fields": [
 				{
 					"name": "version",
-					"annotations": {}
+					"annotations": {},
+					"type": "UInt32"
 				},
 				{
 					"name": "payload",
-					"annotations": {
-						"discriminator": "unhandled type",
-						"flatten": "unhandled type"
-					}
-				}
-			]
-		},
-		{
-			"name": "workerd/src/workerd/api/r2-api.capnp:R2BindingRequest.payload",
-			"fields": [
-				{
-					"name": "head",
-					"annotations": {
-						"flatten": "unhandled type"
-					}
-				},
-				{
-					"name": "get",
-					"annotations": {
-						"flatten": "unhandled type"
-					}
-				},
-				{
-					"name": "put",
-					"annotations": {
-						"flatten": "unhandled type"
-					}
-				},
-				{
-					"name": "list",
-					"annotations": {
-						"flatten": "unhandled type"
-					}
-				},
-				{
-					"name": "delete",
-					"annotations": {
-						"flatten": "unhandled type"
-					}
-				},
-				{
-					"name": "createBucket",
-					"annotations": {
-						"flatten": "unhandled type"
-					}
-				},
-				{
-					"name": "listBucket",
-					"annotations": {
-						"flatten": "unhandled type"
-					}
-				},
-				{
-					"name": "deleteBucket",
-					"annotations": {
-						"flatten": "unhandled type"
-					}
-				},
-				{
-					"name": "createMultipartUpload",
-					"annotations": {
-						"flatten": "unhandled type"
-					}
-				},
-				{
-					"name": "uploadPart",
-					"annotations": {
-						"flatten": "unhandled type"
-					}
-				},
-				{
-					"name": "completeMultipartUpload",
-					"annotations": {
-						"flatten": "unhandled type"
-					}
-				},
-				{
-					"name": "abortMultipartUpload",
-					"annotations": {
-						"flatten": "unhandled type"
-					}
+					"annotations": {},
+					"type": "workerd/src/workerd/api/r2-api.capnp:R2BindingRequest.payload"
 				}
 			]
 		},
@@ -533,7 +545,8 @@
 			"fields": [
 				{
 					"name": "prefix",
-					"annotations": {}
+					"annotations": {},
+					"type": "Text"
 				}
 			]
 		},
@@ -542,11 +555,13 @@
 			"fields": [
 				{
 					"name": "name",
-					"annotations": {}
+					"annotations": {},
+					"type": "Text"
 				},
 				{
 					"name": "valueName",
-					"annotations": {}
+					"annotations": {},
+					"type": "Text"
 				}
 			]
 		},
@@ -555,15 +570,18 @@
 			"fields": [
 				{
 					"name": "offset",
-					"annotations": {}
+					"annotations": {},
+					"type": "UInt64"
 				},
 				{
 					"name": "length",
-					"annotations": {}
+					"annotations": {},
+					"type": "UInt64"
 				},
 				{
 					"name": "suffix",
-					"annotations": {}
+					"annotations": {},
+					"type": "UInt64"
 				}
 			]
 		},
@@ -572,23 +590,28 @@
 			"fields": [
 				{
 					"name": "etagMatches",
-					"annotations": {}
+					"annotations": {},
+					"type": "List(workerd/src/workerd/api/r2-api.capnp:R2Etag)"
 				},
 				{
 					"name": "etagDoesNotMatch",
-					"annotations": {}
+					"annotations": {},
+					"type": "List(workerd/src/workerd/api/r2-api.capnp:R2Etag)"
 				},
 				{
 					"name": "uploadedBefore",
-					"annotations": {}
+					"annotations": {},
+					"type": "UInt64"
 				},
 				{
 					"name": "uploadedAfter",
-					"annotations": {}
+					"annotations": {},
+					"type": "UInt64"
 				},
 				{
 					"name": "secondsGranularity",
-					"annotations": {}
+					"annotations": {},
+					"type": "Bool"
 				}
 			]
 		},
@@ -597,7 +620,8 @@
 			"fields": [
 				{
 					"name": "key",
-					"annotations": {}
+					"annotations": {},
+					"type": "Text"
 				}
 			]
 		},
@@ -606,31 +630,13 @@
 			"fields": [
 				{
 					"name": "value",
-					"annotations": {}
+					"annotations": {},
+					"type": "Text"
 				},
 				{
 					"name": "type",
-					"annotations": {
-						"discriminator": "unhandled type",
-						"flatten": "unhandled type"
-					}
-				}
-			]
-		},
-		{
-			"name": "workerd/src/workerd/api/r2-api.capnp:R2Etag.type",
-			"fields": [
-				{
-					"name": "strong",
-					"annotations": {}
-				},
-				{
-					"name": "weak",
-					"annotations": {}
-				},
-				{
-					"name": "wildcard",
-					"annotations": {}
+					"annotations": {},
+					"type": "workerd/src/workerd/api/r2-api.capnp:R2Etag.type"
 				}
 			]
 		},
@@ -639,11 +645,13 @@
 			"fields": [
 				{
 					"name": "k",
-					"annotations": {}
+					"annotations": {},
+					"type": "Text"
 				},
 				{
 					"name": "v",
-					"annotations": {}
+					"annotations": {},
+					"type": "Text"
 				}
 			]
 		},
@@ -652,27 +660,33 @@
 			"fields": [
 				{
 					"name": "contentType",
-					"annotations": {}
+					"annotations": {},
+					"type": "Text"
 				},
 				{
 					"name": "contentLanguage",
-					"annotations": {}
+					"annotations": {},
+					"type": "Text"
 				},
 				{
 					"name": "contentDisposition",
-					"annotations": {}
+					"annotations": {},
+					"type": "Text"
 				},
 				{
 					"name": "contentEncoding",
-					"annotations": {}
+					"annotations": {},
+					"type": "Text"
 				},
 				{
 					"name": "cacheControl",
-					"annotations": {}
+					"annotations": {},
+					"type": "Text"
 				},
 				{
 					"name": "cacheExpiry",
-					"annotations": {}
+					"annotations": {},
+					"type": "UInt64"
 				}
 			]
 		},
@@ -681,11 +695,13 @@
 			"fields": [
 				{
 					"name": "etag",
-					"annotations": {}
+					"annotations": {},
+					"type": "Text"
 				},
 				{
 					"name": "part",
-					"annotations": {}
+					"annotations": {},
+					"type": "UInt32"
 				}
 			]
 		},
@@ -695,37 +711,42 @@
 				{
 					"name": "md5",
 					"annotations": {
-						"hex": "true",
+						"hex": true,
 						"name": "0"
-					}
+					},
+					"type": "Data"
 				},
 				{
 					"name": "sha1",
 					"annotations": {
-						"hex": "true",
+						"hex": true,
 						"name": "1"
-					}
+					},
+					"type": "Data"
 				},
 				{
 					"name": "sha256",
 					"annotations": {
-						"hex": "true",
+						"hex": true,
 						"name": "2"
-					}
+					},
+					"type": "Data"
 				},
 				{
 					"name": "sha384",
 					"annotations": {
-						"hex": "true",
+						"hex": true,
 						"name": "3"
-					}
+					},
+					"type": "Data"
 				},
 				{
 					"name": "sha512",
 					"annotations": {
-						"hex": "true",
+						"hex": true,
 						"name": "4"
-					}
+					},
+					"type": "Data"
 				}
 			]
 		},
@@ -734,15 +755,18 @@
 			"fields": [
 				{
 					"name": "version",
-					"annotations": {}
+					"annotations": {},
+					"type": "UInt32"
 				},
 				{
 					"name": "v4code",
-					"annotations": {}
+					"annotations": {},
+					"type": "UInt32"
 				},
 				{
 					"name": "message",
-					"annotations": {}
+					"annotations": {},
+					"type": "Text"
 				}
 			]
 		},
@@ -751,11 +775,13 @@
 			"fields": [
 				{
 					"name": "algorithm",
-					"annotations": {}
+					"annotations": {},
+					"type": "Text"
 				},
 				{
 					"name": "keyMd5",
-					"annotations": {}
+					"annotations": {},
+					"type": "Text"
 				}
 			]
 		},
@@ -764,49 +790,60 @@
 			"fields": [
 				{
 					"name": "name",
-					"annotations": {}
+					"annotations": {},
+					"type": "Text"
 				},
 				{
 					"name": "version",
-					"annotations": {}
+					"annotations": {},
+					"type": "Text"
 				},
 				{
 					"name": "size",
-					"annotations": {}
+					"annotations": {},
+					"type": "UInt64"
 				},
 				{
 					"name": "etag",
-					"annotations": {}
+					"annotations": {},
+					"type": "Text"
 				},
 				{
 					"name": "uploadedMillisecondsSinceEpoch",
 					"annotations": {
 						"name": "uploaded"
-					}
+					},
+					"type": "UInt64"
 				},
 				{
 					"name": "httpFields",
-					"annotations": {}
+					"annotations": {},
+					"type": "workerd/src/workerd/api/r2-api.capnp:R2HttpFields"
 				},
 				{
 					"name": "customFields",
-					"annotations": {}
+					"annotations": {},
+					"type": "List(workerd/src/workerd/api/r2-api.capnp:Record)"
 				},
 				{
 					"name": "range",
-					"annotations": {}
+					"annotations": {},
+					"type": "workerd/src/workerd/api/r2-api.capnp:R2Range"
 				},
 				{
 					"name": "checksums",
-					"annotations": {}
+					"annotations": {},
+					"type": "workerd/src/workerd/api/r2-api.capnp:R2Checksums"
 				},
 				{
 					"name": "storageClass",
-					"annotations": {}
+					"annotations": {},
+					"type": "Text"
 				},
 				{
 					"name": "ssec",
-					"annotations": {}
+					"annotations": {},
+					"type": "workerd/src/workerd/api/r2-api.capnp:R2SSECResponse"
 				}
 			]
 		},
@@ -815,11 +852,13 @@
 			"fields": [
 				{
 					"name": "uploadId",
-					"annotations": {}
+					"annotations": {},
+					"type": "Text"
 				},
 				{
 					"name": "ssec",
-					"annotations": {}
+					"annotations": {},
+					"type": "workerd/src/workerd/api/r2-api.capnp:R2SSECResponse"
 				}
 			]
 		},
@@ -828,7 +867,8 @@
 			"fields": [
 				{
 					"name": "etag",
-					"annotations": {}
+					"annotations": {},
+					"type": "Text"
 				}
 			]
 		},
@@ -841,19 +881,23 @@
 			"fields": [
 				{
 					"name": "objects",
-					"annotations": {}
+					"annotations": {},
+					"type": "List(workerd/src/workerd/api/r2-api.capnp:R2HeadResponse)"
 				},
 				{
 					"name": "truncated",
-					"annotations": {}
+					"annotations": {},
+					"type": "Bool"
 				},
 				{
 					"name": "cursor",
-					"annotations": {}
+					"annotations": {},
+					"type": "Text"
 				},
 				{
 					"name": "delimitedPrefixes",
-					"annotations": {}
+					"annotations": {},
+					"type": "List(Text)"
 				}
 			]
 		},
@@ -870,13 +914,15 @@
 			"fields": [
 				{
 					"name": "name",
-					"annotations": {}
+					"annotations": {},
+					"type": "Text"
 				},
 				{
 					"name": "createdMillisecondsSinceEpoch",
 					"annotations": {
 						"name": "created"
-					}
+					},
+					"type": "UInt64"
 				}
 			]
 		},
@@ -885,15 +931,18 @@
 			"fields": [
 				{
 					"name": "buckets",
-					"annotations": {}
+					"annotations": {},
+					"type": "List(workerd/src/workerd/api/r2-api.capnp:R2ListBucketResponse.Bucket)"
 				},
 				{
 					"name": "truncated",
-					"annotations": {}
+					"annotations": {},
+					"type": "Bool"
 				},
 				{
 					"name": "cursor",
-					"annotations": {}
+					"annotations": {},
+					"type": "Text"
 				}
 			]
 		},
@@ -906,7 +955,8 @@
 			"fields": [
 				{
 					"name": "stableId",
-					"annotations": {}
+					"annotations": {},
+					"type": "Text"
 				}
 			]
 		},
@@ -915,7 +965,8 @@
 			"fields": [
 				{
 					"name": "stage",
-					"annotations": {}
+					"annotations": {},
+					"type": "workerd/src/workerd/io/actor-storage.capnp:ActorStorage.Stage"
 				}
 			]
 		},
@@ -924,11 +975,13 @@
 			"fields": [
 				{
 					"name": "priority",
-					"annotations": {}
+					"annotations": {},
+					"type": "workerd/src/workerd/io/actor-storage.capnp:ActorStorage.DbSettings.Priority"
 				},
 				{
 					"name": "asOfTimeMs",
-					"annotations": {}
+					"annotations": {},
+					"type": "Int64"
 				}
 			]
 		},
@@ -937,7 +990,8 @@
 			"fields": [
 				{
 					"name": "settings",
-					"annotations": {}
+					"annotations": {},
+					"type": "workerd/src/workerd/io/actor-storage.capnp:ActorStorage.DbSettings"
 				}
 			]
 		},
@@ -946,7 +1000,8 @@
 			"fields": [
 				{
 					"name": "transaction",
-					"annotations": {}
+					"annotations": {},
+					"type": "workerd/src/workerd/io/actor-storage.capnp:ActorStorage.Stage.Transaction"
 				}
 			]
 		},
@@ -955,7 +1010,8 @@
 			"fields": [
 				{
 					"name": "key",
-					"annotations": {}
+					"annotations": {},
+					"type": "Data"
 				}
 			]
 		},
@@ -964,7 +1020,8 @@
 			"fields": [
 				{
 					"name": "value",
-					"annotations": {}
+					"annotations": {},
+					"type": "Data"
 				}
 			]
 		},
@@ -973,11 +1030,13 @@
 			"fields": [
 				{
 					"name": "key",
-					"annotations": {}
+					"annotations": {},
+					"type": "Data"
 				},
 				{
 					"name": "value",
-					"annotations": {}
+					"annotations": {},
+					"type": "Data"
 				}
 			]
 		},
@@ -986,7 +1045,8 @@
 			"fields": [
 				{
 					"name": "entries",
-					"annotations": {}
+					"annotations": {},
+					"type": "List(workerd/src/workerd/io/actor-storage.capnp:ActorStorage.KeyValue)"
 				}
 			]
 		},
@@ -999,7 +1059,8 @@
 			"fields": [
 				{
 					"name": "keys",
-					"annotations": {}
+					"annotations": {},
+					"type": "List(Data)"
 				}
 			]
 		},
@@ -1008,7 +1069,8 @@
 			"fields": [
 				{
 					"name": "numDeleted",
-					"annotations": {}
+					"annotations": {},
+					"type": "Int32"
 				}
 			]
 		},
@@ -1017,27 +1079,33 @@
 			"fields": [
 				{
 					"name": "start",
-					"annotations": {}
+					"annotations": {},
+					"type": "Data"
 				},
 				{
 					"name": "end",
-					"annotations": {}
+					"annotations": {},
+					"type": "Data"
 				},
 				{
 					"name": "limit",
-					"annotations": {}
+					"annotations": {},
+					"type": "Int32"
 				},
 				{
 					"name": "reverse",
-					"annotations": {}
+					"annotations": {},
+					"type": "Bool"
 				},
 				{
 					"name": "stream",
-					"annotations": {}
+					"annotations": {},
+					"type": "workerd/src/workerd/io/actor-storage.capnp:ActorStorage.ListStream"
 				},
 				{
 					"name": "prefix",
-					"annotations": {}
+					"annotations": {},
+					"type": "Data"
 				}
 			]
 		},
@@ -1050,11 +1118,13 @@
 			"fields": [
 				{
 					"name": "keys",
-					"annotations": {}
+					"annotations": {},
+					"type": "List(Data)"
 				},
 				{
 					"name": "stream",
-					"annotations": {}
+					"annotations": {},
+					"type": "workerd/src/workerd/io/actor-storage.capnp:ActorStorage.ListStream"
 				}
 			]
 		},
@@ -1071,7 +1141,8 @@
 			"fields": [
 				{
 					"name": "numDeleted",
-					"annotations": {}
+					"annotations": {},
+					"type": "Int32"
 				}
 			]
 		},
@@ -1084,7 +1155,8 @@
 			"fields": [
 				{
 					"name": "scheduledTimeMs",
-					"annotations": {}
+					"annotations": {},
+					"type": "Int64"
 				}
 			]
 		},
@@ -1093,7 +1165,8 @@
 			"fields": [
 				{
 					"name": "scheduledTimeMs",
-					"annotations": {}
+					"annotations": {},
+					"type": "Int64"
 				}
 			]
 		},
@@ -1106,7 +1179,8 @@
 			"fields": [
 				{
 					"name": "timeToDeleteMs",
-					"annotations": {}
+					"annotations": {},
+					"type": "Int64"
 				}
 			]
 		},
@@ -1115,7 +1189,8 @@
 			"fields": [
 				{
 					"name": "deleted",
-					"annotations": {}
+					"annotations": {},
+					"type": "Bool"
 				}
 			]
 		},
@@ -1124,11 +1199,13 @@
 			"fields": [
 				{
 					"name": "oldKey",
-					"annotations": {}
+					"annotations": {},
+					"type": "Data"
 				},
 				{
 					"name": "newKey",
-					"annotations": {}
+					"annotations": {},
+					"type": "Data"
 				}
 			]
 		},
@@ -1137,7 +1214,8 @@
 			"fields": [
 				{
 					"name": "entries",
-					"annotations": {}
+					"annotations": {},
+					"type": "List(workerd/src/workerd/io/actor-storage.capnp:ActorStorage.KeyRename)"
 				}
 			]
 		},
@@ -1146,7 +1224,8 @@
 			"fields": [
 				{
 					"name": "renamed",
-					"annotations": {}
+					"annotations": {},
+					"type": "List(Data)"
 				}
 			]
 		},
@@ -1155,7 +1234,8 @@
 			"fields": [
 				{
 					"name": "list",
-					"annotations": {}
+					"annotations": {},
+					"type": "List(workerd/src/workerd/io/actor-storage.capnp:ActorStorage.KeyValue)"
 				}
 			]
 		},
@@ -1196,23 +1276,28 @@
 			"fields": [
 				{
 					"name": "functionName",
-					"annotations": {}
+					"annotations": {},
+					"type": "Text"
 				},
 				{
 					"name": "scriptId",
-					"annotations": {}
+					"annotations": {},
+					"type": "Text"
 				},
 				{
 					"name": "url",
-					"annotations": {}
+					"annotations": {},
+					"type": "Text"
 				},
 				{
 					"name": "lineNumber",
-					"annotations": {}
+					"annotations": {},
+					"type": "Int32"
 				},
 				{
 					"name": "columnNumber",
-					"annotations": {}
+					"annotations": {},
+					"type": "Int32"
 				}
 			]
 		},
@@ -1221,19 +1306,23 @@
 			"fields": [
 				{
 					"name": "description",
-					"annotations": {}
+					"annotations": {},
+					"type": "Text"
 				},
 				{
 					"name": "callFrames",
-					"annotations": {}
+					"annotations": {},
+					"type": "List(workerd/src/workerd/io/cdp.capnp:Runtime.CallFrame)"
 				},
 				{
 					"name": "parent",
-					"annotations": {}
+					"annotations": {},
+					"type": "workerd/src/workerd/io/cdp.capnp:Runtime.StackTrace"
 				},
 				{
 					"name": "parentId",
-					"annotations": {}
+					"annotations": {},
+					"type": "workerd/src/workerd/io/cdp.capnp:Runtime.StackTraceId"
 				}
 			]
 		},
@@ -1242,11 +1331,13 @@
 			"fields": [
 				{
 					"name": "id",
-					"annotations": {}
+					"annotations": {},
+					"type": "Text"
 				},
 				{
 					"name": "debuggerId",
-					"annotations": {}
+					"annotations": {},
+					"type": "Text"
 				}
 			]
 		},
@@ -1259,13 +1350,13 @@
 			"fields": [
 				{
 					"name": "undefined",
-					"annotations": {}
+					"annotations": {},
+					"type": "Void"
 				},
 				{
 					"name": "string",
-					"annotations": {
-						"flatten": "unhandled type"
-					}
+					"annotations": {},
+					"type": "workerd/src/workerd/io/cdp.capnp:Runtime.Event.ConsoleApiCalled.Arg.string"
 				}
 			]
 		},
@@ -1274,32 +1365,28 @@
 			"fields": [
 				{
 					"name": "type",
-					"annotations": {}
+					"annotations": {},
+					"type": "workerd/src/workerd/io/cdp.capnp:LogType"
 				},
 				{
 					"name": "args",
-					"annotations": {}
+					"annotations": {},
+					"type": "List(workerd/src/workerd/io/cdp.capnp:Runtime.Event.ConsoleApiCalled.Arg)"
 				},
 				{
 					"name": "executionContextId",
-					"annotations": {}
+					"annotations": {},
+					"type": "UInt32"
 				},
 				{
 					"name": "timestamp",
-					"annotations": {}
+					"annotations": {},
+					"type": "Float64"
 				},
 				{
 					"name": "stackTrace",
-					"annotations": {}
-				}
-			]
-		},
-		{
-			"name": "workerd/src/workerd/io/cdp.capnp:Runtime.Event.ConsoleApiCalled.Arg.string",
-			"fields": [
-				{
-					"name": "value",
-					"annotations": {}
+					"annotations": {},
+					"type": "workerd/src/workerd/io/cdp.capnp:Runtime.StackTrace"
 				}
 			]
 		},
@@ -1320,67 +1407,83 @@
 			"fields": [
 				{
 					"name": "requestTime",
-					"annotations": {}
+					"annotations": {},
+					"type": "Float64"
 				},
 				{
 					"name": "proxyStart",
-					"annotations": {}
+					"annotations": {},
+					"type": "Float64"
 				},
 				{
 					"name": "proxyEnd",
-					"annotations": {}
+					"annotations": {},
+					"type": "Float64"
 				},
 				{
 					"name": "dnsStart",
-					"annotations": {}
+					"annotations": {},
+					"type": "Float64"
 				},
 				{
 					"name": "dnsEnd",
-					"annotations": {}
+					"annotations": {},
+					"type": "Float64"
 				},
 				{
 					"name": "connectStart",
-					"annotations": {}
+					"annotations": {},
+					"type": "Float64"
 				},
 				{
 					"name": "connectEnd",
-					"annotations": {}
+					"annotations": {},
+					"type": "Float64"
 				},
 				{
 					"name": "sslStart",
-					"annotations": {}
+					"annotations": {},
+					"type": "Float64"
 				},
 				{
 					"name": "sslEnd",
-					"annotations": {}
+					"annotations": {},
+					"type": "Float64"
 				},
 				{
 					"name": "workerStart",
-					"annotations": {}
+					"annotations": {},
+					"type": "Float64"
 				},
 				{
 					"name": "workerReady",
-					"annotations": {}
+					"annotations": {},
+					"type": "Float64"
 				},
 				{
 					"name": "sendStart",
-					"annotations": {}
+					"annotations": {},
+					"type": "Float64"
 				},
 				{
 					"name": "sendEnd",
-					"annotations": {}
+					"annotations": {},
+					"type": "Float64"
 				},
 				{
 					"name": "pushStart",
-					"annotations": {}
+					"annotations": {},
+					"type": "Float64"
 				},
 				{
 					"name": "pushEnd",
-					"annotations": {}
+					"annotations": {},
+					"type": "Float64"
 				},
 				{
 					"name": "receiveHeadersEnd",
-					"annotations": {}
+					"annotations": {},
+					"type": "Float64"
 				}
 			]
 		},
@@ -1389,35 +1492,43 @@
 			"fields": [
 				{
 					"name": "null",
-					"annotations": {}
+					"annotations": {},
+					"type": "Void"
 				},
 				{
 					"name": "boolean",
-					"annotations": {}
+					"annotations": {},
+					"type": "Bool"
 				},
 				{
 					"name": "number",
-					"annotations": {}
+					"annotations": {},
+					"type": "Float64"
 				},
 				{
 					"name": "string",
-					"annotations": {}
+					"annotations": {},
+					"type": "Text"
 				},
 				{
 					"name": "array",
-					"annotations": {}
+					"annotations": {},
+					"type": "List(capnp/compat/json.capnp:Value)"
 				},
 				{
 					"name": "object",
-					"annotations": {}
+					"annotations": {},
+					"type": "List(capnp/compat/json.capnp:Value.Field)"
 				},
 				{
 					"name": "call",
-					"annotations": {}
+					"annotations": {},
+					"type": "capnp/compat/json.capnp:Value.Call"
 				},
 				{
 					"name": "raw",
-					"annotations": {}
+					"annotations": {},
+					"type": "Text"
 				}
 			]
 		},
@@ -1426,35 +1537,43 @@
 			"fields": [
 				{
 					"name": "url",
-					"annotations": {}
+					"annotations": {},
+					"type": "Text"
 				},
 				{
 					"name": "method",
-					"annotations": {}
+					"annotations": {},
+					"type": "Text"
 				},
 				{
 					"name": "headers",
-					"annotations": {}
+					"annotations": {},
+					"type": "capnp/compat/json.capnp:Value"
 				},
 				{
 					"name": "postData",
-					"annotations": {}
+					"annotations": {},
+					"type": "Text"
 				},
 				{
 					"name": "mixedContentType",
-					"annotations": {}
+					"annotations": {},
+					"type": "workerd/src/workerd/io/cdp.capnp:Security.MixedContentType"
 				},
 				{
 					"name": "initialPriority",
-					"annotations": {}
+					"annotations": {},
+					"type": "workerd/src/workerd/io/cdp.capnp:Network.ResourcePriority"
 				},
 				{
 					"name": "referrerPolicy",
-					"annotations": {}
+					"annotations": {},
+					"type": "workerd/src/workerd/io/cdp.capnp:Network.Request.ReferrerPolicy"
 				},
 				{
 					"name": "isLinkPreload",
-					"annotations": {}
+					"annotations": {},
+					"type": "Bool"
 				}
 			]
 		},
@@ -1463,11 +1582,13 @@
 			"fields": [
 				{
 					"name": "name",
-					"annotations": {}
+					"annotations": {},
+					"type": "Text"
 				},
 				{
 					"name": "value",
-					"annotations": {}
+					"annotations": {},
+					"type": "capnp/compat/json.capnp:Value"
 				}
 			]
 		},
@@ -1476,11 +1597,13 @@
 			"fields": [
 				{
 					"name": "function",
-					"annotations": {}
+					"annotations": {},
+					"type": "Text"
 				},
 				{
 					"name": "params",
-					"annotations": {}
+					"annotations": {},
+					"type": "List(capnp/compat/json.capnp:Value)"
 				}
 			]
 		},
@@ -1489,35 +1612,43 @@
 			"fields": [
 				{
 					"name": "status",
-					"annotations": {}
+					"annotations": {},
+					"type": "Text"
 				},
 				{
 					"name": "origin",
-					"annotations": {}
+					"annotations": {},
+					"type": "Text"
 				},
 				{
 					"name": "logDescription",
-					"annotations": {}
+					"annotations": {},
+					"type": "Text"
 				},
 				{
 					"name": "logId",
-					"annotations": {}
+					"annotations": {},
+					"type": "Text"
 				},
 				{
 					"name": "timestamp",
-					"annotations": {}
+					"annotations": {},
+					"type": "Float64"
 				},
 				{
 					"name": "hashAlgorithm",
-					"annotations": {}
+					"annotations": {},
+					"type": "Text"
 				},
 				{
 					"name": "signatureAlgorithm",
-					"annotations": {}
+					"annotations": {},
+					"type": "Text"
 				},
 				{
 					"name": "signatureData",
-					"annotations": {}
+					"annotations": {},
+					"type": "Text"
 				}
 			]
 		},
@@ -1526,51 +1657,63 @@
 			"fields": [
 				{
 					"name": "protocol",
-					"annotations": {}
+					"annotations": {},
+					"type": "Text"
 				},
 				{
 					"name": "keyExchange",
-					"annotations": {}
+					"annotations": {},
+					"type": "Text"
 				},
 				{
 					"name": "keyExchangeGroup",
-					"annotations": {}
+					"annotations": {},
+					"type": "Text"
 				},
 				{
 					"name": "cipher",
-					"annotations": {}
+					"annotations": {},
+					"type": "Text"
 				},
 				{
 					"name": "mac",
-					"annotations": {}
+					"annotations": {},
+					"type": "Text"
 				},
 				{
 					"name": "certificateId",
-					"annotations": {}
+					"annotations": {},
+					"type": "Int32"
 				},
 				{
 					"name": "subjectName",
-					"annotations": {}
+					"annotations": {},
+					"type": "Text"
 				},
 				{
 					"name": "sanList",
-					"annotations": {}
+					"annotations": {},
+					"type": "List(Text)"
 				},
 				{
 					"name": "issuer",
-					"annotations": {}
+					"annotations": {},
+					"type": "Text"
 				},
 				{
 					"name": "validFrom",
-					"annotations": {}
+					"annotations": {},
+					"type": "Float64"
 				},
 				{
 					"name": "validTo",
-					"annotations": {}
+					"annotations": {},
+					"type": "Float64"
 				},
 				{
 					"name": "signedCertificateTimestampList",
-					"annotations": {}
+					"annotations": {},
+					"type": "List(workerd/src/workerd/io/cdp.capnp:Network.SignedCertificateTimestamp)"
 				}
 			]
 		},
@@ -1579,79 +1722,98 @@
 			"fields": [
 				{
 					"name": "url",
-					"annotations": {}
+					"annotations": {},
+					"type": "Text"
 				},
 				{
 					"name": "status",
-					"annotations": {}
+					"annotations": {},
+					"type": "Int32"
 				},
 				{
 					"name": "statusText",
-					"annotations": {}
+					"annotations": {},
+					"type": "Text"
 				},
 				{
 					"name": "headers",
-					"annotations": {}
+					"annotations": {},
+					"type": "capnp/compat/json.capnp:Value"
 				},
 				{
 					"name": "headersText",
-					"annotations": {}
+					"annotations": {},
+					"type": "Text"
 				},
 				{
 					"name": "mimeType",
-					"annotations": {}
+					"annotations": {},
+					"type": "Text"
 				},
 				{
 					"name": "requestHeaders",
-					"annotations": {}
+					"annotations": {},
+					"type": "capnp/compat/json.capnp:Value"
 				},
 				{
 					"name": "requestHeadersText",
-					"annotations": {}
+					"annotations": {},
+					"type": "Text"
 				},
 				{
 					"name": "connectionReused",
-					"annotations": {}
+					"annotations": {},
+					"type": "Bool"
 				},
 				{
 					"name": "connectionId",
-					"annotations": {}
+					"annotations": {},
+					"type": "Float64"
 				},
 				{
 					"name": "remoteIPAddress",
-					"annotations": {}
+					"annotations": {},
+					"type": "Text"
 				},
 				{
 					"name": "remotePort",
-					"annotations": {}
+					"annotations": {},
+					"type": "Int32"
 				},
 				{
 					"name": "fromDiskCache",
-					"annotations": {}
+					"annotations": {},
+					"type": "Bool"
 				},
 				{
 					"name": "fromServiceWorker",
-					"annotations": {}
+					"annotations": {},
+					"type": "Bool"
 				},
 				{
 					"name": "encodedDataLength",
-					"annotations": {}
+					"annotations": {},
+					"type": "Float64"
 				},
 				{
 					"name": "timing",
-					"annotations": {}
+					"annotations": {},
+					"type": "workerd/src/workerd/io/cdp.capnp:Network.ResourceTiming"
 				},
 				{
 					"name": "protocol",
-					"annotations": {}
+					"annotations": {},
+					"type": "Text"
 				},
 				{
 					"name": "securityState",
-					"annotations": {}
+					"annotations": {},
+					"type": "workerd/src/workerd/io/cdp.capnp:Security.SecurityState"
 				},
 				{
 					"name": "securityDetails",
-					"annotations": {}
+					"annotations": {},
+					"type": "workerd/src/workerd/io/cdp.capnp:Network.SecurityDetails"
 				}
 			]
 		},
@@ -1660,19 +1822,23 @@
 			"fields": [
 				{
 					"name": "type",
-					"annotations": {}
+					"annotations": {},
+					"type": "workerd/src/workerd/io/cdp.capnp:Network.Initiator.Type"
 				},
 				{
 					"name": "stack",
-					"annotations": {}
+					"annotations": {},
+					"type": "workerd/src/workerd/io/cdp.capnp:Runtime.StackTrace"
 				},
 				{
 					"name": "url",
-					"annotations": {}
+					"annotations": {},
+					"type": "Text"
 				},
 				{
 					"name": "lineNumber",
-					"annotations": {}
+					"annotations": {},
+					"type": "Float64"
 				}
 			]
 		},
@@ -1689,11 +1855,13 @@
 			"fields": [
 				{
 					"name": "maxTotalBufferSize",
-					"annotations": {}
+					"annotations": {},
+					"type": "Int32"
 				},
 				{
 					"name": "maxResourceBufferSize",
-					"annotations": {}
+					"annotations": {},
+					"type": "Int32"
 				}
 			]
 		},
@@ -1722,7 +1890,8 @@
 			"fields": [
 				{
 					"name": "requestId",
-					"annotations": {}
+					"annotations": {},
+					"type": "Text"
 				}
 			]
 		},
@@ -1731,11 +1900,13 @@
 			"fields": [
 				{
 					"name": "body",
-					"annotations": {}
+					"annotations": {},
+					"type": "Text"
 				},
 				{
 					"name": "base64Encoded",
-					"annotations": {}
+					"annotations": {},
+					"type": "Bool"
 				}
 			]
 		},
@@ -1748,43 +1919,53 @@
 			"fields": [
 				{
 					"name": "requestId",
-					"annotations": {}
+					"annotations": {},
+					"type": "Text"
 				},
 				{
 					"name": "loaderId",
-					"annotations": {}
+					"annotations": {},
+					"type": "Text"
 				},
 				{
 					"name": "documentURL",
-					"annotations": {}
+					"annotations": {},
+					"type": "Text"
 				},
 				{
 					"name": "request",
-					"annotations": {}
+					"annotations": {},
+					"type": "workerd/src/workerd/io/cdp.capnp:Network.Request"
 				},
 				{
 					"name": "timestamp",
-					"annotations": {}
+					"annotations": {},
+					"type": "Float64"
 				},
 				{
 					"name": "wallTime",
-					"annotations": {}
+					"annotations": {},
+					"type": "Float64"
 				},
 				{
 					"name": "initiator",
-					"annotations": {}
+					"annotations": {},
+					"type": "workerd/src/workerd/io/cdp.capnp:Network.Initiator"
 				},
 				{
 					"name": "redirectResponse",
-					"annotations": {}
+					"annotations": {},
+					"type": "workerd/src/workerd/io/cdp.capnp:Network.Response"
 				},
 				{
 					"name": "type",
-					"annotations": {}
+					"annotations": {},
+					"type": "workerd/src/workerd/io/cdp.capnp:Page.ResourceType"
 				},
 				{
 					"name": "frameId",
-					"annotations": {}
+					"annotations": {},
+					"type": "Text"
 				}
 			]
 		},
@@ -1793,27 +1974,33 @@
 			"fields": [
 				{
 					"name": "requestId",
-					"annotations": {}
+					"annotations": {},
+					"type": "Text"
 				},
 				{
 					"name": "loaderId",
-					"annotations": {}
+					"annotations": {},
+					"type": "Text"
 				},
 				{
 					"name": "timestamp",
-					"annotations": {}
+					"annotations": {},
+					"type": "Float64"
 				},
 				{
 					"name": "type",
-					"annotations": {}
+					"annotations": {},
+					"type": "workerd/src/workerd/io/cdp.capnp:Page.ResourceType"
 				},
 				{
 					"name": "response",
-					"annotations": {}
+					"annotations": {},
+					"type": "workerd/src/workerd/io/cdp.capnp:Network.Response"
 				},
 				{
 					"name": "frameId",
-					"annotations": {}
+					"annotations": {},
+					"type": "Text"
 				}
 			]
 		},
@@ -1822,19 +2009,23 @@
 			"fields": [
 				{
 					"name": "requestId",
-					"annotations": {}
+					"annotations": {},
+					"type": "Text"
 				},
 				{
 					"name": "timestamp",
-					"annotations": {}
+					"annotations": {},
+					"type": "Float64"
 				},
 				{
 					"name": "dataLength",
-					"annotations": {}
+					"annotations": {},
+					"type": "Int32"
 				},
 				{
 					"name": "encodedDataLength",
-					"annotations": {}
+					"annotations": {},
+					"type": "Int32"
 				}
 			]
 		},
@@ -1843,19 +2034,23 @@
 			"fields": [
 				{
 					"name": "requestId",
-					"annotations": {}
+					"annotations": {},
+					"type": "Text"
 				},
 				{
 					"name": "timestamp",
-					"annotations": {}
+					"annotations": {},
+					"type": "Float64"
 				},
 				{
 					"name": "encodedDataLength",
-					"annotations": {}
+					"annotations": {},
+					"type": "Float64"
 				},
 				{
 					"name": "cfResponse",
-					"annotations": {}
+					"annotations": {},
+					"type": "workerd/src/workerd/io/cdp.capnp:Network.Command.GetResponseBody.Result"
 				}
 			]
 		},
@@ -1868,11 +2063,13 @@
 			"fields": [
 				{
 					"name": "line",
-					"annotations": {}
+					"annotations": {},
+					"type": "Int32"
 				},
 				{
 					"name": "ticks",
-					"annotations": {}
+					"annotations": {},
+					"type": "Int32"
 				}
 			]
 		},
@@ -1881,27 +2078,33 @@
 			"fields": [
 				{
 					"name": "id",
-					"annotations": {}
+					"annotations": {},
+					"type": "Int32"
 				},
 				{
 					"name": "callFrame",
-					"annotations": {}
+					"annotations": {},
+					"type": "workerd/src/workerd/io/cdp.capnp:Runtime.CallFrame"
 				},
 				{
 					"name": "hitCount",
-					"annotations": {}
+					"annotations": {},
+					"type": "Int32"
 				},
 				{
 					"name": "children",
-					"annotations": {}
+					"annotations": {},
+					"type": "List(Int32)"
 				},
 				{
 					"name": "deoptReason",
-					"annotations": {}
+					"annotations": {},
+					"type": "Text"
 				},
 				{
 					"name": "positionTicks",
-					"annotations": {}
+					"annotations": {},
+					"type": "List(workerd/src/workerd/io/cdp.capnp:Profiler.PositionTickInfo)"
 				}
 			]
 		},
@@ -1910,23 +2113,28 @@
 			"fields": [
 				{
 					"name": "nodes",
-					"annotations": {}
+					"annotations": {},
+					"type": "List(workerd/src/workerd/io/cdp.capnp:Profiler.ProfileNode)"
 				},
 				{
 					"name": "startTime",
-					"annotations": {}
+					"annotations": {},
+					"type": "Float64"
 				},
 				{
 					"name": "endTime",
-					"annotations": {}
+					"annotations": {},
+					"type": "Float64"
 				},
 				{
 					"name": "samples",
-					"annotations": {}
+					"annotations": {},
+					"type": "List(Int32)"
 				},
 				{
 					"name": "timeDeltas",
-					"annotations": {}
+					"annotations": {},
+					"type": "List(Int32)"
 				}
 			]
 		},
@@ -1955,7 +2163,8 @@
 			"fields": [
 				{
 					"name": "interval",
-					"annotations": {}
+					"annotations": {},
+					"type": "Int32"
 				}
 			]
 		},
@@ -1988,7 +2197,8 @@
 			"fields": [
 				{
 					"name": "profile",
-					"annotations": {}
+					"annotations": {},
+					"type": "workerd/src/workerd/io/cdp.capnp:Profiler.Profile"
 				}
 			]
 		},
@@ -2009,15 +2219,18 @@
 			"fields": [
 				{
 					"name": "reportProgress",
-					"annotations": {}
+					"annotations": {},
+					"type": "Bool"
 				},
 				{
 					"name": "captureNumericValue",
-					"annotations": {}
+					"annotations": {},
+					"type": "Bool"
 				},
 				{
 					"name": "exposeInternals",
-					"annotations": {}
+					"annotations": {},
+					"type": "Bool"
 				}
 			]
 		},
@@ -2034,7 +2247,8 @@
 			"fields": [
 				{
 					"name": "chunk",
-					"annotations": {}
+					"annotations": {},
+					"type": "Text"
 				}
 			]
 		},
@@ -2043,15 +2257,18 @@
 			"fields": [
 				{
 					"name": "done",
-					"annotations": {}
+					"annotations": {},
+					"type": "UInt32"
 				},
 				{
 					"name": "total",
-					"annotations": {}
+					"annotations": {},
+					"type": "UInt32"
 				},
 				{
 					"name": "finished",
-					"annotations": {}
+					"annotations": {},
+					"type": "Bool"
 				}
 			]
 		},
@@ -2060,11 +2277,13 @@
 			"fields": [
 				{
 					"name": "code",
-					"annotations": {}
+					"annotations": {},
+					"type": "Int32"
 				},
 				{
 					"name": "message",
-					"annotations": {}
+					"annotations": {},
+					"type": "Text"
 				}
 			]
 		},
@@ -2073,15 +2292,18 @@
 			"fields": [
 				{
 					"name": "params",
-					"annotations": {}
+					"annotations": {},
+					"type": "AnyPointer"
 				},
 				{
 					"name": "result",
-					"annotations": {}
+					"annotations": {},
+					"type": "AnyPointer"
 				},
 				{
 					"name": "error",
-					"annotations": {}
+					"annotations": {},
+					"type": "workerd/src/workerd/io/cdp.capnp:Error"
 				}
 			]
 		},
@@ -2090,67 +2312,69 @@
 			"fields": [
 				{
 					"name": "id",
-					"annotations": {}
+					"annotations": {},
+					"type": "Int32"
 				},
 				{
 					"name": "unknown",
-					"annotations": {}
+					"annotations": {},
+					"type": "Void"
 				},
 				{
 					"name": "networkEnable",
 					"annotations": {
-						"flatten": "unhandled type",
 						"name": "Network.enable"
-					}
+					},
+					"type": "workerd/src/workerd/io/cdp.capnp:Method"
 				},
 				{
 					"name": "networkDisable",
 					"annotations": {
-						"flatten": "unhandled type",
 						"name": "Network.disable"
-					}
+					},
+					"type": "workerd/src/workerd/io/cdp.capnp:Method"
 				},
 				{
 					"name": "networkGetResponseBody",
 					"annotations": {
-						"flatten": "unhandled type",
 						"name": "Network.getResponseBody"
-					}
+					},
+					"type": "workerd/src/workerd/io/cdp.capnp:Method"
 				},
 				{
 					"name": "profilerSetSamplingInterval",
 					"annotations": {
-						"flatten": "unhandled type",
 						"name": "Profiler.setSamplingInterval"
-					}
+					},
+					"type": "workerd/src/workerd/io/cdp.capnp:Method"
 				},
 				{
 					"name": "profilerEnable",
 					"annotations": {
-						"flatten": "unhandled type",
 						"name": "Profiler.enable"
-					}
+					},
+					"type": "workerd/src/workerd/io/cdp.capnp:Method"
 				},
 				{
 					"name": "profilerStart",
 					"annotations": {
-						"flatten": "unhandled type",
 						"name": "Profiler.start"
-					}
+					},
+					"type": "workerd/src/workerd/io/cdp.capnp:Method"
 				},
 				{
 					"name": "profilerStop",
 					"annotations": {
-						"flatten": "unhandled type",
 						"name": "Profiler.stop"
-					}
+					},
+					"type": "workerd/src/workerd/io/cdp.capnp:Method"
 				},
 				{
 					"name": "takeHeapSnapshot",
 					"annotations": {
-						"flatten": "unhandled type",
 						"name": "HeapProfiler.takeHeapSnapshot"
-					}
+					},
+					"type": "workerd/src/workerd/io/cdp.capnp:Method"
 				}
 			]
 		},
@@ -2161,43 +2385,50 @@
 					"name": "networkRequestWillBeSent",
 					"annotations": {
 						"name": "Network.requestWillBeSent"
-					}
+					},
+					"type": "workerd/src/workerd/io/cdp.capnp:Network.Event.RequestWillBeSent"
 				},
 				{
 					"name": "networkResponseReceived",
 					"annotations": {
 						"name": "Network.responseReceived"
-					}
+					},
+					"type": "workerd/src/workerd/io/cdp.capnp:Network.Event.ResponseReceived"
 				},
 				{
 					"name": "networkDataReceived",
 					"annotations": {
 						"name": "Network.dataReceived"
-					}
+					},
+					"type": "workerd/src/workerd/io/cdp.capnp:Network.Event.DataReceived"
 				},
 				{
 					"name": "networkLoadingFinished",
 					"annotations": {
 						"name": "Network.loadingFinished"
-					}
+					},
+					"type": "workerd/src/workerd/io/cdp.capnp:Network.Event.LoadingFinished"
 				},
 				{
 					"name": "runtimeConsoleApiCalled",
 					"annotations": {
 						"name": "Runtime.consoleAPICalled"
-					}
+					},
+					"type": "workerd/src/workerd/io/cdp.capnp:Runtime.Event.ConsoleApiCalled"
 				},
 				{
 					"name": "addHeapSnapshotChunk",
 					"annotations": {
 						"name": "HeapProfiler.addHeapSnapshotChunk"
-					}
+					},
+					"type": "workerd/src/workerd/io/cdp.capnp:HeapProfiler.Event.AddHeapSnapshotChunk"
 				},
 				{
 					"name": "reportHeapSnapshotProgress",
 					"annotations": {
 						"name": "HeapProfiler.reportHeapSnapshotProgress"
-					}
+					},
+					"type": "workerd/src/workerd/io/cdp.capnp:HeapProfiler.Event.ReportHeapSnapshotProgress"
 				}
 			]
 		},
@@ -2206,15 +2437,18 @@
 			"fields": [
 				{
 					"name": "name",
-					"annotations": {}
+					"annotations": {},
+					"type": "Text"
 				},
 				{
 					"name": "date",
-					"annotations": {}
+					"annotations": {},
+					"type": "Text"
 				},
 				{
 					"name": "names",
-					"annotations": {}
+					"annotations": {},
+					"type": "List(Text)"
 				}
 			]
 		},
@@ -2224,1111 +2458,1468 @@
 				{
 					"name": "formDataParserSupportsFiles",
 					"annotations": {
-						"compatDisableFlag": "formdata_parser_converts_files_to_strings",
+						"compatEnableFlag": "formdata_parser_supports_files",
 						"compatEnableDate": "2021-11-03",
-						"compatEnableFlag": "formdata_parser_supports_files"
-					}
+						"compatDisableFlag": "formdata_parser_converts_files_to_strings"
+					},
+					"type": "Bool"
 				},
 				{
 					"name": "fetchRefusesUnknownProtocols",
 					"annotations": {
-						"compatDisableFlag": "fetch_treats_unknown_protocols_as_http",
+						"compatEnableFlag": "fetch_refuses_unknown_protocols",
 						"compatEnableDate": "2021-11-10",
-						"compatEnableFlag": "fetch_refuses_unknown_protocols"
-					}
+						"compatDisableFlag": "fetch_treats_unknown_protocols_as_http"
+					},
+					"type": "Bool"
 				},
 				{
 					"name": "esiIncludeIsVoidTag",
 					"annotations": {
 						"compatEnableFlag": "html_rewriter_treats_esi_include_as_void_tag"
-					}
+					},
+					"type": "Bool"
 				},
 				{
 					"name": "obsolete3",
-					"annotations": {}
+					"annotations": {},
+					"type": "Bool"
 				},
 				{
 					"name": "durableObjectFetchRequiresSchemeAuthority",
 					"annotations": {
-						"compatDisableFlag": "durable_object_fetch_allows_relative_url",
+						"compatEnableFlag": "durable_object_fetch_requires_full_url",
 						"compatEnableDate": "2021-11-10",
-						"compatEnableFlag": "durable_object_fetch_requires_full_url"
-					}
+						"compatDisableFlag": "durable_object_fetch_allows_relative_url"
+					},
+					"type": "Bool"
 				},
 				{
 					"name": "streamsByobReaderDetachesBuffer",
 					"annotations": {
-						"compatDisableFlag": "streams_byob_reader_does_not_detach_buffer",
+						"compatEnableFlag": "streams_byob_reader_detaches_buffer",
 						"compatEnableDate": "2021-11-10",
-						"compatEnableFlag": "streams_byob_reader_detaches_buffer"
-					}
+						"compatDisableFlag": "streams_byob_reader_does_not_detach_buffer"
+					},
+					"type": "Bool"
 				},
 				{
 					"name": "streamsJavaScriptControllers",
 					"annotations": {
-						"compatDisableFlag": "streams_disable_constructors",
+						"compatEnableFlag": "streams_enable_constructors",
 						"compatEnableDate": "2022-11-30",
-						"compatEnableFlag": "streams_enable_constructors"
-					}
+						"compatDisableFlag": "streams_disable_constructors"
+					},
+					"type": "Bool"
 				},
 				{
 					"name": "jsgPropertyOnPrototypeTemplate",
 					"annotations": {
-						"compatDisableFlag": "workers_api_getters_setters_on_instance",
+						"compatEnableFlag": "workers_api_getters_setters_on_prototype",
 						"compatEnableDate": "2022-01-31",
-						"compatEnableFlag": "workers_api_getters_setters_on_prototype"
-					}
+						"compatDisableFlag": "workers_api_getters_setters_on_instance"
+					},
+					"type": "Bool"
 				},
 				{
 					"name": "minimalSubrequests",
 					"annotations": {
-						"compatDisableFlag": "no_minimal_subrequests",
-						"compatEnableDate": "2022-04-05",
 						"compatEnableFlag": "minimal_subrequests",
-						"neededByFl": "true"
-					}
+						"compatEnableDate": "2022-04-05",
+						"compatDisableFlag": "no_minimal_subrequests",
+						"neededByFl": true
+					},
+					"type": "Bool"
 				},
 				{
 					"name": "noCotsOnExternalFetch",
 					"annotations": {
-						"compatDisableFlag": "cots_on_external_fetch",
-						"compatEnableDate": "2022-03-08",
 						"compatEnableFlag": "no_cots_on_external_fetch",
-						"neededByFl": "true"
-					}
+						"compatEnableDate": "2022-03-08",
+						"compatDisableFlag": "cots_on_external_fetch",
+						"neededByFl": true
+					},
+					"type": "Bool"
 				},
 				{
 					"name": "specCompliantUrl",
 					"annotations": {
-						"compatDisableFlag": "url_original",
+						"compatEnableFlag": "url_standard",
 						"compatEnableDate": "2022-10-31",
-						"compatEnableFlag": "url_standard"
-					}
+						"compatDisableFlag": "url_original"
+					},
+					"type": "Bool"
 				},
 				{
 					"name": "globalNavigator",
 					"annotations": {
-						"compatDisableFlag": "no_global_navigator",
+						"compatEnableFlag": "global_navigator",
 						"compatEnableDate": "2022-03-21",
-						"compatEnableFlag": "global_navigator"
-					}
+						"compatDisableFlag": "no_global_navigator"
+					},
+					"type": "Bool"
 				},
 				{
 					"name": "captureThrowsAsRejections",
 					"annotations": {
-						"compatDisableFlag": "do_not_capture_async_api_throws",
+						"compatEnableFlag": "capture_async_api_throws",
 						"compatEnableDate": "2022-10-31",
-						"compatEnableFlag": "capture_async_api_throws"
-					}
+						"compatDisableFlag": "do_not_capture_async_api_throws"
+					},
+					"type": "Bool"
 				},
 				{
 					"name": "r2PublicBetaApi",
 					"annotations": {
+						"compatEnableFlag": "r2_public_beta_bindings",
 						"compatDisableFlag": "r2_internal_beta_bindings",
-						"compatEnableAllDates": "true",
-						"compatEnableFlag": "r2_public_beta_bindings"
-					}
+						"compatEnableAllDates": true
+					},
+					"type": "Bool"
 				},
 				{
 					"name": "obsolete14",
 					"annotations": {
 						"compatEnableFlag": "durable_object_alarms"
-					}
+					},
+					"type": "Bool"
 				},
 				{
 					"name": "noSubstituteNull",
 					"annotations": {
-						"compatDisableFlag": "substitute_null_on_type_error",
+						"compatEnableFlag": "dont_substitute_null_on_type_error",
 						"compatEnableDate": "2022-06-01",
-						"compatEnableFlag": "dont_substitute_null_on_type_error"
-					}
+						"compatDisableFlag": "substitute_null_on_type_error"
+					},
+					"type": "Bool"
 				},
 				{
 					"name": "transformStreamJavaScriptControllers",
 					"annotations": {
-						"compatDisableFlag": "transformstream_disable_standard_constructor",
+						"compatEnableFlag": "transformstream_enable_standard_constructor",
 						"compatEnableDate": "2022-11-30",
-						"compatEnableFlag": "transformstream_enable_standard_constructor"
-					}
+						"compatDisableFlag": "transformstream_disable_standard_constructor"
+					},
+					"type": "Bool"
 				},
 				{
 					"name": "r2ListHonorIncludeFields",
 					"annotations": {
-						"compatEnableDate": "2022-08-04",
-						"compatEnableFlag": "r2_list_honor_include"
-					}
+						"compatEnableFlag": "r2_list_honor_include",
+						"compatEnableDate": "2022-08-04"
+					},
+					"type": "Bool"
 				},
 				{
 					"name": "exportCommonJsDefaultNamespace",
 					"annotations": {
-						"compatDisableFlag": "export_commonjs_namespace",
+						"compatEnableFlag": "export_commonjs_default",
 						"compatEnableDate": "2022-10-31",
-						"compatEnableFlag": "export_commonjs_default"
-					}
+						"compatDisableFlag": "export_commonjs_namespace"
+					},
+					"type": "Bool"
 				},
 				{
 					"name": "obsolete19",
 					"annotations": {
 						"compatEnableFlag": "durable_object_rename",
-						"experimental": "true"
-					}
+						"experimental": true
+					},
+					"type": "Bool"
 				},
 				{
 					"name": "webSocketCompression",
 					"annotations": {
-						"compatDisableFlag": "no_web_socket_compression",
+						"compatEnableFlag": "web_socket_compression",
 						"compatEnableDate": "2023-08-15",
-						"compatEnableFlag": "web_socket_compression"
-					}
+						"compatDisableFlag": "no_web_socket_compression"
+					},
+					"type": "Bool"
 				},
 				{
 					"name": "nodeJsCompat",
 					"annotations": {
-						"compatDisableFlag": "no_nodejs_compat",
-						"compatEnableFlag": "nodejs_compat"
-					}
+						"compatEnableFlag": "nodejs_compat",
+						"compatDisableFlag": "no_nodejs_compat"
+					},
+					"type": "Bool"
 				},
 				{
 					"name": "obsolete22",
 					"annotations": {
 						"compatEnableFlag": "tcp_sockets_support"
-					}
+					},
+					"type": "Bool"
 				},
 				{
 					"name": "specCompliantResponseRedirect",
 					"annotations": {
-						"compatDisableFlag": "response_redirect_url_original",
 						"compatEnableDate": "2023-03-14",
-						"compatEnableFlag": "response_redirect_url_standard"
-					}
+						"compatEnableFlag": "response_redirect_url_standard",
+						"compatDisableFlag": "response_redirect_url_original"
+					},
+					"type": "Bool"
 				},
 				{
 					"name": "workerdExperimental",
 					"annotations": {
 						"compatEnableFlag": "experimental",
-						"experimental": "true"
-					}
+						"experimental": true
+					},
+					"type": "Bool"
 				},
 				{
 					"name": "durableObjectGetExisting",
 					"annotations": {
 						"compatEnableFlag": "durable_object_get_existing",
-						"experimental": "true"
-					}
+						"experimental": true
+					},
+					"type": "Bool"
 				},
 				{
 					"name": "httpHeadersGetSetCookie",
 					"annotations": {
+						"compatEnableFlag": "http_headers_getsetcookie",
 						"compatDisableFlag": "no_http_headers_getsetcookie",
-						"compatEnableDate": "2023-03-01",
-						"compatEnableFlag": "http_headers_getsetcookie"
-					}
+						"compatEnableDate": "2023-03-01"
+					},
+					"type": "Bool"
 				},
 				{
 					"name": "dispatchExceptionTunneling",
 					"annotations": {
-						"compatDisableFlag": "dynamic_dispatch_treat_exceptions_as_500",
 						"compatEnableDate": "2023-03-01",
-						"compatEnableFlag": "dynamic_dispatch_tunnel_exceptions"
-					}
+						"compatEnableFlag": "dynamic_dispatch_tunnel_exceptions",
+						"compatDisableFlag": "dynamic_dispatch_treat_exceptions_as_500"
+					},
+					"type": "Bool"
 				},
 				{
 					"name": "serviceBindingExtraHandlers",
 					"annotations": {
 						"compatEnableFlag": "service_binding_extra_handlers",
-						"experimental": "true"
-					}
+						"experimental": true
+					},
+					"type": "Bool"
 				},
 				{
 					"name": "noCfBotManagementDefault",
 					"annotations": {
+						"compatEnableFlag": "no_cf_botmanagement_default",
 						"compatDisableFlag": "cf_botmanagement_default",
-						"compatEnableDate": "2023-08-01",
-						"compatEnableFlag": "no_cf_botmanagement_default"
-					}
+						"compatEnableDate": "2023-08-01"
+					},
+					"type": "Bool"
 				},
 				{
 					"name": "urlSearchParamsDeleteHasValueArg",
 					"annotations": {
+						"compatEnableFlag": "urlsearchparams_delete_has_value_arg",
 						"compatDisableFlag": "no_urlsearchparams_delete_has_value_arg",
-						"compatEnableDate": "2023-07-01",
-						"compatEnableFlag": "urlsearchparams_delete_has_value_arg"
-					}
+						"compatEnableDate": "2023-07-01"
+					},
+					"type": "Bool"
 				},
 				{
 					"name": "strictCompression",
 					"annotations": {
+						"compatEnableFlag": "strict_compression_checks",
 						"compatDisableFlag": "no_strict_compression_checks",
-						"compatEnableDate": "2023-08-01",
-						"compatEnableFlag": "strict_compression_checks"
-					}
+						"compatEnableDate": "2023-08-01"
+					},
+					"type": "Bool"
 				},
 				{
 					"name": "brotliContentEncoding",
 					"annotations": {
-						"compatDisableFlag": "no_brotli_content_encoding",
-						"compatEnableDate": "2024-04-29",
 						"compatEnableFlag": "brotli_content_encoding",
-						"neededByFl": "true"
-					}
+						"compatEnableDate": "2024-04-29",
+						"compatDisableFlag": "no_brotli_content_encoding",
+						"neededByFl": true
+					},
+					"type": "Bool"
 				},
 				{
 					"name": "strictCrypto",
 					"annotations": {
+						"compatEnableFlag": "strict_crypto_checks",
 						"compatDisableFlag": "no_strict_crypto_checks",
-						"compatEnableDate": "2023-08-01",
-						"compatEnableFlag": "strict_crypto_checks"
-					}
+						"compatEnableDate": "2023-08-01"
+					},
+					"type": "Bool"
 				},
 				{
 					"name": "rttiApi",
 					"annotations": {
 						"compatEnableFlag": "rtti_api",
-						"experimental": "true"
-					}
+						"experimental": true
+					},
+					"type": "Bool"
 				},
 				{
 					"name": "obsolete35",
 					"annotations": {
 						"compatEnableFlag": "webgpu",
-						"experimental": "true"
-					}
+						"experimental": true
+					},
+					"type": "Bool"
 				},
 				{
 					"name": "cryptoPreservePublicExponent",
 					"annotations": {
+						"compatEnableFlag": "crypto_preserve_public_exponent",
 						"compatDisableFlag": "no_crypto_preserve_public_exponent",
-						"compatEnableDate": "2023-12-01",
-						"compatEnableFlag": "crypto_preserve_public_exponent"
-					}
+						"compatEnableDate": "2023-12-01"
+					},
+					"type": "Bool"
 				},
 				{
 					"name": "vectorizeQueryMetadataOptional",
 					"annotations": {
-						"compatDisableFlag": "vectorize_query_original",
+						"compatEnableFlag": "vectorize_query_metadata_optional",
 						"compatEnableDate": "2023-11-08",
-						"compatEnableFlag": "vectorize_query_metadata_optional"
-					}
+						"compatDisableFlag": "vectorize_query_original"
+					},
+					"type": "Bool"
 				},
 				{
 					"name": "unsafeModule",
 					"annotations": {
 						"compatEnableFlag": "unsafe_module",
-						"experimental": "true"
-					}
+						"experimental": true
+					},
+					"type": "Bool"
 				},
 				{
 					"name": "jsRpc",
 					"annotations": {
 						"compatEnableFlag": "js_rpc",
-						"experimental": "true"
-					}
+						"experimental": true
+					},
+					"type": "Bool"
 				},
 				{
 					"name": "noImportScripts",
 					"annotations": {
+						"compatEnableFlag": "no_global_importscripts",
 						"compatDisableFlag": "global_importscripts",
-						"compatEnableDate": "2024-03-04",
-						"compatEnableFlag": "no_global_importscripts"
-					}
+						"compatEnableDate": "2024-03-04"
+					},
+					"type": "Bool"
 				},
 				{
 					"name": "nodeJsAls",
 					"annotations": {
-						"compatDisableFlag": "no_nodejs_als",
-						"compatEnableFlag": "nodejs_als"
-					}
+						"compatEnableFlag": "nodejs_als",
+						"compatDisableFlag": "no_nodejs_als"
+					},
+					"type": "Bool"
 				},
 				{
 					"name": "queuesJsonMessages",
 					"annotations": {
+						"compatEnableFlag": "queues_json_messages",
 						"compatDisableFlag": "no_queues_json_messages",
-						"compatEnableDate": "2024-03-18",
-						"compatEnableFlag": "queues_json_messages"
-					}
+						"compatEnableDate": "2024-03-18"
+					},
+					"type": "Bool"
 				},
 				{
 					"name": "pythonWorkers",
 					"annotations": {
 						"compatEnableFlag": "python_workers",
-						"impliedByAfterDate": "unhandled type",
-						"pythonSnapshotRelease": "true"
-					}
+						"pythonSnapshotRelease": true
+					},
+					"type": "Bool"
 				},
 				{
 					"name": "fetcherNoGetPutDelete",
 					"annotations": {
+						"compatEnableFlag": "fetcher_no_get_put_delete",
 						"compatDisableFlag": "fetcher_has_get_put_delete",
-						"compatEnableDate": "2024-03-26",
-						"compatEnableFlag": "fetcher_no_get_put_delete"
-					}
+						"compatEnableDate": "2024-03-26"
+					},
+					"type": "Bool"
 				},
 				{
 					"name": "unwrapCustomThenables",
 					"annotations": {
+						"compatEnableFlag": "unwrap_custom_thenables",
 						"compatDisableFlag": "no_unwrap_custom_thenables",
-						"compatEnableDate": "2024-04-01",
-						"compatEnableFlag": "unwrap_custom_thenables"
-					}
+						"compatEnableDate": "2024-04-01"
+					},
+					"type": "Bool"
 				},
 				{
 					"name": "fetcherRpc",
 					"annotations": {
+						"compatEnableFlag": "rpc",
 						"compatDisableFlag": "no_rpc",
-						"compatEnableDate": "2024-04-03",
-						"compatEnableFlag": "rpc"
-					}
+						"compatEnableDate": "2024-04-03"
+					},
+					"type": "Bool"
 				},
 				{
 					"name": "internalStreamByobReturn",
 					"annotations": {
+						"compatEnableFlag": "internal_stream_byob_return_view",
 						"compatDisableFlag": "internal_stream_byob_return_undefined",
-						"compatEnableDate": "2024-05-13",
-						"compatEnableFlag": "internal_stream_byob_return_view"
-					}
+						"compatEnableDate": "2024-05-13"
+					},
+					"type": "Bool"
 				},
 				{
 					"name": "blobStandardMimeType",
 					"annotations": {
+						"compatEnableFlag": "blob_standard_mime_type",
 						"compatDisableFlag": "blob_legacy_mime_type",
-						"compatEnableDate": "2024-06-03",
-						"compatEnableFlag": "blob_standard_mime_type"
-					}
+						"compatEnableDate": "2024-06-03"
+					},
+					"type": "Bool"
 				},
 				{
 					"name": "fetchStandardUrl",
 					"annotations": {
+						"compatEnableFlag": "fetch_standard_url",
 						"compatDisableFlag": "fetch_legacy_url",
-						"compatEnableDate": "2024-06-03",
-						"compatEnableFlag": "fetch_standard_url"
-					}
+						"compatEnableDate": "2024-06-03"
+					},
+					"type": "Bool"
 				},
 				{
 					"name": "nodeJsCompatV2",
 					"annotations": {
-						"compatDisableFlag": "no_nodejs_compat_v2",
 						"compatEnableFlag": "nodejs_compat_v2",
-						"impliedByAfterDate": "unhandled type"
-					}
+						"compatDisableFlag": "no_nodejs_compat_v2"
+					},
+					"type": "Bool"
 				},
 				{
 					"name": "globalFetchStrictlyPublic",
 					"annotations": {
-						"compatDisableFlag": "global_fetch_private_origin",
-						"compatEnableFlag": "global_fetch_strictly_public"
-					}
+						"compatEnableFlag": "global_fetch_strictly_public",
+						"compatDisableFlag": "global_fetch_private_origin"
+					},
+					"type": "Bool"
 				},
 				{
 					"name": "newModuleRegistry",
 					"annotations": {
-						"compatDisableFlag": "legacy_module_registry",
 						"compatEnableFlag": "new_module_registry",
-						"experimental": "true"
-					}
+						"compatDisableFlag": "legacy_module_registry",
+						"experimental": true
+					},
+					"type": "Bool"
 				},
 				{
 					"name": "cacheOptionEnabled",
 					"annotations": {
+						"compatEnableFlag": "cache_option_enabled",
 						"compatDisableFlag": "cache_option_disabled",
-						"compatEnableDate": "2024-11-11",
-						"compatEnableFlag": "cache_option_enabled"
-					}
+						"compatEnableDate": "2024-11-11"
+					},
+					"type": "Bool"
 				},
 				{
 					"name": "kvDirectBinding",
 					"annotations": {
 						"compatEnableFlag": "kv_direct_binding",
-						"experimental": "true"
-					}
+						"experimental": true
+					},
+					"type": "Bool"
 				},
 				{
 					"name": "allowCustomPorts",
 					"annotations": {
+						"compatEnableFlag": "allow_custom_ports",
 						"compatDisableFlag": "ignore_custom_ports",
 						"compatEnableDate": "2024-09-02",
-						"compatEnableFlag": "allow_custom_ports",
-						"neededByFl": "true"
-					}
+						"neededByFl": true
+					},
+					"type": "Bool"
 				},
 				{
 					"name": "increaseWebsocketMessageSize",
 					"annotations": {
 						"compatEnableFlag": "increase_websocket_message_size",
-						"experimental": "true"
-					}
+						"experimental": true
+					},
+					"type": "Bool"
 				},
 				{
 					"name": "internalWritableStreamAbortClearsQueue",
 					"annotations": {
+						"compatEnableFlag": "internal_writable_stream_abort_clears_queue",
 						"compatDisableFlag": "internal_writable_stream_abort_does_not_clear_queue",
-						"compatEnableDate": "2024-09-02",
-						"compatEnableFlag": "internal_writable_stream_abort_clears_queue"
-					}
+						"compatEnableDate": "2024-09-02"
+					},
+					"type": "Bool"
 				},
 				{
 					"name": "pythonWorkersDevPyodide",
 					"annotations": {
 						"compatEnableFlag": "python_workers_development",
-						"experimental": "true",
-						"pythonSnapshotRelease": "true"
-					}
+						"pythonSnapshotRelease": true,
+						"experimental": true
+					},
+					"type": "Bool"
 				},
 				{
 					"name": "nodeJsZlib",
 					"annotations": {
-						"compatDisableFlag": "no_nodejs_zlib",
 						"compatEnableFlag": "nodejs_zlib",
-						"impliedByAfterDate": "unhandled type"
-					}
+						"compatDisableFlag": "no_nodejs_zlib"
+					},
+					"type": "Bool"
 				},
 				{
 					"name": "replicaRouting",
 					"annotations": {
 						"compatEnableFlag": "replica_routing",
-						"experimental": "true"
-					}
+						"experimental": true
+					},
+					"type": "Bool"
 				},
 				{
 					"name": "obsolete61",
 					"annotations": {
 						"compatEnableFlag": "enable_d1_with_sessions_api",
-						"experimental": "true"
-					}
+						"experimental": true
+					},
+					"type": "Bool"
 				},
 				{
 					"name": "handleCrossRequestPromiseResolution",
 					"annotations": {
+						"compatEnableFlag": "handle_cross_request_promise_resolution",
 						"compatDisableFlag": "no_handle_cross_request_promise_resolution",
-						"compatEnableDate": "2024-10-14",
-						"compatEnableFlag": "handle_cross_request_promise_resolution"
-					}
+						"compatEnableDate": "2024-10-14"
+					},
+					"type": "Bool"
 				},
 				{
 					"name": "obsolete63",
 					"annotations": {
-						"experimental": "true"
-					}
+						"experimental": true
+					},
+					"type": "Bool"
 				},
 				{
 					"name": "setToStringTag",
 					"annotations": {
+						"compatEnableFlag": "set_tostring_tag",
 						"compatDisableFlag": "do_not_set_tostring_tag",
-						"compatEnableDate": "2024-09-26",
-						"compatEnableFlag": "set_tostring_tag"
-					}
+						"compatEnableDate": "2024-09-26"
+					},
+					"type": "Bool"
 				},
 				{
 					"name": "upperCaseAllHttpMethods",
 					"annotations": {
+						"compatEnableFlag": "upper_case_all_http_methods",
 						"compatDisableFlag": "no_upper_case_all_http_methods",
-						"compatEnableDate": "2024-10-14",
-						"compatEnableFlag": "upper_case_all_http_methods"
-					}
+						"compatEnableDate": "2024-10-14"
+					},
+					"type": "Bool"
 				},
 				{
 					"name": "obsolete66",
 					"annotations": {
 						"compatEnableFlag": "python_external_packages"
-					}
+					},
+					"type": "Bool"
 				},
 				{
 					"name": "noTopLevelAwaitInRequire",
 					"annotations": {
+						"compatEnableFlag": "disable_top_level_await_in_require",
 						"compatDisableFlag": "enable_top_level_await_in_require",
-						"compatEnableDate": "2024-12-02",
-						"compatEnableFlag": "disable_top_level_await_in_require"
-					}
+						"compatEnableDate": "2024-12-02"
+					},
+					"type": "Bool"
 				},
 				{
 					"name": "fixupTransformStreamBackpressure",
 					"annotations": {
+						"compatEnableFlag": "fixup-transform-stream-backpressure",
 						"compatDisableFlag": "original-transform-stream-backpressure",
-						"compatEnableDate": "2024-12-16",
-						"compatEnableFlag": "fixup-transform-stream-backpressure"
-					}
+						"compatEnableDate": "2024-12-16"
+					},
+					"type": "Bool"
 				},
 				{
 					"name": "obsolete69",
 					"annotations": {
 						"compatEnableFlag": "tail_worker_user_spans",
-						"experimental": "true"
-					}
+						"experimental": true
+					},
+					"type": "Bool"
 				},
 				{
 					"name": "cacheNoCache",
 					"annotations": {
-						"compatDisableFlag": "cache_no_cache_disabled",
 						"compatEnableFlag": "cache_no_cache_enabled",
-						"impliedByAfterDate": "unhandled type"
-					}
+						"compatDisableFlag": "cache_no_cache_disabled"
+					},
+					"type": "Bool"
 				},
 				{
 					"name": "pythonWorkers20250116",
 					"annotations": {
-						"compatDisableFlag": "no_python_workers_20250116",
 						"compatEnableFlag": "python_workers_20250116",
-						"impliedByAfterDate": "unhandled type",
-						"pythonSnapshotRelease": "true"
-					}
+						"compatDisableFlag": "no_python_workers_20250116",
+						"pythonSnapshotRelease": true
+					},
+					"type": "Bool"
 				},
 				{
 					"name": "requestCfOverridesCacheRules",
 					"annotations": {
+						"compatEnableFlag": "request_cf_overrides_cache_rules",
 						"compatDisableFlag": "no_request_cf_overrides_cache_rules",
 						"compatEnableDate": "2025-04-02",
-						"compatEnableFlag": "request_cf_overrides_cache_rules",
-						"neededByFl": "true"
-					}
+						"neededByFl": true
+					},
+					"type": "Bool"
 				},
 				{
 					"name": "memoryCacheDelete",
 					"annotations": {
 						"compatEnableFlag": "memory_cache_delete",
-						"experimental": "true"
-					}
+						"experimental": true
+					},
+					"type": "Bool"
 				},
 				{
 					"name": "obsolete74",
 					"annotations": {
-						"compatEnableDate": "2025-03-10",
-						"compatEnableFlag": "unique_ctx_per_invocation"
-					}
+						"compatEnableFlag": "unique_ctx_per_invocation",
+						"compatEnableDate": "2025-03-10"
+					},
+					"type": "Bool"
 				},
 				{
 					"name": "queueConsumerNoWaitForWaitUntil",
 					"annotations": {
-						"compatDisableFlag": "queue_consumer_wait_for_wait_until",
-						"compatEnableFlag": "queue_consumer_no_wait_for_wait_until"
-					}
+						"compatEnableFlag": "queue_consumer_no_wait_for_wait_until",
+						"compatDisableFlag": "queue_consumer_wait_for_wait_until"
+					},
+					"type": "Bool"
 				},
 				{
 					"name": "populateProcessEnv",
 					"annotations": {
-						"compatDisableFlag": "nodejs_compat_do_not_populate_process_env",
 						"compatEnableFlag": "nodejs_compat_populate_process_env",
-						"impliedByAfterDate": "unhandled type"
-					}
+						"compatDisableFlag": "nodejs_compat_do_not_populate_process_env"
+					},
+					"type": "Bool"
 				},
 				{
 					"name": "cacheApiRequestCfOverridesCacheRules",
 					"annotations": {
+						"compatEnableFlag": "cache_api_request_cf_overrides_cache_rules",
 						"compatDisableFlag": "no_cache_api_request_cf_overrides_cache_rules",
 						"compatEnableDate": "2025-05-19",
-						"compatEnableFlag": "cache_api_request_cf_overrides_cache_rules",
-						"neededByFl": "true"
-					}
+						"neededByFl": true
+					},
+					"type": "Bool"
 				},
 				{
 					"name": "disableImportableEnv",
 					"annotations": {
-						"compatDisableFlag": "allow_importable_env",
-						"compatEnableFlag": "disallow_importable_env"
-					}
+						"compatEnableFlag": "disallow_importable_env",
+						"compatDisableFlag": "allow_importable_env"
+					},
+					"type": "Bool"
 				},
 				{
 					"name": "assetsSecFetchModeNavigateHeaderPrefersAssetServing",
 					"annotations": {
+						"compatEnableFlag": "assets_navigation_prefers_asset_serving",
 						"compatDisableFlag": "assets_navigation_has_no_effect",
-						"compatEnableDate": "2025-04-01",
-						"compatEnableFlag": "assets_navigation_prefers_asset_serving"
-					}
+						"compatEnableDate": "2025-04-01"
+					},
+					"type": "Bool"
 				},
 				{
 					"name": "cacheApiCompatFlags",
 					"annotations": {
+						"compatEnableFlag": "cache_api_compat_flags",
 						"compatDisableFlag": "no_cache_api_compat_flags",
-						"compatEnableDate": "2025-04-19",
-						"compatEnableFlag": "cache_api_compat_flags"
-					}
+						"compatEnableDate": "2025-04-19"
+					},
+					"type": "Bool"
 				},
 				{
 					"name": "obsolete81",
 					"annotations": {
 						"compatEnableFlag": "python_workers_durable_objects",
-						"experimental": "true"
-					}
+						"experimental": true
+					},
+					"type": "Bool"
 				},
 				{
-					"name": "streamingTailWorker",
+					"name": "obsolete82",
 					"annotations": {
 						"compatEnableFlag": "streaming_tail_worker",
-						"experimental": "true"
-					}
+						"experimental": true
+					},
+					"type": "Bool"
 				},
 				{
 					"name": "specCompliantUrlpattern",
 					"annotations": {
-						"compatDisableFlag": "urlpattern_original",
+						"compatEnableFlag": "urlpattern_standard",
 						"compatEnableDate": "2025-05-01",
-						"compatEnableFlag": "urlpattern_standard"
-					}
+						"compatDisableFlag": "urlpattern_original"
+					},
+					"type": "Bool"
 				},
 				{
 					"name": "jsWeakRef",
 					"annotations": {
-						"compatDisableFlag": "disable_weak_ref",
+						"compatEnableFlag": "enable_weak_ref",
 						"compatEnableDate": "2025-05-05",
-						"compatEnableFlag": "enable_weak_ref"
-					}
+						"compatDisableFlag": "disable_weak_ref"
+					},
+					"type": "Bool"
 				},
 				{
 					"name": "requestSignalPassthrough",
 					"annotations": {
-						"compatDisableFlag": "no_request_signal_passthrough",
-						"compatEnableFlag": "request_signal_passthrough"
-					}
+						"compatEnableFlag": "request_signal_passthrough",
+						"compatDisableFlag": "no_request_signal_passthrough"
+					},
+					"type": "Bool"
 				},
 				{
 					"name": "enableNavigatorLanguage",
 					"annotations": {
-						"compatDisableFlag": "disable_navigator_language",
+						"compatEnableFlag": "enable_navigator_language",
 						"compatEnableDate": "2025-05-19",
-						"compatEnableFlag": "enable_navigator_language"
-					}
+						"compatDisableFlag": "disable_navigator_language"
+					},
+					"type": "Bool"
 				},
 				{
 					"name": "webFileSystem",
 					"annotations": {
 						"compatEnableFlag": "enable_web_file_system",
-						"experimental": "true"
-					}
+						"experimental": true
+					},
+					"type": "Bool"
 				},
 				{
 					"name": "abortSignalRpc",
 					"annotations": {
 						"compatEnableFlag": "enable_abortsignal_rpc",
-						"experimental": "true"
-					}
+						"experimental": true
+					},
+					"type": "Bool"
 				},
 				{
 					"name": "allowEvalDuringStartup",
 					"annotations": {
-						"compatDisableFlag": "disallow_eval_during_startup",
+						"compatEnableFlag": "allow_eval_during_startup",
 						"compatEnableDate": "2025-06-01",
-						"compatEnableFlag": "allow_eval_during_startup"
-					}
+						"compatDisableFlag": "disallow_eval_during_startup"
+					},
+					"type": "Bool"
 				},
 				{
 					"name": "enableRequestSignal",
 					"annotations": {
-						"compatDisableFlag": "disable_request_signal",
-						"compatEnableFlag": "enable_request_signal"
-					}
+						"compatEnableFlag": "enable_request_signal",
+						"compatDisableFlag": "disable_request_signal"
+					},
+					"type": "Bool"
 				},
 				{
 					"name": "connectPassThrough",
 					"annotations": {
 						"compatEnableFlag": "connect_pass_through",
-						"experimental": "true"
-					}
+						"experimental": true
+					},
+					"type": "Bool"
 				},
 				{
 					"name": "reuseCtxAcrossNonclassEvents",
 					"annotations": {
 						"compatEnableFlag": "nonclass_entrypoint_reuses_ctx_across_invocations"
-					}
+					},
+					"type": "Bool"
 				},
 				{
 					"name": "bindAsyncLocalStorageSnapshot",
 					"annotations": {
+						"compatEnableFlag": "bind_asynclocalstorage_snapshot_to_request",
 						"compatDisableFlag": "do_not_bind_asynclocalstorage_snapshot_to-request",
-						"compatEnableDate": "2025-06-16",
-						"compatEnableFlag": "bind_asynclocalstorage_snapshot_to_request"
-					}
+						"compatEnableDate": "2025-06-16"
+					},
+					"type": "Bool"
 				},
 				{
 					"name": "throwOnUnrecognizedImportAssertion",
 					"annotations": {
+						"compatEnableFlag": "throw_on_unrecognized_import_assertion",
 						"compatDisableFlag": "ignore_unrecognized_import_assertion",
-						"compatEnableDate": "2025-06-16",
-						"compatEnableFlag": "throw_on_unrecognized_import_assertion"
-					}
+						"compatEnableDate": "2025-06-16"
+					},
+					"type": "Bool"
 				},
 				{
 					"name": "pythonWorkflows",
 					"annotations": {
-						"compatDisableFlag": "disable_python_workflows",
 						"compatEnableFlag": "python_workflows",
-						"impliedByAfterDate": "unhandled type"
-					}
+						"compatDisableFlag": "disable_python_workflows"
+					},
+					"type": "Bool"
 				},
 				{
 					"name": "unsupportedProcessActualPlatform",
 					"annotations": {
 						"compatEnableFlag": "unsupported_process_actual_platform",
-						"experimental": "true"
-					}
+						"experimental": true
+					},
+					"type": "Bool"
 				},
 				{
 					"name": "enableNodeJsProcessV2",
 					"annotations": {
-						"compatDisableFlag": "disable_nodejs_process_v2",
 						"compatEnableFlag": "enable_nodejs_process_v2",
-						"impliedByAfterDate": "unhandled type"
-					}
+						"compatDisableFlag": "disable_nodejs_process_v2"
+					},
+					"type": "Bool"
 				},
 				{
 					"name": "setEventTargetThis",
 					"annotations": {
+						"compatEnableFlag": "set_event_target_this",
 						"compatDisableFlag": "no_set_event_target_this",
-						"compatEnableDate": "2025-08-01",
-						"compatEnableFlag": "set_event_target_this"
-					}
+						"compatEnableDate": "2025-08-01"
+					},
+					"type": "Bool"
 				},
 				{
 					"name": "enableForwardableEmailFullHeaders",
 					"annotations": {
+						"compatEnableFlag": "set_forwardable_email_full_headers",
 						"compatDisableFlag": "set_forwardable_email_single_headers",
-						"compatEnableDate": "2025-08-01",
-						"compatEnableFlag": "set_forwardable_email_full_headers"
-					}
+						"compatEnableDate": "2025-08-01"
+					},
+					"type": "Bool"
 				},
 				{
 					"name": "enableNodejsHttpModules",
 					"annotations": {
-						"compatDisableFlag": "disable_nodejs_http_modules",
 						"compatEnableFlag": "enable_nodejs_http_modules",
-						"impliedByAfterDate": "unhandled type"
-					}
+						"compatDisableFlag": "disable_nodejs_http_modules"
+					},
+					"type": "Bool"
 				},
 				{
 					"name": "pedanticWpt",
 					"annotations": {
-						"compatDisableFlag": "non_pedantic_wpt",
-						"compatEnableFlag": "pedantic_wpt"
-					}
+						"compatEnableFlag": "pedantic_wpt",
+						"compatDisableFlag": "non_pedantic_wpt"
+					},
+					"type": "Bool"
 				},
 				{
 					"name": "exposeGlobalMessageChannel",
 					"annotations": {
+						"compatEnableFlag": "expose_global_message_channel",
 						"compatDisableFlag": "no_expose_global_message_channel",
-						"compatEnableDate": "2025-08-15",
-						"compatEnableFlag": "expose_global_message_channel"
-					}
+						"compatEnableDate": "2025-08-15"
+					},
+					"type": "Bool"
 				},
 				{
 					"name": "enableNodejsHttpServerModules",
 					"annotations": {
-						"compatDisableFlag": "disable_nodejs_http_server_modules",
 						"compatEnableFlag": "enable_nodejs_http_server_modules",
-						"impliedByAfterDate": "unhandled type"
-					}
+						"compatDisableFlag": "disable_nodejs_http_server_modules"
+					},
+					"type": "Bool"
 				},
 				{
 					"name": "pythonNoGlobalHandlers",
 					"annotations": {
+						"compatEnableFlag": "python_no_global_handlers",
 						"compatDisableFlag": "disable_python_no_global_handlers",
-						"compatEnableDate": "2025-08-14",
-						"compatEnableFlag": "python_no_global_handlers"
-					}
+						"compatEnableDate": "2025-08-14"
+					},
+					"type": "Bool"
 				},
 				{
 					"name": "enableNodeJsFsModule",
 					"annotations": {
-						"compatDisableFlag": "disable_nodejs_fs_module",
 						"compatEnableFlag": "enable_nodejs_fs_module",
-						"impliedByAfterDate": "unhandled type"
-					}
+						"compatDisableFlag": "disable_nodejs_fs_module"
+					},
+					"type": "Bool"
 				},
 				{
 					"name": "enableNodeJsOsModule",
 					"annotations": {
-						"compatDisableFlag": "disable_nodejs_os_module",
 						"compatEnableFlag": "enable_nodejs_os_module",
-						"impliedByAfterDate": "unhandled type"
-					}
+						"compatDisableFlag": "disable_nodejs_os_module"
+					},
+					"type": "Bool"
 				},
 				{
 					"name": "pythonWorkersForceNewVendorPath",
 					"annotations": {
-						"compatEnableDate": "2025-08-11",
-						"compatEnableFlag": "python_workers_force_new_vendor_path"
-					}
+						"compatEnableFlag": "python_workers_force_new_vendor_path",
+						"compatEnableDate": "2025-08-11"
+					},
+					"type": "Bool"
 				},
 				{
 					"name": "removeNodejsCompatEOL",
 					"annotations": {
-						"compatDisableFlag": "add_nodejs_compat_eol",
 						"compatEnableFlag": "remove_nodejs_compat_eol",
-						"impliedByAfterDate": "unhandled type"
-					}
+						"compatDisableFlag": "add_nodejs_compat_eol"
+					},
+					"type": "Bool"
 				},
 				{
 					"name": "enableWorkflowScriptValidation",
 					"annotations": {
+						"compatEnableFlag": "enable_validate_workflow_entrypoint",
 						"compatDisableFlag": "disable_validate_workflow_entrypoint",
-						"compatEnableDate": "2025-09-20",
-						"compatEnableFlag": "enable_validate_workflow_entrypoint"
-					}
+						"compatEnableDate": "2025-09-20"
+					},
+					"type": "Bool"
 				},
 				{
 					"name": "pythonDedicatedSnapshot",
 					"annotations": {
-						"compatDisableFlag": "disable_python_dedicated_snapshot",
 						"compatEnableFlag": "python_dedicated_snapshot",
-						"impliedByAfterDate": "unhandled type"
-					}
+						"compatDisableFlag": "disable_python_dedicated_snapshot"
+					},
+					"type": "Bool"
 				},
 				{
 					"name": "typescriptStripTypes",
 					"annotations": {
 						"compatEnableFlag": "typescript_strip_types",
-						"experimental": "true"
-					}
+						"experimental": true
+					},
+					"type": "Bool"
 				},
 				{
 					"name": "enableNodeJsHttp2Module",
 					"annotations": {
-						"compatDisableFlag": "disable_nodejs_http2_module",
 						"compatEnableFlag": "enable_nodejs_http2_module",
-						"impliedByAfterDate": "unhandled type"
-					}
+						"compatDisableFlag": "disable_nodejs_http2_module"
+					},
+					"type": "Bool"
 				},
 				{
 					"name": "experimentalAllowEvalAlways",
 					"annotations": {
 						"compatEnableFlag": "allow_insecure_inefficient_logged_eval",
-						"experimental": "true"
-					}
+						"experimental": true
+					},
+					"type": "Bool"
 				},
 				{
 					"name": "stripAuthorizationOnCrossOriginRedirect",
 					"annotations": {
+						"compatEnableFlag": "strip_authorization_on_cross_origin_redirect",
 						"compatDisableFlag": "retain_authorization_on_cross_origin_redirect",
-						"compatEnableDate": "2025-09-01",
-						"compatEnableFlag": "strip_authorization_on_cross_origin_redirect"
-					}
+						"compatEnableDate": "2025-09-01"
+					},
+					"type": "Bool"
 				},
 				{
 					"name": "enhancedErrorSerialization",
 					"annotations": {
-						"compatDisableFlag": "legacy_error_serialization",
 						"compatEnableFlag": "enhanced_error_serialization",
-						"experimental": "true"
-					}
+						"compatDisableFlag": "legacy_error_serialization",
+						"compatEnableDate": "2026-04-21"
+					},
+					"type": "Bool"
 				},
 				{
 					"name": "emailSendingQueuing",
 					"annotations": {
-						"compatDisableFlag": "disable_email_sending_queuing",
 						"compatEnableFlag": "enable_email_sending_queuing",
-						"experimental": "true"
-					}
+						"compatDisableFlag": "disable_email_sending_queuing"
+					},
+					"type": "Bool"
 				},
 				{
 					"name": "removeNodejsCompatEOLv22",
 					"annotations": {
-						"compatDisableFlag": "add_nodejs_compat_eol_v22",
 						"compatEnableFlag": "remove_nodejs_compat_eol_v22",
-						"impliedByAfterDate": "unhandled type"
-					}
+						"compatDisableFlag": "add_nodejs_compat_eol_v22"
+					},
+					"type": "Bool"
 				},
 				{
 					"name": "removeNodejsCompatEOLv23",
 					"annotations": {
-						"compatDisableFlag": "add_nodejs_compat_eol_v23",
 						"compatEnableFlag": "remove_nodejs_compat_eol_v23",
-						"impliedByAfterDate": "unhandled type"
-					}
+						"compatDisableFlag": "add_nodejs_compat_eol_v23"
+					},
+					"type": "Bool"
 				},
 				{
 					"name": "removeNodejsCompatEOLv24",
 					"annotations": {
-						"compatDisableFlag": "add_nodejs_compat_eol_v24",
 						"compatEnableFlag": "remove_nodejs_compat_eol_v24",
-						"impliedByAfterDate": "unhandled type"
-					}
+						"compatDisableFlag": "add_nodejs_compat_eol_v24"
+					},
+					"type": "Bool"
 				},
 				{
 					"name": "enableNodeJsConsoleModule",
 					"annotations": {
-						"compatDisableFlag": "disable_nodejs_console_module",
 						"compatEnableFlag": "enable_nodejs_console_module",
-						"impliedByAfterDate": "unhandled type"
-					}
+						"compatDisableFlag": "disable_nodejs_console_module"
+					},
+					"type": "Bool"
 				},
 				{
 					"name": "enableNodeJsVmModule",
 					"annotations": {
-						"compatDisableFlag": "disable_nodejs_vm_module",
 						"compatEnableFlag": "enable_nodejs_vm_module",
-						"impliedByAfterDate": "unhandled type"
-					}
+						"compatDisableFlag": "disable_nodejs_vm_module"
+					},
+					"type": "Bool"
 				},
 				{
 					"name": "enableNodeJsPerfHooksModule",
 					"annotations": {
-						"compatDisableFlag": "disable_nodejs_perf_hooks_module",
 						"compatEnableFlag": "enable_nodejs_perf_hooks_module",
-						"experimental": "true"
-					}
+						"compatDisableFlag": "disable_nodejs_perf_hooks_module"
+					},
+					"type": "Bool"
 				},
 				{
 					"name": "enableGlobalPerformanceClasses",
 					"annotations": {
-						"compatDisableFlag": "disable_global_performance_classes",
 						"compatEnableFlag": "enable_global_performance_classes",
-						"experimental": "true"
-					}
+						"compatDisableFlag": "disable_global_performance_classes"
+					},
+					"type": "Bool"
 				},
 				{
 					"name": "enableNodeJsDomainModule",
 					"annotations": {
-						"compatDisableFlag": "disable_nodejs_domain_module",
 						"compatEnableFlag": "enable_nodejs_domain_module",
-						"experimental": "true"
-					}
+						"compatDisableFlag": "disable_nodejs_domain_module"
+					},
+					"type": "Bool"
 				},
 				{
 					"name": "enableNodeJsV8Module",
 					"annotations": {
-						"compatDisableFlag": "disable_nodejs_v8_module",
 						"compatEnableFlag": "enable_nodejs_v8_module",
-						"experimental": "true"
-					}
+						"compatDisableFlag": "disable_nodejs_v8_module"
+					},
+					"type": "Bool"
 				},
 				{
 					"name": "enableNodeJsTtyModule",
 					"annotations": {
-						"compatDisableFlag": "disable_nodejs_tty_module",
 						"compatEnableFlag": "enable_nodejs_tty_module",
-						"experimental": "true"
-					}
+						"compatDisableFlag": "disable_nodejs_tty_module"
+					},
+					"type": "Bool"
 				},
 				{
 					"name": "enableNodeJsPunycodeModule",
 					"annotations": {
-						"compatDisableFlag": "disable_nodejs_punycode_module",
 						"compatEnableFlag": "enable_nodejs_punycode_module",
-						"experimental": "true"
-					}
+						"compatDisableFlag": "disable_nodejs_punycode_module"
+					},
+					"type": "Bool"
 				},
 				{
 					"name": "enableNodeJsClusterModule",
 					"annotations": {
-						"compatDisableFlag": "disable_nodejs_cluster_module",
 						"compatEnableFlag": "enable_nodejs_cluster_module",
-						"experimental": "true"
-					}
+						"compatDisableFlag": "disable_nodejs_cluster_module"
+					},
+					"type": "Bool"
 				},
 				{
 					"name": "enableNodeJsChildProcessModule",
 					"annotations": {
-						"compatDisableFlag": "disable_nodejs_child_process_module",
 						"compatEnableFlag": "enable_nodejs_child_process_module",
-						"experimental": "true"
-					}
+						"compatDisableFlag": "disable_nodejs_child_process_module"
+					},
+					"type": "Bool"
 				},
 				{
 					"name": "enableNodeJsWorkerThreadsModule",
 					"annotations": {
-						"compatDisableFlag": "disable_nodejs_worker_threads_module",
 						"compatEnableFlag": "enable_nodejs_worker_threads_module",
-						"experimental": "true"
-					}
+						"compatDisableFlag": "disable_nodejs_worker_threads_module"
+					},
+					"type": "Bool"
 				},
 				{
 					"name": "enableNodeJsStreamWrapModule",
 					"annotations": {
-						"compatDisableFlag": "disable_nodejs_stream_wrap_module",
 						"compatEnableFlag": "enable_nodejs_stream_wrap_module",
-						"experimental": "true"
-					}
+						"compatDisableFlag": "disable_nodejs_stream_wrap_module"
+					},
+					"type": "Bool"
 				},
 				{
 					"name": "enableNodeJsWasiModule",
 					"annotations": {
-						"compatDisableFlag": "disable_nodejs_wasi_module",
 						"compatEnableFlag": "enable_nodejs_wasi_module",
-						"experimental": "true"
-					}
+						"compatDisableFlag": "disable_nodejs_wasi_module"
+					},
+					"type": "Bool"
 				},
 				{
 					"name": "enableNodeJsDgramModule",
 					"annotations": {
-						"compatDisableFlag": "disable_nodejs_dgram_module",
 						"compatEnableFlag": "enable_nodejs_dgram_module",
-						"experimental": "true"
-					}
+						"compatDisableFlag": "disable_nodejs_dgram_module"
+					},
+					"type": "Bool"
 				},
 				{
 					"name": "enableNodeJsInspectorModule",
 					"annotations": {
-						"compatDisableFlag": "disable_nodejs_inspector_module",
 						"compatEnableFlag": "enable_nodejs_inspector_module",
-						"experimental": "true"
-					}
+						"compatDisableFlag": "disable_nodejs_inspector_module"
+					},
+					"type": "Bool"
 				},
 				{
 					"name": "enableNodeJsTraceEventsModule",
 					"annotations": {
-						"compatDisableFlag": "disable_nodejs_trace_events_module",
 						"compatEnableFlag": "enable_nodejs_trace_events_module",
-						"experimental": "true"
-					}
+						"compatDisableFlag": "disable_nodejs_trace_events_module"
+					},
+					"type": "Bool"
 				},
 				{
 					"name": "enableNodeJsReadlineModule",
 					"annotations": {
-						"compatDisableFlag": "disable_nodejs_readline_module",
 						"compatEnableFlag": "enable_nodejs_readline_module",
-						"experimental": "true"
-					}
+						"compatDisableFlag": "disable_nodejs_readline_module"
+					},
+					"type": "Bool"
 				},
 				{
 					"name": "enableNodeJsReplModule",
 					"annotations": {
-						"compatDisableFlag": "disable_nodejs_repl_module",
 						"compatEnableFlag": "enable_nodejs_repl_module",
-						"experimental": "true"
-					}
+						"compatDisableFlag": "disable_nodejs_repl_module"
+					},
+					"type": "Bool"
 				},
 				{
 					"name": "enableNodeJsSqliteModule",
 					"annotations": {
-						"compatDisableFlag": "disable_nodejs_sqlite_module",
 						"compatEnableFlag": "enable_nodejs_sqlite_module",
-						"experimental": "true"
-					}
+						"compatDisableFlag": "disable_nodejs_sqlite_module"
+					},
+					"type": "Bool"
 				},
 				{
 					"name": "enableCtxExports",
 					"annotations": {
+						"compatEnableFlag": "enable_ctx_exports",
 						"compatDisableFlag": "disable_ctx_exports",
-						"compatEnableDate": "2025-11-17",
-						"compatEnableFlag": "enable_ctx_exports"
-					}
+						"compatEnableDate": "2025-11-17"
+					},
+					"type": "Bool"
 				},
 				{
 					"name": "pythonExternalSDK",
 					"annotations": {
-						"compatDisableFlag": "disable_python_external_sdk",
 						"compatEnableFlag": "enable_python_external_sdk",
-						"experimental": "true"
-					}
+						"compatDisableFlag": "disable_python_external_sdk",
+						"compatEnableDate": "2026-04-21"
+					},
+					"type": "Bool"
 				},
 				{
 					"name": "fastJsgStruct",
 					"annotations": {
+						"compatEnableFlag": "enable_fast_jsg_struct",
 						"compatDisableFlag": "disable_fast_jsg_struct",
-						"compatEnableFlag": "enable_fast_jsg_struct"
-					}
+						"compatEnableDate": "2025-12-03"
+					},
+					"type": "Bool"
 				},
 				{
 					"name": "cacheReload",
 					"annotations": {
-						"compatDisableFlag": "cache_reload_disabled",
 						"compatEnableFlag": "cache_reload_enabled",
-						"experimental": "true"
-					}
+						"compatDisableFlag": "cache_reload_disabled",
+						"experimental": true
+					},
+					"type": "Bool"
 				},
 				{
 					"name": "streamsNodejsV24Compat",
 					"annotations": {
-						"compatDisableFlag": "disable_streams_nodejs_v24_compat",
 						"compatEnableFlag": "enable_streams_nodejs_v24_compat",
-						"impliedByAfterDate": "unhandled type"
-					}
+						"compatDisableFlag": "disable_streams_nodejs_v24_compat"
+					},
+					"type": "Bool"
+				},
+				{
+					"name": "pythonCheckRngState",
+					"annotations": {
+						"compatEnableFlag": "python_check_rng_state",
+						"compatDisableFlag": "disable_python_check_rng_state"
+					},
+					"type": "Bool"
+				},
+				{
+					"name": "shouldSetImmutablePrototype",
+					"annotations": {
+						"compatEnableFlag": "immutable_api_prototypes",
+						"compatDisableFlag": "mutable_api_prototypes"
+					},
+					"type": "Bool"
+				},
+				{
+					"name": "fetchIterableTypeSupport",
+					"annotations": {
+						"compatEnableFlag": "fetch_iterable_type_support",
+						"compatDisableFlag": "no_fetch_iterable_type_support",
+						"compatEnableDate": "2026-02-19"
+					},
+					"type": "Bool"
+				},
+				{
+					"name": "envModuleNullableSupport",
+					"annotations": {
+						"compatEnableFlag": "env_module_nullable_support",
+						"compatDisableFlag": "no_env_module_nullable_support"
+					},
+					"type": "Bool"
+				},
+				{
+					"name": "preciseTimers",
+					"annotations": {
+						"compatEnableFlag": "precise_timers",
+						"compatDisableFlag": "no_precise_timers",
+						"experimental": true
+					},
+					"type": "Bool"
+				},
+				{
+					"name": "fetchIterableTypeSupportOverrideAdjustment",
+					"annotations": {
+						"compatEnableFlag": "fetch_iterable_type_support_override_adjustment",
+						"compatDisableFlag": "no_fetch_iterable_type_support_override_adjustment"
+					},
+					"type": "Bool"
+				},
+				{
+					"name": "stripBomInReadAllText",
+					"annotations": {
+						"compatEnableFlag": "strip_bom_in_read_all_text",
+						"compatDisableFlag": "do_not_strip_bom_in_read_all_text",
+						"compatEnableDate": "2026-01-13"
+					},
+					"type": "Bool"
+				},
+				{
+					"name": "allowIrrevocableStubStorage",
+					"annotations": {
+						"compatEnableFlag": "allow_irrevocable_stub_storage",
+						"experimental": true
+					},
+					"type": "Bool"
+				},
+				{
+					"name": "rpcParamsDupStubs",
+					"annotations": {
+						"compatEnableFlag": "rpc_params_dup_stubs",
+						"compatDisableFlag": "rpc_params_transfer_stubs",
+						"compatEnableDate": "2026-01-20"
+					},
+					"type": "Bool"
+				},
+				{
+					"name": "enableNodejsGlobalTimers",
+					"annotations": {
+						"compatEnableFlag": "enable_nodejs_global_timers",
+						"compatDisableFlag": "no_nodejs_global_timers"
+					},
+					"type": "Bool"
+				},
+				{
+					"name": "noAutoAllocateChunkSize",
+					"annotations": {
+						"compatEnableFlag": "streams_no_default_auto_allocate_chunk_size",
+						"compatDisableFlag": "streams_auto_allocate_chunk_size_default",
+						"experimental": true
+					},
+					"type": "Bool"
+				},
+				{
+					"name": "pythonWorkflowsImplicitDeps",
+					"annotations": {
+						"compatEnableFlag": "python_workflows_implicit_dependencies",
+						"compatDisableFlag": "no_python_workflows_implicit_dependencies"
+					},
+					"type": "Bool"
+				},
+				{
+					"name": "requireReturnsDefaultExport",
+					"annotations": {
+						"compatEnableFlag": "require_returns_default_export",
+						"compatDisableFlag": "require_returns_namespace",
+						"compatEnableDate": "2026-01-22"
+					},
+					"type": "Bool"
+				},
+				{
+					"name": "pythonRequestHeadersPreserveCommas",
+					"annotations": {
+						"compatEnableFlag": "python_request_headers_preserve_commas",
+						"compatDisableFlag": "disable_python_request_headers_preserve_commas",
+						"compatEnableDate": "2026-02-17"
+					},
+					"type": "Bool"
+				},
+				{
+					"name": "queueExposeErrorCodes",
+					"annotations": {
+						"compatEnableFlag": "queue_expose_error_codes",
+						"compatDisableFlag": "no_queue_expose_error_codes",
+						"compatEnableDate": "2026-03-12"
+					},
+					"type": "Bool"
+				},
+				{
+					"name": "textDecoderReplaceSurrogates",
+					"annotations": {
+						"compatEnableFlag": "text_decoder_replace_surrogates",
+						"compatDisableFlag": "disable_text_decoder_replace_surrogates",
+						"compatEnableDate": "2026-02-24"
+					},
+					"type": "Bool"
+				},
+				{
+					"name": "containersPidNamespace",
+					"annotations": {
+						"compatEnableFlag": "containers_pid_namespace",
+						"compatDisableFlag": "no_containers_pid_namespace",
+						"compatEnableDate": "2026-04-01"
+					},
+					"type": "Bool"
+				},
+				{
+					"name": "deleteAllDeletesAlarm",
+					"annotations": {
+						"compatEnableFlag": "delete_all_deletes_alarm",
+						"compatDisableFlag": "delete_all_preserves_alarm",
+						"compatEnableDate": "2026-02-24"
+					},
+					"type": "Bool"
+				},
+				{
+					"name": "unhandledRejectionAfterMicrotaskCheckpoint",
+					"annotations": {
+						"compatEnableFlag": "unhandled_rejection_after_microtask_checkpoint",
+						"compatDisableFlag": "no_unhandled_rejection_after_microtask_checkpoint",
+						"compatEnableDate": "2026-03-03"
+					},
+					"type": "Bool"
+				},
+				{
+					"name": "textDecoderCjkDecoder",
+					"annotations": {
+						"compatEnableFlag": "text_decoder_cjk_decoder",
+						"compatDisableFlag": "disable_text_decoder_cjk_decoder",
+						"compatEnableDate": "2026-03-03"
+					},
+					"type": "Bool"
+				},
+				{
+					"name": "websocketCloseReasonByteLimit",
+					"annotations": {
+						"compatEnableFlag": "websocket_close_reason_byte_limit",
+						"compatDisableFlag": "no_websocket_close_reason_byte_limit",
+						"compatEnableDate": "2026-03-03"
+					},
+					"type": "Bool"
+				},
+				{
+					"name": "enableVersionApi",
+					"annotations": {
+						"compatEnableFlag": "enable_version_api",
+						"experimental": true
+					},
+					"type": "Bool"
+				},
+				{
+					"name": "websocketBinaryTypeDefault",
+					"annotations": {
+						"compatEnableFlag": "websocket_standard_binary_type",
+						"compatDisableFlag": "no_websocket_standard_binary_type",
+						"compatEnableDate": "2026-03-17"
+					},
+					"type": "Bool"
+				},
+				{
+					"name": "writableStreamSpecCompliantWriter",
+					"annotations": {
+						"compatEnableFlag": "writable_stream_spec_compliant_writer",
+						"compatDisableFlag": "no_writable_stream_spec_compliant_writer",
+						"compatEnableDate": "2026-03-24"
+					},
+					"type": "Bool"
+				},
+				{
+					"name": "encoderStreamSpecCompliantBackpressure",
+					"annotations": {
+						"compatEnableFlag": "encoder_stream_spec_compliant_backpressure",
+						"compatDisableFlag": "no_encoder_stream_spec_compliant_backpressure",
+						"compatEnableDate": "2026-03-24"
+					},
+					"type": "Bool"
+				},
+				{
+					"name": "specCompliantPropertyAttributes",
+					"annotations": {
+						"compatEnableFlag": "spec_compliant_property_attributes",
+						"compatDisableFlag": "no_spec_compliant_property_attributes",
+						"experimental": true
+					},
+					"type": "Bool"
+				},
+				{
+					"name": "workflowsPreserveNonRetryableErrorMessage",
+					"annotations": {
+						"compatEnableFlag": "workflows_preserve_non_retryable_error_message",
+						"experimental": true
+					},
+					"type": "Bool"
+				},
+				{
+					"name": "webSocketAutoReplyToClose",
+					"annotations": {
+						"compatEnableFlag": "web_socket_auto_reply_to_close",
+						"compatDisableFlag": "web_socket_manual_reply_to_close",
+						"compatEnableDate": "2026-04-07"
+					},
+					"type": "Bool"
+				},
+				{
+					"name": "enableCtxVersionMetadata",
+					"annotations": {
+						"compatEnableFlag": "enable_ctx_version_metadata",
+						"experimental": true
+					},
+					"type": "Bool"
 				}
 			]
 		},
@@ -3337,31 +3928,38 @@
 			"fields": [
 				{
 					"name": "emptyObject",
-					"annotations": {}
+					"annotations": {},
+					"type": "Void"
 				},
 				{
 					"name": "json",
-					"annotations": {}
+					"annotations": {},
+					"type": "Text"
 				},
 				{
 					"name": "v8Serialized",
-					"annotations": {}
+					"annotations": {},
+					"type": "Data"
 				},
 				{
 					"name": "properties",
-					"annotations": {}
+					"annotations": {},
+					"type": "List(workerd/src/workerd/io/frankenvalue.capnp:Frankenvalue)"
 				},
 				{
 					"name": "name",
-					"annotations": {}
+					"annotations": {},
+					"type": "Text"
 				},
 				{
 					"name": "capTableSize",
-					"annotations": {}
+					"annotations": {},
+					"type": "UInt32"
 				},
 				{
 					"name": "capTable",
-					"annotations": {}
+					"annotations": {},
+					"type": "AnyPointer"
 				}
 			]
 		},
@@ -3370,28 +3968,18 @@
 			"fields": [
 				{
 					"name": "id",
-					"annotations": {}
+					"annotations": {},
+					"type": "workerd/src/workerd/io/script-version.capnp:ScriptVersion.id"
 				},
 				{
 					"name": "tag",
-					"annotations": {}
+					"annotations": {},
+					"type": "Text"
 				},
 				{
 					"name": "message",
-					"annotations": {}
-				}
-			]
-		},
-		{
-			"name": "workerd/src/workerd/io/script-version.capnp:ScriptVersion.id",
-			"fields": [
-				{
-					"name": "upper",
-					"annotations": {}
-				},
-				{
-					"name": "lower",
-					"annotations": {}
+					"annotations": {},
+					"type": "Text"
 				}
 			]
 		},
@@ -3400,19 +3988,23 @@
 			"fields": [
 				{
 					"name": "string",
-					"annotations": {}
+					"annotations": {},
+					"type": "Text"
 				},
 				{
 					"name": "bool",
-					"annotations": {}
+					"annotations": {},
+					"type": "Bool"
 				},
 				{
 					"name": "int64",
-					"annotations": {}
+					"annotations": {},
+					"type": "Int64"
 				},
 				{
 					"name": "float64",
-					"annotations": {}
+					"annotations": {},
+					"type": "Float64"
 				}
 			]
 		},
@@ -3421,11 +4013,13 @@
 			"fields": [
 				{
 					"name": "key",
-					"annotations": {}
+					"annotations": {},
+					"type": "Text"
 				},
 				{
 					"name": "value",
-					"annotations": {}
+					"annotations": {},
+					"type": "workerd/src/workerd/io/trace.capnp:TagValue"
 				}
 			]
 		},
@@ -3434,27 +4028,93 @@
 			"fields": [
 				{
 					"name": "operationName",
-					"annotations": {}
+					"annotations": {},
+					"type": "Text"
 				},
 				{
 					"name": "startTimeNs",
-					"annotations": {}
+					"annotations": {},
+					"type": "Int64"
 				},
 				{
 					"name": "endTimeNs",
-					"annotations": {}
+					"annotations": {},
+					"type": "Int64"
 				},
 				{
 					"name": "tags",
-					"annotations": {}
+					"annotations": {},
+					"type": "List(workerd/src/workerd/io/trace.capnp:Tag)"
 				},
 				{
 					"name": "spanId",
-					"annotations": {}
+					"annotations": {},
+					"type": "UInt64"
 				},
 				{
 					"name": "parentSpanId",
-					"annotations": {}
+					"annotations": {},
+					"type": "UInt64"
+				}
+			]
+		},
+		{
+			"name": "workerd/src/workerd/io/trace.capnp:SpanOpenData",
+			"fields": [
+				{
+					"name": "operationName",
+					"annotations": {},
+					"type": "Text"
+				},
+				{
+					"name": "startTimeNs",
+					"annotations": {},
+					"type": "Int64"
+				},
+				{
+					"name": "spanId",
+					"annotations": {},
+					"type": "UInt64"
+				},
+				{
+					"name": "parentSpanId",
+					"annotations": {},
+					"type": "UInt64"
+				}
+			]
+		},
+		{
+			"name": "workerd/src/workerd/io/trace.capnp:SpanEndData",
+			"fields": [
+				{
+					"name": "endTimeNs",
+					"annotations": {},
+					"type": "Int64"
+				},
+				{
+					"name": "tags",
+					"annotations": {},
+					"type": "List(workerd/src/workerd/io/trace.capnp:Tag)"
+				},
+				{
+					"name": "spanId",
+					"annotations": {},
+					"type": "UInt64"
+				}
+			]
+		},
+		{
+			"name": "workerd/src/workerd/jsg/exception-metadata.capnp:JsExceptionMetadata",
+			"fields": [
+				{
+					"name": "errorType",
+					"annotations": {},
+					"type": "Text"
+				},
+				{
+					"name": "stackTrace",
+					"annotations": {},
+					"type": "Text"
 				}
 			]
 		},
@@ -3463,35 +4123,43 @@
 			"fields": [
 				{
 					"name": "name",
-					"annotations": {}
+					"annotations": {},
+					"type": "Text"
 				},
 				{
 					"name": "src",
-					"annotations": {}
+					"annotations": {},
+					"type": "Data"
 				},
 				{
 					"name": "type",
-					"annotations": {}
+					"annotations": {},
+					"type": "workerd/src/workerd/jsg/modules.capnp:ModuleType"
 				},
 				{
 					"name": "tsDeclaration",
-					"annotations": {}
+					"annotations": {},
+					"type": "Text"
 				},
 				{
 					"name": "wasm",
-					"annotations": {}
+					"annotations": {},
+					"type": "Data"
 				},
 				{
 					"name": "data",
-					"annotations": {}
+					"annotations": {},
+					"type": "Data"
 				},
 				{
 					"name": "json",
-					"annotations": {}
+					"annotations": {},
+					"type": "Text"
 				},
 				{
 					"name": "compileCache",
-					"annotations": {}
+					"annotations": {},
+					"type": "Data"
 				}
 			]
 		},
@@ -3500,7 +4168,8 @@
 			"fields": [
 				{
 					"name": "modules",
-					"annotations": {}
+					"annotations": {},
+					"type": "List(workerd/src/workerd/jsg/modules.capnp:Module)"
 				}
 			]
 		},
@@ -3509,7 +4178,8 @@
 			"fields": [
 				{
 					"name": "name",
-					"annotations": {}
+					"annotations": {},
+					"type": "Text"
 				}
 			]
 		},
@@ -3518,7 +4188,8 @@
 			"fields": [
 				{
 					"name": "value",
-					"annotations": {}
+					"annotations": {},
+					"type": "workerd/src/workerd/jsg/rtti.capnp:Type"
 				}
 			]
 		},
@@ -3527,11 +4198,13 @@
 			"fields": [
 				{
 					"name": "name",
-					"annotations": {}
+					"annotations": {},
+					"type": "Text"
 				},
 				{
 					"name": "fullyQualifiedName",
-					"annotations": {}
+					"annotations": {},
+					"type": "Text"
 				}
 			]
 		},
@@ -3540,7 +4213,8 @@
 			"fields": [
 				{
 					"name": "name",
-					"annotations": {}
+					"annotations": {},
+					"type": "Text"
 				}
 			]
 		},
@@ -3549,11 +4223,13 @@
 			"fields": [
 				{
 					"name": "element",
-					"annotations": {}
+					"annotations": {},
+					"type": "workerd/src/workerd/jsg/rtti.capnp:Type"
 				},
 				{
 					"name": "name",
-					"annotations": {}
+					"annotations": {},
+					"type": "Text"
 				}
 			]
 		},
@@ -3562,11 +4238,13 @@
 			"fields": [
 				{
 					"name": "value",
-					"annotations": {}
+					"annotations": {},
+					"type": "workerd/src/workerd/jsg/rtti.capnp:Type"
 				},
 				{
 					"name": "name",
-					"annotations": {}
+					"annotations": {},
+					"type": "Text"
 				}
 			]
 		},
@@ -3575,11 +4253,13 @@
 			"fields": [
 				{
 					"name": "key",
-					"annotations": {}
+					"annotations": {},
+					"type": "workerd/src/workerd/jsg/rtti.capnp:Type"
 				},
 				{
 					"name": "value",
-					"annotations": {}
+					"annotations": {},
+					"type": "workerd/src/workerd/jsg/rtti.capnp:Type"
 				}
 			]
 		},
@@ -3588,7 +4268,8 @@
 			"fields": [
 				{
 					"name": "variants",
-					"annotations": {}
+					"annotations": {},
+					"type": "List(workerd/src/workerd/jsg/rtti.capnp:Type)"
 				}
 			]
 		},
@@ -3597,7 +4278,8 @@
 			"fields": [
 				{
 					"name": "type",
-					"annotations": {}
+					"annotations": {},
+					"type": "workerd/src/workerd/jsg/rtti.capnp:BuiltinType.Type"
 				}
 			]
 		},
@@ -3606,7 +4288,8 @@
 			"fields": [
 				{
 					"name": "name",
-					"annotations": {}
+					"annotations": {},
+					"type": "Text"
 				}
 			]
 		},
@@ -3615,11 +4298,13 @@
 			"fields": [
 				{
 					"name": "returnType",
-					"annotations": {}
+					"annotations": {},
+					"type": "workerd/src/workerd/jsg/rtti.capnp:Type"
 				},
 				{
 					"name": "args",
-					"annotations": {}
+					"annotations": {},
+					"type": "List(workerd/src/workerd/jsg/rtti.capnp:Type)"
 				}
 			]
 		},
@@ -3628,7 +4313,8 @@
 			"fields": [
 				{
 					"name": "type",
-					"annotations": {}
+					"annotations": {},
+					"type": "workerd/src/workerd/jsg/rtti.capnp:JsgImplType.Type"
 				}
 			]
 		},
@@ -3637,11 +4323,13 @@
 			"fields": [
 				{
 					"name": "module",
-					"annotations": {}
+					"annotations": {},
+					"type": "Text"
 				},
 				{
 					"name": "export",
-					"annotations": {}
+					"annotations": {},
+					"type": "Text"
 				}
 			]
 		},
@@ -3650,71 +4338,88 @@
 			"fields": [
 				{
 					"name": "unknown",
-					"annotations": {}
+					"annotations": {},
+					"type": "Void"
 				},
 				{
 					"name": "voidt",
-					"annotations": {}
+					"annotations": {},
+					"type": "Void"
 				},
 				{
 					"name": "boolt",
-					"annotations": {}
+					"annotations": {},
+					"type": "Void"
 				},
 				{
 					"name": "number",
-					"annotations": {}
+					"annotations": {},
+					"type": "workerd/src/workerd/jsg/rtti.capnp:NumberType"
 				},
 				{
 					"name": "promise",
-					"annotations": {}
+					"annotations": {},
+					"type": "workerd/src/workerd/jsg/rtti.capnp:PromiseType"
 				},
 				{
 					"name": "structure",
-					"annotations": {}
+					"annotations": {},
+					"type": "workerd/src/workerd/jsg/rtti.capnp:StructureType"
 				},
 				{
 					"name": "string",
-					"annotations": {}
+					"annotations": {},
+					"type": "workerd/src/workerd/jsg/rtti.capnp:StringType"
 				},
 				{
 					"name": "object",
-					"annotations": {}
+					"annotations": {},
+					"type": "Void"
 				},
 				{
 					"name": "array",
-					"annotations": {}
+					"annotations": {},
+					"type": "workerd/src/workerd/jsg/rtti.capnp:ArrayType"
 				},
 				{
 					"name": "maybe",
-					"annotations": {}
+					"annotations": {},
+					"type": "workerd/src/workerd/jsg/rtti.capnp:MaybeType"
 				},
 				{
 					"name": "dict",
-					"annotations": {}
+					"annotations": {},
+					"type": "workerd/src/workerd/jsg/rtti.capnp:DictType"
 				},
 				{
 					"name": "oneOf",
-					"annotations": {}
+					"annotations": {},
+					"type": "workerd/src/workerd/jsg/rtti.capnp:OneOfType"
 				},
 				{
 					"name": "builtin",
-					"annotations": {}
+					"annotations": {},
+					"type": "workerd/src/workerd/jsg/rtti.capnp:BuiltinType"
 				},
 				{
 					"name": "intrinsic",
-					"annotations": {}
+					"annotations": {},
+					"type": "workerd/src/workerd/jsg/rtti.capnp:IntrinsicType"
 				},
 				{
 					"name": "function",
-					"annotations": {}
+					"annotations": {},
+					"type": "workerd/src/workerd/jsg/rtti.capnp:FunctionType"
 				},
 				{
 					"name": "jsgImpl",
-					"annotations": {}
+					"annotations": {},
+					"type": "workerd/src/workerd/jsg/rtti.capnp:JsgImplType"
 				},
 				{
 					"name": "jsBuiltin",
-					"annotations": {}
+					"annotations": {},
+					"type": "workerd/src/workerd/jsg/rtti.capnp:JsBuiltinType"
 				}
 			]
 		},
@@ -3723,23 +4428,28 @@
 			"fields": [
 				{
 					"name": "method",
-					"annotations": {}
+					"annotations": {},
+					"type": "workerd/src/workerd/jsg/rtti.capnp:Method"
 				},
 				{
 					"name": "property",
-					"annotations": {}
+					"annotations": {},
+					"type": "workerd/src/workerd/jsg/rtti.capnp:Property"
 				},
 				{
 					"name": "nested",
-					"annotations": {}
+					"annotations": {},
+					"type": "workerd/src/workerd/jsg/rtti.capnp:Member.nested"
 				},
 				{
 					"name": "constant",
-					"annotations": {}
+					"annotations": {},
+					"type": "workerd/src/workerd/jsg/rtti.capnp:Constant"
 				},
 				{
 					"name": "constructor",
-					"annotations": {}
+					"annotations": {},
+					"type": "workerd/src/workerd/jsg/rtti.capnp:Constructor"
 				}
 			]
 		},
@@ -3748,23 +4458,28 @@
 			"fields": [
 				{
 					"name": "name",
-					"annotations": {}
+					"annotations": {},
+					"type": "Text"
 				},
 				{
 					"name": "returnType",
-					"annotations": {}
+					"annotations": {},
+					"type": "workerd/src/workerd/jsg/rtti.capnp:Type"
 				},
 				{
 					"name": "args",
-					"annotations": {}
+					"annotations": {},
+					"type": "List(workerd/src/workerd/jsg/rtti.capnp:Type)"
 				},
 				{
 					"name": "static",
-					"annotations": {}
+					"annotations": {},
+					"type": "Bool"
 				},
 				{
 					"name": "fastApiCompatible",
-					"annotations": {}
+					"annotations": {},
+					"type": "Bool"
 				}
 			]
 		},
@@ -3773,15 +4488,18 @@
 			"fields": [
 				{
 					"name": "specifier",
-					"annotations": {}
+					"annotations": {},
+					"type": "Text"
 				},
 				{
 					"name": "structureName",
-					"annotations": {}
+					"annotations": {},
+					"type": "Text"
 				},
 				{
 					"name": "tsDeclarations",
-					"annotations": {}
+					"annotations": {},
+					"type": "Text"
 				}
 			]
 		},
@@ -3790,84 +4508,88 @@
 			"fields": [
 				{
 					"name": "name",
-					"annotations": {}
+					"annotations": {},
+					"type": "Text"
 				},
 				{
 					"name": "members",
-					"annotations": {}
+					"annotations": {},
+					"type": "List(workerd/src/workerd/jsg/rtti.capnp:Member)"
 				},
 				{
 					"name": "extends",
-					"annotations": {}
+					"annotations": {},
+					"type": "workerd/src/workerd/jsg/rtti.capnp:Type"
 				},
 				{
 					"name": "iterable",
-					"annotations": {}
+					"annotations": {},
+					"type": "Bool"
 				},
 				{
 					"name": "asyncIterable",
-					"annotations": {}
+					"annotations": {},
+					"type": "Bool"
 				},
 				{
 					"name": "fullyQualifiedName",
-					"annotations": {}
+					"annotations": {},
+					"type": "Text"
 				},
 				{
 					"name": "iterator",
-					"annotations": {}
+					"annotations": {},
+					"type": "workerd/src/workerd/jsg/rtti.capnp:Method"
 				},
 				{
 					"name": "asyncIterator",
-					"annotations": {}
+					"annotations": {},
+					"type": "workerd/src/workerd/jsg/rtti.capnp:Method"
 				},
 				{
 					"name": "tsRoot",
-					"annotations": {}
+					"annotations": {},
+					"type": "Bool"
 				},
 				{
 					"name": "tsOverride",
-					"annotations": {}
+					"annotations": {},
+					"type": "Text"
 				},
 				{
 					"name": "tsDefine",
-					"annotations": {}
+					"annotations": {},
+					"type": "Text"
 				},
 				{
 					"name": "callable",
-					"annotations": {}
+					"annotations": {},
+					"type": "workerd/src/workerd/jsg/rtti.capnp:FunctionType"
 				},
 				{
 					"name": "builtinModules",
-					"annotations": {}
+					"annotations": {},
+					"type": "List(workerd/src/workerd/jsg/rtti.capnp:Module)"
 				},
 				{
 					"name": "disposable",
-					"annotations": {}
+					"annotations": {},
+					"type": "Bool"
 				},
 				{
 					"name": "dispose",
-					"annotations": {}
+					"annotations": {},
+					"type": "workerd/src/workerd/jsg/rtti.capnp:Method"
 				},
 				{
 					"name": "asyncDisposable",
-					"annotations": {}
+					"annotations": {},
+					"type": "Bool"
 				},
 				{
 					"name": "asyncDispose",
-					"annotations": {}
-				}
-			]
-		},
-		{
-			"name": "workerd/src/workerd/jsg/rtti.capnp:Member.nested",
-			"fields": [
-				{
-					"name": "structure",
-					"annotations": {}
-				},
-				{
-					"name": "name",
-					"annotations": {}
+					"annotations": {},
+					"type": "workerd/src/workerd/jsg/rtti.capnp:Method"
 				}
 			]
 		},
@@ -3876,31 +4598,38 @@
 			"fields": [
 				{
 					"name": "name",
-					"annotations": {}
+					"annotations": {},
+					"type": "Text"
 				},
 				{
 					"name": "type",
-					"annotations": {}
+					"annotations": {},
+					"type": "workerd/src/workerd/jsg/rtti.capnp:Type"
 				},
 				{
 					"name": "readonly",
-					"annotations": {}
+					"annotations": {},
+					"type": "Bool"
 				},
 				{
 					"name": "lazy",
-					"annotations": {}
+					"annotations": {},
+					"type": "Bool"
 				},
 				{
 					"name": "prototype",
-					"annotations": {}
+					"annotations": {},
+					"type": "Bool"
 				},
 				{
 					"name": "getterFastApiCompatible",
-					"annotations": {}
+					"annotations": {},
+					"type": "Bool"
 				},
 				{
 					"name": "setterFastApiCompatible",
-					"annotations": {}
+					"annotations": {},
+					"type": "Bool"
 				}
 			]
 		},
@@ -3909,11 +4638,13 @@
 			"fields": [
 				{
 					"name": "name",
-					"annotations": {}
+					"annotations": {},
+					"type": "Text"
 				},
 				{
 					"name": "value",
-					"annotations": {}
+					"annotations": {},
+					"type": "Int64"
 				}
 			]
 		},
@@ -3922,7 +4653,8 @@
 			"fields": [
 				{
 					"name": "args",
-					"annotations": {}
+					"annotations": {},
+					"type": "List(workerd/src/workerd/jsg/rtti.capnp:Type)"
 				}
 			]
 		},
@@ -3931,11 +4663,13 @@
 			"fields": [
 				{
 					"name": "name",
-					"annotations": {}
+					"annotations": {},
+					"type": "Text"
 				},
 				{
 					"name": "structures",
-					"annotations": {}
+					"annotations": {},
+					"type": "List(workerd/src/workerd/jsg/rtti.capnp:Structure)"
 				}
 			]
 		},
@@ -3944,11 +4678,68 @@
 			"fields": [
 				{
 					"name": "groups",
-					"annotations": {}
+					"annotations": {},
+					"type": "List(workerd/src/workerd/jsg/rtti.capnp:StructureGroups.StructureGroup)"
 				},
 				{
 					"name": "modules",
-					"annotations": {}
+					"annotations": {},
+					"type": "List(workerd/src/workerd/jsg/rtti.capnp:Module)"
+				}
+			]
+		},
+		{
+			"name": "workerd/src/workerd/server/channel-token.capnp:ChannelToken",
+			"fields": [
+				{
+					"name": "type",
+					"annotations": {},
+					"type": "workerd/src/workerd/server/channel-token.capnp:ChannelToken.Type"
+				},
+				{
+					"name": "name",
+					"annotations": {},
+					"type": "Text"
+				},
+				{
+					"name": "entrypoint",
+					"annotations": {},
+					"type": "Text"
+				},
+				{
+					"name": "props",
+					"annotations": {},
+					"type": "workerd/src/workerd/io/frankenvalue.capnp:Frankenvalue"
+				}
+			]
+		},
+		{
+			"name": "workerd/src/workerd/server/channel-token.capnp:ChannelToken.FrankenvalueCapTable.Cap",
+			"fields": [
+				{
+					"name": "unknown",
+					"annotations": {},
+					"type": "Void"
+				},
+				{
+					"name": "subrequestChannel",
+					"annotations": {},
+					"type": "Data"
+				},
+				{
+					"name": "actorClassChannel",
+					"annotations": {},
+					"type": "Data"
+				}
+			]
+		},
+		{
+			"name": "workerd/src/workerd/server/channel-token.capnp:ChannelToken.FrankenvalueCapTable",
+			"fields": [
+				{
+					"name": "caps",
+					"annotations": {},
+					"type": "List(workerd/src/workerd/server/channel-token.capnp:ChannelToken.FrankenvalueCapTable.Cap)"
 				}
 			]
 		},
@@ -3957,36 +4748,21 @@
 			"fields": []
 		},
 		{
-			"name": "workerd/src/workerd/server/docker-api.capnp:Docker.PortBinding",
-			"fields": [
-				{
-					"name": "hostIp",
-					"annotations": {
-						"name": "HostIp"
-					}
-				},
-				{
-					"name": "hostPort",
-					"annotations": {
-						"name": "HostPort"
-					}
-				}
-			]
-		},
-		{
 			"name": "workerd/src/workerd/server/docker-api.capnp:Docker.LogConfig",
 			"fields": [
 				{
 					"name": "type",
 					"annotations": {
 						"name": "Type"
-					}
+					},
+					"type": "Text"
 				},
 				{
 					"name": "config",
 					"annotations": {
 						"name": "Config"
-					}
+					},
+					"type": "capnp/compat/json.capnp:Value"
 				}
 			]
 		},
@@ -3997,13 +4773,15 @@
 					"name": "name",
 					"annotations": {
 						"name": "Name"
-					}
+					},
+					"type": "Text"
 				},
 				{
 					"name": "maximumRetryCount",
 					"annotations": {
 						"name": "MaximumRetryCount"
-					}
+					},
+					"type": "UInt32"
 				}
 			]
 		},
@@ -4012,11 +4790,13 @@
 			"fields": [
 				{
 					"name": "path",
-					"annotations": {}
+					"annotations": {},
+					"type": "Text"
 				},
 				{
 					"name": "weight",
-					"annotations": {}
+					"annotations": {},
+					"type": "UInt16"
 				}
 			]
 		},
@@ -4025,11 +4805,13 @@
 			"fields": [
 				{
 					"name": "path",
-					"annotations": {}
+					"annotations": {},
+					"type": "Text"
 				},
 				{
 					"name": "rate",
-					"annotations": {}
+					"annotations": {},
+					"type": "UInt64"
 				}
 			]
 		},
@@ -4038,15 +4820,18 @@
 			"fields": [
 				{
 					"name": "pathOnHost",
-					"annotations": {}
+					"annotations": {},
+					"type": "Text"
 				},
 				{
 					"name": "pathInContainer",
-					"annotations": {}
+					"annotations": {},
+					"type": "Text"
 				},
 				{
 					"name": "cgroupPermissions",
-					"annotations": {}
+					"annotations": {},
+					"type": "Text"
 				}
 			]
 		},
@@ -4055,23 +4840,28 @@
 			"fields": [
 				{
 					"name": "driver",
-					"annotations": {}
+					"annotations": {},
+					"type": "Text"
 				},
 				{
 					"name": "count",
-					"annotations": {}
+					"annotations": {},
+					"type": "Int32"
 				},
 				{
 					"name": "deviceIds",
-					"annotations": {}
+					"annotations": {},
+					"type": "List(Text)"
 				},
 				{
 					"name": "capabilities",
-					"annotations": {}
+					"annotations": {},
+					"type": "List(List(Text))"
 				},
 				{
 					"name": "options",
-					"annotations": {}
+					"annotations": {},
+					"type": "capnp/compat/json.capnp:Value"
 				}
 			]
 		},
@@ -4080,15 +4870,18 @@
 			"fields": [
 				{
 					"name": "name",
-					"annotations": {}
+					"annotations": {},
+					"type": "Text"
 				},
 				{
 					"name": "soft",
-					"annotations": {}
+					"annotations": {},
+					"type": "UInt64"
 				},
 				{
 					"name": "hard",
-					"annotations": {}
+					"annotations": {},
+					"type": "UInt64"
 				}
 			]
 		},
@@ -4099,19 +4892,22 @@
 					"name": "ipv4Address",
 					"annotations": {
 						"name": "IPv4Address"
-					}
+					},
+					"type": "Text"
 				},
 				{
 					"name": "ipv6Address",
 					"annotations": {
 						"name": "IPv6Address"
-					}
+					},
+					"type": "Text"
 				},
 				{
 					"name": "linkLocalIps",
 					"annotations": {
 						"name": "LinkLocalIPs"
-					}
+					},
+					"type": "List(Text)"
 				}
 			]
 		},
@@ -4122,79 +4918,92 @@
 					"name": "ipamConfig",
 					"annotations": {
 						"name": "IPAMConfig"
-					}
+					},
+					"type": "workerd/src/workerd/server/docker-api.capnp:Docker.IPAMConfig"
 				},
 				{
 					"name": "links",
 					"annotations": {
 						"name": "Links"
-					}
+					},
+					"type": "List(Text)"
 				},
 				{
 					"name": "aliases",
 					"annotations": {
 						"name": "Aliases"
-					}
+					},
+					"type": "List(Text)"
 				},
 				{
 					"name": "networkId",
 					"annotations": {
 						"name": "NetworkID"
-					}
+					},
+					"type": "Text"
 				},
 				{
 					"name": "endpointId",
 					"annotations": {
 						"name": "EndpointID"
-					}
+					},
+					"type": "Text"
 				},
 				{
 					"name": "gateway",
 					"annotations": {
 						"name": "Gateway"
-					}
+					},
+					"type": "Text"
 				},
 				{
 					"name": "ipAddress",
 					"annotations": {
 						"name": "IPAddress"
-					}
+					},
+					"type": "Text"
 				},
 				{
 					"name": "ipPrefixLen",
 					"annotations": {
 						"name": "IPPrefixLen"
-					}
+					},
+					"type": "UInt32"
 				},
 				{
 					"name": "ipv6Gateway",
 					"annotations": {
 						"name": "IPv6Gateway"
-					}
+					},
+					"type": "Text"
 				},
 				{
 					"name": "globalIpv6Address",
 					"annotations": {
 						"name": "GlobalIPv6Address"
-					}
+					},
+					"type": "Text"
 				},
 				{
 					"name": "globalIpv6PrefixLen",
 					"annotations": {
 						"name": "GlobalIPv6PrefixLen"
-					}
+					},
+					"type": "UInt32"
 				},
 				{
 					"name": "macAddress",
 					"annotations": {
 						"name": "MacAddress"
-					}
+					},
+					"type": "Text"
 				},
 				{
 					"name": "driverOpts",
 					"annotations": {
 						"name": "DriverOpts"
-					}
+					},
+					"type": "capnp/compat/json.capnp:Value"
 				}
 			]
 		},
@@ -4205,301 +5014,365 @@
 					"name": "binds",
 					"annotations": {
 						"name": "Binds"
-					}
+					},
+					"type": "List(Text)"
 				},
 				{
 					"name": "links",
 					"annotations": {
 						"name": "Links"
-					}
+					},
+					"type": "List(Text)"
 				},
 				{
 					"name": "memory",
 					"annotations": {
 						"name": "Memory"
-					}
+					},
+					"type": "UInt32"
 				},
 				{
 					"name": "memorySwap",
 					"annotations": {
 						"name": "MemorySwap"
-					}
+					},
+					"type": "UInt32"
 				},
 				{
 					"name": "memoryReservation",
 					"annotations": {
 						"name": "MemoryReservation"
-					}
+					},
+					"type": "UInt32"
 				},
 				{
 					"name": "kernelMemory",
 					"annotations": {
 						"name": "KernelMemory"
-					}
+					},
+					"type": "UInt32"
 				},
 				{
 					"name": "nanoCpus",
 					"annotations": {
 						"name": "NanoCpus"
-					}
+					},
+					"type": "UInt32"
 				},
 				{
 					"name": "cpuPercent",
 					"annotations": {
 						"name": "CpuPercent"
-					}
+					},
+					"type": "UInt32"
 				},
 				{
 					"name": "cpuShares",
 					"annotations": {
 						"name": "CpuShares"
-					}
+					},
+					"type": "UInt32"
 				},
 				{
 					"name": "cpuPeriod",
 					"annotations": {
 						"name": "CpuPeriod"
-					}
+					},
+					"type": "UInt32"
 				},
 				{
 					"name": "cpuRealtimePeriod",
 					"annotations": {
 						"name": "CpuRealtimePeriod"
-					}
+					},
+					"type": "UInt32"
 				},
 				{
 					"name": "cpuRealtimeRuntime",
 					"annotations": {
 						"name": "CpuRealtimeRuntime"
-					}
+					},
+					"type": "UInt32"
 				},
 				{
 					"name": "cpuQuota",
 					"annotations": {
 						"name": "CpuQuota"
-					}
+					},
+					"type": "UInt32"
 				},
 				{
 					"name": "cpusetCpus",
 					"annotations": {
 						"name": "CpusetCpus"
-					}
+					},
+					"type": "Text"
 				},
 				{
 					"name": "cpusetMems",
 					"annotations": {
 						"name": "CpusetMems"
-					}
+					},
+					"type": "Text"
 				},
 				{
 					"name": "maximumIOps",
 					"annotations": {
 						"name": "MaximumIOps"
-					}
+					},
+					"type": "UInt32"
 				},
 				{
 					"name": "maximumIOBps",
 					"annotations": {
 						"name": "MaximumIOBps"
-					}
+					},
+					"type": "UInt32"
 				},
 				{
 					"name": "blkioWeight",
 					"annotations": {
 						"name": "BlkioWeight"
-					}
+					},
+					"type": "UInt16"
 				},
 				{
 					"name": "blkioWeightDevice",
 					"annotations": {
 						"name": "BlkioWeightDevice"
-					}
+					},
+					"type": "List(workerd/src/workerd/server/docker-api.capnp:Docker.WeightDevice)"
 				},
 				{
 					"name": "blkioDeviceReadBps",
 					"annotations": {
 						"name": "BlkioDeviceReadBps"
-					}
+					},
+					"type": "List(workerd/src/workerd/server/docker-api.capnp:Docker.ThrottleDevice)"
 				},
 				{
 					"name": "blkioDeviceReadIOps",
 					"annotations": {
 						"name": "BlkioDeviceReadIOps"
-					}
+					},
+					"type": "List(workerd/src/workerd/server/docker-api.capnp:Docker.ThrottleDevice)"
 				},
 				{
 					"name": "blkioDeviceWriteBps",
 					"annotations": {
 						"name": "BlkioDeviceWriteBps"
-					}
+					},
+					"type": "List(workerd/src/workerd/server/docker-api.capnp:Docker.ThrottleDevice)"
 				},
 				{
 					"name": "blkioDeviceWriteIOps",
 					"annotations": {
 						"name": "BlkioDeviceWriteIOps"
-					}
+					},
+					"type": "List(workerd/src/workerd/server/docker-api.capnp:Docker.ThrottleDevice)"
 				},
 				{
 					"name": "memorySwappiness",
 					"annotations": {
 						"name": "MemorySwappiness"
-					}
+					},
+					"type": "UInt32"
 				},
 				{
 					"name": "oomKillDisable",
 					"annotations": {
 						"name": "OomKillDisable"
-					}
+					},
+					"type": "Bool"
 				},
 				{
 					"name": "oomScoreAdj",
 					"annotations": {
 						"name": "OomScoreAdj"
-					}
+					},
+					"type": "Int32"
 				},
 				{
 					"name": "pidMode",
 					"annotations": {
 						"name": "PidMode"
-					}
+					},
+					"type": "Text"
 				},
 				{
 					"name": "pidsLimit",
 					"annotations": {
 						"name": "PidsLimit"
-					}
+					},
+					"type": "Int32"
 				},
 				{
 					"name": "portBindings",
 					"annotations": {
 						"name": "PortBindings"
-					}
+					},
+					"type": "capnp/compat/json.capnp:Value"
 				},
 				{
 					"name": "publishAllPorts",
 					"annotations": {
 						"name": "PublishAllPorts"
-					}
+					},
+					"type": "Bool"
 				},
 				{
 					"name": "privileged",
 					"annotations": {
 						"name": "Privileged"
-					}
+					},
+					"type": "Bool"
 				},
 				{
 					"name": "readonlyRootfs",
 					"annotations": {
 						"name": "ReadonlyRootfs"
-					}
+					},
+					"type": "Bool"
 				},
 				{
 					"name": "dns",
 					"annotations": {
 						"name": "Dns"
-					}
+					},
+					"type": "List(Text)"
 				},
 				{
 					"name": "dnsOptions",
 					"annotations": {
 						"name": "DnsOptions"
-					}
+					},
+					"type": "List(Text)"
 				},
 				{
 					"name": "dnsSearch",
 					"annotations": {
 						"name": "DnsSearch"
-					}
+					},
+					"type": "List(Text)"
 				},
 				{
 					"name": "volumesFrom",
 					"annotations": {
 						"name": "VolumesFrom"
-					}
+					},
+					"type": "List(Text)"
 				},
 				{
 					"name": "capAdd",
 					"annotations": {
 						"name": "CapAdd"
-					}
+					},
+					"type": "List(Text)"
 				},
 				{
 					"name": "capDrop",
 					"annotations": {
 						"name": "CapDrop"
-					}
+					},
+					"type": "List(Text)"
 				},
 				{
 					"name": "groupAdd",
 					"annotations": {
 						"name": "GroupAdd"
-					}
+					},
+					"type": "List(Text)"
 				},
 				{
 					"name": "restartPolicy",
 					"annotations": {
 						"name": "RestartPolicy"
-					}
+					},
+					"type": "workerd/src/workerd/server/docker-api.capnp:Docker.RestartPolicy"
 				},
 				{
 					"name": "autoRemove",
 					"annotations": {
 						"name": "AutoRemove"
-					}
+					},
+					"type": "Bool"
 				},
 				{
 					"name": "networkMode",
 					"annotations": {
 						"name": "NetworkMode"
-					}
+					},
+					"type": "Text"
 				},
 				{
 					"name": "devices",
 					"annotations": {
 						"name": "Devices"
-					}
+					},
+					"type": "List(workerd/src/workerd/server/docker-api.capnp:Docker.DeviceMapping)"
 				},
 				{
 					"name": "ulimits",
 					"annotations": {
 						"name": "Ulimits"
-					}
+					},
+					"type": "List(workerd/src/workerd/server/docker-api.capnp:Docker.Ulimit)"
 				},
 				{
 					"name": "logConfig",
 					"annotations": {
 						"name": "LogConfig"
-					}
+					},
+					"type": "workerd/src/workerd/server/docker-api.capnp:Docker.LogConfig"
 				},
 				{
 					"name": "securityOpt",
 					"annotations": {
 						"name": "SecurityOpt"
-					}
+					},
+					"type": "List(Text)"
 				},
 				{
 					"name": "storageOpt",
 					"annotations": {
 						"name": "StorageOpt"
-					}
+					},
+					"type": "capnp/compat/json.capnp:Value"
 				},
 				{
 					"name": "cgroupParent",
 					"annotations": {
 						"name": "CgroupParent"
-					}
+					},
+					"type": "Text"
 				},
 				{
 					"name": "volumeDriver",
 					"annotations": {
 						"name": "VolumeDriver"
-					}
+					},
+					"type": "Text"
 				},
 				{
 					"name": "shmSize",
 					"annotations": {
 						"name": "ShmSize"
-					}
+					},
+					"type": "UInt32"
+				},
+				{
+					"name": "extraHosts",
+					"annotations": {
+						"name": "ExtraHosts"
+					},
+					"type": "List(Text)"
+				},
+				{
+					"name": "mounts",
+					"annotations": {
+						"name": "Mounts"
+					},
+					"type": "List(workerd/src/workerd/server/docker-api.capnp:Docker.ContainerCreateRequest.Mount)"
 				}
 			]
 		},
@@ -4510,133 +5383,207 @@
 					"name": "hostname",
 					"annotations": {
 						"name": "Hostname"
-					}
+					},
+					"type": "Text"
 				},
 				{
 					"name": "domainname",
 					"annotations": {
 						"name": "Domainname"
-					}
+					},
+					"type": "Text"
 				},
 				{
 					"name": "user",
 					"annotations": {
 						"name": "User"
-					}
+					},
+					"type": "Text"
 				},
 				{
 					"name": "attachStdin",
 					"annotations": {
 						"name": "AttachStdin"
-					}
+					},
+					"type": "Bool"
 				},
 				{
 					"name": "attachStdout",
 					"annotations": {
 						"name": "AttachStdout"
-					}
+					},
+					"type": "Bool"
 				},
 				{
 					"name": "attachStderr",
 					"annotations": {
 						"name": "AttachStderr"
-					}
+					},
+					"type": "Bool"
 				},
 				{
 					"name": "exposedPorts",
 					"annotations": {
 						"name": "ExposedPorts"
-					}
+					},
+					"type": "capnp/compat/json.capnp:Value"
 				},
 				{
 					"name": "tty",
 					"annotations": {
 						"name": "Tty"
-					}
+					},
+					"type": "Bool"
 				},
 				{
 					"name": "openStdin",
 					"annotations": {
 						"name": "OpenStdin"
-					}
+					},
+					"type": "Bool"
 				},
 				{
 					"name": "stdinOnce",
 					"annotations": {
 						"name": "StdinOnce"
-					}
+					},
+					"type": "Bool"
 				},
 				{
 					"name": "env",
 					"annotations": {
 						"name": "Env"
-					}
+					},
+					"type": "List(Text)"
 				},
 				{
 					"name": "cmd",
 					"annotations": {
 						"name": "Cmd"
-					}
+					},
+					"type": "List(Text)"
 				},
 				{
 					"name": "entrypoint",
 					"annotations": {
 						"name": "Entrypoint"
-					}
+					},
+					"type": "Text"
 				},
 				{
 					"name": "image",
 					"annotations": {
 						"name": "Image"
-					}
+					},
+					"type": "Text"
 				},
 				{
 					"name": "labels",
 					"annotations": {
 						"name": "Labels"
-					}
+					},
+					"type": "capnp/compat/json.capnp:Value"
 				},
 				{
 					"name": "volumes",
 					"annotations": {
 						"name": "Volumes"
-					}
+					},
+					"type": "capnp/compat/json.capnp:Value"
 				},
 				{
 					"name": "workingDir",
 					"annotations": {
 						"name": "WorkingDir"
-					}
+					},
+					"type": "Text"
 				},
 				{
 					"name": "networkDisabled",
 					"annotations": {
 						"name": "NetworkDisabled"
-					}
+					},
+					"type": "Bool"
 				},
 				{
 					"name": "macAddress",
 					"annotations": {
 						"name": "MacAddress"
-					}
+					},
+					"type": "Text"
 				},
 				{
 					"name": "stopSignal",
 					"annotations": {
 						"name": "StopSignal"
-					}
+					},
+					"type": "Text"
 				},
 				{
 					"name": "stopTimeout",
 					"annotations": {
 						"name": "StopTimeout"
-					}
+					},
+					"type": "UInt32"
 				},
 				{
 					"name": "hostConfig",
 					"annotations": {
 						"name": "HostConfig"
-					}
+					},
+					"type": "workerd/src/workerd/server/docker-api.capnp:Docker.ContainerCreateRequest.HostConfig"
+				}
+			]
+		},
+		{
+			"name": "workerd/src/workerd/server/docker-api.capnp:Docker.ContainerCreateRequest.Mount",
+			"fields": [
+				{
+					"name": "type",
+					"annotations": {
+						"name": "Type"
+					},
+					"type": "Text"
+				},
+				{
+					"name": "source",
+					"annotations": {
+						"name": "Source"
+					},
+					"type": "Text"
+				},
+				{
+					"name": "target",
+					"annotations": {
+						"name": "Target"
+					},
+					"type": "Text"
+				},
+				{
+					"name": "readOnly",
+					"annotations": {
+						"name": "ReadOnly"
+					},
+					"type": "Bool"
+				},
+				{
+					"name": "volumeOptions",
+					"annotations": {
+						"name": "VolumeOptions"
+					},
+					"type": "workerd/src/workerd/server/docker-api.capnp:Docker.ContainerCreateRequest.Mount.VolumeOptions"
+				}
+			]
+		},
+		{
+			"name": "workerd/src/workerd/server/docker-api.capnp:Docker.ContainerCreateRequest.Mount.VolumeOptions",
+			"fields": [
+				{
+					"name": "noCopy",
+					"annotations": {
+						"name": "NoCopy"
+					},
+					"type": "Bool"
 				}
 			]
 		},
@@ -4647,13 +5594,15 @@
 					"name": "id",
 					"annotations": {
 						"name": "Id"
-					}
+					},
+					"type": "Text"
 				},
 				{
 					"name": "warnings",
 					"annotations": {
 						"name": "Warnings"
-					}
+					},
+					"type": "List(Text)"
 				}
 			]
 		},
@@ -4664,7 +5613,20 @@
 					"name": "statusCode",
 					"annotations": {
 						"name": "StatusCode"
-					}
+					},
+					"type": "Int32"
+				}
+			]
+		},
+		{
+			"name": "workerd/src/workerd/server/docker-api.capnp:Docker.ContainerCommitResponse",
+			"fields": [
+				{
+					"name": "id",
+					"annotations": {
+						"name": "Id"
+					},
+					"type": "Text"
 				}
 			]
 		},
@@ -4675,67 +5637,78 @@
 					"name": "status",
 					"annotations": {
 						"name": "Status"
-					}
+					},
+					"type": "Text"
 				},
 				{
 					"name": "running",
 					"annotations": {
 						"name": "Running"
-					}
+					},
+					"type": "Bool"
 				},
 				{
 					"name": "paused",
 					"annotations": {
 						"name": "Paused"
-					}
+					},
+					"type": "Bool"
 				},
 				{
 					"name": "restarting",
 					"annotations": {
 						"name": "Restarting"
-					}
+					},
+					"type": "Bool"
 				},
 				{
 					"name": "oomKilled",
 					"annotations": {
 						"name": "OOMKilled"
-					}
+					},
+					"type": "Bool"
 				},
 				{
 					"name": "dead",
 					"annotations": {
 						"name": "Dead"
-					}
+					},
+					"type": "Bool"
 				},
 				{
 					"name": "pid",
 					"annotations": {
 						"name": "Pid"
-					}
+					},
+					"type": "UInt32"
 				},
 				{
 					"name": "exitCode",
 					"annotations": {
 						"name": "ExitCode"
-					}
+					},
+					"type": "Int32"
 				},
 				{
 					"name": "error",
 					"annotations": {
 						"name": "Error"
-					}
+					},
+					"type": "Text"
 				},
 				{
 					"name": "startedAt",
 					"annotations": {
 						"name": "StartedAt"
-					}
+					},
+					"type": "Text"
 				},
 				{
 					"name": "finishedAt",
 					"annotations": {
 						"name": "FinishedAt"
-					}
+					},
+					"type": "Text"
 				}
 			]
 		},
@@ -4746,13 +5719,15 @@
 					"name": "name",
 					"annotations": {
 						"name": "Name"
-					}
+					},
+					"type": "Text"
 				},
 				{
 					"name": "data",
 					"annotations": {
 						"name": "Data"
-					}
+					},
+					"type": "capnp/compat/json.capnp:Value"
 				}
 			]
 		},
@@ -4763,49 +5738,57 @@
 					"name": "type",
 					"annotations": {
 						"name": "Type"
-					}
+					},
+					"type": "Text"
 				},
 				{
 					"name": "name",
 					"annotations": {
 						"name": "Name"
-					}
+					},
+					"type": "Text"
 				},
 				{
 					"name": "source",
 					"annotations": {
 						"name": "Source"
-					}
+					},
+					"type": "Text"
 				},
 				{
 					"name": "destination",
 					"annotations": {
 						"name": "Destination"
-					}
+					},
+					"type": "Text"
 				},
 				{
 					"name": "driver",
 					"annotations": {
 						"name": "Driver"
-					}
+					},
+					"type": "Text"
 				},
 				{
 					"name": "mode",
 					"annotations": {
 						"name": "Mode"
-					}
+					},
+					"type": "Text"
 				},
 				{
 					"name": "rw",
 					"annotations": {
 						"name": "RW"
-					}
+					},
+					"type": "Bool"
 				},
 				{
 					"name": "propagation",
 					"annotations": {
 						"name": "Propagation"
-					}
+					},
+					"type": "Text"
 				}
 			]
 		},
@@ -4816,97 +5799,113 @@
 					"name": "bridge",
 					"annotations": {
 						"name": "Bridge"
-					}
+					},
+					"type": "Text"
 				},
 				{
 					"name": "sandboxId",
 					"annotations": {
 						"name": "SandboxID"
-					}
+					},
+					"type": "Text"
 				},
 				{
 					"name": "hairpinMode",
 					"annotations": {
 						"name": "HairpinMode"
-					}
+					},
+					"type": "Bool"
 				},
 				{
 					"name": "linkLocalIpv6Address",
 					"annotations": {
 						"name": "LinkLocalIPv6Address"
-					}
+					},
+					"type": "Text"
 				},
 				{
 					"name": "linkLocalIpv6PrefixLen",
 					"annotations": {
 						"name": "LinkLocalIPv6PrefixLen"
-					}
+					},
+					"type": "UInt32"
 				},
 				{
 					"name": "sandboxKey",
 					"annotations": {
 						"name": "SandboxKey"
-					}
+					},
+					"type": "Text"
 				},
 				{
 					"name": "endpointId",
 					"annotations": {
 						"name": "EndpointID"
-					}
+					},
+					"type": "Text"
 				},
 				{
 					"name": "gateway",
 					"annotations": {
 						"name": "Gateway"
-					}
+					},
+					"type": "Text"
 				},
 				{
 					"name": "globalIpv6Address",
 					"annotations": {
 						"name": "GlobalIPv6Address"
-					}
+					},
+					"type": "Text"
 				},
 				{
 					"name": "globalIpv6PrefixLen",
 					"annotations": {
 						"name": "GlobalIPv6PrefixLen"
-					}
+					},
+					"type": "UInt32"
 				},
 				{
 					"name": "ipAddress",
 					"annotations": {
 						"name": "IPAddress"
-					}
+					},
+					"type": "Text"
 				},
 				{
 					"name": "ipPrefixLen",
 					"annotations": {
 						"name": "IPPrefixLen"
-					}
+					},
+					"type": "UInt32"
 				},
 				{
 					"name": "ipv6Gateway",
 					"annotations": {
 						"name": "IPv6Gateway"
-					}
+					},
+					"type": "Text"
 				},
 				{
 					"name": "macAddress",
 					"annotations": {
 						"name": "MacAddress"
-					}
+					},
+					"type": "Text"
 				},
 				{
 					"name": "networks",
 					"annotations": {
 						"name": "Networks"
-					}
+					},
+					"type": "capnp/compat/json.capnp:Value"
 				},
 				{
 					"name": "ports",
 					"annotations": {
 						"name": "Ports"
-					}
+					},
+					"type": "capnp/compat/json.capnp:Value"
 				}
 			]
 		},
@@ -4917,139 +5916,162 @@
 					"name": "hostname",
 					"annotations": {
 						"name": "Hostname"
-					}
+					},
+					"type": "Text"
 				},
 				{
 					"name": "domainname",
 					"annotations": {
 						"name": "Domainname"
-					}
+					},
+					"type": "Text"
 				},
 				{
 					"name": "user",
 					"annotations": {
 						"name": "User"
-					}
+					},
+					"type": "Text"
 				},
 				{
 					"name": "attachStdin",
 					"annotations": {
 						"name": "AttachStdin"
-					}
+					},
+					"type": "Bool"
 				},
 				{
 					"name": "attachStdout",
 					"annotations": {
 						"name": "AttachStdout"
-					}
+					},
+					"type": "Bool"
 				},
 				{
 					"name": "attachStderr",
 					"annotations": {
 						"name": "AttachStderr"
-					}
+					},
+					"type": "Bool"
 				},
 				{
 					"name": "exposedPorts",
 					"annotations": {
 						"name": "ExposedPorts"
-					}
+					},
+					"type": "capnp/compat/json.capnp:Value"
 				},
 				{
 					"name": "tty",
 					"annotations": {
 						"name": "Tty"
-					}
+					},
+					"type": "Bool"
 				},
 				{
 					"name": "openStdin",
 					"annotations": {
 						"name": "OpenStdin"
-					}
+					},
+					"type": "Bool"
 				},
 				{
 					"name": "stdinOnce",
 					"annotations": {
 						"name": "StdinOnce"
-					}
+					},
+					"type": "Bool"
 				},
 				{
 					"name": "env",
 					"annotations": {
 						"name": "Env"
-					}
+					},
+					"type": "List(Text)"
 				},
 				{
 					"name": "cmd",
 					"annotations": {
 						"name": "Cmd"
-					}
+					},
+					"type": "List(Text)"
 				},
 				{
 					"name": "image",
 					"annotations": {
 						"name": "Image"
-					}
+					},
+					"type": "Text"
 				},
 				{
 					"name": "volumes",
 					"annotations": {
 						"name": "Volumes"
-					}
+					},
+					"type": "capnp/compat/json.capnp:Value"
 				},
 				{
 					"name": "workingDir",
 					"annotations": {
 						"name": "WorkingDir"
-					}
+					},
+					"type": "Text"
 				},
 				{
 					"name": "entrypoint",
 					"annotations": {
 						"name": "Entrypoint"
-					}
+					},
+					"type": "List(Text)"
 				},
 				{
 					"name": "networkDisabled",
 					"annotations": {
 						"name": "NetworkDisabled"
-					}
+					},
+					"type": "Bool"
 				},
 				{
 					"name": "macAddress",
 					"annotations": {
 						"name": "MacAddress"
-					}
+					},
+					"type": "Text"
 				},
 				{
 					"name": "onBuild",
 					"annotations": {
 						"name": "OnBuild"
-					}
+					},
+					"type": "List(Text)"
 				},
 				{
 					"name": "labels",
 					"annotations": {
 						"name": "Labels"
-					}
+					},
+					"type": "capnp/compat/json.capnp:Value"
 				},
 				{
 					"name": "stopSignal",
 					"annotations": {
 						"name": "StopSignal"
-					}
+					},
+					"type": "Text"
 				},
 				{
 					"name": "stopTimeout",
 					"annotations": {
 						"name": "StopTimeout"
-					}
+					},
+					"type": "UInt32"
 				},
 				{
 					"name": "shell",
 					"annotations": {
 						"name": "Shell"
-					}
+					},
+					"type": "List(Text)"
 				}
 			]
 		},
@@ -5060,37 +6082,229 @@
 					"name": "id",
 					"annotations": {
 						"name": "Id"
-					}
+					},
+					"type": "Text"
 				},
 				{
 					"name": "created",
 					"annotations": {
 						"name": "Created"
-					}
+					},
+					"type": "Text"
 				},
 				{
 					"name": "path",
 					"annotations": {
 						"name": "Path"
-					}
+					},
+					"type": "Text"
 				},
 				{
 					"name": "args",
 					"annotations": {
 						"name": "Args"
-					}
+					},
+					"type": "List(Text)"
 				},
 				{
 					"name": "state",
 					"annotations": {
 						"name": "State"
-					}
+					},
+					"type": "workerd/src/workerd/server/docker-api.capnp:Docker.ContainerState"
 				},
 				{
 					"name": "networkSettings",
 					"annotations": {
 						"name": "NetworkSettings"
-					}
+					},
+					"type": "workerd/src/workerd/server/docker-api.capnp:Docker.NetworkSettings"
+				}
+			]
+		},
+		{
+			"name": "workerd/src/workerd/server/docker-api.capnp:Docker.ImageInspectResponse",
+			"fields": [
+				{
+					"name": "id",
+					"annotations": {
+						"name": "Id"
+					},
+					"type": "Text"
+				},
+				{
+					"name": "size",
+					"annotations": {
+						"name": "Size"
+					},
+					"type": "UInt64"
+				}
+			]
+		},
+		{
+			"name": "workerd/src/workerd/server/docker-api.capnp:Docker.ExecCreateRequest",
+			"fields": [
+				{
+					"name": "attachStdin",
+					"annotations": {
+						"name": "AttachStdin"
+					},
+					"type": "Bool"
+				},
+				{
+					"name": "attachStdout",
+					"annotations": {
+						"name": "AttachStdout"
+					},
+					"type": "Bool"
+				},
+				{
+					"name": "attachStderr",
+					"annotations": {
+						"name": "AttachStderr"
+					},
+					"type": "Bool"
+				},
+				{
+					"name": "tty",
+					"annotations": {
+						"name": "Tty"
+					},
+					"type": "Bool"
+				},
+				{
+					"name": "cmd",
+					"annotations": {
+						"name": "Cmd"
+					},
+					"type": "List(Text)"
+				},
+				{
+					"name": "env",
+					"annotations": {
+						"name": "Env"
+					},
+					"type": "List(Text)"
+				},
+				{
+					"name": "workingDir",
+					"annotations": {
+						"name": "WorkingDir"
+					},
+					"type": "Text"
+				},
+				{
+					"name": "user",
+					"annotations": {
+						"name": "User"
+					},
+					"type": "Text"
+				}
+			]
+		},
+		{
+			"name": "workerd/src/workerd/server/docker-api.capnp:Docker.ExecCreateResponse",
+			"fields": [
+				{
+					"name": "id",
+					"annotations": {
+						"name": "Id"
+					},
+					"type": "Text"
+				}
+			]
+		},
+		{
+			"name": "workerd/src/workerd/server/docker-api.capnp:Docker.ExecStartRequest",
+			"fields": [
+				{
+					"name": "detach",
+					"annotations": {
+						"name": "Detach"
+					},
+					"type": "Bool"
+				},
+				{
+					"name": "tty",
+					"annotations": {
+						"name": "Tty"
+					},
+					"type": "Bool"
+				}
+			]
+		},
+		{
+			"name": "workerd/src/workerd/server/docker-api.capnp:Docker.ExecInspectResponse",
+			"fields": [
+				{
+					"name": "canRemove",
+					"annotations": {
+						"name": "CanRemove"
+					},
+					"type": "Bool"
+				},
+				{
+					"name": "detachKeys",
+					"annotations": {
+						"name": "DetachKeys"
+					},
+					"type": "Text"
+				},
+				{
+					"name": "exitCode",
+					"annotations": {
+						"name": "ExitCode"
+					},
+					"type": "capnp/compat/json.capnp:Value"
+				},
+				{
+					"name": "id",
+					"annotations": {
+						"name": "ID"
+					},
+					"type": "Text"
+				},
+				{
+					"name": "openStderr",
+					"annotations": {
+						"name": "OpenStderr"
+					},
+					"type": "Bool"
+				},
+				{
+					"name": "openStdin",
+					"annotations": {
+						"name": "OpenStdin"
+					},
+					"type": "Bool"
+				},
+				{
+					"name": "openStdout",
+					"annotations": {
+						"name": "OpenStdout"
+					},
+					"type": "Bool"
+				},
+				{
+					"name": "processConfig",
+					"annotations": {
+						"name": "ProcessConfig"
+					},
+					"type": "capnp/compat/json.capnp:Value"
+				},
+				{
+					"name": "running",
+					"annotations": {
+						"name": "Running"
+					},
+					"type": "Bool"
+				},
+				{
+					"name": "pid",
+					"annotations": {
+						"name": "Pid"
+					},
+					"type": "UInt32"
 				}
 			]
 		},
@@ -5107,11 +6321,13 @@
 			"fields": [
 				{
 					"name": "name",
-					"annotations": {}
+					"annotations": {},
+					"type": "Text"
 				},
 				{
 					"name": "body",
-					"annotations": {}
+					"annotations": {},
+					"type": "workerd/src/workerd/server/docker-api.capnp:Docker.ContainerCreateRequest"
 				}
 			]
 		},
@@ -5120,7 +6336,8 @@
 			"fields": [
 				{
 					"name": "response",
-					"annotations": {}
+					"annotations": {},
+					"type": "workerd/src/workerd/server/docker-api.capnp:Docker.ContainerCreateResponse"
 				}
 			]
 		},
@@ -5133,7 +6350,8 @@
 			"fields": [
 				{
 					"name": "id",
-					"annotations": {}
+					"annotations": {},
+					"type": "Text"
 				}
 			]
 		},
@@ -5142,7 +6360,240 @@
 			"fields": [
 				{
 					"name": "response",
-					"annotations": {}
+					"annotations": {},
+					"type": "workerd/src/workerd/server/docker-api.capnp:Docker.ContainerInspectResponse"
+				}
+			]
+		},
+		{
+			"name": "workerd/src/workerd/server/docker-api.capnp:Docker.NetworkInspectResponse.IPAM",
+			"fields": [
+				{
+					"name": "driver",
+					"annotations": {
+						"name": "Driver"
+					},
+					"type": "Text"
+				},
+				{
+					"name": "config",
+					"annotations": {
+						"name": "Config"
+					},
+					"type": "List(workerd/src/workerd/server/docker-api.capnp:Docker.NetworkInspectResponse.IPAM.IPAMConfig)"
+				}
+			]
+		},
+		{
+			"name": "workerd/src/workerd/server/docker-api.capnp:Docker.NetworkInspectResponse",
+			"fields": [
+				{
+					"name": "name",
+					"annotations": {
+						"name": "Name"
+					},
+					"type": "Text"
+				},
+				{
+					"name": "id",
+					"annotations": {
+						"name": "Id"
+					},
+					"type": "Text"
+				},
+				{
+					"name": "ipam",
+					"annotations": {
+						"name": "IPAM"
+					},
+					"type": "workerd/src/workerd/server/docker-api.capnp:Docker.NetworkInspectResponse.IPAM"
+				}
+			]
+		},
+		{
+			"name": "workerd/src/workerd/server/docker-api.capnp:Docker.NetworkInspectResponse.IPAM.IPAMConfig",
+			"fields": [
+				{
+					"name": "subnet",
+					"annotations": {
+						"name": "Subnet"
+					},
+					"type": "Text"
+				},
+				{
+					"name": "gateway",
+					"annotations": {
+						"name": "Gateway"
+					},
+					"type": "Text"
+				}
+			]
+		},
+		{
+			"name": "workerd/src/workerd/server/docker-api.capnp:Docker.NetworkCreateRequest",
+			"fields": [
+				{
+					"name": "name",
+					"annotations": {
+						"name": "Name"
+					},
+					"type": "Text"
+				},
+				{
+					"name": "driver",
+					"annotations": {
+						"name": "Driver"
+					},
+					"type": "Text"
+				},
+				{
+					"name": "enableIpv6",
+					"annotations": {
+						"name": "EnableIPv6"
+					},
+					"type": "Bool"
+				}
+			]
+		},
+		{
+			"name": "workerd/src/workerd/server/docker-api.capnp:Docker.NetworkCreateResponse",
+			"fields": [
+				{
+					"name": "id",
+					"annotations": {
+						"name": "Id"
+					},
+					"type": "Text"
+				},
+				{
+					"name": "warning",
+					"annotations": {
+						"name": "Warning"
+					},
+					"type": "Text"
+				}
+			]
+		},
+		{
+			"name": "workerd/src/workerd/server/docker-api.capnp:Docker.VolumeCreateRequest",
+			"fields": [
+				{
+					"name": "name",
+					"annotations": {
+						"name": "Name"
+					},
+					"type": "Text"
+				},
+				{
+					"name": "labels",
+					"annotations": {
+						"name": "Labels"
+					},
+					"type": "capnp/compat/json.capnp:Value"
+				}
+			]
+		},
+		{
+			"name": "workerd/src/workerd/server/docker-api.capnp:Docker.VolumeListFilters",
+			"fields": [
+				{
+					"name": "name",
+					"annotations": {
+						"name": "name"
+					},
+					"type": "List(Text)"
+				}
+			]
+		},
+		{
+			"name": "workerd/src/workerd/server/docker-api.capnp:Docker.VolumeListResponse.Volume",
+			"fields": [
+				{
+					"name": "name",
+					"annotations": {
+						"name": "Name"
+					},
+					"type": "Text"
+				},
+				{
+					"name": "labels",
+					"annotations": {
+						"name": "Labels"
+					},
+					"type": "capnp/compat/json.capnp:Value"
+				}
+			]
+		},
+		{
+			"name": "workerd/src/workerd/server/docker-api.capnp:Docker.VolumeListResponse",
+			"fields": [
+				{
+					"name": "volumes",
+					"annotations": {
+						"name": "Volumes"
+					},
+					"type": "List(workerd/src/workerd/server/docker-api.capnp:Docker.VolumeListResponse.Volume)"
+				},
+				{
+					"name": "warnings",
+					"annotations": {
+						"name": "Warnings"
+					},
+					"type": "List(Text)"
+				}
+			]
+		},
+		{
+			"name": "workerd/src/workerd/server/docker-api.capnp:ProxyEverything",
+			"fields": []
+		},
+		{
+			"name": "workerd/src/workerd/server/docker-api.capnp:ProxyEverything.Dns",
+			"fields": [
+				{
+					"name": "allowHostnames",
+					"annotations": {
+						"name": "allowHostnames"
+					},
+					"type": "List(Text)"
+				}
+			]
+		},
+		{
+			"name": "workerd/src/workerd/server/docker-api.capnp:ProxyEverything.Internet",
+			"fields": [
+				{
+					"name": "enabled",
+					"annotations": {
+						"name": "enabled"
+					},
+					"type": "Bool"
+				}
+			]
+		},
+		{
+			"name": "workerd/src/workerd/server/docker-api.capnp:ProxyEverything.Port",
+			"fields": [
+				{
+					"name": "port",
+					"annotations": {
+						"name": "port"
+					},
+					"type": "UInt16"
+				},
+				{
+					"name": "dns",
+					"annotations": {
+						"name": "dns"
+					},
+					"type": "workerd/src/workerd/server/docker-api.capnp:ProxyEverything.Dns"
+				},
+				{
+					"name": "internet",
+					"annotations": {
+						"name": "internet"
+					},
+					"type": "workerd/src/workerd/server/docker-api.capnp:ProxyEverything.Internet"
 				}
 			]
 		},
@@ -5153,31 +6604,36 @@
 					"name": "timestamp",
 					"annotations": {
 						"name": "timestamp"
-					}
+					},
+					"type": "UInt64"
 				},
 				{
 					"name": "level",
 					"annotations": {
 						"name": "level"
-					}
+					},
+					"type": "workerd/src/workerd/server/log-schema.capnp:LogEntry.LogLevel"
 				},
 				{
 					"name": "source",
 					"annotations": {
 						"name": "source"
-					}
+					},
+					"type": "Text"
 				},
 				{
 					"name": "message",
 					"annotations": {
 						"name": "message"
-					}
+					},
+					"type": "Text"
 				},
 				{
 					"name": "contextDepth",
 					"annotations": {
 						"name": "context_depth"
-					}
+					},
+					"type": "UInt32"
 				}
 			]
 		},
@@ -5186,27 +6642,33 @@
 			"fields": [
 				{
 					"name": "name",
-					"annotations": {}
+					"annotations": {},
+					"type": "Text"
 				},
 				{
 					"name": "unspecified",
-					"annotations": {}
+					"annotations": {},
+					"type": "Void"
 				},
 				{
 					"name": "worker",
-					"annotations": {}
+					"annotations": {},
+					"type": "workerd/src/workerd/server/workerd.capnp:Worker"
 				},
 				{
 					"name": "network",
-					"annotations": {}
+					"annotations": {},
+					"type": "workerd/src/workerd/server/workerd.capnp:Network"
 				},
 				{
 					"name": "external",
-					"annotations": {}
+					"annotations": {},
+					"type": "workerd/src/workerd/server/workerd.capnp:ExternalServer"
 				},
 				{
 					"name": "disk",
-					"annotations": {}
+					"annotations": {},
+					"type": "workerd/src/workerd/server/workerd.capnp:DiskDirectory"
 				}
 			]
 		},
@@ -5215,23 +6677,33 @@
 			"fields": [
 				{
 					"name": "name",
-					"annotations": {}
+					"annotations": {},
+					"type": "Text"
 				},
 				{
 					"name": "address",
-					"annotations": {}
+					"annotations": {},
+					"type": "Text"
 				},
 				{
 					"name": "http",
-					"annotations": {}
+					"annotations": {},
+					"type": "workerd/src/workerd/server/workerd.capnp:HttpOptions"
 				},
 				{
 					"name": "https",
-					"annotations": {}
+					"annotations": {},
+					"type": "workerd/src/workerd/server/workerd.capnp:Socket.https"
 				},
 				{
 					"name": "service",
-					"annotations": {}
+					"annotations": {},
+					"type": "workerd/src/workerd/server/workerd.capnp:ServiceDesignator"
+				},
+				{
+					"name": "tcp",
+					"annotations": {},
+					"type": "workerd/src/workerd/server/workerd.capnp:Socket.tcp"
 				}
 			]
 		},
@@ -5240,7 +6712,8 @@
 			"fields": [
 				{
 					"name": "modules",
-					"annotations": {}
+					"annotations": {},
+					"type": "List(workerd/src/workerd/server/workerd.capnp:Extension.Module)"
 				}
 			]
 		},
@@ -5249,15 +6722,18 @@
 			"fields": [
 				{
 					"name": "structuredLogging",
-					"annotations": {}
+					"annotations": {},
+					"type": "Bool"
 				},
 				{
 					"name": "stdoutPrefix",
-					"annotations": {}
+					"annotations": {},
+					"type": "Text"
 				},
 				{
 					"name": "stderrPrefix",
-					"annotations": {}
+					"annotations": {},
+					"type": "Text"
 				}
 			]
 		},
@@ -5266,31 +6742,38 @@
 			"fields": [
 				{
 					"name": "services",
-					"annotations": {}
+					"annotations": {},
+					"type": "List(workerd/src/workerd/server/workerd.capnp:Service)"
 				},
 				{
 					"name": "sockets",
-					"annotations": {}
+					"annotations": {},
+					"type": "List(workerd/src/workerd/server/workerd.capnp:Socket)"
 				},
 				{
 					"name": "v8Flags",
-					"annotations": {}
+					"annotations": {},
+					"type": "List(Text)"
 				},
 				{
 					"name": "extensions",
-					"annotations": {}
+					"annotations": {},
+					"type": "List(workerd/src/workerd/server/workerd.capnp:Extension)"
 				},
 				{
 					"name": "autogates",
-					"annotations": {}
+					"annotations": {},
+					"type": "List(Text)"
 				},
 				{
 					"name": "structuredLogging",
-					"annotations": {}
+					"annotations": {},
+					"type": "Bool"
 				},
 				{
 					"name": "logging",
-					"annotations": {}
+					"annotations": {},
+					"type": "workerd/src/workerd/server/workerd.capnp:LoggingOptions"
 				}
 			]
 		},
@@ -5299,63 +6782,78 @@
 			"fields": [
 				{
 					"name": "modules",
-					"annotations": {}
+					"annotations": {},
+					"type": "List(workerd/src/workerd/server/workerd.capnp:Worker.Module)"
 				},
 				{
 					"name": "serviceWorkerScript",
-					"annotations": {}
+					"annotations": {},
+					"type": "Text"
 				},
 				{
 					"name": "inherit",
-					"annotations": {}
+					"annotations": {},
+					"type": "Text"
 				},
 				{
 					"name": "compatibilityDate",
-					"annotations": {}
+					"annotations": {},
+					"type": "Text"
 				},
 				{
 					"name": "compatibilityFlags",
-					"annotations": {}
+					"annotations": {},
+					"type": "List(Text)"
 				},
 				{
 					"name": "bindings",
-					"annotations": {}
+					"annotations": {},
+					"type": "List(workerd/src/workerd/server/workerd.capnp:Worker.Binding)"
 				},
 				{
 					"name": "globalOutbound",
-					"annotations": {}
+					"annotations": {},
+					"type": "workerd/src/workerd/server/workerd.capnp:ServiceDesignator"
 				},
 				{
 					"name": "durableObjectNamespaces",
-					"annotations": {}
+					"annotations": {},
+					"type": "List(workerd/src/workerd/server/workerd.capnp:Worker.DurableObjectNamespace)"
 				},
 				{
 					"name": "durableObjectUniqueKeyModifier",
-					"annotations": {}
+					"annotations": {},
+					"type": "Text"
 				},
 				{
 					"name": "durableObjectStorage",
-					"annotations": {}
+					"annotations": {},
+					"type": "workerd/src/workerd/server/workerd.capnp:Worker.durableObjectStorage"
 				},
 				{
 					"name": "cacheApiOutbound",
-					"annotations": {}
+					"annotations": {},
+					"type": "workerd/src/workerd/server/workerd.capnp:ServiceDesignator"
 				},
 				{
 					"name": "moduleFallback",
-					"annotations": {}
+					"annotations": {},
+					"type": "Text"
 				},
 				{
 					"name": "tails",
-					"annotations": {}
+					"annotations": {},
+					"type": "List(workerd/src/workerd/server/workerd.capnp:ServiceDesignator)"
 				},
 				{
 					"name": "streamingTails",
-					"annotations": {}
+					"annotations": {},
+					"type": "List(workerd/src/workerd/server/workerd.capnp:ServiceDesignator)"
 				},
 				{
 					"name": "containerEngine",
-					"annotations": {}
+					"annotations": {},
+					"type": "workerd/src/workerd/server/workerd.capnp:Worker.containerEngine"
 				}
 			]
 		},
@@ -5364,15 +6862,18 @@
 			"fields": [
 				{
 					"name": "allow",
-					"annotations": {}
+					"annotations": {},
+					"type": "List(Text)"
 				},
 				{
 					"name": "deny",
-					"annotations": {}
+					"annotations": {},
+					"type": "List(Text)"
 				},
 				{
 					"name": "tlsOptions",
-					"annotations": {}
+					"annotations": {},
+					"type": "workerd/src/workerd/server/workerd.capnp:TlsOptions"
 				}
 			]
 		},
@@ -5381,19 +6882,23 @@
 			"fields": [
 				{
 					"name": "address",
-					"annotations": {}
+					"annotations": {},
+					"type": "Text"
 				},
 				{
 					"name": "http",
-					"annotations": {}
+					"annotations": {},
+					"type": "workerd/src/workerd/server/workerd.capnp:HttpOptions"
 				},
 				{
 					"name": "https",
-					"annotations": {}
+					"annotations": {},
+					"type": "workerd/src/workerd/server/workerd.capnp:ExternalServer.https"
 				},
 				{
 					"name": "tcp",
-					"annotations": {}
+					"annotations": {},
+					"type": "workerd/src/workerd/server/workerd.capnp:ExternalServer.tcp"
 				}
 			]
 		},
@@ -5402,32 +6907,18 @@
 			"fields": [
 				{
 					"name": "path",
-					"annotations": {}
+					"annotations": {},
+					"type": "Text"
 				},
 				{
 					"name": "writable",
-					"annotations": {}
+					"annotations": {},
+					"type": "Bool"
 				},
 				{
 					"name": "allowDotfiles",
-					"annotations": {}
-				}
-			]
-		},
-		{
-			"name": "workerd/src/workerd/server/workerd.capnp:Worker.durableObjectStorage",
-			"fields": [
-				{
-					"name": "none",
-					"annotations": {}
-				},
-				{
-					"name": "inMemory",
-					"annotations": {}
-				},
-				{
-					"name": "localDisk",
-					"annotations": {}
+					"annotations": {},
+					"type": "Bool"
 				}
 			]
 		},
@@ -5436,20 +6927,13 @@
 			"fields": [
 				{
 					"name": "socketPath",
-					"annotations": {}
-				}
-			]
-		},
-		{
-			"name": "workerd/src/workerd/server/workerd.capnp:Worker.containerEngine",
-			"fields": [
-				{
-					"name": "none",
-					"annotations": {}
+					"annotations": {},
+					"type": "Text"
 				},
 				{
-					"name": "localDocker",
-					"annotations": {}
+					"name": "containerEgressInterceptorImage",
+					"annotations": {},
+					"type": "Text"
 				}
 			]
 		},
@@ -5458,47 +6942,58 @@
 			"fields": [
 				{
 					"name": "name",
-					"annotations": {}
+					"annotations": {},
+					"type": "Text"
 				},
 				{
 					"name": "esModule",
-					"annotations": {}
+					"annotations": {},
+					"type": "Text"
 				},
 				{
 					"name": "commonJsModule",
-					"annotations": {}
+					"annotations": {},
+					"type": "Text"
 				},
 				{
 					"name": "text",
-					"annotations": {}
+					"annotations": {},
+					"type": "Text"
 				},
 				{
 					"name": "data",
-					"annotations": {}
+					"annotations": {},
+					"type": "Data"
 				},
 				{
 					"name": "wasm",
-					"annotations": {}
+					"annotations": {},
+					"type": "Data"
 				},
 				{
 					"name": "json",
-					"annotations": {}
+					"annotations": {},
+					"type": "Text"
 				},
 				{
 					"name": "obsolete",
-					"annotations": {}
+					"annotations": {},
+					"type": "Text"
 				},
 				{
 					"name": "pythonModule",
-					"annotations": {}
+					"annotations": {},
+					"type": "Text"
 				},
 				{
 					"name": "pythonRequirement",
-					"annotations": {}
+					"annotations": {},
+					"type": "Text"
 				},
 				{
 					"name": "namedExports",
-					"annotations": {}
+					"annotations": {},
+					"type": "List(Text)"
 				}
 			]
 		},
@@ -5507,91 +7002,118 @@
 			"fields": [
 				{
 					"name": "name",
-					"annotations": {}
+					"annotations": {},
+					"type": "Text"
 				},
 				{
 					"name": "unspecified",
-					"annotations": {}
+					"annotations": {},
+					"type": "Void"
 				},
 				{
 					"name": "parameter",
-					"annotations": {}
+					"annotations": {},
+					"type": "workerd/src/workerd/server/workerd.capnp:Worker.Binding.parameter"
 				},
 				{
 					"name": "text",
-					"annotations": {}
+					"annotations": {},
+					"type": "Text"
 				},
 				{
 					"name": "data",
-					"annotations": {}
+					"annotations": {},
+					"type": "Data"
 				},
 				{
 					"name": "json",
-					"annotations": {}
+					"annotations": {},
+					"type": "Text"
 				},
 				{
 					"name": "wasmModule",
-					"annotations": {}
+					"annotations": {},
+					"type": "Data"
 				},
 				{
 					"name": "cryptoKey",
-					"annotations": {}
+					"annotations": {},
+					"type": "workerd/src/workerd/server/workerd.capnp:Worker.Binding.CryptoKey"
 				},
 				{
 					"name": "service",
-					"annotations": {}
+					"annotations": {},
+					"type": "workerd/src/workerd/server/workerd.capnp:ServiceDesignator"
 				},
 				{
 					"name": "durableObjectNamespace",
-					"annotations": {}
+					"annotations": {},
+					"type": "workerd/src/workerd/server/workerd.capnp:Worker.Binding.DurableObjectNamespaceDesignator"
 				},
 				{
 					"name": "kvNamespace",
-					"annotations": {}
+					"annotations": {},
+					"type": "workerd/src/workerd/server/workerd.capnp:ServiceDesignator"
 				},
 				{
 					"name": "r2Bucket",
-					"annotations": {}
+					"annotations": {},
+					"type": "workerd/src/workerd/server/workerd.capnp:ServiceDesignator"
 				},
 				{
 					"name": "r2Admin",
-					"annotations": {}
+					"annotations": {},
+					"type": "workerd/src/workerd/server/workerd.capnp:ServiceDesignator"
 				},
 				{
 					"name": "wrapped",
-					"annotations": {}
+					"annotations": {},
+					"type": "workerd/src/workerd/server/workerd.capnp:Worker.Binding.WrappedBinding"
 				},
 				{
 					"name": "queue",
-					"annotations": {}
+					"annotations": {},
+					"type": "workerd/src/workerd/server/workerd.capnp:ServiceDesignator"
 				},
 				{
 					"name": "fromEnvironment",
-					"annotations": {}
+					"annotations": {},
+					"type": "Text"
 				},
 				{
 					"name": "analyticsEngine",
-					"annotations": {}
+					"annotations": {},
+					"type": "workerd/src/workerd/server/workerd.capnp:ServiceDesignator"
 				},
 				{
 					"name": "hyperdrive",
-					"annotations": {}
+					"annotations": {},
+					"type": "workerd/src/workerd/server/workerd.capnp:Worker.Binding.hyperdrive"
 				},
 				{
 					"name": "unsafeEval",
-					"annotations": {}
+					"annotations": {},
+					"type": "Void"
 				},
 				{
 					"name": "memoryCache",
-					"annotations": {}
+					"annotations": {},
+					"type": "workerd/src/workerd/server/workerd.capnp:Worker.Binding.memoryCache"
 				},
 				{
 					"name": "durableObjectClass",
-					"annotations": {}
+					"annotations": {},
+					"type": "workerd/src/workerd/server/workerd.capnp:ServiceDesignator"
 				},
 				{
 					"name": "workerLoader",
-					"annotations": {}
+					"annotations": {},
+					"type": "workerd/src/workerd/server/workerd.capnp:Worker.Binding.workerLoader"
+				},
+				{
+					"name": "workerdDebugPort",
+					"annotations": {},
+					"type": "Void"
 				}
 			]
 		},
@@ -5600,15 +7122,18 @@
 			"fields": [
 				{
 					"name": "name",
-					"annotations": {}
+					"annotations": {},
+					"type": "Text"
 				},
 				{
 					"name": "entrypoint",
-					"annotations": {}
+					"annotations": {},
+					"type": "Text"
 				},
 				{
 					"name": "props",
-					"annotations": {}
+					"annotations": {},
+					"type": "workerd/src/workerd/server/workerd.capnp:ServiceDesignator.props"
 				}
 			]
 		},
@@ -5617,27 +7142,33 @@
 			"fields": [
 				{
 					"name": "className",
-					"annotations": {}
+					"annotations": {},
+					"type": "Text"
 				},
 				{
 					"name": "uniqueKey",
-					"annotations": {}
+					"annotations": {},
+					"type": "Text"
 				},
 				{
 					"name": "ephemeralLocal",
-					"annotations": {}
+					"annotations": {},
+					"type": "Void"
 				},
 				{
 					"name": "preventEviction",
-					"annotations": {}
+					"annotations": {},
+					"type": "Bool"
 				},
 				{
 					"name": "enableSql",
-					"annotations": {}
+					"annotations": {},
+					"type": "Bool"
 				},
 				{
 					"name": "container",
-					"annotations": {}
+					"annotations": {},
+					"type": "workerd/src/workerd/server/workerd.capnp:Worker.DurableObjectNamespace.ContainerOptions"
 				}
 			]
 		},
@@ -5646,101 +7177,83 @@
 			"fields": [
 				{
 					"name": "unspecified",
-					"annotations": {}
+					"annotations": {},
+					"type": "Void"
 				},
 				{
 					"name": "text",
-					"annotations": {}
+					"annotations": {},
+					"type": "Void"
 				},
 				{
 					"name": "data",
-					"annotations": {}
+					"annotations": {},
+					"type": "Void"
 				},
 				{
 					"name": "json",
-					"annotations": {}
+					"annotations": {},
+					"type": "Void"
 				},
 				{
 					"name": "wasm",
-					"annotations": {}
+					"annotations": {},
+					"type": "Void"
 				},
 				{
 					"name": "cryptoKey",
-					"annotations": {}
+					"annotations": {},
+					"type": "List(workerd/src/workerd/server/workerd.capnp:Worker.Binding.CryptoKey.Usage)"
 				},
 				{
 					"name": "service",
-					"annotations": {}
+					"annotations": {},
+					"type": "Void"
 				},
 				{
 					"name": "durableObjectNamespace",
-					"annotations": {}
+					"annotations": {},
+					"type": "Void"
 				},
 				{
 					"name": "kvNamespace",
-					"annotations": {}
+					"annotations": {},
+					"type": "Void"
 				},
 				{
 					"name": "r2Bucket",
-					"annotations": {}
+					"annotations": {},
+					"type": "Void"
 				},
 				{
 					"name": "r2Admin",
-					"annotations": {}
+					"annotations": {},
+					"type": "Void"
 				},
 				{
 					"name": "queue",
-					"annotations": {}
+					"annotations": {},
+					"type": "Void"
 				},
 				{
 					"name": "analyticsEngine",
-					"annotations": {}
+					"annotations": {},
+					"type": "Void"
 				},
 				{
 					"name": "hyperdrive",
-					"annotations": {}
+					"annotations": {},
+					"type": "Void"
 				},
 				{
 					"name": "durableObjectClass",
-					"annotations": {}
-				}
-			]
-		},
-		{
-			"name": "workerd/src/workerd/server/workerd.capnp:Worker.Binding.parameter",
-			"fields": [
-				{
-					"name": "type",
-					"annotations": {}
+					"annotations": {},
+					"type": "Void"
 				},
 				{
-					"name": "optional",
-					"annotations": {}
-				}
-			]
-		},
-		{
-			"name": "workerd/src/workerd/server/workerd.capnp:Worker.Binding.hyperdrive",
-			"fields": [
-				{
-					"name": "designator",
-					"annotations": {}
-				},
-				{
-					"name": "database",
-					"annotations": {}
-				},
-				{
-					"name": "user",
-					"annotations": {}
-				},
-				{
-					"name": "password",
-					"annotations": {}
-				},
-				{
-					"name": "scheme",
-					"annotations": {}
+					"name": "workerdDebugPort",
+					"annotations": {},
+					"type": "Void"
 				}
 			]
 		},
@@ -5749,37 +7262,18 @@
 			"fields": [
 				{
 					"name": "maxKeys",
-					"annotations": {}
+					"annotations": {},
+					"type": "UInt32"
 				},
 				{
 					"name": "maxValueSize",
-					"annotations": {}
+					"annotations": {},
+					"type": "UInt32"
 				},
 				{
 					"name": "maxTotalValueSize",
-					"annotations": {}
-				}
-			]
-		},
-		{
-			"name": "workerd/src/workerd/server/workerd.capnp:Worker.Binding.memoryCache",
-			"fields": [
-				{
-					"name": "id",
-					"annotations": {}
-				},
-				{
-					"name": "limits",
-					"annotations": {}
-				}
-			]
-		},
-		{
-			"name": "workerd/src/workerd/server/workerd.capnp:Worker.Binding.workerLoader",
-			"fields": [
-				{
-					"name": "id",
-					"annotations": {}
+					"annotations": {},
+					"type": "UInt64"
 				}
 			]
 		},
@@ -5788,39 +7282,48 @@
 			"fields": [
 				{
 					"name": "raw",
-					"annotations": {}
+					"annotations": {},
+					"type": "Data"
 				},
 				{
 					"name": "hex",
-					"annotations": {}
+					"annotations": {},
+					"type": "Text"
 				},
 				{
 					"name": "base64",
-					"annotations": {}
+					"annotations": {},
+					"type": "Text"
 				},
 				{
 					"name": "pkcs8",
-					"annotations": {}
+					"annotations": {},
+					"type": "Text"
 				},
 				{
 					"name": "spki",
-					"annotations": {}
+					"annotations": {},
+					"type": "Text"
 				},
 				{
 					"name": "jwk",
-					"annotations": {}
+					"annotations": {},
+					"type": "Text"
 				},
 				{
 					"name": "algorithm",
-					"annotations": {}
+					"annotations": {},
+					"type": "workerd/src/workerd/server/workerd.capnp:Worker.Binding.CryptoKey.algorithm"
 				},
 				{
 					"name": "extractable",
-					"annotations": {}
+					"annotations": {},
+					"type": "Bool"
 				},
 				{
 					"name": "usages",
-					"annotations": {}
+					"annotations": {},
+					"type": "List(workerd/src/workerd/server/workerd.capnp:Worker.Binding.CryptoKey.Usage)"
 				}
 			]
 		},
@@ -5829,11 +7332,13 @@
 			"fields": [
 				{
 					"name": "className",
-					"annotations": {}
+					"annotations": {},
+					"type": "Text"
 				},
 				{
 					"name": "serviceName",
-					"annotations": {}
+					"annotations": {},
+					"type": "Text"
 				}
 			]
 		},
@@ -5842,41 +7347,18 @@
 			"fields": [
 				{
 					"name": "moduleName",
-					"annotations": {}
+					"annotations": {},
+					"type": "Text"
 				},
 				{
 					"name": "entrypoint",
-					"annotations": {}
+					"annotations": {},
+					"type": "Text"
 				},
 				{
 					"name": "innerBindings",
-					"annotations": {}
-				}
-			]
-		},
-		{
-			"name": "workerd/src/workerd/server/workerd.capnp:Worker.Binding.CryptoKey.algorithm",
-			"fields": [
-				{
-					"name": "name",
-					"annotations": {}
-				},
-				{
-					"name": "json",
-					"annotations": {}
-				}
-			]
-		},
-		{
-			"name": "workerd/src/workerd/server/workerd.capnp:ServiceDesignator.props",
-			"fields": [
-				{
-					"name": "empty",
-					"annotations": {}
-				},
-				{
-					"name": "json",
-					"annotations": {}
+					"annotations": {},
+					"type": "List(workerd/src/workerd/server/workerd.capnp:Worker.Binding)"
 				}
 			]
 		},
@@ -5885,7 +7367,8 @@
 			"fields": [
 				{
 					"name": "imageName",
-					"annotations": {}
+					"annotations": {},
+					"type": "Text"
 				}
 			]
 		},
@@ -5894,27 +7377,33 @@
 			"fields": [
 				{
 					"name": "keypair",
-					"annotations": {}
+					"annotations": {},
+					"type": "workerd/src/workerd/server/workerd.capnp:TlsOptions.Keypair"
 				},
 				{
 					"name": "requireClientCerts",
-					"annotations": {}
+					"annotations": {},
+					"type": "Bool"
 				},
 				{
 					"name": "trustBrowserCas",
-					"annotations": {}
+					"annotations": {},
+					"type": "Bool"
 				},
 				{
 					"name": "trustedCertificates",
-					"annotations": {}
+					"annotations": {},
+					"type": "List(Text)"
 				},
 				{
 					"name": "minVersion",
-					"annotations": {}
+					"annotations": {},
+					"type": "workerd/src/workerd/server/workerd.capnp:TlsOptions.Version"
 				},
 				{
 					"name": "cipherList",
-					"annotations": {}
+					"annotations": {},
+					"type": "Text"
 				}
 			]
 		},
@@ -5923,11 +7412,13 @@
 			"fields": [
 				{
 					"name": "privateKey",
-					"annotations": {}
+					"annotations": {},
+					"type": "Text"
 				},
 				{
 					"name": "certificateChain",
-					"annotations": {}
+					"annotations": {},
+					"type": "Text"
 				}
 			]
 		},
@@ -5936,57 +7427,33 @@
 			"fields": [
 				{
 					"name": "style",
-					"annotations": {}
+					"annotations": {},
+					"type": "workerd/src/workerd/server/workerd.capnp:HttpOptions.Style"
 				},
 				{
 					"name": "forwardedProtoHeader",
-					"annotations": {}
+					"annotations": {},
+					"type": "Text"
 				},
 				{
 					"name": "cfBlobHeader",
-					"annotations": {}
+					"annotations": {},
+					"type": "Text"
 				},
 				{
 					"name": "injectRequestHeaders",
-					"annotations": {}
+					"annotations": {},
+					"type": "List(workerd/src/workerd/server/workerd.capnp:HttpOptions.Header)"
 				},
 				{
 					"name": "injectResponseHeaders",
-					"annotations": {}
+					"annotations": {},
+					"type": "List(workerd/src/workerd/server/workerd.capnp:HttpOptions.Header)"
 				},
 				{
 					"name": "capnpConnectHost",
-					"annotations": {}
-				}
-			]
-		},
-		{
-			"name": "workerd/src/workerd/server/workerd.capnp:ExternalServer.https",
-			"fields": [
-				{
-					"name": "options",
-					"annotations": {}
-				},
-				{
-					"name": "tlsOptions",
-					"annotations": {}
-				},
-				{
-					"name": "certificateHost",
-					"annotations": {}
-				}
-			]
-		},
-		{
-			"name": "workerd/src/workerd/server/workerd.capnp:ExternalServer.tcp",
-			"fields": [
-				{
-					"name": "tlsOptions",
-					"annotations": {}
-				},
-				{
-					"name": "certificateHost",
-					"annotations": {}
+					"annotations": {},
+					"type": "Text"
 				}
 			]
 		},
@@ -5995,24 +7462,13 @@
 			"fields": [
 				{
 					"name": "name",
-					"annotations": {}
+					"annotations": {},
+					"type": "Text"
 				},
 				{
 					"name": "value",
-					"annotations": {}
-				}
-			]
-		},
-		{
-			"name": "workerd/src/workerd/server/workerd.capnp:Socket.https",
-			"fields": [
-				{
-					"name": "options",
-					"annotations": {}
-				},
-				{
-					"name": "tlsOptions",
-					"annotations": {}
+					"annotations": {},
+					"type": "Text"
 				}
 			]
 		},
@@ -6021,15 +7477,18 @@
 			"fields": [
 				{
 					"name": "name",
-					"annotations": {}
+					"annotations": {},
+					"type": "Text"
 				},
 				{
 					"name": "internal",
-					"annotations": {}
+					"annotations": {},
+					"type": "Bool"
 				},
 				{
 					"name": "esModule",
-					"annotations": {}
+					"annotations": {},
+					"type": "Text"
 				}
 			]
 		},
@@ -6038,11 +7497,13 @@
 			"fields": [
 				{
 					"name": "name",
-					"annotations": {}
+					"annotations": {},
+					"type": "Text"
 				},
 				{
 					"name": "value",
-					"annotations": {}
+					"annotations": {},
+					"type": "Text"
 				}
 			]
 		},
@@ -6051,23 +7512,28 @@
 			"fields": [
 				{
 					"name": "type",
-					"annotations": {}
+					"annotations": {},
+					"type": "Text"
 				},
 				{
 					"name": "specifier",
-					"annotations": {}
+					"annotations": {},
+					"type": "Text"
 				},
 				{
 					"name": "rawSpecifier",
-					"annotations": {}
+					"annotations": {},
+					"type": "Text"
 				},
 				{
 					"name": "referrer",
-					"annotations": {}
+					"annotations": {},
+					"type": "Text"
 				},
 				{
 					"name": "attributes",
-					"annotations": {}
+					"annotations": {},
+					"type": "List(workerd/src/workerd/server/workerd.capnp:FallbackServiceRequest.Attribute)"
 				}
 			]
 		}
@@ -6526,6 +7992,19 @@
 			]
 		},
 		{
+			"name": "workerd/src/workerd/server/channel-token.capnp:ChannelToken.Type",
+			"enumerants": [
+				{
+					"name": "subrequest",
+					"annotations": {}
+				},
+				{
+					"name": "actorClass",
+					"annotations": {}
+				}
+			]
+		},
+		{
 			"name": "workerd/src/workerd/server/log-schema.capnp:LogEntry.LogLevel",
 			"enumerants": [
 				{
@@ -6646,6 +8125,8 @@
 			"methods": [
 				{
 					"name": "txn",
+					"paramType": "workerd/src/workerd/io/actor-storage.capnp:ActorStorage.Stage.txn$Params",
+					"resultType": "workerd/src/workerd/io/actor-storage.capnp:ActorStorage.Stage.txn$Results",
 					"annotations": {}
 				}
 			]
@@ -6655,6 +8136,8 @@
 			"methods": [
 				{
 					"name": "getStage",
+					"paramType": "workerd/src/workerd/io/actor-storage.capnp:ActorStorage.getStage$Params",
+					"resultType": "workerd/src/workerd/io/actor-storage.capnp:ActorStorage.getStage$Results",
 					"annotations": {}
 				}
 			]
@@ -6664,10 +8147,14 @@
 			"methods": [
 				{
 					"name": "commit",
+					"paramType": "workerd/src/workerd/io/actor-storage.capnp:ActorStorage.Stage.Transaction.commit$Params",
+					"resultType": "workerd/src/workerd/io/actor-storage.capnp:ActorStorage.Stage.Transaction.commit$Results",
 					"annotations": {}
 				},
 				{
 					"name": "rollback",
+					"paramType": "workerd/src/workerd/io/actor-storage.capnp:ActorStorage.Stage.Transaction.rollback$Params",
+					"resultType": "workerd/src/workerd/io/actor-storage.capnp:ActorStorage.Stage.Transaction.rollback$Results",
 					"annotations": {}
 				}
 			]
@@ -6677,42 +8164,62 @@
 			"methods": [
 				{
 					"name": "get",
+					"paramType": "workerd/src/workerd/io/actor-storage.capnp:ActorStorage.Operations.get$Params",
+					"resultType": "workerd/src/workerd/io/actor-storage.capnp:ActorStorage.Operations.get$Results",
 					"annotations": {}
 				},
 				{
 					"name": "put",
+					"paramType": "workerd/src/workerd/io/actor-storage.capnp:ActorStorage.Operations.put$Params",
+					"resultType": "workerd/src/workerd/io/actor-storage.capnp:ActorStorage.Operations.put$Results",
 					"annotations": {}
 				},
 				{
 					"name": "delete",
+					"paramType": "workerd/src/workerd/io/actor-storage.capnp:ActorStorage.Operations.delete$Params",
+					"resultType": "workerd/src/workerd/io/actor-storage.capnp:ActorStorage.Operations.delete$Results",
 					"annotations": {}
 				},
 				{
 					"name": "list",
+					"paramType": "workerd/src/workerd/io/actor-storage.capnp:ActorStorage.Operations.list$Params",
+					"resultType": "workerd/src/workerd/io/actor-storage.capnp:ActorStorage.Operations.list$Results",
 					"annotations": {}
 				},
 				{
 					"name": "getMultiple",
+					"paramType": "workerd/src/workerd/io/actor-storage.capnp:ActorStorage.Operations.getMultiple$Params",
+					"resultType": "workerd/src/workerd/io/actor-storage.capnp:ActorStorage.Operations.getMultiple$Results",
 					"annotations": {}
 				},
 				{
 					"name": "deleteAll",
+					"paramType": "workerd/src/workerd/io/actor-storage.capnp:ActorStorage.Operations.deleteAll$Params",
+					"resultType": "workerd/src/workerd/io/actor-storage.capnp:ActorStorage.Operations.deleteAll$Results",
 					"annotations": {}
 				},
 				{
 					"name": "getAlarm",
+					"paramType": "workerd/src/workerd/io/actor-storage.capnp:ActorStorage.Operations.getAlarm$Params",
+					"resultType": "workerd/src/workerd/io/actor-storage.capnp:ActorStorage.Operations.getAlarm$Results",
 					"annotations": {}
 				},
 				{
 					"name": "setAlarm",
+					"paramType": "workerd/src/workerd/io/actor-storage.capnp:ActorStorage.Operations.setAlarm$Params",
+					"resultType": "workerd/src/workerd/io/actor-storage.capnp:ActorStorage.Operations.setAlarm$Results",
 					"annotations": {}
 				},
 				{
 					"name": "deleteAlarm",
+					"paramType": "workerd/src/workerd/io/actor-storage.capnp:ActorStorage.Operations.deleteAlarm$Params",
+					"resultType": "workerd/src/workerd/io/actor-storage.capnp:ActorStorage.Operations.deleteAlarm$Results",
 					"annotations": {}
 				},
 				{
 					"name": "rename",
+					"paramType": "workerd/src/workerd/io/actor-storage.capnp:ActorStorage.Operations.rename$Params",
+					"resultType": "workerd/src/workerd/io/actor-storage.capnp:ActorStorage.Operations.rename$Results",
 					"annotations": {}
 				}
 			]
@@ -6722,10 +8229,14 @@
 			"methods": [
 				{
 					"name": "values",
+					"paramType": "workerd/src/workerd/io/actor-storage.capnp:ActorStorage.ListStream.values$Params",
+					"resultType": "capnp/stream.capnp:StreamResult",
 					"annotations": {}
 				},
 				{
 					"name": "end",
+					"paramType": "workerd/src/workerd/io/actor-storage.capnp:ActorStorage.ListStream.end$Params",
+					"resultType": "workerd/src/workerd/io/actor-storage.capnp:ActorStorage.ListStream.end$Results",
 					"annotations": {}
 				}
 			]
@@ -6764,8 +8275,17 @@
 		"workerd/src/workerd/io/outcome.capnp",
 		"workerd/src/workerd/io/script-version.capnp",
 		"workerd/src/workerd/io/trace.capnp",
+		"workerd/src/workerd/jsg/exception-metadata.capnp",
 		"workerd/src/workerd/jsg/modules.capnp",
+		"workerd/src/workerd/jsg/resource-test.capnp",
+		"workerd/src/workerd/jsg/resource-test.capnp:builtinBundle",
+		"workerd/src/workerd/jsg/resource-test.capnp:bootstrapBundle",
+		"workerd/src/workerd/jsg/rtti-test.capnp",
+		"workerd/src/workerd/jsg/rtti-test.capnp:testBundle",
 		"workerd/src/workerd/jsg/rtti.capnp",
+		"workerd/src/workerd/server/channel-token.capnp",
+		"workerd/src/workerd/server/channel-token.capnp:ChannelToken.rpcTokenMagic",
+		"workerd/src/workerd/server/channel-token.capnp:ChannelToken.storageTokenMagic",
 		"workerd/src/workerd/server/docker-api.capnp",
 		"workerd/src/workerd/server/log-schema.capnp",
 		"workerd/src/workerd/server/workerd.capnp"
