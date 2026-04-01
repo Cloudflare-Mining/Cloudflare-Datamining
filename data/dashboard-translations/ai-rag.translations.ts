@@ -252,7 +252,11 @@
 				},
 				keyword_match_mode: {
 					title: "Keyword match mode",
-					description: "Select how keywords are matched during hybrid search."
+					description: "Choose how your search terms should be combined."
+				},
+				keyword_tokenizer: {
+					title: "Keyword tokenizer",
+					description: "Select the tokenizer used for keyword search indexing. Changing this triggers a full re-index."
 				}
 			},
 			chunking: {
@@ -509,7 +513,7 @@
 			description: "Configure the model and system prompt used to generate responses.",
 			model: "Generation model",
 			system_prompt: "System prompt",
-			note: (0, r.p)(n()),
+			note: (0, r.p)(a()),
 			drawer: {
 				title: "Generation model"
 			}
@@ -527,7 +531,8 @@
 			title: "Hybrid search",
 			description: "Enable hybrid search to combine vector and keyword search for improved results.",
 			fusion_method: "Fusion method",
-			keyword_match_mode: "Keyword match mode"
+			keyword_match_mode: "Keyword match mode",
+			keyword_tokenizer: "Keyword tokenizer"
 		},
 		public_url: {
 			title: "Public URL",
@@ -665,6 +670,33 @@
 			context_expansion: {
 				title: "Context expansion",
 				description: "Control the amount of surrounding context returned with each chunk. Higher = more context."
+			},
+			filter: {
+				title: "Metadata filters",
+				edit_button: "Edit",
+				no_filters: "None",
+				modal_title: "Metadata Filters",
+				modal_description: "Filter search results by metadata fields attached to your indexed content.",
+				add_filter: "Add filter",
+				apply: "Apply",
+				clear_all: "Clear all",
+				field_label: "Field",
+				operator_label: "Operator",
+				value_label: "Value",
+				value_placeholder_single: "Enter value",
+				value_placeholder_array: "val1, val2, ...",
+				value_placeholder_date: "Select date",
+				value_placeholder_dates: "Select dates",
+				value_dates_selected: "{count} date(s) selected",
+				remove_filter_aria: "Remove filter",
+				op_eq: "equals",
+				op_ne: "not equals",
+				op_gt: "greater than",
+				op_gte: "greater than or equal",
+				op_lt: "less than",
+				op_lte: "less than or equal",
+				op_in: "in",
+				op_nin: "not in"
 			}
 		},
 		search: {
@@ -675,6 +707,13 @@
 				description: "Description",
 				source: "Source",
 				score: "Score",
+				score_details: "Score details",
+				keyword_score: "Keyword score",
+				vector_score: "Vector score",
+				keyword_rank: "Keyword rank",
+				vector_rank: "Vector rank",
+				reranking_score: "Reranking score",
+				fusion_method: "Fusion method",
 				timestamp: "Last updated",
 				chunk_id: "Chunk ID",
 				modal_title: "Full Content",
@@ -839,13 +878,32 @@
 		}
 	},
 	keyword_match_mode: {
+		description: "Choose how your search terms should be combined.",
+		and: {
+			title: "AND",
+			description: "Show only results that contain <b>all</b> of your search terms."
+		},
+		or: {
+			title: "OR",
+			description: "Show results that contain <b>at least one</b> of your search terms."
+		},
 		exact_match: {
 			title: "Exact match",
-			description: "Only matches results that contain <b>all</b> keywords in the query."
+			description: "Show only results that contain your search terms exactly as written."
 		},
 		fuzzy_match: {
 			title: "Fuzzy match",
-			description: "Matches results that contain <b>one or more</b> keywords from the query."
+			description: "Show results that contain your search terms with minor variations."
+		}
+	},
+	keyword_tokenizer: {
+		porter: {
+			title: "Porter stemming",
+			description: "Word-level tokenization with Porter stemming. Good for natural language queries."
+		},
+		trigram: {
+			title: "Trigram",
+			description: "Character-level substring matching. Good for partial matches, code, and identifiers."
 		}
 	},
 	errors: {

@@ -1,12 +1,12 @@
 [
 	"/[id]/api-tokens",
-	"/api/v4/accounts/[id]/tokens",
-	"/api/v4/accounts/[id]/tokens/[id]/*",
-	"/api/v4/accounts/[id]/tokens/[id]/value",
-	"/api/v4/user/tokens",
-	"/api/v4/user/tokens/[id]/*",
+	"/accounts/[id]/tokens",
+	"/accounts/[id]/tokens/[id]/*",
+	"/accounts/[id]/tokens/[id]/value",
 	"/create",
 	"/tokens/[id]/*",
 	"/tokens/[id]/summary",
-	"/user/api-tokens"
+	"/user/api-tokens",
+	"/user/tokens",
+	"/user/tokens/[id]/*"
 ]

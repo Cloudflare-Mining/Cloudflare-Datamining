@@ -19,13 +19,13 @@
 			}
 		},
 		column_name: {
-			[i.Xt.Id]: "Report ID",
-			[i.Xt.CDate]: "Date",
-			[i.Xt.Domain]: "Domain",
-			[i.Xt.Type]: "Report type",
-			[i.Xt.Status]: "Report status",
-			[i.Xt.AcceptedUrls]: "Accepted URLs",
-			[i.Xt.MitigationSummary]: "Cloudflare mitigations"
+			[n.Xt.Id]: "Report ID",
+			[n.Xt.CDate]: "Date",
+			[n.Xt.Domain]: "Domain",
+			[n.Xt.Type]: "Report type",
+			[n.Xt.Status]: "Report status",
+			[n.Xt.AcceptedUrls]: "Accepted URLs",
+			[n.Xt.MitigationSummary]: "Cloudflare mitigations"
 		},
 		mitigation_summary: {
 			accepted_url_count: "%{smart_count} accepted",
@@ -38,9 +38,9 @@
 		},
 		view_mitigations_link: "View mitigations",
 		filter: {
-			[i.Xt.Domain]: "Domain",
-			[i.Xt.Status]: "Report status",
-			[i.Xt.Type]: "Report type",
+			[n.Xt.Domain]: "Domain",
+			[n.Xt.Status]: "Report status",
+			[n.Xt.Type]: "Report type",
 			mitigation_status: "Mitigation status"
 		}
 	},
@@ -58,15 +58,15 @@
 			error: "Error fetching mitigations. Please try again."
 		},
 		column_name: {
-			[i.on.EffectiveDate]: "Date",
-			[i.on.Type]: "Mitigation",
-			[i.on.Status]: "Status",
-			[i.on.EntityType]: "Entity type",
-			[i.on.EntityId]: "Entity name or ID"
+			[n.on.EffectiveDate]: "Date",
+			[n.on.Type]: "Mitigation",
+			[n.on.Status]: "Status",
+			[n.on.EntityType]: "Entity type",
+			[n.on.EntityId]: "Entity name or ID"
 		},
 		filter: {
-			[i.on.Status]: "Status",
-			[i.on.Type]: "Mitigation"
+			[n.on.Status]: "Status",
+			[n.on.Type]: "Mitigation"
 		},
 		not_appealable: "This mitigation type is not appealable."
 	},
@@ -129,26 +129,26 @@
 		network_block: "Network block"
 	},
 	report_type: {
-		[i.fs.EMERGENCY]: "CSAM",
-		[i.fs.DMCA]: "Copyright",
-		[i.fs.GENERAL]: "General",
-		[i.fs.NCSEI]: "NCSEI",
-		[i.fs.PHISHING]: "Phishing",
-		[i.fs.REGISTRAR_WHOIS]: "Registrar",
-		[i.fs.THREAT]: "Threat",
-		[i.fs.TRADEMARK]: "Trademark",
-		[i.fs.NETWORK]: "Network"
+		[n.fs.EMERGENCY]: "CSAM",
+		[n.fs.DMCA]: "Copyright",
+		[n.fs.GENERAL]: "General",
+		[n.fs.NCSEI]: "NCSEI",
+		[n.fs.PHISHING]: "Phishing",
+		[n.fs.REGISTRAR_WHOIS]: "Registrar",
+		[n.fs.THREAT]: "Threat",
+		[n.fs.TRADEMARK]: "Trademark",
+		[n.fs.NETWORK]: "Network"
 	},
 	report_type_long: {
-		[i.fs.EMERGENCY]: "Child Sexual Abuse Material (CSAM)",
-		[i.fs.DMCA]: "Copyright Infringement & DMCA Violations",
-		[i.fs.GENERAL]: "General",
-		[i.fs.NCSEI]: "Non-Consensual Sexually Explicit Imagery (NCSEI)",
-		[i.fs.PHISHING]: "Phishing",
-		[i.fs.REGISTRAR_WHOIS]: "Registrar",
-		[i.fs.THREAT]: "Threat",
-		[i.fs.TRADEMARK]: "Trademark",
-		[i.fs.NETWORK]: "Network"
+		[n.fs.EMERGENCY]: "Child Sexual Abuse Material (CSAM)",
+		[n.fs.DMCA]: "Copyright Infringement & DMCA Violations",
+		[n.fs.GENERAL]: "General",
+		[n.fs.NCSEI]: "Non-Consensual Sexually Explicit Imagery (NCSEI)",
+		[n.fs.PHISHING]: "Phishing",
+		[n.fs.REGISTRAR_WHOIS]: "Registrar",
+		[n.fs.THREAT]: "Threat",
+		[n.fs.TRADEMARK]: "Trademark",
+		[n.fs.NETWORK]: "Network"
 	},
 	api_handling: {
 		error: "Error",
@@ -206,12 +206,12 @@
 		submitter_telephone: "Telephone"
 	},
 	report_summary_values: {
-		active: (0, a.p)(s(), "activeCount")
+		active: (0, r.p)(i(), "activeCount")
 	},
 	breadcrumb_titles: {
 		manage_account: "Manage Account",
 		abuse: "Abuse Reports",
-		abuse_report: (0, a.p)(c(), "reportId")
+		abuse_report: (0, r.p)(l(), "reportId")
 	},
 	product_documentation: "Documentation",
 	date_range: "Date range",

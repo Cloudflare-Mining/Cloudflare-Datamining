@@ -19,12 +19,12 @@
 				},
 				performance: {
 					header: "Performance",
-					description: (0, o.p)(d())
+					description: (0, o.p)(u())
 				}
 			}
 		},
 		messages: {
-			max_rules_exceeded: (0, o.p)(u(), "zonePlan"),
+			max_rules_exceeded: (0, o.p)(d(), "zonePlan"),
 			rule_deployed: (0, o.p)(p())
 		},
 		configurations: {
@@ -48,7 +48,7 @@
 				title: "Super Bot Fight Mode",
 				business_description: "Block AI bots and challenge complex bots using machine learning and prevent threats like content scraping using the standard configuration of Super Bot Fight Mode.",
 				pro_description: "Block AI bots and challenge bots from any source that may carry out attacks like content scraping and credential stuffing using the standard configuration of Super Bot Fight Mode.",
-				footer: (0, o.p)(m())
+				footer: (0, o.p)(f())
 			},
 			page_shield: {
 				title: "Client-side security",
@@ -73,7 +73,7 @@
 			always_online: {
 				title: "Always Online™",
 				description: "Allow visitors to access your domain even when your origin server is unavailable by serving limited copies of pages from the Internet Archive's Wayback Machine.",
-				supplementalDetails: (0, o.p)(f())
+				supplementalDetails: (0, o.p)(m())
 			},
 			speed_optimization: {
 				title: "Speed optimizations",

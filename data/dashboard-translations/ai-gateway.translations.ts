@@ -384,7 +384,30 @@
 				enable_toggle: "Enable DLP",
 				profiles_label: "DLP Profiles",
 				profiles_placeholder: "Select DLP profiles to apply",
-				no_profiles: "No DLP profiles available"
+				profiles_description: "The AI requests/responses will be checked against each of the selected profiles.",
+				profiles_search_placeholder: "Search profiles",
+				manage_profiles: "Manage profiles",
+				no_profiles: "No DLP profiles available",
+				no_policies: 'No policies configured. Click "Add Policy" to create your first DLP policy.',
+				saved: "DLP settings saved",
+				save_error: "Failed to save DLP settings",
+				policies: "Policies",
+				add_policy: "Add Policy",
+				policy_id: "Policy ID",
+				policy_name_placeholder: "Policy name",
+				action_label: "Action",
+				action_description: "If any of the selected profiles match a request, this is the action that will be taken",
+				check_label: "Check",
+				check_placeholder: "Select what to check",
+				check_description: "Choose whether to check the request, response, or both",
+				check_request: "Request",
+				check_response: "Response",
+				validation: {
+					policy_id_required: "Policy ID is required",
+					profile_required: "At least one profile must be selected",
+					action_required: "Action is required",
+					check_required: "Check option is required"
+				}
 			}
 		},
 		auth: {
@@ -609,7 +632,19 @@
 			error: "Failed to delete route. Please try again."
 		},
 		save_version: {
-			invalid_schema_warning: "Route has validation errors. You can save, but deploying is disabled until errors are fixed."
+			invalid_schema_warning: "Route has validation errors. You can save, but deploying is disabled until errors are fixed.",
+			save: "Save",
+			save_and_deploy: "Save and Deploy",
+			deploy: "Deploy",
+			save_error: "Failed to save version. Please try again.",
+			deploy_error: "Failed to deploy version. Please try again."
+		},
+		deploy_confirm: {
+			title: "Deploy version",
+			message: "This will make the selected version live and replace the currently deployed configuration. Are you sure you want to continue?",
+			cancel: "Cancel",
+			confirm: "Deploy",
+			message_with_version: "This will deploy version %{versionId} and replace the currently deployed configuration. Are you sure you want to continue?"
 		},
 		deploy_disabled_tooltip: "Fix validation errors before deploying"
 	},
@@ -772,13 +807,25 @@
 	toast: {
 		no_gateways: (0, i.p)(f()),
 		limits: {
-			free: {
-				almost_full: "You are nearing the limit of logs that can be stored for <b>the free plan (100k per account)</b>. See <0>docs</0> to learn more.",
-				full: "You have reached the limit of logs that can be stored for <b>the free plan (100k per account)</b>. See <0>docs</0> to learn more."
+			almost_full: {
+				free: {
+					delete_oldest: "You're approaching your log storage limit of <b>%{limit}</b> logs per account. When the limit is reached, the oldest logs will be automatically deleted to make room for new ones. <1>View settings</1> or see <0>docs</0> to learn more.",
+					stop_inserting: "You're approaching your log storage limit of <b>%{limit}</b> logs per account. When the limit is reached, new logs will stop being saved. <1>Change in settings</1> or see <0>docs</0> to learn more."
+				},
+				paid: {
+					delete_oldest: "You're approaching your log storage limit of <b>%{limit}</b> logs per gateway. When the limit is reached, the oldest logs will be automatically deleted to make room for new ones. <1>View settings</1> or see <0>docs</0> to learn more.",
+					stop_inserting: "You're approaching your log storage limit of <b>%{limit}</b> logs per gateway. When the limit is reached, new logs will stop being saved. <1>Change in settings</1> or see <0>docs</0> to learn more."
+				}
 			},
-			paid: {
-				almost_full: "You are nearing the limit of logs that can be stored <b>in each gateway (10M)</b>. See <0>docs</0> to learn more.",
-				full: "You have reached the limit of logs that can be stored <b>in each gateway (10M)</b>. See <0>docs</0> to learn more."
+			full: {
+				free: {
+					delete_oldest: "You've reached your log storage limit of <b>%{limit}</b> logs per account. The oldest logs are being automatically deleted to make room for new ones. <1>View settings</1> or see <0>docs</0> to learn more.",
+					stop_inserting: "You've reached your log storage limit of <b>%{limit}</b> logs per account. New logs are no longer being saved. <1>Change in settings</1> or see <0>docs</0> to learn more."
+				},
+				paid: {
+					delete_oldest: "You've reached your log storage limit of <b>%{limit}</b> logs per gateway. The oldest logs are being automatically deleted to make room for new ones. <1>View settings</1> or see <0>docs</0> to learn more.",
+					stop_inserting: "You've reached your log storage limit of <b>%{limit}</b> logs per gateway. New logs are no longer being saved. <1>Change in settings</1> or see <0>docs</0> to learn more."
+				}
 			}
 		}
 	},
@@ -817,6 +864,7 @@
 		title: "Credits",
 		add_payment_error: "Add a payment method to purchase credits",
 		add_payment_error_redirect: "Set up billing",
+		no_billing_permission: "You do not have permission to manage billing for this account. Contact your account administrator to request access.",
 		top_up: "Top-up credits",
 		credits_avail: "Credits available",
 		topup_description: "You can purchase credits using your stored payment methods. These can be utilized to against any supported provider-model combinations via Cloudflare AI Gateway.",

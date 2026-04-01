@@ -69,7 +69,7 @@
 				table: {
 					column: {
 						source: "Source",
-						created_on: "Created",
+						triggered_by: "Triggered by",
 						commit_message: "Commit message",
 						status: "Status",
 						uuid: "Build UUID"

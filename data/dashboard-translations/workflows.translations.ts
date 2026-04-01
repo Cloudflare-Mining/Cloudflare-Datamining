@@ -202,6 +202,8 @@
 			stop: "Terminate",
 			restart: "Restart"
 		},
+		copyInstanceId: "Copy instance ID",
+		copied: "Copied",
 		summary: "Summary",
 		stats: {
 			status: "Status",
