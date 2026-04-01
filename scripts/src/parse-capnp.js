@@ -1,5 +1,5 @@
 import { execSync } from 'node:child_process';
-import { readdirSync } from 'node:fs';
+import { existsSync, readdirSync } from 'node:fs';
 import path from 'node:path';
 
 import { Message } from 'capnp-es';
@@ -46,6 +46,15 @@ function extractAnnotations(annotations, nodeMap) {
 	return result;
 }
 
+function findCapnpSystemInclude() {
+	for (const dir of ['/usr/local/include', '/usr/include']) {
+		if (existsSync(path.join(dir, 'capnp', 'c++.capnp'))) {
+			return dir;
+		}
+	}
+	return null;
+}
+
 function findCapnpFiles(workerdDir) {
 	const srcDir = path.join(workerdDir, 'src', 'workerd');
 	const entries = readdirSync(srcDir, { recursive: true });
@@ -54,10 +63,19 @@ function findCapnpFiles(workerdDir) {
 		.map(entry => `workerd/src/workerd/${entry.replaceAll('\\', '/')}`);
 }
 
-function runCapnpc(files, importPath, cwd) {
+function buildImportFlags(workerdImportPath) {
+	const flags = [`-I "${workerdImportPath}"`];
+	const systemInclude = findCapnpSystemInclude();
+	if (systemInclude) {
+		flags.push(`-I "${systemInclude}"`);
+	}
+	return flags.join(' ');
+}
+
+function runCapnpc(files, importFlags, cwd) {
 	try {
 		return execSync(
-			`capnpc -o- -I "${importPath}" ${files.join(' ')}`,
+			`capnpc -o- ${importFlags} ${files.join(' ')}`,
 			{ cwd, maxBuffer: 50 * 1024 * 1024 },
 		);
 	} catch (error) {
@@ -85,7 +103,7 @@ function runCapnpc(files, importPath, cwd) {
 
 		console.warn(`Retrying without ${files.length - remaining.length} problematic file(s)`);
 		return execSync(
-			`capnpc -o- -I "${importPath}" ${remaining.join(' ')}`,
+			`capnpc -o- ${importFlags} ${remaining.join(' ')}`,
 			{ cwd, maxBuffer: 50 * 1024 * 1024 },
 		);
 	}
@@ -95,7 +113,7 @@ export function parseWorkerdCapnp(workerdDir) {
 	// workerdDir should be a path like '../temp/workerd'
 	// We run capnpc from the parent dir so display names start with 'workerd/src/...'
 	const cwd = path.resolve(path.dirname(workerdDir));
-	const importPath = 'workerd/src';
+	const importFlags = buildImportFlags('workerd/src');
 
 	const files = findCapnpFiles(path.resolve(workerdDir));
 	if (files.length === 0) {
@@ -103,7 +121,7 @@ export function parseWorkerdCapnp(workerdDir) {
 	}
 	console.log(`Found ${files.length} .capnp files to compile`);
 
-	const stdout = runCapnpc(files, importPath, cwd);
+	const stdout = runCapnpc(files, importFlags, cwd);
 
 	// Parse the CodeGeneratorRequest binary output with capnp-es
 	const buf = new Uint8Array(stdout).buffer;
