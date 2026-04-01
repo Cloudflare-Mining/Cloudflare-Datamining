@@ -3,7 +3,7 @@ import { existsSync, readdirSync } from 'node:fs';
 import path from 'node:path';
 
 import { Message } from 'capnp-es';
-import { CodeGeneratorRequest, Node_Which, Value_Which } from 'capnp-es/capnp/schema';
+import { CodeGeneratorRequest, Field_Which, Node_Which, Type_Which, Value_Which } from 'capnp-es/capnp/schema';
 
 function extractAnnotations(annotations, nodeMap) {
 	const result = {};
@@ -44,6 +44,66 @@ function extractAnnotations(annotations, nodeMap) {
 		}
 	}
 	return result;
+}
+
+const PRIMITIVE_TYPE_NAMES = new Map([
+	[Type_Which.VOID, 'Void'],
+	[Type_Which.BOOL, 'Bool'],
+	[Type_Which.INT8, 'Int8'],
+	[Type_Which.INT16, 'Int16'],
+	[Type_Which.INT32, 'Int32'],
+	[Type_Which.INT64, 'Int64'],
+	[Type_Which.UINT8, 'UInt8'],
+	[Type_Which.UINT16, 'UInt16'],
+	[Type_Which.UINT32, 'UInt32'],
+	[Type_Which.UINT64, 'UInt64'],
+	[Type_Which.FLOAT32, 'Float32'],
+	[Type_Which.FLOAT64, 'Float64'],
+	[Type_Which.TEXT, 'Text'],
+	[Type_Which.DATA, 'Data'],
+]);
+
+function typeToString(type, nodeMap) {
+	const primitive = PRIMITIVE_TYPE_NAMES.get(type.which());
+	if (primitive) { return primitive; }
+
+	switch (type.which()) {
+		case Type_Which.LIST: {
+			return `List(${typeToString(type.list.elementType, nodeMap)})`;
+		}
+		case Type_Which.STRUCT: {
+			const node = nodeMap.get(type.struct.typeId);
+			return node ? node.displayName : 'Struct';
+		}
+		case Type_Which.ENUM: {
+			const node = nodeMap.get(type.enum.typeId);
+			return node ? node.displayName : 'Enum';
+		}
+		case Type_Which.INTERFACE: {
+			const node = nodeMap.get(type.interface.typeId);
+			return node ? node.displayName : 'Interface';
+		}
+		case Type_Which.ANY_POINTER: {
+			return 'AnyPointer';
+		}
+		default: {
+			return 'Unknown';
+		}
+	}
+}
+
+function fieldToObject(field, nodeMap) {
+	const base = {
+		name: field.name,
+		annotations: extractAnnotations(field.annotations, nodeMap),
+	};
+	if (field.which() === Field_Which.GROUP) {
+		const groupNode = nodeMap.get(field.group.typeId);
+		base.type = groupNode ? groupNode.displayName : 'Group';
+	} else {
+		base.type = typeToString(field.slot.type, nodeMap);
+	}
+	return base;
 }
 
 function findCapnpSystemInclude() {
@@ -147,12 +207,7 @@ export function parseWorkerdCapnp(workerdDir) {
 				if (node.struct.isGroup) { break; }
 				structs.push({
 					name,
-					fields: Array.from(node.struct.fields, (field) => {
-						return {
-							name: field.name,
-							annotations: extractAnnotations(field.annotations, nodeMap),
-						};
-					}),
+					fields: Array.from(node.struct.fields, (field) => fieldToObject(field, nodeMap)),
 				});
 				break;
 			}
@@ -172,8 +227,12 @@ export function parseWorkerdCapnp(workerdDir) {
 				interfaces.push({
 					name,
 					methods: Array.from(node.interface.methods, (m) => {
+						const paramNode = nodeMap.get(m.paramStructType);
+						const resultNode = nodeMap.get(m.resultStructType);
 						return {
 							name: m.name,
+							paramType: paramNode?.displayName ?? null,
+							resultType: resultNode?.displayName ?? null,
 							annotations: extractAnnotations(m.annotations, nodeMap),
 						};
 					}),
