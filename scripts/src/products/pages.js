@@ -102,7 +102,7 @@ for (const req of reqs) {
 if (!results['deployments-create']?.result?.id) {
 	// no deployment created. What did Walshy break now?
 	console.log('Missing deployment. Can\'t get any more Pages details');
-	// eslint-disable-next-line no-process-exit
+
 	process.exit(0);
 }
 
