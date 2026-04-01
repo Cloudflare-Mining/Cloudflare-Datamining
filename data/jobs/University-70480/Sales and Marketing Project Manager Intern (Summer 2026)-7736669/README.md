@@ -15,6 +15,7 @@
 	<li><strong>AI Strategy and Automation: </strong>Support the research, classification, and prioritization of AI use cases for RevOps/Sales or Marketing, including defining the AI operating model and helping to automate manual, repetitive tasks using 'No-Code' platforms and AI tools.</li>
 	<li><strong>Tech Stack Analysis &amp; Collaboration:</strong> Contribute to efforts to build a unified tech stack, assisting with 'build vs. buy' evaluations for new tools. You will also collaborate with IT and engineering to prototype and validate AI solutions.</li>
 	<li><strong>Recommendations:</strong> Help synthesize findings and data into clear, measurable recommendations that align with sales motions and business outcomes.</li>
+	<li><strong>Ability to commit to a minimum 12 week summer internship from May to August 2026.</strong></li>
 	<li><strong>In office 3-5 days a week in Singapore.</strong></li>
 </ul>
 <p><strong>Skills &amp; Qualifications</strong></p>

@@ -29,8 +29,9 @@
 	<li><strong>Coding/Scripting Basics:</strong> Introductory experience with at least one scripting language (like Python or Bash) and a strong desire to learn how to apply it to infrastructure automation.</li>
 	<li><strong>Hands-On Mentality:</strong> Comfort with physical labor in a data center environment (lifting hardware, running cables, working in noisy/cooled environments).</li>
 	<li><strong>Linux Basics:</strong> Familiarity with basic Linux/Unix command-line navigation and troubleshooting.</li>
-	<li>Ability to commit to a minimum 12 week summer internship.</li>
-	<li>In office 3-5 days a week in Singapore.</li>
+	<li><strong>Ability to commit to a minimum 12 week summer internship from May to August 2026.</strong></li>
+	<li><strong>In office 3-5 days a week in Singapore.</strong></li>
+	<li>&nbsp;</li>
 </ul>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
