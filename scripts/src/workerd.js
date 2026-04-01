@@ -4,6 +4,7 @@ import path from 'node:path';
 import dateFormat from 'dateformat';
 import fs from 'fs-extra';
 
+import { parseWorkerdCapnp } from './parse-capnp.js';
 import { tryAndPush } from './utils.js';
 
 async function run() {
@@ -19,18 +20,19 @@ async function run() {
 		console.log('Failed to fetch pyodide lock');
 	}
 
-	// get capnp-parse output
+	// parse workerd capnp schemas
 	try {
-		console.log('Parsing workerd capnp-parse output');
+		console.log('Parsing workerd capnp schemas');
 		await fs.ensureDir(dir);
 
-		const output = await fs.readJson(path.resolve('../temp/workerd-output.json'));
+		const workerdDir = path.resolve('../temp/workerd');
+		const output = parseWorkerdCapnp(workerdDir);
 
 		await fs.writeJson(path.resolve(dir, 'parsed.json'), output, {
 			spaces: '\t',
 		});
-	} catch {
-		console.log('Failed to parse workerd capnp-parse output');
+	} catch (error) {
+		console.log('Failed to parse workerd capnp schemas:', error.message);
 	}
 
 	console.log('Pushing!');
