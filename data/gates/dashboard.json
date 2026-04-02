@@ -435,6 +435,9 @@
 	"brand-protection-edit-query": {
 		"enabled": true
 	},
+	"browser-rendering-live-view": {
+		"enabled": true
+	},
 	"browser-rendering-session-recording": {
 		"enabled": true
 	},
@@ -979,7 +982,7 @@
 		]
 	},
 	"dx-domain-onboarding-experiment": {
-		"enabled": false,
+		"enabled": true,
 		"branches": [
 			"baseline",
 			"experiment"
@@ -1830,6 +1833,13 @@
 	},
 	"prg-notification-banner-personalization": {
 		"enabled": true
+	},
+	"prg-ns-registrar-specific-instr-exp": {
+		"enabled": false,
+		"branches": [
+			"baseline",
+			"experiment"
+		]
 	},
 	"prg-onboarding-zone-plan-billing-to-monthly": {
 		"enabled": false,
