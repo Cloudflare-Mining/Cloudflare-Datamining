@@ -62,6 +62,9 @@
 	"advanced-authz": {
 		"enabled": true
 	},
+	"agent-memory-enabled": {
+		"enabled": false
+	},
 	"agents-in-dash": {
 		"enabled": false
 	},
@@ -982,7 +985,7 @@
 		]
 	},
 	"dx-domain-onboarding-experiment": {
-		"enabled": true,
+		"enabled": false,
 		"branches": [
 			"baseline",
 			"experiment"
