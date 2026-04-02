@@ -17,8 +17,8 @@ function readImpliedByAfterDate(ptr) {
 	if (discriminant === 0) {
 		return { name: utils.getText(0, ptr), date };
 	}
-	// discriminant 1 = names (List(Text))
-	const namesList = utils.getList(2, TextList, ptr);
+	// discriminant 1 = names (List(Text)); shares pointer slot 0 with name
+	const namesList = utils.getList(0, TextList, ptr);
 	return { names: namesList.toArray(), date };
 }
 
