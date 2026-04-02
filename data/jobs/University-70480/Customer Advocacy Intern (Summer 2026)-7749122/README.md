@@ -5,39 +5,55 @@
 		<p>At Cloudflare, we’re not looking for people who wait for a polished roadmap; we’re looking for the builders who see the cracks in the Internet that everyone else has simply learned to live with. We value candidates who have the instinct to spot a "normalized" problem and the AI-native curiosity to create a solution using the latest tools. Our culture is built on iteration, leveraging AI to ship faster today to make it better tomorrow, while ensuring that every improvement, no matter how small, is shared across the team to lift everyone up. If you’re the type of person who values curiosity over bureaucracy, and that AI is a partner in solving tough problems to keep the Internet moving forward, you’ll fit right in.</p>
 	</div>
 </div>
-<h3>About the role</h3>
-<p>We are seeking an exceptionally accomplished Senior Partner Account Manager to join our Service Provider (SP) team. The role is based in Singapore or Sydney and will report to the Senior Director, Global Service Provider Sales.&nbsp;&nbsp;</p>
-<p>In this role, you will be the driving force behind Cloudflare’s most strategic and high-value Service Provider partners. You will be responsible for: developing network, security and technology services producing new revenue streams, building business plans as well as establishing and strengthening executive relationships. This role will focus on developing and executing partnership strategies that enhance collaboration, drive significant revenue growth, and leverage the combined strengths of our networks to deliver exceptional value to clients.</p>
-<p>We are looking for an experienced Senior Partner Account Manager to lead and build out our APJ Service Provider GTM. In this role, you’ll drive the strategy and execution for managing high-value, strategic Service Providers across different regions in Asia. You will lead the development of joint business plans, work with senior sales and partner stakeholders to align on mutual growth objectives, and ensure partners have the resources and support needed to drive new Service Provider revenue.</p>
-<p>As a Senior Partner Account Manager, you will be responsible for developing, managing, and optimizing key partner relationships, including driving the full sales lifecycle from opportunity initiation to deal closure. You will influence partners’ go-to-market strategies, manage and optimize partner incentive programs, and collaborate closely with internal teams to achieve revenue and strategic goals.</p>
-<p>The ideal candidate will have strong executive presence, established executive relationships, and a proven track record in negotiating agreements and ensuring successful partnership execution within the telecommunications industry. This individual will have a strong background in business development with Service Providers and the ability to independently build and execute a strategy, leveraging internal and external stakeholders, while influencing decisions and investments. Key stakeholders include Cloudflare Leadership, Account Executives, Solution Engineering, Product Management, Partner Managers, Customer Success teams, Sales Operations, Marketing teams and external Partner executives.&nbsp; The candidate will be a thought leader in the Service Provider industry and have the ability to articulate how Cloudflare seamlessly integrates into modern cloud operating models.&nbsp;</p>
-<p>You will be expected to travel as required which is 30-40% of your time.&nbsp;</p>
-<h3><strong>Responsibilities</strong></h3>
+<p><strong>Available location:&nbsp;</strong>Singapore</p>
+<p><strong>About the Role</strong></p>
+<p>The Customer Advocacy Intern will support the team responsible for building, managing and growing customer marketing programs. Reporting to the Head of Customer Advocacy, the ideal candidate will be interested in a focus on both customer engagement and scaling customer programs in high growth SaaS companies. This is a fantastic opportunity to join a high growth company with a mission to build a better internet.</p>
+<p>You will shadow the Customer Advocacy Manager in APAC &amp; Japan cross functionally and globally in building customer participation with enterprise customers across many industries and partnering closely with stakeholders in Sales, Customer Success, Marketing, Product, and PR/AR.&nbsp;</p>
+<p>The candidate is an entry level intern&nbsp; who will work closely with the APAC &amp; Japan Customer Advocacy manager, who is driving all Customer Marketing and Customer Advocacy programs in region. Success is measured by the ability to drive forward efficiently and at the speed of the business, focused on quantity and quality of content, deep engagement with top accounts, brand equity, and levels/titles of participating customers.</p>
+<p>The main projects are:</p>
 <ul>
-	<li>Create and implement strategic partner account plans for AsianService Providers that align with overall business objectives and growth targets.</li>
-	<li>Identify opportunities for joint ventures, co-marketing initiatives, and solutions integration that leverage the strengths of each partner.</li>
-	<li>Build the joint go-to-market services and solution stack offerings.</li>
-	<li>Drive high-level engagement between Cloudflare leadership and the SP’s senior executives, industry leads, and delivery teams.</li>
-	<li>Partner with the SP team to support the creation of scalable implementation practices, including training, certifications, reusable solution assets, and reference architectures.</li>
-	<li>Act as the primary contact for all partner-related inquiries and ensure effective communication and collaboration.</li>
-	<li>Business planning, including account mapping, development and execution of the joint growth and customer acquisition strategies to expand into new verticals and new customer segments.</li>
-	<li>Own and run business and quarterly planning/reviews, both internally and externally</li>
-	<li>Track and analyze partner performance metrics, including targets, revenue attribution, and market impact.</li>
-	<li>Own the plan for ongoing training and support for SP leads and technical resources.</li>
-	<li>Accurately forecast SP business weekly.</li>
-	<li>Develop and drive pipeline development across multiple SP partners.&nbsp;</li>
+	<li><strong>Customer References:</strong></li>
+	<ul>
+		<li>Support and fulfill sales 1:1 and RFP requests for customer references working across customer advocacy and account teams</li>
+		<li>Manage/track customer references requests via customer marketing tools</li>
+		<li>Support customer reference requests from key stakeholders across events, campaigns, product, analyst, and public relations teams&nbsp;</li>
+	</ul>
+	<li><strong>Customer Advocacy:&nbsp;</strong></li>
+	<ul>
+		<li>Qualify, develop and maintain a targeted pipeline of strategic customer relationships&nbsp;</li>
+		<li>Manage and qualify incoming nominations&nbsp;&nbsp;</li>
+		<li>Contribute to the development of high quality, world-class customer story content</li>
+	</ul>
+	<li><strong>Advisory Boards and Councils:&nbsp;</strong></li>
+	<ul>
+		<li>Shadow the process and contribute to our Sydney customer advisory boards/councils&nbsp;</li>
+		<li>Coordinate across many teams and executives, pre/post event success&nbsp;&nbsp;</li>
+		<li>Develop documents and reporting pre/post event</li>
+		<li>Assist in onsite, in-person, best-in-class customer experiences&nbsp;</li>
+	</ul>
 </ul>
-<h3><strong>Desirable skills, knowledge and experience</strong></h3>
+<p><strong>Responsibilities</strong></p>
 <ul>
-	<li>Relevant Bachelor Degree&nbsp;</li>
-	<li>10+ years experience working with Service Provider partnerships.&nbsp;</li>
-	<li>Proven ability to drive GTM success with Service Provider partners.</li>
-	<li>Executive presence, negotiation skills, and ability to manage complex stakeholder environments with proven success in managing large enterprise partnerships, with demonstrated results in driving growth and innovation.</li>
-	<li>Experience working in the Technology sector: Network and/or cybersecurity experience a must.&nbsp;</li>
-	<li>Excellent communication, negotiation, and presentation skills, with the ability to influence stakeholders at all levels.</li>
-	<li>Strong analytical skills and experience in utilizing data to inform strategic decisions.</li>
-	<li>Ability to work independently and collaboratively across various teams in a fast-paced, matrixed environment.</li>
+	<li>Collaborate with the APAC &amp; Japan GTM teams to develop and execute customer marketing strategies that align with business goals.</li>
+	<li>Support the research, writing, and editing of engaging case studies, customer interviews, and other marketing collateral.</li>
+	<li>Learn and support marketing and customer advocacy tech stack.</li>
+	<li>Contribute to planning and brainstorming sessions, bringing creative ideas and new efficiencies using AI to the table.</li>
+	<li>Support the team in analyzing advocacy activity performance and identifying opportunities for improvement.</li>
+	<li>Contribute to monthly and quarterly reporting, including newsletters</li>
 </ul>
+<p><strong>Skills &amp; Qualifications</strong></p>
+<ul>
+	<li>Currently pursuing a degree in Journalism, English, Marketing, Communications, or a related field.</li>
+	<li>Available for a full-time 12-week internship, working from our Singapore office 3-5 days a week during the summer (May-Aug).</li>
+	<li>A strong portfolio of writing samples across different formats (e.g., blog posts, articles, essays).</li>
+	<li>Ability to write clearly and concisely with the flexibility to adapt tone for various digital platforms and audiences.</li>
+	<li>Strong project management skills.</li>
+	<li>Strong research skills and a keen eye for detail.</li>
+	<li>Excellent communication and collaboration skills.</li>
+	<li>Curiosity and a proactive approach to learning and problem-solving.</li>
+	<li><strong>Bonus: </strong>A passion for technology and its impact on the digital landscape is highly desirable.</li>
+</ul>
+<p>You can check out our <a href="https://blog.cloudflare.com/tag/internship-experience/">internship blogs</a> to learn more about our program and hear directly from our past interns.</p>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
 	<p><span style="font-weight: 400;">We’re not just a highly ambitious, large-scale technology company. We’re a highly ambitious, large-scale technology company with a soul. Fundamental to our mission to help build a better Internet is protecting the free and open Internet.</span></p>

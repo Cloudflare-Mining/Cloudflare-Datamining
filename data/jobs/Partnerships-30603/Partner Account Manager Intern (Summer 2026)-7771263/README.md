@@ -5,23 +5,42 @@
 		<p>At Cloudflare, we’re not looking for people who wait for a polished roadmap; we’re looking for the builders who see the cracks in the Internet that everyone else has simply learned to live with. We value candidates who have the instinct to spot a "normalized" problem and the AI-native curiosity to create a solution using the latest tools. Our culture is built on iteration, leveraging AI to ship faster today to make it better tomorrow, while ensuring that every improvement, no matter how small, is shared across the team to lift everyone up. If you’re the type of person who values curiosity over bureaucracy, and that AI is a partner in solving tough problems to keep the Internet moving forward, you’ll fit right in.</p>
 	</div>
 </div>
-<p><strong>Available Location(s):, Singapore</strong></p>
-<p><strong>About the Role</strong></p>
-<p>As a Project Manager Intern specializing in Process &amp; AI Innovation within the GTM Sales, Marketing and Revenue Operations team, you will be pivotal in boosting our operational efficiency. This is a dynamic opportunity to apply project management principles and emerging AI technologies to streamline internal processes across the Go-To-Market organization. You will gain practical experience supporting key initiatives and enhancing team operations through process optimization. A major goal will be leveraging AI tools and 'No-Code' platforms to identify, automate, and accelerate manual, repetitive tasks, enabling teams to discover and implement more efficient ways of working.</p>
-<p><strong>Responsibilities</strong></p>
+<p><strong>Available location(s): Singapore</strong></p>
+<p><strong>About the Team</strong></p>
+<p>The Asia Pacific (APAC) market is one of the most dynamic and fastest growing regions for Cloudflare. From helping high growth startups in Southeast Asia to supporting major financial institutions in Australia, our partners are the key to our regional success.</p>
+<p>As a Partner Account Manager Intern, you will sit at the intersection of partner strategy and relationship management. We are looking for an AI-Native thinker who doesn’t just follow manual workflows but seeks to modernize them. You will help our APAC Partner Account Managers (PAMs) navigate a diverse landscape of Resellers and Distributors by leveraging automation and AI to drive the adoption of Cloudflare’s Connectivity Cloud.</p>
+<p><strong>Innovation &amp; Automation</strong></p>
+<p>At Cloudflare, we believe in our own technology. An overarching goal for this internship is process transformation. You will be expected to identify bottlenecks in our current partner sales motions and proactively use AI and automation technology to streamline repetitive tasks. We want you to spend less time on manual entry and more time on high-value strategic growth.</p>
+<p><strong>What You’ll Be Doing</strong></p>
 <ul>
-	<li><strong>Project and Administrative Support:</strong> Provide administrative and project management support, including coordinating activities, tracking milestones, and assisting with team deliverables, documentation, and reporting (meeting notes, project reports, etc.).</li>
-	<li><strong>Operational Playbook and Wiki: </strong>Assist in mapping, analyzing, and documenting existing partner processes to create clear visual playbooks and internal wikis.</li>
-	<li><strong>AI Strategy and Automation: </strong>Support the research, classification, and prioritization of AI use cases for RevOps/Sales or Marketing, including defining the AI operating model and helping to automate manual, repetitive tasks using 'No-Code' platforms and AI tools.</li>
-	<li><strong>Tech Stack Analysis &amp; Collaboration:</strong> Contribute to efforts to build a unified tech stack, assisting with 'build vs. buy' evaluations for new tools. You will also collaborate with IT and engineering to prototype and validate AI solutions.</li>
-	<li><strong>Recommendations:</strong> Help synthesize findings and data into clear, measurable recommendations that align with sales motions and business outcomes.</li>
+	<li><strong>Partner Enablement:</strong> Assist in building and updating training materials, sales decks, and playbooks to ensure our partners are experts on Cloudflare’s latest product launches.</li>
+	<li><strong>Market Intelligence:</strong> Conduct research into regional market trends and competitor landscapes to identify "white space" opportunities for new partner recruitment.</li>
+	<li><strong>Pipeline Management:</strong> Support the deal registration process and use CRM tools (Salesforce) to track lead conversion and partner sourced revenue.</li>
+	<li><strong>Operational Excellence:</strong> Help streamline partner onboarding workflows and ensure our Partner Portal remains a high value resource.</li>
+	<li><strong>Regional Market Mapping:</strong> Research and identify potential "PowerUP" partners in emerging markets (e.g., India, Indonesia, Vietnam) to help expand our regional footprint.</li>
+	<li><strong>Partner Analytics:</strong> Analyze partner sales data to identify top performing regions and product trends (e.g., Zero Trust adoption vs. Application Security) within the APAC territory.</li>
+	<li><strong>Special Projects:</strong> Lead a capstone project focused on a specific business challenge, such as optimizing partner incentives or launching a co-marketing campaign.</li>
 </ul>
-<p><strong>Skills &amp; Qualifications</strong></p>
+<p><strong>What We’re Looking For</strong></p>
 <ul>
-	<li>Currently pursuing a Master’s degree in Business, Project Management, computer science, Data Science, or a related field.</li>
-	<li>Business Strategy or Tech-focused student with a strong interest in AI/Automation, process improvement, program management, and technology exploration.</li>
-	<li>Strong organizational, communication, and analytical skills with the ability to manage multiple tasks and translate ideas into structured documentation.</li>
-	<li>A natural problem-solver who enjoys mapping out a process and thinking about how to make it simpler and faster.</li>
+	<li><strong>Current Student:</strong> Currently enrolled in a Bachelor’s or Master’s program (Business, Marketing, Economics, or International Relations preferred).</li>
+	<li><strong>Effective Communicator:</strong> You can write clearly and present ideas confidently to internal stakeholders and external partners.</li>
+	<li><strong>Data Driven:</strong> You are comfortable working with spreadsheets.</li>
+	<li><strong>Tech Curious:</strong> You don't need to be a developer, but you should be eager to learn the mechanics of the cloud, DNS, and cybersecurity.</li>
+	<li><strong>Self Starter:</strong> You are highly organized and capable of managing multiple tasks in a fast-paced, high-growth environment.</li>
+	<li><strong>Ability to commit to a minimum 12 week summer internship from May to August 2026.</strong></li>
+	<li><strong>In office 3-5 days a week in Singapore.</strong></li>
+</ul>
+<p><strong>Bonus Points</strong></p>
+<ul>
+	<li>Previous experience in a sales, marketing, or partner/customer facing role.</li>
+	<li>Familiarity with Salesforce and technology landscape.</li>
+</ul>
+<p><strong>Why Join the Team?</strong></p>
+<ul>
+	<li><strong>Real Ownership:</strong> You won't just be taking notes; you'll be managing projects that directly impact how we recruit and retain partners across 15+ countries.</li>
+	<li><strong>Mentorship:</strong> Gain direct exposure to senior leadership in the APAC Sales and Partner organizations.</li>
+	<li><strong>Community:</strong> Work in our high energy Singapore hub, contributing to a team that is actively securing the growing digital economy of Asia.</li>
 </ul>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>

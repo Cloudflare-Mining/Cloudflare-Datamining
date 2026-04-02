@@ -10,7 +10,7 @@
 <p><span style="font-size: 12pt;">Cloudflare's Solutions Engineers come from all kinds of backgrounds: software development, computer science, data science, networking, and plenty of fields that have nothing obvious to do with technology. What we hire for isn't a specific degree. It's a mindset: curious, technically sharp, and motivated by helping others succeed. We're the technical customer advocates within Cloudflare, working closely with Sales, Product, Engineering, and Customer Support with one shared goal: customer success.</span></p>
 <p><span style="font-size: 12pt;">The APAC Solutions Engineering, Center of Excellence (COE) is a small, focused team within the broader APAC SE organisation. Right now, we're building the AI capabilities that will change how SE, Sales, and GTM teams work across the region. We're looking for interns who want to be part of building that.</span></p>
 <p><span style="font-size: 12pt;"><strong>Who are we looking for?</strong></span></p>
-<p><span style="font-size: 12pt;">You're probably finishing a degree, or close to it, in computer science, software engineering, data science, or something in that space. But your best work probably didn't happen in a lecture theatre. It happened when you stayed up debugging a side project, shipped something at a hackathon, or found yourself reading documentation for a technology you had no real reason to know yet.</span></p>
+<p><span style="font-size: 12pt;">You're probably finishing a degree, or close to it, in <strong>computer science, software engineering, data science</strong>, or something in that space. But your best work probably didn't happen in a lecture theatre. It happened when you stayed up debugging a side project, shipped something at a hackathon, or found yourself reading documentation for a technology you had no real reason to know yet.</span></p>
 <p><span style="font-size: 12pt;">We're looking for curious and ambitious builders who want to explore a career that mixes technical depth with helping others do their best work.</span></p>
 <p><span style="font-size: 12pt;">Curious what the programme looks like in practice? <a href="https://blog.cloudflare.com/tag/internship-experience/">Hear directly from our past interns.</a></span></p>
 <p><span style="font-size: 12pt;"><strong>About the Role</strong></span></p>
@@ -61,7 +61,10 @@
 		<p><span style="font-size: 12pt;">Are curious and self-directed. You try things before asking</span></p>
 	</li>
 	<li style="font-size: 12pt;">
-		<p><span style="font-size: 12pt;">Are able to work on-site in our Singapore office. Relocation and visa sponsorship are not available for this role</span></p>
+		<p>Able to commit to a minimum 12 week summer internship from May to August 2026</p>
+	</li>
+	<li style="font-size: 12pt;">
+		<p>Able to work from office 3-5 days a week in Singapore</p>
 	</li>
 </ul>
 <p><span style="font-size: 12pt;"><strong>It would be awesome if you also:</strong></span></p>
