@@ -384,6 +384,38 @@
 		]
 	},
 	{
+		"id": "d2211ced11a34102bd128dd5b3910a7c",
+		"name": "Account Custom Asset Read",
+		"description": "Grants read access to account custom assets",
+		"scopes": [
+			"com.cloudflare.api.account"
+		]
+	},
+	{
+		"id": "6d7d15b1d1404e22ac442de7061d02a6",
+		"name": "Account Custom Asset Write",
+		"description": "Grants write access to account custom assets",
+		"scopes": [
+			"com.cloudflare.api.account"
+		]
+	},
+	{
+		"id": "c549844593894d73b03ed3c17b2af00c",
+		"name": "Account Custom Error Rules Read",
+		"description": "Grants read access to account custom error rules",
+		"scopes": [
+			"com.cloudflare.api.account"
+		]
+	},
+	{
+		"id": "ba9adcdbea5940dd84aa692e77e8eaf6",
+		"name": "Account Custom Error Rules Write",
+		"description": "Grants write access to account custom error rules",
+		"scopes": [
+			"com.cloudflare.api.account"
+		]
+	},
+	{
 		"id": "c57ea647ef654b47bc8944fa739b570d",
 		"name": "Account Custom Pages Read",
 		"description": "Grants read access to account custom pages",
@@ -2088,6 +2120,14 @@
 		]
 	},
 	{
+		"id": "e9f973896a184b1ca9d6a85a44efe55b",
+		"name": "Resource Sharing Read",
+		"description": "Grants access to reading resource shares",
+		"scopes": [
+			"com.cloudflare.api.account"
+		]
+	},
+	{
 		"id": "93ae59e7a40c4287a57ff6e501186a63",
 		"name": "Response Compression Read",
 		"description": "Grants read access to the response compression phase",
@@ -2645,6 +2685,22 @@
 		"description": "Can read and edit the Zero Trust seats your organization can use (and be billed for)",
 		"scopes": [
 			"com.cloudflare.api.account"
+		]
+	},
+	{
+		"id": "2a69899475004f5dbe8a99c5244ab23d",
+		"name": "Zone Custom Asset Read",
+		"description": "Grants read access to zone custom assets",
+		"scopes": [
+			"com.cloudflare.api.account.zone"
+		]
+	},
+	{
+		"id": "f6a7a748dad644ba9792d3f1d0204cc2",
+		"name": "Zone Custom Asset Write",
+		"description": "Grants write access to zone custom assets",
+		"scopes": [
+			"com.cloudflare.api.account.zone"
 		]
 	},
 	{
