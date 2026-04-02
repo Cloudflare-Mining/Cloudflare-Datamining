@@ -11,6 +11,12 @@ import Layout from '../layouts/Layout.astro';
 export const prerender = true;
 
 
+interface ImpliedByAfterDate {
+	name?: string;
+	names?: string[];
+	date: string;
+}
+
 interface WorkerdFlagInfo {
 	name: string;
 	type: string;
@@ -19,6 +25,7 @@ interface WorkerdFlagInfo {
 		compatDisableFlag?: string | null;
 		compatEnableDate?: string | null;
 		experimental?: string | null;
+		impliedByAfterDate?: ImpliedByAfterDate | null;
 	};
 }
 
@@ -38,6 +45,7 @@ interface FlagInfo {
 	enable_date: string | null;
 	enable_flag: string | null;
 	experimental: boolean;
+	implied_by: ImpliedByAfterDate | null;
 	publicly_documented: boolean;
 	usable: boolean;
 }
@@ -80,6 +88,7 @@ for (const flag of flagsInfo as WorkerdFlagInfo[]) {
 		enable_date: flag.annotations?.compatEnableDate ?? null,
 		enable_flag: flag.annotations?.compatEnableFlag ?? null,
 		experimental: flag.annotations?.experimental === 'true',
+		implied_by: flag.annotations?.impliedByAfterDate ?? null,
 		publicly_documented: false,
 		usable: false,
 	};
@@ -113,12 +122,13 @@ for (const flag of flagsInfo as WorkerdFlagInfo[]) {
 		</p>
 	</Description>
 	<Table
-		headers = {['Name', 'Default Date', 'Enable Flag', 'Disable Flag', 'Experimental', 'Usable']}
+		headers = {['Name', 'Default Date', 'Enable Flag', 'Disable Flag', 'Implied By', 'Experimental', 'Usable']}
 		data = {flags.reverse().map(flag => [
 			flag.friendly_name ?? flag.name,
 			flag.enable_date ?? 'N/A',
 			flag.enable_flag ?? 'N/A',
 			flag.disable_flag ?? 'N/A',
+			flag.implied_by ? `${flag.implied_by.name ?? flag.implied_by.names?.join(', ')} (${flag.implied_by.date})` : 'N/A',
 			flag.experimental ? 'Experimental' : 'Stable',
 			flag.usable ? '✅' : '❌',
 		])}
@@ -148,6 +158,15 @@ for (const flag of flagsInfo as WorkerdFlagInfo[]) {
 						<div class="px-6 sm:grid sm:grid-cols-3 sm:gap-4">
 							<dt>Disable flag</dt>
 							<dd class="sm:col-span-2"><code>{flag.disable_flag}</code></dd>
+						</div>
+					}
+					{
+						flag.implied_by &&
+						<div class="px-6 sm:grid sm:grid-cols-3 sm:gap-4">
+							<dt>Implied by</dt>
+							<dd class="sm:col-span-2">
+								<code>{flag.implied_by.name ?? flag.implied_by.names?.join(', ')}</code> after <code>{flag.implied_by.date}</code>
+							</dd>
 						</div>
 					}
 					{

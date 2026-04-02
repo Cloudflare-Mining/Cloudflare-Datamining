@@ -2,7 +2,7 @@ import { execSync } from 'node:child_process';
 import { existsSync, readdirSync } from 'node:fs';
 import path from 'node:path';
 
-import { Message } from 'capnp-es';
+import { Message, TextList, utils } from 'capnp-es';
 import {
 	CodeGeneratorRequest,
 	Field_Which,
@@ -10,6 +10,17 @@ import {
 	Type_Which,
 	Value_Which,
 } from 'capnp-es/capnp/schema';
+
+function readImpliedByAfterDate(ptr) {
+	const discriminant = utils.getUint16(0, ptr);
+	const date = utils.getText(1, ptr);
+	if (discriminant === 0) {
+		return { name: utils.getText(0, ptr), date };
+	}
+	// discriminant 1 = names (List(Text))
+	const namesList = utils.getList(2, TextList, ptr);
+	return { names: namesList.toArray(), date };
+}
 
 function extractAnnotations(annotations, nodeMap) {
 	const result = {};
@@ -42,6 +53,12 @@ function extractAnnotations(annotations, nodeMap) {
 			}
 			case Value_Which.INT32: {
 				result[annName] = val.int32;
+				break;
+			}
+			case Value_Which.STRUCT: {
+				if (annName === 'impliedByAfterDate') {
+					result[annName] = readImpliedByAfterDate(val.struct);
+				}
 				break;
 			}
 			default: {
