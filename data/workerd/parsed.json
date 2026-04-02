@@ -3920,6 +3920,14 @@
 						"experimental": true
 					},
 					"type": "Bool"
+				},
+				{
+					"name": "noResizableArrayBufferInBlob",
+					"annotations": {
+						"compatEnableFlag": "no_resizable_array_buffer_in_blob",
+						"compatDisableFlag": "resizable_array_buffer_in_blob"
+					},
+					"type": "Bool"
 				}
 			]
 		},
