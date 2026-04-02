@@ -23,6 +23,9 @@
 		"country": "Country tag",
 		"date": "The date the access login event was emitted",
 		"datetime": "The date and time the access login event was emitted",
+		"datetimeFifteenMinutes": "The date and time the access login event was emitted truncated to fifteen minutes",
+		"datetimeFiveMinutes": "The date and time the access login event was emitted truncated to five minutes",
+		"datetimeHour": "The date and time the access login event was emitted truncated to the hour",
 		"datetimeMinute": "The date and time the access login event was emitted truncated to the minute",
 		"deviceId": "Device ID",
 		"hasExistingJWT": "Has existing JWT (0 = false, 1 = true)",
@@ -355,7 +358,11 @@
 	},
 	"AccountAegisIpUtilizationAdaptiveGroupsDimensions": {
 		"__description": "",
+		"datetime": "Timestamp",
+		"datetimeFifteenMinutes": "Timestamp bucketed by 15 minutes",
 		"datetimeFiveMinutes": "Timestamp bucketed by 5 minutes",
+		"datetimeHour": "Timestamp bucketed by 1 hour",
+		"datetimeMinute": "Timestamp bucketed by 1 minute",
 		"popUtilizationKey": "PoP, Aegis IP and origin. Can be used as a grouping key"
 	},
 	"AccountAegisIpUtilizationAdaptiveGroupsFilter_InputObject": {
@@ -383,6 +390,7 @@
 		"__description": "",
 		"cacheOp": "Cache Hit or Miss: 1 = cache hit, 0 = cache miss",
 		"date": "The date when trigger was triggerd",
+		"datetime": "The date and time the event occurred",
 		"datetimeFifteenMinutes": "The date and time truncated to fifteen minutes",
 		"datetimeFiveMinutes": "The date and time truncated to five minutes",
 		"datetimeHour": "The date and time truncated to the hour",
@@ -413,6 +421,7 @@
 	"AccountAiGatewayErrorsAdaptiveGroupsDimensions": {
 		"__description": "",
 		"date": "The date when trigger was triggerd",
+		"datetime": "The date and time the event occurred",
 		"datetimeFifteenMinutes": "The date and time truncated to fifteen minutes",
 		"datetimeFiveMinutes": "The date and time truncated to five minutes",
 		"datetimeHour": "The date and time truncated to the hour",
@@ -445,6 +454,7 @@
 		"cached": "Was the response served from cache?: 1 = cache hit, 0 = cache misss",
 		"cost": "Cost per request",
 		"date": "The date when trigger was triggered",
+		"datetime": "The date and time the event occurred",
 		"datetimeFifteenMinutes": "The date and time truncated to fifteen minutes",
 		"datetimeFiveMinutes": "The date and time truncated to five minutes",
 		"datetimeHour": "The date and time truncated to the hour",
@@ -499,6 +509,7 @@
 	"AccountAiGatewaySizeAdaptiveGroupsDimensions": {
 		"__description": "",
 		"date": "The date when trigger was triggerd",
+		"datetime": "The date and time the event occurred",
 		"datetimeFifteenMinutes": "The date and time truncated to fifteen minutes",
 		"datetimeFiveMinutes": "The date and time truncated to five minutes",
 		"datetimeHour": "The date and time truncated to the hour",
@@ -648,6 +659,7 @@
 		"chunkOverlap": "How much overlap exists between contiguous chunks",
 		"chunkSize": "The size of text chunks",
 		"date": "The date of the search event",
+		"datetime": "The date and time the event occurred",
 		"datetimeFifteenMinutes": "The date and time truncated to fifteen minutes",
 		"datetimeFiveMinutes": "The date and time truncated to five minutes",
 		"datetimeHour": "The date and time truncated to the hour",
@@ -722,6 +734,7 @@
 		"chunkOverlap": "How much overlap exists between contiguous chunks",
 		"chunkSize": "The size of text chunks",
 		"date": "The date of the ingestion event",
+		"datetime": "The date and time the event occurred",
 		"datetimeFifteenMinutes": "The date and time truncated to fifteen minutes",
 		"datetimeFiveMinutes": "The date and time truncated to five minutes",
 		"datetimeHour": "The date and time truncated to the hour",
@@ -780,6 +793,7 @@
 		"chunkOverlap": "How much overlap exists between contiguous chunks",
 		"chunkSize": "The size of text chunks",
 		"date": "The date when trigger was triggered",
+		"datetime": "The date and time the event occurred",
 		"datetimeFifteenMinutes": "The date and time truncated to fifteen minutes",
 		"datetimeFiveMinutes": "The date and time truncated to five minutes",
 		"datetimeHour": "The date and time truncated to the hour",
@@ -837,6 +851,7 @@
 		"__description": "",
 		"completed": "Number of completed items",
 		"date": "The date when trigger was triggered",
+		"datetime": "The date and time the event occurred",
 		"datetimeFifteenMinutes": "The date and time truncated to fifteen minutes",
 		"datetimeFiveMinutes": "The date and time truncated to five minutes",
 		"datetimeHour": "The date and time truncated to the hour",
@@ -873,7 +888,11 @@
 	},
 	"AccountBrowserIsolationSessionsAdaptiveGroupsDimensions": {
 		"__description": "",
-		"datetime": ""
+		"datetime": "",
+		"datetimeFifteenMinutes": "Timestamp truncated to fifteen minutes",
+		"datetimeFiveMinutes": "Timestamp truncated to five minutes",
+		"datetimeHour": "Timestamp truncated to the hour",
+		"datetimeMinute": "Timestamp truncated to the minute"
 	},
 	"AccountBrowserIsolationSessionsAdaptiveGroupsFilter_InputObject": {
 		"__description": ""
@@ -895,6 +914,10 @@
 	"AccountBrowserIsolationUserActionsAdaptiveGroupsDimensions": {
 		"__description": "",
 		"datetime": "",
+		"datetimeFifteenMinutes": "Timestamp truncated to fifteen minutes",
+		"datetimeFiveMinutes": "Timestamp truncated to five minutes",
+		"datetimeHour": "Timestamp truncated to the hour",
+		"datetimeMinute": "Timestamp truncated to the minute",
 		"decision": "Decision applied to user action. Possible values are allow | block",
 		"type": "User action type. Possible values are copy | paste | download | upload | print"
 	},
@@ -939,6 +962,7 @@
 		"browserSessionStartTime": "Start date and time of the browser session pertaining to the request",
 		"crawlJobId": "Job ID of a request to the Browser Rendering crawl endpoints",
 		"date": "The date of the event",
+		"datetime": "The date and time the event occurred",
 		"datetimeFifteenMinutes": "The date and time of the event truncated to fifteen minutes",
 		"datetimeFiveMinutes": "The date and time of the event truncated to five minutes",
 		"datetimeHour": "The date and time of the event truncated to the hour",
@@ -982,6 +1006,7 @@
 		"__description": "",
 		"concurrentSessions": "Number of browser sessions used concurrently at the time of the event",
 		"date": "The date of the event",
+		"datetime": "The date and time the event occurred",
 		"datetimeFifteenMinutes": "The date and time of the event truncated to fifteen minutes",
 		"datetimeFiveMinutes": "The date and time of the event truncated to five minutes",
 		"datetimeHour": "The date and time of the event truncated to the hour",
@@ -1025,6 +1050,7 @@
 	"AccountBrowserRenderingBrowserTimeUsageAdaptiveGroupsDimensions": {
 		"__description": "",
 		"date": "The date of the event",
+		"datetime": "The date and time the event occurred",
 		"datetimeFifteenMinutes": "The date and time of the event truncated to fifteen minutes",
 		"datetimeFiveMinutes": "The date and time of the event truncated to five minutes",
 		"datetimeHour": "The date and time of the event truncated to the hour",
@@ -1101,6 +1127,7 @@
 		"concurrentSessions": "Number of browser sessions used concurrently at the time of the event",
 		"connectionId": "Worker connection ID, when available",
 		"date": "The date of the event",
+		"datetime": "The date and time the event occurred",
 		"datetimeFifteenMinutes": "The date and time of the event truncated to fifteen minutes",
 		"datetimeFiveMinutes": "The date and time of the event truncated to five minutes",
 		"datetimeHour": "The date and time of the event truncated to the hour",
@@ -1181,6 +1208,7 @@
 		"datacenterCountry": "Country of the Cloudflare datacenter",
 		"datacenterRegion": "Region of the Cloudflare datacenter",
 		"date": "Calls TURN bandwidth metrics date",
+		"datetime": "Calls TURN bandwidth metrics timestamp",
 		"datetimeFifteenMinutes": "Calls TURN bandwidth metrics timestamp, truncated to fifteen minutes",
 		"datetimeFiveMinutes": "Calls TURN bandwidth metrics timestamp, truncated to five minutes",
 		"datetimeHour": "Calls TURN bandwidth metrics timestamp, truncated to the hour",
@@ -1219,6 +1247,7 @@
 		"__description": "",
 		"appId": "The appId that generated traffic",
 		"date": "Calls bandwidth metrics date",
+		"datetime": "Calls bandwidth metrics timestamp",
 		"datetimeFifteenMinutes": "Calls bandwidth metrics timestamp, truncated to fifteen minutes",
 		"datetimeFiveMinutes": "Calls bandwidth metrics timestamp, truncated to five minutes",
 		"datetimeHour": "Calls bandwidth metrics timestamp, truncated to the hour",
@@ -1404,7 +1433,7 @@
 	},
 	"AccountCloudchamberMetricsAdaptiveGroupsAvg": {
 		"__description": "",
-		"cpuLoad": "<small>DEPRECATED (Replaced by cpuUtilization):</small> Average CPU load",
+		"cpuLoad": "<small>DEPRECATED (Replaced by cpuUtilization or sum { cpuTimeSec }):</small> Average CPU load",
 		"cpuUtilization": "Average CPU utilization",
 		"gpuMemory": "Average GPU memory usage",
 		"memory": "Average memory usage",
@@ -1424,6 +1453,7 @@
 		"active": "Whether the container is active or not",
 		"applicationId": "The application ID",
 		"date": "The date the metric was received",
+		"datetime": "The date and time the metric was received",
 		"datetimeFifteenMinutes": "The date and time the metric was received, truncated to fifteen minutes",
 		"datetimeFiveMinutes": "The date and time the metric was received, truncated to five minutes",
 		"datetimeHour": "The date and time the metric was received, truncated to one hour",
@@ -1431,6 +1461,7 @@
 		"datetimeSixHours": "The date and time the metric was received, truncated to six hours",
 		"deploymentId": "The deployment ID",
 		"durableObjectId": "If set, this metric was emitted while assigned to a durable object",
+		"label": "Value of a specific container label. Requires the name argument.",
 		"location": "Location",
 		"placementId": "The placement ID",
 		"procType": "Process type",
@@ -1441,7 +1472,8 @@
 	},
 	"AccountCloudchamberMetricsAdaptiveGroupsMax": {
 		"__description": "",
-		"cpuLoad": "Maximum CPU load",
+		"cpuLoad": "<small>DEPRECATED (Replaced by max { cpuUtilization } or sum { cpuTimeSec }):</small> Maximum CPU load",
+		"cpuUtilization": "Maximum CPU utilization",
 		"diskAvailable": "Total disk space available, in bytes",
 		"diskUsage": "Disk usage, in bytes",
 		"diskUsagePercentage": "Disk usage as a percentage of total disk space",
@@ -1459,13 +1491,13 @@
 	},
 	"AccountCloudchamberMetricsAdaptiveGroupsQuantiles": {
 		"__description": "",
-		"cpuLoadP25": "CPU load (25th percentile)",
-		"cpuLoadP50": "CPU load (50th percentile)",
-		"cpuLoadP75": "CPU load (75th percentile)",
-		"cpuLoadP90": "CPU load (90th percentile)",
-		"cpuLoadP95": "CPU load (95th percentile)",
-		"cpuLoadP99": "CPU load (99th percentile)",
-		"cpuLoadP999": "CPU load (99.9th percentile)",
+		"cpuLoadP25": "<small>DEPRECATED (Replaced by cpuUtilizationP25):</small> CPU load (25th percentile)",
+		"cpuLoadP50": "<small>DEPRECATED (Replaced by cpuUtilizationP50):</small> CPU load (50th percentile)",
+		"cpuLoadP75": "<small>DEPRECATED (Replaced by cpuUtilizationP75):</small> CPU load (75th percentile)",
+		"cpuLoadP90": "<small>DEPRECATED (Replaced by cpuUtilizationP90):</small> CPU load (90th percentile)",
+		"cpuLoadP95": "<small>DEPRECATED (Replaced by cpuUtilizationP95):</small> CPU load (95th percentile)",
+		"cpuLoadP99": "<small>DEPRECATED (Replaced by cpuUtilizationP99):</small> CPU load (99th percentile)",
+		"cpuLoadP999": "<small>DEPRECATED (Replaced by cpuUtilizationP999):</small> CPU load (99.9th percentile)",
 		"cpuUtilizationP25": "CPU utilization (25th percentile)",
 		"cpuUtilizationP50": "CPU utilization (50th percentile)",
 		"cpuUtilizationP75": "CPU utilization (75th percentile)",
@@ -1646,7 +1678,7 @@
 	},
 	"AccountContainersMetricsAdaptiveGroupsAvg": {
 		"__description": "",
-		"cpuLoad": "<small>DEPRECATED (Replaced by cpuUtilization):</small> Average CPU load",
+		"cpuLoad": "<small>DEPRECATED (Replaced by cpuUtilization or sum { cpuTimeSec }):</small> Average CPU load",
 		"cpuUtilization": "Average CPU utilization",
 		"gpuMemory": "Average GPU memory usage",
 		"memory": "Average memory usage",
@@ -1666,6 +1698,7 @@
 		"active": "Whether the container is active or not",
 		"applicationId": "The application ID",
 		"date": "The date the metric was received",
+		"datetime": "The date and time the metric was received",
 		"datetimeFifteenMinutes": "The date and time the metric was received, truncated to fifteen minutes",
 		"datetimeFiveMinutes": "The date and time the metric was received, truncated to five minutes",
 		"datetimeHour": "The date and time the metric was received, truncated to one hour",
@@ -1673,6 +1706,7 @@
 		"datetimeSixHours": "The date and time the metric was received, truncated to six hours",
 		"deploymentId": "The deployment ID",
 		"durableObjectId": "If set, this metric was emitted while assigned to a durable object",
+		"label": "Value of a specific container label. Requires the name argument.",
 		"location": "Location",
 		"placementId": "The placement ID",
 		"procType": "Process type",
@@ -1683,7 +1717,8 @@
 	},
 	"AccountContainersMetricsAdaptiveGroupsMax": {
 		"__description": "",
-		"cpuLoad": "Maximum CPU load",
+		"cpuLoad": "<small>DEPRECATED (Replaced by max { cpuUtilization } or sum { cpuTimeSec }):</small> Maximum CPU load",
+		"cpuUtilization": "Maximum CPU utilization",
 		"diskAvailable": "Total disk space available, in bytes",
 		"diskUsage": "Disk usage, in bytes",
 		"diskUsagePercentage": "Disk usage as a percentage of total disk space",
@@ -1701,13 +1736,13 @@
 	},
 	"AccountContainersMetricsAdaptiveGroupsQuantiles": {
 		"__description": "",
-		"cpuLoadP25": "CPU load (25th percentile)",
-		"cpuLoadP50": "CPU load (50th percentile)",
-		"cpuLoadP75": "CPU load (75th percentile)",
-		"cpuLoadP90": "CPU load (90th percentile)",
-		"cpuLoadP95": "CPU load (95th percentile)",
-		"cpuLoadP99": "CPU load (99th percentile)",
-		"cpuLoadP999": "CPU load (99.9th percentile)",
+		"cpuLoadP25": "<small>DEPRECATED (Replaced by cpuUtilizationP25):</small> CPU load (25th percentile)",
+		"cpuLoadP50": "<small>DEPRECATED (Replaced by cpuUtilizationP50):</small> CPU load (50th percentile)",
+		"cpuLoadP75": "<small>DEPRECATED (Replaced by cpuUtilizationP75):</small> CPU load (75th percentile)",
+		"cpuLoadP90": "<small>DEPRECATED (Replaced by cpuUtilizationP90):</small> CPU load (90th percentile)",
+		"cpuLoadP95": "<small>DEPRECATED (Replaced by cpuUtilizationP95):</small> CPU load (95th percentile)",
+		"cpuLoadP99": "<small>DEPRECATED (Replaced by cpuUtilizationP99):</small> CPU load (99th percentile)",
+		"cpuLoadP999": "<small>DEPRECATED (Replaced by cpuUtilizationP999):</small> CPU load (99.9th percentile)",
 		"cpuUtilizationP25": "CPU utilization (25th percentile)",
 		"cpuUtilizationP50": "CPU utilization (50th percentile)",
 		"cpuUtilizationP75": "CPU utilization (75th percentile)",
@@ -1816,6 +1851,7 @@
 		"databaseId": "The UUID of a D1 database",
 		"databaseRole": "The role of the D1 database that served the request. One of [primary, replica]",
 		"date": "The date the D1 request was received",
+		"datetime": "The date and time the D1 request was received",
 		"datetimeFifteenMinutes": "The date and time the D1 request was received truncated to fifteen minutes",
 		"datetimeFiveMinutes": "The date and time the D1 request was received truncated to five minutes",
 		"datetimeHour": "The date and time the D1 request was received truncated to the hour",
@@ -1891,6 +1927,7 @@
 		"databaseId": "The UUID of a D1 database",
 		"databaseRole": "The role of the D1 database that served the request. One of [primary, replica]",
 		"date": "D1 query sample timestamp",
+		"datetime": "D1 query sample timestamp",
 		"datetimeFifteenMinutes": "D1 query sample timestamp, truncated to fifteen minutes",
 		"datetimeFiveMinutes": "D1 query sample timestamp, truncated to five minutes",
 		"datetimeHour": "D1 query sample timestamp, truncated to the hour",
@@ -1940,6 +1977,7 @@
 		"__description": "",
 		"databaseId": "The UUID of a D1 database",
 		"date": "D1 storage sample timestamp",
+		"datetime": "D1 storage sample timestamp",
 		"datetimeFifteenMinutes": "D1 storage sample timestamp, truncated to fifteen minutes",
 		"datetimeFiveMinutes": "D1 storage sample timestamp, truncated to five minutes",
 		"datetimeHour": "D1 storage sample timestamp, truncated to the hour",
@@ -2418,6 +2456,7 @@
 	"AccountDurableObjectsPeriodicGroupsDimensions": {
 		"__description": "",
 		"date": "Datetime the metrics period started, truncated to start of a day",
+		"datetime": "Datetime the metrics period started",
 		"datetimeFifteenMinutes": "Datetime the metrics period started, truncated to start of a minute",
 		"datetimeFiveMinutes": "Datetime the metrics period started, truncated to start of a minute",
 		"datetimeHour": "Datetime the metrics period started, truncated to start of an hour",
@@ -2477,6 +2516,9 @@
 	"AccountDurableObjectsSqlStorageGroupsDimensions": {
 		"__description": "",
 		"date": "Datetime that the storage usage was recorded, truncated to start of a day",
+		"datetime": "Datetime that the storage usage was recorded",
+		"datetimeFifteenMinutes": "Datetime that the storage usage was recorded, truncated to fifteen minutes",
+		"datetimeFiveMinutes": "Datetime that the storage usage was recorded, truncated to five minutes",
 		"datetimeHour": "Datetime that the storage usage was recorded, truncated to start of an hour",
 		"datetimeMinute": "Datetime that the storage usage was recorded, truncated to start of a minute",
 		"datetimeSixHours": "Datetime that the storage usage was recorded, truncated to start of six hour window",
@@ -2500,7 +2542,11 @@
 	"AccountDurableObjectsStorageGroupsDimensions": {
 		"__description": "",
 		"date": "Datetime that the storage usage was recorded, truncated to start of a day",
-		"datetimeHour": "Datetime that the storage usage was recorded, truncated to start of an hour"
+		"datetime": "Datetime that the storage usage was recorded",
+		"datetimeFifteenMinutes": "Datetime that the storage usage was recorded, truncated to fifteen minutes",
+		"datetimeFiveMinutes": "Datetime that the storage usage was recorded, truncated to five minutes",
+		"datetimeHour": "Datetime that the storage usage was recorded, truncated to start of an hour",
+		"datetimeMinute": "Datetime that the storage usage was recorded, truncated to start of a minute"
 	},
 	"AccountDurableObjectsStorageGroupsFilter_InputObject": {
 		"__description": ""
@@ -2527,6 +2573,8 @@
 		"__description": "",
 		"date": "Request datetime, truncated to start of a day",
 		"datetime": "Request datetime",
+		"datetimeFifteenMinutes": "Request datetime, truncated to start of fifteen minutes",
+		"datetimeFiveMinutes": "Request datetime, truncated to start of five minutes",
 		"datetimeHour": "Request datetime, truncated to start of an hour",
 		"datetimeMinute": "Request datetime, truncated to start of a minute",
 		"datetimeSixHours": "Request datetime, truncated to start of six hour window",
@@ -3047,6 +3095,8 @@
 		"categoryNames": "Names of the categories that matched the session parameters",
 		"coloCode": "Colo Code of edge server",
 		"datetime": "Datetime that the session was started",
+		"datetimeFifteenMinutes": "Datetime that the session was started truncated to fifteen minutes",
+		"datetimeFiveMinutes": "Datetime that the session was started truncated to five minutes",
 		"datetimeHour": "Datetime that the session was started truncated to hours",
 		"datetimeMinute": "Datetime that the session was started truncated to minutes",
 		"destinationIp": "The destination IP address for the session",
@@ -3064,6 +3114,7 @@
 		"sourcePort": "The source port for the session",
 		"srcIpContinent": "Continent code of the session source IP address",
 		"srcIpCountry": "Country code of the session source IP address",
+		"tenantId": "The tenant ID the session belongs to, if applicable",
 		"transport": "<small>DEPRECATED (Field is replaced with <code>transportProtocol</code>):</small> The transport protocol used in the session, one of (0, tcp) (1, quic) (2, udp). Deprecated, please use transportProtocol",
 		"transportProtocol": "The transport protocol used in the session, one of (0, tcp) (1, quic) (2, udp)",
 		"userId": "The ID of the gateway user who initiated the session",
@@ -3182,6 +3233,8 @@
 		"categoryNames": "Names of the categories that matched the request parameters",
 		"coloCode": "Colo Code of edge server",
 		"datetime": "Datetime that the request happened",
+		"datetimeFifteenMinutes": "Datetime that the request happened truncated to fifteen minutes",
+		"datetimeFiveMinutes": "Datetime that the request happened truncated to five minutes",
 		"datetimeHour": "Datetime that the request happened truncated to hours",
 		"datetimeMinute": "Datetime that the request happened truncated to minutes",
 		"deviceId": "The device ID of the gateway user who made the request",
@@ -3199,6 +3252,7 @@
 		"sourceInternalIp": "Local LAN IP of the device. Only available when connected via a GRE/IPsec tunnel on-ramp",
 		"srcIpContinent": "Continent code of the request source IP address",
 		"srcIpCountry": "Country code of the request source IP address",
+		"tenantId": "The tenant ID the request belongs to, if applicable",
 		"untrustedCertificateAction": "Action taken when an untrusted origin certificate error occurs",
 		"url": "The request URL",
 		"userId": "The ID of the gateway user who made the request",
@@ -3231,6 +3285,8 @@
 		"customResolverCacheStatus": "Whether the custom resolver response was cached or not",
 		"customResolverResponseCode": "Response code recieved from the custom resolver 0 => unknown 27 => dnsFirewallSuccess 29 => dnsFirewallCustomerRatelimit 31 => dnsFirewallUpstreamFailure 32 => dnsFirewallUpstreamServfail\n",
 		"datetime": "The date and time the DNS query was resolved",
+		"datetimeFifteenMinutes": "The date and time the event occurred at the edge truncated to fifteen minutes",
+		"datetimeFiveMinutes": "The date and time the event occurred at the edge truncated to five minutes",
 		"datetimeHour": "The date and time the event occurred at the edge truncated to hours",
 		"datetimeMinute": "The date and time the event occurred at the edge truncated to minutes",
 		"dohSubdomain": "The destination DoH subdomain the DNS query was made to",
@@ -3290,6 +3346,10 @@
 		"customResolverResponseCode": "Response code recieved from the custom resolver 0 => unknown 27 => dnsFirewallSuccess 29 => dnsFirewallCustomerRatelimit 31 => dnsFirewallUpstreamFailure 32 => dnsFirewallUpstreamServfail\n",
 		"customResolverTimeInMs": "time took for custom resolver to respond",
 		"datetime": "The date and time the DNS query was resolved",
+		"datetimeFifteenMinutes": "The date and time the event occurred at the edge truncated to fifteen minutes",
+		"datetimeFiveMinutes": "The date and time the event occurred at the edge truncated to five minutes",
+		"datetimeHour": "The date and time the event occurred at the edge truncated to hours",
+		"datetimeMinute": "The date and time the event occurred at the edge truncated to minutes",
 		"locationId": "The uuid identifying the customer Location used when resolving",
 		"queryName": "Name of the query, e.g. one.dash.cloudflare.com",
 		"resolverDecision": "Enum identifier for the decision made by gateway-resolver, one of: (0, unknown) (1, allowedByQueryName) (2, blockedByQueryName) (3, blockedByCategory) (4, allowedOnNoLocation) (5, allowedOnNoPolicyMatch) (6, blockedAlwaysCategory) (7, overrideForSafeSearch) (8, overrideApplied) (9, blockedRule) (10, allowedRule)\n"
@@ -3325,6 +3385,10 @@
 	"AccountGatewayResolverByRuleExecutionPerformanceAdaptiveGroupsDimensions": {
 		"__description": "",
 		"datetime": "Request timestamp",
+		"datetimeFifteenMinutes": "Request timestamp truncated to fifteen minutes",
+		"datetimeFiveMinutes": "Request timestamp truncated to five minutes",
+		"datetimeHour": "Request timestamp truncated to hours",
+		"datetimeMinute": "Request timestamp truncated to minutes",
 		"datetimeMonth": "Request timestamp month"
 	},
 	"AccountGatewayResolverByRuleExecutionPerformanceAdaptiveGroupsFilter_InputObject": {
@@ -3369,6 +3433,8 @@
 		"customResolverCacheStatus": "Whether the custom resolver response was cached or not",
 		"customResolverResponseCode": "Response code recieved from the custom resolver 0 => unknown 27 => dnsFirewallSuccess 29 => dnsFirewallCustomerRatelimit 31 => dnsFirewallUpstreamFailure 32 => dnsFirewallUpstreamServfail\n",
 		"datetime": "The date and time the DNS query was resolved",
+		"datetimeFifteenMinutes": "The date and time the event occurred at the edge truncated to fifteen minutes",
+		"datetimeFiveMinutes": "The date and time the event occurred at the edge truncated to five minutes",
 		"datetimeHour": "The date and time the event occurred at the edge truncated to hours",
 		"datetimeMinute": "The date and time the event occurred at the edge truncated to minutes",
 		"dohSubdomain": "The destination DoH subdomain the DNS query was made to",
@@ -3707,6 +3773,8 @@
 		"clientDeviceType": "",
 		"clientIP": "The visitor's IP address (IPv4 or IPv6)",
 		"clientRefererHost": "The referrer host",
+		"clientRequestAcceptContentTypeNames": "List of MIME content type extension names explicitly accepted by the visitor",
+		"clientRequestAcceptContentTypes": "List of MIME content types explicitly accepted by the visitor",
 		"clientRequestHTTPHost": "The HTTP hostname requested by the visitor",
 		"clientRequestHTTPMethodName": "HTTP method of client request",
 		"clientRequestHTTPProtocol": "The version of HTTP protocol requested by the visitor",
@@ -3729,6 +3797,8 @@
 		"datetimeHour": "The date and time the event occurred at the edge truncated to hours",
 		"datetimeMinute": "The date and time the event occurred at the edge truncated to the minute",
 		"edgeDnsResponseTimeMs": "The time elapsed resolving a CNAME if it was required to reach your origin",
+		"edgeResponseContentType": "MIME type of the response",
+		"edgeResponseContentTypeMatched": "1 if the MIME type of the response is one of the MIME content types explicitly accepted by the visitor, 0 otherwise",
 		"edgeResponseContentTypeName": "",
 		"edgeResponseStatus": "HTTP response status code returned to browser",
 		"edgeTimeToFirstByteMs": "The time elapsed between processing the first byte of the request until when we started sending a response",
@@ -3830,6 +3900,8 @@
 		"clientDeviceType": "",
 		"clientIP": "",
 		"clientRefererHost": "The referrer host",
+		"clientRequestAcceptContentTypeNames": "List of MIME content type extension names explicitly accepted by the client",
+		"clientRequestAcceptContentTypes": "List of MIME content types explicitly accepted by the client",
 		"clientRequestHTTPHost": "Host requested by the client",
 		"clientRequestHTTPMethodName": "HTTP method of client request",
 		"clientRequestHTTPProtocol": "HTTP protocol version",
@@ -3852,6 +3924,8 @@
 		"datetimeHour": "The date and time the event occurred at the edge truncated to hours",
 		"datetimeMinute": "The date and time the event occurred at the edge truncated to the minute",
 		"edgeDnsResponseTimeMs": "The time elapsed resolving a CNAME if it was required to reach your origin",
+		"edgeResponseContentType": "MIME type of the response",
+		"edgeResponseContentTypeMatched": "1 if the MIME type of the response is one of the MIME content types explicitly accepted by the client, 0 otherwise",
 		"edgeResponseContentTypeName": "",
 		"edgeResponseStatus": "",
 		"edgeTimeToFirstByteMs": "The time elapsed between processing the first byte of the request until when we started sending a response",
@@ -4010,6 +4084,7 @@
 		"edgeResponseStatus": "HTTP response status code returned to client",
 		"httpApplicationVersion": "<small>DEPRECATED (Field is replaced with <code>zoneVersion</code>):</small> Version associated with HTTP Application",
 		"userAgentBrowser": "Browser parsed from the user agent",
+		"zoneTag": "Associated zone",
 		"zoneVersion": "The version of a zone"
 	},
 	"AccountHttpRequestsOverviewAdaptiveGroupsFilter_InputObject": {
@@ -4045,6 +4120,48 @@
 		"requests": "Confidence interval for the corresponding point estimate",
 		"visits": "Confidence interval for the corresponding point estimate"
 	},
+	"AccountHyperdrivePoolSizesAdaptiveGroups": {
+		"__description": "Hyperdrive connection pool size snapshots with adaptive sampling.",
+		"avg": "The average value for a metric per dimension",
+		"confidence": "ALPHA - DO NOT USE",
+		"count": "Total number of Hyperdrive pool size snapshots",
+		"dimensions": "List of dimensions to group by",
+		"max": "The maximum value for a metric per dimension"
+	},
+	"AccountHyperdrivePoolSizesAdaptiveGroupsAvg": {
+		"__description": "",
+		"availablePoolSlots": "Average number of pool connections available for checkout",
+		"currentPoolSize": "Average number of connections currently open in the pool",
+		"sampleInterval": "The average value used for sample interval",
+		"waitingClients": "Average number of clients waiting for a connection from the pool"
+	},
+	"AccountHyperdrivePoolSizesAdaptiveGroupsConfidence": {
+		"__description": "",
+		"count": "Total number of Hyperdrive pool size snapshots, with confidence intervals",
+		"level": "Confidence level that was requested"
+	},
+	"AccountHyperdrivePoolSizesAdaptiveGroupsDimensions": {
+		"__description": "",
+		"coloCode": "IATA airport code for the Cloudflare datacenter where the pool resides",
+		"configId": "The ID of the Hyperdrive Config",
+		"databaseType": "The type of database targeted by the Hyperdrive Config: 'Postgres' or 'MySQL'",
+		"date": "Pool size snapshot timestamp, truncated to start of a day",
+		"datetime": "Pool size snapshot timestamp",
+		"datetimeHour": "Pool size snapshot timestamp, truncated to start of hour",
+		"datetimeMinute": "Pool size snapshot timestamp, truncated to start of minute"
+	},
+	"AccountHyperdrivePoolSizesAdaptiveGroupsFilter_InputObject": {
+		"__description": ""
+	},
+	"AccountHyperdrivePoolSizesAdaptiveGroupsMax": {
+		"__description": "",
+		"currentPoolSize": "Peak number of connections open in the pool",
+		"maxPoolSize": "Configured maximum size of the connection pool",
+		"waitingClients": "Peak number of clients waiting for a connection from the pool"
+	},
+	"AccountHyperdrivePoolSizesAdaptiveGroupsOrderBy": {
+		"__description": ""
+	},
 	"AccountHyperdriveQueriesAdaptiveGroups": {
 		"__description": "Hyperdrive query events with adaptive sampling.",
 		"avg": "The average value for a metric per dimension",
@@ -4074,6 +4191,8 @@
 		"configId": "The ID of the Hyperdrive Config",
 		"date": "Hyperdrive query event timestamp, truncated to start of a day",
 		"datetime": "Hyperdrive query event timestamp",
+		"datetimeFifteenMinutes": "Hyperdrive query event timestamp, truncated to start of fifteen minutes",
+		"datetimeFiveMinutes": "Hyperdrive query event timestamp, truncated to start of five minutes",
 		"datetimeHour": "Hyperdrive query event timestamp, truncated to start of hour",
 		"datetimeMinute": "Hyperdrive query event timestamp, truncated to start of minute",
 		"eventStatus": "The result of the Hyperdrive event: 'error' or 'complete'. Error events may not have complete data.",
@@ -4192,6 +4311,8 @@
 		"actionType": "The type of the action (read, write, delete, list)",
 		"date": "Message operation timestamp, truncated to start of a day",
 		"datetime": "Message operation timestamp",
+		"datetimeFifteenMinutes": "Message operation timestamp, truncated to start of fifteen minutes",
+		"datetimeFiveMinutes": "Message operation timestamp, truncated to start of five minutes",
 		"datetimeHour": "Message operation timestamp, truncated to start of an hour",
 		"datetimeMinute": "Message operation timestamp, truncated to start of an minute",
 		"namespaceId": "The hexa-encoded namespace id",
@@ -4243,6 +4364,8 @@
 		"__description": "",
 		"date": "Message operation timestamp, truncated to start of a day",
 		"datetime": "Message operation timestamp",
+		"datetimeFifteenMinutes": "Message operation timestamp, truncated to start of fifteen minutes",
+		"datetimeFiveMinutes": "Message operation timestamp, truncated to start of five minutes",
 		"datetimeHour": "Message operation timestamp, truncated to start of an hour",
 		"datetimeMinute": "Message operation timestamp, truncated to start of an minute",
 		"namespaceId": "The hexa-encoded namespace id"
@@ -4790,8 +4913,11 @@
 	"AccountMagicFirewallSamplesAdaptiveGroupsDimensions": {
 		"__description": "",
 		"datetime": "Date and time that the packet was received",
+		"datetimeFifteenMinutes": "Date and time that the packet was received, rounded to the start of the nearest fifteen minutes",
 		"datetimeFiveMinute": "<small>DEPRECATED (Deprecated in favor of datetimeFiveMinutes):</small> Date and time that the packet was received, rounded to the start of the nearest five minutes",
 		"datetimeFiveMinutes": "Date and time that the packet was received, rounded to the start of the nearest five minutes",
+		"datetimeHour": "Date and time that the packet was received, rounded to the start of the nearest hour",
+		"datetimeMinute": "Date and time that the packet was received, rounded to the start of the nearest minute",
 		"ruleId": "Unique identifier of the rule that matched the packet, if any"
 	},
 	"AccountMagicFirewallSamplesAdaptiveGroupsFilter_InputObject": {
@@ -5306,7 +5432,9 @@
 	"AccountMagicWANConnectorMetricsAdaptiveGroupsDimensions": {
 		"__description": "",
 		"datetime": "The date and time the event was recorded",
+		"datetimeFifteenMinutes": "The date and time the event occurred at the edge truncated to fifteen minutes",
 		"datetimeFiveMinutes": "The date and time the event occurred at the edge truncated to a multiple of 5 minutes",
+		"datetimeHour": "The date and time the event occurred at the edge truncated to an hour",
 		"datetimeMinute": "The date and time the event occurred at the edge truncated to the minute",
 		"mconnConnectorID": "Customer connector identifier",
 		"mconnInterfaceName": "Name of connector interface",
@@ -5338,6 +5466,7 @@
 	"AccountMconnTelemetryEventsAdaptiveGroupsDimensions": {
 		"__description": "",
 		"connectorId": "Connector identifier",
+		"datetime": "Timestamp",
 		"datetimeFifteenMinutes": "Timestamp bucketed by 15 minutes",
 		"datetimeFiveMinutes": "Timestamp bucketed by 5 minutes",
 		"datetimeHour": "Timestamp bucketed by hour",
@@ -5365,6 +5494,7 @@
 	"AccountMconnTelemetryEventsStagingAdaptiveGroupsDimensions": {
 		"__description": "",
 		"connectorId": "Connector identifier",
+		"datetime": "Timestamp",
 		"datetimeFifteenMinutes": "Timestamp bucketed by 15 minutes",
 		"datetimeFiveMinutes": "Timestamp bucketed by 5 minutes",
 		"datetimeHour": "Timestamp bucketed by hour",
@@ -5394,6 +5524,7 @@
 		"__description": "",
 		"clientId": "Client ID of the device the IP Address was leased to",
 		"connectorId": "Connector identifier",
+		"datetime": "Timestamp",
 		"datetimeFifteenMinutes": "Timestamp bucketed by 15 minutes",
 		"datetimeFiveMinutes": "Timestamp bucketed by 5 minutes",
 		"datetimeHour": "Timestamp bucketed by hour",
@@ -5430,6 +5561,7 @@
 		"__description": "",
 		"clientId": "Client ID of the device the IP Address was leased to",
 		"connectorId": "Connector identifier",
+		"datetime": "Timestamp",
 		"datetimeFifteenMinutes": "Timestamp bucketed by 15 minutes",
 		"datetimeFiveMinutes": "Timestamp bucketed by 5 minutes",
 		"datetimeHour": "Timestamp bucketed by hour",
@@ -5466,6 +5598,7 @@
 	"AccountMconnTelemetrySnapshotDisksAdaptiveGroupsDimensions": {
 		"__description": "",
 		"connectorId": "Connector identifier",
+		"datetime": "Timestamp",
 		"datetimeFifteenMinutes": "Timestamp bucketed by 15 minutes",
 		"datetimeFiveMinutes": "Timestamp bucketed by 5 minutes",
 		"datetimeHour": "Timestamp bucketed by hour",
@@ -5514,6 +5647,7 @@
 	"AccountMconnTelemetrySnapshotDisksStagingAdaptiveGroupsDimensions": {
 		"__description": "",
 		"connectorId": "Connector identifier",
+		"datetime": "Timestamp",
 		"datetimeFifteenMinutes": "Timestamp bucketed by 15 minutes",
 		"datetimeFiveMinutes": "Timestamp bucketed by 5 minutes",
 		"datetimeHour": "Timestamp bucketed by hour",
@@ -5560,6 +5694,7 @@
 	"AccountMconnTelemetrySnapshotInterfaceAddressesAdaptiveGroupsDimensions": {
 		"__description": "",
 		"connectorId": "Connector identifier",
+		"datetime": "Timestamp",
 		"datetimeFifteenMinutes": "Timestamp bucketed by 15 minutes",
 		"datetimeFiveMinutes": "Timestamp bucketed by 5 minutes",
 		"datetimeHour": "Timestamp bucketed by hour",
@@ -5588,6 +5723,7 @@
 	"AccountMconnTelemetrySnapshotInterfaceAddressesStagingAdaptiveGroupsDimensions": {
 		"__description": "",
 		"connectorId": "Connector identifier",
+		"datetime": "Timestamp",
 		"datetimeFifteenMinutes": "Timestamp bucketed by 15 minutes",
 		"datetimeFiveMinutes": "Timestamp bucketed by 5 minutes",
 		"datetimeHour": "Timestamp bucketed by hour",
@@ -5617,6 +5753,7 @@
 	"AccountMconnTelemetrySnapshotInterfacesAdaptiveGroupsDimensions": {
 		"__description": "",
 		"connectorId": "Connector identifier",
+		"datetime": "Timestamp",
 		"datetimeFifteenMinutes": "Timestamp bucketed by 15 minutes",
 		"datetimeFiveMinutes": "Timestamp bucketed by 5 minutes",
 		"datetimeHour": "Timestamp bucketed by hour",
@@ -5650,6 +5787,7 @@
 	"AccountMconnTelemetrySnapshotInterfacesStagingAdaptiveGroupsDimensions": {
 		"__description": "",
 		"connectorId": "Connector identifier",
+		"datetime": "Timestamp",
 		"datetimeFifteenMinutes": "Timestamp bucketed by 15 minutes",
 		"datetimeFiveMinutes": "Timestamp bucketed by 5 minutes",
 		"datetimeHour": "Timestamp bucketed by hour",
@@ -5683,6 +5821,7 @@
 	"AccountMconnTelemetrySnapshotMountsAdaptiveGroupsDimensions": {
 		"__description": "",
 		"connectorId": "Connector identifier",
+		"datetime": "Timestamp",
 		"datetimeFifteenMinutes": "Timestamp bucketed by 15 minutes",
 		"datetimeFiveMinutes": "Timestamp bucketed by 5 minutes",
 		"datetimeHour": "Timestamp bucketed by hour",
@@ -5721,6 +5860,7 @@
 	"AccountMconnTelemetrySnapshotMountsStagingAdaptiveGroupsDimensions": {
 		"__description": "",
 		"connectorId": "Connector identifier",
+		"datetime": "Timestamp",
 		"datetimeFifteenMinutes": "Timestamp bucketed by 15 minutes",
 		"datetimeFiveMinutes": "Timestamp bucketed by 5 minutes",
 		"datetimeHour": "Timestamp bucketed by hour",
@@ -5759,6 +5899,7 @@
 	"AccountMconnTelemetrySnapshotNetdevsAdaptiveGroupsDimensions": {
 		"__description": "",
 		"connectorId": "Connector identifier",
+		"datetime": "Timestamp",
 		"datetimeFifteenMinutes": "Timestamp bucketed by 15 minutes",
 		"datetimeFiveMinutes": "Timestamp bucketed by 5 minutes",
 		"datetimeHour": "Timestamp bucketed by hour",
@@ -5806,6 +5947,7 @@
 	"AccountMconnTelemetrySnapshotNetdevsStagingAdaptiveGroupsDimensions": {
 		"__description": "",
 		"connectorId": "Connector identifier",
+		"datetime": "Timestamp",
 		"datetimeFifteenMinutes": "Timestamp bucketed by 15 minutes",
 		"datetimeFiveMinutes": "Timestamp bucketed by 5 minutes",
 		"datetimeHour": "Timestamp bucketed by hour",
@@ -5853,6 +5995,7 @@
 	"AccountMconnTelemetrySnapshotThermalsAdaptiveGroupsDimensions": {
 		"__description": "",
 		"connectorId": "Connector identifier",
+		"datetime": "Timestamp",
 		"datetimeFifteenMinutes": "Timestamp bucketed by 15 minutes",
 		"datetimeFiveMinutes": "Timestamp bucketed by 5 minutes",
 		"datetimeHour": "Timestamp bucketed by hour",
@@ -5887,6 +6030,7 @@
 	"AccountMconnTelemetrySnapshotThermalsStagingAdaptiveGroupsDimensions": {
 		"__description": "",
 		"connectorId": "Connector identifier",
+		"datetime": "Timestamp",
 		"datetimeFifteenMinutes": "Timestamp bucketed by 15 minutes",
 		"datetimeFiveMinutes": "Timestamp bucketed by 5 minutes",
 		"datetimeHour": "Timestamp bucketed by hour",
@@ -5921,6 +6065,7 @@
 	"AccountMconnTelemetrySnapshotTunnelsAdaptiveGroupsDimensions": {
 		"__description": "",
 		"connectorId": "Connector identifier",
+		"datetime": "Timestamp",
 		"datetimeFifteenMinutes": "Timestamp bucketed by 15 minutes",
 		"datetimeFiveMinutes": "Timestamp bucketed by 5 minutes",
 		"datetimeHour": "Timestamp bucketed by hour",
@@ -5954,6 +6099,7 @@
 	"AccountMconnTelemetrySnapshotTunnelsStagingAdaptiveGroupsDimensions": {
 		"__description": "",
 		"connectorId": "Connector identifier",
+		"datetime": "Timestamp",
 		"datetimeFifteenMinutes": "Timestamp bucketed by 15 minutes",
 		"datetimeFiveMinutes": "Timestamp bucketed by 5 minutes",
 		"datetimeHour": "Timestamp bucketed by hour",
@@ -5987,6 +6133,7 @@
 	"AccountMconnTelemetrySnapshotsAdaptiveGroupsDimensions": {
 		"__description": "",
 		"connectorId": "Connector identifier",
+		"datetime": "Timestamp",
 		"datetimeFifteenMinutes": "Timestamp bucketed by 15 minutes",
 		"datetimeFiveMinutes": "Timestamp bucketed by 5 minutes",
 		"datetimeHour": "Timestamp bucketed by hour",
@@ -6032,6 +6179,7 @@
 	"AccountMconnTelemetrySnapshotsStagingAdaptiveGroupsDimensions": {
 		"__description": "",
 		"connectorId": "Connector identifier",
+		"datetime": "Timestamp",
 		"datetimeFifteenMinutes": "Timestamp bucketed by 15 minutes",
 		"datetimeFiveMinutes": "Timestamp bucketed by 5 minutes",
 		"datetimeHour": "Timestamp bucketed by hour",
@@ -6426,6 +6574,7 @@
 		"__description": "",
 		"colo": "The airport code of the Cloudflare datacenter that served this request",
 		"date": "Ohttp requests metrics date",
+		"datetime": "Ohttp requests metrics timestamp",
 		"datetimeFifteenMinutes": "Ohttp requests metrics timestamp, truncated to fifteen minutes",
 		"datetimeFiveMinutes": "Ohttp requests metrics timestamp, truncated to five minutes",
 		"datetimeHour": "Ohttp requests metrics timestamp, truncated to the hour",
@@ -6478,6 +6627,8 @@
 		"__description": "",
 		"date": "Request datetime, truncated to start of a day",
 		"datetime": "Request datetime",
+		"datetimeFifteenMinutes": "Request datetime, truncated to start of fifteen minutes",
+		"datetimeFiveMinutes": "Request datetime, truncated to start of five minutes",
 		"datetimeHour": "Request datetime, truncated to start of an hour",
 		"datetimeMinute": "Request datetime, truncated to start of an minute",
 		"datetimeSixHours": "Request datetime, truncated to start of six hour window",
@@ -6545,6 +6696,8 @@
 		"__description": "",
 		"date": "Delivery operation timestamp, truncated to start of a day",
 		"datetime": "Delivery operation timestamp",
+		"datetimeFifteenMinutes": "Delivery operation timestamp, truncated to start of fifteen minutes",
+		"datetimeFiveMinutes": "Delivery operation timestamp, truncated to start of five minutes",
 		"datetimeHour": "Delivery operation timestamp, truncated to start of an hour",
 		"datetimeMinute": "Delivery operation timestamp, truncated to start of an minute",
 		"pipelineId": "The pipeline ID"
@@ -6580,6 +6733,8 @@
 		"__description": "",
 		"date": "Ingestion operation timestamp, truncated to start of a day",
 		"datetime": "Ingestion operation timestamp",
+		"datetimeFifteenMinutes": "Ingestion operation timestamp, truncated to start of fifteen minutes",
+		"datetimeFiveMinutes": "Ingestion operation timestamp, truncated to start of five minutes",
 		"datetimeHour": "Ingestion operation timestamp, truncated to start of an hour",
 		"datetimeMinute": "Ingestion operation timestamp, truncated to start of an minute",
 		"pipelineId": "The pipeline ID"
@@ -6615,6 +6770,8 @@
 		"__description": "",
 		"date": "Delivery operation timestamp, truncated to start of a day",
 		"datetime": "Delivery operation timestamp",
+		"datetimeFifteenMinutes": "Delivery operation timestamp, truncated to start of fifteen minutes",
+		"datetimeFiveMinutes": "Delivery operation timestamp, truncated to start of five minutes",
 		"datetimeHour": "Delivery operation timestamp, truncated to start of an hour",
 		"datetimeMinute": "Delivery operation timestamp, truncated to start of a minute",
 		"pipelineId": "The pipeline ID",
@@ -6653,6 +6810,8 @@
 		"__description": "",
 		"date": "Delivery operation timestamp, truncated to start of a day",
 		"datetime": "Delivery operation timestamp",
+		"datetimeFifteenMinutes": "Delivery operation timestamp, truncated to start of fifteen minutes",
+		"datetimeFiveMinutes": "Delivery operation timestamp, truncated to start of five minutes",
 		"datetimeHour": "Delivery operation timestamp, truncated to start of an hour",
 		"datetimeMinute": "Delivery operation timestamp, truncated to start of a minute",
 		"pipelineId": "The pipeline ID",
@@ -6691,6 +6850,8 @@
 		"__description": "",
 		"date": "Delivery operation timestamp, truncated to start of a day",
 		"datetime": "Delivery operation timestamp",
+		"datetimeFifteenMinutes": "Delivery operation timestamp, truncated to start of fifteen minutes",
+		"datetimeFiveMinutes": "Delivery operation timestamp, truncated to start of five minutes",
 		"datetimeHour": "Delivery operation timestamp, truncated to start of an hour",
 		"datetimeMinute": "Delivery operation timestamp, truncated to start of a minute",
 		"pipelineId": "The pipeline ID",
@@ -6733,6 +6894,8 @@
 		"__description": "",
 		"date": "Delivery operation timestamp, truncated to start of a day",
 		"datetime": "Delivery operation timestamp",
+		"datetimeFifteenMinutes": "Delivery operation timestamp, truncated to start of fifteen minutes",
+		"datetimeFiveMinutes": "Delivery operation timestamp, truncated to start of five minutes",
 		"datetimeHour": "Delivery operation timestamp, truncated to start of an hour",
 		"datetimeMinute": "Delivery operation timestamp, truncated to start of a minute",
 		"pipelineId": "The pipeline ID",
@@ -6787,6 +6950,8 @@
 		"__description": "",
 		"date": "Error timestamp, truncated to start of a day",
 		"datetime": "Error timestamp",
+		"datetimeFifteenMinutes": "Error timestamp, truncated to start of fifteen minutes",
+		"datetimeFiveMinutes": "Error timestamp, truncated to start of five minutes",
 		"datetimeHour": "Error timestamp, truncated to start of hour",
 		"datetimeMinute": "Error timestamp, truncated to start of minute",
 		"errorFamily": "Error category",
@@ -6829,6 +6994,8 @@
 		"__description": "",
 		"date": "Error timestamp, truncated to start of a day",
 		"datetime": "Error timestamp",
+		"datetimeFifteenMinutes": "Error timestamp, truncated to start of fifteen minutes",
+		"datetimeFiveMinutes": "Error timestamp, truncated to start of five minutes",
 		"datetimeHour": "Error timestamp, truncated to start of hour",
 		"datetimeMinute": "Error timestamp, truncated to start of minute",
 		"errorFamily": "Error category",
@@ -6842,6 +7009,188 @@
 		"__description": ""
 	},
 	"AccountPipelinesUserErrorsStagingAdaptiveOrderBy": {
+		"__description": ""
+	},
+	"AccountPrivacyProxyAuthMetricsAdaptiveGroups": {
+		"__description": "Aggregated Privacy Proxy authentication metrics with adaptive sampling",
+		"confidence": "ALPHA - DO NOT USE",
+		"count": "The number of authentication attempts",
+		"dimensions": "List of dimensions to group by"
+	},
+	"AccountPrivacyProxyAuthMetricsAdaptiveGroupsConfidence": {
+		"__description": "",
+		"count": "The number of authentication attempts, with confidence intervals",
+		"level": "Confidence level that was requested"
+	},
+	"AccountPrivacyProxyAuthMetricsAdaptiveGroupsDimensions": {
+		"__description": "",
+		"authMethod": "Authentication method used (None, Psk, Token, SessionAuth)",
+		"authResult": "Authentication outcome (success or failure)",
+		"coloCode": "IATA airport code of the Cloudflare data center that handled the authentication",
+		"date": "Authentication event date",
+		"datetimeFifteenMinutes": "Authentication event timestamp truncated to fifteen minutes",
+		"datetimeFiveMinutes": "Authentication event timestamp truncated to five minutes",
+		"datetimeHour": "Authentication event timestamp truncated to the hour",
+		"datetimeMinute": "Authentication event timestamp truncated to the minute",
+		"endpoint": "The proxy endpoint that generated traffic"
+	},
+	"AccountPrivacyProxyAuthMetricsAdaptiveGroupsFilter_InputObject": {
+		"__description": ""
+	},
+	"AccountPrivacyProxyAuthMetricsAdaptiveGroupsOrderBy": {
+		"__description": ""
+	},
+	"AccountPrivacyProxyEgressConnMetricsAdaptiveGroups": {
+		"__description": "Aggregated Privacy Proxy egress (proxy-to-origin) connection metrics with adaptive sampling",
+		"confidence": "ALPHA - DO NOT USE",
+		"count": "The number of egress connections",
+		"dimensions": "List of dimensions to group by",
+		"quantiles": "",
+		"sum": "Sum of values for a metric per dimension"
+	},
+	"AccountPrivacyProxyEgressConnMetricsAdaptiveGroupsConfidence": {
+		"__description": "",
+		"count": "The number of egress connections, with confidence intervals",
+		"level": "Confidence level that was requested",
+		"sum": "Sum of values for a metric per dimension, with confidence intervals"
+	},
+	"AccountPrivacyProxyEgressConnMetricsAdaptiveGroupsDimensions": {
+		"__description": "",
+		"coloCode": "IATA airport code of the Cloudflare data center that handled the connection",
+		"date": "Connection date",
+		"datetimeFifteenMinutes": "Connection timestamp truncated to fifteen minutes",
+		"datetimeFiveMinutes": "Connection timestamp truncated to five minutes",
+		"datetimeHour": "Connection timestamp truncated to the hour",
+		"datetimeMinute": "Connection timestamp truncated to the minute",
+		"endpoint": "The proxy endpoint that generated traffic",
+		"transport": "Transport protocol on the connection (TCP, UDP, QUIC)"
+	},
+	"AccountPrivacyProxyEgressConnMetricsAdaptiveGroupsFilter_InputObject": {
+		"__description": ""
+	},
+	"AccountPrivacyProxyEgressConnMetricsAdaptiveGroupsOrderBy": {
+		"__description": ""
+	},
+	"AccountPrivacyProxyEgressConnMetricsAdaptiveGroupsQuantiles": {
+		"__description": "",
+		"durationMsP25": "Connection lifetime in milliseconds (25th percentile)",
+		"durationMsP50": "Connection lifetime in milliseconds (50th percentile)",
+		"durationMsP75": "Connection lifetime in milliseconds (75th percentile)",
+		"durationMsP90": "Connection lifetime in milliseconds (90th percentile)",
+		"durationMsP95": "Connection lifetime in milliseconds (95th percentile)",
+		"durationMsP99": "Connection lifetime in milliseconds (99th percentile)",
+		"durationMsP999": "Connection lifetime in milliseconds (99.9th percentile)",
+		"handshakeDurationUsP25": "Time taken for TCP/TLS or QUIC handshake in microseconds (25th percentile)",
+		"handshakeDurationUsP50": "Time taken for TCP/TLS or QUIC handshake in microseconds (50th percentile)",
+		"handshakeDurationUsP75": "Time taken for TCP/TLS or QUIC handshake in microseconds (75th percentile)",
+		"handshakeDurationUsP90": "Time taken for TCP/TLS or QUIC handshake in microseconds (90th percentile)",
+		"handshakeDurationUsP95": "Time taken for TCP/TLS or QUIC handshake in microseconds (95th percentile)",
+		"handshakeDurationUsP99": "Time taken for TCP/TLS or QUIC handshake in microseconds (99th percentile)",
+		"handshakeDurationUsP999": "Time taken for TCP/TLS or QUIC handshake in microseconds (99.9th percentile)"
+	},
+	"AccountPrivacyProxyEgressConnMetricsAdaptiveGroupsSum": {
+		"__description": "",
+		"bytesRecvdFromOrigin": "Total bytes received by the proxy from the upstream origin",
+		"bytesSentToOrigin": "Total bytes sent from the proxy to the upstream origin",
+		"packetsRecvdFromOrigin": "Total number of packets received from the upstream origin",
+		"packetsSentToOrigin": "Total number of packets sent to the upstream origin"
+	},
+	"AccountPrivacyProxyEgressConnMetricsAdaptiveGroupsSumConfidence": {
+		"__description": "",
+		"bytesRecvdFromOrigin": "Confidence interval for the corresponding point estimate",
+		"bytesSentToOrigin": "Confidence interval for the corresponding point estimate",
+		"packetsRecvdFromOrigin": "Confidence interval for the corresponding point estimate",
+		"packetsSentToOrigin": "Confidence interval for the corresponding point estimate"
+	},
+	"AccountPrivacyProxyIngressConnMetricsAdaptiveGroups": {
+		"__description": "Aggregated Privacy Proxy ingress (client-to-proxy) connection metrics with adaptive sampling",
+		"confidence": "ALPHA - DO NOT USE",
+		"count": "The number of ingress connections",
+		"dimensions": "List of dimensions to group by",
+		"quantiles": "",
+		"sum": "Sum of values for a metric per dimension"
+	},
+	"AccountPrivacyProxyIngressConnMetricsAdaptiveGroupsConfidence": {
+		"__description": "",
+		"count": "The number of ingress connections, with confidence intervals",
+		"level": "Confidence level that was requested",
+		"sum": "Sum of values for a metric per dimension, with confidence intervals"
+	},
+	"AccountPrivacyProxyIngressConnMetricsAdaptiveGroupsDimensions": {
+		"__description": "",
+		"coloCode": "IATA airport code of the Cloudflare data center that handled the connection",
+		"date": "Connection date",
+		"datetimeFifteenMinutes": "Connection timestamp truncated to fifteen minutes",
+		"datetimeFiveMinutes": "Connection timestamp truncated to five minutes",
+		"datetimeHour": "Connection timestamp truncated to the hour",
+		"datetimeMinute": "Connection timestamp truncated to the minute",
+		"endpoint": "The proxy endpoint that generated traffic",
+		"transport": "Transport protocol on the connection (TCP, UDP, QUIC)"
+	},
+	"AccountPrivacyProxyIngressConnMetricsAdaptiveGroupsFilter_InputObject": {
+		"__description": ""
+	},
+	"AccountPrivacyProxyIngressConnMetricsAdaptiveGroupsOrderBy": {
+		"__description": ""
+	},
+	"AccountPrivacyProxyIngressConnMetricsAdaptiveGroupsQuantiles": {
+		"__description": "",
+		"durationMsP25": "Connection lifetime in milliseconds (25th percentile)",
+		"durationMsP50": "Connection lifetime in milliseconds (50th percentile)",
+		"durationMsP75": "Connection lifetime in milliseconds (75th percentile)",
+		"durationMsP90": "Connection lifetime in milliseconds (90th percentile)",
+		"durationMsP95": "Connection lifetime in milliseconds (95th percentile)",
+		"durationMsP99": "Connection lifetime in milliseconds (99th percentile)",
+		"durationMsP999": "Connection lifetime in milliseconds (99.9th percentile)",
+		"handshakeDurationUsP25": "Time taken for TCP/TLS or QUIC handshake in microseconds (25th percentile)",
+		"handshakeDurationUsP50": "Time taken for TCP/TLS or QUIC handshake in microseconds (50th percentile)",
+		"handshakeDurationUsP75": "Time taken for TCP/TLS or QUIC handshake in microseconds (75th percentile)",
+		"handshakeDurationUsP90": "Time taken for TCP/TLS or QUIC handshake in microseconds (90th percentile)",
+		"handshakeDurationUsP95": "Time taken for TCP/TLS or QUIC handshake in microseconds (95th percentile)",
+		"handshakeDurationUsP99": "Time taken for TCP/TLS or QUIC handshake in microseconds (99th percentile)",
+		"handshakeDurationUsP999": "Time taken for TCP/TLS or QUIC handshake in microseconds (99.9th percentile)"
+	},
+	"AccountPrivacyProxyIngressConnMetricsAdaptiveGroupsSum": {
+		"__description": "",
+		"bytesRecvdFromClient": "Total bytes received by the proxy from the client",
+		"bytesSentToClient": "Total bytes sent from the proxy to the client",
+		"packetsRecvdFromClient": "Total number of packets received from the client",
+		"packetsSentToClient": "Total number of packets sent to the client"
+	},
+	"AccountPrivacyProxyIngressConnMetricsAdaptiveGroupsSumConfidence": {
+		"__description": "",
+		"bytesRecvdFromClient": "Confidence interval for the corresponding point estimate",
+		"bytesSentToClient": "Confidence interval for the corresponding point estimate",
+		"packetsRecvdFromClient": "Confidence interval for the corresponding point estimate",
+		"packetsSentToClient": "Confidence interval for the corresponding point estimate"
+	},
+	"AccountPrivacyProxyRequestMetricsAdaptiveGroups": {
+		"__description": "Aggregated Privacy Proxy request metrics with adaptive sampling",
+		"confidence": "ALPHA - DO NOT USE",
+		"count": "The number of proxy requests",
+		"dimensions": "List of dimensions to group by"
+	},
+	"AccountPrivacyProxyRequestMetricsAdaptiveGroupsConfidence": {
+		"__description": "",
+		"count": "The number of proxy requests, with confidence intervals",
+		"level": "Confidence level that was requested"
+	},
+	"AccountPrivacyProxyRequestMetricsAdaptiveGroupsDimensions": {
+		"__description": "",
+		"coloCode": "IATA airport code of the Cloudflare data center that handled the request",
+		"date": "Request date",
+		"datetimeFifteenMinutes": "Request timestamp truncated to fifteen minutes",
+		"datetimeFiveMinutes": "Request timestamp truncated to five minutes",
+		"datetimeHour": "Request timestamp truncated to the hour",
+		"datetimeMinute": "Request timestamp truncated to the minute",
+		"endpoint": "The proxy endpoint that generated traffic",
+		"proxyStatus": "Proxy-level error classification, null when no proxy-level error occurred",
+		"statusCode": "HTTP status code returned by the proxy to the client"
+	},
+	"AccountPrivacyProxyRequestMetricsAdaptiveGroupsFilter_InputObject": {
+		"__description": ""
+	},
+	"AccountPrivacyProxyRequestMetricsAdaptiveGroupsOrderBy": {
 		"__description": ""
 	},
 	"AccountProgrammableFlowProtectionNetworkAnalyticsAdaptiveGroups": {
@@ -7148,6 +7497,8 @@
 		"bucketName": "The name of the R2 bucket, if applicable to this request",
 		"date": "Request timestamp, truncated to start of a day",
 		"datetime": "Request timestamp",
+		"datetimeFifteenMinutes": "Request timestamp, truncated to start of fifteen minutes",
+		"datetimeFiveMinutes": "Request timestamp, truncated to start of five minutes",
 		"datetimeHour": "Request timestamp, truncated to start of an hour",
 		"datetimeMinute": "Request timestamp, truncated to start of an minute",
 		"eyeballRegion": "The region from which the request originated (WNAM, ENAM, WEUR, EEUR, APAC, SAM, OC, AFR, ME)",
@@ -7183,6 +7534,8 @@
 		"bucketName": "The name of the R2 bucket, if applicable to this request",
 		"date": "Storage sample timestamp, truncated to start of a day",
 		"datetime": "Storage sample timestamp",
+		"datetimeFifteenMinutes": "Storage sample timestamp, truncated to start of fifteen minutes",
+		"datetimeFiveMinutes": "Storage sample timestamp, truncated to start of five minutes",
 		"datetimeHour": "Storage sample timestamp, truncated to start of an hour",
 		"datetimeMinute": "Storage sample timestamp, truncated to start of an minute",
 		"storageClass": "The storage class that applies to this request"
@@ -7226,6 +7579,8 @@
 		"appId": "The RealtimeKit application identifier",
 		"date": "The date of the usage event",
 		"datetime": "The exact timestamp of the usage event",
+		"datetimeFifteenMinutes": "The date and time truncated to fifteen minutes",
+		"datetimeFiveMinutes": "The date and time truncated to five minutes",
 		"datetimeHour": "The date and time truncated to the hour",
 		"datetimeMinute": "The date and time truncated to the minute"
 	},
@@ -7721,6 +8076,7 @@
 		"httpRequestsAdaptive": "",
 		"httpRequestsAdaptiveGroups": "",
 		"httpRequestsOverviewAdaptiveGroups": "",
+		"hyperdrivePoolSizesAdaptiveGroups": "",
 		"hyperdriveQueriesAdaptiveGroups": "",
 		"imagesRequestsAdaptiveGroups": "",
 		"imagesUniqueTransformations": "",
@@ -7778,6 +8134,10 @@
 		"pipelinesUserErrorsAdaptiveGroups": "",
 		"pipelinesUserErrorsStagingAdaptive": "",
 		"pipelinesUserErrorsStagingAdaptiveGroups": "",
+		"privacyProxyAuthMetricsAdaptiveGroups": "",
+		"privacyProxyEgressConnMetricsAdaptiveGroups": "",
+		"privacyProxyIngressConnMetricsAdaptiveGroups": "",
+		"privacyProxyRequestMetricsAdaptiveGroups": "",
 		"programmableFlowProtectionNetworkAnalyticsAdaptiveGroups": "",
 		"queueBacklogAdaptiveGroups": "",
 		"queueConsumerMetricsAdaptiveGroups": "",
@@ -7860,6 +8220,10 @@
 		"__description": "",
 		"body": "The request body",
 		"datetime": "The date and time the event was recorded",
+		"datetimeFifteenMinutes": "The date and time the event was recorded truncated to fifteen minutes",
+		"datetimeFiveMinutes": "The date and time the event was recorded truncated to five minutes",
+		"datetimeHour": "The date and time the event was recorded truncated to the hour",
+		"datetimeMinute": "The date and time the event was recorded truncated to the minute",
 		"destinationAddress": "The destination IP address of the request",
 		"headers": "The request headers. If a header has multiple values, the values are comma separated. Each header is newline separated.",
 		"host": "The host the request was sent to",
@@ -7900,6 +8264,8 @@
 		"bucket": "Name of the R2 bucket",
 		"date": "Operation timestamp, truncated to start of a day",
 		"datetime": "Operation timestamp",
+		"datetimeFifteenMinutes": "Operation timestamp, truncated to start of fifteen minutes",
+		"datetimeFiveMinutes": "Operation timestamp, truncated to start of five minutes",
 		"datetimeHour": "Operation timestamp, truncated to start of an hour",
 		"datetimeMinute": "Operation timestamp, truncated to start of an minute",
 		"initiator": "Operation's initiator (eyeball / Sippy)",
@@ -8259,6 +8625,7 @@
 		"__description": "",
 		"conversionId": "The ID of this conversion, as a ULID",
 		"date": "The date when trigger was triggered",
+		"datetime": "The date and time the conversion event occurred",
 		"datetimeFifteenMinutes": "The date and time truncated to fifteen minutes",
 		"datetimeFiveMinutes": "The date and time truncated to five minutes",
 		"datetimeHour": "The date and time truncated to the hour",
@@ -8351,7 +8718,11 @@
 	"AccountVectorizeQueriesAdaptiveGroupsDimensions": {
 		"__description": "",
 		"date": "Vectorize storage sample timestamp",
+		"datetime": "Vectorize storage sample timestamp",
+		"datetimeFifteenMinutes": "Vectorize storage sample timestamp, truncated to fifteen minutes",
+		"datetimeFiveMinutes": "Vectorize storage sample timestamp, truncated to five minutes",
 		"datetimeHour": "Vectorize storage sample timestamp, truncated to the hour",
+		"datetimeMinute": "Vectorize storage sample timestamp, truncated to the minute",
 		"vectorizeIndexId": "Identifier for a Vectorize index"
 	},
 	"AccountVectorizeQueriesAdaptiveGroupsFilter_InputObject": {
@@ -8372,7 +8743,11 @@
 	"AccountVectorizeStorageAdaptiveGroupsDimensions": {
 		"__description": "",
 		"date": "Vectorize storage sample timestamp",
+		"datetime": "Vectorize storage sample timestamp",
+		"datetimeFifteenMinutes": "Vectorize storage sample timestamp, truncated to fifteen minutes",
+		"datetimeFiveMinutes": "Vectorize storage sample timestamp, truncated to five minutes",
 		"datetimeHour": "Vectorize storage sample timestamp, truncated to the hour",
+		"datetimeMinute": "Vectorize storage sample timestamp, truncated to the minute",
 		"vectorizeIndexId": "Identifier for a Vectorize index"
 	},
 	"AccountVectorizeStorageAdaptiveGroupsFilter_InputObject": {
@@ -8400,6 +8775,8 @@
 		"__description": "",
 		"date": "Vectorize operation event timestamp, truncated to start of a day",
 		"datetime": "Vectorize operation event timestamp",
+		"datetimeFifteenMinutes": "Vectorize operation event timestamp, truncated to fifteen minutes",
+		"datetimeFiveMinutes": "Vectorize operation event timestamp, truncated to five minutes",
 		"datetimeHour": "Vectorize operation event timestamp, truncated to start of hour",
 		"datetimeMinute": "Vectorize operation event timestamp, truncated to start of minute",
 		"indexName": "Name of a Vectorize index",
@@ -8690,8 +9067,11 @@
 		"colo": "Device's connected colo",
 		"date": "The date of the device log",
 		"datetime": "The date and time of the device log",
+		"datetimeFifteenMinutes": "The date and time of the device log truncated to fifteen minutes",
 		"datetimeFiveMinute": "The date and time of the device log truncated to every five minutes",
+		"datetimeFiveMinutes": "The date and time of the device log truncated to five minutes",
 		"datetimeHour": "The date and time of the device log truncated to the hour",
+		"datetimeMinute": "The date and time of the device log truncated to the minute",
 		"datetimeTenMinute": "The date and time of the device log truncated to every ten minutes",
 		"deviceId": "Device ID",
 		"mode": "Device's Warp mode",
@@ -8805,7 +9185,11 @@
 	},
 	"AccountWorkersBuildsBuildMinutesAdaptiveGroupsDimensions": {
 		"__description": "",
-		"datetime": "Build minutes recorded timestamp"
+		"datetime": "Build minutes recorded timestamp",
+		"datetimeFifteenMinutes": "Build minutes recorded timestamp, truncated to start of fifteen minutes",
+		"datetimeFiveMinutes": "Build minutes recorded timestamp, truncated to start of five minutes",
+		"datetimeHour": "Build minutes recorded timestamp, truncated to start of an hour",
+		"datetimeMinute": "Build minutes recorded timestamp, truncated to start of a minute"
 	},
 	"AccountWorkersBuildsBuildMinutesAdaptiveGroupsFilter_InputObject": {
 		"__description": ""
@@ -8973,6 +9357,10 @@
 	"AccountWorkersOverviewDataAdaptiveGroupsDimensions": {
 		"__description": "",
 		"datetime": "Request datetime",
+		"datetimeFifteenMinutes": "Request datetime, truncated to start of fifteen minutes",
+		"datetimeFiveMinutes": "Request datetime, truncated to start of five minutes",
+		"datetimeHour": "Request datetime, truncated to start of an hour",
+		"datetimeMinute": "Request datetime, truncated to start of a minute",
 		"usageModel": "Usage model of the worker invocation"
 	},
 	"AccountWorkersOverviewDataAdaptiveGroupsFilter_InputObject": {
@@ -9007,6 +9395,10 @@
 	"AccountWorkersOverviewRequestsAdaptiveGroupsDimensions": {
 		"__description": "",
 		"datetime": "Request datetime",
+		"datetimeFifteenMinutes": "Request datetime, truncated to start of fifteen minutes",
+		"datetimeFiveMinutes": "Request datetime, truncated to start of five minutes",
+		"datetimeHour": "Request datetime, truncated to start of an hour",
+		"datetimeMinute": "Request datetime, truncated to start of a minute",
 		"status": "Status of the worker invocation",
 		"usageModel": "Usage model of the worker invocation"
 	},
@@ -9120,6 +9512,8 @@
 		"coloCode": "IATA airport code for the Cloudflare datacenter where the connection originated.",
 		"date": "Workers VPC Connection timestamp, truncated to start of a day",
 		"datetime": "Workers VPC Connection timestamp",
+		"datetimeFifteenMinutes": "Workers VPC Connection timestamp, truncated to start of fifteen minutes",
+		"datetimeFiveMinutes": "Workers VPC Connection timestamp, truncated to start of five minutes",
 		"datetimeHour": "Workers VPC Connection timestamp, truncated to start of hour",
 		"datetimeMinute": "Workers VPC Connection timestamp, truncated to start of minute",
 		"errorCode": "Set for error statuses, contains a user-facing error message.",
@@ -9183,6 +9577,7 @@
 	"AccountWorkflowsAdaptiveGroupsDimensions": {
 		"__description": "",
 		"date": "The date when instance was triggered",
+		"datetime": "The date and time the workflow event occurred",
 		"datetimeFifteenMinutes": "The date and time truncated to fifteen minutes",
 		"datetimeFiveMinutes": "The date and time truncated to five minutes",
 		"datetimeHour": "The date and time truncated to the hour",
@@ -9368,6 +9763,8 @@
 		"clientDeviceType": "",
 		"clientIP": "",
 		"clientRefererHost": "The referrer host",
+		"clientRequestAcceptContentTypeNames": "List of MIME content type extension names explicitly accepted by the client",
+		"clientRequestAcceptContentTypes": "List of MIME content types explicitly accepted by the client",
 		"clientRequestHTTPHost": "Host requested by the client",
 		"clientRequestHTTPMethodName": "HTTP method of client request",
 		"clientRequestHTTPProtocol": "HTTP protocol version",
@@ -9390,6 +9787,8 @@
 		"datetimeHour": "The date and time the event occurred at the edge truncated to hours",
 		"datetimeMinute": "The date and time the event occurred at the edge truncated to the minute",
 		"edgeDnsResponseTimeMs": "The time elapsed resolving a CNAME if it was required to reach your origin",
+		"edgeResponseContentType": "MIME type of the response",
+		"edgeResponseContentTypeMatched": "1 if the MIME type of the response is one of the MIME content types explicitly accepted by the client, 0 otherwise",
 		"edgeResponseContentTypeName": "",
 		"edgeResponseStatus": "",
 		"edgeTimeToFirstByteMs": "The time elapsed between processing the first byte of the request until when we started sending a response",
@@ -9770,7 +10169,11 @@
 	},
 	"ZoneCacheReserveRequestsAdaptiveGroupsDimensions": {
 		"__description": "",
+		"cacheReserveUsed": "Used Cache Reserve to serve the response",
 		"cacheStatus": "Cache status",
+		"clientRequestHTTPHost": "Host requested by the client",
+		"clientRequestPath": "Path of client request",
+		"clientRequestQuery": "Query parameters of client request",
 		"date": "The date the event occurred at the edge",
 		"datetime": "The date and time the event occurred at the edge",
 		"datetimeFifteenMinutes": "The date and time the event occurred at the edge truncated to a multiple of 15 minutes",
@@ -9887,9 +10290,13 @@
 	"ZoneDmarcReportsSourcesAdaptiveGroupsDimensions": {
 		"__description": "",
 		"date": "The date the source email was received",
+		"datetime": "The date and time the source email was received",
 		"datetimeDay": "The date and time the source email was received truncated to the day",
+		"datetimeFifteenMinutes": "The date and time the source email was received truncated to fifteen minutes",
+		"datetimeFiveMinutes": "The date and time the source email was received truncated to five minutes",
 		"datetimeHour": "The date and time the source email was received truncated to the hour",
 		"datetimeLast31Days": "The date and time the source email was received truncated to the last 31 days",
+		"datetimeMinute": "The date and time the source email was received truncated to the minute",
 		"datetimeMonth": "The date and time the source email was received truncated to the month",
 		"datetimeWeek": "The date and time the source email was received truncated to the week",
 		"disposition": "DMARC policy disposition",
@@ -10086,6 +10493,7 @@
 		"action": "Action routing rule apply into source email",
 		"arc": "ARC check status of the source email",
 		"date": "The date the source email was received",
+		"datetime": "The date and time the source email was received",
 		"datetimeFifteenMinutes": "The date and time the source email was received truncated to fifteen minutes",
 		"datetimeFiveMinutes": "The date and time the source email was received truncated to five minutes",
 		"datetimeHour": "The date and time the source email was received truncated to the hour",
@@ -10156,6 +10564,7 @@
 		"__description": "",
 		"arc": "ARC check status of the source email",
 		"date": "The date the source email was received",
+		"datetime": "The date and time the source email was received",
 		"datetimeFifteenMinutes": "The date and time the source email was received truncated to fifteen minutes",
 		"datetimeFiveMinutes": "The date and time the source email was received truncated to five minutes",
 		"datetimeHour": "The date and time the source email was received truncated to the hour",
@@ -10954,6 +11363,8 @@
 		"clientDeviceType": "",
 		"clientIP": "The visitor's IP address (IPv4 or IPv6)",
 		"clientRefererHost": "The referrer host",
+		"clientRequestAcceptContentTypeNames": "List of MIME content type extension names explicitly accepted by the visitor",
+		"clientRequestAcceptContentTypes": "List of MIME content types explicitly accepted by the visitor",
 		"clientRequestHTTPHost": "The HTTP hostname requested by the visitor",
 		"clientRequestHTTPMethodName": "HTTP method of client request",
 		"clientRequestHTTPProtocol": "The version of HTTP protocol requested by the visitor",
@@ -10976,6 +11387,8 @@
 		"datetimeHour": "The date and time the event occurred at the edge truncated to hours",
 		"datetimeMinute": "The date and time the event occurred at the edge truncated to the minute",
 		"edgeDnsResponseTimeMs": "The time elapsed resolving a CNAME if it was required to reach your origin",
+		"edgeResponseContentType": "MIME type of the response",
+		"edgeResponseContentTypeMatched": "1 if the MIME type of the response is one of the MIME content types explicitly accepted by the visitor, 0 otherwise",
 		"edgeResponseContentTypeName": "",
 		"edgeResponseStatus": "HTTP response status code returned to browser",
 		"edgeTimeToFirstByteMs": "The time elapsed between processing the first byte of the request until when we started sending a response",
@@ -11076,6 +11489,8 @@
 		"clientDeviceType": "",
 		"clientIP": "",
 		"clientRefererHost": "The referrer host",
+		"clientRequestAcceptContentTypeNames": "List of MIME content type extension names explicitly accepted by the client",
+		"clientRequestAcceptContentTypes": "List of MIME content types explicitly accepted by the client",
 		"clientRequestHTTPHost": "Host requested by the client",
 		"clientRequestHTTPMethodName": "HTTP method of client request",
 		"clientRequestHTTPProtocol": "HTTP protocol version",
@@ -11098,6 +11513,8 @@
 		"datetimeHour": "The date and time the event occurred at the edge truncated to hours",
 		"datetimeMinute": "The date and time the event occurred at the edge truncated to the minute",
 		"edgeDnsResponseTimeMs": "The time elapsed resolving a CNAME if it was required to reach your origin",
+		"edgeResponseContentType": "MIME type of the response",
+		"edgeResponseContentTypeMatched": "1 if the MIME type of the response is one of the MIME content types explicitly accepted by the client, 0 otherwise",
 		"edgeResponseContentTypeName": "",
 		"edgeResponseStatus": "",
 		"edgeTimeToFirstByteMs": "The time elapsed between processing the first byte of the request until when we started sending a response",
@@ -11867,6 +12284,8 @@
 		"cacheStatus": "Cache status",
 		"date": "Request datetime, truncated to start of a day",
 		"datetime": "Request datetime",
+		"datetimeFifteenMinutes": "Request datetime, truncated to start of fifteen minutes",
+		"datetimeFiveMinutes": "Request datetime, truncated to start of five minutes",
 		"datetimeHour": "Request datetime, truncated to start of an hour",
 		"datetimeMinute": "Request datetime, truncated to start of an minute",
 		"datetimeSixHours": "Request datetime, truncated to start of six hour window",
@@ -11908,6 +12327,7 @@
 		"__description": "",
 		"actionName": "Action Name",
 		"date": "The date the Action was triggered",
+		"datetime": "The date and time the event occurred",
 		"datetimeFifteenMinutes": "The date and time truncated to fifteen minutes",
 		"datetimeFiveMinutes": "The date and time truncated to five minutes",
 		"datetimeHour": "The date and time truncated to the hour",
@@ -11935,6 +12355,7 @@
 		"__description": "",
 		"clientId": "Client ID",
 		"date": "Date when zaraz.identify() method was called",
+		"datetime": "The date and time the event occurred",
 		"datetimeFifteenMinutes": "The date and time truncated to fifteen minutes",
 		"datetimeFiveMinutes": "The date and time truncated to five minutes",
 		"datetimeHour": "The date and time truncated to the hour",
@@ -12008,6 +12429,7 @@
 		"colors": "Color depth",
 		"country": "Country",
 		"date": "Date when track was called",
+		"datetime": "The date and time the event occurred",
 		"datetimeFifteenMinutes": "The date and time truncated to fifteen minutes",
 		"datetimeFiveMinutes": "The date and time truncated to five minutes",
 		"datetimeHour": "The date and time truncated to the hour",
@@ -12070,6 +12492,7 @@
 		"colors": "Color depth",
 		"country": "Country",
 		"date": "Date when track was called",
+		"datetime": "The date and time the event occurred",
 		"datetimeFifteenMinutes": "The date and time truncated to fifteen minutes",
 		"datetimeFiveMinutes": "The date and time truncated to five minutes",
 		"datetimeHour": "The date and time truncated to the hour",
@@ -12127,6 +12550,7 @@
 		"cityRegion": "City, region",
 		"clientId": "Client ID",
 		"country": "Country",
+		"datetime": "The date and time the session ended",
 		"duration": "Session duration (seconds)",
 		"exitPage": "URL Path at session end",
 		"firstTrafficSrc": "Traffic source at session start",
@@ -12175,6 +12599,7 @@
 		"colors": "Color depth",
 		"country": "Country",
 		"date": "The date when trigger was triggerd",
+		"datetime": "The date and time the event occurred",
 		"datetimeFifteenMinutes": "The date and time truncated to fifteen minutes",
 		"datetimeFiveMinutes": "The date and time truncated to five minutes",
 		"datetimeHour": "The date and time truncated to the hour",
@@ -12226,6 +12651,7 @@
 		"cityRegion": "City, region",
 		"clientId": "Client ID",
 		"country": "Country",
+		"datetime": "The date and time the session ended",
 		"firstTrafficSrc": "Traffic source at session start",
 		"sessionEnd": "Date when the session ended",
 		"sessionEndFifteenMinutes": "The date and time truncated to fifteen minutes",
@@ -12265,6 +12691,7 @@
 	"ZoneZarazFetchAdaptiveGroupsDimensions": {
 		"__description": "",
 		"date": "Date when fetch was called",
+		"datetime": "The date and time the fetch event occurred",
 		"datetimeFifteenMinutes": "The date and time truncated to fifteen minutes",
 		"datetimeFiveMinutes": "The date and time truncated to five minutes",
 		"datetimeHour": "The date and time truncated to the hour",
@@ -12396,6 +12823,7 @@
 		"httpRequestsAdaptive": "Raw HTTP requests with adaptive sampling",
 		"httpRequestsAdaptiveGroups": "Aggregated HTTP requests data with adaptive sampling",
 		"httpRequestsOverviewAdaptiveGroups": "A high-level summary of HTTP requests made by end users.",
+		"hyperdrivePoolSizesAdaptiveGroups": "Hyperdrive connection pool size snapshots with adaptive sampling.",
 		"hyperdriveQueriesAdaptiveGroups": "Hyperdrive query events with adaptive sampling.",
 		"imagesRequestsAdaptiveGroups": "A high-level summary of Cloudflare Images served to end users.",
 		"imagesUniqueTransformations": "Image unique transfromations per day",
@@ -12453,6 +12881,10 @@
 		"pipelinesUserErrorsAdaptiveGroups": "User errors from Workers Pipelines",
 		"pipelinesUserErrorsStagingAdaptive": "Raw user errors from Workers Pipelines (staging)",
 		"pipelinesUserErrorsStagingAdaptiveGroups": "User errors from Workers Pipelines (staging)",
+		"privacyProxyAuthMetricsAdaptiveGroups": "Aggregated Privacy Proxy authentication metrics with adaptive sampling",
+		"privacyProxyEgressConnMetricsAdaptiveGroups": "Aggregated Privacy Proxy egress (proxy-to-origin) connection metrics with adaptive sampling",
+		"privacyProxyIngressConnMetricsAdaptiveGroups": "Aggregated Privacy Proxy ingress (client-to-proxy) connection metrics with adaptive sampling",
+		"privacyProxyRequestMetricsAdaptiveGroups": "Aggregated Privacy Proxy request metrics with adaptive sampling",
 		"programmableFlowProtectionNetworkAnalyticsAdaptiveGroups": "Network analytics data for Programmable Flow Protection",
 		"queueBacklogAdaptiveGroups": "Beta. Queue backlog data with adaptive sampling. Queues that are not being written to, or read from, will not return data, even if they have a backlog.",
 		"queueConsumerMetricsAdaptiveGroups": "Beta. Queue consumer metrics with adaptive sampling. Inactive queues will not return data.",
