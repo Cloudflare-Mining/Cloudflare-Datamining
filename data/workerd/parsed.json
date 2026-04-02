@@ -2828,7 +2828,11 @@
 					"name": "pythonWorkers",
 					"annotations": {
 						"compatEnableFlag": "python_workers",
-						"pythonSnapshotRelease": true
+						"pythonSnapshotRelease": true,
+						"impliedByAfterDate": {
+							"name": "pythonWorkersDevPyodide",
+							"date": "2000-01-01"
+						}
 					},
 					"type": "Bool"
 				},
@@ -2890,7 +2894,11 @@
 					"name": "nodeJsCompatV2",
 					"annotations": {
 						"compatEnableFlag": "nodejs_compat_v2",
-						"compatDisableFlag": "no_nodejs_compat_v2"
+						"compatDisableFlag": "no_nodejs_compat_v2",
+						"impliedByAfterDate": {
+							"name": "nodeJsCompat",
+							"date": "2024-09-23"
+						}
 					},
 					"type": "Bool"
 				},
@@ -2968,7 +2976,14 @@
 					"name": "nodeJsZlib",
 					"annotations": {
 						"compatEnableFlag": "nodejs_zlib",
-						"compatDisableFlag": "no_nodejs_zlib"
+						"compatDisableFlag": "no_nodejs_zlib",
+						"impliedByAfterDate": {
+							"names": [
+								"nodeJsCompat",
+								"nodeJsCompatV2"
+							],
+							"date": "2024-09-23"
+						}
 					},
 					"type": "Bool"
 				},
@@ -3059,7 +3074,11 @@
 					"name": "cacheNoCache",
 					"annotations": {
 						"compatEnableFlag": "cache_no_cache_enabled",
-						"compatDisableFlag": "cache_no_cache_disabled"
+						"compatDisableFlag": "cache_no_cache_disabled",
+						"impliedByAfterDate": {
+							"name": "cacheOptionEnabled",
+							"date": "2025-08-07"
+						}
 					},
 					"type": "Bool"
 				},
@@ -3068,6 +3087,10 @@
 					"annotations": {
 						"compatEnableFlag": "python_workers_20250116",
 						"compatDisableFlag": "no_python_workers_20250116",
+						"impliedByAfterDate": {
+							"name": "pythonWorkers",
+							"date": "2025-09-29"
+						},
 						"pythonSnapshotRelease": true
 					},
 					"type": "Bool"
@@ -3110,7 +3133,11 @@
 					"name": "populateProcessEnv",
 					"annotations": {
 						"compatEnableFlag": "nodejs_compat_populate_process_env",
-						"compatDisableFlag": "nodejs_compat_do_not_populate_process_env"
+						"compatDisableFlag": "nodejs_compat_do_not_populate_process_env",
+						"impliedByAfterDate": {
+							"name": "nodeJsCompat",
+							"date": "2025-04-01"
+						}
 					},
 					"type": "Bool"
 				},
@@ -3271,7 +3298,11 @@
 					"name": "pythonWorkflows",
 					"annotations": {
 						"compatEnableFlag": "python_workflows",
-						"compatDisableFlag": "disable_python_workflows"
+						"compatDisableFlag": "disable_python_workflows",
+						"impliedByAfterDate": {
+							"name": "pythonWorkers",
+							"date": "2025-09-20"
+						}
 					},
 					"type": "Bool"
 				},
@@ -3287,7 +3318,11 @@
 					"name": "enableNodeJsProcessV2",
 					"annotations": {
 						"compatEnableFlag": "enable_nodejs_process_v2",
-						"compatDisableFlag": "disable_nodejs_process_v2"
+						"compatDisableFlag": "disable_nodejs_process_v2",
+						"impliedByAfterDate": {
+							"name": "nodeJsCompat",
+							"date": "2025-09-15"
+						}
 					},
 					"type": "Bool"
 				},
@@ -3313,7 +3348,11 @@
 					"name": "enableNodejsHttpModules",
 					"annotations": {
 						"compatEnableFlag": "enable_nodejs_http_modules",
-						"compatDisableFlag": "disable_nodejs_http_modules"
+						"compatDisableFlag": "disable_nodejs_http_modules",
+						"impliedByAfterDate": {
+							"name": "nodeJsCompat",
+							"date": "2025-08-15"
+						}
 					},
 					"type": "Bool"
 				},
@@ -3338,7 +3377,11 @@
 					"name": "enableNodejsHttpServerModules",
 					"annotations": {
 						"compatEnableFlag": "enable_nodejs_http_server_modules",
-						"compatDisableFlag": "disable_nodejs_http_server_modules"
+						"compatDisableFlag": "disable_nodejs_http_server_modules",
+						"impliedByAfterDate": {
+							"name": "enableNodejsHttpModules",
+							"date": "2025-09-01"
+						}
 					},
 					"type": "Bool"
 				},
@@ -3355,7 +3398,11 @@
 					"name": "enableNodeJsFsModule",
 					"annotations": {
 						"compatEnableFlag": "enable_nodejs_fs_module",
-						"compatDisableFlag": "disable_nodejs_fs_module"
+						"compatDisableFlag": "disable_nodejs_fs_module",
+						"impliedByAfterDate": {
+							"name": "nodeJsCompat",
+							"date": "2025-09-15"
+						}
 					},
 					"type": "Bool"
 				},
@@ -3363,7 +3410,11 @@
 					"name": "enableNodeJsOsModule",
 					"annotations": {
 						"compatEnableFlag": "enable_nodejs_os_module",
-						"compatDisableFlag": "disable_nodejs_os_module"
+						"compatDisableFlag": "disable_nodejs_os_module",
+						"impliedByAfterDate": {
+							"name": "nodeJsCompat",
+							"date": "2025-09-15"
+						}
 					},
 					"type": "Bool"
 				},
@@ -3379,7 +3430,11 @@
 					"name": "removeNodejsCompatEOL",
 					"annotations": {
 						"compatEnableFlag": "remove_nodejs_compat_eol",
-						"compatDisableFlag": "add_nodejs_compat_eol"
+						"compatDisableFlag": "add_nodejs_compat_eol",
+						"impliedByAfterDate": {
+							"name": "nodeJsCompat",
+							"date": "2025-09-01"
+						}
 					},
 					"type": "Bool"
 				},
@@ -3396,7 +3451,11 @@
 					"name": "pythonDedicatedSnapshot",
 					"annotations": {
 						"compatEnableFlag": "python_dedicated_snapshot",
-						"compatDisableFlag": "disable_python_dedicated_snapshot"
+						"compatDisableFlag": "disable_python_dedicated_snapshot",
+						"impliedByAfterDate": {
+							"name": "pythonWorkers20250116",
+							"date": "2025-10-16"
+						}
 					},
 					"type": "Bool"
 				},
@@ -3412,7 +3471,11 @@
 					"name": "enableNodeJsHttp2Module",
 					"annotations": {
 						"compatEnableFlag": "enable_nodejs_http2_module",
-						"compatDisableFlag": "disable_nodejs_http2_module"
+						"compatDisableFlag": "disable_nodejs_http2_module",
+						"impliedByAfterDate": {
+							"name": "nodeJsCompat",
+							"date": "2025-09-01"
+						}
 					},
 					"type": "Bool"
 				},
@@ -3454,7 +3517,11 @@
 					"name": "removeNodejsCompatEOLv22",
 					"annotations": {
 						"compatEnableFlag": "remove_nodejs_compat_eol_v22",
-						"compatDisableFlag": "add_nodejs_compat_eol_v22"
+						"compatDisableFlag": "add_nodejs_compat_eol_v22",
+						"impliedByAfterDate": {
+							"name": "removeNodejsCompatEOL",
+							"date": "2027-04-30"
+						}
 					},
 					"type": "Bool"
 				},
@@ -3462,7 +3529,11 @@
 					"name": "removeNodejsCompatEOLv23",
 					"annotations": {
 						"compatEnableFlag": "remove_nodejs_compat_eol_v23",
-						"compatDisableFlag": "add_nodejs_compat_eol_v23"
+						"compatDisableFlag": "add_nodejs_compat_eol_v23",
+						"impliedByAfterDate": {
+							"name": "removeNodejsCompatEOLv24",
+							"date": "2025-09-01"
+						}
 					},
 					"type": "Bool"
 				},
@@ -3470,7 +3541,11 @@
 					"name": "removeNodejsCompatEOLv24",
 					"annotations": {
 						"compatEnableFlag": "remove_nodejs_compat_eol_v24",
-						"compatDisableFlag": "add_nodejs_compat_eol_v24"
+						"compatDisableFlag": "add_nodejs_compat_eol_v24",
+						"impliedByAfterDate": {
+							"name": "removeNodejsCompatEOL",
+							"date": "2028-04-30"
+						}
 					},
 					"type": "Bool"
 				},
@@ -3478,7 +3553,11 @@
 					"name": "enableNodeJsConsoleModule",
 					"annotations": {
 						"compatEnableFlag": "enable_nodejs_console_module",
-						"compatDisableFlag": "disable_nodejs_console_module"
+						"compatDisableFlag": "disable_nodejs_console_module",
+						"impliedByAfterDate": {
+							"name": "nodeJsCompat",
+							"date": "2025-09-21"
+						}
 					},
 					"type": "Bool"
 				},
@@ -3486,7 +3565,11 @@
 					"name": "enableNodeJsVmModule",
 					"annotations": {
 						"compatEnableFlag": "enable_nodejs_vm_module",
-						"compatDisableFlag": "disable_nodejs_vm_module"
+						"compatDisableFlag": "disable_nodejs_vm_module",
+						"impliedByAfterDate": {
+							"name": "nodeJsCompat",
+							"date": "2025-10-01"
+						}
 					},
 					"type": "Bool"
 				},
@@ -3494,7 +3577,11 @@
 					"name": "enableNodeJsPerfHooksModule",
 					"annotations": {
 						"compatEnableFlag": "enable_nodejs_perf_hooks_module",
-						"compatDisableFlag": "disable_nodejs_perf_hooks_module"
+						"compatDisableFlag": "disable_nodejs_perf_hooks_module",
+						"impliedByAfterDate": {
+							"name": "nodeJsCompat",
+							"date": "2026-03-17"
+						}
 					},
 					"type": "Bool"
 				},
@@ -3502,7 +3589,11 @@
 					"name": "enableGlobalPerformanceClasses",
 					"annotations": {
 						"compatEnableFlag": "enable_global_performance_classes",
-						"compatDisableFlag": "disable_global_performance_classes"
+						"compatDisableFlag": "disable_global_performance_classes",
+						"impliedByAfterDate": {
+							"name": "nodeJsCompat",
+							"date": "2026-03-17"
+						}
 					},
 					"type": "Bool"
 				},
@@ -3510,7 +3601,11 @@
 					"name": "enableNodeJsDomainModule",
 					"annotations": {
 						"compatEnableFlag": "enable_nodejs_domain_module",
-						"compatDisableFlag": "disable_nodejs_domain_module"
+						"compatDisableFlag": "disable_nodejs_domain_module",
+						"impliedByAfterDate": {
+							"name": "nodeJsCompat",
+							"date": "2025-12-04"
+						}
 					},
 					"type": "Bool"
 				},
@@ -3518,7 +3613,11 @@
 					"name": "enableNodeJsV8Module",
 					"annotations": {
 						"compatEnableFlag": "enable_nodejs_v8_module",
-						"compatDisableFlag": "disable_nodejs_v8_module"
+						"compatDisableFlag": "disable_nodejs_v8_module",
+						"impliedByAfterDate": {
+							"name": "nodeJsCompat",
+							"date": "2026-03-17"
+						}
 					},
 					"type": "Bool"
 				},
@@ -3526,7 +3625,11 @@
 					"name": "enableNodeJsTtyModule",
 					"annotations": {
 						"compatEnableFlag": "enable_nodejs_tty_module",
-						"compatDisableFlag": "disable_nodejs_tty_module"
+						"compatDisableFlag": "disable_nodejs_tty_module",
+						"impliedByAfterDate": {
+							"name": "nodeJsCompat",
+							"date": "2026-03-17"
+						}
 					},
 					"type": "Bool"
 				},
@@ -3534,7 +3637,11 @@
 					"name": "enableNodeJsPunycodeModule",
 					"annotations": {
 						"compatEnableFlag": "enable_nodejs_punycode_module",
-						"compatDisableFlag": "disable_nodejs_punycode_module"
+						"compatDisableFlag": "disable_nodejs_punycode_module",
+						"impliedByAfterDate": {
+							"name": "nodeJsCompat",
+							"date": "2025-12-04"
+						}
 					},
 					"type": "Bool"
 				},
@@ -3542,7 +3649,11 @@
 					"name": "enableNodeJsClusterModule",
 					"annotations": {
 						"compatEnableFlag": "enable_nodejs_cluster_module",
-						"compatDisableFlag": "disable_nodejs_cluster_module"
+						"compatDisableFlag": "disable_nodejs_cluster_module",
+						"impliedByAfterDate": {
+							"name": "nodeJsCompat",
+							"date": "2025-12-04"
+						}
 					},
 					"type": "Bool"
 				},
@@ -3550,7 +3661,11 @@
 					"name": "enableNodeJsChildProcessModule",
 					"annotations": {
 						"compatEnableFlag": "enable_nodejs_child_process_module",
-						"compatDisableFlag": "disable_nodejs_child_process_module"
+						"compatDisableFlag": "disable_nodejs_child_process_module",
+						"impliedByAfterDate": {
+							"name": "nodeJsCompat",
+							"date": "2026-03-17"
+						}
 					},
 					"type": "Bool"
 				},
@@ -3558,7 +3673,11 @@
 					"name": "enableNodeJsWorkerThreadsModule",
 					"annotations": {
 						"compatEnableFlag": "enable_nodejs_worker_threads_module",
-						"compatDisableFlag": "disable_nodejs_worker_threads_module"
+						"compatDisableFlag": "disable_nodejs_worker_threads_module",
+						"impliedByAfterDate": {
+							"name": "nodeJsCompat",
+							"date": "2026-03-17"
+						}
 					},
 					"type": "Bool"
 				},
@@ -3566,7 +3685,11 @@
 					"name": "enableNodeJsStreamWrapModule",
 					"annotations": {
 						"compatEnableFlag": "enable_nodejs_stream_wrap_module",
-						"compatDisableFlag": "disable_nodejs_stream_wrap_module"
+						"compatDisableFlag": "disable_nodejs_stream_wrap_module",
+						"impliedByAfterDate": {
+							"name": "nodeJsCompat",
+							"date": "2026-01-29"
+						}
 					},
 					"type": "Bool"
 				},
@@ -3574,7 +3697,11 @@
 					"name": "enableNodeJsWasiModule",
 					"annotations": {
 						"compatEnableFlag": "enable_nodejs_wasi_module",
-						"compatDisableFlag": "disable_nodejs_wasi_module"
+						"compatDisableFlag": "disable_nodejs_wasi_module",
+						"impliedByAfterDate": {
+							"name": "nodeJsCompat",
+							"date": "2025-12-04"
+						}
 					},
 					"type": "Bool"
 				},
@@ -3582,7 +3709,11 @@
 					"name": "enableNodeJsDgramModule",
 					"annotations": {
 						"compatEnableFlag": "enable_nodejs_dgram_module",
-						"compatDisableFlag": "disable_nodejs_dgram_module"
+						"compatDisableFlag": "disable_nodejs_dgram_module",
+						"impliedByAfterDate": {
+							"name": "nodeJsCompat",
+							"date": "2026-01-29"
+						}
 					},
 					"type": "Bool"
 				},
@@ -3590,7 +3721,11 @@
 					"name": "enableNodeJsInspectorModule",
 					"annotations": {
 						"compatEnableFlag": "enable_nodejs_inspector_module",
-						"compatDisableFlag": "disable_nodejs_inspector_module"
+						"compatDisableFlag": "disable_nodejs_inspector_module",
+						"impliedByAfterDate": {
+							"name": "nodeJsCompat",
+							"date": "2026-01-29"
+						}
 					},
 					"type": "Bool"
 				},
@@ -3598,7 +3733,11 @@
 					"name": "enableNodeJsTraceEventsModule",
 					"annotations": {
 						"compatEnableFlag": "enable_nodejs_trace_events_module",
-						"compatDisableFlag": "disable_nodejs_trace_events_module"
+						"compatDisableFlag": "disable_nodejs_trace_events_module",
+						"impliedByAfterDate": {
+							"name": "nodeJsCompat",
+							"date": "2025-12-04"
+						}
 					},
 					"type": "Bool"
 				},
@@ -3606,7 +3745,11 @@
 					"name": "enableNodeJsReadlineModule",
 					"annotations": {
 						"compatEnableFlag": "enable_nodejs_readline_module",
-						"compatDisableFlag": "disable_nodejs_readline_module"
+						"compatDisableFlag": "disable_nodejs_readline_module",
+						"impliedByAfterDate": {
+							"name": "nodeJsCompat",
+							"date": "2026-03-17"
+						}
 					},
 					"type": "Bool"
 				},
@@ -3614,7 +3757,11 @@
 					"name": "enableNodeJsReplModule",
 					"annotations": {
 						"compatEnableFlag": "enable_nodejs_repl_module",
-						"compatDisableFlag": "disable_nodejs_repl_module"
+						"compatDisableFlag": "disable_nodejs_repl_module",
+						"impliedByAfterDate": {
+							"name": "nodeJsCompat",
+							"date": "2026-03-17"
+						}
 					},
 					"type": "Bool"
 				},
@@ -3622,7 +3769,11 @@
 					"name": "enableNodeJsSqliteModule",
 					"annotations": {
 						"compatEnableFlag": "enable_nodejs_sqlite_module",
-						"compatDisableFlag": "disable_nodejs_sqlite_module"
+						"compatDisableFlag": "disable_nodejs_sqlite_module",
+						"impliedByAfterDate": {
+							"name": "nodeJsCompat",
+							"date": "2026-01-29"
+						}
 					},
 					"type": "Bool"
 				},
@@ -3674,7 +3825,11 @@
 					"name": "pythonCheckRngState",
 					"annotations": {
 						"compatEnableFlag": "python_check_rng_state",
-						"compatDisableFlag": "disable_python_check_rng_state"
+						"compatDisableFlag": "disable_python_check_rng_state",
+						"impliedByAfterDate": {
+							"name": "pythonWorkers",
+							"date": "2025-12-16"
+						}
 					},
 					"type": "Bool"
 				},
@@ -3716,7 +3871,11 @@
 					"name": "fetchIterableTypeSupportOverrideAdjustment",
 					"annotations": {
 						"compatEnableFlag": "fetch_iterable_type_support_override_adjustment",
-						"compatDisableFlag": "no_fetch_iterable_type_support_override_adjustment"
+						"compatDisableFlag": "no_fetch_iterable_type_support_override_adjustment",
+						"impliedByAfterDate": {
+							"name": "fetchIterableTypeSupport",
+							"date": "2026-01-15"
+						}
 					},
 					"type": "Bool"
 				},
@@ -3725,7 +3884,11 @@
 					"annotations": {
 						"compatEnableFlag": "strip_bom_in_read_all_text",
 						"compatDisableFlag": "do_not_strip_bom_in_read_all_text",
-						"compatEnableDate": "2026-01-13"
+						"compatEnableDate": "2026-01-13",
+						"impliedByAfterDate": {
+							"name": "pedanticWpt",
+							"date": "2026-01-13"
+						}
 					},
 					"type": "Bool"
 				},
@@ -3750,7 +3913,11 @@
 					"name": "enableNodejsGlobalTimers",
 					"annotations": {
 						"compatEnableFlag": "enable_nodejs_global_timers",
-						"compatDisableFlag": "no_nodejs_global_timers"
+						"compatDisableFlag": "no_nodejs_global_timers",
+						"impliedByAfterDate": {
+							"name": "nodeJsCompat",
+							"date": "2026-02-10"
+						}
 					},
 					"type": "Bool"
 				},
@@ -3767,7 +3934,11 @@
 					"name": "pythonWorkflowsImplicitDeps",
 					"annotations": {
 						"compatEnableFlag": "python_workflows_implicit_dependencies",
-						"compatDisableFlag": "no_python_workflows_implicit_dependencies"
+						"compatDisableFlag": "no_python_workflows_implicit_dependencies",
+						"impliedByAfterDate": {
+							"name": "pythonWorkers",
+							"date": "2026-02-25"
+						}
 					},
 					"type": "Bool"
 				},
@@ -3803,7 +3974,11 @@
 					"annotations": {
 						"compatEnableFlag": "text_decoder_replace_surrogates",
 						"compatDisableFlag": "disable_text_decoder_replace_surrogates",
-						"compatEnableDate": "2026-02-24"
+						"compatEnableDate": "2026-02-24",
+						"impliedByAfterDate": {
+							"name": "pedanticWpt",
+							"date": "2026-02-24"
+						}
 					},
 					"type": "Bool"
 				},
