@@ -1,5 +1,28 @@
 [
 	{
+		"id": "aa48cb99790097ce8a1d4b8292d27506",
+		"name": "SSL/TLS Admin",
+		"description": "Can view and edit SSL/TLS certificates and configurations.",
+		"permissions": {
+			"ssl": {
+				"read": true,
+				"edit": true
+			},
+			"zone_settings": {
+				"read": true,
+				"edit": true
+			},
+			"zone": {
+				"read": true,
+				"edit": false
+			},
+			"organization": {
+				"read": true,
+				"edit": false
+			}
+		}
+	},
+	{
 		"id": "308416ae9b24e806205c406d0a32c8ec",
 		"name": "Cloudflare CASB Read",
 		"description": "Can read Cloudflare CASB.",
