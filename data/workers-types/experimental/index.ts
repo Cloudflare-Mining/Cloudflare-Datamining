@@ -2412,7 +2412,7 @@ export interface Queue<Body = unknown> {
 export interface QueueSendMetrics {
   backlogCount: number;
   backlogBytes: number;
-  oldestMessageTimestamp: number;
+  oldestMessageTimestamp?: Date;
 }
 export interface QueueSendMetadata {
   metrics: QueueSendMetrics;
@@ -2423,7 +2423,7 @@ export interface QueueSendResponse {
 export interface QueueSendBatchMetrics {
   backlogCount: number;
   backlogBytes: number;
-  oldestMessageTimestamp: number;
+  oldestMessageTimestamp?: Date;
 }
 export interface QueueSendBatchMetadata {
   metrics: QueueSendBatchMetrics;
@@ -2446,12 +2446,12 @@ export interface MessageSendRequest<Body = unknown> {
 export interface QueueMetrics {
   backlogCount: number;
   backlogBytes: number;
-  oldestMessageTimestamp: number;
+  oldestMessageTimestamp?: Date;
 }
 export interface MessageBatchMetrics {
   backlogCount: number;
   backlogBytes: number;
-  oldestMessageTimestamp: number;
+  oldestMessageTimestamp?: Date;
 }
 export interface MessageBatchMetadata {
   metrics: MessageBatchMetrics;
@@ -3939,6 +3939,28 @@ export interface EventSourceEventSourceInit {
   withCredentials?: boolean;
   fetcher?: Fetcher;
 }
+export interface ExecOutput {
+  readonly stdout: ArrayBuffer;
+  readonly stderr: ArrayBuffer;
+  readonly exitCode: number;
+}
+export interface ContainerExecOptions {
+  cwd?: string;
+  env?: Record<string, string>;
+  user?: string;
+  stdin?: ReadableStream | "pipe";
+  stdout?: "pipe" | "ignore";
+  stderr?: "pipe" | "ignore" | "combined";
+}
+export interface ExecProcess {
+  readonly stdin: WritableStream | null;
+  readonly stdout: ReadableStream | null;
+  readonly stderr: ReadableStream | null;
+  readonly pid: number;
+  readonly exitCode: Promise<number>;
+  output(): Promise<ExecOutput>;
+  kill(signal?: number): void;
+}
 export interface Container {
   get running(): boolean;
   start(options?: ContainerStartupOptions): void;
@@ -3956,6 +3978,7 @@ export interface Container {
     options: ContainerSnapshotOptions,
   ): Promise<ContainerSnapshot>;
   interceptOutboundHttps(addr: string, binding: Fetcher): Promise<void>;
+  exec(cmd: string[], options?: ContainerExecOptions): Promise<ExecProcess>;
 }
 export interface ContainerDirectorySnapshot {
   id: string;
@@ -12940,19 +12963,37 @@ export interface ImageList {
   cursor?: string;
   listComplete: boolean;
 }
-export interface HostedImagesBinding {
+export interface ImageHandle {
   /**
-   * Get detailed metadata for a hosted image
-   * @param imageId The ID of the image (UUID or custom ID)
+   * Get metadata for a hosted image
    * @returns Image metadata, or null if not found
    */
-  details(imageId: string): Promise<ImageMetadata | null>;
+  details(): Promise<ImageMetadata | null>;
   /**
    * Get the raw image data for a hosted image
-   * @param imageId The ID of the image (UUID or custom ID)
    * @returns ReadableStream of image bytes, or null if not found
    */
-  image(imageId: string): Promise<ReadableStream<Uint8Array> | null>;
+  bytes(): Promise<ReadableStream<Uint8Array> | null>;
+  /**
+   * Update hosted image metadata
+   * @param options Properties to update
+   * @returns Updated image metadata
+   * @throws {@link ImagesError} if update fails
+   */
+  update(options: ImageUpdateOptions): Promise<ImageMetadata>;
+  /**
+   * Delete a hosted image
+   * @returns True if deleted, false if not found
+   */
+  delete(): Promise<boolean>;
+}
+export interface HostedImagesBinding {
+  /**
+   * Get a handle for a hosted image
+   * @param imageId The ID of the image (UUID or custom ID)
+   * @returns A handle for per-image operations
+   */
+  image(imageId: string): ImageHandle;
   /**
    * Upload a new hosted image
    * @param image The image file to upload
@@ -12964,20 +13005,6 @@ export interface HostedImagesBinding {
     image: ReadableStream<Uint8Array> | ArrayBuffer,
     options?: ImageUploadOptions,
   ): Promise<ImageMetadata>;
-  /**
-   * Update hosted image metadata
-   * @param imageId The ID of the image
-   * @param options Properties to update
-   * @returns Updated image metadata
-   * @throws {@link ImagesError} if update fails
-   */
-  update(imageId: string, options: ImageUpdateOptions): Promise<ImageMetadata>;
-  /**
-   * Delete a hosted image
-   * @param imageId The ID of the image
-   * @returns True if deleted, false if not found
-   */
-  delete(imageId: string): Promise<boolean>;
   /**
    * List hosted images with pagination
    * @param options List configuration
