@@ -237,6 +237,7 @@
 				non_production_branch_builds: "<0>Builds</0> for non-production branches",
 				repo: "Repository",
 				create_new_token_option: "Create new token",
+				fetching_tokens: "Fetching your API tokens...",
 				scm_account: "Git account",
 				scm_account_option_github: "New GitHub Connection",
 				scm_account_option_gitlab: "New GitLab Connection",
@@ -291,6 +292,7 @@
 	},
 	notifications: {
 		pages_to_workers_migration_cta: "<0>Cloudflare Workers</0> now supports nearly all of Pages' features — plus extra tools and integrations not found in Pages.<br /><br />Check out our <1>migration guide</1> and <2>compatibility matrix</2> to learn how to move to Workers today.",
+		pages_v1_deprecation: "Action required: Build Image v1 will be deprecated on September 15, 2026. Upgrade this project by going to Settings > Build and selecting v3 for both Production and Preview environments. See our <0>build image documentation</0> for details.",
 		pages_v2_to_v3_cta: "Pages v3 build system is now available. It updates the default tools, libraries and languages to their LTS versions. Check out our <0>migration guide</0> to learn how to migrate to v3.",
 		scm_provider_status: {
 			github: {

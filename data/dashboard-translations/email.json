@@ -507,6 +507,8 @@
 	"email.security.dmarc.wizard.description": "Add DMARC record to start getting DMARC report.",
 	"email.security.dmarc.wizard.note.record_found": "Existing DMARC record found. Click <b>Next</b> to start getting DMARC reports.",
 	"email.security.dmarc.wizard.note.multi_record_found": "We have detected multiple DMARC records for this domain. Please make sure you have only 1 DMARC record. <a href=\"../../../../dns/records\">Fix in DNS page</a>",
+	"email.security.dmarc.wizard.note.multi_record_found_text": "We have detected multiple DMARC records for this domain. Please make sure you have only 1 DMARC record.",
+	"email.security.dmarc.wizard.fix_in_dns": "Fix in DNS page",
 	"email.security.dmarc.wizard.default_record.title": "Default record preview",
 	"email.security.dmarc.wizard.default_record.description": "There is no DMARC record found on your zone. Cloudflare will add below default DMARC record for you. You can edit later.",
 	"email.security.dmarc.wizard.default_record.cname_description": "Existing DMARC record using CNAME found on your account.",

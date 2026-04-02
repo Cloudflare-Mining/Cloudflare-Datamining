@@ -15,14 +15,14 @@
 		select_domain: "Search for a domain…"
 	},
 	drilldown: {
-		select_domain_for: (0, n.p)(a(), "feature")
+		select_domain_for: (0, o.p)(s(), "feature")
 	},
 	empty: {
 		accounts: "No accounts found",
 		no_results_found: "No results found",
-		no_product_results: (0, n.p)(c(), "query"),
+		no_product_results: (0, o.p)(i(), "query"),
 		no_domains_found: "No domains found in this account",
-		not_found_for: (0, n.p)(i(), "query")
+		not_found_for: (0, o.p)(l(), "query")
 	},
 	sections: {
 		accounts: "Accounts",
@@ -66,7 +66,7 @@
 	},
 	ask_ai: {
 		label: "Ask AI",
-		description: (0, n.p)(d(), "query")
+		description: (0, o.p)(c(), "query")
 	},
 	tip: {
 		access_description: "Search Access applications",
