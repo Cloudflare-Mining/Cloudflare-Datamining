@@ -5,7 +5,7 @@
 		<p>At Cloudflare, we’re not looking for people who wait for a polished roadmap; we’re looking for the builders who see the cracks in the Internet that everyone else has simply learned to live with. We value candidates who have the instinct to spot a "normalized" problem and the AI-native curiosity to create a solution using the latest tools. Our culture is built on iteration, leveraging AI to ship faster today to make it better tomorrow, while ensuring that every improvement, no matter how small, is shared across the team to lift everyone up. If you’re the type of person who values curiosity over bureaucracy, and that AI is a partner in solving tough problems to keep the Internet moving forward, you’ll fit right in.</p>
 	</div>
 </div>
-<p><strong>Available location(s): </strong>Austin, Texas, San Francisco, CA</p>
+<p><strong>Available location(s): </strong>Austin, Texas</p>
 <p><strong>About the Role</strong></p>
 <p>As a Project Manager Intern specializing in Process &amp; AI Innovation within the Revenue Operations (Sales) teams, you will be pivotal in boosting our operational efficiency. This is a dynamic opportunity to apply project management principles and emerging AI technologies to streamline internal processes across the Go-To-Market organization. You will gain practical experience supporting key initiatives and enhancing team operations through process optimization. A major goal will be leveraging AI tools and 'No-Code' platforms to identify, automate, and accelerate manual, repetitive tasks, enabling teams to discover and implement more efficient ways of working.</p>
 <p><strong>Responsibilities</strong></p>
