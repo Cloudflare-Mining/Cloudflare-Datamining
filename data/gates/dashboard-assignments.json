@@ -186,8 +186,7 @@
 		"true": 100
 	},
 	"billing-usage-modern-enabled": {
-		"false": 50,
-		"true": 50
+		"true": 100
 	},
 	"billing-use-pay-bad-debt-endpoint": {
 		"false": 100
@@ -317,7 +316,7 @@
 		"true": 100
 	},
 	"dns-private-routing": {
-		"false": 100
+		"true": 100
 	},
 	"dns-records-quota": {
 		"false": 100
@@ -347,6 +346,10 @@
 	},
 	"dx-consent-to-crawl-toggle": {
 		"experiment": 100
+	},
+	"dx-domain-onboarding-experiment": {
+		"baseline": 99,
+		"experiment": 1
 	},
 	"dx-dunning-banner": {
 		"true": 100
