@@ -1,11 +1,11 @@
 {
 	page: {
-		title: "Get started with a domain",
+		title: "Add a site",
 		description: "Connect your domain to start sending web traffic through Cloudflare."
 	},
 	paths: {
 		add: {
-			title: "Add a domain",
+			title: "Connect a domain",
 			description: "Make your site faster, more secure, and more reliable"
 		},
 		transfer: {
@@ -18,10 +18,10 @@
 		}
 	},
 	form: {
-		add_title: "Add your domain",
-		add_description: "Make your site faster, more secure, and more reliable",
+		onboard_title: "Connect your domain",
+		onboard_description: "Make your site faster, more secure, and more reliable.",
 		transfer_title: "Transfer your domain",
-		transfer_description: "Move your domain to Cloudflare and save on renewals",
+		transfer_description: "Move your domain to Cloudflare and save on renewals.",
 		transfer_banner: "To transfer your domain, your site needs to be connected to Cloudflare first. After that, you can enter your authorization code to begin the transfer.",
 		domain_label: "Domain name",
 		placeholder: "example.com"
@@ -106,6 +106,7 @@
 		go_to_domain: "Manage %{domain}"
 	},
 	errors: {
+		empty_domain: "Enter a domain name",
 		generic: "Please enter a valid domain",
 		already_exists: "That domain has already been added to your account. Go to <0>%{domainName}</0> overview",
 		zone_held: "The zone name provided is <0>subject to a hold</0> which disallows the creation of this zone. Please contact the owner of the Cloudflare account that manages this domain to have the hold removed."
