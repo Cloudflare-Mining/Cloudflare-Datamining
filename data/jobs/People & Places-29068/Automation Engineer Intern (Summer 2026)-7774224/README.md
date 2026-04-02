@@ -5,80 +5,65 @@
 		<p>At Cloudflare, we’re not looking for people who wait for a polished roadmap; we’re looking for the builders who see the cracks in the Internet that everyone else has simply learned to live with. We value candidates who have the instinct to spot a "normalized" problem and the AI-native curiosity to create a solution using the latest tools. Our culture is built on iteration, leveraging AI to ship faster today to make it better tomorrow, while ensuring that every improvement, no matter how small, is shared across the team to lift everyone up. If you’re the type of person who values curiosity over bureaucracy, and that AI is a partner in solving tough problems to keep the Internet moving forward, you’ll fit right in.</p>
 	</div>
 </div>
-<p><strong>Available Locations: Austin, TX</strong></p>
-<p><strong>Role Summary</strong></p>
-<p>The Senior Revenue Accountant’s primary responsibility is helping to ensure the Company’s revenue recognition to be in compliance with US GAAP and Company policies.&nbsp; It is both advisory and operational in nature. The advisory role helps business partners make informed business decisions while maintaining accounting compliance.&nbsp; The operational role ensures accounting processes comply with policies and function in an effective and efficient manner while working with local partners to complete business transactions with customers.</p>
-<p><strong>Role Responsibilities</strong></p>
+<p><strong>Available Location: </strong>Austin</p>
+<p><strong>People Innovation Lab — Cloudflare People Team</strong></p>
+<p>Reports to: Lead, AI Transformation &amp; Strategic Initiatives (People &amp; Places)</p>
+<h3>About the Role</h3>
+<p>Join the People Innovation Lab to build and deploy smart tools for the People organization. This role sits within the people in places function under the lead for AI transformation and strategic initiatives. This role is focused on helping us to automate the processes that bog people down and moving us towards an agentic future.&nbsp;</p>
+<h3>Key focus:</h3>
 <ul>
-	<li>Participates in accounting close activities, including:</li>
+	<li>Identify and eliminate manual workflows across the People team.</li>
+	<li>Build diverse automation solutions (Google Workspace, Workers, background jobs, multi-step agents).</li>
+	<li>Utilize AI coding tools (e.g., OpenCode) and build autonomous agents.</li>
+	<li>Strong fundamentals and fast execution are key.</li>
+</ul>
+<h3>What You'll Build &amp; Do</h3>
+<ul>
+	<li><strong>Build:</strong></li>
 	<ul>
-		<li>partnering with other teams (legal, sales, etc.) to interpret, research, discuss, and / or process deal reviews</li>
-		<li>complete contract accounting of executed customer contracts</li>
-		<li>preparation / review of journal entries</li>
-		<li>preparation / review of reconciliations and related financial analysis for management and external reporting</li>
+		<li>Workflow automations (Google Workspace, APIs, third-party platforms).</li>
+		<li>Event-driven automations using Cloudflare Workers.</li>
+		<li>AI-powered tools (LLM APIs like Gemini, Workers AI) for reasoning (summarization, routing).</li>
+		<li>Reusable components and early-stage, stateful, autonomous agents.</li>
+		<li>Clean documentation.</li>
 	</ul>
-	<li>Participates in Company-wide initiatives and cross-functional projects that directly impact or relate to the revenue accounting area, particularly increasing the revenue analytical capabilities within Cloudflare</li>
-	<li>Develop and streamline processes using system automation and tools to maximize efficiency and accuracy of revenue accounting systems and processes</li>
-	<li>Takes a clean sheet of paper approach when revisiting operational processes and continually works to consolidate and streamline using automation and tools to maximize efficiency and accuracy</li>
-	<li>Stay current on the latest financial accounting and reporting developments and U.S GAAP reporting requirements, as applicable.</li>
-	<li>Effectively interacts with peers and shares knowledge</li>
-	<li>Mentors and supports junior members of the team and provides feedback</li>
-	<li>Communicates any problems to senior management timely</li>
-	<li>Present findings and solutions to the management team, while considering global impacts and subsequent guidance to influence other regions where appropriate to adopt a consistent process and policy</li>
-	<li>Establish and track Key Performance Indicators (KPI’s)</li>
-	<li>Prepares schedules in support of the external audit process</li>
-	<li>Coordinates with the auditors on accounting issues and audit related queries</li>
-	<li>Reviews and maintains controls as the business environment changes as a result of process, system and policy enhancements. Includes risk assessment and review of risk areas</li>
+	<li><strong>Do:</strong></li>
+	<ul>
+		<li>Audit workflows for high-value automation.</li>
+		<li>Build and ship automations in JavaScript/TypeScript (Google Workspace, Workers).</li>
+		<li>Integrate AI/LLM APIs; use AI-assisted development (OpenCode).</li>
+		<li>Explore and apply Cloudflare's full automation stack (Workers, Durable Objects, AI Gateway, Vectorize).</li>
+		<li>Participate in agile ceremonies and present work.</li>
+	</ul>
 </ul>
+<h3>Requirements</h3>
+<ul>
+	<li><strong>Minimum:</strong></li>
+	<ul>
+		<li>Pursuing/equivalent experience in Computer Science or related field.</li>
+		<li>Proficient in JavaScript or Python; writes clean code.</li>
+		<li>Experience with REST APIs and structured data.</li>
+		<li>Independent problem-solving.</li>
+		<li>Fluent with AI tools.</li>
+	</ul>
+	<li><strong>Preferred:</strong></li>
+	<ul>
+		<li>Experience building automations (Zapier, Make, n8n, Apps Script, custom code).</li>
+		<li>Prior LLM/AI API integration experience.</li>
+		<li>Familiarity with event-driven/serverless architecture.</li>
+		<li>Exposure to agent frameworks/multi-step AI workflows.</li>
+	</ul>
+</ul>
+<h3>What We Provide</h3>
+<ul>
+	<li>Platform onboarding and hands-on AI-assisted development experience.</li>
+	<li>Dedicated manager, feedback, and real production automations.</li>
+	<li>Portfolio artifact (production automations, agent-building track record).</li>
+</ul>
+<h3>The Team's Vision</h3>
 <p><strong>&nbsp;</strong></p>
-<p><strong>Role Requirements&nbsp;</strong></p>
-<p><strong>Must-Have Skills</strong></p>
-<ul>
-	<li>Bachelor’s degree in Accounting, or a related field, or advanced experience</li>
-	<li>Active CPA</li>
-	<li>Accounting/Audit firm experience preferred&nbsp;</li>
-	<li>4 years of experience in accounting roles</li>
-	<li>Strong understanding of revenue accounting rules under ASC 606</li>
-	<li>Experience working with revenue related systems such as billing systems, ERP, and revenue recognition tool / subledger</li>
-	<li>Revenue accounting for SaaS revenue recognition and understanding of multi-element arrangements</li>
-	<li>Ability to work effectively with various departments, particularly Sales</li>
-	<li>Ability to manage multiple priorities</li>
-	<li>Flexibility to work under time constraints and deadlines</li>
-	<li>Must be meticulous, detail oriented, and organized</li>
-	<li>Strong interpersonal and communication skills</li>
-	<li>Ability to work independently, yet cooperatively and constructively in a team environment</li>
-	<li>Highly proficient in advanced MS Excel</li>
-</ul>
-<p>&nbsp;</p>
-<p><strong>Compensation</strong></p>
-<p>Compensation may be adjusted depending on work location.</p>
-<p><strong>Equity</strong></p>
-<p>This role is eligible to participate in Cloudflare’s equity plan.</p>
-<p><strong>Benefits</strong></p>
-<p>Cloudflare offers a complete package of benefits and programs to support you and your family.&nbsp; Our benefits programs can help you pay health care expenses, support caregiving, build capital for the future and make life a little easier and fun!&nbsp; The below is a description of our benefits for employees in the United States, and benefits may vary for employees based outside the U.S.</p>
-<p><strong>Health &amp; Welfare Benefits</strong></p>
-<ul>
-	<li>Medical/Rx Insurance</li>
-	<li>Dental Insurance</li>
-	<li>Vision Insurance</li>
-	<li>Flexible Spending Accounts</li>
-	<li>Commuter Spending Accounts</li>
-	<li>Fertility &amp; Family Forming Benefits</li>
-	<li>On-demand mental health support and Employee Assistance Program</li>
-	<li>Global Travel Medical Insurance</li>
-</ul>
-<p><strong>Financial Benefits</strong></p>
-<ul>
-	<li>Short and Long Term Disability Insurance</li>
-	<li>Life &amp; Accident Insurance</li>
-	<li>401(k) Retirement Savings Plan</li>
-	<li>Employee Stock Participation Plan</li>
-</ul>
-<p><strong>Time Off</strong></p>
-<ul>
-	<li>Flexible paid time off covering vacation and sick leave</li>
-	<li>Leave programs, including parental, pregnancy health, medical, and bereavement leave</li>
-</ul>
+<p>The team is building AI agents for the People organization that can reason, act, and coordinate without constant human input. You will contribute to this foundation and gain firsthand experience.</p>
+<p><strong><br><br></strong></p>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
 	<p><span style="font-weight: 400;">We’re not just a highly ambitious, large-scale technology company. We’re a highly ambitious, large-scale technology company with a soul. Fundamental to our mission to help build a better Internet is protecting the free and open Internet.</span></p>
