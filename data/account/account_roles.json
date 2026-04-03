@@ -2386,11 +2386,11 @@
 		"name": "Administrator Read Only",
 		"description": "Can access the full account in read only mode",
 		"permissions": {
-			"zone_settings": {
+			"organization": {
 				"read": true,
 				"edit": false
 			},
-			"organization": {
+			"zone_settings": {
 				"read": true,
 				"edit": false
 			},
