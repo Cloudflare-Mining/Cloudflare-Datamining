@@ -323,6 +323,7 @@
 			"no_cf_botmanagement_default": "boolean",
 			"no_cots_on_external_fetch": "boolean",
 			"no_global_importscripts": "boolean",
+			"no_resizable_array_buffer_in_blob": "boolean",
 			"nodejs_als": "boolean",
 			"nodejs_compat": "boolean",
 			"nodejs_compat_populate_process_env": "boolean",
@@ -11267,7 +11268,7 @@
 					}
 				},
 				"glob": {
-					"__proto": "function",
+					"__proto": "object",
 					"__type": "function",
 					"length": "number",
 					"name": "string",
