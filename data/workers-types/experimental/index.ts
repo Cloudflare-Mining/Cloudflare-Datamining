@@ -3979,6 +3979,7 @@ export interface Container {
   ): Promise<ContainerSnapshot>;
   interceptOutboundHttps(addr: string, binding: Fetcher): Promise<void>;
   exec(cmd: string[], options?: ContainerExecOptions): Promise<ExecProcess>;
+  interceptOutboundTcp(addr: string, binding: Fetcher): Promise<void>;
 }
 export interface ContainerDirectorySnapshot {
   id: string;
