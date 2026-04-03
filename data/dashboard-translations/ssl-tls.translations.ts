@@ -244,10 +244,7 @@
 	ech_api_title_get: "Get Zone Enable ECH setting",
 	ech_api_title_put: "Update Zone ECH setting",
 	enable_acm: {
-		card_title: "Advanced Certificate Manager",
 		card_title_alt: "Advanced Certificate Manager (ACM)",
-		card_description: "Advanced Certificate Manager gives you more control and flexibility for your certificates and TLS settings. Benefits include:\n* Customize the hostnames on the certificate\n* Full TLS certificate coverage through Total TLS\n* Cipher suite selection\n* Per hostname TLS settings\n* and more!",
-		card_button: "Purchase ACM",
 		cta: "Activate"
 	},
 	ussl_ca_card_changed_notification: "Universal SSL Certificate Authority successfully changed.",
@@ -298,7 +295,6 @@
 	cipher_suites_title: "Cipher suites",
 	cipher_suites_description_card: "Customize the <0>cipher suites</0> used in the SSL/TLS handshake that establishes a secure connection between clients and the Cloudflare network.",
 	cipher_suites_description_card_current: "Current setting: <0>%{setting}</0>. <1>View current cipher suites</1>",
-	cipher_suites_description_card_disable: "Activate <0>Advanced Certificate Manager</0> to configure Cipher Suites.",
 	cipher_suites_description_card_settings_info: "After you update this setting, it may take a few minutes for the changes to propagate.",
 	cipher_suites_card_help: "#### What are Cipher Suites?\nCipher suites are a combination of ciphers used to negotiate security settings during the SSL/TLS handshake (and therefore separate from the SSL/TLS protocol).",
 	cipher_suites_description_card_button: "Configure",
@@ -370,7 +366,6 @@
 		ECDSAWithSHA384: "ECDSA SHA384",
 		ECDSAWithSHA512: "ECDSA SHA512"
 	},
-	ssl_certs_add_custom_button: "Upload Custom SSL Certificate",
 	ssl_certs_add_custom_button_alt: "Upload a custom certificate",
 	ssl_certs_add_custom_description: "Enter private key and certificate.",
 	ssl_certs_add_custom_title: "Upload custom SSL certificate and key",
@@ -451,8 +446,6 @@
 	ssl_certs_table_empty_text: "No certificates.",
 	ssl_certs_table_type: "Type",
 	ssl_certs_select_custom_csr: "Generate a CSR to obtain a certificate from the CA of your choice while maintaining control of the private key on Cloudflare.",
-	ssl_edge_certs_biz_ent_description: "Your plan allows you to upload custom certificates, which you must renew and re-upload prior to expiration.\nYou can upload %{legacy_custom}.\nYou can upload %{sni_custom}.\n",
-	ssl_dedicated_certs_is_at_least_business_order: "You may also <0>order an auto-renewing certificate</0>.",
 	ssl_dedicated_certs_certificate_authority: "Certificate Authority",
 	ssl_dedicated_certs_certificates_quota_both: "You are currently using %{dedicated_in_use} of %{dedicated_quota} of your Dedicated SSL Certificates and %{custom_in_use} of %{custom_quota} of your Dedicated SSL Certificates with Custom Hostnames. ",
 	ssl_dedicated_certs_certificates_quota_ent_contact: "If you require more certificates please contact your Customer Success Engineer. ",
@@ -468,8 +461,6 @@
 	ssl_dedicated_certs_delete_modal_success_note: 'However, you still have an active subscription (which can be used to place another order). To cancel this subscription and cease monthly billing, please visit the <a href="%{base_url}/account/subscriptions" target="_blank">Subscriptions</a> page.',
 	ssl_dedicated_certs_delete_modal_success_subtitle: "Your certificate has been deleted and will no longer be served to visitors.",
 	ssl_dedicated_certs_delete_modal_title: "Delete Dedicated Certificate",
-	ssl_dedicated_certs_free_description_v2: "Manage and purchase SSL certificates that will be served to your web visitors.\n\nYour plan includes a shared Cloudflare Universal SSL certificate. To get a dedicated certificate with custom hostnames <0>place a certificate order</0>.\n\nYour plan does not allow you to upload any SSL certificates, but you may <1>order an auto-renewing certificate</1> or <2>upgrade</2> to the Business plan to enable this feature.",
-	ssl_dedicated_certs_free_description_upgrade_v2: "upgrade",
 	ssl_dedicated_certs_manage_modal_subtitle_view: "Review the certificates that comprise your certificate pack. If you would require custom hostnames please order a Dedicated Certificate with Custom Hostnames.",
 	ssl_dedicated_certs_manage_modal_subtitle_view_custom: "Review the certificates that comprise your certificate pack. If you need to add or remove hostnames, please delete the certificate and place another order. You will not be charged again as you have an active subscription.",
 	ssl_dedicated_certs_order_button: "Order SSL Certificate",
@@ -511,8 +502,6 @@
 	ssl_dedicated_certs_order_modal_validate_validate_authority_error: "Unable to validate your domain with the Certificate Authority. Please try again or contact support.",
 	ssl_dedicated_certs_order_modal_validate_success: "Successfully validated domain.",
 	ssl_dedicated_certs_pending_deletion: "Pending Deletion",
-	ssl_counts_legacy_custom: "%{smart_count} Custom Legacy certificate pack |||| %{smart_count} Custom Legacy certificate packs",
-	ssl_counts_sni_custom: "%{smart_count} Custom Modern certificate pack |||| %{smart_count} Custom Modern certificate packs",
 	ssl_dedicated_certs_title: "Edge Certificates",
 	ssl_dedicated_certs_description: "Customize your edge certificates, which encrypt traffic between your visitors and Cloudflare.",
 	ssl_dedicated_certs_documentation_label: "Edge certificates documentation",
@@ -612,7 +601,7 @@
 	aop_global_card_title: "Global",
 	aop_global_card_description: "When enabled, Cloudflare will use a shared TLS client certificate to authenticate requests to your origin server.",
 	aop_zone_level_card_title: "Zone-level",
-	aop_zone_level_card_description: "When enabled, all proxied traffic to your zone is authenticated at the origin web server using a custom TLS client certificate. Upload your own certificate for stricter security controls.",
+	aop_zone_level_card_description: "When enabled, all proxied traffic to your zone is authenticated at the origin web server using a custom TLS client certificate.",
 	aop_add_notification: "Add notification",
 	origin_server_tab_origin_certificates: "Origin Certificates",
 	origin_server_tab_custom_origin_trust_store: "Custom Origin Trust Store",
@@ -639,7 +628,6 @@
 		disable_modal_title: "Disable Total TLS",
 		disable_modal_description: "Immediately after confirming the downgrade, your certificates will be deleted and no longer served to visitors.",
 		disable_modal_confirmation: "I understand that any hostnames not covered by my Universal SSL or uploaded certificates will no longer be reachable over HTTPS once I disable this feature.",
-		purchase_acm_link: "To enable Total TLS, purchase Advanced Certificate Manager.",
 		certificate_authority_label: "Select a Certificate Authority",
 		success_enabled: "Total TLS enabled",
 		success_disabled: "Total TLS disabled",
@@ -819,10 +807,7 @@
 		blocked_ent: "Please contact your Account Manager to purchase ACM.",
 		current_plan_paranthetical: " (current plan)",
 		banner_title: "Advanced Certificate Manager",
-		banner_description: "Unlock more control and flexibility for your Certificates and SSL/TLS settings",
-		banner_experiment_variant_a_description: "Unlock auto-renewing wildcard and dedicated certificates that cover multi-level subdomains with Advanced Certificate Manager",
-		banner_experiment_variant_b_description: "Customize certificate authorities, validity periods, hostnames, and cipher suites",
-		banner_experiment_variant_b_link_text: "Unlock"
+		banner_description: "Unlock more control and flexibility for your Certificates and SSL/TLS settings"
 	},
 	api: {
 		get_certificate_packs: "List Certificate Packs"
@@ -876,8 +861,9 @@
 		table_certificate_pending_reactivation: "Pending reactivation",
 		table_certificate_pending_revocation: "Pending revocation",
 		table_delete_confirm_title: "Revoke Client Certificate",
-		table_delete_confirm_description: "You are about to revoke your origin certificate. If you wish to proceed, please check the box below and click the “Revoke” button.",
+		table_delete_confirm_description: "You are about to revoke your client certificate. If you wish to proceed, please check the box below and click the “Revoke” button.",
 		table_delete_confirm_agreement: "I understand that I am revoking this certificate.",
+		revoke_error: "Failed to revoke certificate. Please try again.",
 		expanded_table_review_header: "Review Client Certificate for %{subject}",
 		expanded_table_validity_period: "Validity Period",
 		revoke_certificate: "Revoke Certificate",
@@ -891,7 +877,7 @@
 		cloudflare_ca: "Cloudflare Managed CA",
 		cloudflare_ca_account: "Cloudflare Managed CA for %{accountName}",
 		usage_instructions_header: "Usage Instructions",
-		usage_instructions_body: 'For installation and usage instructions, visit our developer documentation on <a href="https://developers.cloudflare.com/ssl/client-certificates" target="_blank">using client certificates with API Shield</a>',
+		usage_instructions_body: 'For installation and usage instructions, visit our developer documentation on <a href="https://developers.cloudflare.com/ssl/client-certificates/" target="_blank">client certificates</a>',
 		hosts_title: "Hosts",
 		hosts_description: "Choose which host(s) you wish to enable mTLS",
 		hosts_request_error: "This request failed, please try again",
@@ -918,15 +904,15 @@
 			table_header_expires_on: "Expires On",
 			table_header_status: "Status",
 			edit_hostnames: "Edit hostnames",
-			revoke_certificate: "Revoke certificate",
-			revoke_confirmation_title: "Revoke Certificate",
-			revoke_confirmation_description: 'Are you sure you want to revoke the certificate "%{name}"? This action cannot be undone.',
+			delete_certificate: "Delete certificate",
+			delete_confirmation_title: "Delete Certificate",
+			delete_confirmation_description: 'Are you sure you want to delete the certificate "%{name}"? This action cannot be undone.',
 			more_options: "More options",
 			hostname_drawer_title: "Certificate Details",
 			hostname_input_label: "Associated Hostnames",
 			hostname_count_singular: "%{count} hostname",
 			hostname_count_plural: "%{count} hostnames",
-			hostname_input_placeholder: "Enter a hostname (e.g. api.example.com)",
+			hostname_input_placeholder: "Enter a subdomain prefix",
 			hostname_add_button: "Add",
 			hostname_list_label: "Hostnames",
 			status_active: "Active",
@@ -974,7 +960,7 @@
 			hostname_empty: "No hostnames added yet",
 			hostname_duplicate: "This hostname has already been added",
 			file_too_large: "File is too large. PEM certificates should be under 64 KB.",
-			revoke_error: "Failed to revoke certificate. Please try again."
+			delete_error: "Failed to delete certificate. Please try again."
 		}
 	},
 	staging_certificates: {
@@ -1060,7 +1046,7 @@
 				custom_tooltip: "To upload a custom certificate you must first upgrade to Business or a higher plan"
 			},
 			biz_ent: {
-				custom: "Ability to upload custom certificates (1 legacy and 1 modern certification pack) which you must renew and re-upload prior to expiration"
+				custom_with_quota: "Ability to upload custom certificates (%{legacy_count} legacy and %{modern_count} modern certificate packs) which you must renew and re-upload prior to expiration"
 			}
 		},
 		acm: {
