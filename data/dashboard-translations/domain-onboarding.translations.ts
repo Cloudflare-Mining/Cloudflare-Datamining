@@ -1,7 +1,7 @@
 {
 	page: {
 		title: "Add a site",
-		description: "Connect your domain to start sending web traffic through Cloudflare."
+		description: "Connect or transfer existing domains to Cloudflare, or buy a new domain."
 	},
 	paths: {
 		add: {
