@@ -1,10 +1,10 @@
 {
 	"componentChunkName": "component---src-components-page-page-template-tsx",
-	"path": "/network-services/products/magic-transit/",
+	"path": "/application-services/products/bot-management/",
 	"result": {
 		"data": {
 			"page": {
-				"pageName": "Magic Transit Product Page",
+				"pageName": "Product Page - Bot Management",
 				"localeList": {
 					"enUS": "English for Locale",
 					"zhCN": "Translated for Locale",
@@ -30,17 +30,16 @@
 					"trTR": "Translated for Locale",
 					"zhHansCN": "Translated for Locale",
 					"plPL": "Translated for Locale",
-					"arAR": "No Page for Locale",
-					"heIL": null
+					"arAR": "No Page for Locale"
 				},
-				"relativePath": "network-services/products/magic-transit",
+				"relativePath": "application-services/products/bot-management/",
 				"topNavOptions": "default",
 				"topNavButtonText": null,
 				"topNavButtonUrl": null,
 				"footerOptions": "default",
 				"metaTags": {
-					"metaTitle": "Magic Transit | DDoS Protection for Networks",
-					"metaDescription": "Cloudflare Magic Transit offers cloud-based DDoS protection for public-facing infrastructure. Learn more about benefits and use cases for Magic Transit.",
+					"metaTitle": "Cloudflare Bot Management & Protection",
+					"metaDescription": "Cloudflare Bot Management uses global threat intelligence and machine learning to stop attacks—delivering powerful, automated bot protection.",
 					"twitterCustomImage": null,
 					"metaImage": {
 						"file": {
@@ -52,10 +51,10 @@
 					"author": []
 				},
 				"sys": {
-					"createdAt": "2019-08-13T13:01:09.623Z",
-					"updatedAt": "2026-04-01T21:26:48.709Z"
+					"createdAt": "2019-03-20T20:46:41.176Z",
+					"updatedAt": "2025-09-27T09:12:44.460Z"
 				},
-				"contentfulId": "4sZIe5X0bRfXzX69km1ewi",
+				"contentfulId": "1MFKT7svIM8e8IcqMemoKW",
 				"contentTypeId": "page",
 				"promotionalBanner": null,
 				"psaBanner": null,
@@ -65,54 +64,40 @@
 				"template": null,
 				"relatedBlades": [
 					{
-						"contentfulId": "7or3qVTAJ0vFra30JcGdus",
+						"contentfulId": "2Xt1C9hTXi4oUIuoUI646q",
 						"contentTypeId": "bladeHeroAnimation",
-						"title": "Magic Transit",
+						"title": "Cloudflare Bot Management",
 						"titleSize": null,
-						"subtitle": "Unmatched, hardware-free DDoS protection for customer networks",
+						"subtitle": "Stop bad bots without CAPTCHAs",
 						"subtitleSize": null,
-						"copy": "Protect public-facing subnets using the Cloudflare global network, without the slowdowns of routing network traffic to scrubbing centers or capacity limitations of hardware boxes. With %{NetworkCapacity} of network capacity, %{NetworkCapacityLargestDDOS} greater than the largest DDoS attacks ever recorded, Cloudflare can mitigate attacks of any size.",
+						"copy": "Manage good and bad bots in real-time with speed and accuracy by harnessing data from the millions of Internet properties on Cloudflare.",
 						"buttonColor": "orange",
-						"buttonColor2": "orange",
-						"buttonText1": "Talk to an expert",
+						"buttonColor2": "orange-outline",
+						"buttonText1": "Talk to expert",
 						"buttonText1LoggedIn": null,
 						"buttonUrl1": "#",
 						"buttonUrl1LoggedIn": null,
-						"button1ExtraClass": "cloudflare-magic-transit-modal",
-						"buttonText2": "Get product brief",
+						"button1ExtraClass": "bot-management-modal-form",
+						"buttonText2": "Get the product brief",
 						"buttonText2LoggedIn": null,
-						"buttonUrl2": "https://cfl.re/4fzEjBX",
+						"buttonUrl2": "https://cfl.re/3XEmTMs",
 						"button2ExtraClass": null,
 						"bladeBorder": "none",
 						"htmlId": null,
 						"textColor": "black",
 						"includeVideo": true,
-						"streamVideoId": "58844a6eec86244bb0b9eb3970cf5255",
+						"streamVideoId": "5dca229234c21ed63dd64156048b5ad7",
 						"streamOptions": [
 							"controls"
 						],
-						"streamCaptions": "en",
+						"streamCaptions": null,
 						"popupStreamId": null,
 						"popupText": null,
 						"button1OpenInNewTab": null,
-						"button2OpenInNewTab": true,
-						"streamThumbnails": null,
+						"button2OpenInNewTab": false,
+						"streamThumbnails": "1m58s",
 						"sectionPadding": null,
-						"streamPosterAssetFile": {
-							"id": "57764194-fd2f-592b-90a9-987d2e6da991",
-							"altText": "Default meta image asset ",
-							"title": "Default meta image asset ",
-							"activeAsset": "Contentful Asset",
-							"locale": "en-US",
-							"contentfulAsset": {
-								"file": {
-									"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/53qCYhQbir5WtIU0VDWESo/954a48bfb17f429acf469e5f14345d83/unnamed-3.png"
-								},
-								"description": "DO NOT REMOVE, THIS IS CLOUDFLARE'S GLOBAL OG META ASSET"
-							},
-							"brandfolderAsset": null,
-							"brandfolderAssetMobile": null
-						},
+						"streamPosterAssetFile": null,
 						"streamPoster": null,
 						"imageSize": "Medium",
 						"imagePosition": null,
@@ -124,26 +109,48 @@
 						"textlayoutMode": null,
 						"backgroundAssetFile": null,
 						"imageLayout": null,
-						"image": null,
-						"imageAssetFile": null
+						"image": {
+							"file": {
+								"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/4fVeH4zoCFGJx4HZG8O4iC/a863ab1f15c9e5ea94dcc4c6b5a04f4f/Private_Authentication_Token_open_source_standard_to_eliminate_CAPTCHAs.svg"
+							},
+							"description": "Illustration of Private Access Tokens"
+						},
+						"imageAssetFile": {
+							"id": "2d131cff-5913-5050-a83a-409531e6ff7d",
+							"altText": "Malicious bot hero illustration",
+							"title": "Malicious bot hero illustration",
+							"activeAsset": "Brandfolder Asset",
+							"locale": "en-US",
+							"contentfulAsset": null,
+							"brandfolderAsset": {
+								"size": 11329,
+								"height": 3298,
+								"width": 3406,
+								"filename": "malicious-bot-hero-illustration.svg",
+								"file": {
+									"publicURL": "https://cf-assets.www.cloudflare.com/brandfolder/malicious-bot-hero-illustration.svg"
+								}
+							},
+							"brandfolderAssetMobile": null
+						}
 					},
 					{
-						"contentfulId": "4vIGW2SNC4uC7AYkuGUZmx",
+						"contentfulId": "5Xn1HYVDL8kOHmBxEN01l3",
 						"contentTypeId": "bladeMultipleColumnsLayout",
 						"title": null,
-						"eyebrowHeading": "BENEFITS OF MAGIC TRANSIT",
+						"eyebrowHeading": "BENEFITS OF CLOUDFLARE BOT MANAGEMENT",
 						"description": null,
 						"textLayout": "left",
-						"columnsLayout": "Three Columns",
+						"columnsLayout": "Four Columns",
 						"columnContent": [
 							{
 								"contentTypeId": "feature",
-								"contentfulId": "164cykJinusTtbrRnLerBV",
-								"title": "DDoS protection at massive scale",
+								"contentfulId": "42qgbqTfDSmbhdLXPVOFr4",
+								"title": "Stop bot attacks",
 								"makeTitleLink": false,
 								"titleUrl": null,
 								"titleSize": null,
-								"description": "No more backhauling traffic to DDoS scrubbing centers. Magic Transit uses Cloudflare's global network to absorb and filter attacks.",
+								"description": "Cloudflare blocks credential stuffing, [content scraping](https://www.cloudflare.com/learning/ai/how-to-prevent-web-scraping/), inventory hoarding, DDoS, and other malicious bot activity.",
 								"learnMoreUrl": null,
 								"learnMoreText": null,
 								"displayBorder": false,
@@ -151,16 +158,16 @@
 								"removeCardBorder": false,
 								"icon": null,
 								"iconAssetFile": {
-									"id": "326d66b9-319c-522a-9a89-d79f3d382742",
-									"altText": "Security shield ddos protection blue",
-									"title": "Security shield ddos protection blue",
+									"id": "c69e1975-042d-56be-9b49-b7f21ef37a0d",
+									"altText": "Security bots ",
+									"title": "Security bots ",
 									"activeAsset": "Contentful Asset",
 									"locale": "en-US",
 									"contentfulAsset": {
 										"file": {
-											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/2oIHOELz7Ir7RtBLpEfWEs/d2ddafe107a6a330ab761b16824a1a03/security-shield-protection-1.svg"
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/6WenQJx3SKmSr8ePtKqX1Z/2a179c561c16d7c48415294b823ca17a/security-bots.svg"
 										},
-										"description": "Shield icon"
+										"description": ""
 									},
 									"brandfolderAsset": null,
 									"brandfolderAssetMobile": null
@@ -174,12 +181,12 @@
 							},
 							{
 								"contentTypeId": "feature",
-								"contentfulId": "yqt8bTxd2m3owVhAE0zdn",
-								"title": "Ultra-low Time to Mitigate (TTM)",
+								"contentfulId": "7BhZUjicTtKpqsjfEfPMm5",
+								"title": "Multiple detection methods",
 								"makeTitleLink": false,
 								"titleUrl": null,
 								"titleSize": null,
-								"description": "Malicious traffic is identified and blocked at a Cloudflare data center closest to the source, usually within 3 seconds.",
+								"description": "Cloudflare Bot Management uses machine learning, behavioral analysis, and fingerprinting to accurately classify bots.",
 								"learnMoreUrl": null,
 								"learnMoreText": null,
 								"displayBorder": false,
@@ -187,16 +194,16 @@
 								"removeCardBorder": false,
 								"icon": null,
 								"iconAssetFile": {
-									"id": "4ad77fba-3ae1-5ad0-a850-d814c56d9d9d",
-									"altText": "Reliability timer blue",
-									"title": "Reliability timer blue",
+									"id": "f46bb671-ca3f-5b66-9c26-31f14275bcef",
+									"altText": "Target orange icon",
+									"title": "Target orange icon",
 									"activeAsset": "Contentful Asset",
 									"locale": "en-US",
 									"contentfulAsset": {
 										"file": {
-											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/41aBOr3gowykuADnSlJuCp/897c938c653f6d736e3832afe4fcab59/reliability-timer.svg"
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/7ljieC61A3bA8pHEMYLNlC/1e691047fee857a4d39a7168b1183182/target.png"
 										},
-										"description": "Stopwatch icon"
+										"description": "Target icon"
 									},
 									"brandfolderAsset": null,
 									"brandfolderAssetMobile": null
@@ -210,12 +217,12 @@
 							},
 							{
 								"contentTypeId": "feature",
-								"contentfulId": "3Ff1NOC49BdnNP3Y64CrtC",
-								"title": "Reduce your TCO",
+								"contentfulId": "L6TBLVB07aAUXcerNm3hL",
+								"title": "Avoid CAPTCHAs",
 								"makeTitleLink": false,
 								"titleUrl": null,
 								"titleSize": null,
-								"description": "Replace expensive hardware and increase operational agility with network functions delivered and billed as a service.",
+								"description": "Cloudflare has developed innovative ways to challenge bots without frustrating real users with CAPTCHAs.",
 								"learnMoreUrl": null,
 								"learnMoreText": null,
 								"displayBorder": false,
@@ -223,16 +230,52 @@
 								"removeCardBorder": false,
 								"icon": null,
 								"iconAssetFile": {
-									"id": "799c866d-69a4-5646-b6bb-5261eae7cb14",
-									"altText": "Network scale ",
-									"title": "Network scale ",
+									"id": "774fed19-c3c8-5b1a-996e-e5217c014f4e",
+									"altText": "Pages shield blue",
+									"title": "Pages shield blue",
 									"activeAsset": "Contentful Asset",
 									"locale": "en-US",
 									"contentfulAsset": {
 										"file": {
-											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/25B0tY2bGsZrocxnifpnpx/2a328b9ddf2ec85b6c026f5b2d03ed42/network-scale.svg"
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/6ygGtWlEN0N5inPgmxPucE/ac30e4bd2a63904fa66bb28ddc24ac3b/page-shield.png"
 										},
-										"description": "Network scale orange"
+										"description": ""
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								},
+								"imageOverlaySuperheader": null,
+								"imageOverlayText": null,
+								"imageAssetFile": null,
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
+							},
+							{
+								"contentTypeId": "feature",
+								"contentfulId": "5plQktfNcOWlgiXK8j3tHC",
+								"title": "Simple deployment",
+								"makeTitleLink": false,
+								"titleUrl": null,
+								"titleSize": null,
+								"description": "No complex configuration or maintenance: Cloudflare Bot Management automatically recommends rules to manage bots out-of-the-box.",
+								"learnMoreUrl": null,
+								"learnMoreText": null,
+								"displayBorder": false,
+								"openLinkInNewTab": null,
+								"removeCardBorder": false,
+								"icon": null,
+								"iconAssetFile": {
+									"id": "d2b32cbc-f943-5e9e-9085-1aab95c79802",
+									"altText": "configuration",
+									"title": "configuration",
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/5mbB3plryIUBjzOv6eX04H/089dfc12bcb1e144e97b0a34436c435d/optimization-gear.svg"
+										},
+										"description": null
 									},
 									"brandfolderAsset": null,
 									"brandfolderAssetMobile": null
@@ -245,13 +288,13 @@
 								"streamThumbnailAssetFile": null
 							}
 						],
-						"sectionPadding": null,
+						"sectionPadding": "tile--no-bottom-padding",
 						"htmlId": null
 					},
 					{
-						"contentfulId": "515ATYW8m56HU6EHh0iHoL",
-						"title": "On-premises and hybrid infrastructure protected via our global network",
-						"copy": "Magic Transit delivers network protection from Cloudflare data centers. Using Border Gateway Protocol (BGP) route announcements, inbound traffic is ingested at the closest Cloudflare data center.\n\nClean traffic is routed rapidly over Cloudflare's network and can be handed off over GRE tunnels, private network interconnects (PNI), or other forms of peering to the customer network.\n",
+						"contentfulId": "3ck5ZjXghGExMwyXhRnN0x",
+						"title": "Automatically stop bad bots without interrupting legitimate users",
+						"copy": "Cloudflare analyzes behavior and detects anomalies in network traffic based on how requests deviate from the baseline. \n\nCloudflare's machine learning trains on a curated subset of hundreds of billions of requests per day to create a reliable bot score for every request.",
 						"toggleText": null,
 						"button": [],
 						"learnMoreUrl": null,
@@ -274,16 +317,16 @@
 						"streamPosterAssetFile": null,
 						"image": null,
 						"imageAssetFile": {
-							"id": "d93d7fe0-b30c-501c-bc07-f740ffea6368",
-							"altText": null,
-							"title": null,
+							"id": "40f98882-e2a2-508e-b4c0-81d5e5bf19c2",
+							"altText": "Analytics granular visibility cache spot illustration",
+							"title": "Analytics granular visibility cache spot illustration",
 							"activeAsset": "Contentful Asset",
 							"locale": "en-US",
 							"contentfulAsset": {
 								"file": {
-									"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/2gpAm9XaT0FMJTWAlNXO1d/8afb58ff8c462354fe7308e277be304d/BDES-4906_-_Magic_Transit_-_How_it_works.svg"
+									"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/XgomaToeUxD2O2oearhzv/4ee84cd21e6766c6691506506a5f466e/BDES-4889-analytics-granular-visibility-cache-spot-illustration.svg"
 								},
-								"description": "Diagram of Cloudflare Magic Transit preventing a DDoS attack"
+								"description": "Analytics granular visibility cache spot illustration"
 							},
 							"brandfolderAsset": null,
 							"brandfolderAssetMobile": null
@@ -293,112 +336,27 @@
 						"sectionTitle": "HOW IT WORKS",
 						"htmlId": null,
 						"titleSize": null,
-						"sectionPadding": "tile--no-top-padding",
+						"sectionPadding": null,
 						"backgroundColor": "white",
 						"bladeBorder": "none",
 						"imagePosition": true,
-						"imageSize": "large",
-						"imageTextAlignment": null,
-						"togglesTo": []
-					},
-					{
-						"contentTypeId": "bladeEnablement",
-						"contentfulId": "dKgtWLL0op6MBuZuTnzcx",
-						"title": "Learn how Cloudflare protects network infrastructure, data centers, and public cloud services against DDoS attacks and other malicious traffic.",
-						"titleSize": "medium",
-						"backgroundColor": "image-background",
-						"buttonText": null,
-						"buttonUrl": null,
-						"buttonText2": null,
-						"buttonModalId2": null,
-						"buttonUrl2": null,
-						"bladeSizeType": "small",
-						"htmlId": null,
-						"bladeBorder": "none",
-						"buttonOne": {
-							"buttonAssetFile": null,
-							"buttonTextLoggedIn": null,
-							"contentTypeId": "button",
-							"contentfulId": "5yuMc0yyJijTeANHQZnWQZ",
-							"elementName": "Magic Transit Product Page - ADDITIONAL OFFER BLADE - CTA",
-							"standardText": null,
-							"text": "Get solution brief",
-							"url": "https://cfl.re/network-protection-brief",
-							"loggedInUrl": null,
-							"buttonModal": null,
-							"openInNewTab": false,
-							"locale": "en-US"
-						},
-						"buttonTwo": null,
-						"sectionPadding": null,
-						"eyebrow": null
-					},
-					{
-						"contentfulId": "3HxDmQmhOjqz8s1GyZ5B4K",
-						"title": "2023 Gartner Peer Insights \"Voice of the Customer\": DDoS Mitigation Solutions",
-						"copy": "Cloudflare is named a Customers' Choice in the Gartner® Peer Insights™ \"Voice of the Customer\": DDoS Mitigation Solutions",
-						"toggleText": null,
-						"button": [],
-						"learnMoreUrl": "https://www.cloudflare.com/lp/gartner-peer-insights-ddos/",
-						"learnMoreText": "Read the report",
-						"link": [],
-						"subheadline": null,
-						"button1Text": null,
-						"button1Url": null,
-						"button1Color": null,
-						"button2Text": null,
-						"button2Url": null,
-						"button2Color": null,
-						"streamOptions": [
-							"controls"
-						],
-						"streamCaptions": "en",
-						"streamVideoId": null,
-						"streamThumbnails": null,
-						"streamPoster": null,
-						"streamPosterAssetFile": null,
-						"image": null,
-						"imageAssetFile": {
-							"id": "d1ae78e3-c5b0-58bc-9861-f972f4e8b43d",
-							"altText": "Gartner Peer Insights Customers' Choice 2023 award",
-							"title": "Gartner 2023",
-							"activeAsset": "Contentful Asset",
-							"locale": "en-US",
-							"contentfulAsset": {
-								"file": {
-									"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/5Adjqei8T4sGY4JwG09HPB/850ed97fe1b07365164d60f68baacdfe/Gartner-Peer-Insights-Customers-Choice-badge-color-2023.png"
-								},
-								"description": "Gartner Peer Insights Customers' Choice 2023 award"
-							},
-							"brandfolderAsset": null,
-							"brandfolderAssetMobile": null
-						},
-						"featureList": [],
-						"contentTypeId": "bladeImageText",
-						"sectionTitle": "ANALYST RECOGNITION",
-						"htmlId": null,
-						"titleSize": null,
-						"sectionPadding": "tile--no-bottom-padding",
-						"backgroundColor": "white",
-						"bladeBorder": "none",
-						"imagePosition": false,
-						"imageSize": null,
-						"imageTextAlignment": null,
+						"imageSize": "medium",
+						"imageTextAlignment": "center",
 						"togglesTo": []
 					},
 					{
 						"contentTypeId": "bladeRichTextColumnGroup",
-						"contentfulId": "1dY8dk0emMRZw2uH8ElJV4",
+						"contentfulId": "3SIj0qkRZUDUh27lEQN3g9",
 						"htmlId": null,
 						"mainHeadline": null,
 						"backgroundColor": "white",
 						"bladeBorder": "none",
-						"sectionPadding": "tile--no-bottom-padding",
+						"sectionPadding": "tile--no-top-bottom-padding",
 						"columnLayout": "One Column Wide",
 						"columns": [
 							{
 								"contentTypeId": "elementRichText",
-								"contentfulId": "7F5yIY5V8FRC9po4Q0IV32",
+								"contentfulId": "2lGpPRKM2JMdt6TaJ9qWbq",
 								"title": null,
 								"htmlId": null,
 								"elementPosition": "relative",
@@ -450,7 +408,7 @@
 																"target": null,
 																"uri": null
 															},
-															"value": "\"Cloudflare has reliable infrastructure and an extremely competent and responsive team. They are well-positioned to deflect even the largest of attacks.\"",
+															"value": "\"The great thing about Cloudflare Bot Management solutions is I don't need to spend time fine-tuning. The machine learning algorithms just work because Cloudflare has such great data. Our lives are 1000 times easier while still ensuring our sites are both safe and fast for our customers.\"",
 															"marks": [],
 															"content": null
 														}
@@ -494,7 +452,7 @@
 														"target": null,
 														"uri": null
 													},
-													"value": "CTO — Wikimedia Foundation",
+													"value": "Manager, Security Engineering — SoFi",
 													"marks": [],
 													"content": null
 												}
@@ -695,22 +653,22 @@
 						"sectionPadding": null
 					},
 					{
-						"contentfulId": "4uoltbBhT7ulCJL49rJtMK",
+						"contentfulId": "6XvEVi9NcbuBrJXZuEKwxd",
 						"contentTypeId": "bladeMultipleColumnsLayout",
-						"title": "Magic Transit stops DDoS attacks directed at your infrastructure. Get the benefits of cloud-based DDoS protection for public-facing infrastructure",
-						"eyebrowHeading": "Top Magic Transit use cases",
+						"title": "Cloudflare Bot Management stops bad bots while allowing good bots like search engine crawlers, with minimal latency and rich analytics and logs",
+						"eyebrowHeading": "Top Bot Management use cases",
 						"description": null,
 						"textLayout": "left",
 						"columnsLayout": "Three Columns",
 						"columnContent": [
 							{
 								"contentTypeId": "feature",
-								"contentfulId": "3Q026786MqgaXyEYEtRgtT",
-								"title": "Protect against layer 3 DDoS",
+								"contentfulId": "4bto8F1ROByZ8lLjTca19S",
+								"title": "Protect against malicious bots",
 								"makeTitleLink": false,
 								"titleUrl": null,
 								"titleSize": null,
-								"description": "With data from attacks observed across our global network, Cloudflare can block and mitigate any type of DDoS attack in seconds.\n",
+								"description": "Block bot activity that slows down application performance, scrapes data, steals sensitive content, or performs other attacks.",
 								"learnMoreUrl": null,
 								"learnMoreText": null,
 								"displayBorder": false,
@@ -718,16 +676,16 @@
 								"removeCardBorder": false,
 								"icon": null,
 								"iconAssetFile": {
-									"id": "0e7afbfb-6bd8-53f7-862d-96d8bdc1c635",
-									"altText": "Ddos attack blue",
-									"title": "Ddos attack blue",
+									"id": "c69e1975-042d-56be-9b49-b7f21ef37a0d",
+									"altText": "Security bots ",
+									"title": "Security bots ",
 									"activeAsset": "Contentful Asset",
 									"locale": "en-US",
 									"contentfulAsset": {
 										"file": {
-											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/3fCtDJiVXAmgSWmlKenFBR/d25c631065e2c37cc74e991740434118/ddos-attack.svg"
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/6WenQJx3SKmSr8ePtKqX1Z/2a179c561c16d7c48415294b823ca17a/security-bots.svg"
 										},
-										"description": "DDoS attack icon"
+										"description": ""
 									},
 									"brandfolderAsset": null,
 									"brandfolderAssetMobile": null
@@ -741,12 +699,12 @@
 							},
 							{
 								"contentTypeId": "feature",
-								"contentfulId": "6bEHUIT2DfV6bN6Qhgj7x6",
-								"title": "Delivers defense in depth",
+								"contentfulId": "6d9XZoTcyf0fUIdAqhmgfT",
+								"title": "Private Access Tokens",
 								"makeTitleLink": false,
 								"titleUrl": null,
 								"titleSize": null,
-								"description": "Use Cloudflare's %{DataCenterCount}-city global network at the front lines of your network protection.",
+								"description": "Cloudflare uses an invisible, privacy-first way for users to prove they are real using Apple devices without CAPTCHAs or PII collection.",
 								"learnMoreUrl": null,
 								"learnMoreText": null,
 								"displayBorder": false,
@@ -754,16 +712,16 @@
 								"removeCardBorder": false,
 								"icon": null,
 								"iconAssetFile": {
-									"id": "2d2824a8-bb61-5964-9353-cf496e347032",
-									"altText": "Server origin blue",
-									"title": "Server origin blue",
+									"id": "11e03783-c55c-582e-b490-3eab11cac88b",
+									"altText": "Ease of use blue",
+									"title": "Ease of use blue",
 									"activeAsset": "Contentful Asset",
 									"locale": "en-US",
 									"contentfulAsset": {
 										"file": {
-											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/5rgAX5Pezx1EHevEZ8b9vc/67012f637f6d9f7741c8d6aeb7fcfbfb/server-origin.svg"
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/5wB2WP2bwo7zdgVhToslhe/447d1f23d1b8ac77e61e2819465f58fe/ease-of-use-toggle.svg"
 										},
-										"description": "Origin server icon"
+										"description": "Ease of use orange"
 									},
 									"brandfolderAsset": null,
 									"brandfolderAssetMobile": null
@@ -777,12 +735,12 @@
 							},
 							{
 								"contentTypeId": "feature",
-								"contentfulId": "7BJgBkBO3hQm7VUFZvPJJc",
-								"title": "A part of Cloudflare's comprehensive DDoS protection",
+								"contentfulId": "4XHvzLMUt3v8nYIRd2pCPz",
+								"title": "Custom bot management rules",
 								"makeTitleLink": false,
 								"titleUrl": null,
 								"titleSize": null,
-								"description": "Works together with Spectrum (Layer 4) and Cloudflare DDoS (Layer 7) to address different techniques in the cyberattack kill chain.",
+								"description": "Tune bot management rules to fit your specific needs by scoping them based on a variety of criteria.",
 								"learnMoreUrl": null,
 								"learnMoreText": null,
 								"displayBorder": false,
@@ -790,16 +748,16 @@
 								"removeCardBorder": false,
 								"icon": null,
 								"iconAssetFile": {
-									"id": "dc0ee946-9622-540c-8a6d-c314b6490868",
-									"altText": "Cloudflare spectrum ",
-									"title": "Cloudflare spectrum ",
+									"id": "85b72606-4e5f-58f1-bdd8-2f22d34e428e",
+									"altText": "Ruleset icon",
+									"title": "Ruleset icon",
 									"activeAsset": "Contentful Asset",
 									"locale": "en-US",
 									"contentfulAsset": {
 										"file": {
-											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/2T3J8PnA7cR4xTHFkPxUU9/461bac855603fa5ae05e5300feb30082/cloudflare-spectrum.svg"
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/BWKT2GPjWBacPIsuSQzfq/051691978b1dcd161745317f724eb2b4/cloudflare-ruleset-engine.svg"
 										},
-										"description": "Shield icon"
+										"description": "cloudflare ruleset engine icon"
 									},
 									"brandfolderAsset": null,
 									"brandfolderAssetMobile": null
@@ -817,18 +775,18 @@
 					},
 					{
 						"contentTypeId": "bladeHtml",
-						"contentfulId": "6MJUtmG2MS2wtyHFB0QUr1",
-						"htmlContent": "<div style=\"text-align: center; cursor:pointer; margin-bottom:64px; margin-top: -60px;\">\n    <a href=\"/network-services/solutions/\" class=\"inline-link-style\">Explore more use cases<svg width=\"6\" height=\"10\"\n            viewBox=\"0 0 6 10\" fill=\"currentColor\" aria-label=\"chevron\" xmlns=\"https://www.cloudflare.com/zero-trust/solutions/\"\n            class=\"dib v-mid ml1\">\n            <path\n                d=\"M1.00003 -4.37127e-08L-3.93401e-07 1.00003L4 5L0.000271373 9.00025L1.00003 10L6.00003 5L1.00003 -4.37127e-08Z\">\n            </path>\n        </svg>  </a>\n</div>",
+						"contentfulId": "7I5TSmzsc0EkIPq4HVw8S2",
+						"htmlContent": "<div style=\"text-align: center; cursor:pointer; margin-bottom:64px; margin-top: -60px;\">\n    <a href=\"/application-services/solutions/#protect-websites-applications-solutions\" class=\"inline-link-style\">Explore more use cases<svg width=\"4\" height=\"10\"\n            viewBox=\"0 0 6 10\" fill=\"currentColor\" aria-label=\"chevron\" xmlns=\"https://www.cloudflare.com/zero-trust/solutions/\"\n            class=\"dib v-mid ml1\">\n            <path\n                d=\"M1.00003 -4.37127e-08L-3.93401e-07 1.00003L4 5L0.000271373 9.00025L1.00003 10L6.00003 5L1.00003 -4.37127e-08Z\">\n            </path>\n        </svg>  </a>\n</div>",
 						"htmlId": null
 					},
 					{
-						"contentfulId": "1flKJwz66QVYGQV52BvBNM",
+						"contentfulId": "5P61HNd5H9sCoUI7RZnk8",
 						"contentTypeId": "bladeLeadGeneration",
 						"title": null,
-						"description": "Helping organizations worldwide protect themselves from DDoS attacks",
+						"description": "See how global companies are using Bot Management to accelerate their applications",
 						"variant": "inline",
 						"htmlId": null,
-						"sectionPadding": "tile--no-top-bottom-padding",
+						"sectionPadding": "tile--no-top-padding",
 						"backgroundImage": {
 							"id": "5fb646a4-2af5-50d0-815c-108317d4b5b7",
 							"altText": "Cloudflare Orange Background",
@@ -848,11 +806,11 @@
 							"buttonAssetFile": null,
 							"buttonTextLoggedIn": null,
 							"contentTypeId": "button",
-							"contentfulId": "rJlJBGV9bv0wpZynUtJnZ",
-							"elementName": "Magic Transit Product Page - CASE STUDIES - CTA",
+							"contentfulId": "6iCDUX8WxFw0p4ENXI510p",
+							"elementName": "See case studies",
 							"standardText": null,
 							"text": "See case studies",
-							"url": "https://www.cloudflare.com/case-studies/?product=Magic+Transit",
+							"url": "/case-studies/?product=Bot+Management",
 							"loggedInUrl": null,
 							"buttonModal": null,
 							"openInNewTab": false,
@@ -862,125 +820,92 @@
 					},
 					{
 						"contentTypeId": "bladeCardCarousel",
-						"contentfulId": "5FL6MMTKCr4TarlzFSfne3",
+						"contentfulId": "5uNd1cCoJmLRqzK2y8gNPG",
 						"title": "Resources",
 						"htmlId": null,
 						"backgroundImage": null,
 						"cards": [
 							{
 								"contentTypeId": "elementResourceCard",
-								"contentfulId": "32GnSjoFkCMbwMizZvpWv",
-								"heading": "Ebook",
-								"description": "Deterring downtime: A guide to DDoS defense models",
-								"category": "None",
-								"link": {
-									"contentTypeId": "elementLink",
-									"contentfulId": "1x5uHXFAmGb3LyIaTozM8l",
-									"elementName": "Deterring downtime: A guide to DDoS defense models - link",
-									"standardText": null,
-									"text": "Read ebook",
-									"url": "https://cfl.re/3POPsTS",
-									"elementModal": null,
-									"openInNewTab": true,
-									"locale": "en-US"
-								},
-								"image": {
-									"id": "199a0c46-2ff3-57ee-9cf7-06ffd387d947",
-									"altText": "Explore more ebooks in Cloudflare's Resource Hub",
-									"title": "Explore more ebooks in Cloudflare's Resource Hub",
-									"activeAsset": "Contentful Asset",
-									"locale": "en-US",
-									"contentfulAsset": {
-										"file": {
-											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/2tGnS2OjpSmmok16lr0mI3/db2a34b69b1001d0d0b529148def3c45/Ebook-generic-106x186-300dpi.png"
-										},
-										"description": null
-									},
-									"brandfolderAsset": null,
-									"brandfolderAssetMobile": null
-								}
-							},
-							{
-								"contentTypeId": "elementResourceCard",
-								"contentfulId": "ROng5ebqHysecpV1b8uSF",
-								"heading": "Whitepaper",
-								"description": "Five best practices for mitigating DDoS attacks",
-								"category": "None",
-								"link": {
-									"contentTypeId": "elementLink",
-									"contentfulId": "5A8H4Pyu2eE4hTAGyG9BL5",
-									"elementName": "Five best practices for mitigating DDoS attacks - link",
-									"standardText": null,
-									"text": "Read whitepaper",
-									"url": "/lp/five-best-practices-for-mitigating-ddos-attacks/",
-									"elementModal": null,
-									"openInNewTab": false,
-									"locale": "en-US"
-								},
-								"image": {
-									"id": "aef302d2-a7e8-57b1-b2c4-610e768f5249",
-									"altText": "Explore more whitepapers in Cloudflare's Resource Hub - thumbnail",
-									"title": "Explore more whitepapers in Cloudflare's Resource Hub - thumbnail",
-									"activeAsset": "Contentful Asset",
-									"locale": "en-US",
-									"contentfulAsset": {
-										"file": {
-											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/2ZiPjCDWMWnibCFs5nxHBa/75ef0ba1b4484c2da8ab4d3f40437dff/Whitpapper-generic-106x186-300dpi.png"
-										},
-										"description": null
-									},
-									"brandfolderAsset": null,
-									"brandfolderAssetMobile": null
-								}
-							},
-							{
-								"contentTypeId": "elementResourceCard",
-								"contentfulId": "4v7L868RSd0y9N1nt2PY7i",
-								"heading": "Blog",
-								"description": "Reduce downtime with a cloud-based DDoS defense model",
-								"category": "None",
-								"link": {
-									"contentTypeId": "elementLink",
-									"contentfulId": "4jkrJrJFLvDDRx6goC0ISM",
-									"elementName": "Reduce downtime with a cloud-based DDoS defense model - link",
-									"standardText": null,
-									"text": "Read blog",
-									"url": "https://blog.cloudflare.com/tag/ddos-reports/",
-									"elementModal": null,
-									"openInNewTab": true,
-									"locale": "en-US"
-								},
-								"image": {
-									"id": "16dda4bb-a521-5d41-82ec-64ef52888d97",
-									"altText": "Blog  thumbnail",
-									"title": "Blog  thumbnail",
-									"activeAsset": "Contentful Asset",
-									"locale": "en-US",
-									"contentfulAsset": {
-										"file": {
-											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/7ctAQnKr7LFaJzwd5gbbeu/dffc3ef872495ac11a0250f524a057f3/Blog-thumbnail-generic.png"
-										},
-										"description": null
-									},
-									"brandfolderAsset": null,
-									"brandfolderAssetMobile": null
-								}
-							},
-							{
-								"contentTypeId": "elementResourceCard",
-								"contentfulId": "6RrHmqV9GvGLRWSDNuyCf4",
+								"contentfulId": "4eLUDlIGFiIxs93ow9RA9w",
 								"heading": "Product brief",
-								"description": "Cloudflare for network protection",
+								"description": "Bot Management Datasheet",
 								"category": "None",
 								"link": {
 									"contentTypeId": "elementLink",
-									"contentfulId": "6egbBMKls6VM4sO6Qc9X7k",
-									"elementName": "Cloudflare for network protection - link",
+									"contentfulId": "t1CwDL9tp46YtjFNW7cqW",
+									"elementName": "Bot Management - Resources cards carousel - link",
 									"standardText": null,
-									"text": "Get solution brief",
-									"url": "https://cfl.re/network-protection-brief ",
+									"text": "Get the product brief",
+									"url": "https://cfl.re/4oHdMHx",
 									"elementModal": null,
-									"openInNewTab": false,
+									"openInNewTab": true,
+									"locale": "en-US"
+								},
+								"image": {
+									"id": "39b5574f-06ad-5bdd-a7b5-8a93f5e8a3df",
+									"altText": "Build AI with Cloudflare - thumbnail ",
+									"title": "Build AI with Cloudflare - thumbnail ",
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/2lUAsz5YsJICKhBWy6Rl9v/2e039f96c66c926b60c9c9668377ab47/Product_brief_99x180.svg"
+										},
+										"description": null
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								}
+							},
+							{
+								"contentTypeId": "elementResourceCard",
+								"contentfulId": "2H8H6eQtSsGtEpoTwzcbgv",
+								"heading": "Demo",
+								"description": "See how our network protects your most critical web applications",
+								"category": "None",
+								"link": {
+									"contentTypeId": "elementLink",
+									"contentfulId": "1mad5eUlegnh2tRYqDiZ4d",
+									"elementName": "Bot Management - Resources cards carousel - See how our network protects your most critical web applications - Link",
+									"standardText": null,
+									"text": "Watch demo",
+									"url": "https://cloudflare.ondemand.goldcast.io/on-demand/10350ff2-cb6c-430e-9e0b-28c29b5df938",
+									"elementModal": null,
+									"openInNewTab": true,
+									"locale": "en-US"
+								},
+								"image": {
+									"id": "47d314ed-fca3-53ee-8a27-cd22b5cc9e35",
+									"altText": null,
+									"title": "ABM Generic Insights card image",
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/5WSJHSDpKATubWl1mswB7W/841ac9d32923808f5e4ba8220faaeeb0/Insight_99x180.svg"
+										},
+										"description": null
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								}
+							},
+							{
+								"contentTypeId": "elementResourceCard",
+								"contentfulId": "7Iz1MppbPhGX0QciuQg0oM",
+								"heading": "Solution brief",
+								"description": "4 Strategies for Managing Malicious Bots",
+								"category": "None",
+								"link": {
+									"contentTypeId": "elementLink",
+									"contentfulId": "5KzEPXhpwsEGP5XMmhOUPS",
+									"elementName": "Bot Management - Resources cards carousel - 4 Strategies for Managing Malicious Bots - Link",
+									"standardText": null,
+									"text": " Get the solution brief",
+									"url": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/7zHWIu26DQhcKYYxHpEPIj/4cf7db1104d7c7b6e4c0d3a19c7e4249/BDES-4785-Gaming-Solution-Brief-Bot-Management.pdf",
+									"elementModal": null,
+									"openInNewTab": true,
 									"locale": "en-US"
 								},
 								"image": {
@@ -998,13 +923,79 @@
 									"brandfolderAsset": null,
 									"brandfolderAssetMobile": null
 								}
+							},
+							{
+								"contentTypeId": "elementResourceCard",
+								"contentfulId": "5IOOi9bcJkIObW1FEDhAcj",
+								"heading": "Whitepaper",
+								"description": "The Malicious Bot Playbook",
+								"category": "None",
+								"link": {
+									"contentTypeId": "elementLink",
+									"contentfulId": "2Jw4H1ULm2sjMnRnj9qCvs",
+									"elementName": "Bot Management - Resources cards carousel - The Malicious Bot Playbook - Link",
+									"standardText": null,
+									"text": "Read the Whitepaper",
+									"url": "https://cfl.re/3XEmTMs",
+									"elementModal": null,
+									"openInNewTab": true,
+									"locale": "en-US"
+								},
+								"image": {
+									"id": "13298e8a-267a-575b-b89a-b871f95f1d9a",
+									"altText": "Whitepaper Thumbnail",
+									"title": "Whitepaper Thumbnail",
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/2ZiPjCDWMWnibCFs5nxHBa/75ef0ba1b4484c2da8ab4d3f40437dff/Whitpapper-generic-106x186-300dpi.png"
+										},
+										"description": null
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								}
+							},
+							{
+								"contentTypeId": "elementResourceCard",
+								"contentfulId": "3sfkG4CseeNqV1QzFLJ0EN",
+								"heading": "Article",
+								"description": "Website security guide: A 10-step checklist",
+								"category": "None",
+								"link": {
+									"contentTypeId": "elementLink",
+									"contentfulId": "lbPDzmYd0aAY1hGAykgM7",
+									"elementName": "Advanced Certificate Manager - Resources card carousel - Website security guide: A 10-step checklist - Link",
+									"standardText": null,
+									"text": "Learn more",
+									"url": "https://www.cloudflare.com/learning/security/glossary/website-security-checklist/",
+									"elementModal": null,
+									"openInNewTab": false,
+									"locale": "en-US"
+								},
+								"image": {
+									"id": "37200d64-8a19-5b80-a727-74e25737dff6",
+									"altText": "theNet article - thumbnail",
+									"title": "theNet article - thumbnail",
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/6dsbqlnfwzvlPRvNcV2jTT/124c616468093a4ee6bcd75762121c02/Article_106x182.svg"
+										},
+										"description": null
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								}
 							}
 						]
 					},
 					{
 						"contentTypeId": "bladeEnablement",
-						"contentfulId": "1OHrxk63qpaCS1V5Zzv0zC",
-						"title": "Get Magic Transit for your enterprise",
+						"contentfulId": "2KROtUtlCWanxj6iJg4pxV",
+						"title": "Interested in bot management for your enterprise?",
 						"titleSize": "medium",
 						"backgroundColor": "image-background",
 						"buttonText": null,
@@ -1019,28 +1010,28 @@
 							"buttonAssetFile": null,
 							"buttonTextLoggedIn": null,
 							"contentTypeId": "button",
-							"contentfulId": "2EAqiaUUcTsZT2bt3drUAL",
-							"elementName": "Magic Transit Product Page - Modal form - Talk to an expert - CTA",
+							"contentfulId": "1fLiWAHkQqZOwpjs7aU3Nw",
+							"elementName": "Talk to an expert (modal form)",
 							"standardText": null,
 							"text": "Talk to an expert",
 							"url": null,
 							"loggedInUrl": null,
 							"buttonModal": {
 								"contentTypeId": "formModal",
-								"contentfulId": "6ghddptoQ1QHkLZHBiMDHS",
-								"modalName": "Cloudflare Magic Transit - Product Page Form Modal",
-								"modalId": "cloudflare-magic-transit-modal",
+								"contentfulId": "4X33NKLPG0gT4v6Vb1X0ca",
+								"modalName": "ZT Access Talk to an expert",
+								"modalId": "zt-access-talk-to-an-expert",
 								"modalType": "single-form",
 								"marketoForm": {
 									"contentTypeId": "marketoEmbeddedForm",
-									"contentfulId": "7ClRovvsUdwr9GVKF8jFgj",
-									"bladeName": "Magic Transit - Product Page Marketo Form (1341)",
+									"contentfulId": "5daBy41JohWg0zdFI6JHW",
+									"bladeName": "ZT Access - Talk to an expert - Marketo",
 									"backgroundColor": "white",
 									"marketoFormId": 1341,
 									"marketoFormLeadSource": "Inbound - Web Form",
-									"marketoFormLeadSourceDetail": "Contact Us Magic Transit",
+									"marketoFormLeadSourceDetail": "Web Form - Enterprise General Sales Inquiry",
 									"marketoFormAssetName": null,
-									"marketoFormHeaderText": null,
+									"marketoFormHeaderText": "Talk to an expert",
 									"marketoFormDefaultComment": null,
 									"showCommentBox": null,
 									"marketoFormThankYouText": null,
@@ -1049,7 +1040,7 @@
 									"marketoFormPdfDownloadI18n": [],
 									"marketoFormAssetDownloadButtonText": null,
 									"marketoFormSuccessRedirectUrl": null,
-									"sendAdRoll": false,
+									"sendAdRoll": null,
 									"meta_adRollCustomSegment": null,
 									"enableSandbox": null,
 									"marketoFormSubmitButtonText": null,
@@ -1058,8 +1049,8 @@
 									"disableEnterpriseEmailNotification": null,
 									"enableRingout": null
 								},
-								"title": "Cloudflare Magic Transit",
-								"regularCopy": "Request Magic Transit demo",
+								"title": null,
+								"regularCopy": null,
 								"splitFormDefaultTab": null,
 								"selfServeTabText": null,
 								"selfServeCopy": null,
@@ -1072,24 +1063,203 @@
 						"buttonTwo": null,
 						"sectionPadding": null,
 						"eyebrow": null
+					},
+					{
+						"contentTypeId": "bladeAccordion",
+						"contentfulId": "5jnr6RTQ3JB6BQERmek80U",
+						"bladeName": "Bot Management FAQs",
+						"title": "Bot Management FAQs",
+						"htmlId": null,
+						"sectionTitle": null,
+						"longCopy": null,
+						"accordionElements": [
+							{
+								"contentTypeId": "elementRichText",
+								"contentfulId": "4qJgw4IH3agWE3Qk71rjY5",
+								"title": "What is Cloudflare Bot Management?",
+								"htmlId": null,
+								"elementPosition": "relative",
+								"column": {
+									"nodeType": "document",
+									"content": [
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "Cloudflare Bot Management mitigates bot attacks and manages bot activity without impacting legitimate users or good bots. The service leverages global threat intelligence and machine learning to automatically protect against unwanted bot activity, without the use of user-unfriendly measures like CAPTCHA. ",
+													"marks": [],
+													"content": null
+												}
+											]
+										}
+									]
+								}
+							},
+							{
+								"contentTypeId": "elementRichText",
+								"contentfulId": "4UoXqKM1KJYJpYeDtJHQO2",
+								"title": "How does Cloudflare identify and categorize bots?",
+								"htmlId": null,
+								"elementPosition": "relative",
+								"column": {
+									"nodeType": "document",
+									"content": [
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "Cloudflare utilizes multiple detection techniques, including machine learning, analysis of bot behavior, and fingerprinting, to precisely identify and classify bots. ",
+													"marks": [],
+													"content": null
+												}
+											]
+										}
+									]
+								}
+							},
+							{
+								"contentTypeId": "elementRichText",
+								"contentfulId": "7n61FjEHWJ3H9p8kwiCSvO",
+								"title": "What types of malicious activities can Cloudflare Bot Management prevent?",
+								"htmlId": null,
+								"elementPosition": "relative",
+								"column": {
+									"nodeType": "document",
+									"content": [
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "Cloudflare Bot Management can defend against all types of malicious bot activity, including credential stuffing, content scraping, inventory hoarding, brute force attacks, click fraud, and distributed denial of service (DDoS) attacks. ",
+													"marks": [],
+													"content": null
+												}
+											]
+										}
+									]
+								}
+							},
+							{
+								"contentTypeId": "elementRichText",
+								"contentfulId": "4rstK0yXFuqJOhx5TQjDen",
+								"title": "Does Cloudflare Bot Management rely on CAPTCHAs to stop bots?",
+								"htmlId": null,
+								"elementPosition": "relative",
+								"column": {
+									"nodeType": "document",
+									"content": [
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "Cloudflare does not use CAPTCHAs. Cloudflare Bot Management has developed several methods to challenge bots without inconveniencing legitimate users with CAPTCHAs. ",
+													"marks": [],
+													"content": null
+												}
+											]
+										}
+									]
+								}
+							},
+							{
+								"contentTypeId": "elementRichText",
+								"contentfulId": "5NOBZMCJoTgbWQSXitk8Ql",
+								"title": "What are Private Access Tokens, and how do they benefit users?",
+								"htmlId": null,
+								"elementPosition": "relative",
+								"column": {
+									"nodeType": "document",
+									"content": [
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "Private Access Tokens authenticate users with Apple devices while preserving their privacy, eliminating the need for CAPTCHAs and avoiding the collection of personal data. ",
+													"marks": [],
+													"content": null
+												}
+											]
+										}
+									]
+								}
+							}
+						],
+						"backgroundColor": "white",
+						"bladeBorder": "none",
+						"textColor": "black"
 					}
 				],
 				"noindex": false,
 				"formModal": [
 					{
 						"contentTypeId": "formModal",
-						"contentfulId": "6ghddptoQ1QHkLZHBiMDHS",
-						"modalName": "Cloudflare Magic Transit - Product Page Form Modal",
-						"modalId": "cloudflare-magic-transit-modal",
+						"contentfulId": "1oKJNZjFNeqHUQbudTAxgs",
+						"modalName": "Bot Management - Modal form",
+						"modalId": "bot-management-modal-form",
 						"modalType": "single-form",
 						"marketoForm": {
 							"contentTypeId": "marketoEmbeddedForm",
-							"contentfulId": "7ClRovvsUdwr9GVKF8jFgj",
-							"bladeName": "Magic Transit - Product Page Marketo Form (1341)",
+							"contentfulId": "7chiDP83G6PEZgW8jXIRBK",
+							"bladeName": "Bot Management - Product Page: Marketo Form (1341)",
 							"backgroundColor": "white",
 							"marketoFormId": 1341,
 							"marketoFormLeadSource": "Inbound - Web Form",
-							"marketoFormLeadSourceDetail": "Contact Us Magic Transit",
+							"marketoFormLeadSourceDetail": "Web Form - Enterprise General Sales Inquiry",
 							"marketoFormAssetName": null,
 							"marketoFormHeaderText": null,
 							"marketoFormDefaultComment": null,
@@ -1100,7 +1270,7 @@
 							"marketoFormPdfDownloadI18n": [],
 							"marketoFormAssetDownloadButtonText": null,
 							"marketoFormSuccessRedirectUrl": null,
-							"sendAdRoll": false,
+							"sendAdRoll": null,
 							"meta_adRollCustomSegment": null,
 							"enableSandbox": null,
 							"marketoFormSubmitButtonText": null,
@@ -1109,8 +1279,8 @@
 							"disableEnterpriseEmailNotification": null,
 							"enableRingout": null
 						},
-						"title": "Cloudflare Magic Transit",
-						"regularCopy": "Request Magic Transit demo",
+						"title": "Talk to an expert",
+						"regularCopy": null,
 						"splitFormDefaultTab": null,
 						"selfServeTabText": null,
 						"selfServeCopy": null,
@@ -1129,8 +1299,8 @@
 		"pageContext": {
 			"currentLocale": "en-US",
 			"locale": "en-US",
-			"pathname": "/network-services/products/magic-transit/",
-			"contentfulId": "4sZIe5X0bRfXzX69km1ewi",
+			"pathname": "/application-services/products/bot-management/",
+			"contentfulId": "1MFKT7svIM8e8IcqMemoKW",
 			"allowedHrefLangs": [
 				"en-US",
 				"zh-CN",

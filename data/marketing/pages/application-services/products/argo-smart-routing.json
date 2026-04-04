@@ -1,10 +1,10 @@
 {
 	"componentChunkName": "component---src-components-page-page-template-tsx",
-	"path": "/developer-platform/products/email-routing/",
+	"path": "/application-services/products/argo-smart-routing/",
 	"result": {
 		"data": {
 			"page": {
-				"pageName": "Email Routing product page",
+				"pageName": "Argo Smart Routing - Product Page",
 				"localeList": {
 					"enUS": "English for Locale",
 					"zhCN": "Translated for Locale",
@@ -27,20 +27,19 @@
 					"ruRU": "Translated for Locale",
 					"svSE": "English for Locale",
 					"viVN": "English for Locale",
-					"trTR": "English for Locale",
+					"trTR": "Translated for Locale",
 					"zhHansCN": "Translated for Locale",
 					"plPL": "Translated for Locale",
-					"arAR": "No Page for Locale",
-					"heIL": "No Page for Locale"
+					"arAR": "No Page for Locale"
 				},
-				"relativePath": "developer-platform/products/email-routing/",
+				"relativePath": "application-services/products/argo-smart-routing/",
 				"topNavOptions": "default",
 				"topNavButtonText": null,
 				"topNavButtonUrl": null,
 				"footerOptions": "default",
 				"metaTags": {
-					"metaTitle": "Cloudflare Email Routing | Easily create addresses and route emails",
-					"metaDescription": "With Cloudflare Email Routing, simplify the way you create and manage custom email addresses for your domain, without needing to keep an eye on additional mailboxes.",
+					"metaTitle": "Argo Smart Routing | Accelerate Web Apps",
+					"metaDescription": "Cloudflare Argo Smart Routing accelerates web applications by avoiding network congestion. Learn more about the benefits, use cases, and pricing for Argo.",
 					"twitterCustomImage": null,
 					"metaImage": {
 						"file": {
@@ -52,10 +51,10 @@
 					"author": []
 				},
 				"sys": {
-					"createdAt": "2022-06-17T15:42:02.719Z",
-					"updatedAt": "2026-04-04T03:24:35.411Z"
+					"createdAt": "2018-10-21T07:55:10.587Z",
+					"updatedAt": "2026-03-28T02:47:17.411Z"
 				},
-				"contentfulId": "5HoEBTLUgvFuGEmXFfO9GV",
+				"contentfulId": "3dZi7ipIacUoymKoKAW4Yc",
 				"contentTypeId": "page",
 				"promotionalBanner": null,
 				"psaBanner": null,
@@ -65,44 +64,50 @@
 				"template": null,
 				"relatedBlades": [
 					{
-						"contentfulId": "5EPJ83ptqmjuvrfxo1n236",
+						"contentfulId": "48k0kgRwP6G8aWogY4AsAQ",
 						"contentTypeId": "bladeHeroAnimation",
-						"title": "Cloudflare Email Routing",
+						"title": "Argo Smart Routing",
 						"titleSize": null,
-						"subtitle": "A free and private way to create and manage email addresses",
+						"subtitle": "Avoid network congestion and accelerate web apps",
 						"subtitleSize": null,
-						"copy": "Create custom email addresses for your domain and route messages to your preferred inbox — all without ever exposing your primary email address.",
-						"buttonColor": "orange",
-						"buttonColor2": "orange-outline",
+						"copy": "Network congestion on the Internet can lead to slow load times. Argo Smart Routing detects and routes around real-time network congestion for 30% (on average) faster web app performance.",
+						"buttonColor": "blue",
+						"buttonColor2": "blue-outline",
 						"buttonText1": "Get started",
-						"buttonText1LoggedIn": null,
-						"buttonUrl1": "https://dash.cloudflare.com/sign-up/workers",
-						"buttonUrl1LoggedIn": null,
+						"buttonText1LoggedIn": "Get started",
+						"buttonUrl1": "https://dash.cloudflare.com/sign-up",
+						"buttonUrl1LoggedIn": "https://dash.cloudflare.com/?to=/:account/:zone/traffic/",
 						"button1ExtraClass": null,
-						"buttonText2": "Read developer docs",
-						"buttonText2LoggedIn": null,
-						"buttonUrl2": "https://developers.cloudflare.com/email-routing/",
-						"button2ExtraClass": null,
+						"buttonText2": "Get the solution brief",
+						"buttonText2LoggedIn": "Looking for enterprise-grade solutions?",
+						"buttonUrl2": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/5bJqqMwpO5dcJNfRaYOOHA/56c3f77fe09d05d4ef7d576559515442/Argo_Smart_Routing_Solution_Brief.pdf",
+						"button2ExtraClass": "argo-smart-routing-product-contact-sales",
 						"bladeBorder": "none",
 						"htmlId": null,
 						"textColor": "black",
-						"includeVideo": false,
-						"streamVideoId": null,
+						"includeVideo": true,
+						"streamVideoId": "f73d95df0053995ff8244c452093ec46",
 						"streamOptions": [
 							"controls",
-							"captions"
+							"muted",
+							"loop"
 						],
-						"streamCaptions": "en",
+						"streamCaptions": null,
 						"popupStreamId": null,
 						"popupText": null,
-						"button1OpenInNewTab": false,
-						"button2OpenInNewTab": true,
-						"streamThumbnails": null,
+						"button1OpenInNewTab": null,
+						"button2OpenInNewTab": null,
+						"streamThumbnails": "38s",
 						"sectionPadding": null,
 						"streamPosterAssetFile": null,
-						"streamPoster": null,
+						"streamPoster": {
+							"file": {
+								"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/53qCYhQbir5WtIU0VDWESo/954a48bfb17f429acf469e5f14345d83/unnamed-3.png"
+							},
+							"description": "DO NOT REMOVE, THIS IS CLOUDFLARE'S GLOBAL OG META ASSET"
+						},
 						"imageSize": "Medium",
-						"imagePosition": false,
+						"imagePosition": null,
 						"leftLinkUrl": null,
 						"leftLink": null,
 						"leftLinkLoggedIn": null,
@@ -112,39 +117,25 @@
 						"backgroundAssetFile": null,
 						"imageLayout": null,
 						"image": null,
-						"imageAssetFile": {
-							"id": "07661851-a5ae-5023-9f17-eae8219f9f25",
-							"altText": "Cloudflare Email Routing - paper planes representing emails travel left to right",
-							"title": "Cloudflare Email Routing",
-							"activeAsset": "Contentful Asset",
-							"locale": "en-US",
-							"contentfulAsset": {
-								"file": {
-									"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/7lVVVVEB2RUncxomRJHLny/7c497b8d6fee9121d03fac508e850114/BDES-5040_-_Email-Forwarding-Paper-Plane.svg"
-								},
-								"description": null
-							},
-							"brandfolderAsset": null,
-							"brandfolderAssetMobile": null
-						}
+						"imageAssetFile": null
 					},
 					{
-						"contentfulId": "6FVzCWASxnPo5VSwmPArxZ",
+						"contentfulId": "4hdpqT6aKO5LjYeY7zCORz",
 						"contentTypeId": "bladeMultipleColumnsLayout",
 						"title": null,
-						"eyebrowHeading": "BENEFITS OF CLOUDFLARE EMAIL ROUTING",
+						"eyebrowHeading": "BENEFITS OF ARGO SMART ROUTING",
 						"description": null,
 						"textLayout": "left",
 						"columnsLayout": "Four Columns",
 						"columnContent": [
 							{
 								"contentTypeId": "feature",
-								"contentfulId": "51ULLTwCaJ2hA6Uk8pcogz",
-								"title": "Private by design & anti-spam",
+								"contentfulId": "5jXjPMPuKE7CIuOonVU6eu",
+								"title": "Faster loading times",
 								"makeTitleLink": false,
 								"titleUrl": null,
 								"titleSize": null,
-								"description": "Email Routing is 100% private; Cloudflare will not store or access email content. We use phishing detection to prevent spam from being forwarded.",
+								"description": "Deliver web traffic over the quickest network paths available for noticeably faster app performance and an improved user experience.",
 								"learnMoreUrl": null,
 								"learnMoreText": null,
 								"displayBorder": false,
@@ -152,14 +143,86 @@
 								"removeCardBorder": false,
 								"icon": null,
 								"iconAssetFile": {
-									"id": "eaeddebf-b730-5e34-b5cd-2dcca8d4cba2",
-									"altText": "security-shield-protection-230x301-664b7d5",
-									"title": "security-shield-protection-230x301-664b7d5",
+									"id": "b1b7275d-3503-5173-a651-9cfd70157c3c",
+									"altText": "Performance acceleration rocket ",
+									"title": "Performance acceleration rocket",
 									"activeAsset": "Contentful Asset",
 									"locale": "en-US",
 									"contentfulAsset": {
 										"file": {
-											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/LaRddEaKEWlYXXx8Y2UST/4a87c8fe7df63554665ed7b673ba5846/security-shield-protection-2.svg"
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/1vvXmr7jmxFdYUgliFcXUh/d27e7eabc9727ba987b15d5e9ddad5e3/performance-acceleration-rocket.svg"
+										},
+										"description": "Performance acceleration rocket orange"
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								},
+								"imageOverlaySuperheader": null,
+								"imageOverlayText": null,
+								"imageAssetFile": null,
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
+							},
+							{
+								"contentTypeId": "feature",
+								"contentfulId": "2CnCqfGF9rwKuQvS0K9zGl",
+								"title": "Increased reliability",
+								"makeTitleLink": false,
+								"titleUrl": null,
+								"titleSize": null,
+								"description": "Route around congestion and use the most reliable paths to increase uptime.",
+								"learnMoreUrl": null,
+								"learnMoreText": null,
+								"displayBorder": false,
+								"openLinkInNewTab": null,
+								"removeCardBorder": false,
+								"icon": null,
+								"iconAssetFile": {
+									"id": "9a9f45e5-8256-5cff-bb15-7336fb732376",
+									"altText": "Performance 1 blue",
+									"title": "Performance 1 blue",
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/3Clytt8pBf5fsuPgtVafD7/42d2f39e656cdeebf1d7fa80c979a4c9/performance-1.svg"
+										},
+										"description": "Rotating arrows icon"
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								},
+								"imageOverlaySuperheader": null,
+								"imageOverlayText": null,
+								"imageAssetFile": null,
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
+							},
+							{
+								"contentTypeId": "feature",
+								"contentfulId": "5QCG6zH5UJjlEBa23ICcUr",
+								"title": "Reduced costs",
+								"makeTitleLink": false,
+								"titleUrl": null,
+								"titleSize": null,
+								"description": "Minimize content requests to the origin server, reducing latency, server load, and bandwidth usage.",
+								"learnMoreUrl": null,
+								"learnMoreText": null,
+								"displayBorder": false,
+								"openLinkInNewTab": null,
+								"removeCardBorder": false,
+								"icon": null,
+								"iconAssetFile": {
+									"id": "ca8dae98-4f47-5466-a459-bdaacb07a225",
+									"altText": "Dollar",
+									"title": "Dollar",
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/7td2uxheozRtbhflYJ4n7b/f957bd073f41d31f0579dafa98f329c4/price__1_.svg"
 										},
 										"description": null
 									},
@@ -175,12 +238,12 @@
 							},
 							{
 								"contentTypeId": "feature",
-								"contentfulId": "348YYqSdwtYTsMzIy7lw3R",
-								"title": "Free and easy to configure",
+								"contentfulId": "62AS17As4hJfJ5GfX1Lklq",
+								"title": "Integrated security",
 								"makeTitleLink": false,
 								"titleUrl": null,
 								"titleSize": null,
-								"description": "Creating custom addresses and forwarding messages to your inbox is free. DNS records are created automatically and protected from accidental changes.",
+								"description": "Encrypt end-to-end traffic across the Cloudflare network, protecting web traffic from attackers.",
 								"learnMoreUrl": null,
 								"learnMoreText": null,
 								"displayBorder": false,
@@ -188,88 +251,16 @@
 								"removeCardBorder": false,
 								"icon": null,
 								"iconAssetFile": {
-									"id": "1b916824-7fb8-5f8f-a315-4faa6461d4d3",
-									"altText": "Optimization gear ",
-									"title": "Optimization gear ",
+									"id": "c6776679-e543-5a80-9232-26ab70198b70",
+									"altText": "Security lock Orange",
+									"title": "Security lock Orange",
 									"activeAsset": "Contentful Asset",
 									"locale": "en-US",
 									"contentfulAsset": {
 										"file": {
-											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/6JreowuAuIySxXXXqycY4r/746dc87c57caa9f58423af84de3fa35a/optimization-gear.svg"
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/4knCjnvTXGI67Tjt2pgWOB/5e9703961ea866cd33e94411f5105c7c/security-lock.svg"
 										},
-										"description": ""
-									},
-									"brandfolderAsset": null,
-									"brandfolderAssetMobile": null
-								},
-								"imageOverlaySuperheader": null,
-								"imageOverlayText": null,
-								"imageAssetFile": null,
-								"streamId": null,
-								"streamThumbnail": null,
-								"streamThumbnailAssetFile": null
-							},
-							{
-								"contentTypeId": "feature",
-								"contentfulId": "3fPyABjXtRU3elzyAcixEg",
-								"title": "Advanced analytics",
-								"makeTitleLink": false,
-								"titleUrl": null,
-								"titleSize": null,
-								"description": "Access insights on the number of emails sent to you, whether they were forwarded or dropped, and delivery success at your destination mailbox.",
-								"learnMoreUrl": null,
-								"learnMoreText": null,
-								"displayBorder": false,
-								"openLinkInNewTab": null,
-								"removeCardBorder": false,
-								"icon": null,
-								"iconAssetFile": {
-									"id": "8ef8fdc5-cba6-5992-8e53-275759d57c5a",
-									"altText": "Analytics data blue",
-									"title": "Analytics data blue",
-									"activeAsset": "Contentful Asset",
-									"locale": "en-US",
-									"contentfulAsset": {
-										"file": {
-											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/2GDXdm5wvNxuUxs30EcKZx/daade3315fd04282a6607e8ce40d3fab/analytics-data.svg"
-										},
-										"description": "Data analytics icon"
-									},
-									"brandfolderAsset": null,
-									"brandfolderAssetMobile": null
-								},
-								"imageOverlaySuperheader": null,
-								"imageOverlayText": null,
-								"imageAssetFile": null,
-								"streamId": null,
-								"streamThumbnail": null,
-								"streamThumbnailAssetFile": null
-							},
-							{
-								"contentTypeId": "feature",
-								"contentfulId": "4FIKPaiPggPP9irOybDxiM",
-								"title": "Process emails programmatically",
-								"makeTitleLink": false,
-								"titleUrl": null,
-								"titleSize": null,
-								"description": "Route to Cloudflare Workers to program custom logic for processing your emails.",
-								"learnMoreUrl": null,
-								"learnMoreText": null,
-								"displayBorder": false,
-								"openLinkInNewTab": null,
-								"removeCardBorder": false,
-								"icon": null,
-								"iconAssetFile": {
-									"id": "7ffa9292-726c-5be7-b2cb-66a931078912",
-									"altText": "Cloudflare Email Routing",
-									"title": "Email Routing Icon",
-									"activeAsset": "Contentful Asset",
-									"locale": "en-US",
-									"contentfulAsset": {
-										"file": {
-											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/4Sx6clrdwhC89NzanpRoQN/ff7d6e3719a6ba46094ccf72c395cfe8/cloudflare-email-forwarding.svg"
-										},
-										"description": ""
+										"description": "Padlock icon"
 									},
 									"brandfolderAsset": null,
 									"brandfolderAssetMobile": null
@@ -282,13 +273,13 @@
 								"streamThumbnailAssetFile": null
 							}
 						],
-						"sectionPadding": null,
+						"sectionPadding": "tile--no-bottom-padding",
 						"htmlId": null
 					},
 					{
-						"contentfulId": "3GXulNkgYzROhaRTPSvHlt",
-						"title": "Route emails efficiently",
-						"copy": "Email Routing acts as an intelligent router at the transport layer, handling and modifying the SMTP envelope to deliver the message at its final destination while preserving the original headers and keeping the body intact in real time.",
+						"contentfulId": "3v5SKSIMiuOseT2bCrN3ck",
+						"title": "Make web apps faster with intelligent, real-time routing",
+						"copy": "The Cloudflare network routes an average of %{HTTPRequests} million HTTP requests per second, providing a unique view of traffic flow on the Internet. \n\nArgo Smart Routing uses this information to detect the fastest network paths, then intelligently routes customer web traffic on those paths.",
 						"toggleText": null,
 						"button": [],
 						"learnMoreUrl": null,
@@ -311,16 +302,16 @@
 						"streamPosterAssetFile": null,
 						"image": null,
 						"imageAssetFile": {
-							"id": "4acec23a-a705-5649-b356-95bfc5a42154",
-							"altText": "Area 1 email security",
-							"title": "Area 1 Product Page - Hero Illustration",
+							"id": "45e9d794-9046-55aa-ba9d-8c25fa485628",
+							"altText": "teams-gateway-speedup-cost-down",
+							"title": "teams-gateway-speedup-cost-down",
 							"activeAsset": "Contentful Asset",
 							"locale": "en-US",
 							"contentfulAsset": {
 								"file": {
-									"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/3S61A4HQkbLvrUcvADOlil/93014657b16f8a9005ba27c2a9171616/BDES-5040_-_Email-Routing-Security-Envelope.svg"
+									"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/5nri6CpBvw0n8DL16J7XOs/3668207a185794ca01b719fcc84301ec/teams-gateway-speedup-cost-down-spot-illustration.svg"
 								},
-								"description": null
+								"description": "Illustration of a rocket ship"
 							},
 							"brandfolderAsset": null,
 							"brandfolderAssetMobile": null
@@ -330,18 +321,18 @@
 						"sectionTitle": "HOW IT WORKS",
 						"htmlId": null,
 						"titleSize": null,
-						"sectionPadding": "tile--no-top-padding",
+						"sectionPadding": null,
 						"backgroundColor": "white",
 						"bladeBorder": "none",
 						"imagePosition": true,
-						"imageSize": "medium",
-						"imageTextAlignment": null,
+						"imageSize": "large",
+						"imageTextAlignment": "center",
 						"togglesTo": []
 					},
 					{
 						"contentTypeId": "bladeEnablement",
-						"contentfulId": "4SAw7vbWpPIY0I0R4BeYo7",
-						"title": "Learn how Cloudflare can preemptively detect and stop phishing attacks with Cloud Email Security",
+						"contentfulId": "6I5jafmCgj0TkDDldMlQY3",
+						"title": "Learn how Cloudflare's connectivity cloud  helps accelerate applications",
 						"titleSize": "medium",
 						"backgroundColor": "image-background",
 						"buttonText": null,
@@ -356,19 +347,138 @@
 							"buttonAssetFile": null,
 							"buttonTextLoggedIn": null,
 							"contentTypeId": "button",
-							"contentfulId": "2tHwRPAHzrWA3kS6L4Ta49",
-							"elementName": "Email Routing - Additional offer - CTA",
+							"contentfulId": "406jYWHEMGzVf7MRjdXMLz",
+							"elementName": "Get the whitepaper",
 							"standardText": null,
-							"text": "See product overview",
-							"url": "http://cfl.re/email-security-product-overview",
+							"text": "Get the whitepaper",
+							"url": "https://www.cloudflare.com/lp/3-challenges-of-securing-and-connecting-application-services/",
 							"loggedInUrl": null,
 							"buttonModal": null,
-							"openInNewTab": true,
+							"openInNewTab": false,
 							"locale": "en-US"
 						},
 						"buttonTwo": null,
-						"sectionPadding": null,
+						"sectionPadding": "tile--no-top-padding",
 						"eyebrow": null
+					},
+					{
+						"contentTypeId": "bladeRichTextColumnGroup",
+						"contentfulId": "6bM3oLbfd2y3Jxalr4woca",
+						"htmlId": null,
+						"mainHeadline": null,
+						"backgroundColor": "white",
+						"bladeBorder": "none",
+						"sectionPadding": "tile--no-bottom-padding",
+						"columnLayout": "One Column Wide",
+						"columns": [
+							{
+								"contentTypeId": "elementRichText",
+								"contentfulId": "vNoQvx99WeD6NltNaopC0",
+								"title": null,
+								"htmlId": null,
+								"elementPosition": "relative",
+								"column": {
+									"nodeType": "document",
+									"content": [
+										{
+											"nodeType": "heading-4",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "What our customers are saying",
+													"marks": [],
+													"content": null
+												}
+											]
+										},
+										{
+											"nodeType": "blockquote",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "paragraph",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": null,
+													"marks": null,
+													"content": [
+														{
+															"nodeType": "text",
+															"data": {
+																"target": null,
+																"uri": null
+															},
+															"value": "\"We're in a constant search for ways to improve our product experience at Discord… Argo allowed us to cut our load times by an average of 33 milliseconds with no development effort by our team.\"",
+															"marks": [],
+															"content": null
+														}
+													]
+												}
+											]
+										},
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "",
+													"marks": [],
+													"content": null
+												}
+											]
+										},
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "CTO Discord — Stanislav Vishnevskiy",
+													"marks": [],
+													"content": null
+												}
+											]
+										}
+									]
+								}
+							}
+						]
 					},
 					{
 						"contentTypeId": "bladeFeaturedCompanyLogos",
@@ -560,22 +670,22 @@
 						"sectionPadding": null
 					},
 					{
-						"contentfulId": "4ckblVorEomG47issnbxok",
+						"contentfulId": "5bNZmAM42aiidWZXwAElOn",
 						"contentTypeId": "bladeMultipleColumnsLayout",
-						"title": "Email Routing is the most straightforward way to create any number of email addresses that are redirected to the mailbox that you, your family, or your team are already using.",
-						"eyebrowHeading": "Top Email Routing use cases",
+						"title": null,
+						"eyebrowHeading": "Top Argo Smart Routing use cases",
 						"description": null,
 						"textLayout": "left",
 						"columnsLayout": "Three Columns",
 						"columnContent": [
 							{
 								"contentTypeId": "feature",
-								"contentfulId": "1urht89gxlz3zR2VRycNK9",
-								"title": "Individual users",
+								"contentfulId": "2NixZ1Amu5JDtFjyCT2Bqn",
+								"title": "Top Argo Smart Routing use cases",
 								"makeTitleLink": false,
 								"titleUrl": null,
 								"titleSize": null,
-								"description": "Create addresses for different needs, so you are not sharing your private email with newsletters and businesses.",
+								"description": "Argo Smart Routing helps you speed up your web apps, minimize latency for all content, and reduce cache-miss rates",
 								"learnMoreUrl": null,
 								"learnMoreText": null,
 								"displayBorder": false,
@@ -583,16 +693,16 @@
 								"removeCardBorder": false,
 								"icon": null,
 								"iconAssetFile": {
-									"id": "fc232bdb-ef74-5e8f-a034-ee8c79b6a16c",
-									"altText": "Website user or visitor",
-									"title": "icon-profiling-visitor",
+									"id": "30718739-82ff-5bc7-9c5d-e161248e8da9",
+									"altText": "Performance routing ",
+									"title": "Performance routing ",
 									"activeAsset": "Contentful Asset",
 									"locale": "en-US",
 									"contentfulAsset": {
 										"file": {
-											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/6Uxta7KXVjebztzS6l8nWx/7ba80617b035fdafa51c06e20228239d/user.svg"
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/59OgNgdovYpxBuSbeO2TiK/f59c3c3b38689a5bc282dd9880ff977c/performance-routing.svg"
 										},
-										"description": "icon profiling visitor orange"
+										"description": "Smart routing icon"
 									},
 									"brandfolderAsset": null,
 									"brandfolderAssetMobile": null
@@ -606,12 +716,12 @@
 							},
 							{
 								"contentTypeId": "feature",
-								"contentfulId": "60QdMWx3uGECtlfvP9mQ8n",
-								"title": "Families",
+								"contentfulId": "46VGjvrHAYMCB4wrFRZBqN",
+								"title": "Improve web app performance",
 								"makeTitleLink": false,
 								"titleUrl": null,
 								"titleSize": null,
-								"description": "Designate addresses for each family member and for specific purposes, such as an address for household bills.",
+								"description": "Smart routing decisions informed by real-time network conditions ensure content reaches end users as quickly as possible",
 								"learnMoreUrl": null,
 								"learnMoreText": null,
 								"displayBorder": false,
@@ -619,16 +729,16 @@
 								"removeCardBorder": false,
 								"icon": null,
 								"iconAssetFile": {
-									"id": "b3ff4344-a324-59a0-b8e4-414adc95e7d3",
-									"altText": "User multi ",
-									"title": "User multi ",
+									"id": "b1b7275d-3503-5173-a651-9cfd70157c3c",
+									"altText": "Performance acceleration rocket ",
+									"title": "Performance acceleration rocket",
 									"activeAsset": "Contentful Asset",
 									"locale": "en-US",
 									"contentfulAsset": {
 										"file": {
-											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/6oO1wqLlaSM1U8pwMbT3jY/e894b1327f9ec28e674794ac78b233e5/user-multi.svg"
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/1vvXmr7jmxFdYUgliFcXUh/d27e7eabc9727ba987b15d5e9ddad5e3/performance-acceleration-rocket.svg"
 										},
-										"description": "User Multi - Orange"
+										"description": "Performance acceleration rocket orange"
 									},
 									"brandfolderAsset": null,
 									"brandfolderAssetMobile": null
@@ -642,12 +752,12 @@
 							},
 							{
 								"contentTypeId": "feature",
-								"contentfulId": "5ql7rE2SV3Vnjxodsdoq4r",
-								"title": "Businesses",
+								"contentfulId": "4itocEgXv7xlIbKJOuKFbN",
+								"title": "Reduce origin server load",
 								"makeTitleLink": false,
 								"titleUrl": null,
 								"titleSize": null,
-								"description": "Route emails for different types of inquiries, such as sales and support, and easily control who receives these messages.",
+								"description": "Argo offers tiered caching in order to increase cache hit rates, lowering infrastructure costs\n",
 								"learnMoreUrl": null,
 								"learnMoreText": null,
 								"displayBorder": false,
@@ -655,16 +765,16 @@
 								"removeCardBorder": false,
 								"icon": null,
 								"iconAssetFile": {
-									"id": "7ffa9292-726c-5be7-b2cb-66a931078912",
-									"altText": "Cloudflare Email Routing",
-									"title": "Email Routing Icon",
+									"id": "5a959b28-b768-5052-bf8d-c87c2f5dcfb3",
+									"altText": "Reliability load balancer blue",
+									"title": "Reliability load balancer blue",
 									"activeAsset": "Contentful Asset",
 									"locale": "en-US",
 									"contentfulAsset": {
 										"file": {
-											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/4Sx6clrdwhC89NzanpRoQN/ff7d6e3719a6ba46094ccf72c395cfe8/cloudflare-email-forwarding.svg"
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/2PEDzEKI6wwUPTe3RiUqC4/f7af6ded9a2e49325d277e1fa1e442e4/reliability-load-balancer.svg"
 										},
-										"description": ""
+										"description": "Load balancer icon"
 									},
 									"brandfolderAsset": null,
 									"brandfolderAssetMobile": null
@@ -682,18 +792,18 @@
 					},
 					{
 						"contentTypeId": "bladeHtml",
-						"contentfulId": "6menu8biDmzQwDBt8R86uy",
-						"htmlContent": "<div style=\"text-align: center; cursor:pointer; margin-bottom:64px; margin-top: -60px;\">\n    <a href=\"/zero-trust/solutions/#secure-work-anywhere-solutions\" target=\"_blank\" class=\"inline-link-style\">Explore more use cases<svg width=\"6\" height=\"10\"\n            viewBox=\"0 0 6 10\" fill=\"currentColor\" aria-label=\"chevron\" xmlns=\"https://www.cloudflare.com/zero-trust/solutions/\"\n            class=\"dib v-mid ml1\">\n            <path\n                d=\"M1.00003 -4.37127e-08L-3.93401e-07 1.00003L4 5L0.000271373 9.00025L1.00003 10L6.00003 5L1.00003 -4.37127e-08Z\">\n            </path>\n        </svg>  </a>\n</div>",
+						"contentfulId": "4e9gZUs18AbJlLPrAzccbv",
+						"htmlContent": "<div style=\"text-align: center; cursor:pointer; margin-bottom:64px; margin-top: -60px;\">\n    <a href=\"/application-services/solutions/#protect-websites-applications-solutions\" target=\"_blank\" class=\"inline-link-style\">Explore more use cases<svg width=\"4\" height=\"10\"\n            viewBox=\"0 0 6 10\" fill=\"currentColor\" aria-label=\"chevron\" xmlns=\"https://www.cloudflare.com/zero-trust/solutions/\"\n            class=\"dib v-mid ml1\">\n            <path\n                d=\"M1.00003 -4.37127e-08L-3.93401e-07 1.00003L4 5L0.000271373 9.00025L1.00003 10L6.00003 5L1.00003 -4.37127e-08Z\">\n            </path>\n        </svg>  </a>\n</div>",
 						"htmlId": null
 					},
 					{
-						"contentfulId": "24CaZaBYO2HUkcKM6fCha2",
+						"contentfulId": "4U6exMYro96kSje9zN9sjQ",
 						"contentTypeId": "bladeLeadGeneration",
-						"title": "Helping individuals and businesses simplify their inboxes",
-						"description": "Helping individuals and businesses simplify their inboxes",
+						"title": null,
+						"description": "See how global companies are using Argo to accelerate their applications",
 						"variant": "inline",
 						"htmlId": null,
-						"sectionPadding": "tile--no-top-bottom-padding",
+						"sectionPadding": "tile--no-top-padding",
 						"backgroundImage": {
 							"id": "5fb646a4-2af5-50d0-815c-108317d4b5b7",
 							"altText": "Cloudflare Orange Background",
@@ -713,11 +823,11 @@
 							"buttonAssetFile": null,
 							"buttonTextLoggedIn": null,
 							"contentTypeId": "button",
-							"contentfulId": "5yDFpsgTzlogShZ7FTlWKN",
-							"elementName": "Email Routing - Case studies - CTA",
+							"contentfulId": "6iCDUX8WxFw0p4ENXI510p",
+							"elementName": "See case studies",
 							"standardText": null,
 							"text": "See case studies",
-							"url": "https://www.cloudflare.com/case-studies/",
+							"url": "/case-studies/?product=Bot+Management",
 							"loggedInUrl": null,
 							"buttonModal": null,
 							"openInNewTab": false,
@@ -726,134 +836,150 @@
 						"secondaryCtaButton": null
 					},
 					{
-						"contentfulId": "3BZ1etBMYJVsbZMBTqtDnB",
-						"backgroundColor": "white",
-						"contentTypeId": "bladeFourFeatures",
+						"contentTypeId": "bladeCardCarousel",
+						"contentfulId": "3FmrX0pakbncBh5JWA8wrc",
+						"title": "Argo Smart Routing Resources",
 						"htmlId": null,
-						"copy": null,
-						"title": "Resources",
-						"subtitle": null,
-						"bladeStyle": "Feature Blocks - 3 columns",
-						"bladeBorder": "none",
-						"sectionPadding": null,
-						"carouselSlidesToShow": null,
-						"carouselSlidesToScroll": null,
-						"locale": "en-US",
-						"features": [
+						"backgroundImage": null,
+						"cards": [
 							{
-								"contentTypeId": "feature",
-								"contentfulId": "5JoxXyfQw3qjhiEhQWDUl1",
-								"title": "Introducing Cloudflare Email Routing",
-								"makeTitleLink": false,
-								"titleUrl": null,
-								"titleSize": null,
-								"description": "Find out why we created this feature and how it works.",
-								"learnMoreUrl": "https://blog.cloudflare.com/introducing-email-routing/",
-								"learnMoreText": "Read blog post",
-								"displayBorder": false,
-								"openLinkInNewTab": true,
-								"removeCardBorder": false,
-								"icon": null,
-								"iconAssetFile": null,
-								"imageOverlaySuperheader": null,
-								"imageOverlayText": null,
-								"imageAssetFile": {
-									"id": "bb0c6be9-0531-5573-923c-f00ca093e47e",
-									"altText": null,
-									"title": null,
+								"contentTypeId": "elementResourceCard",
+								"contentfulId": "K9f13TI31kBMvJYWKM0mK",
+								"heading": "Whitepaper",
+								"description": "How Cloudflare optimizes web content for faster page loads",
+								"category": "None",
+								"link": {
+									"contentTypeId": "elementLink",
+									"contentfulId": "3aZn4ZysJXbno5mmlKyBMG",
+									"elementName": "How Cloudflare optimizes web content for faster page loads - link",
+									"standardText": null,
+									"text": "Read the whitepaper",
+									"url": "/lp/how-cloudflare-optimizes-web-content/",
+									"elementModal": null,
+									"openInNewTab": false,
+									"locale": "en-US"
+								},
+								"image": {
+									"id": "aef302d2-a7e8-57b1-b2c4-610e768f5249",
+									"altText": "Explore more whitepapers in Cloudflare's Resource Hub - thumbnail",
+									"title": "Explore more whitepapers in Cloudflare's Resource Hub - thumbnail",
 									"activeAsset": "Contentful Asset",
 									"locale": "en-US",
 									"contentfulAsset": {
 										"file": {
-											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/1YGMIqqtWyen0H9EPX70CL/47fb34c9a8aae1587b6eda9384e36139/element-feature-topbar-image-2.png"
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/2ZiPjCDWMWnibCFs5nxHBa/75ef0ba1b4484c2da8ab4d3f40437dff/Whitpapper-generic-106x186-300dpi.png"
 										},
-										"description": "Resources card - Thin top orange line  - image"
+										"description": null
 									},
 									"brandfolderAsset": null,
 									"brandfolderAssetMobile": null
-								},
-								"streamId": null,
-								"streamThumbnail": null,
-								"streamThumbnailAssetFile": null
+								}
 							},
 							{
-								"contentTypeId": "feature",
-								"contentfulId": "4z8E9h08srueGPwVsddK9V",
-								"title": "Migrating to Cloudflare Email Routing",
-								"makeTitleLink": false,
-								"titleUrl": null,
-								"titleSize": null,
-								"description": "Read step-by-step instructions for getting started with handling email for custom domains.",
-								"learnMoreUrl": "https://blog.cloudflare.com/migrating-to-cloudflare-email-routing/",
-								"learnMoreText": "Read blog post",
-								"displayBorder": false,
-								"openLinkInNewTab": true,
-								"removeCardBorder": false,
-								"icon": null,
-								"iconAssetFile": null,
-								"imageOverlaySuperheader": null,
-								"imageOverlayText": null,
-								"imageAssetFile": {
-									"id": "bb0c6be9-0531-5573-923c-f00ca093e47e",
+								"contentTypeId": "elementResourceCard",
+								"contentfulId": "CQD4BqJCWjpe6UXD0g3Qc",
+								"heading": "Demo",
+								"description": "Learn more about Argo Smart Routing and see how Cloudflare accelerates web performance",
+								"category": "None",
+								"link": {
+									"contentTypeId": "elementLink",
+									"contentfulId": "4ISfvaaumYMZEigTb5oSgt",
+									"elementName": "Learn more about Argo Smart Routing - link",
+									"standardText": null,
+									"text": "Watch demo",
+									"url": "https://cloudflare.ondemand.goldcast.io/on-demand/85323b11-857b-4c70-bded-63ff792d885e",
+									"elementModal": null,
+									"openInNewTab": true,
+									"locale": "en-US"
+								},
+								"image": {
+									"id": "b6011867-5a8b-5c2f-b567-9ebfb16f9361",
 									"altText": null,
-									"title": null,
+									"title": "Webinar 106x165 - Thumbnail for mosaic card",
 									"activeAsset": "Contentful Asset",
 									"locale": "en-US",
 									"contentfulAsset": {
 										"file": {
-											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/1YGMIqqtWyen0H9EPX70CL/47fb34c9a8aae1587b6eda9384e36139/element-feature-topbar-image-2.png"
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/R68bUicgjCMdgEBXBM1ey/c350338abc119640172d8876202ffbf8/Webinar-106x165-thumbnail-card.svg"
 										},
-										"description": "Resources card - Thin top orange line  - image"
+										"description": "Webinar 106x165 - Thumbnail for mosaic card"
 									},
 									"brandfolderAsset": null,
 									"brandfolderAssetMobile": null
-								},
-								"streamId": null,
-								"streamThumbnail": null,
-								"streamThumbnailAssetFile": null
+								}
 							},
 							{
-								"contentTypeId": "feature",
-								"contentfulId": "5CzyEfG8u3bDd5Fk0SwFBE",
-								"title": "Email Routing open beta",
-								"makeTitleLink": false,
-								"titleUrl": null,
-								"titleSize": null,
-								"description": "Cloudflare Email Routing is available for every zone in every Cloudflare account. Learn how to get started.",
-								"learnMoreUrl": "https://blog.cloudflare.com/email-routing-open-beta/",
-								"learnMoreText": "Read blog post",
-								"displayBorder": false,
-								"openLinkInNewTab": true,
-								"removeCardBorder": false,
-								"icon": null,
-								"iconAssetFile": null,
-								"imageOverlaySuperheader": null,
-								"imageOverlayText": null,
-								"imageAssetFile": {
-									"id": "bb0c6be9-0531-5573-923c-f00ca093e47e",
+								"contentTypeId": "elementResourceCard",
+								"contentfulId": "2mtfFS3O8BKOSzufzbvOND",
+								"heading": null,
+								"description": "Getting faster: Know your website, and know what's slowing it down",
+								"category": "None",
+								"link": {
+									"contentTypeId": "elementLink",
+									"contentfulId": "5uxTMgLT4hVTqRRsgprqi5",
+									"elementName": "Getting faster: Know your website, and know what's slowing it down - link",
+									"standardText": null,
+									"text": " Read the whitepaper",
+									"url": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/4EUB9gyhVFUC2kUNt2U19Z/791b115cf433536fe36ddd0dcc30ca39/Getting_Faster-_Know_Your_Website__and_Know_What___s_Slowing_It_Down_.pdf",
+									"elementModal": null,
+									"openInNewTab": false,
+									"locale": "en-US"
+								},
+								"image": {
+									"id": "13298e8a-267a-575b-b89a-b871f95f1d9a",
+									"altText": "Whitepaper Thumbnail",
+									"title": "Whitepaper Thumbnail",
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/2ZiPjCDWMWnibCFs5nxHBa/75ef0ba1b4484c2da8ab4d3f40437dff/Whitpapper-generic-106x186-300dpi.png"
+										},
+										"description": null
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								}
+							},
+							{
+								"contentTypeId": "elementResourceCard",
+								"contentfulId": "uIXu0KoeAPdPgH9xGRDqG",
+								"heading": "Report",
+								"description": "Cloudflare named a 'Leader' in 2024 IDC MarketScape for Worldwide Edge Delivery Services",
+								"category": "None",
+								"link": {
+									"contentTypeId": "elementLink",
+									"contentfulId": "7kulc51ZCkko1SuHVWK8EL",
+									"elementName": "Cloudflare named a 'Leader' in 2024 IDC MarketScape for Worldwide Edge Delivery Services - link",
+									"standardText": null,
+									"text": "Analyst report",
+									"url": "/lp/idc-marketscape-for-worldwide-commercial-edge-delivery-services-2024",
+									"elementModal": null,
+									"openInNewTab": false,
+									"locale": "en-US"
+								},
+								"image": {
+									"id": "197eb4d0-2c05-52bd-bc59-8b59ab0fe201",
 									"altText": null,
 									"title": null,
 									"activeAsset": "Contentful Asset",
 									"locale": "en-US",
 									"contentfulAsset": {
 										"file": {
-											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/1YGMIqqtWyen0H9EPX70CL/47fb34c9a8aae1587b6eda9384e36139/element-feature-topbar-image-2.png"
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/2dlg4oApldWlYGAWdzwN7C/3b0f1908d3e4ca00a193c2fd679981a3/Analyst_Report_B.png"
 										},
-										"description": "Resources card - Thin top orange line  - image"
+										"description": ""
 									},
 									"brandfolderAsset": null,
 									"brandfolderAssetMobile": null
-								},
-								"streamId": null,
-								"streamThumbnail": null,
-								"streamThumbnailAssetFile": null
+								}
 							}
 						]
 					},
 					{
 						"contentTypeId": "bladeEnablement",
-						"contentfulId": "3sOyOmwcWQ4guHaGmCdTYc",
-						"title": "Get Cloudflare Email Routing for your enterprise",
+						"contentfulId": "1SgavBEaW4goFbe9M6Pogm",
+						"title": "Get Argo Smart Routing for your enterprise",
 						"titleSize": "medium",
 						"backgroundColor": "image-background",
 						"buttonText": null,
@@ -868,22 +994,22 @@
 							"buttonAssetFile": null,
 							"buttonTextLoggedIn": null,
 							"contentTypeId": "button",
-							"contentfulId": "1fLiWAHkQqZOwpjs7aU3Nw",
-							"elementName": "Talk to an expert (modal form)",
+							"contentfulId": "IK4voRN7P7YlczyZYywKY",
+							"elementName": "Talk to an expert - connectivity cloud",
 							"standardText": null,
 							"text": "Talk to an expert",
-							"url": null,
+							"url": "https://www.cloudflare.com/plans/enterprise/contact/",
 							"loggedInUrl": null,
 							"buttonModal": {
 								"contentTypeId": "formModal",
-								"contentfulId": "4X33NKLPG0gT4v6Vb1X0ca",
-								"modalName": "ZT Access Talk to an expert",
-								"modalId": "zt-access-talk-to-an-expert",
+								"contentfulId": "5WCqmk1IzM81raoSxfOKSV",
+								"modalName": "Enterprise General Sales Inquiry",
+								"modalId": "enterprise-general-sales-inquiry",
 								"modalType": "single-form",
 								"marketoForm": {
 									"contentTypeId": "marketoEmbeddedForm",
-									"contentfulId": "5daBy41JohWg0zdFI6JHW",
-									"bladeName": "ZT Access - Talk to an expert - Marketo",
+									"contentfulId": "5TLvSjYmTnIb1FOLQW6f9v",
+									"bladeName": "Enterprise General Sales Inquiry",
 									"backgroundColor": "white",
 									"marketoFormId": 1341,
 									"marketoFormLeadSource": "Inbound - Web Form",
@@ -924,8 +1050,50 @@
 					}
 				],
 				"noindex": false,
-				"formModal": [],
-				"keepHashUrlSyncedWithScrollPosition": false
+				"formModal": [
+					{
+						"contentTypeId": "formModal",
+						"contentfulId": "3npDNg2Jxa12gSNXVWGUcz",
+						"modalName": "Argo Smart Routing - Product Page: Form Modal ",
+						"modalId": "argo-smart-routing-product-contact-sales",
+						"modalType": "single-form",
+						"marketoForm": {
+							"contentTypeId": "marketoEmbeddedForm",
+							"contentfulId": "2JgJH3pCxXounwBHmtKBLc",
+							"bladeName": "Argo Smart Routing - Product Page: Marketo Form (1341)",
+							"backgroundColor": "white",
+							"marketoFormId": 1341,
+							"marketoFormLeadSource": "Inbound - Web Form",
+							"marketoFormLeadSourceDetail": "Contact Us Cloudflare Argo Smart Routing",
+							"marketoFormAssetName": null,
+							"marketoFormHeaderText": null,
+							"marketoFormDefaultComment": null,
+							"showCommentBox": true,
+							"marketoFormThankYouText": null,
+							"marketoFormCustomSuccessMessage": null,
+							"marketoFormPdfDownload": null,
+							"marketoFormPdfDownloadI18n": [],
+							"marketoFormAssetDownloadButtonText": null,
+							"marketoFormSuccessRedirectUrl": null,
+							"sendAdRoll": null,
+							"meta_adRollCustomSegment": null,
+							"enableSandbox": null,
+							"marketoFormSubmitButtonText": null,
+							"marketoFormSubmitButtonColor": null,
+							"enableEmailVerification": null,
+							"disableEnterpriseEmailNotification": null,
+							"enableRingout": null
+						},
+						"title": "Contact Sales",
+						"regularCopy": "Argo Smart Routing",
+						"splitFormDefaultTab": null,
+						"selfServeTabText": null,
+						"selfServeCopy": null,
+						"enterpriseTabText": null,
+						"enterpriseCopy": null
+					}
+				],
+				"keepHashUrlSyncedWithScrollPosition": null
 			},
 			"site": {
 				"siteMetadata": {
@@ -936,8 +1104,8 @@
 		"pageContext": {
 			"currentLocale": "en-US",
 			"locale": "en-US",
-			"pathname": "/developer-platform/products/email-routing/",
-			"contentfulId": "5HoEBTLUgvFuGEmXFfO9GV",
+			"pathname": "/application-services/products/argo-smart-routing/",
+			"contentfulId": "3dZi7ipIacUoymKoKAW4Yc",
 			"allowedHrefLangs": [
 				"en-US",
 				"zh-CN",
@@ -951,6 +1119,7 @@
 				"es-ES",
 				"es-LA",
 				"ru-RU",
+				"tr-TR",
 				"zh-Hans-CN",
 				"pl-PL"
 			],
