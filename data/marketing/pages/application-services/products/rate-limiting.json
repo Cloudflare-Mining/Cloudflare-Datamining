@@ -1,10 +1,10 @@
 {
 	"componentChunkName": "component---src-components-page-page-template-tsx",
-	"path": "/application-services/products/api-shield/",
+	"path": "/application-services/products/rate-limiting/",
 	"result": {
 		"data": {
 			"page": {
-				"pageName": "API Gateway (Shield) (New URL)",
+				"pageName": "Cloudflare Rate Limiting - Product Page",
 				"localeList": {
 					"enUS": "English for Locale",
 					"zhCN": "Translated for Locale",
@@ -23,23 +23,23 @@
 					"enGB": "English for Locale",
 					"nlNL": "English for Locale",
 					"idID": "English for Locale",
-					"thTH": "English for Locale",
+					"thTH": "Translated for Locale",
 					"ruRU": "Translated for Locale",
 					"svSE": "English for Locale",
-					"viVN": "English for Locale",
+					"viVN": "Translated for Locale",
 					"trTR": "Translated for Locale",
 					"zhHansCN": "Translated for Locale",
 					"plPL": "Translated for Locale",
 					"arAR": "No Page for Locale"
 				},
-				"relativePath": "application-services/products/api-shield/",
+				"relativePath": "application-services/products/rate-limiting/",
 				"topNavOptions": "default",
 				"topNavButtonText": null,
 				"topNavButtonUrl": null,
 				"footerOptions": "default",
 				"metaTags": {
-					"metaTitle": "Cloudflare API Shield | API Security & Monitoring",
-					"metaDescription": "Cloudflare API Shield secures and monitors APIs by automatically discovering, validating, and protecting API endpoints. Learn more about API Shield.",
+					"metaTitle": "Advanced Rate Limiting & Brute Force Protection",
+					"metaDescription": "Cloudflare offers advanced rate limiting to protect against brute force attacks, DDoS attacks, and API abuse. Learn more about advanced rate limiting.",
 					"twitterCustomImage": null,
 					"metaImage": {
 						"file": {
@@ -51,10 +51,10 @@
 					"author": []
 				},
 				"sys": {
-					"createdAt": "2022-06-03T17:36:56.056Z",
-					"updatedAt": "2025-10-08T07:49:02.629Z"
+					"createdAt": "2018-12-12T21:12:29.329Z",
+					"updatedAt": "2026-04-01T17:08:35.450Z"
 				},
-				"contentfulId": "1eFnOez80UnYQvIDLH0SjW",
+				"contentfulId": "5F4lTypOvu2UyaIEckg4yy",
 				"contentTypeId": "page",
 				"promotionalBanner": null,
 				"psaBanner": null,
@@ -64,24 +64,24 @@
 				"template": null,
 				"relatedBlades": [
 					{
-						"contentfulId": "3JVoVDNl1Y6DR58jhJQxjn",
+						"contentfulId": "3wr8fNfIhW4ui6Ue4As0mo",
 						"contentTypeId": "bladeHeroAnimation",
-						"title": "Cloudflare API Shield",
+						"title": "Advanced Rate Limiting",
 						"titleSize": null,
-						"subtitle": "Global, integrated API protection and monitoring",
+						"subtitle": "Defend your applications and APIs against abuse by throttling traffic that exceeds defined limits",
 						"subtitleSize": null,
-						"copy": "Powered by %{DataCenterCount} locations on our global network, API Shield automatically discovers, validates, and protects your API endpoints.",
-						"buttonColor": "orange",
-						"buttonColor2": "orange-outline",
-						"buttonText1": "Talk to an expert",
-						"buttonText1LoggedIn": null,
-						"buttonUrl1": "#",
+						"copy": "Rate Limiting protects against denial-of-service attacks, brute force login attempts, traffic surges, and other types of abuse targeting APIs and applications.",
+						"buttonColor": null,
+						"buttonColor2": null,
+						"buttonText1": "Get started",
+						"buttonText1LoggedIn": "Get started",
+						"buttonUrl1": "https://dash.cloudflare.com/sign-up",
 						"buttonUrl1LoggedIn": null,
-						"button1ExtraClass": "product-gateway-modal",
-						"buttonText2": "Watch demo",
+						"button1ExtraClass": null,
+						"buttonText2": "Talk to an expert",
 						"buttonText2LoggedIn": null,
-						"buttonUrl2": "https://cloudflare.ondemand.goldcast.io/on-demand/f0ec9d20-79bc-4094-981c-930d3086dd40",
-						"button2ExtraClass": null,
+						"buttonUrl2": "#",
+						"button2ExtraClass": "rate-limiting-modal",
 						"bladeBorder": "none",
 						"htmlId": null,
 						"textColor": "black",
@@ -91,56 +91,56 @@
 						"streamCaptions": null,
 						"popupStreamId": null,
 						"popupText": null,
-						"button1OpenInNewTab": null,
-						"button2OpenInNewTab": true,
+						"button1OpenInNewTab": true,
+						"button2OpenInNewTab": false,
 						"streamThumbnails": null,
 						"sectionPadding": null,
 						"streamPosterAssetFile": null,
 						"streamPoster": null,
 						"imageSize": "Large",
-						"imagePosition": false,
+						"imagePosition": null,
 						"leftLinkUrl": null,
 						"leftLink": null,
 						"leftLinkLoggedIn": null,
-						"leftLinkOptions": "hide",
+						"leftLinkOptions": "show",
 						"backgroundColor": "white",
 						"textlayoutMode": null,
 						"backgroundAssetFile": null,
 						"imageLayout": null,
 						"image": null,
 						"imageAssetFile": {
-							"id": "5f328dd4-dcb5-5cd0-bca3-93e0a4d2a4b8",
-							"altText": "How it works - API Shield",
-							"title": null,
+							"id": "52c29133-7355-575d-a546-b2150d8f4231",
+							"altText": "Dns unmetered ddos spot illustration",
+							"title": "Dns unmetered ddos spot illustration",
 							"activeAsset": "Contentful Asset",
 							"locale": "en-US",
 							"contentfulAsset": {
 								"file": {
-									"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/3NS72obX98poHLNcBMncrL/e785972b562ec533611c43568e516a3c/BDES-4896_-_security-api-web-apps-spot-illustration.png"
+									"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/40DjiMHjomH0CcKacUmzGM/ddb2fd20fcee9b688049ad6c0d2ba760/dns-unmetered-ddos-spot-illustration-1.svg"
 								},
-								"description": "How it works - API gateway"
+								"description": ""
 							},
 							"brandfolderAsset": null,
 							"brandfolderAssetMobile": null
 						}
 					},
 					{
-						"contentfulId": "4Opq5PGKCgM9uGyGrP3iwf",
+						"contentfulId": "2PJZmKmCehEiGHElyWyTq",
 						"contentTypeId": "bladeMultipleColumnsLayout",
 						"title": null,
-						"eyebrowHeading": "BENEFITS OF API SHIELD",
+						"eyebrowHeading": "BENEFITS OF RATE LIMITING",
 						"description": null,
 						"textLayout": "left",
-						"columnsLayout": "Three Columns",
+						"columnsLayout": "Four Columns",
 						"columnContent": [
 							{
 								"contentTypeId": "feature",
-								"contentfulId": "7u4OewgfwK1U6oW4Iq9OUJ",
-								"title": "Automatically discover API endpoints",
+								"contentfulId": "4BcROUoLhop97AIMiNsp42",
+								"title": "Mitigate DDoS attacks",
 								"makeTitleLink": false,
 								"titleUrl": null,
 								"titleSize": null,
-								"description": "Continuously discover your public API endpoints and their schemas with machine learning models and heuristics.",
+								"description": "Stop high-precision layer 7 attacks with granular configuration options.",
 								"learnMoreUrl": null,
 								"learnMoreText": null,
 								"displayBorder": false,
@@ -148,16 +148,16 @@
 								"removeCardBorder": false,
 								"icon": null,
 								"iconAssetFile": {
-									"id": "4b8d0fd4-e74c-5191-a1ff-2887eb26d2fa",
-									"altText": "Performance acceleration bolt orange",
-									"title": "Performance acceleration bolt orange",
+									"id": "326d66b9-319c-522a-9a89-d79f3d382742",
+									"altText": "Security shield ddos protection blue",
+									"title": "Security shield ddos protection blue",
 									"activeAsset": "Contentful Asset",
 									"locale": "en-US",
 									"contentfulAsset": {
 										"file": {
-											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/5sWqRe2bVBkaYdFk0OapeM/7104c2a5381e49f73144e8a6e1095b53/performance-acceleration-bolt.svg"
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/2oIHOELz7Ir7RtBLpEfWEs/d2ddafe107a6a330ab761b16824a1a03/security-shield-protection-1.svg"
 										},
-										"description": "Lightning bolt icon"
+										"description": "Shield icon"
 									},
 									"brandfolderAsset": null,
 									"brandfolderAssetMobile": null
@@ -171,12 +171,12 @@
 							},
 							{
 								"contentTypeId": "feature",
-								"contentfulId": "1FH41GUg8QQJIs3ZjvK2jW",
-								"title": "Block OWASP Top 10 API Security risks",
+								"contentfulId": "4MAaq29czcYhCOiJiRGGQK",
+								"title": "Ensure API availability",
 								"makeTitleLink": false,
 								"titleUrl": null,
 								"titleSize": null,
-								"description": "Stop common API attacks, including zero-day exploits, authentication abuse, data loss, DDoS, and other business logic attacks.",
+								"description": "Identify abusive traffic with high accuracy by rate limiting traffic based on any parameter of a request.",
 								"learnMoreUrl": null,
 								"learnMoreText": null,
 								"displayBorder": false,
@@ -184,16 +184,16 @@
 								"removeCardBorder": false,
 								"icon": null,
 								"iconAssetFile": {
-									"id": "7eeb6aea-18f5-5736-9b17-69295f2df58c",
-									"altText": "Security shield protection orange",
-									"title": "Security shield protection orange",
-									"activeAsset": "Contentful Asset",
+									"id": "6574d2f0-c1a6-5297-a844-7b61f0da4ec9",
+									"altText": "Cloudflare api blue",
+									"title": "Cloudflare api blue",
+									"activeAsset": "Brandfolder Asset",
 									"locale": "en-US",
 									"contentfulAsset": {
 										"file": {
-											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/74GDwwyKnKfYYz1QQEQh1P/c7232082d74a2cb16d2197596662f593/security-shield-protection-2.svg"
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/WnnVVQ5dXgoH5KkoX1MOI/a6e0689bfcf0549337c9b4c5bb0ea176/cloudflare-api.svg"
 										},
-										"description": null
+										"description": "cloudflare api"
 									},
 									"brandfolderAsset": null,
 									"brandfolderAssetMobile": null
@@ -207,12 +207,48 @@
 							},
 							{
 								"contentTypeId": "feature",
-								"contentfulId": "2fNVot1Dm7CfsAhU0h3Flf",
-								"title": "Reduce costs by only serving to clean API traffic",
+								"contentfulId": "28gMAVDETFYUN1kXawix2U",
+								"title": "Protect customer data",
 								"makeTitleLink": false,
 								"titleUrl": null,
 								"titleSize": null,
-								"description": "Validate incoming requests against schemas, authentication, and legitimate API business logic — and reduce your API hosting costs.",
+								"description": "Defend against brute force login attacks seeking to take over accounts and steal sensitive information.",
+								"learnMoreUrl": null,
+								"learnMoreText": null,
+								"displayBorder": false,
+								"openLinkInNewTab": null,
+								"removeCardBorder": false,
+								"icon": null,
+								"iconAssetFile": {
+									"id": "94716675-099b-561c-a6b3-d9be2b13ab58",
+									"altText": "Search blue",
+									"title": "Search blue",
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/3BxXRJAvXxK5VsZNLR3VPH/5bf83900a7872240c84b8a9074e5d30c/search.svg"
+										},
+										"description": ""
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								},
+								"imageOverlaySuperheader": null,
+								"imageOverlayText": null,
+								"imageAssetFile": null,
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
+							},
+							{
+								"contentTypeId": "feature",
+								"contentfulId": "2wJYPlSLcenvjzQ0zOv6yK",
+								"title": "Rely on transparent pricing",
+								"makeTitleLink": false,
+								"titleUrl": null,
+								"titleSize": null,
+								"description": "Avoid unpredictable costs associated with traffic spikes and enumeration attacks. We will not charge you for usage when you are under volumetric attack.",
 								"learnMoreUrl": null,
 								"learnMoreText": null,
 								"displayBorder": false,
@@ -246,9 +282,9 @@
 						"htmlId": null
 					},
 					{
-						"contentfulId": "5tYU8D6JPNCk2RykVLGRkr",
-						"title": "Protect and maintain high-performing APIs with integrated security and monitoring",
-						"copy": "Built on our global, Internet-native network, API Shield automatically discovers, secures, and monitors API endpoints across your entire landscape — without slowing business innovation.\n\nIt consolidates application and API inventory, policy management, analytics, and reporting on a single platform, with the same connectivity and security benefits offered by Cloudflare's [web application services](https://www.cloudflare.com/application-services/).\n",
+						"contentfulId": "4mA1M9q2o8YccWWcigmwSg",
+						"title": "Pick the right option for you",
+						"copy": "Choose IP-based Rate Limiting to protect unauthenticated endpoints, limit the number of requests from specific IP addresses, and handle abuse from repeat offenders.\n\nUpgrade to Advanced Rate Limiting if you want to protect your APIs from abuse, mitigate volumetric attacks from authenticated API sessions, and take full control of the parameters you rate limit on.",
 						"toggleText": null,
 						"button": [],
 						"learnMoreUrl": null,
@@ -261,47 +297,45 @@
 						"button2Text": null,
 						"button2Url": null,
 						"button2Color": null,
-						"streamOptions": [
-							"controls"
-						],
-						"streamCaptions": "en",
+						"streamOptions": null,
+						"streamCaptions": null,
 						"streamVideoId": null,
 						"streamThumbnails": null,
 						"streamPoster": null,
 						"streamPosterAssetFile": null,
 						"image": null,
 						"imageAssetFile": {
-							"id": "5f328dd4-dcb5-5cd0-bca3-93e0a4d2a4b8",
-							"altText": "How it works - API Shield",
-							"title": null,
+							"id": "71cf0deb-6608-501f-97dc-6ae68e5f31ab",
+							"altText": "Updated RL Rule",
+							"title": "Updated RL Rule",
 							"activeAsset": "Contentful Asset",
 							"locale": "en-US",
 							"contentfulAsset": {
 								"file": {
-									"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/3NS72obX98poHLNcBMncrL/e785972b562ec533611c43568e516a3c/BDES-4896_-_security-api-web-apps-spot-illustration.png"
+									"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/5RJvfH8ugcj1YSQOyxdNAt/c54f1382677f32d0a087846eb5bde80b/updated_RL_rule.png"
 								},
-								"description": "How it works - API gateway"
+								"description": null
 							},
 							"brandfolderAsset": null,
 							"brandfolderAssetMobile": null
 						},
 						"featureList": [],
 						"contentTypeId": "bladeImageText",
-						"sectionTitle": "How it works",
+						"sectionTitle": "HOW IT WORKS",
 						"htmlId": null,
 						"titleSize": null,
 						"sectionPadding": "tile--no-top-padding",
 						"backgroundColor": "white",
 						"bladeBorder": "none",
 						"imagePosition": true,
-						"imageSize": "large",
+						"imageSize": null,
 						"imageTextAlignment": null,
 						"togglesTo": []
 					},
 					{
 						"contentTypeId": "bladeEnablement",
-						"contentfulId": "2hkIZQMqz4eJXLnRbx0ijG",
-						"title": "Learn how your company's API security compares to industry peers",
+						"contentfulId": "36fcgMflUKbQ3Hi5OB0NvV",
+						"title": "Learn more about rate limiting and website security with Cloudflare",
 						"titleSize": "medium",
 						"backgroundColor": "image-background",
 						"buttonText": null,
@@ -316,11 +350,11 @@
 							"buttonAssetFile": null,
 							"buttonTextLoggedIn": null,
 							"contentTypeId": "button",
-							"contentfulId": "fK8FDobQ2KrQDkDpZt9j3",
-							"elementName": "Get the report",
+							"contentfulId": "2Q3wawRvKCCxNNEMnP3oEg",
+							"elementName": "Cloudflare Rate Limiting - Additional offer - CTA",
 							"standardText": null,
-							"text": "Get the report",
-							"url": "https://www.cloudflare.com/lp/api-security-report/",
+							"text": "Watch demo",
+							"url": "https://cloudflare.ondemand.goldcast.io/on-demand/10350ff2-cb6c-430e-9e0b-28c29b5df938",
 							"loggedInUrl": null,
 							"buttonModal": null,
 							"openInNewTab": true,
@@ -331,18 +365,18 @@
 						"eyebrow": null
 					},
 					{
-						"contentfulId": "17Ic9OJUqfyb0X5OLppsrv",
-						"title": "2023 Gartner Market Guide for Cloud Web Application and API Protection",
-						"copy": "Cloudflare recognized as a Representative Vendor in the Gartner Market Guide for WAAP.",
+						"contentfulId": "3ZcSnbCZrPCES5RlYLyeT6",
+						"title": "Gartner® named Cloudflare a Representative Vendor in Web Application and API Protection",
+						"copy": "Cloudflare has been recognized as a Representative Vendor in the Gartner Market Guide for WAAP report. We believe this recognition validates that we protect against emerging threats faster, offer tighter integration of security capabilities, and deliver powerful ease of use and deployment.",
 						"toggleText": null,
 						"button": [],
 						"learnMoreUrl": "https://www.cloudflare.com/lp/gartner-cloud-web-application-api-protection-market-guide/",
-						"learnMoreText": "Read the report",
+						"learnMoreText": "Download WAAP Market Guide",
 						"link": [],
 						"subheadline": null,
-						"button1Text": null,
-						"button1Url": null,
-						"button1Color": null,
+						"button1Text": "Learn more",
+						"button1Url": "https://www.cloudflare.com/lp/gartner-cloud-web-application-api-protection-market-guide/",
+						"button1Color": "orange",
 						"button2Text": null,
 						"button2Url": null,
 						"button2Color": null,
@@ -356,32 +390,151 @@
 						"streamPosterAssetFile": null,
 						"image": null,
 						"imageAssetFile": {
-							"id": "dd487391-95d6-5af7-ba09-71656dc6309e",
-							"altText": null,
-							"title": null,
+							"id": "7733b7fc-fa7b-5c81-8a5b-543982140774",
+							"altText": "Cloudflare is a Leader in the Gartner Magic Quadrant™ for WAAP",
+							"title": "Gartner WAAP Magic Quadrant",
 							"activeAsset": "Contentful Asset",
 							"locale": "en-US",
 							"contentfulAsset": {
 								"file": {
-									"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/6r1RbtFTZqLDKieIeHMmZ7/798c1160080e1a15d2401da86f929b59/cloudflare-warp-capabilities.png"
+									"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/1hJGkoRmgGGhMIpvQ6VJ4U/90e6a961145b3cc4d0c9dc4cb2940a47/Application_Services_Image_03.svg"
 								},
-								"description": "Gartner diagram showing cloud WAAP capabilities"
+								"description": ""
 							},
 							"brandfolderAsset": null,
 							"brandfolderAssetMobile": null
 						},
 						"featureList": [],
 						"contentTypeId": "bladeImageText",
-						"sectionTitle": "ANALYST RECOGNITION",
+						"sectionTitle": "Analyst recognition",
 						"htmlId": null,
 						"titleSize": null,
-						"sectionPadding": "tile--no-bottom-padding",
+						"sectionPadding": null,
 						"backgroundColor": "white",
 						"bladeBorder": "none",
-						"imagePosition": false,
-						"imageSize": null,
+						"imagePosition": true,
+						"imageSize": "large",
 						"imageTextAlignment": null,
 						"togglesTo": []
+					},
+					{
+						"contentTypeId": "bladeRichTextColumnGroup",
+						"contentfulId": "3NbVEDwhrCZyWrFm2cmGD1",
+						"htmlId": null,
+						"mainHeadline": null,
+						"backgroundColor": "white",
+						"bladeBorder": "none",
+						"sectionPadding": "tile--no-bottom-padding",
+						"columnLayout": "One Column Wide",
+						"columns": [
+							{
+								"contentTypeId": "elementRichText",
+								"contentfulId": "2I7A6DH6wXjSWAmLnRsHxo",
+								"title": null,
+								"htmlId": null,
+								"elementPosition": "relative",
+								"column": {
+									"nodeType": "document",
+									"content": [
+										{
+											"nodeType": "heading-4",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "What our customers are saying",
+													"marks": [],
+													"content": null
+												}
+											]
+										},
+										{
+											"nodeType": "blockquote",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "paragraph",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": null,
+													"marks": null,
+													"content": [
+														{
+															"nodeType": "text",
+															"data": {
+																"target": null,
+																"uri": null
+															},
+															"value": "\"When other companies experienced a data leak, the attackers would often try the stolen email and password combinations on our sites. We always knew when there was another attack, but it was business as usual because Cloudflare detected and stopped it before it became a problem.\"",
+															"marks": [],
+															"content": null
+														}
+													]
+												}
+											]
+										},
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "",
+													"marks": [],
+													"content": null
+												}
+											]
+										},
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "Conrad Electronic",
+													"marks": [],
+													"content": null
+												}
+											]
+										}
+									]
+								}
+							}
+						]
 					},
 					{
 						"contentTypeId": "bladeFeaturedCompanyLogos",
@@ -573,39 +726,39 @@
 						"sectionPadding": null
 					},
 					{
-						"contentfulId": "4hTnpkaIbgAurrkENMi8Pf",
+						"contentfulId": "ZgNiNDNd67WJTTw11v99z",
 						"contentTypeId": "bladeMultipleColumnsLayout",
-						"title": "Cloudflare API Shield helps you catalog and manage API endpoints, while blocking attacks, vulnerability exploits, and data leakage",
-						"eyebrowHeading": "Top API Shield use cases",
+						"title": null,
+						"eyebrowHeading": "Top Rate Limiting use cases",
 						"description": null,
 						"textLayout": "left",
 						"columnsLayout": "Three Columns",
 						"columnContent": [
 							{
 								"contentTypeId": "feature",
-								"contentfulId": "2lW7MNYkPFSvwoEIbB3li4",
-								"title": "Discover shadow APIs",
+								"contentfulId": "1U26EGqFHYvJikzrP28Iud",
+								"title": "Configure thresholds",
 								"makeTitleLink": false,
 								"titleUrl": null,
 								"titleSize": null,
-								"description": "Document every public API in your landscape, even those that are unmanaged or unsecured.",
+								"description": "Protect your website URLs and API endpoints from suspicious requests that exceed defined thresholds. Granular configuration options include status codes, specific URLs, request limits, and request methods.",
 								"learnMoreUrl": null,
 								"learnMoreText": null,
 								"displayBorder": false,
 								"openLinkInNewTab": null,
-								"removeCardBorder": null,
+								"removeCardBorder": false,
 								"icon": null,
 								"iconAssetFile": {
-									"id": "99e80fe1-da60-560e-b7ca-0c716e6bd26a",
-									"altText": "Discover shadow APIs",
-									"title": null,
+									"id": "eaeddebf-b730-5e34-b5cd-2dcca8d4cba2",
+									"altText": "security-shield-protection-230x301-664b7d5",
+									"title": "security-shield-protection-230x301-664b7d5",
 									"activeAsset": "Contentful Asset",
 									"locale": "en-US",
 									"contentfulAsset": {
 										"file": {
-											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/7DwkkQAWtYOeS3Ysr6IdXW/bb2241636309942a2b63675357cf048a/ransom-ddos.png"
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/LaRddEaKEWlYXXx8Y2UST/4a87c8fe7df63554665ed7b673ba5846/security-shield-protection-2.svg"
 										},
-										"description": "Discover shadow APIs"
+										"description": null
 									},
 									"brandfolderAsset": null,
 									"brandfolderAssetMobile": null
@@ -619,29 +772,29 @@
 							},
 							{
 								"contentTypeId": "feature",
-								"contentfulId": "7wYnYVJNBlKzJ1TRbV4dsT",
-								"title": "Prevent data exfiltration",
+								"contentfulId": "1I21lBJ371bHqBgVaGK7Hh",
+								"title": "Define responses",
 								"makeTitleLink": false,
 								"titleUrl": null,
 								"titleSize": null,
-								"description": "Stop data leaks by continuously scanning response payloads for sensitive data.",
+								"description": "Visitors hitting defined request thresholds can trigger custom responses, including mitigating actions such as challenges or CAPTCHAS, response codes, timeouts, and blocking.",
 								"learnMoreUrl": null,
 								"learnMoreText": null,
 								"displayBorder": false,
 								"openLinkInNewTab": null,
-								"removeCardBorder": null,
+								"removeCardBorder": false,
 								"icon": null,
 								"iconAssetFile": {
-									"id": "7f3d83fb-ac3a-5afd-9df5-e48cd88b1904",
-									"altText": "Prevent data exfiltration",
-									"title": null,
+									"id": "4b8d0fd4-e74c-5191-a1ff-2887eb26d2fa",
+									"altText": "Performance acceleration bolt orange",
+									"title": "Performance acceleration bolt orange",
 									"activeAsset": "Contentful Asset",
 									"locale": "en-US",
 									"contentfulAsset": {
 										"file": {
-											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/5vz9D6KZ5THTms26Ik5NLp/ef212b7e054b102f9ebf9dfec2b377be/office-branch.svg"
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/5sWqRe2bVBkaYdFk0OapeM/7104c2a5381e49f73144e8a6e1095b53/performance-acceleration-bolt.svg"
 										},
-										"description": "Prevent data exfiltration"
+										"description": "Lightning bolt icon"
 									},
 									"brandfolderAsset": null,
 									"brandfolderAssetMobile": null
@@ -655,29 +808,29 @@
 							},
 							{
 								"contentTypeId": "feature",
-								"contentfulId": "52OceYKFLfa8emMfyGT98N",
-								"title": "Create a positive security model",
+								"contentfulId": "67NeyIGnPhGnnkAKMAVZ1X",
+								"title": "Get insights into traffic patterns",
 								"makeTitleLink": false,
 								"titleUrl": null,
 								"titleSize": null,
-								"description": "Protect APIs by only accepting traffic that conforms to your OpenAPI schemas — while blocking malformed requests and HTTP anomalies.",
+								"description": "Scale and protect your resources with analytics including the amount of malicious traffic blocked by rule and the number of requests that reach your origin.",
 								"learnMoreUrl": null,
 								"learnMoreText": null,
 								"displayBorder": false,
 								"openLinkInNewTab": null,
-								"removeCardBorder": null,
+								"removeCardBorder": false,
 								"icon": null,
 								"iconAssetFile": {
-									"id": "ab4d366d-2541-5727-9626-432d1bd47ef3",
-									"altText": "Create a positive security model",
-									"title": null,
+									"id": "8ef8fdc5-cba6-5992-8e53-275759d57c5a",
+									"altText": "Analytics data blue",
+									"title": "Analytics data blue",
 									"activeAsset": "Contentful Asset",
 									"locale": "en-US",
 									"contentfulAsset": {
 										"file": {
-											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/7dJAtq6FoZyguNzfUifhB6/da2ea971934329f7449c368d3455a361/optimization-gear.png"
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/2GDXdm5wvNxuUxs30EcKZx/daade3315fd04282a6607e8ce40d3fab/analytics-data.svg"
 										},
-										"description": "Create a positive security model"
+										"description": "Data analytics icon"
 									},
 									"brandfolderAsset": null,
 									"brandfolderAssetMobile": null
@@ -700,10 +853,10 @@
 						"htmlId": null
 					},
 					{
-						"contentfulId": "7ltuaDb62n4t9L78YjN5N0",
+						"contentfulId": "54t6x3OfmN3z7yIoGAdEAA",
 						"contentTypeId": "bladeLeadGeneration",
-						"title": "Helping organizations worldwide progress towards Zero Trust",
-						"description": "Trusted by millions of Internet properties",
+						"title": null,
+						"description": "Helping organizations bolster their application security strategies",
 						"variant": "inline",
 						"htmlId": null,
 						"sectionPadding": "tile--no-top-padding",
@@ -726,11 +879,11 @@
 							"buttonAssetFile": null,
 							"buttonTextLoggedIn": null,
 							"contentTypeId": "button",
-							"contentfulId": "6iCDUX8WxFw0p4ENXI510p",
+							"contentfulId": "5QGV2U8kXzAOqeMECxbBfD",
 							"elementName": "See case studies",
 							"standardText": null,
 							"text": "See case studies",
-							"url": "/case-studies/?product=Bot+Management",
+							"url": "/case-studies/?product=Rate+Limiting",
 							"loggedInUrl": null,
 							"buttonModal": null,
 							"openInNewTab": false,
@@ -740,90 +893,24 @@
 					},
 					{
 						"contentTypeId": "bladeCardCarousel",
-						"contentfulId": "26rDDk2m9yCLzzpUFScsZJ",
+						"contentfulId": "4YSeaAMtLH7Hw8QMZw5I5K",
 						"title": "Resources",
 						"htmlId": null,
 						"backgroundImage": null,
 						"cards": [
 							{
 								"contentTypeId": "elementResourceCard",
-								"contentfulId": "6OoEA8jAklUgQN1ilqdkAn",
-								"heading": "Product brief",
-								"description": "How our API Shield works",
-								"category": "None",
-								"link": {
-									"contentTypeId": "elementLink",
-									"contentfulId": "35BE3czhyZIfwxretEII8P",
-									"elementName": "API Shield - Resources cards carousel - How our API Shield works - Link",
-									"standardText": null,
-									"text": "Get the product brief",
-									"url": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/35K29X2CAwMZW8ixSrlI5E/21f24de64554f0f30c564ae0b31a2034/API_Shield_Datasheet_2025.pdf",
-									"elementModal": null,
-									"openInNewTab": true,
-									"locale": "en-US"
-								},
-								"image": {
-									"id": "3b7d1ba1-b13a-521a-90cb-cc3cd98a6e12",
-									"altText": "Product brief thumbnail",
-									"title": "Product brief thumbnail",
-									"activeAsset": "Contentful Asset",
-									"locale": "en-US",
-									"contentfulAsset": {
-										"file": {
-											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/2lUAsz5YsJICKhBWy6Rl9v/2e039f96c66c926b60c9c9668377ab47/Product_brief_99x180.svg"
-										},
-										"description": null
-									},
-									"brandfolderAsset": null,
-									"brandfolderAssetMobile": null
-								}
-							},
-							{
-								"contentTypeId": "elementResourceCard",
-								"contentfulId": "lrEIe8WfrIzDutzSnE551",
-								"heading": "Solution brief",
-								"description": "Harness the power of consolidated API protection",
-								"category": "None",
-								"link": {
-									"contentTypeId": "elementLink",
-									"contentfulId": "3R4x3qJb0uaDZA20YoK8sk",
-									"elementName": "API Shield - Resources cards carousel - Harness the power ​​of consolidated API protection - Link",
-									"standardText": null,
-									"text": " Get the solution brief",
-									"url": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/1xmtktV7hFvcn4YXkOPoIc/104ebf2497a0d35cd29a8b60b31734aa/Legacy_WAF_vs_Cloudflare_AppSec_platform_for_API_Security.pdf",
-									"elementModal": null,
-									"openInNewTab": true,
-									"locale": "en-US"
-								},
-								"image": {
-									"id": "db6be96f-1a36-590b-b487-e41b7bed9506",
-									"altText": "Solution brief - thumbnail",
-									"title": "Solution brief - thumbnail",
-									"activeAsset": "Contentful Asset",
-									"locale": "en-US",
-									"contentfulAsset": {
-										"file": {
-											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/4lrrMbtnvF7cu020jaOCG7/a7fcac3993ce0c3f325963814b483713/Solution_brief_106x182.svg"
-										},
-										"description": null
-									},
-									"brandfolderAsset": null,
-									"brandfolderAssetMobile": null
-								}
-							},
-							{
-								"contentTypeId": "elementResourceCard",
-								"contentfulId": "dGsTFAWHR2PIAaaBA53qn",
+								"contentfulId": "7DVBQyU06SgUMUaNOrQ1Sy",
 								"heading": "Ebook",
-								"description": "Secure your API infrastructure, defend yourself from threats",
+								"description": "Adopting everywhere security",
 								"category": "None",
 								"link": {
 									"contentTypeId": "elementLink",
-									"contentfulId": "7b0b2uCXUPP5KcXEH6xtu5",
-									"elementName": "API Shield - Resources cards carousel - Secure your API infrastructure defend yourself from threats - Link",
+									"contentfulId": "5FWLXMgboKGfe5JMmi7ocX",
+									"elementName": "Cloudflare Rate Limiting - Resources cards carousel - Adopting everywhere security - Link",
 									"standardText": null,
-									"text": " Get the ebook",
-									"url": "/lp/ciso-guide-to-api-security/",
+									"text": "Read the ebook",
+									"url": "/lp/everywhere-security-ebook/",
 									"elementModal": null,
 									"openInNewTab": false,
 									"locale": "en-US"
@@ -837,6 +924,72 @@
 									"contentfulAsset": {
 										"file": {
 											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/2tGnS2OjpSmmok16lr0mI3/db2a34b69b1001d0d0b529148def3c45/Ebook-generic-106x186-300dpi.png"
+										},
+										"description": null
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								}
+							},
+							{
+								"contentTypeId": "elementResourceCard",
+								"contentfulId": "6QFCpa4xCz0I3NMlhl9sJ5",
+								"heading": "Whitepaper",
+								"description": "3 challenges of securing and connecting application services",
+								"category": "None",
+								"link": {
+									"contentTypeId": "elementLink",
+									"contentfulId": "3hEXrxq3Rvahmu7xTXwNaB",
+									"elementName": "Cloudflare Rate Limiting - Resources cards carousel - 3 challenges of securing and connecting application services - Link",
+									"standardText": null,
+									"text": "Read the whitepaper",
+									"url": "/lp/3-challenges-of-securing-and-connecting-application-services/",
+									"elementModal": null,
+									"openInNewTab": false,
+									"locale": "en-US"
+								},
+								"image": {
+									"id": "13298e8a-267a-575b-b89a-b871f95f1d9a",
+									"altText": "Whitepaper Thumbnail",
+									"title": "Whitepaper Thumbnail",
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/2ZiPjCDWMWnibCFs5nxHBa/75ef0ba1b4484c2da8ab4d3f40437dff/Whitpapper-generic-106x186-300dpi.png"
+										},
+										"description": null
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								}
+							},
+							{
+								"contentTypeId": "elementResourceCard",
+								"contentfulId": "1rws2F2BFBRvMjyrXCCbxr",
+								"heading": "Whitepaper",
+								"description": "Say bye to the box",
+								"category": "None",
+								"link": {
+									"contentTypeId": "elementLink",
+									"contentfulId": "3iVCRil9B5vFO2veTH1rFX",
+									"elementName": "Cloudflare Rate Limiting - Resources cards carousel - Say bye to the box - Link",
+									"standardText": null,
+									"text": " Read the whitepaper",
+									"url": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/6nO5PMlONrGMOuhCEAePEn/7df9d8e130a98825667b6840bccb0131/Say_Bye_to_the_Box_Solution_Brief.pdf",
+									"elementModal": null,
+									"openInNewTab": true,
+									"locale": "en-US"
+								},
+								"image": {
+									"id": "13298e8a-267a-575b-b89a-b871f95f1d9a",
+									"altText": "Whitepaper Thumbnail",
+									"title": "Whitepaper Thumbnail",
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/2ZiPjCDWMWnibCFs5nxHBa/75ef0ba1b4484c2da8ab4d3f40437dff/Whitpapper-generic-106x186-300dpi.png"
 										},
 										"description": null
 									},
@@ -881,8 +1034,8 @@
 					},
 					{
 						"contentTypeId": "bladeEnablement",
-						"contentfulId": "67xgDAzT2QrmZeAjZXmwSG",
-						"title": "Interested in API Shield for your enterprise?",
+						"contentfulId": "1BsLgFlOj6QSOQROIiHUFP",
+						"title": "Get Cloudflare Rate Limiting for your enterprise?",
 						"titleSize": "medium",
 						"backgroundColor": "image-background",
 						"buttonText": null,
@@ -897,28 +1050,28 @@
 							"buttonAssetFile": null,
 							"buttonTextLoggedIn": null,
 							"contentTypeId": "button",
-							"contentfulId": "1FLF41PSDewRjeHPYgggPL",
-							"elementName": "Get in touch",
+							"contentfulId": "6SNsWxNDTd8lbiv38M68V3",
+							"elementName": "Page Shield - Talk to an expert - Modal form - CTA",
 							"standardText": null,
-							"text": "Get in touch",
-							"url": "#",
+							"text": "Talk to an expert",
+							"url": null,
 							"loggedInUrl": null,
 							"buttonModal": {
 								"contentTypeId": "formModal",
-								"contentfulId": "R3Gu4KmqKeM9Kc0ybV8Dk",
-								"modalName": "API Gateway - Get in touch",
-								"modalId": "api-gateway-get-in-touch",
+								"contentfulId": "4fAyYKCNDyA8wm05fMzNjG",
+								"modalName": "Page Shield product page - Talk to an expert -  Modal form",
+								"modalId": "page-shield-product-page-talk-to-an-expert-modal-form",
 								"modalType": "single-form",
 								"marketoForm": {
 									"contentTypeId": "marketoEmbeddedForm",
-									"contentfulId": "7aikiryD5sDQGo9ttBEecW",
-									"bladeName": "API Gateway - Get in touch - Marketo",
+									"contentfulId": "75PuedpH94IU8OmAXNgofh",
+									"bladeName": "Page Shield product page - Modal form - Talk to an expert ",
 									"backgroundColor": "white",
 									"marketoFormId": 1341,
 									"marketoFormLeadSource": "Inbound - Web Form",
 									"marketoFormLeadSourceDetail": "Web Form - Enterprise General Sales Inquiry",
 									"marketoFormAssetName": null,
-									"marketoFormHeaderText": null,
+									"marketoFormHeaderText": "Talk to an expert ",
 									"marketoFormDefaultComment": null,
 									"showCommentBox": null,
 									"marketoFormThankYouText": null,
@@ -936,7 +1089,7 @@
 									"disableEnterpriseEmailNotification": null,
 									"enableRingout": null
 								},
-								"title": "Get in touch",
+								"title": null,
 								"regularCopy": null,
 								"splitFormDefaultTab": null,
 								"selfServeTabText": null,
@@ -956,14 +1109,14 @@
 				"formModal": [
 					{
 						"contentTypeId": "formModal",
-						"contentfulId": "7sDNwm6tWjOIVDbtBWtyk9",
-						"modalName": "Product Gateway Modal",
-						"modalId": "product-gateway-modal",
+						"contentfulId": "6UpsErQt73LNrgwvmv2oqJ",
+						"modalName": "Rate Limiting - Modal",
+						"modalId": "rate-limiting-modal",
 						"modalType": "single-form",
 						"marketoForm": {
 							"contentTypeId": "marketoEmbeddedForm",
-							"contentfulId": "1ltMiNByMeIIOQNTeTZ8vS",
-							"bladeName": "Product Gateway - Marketo",
+							"contentfulId": "1Ko6mAuE0u9RkiUDwjKQyn",
+							"bladeName": "Rate Limiting - Marketo",
 							"backgroundColor": "white",
 							"marketoFormId": 1341,
 							"marketoFormLeadSource": "Inbound - Web Form",
@@ -996,7 +1149,7 @@
 						"enterpriseCopy": null
 					}
 				],
-				"keepHashUrlSyncedWithScrollPosition": false
+				"keepHashUrlSyncedWithScrollPosition": null
 			},
 			"site": {
 				"siteMetadata": {
@@ -1007,8 +1160,8 @@
 		"pageContext": {
 			"currentLocale": "en-US",
 			"locale": "en-US",
-			"pathname": "/application-services/products/api-shield/",
-			"contentfulId": "1eFnOez80UnYQvIDLH0SjW",
+			"pathname": "/application-services/products/rate-limiting/",
+			"contentfulId": "5F4lTypOvu2UyaIEckg4yy",
 			"allowedHrefLangs": [
 				"en-US",
 				"zh-CN",
@@ -1021,7 +1174,9 @@
 				"pt-BR",
 				"es-ES",
 				"es-LA",
+				"th-TH",
 				"ru-RU",
+				"vi-VN",
 				"tr-TR",
 				"zh-Hans-CN",
 				"pl-PL"
