@@ -1,10 +1,10 @@
 {
 	"componentChunkName": "component---src-components-page-page-template-tsx",
-	"path": "/application-services/products/securitycenter/",
+	"path": "/application-services/products/argo-smart-routing/",
 	"result": {
 		"data": {
 			"page": {
-				"pageName": "Cloudflare Security Center",
+				"pageName": "Argo Smart Routing - Product Page",
 				"localeList": {
 					"enUS": "English for Locale",
 					"zhCN": "Translated for Locale",
@@ -32,14 +32,14 @@
 					"plPL": "Translated for Locale",
 					"arAR": "No Page for Locale"
 				},
-				"relativePath": "application-services/products/securitycenter",
+				"relativePath": "application-services/products/argo-smart-routing/",
 				"topNavOptions": "default",
 				"topNavButtonText": null,
 				"topNavButtonUrl": null,
 				"footerOptions": "default",
 				"metaTags": {
-					"metaTitle": "Cloudflare Security Center | Attack Surface Management",
-					"metaDescription": "Attack surface management that maps an organization's attack surface and gives a list of potential security risks and vulnerabilities associated with their IT infrastructure, and mitigate threats in a single click. ",
+					"metaTitle": "Argo Smart Routing | Accelerate Web Apps",
+					"metaDescription": "Cloudflare Argo Smart Routing accelerates web applications by avoiding network congestion. Learn more about the benefits, use cases, and pricing for Argo.",
 					"twitterCustomImage": null,
 					"metaImage": {
 						"file": {
@@ -51,10 +51,10 @@
 					"author": []
 				},
 				"sys": {
-					"createdAt": "2021-12-09T14:01:16.052Z",
-					"updatedAt": "2026-04-01T05:12:14.302Z"
+					"createdAt": "2018-10-21T07:55:10.587Z",
+					"updatedAt": "2026-03-28T02:47:17.411Z"
 				},
-				"contentfulId": "oqw7JLDK7wiOt55NrSNX5",
+				"contentfulId": "3dZi7ipIacUoymKoKAW4Yc",
 				"contentTypeId": "page",
 				"promotionalBanner": null,
 				"psaBanner": null,
@@ -64,44 +64,50 @@
 				"template": null,
 				"relatedBlades": [
 					{
-						"contentfulId": "5PzoE4zoXHzCnCUuSdzQN6",
+						"contentfulId": "48k0kgRwP6G8aWogY4AsAQ",
 						"contentTypeId": "bladeHeroAnimation",
-						"title": "Cloudflare Security Center",
+						"title": "Argo Smart Routing",
 						"titleSize": null,
-						"subtitle": "Attack surface management for all Cloudflare customers",
+						"subtitle": "Avoid network congestion and accelerate web apps",
 						"subtitleSize": null,
-						"copy": "Cloudflare Security Center scans your infrastructure for potential vulnerabilities so you can manage your attack surface and protect your brand. Improve security with threat intelligence data from Cloudflare's massive global network, which protects about 20% of all websites.\n\nIncluded in all plans at no charge.\n",
-						"buttonColor": "orange",
-						"buttonColor2": "orange",
-						"buttonText1": "Read developer docs",
-						"buttonText1LoggedIn": null,
-						"buttonUrl1": "https://developers.cloudflare.com/security-center/",
-						"buttonUrl1LoggedIn": null,
+						"copy": "Network congestion on the Internet can lead to slow load times. Argo Smart Routing detects and routes around real-time network congestion for 30% (on average) faster web app performance.",
+						"buttonColor": "blue",
+						"buttonColor2": "blue-outline",
+						"buttonText1": "Get started",
+						"buttonText1LoggedIn": "Get started",
+						"buttonUrl1": "https://dash.cloudflare.com/sign-up",
+						"buttonUrl1LoggedIn": "https://dash.cloudflare.com/?to=/:account/:zone/traffic/",
 						"button1ExtraClass": null,
-						"buttonText2": "Get the product brief",
-						"buttonText2LoggedIn": null,
-						"buttonUrl2": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/3k2B8G6YCOFwO33glU9RIw/be9a81ab11fdbcfe3c533ee48acae9c4/BDES-6049_cloudflare_security_center_datasheet_Letter.pdf",
-						"button2ExtraClass": null,
+						"buttonText2": "Get the solution brief",
+						"buttonText2LoggedIn": "Looking for enterprise-grade solutions?",
+						"buttonUrl2": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/5bJqqMwpO5dcJNfRaYOOHA/56c3f77fe09d05d4ef7d576559515442/Argo_Smart_Routing_Solution_Brief.pdf",
+						"button2ExtraClass": "argo-smart-routing-product-contact-sales",
 						"bladeBorder": "none",
 						"htmlId": null,
 						"textColor": "black",
-						"includeVideo": false,
-						"streamVideoId": null,
+						"includeVideo": true,
+						"streamVideoId": "f73d95df0053995ff8244c452093ec46",
 						"streamOptions": [
 							"controls",
-							"captions"
+							"muted",
+							"loop"
 						],
-						"streamCaptions": "en",
+						"streamCaptions": null,
 						"popupStreamId": null,
 						"popupText": null,
-						"button1OpenInNewTab": true,
-						"button2OpenInNewTab": true,
-						"streamThumbnails": null,
+						"button1OpenInNewTab": null,
+						"button2OpenInNewTab": null,
+						"streamThumbnails": "38s",
 						"sectionPadding": null,
 						"streamPosterAssetFile": null,
-						"streamPoster": null,
+						"streamPoster": {
+							"file": {
+								"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/53qCYhQbir5WtIU0VDWESo/954a48bfb17f429acf469e5f14345d83/unnamed-3.png"
+							},
+							"description": "DO NOT REMOVE, THIS IS CLOUDFLARE'S GLOBAL OG META ASSET"
+						},
 						"imageSize": "Medium",
-						"imagePosition": false,
+						"imagePosition": null,
 						"leftLinkUrl": null,
 						"leftLink": null,
 						"leftLinkLoggedIn": null,
@@ -111,39 +117,25 @@
 						"backgroundAssetFile": null,
 						"imageLayout": null,
 						"image": null,
-						"imageAssetFile": {
-							"id": "a5441816-81e1-5773-9d48-71239db17dbd",
-							"altText": "Cloudflare Security Center",
-							"title": "Cloudflare Security Center",
-							"activeAsset": "Contentful Asset",
-							"locale": "en-US",
-							"contentfulAsset": {
-								"file": {
-									"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/7h3ZPSqx5P1ns5Q40L3aWQ/34bae34fb0506a6fc9ebcb88247c92ac/BDES-5032_-_Cloudflare_Security_Center.svg"
-								},
-								"description": ""
-							},
-							"brandfolderAsset": null,
-							"brandfolderAssetMobile": null
-						}
+						"imageAssetFile": null
 					},
 					{
-						"contentfulId": "3bEjFzbNSJgOVf1Xh8jDFt",
+						"contentfulId": "4hdpqT6aKO5LjYeY7zCORz",
 						"contentTypeId": "bladeMultipleColumnsLayout",
 						"title": null,
-						"eyebrowHeading": "BENEFITS OF CLOUDFLARE SECURITY CENTER",
+						"eyebrowHeading": "BENEFITS OF ARGO SMART ROUTING",
 						"description": null,
 						"textLayout": "left",
 						"columnsLayout": "Four Columns",
 						"columnContent": [
 							{
 								"contentTypeId": "feature",
-								"contentfulId": "4wBTGWxlPzwFRZrG3YpAIb",
-								"title": "Scan known assets",
+								"contentfulId": "5jXjPMPuKE7CIuOonVU6eu",
+								"title": "Faster loading times",
 								"makeTitleLink": false,
 								"titleUrl": null,
 								"titleSize": null,
-								"description": "Identify potential threats in your websites, servers, and the dependencies running on them.",
+								"description": "Deliver web traffic over the quickest network paths available for noticeably faster app performance and an improved user experience.",
 								"learnMoreUrl": null,
 								"learnMoreText": null,
 								"displayBorder": false,
@@ -151,16 +143,16 @@
 								"removeCardBorder": false,
 								"icon": null,
 								"iconAssetFile": {
-									"id": "9dc92233-8924-5d39-8e0d-972e50ea7311",
-									"altText": "Case study blue",
-									"title": "Case study blue",
+									"id": "b1b7275d-3503-5173-a651-9cfd70157c3c",
+									"altText": "Performance acceleration rocket ",
+									"title": "Performance acceleration rocket",
 									"activeAsset": "Contentful Asset",
 									"locale": "en-US",
 									"contentfulAsset": {
 										"file": {
-											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/2skRVGr8frUhOMQwi7hflN/8bf77791d359c7e95772b801e4cd4eeb/case-study.svg"
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/1vvXmr7jmxFdYUgliFcXUh/d27e7eabc9727ba987b15d5e9ddad5e3/performance-acceleration-rocket.svg"
 										},
-										"description": ""
+										"description": "Performance acceleration rocket orange"
 									},
 									"brandfolderAsset": null,
 									"brandfolderAssetMobile": null
@@ -174,12 +166,12 @@
 							},
 							{
 								"contentTypeId": "feature",
-								"contentfulId": "5LndpMFCJbIgXw3BxLcAG2",
-								"title": "Identify unknown assets",
+								"contentfulId": "2CnCqfGF9rwKuQvS0K9zGl",
+								"title": "Increased reliability",
 								"makeTitleLink": false,
 								"titleUrl": null,
 								"titleSize": null,
-								"description": "Find shadow IT or other unsanctioned infrastructure, like forgotten websites, unmanaged subdomains, or non-approved cloud applications.",
+								"description": "Route around congestion and use the most reliable paths to increase uptime.",
 								"learnMoreUrl": null,
 								"learnMoreText": null,
 								"displayBorder": false,
@@ -187,16 +179,16 @@
 								"removeCardBorder": false,
 								"icon": null,
 								"iconAssetFile": {
-									"id": "b0b8d74a-324b-582f-ade7-bbbdc3311984",
-									"altText": "Help question blue",
-									"title": "Help question blue",
+									"id": "9a9f45e5-8256-5cff-bb15-7336fb732376",
+									"altText": "Performance 1 blue",
+									"title": "Performance 1 blue",
 									"activeAsset": "Contentful Asset",
 									"locale": "en-US",
 									"contentfulAsset": {
 										"file": {
-											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/69tNrTgBhqfzPRIPu8Gwid/fb23c2d12223eaeb989f9266929c196d/help-question.svg"
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/3Clytt8pBf5fsuPgtVafD7/42d2f39e656cdeebf1d7fa80c979a4c9/performance-1.svg"
 										},
-										"description": ""
+										"description": "Rotating arrows icon"
 									},
 									"brandfolderAsset": null,
 									"brandfolderAssetMobile": null
@@ -210,12 +202,12 @@
 							},
 							{
 								"contentTypeId": "feature",
-								"contentfulId": "2tK3SICw2irB4mKyJsyhA6",
-								"title": "Detect rogue assets",
+								"contentfulId": "5QCG6zH5UJjlEBa23ICcUr",
+								"title": "Reduced costs",
 								"makeTitleLink": false,
 								"titleUrl": null,
 								"titleSize": null,
-								"description": "Identify malicious infrastructure created by attackers such as typosquatted domains, or a website or app impersonating a legitimate brand.",
+								"description": "Minimize content requests to the origin server, reducing latency, server load, and bandwidth usage.",
 								"learnMoreUrl": null,
 								"learnMoreText": null,
 								"displayBorder": false,
@@ -223,50 +215,14 @@
 								"removeCardBorder": false,
 								"icon": null,
 								"iconAssetFile": {
-									"id": "94716675-099b-561c-a6b3-d9be2b13ab58",
-									"altText": "Search blue",
-									"title": "Search blue",
+									"id": "ca8dae98-4f47-5466-a459-bdaacb07a225",
+									"altText": "Dollar",
+									"title": "Dollar",
 									"activeAsset": "Contentful Asset",
 									"locale": "en-US",
 									"contentfulAsset": {
 										"file": {
-											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/3BxXRJAvXxK5VsZNLR3VPH/5bf83900a7872240c84b8a9074e5d30c/search.svg"
-										},
-										"description": ""
-									},
-									"brandfolderAsset": null,
-									"brandfolderAssetMobile": null
-								},
-								"imageOverlaySuperheader": null,
-								"imageOverlayText": null,
-								"imageAssetFile": null,
-								"streamId": null,
-								"streamThumbnail": null,
-								"streamThumbnailAssetFile": null
-							},
-							{
-								"contentTypeId": "feature",
-								"contentfulId": "3i8yUK2H1UHx45hNoHBG1k",
-								"title": "Identify third-party risks",
-								"makeTitleLink": false,
-								"titleUrl": null,
-								"titleSize": null,
-								"description": "Detect risks from third-party services and dependencies, from [open-source vulnerabilities](https://www.cloudflare.com/the-net/oss-attack-detection/) to malicious JavaScript.",
-								"learnMoreUrl": null,
-								"learnMoreText": null,
-								"displayBorder": false,
-								"openLinkInNewTab": null,
-								"removeCardBorder": false,
-								"icon": null,
-								"iconAssetFile": {
-									"id": "f2eb93a9-5084-50de-8f8c-5182cce34fa9",
-									"altText": "share icon",
-									"title": "share icon",
-									"activeAsset": "Contentful Asset",
-									"locale": "en-US",
-									"contentfulAsset": {
-										"file": {
-											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/7oSAE8BQTzD1sgQCgrArww/f79da788e5497cd68b5851f995b132af/share.svg"
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/7td2uxheozRtbhflYJ4n7b/f957bd073f41d31f0579dafa98f329c4/price__1_.svg"
 										},
 										"description": null
 									},
@@ -279,15 +235,51 @@
 								"streamId": null,
 								"streamThumbnail": null,
 								"streamThumbnailAssetFile": null
+							},
+							{
+								"contentTypeId": "feature",
+								"contentfulId": "62AS17As4hJfJ5GfX1Lklq",
+								"title": "Integrated security",
+								"makeTitleLink": false,
+								"titleUrl": null,
+								"titleSize": null,
+								"description": "Encrypt end-to-end traffic across the Cloudflare network, protecting web traffic from attackers.",
+								"learnMoreUrl": null,
+								"learnMoreText": null,
+								"displayBorder": false,
+								"openLinkInNewTab": null,
+								"removeCardBorder": false,
+								"icon": null,
+								"iconAssetFile": {
+									"id": "c6776679-e543-5a80-9232-26ab70198b70",
+									"altText": "Security lock Orange",
+									"title": "Security lock Orange",
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/4knCjnvTXGI67Tjt2pgWOB/5e9703961ea866cd33e94411f5105c7c/security-lock.svg"
+										},
+										"description": "Padlock icon"
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								},
+								"imageOverlaySuperheader": null,
+								"imageOverlayText": null,
+								"imageAssetFile": null,
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
 							}
 						],
-						"sectionPadding": null,
+						"sectionPadding": "tile--no-bottom-padding",
 						"htmlId": null
 					},
 					{
-						"contentfulId": "iDceTZsHdrLoVJFfsUT37",
-						"title": "A constant view of your attack surface",
-						"copy": "Cloudflare Security Center brings together our suite of security products, our security expertise, and our unique Internet intelligence as a unified security intelligence solution.\n\nOnce activated, it scans customer infrastructure on a regular basis (frequency depends on type of plan) to map the attack surface and identify potential vulnerabilities.\n",
+						"contentfulId": "3v5SKSIMiuOseT2bCrN3ck",
+						"title": "Make web apps faster with intelligent, real-time routing",
+						"copy": "The Cloudflare network routes an average of %{HTTPRequests} million HTTP requests per second, providing a unique view of traffic flow on the Internet. \n\nArgo Smart Routing uses this information to detect the fastest network paths, then intelligently routes customer web traffic on those paths.",
 						"toggleText": null,
 						"button": [],
 						"learnMoreUrl": null,
@@ -310,16 +302,16 @@
 						"streamPosterAssetFile": null,
 						"image": null,
 						"imageAssetFile": {
-							"id": "c79b944a-f2b6-5cbe-988f-e2d280b4a596",
-							"altText": "Cloudflare security portfolio larger - diagram",
-							"title": "Cloudflare security portfolio larger - diagram",
+							"id": "45e9d794-9046-55aa-ba9d-8c25fa485628",
+							"altText": "teams-gateway-speedup-cost-down",
+							"title": "teams-gateway-speedup-cost-down",
 							"activeAsset": "Contentful Asset",
 							"locale": "en-US",
 							"contentfulAsset": {
 								"file": {
-									"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/7kScxnC6AGBLJOIhyaVEBq/af795f0545bf09e06907d18a580c5adb/71670_Cloudflare_BDES-2322_Update_Security_Portfolio_Graphic_Superside_V5.svg"
+									"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/5nri6CpBvw0n8DL16J7XOs/3668207a185794ca01b719fcc84301ec/teams-gateway-speedup-cost-down-spot-illustration.svg"
 								},
-								"description": "The Cloudflare security portfolio"
+								"description": "Illustration of a rocket ship"
 							},
 							"brandfolderAsset": null,
 							"brandfolderAssetMobile": null
@@ -329,18 +321,18 @@
 						"sectionTitle": "HOW IT WORKS",
 						"htmlId": null,
 						"titleSize": null,
-						"sectionPadding": "tile--no-top-padding",
+						"sectionPadding": null,
 						"backgroundColor": "white",
 						"bladeBorder": "none",
 						"imagePosition": true,
-						"imageSize": null,
-						"imageTextAlignment": null,
+						"imageSize": "large",
+						"imageTextAlignment": "center",
 						"togglesTo": []
 					},
 					{
 						"contentTypeId": "bladeEnablement",
-						"contentfulId": "3QxCrdwr0AVXwoZcpRSyjU",
-						"title": "Learn the 3 major challenges to securing application services",
+						"contentfulId": "6I5jafmCgj0TkDDldMlQY3",
+						"title": "Learn how Cloudflare's connectivity cloud  helps accelerate applications",
 						"titleSize": "medium",
 						"backgroundColor": "image-background",
 						"buttonText": null,
@@ -355,23 +347,23 @@
 							"buttonAssetFile": null,
 							"buttonTextLoggedIn": null,
 							"contentTypeId": "button",
-							"contentfulId": "6uNxCxS9CS73dje5UReKPZ",
-							"elementName": "Security Center - ADDITIONAL OFFER BLADE - CTA",
+							"contentfulId": "406jYWHEMGzVf7MRjdXMLz",
+							"elementName": "Get the whitepaper",
 							"standardText": null,
 							"text": "Get the whitepaper",
-							"url": "/lp/3-challenges-of-securing-and-connecting-application-services/",
+							"url": "https://www.cloudflare.com/lp/3-challenges-of-securing-and-connecting-application-services/",
 							"loggedInUrl": null,
 							"buttonModal": null,
 							"openInNewTab": false,
 							"locale": "en-US"
 						},
 						"buttonTwo": null,
-						"sectionPadding": null,
+						"sectionPadding": "tile--no-top-padding",
 						"eyebrow": null
 					},
 					{
 						"contentTypeId": "bladeRichTextColumnGroup",
-						"contentfulId": "GGbTyoE36vPJN8JpKzMWB",
+						"contentfulId": "6bM3oLbfd2y3Jxalr4woca",
 						"htmlId": null,
 						"mainHeadline": null,
 						"backgroundColor": "white",
@@ -381,7 +373,7 @@
 						"columns": [
 							{
 								"contentTypeId": "elementRichText",
-								"contentfulId": "6jsBYSvgMJn3NDPZaGWGLu",
+								"contentfulId": "vNoQvx99WeD6NltNaopC0",
 								"title": null,
 								"htmlId": null,
 								"elementPosition": "relative",
@@ -433,7 +425,7 @@
 																"target": null,
 																"uri": null
 															},
-															"value": "\"Our busiest website gets approximately 2.5 billion requests a month. It's hit by approximately 57 million threats each and every month. And Cloudflare blocks all 57 million every month. I know this because Cloudflare's security insights technology shows me exactly what's happening across the entire digital footprint.\"",
+															"value": "\"We're in a constant search for ways to improve our product experience at Discord… Argo allowed us to cut our load times by an average of 33 milliseconds with no development effort by our team.\"",
 															"marks": [],
 															"content": null
 														}
@@ -477,27 +469,7 @@
 														"target": null,
 														"uri": null
 													},
-													"value": "Global Director of Governance, Risk, Compliance, and Security ",
-													"marks": [],
-													"content": null
-												},
-												{
-													"nodeType": "text",
-													"data": {
-														"target": null,
-														"uri": null
-													},
-													"value": " — ",
-													"marks": [],
-													"content": null
-												},
-												{
-													"nodeType": "text",
-													"data": {
-														"target": null,
-														"uri": null
-													},
-													"value": "Genuine Parts Company",
+													"value": "CTO Discord — Stanislav Vishnevskiy",
 													"marks": [],
 													"content": null
 												}
@@ -698,22 +670,22 @@
 						"sectionPadding": null
 					},
 					{
-						"contentfulId": "2xzo1KU0gGkYNlHIq4IaHK",
+						"contentfulId": "5bNZmAM42aiidWZXwAElOn",
 						"contentTypeId": "bladeMultipleColumnsLayout",
-						"title": "Cloudflare Security Center helps you block web-borne attacks, apply monitoring and security across hybrid workforces, and improve the web browsing experience for users",
-						"eyebrowHeading": "Top Security Center use cases",
+						"title": null,
+						"eyebrowHeading": "Top Argo Smart Routing use cases",
 						"description": null,
 						"textLayout": "left",
-						"columnsLayout": "Two Columns",
+						"columnsLayout": "Three Columns",
 						"columnContent": [
 							{
 								"contentTypeId": "feature",
-								"contentfulId": "1VptBSAQeX5vYKMX5n3nYP",
-								"title": "Stop attacks before they happen",
+								"contentfulId": "2NixZ1Amu5JDtFjyCT2Bqn",
+								"title": "Top Argo Smart Routing use cases",
 								"makeTitleLink": false,
 								"titleUrl": null,
 								"titleSize": null,
-								"description": "Identify vulnerabilities that can compromise your website or servers, even in third-party and open-source libraries.",
+								"description": "Argo Smart Routing helps you speed up your web apps, minimize latency for all content, and reduce cache-miss rates",
 								"learnMoreUrl": null,
 								"learnMoreText": null,
 								"displayBorder": false,
@@ -721,16 +693,16 @@
 								"removeCardBorder": false,
 								"icon": null,
 								"iconAssetFile": {
-									"id": "27d3dc18-7219-53bc-bd53-b9742318bf14",
-									"altText": "Traffic attack blue",
-									"title": "Traffic attack blue",
+									"id": "30718739-82ff-5bc7-9c5d-e161248e8da9",
+									"altText": "Performance routing ",
+									"title": "Performance routing ",
 									"activeAsset": "Contentful Asset",
 									"locale": "en-US",
 									"contentfulAsset": {
 										"file": {
-											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/44OWJ7jF9JVwp4zh7zMy7B/d80f24569dfb7d418d6913b32940bf5b/traffic-attack-browser_1_.svg"
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/59OgNgdovYpxBuSbeO2TiK/f59c3c3b38689a5bc282dd9880ff977c/performance-routing.svg"
 										},
-										"description": "Prevent financial and identity theft icon"
+										"description": "Smart routing icon"
 									},
 									"brandfolderAsset": null,
 									"brandfolderAssetMobile": null
@@ -744,12 +716,12 @@
 							},
 							{
 								"contentTypeId": "feature",
-								"contentfulId": "3KImGEYxx1oZ0MtOdTB4Yx",
-								"title": "Prevent unauthorized use of cloud apps",
+								"contentfulId": "46VGjvrHAYMCB4wrFRZBqN",
+								"title": "Improve web app performance",
 								"makeTitleLink": false,
 								"titleUrl": null,
 								"titleSize": null,
-								"description": "Find shadow IT infrastructure that may not be secured or managed properly.",
+								"description": "Smart routing decisions informed by real-time network conditions ensure content reaches end users as quickly as possible",
 								"learnMoreUrl": null,
 								"learnMoreText": null,
 								"displayBorder": false,
@@ -757,16 +729,52 @@
 								"removeCardBorder": false,
 								"icon": null,
 								"iconAssetFile": {
-									"id": "84bf9920-ae71-533f-9d21-68e8f4517443",
-									"altText": "Platform apps ",
-									"title": "Platform apps ",
+									"id": "b1b7275d-3503-5173-a651-9cfd70157c3c",
+									"altText": "Performance acceleration rocket ",
+									"title": "Performance acceleration rocket",
 									"activeAsset": "Contentful Asset",
 									"locale": "en-US",
 									"contentfulAsset": {
 										"file": {
-											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/4zgjneatAin9CgQmzYl6Yq/b61aea1e89c05d2a7a3d458fe5b2d4db/platform-apps.svg"
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/1vvXmr7jmxFdYUgliFcXUh/d27e7eabc9727ba987b15d5e9ddad5e3/performance-acceleration-rocket.svg"
 										},
-										"description": "Platform apps icon"
+										"description": "Performance acceleration rocket orange"
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								},
+								"imageOverlaySuperheader": null,
+								"imageOverlayText": null,
+								"imageAssetFile": null,
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
+							},
+							{
+								"contentTypeId": "feature",
+								"contentfulId": "4itocEgXv7xlIbKJOuKFbN",
+								"title": "Reduce origin server load",
+								"makeTitleLink": false,
+								"titleUrl": null,
+								"titleSize": null,
+								"description": "Argo offers tiered caching in order to increase cache hit rates, lowering infrastructure costs\n",
+								"learnMoreUrl": null,
+								"learnMoreText": null,
+								"displayBorder": false,
+								"openLinkInNewTab": null,
+								"removeCardBorder": false,
+								"icon": null,
+								"iconAssetFile": {
+									"id": "5a959b28-b768-5052-bf8d-c87c2f5dcfb3",
+									"altText": "Reliability load balancer blue",
+									"title": "Reliability load balancer blue",
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/2PEDzEKI6wwUPTe3RiUqC4/f7af6ded9a2e49325d277e1fa1e442e4/reliability-load-balancer.svg"
+										},
+										"description": "Load balancer icon"
 									},
 									"brandfolderAsset": null,
 									"brandfolderAssetMobile": null
@@ -784,18 +792,18 @@
 					},
 					{
 						"contentTypeId": "bladeHtml",
-						"contentfulId": "7EcE0SIgVVPSODccSjTEpE",
-						"htmlContent": "<div style=\"text-align: center; cursor:pointer; margin-bottom:64px; margin-top: -60px;\">\n    <a href=\"/application-services/solutions/#protect-websites-applications-solutions\" class=\"inline-link-style\">Explore more use cases<svg width=\"6\" height=\"10\"\n            viewBox=\"0 0 6 10\" fill=\"currentColor\" aria-label=\"chevron\" xmlns=\"https://www.cloudflare.com/zero-trust/solutions/\"\n            class=\"dib v-mid ml1\">\n            <path\n                d=\"M1.00003 -4.37127e-08L-3.93401e-07 1.00003L4 5L0.000271373 9.00025L1.00003 10L6.00003 5L1.00003 -4.37127e-08Z\">\n            </path>\n        </svg>  </a>\n</div>",
+						"contentfulId": "4e9gZUs18AbJlLPrAzccbv",
+						"htmlContent": "<div style=\"text-align: center; cursor:pointer; margin-bottom:64px; margin-top: -60px;\">\n    <a href=\"/application-services/solutions/#protect-websites-applications-solutions\" target=\"_blank\" class=\"inline-link-style\">Explore more use cases<svg width=\"4\" height=\"10\"\n            viewBox=\"0 0 6 10\" fill=\"currentColor\" aria-label=\"chevron\" xmlns=\"https://www.cloudflare.com/zero-trust/solutions/\"\n            class=\"dib v-mid ml1\">\n            <path\n                d=\"M1.00003 -4.37127e-08L-3.93401e-07 1.00003L4 5L0.000271373 9.00025L1.00003 10L6.00003 5L1.00003 -4.37127e-08Z\">\n            </path>\n        </svg>  </a>\n</div>",
 						"htmlId": null
 					},
 					{
-						"contentfulId": "6NCgfPtpdG2xNBPrvaXRQm",
+						"contentfulId": "4U6exMYro96kSje9zN9sjQ",
 						"contentTypeId": "bladeLeadGeneration",
 						"title": null,
-						"description": "Helping organizations worldwide secure their websites and applications",
+						"description": "See how global companies are using Argo to accelerate their applications",
 						"variant": "inline",
 						"htmlId": null,
-						"sectionPadding": "tile--no-top-bottom-padding",
+						"sectionPadding": "tile--no-top-padding",
 						"backgroundImage": {
 							"id": "5fb646a4-2af5-50d0-815c-108317d4b5b7",
 							"altText": "Cloudflare Orange Background",
@@ -815,11 +823,11 @@
 							"buttonAssetFile": null,
 							"buttonTextLoggedIn": null,
 							"contentTypeId": "button",
-							"contentfulId": "6VOSYSv3uiBZQLAW8rbZKa",
-							"elementName": "Security Center - CASE STUDIES - CTA",
+							"contentfulId": "6iCDUX8WxFw0p4ENXI510p",
+							"elementName": "See case studies",
 							"standardText": null,
 							"text": "See case studies",
-							"url": "https://www.cloudflare.com/case-studies/?usecase=Secure+websites+%26+applications",
+							"url": "/case-studies/?product=Bot+Management",
 							"loggedInUrl": null,
 							"buttonModal": null,
 							"openInNewTab": false,
@@ -829,37 +837,37 @@
 					},
 					{
 						"contentTypeId": "bladeCardCarousel",
-						"contentfulId": "1qrG2LHGqCOI400FXsyOK1",
-						"title": "Resources",
+						"contentfulId": "3FmrX0pakbncBh5JWA8wrc",
+						"title": "Argo Smart Routing Resources",
 						"htmlId": null,
 						"backgroundImage": null,
 						"cards": [
 							{
 								"contentTypeId": "elementResourceCard",
-								"contentfulId": "6DDhTQVkVkkBDbJrBZpfoh",
-								"heading": "Product brief",
-								"description": "Cloudflare Security Center",
+								"contentfulId": "K9f13TI31kBMvJYWKM0mK",
+								"heading": "Whitepaper",
+								"description": "How Cloudflare optimizes web content for faster page loads",
 								"category": "None",
 								"link": {
 									"contentTypeId": "elementLink",
-									"contentfulId": "5SPssYYNOWm5EiNWZ8O00A",
-									"elementName": "Security Center - Resources cards carousel -  Resources card - Cloudflare Security Center - Link",
+									"contentfulId": "3aZn4ZysJXbno5mmlKyBMG",
+									"elementName": "How Cloudflare optimizes web content for faster page loads - link",
 									"standardText": null,
-									"text": "Get the product brief",
-									"url": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/3k2B8G6YCOFwO33glU9RIw/be9a81ab11fdbcfe3c533ee48acae9c4/BDES-6049_cloudflare_security_center_datasheet_Letter.pdf",
+									"text": "Read the whitepaper",
+									"url": "/lp/how-cloudflare-optimizes-web-content/",
 									"elementModal": null,
-									"openInNewTab": true,
+									"openInNewTab": false,
 									"locale": "en-US"
 								},
 								"image": {
-									"id": "3b7d1ba1-b13a-521a-90cb-cc3cd98a6e12",
-									"altText": "Product brief thumbnail",
-									"title": "Product brief thumbnail",
+									"id": "aef302d2-a7e8-57b1-b2c4-610e768f5249",
+									"altText": "Explore more whitepapers in Cloudflare's Resource Hub - thumbnail",
+									"title": "Explore more whitepapers in Cloudflare's Resource Hub - thumbnail",
 									"activeAsset": "Contentful Asset",
 									"locale": "en-US",
 									"contentfulAsset": {
 										"file": {
-											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/2lUAsz5YsJICKhBWy6Rl9v/2e039f96c66c926b60c9c9668377ab47/Product_brief_99x180.svg"
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/2ZiPjCDWMWnibCFs5nxHBa/75ef0ba1b4484c2da8ab4d3f40437dff/Whitpapper-generic-106x186-300dpi.png"
 										},
 										"description": null
 									},
@@ -869,32 +877,32 @@
 							},
 							{
 								"contentTypeId": "elementResourceCard",
-								"contentfulId": "1AFiecGISnYaOMrUDstIQr",
-								"heading": "Insight",
-								"description": "Cloudflare Security Center developer docs",
+								"contentfulId": "CQD4BqJCWjpe6UXD0g3Qc",
+								"heading": "Demo",
+								"description": "Learn more about Argo Smart Routing and see how Cloudflare accelerates web performance",
 								"category": "None",
 								"link": {
 									"contentTypeId": "elementLink",
-									"contentfulId": "4V7YKJo0mLSaQEiwRVOwhs",
-									"elementName": "Security Center - Resources cards carousel - Cloudflare Security Center developer docs - Link",
+									"contentfulId": "4ISfvaaumYMZEigTb5oSgt",
+									"elementName": "Learn more about Argo Smart Routing - link",
 									"standardText": null,
-									"text": "Read developer docs",
-									"url": "https://developers.cloudflare.com/security-center/",
+									"text": "Watch demo",
+									"url": "https://cloudflare.ondemand.goldcast.io/on-demand/85323b11-857b-4c70-bded-63ff792d885e",
 									"elementModal": null,
 									"openInNewTab": true,
 									"locale": "en-US"
 								},
 								"image": {
-									"id": "1c0de5f1-abee-55b8-9653-945bf9480f62",
-									"altText": "Cloudflare insights",
-									"title": "Cloudflare insights",
+									"id": "b6011867-5a8b-5c2f-b567-9ebfb16f9361",
+									"altText": null,
+									"title": "Webinar 106x165 - Thumbnail for mosaic card",
 									"activeAsset": "Contentful Asset",
 									"locale": "en-US",
 									"contentfulAsset": {
 										"file": {
-											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/7eD4EXWL2DPwSe5Y8ASppZ/3cf93c08e638e5f6057d6a1a7eccd9ab/Insight_106x182.svg"
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/R68bUicgjCMdgEBXBM1ey/c350338abc119640172d8876202ffbf8/Webinar-106x165-thumbnail-card.svg"
 										},
-										"description": null
+										"description": "Webinar 106x165 - Thumbnail for mosaic card"
 									},
 									"brandfolderAsset": null,
 									"brandfolderAssetMobile": null
@@ -902,17 +910,17 @@
 							},
 							{
 								"contentTypeId": "elementResourceCard",
-								"contentfulId": "5K3Z9cUuyxoi712zNYNBXN",
+								"contentfulId": "2mtfFS3O8BKOSzufzbvOND",
 								"heading": null,
-								"description": "3 challenges of securing and connecting application services",
+								"description": "Getting faster: Know your website, and know what's slowing it down",
 								"category": "None",
 								"link": {
 									"contentTypeId": "elementLink",
-									"contentfulId": "34k6Dgl7HMiam75Tjm26b2",
-									"elementName": "Security Center - Resources cards carousel - 3 challenges of securing and connecting application services - Link",
+									"contentfulId": "5uxTMgLT4hVTqRRsgprqi5",
+									"elementName": "Getting faster: Know your website, and know what's slowing it down - link",
 									"standardText": null,
-									"text": " Get the whitepaper",
-									"url": "/lp/3-challenges-of-securing-and-connecting-application-services/",
+									"text": " Read the whitepaper",
+									"url": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/4EUB9gyhVFUC2kUNt2U19Z/791b115cf433536fe36ddd0dcc30ca39/Getting_Faster-_Know_Your_Website__and_Know_What___s_Slowing_It_Down_.pdf",
 									"elementModal": null,
 									"openInNewTab": false,
 									"locale": "en-US"
@@ -935,32 +943,32 @@
 							},
 							{
 								"contentTypeId": "elementResourceCard",
-								"contentfulId": "3sfkG4CseeNqV1QzFLJ0EN",
-								"heading": "Article",
-								"description": "Website security guide: A 10-step checklist",
+								"contentfulId": "uIXu0KoeAPdPgH9xGRDqG",
+								"heading": "Report",
+								"description": "Cloudflare named a 'Leader' in 2024 IDC MarketScape for Worldwide Edge Delivery Services",
 								"category": "None",
 								"link": {
 									"contentTypeId": "elementLink",
-									"contentfulId": "lbPDzmYd0aAY1hGAykgM7",
-									"elementName": "Advanced Certificate Manager - Resources card carousel - Website security guide: A 10-step checklist - Link",
+									"contentfulId": "7kulc51ZCkko1SuHVWK8EL",
+									"elementName": "Cloudflare named a 'Leader' in 2024 IDC MarketScape for Worldwide Edge Delivery Services - link",
 									"standardText": null,
-									"text": "Learn more",
-									"url": "https://www.cloudflare.com/learning/security/glossary/website-security-checklist/",
+									"text": "Analyst report",
+									"url": "/lp/idc-marketscape-for-worldwide-commercial-edge-delivery-services-2024",
 									"elementModal": null,
 									"openInNewTab": false,
 									"locale": "en-US"
 								},
 								"image": {
-									"id": "37200d64-8a19-5b80-a727-74e25737dff6",
-									"altText": "theNet article - thumbnail",
-									"title": "theNet article - thumbnail",
+									"id": "197eb4d0-2c05-52bd-bc59-8b59ab0fe201",
+									"altText": null,
+									"title": null,
 									"activeAsset": "Contentful Asset",
 									"locale": "en-US",
 									"contentfulAsset": {
 										"file": {
-											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/6dsbqlnfwzvlPRvNcV2jTT/124c616468093a4ee6bcd75762121c02/Article_106x182.svg"
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/2dlg4oApldWlYGAWdzwN7C/3b0f1908d3e4ca00a193c2fd679981a3/Analyst_Report_B.png"
 										},
-										"description": null
+										"description": ""
 									},
 									"brandfolderAsset": null,
 									"brandfolderAssetMobile": null
@@ -970,8 +978,8 @@
 					},
 					{
 						"contentTypeId": "bladeEnablement",
-						"contentfulId": "5QuFcTHKjLloxlmE52fCEY",
-						"title": "Get Cloudflare Security Center for your website",
+						"contentfulId": "1SgavBEaW4goFbe9M6Pogm",
+						"title": "Get Argo Smart Routing for your enterprise",
 						"titleSize": "medium",
 						"backgroundColor": "image-background",
 						"buttonText": null,
@@ -986,14 +994,54 @@
 							"buttonAssetFile": null,
 							"buttonTextLoggedIn": null,
 							"contentTypeId": "button",
-							"contentfulId": "3BdumYLPIHZrPHSTsMH0fR",
-							"elementName": "Security Center - Get Cloudflare Security Center for your website - Read more - CTA",
+							"contentfulId": "IK4voRN7P7YlczyZYywKY",
+							"elementName": "Talk to an expert - connectivity cloud",
 							"standardText": null,
-							"text": "Read more",
-							"url": "https://developers.cloudflare.com/security-center/",
+							"text": "Talk to an expert",
+							"url": "https://www.cloudflare.com/plans/enterprise/contact/",
 							"loggedInUrl": null,
-							"buttonModal": null,
-							"openInNewTab": true,
+							"buttonModal": {
+								"contentTypeId": "formModal",
+								"contentfulId": "5WCqmk1IzM81raoSxfOKSV",
+								"modalName": "Enterprise General Sales Inquiry",
+								"modalId": "enterprise-general-sales-inquiry",
+								"modalType": "single-form",
+								"marketoForm": {
+									"contentTypeId": "marketoEmbeddedForm",
+									"contentfulId": "5TLvSjYmTnIb1FOLQW6f9v",
+									"bladeName": "Enterprise General Sales Inquiry",
+									"backgroundColor": "white",
+									"marketoFormId": 1341,
+									"marketoFormLeadSource": "Inbound - Web Form",
+									"marketoFormLeadSourceDetail": "Web Form - Enterprise General Sales Inquiry",
+									"marketoFormAssetName": null,
+									"marketoFormHeaderText": "Talk to an expert",
+									"marketoFormDefaultComment": null,
+									"showCommentBox": null,
+									"marketoFormThankYouText": null,
+									"marketoFormCustomSuccessMessage": null,
+									"marketoFormPdfDownload": null,
+									"marketoFormPdfDownloadI18n": [],
+									"marketoFormAssetDownloadButtonText": null,
+									"marketoFormSuccessRedirectUrl": null,
+									"sendAdRoll": null,
+									"meta_adRollCustomSegment": null,
+									"enableSandbox": null,
+									"marketoFormSubmitButtonText": null,
+									"marketoFormSubmitButtonColor": null,
+									"enableEmailVerification": null,
+									"disableEnterpriseEmailNotification": null,
+									"enableRingout": null
+								},
+								"title": null,
+								"regularCopy": null,
+								"splitFormDefaultTab": null,
+								"selfServeTabText": null,
+								"selfServeCopy": null,
+								"enterpriseTabText": null,
+								"enterpriseCopy": null
+							},
+							"openInNewTab": false,
 							"locale": "en-US"
 						},
 						"buttonTwo": null,
@@ -1002,8 +1050,50 @@
 					}
 				],
 				"noindex": false,
-				"formModal": [],
-				"keepHashUrlSyncedWithScrollPosition": false
+				"formModal": [
+					{
+						"contentTypeId": "formModal",
+						"contentfulId": "3npDNg2Jxa12gSNXVWGUcz",
+						"modalName": "Argo Smart Routing - Product Page: Form Modal ",
+						"modalId": "argo-smart-routing-product-contact-sales",
+						"modalType": "single-form",
+						"marketoForm": {
+							"contentTypeId": "marketoEmbeddedForm",
+							"contentfulId": "2JgJH3pCxXounwBHmtKBLc",
+							"bladeName": "Argo Smart Routing - Product Page: Marketo Form (1341)",
+							"backgroundColor": "white",
+							"marketoFormId": 1341,
+							"marketoFormLeadSource": "Inbound - Web Form",
+							"marketoFormLeadSourceDetail": "Contact Us Cloudflare Argo Smart Routing",
+							"marketoFormAssetName": null,
+							"marketoFormHeaderText": null,
+							"marketoFormDefaultComment": null,
+							"showCommentBox": true,
+							"marketoFormThankYouText": null,
+							"marketoFormCustomSuccessMessage": null,
+							"marketoFormPdfDownload": null,
+							"marketoFormPdfDownloadI18n": [],
+							"marketoFormAssetDownloadButtonText": null,
+							"marketoFormSuccessRedirectUrl": null,
+							"sendAdRoll": null,
+							"meta_adRollCustomSegment": null,
+							"enableSandbox": null,
+							"marketoFormSubmitButtonText": null,
+							"marketoFormSubmitButtonColor": null,
+							"enableEmailVerification": null,
+							"disableEnterpriseEmailNotification": null,
+							"enableRingout": null
+						},
+						"title": "Contact Sales",
+						"regularCopy": "Argo Smart Routing",
+						"splitFormDefaultTab": null,
+						"selfServeTabText": null,
+						"selfServeCopy": null,
+						"enterpriseTabText": null,
+						"enterpriseCopy": null
+					}
+				],
+				"keepHashUrlSyncedWithScrollPosition": null
 			},
 			"site": {
 				"siteMetadata": {
@@ -1014,8 +1104,8 @@
 		"pageContext": {
 			"currentLocale": "en-US",
 			"locale": "en-US",
-			"pathname": "/application-services/products/securitycenter/",
-			"contentfulId": "oqw7JLDK7wiOt55NrSNX5",
+			"pathname": "/application-services/products/argo-smart-routing/",
+			"contentfulId": "3dZi7ipIacUoymKoKAW4Yc",
 			"allowedHrefLangs": [
 				"en-US",
 				"zh-CN",
