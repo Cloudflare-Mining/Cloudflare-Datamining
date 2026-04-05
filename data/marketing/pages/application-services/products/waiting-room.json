@@ -1,10 +1,10 @@
 {
 	"componentChunkName": "component---src-components-page-page-template-tsx",
-	"path": "/application-services/products/securitycenter/",
+	"path": "/application-services/products/waiting-room/",
 	"result": {
 		"data": {
 			"page": {
-				"pageName": "Cloudflare Security Center",
+				"pageName": "Waiting Room Product Page",
 				"localeList": {
 					"enUS": "English for Locale",
 					"zhCN": "Translated for Locale",
@@ -32,29 +32,34 @@
 					"plPL": "Translated for Locale",
 					"arAR": "No Page for Locale"
 				},
-				"relativePath": "application-services/products/securitycenter",
+				"relativePath": "application-services/products/waiting-room/",
 				"topNavOptions": "default",
 				"topNavButtonText": null,
 				"topNavButtonUrl": null,
 				"footerOptions": "default",
 				"metaTags": {
-					"metaTitle": "Cloudflare Security Center | Attack Surface Management",
-					"metaDescription": "Attack surface management that maps an organization's attack surface and gives a list of potential security risks and vulnerabilities associated with their IT infrastructure, and mitigate threats in a single click. ",
+					"metaTitle": "Cloudflare Waiting Room |  Virtual waiting rooms",
+					"metaDescription": "Cloudflare Waiting Room lets you direct users to a custom-branded virtual 'waiting room' during traffic surges, improving their experience while they wait.",
 					"twitterCustomImage": null,
 					"metaImage": {
 						"file": {
-							"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/53qCYhQbir5WtIU0VDWESo/954a48bfb17f429acf469e5f14345d83/unnamed-3.png"
+							"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/60bG9LEPCtF3G2tOcCCtCv/5d4f73889734bdb634c57b9c9116961f/waiting_room_product.png"
 						},
-						"description": "DO NOT REMOVE, THIS IS CLOUDFLARE'S GLOBAL OG META ASSET"
+						"description": null
 					},
-					"facebookCustomImage": null,
+					"facebookCustomImage": {
+						"file": {
+							"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/60bG9LEPCtF3G2tOcCCtCv/5d4f73889734bdb634c57b9c9116961f/waiting_room_product.png"
+						},
+						"description": null
+					},
 					"author": []
 				},
 				"sys": {
-					"createdAt": "2021-12-09T14:01:16.052Z",
-					"updatedAt": "2026-04-01T14:20:28.956Z"
+					"createdAt": "2021-01-21T23:30:29.913Z",
+					"updatedAt": "2026-04-01T01:42:57.790Z"
 				},
-				"contentfulId": "oqw7JLDK7wiOt55NrSNX5",
+				"contentfulId": "6UobIFQgEGwKBcpU5p2u9D",
 				"contentTypeId": "page",
 				"promotionalBanner": null,
 				"psaBanner": null,
@@ -64,34 +69,31 @@
 				"template": null,
 				"relatedBlades": [
 					{
-						"contentfulId": "5PzoE4zoXHzCnCUuSdzQN6",
+						"contentfulId": "wjLMKvJKE9DVKHu8wOKx9",
 						"contentTypeId": "bladeHeroAnimation",
-						"title": "Cloudflare Security Center",
+						"title": "Cloudflare Waiting Room ",
 						"titleSize": null,
-						"subtitle": "Attack surface management for all Cloudflare customers",
+						"subtitle": "A virtual waiting room to manage peak traffic",
 						"subtitleSize": null,
-						"copy": "Cloudflare Security Center scans your infrastructure for potential vulnerabilities so you can manage your attack surface and protect your brand. Improve security with threat intelligence data from Cloudflare's massive global network, which protects about 20% of all websites.\n\nIncluded in all plans at no charge.\n",
+						"copy": "Sudden increases in traffic can overwhelm your applications and infrastructure, leading to slow performance or complete disruption to your online presence.\n\nCloudflare Waiting Room allows organizations to route excess users to a custom-branded waiting room, helping preserve the customer experience and protecting origin servers from being overwhelmed with requests. ",
 						"buttonColor": "orange",
 						"buttonColor2": "orange",
-						"buttonText1": "Read developer docs",
-						"buttonText1LoggedIn": null,
-						"buttonUrl1": "https://developers.cloudflare.com/security-center/",
-						"buttonUrl1LoggedIn": null,
+						"buttonText1": "Get started",
+						"buttonText1LoggedIn": "Activate in Dash",
+						"buttonUrl1": "https://dash.cloudflare.com/sign-up",
+						"buttonUrl1LoggedIn": "https://dash.cloudflare.com/?to=/:account/:zone/traffic/waiting-rooms",
 						"button1ExtraClass": null,
-						"buttonText2": "Get the product brief",
-						"buttonText2LoggedIn": null,
-						"buttonUrl2": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/3k2B8G6YCOFwO33glU9RIw/be9a81ab11fdbcfe3c533ee48acae9c4/BDES-6049_cloudflare_security_center_datasheet_Letter.pdf",
+						"buttonText2": "Read the product brief",
+						"buttonText2LoggedIn": "Need more than one Waiting Room? ",
+						"buttonUrl2": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/IydVtIa13olmKwJ1Dv8KW/43dc4e3cc26f9a2578750fab360172be/2_Pager___Layout_A_-_Standard_Cloudflare_-_A4.pdf",
 						"button2ExtraClass": null,
 						"bladeBorder": "none",
 						"htmlId": null,
 						"textColor": "black",
 						"includeVideo": false,
 						"streamVideoId": null,
-						"streamOptions": [
-							"controls",
-							"captions"
-						],
-						"streamCaptions": "en",
+						"streamOptions": null,
+						"streamCaptions": null,
 						"popupStreamId": null,
 						"popupText": null,
 						"button1OpenInNewTab": true,
@@ -101,7 +103,7 @@
 						"streamPosterAssetFile": null,
 						"streamPoster": null,
 						"imageSize": "Medium",
-						"imagePosition": false,
+						"imagePosition": null,
 						"leftLinkUrl": null,
 						"leftLink": null,
 						"leftLinkLoggedIn": null,
@@ -112,14 +114,14 @@
 						"imageLayout": null,
 						"image": null,
 						"imageAssetFile": {
-							"id": "a5441816-81e1-5773-9d48-71239db17dbd",
-							"altText": "Cloudflare Security Center",
-							"title": "Cloudflare Security Center",
+							"id": "1ca4d18f-d74b-5a65-a81a-cc7cc802ca7b",
+							"altText": "Cloudflare waiting room hero illustration",
+							"title": "Cloudflare waiting room hero illustration",
 							"activeAsset": "Contentful Asset",
 							"locale": "en-US",
 							"contentfulAsset": {
 								"file": {
-									"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/7h3ZPSqx5P1ns5Q40L3aWQ/34bae34fb0506a6fc9ebcb88247c92ac/BDES-5032_-_Cloudflare_Security_Center.svg"
+									"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/5wyW25sYVxRcl9x8cJVWoG/48d3e6ecc30cdf27a5b633e285799311/cloudflare-waiting-room-hero-illustration.svg"
 								},
 								"description": ""
 							},
@@ -128,22 +130,22 @@
 						}
 					},
 					{
-						"contentfulId": "3bEjFzbNSJgOVf1Xh8jDFt",
+						"contentfulId": "2dj2Nnk15m0gWLrut1wJ8R",
 						"contentTypeId": "bladeMultipleColumnsLayout",
 						"title": null,
-						"eyebrowHeading": "BENEFITS OF CLOUDFLARE SECURITY CENTER",
+						"eyebrowHeading": "BENEFITS OF CLOUDFLARE WAITING ROOM",
 						"description": null,
 						"textLayout": "left",
-						"columnsLayout": "Four Columns",
+						"columnsLayout": "Three Columns",
 						"columnContent": [
 							{
 								"contentTypeId": "feature",
-								"contentfulId": "4wBTGWxlPzwFRZrG3YpAIb",
-								"title": "Scan known assets",
+								"contentfulId": "1kSSkgykb1A8wL5utczOFs",
+								"title": "Stay online",
 								"makeTitleLink": false,
 								"titleUrl": null,
 								"titleSize": null,
-								"description": "Identify potential threats in your websites, servers, and the dependencies running on them.",
+								"description": "Protect your application from legitimate traffic surges and ensure you are able to scale to meet high demand.",
 								"learnMoreUrl": null,
 								"learnMoreText": null,
 								"displayBorder": false,
@@ -151,16 +153,16 @@
 								"removeCardBorder": false,
 								"icon": null,
 								"iconAssetFile": {
-									"id": "9dc92233-8924-5d39-8e0d-972e50ea7311",
-									"altText": "Case study blue",
-									"title": "Case study blue",
+									"id": "b81f14af-5749-5ed0-ba32-c9f27ea1c4a2",
+									"altText": "Traffic legit orange",
+									"title": "Traffic legit orange",
 									"activeAsset": "Contentful Asset",
 									"locale": "en-US",
 									"contentfulAsset": {
 										"file": {
-											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/2skRVGr8frUhOMQwi7hflN/8bf77791d359c7e95772b801e4cd4eeb/case-study.svg"
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/4nC4blUcOffvGbQwA4Z1is/d9f36076577d83bef87ab2042ce8b3d2/traffic-legit-browser.svg"
 										},
-										"description": ""
+										"description": "Global traffic management icon"
 									},
 									"brandfolderAsset": null,
 									"brandfolderAssetMobile": null
@@ -174,12 +176,12 @@
 							},
 							{
 								"contentTypeId": "feature",
-								"contentfulId": "5LndpMFCJbIgXw3BxLcAG2",
-								"title": "Identify unknown assets",
+								"contentfulId": "6vk2Kv0Q93rCVEvVBq9JJR",
+								"title": "Reduce your infrastructure costs",
 								"makeTitleLink": false,
 								"titleUrl": null,
 								"titleSize": null,
-								"description": "Find shadow IT or other unsanctioned infrastructure, like forgotten websites, unmanaged subdomains, or non-approved cloud applications.",
+								"description": "Eliminate costs associated with maintaining additional servers and purchasing extra bandwidth to serve peak traffic.",
 								"learnMoreUrl": null,
 								"learnMoreText": null,
 								"displayBorder": false,
@@ -187,88 +189,52 @@
 								"removeCardBorder": false,
 								"icon": null,
 								"iconAssetFile": {
-									"id": "b0b8d74a-324b-582f-ade7-bbbdc3311984",
-									"altText": "Help question blue",
-									"title": "Help question blue",
+									"id": "ca8dae98-4f47-5466-a459-bdaacb07a225",
+									"altText": "Dollar",
+									"title": "Dollar",
 									"activeAsset": "Contentful Asset",
 									"locale": "en-US",
 									"contentfulAsset": {
 										"file": {
-											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/69tNrTgBhqfzPRIPu8Gwid/fb23c2d12223eaeb989f9266929c196d/help-question.svg"
-										},
-										"description": ""
-									},
-									"brandfolderAsset": null,
-									"brandfolderAssetMobile": null
-								},
-								"imageOverlaySuperheader": null,
-								"imageOverlayText": null,
-								"imageAssetFile": null,
-								"streamId": null,
-								"streamThumbnail": null,
-								"streamThumbnailAssetFile": null
-							},
-							{
-								"contentTypeId": "feature",
-								"contentfulId": "2tK3SICw2irB4mKyJsyhA6",
-								"title": "Detect rogue assets",
-								"makeTitleLink": false,
-								"titleUrl": null,
-								"titleSize": null,
-								"description": "Identify malicious infrastructure created by attackers such as typosquatted domains, or a website or app impersonating a legitimate brand.",
-								"learnMoreUrl": null,
-								"learnMoreText": null,
-								"displayBorder": false,
-								"openLinkInNewTab": null,
-								"removeCardBorder": false,
-								"icon": null,
-								"iconAssetFile": {
-									"id": "94716675-099b-561c-a6b3-d9be2b13ab58",
-									"altText": "Search blue",
-									"title": "Search blue",
-									"activeAsset": "Contentful Asset",
-									"locale": "en-US",
-									"contentfulAsset": {
-										"file": {
-											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/3BxXRJAvXxK5VsZNLR3VPH/5bf83900a7872240c84b8a9074e5d30c/search.svg"
-										},
-										"description": ""
-									},
-									"brandfolderAsset": null,
-									"brandfolderAssetMobile": null
-								},
-								"imageOverlaySuperheader": null,
-								"imageOverlayText": null,
-								"imageAssetFile": null,
-								"streamId": null,
-								"streamThumbnail": null,
-								"streamThumbnailAssetFile": null
-							},
-							{
-								"contentTypeId": "feature",
-								"contentfulId": "3i8yUK2H1UHx45hNoHBG1k",
-								"title": "Identify third-party risks",
-								"makeTitleLink": false,
-								"titleUrl": null,
-								"titleSize": null,
-								"description": "Detect risks from third-party services and dependencies, from [open-source vulnerabilities](https://www.cloudflare.com/the-net/oss-attack-detection/) to malicious JavaScript.",
-								"learnMoreUrl": null,
-								"learnMoreText": null,
-								"displayBorder": false,
-								"openLinkInNewTab": null,
-								"removeCardBorder": false,
-								"icon": null,
-								"iconAssetFile": {
-									"id": "f2eb93a9-5084-50de-8f8c-5182cce34fa9",
-									"altText": "share icon",
-									"title": "share icon",
-									"activeAsset": "Contentful Asset",
-									"locale": "en-US",
-									"contentfulAsset": {
-										"file": {
-											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/7oSAE8BQTzD1sgQCgrArww/f79da788e5497cd68b5851f995b132af/share.svg"
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/7td2uxheozRtbhflYJ4n7b/f957bd073f41d31f0579dafa98f329c4/price__1_.svg"
 										},
 										"description": null
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								},
+								"imageOverlaySuperheader": null,
+								"imageOverlayText": null,
+								"imageAssetFile": null,
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
+							},
+							{
+								"contentTypeId": "feature",
+								"contentfulId": "lSg8VZyBXladyiIzpMwji",
+								"title": "Deliver a consistent brand experience",
+								"makeTitleLink": false,
+								"titleUrl": null,
+								"titleSize": null,
+								"description": "Waiting Room acts as an extension of your brand, ensuring that users get a seamless online experience even while waiting.",
+								"learnMoreUrl": null,
+								"learnMoreText": null,
+								"displayBorder": false,
+								"openLinkInNewTab": null,
+								"removeCardBorder": false,
+								"icon": null,
+								"iconAssetFile": {
+									"id": "6fd865fc-5f0b-5650-a5a5-9ae0a9d24d1f",
+									"altText": "Yes check blue",
+									"title": "Yes check blue",
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/4oiO40TBTzUSAm1i5gAc7W/ae5829bb7b71eb63edeb8c87a02135f5/yes-check.svg"
+										},
+										"description": "Checkmark icon"
 									},
 									"brandfolderAsset": null,
 									"brandfolderAssetMobile": null
@@ -285,9 +251,9 @@
 						"htmlId": null
 					},
 					{
-						"contentfulId": "iDceTZsHdrLoVJFfsUT37",
-						"title": "A constant view of your attack surface",
-						"copy": "Cloudflare Security Center brings together our suite of security products, our security expertise, and our unique Internet intelligence as a unified security intelligence solution.\n\nOnce activated, it scans customer infrastructure on a regular basis (frequency depends on type of plan) to map the attack surface and identify potential vulnerabilities.\n",
+						"contentfulId": "5C4daK6b9UNQFIOCghUljC",
+						"title": "Create queues to gracefully manage user traffic",
+						"copy": "Waiting Room keeps wait times low by dynamically managing traffic. As soon as a user leaves an application or their cookie expires, a new user is let in.\n\nYou can set activation thresholds based on incoming rate of traffic or total active users. Admit queued visitors using multiple queuing options — first-in-first-out, random, or lottery.",
 						"toggleText": null,
 						"button": [],
 						"learnMoreUrl": null,
@@ -310,16 +276,16 @@
 						"streamPosterAssetFile": null,
 						"image": null,
 						"imageAssetFile": {
-							"id": "c79b944a-f2b6-5cbe-988f-e2d280b4a596",
-							"altText": "Cloudflare security portfolio larger - diagram",
-							"title": "Cloudflare security portfolio larger - diagram",
+							"id": "bad5b234-e6f8-519e-8984-004b66844ac3",
+							"altText": "Illustration depicting users entering an application from the waiting room. ",
+							"title": "Keep Wait Times Low",
 							"activeAsset": "Contentful Asset",
 							"locale": "en-US",
 							"contentfulAsset": {
 								"file": {
-									"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/7kScxnC6AGBLJOIhyaVEBq/af795f0545bf09e06907d18a580c5adb/71670_Cloudflare_BDES-2322_Update_Security_Portfolio_Graphic_Superside_V5.svg"
+									"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/STFxPFTXo1ekvxrCtw9Ei/8951fdb56aa5833c60856397f8577e90/keep-wait-times-low-spot-illustration.svg"
 								},
-								"description": "The Cloudflare security portfolio"
+								"description": null
 							},
 							"brandfolderAsset": null,
 							"brandfolderAssetMobile": null
@@ -333,14 +299,14 @@
 						"backgroundColor": "white",
 						"bladeBorder": "none",
 						"imagePosition": true,
-						"imageSize": null,
-						"imageTextAlignment": null,
+						"imageSize": "medium",
+						"imageTextAlignment": "center",
 						"togglesTo": []
 					},
 					{
 						"contentTypeId": "bladeEnablement",
-						"contentfulId": "3QxCrdwr0AVXwoZcpRSyjU",
-						"title": "Learn the 3 major challenges to securing application services",
+						"contentfulId": "7MCao4zbqudEFxu9c06PAD",
+						"title": "Learn about strategies for handling traffic spikes and bot attacks",
 						"titleSize": "medium",
 						"backgroundColor": "image-background",
 						"buttonText": null,
@@ -355,23 +321,23 @@
 							"buttonAssetFile": null,
 							"buttonTextLoggedIn": null,
 							"contentTypeId": "button",
-							"contentfulId": "6uNxCxS9CS73dje5UReKPZ",
-							"elementName": "Security Center - ADDITIONAL OFFER BLADE - CTA",
+							"contentfulId": "59JA8xyeX50LBTJ3WkIEgS",
+							"elementName": "Waiting Room - Additional offer - CTA",
 							"standardText": null,
-							"text": "Get the whitepaper",
-							"url": "/lp/3-challenges-of-securing-and-connecting-application-services/",
+							"text": "Watch the webinar",
+							"url": "https://cloudflare.ondemand.goldcast.io/on-demand/c115a940-aa7b-4c3a-9ff8-6f68d502cbdc",
 							"loggedInUrl": null,
 							"buttonModal": null,
-							"openInNewTab": false,
+							"openInNewTab": true,
 							"locale": "en-US"
 						},
 						"buttonTwo": null,
-						"sectionPadding": null,
+						"sectionPadding": "tile--no-top-padding",
 						"eyebrow": null
 					},
 					{
 						"contentTypeId": "bladeRichTextColumnGroup",
-						"contentfulId": "GGbTyoE36vPJN8JpKzMWB",
+						"contentfulId": "1rbQlyUNsnh6l2RB2gW2og",
 						"htmlId": null,
 						"mainHeadline": null,
 						"backgroundColor": "white",
@@ -381,7 +347,7 @@
 						"columns": [
 							{
 								"contentTypeId": "elementRichText",
-								"contentfulId": "6jsBYSvgMJn3NDPZaGWGLu",
+								"contentfulId": "5FVi34e2l3K400yEMX8kKN",
 								"title": null,
 								"htmlId": null,
 								"elementPosition": "relative",
@@ -433,7 +399,7 @@
 																"target": null,
 																"uri": null
 															},
-															"value": "\"Our busiest website gets approximately 2.5 billion requests a month. It's hit by approximately 57 million threats each and every month. And Cloudflare blocks all 57 million every month. I know this because Cloudflare's security insights technology shows me exactly what's happening across the entire digital footprint.\"",
+															"value": "\"If we are hosting a game that is very popular, and we end up getting hundreds of thousands more users than anticipated, we know that our infrastructure will have time to scale, thanks to Cloudflare Waiting Room.\"",
 															"marks": [],
 															"content": null
 														}
@@ -477,27 +443,7 @@
 														"target": null,
 														"uri": null
 													},
-													"value": "Global Director of Governance, Risk, Compliance, and Security ",
-													"marks": [],
-													"content": null
-												},
-												{
-													"nodeType": "text",
-													"data": {
-														"target": null,
-														"uri": null
-													},
-													"value": " — ",
-													"marks": [],
-													"content": null
-												},
-												{
-													"nodeType": "text",
-													"data": {
-														"target": null,
-														"uri": null
-													},
-													"value": "Genuine Parts Company",
+													"value": "CEO — FanHero",
 													"marks": [],
 													"content": null
 												}
@@ -698,22 +644,22 @@
 						"sectionPadding": null
 					},
 					{
-						"contentfulId": "2xzo1KU0gGkYNlHIq4IaHK",
+						"contentfulId": "79lvOhwPSXxIbpe89d0z8l",
 						"contentTypeId": "bladeMultipleColumnsLayout",
-						"title": "Cloudflare Security Center helps you block web-borne attacks, apply monitoring and security across hybrid workforces, and improve the web browsing experience for users",
-						"eyebrowHeading": "Top Security Center use cases",
+						"title": "Cloudflare Waiting Room ensures that applications remain available and usable even when demand surges to unexpected levels.",
+						"eyebrowHeading": "Top Waiting Room use cases",
 						"description": null,
 						"textLayout": "left",
-						"columnsLayout": "Two Columns",
+						"columnsLayout": "Three Columns",
 						"columnContent": [
 							{
 								"contentTypeId": "feature",
-								"contentfulId": "1VptBSAQeX5vYKMX5n3nYP",
-								"title": "Stop attacks before they happen",
+								"contentfulId": "20FhjeEEdtnrF0T57eJpsW",
+								"title": "Reduce cart abandonment rate",
 								"makeTitleLink": false,
 								"titleUrl": null,
 								"titleSize": null,
-								"description": "Identify vulnerabilities that can compromise your website or servers, even in third-party and open-source libraries.",
+								"description": "Ensure that your online transactions are not impacted by downtime or slow application performance during peak traffic hours.",
 								"learnMoreUrl": null,
 								"learnMoreText": null,
 								"displayBorder": false,
@@ -721,16 +667,16 @@
 								"removeCardBorder": false,
 								"icon": null,
 								"iconAssetFile": {
-									"id": "27d3dc18-7219-53bc-bd53-b9742318bf14",
-									"altText": "Traffic attack blue",
-									"title": "Traffic attack blue",
-									"activeAsset": "Contentful Asset",
+									"id": "a27a111c-85d5-596e-b074-e5cd44bf35ce",
+									"altText": "Shop cart blue",
+									"title": "Shop cart blue",
+									"activeAsset": "Brandfolder Asset",
 									"locale": "en-US",
 									"contentfulAsset": {
 										"file": {
-											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/44OWJ7jF9JVwp4zh7zMy7B/d80f24569dfb7d418d6913b32940bf5b/traffic-attack-browser_1_.svg"
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/3xeOjnsQHBnFlh6ClUh6Sm/7c7e1c62f0e3d65715268aba5f044bab/shop-cart.svg"
 										},
-										"description": "Prevent financial and identity theft icon"
+										"description": ""
 									},
 									"brandfolderAsset": null,
 									"brandfolderAssetMobile": null
@@ -744,12 +690,12 @@
 							},
 							{
 								"contentTypeId": "feature",
-								"contentfulId": "3KImGEYxx1oZ0MtOdTB4Yx",
-								"title": "Prevent unauthorized use of cloud apps",
+								"contentfulId": "210uyXX61h7Qe7zwsKS5l6",
+								"title": "Holiday traffic and special events",
 								"makeTitleLink": false,
 								"titleUrl": null,
 								"titleSize": null,
-								"description": "Find shadow IT infrastructure that may not be secured or managed properly.",
+								"description": "Prevent your infrastructure from becoming overwhelmed when traffic surges during [holidays](https://www.cloudflare.com/the-net/holiday-readiness-strategy/) and events.",
 								"learnMoreUrl": null,
 								"learnMoreText": null,
 								"displayBorder": false,
@@ -757,16 +703,52 @@
 								"removeCardBorder": false,
 								"icon": null,
 								"iconAssetFile": {
-									"id": "84bf9920-ae71-533f-9d21-68e8f4517443",
-									"altText": "Platform apps ",
-									"title": "Platform apps ",
+									"id": "b81f14af-5749-5ed0-ba32-c9f27ea1c4a2",
+									"altText": "Traffic legit orange",
+									"title": "Traffic legit orange",
 									"activeAsset": "Contentful Asset",
 									"locale": "en-US",
 									"contentfulAsset": {
 										"file": {
-											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/4zgjneatAin9CgQmzYl6Yq/b61aea1e89c05d2a7a3d458fe5b2d4db/platform-apps.svg"
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/4nC4blUcOffvGbQwA4Z1is/d9f36076577d83bef87ab2042ce8b3d2/traffic-legit-browser.svg"
 										},
-										"description": "Platform apps icon"
+										"description": "Global traffic management icon"
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								},
+								"imageOverlaySuperheader": null,
+								"imageOverlayText": null,
+								"imageAssetFile": null,
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
+							},
+							{
+								"contentTypeId": "feature",
+								"contentfulId": "5a3jvdTgKlkAdsyChwvFdF",
+								"title": "Product launches and limited time sales",
+								"makeTitleLink": false,
+								"titleUrl": null,
+								"titleSize": null,
+								"description": "Ensure users can still access and use your website even during periods of extremely high traffic.",
+								"learnMoreUrl": null,
+								"learnMoreText": null,
+								"displayBorder": false,
+								"openLinkInNewTab": null,
+								"removeCardBorder": false,
+								"icon": null,
+								"iconAssetFile": {
+									"id": "774fed19-c3c8-5b1a-996e-e5217c014f4e",
+									"altText": "Pages shield blue",
+									"title": "Pages shield blue",
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/6ygGtWlEN0N5inPgmxPucE/ac30e4bd2a63904fa66bb28ddc24ac3b/page-shield.png"
+										},
+										"description": ""
 									},
 									"brandfolderAsset": null,
 									"brandfolderAssetMobile": null
@@ -784,18 +766,18 @@
 					},
 					{
 						"contentTypeId": "bladeHtml",
-						"contentfulId": "7EcE0SIgVVPSODccSjTEpE",
-						"htmlContent": "<div style=\"text-align: center; cursor:pointer; margin-bottom:64px; margin-top: -60px;\">\n    <a href=\"/application-services/solutions/#protect-websites-applications-solutions\" class=\"inline-link-style\">Explore more use cases<svg width=\"6\" height=\"10\"\n            viewBox=\"0 0 6 10\" fill=\"currentColor\" aria-label=\"chevron\" xmlns=\"https://www.cloudflare.com/zero-trust/solutions/\"\n            class=\"dib v-mid ml1\">\n            <path\n                d=\"M1.00003 -4.37127e-08L-3.93401e-07 1.00003L4 5L0.000271373 9.00025L1.00003 10L6.00003 5L1.00003 -4.37127e-08Z\">\n            </path>\n        </svg>  </a>\n</div>",
+						"contentfulId": "7is9KWlcBWAciTtxhhnn9h",
+						"htmlContent": "<div style=\"text-align: center; cursor:pointer; margin-bottom:64px; margin-top: -60px;\">\n    <a href=\"/application-services/solutions/#protect-websites-applications-solutions\" target=\"_blank\" class=\"inline-link-style\">Explore more use cases<svg width=\"6\" height=\"10\"\n            viewBox=\"0 0 6 10\" fill=\"currentColor\" aria-label=\"chevron\" xmlns=\"https://www.cloudflare.com/application-services/solutions/\"\n            class=\"dib v-mid ml1\">\n            <path\n                d=\"M1.00003 -4.37127e-08L-3.93401e-07 1.00003L4 5L0.000271373 9.00025L1.00003 10L6.00003 5L1.00003 -4.37127e-08Z\">\n            </path>\n        </svg>  </a>\n</div>",
 						"htmlId": null
 					},
 					{
-						"contentfulId": "6NCgfPtpdG2xNBPrvaXRQm",
+						"contentfulId": "4xJuCr1Lop4HwNkubGgl22",
 						"contentTypeId": "bladeLeadGeneration",
-						"title": null,
-						"description": "Helping organizations worldwide secure their websites and applications",
+						"title": "Helping organizations worldwide manage user queues",
+						"description": "Helping organizations worldwide manage user queues",
 						"variant": "inline",
 						"htmlId": null,
-						"sectionPadding": "tile--no-top-bottom-padding",
+						"sectionPadding": "tile--no-top-padding",
 						"backgroundImage": {
 							"id": "5fb646a4-2af5-50d0-815c-108317d4b5b7",
 							"altText": "Cloudflare Orange Background",
@@ -815,11 +797,11 @@
 							"buttonAssetFile": null,
 							"buttonTextLoggedIn": null,
 							"contentTypeId": "button",
-							"contentfulId": "6VOSYSv3uiBZQLAW8rbZKa",
-							"elementName": "Security Center - CASE STUDIES - CTA",
+							"contentfulId": "27RMyTPYMUkUbkpvBE2jaN",
+							"elementName": "Case studies (Waiting Room)",
 							"standardText": null,
 							"text": "See case studies",
-							"url": "https://www.cloudflare.com/case-studies/?usecase=Secure+websites+%26+applications",
+							"url": "/case-studies/?product=Waiting+Room",
 							"loggedInUrl": null,
 							"buttonModal": null,
 							"openInNewTab": false,
@@ -829,24 +811,24 @@
 					},
 					{
 						"contentTypeId": "bladeCardCarousel",
-						"contentfulId": "1qrG2LHGqCOI400FXsyOK1",
+						"contentfulId": "56EFcoFcmAYB7eUjMY8M4O",
 						"title": "Resources",
 						"htmlId": null,
 						"backgroundImage": null,
 						"cards": [
 							{
 								"contentTypeId": "elementResourceCard",
-								"contentfulId": "6DDhTQVkVkkBDbJrBZpfoh",
+								"contentfulId": "1xy0uZEv6a0lYzat455QR8",
 								"heading": "Product brief",
-								"description": "Cloudflare Security Center",
+								"description": "Waiting Room overview",
 								"category": "None",
 								"link": {
 									"contentTypeId": "elementLink",
-									"contentfulId": "5SPssYYNOWm5EiNWZ8O00A",
-									"elementName": "Security Center - Resources cards carousel -  Resources card - Cloudflare Security Center - Link",
+									"contentfulId": "6lHyUqYV823b2Krz8lgjRK",
+									"elementName": "Waiting Room - Resources cards carousel - Waiting Room overview - Link",
 									"standardText": null,
-									"text": "Get the product brief",
-									"url": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/3k2B8G6YCOFwO33glU9RIw/be9a81ab11fdbcfe3c533ee48acae9c4/BDES-6049_cloudflare_security_center_datasheet_Letter.pdf",
+									"text": "Get product brief",
+									"url": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/IydVtIa13olmKwJ1Dv8KW/43dc4e3cc26f9a2578750fab360172be/2_Pager___Layout_A_-_Standard_Cloudflare_-_A4.pdf",
 									"elementModal": null,
 									"openInNewTab": true,
 									"locale": "en-US"
@@ -869,30 +851,30 @@
 							},
 							{
 								"contentTypeId": "elementResourceCard",
-								"contentfulId": "1AFiecGISnYaOMrUDstIQr",
-								"heading": "Insight",
-								"description": "Cloudflare Security Center developer docs",
+								"contentfulId": "1W202iozf5OCw1vNUP7kkA",
+								"heading": "Blog",
+								"description": "Cloudflare Waiting Room announcement blog",
 								"category": "None",
 								"link": {
 									"contentTypeId": "elementLink",
-									"contentfulId": "4V7YKJo0mLSaQEiwRVOwhs",
-									"elementName": "Security Center - Resources cards carousel - Cloudflare Security Center developer docs - Link",
+									"contentfulId": "3Bf9GbPnTeqLw5LROHGMhe",
+									"elementName": "Waiting Room - Resources cards carousel - Cloudflare Waiting Room announcement blog - Link",
 									"standardText": null,
-									"text": "Read developer docs",
-									"url": "https://developers.cloudflare.com/security-center/",
+									"text": "Read blog post",
+									"url": "https://blog.cloudflare.com/cloudflare-waiting-room/",
 									"elementModal": null,
 									"openInNewTab": true,
 									"locale": "en-US"
 								},
 								"image": {
-									"id": "1c0de5f1-abee-55b8-9653-945bf9480f62",
-									"altText": "Cloudflare insights",
-									"title": "Cloudflare insights",
+									"id": "16dda4bb-a521-5d41-82ec-64ef52888d97",
+									"altText": "Blog  thumbnail",
+									"title": "Blog  thumbnail",
 									"activeAsset": "Contentful Asset",
 									"locale": "en-US",
 									"contentfulAsset": {
 										"file": {
-											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/7eD4EXWL2DPwSe5Y8ASppZ/3cf93c08e638e5f6057d6a1a7eccd9ab/Insight_106x182.svg"
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/7ctAQnKr7LFaJzwd5gbbeu/dffc3ef872495ac11a0250f524a057f3/Blog-thumbnail-generic.png"
 										},
 										"description": null
 									},
@@ -902,30 +884,30 @@
 							},
 							{
 								"contentTypeId": "elementResourceCard",
-								"contentfulId": "5K3Z9cUuyxoi712zNYNBXN",
-								"heading": null,
-								"description": "3 challenges of securing and connecting application services",
+								"contentfulId": "7bbBVj6Ycc3cPvPcjfUinq",
+								"heading": "Solution brief",
+								"description": "Solution brief: Cloudflare for ecommerce",
 								"category": "None",
 								"link": {
 									"contentTypeId": "elementLink",
-									"contentfulId": "34k6Dgl7HMiam75Tjm26b2",
-									"elementName": "Security Center - Resources cards carousel - 3 challenges of securing and connecting application services - Link",
+									"contentfulId": "4B2maSAEv49BVHavRxRv9q",
+									"elementName": "Waiting Room - Resources cards carousel - Solution brief: Cloudflare for ecommerce - Link",
 									"standardText": null,
-									"text": " Get the whitepaper",
-									"url": "/lp/3-challenges-of-securing-and-connecting-application-services/",
+									"text": "Get solution brief",
+									"url": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/5iHRb5mLKGbtdXBz0u61cI/60766a4ac2cb7091798f456c4d2496e6/Cloudflare_for_Ecommerce__Brief_.pdf",
 									"elementModal": null,
-									"openInNewTab": false,
+									"openInNewTab": true,
 									"locale": "en-US"
 								},
 								"image": {
-									"id": "13298e8a-267a-575b-b89a-b871f95f1d9a",
-									"altText": "Whitepaper Thumbnail",
-									"title": "Whitepaper Thumbnail",
+									"id": "db6be96f-1a36-590b-b487-e41b7bed9506",
+									"altText": "Solution brief - thumbnail",
+									"title": "Solution brief - thumbnail",
 									"activeAsset": "Contentful Asset",
 									"locale": "en-US",
 									"contentfulAsset": {
 										"file": {
-											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/2ZiPjCDWMWnibCFs5nxHBa/75ef0ba1b4484c2da8ab4d3f40437dff/Whitpapper-generic-106x186-300dpi.png"
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/4lrrMbtnvF7cu020jaOCG7/a7fcac3993ce0c3f325963814b483713/Solution_brief_106x182.svg"
 										},
 										"description": null
 									},
@@ -970,8 +952,8 @@
 					},
 					{
 						"contentTypeId": "bladeEnablement",
-						"contentfulId": "5QuFcTHKjLloxlmE52fCEY",
-						"title": "Get Cloudflare Security Center for your website",
+						"contentfulId": "73oQ0zzNth40TNQNfSYLsd",
+						"title": "Get Cloudflare Waiting Room for your enterprise",
 						"titleSize": "medium",
 						"backgroundColor": "image-background",
 						"buttonText": null,
@@ -986,14 +968,54 @@
 							"buttonAssetFile": null,
 							"buttonTextLoggedIn": null,
 							"contentTypeId": "button",
-							"contentfulId": "3BdumYLPIHZrPHSTsMH0fR",
-							"elementName": "Security Center - Get Cloudflare Security Center for your website - Read more - CTA",
+							"contentfulId": "1fLiWAHkQqZOwpjs7aU3Nw",
+							"elementName": "Talk to an expert (modal form)",
 							"standardText": null,
-							"text": "Read more",
-							"url": "https://developers.cloudflare.com/security-center/",
+							"text": "Talk to an expert",
+							"url": null,
 							"loggedInUrl": null,
-							"buttonModal": null,
-							"openInNewTab": true,
+							"buttonModal": {
+								"contentTypeId": "formModal",
+								"contentfulId": "4X33NKLPG0gT4v6Vb1X0ca",
+								"modalName": "ZT Access Talk to an expert",
+								"modalId": "zt-access-talk-to-an-expert",
+								"modalType": "single-form",
+								"marketoForm": {
+									"contentTypeId": "marketoEmbeddedForm",
+									"contentfulId": "5daBy41JohWg0zdFI6JHW",
+									"bladeName": "ZT Access - Talk to an expert - Marketo",
+									"backgroundColor": "white",
+									"marketoFormId": 1341,
+									"marketoFormLeadSource": "Inbound - Web Form",
+									"marketoFormLeadSourceDetail": "Web Form - Enterprise General Sales Inquiry",
+									"marketoFormAssetName": null,
+									"marketoFormHeaderText": "Talk to an expert",
+									"marketoFormDefaultComment": null,
+									"showCommentBox": null,
+									"marketoFormThankYouText": null,
+									"marketoFormCustomSuccessMessage": null,
+									"marketoFormPdfDownload": null,
+									"marketoFormPdfDownloadI18n": [],
+									"marketoFormAssetDownloadButtonText": null,
+									"marketoFormSuccessRedirectUrl": null,
+									"sendAdRoll": null,
+									"meta_adRollCustomSegment": null,
+									"enableSandbox": null,
+									"marketoFormSubmitButtonText": null,
+									"marketoFormSubmitButtonColor": null,
+									"enableEmailVerification": null,
+									"disableEnterpriseEmailNotification": null,
+									"enableRingout": null
+								},
+								"title": null,
+								"regularCopy": null,
+								"splitFormDefaultTab": null,
+								"selfServeTabText": null,
+								"selfServeCopy": null,
+								"enterpriseTabText": null,
+								"enterpriseCopy": null
+							},
+							"openInNewTab": false,
 							"locale": "en-US"
 						},
 						"buttonTwo": null,
@@ -1003,7 +1025,7 @@
 				],
 				"noindex": false,
 				"formModal": [],
-				"keepHashUrlSyncedWithScrollPosition": false
+				"keepHashUrlSyncedWithScrollPosition": null
 			},
 			"site": {
 				"siteMetadata": {
@@ -1014,8 +1036,8 @@
 		"pageContext": {
 			"currentLocale": "en-US",
 			"locale": "en-US",
-			"pathname": "/application-services/products/securitycenter/",
-			"contentfulId": "oqw7JLDK7wiOt55NrSNX5",
+			"pathname": "/application-services/products/waiting-room/",
+			"contentfulId": "6UobIFQgEGwKBcpU5p2u9D",
 			"allowedHrefLangs": [
 				"en-US",
 				"zh-CN",
