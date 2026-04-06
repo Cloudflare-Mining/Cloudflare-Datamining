@@ -1,10 +1,10 @@
 {
 	"componentChunkName": "component---src-components-page-page-template-tsx",
-	"path": "/application-services/products/securitycenter/",
+	"path": "/application-services/products/page-shield/",
 	"result": {
 		"data": {
 			"page": {
-				"pageName": "Cloudflare Security Center",
+				"pageName": "Page Shield product page",
 				"localeList": {
 					"enUS": "English for Locale",
 					"zhCN": "Translated for Locale",
@@ -32,29 +32,29 @@
 					"plPL": "Translated for Locale",
 					"arAR": "No Page for Locale"
 				},
-				"relativePath": "application-services/products/securitycenter",
+				"relativePath": "application-services/products/page-shield/",
 				"topNavOptions": "default",
 				"topNavButtonText": null,
 				"topNavButtonUrl": null,
 				"footerOptions": "default",
 				"metaTags": {
-					"metaTitle": "Cloudflare Security Center | Attack Surface Management",
-					"metaDescription": "Attack surface management that maps an organization's attack surface and gives a list of potential security risks and vulnerabilities associated with their IT infrastructure, and mitigate threats in a single click. ",
+					"metaTitle": "Cloudflare Page Shield | Client-Side Protection",
+					"metaDescription": "Cloudflare Page Shield offers client-side protection to keep end users safe. Learn more about benefits and use cases for Cloudflare Page Shield.",
 					"twitterCustomImage": null,
 					"metaImage": {
 						"file": {
-							"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/53qCYhQbir5WtIU0VDWESo/954a48bfb17f429acf469e5f14345d83/unnamed-3.png"
+							"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/TW6HIuCazkKW22hLMm1zR/d072636f2174742dc055623dc6054436/pageshield.png"
 						},
-						"description": "DO NOT REMOVE, THIS IS CLOUDFLARE'S GLOBAL OG META ASSET"
+						"description": null
 					},
 					"facebookCustomImage": null,
 					"author": []
 				},
 				"sys": {
-					"createdAt": "2021-12-09T14:01:16.052Z",
-					"updatedAt": "2026-04-01T05:12:14.302Z"
+					"createdAt": "2021-09-13T22:41:28.836Z",
+					"updatedAt": "2026-04-01T04:15:46.377Z"
 				},
-				"contentfulId": "oqw7JLDK7wiOt55NrSNX5",
+				"contentfulId": "4dFy11xwTfNW36275hDE8L",
 				"contentTypeId": "page",
 				"promotionalBanner": null,
 				"psaBanner": null,
@@ -64,44 +64,47 @@
 				"template": null,
 				"relatedBlades": [
 					{
-						"contentfulId": "5PzoE4zoXHzCnCUuSdzQN6",
+						"contentTypeId": "bladeHtml",
+						"contentfulId": "2DCyMvLAYe4P0B18yr9kK1",
+						"htmlContent": "<style>\n    .wrapper {\n        background-color: #003682;\n        margin: 0;\n        padding: 20px;\n        width: 100vw;\n        margin-left: calc((100vw - 100%) / -2);\n    }\n    .content {\n        color: #ffffff;\n        margin: 0px auto;\n        width: fit-content;\n    }\n    .link-helper {\n        color: #ffffff !important;\n        margin-left: 5px;\n        text-decoration: underline !important;\n        text-underline-offset: 4px;\n    }\n    .link-helper:hover {\n        text-decoration: underline;\n        color: #ffffff !important;\n        text-underline-offset: 4px;\n    }\n</style>\n<section class=\"wrapper\" id=\"contentful-psa-banner\">\n    <div class=\"content\">\n        <span\n            >Get a free PCI DSS 4.0 client-side risk assessment.\n        </span>\n        <a\n            class=\"link-helper\"\n            href=\"https://www.cloudflare.com/lp/client-side-risk-assessment/\"\n        >\n            <strong>Sign up ></strong></a\n        >\n    </div>\n</section>\n",
+						"htmlId": null
+					},
+					{
+						"contentfulId": "2wmP1gFic8ONI1vSOi7Hf6",
 						"contentTypeId": "bladeHeroAnimation",
-						"title": "Cloudflare Security Center",
+						"title": "Cloudflare Page Shield",
 						"titleSize": null,
-						"subtitle": "Attack surface management for all Cloudflare customers",
+						"subtitle": "Intelligent client-side security to keep your end users safe",
 						"subtitleSize": null,
-						"copy": "Cloudflare Security Center scans your infrastructure for potential vulnerabilities so you can manage your attack surface and protect your brand. Improve security with threat intelligence data from Cloudflare's massive global network, which protects about 20% of all websites.\n\nIncluded in all plans at no charge.\n",
+						"copy": "Backed by our world-class threat intelligence and machine learning capabilities, Page Shield helps defend against client-side attacks that target vulnerable JavaScript dependencies.",
 						"buttonColor": "orange",
-						"buttonColor2": "orange",
-						"buttonText1": "Read developer docs",
+						"buttonColor2": "orange-outline",
+						"buttonText1": "Get the product brief",
 						"buttonText1LoggedIn": null,
-						"buttonUrl1": "https://developers.cloudflare.com/security-center/",
+						"buttonUrl1": "https://cfl.re/ps-brief",
 						"buttonUrl1LoggedIn": null,
 						"button1ExtraClass": null,
-						"buttonText2": "Get the product brief",
+						"buttonText2": "Talk to an expert",
 						"buttonText2LoggedIn": null,
-						"buttonUrl2": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/3k2B8G6YCOFwO33glU9RIw/be9a81ab11fdbcfe3c533ee48acae9c4/BDES-6049_cloudflare_security_center_datasheet_Letter.pdf",
-						"button2ExtraClass": null,
+						"buttonUrl2": "#",
+						"button2ExtraClass": "page-shield-product-page-talk-to-an-expert-modal-form",
 						"bladeBorder": "none",
 						"htmlId": null,
 						"textColor": "black",
 						"includeVideo": false,
 						"streamVideoId": null,
-						"streamOptions": [
-							"controls",
-							"captions"
-						],
-						"streamCaptions": "en",
+						"streamOptions": null,
+						"streamCaptions": null,
 						"popupStreamId": null,
 						"popupText": null,
 						"button1OpenInNewTab": true,
-						"button2OpenInNewTab": true,
+						"button2OpenInNewTab": false,
 						"streamThumbnails": null,
 						"sectionPadding": null,
 						"streamPosterAssetFile": null,
 						"streamPoster": null,
-						"imageSize": "Medium",
-						"imagePosition": false,
+						"imageSize": "Large",
+						"imagePosition": null,
 						"leftLinkUrl": null,
 						"leftLink": null,
 						"leftLinkLoggedIn": null,
@@ -110,40 +113,31 @@
 						"textlayoutMode": null,
 						"backgroundAssetFile": null,
 						"imageLayout": null,
-						"image": null,
-						"imageAssetFile": {
-							"id": "a5441816-81e1-5773-9d48-71239db17dbd",
-							"altText": "Cloudflare Security Center",
-							"title": "Cloudflare Security Center",
-							"activeAsset": "Contentful Asset",
-							"locale": "en-US",
-							"contentfulAsset": {
-								"file": {
-									"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/7h3ZPSqx5P1ns5Q40L3aWQ/34bae34fb0506a6fc9ebcb88247c92ac/BDES-5032_-_Cloudflare_Security_Center.svg"
-								},
-								"description": ""
+						"image": {
+							"file": {
+								"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/AzROuwFA2rK6DbccrQIhn/041971b2ceeecc4ba4e12f40c1617455/BDES-5031_-_teams-access-improvement-plan-spot-illustration_3x-8.svg"
 							},
-							"brandfolderAsset": null,
-							"brandfolderAssetMobile": null
-						}
+							"description": "Illustration of people in front of a shield"
+						},
+						"imageAssetFile": null
 					},
 					{
-						"contentfulId": "3bEjFzbNSJgOVf1Xh8jDFt",
+						"contentfulId": "5rNDB7QsTN8JBEYpeLpF25",
 						"contentTypeId": "bladeMultipleColumnsLayout",
 						"title": null,
-						"eyebrowHeading": "BENEFITS OF CLOUDFLARE SECURITY CENTER",
+						"eyebrowHeading": "BENEFITS OF CLOUDFLARE PAGE SHIELD",
 						"description": null,
 						"textLayout": "left",
-						"columnsLayout": "Four Columns",
+						"columnsLayout": "Three Columns",
 						"columnContent": [
 							{
 								"contentTypeId": "feature",
-								"contentfulId": "4wBTGWxlPzwFRZrG3YpAIb",
-								"title": "Scan known assets",
+								"contentfulId": "6a9CBXkZMgjYU9yNf9uuvE",
+								"title": "Intelligent attack prevention",
 								"makeTitleLink": false,
 								"titleUrl": null,
 								"titleSize": null,
-								"description": "Identify potential threats in your websites, servers, and the dependencies running on them.",
+								"description": "Detect and mitigate browser supply chain attacks with machine learning-based protection.",
 								"learnMoreUrl": null,
 								"learnMoreText": null,
 								"displayBorder": false,
@@ -151,16 +145,16 @@
 								"removeCardBorder": false,
 								"icon": null,
 								"iconAssetFile": {
-									"id": "9dc92233-8924-5d39-8e0d-972e50ea7311",
-									"altText": "Case study blue",
-									"title": "Case study blue",
+									"id": "71bac9e1-306f-5842-8606-9efe7582b95b",
+									"altText": "Minimize attack surface icon",
+									"title": "Minimize attack surface icon",
 									"activeAsset": "Contentful Asset",
 									"locale": "en-US",
 									"contentfulAsset": {
 										"file": {
-											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/2skRVGr8frUhOMQwi7hflN/8bf77791d359c7e95772b801e4cd4eeb/case-study.svg"
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/5SU8QwaktetlbmnNBmn4zE/7fd23d096aac8a0bd24ac26656196934/BDES-5458_Minimize_attack_surface.svg"
 										},
-										"description": ""
+										"description": "Minimize attack surface - 128x128"
 									},
 									"brandfolderAsset": null,
 									"brandfolderAssetMobile": null
@@ -174,12 +168,12 @@
 							},
 							{
 								"contentTypeId": "feature",
-								"contentfulId": "5LndpMFCJbIgXw3BxLcAG2",
-								"title": "Identify unknown assets",
+								"contentfulId": "39v6Hzj9lFuAsX3AEEUKZZ",
+								"title": "Automatic threat alerts",
 								"makeTitleLink": false,
 								"titleUrl": null,
 								"titleSize": null,
-								"description": "Find shadow IT or other unsanctioned infrastructure, like forgotten websites, unmanaged subdomains, or non-approved cloud applications.",
+								"description": "Get instant notifications when new scripts are detected, marked as malicious, or loaded from unknown domains.",
 								"learnMoreUrl": null,
 								"learnMoreText": null,
 								"displayBorder": false,
@@ -187,88 +181,52 @@
 								"removeCardBorder": false,
 								"icon": null,
 								"iconAssetFile": {
-									"id": "b0b8d74a-324b-582f-ade7-bbbdc3311984",
-									"altText": "Help question blue",
-									"title": "Help question blue",
+									"id": "746c8e68-0542-59e1-a219-d6a178c3543e",
+									"altText": null,
+									"title": "Threat intelligence radar icon",
 									"activeAsset": "Contentful Asset",
 									"locale": "en-US",
 									"contentfulAsset": {
 										"file": {
-											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/69tNrTgBhqfzPRIPu8Gwid/fb23c2d12223eaeb989f9266929c196d/help-question.svg"
-										},
-										"description": ""
-									},
-									"brandfolderAsset": null,
-									"brandfolderAssetMobile": null
-								},
-								"imageOverlaySuperheader": null,
-								"imageOverlayText": null,
-								"imageAssetFile": null,
-								"streamId": null,
-								"streamThumbnail": null,
-								"streamThumbnailAssetFile": null
-							},
-							{
-								"contentTypeId": "feature",
-								"contentfulId": "2tK3SICw2irB4mKyJsyhA6",
-								"title": "Detect rogue assets",
-								"makeTitleLink": false,
-								"titleUrl": null,
-								"titleSize": null,
-								"description": "Identify malicious infrastructure created by attackers such as typosquatted domains, or a website or app impersonating a legitimate brand.",
-								"learnMoreUrl": null,
-								"learnMoreText": null,
-								"displayBorder": false,
-								"openLinkInNewTab": null,
-								"removeCardBorder": false,
-								"icon": null,
-								"iconAssetFile": {
-									"id": "94716675-099b-561c-a6b3-d9be2b13ab58",
-									"altText": "Search blue",
-									"title": "Search blue",
-									"activeAsset": "Contentful Asset",
-									"locale": "en-US",
-									"contentfulAsset": {
-										"file": {
-											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/3BxXRJAvXxK5VsZNLR3VPH/5bf83900a7872240c84b8a9074e5d30c/search.svg"
-										},
-										"description": ""
-									},
-									"brandfolderAsset": null,
-									"brandfolderAssetMobile": null
-								},
-								"imageOverlaySuperheader": null,
-								"imageOverlayText": null,
-								"imageAssetFile": null,
-								"streamId": null,
-								"streamThumbnail": null,
-								"streamThumbnailAssetFile": null
-							},
-							{
-								"contentTypeId": "feature",
-								"contentfulId": "3i8yUK2H1UHx45hNoHBG1k",
-								"title": "Identify third-party risks",
-								"makeTitleLink": false,
-								"titleUrl": null,
-								"titleSize": null,
-								"description": "Detect risks from third-party services and dependencies, from [open-source vulnerabilities](https://www.cloudflare.com/the-net/oss-attack-detection/) to malicious JavaScript.",
-								"learnMoreUrl": null,
-								"learnMoreText": null,
-								"displayBorder": false,
-								"openLinkInNewTab": null,
-								"removeCardBorder": false,
-								"icon": null,
-								"iconAssetFile": {
-									"id": "f2eb93a9-5084-50de-8f8c-5182cce34fa9",
-									"altText": "share icon",
-									"title": "share icon",
-									"activeAsset": "Contentful Asset",
-									"locale": "en-US",
-									"contentfulAsset": {
-										"file": {
-											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/7oSAE8BQTzD1sgQCgrArww/f79da788e5497cd68b5851f995b132af/share.svg"
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/5Yx4fQ4JQKWiXHNopSEGHV/ab0d928d56a15ae462f4bfd09e1bcf93/cloudflare-radar.png"
 										},
 										"description": null
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								},
+								"imageOverlaySuperheader": null,
+								"imageOverlayText": null,
+								"imageAssetFile": null,
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
+							},
+							{
+								"contentTypeId": "feature",
+								"contentfulId": "558VhC8JLev5hphOx78gDB",
+								"title": "Meet compliance requirements",
+								"makeTitleLink": false,
+								"titleUrl": null,
+								"titleSize": null,
+								"description": "Reduce third-party vendor risk and address client-side requirements like GDPR, PCI, and more.",
+								"learnMoreUrl": null,
+								"learnMoreText": null,
+								"displayBorder": false,
+								"openLinkInNewTab": null,
+								"removeCardBorder": false,
+								"icon": null,
+								"iconAssetFile": {
+									"id": "a95310eb-6c65-5c1c-a43b-374316112d9b",
+									"altText": "Payments credit card",
+									"title": "Payments credit card",
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/37GS81O8vefPYO3KMcvrAN/c889813302fcd6977e7ec94efe2669c9/payments-credit-card.svg"
+										},
+										"description": "Credit card icon"
 									},
 									"brandfolderAsset": null,
 									"brandfolderAssetMobile": null
@@ -285,9 +243,9 @@
 						"htmlId": null
 					},
 					{
-						"contentfulId": "iDceTZsHdrLoVJFfsUT37",
-						"title": "A constant view of your attack surface",
-						"copy": "Cloudflare Security Center brings together our suite of security products, our security expertise, and our unique Internet intelligence as a unified security intelligence solution.\n\nOnce activated, it scans customer infrastructure on a regular basis (frequency depends on type of plan) to map the attack surface and identify potential vulnerabilities.\n",
+						"contentfulId": "3qAzcczI2LYAqy2vZpwhcW",
+						"title": "Continuously monitor and prevent client-side threats",
+						"copy": "Page Shield simplifies third-party script management by tracking loading resources (like scripts) for potentially malicious additions, connections, or changes.\n\nPowered by our threat intelligence and machine learning-based detection, it instantly identifies, reports, and blocks threats — before they reach your website.\n",
 						"toggleText": null,
 						"button": [],
 						"learnMoreUrl": null,
@@ -310,16 +268,16 @@
 						"streamPosterAssetFile": null,
 						"image": null,
 						"imageAssetFile": {
-							"id": "c79b944a-f2b6-5cbe-988f-e2d280b4a596",
-							"altText": "Cloudflare security portfolio larger - diagram",
-							"title": "Cloudflare security portfolio larger - diagram",
+							"id": "d4232a45-c1c3-564e-a7c8-fe35608d35f4",
+							"altText": "Cloudflare Page Shield",
+							"title": "Cloudflare Page Shield",
 							"activeAsset": "Contentful Asset",
 							"locale": "en-US",
 							"contentfulAsset": {
 								"file": {
-									"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/7kScxnC6AGBLJOIhyaVEBq/af795f0545bf09e06907d18a580c5adb/71670_Cloudflare_BDES-2322_Update_Security_Portfolio_Graphic_Superside_V5.svg"
+									"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/3a65CiLNtw6hjPpWYKrJ7m/936448689a13cdb078b11ee36643b0ef/BDES-5029_-_Page_Shield.svg"
 								},
-								"description": "The Cloudflare security portfolio"
+								"description": "Protect your website visitors from script-based attacks and data theft. "
 							},
 							"brandfolderAsset": null,
 							"brandfolderAssetMobile": null
@@ -333,14 +291,14 @@
 						"backgroundColor": "white",
 						"bladeBorder": "none",
 						"imagePosition": true,
-						"imageSize": null,
+						"imageSize": "medium",
 						"imageTextAlignment": null,
 						"togglesTo": []
 					},
 					{
 						"contentTypeId": "bladeEnablement",
-						"contentfulId": "3QxCrdwr0AVXwoZcpRSyjU",
-						"title": "Learn the 3 major challenges to securing application services",
+						"contentfulId": "4CEkgubH5rnLXNLAcy6Gf0",
+						"title": "See how Cloudflare Page Shield helps with client-side PCI 4.0 requirements",
 						"titleSize": "medium",
 						"backgroundColor": "image-background",
 						"buttonText": null,
@@ -355,23 +313,23 @@
 							"buttonAssetFile": null,
 							"buttonTextLoggedIn": null,
 							"contentTypeId": "button",
-							"contentfulId": "6uNxCxS9CS73dje5UReKPZ",
-							"elementName": "Security Center - ADDITIONAL OFFER BLADE - CTA",
+							"contentfulId": "M3Avr41iYiBQVkxXMAaEk",
+							"elementName": "Page Shield - ADDITIONAL OFFER BLADE - CTA",
 							"standardText": null,
-							"text": "Get the whitepaper",
-							"url": "/lp/3-challenges-of-securing-and-connecting-application-services/",
+							"text": "Learn more",
+							"url": "https://cfl.re/4dhk8Gx",
 							"loggedInUrl": null,
 							"buttonModal": null,
 							"openInNewTab": false,
 							"locale": "en-US"
 						},
 						"buttonTwo": null,
-						"sectionPadding": null,
+						"sectionPadding": "tile--no-top-bottom-padding",
 						"eyebrow": null
 					},
 					{
 						"contentTypeId": "bladeRichTextColumnGroup",
-						"contentfulId": "GGbTyoE36vPJN8JpKzMWB",
+						"contentfulId": "4Zp83Ck5b2maj7pg7SHKK7",
 						"htmlId": null,
 						"mainHeadline": null,
 						"backgroundColor": "white",
@@ -381,7 +339,7 @@
 						"columns": [
 							{
 								"contentTypeId": "elementRichText",
-								"contentfulId": "6jsBYSvgMJn3NDPZaGWGLu",
+								"contentfulId": "28QrEpydB1tkXaF8ob8Ili",
 								"title": null,
 								"htmlId": null,
 								"elementPosition": "relative",
@@ -433,7 +391,17 @@
 																"target": null,
 																"uri": null
 															},
-															"value": "\"Our busiest website gets approximately 2.5 billion requests a month. It's hit by approximately 57 million threats each and every month. And Cloudflare blocks all 57 million every month. I know this because Cloudflare's security insights technology shows me exactly what's happening across the entire digital footprint.\"",
+															"value": "We had $120,000 earmarked for an external PCI DSS solution, before knowing Page Shield rolled into our service agreement. The solution aligned strategically with our compliance needs, and was another big Cloudflare win for us.",
+															"marks": [],
+															"content": null
+														},
+														{
+															"nodeType": "text",
+															"data": {
+																"target": null,
+																"uri": null
+															},
+															"value": " ",
 															"marks": [],
 															"content": null
 														}
@@ -477,7 +445,7 @@
 														"target": null,
 														"uri": null
 													},
-													"value": "Global Director of Governance, Risk, Compliance, and Security ",
+													"value": " ",
 													"marks": [],
 													"content": null
 												},
@@ -487,7 +455,7 @@
 														"target": null,
 														"uri": null
 													},
-													"value": " — ",
+													"value": "Darren Boyer",
 													"marks": [],
 													"content": null
 												},
@@ -497,7 +465,21 @@
 														"target": null,
 														"uri": null
 													},
-													"value": "Genuine Parts Company",
+													"value": ",",
+													"marks": [
+														{
+															"type": "bold"
+														}
+													],
+													"content": null
+												},
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": " Information Security Architect — Fossil Group",
 													"marks": [],
 													"content": null
 												}
@@ -698,22 +680,22 @@
 						"sectionPadding": null
 					},
 					{
-						"contentfulId": "2xzo1KU0gGkYNlHIq4IaHK",
+						"contentfulId": "3aBaAu12wug8P2ilL9z2CR",
 						"contentTypeId": "bladeMultipleColumnsLayout",
-						"title": "Cloudflare Security Center helps you block web-borne attacks, apply monitoring and security across hybrid workforces, and improve the web browsing experience for users",
-						"eyebrowHeading": "Top Security Center use cases",
+						"title": "Page Shield helps detect and block browser-based threats, meet compliance requirements, and safeguard your users' data",
+						"eyebrowHeading": "TOP PAGE SHIELD USE CASES",
 						"description": null,
 						"textLayout": "left",
-						"columnsLayout": "Two Columns",
+						"columnsLayout": "Three Columns",
 						"columnContent": [
 							{
 								"contentTypeId": "feature",
-								"contentfulId": "1VptBSAQeX5vYKMX5n3nYP",
-								"title": "Stop attacks before they happen",
+								"contentfulId": "NuEF4KaSC1cbN3hqj7ITQ",
+								"title": "Prevent financial and identity theft",
 								"makeTitleLink": false,
 								"titleUrl": null,
 								"titleSize": null,
-								"description": "Identify vulnerabilities that can compromise your website or servers, even in third-party and open-source libraries.",
+								"description": "Block browser-based attacks aimed at your users' personal and financial information.",
 								"learnMoreUrl": null,
 								"learnMoreText": null,
 								"displayBorder": false,
@@ -744,12 +726,12 @@
 							},
 							{
 								"contentTypeId": "feature",
-								"contentfulId": "3KImGEYxx1oZ0MtOdTB4Yx",
-								"title": "Prevent unauthorized use of cloud apps",
+								"contentfulId": "30JcE0Mk77TQaGJRAyk91u",
+								"title": "Go beyond content security policies (CSP)",
 								"makeTitleLink": false,
 								"titleUrl": null,
 								"titleSize": null,
-								"description": "Find shadow IT infrastructure that may not be secured or managed properly.",
+								"description": "Monitor JavaScript dependencies and block threats with threat intelligence and machine learning that goes above and beyond CSPs.",
 								"learnMoreUrl": null,
 								"learnMoreText": null,
 								"displayBorder": false,
@@ -757,16 +739,52 @@
 								"removeCardBorder": false,
 								"icon": null,
 								"iconAssetFile": {
-									"id": "84bf9920-ae71-533f-9d21-68e8f4517443",
-									"altText": "Platform apps ",
-									"title": "Platform apps ",
+									"id": "c241854c-77e1-5c45-9b8d-479a6651b12b",
+									"altText": "Code content optimization blue",
+									"title": "Code content optimization blue",
 									"activeAsset": "Contentful Asset",
 									"locale": "en-US",
 									"contentfulAsset": {
 										"file": {
-											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/4zgjneatAin9CgQmzYl6Yq/b61aea1e89c05d2a7a3d458fe5b2d4db/platform-apps.svg"
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/2KDaTpdwZcctx9Q8G3WN5/34be97098084c540c60d6745096da8c6/code-content-optimization.svg"
 										},
-										"description": "Platform apps icon"
+										"description": "Content security policies icon"
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								},
+								"imageOverlaySuperheader": null,
+								"imageOverlayText": null,
+								"imageAssetFile": null,
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
+							},
+							{
+								"contentTypeId": "feature",
+								"contentfulId": "1sLLp9W8D6GLNjNkSCIRrQ",
+								"title": "Easily meet compliance requirements",
+								"makeTitleLink": false,
+								"titleUrl": null,
+								"titleSize": null,
+								"description": "Avoid noncompliance fines and adhere to the latest PCI DSS standards for compromised third-party script detection (section 6.4.3) and alerts (11.6.1).",
+								"learnMoreUrl": null,
+								"learnMoreText": null,
+								"displayBorder": false,
+								"openLinkInNewTab": null,
+								"removeCardBorder": false,
+								"icon": null,
+								"iconAssetFile": {
+									"id": "6fd865fc-5f0b-5650-a5a5-9ae0a9d24d1f",
+									"altText": "Yes check blue",
+									"title": "Yes check blue",
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/4oiO40TBTzUSAm1i5gAc7W/ae5829bb7b71eb63edeb8c87a02135f5/yes-check.svg"
+										},
+										"description": "Checkmark icon"
 									},
 									"brandfolderAsset": null,
 									"brandfolderAssetMobile": null
@@ -784,18 +802,18 @@
 					},
 					{
 						"contentTypeId": "bladeHtml",
-						"contentfulId": "7EcE0SIgVVPSODccSjTEpE",
-						"htmlContent": "<div style=\"text-align: center; cursor:pointer; margin-bottom:64px; margin-top: -60px;\">\n    <a href=\"/application-services/solutions/#protect-websites-applications-solutions\" class=\"inline-link-style\">Explore more use cases<svg width=\"6\" height=\"10\"\n            viewBox=\"0 0 6 10\" fill=\"currentColor\" aria-label=\"chevron\" xmlns=\"https://www.cloudflare.com/zero-trust/solutions/\"\n            class=\"dib v-mid ml1\">\n            <path\n                d=\"M1.00003 -4.37127e-08L-3.93401e-07 1.00003L4 5L0.000271373 9.00025L1.00003 10L6.00003 5L1.00003 -4.37127e-08Z\">\n            </path>\n        </svg>  </a>\n</div>",
+						"contentfulId": "4e9gZUs18AbJlLPrAzccbv",
+						"htmlContent": "<div style=\"text-align: center; cursor:pointer; margin-bottom:64px; margin-top: -60px;\">\n    <a href=\"/application-services/solutions/#protect-websites-applications-solutions\" target=\"_blank\" class=\"inline-link-style\">Explore more use cases<svg width=\"4\" height=\"10\"\n            viewBox=\"0 0 6 10\" fill=\"currentColor\" aria-label=\"chevron\" xmlns=\"https://www.cloudflare.com/zero-trust/solutions/\"\n            class=\"dib v-mid ml1\">\n            <path\n                d=\"M1.00003 -4.37127e-08L-3.93401e-07 1.00003L4 5L0.000271373 9.00025L1.00003 10L6.00003 5L1.00003 -4.37127e-08Z\">\n            </path>\n        </svg>  </a>\n</div>",
 						"htmlId": null
 					},
 					{
-						"contentfulId": "6NCgfPtpdG2xNBPrvaXRQm",
+						"contentfulId": "34cDYBqVFS72FiPqmtN6uH",
 						"contentTypeId": "bladeLeadGeneration",
 						"title": null,
-						"description": "Helping organizations worldwide secure their websites and applications",
+						"description": "Trusted by millions of Internet properties",
 						"variant": "inline",
 						"htmlId": null,
-						"sectionPadding": "tile--no-top-bottom-padding",
+						"sectionPadding": "tile--no-top-padding",
 						"backgroundImage": {
 							"id": "5fb646a4-2af5-50d0-815c-108317d4b5b7",
 							"altText": "Cloudflare Orange Background",
@@ -815,11 +833,11 @@
 							"buttonAssetFile": null,
 							"buttonTextLoggedIn": null,
 							"contentTypeId": "button",
-							"contentfulId": "6VOSYSv3uiBZQLAW8rbZKa",
-							"elementName": "Security Center - CASE STUDIES - CTA",
+							"contentfulId": "3baRYzVELskQzjrKsvpkig",
+							"elementName": "Page Shield - Case studies - CTA - /case-studies/",
 							"standardText": null,
-							"text": "See case studies",
-							"url": "https://www.cloudflare.com/case-studies/?usecase=Secure+websites+%26+applications",
+							"text": "See case studies ",
+							"url": "/case-studies/",
 							"loggedInUrl": null,
 							"buttonModal": null,
 							"openInNewTab": false,
@@ -829,24 +847,24 @@
 					},
 					{
 						"contentTypeId": "bladeCardCarousel",
-						"contentfulId": "1qrG2LHGqCOI400FXsyOK1",
+						"contentfulId": "2T8cAucw6MhvqLqJCUXJEe",
 						"title": "Resources",
 						"htmlId": null,
 						"backgroundImage": null,
 						"cards": [
 							{
 								"contentTypeId": "elementResourceCard",
-								"contentfulId": "6DDhTQVkVkkBDbJrBZpfoh",
+								"contentfulId": "37LWnv9uWgS7vNyuizpta1",
 								"heading": "Product brief",
-								"description": "Cloudflare Security Center",
+								"description": "Page Shield product brief",
 								"category": "None",
 								"link": {
 									"contentTypeId": "elementLink",
-									"contentfulId": "5SPssYYNOWm5EiNWZ8O00A",
-									"elementName": "Security Center - Resources cards carousel -  Resources card - Cloudflare Security Center - Link",
+									"contentfulId": "1PTzAS5Asyt0TdgXBe0AUc",
+									"elementName": "Page Shield - Resources - Page Shield product brief - Link",
 									"standardText": null,
-									"text": "Get the product brief",
-									"url": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/3k2B8G6YCOFwO33glU9RIw/be9a81ab11fdbcfe3c533ee48acae9c4/BDES-6049_cloudflare_security_center_datasheet_Letter.pdf",
+									"text": "Get the product brief ",
+									"url": "https://cfl.re/ps-brief",
 									"elementModal": null,
 									"openInNewTab": true,
 									"locale": "en-US"
@@ -869,30 +887,30 @@
 							},
 							{
 								"contentTypeId": "elementResourceCard",
-								"contentfulId": "1AFiecGISnYaOMrUDstIQr",
-								"heading": "Insight",
-								"description": "Cloudflare Security Center developer docs",
+								"contentfulId": "5SFMxtzU7kjuHb2mjUgomf",
+								"heading": "Blog",
+								"description": "Monitor all first-party cookies on your websites",
 								"category": "None",
 								"link": {
 									"contentTypeId": "elementLink",
-									"contentfulId": "4V7YKJo0mLSaQEiwRVOwhs",
-									"elementName": "Security Center - Resources cards carousel - Cloudflare Security Center developer docs - Link",
+									"contentfulId": "ftSrSy03KQV8XPu1Q7qaA",
+									"elementName": "Page Shield - Resources - Monitor all first-party cookies on your websites - Link",
 									"standardText": null,
-									"text": "Read developer docs",
-									"url": "https://developers.cloudflare.com/security-center/",
+									"text": "Read the blog",
+									"url": "https://blog.cloudflare.com/collect-all-your-cookies-in-one-jar",
 									"elementModal": null,
 									"openInNewTab": true,
 									"locale": "en-US"
 								},
 								"image": {
-									"id": "1c0de5f1-abee-55b8-9653-945bf9480f62",
-									"altText": "Cloudflare insights",
-									"title": "Cloudflare insights",
+									"id": "16dda4bb-a521-5d41-82ec-64ef52888d97",
+									"altText": "Blog  thumbnail",
+									"title": "Blog  thumbnail",
 									"activeAsset": "Contentful Asset",
 									"locale": "en-US",
 									"contentfulAsset": {
 										"file": {
-											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/7eD4EXWL2DPwSe5Y8ASppZ/3cf93c08e638e5f6057d6a1a7eccd9ab/Insight_106x182.svg"
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/7ctAQnKr7LFaJzwd5gbbeu/dffc3ef872495ac11a0250f524a057f3/Blog-thumbnail-generic.png"
 										},
 										"description": null
 									},
@@ -902,47 +920,14 @@
 							},
 							{
 								"contentTypeId": "elementResourceCard",
-								"contentfulId": "5K3Z9cUuyxoi712zNYNBXN",
-								"heading": null,
-								"description": "3 challenges of securing and connecting application services",
-								"category": "None",
-								"link": {
-									"contentTypeId": "elementLink",
-									"contentfulId": "34k6Dgl7HMiam75Tjm26b2",
-									"elementName": "Security Center - Resources cards carousel - 3 challenges of securing and connecting application services - Link",
-									"standardText": null,
-									"text": " Get the whitepaper",
-									"url": "/lp/3-challenges-of-securing-and-connecting-application-services/",
-									"elementModal": null,
-									"openInNewTab": false,
-									"locale": "en-US"
-								},
-								"image": {
-									"id": "13298e8a-267a-575b-b89a-b871f95f1d9a",
-									"altText": "Whitepaper Thumbnail",
-									"title": "Whitepaper Thumbnail",
-									"activeAsset": "Contentful Asset",
-									"locale": "en-US",
-									"contentfulAsset": {
-										"file": {
-											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/2ZiPjCDWMWnibCFs5nxHBa/75ef0ba1b4484c2da8ab4d3f40437dff/Whitpapper-generic-106x186-300dpi.png"
-										},
-										"description": null
-									},
-									"brandfolderAsset": null,
-									"brandfolderAssetMobile": null
-								}
-							},
-							{
-								"contentTypeId": "elementResourceCard",
-								"contentfulId": "3sfkG4CseeNqV1QzFLJ0EN",
+								"contentfulId": "7H3t6mVaHgfE1IOwor2l9O",
 								"heading": "Article",
 								"description": "Website security guide: A 10-step checklist",
 								"category": "None",
 								"link": {
 									"contentTypeId": "elementLink",
-									"contentfulId": "lbPDzmYd0aAY1hGAykgM7",
-									"elementName": "Advanced Certificate Manager - Resources card carousel - Website security guide: A 10-step checklist - Link",
+									"contentfulId": "75DqYYWfJd9rhgNwQpu0ei",
+									"elementName": "Page Shield - Resources - Website security guide: A 10-step checklist - Link",
 									"standardText": null,
 									"text": "Learn more",
 									"url": "https://www.cloudflare.com/learning/security/glossary/website-security-checklist/",
@@ -951,16 +936,16 @@
 									"locale": "en-US"
 								},
 								"image": {
-									"id": "37200d64-8a19-5b80-a727-74e25737dff6",
-									"altText": "theNet article - thumbnail",
-									"title": "theNet article - thumbnail",
+									"id": "1763ab8c-9b68-5fc6-b36c-2b974b3a73ad",
+									"altText": "theNET - generic - Article",
+									"title": null,
 									"activeAsset": "Contentful Asset",
 									"locale": "en-US",
 									"contentfulAsset": {
 										"file": {
-											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/6dsbqlnfwzvlPRvNcV2jTT/124c616468093a4ee6bcd75762121c02/Article_106x182.svg"
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/5LPJR23bITiL9hJwBOJBgs/4cfba5836ad54c15037826a24d090d98/image-2024-1-25_9-40-48.png"
 										},
-										"description": null
+										"description": "theNET - generic - Article"
 									},
 									"brandfolderAsset": null,
 									"brandfolderAssetMobile": null
@@ -970,8 +955,8 @@
 					},
 					{
 						"contentTypeId": "bladeEnablement",
-						"contentfulId": "5QuFcTHKjLloxlmE52fCEY",
-						"title": "Get Cloudflare Security Center for your website",
+						"contentfulId": "2Y4dPOseBevpwB6HPzyikt",
+						"title": "Get Cloudflare Page Shield for your enterprise",
 						"titleSize": "medium",
 						"backgroundColor": "image-background",
 						"buttonText": null,
@@ -986,14 +971,54 @@
 							"buttonAssetFile": null,
 							"buttonTextLoggedIn": null,
 							"contentTypeId": "button",
-							"contentfulId": "3BdumYLPIHZrPHSTsMH0fR",
-							"elementName": "Security Center - Get Cloudflare Security Center for your website - Read more - CTA",
+							"contentfulId": "6SNsWxNDTd8lbiv38M68V3",
+							"elementName": "Page Shield - Talk to an expert - Modal form - CTA",
 							"standardText": null,
-							"text": "Read more",
-							"url": "https://developers.cloudflare.com/security-center/",
+							"text": "Talk to an expert",
+							"url": null,
 							"loggedInUrl": null,
-							"buttonModal": null,
-							"openInNewTab": true,
+							"buttonModal": {
+								"contentTypeId": "formModal",
+								"contentfulId": "4fAyYKCNDyA8wm05fMzNjG",
+								"modalName": "Page Shield product page - Talk to an expert -  Modal form",
+								"modalId": "page-shield-product-page-talk-to-an-expert-modal-form",
+								"modalType": "single-form",
+								"marketoForm": {
+									"contentTypeId": "marketoEmbeddedForm",
+									"contentfulId": "75PuedpH94IU8OmAXNgofh",
+									"bladeName": "Page Shield product page - Modal form - Talk to an expert ",
+									"backgroundColor": "white",
+									"marketoFormId": 1341,
+									"marketoFormLeadSource": "Inbound - Web Form",
+									"marketoFormLeadSourceDetail": "Web Form - Enterprise General Sales Inquiry",
+									"marketoFormAssetName": null,
+									"marketoFormHeaderText": "Talk to an expert ",
+									"marketoFormDefaultComment": null,
+									"showCommentBox": null,
+									"marketoFormThankYouText": null,
+									"marketoFormCustomSuccessMessage": null,
+									"marketoFormPdfDownload": null,
+									"marketoFormPdfDownloadI18n": [],
+									"marketoFormAssetDownloadButtonText": null,
+									"marketoFormSuccessRedirectUrl": null,
+									"sendAdRoll": null,
+									"meta_adRollCustomSegment": null,
+									"enableSandbox": null,
+									"marketoFormSubmitButtonText": null,
+									"marketoFormSubmitButtonColor": null,
+									"enableEmailVerification": null,
+									"disableEnterpriseEmailNotification": null,
+									"enableRingout": null
+								},
+								"title": null,
+								"regularCopy": null,
+								"splitFormDefaultTab": null,
+								"selfServeTabText": null,
+								"selfServeCopy": null,
+								"enterpriseTabText": null,
+								"enterpriseCopy": null
+							},
+							"openInNewTab": false,
 							"locale": "en-US"
 						},
 						"buttonTwo": null,
@@ -1002,8 +1027,50 @@
 					}
 				],
 				"noindex": false,
-				"formModal": [],
-				"keepHashUrlSyncedWithScrollPosition": false
+				"formModal": [
+					{
+						"contentTypeId": "formModal",
+						"contentfulId": "4fAyYKCNDyA8wm05fMzNjG",
+						"modalName": "Page Shield product page - Talk to an expert -  Modal form",
+						"modalId": "page-shield-product-page-talk-to-an-expert-modal-form",
+						"modalType": "single-form",
+						"marketoForm": {
+							"contentTypeId": "marketoEmbeddedForm",
+							"contentfulId": "75PuedpH94IU8OmAXNgofh",
+							"bladeName": "Page Shield product page - Modal form - Talk to an expert ",
+							"backgroundColor": "white",
+							"marketoFormId": 1341,
+							"marketoFormLeadSource": "Inbound - Web Form",
+							"marketoFormLeadSourceDetail": "Web Form - Enterprise General Sales Inquiry",
+							"marketoFormAssetName": null,
+							"marketoFormHeaderText": "Talk to an expert ",
+							"marketoFormDefaultComment": null,
+							"showCommentBox": null,
+							"marketoFormThankYouText": null,
+							"marketoFormCustomSuccessMessage": null,
+							"marketoFormPdfDownload": null,
+							"marketoFormPdfDownloadI18n": [],
+							"marketoFormAssetDownloadButtonText": null,
+							"marketoFormSuccessRedirectUrl": null,
+							"sendAdRoll": null,
+							"meta_adRollCustomSegment": null,
+							"enableSandbox": null,
+							"marketoFormSubmitButtonText": null,
+							"marketoFormSubmitButtonColor": null,
+							"enableEmailVerification": null,
+							"disableEnterpriseEmailNotification": null,
+							"enableRingout": null
+						},
+						"title": null,
+						"regularCopy": null,
+						"splitFormDefaultTab": null,
+						"selfServeTabText": null,
+						"selfServeCopy": null,
+						"enterpriseTabText": null,
+						"enterpriseCopy": null
+					}
+				],
+				"keepHashUrlSyncedWithScrollPosition": null
 			},
 			"site": {
 				"siteMetadata": {
@@ -1014,8 +1081,8 @@
 		"pageContext": {
 			"currentLocale": "en-US",
 			"locale": "en-US",
-			"pathname": "/application-services/products/securitycenter/",
-			"contentfulId": "oqw7JLDK7wiOt55NrSNX5",
+			"pathname": "/application-services/products/page-shield/",
+			"contentfulId": "4dFy11xwTfNW36275hDE8L",
 			"allowedHrefLangs": [
 				"en-US",
 				"zh-CN",
