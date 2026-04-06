@@ -5,32 +5,31 @@
 		<p>At Cloudflare, we’re not looking for people who wait for a polished roadmap; we’re looking for the builders who see the cracks in the Internet that everyone else has simply learned to live with. We value candidates who have the instinct to spot a "normalized" problem and the AI-native curiosity to create a solution using the latest tools. Our culture is built on iteration, leveraging AI to ship faster today to make it better tomorrow, while ensuring that every improvement, no matter how small, is shared across the team to lift everyone up. If you’re the type of person who values curiosity over bureaucracy, and that AI is a partner in solving tough problems to keep the Internet moving forward, you’ll fit right in.</p>
 	</div>
 </div>
-<p><strong>Available Locations: Lisbon, Portugal or London, UK&nbsp;</strong></p>
-<p><strong>What you’ll do</strong></p>
-<p>In this role, you’ll help build and maintain Data Security products as a Software Engineer. These products empower customers to gain deep visibility into Cloud/SaaS security opportunities and into trends in their network traffic and product use. As an engineer on the team, you will focus on building new functionality into our APIs and distributed code while ensuring the performance and reliability of our services which ingest millions of data points each day. You’ll be joining a team of bright, knowledge-seeking engineers who are truly missionaries in solving the security and network visibility challenges for our customers.</p>
-<p><strong>Technologies we use:</strong></p>
-<ul>
-	<li>Products are written in Go, Python, and Typescript.</li>
-	<li>Code runs on Kubernetes, Cloudflare Workers, AWS, GCP, Azure.</li>
-	<li>We utilize Postgres as our data store, Redis as our cache, and Kafka as our message broker.</li>
-	<li>Our frontend is written in Typescript and React.</li>
-	<li>For service monitoring we use Prometheus and Grafana.</li>
-	<li>For service logging we use Elasticsearch and Kibana.</li>
-	<li>For product analytics we use Clickhouse and BigQuery.&nbsp;</li>
+<p class="gmail-p1"><strong>Manager, EMEA and APAC Payroll – India (Bengaluru)</strong></p>
+<p class="gmail-p2"><strong>Location:</strong> Bengaluru, India<br><strong>Team:</strong>&nbsp;Finance – Global Payroll<br><strong>Reports to:</strong>&nbsp;Senior Manager, Global Payroll</p>
+<p class="gmail-p2">At&nbsp;<strong>Cloudflare</strong>, we’re committed to delivering seamless and accurate payroll experience to our global workforce. We’re looking for an experienced Payroll Manager to lead payroll operations across our EMEA and APAC regions. In this role, you’ll oversee multi-country payrolls, manage vendor relationships, ensure compliance with local regulations, and deliver a seamless payroll experience for our employees. You’ll also play a key part in scaling processes, driving automation, and supporting our global growth.</p>
+<p class="gmail-p1"><strong>What You’ll Do</strong></p>
+<p class="gmail-p4"><strong>Lead Payroll Operations</strong>: Oversee end-to-end payroll processing across multiple EMEA and APAC countries.</p>
+<p class="gmail-p4"><strong>Vendor and Compliance Management</strong>: Partner with payroll vendors to ensure accuracy, timeliness, and compliance. Review and approve payroll outputs, reconciliations, and funding. Stay on top of legislative changes and ensure payroll compliance in each country.</p>
+<p class="gmail-p4"><strong>Strategic &amp; Cross-Functional Collaboration</strong>: Lead the Payroll transformation work for APAC and EMEA countries. Collaborate with HR, Accounting, Equity, and Benefits teams on cross-functional processes. Support new country launches, acquisitions, and system implementations.</p>
+<p class="gmail-p4"><strong>Team &amp; Process Improvement</strong>: Manage employee payroll queries and act as a regional point of escalation. Identify opportunities to streamline, standardize, and automate payroll processes</p>
+<p class="gmail-p1"><strong>What We’re Looking For</strong></p>
+<ul class="gmail-ul1">
+	<li class="gmail-li1"><strong>8+ years</strong>&nbsp;of payroll experience, with strong exposure to both EMEA and APAC regions.</li>
+	<li class="gmail-li1">Proven experience managing multi-country payrolls and external vendors.</li>
+	<li class="gmail-li1">Solid understanding of regional payroll regulations and compliance requirements.</li>
+	<li class="gmail-li1">Strong problem-solving and analytical skills, with attention to detail.</li>
+	<li class="gmail-li1">Excellent communication and collaboration skills across geographies and functions.</li>
+	<li class="gmail-li1">Experience with global HRIS and payroll platforms (e.g., Workday, ADP Celergo) is a plus.</li>
 </ul>
-<p><strong>Examples of desirable skills, knowledge, and experience:</strong></p>
-<ul>
-	<li>3+ years of professional experience building and managing reliable and performant software systems at scale, preferably with technologies like: Go, Python, Postgres</li>
-	<li>Passion for making the digital world a more secure place</li>
-	<li>Excellent debugging and optimization skills</li>
-	<li>Willingness, curiosity, and enthusiasm to learn new programming languages, technologies and systems</li>
-	<li>Strong interpersonal and communication skills. Caring and empathy are coveted traits here!</li>
-</ul>
-<p><strong>Bonus</strong></p>
-<ul>
-	<li>Frontend programming experience in Typescript/Javascript</li>
-	<li>Previous experience working with third-party API integrations</li>
-	<li>Previous experience working on security products</li>
+<p class="gmail-p2"><strong>Preferred Qualifications</strong></p>
+<ul class="gmail-ul1">
+	<li class="gmail-li1">Experience leading payroll operations in a high-growth, multinational company.</li>
+	<li class="gmail-li1">Familiarity with SOX/internal controls, audits, and compliance frameworks.</li>
+	<li class="gmail-li1">Track record of implementing payroll process improvements and automation.</li>
+	<li class="gmail-li1">Ability to manage projects across multiple countries and time zones.</li>
+	<li class="gmail-li1">Professional payroll certifications (e.g., CIPP, CPP, GPA) or regional payroll accreditation.</li>
+	<li class="gmail-li1">Comfort working in a fast-paced environment with shifting priorities.</li>
 </ul>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
