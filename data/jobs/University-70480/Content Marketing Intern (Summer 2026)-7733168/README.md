@@ -6,52 +6,31 @@
 	</div>
 </div>
 <p><strong>Available location:&nbsp;</strong>Singapore</p>
+<p><strong>About the Department</strong><strong><br></strong></p>
+<p>The Marketing team at Cloudflare is dedicated to amplifying our mission to help build a better Internet. We craft compelling narratives, engage with our global audience, and drive awareness and adoption of our innovative products and services. Through strategic campaigns, content creation, and community engagement, we play a crucial role in connecting with our customers and the broader internet community. As an intern, you'll join a dynamic and supportive environment, learning from experienced professionals and contributing to impactful projects.</p>
 <p><strong>About the Role</strong></p>
-<p>The Customer Advocacy Intern will support the team responsible for building, managing and growing customer marketing programs. Reporting to the Head of Customer Advocacy, the ideal candidate will be interested in a focus on both customer engagement and scaling customer programs in high growth SaaS companies. This is a fantastic opportunity to join a high growth company with a mission to build a better internet.</p>
-<p>You will shadow the Customer Advocacy Manager in APAC &amp; Japan cross functionally and globally in building customer participation with enterprise customers across many industries and partnering closely with stakeholders in Sales, Customer Success, Marketing, Product, and PR/AR.&nbsp;</p>
-<p>The candidate is an entry level intern who will work closely with the APAC &amp; Japan Customer Advocacy manager, who is driving all Customer Marketing and Customer Advocacy programs in region. Success is measured by the ability to drive forward efficiently and at the speed of the business, focused on quantity and quality of content, deep engagement with top accounts, brand equity, and levels/titles of participating customers.</p>
-<p>The main projects are:</p>
-<ul>
-	<li><strong>Customer References:</strong></li>
-	<ul>
-		<li>Support and fulfil sales 1:1 and RFP requests for customer references working across customer advocacy and account teams</li>
-		<li>Manage/track customer references requests via customer marketing tools</li>
-		<li>Support customer reference requests from key stakeholders across events, campaigns, product, analyst, and public relations teams&nbsp;</li>
-	</ul>
-	<li><strong>Customer Advocacy:&nbsp;</strong></li>
-	<ul>
-		<li>Qualify, develop and maintain a targeted pipeline of strategic customer relationships&nbsp;</li>
-		<li>Manage and qualify incoming nominations&nbsp;&nbsp;</li>
-		<li>Contribute to the development of high quality, world-class customer story content</li>
-	</ul>
-	<li><strong>Advisory Boards and Councils:&nbsp;</strong></li>
-	<ul>
-		<li>Shadow the process and contribute to our Sydney customer advisory boards/councils&nbsp;</li>
-		<li>Coordinate across many teams and executives, pre/post event success&nbsp;&nbsp;</li>
-		<li>Develop documents and reporting pre/post event</li>
-		<li>Assist in onsite, in-person, best-in-class customer experiences&nbsp;</li>
-	</ul>
-</ul>
+<p>As a Content Marketing Intern at Cloudflare, you will play a vital role in shaping the voice of our brand and engaging our audience across various digital platforms. You will contribute to creating compelling content that attracts potential customers and keeps our current community informed and engaged throughout their journey with Cloudflare. This role offers an exciting opportunity to develop your writing skills, understand digital content strategy, and learn about the intersection of technology, marketing, and global reach. You will be a key contributor to our team, bringing fresh perspectives and a passion for storytelling to our content initiatives.</p>
 <p><strong>Responsibilities</strong></p>
 <ul>
-	<li>Collaborate with the APAC &amp; Japan GTM teams to develop and execute customer marketing strategies that align with business goals.</li>
-	<li>Support the research, writing, and editing of engaging case studies, customer interviews, and other marketing collateral.</li>
-	<li>Learn and support marketing and customer advocacy tech stack.</li>
-	<li>Contribute to planning and brainstorming sessions, bringing creative ideas and new efficiencies using AI to the table.</li>
-	<li>Support the team in analyzing advocacy activity performance and identifying opportunities for improvement.</li>
-	<li>Contribute to monthly and quarterly reporting, including newsletters</li>
+	<li>Collaborate with the marketing team to develop and execute content strategies that align with business goals.</li>
+	<li>Research, write, and edit engaging blog posts, newsletters, case studies, and other marketing collateral.</li>
+	<li>Ensure all content reflects Cloudflare's brand voice and maintains a high standard of quality and accuracy.</li>
+	<li>Learn and apply best practices in SEO (Search Engine Optimization) and AEO (AI Engine Optimization) to optimize content for discoverability.</li>
+	<li>Adapt writing style and tone for various digital platforms and target audiences, understanding the nuances of each channel.</li>
+	<li>Contribute to content planning and brainstorming sessions, bringing creative ideas to the table.</li>
+	<li>Support the team in analyzing content performance and identifying opportunities for improvement.</li>
 </ul>
 <p><strong>Skills &amp; Qualifications</strong></p>
 <ul>
 	<li>Currently pursuing a degree in Journalism, English, Marketing, Communications, or a related field.</li>
-	<li>Available for a full-time 12-week internship, working from our Singapore office 3-5 days a week during the summer (May-Aug).</li>
-	<li>A strong portfolio of writing samples across different formats (e.g., blog posts, articles, essays).</li>
-	<li>Ability to write clearly and concisely with the flexibility to adapt tone for various digital platforms and audiences.</li>
-	<li>Strong project management skills.</li>
+	<li>A strong portfolio showcasing your writing samples across different formats (e.g., blog posts, articles, essays).</li>
+	<li>Demonstrable understanding of SEO (Search Engine Optimization) and AEO (AI Engine Optimization) principles.</li>
+	<li>Ability to write clearly, concisely, and adaptably for various digital platforms and audiences.</li>
 	<li>Strong research skills and a keen eye for detail.</li>
 	<li>Excellent communication and collaboration skills.</li>
 	<li>Curiosity and a proactive approach to learning and problem-solving.</li>
-	<li><strong>Bonus: </strong>A passion for technology and its impact on the digital landscape is highly desirable.</li>
+	<li>A passion for technology and its impact on the internet is desirable.</li>
+	<li>Available for a full-time 12-week internship, working from our Singapore office 3-5 days a week from May-Aug.</li>
 </ul>
 <p>You can check out our <a href="https://blog.cloudflare.com/tag/internship-experience/">internship blogs</a> to learn more about our program and hear directly from our past interns.</p>
 <div class="content-conclusion">
