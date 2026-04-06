@@ -1,10 +1,10 @@
 {
 	"componentChunkName": "component---src-components-page-page-template-tsx",
-	"path": "/application-services/products/automatic-platform-optimization/",
+	"path": "/application-services/products/rate-limiting/",
 	"result": {
 		"data": {
 			"page": {
-				"pageName": "Automatic Platform Optimization | WordPress",
+				"pageName": "Cloudflare Rate Limiting - Product Page",
 				"localeList": {
 					"enUS": "English for Locale",
 					"zhCN": "Translated for Locale",
@@ -23,23 +23,23 @@
 					"enGB": "English for Locale",
 					"nlNL": "English for Locale",
 					"idID": "English for Locale",
-					"thTH": "English for Locale",
+					"thTH": "Translated for Locale",
 					"ruRU": "Translated for Locale",
 					"svSE": "English for Locale",
-					"viVN": "English for Locale",
+					"viVN": "Translated for Locale",
 					"trTR": "Translated for Locale",
 					"zhHansCN": "Translated for Locale",
 					"plPL": "Translated for Locale",
 					"arAR": "No Page for Locale"
 				},
-				"relativePath": "application-services/products/automatic-platform-optimization",
+				"relativePath": "application-services/products/rate-limiting/",
 				"topNavOptions": "default",
 				"topNavButtonText": null,
 				"topNavButtonUrl": null,
 				"footerOptions": "default",
 				"metaTags": {
-					"metaTitle": "Automatic Platform Optimization for WordPress",
-					"metaDescription": "Speed up your site with the Automatic Platform Optimization plugin for WordPress from Cloudflare. Discover how to optimize your WordPress site today.",
+					"metaTitle": "Advanced Rate Limiting & Brute Force Protection",
+					"metaDescription": "Cloudflare offers advanced rate limiting to protect against brute force attacks, DDoS attacks, and API abuse. Learn more about advanced rate limiting.",
 					"twitterCustomImage": null,
 					"metaImage": {
 						"file": {
@@ -51,10 +51,10 @@
 					"author": []
 				},
 				"sys": {
-					"createdAt": "2020-09-25T18:45:53.016Z",
-					"updatedAt": "2026-03-28T07:48:05.438Z"
+					"createdAt": "2018-12-12T21:12:29.329Z",
+					"updatedAt": "2026-04-01T18:55:28.859Z"
 				},
-				"contentfulId": "6VfsfTAckXzL94vesQjtX1",
+				"contentfulId": "5F4lTypOvu2UyaIEckg4yy",
 				"contentTypeId": "page",
 				"promotionalBanner": null,
 				"psaBanner": null,
@@ -64,24 +64,24 @@
 				"template": null,
 				"relatedBlades": [
 					{
-						"contentfulId": "4y3lSYyoozNHdXexzAcq1V",
+						"contentfulId": "3wr8fNfIhW4ui6Ue4As0mo",
 						"contentTypeId": "bladeHeroAnimation",
-						"title": "Automatic Platform Optimization for WordPress",
+						"title": "Advanced Rate Limiting",
 						"titleSize": null,
-						"subtitle": "An easy way to make WordPress sites load 72% faster",
+						"subtitle": "Defend your applications and APIs against abuse by throttling traffic that exceeds defined limits",
 						"subtitleSize": null,
-						"copy": "With Automatic Platform Optimization, both static and dynamic WordPress content is served from the Cloudflare network, which spans over %{DataCenterCount} cities.",
-						"buttonColor": "blue",
+						"copy": "Rate Limiting protects against denial-of-service attacks, brute force login attempts, traffic surges, and other types of abuse targeting APIs and applications.",
+						"buttonColor": null,
 						"buttonColor2": null,
 						"buttonText1": "Get started",
-						"buttonText1LoggedIn": null,
-						"buttonUrl1": "https://wordpress.org/plugins/cloudflare/",
+						"buttonText1LoggedIn": "Get started",
+						"buttonUrl1": "https://dash.cloudflare.com/sign-up",
 						"buttonUrl1LoggedIn": null,
 						"button1ExtraClass": null,
-						"buttonText2": "See pricing",
+						"buttonText2": "Talk to an expert",
 						"buttonText2LoggedIn": null,
-						"buttonUrl2": "/application-services/products/automatic-platform-optimization/#APO-Pricing",
-						"button2ExtraClass": null,
+						"buttonUrl2": "#",
+						"button2ExtraClass": "rate-limiting-modal",
 						"bladeBorder": "none",
 						"htmlId": null,
 						"textColor": "black",
@@ -92,46 +92,55 @@
 						"popupStreamId": null,
 						"popupText": null,
 						"button1OpenInNewTab": true,
-						"button2OpenInNewTab": null,
+						"button2OpenInNewTab": false,
 						"streamThumbnails": null,
 						"sectionPadding": null,
 						"streamPosterAssetFile": null,
 						"streamPoster": null,
-						"imageSize": null,
+						"imageSize": "Large",
 						"imagePosition": null,
 						"leftLinkUrl": null,
 						"leftLink": null,
 						"leftLinkLoggedIn": null,
-						"leftLinkOptions": "hide",
+						"leftLinkOptions": "show",
 						"backgroundColor": "white",
-						"textlayoutMode": "left wide",
+						"textlayoutMode": null,
 						"backgroundAssetFile": null,
 						"imageLayout": null,
-						"image": {
-							"file": {
-								"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/5crxk6C6LPN50NC7nGtm8f/ce82be80a650ab494efd4aeed0322d7a/Group_48096479.svg"
+						"image": null,
+						"imageAssetFile": {
+							"id": "52c29133-7355-575d-a546-b2150d8f4231",
+							"altText": "Dns unmetered ddos spot illustration",
+							"title": "Dns unmetered ddos spot illustration",
+							"activeAsset": "Contentful Asset",
+							"locale": "en-US",
+							"contentfulAsset": {
+								"file": {
+									"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/40DjiMHjomH0CcKacUmzGM/ddb2fd20fcee9b688049ad6c0d2ba760/dns-unmetered-ddos-spot-illustration-1.svg"
+								},
+								"description": ""
 							},
-							"description": "Illustration of a web page optimized by Cloudflare"
-						},
-						"imageAssetFile": null
+							"brandfolderAsset": null,
+							"brandfolderAssetMobile": null
+						}
 					},
 					{
-						"contentfulId": "3MpYdRhALkptoB4UrYe2yP",
+						"contentfulId": "2PJZmKmCehEiGHElyWyTq",
 						"contentTypeId": "bladeMultipleColumnsLayout",
 						"title": null,
-						"eyebrowHeading": "BENEFITS OF AUTOMATIC PLATFORM OPTIMIZATION",
+						"eyebrowHeading": "BENEFITS OF RATE LIMITING",
 						"description": null,
 						"textLayout": "left",
 						"columnsLayout": "Four Columns",
 						"columnContent": [
 							{
 								"contentTypeId": "feature",
-								"contentfulId": "3pJoUKhaSl1nkokIyfpYUK",
-								"title": "Faster page load time",
+								"contentfulId": "4BcROUoLhop97AIMiNsp42",
+								"title": "Mitigate DDoS attacks",
 								"makeTitleLink": false,
 								"titleUrl": null,
 								"titleSize": null,
-								"description": "Our testing shows improvements of 72% for Time to First Byte (TTFB) and 23% for First Contentful Paint (FCP).",
+								"description": "Stop high-precision layer 7 attacks with granular configuration options.",
 								"learnMoreUrl": null,
 								"learnMoreText": null,
 								"displayBorder": false,
@@ -139,16 +148,16 @@
 								"removeCardBorder": false,
 								"icon": null,
 								"iconAssetFile": {
-									"id": "b1b7275d-3503-5173-a651-9cfd70157c3c",
-									"altText": "Performance acceleration rocket ",
-									"title": "Performance acceleration rocket",
+									"id": "326d66b9-319c-522a-9a89-d79f3d382742",
+									"altText": "Security shield ddos protection blue",
+									"title": "Security shield ddos protection blue",
 									"activeAsset": "Contentful Asset",
 									"locale": "en-US",
 									"contentfulAsset": {
 										"file": {
-											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/1vvXmr7jmxFdYUgliFcXUh/d27e7eabc9727ba987b15d5e9ddad5e3/performance-acceleration-rocket.svg"
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/2oIHOELz7Ir7RtBLpEfWEs/d2ddafe107a6a330ab761b16824a1a03/security-shield-protection-1.svg"
 										},
-										"description": "Performance acceleration rocket orange"
+										"description": "Shield icon"
 									},
 									"brandfolderAsset": null,
 									"brandfolderAssetMobile": null
@@ -162,12 +171,12 @@
 							},
 							{
 								"contentTypeId": "feature",
-								"contentfulId": "3Txmcpgrzt6gzM8BIRzqD1",
-								"title": "Better user experience & SEO",
+								"contentfulId": "4MAaq29czcYhCOiJiRGGQK",
+								"title": "Ensure API availability",
 								"makeTitleLink": false,
 								"titleUrl": null,
 								"titleSize": null,
-								"description": "Speed improvements mean users are not stuck waiting for pages to load. Additionally, better page performance can lead to better search engine rankings.",
+								"description": "Identify abusive traffic with high accuracy by rate limiting traffic based on any parameter of a request.",
 								"learnMoreUrl": null,
 								"learnMoreText": null,
 								"displayBorder": false,
@@ -175,16 +184,16 @@
 								"removeCardBorder": false,
 								"icon": null,
 								"iconAssetFile": {
-									"id": "8ef8fdc5-cba6-5992-8e53-275759d57c5a",
-									"altText": "Analytics data blue",
-									"title": "Analytics data blue",
-									"activeAsset": "Contentful Asset",
+									"id": "6574d2f0-c1a6-5297-a844-7b61f0da4ec9",
+									"altText": "Cloudflare api blue",
+									"title": "Cloudflare api blue",
+									"activeAsset": "Brandfolder Asset",
 									"locale": "en-US",
 									"contentfulAsset": {
 										"file": {
-											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/2GDXdm5wvNxuUxs30EcKZx/daade3315fd04282a6607e8ce40d3fab/analytics-data.svg"
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/WnnVVQ5dXgoH5KkoX1MOI/a6e0689bfcf0549337c9b4c5bb0ea176/cloudflare-api.svg"
 										},
-										"description": "Data analytics icon"
+										"description": "cloudflare api"
 									},
 									"brandfolderAsset": null,
 									"brandfolderAssetMobile": null
@@ -198,12 +207,12 @@
 							},
 							{
 								"contentTypeId": "feature",
-								"contentfulId": "4VO1JYj1FQrcCcX9Wk80eW",
-								"title": "Easy setup",
+								"contentfulId": "28gMAVDETFYUN1kXawix2U",
+								"title": "Protect customer data",
 								"makeTitleLink": false,
 								"titleUrl": null,
 								"titleSize": null,
-								"description": "Download the Cloudflare plugin, create an account, answer a few questions, and your website is optimized.",
+								"description": "Defend against brute force login attacks seeking to take over accounts and steal sensitive information.",
 								"learnMoreUrl": null,
 								"learnMoreText": null,
 								"displayBorder": false,
@@ -211,14 +220,14 @@
 								"removeCardBorder": false,
 								"icon": null,
 								"iconAssetFile": {
-									"id": "1b916824-7fb8-5f8f-a315-4faa6461d4d3",
-									"altText": "Optimization gear ",
-									"title": "Optimization gear ",
+									"id": "94716675-099b-561c-a6b3-d9be2b13ab58",
+									"altText": "Search blue",
+									"title": "Search blue",
 									"activeAsset": "Contentful Asset",
 									"locale": "en-US",
 									"contentfulAsset": {
 										"file": {
-											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/6JreowuAuIySxXXXqycY4r/746dc87c57caa9f58423af84de3fa35a/optimization-gear.svg"
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/3BxXRJAvXxK5VsZNLR3VPH/5bf83900a7872240c84b8a9074e5d30c/search.svg"
 										},
 										"description": ""
 									},
@@ -234,12 +243,12 @@
 							},
 							{
 								"contentTypeId": "feature",
-								"contentfulId": "3TtB90PaKdKgZsCoSDle94",
-								"title": "Both static & dynamic content",
+								"contentfulId": "2wJYPlSLcenvjzQ0zOv6yK",
+								"title": "Rely on transparent pricing",
 								"makeTitleLink": false,
 								"titleUrl": null,
 								"titleSize": null,
-								"description": "HTML, CSS, JavaScript, plugins, and dynamic content all are served from the Cloudflare network with data centers that are geographically close to users for maximum performance.",
+								"description": "Avoid unpredictable costs associated with traffic spikes and enumeration attacks. We will not charge you for usage when you are under volumetric attack.",
 								"learnMoreUrl": null,
 								"learnMoreText": null,
 								"displayBorder": false,
@@ -247,16 +256,16 @@
 								"removeCardBorder": false,
 								"icon": null,
 								"iconAssetFile": {
-									"id": "ec747864-4669-5c04-8668-5e48160570c0",
-									"altText": "Code Web approved - orange",
-									"title": "Code Web approved - orange",
+									"id": "ca8dae98-4f47-5466-a459-bdaacb07a225",
+									"altText": "Dollar",
+									"title": "Dollar",
 									"activeAsset": "Contentful Asset",
 									"locale": "en-US",
 									"contentfulAsset": {
 										"file": {
-											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/3yP8xasUuZA27tpg6marwM/a30b4cac4910de90519f6141964f0920/code-js__1_.svg"
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/7td2uxheozRtbhflYJ4n7b/f957bd073f41d31f0579dafa98f329c4/price__1_.svg"
 										},
-										"description": "Code Web approved - orange"
+										"description": null
 									},
 									"brandfolderAsset": null,
 									"brandfolderAssetMobile": null
@@ -269,13 +278,13 @@
 								"streamThumbnailAssetFile": null
 							}
 						],
-						"sectionPadding": "tile--no-top-padding",
+						"sectionPadding": null,
 						"htmlId": null
 					},
 					{
-						"contentfulId": "4OP7JRwidg4vD4vtMQFNHS",
-						"title": "Automatic Platform Optimization caches your website on Cloudflare's network",
-						"copy": "Automatic Platform Optimization serves both static and dynamic WordPress content from the Cloudflare network, reducing costly round trips to the origin server. All the communication occurs between the user's device and Cloudflare.\n\nThe Cloudflare network is within 50 milliseconds of %{GlobalInternetConnectedPercent}% of the Internet-connected population globally, which means content is served faster than the blink of an eye.",
+						"contentfulId": "4mA1M9q2o8YccWWcigmwSg",
+						"title": "Pick the right option for you",
+						"copy": "Choose IP-based Rate Limiting to protect unauthenticated endpoints, limit the number of requests from specific IP addresses, and handle abuse from repeat offenders.\n\nUpgrade to Advanced Rate Limiting if you want to protect your APIs from abuse, mitigate volumetric attacks from authenticated API sessions, and take full control of the parameters you rate limit on.",
 						"toggleText": null,
 						"button": [],
 						"learnMoreUrl": null,
@@ -288,26 +297,24 @@
 						"button2Text": null,
 						"button2Url": null,
 						"button2Color": null,
-						"streamOptions": [
-							"controls"
-						],
-						"streamCaptions": "en",
+						"streamOptions": null,
+						"streamCaptions": null,
 						"streamVideoId": null,
 						"streamThumbnails": null,
 						"streamPoster": null,
 						"streamPosterAssetFile": null,
 						"image": null,
 						"imageAssetFile": {
-							"id": "760fd520-0846-5eb0-99af-9d3e8a02efad",
-							"altText": "Optimize web experiences hero illustration",
-							"title": "Optimize web experiences hero illustration",
+							"id": "71cf0deb-6608-501f-97dc-6ae68e5f31ab",
+							"altText": "Updated RL Rule",
+							"title": "Updated RL Rule",
 							"activeAsset": "Contentful Asset",
 							"locale": "en-US",
 							"contentfulAsset": {
 								"file": {
-									"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/694ZGEIGdWpGsjdQbL2VsT/552e1a5e3633244b8e642158104764f6/optimize-web-experiences-hero-illustration.svg"
+									"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/5RJvfH8ugcj1YSQOyxdNAt/c54f1382677f32d0a087846eb5bde80b/updated_RL_rule.png"
 								},
-								"description": ""
+								"description": null
 							},
 							"brandfolderAsset": null,
 							"brandfolderAssetMobile": null
@@ -321,52 +328,98 @@
 						"backgroundColor": "white",
 						"bladeBorder": "none",
 						"imagePosition": true,
-						"imageSize": "medium",
-						"imageTextAlignment": "center",
+						"imageSize": null,
+						"imageTextAlignment": null,
 						"togglesTo": []
 					},
 					{
-						"contentfulId": "FZSGEM9NL68YGJVq5TeoK",
-						"contentTypeId": "bladeLeadGeneration",
-						"title": null,
-						"description": "Learn how to save money by avoiding the hidden costs of the cloud",
-						"variant": "inline",
+						"contentTypeId": "bladeEnablement",
+						"contentfulId": "36fcgMflUKbQ3Hi5OB0NvV",
+						"title": "Learn more about rate limiting and website security with Cloudflare",
+						"titleSize": "medium",
+						"backgroundColor": "image-background",
+						"buttonText": null,
+						"buttonUrl": null,
+						"buttonText2": null,
+						"buttonModalId2": null,
+						"buttonUrl2": null,
+						"bladeSizeType": "small",
 						"htmlId": null,
-						"sectionPadding": "tile--no-top-bottom-padding",
-						"backgroundImage": {
-							"id": "5fb646a4-2af5-50d0-815c-108317d4b5b7",
-							"altText": "Cloudflare Orange Background",
-							"title": "Cloudflare Orange Background",
+						"bladeBorder": "none",
+						"buttonOne": {
+							"buttonAssetFile": null,
+							"buttonTextLoggedIn": null,
+							"contentTypeId": "button",
+							"contentfulId": "2Q3wawRvKCCxNNEMnP3oEg",
+							"elementName": "Cloudflare Rate Limiting - Additional offer - CTA",
+							"standardText": null,
+							"text": "Watch demo",
+							"url": "https://cloudflare.ondemand.goldcast.io/on-demand/10350ff2-cb6c-430e-9e0b-28c29b5df938",
+							"loggedInUrl": null,
+							"buttonModal": null,
+							"openInNewTab": true,
+							"locale": "en-US"
+						},
+						"buttonTwo": null,
+						"sectionPadding": null,
+						"eyebrow": null
+					},
+					{
+						"contentfulId": "3ZcSnbCZrPCES5RlYLyeT6",
+						"title": "Gartner® named Cloudflare a Representative Vendor in Web Application and API Protection",
+						"copy": "Cloudflare has been recognized as a Representative Vendor in the Gartner Market Guide for WAAP report. We believe this recognition validates that we protect against emerging threats faster, offer tighter integration of security capabilities, and deliver powerful ease of use and deployment.",
+						"toggleText": null,
+						"button": [],
+						"learnMoreUrl": "https://www.cloudflare.com/lp/gartner-cloud-web-application-api-protection-market-guide/",
+						"learnMoreText": "Download WAAP Market Guide",
+						"link": [],
+						"subheadline": null,
+						"button1Text": "Learn more",
+						"button1Url": "https://www.cloudflare.com/lp/gartner-cloud-web-application-api-protection-market-guide/",
+						"button1Color": "orange",
+						"button2Text": null,
+						"button2Url": null,
+						"button2Color": null,
+						"streamOptions": [
+							"controls"
+						],
+						"streamCaptions": "en",
+						"streamVideoId": null,
+						"streamThumbnails": null,
+						"streamPoster": null,
+						"streamPosterAssetFile": null,
+						"image": null,
+						"imageAssetFile": {
+							"id": "7733b7fc-fa7b-5c81-8a5b-543982140774",
+							"altText": "Cloudflare is a Leader in the Gartner Magic Quadrant™ for WAAP",
+							"title": "Gartner WAAP Magic Quadrant",
 							"activeAsset": "Contentful Asset",
 							"locale": "en-US",
 							"contentfulAsset": {
 								"file": {
-									"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/6wvLylL1UDvEfh7N5WBd32/b05450aa05d6c40af93bf04309e1723c/Lead-generation-background-generic.png"
+									"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/1hJGkoRmgGGhMIpvQ6VJ4U/90e6a961145b3cc4d0c9dc4cb2940a47/Application_Services_Image_03.svg"
 								},
 								"description": ""
 							},
 							"brandfolderAsset": null,
 							"brandfolderAssetMobile": null
 						},
-						"primaryCtaButton": {
-							"buttonAssetFile": null,
-							"buttonTextLoggedIn": null,
-							"contentTypeId": "button",
-							"contentfulId": "7lvKvWq0iTvr2nI9BfX7M3",
-							"elementName": "Get the white paper",
-							"standardText": null,
-							"text": "Get whitepaper",
-							"url": "https://www.cloudflare.com/lp/reducing-cloud-costs-in-an-uncertain-economy/",
-							"loggedInUrl": null,
-							"buttonModal": null,
-							"openInNewTab": false,
-							"locale": "en-US"
-						},
-						"secondaryCtaButton": null
+						"featureList": [],
+						"contentTypeId": "bladeImageText",
+						"sectionTitle": "Analyst recognition",
+						"htmlId": null,
+						"titleSize": null,
+						"sectionPadding": null,
+						"backgroundColor": "white",
+						"bladeBorder": "none",
+						"imagePosition": true,
+						"imageSize": "large",
+						"imageTextAlignment": null,
+						"togglesTo": []
 					},
 					{
 						"contentTypeId": "bladeRichTextColumnGroup",
-						"contentfulId": "5txsOuZJ9Uer4WtCakCNiF",
+						"contentfulId": "3NbVEDwhrCZyWrFm2cmGD1",
 						"htmlId": null,
 						"mainHeadline": null,
 						"backgroundColor": "white",
@@ -376,7 +429,7 @@
 						"columns": [
 							{
 								"contentTypeId": "elementRichText",
-								"contentfulId": "7hJFuMhP8xmShqVO4Oh5Ao",
+								"contentfulId": "2I7A6DH6wXjSWAmLnRsHxo",
 								"title": null,
 								"htmlId": null,
 								"elementPosition": "relative",
@@ -428,7 +481,7 @@
 																"target": null,
 																"uri": null
 															},
-															"value": "\"By caching static HTML on Cloudflare's edge network, we saw a 70-300% performance increase. If your WordPress site uses a traditional CDN that only caches CSS, JS, and images, upgrading to Cloudflare's WordPress Automatic Platform Optimization (APO) is a no-brainer and will help you stay competitive with modern JAMstack and static sites that live on the edge by default.\"",
+															"value": "\"When other companies experienced a data leak, the attackers would often try the stolen email and password combinations on our sites. We always knew when there was another attack, but it was business as usual because Cloudflare detected and stopped it before it became a problem.\"",
 															"marks": [],
 															"content": null
 														}
@@ -472,7 +525,7 @@
 														"target": null,
 														"uri": null
 													},
-													"value": "Website Content Manager — Kinsta",
+													"value": "Conrad Electronic",
 													"marks": [],
 													"content": null
 												}
@@ -673,22 +726,22 @@
 						"sectionPadding": null
 					},
 					{
-						"contentfulId": "3Epsvf6f7fjv8jRFJHl5aJ",
+						"contentfulId": "ZgNiNDNd67WJTTw11v99z",
 						"contentTypeId": "bladeMultipleColumnsLayout",
-						"title": "Automatic Platform Optimization helps you speed up your WordPress site without lifting a finger.",
-						"eyebrowHeading": "Top Automatic Platform Optimization use cases",
+						"title": null,
+						"eyebrowHeading": "Top Rate Limiting use cases",
 						"description": null,
 						"textLayout": "left",
 						"columnsLayout": "Three Columns",
 						"columnContent": [
 							{
 								"contentTypeId": "feature",
-								"contentfulId": "5jjxe6VhH60kSculPSST7m",
-								"title": "Speed up WordPress websites",
+								"contentfulId": "1U26EGqFHYvJikzrP28Iud",
+								"title": "Configure thresholds",
 								"makeTitleLink": false,
 								"titleUrl": null,
 								"titleSize": null,
-								"description": "Cloudflare allows WordPress site admins to accelerate their webpages with just a few clicks.",
+								"description": "Protect your website URLs and API endpoints from suspicious requests that exceed defined thresholds. Granular configuration options include status codes, specific URLs, request limits, and request methods.",
 								"learnMoreUrl": null,
 								"learnMoreText": null,
 								"displayBorder": false,
@@ -696,14 +749,50 @@
 								"removeCardBorder": false,
 								"icon": null,
 								"iconAssetFile": {
-									"id": "4fd99cc4-cde1-5f4e-8b21-4ec5e6a05307",
-									"altText": "Lightning bolt icon",
-									"title": null,
+									"id": "eaeddebf-b730-5e34-b5cd-2dcca8d4cba2",
+									"altText": "security-shield-protection-230x301-664b7d5",
+									"title": "security-shield-protection-230x301-664b7d5",
 									"activeAsset": "Contentful Asset",
 									"locale": "en-US",
 									"contentfulAsset": {
 										"file": {
-											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/1tpIHSbWVmGHYltiwNqNZ8/0113bb1cdb4e813771661ceed1295707/performance-acceleration-bolt.svg"
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/LaRddEaKEWlYXXx8Y2UST/4a87c8fe7df63554665ed7b673ba5846/security-shield-protection-2.svg"
+										},
+										"description": null
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								},
+								"imageOverlaySuperheader": null,
+								"imageOverlayText": null,
+								"imageAssetFile": null,
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
+							},
+							{
+								"contentTypeId": "feature",
+								"contentfulId": "1I21lBJ371bHqBgVaGK7Hh",
+								"title": "Define responses",
+								"makeTitleLink": false,
+								"titleUrl": null,
+								"titleSize": null,
+								"description": "Visitors hitting defined request thresholds can trigger custom responses, including mitigating actions such as challenges or CAPTCHAS, response codes, timeouts, and blocking.",
+								"learnMoreUrl": null,
+								"learnMoreText": null,
+								"displayBorder": false,
+								"openLinkInNewTab": null,
+								"removeCardBorder": false,
+								"icon": null,
+								"iconAssetFile": {
+									"id": "4b8d0fd4-e74c-5191-a1ff-2887eb26d2fa",
+									"altText": "Performance acceleration bolt orange",
+									"title": "Performance acceleration bolt orange",
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/5sWqRe2bVBkaYdFk0OapeM/7104c2a5381e49f73144e8a6e1095b53/performance-acceleration-bolt.svg"
 										},
 										"description": "Lightning bolt icon"
 									},
@@ -719,12 +808,12 @@
 							},
 							{
 								"contentTypeId": "feature",
-								"contentfulId": "6zbyL6elhFMlPhIqAPhbGS",
-								"title": "Reduce bandwidth costs",
+								"contentfulId": "67NeyIGnPhGnnkAKMAVZ1X",
+								"title": "Get insights into traffic patterns",
 								"makeTitleLink": false,
 								"titleUrl": null,
 								"titleSize": null,
-								"description": "Fewer requests to the origin server means bandwidth costs are vastly reduced.",
+								"description": "Scale and protect your resources with analytics including the amount of malicious traffic blocked by rule and the number of requests that reach your origin.",
 								"learnMoreUrl": null,
 								"learnMoreText": null,
 								"displayBorder": false,
@@ -732,52 +821,16 @@
 								"removeCardBorder": false,
 								"icon": null,
 								"iconAssetFile": {
-									"id": "c957ff8d-a1fd-5d1f-9dab-40bee8ed2b02",
-									"altText": "Pull request orange",
-									"title": "Pull request orange",
+									"id": "8ef8fdc5-cba6-5992-8e53-275759d57c5a",
+									"altText": "Analytics data blue",
+									"title": "Analytics data blue",
 									"activeAsset": "Contentful Asset",
 									"locale": "en-US",
 									"contentfulAsset": {
 										"file": {
-											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/6tuARUDvAQEzpWTMdMK2z3/6f5e4bbfbea969d25ccc5a855be7975b/pull-request-merged.svg"
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/2GDXdm5wvNxuUxs30EcKZx/daade3315fd04282a6607e8ce40d3fab/analytics-data.svg"
 										},
-										"description": "Pull request icon"
-									},
-									"brandfolderAsset": null,
-									"brandfolderAssetMobile": null
-								},
-								"imageOverlaySuperheader": null,
-								"imageOverlayText": null,
-								"imageAssetFile": null,
-								"streamId": null,
-								"streamThumbnail": null,
-								"streamThumbnailAssetFile": null
-							},
-							{
-								"contentTypeId": "feature",
-								"contentfulId": "4o8IbjqZkoC68jFle2YmHb",
-								"title": "Cache dynamic content",
-								"makeTitleLink": false,
-								"titleUrl": null,
-								"titleSize": null,
-								"description": "Websites heavy on dynamic content can use Automatic Platform Optimization to improve the user experience.",
-								"learnMoreUrl": null,
-								"learnMoreText": null,
-								"displayBorder": false,
-								"openLinkInNewTab": null,
-								"removeCardBorder": false,
-								"icon": null,
-								"iconAssetFile": {
-									"id": "c83156b2-55b7-5045-8877-3e9545d7e4cb",
-									"altText": "Automatic Platform Optimization",
-									"title": "APO Icon",
-									"activeAsset": "Contentful Asset",
-									"locale": "en-US",
-									"contentfulAsset": {
-										"file": {
-											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/2B4PkhT3iJxxMZBCF5BC9a/1e5dd87f75bf1efefb452d8819953939/optimization-web.svg"
-										},
-										"description": null
+										"description": "Data analytics icon"
 									},
 									"brandfolderAsset": null,
 									"brandfolderAssetMobile": null
@@ -795,15 +848,15 @@
 					},
 					{
 						"contentTypeId": "bladeHtml",
-						"contentfulId": "gCdG4NtDaS0JEsRvdnpbR",
-						"htmlContent": "<div style=\"text-align: center; cursor:pointer; margin-bottom:64px; margin-top: -60px;\">\n    <a href=\"/application-services/solutions/#web-app-performance-solutions\" target=\"_blank\" class=\"inline-link-style\">Explore more use cases<svg width=\"6\" height=\"10\"\n            viewBox=\"0 0 6 10\" fill=\"currentColor\" aria-label=\"chevron\" xmlns=\"https://www.cloudflare.com/application-services/solutions/\"\n            class=\"dib v-mid ml1\">\n            <path\n                d=\"M1.00003 -4.37127e-08L-3.93401e-07 1.00003L4 5L0.000271373 9.00025L1.00003 10L6.00003 5L1.00003 -4.37127e-08Z\">\n            </path>\n        </svg>  </a>\n</div>",
+						"contentfulId": "4e9gZUs18AbJlLPrAzccbv",
+						"htmlContent": "<div style=\"text-align: center; cursor:pointer; margin-bottom:64px; margin-top: -60px;\">\n    <a href=\"/application-services/solutions/#protect-websites-applications-solutions\" target=\"_blank\" class=\"inline-link-style\">Explore more use cases<svg width=\"4\" height=\"10\"\n            viewBox=\"0 0 6 10\" fill=\"currentColor\" aria-label=\"chevron\" xmlns=\"https://www.cloudflare.com/zero-trust/solutions/\"\n            class=\"dib v-mid ml1\">\n            <path\n                d=\"M1.00003 -4.37127e-08L-3.93401e-07 1.00003L4 5L0.000271373 9.00025L1.00003 10L6.00003 5L1.00003 -4.37127e-08Z\">\n            </path>\n        </svg>  </a>\n</div>",
 						"htmlId": null
 					},
 					{
-						"contentfulId": "3F1Se2GHw5h4eX2Ouv0sZl",
+						"contentfulId": "54t6x3OfmN3z7yIoGAdEAA",
 						"contentTypeId": "bladeLeadGeneration",
 						"title": null,
-						"description": "Helping organizations worldwide accelerate digital properties",
+						"description": "Helping organizations bolster their application security strategies",
 						"variant": "inline",
 						"htmlId": null,
 						"sectionPadding": "tile--no-top-padding",
@@ -826,11 +879,11 @@
 							"buttonAssetFile": null,
 							"buttonTextLoggedIn": null,
 							"contentTypeId": "button",
-							"contentfulId": "2LvQRz1YNQOn6gaCIW619S",
-							"elementName": "View case studies",
+							"contentfulId": "5QGV2U8kXzAOqeMECxbBfD",
+							"elementName": "See case studies",
 							"standardText": null,
 							"text": "See case studies",
-							"url": "/case-studies/?usecase=Accelerate+digital+properties",
+							"url": "/case-studies/?product=Rate+Limiting",
 							"loggedInUrl": null,
 							"buttonModal": null,
 							"openInNewTab": false,
@@ -839,195 +892,150 @@
 						"secondaryCtaButton": null
 					},
 					{
-						"contentfulId": "7yJYScICakOEFRSMytMKFk",
-						"backgroundColor": "white",
-						"contentTypeId": "bladeFourFeatures",
-						"htmlId": "APO-Pricing",
-						"copy": null,
-						"title": "Pricing",
-						"subtitle": null,
-						"bladeStyle": "Feature Blocks - 2 columns",
-						"bladeBorder": "none",
-						"sectionPadding": "tile--no-top-padding",
-						"carouselSlidesToShow": null,
-						"carouselSlidesToScroll": null,
-						"locale": "en-US",
-						"features": [
-							{
-								"contentTypeId": "feature",
-								"contentfulId": "38kVY5YF5YyKl3rJypW89v",
-								"title": "Free Plan",
-								"makeTitleLink": null,
-								"titleUrl": null,
-								"titleSize": null,
-								"description": "Automatic Platform Optimization for WordPress costs $5/month for customers on our Free plan ",
-								"learnMoreUrl": "https://www.cloudflare.com/plans/",
-								"learnMoreText": "View Free Plan",
-								"displayBorder": false,
-								"openLinkInNewTab": null,
-								"removeCardBorder": null,
-								"icon": null,
-								"iconAssetFile": null,
-								"imageOverlaySuperheader": null,
-								"imageOverlayText": null,
-								"imageAssetFile": null,
-								"streamId": null,
-								"streamThumbnail": null,
-								"streamThumbnailAssetFile": null
-							},
-							{
-								"contentTypeId": "feature",
-								"contentfulId": "y2xLo9XLlAOMwD3MfhWaW",
-								"title": "Professional, Business, and Enterprise Plans",
-								"makeTitleLink": null,
-								"titleUrl": null,
-								"titleSize": null,
-								"description": "Included, at no additional cost, in our Professional, Business, and Enterprise plans. ",
-								"learnMoreUrl": "https://www.cloudflare.com/plans/",
-								"learnMoreText": "View Premium Plans",
-								"displayBorder": false,
-								"openLinkInNewTab": null,
-								"removeCardBorder": null,
-								"icon": null,
-								"iconAssetFile": null,
-								"imageOverlaySuperheader": null,
-								"imageOverlayText": null,
-								"imageAssetFile": null,
-								"streamId": null,
-								"streamThumbnail": null,
-								"streamThumbnailAssetFile": null
-							}
-						]
-					},
-					{
-						"contentfulId": "7CQKP4hVv8Nxrinm0asuBi",
-						"backgroundColor": "white",
-						"contentTypeId": "bladeFourFeatures",
-						"htmlId": null,
-						"copy": null,
+						"contentTypeId": "bladeCardCarousel",
+						"contentfulId": "4YSeaAMtLH7Hw8QMZw5I5K",
 						"title": "Resources",
-						"subtitle": null,
-						"bladeStyle": "Feature Blocks - 3 columns",
-						"bladeBorder": "none",
-						"sectionPadding": "tile--no-top-padding",
-						"carouselSlidesToShow": null,
-						"carouselSlidesToScroll": null,
-						"locale": "en-US",
-						"features": [
+						"htmlId": null,
+						"backgroundImage": null,
+						"cards": [
 							{
-								"contentTypeId": "feature",
-								"contentfulId": "3AuWWqBilhL3olq3obn1Qz",
-								"title": "How Cloudflare optimizes web content for faster page loads",
-								"makeTitleLink": false,
-								"titleUrl": null,
-								"titleSize": null,
-								"description": "This whitepaper goes into how Cloudflare optimizes your content to ensure your users have a superior customer experience.",
-								"learnMoreUrl": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/4CNFnqPuNxswEDKKXGkbjc/ecdbc87cfa85f07ea5da9f20a284c710/How-Cloudflare_optimizes_web_content_for_faster_page_loads.pdf",
-								"learnMoreText": "Read the whitepaper",
-								"displayBorder": false,
-								"openLinkInNewTab": true,
-								"removeCardBorder": false,
-								"icon": null,
-								"iconAssetFile": null,
-								"imageOverlaySuperheader": null,
-								"imageOverlayText": null,
-								"imageAssetFile": {
-									"id": "bb0c6be9-0531-5573-923c-f00ca093e47e",
-									"altText": null,
-									"title": null,
+								"contentTypeId": "elementResourceCard",
+								"contentfulId": "7DVBQyU06SgUMUaNOrQ1Sy",
+								"heading": "Ebook",
+								"description": "Adopting everywhere security",
+								"category": "None",
+								"link": {
+									"contentTypeId": "elementLink",
+									"contentfulId": "5FWLXMgboKGfe5JMmi7ocX",
+									"elementName": "Cloudflare Rate Limiting - Resources cards carousel - Adopting everywhere security - Link",
+									"standardText": null,
+									"text": "Read the ebook",
+									"url": "/lp/everywhere-security-ebook/",
+									"elementModal": null,
+									"openInNewTab": false,
+									"locale": "en-US"
+								},
+								"image": {
+									"id": "d1b12ae8-2555-557d-81e9-8eebecec2c1f",
+									"altText": "Ebook Thumbnail",
+									"title": "Ebook Thumbnail",
 									"activeAsset": "Contentful Asset",
 									"locale": "en-US",
 									"contentfulAsset": {
 										"file": {
-											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/1YGMIqqtWyen0H9EPX70CL/47fb34c9a8aae1587b6eda9384e36139/element-feature-topbar-image-2.png"
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/2tGnS2OjpSmmok16lr0mI3/db2a34b69b1001d0d0b529148def3c45/Ebook-generic-106x186-300dpi.png"
 										},
-										"description": "Resources card - Thin top orange line  - image"
+										"description": null
 									},
 									"brandfolderAsset": null,
 									"brandfolderAssetMobile": null
-								},
-								"streamId": null,
-								"streamThumbnail": null,
-								"streamThumbnailAssetFile": null
+								}
 							},
 							{
-								"contentTypeId": "feature",
-								"contentfulId": "RVep2dw3Xx9voTgzqbvX4",
-								"title": "Getting faster: Know your website, and know what's slowing it down",
-								"makeTitleLink": false,
-								"titleUrl": null,
-								"titleSize": null,
-								"description": "This paper examines the various factors that impact web performance, and the steps businesses can take to assess and improve the performance of their web properties.",
-								"learnMoreUrl": "https://www.cloudflare.com/resources/assets/slt3lc6tev37/1PdxTNFdaTagVJ1zxxTKCX/1310183e51d5f7997fbea47fbe7c3ef6/Getting-faster-website-performance-whitepaper_Q42019.pdf",
-								"learnMoreText": "Read the whitepaper",
-								"displayBorder": false,
-								"openLinkInNewTab": true,
-								"removeCardBorder": false,
-								"icon": null,
-								"iconAssetFile": null,
-								"imageOverlaySuperheader": null,
-								"imageOverlayText": null,
-								"imageAssetFile": {
-									"id": "bb0c6be9-0531-5573-923c-f00ca093e47e",
-									"altText": null,
-									"title": null,
+								"contentTypeId": "elementResourceCard",
+								"contentfulId": "6QFCpa4xCz0I3NMlhl9sJ5",
+								"heading": "Whitepaper",
+								"description": "3 challenges of securing and connecting application services",
+								"category": "None",
+								"link": {
+									"contentTypeId": "elementLink",
+									"contentfulId": "3hEXrxq3Rvahmu7xTXwNaB",
+									"elementName": "Cloudflare Rate Limiting - Resources cards carousel - 3 challenges of securing and connecting application services - Link",
+									"standardText": null,
+									"text": "Read the whitepaper",
+									"url": "/lp/3-challenges-of-securing-and-connecting-application-services/",
+									"elementModal": null,
+									"openInNewTab": false,
+									"locale": "en-US"
+								},
+								"image": {
+									"id": "13298e8a-267a-575b-b89a-b871f95f1d9a",
+									"altText": "Whitepaper Thumbnail",
+									"title": "Whitepaper Thumbnail",
 									"activeAsset": "Contentful Asset",
 									"locale": "en-US",
 									"contentfulAsset": {
 										"file": {
-											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/1YGMIqqtWyen0H9EPX70CL/47fb34c9a8aae1587b6eda9384e36139/element-feature-topbar-image-2.png"
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/2ZiPjCDWMWnibCFs5nxHBa/75ef0ba1b4484c2da8ab4d3f40437dff/Whitpapper-generic-106x186-300dpi.png"
 										},
-										"description": "Resources card - Thin top orange line  - image"
+										"description": null
 									},
 									"brandfolderAsset": null,
 									"brandfolderAssetMobile": null
-								},
-								"streamId": null,
-								"streamThumbnail": null,
-								"streamThumbnailAssetFile": null
+								}
 							},
 							{
-								"contentTypeId": "feature",
-								"contentfulId": "6EKiX6geP8A4kiGeGxJEwe",
-								"title": "Cache Reserve infographic",
-								"makeTitleLink": false,
-								"titleUrl": null,
-								"titleSize": null,
-								"description": "Cloud storage can lead to low cache hit ratios, frequent trips to cloud storage, and high egress fees. Learn how to eliminate these egress fees with Cloudflare Cache Reserve.",
-								"learnMoreUrl": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/3489eK8xoEjQcXUUrAkhyt/ef1da75bb205e07545d31f03f419646c/BDES-4516_Cache_Reserve_Infographic.pdf",
-								"learnMoreText": "Download infographic",
-								"displayBorder": false,
-								"openLinkInNewTab": true,
-								"removeCardBorder": false,
-								"icon": null,
-								"iconAssetFile": null,
-								"imageOverlaySuperheader": null,
-								"imageOverlayText": null,
-								"imageAssetFile": {
-									"id": "bb0c6be9-0531-5573-923c-f00ca093e47e",
-									"altText": null,
-									"title": null,
+								"contentTypeId": "elementResourceCard",
+								"contentfulId": "1rws2F2BFBRvMjyrXCCbxr",
+								"heading": "Whitepaper",
+								"description": "Say bye to the box",
+								"category": "None",
+								"link": {
+									"contentTypeId": "elementLink",
+									"contentfulId": "3iVCRil9B5vFO2veTH1rFX",
+									"elementName": "Cloudflare Rate Limiting - Resources cards carousel - Say bye to the box - Link",
+									"standardText": null,
+									"text": " Read the whitepaper",
+									"url": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/6nO5PMlONrGMOuhCEAePEn/7df9d8e130a98825667b6840bccb0131/Say_Bye_to_the_Box_Solution_Brief.pdf",
+									"elementModal": null,
+									"openInNewTab": true,
+									"locale": "en-US"
+								},
+								"image": {
+									"id": "13298e8a-267a-575b-b89a-b871f95f1d9a",
+									"altText": "Whitepaper Thumbnail",
+									"title": "Whitepaper Thumbnail",
 									"activeAsset": "Contentful Asset",
 									"locale": "en-US",
 									"contentfulAsset": {
 										"file": {
-											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/1YGMIqqtWyen0H9EPX70CL/47fb34c9a8aae1587b6eda9384e36139/element-feature-topbar-image-2.png"
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/2ZiPjCDWMWnibCFs5nxHBa/75ef0ba1b4484c2da8ab4d3f40437dff/Whitpapper-generic-106x186-300dpi.png"
 										},
-										"description": "Resources card - Thin top orange line  - image"
+										"description": null
 									},
 									"brandfolderAsset": null,
 									"brandfolderAssetMobile": null
+								}
+							},
+							{
+								"contentTypeId": "elementResourceCard",
+								"contentfulId": "3sfkG4CseeNqV1QzFLJ0EN",
+								"heading": "Article",
+								"description": "Website security guide: A 10-step checklist",
+								"category": "None",
+								"link": {
+									"contentTypeId": "elementLink",
+									"contentfulId": "lbPDzmYd0aAY1hGAykgM7",
+									"elementName": "Advanced Certificate Manager - Resources card carousel - Website security guide: A 10-step checklist - Link",
+									"standardText": null,
+									"text": "Learn more",
+									"url": "https://www.cloudflare.com/learning/security/glossary/website-security-checklist/",
+									"elementModal": null,
+									"openInNewTab": false,
+									"locale": "en-US"
 								},
-								"streamId": null,
-								"streamThumbnail": null,
-								"streamThumbnailAssetFile": null
+								"image": {
+									"id": "37200d64-8a19-5b80-a727-74e25737dff6",
+									"altText": "theNet article - thumbnail",
+									"title": "theNet article - thumbnail",
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/6dsbqlnfwzvlPRvNcV2jTT/124c616468093a4ee6bcd75762121c02/Article_106x182.svg"
+										},
+										"description": null
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								}
 							}
 						]
 					},
 					{
 						"contentTypeId": "bladeEnablement",
-						"contentfulId": "34RSHC6mBbXG93qM69u3wu",
-						"title": "Get Cloudflare Automatic Platform Optimization for your website",
+						"contentfulId": "1BsLgFlOj6QSOQROIiHUFP",
+						"title": "Get Cloudflare Rate Limiting for your enterprise?",
 						"titleSize": "medium",
 						"backgroundColor": "image-background",
 						"buttonText": null,
@@ -1042,14 +1050,54 @@
 							"buttonAssetFile": null,
 							"buttonTextLoggedIn": null,
 							"contentTypeId": "button",
-							"contentfulId": "6nFWiid7mnoqoRT6wSmHJl",
-							"elementName": "Get started",
+							"contentfulId": "6SNsWxNDTd8lbiv38M68V3",
+							"elementName": "Page Shield - Talk to an expert - Modal form - CTA",
 							"standardText": null,
-							"text": "Get started",
-							"url": "https://wordpress.org/plugins/cloudflare/",
+							"text": "Talk to an expert",
+							"url": null,
 							"loggedInUrl": null,
-							"buttonModal": null,
-							"openInNewTab": true,
+							"buttonModal": {
+								"contentTypeId": "formModal",
+								"contentfulId": "4fAyYKCNDyA8wm05fMzNjG",
+								"modalName": "Page Shield product page - Talk to an expert -  Modal form",
+								"modalId": "page-shield-product-page-talk-to-an-expert-modal-form",
+								"modalType": "single-form",
+								"marketoForm": {
+									"contentTypeId": "marketoEmbeddedForm",
+									"contentfulId": "75PuedpH94IU8OmAXNgofh",
+									"bladeName": "Page Shield product page - Modal form - Talk to an expert ",
+									"backgroundColor": "white",
+									"marketoFormId": 1341,
+									"marketoFormLeadSource": "Inbound - Web Form",
+									"marketoFormLeadSourceDetail": "Web Form - Enterprise General Sales Inquiry",
+									"marketoFormAssetName": null,
+									"marketoFormHeaderText": "Talk to an expert ",
+									"marketoFormDefaultComment": null,
+									"showCommentBox": null,
+									"marketoFormThankYouText": null,
+									"marketoFormCustomSuccessMessage": null,
+									"marketoFormPdfDownload": null,
+									"marketoFormPdfDownloadI18n": [],
+									"marketoFormAssetDownloadButtonText": null,
+									"marketoFormSuccessRedirectUrl": null,
+									"sendAdRoll": null,
+									"meta_adRollCustomSegment": null,
+									"enableSandbox": null,
+									"marketoFormSubmitButtonText": null,
+									"marketoFormSubmitButtonColor": null,
+									"enableEmailVerification": null,
+									"disableEnterpriseEmailNotification": null,
+									"enableRingout": null
+								},
+								"title": null,
+								"regularCopy": null,
+								"splitFormDefaultTab": null,
+								"selfServeTabText": null,
+								"selfServeCopy": null,
+								"enterpriseTabText": null,
+								"enterpriseCopy": null
+							},
+							"openInNewTab": false,
 							"locale": "en-US"
 						},
 						"buttonTwo": null,
@@ -1058,7 +1106,49 @@
 					}
 				],
 				"noindex": false,
-				"formModal": [],
+				"formModal": [
+					{
+						"contentTypeId": "formModal",
+						"contentfulId": "6UpsErQt73LNrgwvmv2oqJ",
+						"modalName": "Rate Limiting - Modal",
+						"modalId": "rate-limiting-modal",
+						"modalType": "single-form",
+						"marketoForm": {
+							"contentTypeId": "marketoEmbeddedForm",
+							"contentfulId": "1Ko6mAuE0u9RkiUDwjKQyn",
+							"bladeName": "Rate Limiting - Marketo",
+							"backgroundColor": "white",
+							"marketoFormId": 1341,
+							"marketoFormLeadSource": "Inbound - Web Form",
+							"marketoFormLeadSourceDetail": "Web Form - Enterprise General Sales Inquiry",
+							"marketoFormAssetName": null,
+							"marketoFormHeaderText": "Talk to an expert",
+							"marketoFormDefaultComment": null,
+							"showCommentBox": null,
+							"marketoFormThankYouText": null,
+							"marketoFormCustomSuccessMessage": null,
+							"marketoFormPdfDownload": null,
+							"marketoFormPdfDownloadI18n": [],
+							"marketoFormAssetDownloadButtonText": null,
+							"marketoFormSuccessRedirectUrl": null,
+							"sendAdRoll": null,
+							"meta_adRollCustomSegment": null,
+							"enableSandbox": null,
+							"marketoFormSubmitButtonText": null,
+							"marketoFormSubmitButtonColor": null,
+							"enableEmailVerification": null,
+							"disableEnterpriseEmailNotification": null,
+							"enableRingout": null
+						},
+						"title": null,
+						"regularCopy": null,
+						"splitFormDefaultTab": null,
+						"selfServeTabText": null,
+						"selfServeCopy": null,
+						"enterpriseTabText": null,
+						"enterpriseCopy": null
+					}
+				],
 				"keepHashUrlSyncedWithScrollPosition": null
 			},
 			"site": {
@@ -1070,8 +1160,8 @@
 		"pageContext": {
 			"currentLocale": "en-US",
 			"locale": "en-US",
-			"pathname": "/application-services/products/automatic-platform-optimization/",
-			"contentfulId": "6VfsfTAckXzL94vesQjtX1",
+			"pathname": "/application-services/products/rate-limiting/",
+			"contentfulId": "5F4lTypOvu2UyaIEckg4yy",
 			"allowedHrefLangs": [
 				"en-US",
 				"zh-CN",
@@ -1084,7 +1174,9 @@
 				"pt-BR",
 				"es-ES",
 				"es-LA",
+				"th-TH",
 				"ru-RU",
+				"vi-VN",
 				"tr-TR",
 				"zh-Hans-CN",
 				"pl-PL"
