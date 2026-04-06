@@ -332,6 +332,7 @@
 			title: "Retry Requests",
 			description: "Automatically retry failed requests to improve reliability. Per-request headers can override these defaults.",
 			configuration_attempts: "Retry up to",
+			configuration_attempts_hint: "Enter a value between 1 and 5",
 			configuration_delay: "times with",
 			configuration_backoff: "delay using",
 			configuration_end: "backoff.",

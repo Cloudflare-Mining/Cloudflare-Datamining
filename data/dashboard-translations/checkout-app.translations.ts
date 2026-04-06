@@ -193,18 +193,33 @@
 		agreement: {
 			terms_of_service_and_privacy: "I agree to the <0>Terms of Service</0> and <1>Privacy Policy</1>.",
 			authorize_charge_monthly_usage: "I authorize Cloudflare to charge this card for <0>usage that exceeds free limits</0> each month <1>until cancellation</1>. Cancellation is effective at the end of the current billing period. Contact us via the <2>Cloudflare Dashboard</2>.",
-			authorize_domain_renewal: "I authorize Cloudflare to charge this card <0>%{price}</0> for %{years} of domain renewal."
+			registrar: {
+				terms: "I agree to the <0>Terms of Service</0> and <1>Domain Registration Agreement</1> and acknowledge the <2>Privacy Policy</2>.",
+				authorize_registration: "I authorize Cloudflare to charge this payment method for the registration fee and any applicable taxes.",
+				authorize_registration_autorenewal: "I authorize Cloudflare to charge this payment method for the registration fee, for annual renewal fees, and for any applicable taxes. I agree that Cloudflare may automatically renew my domain up to 30 days before the annual renewal deadline unless I deactivate autorenewal via the <0>Cloudflare Dashboard</0> at least one day prior to autorenewal. I understand that I can contact Cloudflare via the <1>Cloudflare Dashboard</1>.",
+				authorize_renewal: "I authorize Cloudflare to charge this payment method for the renewal fee and any applicable taxes.",
+				authorize_transfer: "I authorize Cloudflare to charge this payment method for the transfer fee and any applicable taxes."
+			}
 		},
 		check_payment_info: "Please check for missing or incorrect payment information.",
 		clear_saved: "Clear saved card selection",
-		complete: "Purchase complete",
+		complete: {
+			generic: "Purchase complete",
+			registrar: {
+				registration_initiated: "Registration initiated",
+				renewal_initiated: "Renewal initiated",
+				restore_initiated: "Restore initiated",
+				transfer_initiated: "Transfer initiated"
+			}
+		},
 		confirming: "Confirming",
 		continue_billing: "Continue to billing address",
 		pay_credit_card: "Pay with credit card",
 		purchasing: "Purchasing",
 		saved_cards: "Saved cards",
 		select_saved_card: "Select a saved card",
-		thank_you: "Thank you for your purchase! The subscription is active and you can begin using the service."
+		thank_you: "Thank you for your purchase! The subscription is active and you can begin using the service.",
+		non_subscription_thank_you: "Thank you for your purchase. We are processing your request."
 	},
 	support: {
 		contact_support: "Contact Support",

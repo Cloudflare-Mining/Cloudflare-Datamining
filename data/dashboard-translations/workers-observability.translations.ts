@@ -268,7 +268,11 @@
 		cpuTime: "CPU Time",
 		wallTime: "Wall Time",
 		error: "1 error",
-		errors: "%{count} errors"
+		errors: "%{count} errors",
+		copyLogs: "Copy all logs",
+		downloadLogs: "Download logs",
+		logsCopied: "Logs copied to clipboard",
+		copyFailed: "Failed to copy to clipboard"
 	},
 	trace: {
 		traceId: "Trace ID: %{traceId}"

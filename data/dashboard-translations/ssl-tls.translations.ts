@@ -619,6 +619,7 @@
 	aop_hostname_step_skip: "Skip for now",
 	aop_hostname_save_error: "Failed to save hostname associations. Please try again.",
 	aop_hostname_fetch_error: "Failed to load hostname associations.",
+	aop_hostname_conflict_warning: "This hostname is currently associated with certificate %{certId}. Saving will reassign it.",
 	aop_hostname_drawer_title: "Manage Hostnames",
 	total_tls: {
 		card_title: "Total TLS",

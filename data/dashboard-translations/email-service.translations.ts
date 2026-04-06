@@ -1,4 +1,10 @@
 {
+	config: {
+		connect: {
+			title: "Connect your Worker to Email Service",
+			description: "Connect to Email Service from your Worker using the send_email binding. Configure the binding in your Wrangler configuration file, then use the email handler in your Worker code to process and send emails programmatically."
+		}
+	},
 	common: {
 		search: "Search",
 		cancel: "Cancel",

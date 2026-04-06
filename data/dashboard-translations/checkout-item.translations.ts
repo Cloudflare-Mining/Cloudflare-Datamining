@@ -89,7 +89,7 @@
 	},
 	prod_client_side_security: {
 		client_side_security: "Client-side Security Advanced",
-		usage_pricing: "%{price} per 100k requests with 1k requests increment",
+		usage_pricing: "%{price} per 1k requests",
 		usage_pricing_enterprise: "%{price} per 1M requests",
 		feature_script_monitoring: "Script monitoring",
 		feature_malicious_detection: "Malicious script detection and alerting",
