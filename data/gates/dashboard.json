@@ -393,6 +393,9 @@
 	"billing-unified-checkout-workers": {
 		"enabled": false
 	},
+	"billing-unified-checkout-zero-trust": {
+		"enabled": false
+	},
 	"billing-unified-checkout-zone-plan": {
 		"enabled": true
 	},
@@ -988,7 +991,7 @@
 		]
 	},
 	"dx-domain-onboarding-experiment": {
-		"enabled": false,
+		"enabled": true,
 		"branches": [
 			"baseline",
 			"experiment"
@@ -2590,7 +2593,7 @@
 		"enabled": false,
 		"branches": [
 			"baseline",
-			"experiment"
+			"variant-a"
 		]
 	},
 	"vrushabh-test-gate-ui-plat": {
