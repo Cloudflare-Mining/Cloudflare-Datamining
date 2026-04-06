@@ -20,7 +20,11 @@ if (cf?.country !== 'US' && process.env.CI) {
 	process.exit(0);
 }
 
-const parser = new XMLParser();
+const parser = new XMLParser({
+	processEntities: {
+		maxTotalExpansions: 1_000_000,
+	},
+});
 
 const dir = path.resolve('../data/blog');
 await fs.ensureDir(dir);
