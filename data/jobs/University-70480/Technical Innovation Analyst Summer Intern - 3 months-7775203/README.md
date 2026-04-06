@@ -5,65 +5,38 @@
 		<p>At Cloudflare, we’re not looking for people who wait for a polished roadmap; we’re looking for the builders who see the cracks in the Internet that everyone else has simply learned to live with. We value candidates who have the instinct to spot a "normalized" problem and the AI-native curiosity to create a solution using the latest tools. Our culture is built on iteration, leveraging AI to ship faster today to make it better tomorrow, while ensuring that every improvement, no matter how small, is shared across the team to lift everyone up. If you’re the type of person who values curiosity over bureaucracy, and that AI is a partner in solving tough problems to keep the Internet moving forward, you’ll fit right in.</p>
 	</div>
 </div>
-<p><strong>Available Location: </strong>Austin</p>
-<p><strong>People Innovation Lab — Cloudflare People Team</strong></p>
-<p>Reports to: Lead, AI Transformation &amp; Strategic Initiatives (People &amp; Places)</p>
-<h3>About the Role</h3>
-<p>Join the People Innovation Lab to build and deploy smart tools for the People organization. This role sits within the people in places function under the lead for AI transformation and strategic initiatives. This role is focused on helping us to automate the processes that bog people down and moving us towards an agentic future.&nbsp;</p>
-<h3>Key focus:</h3>
+<p><strong>Available Location: </strong>London, UK</p>
+<p><strong>About The Team</strong></p>
+<p>The CxO Transformation Partners (CXTP) team serves as trusted advisors to Cloudflare’s most senior customers and prospects. We are a highly strategic group who simplify technical complexity and align our solutions with large-scale business objectives. Our mission is to unlock commercial outcomes by bridging the gap between deep technical capabilities and executive-level strategic goals.</p>
+<p><strong>About The Internship</strong></p>
+<p>The Technical Innovation Analyst Intern will accelerate key automation and AI initiatives for the Field CxO team, focusing on data engineering and rapid prototyping to enhance the team’s ability to drive strategic customer outcomes and scale across the GTM organization. This role involves designing automated reporting frameworks, executive briefing dashboards, and AI-powered tools using capabilities sourced from the Cloudflare Developer platform and AI frameworks developed by the Cloudflare AI Factory. The intern will work in a high-impact, hands-on environment, collaborating cross-functionally with product managers, engineering, and the CISO team, while being paired with a dedicated Field CxO mentor. Everything built will see tangible impact on executive meetings, customer engagements, and internal efficiency.</p>
+<p><strong>What You’ll Get To Do In This Role</strong></p>
 <ul>
-	<li>Identify and eliminate manual workflows across the People team.</li>
-	<li>Build diverse automation solutions (Google Workspace, Workers, background jobs, multi-step agents).</li>
-	<li>Utilize AI coding tools (e.g., OpenCode) and build autonomous agents.</li>
-	<li>Strong fundamentals and fast execution are key.</li>
-</ul>
-<h3>What You'll Build &amp; Do</h3>
-<ul>
-	<li><strong>Build:</strong></li>
+	<li>Experiment with LLMs to build assistants that can summarize customer environments, develop tailor-made briefing content, or simulate “what-if” threat scenarios to support executive-level strategy sessions.</li>
+	<li>Own at least one flagship project end-to-end, such as the automated reporting framework, providing a strong portfolio deliverable and presentation to leadership.</li>
+	<li>Example projects may include:</li>
 	<ul>
-		<li>Workflow automations (Google Workspace, APIs, third-party platforms).</li>
-		<li>Event-driven automations using Cloudflare Workers.</li>
-		<li>AI-powered tools (LLM APIs like Gemini, Workers AI) for reasoning (summarization, routing).</li>
-		<li>Reusable components and early-stage, stateful, autonomous agents.</li>
-		<li>Clean documentation.</li>
-	</ul>
-	<li><strong>Do:</strong></li>
-	<ul>
-		<li>Audit workflows for high-value automation.</li>
-		<li>Build and ship automations in JavaScript/TypeScript (Google Workspace, Workers).</li>
-		<li>Integrate AI/LLM APIs; use AI-assisted development (OpenCode).</li>
-		<li>Explore and apply Cloudflare's full automation stack (Workers, Durable Objects, AI Gateway, Vectorize).</li>
-		<li>Participate in agile ceremonies and present work.</li>
+		<li>Develop a scalable, automated monthly reporting system that consolidates CxO team activities, customer impact metrics, and historical insights, including building the foundation for an AI-powered data collection and summarisation methodology.</li>
+		<li>Design and implement automated AI data-driven dashboards that integrate Cloudflare signals, industry threat feeds, and customer-specific telemetry to provide tailored visual insights for CxO-led customer meetings and executive briefings.</li>
+		<li>Leverage AI to analyse internal data and event metrics to identify high-value customer opportunities and enable proactive, strategic outreach.</li>
+		<li>Build lightweight Cloudflare WorkersAI and Agentic prototypes or AI-driven proof-of-concepts (e.g., Zero Trust flows, AI-based log analysis, or cyber-resilience simulations) to illustrate Cloudflare capabilities during customer engagements.</li>
 	</ul>
 </ul>
-<h3>Requirements</h3>
+<p><strong>Qualifications</strong></p>
 <ul>
-	<li><strong>Minimum:</strong></li>
-	<ul>
-		<li>Pursuing/equivalent experience in Computer Science or related field.</li>
-		<li>Proficient in JavaScript or Python; writes clean code.</li>
-		<li>Experience with REST APIs and structured data.</li>
-		<li>Independent problem-solving.</li>
-		<li>Fluent with AI tools.</li>
-	</ul>
-	<li><strong>Preferred:</strong></li>
-	<ul>
-		<li>Experience building automations (Zapier, Make, n8n, Apps Script, custom code).</li>
-		<li>Prior LLM/AI API integration experience.</li>
-		<li>Familiarity with event-driven/serverless architecture.</li>
-		<li>Exposure to agent frameworks/multi-step AI workflows.</li>
-	</ul>
+	<li>Currently pursuing a degree in Computer Science or a related field.</li>
+	<li>Available for a full-time 12-week internship, working from our London office 3 days a week during the summer (June - September).</li>
+	<li>Hands-on experience with AI/LLM tooling and cloud-first demo environments, not just for chat but data extraction, summarization, and content generation.</li>
+	<li>Familiarity with or ability to rapidly learn Cloudflare Workers development.</li>
+	<li>Knowledge of industry threat intelligence data sources and automation tools.</li>
+	<li>Ability to own a high-impact project end-to-end and deliver portfolio-ready results.</li>
+	<li>Strong understanding of AI technologies such as AI agents, Remote MCP servers and LLMs</li>
+	<li>Proficient in operating systems, networking, Internet technologies (SSL/TLS/HTTP/SSH etc) and ability to write code to solve simple problems.</li>
+	<li>Strong analytical skills with the ability to collect, organize, analyze, and disseminate significant amounts of information with attention to detail and accuracy.</li>
+	<li>Demonstrated focus on automation, data engineering, and rapid prototyping principles.</li>
+	<li>Excellent written and presentation skills. This role demands someone who is gifted in their ability to communicate effectively with all stakeholders, including executives, product management, sales, and marketing.</li>
+	<li>Self-starter who truly enjoys working in a fast-paced, innovative cloud services company.</li>
 </ul>
-<h3>What We Provide</h3>
-<ul>
-	<li>Platform onboarding and hands-on AI-assisted development experience.</li>
-	<li>Dedicated manager, feedback, and real production automations.</li>
-	<li>Portfolio artifact (production automations, agent-building track record).</li>
-</ul>
-<h3>The Team's Vision</h3>
-<p><strong>&nbsp;</strong></p>
-<p>The team is building AI agents for the People organization that can reason, act, and coordinate without constant human input. You will contribute to this foundation and gain firsthand experience.</p>
-<p><strong><br><br></strong></p>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
 	<p><span style="font-weight: 400;">We’re not just a highly ambitious, large-scale technology company. We’re a highly ambitious, large-scale technology company with a soul. Fundamental to our mission to help build a better Internet is protecting the free and open Internet.</span></p>
