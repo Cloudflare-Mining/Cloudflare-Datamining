@@ -2301,11 +2301,11 @@
 		"name": "Billing",
 		"description": "Can edit the account’s billing profile and subscriptions.",
 		"permissions": {
-			"subscription": {
+			"billing": {
 				"read": true,
 				"edit": true
 			},
-			"billing": {
+			"subscription": {
 				"read": true,
 				"edit": true
 			},
