@@ -1,0 +1,178 @@
+<div class="mb2 gray5">8 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6fJVJreBqUhXxIavyRmph/e1946fb684eca0d832621a267fe19937/image4.png" alt="">
+<div class="post-content lh-copy gray1">
+	<p>Cloudflare data shows that 32% of traffic across our network originates from <a href="https://radar.cloudflare.com/traffic"><u>automated traffic</u></a>. This includes search engine crawlers, uptime checkers, ad networks — and more recently, AI assistants looking to the web to add relevant data to their knowledge bases as they generate responses with <a href="https://developers.cloudflare.com/reference-architecture/diagrams/ai/ai-rag"><u>retrieval-augmented generation</u></a> (RAG). Unlike typical human behavior, <a href="https://www.cloudflare.com/learning/ai/what-is-agentic-ai"><u>AI agents</u></a>, crawlers, and scrapers’ automated behavior may appear aggressive to the server responding to the requests.&nbsp;</p>
+	<p>For instance, AI bots frequently issue high-volume requests, often in parallel. Rather than focusing on popular pages, they may access rarely visited or loosely related content across a site, often in sequential, complete scans of the websites. For example, an AI assistant generating a response may fetch images, documentation, and knowledge articles across dozens of unrelated sources.</p>
+	<p>Although Cloudflare already makes it easy to <a href="https://blog.cloudflare.com/introducing-ai-crawl-control"><u>control and limit</u></a> automated access to your content, many sites may <i>want</i> to serve AI traffic. For instance, an application developer may want to guarantee that their developer documentation is up-to-date in foundational AI models, an e-commerce site may want to ensure that product descriptions are part of LLM search results, or publishers may want to get paid for their content through mechanisms such as <a href="https://blog.cloudflare.com/introducing-pay-per-crawl"><u>pay per crawl</u></a>.</p>
+	<p>Website operators therefore face a dichotomy: tune for AI crawlers, or for human traffic. Given both exhibit widely different traffic patterns, current cache architectures force operators to choose one approach to save resources.</p>
+	<p>In this post, we’ll explore how AI traffic impacts storage cache, describe some challenges associated with mitigating this impact, and propose directions for the community to consider adapting CDN cache to the AI era.</p>
+	<p>This work is a collaborative effort with a team of researchers at <a href="https://ethz.ch/en.html"><u>ETH Zurich</u></a>. The full version of this work was published at the 2025 <a href="https://acmsocc.org/2025/index.html"><u>Symposium on Cloud Computing</u></a> as “<a href="https://dl.acm.org/doi/10.1145/3772052.3772255"><u>Rethinking Web Cache Design for the AI Era</u></a>” by Zhang et al.</p>
+	<div class="flex anchor relative">
+		<h3 id="caching">Caching&nbsp;</h3>
+		<a href="https://blog.cloudflare.com/#caching" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Let's start with a quick refresher on <a href="https://www.cloudflare.com/learning/cdn/what-is-caching"><u>caching</u></a>. When a user initiates a request for content on their device, it’s usually sent to the Cloudflare data center closest to them. When the request arrives, we check to see if we have a valid cached copy. If we do, we can serve the content immediately, resulting in a fast response, and a happy user. If the content isn't available to read from our cache, (a "cache miss"), our data centers reach out to the <a href="https://www.cloudflare.com/learning/cdn/glossary/origin-server"><u>origin server</u></a> to get a fresh copy, which then stays in our cache until it expires or other data pushes it out.&nbsp;</p>
+	<p>Keeping the right elements in our cache is critical for reducing our cache misses and providing a great user experience — but what’s “right” for human traffic may be very different from what’s right for AI crawlers!</p>
+	<div class="flex anchor relative">
+		<h3 id="ai-traffic-at-cloudflare">AI traffic at Cloudflare</h3>
+		<a href="https://blog.cloudflare.com/#ai-traffic-at-cloudflare" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Here, we’ll focus on AI crawler traffic, which has emerged as the most active AI bot type <a href="https://blog.cloudflare.com/crawlers-click-ai-bots-training"><u>in recent analyses</u></a>, accounting for 80% of the self-identified AI bot traffic we see. AI crawlers fetch content to support real-time AI services, such as answering questions or summarizing pages, as well as to harvest data to build large training datasets for models like <a href="https://www.cloudflare.com/learning/ai/what-is-large-language-model"><u>LLMs</u></a>.</p>
+	<p>From <a href="https://radar.cloudflare.com/ai-insights"><u>Cloudflare Radar</u></a>, we see that the vast majority of single-purpose AI bot traffic is for training, with search as a distant second. (See <a href="https://blog.cloudflare.com/ai-crawler-traffic-by-purpose-and-industry"><u>this blog post</u></a> for a deep discussion of the AI crawler traffic we see at Cloudflare).</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3WQUiQ36rvMb8rNKruwdLd/1e9003057720b68829c6df3337a840ec/image2.png" alt="" class="kg-image" width="1600" height="1188" loading="lazy">
+	</figure>
+	<p>While both search and training crawls impact cache through numerous sequential, long-tail accesses, training traffic has properties such as high unique URL ratio, content diversity, and crawling inefficiency that make it even more impactful on cache.</p>
+	<div class="flex anchor relative">
+		<h3 id="how-does-ai-traffic-differ-from-other-traffic-for-a-cdn">How does AI traffic differ from other traffic for a CDN?</h3>
+		<a href="https://blog.cloudflare.com/#how-does-ai-traffic-differ-from-other-traffic-for-a-cdn" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>AI crawler traffic has three main differentiating characteristics: high unique URL ratio, content diversity, and crawling inefficiency.</p>
+	<p><a href="https://commoncrawl.github.io/cc-crawl-statistics/plots/crawlsize"><u>Public crawl statistics</u></a> from <a href="https://commoncrawl.org"><u>Common Crawl</u></a>, which performs large-scale web crawls on a monthly basis, show that over 90% of pages are unique by content. Different AI crawlers also target <a href="https://blog.cloudflare.com/ai-bots"><u>distinct content types</u></a>: e.g., some specialize in technical documentation, while others focus on source code, media, or blog posts. Finally, AI crawlers do not necessarily follow optimal crawling paths. A substantial fraction of fetches from popular AI crawlers result in 404 errors or redirects, <a href="https://dl.acm.org/doi/abs/10.1145/3772052.3772255"><u>often due to poor URL handling</u></a>. The rate of these ineffective requests varies depending on how well the crawler is tuned to target live, meaningful content. AI crawlers also typically do not employ browser-side caching or session management in the same way human users do. AI crawlers can launch multiple independent instances, and because they don’t share sessions, each may appear as a new visitor to the CDN, even if all instances request the same content.</p>
+	<p>Even a single AI crawler is likely to dig deeper into websites and <a href="https://dl.acm.org/doi/epdf/10.1145/3772052.3772255"><u>explore a broader range of content than a typical human user.</u></a> Usage data from Wikipedia shows that <b>pages once considered "long-tail" or rarely accessed are now being frequently requested, shifting the distribution of content popularity within a CDN's cache.</b> In fact, AI agents may iteratively loop to refine search results, scraping the same content repeatedly. We model this to show that this iterative looping leads to low content reuse and broad coverage. </p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7yH1QLIGCU3mJGXID27Cik/3ba56ff02865b7b141743815d0909be0/image1.png" alt="" class="kg-image" width="1999" height="1194" loading="lazy">
+	</figure>
+	<p>Our modeling of AI agent behavior shows that as they iteratively loop to refine search results (a common pattern for retrieval-augmented generation), they maintain a consistently high <b>unique access ratio </b>(the red columns above) — typically between 70% and 100%. This means that each loop, while generally increasing <b>accuracy</b> for the agent (represented here by the blue line), is constantly fetching new, unique content rather than revisiting previously seen pages.&nbsp;</p>
+	<p><b>This repeat access to long-tail assets churns the cache that the human traffic relies on. That could make existing pre-fetching and traditional cache invalidation strategies less effective as the amount of crawler traffic increases.&nbsp;&nbsp;</b></p>
+	<div class="flex anchor relative">
+		<h3 id="how-does-ai-traffic-impact-cache">How does AI traffic impact cache?</h3>
+		<a href="https://blog.cloudflare.com/#how-does-ai-traffic-impact-cache" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>For a <a href="https://www.cloudflare.com/learning/cdn/what-is-a-cdn"><u>CDN</u></a>, a cache miss means having to go to the origin server to fetch the requested content.&nbsp; Think of a cache miss like your local library not having a book in house, so you have to wait to get the book from inter-library loan. You’ll get your book eventually, but it will take longer than you wanted. It will also inform your library that having that book in stock locally could be a good idea.&nbsp;&nbsp;</p>
+	<p>As a result of their broad, unpredictable access patterns with long-tail reuse, AI crawlers significantly raise the cache miss rate. And many of our typical methods to improve our cache hit rate, such as <a href="https://blog.cloudflare.com/introducing-speed-brain"><u>cache speculation</u></a> or prefetching, are significantly less effective.&nbsp;&nbsp;</p>
+	<p>The first chart below shows the difference in cache hit rates for a single node in Cloudflare’s CDN with and without our <a href="https://radar.cloudflare.com/bots/directory?category=AI_CRAWLER&amp;kind=all"><u>identified AI crawlers</u></a>. While the impact of crawlers is still relatively limited, there is a clear drop in hit rate with the addition of AI crawler traffic. We manage our cache with an algorithm called “least recently used”, or LRU. This means that the least-requested content can be evicted from cache first to make space for more popular content when storage space is full. The drop in hit rate implies that LRU is struggling under the repeated scan behavior of AI crawlers.</p>
+	<p>The bottom figure shows Al cache misses during this time. Each of those cache misses represents a request to the origin, slowing response times as well as increasing egress costs and load on the origin. </p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6rsbyos9tv8wzbbXJTrAYh/522b3fed76ce69bb96eb9aaff51ea1b1/image3.png" alt="" class="kg-image" width="1189" height="990" loading="lazy">
+	</figure>
+	<p>This surge in AI bot traffic has had real-world impact. The following table from our paper shows the effects on several large websites. Each example links to its source report.</p>
+	<table>
+		<tbody>
+			<tr>
+				<td>
+					<p><b>System</b></p>
+				</td>
+				<td>
+					<p><b>Reported AI Traffic Behavior</b></p>
+				</td>
+				<td>
+					<p><b>Reported Impact</b></p>
+				</td>
+				<td>
+					<p><b>Reported Mitigations</b></p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p><a href="https://www.wikipedia.org"><u>Wikipedia</u></a></p>
+				</td>
+				<td>
+					<p>Bulk image scraping for model training<a href="https://diff.wikimedia.org/2025/04/01/how-crawlers-impact-the-operations-of-the-wikimedia-projects"><u><sup>1</sup></u></a></p>
+				</td>
+				<td>
+					<p>50% surge in multimedia bandwidth usage<a href="https://diff.wikimedia.org/2025/04/01/how-crawlers-impact-the-operations-of-the-wikimedia-projects"><u><sup>1</sup></u></a></p>
+				</td>
+				<td>
+					<p>Blocked crawler traffic<a href="https://diff.wikimedia.org/2025/04/01/how-crawlers-impact-the-operations-of-the-wikimedia-projects"><u><sup>1</sup></u></a></p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p><a href="https://sourcehut.org"><u>SourceHut</u></a></p>
+				</td>
+				<td>
+					<p>LLM crawlers scraping code repositories<a href="https://incidentdatabase.ai/cite/1001"><u><sup>2</sup></u></a><sup>,</sup><a href="https://status.sr.ht/issues/2025-03-17-git.sr.ht-llms"><u><sup>3</sup></u></a>&nbsp;</p>
+				</td>
+				<td>
+					<p>Service instability and slowdowns<a href="https://incidentdatabase.ai/cite/1001"><u><sup>2</sup></u></a><sup>,</sup><a href="https://status.sr.ht/issues/2025-03-17-git.sr.ht-llms"><u><sup>3</sup></u></a>&nbsp;</p>
+				</td>
+				<td>
+					<p>Blocked crawler traffic<a href="https://incidentdatabase.ai/cite/1001"><u><sup>2</sup></u></a><sup>,</sup><a href="https://status.sr.ht/issues/2025-03-17-git.sr.ht-llms"><u><sup>3</sup></u></a>&nbsp;</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p><a href="https://about.readthedocs.com"><u>Read the Docs</u></a></p>
+				</td>
+				<td>
+					<p>AI crawlers download large files hundreds of times daily<a href="https://incidentdatabase.ai/cite/1001"><u><sup>2</sup></u></a><sup>,</sup><a href="https://about.readthedocs.com/blog/2024/07/ai-crawlers-abuse"><u><sup>4</sup></u></a></p>
+				</td>
+				<td>
+					<p>Significant bandwidth increase<a href="https://incidentdatabase.ai/cite/1001"><u><sup>2</sup></u></a><sup>,</sup><a href="https://about.readthedocs.com/blog/2024/07/ai-crawlers-abuse"><u><sup>4</sup></u></a></p>
+				</td>
+				<td>
+					<p>Temporarily blocked crawler traffic, performed IP-based rate limiting, reconfigured CDN to improve caching<a href="https://incidentdatabase.ai/cite/1001"><u><sup>2</sup></u></a><sup>,</sup><a href="https://about.readthedocs.com/blog/2024/07/ai-crawlers-abuse"><u><sup>4</sup></u></a></p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p><a href="https://www.fedoraproject.org"><u>Fedora</u></a></p>
+				</td>
+				<td>
+					<p>AI scrapers recursively crawl package mirrors<a href="https://incidentdatabase.ai/cite/1001"><u><sup>2</sup></u></a><sup>,</sup><a href="https://cryptodamus.io/en/articles/news/ai-web-scrapers-attacking-open-source-here-s-how-to-fight-back"><u><sup>5</sup></u></a><sup>,</sup><a href="https://www.scrye.com/blogs/nirik/posts/2025/03/15/mid-march-infra-bits-2025"><u><sup>6</sup></u></a></p>
+				</td>
+				<td>
+					<p>Slow response for human users<a href="https://incidentdatabase.ai/cite/1001"><u><sup>2</sup></u></a><sup>,</sup><a href="https://cryptodamus.io/en/articles/news/ai-web-scrapers-attacking-open-source-here-s-how-to-fight-back"><u><sup>5</sup></u></a><sup>,</sup><a href="https://www.scrye.com/blogs/nirik/posts/2025/03/15/mid-march-infra-bits-2025"><u><sup>6</sup></u></a></p>
+				</td>
+				<td>
+					<p>Geo-blocked traffic from known bot sources along with blocking several subnets and even countries<a href="https://incidentdatabase.ai/cite/1001"><u><sup>2</sup></u></a><sup>,</sup><a href="https://cryptodamus.io/en/articles/news/ai-web-scrapers-attacking-open-source-here-s-how-to-fight-back"><u><sup>5</sup></u></a><sup>,</sup><a href="https://www.scrye.com/blogs/nirik/posts/2025/03/15/mid-march-infra-bits-2025"><u><sup>6</sup></u></a></p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p><a href="https://diasporafoundation.org"><u>Diaspora</u></a></p>
+				</td>
+				<td>
+					<p>Aggressive scraping without respecting robots.txt<a href="https://diaspo.it/posts/2594"><u><sup>7</sup></u></a></p>
+				</td>
+				<td>
+					<p>Slow response and downtime for human users<a href="https://diaspo.it/posts/2594"><u><sup>7</sup></u></a></p>
+				</td>
+				<td>
+					<p>Blocked crawler traffic and added rate limits<a href="https://diaspo.it/posts/2594"><u><sup>7</sup></u></a></p>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+	<p>The impact is severe: Wikimedia experienced a 50% surge in multimedia bandwidth usage due to bulk image scraping. Fedora, which hosts large software packages, and the Diaspora social network suffered from heavy load and poor performance for human users. Many others have noted bandwidth increases or slowdowns from AI bots repeatedly downloading large files. While blocking crawler traffic mitigates some of the impact, a smarter cache architecture would let site operators serve AI crawlers while maintaining response times for their human users.</p>
+	<div class="flex anchor relative">
+		<h3 id="ai-aware-caching">AI-aware caching</h3>
+		<a href="https://blog.cloudflare.com/#ai-aware-caching" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>AI crawlers power live applications such as <a href="https://www.cloudflare.com/learning/ai/retrieval-augmented-generation-rag"><u>retrieval-augmented generation (RAG)</u></a> or real-time summarization, so latency matters. That’s why these requests should be routed to caches that can balance larger capacity with moderate response times. These caches should still preserve freshness, but can tolerate slightly higher access latency than human-facing caches.&nbsp;</p>
+	<p>AI crawlers are also used for building training sets and running large-scale content collection jobs. These workloads can tolerate significantly higher latency and are not time-sensitive. As such, their requests can be served from deep cache tiers that take longer to reach (e.g., origin-side SSD caches), or even delayed using queue-based admission or rate-limiters to prevent backend overload. This also opens the opportunity to defer bulk scraping when infrastructure is under load, without affecting interactive human or AI use cases.</p>
+	<p>Existing projects like Cloudflare’s <a href="https://blog.cloudflare.com/an-ai-index-for-all-our-customers"><u>AI Index</u></a> and <a href="https://blog.cloudflare.com/markdown-for-agents"><u>Markdown for Agents</u></a> allow website operators to present a simplified or reduced version of websites to known AI agents and bots. We're making plans to do much more to mitigate the impact of AI traffic on CDN cache, leading to better cache performance for everyone. With our collaborators at ETH Zurich, we’re experimenting with two complementary approaches: first, traffic filtering with AI-aware caching algorithms; and second, exploring the addition of an entirely new cache layer to siphon AI crawler traffic to a cache that will improve performance for both AI crawlers and human traffic.&nbsp;</p>
+	<p>There are several different types of cache replacement algorithms, such as LRU (“Least Recently Used”), LFU (“Least Frequently Used”), or FIFO (“First-In, First-Out”), that govern how a storage cache chooses to evict elements from the cache when a new element needs to be added and the cache is full. LRU is often the best balance of simplicity, low-overhead, and effectiveness for generic situations, and is widely used. For mixed human and AI bot traffic, however, our initial experiments indicate that a different choice of cache replacement algorithm, particularly using <a href="https://cachemon.github.io/SIEVE-website"><u>SEIVE</u></a> or <a href="https://s3fifo.com"><u>S3FIFO</u></a>, could allow human traffic to achieve the same hit rate with or without AI interference. We are also experimenting with developing more directly workload-aware, machine learning-based caching algorithms to customize cache response in real time for a faster and cheaper cache.&nbsp;&nbsp;</p>
+	<p>Long term, we expect that a separate cache layer for AI traffic will be the best way forward. Imagine a cache architecture that routes human and AI traffic to distinct tiers deployed at different layers of the network. Human traffic would continue to be served from edge caches located at CDN PoPs, which prioritize responsiveness and <a href="https://www.cloudflare.com/learning/cdn/what-is-a-cache-hit-ratio"><u>cache hit rates</u></a>. For AI traffic, cache handling could vary by task type.&nbsp;</p>
+	<div class="flex anchor relative">
+		<h3 id="this-is-just-the-beginning">This is just the beginning</h3>
+		<a href="https://blog.cloudflare.com/#this-is-just-the-beginning" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>The impact of AI bot traffic on cloud infrastructure is only going to grow over the next few years. We need better characterization of the effects on CDNs across the globe, along with bold new cache policies and architectures to address this novel workload and help make a better Internet.&nbsp;</p>
+	<p>Cloudflare is already solving the problems we’ve laid out here. Cloudflare reduces bandwidth costs for customers who experience high bot traffic with our AI-aware caching, and with our <a href="https://www.cloudflare.com/ai-crawl-control"><u>AI Crawl Control</u></a> and <a href="https://www.cloudflare.com/paypercrawl-signup"><u>Pay Per Crawl</u></a> tools, we give customers better control over who programmatically accesses their content.</p>
+	<p>We’re just getting started exploring this space. If you're interested in building new ML-based caching algorithms or designing these new cache architectures, please apply for an internship! We have <a href="https://www.cloudflare.com/en-gb/careers/jobs/?department=Early+Talent"><u>open internship positions</u></a> in Summer and Fall 2026 to work on this and other exciting problems at the intersection of AI and Systems.&nbsp; </p>
+</div>
