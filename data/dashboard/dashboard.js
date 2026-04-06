@@ -2,7 +2,7 @@
 	try {
 		var e = "undefined" != typeof window ? window : "undefined" != typeof global ? global : "undefined" != typeof self ? self : {},
 			n = (new Error).stack;
-		n && (e._sentryDebugIds = e._sentryDebugIds || {}, e._sentryDebugIds[n] = "15f312d1-3025-595a-8f4f-4d339350b2e1")
+		n && (e._sentryDebugIds = e._sentryDebugIds || {}, e._sentryDebugIds[n] = "3a1217ee-b521-5b84-9f7b-97dbfb2c808a")
 	} catch (e) {}
 }();
 (self.webpackChunk_cloudflare_app_dash = self.webpackChunk_cloudflare_app_dash || []).push([
@@ -502,19 +502,20 @@
 					function() {
 						var n, r;
 						let e = (0, q.KL)(),
-							o = (0, q.TP)(),
-							t = (0, D.o6)(),
+							o = (0, D.o6)(),
 							{
-								data: a,
-								isSuccess: i
+								data: t,
+								isSuccess: a
 							} = (0, nH.G)(),
-							l = i && null != (r = null == a || null == (n = a[0]) ? void 0 : n.id) ? r : null,
-							c = t || l;
+							i = a && null != (r = null == t || null == (n = t[0]) ? void 0 : n.id) ? r : null,
+							l = o || i;
 						(0, nr.useEffect)(() => {
-							c ? e({
-								organizationId: c
-							}) : i && o(["organizationId"])
-						}, [c, i, e, o])
+							l ? e({
+								organizationId: l
+							}) : a && e({
+								organizationId: "none"
+							})
+						}, [l, a, e])
 					}(), a = (0, nU.Dx)(nB.HD), i = (0, q.KL)(), (0, nr.useEffect)(() => {
 						var n;
 						i({
@@ -970,10 +971,10 @@
 						}({}, {
 							branch: "master",
 							isReleaseCandidate: "true",
-							commit: "85d3f4d7dd03fe229209b66cca9b12d60d9970c0",
-							dashVersion: "21395820",
+							commit: "a6a0e628f58358c577ea5c08af420c16dada2803",
+							dashVersion: "21442590",
 							env: "production",
-							builtAt: 0x19d63103f89,
+							builtAt: 0x19d6414092c,
 							versions: {
 								"@cloudflare/app-dash": "25.161.23",
 								"@cloudflare/kumo": "1.14.1",
@@ -9597,4 +9598,4 @@
 		}
 	}
 ]);
-//# debugId=15f312d1-3025-595a-8f4f-4d339350b2e1
+//# debugId=3a1217ee-b521-5b84-9f7b-97dbfb2c808a
