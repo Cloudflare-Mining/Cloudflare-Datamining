@@ -1,10 +1,10 @@
 {
 	"componentChunkName": "component---src-components-page-page-template-tsx",
-	"path": "/partners/technology-partners/microsoft/azure-sentinel/",
+	"path": "/partners/technology-partners/microsoft/intune/",
 	"result": {
 		"data": {
 			"page": {
-				"pageName": "[Tech Partner Directory] - Microsoft Azure Sentinel",
+				"pageName": "[Tech Partner Directory] - Microsoft Intune",
 				"localeList": {
 					"enUS": "English for Locale",
 					"zhCN": "English for Locale",
@@ -32,14 +32,14 @@
 					"plPL": "English for Locale",
 					"arAR": "No Page for Locale"
 				},
-				"relativePath": "partners/technology-partners/microsoft/azure-sentinel",
-				"topNavOptions": "default",
+				"relativePath": "partners/technology-partners/microsoft/intune",
+				"topNavOptions": null,
 				"topNavButtonText": null,
 				"topNavButtonUrl": null,
 				"footerOptions": null,
 				"metaTags": {
-					"metaTitle": "Microsoft (Azure Sentinel) - Tech Partners",
-					"metaDescription": "Learn more about how Cloudflare and Microsoft Azure Sentinel can help customers make the most of their security data.",
+					"metaTitle": "Microsoft (Intune) - Tech Partners",
+					"metaDescription": "Help teams enable device-aware ZTNA policies to protect their websites and applications with Microsoft Intune and Cloudflare",
 					"twitterCustomImage": null,
 					"metaImage": {
 						"file": {
@@ -51,10 +51,10 @@
 					"author": []
 				},
 				"sys": {
-					"createdAt": "2022-02-12T02:38:32.191Z",
-					"updatedAt": "2022-03-12T22:32:55.094Z"
+					"createdAt": "2022-02-12T07:42:50.502Z",
+					"updatedAt": "2022-03-12T16:54:05.304Z"
 				},
-				"contentfulId": "4rqGiFDNHx67Hom4eONRDK",
+				"contentfulId": "6pNPUBkSJt8U9Fegq0CI6",
 				"contentTypeId": "page",
 				"promotionalBanner": null,
 				"psaBanner": null,
@@ -64,13 +64,13 @@
 				"template": null,
 				"relatedBlades": [
 					{
-						"contentfulId": "bs4wJomOIyaE8DQYmR57v",
+						"contentfulId": "3a22mwswjes6SHslQikyaP",
 						"contentTypeId": "bladeHeroAnimation",
-						"title": "Microsoft Sentinel",
+						"title": "Microsoft Intune",
 						"titleSize": null,
-						"subtitle": "Cloudflare integrates with Microsoft Sentinel to help customers make the most of their security data",
+						"subtitle": "Help teams enable device-aware ZTNA policies with Microsoft Intune and Cloudflare",
 						"subtitleSize": null,
-						"copy": "Cloudflare's integration with Microsoft Sentinel will help solve customer security and performance challenges in just a few clicks. Customers will be able to get insights from new datasets, take logs anywhere with support for any storage destination, and easily visualize data in a new user interface (UI).",
+						"copy": "Zero Trust Network Access (ZTNA) has recently emerged as a safer, faster, and easier way to enable access for increasingly distributed workforces. Cloudflare and Microsoft Intune are working together to ensure a rapid, secure, and seamless setup of device-aware ZTNA policies. This partnership will enable teams to protect specific resources and verify the identity, context, and policy adherence of each request. ",
 						"buttonColor": "orange",
 						"buttonColor2": "orange",
 						"buttonText1": "Contact us",
@@ -91,7 +91,7 @@
 						"streamCaptions": null,
 						"popupStreamId": null,
 						"popupText": null,
-						"button1OpenInNewTab": false,
+						"button1OpenInNewTab": null,
 						"button2OpenInNewTab": null,
 						"streamThumbnails": null,
 						"sectionPadding": null,
@@ -109,9 +109,9 @@
 						"imageLayout": null,
 						"image": {
 							"file": {
-								"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/6CDTERiIZP9Fv8P0GddLNp/ef75e95bc745a1f94d8347ad3ebd77e7/Azure_sentinel_high_res_logo.png"
+								"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/4kO2cWBjQ01q3UVcElSPMx/94c86c2219ac10360cee19edb17ca71d/microsoft_intune.png"
 							},
-							"description": "Azure Sentinel logo"
+							"description": "Microsoft Intune logo"
 						},
 						"imageAssetFile": null
 					},
@@ -182,9 +182,9 @@
 						]
 					},
 					{
-						"contentfulId": "54703CfeMV2ghaafHTIhy0",
+						"contentfulId": "47kFgruo0YifTKb4bbmXuy",
 						"title": "Partnership Overview",
-						"copy": "Cloudflare customers can now push their logs directly to Microsoft Sentinel for comprehensive visibility into all of the endpoints, systems, and operations running internally. This integration ensures that mutual customers will no longer require any middleware to get their Cloudflare data into Microsoft Sentinel, resulting in faster log delivery and lower costs.",
+						"copy": "Cloudflare and Microsoft are working together to ensure a rapid, secure, and seamless setup of device-aware ZTNA policies. With Microsoft and Cloudflare, connecting to corporate resources is faster, safer, and more seamless for end users. Through this partnership with Microsoft, Cloudflare can onboard user devices onto a Zero Trust architecture, allowing them to leverage both private routing and device posture. Moreover, admins can control how internal domain resolution and IP traffic is routed and split tunneled, such that it will not affect any connectivity and even interoperate with existing VPN clients.",
 						"toggleText": null,
 						"button": [],
 						"learnMoreUrl": null,
@@ -203,22 +203,13 @@
 						"streamThumbnails": null,
 						"streamPoster": null,
 						"streamPosterAssetFile": null,
-						"image": null,
-						"imageAssetFile": {
-							"id": "ab4db9e9-211f-59de-8563-a4bfd2933260",
-							"altText": "Logs hero illustration",
-							"title": "Logs hero illustration",
-							"activeAsset": "Contentful Asset",
-							"locale": "en-US",
-							"contentfulAsset": {
-								"file": {
-									"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/6YctAy2a9z3DCOhpC5ydMI/085ab47cf08275e6a67084af0912febe/logs-hero-illustration.svg"
-								},
-								"description": "Illustration of Cloudflare integration with IBM QRadar"
+						"image": {
+							"file": {
+								"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/3kyppGOjGZoAa8rak2ne2X/dce3ab33e426ea53371878b3772a798c/Microsoft_Intune_graph.png"
 							},
-							"brandfolderAsset": null,
-							"brandfolderAssetMobile": null
+							"description": "Diagram of Cloudflare's Zero Trust partnership with Microsoft"
 						},
+						"imageAssetFile": null,
 						"featureList": [],
 						"contentTypeId": "bladeImageText",
 						"sectionTitle": null,
@@ -228,16 +219,16 @@
 						"backgroundColor": "white",
 						"bladeBorder": "none",
 						"imagePosition": false,
-						"imageSize": "medium",
+						"imageSize": "extra-large",
 						"imageTextAlignment": "center",
 						"togglesTo": []
 					},
 					{
 						"contentTypeId": "bladeQuote",
-						"contentfulId": "3HSQVJA4DgGlTsL6DqKR2M",
-						"quote": "\"Securing enterprise IT environments can be challenging - from devices, to users, to apps, to data centers on-premises or in the cloud. In today's environment of increasingly sophisticated cyber-attacks, our mutual customers rely on Microsoft Azure Sentinel for a comprehensive view of their enterprise. Azure Sentinel enables SecOps teams to collect data at cloud scale and empowers them with AI and ML to find the real threats in those signals, reducing alert fatigue by as much as 90%. By integrating directly with Cloudflare Logs we are making it easier and faster for customers to get complete visibility across their entire stack.\"",
-						"quoteAuthor": "Sarah Fender",
-						"quoteTitle": "Partner Group Program Manager, Azure Sentinel",
+						"contentfulId": "3OVJ4UET4SHyUdVQoO3nu4",
+						"quote": "\"The close collaboration and deep integration between Cloudflare and Microsoft helps strengthen the security posture of our joint customers and ensure people stay productive as Zero Trust remains top of mind for every organizational leader.\"",
+						"quoteAuthor": "Ann Johnson",
+						"quoteTitle": "Corporate Vice President of Security, Compliance, Identity, and Management, Business Development, Microsoft",
 						"learnMoreText": null,
 						"sectionPadding": null,
 						"backgroundColor": "light-blue",
@@ -246,15 +237,32 @@
 						"htmlId": null,
 						"image": {
 							"file": {
-								"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/foCRXbjajIYb8hsxRsp1p/0adc69c95b6afee92455ede41b76754a/logo_microsoft-azure_40h.svg"
+								"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/4kO2cWBjQ01q3UVcElSPMx/94c86c2219ac10360cee19edb17ca71d/microsoft_intune.png"
 							},
-							"description": "Azure logo"
+							"description": "Microsoft Intune logo"
 						},
 						"imageAssetFile": null,
 						"imageLinkUrl": null,
 						"logoList": [],
 						"logoListAssetFile": [],
-						"quoteCarousel": []
+						"quoteCarousel": [
+							{
+								"contentTypeId": "bladeQuote",
+								"contentfulId": "6Dc2Bt1wrOzvynW3eJar3N",
+								"quote": "\"In today's work-from-anywhere business culture, the risk of compromise has substantially increased as employees and their devices are continuously surrounded by a hostile threat environment outside the traditional castle-and-moat model. By expanding our integration with Cloudflare, we are making it easier for joint customers to strengthen their Zero Trust security posture across all endpoints and their entire corporate network.\"",
+								"quoteAuthor": "Dave Randall",
+								"quoteTitle": "Sr Program Manager, Microsoft Endpoint Manager",
+								"learnMoreText": null,
+								"learnMoreUrl": null,
+								"imageAssetFile": null,
+								"image": {
+									"file": {
+										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/4kO2cWBjQ01q3UVcElSPMx/94c86c2219ac10360cee19edb17ca71d/microsoft_intune.png"
+									},
+									"description": "Microsoft Intune logo"
+								}
+							}
+						]
 					},
 					{
 						"contentTypeId": "bladeEnablement",
@@ -329,7 +337,7 @@
 						"eyebrow": null
 					},
 					{
-						"contentfulId": "55MTxUUPfv83RF7d40XS43",
+						"contentfulId": "3jUZ7PeT6l694emEORMmx0",
 						"contentTypeId": "bladeResourceGrid",
 						"title": "Learn More",
 						"description": null,
@@ -344,18 +352,19 @@
 								"resourceMediaAssetFile": null,
 								"image": null,
 								"resourceStreamId": null,
-								"title": "[Tech Partner Directory] - Microsoft: Azure Sentinel Documentation",
+								"title": "[Tech Partner Directory] - Microsoft Endpoint Manager: Blog",
 								"callToAction": "Learn More",
-								"id": "08c1a7a5-468a-5109-a363-7afc31943edc",
-								"resourceTitle": "Microsoft Sentinel Analytics Integration Documentation",
-								"resourceType": "Solution & Product Guides",
+								"id": "c55418ce-527f-5255-9db1-3257a78c017f",
+								"resourceTitle": "Cloudflare integrates with Microsoft Intune to give CISOs secure control across devices, applications, and corporate networks",
+								"resourceType": "Blog",
 								"topic": [
-									"Ensure Application Availability"
+									"Enable Zero Trust Security for Workforce",
+									"Secure Teams, Devices, and Internal Applications"
 								],
-								"orderDate": "2022-04-01",
+								"orderDate": "2022-08-01",
 								"industry": null,
-								"description": "Learn more about the analytics integration between Cloudflare and Microsoft Sentinel.",
-								"externalLinkUrl": "https://ms.portal.azure.com/#create/cloudflare.cloudflare_sentinelsentinelcloudflare",
+								"description": "Learn how Cloudflare and Microsoft deepened our partnership to enable users to identify, investigate, and remediate threats faster through multiple new integrations.",
+								"externalLinkUrl": "https://blog.cloudflare.com/cloudflare-microsoft-intune-partner-to-give-cisos-secure-control-across-devices-applications/",
 								"hideFromResourceHub": true
 							},
 							{
@@ -363,18 +372,39 @@
 								"resourceMediaAssetFile": null,
 								"image": null,
 								"resourceStreamId": null,
-								"title": "[Tech Partner Directory] - Microsoft: Azure Sentinel Press Release",
+								"title": "[Tech Partner Directory] - Microsoft: Intune Documentation",
 								"callToAction": "Learn More",
-								"id": "df382941-f6bd-5f99-9699-62bf0337c293",
-								"resourceTitle": "Cloudflare Analytics Partnerships Press Release",
-								"resourceType": "Link",
+								"id": "a066cf3b-4b64-548a-8665-bfb6b6411bf1",
+								"resourceTitle": "Deploy Cloudflare WARP with Microsoft Intune",
+								"resourceType": "Solution & Product Guides",
 								"topic": [
-									"Ensure Application Availability"
+									"Accelerate Internet Applications",
+									"Accelerate Mobile Experiences"
 								],
 								"orderDate": "2022-04-01",
 								"industry": null,
-								"description": "Read Cloudflare's announcement of its integration with Microsoft Sentinel to help customers make the most of their security data.",
-								"externalLinkUrl": "https://www.cloudflare.com/press-releases/2021/cloudflare-integrates-with-microsoft-splunk-datadog-sumo-logic-and-more/",
+								"description": "Learn how to configure and deploy Cloudflare WARP with Microsoft Intune.",
+								"externalLinkUrl": "https://developers.cloudflare.com/cloudflare-one/connections/connect-devices/warp/deployment/mdm-deployment/partners/intune",
+								"hideFromResourceHub": true
+							},
+							{
+								"resourceMedia": null,
+								"resourceMediaAssetFile": null,
+								"image": null,
+								"resourceStreamId": null,
+								"title": "[Tech Partner Directory] - Microsoft: Intune Blog",
+								"callToAction": "Learn More",
+								"id": "d20caf90-6c90-5ffd-a3ab-843d2a85ff64",
+								"resourceTitle": "Cloudflare Announces Integrations with MDM Companies",
+								"resourceType": "Blog",
+								"topic": [
+									"Accelerate Mobile Experiences",
+									"Accelerate Internet Applications"
+								],
+								"orderDate": "2022-04-01",
+								"industry": null,
+								"description": "Learn how Cloudflare partners with Microsoft Intune to make it easier to deploy and install Cloudflare WARP.",
+								"externalLinkUrl": "https://blog.cloudflare.com/mdm-partnerships/",
 								"hideFromResourceHub": true
 							}
 						],
@@ -451,8 +481,8 @@
 		"pageContext": {
 			"currentLocale": "en-US",
 			"locale": "en-US",
-			"pathname": "/partners/technology-partners/microsoft/azure-sentinel/",
-			"contentfulId": "4rqGiFDNHx67Hom4eONRDK",
+			"pathname": "/partners/technology-partners/microsoft/intune/",
+			"contentfulId": "6pNPUBkSJt8U9Fegq0CI6",
 			"allowedHrefLangs": [
 				"en-US"
 			],
