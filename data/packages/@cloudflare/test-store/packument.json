@@ -737,24 +737,24 @@
 			"name": "@cloudflare/test-store",
 			"version": "1.0.31",
 			"dependencies": {
-				"redux-mock-store": "^1.2.0",
-				"redux-thunk": "^2.2.0"
+				"redux-thunk": "^2.2.0",
+				"redux-mock-store": "^1.2.0"
 			},
 			"peerDependencies": {
 				"redux": "^4.0.0"
 			},
 			"dist": {
 				"shasum": "b066ab7a0f652038e9da76ba90570da5a0400b68",
-				"integrity": "sha512-OqFy+bdduPljznMwgVUgUgywbP13BJVMGZc+I7Vxt2p//S1qsqUKYvCN+Srgxxg4mT7ERblh4pw3XABKTg3jnw==",
 				"tarball": "https://registry.npmjs.org/@cloudflare/test-store/-/test-store-1.0.31.tgz",
 				"fileCount": 7,
-				"unpackedSize": 7672,
+				"integrity": "sha512-OqFy+bdduPljznMwgVUgUgywbP13BJVMGZc+I7Vxt2p//S1qsqUKYvCN+Srgxxg4mT7ERblh4pw3XABKTg3jnw==",
 				"signatures": [
 					{
-						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U",
-						"sig": "MEYCIQC3k5OgnEIkSISAGLfjUWqZOUOsCKhQi6NoR5LsVnrF5QIhAKxid+HJRlxsX3PY5Bx3VVmE99SiOegrjL456miqPjzJ"
+						"sig": "MEYCIQC3k5OgnEIkSISAGLfjUWqZOUOsCKhQi6NoR5LsVnrF5QIhAKxid+HJRlxsX3PY5Bx3VVmE99SiOegrjL456miqPjzJ",
+						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
 					}
-				]
+				],
+				"unpackedSize": 7672
 			},
 			"stratus": {
 				"srcDirectory": "./src",

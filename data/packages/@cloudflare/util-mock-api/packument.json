@@ -454,22 +454,22 @@
 			"name": "@cloudflare/util-mock-api",
 			"version": "1.0.19",
 			"dependencies": {
-				"@types/fetch-mock": "^7.3.2",
 				"fetch-mock": "^8.3.2",
-				"path-to-regexp": "^5.0.0"
+				"path-to-regexp": "^5.0.0",
+				"@types/fetch-mock": "^7.3.2"
 			},
 			"dist": {
 				"shasum": "09cf42848b38ed9429d2d5479f5b488adb88793b",
-				"integrity": "sha512-Z0nC+4FZfafMBcwBN0DWkWvJhLtOij49rQYVVgLCmitzm9ZQ0AhgBO6MEKHAJBiYB6X+x16YkatigieEVb/8qg==",
 				"tarball": "https://registry.npmjs.org/@cloudflare/util-mock-api/-/util-mock-api-1.0.19.tgz",
 				"fileCount": 18,
-				"unpackedSize": 22964,
+				"integrity": "sha512-Z0nC+4FZfafMBcwBN0DWkWvJhLtOij49rQYVVgLCmitzm9ZQ0AhgBO6MEKHAJBiYB6X+x16YkatigieEVb/8qg==",
 				"signatures": [
 					{
-						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U",
-						"sig": "MEYCIQDZpr1ort6OMT9joFYUuunB+PRmKpWFmnKFjRHIG6WlqQIhAN0tQ3cieXcbVHVlRml4/l42WE25R56MXOzj0U6ocSId"
+						"sig": "MEYCIQDZpr1ort6OMT9joFYUuunB+PRmKpWFmnKFjRHIG6WlqQIhAN0tQ3cieXcbVHVlRml4/l42WE25R56MXOzj0U6ocSId",
+						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
 					}
-				]
+				],
+				"unpackedSize": 22964
 			},
 			"stratus": {
 				"srcDirectory": "./src",

@@ -1418,32 +1418,32 @@
 			"name": "@cloudflare/puppeteer",
 			"version": "1.0.6",
 			"dependencies": {
-				"@puppeteer/browsers": "2.2.4",
+				"ws": "^8.18.0",
 				"debug": "^4.3.5",
 				"devtools-protocol": "0.0.1299070",
-				"ws": "^8.18.0"
+				"@puppeteer/browsers": "2.2.4"
 			},
 			"devDependencies": {
-				"@types/debug": "4.1.12",
-				"@types/node": "18.17.15",
-				"@types/chrome": "0.0.268",
-				"@types/ws": "8.5.11",
 				"mitt": "3.0.1",
+				"rxjs": "7.8.1",
+				"@types/ws": "8.5.11",
 				"parsel-js": "1.1.2",
-				"rxjs": "7.8.1"
+				"@types/node": "18.17.15",
+				"@types/debug": "4.1.12",
+				"@types/chrome": "0.0.268"
 			},
 			"dist": {
-				"integrity": "sha512-e/0s9Ac2IhyBrgnyTDrYEippqrXqKtllP8qezyunOb6icOJ2FzbfQwhWRIVwV3AgZtutQTF5Kb/gFAGXCuGRqQ==",
 				"shasum": "44ea79ad95f720c9ff3f2f46b924eb983de82ba4",
 				"tarball": "https://registry.npmjs.org/@cloudflare/puppeteer/-/puppeteer-1.0.6.tgz",
 				"fileCount": 1289,
-				"unpackedSize": 5525632,
+				"integrity": "sha512-e/0s9Ac2IhyBrgnyTDrYEippqrXqKtllP8qezyunOb6icOJ2FzbfQwhWRIVwV3AgZtutQTF5Kb/gFAGXCuGRqQ==",
 				"signatures": [
 					{
-						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U",
-						"sig": "MEUCIA0CGiWqK4MUNA/G3+5uQ6UsF8yzDOLUzvue0EkypbbnAiEAqVkM3v4BlS9MQz6eoXof6y0vrKT5Qe5GNX7INAM0eb0="
+						"sig": "MEUCIA0CGiWqK4MUNA/G3+5uQ6UsF8yzDOLUzvue0EkypbbnAiEAqVkM3v4BlS9MQz6eoXof6y0vrKT5Qe5GNX7INAM0eb0=",
+						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
 					}
-				]
+				],
+				"unpackedSize": 5525632
 			},
 			"engines": {
 				"node": ">=18"

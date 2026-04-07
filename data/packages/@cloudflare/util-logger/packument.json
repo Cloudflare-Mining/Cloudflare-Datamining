@@ -804,21 +804,21 @@
 			"name": "@cloudflare/util-logger",
 			"version": "1.0.34",
 			"dependencies": {
-				"@types/debug": "^0.0.30",
-				"debug": "^2.6.9"
+				"debug": "^2.6.9",
+				"@types/debug": "^0.0.30"
 			},
 			"dist": {
 				"shasum": "3b4b61a1d6d97b345f757e83d42d1d6af56d507a",
-				"integrity": "sha512-/y4hfD0rSZGB7gl8HwaneV6Wg3JGgNGs5fCezKMkqK7bI98ci10nz0nax1QyijqtU/+D04wJF5DpDYqQGIB8YQ==",
 				"tarball": "https://registry.npmjs.org/@cloudflare/util-logger/-/util-logger-1.0.34.tgz",
 				"fileCount": 9,
-				"unpackedSize": 8339,
+				"integrity": "sha512-/y4hfD0rSZGB7gl8HwaneV6Wg3JGgNGs5fCezKMkqK7bI98ci10nz0nax1QyijqtU/+D04wJF5DpDYqQGIB8YQ==",
 				"signatures": [
 					{
-						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U",
-						"sig": "MEUCIGHqN81lMyS1ReSoF1ny7a5naB8miGgHs3yFZ1lqJclbAiEA7a4gUclzMgzUM8cimZrUoE3e8GtWUSk9qgdfCr3/kaI="
+						"sig": "MEUCIGHqN81lMyS1ReSoF1ny7a5naB8miGgHs3yFZ1lqJclbAiEA7a4gUclzMgzUM8cimZrUoE3e8GtWUSk9qgdfCr3/kaI=",
+						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
 					}
-				]
+				],
+				"unpackedSize": 8339
 			},
 			"stratus": {
 				"srcDirectory": "./src",
