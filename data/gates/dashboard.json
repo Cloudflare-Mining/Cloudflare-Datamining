@@ -63,7 +63,7 @@
 		"enabled": true
 	},
 	"agent-memory-enabled": {
-		"enabled": false
+		"enabled": true
 	},
 	"agents-in-dash": {
 		"enabled": false
@@ -761,6 +761,9 @@
 	"deseng-full-screen-chat": {
 		"enabled": false
 	},
+	"deseng-gen-ui": {
+		"enabled": false
+	},
 	"deseng-gen-ui-mock-widgets": {
 		"enabled": false
 	},
@@ -792,6 +795,9 @@
 		"enabled": true
 	},
 	"deseng-worker-domain-tab": {
+		"enabled": false
+	},
+	"deseng-worker-settings": {
 		"enabled": false
 	},
 	"deseng-workers-architecture": {
@@ -1529,7 +1535,7 @@
 		"enabled": false
 	},
 	"metadata-authz-enabled": {
-		"enabled": false
+		"enabled": true
 	},
 	"monitoring-magic-merge": {
 		"enabled": true
