@@ -6,33 +6,33 @@
 	</div>
 </div>
 <p><strong>Available location(s): London, UK | Lisbon, Portugal</strong></p>
-<p><strong>About the TPgM team and internship role</strong></p>
-<p>The Technical Program Manager (TPgM) intern will contribute to fast-paced, cross-functional projects, helping to define scope, track progress, and communicate updates to stakeholders. They will collaborate closely with Engineering, Product, Customer Support Engineer, Security, Special Projects, ETI, and Design teams to ensure projects are delivered efficiently and on time. This role provides exposure to the entire product lifecycle and technical operations at Cloudflare. We are looking for a highly organized, proactive, and effective communicator who is eager to learn how to manage complex technical programs. The ideal candidate has a strong analytical mindset and a genuine passion for technology and process improvement. We are looking for interns who are adept at communicating, hungry to learn, and proficient in forms of automation tooling, including utilizing AI.&nbsp;</p>
-<p><strong>Role Responsibilities</strong></p>
+<h4><strong>About the Role</strong></h4>
+<p>This is a high-visibility role designed for a proactive problem-solver who is as comfortable discussing technical stacks as they are mapping out business processes.<br>You will contribute to fast-paced, cross-functional projects—ranging from software product lifecycles to major enterprise system implementations (like Workday or ERP). This role provides a 360-degree view of how a global technology leader delivers scale, security, and efficiency.</p>
+<h4><strong>What You’ll Do</strong></h4>
 <ul>
-	<li>Work with a mentor TPgM who will guide them throughout the internship and advise their projects.&nbsp;</li>
-	<li>Be tasked with a wide range of projects and teams to work with, either for process improvements, small projects/tasks, and creating efficiencies in getting things done.&nbsp;</li>
-	<li>Learn to communicate effectively, manage stakeholder expectations, and shadow projects with a wide pool of experienced TPgMs from different backgrounds and expertise.</li>
-	<li>Learn how products and initiatives are delivered effectively in a fast paced every changing environment.</li>
-	<li>Become proficient in tools and methodologies to start your career as a TPgM.</li>
+	<li><strong>Cross-Functional Collaboration &amp; Governance:</strong> Partner across Engineering, Product, and Enterprise Systems to define project scope and align resources. You will act as a bridge between teams to ensure technical delivery meets our high standards for security, compliance, and operational excellence.</li>
+	<li><strong>Program Planning &amp; Execution:</strong> Assist in the end-to-end lifecycle of technical initiatives. You will track progress, manage critical path dependencies, and help drive on-time delivery in a fast-paced, ever-changing environment.</li>
+	<li><strong>AI-Driven Innovation:</strong> Leverage AI and automation tooling to improve work planning, analyze program risks, and identify efficiencies in how we deliver on business commitments.</li>
+	<li><strong>Stakeholder Management:</strong> Learn to communicate effectively across all levels. You will assist in translating high-level business goals into structured roadmaps and help "grok" complex data into clear status reports, narratives, and presentations.</li>
+	<li><strong>Process Improvement:</strong> Identify bottlenecks in current workflows and propose automated or streamlined solutions to enhance team productivity.</li>
+	<li><strong>Mentorship &amp; Growth:</strong> Work closely with a mentor TPgM or IT Business Partner to shadow complex programs, receive feedback, and build a foundation for a career in Program Management.</li>
+</ul>
+<h4><strong>Role Requirements</strong></h4>
+<h4><strong>Minimum Qualifications:</strong></h4>
+<ul>
+	<li><strong>Communication:</strong> Exceptional written and verbal skills. You can distill complex technical updates into clear narratives for diverse audiences, ranging from engineering pods to executive leadership.</li>
+	<li><strong>Technical Curiosity:</strong> A genuine passion for understanding technical stacks and how complex enterprise systems (ERP, Salesforce, etc.) integrate to drive business value.</li>
+	<li><strong>Dynamic Adaptability:</strong> Highly coachable with a commitment to continuous growth. You embrace the fast-paced nature of technical programs, showing a readiness to iterate on processes and refine your approach based on stakeholder feedback and real-world results.</li>
+	<li><strong>Availability:</strong> Ability to commit to a minimum 12-week summer internship, with a physical presence in the office 3–5 days a week.</li>
+</ul>
+<p><strong>Preferred Skills (Bonus Points):</strong></p>
+<ul>
+	<li><strong>Analytical Tooling:</strong> Proficiency in data visualization, automation tools, or utilizing AI to solve organizational problems.</li>
+	<li><strong>Technical Foundations:</strong> Experience with software development or an understanding of the lifecycle of large-scale enterprise system implementations.</li>
+	<li><strong>Strategic Thinking:</strong> Ability to synthesize complex information into actionable summaries and executive-level presentations.</li>
+	<li><strong>Prior Exposure:</strong> Experience with Cloudflare products or previous internships involving cross-functional program coordination.</li>
 </ul>
 <p>You can check out our <a href="https://blog.cloudflare.com/tag/internship-experience/">internship blogs</a> to learn more about our program and hear directly from our past interns.</p>
-<p><strong>Role Requirements&nbsp;</strong></p>
-<p><strong>Must-Have Skills</strong></p>
-<ul>
-	<li>Currently pursuing a Bachelors or Masters program in MIS, Data Analytics, Engineering, Business with deep level of technical curiosity, or relevant experience</li>
-	<li>Excellent written and verbal communication skills</li>
-	<li>Willingness to learn, iterate, and take feedback well&nbsp;</li>
-	<li>Can read the room&nbsp;</li>
-	<li>Curiosity of our technical stack and be able to understand/learn how to work with multiple functions (development, design, product, operations,etc)</li>
-	<li>Ability to commit to a minimum 12 week summer internship</li>
-	<li>In office 3-5 days a week</li>
-</ul>
-<p><strong>Nice-to-Have Skills</strong></p>
-<ul>
-	<li>Ability to grok knowledge/data into presentations, summaries, status reports, narratives&nbsp;&nbsp;</li>
-	<li>Software development experience</li>
-</ul>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
 	<p><span style="font-weight: 400;">We’re not just a highly ambitious, large-scale technology company. We’re a highly ambitious, large-scale technology company with a soul. Fundamental to our mission to help build a better Internet is protecting the free and open Internet.</span></p>

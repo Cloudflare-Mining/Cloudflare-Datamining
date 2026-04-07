@@ -5,27 +5,32 @@
 		<p>At Cloudflare, we’re not looking for people who wait for a polished roadmap; we’re looking for the builders who see the cracks in the Internet that everyone else has simply learned to live with. We value candidates who have the instinct to spot a "normalized" problem and the AI-native curiosity to create a solution using the latest tools. Our culture is built on iteration, leveraging AI to ship faster today to make it better tomorrow, while ensuring that every improvement, no matter how small, is shared across the team to lift everyone up. If you’re the type of person who values curiosity over bureaucracy, and that AI is a partner in solving tough problems to keep the Internet moving forward, you’ll fit right in.</p>
 	</div>
 </div>
-<h3><strong>Available Locations: Austin, TX</strong></h3>
-<h3><strong>About the Department</strong></h3>
-<p>Media Platform is part of Emerging Technologies &amp; Incubation (ETI), where new and bold products are built and released within Cloudflare. Rather than being constrained by the structures which make Cloudflare a massively successful business, we are able to leverage them to deliver entirely new tools and products to our customers. Cloudflare’s edge and network make it possible to solve problems at massive scale and efficiency which would be impossible for almost any other organization.</p>
-<h3><strong>About the role</strong></h3>
-<p>We are seeking a skilled Frontend (UI) Platform Engineer to join our team. You’ll be responsible for all Media Platform components of the Cloudflare Dashboard: Images, Stream and Realtime. You will also build and maintain media-specific standalone UI components and applications, e.g. video players, media upload tools and web conferencing solutions. Media applications push performance and usability requirements to the limit.</p>
-<h3><strong>Technologies we use</strong></h3>
-<p>React, TypeScript, JavaScript (ES6+), React Router, PlayWright, Selenium, Vite, Webpack, Bazel, CI/CD tools, Go, RESTful APIs, HLS/DASH, WebRTC, MoQ.</p>
-<h3><strong>Qualifications</strong></h3>
+<p><strong>Available location:&nbsp;</strong>Austin, Texas</p>
+<p><strong>About The Team</strong></p>
+<p>The Technical Marketing team works closely with product teams, sales and marketing to ensure our customers understand the technical details of how our products work. Our goal is to ensure the technical buyer and customer understands how Cloudflare products and solutions work in terms of their business needs. We are highly technical and get to touch every aspect of Cloudflare's technology.</p>
+<p><strong>About the Role</strong></p>
+<p>As a Technical Marketing Intern, you will help accelerate our plans to improve the content and tools we build for technical sales, partners and customers. You will be tasked with gathering feedback from the field, defining what customers are looking to understand and then helping build the videos, demonstrations and other technical assets. Your work will be key to improving our ability to explain to customers the complex technical details which will lead to an increase in sales.<br>The ideal candidate has a hands on mindset, a get-it-done attitude and is not afraid of challenging the status quo. You should feel comfortable facing a brand new technology and having to read documentation and being hands on with servers, scripts and APIs.</p>
+<p><strong>Responsibilities</strong></p>
 <ul>
-	<li>We want someone who understands and obsesses over front-end systems.</li>
-	<li>4+ years of experience in frontend engineering, specializing in JavaScript, TypeScript, and React.</li>
-	<li>Strong knowledge of UI infrastructure, CI/CD, and testing frameworks (e.g., Playwright, Cypress).</li>
-	<li>Proven ability to drive projects independently, from concept to implementation.</li>
+	<li>Gain experience with all of Cloudflare's amazing technology and work with the people that build it.</li>
+	<li>Understand complex technologies and explain them in simple terms and align solutions to customer problems.</li>
+	<li>Identify inefficiencies and implement automation to reduce the time it takes for technical sales to learn our solutions.</li>
+	<li>Collaborate with cross-functional teams to understand business needs and objectives, ensuring relevant and impactful content.</li>
+	<li>Partner with our Product Management and Special Projects team to improve strategies, products and services.</li>
 </ul>
-<h3><strong>Bonus skills</strong></h3>
+<p><strong>Skills &amp; Qualifications</strong></p>
 <ul>
-	<li>Video streaming and web playback.</li>
-	<li>Browser media APIs.</li>
-	<li>Realtime communication protocols and/or video conferencing, e.g. WebRTC.</li>
-	<li>Experience building and scaling large-scale web applications.</li>
+	<li>Currently pursuing a degree in Computer Science, Marketing, or a related field.</li>
+	<li>Available for a full-time 12-week internship, working from our Austin office 3-5 days a week during the summer or fall (May-Aug/Sep-Dec).</li>
+	<li>Strong communication skills. Ability to explain complex concepts in a manner that's understandable without dumbing down the content.</li>
+	<li>Strong analytical skills with the ability to collect, organize, analyze, and disseminate significant amounts of information with attention to detail and accuracy.</li>
+	<li>Strong understanding of AI technologies such as AI agents, MCP servers and LLMs.</li>
+	<li>Proficient in operating systems, networking, Internet technologies (SSL/TLS/HTTP/SSH etc) and ability to write code to solve simple problems.</li>
+	<li>Previous experience in technical &amp; product marketing/product management is a plus.</li>
+	<li>Excellent written and presentation skills. This role demands someone who is gifted in their ability to communicate effectively with all stakeholders, including executives, product management, sales, and marketing.</li>
+	<li>Self-starter who truly enjoys working in a fast-paced, innovative cloud services company.</li>
 </ul>
+<p>You can check out our <a href="https://blog.cloudflare.com/tag/internship-experience/">internship blogs</a> to learn more about our program and hear directly from our past interns.</p>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
 	<p><span style="font-weight: 400;">We’re not just a highly ambitious, large-scale technology company. We’re a highly ambitious, large-scale technology company with a soul. Fundamental to our mission to help build a better Internet is protecting the free and open Internet.</span></p>
