@@ -22,7 +22,9 @@
 		title: "No shared configurations",
 		description_sent: "Get started by visiting a product page to share configurations with other accounts in your organization.",
 		description_received: "No configurations have been shared with this account yet.",
-		description_org: "No configurations have been shared within this organization yet."
+		description_org: "No configurations have been shared within this organization yet.",
+		no_matching_title: "No matching configurations",
+		no_matching_description: "No configurations match the selected filters. Try adjusting your filters."
 	},
 	delete: {
 		confirm_title: "Are you sure you want to delete this shared configuration?",
