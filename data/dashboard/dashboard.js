@@ -2,7 +2,7 @@
 	try {
 		var e = "undefined" != typeof window ? window : "undefined" != typeof global ? global : "undefined" != typeof self ? self : {},
 			n = (new Error).stack;
-		n && (e._sentryDebugIds = e._sentryDebugIds || {}, e._sentryDebugIds[n] = "35e20c17-6c3c-5360-9a58-6fb4635a400e")
+		n && (e._sentryDebugIds = e._sentryDebugIds || {}, e._sentryDebugIds[n] = "330456b8-83f9-5898-bac5-9fc4808cd283")
 	} catch (e) {}
 }();
 (self.webpackChunk_cloudflare_app_dash = self.webpackChunk_cloudflare_app_dash || []).push([
@@ -971,10 +971,10 @@
 						}({}, {
 							branch: "master",
 							isReleaseCandidate: "true",
-							commit: "aad732e9495764a5bc89116359d5b4dccae36004",
-							dashVersion: "21527951",
+							commit: "48ca3276ade35fefcce190b125d169b2f038b27b",
+							dashVersion: "21578861",
 							env: "production",
-							builtAt: 0x19d67be717a,
+							builtAt: 0x19d68c6fa17,
 							versions: {
 								"@cloudflare/app-dash": "25.161.23",
 								"@cloudflare/kumo": "1.16.0",
@@ -1566,55 +1566,58 @@
 			"use strict";
 			e.d(r, {
 				$J: function() {
-					return L
+					return P
 				},
 				$U: function() {
-					return U
-				},
-				BU: function() {
-					return B
-				},
-				CK: function() {
-					return z
-				},
-				DM: function() {
-					return R
-				},
-				EY: function() {
-					return M
-				},
-				FP: function() {
-					return H
-				},
-				J2: function() {
-					return G
-				},
-				K8: function() {
-					return D
-				},
-				RI: function() {
-					return V
-				},
-				V1: function() {
-					return S
-				},
-				Yu: function() {
-					return N
-				},
-				Zi: function() {
-					return K
-				},
-				hA: function() {
-					return I
-				},
-				lp: function() {
-					return F
-				},
-				nj: function() {
 					return j
 				},
+				BU: function() {
+					return W
+				},
+				CK: function() {
+					return G
+				},
+				DM: function() {
+					return S
+				},
+				EY: function() {
+					return F
+				},
+				FP: function() {
+					return B
+				},
+				J2: function() {
+					return H
+				},
+				K8: function() {
+					return L
+				},
+				RI: function() {
+					return Y
+				},
+				V1: function() {
+					return N
+				},
+				Yu: function() {
+					return D
+				},
+				Zi: function() {
+					return V
+				},
+				d4: function() {
+					return q
+				},
+				hA: function() {
+					return R
+				},
+				lp: function() {
+					return U
+				},
+				nj: function() {
+					return z
+				},
 				t2: function() {
-					return P
+					return M
 				}
 			});
 			var o, t = e("webpack/sharing/consume/default/@cloudflare/util-sparrow/@cloudflare/util-sparrow"),
@@ -1658,9 +1661,10 @@
 				E = "account overview - zt widget clicked",
 				T = "account overview - audit log widget clicked",
 				O = "account overview - billing widget clicked",
-				A = "account overview - next steps widget clicked",
-				C = "account overview - account details widget clicked",
-				I = c({
+				A = "account overview - billing widget displayed",
+				C = "account overview - next steps widget clicked",
+				I = "account overview - account details widget clicked",
+				R = c({
 					SPARROW_PROJECTS_TABLE_CLICK: d,
 					SPARROW_CREATE_PROJECT_CLICK: s,
 					SPARROW_PRODUCT_CARD_CLICK: p,
@@ -1682,26 +1686,27 @@
 					SPARROW_ACCOUNT_OVERVIEW_ZT_WIDGET_CLICKED: E,
 					SPARROW_ACCOUNT_OVERVIEW_AUDITLOG_WIDGET_CLICKED: T,
 					SPARROW_ACCOUNT_OVERVIEW_BILLING_WIDGET_CLICKED: O,
-					SPARROW_ACCOUNT_OVERVIEW_NEXTSTEPS_WIDGET_CLICKED: A,
-					SPARROW_ACCOUNT_OVERVIEW_ACCOUNT_DETAILS_WIDGET_CLICKED: C
+					SPARROW_ACCOUNT_OVERVIEW_BILLING_WIDGET_DISPLAYED: A,
+					SPARROW_ACCOUNT_OVERVIEW_NEXTSTEPS_WIDGET_CLICKED: C,
+					SPARROW_ACCOUNT_OVERVIEW_ACCOUNT_DETAILS_WIDGET_CLICKED: I
 				}, l.JW),
-				R = n => {
+				S = n => {
 					a().sendEvent(d, {
 						component: n
 					})
 				},
-				S = n => {
+				N = n => {
 					a().sendEvent(d, {
 						component: "menu",
 						subcomponent: n
 					})
 				},
-				N = () => {
+				D = () => {
 					a().sendEvent(s, {
 						category: "Projects Table"
 					})
 				},
-				D = n => {
+				L = n => {
 					let {
 						category: r,
 						product: e
@@ -1711,18 +1716,18 @@
 						product: e
 					})
 				},
-				L = () => {
+				P = () => {
 					a().sendEvent(u)
 				},
-				P = () => {
+				M = () => {
 					a().sendEvent(g)
 				},
-				M = n => {
+				F = n => {
 					a().sendEvent(h, {
 						category: n
 					})
 				},
-				F = n => {
+				U = n => {
 					let {
 						category: r,
 						href: e
@@ -1732,7 +1737,7 @@
 						href: (0, i.UG)(e)
 					})
 				},
-				U = n => {
+				j = n => {
 					let {
 						category: r,
 						href: e
@@ -1742,7 +1747,7 @@
 						href: (0, i.UG)(e)
 					})
 				},
-				j = n => {
+				z = n => {
 					let {
 						plan: r
 					} = n;
@@ -1750,10 +1755,10 @@
 						plan: r
 					})
 				},
-				z = () => {
+				G = () => {
 					a().sendEvent(w)
 				},
-				G = n => {
+				H = n => {
 					let {
 						tier: r
 					} = n;
@@ -1762,7 +1767,7 @@
 						tier: r
 					})
 				},
-				H = n => {
+				B = n => {
 					let {
 						target: r,
 						metric: e,
@@ -1779,26 +1784,29 @@
 						time_range_details: t
 					}))
 				};
-			var B = ((o = {}).SECURITY = "security", o.PERFORMANCE = "performance", o.ACTIVITY = "activity", o);
-			let W = {
-					"account details": C,
+			var W = ((o = {}).SECURITY = "security", o.PERFORMANCE = "performance", o.ACTIVITY = "activity", o);
+			let K = {
+					"account details": I,
 					domains: _,
 					devplat: y,
 					"zero trust": E,
-					"next steps": A,
+					"next steps": C,
 					billing: O,
 					"audit logs": T
 				},
-				K = n => {
+				V = n => {
 					let {
 						widget: r,
 						target: e
-					} = n, o = W[r] || x;
+					} = n, o = K[r] || x;
 					a().sendEvent(o, {
 						target: e
 					})
 				},
-				V = n => {
+				q = () => {
+					a().sendEvent(A)
+				},
+				Y = n => {
 					let {
 						widget: r,
 						signupSource: e,
@@ -9142,4 +9150,4 @@
 		}
 	}
 ]);
-//# debugId=35e20c17-6c3c-5360-9a58-6fb4635a400e
+//# debugId=330456b8-83f9-5898-bac5-9fc4808cd283
