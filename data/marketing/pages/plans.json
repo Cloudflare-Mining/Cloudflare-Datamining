@@ -53,7 +53,7 @@
 				},
 				"sys": {
 					"createdAt": "2021-06-25T16:32:45.600Z",
-					"updatedAt": "2026-03-11T07:19:45.698Z"
+					"updatedAt": "2026-04-08T18:46:05.548Z"
 				},
 				"contentfulId": "6G5OTQJ1EJ25ZiSGz2DY8m",
 				"contentTypeId": "page",
@@ -6237,6 +6237,312 @@
 										"contentTypeId": "planElementFeatureValueText",
 										"contentfulId": "5N5eHyoEj1ALBY7r7RFLC0",
 										"textValue": "Custom Pricing",
+										"plan": {
+											"contentfulId": "9KE9tgEmXrKuduOkp2NKd",
+											"contentTypeId": "planElementPlan",
+											"entryTitle": "Application Services - Enterprise Plan",
+											"name": "Contract",
+											"description": "For mission-critical applications that are core to your business.",
+											"pricingDescription": "Billed annually",
+											"price": null,
+											"currency": null,
+											"customPricingText": "Custom",
+											"monthlyPricingText": "Custom",
+											"annualPricingText": "Custom",
+											"billingCycle": null,
+											"customPricingCta": {
+												"buttonAssetFile": null,
+												"buttonTextLoggedIn": null,
+												"contentTypeId": "button",
+												"contentfulId": "MCURZoXWJfEzGdExTnq0N",
+												"elementName": "Application Services - Enterprise Plan - See plans",
+												"standardText": null,
+												"text": "See plans",
+												"url": "https://www.cloudflare.com/plans/enterprise/externa/ ",
+												"loggedInUrl": null,
+												"buttonModal": null,
+												"openInNewTab": false,
+												"locale": "en-US"
+											},
+											"monthlyPricingCta": {
+												"buttonAssetFile": null,
+												"buttonTextLoggedIn": null,
+												"contentTypeId": "button",
+												"contentfulId": "3ZvRO75p9QfDMIy6aWvPge",
+												"elementName": "Enterprise Plan-Talk to an Expert (popup form)",
+												"standardText": null,
+												"text": "Talk to an Expert",
+												"url": "#talk-to-an-expert-enterprise-form-modal",
+												"loggedInUrl": null,
+												"buttonModal": {
+													"contentTypeId": "formModal",
+													"contentfulId": "3woL2JQXfu78rDTE3BrjaC",
+													"modalName": "Plans page - Talk to an Expert - Enterprise form modal",
+													"modalId": "plans-page-talk-to-an-expert-enterprise-form-modal",
+													"modalType": "single-form",
+													"marketoForm": {
+														"contentTypeId": "marketoEmbeddedForm",
+														"contentfulId": "5MjC5W1qncrQr8O9nIXgrX",
+														"bladeName": "Plans Enterprise Contact Us Form (4116)",
+														"backgroundColor": "blue",
+														"marketoFormId": 4116,
+														"marketoFormLeadSource": "Inbound - Web Form",
+														"marketoFormLeadSourceDetail": "Web Form - Enterprise General Sales Inquiry",
+														"marketoFormAssetName": null,
+														"marketoFormHeaderText": null,
+														"marketoFormDefaultComment": null,
+														"showCommentBox": true,
+														"marketoFormThankYouText": null,
+														"marketoFormCustomSuccessMessage": null,
+														"marketoFormPdfDownload": null,
+														"marketoFormPdfDownloadI18n": [],
+														"marketoFormAssetDownloadButtonText": null,
+														"marketoFormSuccessRedirectUrl": null,
+														"sendAdRoll": true,
+														"meta_adRollCustomSegment": null,
+														"enableSandbox": null,
+														"marketoFormSubmitButtonText": "Contact us today",
+														"marketoFormSubmitButtonColor": null,
+														"enableEmailVerification": null,
+														"disableEnterpriseEmailNotification": null,
+														"enableRingout": null
+													},
+													"title": "Talk to an expert about our Enterprise plan",
+													"regularCopy": null,
+													"splitFormDefaultTab": null,
+													"selfServeTabText": null,
+													"selfServeCopy": null,
+													"enterpriseTabText": null,
+													"enterpriseCopy": null
+												},
+												"openInNewTab": false,
+												"locale": "en-US"
+											},
+											"annualPricingCta": {
+												"buttonAssetFile": null,
+												"buttonTextLoggedIn": null,
+												"contentTypeId": "button",
+												"contentfulId": "3ZvRO75p9QfDMIy6aWvPge",
+												"elementName": "Enterprise Plan-Talk to an Expert (popup form)",
+												"standardText": null,
+												"text": "Talk to an Expert",
+												"url": "#talk-to-an-expert-enterprise-form-modal",
+												"loggedInUrl": null,
+												"buttonModal": {
+													"contentTypeId": "formModal",
+													"contentfulId": "3woL2JQXfu78rDTE3BrjaC",
+													"modalName": "Plans page - Talk to an Expert - Enterprise form modal",
+													"modalId": "plans-page-talk-to-an-expert-enterprise-form-modal",
+													"modalType": "single-form",
+													"marketoForm": {
+														"contentTypeId": "marketoEmbeddedForm",
+														"contentfulId": "5MjC5W1qncrQr8O9nIXgrX",
+														"bladeName": "Plans Enterprise Contact Us Form (4116)",
+														"backgroundColor": "blue",
+														"marketoFormId": 4116,
+														"marketoFormLeadSource": "Inbound - Web Form",
+														"marketoFormLeadSourceDetail": "Web Form - Enterprise General Sales Inquiry",
+														"marketoFormAssetName": null,
+														"marketoFormHeaderText": null,
+														"marketoFormDefaultComment": null,
+														"showCommentBox": true,
+														"marketoFormThankYouText": null,
+														"marketoFormCustomSuccessMessage": null,
+														"marketoFormPdfDownload": null,
+														"marketoFormPdfDownloadI18n": [],
+														"marketoFormAssetDownloadButtonText": null,
+														"marketoFormSuccessRedirectUrl": null,
+														"sendAdRoll": true,
+														"meta_adRollCustomSegment": null,
+														"enableSandbox": null,
+														"marketoFormSubmitButtonText": "Contact us today",
+														"marketoFormSubmitButtonColor": null,
+														"enableEmailVerification": null,
+														"disableEnterpriseEmailNotification": null,
+														"enableRingout": null
+													},
+													"title": "Talk to an expert about our Enterprise plan",
+													"regularCopy": null,
+													"splitFormDefaultTab": null,
+													"selfServeTabText": null,
+													"selfServeCopy": null,
+													"enterpriseTabText": null,
+													"enterpriseCopy": null
+												},
+												"openInNewTab": false,
+												"locale": "en-US"
+											}
+										}
+									}
+								]
+							},
+							{
+								"contentfulId": "7LtwxvDF5CR4HiiL68uFF",
+								"contentTypeId": "planElementFeatures",
+								"name": "Client-Side Security",
+								"description": "Keep your end users safe from compromised and malicious resources loaded on your websites, such as scripts and their connections, and cookies.",
+								"planValues": [
+									{
+										"contentTypeId": "planElementFeatureValueText",
+										"contentfulId": "782h7qrgAHeaP8l3SiAqh9",
+										"textValue": "Script monitoring",
+										"plan": {
+											"contentfulId": "4J2b292gM2Io6Xb2UjbsLo",
+											"contentTypeId": "planElementPlan",
+											"entryTitle": "Application Services - Free Plan",
+											"name": "Free",
+											"description": "For personal or hobby projects that aren't business-critical.",
+											"pricingDescription": "Add-ons billed monthly",
+											"price": 0,
+											"currency": "$",
+											"customPricingText": "$0/month",
+											"monthlyPricingText": "$0/month",
+											"annualPricingText": "$0/month",
+											"billingCycle": "monthly",
+											"customPricingCta": {
+												"buttonAssetFile": null,
+												"buttonTextLoggedIn": null,
+												"contentTypeId": "button",
+												"contentfulId": "3ILA97nY8NryApAuJ1Gk1Y",
+												"elementName": "Add a website (Free Plan CTA)",
+												"standardText": null,
+												"text": "Get started",
+												"url": "https://dash.cloudflare.com/sign-up?pt=f",
+												"loggedInUrl": null,
+												"buttonModal": null,
+												"openInNewTab": false,
+												"locale": "en-US"
+											},
+											"monthlyPricingCta": {
+												"buttonAssetFile": null,
+												"buttonTextLoggedIn": null,
+												"contentTypeId": "button",
+												"contentfulId": "3ILA97nY8NryApAuJ1Gk1Y",
+												"elementName": "Add a website (Free Plan CTA)",
+												"standardText": null,
+												"text": "Get started",
+												"url": "https://dash.cloudflare.com/sign-up?pt=f",
+												"loggedInUrl": null,
+												"buttonModal": null,
+												"openInNewTab": false,
+												"locale": "en-US"
+											},
+											"annualPricingCta": {
+												"buttonAssetFile": null,
+												"buttonTextLoggedIn": null,
+												"contentTypeId": "button",
+												"contentfulId": "3ILA97nY8NryApAuJ1Gk1Y",
+												"elementName": "Add a website (Free Plan CTA)",
+												"standardText": null,
+												"text": "Get started",
+												"url": "https://dash.cloudflare.com/sign-up?pt=f",
+												"loggedInUrl": null,
+												"buttonModal": null,
+												"openInNewTab": false,
+												"locale": "en-US"
+											}
+										}
+									},
+									{
+										"contentTypeId": "planElementFeatureValueText",
+										"contentfulId": "1nT74AUhyy4wgXFe3xa7Ga",
+										"textValue": "Script monitoring",
+										"plan": {
+											"contentfulId": "7JMDjiexzE2evvzrTjly8l",
+											"contentTypeId": "planElementPlan",
+											"entryTitle": "Application Services - Pro Plan",
+											"name": "Pro",
+											"description": "For professional websites that aren't business-critical.",
+											"pricingDescription": "When billed annually or $25/mo billed monthly",
+											"price": 20,
+											"currency": "$",
+											"customPricingText": "$20/month",
+											"monthlyPricingText": "$25/month",
+											"annualPricingText": null,
+											"billingCycle": "monthly",
+											"customPricingCta": {
+												"buttonAssetFile": null,
+												"buttonTextLoggedIn": "Get started",
+												"contentTypeId": "button",
+												"contentfulId": "BAPzPAKYDQYC0DtJHlpEK",
+												"elementName": "Pro Plan - (non multi-sku) -Monthly",
+												"standardText": null,
+												"text": "Get started",
+												"url": "https://dash.cloudflare.com/sign-up",
+												"loggedInUrl": "https://dash.cloudflare.com/sign-up",
+												"buttonModal": null,
+												"openInNewTab": false,
+												"locale": "en-US"
+											},
+											"monthlyPricingCta": {
+												"buttonAssetFile": null,
+												"buttonTextLoggedIn": "Get started",
+												"contentTypeId": "button",
+												"contentfulId": "14wftsMCrJRHSY3knnsrDw",
+												"elementName": "Pro Plan - (monthly pricing)",
+												"standardText": null,
+												"text": "Get Started",
+												"url": "https://dash.cloudflare.com/sign-up?utm_content=cpc",
+												"loggedInUrl": "https://dash.cloudflare.com/sign-up",
+												"buttonModal": null,
+												"openInNewTab": false,
+												"locale": "en-US"
+											},
+											"annualPricingCta": null
+										}
+									},
+									{
+										"contentTypeId": "planElementFeatureValueText",
+										"contentfulId": "534dbXzcPhaEq8msIquH3W",
+										"textValue": "Additional resource monitoring and alerts",
+										"plan": {
+											"contentfulId": "X0mi2lABGJXFQqE4wieTW",
+											"contentTypeId": "planElementPlan",
+											"entryTitle": "Application Services - Business Plan",
+											"name": "Business",
+											"description": "For small businesses operating online.",
+											"pricingDescription": "When billed annually or $250/mo billed monthly",
+											"price": 200,
+											"currency": "$",
+											"customPricingText": "$200/month",
+											"monthlyPricingText": "$250/month",
+											"annualPricingText": null,
+											"billingCycle": "monthly",
+											"customPricingCta": {
+												"buttonAssetFile": null,
+												"buttonTextLoggedIn": "Get started",
+												"contentTypeId": "button",
+												"contentfulId": "DBuPCkGVDmRYzExWarliS",
+												"elementName": "Business Plan - (non multi-sku) Monthly",
+												"standardText": null,
+												"text": "Get started",
+												"url": "https://dash.cloudflare.com/sign-up",
+												"loggedInUrl": "https://dash.cloudflare.com/sign-up",
+												"buttonModal": null,
+												"openInNewTab": false,
+												"locale": "en-US"
+											},
+											"monthlyPricingCta": {
+												"buttonAssetFile": null,
+												"buttonTextLoggedIn": "Get started",
+												"contentTypeId": "button",
+												"contentfulId": "3a1VaYwvKwhNEDebV5ItDQ",
+												"elementName": "Business Plan - (monthly)",
+												"standardText": null,
+												"text": "Get Started",
+												"url": "https://dash.cloudflare.com/?to=/:account/:zone/billing/checkout&add=cf_biz",
+												"loggedInUrl": "https://dash.cloudflare.com/?to=/:account/:zone/billing/checkout&add=cf_biz",
+												"buttonModal": null,
+												"openInNewTab": false,
+												"locale": "en-US"
+											},
+											"annualPricingCta": null
+										}
+									},
+									{
+										"contentTypeId": "planElementFeatureValueText",
+										"contentfulId": "6AqlFXsaTxFYLbbO9NjOBe",
+										"textValue": "Malicious resource detection, code change alerts, and positive blocking",
 										"plan": {
 											"contentfulId": "9KE9tgEmXrKuduOkp2NKd",
 											"contentTypeId": "planElementPlan",
@@ -21718,13 +22024,13 @@
 									{
 										"contentfulId": "6z3dZzcpywepIG932g9QMD",
 										"contentTypeId": "planElementFeatures",
-										"name": "Page Shield",
-										"description": "Page Shield protects your website visitors from client-side attacks that target vulnerable JavaScript dependencies.",
+										"name": "Client-Side Security",
+										"description": "Keep your end users safe from compromised and malicious resources loaded on your websites, such as scripts and their connections, and cookies.",
 										"planValues": [
 											{
-												"contentTypeId": "planElementFeatureValueBoolean",
-												"contentfulId": "72puANNJeUw6THZfa1E2o9",
-												"value": false,
+												"contentTypeId": "planElementFeatureValueText",
+												"contentfulId": "782h7qrgAHeaP8l3SiAqh9",
+												"textValue": "Script monitoring",
 												"plan": {
 													"contentfulId": "4J2b292gM2Io6Xb2UjbsLo",
 													"contentTypeId": "planElementPlan",
@@ -21783,9 +22089,9 @@
 												}
 											},
 											{
-												"contentTypeId": "planElementFeatureValueBoolean",
-												"contentfulId": "3ZvviPzyryyca1iWcQAKpI",
-												"value": true,
+												"contentTypeId": "planElementFeatureValueText",
+												"contentfulId": "1nT74AUhyy4wgXFe3xa7Ga",
+												"textValue": "Script monitoring",
 												"plan": {
 													"contentfulId": "7JMDjiexzE2evvzrTjly8l",
 													"contentTypeId": "planElementPlan",
@@ -21831,9 +22137,9 @@
 												}
 											},
 											{
-												"contentTypeId": "planElementFeatureValueBoolean",
-												"contentfulId": "1ApylgMIyRQT4r580Qxyr4",
-												"value": true,
+												"contentTypeId": "planElementFeatureValueText",
+												"contentfulId": "534dbXzcPhaEq8msIquH3W",
+												"textValue": "Additional resource monitoring and alerts",
 												"plan": {
 													"contentfulId": "X0mi2lABGJXFQqE4wieTW",
 													"contentTypeId": "planElementPlan",
@@ -21879,9 +22185,9 @@
 												}
 											},
 											{
-												"contentTypeId": "planElementFeatureValueBoolean",
-												"contentfulId": "5C1wwqoBUoRvNoC6e3EPAt",
-												"value": true,
+												"contentTypeId": "planElementFeatureValueText",
+												"contentfulId": "6AqlFXsaTxFYLbbO9NjOBe",
+												"textValue": "Malicious resource detection, code change alerts, and positive blocking",
 												"plan": {
 													"contentfulId": "9KE9tgEmXrKuduOkp2NKd",
 													"contentTypeId": "planElementPlan",
@@ -42017,7 +42323,21 @@
 								"entryTitle": "AddOn-Argo Smart Routing",
 								"contentfulId": "2Sxpb9pyUy8kXVotbxMilY",
 								"contentTypeId": "elementAddOn",
-								"iconAssetFile": null,
+								"iconAssetFile": {
+									"id": "d0d91ab6-8531-56fe-89d3-5fe996d9f7bf",
+									"altText": "Performance intelligent routing blue",
+									"title": "Performance intelligent routing blue",
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/3yNR9Xrke2khvXTu9Rpdc3/e659935f9bc695024b5be6fb99900dd3/performance-intelligent-routing.svg"
+										},
+										"description": ""
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								},
 								"title": "Smart Shield + Argo Smart Routing",
 								"description": {
 									"nodeType": "document",
@@ -42255,25 +42575,25 @@
 							},
 							{
 								"locale": "en-US",
-								"entryTitle": "AddOns - Access",
+								"entryTitle": "AddOns - Client-Side Security",
 								"contentfulId": "4pR30DnoyAOu6CWepQULSG",
 								"contentTypeId": "elementAddOn",
 								"iconAssetFile": {
-									"id": "87f9101d-857c-5202-9a77-f2f35ff7e4a9",
-									"altText": "Cloudflare One  SASE Solution",
-									"title": "Cloudflare Access Orange",
+									"id": "774fed19-c3c8-5b1a-996e-e5217c014f4e",
+									"altText": "Pages shield blue",
+									"title": "Pages shield blue",
 									"activeAsset": "Contentful Asset",
 									"locale": "en-US",
 									"contentfulAsset": {
 										"file": {
-											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/64ekoyPlI1bPZ9MvWEuxqu/9de135bc78a1e1559505fcb8b59788c0/cloudflare-access.svg"
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/6ygGtWlEN0N5inPgmxPucE/ac30e4bd2a63904fa66bb28ddc24ac3b/page-shield.png"
 										},
-										"description": null
+										"description": ""
 									},
 									"brandfolderAsset": null,
 									"brandfolderAssetMobile": null
 								},
-								"title": "Access",
+								"title": "Client-Side Security",
 								"description": {
 									"nodeType": "document",
 									"content": [
@@ -42292,7 +42612,7 @@
 														"target": null,
 														"uri": null
 													},
-													"value": "Cloudflare Access protects internal resources by securing, authenticating and monitoring access per-user and by application.",
+													"value": "Defend against client-side attacks that target vulnerable JavaScript dependencies.",
 													"marks": [],
 													"content": null
 												}
@@ -42301,14 +42621,14 @@
 									]
 								},
 								"category": "Security",
-								"pricingText": "Starting at $3 per month",
+								"pricingText": "$0.099 per 1k requests",
 								"learnMoreLink": {
 									"contentTypeId": "elementLink",
 									"contentfulId": "3Lq9pF6rA4CzKFD59HRi97",
 									"elementName": "AddOns - Access-Learn more",
 									"standardText": null,
 									"text": "Learn more",
-									"url": "https://www.cloudflare.com/sase/products/access/",
+									"url": "/application-services/products/client-side-security/",
 									"elementModal": null,
 									"openInNewTab": false,
 									"locale": "en-US"
@@ -42321,8 +42641,8 @@
 									"elementName": "AddOns - Access - Button",
 									"standardText": null,
 									"text": "Activate",
-									"url": "https://dash.cloudflare.com/access",
-									"loggedInUrl": "https://dash.cloudflare.com/access",
+									"url": "/application-services/products/client-side-security/",
+									"loggedInUrl": "https://dash.cloudflare.com/",
 									"buttonModal": null,
 									"openInNewTab": false,
 									"locale": "en-US"
@@ -42408,7 +42728,21 @@
 								"entryTitle": "AddOns-Cloudflare Registrar",
 								"contentfulId": "WKbwZS0sxDQOhF555LVFN",
 								"contentTypeId": "elementAddOn",
-								"iconAssetFile": null,
+								"iconAssetFile": {
+									"id": "cde61019-3234-56a4-8b39-49ff01e3a806",
+									"altText": "Cloudflare registrar blue",
+									"title": "Cloudflare registrar blue",
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/rg2oKaLEh6klxdGgN2OyN/b0fb57e51670a4176d85bcdcb7ef2f78/cloudflare-registrar.svg"
+										},
+										"description": "www icon"
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								},
 								"title": "Cloudflare Registrar",
 								"description": {
 									"nodeType": "document",
