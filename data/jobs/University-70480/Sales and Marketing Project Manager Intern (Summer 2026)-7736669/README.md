@@ -18,7 +18,7 @@
 </ul>
 <p><strong>Skills &amp; Qualifications</strong></p>
 <ul>
-	<li>Currently pursuing a Master’s degree in Business, Project Management, computer science, Data Science, or a related field.</li>
+	<li>Currently pursuing a Bachelor or Master’s degree in Business, Project Management, computer science, Data Science, or a related field.</li>
 	<li>Business Strategy or Tech-focused student with a strong interest in AI/Automation, process improvement, program management, and technology exploration.</li>
 	<li>Strong organizational, communication, and analytical skills with the ability to manage multiple tasks and translate ideas into structured documentation.</li>
 	<li>A natural problem-solver who enjoys mapping out a process and thinking about how to make it simpler and faster.</li>
