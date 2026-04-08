@@ -375,7 +375,7 @@
 		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
 	},
 	"gir1.2-gdkpixbuf-2.0:amd64": {
-		"version": "2.42.10+dfsg-3ubuntu3.2",
+		"version": "2.42.10+dfsg-3ubuntu3.3",
 		"short_description": "GDK Pixbuf library - GObject-Introspection",
 		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
 	},
@@ -1175,17 +1175,17 @@
 		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
 	},
 	"libgdk-pixbuf-2.0-0:amd64": {
-		"version": "2.42.10+dfsg-3ubuntu3.2",
+		"version": "2.42.10+dfsg-3ubuntu3.3",
 		"short_description": "GDK Pixbuf library",
 		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
 	},
 	"libgdk-pixbuf2.0-bin": {
-		"version": "2.42.10+dfsg-3ubuntu3.2",
+		"version": "2.42.10+dfsg-3ubuntu3.3",
 		"short_description": "GDK Pixbuf library (thumbnailer)",
 		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
 	},
 	"libgdk-pixbuf2.0-common": {
-		"version": "2.42.10+dfsg-3ubuntu3.2",
+		"version": "2.42.10+dfsg-3ubuntu3.3",
 		"short_description": "GDK Pixbuf library - data files",
 		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
 	},
@@ -1815,7 +1815,7 @@
 		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
 	},
 	"libnss-systemd:amd64": {
-		"version": "255.4-1ubuntu8.14",
+		"version": "255.4-1ubuntu8.15",
 		"short_description": "nss module providing dynamic user and group name resolution",
 		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
 	},
@@ -1890,7 +1890,7 @@
 		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
 	},
 	"libpam-systemd:amd64": {
-		"version": "255.4-1ubuntu8.14",
+		"version": "255.4-1ubuntu8.15",
 		"short_description": "system and service manager - PAM module",
 		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
 	},
@@ -2205,12 +2205,12 @@
 		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
 	},
 	"libssl-dev:amd64": {
-		"version": "3.0.13-0ubuntu3.7",
+		"version": "3.0.13-0ubuntu3.9",
 		"short_description": "Secure Sockets Layer toolkit - development files",
 		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
 	},
 	"libssl3t64:amd64": {
-		"version": "3.0.13-0ubuntu3.7",
+		"version": "3.0.13-0ubuntu3.9",
 		"short_description": "Secure Sockets Layer toolkit - shared libraries",
 		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
 	},
@@ -2230,12 +2230,12 @@
 		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
 	},
 	"libsystemd-shared:amd64": {
-		"version": "255.4-1ubuntu8.14",
+		"version": "255.4-1ubuntu8.15",
 		"short_description": "systemd shared private library",
 		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
 	},
 	"libsystemd0:amd64": {
-		"version": "255.4-1ubuntu8.14",
+		"version": "255.4-1ubuntu8.15",
 		"short_description": "systemd utility library",
 		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
 	},
@@ -2300,7 +2300,7 @@
 		"author": "Ubuntu Core developers <ubuntu-devel-discuss@lists.ubuntu.com>"
 	},
 	"libudev1:amd64": {
-		"version": "255.4-1ubuntu8.14",
+		"version": "255.4-1ubuntu8.15",
 		"short_description": "libudev shared library",
 		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
 	},
@@ -2665,7 +2665,7 @@
 		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
 	},
 	"openssl": {
-		"version": "3.0.13-0ubuntu3.7",
+		"version": "3.0.13-0ubuntu3.9",
 		"short_description": "Secure Sockets Layer toolkit - cryptographic utility",
 		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
 	},
@@ -2785,27 +2785,27 @@
 		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
 	},
 	"systemd": {
-		"version": "255.4-1ubuntu8.14",
+		"version": "255.4-1ubuntu8.15",
 		"short_description": "system and service manager",
 		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
 	},
 	"systemd-dev": {
-		"version": "255.4-1ubuntu8.14",
+		"version": "255.4-1ubuntu8.15",
 		"short_description": "systemd development files",
 		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
 	},
 	"systemd-resolved": {
-		"version": "255.4-1ubuntu8.14",
+		"version": "255.4-1ubuntu8.15",
 		"short_description": "systemd DNS resolver",
 		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
 	},
 	"systemd-sysv": {
-		"version": "255.4-1ubuntu8.14",
+		"version": "255.4-1ubuntu8.15",
 		"short_description": "system and service manager - SysV compatibility symlinks",
 		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
 	},
 	"systemd-timesyncd": {
-		"version": "255.4-1ubuntu8.14",
+		"version": "255.4-1ubuntu8.15",
 		"short_description": "minimalistic service to synchronize local time with NTP servers",
 		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
 	},
