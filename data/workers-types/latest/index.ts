@@ -564,6 +564,9 @@ export interface AlarmInvocationInfo {
 export interface Cloudflare {
   readonly compatibilityFlags: Record<string, boolean>;
 }
+export declare abstract class ColoLocalActorNamespace {
+  get(actorId: string): Fetcher;
+}
 export interface DurableObject {
   fetch(request: Request): Response | Promise<Response>;
   connect?(socket: Socket): void | Promise<void>;
@@ -644,6 +647,7 @@ export interface DurableObjectState<Props = unknown> {
   readonly id: DurableObjectId;
   readonly storage: DurableObjectStorage;
   container?: Container;
+  facets: DurableObjectFacets;
   blockConcurrencyWhile<T>(callback: () => Promise<T>): Promise<T>;
   acceptWebSocket(ws: WebSocket, tags?: string[]): void;
   getWebSockets(tag?: string): WebSocket[];
@@ -757,6 +761,22 @@ export declare class WebSocketRequestResponsePair {
   constructor(request: string, response: string);
   get request(): string;
   get response(): string;
+}
+export interface DurableObjectFacets {
+  get<T extends Rpc.DurableObjectBranded | undefined = undefined>(
+    name: string,
+    getStartupOptions: () =>
+      | FacetStartupOptions<T>
+      | Promise<FacetStartupOptions<T>>,
+  ): Fetcher<T>;
+  abort(name: string, reason: any): void;
+  delete(name: string): void;
+}
+export interface FacetStartupOptions<
+  T extends Rpc.DurableObjectBranded | undefined = undefined,
+> {
+  id?: DurableObjectId | string;
+  class: DurableObjectClass<T>;
 }
 export interface AnalyticsEngineDataset {
   writeDataPoint(event?: AnalyticsEngineDataPoint): void;
@@ -3903,6 +3923,8 @@ export type LoopbackDurableObjectClass<
   (T extends CloudflareWorkersModule.DurableObject<any, infer Props>
     ? (opts: { props?: Props }) => DurableObjectClass<T>
     : (opts: { props?: any }) => DurableObjectClass<T>);
+export interface LoopbackDurableObjectNamespace extends DurableObjectNamespace {}
+export interface LoopbackColoLocalActorNamespace extends ColoLocalActorNamespace {}
 export interface SyncKvStorage {
   get<T = unknown>(key: string): T | undefined;
   list<T = unknown>(options?: SyncKvListOptions): Iterable<[string, T]>;
@@ -3922,6 +3944,10 @@ export interface WorkerStub {
     name?: string,
     options?: WorkerStubEntrypointOptions,
   ): Fetcher<T>;
+  getDurableObjectClass<T extends Rpc.DurableObjectBranded | undefined>(
+    name?: string,
+    options?: WorkerStubEntrypointOptions,
+  ): DurableObjectClass<T>;
 }
 export interface WorkerStubEntrypointOptions {
   props?: any;
