@@ -5,32 +5,78 @@
 		<p>At Cloudflare, we’re not looking for people who wait for a polished roadmap; we’re looking for the builders who see the cracks in the Internet that everyone else has simply learned to live with. We value candidates who have the instinct to spot a "normalized" problem and the AI-native curiosity to create a solution using the latest tools. Our culture is built on iteration, leveraging AI to ship faster today to make it better tomorrow, while ensuring that every improvement, no matter how small, is shared across the team to lift everyone up. If you’re the type of person who values curiosity over bureaucracy, and that AI is a partner in solving tough problems to keep the Internet moving forward, you’ll fit right in.</p>
 	</div>
 </div>
-<p><strong>Available Locations: Lisbon, Portugal&nbsp;</strong></p>
-<p><strong>About Cloudflare's Data &amp; Technology Team</strong></p>
-<p>At Cloudflare, we are helping build a better Internet, and our Data &amp; Technology Team is at the heart of that mission. We are looking for a highly organized, tech-savvy <strong>Operations and AI Innovation</strong> intern who will help modernize our workflows by integrating AI-driven automation into our everyday processes. In this role, you will be a key contributor to our strategic goals by identifying manual bottlenecks and building the technical bridges needed to automate them.</p>
-<p><strong>About the Internship Program</strong></p>
-<p>As an Operations and AI Innovation Intern on the Data &amp; Technology Team, you will:</p>
+<p><strong>Available Locations: Austin, TX</strong></p>
+<p><strong>Role Summary</strong></p>
+<p>The Senior Revenue Accountant’s primary responsibility is helping to ensure the Company’s revenue recognition to be in compliance with US GAAP and Company policies.&nbsp; It is both advisory and operational in nature. The advisory role helps business partners make informed business decisions while maintaining accounting compliance.&nbsp; The operational role ensures accounting processes comply with policies and function in an effective and efficient manner while working with local partners to complete business transactions with customers.</p>
+<p><strong>Role Responsibilities</strong></p>
 <ul>
-	<li>Process Analysis &amp; Innovation: Audit current manual workflows to identify opportunities for automation. You will map out complex business processes (such as internal privacy and vendor assessments, data subject requests, etc.) and provide recommendations on where AI can drive maximum efficiency.&nbsp;</li>
-	<li>AI Agent Development: Develop and refine AI agents and “Gems” to automate manual tasks. This includes prompt engineering, defining agent personas, and iteratively testing outputs to ensure they meet quality standards.</li>
-	<li>Operational Monitoring &amp; Insights: Define and develop data queries and dashboards to track key performance indicators and analyze operational metrics using tools such as Google Looker Studio or Tableau.&nbsp;</li>
-	<li>Communication Automation: Design and deploy automated triage and response systems for high-volume inbound requests received through emails, ticketing systems, and other shared departmental channels.&nbsp;</li>
-	<li>Knowledge Integration: Help map internal data sources, such as internal Wikis, Sales answer banks, and technical documentation into the automation knowledge base to improve response accuracy.</li>
+	<li>Participates in accounting close activities, including:</li>
+	<ul>
+		<li>partnering with other teams (legal, sales, etc.) to interpret, research, discuss, and / or process deal reviews</li>
+		<li>complete contract accounting of executed customer contracts</li>
+		<li>preparation / review of journal entries</li>
+		<li>preparation / review of reconciliations and related financial analysis for management and external reporting</li>
+	</ul>
+	<li>Participates in Company-wide initiatives and cross-functional projects that directly impact or relate to the revenue accounting area, particularly increasing the revenue analytical capabilities within Cloudflare</li>
+	<li>Develop and streamline processes using system automation and tools to maximize efficiency and accuracy of revenue accounting systems and processes</li>
+	<li>Takes a clean sheet of paper approach when revisiting operational processes and continually works to consolidate and streamline using automation and tools to maximize efficiency and accuracy</li>
+	<li>Stay current on the latest financial accounting and reporting developments and U.S GAAP reporting requirements, as applicable.</li>
+	<li>Effectively interacts with peers and shares knowledge</li>
+	<li>Mentors and supports junior members of the team and provides feedback</li>
+	<li>Communicates any problems to senior management timely</li>
+	<li>Present findings and solutions to the management team, while considering global impacts and subsequent guidance to influence other regions where appropriate to adopt a consistent process and policy</li>
+	<li>Establish and track Key Performance Indicators (KPI’s)</li>
+	<li>Prepares schedules in support of the external audit process</li>
+	<li>Coordinates with the auditors on accounting issues and audit related queries</li>
+	<li>Reviews and maintains controls as the business environment changes as a result of process, system and policy enhancements. Includes risk assessment and review of risk areas</li>
 </ul>
-<p>You can check out our <a href="https://blog.cloudflare.com/tag/internship-experience/">internship blogs</a> to learn more about our program and hear directly from our past interns.</p>
-<p><strong>Examples of desirable skills, knowledge and experience</strong></p>
+<p><strong>Role Requirements&nbsp;</strong></p>
+<p><strong>Must-Have Skills</strong></p>
 <ul>
-	<li>Currently pursuing a Bachelor's degree in a technical field.</li>
-	<li>Technical Curiosity: Experience using LLM interfaces (such as Gemini) and prompt engineering, paired with a strong interest in the emerging field of AI agents.</li>
-	<li>Problem-Solving Mindset: Ability to analyze manual processes and envision an automated solution.</li>
-	<li>Communication: Ability to distill complex legal or technical requirements into clear actionable insights.</li>
-	<li>Intellectual Curiosity: A natural drive to explore new technologies and a "figure it out" mindset.&nbsp;</li>
-	<li>Process Documentation: Ability to draft clear technical specifications and Standard Operating Procedures (SOPs) to ensure automated workflows and reporting systems are sustainable and easy for others to maintain.</li>
-	<li>Familiarity with API integrations, Opencode or Windsurf.&nbsp;</li>
-	<li>Ability to commit to a minimum 12 week summer internship.</li>
-	<li>In office 3-5 days a week in the Lisbon office.</li>
+	<li>Bachelor’s degree in Accounting, or a related field, or advanced experience</li>
+	<li>Active CPA</li>
+	<li>Accounting/Audit firm experience preferred&nbsp;</li>
+	<li>4 years of experience in accounting roles</li>
+	<li>Strong understanding of revenue accounting rules under ASC 606</li>
+	<li>Experience working with revenue related systems such as billing systems, ERP, and revenue recognition tool / subledger</li>
+	<li>Revenue accounting for SaaS revenue recognition and understanding of multi-element arrangements</li>
+	<li>Ability to work effectively with various departments, particularly Sales</li>
+	<li>Ability to manage multiple priorities</li>
+	<li>Flexibility to work under time constraints and deadlines</li>
+	<li>Must be meticulous, detail oriented, and organized</li>
+	<li>Strong interpersonal and communication skills</li>
+	<li>Ability to work independently, yet cooperatively and constructively in a team environment</li>
+	<li>Highly proficient in advanced MS Excel</li>
 </ul>
-<p>&nbsp;</p>
+<p><strong>Compensation</strong></p>
+<p>Compensation may be adjusted depending on work location.</p>
+<p><strong>Equity</strong></p>
+<p>This role is eligible to participate in Cloudflare’s equity plan.</p>
+<p><strong>Benefits</strong></p>
+<p>Cloudflare offers a complete package of benefits and programs to support you and your family.&nbsp; Our benefits programs can help you pay health care expenses, support caregiving, build capital for the future and make life a little easier and fun!&nbsp; The below is a description of our benefits for employees in the United States, and benefits may vary for employees based outside the U.S.</p>
+<p><strong>Health &amp; Welfare Benefits</strong></p>
+<ul>
+	<li>Medical/Rx Insurance</li>
+	<li>Dental Insurance</li>
+	<li>Vision Insurance</li>
+	<li>Flexible Spending Accounts</li>
+	<li>Commuter Spending Accounts</li>
+	<li>Fertility &amp; Family Forming Benefits</li>
+	<li>On-demand mental health support and Employee Assistance Program</li>
+	<li>Global Travel Medical Insurance</li>
+</ul>
+<p><strong>Financial Benefits</strong></p>
+<ul>
+	<li>Short and Long Term Disability Insurance</li>
+	<li>Life &amp; Accident Insurance</li>
+	<li>401(k) Retirement Savings Plan</li>
+	<li>Employee Stock Participation Plan</li>
+</ul>
+<p><strong>Time Off</strong></p>
+<ul>
+	<li>Flexible paid time off covering vacation and sick leave</li>
+	<li>Leave programs, including parental, pregnancy health, medical, and bereavement leave</li>
+</ul>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
 	<p><span style="font-weight: 400;">We’re not just a highly ambitious, large-scale technology company. We’re a highly ambitious, large-scale technology company with a soul. Fundamental to our mission to help build a better Internet is protecting the free and open Internet.</span></p>
