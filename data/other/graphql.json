@@ -771,6 +771,65 @@
 		"totalTokens": "Confidence interval for the corresponding point estimate",
 		"vectorizeDurationMs": "Confidence interval for the corresponding point estimate"
 	},
+	"AccountArtifactsEventsAdaptiveGroups": {
+		"__description": "Artifacts events with adaptive sampling",
+		"avg": "The average value for a metric per dimension",
+		"confidence": "ALPHA - DO NOT USE",
+		"count": "The number of artifact events",
+		"dimensions": "List of dimensions to group by",
+		"quantiles": "Quantiles of a metric per dimension",
+		"sum": "The sum of values for a metric per dimension"
+	},
+	"AccountArtifactsEventsAdaptiveGroupsAvg": {
+		"__description": "",
+		"durationMs": "Average duration of artifact operations in milliseconds"
+	},
+	"AccountArtifactsEventsAdaptiveGroupsConfidence": {
+		"__description": "",
+		"count": "The number of artifact events, with confidence intervals",
+		"level": "Confidence level that was requested",
+		"sum": "The sum of values for a metric per dimension, with confidence intervals"
+	},
+	"AccountArtifactsEventsAdaptiveGroupsDimensions": {
+		"__description": "",
+		"date": "The date the artifact event occurred",
+		"datetime": "The date and time the artifact event occurred",
+		"datetimeFifteenMinutes": "The date and time the artifact event occurred truncated to fifteen minutes",
+		"datetimeFiveMinutes": "The date and time the artifact event occurred truncated to five minutes",
+		"datetimeHour": "The date and time the artifact event occurred truncated to the hour",
+		"datetimeMinute": "The date and time the artifact event occurred truncated to the minute",
+		"datetimeSixHours": "The date and time the artifact event occurred truncated to start of six hour window",
+		"errorMessage": "The error message if the operation failed",
+		"eventKind": "Top-level event category: 'action' for successful operations, 'error' for failures",
+		"eventType": "Specific event type within the eventKind. For actions: create, fork, push, pull, delete. For errors: storageLimitReached, serverError, clientError, rateLimited",
+		"repository": "The fully-qualified repository path in the form '{namespace}/{name}' (max 96 chars). Filter with exact match (e.g. 'my-ns/my-repo') or use repository_like for prefix queries (e.g. 'my-ns/%').",
+		"repositoryName": "The name of the repository within its namespace",
+		"repositoryNamespace": "The namespace of the repository"
+	},
+	"AccountArtifactsEventsAdaptiveGroupsFilter_InputObject": {
+		"__description": ""
+	},
+	"AccountArtifactsEventsAdaptiveGroupsOrderBy": {
+		"__description": ""
+	},
+	"AccountArtifactsEventsAdaptiveGroupsQuantiles": {
+		"__description": "",
+		"durationMsP25": "Duration in milliseconds (25th percentile)",
+		"durationMsP50": "Duration in milliseconds (50th percentile)",
+		"durationMsP75": "Duration in milliseconds (75th percentile)",
+		"durationMsP90": "Duration in milliseconds (90th percentile)",
+		"durationMsP95": "Duration in milliseconds (95th percentile)",
+		"durationMsP99": "Duration in milliseconds (99th percentile)",
+		"durationMsP999": "Duration in milliseconds (99.9th percentile)"
+	},
+	"AccountArtifactsEventsAdaptiveGroupsSum": {
+		"__description": "",
+		"durationMs": "Total duration of artifact operations in milliseconds"
+	},
+	"AccountArtifactsEventsAdaptiveGroupsSumConfidence": {
+		"__description": "",
+		"durationMs": "Confidence interval for the corresponding point estimate"
+	},
 	"AccountAutoRAGConfigAPIAdaptiveGroups": {
 		"__description": "AutoRAG Config API Search Analytics",
 		"confidence": "ALPHA - DO NOT USE",
@@ -1433,6 +1492,7 @@
 	},
 	"AccountCloudchamberMetricsAdaptiveGroupsAvg": {
 		"__description": "",
+		"containerUptime": "Average container uptime, in milliseconds",
 		"cpuLoad": "<small>DEPRECATED (Replaced by cpuUtilization or sum { cpuTimeSec }):</small> Average CPU load",
 		"cpuUtilization": "Average CPU utilization",
 		"gpuMemory": "Average GPU memory usage",
@@ -1472,6 +1532,7 @@
 	},
 	"AccountCloudchamberMetricsAdaptiveGroupsMax": {
 		"__description": "",
+		"containerUptime": "Maximum container uptime, in milliseconds",
 		"cpuLoad": "<small>DEPRECATED (Replaced by max { cpuUtilization } or sum { cpuTimeSec }):</small> Maximum CPU load",
 		"cpuUtilization": "Maximum CPU utilization",
 		"diskAvailable": "Total disk space available, in bytes",
@@ -1491,6 +1552,13 @@
 	},
 	"AccountCloudchamberMetricsAdaptiveGroupsQuantiles": {
 		"__description": "",
+		"containerUptimeP25": "Container uptime (25th percentile), in milliseconds",
+		"containerUptimeP50": "Container uptime (50th percentile), in milliseconds",
+		"containerUptimeP75": "Container uptime (75th percentile), in milliseconds",
+		"containerUptimeP90": "Container uptime (90th percentile), in milliseconds",
+		"containerUptimeP95": "Container uptime (95th percentile), in milliseconds",
+		"containerUptimeP99": "Container uptime (99th percentile), in milliseconds",
+		"containerUptimeP999": "Container uptime (99.9th percentile), in milliseconds",
 		"cpuLoadP25": "<small>DEPRECATED (Replaced by cpuUtilizationP25):</small> CPU load (25th percentile)",
 		"cpuLoadP50": "<small>DEPRECATED (Replaced by cpuUtilizationP50):</small> CPU load (50th percentile)",
 		"cpuLoadP75": "<small>DEPRECATED (Replaced by cpuUtilizationP75):</small> CPU load (75th percentile)",
@@ -1567,6 +1635,7 @@
 		"allocatedCpu": "Sum of allocated vCPU in vCPU-seconds",
 		"allocatedDisk": "Sum of allocated disk in byte-seconds",
 		"allocatedMemory": "Sum of allocated memory in byte-seconds",
+		"containerUptime": "Total container uptime, in milliseconds",
 		"cpuTimeSec": "Sum of CPU time in seconds",
 		"rxBytes": "Sum of bytes received",
 		"txBytes": "Sum of bytes transmitted"
@@ -1576,6 +1645,7 @@
 		"allocatedCpu": "Confidence interval for the corresponding point estimate",
 		"allocatedDisk": "Confidence interval for the corresponding point estimate",
 		"allocatedMemory": "Confidence interval for the corresponding point estimate",
+		"containerUptime": "Confidence interval for the corresponding point estimate",
 		"cpuTimeSec": "Confidence interval for the corresponding point estimate",
 		"rxBytes": "Confidence interval for the corresponding point estimate",
 		"txBytes": "Confidence interval for the corresponding point estimate"
@@ -1678,6 +1748,7 @@
 	},
 	"AccountContainersMetricsAdaptiveGroupsAvg": {
 		"__description": "",
+		"containerUptime": "Average container uptime, in milliseconds",
 		"cpuLoad": "<small>DEPRECATED (Replaced by cpuUtilization or sum { cpuTimeSec }):</small> Average CPU load",
 		"cpuUtilization": "Average CPU utilization",
 		"gpuMemory": "Average GPU memory usage",
@@ -1717,6 +1788,7 @@
 	},
 	"AccountContainersMetricsAdaptiveGroupsMax": {
 		"__description": "",
+		"containerUptime": "Maximum container uptime, in milliseconds",
 		"cpuLoad": "<small>DEPRECATED (Replaced by max { cpuUtilization } or sum { cpuTimeSec }):</small> Maximum CPU load",
 		"cpuUtilization": "Maximum CPU utilization",
 		"diskAvailable": "Total disk space available, in bytes",
@@ -1736,6 +1808,13 @@
 	},
 	"AccountContainersMetricsAdaptiveGroupsQuantiles": {
 		"__description": "",
+		"containerUptimeP25": "Container uptime (25th percentile), in milliseconds",
+		"containerUptimeP50": "Container uptime (50th percentile), in milliseconds",
+		"containerUptimeP75": "Container uptime (75th percentile), in milliseconds",
+		"containerUptimeP90": "Container uptime (90th percentile), in milliseconds",
+		"containerUptimeP95": "Container uptime (95th percentile), in milliseconds",
+		"containerUptimeP99": "Container uptime (99th percentile), in milliseconds",
+		"containerUptimeP999": "Container uptime (99.9th percentile), in milliseconds",
 		"cpuLoadP25": "<small>DEPRECATED (Replaced by cpuUtilizationP25):</small> CPU load (25th percentile)",
 		"cpuLoadP50": "<small>DEPRECATED (Replaced by cpuUtilizationP50):</small> CPU load (50th percentile)",
 		"cpuLoadP75": "<small>DEPRECATED (Replaced by cpuUtilizationP75):</small> CPU load (75th percentile)",
@@ -1812,6 +1891,7 @@
 		"allocatedCpu": "Sum of allocated vCPU in vCPU-seconds",
 		"allocatedDisk": "Sum of allocated disk in byte-seconds",
 		"allocatedMemory": "Sum of allocated memory in byte-seconds",
+		"containerUptime": "Total container uptime, in milliseconds",
 		"cpuTimeSec": "Sum of CPU time in seconds",
 		"rxBytes": "Sum of bytes received",
 		"txBytes": "Sum of bytes transmitted"
@@ -1821,6 +1901,7 @@
 		"allocatedCpu": "Confidence interval for the corresponding point estimate",
 		"allocatedDisk": "Confidence interval for the corresponding point estimate",
 		"allocatedMemory": "Confidence interval for the corresponding point estimate",
+		"containerUptime": "Confidence interval for the corresponding point estimate",
 		"cpuTimeSec": "Confidence interval for the corresponding point estimate",
 		"rxBytes": "Confidence interval for the corresponding point estimate",
 		"txBytes": "Confidence interval for the corresponding point estimate"
@@ -2385,8 +2466,10 @@
 		"datetimeMinute": "Request datetime, truncated to start of a minute",
 		"datetimeSixHours": "Request datetime, truncated to start of six hour window",
 		"environmentName": "The name of the script environment",
+		"isPreview": "Whether this invocation is for a preview. 1 if preview, 0 if not.",
 		"namespaceId": "Durable Object namespace ID",
 		"objectId": "Durable Object ID as a hex string",
+		"previewSlug": "The name (slug) of the preview script",
 		"scriptName": "The name of the script",
 		"status": "Status of the worker invocation",
 		"type": "Type of invocation"
@@ -8027,6 +8110,7 @@
 		"aiInferenceAdaptiveGroups": "",
 		"aiSearchAPIAdaptiveGroups": "",
 		"aiSearchIngestedItemsAdaptiveGroups": "",
+		"artifactsEventsAdaptiveGroups": "",
 		"autoRAGConfigAPIAdaptiveGroups": "",
 		"autoRAGEngineAdaptiveGroups": "",
 		"browserIsolationSessionsAdaptiveGroups": "",
@@ -9237,6 +9321,8 @@
 		"dispatchNamespaceName": "The name of the script's dispatch namespace",
 		"environmentName": "The name of the script environment",
 		"isDispatcher": "Whether the request is from a Dispatch Worker. Non-zero if true",
+		"isPreview": "Whether this invocation is for a preview. 1 if preview, 0 if not.",
+		"previewSlug": "The name (slug) of the preview script",
 		"scriptName": "The name of the script",
 		"scriptTag": "The unique tag of the script",
 		"scriptVersion": "The version of the Worker",
@@ -9441,6 +9527,8 @@
 		"environmentName": "The name of the script environment",
 		"hostname": "The hostname of the subrequest",
 		"httpResponseStatus": "Origin HTTP response code",
+		"isPreview": "Whether this invocation is for a preview. 1 if preview, 0 if not.",
+		"previewSlug": "The name (slug) of the preview script",
 		"requestOutcome": "The outcome of the subrequest",
 		"scriptName": "The name of the script",
 		"scriptVersion": "The version of the Worker",
@@ -9538,6 +9626,7 @@
 	},
 	"AccountWorkflowsAdaptive": {
 		"__description": "Workflows analytics",
+		"allStepCount": "Number of operations across all step types during the timestamp interval",
 		"cpuTime": "CPU time in timestamp (ms)",
 		"datetime": "The date when trigger was triggered",
 		"endTimestamp": "Instance end timestamp(seconds)",
@@ -9547,7 +9636,7 @@
 		"retryCount": "Number of retries in timestamp",
 		"sampleInterval": "ABR sample interval",
 		"startTimestamp": "Instance start timestamp(seconds)",
-		"stepCount": "Steps ran in timestamp",
+		"stepCount": "Number of step.do operations during the timestamp interval",
 		"storageRate": "Instance storage size growth in timestamp (bytes)",
 		"wallTime": "Wall time in seconds",
 		"workflowName": "Workflow name"
@@ -9594,15 +9683,17 @@
 	},
 	"AccountWorkflowsAdaptiveGroupsSum": {
 		"__description": "",
+		"allStepCount": "Total operations across all step types per dimension",
 		"cpuTime": "CPU time per dimension (ms)",
 		"executionDuration": "Execution duration per dimension (GB*s)",
 		"retryCount": "Number of retries per dimension",
-		"stepCount": "Total steps per dimension",
+		"stepCount": "Total step.do operations per dimension",
 		"storageRate": "Total instance storage growth rate per dimension",
 		"wallTime": "Total wall time per dimension"
 	},
 	"AccountWorkflowsAdaptiveGroupsSumConfidence": {
 		"__description": "",
+		"allStepCount": "Confidence interval for the corresponding point estimate",
 		"cpuTime": "Confidence interval for the corresponding point estimate",
 		"executionDuration": "Confidence interval for the corresponding point estimate",
 		"retryCount": "Confidence interval for the corresponding point estimate",
@@ -12774,6 +12865,7 @@
 		"aiInferenceAdaptiveGroups": "Aggregated AI Inference logs with adaptive sampling",
 		"aiSearchAPIAdaptiveGroups": "AI Search API Search Analytics",
 		"aiSearchIngestedItemsAdaptiveGroups": "AI Search Ingested Items Analytics",
+		"artifactsEventsAdaptiveGroups": "Artifacts events with adaptive sampling",
 		"autoRAGConfigAPIAdaptiveGroups": "AutoRAG Config API Search Analytics",
 		"autoRAGEngineAdaptiveGroups": "AutoRAG Engine Ingestion Analytics",
 		"browserIsolationSessionsAdaptiveGroups": "Aggregated count of Browser Isolation sessions",
