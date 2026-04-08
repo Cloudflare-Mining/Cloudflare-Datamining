@@ -1,0 +1,279 @@
+<div class="mb2 gray5">6 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/58uFNLvpda3ebe4FYcPlrZ/ca27fd15c73f3d20b92e8aeec7645666/image1.png" alt="">
+<div class="post-content lh-copy gray1">
+	<p></p>
+	<p>Linux malware often hides in Berkeley Packet Filter (BPF) socket programs, which are small bits of executable logic that can be embedded in the Linux kernel to customize how it processes network traffic. Some of the most persistent threats on the Internet use these filters to remain dormant until they receive a specific "magic" packet. Because these filters can be hundreds of instructions long and involve complex logical jumps, reverse-engineering them by hand is a slow process that creates a bottleneck for security researchers.</p>
+	<p>To find a better way, we looked at symbolic execution: a method of treating code as a series of constraints, rather than just instructions. By using the Z3 theorem prover, we can work backward from a malicious filter to automatically generate the packet required to trigger it. In this post, we explain how we built a tool to automate this, turning hours of manual assembly analysis into a task that takes just a few seconds.</p>
+	<div class="flex anchor relative">
+		<h2 id="the-complexity-ceiling">The complexity ceiling</h2>
+		<a href="https://blog.cloudflare.com/#the-complexity-ceiling" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Before we look at how to deconstruct malicious filters, we need to understand the engine running them. The Berkeley Packet Filter (BPF) is a highly efficient technology that allows the kernel to pull specific packets from the network stack based on a set of bytecode instructions.</p>
+	<p>While many modern developers are familiar with <a href="https://blog.cloudflare.com/tag/ebpf">eBPF</a> (Extended BPF), the powerful evolution used for observability and security, this post focuses on "classic" BPF. Originally designed for tools like tcpdump, classic BPF uses a simple virtual machine with just two registers to evaluate network traffic at high speeds. Because it runs deep within the kernel and can "hide" traffic from user-space tools, it has become a favorite tool for malware authors looking to build stealthy backdoors.</p>
+	<p>Creating a contextual representation of BPF instructions using <a href="https://www.cloudflare.com/learning/ai/what-is-large-language-model"><u>LLMs</u></a> is already reducing the manual overhead for analysts, crafting the network packets that correspond to the validating condition can still be a lot of work, even with the added context provided by LLM’s.</p>
+	<p>Most of the time this is not a problem if your BPF program has only ~20 instructions, but this can get exponentially more complex and time-consuming when a BPF program consists of over 100 instructions as we’ve observed in some of the samples.</p>
+	<p>If we deconstruct the problem we can see that it boils down to reading a buffer and checking a constraint, depending on the outcome we either continue our execution path or stop and check the end result.</p>
+	<p>This kind of problem that has a deterministic outcome can be solved by Z3, a theorem prover that has the means to solve problems with a set of given constraints.</p>
+	<div class="flex anchor relative">
+		<h2 id="exhibit-a-bpfdoor">Exhibit A: BPFDoor</h2>
+		<a href="https://blog.cloudflare.com/#exhibit-a-bpfdoor" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>BPFDoor is a sophisticated, passive Linux backdoor, primarily used for cyberespionage by China-based threat actors, including Red Menshen (also known as Earth Bluecrow). Active since at least 2021, the malware is designed to maintain a stealthy foothold in compromised networks, targeting telecommunications, education, and government sectors, with a strong emphasis on operations in Asia and the Middle East.</p>
+	<p>BPFDoor uses BPF to monitor all incoming traffic without requiring a specific network port to be open.&nbsp;</p>
+	<div class="flex anchor relative">
+		<h3 id="bpfdoor-example-instructions">BPFDoor example instructions</h3>
+		<a href="https://blog.cloudflare.com/#bpfdoor-example-instructions" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Let’s focus on the sample of which was shared for the research done by <a href="https://www.fortinet.com/blog/threat-research/new-ebpf-filters-for-symbiote-and-bpfdoor-malware"><u>Fortinet</u></a> (82ed617816453eba2d755642e3efebfcbd19705ac626f6bc8ed238f4fc111bb0). If we dissect the BPF instructions and add some annotations, we can write the following:</p>
+	<pre class="language-Rust"><code class="language-Rust">(000) ldh [0xc]                   ; Read halfword at offset 12 (EtherType)
+(001) jeq #0x86dd, jt 2, jf 6     ; 0x86DD (IPv6) -&gt; ins 002 else ins 006
+(002) ldb [0x14]                  ; Read byte at offset 20 (Protocol)
+(003) jeq #0x11, jt 4, jf 15      ; 0x11 (UDP) -&gt; ins 004 else DROP
+(004) ldh [0x38]                  ; Read halfword at offset 56 (Dst Port)
+(005) jeq #0x35, jt 14, jf 15     ; 0x35 (DNS) -&gt; ACCEPT else DROP
+(006) jeq #0x800, jt 7, jf 15     ; 0x800 (IPv4) -&gt; ins 007 else DROP
+(007) ldb [23]                    ; Read byte at offset 23 (Protocol)
+(008) jeq #0x11, jt 9, jf 15      ; 0x11 (UDP) -&gt; ins 009 else DROP
+(009) ldh [20]                    ; Read halfword at offset 20 (fragment)
+(010) jset #0x1fff, jt 15, jf 11  ; fragmented -&gt; DROP else ins 011
+(011) ldxb 4*([14]&amp;0xf)           ; Load index (x) register ihl &amp; 0xf
+(012) ldh [x + 16]                ; Read halfword at offset x+16 (Dst Port)
+(013) jeq #0x35, jt 14, jf 15     ; 0x35 (DNS) -&gt; ACCEPT else DROP
+(014) ret #0x40000 (ACCEPT)
+(015) ret #0 (DROP)</code></pre>
+	<p>In the above example we can establish there are two paths that lead to an ACCEPT outcome (step 5 and step 13). We can also clearly observe certain bytes being checked, including their offsets and values.&nbsp;</p>
+	<p>Taking these validations, and keeping track of anything that would match the ACCEPT path, we should be able to automatically craft the packets for us.</p>
+	<div class="flex anchor relative">
+		<h3 id="calculating-the-shortest-path">Calculating the shortest path</h3>
+		<a href="https://blog.cloudflare.com/#calculating-the-shortest-path" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>To find the shortest path to a packet that validates the conditions presented in the BPF instructions, we need to keep track of paths that are not ending in the unfavorable condition.</p>
+	<p>We start off by creating a small queue. This queue holds several important data points:</p>
+	<ul>
+		<li>
+			<p>The pointer to the next instruction.</p>
+		</li>
+		<li>
+			<p>Our current path of executed instructions + the next instruction.</p>
+		</li>
+	</ul>
+	<p>Whenever we encounter an instruction that is checking a condition, we keep track of the outcome using a boolean and store this in our queue, so we can compare paths on the amount of conditions before the ACCEPT condition is reached and calculate our shortest path. In pseudocode we can express this best as:</p>
+	<pre class="language-Python"><code class="language-Python">paths = []
+queue = dequeue([(0, [0])])
+
+while queue:
+	pc, path = queue.popleft()
+
+	if pc &gt;= len(instructions):
+            continue
+
+instruction = instructions[pc]
+	
+	if instruction.class == return_instruction:
+		if instruction_constant != 0:  # accept
+			paths.append(path)
+		continue  # drop or accept, stop parsing this instruction
+
+if instruction.class == jump_instruction:
+	if instruction.operation == unconditional_jump:
+		next_pc = pc + 1 + instruction_constant
+		queue.append((next_pc, path + [next_pc]))
+		continue
+
+	# Conditional jump, explore both
+	pc_true = pc + 1 + instruction.jump_true
+	pc_false = pc + 1 + instruction.jump_false
+	
+	if instruction.jump_true &lt;= instruction.jump_false:
+		queue.append((pc_true, path + [pc_true]))
+		queue.append((pc_false, path + [pc_false]))
+	# else: same as above but reverse order of appending
+# else: sequential instruction, append to the queue</code></pre>
+	<p>If we execute this logic against our earlier BPFDoor example, we will be presented with the shortest path to an accepted packet:</p>
+	<pre class="language-Rust"><code class="language-Rust">(000) code=0x28 jt=0 jf=0  k=0xc     ; Read halfword at offset 12 (EtherType)
+(001) code=0x15 jt=0 jf=4  k=0x86dd  ; IPv6 packet
+(002) code=0x30 jt=0 jf=0  k=0x14    ; Read byte at offset 20 (Protocol)
+(003) code=0x15 jt=0 jf=11 k=0x11    ; Protocol number 17 (UDP)
+(004) code=0x28 jt=0 jf=0  k=0x38    ; Read word at offset 56 (Destination Port)
+(005) code=0x15 jt=8 jf=9  k=0x35    ; Destination port 53
+(014) code=0x06 jt=0 jf=0  k=0x40000 ; Accept</code></pre>
+	<p>This is already a helpful automation in automatically solving our BPF constraints when it comes to analyzing BPF instructions and figuring out how the accepted packet for the backdoor would look. But what if we can take it a step further?</p>
+	<p>What if we could create a small tool that will give us the expected packet back in an automated manner?</p>
+	<div class="flex anchor relative">
+		<h2 id="employing-z3-and-scapy">Employing Z3 and scapy</h2>
+		<a href="https://blog.cloudflare.com/#employing-z3-and-scapy" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>One such tool that is perfect to solve problems given a set of constraints is <a href="https://github.com/z3Prover/z3"><u>Z3</u></a>. Developed by Microsoft the tool is labeled as a theorem prover and exposes easy to use functions performing very complex mathematical operations under the hood.</p>
+	<p>The other tool we will use for crafting our valid magic packets is <a href="https://github.com/secdev/scapy"><u>scapy</u></a>, a popular Python library for interactive packet manipulation.</p>
+	<p>Given that we already have a way to figure out the path to an accepted packet, we are left with solving the problem by itself, and then translating this solution to the bytes at their respective offsets in a network packet.</p>
+	<div class="flex anchor relative">
+		<h3 id="symbolic-execution">Symbolic execution</h3>
+		<a href="https://blog.cloudflare.com/#symbolic-execution" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>A common technique for exploring paths taken in a given program is called symbolic execution. For this technique we are giving input that can be used as variables, including the constraints. By knowing the outcome of a successful path we can orchestrate our tool to find all of these successful paths and display the end result to us in a contextualized format.</p>
+	<p>For this to work we will need to implement a small machine capable of keeping track of the state of things like constants, registers, and different boolean operators as an outcome of a condition that is being checked.</p>
+	<pre class="language-Python"><code class="language-Python">class BPFPacketCrafter:
+    MIN_PKT_SIZE = 64           # Minimum packet size (Ethernet + IP + UDP headers)
+    LINK_ETHERNET = "ethernet"  # DLT_EN10MB - starts with Ethernet header
+    LINK_RAW = "raw"            # DLT_RAW - starts with IP header directly
+    MEM_SLOTS = 16              # Number of scratch memory slots (M[0] to M[15])
+
+    def __init__(self, ins: list[BPFInsn], pkt_size: int = 128, ltype: str = "ethernet"):
+        self.instructions = ins
+        self.pkt_size = max(self.MIN_PKT_SIZE, pkt_size)
+        self.ltype = ltype
+
+        # Symbolic packet bytes
+        self.packet = [BitVec(f"pkt_{i}", 8) for i in range(self.pkt_size)]
+
+        # Symbolic registers (32-bit)
+        self.A = BitVecVal(0, 32)  # Accumulator
+        self.X = BitVecVal(0, 32)  # Index register
+
+        # Scratch memory M[0-15] (32-bit words)
+        self.M = [BitVecVal(0, 32) for _ in range(self.MEM_SLOTS)]</code></pre>
+	<p>With the above code we’ve covered most of the machine for keeping a state during the symbolic execution. There are of course more conditions we need to keep track of, but these are handled during the solving process. To handle an ADD instruction, the machine maps the BPF operation to a Z3 addition:</p>
+	<pre class="language-Python"><code class="language-Python">def _execute_ins(self, insn: BPFInsn):
+    cls = insn.cls
+    if cls == BPFClass.ALU:
+        op = insn.op
+        src_val = BitVecVal(insn.k, 32) if insn.src == BPFSrc.K else self.X
+        if op == BPFOp.ADD:
+            self.A = self.A + src_val</code></pre>
+	<p>Luckily the BPF instruction set is only a small set of instructions that’s relatively easy to implement — only having two registers to keep track of is definitely a welcome constraint!</p>
+	<p>The overall working of this symbolic execution can be laid out in the following abstracted overview:</p>
+	<ul>
+		<li>
+			<p>Initialize the “x” (index) and “a” (accumulator) registers to their base state.</p>
+		</li>
+		<li>
+			<p>Loop over the instructions from the path that was identified as a successful path;</p>
+			<ul>
+				<li>
+					<p>Execute non-jump instructions as-is, keeping track of register states.</p>
+				</li>
+				<li>
+					<p>Determine if a jump instruction is encountered, and check if the branch should be taken.</p>
+				</li>
+			</ul>
+		</li>
+		<li>
+			<p>Use the Z3 check() function to check if our condition has been satisfied with the given constraint (ACCEPT).</p>
+		</li>
+		<li>
+			<p>Convert the Z3 bitvector arrays into bytes.</p>
+		</li>
+		<li>
+			<p>Use scapy to construct packets of the converted bytes.</p>
+		</li>
+	</ul>
+	<p>If we look at the constraints build by the Z3 solver we can trace the execution steps taken by Z3 to build the packet bytes:</p>
+	<pre class="language-Rust"><code class="language-Rust">[If(Concat(pkt_12, pkt_13) == 0x800,
+    pkt_14 &amp; 0xF0 == 0x40,
+    True),
+ If(Concat(pkt_12, pkt_13) == 0x800, pkt_14 &amp; 0x0F &gt;= 5, True),
+ If(Concat(pkt_12, pkt_13) == 0x800, pkt_14 &amp; 0x0F == 5, True),
+ If(Concat(pkt_12, pkt_13) == 0x86DD,
+    pkt_14 &amp; 0xF0 == 0x60,
+    True),
+ 0x86DD == ZeroExt(16, Concat(pkt_12, pkt_13)),
+ 0x11 == ZeroExt(24, pkt_20),
+ 0x35 == ZeroExt(16, Concat(pkt_56, pkt_57))]</code></pre>
+	<p>The first part of the Z3 displayed constraints are the constraints added to ensure we’re building up a valid ethernet IP when dealing with link-layer BPF instructions. The “If” statements apply specific constraints based on which protocol is detected:</p>
+	<ul>
+		<li>
+			<p>IPv4 Logic (0x0800):</p>
+			<ul>
+				<li>
+					<p>pkt_14 &amp; 240 == 64: Byte 14 is the start of the IP header. The 0xF0 mask isolates the high nibble (the Version field) to check if the version is 4 (0x40).</p>
+				</li>
+				<li>
+					<p>pkt_14 &amp; 15 == 5: 15 (0x0F), isolating the low nibble (IHL - Internet Header Length). This mandates a header length of 5 (20 bytes), which is the standard size without options.</p>
+				</li>
+			</ul>
+		</li>
+		<li>
+			<p>IPv6 Logic (0x86dd):</p>
+			<ul>
+				<li>
+					<p>pkt_14 &amp; 240 == 0x60: Check if the version field is version 6 (0x60)</p>
+				</li>
+			</ul>
+		</li>
+	</ul>
+	<p>We can observe the network packet values when we look at the second part where different values are being checked:</p>
+	<ul>
+		<li>
+			<p>0x86DD: Packet condition for IPv6 header.</p>
+		</li>
+		<li>
+			<p>0x11: UDP protocol number.</p>
+		</li>
+		<li>
+			<p>0x35: The destination port (53).</p>
+		</li>
+	</ul>
+	<p>Next to the expected values we can see the byte offset of where it should exist in a given packet (e.g. pkt_12, pkt_13).</p>
+	<div class="flex anchor relative">
+		<h3 id="crafting-packets">Crafting packets</h3>
+		<a href="https://blog.cloudflare.com/#crafting-packets" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Now that we’ve established which bytes should exist at specific offsets we can convert it into an actual network packet using scapy. If we generate a new packet from the bytes of our previous Z3 constraints we can clearly see what our packet would look like, and store this for further processing:</p>
+	<pre class="language-Python"><code class="language-Python">###[ Ethernet ]###
+  dst       = 00:00:00:00:00:00
+  src       = 00:00:00:00:00:00
+  type      = IPv6                 &lt;-- IPv6 Packet
+###[ IPv6 ]###
+     version   = 6
+     tc        = 0
+     fl        = 0
+     plen      = 0
+     nh        = UDP               &lt;-- UDP Protocol
+     hlim      = 0
+     src       = ::
+     dst       = ::
+###[ UDP ]###
+        sport     = 0
+        dport     = domain         &lt;-- Port 53
+        len       = 0
+        chksum    = 0x0</code></pre>
+	<p>These newly crafted packets can in turn be used for further research or identifying the presence of these implants by scanning for these over the network.&nbsp;</p>
+	<div class="flex anchor relative">
+		<h2 id="try-it-yourself">Try it yourself</h2>
+		<a href="https://blog.cloudflare.com/#try-it-yourself" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Understanding what a specific BPF set of instructions is doing can be cumbersome and time-consuming work. The example used is only a total of sixteen instructions, but we’ve encountered samples that were over 200 instructions that would’ve taken at least a day to understand. By using the Z3 solver, we can now reduce this time to just seconds, and not only display the path to an accepted packet, but also the packet skeleton for this as well.</p>
+	<p>We have open-sourced the <b>filterforge</b> tool to help the community automate the deconstruction of BPF-based implants. You can find the source code, along with usage examples, on <a href="https://github.com/cloudflare/filterforge"><u>our GitHub repository</u></a>.</p>
+	<p>By publishing this research and sharing our tool for reducing analysts’ time spent figuring out the BPF instructions, we hope to spark further research by others to expand on this form of automation.</p>
+</div>
