@@ -1,47 +1,31 @@
 [
 	{
-		"id": "r2.fedramp",
-		"feature": {
-			"feature_set": "r2",
-			"id": 1314,
-			"key": "r2.fedramp",
-			"name": "R2 - FedRAMP Enabled"
-		},
-		"allocation": {
-			"value": false,
-			"type": "bool"
-		},
-		"created_date": "2022-09-27T22:35:47.448622",
-		"edited_date": "2025-09-18T20:38:10.917390",
-		"deleted_date": ""
-	},
-	{
-		"id": "analytics_engine.not_older_than",
-		"feature": {
-			"feature_set": "analytics_engine",
-			"id": 1041,
-			"key": "analytics_engine.not_older_than",
-			"name": "Analytics Engine API - Not Older Than"
-		},
-		"allocation": {
-			"value": 90,
-			"type": "max_count"
-		},
-		"created_date": "2024-05-24T13:38:09.000000",
-		"edited_date": "2024-09-09T19:34:12.000000",
-		"deleted_date": ""
-	},
-	{
-		"id": "pages.concurrent_builds",
+		"id": "pages.build_cache_storage_limit_mb",
 		"feature": {
 			"feature_set": "pages",
-			"id": 1163,
-			"key": "pages.concurrent_builds",
-			"name": "Cloudflare Pages - Concurrent Builds"
+			"id": 1227,
+			"key": "pages.build_cache_storage_limit_mb",
+			"name": "Cloudflare Pages - Build Cache Storage Limit MB"
 		},
 		"allocation": {
-			"value": 1,
+			"value": 10000,
 			"type": "max_count"
+		},
+		"created_date": "2024-05-24T13:38:12.000000",
+		"edited_date": "2024-05-24T13:38:12.000000",
+		"deleted_date": ""
+	},
+	{
+		"id": "notifications.webhooks_enabled",
+		"feature": {
+			"feature_set": "notifications",
+			"id": 1153,
+			"key": "notifications.webhooks_enabled",
+			"name": "Notifications - Webhooks Enabled"
+		},
+		"allocation": {
+			"value": true,
+			"type": "bool"
 		},
 		"created_date": "2024-05-24T13:38:12.000000",
 		"edited_date": "2024-05-24T13:38:12.000000",
@@ -96,19 +80,67 @@
 		"deleted_date": ""
 	},
 	{
-		"id": "r2.infrequent_access",
+		"id": "rate_limiting.enabled",
 		"feature": {
-			"feature_set": "r2",
-			"id": 1456,
-			"key": "r2.infrequent_access",
-			"name": "R2 - Infrequent Access Enabled"
+			"feature_set": "rate_limiting",
+			"id": 19,
+			"key": "rate_limiting.enabled",
+			"name": "rate_limiting.enabled"
 		},
 		"allocation": {
 			"value": true,
 			"type": "bool"
 		},
+		"created_date": "2022-09-27T23:24:03.000000",
+		"edited_date": "2022-09-27T23:24:03.000000",
+		"deleted_date": ""
+	},
+	{
+		"id": "r2.enabled",
+		"feature": {
+			"feature_set": "r2",
+			"id": 1001,
+			"key": "r2.enabled",
+			"name": "R2 - Enabled"
+		},
+		"allocation": {
+			"value": true,
+			"type": "bool"
+		},
+		"created_date": "2022-09-27T22:35:47.000000",
+		"edited_date": "2022-09-27T22:35:47.000000",
+		"deleted_date": ""
+	},
+	{
+		"id": "analytics_engine.not_older_than",
+		"feature": {
+			"feature_set": "analytics_engine",
+			"id": 1041,
+			"key": "analytics_engine.not_older_than",
+			"name": "Analytics Engine API - Not Older Than"
+		},
+		"allocation": {
+			"value": 90,
+			"type": "max_count"
+		},
 		"created_date": "2024-05-24T13:38:09.000000",
-		"edited_date": "2024-07-23T16:10:15.000000",
+		"edited_date": "2024-09-09T19:34:12.000000",
+		"deleted_date": ""
+	},
+	{
+		"id": "pages.concurrent_builds",
+		"feature": {
+			"feature_set": "pages",
+			"id": 1163,
+			"key": "pages.concurrent_builds",
+			"name": "Cloudflare Pages - Concurrent Builds"
+		},
+		"allocation": {
+			"value": 1,
+			"type": "max_count"
+		},
+		"created_date": "2024-05-24T13:38:12.000000",
+		"edited_date": "2024-05-24T13:38:12.000000",
 		"deleted_date": ""
 	},
 	{
@@ -128,15 +160,15 @@
 		"deleted_date": ""
 	},
 	{
-		"id": "pages.build_cache_storage_limit_mb",
+		"id": "pages.custom_domains_per_project",
 		"feature": {
 			"feature_set": "pages",
-			"id": 1227,
-			"key": "pages.build_cache_storage_limit_mb",
-			"name": "Cloudflare Pages - Build Cache Storage Limit MB"
+			"id": 1164,
+			"key": "pages.custom_domains_per_project",
+			"name": "Cloudflare Pages - Custom Domains per Project"
 		},
 		"allocation": {
-			"value": 10000,
+			"value": 100,
 			"type": "max_count"
 		},
 		"created_date": "2024-05-24T13:38:12.000000",
@@ -144,16 +176,16 @@
 		"deleted_date": ""
 	},
 	{
-		"id": "notifications.webhooks_enabled",
+		"id": "pages.build_cache_retention_limit_days",
 		"feature": {
-			"feature_set": "notifications",
-			"id": 1153,
-			"key": "notifications.webhooks_enabled",
-			"name": "Notifications - Webhooks Enabled"
+			"feature_set": "pages",
+			"id": 1228,
+			"key": "pages.build_cache_retention_limit_days",
+			"name": "Cloudflare Pages - Build Cache Retention Limit Days"
 		},
 		"allocation": {
-			"value": true,
-			"type": "bool"
+			"value": 7,
+			"type": "max_count"
 		},
 		"created_date": "2024-05-24T13:38:12.000000",
 		"edited_date": "2024-05-24T13:38:12.000000",
@@ -176,70 +208,6 @@
 		"deleted_date": ""
 	},
 	{
-		"id": "rate_limiting.enabled",
-		"feature": {
-			"feature_set": "rate_limiting",
-			"id": 19,
-			"key": "rate_limiting.enabled",
-			"name": "rate_limiting.enabled"
-		},
-		"allocation": {
-			"value": true,
-			"type": "bool"
-		},
-		"created_date": "2022-09-27T23:24:03.000000",
-		"edited_date": "2022-09-27T23:24:03.000000",
-		"deleted_date": ""
-	},
-	{
-		"id": "pages.build_cache_retention_limit_days",
-		"feature": {
-			"feature_set": "pages",
-			"id": 1228,
-			"key": "pages.build_cache_retention_limit_days",
-			"name": "Cloudflare Pages - Build Cache Retention Limit Days"
-		},
-		"allocation": {
-			"value": 7,
-			"type": "max_count"
-		},
-		"created_date": "2024-05-24T13:38:12.000000",
-		"edited_date": "2024-05-24T13:38:12.000000",
-		"deleted_date": ""
-	},
-	{
-		"id": "r2.enabled",
-		"feature": {
-			"feature_set": "r2",
-			"id": 1001,
-			"key": "r2.enabled",
-			"name": "R2 - Enabled"
-		},
-		"allocation": {
-			"value": true,
-			"type": "bool"
-		},
-		"created_date": "2022-09-27T22:35:47.000000",
-		"edited_date": "2022-09-27T22:35:47.000000",
-		"deleted_date": ""
-	},
-	{
-		"id": "pages.custom_domains_per_project",
-		"feature": {
-			"feature_set": "pages",
-			"id": 1164,
-			"key": "pages.custom_domains_per_project",
-			"name": "Cloudflare Pages - Custom Domains per Project"
-		},
-		"allocation": {
-			"value": 100,
-			"type": "max_count"
-		},
-		"created_date": "2024-05-24T13:38:12.000000",
-		"edited_date": "2024-05-24T13:38:12.000000",
-		"deleted_date": ""
-	},
-	{
 		"id": "rulesets.edge_rules",
 		"feature": {
 			"feature_set": "rulesets",
@@ -253,6 +221,38 @@
 		},
 		"created_date": "2022-08-16T17:51:10.000000",
 		"edited_date": "2022-08-16T17:51:10.000000",
+		"deleted_date": ""
+	},
+	{
+		"id": "r2.fedramp",
+		"feature": {
+			"feature_set": "r2",
+			"id": 1314,
+			"key": "r2.fedramp",
+			"name": "R2 - FedRAMP Enabled"
+		},
+		"allocation": {
+			"value": false,
+			"type": "bool"
+		},
+		"created_date": "2022-09-27T22:35:47.448622",
+		"edited_date": "2025-09-18T20:38:10.917390",
+		"deleted_date": ""
+	},
+	{
+		"id": "r2.infrequent_access",
+		"feature": {
+			"feature_set": "r2",
+			"id": 1456,
+			"key": "r2.infrequent_access",
+			"name": "R2 - Infrequent Access Enabled"
+		},
+		"allocation": {
+			"value": true,
+			"type": "bool"
+		},
+		"created_date": "2024-05-24T13:38:09.000000",
+		"edited_date": "2024-07-23T16:10:15.000000",
 		"deleted_date": ""
 	},
 	{
