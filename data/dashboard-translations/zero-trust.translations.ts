@@ -1,7 +1,7 @@
 {
 	common: {
 		heading: "Zero Trust",
-		widgetHeading: "Zero trust security",
+		widgetHeading: "Zero Trust security",
 		api_error: "An error occurred while retrieving account information. Refresh the page to try again.",
 		permission_denied_error: "You do not have Zero Trust permissions. Contact your account administrator for more details.",
 		documentationLabel: "Zero Trust documentation",
