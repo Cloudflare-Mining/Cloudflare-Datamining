@@ -12,6 +12,7 @@
 	"\n    query OriginReachabilityTimeSeriesByAndOriginASN($zoneTag: string, $filter: HttpRequestsAdaptiveGroupsFilter_InputObject) {\n      viewer {\n        zones(filter: { zoneTag: $zoneTag }) {\n          series: httpRequestsAdaptiveGroups(\n            limit: 10000\n            filter: $filter\n          ) @connection(key: \"OriginReachabilityTimeseriesByAndOriginASN\", filter: [\"filter\"]) {\n            count\n            dimensions {\n              ts: \n              coloCode\n              originResponseStatus\n              originASN\n              originASNDescription\n            }\n            avg {\n              sampleInterval\n            }\n          }\n        }\n      }\n    }\n  ",
 	"\n    query OriginReachabilityTimeSeriesByAndOriginIP($zoneTag: string, $filter: HttpRequestsAdaptiveGroupsFilter_InputObject) {\n      viewer {\n        zones(filter: { zoneTag: $zoneTag }) {\n          series: httpRequestsAdaptiveGroups(\n            limit: 10000\n            filter: $filter\n          ) @connection(key: \"OriginReachabilityTimeseriesByAndOriginIP\", filter: [\"filter\"]) {\n            count\n            dimensions {\n              ts: \n              coloCode\n              originResponseStatus\n              originIP\n            }\n            avg {\n              sampleInterval\n            }\n          }\n        }\n      }\n    }\n  ",
 	"/[id]/[id]/analytics",
+	"/attribution-overview",
 	"/edgeReachability",
 	"/instant-logs",
 	"/log-explorer",
