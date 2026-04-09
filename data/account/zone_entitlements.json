@@ -1,5 +1,581 @@
 [
 	{
+		"id": "always_online.crawl_frequency",
+		"feature": {
+			"feature_set": "always_online",
+			"id": 747,
+			"key": "always_online.crawl_frequency",
+			"name": "Always Online Crawl Frequency"
+		},
+		"allocation": {
+			"value": 1,
+			"type": "max_count"
+		},
+		"created_date": "2022-08-16T17:48:04.000000",
+		"edited_date": "2022-08-16T17:57:53.000000",
+		"deleted_date": ""
+	},
+	{
+		"id": "argo.allow_tiered_caching",
+		"feature": {
+			"feature_set": "argo",
+			"id": 38,
+			"key": "argo.allow_tiered_caching",
+			"name": "Argo Tiered Cache"
+		},
+		"allocation": {
+			"value": true,
+			"type": "bool"
+		},
+		"created_date": "2022-08-16T17:48:04.000000",
+		"edited_date": "2022-08-16T17:48:04.000000",
+		"deleted_date": ""
+	},
+	{
+		"id": "authoritative_dns.max_record_allowed",
+		"feature": {
+			"feature_set": "dns",
+			"id": 723,
+			"key": "authoritative_dns.max_record_allowed",
+			"name": "Authoritative DNS - Record Quota (Zone Level, Overridden by Account Quota)"
+		},
+		"allocation": {
+			"value": 200,
+			"type": "max_count"
+		},
+		"created_date": "2022-08-16T17:48:04.000000",
+		"edited_date": "2022-08-16T17:57:53.000000",
+		"deleted_date": ""
+	},
+	{
+		"id": "authoritative_dns.max_record_comment_length",
+		"feature": {
+			"feature_set": "dns",
+			"id": 1105,
+			"key": "authoritative_dns.max_record_comment_length",
+			"name": "Authoritative DNS - Maximum Record Comment Length"
+		},
+		"allocation": {
+			"value": 100,
+			"type": "max_count"
+		},
+		"created_date": "2022-11-09T00:29:44.000000",
+		"edited_date": "2023-07-18T21:04:13.000000",
+		"deleted_date": ""
+	},
+	{
+		"id": "authoritative_dns.max_record_tag_value_length",
+		"feature": {
+			"feature_set": "dns",
+			"id": 1107,
+			"key": "authoritative_dns.max_record_tag_value_length",
+			"name": "Authoritative DNS - Maximum Record Tag Value Length"
+		},
+		"allocation": {
+			"value": 100,
+			"type": "max_count"
+		},
+		"created_date": "2022-11-09T00:29:44.000000",
+		"edited_date": "2022-11-09T00:29:44.000000",
+		"deleted_date": ""
+	},
+	{
+		"id": "authoritative_dns.max_record_tags",
+		"feature": {
+			"feature_set": "dns",
+			"id": 1106,
+			"key": "authoritative_dns.max_record_tags",
+			"name": "Authoritative DNS - Maximum Tags Per Record"
+		},
+		"allocation": {
+			"value": 0,
+			"type": "max_count"
+		},
+		"created_date": "2022-11-09T00:29:44.000000",
+		"edited_date": "2022-11-09T00:29:44.000000",
+		"deleted_date": ""
+	},
+	{
+		"id": "authoritative_dns.proxy_record_allowed",
+		"feature": {
+			"feature_set": "dns",
+			"id": 724,
+			"key": "authoritative_dns.proxy_record_allowed",
+			"name": "DO NOT USE - Authoritative DNS - Proxying Allowed"
+		},
+		"allocation": {
+			"value": true,
+			"type": "bool"
+		},
+		"created_date": "2022-08-16T17:48:04.000000",
+		"edited_date": "2022-08-16T17:48:04.000000",
+		"deleted_date": ""
+	},
+	{
+		"id": "bot_management.session_score",
+		"feature": {
+			"feature_set": "bot_management",
+			"id": 876,
+			"key": "bot_management.session_score",
+			"name": "Bot Management - Configure Session Score"
+		},
+		"allocation": {
+			"value": false,
+			"type": "bool"
+		},
+		"created_date": "2022-08-16T17:48:04.000000",
+		"edited_date": "2022-08-16T17:57:53.000000",
+		"deleted_date": ""
+	},
+	{
+		"id": "cache.allow_vary",
+		"feature": {
+			"feature_set": "cache",
+			"id": 848,
+			"key": "cache.allow_vary",
+			"name": "Cache - Allow Vary"
+		},
+		"allocation": {
+			"value": false,
+			"type": "bool"
+		},
+		"created_date": "2022-08-16T17:48:04.000000",
+		"edited_date": "2022-08-16T17:57:53.000000",
+		"deleted_date": ""
+	},
+	{
+		"id": "cloud_connector.rule_max",
+		"feature": {
+			"feature_set": "cloud_connector",
+			"id": 1584,
+			"key": "cloud_connector.rule_max",
+			"name": "Cloud Connector - Rule Allowed Max"
+		},
+		"allocation": {
+			"value": 10,
+			"type": "max_count"
+		},
+		"created_date": "2024-09-10T08:20:09.000000",
+		"edited_date": "2025-07-31T18:08:33.000000",
+		"deleted_date": ""
+	},
+	{
+		"id": "dns_records_api.bypass_anti_abuse_logic",
+		"feature": {
+			"feature_set": "dns",
+			"id": 727,
+			"key": "dns_records_api.bypass_anti_abuse_logic",
+			"name": "DNS API - Bypass Anti-Abuse Logic"
+		},
+		"allocation": {
+			"value": false,
+			"type": "bool"
+		},
+		"created_date": "2022-08-16T17:48:04.000000",
+		"edited_date": "2022-08-16T17:57:53.000000",
+		"deleted_date": ""
+	},
+	{
+		"id": "dns_records_api.max_batch_size",
+		"feature": {
+			"feature_set": "dns",
+			"id": 1596,
+			"key": "dns_records_api.max_batch_size",
+			"name": "DNS API - Max Batch Size"
+		},
+		"allocation": {
+			"value": 200,
+			"type": "max_count"
+		},
+		"created_date": "2024-09-10T08:20:09.000000",
+		"edited_date": "2024-09-10T08:20:09.000000",
+		"deleted_date": ""
+	},
+	{
+		"id": "filters.advanced_geoip_enabled",
+		"feature": {
+			"feature_set": "filters",
+			"id": 541,
+			"key": "filters.advanced_geoip_enabled",
+			"name": "Firewall Filters - Geo IP Enabled"
+		},
+		"allocation": {
+			"value": false,
+			"type": "bool"
+		},
+		"created_date": "2022-08-16T17:48:04.000000",
+		"edited_date": "2022-08-16T17:57:53.000000",
+		"deleted_date": ""
+	},
+	{
+		"id": "filters.operator_regex",
+		"feature": {
+			"feature_set": "filters",
+			"id": 488,
+			"key": "filters.operator_regex",
+			"name": "Filters - Operator Regex"
+		},
+		"allocation": {
+			"value": false,
+			"type": "bool"
+		},
+		"created_date": "2022-08-16T17:48:04.000000",
+		"edited_date": "2022-08-16T17:57:53.000000",
+		"deleted_date": ""
+	},
+	{
+		"id": "filters.request_body_inspection_enabled",
+		"feature": {
+			"feature_set": "filters",
+			"id": 566,
+			"key": "filters.request_body_inspection_enabled",
+			"name": "Firewall Rules Body Inspection Enabled"
+		},
+		"allocation": {
+			"value": false,
+			"type": "bool"
+		},
+		"created_date": "2022-08-16T17:48:04.000000",
+		"edited_date": "2022-08-16T17:48:04.000000",
+		"deleted_date": ""
+	},
+	{
+		"id": "firewalluablock.max_rules",
+		"feature": {
+			"feature_set": "firewalluablock",
+			"id": 142,
+			"key": "firewalluablock.max_rules",
+			"name": "UA Blocking - Max Rules"
+		},
+		"allocation": {
+			"value": 10,
+			"type": "max_count"
+		},
+		"created_date": "2022-08-16T17:48:04.000000",
+		"edited_date": "2022-08-16T17:57:53.000000",
+		"deleted_date": ""
+	},
+	{
+		"id": "foundation_dns.advanced_nameservers_allowed",
+		"feature": {
+			"feature_set": "dns",
+			"id": 1245,
+			"key": "foundation_dns.advanced_nameservers_allowed",
+			"name": "Foundation DNS - Advanced Name Servers"
+		},
+		"allocation": {
+			"value": false,
+			"type": "bool"
+		},
+		"created_date": "2024-08-19T05:45:09.000000",
+		"edited_date": "2024-08-19T05:45:09.000000",
+		"deleted_date": ""
+	},
+	{
+		"id": "fwrules.actions_log",
+		"feature": {
+			"feature_set": "fwrules",
+			"id": 487,
+			"key": "fwrules.actions_log",
+			"name": "Firewall Rules - Actions Log Allowed"
+		},
+		"allocation": {
+			"value": false,
+			"type": "bool"
+		},
+		"created_date": "2022-08-16T17:48:04.000000",
+		"edited_date": "2022-08-16T17:48:04.000000",
+		"deleted_date": ""
+	},
+	{
+		"id": "fwrules.max_rules",
+		"feature": {
+			"feature_set": "fwrules",
+			"id": 486,
+			"key": "fwrules.max_rules",
+			"name": "Firewall Rules - Max Rules"
+		},
+		"allocation": {
+			"value": 5,
+			"type": "max_count"
+		},
+		"created_date": "2022-08-16T17:48:04.000000",
+		"edited_date": "2022-08-16T17:57:53.000000",
+		"deleted_date": ""
+	},
+	{
+		"id": "graphql_api.enabled_dos",
+		"feature": {
+			"feature_set": "graphql_api",
+			"id": 573,
+			"key": "graphql_api.enabled_dos",
+			"name": "GraphQL - API - Enabled Dos"
+		},
+		"allocation": {
+			"value": false,
+			"type": "bool"
+		},
+		"created_date": "2022-08-16T17:48:04.000000",
+		"edited_date": "2022-08-16T17:48:04.000000",
+		"deleted_date": ""
+	},
+	{
+		"id": "graphql_api.enabled_za_biz",
+		"feature": {
+			"feature_set": "graphql_api",
+			"id": 548,
+			"key": "graphql_api.enabled_za_biz",
+			"name": "GraphQL API - Enabled Zone Access - BIZ"
+		},
+		"allocation": {
+			"value": false,
+			"type": "bool"
+		},
+		"created_date": "2022-08-16T17:48:04.000000",
+		"edited_date": "2022-08-16T17:57:53.000000",
+		"deleted_date": ""
+	},
+	{
+		"id": "graphql_api.enabled_za_ent",
+		"feature": {
+			"feature_set": "graphql_api",
+			"id": 549,
+			"key": "graphql_api.enabled_za_ent",
+			"name": "GraphQL API - Enabled Zone Access - ENT"
+		},
+		"allocation": {
+			"value": false,
+			"type": "bool"
+		},
+		"created_date": "2022-08-16T17:48:04.000000",
+		"edited_date": "2022-08-16T17:48:04.000000",
+		"deleted_date": ""
+	},
+	{
+		"id": "graphql_api.enabled_za_free",
+		"feature": {
+			"feature_set": "graphql_api",
+			"id": 546,
+			"key": "graphql_api.enabled_za_free",
+			"name": "GraphQL API - Enabled Zone Access - FREE"
+		},
+		"allocation": {
+			"value": true,
+			"type": "bool"
+		},
+		"created_date": "2022-08-16T17:48:04.000000",
+		"edited_date": "2022-08-16T17:48:04.000000",
+		"deleted_date": ""
+	},
+	{
+		"id": "graphql_api.enabled_za_pro",
+		"feature": {
+			"feature_set": "graphql_api",
+			"id": 547,
+			"key": "graphql_api.enabled_za_pro",
+			"name": "GraphQL API - Enabled Zone Access - PRO"
+		},
+		"allocation": {
+			"value": false,
+			"type": "bool"
+		},
+		"created_date": "2022-08-16T17:48:04.000000",
+		"edited_date": "2022-08-16T17:57:53.000000",
+		"deleted_date": ""
+	},
+	{
+		"id": "graphql_api.maximum_duration_firewallEvents",
+		"feature": {
+			"feature_set": "graphql_api",
+			"id": 570,
+			"key": "graphql_api.maximum_duration_firewallEvents",
+			"name": "GraphQL - Maximum Duration - Firewall Events"
+		},
+		"allocation": {
+			"value": 86400,
+			"type": "max_count"
+		},
+		"created_date": "2022-08-16T17:48:04.000000",
+		"edited_date": "2022-08-16T17:57:53.000000",
+		"deleted_date": ""
+	},
+	{
+		"id": "graphql_api.maximum_duration_firewallEventsGroups",
+		"feature": {
+			"feature_set": "graphql_api",
+			"id": 571,
+			"key": "graphql_api.maximum_duration_firewallEventsGroups",
+			"name": "GraphQL - Maximum Duration - Firewall Events Groups"
+		},
+		"allocation": {
+			"value": 86400,
+			"type": "max_count"
+		},
+		"created_date": "2022-08-16T17:48:04.000000",
+		"edited_date": "2022-08-16T17:57:53.000000",
+		"deleted_date": ""
+	},
+	{
+		"id": "health_checks.count",
+		"feature": {
+			"feature_set": "health_checks",
+			"id": 575,
+			"key": "health_checks.count",
+			"name": "Health Checks Count"
+		},
+		"allocation": {
+			"value": 0,
+			"type": "max_count"
+		},
+		"created_date": "2022-08-16T17:48:04.000000",
+		"edited_date": "2022-08-16T17:57:53.000000",
+		"deleted_date": ""
+	},
+	{
+		"id": "health_checks.enabled",
+		"feature": {
+			"feature_set": "health_checks",
+			"id": 574,
+			"key": "health_checks.enabled",
+			"name": "Health Checks Enabled"
+		},
+		"allocation": {
+			"value": false,
+			"type": "bool"
+		},
+		"created_date": "2022-08-16T17:48:04.000000",
+		"edited_date": "2022-08-16T17:57:53.000000",
+		"deleted_date": ""
+	},
+	{
+		"id": "health_checks.region_count",
+		"feature": {
+			"feature_set": "health_checks",
+			"id": 577,
+			"key": "health_checks.region_count",
+			"name": "Health Checks Region Count"
+		},
+		"allocation": {
+			"value": 0,
+			"type": "max_count"
+		},
+		"created_date": "2022-08-16T17:48:04.000000",
+		"edited_date": "2022-08-16T17:57:53.000000",
+		"deleted_date": ""
+	},
+	{
+		"id": "image_resizing.enabled",
+		"feature": {
+			"feature_set": "image_resizing",
+			"id": 516,
+			"key": "image_resizing.enabled",
+			"name": "Image Resizing"
+		},
+		"allocation": {
+			"value": false,
+			"type": "bool"
+		},
+		"created_date": "2022-08-16T17:48:04.000000",
+		"edited_date": "2022-08-16T17:57:53.000000",
+		"deleted_date": ""
+	},
+	{
+		"id": "ip_certificates",
+		"feature": {
+			"feature_set": "ip_certificates",
+			"id": 630,
+			"key": "ip_certificates",
+			"name": "IP Certificates"
+		},
+		"allocation": {
+			"value": 0,
+			"type": "max_count"
+		},
+		"created_date": "2022-08-16T17:48:04.000000",
+		"edited_date": "2022-08-16T17:57:53.000000",
+		"deleted_date": ""
+	},
+	{
+		"id": "ip_firewall.country_block_enabled",
+		"feature": {
+			"feature_set": "ip_firewall",
+			"id": 400,
+			"key": "ip_firewall.country_block_enabled",
+			"name": "IP Firewall - Country Block"
+		},
+		"allocation": {
+			"value": false,
+			"type": "bool"
+		},
+		"created_date": "2022-08-16T17:48:04.000000",
+		"edited_date": "2022-08-16T17:48:04.000000",
+		"deleted_date": ""
+	},
+	{
+		"id": "ip_firewall.country_challenge_enabled",
+		"feature": {
+			"feature_set": "ip_firewall",
+			"id": 401,
+			"key": "ip_firewall.country_challenge_enabled",
+			"name": "IP Firewall - Country Challenge"
+		},
+		"allocation": {
+			"value": false,
+			"type": "bool"
+		},
+		"created_date": "2022-08-16T17:48:04.000000",
+		"edited_date": "2022-08-16T17:48:04.000000",
+		"deleted_date": ""
+	},
+	{
+		"id": "ip_firewall.country_jschl_enabled",
+		"feature": {
+			"feature_set": "ip_firewall",
+			"id": 402,
+			"key": "ip_firewall.country_jschl_enabled",
+			"name": "IP Firewall - Country JS Challenge"
+		},
+		"allocation": {
+			"value": false,
+			"type": "bool"
+		},
+		"created_date": "2022-08-16T17:48:04.000000",
+		"edited_date": "2022-08-16T17:48:04.000000",
+		"deleted_date": ""
+	},
+	{
+		"id": "ip_firewall.max_rules",
+		"feature": {
+			"feature_set": "ip_firewall",
+			"id": 673,
+			"key": "ip_firewall.max_rules",
+			"name": "IP Firewall - Max Rules"
+		},
+		"allocation": {
+			"value": 50000,
+			"type": "max_count"
+		},
+		"created_date": "2022-08-16T17:48:04.000000",
+		"edited_date": "2022-08-16T17:48:04.000000",
+		"deleted_date": ""
+	},
+	{
+		"id": "logpush.spectrum_events.max_jobs_allowed",
+		"feature": {
+			"feature_set": "logpush",
+			"id": 597,
+			"key": "logpush.spectrum_events.max_jobs_allowed",
+			"name": "Logpush - Spectrum Events - Max Jobs"
+		},
+		"allocation": {
+			"value": 0,
+			"type": "max_count"
+		},
+		"created_date": "2022-08-16T17:48:04.000000",
+		"edited_date": "2022-08-16T17:48:04.000000",
+		"deleted_date": ""
+	},
+	{
 		"id": "page_rules",
 		"feature": {
 			"feature_set": "page_rules",
@@ -29,6 +605,22 @@
 		},
 		"created_date": "2022-08-16T17:48:04.000000",
 		"edited_date": "2022-08-16T17:57:53.000000",
+		"deleted_date": ""
+	},
+	{
+		"id": "rate_limiting.allow_bypass",
+		"feature": {
+			"feature_set": "rate_limiting",
+			"id": 36,
+			"key": "rate_limiting.allow_bypass",
+			"name": "Rate Limiting Allow Bypass Logic"
+		},
+		"allocation": {
+			"value": false,
+			"type": "bool"
+		},
+		"created_date": "2022-08-16T17:48:04.000000",
+		"edited_date": "2022-08-16T17:48:04.000000",
 		"deleted_date": ""
 	},
 	{
@@ -128,12 +720,60 @@
 		"deleted_date": ""
 	},
 	{
+		"id": "rate_limiting.challenge_enabled",
+		"feature": {
+			"feature_set": "rate_limiting",
+			"id": 394,
+			"key": "rate_limiting.challenge_enabled",
+			"name": "Rate-Limiting Challenge Support"
+		},
+		"allocation": {
+			"value": false,
+			"type": "bool"
+		},
+		"created_date": "2022-08-16T17:48:04.000000",
+		"edited_date": "2022-08-16T17:57:53.000000",
+		"deleted_date": ""
+	},
+	{
+		"id": "rate_limiting.jsch_enabled",
+		"feature": {
+			"feature_set": "rate_limiting",
+			"id": 395,
+			"key": "rate_limiting.jsch_enabled",
+			"name": "Rate-Limiting JS_Challenge Support"
+		},
+		"allocation": {
+			"value": false,
+			"type": "bool"
+		},
+		"created_date": "2022-08-16T17:48:04.000000",
+		"edited_date": "2022-08-16T17:57:53.000000",
+		"deleted_date": ""
+	},
+	{
 		"id": "rate_limiting.max_rules",
 		"feature": {
 			"feature_set": "rate_limiting",
 			"id": 30,
 			"key": "rate_limiting.max_rules",
 			"name": "rate_limiting.max_rules"
+		},
+		"allocation": {
+			"value": 1,
+			"type": "max_count"
+		},
+		"created_date": "2022-08-16T17:48:04.000000",
+		"edited_date": "2022-08-16T17:57:53.000000",
+		"deleted_date": ""
+	},
+	{
+		"id": "rate_limiting.resp_headers",
+		"feature": {
+			"feature_set": "rate_limiting",
+			"id": 396,
+			"key": "rate_limiting.resp_headers",
+			"name": "Rate-Limiting Response Header Support"
 		},
 		"allocation": {
 			"value": 1,
@@ -220,60 +860,28 @@
 		"deleted_date": ""
 	},
 	{
-		"id": "rate_limiting.allow_bypass",
+		"id": "rulesets.block_customized_response_allowed",
 		"feature": {
-			"feature_set": "rate_limiting",
-			"id": 36,
-			"key": "rate_limiting.allow_bypass",
-			"name": "Rate Limiting Allow Bypass Logic"
+			"feature_set": "rulesets",
+			"id": 1016,
+			"key": "rulesets.block_customized_response_allowed",
+			"name": "Rulesets - Block Customization Response Allowed"
 		},
 		"allocation": {
 			"value": false,
 			"type": "bool"
 		},
-		"created_date": "2022-08-16T17:48:04.000000",
-		"edited_date": "2022-08-16T17:48:04.000000",
+		"created_date": "2022-08-16T17:51:08.000000",
+		"edited_date": "2022-11-09T00:29:44.000000",
 		"deleted_date": ""
 	},
 	{
-		"id": "argo.allow_tiered_caching",
+		"id": "rulesets.cache_settings_rule_max",
 		"feature": {
-			"feature_set": "argo",
-			"id": 38,
-			"key": "argo.allow_tiered_caching",
-			"name": "Argo Tiered Cache"
-		},
-		"allocation": {
-			"value": true,
-			"type": "bool"
-		},
-		"created_date": "2022-08-16T17:48:04.000000",
-		"edited_date": "2022-08-16T17:48:04.000000",
-		"deleted_date": ""
-	},
-	{
-		"id": "zonelockdown.max_rules",
-		"feature": {
-			"feature_set": "zonelockdown",
-			"id": 141,
-			"key": "zonelockdown.max_rules",
-			"name": "Zone Lockdown - Max Rules"
-		},
-		"allocation": {
-			"value": 0,
-			"type": "max_count"
-		},
-		"created_date": "2022-08-16T17:48:04.000000",
-		"edited_date": "2022-08-16T17:57:53.000000",
-		"deleted_date": ""
-	},
-	{
-		"id": "firewalluablock.max_rules",
-		"feature": {
-			"feature_set": "firewalluablock",
-			"id": 142,
-			"key": "firewalluablock.max_rules",
-			"name": "UA Blocking - Max Rules"
+			"feature_set": "rulesets",
+			"id": 1021,
+			"key": "rulesets.cache_settings_rule_max",
+			"name": "Rulesets - Cache Settings Rule Max"
 		},
 		"allocation": {
 			"value": 10,
@@ -284,15 +892,31 @@
 		"deleted_date": ""
 	},
 	{
-		"id": "zone_analytics.minimum_duration_zone",
+		"id": "rulesets.config_rule_max",
 		"feature": {
-			"feature_set": "zone_analytics",
-			"id": 378,
-			"key": "zone_analytics.minimum_duration_zone",
-			"name": "Zone Analytics - Minimum Duration Zone"
+			"feature_set": "rulesets",
+			"id": 1036,
+			"key": "rulesets.config_rule_max",
+			"name": "Rulesets - Config Rule Max"
 		},
 		"allocation": {
-			"value": 1440,
+			"value": 10,
+			"type": "max_count"
+		},
+		"created_date": "2022-08-16T17:48:04.000000",
+		"edited_date": "2022-11-09T00:29:44.000000",
+		"deleted_date": ""
+	},
+	{
+		"id": "rulesets.custom_errors_max_rules",
+		"feature": {
+			"feature_set": "rulesets",
+			"id": 1018,
+			"key": "rulesets.custom_errors_max_rules",
+			"name": "Rulesets - Custom Errors Rules Max"
+		},
+		"allocation": {
+			"value": 0,
 			"type": "max_count"
 		},
 		"created_date": "2022-08-16T17:48:04.000000",
@@ -300,15 +924,15 @@
 		"deleted_date": ""
 	},
 	{
-		"id": "zone_analytics.minimum_duration_colos",
+		"id": "rulesets.ddos_l7_sensitivity_limit",
 		"feature": {
-			"feature_set": "zone_analytics",
-			"id": 379,
-			"key": "zone_analytics.minimum_duration_colos",
-			"name": "Zone Analytics - Minimum Duration Colos"
+			"feature_set": "rulesets",
+			"id": 903,
+			"key": "rulesets.ddos_l7_sensitivity_limit",
+			"name": "Rulesets - Limit the latest sensitivity level allowed"
 		},
 		"allocation": {
-			"value": 525600,
+			"value": 300,
 			"type": "max_count"
 		},
 		"created_date": "2022-08-16T17:48:04.000000",
@@ -316,47 +940,15 @@
 		"deleted_date": ""
 	},
 	{
-		"id": "rate_limiting.challenge_enabled",
+		"id": "rulesets.dynamic_redirect_rule_max",
 		"feature": {
-			"feature_set": "rate_limiting",
-			"id": 394,
-			"key": "rate_limiting.challenge_enabled",
-			"name": "Rate-Limiting Challenge Support"
+			"feature_set": "rulesets",
+			"id": 1043,
+			"key": "rulesets.dynamic_redirect_rule_max",
+			"name": "Rulesets - Dynamic Redirect Rule Max"
 		},
 		"allocation": {
-			"value": false,
-			"type": "bool"
-		},
-		"created_date": "2022-08-16T17:48:04.000000",
-		"edited_date": "2022-08-16T17:57:53.000000",
-		"deleted_date": ""
-	},
-	{
-		"id": "rate_limiting.jsch_enabled",
-		"feature": {
-			"feature_set": "rate_limiting",
-			"id": 395,
-			"key": "rate_limiting.jsch_enabled",
-			"name": "Rate-Limiting JS_Challenge Support"
-		},
-		"allocation": {
-			"value": false,
-			"type": "bool"
-		},
-		"created_date": "2022-08-16T17:48:04.000000",
-		"edited_date": "2022-08-16T17:57:53.000000",
-		"deleted_date": ""
-	},
-	{
-		"id": "rate_limiting.resp_headers",
-		"feature": {
-			"feature_set": "rate_limiting",
-			"id": 396,
-			"key": "rate_limiting.resp_headers",
-			"name": "Rate-Limiting Response Header Support"
-		},
-		"allocation": {
-			"value": 1,
+			"value": 10,
 			"type": "max_count"
 		},
 		"created_date": "2022-08-16T17:48:04.000000",
@@ -364,531 +956,35 @@
 		"deleted_date": ""
 	},
 	{
-		"id": "ip_firewall.country_block_enabled",
+		"id": "rulesets.firewall_custom_max_rules",
 		"feature": {
-			"feature_set": "ip_firewall",
-			"id": 400,
-			"key": "ip_firewall.country_block_enabled",
-			"name": "IP Firewall - Country Block"
-		},
-		"allocation": {
-			"value": false,
-			"type": "bool"
-		},
-		"created_date": "2022-08-16T17:48:04.000000",
-		"edited_date": "2022-08-16T17:48:04.000000",
-		"deleted_date": ""
-	},
-	{
-		"id": "ip_firewall.country_challenge_enabled",
-		"feature": {
-			"feature_set": "ip_firewall",
-			"id": 401,
-			"key": "ip_firewall.country_challenge_enabled",
-			"name": "IP Firewall - Country Challenge"
-		},
-		"allocation": {
-			"value": false,
-			"type": "bool"
-		},
-		"created_date": "2022-08-16T17:48:04.000000",
-		"edited_date": "2022-08-16T17:48:04.000000",
-		"deleted_date": ""
-	},
-	{
-		"id": "ip_firewall.country_jschl_enabled",
-		"feature": {
-			"feature_set": "ip_firewall",
-			"id": 402,
-			"key": "ip_firewall.country_jschl_enabled",
-			"name": "IP Firewall - Country JS Challenge"
-		},
-		"allocation": {
-			"value": false,
-			"type": "bool"
-		},
-		"created_date": "2022-08-16T17:48:04.000000",
-		"edited_date": "2022-08-16T17:48:04.000000",
-		"deleted_date": ""
-	},
-	{
-		"id": "fwrules.max_rules",
-		"feature": {
-			"feature_set": "fwrules",
-			"id": 486,
-			"key": "fwrules.max_rules",
-			"name": "Firewall Rules - Max Rules"
+			"feature_set": "rulesets",
+			"id": 1721,
+			"key": "rulesets.firewall_custom_max_rules",
+			"name": "Rulesets - Firewall Custom Max Rules"
 		},
 		"allocation": {
 			"value": 5,
 			"type": "max_count"
 		},
-		"created_date": "2022-08-16T17:48:04.000000",
-		"edited_date": "2022-08-16T17:57:53.000000",
+		"created_date": "2025-07-31T18:08:33.000000",
+		"edited_date": "2025-07-31T18:08:33.000000",
 		"deleted_date": ""
 	},
 	{
-		"id": "fwrules.actions_log",
-		"feature": {
-			"feature_set": "fwrules",
-			"id": 487,
-			"key": "fwrules.actions_log",
-			"name": "Firewall Rules - Actions Log Allowed"
-		},
-		"allocation": {
-			"value": false,
-			"type": "bool"
-		},
-		"created_date": "2022-08-16T17:48:04.000000",
-		"edited_date": "2022-08-16T17:48:04.000000",
-		"deleted_date": ""
-	},
-	{
-		"id": "filters.operator_regex",
-		"feature": {
-			"feature_set": "filters",
-			"id": 488,
-			"key": "filters.operator_regex",
-			"name": "Filters - Operator Regex"
-		},
-		"allocation": {
-			"value": false,
-			"type": "bool"
-		},
-		"created_date": "2022-08-16T17:48:04.000000",
-		"edited_date": "2022-08-16T17:57:53.000000",
-		"deleted_date": ""
-	},
-	{
-		"id": "sni_custom_certificates",
-		"feature": {
-			"feature_set": "sni_custom_certificates",
-			"id": 515,
-			"key": "sni_custom_certificates",
-			"name": "SNI Certificates"
-		},
-		"allocation": {
-			"value": 0,
-			"type": "max_count"
-		},
-		"created_date": "2022-08-16T17:48:04.000000",
-		"edited_date": "2022-08-16T17:57:53.000000",
-		"deleted_date": ""
-	},
-	{
-		"id": "image_resizing.enabled",
-		"feature": {
-			"feature_set": "image_resizing",
-			"id": 516,
-			"key": "image_resizing.enabled",
-			"name": "Image Resizing"
-		},
-		"allocation": {
-			"value": false,
-			"type": "bool"
-		},
-		"created_date": "2022-08-16T17:48:04.000000",
-		"edited_date": "2022-08-16T17:57:53.000000",
-		"deleted_date": ""
-	},
-	{
-		"id": "filters.advanced_geoip_enabled",
-		"feature": {
-			"feature_set": "filters",
-			"id": 541,
-			"key": "filters.advanced_geoip_enabled",
-			"name": "Firewall Filters - Geo IP Enabled"
-		},
-		"allocation": {
-			"value": false,
-			"type": "bool"
-		},
-		"created_date": "2022-08-16T17:48:04.000000",
-		"edited_date": "2022-08-16T17:57:53.000000",
-		"deleted_date": ""
-	},
-	{
-		"id": "graphql_api.enabled_za_free",
-		"feature": {
-			"feature_set": "graphql_api",
-			"id": 546,
-			"key": "graphql_api.enabled_za_free",
-			"name": "GraphQL API - Enabled Zone Access - FREE"
-		},
-		"allocation": {
-			"value": true,
-			"type": "bool"
-		},
-		"created_date": "2022-08-16T17:48:04.000000",
-		"edited_date": "2022-08-16T17:48:04.000000",
-		"deleted_date": ""
-	},
-	{
-		"id": "graphql_api.enabled_za_pro",
-		"feature": {
-			"feature_set": "graphql_api",
-			"id": 547,
-			"key": "graphql_api.enabled_za_pro",
-			"name": "GraphQL API - Enabled Zone Access - PRO"
-		},
-		"allocation": {
-			"value": false,
-			"type": "bool"
-		},
-		"created_date": "2022-08-16T17:48:04.000000",
-		"edited_date": "2022-08-16T17:57:53.000000",
-		"deleted_date": ""
-	},
-	{
-		"id": "graphql_api.enabled_za_biz",
-		"feature": {
-			"feature_set": "graphql_api",
-			"id": 548,
-			"key": "graphql_api.enabled_za_biz",
-			"name": "GraphQL API - Enabled Zone Access - BIZ"
-		},
-		"allocation": {
-			"value": false,
-			"type": "bool"
-		},
-		"created_date": "2022-08-16T17:48:04.000000",
-		"edited_date": "2022-08-16T17:57:53.000000",
-		"deleted_date": ""
-	},
-	{
-		"id": "graphql_api.enabled_za_ent",
-		"feature": {
-			"feature_set": "graphql_api",
-			"id": 549,
-			"key": "graphql_api.enabled_za_ent",
-			"name": "GraphQL API - Enabled Zone Access - ENT"
-		},
-		"allocation": {
-			"value": false,
-			"type": "bool"
-		},
-		"created_date": "2022-08-16T17:48:04.000000",
-		"edited_date": "2022-08-16T17:48:04.000000",
-		"deleted_date": ""
-	},
-	{
-		"id": "filters.request_body_inspection_enabled",
-		"feature": {
-			"feature_set": "filters",
-			"id": 566,
-			"key": "filters.request_body_inspection_enabled",
-			"name": "Firewall Rules Body Inspection Enabled"
-		},
-		"allocation": {
-			"value": false,
-			"type": "bool"
-		},
-		"created_date": "2022-08-16T17:48:04.000000",
-		"edited_date": "2022-08-16T17:48:04.000000",
-		"deleted_date": ""
-	},
-	{
-		"id": "graphql_api.maximum_duration_firewallEvents",
-		"feature": {
-			"feature_set": "graphql_api",
-			"id": 570,
-			"key": "graphql_api.maximum_duration_firewallEvents",
-			"name": "GraphQL - Maximum Duration - Firewall Events"
-		},
-		"allocation": {
-			"value": 86400,
-			"type": "max_count"
-		},
-		"created_date": "2022-08-16T17:48:04.000000",
-		"edited_date": "2022-08-16T17:57:53.000000",
-		"deleted_date": ""
-	},
-	{
-		"id": "graphql_api.maximum_duration_firewallEventsGroups",
-		"feature": {
-			"feature_set": "graphql_api",
-			"id": 571,
-			"key": "graphql_api.maximum_duration_firewallEventsGroups",
-			"name": "GraphQL - Maximum Duration - Firewall Events Groups"
-		},
-		"allocation": {
-			"value": 86400,
-			"type": "max_count"
-		},
-		"created_date": "2022-08-16T17:48:04.000000",
-		"edited_date": "2022-08-16T17:57:53.000000",
-		"deleted_date": ""
-	},
-	{
-		"id": "graphql_api.enabled_dos",
-		"feature": {
-			"feature_set": "graphql_api",
-			"id": 573,
-			"key": "graphql_api.enabled_dos",
-			"name": "GraphQL - API - Enabled Dos"
-		},
-		"allocation": {
-			"value": false,
-			"type": "bool"
-		},
-		"created_date": "2022-08-16T17:48:04.000000",
-		"edited_date": "2022-08-16T17:48:04.000000",
-		"deleted_date": ""
-	},
-	{
-		"id": "health_checks.enabled",
-		"feature": {
-			"feature_set": "health_checks",
-			"id": 574,
-			"key": "health_checks.enabled",
-			"name": "Health Checks Enabled"
-		},
-		"allocation": {
-			"value": false,
-			"type": "bool"
-		},
-		"created_date": "2022-08-16T17:48:04.000000",
-		"edited_date": "2022-08-16T17:57:53.000000",
-		"deleted_date": ""
-	},
-	{
-		"id": "health_checks.count",
-		"feature": {
-			"feature_set": "health_checks",
-			"id": 575,
-			"key": "health_checks.count",
-			"name": "Health Checks Count"
-		},
-		"allocation": {
-			"value": 0,
-			"type": "max_count"
-		},
-		"created_date": "2022-08-16T17:48:04.000000",
-		"edited_date": "2022-08-16T17:57:53.000000",
-		"deleted_date": ""
-	},
-	{
-		"id": "health_checks.region_count",
-		"feature": {
-			"feature_set": "health_checks",
-			"id": 577,
-			"key": "health_checks.region_count",
-			"name": "Health Checks Region Count"
-		},
-		"allocation": {
-			"value": 0,
-			"type": "max_count"
-		},
-		"created_date": "2022-08-16T17:48:04.000000",
-		"edited_date": "2022-08-16T17:57:53.000000",
-		"deleted_date": ""
-	},
-	{
-		"id": "logpush.spectrum_events.max_jobs_allowed",
-		"feature": {
-			"feature_set": "logpush",
-			"id": 597,
-			"key": "logpush.spectrum_events.max_jobs_allowed",
-			"name": "Logpush - Spectrum Events - Max Jobs"
-		},
-		"allocation": {
-			"value": 0,
-			"type": "max_count"
-		},
-		"created_date": "2022-08-16T17:48:04.000000",
-		"edited_date": "2022-08-16T17:48:04.000000",
-		"deleted_date": ""
-	},
-	{
-		"id": "ip_certificates",
-		"feature": {
-			"feature_set": "ip_certificates",
-			"id": 630,
-			"key": "ip_certificates",
-			"name": "IP Certificates"
-		},
-		"allocation": {
-			"value": 0,
-			"type": "max_count"
-		},
-		"created_date": "2022-08-16T17:48:04.000000",
-		"edited_date": "2022-08-16T17:57:53.000000",
-		"deleted_date": ""
-	},
-	{
-		"id": "ip_firewall.max_rules",
-		"feature": {
-			"feature_set": "ip_firewall",
-			"id": 673,
-			"key": "ip_firewall.max_rules",
-			"name": "IP Firewall - Max Rules"
-		},
-		"allocation": {
-			"value": 50000,
-			"type": "max_count"
-		},
-		"created_date": "2022-08-16T17:48:04.000000",
-		"edited_date": "2022-08-16T17:48:04.000000",
-		"deleted_date": ""
-	},
-	{
-		"id": "authoritative_dns.max_record_allowed",
-		"feature": {
-			"feature_set": "dns",
-			"id": 723,
-			"key": "authoritative_dns.max_record_allowed",
-			"name": "Authoritative DNS - Record Quota (Zone Level, Overridden by Account Quota)"
-		},
-		"allocation": {
-			"value": 200,
-			"type": "max_count"
-		},
-		"created_date": "2022-08-16T17:48:04.000000",
-		"edited_date": "2022-08-16T17:57:53.000000",
-		"deleted_date": ""
-	},
-	{
-		"id": "authoritative_dns.proxy_record_allowed",
-		"feature": {
-			"feature_set": "dns",
-			"id": 724,
-			"key": "authoritative_dns.proxy_record_allowed",
-			"name": "DO NOT USE - Authoritative DNS - Proxying Allowed"
-		},
-		"allocation": {
-			"value": true,
-			"type": "bool"
-		},
-		"created_date": "2022-08-16T17:48:04.000000",
-		"edited_date": "2022-08-16T17:48:04.000000",
-		"deleted_date": ""
-	},
-	{
-		"id": "dns_records_api.bypass_anti_abuse_logic",
-		"feature": {
-			"feature_set": "dns",
-			"id": 727,
-			"key": "dns_records_api.bypass_anti_abuse_logic",
-			"name": "DNS API - Bypass Anti-Abuse Logic"
-		},
-		"allocation": {
-			"value": false,
-			"type": "bool"
-		},
-		"created_date": "2022-08-16T17:48:04.000000",
-		"edited_date": "2022-08-16T17:57:53.000000",
-		"deleted_date": ""
-	},
-	{
-		"id": "rum.max_rules",
-		"feature": {
-			"feature_set": "rum",
-			"id": 733,
-			"key": "rum.max_rules",
-			"name": "Web Analytics - Max Rules"
-		},
-		"allocation": {
-			"value": 0,
-			"type": "max_count"
-		},
-		"created_date": "2022-08-16T17:48:04.000000",
-		"edited_date": "2022-08-16T17:57:53.000000",
-		"deleted_date": ""
-	},
-	{
-		"id": "always_online.crawl_frequency",
-		"feature": {
-			"feature_set": "always_online",
-			"id": 747,
-			"key": "always_online.crawl_frequency",
-			"name": "Always Online Crawl Frequency"
-		},
-		"allocation": {
-			"value": 1,
-			"type": "max_count"
-		},
-		"created_date": "2022-08-16T17:48:04.000000",
-		"edited_date": "2022-08-16T17:57:53.000000",
-		"deleted_date": ""
-	},
-	{
-		"id": "rulesets.owning_root_rulesets_allowed",
+		"id": "rulesets.firewall_custom_max_rules_per_ruleset",
 		"feature": {
 			"feature_set": "rulesets",
-			"id": 789,
-			"key": "rulesets.owning_root_rulesets_allowed",
-			"name": "Rulesets - Owning Root Rulesets Allowed"
+			"id": 884,
+			"key": "rulesets.firewall_custom_max_rules_per_ruleset",
+			"name": "Rulesets - Firewall Custom Max Rules Per Ruleset"
 		},
 		"allocation": {
-			"value": true,
-			"type": "bool"
+			"value": 5,
+			"type": "max_count"
 		},
-		"created_date": "2022-08-16T17:48:04.000000",
-		"edited_date": "2022-08-16T17:48:04.000000",
-		"deleted_date": ""
-	},
-	{
-		"id": "zone.automatic_platform_optimization",
-		"feature": {
-			"feature_set": "zone",
-			"id": 791,
-			"key": "zone.automatic_platform_optimization",
-			"name": "Automatic Platform Optimization"
-		},
-		"allocation": {
-			"value": false,
-			"type": "bool"
-		},
-		"created_date": "2022-08-16T17:48:04.000000",
-		"edited_date": "2022-08-16T17:57:53.000000",
-		"deleted_date": ""
-	},
-	{
-		"id": "rulesets.fw_global_rulesets_execute_sanitization_allowed",
-		"feature": {
-			"feature_set": "rulesets",
-			"id": 817,
-			"key": "rulesets.fw_global_rulesets_execute_sanitization_allowed",
-			"name": "Rulesets - Execute Global Sanitization Rules Allowed"
-		},
-		"allocation": {
-			"value": true,
-			"type": "bool"
-		},
-		"created_date": "2022-08-16T17:48:04.000000",
-		"edited_date": "2022-08-16T17:48:04.000000",
-		"deleted_date": ""
-	},
-	{
-		"id": "cache.allow_vary",
-		"feature": {
-			"feature_set": "cache",
-			"id": 848,
-			"key": "cache.allow_vary",
-			"name": "Cache - Allow Vary"
-		},
-		"allocation": {
-			"value": false,
-			"type": "bool"
-		},
-		"created_date": "2022-08-16T17:48:04.000000",
-		"edited_date": "2022-08-16T17:57:53.000000",
-		"deleted_date": ""
-	},
-	{
-		"id": "rulesets.transform_phase_regex_allowed",
-		"feature": {
-			"feature_set": "rulesets",
-			"id": 860,
-			"key": "rulesets.transform_phase_regex_allowed",
-			"name": "Rulesets - Transform Phase Regex Allowed"
-		},
-		"allocation": {
-			"value": false,
-			"type": "bool"
-		},
-		"created_date": "2022-08-16T17:48:04.000000",
-		"edited_date": "2022-08-16T17:57:53.000000",
+		"created_date": "2023-02-05T19:15:45.000000",
+		"edited_date": "2023-02-05T19:15:45.000000",
 		"deleted_date": ""
 	},
 	{
@@ -905,6 +1001,38 @@
 		},
 		"created_date": "2023-02-05T19:15:45.000000",
 		"edited_date": "2023-02-05T19:15:45.000000",
+		"deleted_date": ""
+	},
+	{
+		"id": "rulesets.fw_global_rulesets_execute_ddos_l7_allowed",
+		"feature": {
+			"feature_set": "rulesets",
+			"id": 901,
+			"key": "rulesets.fw_global_rulesets_execute_ddos_l7_allowed",
+			"name": "Rulesets - Execute Global Cloudflare DDoS L7 Managed Rules Allowed"
+		},
+		"allocation": {
+			"value": true,
+			"type": "bool"
+		},
+		"created_date": "2022-08-16T17:48:04.000000",
+		"edited_date": "2022-08-16T17:48:04.000000",
+		"deleted_date": ""
+	},
+	{
+		"id": "rulesets.fw_global_rulesets_execute_firewall_managed_bot_management_all",
+		"feature": {
+			"feature_set": "rulesets",
+			"id": 1590,
+			"key": "rulesets.fw_global_rulesets_execute_firewall_managed_bot_management_all",
+			"name": "Rulesets - Execute Global Bot Management Rules for all plans"
+		},
+		"allocation": {
+			"value": true,
+			"type": "bool"
+		},
+		"created_date": "2024-09-10T08:20:09.000000",
+		"edited_date": "2024-09-10T08:20:09.000000",
 		"deleted_date": ""
 	},
 	{
@@ -940,60 +1068,60 @@
 		"deleted_date": ""
 	},
 	{
-		"id": "bot_management.session_score",
+		"id": "rulesets.fw_global_rulesets_execute_leaked_credential_checks_allowed",
 		"feature": {
-			"feature_set": "bot_management",
-			"id": 876,
-			"key": "bot_management.session_score",
-			"name": "Bot Management - Configure Session Score"
+			"feature_set": "rulesets",
+			"id": 1244,
+			"key": "rulesets.fw_global_rulesets_execute_leaked_credential_checks_allowed",
+			"name": "Rulesets - Executing Leaked Credential Checks managed ruleset allowed"
 		},
 		"allocation": {
-			"value": false,
+			"value": true,
+			"type": "bool"
+		},
+		"created_date": "2025-07-31T18:08:33.000000",
+		"edited_date": "2025-07-31T18:08:33.000000",
+		"deleted_date": ""
+	},
+	{
+		"id": "rulesets.fw_global_rulesets_execute_request_late_transform_managed_headers_allowed",
+		"feature": {
+			"feature_set": "rulesets",
+			"id": 984,
+			"key": "rulesets.fw_global_rulesets_execute_request_late_transform_managed_headers_allowed",
+			"name": "Rulesets - Executing late request transform managed headers ruleset allowed"
+		},
+		"allocation": {
+			"value": true,
 			"type": "bool"
 		},
 		"created_date": "2022-08-16T17:48:04.000000",
-		"edited_date": "2022-08-16T17:57:53.000000",
+		"edited_date": "2022-08-16T17:48:04.000000",
 		"deleted_date": ""
 	},
 	{
-		"id": "rulesets.max_ratelimit_rules_per_ruleset",
+		"id": "rulesets.fw_global_rulesets_execute_response_managed_headers_allowed",
 		"feature": {
 			"feature_set": "rulesets",
-			"id": 883,
-			"key": "rulesets.max_ratelimit_rules_per_ruleset",
-			"name": "Rulesets - Max Ratelimit Rules Per Ruleset"
+			"id": 985,
+			"key": "rulesets.fw_global_rulesets_execute_response_managed_headers_allowed",
+			"name": "Rulesets - Executing reponse managed headers ruleset allowed"
 		},
 		"allocation": {
-			"value": 1,
-			"type": "max_count"
+			"value": true,
+			"type": "bool"
 		},
-		"created_date": "2022-11-09T00:29:44.000000",
-		"edited_date": "2022-11-09T00:29:44.000000",
+		"created_date": "2022-08-16T17:48:04.000000",
+		"edited_date": "2022-08-16T17:48:04.000000",
 		"deleted_date": ""
 	},
 	{
-		"id": "rulesets.firewall_custom_max_rules_per_ruleset",
+		"id": "rulesets.fw_global_rulesets_execute_sanitization_allowed",
 		"feature": {
 			"feature_set": "rulesets",
-			"id": 884,
-			"key": "rulesets.firewall_custom_max_rules_per_ruleset",
-			"name": "Rulesets - Firewall Custom Max Rules Per Ruleset"
-		},
-		"allocation": {
-			"value": 5,
-			"type": "max_count"
-		},
-		"created_date": "2023-02-05T19:15:45.000000",
-		"edited_date": "2023-02-05T19:15:45.000000",
-		"deleted_date": ""
-	},
-	{
-		"id": "rulesets.fw_global_rulesets_execute_ddos_l7_allowed",
-		"feature": {
-			"feature_set": "rulesets",
-			"id": 901,
-			"key": "rulesets.fw_global_rulesets_execute_ddos_l7_allowed",
-			"name": "Rulesets - Execute Global Cloudflare DDoS L7 Managed Rules Allowed"
+			"id": 817,
+			"key": "rulesets.fw_global_rulesets_execute_sanitization_allowed",
+			"name": "Rulesets - Execute Global Sanitization Rules Allowed"
 		},
 		"allocation": {
 			"value": true,
@@ -1020,51 +1148,19 @@
 		"deleted_date": ""
 	},
 	{
-		"id": "rulesets.ddos_l7_sensitivity_limit",
+		"id": "rulesets.max_ratelimit_rules_per_ruleset",
 		"feature": {
 			"feature_set": "rulesets",
-			"id": 903,
-			"key": "rulesets.ddos_l7_sensitivity_limit",
-			"name": "Rulesets - Limit the latest sensitivity level allowed"
+			"id": 883,
+			"key": "rulesets.max_ratelimit_rules_per_ruleset",
+			"name": "Rulesets - Max Ratelimit Rules Per Ruleset"
 		},
 		"allocation": {
-			"value": 300,
+			"value": 1,
 			"type": "max_count"
 		},
-		"created_date": "2022-08-16T17:48:04.000000",
-		"edited_date": "2022-08-16T17:48:04.000000",
-		"deleted_date": ""
-	},
-	{
-		"id": "rulesets.transform_max_rules",
-		"feature": {
-			"feature_set": "rulesets",
-			"id": 905,
-			"key": "rulesets.transform_max_rules",
-			"name": "Rulesets - Transform Max Rules"
-		},
-		"allocation": {
-			"value": 10,
-			"type": "max_count"
-		},
-		"created_date": "2022-08-16T17:48:04.000000",
-		"edited_date": "2022-08-16T17:57:53.000000",
-		"deleted_date": ""
-	},
-	{
-		"id": "ts.manual_process",
-		"feature": {
-			"feature_set": "abuse",
-			"id": 967,
-			"key": "ts.manual_process",
-			"name": "TS Manual Process"
-		},
-		"allocation": {
-			"value": false,
-			"type": "bool"
-		},
-		"created_date": "2022-08-16T17:48:04.000000",
-		"edited_date": "2022-08-16T17:57:53.000000",
+		"created_date": "2022-11-09T00:29:44.000000",
+		"edited_date": "2022-11-09T00:29:44.000000",
 		"deleted_date": ""
 	},
 	{
@@ -1084,12 +1180,12 @@
 		"deleted_date": ""
 	},
 	{
-		"id": "rulesets.fw_global_rulesets_execute_request_late_transform_managed_headers_allowed",
+		"id": "rulesets.origin_rule_origin_port_allowed",
 		"feature": {
 			"feature_set": "rulesets",
-			"id": 984,
-			"key": "rulesets.fw_global_rulesets_execute_request_late_transform_managed_headers_allowed",
-			"name": "Rulesets - Executing late request transform managed headers ruleset allowed"
+			"id": 1007,
+			"key": "rulesets.origin_rule_origin_port_allowed",
+			"name": "Rulesets - Origin Rule Origin Port Allowed"
 		},
 		"allocation": {
 			"value": true,
@@ -1100,12 +1196,28 @@
 		"deleted_date": ""
 	},
 	{
-		"id": "rulesets.fw_global_rulesets_execute_response_managed_headers_allowed",
+		"id": "rulesets.origin_rule_sni_override_allowed",
 		"feature": {
 			"feature_set": "rulesets",
-			"id": 985,
-			"key": "rulesets.fw_global_rulesets_execute_response_managed_headers_allowed",
-			"name": "Rulesets - Executing reponse managed headers ruleset allowed"
+			"id": 1044,
+			"key": "rulesets.origin_rule_sni_override_allowed",
+			"name": "Rulesets - Origin Rule SNI Override Allowed"
+		},
+		"allocation": {
+			"value": false,
+			"type": "bool"
+		},
+		"created_date": "2022-08-16T17:48:04.000000",
+		"edited_date": "2022-08-16T17:48:04.000000",
+		"deleted_date": ""
+	},
+	{
+		"id": "rulesets.owning_root_rulesets_allowed",
+		"feature": {
+			"feature_set": "rulesets",
+			"id": 789,
+			"key": "rulesets.owning_root_rulesets_allowed",
+			"name": "Rulesets - Owning Root Rulesets Allowed"
 		},
 		"allocation": {
 			"value": true,
@@ -1150,166 +1262,6 @@
 		"deleted_date": ""
 	},
 	{
-		"id": "rulesets.origin_rule_origin_port_allowed",
-		"feature": {
-			"feature_set": "rulesets",
-			"id": 1007,
-			"key": "rulesets.origin_rule_origin_port_allowed",
-			"name": "Rulesets - Origin Rule Origin Port Allowed"
-		},
-		"allocation": {
-			"value": true,
-			"type": "bool"
-		},
-		"created_date": "2022-08-16T17:48:04.000000",
-		"edited_date": "2022-08-16T17:48:04.000000",
-		"deleted_date": ""
-	},
-	{
-		"id": "rulesets.block_customized_response_allowed",
-		"feature": {
-			"feature_set": "rulesets",
-			"id": 1016,
-			"key": "rulesets.block_customized_response_allowed",
-			"name": "Rulesets - Block Customization Response Allowed"
-		},
-		"allocation": {
-			"value": false,
-			"type": "bool"
-		},
-		"created_date": "2022-08-16T17:51:08.000000",
-		"edited_date": "2022-11-09T00:29:44.000000",
-		"deleted_date": ""
-	},
-	{
-		"id": "rulesets.custom_errors_max_rules",
-		"feature": {
-			"feature_set": "rulesets",
-			"id": 1018,
-			"key": "rulesets.custom_errors_max_rules",
-			"name": "Rulesets - Custom Errors Rules Max"
-		},
-		"allocation": {
-			"value": 0,
-			"type": "max_count"
-		},
-		"created_date": "2022-08-16T17:48:04.000000",
-		"edited_date": "2022-08-16T17:57:53.000000",
-		"deleted_date": ""
-	},
-	{
-		"id": "rulesets.cache_settings_rule_max",
-		"feature": {
-			"feature_set": "rulesets",
-			"id": 1021,
-			"key": "rulesets.cache_settings_rule_max",
-			"name": "Rulesets - Cache Settings Rule Max"
-		},
-		"allocation": {
-			"value": 10,
-			"type": "max_count"
-		},
-		"created_date": "2022-08-16T17:48:04.000000",
-		"edited_date": "2022-08-16T17:57:53.000000",
-		"deleted_date": ""
-	},
-	{
-		"id": "rulesets.config_rule_max",
-		"feature": {
-			"feature_set": "rulesets",
-			"id": 1036,
-			"key": "rulesets.config_rule_max",
-			"name": "Rulesets - Config Rule Max"
-		},
-		"allocation": {
-			"value": 10,
-			"type": "max_count"
-		},
-		"created_date": "2022-08-16T17:48:04.000000",
-		"edited_date": "2022-11-09T00:29:44.000000",
-		"deleted_date": ""
-	},
-	{
-		"id": "rulesets.dynamic_redirect_rule_max",
-		"feature": {
-			"feature_set": "rulesets",
-			"id": 1043,
-			"key": "rulesets.dynamic_redirect_rule_max",
-			"name": "Rulesets - Dynamic Redirect Rule Max"
-		},
-		"allocation": {
-			"value": 10,
-			"type": "max_count"
-		},
-		"created_date": "2022-08-16T17:48:04.000000",
-		"edited_date": "2022-08-16T17:57:53.000000",
-		"deleted_date": ""
-	},
-	{
-		"id": "rulesets.origin_rule_sni_override_allowed",
-		"feature": {
-			"feature_set": "rulesets",
-			"id": 1044,
-			"key": "rulesets.origin_rule_sni_override_allowed",
-			"name": "Rulesets - Origin Rule SNI Override Allowed"
-		},
-		"allocation": {
-			"value": false,
-			"type": "bool"
-		},
-		"created_date": "2022-08-16T17:48:04.000000",
-		"edited_date": "2022-08-16T17:48:04.000000",
-		"deleted_date": ""
-	},
-	{
-		"id": "authoritative_dns.max_record_comment_length",
-		"feature": {
-			"feature_set": "dns",
-			"id": 1105,
-			"key": "authoritative_dns.max_record_comment_length",
-			"name": "Authoritative DNS - Maximum Record Comment Length"
-		},
-		"allocation": {
-			"value": 100,
-			"type": "max_count"
-		},
-		"created_date": "2022-11-09T00:29:44.000000",
-		"edited_date": "2023-07-18T21:04:13.000000",
-		"deleted_date": ""
-	},
-	{
-		"id": "authoritative_dns.max_record_tags",
-		"feature": {
-			"feature_set": "dns",
-			"id": 1106,
-			"key": "authoritative_dns.max_record_tags",
-			"name": "Authoritative DNS - Maximum Tags Per Record"
-		},
-		"allocation": {
-			"value": 0,
-			"type": "max_count"
-		},
-		"created_date": "2022-11-09T00:29:44.000000",
-		"edited_date": "2022-11-09T00:29:44.000000",
-		"deleted_date": ""
-	},
-	{
-		"id": "authoritative_dns.max_record_tag_value_length",
-		"feature": {
-			"feature_set": "dns",
-			"id": 1107,
-			"key": "authoritative_dns.max_record_tag_value_length",
-			"name": "Authoritative DNS - Maximum Record Tag Value Length"
-		},
-		"allocation": {
-			"value": 100,
-			"type": "max_count"
-		},
-		"created_date": "2022-11-09T00:29:44.000000",
-		"edited_date": "2022-11-09T00:29:44.000000",
-		"deleted_date": ""
-	},
-	{
 		"id": "rulesets.response_compression_max_rules",
 		"feature": {
 			"feature_set": "rulesets",
@@ -1342,6 +1294,70 @@
 		"deleted_date": ""
 	},
 	{
+		"id": "rulesets.transform_max_rules",
+		"feature": {
+			"feature_set": "rulesets",
+			"id": 905,
+			"key": "rulesets.transform_max_rules",
+			"name": "Rulesets - Transform Max Rules"
+		},
+		"allocation": {
+			"value": 10,
+			"type": "max_count"
+		},
+		"created_date": "2022-08-16T17:48:04.000000",
+		"edited_date": "2022-08-16T17:57:53.000000",
+		"deleted_date": ""
+	},
+	{
+		"id": "rulesets.transform_phase_regex_allowed",
+		"feature": {
+			"feature_set": "rulesets",
+			"id": 860,
+			"key": "rulesets.transform_phase_regex_allowed",
+			"name": "Rulesets - Transform Phase Regex Allowed"
+		},
+		"allocation": {
+			"value": false,
+			"type": "bool"
+		},
+		"created_date": "2022-08-16T17:48:04.000000",
+		"edited_date": "2022-08-16T17:57:53.000000",
+		"deleted_date": ""
+	},
+	{
+		"id": "rum.max_rules",
+		"feature": {
+			"feature_set": "rum",
+			"id": 733,
+			"key": "rum.max_rules",
+			"name": "Web Analytics - Max Rules"
+		},
+		"allocation": {
+			"value": 0,
+			"type": "max_count"
+		},
+		"created_date": "2022-08-16T17:48:04.000000",
+		"edited_date": "2022-08-16T17:57:53.000000",
+		"deleted_date": ""
+	},
+	{
+		"id": "sni_custom_certificates",
+		"feature": {
+			"feature_set": "sni_custom_certificates",
+			"id": 515,
+			"key": "sni_custom_certificates",
+			"name": "SNI Certificates"
+		},
+		"allocation": {
+			"value": 0,
+			"type": "max_count"
+		},
+		"created_date": "2022-08-16T17:48:04.000000",
+		"edited_date": "2022-08-16T17:57:53.000000",
+		"deleted_date": ""
+	},
+	{
 		"id": "snippets.max_snippets_allowed",
 		"feature": {
 			"feature_set": "snippets",
@@ -1358,99 +1374,83 @@
 		"deleted_date": ""
 	},
 	{
-		"id": "rulesets.fw_global_rulesets_execute_leaked_credential_checks_allowed",
+		"id": "ts.manual_process",
 		"feature": {
-			"feature_set": "rulesets",
-			"id": 1244,
-			"key": "rulesets.fw_global_rulesets_execute_leaked_credential_checks_allowed",
-			"name": "Rulesets - Executing Leaked Credential Checks managed ruleset allowed"
-		},
-		"allocation": {
-			"value": true,
-			"type": "bool"
-		},
-		"created_date": "2025-07-31T18:08:33.000000",
-		"edited_date": "2025-07-31T18:08:33.000000",
-		"deleted_date": ""
-	},
-	{
-		"id": "foundation_dns.advanced_nameservers_allowed",
-		"feature": {
-			"feature_set": "dns",
-			"id": 1245,
-			"key": "foundation_dns.advanced_nameservers_allowed",
-			"name": "Foundation DNS - Advanced Name Servers"
+			"feature_set": "abuse",
+			"id": 967,
+			"key": "ts.manual_process",
+			"name": "TS Manual Process"
 		},
 		"allocation": {
 			"value": false,
 			"type": "bool"
 		},
-		"created_date": "2024-08-19T05:45:09.000000",
-		"edited_date": "2024-08-19T05:45:09.000000",
+		"created_date": "2022-08-16T17:48:04.000000",
+		"edited_date": "2022-08-16T17:57:53.000000",
 		"deleted_date": ""
 	},
 	{
-		"id": "cloud_connector.rule_max",
+		"id": "zone_analytics.minimum_duration_colos",
 		"feature": {
-			"feature_set": "cloud_connector",
-			"id": 1584,
-			"key": "cloud_connector.rule_max",
-			"name": "Cloud Connector - Rule Allowed Max"
+			"feature_set": "zone_analytics",
+			"id": 379,
+			"key": "zone_analytics.minimum_duration_colos",
+			"name": "Zone Analytics - Minimum Duration Colos"
 		},
 		"allocation": {
-			"value": 10,
+			"value": 525600,
 			"type": "max_count"
 		},
-		"created_date": "2024-09-10T08:20:09.000000",
-		"edited_date": "2025-07-31T18:08:33.000000",
+		"created_date": "2022-08-16T17:48:04.000000",
+		"edited_date": "2022-08-16T17:48:04.000000",
 		"deleted_date": ""
 	},
 	{
-		"id": "rulesets.fw_global_rulesets_execute_firewall_managed_bot_management_all",
+		"id": "zone_analytics.minimum_duration_zone",
 		"feature": {
-			"feature_set": "rulesets",
-			"id": 1590,
-			"key": "rulesets.fw_global_rulesets_execute_firewall_managed_bot_management_all",
-			"name": "Rulesets - Execute Global Bot Management Rules for all plans"
+			"feature_set": "zone_analytics",
+			"id": 378,
+			"key": "zone_analytics.minimum_duration_zone",
+			"name": "Zone Analytics - Minimum Duration Zone"
 		},
 		"allocation": {
-			"value": true,
+			"value": 1440,
+			"type": "max_count"
+		},
+		"created_date": "2022-08-16T17:48:04.000000",
+		"edited_date": "2022-08-16T17:57:53.000000",
+		"deleted_date": ""
+	},
+	{
+		"id": "zone.automatic_platform_optimization",
+		"feature": {
+			"feature_set": "zone",
+			"id": 791,
+			"key": "zone.automatic_platform_optimization",
+			"name": "Automatic Platform Optimization"
+		},
+		"allocation": {
+			"value": false,
 			"type": "bool"
 		},
-		"created_date": "2024-09-10T08:20:09.000000",
-		"edited_date": "2024-09-10T08:20:09.000000",
+		"created_date": "2022-08-16T17:48:04.000000",
+		"edited_date": "2022-08-16T17:57:53.000000",
 		"deleted_date": ""
 	},
 	{
-		"id": "dns_records_api.max_batch_size",
+		"id": "zonelockdown.max_rules",
 		"feature": {
-			"feature_set": "dns",
-			"id": 1596,
-			"key": "dns_records_api.max_batch_size",
-			"name": "DNS API - Max Batch Size"
+			"feature_set": "zonelockdown",
+			"id": 141,
+			"key": "zonelockdown.max_rules",
+			"name": "Zone Lockdown - Max Rules"
 		},
 		"allocation": {
-			"value": 200,
+			"value": 0,
 			"type": "max_count"
 		},
-		"created_date": "2024-09-10T08:20:09.000000",
-		"edited_date": "2024-09-10T08:20:09.000000",
-		"deleted_date": ""
-	},
-	{
-		"id": "rulesets.firewall_custom_max_rules",
-		"feature": {
-			"feature_set": "rulesets",
-			"id": 1721,
-			"key": "rulesets.firewall_custom_max_rules",
-			"name": "Rulesets - Firewall Custom Max Rules"
-		},
-		"allocation": {
-			"value": 5,
-			"type": "max_count"
-		},
-		"created_date": "2025-07-31T18:08:33.000000",
-		"edited_date": "2025-07-31T18:08:33.000000",
+		"created_date": "2022-08-16T17:48:04.000000",
+		"edited_date": "2022-08-16T17:57:53.000000",
 		"deleted_date": ""
 	}
 ]
