@@ -60,8 +60,9 @@ async function run() {
 	await fetchAndWrite(`/zones/${process.env.CLOUDFLARE_ZONE_ID}/flags`, '../data/account/zone_flags.json');
 
 	// Entitlements
-	await fetchAndWrite(`/accounts/${process.env.CLOUDFLARE_ACCOUNT_ID}/entitlements`, '../data/account/account_entitlements.json');
-	await fetchAndWrite(`/zones/${process.env.CLOUDFLARE_ZONE_ID}/entitlements`, '../data/account/zone_entitlements.json');
+	const entitlementSort = (itemA, itemB) => itemA.id.localeCompare(itemB.id);
+	await fetchAndWrite(`/accounts/${process.env.CLOUDFLARE_ACCOUNT_ID}/entitlements`, '../data/account/account_entitlements.json', entitlementSort);
+	await fetchAndWrite(`/zones/${process.env.CLOUDFLARE_ZONE_ID}/entitlements`, '../data/account/zone_entitlements.json', entitlementSort);
 
 	// Roles
 	await fetchAndWrite(`/accounts/${process.env.CLOUDFLARE_ACCOUNT_ID}/roles?per_page=100`, '../data/account/account_roles.json');
