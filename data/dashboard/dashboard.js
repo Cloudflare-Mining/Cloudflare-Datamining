@@ -2,7 +2,7 @@
 	try {
 		var e = "undefined" != typeof window ? window : "undefined" != typeof global ? global : "undefined" != typeof self ? self : {},
 			n = (new Error).stack;
-		n && (e._sentryDebugIds = e._sentryDebugIds || {}, e._sentryDebugIds[n] = "a431383d-ff95-57ca-acb1-631c367825f4")
+		n && (e._sentryDebugIds = e._sentryDebugIds || {}, e._sentryDebugIds[n] = "5dcc65ce-c712-5c26-a85a-b8fe733aec7e")
 	} catch (e) {}
 }();
 (self.webpackChunk_cloudflare_app_dash = self.webpackChunk_cloudflare_app_dash || []).push([
@@ -971,10 +971,10 @@
 						}({}, {
 							branch: "master",
 							isReleaseCandidate: "true",
-							commit: "e211a2d7b65377116728f7c15f896d957f736a09",
-							dashVersion: "21915081",
+							commit: "c0b305e6871f50e4e5bff10994a07bb2709dc556",
+							dashVersion: "21960408",
 							env: "production",
-							builtAt: 0x19d738cc1ee,
+							builtAt: 0x19d7579308b,
 							versions: {
 								"@cloudflare/app-dash": "25.161.23",
 								"@cloudflare/kumo": "1.17.0",
@@ -1387,31 +1387,34 @@
 			"use strict";
 			e.d(r, {
 				JW: function() {
-					return v
+					return b
 				},
 				Zh: function() {
-					return k
-				},
-				ao: function() {
 					return f
 				},
+				ao: function() {
+					return x
+				},
 				d4: function() {
-					return y
+					return _
 				},
 				hP: function() {
-					return _
+					return E
 				},
 				kT: function() {
 					return d
 				},
-				q_: function() {
-					return b
+				oJ: function() {
+					return T
 				},
-				s4: function() {
+				q_: function() {
 					return w
 				},
+				s4: function() {
+					return k
+				},
 				z_: function() {
-					return x
+					return y
 				}
 			});
 			var o = e("webpack/sharing/consume/default/react/react"),
@@ -1457,16 +1460,18 @@
 				g = "account home empty state - domain buy clicked",
 				m = "account home empty state - domain transfer clicked",
 				h = "account home empty state - domain onboard clicked",
-				v = {
+				v = "account home empty state - dismiss clicked",
+				b = {
 					SPARROW_ACCOUNT_HOME_EMPTY_STATE_PAGE_VIEWED: d,
 					SPARROW_ACCOUNT_HOME_EMPTY_STATE_ACTION_CLICKED: s,
 					SPARROW_ACCOUNT_HOME_EMPTY_STATE_DOMAIN_SEARCHED_MANUAL: p,
 					SPARROW_ACCOUNT_HOME_EMPTY_STATE_DOMAIN_SEARCHED_AUTO: u,
 					SPARROW_ACCOUNT_HOME_EMPTY_STATE_DOMAIN_BUY_CLICKED: g,
 					SPARROW_ACCOUNT_HOME_EMPTY_STATE_DOMAIN_TRANSFER_CLICKED: m,
-					SPARROW_ACCOUNT_HOME_EMPTY_STATE_DOMAIN_ONBOARD_CLICKED: h
+					SPARROW_ACCOUNT_HOME_EMPTY_STATE_DOMAIN_ONBOARD_CLICKED: h,
+					SPARROW_ACCOUNT_HOME_EMPTY_STATE_DISMISS_CLICKED: v
 				},
-				b = (n, r, e) => {
+				w = (n, r, e) => {
 					let {
 						href: o,
 						variant: t
@@ -1478,7 +1483,7 @@
 					};
 					o && (l.href = (0, i.UG)(o)), a().sendEvent(s, l)
 				},
-				w = (n, r, e) => {
+				k = (n, r, e) => {
 					let {
 						variant: o
 					} = e;
@@ -1491,7 +1496,7 @@
 						variant: o
 					}))
 				},
-				k = (n, r, e) => {
+				f = (n, r, e) => {
 					let {
 						variant: o
 					} = e;
@@ -1504,7 +1509,7 @@
 						variant: o
 					}))
 				},
-				f = (n, r, e) => {
+				x = (n, r, e) => {
 					let {
 						href: o,
 						variant: t
@@ -1519,7 +1524,7 @@
 						variant: t
 					}))
 				},
-				x = (n, r, e) => {
+				y = (n, r, e) => {
 					let {
 						href: o,
 						variant: t
@@ -1534,7 +1539,7 @@
 						variant: t
 					}))
 				},
-				y = (n, r, e) => {
+				_ = (n, r, e) => {
 					let {
 						href: o,
 						variant: t
@@ -1549,7 +1554,7 @@
 						variant: t
 					}))
 				},
-				_ = (n, r) => {
+				E = (n, r) => {
 					let e = (0, o.useRef)(!1);
 					(0, o.useEffect)(() => {
 						!e.current && void 0 !== n && void 0 !== r && (a().sendEvent(d, c(l({
@@ -1560,6 +1565,13 @@
 							variant: r
 						})), e.current = !0)
 					}, [n, r])
+				},
+				T = n => {
+					a().sendEvent(v, l({
+						type: "action clicked"
+					}, n && {
+						signup_source: n
+					}))
 				}
 		},
 		"./react/app/components/AccountHome/tracking.ts": function(n, r, e) {
@@ -9150,4 +9162,4 @@
 		}
 	}
 ]);
-//# debugId=a431383d-ff95-57ca-acb1-631c367825f4
+//# debugId=5dcc65ce-c712-5c26-a85a-b8fe733aec7e
