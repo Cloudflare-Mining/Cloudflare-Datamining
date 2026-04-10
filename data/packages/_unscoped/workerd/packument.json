@@ -2,7 +2,7 @@
 	"name": "workerd",
 	"dist-tags": {
 		"beta": "0.20250124.2",
-		"latest": "1.20260409.1"
+		"latest": "1.20260410.1"
 	},
 	"versions": {
 		"0.0.1": {
@@ -9809,13 +9809,42 @@
 				"workerd": "bin/workerd"
 			},
 			"dist": {
-				"integrity": "sha512-kuWP20fAaqaLBqLbvUfY9nCF6c3C78L60G9lS6eVwBf+v8trVFIsAdLB/FtrnKm7vgVvpDzvFAfB80VIiVj95w==",
 				"shasum": "bc502fa2dc97b6f9393aad482a43986a594c6f2f",
 				"tarball": "https://registry.npmjs.org/workerd/-/workerd-1.20260409.1.tgz",
 				"fileCount": 7,
-				"unpackedSize": 4736037,
+				"integrity": "sha512-kuWP20fAaqaLBqLbvUfY9nCF6c3C78L60G9lS6eVwBf+v8trVFIsAdLB/FtrnKm7vgVvpDzvFAfB80VIiVj95w==",
+				"signatures": [
+					{
+						"sig": "MEUCIQD+Qh6bSPfQK/h5vsOTI0RNaDT7dOWdrTd5yQ0gn4KEUwIgB2bdbUANpGquFVYAuN99riDuomb4Twexcox1u57GMTg=",
+						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
+					}
+				],
 				"attestations": {
 					"url": "https://registry.npmjs.org/-/npm/v1/attestations/workerd@1.20260409.1",
+					"provenance": {
+						"predicateType": "https://slsa.dev/provenance/v1"
+					}
+				},
+				"unpackedSize": 4736037
+			},
+			"engines": {
+				"node": ">=16"
+			}
+		},
+		"1.20260410.1": {
+			"name": "workerd",
+			"version": "1.20260410.1",
+			"bin": {
+				"workerd": "bin/workerd"
+			},
+			"dist": {
+				"integrity": "sha512-T/GRD6Y5vN9g4CnGmOlfST1w7bj+1IjRFvX0K7CodZPJuPVPNPGhz8Wppah0WdT6A7I8Kad3zgZ2OkDdWtENrg==",
+				"shasum": "3b9145d5447fb8aa8dcb50ddbc094233057551e3",
+				"tarball": "https://registry.npmjs.org/workerd/-/workerd-1.20260410.1.tgz",
+				"fileCount": 7,
+				"unpackedSize": 4736073,
+				"attestations": {
+					"url": "https://registry.npmjs.org/-/npm/v1/attestations/workerd@1.20260410.1",
 					"provenance": {
 						"predicateType": "https://slsa.dev/provenance/v1"
 					}
@@ -9823,7 +9852,7 @@
 				"signatures": [
 					{
 						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U",
-						"sig": "MEUCIQD+Qh6bSPfQK/h5vsOTI0RNaDT7dOWdrTd5yQ0gn4KEUwIgB2bdbUANpGquFVYAuN99riDuomb4Twexcox1u57GMTg="
+						"sig": "MEYCIQDfcABPcd0vzK2y6W0B76OGKqM4KPjnReojNngVoilNsQIhALU0DlUGcIVA6s67ho0AWU0x9qlTPhh78rz42RuGeZIU"
 					}
 				]
 			},
