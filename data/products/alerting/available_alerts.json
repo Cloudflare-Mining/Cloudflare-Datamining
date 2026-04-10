@@ -24,6 +24,19 @@
 	],
 	"Billing": [
 		{
+			"display_name": "Billing Budget Alert",
+			"type": "billing_budget_alert",
+			"description": "Notifies when your usage charges reach your configured budget threshold for the billing period.",
+			"filter_options": [
+				{
+					"Key": "total_spend_dollars",
+					"ComparisonOperator": ">=",
+					"Range": "1-1",
+					"AvailableValues": null
+				}
+			]
+		},
+		{
 			"display_name": "Billing Usage Alert",
 			"type": "billing_usage_alert",
 			"description": "Billing usage exceeds your configured threshold for a specific product",
