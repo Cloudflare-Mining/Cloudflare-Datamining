@@ -1,10 +1,10 @@
 {
 	"componentChunkName": "component---src-components-page-page-template-tsx",
-	"path": "/application-services/products/web3/",
+	"path": "/developer-platform/products/cloudflare-stream/",
 	"result": {
 		"data": {
 			"page": {
-				"pageName": "Web3 Products Page",
+				"pageName": "Cloudflare Stream - Product Page",
 				"localeList": {
 					"enUS": "English for Locale",
 					"zhCN": "Translated for Locale",
@@ -27,19 +27,20 @@
 					"ruRU": "Translated for Locale",
 					"svSE": "English for Locale",
 					"viVN": "English for Locale",
-					"trTR": "Translated for Locale",
+					"trTR": "English for Locale",
 					"zhHansCN": "Translated for Locale",
 					"plPL": "Translated for Locale",
-					"arAR": "No Page for Locale"
+					"arAR": "No Page for Locale",
+					"heIL": null
 				},
-				"relativePath": "application-services/products/web3/",
+				"relativePath": "developer-platform/products/cloudflare-stream",
 				"topNavOptions": "default",
 				"topNavButtonText": null,
 				"topNavButtonUrl": null,
 				"footerOptions": "default",
 				"metaTags": {
-					"metaTitle": "Cloudflare Web3 | IPFS & Ethereum",
-					"metaDescription": "Cloudflare is your gateway to Web3 with easy access to IPFS and Ethereum networks. See how Cloudflare manages, maintains, and monitors Web3 infrastructure.",
+					"metaTitle": "Cloudflare Stream | Video streaming made easy and affordable at scale",
+					"metaDescription": "Cloudflare Stream is an easy-to-use online video streaming platform. Spend less time managing your video platform and more time promoting your product.",
 					"twitterCustomImage": null,
 					"metaImage": {
 						"file": {
@@ -51,10 +52,10 @@
 					"author": []
 				},
 				"sys": {
-					"createdAt": "2022-05-05T22:07:15.399Z",
-					"updatedAt": "2025-08-18T21:03:48.119Z"
+					"createdAt": "2018-10-22T06:17:01.292Z",
+					"updatedAt": "2026-04-04T10:48:08.338Z"
 				},
-				"contentfulId": "3aUZe4eM7vegrapkAVkIBJ",
+				"contentfulId": "2Tq4dKzDxes4kEWCECocYq",
 				"contentTypeId": "page",
 				"promotionalBanner": null,
 				"psaBanner": null,
@@ -64,30 +65,33 @@
 				"template": null,
 				"relatedBlades": [
 					{
-						"contentfulId": "475ZalIWMK1QFYpES784yx",
+						"contentfulId": "232DY0ToPnI5gi6O6M7mwT",
 						"contentTypeId": "bladeHeroAnimation",
-						"title": "Cloudflare Web3",
+						"title": "Cloudflare Stream",
 						"titleSize": null,
-						"subtitle": "Easily and securely access, maintain, and monitor Web3 infrastructure",
+						"subtitle": "Serverless live and on-demand video streaming",
 						"subtitleSize": null,
-						"copy": "Create secure, fast, and reliable applications built on Web3 technology — including the Ethereum network and InterPlanetary File System (IPFS).",
+						"copy": "Upload, store, encode, and deliver live and on-demand video with one API. Stream comes with unlimited video storage and low-latency delivery — with no format, protocol, or encoding expertise required by your development team.",
 						"buttonColor": "orange",
 						"buttonColor2": "orange-outline",
 						"buttonText1": "Get started",
-						"buttonText1LoggedIn": null,
-						"buttonUrl1": "https://dash.cloudflare.com/sign-up",
-						"buttonUrl1LoggedIn": null,
+						"buttonText1LoggedIn": "Get Started",
+						"buttonUrl1": "https://dash.cloudflare.com/sign-up/stream",
+						"buttonUrl1LoggedIn": "https://dash.cloudflare.com/sign-up/stream",
 						"button1ExtraClass": null,
-						"buttonText2": "Read the developer docs",
+						"buttonText2": "Read the product brief",
 						"buttonText2LoggedIn": null,
-						"buttonUrl2": "https://developers.cloudflare.com/web3/",
+						"buttonUrl2": "https://cfl.re/3YXsEXT",
 						"button2ExtraClass": null,
 						"bladeBorder": "none",
 						"htmlId": null,
 						"textColor": "black",
-						"includeVideo": false,
-						"streamVideoId": null,
-						"streamOptions": null,
+						"includeVideo": true,
+						"streamVideoId": "e7bd2dd67e0f8860b4ae81e33a966049 ",
+						"streamOptions": [
+							"controls",
+							"captions"
+						],
 						"streamCaptions": "en",
 						"popupStreamId": null,
 						"popupText": null,
@@ -96,8 +100,13 @@
 						"streamThumbnails": null,
 						"sectionPadding": null,
 						"streamPosterAssetFile": null,
-						"streamPoster": null,
-						"imageSize": "Large",
+						"streamPoster": {
+							"file": {
+								"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/1xg6MJoO3dijvdbX6wK2it/fcf8859e864950d164149ad337df77cb/SecureWebGateway_Webinar_Thumbnail.png"
+							},
+							"description": "Secure Web Gateway Webinar"
+						},
+						"imageSize": "Medium",
 						"imagePosition": null,
 						"leftLinkUrl": null,
 						"leftLink": null,
@@ -108,39 +117,25 @@
 						"backgroundAssetFile": null,
 						"imageLayout": null,
 						"image": null,
-						"imageAssetFile": {
-							"id": "8fb92b3d-abeb-5596-b25b-fbabd3bee4e5",
-							"altText": "Interplanetary File System (IPFS)",
-							"title": "Web3 Solutions Page Hero Image",
-							"activeAsset": "Contentful Asset",
-							"locale": "en-US",
-							"contentfulAsset": {
-								"file": {
-									"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/7d6osoCNmGCSGI1ZNFevBM/5cc846701cd4c5d54abcbef23460272e/BDES-4904_-_Distributed_web_DoH.svg"
-								},
-								"description": "Illustration of Ethereum distributed web"
-							},
-							"brandfolderAsset": null,
-							"brandfolderAssetMobile": null
-						}
+						"imageAssetFile": null
 					},
 					{
-						"contentfulId": "5ZxRPNHOwSAjWbKLqF5cT9",
+						"contentfulId": "1uKzLU6tNjY5nf2tDYjZlv",
 						"contentTypeId": "bladeMultipleColumnsLayout",
 						"title": null,
-						"eyebrowHeading": "BENEFITS OF CLOUDFLARE WEB3",
+						"eyebrowHeading": "BENEFITS OF CLOUDFLARE STREAM",
 						"description": null,
 						"textLayout": "left",
 						"columnsLayout": "Three Columns",
 						"columnContent": [
 							{
 								"contentTypeId": "feature",
-								"contentfulId": "whkLCb8ToimdwsihK60HS",
-								"title": "Secure access",
+								"contentfulId": "5oeQLN26cKY77WOqjv3iPb",
+								"title": "Unified and simplified infrastructure",
 								"makeTitleLink": false,
 								"titleUrl": null,
 								"titleSize": null,
-								"description": "Cloudflare enables you to securely access content from Web3 networks without installing or running any special software.",
+								"description": "Store and deliver video from a single pipeline. Stream automatically handles codecs, protocols, and bitrate, freeing up your team to focus on other projects.",
 								"learnMoreUrl": null,
 								"learnMoreText": null,
 								"displayBorder": false,
@@ -148,86 +143,14 @@
 								"removeCardBorder": false,
 								"icon": null,
 								"iconAssetFile": {
-									"id": "7eeb6aea-18f5-5736-9b17-69295f2df58c",
-									"altText": "Security shield protection orange",
-									"title": "Security shield protection orange",
+									"id": "08e29c98-f860-5f57-8de5-a2d65dc17f11",
+									"altText": "Cloudflare stream delivery blue",
+									"title": "Cloudflare stream delivery blue",
 									"activeAsset": "Contentful Asset",
 									"locale": "en-US",
 									"contentfulAsset": {
 										"file": {
-											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/74GDwwyKnKfYYz1QQEQh1P/c7232082d74a2cb16d2197596662f593/security-shield-protection-2.svg"
-										},
-										"description": null
-									},
-									"brandfolderAsset": null,
-									"brandfolderAssetMobile": null
-								},
-								"imageOverlaySuperheader": null,
-								"imageOverlayText": null,
-								"imageAssetFile": null,
-								"streamId": null,
-								"streamThumbnail": null,
-								"streamThumbnailAssetFile": null
-							},
-							{
-								"contentTypeId": "feature",
-								"contentfulId": "3d7pqdpbvWK23E37WRk8eA",
-								"title": "Faster performance",
-								"makeTitleLink": false,
-								"titleUrl": null,
-								"titleSize": null,
-								"description": "With data centers in hundreds of cities worldwide, Cloudflare delivers content requested through our gateways from the closest location to your end users.",
-								"learnMoreUrl": null,
-								"learnMoreText": null,
-								"displayBorder": false,
-								"openLinkInNewTab": null,
-								"removeCardBorder": false,
-								"icon": null,
-								"iconAssetFile": {
-									"id": "ff8961fa-ef8b-5b0d-b999-e0c79b5bbe93",
-									"altText": "internet globe",
-									"title": "internet globe",
-									"activeAsset": "Contentful Asset",
-									"locale": "en-US",
-									"contentfulAsset": {
-										"file": {
-											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/5b3ukfoY9BpcbnxK1cEvJs/78b3069991fa76f7b062113f6db17576/internet-globe.svg"
-										},
-										"description": "Orange icon of a globe"
-									},
-									"brandfolderAsset": null,
-									"brandfolderAssetMobile": null
-								},
-								"imageOverlaySuperheader": null,
-								"imageOverlayText": null,
-								"imageAssetFile": null,
-								"streamId": null,
-								"streamThumbnail": null,
-								"streamThumbnailAssetFile": null
-							},
-							{
-								"contentTypeId": "feature",
-								"contentfulId": "6R5a9HZqIp2Z9k0XntrYET",
-								"title": "Streamlined maintenance",
-								"makeTitleLink": false,
-								"titleUrl": null,
-								"titleSize": null,
-								"description": "Cloudflare — not your developers — maintains and monitors security, reliability, and performance for every gateway you create.",
-								"learnMoreUrl": null,
-								"learnMoreText": null,
-								"displayBorder": false,
-								"openLinkInNewTab": null,
-								"removeCardBorder": false,
-								"icon": null,
-								"iconAssetFile": {
-									"id": "1b916824-7fb8-5f8f-a315-4faa6461d4d3",
-									"altText": "Optimization gear ",
-									"title": "Optimization gear ",
-									"activeAsset": "Contentful Asset",
-									"locale": "en-US",
-									"contentfulAsset": {
-										"file": {
-											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/6JreowuAuIySxXXXqycY4r/746dc87c57caa9f58423af84de3fa35a/optimization-gear.svg"
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/6uZVCcQ0QrCNctcZMrzPMS/30bd1c225dde4080bc283c1fe63d7e9a/cloudflare-stream-delivery.png"
 										},
 										"description": ""
 									},
@@ -240,15 +163,87 @@
 								"streamId": null,
 								"streamThumbnail": null,
 								"streamThumbnailAssetFile": null
+							},
+							{
+								"contentTypeId": "feature",
+								"contentfulId": "1bxABG9223yU2nqBJ3j9k0",
+								"title": "Cost-effective, low-latency video delivery",
+								"makeTitleLink": false,
+								"titleUrl": null,
+								"titleSize": null,
+								"description": "With Stream, you pay only for the minutes of video delivered and stored — with no additional charges for encoding or bandwidth.",
+								"learnMoreUrl": null,
+								"learnMoreText": null,
+								"displayBorder": false,
+								"openLinkInNewTab": null,
+								"removeCardBorder": false,
+								"icon": null,
+								"iconAssetFile": {
+									"id": "eaa35043-4f47-559a-84df-14dd2dc384bd",
+									"altText": "Price",
+									"title": "Price",
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/57ABXXM79uTTFbsc925v8O/4b2b331f5a1475d45705d9c5fc61b85c/price.svg"
+										},
+										"description": ""
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								},
+								"imageOverlaySuperheader": null,
+								"imageOverlayText": null,
+								"imageAssetFile": null,
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
+							},
+							{
+								"contentTypeId": "feature",
+								"contentfulId": "3cl1twHL5bJZnGHvWFl0Ls",
+								"title": "Custom video editing and analytics",
+								"makeTitleLink": false,
+								"titleUrl": null,
+								"titleSize": null,
+								"description": "Stream lets you add multilingual captions, apply custom watermarks, and clip videos without re-uploading. It also offers detailed analytics, breaking down metrics per creator.",
+								"learnMoreUrl": null,
+								"learnMoreText": null,
+								"displayBorder": false,
+								"openLinkInNewTab": null,
+								"removeCardBorder": false,
+								"icon": null,
+								"iconAssetFile": {
+									"id": "082acf6d-2836-52a9-a97d-f6a571c67183",
+									"altText": "Icon of a graph going up",
+									"title": null,
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/yXs0Mrat5Fwc9hqisn4li/2741ce0d3466e09e4775ea7f5caa894b/analytics-data.png"
+										},
+										"description": null
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								},
+								"imageOverlaySuperheader": null,
+								"imageOverlayText": null,
+								"imageAssetFile": null,
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
 							}
 						],
-						"sectionPadding": "tile--no-bottom-padding",
+						"sectionPadding": null,
 						"htmlId": null
 					},
 					{
-						"contentfulId": "kerHg93goiP6ojUHA9brT",
-						"title": "Host content via secure, serverless interfaces to Web3 networks",
-						"copy": "Cloudflare's [IPFS gateway](https://developers.cloudflare.com/web3/ipfs-gateway/) provides a read-only, HTTP-accessible interface to the Interplanetary File System (IPFS) — enabling easy consumption for large customer bases that use traditional web clients.\n\nCloudflare's [Ethereum gateway](https://developers.cloudflare.com/web3/ethereum-gateway/) provides read and write access to the Ethereum network, so developers can use Ethereum in front-facing applications without any software installation.",
+						"contentfulId": "knRDACnuhEhRDPisRUcrJ",
+						"title": "End-to-end global video storage and delivery",
+						"copy": "Cloudflare Stream allows you to build, deliver, store, and analyze live and on-demand video features from a single platform, without the need to configure or maintain infrastructure.\n\nStream delivers your video content from %{DataCenterCount}+ data centers worldwide, ensuring that your users get the fastest, highest-quality playback and streaming options from any location.\n",
 						"toggleText": null,
 						"button": [],
 						"learnMoreUrl": null,
@@ -270,23 +265,76 @@
 						"streamPoster": null,
 						"streamPosterAssetFile": null,
 						"image": null,
-						"imageAssetFile": null,
+						"imageAssetFile": {
+							"id": "6c21b9a3-06fd-5c12-91b5-89dfc46e8123",
+							"altText": "Cost effective video delivery",
+							"title": "Cost effective video delivery",
+							"activeAsset": "Contentful Asset",
+							"locale": "en-US",
+							"contentfulAsset": {
+								"file": {
+									"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/5G3jV33s5Coo5guHxt26F3/e89b4bfe71cd228aabedc7f666670c11/stream-live-hero-illustration.svg"
+								},
+								"description": "Cost effective video delivery"
+							},
+							"brandfolderAsset": null,
+							"brandfolderAssetMobile": null
+						},
 						"featureList": [],
 						"contentTypeId": "bladeImageText",
 						"sectionTitle": "HOW IT WORKS",
 						"htmlId": null,
 						"titleSize": null,
-						"sectionPadding": "tile--no-bottom-padding",
+						"sectionPadding": "tile--no-top-padding",
 						"backgroundColor": "white",
 						"bladeBorder": "none",
 						"imagePosition": true,
 						"imageSize": "medium",
-						"imageTextAlignment": "center",
+						"imageTextAlignment": null,
 						"togglesTo": []
 					},
 					{
+						"contentfulId": "34aJVRLtfsLo9fGobJNKCu",
+						"contentTypeId": "bladeLeadGeneration",
+						"title": null,
+						"description": "Streamline your video infrastructure",
+						"variant": "inline",
+						"htmlId": null,
+						"sectionPadding": "tile--no-bottom-padding",
+						"backgroundImage": {
+							"id": "5fb646a4-2af5-50d0-815c-108317d4b5b7",
+							"altText": "Cloudflare Orange Background",
+							"title": "Cloudflare Orange Background",
+							"activeAsset": "Contentful Asset",
+							"locale": "en-US",
+							"contentfulAsset": {
+								"file": {
+									"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/6wvLylL1UDvEfh7N5WBd32/b05450aa05d6c40af93bf04309e1723c/Lead-generation-background-generic.png"
+								},
+								"description": ""
+							},
+							"brandfolderAsset": null,
+							"brandfolderAssetMobile": null
+						},
+						"primaryCtaButton": {
+							"buttonAssetFile": null,
+							"buttonTextLoggedIn": null,
+							"contentTypeId": "button",
+							"contentfulId": "5jLrM7QcqDjHybqU4W2vNC",
+							"elementName": "Stream product page - ADDITIONAL OFFER BLADE - CTA",
+							"standardText": null,
+							"text": "Learn more",
+							"url": "https://developers.cloudflare.com/stream/",
+							"loggedInUrl": null,
+							"buttonModal": null,
+							"openInNewTab": true,
+							"locale": "en-US"
+						},
+						"secondaryCtaButton": null
+					},
+					{
 						"contentTypeId": "bladeRichTextColumnGroup",
-						"contentfulId": "2o6fGxg0Y18SktgzgvvFQ9",
+						"contentfulId": "1bKFOYtHMmnPzNXGn7fR4j",
 						"htmlId": null,
 						"mainHeadline": null,
 						"backgroundColor": "white",
@@ -296,7 +344,7 @@
 						"columns": [
 							{
 								"contentTypeId": "elementRichText",
-								"contentfulId": "73YO9QsbogVBP2z55Ece4b",
+								"contentfulId": "51yMVDAtXYw8PYwJBD2Ki8",
 								"title": null,
 								"htmlId": null,
 								"elementPosition": "relative",
@@ -348,7 +396,7 @@
 																"target": null,
 																"uri": null
 															},
-															"value": "\"It's just nice to have a company like Cloudflare build a product that enables us to use IPFS and serve our front-end to our users. It's super important to us that our users feel secure using our product.\"",
+															"value": "\"Video is incredibly important to us and our community. Cloudflare Stream makes it easy for us to show off our game and distribute videos without having to build our own streaming solution from scratch.\"",
 															"marks": [],
 															"content": null
 														}
@@ -392,7 +440,37 @@
 														"target": null,
 														"uri": null
 													},
-													"value": "Engineering Lead — Uniswap Labs",
+													"value": "Director of IT",
+													"marks": [],
+													"content": null
+												},
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": " — ",
+													"marks": [],
+													"content": null
+												},
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "Hypixel",
+													"marks": [],
+													"content": null
+												},
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": " ",
 													"marks": [],
 													"content": null
 												}
@@ -593,22 +671,22 @@
 						"sectionPadding": null
 					},
 					{
-						"contentfulId": "4tJwRPOZlodZae6J2Ig2jt",
+						"contentfulId": "43NSqFIsBNqnyNgFmZyZGJ",
 						"contentTypeId": "bladeMultipleColumnsLayout",
-						"title": "Cloudflare Web3 gateways allow you to retrieve and deliver content from the IPFS and Ethereum networks — without requiring you to set up or secure your own nodes first.",
-						"eyebrowHeading": "Top Cloudflare Web3 use cases",
+						"title": " Use Stream to build your own video features in websites and native applications, from simple playback to an entire video platform",
+						"eyebrowHeading": "Top Stream use cases",
 						"description": null,
 						"textLayout": "left",
 						"columnsLayout": "Three Columns",
 						"columnContent": [
 							{
 								"contentTypeId": "feature",
-								"contentfulId": "1OK8zKQpo0Lw501j6JMWCj",
-								"title": "Launch distributed applications (DApps)",
+								"contentfulId": "3jRCBYKqV1Cv1lrT4zNl1l",
+								"title": "Deliver better video experiences",
 								"makeTitleLink": false,
 								"titleUrl": null,
 								"titleSize": null,
-								"description": "Easily deploy and access DApps without maintaining and monitoring your own nodes.",
+								"description": "Stream automatically encodes and delivers video at the ideal quality for live and on-demand streams — on websites, dedicated streaming devices, and native iOS and Android applications.",
 								"learnMoreUrl": null,
 								"learnMoreText": null,
 								"displayBorder": false,
@@ -616,88 +694,88 @@
 								"removeCardBorder": false,
 								"icon": null,
 								"iconAssetFile": {
-									"id": "84bf9920-ae71-533f-9d21-68e8f4517443",
-									"altText": "Platform apps ",
-									"title": "Platform apps ",
+									"id": "08e29c98-f860-5f57-8de5-a2d65dc17f11",
+									"altText": "Cloudflare stream delivery blue",
+									"title": "Cloudflare stream delivery blue",
 									"activeAsset": "Contentful Asset",
 									"locale": "en-US",
 									"contentfulAsset": {
 										"file": {
-											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/4zgjneatAin9CgQmzYl6Yq/b61aea1e89c05d2a7a3d458fe5b2d4db/platform-apps.svg"
-										},
-										"description": "Platform apps icon"
-									},
-									"brandfolderAsset": null,
-									"brandfolderAssetMobile": null
-								},
-								"imageOverlaySuperheader": null,
-								"imageOverlayText": null,
-								"imageAssetFile": null,
-								"streamId": null,
-								"streamThumbnail": null,
-								"streamThumbnailAssetFile": null
-							},
-							{
-								"contentTypeId": "feature",
-								"contentfulId": "1LcERtZ2ibKcdTf4CmLsmu",
-								"title": "Serve content through custom domain names",
-								"makeTitleLink": false,
-								"titleUrl": null,
-								"titleSize": null,
-								"description": "Deliver IPFS and Ethereum-hosted content from custom domain names via DNSLink protocols and JSON RPC queries over HTTP.",
-								"learnMoreUrl": null,
-								"learnMoreText": null,
-								"displayBorder": false,
-								"openLinkInNewTab": null,
-								"removeCardBorder": false,
-								"icon": null,
-								"iconAssetFile": {
-									"id": "6bb3285c-bf75-5bac-82dd-58c220479c42",
-									"altText": "Reliability dns orange",
-									"title": "Reliability dns orange",
-									"activeAsset": "Contentful Asset",
-									"locale": "en-US",
-									"contentfulAsset": {
-										"file": {
-											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/1IEgns2aHgVGiOuTOHIzv2/9eff990dd5e65ad51f5847a7612953d5/reliability-dns.svg"
-										},
-										"description": "DNS analytics icon\n"
-									},
-									"brandfolderAsset": null,
-									"brandfolderAssetMobile": null
-								},
-								"imageOverlaySuperheader": null,
-								"imageOverlayText": null,
-								"imageAssetFile": null,
-								"streamId": null,
-								"streamThumbnail": null,
-								"streamThumbnailAssetFile": null
-							},
-							{
-								"contentTypeId": "feature",
-								"contentfulId": "27HnjLFG47bWPKbvBqMeWB",
-								"title": "Cache content close to users",
-								"makeTitleLink": false,
-								"titleUrl": null,
-								"titleSize": null,
-								"description": "With the Cloudflare CDN, you can cache IPFS and Ethereum content as close to your end users as possible, helping improve performance and reliability.",
-								"learnMoreUrl": null,
-								"learnMoreText": null,
-								"displayBorder": false,
-								"openLinkInNewTab": null,
-								"removeCardBorder": false,
-								"icon": null,
-								"iconAssetFile": {
-									"id": "34b25a26-8efd-5aa4-bd47-facebc0adce4",
-									"altText": "Cache Reserve",
-									"title": "Cache Reserve",
-									"activeAsset": "Contentful Asset",
-									"locale": "en-US",
-									"contentfulAsset": {
-										"file": {
-											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/Snx91INj9zhp6XXrKWttd/782b0f54013c68f613fc779daf8cdb47/server-1.svg"
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/6uZVCcQ0QrCNctcZMrzPMS/30bd1c225dde4080bc283c1fe63d7e9a/cloudflare-stream-delivery.png"
 										},
 										"description": ""
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								},
+								"imageOverlaySuperheader": null,
+								"imageOverlayText": null,
+								"imageAssetFile": null,
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
+							},
+							{
+								"contentTypeId": "feature",
+								"contentfulId": "3vYGrwnjAPwIiv1ZxhnBf",
+								"title": "Control access by location and IP",
+								"makeTitleLink": false,
+								"titleUrl": null,
+								"titleSize": null,
+								"description": "Enable private, authenticated, or time-bound access to paid content, and restrict downloads on a per-video basis.",
+								"learnMoreUrl": null,
+								"learnMoreText": null,
+								"displayBorder": false,
+								"openLinkInNewTab": null,
+								"removeCardBorder": false,
+								"icon": null,
+								"iconAssetFile": {
+									"id": "e29e0a6c-57e1-5296-b7fe-a4bb365da279",
+									"altText": "Location pin blue",
+									"title": "Location pin blue",
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/2n70a7lYG4c0JERRzgrv3H/3eef13377e4c1de176da77c48ef8b52b/location-pin.svg"
+										},
+										"description": ""
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								},
+								"imageOverlaySuperheader": null,
+								"imageOverlayText": null,
+								"imageAssetFile": null,
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
+							},
+							{
+								"contentTypeId": "feature",
+								"contentfulId": "2dTvJSXp4ZDjSmKBGgNZM0",
+								"title": "Manage user-generated content",
+								"makeTitleLink": false,
+								"titleUrl": null,
+								"titleSize": null,
+								"description": "Let your users upload videos directly to Stream with unique, one-time upload URLs, and track video analytics for each creator.",
+								"learnMoreUrl": null,
+								"learnMoreText": null,
+								"displayBorder": false,
+								"openLinkInNewTab": null,
+								"removeCardBorder": false,
+								"icon": null,
+								"iconAssetFile": {
+									"id": "d19c09bd-84d4-5ee5-83f6-cb536e5c4227",
+									"altText": "User blue",
+									"title": "User blue",
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/52HRlOQUb20zMebvThxRFj/a6017b1c356d40ef918a3a19677d8a0b/user.png"
+										},
+										"description": null
 									},
 									"brandfolderAsset": null,
 									"brandfolderAssetMobile": null
@@ -715,58 +793,255 @@
 					},
 					{
 						"contentTypeId": "bladeHtml",
-						"contentfulId": "347I10bstWPEGmgE2K0oFO",
-						"htmlContent": "<div style=\"text-align: center; cursor:pointer; margin-bottom:64px; margin-top: -60px;\">\n    <a href=\"/application-services/solutions/\" target=\"_blank\" class=\"inline-link-style\">Explore more use cases<svg width=\"4\" height=\"10\"\n            viewBox=\"0 0 6 10\" fill=\"currentColor\" aria-label=\"chevron\" xmlns=\"https://www.cloudflare.com/application-services/solutions/\"\n            class=\"dib v-mid ml1\">\n            <path\n                d=\"M1.00003 -4.37127e-08L-3.93401e-07 1.00003L4 5L0.000271373 9.00025L1.00003 10L6.00003 5L1.00003 -4.37127e-08Z\">\n            </path>\n        </svg>  </a>\n</div>",
+						"contentfulId": "1KYTYzSZKVxIhCWBijgkon",
+						"htmlContent": "<div style=\"text-align: center; cursor:pointer; margin-bottom:64px; margin-top: -60px;\">\n    <a href=\"https://developers.cloudflare.com/stream/examples/\" target=\"_blank\" class=\"inline-link-style\">Explore more use cases<svg width=\"6\" height=\"10\"\n            viewBox=\"0 0 6 10\" fill=\"currentColor\" aria-label=\"chevron\" xmlns=\"https://developers.cloudflare.com/stream/examples/\"\n            class=\"dib v-mid ml1\">\n            <path\n                d=\"M1.00003 -4.37127e-08L-3.93401e-07 1.00003L4 5L0.000271373 9.00025L1.00003 10L6.00003 5L1.00003 -4.37127e-08Z\">\n            </path>\n        </svg>  </a>\n</div>",
 						"htmlId": null
 					},
 					{
-						"contentfulId": "65FA73owR7q1XWqYVKgDEb",
-						"contentTypeId": "bladeLeadGeneration",
-						"title": null,
-						"description": "Trusted by millions of Internet properties",
-						"variant": "inline",
+						"contentTypeId": "bladeEnablement",
+						"contentfulId": "2KXHBeoAf9Cj5sl4scoiMl",
+						"title": "Trusted by millions of Internet properties",
+						"titleSize": "medium",
+						"backgroundColor": "image-background",
+						"buttonText": null,
+						"buttonUrl": null,
+						"buttonText2": null,
+						"buttonModalId2": null,
+						"buttonUrl2": null,
+						"bladeSizeType": "small",
 						"htmlId": null,
-						"sectionPadding": "tile--no-top-padding",
-						"backgroundImage": {
-							"id": "5fb646a4-2af5-50d0-815c-108317d4b5b7",
-							"altText": "Cloudflare Orange Background",
-							"title": "Cloudflare Orange Background",
-							"activeAsset": "Contentful Asset",
-							"locale": "en-US",
-							"contentfulAsset": {
-								"file": {
-									"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/6wvLylL1UDvEfh7N5WBd32/b05450aa05d6c40af93bf04309e1723c/Lead-generation-background-generic.png"
-								},
-								"description": ""
-							},
-							"brandfolderAsset": null,
-							"brandfolderAssetMobile": null
-						},
-						"primaryCtaButton": {
+						"bladeBorder": "none",
+						"buttonOne": {
 							"buttonAssetFile": null,
 							"buttonTextLoggedIn": null,
 							"contentTypeId": "button",
-							"contentfulId": "3xIzhQVegUXrYb5IVzKzQR",
-							"elementName": "See case studies (main)",
+							"contentfulId": "aE9GHd34dfimEbPDI65qf",
+							"elementName": "Stream product page - CASE STUDIES - CTA",
 							"standardText": null,
 							"text": "See case studies",
-							"url": "/case-studies/",
+							"url": "https://www.cloudflare.com/case-studies/?product=Stream",
 							"loggedInUrl": null,
 							"buttonModal": null,
 							"openInNewTab": false,
 							"locale": "en-US"
 						},
-						"secondaryCtaButton": null
+						"buttonTwo": null,
+						"sectionPadding": null,
+						"eyebrow": null
 					},
 					{
-						"contentfulId": "2TKg3hXCXSnRxgtoZorZMh",
+						"bladeBorder": "none",
+						"sectionPadding": null,
+						"backgroundColor": "white",
+						"contentTypeId": "bladePricingPlans",
+						"contentfulId": "67UjSbsSdbTy6Cq0JaVKgT",
+						"title": "Pricing",
+						"description": null,
+						"htmlId": "html-pricing",
+						"plansList": [
+							{
+								"contentTypeId": "plan",
+								"contentfulId": "5s6fHSRMfVGnYK4d5b6gsH",
+								"type": "Starter Bundle",
+								"priceCurrencySymbol": null,
+								"price": "Starting at $5/mo",
+								"priceDurationPeriod": null,
+								"billingSubtext": "Stream + Images",
+								"description": null,
+								"shortDescription": null,
+								"mediumDescription": null,
+								"supportResponseTitleText": null,
+								"supportResponseTime": null,
+								"ctaButtonText": "Get Started",
+								"ctaButtonUrl": "https://dash.cloudflare.com/sign-up/stream",
+								"ctaButton": null,
+								"additionalTermsText": null,
+								"learnMoreText": null,
+								"plansPageLinkText": null,
+								"plansPageLinkUrl": null,
+								"activatedKeyFeatures": null,
+								"deactivatedKeyFeatures": null,
+								"coreFeatures": null,
+								"supportResponse": null,
+								"bottomCtaLinkUrl": null,
+								"bottomCtaLinkText": null,
+								"bottomCtaLink": null,
+								"hideTopDivider": false,
+								"featureList1": {
+									"contentTypeId": "featureList",
+									"contentfulId": "3nuH1uibiOND2D5Kkiysio",
+									"title": "Included",
+									"description": null,
+									"features": [
+										{
+											"contentTypeId": "feature",
+											"title": "__$15 / month in savings__",
+											"description": null,
+											"displayBorder": false,
+											"learnMoreUrl": null,
+											"learnMoreText": null,
+											"streamId": null,
+											"openLinkInNewTab": null,
+											"streamThumbnail": null,
+											"icon": null,
+											"iconAssetFile": null,
+											"imageAssetFile": null
+										},
+										{
+											"contentTypeId": "feature",
+											"title": "All the features of Cloudflare Stream and Cloudflare Images",
+											"description": null,
+											"displayBorder": false,
+											"learnMoreUrl": null,
+											"learnMoreText": null,
+											"streamId": null,
+											"openLinkInNewTab": null,
+											"streamThumbnail": null,
+											"icon": null,
+											"iconAssetFile": null,
+											"imageAssetFile": null
+										},
+										{
+											"contentTypeId": "feature",
+											"title": "Store up to 100,000 images and 1,000 minutes of video content",
+											"description": null,
+											"displayBorder": false,
+											"learnMoreUrl": null,
+											"learnMoreText": null,
+											"streamId": null,
+											"openLinkInNewTab": null,
+											"streamThumbnail": null,
+											"icon": null,
+											"iconAssetFile": null,
+											"imageAssetFile": null
+										},
+										{
+											"contentTypeId": "feature",
+											"title": "Deliver up to 500,000 images and 5,000 minutes of video content each month",
+											"description": null,
+											"displayBorder": false,
+											"learnMoreUrl": null,
+											"learnMoreText": null,
+											"streamId": null,
+											"openLinkInNewTab": null,
+											"streamThumbnail": null,
+											"icon": null,
+											"iconAssetFile": null,
+											"imageAssetFile": null
+										}
+									],
+									"supplementaryCallToAction": null
+								},
+								"featureList2": null,
+								"featureList3": null
+							},
+							{
+								"contentTypeId": "plan",
+								"contentfulId": "35aoatnkwblCUCLTCvfhhr",
+								"type": "Creator Bundle",
+								"priceCurrencySymbol": null,
+								"price": "Starting at $50/mo",
+								"priceDurationPeriod": null,
+								"billingSubtext": "Stream + Images",
+								"description": null,
+								"shortDescription": null,
+								"mediumDescription": null,
+								"supportResponseTitleText": null,
+								"supportResponseTime": null,
+								"ctaButtonText": "Get Started",
+								"ctaButtonUrl": "https://dash.cloudflare.com/sign-up/stream",
+								"ctaButton": null,
+								"additionalTermsText": null,
+								"learnMoreText": null,
+								"plansPageLinkText": null,
+								"plansPageLinkUrl": null,
+								"activatedKeyFeatures": null,
+								"deactivatedKeyFeatures": null,
+								"coreFeatures": null,
+								"supportResponse": null,
+								"bottomCtaLinkUrl": null,
+								"bottomCtaLinkText": null,
+								"bottomCtaLink": null,
+								"hideTopDivider": false,
+								"featureList1": {
+									"contentTypeId": "featureList",
+									"contentfulId": "4wAKzSJCzYrNj3z6pUIfcV",
+									"title": "Included",
+									"description": null,
+									"features": [
+										{
+											"contentTypeId": "feature",
+											"title": "__$85/ month in savings__",
+											"description": null,
+											"displayBorder": false,
+											"learnMoreUrl": null,
+											"learnMoreText": null,
+											"streamId": null,
+											"openLinkInNewTab": null,
+											"streamThumbnail": null,
+											"icon": null,
+											"iconAssetFile": null,
+											"imageAssetFile": null
+										},
+										{
+											"contentTypeId": "feature",
+											"title": "All the features of Cloudflare Stream and Cloudflare Images",
+											"description": null,
+											"displayBorder": false,
+											"learnMoreUrl": null,
+											"learnMoreText": null,
+											"streamId": null,
+											"openLinkInNewTab": null,
+											"streamThumbnail": null,
+											"icon": null,
+											"iconAssetFile": null,
+											"imageAssetFile": null
+										},
+										{
+											"contentTypeId": "feature",
+											"title": "Store up to 500,000 images and 10,000 minutes of video content",
+											"description": null,
+											"displayBorder": false,
+											"learnMoreUrl": null,
+											"learnMoreText": null,
+											"streamId": null,
+											"openLinkInNewTab": null,
+											"streamThumbnail": null,
+											"icon": null,
+											"iconAssetFile": null,
+											"imageAssetFile": null
+										},
+										{
+											"contentTypeId": "feature",
+											"title": "Deliver up to 1,000,000 images and 50,000 minutes of video content each month",
+											"description": null,
+											"displayBorder": false,
+											"learnMoreUrl": null,
+											"learnMoreText": null,
+											"streamId": null,
+											"openLinkInNewTab": null,
+											"streamThumbnail": null,
+											"icon": null,
+											"iconAssetFile": null,
+											"imageAssetFile": null
+										}
+									],
+									"supplementaryCallToAction": null
+								},
+								"featureList2": null,
+								"featureList3": null
+							}
+						]
+					},
+					{
+						"contentfulId": "3RSH9QVIpJOZYNleG6b8V8",
 						"backgroundColor": "white",
 						"contentTypeId": "bladeFourFeatures",
 						"htmlId": null,
 						"copy": null,
 						"title": "Resources",
 						"subtitle": null,
-						"bladeStyle": null,
+						"bladeStyle": "Feature Blocks - 3 columns",
 						"bladeBorder": "none",
 						"sectionPadding": "tile--no-top-padding",
 						"carouselSlidesToShow": null,
@@ -775,13 +1050,85 @@
 						"features": [
 							{
 								"contentTypeId": "feature",
-								"contentfulId": "4swXA9z6CGZrFuuvy16nfx",
-								"title": "Build Web3 applications with Cloudflare",
+								"contentfulId": "5Tvrulr8864gr2vp4jIJEU",
+								"title": "Get started with Cloudflare Stream",
 								"makeTitleLink": false,
 								"titleUrl": null,
 								"titleSize": null,
-								"description": "See how Cloudflare enables developers to create scalable Web3 applications on our global network.",
-								"learnMoreUrl": "https://blog.cloudflare.com/get-started-web3",
+								"description": "Learn how to build your own video features, upload user-generated content, stream live video, and more.",
+								"learnMoreUrl": "https://developers.cloudflare.com/stream/",
+								"learnMoreText": "Explore the developer docs",
+								"displayBorder": false,
+								"openLinkInNewTab": true,
+								"removeCardBorder": false,
+								"icon": null,
+								"iconAssetFile": null,
+								"imageOverlaySuperheader": null,
+								"imageOverlayText": null,
+								"imageAssetFile": {
+									"id": "2ea2b03b-b35f-525f-8903-0fa37d95a7e3",
+									"altText": "Resources card - Thin top orange line  - image",
+									"title": "Resources card - Thin top orange line  - image",
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/1YGMIqqtWyen0H9EPX70CL/47fb34c9a8aae1587b6eda9384e36139/element-feature-topbar-image-2.png"
+										},
+										"description": "Resources card - Thin top orange line  - image"
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								},
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
+							},
+							{
+								"contentTypeId": "feature",
+								"contentfulId": "2Y1Is5tsCnYTAesBve8Ydk",
+								"title": "Generate video captions effortlessly with Workers AI",
+								"makeTitleLink": false,
+								"titleUrl": null,
+								"titleSize": null,
+								"description": "Stream offers AI-generated captions for on-demand videos and live stream recordings — at no additional cost to existing Stream customers.",
+								"learnMoreUrl": "https://blog.cloudflare.com/stream-automatic-captions-with-ai",
+								"learnMoreText": "Read the blog post ",
+								"displayBorder": false,
+								"openLinkInNewTab": true,
+								"removeCardBorder": false,
+								"icon": null,
+								"iconAssetFile": null,
+								"imageOverlaySuperheader": null,
+								"imageOverlayText": null,
+								"imageAssetFile": {
+									"id": "2ea2b03b-b35f-525f-8903-0fa37d95a7e3",
+									"altText": "Resources card - Thin top orange line  - image",
+									"title": "Resources card - Thin top orange line  - image",
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/1YGMIqqtWyen0H9EPX70CL/47fb34c9a8aae1587b6eda9384e36139/element-feature-topbar-image-2.png"
+										},
+										"description": "Resources card - Thin top orange line  - image"
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								},
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
+							},
+							{
+								"contentTypeId": "feature",
+								"contentfulId": "ez2LRj8G2fkre7qvftJP5",
+								"title": "Streamline video storage with scheduled deletion for Stream",
+								"makeTitleLink": false,
+								"titleUrl": null,
+								"titleSize": null,
+								"description": "Easily manage video lifecycles from the Stream dashboard or API, so you can maximize your video storage and reduce associated costs.",
+								"learnMoreUrl": "https://blog.cloudflare.com/introducing-scheduled-deletion-for-cloudflare-stream",
 								"learnMoreText": "Read the blog post",
 								"displayBorder": false,
 								"openLinkInNewTab": true,
@@ -791,81 +1138,9 @@
 								"imageOverlaySuperheader": null,
 								"imageOverlayText": null,
 								"imageAssetFile": {
-									"id": "bb0c6be9-0531-5573-923c-f00ca093e47e",
-									"altText": null,
-									"title": null,
-									"activeAsset": "Contentful Asset",
-									"locale": "en-US",
-									"contentfulAsset": {
-										"file": {
-											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/1YGMIqqtWyen0H9EPX70CL/47fb34c9a8aae1587b6eda9384e36139/element-feature-topbar-image-2.png"
-										},
-										"description": "Resources card - Thin top orange line  - image"
-									},
-									"brandfolderAsset": null,
-									"brandfolderAssetMobile": null
-								},
-								"streamId": null,
-								"streamThumbnail": null,
-								"streamThumbnailAssetFile": null
-							},
-							{
-								"contentTypeId": "feature",
-								"contentfulId": "6yJJ7HlOoYLJQrt0juaxcs",
-								"title": "How Cloudflare IPFS Gateway works",
-								"makeTitleLink": false,
-								"titleUrl": null,
-								"titleSize": null,
-								"description": "Cloudflare IPFS Gateway allows users to continue using HTTP while enjoying the benefits of IPFS.",
-								"learnMoreUrl": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/1sAT84fNSzGSwMEFRIB6Sg/cebf06b3e7e3e0a5b565718d208dfede/Cloudflare_IPFS_Whitepaper.pdf",
-								"learnMoreText": "Get the whitepaper",
-								"displayBorder": false,
-								"openLinkInNewTab": true,
-								"removeCardBorder": false,
-								"icon": null,
-								"iconAssetFile": null,
-								"imageOverlaySuperheader": null,
-								"imageOverlayText": null,
-								"imageAssetFile": {
-									"id": "bb0c6be9-0531-5573-923c-f00ca093e47e",
-									"altText": null,
-									"title": null,
-									"activeAsset": "Contentful Asset",
-									"locale": "en-US",
-									"contentfulAsset": {
-										"file": {
-											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/1YGMIqqtWyen0H9EPX70CL/47fb34c9a8aae1587b6eda9384e36139/element-feature-topbar-image-2.png"
-										},
-										"description": "Resources card - Thin top orange line  - image"
-									},
-									"brandfolderAsset": null,
-									"brandfolderAssetMobile": null
-								},
-								"streamId": null,
-								"streamThumbnail": null,
-								"streamThumbnailAssetFile": null
-							},
-							{
-								"contentTypeId": "feature",
-								"contentfulId": "6oGSprxxBLNBTyM6HMQJxi",
-								"title": "How Cloudflare Ethereum Gateway works",
-								"makeTitleLink": false,
-								"titleUrl": null,
-								"titleSize": null,
-								"description": "Cloudflare Ethereum Gateway helps users access the Ethereum blockchain without deploying their own nodes.",
-								"learnMoreUrl": "lp/cloudflare-ethereum-gateway/",
-								"learnMoreText": "Get the whitepaper",
-								"displayBorder": false,
-								"openLinkInNewTab": false,
-								"removeCardBorder": false,
-								"icon": null,
-								"iconAssetFile": null,
-								"imageOverlaySuperheader": null,
-								"imageOverlayText": null,
-								"imageAssetFile": {
-									"id": "bb0c6be9-0531-5573-923c-f00ca093e47e",
-									"altText": null,
-									"title": null,
+									"id": "2ea2b03b-b35f-525f-8903-0fa37d95a7e3",
+									"altText": "Resources card - Thin top orange line  - image",
+									"title": "Resources card - Thin top orange line  - image",
 									"activeAsset": "Contentful Asset",
 									"locale": "en-US",
 									"contentfulAsset": {
@@ -885,8 +1160,8 @@
 					},
 					{
 						"contentTypeId": "bladeEnablement",
-						"contentfulId": "5OHO8KlS7sZjsAzz7aaHJz",
-						"title": "Get Cloudflare Web3 for your enterprise",
+						"contentfulId": "6qg3j8gzi3paQBS0QGIaiv",
+						"title": "Take control of your video infrastructure",
 						"titleSize": "medium",
 						"backgroundColor": "image-background",
 						"buttonText": null,
@@ -901,54 +1176,14 @@
 							"buttonAssetFile": null,
 							"buttonTextLoggedIn": null,
 							"contentTypeId": "button",
-							"contentfulId": "1fLiWAHkQqZOwpjs7aU3Nw",
-							"elementName": "Talk to an expert (modal form)",
+							"contentfulId": "cFWZ2v75RD270MCjo42TP",
+							"elementName": "Stream product page - enablement - Primary CTA",
 							"standardText": null,
-							"text": "Talk to an expert",
-							"url": null,
+							"text": "Get started",
+							"url": "https://dash.cloudflare.com/sign-up/stream",
 							"loggedInUrl": null,
-							"buttonModal": {
-								"contentTypeId": "formModal",
-								"contentfulId": "4X33NKLPG0gT4v6Vb1X0ca",
-								"modalName": "ZT Access Talk to an expert",
-								"modalId": "zt-access-talk-to-an-expert",
-								"modalType": "single-form",
-								"marketoForm": {
-									"contentTypeId": "marketoEmbeddedForm",
-									"contentfulId": "5daBy41JohWg0zdFI6JHW",
-									"bladeName": "ZT Access - Talk to an expert - Marketo",
-									"backgroundColor": "white",
-									"marketoFormId": 1341,
-									"marketoFormLeadSource": "Inbound - Web Form",
-									"marketoFormLeadSourceDetail": "Web Form - Enterprise General Sales Inquiry",
-									"marketoFormAssetName": null,
-									"marketoFormHeaderText": "Talk to an expert",
-									"marketoFormDefaultComment": null,
-									"showCommentBox": null,
-									"marketoFormThankYouText": null,
-									"marketoFormCustomSuccessMessage": null,
-									"marketoFormPdfDownload": null,
-									"marketoFormPdfDownloadI18n": [],
-									"marketoFormAssetDownloadButtonText": null,
-									"marketoFormSuccessRedirectUrl": null,
-									"sendAdRoll": null,
-									"meta_adRollCustomSegment": null,
-									"enableSandbox": null,
-									"marketoFormSubmitButtonText": null,
-									"marketoFormSubmitButtonColor": null,
-									"enableEmailVerification": null,
-									"disableEnterpriseEmailNotification": null,
-									"enableRingout": null
-								},
-								"title": null,
-								"regularCopy": null,
-								"splitFormDefaultTab": null,
-								"selfServeTabText": null,
-								"selfServeCopy": null,
-								"enterpriseTabText": null,
-								"enterpriseCopy": null
-							},
-							"openInNewTab": false,
+							"buttonModal": null,
+							"openInNewTab": true,
 							"locale": "en-US"
 						},
 						"buttonTwo": null,
@@ -957,50 +1192,8 @@
 					}
 				],
 				"noindex": false,
-				"formModal": [
-					{
-						"contentTypeId": "formModal",
-						"contentfulId": "21DyB243bw7oQg4Re4mPuz",
-						"modalName": "Web3 Solutions - Form Modal",
-						"modalId": "web3-solutions-form-modal",
-						"modalType": "single-form",
-						"marketoForm": {
-							"contentTypeId": "marketoEmbeddedForm",
-							"contentfulId": "7ggPEPbfz7pZK8psgU6DKh",
-							"bladeName": "Web3 Solutions - Marketo Form (1342)",
-							"backgroundColor": "white",
-							"marketoFormId": 1341,
-							"marketoFormLeadSource": "Inbound - Web Form",
-							"marketoFormLeadSourceDetail": "[ACQ] Q1'22 WEB - Request Web3 Demo",
-							"marketoFormAssetName": null,
-							"marketoFormHeaderText": null,
-							"marketoFormDefaultComment": null,
-							"showCommentBox": false,
-							"marketoFormThankYouText": null,
-							"marketoFormCustomSuccessMessage": null,
-							"marketoFormPdfDownload": null,
-							"marketoFormPdfDownloadI18n": [],
-							"marketoFormAssetDownloadButtonText": null,
-							"marketoFormSuccessRedirectUrl": null,
-							"sendAdRoll": false,
-							"meta_adRollCustomSegment": null,
-							"enableSandbox": null,
-							"marketoFormSubmitButtonText": null,
-							"marketoFormSubmitButtonColor": null,
-							"enableEmailVerification": null,
-							"disableEnterpriseEmailNotification": null,
-							"enableRingout": null
-						},
-						"title": "Request Demo",
-						"regularCopy": "Web3 Solutions",
-						"splitFormDefaultTab": "enterprise",
-						"selfServeTabText": null,
-						"selfServeCopy": null,
-						"enterpriseTabText": null,
-						"enterpriseCopy": null
-					}
-				],
-				"keepHashUrlSyncedWithScrollPosition": false
+				"formModal": [],
+				"keepHashUrlSyncedWithScrollPosition": null
 			},
 			"site": {
 				"siteMetadata": {
@@ -1011,8 +1204,8 @@
 		"pageContext": {
 			"currentLocale": "en-US",
 			"locale": "en-US",
-			"pathname": "/application-services/products/web3/",
-			"contentfulId": "3aUZe4eM7vegrapkAVkIBJ",
+			"pathname": "/developer-platform/products/cloudflare-stream/",
+			"contentfulId": "2Tq4dKzDxes4kEWCECocYq",
 			"allowedHrefLangs": [
 				"en-US",
 				"zh-CN",
@@ -1026,7 +1219,6 @@
 				"es-ES",
 				"es-LA",
 				"ru-RU",
-				"tr-TR",
 				"zh-Hans-CN",
 				"pl-PL"
 			],
