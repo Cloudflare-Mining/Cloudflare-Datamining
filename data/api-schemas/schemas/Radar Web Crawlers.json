@@ -16,7 +16,9 @@
 						"REFERER",
 						"CRAWL_REFER_RATIO",
 						"VERTICAL",
-						"INDUSTRY"
+						"INDUSTRY",
+						"RESPONSE_STATUS",
+						"RESPONSE_STATUS_CATEGORY"
 					],
 					"type": "string"
 				}
@@ -139,6 +141,38 @@
 							"NON_AI_BOT",
 							"AI_BOT",
 							"MIXED_PURPOSE"
+						],
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
+				"description": "Filters results by HTTP response status code (e.g. 200, 403, 404). Only [IANA-registered codes](https://www.iana.org/assignments/http-status-codes/http-status-codes.xhtml) are accepted.",
+				"in": "query",
+				"name": "responseStatus",
+				"schema": {
+					"description": "Filters results by HTTP response status code (e.g. 200, 403, 404). Only [IANA-registered codes](https://www.iana.org/assignments/http-status-codes/http-status-codes.xhtml) are accepted.",
+					"items": {
+						"pattern": "^\\d{3}$",
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
+				"description": "Filters results by HTTP response status code category.",
+				"in": "query",
+				"name": "responseStatusCategory",
+				"schema": {
+					"description": "Filters results by HTTP response status code category.",
+					"items": {
+						"enum": [
+							"INFORMATIONAL",
+							"SUCCESS",
+							"REDIRECTION",
+							"CLIENT_ERROR",
+							"SERVER_ERROR"
 						],
 						"type": "string"
 					},
@@ -453,7 +487,9 @@
 						"REFERER",
 						"CRAWL_REFER_RATIO",
 						"VERTICAL",
-						"INDUSTRY"
+						"INDUSTRY",
+						"RESPONSE_STATUS",
+						"RESPONSE_STATUS_CATEGORY"
 					],
 					"type": "string"
 				}
@@ -592,6 +628,38 @@
 							"NON_AI_BOT",
 							"AI_BOT",
 							"MIXED_PURPOSE"
+						],
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
+				"description": "Filters results by HTTP response status code (e.g. 200, 403, 404). Only [IANA-registered codes](https://www.iana.org/assignments/http-status-codes/http-status-codes.xhtml) are accepted.",
+				"in": "query",
+				"name": "responseStatus",
+				"schema": {
+					"description": "Filters results by HTTP response status code (e.g. 200, 403, 404). Only [IANA-registered codes](https://www.iana.org/assignments/http-status-codes/http-status-codes.xhtml) are accepted.",
+					"items": {
+						"pattern": "^\\d{3}$",
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
+				"description": "Filters results by HTTP response status code category.",
+				"in": "query",
+				"name": "responseStatusCategory",
+				"schema": {
+					"description": "Filters results by HTTP response status code category.",
+					"items": {
+						"enum": [
+							"INFORMATIONAL",
+							"SUCCESS",
+							"REDIRECTION",
+							"CLIENT_ERROR",
+							"SERVER_ERROR"
 						],
 						"type": "string"
 					},

@@ -1177,7 +1177,7 @@
 		}
 	},
 	"POST /zones/{zone_id}/email/routing/rules": {
-		"description": "Rules consist of a set of criteria for matching emails (such as an email being sent to a specific custom email address) plus a set of actions to take on the email (like forwarding it to a specific destination address).",
+		"description": "Rules consist of a set of criteria for matching emails (such as an email being sent to a specific custom email address) plus a set of actions to take on the email (like forwarding it to a specific destination address). Forward actions require all destination addresses to be verified.",
 		"operationId": "email-routing-routing-rules-create-routing-rule",
 		"parameters": [
 			{
@@ -1537,6 +1537,9 @@
 					}
 				},
 				"description": "Create routing rule response"
+			},
+			"400": {
+				"description": "Error 2054: Destination address is not verified. All forward action destination addresses must be verified before they can be used in rules."
 			}
 		},
 		"security": [
@@ -1565,7 +1568,7 @@
 		}
 	},
 	"PUT /zones/{zone_id}/email/routing/rules/{rule_identifier}": {
-		"description": "Update actions and matches, or enable/disable specific routing rules.",
+		"description": "Update actions and matches, or enable/disable specific routing rules. Forward actions require all destination addresses to be verified.",
 		"operationId": "email-routing-routing-rules-update-routing-rule",
 		"parameters": [
 			{
@@ -1938,6 +1941,9 @@
 					}
 				},
 				"description": "Update routing rule response"
+			},
+			"400": {
+				"description": "Error 2054: Destination address is not verified. All forward action destination addresses must be verified before they can be used in rules."
 			}
 		},
 		"security": [
@@ -1966,7 +1972,7 @@
 		}
 	},
 	"PUT /zones/{zone_id}/email/routing/rules/catch_all": {
-		"description": "Enable or disable catch-all routing rule, or change action to forward to specific destination address.",
+		"description": "Enable or disable catch-all routing rule, or change action to forward to specific destination address. Forward actions require all destination addresses to be verified.",
 		"operationId": "email-routing-routing-rules-update-catch-all-rule",
 		"parameters": [
 			{
@@ -2273,6 +2279,9 @@
 					}
 				},
 				"description": "Update catch-all rule response"
+			},
+			"400": {
+				"description": "Error 2054: Destination address is not verified. All forward action destination addresses must be verified before they can be used in rules."
 			}
 		},
 		"security": [

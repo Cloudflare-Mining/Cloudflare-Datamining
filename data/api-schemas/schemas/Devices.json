@@ -4626,6 +4626,12 @@
 													},
 													"type": "array"
 												},
+												"policy_id": {
+													"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
+													"maxLength": 36,
+													"type": "string",
+													"x-auditable": true
+												},
 												"register_interface_ip_with_dns": {
 													"default": true,
 													"description": "Determines if the operating system will register WARP's local interface IP with your on-premises DNS server.",
@@ -5088,6 +5094,12 @@
 																"type": "object"
 															},
 															"type": "array"
+														},
+														"policy_id": {
+															"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
+															"maxLength": 36,
+															"type": "string",
+															"x-auditable": true
 														},
 														"register_interface_ip_with_dns": {
 															"default": true,
@@ -10294,6 +10306,12 @@
 													},
 													"type": "array"
 												},
+												"policy_id": {
+													"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
+													"maxLength": 36,
+													"type": "string",
+													"x-auditable": true
+												},
 												"register_interface_ip_with_dns": {
 													"default": true,
 													"description": "Determines if the operating system will register WARP's local interface IP with your on-premises DNS server.",
@@ -10756,6 +10774,12 @@
 																"type": "object"
 															},
 															"type": "array"
+														},
+														"policy_id": {
+															"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
+															"maxLength": 36,
+															"type": "string",
+															"x-auditable": true
 														},
 														"register_interface_ip_with_dns": {
 															"default": true,

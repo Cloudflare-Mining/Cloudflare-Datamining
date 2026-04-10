@@ -16153,6 +16153,10 @@
 													"type": "integer"
 												}
 											},
+											"required": [
+												"record_usage",
+												"record_quota"
+											],
 											"type": "object"
 										}
 									},
@@ -16277,6 +16281,10 @@
 															"type": "integer"
 														}
 													},
+													"required": [
+														"record_usage",
+														"record_quota"
+													],
 													"type": "object"
 												}
 											},

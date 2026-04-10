@@ -379,32 +379,56 @@
 														},
 														"updated_prompts": {
 															"items": {
-																"additionalProperties": {
-																	"anyOf": [
-																		{
-																			"type": "number"
-																		},
-																		{
-																			"type": "string"
-																		}
-																	]
+																"properties": {
+																	"description": {
+																		"type": "string"
+																	},
+																	"enabled": {
+																		"type": "boolean"
+																	},
+																	"name": {
+																		"type": "string"
+																	},
+																	"portal_alias": {
+																		"example": "portal-tool-alias",
+																		"type": "string"
+																	},
+																	"server_alias": {
+																		"example": "server-tool-alias",
+																		"type": "string"
+																	}
 																},
+																"required": [
+																	"name"
+																],
 																"type": "object"
 															},
 															"type": "array"
 														},
 														"updated_tools": {
 															"items": {
-																"additionalProperties": {
-																	"anyOf": [
-																		{
-																			"type": "number"
-																		},
-																		{
-																			"type": "string"
-																		}
-																	]
+																"properties": {
+																	"description": {
+																		"type": "string"
+																	},
+																	"enabled": {
+																		"type": "boolean"
+																	},
+																	"name": {
+																		"type": "string"
+																	},
+																	"portal_alias": {
+																		"example": "portal-tool-alias",
+																		"type": "string"
+																	},
+																	"server_alias": {
+																		"example": "server-tool-alias",
+																		"type": "string"
+																	}
 																},
+																"required": [
+																	"name"
+																],
 																"type": "object"
 															},
 															"type": "array"
@@ -416,9 +440,7 @@
 														"hostname",
 														"auth_type",
 														"tools",
-														"prompts",
-														"updated_tools",
-														"updated_prompts"
+														"prompts"
 													],
 													"type": "object"
 												},
@@ -699,32 +721,56 @@
 													},
 													"updated_prompts": {
 														"items": {
-															"additionalProperties": {
-																"anyOf": [
-																	{
-																		"type": "number"
-																	},
-																	{
-																		"type": "string"
-																	}
-																]
+															"properties": {
+																"description": {
+																	"type": "string"
+																},
+																"enabled": {
+																	"type": "boolean"
+																},
+																"name": {
+																	"type": "string"
+																},
+																"portal_alias": {
+																	"example": "portal-tool-alias",
+																	"type": "string"
+																},
+																"server_alias": {
+																	"example": "server-tool-alias",
+																	"type": "string"
+																}
 															},
+															"required": [
+																"name"
+															],
 															"type": "object"
 														},
 														"type": "array"
 													},
 													"updated_tools": {
 														"items": {
-															"additionalProperties": {
-																"anyOf": [
-																	{
-																		"type": "number"
-																	},
-																	{
-																		"type": "string"
-																	}
-																]
+															"properties": {
+																"description": {
+																	"type": "string"
+																},
+																"enabled": {
+																	"type": "boolean"
+																},
+																"name": {
+																	"type": "string"
+																},
+																"portal_alias": {
+																	"example": "portal-tool-alias",
+																	"type": "string"
+																},
+																"server_alias": {
+																	"example": "server-tool-alias",
+																	"type": "string"
+																}
 															},
+															"required": [
+																"name"
+															],
 															"type": "object"
 														},
 														"type": "array"
@@ -736,9 +782,7 @@
 													"hostname",
 													"auth_type",
 													"tools",
-													"prompts",
-													"updated_tools",
-													"updated_prompts"
+													"prompts"
 												],
 												"type": "object"
 											},
@@ -1040,12 +1084,179 @@
 											"description": "Route outbound MCP traffic through Zero Trust Secure Web Gateway",
 											"example": false,
 											"type": "boolean"
+										},
+										"servers": {
+											"items": {
+												"properties": {
+													"auth_type": {
+														"enum": [
+															"oauth",
+															"bearer",
+															"unauthenticated"
+														],
+														"example": "unauthenticated",
+														"type": "string"
+													},
+													"created_at": {
+														"format": "date-time",
+														"readOnly": true,
+														"type": "string"
+													},
+													"created_by": {
+														"readOnly": true,
+														"type": "string"
+													},
+													"default_disabled": {
+														"default": false,
+														"type": "boolean"
+													},
+													"description": {
+														"example": "This is one remote mcp server",
+														"maxLength": 512,
+														"nullable": true,
+														"type": "string"
+													},
+													"error": {
+														"readOnly": true,
+														"type": "string"
+													},
+													"hostname": {
+														"example": "https://example.com/mcp",
+														"format": "uri",
+														"type": "string"
+													},
+													"id": {
+														"description": "server id",
+														"example": "my-mcp-server",
+														"maxLength": 32,
+														"minLength": 1,
+														"pattern": "^[a-z0-9_]+(?:-[a-z0-9_]+)*$",
+														"type": "string"
+													},
+													"last_successful_sync": {
+														"format": "date-time",
+														"readOnly": true,
+														"type": "string"
+													},
+													"last_synced": {
+														"format": "date-time",
+														"readOnly": true,
+														"type": "string"
+													},
+													"modified_at": {
+														"format": "date-time",
+														"readOnly": true,
+														"type": "string"
+													},
+													"modified_by": {
+														"readOnly": true,
+														"type": "string"
+													},
+													"name": {
+														"example": "My MCP Server",
+														"maxLength": 350,
+														"type": "string"
+													},
+													"on_behalf": {
+														"default": true,
+														"type": "boolean"
+													},
+													"prompts": {
+														"items": {
+															"additionalProperties": {},
+															"type": "object"
+														},
+														"readOnly": true,
+														"type": "array"
+													},
+													"status": {
+														"default": "waiting",
+														"readOnly": true,
+														"type": "string"
+													},
+													"tools": {
+														"items": {
+															"additionalProperties": {},
+															"type": "object"
+														},
+														"readOnly": true,
+														"type": "array"
+													},
+													"updated_prompts": {
+														"items": {
+															"properties": {
+																"description": {
+																	"type": "string"
+																},
+																"enabled": {
+																	"type": "boolean"
+																},
+																"name": {
+																	"type": "string"
+																},
+																"portal_alias": {
+																	"example": "portal-tool-alias",
+																	"type": "string"
+																},
+																"server_alias": {
+																	"example": "server-tool-alias",
+																	"type": "string"
+																}
+															},
+															"required": [
+																"name"
+															],
+															"type": "object"
+														},
+														"type": "array"
+													},
+													"updated_tools": {
+														"items": {
+															"properties": {
+																"description": {
+																	"type": "string"
+																},
+																"enabled": {
+																	"type": "boolean"
+																},
+																"name": {
+																	"type": "string"
+																},
+																"portal_alias": {
+																	"example": "portal-tool-alias",
+																	"type": "string"
+																},
+																"server_alias": {
+																	"example": "server-tool-alias",
+																	"type": "string"
+																}
+															},
+															"required": [
+																"name"
+															],
+															"type": "object"
+														},
+														"type": "array"
+													}
+												},
+												"required": [
+													"id",
+													"name",
+													"hostname",
+													"auth_type",
+													"tools",
+													"prompts"
+												],
+												"type": "object"
+											},
+											"type": "array"
 										}
 									},
 									"required": [
 										"id",
 										"name",
-										"hostname"
+										"hostname",
+										"servers"
 									],
 									"type": "object"
 								},
@@ -1344,12 +1555,179 @@
 											"description": "Route outbound MCP traffic through Zero Trust Secure Web Gateway",
 											"example": false,
 											"type": "boolean"
+										},
+										"servers": {
+											"items": {
+												"properties": {
+													"auth_type": {
+														"enum": [
+															"oauth",
+															"bearer",
+															"unauthenticated"
+														],
+														"example": "unauthenticated",
+														"type": "string"
+													},
+													"created_at": {
+														"format": "date-time",
+														"readOnly": true,
+														"type": "string"
+													},
+													"created_by": {
+														"readOnly": true,
+														"type": "string"
+													},
+													"default_disabled": {
+														"default": false,
+														"type": "boolean"
+													},
+													"description": {
+														"example": "This is one remote mcp server",
+														"maxLength": 512,
+														"nullable": true,
+														"type": "string"
+													},
+													"error": {
+														"readOnly": true,
+														"type": "string"
+													},
+													"hostname": {
+														"example": "https://example.com/mcp",
+														"format": "uri",
+														"type": "string"
+													},
+													"id": {
+														"description": "server id",
+														"example": "my-mcp-server",
+														"maxLength": 32,
+														"minLength": 1,
+														"pattern": "^[a-z0-9_]+(?:-[a-z0-9_]+)*$",
+														"type": "string"
+													},
+													"last_successful_sync": {
+														"format": "date-time",
+														"readOnly": true,
+														"type": "string"
+													},
+													"last_synced": {
+														"format": "date-time",
+														"readOnly": true,
+														"type": "string"
+													},
+													"modified_at": {
+														"format": "date-time",
+														"readOnly": true,
+														"type": "string"
+													},
+													"modified_by": {
+														"readOnly": true,
+														"type": "string"
+													},
+													"name": {
+														"example": "My MCP Server",
+														"maxLength": 350,
+														"type": "string"
+													},
+													"on_behalf": {
+														"default": true,
+														"type": "boolean"
+													},
+													"prompts": {
+														"items": {
+															"additionalProperties": {},
+															"type": "object"
+														},
+														"readOnly": true,
+														"type": "array"
+													},
+													"status": {
+														"default": "waiting",
+														"readOnly": true,
+														"type": "string"
+													},
+													"tools": {
+														"items": {
+															"additionalProperties": {},
+															"type": "object"
+														},
+														"readOnly": true,
+														"type": "array"
+													},
+													"updated_prompts": {
+														"items": {
+															"properties": {
+																"description": {
+																	"type": "string"
+																},
+																"enabled": {
+																	"type": "boolean"
+																},
+																"name": {
+																	"type": "string"
+																},
+																"portal_alias": {
+																	"example": "portal-tool-alias",
+																	"type": "string"
+																},
+																"server_alias": {
+																	"example": "server-tool-alias",
+																	"type": "string"
+																}
+															},
+															"required": [
+																"name"
+															],
+															"type": "object"
+														},
+														"type": "array"
+													},
+													"updated_tools": {
+														"items": {
+															"properties": {
+																"description": {
+																	"type": "string"
+																},
+																"enabled": {
+																	"type": "boolean"
+																},
+																"name": {
+																	"type": "string"
+																},
+																"portal_alias": {
+																	"example": "portal-tool-alias",
+																	"type": "string"
+																},
+																"server_alias": {
+																	"example": "server-tool-alias",
+																	"type": "string"
+																}
+															},
+															"required": [
+																"name"
+															],
+															"type": "object"
+														},
+														"type": "array"
+													}
+												},
+												"required": [
+													"id",
+													"name",
+													"hostname",
+													"auth_type",
+													"tools",
+													"prompts"
+												],
+												"type": "object"
+											},
+											"type": "array"
 										}
 									},
 									"required": [
 										"id",
 										"name",
-										"hostname"
+										"hostname",
+										"servers"
 									],
 									"type": "object"
 								},

@@ -117,14 +117,12 @@
 													"description": "Maximum number of DNS records allowed across all internal zones in the account. Only present if internal DNS is enabled.",
 													"example": 1000000,
 													"minimum": 0,
-													"nullable": true,
 													"type": "integer"
 												},
 												"internal_record_usage": {
 													"description": "Current number of DNS records across all internal zones in the account. Only present if internal DNS is enabled.",
 													"example": 5000,
 													"minimum": 0,
-													"nullable": true,
 													"type": "integer"
 												},
 												"record_quota": {
@@ -141,6 +139,10 @@
 													"type": "integer"
 												}
 											},
+											"required": [
+												"record_usage",
+												"record_quota"
+											],
 											"type": "object"
 										}
 									},
@@ -255,14 +257,12 @@
 															"description": "Maximum number of DNS records allowed across all internal zones in the account. Only present if internal DNS is enabled.",
 															"example": 1000000,
 															"minimum": 0,
-															"nullable": true,
 															"type": "integer"
 														},
 														"internal_record_usage": {
 															"description": "Current number of DNS records across all internal zones in the account. Only present if internal DNS is enabled.",
 															"example": 5000,
 															"minimum": 0,
-															"nullable": true,
 															"type": "integer"
 														},
 														"record_quota": {
@@ -279,6 +279,10 @@
 															"type": "integer"
 														}
 													},
+													"required": [
+														"record_usage",
+														"record_quota"
+													],
 													"type": "object"
 												}
 											},

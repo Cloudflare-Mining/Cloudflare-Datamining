@@ -2701,28 +2701,28 @@
 												"type": "string"
 											},
 											"reg_who_request": {
-												"description": "ICANN-mandated fields for registrar WHOIS data disclosure requests.",
+												"description": "RDP-mandated fields for registrar WHOIS data disclosure requests.",
 												"properties": {
 													"reg_who_authorization_statement": {
-														"description": "Optional authorization statement or power of attorney per ICANN 10.2.1.3.",
+														"description": "Optional authorization statement or power of attorney per RDP 10.2.1.3.",
 														"maxLength": 5000,
 														"type": "string"
 													},
 													"reg_who_good_faith_affirmation": {
-														"description": "Affirmation that the request is made in good faith per ICANN 10.2.4.",
+														"description": "Affirmation that the request is made in good faith per RDP 10.2.4. Must be true.",
 														"type": "boolean"
 													},
 													"reg_who_lawful_processing_agreement": {
-														"description": "Agreement to process data lawfully per ICANN 10.2.5.",
+														"description": "Agreement to process data lawfully per RDP 10.2.5. Must be true.",
 														"type": "boolean"
 													},
 													"reg_who_legal_basis": {
-														"description": "Legal rights and rationale for the request per ICANN 10.2.3.",
+														"description": "Legal rights and rationale for the request per RDP 10.2.3. Required for all WHOIS requests.",
 														"maxLength": 5000,
 														"type": "string"
 													},
 													"reg_who_request_type": {
-														"description": "The type of WHOIS data request per ICANN procedure.",
+														"description": "The type of WHOIS data request per RDP procedure.",
 														"enum": [
 															"disclosure",
 															"invalid_whois"
@@ -2730,7 +2730,7 @@
 														"type": "string"
 													},
 													"reg_who_requested_data_elements": {
-														"description": "The specific WHOIS data elements being requested per ICANN 10.2.2.",
+														"description": "The specific WHOIS data elements being requested per RDP 10.2.2. Required for all WHOIS requests.",
 														"items": {
 															"enum": [
 																"registrant_name",
@@ -2738,6 +2738,8 @@
 																"registrant_email",
 																"registrant_phone",
 																"registrant_address",
+																"registrant_address_country",
+																"registrant_address_postal_code",
 																"admin_name",
 																"admin_organization",
 																"admin_email",
@@ -2751,11 +2753,12 @@
 															],
 															"type": "string"
 														},
-														"maxItems": 20,
+														"maxItems": 17,
+														"minItems": 1,
 														"type": "array"
 													},
 													"reg_who_requestor_type": {
-														"description": "The nature of the requestor per ICANN 10.2.1.2.",
+														"description": "The nature of the requestor per RDP 10.2.1.2.",
 														"enum": [
 															"government",
 															"corporation",
@@ -2764,6 +2767,13 @@
 														"type": "string"
 													}
 												},
+												"required": [
+													"reg_who_request_type",
+													"reg_who_requested_data_elements",
+													"reg_who_legal_basis",
+													"reg_who_good_faith_affirmation",
+													"reg_who_lawful_processing_agreement"
+												],
 												"type": "object"
 											}
 										},

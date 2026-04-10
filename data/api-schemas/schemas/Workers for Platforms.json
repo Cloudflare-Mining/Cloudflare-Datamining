@@ -3887,6 +3887,7 @@
 														"data_blob": "#/components/schemas/workers_binding_kind_data_blob",
 														"dispatch_namespace": "#/components/schemas/workers_binding_kind_dispatch_namespace",
 														"durable_object_namespace": "#/components/schemas/workers_binding_kind_durable_object_namespace",
+														"flagship": "#/components/schemas/workers_binding_kind_flagship",
 														"hyperdrive": "#/components/schemas/workers_binding_kind_hyperdrive",
 														"images": "#/components/schemas/workers_binding_kind_images",
 														"inherit": "#/components/schemas/workers_binding_kind_inherit",
@@ -4082,11 +4083,19 @@
 													},
 													{
 														"properties": {
-															"id": {
+															"database_id": {
 																"description": "Identifier of the D1 database to bind to.",
 																"example": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
 																"type": "string",
 																"x-auditable": true
+															},
+															"id": {
+																"deprecated": true,
+																"description": "Identifier of the D1 database to bind to.",
+																"example": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+																"type": "string",
+																"x-auditable": true,
+																"x-stainless-deprecation-message": "This property has been renamed to `database_id`."
 															},
 															"name": {
 																"description": "A JavaScript variable name for the binding.",
@@ -4106,7 +4115,7 @@
 														"required": [
 															"name",
 															"type",
-															"id"
+															"database_id"
 														],
 														"type": "object"
 													},
@@ -4914,6 +4923,37 @@
 															"type",
 															"store_id",
 															"secret_name"
+														],
+														"type": "object"
+													},
+													{
+														"properties": {
+															"app_id": {
+																"description": "ID of the Flagship app to bind to for feature flag evaluation.",
+																"example": "app-12345678-1234-1234-1234-123456789012",
+																"maxLength": 128,
+																"type": "string",
+																"x-auditable": true
+															},
+															"name": {
+																"description": "A JavaScript variable name for the binding.",
+																"example": "myBinding",
+																"type": "string",
+																"x-auditable": true
+															},
+															"type": {
+																"description": "The kind of resource that the binding provides.",
+																"enum": [
+																	"flagship"
+																],
+																"type": "string",
+																"x-auditable": true
+															}
+														},
+														"required": [
+															"name",
+															"type",
+															"app_id"
 														],
 														"type": "object"
 													},
@@ -6447,6 +6487,7 @@
 																		"data_blob": "#/components/schemas/workers_binding_kind_data_blob",
 																		"dispatch_namespace": "#/components/schemas/workers_binding_kind_dispatch_namespace",
 																		"durable_object_namespace": "#/components/schemas/workers_binding_kind_durable_object_namespace",
+																		"flagship": "#/components/schemas/workers_binding_kind_flagship",
 																		"hyperdrive": "#/components/schemas/workers_binding_kind_hyperdrive",
 																		"images": "#/components/schemas/workers_binding_kind_images",
 																		"inherit": "#/components/schemas/workers_binding_kind_inherit",
@@ -6642,11 +6683,19 @@
 																	},
 																	{
 																		"properties": {
-																			"id": {
+																			"database_id": {
 																				"description": "Identifier of the D1 database to bind to.",
 																				"example": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
 																				"type": "string",
 																				"x-auditable": true
+																			},
+																			"id": {
+																				"deprecated": true,
+																				"description": "Identifier of the D1 database to bind to.",
+																				"example": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+																				"type": "string",
+																				"x-auditable": true,
+																				"x-stainless-deprecation-message": "This property has been renamed to `database_id`."
 																			},
 																			"name": {
 																				"description": "A JavaScript variable name for the binding.",
@@ -6666,7 +6715,7 @@
 																		"required": [
 																			"name",
 																			"type",
-																			"id"
+																			"database_id"
 																		],
 																		"type": "object"
 																	},
@@ -7474,6 +7523,37 @@
 																			"type",
 																			"store_id",
 																			"secret_name"
+																		],
+																		"type": "object"
+																	},
+																	{
+																		"properties": {
+																			"app_id": {
+																				"description": "ID of the Flagship app to bind to for feature flag evaluation.",
+																				"example": "app-12345678-1234-1234-1234-123456789012",
+																				"maxLength": 128,
+																				"type": "string",
+																				"x-auditable": true
+																			},
+																			"name": {
+																				"description": "A JavaScript variable name for the binding.",
+																				"example": "myBinding",
+																				"type": "string",
+																				"x-auditable": true
+																			},
+																			"type": {
+																				"description": "The kind of resource that the binding provides.",
+																				"enum": [
+																					"flagship"
+																				],
+																				"type": "string",
+																				"x-auditable": true
+																			}
+																		},
+																		"required": [
+																			"name",
+																			"type",
+																			"app_id"
 																		],
 																		"type": "object"
 																	},
@@ -7711,6 +7791,7 @@
 																		"data_blob": "#/components/schemas/workers_binding_kind_data_blob",
 																		"dispatch_namespace": "#/components/schemas/workers_binding_kind_dispatch_namespace",
 																		"durable_object_namespace": "#/components/schemas/workers_binding_kind_durable_object_namespace",
+																		"flagship": "#/components/schemas/workers_binding_kind_flagship",
 																		"hyperdrive": "#/components/schemas/workers_binding_kind_hyperdrive",
 																		"images": "#/components/schemas/workers_binding_kind_images",
 																		"inherit": "#/components/schemas/workers_binding_kind_inherit",
@@ -7906,11 +7987,19 @@
 																	},
 																	{
 																		"properties": {
-																			"id": {
+																			"database_id": {
 																				"description": "Identifier of the D1 database to bind to.",
 																				"example": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
 																				"type": "string",
 																				"x-auditable": true
+																			},
+																			"id": {
+																				"deprecated": true,
+																				"description": "Identifier of the D1 database to bind to.",
+																				"example": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+																				"type": "string",
+																				"x-auditable": true,
+																				"x-stainless-deprecation-message": "This property has been renamed to `database_id`."
 																			},
 																			"name": {
 																				"description": "A JavaScript variable name for the binding.",
@@ -7930,7 +8019,7 @@
 																		"required": [
 																			"name",
 																			"type",
-																			"id"
+																			"database_id"
 																		],
 																		"type": "object"
 																	},
@@ -8738,6 +8827,37 @@
 																			"type",
 																			"store_id",
 																			"secret_name"
+																		],
+																		"type": "object"
+																	},
+																	{
+																		"properties": {
+																			"app_id": {
+																				"description": "ID of the Flagship app to bind to for feature flag evaluation.",
+																				"example": "app-12345678-1234-1234-1234-123456789012",
+																				"maxLength": 128,
+																				"type": "string",
+																				"x-auditable": true
+																			},
+																			"name": {
+																				"description": "A JavaScript variable name for the binding.",
+																				"example": "myBinding",
+																				"type": "string",
+																				"x-auditable": true
+																			},
+																			"type": {
+																				"description": "The kind of resource that the binding provides.",
+																				"enum": [
+																					"flagship"
+																				],
+																				"type": "string",
+																				"x-auditable": true
+																			}
+																		},
+																		"required": [
+																			"name",
+																			"type",
+																			"app_id"
 																		],
 																		"type": "object"
 																	},
@@ -9010,6 +9130,12 @@
 														"cpu_ms": {
 															"description": "The amount of CPU time this Worker can use in milliseconds.",
 															"example": 50,
+															"type": "integer",
+															"x-auditable": true
+														},
+														"subrequests": {
+															"description": "The number of subrequests this Worker can make per request.",
+															"example": 1000,
 															"type": "integer",
 															"x-auditable": true
 														}
@@ -10536,6 +10662,7 @@
 															"data_blob": "#/components/schemas/workers_binding_kind_data_blob",
 															"dispatch_namespace": "#/components/schemas/workers_binding_kind_dispatch_namespace",
 															"durable_object_namespace": "#/components/schemas/workers_binding_kind_durable_object_namespace",
+															"flagship": "#/components/schemas/workers_binding_kind_flagship",
 															"hyperdrive": "#/components/schemas/workers_binding_kind_hyperdrive",
 															"images": "#/components/schemas/workers_binding_kind_images",
 															"inherit": "#/components/schemas/workers_binding_kind_inherit",
@@ -10731,11 +10858,19 @@
 														},
 														{
 															"properties": {
-																"id": {
+																"database_id": {
 																	"description": "Identifier of the D1 database to bind to.",
 																	"example": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
 																	"type": "string",
 																	"x-auditable": true
+																},
+																"id": {
+																	"deprecated": true,
+																	"description": "Identifier of the D1 database to bind to.",
+																	"example": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+																	"type": "string",
+																	"x-auditable": true,
+																	"x-stainless-deprecation-message": "This property has been renamed to `database_id`."
 																},
 																"name": {
 																	"description": "A JavaScript variable name for the binding.",
@@ -10755,7 +10890,7 @@
 															"required": [
 																"name",
 																"type",
-																"id"
+																"database_id"
 															],
 															"type": "object"
 														},
@@ -11563,6 +11698,37 @@
 																"type",
 																"store_id",
 																"secret_name"
+															],
+															"type": "object"
+														},
+														{
+															"properties": {
+																"app_id": {
+																	"description": "ID of the Flagship app to bind to for feature flag evaluation.",
+																	"example": "app-12345678-1234-1234-1234-123456789012",
+																	"maxLength": 128,
+																	"type": "string",
+																	"x-auditable": true
+																},
+																"name": {
+																	"description": "A JavaScript variable name for the binding.",
+																	"example": "myBinding",
+																	"type": "string",
+																	"x-auditable": true
+																},
+																"type": {
+																	"description": "The kind of resource that the binding provides.",
+																	"enum": [
+																		"flagship"
+																	],
+																	"type": "string",
+																	"x-auditable": true
+																}
+															},
+															"required": [
+																"name",
+																"type",
+																"app_id"
 															],
 															"type": "object"
 														},
@@ -11800,6 +11966,7 @@
 															"data_blob": "#/components/schemas/workers_binding_kind_data_blob",
 															"dispatch_namespace": "#/components/schemas/workers_binding_kind_dispatch_namespace",
 															"durable_object_namespace": "#/components/schemas/workers_binding_kind_durable_object_namespace",
+															"flagship": "#/components/schemas/workers_binding_kind_flagship",
 															"hyperdrive": "#/components/schemas/workers_binding_kind_hyperdrive",
 															"images": "#/components/schemas/workers_binding_kind_images",
 															"inherit": "#/components/schemas/workers_binding_kind_inherit",
@@ -11995,11 +12162,19 @@
 														},
 														{
 															"properties": {
-																"id": {
+																"database_id": {
 																	"description": "Identifier of the D1 database to bind to.",
 																	"example": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
 																	"type": "string",
 																	"x-auditable": true
+																},
+																"id": {
+																	"deprecated": true,
+																	"description": "Identifier of the D1 database to bind to.",
+																	"example": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+																	"type": "string",
+																	"x-auditable": true,
+																	"x-stainless-deprecation-message": "This property has been renamed to `database_id`."
 																},
 																"name": {
 																	"description": "A JavaScript variable name for the binding.",
@@ -12019,7 +12194,7 @@
 															"required": [
 																"name",
 																"type",
-																"id"
+																"database_id"
 															],
 															"type": "object"
 														},
@@ -12827,6 +13002,37 @@
 																"type",
 																"store_id",
 																"secret_name"
+															],
+															"type": "object"
+														},
+														{
+															"properties": {
+																"app_id": {
+																	"description": "ID of the Flagship app to bind to for feature flag evaluation.",
+																	"example": "app-12345678-1234-1234-1234-123456789012",
+																	"maxLength": 128,
+																	"type": "string",
+																	"x-auditable": true
+																},
+																"name": {
+																	"description": "A JavaScript variable name for the binding.",
+																	"example": "myBinding",
+																	"type": "string",
+																	"x-auditable": true
+																},
+																"type": {
+																	"description": "The kind of resource that the binding provides.",
+																	"enum": [
+																		"flagship"
+																	],
+																	"type": "string",
+																	"x-auditable": true
+																}
+															},
+															"required": [
+																"name",
+																"type",
+																"app_id"
 															],
 															"type": "object"
 														},
@@ -13099,6 +13305,12 @@
 											"cpu_ms": {
 												"description": "The amount of CPU time this Worker can use in milliseconds.",
 												"example": 50,
+												"type": "integer",
+												"x-auditable": true
+											},
+											"subrequests": {
+												"description": "The number of subrequests this Worker can make per request.",
+												"example": 1000,
 												"type": "integer",
 												"x-auditable": true
 											}
@@ -13898,6 +14110,7 @@
 																		"data_blob": "#/components/schemas/workers_binding_kind_data_blob",
 																		"dispatch_namespace": "#/components/schemas/workers_binding_kind_dispatch_namespace",
 																		"durable_object_namespace": "#/components/schemas/workers_binding_kind_durable_object_namespace",
+																		"flagship": "#/components/schemas/workers_binding_kind_flagship",
 																		"hyperdrive": "#/components/schemas/workers_binding_kind_hyperdrive",
 																		"images": "#/components/schemas/workers_binding_kind_images",
 																		"inherit": "#/components/schemas/workers_binding_kind_inherit",
@@ -14093,11 +14306,19 @@
 																	},
 																	{
 																		"properties": {
-																			"id": {
+																			"database_id": {
 																				"description": "Identifier of the D1 database to bind to.",
 																				"example": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
 																				"type": "string",
 																				"x-auditable": true
+																			},
+																			"id": {
+																				"deprecated": true,
+																				"description": "Identifier of the D1 database to bind to.",
+																				"example": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+																				"type": "string",
+																				"x-auditable": true,
+																				"x-stainless-deprecation-message": "This property has been renamed to `database_id`."
 																			},
 																			"name": {
 																				"description": "A JavaScript variable name for the binding.",
@@ -14117,7 +14338,7 @@
 																		"required": [
 																			"name",
 																			"type",
-																			"id"
+																			"database_id"
 																		],
 																		"type": "object"
 																	},
@@ -14925,6 +15146,37 @@
 																			"type",
 																			"store_id",
 																			"secret_name"
+																		],
+																		"type": "object"
+																	},
+																	{
+																		"properties": {
+																			"app_id": {
+																				"description": "ID of the Flagship app to bind to for feature flag evaluation.",
+																				"example": "app-12345678-1234-1234-1234-123456789012",
+																				"maxLength": 128,
+																				"type": "string",
+																				"x-auditable": true
+																			},
+																			"name": {
+																				"description": "A JavaScript variable name for the binding.",
+																				"example": "myBinding",
+																				"type": "string",
+																				"x-auditable": true
+																			},
+																			"type": {
+																				"description": "The kind of resource that the binding provides.",
+																				"enum": [
+																					"flagship"
+																				],
+																				"type": "string",
+																				"x-auditable": true
+																			}
+																		},
+																		"required": [
+																			"name",
+																			"type",
+																			"app_id"
 																		],
 																		"type": "object"
 																	},
@@ -15162,6 +15414,7 @@
 																		"data_blob": "#/components/schemas/workers_binding_kind_data_blob",
 																		"dispatch_namespace": "#/components/schemas/workers_binding_kind_dispatch_namespace",
 																		"durable_object_namespace": "#/components/schemas/workers_binding_kind_durable_object_namespace",
+																		"flagship": "#/components/schemas/workers_binding_kind_flagship",
 																		"hyperdrive": "#/components/schemas/workers_binding_kind_hyperdrive",
 																		"images": "#/components/schemas/workers_binding_kind_images",
 																		"inherit": "#/components/schemas/workers_binding_kind_inherit",
@@ -15357,11 +15610,19 @@
 																	},
 																	{
 																		"properties": {
-																			"id": {
+																			"database_id": {
 																				"description": "Identifier of the D1 database to bind to.",
 																				"example": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
 																				"type": "string",
 																				"x-auditable": true
+																			},
+																			"id": {
+																				"deprecated": true,
+																				"description": "Identifier of the D1 database to bind to.",
+																				"example": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+																				"type": "string",
+																				"x-auditable": true,
+																				"x-stainless-deprecation-message": "This property has been renamed to `database_id`."
 																			},
 																			"name": {
 																				"description": "A JavaScript variable name for the binding.",
@@ -15381,7 +15642,7 @@
 																		"required": [
 																			"name",
 																			"type",
-																			"id"
+																			"database_id"
 																		],
 																		"type": "object"
 																	},
@@ -16189,6 +16450,37 @@
 																			"type",
 																			"store_id",
 																			"secret_name"
+																		],
+																		"type": "object"
+																	},
+																	{
+																		"properties": {
+																			"app_id": {
+																				"description": "ID of the Flagship app to bind to for feature flag evaluation.",
+																				"example": "app-12345678-1234-1234-1234-123456789012",
+																				"maxLength": 128,
+																				"type": "string",
+																				"x-auditable": true
+																			},
+																			"name": {
+																				"description": "A JavaScript variable name for the binding.",
+																				"example": "myBinding",
+																				"type": "string",
+																				"x-auditable": true
+																			},
+																			"type": {
+																				"description": "The kind of resource that the binding provides.",
+																				"enum": [
+																					"flagship"
+																				],
+																				"type": "string",
+																				"x-auditable": true
+																			}
+																		},
+																		"required": [
+																			"name",
+																			"type",
+																			"app_id"
 																		],
 																		"type": "object"
 																	},
@@ -16461,6 +16753,12 @@
 														"cpu_ms": {
 															"description": "The amount of CPU time this Worker can use in milliseconds.",
 															"example": 50,
+															"type": "integer",
+															"x-auditable": true
+														},
+														"subrequests": {
+															"description": "The number of subrequests this Worker can make per request.",
+															"example": 1000,
 															"type": "integer",
 															"x-auditable": true
 														}
@@ -18464,6 +18762,7 @@
 													"data_blob": "#/components/schemas/workers_binding_kind_data_blob",
 													"dispatch_namespace": "#/components/schemas/workers_binding_kind_dispatch_namespace",
 													"durable_object_namespace": "#/components/schemas/workers_binding_kind_durable_object_namespace",
+													"flagship": "#/components/schemas/workers_binding_kind_flagship",
 													"hyperdrive": "#/components/schemas/workers_binding_kind_hyperdrive",
 													"images": "#/components/schemas/workers_binding_kind_images",
 													"inherit": "#/components/schemas/workers_binding_kind_inherit",
@@ -18659,11 +18958,19 @@
 												},
 												{
 													"properties": {
-														"id": {
+														"database_id": {
 															"description": "Identifier of the D1 database to bind to.",
 															"example": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
 															"type": "string",
 															"x-auditable": true
+														},
+														"id": {
+															"deprecated": true,
+															"description": "Identifier of the D1 database to bind to.",
+															"example": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+															"type": "string",
+															"x-auditable": true,
+															"x-stainless-deprecation-message": "This property has been renamed to `database_id`."
 														},
 														"name": {
 															"description": "A JavaScript variable name for the binding.",
@@ -18683,7 +18990,7 @@
 													"required": [
 														"name",
 														"type",
-														"id"
+														"database_id"
 													],
 													"type": "object"
 												},
@@ -19496,6 +19803,37 @@
 												},
 												{
 													"properties": {
+														"app_id": {
+															"description": "ID of the Flagship app to bind to for feature flag evaluation.",
+															"example": "app-12345678-1234-1234-1234-123456789012",
+															"maxLength": 128,
+															"type": "string",
+															"x-auditable": true
+														},
+														"name": {
+															"description": "A JavaScript variable name for the binding.",
+															"example": "myBinding",
+															"type": "string",
+															"x-auditable": true
+														},
+														"type": {
+															"description": "The kind of resource that the binding provides.",
+															"enum": [
+																"flagship"
+															],
+															"type": "string",
+															"x-auditable": true
+														}
+													},
+													"required": [
+														"name",
+														"type",
+														"app_id"
+													],
+													"type": "object"
+												},
+												{
+													"properties": {
 														"algorithm": {
 															"description": "Algorithm-specific key parameters. [Learn more](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#algorithm).",
 															"type": "object",
@@ -19757,6 +20095,12 @@
 											"cpu_ms": {
 												"description": "The amount of CPU time this Worker can use in milliseconds.",
 												"example": 50,
+												"type": "integer",
+												"x-auditable": true
+											},
+											"subrequests": {
+												"description": "The number of subrequests this Worker can make per request.",
+												"example": 1000,
 												"type": "integer",
 												"x-auditable": true
 											}

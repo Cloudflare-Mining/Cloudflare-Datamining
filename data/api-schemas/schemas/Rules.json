@@ -294,6 +294,10 @@
 												"type": "string",
 												"x-auditable": true
 											},
+											"description": {
+												"example": "Detects malicious proxy workers",
+												"type": "string"
+											},
 											"enabled": {
 												"description": "Whether this rule is active for dice consumers.",
 												"example": true,
@@ -340,6 +344,7 @@
 										"required": [
 											"id",
 											"name",
+											"description",
 											"namespaces",
 											"content",
 											"is_public",
@@ -449,6 +454,10 @@
 									"type": "string",
 									"x-auditable": true
 								},
+								"description": {
+									"example": "Detects malicious proxy workers",
+									"type": "string"
+								},
 								"enabled": {
 									"description": "Whether this rule is active for dice consumers.",
 									"example": true,
@@ -495,6 +504,7 @@
 							"required": [
 								"id",
 								"name",
+								"description",
 								"namespaces",
 								"content",
 								"is_public",
@@ -827,6 +837,12 @@
 								"minLength": 1,
 								"type": "string"
 							},
+							"description": {
+								"description": "Human-readable description of the rule. Auto-extracted from YARA meta if present.",
+								"example": "Detects malicious proxy workers",
+								"maxLength": 1000,
+								"type": "string"
+							},
 							"enabled": {
 								"default": true,
 								"description": "Whether this rule is active for dice consumers.",
@@ -891,6 +907,10 @@
 									"type": "string",
 									"x-auditable": true
 								},
+								"description": {
+									"example": "Detects malicious proxy workers",
+									"type": "string"
+								},
 								"enabled": {
 									"description": "Whether this rule is active for dice consumers.",
 									"example": true,
@@ -937,6 +957,7 @@
 							"required": [
 								"id",
 								"name",
+								"description",
 								"namespaces",
 								"content",
 								"is_public",
@@ -1177,6 +1198,12 @@
 								"minLength": 1,
 								"type": "string"
 							},
+							"description": {
+								"description": "Human-readable description of the rule. Auto-extracted from YARA meta if present.",
+								"example": "Detects malicious proxy workers",
+								"maxLength": 1000,
+								"type": "string"
+							},
 							"enabled": {
 								"description": "Whether this rule is active for dice consumers.",
 								"example": true,
@@ -1233,6 +1260,10 @@
 									"type": "string",
 									"x-auditable": true
 								},
+								"description": {
+									"example": "Detects malicious proxy workers",
+									"type": "string"
+								},
 								"enabled": {
 									"description": "Whether this rule is active for dice consumers.",
 									"example": true,
@@ -1279,6 +1310,7 @@
 							"required": [
 								"id",
 								"name",
+								"description",
 								"namespaces",
 								"content",
 								"is_public",

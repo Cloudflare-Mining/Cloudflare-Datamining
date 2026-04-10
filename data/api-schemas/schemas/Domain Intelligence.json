@@ -22,6 +22,14 @@
 				"schema": {
 					"type": "string"
 				}
+			},
+			{
+				"description": "Skip DNS resolution lookups for faster response.",
+				"in": "query",
+				"name": "skip_dns",
+				"schema": {
+					"type": "boolean"
+				}
 			}
 		],
 		"responses": {

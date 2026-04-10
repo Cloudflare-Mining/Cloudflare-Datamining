@@ -6407,10 +6407,11 @@
 													"type": "number"
 												},
 												"warnings": {
-													"items": {
+													"additionalProperties": {
 														"type": "string"
 													},
-													"type": "array"
+													"description": "Map of lease IDs to warning messages encountered during acknowledgement.",
+													"type": "object"
 												}
 											},
 											"type": "object"
@@ -6739,6 +6740,493 @@
 			"Workers Scripts Write"
 		],
 		"x-auditable": false
+	},
+	"POST /accounts/{account_id}/queues/{queue_id}/messages/preview": {
+		"description": "Preview messages from a Queue without leasing them. Messages remain available for subsequent preview or pull operations.",
+		"operationId": "queues-preview-messages",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "queue_id",
+				"required": true,
+				"schema": {
+					"description": "A Resource identifier.",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"readOnly": true,
+					"type": "string",
+					"x-auditable": true
+				}
+			},
+			{
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"description": "A Resource identifier.",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"readOnly": true,
+					"type": "string",
+					"x-auditable": true
+				}
+			}
+		],
+		"requestBody": {
+			"content": {
+				"application/json": {
+					"schema": {
+						"properties": {
+							"batch_size": {
+								"description": "The maximum number of messages to include in a batch.",
+								"example": 50,
+								"type": "number",
+								"x-auditable": true
+							}
+						},
+						"type": "object"
+					}
+				}
+			}
+		},
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"properties": {
+										"errors": {
+											"example": [
+												{
+													"code": 7003,
+													"message": "No route for the URI"
+												}
+											],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer",
+														"x-auditable": true
+													},
+													"message": {
+														"type": "string",
+														"x-auditable": true
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"minLength": 1,
+											"type": "array"
+										},
+										"messages": {
+											"example": [],
+											"items": {
+												"type": "string",
+												"x-auditable": true
+											},
+											"type": "array"
+										},
+										"success": {
+											"description": "Indicates if the API call was successful or not.",
+											"enum": [
+												true
+											],
+											"type": "boolean",
+											"x-auditable": true
+										}
+									},
+									"type": "object"
+								},
+								{
+									"properties": {
+										"result": {
+											"properties": {
+												"messages": {
+													"items": {
+														"properties": {
+															"attempts": {
+																"example": 1,
+																"readOnly": true,
+																"type": "number",
+																"x-auditable": true
+															},
+															"body": {
+																"example": "hello world",
+																"readOnly": true,
+																"type": "string"
+															},
+															"id": {
+																"example": "b01b5594f784d0165c2985833f5660dd",
+																"readOnly": true,
+																"type": "string",
+																"x-auditable": true
+															},
+															"lease_id": {
+																"description": "An ID that represents an \"in-flight\" message that has been pulled from a Queue. You must hold on to this ID and use it to acknowledge this message.",
+																"example": "eyJhbGciOiJkaXIiLCJlbmMiOiJBMjU2Q0JDLUhTNTEyIn0..Q8p21d7dceR6vUfwftONdQ.JVqZgAS-Zk7MqmqccYtTHeeMElNHaOMigeWdb8LyMOg.T2_HV99CYzGaQuhTyW8RsgbnpTRZHRM6N7UoSaAKeK0",
+																"type": "string",
+																"x-auditable": true
+															},
+															"metadata": {
+																"example": {
+																	"CF-Content-Type": "text",
+																	"CF-sourceMessageSource": "dash"
+																},
+																"readOnly": true,
+																"type": "object"
+															},
+															"timestamp_ms": {
+																"example": 1710950954154,
+																"readOnly": true,
+																"type": "number",
+																"x-auditable": true
+															}
+														},
+														"type": "object"
+													},
+													"type": "array"
+												}
+											},
+											"type": "object"
+										}
+									},
+									"type": "object"
+								}
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "A batch of previewed messages from the Queue"
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"example": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
+										}
+									],
+									"items": {
+										"properties": {
+											"code": {
+												"minimum": 1000,
+												"type": "integer",
+												"x-auditable": true
+											},
+											"message": {
+												"type": "string",
+												"x-auditable": true
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object",
+										"uniqueItems": true
+									},
+									"minLength": 1,
+									"type": "array"
+								},
+								"messages": {
+									"example": [],
+									"items": {
+										"type": "string",
+										"x-auditable": true
+									},
+									"type": "array"
+								},
+								"success": {
+									"description": "Indicates if the API call was successful or not.",
+									"enum": [
+										false
+									],
+									"example": false,
+									"type": "boolean",
+									"x-auditable": true
+								}
+							},
+							"type": "object"
+						}
+					}
+				},
+				"description": "Failure response"
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": [],
+				"api_token": []
+			}
+		],
+		"summary": "Preview Queue Messages",
+		"tags": [
+			"Queue"
+		],
+		"x-api-token-group": [
+			"Queues Write",
+			"Queues Read",
+			"Workers Scripts Write",
+			"Workers Scripts Read"
+		],
+		"x-auditable": false,
+		"x-cfPermissionsRequired": {
+			"enum": [
+				"com.cloudflare.edge.worker.queue.update"
+			]
+		}
+	},
+	"POST /accounts/{account_id}/queues/{queue_id}/messages/preview/ack": {
+		"description": "Delete previewed messages from a Queue. Note that messages acknowledged this way aren't considered delivered, they are instantly deleted from this queue and do not affect metrics.",
+		"operationId": "queues-ack-preview-messages",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "queue_id",
+				"required": true,
+				"schema": {
+					"description": "A Resource identifier.",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"readOnly": true,
+					"type": "string",
+					"x-auditable": true
+				}
+			},
+			{
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"description": "A Resource identifier.",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"readOnly": true,
+					"type": "string",
+					"x-auditable": true
+				}
+			}
+		],
+		"requestBody": {
+			"content": {
+				"application/json": {
+					"schema": {
+						"properties": {
+							"acks": {
+								"items": {
+									"properties": {
+										"lease_id": {
+											"description": "An ID that represents an \"in-flight\" message that has been pulled from a Queue. You must hold on to this ID and use it to acknowledge this message.",
+											"example": "eyJhbGciOiJkaXIiLCJlbmMiOiJBMjU2Q0JDLUhTNTEyIn0..Q8p21d7dceR6vUfwftONdQ.JVqZgAS-Zk7MqmqccYtTHeeMElNHaOMigeWdb8LyMOg.T2_HV99CYzGaQuhTyW8RsgbnpTRZHRM6N7UoSaAKeK0",
+											"type": "string",
+											"x-auditable": true
+										}
+									},
+									"type": "object"
+								},
+								"type": "array"
+							},
+							"retries": {
+								"items": {
+									"properties": {
+										"delay_seconds": {
+											"description": "The number of seconds to delay before making the message available for another attempt.",
+											"example": 10,
+											"type": "number",
+											"x-auditable": true
+										},
+										"lease_id": {
+											"description": "An ID that represents an \"in-flight\" message that has been pulled from a Queue. You must hold on to this ID and use it to acknowledge this message.",
+											"example": "eyJhbGciOiJkaXIiLCJlbmMiOiJBMjU2Q0JDLUhTNTEyIn0..Q8p21d7dceR6vUfwftONdQ.JVqZgAS-Zk7MqmqccYtTHeeMElNHaOMigeWdb8LyMOg.T2_HV99CYzGaQuhTyW8RsgbnpTRZHRM6N7UoSaAKeK0",
+											"type": "string",
+											"x-auditable": true
+										}
+									},
+									"type": "object"
+								},
+								"type": "array"
+							}
+						},
+						"type": "object"
+					}
+				}
+			},
+			"required": true
+		},
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"properties": {
+										"errors": {
+											"example": [
+												{
+													"code": 7003,
+													"message": "No route for the URI"
+												}
+											],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer",
+														"x-auditable": true
+													},
+													"message": {
+														"type": "string",
+														"x-auditable": true
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"minLength": 1,
+											"type": "array"
+										},
+										"messages": {
+											"example": [],
+											"items": {
+												"type": "string",
+												"x-auditable": true
+											},
+											"type": "array"
+										},
+										"success": {
+											"description": "Indicates if the API call was successful or not.",
+											"enum": [
+												true
+											],
+											"type": "boolean",
+											"x-auditable": true
+										}
+									},
+									"type": "object"
+								},
+								{
+									"properties": {
+										"result": {
+											"properties": {
+												"warnings": {
+													"additionalProperties": {
+														"type": "string"
+													},
+													"description": "Map of lease IDs to warning messages encountered during acknowledgement.",
+													"type": "object"
+												}
+											},
+											"type": "object"
+										}
+									},
+									"type": "object"
+								}
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Result of acknowledging previewed messages"
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"example": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
+										}
+									],
+									"items": {
+										"properties": {
+											"code": {
+												"minimum": 1000,
+												"type": "integer",
+												"x-auditable": true
+											},
+											"message": {
+												"type": "string",
+												"x-auditable": true
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object",
+										"uniqueItems": true
+									},
+									"minLength": 1,
+									"type": "array"
+								},
+								"messages": {
+									"example": [],
+									"items": {
+										"type": "string",
+										"x-auditable": true
+									},
+									"type": "array"
+								},
+								"success": {
+									"description": "Indicates if the API call was successful or not.",
+									"enum": [
+										false
+									],
+									"example": false,
+									"type": "boolean",
+									"x-auditable": true
+								}
+							},
+							"type": "object"
+						}
+					}
+				},
+				"description": "Failure response"
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": [],
+				"api_token": []
+			}
+		],
+		"summary": "Delete Previewed Queue Messages",
+		"tags": [
+			"Queue"
+		],
+		"x-api-token-group": [
+			"Queues Write",
+			"Workers Scripts Write"
+		],
+		"x-auditable": false,
+		"x-cfPermissionsRequired": {
+			"enum": [
+				"com.cloudflare.edge.worker.queue.update"
+			]
+		}
 	},
 	"POST /accounts/{account_id}/queues/{queue_id}/messages/pull": {
 		"description": "Pull a batch of messages from a Queue",

@@ -480,6 +480,24 @@
 				"schema": {
 					"type": "string"
 				}
+			},
+			{
+				"description": "Limit of number of results to return.",
+				"in": "query",
+				"name": "limit",
+				"schema": {
+					"default": 25,
+					"type": "integer"
+				}
+			},
+			{
+				"description": "Offset of results to return.",
+				"in": "query",
+				"name": "offset",
+				"schema": {
+					"default": 0,
+					"type": "integer"
+				}
 			}
 		],
 		"responses": {

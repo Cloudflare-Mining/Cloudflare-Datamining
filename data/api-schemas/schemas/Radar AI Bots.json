@@ -15,7 +15,9 @@
 						"CRAWL_PURPOSE",
 						"INDUSTRY",
 						"VERTICAL",
-						"CONTENT_TYPE"
+						"CONTENT_TYPE",
+						"RESPONSE_STATUS",
+						"RESPONSE_STATUS_CATEGORY"
 					],
 					"type": "string"
 				}
@@ -191,6 +193,38 @@
 							"BINARY",
 							"SERIALIZATION",
 							"OTHER"
+						],
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
+				"description": "Filters results by HTTP response status code (e.g. 200, 403, 404). Only [IANA-registered codes](https://www.iana.org/assignments/http-status-codes/http-status-codes.xhtml) are accepted.",
+				"in": "query",
+				"name": "responseStatus",
+				"schema": {
+					"description": "Filters results by HTTP response status code (e.g. 200, 403, 404). Only [IANA-registered codes](https://www.iana.org/assignments/http-status-codes/http-status-codes.xhtml) are accepted.",
+					"items": {
+						"pattern": "^\\d{3}$",
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
+				"description": "Filters results by HTTP response status code category.",
+				"in": "query",
+				"name": "responseStatusCategory",
+				"schema": {
+					"description": "Filters results by HTTP response status code category.",
+					"items": {
+						"enum": [
+							"INFORMATIONAL",
+							"SUCCESS",
+							"REDIRECTION",
+							"CLIENT_ERROR",
+							"SERVER_ERROR"
 						],
 						"type": "string"
 					},
@@ -1098,6 +1132,38 @@
 				}
 			},
 			{
+				"description": "Filters results by HTTP response status code (e.g. 200, 403, 404). Only [IANA-registered codes](https://www.iana.org/assignments/http-status-codes/http-status-codes.xhtml) are accepted.",
+				"in": "query",
+				"name": "responseStatus",
+				"schema": {
+					"description": "Filters results by HTTP response status code (e.g. 200, 403, 404). Only [IANA-registered codes](https://www.iana.org/assignments/http-status-codes/http-status-codes.xhtml) are accepted.",
+					"items": {
+						"pattern": "^\\d{3}$",
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
+				"description": "Filters results by HTTP response status code category.",
+				"in": "query",
+				"name": "responseStatusCategory",
+				"schema": {
+					"description": "Filters results by HTTP response status code category.",
+					"items": {
+						"enum": [
+							"INFORMATIONAL",
+							"SUCCESS",
+							"REDIRECTION",
+							"CLIENT_ERROR",
+							"SERVER_ERROR"
+						],
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
 				"description": "Limits the number of objects per group to the top items within the specified time range. When item count exceeds the limit, extra items appear grouped under an \"other\" category.",
 				"in": "query",
 				"name": "limitPerGroup",
@@ -1436,7 +1502,9 @@
 						"CRAWL_PURPOSE",
 						"INDUSTRY",
 						"VERTICAL",
-						"CONTENT_TYPE"
+						"CONTENT_TYPE",
+						"RESPONSE_STATUS",
+						"RESPONSE_STATUS_CATEGORY"
 					],
 					"type": "string"
 				}
@@ -1628,6 +1696,38 @@
 							"BINARY",
 							"SERIALIZATION",
 							"OTHER"
+						],
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
+				"description": "Filters results by HTTP response status code (e.g. 200, 403, 404). Only [IANA-registered codes](https://www.iana.org/assignments/http-status-codes/http-status-codes.xhtml) are accepted.",
+				"in": "query",
+				"name": "responseStatus",
+				"schema": {
+					"description": "Filters results by HTTP response status code (e.g. 200, 403, 404). Only [IANA-registered codes](https://www.iana.org/assignments/http-status-codes/http-status-codes.xhtml) are accepted.",
+					"items": {
+						"pattern": "^\\d{3}$",
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
+				"description": "Filters results by HTTP response status code category.",
+				"in": "query",
+				"name": "responseStatusCategory",
+				"schema": {
+					"description": "Filters results by HTTP response status code category.",
+					"items": {
+						"enum": [
+							"INFORMATIONAL",
+							"SUCCESS",
+							"REDIRECTION",
+							"CLIENT_ERROR",
+							"SERVER_ERROR"
 						],
 						"type": "string"
 					},

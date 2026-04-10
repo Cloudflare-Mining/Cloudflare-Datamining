@@ -28,22 +28,120 @@
 				}
 			}
 		],
-		"requestBody": {
-			"content": {
-				"application/json": {}
-			},
-			"required": true
-		},
 		"responses": {
 			"200": {
-				"content": {
-					"application/json": {}
-				},
 				"description": "Delete video response."
 			},
 			"4XX": {
 				"content": {
-					"application/json": {}
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"allOf": [
+										{
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														},
+														"type": "object"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										}
+									],
+									"example": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
+										}
+									],
+									"minLength": 1
+								},
+								"messages": {
+									"allOf": [
+										{
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														},
+														"type": "object"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										}
+									],
+									"example": []
+								},
+								"result": {
+									"enum": [
+										null
+									],
+									"nullable": true,
+									"type": "object"
+								},
+								"success": {
+									"description": "Whether the API call was successful.",
+									"enum": [
+										false
+									],
+									"example": false,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							],
+							"type": "object"
+						}
+					}
 				},
 				"description": "Delete video response failure."
 			}
@@ -178,6 +276,59 @@
 					"example": true,
 					"type": "boolean"
 				}
+			},
+			{
+				"description": "Filter by video ID(s). Can be a single ID or a comma-separated list of IDs.",
+				"in": "query",
+				"name": "id",
+				"schema": {
+					"example": "ea95132c15732412d22c1476fa83f27a",
+					"type": "string"
+				}
+			},
+			{
+				"description": "Filter by video name/UID(s). Can be a single name or a comma-separated list.",
+				"in": "query",
+				"name": "name",
+				"schema": {
+					"type": "string"
+				}
+			},
+			{
+				"description": "Filter by live input ID to find videos associated with a specific live stream.",
+				"in": "query",
+				"name": "live_input_id",
+				"schema": {
+					"type": "string"
+				}
+			},
+			{
+				"description": "Alias for 'end'. Returns videos created before this date/time (RFC 3339 format).",
+				"in": "query",
+				"name": "before",
+				"schema": {
+					"format": "date-time",
+					"type": "string"
+				}
+			},
+			{
+				"description": "Alias for 'start'. Returns videos created after this date/time (RFC 3339 format).",
+				"in": "query",
+				"name": "after",
+				"schema": {
+					"format": "date-time",
+					"type": "string"
+				}
+			},
+			{
+				"description": "Maximum number of videos to return (default 1000, max 1000).",
+				"in": "query",
+				"name": "limit",
+				"schema": {
+					"maximum": 1000,
+					"minimum": 1,
+					"type": "integer"
+				}
 			}
 		],
 		"responses": {
@@ -284,6 +435,11 @@
 														},
 														"type": "array"
 													},
+													"clippedFrom": {
+														"description": "The unique identifier of the source video this video was clipped from.",
+														"example": "ea95132c15732412d22c1476fa83f27a",
+														"type": "string"
+													},
 													"created": {
 														"description": "The date and time the media item was created.",
 														"example": "2014-01-02T02:20:00Z",
@@ -332,6 +488,11 @@
 														"type": "integer",
 														"x-auditable": true
 													},
+													"maxSizeBytes": {
+														"description": "The maximum size in bytes for the video upload.",
+														"format": "int64",
+														"type": "integer"
+													},
 													"meta": {
 														"description": "A user modifiable key-value store used to reference other systems of record for managing videos.",
 														"example": {
@@ -369,6 +530,31 @@
 														"format": "uri",
 														"type": "string",
 														"x-auditable": true
+													},
+													"publicDetails": {
+														"description": "Public details for the video including title, share link, channel link, and logo.",
+														"properties": {
+															"channel_link": {
+																"nullable": true,
+																"type": "string"
+															},
+															"logo": {
+																"nullable": true,
+																"type": "string"
+															},
+															"media_id": {
+																"type": "integer"
+															},
+															"share_link": {
+																"nullable": true,
+																"type": "string"
+															},
+															"title": {
+																"nullable": true,
+																"type": "string"
+															}
+														},
+														"type": "object"
 													},
 													"readyToStream": {
 														"description": "Indicates whether the video is playable. The field is empty if the video is not ready for viewing or the live stream is still in progress.",
@@ -420,8 +606,7 @@
 															},
 															"pctComplete": {
 																"description": "Indicates the progress as a percentage between 0 and 100.",
-																"maximum": 100,
-																"minimum": 0,
+																"example": "45",
 																"type": "string",
 																"x-auditable": true
 															},
@@ -857,6 +1042,11 @@
 													},
 													"type": "array"
 												},
+												"clippedFrom": {
+													"description": "The unique identifier of the source video this video was clipped from.",
+													"example": "ea95132c15732412d22c1476fa83f27a",
+													"type": "string"
+												},
 												"created": {
 													"description": "The date and time the media item was created.",
 													"example": "2014-01-02T02:20:00Z",
@@ -905,6 +1095,11 @@
 													"type": "integer",
 													"x-auditable": true
 												},
+												"maxSizeBytes": {
+													"description": "The maximum size in bytes for the video upload.",
+													"format": "int64",
+													"type": "integer"
+												},
 												"meta": {
 													"description": "A user modifiable key-value store used to reference other systems of record for managing videos.",
 													"example": {
@@ -942,6 +1137,31 @@
 													"format": "uri",
 													"type": "string",
 													"x-auditable": true
+												},
+												"publicDetails": {
+													"description": "Public details for the video including title, share link, channel link, and logo.",
+													"properties": {
+														"channel_link": {
+															"nullable": true,
+															"type": "string"
+														},
+														"logo": {
+															"nullable": true,
+															"type": "string"
+														},
+														"media_id": {
+															"type": "integer"
+														},
+														"share_link": {
+															"nullable": true,
+															"type": "string"
+														},
+														"title": {
+															"nullable": true,
+															"type": "string"
+														}
+													},
+													"type": "object"
 												},
 												"readyToStream": {
 													"description": "Indicates whether the video is playable. The field is empty if the video is not ready for viewing or the live stream is still in progress.",
@@ -993,8 +1213,7 @@
 														},
 														"pctComplete": {
 															"description": "Indicates the progress as a percentage between 0 and 100.",
-															"maximum": 100,
-															"minimum": 0,
+															"example": "45",
 															"type": "string",
 															"x-auditable": true
 														},
@@ -1308,7 +1527,7 @@
 		"responses": {
 			"200": {
 				"content": {
-					"application/json": {
+					"text/html": {
 						"schema": {
 							"example": "<stream id=\"ea95132c15732412d22c1476fa83f27a\"></stream><script data-cfasync=\"false\" defer type=\"text/javascript\" src=\"https://embed.cloudflarestream.com/embed/we4g.fla9.latest.js\"></script>",
 							"type": "string"
@@ -1580,8 +1799,9 @@
 													"x-auditable": true
 												},
 												"totalStorageMinutes": {
-													"description": "The total minutes of video content stored in the account.",
-													"type": "integer"
+													"description": "The total minutes of video content stored in the account. May contain decimal values.",
+													"format": "float",
+													"type": "number"
 												},
 												"totalStorageMinutesLimit": {
 													"description": "The storage capacity alloted for the account.",
@@ -1807,22 +2027,141 @@
 				}
 			}
 		],
-		"requestBody": {
-			"content": {
-				"application/json": {}
-			},
-			"required": true
-		},
 		"responses": {
-			"200": {
-				"content": {
-					"application/json": {}
-				},
-				"description": "Initiate video uploads using TUS response."
+			"201": {
+				"description": "Initiate video uploads using TUS response. Returns a 201 Created status with Location header for TUS uploads.",
+				"headers": {
+					"Location": {
+						"description": "The URL where the upload should be sent.",
+						"schema": {
+							"type": "string"
+						}
+					},
+					"Stream-Media-ID": {
+						"description": "The unique identifier for the video being uploaded.",
+						"schema": {
+							"type": "string"
+						}
+					},
+					"Tus-Resumable": {
+						"description": "The TUS protocol version.",
+						"schema": {
+							"example": "1.0.0",
+							"type": "string"
+						}
+					}
+				}
 			},
 			"4XX": {
 				"content": {
-					"application/json": {}
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"allOf": [
+										{
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														},
+														"type": "object"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										}
+									],
+									"example": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
+										}
+									],
+									"minLength": 1
+								},
+								"messages": {
+									"allOf": [
+										{
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														},
+														"type": "object"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										}
+									],
+									"example": []
+								},
+								"result": {
+									"enum": [
+										null
+									],
+									"nullable": true,
+									"type": "object"
+								},
+								"success": {
+									"description": "Whether the API call was successful.",
+									"enum": [
+										false
+									],
+									"example": false,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							],
+							"type": "object"
+						}
+					}
 				},
 				"description": "Initiate video uploads using TUS response failure."
 			}
@@ -1908,6 +2247,28 @@
 								},
 								"type": "object"
 							},
+							"publicDetails": {
+								"description": "Public details for the video including title, share link, channel link, and logo.",
+								"properties": {
+									"channel_link": {
+										"nullable": true,
+										"type": "string"
+									},
+									"logo": {
+										"nullable": true,
+										"type": "string"
+									},
+									"share_link": {
+										"nullable": true,
+										"type": "string"
+									},
+									"title": {
+										"nullable": true,
+										"type": "string"
+									}
+								},
+								"type": "object"
+							},
 							"requireSignedURLs": {
 								"default": false,
 								"description": "Indicates whether the video can be a accessed using the UID. When set to `true`, a signed token must be generated with a signing key to view the video.",
@@ -1930,6 +2291,11 @@
 								"minimum": 0,
 								"type": "number",
 								"x-auditable": true
+							},
+							"uid": {
+								"description": "The unique identifier for the video. Can be used to verify the video being updated.",
+								"example": "ea95132c15732412d22c1476fa83f27a",
+								"type": "string"
 							},
 							"uploadExpiry": {
 								"description": "The date and time when the video upload URL is no longer valid for direct user uploads.",
@@ -2053,6 +2419,11 @@
 													},
 													"type": "array"
 												},
+												"clippedFrom": {
+													"description": "The unique identifier of the source video this video was clipped from.",
+													"example": "ea95132c15732412d22c1476fa83f27a",
+													"type": "string"
+												},
 												"created": {
 													"description": "The date and time the media item was created.",
 													"example": "2014-01-02T02:20:00Z",
@@ -2101,6 +2472,11 @@
 													"type": "integer",
 													"x-auditable": true
 												},
+												"maxSizeBytes": {
+													"description": "The maximum size in bytes for the video upload.",
+													"format": "int64",
+													"type": "integer"
+												},
 												"meta": {
 													"description": "A user modifiable key-value store used to reference other systems of record for managing videos.",
 													"example": {
@@ -2138,6 +2514,31 @@
 													"format": "uri",
 													"type": "string",
 													"x-auditable": true
+												},
+												"publicDetails": {
+													"description": "Public details for the video including title, share link, channel link, and logo.",
+													"properties": {
+														"channel_link": {
+															"nullable": true,
+															"type": "string"
+														},
+														"logo": {
+															"nullable": true,
+															"type": "string"
+														},
+														"media_id": {
+															"type": "integer"
+														},
+														"share_link": {
+															"nullable": true,
+															"type": "string"
+														},
+														"title": {
+															"nullable": true,
+															"type": "string"
+														}
+													},
+													"type": "object"
 												},
 												"readyToStream": {
 													"description": "Indicates whether the video is playable. The field is empty if the video is not ready for viewing or the live stream is still in progress.",
@@ -2189,8 +2590,7 @@
 														},
 														"pctComplete": {
 															"description": "Indicates the progress as a percentage between 0 and 100.",
-															"maximum": 100,
-															"minimum": 0,
+															"example": "45",
 															"type": "string",
 															"x-auditable": true
 														},
@@ -2581,6 +2981,17 @@
 								"description": "The optional unix epoch timestamp that specficies the time after a token is not accepted. The maximum time specification is 24 hours from issuing time. If this field is not set, the default is one hour after issuing.",
 								"type": "integer"
 							},
+							"flags": {
+								"description": "Optional flags for the signed token.",
+								"properties": {
+									"original": {
+										"default": false,
+										"description": "Whether to return the original video without transformations.",
+										"type": "boolean"
+									}
+								},
+								"type": "object"
+							},
 							"id": {
 								"description": "The optional ID of a Stream signing key. If present, the `pem` field is also required.",
 								"example": "ab0d4ef71g4425f8dcba9041231813000",
@@ -2878,6 +3289,19 @@
 			"content": {
 				"application/json": {
 					"schema": {
+						"anyOf": [
+							{
+								"required": [
+									"input"
+								]
+							},
+							{
+								"required": [
+									"url"
+								]
+							}
+						],
+						"description": "Copy upload request. Provide `input` (preferred) or `url` (deprecated).",
 						"properties": {
 							"allowedOrigins": {
 								"description": "Lists the origins allowed to display the video. Enter allowed origin domains in an array and use `*` for wildcard subdomains. Empty arrays allow the video to be viewed on any origin.",
@@ -2897,12 +3321,23 @@
 								"type": "string",
 								"x-auditable": true
 							},
+							"input": {
+								"description": "A video's URL. The server must be publicly routable and support `HTTP HEAD` requests and `HTTP GET` range requests. The server should respond to `HTTP HEAD` requests with a `content-range` header that includes the size of the file. This is the preferred field over `url`.",
+								"example": "https://example.com/myvideo.mp4",
+								"format": "uri",
+								"type": "string"
+							},
 							"meta": {
 								"description": "A user modifiable key-value store used to reference other systems of record for managing videos.",
 								"example": {
 									"name": "video12345.mp4"
 								},
 								"type": "object"
+							},
+							"name": {
+								"description": "A video's name. Used for legacy compatibility.",
+								"example": "myvideo.mp4",
+								"type": "string"
 							},
 							"requireSignedURLs": {
 								"default": false,
@@ -2928,7 +3363,7 @@
 								"x-auditable": true
 							},
 							"url": {
-								"description": "A video's URL. The server must be publicly routable and support `HTTP HEAD` requests and `HTTP GET` range requests. The server should respond to `HTTP HEAD` requests with a `content-range` header that includes the size of the file.",
+								"description": "A video's URL. The server must be publicly routable and support `HTTP HEAD` requests and `HTTP GET` range requests. The server should respond to `HTTP HEAD` requests with a `content-range` header that includes the size of the file. This field is deprecated in favor of `input`.",
 								"example": "https://example.com/myvideo.mp4",
 								"format": "uri",
 								"type": "string"
@@ -2946,9 +3381,7 @@
 								"type": "object"
 							}
 						},
-						"required": [
-							"url"
-						]
+						"type": "object"
 					}
 				}
 			},
@@ -3062,6 +3495,11 @@
 													},
 													"type": "array"
 												},
+												"clippedFrom": {
+													"description": "The unique identifier of the source video this video was clipped from.",
+													"example": "ea95132c15732412d22c1476fa83f27a",
+													"type": "string"
+												},
 												"created": {
 													"description": "The date and time the media item was created.",
 													"example": "2014-01-02T02:20:00Z",
@@ -3110,6 +3548,11 @@
 													"type": "integer",
 													"x-auditable": true
 												},
+												"maxSizeBytes": {
+													"description": "The maximum size in bytes for the video upload.",
+													"format": "int64",
+													"type": "integer"
+												},
 												"meta": {
 													"description": "A user modifiable key-value store used to reference other systems of record for managing videos.",
 													"example": {
@@ -3147,6 +3590,31 @@
 													"format": "uri",
 													"type": "string",
 													"x-auditable": true
+												},
+												"publicDetails": {
+													"description": "Public details for the video including title, share link, channel link, and logo.",
+													"properties": {
+														"channel_link": {
+															"nullable": true,
+															"type": "string"
+														},
+														"logo": {
+															"nullable": true,
+															"type": "string"
+														},
+														"media_id": {
+															"type": "integer"
+														},
+														"share_link": {
+															"nullable": true,
+															"type": "string"
+														},
+														"title": {
+															"nullable": true,
+															"type": "string"
+														}
+													},
+													"type": "object"
 												},
 												"readyToStream": {
 													"description": "Indicates whether the video is playable. The field is empty if the video is not ready for viewing or the live stream is still in progress.",
@@ -3198,8 +3666,7 @@
 														},
 														"pctComplete": {
 															"description": "Indicates the progress as a percentage between 0 and 100.",
-															"maximum": 100,
-															"minimum": 0,
+															"example": "45",
 															"type": "string",
 															"x-auditable": true
 														},

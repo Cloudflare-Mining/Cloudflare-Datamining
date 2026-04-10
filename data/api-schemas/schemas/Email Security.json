@@ -327,7 +327,10 @@
 													}
 												},
 												"properties": {
-													"action_log": {},
+													"action_log": {
+														"deprecated": true,
+														"description": "Deprecated: use `/investigate/{id}/action_log` instead."
+													},
 													"alert_id": {
 														"nullable": true,
 														"type": "string"
@@ -407,6 +410,8 @@
 														]
 													},
 													"findings": {
+														"deprecated": true,
+														"description": "Deprecated.",
 														"items": {
 															"properties": {
 																"attachment": {
@@ -876,7 +881,10 @@
 													}
 												},
 												"properties": {
-													"action_log": {},
+													"action_log": {
+														"deprecated": true,
+														"description": "Deprecated: use `/investigate/{id}/action_log` instead."
+													},
 													"alert_id": {
 														"nullable": true,
 														"type": "string"
@@ -956,6 +964,8 @@
 														]
 													},
 													"findings": {
+														"deprecated": true,
+														"description": "Deprecated.",
 														"items": {
 															"properties": {
 																"attachment": {
@@ -1405,6 +1415,275 @@
 			"Cloud Email Security: Read"
 		]
 	},
+	"GET /accounts/{account_id}/email-security/investigate/{investigate_id}/action_log": {
+		"description": "Returns the list of post-delivery actions (moves, quarantine releases, previews, etc.)\nthat have been applied to a specific email message.",
+		"operationId": "email_security_get_message_action_log",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"description": "Account Identifier",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"minLength": 32,
+					"readOnly": true,
+					"title": "account_id",
+					"type": "string"
+				}
+			},
+			{
+				"in": "path",
+				"name": "investigate_id",
+				"required": true,
+				"schema": {
+					"description": "The investigation identifier for an email message.",
+					"example": "4TVxY03CzQzgZgh-2024-02-08T12:45:42-ad46769f",
+					"type": "string"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"properties": {
+										"errors": {
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"format": "int32",
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object"
+											},
+											"type": "array"
+										},
+										"messages": {
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"format": "int32",
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object"
+											},
+											"type": "array"
+										},
+										"success": {
+											"example": true,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages"
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"result": {
+											"description": "Response for the action log endpoint.",
+											"items": {
+												"description": "A single action entry returned by the `/unisearch/actions` endpoint.",
+												"properties": {
+													"completed_at": {
+														"description": "Timestamp when the action completed.",
+														"format": "date-time",
+														"type": "string"
+													},
+													"operation": {
+														"enum": [
+															"PREVIEW",
+															"QUARANTINE_RELEASE",
+															"SUBMISSION",
+															"MOVE"
+														],
+														"type": "string"
+													},
+													"properties": {
+														"allOf": [
+															{
+																"properties": {
+																	"folder": {
+																		"nullable": true,
+																		"type": "string"
+																	},
+																	"requested_by": {
+																		"nullable": true,
+																		"type": "string"
+																	},
+																	"requested_disposition": {
+																		"nullable": true,
+																		"type": "string"
+																	},
+																	"service": {
+																		"nullable": true,
+																		"type": "string"
+																	},
+																	"submission_id": {
+																		"nullable": true,
+																		"type": "string"
+																	},
+																	"submission_type": {
+																		"nullable": true,
+																		"type": "string"
+																	}
+																},
+																"type": "object"
+															},
+															{
+																"nullable": true,
+																"type": "object"
+															}
+														]
+													},
+													"started_at": {
+														"description": "Timestamp when the action was initiated.",
+														"format": "date-time",
+														"type": "string"
+													},
+													"status": {
+														"type": "string"
+													},
+													"success": {
+														"type": "boolean"
+													}
+												},
+												"required": [
+													"operation"
+												],
+												"type": "object"
+											},
+											"type": "array"
+										}
+									},
+									"required": [
+										"result"
+									],
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "Contains the action log for the email."
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"example": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
+										}
+									],
+									"items": {
+										"properties": {
+											"code": {
+												"format": "int32",
+												"minimum": 1000,
+												"type": "integer"
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"messages": {
+									"example": [],
+									"items": {
+										"properties": {
+											"code": {
+												"format": "int32",
+												"minimum": 1000,
+												"type": "integer"
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"result": {
+									"nullable": true,
+									"type": "object"
+								},
+								"success": {
+									"example": false,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"result",
+								"success",
+								"errors",
+								"messages"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Client Error"
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Get action log for a message",
+		"tags": [
+			"Email Security"
+		],
+		"x-api-token-group": [
+			"Cloud Email Security: Write",
+			"Cloud Email Security: Read"
+		]
+	},
 	"GET /accounts/{account_id}/email-security/investigate/{postfix_id}": {
 		"description": "Retrieves detailed information about a specific email message, including headers,\nmetadata, and security scan results.",
 		"operationId": "email_security_get_message",
@@ -1432,6 +1711,14 @@
 					"example": "4Njp3P0STMz2c02Q",
 					"title": "postfix_id",
 					"type": "string"
+				}
+			},
+			{
+				"description": "When true, search the submissions datastore only. When false or omitted, search the\nregular datastore only.",
+				"in": "query",
+				"name": "submission",
+				"schema": {
+					"type": "boolean"
 				}
 			}
 		],
@@ -1552,7 +1839,10 @@
 												}
 											},
 											"properties": {
-												"action_log": {},
+												"action_log": {
+													"deprecated": true,
+													"description": "Deprecated: use `/investigate/{id}/action_log` instead."
+												},
 												"alert_id": {
 													"nullable": true,
 													"type": "string"
@@ -1632,6 +1922,8 @@
 													]
 												},
 												"findings": {
+													"deprecated": true,
+													"description": "Deprecated.",
 													"items": {
 														"properties": {
 															"attachment": {
@@ -2950,6 +3242,14 @@
 					"title": "postfix_id",
 					"type": "string"
 				}
+			},
+			{
+				"description": "When true, search the submissions datastore only. When false or omitted, search the\nregular datastore only.",
+				"in": "query",
+				"name": "submission",
+				"schema": {
+					"type": "boolean"
+				}
 			}
 		],
 		"responses": {
@@ -4095,6 +4395,14 @@
 					"title": "postfix_id",
 					"type": "string"
 				}
+			},
+			{
+				"description": "When true, search the submissions datastore only. When false or omitted, search the\nregular datastore only.",
+				"in": "query",
+				"name": "submission",
+				"schema": {
+					"type": "boolean"
+				}
 			}
 		],
 		"requestBody": {
@@ -4364,6 +4672,14 @@
 					"example": "4Njp3P0STMz2c02Q",
 					"title": "postfix_id",
 					"type": "string"
+				}
+			},
+			{
+				"description": "When true, search the submissions datastore only. When false or omitted, search the\nregular datastore only.",
+				"in": "query",
+				"name": "submission",
+				"schema": {
+					"type": "boolean"
 				}
 			}
 		],
@@ -4862,6 +5178,14 @@
 					"readOnly": true,
 					"title": "account_id",
 					"type": "string"
+				}
+			},
+			{
+				"description": "When true, search the submissions datastore only. When false or omitted, search the\nregular datastore only.",
+				"in": "query",
+				"name": "submission",
+				"schema": {
+					"type": "boolean"
 				}
 			}
 		],

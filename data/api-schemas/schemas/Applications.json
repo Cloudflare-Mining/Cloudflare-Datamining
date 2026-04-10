@@ -14,8 +14,8 @@
 				}
 			},
 			{
-				"description": "Filter applications using key:value format. Supported filter keys:\n- name: Filter by application name (e.g., name:HR)\n- id: Filter by application ID (e.g., id:0b63249c-95bf-4cc0-a7cc-d7faaaf1dac0)\n- human_id: Filter by human-readable ID (e.g., human_id:HR)\n- hostname: Filter by hostname or support domain (e.g., hostname:portal.example.com)\n- source: Filter by application source name (e.g., source:cloudflare)\n- ip_subnet: Filter by IP subnet in CIDR notation (e.g., ip_subnet:192.168.1.0/24).\n.\n",
-				"example": "filter=name:HR&filter=source:cloudflare",
+				"description": "Filter applications using key:value format. Supported filter keys:\n- name: Filter by application name (e.g., name:HR)\n- id: Filter by application ID (e.g., id:0b63249c-95bf-4cc0-a7cc-d7faaaf1dac0)\n- human_id: Filter by human-readable ID (e.g., human_id:HR)\n- hostname: Filter by hostname or support domain (e.g., hostname:portal.example.com)\n- source: Filter by application source name (e.g., source:cloudflare)\n- ip_subnet: Filter by IP subnet in CIDR notation (e.g., ip_subnet:192.168.1.0/24)\n- intel_id: Filter by Intel API ID (e.g., intel_id:498).\n.\n",
+				"example": "filter=name:HR&filter=source:cloudflare&filter=intel_id:498",
 				"in": "query",
 				"name": "filter",
 				"schema": {
@@ -23,11 +23,11 @@
 				}
 			},
 			{
-				"description": "Limit of number of results to return.",
+				"description": "Limit of number of results to return (max 250).",
 				"in": "query",
 				"name": "limit",
 				"schema": {
-					"default": 10,
+					"default": 25,
 					"type": "integer"
 				}
 			},
@@ -179,6 +179,26 @@
 											"description": "Returns the list of applications.",
 											"items": {
 												"properties": {
+													"application_confidence_score": {
+														"description": "Confidence score for the application. Returns -1 when no score is available.",
+														"example": 0.92,
+														"format": "float",
+														"type": "number"
+													},
+													"application_score_composition": {
+														"description": "Returns the score composition breakdown for the application.",
+														"example": {
+															"categories": [
+																{
+																	"confidence": 0.95,
+																	"name": "Security"
+																}
+															],
+															"plan": "free"
+														},
+														"nullable": true,
+														"type": "object"
+													},
 													"application_source": {
 														"description": "Returns the application source.",
 														"example": "cloudflare",
@@ -198,6 +218,12 @@
 														"description": "Returns the application creation time.",
 														"example": "2025-01-01T00:00:00Z",
 														"type": "string"
+													},
+													"gen_ai_score": {
+														"description": "GenAI score for the application. Returns -1 when no score is available.",
+														"example": 1.5,
+														"format": "float",
+														"type": "number"
 													},
 													"hostnames": {
 														"description": "Returns the list of hostnames for the application.",
@@ -219,6 +245,13 @@
 														"description": "Returns the application ID.",
 														"example": "12345678-1234-1234-1234-123456789012",
 														"type": "string"
+													},
+													"intel_id": {
+														"description": "Returns the Intel API ID for the application.",
+														"example": 498,
+														"format": "int64",
+														"nullable": true,
+														"type": "integer"
 													},
 													"ip_subnets": {
 														"description": "Returns the list of IP subnets for the application.",
@@ -273,6 +306,8 @@
 													"application_source",
 													"application_type",
 													"application_type_description",
+													"gen_ai_score",
+													"application_confidence_score",
 													"created_at",
 													"hostnames",
 													"human_id",
@@ -427,6 +462,26 @@
 													"description": "Returns the list of applications.",
 													"items": {
 														"properties": {
+															"application_confidence_score": {
+																"description": "Confidence score for the application. Returns -1 when no score is available.",
+																"example": 0.92,
+																"format": "float",
+																"type": "number"
+															},
+															"application_score_composition": {
+																"description": "Returns the score composition breakdown for the application.",
+																"example": {
+																	"categories": [
+																		{
+																			"confidence": 0.95,
+																			"name": "Security"
+																		}
+																	],
+																	"plan": "free"
+																},
+																"nullable": true,
+																"type": "object"
+															},
 															"application_source": {
 																"description": "Returns the application source.",
 																"example": "cloudflare",
@@ -446,6 +501,12 @@
 																"description": "Returns the application creation time.",
 																"example": "2025-01-01T00:00:00Z",
 																"type": "string"
+															},
+															"gen_ai_score": {
+																"description": "GenAI score for the application. Returns -1 when no score is available.",
+																"example": 1.5,
+																"format": "float",
+																"type": "number"
 															},
 															"hostnames": {
 																"description": "Returns the list of hostnames for the application.",
@@ -467,6 +528,13 @@
 																"description": "Returns the application ID.",
 																"example": "12345678-1234-1234-1234-123456789012",
 																"type": "string"
+															},
+															"intel_id": {
+																"description": "Returns the Intel API ID for the application.",
+																"example": 498,
+																"format": "int64",
+																"nullable": true,
+																"type": "integer"
 															},
 															"ip_subnets": {
 																"description": "Returns the list of IP subnets for the application.",
@@ -521,6 +589,8 @@
 															"application_source",
 															"application_type",
 															"application_type_description",
+															"gen_ai_score",
+															"application_confidence_score",
 															"created_at",
 															"hostnames",
 															"human_id",
@@ -785,6 +855,26 @@
 									"properties": {
 										"result": {
 											"properties": {
+												"application_confidence_score": {
+													"description": "Confidence score for the application. Returns -1 when no score is available.",
+													"example": 0.92,
+													"format": "float",
+													"type": "number"
+												},
+												"application_score_composition": {
+													"description": "Returns the score composition breakdown for the application.",
+													"example": {
+														"categories": [
+															{
+																"confidence": 0.95,
+																"name": "Security"
+															}
+														],
+														"plan": "free"
+													},
+													"nullable": true,
+													"type": "object"
+												},
 												"application_source": {
 													"description": "Returns the application source.",
 													"example": "cloudflare",
@@ -804,6 +894,12 @@
 													"description": "Returns the application creation time.",
 													"example": "2025-01-01T00:00:00Z",
 													"type": "string"
+												},
+												"gen_ai_score": {
+													"description": "GenAI score for the application. Returns -1 when no score is available.",
+													"example": 1.5,
+													"format": "float",
+													"type": "number"
 												},
 												"hostnames": {
 													"description": "Returns the list of hostnames for the application.",
@@ -825,6 +921,13 @@
 													"description": "Returns the application ID.",
 													"example": "12345678-1234-1234-1234-123456789012",
 													"type": "string"
+												},
+												"intel_id": {
+													"description": "Returns the Intel API ID for the application.",
+													"example": 498,
+													"format": "int64",
+													"nullable": true,
+													"type": "integer"
 												},
 												"ip_subnets": {
 													"description": "Returns the list of IP subnets for the application.",
@@ -879,6 +982,8 @@
 												"application_source",
 												"application_type",
 												"application_type_description",
+												"gen_ai_score",
+												"application_confidence_score",
 												"created_at",
 												"hostnames",
 												"human_id",
@@ -994,6 +1099,26 @@
 											"properties": {
 												"result": {
 													"properties": {
+														"application_confidence_score": {
+															"description": "Confidence score for the application. Returns -1 when no score is available.",
+															"example": 0.92,
+															"format": "float",
+															"type": "number"
+														},
+														"application_score_composition": {
+															"description": "Returns the score composition breakdown for the application.",
+															"example": {
+																"categories": [
+																	{
+																		"confidence": 0.95,
+																		"name": "Security"
+																	}
+																],
+																"plan": "free"
+															},
+															"nullable": true,
+															"type": "object"
+														},
 														"application_source": {
 															"description": "Returns the application source.",
 															"example": "cloudflare",
@@ -1013,6 +1138,12 @@
 															"description": "Returns the application creation time.",
 															"example": "2025-01-01T00:00:00Z",
 															"type": "string"
+														},
+														"gen_ai_score": {
+															"description": "GenAI score for the application. Returns -1 when no score is available.",
+															"example": 1.5,
+															"format": "float",
+															"type": "number"
 														},
 														"hostnames": {
 															"description": "Returns the list of hostnames for the application.",
@@ -1034,6 +1165,13 @@
 															"description": "Returns the application ID.",
 															"example": "12345678-1234-1234-1234-123456789012",
 															"type": "string"
+														},
+														"intel_id": {
+															"description": "Returns the Intel API ID for the application.",
+															"example": 498,
+															"format": "int64",
+															"nullable": true,
+															"type": "integer"
 														},
 														"ip_subnets": {
 															"description": "Returns the list of IP subnets for the application.",
@@ -1088,6 +1226,8 @@
 														"application_source",
 														"application_type",
 														"application_type_description",
+														"gen_ai_score",
+														"application_confidence_score",
 														"created_at",
 														"hostnames",
 														"human_id",
@@ -1229,1266 +1369,6 @@
 			}
 		],
 		"summary": "Get application By Id",
-		"tags": [
-			"Applications"
-		]
-	},
-	"PATCH /accounts/{accountId}/resource-library/applications/{id}": {
-		"description": "Update application version.",
-		"operationId": "updateApplicationVersion",
-		"parameters": [
-			{
-				"description": "Account ID.",
-				"example": "023e105f4ecef8ad9ca31a8372d0c353",
-				"in": "path",
-				"name": "accountId",
-				"required": true,
-				"schema": {
-					"type": "string"
-				}
-			},
-			{
-				"description": "Application ID.",
-				"in": "path",
-				"name": "id",
-				"required": true,
-				"schema": {
-					"type": "string"
-				}
-			}
-		],
-		"requestBody": {
-			"content": {
-				"application/json": {
-					"schema": {
-						"properties": {
-							"hostnames": {
-								"description": "Returns the list of hostnames for the application.",
-								"example": [
-									"example.com",
-									"foo.com"
-								],
-								"items": {
-									"type": "string"
-								},
-								"type": "array"
-							},
-							"ip_subnets": {
-								"description": "Returns the list of IP subnets for the application.",
-								"example": [
-									"192.168.1.0/24",
-									"10.0.0.0/8"
-								],
-								"items": {
-									"type": "string"
-								},
-								"type": "array"
-							},
-							"port_protocols": {
-								"description": "Returns the list of port protocols for the application.",
-								"example": [
-									"tcp/80",
-									"tcp/443"
-								],
-								"items": {
-									"type": "string"
-								},
-								"type": "array"
-							},
-							"support_domains": {
-								"description": "Returns the list of support domains for the application.",
-								"example": [
-									"example.com",
-									"foo.com"
-								],
-								"items": {
-									"type": "string"
-								},
-								"type": "array"
-							}
-						},
-						"type": "object"
-					}
-				}
-			},
-			"description": "Update application version input.",
-			"required": true
-		},
-		"responses": {
-			"200": {
-				"content": {
-					"application/json": {
-						"schema": {
-							"allOf": [
-								{
-									"properties": {
-										"errors": {
-											"example": [],
-											"items": {
-												"properties": {
-													"code": {
-														"minimum": 1000,
-														"type": "integer"
-													},
-													"documentation_url": {
-														"type": "string"
-													},
-													"message": {
-														"type": "string"
-													},
-													"source": {
-														"properties": {
-															"pointer": {
-																"type": "string"
-															}
-														},
-														"type": "object"
-													}
-												},
-												"required": [
-													"code",
-													"message"
-												],
-												"type": "object",
-												"uniqueItems": true
-											},
-											"type": "array"
-										},
-										"messages": {
-											"example": [],
-											"items": {
-												"properties": {
-													"code": {
-														"minimum": 1000,
-														"type": "integer"
-													},
-													"documentation_url": {
-														"type": "string"
-													},
-													"message": {
-														"type": "string"
-													},
-													"source": {
-														"properties": {
-															"pointer": {
-																"type": "string"
-															}
-														},
-														"type": "object"
-													}
-												},
-												"required": [
-													"code",
-													"message"
-												],
-												"type": "object",
-												"uniqueItems": true
-											},
-											"type": "array"
-										},
-										"success": {
-											"description": "Indicates whether the API call was successful.",
-											"enum": [
-												true
-											],
-											"example": true,
-											"type": "boolean"
-										}
-									},
-									"required": [
-										"success",
-										"errors",
-										"messages"
-									],
-									"type": "object"
-								},
-								{
-									"properties": {
-										"result": {
-											"properties": {
-												"application_source": {
-													"description": "Returns the application source.",
-													"example": "cloudflare",
-													"type": "string"
-												},
-												"application_type": {
-													"description": "Returns the application type.",
-													"example": "Human Resources",
-													"type": "string"
-												},
-												"application_type_description": {
-													"description": "Returns the application type description.",
-													"example": "Applications used to manage employees and workforce tools.",
-													"type": "string"
-												},
-												"created_at": {
-													"description": "Returns the application creation time.",
-													"example": "2025-01-01T00:00:00Z",
-													"type": "string"
-												},
-												"hostnames": {
-													"description": "Returns the list of hostnames for the application.",
-													"example": [
-														"example.com",
-														"foo.com"
-													],
-													"items": {
-														"type": "string"
-													},
-													"type": "array"
-												},
-												"human_id": {
-													"description": "Returns the human readable ID.",
-													"example": "HR",
-													"type": "string"
-												},
-												"id": {
-													"description": "Returns the application ID.",
-													"example": "12345678-1234-1234-1234-123456789012",
-													"type": "string"
-												},
-												"ip_subnets": {
-													"description": "Returns the list of IP subnets for the application.",
-													"example": [
-														"192.168.1.0/24",
-														"10.0.0.0/8"
-													],
-													"items": {
-														"type": "string"
-													},
-													"type": "array"
-												},
-												"name": {
-													"description": "Returns the application name.",
-													"example": "HR",
-													"type": "string"
-												},
-												"port_protocols": {
-													"description": "Returns the list of port protocols for the application.",
-													"example": [
-														"tcp/80",
-														"tcp/443"
-													],
-													"items": {
-														"type": "string"
-													},
-													"type": "array"
-												},
-												"support_domains": {
-													"description": "Returns the list of support domains for the application.",
-													"example": [
-														"example.com",
-														"foo.com"
-													],
-													"items": {
-														"type": "string"
-													},
-													"type": "array"
-												},
-												"updated_at": {
-													"description": "Returns the application update time.",
-													"example": "2025-01-01T00:00:00Z",
-													"type": "string"
-												},
-												"version": {
-													"description": "Returns the application version.",
-													"example": "2025-01-01T00:00:00Z",
-													"type": "string"
-												}
-											},
-											"required": [
-												"application_source",
-												"application_type",
-												"application_type_description",
-												"created_at",
-												"hostnames",
-												"human_id",
-												"id",
-												"ip_subnets",
-												"name",
-												"port_protocols",
-												"support_domains",
-												"updated_at",
-												"version"
-											],
-											"type": "object"
-										}
-									},
-									"type": "object"
-								}
-							]
-						}
-					}
-				},
-				"description": "Update the application response."
-			},
-			"4XX": {
-				"content": {
-					"application/json": {
-						"schema": {
-							"allOf": [
-								{
-									"allOf": [
-										{
-											"properties": {
-												"errors": {
-													"example": [],
-													"items": {
-														"properties": {
-															"code": {
-																"minimum": 1000,
-																"type": "integer"
-															},
-															"documentation_url": {
-																"type": "string"
-															},
-															"message": {
-																"type": "string"
-															},
-															"source": {
-																"properties": {
-																	"pointer": {
-																		"type": "string"
-																	}
-																},
-																"type": "object"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"type": "array"
-												},
-												"messages": {
-													"example": [],
-													"items": {
-														"properties": {
-															"code": {
-																"minimum": 1000,
-																"type": "integer"
-															},
-															"documentation_url": {
-																"type": "string"
-															},
-															"message": {
-																"type": "string"
-															},
-															"source": {
-																"properties": {
-																	"pointer": {
-																		"type": "string"
-																	}
-																},
-																"type": "object"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"type": "array"
-												},
-												"success": {
-													"description": "Indicates whether the API call was successful.",
-													"enum": [
-														true
-													],
-													"example": true,
-													"type": "boolean"
-												}
-											},
-											"required": [
-												"success",
-												"errors",
-												"messages"
-											],
-											"type": "object"
-										},
-										{
-											"properties": {
-												"result": {
-													"properties": {
-														"application_source": {
-															"description": "Returns the application source.",
-															"example": "cloudflare",
-															"type": "string"
-														},
-														"application_type": {
-															"description": "Returns the application type.",
-															"example": "Human Resources",
-															"type": "string"
-														},
-														"application_type_description": {
-															"description": "Returns the application type description.",
-															"example": "Applications used to manage employees and workforce tools.",
-															"type": "string"
-														},
-														"created_at": {
-															"description": "Returns the application creation time.",
-															"example": "2025-01-01T00:00:00Z",
-															"type": "string"
-														},
-														"hostnames": {
-															"description": "Returns the list of hostnames for the application.",
-															"example": [
-																"example.com",
-																"foo.com"
-															],
-															"items": {
-																"type": "string"
-															},
-															"type": "array"
-														},
-														"human_id": {
-															"description": "Returns the human readable ID.",
-															"example": "HR",
-															"type": "string"
-														},
-														"id": {
-															"description": "Returns the application ID.",
-															"example": "12345678-1234-1234-1234-123456789012",
-															"type": "string"
-														},
-														"ip_subnets": {
-															"description": "Returns the list of IP subnets for the application.",
-															"example": [
-																"192.168.1.0/24",
-																"10.0.0.0/8"
-															],
-															"items": {
-																"type": "string"
-															},
-															"type": "array"
-														},
-														"name": {
-															"description": "Returns the application name.",
-															"example": "HR",
-															"type": "string"
-														},
-														"port_protocols": {
-															"description": "Returns the list of port protocols for the application.",
-															"example": [
-																"tcp/80",
-																"tcp/443"
-															],
-															"items": {
-																"type": "string"
-															},
-															"type": "array"
-														},
-														"support_domains": {
-															"description": "Returns the list of support domains for the application.",
-															"example": [
-																"example.com",
-																"foo.com"
-															],
-															"items": {
-																"type": "string"
-															},
-															"type": "array"
-														},
-														"updated_at": {
-															"description": "Returns the application update time.",
-															"example": "2025-01-01T00:00:00Z",
-															"type": "string"
-														},
-														"version": {
-															"description": "Returns the application version.",
-															"example": "2025-01-01T00:00:00Z",
-															"type": "string"
-														}
-													},
-													"required": [
-														"application_source",
-														"application_type",
-														"application_type_description",
-														"created_at",
-														"hostnames",
-														"human_id",
-														"id",
-														"ip_subnets",
-														"name",
-														"port_protocols",
-														"support_domains",
-														"updated_at",
-														"version"
-													],
-													"type": "object"
-												}
-											},
-											"type": "object"
-										}
-									]
-								},
-								{
-									"properties": {
-										"errors": {
-											"allOf": [
-												{
-													"example": [],
-													"items": {
-														"properties": {
-															"code": {
-																"minimum": 1000,
-																"type": "integer"
-															},
-															"documentation_url": {
-																"type": "string"
-															},
-															"message": {
-																"type": "string"
-															},
-															"source": {
-																"properties": {
-																	"pointer": {
-																		"type": "string"
-																	}
-																},
-																"type": "object"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"type": "array"
-												}
-											],
-											"example": [
-												{
-													"code": 7003,
-													"message": "No route for the URI"
-												}
-											],
-											"minLength": 1
-										},
-										"messages": {
-											"allOf": [
-												{
-													"example": [],
-													"items": {
-														"properties": {
-															"code": {
-																"minimum": 1000,
-																"type": "integer"
-															},
-															"documentation_url": {
-																"type": "string"
-															},
-															"message": {
-																"type": "string"
-															},
-															"source": {
-																"properties": {
-																	"pointer": {
-																		"type": "string"
-																	}
-																},
-																"type": "object"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"type": "array"
-												}
-											],
-											"example": []
-										},
-										"result": {
-											"enum": [
-												null
-											],
-											"nullable": true,
-											"type": "object"
-										},
-										"success": {
-											"description": "Indicates whether the API call was successful.",
-											"enum": [
-												false
-											],
-											"example": false,
-											"type": "boolean"
-										}
-									},
-									"required": [
-										"success",
-										"errors",
-										"messages",
-										"result"
-									],
-									"type": "object"
-								}
-							]
-						}
-					}
-				},
-				"description": "Update application version response failure."
-			}
-		},
-		"security": [
-			{
-				"api_token": []
-			},
-			{
-				"api_email": [],
-				"api_key": []
-			}
-		],
-		"summary": "Update application version",
-		"tags": [
-			"Applications"
-		]
-	},
-	"POST /accounts/{accountId}/resource-library/applications": {
-		"description": "Create application.",
-		"operationId": "createApplication",
-		"parameters": [
-			{
-				"description": "Account ID.",
-				"example": "023e105f4ecef8ad9ca31a8372d0c353",
-				"in": "path",
-				"name": "accountId",
-				"required": true,
-				"schema": {
-					"type": "string"
-				}
-			}
-		],
-		"requestBody": {
-			"content": {
-				"application/json": {
-					"schema": {
-						"properties": {
-							"application_type_id": {
-								"description": "Provide as string to perform a lookup to check if the source exists.",
-								"type": "string"
-							},
-							"hostnames": {
-								"allOf": [
-									{
-										"description": "Returns the list of hostnames for the application.",
-										"example": [
-											"example.com",
-											"foo.com"
-										],
-										"items": {
-											"type": "string"
-										},
-										"type": "array"
-									},
-									{
-										"description": "Provide data while creating the application.",
-										"type": "object"
-									}
-								]
-							},
-							"human_id": {
-								"description": "Returns the human readable ID.",
-								"example": "HR",
-								"type": "string"
-							},
-							"ip_subnets": {
-								"description": "Returns the list of IP subnets for the application.",
-								"example": [
-									"192.168.1.0/24",
-									"10.0.0.0/8"
-								],
-								"items": {
-									"type": "string"
-								},
-								"type": "array"
-							},
-							"name": {
-								"description": "Returns the application name.",
-								"example": "HR",
-								"type": "string"
-							},
-							"port_protocols": {
-								"description": "Returns the list of port protocols for the application.",
-								"example": [
-									"tcp/80",
-									"tcp/443"
-								],
-								"items": {
-									"type": "string"
-								},
-								"type": "array"
-							},
-							"support_domains": {
-								"description": "Returns the list of support domains for the application.",
-								"example": [
-									"example.com",
-									"foo.com"
-								],
-								"items": {
-									"type": "string"
-								},
-								"type": "array"
-							}
-						},
-						"required": [
-							"application_type_id",
-							"human_id",
-							"name"
-						],
-						"type": "object"
-					}
-				}
-			},
-			"description": "Create application input:.",
-			"required": true
-		},
-		"responses": {
-			"201": {
-				"content": {
-					"application/json": {
-						"schema": {
-							"allOf": [
-								{
-									"properties": {
-										"errors": {
-											"example": [],
-											"items": {
-												"properties": {
-													"code": {
-														"minimum": 1000,
-														"type": "integer"
-													},
-													"documentation_url": {
-														"type": "string"
-													},
-													"message": {
-														"type": "string"
-													},
-													"source": {
-														"properties": {
-															"pointer": {
-																"type": "string"
-															}
-														},
-														"type": "object"
-													}
-												},
-												"required": [
-													"code",
-													"message"
-												],
-												"type": "object",
-												"uniqueItems": true
-											},
-											"type": "array"
-										},
-										"messages": {
-											"example": [],
-											"items": {
-												"properties": {
-													"code": {
-														"minimum": 1000,
-														"type": "integer"
-													},
-													"documentation_url": {
-														"type": "string"
-													},
-													"message": {
-														"type": "string"
-													},
-													"source": {
-														"properties": {
-															"pointer": {
-																"type": "string"
-															}
-														},
-														"type": "object"
-													}
-												},
-												"required": [
-													"code",
-													"message"
-												],
-												"type": "object",
-												"uniqueItems": true
-											},
-											"type": "array"
-										},
-										"success": {
-											"description": "Indicates whether the API call was successful.",
-											"enum": [
-												true
-											],
-											"example": true,
-											"type": "boolean"
-										}
-									},
-									"required": [
-										"success",
-										"errors",
-										"messages"
-									],
-									"type": "object"
-								},
-								{
-									"properties": {
-										"result": {
-											"properties": {
-												"application_source": {
-													"description": "Returns the application source.",
-													"example": "cloudflare",
-													"type": "string"
-												},
-												"application_type": {
-													"description": "Returns the application type.",
-													"example": "Human Resources",
-													"type": "string"
-												},
-												"application_type_description": {
-													"description": "Returns the application type description.",
-													"example": "Applications used to manage employees and workforce tools.",
-													"type": "string"
-												},
-												"created_at": {
-													"description": "Returns the application creation time.",
-													"example": "2025-01-01T00:00:00Z",
-													"type": "string"
-												},
-												"hostnames": {
-													"description": "Returns the list of hostnames for the application.",
-													"example": [
-														"example.com",
-														"foo.com"
-													],
-													"items": {
-														"type": "string"
-													},
-													"type": "array"
-												},
-												"human_id": {
-													"description": "Returns the human readable ID.",
-													"example": "HR",
-													"type": "string"
-												},
-												"id": {
-													"description": "Returns the application ID.",
-													"example": "12345678-1234-1234-1234-123456789012",
-													"type": "string"
-												},
-												"ip_subnets": {
-													"description": "Returns the list of IP subnets for the application.",
-													"example": [
-														"192.168.1.0/24",
-														"10.0.0.0/8"
-													],
-													"items": {
-														"type": "string"
-													},
-													"type": "array"
-												},
-												"name": {
-													"description": "Returns the application name.",
-													"example": "HR",
-													"type": "string"
-												},
-												"port_protocols": {
-													"description": "Returns the list of port protocols for the application.",
-													"example": [
-														"tcp/80",
-														"tcp/443"
-													],
-													"items": {
-														"type": "string"
-													},
-													"type": "array"
-												},
-												"support_domains": {
-													"description": "Returns the list of support domains for the application.",
-													"example": [
-														"example.com",
-														"foo.com"
-													],
-													"items": {
-														"type": "string"
-													},
-													"type": "array"
-												},
-												"updated_at": {
-													"description": "Returns the application update time.",
-													"example": "2025-01-01T00:00:00Z",
-													"type": "string"
-												},
-												"version": {
-													"description": "Returns the application version.",
-													"example": "2025-01-01T00:00:00Z",
-													"type": "string"
-												}
-											},
-											"required": [
-												"application_source",
-												"application_type",
-												"application_type_description",
-												"created_at",
-												"hostnames",
-												"human_id",
-												"id",
-												"ip_subnets",
-												"name",
-												"port_protocols",
-												"support_domains",
-												"updated_at",
-												"version"
-											],
-											"type": "object"
-										}
-									},
-									"type": "object"
-								}
-							]
-						}
-					}
-				},
-				"description": "Created."
-			},
-			"4XX": {
-				"content": {
-					"application/json": {
-						"schema": {
-							"allOf": [
-								{
-									"allOf": [
-										{
-											"properties": {
-												"errors": {
-													"example": [],
-													"items": {
-														"properties": {
-															"code": {
-																"minimum": 1000,
-																"type": "integer"
-															},
-															"documentation_url": {
-																"type": "string"
-															},
-															"message": {
-																"type": "string"
-															},
-															"source": {
-																"properties": {
-																	"pointer": {
-																		"type": "string"
-																	}
-																},
-																"type": "object"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"type": "array"
-												},
-												"messages": {
-													"example": [],
-													"items": {
-														"properties": {
-															"code": {
-																"minimum": 1000,
-																"type": "integer"
-															},
-															"documentation_url": {
-																"type": "string"
-															},
-															"message": {
-																"type": "string"
-															},
-															"source": {
-																"properties": {
-																	"pointer": {
-																		"type": "string"
-																	}
-																},
-																"type": "object"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"type": "array"
-												},
-												"success": {
-													"description": "Indicates whether the API call was successful.",
-													"enum": [
-														true
-													],
-													"example": true,
-													"type": "boolean"
-												}
-											},
-											"required": [
-												"success",
-												"errors",
-												"messages"
-											],
-											"type": "object"
-										},
-										{
-											"properties": {
-												"result": {
-													"properties": {
-														"application_source": {
-															"description": "Returns the application source.",
-															"example": "cloudflare",
-															"type": "string"
-														},
-														"application_type": {
-															"description": "Returns the application type.",
-															"example": "Human Resources",
-															"type": "string"
-														},
-														"application_type_description": {
-															"description": "Returns the application type description.",
-															"example": "Applications used to manage employees and workforce tools.",
-															"type": "string"
-														},
-														"created_at": {
-															"description": "Returns the application creation time.",
-															"example": "2025-01-01T00:00:00Z",
-															"type": "string"
-														},
-														"hostnames": {
-															"description": "Returns the list of hostnames for the application.",
-															"example": [
-																"example.com",
-																"foo.com"
-															],
-															"items": {
-																"type": "string"
-															},
-															"type": "array"
-														},
-														"human_id": {
-															"description": "Returns the human readable ID.",
-															"example": "HR",
-															"type": "string"
-														},
-														"id": {
-															"description": "Returns the application ID.",
-															"example": "12345678-1234-1234-1234-123456789012",
-															"type": "string"
-														},
-														"ip_subnets": {
-															"description": "Returns the list of IP subnets for the application.",
-															"example": [
-																"192.168.1.0/24",
-																"10.0.0.0/8"
-															],
-															"items": {
-																"type": "string"
-															},
-															"type": "array"
-														},
-														"name": {
-															"description": "Returns the application name.",
-															"example": "HR",
-															"type": "string"
-														},
-														"port_protocols": {
-															"description": "Returns the list of port protocols for the application.",
-															"example": [
-																"tcp/80",
-																"tcp/443"
-															],
-															"items": {
-																"type": "string"
-															},
-															"type": "array"
-														},
-														"support_domains": {
-															"description": "Returns the list of support domains for the application.",
-															"example": [
-																"example.com",
-																"foo.com"
-															],
-															"items": {
-																"type": "string"
-															},
-															"type": "array"
-														},
-														"updated_at": {
-															"description": "Returns the application update time.",
-															"example": "2025-01-01T00:00:00Z",
-															"type": "string"
-														},
-														"version": {
-															"description": "Returns the application version.",
-															"example": "2025-01-01T00:00:00Z",
-															"type": "string"
-														}
-													},
-													"required": [
-														"application_source",
-														"application_type",
-														"application_type_description",
-														"created_at",
-														"hostnames",
-														"human_id",
-														"id",
-														"ip_subnets",
-														"name",
-														"port_protocols",
-														"support_domains",
-														"updated_at",
-														"version"
-													],
-													"type": "object"
-												}
-											},
-											"type": "object"
-										}
-									]
-								},
-								{
-									"properties": {
-										"errors": {
-											"allOf": [
-												{
-													"example": [],
-													"items": {
-														"properties": {
-															"code": {
-																"minimum": 1000,
-																"type": "integer"
-															},
-															"documentation_url": {
-																"type": "string"
-															},
-															"message": {
-																"type": "string"
-															},
-															"source": {
-																"properties": {
-																	"pointer": {
-																		"type": "string"
-																	}
-																},
-																"type": "object"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"type": "array"
-												}
-											],
-											"example": [
-												{
-													"code": 7003,
-													"message": "No route for the URI"
-												}
-											],
-											"minLength": 1
-										},
-										"messages": {
-											"allOf": [
-												{
-													"example": [],
-													"items": {
-														"properties": {
-															"code": {
-																"minimum": 1000,
-																"type": "integer"
-															},
-															"documentation_url": {
-																"type": "string"
-															},
-															"message": {
-																"type": "string"
-															},
-															"source": {
-																"properties": {
-																	"pointer": {
-																		"type": "string"
-																	}
-																},
-																"type": "object"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"type": "array"
-												}
-											],
-											"example": []
-										},
-										"result": {
-											"enum": [
-												null
-											],
-											"nullable": true,
-											"type": "object"
-										},
-										"success": {
-											"description": "Indicates whether the API call was successful.",
-											"enum": [
-												false
-											],
-											"example": false,
-											"type": "boolean"
-										}
-									},
-									"required": [
-										"success",
-										"errors",
-										"messages",
-										"result"
-									],
-									"type": "object"
-								}
-							]
-						}
-					}
-				},
-				"description": "Create application response failure."
-			}
-		},
-		"security": [
-			{
-				"api_token": []
-			},
-			{
-				"api_email": [],
-				"api_key": []
-			}
-		],
-		"summary": "Create application",
 		"tags": [
 			"Applications"
 		]

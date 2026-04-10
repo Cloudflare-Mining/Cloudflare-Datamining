@@ -1,0 +1,3502 @@
+{
+	"GET /accounts/{account_id}/logs/explorer/datasets": {
+		"description": "Returns all Log Explorer datasets configured for the account.\n\nPass `include_zones=true` to also include zone-level datasets that\nbelong to this account. List responses omit the `fields` property;\nuse the single-dataset endpoint to retrieve field configuration.\n",
+		"operationId": "accounts-logs-explorer-datasets-list",
+		"parameters": [
+			{
+				"description": "Set to true to include zone-scoped datasets belonging to this account.",
+				"in": "query",
+				"name": "include_zones",
+				"schema": {
+					"type": "boolean"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"code": {
+												"format": "int32",
+												"type": "integer",
+												"x-auditable": true
+											},
+											"message": {
+												"type": "string",
+												"x-auditable": true
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"messages": {
+									"items": {
+										"type": "string"
+									},
+									"type": "array"
+								},
+								"result": {
+									"items": {
+										"description": "A Log Explorer dataset summary. List endpoints return this type and omit\nfield configuration; use the single-dataset endpoint to retrieve it.\n",
+										"properties": {
+											"created_at": {
+												"description": "RFC3339 timestamp recording when the API created this dataset.",
+												"format": "date-time",
+												"type": "string",
+												"x-auditable": true
+											},
+											"dataset": {
+												"description": "Dataset type name (e.g. `http_requests`).",
+												"type": "string",
+												"x-auditable": true
+											},
+											"dataset_id": {
+												"description": "Unique dataset ID.",
+												"pattern": "^[a-f0-9]{32}$",
+												"type": "string",
+												"x-auditable": true
+											},
+											"enabled": {
+												"description": "Whether log ingest is currently active for this dataset.",
+												"type": "boolean",
+												"x-auditable": true
+											},
+											"object_id": {
+												"description": "Public ID of the account or zone that owns this dataset.",
+												"type": "string",
+												"x-auditable": true
+											},
+											"object_type": {
+												"description": "Whether this dataset belongs to an account or a zone.",
+												"enum": [
+													"account",
+													"zone"
+												],
+												"type": "string",
+												"x-auditable": true
+											},
+											"updated_at": {
+												"description": "RFC3339 timestamp recording when the API last updated this dataset.",
+												"format": "date-time",
+												"type": "string",
+												"x-auditable": true
+											}
+										},
+										"required": [
+											"dataset",
+											"object_type",
+											"object_id",
+											"created_at",
+											"updated_at",
+											"dataset_id",
+											"enabled"
+										],
+										"type": "object"
+									},
+									"nullable": true,
+									"type": "array"
+								},
+								"success": {
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "The datasets the account has configured."
+			},
+			"400": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"code": {
+												"format": "int32",
+												"type": "integer",
+												"x-auditable": true
+											},
+											"message": {
+												"type": "string",
+												"x-auditable": true
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"messages": {
+									"items": {
+										"type": "string",
+										"x-auditable": true
+									},
+									"type": "array"
+								},
+								"result": {
+									"additionalProperties": true,
+									"nullable": true,
+									"type": "object",
+									"x-auditable": true
+								},
+								"success": {
+									"enum": [
+										false
+									],
+									"type": "boolean",
+									"x-auditable": true
+								}
+							},
+							"required": [
+								"result",
+								"success",
+								"errors",
+								"messages"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Invalid request, unsupported dataset, or invalid field configuration."
+			},
+			"403": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"code": {
+												"format": "int32",
+												"type": "integer",
+												"x-auditable": true
+											},
+											"message": {
+												"type": "string",
+												"x-auditable": true
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"messages": {
+									"items": {
+										"type": "string",
+										"x-auditable": true
+									},
+									"type": "array"
+								},
+								"result": {
+									"additionalProperties": true,
+									"nullable": true,
+									"type": "object",
+									"x-auditable": true
+								},
+								"success": {
+									"enum": [
+										false
+									],
+									"type": "boolean",
+									"x-auditable": true
+								}
+							},
+							"required": [
+								"result",
+								"success",
+								"errors",
+								"messages"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "The caller lacks permission or entitlement to access this resource."
+			},
+			"404": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"code": {
+												"format": "int32",
+												"type": "integer",
+												"x-auditable": true
+											},
+											"message": {
+												"type": "string",
+												"x-auditable": true
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"messages": {
+									"items": {
+										"type": "string",
+										"x-auditable": true
+									},
+									"type": "array"
+								},
+								"result": {
+									"additionalProperties": true,
+									"nullable": true,
+									"type": "object",
+									"x-auditable": true
+								},
+								"success": {
+									"enum": [
+										false
+									],
+									"type": "boolean",
+									"x-auditable": true
+								}
+							},
+							"required": [
+								"result",
+								"success",
+								"errors",
+								"messages"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "The requested resource does not exist."
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			}
+		],
+		"summary": "List account datasets",
+		"tags": [
+			"Log Explorer Datasets"
+		],
+		"x-api-token-group": [
+			"Logs Write",
+			"Logs Read"
+		]
+	},
+	"GET /accounts/{account_id}/logs/explorer/datasets/{dataset_id}": {
+		"description": "Retrieve a single Log Explorer dataset by ID for the account.",
+		"operationId": "accounts-logs-explorer-datasets-get",
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"code": {
+												"format": "int32",
+												"type": "integer",
+												"x-auditable": true
+											},
+											"message": {
+												"type": "string",
+												"x-auditable": true
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"messages": {
+									"items": {
+										"type": "string",
+										"x-auditable": true
+									},
+									"type": "array"
+								},
+								"result": {
+									"allOf": [
+										{
+											"description": "A Log Explorer dataset summary. List endpoints return this type and omit\nfield configuration; use the single-dataset endpoint to retrieve it.\n",
+											"properties": {
+												"created_at": {
+													"description": "RFC3339 timestamp recording when the API created this dataset.",
+													"format": "date-time",
+													"type": "string",
+													"x-auditable": true
+												},
+												"dataset": {
+													"description": "Dataset type name (e.g. `http_requests`).",
+													"type": "string",
+													"x-auditable": true
+												},
+												"dataset_id": {
+													"description": "Unique dataset ID.",
+													"pattern": "^[a-f0-9]{32}$",
+													"type": "string",
+													"x-auditable": true
+												},
+												"enabled": {
+													"description": "Whether log ingest is currently active for this dataset.",
+													"type": "boolean",
+													"x-auditable": true
+												},
+												"object_id": {
+													"description": "Public ID of the account or zone that owns this dataset.",
+													"type": "string",
+													"x-auditable": true
+												},
+												"object_type": {
+													"description": "Whether this dataset belongs to an account or a zone.",
+													"enum": [
+														"account",
+														"zone"
+													],
+													"type": "string",
+													"x-auditable": true
+												},
+												"updated_at": {
+													"description": "RFC3339 timestamp recording when the API last updated this dataset.",
+													"format": "date-time",
+													"type": "string",
+													"x-auditable": true
+												}
+											},
+											"required": [
+												"dataset",
+												"object_type",
+												"object_id",
+												"created_at",
+												"updated_at",
+												"dataset_id",
+												"enabled"
+											],
+											"type": "object"
+										},
+										{
+											"properties": {
+												"fields": {
+													"description": "The field configuration for this dataset.\n",
+													"items": {
+														"properties": {
+															"enabled": {
+																"description": "Whether the API includes this field in log ingest.",
+																"type": "boolean",
+																"x-auditable": true
+															},
+															"name": {
+																"description": "Field name in lowercase.",
+																"type": "string",
+																"x-auditable": true
+															}
+														},
+														"required": [
+															"name",
+															"enabled"
+														],
+														"type": "object"
+													},
+													"type": "array"
+												}
+											},
+											"type": "object"
+										}
+									]
+								},
+								"success": {
+									"type": "boolean",
+									"x-auditable": true
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Dataset details, including the fields active for ingestion."
+			},
+			"400": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"code": {
+												"format": "int32",
+												"type": "integer",
+												"x-auditable": true
+											},
+											"message": {
+												"type": "string",
+												"x-auditable": true
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"messages": {
+									"items": {
+										"type": "string",
+										"x-auditable": true
+									},
+									"type": "array"
+								},
+								"result": {
+									"additionalProperties": true,
+									"nullable": true,
+									"type": "object",
+									"x-auditable": true
+								},
+								"success": {
+									"enum": [
+										false
+									],
+									"type": "boolean",
+									"x-auditable": true
+								}
+							},
+							"required": [
+								"result",
+								"success",
+								"errors",
+								"messages"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Invalid request, unsupported dataset, or invalid field configuration."
+			},
+			"403": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"code": {
+												"format": "int32",
+												"type": "integer",
+												"x-auditable": true
+											},
+											"message": {
+												"type": "string",
+												"x-auditable": true
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"messages": {
+									"items": {
+										"type": "string",
+										"x-auditable": true
+									},
+									"type": "array"
+								},
+								"result": {
+									"additionalProperties": true,
+									"nullable": true,
+									"type": "object",
+									"x-auditable": true
+								},
+								"success": {
+									"enum": [
+										false
+									],
+									"type": "boolean",
+									"x-auditable": true
+								}
+							},
+							"required": [
+								"result",
+								"success",
+								"errors",
+								"messages"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "The caller lacks permission or entitlement to access this resource."
+			},
+			"404": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"code": {
+												"format": "int32",
+												"type": "integer",
+												"x-auditable": true
+											},
+											"message": {
+												"type": "string",
+												"x-auditable": true
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"messages": {
+									"items": {
+										"type": "string",
+										"x-auditable": true
+									},
+									"type": "array"
+								},
+								"result": {
+									"additionalProperties": true,
+									"nullable": true,
+									"type": "object",
+									"x-auditable": true
+								},
+								"success": {
+									"enum": [
+										false
+									],
+									"type": "boolean",
+									"x-auditable": true
+								}
+							},
+							"required": [
+								"result",
+								"success",
+								"errors",
+								"messages"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "The requested resource does not exist."
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			}
+		],
+		"summary": "Get an account dataset",
+		"tags": [
+			"Log Explorer Datasets"
+		],
+		"x-api-token-group": [
+			"Logs Write"
+		]
+	},
+	"GET /accounts/{account_id}/logs/explorer/datasets/available": {
+		"description": "Returns all dataset types that this account can create. Each entry\nincludes the dataset schema and timestamp field.\n\nThe schema shows all possible fields for a dataset. However, not all\nfields may be available for your account. When creating or updating a\ndataset, only fields available to your account can be enabled. If you\nrequest a field that is not available, you will receive an error.\n",
+		"operationId": "accounts-logs-explorer-datasets-available-list",
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"code": {
+												"format": "int32",
+												"type": "integer",
+												"x-auditable": true
+											},
+											"message": {
+												"type": "string",
+												"x-auditable": true
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"messages": {
+									"items": {
+										"type": "string"
+									},
+									"type": "array"
+								},
+								"result": {
+									"items": {
+										"description": "A dataset type that the account or zone can create.",
+										"properties": {
+											"dataset": {
+												"description": "Dataset type name (e.g. `http_requests`).",
+												"type": "string"
+											},
+											"object_type": {
+												"description": "Whether this dataset type is account-scoped or zone-scoped.",
+												"enum": [
+													"account",
+													"zone"
+												],
+												"type": "string"
+											},
+											"schema": {
+												"description": "JSON Schema that describes the fields this dataset exposes.",
+												"properties": {
+													"properties": {
+														"additionalProperties": true,
+														"type": "object"
+													},
+													"required": {
+														"items": {
+															"type": "string"
+														},
+														"type": "array"
+													},
+													"type": {
+														"enum": [
+															"object"
+														],
+														"type": "string"
+													}
+												},
+												"type": "object"
+											},
+											"timestamp_field": {
+												"description": "The primary timestamp field name for this dataset.",
+												"type": "string"
+											}
+										},
+										"required": [
+											"dataset",
+											"timestamp_field",
+											"schema",
+											"object_type"
+										],
+										"type": "object"
+									},
+									"nullable": true,
+									"type": "array"
+								},
+								"success": {
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "List of dataset types available to create."
+			},
+			"400": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"code": {
+												"format": "int32",
+												"type": "integer",
+												"x-auditable": true
+											},
+											"message": {
+												"type": "string",
+												"x-auditable": true
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"messages": {
+									"items": {
+										"type": "string",
+										"x-auditable": true
+									},
+									"type": "array"
+								},
+								"result": {
+									"additionalProperties": true,
+									"nullable": true,
+									"type": "object",
+									"x-auditable": true
+								},
+								"success": {
+									"enum": [
+										false
+									],
+									"type": "boolean",
+									"x-auditable": true
+								}
+							},
+							"required": [
+								"result",
+								"success",
+								"errors",
+								"messages"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Invalid request, unsupported dataset, or invalid field configuration."
+			},
+			"403": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"code": {
+												"format": "int32",
+												"type": "integer",
+												"x-auditable": true
+											},
+											"message": {
+												"type": "string",
+												"x-auditable": true
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"messages": {
+									"items": {
+										"type": "string",
+										"x-auditable": true
+									},
+									"type": "array"
+								},
+								"result": {
+									"additionalProperties": true,
+									"nullable": true,
+									"type": "object",
+									"x-auditable": true
+								},
+								"success": {
+									"enum": [
+										false
+									],
+									"type": "boolean",
+									"x-auditable": true
+								}
+							},
+							"required": [
+								"result",
+								"success",
+								"errors",
+								"messages"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "The caller lacks permission or entitlement to access this resource."
+			},
+			"404": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"code": {
+												"format": "int32",
+												"type": "integer",
+												"x-auditable": true
+											},
+											"message": {
+												"type": "string",
+												"x-auditable": true
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"messages": {
+									"items": {
+										"type": "string",
+										"x-auditable": true
+									},
+									"type": "array"
+								},
+								"result": {
+									"additionalProperties": true,
+									"nullable": true,
+									"type": "object",
+									"x-auditable": true
+								},
+								"success": {
+									"enum": [
+										false
+									],
+									"type": "boolean",
+									"x-auditable": true
+								}
+							},
+							"required": [
+								"result",
+								"success",
+								"errors",
+								"messages"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "The requested resource does not exist."
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			}
+		],
+		"summary": "List available account datasets",
+		"tags": [
+			"Log Explorer Datasets"
+		],
+		"x-api-token-group": [
+			"Logs Write",
+			"Logs Read"
+		]
+	},
+	"GET /zones/{zone_id}/logs/explorer/datasets": {
+		"description": "Returns all Log Explorer datasets configured for the zone.\n\nList responses omit the `fields` property; use the single-dataset\nendpoint to retrieve field configuration.\n",
+		"operationId": "zones-logs-explorer-datasets-list",
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"code": {
+												"format": "int32",
+												"type": "integer",
+												"x-auditable": true
+											},
+											"message": {
+												"type": "string",
+												"x-auditable": true
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"messages": {
+									"items": {
+										"type": "string"
+									},
+									"type": "array"
+								},
+								"result": {
+									"items": {
+										"description": "A Log Explorer dataset summary. List endpoints return this type and omit\nfield configuration; use the single-dataset endpoint to retrieve it.\n",
+										"properties": {
+											"created_at": {
+												"description": "RFC3339 timestamp recording when the API created this dataset.",
+												"format": "date-time",
+												"type": "string",
+												"x-auditable": true
+											},
+											"dataset": {
+												"description": "Dataset type name (e.g. `http_requests`).",
+												"type": "string",
+												"x-auditable": true
+											},
+											"dataset_id": {
+												"description": "Unique dataset ID.",
+												"pattern": "^[a-f0-9]{32}$",
+												"type": "string",
+												"x-auditable": true
+											},
+											"enabled": {
+												"description": "Whether log ingest is currently active for this dataset.",
+												"type": "boolean",
+												"x-auditable": true
+											},
+											"object_id": {
+												"description": "Public ID of the account or zone that owns this dataset.",
+												"type": "string",
+												"x-auditable": true
+											},
+											"object_type": {
+												"description": "Whether this dataset belongs to an account or a zone.",
+												"enum": [
+													"account",
+													"zone"
+												],
+												"type": "string",
+												"x-auditable": true
+											},
+											"updated_at": {
+												"description": "RFC3339 timestamp recording when the API last updated this dataset.",
+												"format": "date-time",
+												"type": "string",
+												"x-auditable": true
+											}
+										},
+										"required": [
+											"dataset",
+											"object_type",
+											"object_id",
+											"created_at",
+											"updated_at",
+											"dataset_id",
+											"enabled"
+										],
+										"type": "object"
+									},
+									"nullable": true,
+									"type": "array"
+								},
+								"success": {
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "The datasets the zone has configured."
+			},
+			"400": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"code": {
+												"format": "int32",
+												"type": "integer",
+												"x-auditable": true
+											},
+											"message": {
+												"type": "string",
+												"x-auditable": true
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"messages": {
+									"items": {
+										"type": "string",
+										"x-auditable": true
+									},
+									"type": "array"
+								},
+								"result": {
+									"additionalProperties": true,
+									"nullable": true,
+									"type": "object",
+									"x-auditable": true
+								},
+								"success": {
+									"enum": [
+										false
+									],
+									"type": "boolean",
+									"x-auditable": true
+								}
+							},
+							"required": [
+								"result",
+								"success",
+								"errors",
+								"messages"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Invalid request, unsupported dataset, or invalid field configuration."
+			},
+			"403": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"code": {
+												"format": "int32",
+												"type": "integer",
+												"x-auditable": true
+											},
+											"message": {
+												"type": "string",
+												"x-auditable": true
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"messages": {
+									"items": {
+										"type": "string",
+										"x-auditable": true
+									},
+									"type": "array"
+								},
+								"result": {
+									"additionalProperties": true,
+									"nullable": true,
+									"type": "object",
+									"x-auditable": true
+								},
+								"success": {
+									"enum": [
+										false
+									],
+									"type": "boolean",
+									"x-auditable": true
+								}
+							},
+							"required": [
+								"result",
+								"success",
+								"errors",
+								"messages"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "The caller lacks permission or entitlement to access this resource."
+			},
+			"404": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"code": {
+												"format": "int32",
+												"type": "integer",
+												"x-auditable": true
+											},
+											"message": {
+												"type": "string",
+												"x-auditable": true
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"messages": {
+									"items": {
+										"type": "string",
+										"x-auditable": true
+									},
+									"type": "array"
+								},
+								"result": {
+									"additionalProperties": true,
+									"nullable": true,
+									"type": "object",
+									"x-auditable": true
+								},
+								"success": {
+									"enum": [
+										false
+									],
+									"type": "boolean",
+									"x-auditable": true
+								}
+							},
+							"required": [
+								"result",
+								"success",
+								"errors",
+								"messages"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "The requested resource does not exist."
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			}
+		],
+		"summary": "List zone datasets",
+		"tags": [
+			"Log Explorer Datasets"
+		],
+		"x-api-token-group": [
+			"Logs Write",
+			"Logs Read"
+		]
+	},
+	"GET /zones/{zone_id}/logs/explorer/datasets/{dataset_id}": {
+		"description": "Retrieve a single Log Explorer dataset by ID for the zone.",
+		"operationId": "zones-logs-explorer-datasets-get",
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"code": {
+												"format": "int32",
+												"type": "integer",
+												"x-auditable": true
+											},
+											"message": {
+												"type": "string",
+												"x-auditable": true
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"messages": {
+									"items": {
+										"type": "string",
+										"x-auditable": true
+									},
+									"type": "array"
+								},
+								"result": {
+									"allOf": [
+										{
+											"description": "A Log Explorer dataset summary. List endpoints return this type and omit\nfield configuration; use the single-dataset endpoint to retrieve it.\n",
+											"properties": {
+												"created_at": {
+													"description": "RFC3339 timestamp recording when the API created this dataset.",
+													"format": "date-time",
+													"type": "string",
+													"x-auditable": true
+												},
+												"dataset": {
+													"description": "Dataset type name (e.g. `http_requests`).",
+													"type": "string",
+													"x-auditable": true
+												},
+												"dataset_id": {
+													"description": "Unique dataset ID.",
+													"pattern": "^[a-f0-9]{32}$",
+													"type": "string",
+													"x-auditable": true
+												},
+												"enabled": {
+													"description": "Whether log ingest is currently active for this dataset.",
+													"type": "boolean",
+													"x-auditable": true
+												},
+												"object_id": {
+													"description": "Public ID of the account or zone that owns this dataset.",
+													"type": "string",
+													"x-auditable": true
+												},
+												"object_type": {
+													"description": "Whether this dataset belongs to an account or a zone.",
+													"enum": [
+														"account",
+														"zone"
+													],
+													"type": "string",
+													"x-auditable": true
+												},
+												"updated_at": {
+													"description": "RFC3339 timestamp recording when the API last updated this dataset.",
+													"format": "date-time",
+													"type": "string",
+													"x-auditable": true
+												}
+											},
+											"required": [
+												"dataset",
+												"object_type",
+												"object_id",
+												"created_at",
+												"updated_at",
+												"dataset_id",
+												"enabled"
+											],
+											"type": "object"
+										},
+										{
+											"properties": {
+												"fields": {
+													"description": "The field configuration for this dataset.\n",
+													"items": {
+														"properties": {
+															"enabled": {
+																"description": "Whether the API includes this field in log ingest.",
+																"type": "boolean",
+																"x-auditable": true
+															},
+															"name": {
+																"description": "Field name in lowercase.",
+																"type": "string",
+																"x-auditable": true
+															}
+														},
+														"required": [
+															"name",
+															"enabled"
+														],
+														"type": "object"
+													},
+													"type": "array"
+												}
+											},
+											"type": "object"
+										}
+									]
+								},
+								"success": {
+									"type": "boolean",
+									"x-auditable": true
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Dataset details, including the fields active for ingestion."
+			},
+			"400": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"code": {
+												"format": "int32",
+												"type": "integer",
+												"x-auditable": true
+											},
+											"message": {
+												"type": "string",
+												"x-auditable": true
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"messages": {
+									"items": {
+										"type": "string",
+										"x-auditable": true
+									},
+									"type": "array"
+								},
+								"result": {
+									"additionalProperties": true,
+									"nullable": true,
+									"type": "object",
+									"x-auditable": true
+								},
+								"success": {
+									"enum": [
+										false
+									],
+									"type": "boolean",
+									"x-auditable": true
+								}
+							},
+							"required": [
+								"result",
+								"success",
+								"errors",
+								"messages"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Invalid request, unsupported dataset, or invalid field configuration."
+			},
+			"403": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"code": {
+												"format": "int32",
+												"type": "integer",
+												"x-auditable": true
+											},
+											"message": {
+												"type": "string",
+												"x-auditable": true
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"messages": {
+									"items": {
+										"type": "string",
+										"x-auditable": true
+									},
+									"type": "array"
+								},
+								"result": {
+									"additionalProperties": true,
+									"nullable": true,
+									"type": "object",
+									"x-auditable": true
+								},
+								"success": {
+									"enum": [
+										false
+									],
+									"type": "boolean",
+									"x-auditable": true
+								}
+							},
+							"required": [
+								"result",
+								"success",
+								"errors",
+								"messages"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "The caller lacks permission or entitlement to access this resource."
+			},
+			"404": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"code": {
+												"format": "int32",
+												"type": "integer",
+												"x-auditable": true
+											},
+											"message": {
+												"type": "string",
+												"x-auditable": true
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"messages": {
+									"items": {
+										"type": "string",
+										"x-auditable": true
+									},
+									"type": "array"
+								},
+								"result": {
+									"additionalProperties": true,
+									"nullable": true,
+									"type": "object",
+									"x-auditable": true
+								},
+								"success": {
+									"enum": [
+										false
+									],
+									"type": "boolean",
+									"x-auditable": true
+								}
+							},
+							"required": [
+								"result",
+								"success",
+								"errors",
+								"messages"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "The requested resource does not exist."
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			}
+		],
+		"summary": "Get a zone dataset",
+		"tags": [
+			"Log Explorer Datasets"
+		],
+		"x-api-token-group": [
+			"Logs Write"
+		]
+	},
+	"GET /zones/{zone_id}/logs/explorer/datasets/available": {
+		"description": "Returns all dataset types that this zone can create. Each entry includes\nthe dataset schema and timestamp field.\n\nThe schema shows all possible fields for a dataset. However, not all\nfields may be available for your account. When creating or updating a\ndataset, only fields available to your account can be enabled. If you\nrequest a field that is not available, you will receive an error.\n",
+		"operationId": "zones-logs-explorer-datasets-available-list",
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"code": {
+												"format": "int32",
+												"type": "integer",
+												"x-auditable": true
+											},
+											"message": {
+												"type": "string",
+												"x-auditable": true
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"messages": {
+									"items": {
+										"type": "string"
+									},
+									"type": "array"
+								},
+								"result": {
+									"items": {
+										"description": "A dataset type that the account or zone can create.",
+										"properties": {
+											"dataset": {
+												"description": "Dataset type name (e.g. `http_requests`).",
+												"type": "string"
+											},
+											"object_type": {
+												"description": "Whether this dataset type is account-scoped or zone-scoped.",
+												"enum": [
+													"account",
+													"zone"
+												],
+												"type": "string"
+											},
+											"schema": {
+												"description": "JSON Schema that describes the fields this dataset exposes.",
+												"properties": {
+													"properties": {
+														"additionalProperties": true,
+														"type": "object"
+													},
+													"required": {
+														"items": {
+															"type": "string"
+														},
+														"type": "array"
+													},
+													"type": {
+														"enum": [
+															"object"
+														],
+														"type": "string"
+													}
+												},
+												"type": "object"
+											},
+											"timestamp_field": {
+												"description": "The primary timestamp field name for this dataset.",
+												"type": "string"
+											}
+										},
+										"required": [
+											"dataset",
+											"timestamp_field",
+											"schema",
+											"object_type"
+										],
+										"type": "object"
+									},
+									"nullable": true,
+									"type": "array"
+								},
+								"success": {
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "List of dataset types available to create."
+			},
+			"400": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"code": {
+												"format": "int32",
+												"type": "integer",
+												"x-auditable": true
+											},
+											"message": {
+												"type": "string",
+												"x-auditable": true
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"messages": {
+									"items": {
+										"type": "string",
+										"x-auditable": true
+									},
+									"type": "array"
+								},
+								"result": {
+									"additionalProperties": true,
+									"nullable": true,
+									"type": "object",
+									"x-auditable": true
+								},
+								"success": {
+									"enum": [
+										false
+									],
+									"type": "boolean",
+									"x-auditable": true
+								}
+							},
+							"required": [
+								"result",
+								"success",
+								"errors",
+								"messages"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Invalid request, unsupported dataset, or invalid field configuration."
+			},
+			"403": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"code": {
+												"format": "int32",
+												"type": "integer",
+												"x-auditable": true
+											},
+											"message": {
+												"type": "string",
+												"x-auditable": true
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"messages": {
+									"items": {
+										"type": "string",
+										"x-auditable": true
+									},
+									"type": "array"
+								},
+								"result": {
+									"additionalProperties": true,
+									"nullable": true,
+									"type": "object",
+									"x-auditable": true
+								},
+								"success": {
+									"enum": [
+										false
+									],
+									"type": "boolean",
+									"x-auditable": true
+								}
+							},
+							"required": [
+								"result",
+								"success",
+								"errors",
+								"messages"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "The caller lacks permission or entitlement to access this resource."
+			},
+			"404": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"code": {
+												"format": "int32",
+												"type": "integer",
+												"x-auditable": true
+											},
+											"message": {
+												"type": "string",
+												"x-auditable": true
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"messages": {
+									"items": {
+										"type": "string",
+										"x-auditable": true
+									},
+									"type": "array"
+								},
+								"result": {
+									"additionalProperties": true,
+									"nullable": true,
+									"type": "object",
+									"x-auditable": true
+								},
+								"success": {
+									"enum": [
+										false
+									],
+									"type": "boolean",
+									"x-auditable": true
+								}
+							},
+							"required": [
+								"result",
+								"success",
+								"errors",
+								"messages"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "The requested resource does not exist."
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			}
+		],
+		"summary": "List available zone datasets",
+		"tags": [
+			"Log Explorer Datasets"
+		],
+		"x-api-token-group": [
+			"Logs Write",
+			"Logs Read"
+		]
+	},
+	"POST /accounts/{account_id}/logs/explorer/datasets": {
+		"description": "Create a new Log Explorer dataset for the account.\n\nUse the `/accounts/{account_id}/logs/explorer/datasets/available` endpoint\nto list dataset types you can create along with their available fields.\n\nThe `fields` property is optional. If not specified, all available fields\nwill be enabled.\n",
+		"operationId": "accounts-logs-explorer-datasets-create",
+		"requestBody": {
+			"content": {
+				"application/json": {
+					"schema": {
+						"properties": {
+							"dataset": {
+								"description": "Dataset type name to create (e.g. `http_requests`).",
+								"type": "string",
+								"x-auditable": true
+							},
+							"fields": {
+								"description": "Controls which fields the API ingests. Defaults to all available\nfields when absent.\n",
+								"items": {
+									"properties": {
+										"enabled": {
+											"description": "Whether the API includes this field in log ingest.",
+											"type": "boolean",
+											"x-auditable": true
+										},
+										"name": {
+											"description": "Field name in lowercase.",
+											"type": "string",
+											"x-auditable": true
+										}
+									},
+									"required": [
+										"name",
+										"enabled"
+									],
+									"type": "object"
+								},
+								"type": "array"
+							}
+						},
+						"required": [
+							"dataset"
+						],
+						"type": "object"
+					}
+				}
+			},
+			"required": true
+		},
+		"responses": {
+			"201": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"code": {
+												"format": "int32",
+												"type": "integer",
+												"x-auditable": true
+											},
+											"message": {
+												"type": "string",
+												"x-auditable": true
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"messages": {
+									"items": {
+										"type": "string",
+										"x-auditable": true
+									},
+									"type": "array"
+								},
+								"result": {
+									"allOf": [
+										{
+											"description": "A Log Explorer dataset summary. List endpoints return this type and omit\nfield configuration; use the single-dataset endpoint to retrieve it.\n",
+											"properties": {
+												"created_at": {
+													"description": "RFC3339 timestamp recording when the API created this dataset.",
+													"format": "date-time",
+													"type": "string",
+													"x-auditable": true
+												},
+												"dataset": {
+													"description": "Dataset type name (e.g. `http_requests`).",
+													"type": "string",
+													"x-auditable": true
+												},
+												"dataset_id": {
+													"description": "Unique dataset ID.",
+													"pattern": "^[a-f0-9]{32}$",
+													"type": "string",
+													"x-auditable": true
+												},
+												"enabled": {
+													"description": "Whether log ingest is currently active for this dataset.",
+													"type": "boolean",
+													"x-auditable": true
+												},
+												"object_id": {
+													"description": "Public ID of the account or zone that owns this dataset.",
+													"type": "string",
+													"x-auditable": true
+												},
+												"object_type": {
+													"description": "Whether this dataset belongs to an account or a zone.",
+													"enum": [
+														"account",
+														"zone"
+													],
+													"type": "string",
+													"x-auditable": true
+												},
+												"updated_at": {
+													"description": "RFC3339 timestamp recording when the API last updated this dataset.",
+													"format": "date-time",
+													"type": "string",
+													"x-auditable": true
+												}
+											},
+											"required": [
+												"dataset",
+												"object_type",
+												"object_id",
+												"created_at",
+												"updated_at",
+												"dataset_id",
+												"enabled"
+											],
+											"type": "object"
+										},
+										{
+											"properties": {
+												"fields": {
+													"description": "The field configuration for this dataset.\n",
+													"items": {
+														"properties": {
+															"enabled": {
+																"description": "Whether the API includes this field in log ingest.",
+																"type": "boolean",
+																"x-auditable": true
+															},
+															"name": {
+																"description": "Field name in lowercase.",
+																"type": "string",
+																"x-auditable": true
+															}
+														},
+														"required": [
+															"name",
+															"enabled"
+														],
+														"type": "object"
+													},
+													"type": "array"
+												}
+											},
+											"type": "object"
+										}
+									]
+								},
+								"success": {
+									"type": "boolean",
+									"x-auditable": true
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Dataset created successfully."
+			},
+			"400": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"code": {
+												"format": "int32",
+												"type": "integer",
+												"x-auditable": true
+											},
+											"message": {
+												"type": "string",
+												"x-auditable": true
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"messages": {
+									"items": {
+										"type": "string",
+										"x-auditable": true
+									},
+									"type": "array"
+								},
+								"result": {
+									"additionalProperties": true,
+									"nullable": true,
+									"type": "object",
+									"x-auditable": true
+								},
+								"success": {
+									"enum": [
+										false
+									],
+									"type": "boolean",
+									"x-auditable": true
+								}
+							},
+							"required": [
+								"result",
+								"success",
+								"errors",
+								"messages"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Invalid request, unsupported dataset, or invalid field configuration."
+			},
+			"403": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"code": {
+												"format": "int32",
+												"type": "integer",
+												"x-auditable": true
+											},
+											"message": {
+												"type": "string",
+												"x-auditable": true
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"messages": {
+									"items": {
+										"type": "string",
+										"x-auditable": true
+									},
+									"type": "array"
+								},
+								"result": {
+									"additionalProperties": true,
+									"nullable": true,
+									"type": "object",
+									"x-auditable": true
+								},
+								"success": {
+									"enum": [
+										false
+									],
+									"type": "boolean",
+									"x-auditable": true
+								}
+							},
+							"required": [
+								"result",
+								"success",
+								"errors",
+								"messages"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "The caller lacks permission or entitlement to access this resource."
+			},
+			"404": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"code": {
+												"format": "int32",
+												"type": "integer",
+												"x-auditable": true
+											},
+											"message": {
+												"type": "string",
+												"x-auditable": true
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"messages": {
+									"items": {
+										"type": "string",
+										"x-auditable": true
+									},
+									"type": "array"
+								},
+								"result": {
+									"additionalProperties": true,
+									"nullable": true,
+									"type": "object",
+									"x-auditable": true
+								},
+								"success": {
+									"enum": [
+										false
+									],
+									"type": "boolean",
+									"x-auditable": true
+								}
+							},
+							"required": [
+								"result",
+								"success",
+								"errors",
+								"messages"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "The requested resource does not exist."
+			},
+			"409": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"code": {
+												"format": "int32",
+												"type": "integer",
+												"x-auditable": true
+											},
+											"message": {
+												"type": "string",
+												"x-auditable": true
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"messages": {
+									"items": {
+										"type": "string",
+										"x-auditable": true
+									},
+									"type": "array"
+								},
+								"result": {
+									"additionalProperties": true,
+									"nullable": true,
+									"type": "object",
+									"x-auditable": true
+								},
+								"success": {
+									"enum": [
+										false
+									],
+									"type": "boolean",
+									"x-auditable": true
+								}
+							},
+							"required": [
+								"result",
+								"success",
+								"errors",
+								"messages"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "A dataset of this type already exists for this account or zone."
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			}
+		],
+		"summary": "Create an account dataset",
+		"tags": [
+			"Log Explorer Datasets"
+		],
+		"x-api-token-group": [
+			"Logs Write"
+		]
+	},
+	"POST /zones/{zone_id}/logs/explorer/datasets": {
+		"description": "Create a new Log Explorer dataset for the zone.\n\nUse the `/zones/{zone_id}/logs/explorer/datasets/available` endpoint\nto list dataset types you can create along with their available fields.\n\nThe `fields` property is optional. If not specified, all available fields\nwill be enabled.\n",
+		"operationId": "zones-logs-explorer-datasets-create",
+		"requestBody": {
+			"content": {
+				"application/json": {
+					"schema": {
+						"properties": {
+							"dataset": {
+								"description": "Dataset type name to create (e.g. `http_requests`).",
+								"type": "string",
+								"x-auditable": true
+							},
+							"fields": {
+								"description": "Controls which fields the API ingests. Defaults to all available\nfields when absent.\n",
+								"items": {
+									"properties": {
+										"enabled": {
+											"description": "Whether the API includes this field in log ingest.",
+											"type": "boolean",
+											"x-auditable": true
+										},
+										"name": {
+											"description": "Field name in lowercase.",
+											"type": "string",
+											"x-auditable": true
+										}
+									},
+									"required": [
+										"name",
+										"enabled"
+									],
+									"type": "object"
+								},
+								"type": "array"
+							}
+						},
+						"required": [
+							"dataset"
+						],
+						"type": "object"
+					}
+				}
+			},
+			"required": true
+		},
+		"responses": {
+			"201": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"code": {
+												"format": "int32",
+												"type": "integer",
+												"x-auditable": true
+											},
+											"message": {
+												"type": "string",
+												"x-auditable": true
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"messages": {
+									"items": {
+										"type": "string",
+										"x-auditable": true
+									},
+									"type": "array"
+								},
+								"result": {
+									"allOf": [
+										{
+											"description": "A Log Explorer dataset summary. List endpoints return this type and omit\nfield configuration; use the single-dataset endpoint to retrieve it.\n",
+											"properties": {
+												"created_at": {
+													"description": "RFC3339 timestamp recording when the API created this dataset.",
+													"format": "date-time",
+													"type": "string",
+													"x-auditable": true
+												},
+												"dataset": {
+													"description": "Dataset type name (e.g. `http_requests`).",
+													"type": "string",
+													"x-auditable": true
+												},
+												"dataset_id": {
+													"description": "Unique dataset ID.",
+													"pattern": "^[a-f0-9]{32}$",
+													"type": "string",
+													"x-auditable": true
+												},
+												"enabled": {
+													"description": "Whether log ingest is currently active for this dataset.",
+													"type": "boolean",
+													"x-auditable": true
+												},
+												"object_id": {
+													"description": "Public ID of the account or zone that owns this dataset.",
+													"type": "string",
+													"x-auditable": true
+												},
+												"object_type": {
+													"description": "Whether this dataset belongs to an account or a zone.",
+													"enum": [
+														"account",
+														"zone"
+													],
+													"type": "string",
+													"x-auditable": true
+												},
+												"updated_at": {
+													"description": "RFC3339 timestamp recording when the API last updated this dataset.",
+													"format": "date-time",
+													"type": "string",
+													"x-auditable": true
+												}
+											},
+											"required": [
+												"dataset",
+												"object_type",
+												"object_id",
+												"created_at",
+												"updated_at",
+												"dataset_id",
+												"enabled"
+											],
+											"type": "object"
+										},
+										{
+											"properties": {
+												"fields": {
+													"description": "The field configuration for this dataset.\n",
+													"items": {
+														"properties": {
+															"enabled": {
+																"description": "Whether the API includes this field in log ingest.",
+																"type": "boolean",
+																"x-auditable": true
+															},
+															"name": {
+																"description": "Field name in lowercase.",
+																"type": "string",
+																"x-auditable": true
+															}
+														},
+														"required": [
+															"name",
+															"enabled"
+														],
+														"type": "object"
+													},
+													"type": "array"
+												}
+											},
+											"type": "object"
+										}
+									]
+								},
+								"success": {
+									"type": "boolean",
+									"x-auditable": true
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Dataset created successfully."
+			},
+			"400": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"code": {
+												"format": "int32",
+												"type": "integer",
+												"x-auditable": true
+											},
+											"message": {
+												"type": "string",
+												"x-auditable": true
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"messages": {
+									"items": {
+										"type": "string",
+										"x-auditable": true
+									},
+									"type": "array"
+								},
+								"result": {
+									"additionalProperties": true,
+									"nullable": true,
+									"type": "object",
+									"x-auditable": true
+								},
+								"success": {
+									"enum": [
+										false
+									],
+									"type": "boolean",
+									"x-auditable": true
+								}
+							},
+							"required": [
+								"result",
+								"success",
+								"errors",
+								"messages"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Invalid request, unsupported dataset, or invalid field configuration."
+			},
+			"403": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"code": {
+												"format": "int32",
+												"type": "integer",
+												"x-auditable": true
+											},
+											"message": {
+												"type": "string",
+												"x-auditable": true
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"messages": {
+									"items": {
+										"type": "string",
+										"x-auditable": true
+									},
+									"type": "array"
+								},
+								"result": {
+									"additionalProperties": true,
+									"nullable": true,
+									"type": "object",
+									"x-auditable": true
+								},
+								"success": {
+									"enum": [
+										false
+									],
+									"type": "boolean",
+									"x-auditable": true
+								}
+							},
+							"required": [
+								"result",
+								"success",
+								"errors",
+								"messages"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "The caller lacks permission or entitlement to access this resource."
+			},
+			"404": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"code": {
+												"format": "int32",
+												"type": "integer",
+												"x-auditable": true
+											},
+											"message": {
+												"type": "string",
+												"x-auditable": true
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"messages": {
+									"items": {
+										"type": "string",
+										"x-auditable": true
+									},
+									"type": "array"
+								},
+								"result": {
+									"additionalProperties": true,
+									"nullable": true,
+									"type": "object",
+									"x-auditable": true
+								},
+								"success": {
+									"enum": [
+										false
+									],
+									"type": "boolean",
+									"x-auditable": true
+								}
+							},
+							"required": [
+								"result",
+								"success",
+								"errors",
+								"messages"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "The requested resource does not exist."
+			},
+			"409": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"code": {
+												"format": "int32",
+												"type": "integer",
+												"x-auditable": true
+											},
+											"message": {
+												"type": "string",
+												"x-auditable": true
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"messages": {
+									"items": {
+										"type": "string",
+										"x-auditable": true
+									},
+									"type": "array"
+								},
+								"result": {
+									"additionalProperties": true,
+									"nullable": true,
+									"type": "object",
+									"x-auditable": true
+								},
+								"success": {
+									"enum": [
+										false
+									],
+									"type": "boolean",
+									"x-auditable": true
+								}
+							},
+							"required": [
+								"result",
+								"success",
+								"errors",
+								"messages"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "A dataset of this type already exists for this account or zone."
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			}
+		],
+		"summary": "Create a zone dataset",
+		"tags": [
+			"Log Explorer Datasets"
+		],
+		"x-api-token-group": [
+			"Logs Write"
+		]
+	},
+	"PUT /accounts/{account_id}/logs/explorer/datasets/{dataset_id}": {
+		"description": "Updates the enabled state and/or field configuration of an account dataset.",
+		"operationId": "accounts-logs-explorer-datasets-update",
+		"requestBody": {
+			"content": {
+				"application/json": {
+					"schema": {
+						"properties": {
+							"enabled": {
+								"description": "Whether to enable or disable log ingest for this dataset.",
+								"type": "boolean",
+								"x-auditable": true
+							},
+							"fields": {
+								"description": "Controls which fields the API ingests after the update. Defaults\nto all available fields when absent.\n",
+								"items": {
+									"properties": {
+										"enabled": {
+											"description": "Whether the API includes this field in log ingest.",
+											"type": "boolean",
+											"x-auditable": true
+										},
+										"name": {
+											"description": "Field name in lowercase.",
+											"type": "string",
+											"x-auditable": true
+										}
+									},
+									"required": [
+										"name",
+										"enabled"
+									],
+									"type": "object"
+								},
+								"type": "array"
+							}
+						},
+						"required": [
+							"enabled"
+						],
+						"type": "object"
+					}
+				}
+			},
+			"required": true
+		},
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"code": {
+												"format": "int32",
+												"type": "integer",
+												"x-auditable": true
+											},
+											"message": {
+												"type": "string",
+												"x-auditable": true
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"messages": {
+									"items": {
+										"type": "string",
+										"x-auditable": true
+									},
+									"type": "array"
+								},
+								"result": {
+									"allOf": [
+										{
+											"description": "A Log Explorer dataset summary. List endpoints return this type and omit\nfield configuration; use the single-dataset endpoint to retrieve it.\n",
+											"properties": {
+												"created_at": {
+													"description": "RFC3339 timestamp recording when the API created this dataset.",
+													"format": "date-time",
+													"type": "string",
+													"x-auditable": true
+												},
+												"dataset": {
+													"description": "Dataset type name (e.g. `http_requests`).",
+													"type": "string",
+													"x-auditable": true
+												},
+												"dataset_id": {
+													"description": "Unique dataset ID.",
+													"pattern": "^[a-f0-9]{32}$",
+													"type": "string",
+													"x-auditable": true
+												},
+												"enabled": {
+													"description": "Whether log ingest is currently active for this dataset.",
+													"type": "boolean",
+													"x-auditable": true
+												},
+												"object_id": {
+													"description": "Public ID of the account or zone that owns this dataset.",
+													"type": "string",
+													"x-auditable": true
+												},
+												"object_type": {
+													"description": "Whether this dataset belongs to an account or a zone.",
+													"enum": [
+														"account",
+														"zone"
+													],
+													"type": "string",
+													"x-auditable": true
+												},
+												"updated_at": {
+													"description": "RFC3339 timestamp recording when the API last updated this dataset.",
+													"format": "date-time",
+													"type": "string",
+													"x-auditable": true
+												}
+											},
+											"required": [
+												"dataset",
+												"object_type",
+												"object_id",
+												"created_at",
+												"updated_at",
+												"dataset_id",
+												"enabled"
+											],
+											"type": "object"
+										},
+										{
+											"properties": {
+												"fields": {
+													"description": "The field configuration for this dataset.\n",
+													"items": {
+														"properties": {
+															"enabled": {
+																"description": "Whether the API includes this field in log ingest.",
+																"type": "boolean",
+																"x-auditable": true
+															},
+															"name": {
+																"description": "Field name in lowercase.",
+																"type": "string",
+																"x-auditable": true
+															}
+														},
+														"required": [
+															"name",
+															"enabled"
+														],
+														"type": "object"
+													},
+													"type": "array"
+												}
+											},
+											"type": "object"
+										}
+									]
+								},
+								"success": {
+									"type": "boolean",
+									"x-auditable": true
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "The dataset after the update."
+			},
+			"400": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"code": {
+												"format": "int32",
+												"type": "integer",
+												"x-auditable": true
+											},
+											"message": {
+												"type": "string",
+												"x-auditable": true
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"messages": {
+									"items": {
+										"type": "string",
+										"x-auditable": true
+									},
+									"type": "array"
+								},
+								"result": {
+									"additionalProperties": true,
+									"nullable": true,
+									"type": "object",
+									"x-auditable": true
+								},
+								"success": {
+									"enum": [
+										false
+									],
+									"type": "boolean",
+									"x-auditable": true
+								}
+							},
+							"required": [
+								"result",
+								"success",
+								"errors",
+								"messages"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Invalid request, unsupported dataset, or invalid field configuration."
+			},
+			"403": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"code": {
+												"format": "int32",
+												"type": "integer",
+												"x-auditable": true
+											},
+											"message": {
+												"type": "string",
+												"x-auditable": true
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"messages": {
+									"items": {
+										"type": "string",
+										"x-auditable": true
+									},
+									"type": "array"
+								},
+								"result": {
+									"additionalProperties": true,
+									"nullable": true,
+									"type": "object",
+									"x-auditable": true
+								},
+								"success": {
+									"enum": [
+										false
+									],
+									"type": "boolean",
+									"x-auditable": true
+								}
+							},
+							"required": [
+								"result",
+								"success",
+								"errors",
+								"messages"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "The caller lacks permission or entitlement to access this resource."
+			},
+			"404": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"code": {
+												"format": "int32",
+												"type": "integer",
+												"x-auditable": true
+											},
+											"message": {
+												"type": "string",
+												"x-auditable": true
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"messages": {
+									"items": {
+										"type": "string",
+										"x-auditable": true
+									},
+									"type": "array"
+								},
+								"result": {
+									"additionalProperties": true,
+									"nullable": true,
+									"type": "object",
+									"x-auditable": true
+								},
+								"success": {
+									"enum": [
+										false
+									],
+									"type": "boolean",
+									"x-auditable": true
+								}
+							},
+							"required": [
+								"result",
+								"success",
+								"errors",
+								"messages"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "The requested resource does not exist."
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			}
+		],
+		"summary": "Update an account dataset",
+		"tags": [
+			"Log Explorer Datasets"
+		],
+		"x-api-token-group": [
+			"Logs Write"
+		]
+	},
+	"PUT /zones/{zone_id}/logs/explorer/datasets/{dataset_id}": {
+		"description": "Updates the enabled state and/or field configuration of a zone dataset.",
+		"operationId": "zones-logs-explorer-datasets-update",
+		"requestBody": {
+			"content": {
+				"application/json": {
+					"schema": {
+						"properties": {
+							"enabled": {
+								"description": "Whether to enable or disable log ingest for this dataset.",
+								"type": "boolean",
+								"x-auditable": true
+							},
+							"fields": {
+								"description": "Controls which fields the API ingests after the update. Defaults\nto all available fields when absent.\n",
+								"items": {
+									"properties": {
+										"enabled": {
+											"description": "Whether the API includes this field in log ingest.",
+											"type": "boolean",
+											"x-auditable": true
+										},
+										"name": {
+											"description": "Field name in lowercase.",
+											"type": "string",
+											"x-auditable": true
+										}
+									},
+									"required": [
+										"name",
+										"enabled"
+									],
+									"type": "object"
+								},
+								"type": "array"
+							}
+						},
+						"required": [
+							"enabled"
+						],
+						"type": "object"
+					}
+				}
+			},
+			"required": true
+		},
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"code": {
+												"format": "int32",
+												"type": "integer",
+												"x-auditable": true
+											},
+											"message": {
+												"type": "string",
+												"x-auditable": true
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"messages": {
+									"items": {
+										"type": "string",
+										"x-auditable": true
+									},
+									"type": "array"
+								},
+								"result": {
+									"allOf": [
+										{
+											"description": "A Log Explorer dataset summary. List endpoints return this type and omit\nfield configuration; use the single-dataset endpoint to retrieve it.\n",
+											"properties": {
+												"created_at": {
+													"description": "RFC3339 timestamp recording when the API created this dataset.",
+													"format": "date-time",
+													"type": "string",
+													"x-auditable": true
+												},
+												"dataset": {
+													"description": "Dataset type name (e.g. `http_requests`).",
+													"type": "string",
+													"x-auditable": true
+												},
+												"dataset_id": {
+													"description": "Unique dataset ID.",
+													"pattern": "^[a-f0-9]{32}$",
+													"type": "string",
+													"x-auditable": true
+												},
+												"enabled": {
+													"description": "Whether log ingest is currently active for this dataset.",
+													"type": "boolean",
+													"x-auditable": true
+												},
+												"object_id": {
+													"description": "Public ID of the account or zone that owns this dataset.",
+													"type": "string",
+													"x-auditable": true
+												},
+												"object_type": {
+													"description": "Whether this dataset belongs to an account or a zone.",
+													"enum": [
+														"account",
+														"zone"
+													],
+													"type": "string",
+													"x-auditable": true
+												},
+												"updated_at": {
+													"description": "RFC3339 timestamp recording when the API last updated this dataset.",
+													"format": "date-time",
+													"type": "string",
+													"x-auditable": true
+												}
+											},
+											"required": [
+												"dataset",
+												"object_type",
+												"object_id",
+												"created_at",
+												"updated_at",
+												"dataset_id",
+												"enabled"
+											],
+											"type": "object"
+										},
+										{
+											"properties": {
+												"fields": {
+													"description": "The field configuration for this dataset.\n",
+													"items": {
+														"properties": {
+															"enabled": {
+																"description": "Whether the API includes this field in log ingest.",
+																"type": "boolean",
+																"x-auditable": true
+															},
+															"name": {
+																"description": "Field name in lowercase.",
+																"type": "string",
+																"x-auditable": true
+															}
+														},
+														"required": [
+															"name",
+															"enabled"
+														],
+														"type": "object"
+													},
+													"type": "array"
+												}
+											},
+											"type": "object"
+										}
+									]
+								},
+								"success": {
+									"type": "boolean",
+									"x-auditable": true
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "The dataset after the update."
+			},
+			"400": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"code": {
+												"format": "int32",
+												"type": "integer",
+												"x-auditable": true
+											},
+											"message": {
+												"type": "string",
+												"x-auditable": true
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"messages": {
+									"items": {
+										"type": "string",
+										"x-auditable": true
+									},
+									"type": "array"
+								},
+								"result": {
+									"additionalProperties": true,
+									"nullable": true,
+									"type": "object",
+									"x-auditable": true
+								},
+								"success": {
+									"enum": [
+										false
+									],
+									"type": "boolean",
+									"x-auditable": true
+								}
+							},
+							"required": [
+								"result",
+								"success",
+								"errors",
+								"messages"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Invalid request, unsupported dataset, or invalid field configuration."
+			},
+			"403": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"code": {
+												"format": "int32",
+												"type": "integer",
+												"x-auditable": true
+											},
+											"message": {
+												"type": "string",
+												"x-auditable": true
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"messages": {
+									"items": {
+										"type": "string",
+										"x-auditable": true
+									},
+									"type": "array"
+								},
+								"result": {
+									"additionalProperties": true,
+									"nullable": true,
+									"type": "object",
+									"x-auditable": true
+								},
+								"success": {
+									"enum": [
+										false
+									],
+									"type": "boolean",
+									"x-auditable": true
+								}
+							},
+							"required": [
+								"result",
+								"success",
+								"errors",
+								"messages"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "The caller lacks permission or entitlement to access this resource."
+			},
+			"404": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"code": {
+												"format": "int32",
+												"type": "integer",
+												"x-auditable": true
+											},
+											"message": {
+												"type": "string",
+												"x-auditable": true
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"messages": {
+									"items": {
+										"type": "string",
+										"x-auditable": true
+									},
+									"type": "array"
+								},
+								"result": {
+									"additionalProperties": true,
+									"nullable": true,
+									"type": "object",
+									"x-auditable": true
+								},
+								"success": {
+									"enum": [
+										false
+									],
+									"type": "boolean",
+									"x-auditable": true
+								}
+							},
+							"required": [
+								"result",
+								"success",
+								"errors",
+								"messages"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "The requested resource does not exist."
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			}
+		],
+		"summary": "Update a zone dataset",
+		"tags": [
+			"Log Explorer Datasets"
+		],
+		"x-api-token-group": [
+			"Logs Write"
+		]
+	}
+}

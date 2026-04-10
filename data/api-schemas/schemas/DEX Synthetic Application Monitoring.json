@@ -809,6 +809,11 @@
 									"nullable": true,
 									"type": "array"
 								},
+								"registrationId": {
+									"description": "Device registration identifier (UUID v4). On multi-user devices, this uniquely identifies a user's registration on the device.",
+									"nullable": true,
+									"type": "string"
+								},
 								"status": {
 									"description": "Network status",
 									"example": "connected",
@@ -1221,7 +1226,7 @@
 				}
 			},
 			{
-				"description": "Source:\n  * `hourly` - device details aggregated hourly, up to 7 days prior\n  * `last_seen` - device details, up to 60 minutes prior\n  * `raw` - device details, up to 7 days prior\n",
+				"description": "Source:\n  * `hourly` - device details aggregated hourly, up to 7 days prior\n  * `last_seen` - device details, up to 60 minutes prior. Time windows exceeding 60 minutes will be rejected from June 1st, 2026. Please use 'hourly' or 'raw' instead for longer time ranges.\n  * `raw` - device details, up to 7 days prior\n",
 				"in": "query",
 				"name": "source",
 				"schema": {
@@ -1798,6 +1803,11 @@
 														},
 														"nullable": true,
 														"type": "array"
+													},
+													"registrationId": {
+														"description": "Device registration identifier (UUID v4). On multi-user devices, this uniquely identifies a user's registration on the device.",
+														"nullable": true,
+														"type": "string"
 													},
 													"status": {
 														"description": "Network status",
@@ -4272,6 +4282,14 @@
 						"type": "string"
 					},
 					"type": "array"
+				}
+			},
+			{
+				"description": "Optionally filter results to a specific device registration. Must be used in combination with a single deviceId.",
+				"in": "query",
+				"name": "registration_id",
+				"schema": {
+					"type": "string"
 				}
 			},
 			{

@@ -1032,12 +1032,6 @@
 																},
 																"type": "array"
 															},
-															"merge_subrequests": {
-																"description": "If set to true, subrequests will be merged into the parent request. Only supported for the `http_requests` dataset.",
-																"nullable": true,
-																"type": "boolean",
-																"x-auditable": true
-															},
 															"output_type": {
 																"description": "Specifies the output type, such as `ndjson` or `csv`. This sets default values for the rest of the settings, depending on the chosen output type. Some formatting rules, like string quoting, are different between output types.",
 																"enum": [
@@ -1630,12 +1624,6 @@
 																	"x-auditable": true
 																},
 																"type": "array"
-															},
-															"merge_subrequests": {
-																"description": "If set to true, subrequests will be merged into the parent request. Only supported for the `http_requests` dataset.",
-																"nullable": true,
-																"type": "boolean",
-																"x-auditable": true
 															},
 															"output_type": {
 																"description": "Specifies the output type, such as `ndjson` or `csv`. This sets default values for the rest of the settings, depending on the chosen output type. Some formatting rules, like string quoting, are different between output types.",
@@ -2243,12 +2231,6 @@
 															},
 															"type": "array"
 														},
-														"merge_subrequests": {
-															"description": "If set to true, subrequests will be merged into the parent request. Only supported for the `http_requests` dataset.",
-															"nullable": true,
-															"type": "boolean",
-															"x-auditable": true
-														},
 														"output_type": {
 															"description": "Specifies the output type, such as `ndjson` or `csv`. This sets default values for the rest of the settings, depending on the chosen output type. Some formatting rules, like string quoting, are different between output types.",
 															"enum": [
@@ -2721,12 +2703,6 @@
 										},
 										"type": "array"
 									},
-									"merge_subrequests": {
-										"description": "If set to true, subrequests will be merged into the parent request. Only supported for the `http_requests` dataset.",
-										"nullable": true,
-										"type": "boolean",
-										"x-auditable": true
-									},
 									"output_type": {
 										"description": "Specifies the output type, such as `ndjson` or `csv`. This sets default values for the rest of the settings, depending on the chosen output type. Some formatting rules, like string quoting, are different between output types.",
 										"enum": [
@@ -3164,12 +3140,6 @@
 																"x-auditable": true
 															},
 															"type": "array"
-														},
-														"merge_subrequests": {
-															"description": "If set to true, subrequests will be merged into the parent request. Only supported for the `http_requests` dataset.",
-															"nullable": true,
-															"type": "boolean",
-															"x-auditable": true
 														},
 														"output_type": {
 															"description": "Specifies the output type, such as `ndjson` or `csv`. This sets default values for the rest of the settings, depending on the chosen output type. Some formatting rules, like string quoting, are different between output types.",
@@ -5112,12 +5082,6 @@
 										},
 										"type": "array"
 									},
-									"merge_subrequests": {
-										"description": "If set to true, subrequests will be merged into the parent request. Only supported for the `http_requests` dataset.",
-										"nullable": true,
-										"type": "boolean",
-										"x-auditable": true
-									},
 									"output_type": {
 										"description": "Specifies the output type, such as `ndjson` or `csv`. This sets default values for the rest of the settings, depending on the chosen output type. Some formatting rules, like string quoting, are different between output types.",
 										"enum": [
@@ -5552,12 +5516,6 @@
 																"x-auditable": true
 															},
 															"type": "array"
-														},
-														"merge_subrequests": {
-															"description": "If set to true, subrequests will be merged into the parent request. Only supported for the `http_requests` dataset.",
-															"nullable": true,
-															"type": "boolean",
-															"x-auditable": true
 														},
 														"output_type": {
 															"description": "Specifies the output type, such as `ndjson` or `csv`. This sets default values for the rest of the settings, depending on the chosen output type. Some formatting rules, like string quoting, are different between output types.",

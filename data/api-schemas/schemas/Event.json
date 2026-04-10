@@ -313,87 +313,6 @@
 			"Cloudforce One Write"
 		]
 	},
-	"DELETE /accounts/{account_id}/cloudforce-one/events/queries/alerts/{alert_id}": {
-		"description": "Delete an event query alert subscription by its ID",
-		"operationId": "delete_EventQueryAlertDelete",
-		"parameters": [
-			{
-				"description": "Account ID.",
-				"in": "path",
-				"name": "account_id",
-				"required": true,
-				"schema": {
-					"description": "Account ID.",
-					"type": "string"
-				}
-			},
-			{
-				"description": "Event query alert ID",
-				"in": "path",
-				"name": "alert_id",
-				"required": true,
-				"schema": {
-					"description": "Event query alert ID",
-					"type": "integer"
-				}
-			}
-		],
-		"responses": {
-			"200": {
-				"description": "Event query alert deleted successfully."
-			},
-			"404": {
-				"content": {
-					"application/json": {
-						"schema": {
-							"properties": {
-								"errors": {
-									"items": {
-										"properties": {
-											"message": {
-												"example": "An error occurred.",
-												"type": "string"
-											}
-										},
-										"required": [
-											"message"
-										],
-										"type": "object"
-									},
-									"type": "array"
-								},
-								"result": {
-									"type": "object"
-								},
-								"success": {
-									"type": "boolean"
-								}
-							},
-							"required": [
-								"result",
-								"success",
-								"errors"
-							],
-							"type": "object"
-						}
-					}
-				},
-				"description": "Bad Request."
-			}
-		},
-		"security": [
-			{
-				"api_token": []
-			}
-		],
-		"summary": "Delete an event query alert",
-		"tags": [
-			"Event"
-		],
-		"x-api-token-group": [
-			"Cloudforce One Write"
-		]
-	},
 	"DELETE /accounts/{account_id}/cloudforce-one/events/relate/{event_id}": {
 		"operationId": "delete_EventReferenceDelete",
 		"parameters": [
@@ -2075,6 +1994,11 @@
 										"description": "Creation timestamp",
 										"type": "string"
 									},
+									"custom_threat_feed_id": {
+										"description": "Intel Indicator Feed ID (numeric)",
+										"nullable": true,
+										"type": "integer"
+									},
 									"id": {
 										"description": "Unique identifier for the saved query",
 										"type": "integer"
@@ -2090,6 +2014,10 @@
 									"rule_enabled": {
 										"description": "Whether rule is enabled",
 										"type": "boolean"
+									},
+									"rule_list_id": {
+										"description": "WAF rules list ID for blocking",
+										"type": "string"
 									},
 									"rule_scope": {
 										"description": "Scope for the rule",
@@ -2224,6 +2152,11 @@
 									"description": "Creation timestamp",
 									"type": "string"
 								},
+								"custom_threat_feed_id": {
+									"description": "Intel Indicator Feed ID (numeric)",
+									"nullable": true,
+									"type": "integer"
+								},
 								"id": {
 									"description": "Unique identifier for the saved query",
 									"type": "integer"
@@ -2239,6 +2172,10 @@
 								"rule_enabled": {
 									"description": "Whether rule is enabled",
 									"type": "boolean"
+								},
+								"rule_list_id": {
+									"description": "WAF rules list ID for blocking",
+									"type": "string"
 								},
 								"rule_scope": {
 									"description": "Scope for the rule",
@@ -2316,291 +2253,6 @@
 			}
 		],
 		"summary": "Read a saved event query",
-		"tags": [
-			"Event"
-		],
-		"x-api-token-group": [
-			"Cloudforce One Write",
-			"Cloudforce One Read"
-		]
-	},
-	"GET /accounts/{account_id}/cloudforce-one/events/queries/alerts": {
-		"description": "Retrieve all event query alerts for the account",
-		"operationId": "get_EventQueryAlertList",
-		"parameters": [
-			{
-				"description": "Account ID.",
-				"in": "path",
-				"name": "account_id",
-				"required": true,
-				"schema": {
-					"description": "Account ID.",
-					"type": "string"
-				}
-			}
-		],
-		"responses": {
-			"200": {
-				"content": {
-					"application/json": {
-						"schema": {
-							"items": {
-								"properties": {
-									"account_id": {
-										"description": "Account ID",
-										"type": "integer"
-									},
-									"created_at": {
-										"description": "Creation timestamp",
-										"type": "string"
-									},
-									"enabled": {
-										"description": "Whether the alert is enabled",
-										"type": "boolean"
-									},
-									"frequency": {
-										"description": "Alert frequency (immediate or daily)",
-										"enum": [
-											"immediate",
-											"daily"
-										],
-										"type": "string"
-									},
-									"id": {
-										"description": "Unique identifier for the event query alert",
-										"type": "integer"
-									},
-									"last_sent_at": {
-										"description": "Last time the alert was sent",
-										"type": "string"
-									},
-									"notification_type": {
-										"description": "Type of notification",
-										"type": "string"
-									},
-									"query_id": {
-										"description": "ID of the associated event query",
-										"type": "integer"
-									},
-									"updated_at": {
-										"description": "Last update timestamp",
-										"type": "string"
-									},
-									"user_email": {
-										"description": "Email of the user who created the alert",
-										"type": "string"
-									}
-								},
-								"required": [
-									"id",
-									"account_id",
-									"user_email",
-									"query_id",
-									"enabled",
-									"notification_type",
-									"frequency",
-									"created_at",
-									"updated_at"
-								],
-								"type": "object"
-							},
-							"type": "array"
-						}
-					}
-				},
-				"description": "Returns a list of event query alerts."
-			},
-			"500": {
-				"content": {
-					"application/json": {
-						"schema": {
-							"properties": {
-								"errors": {
-									"items": {
-										"properties": {
-											"message": {
-												"example": "An error occurred.",
-												"type": "string"
-											}
-										},
-										"required": [
-											"message"
-										],
-										"type": "object"
-									},
-									"type": "array"
-								},
-								"result": {
-									"type": "object"
-								},
-								"success": {
-									"type": "boolean"
-								}
-							},
-							"required": [
-								"result",
-								"success",
-								"errors"
-							],
-							"type": "object"
-						}
-					}
-				},
-				"description": "Bad Request."
-			}
-		},
-		"security": [
-			{
-				"api_token": []
-			}
-		],
-		"summary": "List all event query alerts",
-		"tags": [
-			"Event"
-		],
-		"x-api-token-group": [
-			"Cloudforce One Write",
-			"Cloudforce One Read"
-		]
-	},
-	"GET /accounts/{account_id}/cloudforce-one/events/queries/alerts/{alert_id}": {
-		"description": "Retrieve an event query alert by its ID",
-		"operationId": "get_EventQueryAlertRead",
-		"parameters": [
-			{
-				"description": "Account ID.",
-				"in": "path",
-				"name": "account_id",
-				"required": true,
-				"schema": {
-					"description": "Account ID.",
-					"type": "string"
-				}
-			},
-			{
-				"description": "Event query alert ID",
-				"in": "path",
-				"name": "alert_id",
-				"required": true,
-				"schema": {
-					"description": "Event query alert ID",
-					"type": "integer"
-				}
-			}
-		],
-		"responses": {
-			"200": {
-				"content": {
-					"application/json": {
-						"schema": {
-							"properties": {
-								"account_id": {
-									"description": "Account ID",
-									"type": "integer"
-								},
-								"created_at": {
-									"description": "Creation timestamp",
-									"type": "string"
-								},
-								"enabled": {
-									"description": "Whether the alert is enabled",
-									"type": "boolean"
-								},
-								"frequency": {
-									"description": "Alert frequency (immediate or daily)",
-									"enum": [
-										"immediate",
-										"daily"
-									],
-									"type": "string"
-								},
-								"id": {
-									"description": "Unique identifier for the event query alert",
-									"type": "integer"
-								},
-								"last_sent_at": {
-									"description": "Last time the alert was sent",
-									"type": "string"
-								},
-								"notification_type": {
-									"description": "Type of notification",
-									"type": "string"
-								},
-								"query_id": {
-									"description": "ID of the associated event query",
-									"type": "integer"
-								},
-								"updated_at": {
-									"description": "Last update timestamp",
-									"type": "string"
-								},
-								"user_email": {
-									"description": "Email of the user who created the alert",
-									"type": "string"
-								}
-							},
-							"required": [
-								"id",
-								"account_id",
-								"user_email",
-								"query_id",
-								"enabled",
-								"notification_type",
-								"frequency",
-								"created_at",
-								"updated_at"
-							],
-							"type": "object"
-						}
-					}
-				},
-				"description": "Returns the event query alert."
-			},
-			"404": {
-				"content": {
-					"application/json": {
-						"schema": {
-							"properties": {
-								"errors": {
-									"items": {
-										"properties": {
-											"message": {
-												"example": "An error occurred.",
-												"type": "string"
-											}
-										},
-										"required": [
-											"message"
-										],
-										"type": "object"
-									},
-									"type": "array"
-								},
-								"result": {
-									"type": "object"
-								},
-								"success": {
-									"type": "boolean"
-								}
-							},
-							"required": [
-								"result",
-								"success",
-								"errors"
-							],
-							"type": "object"
-						}
-					}
-				},
-				"description": "Bad Request."
-			}
-		},
-		"security": [
-			{
-				"api_token": []
-			}
-		],
-		"summary": "Read an event query alert",
 		"tags": [
 			"Event"
 		],
@@ -3319,6 +2971,11 @@
 									"description": "Creation timestamp",
 									"type": "string"
 								},
+								"custom_threat_feed_id": {
+									"description": "Intel Indicator Feed ID (numeric)",
+									"nullable": true,
+									"type": "integer"
+								},
 								"id": {
 									"description": "Unique identifier for the saved query",
 									"type": "integer"
@@ -3334,6 +2991,10 @@
 								"rule_enabled": {
 									"description": "Whether rule is enabled",
 									"type": "boolean"
+								},
+								"rule_list_id": {
+									"description": "WAF rules list ID for blocking",
+									"type": "string"
 								},
 								"rule_scope": {
 									"description": "Scope for the rule",
@@ -3449,216 +3110,6 @@
 			}
 		],
 		"summary": "Update a saved event query",
-		"tags": [
-			"Event"
-		],
-		"x-api-token-group": [
-			"Cloudforce One Write"
-		]
-	},
-	"PATCH /accounts/{account_id}/cloudforce-one/events/queries/alerts/{alert_id}": {
-		"description": "Update an existing event query alert by its ID",
-		"operationId": "patch_EventQueryAlertUpdate",
-		"parameters": [
-			{
-				"description": "Account ID.",
-				"in": "path",
-				"name": "account_id",
-				"required": true,
-				"schema": {
-					"description": "Account ID.",
-					"type": "string"
-				}
-			},
-			{
-				"description": "Event query alert ID",
-				"in": "path",
-				"name": "alert_id",
-				"required": true,
-				"schema": {
-					"description": "Event query alert ID",
-					"type": "integer"
-				}
-			}
-		],
-		"requestBody": {
-			"content": {
-				"application/json": {
-					"schema": {
-						"properties": {
-							"enabled": {
-								"description": "Whether the alert is enabled",
-								"type": "boolean"
-							},
-							"frequency": {
-								"description": "Alert frequency (immediate or daily)",
-								"enum": [
-									"immediate",
-									"daily"
-								],
-								"type": "string"
-							},
-							"notification_type": {
-								"description": "Type of notification (e.g., ans)",
-								"type": "string"
-							}
-						},
-						"type": "object"
-					}
-				}
-			}
-		},
-		"responses": {
-			"200": {
-				"content": {
-					"application/json": {
-						"schema": {
-							"properties": {
-								"account_id": {
-									"description": "Account ID",
-									"type": "integer"
-								},
-								"created_at": {
-									"description": "Creation timestamp",
-									"type": "string"
-								},
-								"enabled": {
-									"description": "Whether the alert is enabled",
-									"type": "boolean"
-								},
-								"frequency": {
-									"description": "Alert frequency (immediate or daily)",
-									"enum": [
-										"immediate",
-										"daily"
-									],
-									"type": "string"
-								},
-								"id": {
-									"description": "Unique identifier for the event query alert",
-									"type": "integer"
-								},
-								"last_sent_at": {
-									"description": "Last time the alert was sent",
-									"type": "string"
-								},
-								"notification_type": {
-									"description": "Type of notification",
-									"type": "string"
-								},
-								"query_id": {
-									"description": "ID of the associated event query",
-									"type": "integer"
-								},
-								"updated_at": {
-									"description": "Last update timestamp",
-									"type": "string"
-								},
-								"user_email": {
-									"description": "Email of the user who created the alert",
-									"type": "string"
-								}
-							},
-							"required": [
-								"id",
-								"account_id",
-								"user_email",
-								"query_id",
-								"enabled",
-								"notification_type",
-								"frequency",
-								"created_at",
-								"updated_at"
-							],
-							"type": "object"
-						}
-					}
-				},
-				"description": "Returns the updated event query alert."
-			},
-			"400": {
-				"content": {
-					"application/json": {
-						"schema": {
-							"properties": {
-								"errors": {
-									"items": {
-										"properties": {
-											"message": {
-												"example": "An error occurred.",
-												"type": "string"
-											}
-										},
-										"required": [
-											"message"
-										],
-										"type": "object"
-									},
-									"type": "array"
-								},
-								"result": {
-									"type": "object"
-								},
-								"success": {
-									"type": "boolean"
-								}
-							},
-							"required": [
-								"result",
-								"success",
-								"errors"
-							],
-							"type": "object"
-						}
-					}
-				},
-				"description": "Bad Request."
-			},
-			"404": {
-				"content": {
-					"application/json": {
-						"schema": {
-							"properties": {
-								"errors": {
-									"items": {
-										"properties": {
-											"message": {
-												"example": "An error occurred.",
-												"type": "string"
-											}
-										},
-										"required": [
-											"message"
-										],
-										"type": "object"
-									},
-									"type": "array"
-								},
-								"result": {
-									"type": "object"
-								},
-								"success": {
-									"type": "boolean"
-								}
-							},
-							"required": [
-								"result",
-								"success",
-								"errors"
-							],
-							"type": "object"
-						}
-					}
-				},
-				"description": "Bad Request."
-			}
-		},
-		"security": [
-			{
-				"api_token": []
-			}
-		],
-		"summary": "Update an event query alert",
 		"tags": [
 			"Event"
 		],
@@ -6118,6 +5569,11 @@
 									"description": "Creation timestamp",
 									"type": "string"
 								},
+								"custom_threat_feed_id": {
+									"description": "Intel Indicator Feed ID (numeric)",
+									"nullable": true,
+									"type": "integer"
+								},
 								"id": {
 									"description": "Unique identifier for the saved query",
 									"type": "integer"
@@ -6133,6 +5589,10 @@
 								"rule_enabled": {
 									"description": "Whether rule is enabled",
 									"type": "boolean"
+								},
+								"rule_list_id": {
+									"description": "WAF rules list ID for blocking",
+									"type": "string"
 								},
 								"rule_scope": {
 									"description": "Scope for the rule",
@@ -6256,389 +5716,6 @@
 			"Cloudforce One Read"
 		]
 	},
-	"POST /accounts/{account_id}/cloudforce-one/events/queries/alerts/{alert_id}": {
-		"description": "Update an existing event query alert by its ID",
-		"operationId": "post_EventQueryAlertUpdate",
-		"parameters": [
-			{
-				"description": "Account ID.",
-				"in": "path",
-				"name": "account_id",
-				"required": true,
-				"schema": {
-					"description": "Account ID.",
-					"type": "string"
-				}
-			},
-			{
-				"description": "Event query alert ID",
-				"in": "path",
-				"name": "alert_id",
-				"required": true,
-				"schema": {
-					"description": "Event query alert ID",
-					"type": "integer"
-				}
-			}
-		],
-		"requestBody": {
-			"content": {
-				"application/json": {
-					"schema": {
-						"properties": {
-							"enabled": {
-								"description": "Whether the alert is enabled",
-								"type": "boolean"
-							},
-							"frequency": {
-								"description": "Alert frequency (immediate or daily)",
-								"enum": [
-									"immediate",
-									"daily"
-								],
-								"type": "string"
-							},
-							"notification_type": {
-								"description": "Type of notification (e.g., ans)",
-								"type": "string"
-							}
-						},
-						"type": "object"
-					}
-				}
-			}
-		},
-		"responses": {
-			"200": {
-				"content": {
-					"application/json": {
-						"schema": {
-							"properties": {
-								"account_id": {
-									"description": "Account ID",
-									"type": "integer"
-								},
-								"created_at": {
-									"description": "Creation timestamp",
-									"type": "string"
-								},
-								"enabled": {
-									"description": "Whether the alert is enabled",
-									"type": "boolean"
-								},
-								"frequency": {
-									"description": "Alert frequency (immediate or daily)",
-									"enum": [
-										"immediate",
-										"daily"
-									],
-									"type": "string"
-								},
-								"id": {
-									"description": "Unique identifier for the event query alert",
-									"type": "integer"
-								},
-								"last_sent_at": {
-									"description": "Last time the alert was sent",
-									"type": "string"
-								},
-								"notification_type": {
-									"description": "Type of notification",
-									"type": "string"
-								},
-								"query_id": {
-									"description": "ID of the associated event query",
-									"type": "integer"
-								},
-								"updated_at": {
-									"description": "Last update timestamp",
-									"type": "string"
-								},
-								"user_email": {
-									"description": "Email of the user who created the alert",
-									"type": "string"
-								}
-							},
-							"required": [
-								"id",
-								"account_id",
-								"user_email",
-								"query_id",
-								"enabled",
-								"notification_type",
-								"frequency",
-								"created_at",
-								"updated_at"
-							],
-							"type": "object"
-						}
-					}
-				},
-				"description": "Returns the updated event query alert."
-			},
-			"400": {
-				"content": {
-					"application/json": {
-						"schema": {
-							"properties": {
-								"errors": {
-									"items": {
-										"properties": {
-											"message": {
-												"example": "An error occurred.",
-												"type": "string"
-											}
-										},
-										"required": [
-											"message"
-										],
-										"type": "object"
-									},
-									"type": "array"
-								},
-								"result": {
-									"type": "object"
-								},
-								"success": {
-									"type": "boolean"
-								}
-							},
-							"required": [
-								"result",
-								"success",
-								"errors"
-							],
-							"type": "object"
-						}
-					}
-				},
-				"description": "Bad Request."
-			},
-			"404": {
-				"content": {
-					"application/json": {
-						"schema": {
-							"properties": {
-								"errors": {
-									"items": {
-										"properties": {
-											"message": {
-												"example": "An error occurred.",
-												"type": "string"
-											}
-										},
-										"required": [
-											"message"
-										],
-										"type": "object"
-									},
-									"type": "array"
-								},
-								"result": {
-									"type": "object"
-								},
-								"success": {
-									"type": "boolean"
-								}
-							},
-							"required": [
-								"result",
-								"success",
-								"errors"
-							],
-							"type": "object"
-						}
-					}
-				},
-				"description": "Bad Request."
-			}
-		},
-		"security": [
-			{
-				"api_token": []
-			}
-		],
-		"summary": "Update an event query alert",
-		"tags": [
-			"Event"
-		],
-		"x-api-token-group": [
-			"Cloudforce One Write",
-			"Cloudforce One Read"
-		]
-	},
-	"POST /accounts/{account_id}/cloudforce-one/events/queries/alerts/create": {
-		"description": "Create a new alert subscription for an event query",
-		"operationId": "post_EventQueryAlertCreate",
-		"parameters": [
-			{
-				"description": "Account ID.",
-				"in": "path",
-				"name": "account_id",
-				"required": true,
-				"schema": {
-					"description": "Account ID.",
-					"type": "string"
-				}
-			}
-		],
-		"requestBody": {
-			"content": {
-				"application/json": {
-					"schema": {
-						"properties": {
-							"enabled": {
-								"description": "Whether the alert is enabled",
-								"type": "boolean"
-							},
-							"frequency": {
-								"default": "daily",
-								"description": "Alert frequency (immediate or daily)",
-								"enum": [
-									"immediate",
-									"daily"
-								],
-								"type": "string"
-							},
-							"notification_type": {
-								"default": "ans",
-								"description": "Type of notification (e.g., ans)",
-								"type": "string"
-							},
-							"query_id": {
-								"description": "ID of the event query to create an alert for",
-								"type": "integer"
-							}
-						},
-						"required": [
-							"query_id"
-						],
-						"type": "object"
-					}
-				}
-			}
-		},
-		"responses": {
-			"200": {
-				"content": {
-					"application/json": {
-						"schema": {
-							"properties": {
-								"account_id": {
-									"description": "Account ID",
-									"type": "integer"
-								},
-								"created_at": {
-									"description": "Creation timestamp",
-									"type": "string"
-								},
-								"enabled": {
-									"description": "Whether the alert is enabled",
-									"type": "boolean"
-								},
-								"frequency": {
-									"description": "Alert frequency (immediate or daily)",
-									"enum": [
-										"immediate",
-										"daily"
-									],
-									"type": "string"
-								},
-								"id": {
-									"description": "Unique identifier for the event query alert",
-									"type": "integer"
-								},
-								"last_sent_at": {
-									"description": "Last time the alert was sent",
-									"type": "string"
-								},
-								"notification_type": {
-									"description": "Type of notification",
-									"type": "string"
-								},
-								"query_id": {
-									"description": "ID of the associated event query",
-									"type": "integer"
-								},
-								"updated_at": {
-									"description": "Last update timestamp",
-									"type": "string"
-								},
-								"user_email": {
-									"description": "Email of the user who created the alert",
-									"type": "string"
-								}
-							},
-							"required": [
-								"id",
-								"account_id",
-								"user_email",
-								"query_id",
-								"enabled",
-								"notification_type",
-								"frequency",
-								"created_at",
-								"updated_at"
-							],
-							"type": "object"
-						}
-					}
-				},
-				"description": "Returns the created event query alert."
-			},
-			"400": {
-				"content": {
-					"application/json": {
-						"schema": {
-							"properties": {
-								"errors": {
-									"items": {
-										"properties": {
-											"message": {
-												"example": "An error occurred.",
-												"type": "string"
-											}
-										},
-										"required": [
-											"message"
-										],
-										"type": "object"
-									},
-									"type": "array"
-								},
-								"result": {
-									"type": "object"
-								},
-								"success": {
-									"type": "boolean"
-								}
-							},
-							"required": [
-								"result",
-								"success",
-								"errors"
-							],
-							"type": "object"
-						}
-					}
-				},
-				"description": "Bad Request."
-			}
-		},
-		"security": [
-			{
-				"api_token": []
-			}
-		],
-		"summary": "Create an event query alert",
-		"tags": [
-			"Event"
-		],
-		"x-api-token-group": [
-			"Cloudforce One Write",
-			"Cloudforce One Read"
-		]
-	},
 	"POST /accounts/{account_id}/cloudforce-one/events/queries/create": {
 		"description": "Create a new saved event query for the account",
 		"operationId": "post_EventQueryCreate",
@@ -6718,6 +5795,11 @@
 									"description": "Creation timestamp",
 									"type": "string"
 								},
+								"custom_threat_feed_id": {
+									"description": "Intel Indicator Feed ID (numeric)",
+									"nullable": true,
+									"type": "integer"
+								},
 								"id": {
 									"description": "Unique identifier for the saved query",
 									"type": "integer"
@@ -6733,6 +5815,10 @@
 								"rule_enabled": {
 									"description": "Whether rule is enabled",
 									"type": "boolean"
+								},
+								"rule_list_id": {
+									"description": "WAF rules list ID for blocking",
+									"type": "string"
 								},
 								"rule_scope": {
 									"description": "Scope for the rule",

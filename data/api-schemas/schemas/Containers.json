@@ -231,7 +231,7 @@
 														"type": "object"
 													},
 													"observability": {
-														"description": "Settings for observability such as logging.",
+														"description": "Settings for application observability such as logging.",
 														"properties": {
 															"logs": {
 																"description": "Observability logging settings.",
@@ -242,6 +242,11 @@
 																	}
 																},
 																"type": "object"
+															},
+															"target_instance_percentage": {
+																"maximum": 99,
+																"minimum": 1,
+																"type": "integer"
 															}
 														},
 														"type": "object"

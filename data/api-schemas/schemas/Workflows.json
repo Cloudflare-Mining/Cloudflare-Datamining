@@ -2301,6 +2301,14 @@
 												"format": "uuid",
 												"type": "string"
 											},
+											"language": {
+												"description": "The programming language of the workflow implementation",
+												"enum": [
+													"javascript",
+													"python"
+												],
+												"type": "string"
+											},
 											"limits": {
 												"properties": {
 													"steps": {
@@ -2325,7 +2333,8 @@
 											"id",
 											"workflow_id",
 											"class_name",
-											"has_dag"
+											"has_dag",
+											"language"
 										],
 										"type": "object"
 									},
@@ -2551,6 +2560,14 @@
 											"format": "uuid",
 											"type": "string"
 										},
+										"language": {
+											"description": "The programming language of the workflow implementation",
+											"enum": [
+												"javascript",
+												"python"
+											],
+											"type": "string"
+										},
 										"limits": {
 											"properties": {
 												"steps": {
@@ -2575,7 +2592,8 @@
 										"id",
 										"workflow_id",
 										"class_name",
-										"has_dag"
+										"has_dag",
+										"language"
 									],
 									"type": "object"
 								},

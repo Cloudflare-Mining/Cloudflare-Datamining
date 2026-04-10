@@ -127,10 +127,11 @@
 				"in": "query",
 				"name": "orderBy",
 				"schema": {
-					"description": "Column to sort by. Options: 'domain' or 'first_seen'",
+					"description": "Column to sort by. Options: 'domain', 'first_seen', or 'registrar'",
 					"enum": [
 						"domain",
-						"first_seen"
+						"first_seen",
+						"registrar"
 					],
 					"type": "string"
 				}
@@ -192,6 +193,10 @@
 												],
 												"type": "object"
 											},
+											"registrar": {
+												"nullable": true,
+												"type": "string"
+											},
 											"scan_status": {
 												"type": "string"
 											},
@@ -211,7 +216,8 @@
 											"scan_status",
 											"scan_submission_id",
 											"source",
-											"dismissed"
+											"dismissed",
+											"registrar"
 										],
 										"type": "object"
 									},
@@ -407,11 +413,12 @@
 				"in": "query",
 				"name": "orderBy",
 				"schema": {
-					"description": "Column to sort by. Options: 'matchedAt', 'domain', or 'similarityScore'",
+					"description": "Column to sort by. Options: 'matchedAt', 'domain', 'similarityScore', or 'registrar'",
 					"enum": [
 						"matchedAt",
 						"domain",
-						"similarityScore"
+						"similarityScore",
+						"registrar"
 					],
 					"type": "string"
 				}
@@ -458,6 +465,10 @@
 											"query_id": {
 												"type": "integer"
 											},
+											"registrar": {
+												"nullable": true,
+												"type": "string"
+											},
 											"similarity_score": {
 												"type": "number"
 											},
@@ -471,7 +482,9 @@
 											"query_id",
 											"url_scan_id",
 											"similarity_score",
-											"matched_at"
+											"matched_at",
+											"domain",
+											"registrar"
 										],
 										"type": "object"
 									},

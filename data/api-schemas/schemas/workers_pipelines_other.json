@@ -87,6 +87,27 @@
 		],
 		"responses": {
 			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"result": {
+									"type": "object"
+								},
+								"success": {
+									"description": "Indicates whether the API call was successful.",
+									"example": true,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"result"
+							],
+							"type": "object"
+						}
+					}
+				},
 				"description": "Indicates a successfully deleted Pipeline."
 			},
 			"4XX": {
@@ -150,6 +171,27 @@
 		],
 		"responses": {
 			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"result": {
+									"type": "object"
+								},
+								"success": {
+									"description": "Indicates whether the API call was successful.",
+									"example": true,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"result"
+							],
+							"type": "object"
+						}
+					}
+				},
 				"description": "Indicates a successfully deleted Sink."
 			},
 			"4XX": {
@@ -213,6 +255,27 @@
 		],
 		"responses": {
 			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"result": {
+									"type": "object"
+								},
+								"success": {
+									"description": "Indicates whether the API call was successful.",
+									"example": true,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"result"
+							],
+							"type": "object"
+						}
+					}
+				},
 				"description": "Indicates a successfully deleted Stream."
 			},
 			"4XX": {

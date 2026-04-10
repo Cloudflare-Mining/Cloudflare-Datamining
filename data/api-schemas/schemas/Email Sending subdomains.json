@@ -306,25 +306,14 @@
 																"readOnly": true,
 																"type": "string"
 															},
-															"email_sending_dkim_selector": {
+															"dkim_selector": {
 																"description": "The DKIM selector used for email signing.",
 																"example": "cf-bounce",
 																"readOnly": true,
 																"type": "string"
 															},
-															"email_sending_enabled": {
-																"description": "Whether Email Sending is enabled on this subdomain.",
-																"readOnly": true,
-																"type": "boolean"
-															},
-															"email_sending_return_path_domain": {
-																"description": "The return-path domain used for bounce handling.",
-																"example": "cf-bounce.sub.example.com",
-																"readOnly": true,
-																"type": "string"
-															},
 															"enabled": {
-																"description": "Whether Email Routing (receiving) is enabled on this subdomain. Read-only; included for informational purposes since both services share the subdomain row.",
+																"description": "Whether Email Sending is enabled on this subdomain.",
 																"readOnly": true,
 																"type": "boolean"
 															},
@@ -341,6 +330,12 @@
 																"type": "string",
 																"x-auditable": true
 															},
+															"return_path_domain": {
+																"description": "The return-path domain used for bounce handling.",
+																"example": "cf-bounce.sub.example.com",
+																"readOnly": true,
+																"type": "string"
+															},
 															"tag": {
 																"description": "Sending subdomain identifier.",
 																"example": "aabbccdd11223344aabbccdd11223344",
@@ -353,7 +348,7 @@
 														"required": [
 															"tag",
 															"name",
-															"email_sending_enabled"
+															"enabled"
 														],
 														"type": "object"
 													}
@@ -528,25 +523,14 @@
 															"readOnly": true,
 															"type": "string"
 														},
-														"email_sending_dkim_selector": {
+														"dkim_selector": {
 															"description": "The DKIM selector used for email signing.",
 															"example": "cf-bounce",
 															"readOnly": true,
 															"type": "string"
 														},
-														"email_sending_enabled": {
-															"description": "Whether Email Sending is enabled on this subdomain.",
-															"readOnly": true,
-															"type": "boolean"
-														},
-														"email_sending_return_path_domain": {
-															"description": "The return-path domain used for bounce handling.",
-															"example": "cf-bounce.sub.example.com",
-															"readOnly": true,
-															"type": "string"
-														},
 														"enabled": {
-															"description": "Whether Email Routing (receiving) is enabled on this subdomain. Read-only; included for informational purposes since both services share the subdomain row.",
+															"description": "Whether Email Sending is enabled on this subdomain.",
 															"readOnly": true,
 															"type": "boolean"
 														},
@@ -563,6 +547,12 @@
 															"type": "string",
 															"x-auditable": true
 														},
+														"return_path_domain": {
+															"description": "The return-path domain used for bounce handling.",
+															"example": "cf-bounce.sub.example.com",
+															"readOnly": true,
+															"type": "string"
+														},
 														"tag": {
 															"description": "Sending subdomain identifier.",
 															"example": "aabbccdd11223344aabbccdd11223344",
@@ -575,7 +565,7 @@
 													"required": [
 														"tag",
 														"name",
-														"email_sending_enabled"
+														"enabled"
 													],
 													"type": "object"
 												}
@@ -1022,25 +1012,14 @@
 															"readOnly": true,
 															"type": "string"
 														},
-														"email_sending_dkim_selector": {
+														"dkim_selector": {
 															"description": "The DKIM selector used for email signing.",
 															"example": "cf-bounce",
 															"readOnly": true,
 															"type": "string"
 														},
-														"email_sending_enabled": {
-															"description": "Whether Email Sending is enabled on this subdomain.",
-															"readOnly": true,
-															"type": "boolean"
-														},
-														"email_sending_return_path_domain": {
-															"description": "The return-path domain used for bounce handling.",
-															"example": "cf-bounce.sub.example.com",
-															"readOnly": true,
-															"type": "string"
-														},
 														"enabled": {
-															"description": "Whether Email Routing (receiving) is enabled on this subdomain. Read-only; included for informational purposes since both services share the subdomain row.",
+															"description": "Whether Email Sending is enabled on this subdomain.",
 															"readOnly": true,
 															"type": "boolean"
 														},
@@ -1057,6 +1036,12 @@
 															"type": "string",
 															"x-auditable": true
 														},
+														"return_path_domain": {
+															"description": "The return-path domain used for bounce handling.",
+															"example": "cf-bounce.sub.example.com",
+															"readOnly": true,
+															"type": "string"
+														},
 														"tag": {
 															"description": "Sending subdomain identifier.",
 															"example": "aabbccdd11223344aabbccdd11223344",
@@ -1069,7 +1054,7 @@
 													"required": [
 														"tag",
 														"name",
-														"email_sending_enabled"
+														"enabled"
 													],
 													"type": "object"
 												}

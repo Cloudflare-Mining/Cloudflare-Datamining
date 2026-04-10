@@ -1,0 +1,1042 @@
+{
+	"POST /accounts/{account_id}/ai-search/namespaces/{name}/chat/completions": {
+		"description": "Performs a chat completion request against multiple AI Search instances in parallel, merging retrieved content as context for generating a response.",
+		"operationId": "ai-search-namespace-multi-instance-chat-completion",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"example": "c3dc5f0b34a14ff8e1b3ec04895e1b22",
+					"type": "string"
+				}
+			},
+			{
+				"description": "Namespace name",
+				"example": "my-namespace",
+				"in": "path",
+				"name": "name",
+				"required": true,
+				"schema": {
+					"type": "string"
+				}
+			}
+		],
+		"requestBody": {
+			"content": {
+				"application/json": {
+					"schema": {
+						"additionalProperties": true,
+						"properties": {
+							"ai_search_options": {
+								"properties": {
+									"cache": {
+										"properties": {
+											"cache_threshold": {
+												"enum": [
+													"super_strict_match",
+													"close_enough",
+													"flexible_friend",
+													"anything_goes"
+												],
+												"type": "string"
+											},
+											"enabled": {
+												"type": "boolean"
+											}
+										},
+										"type": "object"
+									},
+									"instance_ids": {
+										"items": {
+											"description": "AI Search instance ID. Lowercase alphanumeric, hyphens, and underscores.",
+											"example": "my-ai-search",
+											"maxLength": 64,
+											"minLength": 1,
+											"pattern": "^[a-z0-9_]+(?:-[a-z0-9_]+)*$",
+											"type": "string",
+											"x-auditable": true
+										},
+										"maxItems": 10,
+										"minItems": 1,
+										"type": "array"
+									},
+									"query_rewrite": {
+										"properties": {
+											"enabled": {
+												"type": "boolean"
+											},
+											"model": {
+												"anyOf": [
+													{
+														"enum": [
+															"@cf/meta/llama-3.3-70b-instruct-fp8-fast",
+															"@cf/zai-org/glm-4.7-flash",
+															"@cf/meta/llama-3.1-8b-instruct-fast",
+															"@cf/meta/llama-3.1-8b-instruct-fp8",
+															"@cf/meta/llama-4-scout-17b-16e-instruct",
+															"@cf/qwen/qwen3-30b-a3b-fp8",
+															"@cf/deepseek-ai/deepseek-r1-distill-qwen-32b",
+															"@cf/moonshotai/kimi-k2-instruct",
+															"@cf/google/gemma-3-12b-it",
+															"@cf/google/gemma-4-26b-a4b-it",
+															"@cf/moonshotai/kimi-k2.5",
+															"anthropic/claude-3-7-sonnet",
+															"anthropic/claude-sonnet-4",
+															"anthropic/claude-opus-4",
+															"anthropic/claude-3-5-haiku",
+															"cerebras/qwen-3-235b-a22b-instruct",
+															"cerebras/qwen-3-235b-a22b-thinking",
+															"cerebras/llama-3.3-70b",
+															"cerebras/llama-4-maverick-17b-128e-instruct",
+															"cerebras/llama-4-scout-17b-16e-instruct",
+															"cerebras/gpt-oss-120b",
+															"google-ai-studio/gemini-2.5-flash",
+															"google-ai-studio/gemini-2.5-pro",
+															"grok/grok-4",
+															"groq/llama-3.3-70b-versatile",
+															"groq/llama-3.1-8b-instant",
+															"openai/gpt-5",
+															"openai/gpt-5-mini",
+															"openai/gpt-5-nano"
+														],
+														"type": "string"
+													},
+													{
+														"enum": [
+															""
+														],
+														"type": "string"
+													}
+												]
+											},
+											"rewrite_prompt": {
+												"type": "string"
+											}
+										},
+										"type": "object"
+									},
+									"reranking": {
+										"properties": {
+											"enabled": {
+												"type": "boolean"
+											},
+											"match_threshold": {
+												"default": 0.4,
+												"maximum": 1,
+												"minimum": 0,
+												"type": "number"
+											},
+											"model": {
+												"anyOf": [
+													{
+														"enum": [
+															"@cf/baai/bge-reranker-base"
+														],
+														"type": "string"
+													},
+													{
+														"enum": [
+															""
+														],
+														"type": "string"
+													}
+												]
+											}
+										},
+										"type": "object"
+									},
+									"retrieval": {
+										"properties": {
+											"boost_by": {
+												"description": "Metadata fields to boost search results by. Overrides the instance-level boost_by config. Direction defaults to 'asc' for numeric/datetime fields, 'exists' for text/boolean fields. Fields must match 'timestamp' or a defined custom_metadata field.",
+												"example": [
+													{
+														"direction": "desc",
+														"field": "timestamp"
+													}
+												],
+												"items": {
+													"properties": {
+														"direction": {
+															"description": "Boost direction. 'desc' = higher values rank higher (e.g. newer timestamps). 'asc' = lower values rank higher. 'exists' = boost chunks that have the field. 'not_exists' = boost chunks that lack the field. Optional ��� defaults to 'asc' for numeric/datetime fields, 'exists' for text/boolean fields.",
+															"enum": [
+																"asc",
+																"desc",
+																"exists",
+																"not_exists"
+															],
+															"type": "string"
+														},
+														"field": {
+															"description": "Metadata field name to boost by. Use 'timestamp' for document freshness, or any custom_metadata field. Numeric and datetime fields support asc/desc directions; text/boolean fields support exists/not_exists.",
+															"example": "timestamp",
+															"maxLength": 64,
+															"minLength": 1,
+															"type": "string"
+														}
+													},
+													"required": [
+														"field"
+													],
+													"type": "object"
+												},
+												"maxItems": 3,
+												"type": "array"
+											},
+											"context_expansion": {
+												"default": 0,
+												"maximum": 3,
+												"minimum": 0,
+												"type": "integer"
+											},
+											"filters": {
+												"additionalProperties": true,
+												"type": "object"
+											},
+											"fusion_method": {
+												"enum": [
+													"max",
+													"rrf"
+												],
+												"type": "string"
+											},
+											"keyword_match_mode": {
+												"default": "and",
+												"description": "Controls which documents are candidates for BM25 scoring. 'and' restricts candidates to documents containing all query terms; 'or' includes any document containing at least one term, ranked by BM25 relevance. Defaults to 'and'. Legacy values 'exact_match' and 'fuzzy_match' are accepted and map to 'and' and 'or' respectively.",
+												"enum": [
+													"and",
+													"or"
+												],
+												"type": "string"
+											},
+											"match_threshold": {
+												"default": 0.4,
+												"maximum": 1,
+												"minimum": 0,
+												"type": "number"
+											},
+											"max_num_results": {
+												"default": 10,
+												"maximum": 50,
+												"minimum": 1,
+												"type": "integer"
+											},
+											"retrieval_type": {
+												"enum": [
+													"vector",
+													"keyword",
+													"hybrid"
+												],
+												"type": "string"
+											},
+											"return_on_failure": {
+												"default": true,
+												"type": "boolean"
+											}
+										},
+										"type": "object"
+									}
+								},
+								"required": [
+									"instance_ids"
+								],
+								"type": "object"
+							},
+							"messages": {
+								"items": {
+									"additionalProperties": true,
+									"properties": {
+										"content": {
+											"nullable": true,
+											"type": "string"
+										},
+										"role": {
+											"enum": [
+												"system",
+												"developer",
+												"user",
+												"assistant",
+												"tool"
+											],
+											"type": "string"
+										}
+									},
+									"required": [
+										"role",
+										"content"
+									],
+									"type": "object"
+								},
+								"minItems": 1,
+								"type": "array"
+							},
+							"model": {
+								"anyOf": [
+									{
+										"enum": [
+											"@cf/meta/llama-3.3-70b-instruct-fp8-fast",
+											"@cf/zai-org/glm-4.7-flash",
+											"@cf/meta/llama-3.1-8b-instruct-fast",
+											"@cf/meta/llama-3.1-8b-instruct-fp8",
+											"@cf/meta/llama-4-scout-17b-16e-instruct",
+											"@cf/qwen/qwen3-30b-a3b-fp8",
+											"@cf/deepseek-ai/deepseek-r1-distill-qwen-32b",
+											"@cf/moonshotai/kimi-k2-instruct",
+											"@cf/google/gemma-3-12b-it",
+											"@cf/google/gemma-4-26b-a4b-it",
+											"@cf/moonshotai/kimi-k2.5",
+											"anthropic/claude-3-7-sonnet",
+											"anthropic/claude-sonnet-4",
+											"anthropic/claude-opus-4",
+											"anthropic/claude-3-5-haiku",
+											"cerebras/qwen-3-235b-a22b-instruct",
+											"cerebras/qwen-3-235b-a22b-thinking",
+											"cerebras/llama-3.3-70b",
+											"cerebras/llama-4-maverick-17b-128e-instruct",
+											"cerebras/llama-4-scout-17b-16e-instruct",
+											"cerebras/gpt-oss-120b",
+											"google-ai-studio/gemini-2.5-flash",
+											"google-ai-studio/gemini-2.5-pro",
+											"grok/grok-4",
+											"groq/llama-3.3-70b-versatile",
+											"groq/llama-3.1-8b-instant",
+											"openai/gpt-5",
+											"openai/gpt-5-mini",
+											"openai/gpt-5-nano"
+										],
+										"type": "string"
+									},
+									{
+										"enum": [
+											""
+										],
+										"type": "string"
+									}
+								]
+							},
+							"stream": {
+								"type": "boolean"
+							}
+						},
+						"required": [
+							"messages",
+							"ai_search_options"
+						],
+						"type": "object"
+					}
+				}
+			}
+		},
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"additionalProperties": true,
+							"properties": {
+								"choices": {
+									"items": {
+										"properties": {
+											"index": {
+												"type": "integer"
+											},
+											"message": {
+												"additionalProperties": true,
+												"properties": {
+													"content": {
+														"nullable": true,
+														"type": "string"
+													},
+													"role": {
+														"enum": [
+															"system",
+															"developer",
+															"user",
+															"assistant",
+															"tool"
+														],
+														"type": "string"
+													}
+												},
+												"required": [
+													"role",
+													"content"
+												],
+												"type": "object"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"chunks": {
+									"items": {
+										"properties": {
+											"id": {
+												"type": "string"
+											},
+											"instance_id": {
+												"type": "string"
+											},
+											"item": {
+												"properties": {
+													"key": {
+														"type": "string"
+													},
+													"metadata": {
+														"additionalProperties": true,
+														"type": "object"
+													},
+													"timestamp": {
+														"type": "number"
+													}
+												},
+												"required": [
+													"key"
+												],
+												"type": "object"
+											},
+											"score": {
+												"maximum": 1,
+												"minimum": 0,
+												"type": "number"
+											},
+											"scoring_details": {
+												"properties": {
+													"fusion_method": {
+														"enum": [
+															"rrf",
+															"max"
+														],
+														"type": "string"
+													},
+													"keyword_rank": {
+														"type": "number"
+													},
+													"keyword_score": {
+														"minimum": 0,
+														"type": "number"
+													},
+													"reranking_score": {
+														"maximum": 1,
+														"minimum": 0,
+														"type": "number"
+													},
+													"vector_rank": {
+														"type": "number"
+													},
+													"vector_score": {
+														"maximum": 1,
+														"minimum": 0,
+														"type": "number"
+													}
+												},
+												"type": "object"
+											},
+											"text": {
+												"type": "string"
+											},
+											"type": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"id",
+											"type",
+											"score",
+											"text",
+											"instance_id"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"errors": {
+									"items": {
+										"properties": {
+											"instance_id": {
+												"type": "string"
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"instance_id",
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"id": {
+									"type": "string"
+								},
+								"model": {
+									"type": "string"
+								},
+								"object": {
+									"type": "string"
+								}
+							},
+							"required": [
+								"choices",
+								"chunks"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Returns the chat completion result with merged chunks from all instances."
+			},
+			"404": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"code": {
+												"type": "number"
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"success": {
+									"enum": [
+										false
+									],
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"errors"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Not Found"
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Multi-Instance Chat Completions",
+		"tags": [
+			"AI Search Account Search"
+		],
+		"x-cfPermissionsRequired": {
+			"enum": [
+				"com.cloudflare.api.account.ai-search"
+			]
+		},
+		"x-cfPlanAvailability": {
+			"business": true,
+			"enterprise": true,
+			"free": true,
+			"pro": true
+		}
+	},
+	"POST /accounts/{account_id}/ai-search/namespaces/{name}/search": {
+		"operationId": "ai-search-namespace-multi-instance-search",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"example": "c3dc5f0b34a14ff8e1b3ec04895e1b22",
+					"type": "string"
+				}
+			},
+			{
+				"description": "Namespace name",
+				"example": "my-namespace",
+				"in": "path",
+				"name": "name",
+				"required": true,
+				"schema": {
+					"type": "string"
+				}
+			}
+		],
+		"requestBody": {
+			"content": {
+				"application/json": {
+					"schema": {
+						"properties": {
+							"ai_search_options": {
+								"properties": {
+									"cache": {
+										"properties": {
+											"cache_threshold": {
+												"enum": [
+													"super_strict_match",
+													"close_enough",
+													"flexible_friend",
+													"anything_goes"
+												],
+												"type": "string"
+											},
+											"enabled": {
+												"type": "boolean"
+											}
+										},
+										"type": "object"
+									},
+									"instance_ids": {
+										"items": {
+											"description": "AI Search instance ID. Lowercase alphanumeric, hyphens, and underscores.",
+											"example": "my-ai-search",
+											"maxLength": 64,
+											"minLength": 1,
+											"pattern": "^[a-z0-9_]+(?:-[a-z0-9_]+)*$",
+											"type": "string",
+											"x-auditable": true
+										},
+										"maxItems": 10,
+										"minItems": 1,
+										"type": "array"
+									},
+									"query_rewrite": {
+										"properties": {
+											"enabled": {
+												"type": "boolean"
+											},
+											"model": {
+												"anyOf": [
+													{
+														"enum": [
+															"@cf/meta/llama-3.3-70b-instruct-fp8-fast",
+															"@cf/zai-org/glm-4.7-flash",
+															"@cf/meta/llama-3.1-8b-instruct-fast",
+															"@cf/meta/llama-3.1-8b-instruct-fp8",
+															"@cf/meta/llama-4-scout-17b-16e-instruct",
+															"@cf/qwen/qwen3-30b-a3b-fp8",
+															"@cf/deepseek-ai/deepseek-r1-distill-qwen-32b",
+															"@cf/moonshotai/kimi-k2-instruct",
+															"@cf/google/gemma-3-12b-it",
+															"@cf/google/gemma-4-26b-a4b-it",
+															"@cf/moonshotai/kimi-k2.5",
+															"anthropic/claude-3-7-sonnet",
+															"anthropic/claude-sonnet-4",
+															"anthropic/claude-opus-4",
+															"anthropic/claude-3-5-haiku",
+															"cerebras/qwen-3-235b-a22b-instruct",
+															"cerebras/qwen-3-235b-a22b-thinking",
+															"cerebras/llama-3.3-70b",
+															"cerebras/llama-4-maverick-17b-128e-instruct",
+															"cerebras/llama-4-scout-17b-16e-instruct",
+															"cerebras/gpt-oss-120b",
+															"google-ai-studio/gemini-2.5-flash",
+															"google-ai-studio/gemini-2.5-pro",
+															"grok/grok-4",
+															"groq/llama-3.3-70b-versatile",
+															"groq/llama-3.1-8b-instant",
+															"openai/gpt-5",
+															"openai/gpt-5-mini",
+															"openai/gpt-5-nano"
+														],
+														"type": "string"
+													},
+													{
+														"enum": [
+															""
+														],
+														"type": "string"
+													}
+												]
+											},
+											"rewrite_prompt": {
+												"type": "string"
+											}
+										},
+										"type": "object"
+									},
+									"reranking": {
+										"properties": {
+											"enabled": {
+												"type": "boolean"
+											},
+											"match_threshold": {
+												"default": 0.4,
+												"maximum": 1,
+												"minimum": 0,
+												"type": "number"
+											},
+											"model": {
+												"anyOf": [
+													{
+														"enum": [
+															"@cf/baai/bge-reranker-base"
+														],
+														"type": "string"
+													},
+													{
+														"enum": [
+															""
+														],
+														"type": "string"
+													}
+												]
+											}
+										},
+										"type": "object"
+									},
+									"retrieval": {
+										"properties": {
+											"boost_by": {
+												"description": "Metadata fields to boost search results by. Overrides the instance-level boost_by config. Direction defaults to 'asc' for numeric/datetime fields, 'exists' for text/boolean fields. Fields must match 'timestamp' or a defined custom_metadata field.",
+												"example": [
+													{
+														"direction": "desc",
+														"field": "timestamp"
+													}
+												],
+												"items": {
+													"properties": {
+														"direction": {
+															"description": "Boost direction. 'desc' = higher values rank higher (e.g. newer timestamps). 'asc' = lower values rank higher. 'exists' = boost chunks that have the field. 'not_exists' = boost chunks that lack the field. Optional ��� defaults to 'asc' for numeric/datetime fields, 'exists' for text/boolean fields.",
+															"enum": [
+																"asc",
+																"desc",
+																"exists",
+																"not_exists"
+															],
+															"type": "string"
+														},
+														"field": {
+															"description": "Metadata field name to boost by. Use 'timestamp' for document freshness, or any custom_metadata field. Numeric and datetime fields support asc/desc directions; text/boolean fields support exists/not_exists.",
+															"example": "timestamp",
+															"maxLength": 64,
+															"minLength": 1,
+															"type": "string"
+														}
+													},
+													"required": [
+														"field"
+													],
+													"type": "object"
+												},
+												"maxItems": 3,
+												"type": "array"
+											},
+											"context_expansion": {
+												"default": 0,
+												"maximum": 3,
+												"minimum": 0,
+												"type": "integer"
+											},
+											"filters": {
+												"additionalProperties": true,
+												"type": "object"
+											},
+											"fusion_method": {
+												"enum": [
+													"max",
+													"rrf"
+												],
+												"type": "string"
+											},
+											"keyword_match_mode": {
+												"default": "and",
+												"description": "Controls which documents are candidates for BM25 scoring. 'and' restricts candidates to documents containing all query terms; 'or' includes any document containing at least one term, ranked by BM25 relevance. Defaults to 'and'. Legacy values 'exact_match' and 'fuzzy_match' are accepted and map to 'and' and 'or' respectively.",
+												"enum": [
+													"and",
+													"or"
+												],
+												"type": "string"
+											},
+											"match_threshold": {
+												"default": 0.4,
+												"maximum": 1,
+												"minimum": 0,
+												"type": "number"
+											},
+											"max_num_results": {
+												"default": 10,
+												"maximum": 50,
+												"minimum": 1,
+												"type": "integer"
+											},
+											"retrieval_type": {
+												"enum": [
+													"vector",
+													"keyword",
+													"hybrid"
+												],
+												"type": "string"
+											},
+											"return_on_failure": {
+												"default": true,
+												"type": "boolean"
+											}
+										},
+										"type": "object"
+									}
+								},
+								"required": [
+									"instance_ids"
+								],
+								"type": "object"
+							},
+							"messages": {
+								"items": {
+									"additionalProperties": true,
+									"properties": {
+										"content": {
+											"nullable": true,
+											"type": "string"
+										},
+										"role": {
+											"enum": [
+												"system",
+												"developer",
+												"user",
+												"assistant",
+												"tool"
+											],
+											"type": "string"
+										}
+									},
+									"required": [
+										"role",
+										"content"
+									],
+									"type": "object"
+								},
+								"minItems": 1,
+								"type": "array"
+							}
+						},
+						"required": [
+							"messages",
+							"ai_search_options"
+						],
+						"type": "object"
+					}
+				}
+			}
+		},
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"result": {
+									"properties": {
+										"chunks": {
+											"items": {
+												"properties": {
+													"id": {
+														"type": "string"
+													},
+													"instance_id": {
+														"type": "string"
+													},
+													"item": {
+														"properties": {
+															"key": {
+																"type": "string"
+															},
+															"metadata": {
+																"additionalProperties": true,
+																"type": "object"
+															},
+															"timestamp": {
+																"type": "number"
+															}
+														},
+														"required": [
+															"key"
+														],
+														"type": "object"
+													},
+													"score": {
+														"maximum": 1,
+														"minimum": 0,
+														"type": "number"
+													},
+													"scoring_details": {
+														"properties": {
+															"fusion_method": {
+																"enum": [
+																	"rrf",
+																	"max"
+																],
+																"type": "string"
+															},
+															"keyword_rank": {
+																"type": "number"
+															},
+															"keyword_score": {
+																"minimum": 0,
+																"type": "number"
+															},
+															"reranking_score": {
+																"maximum": 1,
+																"minimum": 0,
+																"type": "number"
+															},
+															"vector_rank": {
+																"type": "number"
+															},
+															"vector_score": {
+																"maximum": 1,
+																"minimum": 0,
+																"type": "number"
+															}
+														},
+														"type": "object"
+													},
+													"text": {
+														"type": "string"
+													},
+													"type": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"id",
+													"type",
+													"score",
+													"text",
+													"instance_id"
+												],
+												"type": "object"
+											},
+											"type": "array"
+										},
+										"errors": {
+											"items": {
+												"properties": {
+													"instance_id": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"instance_id",
+													"message"
+												],
+												"type": "object"
+											},
+											"type": "array"
+										},
+										"search_query": {
+											"type": "string"
+										}
+									},
+									"required": [
+										"search_query",
+										"chunks"
+									],
+									"type": "object"
+								},
+								"success": {
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"result"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Returns the merged search results from all instances."
+			},
+			"404": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"code": {
+												"type": "number"
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"success": {
+									"enum": [
+										false
+									],
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"errors"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Not Found"
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Multi-Instance Search",
+		"tags": [
+			"AI Search Account Search"
+		],
+		"x-cfPermissionsRequired": {
+			"enum": [
+				"com.cloudflare.api.account.ai-search"
+			]
+		},
+		"x-cfPlanAvailability": {
+			"business": true,
+			"enterprise": true,
+			"free": true,
+			"pro": true
+		}
+	}
+}

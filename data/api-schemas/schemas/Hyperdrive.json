@@ -451,6 +451,7 @@
 																"x-auditable": true
 															},
 															"mtls": {
+																"description": "mTLS configuration for the origin connection. Cannot be used with VPC Service origins; TLS must be managed on the VPC Service.",
 																"properties": {
 																	"ca_certificate_id": {
 																		"description": "Define CA certificate ID obtained after uploading CA cert.",
@@ -630,6 +631,72 @@
 																			}
 																		],
 																		"title": "Access-protected Database behind Cloudflare Tunnel"
+																	},
+																	{
+																		"allOf": [
+																			{
+																				"allOf": [
+																					{
+																						"properties": {
+																							"database": {
+																								"description": "Set the name of your origin database.",
+																								"example": "postgres",
+																								"type": "string",
+																								"x-auditable": true
+																							},
+																							"password": {
+																								"description": "Set the password needed to access your origin database. The API never returns this write-only value.",
+																								"type": "string",
+																								"writeOnly": true,
+																								"x-sensitive": true
+																							},
+																							"scheme": {
+																								"description": "Specifies the URL scheme used to connect to your origin database.",
+																								"enum": [
+																									"postgres",
+																									"postgresql",
+																									"mysql"
+																								],
+																								"type": "string",
+																								"x-auditable": true
+																							},
+																							"user": {
+																								"description": "Set the user of your origin database.",
+																								"example": "postgres",
+																								"type": "string",
+																								"x-auditable": true
+																							}
+																						},
+																						"title": "Connection Options",
+																						"type": "object"
+																					}
+																				],
+																				"required": [
+																					"scheme",
+																					"database",
+																					"user",
+																					"password"
+																				],
+																				"type": "object"
+																			},
+																			{
+																				"description": "Connect to a database through a Workers VPC Service. TLS settings (mTLS, sslmode) cannot be configured on the Hyperdrive when using a VPC Service origin; TLS must be managed on the VPC Service itself.\n",
+																				"properties": {
+																					"service_id": {
+																						"description": "The identifier of the Workers VPC Service to connect through. Hyperdrive will egress through the specified VPC Service to reach the origin database.",
+																						"example": "0123456789abcdef0123456789abcdef",
+																						"type": "string",
+																						"x-auditable": true
+																					}
+																				},
+																				"required": [
+																					"service_id"
+																				],
+																				"title": "Database reachable through a Workers VPC",
+																				"type": "object"
+																			}
+																		],
+																		"title": "Database reachable through a Workers VPC"
 																	}
 																],
 																"type": "object"
@@ -980,6 +1047,7 @@
 															"x-auditable": true
 														},
 														"mtls": {
+															"description": "mTLS configuration for the origin connection. Cannot be used with VPC Service origins; TLS must be managed on the VPC Service.",
 															"properties": {
 																"ca_certificate_id": {
 																	"description": "Define CA certificate ID obtained after uploading CA cert.",
@@ -1159,6 +1227,72 @@
 																		}
 																	],
 																	"title": "Access-protected Database behind Cloudflare Tunnel"
+																},
+																{
+																	"allOf": [
+																		{
+																			"allOf": [
+																				{
+																					"properties": {
+																						"database": {
+																							"description": "Set the name of your origin database.",
+																							"example": "postgres",
+																							"type": "string",
+																							"x-auditable": true
+																						},
+																						"password": {
+																							"description": "Set the password needed to access your origin database. The API never returns this write-only value.",
+																							"type": "string",
+																							"writeOnly": true,
+																							"x-sensitive": true
+																						},
+																						"scheme": {
+																							"description": "Specifies the URL scheme used to connect to your origin database.",
+																							"enum": [
+																								"postgres",
+																								"postgresql",
+																								"mysql"
+																							],
+																							"type": "string",
+																							"x-auditable": true
+																						},
+																						"user": {
+																							"description": "Set the user of your origin database.",
+																							"example": "postgres",
+																							"type": "string",
+																							"x-auditable": true
+																						}
+																					},
+																					"title": "Connection Options",
+																					"type": "object"
+																				}
+																			],
+																			"required": [
+																				"scheme",
+																				"database",
+																				"user",
+																				"password"
+																			],
+																			"type": "object"
+																		},
+																		{
+																			"description": "Connect to a database through a Workers VPC Service. TLS settings (mTLS, sslmode) cannot be configured on the Hyperdrive when using a VPC Service origin; TLS must be managed on the VPC Service itself.\n",
+																			"properties": {
+																				"service_id": {
+																					"description": "The identifier of the Workers VPC Service to connect through. Hyperdrive will egress through the specified VPC Service to reach the origin database.",
+																					"example": "0123456789abcdef0123456789abcdef",
+																					"type": "string",
+																					"x-auditable": true
+																				}
+																			},
+																			"required": [
+																				"service_id"
+																			],
+																			"title": "Database reachable through a Workers VPC",
+																			"type": "object"
+																		}
+																	],
+																	"title": "Database reachable through a Workers VPC"
 																}
 															],
 															"type": "object"
@@ -1407,6 +1541,7 @@
 								"type": "object"
 							},
 							"mtls": {
+								"description": "mTLS configuration for the origin connection. Cannot be used with VPC Service origins; TLS must be managed on the VPC Service.",
 								"properties": {
 									"ca_certificate_id": {
 										"description": "Define CA certificate ID obtained after uploading CA cert.",
@@ -1521,6 +1656,22 @@
 													"access_client_secret"
 												],
 												"title": "Access-protected Database behind Cloudflare Tunnel",
+												"type": "object"
+											},
+											{
+												"description": "Connect to a database through a Workers VPC Service. TLS settings (mTLS, sslmode) cannot be configured on the Hyperdrive when using a VPC Service origin; TLS must be managed on the VPC Service itself.\n",
+												"properties": {
+													"service_id": {
+														"description": "The identifier of the Workers VPC Service to connect through. Hyperdrive will egress through the specified VPC Service to reach the origin database.",
+														"example": "0123456789abcdef0123456789abcdef",
+														"type": "string",
+														"x-auditable": true
+													}
+												},
+												"required": [
+													"service_id"
+												],
+												"title": "Database reachable through a Workers VPC",
 												"type": "object"
 											}
 										],
@@ -1704,6 +1855,7 @@
 															"x-auditable": true
 														},
 														"mtls": {
+															"description": "mTLS configuration for the origin connection. Cannot be used with VPC Service origins; TLS must be managed on the VPC Service.",
 															"properties": {
 																"ca_certificate_id": {
 																	"description": "Define CA certificate ID obtained after uploading CA cert.",
@@ -1883,6 +2035,72 @@
 																		}
 																	],
 																	"title": "Access-protected Database behind Cloudflare Tunnel"
+																},
+																{
+																	"allOf": [
+																		{
+																			"allOf": [
+																				{
+																					"properties": {
+																						"database": {
+																							"description": "Set the name of your origin database.",
+																							"example": "postgres",
+																							"type": "string",
+																							"x-auditable": true
+																						},
+																						"password": {
+																							"description": "Set the password needed to access your origin database. The API never returns this write-only value.",
+																							"type": "string",
+																							"writeOnly": true,
+																							"x-sensitive": true
+																						},
+																						"scheme": {
+																							"description": "Specifies the URL scheme used to connect to your origin database.",
+																							"enum": [
+																								"postgres",
+																								"postgresql",
+																								"mysql"
+																							],
+																							"type": "string",
+																							"x-auditable": true
+																						},
+																						"user": {
+																							"description": "Set the user of your origin database.",
+																							"example": "postgres",
+																							"type": "string",
+																							"x-auditable": true
+																						}
+																					},
+																					"title": "Connection Options",
+																					"type": "object"
+																				}
+																			],
+																			"required": [
+																				"scheme",
+																				"database",
+																				"user",
+																				"password"
+																			],
+																			"type": "object"
+																		},
+																		{
+																			"description": "Connect to a database through a Workers VPC Service. TLS settings (mTLS, sslmode) cannot be configured on the Hyperdrive when using a VPC Service origin; TLS must be managed on the VPC Service itself.\n",
+																			"properties": {
+																				"service_id": {
+																					"description": "The identifier of the Workers VPC Service to connect through. Hyperdrive will egress through the specified VPC Service to reach the origin database.",
+																					"example": "0123456789abcdef0123456789abcdef",
+																					"type": "string",
+																					"x-auditable": true
+																				}
+																			},
+																			"required": [
+																				"service_id"
+																			],
+																			"title": "Database reachable through a Workers VPC",
+																			"type": "object"
+																		}
+																	],
+																	"title": "Database reachable through a Workers VPC"
 																}
 															],
 															"type": "object"
@@ -2140,6 +2358,7 @@
 								"x-auditable": true
 							},
 							"mtls": {
+								"description": "mTLS configuration for the origin connection. Cannot be used with VPC Service origins; TLS must be managed on the VPC Service.",
 								"properties": {
 									"ca_certificate_id": {
 										"description": "Define CA certificate ID obtained after uploading CA cert.",
@@ -2319,6 +2538,72 @@
 											}
 										],
 										"title": "Access-protected Database behind Cloudflare Tunnel"
+									},
+									{
+										"allOf": [
+											{
+												"allOf": [
+													{
+														"properties": {
+															"database": {
+																"description": "Set the name of your origin database.",
+																"example": "postgres",
+																"type": "string",
+																"x-auditable": true
+															},
+															"password": {
+																"description": "Set the password needed to access your origin database. The API never returns this write-only value.",
+																"type": "string",
+																"writeOnly": true,
+																"x-sensitive": true
+															},
+															"scheme": {
+																"description": "Specifies the URL scheme used to connect to your origin database.",
+																"enum": [
+																	"postgres",
+																	"postgresql",
+																	"mysql"
+																],
+																"type": "string",
+																"x-auditable": true
+															},
+															"user": {
+																"description": "Set the user of your origin database.",
+																"example": "postgres",
+																"type": "string",
+																"x-auditable": true
+															}
+														},
+														"title": "Connection Options",
+														"type": "object"
+													}
+												],
+												"required": [
+													"scheme",
+													"database",
+													"user",
+													"password"
+												],
+												"type": "object"
+											},
+											{
+												"description": "Connect to a database through a Workers VPC Service. TLS settings (mTLS, sslmode) cannot be configured on the Hyperdrive when using a VPC Service origin; TLS must be managed on the VPC Service itself.\n",
+												"properties": {
+													"service_id": {
+														"description": "The identifier of the Workers VPC Service to connect through. Hyperdrive will egress through the specified VPC Service to reach the origin database.",
+														"example": "0123456789abcdef0123456789abcdef",
+														"type": "string",
+														"x-auditable": true
+													}
+												},
+												"required": [
+													"service_id"
+												],
+												"title": "Database reachable through a Workers VPC",
+												"type": "object"
+											}
+										],
+										"title": "Database reachable through a Workers VPC"
 									}
 								],
 								"type": "object"
@@ -2508,6 +2793,7 @@
 															"x-auditable": true
 														},
 														"mtls": {
+															"description": "mTLS configuration for the origin connection. Cannot be used with VPC Service origins; TLS must be managed on the VPC Service.",
 															"properties": {
 																"ca_certificate_id": {
 																	"description": "Define CA certificate ID obtained after uploading CA cert.",
@@ -2687,6 +2973,72 @@
 																		}
 																	],
 																	"title": "Access-protected Database behind Cloudflare Tunnel"
+																},
+																{
+																	"allOf": [
+																		{
+																			"allOf": [
+																				{
+																					"properties": {
+																						"database": {
+																							"description": "Set the name of your origin database.",
+																							"example": "postgres",
+																							"type": "string",
+																							"x-auditable": true
+																						},
+																						"password": {
+																							"description": "Set the password needed to access your origin database. The API never returns this write-only value.",
+																							"type": "string",
+																							"writeOnly": true,
+																							"x-sensitive": true
+																						},
+																						"scheme": {
+																							"description": "Specifies the URL scheme used to connect to your origin database.",
+																							"enum": [
+																								"postgres",
+																								"postgresql",
+																								"mysql"
+																							],
+																							"type": "string",
+																							"x-auditable": true
+																						},
+																						"user": {
+																							"description": "Set the user of your origin database.",
+																							"example": "postgres",
+																							"type": "string",
+																							"x-auditable": true
+																						}
+																					},
+																					"title": "Connection Options",
+																					"type": "object"
+																				}
+																			],
+																			"required": [
+																				"scheme",
+																				"database",
+																				"user",
+																				"password"
+																			],
+																			"type": "object"
+																		},
+																		{
+																			"description": "Connect to a database through a Workers VPC Service. TLS settings (mTLS, sslmode) cannot be configured on the Hyperdrive when using a VPC Service origin; TLS must be managed on the VPC Service itself.\n",
+																			"properties": {
+																				"service_id": {
+																					"description": "The identifier of the Workers VPC Service to connect through. Hyperdrive will egress through the specified VPC Service to reach the origin database.",
+																					"example": "0123456789abcdef0123456789abcdef",
+																					"type": "string",
+																					"x-auditable": true
+																				}
+																			},
+																			"required": [
+																				"service_id"
+																			],
+																			"title": "Database reachable through a Workers VPC",
+																			"type": "object"
+																		}
+																	],
+																	"title": "Database reachable through a Workers VPC"
 																}
 															],
 															"type": "object"
@@ -2958,6 +3310,7 @@
 								"x-auditable": true
 							},
 							"mtls": {
+								"description": "mTLS configuration for the origin connection. Cannot be used with VPC Service origins; TLS must be managed on the VPC Service.",
 								"properties": {
 									"ca_certificate_id": {
 										"description": "Define CA certificate ID obtained after uploading CA cert.",
@@ -3137,6 +3490,72 @@
 											}
 										],
 										"title": "Access-protected Database behind Cloudflare Tunnel"
+									},
+									{
+										"allOf": [
+											{
+												"allOf": [
+													{
+														"properties": {
+															"database": {
+																"description": "Set the name of your origin database.",
+																"example": "postgres",
+																"type": "string",
+																"x-auditable": true
+															},
+															"password": {
+																"description": "Set the password needed to access your origin database. The API never returns this write-only value.",
+																"type": "string",
+																"writeOnly": true,
+																"x-sensitive": true
+															},
+															"scheme": {
+																"description": "Specifies the URL scheme used to connect to your origin database.",
+																"enum": [
+																	"postgres",
+																	"postgresql",
+																	"mysql"
+																],
+																"type": "string",
+																"x-auditable": true
+															},
+															"user": {
+																"description": "Set the user of your origin database.",
+																"example": "postgres",
+																"type": "string",
+																"x-auditable": true
+															}
+														},
+														"title": "Connection Options",
+														"type": "object"
+													}
+												],
+												"required": [
+													"scheme",
+													"database",
+													"user",
+													"password"
+												],
+												"type": "object"
+											},
+											{
+												"description": "Connect to a database through a Workers VPC Service. TLS settings (mTLS, sslmode) cannot be configured on the Hyperdrive when using a VPC Service origin; TLS must be managed on the VPC Service itself.\n",
+												"properties": {
+													"service_id": {
+														"description": "The identifier of the Workers VPC Service to connect through. Hyperdrive will egress through the specified VPC Service to reach the origin database.",
+														"example": "0123456789abcdef0123456789abcdef",
+														"type": "string",
+														"x-auditable": true
+													}
+												},
+												"required": [
+													"service_id"
+												],
+												"title": "Database reachable through a Workers VPC",
+												"type": "object"
+											}
+										],
+										"title": "Database reachable through a Workers VPC"
 									}
 								],
 								"type": "object"
@@ -3326,6 +3745,7 @@
 															"x-auditable": true
 														},
 														"mtls": {
+															"description": "mTLS configuration for the origin connection. Cannot be used with VPC Service origins; TLS must be managed on the VPC Service.",
 															"properties": {
 																"ca_certificate_id": {
 																	"description": "Define CA certificate ID obtained after uploading CA cert.",
@@ -3505,6 +3925,72 @@
 																		}
 																	],
 																	"title": "Access-protected Database behind Cloudflare Tunnel"
+																},
+																{
+																	"allOf": [
+																		{
+																			"allOf": [
+																				{
+																					"properties": {
+																						"database": {
+																							"description": "Set the name of your origin database.",
+																							"example": "postgres",
+																							"type": "string",
+																							"x-auditable": true
+																						},
+																						"password": {
+																							"description": "Set the password needed to access your origin database. The API never returns this write-only value.",
+																							"type": "string",
+																							"writeOnly": true,
+																							"x-sensitive": true
+																						},
+																						"scheme": {
+																							"description": "Specifies the URL scheme used to connect to your origin database.",
+																							"enum": [
+																								"postgres",
+																								"postgresql",
+																								"mysql"
+																							],
+																							"type": "string",
+																							"x-auditable": true
+																						},
+																						"user": {
+																							"description": "Set the user of your origin database.",
+																							"example": "postgres",
+																							"type": "string",
+																							"x-auditable": true
+																						}
+																					},
+																					"title": "Connection Options",
+																					"type": "object"
+																				}
+																			],
+																			"required": [
+																				"scheme",
+																				"database",
+																				"user",
+																				"password"
+																			],
+																			"type": "object"
+																		},
+																		{
+																			"description": "Connect to a database through a Workers VPC Service. TLS settings (mTLS, sslmode) cannot be configured on the Hyperdrive when using a VPC Service origin; TLS must be managed on the VPC Service itself.\n",
+																			"properties": {
+																				"service_id": {
+																					"description": "The identifier of the Workers VPC Service to connect through. Hyperdrive will egress through the specified VPC Service to reach the origin database.",
+																					"example": "0123456789abcdef0123456789abcdef",
+																					"type": "string",
+																					"x-auditable": true
+																				}
+																			},
+																			"required": [
+																				"service_id"
+																			],
+																			"title": "Database reachable through a Workers VPC",
+																			"type": "object"
+																		}
+																	],
+																	"title": "Database reachable through a Workers VPC"
 																}
 															],
 															"type": "object"

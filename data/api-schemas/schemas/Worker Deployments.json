@@ -385,9 +385,9 @@
 															"annotations": {
 																"properties": {
 																	"workers/message": {
-																		"description": "Human-readable message about the deployment. Truncated to 100 bytes.",
+																		"description": "Human-readable message about the deployment. Truncated to 1000 bytes if longer.",
 																		"example": "Deploy bug fix.",
-																		"maxLength": 100,
+																		"maxLength": 1000,
 																		"type": "string",
 																		"x-auditable": true
 																	},
@@ -752,9 +752,9 @@
 												"annotations": {
 													"properties": {
 														"workers/message": {
-															"description": "Human-readable message about the deployment. Truncated to 100 bytes.",
+															"description": "Human-readable message about the deployment. Truncated to 1000 bytes if longer.",
 															"example": "Deploy bug fix.",
-															"maxLength": 100,
+															"maxLength": 1000,
 															"type": "string",
 															"x-auditable": true
 														},
@@ -1023,9 +1023,9 @@
 							"annotations": {
 								"properties": {
 									"workers/message": {
-										"description": "Human-readable message about the deployment. Truncated to 100 bytes.",
+										"description": "Human-readable message about the deployment. Truncated to 1000 bytes if longer.",
 										"example": "Deploy bug fix.",
-										"maxLength": 100,
+										"maxLength": 1000,
 										"type": "string",
 										"x-auditable": true
 									},
@@ -1203,9 +1203,9 @@
 												"annotations": {
 													"properties": {
 														"workers/message": {
-															"description": "Human-readable message about the deployment. Truncated to 100 bytes.",
+															"description": "Human-readable message about the deployment. Truncated to 1000 bytes if longer.",
 															"example": "Deploy bug fix.",
-															"maxLength": 100,
+															"maxLength": 1000,
 															"type": "string",
 															"x-auditable": true
 														},

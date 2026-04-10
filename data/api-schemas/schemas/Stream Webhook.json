@@ -16,12 +16,6 @@
 				}
 			}
 		],
-		"requestBody": {
-			"content": {
-				"application/json": {}
-			},
-			"required": true
-		},
 		"responses": {
 			"200": {
 				"content": {
@@ -372,6 +366,31 @@
 								{
 									"properties": {
 										"result": {
+											"properties": {
+												"modified": {
+													"description": "The date and time the webhook was last modified.",
+													"example": "2014-01-02T02:20:00Z",
+													"format": "date-time",
+													"type": "string"
+												},
+												"notificationUrl": {
+													"description": "The URL where webhooks will be sent.",
+													"example": "https://example.com",
+													"format": "uri",
+													"type": "string"
+												},
+												"notification_url": {
+													"description": "The URL where webhooks will be sent.",
+													"example": "https://example.com",
+													"format": "uri",
+													"type": "string"
+												},
+												"secret": {
+													"description": "The secret used to verify webhook signatures.",
+													"type": "string",
+													"x-sensitive": true
+												}
+											},
 											"type": "object"
 										}
 									},
@@ -534,6 +553,18 @@
 			"content": {
 				"application/json": {
 					"schema": {
+						"anyOf": [
+							{
+								"required": [
+									"notificationUrl"
+								]
+							},
+							{
+								"required": [
+									"notification_url"
+								]
+							}
+						],
 						"properties": {
 							"notificationUrl": {
 								"description": "The URL where webhooks will be sent.",
@@ -541,11 +572,16 @@
 								"format": "uri",
 								"type": "string",
 								"x-auditable": true
+							},
+							"notification_url": {
+								"description": "The URL where webhooks will be sent.",
+								"example": "https://example.com",
+								"format": "uri",
+								"type": "string",
+								"x-auditable": true
 							}
 						},
-						"required": [
-							"notificationUrl"
-						]
+						"type": "object"
 					}
 				}
 			},
@@ -647,6 +683,31 @@
 								{
 									"properties": {
 										"result": {
+											"properties": {
+												"modified": {
+													"description": "The date and time the webhook was last modified.",
+													"example": "2014-01-02T02:20:00Z",
+													"format": "date-time",
+													"type": "string"
+												},
+												"notificationUrl": {
+													"description": "The URL where webhooks will be sent.",
+													"example": "https://example.com",
+													"format": "uri",
+													"type": "string"
+												},
+												"notification_url": {
+													"description": "The URL where webhooks will be sent.",
+													"example": "https://example.com",
+													"format": "uri",
+													"type": "string"
+												},
+												"secret": {
+													"description": "The secret used to verify webhook signatures.",
+													"type": "string",
+													"x-sensitive": true
+												}
+											},
 											"type": "object"
 										}
 									},

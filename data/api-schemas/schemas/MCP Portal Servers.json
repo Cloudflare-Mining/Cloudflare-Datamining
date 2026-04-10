@@ -119,6 +119,58 @@
 											},
 											"readOnly": true,
 											"type": "array"
+										},
+										"updated_prompts": {
+											"items": {
+												"properties": {
+													"alias": {
+														"example": "my-custom-alias",
+														"maxLength": 40,
+														"pattern": "^[a-zA-Z0-9]+([_-][a-zA-Z0-9]+)*$",
+														"type": "string"
+													},
+													"description": {
+														"type": "string"
+													},
+													"enabled": {
+														"type": "boolean"
+													},
+													"name": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"name"
+												],
+												"type": "object"
+											},
+											"type": "array"
+										},
+										"updated_tools": {
+											"items": {
+												"properties": {
+													"alias": {
+														"example": "my-custom-alias",
+														"maxLength": 40,
+														"pattern": "^[a-zA-Z0-9]+([_-][a-zA-Z0-9]+)*$",
+														"type": "string"
+													},
+													"description": {
+														"type": "string"
+													},
+													"enabled": {
+														"type": "boolean"
+													},
+													"name": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"name"
+												],
+												"type": "object"
+											},
+											"type": "array"
 										}
 									},
 									"required": [
@@ -348,6 +400,58 @@
 												},
 												"readOnly": true,
 												"type": "array"
+											},
+											"updated_prompts": {
+												"items": {
+													"properties": {
+														"alias": {
+															"example": "my-custom-alias",
+															"maxLength": 40,
+															"pattern": "^[a-zA-Z0-9]+([_-][a-zA-Z0-9]+)*$",
+															"type": "string"
+														},
+														"description": {
+															"type": "string"
+														},
+														"enabled": {
+															"type": "boolean"
+														},
+														"name": {
+															"type": "string"
+														}
+													},
+													"required": [
+														"name"
+													],
+													"type": "object"
+												},
+												"type": "array"
+											},
+											"updated_tools": {
+												"items": {
+													"properties": {
+														"alias": {
+															"example": "my-custom-alias",
+															"maxLength": 40,
+															"pattern": "^[a-zA-Z0-9]+([_-][a-zA-Z0-9]+)*$",
+															"type": "string"
+														},
+														"description": {
+															"type": "string"
+														},
+														"enabled": {
+															"type": "boolean"
+														},
+														"name": {
+															"type": "string"
+														}
+													},
+													"required": [
+														"name"
+													],
+													"type": "object"
+												},
+												"type": "array"
 											}
 										},
 										"required": [
@@ -560,6 +664,58 @@
 											},
 											"readOnly": true,
 											"type": "array"
+										},
+										"updated_prompts": {
+											"items": {
+												"properties": {
+													"alias": {
+														"example": "my-custom-alias",
+														"maxLength": 40,
+														"pattern": "^[a-zA-Z0-9]+([_-][a-zA-Z0-9]+)*$",
+														"type": "string"
+													},
+													"description": {
+														"type": "string"
+													},
+													"enabled": {
+														"type": "boolean"
+													},
+													"name": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"name"
+												],
+												"type": "object"
+											},
+											"type": "array"
+										},
+										"updated_tools": {
+											"items": {
+												"properties": {
+													"alias": {
+														"example": "my-custom-alias",
+														"maxLength": 40,
+														"pattern": "^[a-zA-Z0-9]+([_-][a-zA-Z0-9]+)*$",
+														"type": "string"
+													},
+													"description": {
+														"type": "string"
+													},
+													"enabled": {
+														"type": "boolean"
+													},
+													"name": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"name"
+												],
+												"type": "object"
+											},
+											"type": "array"
 										}
 									},
 									"required": [
@@ -674,7 +830,8 @@
 					"schema": {
 						"properties": {
 							"auth_credentials": {
-								"type": "string"
+								"type": "string",
+								"x-sensitive": true
 							},
 							"auth_type": {
 								"enum": [
@@ -708,6 +865,58 @@
 								"example": "My MCP Server",
 								"maxLength": 350,
 								"type": "string"
+							},
+							"updated_prompts": {
+								"items": {
+									"properties": {
+										"alias": {
+											"example": "my-custom-alias",
+											"maxLength": 40,
+											"pattern": "^[a-zA-Z0-9]+([_-][a-zA-Z0-9]+)*$",
+											"type": "string"
+										},
+										"description": {
+											"type": "string"
+										},
+										"enabled": {
+											"type": "boolean"
+										},
+										"name": {
+											"type": "string"
+										}
+									},
+									"required": [
+										"name"
+									],
+									"type": "object"
+								},
+								"type": "array"
+							},
+							"updated_tools": {
+								"items": {
+									"properties": {
+										"alias": {
+											"example": "my-custom-alias",
+											"maxLength": 40,
+											"pattern": "^[a-zA-Z0-9]+([_-][a-zA-Z0-9]+)*$",
+											"type": "string"
+										},
+										"description": {
+											"type": "string"
+										},
+										"enabled": {
+											"type": "boolean"
+										},
+										"name": {
+											"type": "string"
+										}
+									},
+									"required": [
+										"name"
+									],
+									"type": "object"
+								},
+								"type": "array"
 							}
 						},
 						"required": [
@@ -813,6 +1022,58 @@
 												"type": "object"
 											},
 											"readOnly": true,
+											"type": "array"
+										},
+										"updated_prompts": {
+											"items": {
+												"properties": {
+													"alias": {
+														"example": "my-custom-alias",
+														"maxLength": 40,
+														"pattern": "^[a-zA-Z0-9]+([_-][a-zA-Z0-9]+)*$",
+														"type": "string"
+													},
+													"description": {
+														"type": "string"
+													},
+													"enabled": {
+														"type": "boolean"
+													},
+													"name": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"name"
+												],
+												"type": "object"
+											},
+											"type": "array"
+										},
+										"updated_tools": {
+											"items": {
+												"properties": {
+													"alias": {
+														"example": "my-custom-alias",
+														"maxLength": 40,
+														"pattern": "^[a-zA-Z0-9]+([_-][a-zA-Z0-9]+)*$",
+														"type": "string"
+													},
+													"description": {
+														"type": "string"
+													},
+													"enabled": {
+														"type": "boolean"
+													},
+													"name": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"name"
+												],
+												"type": "object"
+											},
 											"type": "array"
 										}
 									},
@@ -1067,7 +1328,8 @@
 					"schema": {
 						"properties": {
 							"auth_credentials": {
-								"type": "string"
+								"type": "string",
+								"x-sensitive": true
 							},
 							"description": {
 								"example": "This is one remote mcp server",
@@ -1079,6 +1341,58 @@
 								"example": "My MCP Server",
 								"maxLength": 350,
 								"type": "string"
+							},
+							"updated_prompts": {
+								"items": {
+									"properties": {
+										"alias": {
+											"example": "my-custom-alias",
+											"maxLength": 40,
+											"pattern": "^[a-zA-Z0-9]+([_-][a-zA-Z0-9]+)*$",
+											"type": "string"
+										},
+										"description": {
+											"type": "string"
+										},
+										"enabled": {
+											"type": "boolean"
+										},
+										"name": {
+											"type": "string"
+										}
+									},
+									"required": [
+										"name"
+									],
+									"type": "object"
+								},
+								"type": "array"
+							},
+							"updated_tools": {
+								"items": {
+									"properties": {
+										"alias": {
+											"example": "my-custom-alias",
+											"maxLength": 40,
+											"pattern": "^[a-zA-Z0-9]+([_-][a-zA-Z0-9]+)*$",
+											"type": "string"
+										},
+										"description": {
+											"type": "string"
+										},
+										"enabled": {
+											"type": "boolean"
+										},
+										"name": {
+											"type": "string"
+										}
+									},
+									"required": [
+										"name"
+									],
+									"type": "object"
+								},
+								"type": "array"
 							}
 						},
 						"type": "object"
@@ -1178,6 +1492,58 @@
 												"type": "object"
 											},
 											"readOnly": true,
+											"type": "array"
+										},
+										"updated_prompts": {
+											"items": {
+												"properties": {
+													"alias": {
+														"example": "my-custom-alias",
+														"maxLength": 40,
+														"pattern": "^[a-zA-Z0-9]+([_-][a-zA-Z0-9]+)*$",
+														"type": "string"
+													},
+													"description": {
+														"type": "string"
+													},
+													"enabled": {
+														"type": "boolean"
+													},
+													"name": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"name"
+												],
+												"type": "object"
+											},
+											"type": "array"
+										},
+										"updated_tools": {
+											"items": {
+												"properties": {
+													"alias": {
+														"example": "my-custom-alias",
+														"maxLength": 40,
+														"pattern": "^[a-zA-Z0-9]+([_-][a-zA-Z0-9]+)*$",
+														"type": "string"
+													},
+													"description": {
+														"type": "string"
+													},
+													"enabled": {
+														"type": "boolean"
+													},
+													"name": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"name"
+												],
+												"type": "object"
+											},
 											"type": "array"
 										}
 									},

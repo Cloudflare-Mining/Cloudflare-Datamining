@@ -2901,7 +2901,8 @@
 									"psk": {
 										"description": "A randomly generated or provided string for use in the IPsec tunnel.",
 										"example": "O3bwKSjnaoCxDoUxjcq4Rk8ZKkezQUiy",
-										"type": "string"
+										"type": "string",
+										"x-sensitive": true
 									},
 									"replay_protection": {
 										"default": false,
@@ -3928,7 +3929,8 @@
 												"psk": {
 													"description": "A randomly generated or provided string for use in the IPsec tunnel.",
 													"example": "O3bwKSjnaoCxDoUxjcq4Rk8ZKkezQUiy",
-													"type": "string"
+													"type": "string",
+													"x-sensitive": true
 												},
 												"psk_metadata": {
 													"description": "The PSK metadata that includes when the PSK was generated.",
@@ -4071,7 +4073,8 @@
 														"psk": {
 															"description": "A randomly generated or provided string for use in the IPsec tunnel.",
 															"example": "O3bwKSjnaoCxDoUxjcq4Rk8ZKkezQUiy",
-															"type": "string"
+															"type": "string",
+															"x-sensitive": true
 														},
 														"psk_metadata": {
 															"description": "The PSK metadata that includes when the PSK was generated.",
@@ -5318,7 +5321,8 @@
 							"psk": {
 								"description": "A randomly generated or provided string for use in the IPsec tunnel.",
 								"example": "O3bwKSjnaoCxDoUxjcq4Rk8ZKkezQUiy",
-								"type": "string"
+								"type": "string",
+								"x-sensitive": true
 							},
 							"replay_protection": {
 								"default": false,

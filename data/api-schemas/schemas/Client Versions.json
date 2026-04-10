@@ -1,0 +1,314 @@
+{
+	"GET /accounts/{account_id}/devices/client-versions": {
+		"description": "Lists available WARP client versions for a specific target environment and release track. This endpoint is in Beta.",
+		"operationId": "list-client-versions",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"type": "string"
+				}
+			},
+			{
+				"description": "The target environment for the client version (e.g., windows, macos).",
+				"in": "query",
+				"name": "target_environment",
+				"required": true,
+				"schema": {
+					"type": "string"
+				}
+			},
+			{
+				"description": "The release track (ga for General Availability, beta for Beta releases).",
+				"in": "query",
+				"name": "release_track",
+				"required": true,
+				"schema": {
+					"enum": [
+						"ga",
+						"beta"
+					],
+					"type": "string"
+				}
+			},
+			{
+				"description": "The page number to return.",
+				"in": "query",
+				"name": "page",
+				"schema": {
+					"default": 1,
+					"minimum": 1,
+					"type": "integer"
+				}
+			},
+			{
+				"description": "The maximum number of versions to return per page.",
+				"in": "query",
+				"name": "per_page",
+				"schema": {
+					"default": 20,
+					"maximum": 100,
+					"minimum": 1,
+					"type": "integer"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"description": "A message which can be returned in either the 'errors' or 'messages' fields in a v4 API response.",
+										"properties": {
+											"code": {
+												"type": "integer"
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"messages": {
+									"items": {
+										"description": "A message which can be returned in either the 'errors' or 'messages' fields in a v4 API response.",
+										"properties": {
+											"code": {
+												"type": "integer"
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"result": {
+									"items": {
+										"properties": {
+											"package_size": {
+												"description": "Size of the package in bytes.",
+												"example": 123125760,
+												"format": "int64",
+												"type": "integer"
+											},
+											"package_url": {
+												"description": "URL to download the package.",
+												"example": "https://downloads.cloudflareclient.com/v1/download/windows/version/2024.11.309.0",
+												"type": "string"
+											},
+											"release_date": {
+												"description": "The release date timestamp.",
+												"example": "2024-11-18T21:57:58.478Z",
+												"type": "string"
+											},
+											"release_notes": {
+												"description": "Release notes for this version.",
+												"example": "This release contains minor fixes and improvements.",
+												"type": "string"
+											},
+											"version": {
+												"description": "The client version string.",
+												"example": "2024.11.309.0",
+												"type": "string"
+											}
+										},
+										"required": [
+											"version",
+											"release_date"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"result_info": {
+									"example": {
+										"count": 1,
+										"page": 1,
+										"per_page": 10,
+										"total_count": 10,
+										"total_pages": 1
+									},
+									"properties": {
+										"count": {
+											"description": "Number of records in the response.",
+											"type": "integer"
+										},
+										"page": {
+											"description": "The page size number of the response.",
+											"type": "integer"
+										},
+										"per_page": {
+											"description": "The limit for the number of records in the response.",
+											"type": "integer"
+										},
+										"total_count": {
+											"description": "Total number of records available.",
+											"type": "integer"
+										},
+										"total_pages": {
+											"description": "Total number of pages available.",
+											"type": "integer"
+										}
+									},
+									"required": [
+										"page",
+										"per_page",
+										"count",
+										"total_count"
+									],
+									"type": "object"
+								},
+								"success": {
+									"description": "Indicates whether the API call was successful.",
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"result",
+								"result_info",
+								"success",
+								"errors",
+								"messages"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "List client versions response."
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			}
+		],
+		"summary": "List client versions",
+		"tags": [
+			"Client Versions"
+		]
+	},
+	"GET /accounts/{account_id}/devices/client-versions/target-environments": {
+		"description": "Retrieves a list of all available target environments with their display names. This endpoint is in Beta.",
+		"operationId": "list-client-target-environments",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"type": "string"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"description": "A message which can be returned in either the 'errors' or 'messages' fields in a v4 API response.",
+										"properties": {
+											"code": {
+												"type": "integer"
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"messages": {
+									"items": {
+										"description": "A message which can be returned in either the 'errors' or 'messages' fields in a v4 API response.",
+										"properties": {
+											"code": {
+												"type": "integer"
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"result": {
+									"items": {
+										"properties": {
+											"display_name": {
+												"description": "A human-readable name for the target environment.",
+												"example": "Windows",
+												"type": "string"
+											},
+											"target_environment": {
+												"description": "The target environment identifier.",
+												"example": "windows",
+												"type": "string"
+											}
+										},
+										"required": [
+											"target_environment",
+											"display_name"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"success": {
+									"description": "Indicates whether the API call was successful.",
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"result",
+								"success",
+								"errors",
+								"messages"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "List target environments response."
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			}
+		],
+		"summary": "List available target environments",
+		"tags": [
+			"Client Versions"
+		]
+	}
+}

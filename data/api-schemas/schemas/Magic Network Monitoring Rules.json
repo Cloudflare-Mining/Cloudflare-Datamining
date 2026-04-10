@@ -245,6 +245,7 @@
 												}
 											},
 											"required": [
+												"id",
 												"name",
 												"prefixes",
 												"automatic_advertisement",
@@ -476,6 +477,7 @@
 														}
 													},
 													"required": [
+														"id",
 														"name",
 														"prefixes",
 														"automatic_advertisement",
@@ -841,6 +843,7 @@
 													}
 												},
 												"required": [
+													"id",
 													"name",
 													"prefixes",
 													"automatic_advertisement",
@@ -1093,6 +1096,7 @@
 															}
 														},
 														"required": [
+															"id",
 															"name",
 															"prefixes",
 															"automatic_advertisement",
@@ -1454,6 +1458,7 @@
 												}
 											},
 											"required": [
+												"id",
 												"name",
 												"prefixes",
 												"automatic_advertisement",
@@ -1685,6 +1690,7 @@
 														}
 													},
 													"required": [
+														"id",
 														"name",
 														"prefixes",
 														"automatic_advertisement",
@@ -1834,6 +1840,7 @@
 			"content": {
 				"application/json": {
 					"schema": {
+						"nullable": true,
 						"properties": {
 							"automatic_advertisement": {
 								"description": "Toggle on if you would like Cloudflare to automatically advertise the IP Prefixes within the rule via Magic Transit when the rule is triggered. Only available for users of Magic Transit.",
@@ -1842,7 +1849,7 @@
 								"type": "boolean",
 								"x-auditable": true
 							},
-							"bandwidth": {
+							"bandwidth_threshold": {
 								"description": "The number of bits per second for the rule. When this value is exceeded for the set duration, an alert notification is sent. Minimum of 1 and no maximum.",
 								"example": 1000,
 								"minimum": 1,
@@ -1879,6 +1886,18 @@
 								"type": "number",
 								"x-auditable": true
 							},
+							"prefix_match": {
+								"description": "Prefix match type to be applied for a prefix auto advertisement when using an advanced_ddos rule.",
+								"enum": [
+									"exact",
+									"subnet",
+									"supernet"
+								],
+								"example": "exact",
+								"nullable": true,
+								"type": "string",
+								"x-auditable": true
+							},
 							"prefixes": {
 								"items": {
 									"description": "The IP prefixes that are monitored for this rule. Must be a CIDR range like 203.0.113.0/24. Max 5000 different CIDR ranges.",
@@ -1887,8 +1906,48 @@
 									"x-auditable": true
 								},
 								"type": "array"
+							},
+							"type": {
+								"description": "MNM rule type.",
+								"enum": [
+									"threshold",
+									"zscore",
+									"advanced_ddos"
+								],
+								"example": "zscore",
+								"type": "string",
+								"x-auditable": true
+							},
+							"zscore_sensitivity": {
+								"description": "Level of sensitivity set for zscore rules.",
+								"enum": [
+									"low",
+									"medium",
+									"high"
+								],
+								"example": "high",
+								"nullable": true,
+								"type": "string",
+								"x-auditable": true
+							},
+							"zscore_target": {
+								"description": "Target of the zscore rule analysis.",
+								"enum": [
+									"bits",
+									"packets"
+								],
+								"example": "bits",
+								"nullable": true,
+								"type": "string",
+								"x-auditable": true
 							}
 						},
+						"required": [
+							"name",
+							"prefixes",
+							"automatic_advertisement",
+							"type"
+						],
 						"type": "object"
 					}
 				}
@@ -2109,6 +2168,7 @@
 												}
 											},
 											"required": [
+												"id",
 												"name",
 												"prefixes",
 												"automatic_advertisement",
@@ -2340,6 +2400,7 @@
 														}
 													},
 													"required": [
+														"id",
 														"name",
 														"prefixes",
 														"automatic_advertisement",
@@ -2870,6 +2931,7 @@
 			"content": {
 				"application/json": {
 					"schema": {
+						"nullable": true,
 						"properties": {
 							"automatic_advertisement": {
 								"description": "Toggle on if you would like Cloudflare to automatically advertise the IP Prefixes within the rule via Magic Transit when the rule is triggered. Only available for users of Magic Transit.",
@@ -2878,7 +2940,7 @@
 								"type": "boolean",
 								"x-auditable": true
 							},
-							"bandwidth": {
+							"bandwidth_threshold": {
 								"description": "The number of bits per second for the rule. When this value is exceeded for the set duration, an alert notification is sent. Minimum of 1 and no maximum.",
 								"example": 1000,
 								"minimum": 1,
@@ -2915,6 +2977,18 @@
 								"type": "number",
 								"x-auditable": true
 							},
+							"prefix_match": {
+								"description": "Prefix match type to be applied for a prefix auto advertisement when using an advanced_ddos rule.",
+								"enum": [
+									"exact",
+									"subnet",
+									"supernet"
+								],
+								"example": "exact",
+								"nullable": true,
+								"type": "string",
+								"x-auditable": true
+							},
 							"prefixes": {
 								"items": {
 									"description": "The IP prefixes that are monitored for this rule. Must be a CIDR range like 203.0.113.0/24. Max 5000 different CIDR ranges.",
@@ -2923,11 +2997,47 @@
 									"x-auditable": true
 								},
 								"type": "array"
+							},
+							"type": {
+								"description": "MNM rule type.",
+								"enum": [
+									"threshold",
+									"zscore",
+									"advanced_ddos"
+								],
+								"example": "zscore",
+								"type": "string",
+								"x-auditable": true
+							},
+							"zscore_sensitivity": {
+								"description": "Level of sensitivity set for zscore rules.",
+								"enum": [
+									"low",
+									"medium",
+									"high"
+								],
+								"example": "high",
+								"nullable": true,
+								"type": "string",
+								"x-auditable": true
+							},
+							"zscore_target": {
+								"description": "Target of the zscore rule analysis.",
+								"enum": [
+									"bits",
+									"packets"
+								],
+								"example": "bits",
+								"nullable": true,
+								"type": "string",
+								"x-auditable": true
 							}
 						},
 						"required": [
-							"duration",
-							"name"
+							"name",
+							"prefixes",
+							"automatic_advertisement",
+							"type"
 						],
 						"type": "object"
 					}
@@ -3149,6 +3259,7 @@
 												}
 											},
 											"required": [
+												"id",
 												"name",
 												"prefixes",
 												"automatic_advertisement",
@@ -3380,6 +3491,7 @@
 														}
 													},
 													"required": [
+														"id",
 														"name",
 														"prefixes",
 														"automatic_advertisement",
@@ -3516,6 +3628,7 @@
 			"content": {
 				"application/json": {
 					"schema": {
+						"nullable": true,
 						"properties": {
 							"automatic_advertisement": {
 								"description": "Toggle on if you would like Cloudflare to automatically advertise the IP Prefixes within the rule via Magic Transit when the rule is triggered. Only available for users of Magic Transit.",
@@ -3524,7 +3637,7 @@
 								"type": "boolean",
 								"x-auditable": true
 							},
-							"bandwidth": {
+							"bandwidth_threshold": {
 								"description": "The number of bits per second for the rule. When this value is exceeded for the set duration, an alert notification is sent. Minimum of 1 and no maximum.",
 								"example": 1000,
 								"minimum": 1,
@@ -3548,12 +3661,6 @@
 								"type": "string",
 								"x-auditable": true
 							},
-							"id": {
-								"description": "The id of the rule. Must be unique.",
-								"example": "2890e6fa406311ed9b5a23f70f6fb8cf",
-								"type": "string",
-								"x-auditable": true
-							},
 							"name": {
 								"description": "The name of the rule. Must be unique. Supports characters A-Z, a-z, 0-9, underscore (_), dash (-), period (.), and tilde (~). You can’t have a space in the rule name. Max 256 characters.",
 								"example": "my_rule_1",
@@ -3567,6 +3674,18 @@
 								"type": "number",
 								"x-auditable": true
 							},
+							"prefix_match": {
+								"description": "Prefix match type to be applied for a prefix auto advertisement when using an advanced_ddos rule.",
+								"enum": [
+									"exact",
+									"subnet",
+									"supernet"
+								],
+								"example": "exact",
+								"nullable": true,
+								"type": "string",
+								"x-auditable": true
+							},
 							"prefixes": {
 								"items": {
 									"description": "The IP prefixes that are monitored for this rule. Must be a CIDR range like 203.0.113.0/24. Max 5000 different CIDR ranges.",
@@ -3575,12 +3694,47 @@
 									"x-auditable": true
 								},
 								"type": "array"
+							},
+							"type": {
+								"description": "MNM rule type.",
+								"enum": [
+									"threshold",
+									"zscore",
+									"advanced_ddos"
+								],
+								"example": "zscore",
+								"type": "string",
+								"x-auditable": true
+							},
+							"zscore_sensitivity": {
+								"description": "Level of sensitivity set for zscore rules.",
+								"enum": [
+									"low",
+									"medium",
+									"high"
+								],
+								"example": "high",
+								"nullable": true,
+								"type": "string",
+								"x-auditable": true
+							},
+							"zscore_target": {
+								"description": "Target of the zscore rule analysis.",
+								"enum": [
+									"bits",
+									"packets"
+								],
+								"example": "bits",
+								"nullable": true,
+								"type": "string",
+								"x-auditable": true
 							}
 						},
 						"required": [
-							"ID",
-							"duration",
-							"name"
+							"name",
+							"prefixes",
+							"automatic_advertisement",
+							"type"
 						],
 						"type": "object"
 					}
@@ -3802,6 +3956,7 @@
 												}
 											},
 											"required": [
+												"id",
 												"name",
 												"prefixes",
 												"automatic_advertisement",
@@ -4033,6 +4188,7 @@
 														}
 													},
 													"required": [
+														"id",
 														"name",
 														"prefixes",
 														"automatic_advertisement",

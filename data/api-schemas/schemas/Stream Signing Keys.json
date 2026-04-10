@@ -394,6 +394,11 @@
 														"maxLength": 32,
 														"type": "string",
 														"x-auditable": true
+													},
+													"key_id": {
+														"description": "The unique identifier for the signing key.",
+														"example": "e9db990a82666dd571c77f944a5c5c8d",
+														"type": "string"
 													}
 												},
 												"type": "object"
