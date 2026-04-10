@@ -5,30 +5,37 @@
 		<p>At Cloudflare, we’re not looking for people who wait for a polished roadmap; we’re looking for the builders who see the cracks in the Internet that everyone else has simply learned to live with. We value candidates who have the instinct to spot a "normalized" problem and the AI-native curiosity to create a solution using the latest tools. Our culture is built on iteration, leveraging AI to ship faster today to make it better tomorrow, while ensuring that every improvement, no matter how small, is shared across the team to lift everyone up. If you’re the type of person who values curiosity over bureaucracy, and that AI is a partner in solving tough problems to keep the Internet moving forward, you’ll fit right in.</p>
 	</div>
 </div>
-<h4><strong><em>Available locations:&nbsp; Lisbon or London</em></strong></h4>
-<h4><strong><em>About the Department</em></strong></h4>
-<p><em>Cloudflare’s Engineering Team builds and runs the software that handles large amounts of requests on the Internet today. We also build and run the internal tools and platforms that run that software. Individual engineering teams are typically responsible for large areas with considerable impact, and able to execute autonomously within that space to deliver value to their customers - be they internal or external.&nbsp;</em></p>
-<p><em>Many of Cloudflare’s critical internal services run on Kubernetes. These services include those responsible for Cloudflare’s control plane and APIs, data analytics and other internal tools used to manage our global network. These Kubernetes platforms are purpose-built from the ground up and run on bare metal Linux in different regions around the world. The scale we work at involves tens of thousands of containers and terabits per second of network traffic. The team takes pride in knowing this platform helps run parts of the global Internet.</em></p>
-<p><strong><em>About the team and the role</em></strong></p>
-<p><em>The Developer Tools organization delivers a fast, reliable, and secure developer experience by removing workflow friction and providing resilient infrastructure that our internal teams can trust at every stage of the software lifecycle. We build self-service, resilient, scalable platforms and tools using a combination of Open Source projects, intellectual property, and internal infrastructure. These tools and platforms are used by 100s of developers at Cloudflare to code, build, test, and deploy their software.</em></p>
-<p><em>The Developer Productivity team empowers engineers to deliver high-quality software faster via golden path workflows, flexible but powerful tools, living standards, and intelligent automation. The role includes both software engineering and DevOps operational responsibilities. The ideal candidate will care deeply about providing other engineers with an excellent development experience, and have a deep understanding of what engineers care about, how they accomplish their day-to-day work, and what world-class developer tooling looks like.&nbsp;</em></p>
-<h4><strong><em>What you'll do</em></strong></h4>
-<p><em>Embed with teams to improve their developer workflows by better usage and configurations of our tools, while implementing new features and improvements based on internal engineering feedback</em></p>
-<p><em>Design and build scalable and resilient systems that can keep up with company growth</em></p>
-<p><em>Design, build, and operate developer productivity tooling across coding, building, managing, testing, and deploying software</em><em>Harden the platform against security threats, bugs and other operational issues</em></p>
-<p><em>Improve the efficiency of managing resources such as CPU, bandwidth and storage</em></p>
-<p><em>Work with product teams to understand their challenges and help them choose the best way to architect their systems</em></p>
-<p><em>Drive initiatives that make our engineers happier and more productive.</em><em>Help respond and prevent incidents impacting developer tools platforms</em></p>
-<h3><strong><em>Desirable skills, knowledge and experience</em></strong></h3>
-<p><em>Ability to work with codebases in TypeScript and Go</em></p>
-<p><em>Excellent debugging skills in a Linux environment</em></p>
-<p><em>Source control experience including branching, merging and rebasing</em></p>
-<p><em>Experience managing and deploying onto production Kubernetes or similar orchestration platforms</em></p>
-<p><em>The ability to break down complex problems into smaller pieces, provide options, talk through trade-offs and drive the effort to solve the problem</em></p>
-<h3><strong><em>Bonus Points</em></strong></h3>
-<p><em>Worked in a platform engineering team/ engineering productivity team in the past.</em></p>
-<p><em>Expertise in building and maintaining systems for specific developer tooling domains like build systems, CI/CD pipelines, source control, or automation tools.</em></p>
-<p><em>Experience operating Kubernetes on-premise at scale in capacities including SRE, systems design or architecture</em><em>Experience building tools on top of LLMs, including MCP servers, RAG pipelines, or agentic workflows.</em></p>
+<p><strong>Available location:&nbsp;</strong>London, UK</p>
+<p><strong>About the Team</strong></p>
+<p>The Marketing team at Cloudflare is at the forefront of sharing our mission to help build a better internet. We are a dynamic and fast-paced team dedicated to showcasing Cloudflare's innovative products and solutions to a global audience. Through strategic campaigns, engaging events, and compelling content, we drive awareness, generate demand, and support our company's rapid growth. As an intern, you'll gain hands-on experience and contribute directly to our efforts in making an impact.</p>
+<p><strong>About the Role</strong></p>
+<p>As a Marketing Events &amp; Campaigns Intern, you will play a crucial supporting role in the successful execution of Cloudflare's marketing initiatives. This is an exciting opportunity to gain hands-on experience across a variety of marketing channels, including webinars, trade shows, and digital advertising. You will contribute to the end-to-end process, from logistical coordination to ensuring our creative assets are polished and ready for launch. Your work will directly support lead generation efforts and help deliver impactful marketing experiences to our prospects and customers.</p>
+<p><strong>Responsibilities</strong></p>
+<ul>
+	<li>Assist with the logistical planning and execution of virtual webinars and in-person trade shows, including scheduling, vendor coordination, and materials preparation.</li>
+	<li>Support the development and deployment of digital ad campaigns across various platforms, ensuring proper tracking and optimization.</li>
+	<li>Coordinate the readiness of marketing assets, such as website banners, email communications, and landing pages, collaborating with design and content teams.</li>
+	<li>Help manage and track leads generated from events and campaigns, ensuring data accuracy and timely follow-up.</li>
+	<li>Contribute to post-event and campaign reporting by gathering data and assisting with performance analysis.</li>
+	<li>Participate in team meetings and contribute ideas for improving marketing processes and campaign effectiveness.</li>
+</ul>
+<p><strong>Skills &amp; Qualifications</strong></p>
+<ul>
+	<li>Currently pursuing a Bachelor's degree in Marketing, Communications, Business, or a related field.</li>
+	<li>Available for a full-time 12-week internship, working from our London office 3-5 days a week during the fall (Sept-Dec).</li>
+	<li>Strong organizational skills with a keen eye for detail and the ability to manage multiple tasks simultaneously.</li>
+	<li>Excellent written and verbal communication skills.</li>
+	<li>Familiarity with digital marketing concepts and platforms is a plus.</li>
+	<li>Proactive attitude with a desire to learn and contribute in a fast-paced environment.</li>
+	<li>Ability to collaborate effectively within a team and with cross-functional partners.</li>
+	<li>Proficiency with standard office productivity tools (e.g., Google Workspace, Microsoft Office).</li>
+</ul>
+<p><strong>Bonus Points</strong></p>
+<ul>
+	<li>Previous experience (academic or professional) with event coordination or digital campaign support.</li>
+	<li>Understanding of lead tracking and CRM systems.</li>
+</ul>
+<p>You can check out our <a href="https://blog.cloudflare.com/tag/internship-experience/">internship blogs</a> to learn more about our program and hear directly from our past interns.</p>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
 	<p><span style="font-weight: 400;">We’re not just a highly ambitious, large-scale technology company. We’re a highly ambitious, large-scale technology company with a soul. Fundamental to our mission to help build a better Internet is protecting the free and open Internet.</span></p>
