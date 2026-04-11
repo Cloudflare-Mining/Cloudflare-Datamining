@@ -1,10 +1,10 @@
 {
 	"componentChunkName": "component---src-components-page-page-template-tsx",
-	"path": "/developer-platform/products/cache-reserve/",
+	"path": "/developer-platform/products/d1/",
 	"result": {
 		"data": {
 			"page": {
-				"pageName": "Cache Reserve - Product Page",
+				"pageName": "Cloudflare D1 Database ",
 				"localeList": {
 					"enUS": "English for Locale",
 					"zhCN": "Translated for Locale",
@@ -33,29 +33,29 @@
 					"arAR": "No Page for Locale",
 					"heIL": "No Page for Locale"
 				},
-				"relativePath": "developer-platform/products/cache-reserve",
+				"relativePath": "developer-platform/products/d1",
 				"topNavOptions": "default",
 				"topNavButtonText": null,
 				"topNavButtonUrl": null,
 				"footerOptions": "default",
 				"metaTags": {
-					"metaTitle": "Cloudflare Cache Reserve | Zero Egress Fees",
-					"metaDescription": "Cloudflare Cache Reserve eliminates egress costs and improves cache hit ratios by enabling you to persistently cache your data with the push of a single button.",
+					"metaTitle": "Build a natively serverless SQL database with Cloudflare D1",
+					"metaDescription": "Create a natively serverless SQL database in seconds with D1. With a familiar query language, point-in-time recovery, and cost-effective pricing you are empowered to build the next big thing. ",
 					"twitterCustomImage": null,
 					"metaImage": {
 						"file": {
-							"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/53qCYhQbir5WtIU0VDWESo/954a48bfb17f429acf469e5f14345d83/unnamed-3.png"
+							"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/5GFzCrNZj9bom7quRxQ42J/c5e52810a342575c2f39805b1b866fda/D1_SQLite.png"
 						},
-						"description": "DO NOT REMOVE, THIS IS CLOUDFLARE'S GLOBAL OG META ASSET"
+						"description": ""
 					},
 					"facebookCustomImage": null,
 					"author": []
 				},
 				"sys": {
-					"createdAt": "2023-03-02T22:00:43.281Z",
-					"updatedAt": "2026-04-11T04:05:21.415Z"
+					"createdAt": "2023-09-28T14:15:51.055Z",
+					"updatedAt": "2025-07-23T09:16:04.269Z"
 				},
-				"contentfulId": "4xD27KPUlMrJZxSpQHZUMU",
+				"contentfulId": "1XocSe8FmOosqpYDlsG6hu",
 				"contentTypeId": "page",
 				"promotionalBanner": null,
 				"psaBanner": null,
@@ -65,29 +65,29 @@
 				"template": null,
 				"relatedBlades": [
 					{
-						"contentfulId": "1CfF1vXb0o8pXMwyKnvCMF",
+						"contentfulId": "3O9uxhlKbXtomgFTQjl3ct",
 						"contentTypeId": "bladeHeroAnimation",
-						"title": "Cloudflare Cache Reserve",
-						"titleSize": null,
-						"subtitle": "Persistent caching for all static content",
+						"title": "Cloudflare D1",
+						"titleSize": "medium",
+						"subtitle": "Create serverless SQL databases",
 						"subtitleSize": null,
-						"copy": "Cache Reserve persistently serves static content from our global network, helping businesses lower their egress bills while ensuring higher cache hit ratios.",
+						"copy": "Create a serverless relational database in seconds with D1. With a familiar SQL query language, point-in-time recovery, and cost-effective pricing, you are empowered to build the next big thing.",
 						"buttonColor": "orange",
-						"buttonColor2": "orange",
-						"buttonText1": "Sign up",
-						"buttonText1LoggedIn": "Sign up",
-						"buttonUrl1": "https://dash.cloudflare.com/?to=/:account/:zone/caching/cache-reserve",
-						"buttonUrl1LoggedIn": "https://dash.cloudflare.com/?to=/:account/:zone/caching/cache-reserve",
+						"buttonColor2": "orange-outline",
+						"buttonText1": "Get started",
+						"buttonText1LoggedIn": null,
+						"buttonUrl1": "https://dash.cloudflare.com/sign-up/",
+						"buttonUrl1LoggedIn": null,
 						"button1ExtraClass": null,
-						"buttonText2": "Get the solution brief",
+						"buttonText2": "View documentation",
 						"buttonText2LoggedIn": null,
-						"buttonUrl2": "https://cfl.re/3XF1TWM",
+						"buttonUrl2": "https://developers.cloudflare.com/d1/get-started/",
 						"button2ExtraClass": null,
 						"bladeBorder": "none",
 						"htmlId": null,
 						"textColor": "black",
-						"includeVideo": true,
-						"streamVideoId": "533f0ec988f7a79e347bdaa02546f7c6",
+						"includeVideo": false,
+						"streamVideoId": null,
 						"streamOptions": [
 							"controls",
 							"captions"
@@ -100,14 +100,9 @@
 						"streamThumbnails": null,
 						"sectionPadding": null,
 						"streamPosterAssetFile": null,
-						"streamPoster": {
-							"file": {
-								"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/fBOGbRxQaR46faAbcbpN0/7db06ba20b53e7a65108da27dc82c514/Cache-Reserve-stream-poster.png"
-							},
-							"description": ""
-						},
-						"imageSize": "Medium",
-						"imagePosition": false,
+						"streamPoster": null,
+						"imageSize": null,
+						"imagePosition": null,
 						"leftLinkUrl": null,
 						"leftLink": null,
 						"leftLinkLoggedIn": null,
@@ -117,25 +112,39 @@
 						"backgroundAssetFile": null,
 						"imageLayout": null,
 						"image": null,
-						"imageAssetFile": null
+						"imageAssetFile": {
+							"id": "135d7e71-27bd-5424-b60a-0cc8e0cbcecf",
+							"altText": "Cloudflare D1 Database",
+							"title": "Cloudflare D1 Database",
+							"activeAsset": "Contentful Asset",
+							"locale": "en-US",
+							"contentfulAsset": {
+								"file": {
+									"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/1W5QoaWTrKT8IwoTrV0uU3/d1deb0a1881d756d346b9a7f04aa5f51/D1.png"
+								},
+								"description": ""
+							},
+							"brandfolderAsset": null,
+							"brandfolderAssetMobile": null
+						}
 					},
 					{
-						"contentfulId": "39ZVIjZ57DjRCnj051Gmz3",
+						"contentfulId": "1WwRfKqHXfC0VMVeNUJhqx",
 						"contentTypeId": "bladeMultipleColumnsLayout",
 						"title": null,
-						"eyebrowHeading": " BENEFITS OF CLOUDFLARE CACHE RESERVE",
+						"eyebrowHeading": "BENEFITS OF D1",
 						"description": null,
 						"textLayout": "left",
-						"columnsLayout": "Three Columns",
+						"columnsLayout": "Four Columns",
 						"columnContent": [
 							{
 								"contentTypeId": "feature",
-								"contentfulId": "6RIS6jiumkuPwuPqIxjUF5",
-								"title": "Increased cache hits",
+								"contentfulId": "7l7ul5KeEPns5nElQMjQVz",
+								"title": "Built-in database solution",
 								"makeTitleLink": false,
 								"titleUrl": null,
 								"titleSize": null,
-								"description": "Improve your cache hit ratios by storing long tail content from the [Cloudflare CDN](https://www.cloudflare.com/application-services/products/cdn/).",
+								"description": "D1 is built on one of the most widely used SQL query engines in the world, enabling you to use familiar drivers and ORMs.",
 								"learnMoreUrl": null,
 								"learnMoreText": null,
 								"displayBorder": false,
@@ -143,16 +152,16 @@
 								"removeCardBorder": false,
 								"icon": null,
 								"iconAssetFile": {
-									"id": "ff8961fa-ef8b-5b0d-b999-e0c79b5bbe93",
-									"altText": "internet globe",
-									"title": "internet globe",
+									"id": "111dcd6d-8214-592f-8fbb-1fb4e22472f1",
+									"altText": null,
+									"title": null,
 									"activeAsset": "Contentful Asset",
 									"locale": "en-US",
 									"contentfulAsset": {
 										"file": {
-											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/5b3ukfoY9BpcbnxK1cEvJs/78b3069991fa76f7b062113f6db17576/internet-globe.svg"
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/1f0iDYaTaOexv9owSIBMWR/cda620b331c9019608f4f837c2df5380/server-3_outline.png"
 										},
-										"description": "Orange icon of a globe"
+										"description": ""
 									},
 									"brandfolderAsset": null,
 									"brandfolderAssetMobile": null
@@ -166,12 +175,12 @@
 							},
 							{
 								"contentTypeId": "feature",
-								"contentfulId": "7i7cEjDlwRH8HCph4051LD",
-								"title": "Faster performance",
+								"contentfulId": "50GG50cPWCnESbmjoZKgK7",
+								"title": "Scale infinitely",
 								"makeTitleLink": false,
 								"titleUrl": null,
 								"titleSize": null,
-								"description": "Shield your origin servers from unnecessary, voluminous requests to ensure faster performance and a smoother user experience.",
+								"description": "Our natively serverless architecture enables developers to scale databases, increasing the pace of innovation.",
 								"learnMoreUrl": null,
 								"learnMoreText": null,
 								"displayBorder": false,
@@ -179,16 +188,16 @@
 								"removeCardBorder": false,
 								"icon": null,
 								"iconAssetFile": {
-									"id": "b1b7275d-3503-5173-a651-9cfd70157c3c",
-									"altText": "Performance acceleration rocket ",
-									"title": "Performance acceleration rocket",
+									"id": "122122d8-cea5-5bcc-8451-b0810e564bf3",
+									"altText": "Optimization scale orange",
+									"title": "Optimization scale orange",
 									"activeAsset": "Contentful Asset",
 									"locale": "en-US",
 									"contentfulAsset": {
 										"file": {
-											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/1vvXmr7jmxFdYUgliFcXUh/d27e7eabc9727ba987b15d5e9ddad5e3/performance-acceleration-rocket.svg"
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/7vSmQwpXxBBSUXvax4mTTj/1e9733d09150035751acd28962d65831/optimization-scale.png"
 										},
-										"description": "Performance acceleration rocket orange"
+										"description": "icon scale aqua"
 									},
 									"brandfolderAsset": null,
 									"brandfolderAssetMobile": null
@@ -202,12 +211,48 @@
 							},
 							{
 								"contentTypeId": "feature",
-								"contentfulId": "3DLfJTlQPfpzq05l3n15tm",
-								"title": "Affordable, consistent pricing",
+								"contentfulId": "69K9rz5xFvqJS6SFcpbimR",
+								"title": "Rely on Time Travel",
 								"makeTitleLink": false,
 								"titleUrl": null,
 								"titleSize": null,
-								"description": "Maximize your savings by limiting unnecessary cache data evictions and eliminating associated egress costs.",
+								"description": "With always-on Time Travel, easily roll your database back to any specific minute in the last 30 days.",
+								"learnMoreUrl": null,
+								"learnMoreText": null,
+								"displayBorder": false,
+								"openLinkInNewTab": null,
+								"removeCardBorder": false,
+								"icon": null,
+								"iconAssetFile": {
+									"id": "672bae7e-7843-5f70-80c8-25b6483c2b51",
+									"altText": null,
+									"title": null,
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/62tme9kTrisdGyf3VkBsvv/4096a715634cf9a3807e0a59c9d5dab4/time.svg"
+										},
+										"description": null
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								},
+								"imageOverlaySuperheader": null,
+								"imageOverlayText": null,
+								"imageAssetFile": null,
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
+							},
+							{
+								"contentTypeId": "feature",
+								"contentfulId": "21drkzH2Sh8JvDCo09M0ip",
+								"title": "Benefit from cost-effective pricing",
+								"makeTitleLink": false,
+								"titleUrl": null,
+								"titleSize": null,
+								"description": "D1 bills on queries you issue and any storage above your plan's limits. You are not billed for hours or capacity units.",
 								"learnMoreUrl": null,
 								"learnMoreText": null,
 								"displayBorder": false,
@@ -237,13 +282,13 @@
 								"streamThumbnailAssetFile": null
 							}
 						],
-						"sectionPadding": null,
+						"sectionPadding": "tile--no-bottom-padding",
 						"htmlId": null
 					},
 					{
-						"contentfulId": "6VOlhBYXqSDQXuc08MSFCC",
-						"title": "Serve static content faster from our global CDN",
-						"copy": "Cloudflare Cache Reserve is a large, persistent data store built on [R2](https://www.cloudflare.com/developer-platform/products/r2/) — our global, [S3-compatible object storage service](https://www.cloudflare.com/developer-platform/solutions/s3-compatible-object-storage/).\n\nBy serving static content from the edge of our global network, Cache Reserve helps increase cache hit ratios, speed up load times for end users, and [minimize unnecessary egress fees](https://www.cloudflare.com/the-net/cloud-egress-fees-challenge-future-ai/).\n",
+						"contentfulId": "2YPiEEYcBsGmTBGSRDboEC",
+						"title": "Support globally distributed applications",
+						"copy": "D1 is built on SQLite, has built-in JSON parsing and querying functions with support for full-text search triggers.",
 						"toggleText": null,
 						"button": [],
 						"learnMoreUrl": null,
@@ -266,14 +311,14 @@
 						"streamPosterAssetFile": null,
 						"image": null,
 						"imageAssetFile": {
-							"id": "f00ca93e-47c1-53aa-8779-72969fcd3725",
-							"altText": "R2 Storage - Multi-Cloud",
-							"title": "R2 Storage - Multi-Cloud",
+							"id": "ba072b63-a755-5803-a7bf-1ceacbe67810",
+							"altText": " Built on one of the most popular and widely used SQL query engines in the world",
+							"title": null,
 							"activeAsset": "Contentful Asset",
 							"locale": "en-US",
 							"contentfulAsset": {
 								"file": {
-									"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/4ltjBPznhikhwxKjfmxHww/31ea411d4bfbc74f5a79702c7e5971da/BDES-4909_-_r2-multi-cloud__1_.svg"
+									"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/1QuIWgeAvGNaoRNSGsPY8H/781f553d51a254c4f71225e39b881d66/Developer_Platform_Solutions.png"
 								},
 								"description": ""
 							},
@@ -285,201 +330,45 @@
 						"sectionTitle": "HOW IT WORKS",
 						"htmlId": null,
 						"titleSize": null,
-						"sectionPadding": "tile--no-top-padding",
+						"sectionPadding": null,
 						"backgroundColor": "white",
 						"bladeBorder": "none",
 						"imagePosition": true,
 						"imageSize": "medium",
-						"imageTextAlignment": null,
+						"imageTextAlignment": "center",
 						"togglesTo": []
 					},
 					{
-						"contentfulId": "q3uixQDMEaV0JW3H9qomG",
-						"contentTypeId": "bladeLeadGeneration",
-						"title": null,
-						"description": "See how Cache Reserve works",
-						"variant": "inline",
+						"contentTypeId": "bladeEnablement",
+						"contentfulId": "WCwV7z5pSScdbKD7bhKZe",
+						"title": "Learn how to increase developer velocity with the Cloudflare's connectivity cloud",
+						"titleSize": "medium",
+						"backgroundColor": "image-background",
+						"buttonText": null,
+						"buttonUrl": null,
+						"buttonText2": null,
+						"buttonModalId2": null,
+						"buttonUrl2": null,
+						"bladeSizeType": "small",
 						"htmlId": null,
-						"sectionPadding": "tile--no-top-padding",
-						"backgroundImage": {
-							"id": "5fb646a4-2af5-50d0-815c-108317d4b5b7",
-							"altText": "Cloudflare Orange Background",
-							"title": "Cloudflare Orange Background",
-							"activeAsset": "Contentful Asset",
-							"locale": "en-US",
-							"contentfulAsset": {
-								"file": {
-									"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/6wvLylL1UDvEfh7N5WBd32/b05450aa05d6c40af93bf04309e1723c/Lead-generation-background-generic.png"
-								},
-								"description": ""
-							},
-							"brandfolderAsset": null,
-							"brandfolderAssetMobile": null
-						},
-						"primaryCtaButton": {
+						"bladeBorder": "none",
+						"buttonOne": {
 							"buttonAssetFile": null,
 							"buttonTextLoggedIn": null,
 							"contentTypeId": "button",
-							"contentfulId": "2x8ibYXIm1rdJdqDtmgT4O",
-							"elementName": "Cache Reserve - ADDITIONAL OFFER BLADE - CTA",
+							"contentfulId": "7rQSXv4h3SyG7uxYI9jjXr",
+							"elementName": "D1 - Learn more - CTA",
 							"standardText": null,
-							"text": "Watch the demo",
-							"url": "https://www.youtube.com/watch?v=hyBelB1S8KI",
+							"text": "Learn more",
+							"url": "/lp/increase-developer-velocity-with-a-connectivity-cloud/",
 							"loggedInUrl": null,
 							"buttonModal": null,
-							"openInNewTab": true,
+							"openInNewTab": false,
 							"locale": "en-US"
 						},
-						"secondaryCtaButton": null
-					},
-					{
-						"contentTypeId": "bladeRichTextColumnGroup",
-						"contentfulId": "5MXHN5wyabsDhi2s5jkWFy",
-						"htmlId": null,
-						"mainHeadline": null,
-						"backgroundColor": "white",
-						"bladeBorder": "none",
-						"sectionPadding": "tile--no-top-bottom-padding",
-						"columnLayout": "One Column Wide",
-						"columns": [
-							{
-								"contentTypeId": "elementRichText",
-								"contentfulId": "3kjbO0cHoIOW2zFOcktE01",
-								"title": null,
-								"htmlId": null,
-								"elementPosition": "relative",
-								"column": {
-									"nodeType": "document",
-									"content": [
-										{
-											"nodeType": "heading-4",
-											"data": {
-												"target": null,
-												"uri": null
-											},
-											"value": null,
-											"marks": null,
-											"content": [
-												{
-													"nodeType": "text",
-													"data": {
-														"target": null,
-														"uri": null
-													},
-													"value": "What our customers are saying",
-													"marks": [],
-													"content": null
-												}
-											]
-										},
-										{
-											"nodeType": "blockquote",
-											"data": {
-												"target": null,
-												"uri": null
-											},
-											"value": null,
-											"marks": null,
-											"content": [
-												{
-													"nodeType": "paragraph",
-													"data": {
-														"target": null,
-														"uri": null
-													},
-													"value": null,
-													"marks": null,
-													"content": [
-														{
-															"nodeType": "text",
-															"data": {
-																"target": null,
-																"uri": null
-															},
-															"value": "\"The 2% cache hit ratio improvement enabled by Cloudflare Cache Reserve has eliminated roughly two-thirds of our S3 egress activity. The reduction in egress charges is almost an order of magnitude larger than the price we paid for Cache Reserve. ",
-															"marks": [],
-															"content": null
-														},
-														{
-															"nodeType": "text",
-															"data": {
-																"target": null,
-																"uri": null
-															},
-															"value": "\"",
-															"marks": [],
-															"content": null
-														}
-													]
-												}
-											]
-										},
-										{
-											"nodeType": "paragraph",
-											"data": {
-												"target": null,
-												"uri": null
-											},
-											"value": null,
-											"marks": null,
-											"content": [
-												{
-													"nodeType": "text",
-													"data": {
-														"target": null,
-														"uri": null
-													},
-													"value": "",
-													"marks": [],
-													"content": null
-												}
-											]
-										},
-										{
-											"nodeType": "paragraph",
-											"data": {
-												"target": null,
-												"uri": null
-											},
-											"value": null,
-											"marks": null,
-											"content": [
-												{
-													"nodeType": "text",
-													"data": {
-														"target": null,
-														"uri": null
-													},
-													"value": "Senior Manager of Engineering",
-													"marks": [],
-													"content": null
-												},
-												{
-													"nodeType": "text",
-													"data": {
-														"target": null,
-														"uri": null
-													},
-													"value": " — ",
-													"marks": [],
-													"content": null
-												},
-												{
-													"nodeType": "text",
-													"data": {
-														"target": null,
-														"uri": null
-													},
-													"value": "Docker",
-													"marks": [],
-													"content": null
-												}
-											]
-										}
-									]
-								}
-							}
-						]
+						"buttonTwo": null,
+						"sectionPadding": "tile--no-top-padding",
+						"eyebrow": null
 					},
 					{
 						"contentTypeId": "bladeFeaturedCompanyLogos",
@@ -671,54 +560,22 @@
 						"sectionPadding": null
 					},
 					{
-						"contentTypeId": "bladeEnablement",
-						"contentfulId": "769gZrE7rnixLO1XKvBujK",
-						"title": "Trusted by millions of Internet properties",
-						"titleSize": "medium",
-						"backgroundColor": "image-background",
-						"buttonText": null,
-						"buttonUrl": null,
-						"buttonText2": null,
-						"buttonModalId2": null,
-						"buttonUrl2": null,
-						"bladeSizeType": "small",
-						"htmlId": null,
-						"bladeBorder": "none",
-						"buttonOne": {
-							"buttonAssetFile": null,
-							"buttonTextLoggedIn": null,
-							"contentTypeId": "button",
-							"contentfulId": "1AdE2OvNnGRQAK4swvGBlL",
-							"elementName": "Cache Reserve - CASE STUDIES - CTA",
-							"standardText": null,
-							"text": "See case studies",
-							"url": "https://www.cloudflare.com/case-studies/",
-							"loggedInUrl": null,
-							"buttonModal": null,
-							"openInNewTab": false,
-							"locale": "en-US"
-						},
-						"buttonTwo": null,
-						"sectionPadding": null,
-						"eyebrow": null
-					},
-					{
-						"contentfulId": "537RZnIMGBCH0lZK8lqL7E",
+						"contentfulId": "6r3w6KoFfpBo4ZJCP3Wl11",
 						"contentTypeId": "bladeMultipleColumnsLayout",
-						"title": "Cache Reserve helps you extend the cache lifetime of your assets, control which assets get cached, and optimize content performance for your users",
-						"eyebrowHeading": "Top Cache Reserve use cases",
+						"title": "Meet all your relational SQL needs and see how incredibly easy it is to build a database.",
+						"eyebrowHeading": "Top D1 use cases",
 						"description": null,
 						"textLayout": "left",
 						"columnsLayout": "Three Columns",
 						"columnContent": [
 							{
 								"contentTypeId": "feature",
-								"contentfulId": "EMzD3V1oLKsdgatTxbaGn",
-								"title": "Maximize the cache lifetime of your resources",
+								"contentfulId": "7pjHnwK6Q3jPBcmCskbrtS",
+								"title": "Build and deploy unlimited databases",
 								"makeTitleLink": false,
 								"titleUrl": null,
 								"titleSize": null,
-								"description": "Cache Reserve gives you full control over the retention period of your cached assets, helping you lower cache \"misses\" and optimize your storage when cache space nears capacity.",
+								"description": "Databases are a key part of building full-stack applications. Build infinitely scalable composable databases with D1.",
 								"learnMoreUrl": null,
 								"learnMoreText": null,
 								"displayBorder": false,
@@ -726,16 +583,16 @@
 								"removeCardBorder": false,
 								"icon": null,
 								"iconAssetFile": {
-									"id": "33d31860-e857-5323-98f8-8102528a9f69",
-									"altText": "Performance arrow up icon",
-									"title": "Performance arrow up icon",
+									"id": "122122d8-cea5-5bcc-8451-b0810e564bf3",
+									"altText": "Optimization scale orange",
+									"title": "Optimization scale orange",
 									"activeAsset": "Contentful Asset",
 									"locale": "en-US",
 									"contentfulAsset": {
 										"file": {
-											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/7Bv7zElyuDmw76ORWjFL8b/e12526c289fcc43ebf221959e6093a61/performance-arrow-up.svg"
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/7vSmQwpXxBBSUXvax4mTTj/1e9733d09150035751acd28962d65831/optimization-scale.png"
 										},
-										"description": "Performance arrow up icon"
+										"description": "icon scale aqua"
 									},
 									"brandfolderAsset": null,
 									"brandfolderAssetMobile": null
@@ -749,12 +606,12 @@
 							},
 							{
 								"contentTypeId": "feature",
-								"contentfulId": "3uIU5B0X0K5q7cTppxZAOY",
-								"title": "Customize cache settings",
+								"contentfulId": "zcfJS2v7MMmxNPLKf2JK2",
+								"title": "Connect databases with Hyperdrive",
 								"makeTitleLink": false,
 								"titleUrl": null,
 								"titleSize": null,
-								"description": "Cache Rules allows you to define which resources are available for Cache Reserve, so you can tailor your content delivery strategy for almost any use case — without needing to write code.",
+								"description": "Combine D1 and Workers for globally distributed apps and use Hyperdrive to query databases in legacy clouds.",
 								"learnMoreUrl": null,
 								"learnMoreText": null,
 								"displayBorder": false,
@@ -762,16 +619,16 @@
 								"removeCardBorder": false,
 								"icon": null,
 								"iconAssetFile": {
-									"id": "c241854c-77e1-5c45-9b8d-479a6651b12b",
-									"altText": "Code content optimization blue",
-									"title": "Code content optimization blue",
+									"id": "e9338336-ce81-5938-a534-b60611eb0d00",
+									"altText": "Cloudflare workers ",
+									"title": "Cloudflare workers ",
 									"activeAsset": "Contentful Asset",
 									"locale": "en-US",
 									"contentfulAsset": {
 										"file": {
-											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/2KDaTpdwZcctx9Q8G3WN5/34be97098084c540c60d6745096da8c6/code-content-optimization.svg"
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/4wP5LKSCVMZzy2mn0MsQyq/6d0239e7354806aa1b0dfcfec7ac7b6b/cloudflare-workers.svg"
 										},
-										"description": "Content security policies icon"
+										"description": ""
 									},
 									"brandfolderAsset": null,
 									"brandfolderAssetMobile": null
@@ -785,12 +642,12 @@
 							},
 							{
 								"contentTypeId": "feature",
-								"contentfulId": "2A5kVifSg31rEOnuaYYYUY",
-								"title": "Accelerate content performance ",
+								"contentfulId": "1hWROFJopJxSwH7sxeywuF",
+								"title": "Build production-scale applications",
 								"makeTitleLink": false,
 								"titleUrl": null,
 								"titleSize": null,
-								"description": "Our global network enables you to cache content from %{DataCenterCount}+ data centers worldwide, so your users get content as quickly as possible, no matter where they are located.",
+								"description": "With support for up to 10 GB databases and 50,000 databases per account, unlock the ability to build production-scale applications.",
 								"learnMoreUrl": null,
 								"learnMoreText": null,
 								"displayBorder": false,
@@ -798,16 +655,16 @@
 								"removeCardBorder": false,
 								"icon": null,
 								"iconAssetFile": {
-									"id": "4b8d0fd4-e74c-5191-a1ff-2887eb26d2fa",
-									"altText": "Performance acceleration bolt orange",
-									"title": "Performance acceleration bolt orange",
+									"id": "c83156b2-55b7-5045-8877-3e9545d7e4cb",
+									"altText": "Automatic Platform Optimization",
+									"title": "APO Icon",
 									"activeAsset": "Contentful Asset",
 									"locale": "en-US",
 									"contentfulAsset": {
 										"file": {
-											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/5sWqRe2bVBkaYdFk0OapeM/7104c2a5381e49f73144e8a6e1095b53/performance-acceleration-bolt.svg"
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/2B4PkhT3iJxxMZBCF5BC9a/1e5dd87f75bf1efefb452d8819953939/optimization-web.svg"
 										},
-										"description": "Lightning bolt icon"
+										"description": null
 									},
 									"brandfolderAsset": null,
 									"brandfolderAssetMobile": null
@@ -825,35 +682,74 @@
 					},
 					{
 						"contentTypeId": "bladeHtml",
-						"contentfulId": "1gnoCT02eLUdpdfqKAymQl",
-						"htmlContent": "<div style=\"text-align: center; cursor:pointer; margin-bottom:64px; margin-top: -60px;\">\n    <a href=\"/developer-platform/solutions/#build-deploy-code-solutions \" target=\"_self\" class=\"inline-link-style\">Explore more use cases<svg width=\"6\" height=\"10\"\n            viewBox=\"0 0 6 10\" fill=\"currentColor\" aria-label=\"chevron\" xmlns=\"/developer-platform/solutions/#build-deploy-code-solutions \"\n            class=\"dib v-mid ml1\">\n            <path\n                d=\"M1.00003 -4.37127e-08L-3.93401e-07 1.00003L4 5L0.000271373 9.00025L1.00003 10L6.00003 5L1.00003 -4.37127e-08Z\">\n            </path>\n        </svg>  </a>\n</div>",
+						"contentfulId": "3c5HXfszQHRivcx7hIgbJs",
+						"htmlContent": "<div style=\"text-align: center; cursor:pointer; margin-bottom:64px; margin-top: -60px;\">\n    <a href=\"/developer-platform/solutions/#build-deploy-code-solutions\" target=\"_blank\" class=\"inline-link-style\">Explore more use cases<svg width=\"4\" height=\"10\"\n            viewBox=\"0 0 6 10\" fill=\"currentColor\" aria-label=\"chevron\" xmlns=\"https://www.cloudflare.com/developer-platform/solutions/\"\n            class=\"dib v-mid ml1\">\n            <path\n                d=\"M1.00003 -4.37127e-08L-3.93401e-07 1.00003L4 5L0.000271373 9.00025L1.00003 10L6.00003 5L1.00003 -4.37127e-08Z\">\n            </path>\n        </svg>  </a>\n</div>",
 						"htmlId": null
 					},
 					{
-						"contentfulId": "p84iV8D8BFpnWFxuHpctF",
+						"contentfulId": "6gEBQQr2mZXfjWTEyeyCW7",
+						"contentTypeId": "bladeLeadGeneration",
+						"title": null,
+						"description": "See what global companies are building with Cloudflare",
+						"variant": "inline",
+						"htmlId": null,
+						"sectionPadding": "tile--no-top-padding",
+						"backgroundImage": {
+							"id": "5fb646a4-2af5-50d0-815c-108317d4b5b7",
+							"altText": "Cloudflare Orange Background",
+							"title": "Cloudflare Orange Background",
+							"activeAsset": "Contentful Asset",
+							"locale": "en-US",
+							"contentfulAsset": {
+								"file": {
+									"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/6wvLylL1UDvEfh7N5WBd32/b05450aa05d6c40af93bf04309e1723c/Lead-generation-background-generic.png"
+								},
+								"description": ""
+							},
+							"brandfolderAsset": null,
+							"brandfolderAssetMobile": null
+						},
+						"primaryCtaButton": {
+							"buttonAssetFile": null,
+							"buttonTextLoggedIn": null,
+							"contentTypeId": "button",
+							"contentfulId": "2ywy2J7P6yB6EJl2ODhI65",
+							"elementName": "View use cases",
+							"standardText": null,
+							"text": "View use cases",
+							"url": "https://developers.cloudflare.com/d1/reference/community-projects/",
+							"loggedInUrl": null,
+							"buttonModal": null,
+							"openInNewTab": true,
+							"locale": "en-US"
+						},
+						"secondaryCtaButton": null
+					},
+					{
+						"contentfulId": "6A72Uz1tXuGm2dNikNelhD",
 						"backgroundColor": "white",
 						"contentTypeId": "bladeFourFeatures",
 						"htmlId": null,
 						"copy": null,
-						"title": "Resources",
+						"title": "D1 Resources",
 						"subtitle": null,
-						"bladeStyle": "Feature Blocks - 3 columns",
+						"bladeStyle": null,
 						"bladeBorder": "none",
-						"sectionPadding": "tile--no-top-bottom-padding",
+						"sectionPadding": null,
 						"carouselSlidesToShow": null,
 						"carouselSlidesToScroll": null,
 						"locale": "en-US",
 						"features": [
 							{
 								"contentTypeId": "feature",
-								"contentfulId": "5zRIjknP2Vg7nopEyb2LO8",
-								"title": "How to set up Cache Reserve",
+								"contentfulId": "13nxBRjA8X0BbG2ORQR72u",
+								"title": "Get started with D1",
 								"makeTitleLink": false,
 								"titleUrl": null,
 								"titleSize": null,
-								"description": "Learn how to activate Cache Reserve, reserve storage space for your assets, extend your asset retention periods, and more.",
-								"learnMoreUrl": "https://developers.cloudflare.com/cache/advanced-configuration/cache-reserve/",
-								"learnMoreText": "Explore the developer docs ",
+								"description": "Find out how to create your first database using D1, create a schema, and connect a Cloudflare Worker to your D1 database.",
+								"learnMoreUrl": "https://developers.cloudflare.com/d1/get-started/",
+								"learnMoreText": "Read documentation",
 								"displayBorder": false,
 								"openLinkInNewTab": true,
 								"removeCardBorder": false,
@@ -862,9 +758,9 @@
 								"imageOverlaySuperheader": null,
 								"imageOverlayText": null,
 								"imageAssetFile": {
-									"id": "2ea2b03b-b35f-525f-8903-0fa37d95a7e3",
-									"altText": "Resources card - Thin top orange line  - image",
-									"title": "Resources card - Thin top orange line  - image",
+									"id": "bb0c6be9-0531-5573-923c-f00ca093e47e",
+									"altText": null,
+									"title": null,
 									"activeAsset": "Contentful Asset",
 									"locale": "en-US",
 									"contentfulAsset": {
@@ -882,14 +778,14 @@
 							},
 							{
 								"contentTypeId": "feature",
-								"contentfulId": "7ft3wSvHf2IwpkwDTS4oNP",
-								"title": "Demo: Cloudflare Cache Reserve",
+								"contentfulId": "3QNTUc6JYwNucu8APjXmS2",
+								"title": "Interact with your data stored in D1",
 								"makeTitleLink": false,
 								"titleUrl": null,
 								"titleSize": null,
-								"description": "Storing large, static assets on cloud provider networks can incur hefty egress fees. See how Cache Reserve lowers costs while improving response times.",
-								"learnMoreUrl": "https://www.youtube.com/watch?v=hyBelB1S8KI",
-								"learnMoreText": "Watch the demo",
+								"description": "Cloudflare and Prisma make it easier than ever to interact with your data to deploy globally available apps.",
+								"learnMoreUrl": "https://blog.cloudflare.com/prisma-orm-and-d1/",
+								"learnMoreText": "Read the blog",
 								"displayBorder": false,
 								"openLinkInNewTab": true,
 								"removeCardBorder": false,
@@ -898,9 +794,9 @@
 								"imageOverlaySuperheader": null,
 								"imageOverlayText": null,
 								"imageAssetFile": {
-									"id": "2ea2b03b-b35f-525f-8903-0fa37d95a7e3",
-									"altText": "Resources card - Thin top orange line  - image",
-									"title": "Resources card - Thin top orange line  - image",
+									"id": "bb0c6be9-0531-5573-923c-f00ca093e47e",
+									"altText": null,
+									"title": null,
 									"activeAsset": "Contentful Asset",
 									"locale": "en-US",
 									"contentfulAsset": {
@@ -918,14 +814,14 @@
 							},
 							{
 								"contentTypeId": "feature",
-								"contentfulId": "ByKqNDGweGyMVk52qsE3v",
-								"title": " Cache Reserve goes GA",
+								"contentfulId": "3DohAvcmuiw4K7GjliWQZv",
+								"title": "Alpha database migration guide",
 								"makeTitleLink": false,
 								"titleUrl": null,
 								"titleSize": null,
-								"description": "Cache Reserve is now generally available and comes with several new features, including usage analytics and granular Cache Rules.",
-								"learnMoreUrl": "https://blog.cloudflare.com/cache-reserve-goes-ga",
-								"learnMoreText": "Read the blog post",
+								"description": "Find out how to recreate alpha D1 databases on our production-ready system.",
+								"learnMoreUrl": "https://developers.cloudflare.com/d1/platform/alpha-migration/",
+								"learnMoreText": "View guide",
 								"displayBorder": false,
 								"openLinkInNewTab": true,
 								"removeCardBorder": false,
@@ -934,9 +830,9 @@
 								"imageOverlaySuperheader": null,
 								"imageOverlayText": null,
 								"imageAssetFile": {
-									"id": "2ea2b03b-b35f-525f-8903-0fa37d95a7e3",
-									"altText": "Resources card - Thin top orange line  - image",
-									"title": "Resources card - Thin top orange line  - image",
+									"id": "bb0c6be9-0531-5573-923c-f00ca093e47e",
+									"altText": null,
+									"title": null,
 									"activeAsset": "Contentful Asset",
 									"locale": "en-US",
 									"contentfulAsset": {
@@ -956,8 +852,8 @@
 					},
 					{
 						"contentTypeId": "bladeEnablement",
-						"contentfulId": "3uyfCEqVUndUPvgt7izNmF",
-						"title": "Get started with Cache Reserve",
+						"contentfulId": "6nhwytOZiBE6CxFRArGVAb",
+						"title": "Get D1 for your enterprise",
 						"titleSize": "medium",
 						"backgroundColor": "image-background",
 						"buttonText": null,
@@ -972,11 +868,11 @@
 							"buttonAssetFile": null,
 							"buttonTextLoggedIn": null,
 							"contentTypeId": "button",
-							"contentfulId": "1ToFgknl6HyCrJCipIhqcN",
-							"elementName": "Cache Reserve - ENABLEMENT BLADE - CTA",
+							"contentfulId": "3HaMNOup8HZ1mMD7705sWS",
+							"elementName": "Get started - CTA",
 							"standardText": null,
-							"text": "Sign up",
-							"url": "https://dash.cloudflare.com/sign-up",
+							"text": "Get started",
+							"url": "https://dash.cloudflare.com/sign-up/",
 							"loggedInUrl": null,
 							"buttonModal": null,
 							"openInNewTab": true,
@@ -1000,8 +896,8 @@
 		"pageContext": {
 			"currentLocale": "en-US",
 			"locale": "en-US",
-			"pathname": "/developer-platform/products/cache-reserve/",
-			"contentfulId": "4xD27KPUlMrJZxSpQHZUMU",
+			"pathname": "/developer-platform/products/d1/",
+			"contentfulId": "1XocSe8FmOosqpYDlsG6hu",
 			"allowedHrefLangs": [
 				"en-US",
 				"zh-CN",

@@ -53,7 +53,7 @@
 				},
 				"sys": {
 					"createdAt": "2022-01-24T18:28:54.967Z",
-					"updatedAt": "2026-04-08T13:52:24.912Z"
+					"updatedAt": "2026-04-11T03:56:14.389Z"
 				},
 				"contentfulId": "62xMZ1ricakE06Y0AZrMkT",
 				"contentTypeId": "page",
@@ -3176,8 +3176,202 @@
 										}
 									]
 								}
+							},
+							{
+								"contentTypeId": "elementRichText",
+								"contentfulId": "gCs1DjLSJFEO8D1FKPGdw",
+								"title": null,
+								"htmlId": null,
+								"elementPosition": "relative",
+								"column": {
+									"nodeType": "document",
+									"content": [
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "\"We have received great feedback on Cloudflare Zero Trust — it's easier to deploy and better for our employees. We are much more secure as an organization with the same amount of time available to us.\"",
+													"marks": [
+														{
+															"type": "bold"
+														}
+													],
+													"content": null
+												}
+											]
+										},
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "",
+													"marks": [
+														{
+															"type": "italic"
+														}
+													],
+													"content": null
+												}
+											]
+										},
+										{
+											"nodeType": "embedded-asset-block",
+											"data": {
+												"target": {
+													"sys": {
+														"id": "6rP03Si8CMu3IL40TSDp0b",
+														"type": "Link",
+														"linkType": "Asset"
+													},
+													"related_asset": [
+														{
+															"contentfulId": "6rP03Si8CMu3IL40TSDp0b",
+															"locale": "en-US",
+															"title": "logo Applied",
+															"file": {
+																"name": "logo-applied.svg",
+																"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/6rP03Si8CMu3IL40TSDp0b/73b8423c469cc426cfa8e26ff27f0518/logo-applied.svg",
+																"internal": {
+																	"mediaType": "image/svg+xml"
+																}
+															}
+														}
+													],
+													"entry_elementMarkdown": [],
+													"entry_assetFile": [],
+													"entry_button": [],
+													"entry_elementLink": [],
+													"entry_page": [],
+													"entry_elementIcon": [],
+													"entry_bladeTable": [],
+													"entry_bladeThreeFeatures": [],
+													"entry_bladeFourFeatures": []
+												},
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": []
+										},
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "",
+													"marks": [],
+													"content": null
+												}
+											]
+										}
+									]
+								}
 							}
 						]
+					},
+					{
+						"contentTypeId": "bladeEnablement",
+						"contentfulId": "4sPjbzh0nUb6kZIsKmJKfm",
+						"title": "Ready to plan for your VPN replacement?",
+						"titleSize": "medium",
+						"backgroundColor": "image-background",
+						"buttonText": null,
+						"buttonUrl": null,
+						"buttonText2": null,
+						"buttonModalId2": null,
+						"buttonUrl2": null,
+						"bladeSizeType": "small",
+						"htmlId": null,
+						"bladeBorder": "none",
+						"buttonOne": {
+							"buttonAssetFile": null,
+							"buttonTextLoggedIn": null,
+							"contentTypeId": "button",
+							"contentfulId": "2xPfqLfLJpEw1TLjijGbI9",
+							"elementName": "Contact us",
+							"standardText": null,
+							"text": "Contact us",
+							"url": "#",
+							"loggedInUrl": null,
+							"buttonModal": {
+								"contentTypeId": "formModal",
+								"contentfulId": "4RHesdBLxGyBRqY2AB5WGp",
+								"modalName": "VPN replacement - contact us",
+								"modalId": "vpn-replacement-contact-us",
+								"modalType": "single-form",
+								"marketoForm": {
+									"contentTypeId": "marketoEmbeddedForm",
+									"contentfulId": "1ujDGExdXSfyindmg265xQ",
+									"bladeName": "Zero Trust Ent Plan - Contact us",
+									"backgroundColor": "white",
+									"marketoFormId": 1341,
+									"marketoFormLeadSource": "Inbound - Web Form",
+									"marketoFormLeadSourceDetail": "[ACQ] Q3'20 WEB - Zero Trust Contact Us - Ent Plan",
+									"marketoFormAssetName": null,
+									"marketoFormHeaderText": "Cloudflare Zero Trust",
+									"marketoFormDefaultComment": "Cloudflare Zero Trust demo request",
+									"showCommentBox": true,
+									"marketoFormThankYouText": null,
+									"marketoFormCustomSuccessMessage": null,
+									"marketoFormPdfDownload": null,
+									"marketoFormPdfDownloadI18n": [],
+									"marketoFormAssetDownloadButtonText": null,
+									"marketoFormSuccessRedirectUrl": null,
+									"sendAdRoll": null,
+									"meta_adRollCustomSegment": null,
+									"enableSandbox": null,
+									"marketoFormSubmitButtonText": "Contact us",
+									"marketoFormSubmitButtonColor": "blue",
+									"enableEmailVerification": null,
+									"disableEnterpriseEmailNotification": null,
+									"enableRingout": null
+								},
+								"title": "Request a VPN replacement discussion",
+								"regularCopy": null,
+								"splitFormDefaultTab": null,
+								"selfServeTabText": null,
+								"selfServeCopy": null,
+								"enterpriseTabText": null,
+								"enterpriseCopy": null
+							},
+							"openInNewTab": false,
+							"locale": "en-US"
+						},
+						"buttonTwo": null,
+						"sectionPadding": "tile--no-top-padding",
+						"eyebrow": null
 					},
 					{
 						"contentfulId": "fWKzxTnsVEYvwqwa5oS5W",
