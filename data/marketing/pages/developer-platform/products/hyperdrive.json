@@ -1,10 +1,10 @@
 {
 	"componentChunkName": "component---src-components-page-page-template-tsx",
-	"path": "/application-services/products/cloudflare-logs/",
+	"path": "/developer-platform/products/hyperdrive/",
 	"result": {
 		"data": {
 			"page": {
-				"pageName": "Cloudflare Logs - Product Page ",
+				"pageName": "Hyperdrive - Product Page - Developer Platform",
 				"localeList": {
 					"enUS": "English for Locale",
 					"zhCN": "Translated for Locale",
@@ -27,20 +27,20 @@
 					"ruRU": "Translated for Locale",
 					"svSE": "English for Locale",
 					"viVN": "English for Locale",
-					"trTR": "Translated for Locale",
+					"trTR": "English for Locale",
 					"zhHansCN": "Translated for Locale",
 					"plPL": "Translated for Locale",
 					"arAR": "No Page for Locale",
-					"heIL": null
+					"heIL": "No Page for Locale"
 				},
-				"relativePath": "application-services/products/cloudflare-logs/",
+				"relativePath": "developer-platform/products/hyperdrive",
 				"topNavOptions": "default",
 				"topNavButtonText": null,
 				"topNavButtonUrl": null,
 				"footerOptions": "default",
 				"metaTags": {
-					"metaTitle": "Cloudflare Logs | Granular Analytics and Insights",
-					"metaDescription": "Cloudflare Logs lets you identify attacks, debug errors, and create custom analytics by providing detailed HTTP request logs. Demo Cloudflare Logs today.",
+					"metaTitle": "Regional databases, globally distributed ",
+					"metaDescription": "Cloudflare Hyperdrive accelerates queries made to your existing databases, dramatically reducing latency no matter where users are connecting from.  ",
 					"twitterCustomImage": null,
 					"metaImage": {
 						"file": {
@@ -52,10 +52,10 @@
 					"author": []
 				},
 				"sys": {
-					"createdAt": "2019-01-31T19:03:22.084Z",
-					"updatedAt": "2026-04-11T13:31:02.744Z"
+					"createdAt": "2023-09-28T13:22:46.260Z",
+					"updatedAt": "2026-04-04T08:21:09.010Z"
 				},
-				"contentfulId": "3pnxtnd3x6OMcA2uAIG8YU",
+				"contentfulId": "4i1usPVo6625lvcdhccDpy",
 				"contentTypeId": "page",
 				"promotionalBanner": null,
 				"psaBanner": null,
@@ -65,119 +65,86 @@
 				"template": null,
 				"relatedBlades": [
 					{
-						"contentfulId": "3jf16PRJluC0wKMEmwwaiy",
-						"contentTypeId": "bladeHeroAnimation",
-						"title": "Cloudflare Logs",
-						"titleSize": null,
-						"subtitle": "Get a complete understanding of your app's traffic",
-						"subtitleSize": null,
-						"copy": "Cloudflare provides detailed logs of your HTTP requests. Use these logs to debug, identify configuration adjustments to improve performance and security, and create custom analytics.",
-						"buttonColor": "orange",
-						"buttonColor2": "orange-outline",
-						"buttonText1": "Talk to an expert",
-						"buttonText1LoggedIn": null,
-						"buttonUrl1": "#",
-						"buttonUrl1LoggedIn": null,
-						"button1ExtraClass": "talk-to-an-expert",
-						"buttonText2": "Watch demo",
-						"buttonText2LoggedIn": null,
-						"buttonUrl2": "https://cloudflare.ondemand.goldcast.io/on-demand/10350ff2-cb6c-430e-9e0b-28c29b5df938",
-						"button2ExtraClass": null,
-						"bladeBorder": "none",
-						"htmlId": null,
-						"textColor": "black",
-						"includeVideo": false,
-						"streamVideoId": null,
-						"streamOptions": null,
-						"streamCaptions": null,
-						"popupStreamId": null,
-						"popupText": null,
-						"button1OpenInNewTab": null,
-						"button2OpenInNewTab": true,
-						"streamThumbnails": null,
-						"sectionPadding": "tile--no-top-padding",
-						"streamPosterAssetFile": null,
-						"streamPoster": null,
-						"imageSize": "Medium",
-						"imagePosition": null,
-						"leftLinkUrl": null,
-						"leftLink": null,
-						"leftLinkLoggedIn": null,
-						"leftLinkOptions": "show",
-						"backgroundColor": "white",
-						"textlayoutMode": null,
-						"backgroundAssetFile": null,
-						"imageLayout": null,
-						"image": null,
-						"imageAssetFile": {
-							"id": "ab4db9e9-211f-59de-8563-a4bfd2933260",
-							"altText": "Logs hero illustration",
-							"title": "Logs hero illustration",
-							"activeAsset": "Contentful Asset",
-							"locale": "en-US",
-							"contentfulAsset": {
-								"file": {
-									"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/6YctAy2a9z3DCOhpC5ydMI/085ab47cf08275e6a67084af0912febe/logs-hero-illustration.svg"
-								},
-								"description": "Illustration of Cloudflare integration with IBM QRadar"
+						"contentTypeId": "bladeHalfWidthHero",
+						"contentfulId": "sXz1JnHYEjYhQuYOSoGB7",
+						"entityTitle": "Hyperdrive - Half width hero",
+						"leftHalf": {
+							"contentTypeId": "elementHalfWidthHeroContent",
+							"contentfulId": "7uMIcZ4Q779gJBvedDqPry",
+							"title": "Cloudflare Hyperdrive",
+							"eyebrow": "Global acceleration for your regional databases",
+							"copy": "Hyperdrive accelerates queries to your existing databases with Cloudflare Workers, helping reduce latency no matter where users are connecting from.",
+							"primaryCta": {
+								"buttonAssetFile": null,
+								"buttonTextLoggedIn": null,
+								"contentTypeId": "button",
+								"contentfulId": "2Xm1govQCT0s92RFbI2I10",
+								"elementName": "Sign up",
+								"standardText": null,
+								"text": "Sign up",
+								"url": "https://dash.cloudflare.com/sign-up/workers-and-pages",
+								"loggedInUrl": null,
+								"buttonModal": null,
+								"openInNewTab": true,
+								"locale": "en-US"
 							},
-							"brandfolderAsset": null,
-							"brandfolderAssetMobile": null
-						}
+							"secondaryCta": {
+								"buttonAssetFile": null,
+								"buttonTextLoggedIn": null,
+								"contentTypeId": "button",
+								"contentfulId": "3odOSoLDolSM6fQcj0RARG",
+								"elementName": "Explore the developer docs",
+								"standardText": null,
+								"text": "Explore the developer docs",
+								"url": "https://developers.cloudflare.com/hyperdrive/",
+								"loggedInUrl": null,
+								"buttonModal": null,
+								"openInNewTab": true,
+								"locale": "en-US"
+							},
+							"tertiaryCta": null
+						},
+						"rightHalf": {
+							"contentTypeId": "elementHalfWidthHeroImage",
+							"contentfulId": "7k7qhC2x0rsiN5OD72h3MJ",
+							"entityTitle": "Hyperdrive - Right side",
+							"imageAsset": {
+								"id": "33db9625-f3bf-5b95-b96c-df19325e564f",
+								"altText": "Race Flag",
+								"title": "CWO Race Flag",
+								"activeAsset": "Contentful Asset",
+								"locale": "en-US",
+								"contentfulAsset": {
+									"file": {
+										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/4FIQXnsjMQq9uKuliYQeEI/87f8dd7247c8df1eb80d65cb82928c7a/Race_Ahead_with_Pages_Build_Caching_flag_1__2_.png"
+									},
+									"description": "Race Flag"
+								},
+								"brandfolderAsset": null,
+								"brandfolderAssetMobile": null
+							}
+						},
+						"promotionalBanner": null,
+						"sectionPadding": "tile--no-bottom-padding",
+						"htmlId": null
 					},
 					{
-						"contentfulId": "KCdnKNu5ZUc8vsovNNrUj",
+						"contentfulId": "5M7aujromOKQBMUHa5dmav",
 						"contentTypeId": "bladeMultipleColumnsLayout",
 						"title": null,
-						"eyebrowHeading": "BENEFITS OF CLOUDFLARE LOGS",
+						"eyebrowHeading": "BENEFITS OF CLOUDFLARE HYPERDRIVE",
 						"description": null,
 						"textLayout": "left",
-						"columnsLayout": "Four Columns",
+						"columnsLayout": "Three Columns",
 						"columnContent": [
 							{
 								"contentTypeId": "feature",
-								"contentfulId": "56rwPA8JwIs1euQnQKRXEU",
-								"title": "Identify attacks and debug errors",
+								"contentfulId": "3qjT6zXHaoyPMq21rNO5hB",
+								"title": "No latency tax",
 								"makeTitleLink": false,
 								"titleUrl": null,
 								"titleSize": null,
-								"description": "Investigate potential threats in HTTP traffic. Identify and debug errors affecting end users.",
-								"learnMoreUrl": null,
-								"learnMoreText": null,
-								"displayBorder": false,
-								"openLinkInNewTab": null,
-								"removeCardBorder": false,
-								"icon": null,
-								"iconAssetFile": {
-									"id": "27d3dc18-7219-53bc-bd53-b9742318bf14",
-									"altText": "Traffic attack blue",
-									"title": "Traffic attack blue",
-									"activeAsset": "Contentful Asset",
-									"locale": "en-US",
-									"contentfulAsset": {
-										"file": {
-											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/44OWJ7jF9JVwp4zh7zMy7B/d80f24569dfb7d418d6913b32940bf5b/traffic-attack-browser_1_.svg"
-										},
-										"description": "Prevent financial and identity theft icon"
-									},
-									"brandfolderAsset": null,
-									"brandfolderAssetMobile": null
-								},
-								"imageOverlaySuperheader": null,
-								"imageOverlayText": null,
-								"imageAssetFile": null,
-								"streamId": null,
-								"streamThumbnail": null,
-								"streamThumbnailAssetFile": null
-							},
-							{
-								"contentTypeId": "feature",
-								"contentfulId": "5HfQD8tao8aN8mi9yoDPlY",
-								"title": "Tune your Cloudflare configuration",
-								"makeTitleLink": false,
-								"titleUrl": null,
-								"titleSize": null,
-								"description": "Logs can help you improve your application's performance and security by adjusting your Cloudflare configuration.",
+								"description": "Hyperdrive eliminates redundant round-trips to your existing databases, significantly reducing latency and cutting up to hundreds of milliseconds from each query, ensuring faster data retrieval.",
 								"learnMoreUrl": null,
 								"learnMoreText": null,
 								"displayBorder": false,
@@ -208,12 +175,12 @@
 							},
 							{
 								"contentTypeId": "feature",
-								"contentfulId": "3JO1MqSu3dchoDeZhor0z2",
-								"title": "Create custom analytics",
+								"contentfulId": "31uvkOuAcbyxKqa7HpnW5y",
+								"title": "Intelligent caching for your read queries",
 								"makeTitleLink": false,
 								"titleUrl": null,
 								"titleSize": null,
-								"description": "Build custom analytics in the tools you already use.",
+								"description": "Hyperdrive intelligently caches the most popular queries executed against your database, helping further improve performance and reduce database load.",
 								"learnMoreUrl": null,
 								"learnMoreText": null,
 								"displayBorder": false,
@@ -221,16 +188,16 @@
 								"removeCardBorder": false,
 								"icon": null,
 								"iconAssetFile": {
-									"id": "082acf6d-2836-52a9-a97d-f6a571c67183",
-									"altText": "Icon of a graph going up",
+									"id": "4fd99cc4-cde1-5f4e-8b21-4ec5e6a05307",
+									"altText": "Lightning bolt icon",
 									"title": null,
 									"activeAsset": "Contentful Asset",
 									"locale": "en-US",
 									"contentfulAsset": {
 										"file": {
-											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/yXs0Mrat5Fwc9hqisn4li/2741ce0d3466e09e4775ea7f5caa894b/analytics-data.png"
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/1tpIHSbWVmGHYltiwNqNZ8/0113bb1cdb4e813771661ceed1295707/performance-acceleration-bolt.svg"
 										},
-										"description": null
+										"description": "Lightning bolt icon"
 									},
 									"brandfolderAsset": null,
 									"brandfolderAssetMobile": null
@@ -244,12 +211,12 @@
 							},
 							{
 								"contentTypeId": "feature",
-								"contentfulId": "Sa4fe23HKNMHg35wyBrlI",
-								"title": "Push or pull logs to anywhere",
+								"contentfulId": "1K20GpAkzrTqc2r4oJQnjE",
+								"title": "Integration with databases and libraries",
 								"makeTitleLink": false,
 								"titleUrl": null,
 								"titleSize": null,
-								"description": "Push logs to your preferred storage provider, or pull logs via our API.",
+								"description": " Hyperdrive supports PostgreSQL,  MySQL, and compatible databases. It can securely connect to private databases, and works with existing drivers and libraries, eliminating the need to move data or rewrite queries.",
 								"learnMoreUrl": null,
 								"learnMoreText": null,
 								"displayBorder": false,
@@ -257,14 +224,14 @@
 								"removeCardBorder": false,
 								"icon": null,
 								"iconAssetFile": {
-									"id": "7dcf0b32-5e52-5e8a-be1e-2324e1aab71c",
-									"altText": "Code api ",
-									"title": "Code api ",
+									"id": "111dcd6d-8214-592f-8fbb-1fb4e22472f1",
+									"altText": null,
+									"title": null,
 									"activeAsset": "Contentful Asset",
 									"locale": "en-US",
 									"contentfulAsset": {
 										"file": {
-											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/5M2SLF9OIQYKSeaL46suWO/87ec742e674be44e38dab4ee620c2a42/code-api.svg"
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/1f0iDYaTaOexv9owSIBMWR/cda620b331c9019608f4f837c2df5380/server-3_outline.png"
 										},
 										"description": ""
 									},
@@ -283,9 +250,9 @@
 						"htmlId": null
 					},
 					{
-						"contentfulId": "1ESHnMzQNkZonyb1IJLRRp",
-						"title": "Get comprehensive metadata on your domain's requests",
-						"copy": "Cloudflare Logs provide customers with a deep understanding of their traffic down to the individual HTTP request.\n\nOrganizations can have their logs sent to their preferred storage provider and use the tools you already know to gain insights, or write custom scripts to retrieve their logs continually using our powerful REST API.",
+						"contentfulId": "781px4Vn4el04pNP47oXKM",
+						"title": "Turn your regional database into a globally-distributed database",
+						"copy": "Cloudflare Hyperdrive manages the number of global connections to your origin database, helping you intelligently cache and accelerate your query responses while reducing database load.\n\nIt does this by creating a pool of connections that can be reused as your applications execute queries. Incoming requests are automatically routed to the nearest connection pool — making your centralized databases feel like they're global.",
 						"toggleText": null,
 						"button": [],
 						"learnMoreUrl": null,
@@ -308,16 +275,16 @@
 						"streamPosterAssetFile": null,
 						"image": null,
 						"imageAssetFile": {
-							"id": "97648a12-b981-5ea9-aa7c-81fdfdf0c251",
-							"altText": "Cloudflare request logs can be sent to a preferred storage provider.",
-							"title": "Cloudflare-logs-supported-integrations",
+							"id": "ae7391d6-8cac-5d5c-8cdc-b0008329c18e",
+							"altText": "Hyperdrive How it works",
+							"title": "Hyperdrive How it works",
 							"activeAsset": "Contentful Asset",
 							"locale": "en-US",
 							"contentfulAsset": {
 								"file": {
-									"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/5DhRbXsvaLNs92e8ZNxbJC/6b74428f8a665e0994f64613ab599b9b/logs-destinations.png"
+									"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/7un0XCLiLOa6850zMRMRvj/13ab11ab95abf35f9b079b86cf204c76/BDES-6252_Diagram_Hyperdrive.png"
 								},
-								"description": "Cloudflare Logs provide customers HTTP request data from AWS, Azure Blob, Datadog, Google Cloud Storage, Splunk, Sumo Logic, and more"
+								"description": "Hyperdrive How it works"
 							},
 							"brandfolderAsset": null,
 							"brandfolderAssetMobile": null
@@ -336,155 +303,43 @@
 						"togglesTo": []
 					},
 					{
-						"contentTypeId": "bladeEnablement",
-						"contentfulId": "1Qi7NLjkW0myIgVtCoMfjV",
-						"title": "Learn how Cloudflare Logs maintains data privacy",
-						"titleSize": "medium",
-						"backgroundColor": "image-background",
-						"buttonText": null,
-						"buttonUrl": null,
-						"buttonText2": null,
-						"buttonModalId2": null,
-						"buttonUrl2": null,
-						"bladeSizeType": "small",
+						"contentfulId": "7LesRX0X4JtEQIBFtcdHlY",
+						"contentTypeId": "bladeLeadGeneration",
+						"title": "See how Cloudflare Hyperdrive performs",
+						"description": "See how Cloudflare Hyperdrive performs",
+						"variant": "inline",
 						"htmlId": null,
-						"bladeBorder": "none",
-						"buttonOne": {
+						"sectionPadding": "tile--no-top-padding",
+						"backgroundImage": {
+							"id": "5fb646a4-2af5-50d0-815c-108317d4b5b7",
+							"altText": "Cloudflare Orange Background",
+							"title": "Cloudflare Orange Background",
+							"activeAsset": "Contentful Asset",
+							"locale": "en-US",
+							"contentfulAsset": {
+								"file": {
+									"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/6wvLylL1UDvEfh7N5WBd32/b05450aa05d6c40af93bf04309e1723c/Lead-generation-background-generic.png"
+								},
+								"description": ""
+							},
+							"brandfolderAsset": null,
+							"brandfolderAssetMobile": null
+						},
+						"primaryCtaButton": {
 							"buttonAssetFile": null,
 							"buttonTextLoggedIn": null,
 							"contentTypeId": "button",
-							"contentfulId": "4BlzKmEhjxIbcUWzKzcVPR",
-							"elementName": "Get the whitepaper - CTA",
+							"contentfulId": "3w17IXZA8M3r6CO43gbKaf",
+							"elementName": "Watch the demo",
 							"standardText": null,
-							"text": "Get the whitepaper",
-							"url": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/1Q4mtd7RL9I6UyCEYYsQPk/cfcccb4a75aa8286afa358b4ac36b085/How_Cloudflare_helps_address_data_protection_and_locality_obligations_in_Europe_-_June_2022.pdf",
+							"text": "Watch the demo",
+							"url": "https://hyperdrive-demo.pages.dev/",
 							"loggedInUrl": null,
 							"buttonModal": null,
 							"openInNewTab": true,
 							"locale": "en-US"
 						},
-						"buttonTwo": null,
-						"sectionPadding": "tile--no-top-padding",
-						"eyebrow": null
-					},
-					{
-						"contentTypeId": "bladeRichTextColumnGroup",
-						"contentfulId": "5PkzzkEw85ZQhojbzX7EXC",
-						"htmlId": null,
-						"mainHeadline": null,
-						"backgroundColor": "white",
-						"bladeBorder": "none",
-						"sectionPadding": "tile--no-bottom-padding",
-						"columnLayout": "One Column Wide",
-						"columns": [
-							{
-								"contentTypeId": "elementRichText",
-								"contentfulId": "1n7DgXVYN5KVcLnr1pagRa",
-								"title": null,
-								"htmlId": null,
-								"elementPosition": "relative",
-								"column": {
-									"nodeType": "document",
-									"content": [
-										{
-											"nodeType": "heading-4",
-											"data": {
-												"target": null,
-												"uri": null
-											},
-											"value": null,
-											"marks": null,
-											"content": [
-												{
-													"nodeType": "text",
-													"data": {
-														"target": null,
-														"uri": null
-													},
-													"value": "What our customers are saying",
-													"marks": [],
-													"content": null
-												}
-											]
-										},
-										{
-											"nodeType": "blockquote",
-											"data": {
-												"target": null,
-												"uri": null
-											},
-											"value": null,
-											"marks": null,
-											"content": [
-												{
-													"nodeType": "paragraph",
-													"data": {
-														"target": null,
-														"uri": null
-													},
-													"value": null,
-													"marks": null,
-													"content": [
-														{
-															"nodeType": "text",
-															"data": {
-																"target": null,
-																"uri": null
-															},
-															"value": "\"Cloudflare's Logpush and ready-made dashboards have allowed us to obtain complete end-to-end visibility of our network and [have] ensured that we can build a holistic threat intel view for our entire platform.\"",
-															"marks": [],
-															"content": null
-														}
-													]
-												}
-											]
-										},
-										{
-											"nodeType": "paragraph",
-											"data": {
-												"target": null,
-												"uri": null
-											},
-											"value": null,
-											"marks": null,
-											"content": [
-												{
-													"nodeType": "text",
-													"data": {
-														"target": null,
-														"uri": null
-													},
-													"value": "",
-													"marks": [],
-													"content": null
-												}
-											]
-										},
-										{
-											"nodeType": "paragraph",
-											"data": {
-												"target": null,
-												"uri": null
-											},
-											"value": null,
-											"marks": null,
-											"content": [
-												{
-													"nodeType": "text",
-													"data": {
-														"target": null,
-														"uri": null
-													},
-													"value": " Senior Systems Security Specialist, Ansarada",
-													"marks": [],
-													"content": null
-												}
-											]
-										}
-									]
-								}
-							}
-						]
+						"secondaryCtaButton": null
 					},
 					{
 						"contentTypeId": "bladeFeaturedCompanyLogos",
@@ -676,22 +531,22 @@
 						"sectionPadding": null
 					},
 					{
-						"contentfulId": "24PexURHxdSHE5I09bOvP7",
+						"contentfulId": "3xKxau3LykXGK0o8n0ZLyr",
 						"contentTypeId": "bladeMultipleColumnsLayout",
-						"title": "Cloudflare Logs helps you optimize your application's security and performance",
-						"eyebrowHeading": "Top Logs use cases",
-						"description": null,
+						"title": null,
+						"eyebrowHeading": "Top Hyperdrive use cases",
+						"description": "Hyperdrive provides faster routes to your database, intelligently caches popular queries, and helps reduce total database load and costs.",
 						"textLayout": "left",
-						"columnsLayout": "Two Columns",
+						"columnsLayout": "Three Columns",
 						"columnContent": [
 							{
 								"contentTypeId": "feature",
-								"contentfulId": "68vKnhiDS3MqJOu9MJqy6m",
-								"title": "Optimize user experience",
+								"contentfulId": "1XWlyJHVBMIZ0vrpc5BWLq",
+								"title": "Keep connection pools primed",
 								"makeTitleLink": false,
 								"titleUrl": null,
 								"titleSize": null,
-								"description": "Use Cloudflare Logs to identify configuration adjustments to improve performance.",
+								"description": "Create and manage a global pool of connections to your database, so requests are routed as efficiently and quickly as possible.",
 								"learnMoreUrl": null,
 								"learnMoreText": null,
 								"displayBorder": false,
@@ -699,14 +554,50 @@
 								"removeCardBorder": false,
 								"icon": null,
 								"iconAssetFile": {
-									"id": "85c4fbc4-0db5-571b-8e57-5e56edf68d42",
-									"altText": "Cloudflare Logs",
-									"title": "Logs Icon",
+									"id": "30718739-82ff-5bc7-9c5d-e161248e8da9",
+									"altText": "Performance routing ",
+									"title": "Performance routing ",
 									"activeAsset": "Contentful Asset",
 									"locale": "en-US",
 									"contentfulAsset": {
 										"file": {
-											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/5lXkpwZauF5faOHKlfU1nh/8147f968d6de55800a02c83cbf088de3/documentation-rules.png"
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/59OgNgdovYpxBuSbeO2TiK/f59c3c3b38689a5bc282dd9880ff977c/performance-routing.svg"
+										},
+										"description": "Smart routing icon"
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								},
+								"imageOverlaySuperheader": null,
+								"imageOverlayText": null,
+								"imageAssetFile": null,
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
+							},
+							{
+								"contentTypeId": "feature",
+								"contentfulId": "6VFDhbD35RqzbiIti3GYIu",
+								"title": "Cache frequently-run queries on our global network",
+								"makeTitleLink": false,
+								"titleUrl": null,
+								"titleSize": null,
+								"description": "Automatically cache your most popular read queries on our [global network](https://www.cloudflare.com/network/), so your users get lightning-fast results from every location.",
+								"learnMoreUrl": null,
+								"learnMoreText": null,
+								"displayBorder": false,
+								"openLinkInNewTab": null,
+								"removeCardBorder": false,
+								"icon": null,
+								"iconAssetFile": {
+									"id": "34b25a26-8efd-5aa4-bd47-facebc0adce4",
+									"altText": "Cache Reserve",
+									"title": "Cache Reserve",
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/Snx91INj9zhp6XXrKWttd/782b0f54013c68f613fc779daf8cdb47/server-1.svg"
 										},
 										"description": ""
 									},
@@ -722,12 +613,12 @@
 							},
 							{
 								"contentTypeId": "feature",
-								"contentfulId": "1wjEGhKbnd7nyyE61i1KSs",
-								"title": "End-to-end visibility",
+								"contentfulId": "xSlkQpLGKf4S6PlVqgbQB",
+								"title": "Reduce connection overhead",
 								"makeTitleLink": false,
 								"titleUrl": null,
 								"titleSize": null,
-								"description": "Combine request logs with other data sources, such as application server logs, for a complete view.",
+								"description": "Limit the total number of connections made to your databases, so you can easily minimize overall database load, latency, and associated resource costs.",
 								"learnMoreUrl": null,
 								"learnMoreText": null,
 								"displayBorder": false,
@@ -735,16 +626,16 @@
 								"removeCardBorder": false,
 								"icon": null,
 								"iconAssetFile": {
-									"id": "b815385d-6fa7-54c1-9020-d5394237a7ab",
-									"altText": "Applications icon",
-									"title": "Applications icon",
+									"id": "5a959b28-b768-5052-bf8d-c87c2f5dcfb3",
+									"altText": "Reliability load balancer blue",
+									"title": "Reliability load balancer blue",
 									"activeAsset": "Contentful Asset",
 									"locale": "en-US",
 									"contentfulAsset": {
 										"file": {
-											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/4Gs1nPWmoZABBztrTHECMD/62d032e76ca646918a6420271edb612c/applications.svg"
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/2PEDzEKI6wwUPTe3RiUqC4/f7af6ded9a2e49325d277e1fa1e442e4/reliability-load-balancer.svg"
 										},
-										"description": "Applications icon"
+										"description": "Load balancer icon"
 									},
 									"brandfolderAsset": null,
 									"brandfolderAssetMobile": null
@@ -762,39 +653,30 @@
 					},
 					{
 						"contentTypeId": "bladeHtml",
-						"contentfulId": "6ERNjfSr6g9m1W5koqEN4x",
-						"htmlContent": "<div style=\"text-align: center; cursor:pointer; margin-bottom:64px; margin-top: -60px;\">\n    <a href=\"/application-services/solutions/#web-app-performance-solutions\" target=\"_blank\" class=\"inline-link-style\">Explore more use cases<svg width=\"4\" height=\"10\"\n            viewBox=\"0 0 6 10\" fill=\"currentColor\" aria-label=\"chevron\" xmlns=\"https://www.cloudflare.com/zero-trust/solutions/\"\n            class=\"dib v-mid ml1\">\n            <path\n                d=\"M1.00003 -4.37127e-08L-3.93401e-07 1.00003L4 5L0.000271373 9.00025L1.00003 10L6.00003 5L1.00003 -4.37127e-08Z\">\n            </path>\n        </svg>  </a>\n</div>",
+						"contentfulId": "1BcuajdMokHxBoJTHSj1IC",
+						"htmlContent": "<div style=\"text-align: center; cursor:pointer; margin-bottom:64px; margin-top: -60px;\">\n    <a href=\"https://developers.cloudflare.com/hyperdrive/examples/\" target=\"_blank\" class=\"inline-link-style\">Explore more use cases<svg width=\"4\" height=\"10\"\n            viewBox=\"0 0 6 10\" fill=\"currentColor\" aria-label=\"chevron\" xmlns=\"https://developers.cloudflare.com/hyperdrive/examples/\"\n            class=\"dib v-mid ml1\">\n            <path\n                d=\"M1.00003 -4.37127e-08L-3.93401e-07 1.00003L4 5L0.000271373 9.00025L1.00003 10L6.00003 5L1.00003 -4.37127e-08Z\">\n            </path>\n        </svg>  </a>\n</div>",
 						"htmlId": null
 					},
 					{
-						"contentfulId": "1ldMim6nGgZgoSHiKZhQS9",
-						"contentTypeId": "bladeLeadGeneration",
-						"title": null,
-						"description": "Helping organizations worldwide accelerate and protect their applications",
-						"variant": "inline",
+						"contentTypeId": "bladeEnablement",
+						"contentfulId": "jKCChbG0EajCNBnJlc0T0",
+						"title": "Trusted by millions of Internet properties",
+						"titleSize": "medium",
+						"backgroundColor": "image-background",
+						"buttonText": null,
+						"buttonUrl": null,
+						"buttonText2": null,
+						"buttonModalId2": null,
+						"buttonUrl2": null,
+						"bladeSizeType": "small",
 						"htmlId": null,
-						"sectionPadding": "tile--no-top-padding",
-						"backgroundImage": {
-							"id": "5fb646a4-2af5-50d0-815c-108317d4b5b7",
-							"altText": "Cloudflare Orange Background",
-							"title": "Cloudflare Orange Background",
-							"activeAsset": "Contentful Asset",
-							"locale": "en-US",
-							"contentfulAsset": {
-								"file": {
-									"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/6wvLylL1UDvEfh7N5WBd32/b05450aa05d6c40af93bf04309e1723c/Lead-generation-background-generic.png"
-								},
-								"description": ""
-							},
-							"brandfolderAsset": null,
-							"brandfolderAssetMobile": null
-						},
-						"primaryCtaButton": {
+						"bladeBorder": "none",
+						"buttonOne": {
 							"buttonAssetFile": null,
 							"buttonTextLoggedIn": null,
 							"contentTypeId": "button",
-							"contentfulId": "5HApvLAvSdwHI9D5XopPH3",
-							"elementName": "See case studies - ALL",
+							"contentfulId": "3xIzhQVegUXrYb5IVzKzQR",
+							"elementName": "See case studies (main)",
 							"standardText": null,
 							"text": "See case studies",
 							"url": "/case-studies/",
@@ -803,17 +685,19 @@
 							"openInNewTab": false,
 							"locale": "en-US"
 						},
-						"secondaryCtaButton": null
+						"buttonTwo": null,
+						"sectionPadding": null,
+						"eyebrow": null
 					},
 					{
-						"contentfulId": "10mobUt9TB5DC7uoF1M1D4",
+						"contentfulId": "4MRbxwc09EK3QaS1qroVNn",
 						"backgroundColor": "white",
 						"contentTypeId": "bladeFourFeatures",
 						"htmlId": null,
 						"copy": null,
 						"title": "Resources",
 						"subtitle": null,
-						"bladeStyle": null,
+						"bladeStyle": "Feature Blocks - 3 columns",
 						"bladeBorder": "none",
 						"sectionPadding": null,
 						"carouselSlidesToShow": null,
@@ -822,14 +706,14 @@
 						"features": [
 							{
 								"contentTypeId": "feature",
-								"contentfulId": "4cEEixz7mOjjkMz8flGYro",
-								"title": "Cloudflare Logs documentation",
+								"contentfulId": "4f7mvSFziqfUrGTUGUzWOV",
+								"title": "Speed up queries with Hyperdrive",
 								"makeTitleLink": false,
 								"titleUrl": null,
 								"titleSize": null,
-								"description": "Learn how to use Cloudflare Logs for debugging, identifying configuration adjustments, and creating analytics.",
-								"learnMoreUrl": "https://developers.cloudflare.com/logs/",
-								"learnMoreText": "See documentation",
+								"description": "See how Hyperdrive uses the Cloudflare network to speed up queries — whether they're in a legacy cloud provider or with your favorite serverless database provider.",
+								"learnMoreUrl": "https://blog.cloudflare.com/hyperdrive-making-regional-databases-feel-distributed",
+								"learnMoreText": "Read the blog post",
 								"displayBorder": false,
 								"openLinkInNewTab": true,
 								"removeCardBorder": false,
@@ -858,16 +742,16 @@
 							},
 							{
 								"contentTypeId": "feature",
-								"contentfulId": "1X9u56ezuMTLUtczVSybp8",
-								"title": "How the Cloudflare network maintains data privacy",
+								"contentfulId": "58DX0gZk49n12QVGZIt4Oc",
+								"title": "Integrate Hyperdrive with your existing infrastructure",
 								"makeTitleLink": false,
 								"titleUrl": null,
 								"titleSize": null,
-								"description": "This paper breaks down how Cloudflare uses security measures to protect request metadata as it crosses our network.",
-								"learnMoreUrl": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/1S0GCmfDE4rA1CK5dCK9kL/3962d823146ea425666fdd6234027957/How_Cloudflare_helps_address_data_protection_and_locality_obligations_in_Europe_-_June_2022.pdf",
-								"learnMoreText": "Get the whitepaper",
+								"description": "Learn how to easily configure and deploy Hyperdrive within your applications and architecture.",
+								"learnMoreUrl": "https://developers.cloudflare.com/hyperdrive/demos/",
+								"learnMoreText": "Explore the developer docs",
 								"displayBorder": false,
-								"openLinkInNewTab": false,
+								"openLinkInNewTab": true,
 								"removeCardBorder": false,
 								"icon": null,
 								"iconAssetFile": null,
@@ -894,14 +778,14 @@
 							},
 							{
 								"contentTypeId": "feature",
-								"contentfulId": "41bJe4c3wfEAz8LfEgSmrh",
-								"title": "Cloudflare Logs tutorials",
+								"contentfulId": "73mGWAXzivnFPcSOYHf5Vq",
+								"title": "Support Postgres named prepared statements with Hyperdrive",
 								"makeTitleLink": false,
 								"titleUrl": null,
 								"titleSize": null,
-								"description": "Learn to manage and analyze your Cloudflare Logs.",
-								"learnMoreUrl": "https://developers.cloudflare.com/logs/tutorials/",
-								"learnMoreText": "Go to tutorials",
+								"description": "Named prepared statements allow Postgres to cache query execution plans, providing potentially substantial performance improvements.",
+								"learnMoreUrl": "https://blog.cloudflare.com/postgres-named-prepared-statements-supported-hyperdrive",
+								"learnMoreText": "Read the blog post",
 								"displayBorder": false,
 								"openLinkInNewTab": true,
 								"removeCardBorder": false,
@@ -932,8 +816,8 @@
 					},
 					{
 						"contentTypeId": "bladeEnablement",
-						"contentfulId": "4FQgRDlgs2NdH32hKJ8Ti7",
-						"title": "Get Cloudflare Logs for your enterprise",
+						"contentfulId": "1F1StrP5H9l5vyTAH2taKj",
+						"title": "Accelerate access to your databases with Hyperdrive",
 						"titleSize": "medium",
 						"backgroundColor": "image-background",
 						"buttonText": null,
@@ -948,53 +832,13 @@
 							"buttonAssetFile": null,
 							"buttonTextLoggedIn": null,
 							"contentTypeId": "button",
-							"contentfulId": "4Xz8W7auMR2dIP0Kp0tpJW",
-							"elementName": "Talk to an expert",
+							"contentfulId": "34gITgPCu19hVAj8oAI9kc",
+							"elementName": "Get started - Hyperdrive",
 							"standardText": null,
-							"text": "Talk to an expert",
-							"url": null,
+							"text": "Get started",
+							"url": "https://developers.cloudflare.com/hyperdrive/get-started/",
 							"loggedInUrl": null,
-							"buttonModal": {
-								"contentTypeId": "formModal",
-								"contentfulId": "5a1ymxApHEqHHRNjyMbcEm",
-								"modalName": "Talk to an expert",
-								"modalId": "talk-to-an-expert",
-								"modalType": "single-form",
-								"marketoForm": {
-									"contentTypeId": "marketoEmbeddedForm",
-									"contentfulId": "GArhAEENzeQ3aQ4esVZPR",
-									"bladeName": "Enterprise General Sales Inquiry",
-									"backgroundColor": "white",
-									"marketoFormId": 1341,
-									"marketoFormLeadSource": "Inbound - Web Form",
-									"marketoFormLeadSourceDetail": "Web Form - Enterprise General Sales Inquiry",
-									"marketoFormAssetName": null,
-									"marketoFormHeaderText": "Talk to an expert",
-									"marketoFormDefaultComment": null,
-									"showCommentBox": null,
-									"marketoFormThankYouText": null,
-									"marketoFormCustomSuccessMessage": null,
-									"marketoFormPdfDownload": null,
-									"marketoFormPdfDownloadI18n": [],
-									"marketoFormAssetDownloadButtonText": null,
-									"marketoFormSuccessRedirectUrl": null,
-									"sendAdRoll": null,
-									"meta_adRollCustomSegment": null,
-									"enableSandbox": null,
-									"marketoFormSubmitButtonText": null,
-									"marketoFormSubmitButtonColor": null,
-									"enableEmailVerification": null,
-									"disableEnterpriseEmailNotification": null,
-									"enableRingout": null
-								},
-								"title": null,
-								"regularCopy": null,
-								"splitFormDefaultTab": null,
-								"selfServeTabText": null,
-								"selfServeCopy": null,
-								"enterpriseTabText": null,
-								"enterpriseCopy": null
-							},
+							"buttonModal": null,
 							"openInNewTab": true,
 							"locale": "en-US"
 						},
@@ -1004,50 +848,8 @@
 					}
 				],
 				"noindex": false,
-				"formModal": [
-					{
-						"contentTypeId": "formModal",
-						"contentfulId": "5a1ymxApHEqHHRNjyMbcEm",
-						"modalName": "Talk to an expert",
-						"modalId": "talk-to-an-expert",
-						"modalType": "single-form",
-						"marketoForm": {
-							"contentTypeId": "marketoEmbeddedForm",
-							"contentfulId": "GArhAEENzeQ3aQ4esVZPR",
-							"bladeName": "Enterprise General Sales Inquiry",
-							"backgroundColor": "white",
-							"marketoFormId": 1341,
-							"marketoFormLeadSource": "Inbound - Web Form",
-							"marketoFormLeadSourceDetail": "Web Form - Enterprise General Sales Inquiry",
-							"marketoFormAssetName": null,
-							"marketoFormHeaderText": "Talk to an expert",
-							"marketoFormDefaultComment": null,
-							"showCommentBox": null,
-							"marketoFormThankYouText": null,
-							"marketoFormCustomSuccessMessage": null,
-							"marketoFormPdfDownload": null,
-							"marketoFormPdfDownloadI18n": [],
-							"marketoFormAssetDownloadButtonText": null,
-							"marketoFormSuccessRedirectUrl": null,
-							"sendAdRoll": null,
-							"meta_adRollCustomSegment": null,
-							"enableSandbox": null,
-							"marketoFormSubmitButtonText": null,
-							"marketoFormSubmitButtonColor": null,
-							"enableEmailVerification": null,
-							"disableEnterpriseEmailNotification": null,
-							"enableRingout": null
-						},
-						"title": null,
-						"regularCopy": null,
-						"splitFormDefaultTab": null,
-						"selfServeTabText": null,
-						"selfServeCopy": null,
-						"enterpriseTabText": null,
-						"enterpriseCopy": null
-					}
-				],
-				"keepHashUrlSyncedWithScrollPosition": null
+				"formModal": [],
+				"keepHashUrlSyncedWithScrollPosition": false
 			},
 			"site": {
 				"siteMetadata": {
@@ -1058,8 +860,8 @@
 		"pageContext": {
 			"currentLocale": "en-US",
 			"locale": "en-US",
-			"pathname": "/application-services/products/cloudflare-logs/",
-			"contentfulId": "3pnxtnd3x6OMcA2uAIG8YU",
+			"pathname": "/developer-platform/products/hyperdrive/",
+			"contentfulId": "4i1usPVo6625lvcdhccDpy",
 			"allowedHrefLangs": [
 				"en-US",
 				"zh-CN",
@@ -1073,7 +875,6 @@
 				"es-ES",
 				"es-LA",
 				"ru-RU",
-				"tr-TR",
 				"zh-Hans-CN",
 				"pl-PL"
 			],

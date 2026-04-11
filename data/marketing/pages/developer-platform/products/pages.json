@@ -1,10 +1,10 @@
 {
 	"componentChunkName": "component---src-components-page-page-template-tsx",
-	"path": "/application-services/products/cloudflare-logs/",
+	"path": "/developer-platform/products/pages/",
 	"result": {
 		"data": {
 			"page": {
-				"pageName": "Cloudflare Logs - Product Page ",
+				"pageName": "Cloudflare Pages - Product Page",
 				"localeList": {
 					"enUS": "English for Locale",
 					"zhCN": "Translated for Locale",
@@ -27,61 +27,69 @@
 					"ruRU": "Translated for Locale",
 					"svSE": "English for Locale",
 					"viVN": "English for Locale",
-					"trTR": "Translated for Locale",
+					"trTR": "English for Locale",
 					"zhHansCN": "Translated for Locale",
 					"plPL": "Translated for Locale",
 					"arAR": "No Page for Locale",
-					"heIL": null
+					"heIL": "No Page for Locale"
 				},
-				"relativePath": "application-services/products/cloudflare-logs/",
+				"relativePath": "developer-platform/products/pages",
 				"topNavOptions": "default",
 				"topNavButtonText": null,
 				"topNavButtonUrl": null,
 				"footerOptions": "default",
 				"metaTags": {
-					"metaTitle": "Cloudflare Logs | Granular Analytics and Insights",
-					"metaDescription": "Cloudflare Logs lets you identify attacks, debug errors, and create custom analytics by providing detailed HTTP request logs. Demo Cloudflare Logs today.",
+					"metaTitle": "Pages | Full-stack platform for frontend developers",
+					"metaDescription": "Build dynamic front-end applications and deploy directly onto the  global network with Cloudflare Pages",
 					"twitterCustomImage": null,
 					"metaImage": {
 						"file": {
-							"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/53qCYhQbir5WtIU0VDWESo/954a48bfb17f429acf469e5f14345d83/unnamed-3.png"
+							"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/6l6WF6tk5hwCJ5kefKrEMh/db317121d59ddc8d6e092de9a806dab1/Pages_Direct_Upload_.png"
 						},
-						"description": "DO NOT REMOVE, THIS IS CLOUDFLARE'S GLOBAL OG META ASSET"
+						"description": ""
 					},
 					"facebookCustomImage": null,
 					"author": []
 				},
 				"sys": {
-					"createdAt": "2019-01-31T19:03:22.084Z",
-					"updatedAt": "2026-04-11T13:31:02.744Z"
+					"createdAt": "2022-10-04T14:13:37.601Z",
+					"updatedAt": "2026-04-04T03:40:04.241Z"
 				},
-				"contentfulId": "3pnxtnd3x6OMcA2uAIG8YU",
+				"contentfulId": "2jP8IXVO3kejCQ48koS36j",
 				"contentTypeId": "page",
 				"promotionalBanner": null,
-				"psaBanner": null,
+				"psaBanner": {
+					"contentTypeId": "psaBanner",
+					"contentfulId": "2fPHkIXDvVgKKfFKh56uOj",
+					"text": "We recommend using Workers for new projects. ",
+					"learnMoreText": "Learn more",
+					"learnMoreUrl": "https://developers.cloudflare.com/workers/static-assets/migration-guides/migrate-from-pages/",
+					"backgroundColor": null,
+					"hideCloseButton": null
+				},
 				"customTopNav": null,
 				"headerLogo": null,
 				"proactivePopup": null,
 				"template": null,
 				"relatedBlades": [
 					{
-						"contentfulId": "3jf16PRJluC0wKMEmwwaiy",
+						"contentfulId": "5zTHf0z5ZDEBPQSzTyraD4",
 						"contentTypeId": "bladeHeroAnimation",
-						"title": "Cloudflare Logs",
+						"title": "Cloudflare Pages",
 						"titleSize": null,
-						"subtitle": "Get a complete understanding of your app's traffic",
+						"subtitle": "A serverless fullstack developer platform",
 						"subtitleSize": null,
-						"copy": "Cloudflare provides detailed logs of your HTTP requests. Use these logs to debug, identify configuration adjustments to improve performance and security, and create custom analytics.",
+						"copy": "Build, deploy, and deliver trusted full-stack applications in a fraction of the time with Pages. Developers, designers, and product can collaborate and deploy with minimal configuration needed. ",
 						"buttonColor": "orange",
-						"buttonColor2": "orange-outline",
-						"buttonText1": "Talk to an expert",
+						"buttonColor2": "orange",
+						"buttonText1": "Get started",
 						"buttonText1LoggedIn": null,
-						"buttonUrl1": "#",
+						"buttonUrl1": "https://dash.cloudflare.com/sign-up/workers-and-pages",
 						"buttonUrl1LoggedIn": null,
-						"button1ExtraClass": "talk-to-an-expert",
-						"buttonText2": "Watch demo",
+						"button1ExtraClass": null,
+						"buttonText2": "Read developer docs",
 						"buttonText2LoggedIn": null,
-						"buttonUrl2": "https://cloudflare.ondemand.goldcast.io/on-demand/10350ff2-cb6c-430e-9e0b-28c29b5df938",
+						"buttonUrl2": "https://developers.cloudflare.com/pages",
 						"button2ExtraClass": null,
 						"bladeBorder": "none",
 						"htmlId": null,
@@ -89,59 +97,59 @@
 						"includeVideo": false,
 						"streamVideoId": null,
 						"streamOptions": null,
-						"streamCaptions": null,
+						"streamCaptions": "en",
 						"popupStreamId": null,
 						"popupText": null,
-						"button1OpenInNewTab": null,
+						"button1OpenInNewTab": true,
 						"button2OpenInNewTab": true,
 						"streamThumbnails": null,
-						"sectionPadding": "tile--no-top-padding",
+						"sectionPadding": null,
 						"streamPosterAssetFile": null,
 						"streamPoster": null,
-						"imageSize": "Medium",
-						"imagePosition": null,
+						"imageSize": "Regular",
+						"imagePosition": false,
 						"leftLinkUrl": null,
 						"leftLink": null,
 						"leftLinkLoggedIn": null,
-						"leftLinkOptions": "show",
+						"leftLinkOptions": "hide",
 						"backgroundColor": "white",
 						"textlayoutMode": null,
 						"backgroundAssetFile": null,
 						"imageLayout": null,
 						"image": null,
 						"imageAssetFile": {
-							"id": "ab4db9e9-211f-59de-8563-a4bfd2933260",
-							"altText": "Logs hero illustration",
-							"title": "Logs hero illustration",
+							"id": "3c0bcfd4-4728-5c81-b586-1a7128cfa370",
+							"altText": null,
+							"title": null,
 							"activeAsset": "Contentful Asset",
 							"locale": "en-US",
 							"contentfulAsset": {
 								"file": {
-									"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/6YctAy2a9z3DCOhpC5ydMI/085ab47cf08275e6a67084af0912febe/logs-hero-illustration.svg"
+									"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/4QOhf5PwKHHKWFCZtrNc0M/6d26b6d2ea451ace063fa0f0005d36fc/BDES-5043_-_Cloudflare-pages-hero.svg"
 								},
-								"description": "Illustration of Cloudflare integration with IBM QRadar"
+								"description": "Illustration of a collection of webpages"
 							},
 							"brandfolderAsset": null,
 							"brandfolderAssetMobile": null
 						}
 					},
 					{
-						"contentfulId": "KCdnKNu5ZUc8vsovNNrUj",
+						"contentfulId": "6djasj0mBOJVzYaHacyrpF",
 						"contentTypeId": "bladeMultipleColumnsLayout",
 						"title": null,
-						"eyebrowHeading": "BENEFITS OF CLOUDFLARE LOGS",
+						"eyebrowHeading": "BENEFITS OF CLOUDFLARE PAGES",
 						"description": null,
 						"textLayout": "left",
 						"columnsLayout": "Four Columns",
 						"columnContent": [
 							{
 								"contentTypeId": "feature",
-								"contentfulId": "56rwPA8JwIs1euQnQKRXEU",
-								"title": "Identify attacks and debug errors",
+								"contentfulId": "5gpmBlLe1xJr07u3zKRuzv",
+								"title": "Integration with our developer platform",
 								"makeTitleLink": false,
 								"titleUrl": null,
 								"titleSize": null,
-								"description": "Investigate potential threats in HTTP traffic. Identify and debug errors affecting end users.",
+								"description": "Use popular web frameworks to build full-stack applications or migrate existing projects and deploy instantly on the Cloudflare network.",
 								"learnMoreUrl": null,
 								"learnMoreText": null,
 								"displayBorder": false,
@@ -149,16 +157,16 @@
 								"removeCardBorder": false,
 								"icon": null,
 								"iconAssetFile": {
-									"id": "27d3dc18-7219-53bc-bd53-b9742318bf14",
-									"altText": "Traffic attack blue",
-									"title": "Traffic attack blue",
+									"id": "e9338336-ce81-5938-a534-b60611eb0d00",
+									"altText": "Cloudflare workers ",
+									"title": "Cloudflare workers ",
 									"activeAsset": "Contentful Asset",
 									"locale": "en-US",
 									"contentfulAsset": {
 										"file": {
-											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/44OWJ7jF9JVwp4zh7zMy7B/d80f24569dfb7d418d6913b32940bf5b/traffic-attack-browser_1_.svg"
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/4wP5LKSCVMZzy2mn0MsQyq/6d0239e7354806aa1b0dfcfec7ac7b6b/cloudflare-workers.svg"
 										},
-										"description": "Prevent financial and identity theft icon"
+										"description": ""
 									},
 									"brandfolderAsset": null,
 									"brandfolderAssetMobile": null
@@ -172,12 +180,12 @@
 							},
 							{
 								"contentTypeId": "feature",
-								"contentfulId": "5HfQD8tao8aN8mi9yoDPlY",
-								"title": "Tune your Cloudflare configuration",
+								"contentfulId": "4SJcJBaUdpzMDz6mfX83la",
+								"title": "Bring the whole team",
 								"makeTitleLink": false,
 								"titleUrl": null,
 								"titleSize": null,
-								"description": "Logs can help you improve your application's performance and security by adjusting your Cloudflare configuration.",
+								"description": "All plans come with unlimited sites, seats, requests, and bandwidth.",
 								"learnMoreUrl": null,
 								"learnMoreText": null,
 								"displayBorder": false,
@@ -185,16 +193,16 @@
 								"removeCardBorder": false,
 								"icon": null,
 								"iconAssetFile": {
-									"id": "b1b7275d-3503-5173-a651-9cfd70157c3c",
-									"altText": "Performance acceleration rocket ",
-									"title": "Performance acceleration rocket",
+									"id": "34d09038-b12f-5770-b496-0720ec680b69",
+									"altText": "multiple users icon",
+									"title": null,
 									"activeAsset": "Contentful Asset",
 									"locale": "en-US",
 									"contentfulAsset": {
 										"file": {
-											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/1vvXmr7jmxFdYUgliFcXUh/d27e7eabc9727ba987b15d5e9ddad5e3/performance-acceleration-rocket.svg"
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/3d4Uar5Bfe7atINKDZiF8F/26c4e1815d54098bd1f3be45888b74e6/user-multi__1_.png"
 										},
-										"description": "Performance acceleration rocket orange"
+										"description": null
 									},
 									"brandfolderAsset": null,
 									"brandfolderAssetMobile": null
@@ -208,12 +216,12 @@
 							},
 							{
 								"contentTypeId": "feature",
-								"contentfulId": "3JO1MqSu3dchoDeZhor0z2",
-								"title": "Create custom analytics",
+								"contentfulId": "PcuCOp076ERN5tx9kXn65",
+								"title": "Free web analytics",
 								"makeTitleLink": false,
 								"titleUrl": null,
 								"titleSize": null,
-								"description": "Build custom analytics in the tools you already use.",
+								"description": "Get real-time insights into your page with privacy-first and shareable analytics.",
 								"learnMoreUrl": null,
 								"learnMoreText": null,
 								"displayBorder": false,
@@ -244,12 +252,12 @@
 							},
 							{
 								"contentTypeId": "feature",
-								"contentfulId": "Sa4fe23HKNMHg35wyBrlI",
-								"title": "Push or pull logs to anywhere",
+								"contentfulId": "3hV92s5AZw91ItlyMHivko",
+								"title": "Reduce build times ",
 								"makeTitleLink": false,
 								"titleUrl": null,
 								"titleSize": null,
-								"description": "Push logs to your preferred storage provider, or pull logs via our API.",
+								"description": "With Build Caching (beta), try a supercharged Pages experience by caching parts of your project to save time on subsequent builds.",
 								"learnMoreUrl": null,
 								"learnMoreText": null,
 								"displayBorder": false,
@@ -257,16 +265,16 @@
 								"removeCardBorder": false,
 								"icon": null,
 								"iconAssetFile": {
-									"id": "7dcf0b32-5e52-5e8a-be1e-2324e1aab71c",
-									"altText": "Code api ",
-									"title": "Code api ",
+									"id": "da7be7ce-7adf-5a42-89c2-02ec388c838d",
+									"altText": "Time blue",
+									"title": "Time ",
 									"activeAsset": "Contentful Asset",
 									"locale": "en-US",
 									"contentfulAsset": {
 										"file": {
-											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/5M2SLF9OIQYKSeaL46suWO/87ec742e674be44e38dab4ee620c2a42/code-api.svg"
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/62tme9kTrisdGyf3VkBsvv/4096a715634cf9a3807e0a59c9d5dab4/time.svg"
 										},
-										"description": ""
+										"description": null
 									},
 									"brandfolderAsset": null,
 									"brandfolderAssetMobile": null
@@ -279,13 +287,13 @@
 								"streamThumbnailAssetFile": null
 							}
 						],
-						"sectionPadding": "tile--no-bottom-padding",
+						"sectionPadding": null,
 						"htmlId": null
 					},
 					{
-						"contentfulId": "1ESHnMzQNkZonyb1IJLRRp",
-						"title": "Get comprehensive metadata on your domain's requests",
-						"copy": "Cloudflare Logs provide customers with a deep understanding of their traffic down to the individual HTTP request.\n\nOrganizations can have their logs sent to their preferred storage provider and use the tools you already know to gain insights, or write custom scripts to retrieve their logs continually using our powerful REST API.",
+						"contentfulId": "5thtgofVoqo0nIHkUq18eS",
+						"title": "Build. Collaborate. Test. Deploy",
+						"copy": "Build, collaborate, test, and deploy — make project collaboration effortless. Share projects using unique, protected links with designers and developers to iterate quickly.",
 						"toggleText": null,
 						"button": [],
 						"learnMoreUrl": null,
@@ -308,16 +316,16 @@
 						"streamPosterAssetFile": null,
 						"image": null,
 						"imageAssetFile": {
-							"id": "97648a12-b981-5ea9-aa7c-81fdfdf0c251",
-							"altText": "Cloudflare request logs can be sent to a preferred storage provider.",
-							"title": "Cloudflare-logs-supported-integrations",
+							"id": "11b79810-77bc-5ec0-b362-e1316fbd3374",
+							"altText": "Pages - How it works - illustration",
+							"title": "Pages - How it works - illustration",
 							"activeAsset": "Contentful Asset",
 							"locale": "en-US",
 							"contentfulAsset": {
 								"file": {
-									"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/5DhRbXsvaLNs92e8ZNxbJC/6b74428f8a665e0994f64613ab599b9b/logs-destinations.png"
+									"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/5df5tsrC9h5GxedMQEnScq/8b5ca64b77479325052c4217d827f385/cloudflare-workers.svg"
 								},
-								"description": "Cloudflare Logs provide customers HTTP request data from AWS, Azure Blob, Datadog, Google Cloud Storage, Splunk, Sumo Logic, and more"
+								"description": "Cloudflare Developers Platform illustration"
 							},
 							"brandfolderAsset": null,
 							"brandfolderAssetMobile": null
@@ -327,18 +335,18 @@
 						"sectionTitle": "HOW IT WORKS",
 						"htmlId": null,
 						"titleSize": null,
-						"sectionPadding": null,
+						"sectionPadding": "tile--no-top-padding",
 						"backgroundColor": "white",
 						"bladeBorder": "none",
 						"imagePosition": true,
-						"imageSize": "medium",
-						"imageTextAlignment": "center",
+						"imageSize": null,
+						"imageTextAlignment": null,
 						"togglesTo": []
 					},
 					{
 						"contentTypeId": "bladeEnablement",
-						"contentfulId": "1Qi7NLjkW0myIgVtCoMfjV",
-						"title": "Learn how Cloudflare Logs maintains data privacy",
+						"contentfulId": "2v7JzoNN49BCkuIxZQE2eO",
+						"title": "Learn how to build applications with Cloudflare Pages",
 						"titleSize": "medium",
 						"backgroundColor": "image-background",
 						"buttonText": null,
@@ -353,23 +361,23 @@
 							"buttonAssetFile": null,
 							"buttonTextLoggedIn": null,
 							"contentTypeId": "button",
-							"contentfulId": "4BlzKmEhjxIbcUWzKzcVPR",
-							"elementName": "Get the whitepaper - CTA",
+							"contentfulId": "4N2S4wOb8cvTiw64ngmtIz",
+							"elementName": "Pages - ADDITIONAL OFFER BLADE - CTA",
 							"standardText": null,
-							"text": "Get the whitepaper",
-							"url": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/1Q4mtd7RL9I6UyCEYYsQPk/cfcccb4a75aa8286afa358b4ac36b085/How_Cloudflare_helps_address_data_protection_and_locality_obligations_in_Europe_-_June_2022.pdf",
+							"text": "Access tutorials",
+							"url": "https://developers.cloudflare.com/pages/tutorials/",
 							"loggedInUrl": null,
 							"buttonModal": null,
 							"openInNewTab": true,
 							"locale": "en-US"
 						},
 						"buttonTwo": null,
-						"sectionPadding": "tile--no-top-padding",
+						"sectionPadding": null,
 						"eyebrow": null
 					},
 					{
 						"contentTypeId": "bladeRichTextColumnGroup",
-						"contentfulId": "5PkzzkEw85ZQhojbzX7EXC",
+						"contentfulId": "6hkCLu8QEjyhZwSOlYMHyh",
 						"htmlId": null,
 						"mainHeadline": null,
 						"backgroundColor": "white",
@@ -379,7 +387,7 @@
 						"columns": [
 							{
 								"contentTypeId": "elementRichText",
-								"contentfulId": "1n7DgXVYN5KVcLnr1pagRa",
+								"contentfulId": "OxjEiGI9DSmJReSjIm1EF",
 								"title": null,
 								"htmlId": null,
 								"elementPosition": "relative",
@@ -431,7 +439,7 @@
 																"target": null,
 																"uri": null
 															},
-															"value": "\"Cloudflare's Logpush and ready-made dashboards have allowed us to obtain complete end-to-end visibility of our network and [have] ensured that we can build a holistic threat intel view for our entire platform.\"",
+															"value": "\"Cloudflare Pages is very cost-effective, and it's very easy to deploy code. Additionally, Pages offers additional value through integration with Cloudflare's performance and security tools, such as the CDN and WAF.\"",
 															"marks": [],
 															"content": null
 														}
@@ -475,7 +483,7 @@
 														"target": null,
 														"uri": null
 													},
-													"value": " Senior Systems Security Specialist, Ansarada",
+													"value": "President of Technology — Happy Cog",
 													"marks": [],
 													"content": null
 												}
@@ -676,22 +684,22 @@
 						"sectionPadding": null
 					},
 					{
-						"contentfulId": "24PexURHxdSHE5I09bOvP7",
+						"contentfulId": "C7DHNBTv4L4J0lUN9xKkl",
 						"contentTypeId": "bladeMultipleColumnsLayout",
-						"title": "Cloudflare Logs helps you optimize your application's security and performance",
-						"eyebrowHeading": "Top Logs use cases",
+						"title": null,
+						"eyebrowHeading": "Top Pages use cases",
 						"description": null,
 						"textLayout": "left",
-						"columnsLayout": "Two Columns",
+						"columnsLayout": "Three Columns",
 						"columnContent": [
 							{
 								"contentTypeId": "feature",
-								"contentfulId": "68vKnhiDS3MqJOu9MJqy6m",
-								"title": "Optimize user experience",
+								"contentfulId": "5IZw8mx6uOnZyikCpNmtTI",
+								"title": "Simplify the development process",
 								"makeTitleLink": false,
 								"titleUrl": null,
 								"titleSize": null,
-								"description": "Use Cloudflare Logs to identify configuration adjustments to improve performance.",
+								"description": "With seamless GitHub integration and built-in builds, deploy single applications and monorepos in record time.",
 								"learnMoreUrl": null,
 								"learnMoreText": null,
 								"displayBorder": false,
@@ -699,14 +707,14 @@
 								"removeCardBorder": false,
 								"icon": null,
 								"iconAssetFile": {
-									"id": "85c4fbc4-0db5-571b-8e57-5e56edf68d42",
-									"altText": "Cloudflare Logs",
-									"title": "Logs Icon",
+									"id": "e9338336-ce81-5938-a534-b60611eb0d00",
+									"altText": "Cloudflare workers ",
+									"title": "Cloudflare workers ",
 									"activeAsset": "Contentful Asset",
 									"locale": "en-US",
 									"contentfulAsset": {
 										"file": {
-											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/5lXkpwZauF5faOHKlfU1nh/8147f968d6de55800a02c83cbf088de3/documentation-rules.png"
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/4wP5LKSCVMZzy2mn0MsQyq/6d0239e7354806aa1b0dfcfec7ac7b6b/cloudflare-workers.svg"
 										},
 										"description": ""
 									},
@@ -722,12 +730,12 @@
 							},
 							{
 								"contentTypeId": "feature",
-								"contentfulId": "1wjEGhKbnd7nyyE61i1KSs",
-								"title": "End-to-end visibility",
+								"contentfulId": "55dFMXjOOZQfngmqVnDKmR",
+								"title": "Keep up with the latest standards",
 								"makeTitleLink": false,
 								"titleUrl": null,
 								"titleSize": null,
-								"description": "Combine request logs with other data sources, such as application server logs, for a complete view.",
+								"description": "Pages delivers support for HTTP/3, QUIC, and more — and provides [image compression](https://www.cloudflare.com/learning/performance/glossary/what-is-image-compression/) and SSL out of the box.",
 								"learnMoreUrl": null,
 								"learnMoreText": null,
 								"displayBorder": false,
@@ -735,16 +743,52 @@
 								"removeCardBorder": false,
 								"icon": null,
 								"iconAssetFile": {
-									"id": "b815385d-6fa7-54c1-9020-d5394237a7ab",
-									"altText": "Applications icon",
-									"title": "Applications icon",
+									"id": "6d5531b7-edaf-5b05-8686-6f455b1c5c6d",
+									"altText": "Optimization web blue",
+									"title": "Optimization web blue",
 									"activeAsset": "Contentful Asset",
 									"locale": "en-US",
 									"contentfulAsset": {
 										"file": {
-											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/4Gs1nPWmoZABBztrTHECMD/62d032e76ca646918a6420271edb612c/applications.svg"
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/76OxPWvxXlUbcfGr05wpg5/429150d8058c40452ee038bd9198ba4d/optimization-web.svg"
 										},
-										"description": "Applications icon"
+										"description": ""
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								},
+								"imageOverlaySuperheader": null,
+								"imageOverlayText": null,
+								"imageAssetFile": null,
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
+							},
+							{
+								"contentTypeId": "feature",
+								"contentfulId": "4I3OtjydcRIk0K3CYt4l1v",
+								"title": "Scale, scale, scale",
+								"makeTitleLink": false,
+								"titleUrl": null,
+								"titleSize": null,
+								"description": "The Cloudflare network can absorb huge traffic spikes and delivers content mere milliseconds from users.",
+								"learnMoreUrl": null,
+								"learnMoreText": null,
+								"displayBorder": false,
+								"openLinkInNewTab": null,
+								"removeCardBorder": false,
+								"icon": null,
+								"iconAssetFile": {
+									"id": "f705f70f-6061-5494-a41c-589d683ec8a2",
+									"altText": "network-scale",
+									"title": "network-scale",
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/6voDUQ7XmHDJ9zX0u2IrkW/e347d8fff227565dd30e1e9c85f1fe97/network-scale__1_.svg"
+										},
+										"description": null
 									},
 									"brandfolderAsset": null,
 									"brandfolderAssetMobile": null
@@ -762,18 +806,18 @@
 					},
 					{
 						"contentTypeId": "bladeHtml",
-						"contentfulId": "6ERNjfSr6g9m1W5koqEN4x",
-						"htmlContent": "<div style=\"text-align: center; cursor:pointer; margin-bottom:64px; margin-top: -60px;\">\n    <a href=\"/application-services/solutions/#web-app-performance-solutions\" target=\"_blank\" class=\"inline-link-style\">Explore more use cases<svg width=\"4\" height=\"10\"\n            viewBox=\"0 0 6 10\" fill=\"currentColor\" aria-label=\"chevron\" xmlns=\"https://www.cloudflare.com/zero-trust/solutions/\"\n            class=\"dib v-mid ml1\">\n            <path\n                d=\"M1.00003 -4.37127e-08L-3.93401e-07 1.00003L4 5L0.000271373 9.00025L1.00003 10L6.00003 5L1.00003 -4.37127e-08Z\">\n            </path>\n        </svg>  </a>\n</div>",
+						"contentfulId": "3wyAe1CGoXv7bN06A73EPU",
+						"htmlContent": "<div style=\"text-align: center; cursor:pointer; margin-bottom:64px; margin-top: -60px;\">\n    <a href=\"https://cfl.re/44CGK1E\" target=\"_blank\" class=\"inline-link-style\">Explore use cases<svg width=\"6\" height=\"10\"\n            viewBox=\"0 0 6 10\" fill=\"currentColor\" aria-label=\"chevron\" xmlns=\"https://cfl.re/44CGK1E\"\n            class=\"dib v-mid ml1\">\n            <path\n                d=\"M1.00003 -4.37127e-08L-3.93401e-07 1.00003L4 5L0.000271373 9.00025L1.00003 10L6.00003 5L1.00003 -4.37127e-08Z\">\n            </path>\n        </svg>  </a>\n</div>",
 						"htmlId": null
 					},
 					{
-						"contentfulId": "1ldMim6nGgZgoSHiKZhQS9",
+						"contentfulId": "4zhryX1HWUUOmMlyxnLK4S",
 						"contentTypeId": "bladeLeadGeneration",
 						"title": null,
-						"description": "Helping organizations worldwide accelerate and protect their applications",
+						"description": " See what global companies are building with Pages",
 						"variant": "inline",
 						"htmlId": null,
-						"sectionPadding": "tile--no-top-padding",
+						"sectionPadding": "tile--no-top-bottom-padding",
 						"backgroundImage": {
 							"id": "5fb646a4-2af5-50d0-815c-108317d4b5b7",
 							"altText": "Cloudflare Orange Background",
@@ -793,11 +837,11 @@
 							"buttonAssetFile": null,
 							"buttonTextLoggedIn": null,
 							"contentTypeId": "button",
-							"contentfulId": "5HApvLAvSdwHI9D5XopPH3",
-							"elementName": "See case studies - ALL",
+							"contentfulId": "3Vl3TDct3eqPzcG2j1dvyD",
+							"elementName": "Pages - CASE STUDIES - CTA",
 							"standardText": null,
 							"text": "See case studies",
-							"url": "/case-studies/",
+							"url": "https://www.cloudflare.com/case-studies/?product=Pages",
 							"loggedInUrl": null,
 							"buttonModal": null,
 							"openInNewTab": false,
@@ -806,30 +850,240 @@
 						"secondaryCtaButton": null
 					},
 					{
-						"contentfulId": "10mobUt9TB5DC7uoF1M1D4",
+						"contentTypeId": "bladeTable",
+						"contentfulId": "6fDdXxZalKtndyk4qgWUqn",
+						"locale": "en-US",
+						"sectionPadding": "tile--no-bottom-padding",
+						"bladeBorder": "none",
+						"backgroundColor": "white",
+						"displayHeader": null,
+						"showFilter": null,
+						"sectionTitle": null,
+						"title": "Pages pricing",
+						"copy": "All plans come with unlimited sites, seats, requests, and bandwidth.",
+						"htmlId": null,
+						"columnHeaders": [
+							{
+								"cellText": "Free",
+								"cellTextLinkUrl": null,
+								"cellSubtitle": null,
+								"buttonText": "Get Started",
+								"buttonUrl": "https://dash.cloudflare.com/sign-up/workers-and-pages",
+								"commonElements": null,
+								"imageAssetFile": null
+							},
+							{
+								"cellText": "Pro",
+								"cellTextLinkUrl": null,
+								"cellSubtitle": "$25 / month",
+								"buttonText": "Get Started",
+								"buttonUrl": "https://dash.cloudflare.com/sign-up/workers-and-pages",
+								"commonElements": null,
+								"imageAssetFile": null
+							},
+							{
+								"cellText": "Business",
+								"cellTextLinkUrl": null,
+								"cellSubtitle": "$250/month",
+								"buttonText": "Get Started",
+								"buttonUrl": "https://dash.cloudflare.com/sign-up/workers-and-pages",
+								"commonElements": null,
+								"imageAssetFile": null
+							}
+						],
+						"groupsInTable": [],
+						"rowsInTable": [
+							{
+								"contentfulId": "7LwyArTOQe9cesLpWB0Muw",
+								"rowHeader2": {
+									"contentfulId": "2OUvNuZYSlrerkohc0Ibqk",
+									"cellText": "Annual Billing",
+									"cellTextLinkUrl": null,
+									"buttonText": null,
+									"buttonUrl": null,
+									"commonElements": null,
+									"imageAssetFile": null
+								},
+								"cellsInRow": [
+									{
+										"contentfulId": "EpA00Q5FbgrMClZB46R6s",
+										"cellText": "-",
+										"cellTextLinkUrl": null,
+										"buttonText": null,
+										"buttonUrl": null,
+										"commonElements": null,
+										"imageAssetFile": null
+									},
+									{
+										"contentfulId": "5NGZVw28AE7GGAuCm75vUu",
+										"cellText": "$240 / year if billed annually",
+										"cellTextLinkUrl": null,
+										"buttonText": null,
+										"buttonUrl": null,
+										"commonElements": null,
+										"imageAssetFile": null
+									},
+									{
+										"contentfulId": "4fd64F5lV1RiLZBL8KUWS8",
+										"cellText": "$2400 / year if billed annually.",
+										"cellTextLinkUrl": null,
+										"buttonText": null,
+										"buttonUrl": null,
+										"commonElements": null,
+										"imageAssetFile": null
+									}
+								]
+							},
+							{
+								"contentfulId": "4gLf52oLCwEp51MIBE1OFM",
+								"rowHeader2": {
+									"contentfulId": "2LQYN5Q273gqGjsURz54hp",
+									"cellText": "Concurrent builds",
+									"cellTextLinkUrl": null,
+									"buttonText": null,
+									"buttonUrl": null,
+									"commonElements": null,
+									"imageAssetFile": null
+								},
+								"cellsInRow": [
+									{
+										"contentfulId": "2rUxVrQDvBMgGydOhVAb1g",
+										"cellText": "1",
+										"cellTextLinkUrl": null,
+										"buttonText": null,
+										"buttonUrl": null,
+										"commonElements": null,
+										"imageAssetFile": null
+									},
+									{
+										"contentfulId": "7Lj8NW70PniiXHTlCGfQ3m",
+										"cellText": "5",
+										"cellTextLinkUrl": null,
+										"buttonText": null,
+										"buttonUrl": null,
+										"commonElements": null,
+										"imageAssetFile": null
+									},
+									{
+										"contentfulId": "55qfjWKu4TMUptxNZYyRml",
+										"cellText": "20",
+										"cellTextLinkUrl": null,
+										"buttonText": null,
+										"buttonUrl": null,
+										"commonElements": null,
+										"imageAssetFile": null
+									}
+								]
+							},
+							{
+								"contentfulId": "NEATcfiFEKRDtDpt7fUxm",
+								"rowHeader2": {
+									"contentfulId": "2QN5k4HoqlFbbDkd3r00c8",
+									"cellText": "Builds per month",
+									"cellTextLinkUrl": null,
+									"buttonText": null,
+									"buttonUrl": null,
+									"commonElements": null,
+									"imageAssetFile": null
+								},
+								"cellsInRow": [
+									{
+										"contentfulId": "1LNRdAcA84uS2kGS7yyHPM",
+										"cellText": "500",
+										"cellTextLinkUrl": null,
+										"buttonText": null,
+										"buttonUrl": null,
+										"commonElements": null,
+										"imageAssetFile": null
+									},
+									{
+										"contentfulId": "3Nxxvba47ZfKvMwSbq7unv",
+										"cellText": "5,000",
+										"cellTextLinkUrl": null,
+										"buttonText": null,
+										"buttonUrl": null,
+										"commonElements": null,
+										"imageAssetFile": null
+									},
+									{
+										"contentfulId": "3x1BTsiKrQpDYGbyWEazQW",
+										"cellText": "20,000",
+										"cellTextLinkUrl": null,
+										"buttonText": null,
+										"buttonUrl": null,
+										"commonElements": null,
+										"imageAssetFile": null
+									}
+								]
+							},
+							{
+								"contentfulId": "5y3aS9Wq10Fw9WPK4xDE3f",
+								"rowHeader2": {
+									"contentfulId": "Z0MureIYswATWMltdRa4s",
+									"cellText": "Custom domains",
+									"cellTextLinkUrl": null,
+									"buttonText": null,
+									"buttonUrl": null,
+									"commonElements": null,
+									"imageAssetFile": null
+								},
+								"cellsInRow": [
+									{
+										"contentfulId": "5w2BVeTRnANeXV7n6MtqpY",
+										"cellText": "100",
+										"cellTextLinkUrl": null,
+										"buttonText": null,
+										"buttonUrl": null,
+										"commonElements": null,
+										"imageAssetFile": null
+									},
+									{
+										"contentfulId": "3scnPUkF85ulVd8mrAGPET",
+										"cellText": "250",
+										"cellTextLinkUrl": null,
+										"buttonText": null,
+										"buttonUrl": null,
+										"commonElements": null,
+										"imageAssetFile": null
+									},
+									{
+										"contentfulId": "26vX6oM1fEl4I3POijsPo1",
+										"cellText": "500",
+										"cellTextLinkUrl": null,
+										"buttonText": null,
+										"buttonUrl": null,
+										"commonElements": null,
+										"imageAssetFile": null
+									}
+								]
+							}
+						]
+					},
+					{
+						"contentfulId": "7JRGz7PB1fx8A5awejqs3Y",
 						"backgroundColor": "white",
 						"contentTypeId": "bladeFourFeatures",
 						"htmlId": null,
 						"copy": null,
 						"title": "Resources",
 						"subtitle": null,
-						"bladeStyle": null,
+						"bladeStyle": "Feature Blocks - 3 columns",
 						"bladeBorder": "none",
-						"sectionPadding": null,
+						"sectionPadding": "tile--no-top-padding",
 						"carouselSlidesToShow": null,
 						"carouselSlidesToScroll": null,
 						"locale": "en-US",
 						"features": [
 							{
 								"contentTypeId": "feature",
-								"contentfulId": "4cEEixz7mOjjkMz8flGYro",
-								"title": "Cloudflare Logs documentation",
+								"contentfulId": "3tndVbRbOZDBCPliFCv59G",
+								"title": "Making Cloudflare the best place for your web application",
 								"makeTitleLink": false,
 								"titleUrl": null,
 								"titleSize": null,
-								"description": "Learn how to use Cloudflare Logs for debugging, identifying configuration adjustments, and creating analytics.",
-								"learnMoreUrl": "https://developers.cloudflare.com/logs/",
-								"learnMoreText": "See documentation",
+								"description": "Learn about our first-class support for full-stack web frameworks, combined with the low latency and cost-effectiveness of our developer platform.",
+								"learnMoreUrl": "https://cfl.re/pages-blog",
+								"learnMoreText": "Read the blog",
 								"displayBorder": false,
 								"openLinkInNewTab": true,
 								"removeCardBorder": false,
@@ -838,9 +1092,9 @@
 								"imageOverlaySuperheader": null,
 								"imageOverlayText": null,
 								"imageAssetFile": {
-									"id": "bb0c6be9-0531-5573-923c-f00ca093e47e",
-									"altText": null,
-									"title": null,
+									"id": "2ea2b03b-b35f-525f-8903-0fa37d95a7e3",
+									"altText": "Resources card - Thin top orange line  - image",
+									"title": "Resources card - Thin top orange line  - image",
 									"activeAsset": "Contentful Asset",
 									"locale": "en-US",
 									"contentfulAsset": {
@@ -858,25 +1112,25 @@
 							},
 							{
 								"contentTypeId": "feature",
-								"contentfulId": "1X9u56ezuMTLUtczVSybp8",
-								"title": "How the Cloudflare network maintains data privacy",
+								"contentfulId": "6TxUf8LbNKyPscRJEMxhXI",
+								"title": "Pages now supports monorepos",
 								"makeTitleLink": false,
 								"titleUrl": null,
 								"titleSize": null,
-								"description": "This paper breaks down how Cloudflare uses security measures to protect request metadata as it crosses our network.",
-								"learnMoreUrl": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/1S0GCmfDE4rA1CK5dCK9kL/3962d823146ea425666fdd6234027957/How_Cloudflare_helps_address_data_protection_and_locality_obligations_in_Europe_-_June_2022.pdf",
-								"learnMoreText": "Get the whitepaper",
+								"description": "With Pages support for monorepos, development teams can trigger builds to their various projects with each push.",
+								"learnMoreUrl": "https://cfl.re/pages-enhancements",
+								"learnMoreText": "Read the blog",
 								"displayBorder": false,
-								"openLinkInNewTab": false,
+								"openLinkInNewTab": true,
 								"removeCardBorder": false,
 								"icon": null,
 								"iconAssetFile": null,
 								"imageOverlaySuperheader": null,
 								"imageOverlayText": null,
 								"imageAssetFile": {
-									"id": "bb0c6be9-0531-5573-923c-f00ca093e47e",
-									"altText": null,
-									"title": null,
+									"id": "2ea2b03b-b35f-525f-8903-0fa37d95a7e3",
+									"altText": "Resources card - Thin top orange line  - image",
+									"title": "Resources card - Thin top orange line  - image",
 									"activeAsset": "Contentful Asset",
 									"locale": "en-US",
 									"contentfulAsset": {
@@ -894,14 +1148,14 @@
 							},
 							{
 								"contentTypeId": "feature",
-								"contentfulId": "41bJe4c3wfEAz8LfEgSmrh",
-								"title": "Cloudflare Logs tutorials",
+								"contentfulId": "2iKJvuoY0lzqjKk32caXkI",
+								"title": "Full-stack application reference architecture",
 								"makeTitleLink": false,
 								"titleUrl": null,
 								"titleSize": null,
-								"description": "Learn to manage and analyze your Cloudflare Logs.",
-								"learnMoreUrl": "https://developers.cloudflare.com/logs/tutorials/",
-								"learnMoreText": "Go to tutorials",
+								"description": "See how serverless services enable developers to build great end-user experiences without large operational overhead.",
+								"learnMoreUrl": "https://developers.cloudflare.com/reference-architecture/diagrams/serverless/fullstack-application/",
+								"learnMoreText": "View reference architecture",
 								"displayBorder": false,
 								"openLinkInNewTab": true,
 								"removeCardBorder": false,
@@ -910,9 +1164,9 @@
 								"imageOverlaySuperheader": null,
 								"imageOverlayText": null,
 								"imageAssetFile": {
-									"id": "bb0c6be9-0531-5573-923c-f00ca093e47e",
-									"altText": null,
-									"title": null,
+									"id": "2ea2b03b-b35f-525f-8903-0fa37d95a7e3",
+									"altText": "Resources card - Thin top orange line  - image",
+									"title": "Resources card - Thin top orange line  - image",
 									"activeAsset": "Contentful Asset",
 									"locale": "en-US",
 									"contentfulAsset": {
@@ -932,8 +1186,8 @@
 					},
 					{
 						"contentTypeId": "bladeEnablement",
-						"contentfulId": "4FQgRDlgs2NdH32hKJ8Ti7",
-						"title": "Get Cloudflare Logs for your enterprise",
+						"contentfulId": "3jixj5sGII1i5TiHYaF2dE",
+						"title": "Start building applications with Cloudflare Pages",
 						"titleSize": "medium",
 						"backgroundColor": "image-background",
 						"buttonText": null,
@@ -948,53 +1202,13 @@
 							"buttonAssetFile": null,
 							"buttonTextLoggedIn": null,
 							"contentTypeId": "button",
-							"contentfulId": "4Xz8W7auMR2dIP0Kp0tpJW",
-							"elementName": "Talk to an expert",
+							"contentfulId": "6fIecOSWj2YTUWNJPsjhLB",
+							"elementName": "Pages - Get started - CTA",
 							"standardText": null,
-							"text": "Talk to an expert",
-							"url": null,
+							"text": "Get started",
+							"url": "https://dash.cloudflare.com/sign-up/workers-and-pages",
 							"loggedInUrl": null,
-							"buttonModal": {
-								"contentTypeId": "formModal",
-								"contentfulId": "5a1ymxApHEqHHRNjyMbcEm",
-								"modalName": "Talk to an expert",
-								"modalId": "talk-to-an-expert",
-								"modalType": "single-form",
-								"marketoForm": {
-									"contentTypeId": "marketoEmbeddedForm",
-									"contentfulId": "GArhAEENzeQ3aQ4esVZPR",
-									"bladeName": "Enterprise General Sales Inquiry",
-									"backgroundColor": "white",
-									"marketoFormId": 1341,
-									"marketoFormLeadSource": "Inbound - Web Form",
-									"marketoFormLeadSourceDetail": "Web Form - Enterprise General Sales Inquiry",
-									"marketoFormAssetName": null,
-									"marketoFormHeaderText": "Talk to an expert",
-									"marketoFormDefaultComment": null,
-									"showCommentBox": null,
-									"marketoFormThankYouText": null,
-									"marketoFormCustomSuccessMessage": null,
-									"marketoFormPdfDownload": null,
-									"marketoFormPdfDownloadI18n": [],
-									"marketoFormAssetDownloadButtonText": null,
-									"marketoFormSuccessRedirectUrl": null,
-									"sendAdRoll": null,
-									"meta_adRollCustomSegment": null,
-									"enableSandbox": null,
-									"marketoFormSubmitButtonText": null,
-									"marketoFormSubmitButtonColor": null,
-									"enableEmailVerification": null,
-									"disableEnterpriseEmailNotification": null,
-									"enableRingout": null
-								},
-								"title": null,
-								"regularCopy": null,
-								"splitFormDefaultTab": null,
-								"selfServeTabText": null,
-								"selfServeCopy": null,
-								"enterpriseTabText": null,
-								"enterpriseCopy": null
-							},
+							"buttonModal": null,
 							"openInNewTab": true,
 							"locale": "en-US"
 						},
@@ -1004,50 +1218,8 @@
 					}
 				],
 				"noindex": false,
-				"formModal": [
-					{
-						"contentTypeId": "formModal",
-						"contentfulId": "5a1ymxApHEqHHRNjyMbcEm",
-						"modalName": "Talk to an expert",
-						"modalId": "talk-to-an-expert",
-						"modalType": "single-form",
-						"marketoForm": {
-							"contentTypeId": "marketoEmbeddedForm",
-							"contentfulId": "GArhAEENzeQ3aQ4esVZPR",
-							"bladeName": "Enterprise General Sales Inquiry",
-							"backgroundColor": "white",
-							"marketoFormId": 1341,
-							"marketoFormLeadSource": "Inbound - Web Form",
-							"marketoFormLeadSourceDetail": "Web Form - Enterprise General Sales Inquiry",
-							"marketoFormAssetName": null,
-							"marketoFormHeaderText": "Talk to an expert",
-							"marketoFormDefaultComment": null,
-							"showCommentBox": null,
-							"marketoFormThankYouText": null,
-							"marketoFormCustomSuccessMessage": null,
-							"marketoFormPdfDownload": null,
-							"marketoFormPdfDownloadI18n": [],
-							"marketoFormAssetDownloadButtonText": null,
-							"marketoFormSuccessRedirectUrl": null,
-							"sendAdRoll": null,
-							"meta_adRollCustomSegment": null,
-							"enableSandbox": null,
-							"marketoFormSubmitButtonText": null,
-							"marketoFormSubmitButtonColor": null,
-							"enableEmailVerification": null,
-							"disableEnterpriseEmailNotification": null,
-							"enableRingout": null
-						},
-						"title": null,
-						"regularCopy": null,
-						"splitFormDefaultTab": null,
-						"selfServeTabText": null,
-						"selfServeCopy": null,
-						"enterpriseTabText": null,
-						"enterpriseCopy": null
-					}
-				],
-				"keepHashUrlSyncedWithScrollPosition": null
+				"formModal": [],
+				"keepHashUrlSyncedWithScrollPosition": false
 			},
 			"site": {
 				"siteMetadata": {
@@ -1058,8 +1230,8 @@
 		"pageContext": {
 			"currentLocale": "en-US",
 			"locale": "en-US",
-			"pathname": "/application-services/products/cloudflare-logs/",
-			"contentfulId": "3pnxtnd3x6OMcA2uAIG8YU",
+			"pathname": "/developer-platform/products/pages/",
+			"contentfulId": "2jP8IXVO3kejCQ48koS36j",
 			"allowedHrefLangs": [
 				"en-US",
 				"zh-CN",
@@ -1073,11 +1245,10 @@
 				"es-ES",
 				"es-LA",
 				"ru-RU",
-				"tr-TR",
 				"zh-Hans-CN",
 				"pl-PL"
 			],
-			"hasPsaBanner": false,
+			"hasPsaBanner": true,
 			"baseURL": "https://www.cloudflare.com"
 		}
 	}

@@ -1,10 +1,10 @@
 {
 	"componentChunkName": "component---src-components-page-page-template-tsx",
-	"path": "/application-services/products/cloudflare-logs/",
+	"path": "/developer-platform/products/email-routing/",
 	"result": {
 		"data": {
 			"page": {
-				"pageName": "Cloudflare Logs - Product Page ",
+				"pageName": "Email Routing product page",
 				"localeList": {
 					"enUS": "English for Locale",
 					"zhCN": "Translated for Locale",
@@ -27,20 +27,20 @@
 					"ruRU": "Translated for Locale",
 					"svSE": "English for Locale",
 					"viVN": "English for Locale",
-					"trTR": "Translated for Locale",
+					"trTR": "English for Locale",
 					"zhHansCN": "Translated for Locale",
 					"plPL": "Translated for Locale",
 					"arAR": "No Page for Locale",
-					"heIL": null
+					"heIL": "No Page for Locale"
 				},
-				"relativePath": "application-services/products/cloudflare-logs/",
+				"relativePath": "developer-platform/products/email-routing/",
 				"topNavOptions": "default",
 				"topNavButtonText": null,
 				"topNavButtonUrl": null,
 				"footerOptions": "default",
 				"metaTags": {
-					"metaTitle": "Cloudflare Logs | Granular Analytics and Insights",
-					"metaDescription": "Cloudflare Logs lets you identify attacks, debug errors, and create custom analytics by providing detailed HTTP request logs. Demo Cloudflare Logs today.",
+					"metaTitle": "Cloudflare Email Routing | Easily create addresses and route emails",
+					"metaDescription": "With Cloudflare Email Routing, simplify the way you create and manage custom email addresses for your domain, without needing to keep an eye on additional mailboxes.",
 					"twitterCustomImage": null,
 					"metaImage": {
 						"file": {
@@ -52,10 +52,10 @@
 					"author": []
 				},
 				"sys": {
-					"createdAt": "2019-01-31T19:03:22.084Z",
-					"updatedAt": "2026-04-11T13:31:02.744Z"
+					"createdAt": "2022-06-17T15:42:02.719Z",
+					"updatedAt": "2026-04-04T07:17:38.696Z"
 				},
-				"contentfulId": "3pnxtnd3x6OMcA2uAIG8YU",
+				"contentfulId": "5HoEBTLUgvFuGEmXFfO9GV",
 				"contentTypeId": "page",
 				"promotionalBanner": null,
 				"psaBanner": null,
@@ -65,83 +65,86 @@
 				"template": null,
 				"relatedBlades": [
 					{
-						"contentfulId": "3jf16PRJluC0wKMEmwwaiy",
+						"contentfulId": "5EPJ83ptqmjuvrfxo1n236",
 						"contentTypeId": "bladeHeroAnimation",
-						"title": "Cloudflare Logs",
+						"title": "Cloudflare Email Routing",
 						"titleSize": null,
-						"subtitle": "Get a complete understanding of your app's traffic",
+						"subtitle": "A free and private way to create and manage email addresses",
 						"subtitleSize": null,
-						"copy": "Cloudflare provides detailed logs of your HTTP requests. Use these logs to debug, identify configuration adjustments to improve performance and security, and create custom analytics.",
+						"copy": "Create custom email addresses for your domain and route messages to your preferred inbox — all without ever exposing your primary email address.",
 						"buttonColor": "orange",
 						"buttonColor2": "orange-outline",
-						"buttonText1": "Talk to an expert",
+						"buttonText1": "Get started",
 						"buttonText1LoggedIn": null,
-						"buttonUrl1": "#",
+						"buttonUrl1": "https://dash.cloudflare.com/sign-up/workers",
 						"buttonUrl1LoggedIn": null,
-						"button1ExtraClass": "talk-to-an-expert",
-						"buttonText2": "Watch demo",
+						"button1ExtraClass": null,
+						"buttonText2": "Read developer docs",
 						"buttonText2LoggedIn": null,
-						"buttonUrl2": "https://cloudflare.ondemand.goldcast.io/on-demand/10350ff2-cb6c-430e-9e0b-28c29b5df938",
+						"buttonUrl2": "https://developers.cloudflare.com/email-routing/",
 						"button2ExtraClass": null,
 						"bladeBorder": "none",
 						"htmlId": null,
 						"textColor": "black",
 						"includeVideo": false,
 						"streamVideoId": null,
-						"streamOptions": null,
-						"streamCaptions": null,
+						"streamOptions": [
+							"controls",
+							"captions"
+						],
+						"streamCaptions": "en",
 						"popupStreamId": null,
 						"popupText": null,
-						"button1OpenInNewTab": null,
+						"button1OpenInNewTab": false,
 						"button2OpenInNewTab": true,
 						"streamThumbnails": null,
-						"sectionPadding": "tile--no-top-padding",
+						"sectionPadding": null,
 						"streamPosterAssetFile": null,
 						"streamPoster": null,
 						"imageSize": "Medium",
-						"imagePosition": null,
+						"imagePosition": false,
 						"leftLinkUrl": null,
 						"leftLink": null,
 						"leftLinkLoggedIn": null,
-						"leftLinkOptions": "show",
+						"leftLinkOptions": "hide",
 						"backgroundColor": "white",
 						"textlayoutMode": null,
 						"backgroundAssetFile": null,
 						"imageLayout": null,
 						"image": null,
 						"imageAssetFile": {
-							"id": "ab4db9e9-211f-59de-8563-a4bfd2933260",
-							"altText": "Logs hero illustration",
-							"title": "Logs hero illustration",
+							"id": "07661851-a5ae-5023-9f17-eae8219f9f25",
+							"altText": "Cloudflare Email Routing - paper planes representing emails travel left to right",
+							"title": "Cloudflare Email Routing",
 							"activeAsset": "Contentful Asset",
 							"locale": "en-US",
 							"contentfulAsset": {
 								"file": {
-									"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/6YctAy2a9z3DCOhpC5ydMI/085ab47cf08275e6a67084af0912febe/logs-hero-illustration.svg"
+									"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/7lVVVVEB2RUncxomRJHLny/7c497b8d6fee9121d03fac508e850114/BDES-5040_-_Email-Forwarding-Paper-Plane.svg"
 								},
-								"description": "Illustration of Cloudflare integration with IBM QRadar"
+								"description": null
 							},
 							"brandfolderAsset": null,
 							"brandfolderAssetMobile": null
 						}
 					},
 					{
-						"contentfulId": "KCdnKNu5ZUc8vsovNNrUj",
+						"contentfulId": "6FVzCWASxnPo5VSwmPArxZ",
 						"contentTypeId": "bladeMultipleColumnsLayout",
 						"title": null,
-						"eyebrowHeading": "BENEFITS OF CLOUDFLARE LOGS",
+						"eyebrowHeading": "BENEFITS OF CLOUDFLARE EMAIL ROUTING",
 						"description": null,
 						"textLayout": "left",
 						"columnsLayout": "Four Columns",
 						"columnContent": [
 							{
 								"contentTypeId": "feature",
-								"contentfulId": "56rwPA8JwIs1euQnQKRXEU",
-								"title": "Identify attacks and debug errors",
+								"contentfulId": "51ULLTwCaJ2hA6Uk8pcogz",
+								"title": "Private by design & anti-spam",
 								"makeTitleLink": false,
 								"titleUrl": null,
 								"titleSize": null,
-								"description": "Investigate potential threats in HTTP traffic. Identify and debug errors affecting end users.",
+								"description": "Email Routing is 100% private; Cloudflare will not store or access email content. We use phishing detection to prevent spam from being forwarded.",
 								"learnMoreUrl": null,
 								"learnMoreText": null,
 								"displayBorder": false,
@@ -149,86 +152,14 @@
 								"removeCardBorder": false,
 								"icon": null,
 								"iconAssetFile": {
-									"id": "27d3dc18-7219-53bc-bd53-b9742318bf14",
-									"altText": "Traffic attack blue",
-									"title": "Traffic attack blue",
+									"id": "eaeddebf-b730-5e34-b5cd-2dcca8d4cba2",
+									"altText": "security-shield-protection-230x301-664b7d5",
+									"title": "security-shield-protection-230x301-664b7d5",
 									"activeAsset": "Contentful Asset",
 									"locale": "en-US",
 									"contentfulAsset": {
 										"file": {
-											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/44OWJ7jF9JVwp4zh7zMy7B/d80f24569dfb7d418d6913b32940bf5b/traffic-attack-browser_1_.svg"
-										},
-										"description": "Prevent financial and identity theft icon"
-									},
-									"brandfolderAsset": null,
-									"brandfolderAssetMobile": null
-								},
-								"imageOverlaySuperheader": null,
-								"imageOverlayText": null,
-								"imageAssetFile": null,
-								"streamId": null,
-								"streamThumbnail": null,
-								"streamThumbnailAssetFile": null
-							},
-							{
-								"contentTypeId": "feature",
-								"contentfulId": "5HfQD8tao8aN8mi9yoDPlY",
-								"title": "Tune your Cloudflare configuration",
-								"makeTitleLink": false,
-								"titleUrl": null,
-								"titleSize": null,
-								"description": "Logs can help you improve your application's performance and security by adjusting your Cloudflare configuration.",
-								"learnMoreUrl": null,
-								"learnMoreText": null,
-								"displayBorder": false,
-								"openLinkInNewTab": null,
-								"removeCardBorder": false,
-								"icon": null,
-								"iconAssetFile": {
-									"id": "b1b7275d-3503-5173-a651-9cfd70157c3c",
-									"altText": "Performance acceleration rocket ",
-									"title": "Performance acceleration rocket",
-									"activeAsset": "Contentful Asset",
-									"locale": "en-US",
-									"contentfulAsset": {
-										"file": {
-											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/1vvXmr7jmxFdYUgliFcXUh/d27e7eabc9727ba987b15d5e9ddad5e3/performance-acceleration-rocket.svg"
-										},
-										"description": "Performance acceleration rocket orange"
-									},
-									"brandfolderAsset": null,
-									"brandfolderAssetMobile": null
-								},
-								"imageOverlaySuperheader": null,
-								"imageOverlayText": null,
-								"imageAssetFile": null,
-								"streamId": null,
-								"streamThumbnail": null,
-								"streamThumbnailAssetFile": null
-							},
-							{
-								"contentTypeId": "feature",
-								"contentfulId": "3JO1MqSu3dchoDeZhor0z2",
-								"title": "Create custom analytics",
-								"makeTitleLink": false,
-								"titleUrl": null,
-								"titleSize": null,
-								"description": "Build custom analytics in the tools you already use.",
-								"learnMoreUrl": null,
-								"learnMoreText": null,
-								"displayBorder": false,
-								"openLinkInNewTab": null,
-								"removeCardBorder": false,
-								"icon": null,
-								"iconAssetFile": {
-									"id": "082acf6d-2836-52a9-a97d-f6a571c67183",
-									"altText": "Icon of a graph going up",
-									"title": null,
-									"activeAsset": "Contentful Asset",
-									"locale": "en-US",
-									"contentfulAsset": {
-										"file": {
-											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/yXs0Mrat5Fwc9hqisn4li/2741ce0d3466e09e4775ea7f5caa894b/analytics-data.png"
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/LaRddEaKEWlYXXx8Y2UST/4a87c8fe7df63554665ed7b673ba5846/security-shield-protection-2.svg"
 										},
 										"description": null
 									},
@@ -244,12 +175,12 @@
 							},
 							{
 								"contentTypeId": "feature",
-								"contentfulId": "Sa4fe23HKNMHg35wyBrlI",
-								"title": "Push or pull logs to anywhere",
+								"contentfulId": "348YYqSdwtYTsMzIy7lw3R",
+								"title": "Free and easy to configure",
 								"makeTitleLink": false,
 								"titleUrl": null,
 								"titleSize": null,
-								"description": "Push logs to your preferred storage provider, or pull logs via our API.",
+								"description": "Creating custom addresses and forwarding messages to your inbox is free. DNS records are created automatically and protected from accidental changes.",
 								"learnMoreUrl": null,
 								"learnMoreText": null,
 								"displayBorder": false,
@@ -257,14 +188,86 @@
 								"removeCardBorder": false,
 								"icon": null,
 								"iconAssetFile": {
-									"id": "7dcf0b32-5e52-5e8a-be1e-2324e1aab71c",
-									"altText": "Code api ",
-									"title": "Code api ",
+									"id": "1b916824-7fb8-5f8f-a315-4faa6461d4d3",
+									"altText": "Optimization gear ",
+									"title": "Optimization gear ",
 									"activeAsset": "Contentful Asset",
 									"locale": "en-US",
 									"contentfulAsset": {
 										"file": {
-											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/5M2SLF9OIQYKSeaL46suWO/87ec742e674be44e38dab4ee620c2a42/code-api.svg"
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/6JreowuAuIySxXXXqycY4r/746dc87c57caa9f58423af84de3fa35a/optimization-gear.svg"
+										},
+										"description": ""
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								},
+								"imageOverlaySuperheader": null,
+								"imageOverlayText": null,
+								"imageAssetFile": null,
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
+							},
+							{
+								"contentTypeId": "feature",
+								"contentfulId": "3fPyABjXtRU3elzyAcixEg",
+								"title": "Advanced analytics",
+								"makeTitleLink": false,
+								"titleUrl": null,
+								"titleSize": null,
+								"description": "Access insights on the number of emails sent to you, whether they were forwarded or dropped, and delivery success at your destination mailbox.",
+								"learnMoreUrl": null,
+								"learnMoreText": null,
+								"displayBorder": false,
+								"openLinkInNewTab": null,
+								"removeCardBorder": false,
+								"icon": null,
+								"iconAssetFile": {
+									"id": "8ef8fdc5-cba6-5992-8e53-275759d57c5a",
+									"altText": "Analytics data blue",
+									"title": "Analytics data blue",
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/2GDXdm5wvNxuUxs30EcKZx/daade3315fd04282a6607e8ce40d3fab/analytics-data.svg"
+										},
+										"description": "Data analytics icon"
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								},
+								"imageOverlaySuperheader": null,
+								"imageOverlayText": null,
+								"imageAssetFile": null,
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
+							},
+							{
+								"contentTypeId": "feature",
+								"contentfulId": "4FIKPaiPggPP9irOybDxiM",
+								"title": "Process emails programmatically",
+								"makeTitleLink": false,
+								"titleUrl": null,
+								"titleSize": null,
+								"description": "Route to Cloudflare Workers to program custom logic for processing your emails.",
+								"learnMoreUrl": null,
+								"learnMoreText": null,
+								"displayBorder": false,
+								"openLinkInNewTab": null,
+								"removeCardBorder": false,
+								"icon": null,
+								"iconAssetFile": {
+									"id": "7ffa9292-726c-5be7-b2cb-66a931078912",
+									"altText": "Cloudflare Email Routing",
+									"title": "Email Routing Icon",
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/4Sx6clrdwhC89NzanpRoQN/ff7d6e3719a6ba46094ccf72c395cfe8/cloudflare-email-forwarding.svg"
 										},
 										"description": ""
 									},
@@ -279,13 +282,13 @@
 								"streamThumbnailAssetFile": null
 							}
 						],
-						"sectionPadding": "tile--no-bottom-padding",
+						"sectionPadding": null,
 						"htmlId": null
 					},
 					{
-						"contentfulId": "1ESHnMzQNkZonyb1IJLRRp",
-						"title": "Get comprehensive metadata on your domain's requests",
-						"copy": "Cloudflare Logs provide customers with a deep understanding of their traffic down to the individual HTTP request.\n\nOrganizations can have their logs sent to their preferred storage provider and use the tools you already know to gain insights, or write custom scripts to retrieve their logs continually using our powerful REST API.",
+						"contentfulId": "3GXulNkgYzROhaRTPSvHlt",
+						"title": "Route emails efficiently",
+						"copy": "Email Routing acts as an intelligent router at the transport layer, handling and modifying the SMTP envelope to deliver the message at its final destination while preserving the original headers and keeping the body intact in real time.",
 						"toggleText": null,
 						"button": [],
 						"learnMoreUrl": null,
@@ -308,16 +311,16 @@
 						"streamPosterAssetFile": null,
 						"image": null,
 						"imageAssetFile": {
-							"id": "97648a12-b981-5ea9-aa7c-81fdfdf0c251",
-							"altText": "Cloudflare request logs can be sent to a preferred storage provider.",
-							"title": "Cloudflare-logs-supported-integrations",
+							"id": "4acec23a-a705-5649-b356-95bfc5a42154",
+							"altText": "Area 1 email security",
+							"title": "Area 1 Product Page - Hero Illustration",
 							"activeAsset": "Contentful Asset",
 							"locale": "en-US",
 							"contentfulAsset": {
 								"file": {
-									"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/5DhRbXsvaLNs92e8ZNxbJC/6b74428f8a665e0994f64613ab599b9b/logs-destinations.png"
+									"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/3S61A4HQkbLvrUcvADOlil/93014657b16f8a9005ba27c2a9171616/BDES-5040_-_Email-Routing-Security-Envelope.svg"
 								},
-								"description": "Cloudflare Logs provide customers HTTP request data from AWS, Azure Blob, Datadog, Google Cloud Storage, Splunk, Sumo Logic, and more"
+								"description": null
 							},
 							"brandfolderAsset": null,
 							"brandfolderAssetMobile": null
@@ -327,18 +330,18 @@
 						"sectionTitle": "HOW IT WORKS",
 						"htmlId": null,
 						"titleSize": null,
-						"sectionPadding": null,
+						"sectionPadding": "tile--no-top-padding",
 						"backgroundColor": "white",
 						"bladeBorder": "none",
 						"imagePosition": true,
 						"imageSize": "medium",
-						"imageTextAlignment": "center",
+						"imageTextAlignment": null,
 						"togglesTo": []
 					},
 					{
 						"contentTypeId": "bladeEnablement",
-						"contentfulId": "1Qi7NLjkW0myIgVtCoMfjV",
-						"title": "Learn how Cloudflare Logs maintains data privacy",
+						"contentfulId": "4SAw7vbWpPIY0I0R4BeYo7",
+						"title": "Learn how Cloudflare can preemptively detect and stop phishing attacks with Cloud Email Security",
 						"titleSize": "medium",
 						"backgroundColor": "image-background",
 						"buttonText": null,
@@ -353,138 +356,19 @@
 							"buttonAssetFile": null,
 							"buttonTextLoggedIn": null,
 							"contentTypeId": "button",
-							"contentfulId": "4BlzKmEhjxIbcUWzKzcVPR",
-							"elementName": "Get the whitepaper - CTA",
+							"contentfulId": "2tHwRPAHzrWA3kS6L4Ta49",
+							"elementName": "Email Routing - Additional offer - CTA",
 							"standardText": null,
-							"text": "Get the whitepaper",
-							"url": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/1Q4mtd7RL9I6UyCEYYsQPk/cfcccb4a75aa8286afa358b4ac36b085/How_Cloudflare_helps_address_data_protection_and_locality_obligations_in_Europe_-_June_2022.pdf",
+							"text": "See product overview",
+							"url": "http://cfl.re/email-security-product-overview",
 							"loggedInUrl": null,
 							"buttonModal": null,
 							"openInNewTab": true,
 							"locale": "en-US"
 						},
 						"buttonTwo": null,
-						"sectionPadding": "tile--no-top-padding",
+						"sectionPadding": null,
 						"eyebrow": null
-					},
-					{
-						"contentTypeId": "bladeRichTextColumnGroup",
-						"contentfulId": "5PkzzkEw85ZQhojbzX7EXC",
-						"htmlId": null,
-						"mainHeadline": null,
-						"backgroundColor": "white",
-						"bladeBorder": "none",
-						"sectionPadding": "tile--no-bottom-padding",
-						"columnLayout": "One Column Wide",
-						"columns": [
-							{
-								"contentTypeId": "elementRichText",
-								"contentfulId": "1n7DgXVYN5KVcLnr1pagRa",
-								"title": null,
-								"htmlId": null,
-								"elementPosition": "relative",
-								"column": {
-									"nodeType": "document",
-									"content": [
-										{
-											"nodeType": "heading-4",
-											"data": {
-												"target": null,
-												"uri": null
-											},
-											"value": null,
-											"marks": null,
-											"content": [
-												{
-													"nodeType": "text",
-													"data": {
-														"target": null,
-														"uri": null
-													},
-													"value": "What our customers are saying",
-													"marks": [],
-													"content": null
-												}
-											]
-										},
-										{
-											"nodeType": "blockquote",
-											"data": {
-												"target": null,
-												"uri": null
-											},
-											"value": null,
-											"marks": null,
-											"content": [
-												{
-													"nodeType": "paragraph",
-													"data": {
-														"target": null,
-														"uri": null
-													},
-													"value": null,
-													"marks": null,
-													"content": [
-														{
-															"nodeType": "text",
-															"data": {
-																"target": null,
-																"uri": null
-															},
-															"value": "\"Cloudflare's Logpush and ready-made dashboards have allowed us to obtain complete end-to-end visibility of our network and [have] ensured that we can build a holistic threat intel view for our entire platform.\"",
-															"marks": [],
-															"content": null
-														}
-													]
-												}
-											]
-										},
-										{
-											"nodeType": "paragraph",
-											"data": {
-												"target": null,
-												"uri": null
-											},
-											"value": null,
-											"marks": null,
-											"content": [
-												{
-													"nodeType": "text",
-													"data": {
-														"target": null,
-														"uri": null
-													},
-													"value": "",
-													"marks": [],
-													"content": null
-												}
-											]
-										},
-										{
-											"nodeType": "paragraph",
-											"data": {
-												"target": null,
-												"uri": null
-											},
-											"value": null,
-											"marks": null,
-											"content": [
-												{
-													"nodeType": "text",
-													"data": {
-														"target": null,
-														"uri": null
-													},
-													"value": " Senior Systems Security Specialist, Ansarada",
-													"marks": [],
-													"content": null
-												}
-											]
-										}
-									]
-								}
-							}
-						]
 					},
 					{
 						"contentTypeId": "bladeFeaturedCompanyLogos",
@@ -676,22 +560,22 @@
 						"sectionPadding": null
 					},
 					{
-						"contentfulId": "24PexURHxdSHE5I09bOvP7",
+						"contentfulId": "4ckblVorEomG47issnbxok",
 						"contentTypeId": "bladeMultipleColumnsLayout",
-						"title": "Cloudflare Logs helps you optimize your application's security and performance",
-						"eyebrowHeading": "Top Logs use cases",
+						"title": "Email Routing is the most straightforward way to create any number of email addresses that are redirected to the mailbox that you, your family, or your team are already using.",
+						"eyebrowHeading": "Top Email Routing use cases",
 						"description": null,
 						"textLayout": "left",
-						"columnsLayout": "Two Columns",
+						"columnsLayout": "Three Columns",
 						"columnContent": [
 							{
 								"contentTypeId": "feature",
-								"contentfulId": "68vKnhiDS3MqJOu9MJqy6m",
-								"title": "Optimize user experience",
+								"contentfulId": "1urht89gxlz3zR2VRycNK9",
+								"title": "Individual users",
 								"makeTitleLink": false,
 								"titleUrl": null,
 								"titleSize": null,
-								"description": "Use Cloudflare Logs to identify configuration adjustments to improve performance.",
+								"description": "Create addresses for different needs, so you are not sharing your private email with newsletters and businesses.",
 								"learnMoreUrl": null,
 								"learnMoreText": null,
 								"displayBorder": false,
@@ -699,16 +583,16 @@
 								"removeCardBorder": false,
 								"icon": null,
 								"iconAssetFile": {
-									"id": "85c4fbc4-0db5-571b-8e57-5e56edf68d42",
-									"altText": "Cloudflare Logs",
-									"title": "Logs Icon",
+									"id": "fc232bdb-ef74-5e8f-a034-ee8c79b6a16c",
+									"altText": "Website user or visitor",
+									"title": "icon-profiling-visitor",
 									"activeAsset": "Contentful Asset",
 									"locale": "en-US",
 									"contentfulAsset": {
 										"file": {
-											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/5lXkpwZauF5faOHKlfU1nh/8147f968d6de55800a02c83cbf088de3/documentation-rules.png"
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/6Uxta7KXVjebztzS6l8nWx/7ba80617b035fdafa51c06e20228239d/user.svg"
 										},
-										"description": ""
+										"description": "icon profiling visitor orange"
 									},
 									"brandfolderAsset": null,
 									"brandfolderAssetMobile": null
@@ -722,12 +606,12 @@
 							},
 							{
 								"contentTypeId": "feature",
-								"contentfulId": "1wjEGhKbnd7nyyE61i1KSs",
-								"title": "End-to-end visibility",
+								"contentfulId": "60QdMWx3uGECtlfvP9mQ8n",
+								"title": "Families",
 								"makeTitleLink": false,
 								"titleUrl": null,
 								"titleSize": null,
-								"description": "Combine request logs with other data sources, such as application server logs, for a complete view.",
+								"description": "Designate addresses for each family member and for specific purposes, such as an address for household bills.",
 								"learnMoreUrl": null,
 								"learnMoreText": null,
 								"displayBorder": false,
@@ -735,16 +619,52 @@
 								"removeCardBorder": false,
 								"icon": null,
 								"iconAssetFile": {
-									"id": "b815385d-6fa7-54c1-9020-d5394237a7ab",
-									"altText": "Applications icon",
-									"title": "Applications icon",
+									"id": "b3ff4344-a324-59a0-b8e4-414adc95e7d3",
+									"altText": "User multi ",
+									"title": "User multi ",
 									"activeAsset": "Contentful Asset",
 									"locale": "en-US",
 									"contentfulAsset": {
 										"file": {
-											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/4Gs1nPWmoZABBztrTHECMD/62d032e76ca646918a6420271edb612c/applications.svg"
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/6oO1wqLlaSM1U8pwMbT3jY/e894b1327f9ec28e674794ac78b233e5/user-multi.svg"
 										},
-										"description": "Applications icon"
+										"description": "User Multi - Orange"
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								},
+								"imageOverlaySuperheader": null,
+								"imageOverlayText": null,
+								"imageAssetFile": null,
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
+							},
+							{
+								"contentTypeId": "feature",
+								"contentfulId": "5ql7rE2SV3Vnjxodsdoq4r",
+								"title": "Businesses",
+								"makeTitleLink": false,
+								"titleUrl": null,
+								"titleSize": null,
+								"description": "Route emails for different types of inquiries, such as sales and support, and easily control who receives these messages.",
+								"learnMoreUrl": null,
+								"learnMoreText": null,
+								"displayBorder": false,
+								"openLinkInNewTab": null,
+								"removeCardBorder": false,
+								"icon": null,
+								"iconAssetFile": {
+									"id": "7ffa9292-726c-5be7-b2cb-66a931078912",
+									"altText": "Cloudflare Email Routing",
+									"title": "Email Routing Icon",
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/4Sx6clrdwhC89NzanpRoQN/ff7d6e3719a6ba46094ccf72c395cfe8/cloudflare-email-forwarding.svg"
+										},
+										"description": ""
 									},
 									"brandfolderAsset": null,
 									"brandfolderAssetMobile": null
@@ -762,18 +682,18 @@
 					},
 					{
 						"contentTypeId": "bladeHtml",
-						"contentfulId": "6ERNjfSr6g9m1W5koqEN4x",
-						"htmlContent": "<div style=\"text-align: center; cursor:pointer; margin-bottom:64px; margin-top: -60px;\">\n    <a href=\"/application-services/solutions/#web-app-performance-solutions\" target=\"_blank\" class=\"inline-link-style\">Explore more use cases<svg width=\"4\" height=\"10\"\n            viewBox=\"0 0 6 10\" fill=\"currentColor\" aria-label=\"chevron\" xmlns=\"https://www.cloudflare.com/zero-trust/solutions/\"\n            class=\"dib v-mid ml1\">\n            <path\n                d=\"M1.00003 -4.37127e-08L-3.93401e-07 1.00003L4 5L0.000271373 9.00025L1.00003 10L6.00003 5L1.00003 -4.37127e-08Z\">\n            </path>\n        </svg>  </a>\n</div>",
+						"contentfulId": "6menu8biDmzQwDBt8R86uy",
+						"htmlContent": "<div style=\"text-align: center; cursor:pointer; margin-bottom:64px; margin-top: -60px;\">\n    <a href=\"/zero-trust/solutions/#secure-work-anywhere-solutions\" target=\"_blank\" class=\"inline-link-style\">Explore more use cases<svg width=\"6\" height=\"10\"\n            viewBox=\"0 0 6 10\" fill=\"currentColor\" aria-label=\"chevron\" xmlns=\"https://www.cloudflare.com/zero-trust/solutions/\"\n            class=\"dib v-mid ml1\">\n            <path\n                d=\"M1.00003 -4.37127e-08L-3.93401e-07 1.00003L4 5L0.000271373 9.00025L1.00003 10L6.00003 5L1.00003 -4.37127e-08Z\">\n            </path>\n        </svg>  </a>\n</div>",
 						"htmlId": null
 					},
 					{
-						"contentfulId": "1ldMim6nGgZgoSHiKZhQS9",
+						"contentfulId": "24CaZaBYO2HUkcKM6fCha2",
 						"contentTypeId": "bladeLeadGeneration",
-						"title": null,
-						"description": "Helping organizations worldwide accelerate and protect their applications",
+						"title": "Helping individuals and businesses simplify their inboxes",
+						"description": "Helping individuals and businesses simplify their inboxes",
 						"variant": "inline",
 						"htmlId": null,
-						"sectionPadding": "tile--no-top-padding",
+						"sectionPadding": "tile--no-top-bottom-padding",
 						"backgroundImage": {
 							"id": "5fb646a4-2af5-50d0-815c-108317d4b5b7",
 							"altText": "Cloudflare Orange Background",
@@ -793,11 +713,11 @@
 							"buttonAssetFile": null,
 							"buttonTextLoggedIn": null,
 							"contentTypeId": "button",
-							"contentfulId": "5HApvLAvSdwHI9D5XopPH3",
-							"elementName": "See case studies - ALL",
+							"contentfulId": "5yDFpsgTzlogShZ7FTlWKN",
+							"elementName": "Email Routing - Case studies - CTA",
 							"standardText": null,
 							"text": "See case studies",
-							"url": "/case-studies/",
+							"url": "https://www.cloudflare.com/case-studies/",
 							"loggedInUrl": null,
 							"buttonModal": null,
 							"openInNewTab": false,
@@ -806,14 +726,14 @@
 						"secondaryCtaButton": null
 					},
 					{
-						"contentfulId": "10mobUt9TB5DC7uoF1M1D4",
+						"contentfulId": "3BZ1etBMYJVsbZMBTqtDnB",
 						"backgroundColor": "white",
 						"contentTypeId": "bladeFourFeatures",
 						"htmlId": null,
 						"copy": null,
 						"title": "Resources",
 						"subtitle": null,
-						"bladeStyle": null,
+						"bladeStyle": "Feature Blocks - 3 columns",
 						"bladeBorder": "none",
 						"sectionPadding": null,
 						"carouselSlidesToShow": null,
@@ -822,14 +742,14 @@
 						"features": [
 							{
 								"contentTypeId": "feature",
-								"contentfulId": "4cEEixz7mOjjkMz8flGYro",
-								"title": "Cloudflare Logs documentation",
+								"contentfulId": "5JoxXyfQw3qjhiEhQWDUl1",
+								"title": "Introducing Cloudflare Email Routing",
 								"makeTitleLink": false,
 								"titleUrl": null,
 								"titleSize": null,
-								"description": "Learn how to use Cloudflare Logs for debugging, identifying configuration adjustments, and creating analytics.",
-								"learnMoreUrl": "https://developers.cloudflare.com/logs/",
-								"learnMoreText": "See documentation",
+								"description": "Find out why we created this feature and how it works.",
+								"learnMoreUrl": "https://blog.cloudflare.com/introducing-email-routing/",
+								"learnMoreText": "Read blog post",
 								"displayBorder": false,
 								"openLinkInNewTab": true,
 								"removeCardBorder": false,
@@ -858,16 +778,16 @@
 							},
 							{
 								"contentTypeId": "feature",
-								"contentfulId": "1X9u56ezuMTLUtczVSybp8",
-								"title": "How the Cloudflare network maintains data privacy",
+								"contentfulId": "4z8E9h08srueGPwVsddK9V",
+								"title": "Migrating to Cloudflare Email Routing",
 								"makeTitleLink": false,
 								"titleUrl": null,
 								"titleSize": null,
-								"description": "This paper breaks down how Cloudflare uses security measures to protect request metadata as it crosses our network.",
-								"learnMoreUrl": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/1S0GCmfDE4rA1CK5dCK9kL/3962d823146ea425666fdd6234027957/How_Cloudflare_helps_address_data_protection_and_locality_obligations_in_Europe_-_June_2022.pdf",
-								"learnMoreText": "Get the whitepaper",
+								"description": "Read step-by-step instructions for getting started with handling email for custom domains.",
+								"learnMoreUrl": "https://blog.cloudflare.com/migrating-to-cloudflare-email-routing/",
+								"learnMoreText": "Read blog post",
 								"displayBorder": false,
-								"openLinkInNewTab": false,
+								"openLinkInNewTab": true,
 								"removeCardBorder": false,
 								"icon": null,
 								"iconAssetFile": null,
@@ -894,14 +814,14 @@
 							},
 							{
 								"contentTypeId": "feature",
-								"contentfulId": "41bJe4c3wfEAz8LfEgSmrh",
-								"title": "Cloudflare Logs tutorials",
+								"contentfulId": "5CzyEfG8u3bDd5Fk0SwFBE",
+								"title": "Email Routing open beta",
 								"makeTitleLink": false,
 								"titleUrl": null,
 								"titleSize": null,
-								"description": "Learn to manage and analyze your Cloudflare Logs.",
-								"learnMoreUrl": "https://developers.cloudflare.com/logs/tutorials/",
-								"learnMoreText": "Go to tutorials",
+								"description": "Cloudflare Email Routing is available for every zone in every Cloudflare account. Learn how to get started.",
+								"learnMoreUrl": "https://blog.cloudflare.com/email-routing-open-beta/",
+								"learnMoreText": "Read blog post",
 								"displayBorder": false,
 								"openLinkInNewTab": true,
 								"removeCardBorder": false,
@@ -932,8 +852,8 @@
 					},
 					{
 						"contentTypeId": "bladeEnablement",
-						"contentfulId": "4FQgRDlgs2NdH32hKJ8Ti7",
-						"title": "Get Cloudflare Logs for your enterprise",
+						"contentfulId": "3sOyOmwcWQ4guHaGmCdTYc",
+						"title": "Get Cloudflare Email Routing for your enterprise",
 						"titleSize": "medium",
 						"backgroundColor": "image-background",
 						"buttonText": null,
@@ -948,22 +868,22 @@
 							"buttonAssetFile": null,
 							"buttonTextLoggedIn": null,
 							"contentTypeId": "button",
-							"contentfulId": "4Xz8W7auMR2dIP0Kp0tpJW",
-							"elementName": "Talk to an expert",
+							"contentfulId": "1fLiWAHkQqZOwpjs7aU3Nw",
+							"elementName": "Talk to an expert (modal form)",
 							"standardText": null,
 							"text": "Talk to an expert",
 							"url": null,
 							"loggedInUrl": null,
 							"buttonModal": {
 								"contentTypeId": "formModal",
-								"contentfulId": "5a1ymxApHEqHHRNjyMbcEm",
-								"modalName": "Talk to an expert",
-								"modalId": "talk-to-an-expert",
+								"contentfulId": "4X33NKLPG0gT4v6Vb1X0ca",
+								"modalName": "ZT Access Talk to an expert",
+								"modalId": "zt-access-talk-to-an-expert",
 								"modalType": "single-form",
 								"marketoForm": {
 									"contentTypeId": "marketoEmbeddedForm",
-									"contentfulId": "GArhAEENzeQ3aQ4esVZPR",
-									"bladeName": "Enterprise General Sales Inquiry",
+									"contentfulId": "5daBy41JohWg0zdFI6JHW",
+									"bladeName": "ZT Access - Talk to an expert - Marketo",
 									"backgroundColor": "white",
 									"marketoFormId": 1341,
 									"marketoFormLeadSource": "Inbound - Web Form",
@@ -995,7 +915,7 @@
 								"enterpriseTabText": null,
 								"enterpriseCopy": null
 							},
-							"openInNewTab": true,
+							"openInNewTab": false,
 							"locale": "en-US"
 						},
 						"buttonTwo": null,
@@ -1004,50 +924,8 @@
 					}
 				],
 				"noindex": false,
-				"formModal": [
-					{
-						"contentTypeId": "formModal",
-						"contentfulId": "5a1ymxApHEqHHRNjyMbcEm",
-						"modalName": "Talk to an expert",
-						"modalId": "talk-to-an-expert",
-						"modalType": "single-form",
-						"marketoForm": {
-							"contentTypeId": "marketoEmbeddedForm",
-							"contentfulId": "GArhAEENzeQ3aQ4esVZPR",
-							"bladeName": "Enterprise General Sales Inquiry",
-							"backgroundColor": "white",
-							"marketoFormId": 1341,
-							"marketoFormLeadSource": "Inbound - Web Form",
-							"marketoFormLeadSourceDetail": "Web Form - Enterprise General Sales Inquiry",
-							"marketoFormAssetName": null,
-							"marketoFormHeaderText": "Talk to an expert",
-							"marketoFormDefaultComment": null,
-							"showCommentBox": null,
-							"marketoFormThankYouText": null,
-							"marketoFormCustomSuccessMessage": null,
-							"marketoFormPdfDownload": null,
-							"marketoFormPdfDownloadI18n": [],
-							"marketoFormAssetDownloadButtonText": null,
-							"marketoFormSuccessRedirectUrl": null,
-							"sendAdRoll": null,
-							"meta_adRollCustomSegment": null,
-							"enableSandbox": null,
-							"marketoFormSubmitButtonText": null,
-							"marketoFormSubmitButtonColor": null,
-							"enableEmailVerification": null,
-							"disableEnterpriseEmailNotification": null,
-							"enableRingout": null
-						},
-						"title": null,
-						"regularCopy": null,
-						"splitFormDefaultTab": null,
-						"selfServeTabText": null,
-						"selfServeCopy": null,
-						"enterpriseTabText": null,
-						"enterpriseCopy": null
-					}
-				],
-				"keepHashUrlSyncedWithScrollPosition": null
+				"formModal": [],
+				"keepHashUrlSyncedWithScrollPosition": false
 			},
 			"site": {
 				"siteMetadata": {
@@ -1058,8 +936,8 @@
 		"pageContext": {
 			"currentLocale": "en-US",
 			"locale": "en-US",
-			"pathname": "/application-services/products/cloudflare-logs/",
-			"contentfulId": "3pnxtnd3x6OMcA2uAIG8YU",
+			"pathname": "/developer-platform/products/email-routing/",
+			"contentfulId": "5HoEBTLUgvFuGEmXFfO9GV",
 			"allowedHrefLangs": [
 				"en-US",
 				"zh-CN",
@@ -1073,7 +951,6 @@
 				"es-ES",
 				"es-LA",
 				"ru-RU",
-				"tr-TR",
 				"zh-Hans-CN",
 				"pl-PL"
 			],

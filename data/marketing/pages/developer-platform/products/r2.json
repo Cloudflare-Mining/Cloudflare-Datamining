@@ -1,10 +1,10 @@
 {
 	"componentChunkName": "component---src-components-page-page-template-tsx",
-	"path": "/application-services/products/cloudflare-logs/",
+	"path": "/developer-platform/products/r2/",
 	"result": {
 		"data": {
 			"page": {
-				"pageName": "Cloudflare Logs - Product Page ",
+				"pageName": "R2 - Product page",
 				"localeList": {
 					"enUS": "English for Locale",
 					"zhCN": "Translated for Locale",
@@ -27,20 +27,20 @@
 					"ruRU": "Translated for Locale",
 					"svSE": "English for Locale",
 					"viVN": "English for Locale",
-					"trTR": "Translated for Locale",
+					"trTR": "English for Locale",
 					"zhHansCN": "Translated for Locale",
 					"plPL": "Translated for Locale",
 					"arAR": "No Page for Locale",
-					"heIL": null
+					"heIL": "No Page for Locale"
 				},
-				"relativePath": "application-services/products/cloudflare-logs/",
+				"relativePath": "developer-platform/products/r2",
 				"topNavOptions": "default",
 				"topNavButtonText": null,
 				"topNavButtonUrl": null,
 				"footerOptions": "default",
 				"metaTags": {
-					"metaTitle": "Cloudflare Logs | Granular Analytics and Insights",
-					"metaDescription": "Cloudflare Logs lets you identify attacks, debug errors, and create custom analytics by providing detailed HTTP request logs. Demo Cloudflare Logs today.",
+					"metaTitle": "Cloudflare R2 | Zero Egress Fee Object Storage",
+					"metaDescription": "Cloudflare R2 is an S3-compatible, zero egress-fee, object storage. Move data freely and build the multi-cloud architecture you desire.",
 					"twitterCustomImage": null,
 					"metaImage": {
 						"file": {
@@ -52,10 +52,10 @@
 					"author": []
 				},
 				"sys": {
-					"createdAt": "2019-01-31T19:03:22.084Z",
-					"updatedAt": "2026-04-11T13:31:02.744Z"
+					"createdAt": "2022-05-11T12:04:29.252Z",
+					"updatedAt": "2026-04-04T07:46:28.317Z"
 				},
-				"contentfulId": "3pnxtnd3x6OMcA2uAIG8YU",
+				"contentfulId": "6c2CpRkK67PXP4LRz6s2JX",
 				"contentTypeId": "page",
 				"promotionalBanner": null,
 				"psaBanner": null,
@@ -65,83 +65,91 @@
 				"template": null,
 				"relatedBlades": [
 					{
-						"contentfulId": "3jf16PRJluC0wKMEmwwaiy",
+						"contentfulId": "tbMXbdl947mR3liButqiw",
 						"contentTypeId": "bladeHeroAnimation",
-						"title": "Cloudflare Logs",
+						"title": "Cloudflare R2",
 						"titleSize": null,
-						"subtitle": "Get a complete understanding of your app's traffic",
+						"subtitle": "Global object storage with zero egress fees",
 						"subtitleSize": null,
-						"copy": "Cloudflare provides detailed logs of your HTTP requests. Use these logs to debug, identify configuration adjustments to improve performance and security, and create custom analytics.",
+						"copy": "Powered by our programmable global network, R2 enables you to create flexible, multicloud architectures with S3-compatible object storage.",
 						"buttonColor": "orange",
-						"buttonColor2": "orange-outline",
-						"buttonText1": "Talk to an expert",
+						"buttonColor2": "orange",
+						"buttonText1": "Get started",
 						"buttonText1LoggedIn": null,
-						"buttonUrl1": "#",
+						"buttonUrl1": "https://dash.cloudflare.com/sign-up/r2",
 						"buttonUrl1LoggedIn": null,
-						"button1ExtraClass": "talk-to-an-expert",
-						"buttonText2": "Watch demo",
+						"button1ExtraClass": null,
+						"buttonText2": "View documentation",
 						"buttonText2LoggedIn": null,
-						"buttonUrl2": "https://cloudflare.ondemand.goldcast.io/on-demand/10350ff2-cb6c-430e-9e0b-28c29b5df938",
+						"buttonUrl2": "https://developers.cloudflare.com/r2/",
 						"button2ExtraClass": null,
 						"bladeBorder": "none",
 						"htmlId": null,
 						"textColor": "black",
-						"includeVideo": false,
-						"streamVideoId": null,
-						"streamOptions": null,
-						"streamCaptions": null,
+						"includeVideo": true,
+						"streamVideoId": "4f685df2282ecacd8d391de3bb1831db",
+						"streamOptions": [
+							"controls",
+							"captions"
+						],
+						"streamCaptions": "en",
 						"popupStreamId": null,
 						"popupText": null,
-						"button1OpenInNewTab": null,
+						"button1OpenInNewTab": true,
 						"button2OpenInNewTab": true,
 						"streamThumbnails": null,
-						"sectionPadding": "tile--no-top-padding",
+						"sectionPadding": null,
 						"streamPosterAssetFile": null,
-						"streamPoster": null,
+						"streamPoster": {
+							"file": {
+								"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/53qCYhQbir5WtIU0VDWESo/954a48bfb17f429acf469e5f14345d83/unnamed-3.png"
+							},
+							"description": "DO NOT REMOVE, THIS IS CLOUDFLARE'S GLOBAL OG META ASSET"
+						},
 						"imageSize": "Medium",
-						"imagePosition": null,
+						"imagePosition": false,
 						"leftLinkUrl": null,
 						"leftLink": null,
 						"leftLinkLoggedIn": null,
-						"leftLinkOptions": "show",
+						"leftLinkOptions": "hide",
 						"backgroundColor": "white",
 						"textlayoutMode": null,
 						"backgroundAssetFile": null,
 						"imageLayout": null,
 						"image": null,
 						"imageAssetFile": {
-							"id": "ab4db9e9-211f-59de-8563-a4bfd2933260",
-							"altText": "Logs hero illustration",
-							"title": "Logs hero illustration",
+							"id": "0522f72b-8363-5743-b2b9-2a025c93b795",
+							"altText": "Illustration of a cloud with various shapes inside it",
+							"title": "R2-Hero",
 							"activeAsset": "Contentful Asset",
 							"locale": "en-US",
 							"contentfulAsset": {
 								"file": {
-									"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/6YctAy2a9z3DCOhpC5ydMI/085ab47cf08275e6a67084af0912febe/logs-hero-illustration.svg"
+									"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/5OHya7vfRfEpPYsrvMXi5k/3050708e3d2b8acfffca578bf6d65a39/R2_Open_Beta.png"
 								},
-								"description": "Illustration of Cloudflare integration with IBM QRadar"
+								"description": ""
 							},
 							"brandfolderAsset": null,
 							"brandfolderAssetMobile": null
 						}
 					},
 					{
-						"contentfulId": "KCdnKNu5ZUc8vsovNNrUj",
+						"contentfulId": "61K6K8GWmy6z9qVfqK22fc",
 						"contentTypeId": "bladeMultipleColumnsLayout",
 						"title": null,
-						"eyebrowHeading": "BENEFITS OF CLOUDFLARE LOGS",
+						"eyebrowHeading": "BENEFITS OF CLOUDFLARE R2",
 						"description": null,
 						"textLayout": "left",
-						"columnsLayout": "Four Columns",
+						"columnsLayout": "Three Columns",
 						"columnContent": [
 							{
 								"contentTypeId": "feature",
-								"contentfulId": "56rwPA8JwIs1euQnQKRXEU",
-								"title": "Identify attacks and debug errors",
+								"contentfulId": "2YHznl0J5cgVAMVZRzYMs0",
+								"title": "S3-compatible object storage",
 								"makeTitleLink": false,
 								"titleUrl": null,
 								"titleSize": null,
-								"description": "Investigate potential threats in HTTP traffic. Identify and debug errors affecting end users.",
+								"description": "Our [S3-compatible API](https://www.cloudflare.com/developer-platform/solutions/s3-compatible-object-storage/) gives you added flexibility — allowing you to access a wide range of S3 tools, libraries, and extensions.",
 								"learnMoreUrl": null,
 								"learnMoreText": null,
 								"displayBorder": false,
@@ -149,16 +157,16 @@
 								"removeCardBorder": false,
 								"icon": null,
 								"iconAssetFile": {
-									"id": "27d3dc18-7219-53bc-bd53-b9742318bf14",
-									"altText": "Traffic attack blue",
-									"title": "Traffic attack blue",
+									"id": "efd45c7a-1ca1-5b55-b5ae-7f697427546b",
+									"altText": "Cloudflare R2 distributed storage",
+									"title": "R2 Icon",
 									"activeAsset": "Contentful Asset",
 									"locale": "en-US",
 									"contentfulAsset": {
 										"file": {
-											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/44OWJ7jF9JVwp4zh7zMy7B/d80f24569dfb7d418d6913b32940bf5b/traffic-attack-browser_1_.svg"
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/20XuCGpQeiIcEBqL8eYZhq/41b6bb30b987d56e97de94cbbf51dcdb/cloud-upload.svg"
 										},
-										"description": "Prevent financial and identity theft icon"
+										"description": "Cloud upload icon"
 									},
 									"brandfolderAsset": null,
 									"brandfolderAssetMobile": null
@@ -172,63 +180,27 @@
 							},
 							{
 								"contentTypeId": "feature",
-								"contentfulId": "5HfQD8tao8aN8mi9yoDPlY",
-								"title": "Tune your Cloudflare configuration",
+								"contentfulId": "1EbJ3JN4ZU7uhSvSwfwxyX",
+								"title": "No egress charges",
 								"makeTitleLink": false,
 								"titleUrl": null,
 								"titleSize": null,
-								"description": "Logs can help you improve your application's performance and security by adjusting your Cloudflare configuration.",
+								"description": "Our affordable, consistent pricing helps free up resources across your organization — and you never have to pay egress fees for data accessed from R2.",
 								"learnMoreUrl": null,
 								"learnMoreText": null,
 								"displayBorder": false,
-								"openLinkInNewTab": null,
+								"openLinkInNewTab": true,
 								"removeCardBorder": false,
 								"icon": null,
 								"iconAssetFile": {
-									"id": "b1b7275d-3503-5173-a651-9cfd70157c3c",
-									"altText": "Performance acceleration rocket ",
-									"title": "Performance acceleration rocket",
+									"id": "ca8dae98-4f47-5466-a459-bdaacb07a225",
+									"altText": "Dollar",
+									"title": "Dollar",
 									"activeAsset": "Contentful Asset",
 									"locale": "en-US",
 									"contentfulAsset": {
 										"file": {
-											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/1vvXmr7jmxFdYUgliFcXUh/d27e7eabc9727ba987b15d5e9ddad5e3/performance-acceleration-rocket.svg"
-										},
-										"description": "Performance acceleration rocket orange"
-									},
-									"brandfolderAsset": null,
-									"brandfolderAssetMobile": null
-								},
-								"imageOverlaySuperheader": null,
-								"imageOverlayText": null,
-								"imageAssetFile": null,
-								"streamId": null,
-								"streamThumbnail": null,
-								"streamThumbnailAssetFile": null
-							},
-							{
-								"contentTypeId": "feature",
-								"contentfulId": "3JO1MqSu3dchoDeZhor0z2",
-								"title": "Create custom analytics",
-								"makeTitleLink": false,
-								"titleUrl": null,
-								"titleSize": null,
-								"description": "Build custom analytics in the tools you already use.",
-								"learnMoreUrl": null,
-								"learnMoreText": null,
-								"displayBorder": false,
-								"openLinkInNewTab": null,
-								"removeCardBorder": false,
-								"icon": null,
-								"iconAssetFile": {
-									"id": "082acf6d-2836-52a9-a97d-f6a571c67183",
-									"altText": "Icon of a graph going up",
-									"title": null,
-									"activeAsset": "Contentful Asset",
-									"locale": "en-US",
-									"contentfulAsset": {
-										"file": {
-											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/yXs0Mrat5Fwc9hqisn4li/2741ce0d3466e09e4775ea7f5caa894b/analytics-data.png"
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/7td2uxheozRtbhflYJ4n7b/f957bd073f41d31f0579dafa98f329c4/price__1_.svg"
 										},
 										"description": null
 									},
@@ -244,12 +216,12 @@
 							},
 							{
 								"contentTypeId": "feature",
-								"contentfulId": "Sa4fe23HKNMHg35wyBrlI",
-								"title": "Push or pull logs to anywhere",
+								"contentfulId": "384CIJcvqx8DAD6MSjz1vJ",
+								"title": "Easy migration from existing providers",
 								"makeTitleLink": false,
 								"titleUrl": null,
 								"titleSize": null,
-								"description": "Push logs to your preferred storage provider, or pull logs via our API.",
+								"description": "Our automated migration service helps migrate your objects all at once or over time — whatever aligns with your current needs.",
 								"learnMoreUrl": null,
 								"learnMoreText": null,
 								"displayBorder": false,
@@ -257,14 +229,14 @@
 								"removeCardBorder": false,
 								"icon": null,
 								"iconAssetFile": {
-									"id": "7dcf0b32-5e52-5e8a-be1e-2324e1aab71c",
-									"altText": "Code api ",
-									"title": "Code api ",
+									"id": "f4f2db49-e40f-579d-b8d0-78c078cc9c15",
+									"altText": "Durable objects blue",
+									"title": "Durable objects blue",
 									"activeAsset": "Contentful Asset",
 									"locale": "en-US",
 									"contentfulAsset": {
 										"file": {
-											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/5M2SLF9OIQYKSeaL46suWO/87ec742e674be44e38dab4ee620c2a42/code-api.svg"
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/1kCZGnnEQKwkfLBcLYoxTB/a3226fadaee4f995d3351f65be75cba1/cloudflare-durable-objects.svg"
 										},
 										"description": ""
 									},
@@ -283,9 +255,9 @@
 						"htmlId": null
 					},
 					{
-						"contentfulId": "1ESHnMzQNkZonyb1IJLRRp",
-						"title": "Get comprehensive metadata on your domain's requests",
-						"copy": "Cloudflare Logs provide customers with a deep understanding of their traffic down to the individual HTTP request.\n\nOrganizations can have their logs sent to their preferred storage provider and use the tools you already know to gain insights, or write custom scripts to retrieve their logs continually using our powerful REST API.",
+						"contentfulId": "6KAs90xZejQAeogTx8xZhD",
+						"title": "Avoid vendor lock-in with our global object storage",
+						"copy": "Cloudflare R2 allows you to store large amounts of unstructured data — without the costly egress fees or vendor lock-in associated with other cloud storage providers.\n\nR2 natively integrates with Cloudflare Workers, so you can easily perform authentication, route requests, and deploy edge functions across our network of %{DataCenterCount}+ data centers.\n<br>\n\n[View reference architecture](https://developers.cloudflare.com/reference-architecture/diagrams/storage/storing-user-generated-content/)",
 						"toggleText": null,
 						"button": [],
 						"learnMoreUrl": null,
@@ -308,16 +280,16 @@
 						"streamPosterAssetFile": null,
 						"image": null,
 						"imageAssetFile": {
-							"id": "97648a12-b981-5ea9-aa7c-81fdfdf0c251",
-							"altText": "Cloudflare request logs can be sent to a preferred storage provider.",
-							"title": "Cloudflare-logs-supported-integrations",
+							"id": "f00ca93e-47c1-53aa-8779-72969fcd3725",
+							"altText": "R2 Storage - Multi-Cloud",
+							"title": "R2 Storage - Multi-Cloud",
 							"activeAsset": "Contentful Asset",
 							"locale": "en-US",
 							"contentfulAsset": {
 								"file": {
-									"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/5DhRbXsvaLNs92e8ZNxbJC/6b74428f8a665e0994f64613ab599b9b/logs-destinations.png"
+									"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/4ltjBPznhikhwxKjfmxHww/31ea411d4bfbc74f5a79702c7e5971da/BDES-4909_-_r2-multi-cloud__1_.svg"
 								},
-								"description": "Cloudflare Logs provide customers HTTP request data from AWS, Azure Blob, Datadog, Google Cloud Storage, Splunk, Sumo Logic, and more"
+								"description": ""
 							},
 							"brandfolderAsset": null,
 							"brandfolderAssetMobile": null
@@ -337,8 +309,8 @@
 					},
 					{
 						"contentTypeId": "bladeEnablement",
-						"contentfulId": "1Qi7NLjkW0myIgVtCoMfjV",
-						"title": "Learn how Cloudflare Logs maintains data privacy",
+						"contentfulId": "2GDwg7cZusn3025TBSq2lB",
+						"title": "Reduce cloud spend and avoid hidden costs",
 						"titleSize": "medium",
 						"backgroundColor": "image-background",
 						"buttonText": null,
@@ -353,14 +325,14 @@
 							"buttonAssetFile": null,
 							"buttonTextLoggedIn": null,
 							"contentTypeId": "button",
-							"contentfulId": "4BlzKmEhjxIbcUWzKzcVPR",
-							"elementName": "Get the whitepaper - CTA",
+							"contentfulId": "Vk1HHAj1VFGGSrhyWsYJH",
+							"elementName": "Get the ebook",
 							"standardText": null,
-							"text": "Get the whitepaper",
-							"url": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/1Q4mtd7RL9I6UyCEYYsQPk/cfcccb4a75aa8286afa358b4ac36b085/How_Cloudflare_helps_address_data_protection_and_locality_obligations_in_Europe_-_June_2022.pdf",
+							"text": "Get the ebook",
+							"url": "https://www.cloudflare.com/lp/say-goodbye-to-egress-fees/",
 							"loggedInUrl": null,
 							"buttonModal": null,
-							"openInNewTab": true,
+							"openInNewTab": false,
 							"locale": "en-US"
 						},
 						"buttonTwo": null,
@@ -369,17 +341,17 @@
 					},
 					{
 						"contentTypeId": "bladeRichTextColumnGroup",
-						"contentfulId": "5PkzzkEw85ZQhojbzX7EXC",
+						"contentfulId": "5MeBo5xxmROj5pBs3UYKjb",
 						"htmlId": null,
 						"mainHeadline": null,
 						"backgroundColor": "white",
 						"bladeBorder": "none",
-						"sectionPadding": "tile--no-bottom-padding",
+						"sectionPadding": "tile--no-top-bottom-padding",
 						"columnLayout": "One Column Wide",
 						"columns": [
 							{
 								"contentTypeId": "elementRichText",
-								"contentfulId": "1n7DgXVYN5KVcLnr1pagRa",
+								"contentfulId": "6TCH2tz4T0K56QbP9FlgUT",
 								"title": null,
 								"htmlId": null,
 								"elementPosition": "relative",
@@ -431,7 +403,7 @@
 																"target": null,
 																"uri": null
 															},
-															"value": "\"Cloudflare's Logpush and ready-made dashboards have allowed us to obtain complete end-to-end visibility of our network and [have] ensured that we can build a holistic threat intel view for our entire platform.\"",
+															"value": "\"No egress fees is a big advantage, as surprise costs from surging traffic can be annoying... one has to be careful about surging costs for DDoS or viral traffic, but with Cloudflare, these worries are eliminated. Thanks to Cloudflare, startups don't need to scale up dramatically or set up their own servers. This results in significant cost savings and eliminates the need for our own infrastructure.\"",
 															"marks": [],
 															"content": null
 														}
@@ -475,7 +447,7 @@
 														"target": null,
 														"uri": null
 													},
-													"value": " Senior Systems Security Specialist, Ansarada",
+													"value": "LunarCrush",
 													"marks": [],
 													"content": null
 												}
@@ -676,22 +648,22 @@
 						"sectionPadding": null
 					},
 					{
-						"contentfulId": "24PexURHxdSHE5I09bOvP7",
+						"contentfulId": "5PTEt0bryMnMPtT2ZNruab",
 						"contentTypeId": "bladeMultipleColumnsLayout",
-						"title": "Cloudflare Logs helps you optimize your application's security and performance",
-						"eyebrowHeading": "Top Logs use cases",
-						"description": null,
+						"title": "R2 helps you create portable multicloud architectures, effortlessly move data between cloud providers, and optimize content storage and delivery.",
+						"eyebrowHeading": "Top R2 use cases",
+						"description": "R2 offers more than just storage. It helps you create portable multicloud architectures, effortlessly move data between cloud providers, and build exceptional user experiences into your applications. When you combine R2's cost-effective solution with Cloudflare's global network and Cloudflare Workers, you can innovate freely, scale efficiently, and deploy applications faster without the burden of managing infrastructure.",
 						"textLayout": "left",
-						"columnsLayout": "Two Columns",
+						"columnsLayout": "Three Columns",
 						"columnContent": [
 							{
 								"contentTypeId": "feature",
-								"contentfulId": "68vKnhiDS3MqJOu9MJqy6m",
-								"title": "Optimize user experience",
+								"contentfulId": "6RMJ9ruC8LQkvdlN8CtYoX",
+								"title": "Store and train AI data ",
 								"makeTitleLink": false,
 								"titleUrl": null,
 								"titleSize": null,
-								"description": "Use Cloudflare Logs to identify configuration adjustments to improve performance.",
+								"description": "Use R2 to store your AI/ML training datasets and model checkpoints – with [zero egress fees](https://www.cloudflare.com/the-net/cloud-egress-fees-challenge-future-ai/). Easily leverage GPU compute in any cloud or region without worrying about data transfer costs.",
 								"learnMoreUrl": null,
 								"learnMoreText": null,
 								"displayBorder": false,
@@ -699,14 +671,14 @@
 								"removeCardBorder": false,
 								"icon": null,
 								"iconAssetFile": {
-									"id": "85c4fbc4-0db5-571b-8e57-5e56edf68d42",
-									"altText": "Cloudflare Logs",
-									"title": "Logs Icon",
+									"id": "111dcd6d-8214-592f-8fbb-1fb4e22472f1",
+									"altText": null,
+									"title": null,
 									"activeAsset": "Contentful Asset",
 									"locale": "en-US",
 									"contentfulAsset": {
 										"file": {
-											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/5lXkpwZauF5faOHKlfU1nh/8147f968d6de55800a02c83cbf088de3/documentation-rules.png"
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/1f0iDYaTaOexv9owSIBMWR/cda620b331c9019608f4f837c2df5380/server-3_outline.png"
 										},
 										"description": ""
 									},
@@ -722,12 +694,12 @@
 							},
 							{
 								"contentTypeId": "feature",
-								"contentfulId": "1wjEGhKbnd7nyyE61i1KSs",
-								"title": "End-to-end visibility",
+								"contentfulId": "6FZL1lm8PZDzqYf6ZsXqoG",
+								"title": "Optimize dynamic content storage and delivery",
 								"makeTitleLink": false,
 								"titleUrl": null,
 								"titleSize": null,
-								"description": "Combine request logs with other data sources, such as application server logs, for a complete view.",
+								"description": "Whether your content is generated by users or produced by diffusion models, R2 helps you store your data securely and serve it with low latency. We take advantage of Cloudflare's global network - and the fact that our storage APIs are built on Workers - to cache data close to your users, so your data feels global without sacrificing consistency.\n",
 								"learnMoreUrl": null,
 								"learnMoreText": null,
 								"displayBorder": false,
@@ -735,16 +707,52 @@
 								"removeCardBorder": false,
 								"icon": null,
 								"iconAssetFile": {
-									"id": "b815385d-6fa7-54c1-9020-d5394237a7ab",
-									"altText": "Applications icon",
-									"title": "Applications icon",
+									"id": "6d5531b7-edaf-5b05-8686-6f455b1c5c6d",
+									"altText": "Optimization web blue",
+									"title": "Optimization web blue",
 									"activeAsset": "Contentful Asset",
 									"locale": "en-US",
 									"contentfulAsset": {
 										"file": {
-											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/4Gs1nPWmoZABBztrTHECMD/62d032e76ca646918a6420271edb612c/applications.svg"
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/76OxPWvxXlUbcfGr05wpg5/429150d8058c40452ee038bd9198ba4d/optimization-web.svg"
 										},
-										"description": "Applications icon"
+										"description": ""
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								},
+								"imageOverlaySuperheader": null,
+								"imageOverlayText": null,
+								"imageAssetFile": null,
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
+							},
+							{
+								"contentTypeId": "feature",
+								"contentfulId": "1e63ADYz8E8wTy3c9MnpiZ",
+								"title": "Unify storage with data analytics, and query your data in place",
+								"makeTitleLink": false,
+								"titleUrl": null,
+								"titleSize": null,
+								"description": "\nYour R2 bucket isn't just storage anymore - it's now your data warehouse. R2 now integrates Apache Iceberg and transforms your object storage into a fully functional data warehouse without any management overhead. You can now enable a data catalog on any R2 bucket and handle analytics workloads directly, without moving your data elsewhere.",
+								"learnMoreUrl": null,
+								"learnMoreText": null,
+								"displayBorder": false,
+								"openLinkInNewTab": null,
+								"removeCardBorder": false,
+								"icon": null,
+								"iconAssetFile": {
+									"id": "85b72606-4e5f-58f1-bdd8-2f22d34e428e",
+									"altText": "Ruleset icon",
+									"title": "Ruleset icon",
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/BWKT2GPjWBacPIsuSQzfq/051691978b1dcd161745317f724eb2b4/cloudflare-ruleset-engine.svg"
+										},
+										"description": "cloudflare ruleset engine icon"
 									},
 									"brandfolderAsset": null,
 									"brandfolderAssetMobile": null
@@ -762,15 +770,15 @@
 					},
 					{
 						"contentTypeId": "bladeHtml",
-						"contentfulId": "6ERNjfSr6g9m1W5koqEN4x",
-						"htmlContent": "<div style=\"text-align: center; cursor:pointer; margin-bottom:64px; margin-top: -60px;\">\n    <a href=\"/application-services/solutions/#web-app-performance-solutions\" target=\"_blank\" class=\"inline-link-style\">Explore more use cases<svg width=\"4\" height=\"10\"\n            viewBox=\"0 0 6 10\" fill=\"currentColor\" aria-label=\"chevron\" xmlns=\"https://www.cloudflare.com/zero-trust/solutions/\"\n            class=\"dib v-mid ml1\">\n            <path\n                d=\"M1.00003 -4.37127e-08L-3.93401e-07 1.00003L4 5L0.000271373 9.00025L1.00003 10L6.00003 5L1.00003 -4.37127e-08Z\">\n            </path>\n        </svg>  </a>\n</div>",
+						"contentfulId": "17ht0gKiAF2eZCLP4wtlMf",
+						"htmlContent": "<div style=\"text-align: center; cursor:pointer; margin-bottom:64px; margin-top: -60px;\">\n    <a href=\"https://workers.cloudflare.com/built-with/collections/r2\" class=\"inline-link-style\">Explore more use cases<svg width=\"4\" height=\"10\"\n            viewBox=\"0 0 6 10\" fill=\"currentColor\" aria-label=\"chevron\" xmlns=\"https://workers.cloudflare.com/built-with/collections/r2\"\n            class=\"dib v-mid ml1\">\n            <path\n                d=\"M1.00003 -4.37127e-08L-3.93401e-07 1.00003L4 5L0.000271373 9.00025L1.00003 10L6.00003 5L1.00003 -4.37127e-08Z\">\n            </path>\n        </svg>  </a>\n</div>",
 						"htmlId": null
 					},
 					{
-						"contentfulId": "1ldMim6nGgZgoSHiKZhQS9",
+						"contentfulId": "2JaU5RorpeTdZM8o5Sm5c7",
 						"contentTypeId": "bladeLeadGeneration",
 						"title": null,
-						"description": "Helping organizations worldwide accelerate and protect their applications",
+						"description": "Trusted by millions of Internet properties",
 						"variant": "inline",
 						"htmlId": null,
 						"sectionPadding": "tile--no-top-padding",
@@ -793,8 +801,8 @@
 							"buttonAssetFile": null,
 							"buttonTextLoggedIn": null,
 							"contentTypeId": "button",
-							"contentfulId": "5HApvLAvSdwHI9D5XopPH3",
-							"elementName": "See case studies - ALL",
+							"contentfulId": "3xIzhQVegUXrYb5IVzKzQR",
+							"elementName": "See case studies (main)",
 							"standardText": null,
 							"text": "See case studies",
 							"url": "/case-studies/",
@@ -806,30 +814,163 @@
 						"secondaryCtaButton": null
 					},
 					{
-						"contentfulId": "10mobUt9TB5DC7uoF1M1D4",
+						"contentTypeId": "bladeTable",
+						"contentfulId": "23pPRtEM5wpqNzw6az0kBl",
+						"locale": "en-US",
+						"sectionPadding": "tile--no-bottom-padding",
+						"bladeBorder": "none",
+						"backgroundColor": "white",
+						"displayHeader": null,
+						"showFilter": null,
+						"sectionTitle": null,
+						"title": "R2 pricing",
+						"copy": "R2 charges based on the total volume of data stored and two classes of operations on that data. You pay zero egress fees.\n",
+						"htmlId": "r2-plan-comparison",
+						"columnHeaders": [
+							{
+								"cellText": "Forever Free",
+								"cellTextLinkUrl": null,
+								"cellSubtitle": null,
+								"buttonText": null,
+								"buttonUrl": null,
+								"commonElements": null,
+								"imageAssetFile": null
+							},
+							{
+								"cellText": "Monthly Rates",
+								"cellTextLinkUrl": null,
+								"cellSubtitle": null,
+								"buttonText": null,
+								"buttonUrl": null,
+								"commonElements": null,
+								"imageAssetFile": null
+							}
+						],
+						"groupsInTable": [],
+						"rowsInTable": [
+							{
+								"contentfulId": "XeiULTLR6eFEwr90XrS6e",
+								"rowHeader2": {
+									"contentfulId": "6VK8KAbU0ep1ipABTjgcUz",
+									"cellText": "Storage",
+									"cellTextLinkUrl": null,
+									"buttonText": null,
+									"buttonUrl": null,
+									"commonElements": null,
+									"imageAssetFile": null
+								},
+								"cellsInRow": [
+									{
+										"contentfulId": "6eqG1DrYVjAedhkmD0W6ba",
+										"cellText": "10 GB / month",
+										"cellTextLinkUrl": null,
+										"buttonText": null,
+										"buttonUrl": null,
+										"commonElements": null,
+										"imageAssetFile": null
+									},
+									{
+										"contentfulId": "6Up7mjsjfGU6tEYFHnaQyv",
+										"cellText": "$0.015 / GB storage",
+										"cellTextLinkUrl": null,
+										"buttonText": null,
+										"buttonUrl": null,
+										"commonElements": null,
+										"imageAssetFile": null
+									}
+								]
+							},
+							{
+								"contentfulId": "5vy1lPqamF3LW9TOCFOeDC",
+								"rowHeader2": {
+									"contentfulId": "6Nkii3Ej3WJRimBQUFJdFV",
+									"cellText": "Class A operations: mutate state",
+									"cellTextLinkUrl": null,
+									"buttonText": null,
+									"buttonUrl": null,
+									"commonElements": null,
+									"imageAssetFile": null
+								},
+								"cellsInRow": [
+									{
+										"contentfulId": "5LKm6sR7gSNtKw81srtQ1y",
+										"cellText": "1,000,000 / month",
+										"cellTextLinkUrl": null,
+										"buttonText": null,
+										"buttonUrl": null,
+										"commonElements": null,
+										"imageAssetFile": null
+									},
+									{
+										"contentfulId": "5FuaSVJexUdpifJL1jtyqB",
+										"cellText": "$4.50 / million",
+										"cellTextLinkUrl": null,
+										"buttonText": null,
+										"buttonUrl": null,
+										"commonElements": null,
+										"imageAssetFile": null
+									}
+								]
+							},
+							{
+								"contentfulId": "SkqRtjtaNpNANpmISzAJS",
+								"rowHeader2": {
+									"contentfulId": "26xTGigHzGlgkHDSmRdQab",
+									"cellText": "Class B operations: read existing state",
+									"cellTextLinkUrl": null,
+									"buttonText": null,
+									"buttonUrl": null,
+									"commonElements": null,
+									"imageAssetFile": null
+								},
+								"cellsInRow": [
+									{
+										"contentfulId": "4zMhYcGbpHjldEP9F3iOp2",
+										"cellText": "10,000,000 / month",
+										"cellTextLinkUrl": null,
+										"buttonText": null,
+										"buttonUrl": null,
+										"commonElements": null,
+										"imageAssetFile": null
+									},
+									{
+										"contentfulId": "4lFYCbwimsUSDY9dzmTQpq",
+										"cellText": "$0.36 / million ",
+										"cellTextLinkUrl": null,
+										"buttonText": null,
+										"buttonUrl": null,
+										"commonElements": null,
+										"imageAssetFile": null
+									}
+								]
+							}
+						]
+					},
+					{
+						"contentfulId": "3RA2AH9F1dZjNLbiaQrmuG",
 						"backgroundColor": "white",
 						"contentTypeId": "bladeFourFeatures",
 						"htmlId": null,
 						"copy": null,
 						"title": "Resources",
 						"subtitle": null,
-						"bladeStyle": null,
+						"bladeStyle": "Feature Blocks - 3 columns",
 						"bladeBorder": "none",
-						"sectionPadding": null,
+						"sectionPadding": "tile--no-top-padding",
 						"carouselSlidesToShow": null,
 						"carouselSlidesToScroll": null,
 						"locale": "en-US",
 						"features": [
 							{
 								"contentTypeId": "feature",
-								"contentfulId": "4cEEixz7mOjjkMz8flGYro",
-								"title": "Cloudflare Logs documentation",
+								"contentfulId": "QqbkRdz4nDhCCpGkZSVJI",
+								"title": "Train AI models smarter with zero egress fees",
 								"makeTitleLink": false,
 								"titleUrl": null,
 								"titleSize": null,
-								"description": "Learn how to use Cloudflare Logs for debugging, identifying configuration adjustments, and creating analytics.",
-								"learnMoreUrl": "https://developers.cloudflare.com/logs/",
-								"learnMoreText": "See documentation",
+								"description": "Character AI uses R2 as the glue between multiple cloud providers to build the next generation of conversational AI. Read the Built With R2 story ",
+								"learnMoreUrl": "https://workers.cloudflare.com/built-with/projects/character-ai",
+								"learnMoreText": "Read the blog post",
 								"displayBorder": false,
 								"openLinkInNewTab": true,
 								"removeCardBorder": false,
@@ -858,16 +999,16 @@
 							},
 							{
 								"contentTypeId": "feature",
-								"contentfulId": "1X9u56ezuMTLUtczVSybp8",
-								"title": "How the Cloudflare network maintains data privacy",
+								"contentfulId": "5vwg9kkJtjdDHCJPVnEF5y",
+								"title": "Explore the developer's guide to media optimization",
 								"makeTitleLink": false,
 								"titleUrl": null,
 								"titleSize": null,
-								"description": "This paper breaks down how Cloudflare uses security measures to protect request metadata as it crosses our network.",
-								"learnMoreUrl": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/1S0GCmfDE4rA1CK5dCK9kL/3962d823146ea425666fdd6234027957/How_Cloudflare_helps_address_data_protection_and_locality_obligations_in_Europe_-_June_2022.pdf",
-								"learnMoreText": "Get the whitepaper",
+								"description": "See how R2 can help you host, store, and deliver rich media experiences — without driving up costs.",
+								"learnMoreUrl": "https://www.cloudflare.com/resources/assets/slt3lc6tev37/76OowVPNaxwlbzZC9z5LpN/f8620e467799b0920ebd01fdb222798b/A_Developers_Guide_to_Media_Optimization.pdf",
+								"learnMoreText": "Get the guide",
 								"displayBorder": false,
-								"openLinkInNewTab": false,
+								"openLinkInNewTab": true,
 								"removeCardBorder": false,
 								"icon": null,
 								"iconAssetFile": null,
@@ -894,14 +1035,14 @@
 							},
 							{
 								"contentTypeId": "feature",
-								"contentfulId": "41bJe4c3wfEAz8LfEgSmrh",
-								"title": "Cloudflare Logs tutorials",
+								"contentfulId": "2U9OHBkBVvbaNPWi3N6VAJ",
+								"title": "Migrate objects on-demand",
 								"makeTitleLink": false,
 								"titleUrl": null,
 								"titleSize": null,
-								"description": "Learn to manage and analyze your Cloudflare Logs.",
-								"learnMoreUrl": "https://developers.cloudflare.com/logs/tutorials/",
-								"learnMoreText": "Go to tutorials",
+								"description": "Transfer data from other cloud providers to R2 as the data is requested with Sippy.",
+								"learnMoreUrl": "https://developers.cloudflare.com/reference-architecture/diagrams/storage/on-demand-object-storage-migration/",
+								"learnMoreText": "View the reference architecture",
 								"displayBorder": false,
 								"openLinkInNewTab": true,
 								"removeCardBorder": false,
@@ -932,8 +1073,8 @@
 					},
 					{
 						"contentTypeId": "bladeEnablement",
-						"contentfulId": "4FQgRDlgs2NdH32hKJ8Ti7",
-						"title": "Get Cloudflare Logs for your enterprise",
+						"contentfulId": "1BBlx7AhoYoQtkxLwIdWKi",
+						"title": "See how much you can save with R2",
 						"titleSize": "medium",
 						"backgroundColor": "image-background",
 						"buttonText": null,
@@ -948,53 +1089,13 @@
 							"buttonAssetFile": null,
 							"buttonTextLoggedIn": null,
 							"contentTypeId": "button",
-							"contentfulId": "4Xz8W7auMR2dIP0Kp0tpJW",
-							"elementName": "Talk to an expert",
+							"contentfulId": "1XNnDmEGSbjWIxvAugKKHG",
+							"elementName": "Calculate your savings - CTA",
 							"standardText": null,
-							"text": "Talk to an expert",
-							"url": null,
+							"text": "Calculate your savings",
+							"url": "https://r2-calculator.cloudflare.com/",
 							"loggedInUrl": null,
-							"buttonModal": {
-								"contentTypeId": "formModal",
-								"contentfulId": "5a1ymxApHEqHHRNjyMbcEm",
-								"modalName": "Talk to an expert",
-								"modalId": "talk-to-an-expert",
-								"modalType": "single-form",
-								"marketoForm": {
-									"contentTypeId": "marketoEmbeddedForm",
-									"contentfulId": "GArhAEENzeQ3aQ4esVZPR",
-									"bladeName": "Enterprise General Sales Inquiry",
-									"backgroundColor": "white",
-									"marketoFormId": 1341,
-									"marketoFormLeadSource": "Inbound - Web Form",
-									"marketoFormLeadSourceDetail": "Web Form - Enterprise General Sales Inquiry",
-									"marketoFormAssetName": null,
-									"marketoFormHeaderText": "Talk to an expert",
-									"marketoFormDefaultComment": null,
-									"showCommentBox": null,
-									"marketoFormThankYouText": null,
-									"marketoFormCustomSuccessMessage": null,
-									"marketoFormPdfDownload": null,
-									"marketoFormPdfDownloadI18n": [],
-									"marketoFormAssetDownloadButtonText": null,
-									"marketoFormSuccessRedirectUrl": null,
-									"sendAdRoll": null,
-									"meta_adRollCustomSegment": null,
-									"enableSandbox": null,
-									"marketoFormSubmitButtonText": null,
-									"marketoFormSubmitButtonColor": null,
-									"enableEmailVerification": null,
-									"disableEnterpriseEmailNotification": null,
-									"enableRingout": null
-								},
-								"title": null,
-								"regularCopy": null,
-								"splitFormDefaultTab": null,
-								"selfServeTabText": null,
-								"selfServeCopy": null,
-								"enterpriseTabText": null,
-								"enterpriseCopy": null
-							},
+							"buttonModal": null,
 							"openInNewTab": true,
 							"locale": "en-US"
 						},
@@ -1007,22 +1108,22 @@
 				"formModal": [
 					{
 						"contentTypeId": "formModal",
-						"contentfulId": "5a1ymxApHEqHHRNjyMbcEm",
-						"modalName": "Talk to an expert",
-						"modalId": "talk-to-an-expert",
-						"modalType": "single-form",
+						"contentfulId": "7HKPKdN8NyJuuIz6x0XBYI",
+						"modalName": "R2 Product Page Modal Form",
+						"modalId": "r2-product-page-modal-form",
+						"modalType": "split-form",
 						"marketoForm": {
 							"contentTypeId": "marketoEmbeddedForm",
-							"contentfulId": "GArhAEENzeQ3aQ4esVZPR",
-							"bladeName": "Enterprise General Sales Inquiry",
+							"contentfulId": "7uQTdBu6g82MhQrzAgjaJu",
+							"bladeName": "R2 Product Page Marketo Form",
 							"backgroundColor": "white",
-							"marketoFormId": 1341,
+							"marketoFormId": 2733,
 							"marketoFormLeadSource": "Inbound - Web Form",
-							"marketoFormLeadSourceDetail": "Web Form - Enterprise General Sales Inquiry",
+							"marketoFormLeadSourceDetail": "[INB] Q3'22 WEB - GBL - R2 web inquiry",
 							"marketoFormAssetName": null,
-							"marketoFormHeaderText": "Talk to an expert",
+							"marketoFormHeaderText": "Is R2 right for you?",
 							"marketoFormDefaultComment": null,
-							"showCommentBox": null,
+							"showCommentBox": false,
 							"marketoFormThankYouText": null,
 							"marketoFormCustomSuccessMessage": null,
 							"marketoFormPdfDownload": null,
@@ -1039,7 +1140,7 @@
 							"enableRingout": null
 						},
 						"title": null,
-						"regularCopy": null,
+						"regularCopy": "Fill out the form below and an R2 specialist will be in touch shortly to discuss your specific needs.",
 						"splitFormDefaultTab": null,
 						"selfServeTabText": null,
 						"selfServeCopy": null,
@@ -1047,7 +1148,7 @@
 						"enterpriseCopy": null
 					}
 				],
-				"keepHashUrlSyncedWithScrollPosition": null
+				"keepHashUrlSyncedWithScrollPosition": false
 			},
 			"site": {
 				"siteMetadata": {
@@ -1058,8 +1159,8 @@
 		"pageContext": {
 			"currentLocale": "en-US",
 			"locale": "en-US",
-			"pathname": "/application-services/products/cloudflare-logs/",
-			"contentfulId": "3pnxtnd3x6OMcA2uAIG8YU",
+			"pathname": "/developer-platform/products/r2/",
+			"contentfulId": "6c2CpRkK67PXP4LRz6s2JX",
 			"allowedHrefLangs": [
 				"en-US",
 				"zh-CN",
@@ -1073,7 +1174,6 @@
 				"es-ES",
 				"es-LA",
 				"ru-RU",
-				"tr-TR",
 				"zh-Hans-CN",
 				"pl-PL"
 			],
