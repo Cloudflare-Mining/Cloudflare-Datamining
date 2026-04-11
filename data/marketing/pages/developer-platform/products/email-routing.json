@@ -1,10 +1,10 @@
 {
 	"componentChunkName": "component---src-components-page-page-template-tsx",
-	"path": "/network-services/products/network-interconnect/",
+	"path": "/developer-platform/products/email-routing/",
 	"result": {
 		"data": {
 			"page": {
-				"pageName": "Cloudflare Network Interconnect (Product Page)",
+				"pageName": "Email Routing product page",
 				"localeList": {
 					"enUS": "English for Locale",
 					"zhCN": "Translated for Locale",
@@ -27,35 +27,35 @@
 					"ruRU": "Translated for Locale",
 					"svSE": "English for Locale",
 					"viVN": "English for Locale",
-					"trTR": "Translated for Locale",
+					"trTR": "English for Locale",
 					"zhHansCN": "Translated for Locale",
 					"plPL": "Translated for Locale",
 					"arAR": "No Page for Locale",
-					"heIL": null
+					"heIL": "No Page for Locale"
 				},
-				"relativePath": "network-services/products/network-interconnect/",
+				"relativePath": "developer-platform/products/email-routing/",
 				"topNavOptions": "default",
 				"topNavButtonText": null,
 				"topNavButtonUrl": null,
 				"footerOptions": "default",
 				"metaTags": {
-					"metaTitle": "Cloudflare Network Interconnect",
-					"metaDescription": "Connect directly to the Cloudflare global network over physical or virtual links and improve the security and reliability of your Cloudflare services.",
+					"metaTitle": "Cloudflare Email Routing | Easily create addresses and route emails",
+					"metaDescription": "With Cloudflare Email Routing, simplify the way you create and manage custom email addresses for your domain, without needing to keep an eye on additional mailboxes.",
 					"twitterCustomImage": null,
 					"metaImage": {
 						"file": {
-							"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/110PD2rNGFfWKSuh097cdD/aff12270cd331c027ccba89fdf929add/network-interconnect-hero-illustration.svg"
+							"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/53qCYhQbir5WtIU0VDWESo/954a48bfb17f429acf469e5f14345d83/unnamed-3.png"
 						},
-						"description": null
+						"description": "DO NOT REMOVE, THIS IS CLOUDFLARE'S GLOBAL OG META ASSET"
 					},
 					"facebookCustomImage": null,
 					"author": []
 				},
 				"sys": {
-					"createdAt": "2020-07-30T21:52:57.763Z",
-					"updatedAt": "2026-04-04T03:52:52.412Z"
+					"createdAt": "2022-06-17T15:42:02.719Z",
+					"updatedAt": "2026-04-04T07:17:38.696Z"
 				},
-				"contentfulId": "1Ax2HAMt68SiIUEKgwzd1l",
+				"contentfulId": "5HoEBTLUgvFuGEmXFfO9GV",
 				"contentTypeId": "page",
 				"promotionalBanner": null,
 				"psaBanner": null,
@@ -65,41 +65,44 @@
 				"template": null,
 				"relatedBlades": [
 					{
-						"contentfulId": "3Cm18T5Vsa0YoYX69uBlyp",
+						"contentfulId": "5EPJ83ptqmjuvrfxo1n236",
 						"contentTypeId": "bladeHeroAnimation",
-						"title": "Cloudflare Network Interconnect",
+						"title": "Cloudflare Email Routing",
 						"titleSize": null,
-						"subtitle": "Directly connect your on-premises and cloud networks to Cloudflare's network",
+						"subtitle": "A free and private way to create and manage email addresses",
 						"subtitleSize": null,
-						"copy": "Set up direct physical or partner delivered interconnections directly with the Cloudflare network: connections are available at over %{DataCenterCount} cities in %{CountryCount} countries. You can also connect virtually from over %{NetworkInterconnects} locations through our network interconnect partnerships.\n\nWith Cloudflare Network Interconnect, you get the power of Cloudflare at your network edge.\n",
+						"copy": "Create custom email addresses for your domain and route messages to your preferred inbox — all without ever exposing your primary email address.",
 						"buttonColor": "orange",
-						"buttonColor2": null,
-						"buttonText1": "Talk to an expert",
+						"buttonColor2": "orange-outline",
+						"buttonText1": "Get started",
 						"buttonText1LoggedIn": null,
-						"buttonUrl1": "#",
+						"buttonUrl1": "https://dash.cloudflare.com/sign-up/workers",
 						"buttonUrl1LoggedIn": null,
-						"button1ExtraClass": "talk-to-an-expert",
-						"buttonText2": "Get the product brief",
-						"buttonText2LoggedIn": "Looking for enterprise-grade solutions?",
-						"buttonUrl2": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/2OYWSGpklil5pTOaOfbljq/cfcf94a20e630fb2c254f5ea1d7d9d27/BDES_6125_Cloudflare_Network_interconnect.pdf",
+						"button1ExtraClass": null,
+						"buttonText2": "Read developer docs",
+						"buttonText2LoggedIn": null,
+						"buttonUrl2": "https://developers.cloudflare.com/email-routing/",
 						"button2ExtraClass": null,
 						"bladeBorder": "none",
 						"htmlId": null,
 						"textColor": "black",
 						"includeVideo": false,
 						"streamVideoId": null,
-						"streamOptions": null,
-						"streamCaptions": null,
+						"streamOptions": [
+							"controls",
+							"captions"
+						],
+						"streamCaptions": "en",
 						"popupStreamId": null,
 						"popupText": null,
-						"button1OpenInNewTab": null,
+						"button1OpenInNewTab": false,
 						"button2OpenInNewTab": true,
 						"streamThumbnails": null,
 						"sectionPadding": null,
 						"streamPosterAssetFile": null,
 						"streamPoster": null,
 						"imageSize": "Medium",
-						"imagePosition": null,
+						"imagePosition": false,
 						"leftLinkUrl": null,
 						"leftLink": null,
 						"leftLinkLoggedIn": null,
@@ -110,38 +113,38 @@
 						"imageLayout": null,
 						"image": null,
 						"imageAssetFile": {
-							"id": "9c0a80b2-e69c-5721-b533-5b329f21d9c4",
-							"altText": "Network interconnect hero illustration",
-							"title": "Network interconnect hero illustration",
+							"id": "07661851-a5ae-5023-9f17-eae8219f9f25",
+							"altText": "Cloudflare Email Routing - paper planes representing emails travel left to right",
+							"title": "Cloudflare Email Routing",
 							"activeAsset": "Contentful Asset",
 							"locale": "en-US",
 							"contentfulAsset": {
 								"file": {
-									"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/1YehMd2KFQH0K6P8LUUvyc/9f34d904a177a722f8bd1e7e2703e438/BDES-4908_-_network-interconnect-hero-illustration.svg"
+									"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/7lVVVVEB2RUncxomRJHLny/7c497b8d6fee9121d03fac508e850114/BDES-5040_-_Email-Forwarding-Paper-Plane.svg"
 								},
-								"description": ""
+								"description": null
 							},
 							"brandfolderAsset": null,
 							"brandfolderAssetMobile": null
 						}
 					},
 					{
-						"contentfulId": "2jaG3Miupv7WTuCqtTfU9b",
+						"contentfulId": "6FVzCWASxnPo5VSwmPArxZ",
 						"contentTypeId": "bladeMultipleColumnsLayout",
 						"title": null,
-						"eyebrowHeading": "BENEFITS OF CLOUDFLARE NETWORK INTERCONNECT",
+						"eyebrowHeading": "BENEFITS OF CLOUDFLARE EMAIL ROUTING",
 						"description": null,
 						"textLayout": "left",
-						"columnsLayout": "Three Columns",
+						"columnsLayout": "Four Columns",
 						"columnContent": [
 							{
 								"contentTypeId": "feature",
-								"contentfulId": "3JYj80A1beq19A8hED2kk0",
-								"title": "Better performance and reliability",
+								"contentfulId": "51ULLTwCaJ2hA6Uk8pcogz",
+								"title": "Private by design & anti-spam",
 								"makeTitleLink": false,
 								"titleUrl": null,
 								"titleSize": null,
-								"description": "With no intermediary networks between you and Cloudflare, you get faster performance and reduce unpredictability.",
+								"description": "Email Routing is 100% private; Cloudflare will not store or access email content. We use phishing detection to prevent spam from being forwarded.",
 								"learnMoreUrl": null,
 								"learnMoreText": null,
 								"displayBorder": false,
@@ -149,16 +152,16 @@
 								"removeCardBorder": false,
 								"icon": null,
 								"iconAssetFile": {
-									"id": "b1b7275d-3503-5173-a651-9cfd70157c3c",
-									"altText": "Performance acceleration rocket ",
-									"title": "Performance acceleration rocket",
+									"id": "eaeddebf-b730-5e34-b5cd-2dcca8d4cba2",
+									"altText": "security-shield-protection-230x301-664b7d5",
+									"title": "security-shield-protection-230x301-664b7d5",
 									"activeAsset": "Contentful Asset",
 									"locale": "en-US",
 									"contentfulAsset": {
 										"file": {
-											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/1vvXmr7jmxFdYUgliFcXUh/d27e7eabc9727ba987b15d5e9ddad5e3/performance-acceleration-rocket.svg"
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/LaRddEaKEWlYXXx8Y2UST/4a87c8fe7df63554665ed7b673ba5846/security-shield-protection-2.svg"
 										},
-										"description": "Performance acceleration rocket orange"
+										"description": null
 									},
 									"brandfolderAsset": null,
 									"brandfolderAssetMobile": null
@@ -172,12 +175,12 @@
 							},
 							{
 								"contentTypeId": "feature",
-								"contentfulId": "5ga8jAv7PNttOYyiza7oBA",
-								"title": "More secure",
+								"contentfulId": "348YYqSdwtYTsMzIy7lw3R",
+								"title": "Free and easy to configure",
 								"makeTitleLink": false,
 								"titleUrl": null,
 								"titleSize": null,
-								"description": "Each interconnection is reserved exclusively for the customer that provisions it — ensuring customer traffic is isolated and private.",
+								"description": "Creating custom addresses and forwarding messages to your inbox is free. DNS records are created automatically and protected from accidental changes.",
 								"learnMoreUrl": null,
 								"learnMoreText": null,
 								"displayBorder": false,
@@ -185,14 +188,14 @@
 								"removeCardBorder": false,
 								"icon": null,
 								"iconAssetFile": {
-									"id": "a2e13743-df8f-5dc4-b0d0-7886c680972f",
-									"altText": null,
-									"title": "Secure distributed remote workforces",
+									"id": "1b916824-7fb8-5f8f-a315-4faa6461d4d3",
+									"altText": "Optimization gear ",
+									"title": "Optimization gear ",
 									"activeAsset": "Contentful Asset",
 									"locale": "en-US",
 									"contentfulAsset": {
 										"file": {
-											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/4Cy6RUpurh3hxxzkZwh8Ax/e7758d8bd71b19216644a3612915c55a/cloudflare-security-center__1_.png"
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/6JreowuAuIySxXXXqycY4r/746dc87c57caa9f58423af84de3fa35a/optimization-gear.svg"
 										},
 										"description": ""
 									},
@@ -208,12 +211,12 @@
 							},
 							{
 								"contentTypeId": "feature",
-								"contentfulId": "5TyTUjzUTWro0x9DzVhM3D",
-								"title": "Lower costs",
+								"contentfulId": "3fPyABjXtRU3elzyAcixEg",
+								"title": "Advanced analytics",
 								"makeTitleLink": false,
 								"titleUrl": null,
 								"titleSize": null,
-								"description": "Customers can benefit from reduced transit provider costs and may also be able to lower egress costs in the event of cache-miss.",
+								"description": "Access insights on the number of emails sent to you, whether they were forwarded or dropped, and delivery success at your destination mailbox.",
 								"learnMoreUrl": null,
 								"learnMoreText": null,
 								"displayBorder": false,
@@ -221,16 +224,52 @@
 								"removeCardBorder": false,
 								"icon": null,
 								"iconAssetFile": {
-									"id": "ca8dae98-4f47-5466-a459-bdaacb07a225",
-									"altText": "Dollar",
-									"title": "Dollar",
+									"id": "8ef8fdc5-cba6-5992-8e53-275759d57c5a",
+									"altText": "Analytics data blue",
+									"title": "Analytics data blue",
 									"activeAsset": "Contentful Asset",
 									"locale": "en-US",
 									"contentfulAsset": {
 										"file": {
-											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/7td2uxheozRtbhflYJ4n7b/f957bd073f41d31f0579dafa98f329c4/price__1_.svg"
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/2GDXdm5wvNxuUxs30EcKZx/daade3315fd04282a6607e8ce40d3fab/analytics-data.svg"
 										},
-										"description": null
+										"description": "Data analytics icon"
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								},
+								"imageOverlaySuperheader": null,
+								"imageOverlayText": null,
+								"imageAssetFile": null,
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
+							},
+							{
+								"contentTypeId": "feature",
+								"contentfulId": "4FIKPaiPggPP9irOybDxiM",
+								"title": "Process emails programmatically",
+								"makeTitleLink": false,
+								"titleUrl": null,
+								"titleSize": null,
+								"description": "Route to Cloudflare Workers to program custom logic for processing your emails.",
+								"learnMoreUrl": null,
+								"learnMoreText": null,
+								"displayBorder": false,
+								"openLinkInNewTab": null,
+								"removeCardBorder": false,
+								"icon": null,
+								"iconAssetFile": {
+									"id": "7ffa9292-726c-5be7-b2cb-66a931078912",
+									"altText": "Cloudflare Email Routing",
+									"title": "Email Routing Icon",
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/4Sx6clrdwhC89NzanpRoQN/ff7d6e3719a6ba46094ccf72c395cfe8/cloudflare-email-forwarding.svg"
+										},
+										"description": ""
 									},
 									"brandfolderAsset": null,
 									"brandfolderAssetMobile": null
@@ -243,13 +282,13 @@
 								"streamThumbnailAssetFile": null
 							}
 						],
-						"sectionPadding": "tile--no-bottom-padding",
+						"sectionPadding": null,
 						"htmlId": null
 					},
 					{
-						"contentfulId": "77UwZlanqG7v3emxjNPc2y",
-						"title": "Direct physical or virtual partner connections with the Cloudflare network",
-						"copy": "Cloudflare Network Interconnect is the on-ramp that allows our customers to interconnect their data centers directly with Cloudflare, increasing the benefits from Cloudflare products like [Magic Transit](https://www.cloudflare.com/network-services/products/magic-transit/) (for DDoS), [Zero Trust](https://www.cloudflare.com/sase/) (for user and device security), [Workers](https://workers.cloudflare.com/) (for building applications), and more.",
+						"contentfulId": "3GXulNkgYzROhaRTPSvHlt",
+						"title": "Route emails efficiently",
+						"copy": "Email Routing acts as an intelligent router at the transport layer, handling and modifying the SMTP envelope to deliver the message at its final destination while preserving the original headers and keeping the body intact in real time.",
 						"toggleText": null,
 						"button": [],
 						"learnMoreUrl": null,
@@ -272,16 +311,16 @@
 						"streamPosterAssetFile": null,
 						"image": null,
 						"imageAssetFile": {
-							"id": "d93d7fe0-b30c-501c-bc07-f740ffea6368",
-							"altText": null,
-							"title": null,
+							"id": "4acec23a-a705-5649-b356-95bfc5a42154",
+							"altText": "Area 1 email security",
+							"title": "Area 1 Product Page - Hero Illustration",
 							"activeAsset": "Contentful Asset",
 							"locale": "en-US",
 							"contentfulAsset": {
 								"file": {
-									"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/2gpAm9XaT0FMJTWAlNXO1d/8afb58ff8c462354fe7308e277be304d/BDES-4906_-_Magic_Transit_-_How_it_works.svg"
+									"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/3S61A4HQkbLvrUcvADOlil/93014657b16f8a9005ba27c2a9171616/BDES-5040_-_Email-Routing-Security-Envelope.svg"
 								},
-								"description": "Diagram of Cloudflare Magic Transit preventing a DDoS attack"
+								"description": null
 							},
 							"brandfolderAsset": null,
 							"brandfolderAssetMobile": null
@@ -291,18 +330,18 @@
 						"sectionTitle": "HOW IT WORKS",
 						"htmlId": null,
 						"titleSize": null,
-						"sectionPadding": null,
+						"sectionPadding": "tile--no-top-padding",
 						"backgroundColor": "white",
 						"bladeBorder": "none",
 						"imagePosition": true,
 						"imageSize": "medium",
-						"imageTextAlignment": "center",
+						"imageTextAlignment": null,
 						"togglesTo": []
 					},
 					{
 						"contentTypeId": "bladeEnablement",
-						"contentfulId": "71TlizS7aiZ8PeMU3pQ9M3",
-						"title": "Learn how to develop a strategy for your network modernization",
+						"contentfulId": "4SAw7vbWpPIY0I0R4BeYo7",
+						"title": "Learn how Cloudflare can preemptively detect and stop phishing attacks with Cloud Email Security",
 						"titleSize": "medium",
 						"backgroundColor": "image-background",
 						"buttonText": null,
@@ -317,138 +356,19 @@
 							"buttonAssetFile": null,
 							"buttonTextLoggedIn": null,
 							"contentTypeId": "button",
-							"contentfulId": "2Dvfm3Spk5VBq9a4bsHglX",
-							"elementName": "Get the white paper - CTA",
+							"contentfulId": "2tHwRPAHzrWA3kS6L4Ta49",
+							"elementName": "Email Routing - Additional offer - CTA",
 							"standardText": null,
-							"text": "Get the whitepaper",
-							"url": "https://www.cloudflare.com/lp/developing-a-strategy-for-network-modernization/",
+							"text": "See product overview",
+							"url": "http://cfl.re/email-security-product-overview",
 							"loggedInUrl": null,
 							"buttonModal": null,
-							"openInNewTab": false,
+							"openInNewTab": true,
 							"locale": "en-US"
 						},
 						"buttonTwo": null,
-						"sectionPadding": "tile--no-top-padding",
+						"sectionPadding": null,
 						"eyebrow": null
-					},
-					{
-						"contentTypeId": "bladeRichTextColumnGroup",
-						"contentfulId": "5GJdWsOiF1f34qjwMEIRXB",
-						"htmlId": null,
-						"mainHeadline": null,
-						"backgroundColor": "white",
-						"bladeBorder": "none",
-						"sectionPadding": "tile--no-bottom-padding",
-						"columnLayout": "One Column Wide",
-						"columns": [
-							{
-								"contentTypeId": "elementRichText",
-								"contentfulId": "5zGokZjlTg4JwZv61P94b9",
-								"title": null,
-								"htmlId": null,
-								"elementPosition": "relative",
-								"column": {
-									"nodeType": "document",
-									"content": [
-										{
-											"nodeType": "heading-4",
-											"data": {
-												"target": null,
-												"uri": null
-											},
-											"value": null,
-											"marks": null,
-											"content": [
-												{
-													"nodeType": "text",
-													"data": {
-														"target": null,
-														"uri": null
-													},
-													"value": "What our customers are saying",
-													"marks": [],
-													"content": null
-												}
-											]
-										},
-										{
-											"nodeType": "blockquote",
-											"data": {
-												"target": null,
-												"uri": null
-											},
-											"value": null,
-											"marks": null,
-											"content": [
-												{
-													"nodeType": "paragraph",
-													"data": {
-														"target": null,
-														"uri": null
-													},
-													"value": null,
-													"marks": null,
-													"content": [
-														{
-															"nodeType": "text",
-															"data": {
-																"target": null,
-																"uri": null
-															},
-															"value": "\"Everything that we do is focused on building a solution that can scale while providing the level of service that our customers expect. Cloudflare solutions give us that scalability and free up our teams' time and energy to focus on proactive features and solutions.\"",
-															"marks": [],
-															"content": null
-														}
-													]
-												}
-											]
-										},
-										{
-											"nodeType": "paragraph",
-											"data": {
-												"target": null,
-												"uri": null
-											},
-											"value": null,
-											"marks": null,
-											"content": [
-												{
-													"nodeType": "text",
-													"data": {
-														"target": null,
-														"uri": null
-													},
-													"value": "",
-													"marks": [],
-													"content": null
-												}
-											]
-										},
-										{
-											"nodeType": "paragraph",
-											"data": {
-												"target": null,
-												"uri": null
-											},
-											"value": null,
-											"marks": null,
-											"content": [
-												{
-													"nodeType": "text",
-													"data": {
-														"target": null,
-														"uri": null
-													},
-													"value": "CTO — Kinsta",
-													"marks": [],
-													"content": null
-												}
-											]
-										}
-									]
-								}
-							}
-						]
 					},
 					{
 						"contentTypeId": "bladeFeaturedCompanyLogos",
@@ -640,22 +560,22 @@
 						"sectionPadding": null
 					},
 					{
-						"contentfulId": "17K0NF5WE6DArLfk46MveM",
+						"contentfulId": "4ckblVorEomG47issnbxok",
 						"contentTypeId": "bladeMultipleColumnsLayout",
-						"title": "Cloudflare Network Interconnect gives you a direct connection to all Cloudflare services, helping you accelerate and secure on-premises and cloud networks.",
-						"eyebrowHeading": "Top Network Interconnect use cases",
+						"title": "Email Routing is the most straightforward way to create any number of email addresses that are redirected to the mailbox that you, your family, or your team are already using.",
+						"eyebrowHeading": "Top Email Routing use cases",
 						"description": null,
 						"textLayout": "left",
-						"columnsLayout": "Two Columns",
+						"columnsLayout": "Three Columns",
 						"columnContent": [
 							{
 								"contentTypeId": "feature",
-								"contentfulId": "3cHrsOjEBvpmHI5N798Xip",
-								"title": "Complement ZTNA with connections to application networks",
+								"contentfulId": "1urht89gxlz3zR2VRycNK9",
+								"title": "Individual users",
 								"makeTitleLink": false,
 								"titleUrl": null,
 								"titleSize": null,
-								"description": "Cloudflare Zero Trust replaces legacy access VPNs with Cloudflare's global network. Cloudflare Network Interconnect establishes direct connections from Cloudflare to your private applications hosted on-premises or in public clouds.",
+								"description": "Create addresses for different needs, so you are not sharing your private email with newsletters and businesses.",
 								"learnMoreUrl": null,
 								"learnMoreText": null,
 								"displayBorder": false,
@@ -663,16 +583,16 @@
 								"removeCardBorder": false,
 								"icon": null,
 								"iconAssetFile": {
-									"id": "eb93065c-06f0-53bf-8f24-82f814b29726",
-									"altText": "security-shield-zero-trust",
-									"title": "security-shield-zero-trust",
+									"id": "fc232bdb-ef74-5e8f-a034-ee8c79b6a16c",
+									"altText": "Website user or visitor",
+									"title": "icon-profiling-visitor",
 									"activeAsset": "Contentful Asset",
 									"locale": "en-US",
 									"contentfulAsset": {
 										"file": {
-											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/35yeieyQns5B8WsFes9Z20/8bf36cbf9edf546c30cc9e3e08235255/cloudflare-zero-trust.svg"
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/6Uxta7KXVjebztzS6l8nWx/7ba80617b035fdafa51c06e20228239d/user.svg"
 										},
-										"description": "Shield with arrow icon"
+										"description": "icon profiling visitor orange"
 									},
 									"brandfolderAsset": null,
 									"brandfolderAssetMobile": null
@@ -686,12 +606,12 @@
 							},
 							{
 								"contentTypeId": "feature",
-								"contentfulId": "iEclbRSguZuQEwetoHlKm",
-								"title": "Reduce attack surface",
+								"contentfulId": "60QdMWx3uGECtlfvP9mQ8n",
+								"title": "Families",
 								"makeTitleLink": false,
 								"titleUrl": null,
 								"titleSize": null,
-								"description": "Privately connect to Cloudflare so that your application networks have no Internet facing exposure.",
+								"description": "Designate addresses for each family member and for specific purposes, such as an address for household bills.",
 								"learnMoreUrl": null,
 								"learnMoreText": null,
 								"displayBorder": false,
@@ -699,14 +619,50 @@
 								"removeCardBorder": false,
 								"icon": null,
 								"iconAssetFile": {
-									"id": "213e44f5-f2f9-5afa-930f-b9559ccedf63",
-									"altText": "Connect 2 ",
-									"title": "Connect 2 ",
+									"id": "b3ff4344-a324-59a0-b8e4-414adc95e7d3",
+									"altText": "User multi ",
+									"title": "User multi ",
 									"activeAsset": "Contentful Asset",
 									"locale": "en-US",
 									"contentfulAsset": {
 										"file": {
-											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/1jOaaLoYqpJdNuiEEK853k/ff1f3528caf01138a2e07d11e37d4246/connect-2.png"
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/6oO1wqLlaSM1U8pwMbT3jY/e894b1327f9ec28e674794ac78b233e5/user-multi.svg"
+										},
+										"description": "User Multi - Orange"
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								},
+								"imageOverlaySuperheader": null,
+								"imageOverlayText": null,
+								"imageAssetFile": null,
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
+							},
+							{
+								"contentTypeId": "feature",
+								"contentfulId": "5ql7rE2SV3Vnjxodsdoq4r",
+								"title": "Businesses",
+								"makeTitleLink": false,
+								"titleUrl": null,
+								"titleSize": null,
+								"description": "Route emails for different types of inquiries, such as sales and support, and easily control who receives these messages.",
+								"learnMoreUrl": null,
+								"learnMoreText": null,
+								"displayBorder": false,
+								"openLinkInNewTab": null,
+								"removeCardBorder": false,
+								"icon": null,
+								"iconAssetFile": {
+									"id": "7ffa9292-726c-5be7-b2cb-66a931078912",
+									"altText": "Cloudflare Email Routing",
+									"title": "Email Routing Icon",
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/4Sx6clrdwhC89NzanpRoQN/ff7d6e3719a6ba46094ccf72c395cfe8/cloudflare-email-forwarding.svg"
 										},
 										"description": ""
 									},
@@ -726,18 +682,18 @@
 					},
 					{
 						"contentTypeId": "bladeHtml",
-						"contentfulId": "4eUBCZIkWKT9fZMJ8oJ6mU",
-						"htmlContent": "<div style=\"text-align: center; cursor:pointer; margin-bottom:64px; margin-top: -60px;\">\n    <a href=\"/network-services/solutions/#protect-accelerate-network-solutions\" target=\"_blank\" class=\"inline-link-style\">Explore more use cases<svg width=\"4\" height=\"10\"\n            viewBox=\"0 0 6 10\" fill=\"currentColor\" aria-label=\"chevron\" xmlns=\"https://www.cloudflare.com/network-services/solutions/\"\n            class=\"dib v-mid ml1\">\n            <path\n                d=\"M1.00003 -4.37127e-08L-3.93401e-07 1.00003L4 5L0.000271373 9.00025L1.00003 10L6.00003 5L1.00003 -4.37127e-08Z\">\n            </path>\n        </svg>  </a>\n</div>",
+						"contentfulId": "6menu8biDmzQwDBt8R86uy",
+						"htmlContent": "<div style=\"text-align: center; cursor:pointer; margin-bottom:64px; margin-top: -60px;\">\n    <a href=\"/zero-trust/solutions/#secure-work-anywhere-solutions\" target=\"_blank\" class=\"inline-link-style\">Explore more use cases<svg width=\"6\" height=\"10\"\n            viewBox=\"0 0 6 10\" fill=\"currentColor\" aria-label=\"chevron\" xmlns=\"https://www.cloudflare.com/zero-trust/solutions/\"\n            class=\"dib v-mid ml1\">\n            <path\n                d=\"M1.00003 -4.37127e-08L-3.93401e-07 1.00003L4 5L0.000271373 9.00025L1.00003 10L6.00003 5L1.00003 -4.37127e-08Z\">\n            </path>\n        </svg>  </a>\n</div>",
 						"htmlId": null
 					},
 					{
-						"contentfulId": "4ytzKTfH9MAV8qRttAs6k3",
+						"contentfulId": "24CaZaBYO2HUkcKM6fCha2",
 						"contentTypeId": "bladeLeadGeneration",
-						"title": null,
-						"description": "Helping organizations worldwide protect and accelerate their networks",
+						"title": "Helping individuals and businesses simplify their inboxes",
+						"description": "Helping individuals and businesses simplify their inboxes",
 						"variant": "inline",
 						"htmlId": null,
-						"sectionPadding": "tile--no-top-padding",
+						"sectionPadding": "tile--no-top-bottom-padding",
 						"backgroundImage": {
 							"id": "5fb646a4-2af5-50d0-815c-108317d4b5b7",
 							"altText": "Cloudflare Orange Background",
@@ -757,11 +713,11 @@
 							"buttonAssetFile": null,
 							"buttonTextLoggedIn": null,
 							"contentTypeId": "button",
-							"contentfulId": "5HApvLAvSdwHI9D5XopPH3",
-							"elementName": "See case studies - ALL",
+							"contentfulId": "5yDFpsgTzlogShZ7FTlWKN",
+							"elementName": "Email Routing - Case studies - CTA",
 							"standardText": null,
 							"text": "See case studies",
-							"url": "/case-studies/",
+							"url": "https://www.cloudflare.com/case-studies/",
 							"loggedInUrl": null,
 							"buttonModal": null,
 							"openInNewTab": false,
@@ -770,14 +726,14 @@
 						"secondaryCtaButton": null
 					},
 					{
-						"contentfulId": "22yh5YmQjiljdQ70m2Pz5h",
+						"contentfulId": "3BZ1etBMYJVsbZMBTqtDnB",
 						"backgroundColor": "white",
 						"contentTypeId": "bladeFourFeatures",
 						"htmlId": null,
 						"copy": null,
 						"title": "Resources",
 						"subtitle": null,
-						"bladeStyle": null,
+						"bladeStyle": "Feature Blocks - 3 columns",
 						"bladeBorder": "none",
 						"sectionPadding": null,
 						"carouselSlidesToShow": null,
@@ -786,50 +742,14 @@
 						"features": [
 							{
 								"contentTypeId": "feature",
-								"contentfulId": "5MDiXQ7BnKb5QGNVu0htiR",
-								"title": "Developing a strategy for your network modernization",
+								"contentfulId": "5JoxXyfQw3qjhiEhQWDUl1",
+								"title": "Introducing Cloudflare Email Routing",
 								"makeTitleLink": false,
 								"titleUrl": null,
 								"titleSize": null,
-								"description": "The enterprise network long remained stubbornly resistant to change. But as networks begin to modernize, how should CIOs define the scope of the project, and what key use cases should they consider?",
-								"learnMoreUrl": "/lp/developing-a-strategy-for-network-modernization/",
-								"learnMoreText": "Get the whitepaper",
-								"displayBorder": false,
-								"openLinkInNewTab": false,
-								"removeCardBorder": false,
-								"icon": null,
-								"iconAssetFile": null,
-								"imageOverlaySuperheader": null,
-								"imageOverlayText": null,
-								"imageAssetFile": {
-									"id": "bb0c6be9-0531-5573-923c-f00ca093e47e",
-									"altText": null,
-									"title": null,
-									"activeAsset": "Contentful Asset",
-									"locale": "en-US",
-									"contentfulAsset": {
-										"file": {
-											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/1YGMIqqtWyen0H9EPX70CL/47fb34c9a8aae1587b6eda9384e36139/element-feature-topbar-image-2.png"
-										},
-										"description": "Resources card - Thin top orange line  - image"
-									},
-									"brandfolderAsset": null,
-									"brandfolderAssetMobile": null
-								},
-								"streamId": null,
-								"streamThumbnail": null,
-								"streamThumbnailAssetFile": null
-							},
-							{
-								"contentTypeId": "feature",
-								"contentfulId": "3ogd9XxlOgd6O1VNvPGA5T",
-								"title": "Cloudflare Network Interconnect documentation",
-								"makeTitleLink": false,
-								"titleUrl": null,
-								"titleSize": null,
-								"description": "Learn how to implement Network Interconnect and how it fits into your architecture.",
-								"learnMoreUrl": "https://developers.cloudflare.com/network-interconnect/",
-								"learnMoreText": "Read the documentation",
+								"description": "Find out why we created this feature and how it works.",
+								"learnMoreUrl": "https://blog.cloudflare.com/introducing-email-routing/",
+								"learnMoreText": "Read blog post",
 								"displayBorder": false,
 								"openLinkInNewTab": true,
 								"removeCardBorder": false,
@@ -858,14 +778,50 @@
 							},
 							{
 								"contentTypeId": "feature",
-								"contentfulId": "4TvhbLxGJvKeF2rmwv4fBD",
-								"title": "Simplifying how enterprises connect to Cloudflare with Express Cloudflare Network Interconnect",
+								"contentfulId": "4z8E9h08srueGPwVsddK9V",
+								"title": "Migrating to Cloudflare Email Routing",
 								"makeTitleLink": false,
 								"titleUrl": null,
 								"titleSize": null,
-								"description": "CNI is a connection between a customer's network router and Cloudflare, which facilitates the direct exchange of information between networks instead of via the Internet.\n",
-								"learnMoreUrl": "https://blog.cloudflare.com/announcing-express-cni/",
-								"learnMoreText": "Read the blog",
+								"description": "Read step-by-step instructions for getting started with handling email for custom domains.",
+								"learnMoreUrl": "https://blog.cloudflare.com/migrating-to-cloudflare-email-routing/",
+								"learnMoreText": "Read blog post",
+								"displayBorder": false,
+								"openLinkInNewTab": true,
+								"removeCardBorder": false,
+								"icon": null,
+								"iconAssetFile": null,
+								"imageOverlaySuperheader": null,
+								"imageOverlayText": null,
+								"imageAssetFile": {
+									"id": "bb0c6be9-0531-5573-923c-f00ca093e47e",
+									"altText": null,
+									"title": null,
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/1YGMIqqtWyen0H9EPX70CL/47fb34c9a8aae1587b6eda9384e36139/element-feature-topbar-image-2.png"
+										},
+										"description": "Resources card - Thin top orange line  - image"
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								},
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
+							},
+							{
+								"contentTypeId": "feature",
+								"contentfulId": "5CzyEfG8u3bDd5Fk0SwFBE",
+								"title": "Email Routing open beta",
+								"makeTitleLink": false,
+								"titleUrl": null,
+								"titleSize": null,
+								"description": "Cloudflare Email Routing is available for every zone in every Cloudflare account. Learn how to get started.",
+								"learnMoreUrl": "https://blog.cloudflare.com/email-routing-open-beta/",
+								"learnMoreText": "Read blog post",
 								"displayBorder": false,
 								"openLinkInNewTab": true,
 								"removeCardBorder": false,
@@ -896,8 +852,8 @@
 					},
 					{
 						"contentTypeId": "bladeEnablement",
-						"contentfulId": "1vpr60W3QGc0O3gPem3y06",
-						"title": "Get Cloudflare Network Interconnect for your enterprise",
+						"contentfulId": "3sOyOmwcWQ4guHaGmCdTYc",
+						"title": "Get Cloudflare Email Routing for your enterprise",
 						"titleSize": "medium",
 						"backgroundColor": "image-background",
 						"buttonText": null,
@@ -968,50 +924,8 @@
 					}
 				],
 				"noindex": false,
-				"formModal": [
-					{
-						"contentTypeId": "formModal",
-						"contentfulId": "5a1ymxApHEqHHRNjyMbcEm",
-						"modalName": "Talk to an expert",
-						"modalId": "talk-to-an-expert",
-						"modalType": "single-form",
-						"marketoForm": {
-							"contentTypeId": "marketoEmbeddedForm",
-							"contentfulId": "GArhAEENzeQ3aQ4esVZPR",
-							"bladeName": "Enterprise General Sales Inquiry",
-							"backgroundColor": "white",
-							"marketoFormId": 1341,
-							"marketoFormLeadSource": "Inbound - Web Form",
-							"marketoFormLeadSourceDetail": "Web Form - Enterprise General Sales Inquiry",
-							"marketoFormAssetName": null,
-							"marketoFormHeaderText": "Talk to an expert",
-							"marketoFormDefaultComment": null,
-							"showCommentBox": null,
-							"marketoFormThankYouText": null,
-							"marketoFormCustomSuccessMessage": null,
-							"marketoFormPdfDownload": null,
-							"marketoFormPdfDownloadI18n": [],
-							"marketoFormAssetDownloadButtonText": null,
-							"marketoFormSuccessRedirectUrl": null,
-							"sendAdRoll": null,
-							"meta_adRollCustomSegment": null,
-							"enableSandbox": null,
-							"marketoFormSubmitButtonText": null,
-							"marketoFormSubmitButtonColor": null,
-							"enableEmailVerification": null,
-							"disableEnterpriseEmailNotification": null,
-							"enableRingout": null
-						},
-						"title": null,
-						"regularCopy": null,
-						"splitFormDefaultTab": null,
-						"selfServeTabText": null,
-						"selfServeCopy": null,
-						"enterpriseTabText": null,
-						"enterpriseCopy": null
-					}
-				],
-				"keepHashUrlSyncedWithScrollPosition": null
+				"formModal": [],
+				"keepHashUrlSyncedWithScrollPosition": false
 			},
 			"site": {
 				"siteMetadata": {
@@ -1022,8 +936,8 @@
 		"pageContext": {
 			"currentLocale": "en-US",
 			"locale": "en-US",
-			"pathname": "/network-services/products/network-interconnect/",
-			"contentfulId": "1Ax2HAMt68SiIUEKgwzd1l",
+			"pathname": "/developer-platform/products/email-routing/",
+			"contentfulId": "5HoEBTLUgvFuGEmXFfO9GV",
 			"allowedHrefLangs": [
 				"en-US",
 				"zh-CN",
@@ -1037,7 +951,6 @@
 				"es-ES",
 				"es-LA",
 				"ru-RU",
-				"tr-TR",
 				"zh-Hans-CN",
 				"pl-PL"
 			],
