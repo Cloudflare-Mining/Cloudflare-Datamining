@@ -1,10 +1,10 @@
 {
 	"componentChunkName": "component---src-components-page-page-template-tsx",
-	"path": "/developer-platform/products/hyperdrive/",
+	"path": "/developer-platform/products/durable-objects/",
 	"result": {
 		"data": {
 			"page": {
-				"pageName": "Hyperdrive - Product Page - Developer Platform",
+				"pageName": "Durable objects product page",
 				"localeList": {
 					"enUS": "English for Locale",
 					"zhCN": "Translated for Locale",
@@ -33,29 +33,29 @@
 					"arAR": "No Page for Locale",
 					"heIL": "No Page for Locale"
 				},
-				"relativePath": "developer-platform/products/hyperdrive",
+				"relativePath": "developer-platform/products/durable-objects/",
 				"topNavOptions": "default",
 				"topNavButtonText": null,
 				"topNavButtonUrl": null,
 				"footerOptions": "default",
 				"metaTags": {
-					"metaTitle": "Regional databases, globally distributed ",
-					"metaDescription": "Cloudflare Hyperdrive accelerates queries made to your existing databases, dramatically reducing latency no matter where users are connecting from.  ",
+					"metaTitle": "Durable Objects from Cloudflare",
+					"metaDescription": "Build and run stateful, collaborative applications on Cloudflare's global network with Durable Objects",
 					"twitterCustomImage": null,
 					"metaImage": {
 						"file": {
-							"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/53qCYhQbir5WtIU0VDWESo/954a48bfb17f429acf469e5f14345d83/unnamed-3.png"
+							"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/766rGfe5KzDMhILF3qg4Ff/ae19476400421ddf5f7b2daa10a85e22/durable-objects-hero-illustration.png"
 						},
-						"description": "DO NOT REMOVE, THIS IS CLOUDFLARE'S GLOBAL OG META ASSET"
+						"description": null
 					},
 					"facebookCustomImage": null,
 					"author": []
 				},
 				"sys": {
-					"createdAt": "2023-09-28T13:22:46.260Z",
-					"updatedAt": "2026-04-04T08:21:09.010Z"
+					"createdAt": "2022-10-04T14:13:49.413Z",
+					"updatedAt": "2026-04-06T20:43:39.839Z"
 				},
-				"contentfulId": "4i1usPVo6625lvcdhccDpy",
+				"contentfulId": "0c7G74M4ikVXeYrwm6cQh",
 				"contentTypeId": "page",
 				"promotionalBanner": null,
 				"psaBanner": null,
@@ -65,86 +65,86 @@
 				"template": null,
 				"relatedBlades": [
 					{
-						"contentTypeId": "bladeHalfWidthHero",
-						"contentfulId": "sXz1JnHYEjYhQuYOSoGB7",
-						"entityTitle": "Hyperdrive - Half width hero",
-						"leftHalf": {
-							"contentTypeId": "elementHalfWidthHeroContent",
-							"contentfulId": "7uMIcZ4Q779gJBvedDqPry",
-							"title": "Cloudflare Hyperdrive",
-							"eyebrow": "Global acceleration for your regional databases",
-							"copy": "Hyperdrive accelerates queries to your existing databases with Cloudflare Workers, helping reduce latency no matter where users are connecting from.",
-							"primaryCta": {
-								"buttonAssetFile": null,
-								"buttonTextLoggedIn": null,
-								"contentTypeId": "button",
-								"contentfulId": "2Xm1govQCT0s92RFbI2I10",
-								"elementName": "Sign up",
-								"standardText": null,
-								"text": "Sign up",
-								"url": "https://dash.cloudflare.com/sign-up/workers-and-pages",
-								"loggedInUrl": null,
-								"buttonModal": null,
-								"openInNewTab": true,
-								"locale": "en-US"
-							},
-							"secondaryCta": {
-								"buttonAssetFile": null,
-								"buttonTextLoggedIn": null,
-								"contentTypeId": "button",
-								"contentfulId": "3odOSoLDolSM6fQcj0RARG",
-								"elementName": "Explore the developer docs",
-								"standardText": null,
-								"text": "Explore the developer docs",
-								"url": "https://developers.cloudflare.com/hyperdrive/",
-								"loggedInUrl": null,
-								"buttonModal": null,
-								"openInNewTab": true,
-								"locale": "en-US"
-							},
-							"tertiaryCta": null
-						},
-						"rightHalf": {
-							"contentTypeId": "elementHalfWidthHeroImage",
-							"contentfulId": "7k7qhC2x0rsiN5OD72h3MJ",
-							"entityTitle": "Hyperdrive - Right side",
-							"imageAsset": {
-								"id": "33db9625-f3bf-5b95-b96c-df19325e564f",
-								"altText": "Race Flag",
-								"title": "CWO Race Flag",
-								"activeAsset": "Contentful Asset",
-								"locale": "en-US",
-								"contentfulAsset": {
-									"file": {
-										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/4FIQXnsjMQq9uKuliYQeEI/87f8dd7247c8df1eb80d65cb82928c7a/Race_Ahead_with_Pages_Build_Caching_flag_1__2_.png"
-									},
-									"description": "Race Flag"
+						"contentfulId": "4BG4m1tDItAATPeMVWU7Yr",
+						"contentTypeId": "bladeHeroAnimation",
+						"title": " Cloudflare Durable Objects",
+						"titleSize": null,
+						"subtitle": "Build stateful serverless Worker applications",
+						"subtitleSize": null,
+						"copy": "Build interactive, real-time experiences into your applications without managing client coordination, strong consistent storage, and infrastructure.\n",
+						"buttonColor": "orange",
+						"buttonColor2": "orange",
+						"buttonText1": "Get started with Durable Objects",
+						"buttonText1LoggedIn": null,
+						"buttonUrl1": "https://developers.cloudflare.com/durable-objects/get-started/tutorial/",
+						"buttonUrl1LoggedIn": null,
+						"button1ExtraClass": null,
+						"buttonText2": "View documentation",
+						"buttonText2LoggedIn": null,
+						"buttonUrl2": "https://developers.cloudflare.com/durable-objects/what-are-durable-objects/",
+						"button2ExtraClass": null,
+						"bladeBorder": "none",
+						"htmlId": null,
+						"textColor": "black",
+						"includeVideo": false,
+						"streamVideoId": null,
+						"streamOptions": [
+							"controls",
+							"captions"
+						],
+						"streamCaptions": "en",
+						"popupStreamId": null,
+						"popupText": null,
+						"button1OpenInNewTab": true,
+						"button2OpenInNewTab": true,
+						"streamThumbnails": null,
+						"sectionPadding": null,
+						"streamPosterAssetFile": null,
+						"streamPoster": null,
+						"imageSize": "Medium",
+						"imagePosition": false,
+						"leftLinkUrl": null,
+						"leftLink": null,
+						"leftLinkLoggedIn": null,
+						"leftLinkOptions": "hide",
+						"backgroundColor": "white",
+						"textlayoutMode": null,
+						"backgroundAssetFile": null,
+						"imageLayout": null,
+						"image": null,
+						"imageAssetFile": {
+							"id": "649f0c78-83ad-533a-b361-0669ab76cab4",
+							"altText": null,
+							"title": "collaboration",
+							"activeAsset": "Contentful Asset",
+							"locale": "en-US",
+							"contentfulAsset": {
+								"file": {
+									"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/5WxOgxmuzimF1eDXUt8rGB/fa23a45aa8c709cc04dfa93076ef1cf8/BDES-5042_-_Collaboration-Team-Chat-Approval.svg"
 								},
-								"brandfolderAsset": null,
-								"brandfolderAssetMobile": null
-							}
-						},
-						"promotionalBanner": null,
-						"sectionPadding": "tile--no-bottom-padding",
-						"htmlId": null
+								"description": ""
+							},
+							"brandfolderAsset": null,
+							"brandfolderAssetMobile": null
+						}
 					},
 					{
-						"contentfulId": "5M7aujromOKQBMUHa5dmav",
+						"contentfulId": "2ZADSaIiSVtdwJqeBw0DAJ",
 						"contentTypeId": "bladeMultipleColumnsLayout",
 						"title": null,
-						"eyebrowHeading": "BENEFITS OF CLOUDFLARE HYPERDRIVE",
+						"eyebrowHeading": "BENEFITS OF CLOUDFLARE DURABLE OBJECTS",
 						"description": null,
 						"textLayout": "left",
 						"columnsLayout": "Three Columns",
 						"columnContent": [
 							{
 								"contentTypeId": "feature",
-								"contentfulId": "3qjT6zXHaoyPMq21rNO5hB",
-								"title": "No latency tax",
+								"contentfulId": "6nPwfR65LiojlJR1edFd70",
+								"title": "Build simple real-time applications",
 								"makeTitleLink": false,
 								"titleUrl": null,
 								"titleSize": null,
-								"description": "Hyperdrive eliminates redundant round-trips to your existing databases, significantly reducing latency and cutting up to hundreds of milliseconds from each query, ensuring faster data retrieval.",
+								"description": "Durable Objects is a combined compute and storage product. It helps you skip complex backend setups and build interactive experiences with ease. Integrate WebSockets directly with Durable Objects for bidirectional, low-latency communication. ",
 								"learnMoreUrl": null,
 								"learnMoreText": null,
 								"displayBorder": false,
@@ -152,16 +152,16 @@
 								"removeCardBorder": false,
 								"icon": null,
 								"iconAssetFile": {
-									"id": "b1b7275d-3503-5173-a651-9cfd70157c3c",
-									"altText": "Performance acceleration rocket ",
-									"title": "Performance acceleration rocket",
+									"id": "4ad77fba-3ae1-5ad0-a850-d814c56d9d9d",
+									"altText": "Reliability timer blue",
+									"title": "Reliability timer blue",
 									"activeAsset": "Contentful Asset",
 									"locale": "en-US",
 									"contentfulAsset": {
 										"file": {
-											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/1vvXmr7jmxFdYUgliFcXUh/d27e7eabc9727ba987b15d5e9ddad5e3/performance-acceleration-rocket.svg"
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/41aBOr3gowykuADnSlJuCp/897c938c653f6d736e3832afe4fcab59/reliability-timer.svg"
 										},
-										"description": "Performance acceleration rocket orange"
+										"description": "Stopwatch icon"
 									},
 									"brandfolderAsset": null,
 									"brandfolderAssetMobile": null
@@ -175,12 +175,12 @@
 							},
 							{
 								"contentTypeId": "feature",
-								"contentfulId": "31uvkOuAcbyxKqa7HpnW5y",
-								"title": "Intelligent caching for your read queries",
+								"contentfulId": "2OMhf7Kr8yNQt0U5T8skUc",
+								"title": "Scale globally, effortlessly",
 								"makeTitleLink": false,
 								"titleUrl": null,
 								"titleSize": null,
-								"description": "Hyperdrive intelligently caches the most popular queries executed against your database, helping further improve performance and reduce database load.",
+								"description": "You can reach users worldwide with Cloudflare's global network and automatic scaling to millions of instances without managing infrastructure.\n",
 								"learnMoreUrl": null,
 								"learnMoreText": null,
 								"displayBorder": false,
@@ -188,50 +188,14 @@
 								"removeCardBorder": false,
 								"icon": null,
 								"iconAssetFile": {
-									"id": "4fd99cc4-cde1-5f4e-8b21-4ec5e6a05307",
-									"altText": "Lightning bolt icon",
-									"title": null,
+									"id": "f4f2db49-e40f-579d-b8d0-78c078cc9c15",
+									"altText": "Durable objects blue",
+									"title": "Durable objects blue",
 									"activeAsset": "Contentful Asset",
 									"locale": "en-US",
 									"contentfulAsset": {
 										"file": {
-											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/1tpIHSbWVmGHYltiwNqNZ8/0113bb1cdb4e813771661ceed1295707/performance-acceleration-bolt.svg"
-										},
-										"description": "Lightning bolt icon"
-									},
-									"brandfolderAsset": null,
-									"brandfolderAssetMobile": null
-								},
-								"imageOverlaySuperheader": null,
-								"imageOverlayText": null,
-								"imageAssetFile": null,
-								"streamId": null,
-								"streamThumbnail": null,
-								"streamThumbnailAssetFile": null
-							},
-							{
-								"contentTypeId": "feature",
-								"contentfulId": "1K20GpAkzrTqc2r4oJQnjE",
-								"title": "Integration with databases and libraries",
-								"makeTitleLink": false,
-								"titleUrl": null,
-								"titleSize": null,
-								"description": " Hyperdrive supports PostgreSQL,  MySQL, and compatible databases. It can securely connect to private databases, and works with existing drivers and libraries, eliminating the need to move data or rewrite queries.",
-								"learnMoreUrl": null,
-								"learnMoreText": null,
-								"displayBorder": false,
-								"openLinkInNewTab": null,
-								"removeCardBorder": false,
-								"icon": null,
-								"iconAssetFile": {
-									"id": "111dcd6d-8214-592f-8fbb-1fb4e22472f1",
-									"altText": null,
-									"title": null,
-									"activeAsset": "Contentful Asset",
-									"locale": "en-US",
-									"contentfulAsset": {
-										"file": {
-											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/1f0iDYaTaOexv9owSIBMWR/cda620b331c9019608f4f837c2df5380/server-3_outline.png"
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/1kCZGnnEQKwkfLBcLYoxTB/a3226fadaee4f995d3351f65be75cba1/cloudflare-durable-objects.svg"
 										},
 										"description": ""
 									},
@@ -244,15 +208,51 @@
 								"streamId": null,
 								"streamThumbnail": null,
 								"streamThumbnailAssetFile": null
+							},
+							{
+								"contentTypeId": "feature",
+								"contentfulId": "42erdr1Z9u6yE0KcrQTgGn",
+								"title": "Coordinate clients easily",
+								"makeTitleLink": false,
+								"titleUrl": null,
+								"titleSize": null,
+								"description": "Manage multiple connected clients within a single Durable Object instance. You can build collaborative features and real-time interactions easily without complex coordination",
+								"learnMoreUrl": null,
+								"learnMoreText": null,
+								"displayBorder": false,
+								"openLinkInNewTab": null,
+								"removeCardBorder": false,
+								"icon": null,
+								"iconAssetFile": {
+									"id": "122122d8-cea5-5bcc-8451-b0810e564bf3",
+									"altText": "Optimization scale orange",
+									"title": "Optimization scale orange",
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/7vSmQwpXxBBSUXvax4mTTj/1e9733d09150035751acd28962d65831/optimization-scale.png"
+										},
+										"description": "icon scale aqua"
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								},
+								"imageOverlaySuperheader": null,
+								"imageOverlayText": null,
+								"imageAssetFile": null,
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
 							}
 						],
-						"sectionPadding": "tile--no-bottom-padding",
+						"sectionPadding": null,
 						"htmlId": null
 					},
 					{
-						"contentfulId": "781px4Vn4el04pNP47oXKM",
-						"title": "Turn your regional database into a globally-distributed database",
-						"copy": "Cloudflare Hyperdrive manages the number of global connections to your origin database, helping you intelligently cache and accelerate your query responses while reducing database load.\n\nIt does this by creating a pool of connections that can be reused as your applications execute queries. Incoming requests are automatically routed to the nearest connection pool — making your centralized databases feel like they're global.",
+						"contentfulId": "4NTXQCnZdfNYyv4M8tOBMR",
+						"title": "Build stateful applications with Cloudflare Workers without managing any infrastructure",
+						"copy": "Durable Objects provides globally unique instances each with its own fast, strongly consistent SQL storage - allowing you create stateful serverless applications.\n\nYou can build real-time, collaborative experiences that scale automatically with low-latency access across Cloudflare's network, all without managing any infrastructure.\n",
 						"toggleText": null,
 						"button": [],
 						"learnMoreUrl": null,
@@ -275,16 +275,16 @@
 						"streamPosterAssetFile": null,
 						"image": null,
 						"imageAssetFile": {
-							"id": "ae7391d6-8cac-5d5c-8cdc-b0008329c18e",
-							"altText": "Hyperdrive How it works",
-							"title": "Hyperdrive How it works",
+							"id": "3dafa86e-ec9e-5eea-a824-c5a12a921a93",
+							"altText": "Running Serverless Puppeteer with Workers and Durable Objects",
+							"title": "Running Serverless Puppeteer with Workers and Durable Objects",
 							"activeAsset": "Contentful Asset",
 							"locale": "en-US",
 							"contentfulAsset": {
 								"file": {
-									"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/7un0XCLiLOa6850zMRMRvj/13ab11ab95abf35f9b079b86cf204c76/BDES-6252_Diagram_Hyperdrive.png"
+									"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/v4nFNhahVjDoRe4tyKqMI/86038271e0409f62d55646dadab98939/Running_Serverless_Puppeteer_with_Workers_and_Durable_Objects.png"
 								},
-								"description": "Hyperdrive How it works"
+								"description": ""
 							},
 							"brandfolderAsset": null,
 							"brandfolderAssetMobile": null
@@ -294,52 +294,184 @@
 						"sectionTitle": "HOW IT WORKS",
 						"htmlId": null,
 						"titleSize": null,
-						"sectionPadding": null,
+						"sectionPadding": "tile--no-top-padding",
 						"backgroundColor": "white",
 						"bladeBorder": "none",
 						"imagePosition": true,
-						"imageSize": "medium",
-						"imageTextAlignment": "center",
+						"imageSize": null,
+						"imageTextAlignment": null,
 						"togglesTo": []
 					},
 					{
-						"contentfulId": "7LesRX0X4JtEQIBFtcdHlY",
-						"contentTypeId": "bladeLeadGeneration",
-						"title": "See how Cloudflare Hyperdrive performs",
-						"description": "See how Cloudflare Hyperdrive performs",
-						"variant": "inline",
+						"contentTypeId": "bladeEnablement",
+						"contentfulId": "6Dqa8zmYSJgEOQFGgxyNUJ",
+						"title": "Learn how developers are building applications with Cloudflare Durable Objects",
+						"titleSize": "medium",
+						"backgroundColor": "image-background",
+						"buttonText": null,
+						"buttonUrl": null,
+						"buttonText2": null,
+						"buttonModalId2": null,
+						"buttonUrl2": null,
+						"bladeSizeType": "small",
 						"htmlId": null,
-						"sectionPadding": "tile--no-top-padding",
-						"backgroundImage": {
-							"id": "5fb646a4-2af5-50d0-815c-108317d4b5b7",
-							"altText": "Cloudflare Orange Background",
-							"title": "Cloudflare Orange Background",
-							"activeAsset": "Contentful Asset",
-							"locale": "en-US",
-							"contentfulAsset": {
-								"file": {
-									"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/6wvLylL1UDvEfh7N5WBd32/b05450aa05d6c40af93bf04309e1723c/Lead-generation-background-generic.png"
-								},
-								"description": ""
-							},
-							"brandfolderAsset": null,
-							"brandfolderAssetMobile": null
-						},
-						"primaryCtaButton": {
+						"bladeBorder": "none",
+						"buttonOne": {
 							"buttonAssetFile": null,
 							"buttonTextLoggedIn": null,
 							"contentTypeId": "button",
-							"contentfulId": "3w17IXZA8M3r6CO43gbKaf",
-							"elementName": "Watch the demo",
+							"contentfulId": "7gzuSchww5q85RMLY7oxra",
+							"elementName": "Durable Objects - ADDITIONAL OFFER BLADE - CTA",
 							"standardText": null,
-							"text": "Watch the demo",
-							"url": "https://hyperdrive-demo.pages.dev/",
+							"text": "Learn more",
+							"url": "https://workers.cloudflare.com/built-with/collections/durable-objects/",
 							"loggedInUrl": null,
 							"buttonModal": null,
 							"openInNewTab": true,
 							"locale": "en-US"
 						},
-						"secondaryCtaButton": null
+						"buttonTwo": null,
+						"sectionPadding": null,
+						"eyebrow": null
+					},
+					{
+						"contentTypeId": "bladeRichTextColumnGroup",
+						"contentfulId": "fJbNl2pxLYDUjRkUw2gHM",
+						"htmlId": null,
+						"mainHeadline": null,
+						"backgroundColor": "white",
+						"bladeBorder": "none",
+						"sectionPadding": "tile--no-bottom-padding",
+						"columnLayout": "One Column Wide",
+						"columns": [
+							{
+								"contentTypeId": "elementRichText",
+								"contentfulId": "40TcqyZjmUQgx85ipPCGPd",
+								"title": null,
+								"htmlId": null,
+								"elementPosition": "relative",
+								"column": {
+									"nodeType": "document",
+									"content": [
+										{
+											"nodeType": "heading-4",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "What our customers are saying",
+													"marks": [],
+													"content": null
+												}
+											]
+										},
+										{
+											"nodeType": "blockquote",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "paragraph",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": null,
+													"marks": null,
+													"content": [
+														{
+															"nodeType": "text",
+															"data": {
+																"target": null,
+																"uri": null
+															},
+															"value": "\"",
+															"marks": [],
+															"content": null
+														},
+														{
+															"nodeType": "text",
+															"data": {
+																"target": null,
+																"uri": null
+															},
+															"value": "Without Cloudflare, hosting WebSocket servers might have required at least four additional people just for management. Using Durable Objects, we can provide serverless capabilities without a dedicated team for managing the environment.",
+															"marks": [],
+															"content": null
+														},
+														{
+															"nodeType": "text",
+															"data": {
+																"target": null,
+																"uri": null
+															},
+															"value": "\"",
+															"marks": [],
+															"content": null
+														}
+													]
+												}
+											]
+										},
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "",
+													"marks": [],
+													"content": null
+												}
+											]
+										},
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "Liveblocks",
+													"marks": [],
+													"content": null
+												}
+											]
+										}
+									]
+								}
+							}
+						]
 					},
 					{
 						"contentTypeId": "bladeFeaturedCompanyLogos",
@@ -531,22 +663,22 @@
 						"sectionPadding": null
 					},
 					{
-						"contentfulId": "3xKxau3LykXGK0o8n0ZLyr",
+						"contentfulId": "1S2Fe1AixFHHRl9YMV83QM",
 						"contentTypeId": "bladeMultipleColumnsLayout",
 						"title": null,
-						"eyebrowHeading": "Top Hyperdrive use cases",
-						"description": "Hyperdrive provides faster routes to your database, intelligently caches popular queries, and helps reduce total database load and costs.",
+						"eyebrowHeading": "Top Durable Objects  use cases",
+						"description": null,
 						"textLayout": "left",
 						"columnsLayout": "Three Columns",
 						"columnContent": [
 							{
 								"contentTypeId": "feature",
-								"contentfulId": "1XWlyJHVBMIZ0vrpc5BWLq",
-								"title": "Keep connection pools primed",
+								"contentfulId": "1jjG7q1gOZCDQNHJvwtXfZ",
+								"title": "Build AI agents",
 								"makeTitleLink": false,
 								"titleUrl": null,
 								"titleSize": null,
-								"description": "Create and manage a global pool of connections to your database, so requests are routed as efficiently and quickly as possible.",
+								"description": "You can give your [agents](https://www.cloudflare.com/learning/ai/what-is-agentic-ai/) memory to store data, the ability to coordinate tasks, and the smarts to make real-time decisions - like handling tasks, personalizing responses, or adapting to users. Durable Objects make it easy by keeping everything in sync without extra infrastructure to worry about.",
 								"learnMoreUrl": null,
 								"learnMoreText": null,
 								"displayBorder": false,
@@ -554,16 +686,16 @@
 								"removeCardBorder": false,
 								"icon": null,
 								"iconAssetFile": {
-									"id": "30718739-82ff-5bc7-9c5d-e161248e8da9",
-									"altText": "Performance routing ",
-									"title": "Performance routing ",
+									"id": "9b660364-cfd0-5852-adba-e297aef92068",
+									"altText": "Machine learning AI icon",
+									"title": "Machine learning AI icon",
 									"activeAsset": "Contentful Asset",
 									"locale": "en-US",
 									"contentfulAsset": {
 										"file": {
-											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/59OgNgdovYpxBuSbeO2TiK/f59c3c3b38689a5bc282dd9880ff977c/performance-routing.svg"
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/6kJSPf8riMxBHFGiz8LUMH/d0c2830664550ef539a06f12ff6dbca4/machine_learning_AI_icon.svg"
 										},
-										"description": "Smart routing icon"
+										"description": null
 									},
 									"brandfolderAsset": null,
 									"brandfolderAssetMobile": null
@@ -577,12 +709,12 @@
 							},
 							{
 								"contentTypeId": "feature",
-								"contentfulId": "6VFDhbD35RqzbiIti3GYIu",
-								"title": "Cache frequently-run queries on our global network",
+								"contentfulId": "xYtty0G2dBP1denIHgQip",
+								"title": "Build collaborative experiences",
 								"makeTitleLink": false,
 								"titleUrl": null,
 								"titleSize": null,
-								"description": "Automatically cache your most popular read queries on our [global network](https://www.cloudflare.com/network/), so your users get lightning-fast results from every location.",
+								"description": "By routing all requests for a shared object to a unique Durable Object that represents your project, this enables consistent updates and smooth coordination as your users interact with the same state.\n",
 								"learnMoreUrl": null,
 								"learnMoreText": null,
 								"displayBorder": false,
@@ -590,14 +722,14 @@
 								"removeCardBorder": false,
 								"icon": null,
 								"iconAssetFile": {
-									"id": "34b25a26-8efd-5aa4-bd47-facebc0adce4",
-									"altText": "Cache Reserve",
-									"title": "Cache Reserve",
+									"id": "d0d91ab6-8531-56fe-89d3-5fe996d9f7bf",
+									"altText": "Performance intelligent routing blue",
+									"title": "Performance intelligent routing blue",
 									"activeAsset": "Contentful Asset",
 									"locale": "en-US",
 									"contentfulAsset": {
 										"file": {
-											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/Snx91INj9zhp6XXrKWttd/782b0f54013c68f613fc779daf8cdb47/server-1.svg"
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/3yNR9Xrke2khvXTu9Rpdc3/e659935f9bc695024b5be6fb99900dd3/performance-intelligent-routing.svg"
 										},
 										"description": ""
 									},
@@ -613,12 +745,12 @@
 							},
 							{
 								"contentTypeId": "feature",
-								"contentfulId": "xSlkQpLGKf4S6PlVqgbQB",
-								"title": "Reduce connection overhead",
+								"contentfulId": "1tfUYpUvfKln0oyWLaZt3o",
+								"title": "Enable real-time interactions",
 								"makeTitleLink": false,
 								"titleUrl": null,
 								"titleSize": null,
-								"description": "Limit the total number of connections made to your databases, so you can easily minimize overall database load, latency, and associated resource costs.",
+								"description": "You can launch chat apps, multiplayer games or live notifications. Durable Objects helps with handling event orchestration and persistence so you don't have to.",
 								"learnMoreUrl": null,
 								"learnMoreText": null,
 								"displayBorder": false,
@@ -626,16 +758,16 @@
 								"removeCardBorder": false,
 								"icon": null,
 								"iconAssetFile": {
-									"id": "5a959b28-b768-5052-bf8d-c87c2f5dcfb3",
-									"altText": "Reliability load balancer blue",
-									"title": "Reliability load balancer blue",
+									"id": "76a11ba2-f049-5af8-803e-8d933358063b",
+									"altText": "Internet globe orange",
+									"title": "Internet globe orange",
 									"activeAsset": "Contentful Asset",
 									"locale": "en-US",
 									"contentfulAsset": {
 										"file": {
-											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/2PEDzEKI6wwUPTe3RiUqC4/f7af6ded9a2e49325d277e1fa1e442e4/reliability-load-balancer.svg"
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/1GW5rZk37RG9xe8GUKbH4Z/9a1912e4d0b69607a3a698779e8c2a45/internet-globe.svg"
 										},
-										"description": "Load balancer icon"
+										"description": ""
 									},
 									"brandfolderAsset": null,
 									"brandfolderAssetMobile": null
@@ -653,44 +785,12 @@
 					},
 					{
 						"contentTypeId": "bladeHtml",
-						"contentfulId": "1BcuajdMokHxBoJTHSj1IC",
-						"htmlContent": "<div style=\"text-align: center; cursor:pointer; margin-bottom:64px; margin-top: -60px;\">\n    <a href=\"https://developers.cloudflare.com/hyperdrive/examples/\" target=\"_blank\" class=\"inline-link-style\">Explore more use cases<svg width=\"4\" height=\"10\"\n            viewBox=\"0 0 6 10\" fill=\"currentColor\" aria-label=\"chevron\" xmlns=\"https://developers.cloudflare.com/hyperdrive/examples/\"\n            class=\"dib v-mid ml1\">\n            <path\n                d=\"M1.00003 -4.37127e-08L-3.93401e-07 1.00003L4 5L0.000271373 9.00025L1.00003 10L6.00003 5L1.00003 -4.37127e-08Z\">\n            </path>\n        </svg>  </a>\n</div>",
+						"contentfulId": "7whTY0LVGGlU3dU89mW5Lp",
+						"htmlContent": "<div style=\"text-align: center; cursor:pointer; margin-bottom:64px; margin-top: -60px;\">\n    <a href=\"https://workers.cloudflare.com/built-with/collections/durable-objects/ \" target=\"_blank\" class=\"inline-link-style\">Explore more use cases<svg width=\"6\" height=\"10\"\n            viewBox=\"0 0 6 10\" fill=\"currentColor\" aria-label=\"chevron\" xmlns=\"https://workers.cloudflare.com/built-with/collections/durable-objects/ \"\n            class=\"dib v-mid ml1\">\n            <path\n                d=\"M1.00003 -4.37127e-08L-3.93401e-07 1.00003L4 5L0.000271373 9.00025L1.00003 10L6.00003 5L1.00003 -4.37127e-08Z\">\n            </path>\n        </svg>  </a>\n</div>",
 						"htmlId": null
 					},
 					{
-						"contentTypeId": "bladeEnablement",
-						"contentfulId": "jKCChbG0EajCNBnJlc0T0",
-						"title": "Trusted by millions of Internet properties",
-						"titleSize": "medium",
-						"backgroundColor": "image-background",
-						"buttonText": null,
-						"buttonUrl": null,
-						"buttonText2": null,
-						"buttonModalId2": null,
-						"buttonUrl2": null,
-						"bladeSizeType": "small",
-						"htmlId": null,
-						"bladeBorder": "none",
-						"buttonOne": {
-							"buttonAssetFile": null,
-							"buttonTextLoggedIn": null,
-							"contentTypeId": "button",
-							"contentfulId": "3xIzhQVegUXrYb5IVzKzQR",
-							"elementName": "See case studies (main)",
-							"standardText": null,
-							"text": "See case studies",
-							"url": "/case-studies/",
-							"loggedInUrl": null,
-							"buttonModal": null,
-							"openInNewTab": false,
-							"locale": "en-US"
-						},
-						"buttonTwo": null,
-						"sectionPadding": null,
-						"eyebrow": null
-					},
-					{
-						"contentfulId": "4MRbxwc09EK3QaS1qroVNn",
+						"contentfulId": "5tlm1U70Ci512zEEYsAoYZ",
 						"backgroundColor": "white",
 						"contentTypeId": "bladeFourFeatures",
 						"htmlId": null,
@@ -699,21 +799,21 @@
 						"subtitle": null,
 						"bladeStyle": "Feature Blocks - 3 columns",
 						"bladeBorder": "none",
-						"sectionPadding": null,
+						"sectionPadding": "tile--no-top-padding",
 						"carouselSlidesToShow": null,
 						"carouselSlidesToScroll": null,
 						"locale": "en-US",
 						"features": [
 							{
 								"contentTypeId": "feature",
-								"contentfulId": "4f7mvSFziqfUrGTUGUzWOV",
-								"title": "Speed up queries with Hyperdrive",
+								"contentfulId": "3g4xOJwUBff3kBPcrrbB8e",
+								"title": "How Durable Objects works",
 								"makeTitleLink": false,
 								"titleUrl": null,
 								"titleSize": null,
-								"description": "See how Hyperdrive uses the Cloudflare network to speed up queries — whether they're in a legacy cloud provider or with your favorite serverless database provider.",
-								"learnMoreUrl": "https://blog.cloudflare.com/hyperdrive-making-regional-databases-feel-distributed",
-								"learnMoreText": "Read the blog post",
+								"description": "Durable Objects enables you to build collaborative applications and tools — without requiring you to build your own serialization and coordination primitives.",
+								"learnMoreUrl": "https://blog.cloudflare.com/sqlite-in-durable-objects/",
+								"learnMoreText": "Read the blog post ",
 								"displayBorder": false,
 								"openLinkInNewTab": true,
 								"removeCardBorder": false,
@@ -722,9 +822,9 @@
 								"imageOverlaySuperheader": null,
 								"imageOverlayText": null,
 								"imageAssetFile": {
-									"id": "bb0c6be9-0531-5573-923c-f00ca093e47e",
-									"altText": null,
-									"title": null,
+									"id": "2ea2b03b-b35f-525f-8903-0fa37d95a7e3",
+									"altText": "Resources card - Thin top orange line  - image",
+									"title": "Resources card - Thin top orange line  - image",
 									"activeAsset": "Contentful Asset",
 									"locale": "en-US",
 									"contentfulAsset": {
@@ -742,14 +842,14 @@
 							},
 							{
 								"contentTypeId": "feature",
-								"contentfulId": "58DX0gZk49n12QVGZIt4Oc",
-								"title": "Integrate Hyperdrive with your existing infrastructure",
+								"contentfulId": "5afpCfYy9E7A1TaOAzPoyK",
+								"title": "Making Durable Objects easy, fast, and accurate",
 								"makeTitleLink": false,
 								"titleUrl": null,
 								"titleSize": null,
-								"description": "Learn how to easily configure and deploy Hyperdrive within your applications and architecture.",
-								"learnMoreUrl": "https://developers.cloudflare.com/hyperdrive/demos/",
-								"learnMoreText": "Explore the developer docs",
+								"description": "We improved the speed and accuracy of Durable Objects to help developers write their code in an intuitive way, with optimal results.",
+								"learnMoreUrl": "https://blog.cloudflare.com/durable-objects-easy-fast-correct-choose-three/",
+								"learnMoreText": "Read the blog post",
 								"displayBorder": false,
 								"openLinkInNewTab": true,
 								"removeCardBorder": false,
@@ -758,9 +858,9 @@
 								"imageOverlaySuperheader": null,
 								"imageOverlayText": null,
 								"imageAssetFile": {
-									"id": "bb0c6be9-0531-5573-923c-f00ca093e47e",
-									"altText": null,
-									"title": null,
+									"id": "2ea2b03b-b35f-525f-8903-0fa37d95a7e3",
+									"altText": "Resources card - Thin top orange line  - image",
+									"title": "Resources card - Thin top orange line  - image",
 									"activeAsset": "Contentful Asset",
 									"locale": "en-US",
 									"contentfulAsset": {
@@ -778,14 +878,14 @@
 							},
 							{
 								"contentTypeId": "feature",
-								"contentfulId": "73mGWAXzivnFPcSOYHf5Vq",
-								"title": "Support Postgres named prepared statements with Hyperdrive",
+								"contentfulId": "1qcIDW6SHKKfw6rEDKwb1j",
+								"title": "What are Durable Objects?",
 								"makeTitleLink": false,
 								"titleUrl": null,
 								"titleSize": null,
-								"description": "Named prepared statements allow Postgres to cache query execution plans, providing potentially substantial performance improvements.",
-								"learnMoreUrl": "https://blog.cloudflare.com/postgres-named-prepared-statements-supported-hyperdrive",
-								"learnMoreText": "Read the blog post",
+								"description": "Learn how to trigger a Durable Object and perform compute at customizable intervals.",
+								"learnMoreUrl": "https://developers.cloudflare.com/durable-objects/what-are-durable-objects/",
+								"learnMoreText": "View documentation",
 								"displayBorder": false,
 								"openLinkInNewTab": true,
 								"removeCardBorder": false,
@@ -794,9 +894,9 @@
 								"imageOverlaySuperheader": null,
 								"imageOverlayText": null,
 								"imageAssetFile": {
-									"id": "bb0c6be9-0531-5573-923c-f00ca093e47e",
-									"altText": null,
-									"title": null,
+									"id": "2ea2b03b-b35f-525f-8903-0fa37d95a7e3",
+									"altText": "Resources card - Thin top orange line  - image",
+									"title": "Resources card - Thin top orange line  - image",
 									"activeAsset": "Contentful Asset",
 									"locale": "en-US",
 									"contentfulAsset": {
@@ -816,8 +916,8 @@
 					},
 					{
 						"contentTypeId": "bladeEnablement",
-						"contentfulId": "1F1StrP5H9l5vyTAH2taKj",
-						"title": "Accelerate access to your databases with Hyperdrive",
+						"contentfulId": "36SF81SzYqphLFZ4P5dECg",
+						"title": "Trusted by millions of internet properties",
 						"titleSize": "medium",
 						"backgroundColor": "image-background",
 						"buttonText": null,
@@ -832,14 +932,14 @@
 							"buttonAssetFile": null,
 							"buttonTextLoggedIn": null,
 							"contentTypeId": "button",
-							"contentfulId": "34gITgPCu19hVAj8oAI9kc",
-							"elementName": "Get started - Hyperdrive",
+							"contentfulId": "2pFFX647IWiAsFQlSJJ9LX",
+							"elementName": "Learn More - Dev platform  durable-objects - Use cases",
 							"standardText": null,
-							"text": "Get started",
-							"url": "https://developers.cloudflare.com/hyperdrive/get-started/",
+							"text": "Learn more",
+							"url": "/case-studies/",
 							"loggedInUrl": null,
 							"buttonModal": null,
-							"openInNewTab": true,
+							"openInNewTab": false,
 							"locale": "en-US"
 						},
 						"buttonTwo": null,
@@ -860,8 +960,8 @@
 		"pageContext": {
 			"currentLocale": "en-US",
 			"locale": "en-US",
-			"pathname": "/developer-platform/products/hyperdrive/",
-			"contentfulId": "4i1usPVo6625lvcdhccDpy",
+			"pathname": "/developer-platform/products/durable-objects/",
+			"contentfulId": "0c7G74M4ikVXeYrwm6cQh",
 			"allowedHrefLangs": [
 				"en-US",
 				"zh-CN",
