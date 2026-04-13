@@ -5,45 +5,35 @@
 		<p>At Cloudflare, we’re not looking for people who wait for a polished roadmap; we’re looking for the builders who see the cracks in the Internet that everyone else has simply learned to live with. We value candidates who have the instinct to spot a "normalized" problem and the AI-native curiosity to create a solution using the latest tools. Our culture is built on iteration, leveraging AI to ship faster today to make it better tomorrow, while ensuring that every improvement, no matter how small, is shared across the team to lift everyone up. If you’re the type of person who values curiosity over bureaucracy, and that AI is a partner in solving tough problems to keep the Internet moving forward, you’ll fit right in.</p>
 	</div>
 </div>
-<p><strong>Available Locations: Lisbon, Portugal&nbsp;</strong></p>
-<p><strong>About the Department</strong></p>
-<p>At Cloudflare, we have our eyes set on an ambitious goal: to help build a better Internet. Today the company runs one of the world’s largest networks that powers approximately 25 million Internet properties, for customers ranging from individual bloggers to SMBs to Fortune 500 companies. Cloudflare protects and accelerates any Internet application online without adding hardware, installing software, or changing a line of code. Internet properties powered by Cloudflare all have web traffic routed through its intelligent global network, which gets smarter with every request. As a result, they see significant improvement in performance and a decrease in spam and other attacks. Cloudflare was named to Entrepreneur Magazine’s Top Company Cultures list and ranked among the World’s Most Innovative Companies by Fast Company.&nbsp;</p>
-<p><strong>About the Team</strong></p>
-<p>Domain management is the foundation for any online presence and Cloudflare Registrar is our answer to a simple and straightforward experience.&nbsp; The Registrar product manages the full lifecycle of the domains, including searching/registering for new domains and transferring/renewing existing ones.&nbsp; Onboarding domains on Cloudflare is the gateway to the vast array of Cloudflare services.</p>
-<p><strong>What you'll do</strong></p>
-<p>We are looking for a talented systems engineer to be part of our engineering team. Come be part of the team and work with a group of passionate, talented engineers that will be creating innovative products. The amount of requests being processed is massive and we utilize all the latest technology to ensure its scalability and availability.&nbsp;</p>
-<p><strong>Requirements:</strong></p>
+<p><strong>Available location:&nbsp;</strong>Singapore</p>
+<p><strong>About the Role</strong></p>
+<p>As a Business Analyst Intern on our Marketing team, you will play a crucial role in transforming data into actionable insights that drive strategic decision-making. You will dive into our Go-to-Market (GTM) data, identifying key trends, opportunities for improvement, and potential challenges. Your work will involve building compelling data visualizations and dashboards (using tools like Tableau or PowerBI) to help leadership understand performance across various regions and initiatives. This internship offers a unique opportunity to apply analytical skills in a fast-paced, high-impact environment, directly contributing to Cloudflare's mission and growth.</p>
+<p><strong>Responsibilities</strong></p>
 <ul>
-	<li>5+ years of experience as a software engineer with a focus on designing, building and scaling data infrastructure</li>
-	<li>Experience with product teams to understand goals and develop robust and scalable solutions that align with the customer need</li>
-	<li>Strong communication skills, especially around articulating technical concepts for technical and non-technical audiences</li>
-	<li>Experience working on, and deploying, large scale systems in Typescript,&nbsp; Go, Ruby/Rails, Java, or other high performance languages</li>
-	<li>Experience (and love) for debugging to ensure the system works in all cases</li>
-	<li>Strong systems level programming skills</li>
-	<li>Excited by the idea of optimizing complex solutions to general problems that all websites face</li>
-	<li>Experience with a continuous integration workflow and using source control (we use git)&nbsp;</li>
+	<li>Analyze Cloudflare's Go-to-Market (GTM) data to identify performance trends, such as regional variations or campaign effectiveness.</li>
+	<li>Develop and maintain interactive data visualizations and dashboards using tools like Tableau or PowerBI to present findings clearly and concisely to leadership.</li>
+	<li>AI Workflow Innovation: Partner with the team to develop and refine custom Gemini "Gems" (specialized AI agents) designed to automate data cleaning, routine reporting, and regional content analysis</li>
+	<li>Collaborate with team members to understand business questions and translate them into analytical problems.</li>
+	<li>Support data-driven decision-making by providing timely and accurate insights into marketing performance and business operations.</li>
+	<li>Contribute to the continuous improvement of data collection, analysis, and reporting processes.</li>
 </ul>
-<p><strong>Responsibilities:&nbsp;</strong></p>
+<p><strong>Skills &amp; Qualifications</strong></p>
 <ul>
-	<li>Designing, building, running and scaling tools and services that support the full spectrum of domain management.</li>
-	<li>Analyzing and communicating complex technical requirements and concepts, identifying the highest priority areas, and carving a path to delivery</li>
-	<li>Improving system design and architecture to ensure stability and performance of the internal and customer-facing compliance concerns</li>
-	<li>Working closely with Cloudflare's Trust and Safety team to help make the internet a better place</li>
-	<li>Ongoing monitoring and maintenance of production services, including participation in on-call rotations</li>
+	<li>Currently pursuing a Bachelor's or Master's degree in Economics, Finance, Data Analytics, Business Administration, or a related quantitative field.</li>
+	<li>Demonstrated proficiency in Microsoft Excel, including advanced functions such as Pivot Tables and VLOOKUPs.</li>
+	<li>Prompt Engineering &amp; AI Orchestration: Familiarity with LLMs - specifically Gemini - with a demonstrated ability to build custom "Gems" or structured prompts that automate data synthesis and content generation</li>
+	<li>Strong analytical and problem-solving skills with an ability to interpret complex datasets.</li>
+	<li>Excellent communication skills, both written and verbal, with the ability to articulate findings to both technical and non-technical audiences.</li>
+	<li>Curiosity and a proactive approach to learning new tools and methodologies.</li>
+	<li>Available for a full-time 20-week internship, working from our Singapore office 3-5 days a week from July - December.</li>
 </ul>
 <p><strong>Bonus Points</strong></p>
 <ul>
-	<li>Experience with Cloudflare Developer Platform</li>
-	<li>Experience with Ruby or Go&nbsp; (or a strong desire to learn)</li>
-	<li>Experience working with OpenAPI</li>
-	<li>Experience with AI coding tools</li>
-	<li>Experience with Kubernetes</li>
-	<li>Experience with Kibana, Grafana, and/or Prometheus</li>
-	<li>Experience with relational databases (e.g. Postgres)</li>
-	<li>Experience with Gitlab and Gitlab CI</li>
-	<li>Experience with DNS (and DNSSEC)</li>
-	<li>Experience in the registry/registrar industry</li>
+	<li>Familiarity with SQL or Python for data extraction and manipulation.</li>
+	<li>Experience with data visualization tools such as Tableau or PowerBI.</li>
+	<li>Prior internship experience in a data analysis or business intelligence role.</li>
 </ul>
+<p>You can check out our <a href="https://blog.cloudflare.com/tag/internship-experience/">internship blogs</a> to learn more about our program and hear directly from our past interns.</p>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
 	<p><span style="font-weight: 400;">We’re not just a highly ambitious, large-scale technology company. We’re a highly ambitious, large-scale technology company with a soul. Fundamental to our mission to help build a better Internet is protecting the free and open Internet.</span></p>
