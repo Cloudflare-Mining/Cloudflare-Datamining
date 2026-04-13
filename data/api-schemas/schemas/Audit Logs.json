@@ -1809,7 +1809,7 @@
 				"in": "query",
 				"name": "actor_id",
 				"schema": {
-					"description": "Filters by the actor ID. This can be either the Organization ID or User ID.",
+					"description": "Filters by the actor's user ID.",
 					"items": {
 						"example": "1d20c3afe174f18b642710cec6298a9d",
 						"type": "string"
@@ -2049,7 +2049,7 @@
 				"in": "query",
 				"name": "actor_id.not",
 				"schema": {
-					"description": "Filters out audit logs by the actor ID. This can be either the Organization ID or User ID.",
+					"description": "Filters out audit logs by the actor's user ID.",
 					"items": {
 						"example": "1d20c3afe174f18b642710cec6298a9d",
 						"type": "string"
