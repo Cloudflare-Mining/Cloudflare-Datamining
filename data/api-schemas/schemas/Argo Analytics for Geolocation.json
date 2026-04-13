@@ -1,5 +1,6 @@
 {
 	"GET /zones/{zone_id}/analytics/latency/colos": {
+		"description": "Retrieves Argo Smart Routing analytics broken down by geographic points of presence (PoPs). Shows latency improvements and routing efficiency per location.",
 		"operationId": "argo-analytics-for-geolocation-argo-analytics-for-a-zone-at-different-po-ps",
 		"parameters": [
 			{

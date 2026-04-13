@@ -1,5 +1,6 @@
 {
 	"GET /zones/{zone_id}/analytics/latency": {
+		"description": "Retrieves aggregate Argo Smart Routing analytics for a zone, including latency improvements, bandwidth savings, and routing statistics.",
 		"operationId": "argo-analytics-for-zone-argo-analytics-for-a-zone",
 		"parameters": [
 			{
