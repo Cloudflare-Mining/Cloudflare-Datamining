@@ -348,6 +348,9 @@
 			"variant-click-through"
 		]
 	},
+	"billing-crypto-pay-gate": {
+		"enabled": false
+	},
 	"billing-eligibility-check-endpoint-ff-tryout": {
 		"enabled": true
 	},
@@ -1660,6 +1663,13 @@
 	},
 	"prg-acm-mult-sku-checkout": {
 		"enabled": true
+	},
+	"prg-acm-value-props-video": {
+		"enabled": false,
+		"branches": [
+			"baseline",
+			"experiment"
+		]
 	},
 	"prg-add-site-nav-experiment": {
 		"enabled": false,
