@@ -56,7 +56,10 @@ async function run() {
 		...await search('maintainer:dash_service_account', {
 			limit: 1000,
 		}),
-		...await search('wrangler maintainer:threepointone ', {
+		...await search('wrangler maintainer:threepointone', {
+			limit: 1,
+		}),
+		...await search('cf maintainer:mikenomitch', {
 			limit: 1,
 		}),
 	];
