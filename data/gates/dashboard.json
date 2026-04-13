@@ -74,6 +74,9 @@
 	"ai-audit": {
 		"enabled": true
 	},
+	"ai-audit-directives": {
+		"enabled": true
+	},
 	"ai-audit-robots-txt": {
 		"enabled": true
 	},
@@ -461,6 +464,9 @@
 	},
 	"cache-response-rules": {
 		"enabled": true
+	},
+	"cache-safe-vary": {
+		"enabled": false
 	},
 	"cachew-enablement": {
 		"enabled": true
@@ -1547,7 +1553,7 @@
 		"enabled": true
 	},
 	"moq-load-tester-ui": {
-		"enabled": false
+		"enabled": true
 	},
 	"moq-relay-nav": {
 		"enabled": true
