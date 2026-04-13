@@ -5,44 +5,54 @@
 		<p>At Cloudflare, we’re not looking for people who wait for a polished roadmap; we’re looking for the builders who see the cracks in the Internet that everyone else has simply learned to live with. We value candidates who have the instinct to spot a "normalized" problem and the AI-native curiosity to create a solution using the latest tools. Our culture is built on iteration, leveraging AI to ship faster today to make it better tomorrow, while ensuring that every improvement, no matter how small, is shared across the team to lift everyone up. If you’re the type of person who values curiosity over bureaucracy, and that AI is a partner in solving tough problems to keep the Internet moving forward, you’ll fit right in.</p>
 	</div>
 </div>
-<p><strong>Available Locations: </strong>Hybrid - Austin, TX</p>
-<p><strong>Schedule: </strong>This is a full-time, Monday–Friday role requiring a firm start time of 7:00 AM Central Time to align with our global operations. This role requires you to be able to come into our Austin/Mexico City office twice a week.</p>
-<h4>About the Department</h4>
-<p>The Customer Support Team is dedicated to resolving complex issues and providing technical assistance across various channels, including phone, email, chat, and social media. Our team passionately advocates for all customers, from individual Wordpress bloggers to Fortune 500 customers handling millions of clients daily. By actively listening to real-world pain points and use cases, we serve as the vital link between our customers and the rest of Cloudflare and play a key role in building a better Internet every day!</p>
-<h4>What You’ll do</h4>
-<p>As a Technical Support Engineer at Cloudflare, you’ll work directly with customers and cross-functional teams to tackle a variety of technical challenges. You’ll gain hands-on experience with our products, learn the inner workings of Cloudflare’s offerings, and deepen your understanding of internet technologies. This role also provides opportunities to develop valuable technical and professional skills, as well as job shadowing experiences to explore different roles within the company. Join us to enhance your skill set while making a real impact!</p>
-<h4>Responsibilities&nbsp;</h4>
+<p><strong>Available Locations: Austin Texas&nbsp;</strong></p>
+<h2><strong>About the department</strong></h2>
+<p>Cloudflare's Enterprise Engineering Team builds and runs software and systems that make Cloudflare run more efficiently and enable our customers and partners to do business with us. Enterprise Engineering is part of the Engineering organization, and we seek talented individuals who take great pride in both the technical and business contribution of their work.</p>
+<p>As an intern on our team, you will have the opportunity to gain hands-on experience with enterprise-scale systems while learning from experienced professionals. You will contribute to real projects that impact our business and customers, working closely with team members to understand and support quote-to-cash systems, data analysis, and process improvement initiatives.</p>
+<h2><strong>What you'll do</strong></h2>
 <ul>
-	<li>Fulfill support requests by communicating with Cloudflare customers via chat, email, and phone</li>
-	<li>Collaborate with senior engineers to analyze and troubleshoot customer issues</li>
-	<li>Track support requests using our ticketing system</li>
-	<li>Participate in team meetings to discuss and share feedback</li>
-	<li>Help create and update technical documentation and runbooks&nbsp;</li>
-	<li>Provide feedback on our product and potential improvements based on customer interactions</li>
-	<li>Support the team in testing new releases and reporting bugs</li>
-	<li>Perform other duties/projects as assigned&nbsp;</li>
-</ul>
-<h4>Required Skills and Experience</h4>
-<ul>
-	<li>3-5 years of experience working in a technical Customer Support role, preferably as part of a team working with large enterprise customers</li>
-	<li>Self-driven and comfortable learning new technologies and systems on an ongoing basis</li>
-	<li>Excellent written and verbal communication skills</li>
-	<li>Strong understanding of how the Internet works at OSI Model layers 3, 4, and 7</li>
-	<li>Strong understanding of DNS, SSL/TLS, and HTTP(S) protocols</li>
-	<li>General understanding of HTTP reverse proxying, caching, and load balancing</li>
-	<li>Experience using Linux and associated command line tools, including curl, dig, traceroute, openssl, git, etc.</li>
-	<li>Experience writing scripts in Bash, Python, JavaScript, or other scripting languages</li>
-	<li>Experience installing and configuring web servers like Apache, Nginx, and/or IIS</li>
-</ul>
-<h4>Preferred Skills and Experience</h4>
-<ul>
-	<li>Prior experience with the Cloudflare platform, especially for personal projects/websites</li>
-	<li>Experience troubleshooting network connectivity issues, BGP routing, and GRE tunnels</li>
-	<li>Experience configuring network or application firewalls</li>
-	<li>Degrees or certifications in Computer Science, Information Technology, and related fields</li>
-	<li>Fluency in Mandarin, Spanish, and/or Portuguese</li>
+	<li><strong>Learn and support</strong> quote-to-cash systems and integrations, including systems that support ordering, subscriptions, billing, invoices, and payments</li>
+	<li><strong>Assist with data analysis</strong> by writing SQL queries to extract insights and support business reporting needs</li>
+	<li><strong>Participate in documentation</strong> efforts, helping maintain functional and technical specifications</li>
+	<li><strong>Shadow team members</strong> in responding to application alerts and production issues to understand operational processes</li>
+	<li><strong>Contribute to QA activities</strong> by helping write and execute test cases for project and product releases</li>
+	<li><strong>Support process improvement</strong> initiatives by documenting current workflows and identifying potential automation opportunities</li>
+	<li><strong>Collaborate cross-functionally</strong> with finance, product, and engineering teams on assigned projects</li>
+	<li><strong>Leverage AI tools and technologies</strong> to enhance productivity, automate repetitive tasks, and assist in data analysis</li>
 </ul>
 <p>&nbsp;</p>
+<h2><strong>Examples of desirable skills, knowledge and experience</strong></h2>
+<ul>
+	<li>Currently pursuing a Bachelor's or Master's degree in Computer Science, Information Systems, Business Administration, Finance, or a related field</li>
+	<li><strong>Basic proficiency in SQL</strong> - ability to write SELECT statements, use JOINs, GROUP BY, and aggregate functions</li>
+	<li><strong>Foundational understanding of AI/ML concepts</strong> - familiarity with AI assistants, prompt engineering, or AI-powered tools (e.g., ChatGPT, GitHub Copilot, or similar)</li>
+	<li><strong>Eagerness to leverage AI</strong> for data analysis, automation, and problem-solving</li>
+	<li>Strong analytical and problem-solving skills with attention to detail</li>
+	<li>Excellent communication skills - written and verbal</li>
+	<li>Ability to work collaboratively in a team environment</li>
+	<li>Self-motivated with strong organizational skills and ability to manage multiple tasks</li>
+	<li>Genuine curiosity and eagerness to learn new technologies, tools, and business processes</li>
+	<li>Basic understanding of business processes (coursework in accounting, finance, or business systems is a plus)</li>
+</ul>
+<h2><strong>Bonus points if you have:</strong></h2>
+<ul>
+	<li>Exposure to any billing or subscription systems (even through coursework or personal projects)</li>
+	<li>Experience with data visualization tools or spreadsheet analysis</li>
+	<li>Familiarity with ERP concepts or enterprise software</li>
+	<li>Personal projects or coursework involving database design or data analysis</li>
+	<li>Experience building or fine-tuning AI/ML models, working with APIs, or using AI for automation</li>
+	<li>Knowledge of Python or other scripting languages for data manipulation</li>
+	<li>Previous internship experience in a technology or business environment</li>
+</ul>
+<h2><strong>What you'll learn</strong></h2>
+<ul>
+	<li>How enterprise-scale billing and subscription systems operate</li>
+	<li>Real-world application of SQL and data analysis in a business context</li>
+	<li>How to apply AI tools effectively in an enterprise environment</li>
+	<li>Cross-functional collaboration between engineering, product, and finance teams</li>
+	<li>Agile software development methodologies and practices</li>
+	<li>How to troubleshoot and support production systems</li>
+</ul>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
 	<p><span style="font-weight: 400;">We’re not just a highly ambitious, large-scale technology company. We’re a highly ambitious, large-scale technology company with a soul. Fundamental to our mission to help build a better Internet is protecting the free and open Internet.</span></p>

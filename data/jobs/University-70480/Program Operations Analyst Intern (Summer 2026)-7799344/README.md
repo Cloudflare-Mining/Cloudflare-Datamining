@@ -5,70 +5,43 @@
 		<p>At Cloudflare, we’re not looking for people who wait for a polished roadmap; we’re looking for the builders who see the cracks in the Internet that everyone else has simply learned to live with. We value candidates who have the instinct to spot a "normalized" problem and the AI-native curiosity to create a solution using the latest tools. Our culture is built on iteration, leveraging AI to ship faster today to make it better tomorrow, while ensuring that every improvement, no matter how small, is shared across the team to lift everyone up. If you’re the type of person who values curiosity over bureaucracy, and that AI is a partner in solving tough problems to keep the Internet moving forward, you’ll fit right in.</p>
 	</div>
 </div>
-<p><strong>Available Locations: </strong>Austin</p>
-<h4><strong>About the Department</strong></h4>
-<p>The Cloudflare Technical Support Team solves complicated problems and answers technical questions via phone, email, chat and social media. Whether it is a Wordpress blogger using our services for free or a global Enterprise business with petabytes of web traffic, we are always eager to assist. We are the eyes and ears of Cloudflare, acting as the real-time voice of the customer to help communicate their needs and real-world use cases back to the rest of the company for better service and future product development.</p>
-<h4><strong>What You’ll Do</strong></h4>
-<p>Are you passionate about operational excellence and developing high-performing technical teams? Do you thrive in a fast-paced environment where you can balance hands-on technical depth with leadership impact? As a Technical Support Manager at Cloudflare, you will lead a team of talented engineers to deliver exceptional support experiences, meet and exceed KPIs, and ensure Cloudflare’s customers receive the highest level of service. You will:</p>
-<p>Drive Operational Excellence</p>
+<p><strong>Available location(s): San Francisco, CA</strong></p>
+<p><strong>About the Role:&nbsp;</strong></p>
+<p>We are seeking a highly motivated and detail-oriented undergraduate student to join the Employee Briefing Center (EBC) team as a Program Operations Analyst Intern. This role is crucial in enhancing the efficiency, scalability, and reporting capabilities of the EBC program. The ideal candidate will have a foundational understanding of business processes, a keen interest in automation, and a desire to improve operational excellence using technology.</p>
+<p><strong>Key Responsibilities</strong></p>
+<p>The intern will focus on two core areas: <strong>Operations Projects</strong> and <strong>EBC Tooling / Reporting.</strong></p>
+<h4><strong>1. Operations &amp; Process Improvement (Approx. 60% of Time)</strong></h4>
 <ul>
-	<li>Own and monitor daily operations, ensuring adherence to SLAs, KPIs, and performance metrics (response time, resolution time, customer satisfaction, backlog health, etc.).</li>
-	<li>Analyze support trends and data to identify process gaps, improve efficiency, and implement scalable solutions.</li>
-	<li>Ensure consistent global handover quality and follow-the-sun support across regions.</li>
-	<li>Maintain appropriate staffing levels through workforce management and shift coverage.</li>
+	<li><strong>On-Site Logistics Lead</strong>: Coordinate end-to-end event logistics within our SF headquarters, partnering with Facilities, IT and Security teams to manage high-volume scheduling and resource allocation for the EBC. Drive operational excellence by maintaining a meticulously organized briefing center, ensuring all physical spaces and materials meet brand standards for global C-suite executives and key stakeholders.</li>
+	<li><strong>Identify and Implement Automation Opportunities:</strong> Work closely with the EBC team to map existing manual processes (e.g., brief request intake, feedback collection, resource allocation) and identify opportunities for automation using existing tools or Cloudflare solutions (e.g., Workers, AI agents, workflow automation features, etc.).</li>
+	<li><strong>Develop and Test Solutions:</strong> Design, build, and test basic automated workflows to streamline EBC operations, focusing on workload reduction, accuracy and user experience.</li>
+	<li><strong>Process Documentation:</strong> Create clear, concise documentation and training materials for new automated processes and updated standard operating procedures (SOPs).</li>
 </ul>
-<p>Lead and Develop a High-Performing Team</p>
+<h4><strong>2. Tool Improvement and Reporting (Approx. 40% of Time)</strong></h4>
 <ul>
-	<li>Manage, coach, and mentor Support Engineers to achieve their potential and elevate technical excellence.</li>
-	<li>Conduct regular 1:1s, performance reviews, and skill assessments; build individual development and training plans.</li>
-	<li>Foster a culture of curiosity, accountability, and customer-first thinking.</li>
-	<li>Lead by example in managing difficult situations, guiding technical investigations, and resolving escalations.</li>
+	<li><strong>EBC Management Tool Support:</strong> Assist in the daily operation and maintenance of the EBC management tool. This includes data integrity checks, user support, and configuration assistance.</li>
+	<li><strong>Tool Improvement Lean-in:</strong> Gather user feedback from the EBC team on tool functionality and propose/assist with minor tool improvements or feature enhancements to increase user adoption and efficiency.</li>
+	<li><strong>Reporting &amp; Analytics:</strong> Develop, generate, and maintain regular operational reports and dashboards from the EBC management tool. This includes key metrics like briefing volume, customer satisfaction, resource utilization, and operational efficiency gains from automation.</li>
+	<li><strong>Data Analysis:</strong> Conduct preliminary analysis on EBC data to identify trends, performance gaps, and areas for strategic operational improvement.</li>
 </ul>
-<p>Handle and Prevent Escalations</p>
+<p><strong>Qualifications</strong></p>
+<h4><strong>Required:</strong></h4>
 <ul>
-	<li>Act as the escalation point for critical incidents (P1/P2), ensuring prompt response, coordination, and resolution.</li>
-	<li>Partner closely with Engineering, Product, and Incident Response teams to drive root cause analysis and post-incident reviews.</li>
-	<li>Build repeatable playbooks and escalation frameworks that improve consistency and reduce time-to-resolution.</li>
-	<li>Contribute towards writing formal customer facing reports (CFRs), which are technical root cause deep dive documents.</li>
+	<li>Currently enrolled in an accredited undergraduate degree program.</li>
+	<li>Ability to commit to a minimum 12 week summer internship.</li>
+	<li>In office 3-5 days a week in San Francisco, CA.&nbsp;</li>
+	<li>Strong analytical and problem-solving skills with a logical approach to process mapping.</li>
+	<li>Basic experience or demonstrated interest in automation concepts, scripting, or no/low-code workflow tools.</li>
+	<li>Proficiency in Microsoft Excel (or Google Sheets) for data manipulation, analysis, and basic reporting (e.g., pivot tables, formulas).</li>
+	<li>Excellent written and verbal communication skills, with an ability to document technical processes clearly for a non-technical audience.</li>
+	<li>Highly organized, self-motivated, and capable of managing multiple tasks simultaneously in a fast-paced environment.</li>
 </ul>
-<p>Elevate Technical Excellence</p>
+<p><strong>What You Will Gain</strong></p>
 <ul>
-	<li>Be a hands-on technical leader capable of reviewing and advising on complex cases across networking, DNS, WAF, Zero Trust, and performance.</li>
-	<li>Support engineers through technical case reviews, troubleshooting guidance, and cross-training.</li>
-	<li>Contribute to internal knowledge articles, diagnostic scripts, and best practices.</li>
+	<li><strong>Hands-on Experience:</strong> Practical experience developing and deploying real-world automation solutions that directly impact a critical business function.</li>
+	<li><strong>Professional Development:</strong> Mentorship from EBC and Operations leaders, exposure to executive-level strategic programs, and a deep understanding of B2B customer engagement strategy.</li>
+	<li><strong>Tool Expertise:</strong> In-depth knowledge of EBC management tools and best practices for operational reporting and data governance.</li>
 </ul>
-<p>Collaborate Cross-Functionally</p>
-<ul>
-	<li>Partner with Engineering, Product Management, and Customer Success to surface recurring issues and influence product improvements.</li>
-	<li>Represent the voice of the customer in operational reviews and feedback loops.</li>
-	<li>Lead or contribute to support transformation projects that enhance our tools, automation, and customer experience.</li>
-	<li>Confidently communicate and narrate complex technical issues with different levels, such as C level execs, technical experts, etc.</li>
-</ul>
-<h4><strong>What You’ll Bring</strong></h4>
-<ul>
-	<li>5+ years of experience in technical support or operations within a SaaS, PaaS, or cloud-based enterprise environment.</li>
-	<li>3+ years of people management experience leading technical teams of 5+ engineers across multiple locations.</li>
-	<li>Proven record of meeting or exceeding operational KPIs and driving continuous improvement.</li>
-	<li>Strong technical foundation with deep understanding of:</li>
-	<ul>
-		<li>Internet technologies: DNS, SSL/TLS, HTTP/S, TCP/IP, networking layers (OSI model)</li>
-		<li>Troubleshooting tools: curl, dig, traceroute, nslookup, tcpdump, logs, and API diagnostics</li>
-		<li>Experience with Linux command line, scripting, or automation tools is a plus.</li>
-	</ul>
-	<li>Experience managing 24x7 global support operations and incident escalation frameworks.</li>
-	<li>Exceptional communication and stakeholder management skills; able to translate technical issues into business impact.</li>
-	<li>A data-driven mindset: confident using metrics to guide performance, planning, and process improvements.</li>
-	<li>Passion for developing people, scaling teams, and creating a culture of excellence.</li>
-</ul>
-<h4><strong>Bonus Points</strong></h4>
-<ul>
-	<li>Experience supporting security, CDN, Zero Trust, or performance optimization products.</li>
-	<li>Fluency in one of the following languages: Mandarin, Korean, Japanese</li>
-	<li>Prior experience in start-up or hyper-growth environments where agility and innovation are key.</li>
-</ul>
-<h4><strong>Why Join Us</strong></h4>
-<p>This is your opportunity to play a pivotal role in shaping the future of technical support at Cloudflare. You’ll be joining a global team that thrives on solving hard problems, driving measurable outcomes, and setting the gold standard for customer experience in the cloud industry.</p>
-<p>&nbsp;</p>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
 	<p><span style="font-weight: 400;">We’re not just a highly ambitious, large-scale technology company. We’re a highly ambitious, large-scale technology company with a soul. Fundamental to our mission to help build a better Internet is protecting the free and open Internet.</span></p>
