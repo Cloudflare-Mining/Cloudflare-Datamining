@@ -204,7 +204,7 @@
 											},
 											"keyword_match_mode": {
 												"default": "and",
-												"description": "Controls which documents are candidates for BM25 scoring. 'and' restricts candidates to documents containing all query terms; 'or' includes any document containing at least one term, ranked by BM25 relevance. Defaults to 'and'. Legacy values 'exact_match' and 'fuzzy_match' are accepted and map to 'and' and 'or' respectively.",
+												"description": "Controls which documents are candidates for BM25 scoring. 'and' restricts candidates to documents containing all query terms; 'or' includes any document containing at least one term, ranked by BM25 relevance. Defaults to 'and'.",
 												"enum": [
 													"and",
 													"or"
@@ -763,7 +763,7 @@
 											},
 											"keyword_match_mode": {
 												"default": "and",
-												"description": "Controls which documents are candidates for BM25 scoring. 'and' restricts candidates to documents containing all query terms; 'or' includes any document containing at least one term, ranked by BM25 relevance. Defaults to 'and'. Legacy values 'exact_match' and 'fuzzy_match' are accepted and map to 'and' and 'or' respectively.",
+												"description": "Controls which documents are candidates for BM25 scoring. 'and' restricts candidates to documents containing all query terms; 'or' includes any document containing at least one term, ranked by BM25 relevance. Defaults to 'and'.",
 												"enum": [
 													"and",
 													"or"
@@ -830,10 +830,14 @@
 								},
 								"minItems": 1,
 								"type": "array"
+							},
+							"query": {
+								"description": "A simple text query string. Alternative to 'messages' — provide either this or 'messages', not both.",
+								"minLength": 1,
+								"type": "string"
 							}
 						},
 						"required": [
-							"messages",
 							"ai_search_options"
 						],
 						"type": "object"

@@ -1798,7 +1798,7 @@
 					"schema": {
 						"properties": {
 							"file": {
-								"description": "The file to upload (max 4MB).",
+								"description": "The file to upload (max 4MB). Filename must not exceed 128 characters.",
 								"format": "binary",
 								"type": "string"
 							},
@@ -1828,17 +1828,89 @@
 							"properties": {
 								"result": {
 									"properties": {
+										"checksum": {
+											"readOnly": true,
+											"type": "string"
+										},
+										"chunks_count": {
+											"nullable": true,
+											"readOnly": true,
+											"type": "integer",
+											"x-auditable": true
+										},
+										"created_at": {
+											"format": "date-time",
+											"readOnly": true,
+											"type": "string"
+										},
+										"error": {
+											"readOnly": true,
+											"type": "string"
+										},
+										"file_size": {
+											"nullable": true,
+											"readOnly": true,
+											"type": "number",
+											"x-auditable": true
+										},
 										"id": {
-											"description": "Unique item identifier (used in download and other item endpoints).",
+											"readOnly": true,
 											"type": "string"
 										},
 										"key": {
+											"readOnly": true,
+											"type": "string"
+										},
+										"last_seen_at": {
+											"format": "date-time",
+											"readOnly": true,
+											"type": "string"
+										},
+										"namespace": {
+											"readOnly": true,
+											"type": "string"
+										},
+										"next_action": {
+											"enum": [
+												"INDEX",
+												"DELETE",
+												null
+											],
+											"nullable": true,
+											"readOnly": true,
+											"type": "string"
+										},
+										"source_id": {
+											"description": "Identifies which data source this item belongs to. \"builtin\" for uploaded files, \"{type}:{source}\" for external sources, null for legacy items.",
+											"nullable": true,
+											"readOnly": true,
+											"type": "string"
+										},
+										"status": {
+											"enum": [
+												"queued",
+												"running",
+												"completed",
+												"error",
+												"skipped",
+												"outdated"
+											],
+											"readOnly": true,
 											"type": "string"
 										}
 									},
 									"required": [
 										"id",
-										"key"
+										"key",
+										"status",
+										"next_action",
+										"checksum",
+										"namespace",
+										"chunks_count",
+										"file_size",
+										"source_id",
+										"last_seen_at",
+										"created_at"
 									],
 									"type": "object"
 								},
@@ -2005,6 +2077,7 @@
 					"schema": {
 						"properties": {
 							"key": {
+								"description": "Item key / filename. Must not exceed 128 characters.",
 								"type": "string"
 							},
 							"next_action": {

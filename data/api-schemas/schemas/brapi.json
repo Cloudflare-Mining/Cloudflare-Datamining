@@ -1,4 +1,2639 @@
 {
+	"DELETE /accounts/{account_id}/browser-rendering/crawl/{job_id}": {
+		"description": "Cancels an ongoing crawl job by setting its status to cancelled and stopping all queued URLs.",
+		"operationId": "brapi-delete_CancelCrawl",
+		"parameters": [
+			{
+				"description": "Account ID.",
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"description": "Account ID.",
+					"type": "string"
+				}
+			},
+			{
+				"description": "The ID of the crawl job to cancel.",
+				"in": "path",
+				"name": "job_id",
+				"required": true,
+				"schema": {
+					"description": "The ID of the crawl job to cancel.",
+					"type": "string"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"code": {
+												"description": "Error code.",
+												"type": "number"
+											},
+											"message": {
+												"description": "Error message.",
+												"type": "string"
+											}
+										},
+										"required": [
+											"message",
+											"code"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"result": {
+									"properties": {
+										"job_id": {
+											"description": "The ID of the cancelled job.",
+											"type": "string"
+										},
+										"message": {
+											"description": "Cancellation confirmation message.",
+											"type": "string"
+										}
+									},
+									"required": [
+										"message",
+										"job_id"
+									],
+									"type": "object"
+								},
+								"success": {
+									"description": "Response status.",
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"result"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Crawl job cancelled successfully."
+			},
+			"400": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"code": {
+												"description": "Error code.",
+												"type": "number"
+											},
+											"message": {
+												"description": "Error message.",
+												"type": "string"
+											}
+										},
+										"required": [
+											"message",
+											"code"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"success": {
+									"description": "Response status.",
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Job is already in final status and cannot be cancelled."
+			},
+			"404": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"code": {
+												"description": "Error code.",
+												"type": "number"
+											},
+											"message": {
+												"description": "Error message.",
+												"type": "string"
+											}
+										},
+										"required": [
+											"message",
+											"code"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"success": {
+									"description": "Response status.",
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Crawl job not found."
+			},
+			"500": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"code": {
+												"description": "Error code.",
+												"type": "number"
+											},
+											"message": {
+												"description": "Error message.",
+												"type": "string"
+											}
+										},
+										"required": [
+											"message",
+											"code"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"success": {
+									"description": "Response status.",
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Internal server error."
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": [],
+				"api_token": []
+			}
+		],
+		"summary": "Cancel a crawl job.",
+		"tags": [
+			"brapi"
+		],
+		"x-cfPermissionsRequired": {
+			"enum": [
+				"com.cloudflare.api.account.brapi.read"
+			],
+			"type": "string"
+		},
+		"x-cfPlanAvailability": {
+			"business": true,
+			"enterprise": true,
+			"free": true,
+			"pro": true
+		}
+	},
+	"DELETE /accounts/{account_id}/browser-rendering/devtools/browser/{session_id}": {
+		"description": "Closes an existing browser session.",
+		"operationId": "brapi-delete_DevtoolsBrowserDelete",
+		"parameters": [
+			{
+				"description": "Account ID.",
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"description": "Account ID.",
+					"type": "string"
+				}
+			},
+			{
+				"description": "Browser session ID to close.",
+				"in": "path",
+				"name": "session_id",
+				"required": true,
+				"schema": {
+					"description": "Browser session ID to close.",
+					"format": "uuid",
+					"type": "string"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"status": {
+									"enum": [
+										"closing",
+										"closed"
+									],
+									"type": "string"
+								}
+							},
+							"required": [
+								"status"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Browser session closing or already closed."
+			},
+			"404": {
+				"description": "Browser session not found."
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": [],
+				"api_token": []
+			}
+		],
+		"summary": "Close browser session.",
+		"tags": [
+			"brapi"
+		],
+		"x-cfPermissionsRequired": {
+			"enum": [
+				"com.cloudflare.api.account.brapi.read"
+			],
+			"type": "string"
+		},
+		"x-cfPlanAvailability": {
+			"business": true,
+			"enterprise": true,
+			"free": true,
+			"pro": true
+		}
+	},
+	"GET /accounts/{account_id}/browser-rendering/crawl/{job_id}": {
+		"description": "Returns the result of a crawl job.",
+		"operationId": "brapi-get_CrawlResult",
+		"parameters": [
+			{
+				"description": "Account ID.",
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"description": "Account ID.",
+					"type": "string"
+				}
+			},
+			{
+				"description": "Crawl job ID.",
+				"in": "path",
+				"name": "job_id",
+				"required": true,
+				"schema": {
+					"description": "Crawl job ID.",
+					"minLength": 1,
+					"type": "string"
+				}
+			},
+			{
+				"description": "Cache TTL default is 5s. Set to 0 to disable.",
+				"in": "query",
+				"name": "cacheTTL",
+				"schema": {
+					"default": 5,
+					"description": "Cache TTL default is 5s. Set to 0 to disable.",
+					"maximum": 86400,
+					"type": "number"
+				}
+			},
+			{
+				"description": "Filter by URL status.",
+				"in": "query",
+				"name": "status",
+				"schema": {
+					"description": "Filter by URL status.",
+					"enum": [
+						"queued",
+						"errored",
+						"completed",
+						"disallowed",
+						"skipped",
+						"cancelled"
+					],
+					"type": "string"
+				}
+			},
+			{
+				"description": "Cursor for pagination.",
+				"in": "query",
+				"name": "cursor",
+				"schema": {
+					"default": 0,
+					"description": "Cursor for pagination.",
+					"type": "number"
+				}
+			},
+			{
+				"description": "Limit for pagination.",
+				"in": "query",
+				"name": "limit",
+				"schema": {
+					"default": 50,
+					"description": "Limit for pagination.",
+					"type": "number"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"code": {
+												"description": "Error code.",
+												"type": "number"
+											},
+											"message": {
+												"description": "Error message.",
+												"type": "string"
+											}
+										},
+										"required": [
+											"message",
+											"code"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"result": {
+									"additionalProperties": false,
+									"properties": {
+										"browserSecondsUsed": {
+											"description": "Total seconds spent in browser so far.",
+											"type": "number"
+										},
+										"cursor": {
+											"description": "Cursor for pagination.",
+											"type": "string"
+										},
+										"finished": {
+											"description": "Total number of URLs that have been crawled so far.",
+											"type": "number"
+										},
+										"id": {
+											"description": "Crawl job ID.",
+											"type": "string"
+										},
+										"records": {
+											"description": "List of crawl job records.",
+											"items": {
+												"additionalProperties": false,
+												"properties": {
+													"html": {
+														"description": "HTML content of the crawled URL.",
+														"type": "string"
+													},
+													"json": {
+														"additionalProperties": {
+															"nullable": true,
+															"type": "object"
+														},
+														"description": "JSON of the content of the crawled URL.",
+														"type": "object"
+													},
+													"markdown": {
+														"description": "Markdown of the content of the crawled URL.",
+														"type": "string"
+													},
+													"metadata": {
+														"properties": {
+															"status": {
+																"description": "HTTP status code of the crawled page.",
+																"type": "number"
+															},
+															"title": {
+																"description": "Title of the crawled page.",
+																"type": "string"
+															},
+															"url": {
+																"description": "Final URL of the crawled page.",
+																"type": "string"
+															}
+														},
+														"required": [
+															"url",
+															"status"
+														],
+														"type": "object"
+													},
+													"status": {
+														"description": "Current status of the crawled URL.",
+														"enum": [
+															"queued",
+															"errored",
+															"completed",
+															"disallowed",
+															"skipped",
+															"cancelled"
+														],
+														"type": "string"
+													},
+													"url": {
+														"description": "Crawled URL.",
+														"type": "string"
+													}
+												},
+												"required": [
+													"url",
+													"status",
+													"metadata"
+												],
+												"type": "object"
+											},
+											"type": "array"
+										},
+										"skipped": {
+											"description": "Total number of URLs that were skipped due to include/exclude/subdomain filters. Skipped URLs are included in records but are not counted toward total/finished.",
+											"type": "number"
+										},
+										"status": {
+											"description": "Current crawl job status.",
+											"type": "string"
+										},
+										"total": {
+											"description": "Total current number of URLs in the crawl job.",
+											"type": "number"
+										}
+									},
+									"required": [
+										"id",
+										"status",
+										"browserSecondsUsed",
+										"total",
+										"finished",
+										"skipped",
+										"records"
+									],
+									"type": "object"
+								},
+								"success": {
+									"description": "Response status.",
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"result"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Returns the result of a crawl job."
+			},
+			"400": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"code": {
+												"description": "Error code.",
+												"type": "number"
+											},
+											"message": {
+												"description": "Error message.",
+												"type": "string"
+											}
+										},
+										"required": [
+											"message",
+											"code"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"success": {
+									"description": "Response status.",
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "The request contains errors or didn't properly encode content."
+			},
+			"500": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"code": {
+												"description": "Error code.",
+												"type": "number"
+											},
+											"message": {
+												"description": "Error message.",
+												"type": "string"
+											}
+										},
+										"required": [
+											"message",
+											"code"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"success": {
+									"description": "Response status.",
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Internal server error."
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": [],
+				"api_token": []
+			}
+		],
+		"summary": "Get crawl result.",
+		"tags": [
+			"brapi"
+		],
+		"x-api-token-group": [
+			"Browser Rendering Write",
+			"Browser Rendering Read"
+		],
+		"x-cfPermissionsRequired": {
+			"enum": [
+				"com.cloudflare.api.account.brapi.read"
+			],
+			"type": "string"
+		},
+		"x-cfPlanAvailability": {
+			"business": true,
+			"enterprise": true,
+			"free": true,
+			"pro": true
+		}
+	},
+	"GET /accounts/{account_id}/browser-rendering/devtools/browser": {
+		"description": "Acquires and establishes a WebSocket connection to a browser session.",
+		"operationId": "brapi-get_DevtoolsBrowserAcquire",
+		"parameters": [
+			{
+				"description": "Account ID.",
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"description": "Account ID.",
+					"type": "string"
+				}
+			},
+			{
+				"description": "Keep-alive time in ms (only valid when acquiring new session).",
+				"in": "query",
+				"name": "keep_alive",
+				"schema": {
+					"default": 60000,
+					"description": "Keep-alive time in ms (only valid when acquiring new session).",
+					"maximum": 1200000,
+					"minimum": 10000,
+					"type": "number"
+				}
+			},
+			{
+				"description": "Use experimental browser.",
+				"in": "query",
+				"name": "lab",
+				"schema": {
+					"default": false,
+					"description": "Use experimental browser.",
+					"type": "boolean"
+				}
+			},
+			{
+				"in": "query",
+				"name": "recording",
+				"schema": {
+					"default": false,
+					"type": "boolean"
+				}
+			}
+		],
+		"responses": {
+			"101": {
+				"description": "WebSocket connection established successfully."
+			},
+			"400": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"code": {
+												"description": "Error code.",
+												"type": "number"
+											},
+											"message": {
+												"description": "Error message.",
+												"type": "string"
+											}
+										},
+										"required": [
+											"message",
+											"code"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"success": {
+									"description": "Response status.",
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Bad request."
+			},
+			"429": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"code": {
+												"description": "Error code.",
+												"type": "number"
+											},
+											"message": {
+												"description": "Error message.",
+												"type": "string"
+											}
+										},
+										"required": [
+											"message",
+											"code"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"success": {
+									"description": "Response status.",
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Request failed due to rate limiting."
+			},
+			"500": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"code": {
+												"description": "Error code.",
+												"type": "number"
+											},
+											"message": {
+												"description": "Error message.",
+												"type": "string"
+											}
+										},
+										"required": [
+											"message",
+											"code"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"success": {
+									"description": "Response status.",
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Internal server error."
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": [],
+				"api_token": []
+			}
+		],
+		"summary": "Acquire and connect to browser session.",
+		"tags": [
+			"brapi"
+		],
+		"x-api-token-group": [
+			"Browser Rendering Write",
+			"Browser Rendering Read"
+		],
+		"x-cfPermissionsRequired": {
+			"enum": [
+				"com.cloudflare.api.account.brapi.read"
+			],
+			"type": "string"
+		},
+		"x-cfPlanAvailability": {
+			"business": true,
+			"enterprise": true,
+			"free": true,
+			"pro": true
+		}
+	},
+	"GET /accounts/{account_id}/browser-rendering/devtools/browser/{session_id}": {
+		"description": "Establishes a WebSocket connection to an existing browser session.",
+		"operationId": "brapi-get_DevtoolsBrowser",
+		"parameters": [
+			{
+				"description": "Account ID.",
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"description": "Account ID.",
+					"type": "string"
+				}
+			},
+			{
+				"description": "Browser session ID to connect to.",
+				"in": "path",
+				"name": "session_id",
+				"required": true,
+				"schema": {
+					"description": "Browser session ID to connect to.",
+					"format": "uuid",
+					"type": "string"
+				}
+			},
+			{
+				"description": "Keep-alive time in ms (only valid when acquiring new session).",
+				"in": "query",
+				"name": "keep_alive",
+				"schema": {
+					"default": 60000,
+					"description": "Keep-alive time in ms (only valid when acquiring new session).",
+					"maximum": 1200000,
+					"minimum": 10000,
+					"type": "number"
+				}
+			},
+			{
+				"description": "Use experimental browser.",
+				"in": "query",
+				"name": "lab",
+				"schema": {
+					"default": false,
+					"description": "Use experimental browser.",
+					"type": "boolean"
+				}
+			},
+			{
+				"in": "query",
+				"name": "recording",
+				"schema": {
+					"default": false,
+					"type": "boolean"
+				}
+			}
+		],
+		"responses": {
+			"101": {
+				"description": "WebSocket connection established successfully."
+			},
+			"400": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"code": {
+												"description": "Error code.",
+												"type": "number"
+											},
+											"message": {
+												"description": "Error message.",
+												"type": "string"
+											}
+										},
+										"required": [
+											"message",
+											"code"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"success": {
+									"description": "Response status.",
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Bad request."
+			},
+			"429": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"code": {
+												"description": "Error code.",
+												"type": "number"
+											},
+											"message": {
+												"description": "Error message.",
+												"type": "string"
+											}
+										},
+										"required": [
+											"message",
+											"code"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"success": {
+									"description": "Response status.",
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Request failed due to rate limiting."
+			},
+			"500": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"code": {
+												"description": "Error code.",
+												"type": "number"
+											},
+											"message": {
+												"description": "Error message.",
+												"type": "string"
+											}
+										},
+										"required": [
+											"message",
+											"code"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"success": {
+									"description": "Response status.",
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Internal server error."
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": [],
+				"api_token": []
+			}
+		],
+		"summary": "Connect to browser session.",
+		"tags": [
+			"brapi"
+		],
+		"x-api-token-group": [
+			"Browser Rendering Write",
+			"Browser Rendering Read"
+		],
+		"x-cfPermissionsRequired": {
+			"enum": [
+				"com.cloudflare.api.account.brapi.read"
+			],
+			"type": "string"
+		},
+		"x-cfPlanAvailability": {
+			"business": true,
+			"enterprise": true,
+			"free": true,
+			"pro": true
+		}
+	},
+	"GET /accounts/{account_id}/browser-rendering/devtools/browser/{session_id}/json": {
+		"description": "Returns a list of all debuggable targets including tabs, pages, service workers, and other browser contexts.",
+		"operationId": "brapi-get_DevtoolsJson",
+		"parameters": [
+			{
+				"description": "Account ID.",
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"description": "Account ID.",
+					"type": "string"
+				}
+			},
+			{
+				"description": "Browser session ID.",
+				"in": "path",
+				"name": "session_id",
+				"required": true,
+				"schema": {
+					"description": "Browser session ID.",
+					"format": "uuid",
+					"type": "string"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"items": {
+								"properties": {
+									"description": {
+										"description": "Target description.",
+										"type": "string"
+									},
+									"devtoolsFrontendUrl": {
+										"description": "DevTools frontend URL.",
+										"type": "string"
+									},
+									"id": {
+										"description": "Target ID.",
+										"type": "string"
+									},
+									"title": {
+										"description": "Title of the target.",
+										"type": "string"
+									},
+									"type": {
+										"description": "Target type (page, background_page, worker, etc.).",
+										"type": "string"
+									},
+									"url": {
+										"description": "URL of the target.",
+										"type": "string"
+									},
+									"webSocketDebuggerUrl": {
+										"description": "WebSocket URL for debugging this target.",
+										"type": "string"
+									}
+								},
+								"required": [
+									"id",
+									"type",
+									"url"
+								],
+								"type": "object"
+							},
+							"type": "array"
+						}
+					}
+				},
+				"description": "List of targets."
+			},
+			"400": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"code": {
+												"description": "Error code.",
+												"type": "number"
+											},
+											"message": {
+												"description": "Error message.",
+												"type": "string"
+											}
+										},
+										"required": [
+											"message",
+											"code"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"success": {
+									"description": "Response status.",
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Bad request."
+			},
+			"500": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"code": {
+												"description": "Error code.",
+												"type": "number"
+											},
+											"message": {
+												"description": "Error message.",
+												"type": "string"
+											}
+										},
+										"required": [
+											"message",
+											"code"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"success": {
+									"description": "Response status.",
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Internal server error."
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": [],
+				"api_token": []
+			}
+		],
+		"summary": "List targets.",
+		"tags": [
+			"brapi"
+		],
+		"x-api-token-group": [
+			"Browser Rendering Write",
+			"Browser Rendering Read"
+		],
+		"x-cfPermissionsRequired": {
+			"enum": [
+				"com.cloudflare.api.account.brapi.read"
+			],
+			"type": "string"
+		},
+		"x-cfPlanAvailability": {
+			"business": true,
+			"enterprise": true,
+			"free": true,
+			"pro": true
+		}
+	},
+	"GET /accounts/{account_id}/browser-rendering/devtools/browser/{session_id}/json/activate/{target_id}": {
+		"description": "Activates (brings to front) a specific browser target by its ID.",
+		"operationId": "brapi-get_DevtoolsJsonActivate",
+		"parameters": [
+			{
+				"description": "Browser session ID.",
+				"in": "path",
+				"name": "session_id",
+				"required": true,
+				"schema": {
+					"description": "Browser session ID.",
+					"format": "uuid",
+					"type": "string"
+				}
+			},
+			{
+				"description": "Account ID.",
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"description": "Account ID.",
+					"type": "string"
+				}
+			},
+			{
+				"description": "Target ID to activate.",
+				"in": "path",
+				"name": "target_id",
+				"required": true,
+				"schema": {
+					"description": "Target ID to activate.",
+					"pattern": "^[a-zA-Z0-9]+$",
+					"type": "string"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"message": {
+									"description": "Target activated.",
+									"type": "string"
+								}
+							},
+							"required": [
+								"message"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Target activated successfully."
+			},
+			"400": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"code": {
+												"description": "Error code.",
+												"type": "number"
+											},
+											"message": {
+												"description": "Error message.",
+												"type": "string"
+											}
+										},
+										"required": [
+											"message",
+											"code"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"success": {
+									"description": "Response status.",
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Bad request."
+			},
+			"404": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"code": {
+												"description": "Error code.",
+												"type": "number"
+											},
+											"message": {
+												"description": "Error message.",
+												"type": "string"
+											}
+										},
+										"required": [
+											"message",
+											"code"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"success": {
+									"description": "Response status.",
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Target not found."
+			},
+			"500": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"code": {
+												"description": "Error code.",
+												"type": "number"
+											},
+											"message": {
+												"description": "Error message.",
+												"type": "string"
+											}
+										},
+										"required": [
+											"message",
+											"code"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"success": {
+									"description": "Response status.",
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Internal server error."
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": [],
+				"api_token": []
+			}
+		],
+		"summary": "Activate a browser target.",
+		"tags": [
+			"brapi"
+		],
+		"x-api-token-group": [
+			"Browser Rendering Write",
+			"Browser Rendering Read"
+		],
+		"x-cfPermissionsRequired": {
+			"enum": [
+				"com.cloudflare.api.account.brapi.read"
+			],
+			"type": "string"
+		},
+		"x-cfPlanAvailability": {
+			"business": true,
+			"enterprise": true,
+			"free": true,
+			"pro": true
+		}
+	},
+	"GET /accounts/{account_id}/browser-rendering/devtools/browser/{session_id}/json/list": {
+		"description": "Returns a list of all debuggable targets including tabs, pages, service workers, and other browser contexts.",
+		"operationId": "brapi-get_DevtoolsJsonList",
+		"parameters": [
+			{
+				"description": "Account ID.",
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"description": "Account ID.",
+					"type": "string"
+				}
+			},
+			{
+				"description": "Browser session ID.",
+				"in": "path",
+				"name": "session_id",
+				"required": true,
+				"schema": {
+					"description": "Browser session ID.",
+					"format": "uuid",
+					"type": "string"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"items": {
+								"properties": {
+									"description": {
+										"description": "Target description.",
+										"type": "string"
+									},
+									"devtoolsFrontendUrl": {
+										"description": "DevTools frontend URL.",
+										"type": "string"
+									},
+									"id": {
+										"description": "Target ID.",
+										"type": "string"
+									},
+									"title": {
+										"description": "Title of the target.",
+										"type": "string"
+									},
+									"type": {
+										"description": "Target type (page, background_page, worker, etc.).",
+										"type": "string"
+									},
+									"url": {
+										"description": "URL of the target.",
+										"type": "string"
+									},
+									"webSocketDebuggerUrl": {
+										"description": "WebSocket URL for debugging this target.",
+										"type": "string"
+									}
+								},
+								"required": [
+									"id",
+									"type",
+									"url"
+								],
+								"type": "object"
+							},
+							"type": "array"
+						}
+					}
+				},
+				"description": "List of targets."
+			},
+			"400": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"code": {
+												"description": "Error code.",
+												"type": "number"
+											},
+											"message": {
+												"description": "Error message.",
+												"type": "string"
+											}
+										},
+										"required": [
+											"message",
+											"code"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"success": {
+									"description": "Response status.",
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Bad request."
+			},
+			"500": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"code": {
+												"description": "Error code.",
+												"type": "number"
+											},
+											"message": {
+												"description": "Error message.",
+												"type": "string"
+											}
+										},
+										"required": [
+											"message",
+											"code"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"success": {
+									"description": "Response status.",
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Internal server error."
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": [],
+				"api_token": []
+			}
+		],
+		"summary": "List targets.",
+		"tags": [
+			"brapi"
+		],
+		"x-api-token-group": [
+			"Browser Rendering Write",
+			"Browser Rendering Read"
+		],
+		"x-cfPermissionsRequired": {
+			"enum": [
+				"com.cloudflare.api.account.brapi.read"
+			],
+			"type": "string"
+		},
+		"x-cfPlanAvailability": {
+			"business": true,
+			"enterprise": true,
+			"free": true,
+			"pro": true
+		}
+	},
+	"GET /accounts/{account_id}/browser-rendering/devtools/browser/{session_id}/json/list/{target_id}": {
+		"description": "Returns the debuggable target with the given ID.",
+		"operationId": "brapi-get_DevtoolsJsonTarget",
+		"parameters": [
+			{
+				"description": "Account ID.",
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"description": "Account ID.",
+					"type": "string"
+				}
+			},
+			{
+				"description": "Browser session ID.",
+				"in": "path",
+				"name": "session_id",
+				"required": true,
+				"schema": {
+					"description": "Browser session ID.",
+					"format": "uuid",
+					"type": "string"
+				}
+			},
+			{
+				"description": "Target ID.",
+				"in": "path",
+				"name": "target_id",
+				"required": true,
+				"schema": {
+					"description": "Target ID.",
+					"pattern": "^[a-zA-Z0-9]+$",
+					"type": "string"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"description": {
+									"description": "Target description.",
+									"type": "string"
+								},
+								"devtoolsFrontendUrl": {
+									"description": "DevTools frontend URL.",
+									"type": "string"
+								},
+								"id": {
+									"description": "Target ID.",
+									"type": "string"
+								},
+								"title": {
+									"description": "Title of the target.",
+									"type": "string"
+								},
+								"type": {
+									"description": "Target type (page, background_page, worker, etc.).",
+									"type": "string"
+								},
+								"url": {
+									"description": "URL of the target.",
+									"type": "string"
+								},
+								"webSocketDebuggerUrl": {
+									"description": "WebSocket URL for debugging this target.",
+									"type": "string"
+								}
+							},
+							"required": [
+								"id",
+								"type",
+								"url"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "The target with the given ID."
+			},
+			"400": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"code": {
+												"description": "Error code.",
+												"type": "number"
+											},
+											"message": {
+												"description": "Error message.",
+												"type": "string"
+											}
+										},
+										"required": [
+											"message",
+											"code"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"success": {
+									"description": "Response status.",
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Bad request."
+			},
+			"404": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"code": {
+												"description": "Error code.",
+												"type": "number"
+											},
+											"message": {
+												"description": "Error message.",
+												"type": "string"
+											}
+										},
+										"required": [
+											"message",
+											"code"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"success": {
+									"description": "Response status.",
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Target not found."
+			},
+			"500": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"code": {
+												"description": "Error code.",
+												"type": "number"
+											},
+											"message": {
+												"description": "Error message.",
+												"type": "string"
+											}
+										},
+										"required": [
+											"message",
+											"code"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"success": {
+									"description": "Response status.",
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Internal server error."
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": [],
+				"api_token": []
+			}
+		],
+		"summary": "Get a target by ID.",
+		"tags": [
+			"brapi"
+		],
+		"x-api-token-group": [
+			"Browser Rendering Write",
+			"Browser Rendering Read"
+		],
+		"x-cfPermissionsRequired": {
+			"enum": [
+				"com.cloudflare.api.account.brapi.read"
+			],
+			"type": "string"
+		},
+		"x-cfPlanAvailability": {
+			"business": true,
+			"enterprise": true,
+			"free": true,
+			"pro": true
+		}
+	},
+	"GET /accounts/{account_id}/browser-rendering/devtools/browser/{session_id}/json/protocol": {
+		"description": "Returns the complete Chrome DevTools Protocol schema including all domains, commands, events, and types. This schema describes the entire CDP API surface.",
+		"operationId": "brapi-get_DevtoolsJsonProtocol",
+		"parameters": [
+			{
+				"description": "Account ID.",
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"description": "Account ID.",
+					"type": "string"
+				}
+			},
+			{
+				"description": "Browser session ID.",
+				"in": "path",
+				"name": "session_id",
+				"required": true,
+				"schema": {
+					"description": "Browser session ID.",
+					"format": "uuid",
+					"type": "string"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"domains": {
+									"description": "List of protocol domains.",
+									"items": {
+										"properties": {
+											"commands": {
+												"description": "Available commands.",
+												"items": {
+													"additionalProperties": {
+														"nullable": true,
+														"type": "object"
+													},
+													"type": "object"
+												},
+												"type": "array"
+											},
+											"dependencies": {
+												"description": "Domain dependencies.",
+												"items": {
+													"type": "string"
+												},
+												"type": "array"
+											},
+											"domain": {
+												"description": "Domain name.",
+												"type": "string"
+											},
+											"events": {
+												"description": "Available events.",
+												"items": {
+													"additionalProperties": {
+														"nullable": true,
+														"type": "object"
+													},
+													"type": "object"
+												},
+												"type": "array"
+											},
+											"experimental": {
+												"description": "Whether this domain is experimental.",
+												"type": "boolean"
+											},
+											"types": {
+												"description": "Type definitions.",
+												"items": {
+													"additionalProperties": {
+														"nullable": true,
+														"type": "object"
+													},
+													"type": "object"
+												},
+												"type": "array"
+											}
+										},
+										"required": [
+											"domain"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"version": {
+									"description": "Protocol version.",
+									"properties": {
+										"major": {
+											"description": "Major version.",
+											"type": "string"
+										},
+										"minor": {
+											"description": "Minor version.",
+											"type": "string"
+										}
+									},
+									"required": [
+										"major",
+										"minor"
+									],
+									"type": "object"
+								}
+							},
+							"required": [
+								"domains"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Chrome DevTools Protocol schema."
+			},
+			"400": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"code": {
+												"description": "Error code.",
+												"type": "number"
+											},
+											"message": {
+												"description": "Error message.",
+												"type": "string"
+											}
+										},
+										"required": [
+											"message",
+											"code"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"success": {
+									"description": "Response status.",
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Bad request."
+			},
+			"500": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"code": {
+												"description": "Error code.",
+												"type": "number"
+											},
+											"message": {
+												"description": "Error message.",
+												"type": "string"
+											}
+										},
+										"required": [
+											"message",
+											"code"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"success": {
+									"description": "Response status.",
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Internal server error."
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": [],
+				"api_token": []
+			}
+		],
+		"summary": "Get Chrome DevTools Protocol schema.",
+		"tags": [
+			"brapi"
+		],
+		"x-api-token-group": [
+			"Browser Rendering Write",
+			"Browser Rendering Read"
+		],
+		"x-cfPermissionsRequired": {
+			"enum": [
+				"com.cloudflare.api.account.brapi.read"
+			],
+			"type": "string"
+		},
+		"x-cfPlanAvailability": {
+			"business": true,
+			"enterprise": true,
+			"free": true,
+			"pro": true
+		}
+	},
+	"GET /accounts/{account_id}/browser-rendering/devtools/browser/{session_id}/json/version": {
+		"description": "Get browser version metadata.",
+		"operationId": "brapi-get_DevtoolsJsonVersion",
+		"parameters": [
+			{
+				"description": "Account ID.",
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"description": "Account ID.",
+					"type": "string"
+				}
+			},
+			{
+				"description": "Browser session ID.",
+				"in": "path",
+				"name": "session_id",
+				"required": true,
+				"schema": {
+					"description": "Browser session ID.",
+					"format": "uuid",
+					"type": "string"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"Browser": {
+									"description": "Browser name and version.",
+									"type": "string"
+								},
+								"Protocol-Version": {
+									"description": "Chrome DevTools Protocol version.",
+									"type": "string"
+								},
+								"User-Agent": {
+									"description": "User agent string.",
+									"type": "string"
+								},
+								"V8-Version": {
+									"description": "V8 JavaScript engine version.",
+									"type": "string"
+								},
+								"WebKit-Version": {
+									"description": "WebKit version.",
+									"type": "string"
+								},
+								"webSocketDebuggerUrl": {
+									"description": "WebSocket URL for debugging the browser.",
+									"type": "string"
+								}
+							},
+							"required": [
+								"Browser",
+								"Protocol-Version",
+								"User-Agent",
+								"V8-Version",
+								"WebKit-Version",
+								"webSocketDebuggerUrl"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Browser version information."
+			},
+			"400": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"code": {
+												"description": "Error code.",
+												"type": "number"
+											},
+											"message": {
+												"description": "Error message.",
+												"type": "string"
+											}
+										},
+										"required": [
+											"message",
+											"code"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"success": {
+									"description": "Response status.",
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Bad request."
+			},
+			"500": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"code": {
+												"description": "Error code.",
+												"type": "number"
+											},
+											"message": {
+												"description": "Error message.",
+												"type": "string"
+											}
+										},
+										"required": [
+											"message",
+											"code"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"success": {
+									"description": "Response status.",
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Internal server error."
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": [],
+				"api_token": []
+			}
+		],
+		"summary": "Get browser version metadata.",
+		"tags": [
+			"brapi"
+		],
+		"x-api-token-group": [
+			"Browser Rendering Write",
+			"Browser Rendering Read"
+		],
+		"x-cfPermissionsRequired": {
+			"enum": [
+				"com.cloudflare.api.account.brapi.read"
+			],
+			"type": "string"
+		},
+		"x-cfPlanAvailability": {
+			"business": true,
+			"enterprise": true,
+			"free": true,
+			"pro": true
+		}
+	},
+	"GET /accounts/{account_id}/browser-rendering/devtools/browser/{session_id}/page/{target_id}": {
+		"description": "Establishes a WebSocket connection to a specific Chrome DevTools target or page.",
+		"operationId": "brapi-get_DevtoolsPage",
+		"parameters": [
+			{
+				"description": "Account ID.",
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"description": "Account ID.",
+					"type": "string"
+				}
+			},
+			{
+				"description": "Browser session ID.",
+				"in": "path",
+				"name": "session_id",
+				"required": true,
+				"schema": {
+					"description": "Browser session ID.",
+					"format": "uuid",
+					"type": "string"
+				}
+			},
+			{
+				"description": "Target ID, e.g. page ID.",
+				"in": "path",
+				"name": "target_id",
+				"required": true,
+				"schema": {
+					"description": "Target ID, e.g. page ID.",
+					"pattern": "^[a-zA-Z0-9]+$",
+					"type": "string"
+				}
+			}
+		],
+		"responses": {
+			"101": {
+				"description": "WebSocket connection established successfully."
+			},
+			"400": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"code": {
+												"description": "Error code.",
+												"type": "number"
+											},
+											"message": {
+												"description": "Error message.",
+												"type": "string"
+											}
+										},
+										"required": [
+											"message",
+											"code"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"success": {
+									"description": "Response status.",
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Bad request."
+			},
+			"500": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"code": {
+												"description": "Error code.",
+												"type": "number"
+											},
+											"message": {
+												"description": "Error message.",
+												"type": "string"
+											}
+										},
+										"required": [
+											"message",
+											"code"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"success": {
+									"description": "Response status.",
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Internal server error."
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": [],
+				"api_token": []
+			}
+		],
+		"summary": "Connect to a specific Chrome DevTools page.",
+		"tags": [
+			"brapi"
+		],
+		"x-api-token-group": [
+			"Browser Rendering Write",
+			"Browser Rendering Read"
+		],
+		"x-cfPermissionsRequired": {
+			"enum": [
+				"com.cloudflare.api.account.brapi.read"
+			],
+			"type": "string"
+		},
+		"x-cfPlanAvailability": {
+			"business": true,
+			"enterprise": true,
+			"free": true,
+			"pro": true
+		}
+	},
+	"GET /accounts/{account_id}/browser-rendering/devtools/session": {
+		"description": "List active browser sessions.",
+		"operationId": "brapi-get_DevtoolsSessionList",
+		"parameters": [
+			{
+				"description": "Account ID.",
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"description": "Account ID.",
+					"type": "string"
+				}
+			},
+			{
+				"in": "query",
+				"name": "limit",
+				"schema": {
+					"default": 200,
+					"maximum": 200,
+					"minimum": 1,
+					"type": "number"
+				}
+			},
+			{
+				"in": "query",
+				"name": "offset",
+				"schema": {
+					"default": 0,
+					"minimum": 0,
+					"type": "number"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"items": {
+								"properties": {
+									"closeReason": {
+										"description": "Reason for session closure.",
+										"type": "string"
+									},
+									"closeReasonText": {
+										"description": "Human-readable close reason.",
+										"type": "string"
+									},
+									"connectionEndTime": {
+										"description": "Connection end time.",
+										"type": "number"
+									},
+									"connectionId": {
+										"description": "Connection ID.",
+										"type": "string"
+									},
+									"connectionStartTime": {
+										"description": "Connection start time.",
+										"type": "number"
+									},
+									"devtoolsFrontendUrl": {
+										"description": "DevTools frontend URL.",
+										"type": "string"
+									},
+									"endTime": {
+										"description": "Session end time.",
+										"type": "number"
+									},
+									"lastUpdated": {
+										"description": "Last updated timestamp.",
+										"type": "number"
+									},
+									"sessionId": {
+										"description": "Session ID.",
+										"format": "uuid",
+										"type": "string"
+									},
+									"startTime": {
+										"description": "Session start time.",
+										"type": "number"
+									},
+									"webSocketDebuggerUrl": {
+										"description": "WebSocket URL for debugging this target.",
+										"type": "string"
+									}
+								},
+								"required": [
+									"sessionId"
+								],
+								"type": "object"
+							},
+							"type": "array"
+						}
+					}
+				},
+				"description": "Returns the account's sessions."
+			},
+			"500": {
+				"description": "Internal server error."
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": [],
+				"api_token": []
+			}
+		],
+		"summary": "List sessions.",
+		"tags": [
+			"brapi"
+		],
+		"x-api-token-group": [
+			"Browser Rendering Write",
+			"Browser Rendering Read"
+		],
+		"x-cfPermissionsRequired": {
+			"enum": [
+				"com.cloudflare.api.account.brapi.read"
+			],
+			"type": "string"
+		},
+		"x-cfPlanAvailability": {
+			"business": true,
+			"enterprise": true,
+			"free": true,
+			"pro": true
+		}
+	},
+	"GET /accounts/{account_id}/browser-rendering/devtools/session/{session_id}": {
+		"description": "Get details for a specific browser session.",
+		"operationId": "brapi-get_DevtoolsSessionDetails",
+		"parameters": [
+			{
+				"description": "Account ID.",
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"description": "Account ID.",
+					"type": "string"
+				}
+			},
+			{
+				"description": "Session ID.",
+				"in": "path",
+				"name": "session_id",
+				"required": true,
+				"schema": {
+					"description": "Session ID.",
+					"format": "uuid",
+					"type": "string"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"nullable": true,
+							"properties": {
+								"closeReason": {
+									"description": "Reason for session closure.",
+									"type": "string"
+								},
+								"closeReasonText": {
+									"description": "Human-readable close reason.",
+									"type": "string"
+								},
+								"connectionEndTime": {
+									"description": "Connection end time.",
+									"type": "number"
+								},
+								"connectionId": {
+									"description": "Connection ID.",
+									"type": "string"
+								},
+								"connectionStartTime": {
+									"description": "Connection start time.",
+									"type": "number"
+								},
+								"devtoolsFrontendUrl": {
+									"description": "DevTools frontend URL.",
+									"type": "string"
+								},
+								"endTime": {
+									"description": "Session end time.",
+									"type": "number"
+								},
+								"lastUpdated": {
+									"description": "Last updated timestamp.",
+									"type": "number"
+								},
+								"sessionId": {
+									"description": "Session ID.",
+									"format": "uuid",
+									"type": "string"
+								},
+								"startTime": {
+									"description": "Session start time.",
+									"type": "number"
+								},
+								"webSocketDebuggerUrl": {
+									"description": "WebSocket URL for debugging this target.",
+									"type": "string"
+								}
+							},
+							"required": [
+								"sessionId"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Returns the session details."
+			},
+			"404": {
+				"description": "Session not found."
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": [],
+				"api_token": []
+			}
+		],
+		"summary": "Get session details.",
+		"tags": [
+			"brapi"
+		],
+		"x-api-token-group": [
+			"Browser Rendering Write",
+			"Browser Rendering Read"
+		],
+		"x-cfPermissionsRequired": {
+			"enum": [
+				"com.cloudflare.api.account.brapi.read"
+			],
+			"type": "string"
+		},
+		"x-cfPlanAvailability": {
+			"business": true,
+			"enterprise": true,
+			"free": true,
+			"pro": true
+		}
+	},
 	"POST /accounts/{account_id}/browser-rendering/content": {
 		"description": "Fetches rendered HTML content from provided URL or HTML. Check available options like `gotoOptions` and `waitFor*` to control page load behaviour.",
 		"operationId": "brapi-post_Content",
@@ -1483,7 +4118,1485 @@
 		],
 		"summary": "Get HTML content.",
 		"tags": [
-			"Quick Actions"
+			"brapi"
+		],
+		"x-api-token-group": [
+			"Browser Rendering Write"
+		],
+		"x-cfPermissionsRequired": {
+			"enum": [
+				"com.cloudflare.api.account.brapi.read"
+			],
+			"type": "string"
+		},
+		"x-cfPlanAvailability": {
+			"business": true,
+			"enterprise": true,
+			"free": true,
+			"pro": true
+		}
+	},
+	"POST /accounts/{account_id}/browser-rendering/crawl": {
+		"description": "Starts a crawl job for the provided URL and its children. Check available options like `gotoOptions` and `waitFor*` to control page load behaviour.",
+		"operationId": "brapi-post_Crawl",
+		"parameters": [
+			{
+				"description": "Account ID.",
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"description": "Account ID.",
+					"type": "string"
+				}
+			},
+			{
+				"description": "Cache TTL default is 5s. Set to 0 to disable.",
+				"in": "query",
+				"name": "cacheTTL",
+				"schema": {
+					"default": 5,
+					"description": "Cache TTL default is 5s. Set to 0 to disable.",
+					"maximum": 86400,
+					"type": "number"
+				}
+			}
+		],
+		"requestBody": {
+			"content": {
+				"application/json": {
+					"examples": {
+						"example1": {
+							"value": {
+								"url": "https://www.example.com/"
+							}
+						}
+					},
+					"schema": {
+						"allOf": [
+							{
+								"anyOf": [
+									{
+										"additionalProperties": false,
+										"properties": {
+											"actionTimeout": {
+												"description": "The maximum duration allowed for the browser action to complete after the page has loaded (such as taking screenshots, extracting content, or generating PDFs). If this time limit is exceeded, the action stops and returns a timeout error.",
+												"maximum": 120000,
+												"type": "number"
+											},
+											"addScriptTag": {
+												"description": "Adds a `<script>` tag into the page with the desired URL or content.",
+												"items": {
+													"properties": {
+														"content": {
+															"type": "string"
+														},
+														"id": {
+															"type": "string"
+														},
+														"type": {
+															"type": "string"
+														},
+														"url": {
+															"type": "string"
+														}
+													},
+													"type": "object"
+												},
+												"type": "array"
+											},
+											"addStyleTag": {
+												"description": "Adds a `<link rel=\"stylesheet\">` tag into the page with the desired URL or a `<style type=\"text/css\">` tag with the content.",
+												"items": {
+													"properties": {
+														"content": {
+															"type": "string"
+														},
+														"url": {
+															"type": "string"
+														}
+													},
+													"type": "object"
+												},
+												"type": "array"
+											},
+											"allowRequestPattern": {
+												"description": "Only allow requests that match the provided regex patterns, eg. '/^.*\\.(css)'.",
+												"items": {
+													"type": "string"
+												},
+												"type": "array"
+											},
+											"allowResourceTypes": {
+												"description": "Only allow requests that match the provided resource types, eg. 'image' or 'script'.",
+												"items": {
+													"anyOf": [
+														{
+															"enum": [
+																"document"
+															],
+															"type": "string"
+														},
+														{
+															"enum": [
+																"stylesheet"
+															],
+															"type": "string"
+														},
+														{
+															"enum": [
+																"image"
+															],
+															"type": "string"
+														},
+														{
+															"enum": [
+																"media"
+															],
+															"type": "string"
+														},
+														{
+															"enum": [
+																"font"
+															],
+															"type": "string"
+														},
+														{
+															"enum": [
+																"script"
+															],
+															"type": "string"
+														},
+														{
+															"enum": [
+																"texttrack"
+															],
+															"type": "string"
+														},
+														{
+															"enum": [
+																"xhr"
+															],
+															"type": "string"
+														},
+														{
+															"enum": [
+																"fetch"
+															],
+															"type": "string"
+														},
+														{
+															"enum": [
+																"prefetch"
+															],
+															"type": "string"
+														},
+														{
+															"enum": [
+																"eventsource"
+															],
+															"type": "string"
+														},
+														{
+															"enum": [
+																"websocket"
+															],
+															"type": "string"
+														},
+														{
+															"enum": [
+																"manifest"
+															],
+															"type": "string"
+														},
+														{
+															"enum": [
+																"signedexchange"
+															],
+															"type": "string"
+														},
+														{
+															"enum": [
+																"ping"
+															],
+															"type": "string"
+														},
+														{
+															"enum": [
+																"cspviolationreport"
+															],
+															"type": "string"
+														},
+														{
+															"enum": [
+																"preflight"
+															],
+															"type": "string"
+														},
+														{
+															"enum": [
+																"other"
+															],
+															"type": "string"
+														}
+													]
+												},
+												"type": "array"
+											},
+											"authenticate": {
+												"description": "Provide credentials for HTTP authentication.",
+												"properties": {
+													"password": {
+														"minLength": 1,
+														"type": "string",
+														"x-sensitive": true
+													},
+													"username": {
+														"minLength": 1,
+														"type": "string"
+													}
+												},
+												"required": [
+													"username",
+													"password"
+												],
+												"type": "object"
+											},
+											"bestAttempt": {
+												"description": "Attempt to proceed when 'awaited' events fail or timeout.",
+												"type": "boolean"
+											},
+											"cookies": {
+												"description": "Check [options](https://pptr.dev/api/puppeteer.page.setcookie).",
+												"items": {
+													"properties": {
+														"domain": {
+															"type": "string"
+														},
+														"expires": {
+															"type": "number"
+														},
+														"httpOnly": {
+															"type": "boolean"
+														},
+														"name": {
+															"description": "Cookie name.",
+															"type": "string"
+														},
+														"partitionKey": {
+															"type": "string"
+														},
+														"path": {
+															"type": "string"
+														},
+														"priority": {
+															"anyOf": [
+																{
+																	"enum": [
+																		"Low"
+																	],
+																	"type": "string"
+																},
+																{
+																	"enum": [
+																		"Medium"
+																	],
+																	"type": "string"
+																},
+																{
+																	"enum": [
+																		"High"
+																	],
+																	"type": "string"
+																}
+															]
+														},
+														"sameParty": {
+															"type": "boolean"
+														},
+														"sameSite": {
+															"anyOf": [
+																{
+																	"enum": [
+																		"Strict"
+																	],
+																	"type": "string"
+																},
+																{
+																	"enum": [
+																		"Lax"
+																	],
+																	"type": "string"
+																},
+																{
+																	"enum": [
+																		"None"
+																	],
+																	"type": "string"
+																}
+															]
+														},
+														"secure": {
+															"type": "boolean"
+														},
+														"sourcePort": {
+															"type": "number"
+														},
+														"sourceScheme": {
+															"anyOf": [
+																{
+																	"enum": [
+																		"Unset"
+																	],
+																	"type": "string"
+																},
+																{
+																	"enum": [
+																		"NonSecure"
+																	],
+																	"type": "string"
+																},
+																{
+																	"enum": [
+																		"Secure"
+																	],
+																	"type": "string"
+																}
+															]
+														},
+														"url": {
+															"type": "string"
+														},
+														"value": {
+															"type": "string"
+														}
+													},
+													"required": [
+														"name",
+														"value"
+													],
+													"type": "object"
+												},
+												"type": "array"
+											},
+											"crawlPurposes": {
+												"default": [
+													"search",
+													"ai-input",
+													"ai-train"
+												],
+												"description": "List of crawl purposes to respect Content-Signal directives in robots.txt. Allowed values: 'search', 'ai-input', 'ai-train'. Learn more: https://contentsignals.org/. Default: ['search', 'ai-input', 'ai-train'].",
+												"items": {
+													"anyOf": [
+														{
+															"enum": [
+																"search"
+															],
+															"type": "string"
+														},
+														{
+															"enum": [
+																"ai-input"
+															],
+															"type": "string"
+														},
+														{
+															"enum": [
+																"ai-train"
+															],
+															"type": "string"
+														}
+													]
+												},
+												"maxItems": 3,
+												"minItems": 1,
+												"type": "array"
+											},
+											"depth": {
+												"default": 100000,
+												"description": "Maximum number of levels deep the crawler will traverse from the starting URL.",
+												"maximum": 100000,
+												"minimum": 1,
+												"type": "number"
+											},
+											"emulateMediaType": {
+												"type": "string"
+											},
+											"formats": {
+												"default": [
+													"html"
+												],
+												"description": "Formats to return. Default is `html`.",
+												"items": {
+													"anyOf": [
+														{
+															"enum": [
+																"html"
+															],
+															"type": "string"
+														},
+														{
+															"enum": [
+																"markdown"
+															],
+															"type": "string"
+														},
+														{
+															"enum": [
+																"json"
+															],
+															"type": "string"
+														}
+													]
+												},
+												"type": "array"
+											},
+											"gotoOptions": {
+												"default": {},
+												"description": "Check [options](https://pptr.dev/api/puppeteer.gotooptions).",
+												"properties": {
+													"referer": {
+														"type": "string"
+													},
+													"referrerPolicy": {
+														"type": "string"
+													},
+													"timeout": {
+														"default": 30000,
+														"maximum": 60000,
+														"type": "number"
+													},
+													"waitUntil": {
+														"anyOf": [
+															{
+																"enum": [
+																	"load"
+																],
+																"type": "string"
+															},
+															{
+																"enum": [
+																	"domcontentloaded"
+																],
+																"type": "string"
+															},
+															{
+																"enum": [
+																	"networkidle0"
+																],
+																"type": "string"
+															},
+															{
+																"enum": [
+																	"networkidle2"
+																],
+																"type": "string"
+															},
+															{
+																"items": {
+																	"anyOf": [
+																		{
+																			"enum": [
+																				"load"
+																			],
+																			"type": "string"
+																		},
+																		{
+																			"enum": [
+																				"domcontentloaded"
+																			],
+																			"type": "string"
+																		},
+																		{
+																			"enum": [
+																				"networkidle0"
+																			],
+																			"type": "string"
+																		},
+																		{
+																			"enum": [
+																				"networkidle2"
+																			],
+																			"type": "string"
+																		}
+																	]
+																},
+																"type": "array"
+															}
+														],
+														"default": "domcontentloaded"
+													}
+												},
+												"type": "object"
+											},
+											"jsonOptions": {
+												"additionalProperties": false,
+												"description": "Options for JSON extraction.",
+												"properties": {
+													"custom_ai": {
+														"description": "Optional list of custom AI models to use for the request. The models will be tried in the order provided, and in case a model returns an error, the next one will be used as fallback.",
+														"items": {
+															"properties": {
+																"authorization": {
+																	"description": "Authorization token for the AI model: `Bearer <token>`. Not needed for workers-ai models.",
+																	"type": "string"
+																},
+																"model": {
+																	"description": "AI model to use for the request. Must be formed as `<provider>/<model_name>`, e.g. `workers-ai/@cf/meta/llama-3.3-70b-instruct-fp8-fast`.",
+																	"type": "string"
+																}
+															},
+															"required": [
+																"model"
+															],
+															"type": "object"
+														},
+														"type": "array"
+													},
+													"prompt": {
+														"type": "string"
+													},
+													"response_format": {
+														"properties": {
+															"json_schema": {
+																"additionalProperties": {
+																	"anyOf": [
+																		{
+																			"type": "string"
+																		},
+																		{
+																			"type": "number"
+																		},
+																		{
+																			"type": "boolean"
+																		},
+																		{
+																			"type": "object"
+																		},
+																		{
+																			"items": {
+																				"type": "string"
+																			},
+																			"type": "array"
+																		}
+																	]
+																},
+																"description": "Schema for the response format. More information here: https://developers.cloudflare.com/workers-ai/json-mode/",
+																"nullable": true,
+																"type": "object"
+															},
+															"type": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"type"
+														],
+														"type": "object"
+													}
+												},
+												"type": "object"
+											},
+											"limit": {
+												"default": 10,
+												"description": "Maximum number of URLs to crawl.",
+												"maximum": 100000,
+												"minimum": 1,
+												"type": "number"
+											},
+											"maxAge": {
+												"default": 86400,
+												"description": "Maximum age of a resource that can be returned from cache in seconds. Default is 1 day.",
+												"maximum": 604800,
+												"minimum": 0,
+												"type": "number"
+											},
+											"modifiedSince": {
+												"description": "Unix timestamp (seconds since epoch) indicating to only crawl pages that were modified since this time. For sitemap URLs with a lastmod field, this is compared directly. For other URLs, the crawler will use If-Modified-Since header when fetching. URLs without modification information (no lastmod in sitemap and no Last-Modified header support) will be crawled. Note: This works in conjunction with maxAge - both filters must pass for a cached resource to be used. Must be within the last year and not in the future.",
+												"exclusiveMinimum": true,
+												"minimum": 0,
+												"type": "integer"
+											},
+											"options": {
+												"default": {
+													"includeExternalLinks": false,
+													"includeSubdomains": false
+												},
+												"description": "Additional options for the crawler.",
+												"properties": {
+													"excludePatterns": {
+														"description": "Exclude links matching the provided wildcard patterns in the crawl job. Example: 'https://example.com/privacy/**'.",
+														"items": {
+															"maxLength": 500,
+															"minLength": 1,
+															"type": "string"
+														},
+														"maxItems": 100,
+														"type": "array"
+													},
+													"includeExternalLinks": {
+														"default": false,
+														"description": "Include external links in the crawl job. If set to true, includeSubdomains is ignored.",
+														"type": "boolean"
+													},
+													"includePatterns": {
+														"description": "Include only links matching the provided wildcard patterns in the crawl job. Include patterns are evaluated before exclude patterns. URLs that match any of the specified include patterns will be included in the crawl job. Example: 'https://example.com/blog/**'.",
+														"items": {
+															"maxLength": 500,
+															"minLength": 1,
+															"type": "string"
+														},
+														"maxItems": 100,
+														"type": "array"
+													},
+													"includeSubdomains": {
+														"default": false,
+														"description": "Include links to subdomains in the crawl job. This option is ignored if includeExternalLinks is true.",
+														"type": "boolean"
+													}
+												},
+												"type": "object"
+											},
+											"rejectRequestPattern": {
+												"description": "Block undesired requests that match the provided regex patterns, eg. '/^.*\\.(css)'.",
+												"items": {
+													"type": "string"
+												},
+												"type": "array"
+											},
+											"rejectResourceTypes": {
+												"description": "Block undesired requests that match the provided resource types, eg. 'image' or 'script'.",
+												"items": {
+													"anyOf": [
+														{
+															"enum": [
+																"document"
+															],
+															"type": "string"
+														},
+														{
+															"enum": [
+																"stylesheet"
+															],
+															"type": "string"
+														},
+														{
+															"enum": [
+																"image"
+															],
+															"type": "string"
+														},
+														{
+															"enum": [
+																"media"
+															],
+															"type": "string"
+														},
+														{
+															"enum": [
+																"font"
+															],
+															"type": "string"
+														},
+														{
+															"enum": [
+																"script"
+															],
+															"type": "string"
+														},
+														{
+															"enum": [
+																"texttrack"
+															],
+															"type": "string"
+														},
+														{
+															"enum": [
+																"xhr"
+															],
+															"type": "string"
+														},
+														{
+															"enum": [
+																"fetch"
+															],
+															"type": "string"
+														},
+														{
+															"enum": [
+																"prefetch"
+															],
+															"type": "string"
+														},
+														{
+															"enum": [
+																"eventsource"
+															],
+															"type": "string"
+														},
+														{
+															"enum": [
+																"websocket"
+															],
+															"type": "string"
+														},
+														{
+															"enum": [
+																"manifest"
+															],
+															"type": "string"
+														},
+														{
+															"enum": [
+																"signedexchange"
+															],
+															"type": "string"
+														},
+														{
+															"enum": [
+																"ping"
+															],
+															"type": "string"
+														},
+														{
+															"enum": [
+																"cspviolationreport"
+															],
+															"type": "string"
+														},
+														{
+															"enum": [
+																"preflight"
+															],
+															"type": "string"
+														},
+														{
+															"enum": [
+																"other"
+															],
+															"type": "string"
+														}
+													]
+												},
+												"type": "array"
+											},
+											"render": {
+												"default": true,
+												"description": "Whether to render the page or fetch static content. True by default.",
+												"enum": [
+													true
+												],
+												"type": "boolean"
+											},
+											"setExtraHTTPHeaders": {
+												"additionalProperties": {
+													"type": "string"
+												},
+												"type": "object"
+											},
+											"setJavaScriptEnabled": {
+												"type": "boolean"
+											},
+											"source": {
+												"anyOf": [
+													{
+														"enum": [
+															"sitemaps"
+														],
+														"type": "string"
+													},
+													{
+														"enum": [
+															"links"
+														],
+														"type": "string"
+													},
+													{
+														"enum": [
+															"all"
+														],
+														"type": "string"
+													}
+												],
+												"default": "all",
+												"description": "Source of links to crawl. 'sitemaps' - only crawl URLs from sitemaps, 'links' - only crawl URLs scraped from pages, 'all' - crawl both sitemap and scraped links (default)."
+											},
+											"url": {
+												"description": "URL to navigate to, eg. `https://example.com`.",
+												"format": "uri",
+												"type": "string"
+											},
+											"viewport": {
+												"default": {
+													"height": 1080,
+													"width": 1920
+												},
+												"description": "Check [options](https://pptr.dev/api/puppeteer.page.setviewport).",
+												"properties": {
+													"deviceScaleFactor": {
+														"type": "number"
+													},
+													"hasTouch": {
+														"type": "boolean"
+													},
+													"height": {
+														"type": "number"
+													},
+													"isLandscape": {
+														"type": "boolean"
+													},
+													"isMobile": {
+														"type": "boolean"
+													},
+													"width": {
+														"type": "number"
+													}
+												},
+												"required": [
+													"width",
+													"height"
+												],
+												"type": "object"
+											},
+											"waitForSelector": {
+												"description": "Wait for the selector to appear in page. Check [options](https://pptr.dev/api/puppeteer.page.waitforselector).",
+												"properties": {
+													"hidden": {
+														"enum": [
+															true
+														],
+														"type": "boolean"
+													},
+													"selector": {
+														"type": "string"
+													},
+													"timeout": {
+														"maximum": 120000,
+														"type": "number"
+													},
+													"visible": {
+														"enum": [
+															true
+														],
+														"type": "boolean"
+													}
+												},
+												"required": [
+													"selector"
+												],
+												"type": "object"
+											},
+											"waitForTimeout": {
+												"description": "Waits for a specified timeout before continuing.",
+												"maximum": 120000,
+												"type": "number"
+											}
+										},
+										"required": [
+											"url"
+										],
+										"type": "object"
+									},
+									{
+										"additionalProperties": false,
+										"properties": {
+											"crawlPurposes": {
+												"default": [
+													"search",
+													"ai-input",
+													"ai-train"
+												],
+												"description": "List of crawl purposes to respect Content-Signal directives in robots.txt. Allowed values: 'search', 'ai-input', 'ai-train'. Learn more: https://contentsignals.org/. Default: ['search', 'ai-input', 'ai-train'].",
+												"items": {
+													"anyOf": [
+														{
+															"enum": [
+																"search"
+															],
+															"type": "string"
+														},
+														{
+															"enum": [
+																"ai-input"
+															],
+															"type": "string"
+														},
+														{
+															"enum": [
+																"ai-train"
+															],
+															"type": "string"
+														}
+													]
+												},
+												"maxItems": 3,
+												"minItems": 1,
+												"type": "array"
+											},
+											"depth": {
+												"default": 100000,
+												"description": "Maximum number of levels deep the crawler will traverse from the starting URL.",
+												"maximum": 100000,
+												"minimum": 1,
+												"type": "number"
+											},
+											"formats": {
+												"default": [
+													"html"
+												],
+												"description": "Formats to return. Default is `html`.",
+												"items": {
+													"anyOf": [
+														{
+															"enum": [
+																"html"
+															],
+															"type": "string"
+														},
+														{
+															"enum": [
+																"markdown"
+															],
+															"type": "string"
+														},
+														{
+															"enum": [
+																"json"
+															],
+															"type": "string"
+														}
+													]
+												},
+												"type": "array"
+											},
+											"jsonOptions": {
+												"additionalProperties": false,
+												"description": "Options for JSON extraction.",
+												"properties": {
+													"custom_ai": {
+														"description": "Optional list of custom AI models to use for the request. The models will be tried in the order provided, and in case a model returns an error, the next one will be used as fallback.",
+														"items": {
+															"properties": {
+																"authorization": {
+																	"description": "Authorization token for the AI model: `Bearer <token>`. Not needed for workers-ai models.",
+																	"type": "string"
+																},
+																"model": {
+																	"description": "AI model to use for the request. Must be formed as `<provider>/<model_name>`, e.g. `workers-ai/@cf/meta/llama-3.3-70b-instruct-fp8-fast`.",
+																	"type": "string"
+																}
+															},
+															"required": [
+																"model"
+															],
+															"type": "object"
+														},
+														"type": "array"
+													},
+													"prompt": {
+														"type": "string"
+													},
+													"response_format": {
+														"properties": {
+															"json_schema": {
+																"additionalProperties": {
+																	"anyOf": [
+																		{
+																			"type": "string"
+																		},
+																		{
+																			"type": "number"
+																		},
+																		{
+																			"type": "boolean"
+																		},
+																		{
+																			"type": "object"
+																		},
+																		{
+																			"items": {
+																				"type": "string"
+																			},
+																			"type": "array"
+																		}
+																	]
+																},
+																"description": "Schema for the response format. More information here: https://developers.cloudflare.com/workers-ai/json-mode/",
+																"nullable": true,
+																"type": "object"
+															},
+															"type": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"type"
+														],
+														"type": "object"
+													}
+												},
+												"type": "object"
+											},
+											"limit": {
+												"default": 10,
+												"description": "Maximum number of URLs to crawl.",
+												"maximum": 100000,
+												"minimum": 1,
+												"type": "number"
+											},
+											"maxAge": {
+												"default": 86400,
+												"description": "Maximum age of a resource that can be returned from cache in seconds. Default is 1 day.",
+												"maximum": 604800,
+												"minimum": 0,
+												"type": "number"
+											},
+											"modifiedSince": {
+												"description": "Unix timestamp (seconds since epoch) indicating to only crawl pages that were modified since this time. For sitemap URLs with a lastmod field, this is compared directly. For other URLs, the crawler will use If-Modified-Since header when fetching. URLs without modification information (no lastmod in sitemap and no Last-Modified header support) will be crawled. Note: This works in conjunction with maxAge - both filters must pass for a cached resource to be used. Must be within the last year and not in the future.",
+												"exclusiveMinimum": true,
+												"minimum": 0,
+												"type": "integer"
+											},
+											"options": {
+												"default": {
+													"includeExternalLinks": false,
+													"includeSubdomains": false
+												},
+												"description": "Additional options for the crawler.",
+												"properties": {
+													"excludePatterns": {
+														"description": "Exclude links matching the provided wildcard patterns in the crawl job. Example: 'https://example.com/privacy/**'.",
+														"items": {
+															"maxLength": 500,
+															"minLength": 1,
+															"type": "string"
+														},
+														"maxItems": 100,
+														"type": "array"
+													},
+													"includeExternalLinks": {
+														"default": false,
+														"description": "Include external links in the crawl job. If set to true, includeSubdomains is ignored.",
+														"type": "boolean"
+													},
+													"includePatterns": {
+														"description": "Include only links matching the provided wildcard patterns in the crawl job. Include patterns are evaluated before exclude patterns. URLs that match any of the specified include patterns will be included in the crawl job. Example: 'https://example.com/blog/**'.",
+														"items": {
+															"maxLength": 500,
+															"minLength": 1,
+															"type": "string"
+														},
+														"maxItems": 100,
+														"type": "array"
+													},
+													"includeSubdomains": {
+														"default": false,
+														"description": "Include links to subdomains in the crawl job. This option is ignored if includeExternalLinks is true.",
+														"type": "boolean"
+													}
+												},
+												"type": "object"
+											},
+											"render": {
+												"description": "Whether to render the page or fetch static content. True by default.",
+												"enum": [
+													false
+												],
+												"type": "boolean"
+											},
+											"source": {
+												"anyOf": [
+													{
+														"enum": [
+															"sitemaps"
+														],
+														"type": "string"
+													},
+													{
+														"enum": [
+															"links"
+														],
+														"type": "string"
+													},
+													{
+														"enum": [
+															"all"
+														],
+														"type": "string"
+													}
+												],
+												"default": "all",
+												"description": "Source of links to crawl. 'sitemaps' - only crawl URLs from sitemaps, 'links' - only crawl URLs scraped from pages, 'all' - crawl both sitemap and scraped links (default)."
+											},
+											"url": {
+												"description": "URL to navigate to, eg. `https://example.com`.",
+												"format": "uri",
+												"type": "string"
+											}
+										},
+										"required": [
+											"url",
+											"render"
+										],
+										"type": "object"
+									}
+								]
+							}
+						]
+					}
+				}
+			},
+			"required": true
+		},
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"code": {
+												"description": "Error code.",
+												"type": "number"
+											},
+											"message": {
+												"description": "Error message.",
+												"type": "string"
+											}
+										},
+										"required": [
+											"message",
+											"code"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"result": {
+									"description": "Crawl job ID.",
+									"type": "string"
+								},
+								"success": {
+									"description": "Response status.",
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"result"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Returns the ID for the started crawl job."
+			},
+			"400": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"code": {
+												"description": "Error code.",
+												"type": "number"
+											},
+											"message": {
+												"description": "Error message.",
+												"type": "string"
+											}
+										},
+										"required": [
+											"message",
+											"code"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"success": {
+									"description": "Response status.",
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "The request contains errors or didn't properly encode content."
+			},
+			"429": {
+				"content": {
+					"application/json": {
+						"example": {
+							"errors": [
+								{
+									"code": 2001,
+									"message": "Rate limit exceeded"
+								}
+							],
+							"success": false
+						},
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"code": {
+												"description": "Error code.",
+												"type": "number"
+											},
+											"message": {
+												"description": "Error message.",
+												"type": "string"
+											}
+										},
+										"required": [
+											"message",
+											"code"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"success": {
+									"description": "Response status.",
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Request failed due to rate limiting. The Retry-After header indicates when the client should retry the request.",
+				"headers": {
+					"Retry-After": {
+						"description": "Number of seconds to wait before retrying the request.",
+						"required": true,
+						"schema": {
+							"description": "Number of seconds to wait before retrying the request.",
+							"example": 60,
+							"type": "number"
+						}
+					}
+				}
+			},
+			"500": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"code": {
+												"description": "Error code.",
+												"type": "number"
+											},
+											"message": {
+												"description": "Error message.",
+												"type": "string"
+											}
+										},
+										"required": [
+											"message",
+											"code"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"success": {
+									"description": "Response status.",
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Internal server error."
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": [],
+				"api_token": []
+			}
+		],
+		"summary": "Crawl websites.",
+		"tags": [
+			"brapi"
+		],
+		"x-api-token-group": [
+			"Browser Rendering Write"
+		],
+		"x-cfPermissionsRequired": {
+			"enum": [
+				"com.cloudflare.api.account.brapi.read"
+			],
+			"type": "string"
+		},
+		"x-cfPlanAvailability": {
+			"business": true,
+			"enterprise": true,
+			"free": true,
+			"pro": true
+		}
+	},
+	"POST /accounts/{account_id}/browser-rendering/devtools/browser": {
+		"operationId": "brapi-post_DevtoolsAcquire",
+		"parameters": [
+			{
+				"description": "Account ID.",
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"description": "Account ID.",
+					"type": "string"
+				}
+			},
+			{
+				"description": "Keep-alive time in milliseconds.",
+				"in": "query",
+				"name": "keep_alive",
+				"schema": {
+					"default": 60000,
+					"description": "Keep-alive time in milliseconds.",
+					"maximum": 1200000,
+					"minimum": 10000,
+					"type": "number"
+				}
+			},
+			{
+				"description": "Use experimental browser.",
+				"in": "query",
+				"name": "lab",
+				"schema": {
+					"default": false,
+					"description": "Use experimental browser.",
+					"type": "boolean"
+				}
+			},
+			{
+				"description": "Include browser targets in response.",
+				"in": "query",
+				"name": "targets",
+				"schema": {
+					"default": false,
+					"description": "Include browser targets in response.",
+					"type": "boolean"
+				}
+			},
+			{
+				"in": "query",
+				"name": "recording",
+				"schema": {
+					"default": false,
+					"type": "boolean"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"sessionId": {
+									"description": "Browser session ID.",
+									"type": "string"
+								},
+								"webSocketDebuggerUrl": {
+									"description": "WebSocket URL for the session.",
+									"type": "string"
+								}
+							},
+							"required": [
+								"sessionId"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Returns a session ID ready to be connected to."
+			},
+			"429": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"code": {
+												"description": "Error code.",
+												"type": "number"
+											},
+											"message": {
+												"description": "Error message.",
+												"type": "string"
+											}
+										},
+										"required": [
+											"message",
+											"code"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"status": {
+									"description": "Response status.",
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"status"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Request failed due to rate limiting. The Retry-After header indicates when the client should retry the request.",
+				"headers": {
+					"Retry-After": {
+						"description": "Number of seconds to wait before retrying the request.",
+						"required": true,
+						"schema": {
+							"description": "Number of seconds to wait before retrying the request.",
+							"example": 60,
+							"type": "number"
+						}
+					}
+				}
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": [],
+				"api_token": []
+			}
+		],
+		"summary": "Get a browser session ID.",
+		"tags": [
+			"brapi"
 		],
 		"x-api-token-group": [
 			"Browser Rendering Write"
@@ -1502,7 +5615,7 @@
 		}
 	},
 	"POST /accounts/{account_id}/browser-rendering/json": {
-		"description": "Use AI to extract structured JSON from a webpage. Provide a `prompt` describing what to extract, or a `response_format` with a JSON schema for typed output. Supports both URL and raw HTML input.",
+		"description": "Gets json from a webpage from a provided URL or HTML. Pass `prompt` or `schema` in the body. Control page loading with `gotoOptions` and `waitFor*` options.",
 		"operationId": "brapi-post_Json",
 		"parameters": [
 			{
@@ -3101,9 +7214,9 @@
 				"api_token": []
 			}
 		],
-		"summary": "Extract structured JSON data.",
+		"summary": "Get json.",
 		"tags": [
-			"Quick Actions"
+			"brapi"
 		],
 		"x-api-token-group": [
 			"Browser Rendering Write"
@@ -4612,7 +8725,7 @@
 		],
 		"summary": "Get Links.",
 		"tags": [
-			"Quick Actions"
+			"brapi"
 		],
 		"x-api-token-group": [
 			"Browser Rendering Write"
@@ -6102,7 +10215,7 @@
 		],
 		"summary": "Get markdown.",
 		"tags": [
-			"Quick Actions"
+			"brapi"
 		],
 		"x-api-token-group": [
 			"Browser Rendering Write"
@@ -7866,7 +11979,7 @@
 		],
 		"summary": "Get PDF.",
 		"tags": [
-			"Quick Actions"
+			"brapi"
 		],
 		"x-api-token-group": [
 			"Browser Rendering Write"
@@ -9464,7 +13577,7 @@
 		],
 		"summary": "Scrape elements.",
 		"tags": [
-			"Quick Actions"
+			"brapi"
 		],
 		"x-api-token-group": [
 			"Browser Rendering Write"
@@ -11170,7 +15283,7 @@
 		],
 		"summary": "Get screenshot.",
 		"tags": [
-			"Quick Actions"
+			"brapi"
 		],
 		"x-api-token-group": [
 			"Browser Rendering Write"
@@ -12833,10 +16946,193 @@
 		],
 		"summary": "Get HTML content and screenshot.",
 		"tags": [
-			"Quick Actions"
+			"brapi"
 		],
 		"x-api-token-group": [
 			"Browser Rendering Write"
+		],
+		"x-cfPermissionsRequired": {
+			"enum": [
+				"com.cloudflare.api.account.brapi.read"
+			],
+			"type": "string"
+		},
+		"x-cfPlanAvailability": {
+			"business": true,
+			"enterprise": true,
+			"free": true,
+			"pro": true
+		}
+	},
+	"PUT /accounts/{account_id}/browser-rendering/devtools/browser/{session_id}/json/new": {
+		"description": "Opens a new tab in the browser. Optionally specify a URL to navigate to.",
+		"operationId": "brapi-put_DevtoolsJsonNew",
+		"parameters": [
+			{
+				"description": "Account ID.",
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"description": "Account ID.",
+					"type": "string"
+				}
+			},
+			{
+				"description": "Browser session ID.",
+				"in": "path",
+				"name": "session_id",
+				"required": true,
+				"schema": {
+					"description": "Browser session ID.",
+					"format": "uuid",
+					"type": "string"
+				}
+			},
+			{
+				"in": "query",
+				"name": "url",
+				"schema": {
+					"format": "uri",
+					"type": "string"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"description": {
+									"description": "Target description.",
+									"type": "string"
+								},
+								"devtoolsFrontendUrl": {
+									"description": "DevTools frontend URL.",
+									"type": "string"
+								},
+								"id": {
+									"description": "Target ID.",
+									"type": "string"
+								},
+								"title": {
+									"description": "Title of the target.",
+									"type": "string"
+								},
+								"type": {
+									"description": "Target type (page, background_page, worker, etc.).",
+									"type": "string"
+								},
+								"url": {
+									"description": "URL of the target.",
+									"type": "string"
+								},
+								"webSocketDebuggerUrl": {
+									"description": "WebSocket URL for debugging this target.",
+									"type": "string"
+								}
+							},
+							"required": [
+								"id",
+								"type",
+								"url"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Information about the newly created tab."
+			},
+			"400": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"code": {
+												"description": "Error code.",
+												"type": "number"
+											},
+											"message": {
+												"description": "Error message.",
+												"type": "string"
+											}
+										},
+										"required": [
+											"message",
+											"code"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"success": {
+									"description": "Response status.",
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Bad request."
+			},
+			"500": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"code": {
+												"description": "Error code.",
+												"type": "number"
+											},
+											"message": {
+												"description": "Error message.",
+												"type": "string"
+											}
+										},
+										"required": [
+											"message",
+											"code"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"success": {
+									"description": "Response status.",
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Internal server error."
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": [],
+				"api_token": []
+			}
+		],
+		"summary": "Open a new browser tab.",
+		"tags": [
+			"brapi"
 		],
 		"x-cfPermissionsRequired": {
 			"enum": [

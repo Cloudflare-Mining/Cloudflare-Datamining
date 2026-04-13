@@ -254,6 +254,25 @@
 												"created_from_aisearch_wizard": {
 													"type": "boolean"
 												},
+												"search_for_agents": {
+													"properties": {
+														"hostname": {
+															"type": "string"
+														},
+														"zone_id": {
+															"type": "string"
+														},
+														"zone_name": {
+															"type": "string"
+														}
+													},
+													"required": [
+														"zone_id",
+														"zone_name",
+														"hostname"
+													],
+													"type": "object"
+												},
 												"worker_domain": {
 													"type": "string"
 												}
@@ -414,7 +433,7 @@
 												},
 												"keyword_match_mode": {
 													"default": "and",
-													"description": "Controls which documents are candidates for BM25 scoring. 'and' restricts candidates to documents containing all query terms; 'or' includes any document containing at least one term, ranked by BM25 relevance. Defaults to 'and'. Legacy values 'exact_match' and 'fuzzy_match' are accepted and map to 'and' and 'or' respectively.",
+													"description": "Controls which documents are candidates for BM25 scoring. 'and' restricts candidates to documents containing all query terms; 'or' includes any document containing at least one term, ranked by BM25 relevance. Defaults to 'and'.",
 													"enum": [
 														"and",
 														"or"
@@ -1074,6 +1093,25 @@
 												"created_from_aisearch_wizard": {
 													"type": "boolean"
 												},
+												"search_for_agents": {
+													"properties": {
+														"hostname": {
+															"type": "string"
+														},
+														"zone_id": {
+															"type": "string"
+														},
+														"zone_name": {
+															"type": "string"
+														}
+													},
+													"required": [
+														"zone_id",
+														"zone_name",
+														"hostname"
+													],
+													"type": "object"
+												},
 												"worker_domain": {
 													"type": "string"
 												}
@@ -1234,7 +1272,7 @@
 												},
 												"keyword_match_mode": {
 													"default": "and",
-													"description": "Controls which documents are candidates for BM25 scoring. 'and' restricts candidates to documents containing all query terms; 'or' includes any document containing at least one term, ranked by BM25 relevance. Defaults to 'and'. Legacy values 'exact_match' and 'fuzzy_match' are accepted and map to 'and' and 'or' respectively.",
+													"description": "Controls which documents are candidates for BM25 scoring. 'and' restricts candidates to documents containing all query terms; 'or' includes any document containing at least one term, ranked by BM25 relevance. Defaults to 'and'.",
 													"enum": [
 														"and",
 														"or"
@@ -1935,6 +1973,25 @@
 													"created_from_aisearch_wizard": {
 														"type": "boolean"
 													},
+													"search_for_agents": {
+														"properties": {
+															"hostname": {
+																"type": "string"
+															},
+															"zone_id": {
+																"type": "string"
+															},
+															"zone_name": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"zone_id",
+															"zone_name",
+															"hostname"
+														],
+														"type": "object"
+													},
 													"worker_domain": {
 														"type": "string"
 													}
@@ -2095,7 +2152,7 @@
 													},
 													"keyword_match_mode": {
 														"default": "and",
-														"description": "Controls which documents are candidates for BM25 scoring. 'and' restricts candidates to documents containing all query terms; 'or' includes any document containing at least one term, ranked by BM25 relevance. Defaults to 'and'. Legacy values 'exact_match' and 'fuzzy_match' are accepted and map to 'and' and 'or' respectively.",
+														"description": "Controls which documents are candidates for BM25 scoring. 'and' restricts candidates to documents containing all query terms; 'or' includes any document containing at least one term, ranked by BM25 relevance. Defaults to 'and'.",
 														"enum": [
 															"and",
 															"or"
@@ -2754,6 +2811,25 @@
 												"created_from_aisearch_wizard": {
 													"type": "boolean"
 												},
+												"search_for_agents": {
+													"properties": {
+														"hostname": {
+															"type": "string"
+														},
+														"zone_id": {
+															"type": "string"
+														},
+														"zone_name": {
+															"type": "string"
+														}
+													},
+													"required": [
+														"zone_id",
+														"zone_name",
+														"hostname"
+													],
+													"type": "object"
+												},
 												"worker_domain": {
 													"type": "string"
 												}
@@ -2914,7 +2990,7 @@
 												},
 												"keyword_match_mode": {
 													"default": "and",
-													"description": "Controls which documents are candidates for BM25 scoring. 'and' restricts candidates to documents containing all query terms; 'or' includes any document containing at least one term, ranked by BM25 relevance. Defaults to 'and'. Legacy values 'exact_match' and 'fuzzy_match' are accepted and map to 'and' and 'or' respectively.",
+													"description": "Controls which documents are candidates for BM25 scoring. 'and' restricts candidates to documents containing all query terms; 'or' includes any document containing at least one term, ranked by BM25 relevance. Defaults to 'and'.",
 													"enum": [
 														"and",
 														"or"
@@ -3864,6 +3940,25 @@
 													"created_from_aisearch_wizard": {
 														"type": "boolean"
 													},
+													"search_for_agents": {
+														"properties": {
+															"hostname": {
+																"type": "string"
+															},
+															"zone_id": {
+																"type": "string"
+															},
+															"zone_name": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"zone_id",
+															"zone_name",
+															"hostname"
+														],
+														"type": "object"
+													},
 													"worker_domain": {
 														"type": "string"
 													}
@@ -4024,7 +4119,7 @@
 													},
 													"keyword_match_mode": {
 														"default": "and",
-														"description": "Controls which documents are candidates for BM25 scoring. 'and' restricts candidates to documents containing all query terms; 'or' includes any document containing at least one term, ranked by BM25 relevance. Defaults to 'and'. Legacy values 'exact_match' and 'fuzzy_match' are accepted and map to 'and' and 'or' respectively.",
+														"description": "Controls which documents are candidates for BM25 scoring. 'and' restricts candidates to documents containing all query terms; 'or' includes any document containing at least one term, ranked by BM25 relevance. Defaults to 'and'.",
 														"enum": [
 															"and",
 															"or"
@@ -4693,6 +4788,25 @@
 												"created_from_aisearch_wizard": {
 													"type": "boolean"
 												},
+												"search_for_agents": {
+													"properties": {
+														"hostname": {
+															"type": "string"
+														},
+														"zone_id": {
+															"type": "string"
+														},
+														"zone_name": {
+															"type": "string"
+														}
+													},
+													"required": [
+														"zone_id",
+														"zone_name",
+														"hostname"
+													],
+													"type": "object"
+												},
 												"worker_domain": {
 													"type": "string"
 												}
@@ -4853,7 +4967,7 @@
 												},
 												"keyword_match_mode": {
 													"default": "and",
-													"description": "Controls which documents are candidates for BM25 scoring. 'and' restricts candidates to documents containing all query terms; 'or' includes any document containing at least one term, ranked by BM25 relevance. Defaults to 'and'. Legacy values 'exact_match' and 'fuzzy_match' are accepted and map to 'and' and 'or' respectively.",
+													"description": "Controls which documents are candidates for BM25 scoring. 'and' restricts candidates to documents containing all query terms; 'or' includes any document containing at least one term, ranked by BM25 relevance. Defaults to 'and'.",
 													"enum": [
 														"and",
 														"or"
@@ -5646,6 +5760,13 @@
 								"type": "string",
 								"x-auditable": true
 							},
+							"hybrid_search_enabled": {
+								"default": false,
+								"deprecated": true,
+								"description": "Deprecated — use index_method instead.",
+								"type": "boolean",
+								"x-auditable": true
+							},
 							"id": {
 								"description": "AI Search instance ID. Lowercase alphanumeric, hyphens, and underscores.",
 								"example": "my-ai-search",
@@ -5705,6 +5826,25 @@
 								"properties": {
 									"created_from_aisearch_wizard": {
 										"type": "boolean"
+									},
+									"search_for_agents": {
+										"properties": {
+											"hostname": {
+												"type": "string"
+											},
+											"zone_id": {
+												"type": "string"
+											},
+											"zone_name": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"zone_id",
+											"zone_name",
+											"hostname"
+										],
+										"type": "object"
 									},
 									"worker_domain": {
 										"type": "string"
@@ -5846,7 +5986,7 @@
 									},
 									"keyword_match_mode": {
 										"default": "and",
-										"description": "Controls which documents are candidates for BM25 scoring. 'and' restricts candidates to documents containing all query terms; 'or' includes any document containing at least one term, ranked by BM25 relevance. Defaults to 'and'. Legacy values 'exact_match' and 'fuzzy_match' are accepted and map to 'and' and 'or' respectively.",
+										"description": "Controls which documents are candidates for BM25 scoring. 'and' restricts candidates to documents containing all query terms; 'or' includes any document containing at least one term, ranked by BM25 relevance. Defaults to 'and'.",
 										"enum": [
 											"and",
 											"or"
@@ -6383,6 +6523,25 @@
 												"created_from_aisearch_wizard": {
 													"type": "boolean"
 												},
+												"search_for_agents": {
+													"properties": {
+														"hostname": {
+															"type": "string"
+														},
+														"zone_id": {
+															"type": "string"
+														},
+														"zone_name": {
+															"type": "string"
+														}
+													},
+													"required": [
+														"zone_id",
+														"zone_name",
+														"hostname"
+													],
+													"type": "object"
+												},
 												"worker_domain": {
 													"type": "string"
 												}
@@ -6543,7 +6702,7 @@
 												},
 												"keyword_match_mode": {
 													"default": "and",
-													"description": "Controls which documents are candidates for BM25 scoring. 'and' restricts candidates to documents containing all query terms; 'or' includes any document containing at least one term, ranked by BM25 relevance. Defaults to 'and'. Legacy values 'exact_match' and 'fuzzy_match' are accepted and map to 'and' and 'or' respectively.",
+													"description": "Controls which documents are candidates for BM25 scoring. 'and' restricts candidates to documents containing all query terms; 'or' includes any document containing at least one term, ranked by BM25 relevance. Defaults to 'and'.",
 													"enum": [
 														"and",
 														"or"
@@ -7141,7 +7300,7 @@
 											},
 											"keyword_match_mode": {
 												"default": "and",
-												"description": "Controls which documents are candidates for BM25 scoring. 'and' restricts candidates to documents containing all query terms; 'or' includes any document containing at least one term, ranked by BM25 relevance. Defaults to 'and'. Legacy values 'exact_match' and 'fuzzy_match' are accepted and map to 'and' and 'or' respectively.",
+												"description": "Controls which documents are candidates for BM25 scoring. 'and' restricts candidates to documents containing all query terms; 'or' includes any document containing at least one term, ranked by BM25 relevance. Defaults to 'and'.",
 												"enum": [
 													"and",
 													"or"
@@ -7666,7 +7825,7 @@
 											},
 											"keyword_match_mode": {
 												"default": "and",
-												"description": "Controls which documents are candidates for BM25 scoring. 'and' restricts candidates to documents containing all query terms; 'or' includes any document containing at least one term, ranked by BM25 relevance. Defaults to 'and'. Legacy values 'exact_match' and 'fuzzy_match' are accepted and map to 'and' and 'or' respectively.",
+												"description": "Controls which documents are candidates for BM25 scoring. 'and' restricts candidates to documents containing all query terms; 'or' includes any document containing at least one term, ranked by BM25 relevance. Defaults to 'and'.",
 												"enum": [
 													"and",
 													"or"
@@ -7730,11 +7889,13 @@
 								},
 								"minItems": 1,
 								"type": "array"
+							},
+							"query": {
+								"description": "A simple text query string. Alternative to 'messages' — provide either this or 'messages', not both.",
+								"minLength": 1,
+								"type": "string"
 							}
 						},
-						"required": [
-							"messages"
-						],
 						"type": "object"
 					}
 				}
@@ -8075,6 +8236,13 @@
 								"type": "string",
 								"x-auditable": true
 							},
+							"hybrid_search_enabled": {
+								"default": false,
+								"deprecated": true,
+								"description": "Deprecated — use index_method instead.",
+								"type": "boolean",
+								"x-auditable": true
+							},
 							"id": {
 								"description": "AI Search instance ID. Lowercase alphanumeric, hyphens, and underscores.",
 								"example": "my-ai-search",
@@ -8134,6 +8302,25 @@
 								"properties": {
 									"created_from_aisearch_wizard": {
 										"type": "boolean"
+									},
+									"search_for_agents": {
+										"properties": {
+											"hostname": {
+												"type": "string"
+											},
+											"zone_id": {
+												"type": "string"
+											},
+											"zone_name": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"zone_id",
+											"zone_name",
+											"hostname"
+										],
+										"type": "object"
 									},
 									"worker_domain": {
 										"type": "string"
@@ -8275,7 +8462,7 @@
 									},
 									"keyword_match_mode": {
 										"default": "and",
-										"description": "Controls which documents are candidates for BM25 scoring. 'and' restricts candidates to documents containing all query terms; 'or' includes any document containing at least one term, ranked by BM25 relevance. Defaults to 'and'. Legacy values 'exact_match' and 'fuzzy_match' are accepted and map to 'and' and 'or' respectively.",
+										"description": "Controls which documents are candidates for BM25 scoring. 'and' restricts candidates to documents containing all query terms; 'or' includes any document containing at least one term, ranked by BM25 relevance. Defaults to 'and'.",
 										"enum": [
 											"and",
 											"or"
@@ -8812,6 +8999,25 @@
 												"created_from_aisearch_wizard": {
 													"type": "boolean"
 												},
+												"search_for_agents": {
+													"properties": {
+														"hostname": {
+															"type": "string"
+														},
+														"zone_id": {
+															"type": "string"
+														},
+														"zone_name": {
+															"type": "string"
+														}
+													},
+													"required": [
+														"zone_id",
+														"zone_name",
+														"hostname"
+													],
+													"type": "object"
+												},
 												"worker_domain": {
 													"type": "string"
 												}
@@ -8972,7 +9178,7 @@
 												},
 												"keyword_match_mode": {
 													"default": "and",
-													"description": "Controls which documents are candidates for BM25 scoring. 'and' restricts candidates to documents containing all query terms; 'or' includes any document containing at least one term, ranked by BM25 relevance. Defaults to 'and'. Legacy values 'exact_match' and 'fuzzy_match' are accepted and map to 'and' and 'or' respectively.",
+													"description": "Controls which documents are candidates for BM25 scoring. 'and' restricts candidates to documents containing all query terms; 'or' includes any document containing at least one term, ranked by BM25 relevance. Defaults to 'and'.",
 													"enum": [
 														"and",
 														"or"
@@ -9580,7 +9786,7 @@
 											},
 											"keyword_match_mode": {
 												"default": "and",
-												"description": "Controls which documents are candidates for BM25 scoring. 'and' restricts candidates to documents containing all query terms; 'or' includes any document containing at least one term, ranked by BM25 relevance. Defaults to 'and'. Legacy values 'exact_match' and 'fuzzy_match' are accepted and map to 'and' and 'or' respectively.",
+												"description": "Controls which documents are candidates for BM25 scoring. 'and' restricts candidates to documents containing all query terms; 'or' includes any document containing at least one term, ranked by BM25 relevance. Defaults to 'and'.",
 												"enum": [
 													"and",
 													"or"
@@ -10115,7 +10321,7 @@
 											},
 											"keyword_match_mode": {
 												"default": "and",
-												"description": "Controls which documents are candidates for BM25 scoring. 'and' restricts candidates to documents containing all query terms; 'or' includes any document containing at least one term, ranked by BM25 relevance. Defaults to 'and'. Legacy values 'exact_match' and 'fuzzy_match' are accepted and map to 'and' and 'or' respectively.",
+												"description": "Controls which documents are candidates for BM25 scoring. 'and' restricts candidates to documents containing all query terms; 'or' includes any document containing at least one term, ranked by BM25 relevance. Defaults to 'and'.",
 												"enum": [
 													"and",
 													"or"
@@ -10179,11 +10385,13 @@
 								},
 								"minItems": 1,
 								"type": "array"
+							},
+							"query": {
+								"description": "A simple text query string. Alternative to 'messages' — provide either this or 'messages', not both.",
+								"minLength": 1,
+								"type": "string"
 							}
 						},
-						"required": [
-							"messages"
-						],
 						"type": "object"
 					}
 				}
@@ -10580,6 +10788,25 @@
 									"created_from_aisearch_wizard": {
 										"type": "boolean"
 									},
+									"search_for_agents": {
+										"properties": {
+											"hostname": {
+												"type": "string"
+											},
+											"zone_id": {
+												"type": "string"
+											},
+											"zone_name": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"zone_id",
+											"zone_name",
+											"hostname"
+										],
+										"type": "object"
+									},
 									"worker_domain": {
 										"type": "string"
 									}
@@ -10719,7 +10946,7 @@
 									},
 									"keyword_match_mode": {
 										"default": "and",
-										"description": "Controls which documents are candidates for BM25 scoring. 'and' restricts candidates to documents containing all query terms; 'or' includes any document containing at least one term, ranked by BM25 relevance. Defaults to 'and'. Legacy values 'exact_match' and 'fuzzy_match' are accepted and map to 'and' and 'or' respectively.",
+										"description": "Controls which documents are candidates for BM25 scoring. 'and' restricts candidates to documents containing all query terms; 'or' includes any document containing at least one term, ranked by BM25 relevance. Defaults to 'and'.",
 										"enum": [
 											"and",
 											"or"
@@ -11296,6 +11523,25 @@
 												"created_from_aisearch_wizard": {
 													"type": "boolean"
 												},
+												"search_for_agents": {
+													"properties": {
+														"hostname": {
+															"type": "string"
+														},
+														"zone_id": {
+															"type": "string"
+														},
+														"zone_name": {
+															"type": "string"
+														}
+													},
+													"required": [
+														"zone_id",
+														"zone_name",
+														"hostname"
+													],
+													"type": "object"
+												},
 												"worker_domain": {
 													"type": "string"
 												}
@@ -11456,7 +11702,7 @@
 												},
 												"keyword_match_mode": {
 													"default": "and",
-													"description": "Controls which documents are candidates for BM25 scoring. 'and' restricts candidates to documents containing all query terms; 'or' includes any document containing at least one term, ranked by BM25 relevance. Defaults to 'and'. Legacy values 'exact_match' and 'fuzzy_match' are accepted and map to 'and' and 'or' respectively.",
+													"description": "Controls which documents are candidates for BM25 scoring. 'and' restricts candidates to documents containing all query terms; 'or' includes any document containing at least one term, ranked by BM25 relevance. Defaults to 'and'.",
 													"enum": [
 														"and",
 														"or"
@@ -12074,6 +12320,25 @@
 									"created_from_aisearch_wizard": {
 										"type": "boolean"
 									},
+									"search_for_agents": {
+										"properties": {
+											"hostname": {
+												"type": "string"
+											},
+											"zone_id": {
+												"type": "string"
+											},
+											"zone_name": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"zone_id",
+											"zone_name",
+											"hostname"
+										],
+										"type": "object"
+									},
 									"worker_domain": {
 										"type": "string"
 									}
@@ -12213,7 +12478,7 @@
 									},
 									"keyword_match_mode": {
 										"default": "and",
-										"description": "Controls which documents are candidates for BM25 scoring. 'and' restricts candidates to documents containing all query terms; 'or' includes any document containing at least one term, ranked by BM25 relevance. Defaults to 'and'. Legacy values 'exact_match' and 'fuzzy_match' are accepted and map to 'and' and 'or' respectively.",
+										"description": "Controls which documents are candidates for BM25 scoring. 'and' restricts candidates to documents containing all query terms; 'or' includes any document containing at least one term, ranked by BM25 relevance. Defaults to 'and'.",
 										"enum": [
 											"and",
 											"or"
@@ -12790,6 +13055,25 @@
 												"created_from_aisearch_wizard": {
 													"type": "boolean"
 												},
+												"search_for_agents": {
+													"properties": {
+														"hostname": {
+															"type": "string"
+														},
+														"zone_id": {
+															"type": "string"
+														},
+														"zone_name": {
+															"type": "string"
+														}
+													},
+													"required": [
+														"zone_id",
+														"zone_name",
+														"hostname"
+													],
+													"type": "object"
+												},
 												"worker_domain": {
 													"type": "string"
 												}
@@ -12950,7 +13234,7 @@
 												},
 												"keyword_match_mode": {
 													"default": "and",
-													"description": "Controls which documents are candidates for BM25 scoring. 'and' restricts candidates to documents containing all query terms; 'or' includes any document containing at least one term, ranked by BM25 relevance. Defaults to 'and'. Legacy values 'exact_match' and 'fuzzy_match' are accepted and map to 'and' and 'or' respectively.",
+													"description": "Controls which documents are candidates for BM25 scoring. 'and' restricts candidates to documents containing all query terms; 'or' includes any document containing at least one term, ranked by BM25 relevance. Defaults to 'and'.",
 													"enum": [
 														"and",
 														"or"
