@@ -1,5 +1,6 @@
 {
 	"DELETE /accounts/{account_id}/cloudforce-one/requests/priority/{priority_id}": {
+		"description": "Deletes a priority intelligence request from Cloudforce One.",
 		"operationId": "cloudforce-one-priority-delete",
 		"parameters": [
 			{
@@ -246,6 +247,7 @@
 		]
 	},
 	"GET /accounts/{account_id}/cloudforce-one/requests/priority/{priority_id}": {
+		"description": "Retrieves a specific priority intelligence request from Cloudforce One.",
 		"operationId": "cloudforce-one-priority-get",
 		"parameters": [
 			{
@@ -615,6 +617,7 @@
 		]
 	},
 	"GET /accounts/{account_id}/cloudforce-one/requests/priority/quota": {
+		"description": "Retrieves quota usage for Cloudforce One priority requests.",
 		"operationId": "cloudforce-one-priority-quota",
 		"parameters": [
 			{
@@ -906,6 +909,7 @@
 		]
 	},
 	"POST /accounts/{account_id}/cloudforce-one/requests/priority": {
+		"description": "Lists priority intelligence requests in Cloudforce One.",
 		"operationId": "cloudforce-one-priority-list",
 		"parameters": [
 			{
@@ -1260,6 +1264,7 @@
 		]
 	},
 	"POST /accounts/{account_id}/cloudforce-one/requests/priority/new": {
+		"description": "Creates a new priority intelligence request in Cloudforce One.",
 		"operationId": "cloudforce-one-priority-new",
 		"parameters": [
 			{
@@ -1642,6 +1647,7 @@
 		]
 	},
 	"PUT /accounts/{account_id}/cloudforce-one/requests/priority/{priority_id}": {
+		"description": "Updates a priority intelligence request in Cloudforce One.",
 		"operationId": "cloudforce-one-priority-update",
 		"parameters": [
 			{

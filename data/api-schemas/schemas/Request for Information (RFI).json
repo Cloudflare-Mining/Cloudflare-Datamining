@@ -1,5 +1,6 @@
 {
 	"DELETE /accounts/{account_id}/cloudforce-one/requests/{request_id}": {
+		"description": "Deletes a Cloudforce One intelligence request and all associated data.",
 		"operationId": "cloudforce-one-request-delete",
 		"parameters": [
 			{
@@ -246,6 +247,7 @@
 		]
 	},
 	"DELETE /accounts/{account_id}/cloudforce-one/requests/{request_id}/asset/{asset_id}": {
+		"description": "Removes an asset from a Cloudforce One intelligence request.",
 		"operationId": "cloudforce-one-request-asset-delete",
 		"parameters": [
 			{
@@ -503,6 +505,7 @@
 		]
 	},
 	"DELETE /accounts/{account_id}/cloudforce-one/requests/{request_id}/message/{message_id}": {
+		"description": "Removes a message from a Cloudforce One intelligence request thread.",
 		"operationId": "cloudforce-one-request-message-delete",
 		"parameters": [
 			{
@@ -757,6 +760,7 @@
 		]
 	},
 	"GET /accounts/{account_id}/cloudforce-one/requests/{request_id}": {
+		"description": "Retrieves details for a specific Cloudforce One intelligence request.",
 		"operationId": "cloudforce-one-request-get",
 		"parameters": [
 			{
@@ -1122,6 +1126,7 @@
 		]
 	},
 	"GET /accounts/{account_id}/cloudforce-one/requests/{request_id}/asset/{asset_id}": {
+		"description": "Retrieves an asset attached to a Cloudforce One intelligence request.",
 		"operationId": "cloudforce-one-request-asset-get",
 		"parameters": [
 			{
@@ -1437,6 +1442,7 @@
 		]
 	},
 	"GET /accounts/{account_id}/cloudforce-one/requests/constants": {
+		"description": "Retrieves constant values used in Cloudforce One requests, including valid statuses and types.",
 		"operationId": "cloudforce-one-request-constants",
 		"parameters": [
 			{
@@ -1754,6 +1760,7 @@
 		]
 	},
 	"GET /accounts/{account_id}/cloudforce-one/requests/quota": {
+		"description": "Retrieves quota usage for Cloudforce One standard requests.",
 		"operationId": "cloudforce-one-request-quota",
 		"parameters": [
 			{
@@ -2041,6 +2048,7 @@
 		]
 	},
 	"GET /accounts/{account_id}/cloudforce-one/requests/types": {
+		"description": "Lists available request types for Cloudforce One intelligence requests.",
 		"operationId": "cloudforce-one-request-types",
 		"parameters": [
 			{
@@ -2299,6 +2307,7 @@
 		]
 	},
 	"POST /accounts/{account_id}/cloudforce-one/requests": {
+		"description": "Lists Cloudforce One intelligence requests with filtering and pagination.",
 		"operationId": "cloudforce-one-request-list",
 		"parameters": [
 			{
@@ -2777,6 +2786,7 @@
 		]
 	},
 	"POST /accounts/{account_id}/cloudforce-one/requests/{request_id}/asset": {
+		"description": "Lists assets attached to a Cloudforce One intelligence request.",
 		"operationId": "cloudforce-one-request-asset-list",
 		"parameters": [
 			{
@@ -3106,6 +3116,7 @@
 		]
 	},
 	"POST /accounts/{account_id}/cloudforce-one/requests/{request_id}/asset/new": {
+		"description": "Uploads a new asset to a Cloudforce One intelligence request.",
 		"operationId": "cloudforce-one-request-asset-new",
 		"parameters": [
 			{
@@ -3424,6 +3435,7 @@
 		]
 	},
 	"POST /accounts/{account_id}/cloudforce-one/requests/{request_id}/message": {
+		"description": "Lists messages in a Cloudforce One intelligence request conversation.",
 		"operationId": "cloudforce-one-request-message-list",
 		"parameters": [
 			{
@@ -3804,6 +3816,7 @@
 		]
 	},
 	"POST /accounts/{account_id}/cloudforce-one/requests/{request_id}/message/new": {
+		"description": "Adds a message to a Cloudforce One intelligence request conversation.",
 		"operationId": "cloudforce-one-request-message-new",
 		"parameters": [
 			{
@@ -4954,6 +4967,7 @@
 		]
 	},
 	"PUT /accounts/{account_id}/cloudforce-one/requests/{request_id}/asset/{asset_id}": {
+		"description": "Updates an asset in a Cloudforce One intelligence request.",
 		"operationId": "cloudforce-one-request-asset-update",
 		"parameters": [
 			{
@@ -5283,6 +5297,7 @@
 		]
 	},
 	"PUT /accounts/{account_id}/cloudforce-one/requests/{request_id}/message/{message_id}": {
+		"description": "Updates a message in a Cloudforce One intelligence request thread.",
 		"operationId": "cloudforce-one-request-message-update",
 		"parameters": [
 			{
