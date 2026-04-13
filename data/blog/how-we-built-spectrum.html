@@ -1,13 +1,13 @@
 <div class="mb2 gray5">4 min read</div>
 <div class="mt4">This post is also available in <a href="https://blog.cloudflare.com/zh-cn/how-we-built-spectrum">简体中文</a>, <a href="https://blog.cloudflare.com/de-de/how-we-built-spectrum">Deutsch</a>, <a href="https://blog.cloudflare.com/ja-jp/how-we-built-spectrum">日本語</a>, <a href="https://blog.cloudflare.com/ko-kr/how-we-built-spectrum">한국어</a>, <a href="https://blog.cloudflare.com/es-es/how-we-built-spectrum">Español</a> and <a href="https://blog.cloudflare.com/fr-fr/how-we-built-spectrum">Français</a>.</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2fBc1UfFU6JKIdXFfqTLE1/4068183ffdde5483b46ed5f857b20bcd/how-we-built-spectrum.jpg" alt="">
 <div class="post-content lh-copy gray1">
-	<p>Today we are <a href="https://blog.cloudflare.com/spectrum">introducing Spectrum</a>: a new Cloudflare feature that brings <a href="https://www.cloudflare.com/ddos">DDoS protection</a>, load balancing, and content acceleration to any TCP-based protocol.</p>
+	<p>Today we are <a href="https://blog.cloudflare.com/spectrum">introducing Spectrum</a>: a new Cloudflare feature that brings <a href="https://www.cloudflare.com/ddos" target="_blank" rel="noopener noreferrer">DDoS protection</a>, load balancing, and content acceleration to any TCP-based protocol.</p>
 	<figure class="kg-card kg-image-card ">
 
 		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1Gm96owfEOWttanNpmKl0l/6e45398b0d60ed2730a9d838bc47a0e4/13334109713_0b32435032_z.jpg" alt="13334109713_0b32435032_z" class="kg-image" width="640" height="425" loading="lazy">
 
 	</figure>
-	<p><a href="https://creativecommons.org/licenses/by-sa/2.0">CC BY-SA 2.0</a> <a href="https://www.flickr.com/photos/liftarn/13334109713">image</a> by <a href="https://www.flickr.com/photos/liftarn">Staffan Vilcans</a></p>
+	<p><a href="https://creativecommons.org/licenses/by-sa/2.0" target="_blank" rel="noopener noreferrer">CC BY-SA 2.0</a> <a href="https://www.flickr.com/photos/liftarn/13334109713" target="_blank" rel="noopener noreferrer">image</a> by <a href="https://www.flickr.com/photos/liftarn" target="_blank" rel="noopener noreferrer">Staffan Vilcans</a></p>
 	<p>Soon after we started building Spectrum, we hit a major technical obstacle: Spectrum requires us to accept connections on any valid TCP port, from 1 to 65535. On our Linux edge servers it's impossible to "accept inbound connections on <i>any</i> port number". This is not a Linux-specific limitation: it's a characteristic of the BSD sockets API, the basis for network applications on most operating systems. Under the hood there are two overlapping problems that we needed to solve in order to deliver Spectrum:</p>
 	<ul>
 		<li>
@@ -26,7 +26,7 @@
 		</a>
 	</div>
 	<p>Cloudflare’s edge servers have an almost identical configuration. In our early days, we used to assign specific /32 (and /128) IP addresses to the loopback network interface<a href="https://blog.cloudflare.com/#fn1">[1]</a>. This worked well when we had dozens of IP addresses, but failed to scale as we grew.</p>
-	<p>Along came the <a href="https://blog.widodh.nl/2016/04/anyip-bind-a-whole-subnet-to-your-linux-machine">"AnyIP" trick</a>. AnyIP allows us to assign whole IP prefixes (subnets) to the loopback interface, expanding from specific IP addresses. There is already common use of AnyIP: your computer has 127.0.0.0/8 assigned to the loopback interface. From the point of view of your computer, all IP addresses from 127.0.0.1 to 127.255.255.254 belong to the local machine.</p>
+	<p>Along came the <a href="https://blog.widodh.nl/2016/04/anyip-bind-a-whole-subnet-to-your-linux-machine" target="_blank" rel="noopener noreferrer">"AnyIP" trick</a>. AnyIP allows us to assign whole IP prefixes (subnets) to the loopback interface, expanding from specific IP addresses. There is already common use of AnyIP: your computer has 127.0.0.0/8 assigned to the loopback interface. From the point of view of your computer, all IP addresses from 127.0.0.1 to 127.255.255.254 belong to the local machine.</p>
 	<p>This trick is applicable to more than the 127.0.0.1/8 block. To treat the whole range of 192.0.2.0/24 as assigned locally, run:</p>
 	<pre class="language-bash"><code class="language-bash">ip route add local 192.0.2.0/24 dev lo</code></pre>
 	<p>Following this, you can bind to port 8080 on one of these IP addresses just fine:</p>
@@ -58,13 +58,13 @@
 			<p><a href="https://blog.cloudflare.com/revenge-listening-sockets">The revenge of the listening sockets</a></p>
 		</li>
 	</ul>
-	<p>Internally, the Linux kernel stores listening sockets in a hash table indexed by port numbers, <a href="https://elixir.bootlin.com/linux/latest/source/include/net/inet_hashtables.h#L118">LHTABLE</a>, using exactly 32 buckets:</p>
+	<p>Internally, the Linux kernel stores listening sockets in a hash table indexed by port numbers, <a href="https://elixir.bootlin.com/linux/latest/source/include/net/inet_hashtables.h#L118" target="_blank" rel="noopener noreferrer">LHTABLE</a>, using exactly 32 buckets:</p>
 	<pre class="language-bash"><code class="language-bash">/* Yes, really, this is all you need. */
 #define INET_LHTABLE_SIZE       32</code></pre>
 	<p>Had we opened 65k ports, lookups to this table would slow drastically: each hash table bucket would contain two thousand items.</p>
 	<p>Another way to solve our problem would be to use iptables’ rich NAT features: we could rewrite the destination of inbound packets to some specific address/port, and our application would bind to that.</p>
-	<p>We didn't want to do this though, since it requires enabling the iptables <code>conntrack</code> module. Historically we found some <a href="http://patchwork.ozlabs.org/cover/810566">performance edge cases</a>, and conntrack cannot cope with some of the large DDoS attacks that we encounter.</p>
-	<p>Additionally, with the NAT approach we would lose destination IP address information. To remediate this, there exists a poorly known <code>SO_ORIGINAL_DST</code> socket option, but <a href="https://github.com/torvalds/linux/blob/b5dbc28762fd3fd40ba76303be0c7f707826f982/net/ipv4/netfilter/nf_conntrack_l3proto_ipv4.c">the code doesn't look encouraging</a>.</p>
+	<p>We didn't want to do this though, since it requires enabling the iptables <code>conntrack</code> module. Historically we found some <a href="http://patchwork.ozlabs.org/cover/810566" target="_blank" rel="noopener noreferrer">performance edge cases</a>, and conntrack cannot cope with some of the large DDoS attacks that we encounter.</p>
+	<p>Additionally, with the NAT approach we would lose destination IP address information. To remediate this, there exists a poorly known <code>SO_ORIGINAL_DST</code> socket option, but <a href="https://github.com/torvalds/linux/blob/b5dbc28762fd3fd40ba76303be0c7f707826f982/net/ipv4/netfilter/nf_conntrack_l3proto_ipv4.c" target="_blank" rel="noopener noreferrer">the code doesn't look encouraging</a>.</p>
 	<p>Fortunately, there is a way to achieve our goals that does not involve binding to all 65k ports, or use <code>conntrack</code>.</p>
 	<div class="flex anchor relative">
 		<h3 id="firewall-to-the-rescue">Firewall to the rescue</h3>
@@ -100,8 +100,8 @@
 		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3AmbKOGpP2SLYGI4dCFTvG/26b0fe28a0379e3a0203d0fcbe5b50f5/upload-1.jpg" alt="upload-1" class="kg-image" width="640" height="360" loading="lazy">
 
 	</figure>
-	<p>Source: <a href="https://www.youtube.com/watch?v=9CS7j5I6aOc">still from YouTube</a></p>
-	<p>At some point we stumbled upon the <code>TPROXY</code> iptables module. The <a href="http://ipset.netfilter.org/iptables-extensions.man.html">official documentation</a> is easy to overlook:</p>
+	<p>Source: <a href="https://www.youtube.com/watch?v=9CS7j5I6aOc" target="_blank" rel="noopener noreferrer">still from YouTube</a></p>
+	<p>At some point we stumbled upon the <code>TPROXY</code> iptables module. The <a href="http://ipset.netfilter.org/iptables-extensions.man.html" target="_blank" rel="noopener noreferrer">official documentation</a> is easy to overlook:</p>
 	<pre class="language-bash"><code class="language-bash">TPROXY
 This target is only valid in the mangle table, in the 
 PREROUTING chain and user-defined chains which are only 
@@ -112,7 +112,7 @@ advanced routing rules. </code></pre>
 	<p>Another piece of documentation can be found in the kernel:</p>
 	<ul>
 		<li>
-			<p><a href="https://www.kernel.org/doc/Documentation/networking/tproxy.txt">docs/networking/tproxy.txt</a></p>
+			<p><a href="https://www.kernel.org/doc/Documentation/networking/tproxy.txt" target="_blank" rel="noopener noreferrer">docs/networking/tproxy.txt</a></p>
 		</li>
 	</ul>
 	<p>The more we thought about it, the more curious we became...</p>
@@ -125,7 +125,7 @@ advanced routing rules. </code></pre>
 			</svg>
 		</a>
 	</div>
-	<p>The <code>TPROXY</code> code is <a href="https://elixir.bootlin.com/linux/v4.16.1/source/net/netfilter/xt_TPROXY.c#L119">surprisingly trivial</a>:</p>
+	<p>The <code>TPROXY</code> code is <a href="https://elixir.bootlin.com/linux/v4.16.1/source/net/netfilter/xt_TPROXY.c#L119" target="_blank" rel="noopener noreferrer">surprisingly trivial</a>:</p>
 	<pre class="language-bash"><code class="language-bash">case NFT_LOOKUP_LISTENER:
   sk = inet_lookup_listener(net, &amp;tcp_hashinfo, skb,
 				    ip_hdrlen(skb) +
@@ -135,7 +135,7 @@ advanced routing rules. </code></pre>
 				    in-&gt;ifindex, 0);</code></pre>
 	<p>Let me read this out loud for you: in an <code>iptables</code> module, which is part of the firewall, we call <code>inet_lookup_listener</code>. This function takes a src/dst port/IP 4-tuple, and returns the listening socket that is able to accept that connection. This is a core functionality of the network stack’s socket dispatch.</p>
 	<p>Once again: firewall code calls a socket dispatch routine.</p>
-	<p>Later on <a href="https://elixir.bootlin.com/linux/v4.16.1/source/net/netfilter/xt_TPROXY.c#L299"><code>TPROXY</code> actually <i>does</i> the socket dispatch</a>:</p>
+	<p>Later on <a href="https://elixir.bootlin.com/linux/v4.16.1/source/net/netfilter/xt_TPROXY.c#L299" target="_blank" rel="noopener noreferrer"><code>TPROXY</code> actually <i>does</i> the socket dispatch</a>:</p>
 	<pre class="language-bash"><code class="language-bash">skb-&gt;sk = sk;</code></pre>
 	<p>This line assigns a socket <code>struct sock</code> to an inbound packet - completing the dispatch.</p>
 	<div class="flex anchor relative">
@@ -152,7 +152,7 @@ advanced routing rules. </code></pre>
 		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/51PUlTDqve3FXm5AhGdfZt/c57a4956155d52e7c3b447d7887bce4e/3649474619_3b800400e9_z-1.jpg" alt="3649474619_3b800400e9_z-1" class="kg-image" width="640" height="424" loading="lazy">
 
 	</figure>
-	<p><a href="https://creativecommons.org/licenses/by-sa/2.0">CC BY-SA 2.0</a> <a href="https://www.flickr.com/photos/angelaboothroyd/3649474619">image</a> by <a href="https://www.flickr.com/photos/angelaboothroyd">Angela Boothroyd</a></p>
+	<p><a href="https://creativecommons.org/licenses/by-sa/2.0" target="_blank" rel="noopener noreferrer">CC BY-SA 2.0</a> <a href="https://www.flickr.com/photos/angelaboothroyd/3649474619" target="_blank" rel="noopener noreferrer">image</a> by <a href="https://www.flickr.com/photos/angelaboothroyd" target="_blank" rel="noopener noreferrer">Angela Boothroyd</a></p>
 	<p>Armed with <code>TPROXY</code>, we can perform the bind-to-all-ports trick very easily. Here's the configuration:</p>
 	<pre class="language-bash"><code class="language-bash"># Set 192.0.2.0/24 to be routed locally with AnyIP.
 # Make it explicit that the source IP used for this network
@@ -166,7 +166,7 @@ sudo ip route add local 192.0.2.0/24 dev lo src 127.0.0.1
 sudo iptables -t mangle -I PREROUTING \
         -d 192.0.2.0/24 -p tcp \
         -j TPROXY --on-port=1234 --on-ip=127.0.0.1</code></pre>
-	<p>In addition to setting this in place, you need to start a TCP server with the magical <code>IP_TRANSPARENT</code> socket option. Our example below needs to listen on tcp://127.0.0.1:1234. The <a href="http://man7.org/linux/man-pages/man7/ip.7.html">man page for <code>IP_TRANSPARENT</code></a> shows:</p>
+	<p>In addition to setting this in place, you need to start a TCP server with the magical <code>IP_TRANSPARENT</code> socket option. Our example below needs to listen on tcp://127.0.0.1:1234. The <a href="http://man7.org/linux/man-pages/man7/ip.7.html" target="_blank" rel="noopener noreferrer">man page for <code>IP_TRANSPARENT</code></a> shows:</p>
 	<pre class="language-bash"><code class="language-bash">IP_TRANSPARENT (since Linux 2.6.24)
 Setting this boolean option enables transparent proxying on
 this socket.  This socket option allows the calling applica‐
@@ -220,7 +220,7 @@ hello world</code></pre>
 	<p>The <code>TPROXY</code> module is very unusual - in the context of the Linux firewall it performs things typically done by the Linux network stack. The official documentation is rather lacking, and I don't believe many Linux users understand the full power of this module.</p>
 	<p>It's fair to say that <code>TPROXY</code> allows our Spectrum product to run smoothly on the vanilla kernel. It’s yet another reminder of how important it is to try to understand iptables and the network stack!</p>
 	<hr>
-	<p><i>Doing low level socket work sound interesting? Join our </i><a href="https://boards.greenhouse.io/cloudflare/jobs/589572"><i>world famous team</i></a><i> in London, Austin, San Francisco, Champaign and our elite office in Warsaw, Poland</i>.</p>
+	<p><i>Doing low level socket work sound interesting? Join our </i><a href="https://boards.greenhouse.io/cloudflare/jobs/589572" target="_blank" rel="noopener noreferrer"><i>world famous team</i></a><i> in London, Austin, San Francisco, Champaign and our elite office in Warsaw, Poland</i>.</p>
 	<hr>
 	<ol>
 		<li>

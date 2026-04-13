@@ -10,7 +10,7 @@
 			</svg>
 		</a>
 	</div>
-	<p>In the <a href="https://en.wikipedia.org/wiki/OSI_model">OSI model</a>, traditional DDoS attacks targeted the Layer 4. The so called "transport" layer of the network stack specifies the protocol (e.g., TCP or UDP). These attacks flood an interface with garbage traffic in order to overwhelm it's resources in one way or another. Usually, the attack fills up the capacity of a network switch or overwhelms a server's network card or CPU's ability to handle the traffic.</p>
+	<p>In the <a href="https://en.wikipedia.org/wiki/OSI_model" target="_blank" rel="noopener noreferrer">OSI model</a>, traditional DDoS attacks targeted the Layer 4. The so called "transport" layer of the network stack specifies the protocol (e.g., TCP or UDP). These attacks flood an interface with garbage traffic in order to overwhelm it's resources in one way or another. Usually, the attack fills up the capacity of a network switch or overwhelms a server's network card or CPU's ability to handle the traffic.</p>
 	<p>CloudFlare has largely mitigated these attacks by building out significant capacity across our network. We have fat pipes and lots of machines to absorb floods of traffic. We also make broad use of the <a href="https://blog.cloudflare.com/a-brief-anycast-primer">Anycast protocol</a> which has the effect of scattering the load of a distributed attack across multiple data centers, reducing the exposure of potential single point of failure. The result is that no packets from a traditional Layer 4 attack will ever reach a site behind CloudFlare.</p>
 	<div class="flex anchor relative">
 		<h3 id="http-based-attacks">HTTP-Based Attacks</h3>
@@ -30,7 +30,7 @@
 			</svg>
 		</a>
 	</div>
-	<p>Introducing "I'm Under Attack Mode." The name is pretty self-explanatory: it's a new security level you can set for your site when you're <a href="https://www.cloudflare.com/ddos/under-attack">under attack</a>. The effect is that we will add an additional set of protections to stop potentially malicious HTTP traffic from being passed to your server. While we perform a number of additional checks, the only thing noticeable to legitimate visitors to your site is that when they first arrive they'll see an interstitial page for about 5 seconds while checks are complete. Think of it as a challenge where the tests are automatic and visitors never need to fill in a CAPTCHA.</p>
+	<p>Introducing "I'm Under Attack Mode." The name is pretty self-explanatory: it's a new security level you can set for your site when you're <a href="https://www.cloudflare.com/ddos/under-attack" target="_blank" rel="noopener noreferrer">under attack</a>. The effect is that we will add an additional set of protections to stop potentially malicious HTTP traffic from being passed to your server. While we perform a number of additional checks, the only thing noticeable to legitimate visitors to your site is that when they first arrive they'll see an interstitial page for about 5 seconds while checks are complete. Think of it as a challenge where the tests are automatic and visitors never need to fill in a CAPTCHA.</p>
 	<figure class="kg-card kg-image-card ">
 
 		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/19dMBKmrJ17nace7uKwPHC/11ff1f783c89c3b66bd1fb241671f0ad/im_under_attack_page.png.scaled500.png" alt="Introducing: I'm Under Attack Mode" class="kg-image" width="500" height="207" loading="lazy">

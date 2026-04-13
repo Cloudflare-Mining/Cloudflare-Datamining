@@ -55,8 +55,8 @@ const char *getCountry(int cc) {
 		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1K3IOo5qkOOP0hhRtwu10U/e9997acf855e96044f2684e1adae87b0/pasted-image-0-1.png" alt="" class="kg-image" width="840" height="613" loading="lazy">
 
 	</figure>
-	<p>Source: <a href="https://en.wikipedia.org/wiki/Branch_predictor">https://en.wikipedia.org/wiki/Branch_predictor</a></p>
-	<p>The BPU maintains a couple of data structures, but today we'll focus on Branch Target Buffer (BTB). It's a place where the BPU remembers the target instruction pointer of previously taken branches. The whole mechanism is much more complex, take a look a the <a href="http://www.ece.uah.edu/~milenka/docs/VladimirUzelac.thesis.pdf">Vladimir Uzelac's Master thesis</a> for details about branch prediction on CPU's from 2008 era:</p>
+	<p>Source: <a href="https://en.wikipedia.org/wiki/Branch_predictor" target="_blank" rel="noopener noreferrer">https://en.wikipedia.org/wiki/Branch_predictor</a></p>
+	<p>The BPU maintains a couple of data structures, but today we'll focus on Branch Target Buffer (BTB). It's a place where the BPU remembers the target instruction pointer of previously taken branches. The whole mechanism is much more complex, take a look a the <a href="http://www.ece.uah.edu/~milenka/docs/VladimirUzelac.thesis.pdf" target="_blank" rel="noopener noreferrer">Vladimir Uzelac's Master thesis</a> for details about branch prediction on CPU's from 2008 era:</p>
 	<figure class="kg-card kg-image-card ">
 
 		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1FO1GCWdkQYR5I90qGopuH/9f51e10ca53eafd001f2238896103327/pasted-image-0--1-.png" alt="" class="kg-image" width="765" height="601" loading="lazy">
@@ -88,7 +88,7 @@ label_a:
 	<p>In the first cycle the BR instruction is fetched. This is an unconditional branch instruction changing the execution flow of the CPU. At this point it's not yet decoded, but the CPU would like to fetch another instruction already! Without a branch predictor in cycle 2 the fetch unit either has to wait or simply continues to the next instruction in memory, hoping it will be the right one.</p>
 	<p>In our example, instruction X1 is fetched even though this isn't the correct instruction to run. In cycle 4, when the branch instruction finishes the execute stage, the CPU will be able to understand the mistake, and roll back the speculated instructions before they have any effect. At this point the fetch unit is updated to correctly get the right instruction - Y1 in our case.</p>
 	<p>This situation of losing a number of cycles due to fetching code from an incorrect place is called a "frontend bubble". Our theoretical CPU has a two-cycle frontend bubble when a branch target wasn’t predicted right.</p>
-	<p>In this example we see that, although the CPU does the right thing in the end, without good branch prediction it wasted effort on bad instructions. In the past, various techniques have been used to reduce this problem, such as static branch prediction and branch delay slots. But the dominant CPU designs today rely <a href="https://danluu.com/branch-prediction/#one-bit">on <i>dynamic branch prediction</i></a>. This technique is able to mostly avoid the frontend bubble problem, by predicting the correct address of the next instruction even for branches that aren’t fully decoded and executed yet.</p>
+	<p>In this example we see that, although the CPU does the right thing in the end, without good branch prediction it wasted effort on bad instructions. In the past, various techniques have been used to reduce this problem, such as static branch prediction and branch delay slots. But the dominant CPU designs today rely <a href="https://danluu.com/branch-prediction/#one-bit" target="_blank" rel="noopener noreferrer">on <i>dynamic branch prediction</i></a>. This technique is able to mostly avoid the frontend bubble problem, by predicting the correct address of the next instruction even for branches that aren’t fully decoded and executed yet.</p>
 	<div class="flex anchor relative">
 		<h3 id="playing-with-the-btb">Playing with the BTB</h3>
 		<a href="https://blog.cloudflare.com/#playing-with-the-btb" aria-hidden="true" class="relative sm:absolute sm:-start-5">
@@ -98,7 +98,7 @@ label_a:
 		</a>
 	</div>
 	<p>Today we're focusing on the BTB - a data structure managed by the branch predictor responsible for figuring out a target of a branch. It's important to note that the BTB is distinct from and independent of the system assessing if the branch was taken or not taken. Remember, we want to figure out if a cost of a branch increases as we run more of them.</p>
-	<p>Preparing an experiment to stress only the BTB is relatively simple (<a href="https://xania.org/201602/bpu-part-three">based on Matt Godbolt's work</a>). It turns out a sequence of unconditional <code>jmps</code> is totally sufficient. Consider this x86 code:</p>
+	<p>Preparing an experiment to stress only the BTB is relatively simple (<a href="https://xania.org/201602/bpu-part-three" target="_blank" rel="noopener noreferrer">based on Matt Godbolt's work</a>). It turns out a sequence of unconditional <code>jmps</code> is totally sufficient. Consider this x86 code:</p>
 	<figure class="kg-card kg-image-card ">
 
 		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/259y50RQfLqaFcsT4tljGb/5010158442d4e2afb6ebb3c105ee4e5b/pasted-image-0--2-.png" alt="" class="kg-image" width="900" height="448" loading="lazy">
@@ -137,7 +137,7 @@ label_a:
 		</a>
 	</div>
 	<p>Our experiment is crafted to show the performance drop depending on the number of branches, across different working code sizes. Hopefully, we will be able to prove the performance is mostly dependent on the number of blocks - and therefore the BTB size, and not the working code size.</p>
-	<p>See the <a href="https://github.com/cloudflare/cloudflare-blog/tree/master/2021-05-branch-prediction">code on GitHub</a>. If you want to see the generated machine code, though, you need to run a special command. It's created procedurally by the code, customized by passed parameters. Here's an example <code>gdb</code> incantation:</p>
+	<p>See the <a href="https://github.com/cloudflare/cloudflare-blog/tree/master/2021-05-branch-prediction" target="_blank" rel="noopener noreferrer">code on GitHub</a>. If you want to see the generated machine code, though, you need to run a special command. It's created procedurally by the code, customized by passed parameters. Here's an example <code>gdb</code> incantation:</p>
 	<figure class="kg-card kg-image-card ">
 
 		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7aAKMXz8aruwblN67UvZd7/1eb2aea7cc6e2e3a9c0f6823f60b8f08/pasted-image-0--5-.png" alt="" class="kg-image" width="1197" height="76" loading="lazy">
@@ -263,8 +263,8 @@ label_a:
 		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2VCtlgVdJkSB3MFuYbR5MQ/31b80611cab5b7a5ec14514dd375e7ea/pasted-image-0--16-.png" alt="" class="kg-image" width="1000" height="600" loading="lazy">
 
 	</figure>
-	<p>However, even if we don't trust the flush-bpu code (<a href="https://xania.org/201602/bpu-part-three">adapted from Matt Godbolt</a>), this chart reveals two things. First, the "unpredicted" branch cost seems to be correlated with the branch distance. The longer the branch the costlier it is. We haven't seen such behaviour on x86 CPUs.</p>
-	<p>Then there is the cost itself. We saw a predicted sequence of branches cost, and what a supposedly-unpredicted jmp costs. In the first chart we saw that beyond ~192KiB working code, the branch predictor seems to become ineffective. The supposedly-flushed BPU seems to show the same cost. For example, the cost of a 64-byte block size jmp with a small working set size is 3 cycles. A miss is ~8 cycles. For a large working set size both times are ~8 cycles. It seems that the BTB is linked to the L1 cache state. <a href="https://www.realworldtech.com/forum/?threadid=159985&amp;curpostid=160001">Paul A. Clayton suggested</a> a possibility of such a design back in 2016.</p>
+	<p>However, even if we don't trust the flush-bpu code (<a href="https://xania.org/201602/bpu-part-three" target="_blank" rel="noopener noreferrer">adapted from Matt Godbolt</a>), this chart reveals two things. First, the "unpredicted" branch cost seems to be correlated with the branch distance. The longer the branch the costlier it is. We haven't seen such behaviour on x86 CPUs.</p>
+	<p>Then there is the cost itself. We saw a predicted sequence of branches cost, and what a supposedly-unpredicted jmp costs. In the first chart we saw that beyond ~192KiB working code, the branch predictor seems to become ineffective. The supposedly-flushed BPU seems to show the same cost. For example, the cost of a 64-byte block size jmp with a small working set size is 3 cycles. A miss is ~8 cycles. For a large working set size both times are ~8 cycles. It seems that the BTB is linked to the L1 cache state. <a href="https://www.realworldtech.com/forum/?threadid=159985&amp;curpostid=160001" target="_blank" rel="noopener noreferrer">Paul A. Clayton suggested</a> a possibility of such a design back in 2016.</p>
 	<p><b>Top tip 6. on M1 the predicted-taken branch generally takes 3 cycles and unpredicted but taken has varying cost, depending on jmp length. BTB is likely linked with L1 cache.</b></p>
 	<p>The call/ret chart is funny:</p>
 	<figure class="kg-card kg-image-card ">
@@ -291,19 +291,19 @@ label_a:
 	<p>I'm not the first person to investigate how BTB works. I based my experiments on:</p>
 	<ul>
 		<li>
-			<p><a href="http://www.ece.uah.edu/~milenka/docs/VladimirUzelac.thesis.pdf">Vladimir Uzelac thesis</a></p>
+			<p><a href="http://www.ece.uah.edu/~milenka/docs/VladimirUzelac.thesis.pdf" target="_blank" rel="noopener noreferrer">Vladimir Uzelac thesis</a></p>
 		</li>
 		<li>
-			<p><a href="https://xania.org/201602/bpu-part-three">Matt Godbolt work</a>. The series has 5 articles.</p>
+			<p><a href="https://xania.org/201602/bpu-part-three" target="_blank" rel="noopener noreferrer">Matt Godbolt work</a>. The series has 5 articles.</p>
 		</li>
 		<li>
-			<p><a href="https://www.realworldtech.com/forum/?threadid=159985&amp;curpostid=159985">Travis Downs BTB questions</a> on Real World Tech</p>
+			<p><a href="https://www.realworldtech.com/forum/?threadid=159985&amp;curpostid=159985" target="_blank" rel="noopener noreferrer">Travis Downs BTB questions</a> on Real World Tech</p>
 		</li>
 		<li>
-			<p><a href="https://stackoverflow.com/questions/38811901/slow-jmp-instruction">various</a> <a href="https://stackoverflow.com/questions/51822731/why-did-intel-change-the-static-branch-prediction-mechanism-over-these-years">stackoverflow</a> <a href="https://stackoverflow.com/questions/38512886/btb-size-for-haswell-sandy-bridge-ivy-bridge-and-skylake">discussions</a>. Especially <a href="https://stackoverflow.com/questions/31280817/what-branch-misprediction-does-the-branch-target-buffer-detect">this one</a> and <a href="https://stackoverflow.com/questions/31642902/intel-cpus-instruction-queue-provides-static-branch-prediction">this</a></p>
+			<p><a href="https://stackoverflow.com/questions/38811901/slow-jmp-instruction" target="_blank" rel="noopener noreferrer">various</a> <a href="https://stackoverflow.com/questions/51822731/why-did-intel-change-the-static-branch-prediction-mechanism-over-these-years" target="_blank" rel="noopener noreferrer">stackoverflow</a> <a href="https://stackoverflow.com/questions/38512886/btb-size-for-haswell-sandy-bridge-ivy-bridge-and-skylake" target="_blank" rel="noopener noreferrer">discussions</a>. Especially <a href="https://stackoverflow.com/questions/31280817/what-branch-misprediction-does-the-branch-target-buffer-detect" target="_blank" rel="noopener noreferrer">this one</a> and <a href="https://stackoverflow.com/questions/31642902/intel-cpus-instruction-queue-provides-static-branch-prediction" target="_blank" rel="noopener noreferrer">this</a></p>
 		</li>
 		<li>
-			<p><a href="https://www.agner.org/optimize/microarchitecture.pdf">Agner Fog</a> microarchitecture guide has a good section on branch predictions.</p>
+			<p><a href="https://www.agner.org/optimize/microarchitecture.pdf" target="_blank" rel="noopener noreferrer">Agner Fog</a> microarchitecture guide has a good section on branch predictions.</p>
 		</li>
 	</ul>
 	<div class="flex anchor relative">
@@ -314,7 +314,7 @@ label_a:
 			</svg>
 		</a>
 	</div>
-	<p>Thanks to <a href="https://blog.cloudflare.com/author/david-wragg">David Wragg</a> and <a href="https://twitter.com/danluu">Dan Luu</a> for technical expertise and proofreading help.</p>
+	<p>Thanks to <a href="https://blog.cloudflare.com/author/david-wragg">David Wragg</a> and <a href="https://twitter.com/danluu" target="_blank" rel="noopener noreferrer">Dan Luu</a> for technical expertise and proofreading help.</p>
 	<div class="flex anchor relative">
 		<h3 id="ps">PS</h3>
 		<a href="https://blog.cloudflare.com/#ps" aria-hidden="true" class="relative sm:absolute sm:-start-5">
@@ -323,12 +323,12 @@ label_a:
 			</svg>
 		</a>
 	</div>
-	<p>Oh, oh. But this is not the whole story! Similar research was the base to the <a href="https://spectreattack.com/spectre.pdf">Spectre v2</a> attack. The attack was exploiting the little known fact that the BPU state was not cleared between context switches. With the correct technique it was possible to train the BPU - in the case of Spectre it was iBTB - and force a privileged piece of code to be speculatively executed. This, combined with a cache side-channel data leak, allowed an attacker to steal secrets from the privileged kernel. Powerful stuff.</p>
+	<p>Oh, oh. But this is not the whole story! Similar research was the base to the <a href="https://spectreattack.com/spectre.pdf" target="_blank" rel="noopener noreferrer">Spectre v2</a> attack. The attack was exploiting the little known fact that the BPU state was not cleared between context switches. With the correct technique it was possible to train the BPU - in the case of Spectre it was iBTB - and force a privileged piece of code to be speculatively executed. This, combined with a cache side-channel data leak, allowed an attacker to steal secrets from the privileged kernel. Powerful stuff.</p>
 	<p>A proposed solution was to avoid using shared BTB. This can be done in two ways: make the indirect jumps to always fail to predict, or fix the CPU to avoid sharing BTB state across isolation domains. This is a long story, maybe for another time...</p>
 	<hr><!--kg-card-begin: html-->
 	<p><a name="footnotes">Footnotes</a></p><!--kg-card-end: html-->
-	<p>1. One historical solution to this specific 'if debug' problem is called "runtime nop'ing". The idea is to modify the code in runtime and patch the never-taken branch instruction with a <code>nop</code>. For example, see the "ISENABLED" discussion on <a href="https://bugzilla.mozilla.org/showbug.cgi?id=370906.">https://bugzilla.mozilla.org/showbug.cgi?id=370906.</a></p>
-	<p>2. Fun fact: modern compilers are pretty smart. New gcc (&gt;=11) and older clang (&gt;=3.7) are able to actually optimize it quite a lot. <a href="https://godbolt.org/z/KWYEW3d9s">See for yourself</a>. But, let's not get distracted by that. This article is about low level machine code branch instructions!</p>
+	<p>1. One historical solution to this specific 'if debug' problem is called "runtime nop'ing". The idea is to modify the code in runtime and patch the never-taken branch instruction with a <code>nop</code>. For example, see the "ISENABLED" discussion on <a href="https://bugzilla.mozilla.org/showbug.cgi?id=370906." target="_blank" rel="noopener noreferrer">https://bugzilla.mozilla.org/showbug.cgi?id=370906.</a></p>
+	<p>2. Fun fact: modern compilers are pretty smart. New gcc (&gt;=11) and older clang (&gt;=3.7) are able to actually optimize it quite a lot. <a href="https://godbolt.org/z/KWYEW3d9s" target="_blank" rel="noopener noreferrer">See for yourself</a>. But, let's not get distracted by that. This article is about low level machine code branch instructions!</p>
 	<p>3. This is a simplification. There are of course more control flow instructions, like: software interrupts, syscalls, VMENTER/VMEXIT.</p>
 	<p>4. Ok, I'm slightly overinterpreting the chart. Maybe the 4096 jmp mark is due to the 4096 uop cache or some instruction decoder artifact? To prove this spike is indeed BTB related I looked at Intel BPUCLEARS.EARLY and BACLEAR.CLEAR performance counters. Its value is small for block count under 4096 and large for block count greater than 5378. This is strong evidence that the performance drop is indeed caused by the BPU and likely BTB.</p>
 </div>

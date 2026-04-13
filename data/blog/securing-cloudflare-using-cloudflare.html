@@ -15,13 +15,13 @@
 	<p>We’ve built the muscle to think Cloudflare-first when we encounter a security threat. In fact, many security problems we encounter have a Cloudflare solution.</p>
 	<ul>
 		<li>
-			<p><b>Problem</b>: <a href="https://www.cloudflare.com/products/zero-trust/remote-workforces">Remote work</a> creates a security blind spot of remote devices and networks.</p>
+			<p><b>Problem</b>: <a href="https://www.cloudflare.com/products/zero-trust/remote-workforces" target="_blank" rel="noopener noreferrer">Remote work</a> creates a security blind spot of remote devices and networks.</p>
 		</li>
 		<li>
 			<p><b>Solution</b>: Deploying Cloudflare Gateway and WARP to shield users and devices from threats, no matter their device or network connection.</p>
 		</li>
 	</ul>
-	<p>Our Detection &amp; Response team has regained visibility into security threats by connecting corporate devices to Gateway through our Cloudflare WARP application. These <a href="https://www.cloudflare.com/learning/security/glossary/what-is-zero-trust">Zero Trust</a> products shield users and devices from security threats like malware, phishing, shadow IT and more, as well as enable our Security team to instantly block threats and prevent sensitive data from leaving our organization — with no performance impact for our employees, no matter their location.</p>
+	<p>Our Detection &amp; Response team has regained visibility into security threats by connecting corporate devices to Gateway through our Cloudflare WARP application. These <a href="https://www.cloudflare.com/learning/security/glossary/what-is-zero-trust" target="_blank" rel="noopener noreferrer">Zero Trust</a> products shield users and devices from security threats like malware, phishing, shadow IT and more, as well as enable our Security team to instantly block threats and prevent sensitive data from leaving our organization — with no performance impact for our employees, no matter their location.</p>
 	<ul>
 		<li>
 			<p><b>Problem</b>: Larger company footprint (in size and location) increases the complexity of internal tooling.</p>
@@ -49,9 +49,9 @@
 			</svg>
 		</a>
 	</div>
-	<p>Two-factor authentication is one of the most important security controls that can be implemented. Not all second factors provide the same level of security though. Time-based One-time password (TOTP) apps like Google Authenticator are a strong second factor, but are <a href="https://www.cloudflare.com/learning/email-security/what-is-email-fraud">vulnerable to phishing</a> via man-in-the-middle attacks. A successful phishing attack on an employee with privileged access is a terrifying thought, and it is a risk we wanted to completely eliminate.</p>
-	<p><a href="https://fidoalliance.org/specs/fido-v2.0-rd-20161004/fido-client-to-authenticator-protocol-v2.0-rd-20161004.html">FIDO2</a> was developed to provide simple UX and complete protection against phishing attacks. We decided to fully embrace FIDO2 supported security keys in all contexts, but FIDO2 support is not yet ubiquitous and there are many challenging compatibility issues. Cloudflare Access allowed us to enforce that FIDO2 was the only second factor that can be used when reaching systems protected by Cloudflare Access.</p>
-	<p>In order to manage our <a href="https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/access_policy">Cloudflare Access policies</a> we check each one into source control as terraform code. Group based access control is enforced for our applications.</p>
+	<p>Two-factor authentication is one of the most important security controls that can be implemented. Not all second factors provide the same level of security though. Time-based One-time password (TOTP) apps like Google Authenticator are a strong second factor, but are <a href="https://www.cloudflare.com/learning/email-security/what-is-email-fraud" target="_blank" rel="noopener noreferrer">vulnerable to phishing</a> via man-in-the-middle attacks. A successful phishing attack on an employee with privileged access is a terrifying thought, and it is a risk we wanted to completely eliminate.</p>
+	<p><a href="https://fidoalliance.org/specs/fido-v2.0-rd-20161004/fido-client-to-authenticator-protocol-v2.0-rd-20161004.html" target="_blank" rel="noopener noreferrer">FIDO2</a> was developed to provide simple UX and complete protection against phishing attacks. We decided to fully embrace FIDO2 supported security keys in all contexts, but FIDO2 support is not yet ubiquitous and there are many challenging compatibility issues. Cloudflare Access allowed us to enforce that FIDO2 was the only second factor that can be used when reaching systems protected by Cloudflare Access.</p>
+	<p>In order to manage our <a href="https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/access_policy" target="_blank" rel="noopener noreferrer">Cloudflare Access policies</a> we check each one into source control as terraform code. Group based access control is enforced for our applications.</p>
 	<pre class="language-bash"><code class="language-bash">resource "cloudflare_access_policy" "prod_cloudflare_users" {
   application_id = cloudflare_access_application.prod_sandbox_access_application.id
   zone_id        = cloudflare_zone.prod_sandbox.id
@@ -72,7 +72,7 @@
     auth_method = "swk"
   }
 }</code></pre>
-	<p>The <code>require</code> section enforces that Cloudflare employees are using their FIDO2 supported security keys to access all of our internal and external applications that are protected by Access. More deeply described in <a href="https://datatracker.ietf.org/doc/rfc8176">RFC8176</a>, auth_method is enforcing specific values are returned during the login flow from our OIDC provider within the <code>amr</code> field. The enforced <code>swk</code> is “Proof of possession of a software-secured key” which corresponds to logins using a security key.</p>
+	<p>The <code>require</code> section enforces that Cloudflare employees are using their FIDO2 supported security keys to access all of our internal and external applications that are protected by Access. More deeply described in <a href="https://datatracker.ietf.org/doc/rfc8176" target="_blank" rel="noopener noreferrer">RFC8176</a>, auth_method is enforcing specific values are returned during the login flow from our OIDC provider within the <code>amr</code> field. The enforced <code>swk</code> is “Proof of possession of a software-secured key” which corresponds to logins using a security key.</p>
 	<p>The ability to enforce the use of security keys when accessing internal sites caused a massive improvement in our security posture. Prior to implementing this change, for many of our internal services we allowed both soft tokens like TOTP with Google Authenticator, along with WebAuthn because of a small number of systems that still didn’t support FIDO2. You’ll see that our use of soft tokens dropped to near zero after enforcing this change.</p>
 	<figure class="kg-card kg-image-card ">
 
@@ -88,6 +88,6 @@
 		</a>
 	</div>
 	<p>Not only does the Security team deploy Cloudflare’s products, but we test them first too. We work directly with Product to “dog food” our own products first. It’s our mission to help build a better Internet — and that means testing our products and collecting valuable feedback from our internal teams before every launch. As the number one consumer of Cloudflare’s products, the Security team is not only helping keep the company safer, but also contributing to build better products for our customers.</p>
-	<p>To learn more about examples and technical implementation of our use of Cloudflare products at Cloudflare, please check out this recent Cloudflare TV segment on <a href="https://cloudflare.tv/event/3XVzDuzBL7TZ5HMB9Ni4b0">Securing Cloudflare with Cloudflare</a><b>.</b></p>
+	<p>To learn more about examples and technical implementation of our use of Cloudflare products at Cloudflare, please check out this recent Cloudflare TV segment on <a href="https://cloudflare.tv/event/3XVzDuzBL7TZ5HMB9Ni4b0" target="_blank" rel="noopener noreferrer">Securing Cloudflare with Cloudflare</a><b>.</b></p>
 	<p>And for more information on the products mentioned in this document, reach out to our Sales team to find out how we can help you secure your business, teams, and users.</p>
 </div>

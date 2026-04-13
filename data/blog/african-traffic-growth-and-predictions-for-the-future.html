@@ -51,7 +51,7 @@
 		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6ciNQ7m8gZojOdxqjY06qQ/ed567ec2fe56af7147defcbd446cebff/rtt-explained-01.png" alt="Impact of latency on throughput" class="kg-image" width="3684" height="2951" loading="lazy">
 
 	</figure>
-	<p>With the most common algorithms, the amount of data sent before an acknowledgment increases until an error appears. Any link will drop packets: whether there is a transmission issue (wireless and perturbations) or a processing issue (router dropping packets to reduce load). This contributes never reaching the maximum bandwidth of a link. This is why above 80 milliseconds latency, performances start to worsen drastically. Coast to coast in the USA is around 70 milliseconds. Paris to London is 10 milliseconds. <a href="https://en.wikipedia.org/wiki/Performance-enhancing_proxy#Split_TCP">Satellites connections implement proxies</a> to allow sustainable throughput despite 600 milliseconds round-time-trip.</p>
+	<p>With the most common algorithms, the amount of data sent before an acknowledgment increases until an error appears. Any link will drop packets: whether there is a transmission issue (wireless and perturbations) or a processing issue (router dropping packets to reduce load). This contributes never reaching the maximum bandwidth of a link. This is why above 80 milliseconds latency, performances start to worsen drastically. Coast to coast in the USA is around 70 milliseconds. Paris to London is 10 milliseconds. <a href="https://en.wikipedia.org/wiki/Performance-enhancing_proxy#Split_TCP" target="_blank" rel="noopener noreferrer">Satellites connections implement proxies</a> to allow sustainable throughput despite 600 milliseconds round-time-trip.</p>
 	<div class="flex anchor relative">
 		<h4 id="why-is-the-amount-of-requests-increasing-with-higher-bandwidth">Why is the amount of requests increasing with higher bandwidth?</h4>
 		<a href="https://blog.cloudflare.com/#why-is-the-amount-of-requests-increasing-with-higher-bandwidth" aria-hidden="true" class="relative sm:absolute sm:-start-5">
@@ -91,14 +91,14 @@
 			</svg>
 		</a>
 	</div>
-	<p>We analyzed the latencies between Europe and African IP addresses that hit our edge. On the following Demer map from <a href="https://twitter.com/vastur">Vasco Asturiano</a>, the area of the country is exponentially proportional to the response time in milliseconds.</p>
+	<p>We analyzed the latencies between Europe and African IP addresses that hit our edge. On the following Demer map from <a href="https://twitter.com/vastur" target="_blank" rel="noopener noreferrer">Vasco Asturiano</a>, the area of the country is exponentially proportional to the response time in milliseconds.</p>
 	<figure class="kg-card kg-image-card ">
 
 		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/rp3vLWEat239h6Mr9h9E1/77fb6f190611655933d05b53e08dd10e/quadratic-3-01.png" alt="Demer map for latencies from Europe to African countries" class="kg-image" width="6334" height="4409" loading="lazy">
 
 	</figure>
-	<p>All the coastal Africa is well connected with submarines cables. The only exception is Eritrea, where the main provider (EriTel) which uses <a href="https://bgp.he.net/AS30987#_peers">two satellite providers</a> for its outbound links.</p>
-	<p>The island of <a href="https://en.wikipedia.org/wiki/Saint_Helena">Saint Helena</a> is on the path of the future <a href="https://en.wikipedia.org/wiki/SAex">SAex cable</a>, but the only connection at the moment for its 5000 inhabitants is through satellite, causing a latency of 600ms.Central African Republic also uses satellite or connections through Cameroon.</p>
+	<p>All the coastal Africa is well connected with submarines cables. The only exception is Eritrea, where the main provider (EriTel) which uses <a href="https://bgp.he.net/AS30987#_peers" target="_blank" rel="noopener noreferrer">two satellite providers</a> for its outbound links.</p>
+	<p>The island of <a href="https://en.wikipedia.org/wiki/Saint_Helena" target="_blank" rel="noopener noreferrer">Saint Helena</a> is on the path of the future <a href="https://en.wikipedia.org/wiki/SAex" target="_blank" rel="noopener noreferrer">SAex cable</a>, but the only connection at the moment for its 5000 inhabitants is through satellite, causing a latency of 600ms.Central African Republic also uses satellite or connections through Cameroon.</p>
 	<p>On average a packet round trip from Northern Africa to Europe will take around 50-100ms while a round trip from the South will take 250ms.</p>
 	<p>Regarding inter-African routing, Africa has only a limited number of cities where interconnection happens successfully: Johannesburg in South Africa, Nairobi in Kenya, and Djibouti with datacenters and internet exchange points. The rest of the continent is mostly split between providers which will interconnect in Europe or Asia. Chances are, a user in Cameroon talking to a user in Ghana will likely go through Paris.</p>
 	<p>Using RIPE Atlas, we are able to show inter-provider routing usually happens in Europe. Only one traceroute showed packets being exchanged in South Africa.</p>
@@ -115,7 +115,7 @@
 		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4bxQ2OFyFziSF6Jl4q8iVY/591cef69dd65c7e6ee33ebf54157fc35/Screen-Shot-2018-07-27-at-2.58.50-PM.png" alt="Ghana 2" class="kg-image" width="822" height="948" loading="lazy">
 
 	</figure>
-	<p>Cloudflare and many network operators are using extensively RIPE Atlas to determine performance and troubleshoot issues. If you want to help us improve Internet quality in Africa, become a <a href="https://atlas.ripe.net/get-involved/become-a-host">probe host here</a>.</p>
+	<p>Cloudflare and many network operators are using extensively RIPE Atlas to determine performance and troubleshoot issues. If you want to help us improve Internet quality in Africa, become a <a href="https://atlas.ripe.net/get-involved/become-a-host" target="_blank" rel="noopener noreferrer">probe host here</a>.</p>
 	<p>What you may be wondering is: what are the countries in Europe that route the African traffic? We are using an anycast network ; when a user fetch a website on Cloudflare, the packets will take the shortest path seen by the router to reach its destination. In telecommunications, the shortest path does necessarily mean geographical proximity. The selection metric of a path usually involve cost and performance.</p>
 	<figure class="kg-card kg-image-card ">
 
@@ -162,13 +162,13 @@
 		</a>
 	</div>
 	<p>Only four countries out of sixty four are using IPv6 in a measurable way. Egypt (1%), Kenya (2%), Gabon (2%) and Zimbabwe (9%). In each of these countries we found that only one provider that deployed IPv6 at any significant scale. Since the beginning of the year, IPv6 usage in Egypt has doubled. In Gabon, a major provider rolled IPv6 at the end of December 2017.</p>
-	<p>As Mathieu Paonessa from <a href="https://www.gva.africa">Group Vivendi Afrique</a> told us, “Gabon went from 0% to 2% IPv6 in only 9 months, following the opening of our CanalBox Gabon FTTH service.”</p>
+	<p>As Mathieu Paonessa from <a href="https://www.gva.africa" target="_blank" rel="noopener noreferrer">Group Vivendi Afrique</a> told us, “Gabon went from 0% to 2% IPv6 in only 9 months, following the opening of our CanalBox Gabon FTTH service.”</p>
 	<p>The timeline is similar with a small ISP in Kenya and has been increasing steadily. We can maybe hope they double their IPv6 usage by the end of 2018.</p>
 	<p>Compared to the rest of the world, Belgium is still ahead with 37%, followed by India at 35%. Most European countries are above 10%. USA is 22% and Canada is 15%.</p>
 	<p>One explanation for the small number of deployments is the size of the remaining IPv4 pool of addresses.</p>
 	<p>As of July 2018, there were 36,245 /24 available (approximately 9.2 millions IPs). The total Afrinic size is 6 /8 (approximately 100 millions IPs). 9% are left.</p>
 	<p>The following graphs shows the allocations and usage of each /24 in the Afrinic allocations.</p>
-	<p>This is the Hilbert graph of <a href="https://www.afrinic.net/en/services/statistics/ipv4-exhaustion">Afrinic IPv4 exhaustion</a>. It was inspired by <a href="https://blog.benjojo.co.uk/post/scan-ping-the-internet-hilbert-curve">Ben Cartwright-Cox’s blog post</a> and used <a href="https://github.com/robertdavidgraham/masscan">masscan</a> and <a href="https://github.com/measurement-factory/ipv4-heatmap">ipv4-heatmap</a>.</p>
+	<p>This is the Hilbert graph of <a href="https://www.afrinic.net/en/services/statistics/ipv4-exhaustion" target="_blank" rel="noopener noreferrer">Afrinic IPv4 exhaustion</a>. It was inspired by <a href="https://blog.benjojo.co.uk/post/scan-ping-the-internet-hilbert-curve" target="_blank" rel="noopener noreferrer">Ben Cartwright-Cox’s blog post</a> and used <a href="https://github.com/robertdavidgraham/masscan" target="_blank" rel="noopener noreferrer">masscan</a> and <a href="https://github.com/measurement-factory/ipv4-heatmap" target="_blank" rel="noopener noreferrer">ipv4-heatmap</a>.</p>
 	<p>Prefix</p>
 	<p>Announced (yellow) vs Available (green) vs Reserved (red)</p>
 	<p>Response to ICMP (blue = low reply, red = all reply)</p>
@@ -254,5 +254,5 @@
 		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3OFs5KlBhxHz98W558L6nv/07bf1d99b7457379ccaeb37f3dca8480/netmap-future-01-03.png" alt="Future Cloudflare Datacenters in Africa" class="kg-image" width="1459" height="1042" loading="lazy">
 
 	</figure>
-	<p><i>Header image </i><a href="https://www.flickr.com/photos/south-african-tourism/2418525776/in/photostream"><i>source</i></a></p>
+	<p><i>Header image </i><a href="https://www.flickr.com/photos/south-african-tourism/2418525776/in/photostream" target="_blank" rel="noopener noreferrer"><i>source</i></a></p>
 </div>

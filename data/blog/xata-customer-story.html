@@ -5,7 +5,7 @@
 		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2Er0jWZdhwSZumjJxjt1yW/bfc90b6c901f250dfa64557f5d5ad6c1/Customer-Story_-Xata_light.png" alt="" class="kg-image" width="1600" height="898" loading="lazy">
 
 	</figure>
-	<p>We’re excited to have Xata building their serverless functions product – Xata Workers – on top of <a href="https://developers.cloudflare.com/cloudflare-for-platforms/workers-for-platforms">Workers for Platforms</a>. Xata Workers act as middleware to simplify database access and allow their developers to deploy functions that sit in front of their databases. Workers for Platforms opens up a whole suite of use cases for Xata developers all while providing the security, scalability and performance of Cloudflare Workers.</p>
+	<p>We’re excited to have Xata building their serverless functions product – Xata Workers – on top of <a href="https://developers.cloudflare.com/cloudflare-for-platforms/workers-for-platforms" target="_blank" rel="noopener noreferrer">Workers for Platforms</a>. Xata Workers act as middleware to simplify database access and allow their developers to deploy functions that sit in front of their databases. Workers for Platforms opens up a whole suite of use cases for Xata developers all while providing the security, scalability and performance of Cloudflare Workers.</p>
 	<p>Now, handing it over to Alexis, a Senior Software Engineer at Xata to tell us more.</p>
 	<div class="flex anchor relative">
 		<h3 id="introduction">Introduction</h3>
@@ -84,7 +84,7 @@ export const Home = () =&gt; {
 			</svg>
 		</a>
 	</div>
-	<p>We are happy to join the <a href="https://blog.cloudflare.com/welcome-to-the-supercloud-and-developer-week-2022">Supercloud</a> movement, Cloudflare has an excellent track record, and we are using <a href="https://developers.cloudflare.com/cloudflare-for-platforms/workers-for-platforms">Cloudflare Workers for Platforms</a> to host our serverless functions. By using the Workers isolated execution contexts we reduce security risks of running untrusted code on our own while being close to our users, resulting in super low latency.</p>
+	<p>We are happy to join the <a href="https://blog.cloudflare.com/welcome-to-the-supercloud-and-developer-week-2022">Supercloud</a> movement, Cloudflare has an excellent track record, and we are using <a href="https://developers.cloudflare.com/cloudflare-for-platforms/workers-for-platforms" target="_blank" rel="noopener noreferrer">Cloudflare Workers for Platforms</a> to host our serverless functions. By using the Workers isolated execution contexts we reduce security risks of running untrusted code on our own while being close to our users, resulting in super low latency.</p>
 	<p>All of it, without having to deploy extra infrastructure to handle our user’s application load or ask them to configure how the serverless functions should be deployed. It really feels like magic! Now, let's dive into the internals of how we use Cloudflare to run our Xata Workers.</p>
 	<p>For every workspace in Xata we create a Worker Namespace, a Workers for Platform concept to organize Workers and restrict the routing between them. We used Namespaces to group and encapsulate the different functions coming from all the databases built by a client or team.</p>
 	<p>When a user deploys a Xata Worker, we create a new Worker Script, and we upload the compiled code to its Namespace. Each script has a unique name with a compilation identifier so that the user can have multiple versions of the same function running at the same time.</p>
@@ -113,7 +113,7 @@ const listProducts = xataWorker('listProducts', async ({ xata }) =&gt; {
 		</a>
 	</div>
 	<p>Xata is now out of beta and available for everyone. We offer a generous free tier that allows you to build and deploy your applications and only pay to scale them when you actually need it.</p>
-	<p>You can <a href="https://app.xata.io">sign up for free</a>, create a database in seconds and enjoy features such as branching with zero downtime migrations, search and analytics, transactions, and many others. Check out our <a href="https://xata.io">website</a> to learn more!</p>
-	<p>Xata Workers are currently in private beta. If you are interested in trying them out, you can sign up for the <a href="https://xata.io/beta/workers">waitlist</a> and talk us through your use case. We are looking for developers that are willing to provide feedback and shape this new feature for our serverless data platform.</p>
+	<p>You can <a href="https://app.xata.io" target="_blank" rel="noopener noreferrer">sign up for free</a>, create a database in seconds and enjoy features such as branching with zero downtime migrations, search and analytics, transactions, and many others. Check out our <a href="https://xata.io" target="_blank" rel="noopener noreferrer">website</a> to learn more!</p>
+	<p>Xata Workers are currently in private beta. If you are interested in trying them out, you can sign up for the <a href="https://xata.io/beta/workers" target="_blank" rel="noopener noreferrer">waitlist</a> and talk us through your use case. We are looking for developers that are willing to provide feedback and shape this new feature for our serverless data platform.</p>
 	<p>We are very proud of our collaboration with Cloudflare for this new feature. Processing data closer to where it's being requested is the future of computing and we are excited to be part of this movement. We look forward to seeing what you build with Xata Workers.</p>
 </div>

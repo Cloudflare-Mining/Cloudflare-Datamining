@@ -2,7 +2,7 @@
 <div class="post-content lh-copy gray1">
 	<p></p>
 	<p>Today, we are thrilled to release a beta of Cloudflare Pages support for build caching! With build caching, we are offering a supercharged Pages experience by helping you cache parts of your project to save time on subsequent builds.</p>
-	<p>For developers, time is not just money – it’s innovation and progress. When every second counts in crunch time before a new launch, the “need for speed” becomes <i>critical</i>. With Cloudflare Pages’ built-in <a href="https://www.cloudflare.com/learning/serverless/glossary/what-is-ci-cd">continuous integration and continuous deployment (CI/CD)</a>, developers count on us to drive fast. We’ve already taken great strides in making sure we’re enabling quick development iterations for our users by <a href="https://blog.cloudflare.com/cloudflare-pages-build-improvements">making solid improvements on the stability and efficiency</a> of our build infrastructure. But we always knew there was more to our build story.</p>
+	<p>For developers, time is not just money – it’s innovation and progress. When every second counts in crunch time before a new launch, the “need for speed” becomes <i>critical</i>. With Cloudflare Pages’ built-in <a href="https://www.cloudflare.com/learning/serverless/glossary/what-is-ci-cd" target="_blank" rel="noopener noreferrer">continuous integration and continuous deployment (CI/CD)</a>, developers count on us to drive fast. We’ve already taken great strides in making sure we’re enabling quick development iterations for our users by <a href="https://blog.cloudflare.com/cloudflare-pages-build-improvements">making solid improvements on the stability and efficiency</a> of our build infrastructure. But we always knew there was more to our build story.</p>
 	<div class="flex anchor relative">
 		<h3 id="quick-pit-stops">Quick pit stops</h3>
 		<a href="https://blog.cloudflare.com/#quick-pit-stops" aria-hidden="true" class="relative sm:absolute sm:-start-5">
@@ -34,7 +34,7 @@
 		</a>
 	</div>
 	<p>It boils down to two components: dependencies and build output.</p>
-	<p>The Pages build system supports dependency caching for select package managers and build output caching for select frameworks. Check out our <a href="https://developers.cloudflare.com/pages/platform/build-caching">documentation</a> for more information on what’s currently supported and what’s coming up.</p>
+	<p>The Pages build system supports dependency caching for select package managers and build output caching for select frameworks. Check out our <a href="https://developers.cloudflare.com/pages/platform/build-caching" target="_blank" rel="noopener noreferrer">documentation</a> for more information on what’s currently supported and what’s coming up.</p>
 	<p>Let’s take a closer look at what exactly we are caching.</p>
 	<p><b>Dependencies:</b> upon initiating a build, the Pages CI system checks for cached artifacts from previous builds. If it identifies a cache hit for dependencies, it restores from cache to speed up dependency installation.</p>
 	<p><b>Build output:</b> if a cache hit for build output is identified, Pages will only build the changed assets. This approach enables the long awaited <i>incremental builds</i> for supported JavaScript frameworks.</p>
@@ -52,7 +52,7 @@
 		</a>
 	</div>
 	<p>Build caching is now in beta, and ready for you to test drive!</p>
-	<p>In this release, the feature will support the node-based package managers <a href="https://www.npmjs.com">npm</a>, <a href="https://yarnpkg.com">yarn</a>, <a href="https://pnpm.io">pnpm</a>, as well as <a href="https://bun.sh">Bun</a>. We’ve also ensured compatibility with the most popular frameworks that provide native incremental building support: <a href="https://www.gatsbyjs.com">Gatsby.js</a>, <a href="https://nextjs.org">Next.js</a> and <a href="https://astro.build">Astro</a> – and more to come!</p>
+	<p>In this release, the feature will support the node-based package managers <a href="https://www.npmjs.com" target="_blank" rel="noopener noreferrer">npm</a>, <a href="https://yarnpkg.com" target="_blank" rel="noopener noreferrer">yarn</a>, <a href="https://pnpm.io" target="_blank" rel="noopener noreferrer">pnpm</a>, as well as <a href="https://bun.sh" target="_blank" rel="noopener noreferrer">Bun</a>. We’ve also ensured compatibility with the most popular frameworks that provide native incremental building support: <a href="https://www.gatsbyjs.com" target="_blank" rel="noopener noreferrer">Gatsby.js</a>, <a href="https://nextjs.org" target="_blank" rel="noopener noreferrer">Next.js</a> and <a href="https://astro.build" target="_blank" rel="noopener noreferrer">Astro</a> – and more to come!</p>
 	<p>For you as a Pages user, interacting with build caching will be seamless. If you are working with an existing project, simply navigate to your project’s settings to toggle on Build Cache.</p>
 	<p>When you push a code change and initiate a build using Pages CI, build caching will kick-start and do its magic in the background.</p>
 	<figure class="kg-card kg-image-card ">
@@ -68,7 +68,7 @@
 			</svg>
 		</a>
 	</div>
-	<p>Have questions? Join us on our <a href="https://discord.com/invite/cloudflaredev?event=1152163002502615050">Discord Server</a>. We will be hosting an “Ask Us Anything” <a href="https://discord.com/invite/cloudflaredev?event=1152163002502615050">session</a> on October 2nd where you can chat live with members of our team! Your feedback on this beta is invaluable to us, so after testing out build caching, don't hesitate to share your experiences! Happy building!</p>
+	<p>Have questions? Join us on our <a href="https://discord.com/invite/cloudflaredev?event=1152163002502615050" target="_blank" rel="noopener noreferrer">Discord Server</a>. We will be hosting an “Ask Us Anything” <a href="https://discord.com/invite/cloudflaredev?event=1152163002502615050" target="_blank" rel="noopener noreferrer">session</a> on October 2nd where you can chat live with members of our team! Your feedback on this beta is invaluable to us, so after testing out build caching, don't hesitate to share your experiences! Happy building!</p>
 	<figure class="kg-card kg-image-card ">
 
 		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6lavvh2PfpjlEbNV0YEuGB/8104fcccf6bf1243dfa113e940317f82/image3-32.png" alt="" class="kg-image" width="1800" height="668" loading="lazy">

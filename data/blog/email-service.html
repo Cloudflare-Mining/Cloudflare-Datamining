@@ -3,8 +3,8 @@
 <div class="post-content lh-copy gray1">
 	<p>If you are building an application, you rely on email to communicate with your users. You validate their signup, notify them about events, and send them invoices through email. The service continues to find new purpose with agentic workflows and other AI-powered tools that rely on a simple email as an input or output.</p>
 	<p>And it is a pain for developers to manage. It’s frequently the most annoying burden for most teams. Developers deserve a solution that is simple, reliable, and deeply integrated into their workflow.&nbsp;</p>
-	<p>Today, we're excited to announce just that: the private beta of Email Sending, a new capability that allows you to send transactional emails directly from Cloudflare Workers. Email Sending joins and expands our popular <a href="https://developers.cloudflare.com/email-routing"><u>Email Routing</u></a> product, and together they form the new Cloudflare Email Service — a single, unified developer experience for all your email needs.</p>
-	<p>With Cloudflare Email Service, we’re distilling our years of experience <a href="https://developers.cloudflare.com/cloudflare-one/email-security"><u>securing</u></a> and <a href="https://developers.cloudflare.com/email-routing"><u>routing</u></a> emails, and combining it with the power of the developer platform. Now, sending an email is as easy as adding a binding to a Worker and calling <code>send</code>:</p>
+	<p>Today, we're excited to announce just that: the private beta of Email Sending, a new capability that allows you to send transactional emails directly from Cloudflare Workers. Email Sending joins and expands our popular <a href="https://developers.cloudflare.com/email-routing" target="_blank" rel="noopener noreferrer"><u>Email Routing</u></a> product, and together they form the new Cloudflare Email Service — a single, unified developer experience for all your email needs.</p>
+	<p>With Cloudflare Email Service, we’re distilling our years of experience <a href="https://developers.cloudflare.com/cloudflare-one/email-security" target="_blank" rel="noopener noreferrer"><u>securing</u></a> and <a href="https://developers.cloudflare.com/email-routing" target="_blank" rel="noopener noreferrer"><u>routing</u></a> emails, and combining it with the power of the developer platform. Now, sending an email is as easy as adding a binding to a Worker and calling <code>send</code>:</p>
 	<pre class="language-JavaScript"><code class="language-JavaScript">export default {
   async fetch(request, env, ctx) {
 
@@ -48,10 +48,10 @@
 			<p>You can use Workers to process incoming mail, store attachments in R2, and add tasks to Queues to get email sending off the hot path of your application. And you can use <code>wrangler</code> to emulate Email Sending locally, allowing you to test your user journeys without jumping between tools and environments.</p>
 		</li>
 		<li>
-			<p>In production, you have clear <a href="https://www.cloudflare.com/learning/performance/what-is-observability">observability</a> over your emails with bounce rates and delivery events. And, when a user reports a missing email, you can quickly dive into the delivery status to debug issues quickly and help get your user back on track.</p>
+			<p>In production, you have clear <a href="https://www.cloudflare.com/learning/performance/what-is-observability" target="_blank" rel="noopener noreferrer">observability</a> over your emails with bounce rates and delivery events. And, when a user reports a missing email, you can quickly dive into the delivery status to debug issues quickly and help get your user back on track.</p>
 		</li>
 	</ul>
-	<p>We’re also making sure Email Service seamlessly fits into your existing applications. If you need to send emails from external services, you can do so using either REST APIs or SMTP. Likewise, if you’ve been leaning on existing email frameworks (like <a href="https://react.email"><u>React Email</u></a>) to send rich, HTML-rendered emails to users, you can continue to use them with Email Service. Import the library, render your template, and pass it to the `send` method just as you would elsewhere.</p>
+	<p>We’re also making sure Email Service seamlessly fits into your existing applications. If you need to send emails from external services, you can do so using either REST APIs or SMTP. Likewise, if you’ve been leaning on existing email frameworks (like <a href="https://react.email" target="_blank" rel="noopener noreferrer"><u>React Email</u></a>) to send rich, HTML-rendered emails to users, you can continue to use them with Email Service. Import the library, render your template, and pass it to the `send` method just as you would elsewhere.</p>
 	<pre class="language-JavaScript"><code class="language-JavaScript">import { render, pretty, toPlainText } from '@react-email/render';
 import { SignupConfirmation } from './templates';
 
@@ -82,11 +82,11 @@ export default {
 			</svg>
 		</a>
 	</div>
-	<p>Sending email is only half the story. Applications often need to receive and parse emails to create powerful workflows. By combining Email Sending with our existing <a href="https://developers.cloudflare.com/email-routing"><u>Email Routing</u></a> capabilities, we're providing a complete, end-to-end solution for all your application's email needs.</p>
+	<p>Sending email is only half the story. Applications often need to receive and parse emails to create powerful workflows. By combining Email Sending with our existing <a href="https://developers.cloudflare.com/email-routing" target="_blank" rel="noopener noreferrer"><u>Email Routing</u></a> capabilities, we're providing a complete, end-to-end solution for all your application's email needs.</p>
 	<p>Email Routing allows you to create custom email addresses on your domain and handle incoming messages programmatically with a Worker, which can enable powerful application flows such as:</p>
 	<ul>
 		<li>
-			<p>Using <a href="https://developers.cloudflare.com/workers-ai"><u>Workers AI</u></a> to parse, summarize and even label incoming emails: flagging security events from customers, early signs of a bug or incident, and/or generating automatic responses based on those incoming emails.</p>
+			<p>Using <a href="https://developers.cloudflare.com/workers-ai" target="_blank" rel="noopener noreferrer"><u>Workers AI</u></a> to parse, summarize and even label incoming emails: flagging security events from customers, early signs of a bug or incident, and/or generating automatic responses based on those incoming emails.</p>
 		</li>
 		<li>
 			<p>Creating support tickets in systems like JIRA or Linear from emails sent to <code>support@your-domain.com</code>.</p>
@@ -107,7 +107,7 @@ export default {
   },
 };  </code></pre>
 	<p>When you combine inbound routing with outbound sending, you can close the loop entirely within Cloudflare. Imagine a user emails your support address. A Worker can receive the email, parse its content, call a third-party API to create a ticket, and then use the Email Sending binding to send an immediate confirmation back to the user with their ticket number. That’s the power of a unified Email Service.</p>
-	<p>Email Sending will require a paid Workers subscription, and we'll be charging based on messages sent. We're still finalizing the packaging, and we'll update our documentation, <a href="https://developers.cloudflare.com/changelog"><u>changelog</u></a>, and notify users as soon as we have final pricing and long before we start charging. Email Routing limits will remain unchanged.</p>
+	<p>Email Sending will require a paid Workers subscription, and we'll be charging based on messages sent. We're still finalizing the packaging, and we'll update our documentation, <a href="https://developers.cloudflare.com/changelog" target="_blank" rel="noopener noreferrer"><u>changelog</u></a>, and notify users as soon as we have final pricing and long before we start charging. Email Routing limits will remain unchanged.</p>
 	<div class="flex anchor relative">
 		<h3 id="whats-next">What’s next</h3>
 		<a href="https://blog.cloudflare.com/#whats-next" aria-hidden="true" class="relative sm:absolute sm:-start-5">
@@ -119,10 +119,10 @@ export default {
 	<p>Email is core to your application today, and it's becoming essential for the next generation of AI agents, background tasks, and automated workflows. We built the Cloudflare Email Service to be the engine for this new era of applications, we’ll be making it available in private beta this November.</p>
 	<ul>
 		<li>
-			<p>Interested in Email Sending? <a href="https://forms.gle/BX6ECfkar3oVLQxs7"><u>Sign up to the waitlist here.</u></a>&nbsp;</p>
+			<p>Interested in Email Sending? <a href="https://forms.gle/BX6ECfkar3oVLQxs7" target="_blank" rel="noopener noreferrer"><u>Sign up to the waitlist here.</u></a>&nbsp;</p>
 		</li>
 		<li>
-			<p>Want to start processing inbound emails? Get started with <a href="https://developers.cloudflare.com/email-routing"><u>Email Routing</u></a>, which is available now, remains free and will be folded into the new email sending APIs coming.</p>
+			<p>Want to start processing inbound emails? Get started with <a href="https://developers.cloudflare.com/email-routing" target="_blank" rel="noopener noreferrer"><u>Email Routing</u></a>, which is available now, remains free and will be folded into the new email sending APIs coming.</p>
 		</li>
 	</ul>
 	<p>We’re excited to be adding Email Service to our Developer Platform, and we’re looking forward to seeing how you reimagine user experiences that increasingly rely on emails!</p>

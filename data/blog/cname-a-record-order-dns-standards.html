@@ -96,12 +96,12 @@
 			</svg>
 		</a>
 	</div>
-	<p>When you query for a domain like <code>www.example.com</code>, you might get a <a href="https://www.cloudflare.com/learning/dns/dns-records/dns-cname-record"><u>CNAME (Canonical Name)</u></a> record that indicates one name is an alias for another name. It’s the job of public resolvers, such as <a href="https://www.cloudflare.com/learning/dns/what-is-1.1.1.1"><u>1.1.1.1</u></a>, to follow this chain of aliases until it reaches a final response:</p>
+	<p>When you query for a domain like <code>www.example.com</code>, you might get a <a href="https://www.cloudflare.com/learning/dns/dns-records/dns-cname-record" target="_blank" rel="noopener noreferrer"><u>CNAME (Canonical Name)</u></a> record that indicates one name is an alias for another name. It’s the job of public resolvers, such as <a href="https://www.cloudflare.com/learning/dns/what-is-1.1.1.1" target="_blank" rel="noopener noreferrer"><u>1.1.1.1</u></a>, to follow this chain of aliases until it reaches a final response:</p>
 	<p><code>www.example.com → cdn.example.com → server.cdn-provider.com → 198.51.100.1</code></p>
-	<p>As 1.1.1.1 traverses this chain, it caches every intermediate record. Each record in the chain has its own <a href="https://www.cloudflare.com/learning/cdn/glossary/time-to-live-ttl"><u>TTL (Time-To-Live)</u></a>, indicating how long we can cache it. Not all the TTLs in a CNAME chain need to be the same:</p>
+	<p>As 1.1.1.1 traverses this chain, it caches every intermediate record. Each record in the chain has its own <a href="https://www.cloudflare.com/learning/cdn/glossary/time-to-live-ttl" target="_blank" rel="noopener noreferrer"><u>TTL (Time-To-Live)</u></a>, indicating how long we can cache it. Not all the TTLs in a CNAME chain need to be the same:</p>
 	<p><code>www.example.com → cdn.example.com (TTL: 3600 seconds) # Still cached
 			cdn.example.com → 198.51.100.1&nbsp; &nbsp; (TTL: 300 seconds)&nbsp; # Expired</code></p>
-	<p>When one or more records in a CNAME chain expire, it’s considered partially expired. Fortunately, since parts of the chain are still in our cache, we don’t have to resolve the entire CNAME chain again — only the part that has expired. In our example above, we would take the still valid <code>www.example.com → cdn.example.com</code> chain, and only resolve the expired <code>cdn.example.com</code> <a href="https://www.cloudflare.com/learning/dns/dns-records/dns-a-record"><u>A record</u></a>. Once that’s done, we combine the existing CNAME chain and the newly resolved records into a single response.</p>
+	<p>When one or more records in a CNAME chain expire, it’s considered partially expired. Fortunately, since parts of the chain are still in our cache, we don’t have to resolve the entire CNAME chain again — only the part that has expired. In our example above, we would take the still valid <code>www.example.com → cdn.example.com</code> chain, and only resolve the expired <code>cdn.example.com</code> <a href="https://www.cloudflare.com/learning/dns/dns-records/dns-a-record" target="_blank" rel="noopener noreferrer"><u>A record</u></a>. Once that’s done, we combine the existing CNAME chain and the newly resolved records into a single response.</p>
 	<div class="flex anchor relative">
 		<h3 id="the-logic-change">The logic change</h3>
 		<a href="https://blog.cloudflare.com/#the-logic-change" aria-hidden="true" class="relative sm:absolute sm:-start-5">
@@ -187,7 +187,7 @@ www.example.com.    3600   IN    CNAME  cdn.example.com.
 			<p>No more records are present, so the response is considered empty</p>
 		</li>
 	</ol>
-	<p>One such implementation that broke is the <a href="https://man7.org/linux/man-pages/man3/getaddrinfo.3.html"><code><u>getaddrinfo</u></code></a> function in glibc, which is commonly used on Linux for DNS resolution. When looking at its <code>getanswer_r</code> implementation, we can indeed see it expects to find the CNAME records before any answers:</p>
+	<p>One such implementation that broke is the <a href="https://man7.org/linux/man-pages/man3/getaddrinfo.3.html" target="_blank" rel="noopener noreferrer"><code><u>getaddrinfo</u></code></a> function in glibc, which is commonly used on Linux for DNS resolution. When looking at its <code>getanswer_r</code> implementation, we can indeed see it expects to find the CNAME records before any answers:</p>
 	<pre class="language-C++"><code class="language-C++">for (; ancount &gt; 0; --ancount)
   {
     // ... parsing DNS records ...
@@ -209,7 +209,7 @@ www.example.com.    3600   IN    CNAME  cdn.example.com.
       }
   }
 </code></pre>
-	<p>Another notable affected implementation was the DNSC process in three models of Cisco ethernet switches. In the case where switches had been configured to use 1.1.1.1 these switches experienced spontaneous reboot loops when they received a response containing the reordered CNAMEs. <a href="https://www.cisco.com/c/en/us/support/docs/smb/switches/Catalyst-switches/kmgmt3846-cbs-reboot-with-fatal-error-from-dnsc-process.html"><u>Cisco has published a service document describing the issue</u></a>.</p>
+	<p>Another notable affected implementation was the DNSC process in three models of Cisco ethernet switches. In the case where switches had been configured to use 1.1.1.1 these switches experienced spontaneous reboot loops when they received a response containing the reordered CNAMEs. <a href="https://www.cisco.com/c/en/us/support/docs/smb/switches/Catalyst-switches/kmgmt3846-cbs-reboot-with-fatal-error-from-dnsc-process.html" target="_blank" rel="noopener noreferrer"><u>Cisco has published a service document describing the issue</u></a>.</p>
 	<div class="flex anchor relative">
 		<h3 id="not-all-implementations-break">Not all implementations break</h3>
 		<a href="https://blog.cloudflare.com/#not-all-implementations-break" aria-hidden="true" class="relative sm:absolute sm:-start-5">
@@ -218,7 +218,7 @@ www.example.com.    3600   IN    CNAME  cdn.example.com.
 			</svg>
 		</a>
 	</div>
-	<p>Most DNS clients don’t have this issue. For example, <a href="https://www.freedesktop.org/software/systemd/man/latest/systemd-resolved.service.html"><u>systemd-resolved</u></a> first parses the records into an ordered set:</p>
+	<p>Most DNS clients don’t have this issue. For example, <a href="https://www.freedesktop.org/software/systemd/man/latest/systemd-resolved.service.html" target="_blank" rel="noopener noreferrer"><u>systemd-resolved</u></a> first parses the records into an ordered set:</p>
 	<pre class="language-C++"><code class="language-C++">typedef struct DnsAnswerItem {
         DnsResourceRecord *rr; // The actual record
         DnsAnswerFlags flags;  // Which section it came from
@@ -240,12 +240,12 @@ typedef struct DnsAnswer {
 			</svg>
 		</a>
 	</div>
-	<p><a href="https://datatracker.ietf.org/doc/html/rfc1034"><u>RFC 1034</u></a>, published in 1987, defines much of the behavior of the DNS protocol, and should give us an answer on whether the order of CNAME records matters. <a href="https://datatracker.ietf.org/doc/html/rfc1034#section-4.3.1"><u>Section 4.3.1</u></a> contains the following text:</p>
+	<p><a href="https://datatracker.ietf.org/doc/html/rfc1034" target="_blank" rel="noopener noreferrer"><u>RFC 1034</u></a>, published in 1987, defines much of the behavior of the DNS protocol, and should give us an answer on whether the order of CNAME records matters. <a href="https://datatracker.ietf.org/doc/html/rfc1034#section-4.3.1" target="_blank" rel="noopener noreferrer"><u>Section 4.3.1</u></a> contains the following text:</p>
 	<blockquote>
 		<p>If recursive service is requested and available, the recursive response to a query will be one of the following:</p>
 		<p>- The answer to the query, possibly preface by one or more CNAME RRs that specify aliases encountered on the way to an answer.</p>
 	</blockquote>
-	<p>While "possibly preface" can be interpreted as a requirement for CNAME records to appear before everything else, it does not use normative key words, such as <a href="https://datatracker.ietf.org/doc/html/rfc2119"><u>MUST and SHOULD</u></a> that modern RFCs use to express requirements. This isn’t a flaw in RFC 1034, but simply a result of its age. <a href="https://datatracker.ietf.org/doc/html/rfc2119"><u>RFC 2119</u></a>, which standardized these key words, was published in 1997, 10 years <i>after</i> RFC 1034.</p>
+	<p>While "possibly preface" can be interpreted as a requirement for CNAME records to appear before everything else, it does not use normative key words, such as <a href="https://datatracker.ietf.org/doc/html/rfc2119" target="_blank" rel="noopener noreferrer"><u>MUST and SHOULD</u></a> that modern RFCs use to express requirements. This isn’t a flaw in RFC 1034, but simply a result of its age. <a href="https://datatracker.ietf.org/doc/html/rfc2119" target="_blank" rel="noopener noreferrer"><u>RFC 2119</u></a>, which standardized these key words, was published in 1997, 10 years <i>after</i> RFC 1034.</p>
 	<p>In our case, we did originally implement the specification so that CNAMEs appear first. However, we did not have any tests asserting the behavior remains consistent due to the ambiguous language in the RFC.</p>
 	<div class="flex anchor relative">
 		<h3 id="the-subtle-distinction-rrsets-vs-rrs-in-message-sections">The subtle distinction: RRsets vs RRs in message sections</h3>
@@ -256,13 +256,13 @@ typedef struct DnsAnswer {
 		</a>
 	</div>
 	<p>To understand why this ambiguity exists, we need to understand a subtle but important distinction in DNS terminology.</p>
-	<p>RFC 1034 <a href="https://datatracker.ietf.org/doc/html/rfc1034#section-3.6"><u>section 3.6</u></a> defines Resource Record Sets (RRsets) as collections of records with the same name, type, and class. For RRsets, the specification is clear about ordering:</p>
+	<p>RFC 1034 <a href="https://datatracker.ietf.org/doc/html/rfc1034#section-3.6" target="_blank" rel="noopener noreferrer"><u>section 3.6</u></a> defines Resource Record Sets (RRsets) as collections of records with the same name, type, and class. For RRsets, the specification is clear about ordering:</p>
 	<blockquote>
 		<p>The order of RRs in a set is not significant, and need not be preserved by name servers, resolvers, or other parts of the DNS.</p>
 	</blockquote>
-	<p>However, RFC 1034 doesn’t clearly specify how message sections relate to RRsets. While modern DNS specifications have shown that message sections can indeed contain multiple RRsets (consider <a href="https://www.cloudflare.com/learning/dns/dnssec/how-dnssec-works">DNSSEC</a> responses with signatures), RFC 1034 doesn’t describe message sections in those terms. Instead, it treats message sections as containing individual Resource Records (RRs).</p>
+	<p>However, RFC 1034 doesn’t clearly specify how message sections relate to RRsets. While modern DNS specifications have shown that message sections can indeed contain multiple RRsets (consider <a href="https://www.cloudflare.com/learning/dns/dnssec/how-dnssec-works" target="_blank" rel="noopener noreferrer">DNSSEC</a> responses with signatures), RFC 1034 doesn’t describe message sections in those terms. Instead, it treats message sections as containing individual Resource Records (RRs).</p>
 	<p>The problem is that the RFC primarily discusses ordering in the context of RRsets but doesn't specify the ordering of different RRsets relative to each other within a message section. This is where the ambiguity lives.</p>
-	<p>RFC 1034 <a href="https://datatracker.ietf.org/doc/html/rfc1034#section-6.2.1"><u>section 6.2.1</u></a> includes an example that demonstrates this ambiguity further. It mentions that the order of Resource Records (RRs) is not significant either:</p>
+	<p>RFC 1034 <a href="https://datatracker.ietf.org/doc/html/rfc1034#section-6.2.1" target="_blank" rel="noopener noreferrer"><u>section 6.2.1</u></a> includes an example that demonstrates this ambiguity further. It mentions that the order of Resource Records (RRs) is not significant either:</p>
 	<blockquote>
 		<p>The difference in ordering of the RRs in the answer section is not significant.</p>
 	</blockquote>
@@ -311,7 +311,7 @@ server.cdn-provider.com.   300   IN    A      198.51.100.1
 			</svg>
 		</a>
 	</div>
-	<p>RFC 1034 section 5 describes resolver behavior. <a href="https://datatracker.ietf.org/doc/html/rfc1034#section-5.2.2"><u>Section 5.2.2</u></a> specifically addresses how resolvers should handle aliases (CNAMEs): </p>
+	<p>RFC 1034 section 5 describes resolver behavior. <a href="https://datatracker.ietf.org/doc/html/rfc1034#section-5.2.2" target="_blank" rel="noopener noreferrer"><u>Section 5.2.2</u></a> specifically addresses how resolvers should handle aliases (CNAMEs): </p>
 	<blockquote>
 		<p>In most cases a resolver simply restarts the query at the new name when it encounters a CNAME.</p>
 	</blockquote>
@@ -333,11 +333,11 @@ server.cdn-provider.com.   300   IN    A      198.51.100.1
 			</svg>
 		</a>
 	</div>
-	<p>Later DNS specifications demonstrate a different approach to defining record ordering. <a href="https://datatracker.ietf.org/doc/html/rfc4035"><u>RFC 4035</u></a>, which defines protocol modifications for <a href="https://www.cloudflare.com/learning/dns/dnssec/how-dnssec-works"><u>DNSSEC</u></a>, uses more explicit language:</p>
+	<p>Later DNS specifications demonstrate a different approach to defining record ordering. <a href="https://datatracker.ietf.org/doc/html/rfc4035" target="_blank" rel="noopener noreferrer"><u>RFC 4035</u></a>, which defines protocol modifications for <a href="https://www.cloudflare.com/learning/dns/dnssec/how-dnssec-works" target="_blank" rel="noopener noreferrer"><u>DNSSEC</u></a>, uses more explicit language:</p>
 	<blockquote>
 		<p>When placing a signed RRset in the Answer section, the name server MUST also place its RRSIG RRs in the Answer section. The RRSIG RRs have a higher priority for inclusion than any other RRsets that may have to be included.</p>
 	</blockquote>
-	<p>The specification uses "MUST" and explicitly defines "higher priority" for <a href="https://www.cloudflare.com/learning/dns/dnssec/how-dnssec-works"><u>RRSIG</u></a> records. However, "higher priority for inclusion" refers to whether RRSIGs should be included in the response, not where they should appear. This provides unambiguous guidance to implementers about record inclusion in DNSSEC contexts, while not mandating any particular behavior around record ordering.</p>
+	<p>The specification uses "MUST" and explicitly defines "higher priority" for <a href="https://www.cloudflare.com/learning/dns/dnssec/how-dnssec-works" target="_blank" rel="noopener noreferrer"><u>RRSIG</u></a> records. However, "higher priority for inclusion" refers to whether RRSIGs should be included in the response, not where they should appear. This provides unambiguous guidance to implementers about record inclusion in DNSSEC contexts, while not mandating any particular behavior around record ordering.</p>
 	<p>For unsigned zones, however, the ambiguity from RFC 1034 remains. The word "preface" has guided implementation behavior for nearly four decades, but it has never been formally specified as a requirement.</p>
 	<div class="flex anchor relative">
 		<h2 id="do-cname-records-come-first">Do CNAME records come first?</h2>
@@ -349,5 +349,5 @@ server.cdn-provider.com.   300   IN    A      198.51.100.1
 	</div>
 	<p>While in our interpretation the RFCs do not require CNAMEs to appear in any particular order, it’s clear that at least some widely-deployed DNS clients rely on it. As some systems using these clients might be updated infrequently, or never updated at all, we believe it’s best to require CNAME records to appear in-order before any other records.</p>
 	<p>Based on what we have learned during this incident, we have reverted the CNAME re-ordering and do not intend to change the order in the future.</p>
-	<p>To prevent any future incidents or confusion, we have written a proposal in the form of an <a href="https://www.ietf.org/participate/ids"><u>Internet-Draft</u></a> to be discussed at the IETF. If consensus is reached on the clarified behavior, this would become an RFC that explicitly defines how to correctly handle CNAMEs in DNS responses, helping us and the wider DNS community navigate the protocol. The proposal can be found at <a href="https://datatracker.ietf.org/doc/draft-jabley-dnsop-ordered-answer-section">https://datatracker.ietf.org/doc/draft-jabley-dnsop-ordered-answer-section</a>. If you have suggestions or feedback we would love to hear your opinions, most usefully via the <a href="https://datatracker.ietf.org/wg/dnsop/about"><u>DNSOP working group</u></a> at the IETF.</p>
+	<p>To prevent any future incidents or confusion, we have written a proposal in the form of an <a href="https://www.ietf.org/participate/ids" target="_blank" rel="noopener noreferrer"><u>Internet-Draft</u></a> to be discussed at the IETF. If consensus is reached on the clarified behavior, this would become an RFC that explicitly defines how to correctly handle CNAMEs in DNS responses, helping us and the wider DNS community navigate the protocol. The proposal can be found at <a href="https://datatracker.ietf.org/doc/draft-jabley-dnsop-ordered-answer-section" target="_blank" rel="noopener noreferrer">https://datatracker.ietf.org/doc/draft-jabley-dnsop-ordered-answer-section</a>. If you have suggestions or feedback we would love to hear your opinions, most usefully via the <a href="https://datatracker.ietf.org/wg/dnsop/about" target="_blank" rel="noopener noreferrer"><u>DNSOP working group</u></a> at the IETF.</p>
 </div>

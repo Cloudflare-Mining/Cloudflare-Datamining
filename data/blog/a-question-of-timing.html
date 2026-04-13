@@ -5,7 +5,7 @@
 		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3zCGPwzpCVzjoRBJnEigP6/7cf0708f61d20f3ce699bf43fa9987a1/photo-1501139083538-0139583c060f" alt="selective focus photo of brown and blue hourglass on stones" class="kg-image" width="1080" height="720" loading="lazy">
 
 	</figure>
-	<p><i>Photo by </i><a href="https://unsplash.com/@aronunsplash?utm_source=ghost&amp;utm_medium=referral&amp;utm_campaign=api-credit"><i>Aron</i></a><i> / </i><a href="https://unsplash.com/?utm_source=ghost&amp;utm_medium=referral&amp;utm_campaign=api-credit"><i>Unsplash</i></a></p>
+	<p><i>Photo by </i><a href="https://unsplash.com/@aronunsplash?utm_source=ghost&amp;utm_medium=referral&amp;utm_campaign=api-credit" target="_blank" rel="noopener noreferrer"><i>Aron</i></a><i> / </i><a href="https://unsplash.com/?utm_source=ghost&amp;utm_medium=referral&amp;utm_campaign=api-credit" target="_blank" rel="noopener noreferrer"><i>Unsplash</i></a></p>
 	<p>When considering website performance, the term TTFB - time to first byte - crops up regularly. Often we see measurements from cURL and Chrome, and this article will show what timings those tools can produce, including time to first byte, and discuss whether this is the measurement you are really looking for.</p>
 	<div class="flex anchor relative">
 		<h3 id="timing-with-curl">Timing with cURL</h3>
@@ -15,7 +15,7 @@
 			</svg>
 		</a>
 	</div>
-	<p><a href="https://curl.haxx.se">cURL</a> is an excellent tool for debugging web requests, and it includes the ability to take timing measurements. Let’s take an example website <a href="http://www.zasag.mn">www.zasag.mn</a> (the Mongolian government), and measure how long a request to its home page takes:</p>
+	<p><a href="https://curl.haxx.se" target="_blank" rel="noopener noreferrer">cURL</a> is an excellent tool for debugging web requests, and it includes the ability to take timing measurements. Let’s take an example website <a href="http://www.zasag.mn" target="_blank" rel="noopener noreferrer">www.zasag.mn</a> (the Mongolian government), and measure how long a request to its home page takes:</p>
 	<p>First configure the output format for cURL in <code>~/.curlrc</code>:</p>
 	<pre class="language-bash"><code class="language-bash">$ cat .curlrc
 -w "dnslookup: %{time_namelookup} | connect: %{time_connect} | appconnect: %{time_appconnect} | pretransfer: %{time_pretransfer} | starttransfer: %{time_starttransfer} | total: %{time_total} | size: %{size_download}\n"</code></pre>
@@ -32,10 +32,10 @@ starttransfer: 2.506 | total: 3.001 | size: 53107</code></pre>
 	</figure>
 	<ul>
 		<li>
-			<p><b>time_namelookup</b> in this example takes a long time. To exclude DNS resolver performance from the figures, you can resolve the IP for cURL: <code>--resolve www.zasag.mn:443:218.100.84.167</code>. It may also be worth looking for a <a href="https://www.dnsperf.com/#!dns-resolvers">faster</a> <a href="https://1.1.1.1">resolver</a> :).</p>
+			<p><b>time_namelookup</b> in this example takes a long time. To exclude DNS resolver performance from the figures, you can resolve the IP for cURL: <code>--resolve www.zasag.mn:443:218.100.84.167</code>. It may also be worth looking for a <a href="https://www.dnsperf.com/#!dns-resolvers" target="_blank" rel="noopener noreferrer">faster</a> <a href="https://1.1.1.1" target="_blank" rel="noopener noreferrer">resolver</a> :).</p>
 		</li>
 		<li>
-			<p><b>time_connect</b> is the TCP three-way handshake from the client’s perspective. It ends just after the client sends the ACK - it doesn't include the time taken for that ACK to reach the server. It should be close to the <a href="https://www.cloudflare.com/learning/cdn/glossary/round-trip-time-rtt">round-trip time (RTT)</a> to the server. In this example, RTT looks to be about 200 ms.</p>
+			<p><b>time_connect</b> is the TCP three-way handshake from the client’s perspective. It ends just after the client sends the ACK - it doesn't include the time taken for that ACK to reach the server. It should be close to the <a href="https://www.cloudflare.com/learning/cdn/glossary/round-trip-time-rtt" target="_blank" rel="noopener noreferrer">round-trip time (RTT)</a> to the server. In this example, RTT looks to be about 200 ms.</p>
 		</li>
 		<li>
 			<p><b>time_appconnect</b> here is TLS setup. The client is then ready to send it’s HTTP GET request.</p>
@@ -55,7 +55,7 @@ starttransfer: 2.506 | total: 3.001 | size: 53107</code></pre>
 			</svg>
 		</a>
 	</div>
-	<p>Chrome, and some other testing tools, use the <a href="https://www.w3.org/TR/resource-timing">W3C Resource Timing standard</a> for measurements. In Chrome developer tools this looks like this:</p>
+	<p>Chrome, and some other testing tools, use the <a href="https://www.w3.org/TR/resource-timing" target="_blank" rel="noopener noreferrer">W3C Resource Timing standard</a> for measurements. In Chrome developer tools this looks like this:</p>
 	<figure class="kg-card kg-image-card ">
 
 		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7FucQd5wZiX7K01gcDGiCL/8c82a221c3ea0ad064a3a19020dca543/Screen-Shot-2018-08-04-at-12.07.37--1-.png" alt="" class="kg-image" width="1092" height="634" loading="lazy">

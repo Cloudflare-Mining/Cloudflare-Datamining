@@ -1,11 +1,11 @@
 <div class="mb2 gray5">8 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2DSS8exaOI2kAWvABRCYRu/007e5ea1e073d31d5b5ef609a4df5701/Feature_Image.png" alt="">
 <div class="post-content lh-copy gray1">
-	<p>Has your browsing experience ever been disrupted by this error page? Sometimes Cloudflare returns <a href="https://developers.cloudflare.com/support/troubleshooting/cloudflare-errors/troubleshooting-cloudflare-5xx-errors/#error-500-internal-server-error"><u>"Error 500"</u></a> when our servers cannot respond to your web request. This inability to respond could have several potential causes, including problems caused by a bug in one of the services that make up Cloudflare's software stack.</p>
+	<p>Has your browsing experience ever been disrupted by this error page? Sometimes Cloudflare returns <a href="https://developers.cloudflare.com/support/troubleshooting/cloudflare-errors/troubleshooting-cloudflare-5xx-errors/#error-500-internal-server-error" target="_blank" rel="noopener noreferrer"><u>"Error 500"</u></a> when our servers cannot respond to your web request. This inability to respond could have several potential causes, including problems caused by a bug in one of the services that make up Cloudflare's software stack.</p>
 	<figure class="kg-card kg-image-card">
 		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1rIrBE5GP2IJwbn2k6mVTV/fd796ed1ef591fb8bd95395aa8f604d1/1.png" alt="" class="kg-image" width="1999" height="1108" loading="lazy">
 	</figure>
-	<p>We know that our testing platform will inevitably miss <a href="https://blog.cloudflare.com/pipefail-how-a-missing-shell-option-slowed-cloudflare-down"><u>some software bugs</u></a>, so we built guardrails to gradually and safely release new code before a feature reaches all users. Health Mediated Deployments (HMD) is Cloudflare’s data-driven solution to automating software updates across our <a href="https://www.cloudflare.com/network"><u>global network</u></a>. HMD works by querying <a href="https://thanos.io"><u>Thanos</u></a>, a system for storing and scaling <a href="https://blog.cloudflare.com/how-cloudflare-runs-prometheus-at-scale"><u>Prometheus</u></a> metrics. Prometheus collects detailed data about the performance of our services, and Thanos makes that data accessible across our distributed network. HMD uses these metrics to determine whether new code should continue to roll out, pause for further evaluation, or be automatically reverted to prevent widespread issues.</p>
-	<p>Cloudflare engineers configure signals from their service, such as alerting rules or <a href="https://sre.google/workbook/implementing-slos"><u>Service Level Objectives (SLOs)</u></a>. For example, the following Service Level Indicator (SLI) checks the rate of HTTP 500 errors over 10 minutes returned from a service in our software stack.</p>
+	<p>We know that our testing platform will inevitably miss <a href="https://blog.cloudflare.com/pipefail-how-a-missing-shell-option-slowed-cloudflare-down"><u>some software bugs</u></a>, so we built guardrails to gradually and safely release new code before a feature reaches all users. Health Mediated Deployments (HMD) is Cloudflare’s data-driven solution to automating software updates across our <a href="https://www.cloudflare.com/network" target="_blank" rel="noopener noreferrer"><u>global network</u></a>. HMD works by querying <a href="https://thanos.io" target="_blank" rel="noopener noreferrer"><u>Thanos</u></a>, a system for storing and scaling <a href="https://blog.cloudflare.com/how-cloudflare-runs-prometheus-at-scale"><u>Prometheus</u></a> metrics. Prometheus collects detailed data about the performance of our services, and Thanos makes that data accessible across our distributed network. HMD uses these metrics to determine whether new code should continue to roll out, pause for further evaluation, or be automatically reverted to prevent widespread issues.</p>
+	<p>Cloudflare engineers configure signals from their service, such as alerting rules or <a href="https://sre.google/workbook/implementing-slos" target="_blank" rel="noopener noreferrer"><u>Service Level Objectives (SLOs)</u></a>. For example, the following Service Level Indicator (SLI) checks the rate of HTTP 500 errors over 10 minutes returned from a service in our software stack.</p>
 	<pre class="language-Rust"><code class="language-Rust">sum(rate(http_request_count{code="500"}[10m])) / sum(rate(http_request_count[10m]))</code></pre>
 	<p>An SLO is a combination of an SLI and an objective threshold. For example, the service returns 500 errors &lt;0.1% of the time.</p>
 	<p>If the success rate is unexpectedly decreasing where the new code is running, HMD reverts the change in order to stabilize the system, reacting before humans even know what Cloudflare service was broken. Below, HMD recognizes the degradation in signal in an early release stage and reverts the code back to the prior version to limit the blast radius.</p>
@@ -13,8 +13,8 @@
 		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2O6gCfhZsoU1QCf3lu0QMl/bb4377cccbf982b607ce3564e4bf9fbd/2.png" alt="" class="kg-image" width="1999" height="1126" loading="lazy">
 	</figure>
 	<p>
-		Cloudflare’s network serves millions of requests per second across diverse geographies. How do we know that HMD will react quickly the next time we accidentally release code that contains a bug? HMD performs a testing strategy called <a href="https://en.wikipedia.org/wiki/Backtesting"><u>backtesting</u></a>, outside the release process, which uses historical incident data to test how long it would take to react to degrading signals in a future release.</p>
-	<p>We use Thanos to join thousands of small Prometheus deployments into a single unified query layer while keeping our monitoring reliable and cost-efficient. To backfill historical incident metric data that has fallen out of Prometheus’ retention period, we use our <a href="https://www.cloudflare.com/developer-platform/products/r2">object storage solution</a>, R2.</p>
+		Cloudflare’s network serves millions of requests per second across diverse geographies. How do we know that HMD will react quickly the next time we accidentally release code that contains a bug? HMD performs a testing strategy called <a href="https://en.wikipedia.org/wiki/Backtesting" target="_blank" rel="noopener noreferrer"><u>backtesting</u></a>, outside the release process, which uses historical incident data to test how long it would take to react to degrading signals in a future release.</p>
+	<p>We use Thanos to join thousands of small Prometheus deployments into a single unified query layer while keeping our monitoring reliable and cost-efficient. To backfill historical incident metric data that has fallen out of Prometheus’ retention period, we use our <a href="https://www.cloudflare.com/developer-platform/products/r2" target="_blank" rel="noopener noreferrer">object storage solution</a>, R2.</p>
 	<p>Today, we store 4.5 billion distinct time series for a year of retention, which results in roughly 8 petabytes of data in 17 million objects distributed all over the globe.</p>
 	<figure class="kg-card kg-image-card">
 		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5TlfqQIPqS7TVxFB38PztG/65dc562db7af5304562b3fed9ab6486d/3.png" alt="" class="kg-image" width="1366" height="498" loading="lazy">
@@ -39,7 +39,7 @@
 			<p>Each data center issues anywhere from tens to thousands of requests to R2.</p>
 		</li>
 	</ul>
-	<p>Thus, in aggregate, a batch can translate to hundreds of thousands of <a href="https://prometheus.io/docs/prometheus/latest/querying/basics"><u>PromQL queries</u></a> and millions of requests to R2. Initially, batch runs would take about 30 hours to complete but through blood, sweat, and tears, we were able to cut this down to 2 hours.</p>
+	<p>Thus, in aggregate, a batch can translate to hundreds of thousands of <a href="https://prometheus.io/docs/prometheus/latest/querying/basics" target="_blank" rel="noopener noreferrer"><u>PromQL queries</u></a> and millions of requests to R2. Initially, batch runs would take about 30 hours to complete but through blood, sweat, and tears, we were able to cut this down to 2 hours.</p>
 	<p>Let’s review how we made this processing more efficient.</p>
 	<div class="flex anchor relative">
 		<h3 id="recording-rules">Recording rules</h3>
@@ -57,8 +57,8 @@
   unless on (instance) (machine_in_maintenance == 1)
   unless on (datacenter) (datacenter_disabled == 1)
 )</code></pre>
-	<p>Most of these series have a cardinality of approximately the number of machines in our fleet. That’s a substantial amount of data we need to fetch from <a href="https://www.cloudflare.com/learning/cloud/what-is-object-storage">object storage</a> and transmit home for query evaluation, as well as a significant number of series we need to decode and join together.</p>
-	<p>Since this is a fairly common query that is issued in every HMD run, it makes sense to precompute it. In the Prometheus ecosystem, this is commonly done with <a href="https://prometheus.io/docs/prometheus/latest/configuration/recording_rules"><u>recording rules</u></a>:</p>
+	<p>Most of these series have a cardinality of approximately the number of machines in our fleet. That’s a substantial amount of data we need to fetch from <a href="https://www.cloudflare.com/learning/cloud/what-is-object-storage" target="_blank" rel="noopener noreferrer">object storage</a> and transmit home for query evaluation, as well as a significant number of series we need to decode and join together.</p>
+	<p>Since this is a fairly common query that is issued in every HMD run, it makes sense to precompute it. In the Prometheus ecosystem, this is commonly done with <a href="https://prometheus.io/docs/prometheus/latest/configuration/recording_rules" target="_blank" rel="noopener noreferrer"><u>recording rules</u></a>:</p>
 	<pre class="language-Rust"><code class="language-Rust">hmd:release_scopes:info{tier="tier3", color="green"}</code></pre>
 	<p>Aside from looking much cleaner, this also reduces the load at query time significantly. Since all the joins involved can only have matches within a data center, it is well-defined to evaluate those rules directly in the Prometheus instances inside the data center itself.</p>
 	<p>Compared to the original query, the cardinality we need to deal with now scales with the size of the release scope instead of the size of the entire fleet.</p>
@@ -79,7 +79,7 @@
 	<pre class="language-Rust"><code class="language-Rust">sum(rate(http_request_count{code="500"}[10m]))
 / 
 sum(rate(http_request_count[10m]))</code></pre>
-	<p>Upon receiving this query from HMD, the Thanos Querier will start requesting raw time series data for the “http_requests_total” metric from its connected <a href="https://thanos.io/v0.4/components/sidecar"><u>Thanos Sidecar</u></a> and <a href="https://thanos.io/tip/components/store.md"><u>Thanos Store</u></a> instances all over the world, wait for all the data to be transferred to it, decompress it, and finally compute its result:</p>
+	<p>Upon receiving this query from HMD, the Thanos Querier will start requesting raw time series data for the “http_requests_total” metric from its connected <a href="https://thanos.io/v0.4/components/sidecar" target="_blank" rel="noopener noreferrer"><u>Thanos Sidecar</u></a> and <a href="https://thanos.io/tip/components/store.md" target="_blank" rel="noopener noreferrer"><u>Thanos Store</u></a> instances all over the world, wait for all the data to be transferred to it, decompress it, and finally compute its result:</p>
 	<figure class="kg-card kg-image-card">
 		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4jcK7cvQfMtqeQMeuFnTMz/3bdca2132a4e700050512dc15d823ef3/5.png" alt="" class="kg-image" width="1516" height="818" loading="lazy">
 	</figure>
@@ -95,11 +95,11 @@ sum(datacenter:http_request_count:rate10m)</code></pre>
 	<pre class="language-Rust"><code class="language-Rust">(sum(rate(http_requests_total{status="500", datacenter="dc1"}[10m])) + ...)
 /
 (sum(rate(http_requests_total{datacenter="dc1"}[10m])) + ...)</code></pre>
-	<p>This is exactly what Thanos’ <a href="https://thanos.io/tip/proposals-done/202301-distributed-query-execution.md"><u>distributed query engine</u></a> is capable of doing. Instead of requesting raw time series data, we request data center scoped aggregates and only need to send those back home where they get coalesced back again into the full query result:</p>
+	<p>This is exactly what Thanos’ <a href="https://thanos.io/tip/proposals-done/202301-distributed-query-execution.md" target="_blank" rel="noopener noreferrer"><u>distributed query engine</u></a> is capable of doing. Instead of requesting raw time series data, we request data center scoped aggregates and only need to send those back home where they get coalesced back again into the full query result:</p>
 	<figure class="kg-card kg-image-card">
 		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/41XYc4JFFrNsmr3p0nYD2h/e3719dbe8fb8055cbb8f72c88729dfd9/6.png" alt="" class="kg-image" width="1936" height="931" loading="lazy">
 	</figure>
-	<p>Note that we ensure all the expensive data paths are as short as possible by utilizing R2 <a href="https://developers.cloudflare.com/r2/reference/data-location/#location-hints"><u>location hints</u></a> to specify the primary access region.
+	<p>Note that we ensure all the expensive data paths are as short as possible by utilizing R2 <a href="https://developers.cloudflare.com/r2/reference/data-location/#location-hints" target="_blank" rel="noopener noreferrer"><u>location hints</u></a> to specify the primary access region.
 	</p>
 	<figure class="kg-card kg-image-card">
 		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6H31Ad1XCjJWpuAQGPYSlt/ddaa971e4fa59bffdf283e10d0be0b8c/7.png" alt="" class="kg-image" width="1682" height="1065" loading="lazy">
@@ -107,7 +107,7 @@ sum(datacenter:http_request_count:rate10m)</code></pre>
 	<figure class="kg-card kg-image-card">
 		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1kxTrCfN0wZiNu90MNaOm8/8c3df56f9b8724b0ec01e6e9270bb989/8.png" alt="" class="kg-image" width="1682" height="1065" loading="lazy">
 	</figure>
-	<p>To measure the effectiveness of this approach, we used <a href="https://cloudprober.org"><u>Cloudprober</u></a> and wrote probes that evaluate the relatively cheap, but still global, query <code>count(node_uname_info)</code>.</p>
+	<p>To measure the effectiveness of this approach, we used <a href="https://cloudprober.org" target="_blank" rel="noopener noreferrer"><u>Cloudprober</u></a> and wrote probes that evaluate the relatively cheap, but still global, query <code>count(node_uname_info)</code>.</p>
 	<pre class="language-Rust"><code class="language-Rust">sum(thanos_cloudprober_latency:rate6h{component="thanos-central"})
 /
 sum(thanos_cloudprober_latency:rate6h{component="thanos-distributed"})</code></pre>
@@ -131,12 +131,12 @@ sum(thanos_cloudprober_latency:rate6h{component="thanos-distributed"})</code></p
 			</svg>
 		</a>
 	</div>
-	<p>HMD batch processing leads to spiky load patterns that are hard to provision for. In a perfect world, it would issue a steady and predictable stream of queries. At the same time, HMD batch queries have lower priority to us than the queries that on-call engineers issue to triage production problems. We tackle both of those problems by introducing an adaptive priority-based concurrency control mechanism. After reading Netflix’s work on <a href="https://netflixtechblog.medium.com/performance-under-load-3e6fa9a60581"><u>adaptive concurrency limits</u></a>, we implemented a similar proxy to dynamically limit batch request flow when Thanos SLOs start to degrade. For example, one such SLO is its cloudprober failure rate over the last minute:</p>
+	<p>HMD batch processing leads to spiky load patterns that are hard to provision for. In a perfect world, it would issue a steady and predictable stream of queries. At the same time, HMD batch queries have lower priority to us than the queries that on-call engineers issue to triage production problems. We tackle both of those problems by introducing an adaptive priority-based concurrency control mechanism. After reading Netflix’s work on <a href="https://netflixtechblog.medium.com/performance-under-load-3e6fa9a60581" target="_blank" rel="noopener noreferrer"><u>adaptive concurrency limits</u></a>, we implemented a similar proxy to dynamically limit batch request flow when Thanos SLOs start to degrade. For example, one such SLO is its cloudprober failure rate over the last minute:</p>
 	<pre class="language-Rust"><code class="language-Rust">sum(thanos_cloudprober_fail:rate1m)
 /
 (sum(thanos_cloudprober_success:rate1m) + sum(thanos_cloudprober_fail:rate1m))</code></pre>
 	<p>We apply jitter, a random delay, to smooth query spikes inside the proxy. Since batch processing prioritizes overall query throughput over individual query latency, jitter helps HMD send a burst of queries, while allowing Thanos to process queries gradually over several minutes. This reduces instantaneous load on Thanos, improving overall throughput, even if individual query latency increases. Meanwhile, HMD encounters fewer errors, minimizing retries and boosting batch efficiency.</p>
-	<p>Our solution simulates how TCP’s congestion control algorithm, <a href="https://en.wikipedia.org/wiki/Additive_increase/multiplicative_decrease"><u>additive increase/multiplicative decrease</u></a>, works. When the proxy server receives a successful request from Thanos, it allows one more concurrent request through next time. If backpressure signals breach defined thresholds, the proxy limits the congestion window proportional to the failure rate.</p>
+	<p>Our solution simulates how TCP’s congestion control algorithm, <a href="https://en.wikipedia.org/wiki/Additive_increase/multiplicative_decrease" target="_blank" rel="noopener noreferrer"><u>additive increase/multiplicative decrease</u></a>, works. When the proxy server receives a successful request from Thanos, it allows one more concurrent request through next time. If backpressure signals breach defined thresholds, the proxy limits the congestion window proportional to the failure rate.</p>
 	<figure class="kg-card kg-image-card">
 		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4M4s0lmq8h3bmZumLPUfXu/c3a967d51b367d155c26f4d95c673cd1/12.png" alt="" class="kg-image" width="633" height="754" loading="lazy">
 	</figure>
@@ -149,7 +149,7 @@ sum(thanos_cloudprober_latency:rate6h{component="thanos-distributed"})</code></p
 			</svg>
 		</a>
 	</div>
-	<p>Because Thanos deals with Prometheus TSDB blocks that were never designed for being read over a slow medium like object storage, it does a lot of random I/O. Inspired by <a href="https://www.youtube.com/watch?v=V8Y4VuUwg8I"><u>this excellent talk</u></a>, we started storing our time series data in <a href="https://parquet.apache.org"><u>Parquet</u></a> files, with some promising preliminary results. This project is still too early to draw any robust conclusions, but we wanted to share our implementation with the Prometheus community, so we are publishing our experimental object storage gateway as <a href="https://github.com/cloudflare/parquet-tsdb-poc"><u>parquet-tsdb-poc</u></a> on GitHub.</p>
+	<p>Because Thanos deals with Prometheus TSDB blocks that were never designed for being read over a slow medium like object storage, it does a lot of random I/O. Inspired by <a href="https://www.youtube.com/watch?v=V8Y4VuUwg8I" target="_blank" rel="noopener noreferrer"><u>this excellent talk</u></a>, we started storing our time series data in <a href="https://parquet.apache.org" target="_blank" rel="noopener noreferrer"><u>Parquet</u></a> files, with some promising preliminary results. This project is still too early to draw any robust conclusions, but we wanted to share our implementation with the Prometheus community, so we are publishing our experimental object storage gateway as <a href="https://github.com/cloudflare/parquet-tsdb-poc" target="_blank" rel="noopener noreferrer"><u>parquet-tsdb-poc</u></a> on GitHub.</p>
 	<div class="flex anchor relative">
 		<h2 id="conclusion">Conclusion</h2>
 		<a href="https://blog.cloudflare.com/#conclusion" aria-hidden="true" class="relative sm:absolute sm:-start-5">
@@ -158,7 +158,7 @@ sum(thanos_cloudprober_latency:rate6h{component="thanos-distributed"})</code></p
 			</svg>
 		</a>
 	</div>
-	<p>We built Health Mediated Deployments (HMD) to enable safe and reliable software releases while pushing the limits of our <a href="https://www.cloudflare.com/learning/performance/what-is-observability">observability</a> infrastructure. Along the way, we significantly improved Thanos’ ability to handle high-load queries, reducing batch runtimes by 15x.</p>
+	<p>We built Health Mediated Deployments (HMD) to enable safe and reliable software releases while pushing the limits of our <a href="https://www.cloudflare.com/learning/performance/what-is-observability" target="_blank" rel="noopener noreferrer">observability</a> infrastructure. Along the way, we significantly improved Thanos’ ability to handle high-load queries, reducing batch runtimes by 15x.</p>
 	<p>But this is just the beginning. We’re excited to continue working with the observability, resiliency, and R2 teams to push our infrastructure to its limits — safely and at scale. As we explore new ways to enhance observability, one exciting frontier is optimizing time series storage for object storage.</p>
 	<p>We’re sharing this work with the community as an open-source proof of concept. If you’re interested in exploring Parquet-based time series storage and its potential for large-scale observability, check out the GitHub project linked above.</p>
 </div>

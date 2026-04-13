@@ -1,6 +1,6 @@
 <div class="mb2 gray5">6 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/QxQLnc8Ysak3MyDb9orcq/9c3cb7cb9878f990da2be844fe8464ae/BLOG-3264_1.png" alt="">
 <div class="post-content lh-copy gray1">
-	<p>When we launched <a href="https://github.com/cloudflare/sandbox-sdk"><u>Cloudflare Sandboxes</u></a> last June, the premise was simple: <a href="https://www.cloudflare.com/learning/ai/what-is-agentic-ai"><u>AI agents</u></a> need to develop and run code, and they need to do it somewhere safe.</p>
+	<p>When we launched <a href="https://github.com/cloudflare/sandbox-sdk" target="_blank" rel="noopener noreferrer"><u>Cloudflare Sandboxes</u></a> last June, the premise was simple: <a href="https://www.cloudflare.com/learning/ai/what-is-agentic-ai" target="_blank" rel="noopener noreferrer"><u>AI agents</u></a> need to develop and run code, and they need to do it somewhere safe.</p>
 	<p>If an agent is acting like a developer, this means cloning repositories, building code in many languages, running development servers, etc. To do these things effectively, they will often need a full computer (and if they don’t, they can <a href="https://blog.cloudflare.com/dynamic-workers"><u>reach for something lightweight</u></a>!).</p>
 	<p>Many developers are stitching together solutions using VMs or existing container solutions, but there are lots of hard problems to solve:</p>
 	<ul>
@@ -20,7 +20,7 @@
 			<p><b>Ergonomics</b> - You need to give a simple interface for both humans and agents to do common operations.</p>
 		</li>
 	</ul>
-	<p>We’ve spent time solving these issues so you don’t have to. Since our initial launch we’ve made Sandboxes an even better place to run agents at scale. We’ve worked with our initial partners such as Figma, who run agents in containers with <a href="https://www.figma.com/make"><u>Figma Make</u></a>:</p>
+	<p>We’ve spent time solving these issues so you don’t have to. Since our initial launch we’ve made Sandboxes an even better place to run agents at scale. We’ve worked with our initial partners such as Figma, who run agents in containers with <a href="https://www.figma.com/make" target="_blank" rel="noopener noreferrer"><u>Figma Make</u></a>:</p>
 	<blockquote>
 		<p><i>“Figma Make is built to help builders and makers of all backgrounds go from idea to production, faster. To deliver on that goal, we needed an infrastructure solution that could provide reliable, highly-scalable sandboxes where we could run untrusted agent- and user-authored code. Cloudflare Containers is that solution.”</i></p>
 		<p><i>- </i><b><i>Alex Mullans</i></b><i>, AI and Developer Platforms at Figma</i></p>
@@ -59,7 +59,7 @@
 		</a>
 	</div>
 	<p>Before getting into some of the recent changes, let’s quickly look at the basics.</p>
-	<p>A Cloudflare Sandbox is a persistent, isolated environment powered by <a href="https://blog.cloudflare.com/containers-are-available-in-public-beta-for-simple-global-and-programmable"><u>Cloudflare Containers</u></a>. You ask for a sandbox by name. If it's running, you get it. If it's not, it starts. When it's idle, it sleeps automatically and wakes when it receives a request. It’s easy to programmatically interact with the sandbox using methods like <code>exec</code>, <code>gitClone</code>, <code>writeFile</code> and <a href="https://developers.cloudflare.com/sandbox/api"><u>more</u></a>.</p>
+	<p>A Cloudflare Sandbox is a persistent, isolated environment powered by <a href="https://blog.cloudflare.com/containers-are-available-in-public-beta-for-simple-global-and-programmable"><u>Cloudflare Containers</u></a>. You ask for a sandbox by name. If it's running, you get it. If it's not, it starts. When it's idle, it sleeps automatically and wakes when it receives a request. It’s easy to programmatically interact with the sandbox using methods like <code>exec</code>, <code>gitClone</code>, <code>writeFile</code> and <a href="https://developers.cloudflare.com/sandbox/api" target="_blank" rel="noopener noreferrer"><u>more</u></a>.</p>
 	<pre class="language-Typescript"><code class="language-Typescript">import { getSandbox } from "@cloudflare/sandbox";
 export { Sandbox } from "@cloudflare/sandbox";
 
@@ -100,7 +100,7 @@ export default {
   }
 }
 </code></pre>
-	<p>For a deep dive into how this works — including identity-aware credential injection, dynamically modifying rules, and integrating with <a href="https://developers.cloudflare.com/workers/runtime-apis/bindings"><u>Workers bindings</u></a> — read our recent blog post on <a href="https://blog.cloudflare.com/sandbox-auth"><u>Sandbox auth</u></a>.</p>
+	<p>For a deep dive into how this works — including identity-aware credential injection, dynamically modifying rules, and integrating with <a href="https://developers.cloudflare.com/workers/runtime-apis/bindings" target="_blank" rel="noopener noreferrer"><u>Workers bindings</u></a> — read our recent blog post on <a href="https://blog.cloudflare.com/sandbox-auth"><u>Sandbox auth</u></a>.</p>
 	<div class="flex anchor relative">
 		<h2 id="a-real-terminal-not-a-simulation">A real terminal, not a simulation</h2>
 		<a href="https://blog.cloudflare.com/#a-real-terminal-not-a-simulation" aria-hidden="true" class="relative sm:absolute sm:-start-5">
@@ -111,7 +111,7 @@ export default {
 	</div>
 	<p>Early agent systems often modeled shell access as a request-response loop: run a command, wait for output, stuff the transcript back into the prompt, repeat. It works, but it is not how developers actually use a terminal.&nbsp;</p>
 	<p>Humans run something, watch output stream in, interrupt it, reconnect later, and keep going. Agents benefit from that same feedback loop.</p>
-	<p>In February, we shipped PTY support. A pseudo-terminal session in a Sandbox, proxied over WebSocket, compatible with <a href="https://xtermjs.org"><u>xterm.js</u></a>.</p>
+	<p>In February, we shipped PTY support. A pseudo-terminal session in a Sandbox, proxied over WebSocket, compatible with <a href="https://xtermjs.org" target="_blank" rel="noopener noreferrer"><u>xterm.js</u></a>.</p>
 	<p>Just call <code>sandbox.terminal</code> to serve the backend:</p>
 	<pre class="language-Typescript"><code class="language-Typescript">// Worker: upgrade a WebSocket connection into a live terminal session
 export default {
@@ -182,7 +182,7 @@ const result = await sandbox.runCode(`
 			</svg>
 		</a>
 	</div>
-	<p>Agents are more useful when they can build something and show it to the user immediately. Sandboxes support background processes, readiness checks, and <a href="https://developers.cloudflare.com/sandbox/concepts/preview-urls"><u>preview URLs</u></a>. This lets an agent start a development server and share a live link without leaving the conversation.</p>
+	<p>Agents are more useful when they can build something and show it to the user immediately. Sandboxes support background processes, readiness checks, and <a href="https://developers.cloudflare.com/sandbox/concepts/preview-urls" target="_blank" rel="noopener noreferrer"><u>preview URLs</u></a>. This lets an agent start a development server and share a live link without leaving the conversation.</p>
 	<pre class="language-Typescript"><code class="language-Typescript">// Start a dev server as a background process
 const server = await sandbox.startProcess("npm run dev", {
   cwd: "/workspace",
@@ -207,7 +207,7 @@ console.log(`Preview: ${url}`);
 		</a>
 	</div>
 	<p>Modern development loops are event-driven. Save a file, rerun the build. Edit a config, restart the server. Change a test, rerun the suite.</p>
-	<p>We shipped <i>sandbox.watch()</i> in March. It returns an SSE stream backed by native <a href="https://man7.org/linux/man-pages/man7/inotify.7.html"><u>inotify</u></a>, the kernel mechanism Linux uses for filesystem events.</p>
+	<p>We shipped <i>sandbox.watch()</i> in March. It returns an SSE stream backed by native <a href="https://man7.org/linux/man-pages/man7/inotify.7.html" target="_blank" rel="noopener noreferrer"><u>inotify</u></a>, the kernel mechanism Linux uses for filesystem events.</p>
 	<pre class="language-Typescript"><code class="language-Typescript">import { parseSSEStream, type FileWatchSSEEvent } from '@cloudflare/sandbox';
 
 const stream = await sandbox.watch('/workspace/src', {
@@ -255,9 +255,9 @@ async forkDevEnvironment(baseId, numberOfForks) {
   await Promise.all(forks);
 }
 </code></pre>
-	<p>Snapshots are stored in <a href="https://developers.cloudflare.com/r2"><u>R2</u></a> within your account, giving you durability and location-independence. R2's <a href="https://developers.cloudflare.com/cache/how-to/tiered-cache"><u>tiered caching</u></a> system allows for fast restores across all of Region: Earth.</p>
+	<p>Snapshots are stored in <a href="https://developers.cloudflare.com/r2" target="_blank" rel="noopener noreferrer"><u>R2</u></a> within your account, giving you durability and location-independence. R2's <a href="https://developers.cloudflare.com/cache/how-to/tiered-cache" target="_blank" rel="noopener noreferrer"><u>tiered caching</u></a> system allows for fast restores across all of Region: Earth.</p>
 	<p>In future releases, live memory state will also be captured, allowing running processes to resume exactly where they left off. A terminal and an editor will reopen in the exact state they were in when last closed.</p>
-	<p>If you are interested in restoring session state before snapshots go live, you can use the <a href="https://developers.cloudflare.com/sandbox/guides/backup-restore"><code><u>backup and restore</u></code></a> methods today. These also persist and restore directories using R2, but are not as performant as true VM-level snapshots. Though they still can lead to considerable speed improvements over naively recreating session state.</p>
+	<p>If you are interested in restoring session state before snapshots go live, you can use the <a href="https://developers.cloudflare.com/sandbox/guides/backup-restore" target="_blank" rel="noopener noreferrer"><code><u>backup and restore</u></code></a> methods today. These also persist and restore directories using R2, but are not as performant as true VM-level snapshots. Though they still can lead to considerable speed improvements over naively recreating session state.</p>
 	<figure class="kg-card kg-image-card">
 		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/LzVucBiNvxOh3NFn0ukxj/3b8e6cd9a5ca241b6c6a7c8556c0a529/BLOG-3264_3.gif" alt="BLOG-3264 3" class="kg-image" width="1493" height="393" loading="lazy">
 	</figure>
@@ -271,8 +271,8 @@ async forkDevEnvironment(baseId, numberOfForks) {
 			</svg>
 		</a>
 	</div>
-	<p>Since our initial launch, we’ve been steadily increasing capacity. Users on our standard pricing plan can now run 15,000 concurrent instances of the lite instance type, 6,000 instances of basic, and over 1,000 concurrent larger instances. <a href="https://forms.gle/3vvDvXPECjy6F8v56"><u>Reach out</u></a> to run even more!</p>
-	<p>We also changed our pricing model to be more cost effective running at scale. Sandboxes now <a href="https://developers.cloudflare.com/changelog/post/2025-11-21-new-cpu-pricing"><u>only charge for actively used CPU cycles</u></a>. This means that you aren’t paying for idle CPU while your agent is waiting for an LLM to respond.</p>
+	<p>Since our initial launch, we’ve been steadily increasing capacity. Users on our standard pricing plan can now run 15,000 concurrent instances of the lite instance type, 6,000 instances of basic, and over 1,000 concurrent larger instances. <a href="https://forms.gle/3vvDvXPECjy6F8v56" target="_blank" rel="noopener noreferrer"><u>Reach out</u></a> to run even more!</p>
+	<p>We also changed our pricing model to be more cost effective running at scale. Sandboxes now <a href="https://developers.cloudflare.com/changelog/post/2025-11-21-new-cpu-pricing" target="_blank" rel="noopener noreferrer"><u>only charge for actively used CPU cycles</u></a>. This means that you aren’t paying for idle CPU while your agent is waiting for an LLM to respond.</p>
 	<div class="flex anchor relative">
 		<h2 id="this-is-what-a-computer-looks-like">This is what a computer looks like&nbsp;</h2>
 		<a href="https://blog.cloudflare.com/#this-is-what-a-computer-looks-like" aria-hidden="true" class="relative sm:absolute sm:-start-5">

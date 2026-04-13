@@ -8,7 +8,7 @@
 			</svg>
 		</a>
 	</div>
-	<p>Alice and Bob are budding blogger buddies who met up at a meetup and <a href="https://www.cloudflare.com/products/registrar"><i>purchased some root domains</i></a> to start writing. &nbsp;Alice bought <i>aliceblogs.com</i> and Bob scooped up <i>bobtopia.com</i>.</p>
+	<p>Alice and Bob are budding blogger buddies who met up at a meetup and <a href="https://www.cloudflare.com/products/registrar" target="_blank" rel="noopener noreferrer"><i>purchased some root domains</i></a> to start writing. &nbsp;Alice bought <i>aliceblogs.com</i> and Bob scooped up <i>bobtopia.com</i>.</p>
 	<p>Alice and Bob decided against WordPress because its what their parents use and purchased subscriptions to a popular cloud-based Ghost blogging platform instead.</p>
 	<p>Bob decides his blog should live at at blog.bobtopia.com – a <i>subdomain</i> of bobtopia.com. Alice keeps it old school and builds hers at <i>aliceblogs.com/blog</i> – a <i>subdirectory</i> of aliceblogs.com.</p>
 	<figure class="kg-card kg-image-card ">
@@ -16,7 +16,7 @@
 		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4bfADYO8jfROjJXl42KfXV/d7722e13418b6568bedfa1501c17e626/Untitled-1-1.png" alt="" class="kg-image" width="1240" height="190" loading="lazy">
 
 	</figure>
-	<p><i>Subdomains</i> and <i>subdirectories</i> are different strategies for instrumenting root domains with new features (think a blog or a storefront). &nbsp;Alice and Bob chose their strategies on a whim, but <i>which strategy is technically better</i>? &nbsp;The short answer is, <i>it depends</i>. But the long answer can actually improve your SEO. &nbsp;In this article, we'll review the merits and tradeoffs of each. In <a href="https://blog.cloudflare.com/subdomains-vs-subdirectories-improved-seo-part-2">Part 2</a>, we'll show you how to convert subdomains to subdirectories using <a href="https://blog.cloudflare.com/www.cloudflare.com/workers">Cloudflare Workers</a>.</p>
+	<p><i>Subdomains</i> and <i>subdirectories</i> are different strategies for instrumenting root domains with new features (think a blog or a storefront). &nbsp;Alice and Bob chose their strategies on a whim, but <i>which strategy is technically better</i>? &nbsp;The short answer is, <i>it depends</i>. But the long answer can actually improve your SEO. &nbsp;In this article, we'll review the merits and tradeoffs of each. In <a href="https://blog.cloudflare.com/subdomains-vs-subdirectories-improved-seo-part-2">Part 2</a>, we'll show you how to convert subdomains to subdirectories using <a href="https://blog.cloudflare.com/#">Cloudflare Workers</a>.</p>
 	<div class="flex anchor relative">
 		<h4 id="setting-up-subdomains-and-subdirectories">Setting Up Subdomains and Subdirectories</h4>
 		<a href="https://blog.cloudflare.com/#setting-up-subdomains-and-subdirectories" aria-hidden="true" class="relative sm:absolute sm:-start-5">
@@ -33,7 +33,7 @@
 	</figure>
 	<p>In the old school site above, we'll assume the <i>blog</i> folder contains an <i>index.html</i> file. The web server renders <i>blog/index.html</i> when a user navigates to the <i>oldschoolsite.com/blog</i> subdirectory_._ &nbsp;But Alice and Bob's sites don't have a <i>blog</i> folder because their blogs are hosted remotely – so this approach won't work.</p>
 	<p>On the modern Internet, subdirectory setup is more complicated because the services that comprise a root domain are often hosted on machines scattered across the world.</p>
-	<p>Because DNS records only operate on the domain level, records like <code>CNAME</code> have no effect on a url like <i>aliceblogs.com/blog</i> – and because her blog is hosted remotely, Alice needs to install <a href="https://www.nginx.com">NGINX</a> or another reverse proxy and write some configuration code that proxies traffic from <i>aliceblogs.com/blog</i> to her hosted blog. It takes time, patience, and experience to connect her domain to her hosted blog.</p>
+	<p>Because DNS records only operate on the domain level, records like <code>CNAME</code> have no effect on a url like <i>aliceblogs.com/blog</i> – and because her blog is hosted remotely, Alice needs to install <a href="https://www.nginx.com" target="_blank" rel="noopener noreferrer">NGINX</a> or another reverse proxy and write some configuration code that proxies traffic from <i>aliceblogs.com/blog</i> to her hosted blog. It takes time, patience, and experience to connect her domain to her hosted blog.</p>
 	<figure class="kg-card kg-image-card ">
 
 		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5280nHa1SMYG1xAwGUYWDa/844e384aa3c5851c36a6218982aada0c/Screen-Shot-2019-02-05-at-8.25.01-PM.png" alt="" class="kg-image" width="1532" height="174" loading="lazy">
@@ -98,8 +98,8 @@
 	</div>
 	<p>Interested in switching your subdomains to subdirectories without a reverse proxy? In <a href="https://blog.cloudflare.com/subdomains-vs-subdirectories-improved-seo-part-2">Part 2</a>, we'll show you how using Cloudflare Workers.</p>
 	<hr>
-	<p>Interested in deploying a Cloudflare Worker without setting up a domain on Cloudflare? We’re making it easier to get started building serverless applications with custom subdomains on <a href="https://workers.dev">workers.dev</a>. <i>If you’re already a Cloudflare customer, you can add Workers to your existing website</i> <a href="https://dash.cloudflare.com/workers"><i>here</i></a>.</p>
-	<p><a href="https://workers.dev">Reserve a workers.dev subdomain</a></p>
+	<p>Interested in deploying a Cloudflare Worker without setting up a domain on Cloudflare? We’re making it easier to get started building serverless applications with custom subdomains on <a href="https://workers.dev" target="_blank" rel="noopener noreferrer">workers.dev</a>. <i>If you’re already a Cloudflare customer, you can add Workers to your existing website</i> <a href="https://dash.cloudflare.com/workers" target="_blank" rel="noopener noreferrer"><i>here</i></a>.</p>
+	<p><a href="https://workers.dev" target="_blank" rel="noopener noreferrer">Reserve a workers.dev subdomain</a></p>
 	<hr>
 	<p></p>
 </div>

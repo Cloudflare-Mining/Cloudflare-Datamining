@@ -5,7 +5,7 @@
 		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/61QiOeplrC8eEpodCYr3Vm/db254c79029a092fa9e18903825f65f1/image1-42.png" alt="Dark Mode for the Cloudflare Dashboard" class="kg-image" width="1801" height="1013" loading="lazy">
 
 	</figure>
-	<p>Today, dark mode is available for the Cloudflare Dashboard in beta! From your <a href="https://dash.cloudflare.com/profile">user profile</a>, you can configure the Cloudflare Dashboard in light mode, dark mode, or match it to your system settings.</p>
+	<p>Today, dark mode is available for the Cloudflare Dashboard in beta! From your <a href="https://dash.cloudflare.com/profile" target="_blank" rel="noopener noreferrer">user profile</a>, you can configure the Cloudflare Dashboard in light mode, dark mode, or match it to your system settings.</p>
 	<p>For those unfamiliar, dark mode, or light on dark color schemes, uses light text on dark backgrounds instead of the typical dark text on light (usually white) backgrounds. In low-light environments, this can help reduce eyestrain and actually reduce power consumption on OLED screens. For many though, dark mode is simply a preference supported widely by applications and devices.</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
@@ -26,7 +26,7 @@
 			<p>Log into Cloudflare.</p>
 		</li>
 		<li>
-			<p>Go to your <a href="https://dash.cloudflare.com/profile">user profile</a>.</p>
+			<p>Go to your <a href="https://dash.cloudflare.com/profile" target="_blank" rel="noopener noreferrer">user profile</a>.</p>
 		</li>
 		<li>
 			<p>Under <b>Appearance</b>, select an option: <i>Light</i>, <i>Dark</i>, or <i>Use system setting</i>. For the time being, your choice is saved into local storage.</p>
@@ -38,7 +38,7 @@
 
 	</figure>
 	<p>The appearance card in the dashboard for modifying color themes</p>
-	<p>There are many primers and how-tos on implementing dark mode, and you can find articles talking about the general complications of implementing a dark mode including <a href="https://www.reddit.com/r/explainlikeimfive/comments/hq2s0z/eli5_why_did_it_take_so_much_time_to_introduce">this straightforward explanation</a>. Instead, we will talk about what enabled us to be able to implement dark mode in only a matter of weeks.</p>
+	<p>There are many primers and how-tos on implementing dark mode, and you can find articles talking about the general complications of implementing a dark mode including <a href="https://www.reddit.com/r/explainlikeimfive/comments/hq2s0z/eli5_why_did_it_take_so_much_time_to_introduce" target="_blank" rel="noopener noreferrer">this straightforward explanation</a>. Instead, we will talk about what enabled us to be able to implement dark mode in only a matter of weeks.</p>
 	<div class="flex anchor relative">
 		<h3 id="cloudflares-design-system-our-secret-weapon">Cloudflare’s Design System - Our Secret Weapon</h3>
 		<a href="https://blog.cloudflare.com/#cloudflares-design-system-our-secret-weapon" aria-hidden="true" class="relative sm:absolute sm:-start-5">
@@ -65,7 +65,7 @@
 			</svg>
 		</a>
 	</div>
-	<p>The use of color at Cloudflare has a well documented history. When we originally set out to build our color system, the <a href="https://color.cloudflare.design">tools we built</a> and the extensive <a href="https://blog.cloudflare.com/thinking-about-color">research we performed</a> resulted in a ten-hue, ten-luminosity set of colors that can be used to build digital products. These colors were built to be accessible — not just in terms of internal use, but for our customers. Take our blue hue scale, for example.</p>
+	<p>The use of color at Cloudflare has a well documented history. When we originally set out to build our color system, the <a href="https://color.cloudflare.design" target="_blank" rel="noopener noreferrer">tools we built</a> and the extensive <a href="https://blog.cloudflare.com/thinking-about-color">research we performed</a> resulted in a ten-hue, ten-luminosity set of colors that can be used to build digital products. These colors were built to be accessible — not just in terms of internal use, but for our customers. Take our blue hue scale, for example.</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
 		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3PGzm1z3tMdVi7DymNP7uP/1e38bb546fd274bc4349d946466e7e77/image10-6.png" alt="Our blue color scale, as used on the Cloudflare Dashboard. This shows color-contrast accessible text and background pairings for each step in the scale." class="kg-image" width="1999" height="893" loading="lazy">
@@ -122,7 +122,7 @@
 
 	</figure>
 	<p>lorem ipsum sample text on black background and on gray background</p>
-	<p>The numbers at the end of each row represent the contrast of the text color on the background. According to the Web Content Accessibility Guidelines (<a href="https://www.w3.org/WAI/standards-guidelines/wcag">WCAG</a>), the <a href="https://www.w3.org/WAI/WCAG21/Understanding/contrast-minimum.html">standard contrast ratio for text</a> should be at least 4.5:1. In our case, while both of the above examples exceed the standard, the gray background ends up being less harsh to use across an entire application. This is not the case with light mode as dark text on white (#FFFFFF) background works well.</p>
+	<p>The numbers at the end of each row represent the contrast of the text color on the background. According to the Web Content Accessibility Guidelines (<a href="https://www.w3.org/WAI/standards-guidelines/wcag" target="_blank" rel="noopener noreferrer">WCAG</a>), the <a href="https://www.w3.org/WAI/WCAG21/Understanding/contrast-minimum.html" target="_blank" rel="noopener noreferrer">standard contrast ratio for text</a> should be at least 4.5:1. In our case, while both of the above examples exceed the standard, the gray background ends up being less harsh to use across an entire application. This is not the case with light mode as dark text on white (#FFFFFF) background works well.</p>
 	<p>Our technique during the prototyping stage involved flipping our color scale; however, we additionally created a tool to let us replace any color within the scale arbitrarily. As the dashboard is made up of charts, icons, links, shadows, buttons and certainly other components, we needed to be able to see how they reacted in their various possible states. Importantly, we also wanted to improve the accessibility of these components and pay particular attention to color contrast.</p>
 	<figure class="kg-card kg-image-card ">
 
@@ -168,6 +168,6 @@
 			</svg>
 		</a>
 	</div>
-	<p>We know many of you have been asking for this, and we are excited to bring dark mode to all. Without the investment into our design system by many folks at Cloudflare, dark mode would not have seen the light of day. You can enable dark mode on the <b>Appearance</b> card in your <a href="https://dash.cloudflare.com/profile">user profile</a>. You can give feedback to shape the future of the dark theme with the feedback form in the card.</p>
-	<p>If you find these types of problems interesting, come help us tackle them! We are hiring across <a href="https://boards.greenhouse.io/cloudflare/jobs/3120477?gh_jid=3120477">product</a>, <a href="https://boards.greenhouse.io/cloudflare/jobs/3421232?gh_jid=3421232%60">design</a>, and <a href="https://boards.greenhouse.io/cloudflare/jobs/3192227?gh_jid=3192227">engineering</a>!</p>
+	<p>We know many of you have been asking for this, and we are excited to bring dark mode to all. Without the investment into our design system by many folks at Cloudflare, dark mode would not have seen the light of day. You can enable dark mode on the <b>Appearance</b> card in your <a href="https://dash.cloudflare.com/profile" target="_blank" rel="noopener noreferrer">user profile</a>. You can give feedback to shape the future of the dark theme with the feedback form in the card.</p>
+	<p>If you find these types of problems interesting, come help us tackle them! We are hiring across <a href="https://boards.greenhouse.io/cloudflare/jobs/3120477?gh_jid=3120477" target="_blank" rel="noopener noreferrer">product</a>, <a href="https://boards.greenhouse.io/cloudflare/jobs/3421232?gh_jid=3421232%60" target="_blank" rel="noopener noreferrer">design</a>, and <a href="https://boards.greenhouse.io/cloudflare/jobs/3192227?gh_jid=3192227" target="_blank" rel="noopener noreferrer">engineering</a>!</p>
 </div>

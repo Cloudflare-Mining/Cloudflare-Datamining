@@ -9,7 +9,7 @@
 		</a>
 	</div>
 	<p>The AI landscape is evolving at an incredible pace, and with it, the tools and platforms available to developers are becoming more powerful and interconnected than ever. Here at Cloudflare, we're genuinely passionate about empowering you to build the next generation of applications, and that absolutely includes intelligent agents that can reason, act, and interact with the world.</p>
-	<p>When we talk about "<b>Agents SDKs</b>", it can sometimes feel a bit… fuzzy. Some SDKs (software development kits) <b>described as 'agent' SDKs</b> are really about providing frameworks for tool calling and interacting with models. They're fantastic for defining an agent's "brain" – its intelligence, its ability to reason, and how it uses external tools. Here’s the thing: all these agents need a place to actually run. Then there's what we offer at Cloudflare: <a href="https://developers.cloudflare.com/agents"><u>an SDK purpose-built to provide a seamless execution layer for agents</u></a>. While orchestration frameworks define how agents think, our SDK focuses on where they run, abstracting away infrastructure to enable persistent, scalable execution across our global network.</p>
+	<p>When we talk about "<b>Agents SDKs</b>", it can sometimes feel a bit… fuzzy. Some SDKs (software development kits) <b>described as 'agent' SDKs</b> are really about providing frameworks for tool calling and interacting with models. They're fantastic for defining an agent's "brain" – its intelligence, its ability to reason, and how it uses external tools. Here’s the thing: all these agents need a place to actually run. Then there's what we offer at Cloudflare: <a href="https://developers.cloudflare.com/agents" target="_blank" rel="noopener noreferrer"><u>an SDK purpose-built to provide a seamless execution layer for agents</u></a>. While orchestration frameworks define how agents think, our SDK focuses on where they run, abstracting away infrastructure to enable persistent, scalable execution across our global network.</p>
 	<p>Think of it as the ultimate shell, the place where any agent, defined by any agent SDK (like the powerful new OpenAI Agents SDK), can truly live, persist, and run at global scale.</p>
 	<p>We’ve chosen OpenAI’s Agents SDK for this example, but the infrastructure is not specific to it. The execution layer is designed to integrate with any agent runtime.</p>
 	<p>That’s what this post is about: what we built, what we learned, and the design patterns that emerged from fusing these two pieces together.</p>
@@ -21,8 +21,8 @@
 			</svg>
 		</a>
 	</div>
-	<p><a href="https://openai.github.io/openai-agents-js"><u>OpenAI’s Agents SDK</u></a> gives you the <i>agent</i>: a reasoning loop, tool definitions, and memory abstraction. But it assumes you bring your own runtime and state.</p>
-	<p><a href="https://developers.cloudflare.com/agents"><u>Cloudflare’s Agents SDK</u></a> gives you the <i>environment</i>: a persistent object on our network with identity, state, and built-in concurrency control. But it doesn’t tell you how your agent should behave.</p>
+	<p><a href="https://openai.github.io/openai-agents-js" target="_blank" rel="noopener noreferrer"><u>OpenAI’s Agents SDK</u></a> gives you the <i>agent</i>: a reasoning loop, tool definitions, and memory abstraction. But it assumes you bring your own runtime and state.</p>
+	<p><a href="https://developers.cloudflare.com/agents" target="_blank" rel="noopener noreferrer"><u>Cloudflare’s Agents SDK</u></a> gives you the <i>environment</i>: a persistent object on our network with identity, state, and built-in concurrency control. But it doesn’t tell you how your agent should behave.</p>
 	<p>By combining them, we get a clear split:</p>
 	<ul>
 		<li>
@@ -41,7 +41,7 @@
 			</svg>
 		</a>
 	</div>
-	<p>Cloudflare <a href="https://developers.cloudflare.com/durable-objects"><u>Durable Objects</u></a> let agents go beyond simple, stateless functions. They can persist memory, coordinate across workflows, and respond in real time. Combined with the OpenAI Agents SDK, this enables systems that reason, remember, and adapt over time.</p>
+	<p>Cloudflare <a href="https://developers.cloudflare.com/durable-objects" target="_blank" rel="noopener noreferrer"><u>Durable Objects</u></a> let agents go beyond simple, stateless functions. They can persist memory, coordinate across workflows, and respond in real time. Combined with the OpenAI Agents SDK, this enables systems that reason, remember, and adapt over time.</p>
 	<p>Here are three architectural patterns that show how agents can be composed, guided, and connected:</p>
 	<p><b>Multi-agent systems: </b>Divide responsibilities across specialized agents that collaborate on tasks.</p>
 	<p><b>Human-in-the-loop: </b>Let agents plan independently but wait for human input at key decision points.</p>
@@ -54,7 +54,7 @@
 			</svg>
 		</a>
 	</div>
-	<p>Multi-agent systems let you break down a task into specialized agents that handle distinct responsibilities. In the example below, a triage agent routes questions to either a history or math tutor based on the query. Each agent has its own memory, logic, and instructions. With Cloudflare <a href="https://developers.cloudflare.com/durable-objects"><u>Durable Objects</u></a>, these agents persist across sessions and can coordinate responses, making it easy to build systems that feel modular but work together intelligently.</p>
+	<p>Multi-agent systems let you break down a task into specialized agents that handle distinct responsibilities. In the example below, a triage agent routes questions to either a history or math tutor based on the query. Each agent has its own memory, logic, and instructions. With Cloudflare <a href="https://developers.cloudflare.com/durable-objects" target="_blank" rel="noopener noreferrer"><u>Durable Objects</u></a>, these agents persist across sessions and can coordinate responses, making it easy to build systems that feel modular but work together intelligently.</p>
 	<pre class="language-TypeScript"><code class="language-TypeScript">export class MyAgent extends Agent {
   async onRequest() {
     const historyTutorAgent = new Agent({
@@ -89,7 +89,7 @@
 			</svg>
 		</a>
 	</div>
-	<p>We implemented a<a href="https://github.com/cloudflare/agents/tree/main/openai-sdk/human-in-the-loop"> <u>human-in-the-loop agent example</u></a> using these two SDKs together. The goal: run an OpenAI agent with a planning loop, allow human decisions to intercept the plan, and preserve state across invocations via Durable Objects.</p>
+	<p>We implemented a<a href="https://github.com/cloudflare/agents/tree/main/openai-sdk/human-in-the-loop" target="_blank" rel="noopener noreferrer"> <u>human-in-the-loop agent example</u></a> using these two SDKs together. The goal: run an OpenAI agent with a planning loop, allow human decisions to intercept the plan, and preserve state across invocations via Durable Objects.</p>
 	<p>The architecture looked like this:</p>
 	<ul>
 		<li>
@@ -282,6 +282,6 @@
 			<p>Debugging with good observability</p>
 		</li>
 	</ul>
-	<p>At Cloudflare, we are incredibly excited to see what <i>you</i> build with this powerful combination. The future of AI agents is intelligent, distributed, and incredibly capable. Get started today by exploring the <a href="https://github.com/openai/openai-agents-js"><u>OpenAI Agents SDK</u></a> and diving into the <a href="https://developers.cloudflare.com/agents"><u>Cloudflare Agents SDK documentation </u></a>(which leverages Cloudflare Workers and Durable Objects).</p>
-	<p>We’re just getting started, and we love to see all that you build. Please <a href="https://discord.com/invite/cloudflaredev"><u>join our Discord</u></a>, ask questions, and tell us what you’re building.</p>
+	<p>At Cloudflare, we are incredibly excited to see what <i>you</i> build with this powerful combination. The future of AI agents is intelligent, distributed, and incredibly capable. Get started today by exploring the <a href="https://github.com/openai/openai-agents-js" target="_blank" rel="noopener noreferrer"><u>OpenAI Agents SDK</u></a> and diving into the <a href="https://developers.cloudflare.com/agents" target="_blank" rel="noopener noreferrer"><u>Cloudflare Agents SDK documentation </u></a>(which leverages Cloudflare Workers and Durable Objects).</p>
+	<p>We’re just getting started, and we love to see all that you build. Please <a href="https://discord.com/invite/cloudflaredev" target="_blank" rel="noopener noreferrer"><u>join our Discord</u></a>, ask questions, and tell us what you’re building.</p>
 </div>

@@ -11,9 +11,9 @@
 			</svg>
 		</a>
 	</div>
-	<p>Today we’ll start a series of posts outlining a simple todo list application. We’ll start with an <a href="https://www.cloudflare.com/learning/security/api/what-is-an-api">API</a> and hook it up to the Internet using Custom Domains.</p>
+	<p>Today we’ll start a series of posts outlining a simple todo list application. We’ll start with an <a href="https://www.cloudflare.com/learning/security/api/what-is-an-api" target="_blank" rel="noopener noreferrer">API</a> and hook it up to the Internet using Custom Domains.</p>
 	<p>With Custom Domains, you’re treating the whole network as the application server. Any time a request comes into a Cloudflare data center, Workers are triggered in that data center and connect to resources across the network as needed. Our developers don’t need to think about regions, or replication, or spinning up the right number of instances to handle unforeseen load. Instead, just deploy your Workers and Cloudflare will handle the rest.</p>
-	<p>For our todo application, we begin by building an <a href="https://www.cloudflare.com/learning/security/api/what-is-an-api-gateway">API Gateway</a> to perform routing, any authorization checks, and drop invalid requests. We then fan out to each individual use case in a separate Worker, so our teams can independently make updates or add features to each endpoint without a full redeploy of the whole application. Finally, each Worker has a D1 binding to be able to create, read, update, and delete records from the database. All of this happens on Cloudflare’s global network, so your API is truly available everywhere. The architecture will look something like this:</p>
+	<p>For our todo application, we begin by building an <a href="https://www.cloudflare.com/learning/security/api/what-is-an-api-gateway" target="_blank" rel="noopener noreferrer">API Gateway</a> to perform routing, any authorization checks, and drop invalid requests. We then fan out to each individual use case in a separate Worker, so our teams can independently make updates or add features to each endpoint without a full redeploy of the whole application. Finally, each Worker has a D1 binding to be able to create, read, update, and delete records from the database. All of this happens on Cloudflare’s global network, so your API is truly available everywhere. The architecture will look something like this:</p>
 	<figure class="kg-card kg-image-card ">
 
 		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7qm175kv1nM4LmxTUhY48p/237e8c8839a15d139a8c6a689888eaa3/image2-24.png" alt="This application consists of a Custom Domain on our gateway Worker, a series of endpoint Workers, and a D1 database powering it all." class="kg-image" width="1732" height="579" loading="lazy">
@@ -27,7 +27,7 @@
 			</svg>
 		</a>
 	</div>
-	<p>First off, we’re going to need a D1 database set up, with a schema for our todo application to run on. If you’re not familiar with D1, it’s <a href="https://www.cloudflare.com/developer-platform/products/d1">Cloudflare’s serverless database offering</a> - explained in more detail <a href="https://blog.cloudflare.com/introducing-d1">here</a>. To get started, we use the <code>wrangler d1</code> command to create a new database:</p>
+	<p>First off, we’re going to need a D1 database set up, with a schema for our todo application to run on. If you’re not familiar with D1, it’s <a href="https://www.cloudflare.com/developer-platform/products/d1" target="_blank" rel="noopener noreferrer">Cloudflare’s serverless database offering</a> - explained in more detail <a href="https://blog.cloudflare.com/introducing-d1">here</a>. To get started, we use the <code>wrangler d1</code> command to create a new database:</p>
 	<pre class="language-bash"><code class="language-bash">npx wrangler d1 create &lt;todo | custom-database-name&gt;</code></pre>
 	<p>After executing this command, you will be asked to add a snippet of code to your <code><b>wrangler.toml</b></code> file that looks something like this:</p>
 	<pre class="language-bash"><code class="language-bash">[[ d1_databases ]]
@@ -52,7 +52,7 @@ INSERT INTO todos (todo, todoStatus) VALUES ("Fold my laundry", 0),("Get flowers
 			</svg>
 		</a>
 	</div>
-	<p>To talk to your database, we’ll spin up a series of private microservices for each endpoint in our application. We want to be able to create, read, update, delete, and list our todos. The full source code for each is available <a href="https://github.com/kabirsikand/worker-todos-api">here</a>. Below is code from a Worker that lists all our todos from D1.</p>
+	<p>To talk to your database, we’ll spin up a series of private microservices for each endpoint in our application. We want to be able to create, read, update, delete, and list our todos. The full source code for each is available <a href="https://github.com/kabirsikand/worker-todos-api" target="_blank" rel="noopener noreferrer">here</a>. Below is code from a Worker that lists all our todos from D1.</p>
 	<p><b><i>list/src/list.js</i></b></p>
 	<pre class="language-js"><code class="language-js">export default {
    async fetch(request, env) {
@@ -87,7 +87,7 @@ Total Upload: 4.71 KiB / gzip: 1.60 KiB
 Uploaded todo-list (0.96 sec)
 No publish targets for todo-list (0.00 sec)</code></pre>
 	<p>Notice that wrangler mentions there are no ‘publish targets’ for todo-list. That’s because we haven’t hooked todo-list up to any HTTP endpoints. That’s fine! We’re going to use Service Bindings to route requests through a gateway worker, as described in the architecture diagram above.</p>
-	<p>Next, reuse these steps to create similar microservices for each of our create, read, update, and delete endpoints. The source code is available to <a href="https://github.com/kabirsikand/worker-todos-api">follow along</a>.</p>
+	<p>Next, reuse these steps to create similar microservices for each of our create, read, update, and delete endpoints. The source code is available to <a href="https://github.com/kabirsikand/worker-todos-api" target="_blank" rel="noopener noreferrer">follow along</a>.</p>
 	<div class="flex anchor relative">
 		<h3 id="tying-it-all-together-with-an-api-gateway">Tying it all together with an API Gateway</h3>
 		<a href="https://blog.cloudflare.com/#tying-it-all-together-with-an-api-gateway" aria-hidden="true" class="relative sm:absolute sm:-start-5">
@@ -174,14 +174,14 @@ Published todo-gateway (0.51 sec)
 			</svg>
 		</a>
 	</div>
-	<p>Since it’s built natively on Cloudflare, you can also include Cloudflare’s security suite in front of the application. If we want to <a href="https://www.cloudflare.com/learning/security/threats/how-to-prevent-sql-injection">prevent SQL Injection attacks</a> for this endpoint, we can enable the appropriate Managed WAF rules on our todos API endpoint. Alternatively, if we wanted to prevent global access to our API (only allowing privileged clients to access the application), we can simply put Cloudflare Access in front, with custom Access Rules.</p>
+	<p>Since it’s built natively on Cloudflare, you can also include Cloudflare’s security suite in front of the application. If we want to <a href="https://www.cloudflare.com/learning/security/threats/how-to-prevent-sql-injection" target="_blank" rel="noopener noreferrer">prevent SQL Injection attacks</a> for this endpoint, we can enable the appropriate Managed WAF rules on our todos API endpoint. Alternatively, if we wanted to prevent global access to our API (only allowing privileged clients to access the application), we can simply put Cloudflare Access in front, with custom Access Rules.</p>
 	<figure class="kg-card kg-image-card ">
 
 		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3i5ZY1TUMPyiUuvZ6Uggy9/4341c43b2022b5820c0eb002802e18be/image3-15.png" alt="our application can have any number of Cloudflare services running in front of it" class="kg-image" width="1077" height="364" loading="lazy">
 
 	</figure>
-	<p>With Custom Domains on Workers, you’re able to easily create applications that are native to Cloudflare’s global network, instantly. Best of all, your developers don’t need to worry about maintaining DNS records or certificate renewal - Cloudflare handles it all on their behalf. We’d like to give a huge shout out to the 5,000+ developers who used Custom Domains during the open beta period, and those that gave feedback along the way to make this possible. Can’t wait to see what you build next! As always, if you have any questions or would like to get involved, please join us on <a href="https://discord.gg/cloudflaredev">Discord</a>.</p>
-	<p>Tune in next time to see how we can build a frontend for our application. In the meantime, you can play around with the todos API we built today at <a href="https://todos.radiobox.tv"><code>todos.radiobox.tv</code></a>.</p>
+	<p>With Custom Domains on Workers, you’re able to easily create applications that are native to Cloudflare’s global network, instantly. Best of all, your developers don’t need to worry about maintaining DNS records or certificate renewal - Cloudflare handles it all on their behalf. We’d like to give a huge shout out to the 5,000+ developers who used Custom Domains during the open beta period, and those that gave feedback along the way to make this possible. Can’t wait to see what you build next! As always, if you have any questions or would like to get involved, please join us on <a href="https://discord.gg/cloudflaredev" target="_blank" rel="noopener noreferrer">Discord</a>.</p>
+	<p>Tune in next time to see how we can build a frontend for our application. In the meantime, you can play around with the todos API we built today at <a href="https://todos.radiobox.tv" target="_blank" rel="noopener noreferrer"><code>todos.radiobox.tv</code></a>.</p>
 	<div class="flex anchor relative">
 		<h3 id="watch-on-cloudflare-tv">Watch on Cloudflare TV</h3>
 		<a href="https://blog.cloudflare.com/#watch-on-cloudflare-tv" aria-hidden="true" class="relative sm:absolute sm:-start-5">

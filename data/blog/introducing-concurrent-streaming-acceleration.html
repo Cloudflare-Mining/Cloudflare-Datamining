@@ -2,7 +2,7 @@
 <div class="mt4">This post is also available in <a href="https://blog.cloudflare.com/zh-cn/introducing-concurrent-streaming-acceleration">简体中文</a>, <a href="https://blog.cloudflare.com/de-de/introducing-concurrent-streaming-acceleration">Deutsch</a>, <a href="https://blog.cloudflare.com/ja-jp/introducing-concurrent-streaming-acceleration">日本語</a>, <a href="https://blog.cloudflare.com/es-es/introducing-concurrent-streaming-acceleration">Español</a> and <a href="https://blog.cloudflare.com/fr-fr/introducing-concurrent-streaming-acceleration">Français</a>.</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4ONUtiW1HgrSfxEBi8yOBM/5dcd97df14ece217a420901d0ef66942/introducing-concurrent-streaming-acceleration.png" alt="">
 <div class="post-content lh-copy gray1">
 	<p></p>
-	<p>Today we’re excited to introduce Concurrent Streaming Acceleration, a new technique for reducing the end-to-end latency of live video on the web when using <a href="https://www.cloudflare.com/products/stream-delivery">Stream Delivery</a>.</p>
+	<p>Today we’re excited to introduce Concurrent Streaming Acceleration, a new technique for reducing the end-to-end latency of live video on the web when using <a href="https://www.cloudflare.com/products/stream-delivery" target="_blank" rel="noopener noreferrer">Stream Delivery</a>.</p>
 	<p>Let’s dig into live-streaming latency, why it’s important, and what folks have done to improve it.</p>
 	<div class="flex anchor relative">
 		<h3 id="how-live-is-live-video">How “live” is “live” video?</h3>
@@ -22,7 +22,7 @@
 			<p>The origin server transforms this video into a format like DASH, HLS or CMAF that can be delivered to millions of devices efficiently;</p>
 		</li>
 		<li>
-			<p>A <a href="https://www.cloudflare.com/learning/cdn/what-is-a-cdn">CDN</a> is typically used to deliver encoded video across the globe</p>
+			<p>A <a href="https://www.cloudflare.com/learning/cdn/what-is-a-cdn" target="_blank" rel="noopener noreferrer">CDN</a> is typically used to deliver encoded video across the globe</p>
 		</li>
 		<li>
 			<p>Client players decode the video and render it on the scree</p>
@@ -87,7 +87,7 @@
 	</div>
 	<p>Chunked encoding with HLS and CMAF is growing in use across the web today. Part of what makes this technique great is that HTTP chunked encoding is widely supported by CDNs – it’s been part of the HTTP spec for 20 years.</p>
 	<p>CDN support is critical because it allows low-latency live video to scale up and reach audiences of thousands or millions of concurrent viewers – something that’s currently very difficult to do with other, non-HTTP based protocols.</p>
-	<p>Unfortunately, even if you enable chunking to optimise delivery, <a href="https://www.cloudflare.com/learning/cdn/common-cdn-issues">your CDN may be working against you</a> by buffering the entire segment. To understand why consider what happens when many people request a live segment at the same time:</p>
+	<p>Unfortunately, even if you enable chunking to optimise delivery, <a href="https://www.cloudflare.com/learning/cdn/common-cdn-issues" target="_blank" rel="noopener noreferrer">your CDN may be working against you</a> by buffering the entire segment. To understand why consider what happens when many people request a live segment at the same time:</p>
 	<figure class="kg-card kg-image-card ">
 
 		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/72cAKXFSt7jASVx88HncQH/70ac4a2acffeeab6fc60cd2e797392af/Bulk-Request.jpg" alt="" class="kg-image" width="1280" height="800" loading="lazy">
@@ -152,6 +152,6 @@
 		</a>
 	</div>
 	<p>New techniques like chunked encoding have revolutionized live delivery, enabling publishers to deliver low-latency live video at scale. Concurrent Streaming Acceleration helps you unlock the power of this technique at your CDN, potentially shaving precious seconds of end-to-end latency.</p>
-	<p>If you’re interested in using Cloudflare for live video delivery, <a href="https://www.cloudflare.com/plans/enterprise/contact">contact our enterprise sales team</a>.</p>
-	<p>And if you’re interested in working on projects like this and helping us improve live video delivery for the entire Internet, join our <a href="https://www.cloudflare.com/careers/jobs/?department=Engineering">engineering team</a>!</p>
+	<p>If you’re interested in using Cloudflare for live video delivery, <a href="https://www.cloudflare.com/plans/enterprise/contact" target="_blank" rel="noopener noreferrer">contact our enterprise sales team</a>.</p>
+	<p>And if you’re interested in working on projects like this and helping us improve live video delivery for the entire Internet, join our <a href="https://www.cloudflare.com/careers/jobs/?department=Engineering" target="_blank" rel="noopener noreferrer">engineering team</a>!</p>
 </div>

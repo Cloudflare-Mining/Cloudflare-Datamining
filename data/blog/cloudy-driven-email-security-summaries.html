@@ -8,7 +8,7 @@
 			</svg>
 		</a>
 	</div>
-	<p>Organizations face continuous threats from <a href="https://www.cloudflare.com/learning/access-management/phishing-attack"><u>phishing</u></a>,<a href="https://www.cloudflare.com/learning/email-security/business-email-compromise-bec"><u> business email compromise (BEC)</u></a>, and other advanced email attacks. Attackers <a href="https://www.cloudflare.com/the-net/multichannel-phishing"><u>adapt their tactics</u></a> daily, forcing defenders to move just as quickly to keep inboxes safe.</p>
+	<p>Organizations face continuous threats from <a href="https://www.cloudflare.com/learning/access-management/phishing-attack" target="_blank" rel="noopener noreferrer"><u>phishing</u></a>,<a href="https://www.cloudflare.com/learning/email-security/business-email-compromise-bec" target="_blank" rel="noopener noreferrer"><u> business email compromise (BEC)</u></a>, and other advanced email attacks. Attackers <a href="https://www.cloudflare.com/the-net/multichannel-phishing" target="_blank" rel="noopener noreferrer"><u>adapt their tactics</u></a> daily, forcing defenders to move just as quickly to keep inboxes safe.</p>
 	<p>Cloudflare’s visibility across a large portion of the Internet gives us an unparalleled view of malicious campaigns. We process billions of email threat signals every day, feeding them into multiple AI and machine learning models. This lets our detection team create and deploy new rules at high speed, blocking malicious and unwanted emails before they reach the inbox.</p>
 	<p>But rapid protection introduces a new challenge: making sure security teams understand exactly what we blocked — and why.</p>
 	<div class="flex anchor relative">
@@ -57,7 +57,7 @@
 			</svg>
 		</a>
 	</div>
-	<p>We observed frequent LLM <a href="https://www.cloudflare.com/learning/ai/what-are-ai-hallucinations"><u>hallucinations</u></a>, the model generating inaccurate information about messages. While this might be acceptable when analyzing logs, it's dangerous for email security detections. A hallucination claiming a malicious message is clean could lead SOC analysts to release it from quarantine, potentially causing a security breach.</p>
+	<p>We observed frequent LLM <a href="https://www.cloudflare.com/learning/ai/what-are-ai-hallucinations" target="_blank" rel="noopener noreferrer"><u>hallucinations</u></a>, the model generating inaccurate information about messages. While this might be acceptable when analyzing logs, it's dangerous for email security detections. A hallucination claiming a malicious message is clean could lead SOC analysts to release it from quarantine, potentially causing a security breach.</p>
 	<p>These hallucinations occurred because email detections involve numerous and complex inputs. Our scanning process runs messages through multiple ML algorithms examining different components: body content, attachments, links, IP reputation, and more. The same complexity that makes manual detection explanation difficult also caused our initial LLM implementation to produce inconsistent and sometimes inaccurate outputs.</p>
 	<div class="flex anchor relative">
 		<h3 id="building-guardrails">Building Guardrails</h3>
@@ -69,7 +69,7 @@
 	</div>
 	<p>To minimize hallucination risk while maintaining inbox security, we implemented several manual safeguards:</p>
 	<p><b>Step 1: RAG Implementation</b></p>
-	<p>We ensured Cloudy only accessed information from our detection dataset corpus, creating a <a href="https://www.cloudflare.com/learning/ai/retrieval-augmented-generation-rag"><u>Retrieval-Augmented Generation (RAG)</u></a> system. This significantly reduced hallucinations by grounding the LLM's assessments in actual detection data.</p>
+	<p>We ensured Cloudy only accessed information from our detection dataset corpus, creating a <a href="https://www.cloudflare.com/learning/ai/retrieval-augmented-generation-rag" target="_blank" rel="noopener noreferrer"><u>Retrieval-Augmented Generation (RAG)</u></a> system. This significantly reduced hallucinations by grounding the LLM's assessments in actual detection data.</p>
 	<p><b>Step 2: Model Context Enhancement</b></p>
 	<p>We added crucial context about our internal models. For example, the "Churchmouse" designation refers to a group of sentiment detection models, not a single algorithm. Without this context, Cloudy attempted to define "churchmouse" using the common idiom "poor as a church mouse" referencing starving church mice because holy bread never falls to the floor. While historically interesting, this was completely irrelevant to our security context.</p>
 	<div class="flex anchor relative">
@@ -100,8 +100,8 @@
 			</svg>
 		</a>
 	</div>
-	<p>We provide all organizations (whether a Cloudflare customer or not) with free access to our Retro Scan tool, allowing them to use our predictive AI models to scan existing inbox messages. Retro Scan will detect and highlight any threats found, enabling organizations to remediate them directly in their email accounts. With these insights, organizations can implement further controls, either using <a href="https://www.cloudflare.com/zero-trust/products/email-security"><u>Cloudflare Email Security</u></a> or their preferred solution, to prevent similar threats from reaching their inboxes in the future.</p>
-	<p>If you are interested in how Cloudflare can help secure your inboxes, sign up for a phishing risk assessment <a href="https://www.cloudflare.com/lp/email-security-self-guided-demo-request/?utm_medium=referral&amp;utm_source=blog&amp;utm_campaign=2025-q3-acq-gbl-modernsec-es-ge-general-ai_week_blog"><u>here</u></a>.&nbsp;</p>
+	<p>We provide all organizations (whether a Cloudflare customer or not) with free access to our Retro Scan tool, allowing them to use our predictive AI models to scan existing inbox messages. Retro Scan will detect and highlight any threats found, enabling organizations to remediate them directly in their email accounts. With these insights, organizations can implement further controls, either using <a href="https://www.cloudflare.com/zero-trust/products/email-security" target="_blank" rel="noopener noreferrer"><u>Cloudflare Email Security</u></a> or their preferred solution, to prevent similar threats from reaching their inboxes in the future.</p>
+	<p>If you are interested in how Cloudflare can help secure your inboxes, sign up for a phishing risk assessment <a href="https://www.cloudflare.com/lp/email-security-self-guided-demo-request/?utm_medium=referral&amp;utm_source=blog&amp;utm_campaign=2025-q3-acq-gbl-modernsec-es-ge-general-ai_week_blog" target="_blank" rel="noopener noreferrer"><u>here</u></a>.&nbsp;</p>
 	<figure class="kg-card kg-image-card">
 		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/lV6mxQTYwaS6j0n0e8arE/fd62cf8032b15780690f4ed48578d3fc/image2.png" alt="" class="kg-image" width="1201" height="307" loading="lazy">
 	</figure>

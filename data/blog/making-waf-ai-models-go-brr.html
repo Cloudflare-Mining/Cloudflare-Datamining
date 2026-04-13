@@ -1,7 +1,7 @@
 <div class="mb2 gray5">10 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7bMxXOoK4JfZ8vOSQMEEze/6771fb2a713d450e0cfbe9e72f8f18a9/making-waf-ai-models-go-brr.png" alt="">
 <div class="post-content lh-copy gray1">
 	<p>We made our WAF Machine Learning models <b>5.5x</b> faster, reducing execution time by approximately <b>82%</b>, from <b>1519</b> to <b>275</b> microseconds! Read on to find out how we achieved this remarkable improvement.</p>
-	<p><a href="https://developers.cloudflare.com/waf/about/waf-attack-score">WAF Attack Score</a> is Cloudflare's machine learning (ML)-powered layer built on top of our <a href="https://developers.cloudflare.com/waf">Web Application Firewall (WAF)</a>. Its goal is to complement the WAF and detect attack bypasses that we haven't encountered before. This has proven invaluable in <a href="https://blog.cloudflare.com/detecting-zero-days-before-zero-day">catching zero-day vulnerabilities</a>, like the one detected in <a href="https://blog.cloudflare.com/how-cloudflares-ai-waf-proactively-detected-ivanti-connect-secure-critical-zero-day-vulnerability">Ivanti Connect Secure</a>, before they are publicly disclosed and enhancing our customers' protection against emerging and unknown threats.</p>
+	<p><a href="https://developers.cloudflare.com/waf/about/waf-attack-score" target="_blank" rel="noopener noreferrer">WAF Attack Score</a> is Cloudflare's machine learning (ML)-powered layer built on top of our <a href="https://developers.cloudflare.com/waf" target="_blank" rel="noopener noreferrer">Web Application Firewall (WAF)</a>. Its goal is to complement the WAF and detect attack bypasses that we haven't encountered before. This has proven invaluable in <a href="https://blog.cloudflare.com/detecting-zero-days-before-zero-day">catching zero-day vulnerabilities</a>, like the one detected in <a href="https://blog.cloudflare.com/how-cloudflares-ai-waf-proactively-detected-ivanti-connect-secure-critical-zero-day-vulnerability">Ivanti Connect Secure</a>, before they are publicly disclosed and enhancing our customers' protection against emerging and unknown threats.</p>
 	<p>Since its <a href="https://blog.cloudflare.com/waf-ml">launch in 2022</a>, WAF attack score adoption has grown exponentially, now protecting millions of Internet properties and running real-time inference on tens of millions of requests per second. The feature's popularity has driven us to seek performance improvements, enabling even broader customer use and enhancing Internet security.</p>
 	<p>In this post, we will discuss the performance optimizations we've implemented for our WAF ML product. We'll guide you through specific code examples and benchmark numbers, demonstrating how these enhancements have significantly improved our system's efficiency. Additionally, we'll share the impressive latency reduction numbers observed after the rollout.</p>
 	<p>Before diving into the optimizations, let's take a moment to review the inner workings of the WAF Attack Score, which powers our WAF ML product.</p>
@@ -19,7 +19,7 @@
 		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3Bis9LE38A3aK4k7HEn7k9/44ae7b31096471a5256961715f8c7991/unnamed--4--6.png" alt="" class="kg-image" width="1600" height="343" loading="lazy">
 
 	</figure>
-	<p>Cloudflare's WAF attack score identifies various traffic types and attack vectors (<a href="https://www.cloudflare.com/learning/security/threats/how-to-prevent-sql-injection">SQLi</a>, <a href="https://www.cloudflare.com/learning/security/how-to-prevent-xss-attacks">XSS</a>, Command Injection, etc.) based on structural or statistical content properties. Here's how it works during inference:</p>
+	<p>Cloudflare's WAF attack score identifies various traffic types and attack vectors (<a href="https://www.cloudflare.com/learning/security/threats/how-to-prevent-sql-injection" target="_blank" rel="noopener noreferrer">SQLi</a>, <a href="https://www.cloudflare.com/learning/security/how-to-prevent-xss-attacks" target="_blank" rel="noopener noreferrer">XSS</a>, Command Injection, etc.) based on structural or statistical content properties. Here's how it works during inference:</p>
 	<ol>
 		<li>
 			<p><b>HTTP Request Content</b>: Start with raw HTTP input.</p>
@@ -31,7 +31,7 @@
 			<p><b>Feature Extraction</b>: Tokenize the transformed content to generate statistical and structural data.</p>
 		</li>
 		<li>
-			<p><b>Machine Learning Model Inference</b>: Analyze the extracted features with pre-trained models, mapping content representations to classes (e.g., XSS, SQLi or <a href="https://www.cloudflare.com/learning/security/what-is-remote-code-execution">RCE</a>) or scores.</p>
+			<p><b>Machine Learning Model Inference</b>: Analyze the extracted features with pre-trained models, mapping content representations to classes (e.g., XSS, SQLi or <a href="https://www.cloudflare.com/learning/security/what-is-remote-code-execution" target="_blank" rel="noopener noreferrer">RCE</a>) or scores.</p>
 		</li>
 		<li>
 			<p><b>Classification Output in WAF</b>: Assign a score to the input, ranging from 1 (likely malicious) to 99 (likely clean), guiding security actions.</p>
@@ -57,7 +57,7 @@
 		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7DIxHJ5zLkdeknndiNGbk0/e802888a2212ddfcae688f1c4201587f/8cc41311-3a09-4c39-b47c-9dc449760ee2.png" alt="" class="kg-image" width="1271" height="805" loading="lazy">
 
 	</figure>
-	<p>In our initial pre-processing implementation, this is achieved via a sliding window of 3 bytes over the input with the help of Rust’s <a href="https://doc.rust-lang.org/std/collections/struct.HashMap.html">std::collections::HashMap</a> to look up the tensor index for a given ngram.</p>
+	<p>In our initial pre-processing implementation, this is achieved via a sliding window of 3 bytes over the input with the help of Rust’s <a href="https://doc.rust-lang.org/std/collections/struct.HashMap.html" target="_blank" rel="noopener noreferrer">std::collections::HashMap</a> to look up the tensor index for a given ngram.</p>
 	<div class="flex anchor relative">
 		<h3 id="initial-benchmarks">Initial benchmarks</h3>
 		<a href="https://blog.cloudflare.com/#initial-benchmarks" aria-hidden="true" class="relative sm:absolute sm:-start-5">
@@ -66,7 +66,7 @@
 			</svg>
 		</a>
 	</div>
-	<p>To establish performance baselines, we've set up four benchmark cases representing example inputs of various lengths, ranging from 44 to 9482 bytes. Each case exemplifies typical input sizes, including those for a request body, user agent, and URI. We run benchmarks using the <a href="https://bheisler.github.io/criterion.rs/book/getting_started.html">Criterion.rs</a> statistics-driven micro-benchmarking tool:</p>
+	<p>To establish performance baselines, we've set up four benchmark cases representing example inputs of various lengths, ranging from 44 to 9482 bytes. Each case exemplifies typical input sizes, including those for a request body, user agent, and URI. We run benchmarks using the <a href="https://bheisler.github.io/criterion.rs/book/getting_started.html" target="_blank" rel="noopener noreferrer">Criterion.rs</a> statistics-driven micro-benchmarking tool:</p>
 	<pre class="language-rust"><code class="language-rust">RUSTFLAGS="-C opt-level=3 -C target-cpu=native" cargo criterion</code></pre>
 	<p>Here are initial numbers for these benchmarks executed on a Linux laptop with a 13th Gen Intel® Core™ i7-13800H processor:</p><!--kg-card-begin: html-->
 	<style type="text/css">
@@ -151,7 +151,7 @@
 			</tr>
 		</tbody>
 	</table><!--kg-card-end: html-->
-	<p>An important observation from these results is that pre-processing time correlates with the length of the input string, with throughput ranging from 28 MiB/s to 36 MiB/s. This suggests that considerable time is spent iterating over longer input strings. Optimizing this part of the process could significantly enhance performance. The dependency of processing time on input size highlights a key area for performance optimization. To validate this, we should examine where the processing time is spent by analyzing flamegraphs created from a 100-second profiling session visualized using <a href="https://www.honeycomb.io/blog/golang-observability-using-the-new-pprof-web-ui-to-debug-memory-usage">pprof</a>:</p>
+	<p>An important observation from these results is that pre-processing time correlates with the length of the input string, with throughput ranging from 28 MiB/s to 36 MiB/s. This suggests that considerable time is spent iterating over longer input strings. Optimizing this part of the process could significantly enhance performance. The dependency of processing time on input size highlights a key area for performance optimization. To validate this, we should examine where the processing time is spent by analyzing flamegraphs created from a 100-second profiling session visualized using <a href="https://www.honeycomb.io/blog/golang-observability-using-the-new-pprof-web-ui-to-debug-memory-usage" target="_blank" rel="noopener noreferrer">pprof</a>:</p>
 	<pre class="language-rust"><code class="language-rust">RUSTFLAGS="-C opt-level=3 -C target-cpu=native" cargo criterion -- --profile-time 100
  
 go tool pprof -http=: target/criterion/profile/preprocessing/avg-body-1000/profile.pb</code></pre>
@@ -276,11 +276,11 @@ go tool pprof -http=: target/criterion/profile/preprocessing/avg-body-1000/profi
 		</a>
 	</div>
 	<p>Rust hash maps are generally quite fast. However, when that many lookups are being performed, it's not very cache friendly.</p>
-	<p>So can we do better than hash maps, and what should we try first? The answer is the <a href="https://docs.rs/aho-corasick/latest/aho_corasick">Aho-Corasick library</a>.</p>
-	<p>This library provides multiple pattern search principally through an implementation of the <a href="https://en.wikipedia.org/wiki/Aho%E2%80%93Corasick_algorithm">Aho-Corasick algorithm</a>, which builds a fast finite state machine for executing searches in linear time.</p>
+	<p>So can we do better than hash maps, and what should we try first? The answer is the <a href="https://docs.rs/aho-corasick/latest/aho_corasick" target="_blank" rel="noopener noreferrer">Aho-Corasick library</a>.</p>
+	<p>This library provides multiple pattern search principally through an implementation of the <a href="https://en.wikipedia.org/wiki/Aho%E2%80%93Corasick_algorithm" target="_blank" rel="noopener noreferrer">Aho-Corasick algorithm</a>, which builds a fast finite state machine for executing searches in linear time.</p>
 	<p>We can also tune Aho-Corasick settings based on this recommendation:</p>
 	<blockquote>
-		<p><i>“You might want to use</i> <a href="https://docs.rs/aho-corasick/1.1.3/aho_corasick/struct.AhoCorasickBuilder.html#method.kind"><i>AhoCorasickBuilder::kind</i></a> <i>to set your searcher to always use</i> <a href="https://docs.rs/aho-corasick/1.1.3/aho_corasick/enum.AhoCorasickKind.html#variant.DFA"><i>AhoCorasickKind::DFA</i></a> <i>if search speed is critical and memory usage isn’t a concern.”</i></p>
+		<p><i>“You might want to use</i> <a href="https://docs.rs/aho-corasick/1.1.3/aho_corasick/struct.AhoCorasickBuilder.html#method.kind" target="_blank" rel="noopener noreferrer"><i>AhoCorasickBuilder::kind</i></a> <i>to set your searcher to always use</i> <a href="https://docs.rs/aho-corasick/1.1.3/aho_corasick/enum.AhoCorasickKind.html#variant.DFA" target="_blank" rel="noopener noreferrer"><i>AhoCorasickKind::DFA</i></a> <i>if search speed is critical and memory usage isn’t a concern.”</i></p>
 	</blockquote>
 	<pre class="language-python"><code class="language-python">static ref NORM_VOCAB_AC: AhoCorasick = AhoCorasick::builder().kind(Some(AhoCorasickKind::DFA)).build(&amp;[    
     "abc",
@@ -295,7 +295,7 @@ go tool pprof -http=: target/criterion/profile/preprocessing/avg-body-1000/profi
     "pro",
     ...
 ]).unwrap();</code></pre>
-	<p>Then we use the constructed AhoCorasick dictionary to lookup ngrams using its <a href="https://docs.rs/aho-corasick/latest/aho_corasick/struct.AhoCorasick.html#method.find_overlapping_iter">find_overlapping_iter</a> method:</p>
+	<p>Then we use the constructed AhoCorasick dictionary to lookup ngrams using its <a href="https://docs.rs/aho-corasick/latest/aho_corasick/struct.AhoCorasick.html#method.find_overlapping_iter" target="_blank" rel="noopener noreferrer">find_overlapping_iter</a> method:</p>
 	<pre class="language-python"><code class="language-python">for mat in NORM_VOCAB_AC.find_overlapping_iter(&amp;input) {
     tensor_input_data[mat.pattern().as_usize() + 1] += 1.0;
 }</code></pre>
@@ -421,7 +421,7 @@ const fn norm_vocab_lookup(ngram: &amp;[u8; 3]) -&gt; usize {
         _ =&gt; 0,
     }
 }```</code></pre>
-	<p>Here's how it performs in practice, based on the assembly generated by the <a href="https://godbolt.org/z/dqTq5n5Y3">Godbolt compiler explorer</a>. The corresponding assembly code efficiently implements this lookup by employing a jump table and byte-wise comparisons to determine the return value based on input sequences, optimizing for quick decisions and minimal branching. Although the example only includes ten ngrams, it's important to note that in applications like our WAF Attack Score ML models, we deal with thousands of ngrams. This simple match-based approach outshines both HashMap lookups and the Aho-Corasick method.</p><!--kg-card-begin: html-->
+	<p>Here's how it performs in practice, based on the assembly generated by the <a href="https://godbolt.org/z/dqTq5n5Y3" target="_blank" rel="noopener noreferrer">Godbolt compiler explorer</a>. The corresponding assembly code efficiently implements this lookup by employing a jump table and byte-wise comparisons to determine the return value based on input sequences, optimizing for quick decisions and minimal branching. Although the example only includes ten ngrams, it's important to note that in applications like our WAF Attack Score ML models, we deal with thousands of ngrams. This simple match-based approach outshines both HashMap lookups and the Aho-Corasick method.</p><!--kg-card-begin: html-->
 	<style type="text/css">
 		.tg {
 			border-collapse: collapse;
@@ -603,7 +603,7 @@ impl&lt;'a&gt; Iterator for WindowedReplacer&lt;'a&gt; {
         tensor[sig_vocab_lookup(ngram.try_into().unwrap())] += 1.0;
     }
 }</code></pre>
-	<p>This new approach not only eliminates the need for allocating additional buffers to store replaced content, but also leverages Rust's iterator optimizations, which the compiler can more effectively optimize. You can view an example of the assembly output for this new iterator at the provided <a href="https://godbolt.org/z/fjaoP7z6Y">Godbolt link</a>.</p>
+	<p>This new approach not only eliminates the need for allocating additional buffers to store replaced content, but also leverages Rust's iterator optimizations, which the compiler can more effectively optimize. You can view an example of the assembly output for this new iterator at the provided <a href="https://godbolt.org/z/fjaoP7z6Y" target="_blank" rel="noopener noreferrer">Godbolt link</a>.</p>
 	<p>Now let's benchmark this and compare against the original implementation:</p><!--kg-card-begin: html-->
 	<style type="text/css">
 		.tg {
@@ -792,7 +792,7 @@ impl&lt;'a&gt; Iterator for WindowedReplacer&lt;'a&gt; {
 			</tr>
 		</tbody>
 	</table><!--kg-card-end: html-->
-	<p>However, if we look again at <a href="https://godbolt.org/z/dqTq5n5Y3">the assembly of the norm_vocab_lookup function</a>, it is clear that the execution flow has to perform a bunch of comparisons using <i>cmp</i> instructions. This creates many branches for the CPU to handle, which can lead to branch mispredictions. Branch mispredictions occur when the CPU incorrectly guesses the path of execution, causing delays as it discards partially completed instructions and fetches the correct ones. By reducing or eliminating these branches, we can avoid these mispredictions and improve the efficiency of the lookup process. How can we get rid of those branches when there is a need to look up thousands of unique ngrams?</p>
+	<p>However, if we look again at <a href="https://godbolt.org/z/dqTq5n5Y3" target="_blank" rel="noopener noreferrer">the assembly of the norm_vocab_lookup function</a>, it is clear that the execution flow has to perform a bunch of comparisons using <i>cmp</i> instructions. This creates many branches for the CPU to handle, which can lead to branch mispredictions. Branch mispredictions occur when the CPU incorrectly guesses the path of execution, causing delays as it discards partially completed instructions and fetches the correct ones. By reducing or eliminating these branches, we can avoid these mispredictions and improve the efficiency of the lookup process. How can we get rid of those branches when there is a need to look up thousands of unique ngrams?</p>
 	<p>Since there are only 3 bytes in each ngram, we can build two lookup tables of 256 x 256 x 256 size, storing the ngram tensor index. With this naive approach, our memory requirements will be: 256 x 256 x 256 x 2 x 2 = 64 MB, which seems like a lot.</p>
 	<p>However, given that we only care about ASCII bytes 0..127, then memory requirements can be lower: 128 x 128 x 128 x 2 x 2 = 8 MB, which is better. However, we will need to check for bytes &gt;= 128, which will introduce a branch again.</p>
 	<p>So can we do better? Considering that the actual number of distinct byte values used in the ngrams is significantly less than the total possible 256 values, we can reduce memory requirements further by employing the following technique:</p>
@@ -830,7 +830,7 @@ const fn ngram_index(ngram: [u8; 3]) -&gt; usize {
     ...
     arr
 };</code></pre>
-	<p>4. Finally, to update the tensor based on given ngram, we lookup the ngram index, then the tensor index, and then increment it with help of <a href="https://doc.rust-lang.org/std/primitive.slice.html#method.get_unchecked_mut">get_unchecked_mut</a>, which avoids unnecessary (in this case) boundary checks and eliminates another source of branching:</p>
+	<p>4. Finally, to update the tensor based on given ngram, we lookup the ngram index, then the tensor index, and then increment it with help of <a href="https://doc.rust-lang.org/std/primitive.slice.html#method.get_unchecked_mut" target="_blank" rel="noopener noreferrer">get_unchecked_mut</a>, which avoids unnecessary (in this case) boundary checks and eliminates another source of branching:</p>
 	<pre class="language-python"><code class="language-python">#[inline]
 fn update_tensor_with_ngram(tensor: &amp;mut [f32], ngram: [u8; 3]) {
     let ngram_idx = ngram_index(ngram);
@@ -967,7 +967,7 @@ for i in (0..chunks_max_offset).step_by(CHUNK_SIZE) {
 			</svg>
 		</a>
 	</div>
-	<p>Let’s have a look at original performance numbers of the WAF Attack Score ML model, which uses <a href="https://github.com/tensorflow/tensorflow/releases/tag/v2.6.0">TensorFlow Lite 2.6.0</a>:</p><!--kg-card-begin: html-->
+	<p>Let’s have a look at original performance numbers of the WAF Attack Score ML model, which uses <a href="https://github.com/tensorflow/tensorflow/releases/tag/v2.6.0" target="_blank" rel="noopener noreferrer">TensorFlow Lite 2.6.0</a>:</p><!--kg-card-begin: html-->
 	<style type="text/css">
 		.tg {
 			border-collapse: collapse;
@@ -1133,7 +1133,7 @@ for i in (0..chunks_max_offset).step_by(CHUNK_SIZE) {
 			</tr>
 		</tbody>
 	</table><!--kg-card-end: html-->
-	<p>The most expensive operation is matrix multiplication, which boils down to iteration within <a href="https://github.com/tensorflow/tensorflow/blob/v2.6.0/tensorflow/lite/kernels/internal/reference/portable_tensor_utils.cc#L119-L136">three nested loops</a>:</p>
+	<p>The most expensive operation is matrix multiplication, which boils down to iteration within <a href="https://github.com/tensorflow/tensorflow/blob/v2.6.0/tensorflow/lite/kernels/internal/reference/portable_tensor_utils.cc#L119-L136" target="_blank" rel="noopener noreferrer">three nested loops</a>:</p>
 	<pre class="language-python"><code class="language-python">void PortableMatrixBatchVectorMultiplyAccumulate(const float* matrix,
                                                  int m_rows, int m_cols,
                                                  const float* vector,
@@ -1152,7 +1152,7 @@ for i in (0..chunks_max_offset).step_by(CHUNK_SIZE) {
     }
   }
 }</code></pre>
-	<p>This doesn’t look very efficient and many <a href="https://en.algorithmica.org/hpc/algorithms/matmul">blogs</a> and <a href="https://www.cs.utexas.edu/~flame/pubs/GotoTOMS_revision.pdf">research papers</a> have been written on how matrix multiplication can be optimized, which basically boils down to:</p>
+	<p>This doesn’t look very efficient and many <a href="https://en.algorithmica.org/hpc/algorithms/matmul" target="_blank" rel="noopener noreferrer">blogs</a> and <a href="https://www.cs.utexas.edu/~flame/pubs/GotoTOMS_revision.pdf" target="_blank" rel="noopener noreferrer">research papers</a> have been written on how matrix multiplication can be optimized, which basically boils down to:</p>
 	<ul>
 		<li>
 			<p><b>Blocking</b>: Divide matrices into smaller blocks that fit into the cache, improving cache reuse and reducing memory access latency.</p>
@@ -1267,8 +1267,8 @@ fi</code></pre>
 			</tr>
 		</tbody>
 	</table><!--kg-card-end: html-->
-	<p>Matrix multiplication now uses <a href="https://github.com/tensorflow/tensorflow/blob/15ec568b5505727c940b651aeb2a9643b504086c/tensorflow/lite/kernels/internal/optimized/sse_tensor_utils.cc#L161-L199">AVX2 instructions</a>, which uses blocks of 8x8 to multiply and accumulate the multiplication result.</p>
-	<p>Proportionally, matrix multiplication and <a href="https://www.cloudflare.com/learning/ai/what-is-quantization">quantization</a> operations take a similar time share when compared to non-SIMD version, however in absolute numbers, it’s almost twice as fast when SIMD optimizations are enabled:</p><!--kg-card-begin: html-->
+	<p>Matrix multiplication now uses <a href="https://github.com/tensorflow/tensorflow/blob/15ec568b5505727c940b651aeb2a9643b504086c/tensorflow/lite/kernels/internal/optimized/sse_tensor_utils.cc#L161-L199" target="_blank" rel="noopener noreferrer">AVX2 instructions</a>, which uses blocks of 8x8 to multiply and accumulate the multiplication result.</p>
+	<p>Proportionally, matrix multiplication and <a href="https://www.cloudflare.com/learning/ai/what-is-quantization" target="_blank" rel="noopener noreferrer">quantization</a> operations take a similar time share when compared to non-SIMD version, however in absolute numbers, it’s almost twice as fast when SIMD optimizations are enabled:</p><!--kg-card-begin: html-->
 	<style type="text/css">
 		.tg {
 			border-collapse: collapse;
@@ -1354,7 +1354,7 @@ fi</code></pre>
 			</svg>
 		</a>
 	</div>
-	<p>Tensorflow Lite comes with a useful benchmarking tool called <a href="https://github.com/tensorflow/tensorflow/tree/master/tensorflow/lite/tools/benchmark">benchmark_model</a>, which also has a built-in profiler.</p>
+	<p>Tensorflow Lite comes with a useful benchmarking tool called <a href="https://github.com/tensorflow/tensorflow/tree/master/tensorflow/lite/tools/benchmark" target="_blank" rel="noopener noreferrer">benchmark_model</a>, which also has a built-in profiler.</p>
 	<p>The tool can be built locally using the command:</p>
 	<pre class="language-bash"><code class="language-bash">bazel build -j 4 --copt=-march=native -c opt tensorflow/lite/tools/benchmark:benchmark_model</code></pre>
 	<p>After building, benchmarks were run with different settings:</p><!--kg-card-begin: html-->
@@ -1430,10 +1430,10 @@ fi</code></pre>
 	<p>More technical details about XNNPACK can be found in these blog posts:</p>
 	<ul>
 		<li>
-			<p><a href="https://blog.tensorflow.org/2022/06/Profiling-XNNPACK-with-TFLite.html">Profiling XNNPACK with TFLite</a></p>
+			<p><a href="https://blog.tensorflow.org/2022/06/Profiling-XNNPACK-with-TFLite.html" target="_blank" rel="noopener noreferrer">Profiling XNNPACK with TFLite</a></p>
 		</li>
 		<li>
-			<p><a href="https://blog.tensorflow.org/2024/04/faster-dynamically-quantized-inference-with-xnnpack.html">Faster Dynamically Quantized Inference with XNNPack</a></p>
+			<p><a href="https://blog.tensorflow.org/2024/04/faster-dynamically-quantized-inference-with-xnnpack.html" target="_blank" rel="noopener noreferrer">Faster Dynamically Quantized Inference with XNNPack</a></p>
 		</li>
 	</ul>
 	<p>Re-running benchmarks with XNNPack enabled, we get the following results:</p><!--kg-card-begin: html-->
@@ -1526,16 +1526,16 @@ fi</code></pre>
 			</svg>
 		</a>
 	</div>
-	<p>While making code faster through pre-processing and inference optimizations is great, it's even better when code doesn't need to run at all. This is where caching comes in. <a href="https://en.wikipedia.org/wiki/Amdahl%27s_law">Amdahl's Law</a> suggests that optimizing only parts of a program has diminishing returns. By avoiding redundant executions with caching, we can achieve significant performance gains beyond the limitations of traditional code optimization.</p>
-	<p>A simple key-value cache would quickly occupy all available memory on the server due to the high cardinality of URLs, HTTP headers, and HTTP bodies. However, because "everything on the Internet has an L-shape" or more specifically, follows a <a href="https://en.wikipedia.org/wiki/Zipf%27s_law">Zipf's law</a> distribution, we can optimize our caching strategy.</p>
-	<p><a href="https://en.wikipedia.org/wiki/Zipf%27s_law">Zipf</a>'<a href="https://en.wikipedia.org/wiki/Zipf%27s_law">s law</a> states that in many natural datasets, the frequency of any item is inversely proportional to its rank in the frequency table. In other words, a few items are extremely common, while the majority are rare. By analyzing our request data, we found that URLs, HTTP headers, and even HTTP bodies follow this distribution. For example, here is the user agent header frequency distribution against its rank:</p>
+	<p>While making code faster through pre-processing and inference optimizations is great, it's even better when code doesn't need to run at all. This is where caching comes in. <a href="https://en.wikipedia.org/wiki/Amdahl%27s_law" target="_blank" rel="noopener noreferrer">Amdahl's Law</a> suggests that optimizing only parts of a program has diminishing returns. By avoiding redundant executions with caching, we can achieve significant performance gains beyond the limitations of traditional code optimization.</p>
+	<p>A simple key-value cache would quickly occupy all available memory on the server due to the high cardinality of URLs, HTTP headers, and HTTP bodies. However, because "everything on the Internet has an L-shape" or more specifically, follows a <a href="https://en.wikipedia.org/wiki/Zipf%27s_law" target="_blank" rel="noopener noreferrer">Zipf's law</a> distribution, we can optimize our caching strategy.</p>
+	<p><a href="https://en.wikipedia.org/wiki/Zipf%27s_law" target="_blank" rel="noopener noreferrer">Zipf</a>'<a href="https://en.wikipedia.org/wiki/Zipf%27s_law" target="_blank" rel="noopener noreferrer">s law</a> states that in many natural datasets, the frequency of any item is inversely proportional to its rank in the frequency table. In other words, a few items are extremely common, while the majority are rare. By analyzing our request data, we found that URLs, HTTP headers, and even HTTP bodies follow this distribution. For example, here is the user agent header frequency distribution against its rank:</p>
 	<figure class="kg-card kg-image-card ">
 
 		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/50OWcB7Buza1Jp77ePY75X/e25e66e7665fccc454df026e5ca37729/unnamed--8--3.png" alt="" class="kg-image" width="1277" height="800" loading="lazy">
 
 	</figure>
-	<p>By caching the top-N most frequently occurring inputs and their corresponding inference results, we can ensure that both pre-processing and inference are skipped for the majority of requests. This is where the <a href="https://en.wikipedia.org/wiki/Cache_replacement_policies#LRU">Least Recently Used (LRU)</a> cache comes in – frequently used items stay hot in the cache, while the least recently used ones are evicted.</p>
-	<p>We use <a href="https://github.com/openresty/lua-resty-lrucache">lua-resty-mlcache</a> as our caching solution, allowing us to share cached inference results between different Nginx workers via a shared memory dictionary. The LRU cache effectively exploits the <a href="https://en.wikipedia.org/wiki/Space%E2%80%93time_tradeoff">space-time trade-off</a>, where we trade a small amount of memory for significant CPU time savings.</p>
+	<p>By caching the top-N most frequently occurring inputs and their corresponding inference results, we can ensure that both pre-processing and inference are skipped for the majority of requests. This is where the <a href="https://en.wikipedia.org/wiki/Cache_replacement_policies#LRU" target="_blank" rel="noopener noreferrer">Least Recently Used (LRU)</a> cache comes in – frequently used items stay hot in the cache, while the least recently used ones are evicted.</p>
+	<p>We use <a href="https://github.com/openresty/lua-resty-lrucache" target="_blank" rel="noopener noreferrer">lua-resty-mlcache</a> as our caching solution, allowing us to share cached inference results between different Nginx workers via a shared memory dictionary. The LRU cache effectively exploits the <a href="https://en.wikipedia.org/wiki/Space%E2%80%93time_tradeoff" target="_blank" rel="noopener noreferrer">space-time trade-off</a>, where we trade a small amount of memory for significant CPU time savings.</p>
 	<p>This approach enables us to achieve a <b>~70%</b> cache hit ratio, significantly reducing latency further, as we will analyze in the final section below.</p>
 	<div class="flex anchor relative">
 		<h2 id="optimization-results">Optimization results</h2>
@@ -1575,5 +1575,5 @@ fi</code></pre>
 		</a>
 	</div>
 	<p>We hope you enjoyed reading about how we made our WAF ML models go brrr, just as much as we enjoyed implementing these optimizations to bring scalable WAF ML to more customers on a truly global scale.</p>
-	<p>Looking ahead, we are developing even more sophisticated ML security models. These advancements aim to bring our <a href="https://www.cloudflare.com/application-services/products/waf">WAF</a> and <a href="https://www.cloudflare.com/application-services/products/bot-management">Bot Management</a> products to the next level, making them even more useful and effective for our customers.</p>
+	<p>Looking ahead, we are developing even more sophisticated ML security models. These advancements aim to bring our <a href="https://www.cloudflare.com/application-services/products/waf" target="_blank" rel="noopener noreferrer">WAF</a> and <a href="https://www.cloudflare.com/application-services/products/bot-management" target="_blank" rel="noopener noreferrer">Bot Management</a> products to the next level, making them even more useful and effective for our customers.</p>
 </div>

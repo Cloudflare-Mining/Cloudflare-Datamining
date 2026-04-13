@@ -14,10 +14,10 @@
 	<p>We recognize that as developers, UIs are useful but sometimes there is the need for a more powerful alternative. Today, I am going to introduce you to Instant Logs in your terminal! In order to get started we need to install a few open-source tools to help us:</p>
 	<ul>
 		<li>
-			<p><a href="https://github.com/vi/websocat">Websocat</a> - to connect to WebSockets.</p>
+			<p><a href="https://github.com/vi/websocat" target="_blank" rel="noopener noreferrer">Websocat</a> - to connect to WebSockets.</p>
 		</li>
 		<li>
-			<p><a href="https://github.com/rcoh/angle-grinder">Angle Grinder</a> - a utility to slice-and-dice a stream of logs on the command line.</p>
+			<p><a href="https://github.com/rcoh/angle-grinder" target="_blank" rel="noopener noreferrer">Angle Grinder</a> - a utility to slice-and-dice a stream of logs on the command line.</p>
 		</li>
 	</ul>
 	<div class="flex anchor relative">
@@ -79,7 +79,7 @@
 			</svg>
 		</a>
 	</div>
-	<p>Using a CLI utility like <a href="https://github.com/vi/websocat">Websocat</a>, you can connect to the WebSocket and start immediately receiving logs of line-delimited JSON.</p>
+	<p>Using a CLI utility like <a href="https://github.com/vi/websocat" target="_blank" rel="noopener noreferrer">Websocat</a>, you can connect to the WebSocket and start immediately receiving logs of line-delimited JSON.</p>
 	<pre class="language-bash"><code class="language-bash">websocat wss://logs.cloudflare.com/instant-logs/ws/sessions/949f9eb846f06d8f8b7c91b186a349d2
 {"ClientRequestHost":"example.com","ClientRequestMethod":"GET","ClientRequestPath":"/","EdgeEndTimestamp":"2022-01-25T17:23:05Z","EdgeResponseBytes":363,"EdgeResponseStatus":200,"EdgeStartTimestamp":"2022-01-25T17:23:05Z","RayID":"6d332ff74fa45fbe","sampleInterval":1}
 {"ClientRequestHost":"example.com","ClientRequestMethod":"GET","ClientRequestPath":"/","EdgeEndTimestamp":"2022-01-25T17:23:06Z","EdgeResponseBytes":363,"EdgeResponseStatus":200,"EdgeStartTimestamp":"2022-01-25T17:23:06Z","RayID":"6d332fffe9c4fc81","sampleInterval":1}</code></pre>
@@ -102,7 +102,7 @@
 		</a>
 	</div>
 	<p>In order to see what firewall actions (if any) were taken, we need to make sure that we include <code>ClientRequestCountry</code>, <code>​​FirewallMatchesActions</code> and <code>FirewallMatchesRuleIDs</code> fields when creating our session.</p>
-	<p>Additionally, any field available in our HTTP request dataset is usable by Instant Logs. You can view the entire list of HTTP Request fields <a href="https://developers.cloudflare.com/logs/reference/log-fields/zone/http_requests">on our developer docs</a>.</p>
+	<p>Additionally, any field available in our HTTP request dataset is usable by Instant Logs. You can view the entire list of HTTP Request fields <a href="https://developers.cloudflare.com/logs/reference/log-fields/zone/http_requests" target="_blank" rel="noopener noreferrer">on our developer docs</a>.</p>
 	<div class="flex anchor relative">
 		<h3 id="choosing-a-sample-rate">Choosing a Sample Rate</h3>
 		<a href="https://blog.cloudflare.com/#choosing-a-sample-rate" aria-hidden="true" class="relative sm:absolute sm:-start-5">
@@ -122,7 +122,7 @@
 			</svg>
 		</a>
 	</div>
-	<p>Since we are only interested in requests with the path of <code>/canadians-only</code>, we can use filters to remove any logs that do not match that specific path. The filters consist of three parts: <code>key</code>, <code>operator</code> and <code>value</code>. The <code>key</code> can be any field specified in the <code>"fields": ""</code> list when creating the session. The complete list of supported operators can be found on our <a href="https://developers.cloudflare.com/logs/instant-logs">Instant Logs documentation</a>.</p>
+	<p>Since we are only interested in requests with the path of <code>/canadians-only</code>, we can use filters to remove any logs that do not match that specific path. The filters consist of three parts: <code>key</code>, <code>operator</code> and <code>value</code>. The <code>key</code> can be any field specified in the <code>"fields": ""</code> list when creating the session. The complete list of supported operators can be found on our <a href="https://developers.cloudflare.com/logs/instant-logs" target="_blank" rel="noopener noreferrer">Instant Logs documentation</a>.</p>
 	<p>To only get the logs of requests destined to <code>/canadians-only</code>, we can specify the following filter:</p>
 	<pre class="language-json"><code class="language-json">{
   "filter": "{\"where\":{\"and\":[{\"key\":\"ClientRequestPath\",\"operator\":\"eq\",\"value\":\"/canadians-only\"}]}}"
@@ -156,7 +156,7 @@
 			</svg>
 		</a>
 	</div>
-	<p>Now that we have a connection to our WebSocket and are receiving logs that match the request path <code>/canadians-only</code>, we can start slicing and dicing the logs to see that the rule is working as expected. A handy tool to use for this is <a href="https://github.com/rcoh/angle-grinder">Angle Grinder</a>. Angle Grinder lets you apply filtering, transformations and aggregations on stdin with first class JSON support. For example, to get the number of visitors from each country we can sum the number of events by the <code>ClientCountry</code> field.</p>
+	<p>Now that we have a connection to our WebSocket and are receiving logs that match the request path <code>/canadians-only</code>, we can start slicing and dicing the logs to see that the rule is working as expected. A handy tool to use for this is <a href="https://github.com/rcoh/angle-grinder" target="_blank" rel="noopener noreferrer">Angle Grinder</a>. Angle Grinder lets you apply filtering, transformations and aggregations on stdin with first class JSON support. For example, to get the number of visitors from each country we can sum the number of events by the <code>ClientCountry</code> field.</p>
 	<pre class="language-bash"><code class="language-bash">websocat wss://logs.cloudflare.com/instant-logs/ws/sessions/949f9eb846f06d8f8b7c91b186a349d2 | agrind '* | json | sum(sampleInterval) by ClientCountry'
 ClientCountry    	_sum
 ---------------------------------

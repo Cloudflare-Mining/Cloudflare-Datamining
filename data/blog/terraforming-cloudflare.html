@@ -1,6 +1,6 @@
 <div class="mb2 gray5">5 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3D3QyUCnVZPOBUwGqq9C1a/13da5d1ec5b562e81c16f52678d36d68/terraforming-cloudflare.png" alt="">
 <div class="post-content lh-copy gray1">
-	<p><i>This is a guest post by Dimitris Koutsourelis and Alexis Dimitriadis, working for the Security Team at </i><a href="https://www.workable.com"><i>Workable</i></a><i>, a company that makes software to help companies find and hire great people.</i></p>
+	<p><i>This is a guest post by Dimitris Koutsourelis and Alexis Dimitriadis, working for the Security Team at </i><a href="https://www.workable.com" target="_blank" rel="noopener noreferrer"><i>Workable</i></a><i>, a company that makes software to help companies find and hire great people.</i></p>
 	<figure class="kg-card kg-image-card ">
 
 		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/37cT4OaneCnyyBgWYOprbJ/b0b143f2cbc1b9dd55ccf7bb76f7fd17/Image_20191002_222359-1-1.png" alt="" class="kg-image" width="1662" height="1142" loading="lazy">
@@ -23,10 +23,10 @@
 			</svg>
 		</a>
 	</div>
-	<p><a href="https://www.terraform.io/intro/index.html">Terraform</a> is a great tool that fulfills our requirements, and fortunately, Cloudflare maintains its own <a href="https://www.terraform.io/docs/providers/cloudflare/index.html">provider</a> that allows us to manage its service configuration hasslefree.</p>
-	<p>On top of that, <a href="https://github.com/gruntwork-io/terragrunt">Terragrunt</a>, is a thin wrapper that provides extra commands and functionality for keeping Terraform configurations DRY, and managing remote state.</p>
-	<p>The combination of both leads to a more modular and re-usable structure for Cloudflare <a href="https://www.terraform.io/docs/configuration/resources.html">resources</a> (configuration), by utilizing <a href="https://www.terraform.io/docs/configuration/modules.html">terraform</a> and <a href="https://github.com/gruntwork-io/terragrunt-infrastructure-modules-example">terragrunt</a> modules.</p>
-	<p>We've chosen to use the latest version of both tools (<a href="https://www.hashicorp.com/blog/terraform-0-1-2-preview">Terraform-v0.12</a> &amp; <a href="https://github.com/gruntwork-io/terragrunt/releases/tag/v0.19.0">Terragrunt-v0.19</a> respectively) and constantly upgrade to take advantage of the valuable new features and functionality, which at this point in time, remove important limitations.</p>
+	<p><a href="https://www.terraform.io/intro/index.html" target="_blank" rel="noopener noreferrer">Terraform</a> is a great tool that fulfills our requirements, and fortunately, Cloudflare maintains its own <a href="https://www.terraform.io/docs/providers/cloudflare/index.html" target="_blank" rel="noopener noreferrer">provider</a> that allows us to manage its service configuration hasslefree.</p>
+	<p>On top of that, <a href="https://github.com/gruntwork-io/terragrunt" target="_blank" rel="noopener noreferrer">Terragrunt</a>, is a thin wrapper that provides extra commands and functionality for keeping Terraform configurations DRY, and managing remote state.</p>
+	<p>The combination of both leads to a more modular and re-usable structure for Cloudflare <a href="https://www.terraform.io/docs/configuration/resources.html" target="_blank" rel="noopener noreferrer">resources</a> (configuration), by utilizing <a href="https://www.terraform.io/docs/configuration/modules.html" target="_blank" rel="noopener noreferrer">terraform</a> and <a href="https://github.com/gruntwork-io/terragrunt-infrastructure-modules-example" target="_blank" rel="noopener noreferrer">terragrunt</a> modules.</p>
+	<p>We've chosen to use the latest version of both tools (<a href="https://www.hashicorp.com/blog/terraform-0-1-2-preview" target="_blank" rel="noopener noreferrer">Terraform-v0.12</a> &amp; <a href="https://github.com/gruntwork-io/terragrunt/releases/tag/v0.19.0" target="_blank" rel="noopener noreferrer">Terragrunt-v0.19</a> respectively) and constantly upgrade to take advantage of the valuable new features and functionality, which at this point in time, remove important limitations.</p>
 	<div class="flex anchor relative">
 		<h2 id="workable-context">Workable context</h2>
 		<a href="https://blog.cloudflare.com/#workable-context" aria-hidden="true" class="relative sm:absolute sm:-start-5">
@@ -55,7 +55,7 @@
 	</div>
 	<p>Terraform configuration is based on the project's directory structure, so this is the place to start.</p>
 	<p>Instead of retaining the Cloudflare organisation structure (production &amp; staging as root level directories containing the zones that belong in each organization), our decision was to group zones that share common configuration under the same directory. This helps keep the code dry and the set up consistent and readable.</p>
-	<p>On the down side, this structure adds an extra layer of complexity, as two different sets of credentials need to be handled conditionally and two state files (at the <i>environments/</i> root level) must be managed and isolated using <a href="https://www.terraform.io/docs/state/workspaces.html">workspaces</a>.</p>
+	<p>On the down side, this structure adds an extra layer of complexity, as two different sets of credentials need to be handled conditionally and two state files (at the <i>environments/</i> root level) must be managed and isolated using <a href="https://www.terraform.io/docs/state/workspaces.html" target="_blank" rel="noopener noreferrer">workspaces</a>.</p>
 	<p>On top of that, we used Terraform modules, to keep sets of common configuration across zone groups into a single place.Terraform modules repository</p>
 	<pre class="language-bash"><code class="language-bash">modules/
 │    ├── firewall/

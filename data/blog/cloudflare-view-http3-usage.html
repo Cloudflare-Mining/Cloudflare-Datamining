@@ -1,43 +1,43 @@
 <div class="mb2 gray5">6 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2oFhW0L8ozaXyWdcD0mEST/f449d53c3020c5664866331e903a957d/cloudflare-view-http3-usage.png" alt="">
 <div class="post-content lh-copy gray1">
 	<p></p>
-	<p>Today, a cluster of Internet standards were published that rationalize and modernize the definition of HTTP - the application protocol that underpins the web. This work includes updates to, and <a href="https://www.cloudflare.com/learning/cloud/how-to-refactor-applications">refactoring</a> of, HTTP semantics, HTTP caching, HTTP/1.1, HTTP/2, and the brand-new <a href="https://www.cloudflare.com/learning/performance/what-is-http3">HTTP/3</a>. Developing these specifications has been no mean feat and today marks the culmination of efforts far and wide, in the Internet Engineering Task Force (IETF) and beyond. We thought it would be interesting to celebrate the occasion by sharing some analysis of Cloudflare's view of HTTP traffic over the last 12 months.</p>
+	<p>Today, a cluster of Internet standards were published that rationalize and modernize the definition of HTTP - the application protocol that underpins the web. This work includes updates to, and <a href="https://www.cloudflare.com/learning/cloud/how-to-refactor-applications" target="_blank" rel="noopener noreferrer">refactoring</a> of, HTTP semantics, HTTP caching, HTTP/1.1, HTTP/2, and the brand-new <a href="https://www.cloudflare.com/learning/performance/what-is-http3" target="_blank" rel="noopener noreferrer">HTTP/3</a>. Developing these specifications has been no mean feat and today marks the culmination of efforts far and wide, in the Internet Engineering Task Force (IETF) and beyond. We thought it would be interesting to celebrate the occasion by sharing some analysis of Cloudflare's view of HTTP traffic over the last 12 months.</p>
 	<p>However, before we get into the traffic data, for quick reference, here are the new RFCs that you should make a note of and start using:</p>
 	<ul>
 		<li>
-			<p>HTTP Semantics - <a href="https://www.rfc-editor.org/rfc/rfc9110.html">RFC 9110</a></p>
+			<p>HTTP Semantics - <a href="https://www.rfc-editor.org/rfc/rfc9110.html" target="_blank" rel="noopener noreferrer">RFC 9110</a></p>
 			<ul>
 				<li>
-					<p>HTTP's overall architecture, common terminology and shared protocol aspects such as request and response messages, methods, status codes, header and trailer fields, message content, representation data, content codings and much more. Obsoletes RFCs <a href="https://www.rfc-editor.org/rfc/rfc2818.html">2818</a>, <a href="https://www.rfc-editor.org/rfc/rfc7231.html">7231</a>, <a href="https://www.rfc-editor.org/rfc/rfc7232.html">7232</a>, <a href="https://www.rfc-editor.org/rfc/rfc7233.html">7233</a>, <a href="https://www.rfc-editor.org/rfc/rfc7235.html">7235</a>, <a href="https://www.rfc-editor.org/rfc/rfc7538.html">7538</a>, <a href="https://www.rfc-editor.org/rfc/rfc7615.html">7615</a>, <a href="https://www.rfc-editor.org/rfc/rfc7694.html">7694</a>, and portions of <a href="https://www.rfc-editor.org/rfc/rfc7230.html">7230</a>.</p>
+					<p>HTTP's overall architecture, common terminology and shared protocol aspects such as request and response messages, methods, status codes, header and trailer fields, message content, representation data, content codings and much more. Obsoletes RFCs <a href="https://www.rfc-editor.org/rfc/rfc2818.html" target="_blank" rel="noopener noreferrer">2818</a>, <a href="https://www.rfc-editor.org/rfc/rfc7231.html" target="_blank" rel="noopener noreferrer">7231</a>, <a href="https://www.rfc-editor.org/rfc/rfc7232.html" target="_blank" rel="noopener noreferrer">7232</a>, <a href="https://www.rfc-editor.org/rfc/rfc7233.html" target="_blank" rel="noopener noreferrer">7233</a>, <a href="https://www.rfc-editor.org/rfc/rfc7235.html" target="_blank" rel="noopener noreferrer">7235</a>, <a href="https://www.rfc-editor.org/rfc/rfc7538.html" target="_blank" rel="noopener noreferrer">7538</a>, <a href="https://www.rfc-editor.org/rfc/rfc7615.html" target="_blank" rel="noopener noreferrer">7615</a>, <a href="https://www.rfc-editor.org/rfc/rfc7694.html" target="_blank" rel="noopener noreferrer">7694</a>, and portions of <a href="https://www.rfc-editor.org/rfc/rfc7230.html" target="_blank" rel="noopener noreferrer">7230</a>.</p>
 				</li>
 			</ul>
 		</li>
 		<li>
-			<p>HTTP Caching - <a href="https://www.rfc-editor.org/rfc/rfc9111.html">RFC 9111</a></p>
+			<p>HTTP Caching - <a href="https://www.rfc-editor.org/rfc/rfc9111.html" target="_blank" rel="noopener noreferrer">RFC 9111</a></p>
 			<ul>
 				<li>
-					<p>HTTP caches and related header fields to control the behavior of response caching. Obsoletes RFC <a href="https://www.rfc-editor.org/rfc/rfc7234.html">7234</a>.</p>
+					<p>HTTP caches and related header fields to control the behavior of response caching. Obsoletes RFC <a href="https://www.rfc-editor.org/rfc/rfc7234.html" target="_blank" rel="noopener noreferrer">7234</a>.</p>
 				</li>
 			</ul>
 		</li>
 		<li>
-			<p>HTTP/1.1 - <a href="https://www.rfc-editor.org/rfc/rfc9112.html">RFC 9112</a></p>
+			<p>HTTP/1.1 - <a href="https://www.rfc-editor.org/rfc/rfc9112.html" target="_blank" rel="noopener noreferrer">RFC 9112</a></p>
 			<ul>
 				<li>
-					<p>A syntax, aka "wire format", of HTTP that uses a text-based format. Typically used over TCP and TLS. Obsolete portions of RFC <a href="https://www.rfc-editor.org/rfc/rfc7230.html">7230</a>.</p>
+					<p>A syntax, aka "wire format", of HTTP that uses a text-based format. Typically used over TCP and TLS. Obsolete portions of RFC <a href="https://www.rfc-editor.org/rfc/rfc7230.html" target="_blank" rel="noopener noreferrer">7230</a>.</p>
 				</li>
 			</ul>
 		</li>
 		<li>
-			<p>HTTP/2 - RFC <a href="https://www.rfc-editor.org/rfc/rfc9113.html">9113</a></p>
+			<p>HTTP/2 - RFC <a href="https://www.rfc-editor.org/rfc/rfc9113.html" target="_blank" rel="noopener noreferrer">9113</a></p>
 			<ul>
 				<li>
-					<p>A syntax of HTTP that uses a binary framing format, which provides streams to support concurrent requests and responses. Message fields can be compressed using HPACK. Typically used over TCP and TLS. Obsoletes RFCs <a href="https://www.rfc-editor.org/rfc/rfc7540.html">7540</a> and <a href="https://www.rfc-editor.org/rfc/rfc8740.html">8740</a>.</p>
+					<p>A syntax of HTTP that uses a binary framing format, which provides streams to support concurrent requests and responses. Message fields can be compressed using HPACK. Typically used over TCP and TLS. Obsoletes RFCs <a href="https://www.rfc-editor.org/rfc/rfc7540.html" target="_blank" rel="noopener noreferrer">7540</a> and <a href="https://www.rfc-editor.org/rfc/rfc8740.html" target="_blank" rel="noopener noreferrer">8740</a>.</p>
 				</li>
 			</ul>
 		</li>
 		<li>
-			<p>HTTP/3 - RFC <a href="https://www.rfc-editor.org/rfc/rfc9114.html">9114</a></p>
+			<p>HTTP/3 - RFC <a href="https://www.rfc-editor.org/rfc/rfc9114.html" target="_blank" rel="noopener noreferrer">9114</a></p>
 			<ul>
 				<li>
 					<p>A syntax of HTTP that uses a binary framing format optimized for the QUIC transport protocol. Message fields can be compressed using QPACK.</p>
@@ -45,7 +45,7 @@
 			</ul>
 		</li>
 		<li>
-			<p>QPACK - RFC <a href="https://www.rfc-editor.org/rfc/rfc9204.html">9204</a></p>
+			<p>QPACK - RFC <a href="https://www.rfc-editor.org/rfc/rfc9204.html" target="_blank" rel="noopener noreferrer">9204</a></p>
 			<ul>
 				<li>
 					<p>A variation of HPACK field compression that is optimized for the QUIC transport protocol.</p>
@@ -54,8 +54,8 @@
 		</li>
 	</ul>
 	<p>On May 28, 2021, we <a href="https://blog.cloudflare.com/quic-version-1-is-live-on-cloudflare">enabled</a> QUIC version 1 and HTTP/3 for all Cloudflare customers, using the final "h3" identifier that matches RFC 9114. So although today's publication is an occasion to celebrate, for us nothing much has changed, and it's business as usual.</p>
-	<p><a href="https://caniuse.com/http3">Support for HTTP/3 in the stable release channels of major browsers</a> came in November 2020 for Google Chrome and Microsoft Edge and April 2021 for Mozilla Firefox. In Apple Safari, HTTP/3 support currently needs to be <a href="https://developer.apple.com/forums/thread/660516">enabled</a> in the “Experimental Features” developer menu in production releases.</p>
-	<p>A browser and web server typically automatically negotiate the highest HTTP version available. Thus, HTTP/3 takes precedence over HTTP/2. We looked back over the last year to understand HTTP/3 usage trends across the Cloudflare network, as well as analyzing HTTP versions used by traffic from leading browser families (Google Chrome, Mozilla Firefox, Microsoft Edge, and Apple Safari), major search engine indexing bots, and bots associated with some popular social media platforms. The graphs below are based on aggregate HTTP(S) traffic seen globally by the Cloudflare network, and include requests for website and application content across the Cloudflare customer base between May 7, 2021, and May 7, 2022. We used <a href="https://developers.cloudflare.com/bots/concepts/bot-score">Cloudflare bot scores</a> to restrict analysis to “likely human” traffic for the browsers, and to “likely automated” and “automated” for the search and social bots.</p>
+	<p><a href="https://caniuse.com/http3" target="_blank" rel="noopener noreferrer">Support for HTTP/3 in the stable release channels of major browsers</a> came in November 2020 for Google Chrome and Microsoft Edge and April 2021 for Mozilla Firefox. In Apple Safari, HTTP/3 support currently needs to be <a href="https://developer.apple.com/forums/thread/660516" target="_blank" rel="noopener noreferrer">enabled</a> in the “Experimental Features” developer menu in production releases.</p>
+	<p>A browser and web server typically automatically negotiate the highest HTTP version available. Thus, HTTP/3 takes precedence over HTTP/2. We looked back over the last year to understand HTTP/3 usage trends across the Cloudflare network, as well as analyzing HTTP versions used by traffic from leading browser families (Google Chrome, Mozilla Firefox, Microsoft Edge, and Apple Safari), major search engine indexing bots, and bots associated with some popular social media platforms. The graphs below are based on aggregate HTTP(S) traffic seen globally by the Cloudflare network, and include requests for website and application content across the Cloudflare customer base between May 7, 2021, and May 7, 2022. We used <a href="https://developers.cloudflare.com/bots/concepts/bot-score" target="_blank" rel="noopener noreferrer">Cloudflare bot scores</a> to restrict analysis to “likely human” traffic for the browsers, and to “likely automated” and “automated” for the search and social bots.</p>
 	<div class="flex anchor relative">
 		<h3 id="traffic-by-http-version">Traffic by HTTP version</h3>
 		<a href="https://blog.cloudflare.com/#traffic-by-http-version" aria-hidden="true" class="relative sm:absolute sm:-start-5">
@@ -84,7 +84,7 @@
 		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6fOBxNVQis3KRP9qMJtN0h/07df569e787dcfd3b918124a9c324b30/image6-21.png" alt="" class="kg-image" width="1108" height="600" loading="lazy">
 
 	</figure>
-	<p>Below, we remove Chrome from the graph to allow us to more clearly see the trending across other browsers. Likely because it is also based on the Chromium engine, the trend for Microsoft Edge closely mirrors Chrome. As noted above, Mozilla Firefox first enabled production support in <a href="https://hacks.mozilla.org/2021/04/quic-and-http-3-support-now-in-firefox-nightly-and-beta">version 88</a> in April 2021, making it available by default by the end of May. The increased adoption of that updated version during the following month is clear in the graph as well, as HTTP/3 request volume from Firefox grew rapidly. HTTP/3 traffic from Apple Safari increased gradually through April, suggesting growth in the number of users enabling the experimental feature or running a Technology Preview version of the browser. However, Safari’s HTTP/3 traffic has subsequently dropped over the last couple of months. We are not aware of any specific reasons for this decline, but our most recent observations indicate HTTP/3 traffic is recovering.</p>
+	<p>Below, we remove Chrome from the graph to allow us to more clearly see the trending across other browsers. Likely because it is also based on the Chromium engine, the trend for Microsoft Edge closely mirrors Chrome. As noted above, Mozilla Firefox first enabled production support in <a href="https://hacks.mozilla.org/2021/04/quic-and-http-3-support-now-in-firefox-nightly-and-beta" target="_blank" rel="noopener noreferrer">version 88</a> in April 2021, making it available by default by the end of May. The increased adoption of that updated version during the following month is clear in the graph as well, as HTTP/3 request volume from Firefox grew rapidly. HTTP/3 traffic from Apple Safari increased gradually through April, suggesting growth in the number of users enabling the experimental feature or running a Technology Preview version of the browser. However, Safari’s HTTP/3 traffic has subsequently dropped over the last couple of months. We are not aware of any specific reasons for this decline, but our most recent observations indicate HTTP/3 traffic is recovering.</p>
 	<figure class="kg-card kg-image-card ">
 
 		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7Mupv6iXQ195JfJkFLJQjX/cb0cc4153c043740e92e93fb2e041626/image2-57.png" alt="" class="kg-image" width="1108" height="600" loading="lazy">
@@ -132,8 +132,8 @@
 			</svg>
 		</a>
 	</div>
-	<p>Back in 2014, Google <a href="https://developers.google.com/search/blog/2014/08/https-as-ranking-signal">announced</a> that it would start to consider HTTPS usage as a ranking signal as it indexed websites. However, it does not appear that Google, or any of the other major search engines, currently consider support for the latest versions of HTTP as a ranking signal. (At least not directly – the performance improvements associated with newer versions of HTTP could theoretically influence rankings.) Given that, we wanted to understand which versions of HTTP the indexing bots themselves were using.</p>
-	<p>Despite leading the charge around the development of QUIC, and integrating HTTP/3 support into the Chrome browser early on, it appears that on the indexing/crawling side, Google still has quite a long way to go. The graph below shows that requests from GoogleBot are still predominantly being made over HTTP/1.1, although use of HTTP/2 has grown over the last six months, gradually approaching HTTP/1.1 request volume. (A <a href="https://developers.google.com/search/blog/2020/09/googlebot-will-soon-speak-http2">blog post</a> from Google provides some potential insights into this shift.) Unfortunately, the volume of requests from GoogleBot over HTTP/3 has remained extremely limited over the last year.</p>
+	<p>Back in 2014, Google <a href="https://developers.google.com/search/blog/2014/08/https-as-ranking-signal" target="_blank" rel="noopener noreferrer">announced</a> that it would start to consider HTTPS usage as a ranking signal as it indexed websites. However, it does not appear that Google, or any of the other major search engines, currently consider support for the latest versions of HTTP as a ranking signal. (At least not directly – the performance improvements associated with newer versions of HTTP could theoretically influence rankings.) Given that, we wanted to understand which versions of HTTP the indexing bots themselves were using.</p>
+	<p>Despite leading the charge around the development of QUIC, and integrating HTTP/3 support into the Chrome browser early on, it appears that on the indexing/crawling side, Google still has quite a long way to go. The graph below shows that requests from GoogleBot are still predominantly being made over HTTP/1.1, although use of HTTP/2 has grown over the last six months, gradually approaching HTTP/1.1 request volume. (A <a href="https://developers.google.com/search/blog/2020/09/googlebot-will-soon-speak-http2" target="_blank" rel="noopener noreferrer">blog post</a> from Google provides some potential insights into this shift.) Unfortunately, the volume of requests from GoogleBot over HTTP/3 has remained extremely limited over the last year.</p>
 	<figure class="kg-card kg-image-card ">
 
 		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3gTr2C26AB8SF6aK0CaiK/9b555a912b3428ad9e15572936bf4fb1/image4-32.png" alt="" class="kg-image" width="1200" height="600" loading="lazy">
@@ -153,8 +153,8 @@
 			</svg>
 		</a>
 	</div>
-	<p>Major social media platforms use custom bots to retrieve metadata for shared content, <a href="https://developers.facebook.com/docs/sharing/bot">improve language models for speech recognition technology</a>, or otherwise index website content. We also surveyed the HTTP version preferences of the bots deployed by three of the leading social media platforms.</p>
-	<p>Although <a href="https://http3check.net/?host=www.facebook.com">Facebook supports HTTP/3</a> on their main website (and presumably their mobile applications as well), their back-end FacebookBot crawler does not appear to support it. Over the last year, on the order of 60% of the requests from FacebookBot have been over HTTP/1.1, with the balance over HTTP/2. Heading into 2022, it appeared that HTTP/1.1 preference was trending lower, with request volume over the 25-year-old protocol dropping from near 80% to just under 50% during the fourth quarter. However, that trend was abruptly reversed, with HTTP/1.1 growing back to over 70% in early February. The reason for the reversal is unclear.</p>
+	<p>Major social media platforms use custom bots to retrieve metadata for shared content, <a href="https://developers.facebook.com/docs/sharing/bot" target="_blank" rel="noopener noreferrer">improve language models for speech recognition technology</a>, or otherwise index website content. We also surveyed the HTTP version preferences of the bots deployed by three of the leading social media platforms.</p>
+	<p>Although <a href="https://http3check.net/?host=www.facebook.com" target="_blank" rel="noopener noreferrer">Facebook supports HTTP/3</a> on their main website (and presumably their mobile applications as well), their back-end FacebookBot crawler does not appear to support it. Over the last year, on the order of 60% of the requests from FacebookBot have been over HTTP/1.1, with the balance over HTTP/2. Heading into 2022, it appeared that HTTP/1.1 preference was trending lower, with request volume over the 25-year-old protocol dropping from near 80% to just under 50% during the fourth quarter. However, that trend was abruptly reversed, with HTTP/1.1 growing back to over 70% in early February. The reason for the reversal is unclear.</p>
 	<figure class="kg-card kg-image-card ">
 
 		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6upA1FtAbR6TWhexL8CkxT/87b3f1d676e1f9189ad5b7dc1d869e4a/image3-44.png" alt="" class="kg-image" width="1200" height="600" loading="lazy">
@@ -180,10 +180,10 @@
 			</svg>
 		</a>
 	</div>
-	<p>We're happy that HTTP/3 has, at long last, been published as <a href="https://www.rfc-editor.org/rfc/rfc9114.html">RFC 9114</a>. More than that, we're super pleased to see that regardless of the wait, browsers have steadily been enabling support for the protocol by default. This allows end users to seamlessly gain the advantages of HTTP/3 whenever it is available. On Cloudflare's global network, we've seen continued growth in the share of traffic speaking HTTP/3, demonstrating continued interest from customers in enabling it for their sites and services. In contrast, we are disappointed to see bots from the major search and social platforms continuing to rely on aging versions of HTTP. We'd like to build a better understanding of how these platforms chose particular HTTP versions and welcome collaboration in exploring the advantages that HTTP/3, in particular, could provide.</p>
-	<p>Current statistics on HTTP/3 and QUIC adoption at a country and autonomous system (ASN) level can be found on <a href="https://radar.cloudflare.com">Cloudflare Radar</a>.</p>
+	<p>We're happy that HTTP/3 has, at long last, been published as <a href="https://www.rfc-editor.org/rfc/rfc9114.html" target="_blank" rel="noopener noreferrer">RFC 9114</a>. More than that, we're super pleased to see that regardless of the wait, browsers have steadily been enabling support for the protocol by default. This allows end users to seamlessly gain the advantages of HTTP/3 whenever it is available. On Cloudflare's global network, we've seen continued growth in the share of traffic speaking HTTP/3, demonstrating continued interest from customers in enabling it for their sites and services. In contrast, we are disappointed to see bots from the major search and social platforms continuing to rely on aging versions of HTTP. We'd like to build a better understanding of how these platforms chose particular HTTP versions and welcome collaboration in exploring the advantages that HTTP/3, in particular, could provide.</p>
+	<p>Current statistics on HTTP/3 and QUIC adoption at a country and autonomous system (ASN) level can be found on <a href="https://radar.cloudflare.com" target="_blank" rel="noopener noreferrer">Cloudflare Radar</a>.</p>
 	<p>Running HTTP/3 and QUIC on the edge for everyone has allowed us to monitor a wide range of aspects related to interoperability and performance across the Internet. Stay tuned for future blog posts that explore some of the technical developments we've been making.</p>
-	<p>And this certainly isn't the end of protocol innovation, as HTTP/3 and QUIC provide many exciting new opportunities. The IETF and wider community are already underway building new capabilities on top, such as <a href="https://blog.cloudflare.com/unlocking-quic-proxying-potential">MASQUE</a> and <a href="https://datatracker.ietf.org/wg/webtrans/documents">WebTransport</a>. Meanwhile, in the last year, the QUIC Working Group has adopted new work such as <a href="https://datatracker.ietf.org/doc/draft-ietf-quic-v2">QUIC version 2</a>, and the <a href="https://datatracker.ietf.org/doc/draft-ietf-quic-multipath">Multipath Extension to QUIC</a>.</p>
+	<p>And this certainly isn't the end of protocol innovation, as HTTP/3 and QUIC provide many exciting new opportunities. The IETF and wider community are already underway building new capabilities on top, such as <a href="https://blog.cloudflare.com/unlocking-quic-proxying-potential">MASQUE</a> and <a href="https://datatracker.ietf.org/wg/webtrans/documents" target="_blank" rel="noopener noreferrer">WebTransport</a>. Meanwhile, in the last year, the QUIC Working Group has adopted new work such as <a href="https://datatracker.ietf.org/doc/draft-ietf-quic-v2" target="_blank" rel="noopener noreferrer">QUIC version 2</a>, and the <a href="https://datatracker.ietf.org/doc/draft-ietf-quic-multipath" target="_blank" rel="noopener noreferrer">Multipath Extension to QUIC</a>.</p>
 	<div class="flex anchor relative">
 		<h3 id="watch-on-cloudflare-tv">Watch on Cloudflare TV</h3>
 		<a href="https://blog.cloudflare.com/#watch-on-cloudflare-tv" aria-hidden="true" class="relative sm:absolute sm:-start-5">

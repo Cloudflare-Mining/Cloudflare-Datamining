@@ -3,11 +3,11 @@
 	<p></p>
 	<p>I am an engineer that loves docs. Well, OK, I don’t love all docs but I believe docs are a crucial, yet often neglected element to a great developer experience. I work on the developer experience team for Cloudflare Workers focusing on several components of Workers, particularly on the docs that we recently migrated to Gatsby.</p>
 	<blockquote>
-		<p>? We’ve moved the Cloudflare Workers docs to <a href="https://twitter.com/gatsbyjs?ref_src=twsrc%5Etfw">@gatsbyjs</a></p>
+		<p>? We’ve moved the Cloudflare Workers docs to <a href="https://twitter.com/gatsbyjs?ref_src=twsrc%5Etfw" target="_blank" rel="noopener noreferrer">@gatsbyjs</a></p>
 		<p>The new documentation is...</p>
 		<p>?‍♀️ faster⭐️ more accessible? a perfect foundation for the redesign later this year?️ open-source</p>
-		<p>shout out to <a href="https://twitter.com/exvuma?ref_src=twsrc%5Etfw">@exvuma</a> for this incredible work ??<a href="https://t.co/k3huvCvash">https://t.co/k3huvCvash</a> <a href="https://t.co/MBWxVtlrin">pic.twitter.com/MBWxVtlrin</a></p>
-		<p>— Cloudflare Developers (@CloudflareDev) <a href="https://twitter.com/CloudflareDev/status/1235265069283504128?ref_src=twsrc%5Etfw">March 4, 2020</a></p>
+		<p>shout out to <a href="https://twitter.com/exvuma?ref_src=twsrc%5Etfw" target="_blank" rel="noopener noreferrer">@exvuma</a> for this incredible work ??<a href="https://t.co/k3huvCvash" target="_blank" rel="noopener noreferrer">https://t.co/k3huvCvash</a> <a href="https://t.co/MBWxVtlrin" target="_blank" rel="noopener noreferrer">pic.twitter.com/MBWxVtlrin</a></p>
+		<p>— Cloudflare Developers (@CloudflareDev) <a href="https://twitter.com/CloudflareDev/status/1235265069283504128?ref_src=twsrc%5Etfw" target="_blank" rel="noopener noreferrer">March 4, 2020</a></p>
 	</blockquote>
 	<p>Through porting our documentation site to Gatsby I learned a lot. In this post, I share some of the learnings that could’ve saved my former self from several headaches. This will hopefully help others considering a move to Gatsby or another static site generator.</p>
 	<div class="flex anchor relative">
@@ -18,7 +18,7 @@
 			</svg>
 		</a>
 	</div>
-	<p>Prior to our migration to Gatsby, we used Hugo for our <a href="https://developers.cloudflare.com/workers">developer documentation</a>. There are a lot of positives about working with Hugo - fast build times, fast load times - that made building a simple static site a great use case for Hugo. Things started to turn sour when we started making our docs more interactive and expanding the content being generated.</p>
+	<p>Prior to our migration to Gatsby, we used Hugo for our <a href="https://developers.cloudflare.com/workers" target="_blank" rel="noopener noreferrer">developer documentation</a>. There are a lot of positives about working with Hugo - fast build times, fast load times - that made building a simple static site a great use case for Hugo. Things started to turn sour when we started making our docs more interactive and expanding the content being generated.</p>
 	<p>Going from writing JSX with TypeScript back to string-based templating languages is difficult. Trying to perform complicated tasks, like generating a sidebar, cost me - a developer who knows nothing about liquid code or Go templating (though with Golang experience) - several tears not even to implement but to just understand what was happening.</p>
 	<p>Here is the code to template an item in the sidebar in Hugo:</p>
 	<pre class="language-html"><code class="language-html">&lt;!-- templates --&gt;
@@ -124,12 +124,12 @@
  &lt;/li&gt;</code></pre>
 	<p>This code is clean and compact because Gatsby is a static content generation tool based on React. It’s loved for a myriad of reasons, but my honest main reason to migrate to it was to make the Hugo code above much less ugly.</p>
 	<p>For our purposes, less ugly was important because we had dreams of redesigning our docs to be interactive with support for multiple coding languages and other features.</p>
-	<p>For example, the <a href="https://developers.cloudflare.com/workers/templates">template gallery</a> would be a place to go to for how-to recipes and examples. The templates themselves would live in a template registry service and turn into static pages via an API.</p>
-	<p>We wanted the docs to not be constrained by Go templating. The <a href="https://gohugo.io/templates/introduction">Hugo docs</a> admit their templates aren’t the best for complicated logic:</p>
+	<p>For example, the <a href="https://developers.cloudflare.com/workers/templates" target="_blank" rel="noopener noreferrer">template gallery</a> would be a place to go to for how-to recipes and examples. The templates themselves would live in a template registry service and turn into static pages via an API.</p>
+	<p>We wanted the docs to not be constrained by Go templating. The <a href="https://gohugo.io/templates/introduction" target="_blank" rel="noopener noreferrer">Hugo docs</a> admit their templates aren’t the best for complicated logic:</p>
 	<blockquote>
 		<p>Go Templates provide an extremely simple template language that adheres to the belief that only the most basic of logic belongs in the template or view layer.</p>
 	</blockquote>
-	<p>Gatsby and React enable the more complex logic we were looking for. After our team built <a href="https://workers.cloudflare.com">workers.cloudflare.com</a> and <a href="https://workers.cloudflare.com/built-with">Built with Workers</a> on Gatsby, I figured this was my shot to really give Gatsby a try on our Workers developer docs.</p>
+	<p>Gatsby and React enable the more complex logic we were looking for. After our team built <a href="https://workers.cloudflare.com" target="_blank" rel="noopener noreferrer">workers.cloudflare.com</a> and <a href="https://workers.cloudflare.com/built-with" target="_blank" rel="noopener noreferrer">Built with Workers</a> on Gatsby, I figured this was my shot to really give Gatsby a try on our Workers developer docs.</p>
 	<div class="flex anchor relative">
 		<h3 id="decision-to-migrate-over-starting-from-scratch">Decision to Migrate over Starting from Scratch</h3>
 		<a href="https://blog.cloudflare.com/#decision-to-migrate-over-starting-from-scratch" aria-hidden="true" class="relative sm:absolute sm:-start-5">

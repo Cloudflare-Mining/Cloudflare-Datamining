@@ -21,8 +21,8 @@
 		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4IJu2fHHc7jni7nKl63g16/a42aeadfa66be1e0c5255b4eeed0b7f5/illustration-tls-ssl-client-auth.png" alt="Client authenticated TLS handshake" class="kg-image" width="900" height="1256" loading="lazy">
 
 	</figure>
-	<p>Enter <a href="https://en.wikipedia.org/wiki/Transport_Layer_Security#Client-authenticated_TLS_handshake">TLS Client Authentication</a>. In a client authenticated TLS handshake both sides provide a certificate to be verified. If the origin server is configured to only accept requests which use a valid client certificate from Cloudflare, requests which have not passed through Cloudflare will be dropped (as they will not have our certificate). This means that attackers cannot circumvent CloudFlare features such as our <a href="https://www.cloudflare.com/waf">WAF</a>, even via an attack like <a href="http://www.cisco.com/web/about/ac123/ac147/archived_issues/ipj_10-4/104_ip-spoofing.html">TCP source IP spoofing</a> which could typically be used make an origin server believe malicious requests have passed through CloudFlare's network.</p>
-	<p>To implement TLS client authentication in Cloudflare, one of our engineers, Piotr Sikora, <a href="http://hg.nginx.org/nginx/rev/20d966ad5e89">added support to nginx</a>. This code is open source and has been merged into the official nginx 1.7 branch, and can be used by anyone utilizing nginx's proxy module.</p>
+	<p>Enter <a href="https://en.wikipedia.org/wiki/Transport_Layer_Security#Client-authenticated_TLS_handshake" target="_blank" rel="noopener noreferrer">TLS Client Authentication</a>. In a client authenticated TLS handshake both sides provide a certificate to be verified. If the origin server is configured to only accept requests which use a valid client certificate from Cloudflare, requests which have not passed through Cloudflare will be dropped (as they will not have our certificate). This means that attackers cannot circumvent CloudFlare features such as our <a href="https://www.cloudflare.com/waf" target="_blank" rel="noopener noreferrer">WAF</a>, even via an attack like <a href="http://www.cisco.com/web/about/ac123/ac147/archived_issues/ipj_10-4/104_ip-spoofing.html" target="_blank" rel="noopener noreferrer">TCP source IP spoofing</a> which could typically be used make an origin server believe malicious requests have passed through CloudFlare's network.</p>
+	<p>To implement TLS client authentication in Cloudflare, one of our engineers, Piotr Sikora, <a href="http://hg.nginx.org/nginx/rev/20d966ad5e89" target="_blank" rel="noopener noreferrer">added support to nginx</a>. This code is open source and has been merged into the official nginx 1.7 branch, and can be used by anyone utilizing nginx's proxy module.</p>
 	<div class="flex anchor relative">
 		<h3 id="enabling-authenticated-origin-pulls">Enabling Authenticated Origin Pulls</h3>
 		<a href="https://blog.cloudflare.com/#enabling-authenticated-origin-pulls" aria-hidden="true" class="relative sm:absolute sm:-start-5">
@@ -84,7 +84,7 @@ wUGkD7+bQAr+7vr8/R+CBmNMe7csE8NeEX6lVMF7Dh0a1YKQa6hUN18bBuYgTMuT
 QzMmZpRpIBB321ZBlcnlxiTJvWxvbCPHKHj20VwwAz7LONF59s84ZsOqfoBv8gKM
 s0s5dsq5zpLeaw==
 -----END CERTIFICATE-----</code></pre>
-	<p>This certificate is also available from <a href="https://origin-pull.cloudflare.com">https://origin-pull.cloudflare.com/</a></p>
+	<p>This certificate is also available from <a href="https://origin-pull.cloudflare.com" target="_blank" rel="noopener noreferrer">https://origin-pull.cloudflare.com/</a></p>
 	<div class="flex anchor relative">
 		<h3 id="origin-server-configuration">Origin Server Configuration</h3>
 		<a href="https://blog.cloudflare.com/#origin-server-configuration" aria-hidden="true" class="relative sm:absolute sm:-start-5">
@@ -93,7 +93,7 @@ s0s5dsq5zpLeaw==
 			</svg>
 		</a>
 	</div>
-	<p>We will include configuration examples for popular web servers in our <a href="https://developers.cloudflare.com/ssl/origin-configuration/authenticated-origin-pull/set-up">Cloudflare Support Docs</a> in the next week.</p>
+	<p>We will include configuration examples for popular web servers in our <a href="https://developers.cloudflare.com/ssl/origin-configuration/authenticated-origin-pull/set-up" target="_blank" rel="noopener noreferrer">Cloudflare Support Docs</a> in the next week.</p>
 	<figure class="kg-card kg-image-card ">
 
 		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1JjE8Qn3bmZblfN1zNWzb8/33c2ed63f0bf710fba2a75a38cc955a8/cloudflare_ssl-week-2-1.png" alt="" class="kg-image" width="1000" height="375" loading="lazy">

@@ -1,7 +1,7 @@
 <div class="mb2 gray5">9 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6XsnzCDczGdIKX6ddLVYLT/1cad4424f9b90001286b682c7caad683/image1.png" alt="">
 <div class="post-content lh-copy gray1">
 	<p>It turns out we've all been using MCP wrong.</p>
-	<p>Most agents today use MCP by directly exposing the "tools" to the <a href="https://www.cloudflare.com/learning/ai/what-is-large-language-model"><u>LLM</u></a>.</p>
+	<p>Most agents today use MCP by directly exposing the "tools" to the <a href="https://www.cloudflare.com/learning/ai/what-is-large-language-model" target="_blank" rel="noopener noreferrer"><u>LLM</u></a>.</p>
 	<p>We tried something different: Convert the MCP tools into a TypeScript API, and then ask an LLM to write code that calls that API.</p>
 	<p>The results are striking:</p>
 	<ol>
@@ -21,7 +21,7 @@
 			</svg>
 		</a>
 	</div>
-	<p>For those that aren't familiar: <a href="https://modelcontextprotocol.io/docs/getting-started/intro"><u>Model Context Protocol</u></a> is a standard protocol for giving AI agents access to external tools, so that they can directly perform work, rather than just chat with you.</p>
+	<p>For those that aren't familiar: <a href="https://modelcontextprotocol.io/docs/getting-started/intro" target="_blank" rel="noopener noreferrer"><u>Model Context Protocol</u></a> is a standard protocol for giving AI agents access to external tools, so that they can directly perform work, rather than just chat with you.</p>
 	<p>Seen another way, MCP is a uniform way to:</p>
 	<ul>
 		<li>
@@ -35,7 +35,7 @@
 		</li>
 	</ul>
 	<p>MCP has been making waves throughout 2025 as it has suddenly greatly expanded the capabilities of AI agents.</p>
-	<p>The "API" exposed by an MCP server is expressed as a set of "tools". Each tool is essentially a remote procedure call (RPC) function – it is called with some parameters and returns a response. Most modern LLMs have <a href="https://developers.cloudflare.com/workers-ai/features/function-calling"><u>the capability to use "tools" (sometimes called "function calling")</u></a>, meaning they are trained to output text in a certain format when they want to invoke a tool. The program invoking the LLM sees this format and invokes the tool as specified, then feeds the results back into the LLM as input.</p>
+	<p>The "API" exposed by an MCP server is expressed as a set of "tools". Each tool is essentially a remote procedure call (RPC) function – it is called with some parameters and returns a response. Most modern LLMs have <a href="https://developers.cloudflare.com/workers-ai/features/function-calling" target="_blank" rel="noopener noreferrer"><u>the capability to use "tools" (sometimes called "function calling")</u></a>, meaning they are trained to output text in a certain format when they want to invoke a tool. The program invoking the LLM sees this format and invokes the tool as specified, then feeds the results back into the LLM as input.</p>
 	<div class="flex anchor relative">
 		<h3 id="anatomy-of-a-tool-call">Anatomy of a tool call</h3>
 		<a href="https://blog.cloudflare.com/#anatomy-of-a-tool-call" aria-hidden="true" class="relative sm:absolute sm:-start-5">
@@ -103,7 +103,7 @@
 			</svg>
 		</a>
 	</div>
-	<p>We have already extended the <a href="https://developers.cloudflare.com/agents"><u>Cloudflare Agents SDK</u></a> to support this new model!</p>
+	<p>We have already extended the <a href="https://developers.cloudflare.com/agents" target="_blank" rel="noopener noreferrer"><u>Cloudflare Agents SDK</u></a> to support this new model!</p>
 	<p>For example, say you have an app built with ai-sdk that looks like this:</p>
 	<pre class="language-Typescript"><code class="language-Typescript">const stream = streamText({
   model: openai("gpt-5"),
@@ -134,7 +134,7 @@ const stream = streamText({
     { role: "user", content: "Write a function that adds two numbers" }
   ]
 })</code></pre>
-	<p>With this change, your app will now start generating and running code that itself will make calls to the tools you defined, MCP servers included. We will introduce variants for other libraries in the very near future. <a href="https://github.com/cloudflare/agents/blob/main/docs/codemode.md"><u>Read the docs</u></a> for more details and examples.&nbsp;</p>
+	<p>With this change, your app will now start generating and running code that itself will make calls to the tools you defined, MCP servers included. We will introduce variants for other libraries in the very near future. <a href="https://github.com/cloudflare/agents/blob/main/docs/codemode.md" target="_blank" rel="noopener noreferrer"><u>Read the docs</u></a> for more details and examples.&nbsp;</p>
 	<div class="flex anchor relative">
 		<h3 id="converting-mcp-to-typescript">Converting MCP to TypeScript</h3>
 		<a href="https://blog.cloudflare.com/#converting-mcp-to-typescript" aria-hidden="true" class="relative sm:absolute sm:-start-5">
@@ -144,7 +144,7 @@ const stream = streamText({
 		</a>
 	</div>
 	<p>When you connect to an MCP server in "code mode", the Agents SDK will fetch the MCP server's schema, and then convert it into a TypeScript API, complete with doc comments based on the schema.</p>
-	<p>For example, connecting to the MCP server at <a href="https://gitmcp.io/cloudflare/agents"><u>https://gitmcp.io/cloudflare/agents</u></a>, will generate a TypeScript definition like this:</p>
+	<p>For example, connecting to the MCP server at <a href="https://gitmcp.io/cloudflare/agents" target="_blank" rel="noopener noreferrer"><u>https://gitmcp.io/cloudflare/agents</u></a>, will generate a TypeScript definition like this:</p>
 	<pre class="language-Typescript"><code class="language-Typescript">interface FetchAgentsDocumentationInput {
   [k: string]: unknown;
 }
@@ -249,7 +249,7 @@ declare const codemode: {
 	</div>
 	<p>This new approach requires access to a secure sandbox where arbitrary code can run. So where do we find one? Do we have to run containers? Is that expensive?</p>
 	<p>No. There are no containers. We have something much better: isolates.</p>
-	<p>The Cloudflare Workers platform has always been based on V8 isolates, that is, isolated JavaScript runtimes powered by the <a href="https://v8.dev"><u>V8 JavaScript engine</u></a>.</p>
+	<p>The Cloudflare Workers platform has always been based on V8 isolates, that is, isolated JavaScript runtimes powered by the <a href="https://v8.dev" target="_blank" rel="noopener noreferrer"><u>V8 JavaScript engine</u></a>.</p>
 	<p><b>Isolates are far more lightweight than containers.</b> An isolate can start in a handful of milliseconds using only a few megabytes of memory.</p>
 	<p>Isolates are so fast that we can just create a new one for every piece of code the agent runs. There's no need to reuse them. There's no need to prewarm them. Just create it, on demand, run the code, and throw it away. It all happens so fast that the overhead is negligible; it's almost as if you were just eval()ing the code directly. But with security.</p>
 	<div class="flex anchor relative">
@@ -261,7 +261,7 @@ declare const codemode: {
 		</a>
 	</div>
 	<p>Until now, though, there was no way for a Worker to directly load an isolate containing arbitrary code. All Worker code instead had to be uploaded via the Cloudflare API, which would then deploy it globally, so that it could run anywhere. That's not what we want for Agents! We want the code to just run right where the agent is.</p>
-	<p>To that end, we've added a new API to the Workers platform: the <a href="https://developers.cloudflare.com/workers/runtime-apis/bindings/worker-loader"><u>Worker Loader API</u></a>. With it, you can load Worker code on-demand. Here's what it looks like:</p>
+	<p>To that end, we've added a new API to the Workers platform: the <a href="https://developers.cloudflare.com/workers/runtime-apis/bindings/worker-loader" target="_blank" rel="noopener noreferrer"><u>Worker Loader API</u></a>. With it, you can load Worker code on-demand. Here's what it looks like:</p>
 	<pre class="language-JavaScript"><code class="language-JavaScript">// Gets the Worker with the given ID, creating it if no such Worker exists yet.
 let worker = env.LOADER.get(id, async () =&gt; {
   // If the Worker does not already exist, this callback is invoked to fetch
@@ -305,7 +305,7 @@ await defaultEntrypoint.fetch("http://example.com");
 let someEntrypoint = worker.getEntrypoint("SomeEntrypointClass", {
   props: {someProp: 123}
 });</code></pre>
-	<p>You can start playing with this API right now when running <code>workerd</code> locally with Wrangler (<a href="https://developers.cloudflare.com/workers/runtime-apis/bindings/worker-loader"><u>check out the docs</u></a>), and you can <a href="https://forms.gle/MoeDxE9wNiqdf8ri9"><u>sign up for beta access</u></a> to use it in production.</p>
+	<p>You can start playing with this API right now when running <code>workerd</code> locally with Wrangler (<a href="https://developers.cloudflare.com/workers/runtime-apis/bindings/worker-loader" target="_blank" rel="noopener noreferrer"><u>check out the docs</u></a>), and you can <a href="https://forms.gle/MoeDxE9wNiqdf8ri9" target="_blank" rel="noopener noreferrer"><u>sign up for beta access</u></a> to use it in production.</p>
 	<div class="flex anchor relative">
 		<h2 id="workers-are-better-sandboxes">Workers are better sandboxes</h2>
 		<a href="https://blog.cloudflare.com/#workers-are-better-sandboxes" aria-hidden="true" class="relative sm:absolute sm:-start-5">
@@ -323,7 +323,7 @@ let someEntrypoint = worker.getEntrypoint("SomeEntrypointClass", {
 			</svg>
 		</a>
 	</div>
-	<p><a href="https://developers.cloudflare.com/workers/reference/how-workers-works"><u>The Workers platform uses isolates instead of containers.</u></a> Isolates are much lighter-weight and faster to start up. It takes mere milliseconds to start a fresh isolate, and it's so cheap we can just create a new one for every single code snippet the agent generates. There's no need to worry about pooling isolates for reuse, prewarming, etc.</p>
+	<p><a href="https://developers.cloudflare.com/workers/reference/how-workers-works" target="_blank" rel="noopener noreferrer"><u>The Workers platform uses isolates instead of containers.</u></a> Isolates are much lighter-weight and faster to start up. It takes mere milliseconds to start a fresh isolate, and it's so cheap we can just create a new one for every single code snippet the agent generates. There's no need to worry about pooling isolates for reuse, prewarming, etc.</p>
 	<p>We have not yet finalized pricing for the Worker Loader API, but because it is based on isolates, we will be able to offer it at a significantly lower cost than container-based solutions.</p>
 	<div class="flex anchor relative">
 		<h3 id="isolated-by-default-but-connected-with-bindings">Isolated by default, but connected with bindings</h3>
@@ -366,7 +366,7 @@ let someEntrypoint = worker.getEntrypoint("SomeEntrypointClass", {
 			</svg>
 		</a>
 	</div>
-	<p>The Dynamic Worker Loader API is in closed beta. To use it in production, <a href="https://forms.gle/MoeDxE9wNiqdf8ri9"><u>sign up today</u></a>.</p>
+	<p>The Dynamic Worker Loader API is in closed beta. To use it in production, <a href="https://forms.gle/MoeDxE9wNiqdf8ri9" target="_blank" rel="noopener noreferrer"><u>sign up today</u></a>.</p>
 	<div class="flex anchor relative">
 		<h3 id="or-try-it-locally">Or try it locally</h3>
 		<a href="https://blog.cloudflare.com/#or-try-it-locally" aria-hidden="true" class="relative sm:absolute sm:-start-5">
@@ -375,5 +375,5 @@ let someEntrypoint = worker.getEntrypoint("SomeEntrypointClass", {
 			</svg>
 		</a>
 	</div>
-	<p>If you just want to play around, though, Dynamic Worker Loading is fully available today when developing locally with Wrangler and <code>workerd</code> – check out the docs for <a href="https://developers.cloudflare.com/workers/runtime-apis/bindings/worker-loader"><u>Dynamic Worker Loading</u></a> and <a href="https://github.com/cloudflare/agents/blob/main/docs/codemode.md"><u>code mode in the Agents SDK</u></a> to get started.</p>
+	<p>If you just want to play around, though, Dynamic Worker Loading is fully available today when developing locally with Wrangler and <code>workerd</code> – check out the docs for <a href="https://developers.cloudflare.com/workers/runtime-apis/bindings/worker-loader" target="_blank" rel="noopener noreferrer"><u>Dynamic Worker Loading</u></a> and <a href="https://github.com/cloudflare/agents/blob/main/docs/codemode.md" target="_blank" rel="noopener noreferrer"><u>code mode in the Agents SDK</u></a> to get started.</p>
 </div>

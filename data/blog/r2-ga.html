@@ -2,8 +2,8 @@
 <div class="mt4">This post is also available in <a href="https://blog.cloudflare.com/zh-cn/r2-ga">简体中文</a>, <a href="https://blog.cloudflare.com/de-de/r2-ga">Deutsch</a>, <a href="https://blog.cloudflare.com/ja-jp/r2-ga">日本語</a>, <a href="https://blog.cloudflare.com/es-es/r2-ga">Español</a>, <a href="https://blog.cloudflare.com/ru-ru/r2-ga">Рyсский</a>, <a href="https://blog.cloudflare.com/pl-pl/r2-ga">Polski</a> and <a href="https://blog.cloudflare.com/fr-fr/r2-ga">Français</a>.</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2fIT53NMivtuGxGgVsVDTC/6f6586c2246faf8fde5f01d7d187c95c/r2-ga.png" alt="">
 <div class="post-content lh-copy gray1">
 	<p></p>
-	<p><a href="https://www.cloudflare.com/developer-platform/r2">R2</a> gives developers object storage, without the egress fees. Before R2, cloud providers taught us to expect a data transfer tax every time we actually used the data we stored with them. Who stores data with the goal of never reading it? No one. Yet, every time you read data, the egress tax is applied. R2 gives developers the ability to access data freely, breaking the ecosystem lock-in that has long tied the hands of application builders.</p>
-	<p>In May 2022, we launched R2 into open beta. In just four short months we’ve been overwhelmed with over 12k developers (and rapidly growing) getting started with R2. Those developers came to us with a wide range of use cases from podcast applications to video platforms to <a href="https://www.cloudflare.com/ecommerce">ecommerce websites</a>, and users like <a href="https://www.vecteezy.com">Vecteezy</a> who was spending six figures in egress fees. We’ve learned quickly, gotten great feedback, and today we’re excited to announce R2 is now generally available.</p>
+	<p><a href="https://www.cloudflare.com/developer-platform/r2" target="_blank" rel="noopener noreferrer">R2</a> gives developers object storage, without the egress fees. Before R2, cloud providers taught us to expect a data transfer tax every time we actually used the data we stored with them. Who stores data with the goal of never reading it? No one. Yet, every time you read data, the egress tax is applied. R2 gives developers the ability to access data freely, breaking the ecosystem lock-in that has long tied the hands of application builders.</p>
+	<p>In May 2022, we launched R2 into open beta. In just four short months we’ve been overwhelmed with over 12k developers (and rapidly growing) getting started with R2. Those developers came to us with a wide range of use cases from podcast applications to video platforms to <a href="https://www.cloudflare.com/ecommerce" target="_blank" rel="noopener noreferrer">ecommerce websites</a>, and users like <a href="https://www.vecteezy.com" target="_blank" rel="noopener noreferrer">Vecteezy</a> who was spending six figures in egress fees. We’ve learned quickly, gotten great feedback, and today we’re excited to announce R2 is now generally available.</p>
 	<p>We wouldn’t ask you to bet on tech we weren’t willing to bet on ourselves. While in open beta, we spent time moving our own products to R2. One such example, Cloudflare Images, proudly serving thousands of customers in production, is now powered by R2.</p>
 	<div class="flex anchor relative">
 		<h2 id="what-can-you-expect-from-r2">What can you expect from R2?</h2>
@@ -22,8 +22,8 @@
 			</svg>
 		</a>
 	</div>
-	<p>R2 gives developers a familiar interface for object storage, the S3 API. With <a href="https://www.cloudflare.com/developer-platform/solutions/s3-compatible-object-storage">S3 Compatibility</a>, you can easily migrate your applications and start taking advantage of what R2 has to offer right out of the gate.</p>
-	<p>Let’s take a look at some basic data operations in javascript. To try this out on your own, you’ll need to <a href="https://developers.cloudflare.com/r2/platform/s3-compatibility/tokens">generate an Access Key</a>.</p>
+	<p>R2 gives developers a familiar interface for object storage, the S3 API. With <a href="https://www.cloudflare.com/developer-platform/solutions/s3-compatible-object-storage" target="_blank" rel="noopener noreferrer">S3 Compatibility</a>, you can easily migrate your applications and start taking advantage of what R2 has to offer right out of the gate.</p>
+	<p>Let’s take a look at some basic data operations in javascript. To try this out on your own, you’ll need to <a href="https://developers.cloudflare.com/r2/platform/s3-compatibility/tokens" target="_blank" rel="noopener noreferrer">generate an Access Key</a>.</p>
 	<pre class="language-javascript"><code class="language-javascript">// First we import our bindings as usual
 import {
   S3Client,
@@ -46,7 +46,7 @@ console.log(
     new ListBucketsCommand('')
   )
 );</code></pre>
-	<p>Regardless of the language, the S3 API offers familiarity. We have examples in <a href="https://developers.cloudflare.com/r2/examples/aws-sdk-go">Go</a>, <a href="https://developers.cloudflare.com/r2/examples/boto3">Java</a>, <a href="https://developers.cloudflare.com/r2/examples/aws-sdk-php">PHP</a>, and <a href="https://developers.cloudflare.com/r2/examples/aws-sdk-ruby">Ruby</a>.</p>
+	<p>Regardless of the language, the S3 API offers familiarity. We have examples in <a href="https://developers.cloudflare.com/r2/examples/aws-sdk-go" target="_blank" rel="noopener noreferrer">Go</a>, <a href="https://developers.cloudflare.com/r2/examples/boto3" target="_blank" rel="noopener noreferrer">Java</a>, <a href="https://developers.cloudflare.com/r2/examples/aws-sdk-php" target="_blank" rel="noopener noreferrer">PHP</a>, and <a href="https://developers.cloudflare.com/r2/examples/aws-sdk-ruby" target="_blank" rel="noopener noreferrer">Ruby</a>.</p>
 	<div class="flex anchor relative">
 		<h3 id="region-automatic">Region: Automatic</h3>
 		<a href="https://blog.cloudflare.com/#region-automatic" aria-hidden="true" class="relative sm:absolute sm:-start-5">
@@ -66,8 +66,8 @@ console.log(
 			</svg>
 		</a>
 	</div>
-	<p>The Workers platform offers developers powerful compute across Cloudflare’s network. When you deploy on Workers, your code is deployed to Cloudflare’s <a href="https://www.cloudflare.com/network">more than 275 locations</a> across the globe, automatically. When paired with R2, Workers allows developers to add custom logic around their data without any performance overhead. Workers is built on isolates and not containers, and as a result you don’t have to deal with lengthy cold starts.</p>
-	<p>Let’s try creating a simple REST API for an R2 bucket! First, <a href="https://developers.cloudflare.com/r2/data-access/workers-api/workers-api-usage/#3-create-your-bucket">create</a> your bucket and then add an R2 <a href="https://developers.cloudflare.com/r2/data-access/workers-api/workers-api-usage/#4-bind-your-bucket-to-a-worker">binding</a> to your worker.</p>
+	<p>The Workers platform offers developers powerful compute across Cloudflare’s network. When you deploy on Workers, your code is deployed to Cloudflare’s <a href="https://www.cloudflare.com/network" target="_blank" rel="noopener noreferrer">more than 275 locations</a> across the globe, automatically. When paired with R2, Workers allows developers to add custom logic around their data without any performance overhead. Workers is built on isolates and not containers, and as a result you don’t have to deal with lengthy cold starts.</p>
+	<p>Let’s try creating a simple REST API for an R2 bucket! First, <a href="https://developers.cloudflare.com/r2/data-access/workers-api/workers-api-usage/#3-create-your-bucket" target="_blank" rel="noopener noreferrer">create</a> your bucket and then add an R2 <a href="https://developers.cloudflare.com/r2/data-access/workers-api/workers-api-usage/#4-bind-your-bucket-to-a-worker" target="_blank" rel="noopener noreferrer">binding</a> to your worker.</p>
 	<pre class="language-javascript"><code class="language-javascript">export default {
   async fetch(request, env) {
     const url = new URL(request.url);
@@ -137,7 +137,7 @@ console.log(
 			</svg>
 		</a>
 	</div>
-	<p>Enabling <a href="https://developers.cloudflare.com/r2/data-access/public-buckets">public access for a R2 bucket</a> allows you to expose that bucket to unauthenticated requests. While doing so on its own is of limited use, when those buckets are linked to a domain under your account on Cloudflare you can enable other Cloudflare features such as Access, Cache and bot management seamlessly on top of your data in R2.</p>
+	<p>Enabling <a href="https://developers.cloudflare.com/r2/data-access/public-buckets" target="_blank" rel="noopener noreferrer">public access for a R2 bucket</a> allows you to expose that bucket to unauthenticated requests. While doing so on its own is of limited use, when those buckets are linked to a domain under your account on Cloudflare you can enable other Cloudflare features such as Access, Cache and bot management seamlessly on top of your data in R2.</p>
 	<p>Bottom line: public buckets help to bridge the gap between domain oriented Cloudflare features and the buckets you have in R2.</p>
 	<div class="flex anchor relative">
 		<h3 id="transparent-pricing">Transparent Pricing</h3>
@@ -147,7 +147,7 @@ console.log(
 			</svg>
 		</a>
 	</div>
-	<p>R2 will never charge for egress. The pricing model depends on three factors alone: storage volume, <a href="https://developers.cloudflare.com/r2/platform/pricing/#class-a-operations">Class A operations</a> (writes, lists) and <a href="https://developers.cloudflare.com/r2/platform/pricing/#class-b-operations">Class B operations</a> (reads).</p>
+	<p>R2 will never charge for egress. The pricing model depends on three factors alone: storage volume, <a href="https://developers.cloudflare.com/r2/platform/pricing/#class-a-operations" target="_blank" rel="noopener noreferrer">Class A operations</a> (writes, lists) and <a href="https://developers.cloudflare.com/r2/platform/pricing/#class-b-operations" target="_blank" rel="noopener noreferrer">Class B operations</a> (reads).</p>
 	<ul>
 		<li>
 			<p>Storage is priced at $0.015 / GB, per month.</p>
@@ -207,7 +207,7 @@ console.log(
 		</a>
 	</div>
 	<p>For large datasets, migrations are live and ongoing, as it takes time to move data over. Cache reserve is an easy way to quickly migrate your assets into a managed R2 instance to reduce your egress costs at the touch of a button. In the future, we'll be extending this mechanism so that you can migrate any of your existing S3 object storage buckets to R2.</p>
-	<p>We invite everyone to sign up and get started with R2 today. Join the growing community of developers building on Cloudflare. If you have any feedback or questions, find us on our Discord server <a href="https://discord.gg/V3GEduuBjP">here</a>! We can’t wait to see what you build.</p>
+	<p>We invite everyone to sign up and get started with R2 today. Join the growing community of developers building on Cloudflare. If you have any feedback or questions, find us on our Discord server <a href="https://discord.gg/V3GEduuBjP" target="_blank" rel="noopener noreferrer">here</a>! We can’t wait to see what you build.</p>
 	<div class="flex anchor relative">
 		<h3 id="watch-on-cloudflare-tv">Watch on Cloudflare TV</h3>
 		<a href="https://blog.cloudflare.com/#watch-on-cloudflare-tv" aria-hidden="true" class="relative sm:absolute sm:-start-5">

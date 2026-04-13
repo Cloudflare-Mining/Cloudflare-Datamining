@@ -8,9 +8,9 @@
 			</svg>
 		</a>
 	</div>
-	<p>Very early on in the company’s history we decided that everything that CloudFlare does on behalf of its customer-base should be controllable via an <a href="https://www.cloudflare.com/learning/security/api/what-is-an-api">API</a>. In fact, when you login to the CloudFlare control panel, you’re really just making API calls to our backend services. Over time that API has matured and improved. We are now on v4 of that API.</p>
-	<p>The current CloudFlare API is documented <a href="https://api.cloudflare.com">here</a> and it’s used by both the CloudFlare control panel and directly by umpteen customers every minute of every day. The new API is designed with a clean naming structure and consistent data representation for data. It’s also extensible.</p>
-	<p>This blog entry introduces <a href="https://github.com/cloudflare/python-cloudflare">python-cloudflare</a>, a Python wrapper providing full access to the CloudFlare v4 API.</p>
+	<p>Very early on in the company’s history we decided that everything that CloudFlare does on behalf of its customer-base should be controllable via an <a href="https://www.cloudflare.com/learning/security/api/what-is-an-api" target="_blank" rel="noopener noreferrer">API</a>. In fact, when you login to the CloudFlare control panel, you’re really just making API calls to our backend services. Over time that API has matured and improved. We are now on v4 of that API.</p>
+	<p>The current CloudFlare API is documented <a href="https://api.cloudflare.com" target="_blank" rel="noopener noreferrer">here</a> and it’s used by both the CloudFlare control panel and directly by umpteen customers every minute of every day. The new API is designed with a clean naming structure and consistent data representation for data. It’s also extensible.</p>
+	<p>This blog entry introduces <a href="https://github.com/cloudflare/python-cloudflare" target="_blank" rel="noopener noreferrer">python-cloudflare</a>, a Python wrapper providing full access to the CloudFlare v4 API.</p>
 	<div class="flex anchor relative">
 		<h3 id="an-example">An example</h3>
 		<a href="https://blog.cloudflare.com/#an-example" aria-hidden="true" class="relative sm:absolute sm:-start-5">
@@ -34,9 +34,9 @@ def main():
     exit(0)
 if __name__ == '__main__':
     main()</code></pre>
-	<p>The structure of the CloudFlare class matches the API documentation. The <code>CloudFlare.zones.get()</code> method returns information about the zones as per the <a href="https://api.cloudflare.com/#zone-list-zones">list zones</a> documentation. The same for <code>CloudFlare.zones.settings.ipv6.get()</code> and its <a href="https://api.cloudflare.com/#zone-settings-get-ipv6-setting">documentation</a>.</p>
+	<p>The structure of the CloudFlare class matches the API documentation. The <code>CloudFlare.zones.get()</code> method returns information about the zones as per the <a href="https://api.cloudflare.com/#zone-list-zones" target="_blank" rel="noopener noreferrer">list zones</a> documentation. The same for <code>CloudFlare.zones.settings.ipv6.get()</code> and its <a href="https://api.cloudflare.com/#zone-settings-get-ipv6-setting" target="_blank" rel="noopener noreferrer">documentation</a>.</p>
 	<p>Data is passed into the methods via standard Python structures and they are returned in Python structures that match the API documentation. That means if you see an API call in the documentation, then you can translate it into the Python code in a one-to-one manner.</p>
-	<p>For example, take a look at the <a href="https://api.cloudflare.com/#waf-rules-list-rules">WAF list rules</a> API call.</p>
+	<p>For example, take a look at the <a href="https://api.cloudflare.com/#waf-rules-list-rules" target="_blank" rel="noopener noreferrer">WAF list rules</a> API call.</p>
 	<figure class="kg-card kg-image-card ">
 
 		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/58QXJkTf6PTJW4n69AsL1R/00031b7cac29a93d4da4d3816fd1171d/1-list_rules.png" alt="alt" class="kg-image" width="892" height="313" loading="lazy">
@@ -44,7 +44,7 @@ if __name__ == '__main__':
 	</figure>
 	<p>This codes into <code>CloudFlare.zones.dns_records.post()</code> method with the <code>zone_id</code> as the first argument, the <code>package_id</code> as the second argument and the optional parameters passed last (or if there aren’t any; then just drop the third argument for the call). Because this is a <code>GET</code> call there’s a <code>.get()</code> as part of the method name.</p>
 	<pre class="language-python"><code class="language-python">    r = cf.zones.firewall.waf.packages.rules.get(zone_id, package_id, params=params)</code></pre>
-	<p>Here’s the much simpler <a href="https://api.cloudflare.com/#dns-records-for-a-zone-create-dns-record">Create DNS record</a> API call.</p>
+	<p>Here’s the much simpler <a href="https://api.cloudflare.com/#dns-records-for-a-zone-create-dns-record" target="_blank" rel="noopener noreferrer">Create DNS record</a> API call.</p>
 	<figure class="kg-card kg-image-card ">
 
 		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/giA1qSsZ55yOwwczVcXBk/5f7b3b2a9e56856ccd75af6e054791f2/2-create_dns_record.png" alt="alt" class="kg-image" width="892" height="340" loading="lazy">
@@ -80,7 +80,7 @@ if __name__ == '__main__':
 			</svg>
 		</a>
 	</div>
-	<p>As we stated above (and as CloudFlare has done many times before) we have placed this code up on <a href="https://github.com/cloudflare/python-cloudflare">GitHub</a> for anyone to download and use. We welcome contributions and will review any pull requests. To install it, just clone it and follow the README instructions. For those that just want to get going right now; here’s the tl;dr install:</p>
+	<p>As we stated above (and as CloudFlare has done many times before) we have placed this code up on <a href="https://github.com/cloudflare/python-cloudflare" target="_blank" rel="noopener noreferrer">GitHub</a> for anyone to download and use. We welcome contributions and will review any pull requests. To install it, just clone it and follow the README instructions. For those that just want to get going right now; here’s the tl;dr install:</p>
 	<pre class="language-bash"><code class="language-bash">$ git clone https://github.com/cloudflare/python-cloudflare
 $ cd python-cloudflare
 $ ./setup.py build
@@ -95,7 +95,7 @@ $ sudo ./setup.py install</code></pre>
 		</a>
 	</div>
 	<p>Not only do you get the python API calls, you also get a fully functioning CLI (command line interface) that allows quick creation of scripts that interface with CloudFlare.</p>
-	<p>From the CLI command you can call any of the CloudFlare API calls. The command responds with the returned JSON data. If you want to filter the results you possibly also want to install the highly-versatile <a href="https://stedolan.github.io/jq">jq</a> command. Here’s a command to check the nameservers for a specific domain hosted on CloudFlare and then process it via jq.</p>
+	<p>From the CLI command you can call any of the CloudFlare API calls. The command responds with the returned JSON data. If you want to filter the results you possibly also want to install the highly-versatile <a href="https://stedolan.github.io/jq" target="_blank" rel="noopener noreferrer">jq</a> command. Here’s a command to check the nameservers for a specific domain hosted on CloudFlare and then process it via jq.</p>
 	<pre class="language-bash"><code class="language-bash">$ cli4 name=example.com /zones | jq -c '.[]|{"name_servers":.name_servers}'
 {
   "name_servers":[
@@ -118,7 +118,7 @@ $</code></pre>
   "id":"d8afaec3dd2b7f8c1b470e594a21a01d"
 }
 $</code></pre>
-	<p>See how the commands arguments match the <a href="https://api.cloudflare.com/#zone-purge-all-files">purge_cache</a> API documentation.</p>
+	<p>See how the commands arguments match the <a href="https://api.cloudflare.com/#zone-purge-all-files" target="_blank" rel="noopener noreferrer">purge_cache</a> API documentation.</p>
 	<figure class="kg-card kg-image-card ">
 
 		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3E5z7ixk8yXPm3sg4hYmGT/549732f7675c9a925056e141571ee9e6/3-purge.png" alt="alt" class="kg-image" width="894" height="316" loading="lazy">
@@ -137,6 +137,6 @@ $</code></pre>
 			</svg>
 		</a>
 	</div>
-	<p>Python isn’t the only language you can use to interact with CloudFlare’s API. If you’re a <code>Go</code>, or <code>Node.js</code> user, we also have client libraries you can use to interact with CloudFlare on our <a href="https://github.com/cloudflare/python-cloudflare">GitHub</a>. Find them here <a href="https://github.com/cloudflare/cloudflare-go">Go client</a> and here <a href="https://github.com/cloudflare/node-cloudflare">Node.js client</a>. Want to write something in a different language? Feel free to do that. The <a href="https://api.cloudflare.com">API</a> spec is online and ready for you to code up.</p>
-	<p>If you like what you read here today and are interested in joining one of CloudFlare’s software teams, then checkout our <a href="https://www.cloudflare.com/join-our-team">Join Our Team</a> page.</p>
+	<p>Python isn’t the only language you can use to interact with CloudFlare’s API. If you’re a <code>Go</code>, or <code>Node.js</code> user, we also have client libraries you can use to interact with CloudFlare on our <a href="https://github.com/cloudflare/python-cloudflare" target="_blank" rel="noopener noreferrer">GitHub</a>. Find them here <a href="https://github.com/cloudflare/cloudflare-go" target="_blank" rel="noopener noreferrer">Go client</a> and here <a href="https://github.com/cloudflare/node-cloudflare" target="_blank" rel="noopener noreferrer">Node.js client</a>. Want to write something in a different language? Feel free to do that. The <a href="https://api.cloudflare.com" target="_blank" rel="noopener noreferrer">API</a> spec is online and ready for you to code up.</p>
+	<p>If you like what you read here today and are interested in joining one of CloudFlare’s software teams, then checkout our <a href="https://www.cloudflare.com/join-our-team" target="_blank" rel="noopener noreferrer">Join Our Team</a> page.</p>
 </div>

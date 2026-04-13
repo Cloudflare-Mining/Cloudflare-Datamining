@@ -2,7 +2,7 @@
 <div class="post-content lh-copy gray1">
 	<p></p>
 	<p>Ever since <a href="https://blog.cloudflare.com/getting-started-with-terraform-and-cloudflare-part-1">we implemented support for configuring Cloudflare via Terraform</a>, we’ve been steadily expanding the set of features and services you can manage via this popular open-source tool.</p>
-	<p>If you're unfamiliar with how Terraform works with Cloudflare, check out <a href="https://developers.cloudflare.com/terraform">our developer docs</a>.</p>
+	<p>If you're unfamiliar with how Terraform works with Cloudflare, check out <a href="https://developers.cloudflare.com/terraform" target="_blank" rel="noopener noreferrer">our developer docs</a>.</p>
 	<p>We are Terraform users ourselves, and we believe in the stability and reproducibility that can be achieved by defining your infrastructure as code.</p>
 	<div class="flex anchor relative">
 		<h2 id="what-is-terraform">What is Terraform?</h2>
@@ -12,7 +12,7 @@
 			</svg>
 		</a>
 	</div>
-	<p><a href="https://www.terraform.io">Terraform</a> is an open-source tool that allows you to describe your infrastructure and cloud services (think virtual machines, servers, databases, network configurations, Cloudflare API resources, and more) as human-readable configurations.</p>
+	<p><a href="https://www.terraform.io" target="_blank" rel="noopener noreferrer">Terraform</a> is an open-source tool that allows you to describe your infrastructure and cloud services (think virtual machines, servers, databases, network configurations, Cloudflare API resources, and more) as human-readable configurations.</p>
 	<p>Once you’ve done this, you can run the Terraform command-line tool and it will figure out the difference between your desired state and your current state, and make the API calls in the background necessary to reconcile the two.</p>
 	<p>Unlike other solutions, Terraform does not require you to run software on your hosts, and instead of spending time manually configuring machines, creating DNS records, and specifying Page Rules, you can simply run:</p>
 	<pre class="language-bash"><code class="language-bash">$ terraform apply</code></pre>
@@ -26,8 +26,8 @@
 		</a>
 	</div>
 	<p>Terraform is a tremendous time-saver once you have your configuration files in place, but what do you do if you’re already a Cloudflare user and you need to convert your particular setup, records, resources and rules into Terraform config files in the first place?</p>
-	<p>Today, we’re excited to share a <a href="https://github.com/cloudflare/cf-terraforming">new open-source utility</a> to make the migration of even complex Cloudflare configurations into Terraform simple and fast.</p>
-	<p>It’s called <a href="https://github.com/cloudflare/cf-terraforming">cf-terraforming</a> and it downloads your Cloudflare setup, meaning everything you’ve defined via the Cloudflare dashboard and API, into Terraform-compliant configuration files in a few commands.</p>
+	<p>Today, we’re excited to share a <a href="https://github.com/cloudflare/cf-terraforming" target="_blank" rel="noopener noreferrer">new open-source utility</a> to make the migration of even complex Cloudflare configurations into Terraform simple and fast.</p>
+	<p>It’s called <a href="https://github.com/cloudflare/cf-terraforming" target="_blank" rel="noopener noreferrer">cf-terraforming</a> and it downloads your Cloudflare setup, meaning everything you’ve defined via the Cloudflare dashboard and API, into Terraform-compliant configuration files in a few commands.</p>
 	<div class="flex anchor relative">
 		<h2 id="getting-up-and-running-quickly">Getting up and running quickly</h2>
 		<a href="https://blog.cloudflare.com/#getting-up-and-running-quickly" aria-hidden="true" class="relative sm:absolute sm:-start-5">
@@ -36,15 +36,15 @@
 			</svg>
 		</a>
 	</div>
-	<p>Cf-terraforming is open-source and <a href="https://github.com/cloudflare/cf-terraforming">available on Github now</a>. You need a working <a href="https://golang.org/doc/install">Golang installation</a> and a <a href="https://dash.cloudflare.com/sign-up">Cloudflare account</a> with some resources defined. That’s it!</p>
+	<p>Cf-terraforming is open-source and <a href="https://github.com/cloudflare/cf-terraforming" target="_blank" rel="noopener noreferrer">available on Github now</a>. You need a working <a href="https://golang.org/doc/install" target="_blank" rel="noopener noreferrer">Golang installation</a> and a <a href="https://dash.cloudflare.com/sign-up" target="_blank" rel="noopener noreferrer">Cloudflare account</a> with some resources defined. That’s it!</p>
 	<p>Let’s first install cf-terraforming, while also pulling down all dependencies and updating them as necessary:</p>
 	<pre class="language-bash"><code class="language-bash">$ go get -u github.com/cloudflare/cf-terraforming/...</code></pre>
 	<p>Cf-terraforming is a command line tool that you invoke with your Cloudflare credentials, some zone information and the resource type that you want to export. The output is a valid Terraform configuration file describing your resources.</p>
-	<p>To use cf-terraforming, first <a href="https://support.cloudflare.com/hc/en-us/articles/200167836-Where-do-I-find-my-Cloudflare-API-key-">get your API key</a> and Account ID from the Cloudflare dashboard. You can find your account id at the bottom right of the overview page for any zone in your account. It also has a quick link to get your API key as well. You can store your key and account ID in environment variables to make it easier to work with the tool:</p>
+	<p>To use cf-terraforming, first <a href="https://support.cloudflare.com/hc/en-us/articles/200167836-Where-do-I-find-my-Cloudflare-API-key-" target="_blank" rel="noopener noreferrer">get your API key</a> and Account ID from the Cloudflare dashboard. You can find your account id at the bottom right of the overview page for any zone in your account. It also has a quick link to get your API key as well. You can store your key and account ID in environment variables to make it easier to work with the tool:</p>
 	<pre class="language-bash"><code class="language-bash">export CLOUDFLARE_TOKEN=”&lt;your-key&gt;” 
 export CLOUDFLARE_EMAIL=”&lt;your-email&gt;”
 export CLOUDFLARE_ACCT_ID=”&lt;your-id&gt;” </code></pre>
-	<p>Cf-terraforming can create configuration files for any of the resources currently available in <a href="https://www.terraform.io/docs/providers/cloudflare/index.html">the official Cloudflare Terraform provider</a>, but sometimes it’s also handy to export individual resources as needed.</p>
+	<p>Cf-terraforming can create configuration files for any of the resources currently available in <a href="https://www.terraform.io/docs/providers/cloudflare/index.html" target="_blank" rel="noopener noreferrer">the official Cloudflare Terraform provider</a>, but sometimes it’s also handy to export individual resources as needed.</p>
 	<p>Let’s say you’re migrating your Cloudflare configuration to Terraform and you want to describe your Spectrum applications. You simply call cf-terraforming with your credentials, zone, and the spectrum_application command, like so:</p>
 	<pre class="language-bash"><code class="language-bash">go run cmd/cf-terraforming/main.go --email $CLOUDFLARE_EMAIL --key $CLOUDFLARE_TOKEN --account $CLOUDFLARE_ACCT_ID spectrum_application</code></pre>
 	<p>Cf-terraforming will contact the Cloudflare API on your behalf and define your resources in a format that Terraform understands:</p>
@@ -80,67 +80,67 @@ export CLOUDFLARE_ACCT_ID=”&lt;your-id&gt;” </code></pre>
 			</svg>
 		</a>
 	</div>
-	<p>Currently, <a href="https://github.com/cloudflare/cf-terraforming">cf-terraforming</a> supports every resource type that you can manage via the official <a href="https://www.terraform.io/docs/providers/cloudflare/index.html">Cloudflare Terraform provider</a>:</p>
+	<p>Currently, <a href="https://github.com/cloudflare/cf-terraforming" target="_blank" rel="noopener noreferrer">cf-terraforming</a> supports every resource type that you can manage via the official <a href="https://www.terraform.io/docs/providers/cloudflare/index.html" target="_blank" rel="noopener noreferrer">Cloudflare Terraform provider</a>:</p>
 	<ul>
 		<li>
-			<p><a href="https://www.terraform.io/docs/providers/cloudflare/r/access_application.html">access_application</a></p>
+			<p><a href="https://www.terraform.io/docs/providers/cloudflare/r/access_application.html" target="_blank" rel="noopener noreferrer">access_application</a></p>
 		</li>
 		<li>
-			<p><a href="https://www.terraform.io/docs/providers/cloudflare/r/access_rule.html">access_rule</a></p>
+			<p><a href="https://www.terraform.io/docs/providers/cloudflare/r/access_rule.html" target="_blank" rel="noopener noreferrer">access_rule</a></p>
 		</li>
 		<li>
-			<p><a href="https://www.terraform.io/docs/providers/cloudflare/r/access_policy.html">access_policy</a></p>
+			<p><a href="https://www.terraform.io/docs/providers/cloudflare/r/access_policy.html" target="_blank" rel="noopener noreferrer">access_policy</a></p>
 		</li>
 		<li>
-			<p><a href="https://www.terraform.io/docs/providers/cloudflare/r/account_member.html">account_member</a></p>
+			<p><a href="https://www.terraform.io/docs/providers/cloudflare/r/account_member.html" target="_blank" rel="noopener noreferrer">account_member</a></p>
 		</li>
 		<li>
-			<p><a href="https://www.terraform.io/docs/providers/cloudflare/r/custom_pages.html">custom_pages</a></p>
+			<p><a href="https://www.terraform.io/docs/providers/cloudflare/r/custom_pages.html" target="_blank" rel="noopener noreferrer">custom_pages</a></p>
 		</li>
 		<li>
-			<p><a href="https://www.terraform.io/docs/providers/cloudflare/r/filter.html">filter</a></p>
+			<p><a href="https://www.terraform.io/docs/providers/cloudflare/r/filter.html" target="_blank" rel="noopener noreferrer">filter</a></p>
 		</li>
 		<li>
-			<p><a href="https://www.terraform.io/docs/providers/cloudflare/r/firewall_rule.html">firewall_rule</a></p>
+			<p><a href="https://www.terraform.io/docs/providers/cloudflare/r/firewall_rule.html" target="_blank" rel="noopener noreferrer">firewall_rule</a></p>
 		</li>
 		<li>
-			<p><a href="https://www.terraform.io/docs/providers/cloudflare/r/load_balancer.html">load_balancer</a></p>
+			<p><a href="https://www.terraform.io/docs/providers/cloudflare/r/load_balancer.html" target="_blank" rel="noopener noreferrer">load_balancer</a></p>
 		</li>
 		<li>
-			<p><a href="https://www.terraform.io/docs/providers/cloudflare/r/load_balancer_pool.html">load_balancer_pool</a></p>
+			<p><a href="https://www.terraform.io/docs/providers/cloudflare/r/load_balancer_pool.html" target="_blank" rel="noopener noreferrer">load_balancer_pool</a></p>
 		</li>
 		<li>
-			<p><a href="https://www.terraform.io/docs/providers/cloudflare/r/load_balancer_monitor.html">load_balancer_monitor</a></p>
+			<p><a href="https://www.terraform.io/docs/providers/cloudflare/r/load_balancer_monitor.html" target="_blank" rel="noopener noreferrer">load_balancer_monitor</a></p>
 		</li>
 		<li>
-			<p><a href="https://www.terraform.io/docs/providers/cloudflare/r/page_rule.html">page_rule</a></p>
+			<p><a href="https://www.terraform.io/docs/providers/cloudflare/r/page_rule.html" target="_blank" rel="noopener noreferrer">page_rule</a></p>
 		</li>
 		<li>
-			<p><a href="https://www.terraform.io/docs/providers/cloudflare/r/rate_limit.html">rate_limit</a></p>
+			<p><a href="https://www.terraform.io/docs/providers/cloudflare/r/rate_limit.html" target="_blank" rel="noopener noreferrer">rate_limit</a></p>
 		</li>
 		<li>
-			<p><a href="https://www.terraform.io/docs/providers/cloudflare/r/record.html">record</a></p>
+			<p><a href="https://www.terraform.io/docs/providers/cloudflare/r/record.html" target="_blank" rel="noopener noreferrer">record</a></p>
 		</li>
 		<li>
-			<p><a href="https://www.terraform.io/docs/providers/cloudflare/r/spectrum_application.html">spectrum_application</a></p>
+			<p><a href="https://www.terraform.io/docs/providers/cloudflare/r/spectrum_application.html" target="_blank" rel="noopener noreferrer">spectrum_application</a></p>
 		</li>
 		<li>
-			<p><a href="https://www.terraform.io/docs/providers/cloudflare/r/waf_rule.html">waf_rule</a></p>
+			<p><a href="https://www.terraform.io/docs/providers/cloudflare/r/waf_rule.html" target="_blank" rel="noopener noreferrer">waf_rule</a></p>
 		</li>
 		<li>
-			<p><a href="https://www.terraform.io/docs/providers/cloudflare/r/worker_route.html">worker_route</a></p>
+			<p><a href="https://www.terraform.io/docs/providers/cloudflare/r/worker_route.html" target="_blank" rel="noopener noreferrer">worker_route</a></p>
 		</li>
 		<li>
-			<p><a href="https://www.terraform.io/docs/providers/cloudflare/r/worker_script.html">worker_script</a></p>
+			<p><a href="https://www.terraform.io/docs/providers/cloudflare/r/worker_script.html" target="_blank" rel="noopener noreferrer">worker_script</a></p>
 		</li>
 		<li>
-			<p><a href="https://www.terraform.io/docs/providers/cloudflare/r/zone.html">zone</a></p>
+			<p><a href="https://www.terraform.io/docs/providers/cloudflare/r/zone.html" target="_blank" rel="noopener noreferrer">zone</a></p>
 		</li>
 		<li>
-			<p><a href="https://www.terraform.io/docs/providers/cloudflare/r/zone_lockdown.html">zone_lockdown</a></p>
+			<p><a href="https://www.terraform.io/docs/providers/cloudflare/r/zone_lockdown.html" target="_blank" rel="noopener noreferrer">zone_lockdown</a></p>
 		</li>
 		<li>
-			<p><a href="https://www.terraform.io/docs/providers/cloudflare/r/zone_settings_override.html">zone_settings_override</a></p>
+			<p><a href="https://www.terraform.io/docs/providers/cloudflare/r/zone_settings_override.html" target="_blank" rel="noopener noreferrer">zone_settings_override</a></p>
 		</li>
 	</ul>
 	<div class="flex anchor relative">
@@ -151,7 +151,7 @@ export CLOUDFLARE_ACCT_ID=”&lt;your-id&gt;” </code></pre>
 			</svg>
 		</a>
 	</div>
-	<p>We’re looking for feedback and any issues you might encounter while getting up and running with cf-terraforming. Please open any issues against <a href="https://github.com/cloudflare/cf-terraforming">the GitHub repo</a>.</p>
+	<p>We’re looking for feedback and any issues you might encounter while getting up and running with cf-terraforming. Please open any issues against <a href="https://github.com/cloudflare/cf-terraforming" target="_blank" rel="noopener noreferrer">the GitHub repo</a>.</p>
 	<p>Cf-terraforming is open-source, so if you want to get involved feel free to pick up an open issue or make a pull request.</p>
 	<div class="flex anchor relative">
 		<h2 id="looking-forward">Looking forward</h2>
@@ -161,5 +161,5 @@ export CLOUDFLARE_ACCT_ID=”&lt;your-id&gt;” </code></pre>
 			</svg>
 		</a>
 	</div>
-	<p>We’ll continue to expand <a href="https://www.terraform.io/docs/providers/cloudflare/index.html">the set of Cloudflare resources that you can manage via Terraform</a>, and that you can export via cf-terraforming. Be sure to keep and eye on the <a href="https://github.com/cloudflare/cf-terraforming">cf-terraforming repo</a> for updates.</p>
+	<p>We’ll continue to expand <a href="https://www.terraform.io/docs/providers/cloudflare/index.html" target="_blank" rel="noopener noreferrer">the set of Cloudflare resources that you can manage via Terraform</a>, and that you can export via cf-terraforming. Be sure to keep and eye on the <a href="https://github.com/cloudflare/cf-terraforming" target="_blank" rel="noopener noreferrer">cf-terraforming repo</a> for updates.</p>
 </div>

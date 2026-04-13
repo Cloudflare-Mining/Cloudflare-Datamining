@@ -1,6 +1,6 @@
 <div class="mb2 gray5">3 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1PJDqmx90z4PIOIyHZT9PC/0c95e723d63ee9fad4c569c9afe8a977/mapping-factorio-with-leaflet.png" alt="">
 <div class="post-content lh-copy gray1">
-	<p><i>The following is a guest post by </i><a href="https://twitter.com/jachands"><i>Jacob Hands</i></a><i>, Creator of </i><a href="https://factoriomaps.com/browse.html"><i>FactorioMaps.com</i></a><i>. He is building a community site for the game </i><a href="https://www.factorio.com"><i>Factorio</i></a><i> centered around sharing user creations.</i></p>
+	<p><i>The following is a guest post by </i><a href="https://twitter.com/jachands" target="_blank" rel="noopener noreferrer"><i>Jacob Hands</i></a><i>, Creator of </i><a href="https://factoriomaps.com/browse.html" target="_blank" rel="noopener noreferrer"><i>FactorioMaps.com</i></a><i>. He is building a community site for the game </i><a href="https://www.factorio.com" target="_blank" rel="noopener noreferrer"><i>Factorio</i></a><i> centered around sharing user creations.</i></p>
 	<p>Factorio is a game about building and maintaining factories. Players mine resources, research new technology and automate production. Resources move along the production line through multiple means of transportation such as belts and trains. Once production starts getting up to speed, alien bugs start to attack the factory requiring strong defenses.</p>
 	<figure class="kg-card kg-image-card ">
 
@@ -29,7 +29,7 @@
 			</svg>
 		</a>
 	</div>
-	<p>Leaflet maps contain thousands of small images for X/Y/Z coordinates. Amazon S3 and Google Cloud Storage are the obvious choices for <a href="https://www.cloudflare.com/learning/cloud/what-is-object-storage">low-latency object storage</a>. However, after 3.5 &nbsp;months in operation, FactorioMaps.com contains 17 million map images (&gt;1TB). For this use-case, $0.05 per 10,000 upload API calls and $0.08 to 0.12/GB for egress would add up quickly. Backblaze B2 is a better fit because upload API calls are free, <a href="https://blog.cloudflare.com/bandwidth-alliance">egress bandwidth is $0.00/GB to Cloudflare</a>, and storage is 1/4th the price of the competition.</p>
+	<p>Leaflet maps contain thousands of small images for X/Y/Z coordinates. Amazon S3 and Google Cloud Storage are the obvious choices for <a href="https://www.cloudflare.com/learning/cloud/what-is-object-storage" target="_blank" rel="noopener noreferrer">low-latency object storage</a>. However, after 3.5 &nbsp;months in operation, FactorioMaps.com contains 17 million map images (&gt;1TB). For this use-case, $0.05 per 10,000 upload API calls and $0.08 to 0.12/GB for egress would add up quickly. Backblaze B2 is a better fit because upload API calls are free, <a href="https://blog.cloudflare.com/bandwidth-alliance">egress bandwidth is $0.00/GB to Cloudflare</a>, and storage is 1/4th the price of the competition.</p>
 	<p>Backblaze B2 requires a prefix of /file/bucketName on all public files, which I don’t want. To remove it, I added a VPS proxy to rewrite paths and add a few 301 redirects. Unfortunately, the latency from the user -&gt; VPS -&gt; B2 was sub-par averaging 800-1200ms in the US.</p>
 	<div class="flex anchor relative">
 		<h3 id="a-closer-look-at-leaflet">A Closer Look At Leaflet</h3>
@@ -120,7 +120,7 @@ if (response.ok) {
     event.waitUntil(logResponse(event, response, (Date.now() - reqStartTime)));
     return response;
 }</code></pre>
-	<p>The resulting stats prove that GCS is serving the majority of requests, and Cloudflare caches over 50% of those requests. The code for the logResponse function can be found <a href="https://gist.github.com/jahands/636e89a125f0352a3d50fff155bfa50f#file-stat-logging-to-stathat-js"><b>here</b></a>. &nbsp;</p>
+	<p>The resulting stats prove that GCS is serving the majority of requests, and Cloudflare caches over 50% of those requests. The code for the logResponse function can be found <a href="https://gist.github.com/jahands/636e89a125f0352a3d50fff155bfa50f#file-stat-logging-to-stathat-js" target="_blank" rel="noopener noreferrer"><b>here</b></a>. &nbsp;</p>
 	<div class="flex anchor relative">
 		<h3 id="making-b2-faster-with-argo">Making B2 Faster with Argo</h3>
 		<a href="https://blog.cloudflare.com/#making-b2-faster-with-argo" aria-hidden="true" class="relative sm:absolute sm:-start-5">
@@ -148,5 +148,5 @@ function getB2Url(request) {
 			</svg>
 		</a>
 	</div>
-	<p>Cloudflare Workers are an excellent fit for my project; they enabled me to make a cost-effective solution to hosting Leaflet maps at scale. Check out <a href="https://factoriomaps.com">https://factoriomaps.com</a> for performant Leaflet maps, and if you play Factorio, <a href="https://factoriomaps.com/submit">submit</a> your <a href="https://www.factorio.com">Factorio</a> world to share with others!</p>
+	<p>Cloudflare Workers are an excellent fit for my project; they enabled me to make a cost-effective solution to hosting Leaflet maps at scale. Check out <a href="https://factoriomaps.com" target="_blank" rel="noopener noreferrer">https://factoriomaps.com</a> for performant Leaflet maps, and if you play Factorio, <a href="https://factoriomaps.com/submit" target="_blank" rel="noopener noreferrer">submit</a> your <a href="https://www.factorio.com" target="_blank" rel="noopener noreferrer">Factorio</a> world to share with others!</p>
 </div>

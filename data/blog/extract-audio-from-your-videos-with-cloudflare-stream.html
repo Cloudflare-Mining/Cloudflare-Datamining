@@ -33,12 +33,12 @@
 			</svg>
 		</a>
 	</div>
-	<p><a href="https://developers.cloudflare.com/stream/transform-videos"><u>Media Transformations</u></a> is perfect for processing and transforming short-form videos, like social media clips, that you store anywhere you'd like. It works by fetching your media directly from its source, optimizing it at our edge, and delivering it efficiently. </p>
+	<p><a href="https://developers.cloudflare.com/stream/transform-videos" target="_blank" rel="noopener noreferrer"><u>Media Transformations</u></a> is perfect for processing and transforming short-form videos, like social media clips, that you store anywhere you'd like. It works by fetching your media directly from its source, optimizing it at our edge, and delivering it efficiently. </p>
 	<p>We extended this workflow to include audio. By simply adding <code>mode=audio</code> to the transformation URL, you can now extract audio on-the-fly from a video file stored anywhere.</p>
-	<p>Once <a href="https://developers.cloudflare.com/stream/transform-videos/#getting-started"><u>Media Transformations is enabled for your domain</u></a>, you can extract audio from any source video. You can even clip specific sections by specifying <code>time</code> and <code>duration</code>.</p>
+	<p>Once <a href="https://developers.cloudflare.com/stream/transform-videos/#getting-started" target="_blank" rel="noopener noreferrer"><u>Media Transformations is enabled for your domain</u></a>, you can extract audio from any source video. You can even clip specific sections by specifying <code>time</code> and <code>duration</code>.</p>
 	<p>For example:</p>
 	<pre class="language-Rust"><code class="language-Rust">https://example.com/cdn-cgi/media/mode=audio,time=5s,duration=10s/&lt;SOURCE-VIDEO&gt;</code></pre>
-	<p>The above request generates a 10 second M4A audio clip from the source video, beginning at the 5-second mark. You can learn more about setup and other options in the <a href="https://developers.cloudflare.com/stream/transform-videos"><u>Media Transformations documentation</u></a>.&nbsp;</p>
+	<p>The above request generates a 10 second M4A audio clip from the source video, beginning at the 5-second mark. You can learn more about setup and other options in the <a href="https://developers.cloudflare.com/stream/transform-videos" target="_blank" rel="noopener noreferrer"><u>Media Transformations documentation</u></a>.&nbsp;</p>
 	<div class="flex anchor relative">
 		<h3 id="2-audio-downloads">2. Audio downloads</h3>
 		<a href="https://blog.cloudflare.com/#2-audio-downloads" aria-hidden="true" class="relative sm:absolute sm:-start-5">
@@ -193,5 +193,5 @@ export function base64Encode(buf) {
 		</a>
 	</div>
 	<p>This project addressed a long-standing customer need, providing a simpler way to work with audio from video. I’m truly grateful for this entire journey, from understanding the problem to shipping the solution, and especially for the mentorship and guidance I received from my team along the way. We are excited to see how developers use this new capability to build more efficient and exciting applications on Cloudflare Stream.</p>
-	<p>You can try the audio extraction feature by <a href="https://dash.cloudflare.com"><u>uploading a video to Stream</u></a> or using the API! If you're interested in tackling these kinds of technical challenges yourself, explore our <a href="https://www.cloudflare.com/careers/early-talent/?cf_target_id=97C555BF0DA9E4427F470C0134F7E2C9"><u>internship and early talent programs</u></a> to start your own journey.</p>
+	<p>You can try the audio extraction feature by <a href="https://dash.cloudflare.com" target="_blank" rel="noopener noreferrer"><u>uploading a video to Stream</u></a> or using the API! If you're interested in tackling these kinds of technical challenges yourself, explore our <a href="https://www.cloudflare.com/careers/early-talent/?cf_target_id=97C555BF0DA9E4427F470C0134F7E2C9" target="_blank" rel="noopener noreferrer"><u>internship and early talent programs</u></a> to start your own journey.</p>
 </div>

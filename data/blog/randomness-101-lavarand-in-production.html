@@ -2,7 +2,7 @@
 <div class="mt4">This post is also available in <a href="https://blog.cloudflare.com/zh-cn/randomness-101-lavarand-in-production">简体中文</a>, <a href="https://blog.cloudflare.com/es-es/randomness-101-lavarand-in-production">Español</a> and <a href="https://blog.cloudflare.com/de-de/randomness-101-lavarand-in-production">Deutsch</a>.</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1CzgOkriu64UVK1sjw6qcE/ca4ab5ebee4b48d2f439751381ae41ec/randomness-101-lavarand-in-production.jpg" alt="">
 <div class="post-content lh-copy gray1">
 	<p></p>
-	<p>Lava lamps in the Cloudflare lobby Courtesy of <a href="https://twitter.com/mahtin/status/888251632550424577">@mahtin</a></p>
+	<p>Lava lamps in the Cloudflare lobby Courtesy of <a href="https://twitter.com/mahtin/status/888251632550424577" target="_blank" rel="noopener noreferrer">@mahtin</a></p>
 	<div class="flex anchor relative">
 		<h3 id="introduction">Introduction</h3>
 		<a href="https://blog.cloudflare.com/#introduction" aria-hidden="true" class="relative sm:absolute sm:-start-5">
@@ -11,7 +11,7 @@
 			</svg>
 		</a>
 	</div>
-	<p>As some of you may know, <a href="https://www.fastcodesign.com/90137157/the-hardest-working-office-design-in-america-encrypts-your-data-with-lava-lamps">there's a wall of lava lamps</a> in the lobby of our San Francisco office that we use for cryptography. In this post, we’re going to explore how that works. This post assumes no technical background. For a more in-depth look at the technical details, see <a href="https://blog.cloudflare.com/lavarand-in-production-the-nitty-gritty-technical-details">LavaRand in Production: The Nitty-Gritty Technical Details</a>.</p>
+	<p>As some of you may know, <a href="https://www.fastcodesign.com/90137157/the-hardest-working-office-design-in-america-encrypts-your-data-with-lava-lamps" target="_blank" rel="noopener noreferrer">there's a wall of lava lamps</a> in the lobby of our San Francisco office that we use for cryptography. In this post, we’re going to explore how that works. This post assumes no technical background. For a more in-depth look at the technical details, see <a href="https://blog.cloudflare.com/lavarand-in-production-the-nitty-gritty-technical-details">LavaRand in Production: The Nitty-Gritty Technical Details</a>.</p>
 	<div class="flex anchor relative">
 		<h3 id="background">Background</h3>
 		<a href="https://blog.cloudflare.com/#background" aria-hidden="true" class="relative sm:absolute sm:-start-5">
@@ -148,11 +148,11 @@
 	</figure>
 	<p>The view from the camera</p>
 	<p>LavaRand is a system that uses lava lamps as a secondary source of randomness for our production servers. A wall of lava lamps in the lobby of our San Francisco office provides an unpredictable input to a camera aimed at the wall. A video feed from the camera is fed into a CSPRNG, and that CSPRNG provides a stream of random values that can be used as an extra source of randomness by our production servers. Since the flow of the “lava” in a lava lamp is very unpredictable,<sup>1</sup> “measuring” the lamps by taking footage of them is a good way to obtain unpredictable randomness. Computers store images as very large numbers, so we can use them as the input to a CSPRNG just like any other number.</p>
-	<p>We're not the first ones to do this. Our LavaRand system was inspired by a similar system first <a href="https://en.wikipedia.org/wiki/Lavarand">proposed and built</a> by Silicon Graphics and <a href="https://www.google.com/patents/US5732138">patented</a> in 1996 (the patent has since expired).</p>
+	<p>We're not the first ones to do this. Our LavaRand system was inspired by a similar system first <a href="https://en.wikipedia.org/wiki/Lavarand" target="_blank" rel="noopener noreferrer">proposed and built</a> by Silicon Graphics and <a href="https://www.google.com/patents/US5732138" target="_blank" rel="noopener noreferrer">patented</a> in 1996 (the patent has since expired).</p>
 	<p>Hopefully we’ll never need it. Hopefully, the primary sources of randomness used by our production servers will remain secure, and LavaRand will serve little purpose beyond adding some flair to our office. But if it turns out that we’re wrong, and that our randomness sources in production are actually flawed, then LavaRand will be our hedge, making it just a little bit harder to hack Cloudflare.</p>
 	<ol>
 		<li>
-			<p>Noll, L.C. and Mende, R.G. and Sisodiya, S., <a href="https://www.google.com/patents/US5732138"><i>Method for seeding a pseudo-random number generator with a cryptographic hash of a digitization of a chaotic system</i></a></p>
+			<p>Noll, L.C. and Mende, R.G. and Sisodiya, S., <a href="https://www.google.com/patents/US5732138" target="_blank" rel="noopener noreferrer"><i>Method for seeding a pseudo-random number generator with a cryptographic hash of a digitization of a chaotic system</i></a></p>
 		</li>
 	</ol>
 	<p></p>

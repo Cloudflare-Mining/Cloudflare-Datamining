@@ -1,12 +1,12 @@
 <div class="mb2 gray5">4 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/mtwkycUiz0G5AOoqkjs4Q/56858180757ef757eab1cc96bbe4bbb3/single-rx-queue-kernel-bypass-with-netmap.jpg" alt="">
 <div class="post-content lh-copy gray1">
-	<p>In <a href="https://blog.cloudflare.com/kernel-bypass">a previous post</a> we discussed the performance limitations of the Linux kernel network stack. We detailed the available kernel bypass techniques allowing user space programs to receive packets with high throughput. Unfortunately, none of the discussed open source solutions supported our needs. To improve the situation we decided to contribute to the <a href="http://info.iet.unipi.it/~luigi/netmap">Netmap project</a>. In this blog post we'll describe our proposed changes.</p>
+	<p>In <a href="https://blog.cloudflare.com/kernel-bypass">a previous post</a> we discussed the performance limitations of the Linux kernel network stack. We detailed the available kernel bypass techniques allowing user space programs to receive packets with high throughput. Unfortunately, none of the discussed open source solutions supported our needs. To improve the situation we decided to contribute to the <a href="http://info.iet.unipi.it/~luigi/netmap" target="_blank" rel="noopener noreferrer">Netmap project</a>. In this blog post we'll describe our proposed changes.</p>
 	<figure class="kg-card kg-image-card ">
 
 		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6wUCqE4w1PE0nbGFJLjIX3/8e30b5ce1a117131d4929b29bf536fc1/122715232_32da8cd353_o-1.jpg" alt="network card" class="kg-image" width="861" height="536" loading="lazy">
 
 	</figure>
-	<p><a href="https://creativecommons.org/licenses/by-sa/2.0">CC BY-SA 2.0</a> <a href="https://www.flickr.com/photos/binary_koala/122715232">image</a> by Binary Koala</p>
+	<p><a href="https://creativecommons.org/licenses/by-sa/2.0" target="_blank" rel="noopener noreferrer">CC BY-SA 2.0</a> <a href="https://www.flickr.com/photos/binary_koala/122715232" target="_blank" rel="noopener noreferrer">image</a> by Binary Koala</p>
 	<div class="flex anchor relative">
 		<h3 id="our-needs">Our needs</h3>
 		<a href="https://blog.cloudflare.com/#our-needs" aria-hidden="true" class="relative sm:absolute sm:-start-5">
@@ -19,7 +19,7 @@
 	<p>Since the Linux Kernel can't really handle a large volume of packets, we need to work around it. During packet floods we offload selected network flows (belonging to a flood) to a user space application. This application filters the packets at very high speed. Most of the packets are dropped, as they belong to a flood. The small number of "valid" packets are injected back to the kernel and handled in the same way as usual traffic.</p>
 	<p>It’s important to emphasize that the kernel bypass is enabled only for selected flows, which means that all other packets go to the kernel as usual.</p>
 	<p>This setup works perfectly on our servers with Solarflare network cards - we can use the <code>ef_vi</code> API to achieve the kernel bypass. Unfortunately, we don’t have this functionality on our servers with Intel IXGBE NIC’s.</p>
-	<p>This is when <a href="http://info.iet.unipi.it/~luigi/netmap">Netmap</a> comes in.</p>
+	<p>This is when <a href="http://info.iet.unipi.it/~luigi/netmap" target="_blank" rel="noopener noreferrer">Netmap</a> comes in.</p>
 	<div class="flex anchor relative">
 		<h4 id="netmap">Netmap</h4>
 		<a href="https://blog.cloudflare.com/#netmap" aria-hidden="true" class="relative sm:absolute sm:-start-5">
@@ -82,7 +82,7 @@
 	<p>The patch to Netmap is awaiting code review and is available here:</p>
 	<ul>
 		<li>
-			<p><a href="https://github.com/luigirizzo/netmap/pull/87">https://github.com/luigirizzo/netmap/pull/87</a></p>
+			<p><a href="https://github.com/luigirizzo/netmap/pull/87" target="_blank" rel="noopener noreferrer">https://github.com/luigirizzo/netmap/pull/87</a></p>
 		</li>
 	</ul>
 	<p>The minimal program receiving packets from <code>eth3</code> RX queue #4 would look like:</p>
@@ -105,7 +105,7 @@ while (1) {
 	<p>You can find a more complete example here:</p>
 	<ul>
 		<li>
-			<p><a href="https://github.com/jibi/nm-single-rx-queue">https://github.com/jibi/nm-single-rx-queue</a></p>
+			<p><a href="https://github.com/jibi/nm-single-rx-queue" target="_blank" rel="noopener noreferrer">https://github.com/jibi/nm-single-rx-queue</a></p>
 		</li>
 	</ul>
 	<figure class="kg-card kg-image-card ">
@@ -201,7 +201,7 @@ $ ethtool -N eth3 flow-type udp4 dst-port 53 action 4</code></pre>
 			</svg>
 		</a>
 	</div>
-	<p>We would like to thank Pavel Odintsov who suggested the possibility of using Netmap this way. He even prepared <a href="http://www.stableit.ru/2015/06/how-to-run-netmap-on-single-queue-and.html">the initial hack</a> we based our work on.</p>
+	<p>We would like to thank Pavel Odintsov who suggested the possibility of using Netmap this way. He even prepared <a href="http://www.stableit.ru/2015/06/how-to-run-netmap-on-single-queue-and.html" target="_blank" rel="noopener noreferrer">the initial hack</a> we based our work on.</p>
 	<p>We would also like to thank Luigi Rizzo, for his Netmap work and great feedback on our patches.</p>
 	<div class="flex anchor relative">
 		<h4 id="final-words">Final words</h4>
@@ -212,5 +212,5 @@ $ ethtool -N eth3 flow-type udp4 dst-port 53 action 4</code></pre>
 		</a>
 	</div>
 	<p>At CloudFlare our application stack is based on open source software. We’re grateful to so many open source programmers for their awesome work. Whenever we can we try to contribute back to the community - we hope "the single RX Netmap mode" will be useful to others.</p>
-	<p>You can find more CloudFlare open source <a href="https://cloudflare.github.io">here</a>.</p>
+	<p>You can find more CloudFlare open source <a href="https://cloudflare.github.io" target="_blank" rel="noopener noreferrer">here</a>.</p>
 </div>

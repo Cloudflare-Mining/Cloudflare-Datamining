@@ -7,7 +7,7 @@
 		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/9UpKzGh7EBXIKuhQGtKDb/52af7b5b35a730a947da13b44764ebe5/593px-Nokia_6120_Classic_alga_01.jpg" alt="" class="kg-image" width="593" height="480" loading="lazy">
 
 	</figure>
-	<p>Back in May, we noted that <a href="https://blog.cloudflare.com/the-web-is-world-wide-or-who-still-needs-rc4">some people still needed RC4</a>, particularly people using old mobile phones and some Windows XP users. At the time, 4% of requests using RC4 came from a single phone type: the <a href="https://en.wikipedia.org/wiki/Nokia_6120_classic">Nokia 6120</a>.</p>
+	<p>Back in May, we noted that <a href="https://blog.cloudflare.com/the-web-is-world-wide-or-who-still-needs-rc4">some people still needed RC4</a>, particularly people using old mobile phones and some Windows XP users. At the time, 4% of requests using RC4 came from a single phone type: the <a href="https://en.wikipedia.org/wiki/Nokia_6120_classic" target="_blank" rel="noopener noreferrer">Nokia 6120</a>.</p>
 	<p>At the time, we noted that roughly 0.000002% of requests to CloudFlare were using the RC4 protocol. In the last 9 months, that number is halved and so, although some people are still using RC4, we have decided to turn off the protocol. It's simply no longer secure.</p>
 	<p>The remaining users are almost all on old phones and Windows XP (those two groups make up 80% of the RC4-based requests). But we are still seeing some connections from SSL-intercepting proxy software that's using RC4. To repeat what we said in May:</p>
 	<p><i>Digging into the User-Agent data for the US, we see the following web browser being used to access CloudFlare-powered sites using RC4:</i></p>

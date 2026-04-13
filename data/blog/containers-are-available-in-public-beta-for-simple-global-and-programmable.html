@@ -38,7 +38,7 @@
 			</svg>
 		</a>
 	</div>
-	<p>In your Worker, use the <a href="https://github.com/cloudflare/containers"><u>Container class</u></a> and <a href="https://developers.cloudflare.com//workers/wrangler/configuration/#containers"><u>wrangler.jsonc</u></a> to declare some basic configuration, such as your Container’s default port, a sleep timeout, and which image to use, then route to it via the Worker.</p>
+	<p>In your Worker, use the <a href="https://github.com/cloudflare/containers" target="_blank" rel="noopener noreferrer"><u>Container class</u></a> and <a href="https://developers.cloudflare.com//workers/wrangler/configuration/#containers" target="_blank" rel="noopener noreferrer"><u>wrangler.jsonc</u></a> to declare some basic configuration, such as your Container’s default port, a sleep timeout, and which image to use, then route to it via the Worker.</p>
 	<p>For each unique ID passed to the Container’s binding, Cloudflare will spin up a new Container instance and route requests to it. When a new instance is requested, Cloudflare picks the best location across our global network where we’ve pre-provisioned a ready-to-go container. This means that you can deploy a container close to an end user no matter where they are. And the initial container start takes just a few seconds. You don’t have to worry about routing, provisioning, or scaling.</p>
 	<p>This example Worker will route requests to a unique container instance for each sandbox ID given at the path <code>/sandbox/ID</code> and will be handled by standard Worker JavaScript otherwise:</p>
 	<pre class="language-JavaScript"><code class="language-JavaScript">export class MyContainer extends Container {
@@ -99,13 +99,13 @@ export default {
 			</svg>
 		</a>
 	</div>
-	<p>Once your Container is in production, you have the visibility you need into how things are going, with end-to-end <a href="https://www.cloudflare.com/developer-platform/products/workers-observability">observability</a>.&nbsp;</p>
+	<p>Once your Container is in production, you have the visibility you need into how things are going, with end-to-end <a href="https://www.cloudflare.com/developer-platform/products/workers-observability" target="_blank" rel="noopener noreferrer">observability</a>.&nbsp;</p>
 	<p>From the Cloudflare dashboard, you can easily track status and resource usage across Container instances with built-in metrics:</p>
 	<figure class="kg-card kg-image-card">
 		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1cMDL8qejpD9TnaVYgKeLD/cf42573c1315f0364c0d225bb77a76af/image4.png" alt="" class="kg-image" width="1999" height="1146" loading="lazy">
 	</figure>
 	<p>
-		And if you need to dive deeper, you can dig into logs, which will be retained in the Cloudflare UI for seven days or <a href="https://developers.cloudflare.com/logs/about"><u>pushed to an external sink</u></a> of your choice:</p>
+		And if you need to dive deeper, you can dig into logs, which will be retained in the Cloudflare UI for seven days or <a href="https://developers.cloudflare.com/logs/about" target="_blank" rel="noopener noreferrer"><u>pushed to an external sink</u></a> of your choice:</p>
 	<figure class="kg-card kg-image-card">
 		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2AusbmokynDaErssVFyu4A/3bb617ff9c2e488cdaee20612cb6bd15/image3.png" alt="" class="kg-image" width="1999" height="1142" loading="lazy">
 	</figure>
@@ -117,8 +117,8 @@ export default {
 			</svg>
 		</a>
 	</div>
-	<p>Want to give it a shot? Check out <a href="https://github.com/craigsdennis/sandboxing-day-containers"><u>this example Worker for running sandboxed code</u></a> in a Container, and deploy it with one click.</p>
-	<p>Or better yet, if you have an image sitting around that you’ve been dying to deploy to Cloudflare, you can get started with <a href="https://developers.cloudflare.com//containers/get-started"><u>our docs here</u></a>.&nbsp;</p>
+	<p>Want to give it a shot? Check out <a href="https://github.com/craigsdennis/sandboxing-day-containers" target="_blank" rel="noopener noreferrer"><u>this example Worker for running sandboxed code</u></a> in a Container, and deploy it with one click.</p>
+	<p>Or better yet, if you have an image sitting around that you’ve been dying to deploy to Cloudflare, you can get started with <a href="https://developers.cloudflare.com//containers/get-started" target="_blank" rel="noopener noreferrer"><u>our docs here</u></a>.&nbsp;</p>
 	<div class="flex anchor relative">
 		<h2 id="a-world-of-possibilities">A world of possibilities</h2>
 		<a href="https://blog.cloudflare.com/#a-world-of-possibilities" aria-hidden="true" class="relative sm:absolute sm:-start-5">
@@ -128,9 +128,9 @@ export default {
 		</a>
 	</div>
 	<p>We’re excited about all the new types of applications that are now possible to build on Workers. We’ve heard many of you tell us over the years that you would love to run your entire application on Cloudflare, if only you could deploy this one piece that needs to run in a container.</p>
-	<p>Today, you can run libraries that you couldn't run in Workers before. For instance, try <a href="https://github.com/megaconfidence/wifski"><u>this Worker that uses FFmpeg to convert video to a GIF</u></a>.&nbsp;</p>
-	<p>Or you can <a href="https://github.com/mikenomitch/cron-container"><u>run a container as part of a cron job</u></a>. Or deploy a <a href="https://github.com/mikenomitch/static-frontend-container-backend"><u>static frontend with a containerized backend</u></a>. Or even run a <a href="https://github.com/ghostwriternr/claude-code-containers"><u>Cloudflare Agent that uses a Container to run Claude Code</u></a> on your behalf.</p>
-	<p>The <a href="https://blog.cloudflare.com/cloudflare-containers-coming-2025/#integrating-with-more-of-cloudflares-developer-platform"><u>integration with the rest of the Developer Platform</u></a> makes Containers even more powerful: <a href="https://blog.cloudflare.com/cloudflare-containers-coming-2025/#durable-objects-as-programmable-sidecars"><u>use Durable Objects</u></a> for state management, <a href="https://developers.cloudflare.com/workflows"><u>Workflows</u></a>, <a href="https://developers.cloudflare.com/queues"><u>Queues</u></a>, and <a href="https://agents.cloudflare.com"><u>Agents</u></a> to compose complex behaviors, <a href="https://developers.cloudflare.com/r2"><u>R2</u></a> to store Container data or media, and more.</p>
+	<p>Today, you can run libraries that you couldn't run in Workers before. For instance, try <a href="https://github.com/megaconfidence/wifski" target="_blank" rel="noopener noreferrer"><u>this Worker that uses FFmpeg to convert video to a GIF</u></a>.&nbsp;</p>
+	<p>Or you can <a href="https://github.com/mikenomitch/cron-container" target="_blank" rel="noopener noreferrer"><u>run a container as part of a cron job</u></a>. Or deploy a <a href="https://github.com/mikenomitch/static-frontend-container-backend" target="_blank" rel="noopener noreferrer"><u>static frontend with a containerized backend</u></a>. Or even run a <a href="https://github.com/ghostwriternr/claude-code-containers" target="_blank" rel="noopener noreferrer"><u>Cloudflare Agent that uses a Container to run Claude Code</u></a> on your behalf.</p>
+	<p>The <a href="https://blog.cloudflare.com/cloudflare-containers-coming-2025/#integrating-with-more-of-cloudflares-developer-platform"><u>integration with the rest of the Developer Platform</u></a> makes Containers even more powerful: <a href="https://blog.cloudflare.com/cloudflare-containers-coming-2025/#durable-objects-as-programmable-sidecars"><u>use Durable Objects</u></a> for state management, <a href="https://developers.cloudflare.com/workflows" target="_blank" rel="noopener noreferrer"><u>Workflows</u></a>, <a href="https://developers.cloudflare.com/queues" target="_blank" rel="noopener noreferrer"><u>Queues</u></a>, and <a href="https://agents.cloudflare.com" target="_blank" rel="noopener noreferrer"><u>Agents</u></a> to compose complex behaviors, <a href="https://developers.cloudflare.com/r2" target="_blank" rel="noopener noreferrer"><u>R2</u></a> to store Container data or media, and more.</p>
 	<div class="flex anchor relative">
 		<h2 id="pricing-and-packaging">Pricing and packaging</h2>
 		<a href="https://blog.cloudflare.com/#pricing-and-packaging" aria-hidden="true" class="relative sm:absolute sm:-start-5">
@@ -278,7 +278,7 @@ async fetch(request, env) {
 }</code></pre>
 	<ul>
 		<li>
-			<p><b>Further integrations with the Developer Platform</b> – We will continue to integrate with the developer platform with first-party APIs for our various services. We want it to be dead simple to mount <a href="https://developers.cloudflare.com/r2"><u>R2 buckets</u></a>, reach <a href="https://developers.cloudflare.com/hyperdrive"><u>Hyperdrive</u></a>, access <a href="https://developers.cloudflare.com/kv"><u>KV</u></a>, and more.</p>
+			<p><b>Further integrations with the Developer Platform</b> – We will continue to integrate with the developer platform with first-party APIs for our various services. We want it to be dead simple to mount <a href="https://developers.cloudflare.com/r2" target="_blank" rel="noopener noreferrer"><u>R2 buckets</u></a>, reach <a href="https://developers.cloudflare.com/hyperdrive" target="_blank" rel="noopener noreferrer"><u>Hyperdrive</u></a>, access <a href="https://developers.cloudflare.com/kv" target="_blank" rel="noopener noreferrer"><u>KV</u></a>, and more.</p>
 		</li>
 	</ul>
 	<p>And we are just getting started. Stay tuned for more updates this summer and over the course of the entire year.</p>

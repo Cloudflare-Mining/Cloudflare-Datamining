@@ -9,7 +9,7 @@
 		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3ffvMlsnnxSWwVHiNIsgj8/9d45189d5b725626f00a5f1f56b78ea1/workflow.png" alt="comic: xkcd 1172" class="kg-image" width="278" height="386" loading="lazy">
 
 	</figure>
-	<p>Source: <a href="https://xkcd.com/1172">xkcd 1172</a></p>
+	<p>Source: <a href="https://xkcd.com/1172" target="_blank" rel="noopener noreferrer">xkcd 1172</a></p>
 	<p>So what was I to do? I began worrying that I'd need to modify the keyboard handling directly in Wayland or in the Linux kernel. Maintaining my own fork of core system infrastructure that changes frequently was not an attractive thought.</p>
 	<p>Desperate, I asked the Cloudflare Engineering chat channel if anyone knew a better way. That's when Marek Kroemeke came to the rescue:</p>
 	<figure class="kg-card kg-image-card ">
@@ -17,7 +17,7 @@
 			<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3DPnIgdkERgExwaoI3VQjq/697b1dcddd133aebc28bd85cb04f7832/a-good-way.png" alt="Screenshot of chat log with Marek Kroemeke. He links to keyhack.stp, then comments: " oh,="" you="" said="" 'good="" way' ,="" missed="" that.""="" class="kg-image" width="444" height="60" loading="lazy">
 		</a>
 	</figure>
-	<p>Following <a href="https://sourceware.org/systemtap/examples/general/keyhack.stp">Marek's link</a>, I found:</p>
+	<p>Following <a href="https://sourceware.org/systemtap/examples/general/keyhack.stp" target="_blank" rel="noopener noreferrer">Marek's link</a>, I found:</p>
 	<pre class="language-bash"><code class="language-bash">#! /usr/bin/env stap
 
 # This is not useful, but it demonstrates that
@@ -56,7 +56,7 @@ probe end {
 		</a>
 	</div>
 	<p>"Monkey-patch" is often used as a pejorative. Many developers cringe at the thought. It's an awful hack! Never do that!</p>
-	<p>Indeed, in a lot of contexts, monkey-patching is a terrible idea. At a previous job, <a href="https://sandstorm.io/news/2016-09-30-fiber-bomb-debugging-story">I spent weeks</a> debugging problems caused by a bad (but well-meaning) monkey-patch made by one of our dependencies.</p>
+	<p>Indeed, in a lot of contexts, monkey-patching is a terrible idea. At a previous job, <a href="https://sandstorm.io/news/2016-09-30-fiber-bomb-debugging-story" target="_blank" rel="noopener noreferrer">I spent weeks</a> debugging problems caused by a bad (but well-meaning) monkey-patch made by one of our dependencies.</p>
 	<p>But, often, a little monkey-patch can save a lot of work. By monkey-patching my kernel, I can get the keyboard behavior I want without maintaining a fork forever, and without spending weeks developing a feature worthy of pushing upstream. And when patching my own machine, I can't hurt anyone but myself.</p>
 	<p>I would propose two rules for monkey patching:</p>
 	<ol>
@@ -92,7 +92,7 @@ probe end {
 	<p>But… nothing happened. My 'm' key still typed 'm'.</p>
 	<p>To debug, I added some <code>printf()</code> statements (which conveniently print to the terminal where <code>stap</code> runs). But, it appeared the keyboard events were indeed being captured. So why did 'm' still type 'm'?</p>
 	<p>It turns out, no one was listening. The <code>kbd_event</code> function is part of the text-mode terminal support. Sure enough, if I switched virtual terminals over to a text terminal, the key was being remapped. But Wayland uses a totally different code path to receive key events -- the <code>/dev/input</code> devices. These devices are implemented by the <code>evdev</code> module.</p>
-	<p>Looking through <a href="http://elixir.free-electrons.com/linux/v4.13/source/drivers/input/evdev.c">evdev.c</a>, at first <code>evdev_event()</code> looks tempting as a probe point: it has almost the same signature as <code>kbd_event()</code>. Unfortunately, this function is not usually called by the driver; rather, the multi-event version, <code>evdev_events()</code>, usually is. But that version takes an array, which seems more tedious to deal with.</p>
+	<p>Looking through <a href="http://elixir.free-electrons.com/linux/v4.13/source/drivers/input/evdev.c" target="_blank" rel="noopener noreferrer">evdev.c</a>, at first <code>evdev_event()</code> looks tempting as a probe point: it has almost the same signature as <code>kbd_event()</code>. Unfortunately, this function is not usually called by the driver; rather, the multi-event version, <code>evdev_events()</code>, usually is. But that version takes an array, which seems more tedious to deal with.</p>
 	<p>Looking further, I came across <code>__pass_event()</code>, which <code>evdev_events()</code> calls for each event. It's slightly different from <code>kbd_event()</code> in that the event is encapsulated in a struct, but at least it only takes one event at a time. This seemed like the easiest place to probe, so I tried it:</p>
 	<pre class="language-bash"><code class="language-bash"># DOES NOT WORK
 probe module("evdev").function("__pass_event") {
@@ -119,7 +119,7 @@ probe module("evdev").function("__pass_event") {
   }
 }</code></pre>
 	<p>Success! This script works. I no longer have any way to type 'm'.</p>
-	<p>From here, implementing the Dvorak-Qwerty key-remapping behavior I wanted was a simple matter of writing some code to track modifier key state and remap keys. <a href="https://github.com/kentonv/dvorak-qwerty/blob/master/unix/dvorak-qwerty.stp">You can find my full script on GitHub.</a></p>
+	<p>From here, implementing the Dvorak-Qwerty key-remapping behavior I wanted was a simple matter of writing some code to track modifier key state and remap keys. <a href="https://github.com/kentonv/dvorak-qwerty/blob/master/unix/dvorak-qwerty.stp" target="_blank" rel="noopener noreferrer">You can find my full script on GitHub.</a></p>
 	<figure class="kg-card kg-image-card ">
 		<a href="https://github.com/kentonv/dvorak-qwerty/blob/master/unix/dvorak-qwerty.stp">
 			<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6EhZxOXAn8Vuq1pAzJdQq5/bd011d215808d369acc310bd301f30fe/os-level-monkeypatch.png" alt="Screenshot of chat log between Kenton Varda and Alexander Huynh. Kenton says " it="" works"="" and="" links="" to="" dvorak-qwerty.stp.="" "systemtap="" is="" amazing"="" alexander="" replies:="" "dear="" lord,="" i="" never="" thought="" i'd="" see="" an="" os-level="" monkeypatch""="" class=" kg-image" width="615" height="162" loading="lazy">

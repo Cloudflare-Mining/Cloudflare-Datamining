@@ -1,8 +1,8 @@
 <div class="mb2 gray5">6 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/IeCLb9U35GO1PoFzxbEyU/0b75776235d75588111869a48c4c73a9/network-analytics-v2-announcement.png" alt="">
 <div class="post-content lh-copy gray1">
 	<p></p>
-	<p>We’re pleased to introduce Cloudflare’s new and improved Network Analytics dashboard. It’s now available to Magic Transit and Spectrum customers on the <a href="https://www.cloudflare.com/plans/enterprise">Enterprise plan</a>.</p>
-	<p>The dashboard provides network operators better visibility into traffic behavior, firewall events, and <a href="https://www.cloudflare.com/learning/ddos/what-is-a-ddos-attack">DDoS attacks</a> as observed across Cloudflare’s global network. Some of the dashboard’s data points include:</p>
+	<p>We’re pleased to introduce Cloudflare’s new and improved Network Analytics dashboard. It’s now available to Magic Transit and Spectrum customers on the <a href="https://www.cloudflare.com/plans/enterprise" target="_blank" rel="noopener noreferrer">Enterprise plan</a>.</p>
+	<p>The dashboard provides network operators better visibility into traffic behavior, firewall events, and <a href="https://www.cloudflare.com/learning/ddos/what-is-a-ddos-attack" target="_blank" rel="noopener noreferrer">DDoS attacks</a> as observed across Cloudflare’s global network. Some of the dashboard’s data points include:</p>
 	<ol>
 		<li>
 			<p>Top traffic and attack attributes</p>
@@ -26,7 +26,7 @@
 
 	</figure>
 	<p>Network Analytics - View traffic by mitigation system</p>
-	<p>This dashboard was the outcome of a<a href="https://www.cloudflare.com/learning/cloud/how-to-refactor-applications"> full refactoring</a> of our network-layer data logging pipeline. The new data pipeline is decentralized and much more flexible than the previous one — making it more resilient, performant, and scalable for when we add new mitigation systems, introduce new sampling points, and roll out new <a href="https://www.cloudflare.com/network-security">services</a>. A technical deep-dive blog is coming soon, so stay tuned.</p>
+	<p>This dashboard was the outcome of a<a href="https://www.cloudflare.com/learning/cloud/how-to-refactor-applications" target="_blank" rel="noopener noreferrer"> full refactoring</a> of our network-layer data logging pipeline. The new data pipeline is decentralized and much more flexible than the previous one — making it more resilient, performant, and scalable for when we add new mitigation systems, introduce new sampling points, and roll out new <a href="https://www.cloudflare.com/network-security" target="_blank" rel="noopener noreferrer">services</a>. A technical deep-dive blog is coming soon, so stay tuned.</p>
 	<p>In this blog post, we will demonstrate how the dashboard helps network operators:</p>
 	<ol>
 		<li>
@@ -64,7 +64,7 @@
 			</svg>
 		</a>
 	</div>
-	<p>One of the many benefits of Cloudflare’s Network Analytics dashboard is its geographical accuracy. Identification of the traffic source usually involves correlating the source IP addresses to a city and country. However, network-layer traffic is subject to <a href="https://www.cloudflare.com/learning/ddos/glossary/ip-spoofing">IP spoofing</a>. Malicious actors can spoof (alter) their source IP address to obfuscate their origin (or their botnet’s nodes) while attacking your network. Correlating the location (e.g., the source country) based on spoofed IPs would therefore result in <i>spoofed countries</i>. Using <i>spoofed countries</i> would skew the global picture network operators rely on.</p>
+	<p>One of the many benefits of Cloudflare’s Network Analytics dashboard is its geographical accuracy. Identification of the traffic source usually involves correlating the source IP addresses to a city and country. However, network-layer traffic is subject to <a href="https://www.cloudflare.com/learning/ddos/glossary/ip-spoofing" target="_blank" rel="noopener noreferrer">IP spoofing</a>. Malicious actors can spoof (alter) their source IP address to obfuscate their origin (or their botnet’s nodes) while attacking your network. Correlating the location (e.g., the source country) based on spoofed IPs would therefore result in <i>spoofed countries</i>. Using <i>spoofed countries</i> would skew the global picture network operators rely on.</p>
 	<p>To overcome this challenge and provide our users accurate geoinformation, we rely on the location of the Cloudflare data center wherein the traffic was ingested. We’re able to achieve geographical accuracy with high granularity, because we operate data centers in over 285 locations around the world. We use BGP Anycast which ensures traffic is routed to the nearest data center within BGP catchment.</p>
 	<figure class="kg-card kg-image-card ">
 
@@ -115,7 +115,7 @@
 			</svg>
 		</a>
 	</div>
-	<p>Cloudflare detects and <a href="https://www.cloudflare.com/learning/ddos/ddos-mitigation">mitigates</a> the majority of DDoS attacks automatically. However, when a network operator responds to a sudden increase in traffic or a CPU spike in their data centers, they need to understand the nature of the traffic. Is this a legitimate surge due to a new game release for example, or an unmitigated DDoS attack? In either case, they need to act quickly to ensure there are no disruptions to critical services.</p>
+	<p>Cloudflare detects and <a href="https://www.cloudflare.com/learning/ddos/ddos-mitigation" target="_blank" rel="noopener noreferrer">mitigates</a> the majority of DDoS attacks automatically. However, when a network operator responds to a sudden increase in traffic or a CPU spike in their data centers, they need to understand the nature of the traffic. Is this a legitimate surge due to a new game release for example, or an unmitigated DDoS attack? In either case, they need to act quickly to ensure there are no disruptions to critical services.</p>
 	<p>The Network Analytics dashboard can help network operators quickly pattern traffic by switching the time-series’ grouping dimensions. They can then use that pattern to drop packets using the Magic Firewall. The default dimension is the <i>outcome</i> indicating whether traffic was <i>dropped</i> or <i>passed</i>. But by changing the time series dimension to another field such as the <i>TCP flag</i>, <i>Packet size</i>, or <i>Destination port</i> a pattern can emerge.</p>
 	<p>In the example below, we have zoomed in on a surge of traffic. By setting the <i>Protocol</i> field as the grouping dimension, we can see that there is a 5 Gbps surge of UDP packets (totalling at 840 GB throughput out of 991 GB in this time period). This is clearly not the traffic we want, so we can hover and click the UDP indicator to filter by it.</p>
 	<figure class="kg-card kg-image-card ">
@@ -203,5 +203,5 @@
 	</div>
 	<p>As we’ve seen in many cases, being unprepared can cost organizations substantial revenue loss, it can negatively impact their reputation, reduce users’ trust as well as <i>burn out</i> teams that need to constantly <i>put out fires</i> reactively. Furthermore, impact to organizations that operate in the healthcare industry, water, and electric and other critical infrastructure industries can cause very serious real-world problems, e.g., hospitals not being able to provide care for patients.</p>
 	<p>The Network Analytics dashboard aims to reduce the effort and time it takes network teams to investigate and resolve issues as well as to simplify and automate security reporting. The data is also available via GraphQL API and Logpush to allow teams to integrate the data into their internal systems and cross references with additional data points.</p>
-	<p>To learn more about the Network Analytics dashboard, refer to the <a href="https://developers.cloudflare.com/analytics/network-analytics">developer documentation</a>.</p>
+	<p>To learn more about the Network Analytics dashboard, refer to the <a href="https://developers.cloudflare.com/analytics/network-analytics" target="_blank" rel="noopener noreferrer">developer documentation</a>.</p>
 </div>

@@ -11,7 +11,7 @@
 			</svg>
 		</a>
 	</div>
-	<p><a href="https://www.amd.com/en/products/processors/server/epyc/9005-series.html"><u>AMD's EPYC™ 5th Generation Turin-based processors</u></a> deliver more than just a core count increase. The architecture delivers improvements across multiple dimensions of what Cloudflare servers require.</p>
+	<p><a href="https://www.amd.com/en/products/processors/server/epyc/9005-series.html" target="_blank" rel="noopener noreferrer"><u>AMD's EPYC™ 5th Generation Turin-based processors</u></a> deliver more than just a core count increase. The architecture delivers improvements across multiple dimensions of what Cloudflare servers require.</p>
 	<ul>
 		<li>
 			<p><b>2x core count:</b> up to 192 cores versus Gen 12's 96 cores, with SMT providing 384 threads</p>
@@ -110,7 +110,7 @@
 		</a>
 	</div>
 	<p>For our FL1 request handling layer, NGINX- and LuaJIT-based code, this cache reduction presented a significant challenge. But we didn't just assume it would be a problem; we measured it.</p>
-	<p>During the CPU evaluation phase for Gen 13, we collected CPU performance counters and profiling data to identify exactly what was happening under the hood using <a href="https://docs.amd.com/r/en-US/68658-uProf-getting-started-guide/Identifying-Issues-Using-uProfPcm"><u>AMD uProf tool</u></a>. The data showed:</p>
+	<p>During the CPU evaluation phase for Gen 13, we collected CPU performance counters and profiling data to identify exactly what was happening under the hood using <a href="https://docs.amd.com/r/en-US/68658-uProf-getting-started-guide/Identifying-Issues-Using-uProfPcm" target="_blank" rel="noopener noreferrer"><u>AMD uProf tool</u></a>. The data showed:</p>
 	<ul>
 		<li>
 			<p>L3 cache miss rates increased dramatically compared to Gen 12's server equipped with 3D V-cache processors</p>
@@ -543,5 +543,5 @@
 	</div>
 	<p>Our legacy request serving layer FL1 hit a cache contention wall on Gen 13, forcing an unacceptable tradeoff between throughput and latency. Instead of compromising, we built FL2.&nbsp;</p>
 	<p>Designed with a vastly leaner memory access pattern, FL2 removes our dependency on massive L3 caches and allows linear scaling with core count. Running on the Gen 13 AMD Turin platform, FL2 unlocks 2x the throughput and a 50% boost in power efficiency all while keeping latency within our SLAs. This leap forward is a great reminder of the importance of hardware-software co-design. Unconstrained by cache limits, Gen 13 servers are now ready to be deployed to serve millions of requests across Cloudflare’s global network.</p>
-	<p>If you're excited about working on infrastructure at global scale, <a href="https://www.cloudflare.com/careers/jobs"><u>we're hiring</u></a>.</p>
+	<p>If you're excited about working on infrastructure at global scale, <a href="https://www.cloudflare.com/careers/jobs" target="_blank" rel="noopener noreferrer"><u>we're hiring</u></a>.</p>
 </div>

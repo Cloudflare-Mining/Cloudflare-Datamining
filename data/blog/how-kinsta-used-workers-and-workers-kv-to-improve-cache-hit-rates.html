@@ -1,7 +1,7 @@
 <div class="mb2 gray5">3 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4QtEG4SPpBvhhQRrOHLmMt/ff56c77652452c22b0ff7c73949cf718/how-kinsta-used-workers-and-workers-kv-to-improve-cache-hit-rates.png" alt="">
 <div class="post-content lh-copy gray1">
 	<p>This is a guest post by Kinsta about their use of our platform.</p>
-	<p>At <a href="https://kinsta.com">Kinsta</a>, we’re obsessed with speed: Our Application Hosting, Database Hosting and Managed WordPress Hosting services all run on the Google Cloud Platform’s fastest Premium Tier Network and C2 Machines, and we rely on Cloudflare to keep the pedal to the metal for tens of thousands of customers who want to deliver their content around the world with speed and security.</p>
+	<p>At <a href="https://kinsta.com" target="_blank" rel="noopener noreferrer">Kinsta</a>, we’re obsessed with speed: Our Application Hosting, Database Hosting and Managed WordPress Hosting services all run on the Google Cloud Platform’s fastest Premium Tier Network and C2 Machines, and we rely on Cloudflare to keep the pedal to the metal for tens of thousands of customers who want to deliver their content around the world with speed and security.</p>
 	<p>While making that happen, we’ve learned a thing or two about using Cloudflare Workers and Workers KV to provide optimized caching rules for static and dynamic content.</p>
 	<p>In early 2023, we doubled down on Cloudflare cache wrangling, making caches more responsive to client-side configuration changes while also shifting the heavy lifting behind broadcasting feature updates away from our admins on the backend and into Cloudflare Workers. A key result was a dramatic increase in the share of customer data successfully cached, increasing 56.3% between October 2022 and March 2023.</p>
 	<figure class="kg-card kg-image-card ">
@@ -19,7 +19,7 @@
 		</a>
 	</div>
 	<p>Every Kinsta-hosted domain is a key, and its value contains at least the core settings, like the origin's IP and port, and a unique random ID. With this data easily available in Workers KV, we can use Workers to analyze, manipulate, and route requests to their expected backend. We also use Workers KV to store customer optimization options like Polish, Image Resizing, and Auto Minify.</p>
-	<p>To route requests to custom IPs and ports, we use resolveOverride, a Cloudflare-specific <a href="https://developers.cloudflare.com/workers/runtime-apis/request/#requestinitcfproperties">Request property</a>. Here's an example:</p>
+	<p>To route requests to custom IPs and ports, we use resolveOverride, a Cloudflare-specific <a href="https://developers.cloudflare.com/workers/runtime-apis/request/#requestinitcfproperties" target="_blank" rel="noopener noreferrer">Request property</a>. Here's an example:</p>
 	<pre class="language-javascript"><code class="language-javascript">// Assign KV values to variables
 const { customBackend } = kvdata.kinstaConf;
 
@@ -85,7 +85,7 @@ cf.resolveOverride = customBackend;</code></pre>
   
   return site_data;
 };</code></pre>
-	<p>(Optionally, you could use <a href="https://flareutils.pages.dev/betterkv">FlareUtils' BetterKV</a>.)</p>
+	<p>(Optionally, you could use <a href="https://flareutils.pages.dev/betterkv" target="_blank" rel="noopener noreferrer">FlareUtils' BetterKV</a>.)</p>
 	<p>At Kinsta, we implemented a 30-second cache TTL for Workers KV data, decreasing read operations by about 80%.</p>
 	<figure class="kg-card kg-image-card ">
 
@@ -101,5 +101,5 @@ cf.resolveOverride = customBackend;</code></pre>
 			</svg>
 		</a>
 	</div>
-	<p>Want to learn more about Workers and Workers KV? Check out the Cloudflare Workers KV developer <a href="https://developers.cloudflare.com/workers/learning/how-kv-works">documentation</a>, or read our dedicated <a href="https://www.cloudflare.com/products/workers-kv">homepage</a>.</p>
+	<p>Want to learn more about Workers and Workers KV? Check out the Cloudflare Workers KV developer <a href="https://developers.cloudflare.com/workers/learning/how-kv-works" target="_blank" rel="noopener noreferrer">documentation</a>, or read our dedicated <a href="https://www.cloudflare.com/products/workers-kv" target="_blank" rel="noopener noreferrer">homepage</a>.</p>
 </div>

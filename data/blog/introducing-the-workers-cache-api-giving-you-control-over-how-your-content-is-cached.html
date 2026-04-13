@@ -2,8 +2,8 @@
 <div class="mt4">This post is also available in <a href="https://blog.cloudflare.com/fr-fr/introducing-the-workers-cache-api-giving-you-control-over-how-your-content-is-cached">Français</a> and <a href="https://blog.cloudflare.com/de-de/introducing-the-workers-cache-api-giving-you-control-over-how-your-content-is-cached">Deutsch</a>.</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4t2M15nxNsDRDzoqDPRiJx/e8a56abdadcddbe619780e234f778f56/introducing-the-workers-cache-api-giving-you-control-over-how-your-content-is-cached.png" alt="">
 <div class="post-content lh-copy gray1">
 	<p></p>
-	<p>At Cloudflare, we aim to make the Internet faster and safer for everyone. One way we do this is through <i>caching:</i> we keep a copy of our customer content in our 165 data centers around the world. This brings content &nbsp;closer to users and reduces traffic back to <a href="https://www.cloudflare.com/learning/cdn/glossary/origin-server">origin servers</a>.</p>
-	<p>Today, we’re excited to announce a huge change in our how cache works. <a href="https://www.cloudflare.com/products/cloudflare-workers">Cloudflare Workers</a> now integrates the <a href="https://developers.cloudflare.com/workers/reference/cache-api">Cache API</a>, giving you programmatic control over our caches around the world.</p>
+	<p>At Cloudflare, we aim to make the Internet faster and safer for everyone. One way we do this is through <i>caching:</i> we keep a copy of our customer content in our 165 data centers around the world. This brings content &nbsp;closer to users and reduces traffic back to <a href="https://www.cloudflare.com/learning/cdn/glossary/origin-server" target="_blank" rel="noopener noreferrer">origin servers</a>.</p>
+	<p>Today, we’re excited to announce a huge change in our how cache works. <a href="https://www.cloudflare.com/products/cloudflare-workers" target="_blank" rel="noopener noreferrer">Cloudflare Workers</a> now integrates the <a href="https://developers.cloudflare.com/workers/reference/cache-api" target="_blank" rel="noopener noreferrer">Cache API</a>, giving you programmatic control over our caches around the world.</p>
 	<div class="flex anchor relative">
 		<h3 id="why-the-cache-api">Why the Cache API?</h3>
 		<a href="https://blog.cloudflare.com/#why-the-cache-api" aria-hidden="true" class="relative sm:absolute sm:-start-5">
@@ -29,7 +29,7 @@
 
 	</figure>
 	<p>fetch() will always write back to cache after a miss.</p>
-	<p>The Cache API changes all of that. It’s based on the <a href="https://developer.mozilla.org/en-US/docs/Web/API/Cache">Service Workers Cache API</a>, and at its core <a href="https://developers.cloudflare.com/workers/reference/cache-api">it offers three methods</a>:</p>
+	<p>The Cache API changes all of that. It’s based on the <a href="https://developer.mozilla.org/en-US/docs/Web/API/Cache" target="_blank" rel="noopener noreferrer">Service Workers Cache API</a>, and at its core <a href="https://developers.cloudflare.com/workers/reference/cache-api" target="_blank" rel="noopener noreferrer">it offers three methods</a>:</p>
 	<ul>
 		<li>
 			<p><b><b>put(</b></b><i>request, response</i><b><b>)</b></b> places a Response in the cache, keyed by a Request</p>
@@ -57,14 +57,14 @@
 			</svg>
 		</a>
 	</div>
-	<p>Since we <a href="https://blog.cloudflare.com/cache-api-for-cloudflare-workers-is-now-in-beta">announced the beta</a> in September, usage of the Cache API has grown to serve thousands of requests per second. One common use-case is to cache <a href="https://en.wikipedia.org/wiki/POST_(HTTP)">POST requests</a>.</p>
+	<p>Since we <a href="https://blog.cloudflare.com/cache-api-for-cloudflare-workers-is-now-in-beta">announced the beta</a> in September, usage of the Cache API has grown to serve thousands of requests per second. One common use-case is to cache <a href="https://en.wikipedia.org/wiki/POST_(HTTP)" target="_blank" rel="noopener noreferrer">POST requests</a>.</p>
 	<p>Normally, Cloudflare does not consider POST requests to be cacheable because they are designed to be non-idempotent: that is, they change state on the server when a request is made. However, applications can also use POST requests to send large amounts of data to the server, or as a common HTTP method for API calls.</p>
 	<p>Here’s what one developer had to say about using the Cache API:</p>
 	<blockquote>
 		<p>We needed to migrate some complex server side code to the edge. We have an API endpoint that accepts POST requests with large bodies, but mostly returns the same data without changing anything on our origin server. With Workers and the Cache API, we were able to cache responses to POST requests that we knew were safe, and reduce significant load on our origin.</p>
 	</blockquote>
 	<p>— Aaron Dearinger, Edge Architect, Garmin International</p>
-	<p>Caching POST requests with the Cache API is simple. Here’s some example code from our <a href="https://developers.cloudflare.com/workers/reference/cache-api">documentation</a>:</p>
+	<p>Caching POST requests with the Cache API is simple. Here’s some example code from our <a href="https://developers.cloudflare.com/workers/reference/cache-api" target="_blank" rel="noopener noreferrer">documentation</a>:</p>
 	<pre class="language-javascript"><code class="language-javascript">async function handleRequest(event) {
   let request = event.request
   let response
@@ -122,5 +122,5 @@ async function sha256(message) {
 			</svg>
 		</a>
 	</div>
-	<p>Already in our beta, we’ve seen customers use the Cache API to dynamically cache parts of GraphQL queries and store customer data to improve performance. We’re excited to see what you build! Check out the <a href="https://developers.cloudflare.com/workers">Cloudflare Workers getting started guide</a> and the <a href="https://developers.cloudflare.com/workers/reference/cache-api">Cache API docs</a>, and let us know what you’ve built in the <a href="https://community.cloudflare.com/c/developers/workers">Workers Community forum</a>.</p>
+	<p>Already in our beta, we’ve seen customers use the Cache API to dynamically cache parts of GraphQL queries and store customer data to improve performance. We’re excited to see what you build! Check out the <a href="https://developers.cloudflare.com/workers" target="_blank" rel="noopener noreferrer">Cloudflare Workers getting started guide</a> and the <a href="https://developers.cloudflare.com/workers/reference/cache-api" target="_blank" rel="noopener noreferrer">Cache API docs</a>, and let us know what you’ve built in the <a href="https://community.cloudflare.com/c/developers/workers" target="_blank" rel="noopener noreferrer">Workers Community forum</a>.</p>
 </div>

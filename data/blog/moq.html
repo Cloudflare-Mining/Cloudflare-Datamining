@@ -1,9 +1,9 @@
 <div class="mb2 gray5">13 min read</div>
 <div class="mt4">This post is also available in <a href="https://blog.cloudflare.com/zh-cn/moq">简体中文</a> and <a href="https://blog.cloudflare.com/ja-jp/moq">日本語</a>.</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1qQfL5TKs3wr4yqlGiPPep/898aa62976bfa0fc3fb16111e4cb60b0/image4.png" alt="">
 <div class="post-content lh-copy gray1">
-	<p>For over two decades, we've built real-time communication on the Internet using a patchwork of specialized tools. RTMP gave us ingest. <a href="https://www.cloudflare.com/learning/video/what-is-http-live-streaming"><u>HLS</u></a> and <a href="https://www.mpeg.org/standards/MPEG-DASH"><u>DASH</u></a> gave us scale. WebRTC gave us interactivity. Each solved a specific problem for its time, and together they power the global streaming ecosystem we rely on today.</p>
+	<p>For over two decades, we've built real-time communication on the Internet using a patchwork of specialized tools. RTMP gave us ingest. <a href="https://www.cloudflare.com/learning/video/what-is-http-live-streaming" target="_blank" rel="noopener noreferrer"><u>HLS</u></a> and <a href="https://www.mpeg.org/standards/MPEG-DASH" target="_blank" rel="noopener noreferrer"><u>DASH</u></a> gave us scale. WebRTC gave us interactivity. Each solved a specific problem for its time, and together they power the global streaming ecosystem we rely on today.</p>
 	<p>But using them together in 2025 feels like building a modern application with tools from different eras. The seams are starting to show—in complexity, in latency, and in the flexibility needed for the next generation of applications, from sub-second live auctions to massive interactive events. We're often forced to make painful trade-offs between latency, scale, and operational complexity.</p>
-	<p>Today Cloudflare is launching the first Media over QUIC (MoQ) relay network, running on every Cloudflare server in datacenters in 330+ cities. MoQ is an open protocol being developed at the <a href="https://www.ietf.org"><u>IETF</u></a> by engineers from across the industry—not a proprietary Cloudflare technology. MoQ combines the low-latency interactivity of WebRTC, the scalability of HLS/DASH, and the simplicity of a single architecture, all built on a modern transport layer. We're joining Meta, Google, Cisco, and others in building implementations that work seamlessly together, creating a shared foundation for the next generation of real-time applications on the Internet.</p>
+	<p>Today Cloudflare is launching the first Media over QUIC (MoQ) relay network, running on every Cloudflare server in datacenters in 330+ cities. MoQ is an open protocol being developed at the <a href="https://www.ietf.org" target="_blank" rel="noopener noreferrer"><u>IETF</u></a> by engineers from across the industry—not a proprietary Cloudflare technology. MoQ combines the low-latency interactivity of WebRTC, the scalability of HLS/DASH, and the simplicity of a single architecture, all built on a modern transport layer. We're joining Meta, Google, Cisco, and others in building implementations that work seamlessly together, creating a shared foundation for the next generation of real-time applications on the Internet.</p>
 	<div class="flex anchor relative">
 		<h3 id="an-evolutionary-ladder-of-compromise"><b>An evolutionary ladder of compromise</b></h3>
 		<a href="https://blog.cloudflare.com/#an-evolutionary-ladder-of-compromise" aria-hidden="true" class="relative sm:absolute sm:-start-5">
@@ -14,12 +14,12 @@
 	</div>
 	<p>To understand the promise of MoQ, we first have to appreciate the history that led us here—a journey defined by a series of architectural compromises where solving one problem inevitably created another.</p>
 	<p><b>The RTMP era: Conquering latency, compromising on scale</b></p>
-	<p>In the early 2000s, <b>RTMP (Real-Time Messaging Protocol)</b> was a breakthrough. It solved the frustrating "download and wait" experience of early video playback on the web by creating a persistent, stateful TCP connection between a <a href="https://en.wikipedia.org/wiki/Adobe_Flash"><u>Flash</u></a> client and a server. This enabled low-latency streaming (2-5 seconds), powering the first wave of live platforms like <a href="http://justin.tv"><u>Justin.tv</u></a> (which later became Twitch).</p>
-	<p>But its strength was its weakness. That stateful connection, which had to be maintained for every viewer, was architecturally hostile to scale. It required expensive, specialized media servers and couldn't use the commodity HTTP-based <a href="https://www.cloudflare.com/learning/cdn/what-is-a-cdn"><u>Content Delivery Networks (CDNs)</u></a> that were beginning to power the rest of the web. Its reliance on TCP also meant that a single lost packet could freeze the entire stream—a phenomenon known as <a href="https://blog.cloudflare.com/the-road-to-quic/#head-of-line-blocking"><u>head-of-line blocking</u></a>—creating jarring latency spikes. The industry retained RTMP for the "first mile" from the camera to servers (ingest), but a new solution was needed for the "last mile" from servers to your screen (delivery).</p>
+	<p>In the early 2000s, <b>RTMP (Real-Time Messaging Protocol)</b> was a breakthrough. It solved the frustrating "download and wait" experience of early video playback on the web by creating a persistent, stateful TCP connection between a <a href="https://en.wikipedia.org/wiki/Adobe_Flash" target="_blank" rel="noopener noreferrer"><u>Flash</u></a> client and a server. This enabled low-latency streaming (2-5 seconds), powering the first wave of live platforms like <a href="http://justin.tv" target="_blank" rel="noopener noreferrer"><u>Justin.tv</u></a> (which later became Twitch).</p>
+	<p>But its strength was its weakness. That stateful connection, which had to be maintained for every viewer, was architecturally hostile to scale. It required expensive, specialized media servers and couldn't use the commodity HTTP-based <a href="https://www.cloudflare.com/learning/cdn/what-is-a-cdn" target="_blank" rel="noopener noreferrer"><u>Content Delivery Networks (CDNs)</u></a> that were beginning to power the rest of the web. Its reliance on TCP also meant that a single lost packet could freeze the entire stream—a phenomenon known as <a href="https://blog.cloudflare.com/the-road-to-quic/#head-of-line-blocking"><u>head-of-line blocking</u></a>—creating jarring latency spikes. The industry retained RTMP for the "first mile" from the camera to servers (ingest), but a new solution was needed for the "last mile" from servers to your screen (delivery).</p>
 	<p><b>The HLS &amp; DASH era: Solving for scale, compromising on latency</b></p>
-	<p>The catalyst for the next era was the iPhone's rejection of Flash. In response, Apple created <a href="https://www.cloudflare.com/learning/video/what-is-http-live-streaming"><b><u>HLS (HTTP Live Streaming)</u></b></a>. HLS, and its open-standard counterpart <b>MPEG-DASH</b> abandoned stateful connections and treated video as a sequence of small, static files delivered over standard HTTP.</p>
+	<p>The catalyst for the next era was the iPhone's rejection of Flash. In response, Apple created <a href="https://www.cloudflare.com/learning/video/what-is-http-live-streaming" target="_blank" rel="noopener noreferrer"><b><u>HLS (HTTP Live Streaming)</u></b></a>. HLS, and its open-standard counterpart <b>MPEG-DASH</b> abandoned stateful connections and treated video as a sequence of small, static files delivered over standard HTTP.</p>
 	<p>This enabled much greater scalability. By moving to the interoperable open standard of HTTP for the underlying transport, video could now be distributed by any web server and cached by global CDNs, allowing platforms to reach millions of viewers reliably and relatively inexpensively. The compromise? A <i>significant</i> trade-off in latency. To ensure smooth playback, players needed to buffer at least three video segments before starting. With segment durations of 6-10 seconds, this baked 15-30 seconds of latency directly into the architecture.</p>
-	<p>While extensions like <a href="https://developer.apple.com/documentation/http-live-streaming/enabling-low-latency-http-live-streaming-hls"><u>Low-Latency HLS (LL-HLS)</u></a> have more recently emerged to achieve latencies in the 3-second range, they remain complex patches<a href="https://blog.cloudflare.com/the-road-to-quic/#head-of-line-blocking"><u> fighting against the protocol's fundamental design</u></a>. These extensions introduce a layer of stateful, real-time communication—using clever workarounds like holding playlist requests open—that ultimately strain the stateless request-response model central to HTTP's scalability and composability.</p>
+	<p>While extensions like <a href="https://developer.apple.com/documentation/http-live-streaming/enabling-low-latency-http-live-streaming-hls" target="_blank" rel="noopener noreferrer"><u>Low-Latency HLS (LL-HLS)</u></a> have more recently emerged to achieve latencies in the 3-second range, they remain complex patches<a href="https://blog.cloudflare.com/the-road-to-quic/#head-of-line-blocking"><u> fighting against the protocol's fundamental design</u></a>. These extensions introduce a layer of stateful, real-time communication—using clever workarounds like holding playlist requests open—that ultimately strain the stateless request-response model central to HTTP's scalability and composability.</p>
 	<p><b>The WebRTC Era: Conquering conversational latency, compromising on architecture</b></p>
 	<p>In parallel, <b>WebRTC (Web Real-Time Communication)</b> emerged to solve a different problem: plugin-free, two-way conversational video with sub-500ms latency within a browser. It worked by creating direct peer-to-peer (P2P) media paths, removing central servers from the equation.</p>
 	<p>But this P2P model is fundamentally at odds with broadcast scale. <a href="https://blog.cloudflare.com/cloudflare-calls-anycast-webrtc/#webrtc-growing-pains"><u>In a mesh network, the number of connections grows quadratically with each new participant</u></a> (the "N-squared problem"). For more than a handful of users, the model collapses under the weight of its own complexity. To work around this, the industry developed server-based topologies like the Selective Forwarding Unit (SFU) and Multipoint Control Unit (MCU). These are effective but require building what is essentially a <a href="https://blog.cloudflare.com/cloudflare-calls-anycast-webrtc/#is-cloudflare-calls-a-real-sfu"><u>private, stateful, real-time CDN</u></a>—a complex and expensive undertaking that is not standardized across infrastructure providers.</p>
@@ -42,7 +42,7 @@
 			<p><b>Architectural simplicity:</b> Creating a single, flexible protocol for ingest, distribution, and interactive use cases, eliminating the need to transcode between different technologies.</p>
 		</li>
 		<li>
-			<p><b>Transport efficiency:</b> Building on <a href="https://blog.cloudflare.com/the-road-to-quic"><u>QUIC</u></a>, a <a href="https://www.cloudflare.com/learning/ddos/glossary/user-datagram-protocol-udp"><u>UDP</u></a> based protocol to eliminate bottlenecks like TCP<a href="https://blog.cloudflare.com/the-road-to-quic/#head-of-line-blocking"><u> head-of-line blocking</u></a>.</p>
+			<p><b>Transport efficiency:</b> Building on <a href="https://blog.cloudflare.com/the-road-to-quic"><u>QUIC</u></a>, a <a href="https://www.cloudflare.com/learning/ddos/glossary/user-datagram-protocol-udp" target="_blank" rel="noopener noreferrer"><u>UDP</u></a> based protocol to eliminate bottlenecks like TCP<a href="https://blog.cloudflare.com/the-road-to-quic/#head-of-line-blocking"><u> head-of-line blocking</u></a>.</p>
 		</li>
 	</ol>
 	<p>The initial focus was "Media" over QUIC, but the core concepts—named tracks of timed, ordered, but independent data—are so flexible that the working group is now simply calling the protocol "MoQ." The name reflects the power of the abstraction: it's a generic transport for any real-time data that needs to be delivered efficiently and at scale.</p>
@@ -57,7 +57,7 @@
 	</div>
 	<p>MoQ's elegance comes from solving the right problem at the right layer. Let's build up from the foundation to see how it achieves sub-second latency at scale.</p>
 	<p>The choice of QUIC as MoQ's foundation isn't arbitrary—it addresses issues that have plagued streaming protocols for decades.</p>
-	<p>By building on <b>QUIC</b> (the transport protocol that also powers <a href="https://www.cloudflare.com/learning/performance/what-is-http3"><u>HTTP/3</u></a>), MoQ solves some key streaming problems:</p>
+	<p>By building on <b>QUIC</b> (the transport protocol that also powers <a href="https://www.cloudflare.com/learning/performance/what-is-http3" target="_blank" rel="noopener noreferrer"><u>HTTP/3</u></a>), MoQ solves some key streaming problems:</p>
 	<ul>
 		<li>
 			<p><b>No head-of-line blocking:</b> Unlike TCP where one lost packet blocks everything behind it, QUIC streams are independent. A lost packet on one stream (e.g., an audio track) doesn't block another (e.g., the main video track). This alone eliminates the stuttering that plagued RTMP.</p>
@@ -128,7 +128,7 @@
 			<p><b>Subscribers</b>: Request specific tracks by name</p>
 		</li>
 		<li>
-			<p><b>Relays</b>: Connect publishers to subscribers by forwarding immutable Objects without parsing or <a href="https://www.cloudflare.com/learning/video/video-encoding-formats"><u>transcoding</u></a> the media</p>
+			<p><b>Relays</b>: Connect publishers to subscribers by forwarding immutable Objects without parsing or <a href="https://www.cloudflare.com/learning/video/video-encoding-formats" target="_blank" rel="noopener noreferrer"><u>transcoding</u></a> the media</p>
 		</li>
 	</ul>
 	<p>A Relay acts as a subscriber to receive tracks from upstream (like the original publisher) and simultaneously acts as a publisher to forward those same tracks downstream. This model is the key to MoQ's scalability: one upstream subscription can fan out to serve thousands of downstream viewers.</p>
@@ -147,14 +147,14 @@
 	<p>MoQ's architecture can be understood as three distinct layers, each with a clear job:</p>
 	<ol>
 		<li>
-			<p><b>The Transport Foundation (QUIC or WebTransport):</b> This is the modern foundation upon which everything is built. MoQT can run directly over raw <b>QUIC</b>, which is ideal for native applications, or over <b>WebTransport</b>, which is required for use in a web browser. Crucially, the<a href="https://www.ietf.org/archive/id/draft-ietf-webtrans-http3-02.html"> <u>WebTransport protocol</u></a> and its corresponding<a href="https://w3c.github.io/webtransport"> <u>W3C browser API</u></a> make QUIC's multiplexed reliable streams and unreliable datagrams directly accessible to browser applications. This is a game-changer. Protocols like <a href="https://blog.cloudflare.com/stream-now-supports-srt-as-a-drop-in-replacement-for-rtmp"><u>SRT</u></a> may be efficient, but their lack of native browser support relegates them to ingest-only roles. WebTransport gives MoQ first-class citizenship on the web, making it suitable for both ingest and massive-scale distribution directly to clients.</p>
+			<p><b>The Transport Foundation (QUIC or WebTransport):</b> This is the modern foundation upon which everything is built. MoQT can run directly over raw <b>QUIC</b>, which is ideal for native applications, or over <b>WebTransport</b>, which is required for use in a web browser. Crucially, the<a href="https://www.ietf.org/archive/id/draft-ietf-webtrans-http3-02.html" target="_blank" rel="noopener noreferrer"> <u>WebTransport protocol</u></a> and its corresponding<a href="https://w3c.github.io/webtransport" target="_blank" rel="noopener noreferrer"> <u>W3C browser API</u></a> make QUIC's multiplexed reliable streams and unreliable datagrams directly accessible to browser applications. This is a game-changer. Protocols like <a href="https://blog.cloudflare.com/stream-now-supports-srt-as-a-drop-in-replacement-for-rtmp"><u>SRT</u></a> may be efficient, but their lack of native browser support relegates them to ingest-only roles. WebTransport gives MoQ first-class citizenship on the web, making it suitable for both ingest and massive-scale distribution directly to clients.</p>
 		</li>
 		<li>
-			<p><b>The MoQT Layer:</b> Sitting on top of QUIC (or WebTransport), the MoQT layer provides the signaling and structure for a publish-subscribe system. This is the primary focus of the IETF working group. It defines the core control messages—like ANNOUNCE, and SUBSCRIBE—and the basic data model we just covered. MoQT itself is intentionally spartan; it doesn't know or care if the data it's moving is <a href="https://www.cloudflare.com/learning/video/what-is-h264-avc"><u>H.264</u></a> video, Opus audio, or game state updates.</p>
+			<p><b>The MoQT Layer:</b> Sitting on top of QUIC (or WebTransport), the MoQT layer provides the signaling and structure for a publish-subscribe system. This is the primary focus of the IETF working group. It defines the core control messages—like ANNOUNCE, and SUBSCRIBE—and the basic data model we just covered. MoQT itself is intentionally spartan; it doesn't know or care if the data it's moving is <a href="https://www.cloudflare.com/learning/video/what-is-h264-avc" target="_blank" rel="noopener noreferrer"><u>H.264</u></a> video, Opus audio, or game state updates.</p>
 		</li>
 		<li>
 			<p><b>The Streaming Format Layer:</b> This is where media-specific logic lives. A streaming format defines things like manifests, codec metadata, and packaging rules.
-				<a href="https://datatracker.ietf.org/doc/draft-ietf-moq-warp"><b><u>WARP</u></b></a> is one such format being developed alongside MoQT at the IETF, but it isn't the only one. Another standards body, like DASH-IF, could define a <a href="https://www.iso.org/standard/85623.html"><u>CMAF</u></a>-based streaming format over MoQT. A company that controls both original publisher and end subscriber can develop its own proprietary streaming format to experiment with new codecs or delivery mechanisms without being constrained by the transport protocol.
+				<a href="https://datatracker.ietf.org/doc/draft-ietf-moq-warp" target="_blank" rel="noopener noreferrer"><b><u>WARP</u></b></a> is one such format being developed alongside MoQT at the IETF, but it isn't the only one. Another standards body, like DASH-IF, could define a <a href="https://www.iso.org/standard/85623.html" target="_blank" rel="noopener noreferrer"><u>CMAF</u></a>-based streaming format over MoQT. A company that controls both original publisher and end subscriber can develop its own proprietary streaming format to experiment with new codecs or delivery mechanisms without being constrained by the transport protocol.
 			</p>
 		</li>
 	</ol>
@@ -235,7 +235,7 @@
 		</a>
 	</div>
 	<p>Theory is one thing; implementation is another. To validate the protocol and understand its real-world challenges, we've been building one of the first global MoQ relay networks. Cloudflare's network, which places compute and logic at the edge, is very well suited for this.</p>
-	<p>Our architecture connects the abstract concepts of MoQ to the Cloudflare stack. In our deep dive, we mentioned that when a publisher <code>ANNOUNCE</code>s a namespace, relays need to register this availability in a "shared control plane" so that <code>SUBSCRIBE</code> requests can be routed correctly. For this critical piece of state management, we use <a href="https://developers.cloudflare.com/durable-objects"><u>Durable Objects</u></a>.</p>
+	<p>Our architecture connects the abstract concepts of MoQ to the Cloudflare stack. In our deep dive, we mentioned that when a publisher <code>ANNOUNCE</code>s a namespace, relays need to register this availability in a "shared control plane" so that <code>SUBSCRIBE</code> requests can be routed correctly. For this critical piece of state management, we use <a href="https://developers.cloudflare.com/durable-objects" target="_blank" rel="noopener noreferrer"><u>Durable Objects</u></a>.</p>
 	<p>When a publisher announces a new namespace to a relay in, say, London, that relay uses a Durable Object—our strongly consistent, single-threaded storage solution—to record that this namespace is now available at that specific location. When a subscriber in Paris wants a track from that namespace, the network can query this distributed state to find the nearest source and route the <code>SUBSCRIBE</code> request accordingly. This architecture builds upon the technology we developed for Cloudflare's real-time services and provides a solution to the challenge of state management at a global scale.</p>
 	<div class="flex anchor relative">
 		<h4 id="an-evolving-specification">An Evolving Specification</h4>
@@ -245,11 +245,11 @@
 			</svg>
 		</a>
 	</div>
-	<p>Building on a new protocol in the open means implementing against a moving target. To get MoQ into the hands of the community, we made a deliberate trade-off: our current relay implementation is based on a <b>subset of the features defined in </b><a href="https://www.ietf.org/archive/id/draft-ietf-moq-transport-07.html"><b><u>draft-ietf-moq-transport-07</u></b></a>. This version became a de facto target for interoperability among several open-source projects and pausing there allowed us to put effort towards other aspects of deploying our relay network<b>.</b></p>
+	<p>Building on a new protocol in the open means implementing against a moving target. To get MoQ into the hands of the community, we made a deliberate trade-off: our current relay implementation is based on a <b>subset of the features defined in </b><a href="https://www.ietf.org/archive/id/draft-ietf-moq-transport-07.html" target="_blank" rel="noopener noreferrer"><b><u>draft-ietf-moq-transport-07</u></b></a>. This version became a de facto target for interoperability among several open-source projects and pausing there allowed us to put effort towards other aspects of deploying our relay network<b>.</b></p>
 	<p>This draft of the protocol makes a distinction between accessing "past" and "future" content. <code><b>SUBSCRIBE</b></code> is used to receive <b>future</b> objects for a track as they arrive—like tuning into a live broadcast to get everything from that moment forward. In contrast, <code><b>FETCH</b></code> provides a mechanism for accessing <b>past</b> content that a relay may already have in its cache—like asking for a recording of a song that just played.</p>
 	<p>Both are part of the same specification, but for the most pressing low-latency use cases, a performant implementation of <code>SUBSCRIBE</code> is what matters most. For that reason, we have focused our initial efforts there and have not yet implemented <code>FETCH</code>.</p>
 	<p>This is where our roadmap is flexible and where the community can have a direct impact. Do you need <code>FETCH</code> to build on-demand or catch-up functionality? Or is more complete support for the prioritization features within <code>SUBSCRIBE</code> more critical for your use case? The feedback we receive from early developers will help us decide what to build next.</p>
-	<p>As always, we will announce our updates and changes to our implementation as we continue with development on our <a href="https://developers.cloudflare.com/moq"><u>developer docs pages</u></a>.</p>
+	<p>As always, we will announce our updates and changes to our implementation as we continue with development on our <a href="https://developers.cloudflare.com/moq" target="_blank" rel="noopener noreferrer"><u>developer docs pages</u></a>.</p>
 	<div class="flex anchor relative">
 		<h3 id="kick-the-tires-on-the-future">Kick the tires on the future</h3>
 		<a href="https://blog.cloudflare.com/#kick-the-tires-on-the-future" aria-hidden="true" class="relative sm:absolute sm:-start-5">
@@ -259,7 +259,7 @@
 		</a>
 	</div>
 	<p>We believe in building in the open and interoperability in the community. MoQ is not a Cloudflare technology but a foundational Internet technology. To that end, the first demo client we’re presenting is an open source, community example.</p>
-	<p><b>You can access the demo here: </b><a href="https://moq.dev/publish"><b><u>https://moq.dev/publish/</u></b></a></p>
+	<p><b>You can access the demo here: </b><a href="https://moq.dev/publish" target="_blank" rel="noopener noreferrer"><b><u>https://moq.dev/publish/</u></b></a></p>
 	<p>Even though this is a preview release, we are running MoQ relays at Cloudflare’s full scale, like we do every production service. This means every server that is part of the Cloudflare network in more than 330 cities is now a MoQ relay.</p>
 	<p>We invite you to experience the "wow" moment of near-instant, sub-second streaming latency that MoQ enables. How would you use a protocol that offers the speed of a video call with the scale of a global broadcast?</p>
 	<div class="flex anchor relative">
@@ -273,25 +273,25 @@
 	<p>We’ve been working with others in the IETF WG community and beyond on interoperability of publishers, players and other parts of the MoQ ecosystem. So far, we’ve tested with:</p>
 	<ul>
 		<li>
-			<p>Luke Curley’s <a href="https://moq.dev"><u>moq.dev</u></a></p>
+			<p>Luke Curley’s <a href="https://moq.dev" target="_blank" rel="noopener noreferrer"><u>moq.dev</u></a></p>
 		</li>
 		<li>
-			<p>Lorenzo Miniero’s <a href="https://github.com/meetecho/imquic"><u>imquic</u></a></p>
+			<p>Lorenzo Miniero’s <a href="https://github.com/meetecho/imquic" target="_blank" rel="noopener noreferrer"><u>imquic</u></a></p>
 		</li>
 		<li>
-			<p>Meta’s <a href="https://github.com/facebookexperimental/moxygen"><u>Moxygen</u></a>&nbsp;</p>
+			<p>Meta’s <a href="https://github.com/facebookexperimental/moxygen" target="_blank" rel="noopener noreferrer"><u>Moxygen</u></a>&nbsp;</p>
 		</li>
 		<li>
-			<p><a href="https://github.com/englishm/moq-rs"><u>moq-rs</u></a></p>
+			<p><a href="https://github.com/englishm/moq-rs" target="_blank" rel="noopener noreferrer"><u>moq-rs</u></a></p>
 		</li>
 		<li>
-			<p><a href="https://github.com/englishm/moq-js"><u>moq-js</u></a></p>
+			<p><a href="https://github.com/englishm/moq-js" target="_blank" rel="noopener noreferrer"><u>moq-js</u></a></p>
 		</li>
 		<li>
-			<p><a href="https://norsk.video"><u>Norsk</u></a></p>
+			<p><a href="https://norsk.video" target="_blank" rel="noopener noreferrer"><u>Norsk</u></a></p>
 		</li>
 		<li>
-			<p><a href="https://vindral.com"><u>Vindral</u></a></p>
+			<p><a href="https://vindral.com" target="_blank" rel="noopener noreferrer"><u>Vindral</u></a></p>
 		</li>
 	</ul>
 	<div class="flex anchor relative">
@@ -314,10 +314,10 @@
 			</svg>
 		</a>
 	</div>
-	<p>We want developers to start building with MoQ today. To make that possible MoQ at Cloudflare is in tech preview - this means it's available free of charge for testing (at any scale). Visit our <a href="https://developers.cloudflare.com/moq"><u>developer homepage </u></a>for updates and potential breaking changes.</p>
+	<p>We want developers to start building with MoQ today. To make that possible MoQ at Cloudflare is in tech preview - this means it's available free of charge for testing (at any scale). Visit our <a href="https://developers.cloudflare.com/moq" target="_blank" rel="noopener noreferrer"><u>developer homepage </u></a>for updates and potential breaking changes.</p>
 	<p>Indie developers and large enterprises alike ask about pricing early in their adoption of new technologies. We will be transparent and clear about MoQ pricing. In general availability, self-serve customers should expect to pay 5 cents/GB outbound with no cost for traffic sent towards Cloudflare.&nbsp;</p>
 	<p>Enterprise customers can expect usual pricing in line with regular media delivery pricing, competitive with incumbent protocols. This means if you’re already using Cloudflare for media delivery, you should not be wary of adopting new technologies because of cost. We will support you.</p>
-	<p>If you’re interested in partnering with Cloudflare in adopting the protocol early or contributing to its development, please reach out to us at <a href="mailto:moq@cloudflare.com"><u>moq@cloudflare.com</u></a>! Engineers excited about the future of the Internet are standing by.</p>
+	<p>If you’re interested in partnering with Cloudflare in adopting the protocol early or contributing to its development, please reach out to us at <a href="https://blog.cloudflare.com/#"><u>moq@cloudflare.com</u></a>! Engineers excited about the future of the Internet are standing by.</p>
 	<div class="flex anchor relative">
 		<h3 id="get-involved">Get involved:</h3>
 		<a href="https://blog.cloudflare.com/#get-involved" aria-hidden="true" class="relative sm:absolute sm:-start-5">
@@ -328,16 +328,16 @@
 	</div>
 	<ul>
 		<li>
-			<p><b>Try the demo:</b> <a href="https://moq.dev/publish"><u>https://moq.dev/publish/</u></a></p>
+			<p><b>Try the demo:</b> <a href="https://moq.dev/publish" target="_blank" rel="noopener noreferrer"><u>https://moq.dev/publish/</u></a></p>
 		</li>
 		<li>
-			<p><b>Read the Internet draft:</b> <a href="https://datatracker.ietf.org/doc/draft-ietf-moq-transport"><u>https://datatracker.ietf.org/doc/draft-ietf-moq-transport/</u></a></p>
+			<p><b>Read the Internet draft:</b> <a href="https://datatracker.ietf.org/doc/draft-ietf-moq-transport" target="_blank" rel="noopener noreferrer"><u>https://datatracker.ietf.org/doc/draft-ietf-moq-transport/</u></a></p>
 		</li>
 		<li>
-			<p><b>Contribute</b> to the protocol’s development: <a href="https://datatracker.ietf.org/group/moq/documents"><u>https://datatracker.ietf.org/group/moq/documents/</u></a></p>
+			<p><b>Contribute</b> to the protocol’s development: <a href="https://datatracker.ietf.org/group/moq/documents" target="_blank" rel="noopener noreferrer"><u>https://datatracker.ietf.org/group/moq/documents/</u></a></p>
 		</li>
 		<li>
-			<p><b>Visit </b>our developer homepage: <a href="https://developers.cloudflare.com/moq"><u>https://developers.cloudflare.com/moq/</u></a></p>
+			<p><b>Visit </b>our developer homepage: <a href="https://developers.cloudflare.com/moq" target="_blank" rel="noopener noreferrer"><u>https://developers.cloudflare.com/moq/</u></a></p>
 		</li>
 	</ul>
 	<p></p>

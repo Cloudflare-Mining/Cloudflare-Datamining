@@ -1,7 +1,7 @@
 <div class="mb2 gray5">5 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2Ub1Gu8KWYar8PcWMVChG/c235b79ba40743353991c1721ce76cef/magic-hdmi-cable.png" alt="">
 <div class="post-content lh-copy gray1">
 	<p></p>
-	<p>Starting today, in open beta, <a href="https://www.cloudflare.com/products/cloudflare-stream">Cloudflare Stream</a> supports video playback with sub-second latency over SRT or RTMPS at scale. Just like <a href="https://www.cloudflare.com/learning/video/what-is-http-live-streaming">HLS</a> and DASH formats, playback over RTMPS and SRT costs $1 per 1,000 minutes delivered regardless of video encoding settings used.</p>
+	<p>Starting today, in open beta, <a href="https://www.cloudflare.com/products/cloudflare-stream" target="_blank" rel="noopener noreferrer">Cloudflare Stream</a> supports video playback with sub-second latency over SRT or RTMPS at scale. Just like <a href="https://www.cloudflare.com/learning/video/what-is-http-live-streaming" target="_blank" rel="noopener noreferrer">HLS</a> and DASH formats, playback over RTMPS and SRT costs $1 per 1,000 minutes delivered regardless of video encoding settings used.</p>
 	<p>Stream is like a magic HDMI cable to the cloud. You can easily connect a video stream and display it from as many screens as you want wherever you want around the world.</p>
 	<div class="flex anchor relative">
 		<h3 id="what-do-we-mean-by-sub-second">What do we mean by sub-second?</h3>
@@ -29,7 +29,7 @@
 		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2X9Jnr7Cj20i62zOz2AS6u/7a672eb97ecd0991a3ad7adc937738a1/RTMPS.png" alt="" class="kg-image" width="1178" height="801" loading="lazy">
 
 	</figure>
-	<p>Any server in the Cloudflare Anycast network can receive and publish low-latency video, which means that you're automatically broadcasting to the nearest server with no configuration necessary. To minimize latency and avoid network congestion, we route video traffic between broadcaster and audience servers using the same network telemetry as <a href="https://www.cloudflare.com/products/argo-smart-routing">Argo</a>.</p>
+	<p>Any server in the Cloudflare Anycast network can receive and publish low-latency video, which means that you're automatically broadcasting to the nearest server with no configuration necessary. To minimize latency and avoid network congestion, we route video traffic between broadcaster and audience servers using the same network telemetry as <a href="https://www.cloudflare.com/products/argo-smart-routing" target="_blank" rel="noopener noreferrer">Argo</a>.</p>
 	<p>On top of this, we construct a dynamic distribution topology, unique to the stream, which grows to meet the capacity needs of the broadcast. We’re just getting started with low-latency video, and we will continue to focus on latency and playback reliability as our real-time video features grow.</p>
 	<div class="flex anchor relative">
 		<h3 id="an-hdmi-cable-to-the-cloud">An HDMI cable to the cloud</h3>
@@ -42,7 +42,7 @@
 	<p>Most video on the Internet uses HTTP - the protocol for loading websites on your browser to deliver video. This has many advantages, such as easy to achieve interoperability across viewer devices. Maybe more importantly, HTTP can use the existing infrastructure like caches which reduce the cost of video delivery.</p>
 	<p>Using HTTP has a cost in latency as it is not a protocol built to deliver video. There’s been many attempts made to deliver low latency video over HTTP, with some reducing latency to a few seconds, but none reach the levels achievable by protocols designed with video in mind. WebRTC and video delivery over QUIC have the potential to further reduce latency, but face inconsistent support across platforms today.</p>
 	<p>Video-oriented protocols, such as RTMPS and SRT, side-step some of the challenges above but often require custom client libraries and are not available in modern web browsers. While we now support low latency video today over RTMPS and SRT, we are actively exploring other delivery protocols.</p>
-	<p>There’s no silver bullet – yet, and our goal is to make video delivery as easy as possible by supporting the set of protocols that enables our customers to meet their unique and creative needs. Today that can mean receiving RTMPS and delivering low-latency SRT, or ingesting SRT while publishing HLS. In the future, that may include ingesting WebRTC or publishing over QUIC or HTTP/3 or WebTransport. There are many interesting technologies on the <a href="https://grnh.se/4bdb03661us">horizon</a>.</p>
+	<p>There’s no silver bullet – yet, and our goal is to make video delivery as easy as possible by supporting the set of protocols that enables our customers to meet their unique and creative needs. Today that can mean receiving RTMPS and delivering low-latency SRT, or ingesting SRT while publishing HLS. In the future, that may include ingesting WebRTC or publishing over QUIC or HTTP/3 or WebTransport. There are many interesting technologies on the <a href="https://grnh.se/4bdb03661us" target="_blank" rel="noopener noreferrer">horizon</a>.</p>
 	<p>We’re excited to see new use cases emerge as low-latency video becomes easier to integrate and less costly to manage. A remote cycling instructor can ask her students to slow down in response to an increase in heart rate; an esports league can effortlessly repeat their live feed to remote broadcasters to provide timely, localized commentary while interacting with their audience.</p>
 	<div class="flex anchor relative">
 		<h3 id="creative-uses-of-low-latency-video">Creative uses of low latency video</h3>
@@ -67,7 +67,7 @@
 		</a>
 	</div>
 	<p>Get started by using your existing inputs on Cloudflare Stream. Without the need to reconnect, they will be available instantly for playback with the RTMPS/SRT playback URLs.</p>
-	<p>If you don’t have any inputs on Stream, <a href="https://dash.cloudflare.com/sign-up/stream">sign up</a> for $5/mo. You will get the ability to push live video, broadcast, record and now pull video with sub-second latency.</p>
-	<p>You will need to use a computer program like FFmpeg or OBS to push video. To playback RTMPS you can use VLC and FFplay for SRT. To integrate in your native app, you can utilize FFmpeg wrappers for native apps such as <a href="https://github.com/tanersener/ffmpeg-kit">ffmpeg-kit</a> for iOS.</p>
+	<p>If you don’t have any inputs on Stream, <a href="https://dash.cloudflare.com/sign-up/stream" target="_blank" rel="noopener noreferrer">sign up</a> for $5/mo. You will get the ability to push live video, broadcast, record and now pull video with sub-second latency.</p>
+	<p>You will need to use a computer program like FFmpeg or OBS to push video. To playback RTMPS you can use VLC and FFplay for SRT. To integrate in your native app, you can utilize FFmpeg wrappers for native apps such as <a href="https://github.com/tanersener/ffmpeg-kit" target="_blank" rel="noopener noreferrer">ffmpeg-kit</a> for iOS.</p>
 	<p>RTMPS and SRT playback work with the recently launched <a href="https://blog.cloudflare.com/bring-your-own-ingest-domain-to-stream-live">custom domain support</a>, so you can use the domain of your choice and keep your branding.</p>
 </div>

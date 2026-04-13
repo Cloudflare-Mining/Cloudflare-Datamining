@@ -27,7 +27,7 @@
 			</svg>
 		</a>
 	</div>
-	<p>Unlike zones, each version of an HTTP Application is independent of any specific hostname. So if versions are not tied to a hostname, like zones, then how do you decide which version of an HTTP Application will affect a specific set of traffic? The answer is Routing Rules. With Routing Rules, you get to decide which version of an HTTP Application is applied to traffic. Routing Rules are powered by Cloudflare’s <a href="https://developers.cloudflare.com/ruleset-engine">Ruleset Engine</a> and rely on the use of conditional “if, then” rules to map hostnames controlled in your Cloudflare account to a version of configuration. As an example, a rule could be:</p>
+	<p>Unlike zones, each version of an HTTP Application is independent of any specific hostname. So if versions are not tied to a hostname, like zones, then how do you decide which version of an HTTP Application will affect a specific set of traffic? The answer is Routing Rules. With Routing Rules, you get to decide which version of an HTTP Application is applied to traffic. Routing Rules are powered by Cloudflare’s <a href="https://developers.cloudflare.com/ruleset-engine" target="_blank" rel="noopener noreferrer">Ruleset Engine</a> and rely on the use of conditional “if, then” rules to map hostnames controlled in your Cloudflare account to a version of configuration. As an example, a rule could be:</p>
 	<pre class="language-bash"><code class="language-bash">If zone.name = `example.com`
 Then use configuration of HTTP Application id: xyz, version 2</code></pre>
 	<p>When this rule executes on our global network, instead of applying the regular zone configuration of <code>example.com</code>, we will instead use the configuration defined in version 2 of the HTTP Application.</p>
@@ -56,7 +56,7 @@ Then use configuration of HTTP Application id: xyz, version 2</code></pre>
 		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4hhe8bllxcQL20E1npIO5K/8ee6d0ebd2611b8577c3b94ae1874892/HTTP-Apps-1.png" alt="" class="kg-image" width="1616" height="864" loading="lazy">
 
 	</figure>
-	<p>Because Routing Rules are implemented with the <a href="https://developers.cloudflare.com/ruleset-engine">Ruleset Engine</a>, we can implement a special type of rule to allow a version to be staged such that it is only executed for requests when the request is sent to IPs reserved for testing. The resulting diagram is almost the same, but because the request is being sent to staging IPs, Cloudflare’s network will route that request to a different version of the HTTP Application that has a set of changes not yet deployed for all other traffic.</p>
+	<p>Because Routing Rules are implemented with the <a href="https://developers.cloudflare.com/ruleset-engine" target="_blank" rel="noopener noreferrer">Ruleset Engine</a>, we can implement a special type of rule to allow a version to be staged such that it is only executed for requests when the request is sent to IPs reserved for testing. The resulting diagram is almost the same, but because the request is being sent to staging IPs, Cloudflare’s network will route that request to a different version of the HTTP Application that has a set of changes not yet deployed for all other traffic.</p>
 	<figure class="kg-card kg-image-card ">
 
 		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7mNuQRHVRs5ZzR5nIESQgZ/857180f18ae90769a6feb4ce30fdff8a/HTTP-Apps-2.png" alt="" class="kg-image" width="1616" height="864" loading="lazy">

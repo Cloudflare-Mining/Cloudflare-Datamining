@@ -1,7 +1,7 @@
 <div class="mb2 gray5">9 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/Bn8linQUEjxrTM5di3mR0/f3ced0d0a7e33f2ca0734b618501fa85/building-a-to-do-list-with-workers-and-kv.png" alt="">
 <div class="post-content lh-copy gray1">
 	<p></p>
-	<p>In this tutorial, we’ll build a todo list application in HTML, CSS and JavaScript, with a twist: all the data should be stored inside of the newly-launched Workers KV, and the application itself should be served directly from Cloudflare’s edge network, using <a href="https://www.cloudflare.com/products/cloudflare-workers">Cloudflare Workers</a>.</p>
+	<p>In this tutorial, we’ll build a todo list application in HTML, CSS and JavaScript, with a twist: all the data should be stored inside of the newly-launched Workers KV, and the application itself should be served directly from Cloudflare’s edge network, using <a href="https://www.cloudflare.com/products/cloudflare-workers" target="_blank" rel="noopener noreferrer">Cloudflare Workers</a>.</p>
 	<p>To start, let’s break this project down into a couple different discrete steps. In particular, it can help to focus on the constraint of working with Workers KV, as handling data is generally the most complex part of building an application:</p>
 	<ol>
 		<li>
@@ -60,8 +60,8 @@
 			</svg>
 		</a>
 	</div>
-	<p>To start, I wanted to approach this project from the bare minimum: no frameworks, JS utilities, or anything like that. In particular, I was most interested in writing a project from scratch and serving it directly from the edge. Normally, I would deploy a site to something like <a href="https://pages.github.com">GitHub Pages</a>, but avoiding the need for an origin server altogether seems like a really powerful (and performant idea) - let’s try it!</p>
-	<p>I also considered using <a href="https://todomvc.com">TodoMVC</a> as the blueprint for building the functionality for the application, but even the <a href="http://todomvc.com/examples/vanillajs/#">Vanilla JS</a> version is a pretty impressive amount of <a href="https://github.com/tastejs/todomvc/tree/gh-pages/examples/vanillajs">code</a>, including a number of Node packages - it wasn’t exactly a concise chunk of code to just dump into the Worker itself.</p>
+	<p>To start, I wanted to approach this project from the bare minimum: no frameworks, JS utilities, or anything like that. In particular, I was most interested in writing a project from scratch and serving it directly from the edge. Normally, I would deploy a site to something like <a href="https://pages.github.com" target="_blank" rel="noopener noreferrer">GitHub Pages</a>, but avoiding the need for an origin server altogether seems like a really powerful (and performant idea) - let’s try it!</p>
+	<p>I also considered using <a href="https://todomvc.com" target="_blank" rel="noopener noreferrer">TodoMVC</a> as the blueprint for building the functionality for the application, but even the <a href="http://todomvc.com/examples/vanillajs/#" target="_blank" rel="noopener noreferrer">Vanilla JS</a> version is a pretty impressive amount of <a href="https://github.com/tastejs/todomvc/tree/gh-pages/examples/vanillajs" target="_blank" rel="noopener noreferrer">code</a>, including a number of Node packages - it wasn’t exactly a concise chunk of code to just dump into the Worker itself.</p>
 	<p>Instead, I decided to approach the beginnings of this project by building a simple, blank HTML page, and including it inside of the Worker. To start, we’ll sketch something out locally, like this:</p>
 	<pre class="language-html"><code class="language-html">&lt;!DOCTYPE html&gt;
 &lt;html&gt;
@@ -74,7 +74,7 @@
     &lt;h1&gt;Todos&lt;/h1&gt;
   &lt;/body&gt;
 &lt;/html&gt;</code></pre>
-	<p>Hold on to this code - we’ll add it later, inside of the Workers script. For the purposes of the tutorial, I’ll be serving up this project at <a href="http://todo.kristianfreeman.com">todo.kristianfreeman.com</a>. My personal website was already <a href="https://www.cloudflare.com/developer-platform/solutions/hosting">hosted on Cloudflare</a>, and since I’ll be serving, it was time to create my first Worker.</p>
+	<p>Hold on to this code - we’ll add it later, inside of the Workers script. For the purposes of the tutorial, I’ll be serving up this project at <a href="http://todo.kristianfreeman.com" target="_blank" rel="noopener noreferrer">todo.kristianfreeman.com</a>. My personal website was already <a href="https://www.cloudflare.com/developer-platform/solutions/hosting" target="_blank" rel="noopener noreferrer">hosted on Cloudflare</a>, and since I’ll be serving, it was time to create my first Worker.</p>
 	<div class="flex anchor relative">
 		<h3 id="creating-a-worker">Creating a worker</h3>
 		<a href="https://blog.cloudflare.com/#creating-a-worker" aria-hidden="true" class="relative sm:absolute sm:-start-5">
@@ -390,7 +390,7 @@ document.querySelector("#create")
   });
 }</code></pre>
 	<p>So far, we’ve designed the client-side part of this code to take an array of todos in, and given that array, render out a list of simple HTML elements. There’s a number of things that we’ve been doing that we haven’t quite had a use for, yet: specifically, the inclusion of IDs, and updating the completed value on a todo. Luckily, these things work well together, in order to support actually updating todos in the UI.</p>
-	<p>To start, it would be useful to signify the ID of each todo in the HTML. By doing this, we can then refer to the element later, in order to correspond it to the todo in the JavaScript part of our code. <a href="https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/dataset"><i>Data attributes</i></a>, and the corresponding dataset method in JavaScript, are a perfect way to implement this. When we generate our <code>div</code> element for each todo, we can simply attach a data attribute called <code>todo</code> to each <code>div</code>:</p>
+	<p>To start, it would be useful to signify the ID of each todo in the HTML. By doing this, we can then refer to the element later, in order to correspond it to the todo in the JavaScript part of our code. <a href="https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/dataset" target="_blank" rel="noopener noreferrer"><i>Data attributes</i></a>, and the corresponding dataset method in JavaScript, are a perfect way to implement this. When we generate our <code>div</code> element for each todo, we can simply attach a data attribute called <code>todo</code> to each <code>div</code>:</p>
 	<pre class="language-javascript"><code class="language-javascript">window.todos.forEach(todo =&gt; {
   var el = document.createElement("div");
   el.dataset.todo = todo.id
@@ -444,7 +444,7 @@ document.querySelector("#create")
 			</svg>
 		</a>
 	</div>
-	<p>With this, we’ve created a pretty remarkable project: an almost entirely static HTML/JS application, transparently powered by Cloudflare KV and Workers, served at the edge. There’s a number of additions to be made to this application, whether you want to implement a better design (I’ll leave this as an exercise for readers to implement - you can see my version at <a href="https://todo.kristianfreeman.com">todo.kristianfreeman.com</a>), security, speed, etc.</p>
+	<p>With this, we’ve created a pretty remarkable project: an almost entirely static HTML/JS application, transparently powered by Cloudflare KV and Workers, served at the edge. There’s a number of additions to be made to this application, whether you want to implement a better design (I’ll leave this as an exercise for readers to implement - you can see my version at <a href="https://todo.kristianfreeman.com" target="_blank" rel="noopener noreferrer">todo.kristianfreeman.com</a>), security, speed, etc.</p>
 	<figure class="kg-card kg-image-card ">
 
 		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4Vif8WsAf5slR8KM3NLeGv/6cd59bcdf0c30a6df7e4bbf9eef916ba/image2-1.png" alt="" class="kg-image" width="1378" height="730" loading="lazy">
@@ -585,5 +585,5 @@ async function handleRequest(request) {
 addEventListener('fetch', event =&gt; {
   event.respondWith(handleRequest(event.request))
 })</code></pre>
-	<p>You can find the source code for this project, as well as a README with deployment instructions, on <a href="https://github.com/signalnerve/cloudflare-workers-todos">GitHub</a>.</p>
+	<p>You can find the source code for this project, as well as a README with deployment instructions, on <a href="https://github.com/signalnerve/cloudflare-workers-todos" target="_blank" rel="noopener noreferrer">GitHub</a>.</p>
 </div>

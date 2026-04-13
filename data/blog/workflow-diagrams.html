@@ -1,10 +1,10 @@
 <div class="mb2 gray5">6 min read</div>
 <div class="mt4">This post is also available in <a href="https://blog.cloudflare.com/ja-jp/workflow-diagrams">日本語</a> and <a href="https://blog.cloudflare.com/ko-kr/workflow-diagrams">한국어</a>.</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5FyTRKAqxfcEb135KFMWow/7fe82b4b9a7fb60085a5ed34707c8e7e/image2.png" alt="">
 <div class="post-content lh-copy gray1">
-	<p><a href="https://www.cloudflare.com/developer-platform/products/workflows"><u>Cloudflare Workflows</u></a> is a durable execution engine that lets you chain steps, retry on failure, and persist state across long-running processes. Developers use Workflows to power background agents, manage data pipelines, build human-in-the-loop approval systems, and more.</p>
-	<p>Last month, we <a href="https://developers.cloudflare.com/changelog/post/2026-02-03-workflows-visualizer"><u>announced</u></a> that every workflow deployed to Cloudflare now has a complete visual diagram in the dashboard.</p>
+	<p><a href="https://www.cloudflare.com/developer-platform/products/workflows" target="_blank" rel="noopener noreferrer"><u>Cloudflare Workflows</u></a> is a durable execution engine that lets you chain steps, retry on failure, and persist state across long-running processes. Developers use Workflows to power background agents, manage data pipelines, build human-in-the-loop approval systems, and more.</p>
+	<p>Last month, we <a href="https://developers.cloudflare.com/changelog/post/2026-02-03-workflows-visualizer" target="_blank" rel="noopener noreferrer"><u>announced</u></a> that every workflow deployed to Cloudflare now has a complete visual diagram in the dashboard.</p>
 	<p>We built this because being able to visualize your applications is more important now than ever before. Coding agents are writing code that you may or may not be reading. However, the shape of what gets built still matters: how the steps connect, where they branch, and what's actually happening.</p>
-	<p>If you've seen diagrams from visual workflow builders before, those are usually working from something declarative: JSON configs, YAML, drag-and-drop. However, Cloudflare Workflows are just code. They can include <a href="https://developers.cloudflare.com/workflows/build/workers-api"><u>Promises, Promise.all, loops, conditionals,</u></a> and/or be nested in functions or classes. This dynamic execution model makes rendering a diagram a bit more complicated.</p>
+	<p>If you've seen diagrams from visual workflow builders before, those are usually working from something declarative: JSON configs, YAML, drag-and-drop. However, Cloudflare Workflows are just code. They can include <a href="https://developers.cloudflare.com/workflows/build/workers-api" target="_blank" rel="noopener noreferrer"><u>Promises, Promise.all, loops, conditionals,</u></a> and/or be nested in functions or classes. This dynamic execution model makes rendering a diagram a bit more complicated.</p>
 	<p>We use Abstract Syntax Trees (ASTs) to statically derive the graph, tracking <code>Promise</code> and <code>await</code> relationships to understand what runs in parallel, what blocks, and how the pieces connect.&nbsp;</p>
 	<p>Keep reading to learn how we built these diagrams, or deploy your first workflow and see the diagram for yourself.</p><a href="https://deploy.workers.cloudflare.com/?url=https%3A%2F%2Fgithub.com%2Fcloudflare%2Ftemplates%2Ftree%2Fmain%2Fworkflows-starter-template"><img src="https://deploy.workers.cloudflare.com/button" alt="Deploy to Cloudflare"></a>
 	<p></p>
@@ -21,13 +21,13 @@
 		</a>
 	</div>
 	<p>Generally, workflow engines can execute according to either dynamic or sequential (static) execution order. Sequential execution might seem like the more intuitive solution: trigger workflow → step A → step B → step C, where step B starts executing immediately after the engine completes Step A, and so forth.</p>
-	<p><a href="https://developers.cloudflare.com/workflows"><u>Cloudflare Workflows</u></a> follow the dynamic execution model. Since workflows are just code, the steps execute as the runtime encounters them. When the runtime discovers a step, that step gets passed over to the workflow engine, which manages its execution. The steps are not inherently sequential unless awaited — the engine executes all unawaited steps in parallel. This way, you can write your workflow code as flow control without additional wrappers or directives. Here’s how the handoff works:</p>
+	<p><a href="https://developers.cloudflare.com/workflows" target="_blank" rel="noopener noreferrer"><u>Cloudflare Workflows</u></a> follow the dynamic execution model. Since workflows are just code, the steps execute as the runtime encounters them. When the runtime discovers a step, that step gets passed over to the workflow engine, which manages its execution. The steps are not inherently sequential unless awaited — the engine executes all unawaited steps in parallel. This way, you can write your workflow code as flow control without additional wrappers or directives. Here’s how the handoff works:</p>
 	<ol>
 		<li>
 			<p>An <i>engine</i>, which is a “supervisor” Durable Object for that instance, spins up. The engine is responsible for the logic of the actual workflow execution.&nbsp;</p>
 		</li>
 		<li>
-			<p>The engine triggers a <a href="https://developers.cloudflare.com/cloudflare-for-platforms/workers-for-platforms/how-workers-for-platforms-works/#user-workers"><u>user worker</u></a> via <a href="https://developers.cloudflare.com/cloudflare-for-platforms/workers-for-platforms/configuration/dynamic-dispatch"><u>dynamic dispatch</u></a>, passing control over to Workers runtime.</p>
+			<p>The engine triggers a <a href="https://developers.cloudflare.com/cloudflare-for-platforms/workers-for-platforms/how-workers-for-platforms-works/#user-workers" target="_blank" rel="noopener noreferrer"><u>user worker</u></a> via <a href="https://developers.cloudflare.com/cloudflare-for-platforms/workers-for-platforms/configuration/dynamic-dispatch" target="_blank" rel="noopener noreferrer"><u>dynamic dispatch</u></a>, passing control over to Workers runtime.</p>
 		</li>
 		<li>
 			<p>When Runtime encounters a <code>step.do</code>, it passes the execution back to the engine.</p>
@@ -45,13 +45,13 @@
 			</svg>
 		</a>
 	</div>
-	<p>Fetching the script at <a href="https://developers.cloudflare.com/workers/get-started/guide/#4-deploy-your-project"><u>deploy time</u></a>, instead of run time, allows us to parse the workflow in its entirety to statically generate the diagram.&nbsp;</p>
+	<p>Fetching the script at <a href="https://developers.cloudflare.com/workers/get-started/guide/#4-deploy-your-project" target="_blank" rel="noopener noreferrer"><u>deploy time</u></a>, instead of run time, allows us to parse the workflow in its entirety to statically generate the diagram.&nbsp;</p>
 	<p>Taking a step back, here is the life of a workflow deployment:</p>
 	<figure class="kg-card kg-image-card">
 		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1zoOCYji26ahxzh594VavQ/63ad96ae033653ffc7fd98df01ea6e27/image5.png" alt="" class="kg-image" width="1312" height="1896" loading="lazy">
 	</figure>
 	<p>To create the diagram, we fetch the script after it has been bundled by the internal configuration service which deploys Workers (step 2 under Workflow deployment). Then, we use a parser to create an abstract syntax tree (AST) representing the workflow, and our internal service generates and traverses an intermediate graph with all WorkflowEntrypoints and calls to workflows steps. We render the diagram based on the final result on our API.&nbsp;</p>
-	<p>When a Worker is deployed, the configuration service bundles (using <a href="https://esbuild.github.io"><u>esbuild</u></a> by default) and minifies the code <a href="https://developers.cloudflare.com/workers/wrangler/configuration/#inheritable-keys"><u>unless specified otherwise</u></a>. This presents another challenge — while Workflows in TypeScript follow an intuitive pattern, their minified Javascript (JS) can be dense and indigestible. There are also different ways that code can be minified, depending on the bundler.&nbsp;</p>
+	<p>When a Worker is deployed, the configuration service bundles (using <a href="https://esbuild.github.io" target="_blank" rel="noopener noreferrer"><u>esbuild</u></a> by default) and minifies the code <a href="https://developers.cloudflare.com/workers/wrangler/configuration/#inheritable-keys" target="_blank" rel="noopener noreferrer"><u>unless specified otherwise</u></a>. This presents another challenge — while Workflows in TypeScript follow an intuitive pattern, their minified Javascript (JS) can be dense and indigestible. There are also different ways that code can be minified, depending on the bundler.&nbsp;</p>
 	<p>Here’s an example of Workflow code that shows <b>agents executing in parallel:</b></p>
 	<pre class="language-TypeScript"><code class="language-TypeScript">const summaryPromise = step.do(
          `summary agent (loop ${loop})`,
@@ -95,9 +95,9 @@
            );
          }
        );</code></pre>
-	<p>Bundling with <a href="https://rspack.rs"><u>rspack</u></a>, a snippet of the minified code looks like this:</p>
+	<p>Bundling with <a href="https://rspack.rs" target="_blank" rel="noopener noreferrer"><u>rspack</u></a>, a snippet of the minified code looks like this:</p>
 	<pre class="language-JavaScript"><code class="language-JavaScript">class pe extends e{async run(e,t){de("workflow.run.start",{instanceId:e.instanceId});const r=await t.do("validate payload",async()=&gt;{if(!e.payload.r2Key)throw new Error("r2Key is required");if(!e.payload.telegramChatId)throw new Error("telegramChatId is required");return{r2Key:e.payload.r2Key,telegramChatId:e.payload.telegramChatId,context:e.payload.context?.trim()}}),s=await t.do("load source document from r2",async()=&gt;{const e=await this.env.REVIEW_DOCUMENTS.get(r.r2Key);if(!e)throw new Error(`R2 object not found: ${r.r2Key}`);const t=(await e.text()).trim();if(!t)throw new Error("R2 object is empty");return t}),n=Number(this.env.MAX_REVIEW_LOOPS??"5"),o=this.env.RESPONSE_TIMEOUT??"7 days",a=async(s,i,c)=&gt;{if(s&gt;n)return le("workflow.loop.max_reached",{instanceId:e.instanceId,maxLoops:n}),await t.do("notify max loop reached",async()=&gt;{await se(this.env,r.telegramChatId,`Review stopped after ${n} loops for ${e.instanceId}. Start again if you still need revisions.`)}),{approved:!1,loops:n,finalText:i};const h=t.do(`summary agent (loop ${s})`,async()=&gt;te(this.env,"You summarize documents. Keep the output short, concrete, and factual.",ue("Summarize this text in 5 bullet points.",i,r.context)))...</code></pre>
-	<p>Or, bundling with <a href="https://vite.dev"><u>vite</u></a>, here is a minified snippet:</p>
+	<p>Or, bundling with <a href="https://vite.dev" target="_blank" rel="noopener noreferrer"><u>vite</u></a>, here is a minified snippet:</p>
 	<pre class="language-JavaScript"><code class="language-JavaScript">class ht extends pe {
   async run(e, r) {
     b("workflow.run.start", { instanceId: e.instanceId });
@@ -151,8 +151,8 @@
         )
       )...</code></pre>
 	<p>Minified code can get pretty gnarly — and depending on the bundler, it can get gnarly in a bunch of different directions.</p>
-	<p>We needed a way to parse the various forms of minified code quickly and precisely. We decided <code>oxc-parser</code> from the <a href="https://oxc.rs"><u>JavaScript Oxidation Compiler</u></a> (OXC) was perfect for the job. We first tested this idea by having a container running Rust. Every script ID was sent to a <a href="https://developers.cloudflare.com/queues"><u>Cloudflare Queue</u></a>, after which messages were popped and sent to the container to process. Once we confirmed this approach worked, we moved to a Worker written in Rust. Workers supports running <a href="https://developers.cloudflare.com/workers/languages/rust"><u>Rust via WebAssembly</u></a>, and the package was small enough to make this straightforward.</p>
-	<p>The Rust Worker is responsible for first converting the minified JS into AST node types, then converting the AST node types into the graphical version of the workflow that is rendered on the dashboard. To do this, we generate a graph of pre-defined <a href="https://developers.cloudflare.com/workflows/build/visualizer"><u>node types</u></a> for each workflow and translate into our graph representation through a series of node mappings.&nbsp;</p>
+	<p>We needed a way to parse the various forms of minified code quickly and precisely. We decided <code>oxc-parser</code> from the <a href="https://oxc.rs" target="_blank" rel="noopener noreferrer"><u>JavaScript Oxidation Compiler</u></a> (OXC) was perfect for the job. We first tested this idea by having a container running Rust. Every script ID was sent to a <a href="https://developers.cloudflare.com/queues" target="_blank" rel="noopener noreferrer"><u>Cloudflare Queue</u></a>, after which messages were popped and sent to the container to process. Once we confirmed this approach worked, we moved to a Worker written in Rust. Workers supports running <a href="https://developers.cloudflare.com/workers/languages/rust" target="_blank" rel="noopener noreferrer"><u>Rust via WebAssembly</u></a>, and the package was small enough to make this straightforward.</p>
+	<p>The Rust Worker is responsible for first converting the minified JS into AST node types, then converting the AST node types into the graphical version of the workflow that is rendered on the dashboard. To do this, we generate a graph of pre-defined <a href="https://developers.cloudflare.com/workflows/build/visualizer" target="_blank" rel="noopener noreferrer"><u>node types</u></a> for each workflow and translate into our graph representation through a series of node mappings.&nbsp;</p>
 	<div class="flex anchor relative">
 		<h3 id="rendering-the-diagram">Rendering the diagram</h3>
 		<a href="https://blog.cloudflare.com/#rendering-the-diagram" aria-hidden="true" class="relative sm:absolute sm:-start-5">
@@ -350,5 +350,5 @@ try {
 			<p>Access visualizations in local development</p>
 		</li>
 	</ul>
-	<p>Check out the diagrams on your <a href="https://dash.cloudflare.com/?to=%2F%3Aaccount%2Fworkers%2Fworkflows"><u>Workflow overview pages</u></a>. If you have any feature requests or notice any bugs, share your feedback directly with the Cloudflare team by joining the <a href="https://discord.cloudflare.com"><u>Cloudflare Developers community on Discord</u></a>.</p>
+	<p>Check out the diagrams on your <a href="https://dash.cloudflare.com/?to=%2F%3Aaccount%2Fworkers%2Fworkflows" target="_blank" rel="noopener noreferrer"><u>Workflow overview pages</u></a>. If you have any feature requests or notice any bugs, share your feedback directly with the Cloudflare team by joining the <a href="https://discord.cloudflare.com" target="_blank" rel="noopener noreferrer"><u>Cloudflare Developers community on Discord</u></a>.</p>
 </div>

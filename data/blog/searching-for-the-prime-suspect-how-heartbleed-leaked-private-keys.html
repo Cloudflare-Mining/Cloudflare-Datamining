@@ -19,18 +19,18 @@
 			</svg>
 		</a>
 	</div>
-	<p>The full details of the RSA cryptographic scheme can be read <a href="https://en.wikipedia.org/wiki/RSA_(cryptosystem)">here</a>, but, the short version is that two large prime numbers (almost always called p and q) are chosen and kept secret. The product of those two numbers is referred to as the modulus, typically called N (N = p x q).</p>
+	<p>The full details of the RSA cryptographic scheme can be read <a href="https://en.wikipedia.org/wiki/RSA_(cryptosystem)" target="_blank" rel="noopener noreferrer">here</a>, but, the short version is that two large prime numbers (almost always called p and q) are chosen and kept secret. The product of those two numbers is referred to as the modulus, typically called N (N = p x q).</p>
 	<p>It's safe to make N public (it is part of what's called the public key) because it is believed (by mathematicians and computer scientists) that working out p and q from N is difficult (i.e. it is believed that factoring N is hard as long as p and q are very large).</p>
 	<p>So, when a brower connects to a site that's using SSL it obtains the public key from the site and the site keeps p and q secret. But the site needs p and q to encrypt data and so they are typically (but not always) held in memory of the server handling the web site.</p>
 	<p>In the Heartbleed attack is was possible to find one of p or q in the Heartbleed packets that were returned containing blocks of memory from the vulnerable server. Since N is public, once you have either of p or q the other can easily be worked out by dividing N by the prime you've found.</p>
-	<p>Note, that in one Heartbleed attack a researcher used <a href="https://en.wikipedia.org/wiki/Coppersmith's_Attack">Coppersmith's Attack</a>. That attack is a complex mathematical attack which means that it's possible to split N into p and q if you find just part of a prime number. Read the details of that <a href="http://www.lightbluetouchpaper.org/2014/04/25/heartbleed-and-rsa-private-keys">here</a>.</p>
-	<p>In practice, the mathematics used in RSA is rather slow and various schemes have been invented to speed it up. One, which is used by OpenSSL, is known as the <a href="https://en.wikipedia.org/wiki/Montgomery_reduction">Montgomery Reduction</a>.</p>
+	<p>Note, that in one Heartbleed attack a researcher used <a href="https://en.wikipedia.org/wiki/Coppersmith's_Attack" target="_blank" rel="noopener noreferrer">Coppersmith's Attack</a>. That attack is a complex mathematical attack which means that it's possible to split N into p and q if you find just part of a prime number. Read the details of that <a href="http://www.lightbluetouchpaper.org/2014/04/25/heartbleed-and-rsa-private-keys" target="_blank" rel="noopener noreferrer">here</a>.</p>
+	<p>In practice, the mathematics used in RSA is rather slow and various schemes have been invented to speed it up. One, which is used by OpenSSL, is known as the <a href="https://en.wikipedia.org/wiki/Montgomery_reduction" target="_blank" rel="noopener noreferrer">Montgomery Reduction</a>.</p>
 	<p>Deep inside RSA the fundamental operation that has to be performed is a multiplication modulo N. If you are not familiar with the term "modulo N", it simply means "divide by N and take the remainder". For example, here's 13 x 29 modulo 11 (which will be 13 x 29 divided by 11 and take the remainder):</p>
 	<p>13 x 29 modulo 11
 		= 377 modulo 11
 		= 3 (377/11 = 34 remainder 3)</p>
 	<p>This is a very expensive operation for a computer to perform (and in RSA it is performed repeatedly) because it involves multiplication and division (if you remember long division from school you'll remember how laborious it is: computers find it similarly difficult when compared to addition or subtraction).</p>
-	<p>In 1985, mathematician Peter Montgomery showed that it was possible to perform 'multiplication modulo N' <a href="https://dx.doi.org/10.1090/S0025-5718-1985-0777282-X">very quickly</a> as follows. At each step the following is performed:</p>
+	<p>In 1985, mathematician Peter Montgomery showed that it was possible to perform 'multiplication modulo N' <a href="https://dx.doi.org/10.1090/S0025-5718-1985-0777282-X" target="_blank" rel="noopener noreferrer">very quickly</a> as follows. At each step the following is performed:</p>
 	<ol>
 		<li>
 			<p>A digit from the left number is multiplied by the right number and added to a temporary variable (usually called an accumulator);</p>
@@ -64,7 +64,7 @@
 	</div>
 	<p>To understand how primes are used inside OpenSSL I instrumented the code to output information about all the memory allocated by OpenSSL and to highlight blocks of memory used for prime numbers. I then processed this information using a small program to produce a picture of memory.</p>
 	<p>Here's the state of the memory used by OpenSSL when running inside NGINX 1.5.13 just after it has started up. Green blocks are memory in use, black areas are unused and the two red bars are the two primes number p and q that form part of the RSA key.</p>
-	<p>Each row of the picture is 1,024 bytes. The picture shows a total of about 280KB of memory in use. The primes are being stored in a single location (delving into the source of OpenSSL this is the location of the primes when loaded in the function <code>ssl_set_pkey</code> in <a href="https://github.com/openssl/openssl/blob/master/ssl/ssl_rsa.c#L190">ssl_rsa.c</a>).</p>
+	<p>Each row of the picture is 1,024 bytes. The picture shows a total of about 280KB of memory in use. The primes are being stored in a single location (delving into the source of OpenSSL this is the location of the primes when loaded in the function <code>ssl_set_pkey</code> in <a href="https://github.com/openssl/openssl/blob/master/ssl/ssl_rsa.c#L190" target="_blank" rel="noopener noreferrer">ssl_rsa.c</a>).</p>
 	<figure class="kg-card kg-image-card ">
 
 		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2VEiEETMlSBS0q12JWFt3R/c6c3d968ffaae448d00ae7dc0f369e68/startup.png" alt="Starting" class="kg-image" width="2048" height="560" loading="lazy">
@@ -76,7 +76,7 @@
 		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5S7P8HmimvnpSsHUlImMzN/fe5285e8bed3a9be1845fe8f3a427ed1/first.png" alt="One Request" class="kg-image" width="2048" height="1204" loading="lazy">
 
 	</figure>
-	<p>Delving into the code once more it becomes apparent that the two new primes are copies of p and q made for the Montgomery reduction code in <a href="https://github.com/openssl/openssl/blob/master/crypto/bn/bn_mont.c">bn_mont.c</a>. The fragments of primes are left over from where p and q were used in calculations.</p>
+	<p>Delving into the code once more it becomes apparent that the two new primes are copies of p and q made for the Montgomery reduction code in <a href="https://github.com/openssl/openssl/blob/master/crypto/bn/bn_mont.c" target="_blank" rel="noopener noreferrer">bn_mont.c</a>. The fragments of primes are left over from where p and q were used in calculations.</p>
 	<p>After ten identical requests the memory layout has changed a little more. The fragments of primes have been overwritten, but the Montgomery reduction copies are still there. And some new fragments have appeared.</p>
 	<figure class="kg-card kg-image-card ">
 
@@ -140,9 +140,9 @@
 				}</p>
 		</li>
 	</ul>
-	<p>This patch fixes a problem where the <code>bn_expand2</code> function in <a href="https://github.com/openssl/openssl/blob/master/crypto/bn/bn_lib.c#L430">bn_lib.c</a> freed memory potentially containing a prime without erasing it first. The patch adds a call to the OPENSSL_cleanse function that safely erases the number from memory before freeing it. The patch ensures the memory is cleaned up. It was sent to the OpenSSL team on April 19 and independently discovered by <a href="http://www.lightbluetouchpaper.org/2014/04/25/heartbleed-and-rsa-private-keys">Rubin Xu</a>.</p>
-	<p>This particular function is the cause of primes left in freed memory. Whenever OpenSSL needed to resize a number stored in one of its special <a href="https://github.com/openssl/openssl/blob/master/crypto/bn/bn.h#L300">BIGNUM</a> structures it would free the now too small BIGNUM without erasing the memory.</p>
-	<p>That alone is not enough to prevent Heartbleed from getting the primes as there are other copies in memory. In testing, I found that the Montgomery reduction primes were particuarly easy to extract using Heartbleed messages. To prevent them from being created its possible to disable caching of the Montgomery parameters by removing the <code>RSA_FLAG_CACHE_PRIVATE</code> in <a href="https://github.com/openssl/openssl/blob/master/crypto/engine/eng_rsax.c#L130">eng_rsax.c</a> (a similar flag exists in <a href="https://github.com/openssl/openssl/blob/master/crypto/rsa/rsa_eay.c#L972">rsa_eay.c</a>.</p>
+	<p>This patch fixes a problem where the <code>bn_expand2</code> function in <a href="https://github.com/openssl/openssl/blob/master/crypto/bn/bn_lib.c#L430" target="_blank" rel="noopener noreferrer">bn_lib.c</a> freed memory potentially containing a prime without erasing it first. The patch adds a call to the OPENSSL_cleanse function that safely erases the number from memory before freeing it. The patch ensures the memory is cleaned up. It was sent to the OpenSSL team on April 19 and independently discovered by <a href="http://www.lightbluetouchpaper.org/2014/04/25/heartbleed-and-rsa-private-keys" target="_blank" rel="noopener noreferrer">Rubin Xu</a>.</p>
+	<p>This particular function is the cause of primes left in freed memory. Whenever OpenSSL needed to resize a number stored in one of its special <a href="https://github.com/openssl/openssl/blob/master/crypto/bn/bn.h#L300" target="_blank" rel="noopener noreferrer">BIGNUM</a> structures it would free the now too small BIGNUM without erasing the memory.</p>
+	<p>That alone is not enough to prevent Heartbleed from getting the primes as there are other copies in memory. In testing, I found that the Montgomery reduction primes were particuarly easy to extract using Heartbleed messages. To prevent them from being created its possible to disable caching of the Montgomery parameters by removing the <code>RSA_FLAG_CACHE_PRIVATE</code> in <a href="https://github.com/openssl/openssl/blob/master/crypto/engine/eng_rsax.c#L130" target="_blank" rel="noopener noreferrer">eng_rsax.c</a> (a similar flag exists in <a href="https://github.com/openssl/openssl/blob/master/crypto/rsa/rsa_eay.c#L972" target="_blank" rel="noopener noreferrer">rsa_eay.c</a>.</p>
 	<p>The Montgomery code also doesn't clean up memory that it frees. The following patch corrects that problem.</p>
 	<p>diff -ur openssl-1.0.1g/crypto/bn/bn_mont.c openssl-1.0.1g-sanitise/crypto/bn/bn_mont.c
 		--- openssl-1.0.1g/crypto/bn/bn_mont.c 2014-03-17 09:14:20.000000000 -0700+++ openssl-1.0.1g-sanitise/crypto/bn/bn_mont.c 2014-04-24 17:57:31.445316346 -0700
@@ -174,7 +174,7 @@
 				}</p>
 		</li>
 	</ul>
-	<p>Finally, there's always the possibility that the original location the primes were in might get exposed in a Heartbleed message. To protect against that it would be necessary to change the way OpenSSL memory is allocated so that memory allocated for sensitive data (like private keys) is kept far away from the memory buffers used for messages. A <a href="https://marc.info/?l=openssl-dev&amp;m=139800505608917&amp;w=2">patch for this</a> has been submitted to OpenSSL.</p>
+	<p>Finally, there's always the possibility that the original location the primes were in might get exposed in a Heartbleed message. To protect against that it would be necessary to change the way OpenSSL memory is allocated so that memory allocated for sensitive data (like private keys) is kept far away from the memory buffers used for messages. A <a href="https://marc.info/?l=openssl-dev&amp;m=139800505608917&amp;w=2" target="_blank" rel="noopener noreferrer">patch for this</a> has been submitted to OpenSSL.</p>
 	<div class="flex anchor relative">
 		<h3 id="conclusion">Conclusion</h3>
 		<a href="https://blog.cloudflare.com/#conclusion" aria-hidden="true" class="relative sm:absolute sm:-start-5">
@@ -185,5 +185,5 @@
 	</div>
 	<p>A more radical solution is to not store the private keys inside OpenSSL at all. If the private key is not stored in the same process as OpenSSL it will not be accessible via a fault like Heartbleed.</p>
 	<p>CloudFlare is already testing that configuration. More on that in another blog post.</p>
-	<p>PS I am very grateful for <a href="http://matthewarcus.wordpress.com/about">Matthew Arcus</a> for corresponding with me about this and checking some of my assertions. It was Matthew who first pointed out that the Montgomery Reduction was another source of leaked primes.</p>
+	<p>PS I am very grateful for <a href="http://matthewarcus.wordpress.com/about" target="_blank" rel="noopener noreferrer">Matthew Arcus</a> for corresponding with me about this and checking some of my assertions. It was Matthew who first pointed out that the Montgomery Reduction was another source of leaked primes.</p>
 </div>

@@ -1,7 +1,7 @@
 <div class="mb2 gray5">8 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7jqMx0fPAknCu1pBfXvSG4/499662b35777f79347cb6ef96bdd97c1/image6.png" alt="">
 <div class="post-content lh-copy gray1">
 	<p></p>
-	<p><a href="https://www.cloudflare.com/developer-platform/products/cloudflare-queues"><u>Cloudflare Queues</u></a> let a developer decouple their Workers into event-driven services. Producer Workers write events to a Queue, and consumer Workers are invoked to take actions on the events. For example, you can use a Queue to decouple an e-commerce website from a service which sends purchase confirmation emails to users. During 2024’s Birthday Week, we <a href="https://blog.cloudflare.com/builder-day-2024-announcements?_gl=1*18s1fwl*_gcl_au*MTgyNDA5NjE5OC4xNzI0MjgzMTQ0*_ga*OTgwZmE0YWUtZWJjMS00NmYxLTllM2QtM2RmY2I4ZjAwNzZk*_ga_SQCRB0TXZW*MTcyODkyOTU2OS4xNi4xLjE3Mjg5Mjk1NzcuNTIuMC4w%2F#queues-is-ga"><u>announced that Cloudflare Queues is now Generally Available</u></a>, with significant performance improvements that enable larger workloads. To accomplish this, we switched to a new architecture for Queues that enabled the following improvements:</p>
+	<p><a href="https://www.cloudflare.com/developer-platform/products/cloudflare-queues" target="_blank" rel="noopener noreferrer"><u>Cloudflare Queues</u></a> let a developer decouple their Workers into event-driven services. Producer Workers write events to a Queue, and consumer Workers are invoked to take actions on the events. For example, you can use a Queue to decouple an e-commerce website from a service which sends purchase confirmation emails to users. During 2024’s Birthday Week, we <a href="https://blog.cloudflare.com/builder-day-2024-announcements?_gl=1*18s1fwl*_gcl_au*MTgyNDA5NjE5OC4xNzI0MjgzMTQ0*_ga*OTgwZmE0YWUtZWJjMS00NmYxLTllM2QtM2RmY2I4ZjAwNzZk*_ga_SQCRB0TXZW*MTcyODkyOTU2OS4xNi4xLjE3Mjg5Mjk1NzcuNTIuMC4w%2F#queues-is-ga"><u>announced that Cloudflare Queues is now Generally Available</u></a>, with significant performance improvements that enable larger workloads. To accomplish this, we switched to a new architecture for Queues that enabled the following improvements:</p>
 	<ul>
 		<li>
 			<p>Median latency for sending messages has dropped from ~200ms to ~60ms</p>
@@ -27,7 +27,7 @@
 		</a>
 	</div>
 	<p>When initially designing Cloudflare Queues, we decided to build something simple that we could get into users' hands quickly. First, we considered leveraging an off-the-shelf messaging system such as Kafka or Pulsar. However, we decided that it would be too challenging to operate these systems at scale with the large number of isolated tenants that we wanted to support.</p>
-	<p>Instead of investing in new infrastructure, we decided to build on top of one of Cloudflare's existing developer platform building blocks: <b>Durable Objects.</b> <a href="https://www.cloudflare.com/developer-platform/durable-objects"><u>Durable Objects</u></a> are a simple, yet powerful building block for coordination and storage in a distributed system. In our initial <i>v1 </i>architecture, each Queue was implemented using a single Durable Object. As shown below, clients would send messages to a Worker running in their region, which would be forwarded to the single Durable Object hosted in the WNAM (Western North America) region. We used a single Durable Object for simplicity, and hosted it in WNAM for proximity to our centralized configuration API service.</p>
+	<p>Instead of investing in new infrastructure, we decided to build on top of one of Cloudflare's existing developer platform building blocks: <b>Durable Objects.</b> <a href="https://www.cloudflare.com/developer-platform/durable-objects" target="_blank" rel="noopener noreferrer"><u>Durable Objects</u></a> are a simple, yet powerful building block for coordination and storage in a distributed system. In our initial <i>v1 </i>architecture, each Queue was implemented using a single Durable Object. As shown below, clients would send messages to a Worker running in their region, which would be forwarded to the single Durable Object hosted in the WNAM (Western North America) region. We used a single Durable Object for simplicity, and hosted it in WNAM for proximity to our centralized configuration API service.</p>
 	<figure class="kg-card kg-image-card">
 		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/yxj5Gut3usYa0mFbRddXU/881f5905f789bc2f910ee1b2dcadac92/image1.png" alt="" class="kg-image" width="1999" height="1100" loading="lazy">
 	</figure>
@@ -64,7 +64,7 @@
 			<p>The alarm would wake the Durable Object, which continually looked for batches of messages in storage to deliver.</p>
 		</li>
 		<li>
-			<p>Each batch of messages was sent to a "Dispatcher Worker" that used <a href="https://developers.cloudflare.com/cloudflare-for-platforms/workers-for-platforms"><u>Workers for Platforms</u></a> <a href="https://developers.cloudflare.com/cloudflare-for-platforms/workers-for-platforms/reference/how-workers-for-platforms-works/#dynamic-dispatch-worker"><i><u>dynamic dispatch</u></i></a> to pass the messages to the <code>queue()</code> function defined in a user's Consumer Worker</p>
+			<p>Each batch of messages was sent to a "Dispatcher Worker" that used <a href="https://developers.cloudflare.com/cloudflare-for-platforms/workers-for-platforms" target="_blank" rel="noopener noreferrer"><u>Workers for Platforms</u></a> <a href="https://developers.cloudflare.com/cloudflare-for-platforms/workers-for-platforms/reference/how-workers-for-platforms-works/#dynamic-dispatch-worker" target="_blank" rel="noopener noreferrer"><i><u>dynamic dispatch</u></i></a> to pass the messages to the <code>queue()</code> function defined in a user's Consumer Worker</p>
 		</li>
 	</ul>
 	<figure class="kg-card kg-image-card">
@@ -80,7 +80,7 @@
 			<p><b>Throughput: </b>A single Durable Object is not scalable: it is single-threaded and has a fixed capacity for how many requests per second it can process. This is where the previous 400 messages per second limit came from.</p>
 		</li>
 		<li>
-			<p><b>Consumer Concurrency: </b>Due to <a href="https://developers.cloudflare.com/workers/platform/limits/#simultaneous-open-connections"><u>concurrent subrequest limits</u></a>, a single Durable Object was limited in how many concurrent subrequests it could make to our Dispatcher Worker. This limited the number of <code>queue()</code> handler invocations that it could run simultaneously.</p>
+			<p><b>Consumer Concurrency: </b>Due to <a href="https://developers.cloudflare.com/workers/platform/limits/#simultaneous-open-connections" target="_blank" rel="noopener noreferrer"><u>concurrent subrequest limits</u></a>, a single Durable Object was limited in how many concurrent subrequests it could make to our Dispatcher Worker. This limited the number of <code>queue()</code> handler invocations that it could run simultaneously.</p>
 		</li>
 	</ul>
 	<p>To solve these issues, we created a new v2 architecture that horizontally scales across <b>multiple</b> Durable Objects to implement each single high-performance Queue.</p>
@@ -92,7 +92,7 @@
 			</svg>
 		</a>
 	</div>
-	<p>In the new v2 architecture for Queues, each Queue is implemented using multiple Durable Objects, instead of just one. Instead of a single region, we place <i>Storage Shard </i>Durable Objects in <a href="https://developers.cloudflare.com/durable-objects/reference/data-location/#supported-locations-1"><u>all available regions</u></a> to enable lower latency. Within each region, we create multiple Storage Shards and load balance incoming requests amongst them. Just like that, we’ve multiplied message throughput.</p>
+	<p>In the new v2 architecture for Queues, each Queue is implemented using multiple Durable Objects, instead of just one. Instead of a single region, we place <i>Storage Shard </i>Durable Objects in <a href="https://developers.cloudflare.com/durable-objects/reference/data-location/#supported-locations-1" target="_blank" rel="noopener noreferrer"><u>all available regions</u></a> to enable lower latency. Within each region, we create multiple Storage Shards and load balance incoming requests amongst them. Just like that, we’ve multiplied message throughput.</p>
 	<figure class="kg-card kg-image-card">
 		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2SJTb2UO8tKGrh26ixwLrA/7272e4eaf6f7e85f086a5ae08670387e/image2.png" alt="" class="kg-image" width="1999" height="1100" loading="lazy">
 	</figure>
@@ -182,7 +182,7 @@
 	</div>
 	<ul>
 		<li>
-			<p>We plan on leveraging the performance improvements in the new <a href="https://developers.cloudflare.com/durable-objects"><u>beta version of Durable Objects</u></a> which use SQLite to continue to improve throughput/latency in Queues.</p>
+			<p>We plan on leveraging the performance improvements in the new <a href="https://developers.cloudflare.com/durable-objects" target="_blank" rel="noopener noreferrer"><u>beta version of Durable Objects</u></a> which use SQLite to continue to improve throughput/latency in Queues.</p>
 		</li>
 		<li>
 			<p>We will soon be adding message management features to Queues so that you can take actions to purge messages in a queue, pause consumption of messages, or “redrive”/move messages from one queue to another (for example messages that have been sent to a Dead Letter Queue could be “redriven” or moved back to the original queue).</p>
@@ -199,6 +199,6 @@
 			</ul>
 		</li>
 	</ul>
-	<p>To start using Queues, head over to our <a href="https://developers.cloudflare.com/queues/get-started"><u>Getting Started</u></a> guide.&nbsp;</p>
-	<p>Do distributed systems like Cloudflare Queues and Durable Objects interest you? Would you like to help build them at Cloudflare? <a href="https://boards.greenhouse.io/embed/job_app?token=5390243&amp;gh_src=b2e516a81us"><u>We're Hiring!</u></a></p>
+	<p>To start using Queues, head over to our <a href="https://developers.cloudflare.com/queues/get-started" target="_blank" rel="noopener noreferrer"><u>Getting Started</u></a> guide.&nbsp;</p>
+	<p>Do distributed systems like Cloudflare Queues and Durable Objects interest you? Would you like to help build them at Cloudflare? <a href="https://boards.greenhouse.io/embed/job_app?token=5390243&amp;gh_src=b2e516a81us" target="_blank" rel="noopener noreferrer"><u>We're Hiring!</u></a></p>
 </div>

@@ -6,7 +6,7 @@
 		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6qFUylvIuAuqfStdkrEDvb/c289f67a78b01fc25c7ec2d910aa2f02/Proxyless-KubeCTL-Support.png" alt="Kubectl with Cloudflare Zero Trust" class="kg-image" width="1600" height="900" loading="lazy">
 
 	</figure>
-	<p>Cloudflare is a heavy user of Kubernetes for engineering workloads: it's used to power the backend of our APIs, to handle batch-processing such as analytics aggregation and bot detection, and engineering tools such as our <a href="https://www.cloudflare.com/learning/serverless/glossary/what-is-ci-cd">CI/CD pipelines</a>. But between load balancers, API servers, etcd, ingresses, and pods, the surface area exposed by Kubernetes can be rather large.</p>
+	<p>Cloudflare is a heavy user of Kubernetes for engineering workloads: it's used to power the backend of our APIs, to handle batch-processing such as analytics aggregation and bot detection, and engineering tools such as our <a href="https://www.cloudflare.com/learning/serverless/glossary/what-is-ci-cd" target="_blank" rel="noopener noreferrer">CI/CD pipelines</a>. But between load balancers, API servers, etcd, ingresses, and pods, the surface area exposed by Kubernetes can be rather large.</p>
 	<p>In this post, we share a little bit about how our engineering team dogfoods Cloudflare Zero Trust to secure Kubernetes — and enables kubectl without proxies.</p>
 	<div class="flex anchor relative">
 		<h2 id="our-general-approach-to-kubernetes-security">Our General Approach to Kubernetes Security</h2>
@@ -27,7 +27,7 @@
 			</svg>
 		</a>
 	</div>
-	<p>In the world before <a href="https://www.cloudflare.com/learning/security/glossary/what-is-zero-trust">Zero Trust</a>, engineers could access the Kubernetes API by connecting to a VPN appliance. While this is common across the industry, and it does allow access to the API, it also dropped engineers as clients into the internal network: they had much more network access than necessary.</p>
+	<p>In the world before <a href="https://www.cloudflare.com/learning/security/glossary/what-is-zero-trust" target="_blank" rel="noopener noreferrer">Zero Trust</a>, engineers could access the Kubernetes API by connecting to a VPN appliance. While this is common across the industry, and it does allow access to the API, it also dropped engineers as clients into the internal network: they had much more network access than necessary.</p>
 	<p>We weren't happy with this situation, but it was the status quo for several years. At the beginning of 2020, we retired our VPN and thus the Kubernetes team needed to find another solution.</p>
 	<div class="flex anchor relative">
 		<h3 id="kubernetes-with-cloudflare-tunnels">Kubernetes with Cloudflare Tunnels</h3>
@@ -48,7 +48,7 @@
 			</svg>
 		</a>
 	</div>
-	<p>Since the launch of Cloudflare One, we've been dogfooding the Zero Trust agent in various configurations. At first we'd been using it to implement secure <a href="https://www.cloudflare.com/learning/dns/what-is-dns">DNS</a> with 1.1.1.1. As time went on, we began to use it to dogfood additional Zero Trust features.</p>
+	<p>Since the launch of Cloudflare One, we've been dogfooding the Zero Trust agent in various configurations. At first we'd been using it to implement secure <a href="https://www.cloudflare.com/learning/dns/what-is-dns" target="_blank" rel="noopener noreferrer">DNS</a> with 1.1.1.1. As time went on, we began to use it to dogfood additional Zero Trust features.</p>
 	<p>We're now leveraging the private network routing in Cloudflare Zero Trust to allow engineers to access the Kubernetes APIs without needing to setup cloudflared tunnels or configure kubectl and other Kubernetes ecosystem tools to use tunnels. This isn't something specific to Cloudflare, you can do this for your team today!</p>
 	<figure class="kg-card kg-image-card ">
 
@@ -63,7 +63,7 @@
 			</svg>
 		</a>
 	</div>
-	<p>We use a <a href="https://github.com/cloudflare/terraform-provider-cloudflare">configuration management tool</a> for our Zero Trust configuration to enable infrastructure-as-code, which we've adapted below. However, the same configuration can be achieved using the Cloudflare Zero Trust dashboard.</p>
+	<p>We use a <a href="https://github.com/cloudflare/terraform-provider-cloudflare" target="_blank" rel="noopener noreferrer">configuration management tool</a> for our Zero Trust configuration to enable infrastructure-as-code, which we've adapted below. However, the same configuration can be achieved using the Cloudflare Zero Trust dashboard.</p>
 	<p>The first thing we need to do is create a new tunnel. This tunnel will be used to connect the Cloudflare edge network to the Kubernetes API. We run the tunnel endpoints within Kubernetes, using configuration shown later in this post.</p>
 	<pre class="language-bash"><code class="language-bash">resource "cloudflare_argo_tunnel" "k8s_zero_trust_tunnel" {
   account_id = var.account_id
@@ -105,7 +105,7 @@ resource "cloudflare_teams_rule" "k8s_apiserver_zero_trust_http" {
   traffic     = format("any(http.conn.dst_ip[*] in $%s)", replace(cloudflare_teams_list.k8s_apiserver_ips.id, "-", ""))
 }</code></pre>
 	<p>As we use mutual TLS between clients and the API server, and not all the traffic between kubectl and the API servers are HTTP, we've disabled HTTP inspection for these connections.</p>
-	<p>You can pair these rules with additional Zero Trust rules, such as <a href="https://developers.cloudflare.com/cloudflare-one/identity/devices">device attestation</a>, <a href="https://developers.cloudflare.com/cloudflare-one/policies/filtering/enforce-sessions">session lifetimes</a>, and <a href="https://developers.cloudflare.com/cloudflare-one/policies/filtering/identity-selectors">user and group</a> access policies to further customize your security.</p>
+	<p>You can pair these rules with additional Zero Trust rules, such as <a href="https://developers.cloudflare.com/cloudflare-one/identity/devices" target="_blank" rel="noopener noreferrer">device attestation</a>, <a href="https://developers.cloudflare.com/cloudflare-one/policies/filtering/enforce-sessions" target="_blank" rel="noopener noreferrer">session lifetimes</a>, and <a href="https://developers.cloudflare.com/cloudflare-one/policies/filtering/identity-selectors" target="_blank" rel="noopener noreferrer">user and group</a> access policies to further customize your security.</p>
 	<div class="flex anchor relative">
 		<h3 id="deploying-tunnels">Deploying Tunnels</h3>
 		<a href="https://blog.cloudflare.com/#deploying-tunnels" aria-hidden="true" class="relative sm:absolute sm:-start-5">

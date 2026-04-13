@@ -2,12 +2,12 @@
 <div class="mt4">This post is also available in <a href="https://blog.cloudflare.com/zh-cn/workflows-ga-production-ready-durable-execution">简体中文</a>, <a href="https://blog.cloudflare.com/fr-fr/workflows-ga-production-ready-durable-execution">Français</a>, <a href="https://blog.cloudflare.com/de-de/workflows-ga-production-ready-durable-execution">Deutsch</a>, <a href="https://blog.cloudflare.com/ja-jp/workflows-ga-production-ready-durable-execution">日本語</a>, <a href="https://blog.cloudflare.com/ko-kr/workflows-ga-production-ready-durable-execution">한국어</a>, <a href="https://blog.cloudflare.com/es-la/workflows-ga-production-ready-durable-execution">Español (Latinoamérica)</a>, <a href="https://blog.cloudflare.com/nl-nl/workflows-ga-production-ready-durable-execution">Nederlands</a> and <a href="https://blog.cloudflare.com/zh-tw/workflows-ga-production-ready-durable-execution">繁體中文</a>.</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1JAXkncQezxjEeV0IHNG5b/944fcc20d602ce88e6c2f5dfebba1a56/Feature_Image.png" alt="">
 <div class="post-content lh-copy gray1">
 	<p>Betas are useful for feedback and iteration, but at the end of the day, not everyone is willing to be a guinea pig or can tolerate the occasional sharp edge that comes along with beta software. Sometimes you need that big, shiny “Generally Available” label (or blog post), and now it’s Workflows’ turn.</p>
-	<p><a href="https://developers.cloudflare.com/workflows"><u>Workflows</u></a>, our serverless durable execution engine that allows you to build long-running, multi-step applications (some call them “step functions”) on Workers, is now GA.</p>
-	<p>In short, that means it’s <i>production ready</i> —&nbsp; but it also doesn’t mean Workflows is going to ossify. We’re continuing to scale Workflows (including more concurrent instances), bring new capabilities (like the new <code>waitForEvent</code> API), and make it easier to build <a href="https://www.cloudflare.com/learning/ai/what-is-agentic-ai">AI agents</a> with <a href="https://developers.cloudflare.com/agents/api-reference/run-workflows"><u>our Agents SDK and Workflows</u></a>.</p>
+	<p><a href="https://developers.cloudflare.com/workflows" target="_blank" rel="noopener noreferrer"><u>Workflows</u></a>, our serverless durable execution engine that allows you to build long-running, multi-step applications (some call them “step functions”) on Workers, is now GA.</p>
+	<p>In short, that means it’s <i>production ready</i> —&nbsp; but it also doesn’t mean Workflows is going to ossify. We’re continuing to scale Workflows (including more concurrent instances), bring new capabilities (like the new <code>waitForEvent</code> API), and make it easier to build <a href="https://www.cloudflare.com/learning/ai/what-is-agentic-ai" target="_blank" rel="noopener noreferrer">AI agents</a> with <a href="https://developers.cloudflare.com/agents/api-reference/run-workflows" target="_blank" rel="noopener noreferrer"><u>our Agents SDK and Workflows</u></a>.</p>
 	<p>If you prefer code to prose, you can quickly install the Workflows starter project and start exploring the code and the API with a single command:</p>
 	<pre class="language-Rust"><code class="language-Rust">npm create cloudflare@latest workflows-starter -- 
 --template="cloudflare/workflows-starter"</code></pre>
-	<p>How does Workflows work? What can I build with it? How do I think about building AI agents with Workflows and the <a href="https://developers.cloudflare.com/agents"><u>Agents SDK</u></a>? Well, read on.</p>
+	<p>How does Workflows work? What can I build with it? How do I think about building AI agents with Workflows and the <a href="https://developers.cloudflare.com/agents" target="_blank" rel="noopener noreferrer"><u>Agents SDK</u></a>? Well, read on.</p>
 	<div class="flex anchor relative">
 		<h2 id="building-with-workflows">Building with Workflows</h2>
 		<a href="https://blog.cloudflare.com/#building-with-workflows" aria-hidden="true" class="relative sm:absolute sm:-start-5">
@@ -148,7 +148,7 @@ export class OrderProcessingWorkflow extends WorkflowEntrypoint&lt;Env, OrderPar
 			<p>An incoming webhook, like from a Stripe payment or a GitHub event. </p>
 		</li>
 		<li>
-			<p>A state change, such as a file upload to R2 that triggers an <a href="https://developers.cloudflare.com/r2/buckets/event-notifications"><u>Event Notification</u></a>, and then pushes a reference to the file to the Workflow, so it can process the file (or run it through an AI model).</p>
+			<p>A state change, such as a file upload to R2 that triggers an <a href="https://developers.cloudflare.com/r2/buckets/event-notifications" target="_blank" rel="noopener noreferrer"><u>Event Notification</u></a>, and then pushes a reference to the file to the Workflow, so it can process the file (or run it through an AI model).</p>
 		</li>
 	</ul>
 	<p>The new <code>waitForEvent</code> API in Workflows allows you to do just that:&nbsp;</p>
@@ -157,7 +157,7 @@ export class OrderProcessingWorkflow extends WorkflowEntrypoint&lt;Env, OrderPar
 	<pre class="language-JavaScript"><code class="language-JavaScript">curl -d '{"transaction":"complete","id":"1234-6789"}' \
   -H "Authorization: Bearer ${CF_TOKEN}" \
 \ "https://api.cloudflare.com/client/v4/accounts/{account_id}/workflows/{workflow_name}/instances/{instance_id}/events/{event_type}"</code></pre>
-	<p>… or via the <a href="https://developers.cloudflare.com/workflows/build/workers-api/#workflowinstance"><u>Workers API</u></a> within a Worker itself:</p>
+	<p>… or via the <a href="https://developers.cloudflare.com/workflows/build/workers-api/#workflowinstance" target="_blank" rel="noopener noreferrer"><u>Workers API</u></a> within a Worker itself:</p>
 	<pre class="language-JavaScript"><code class="language-JavaScript">interface Env {
   MY_WORKFLOW: Workflow;
 }
@@ -207,7 +207,7 @@ step.waitForEvent("payment failure", { type: "payment-failure-webhook", timeout:
 	</figure>
 	<p><sup><i>Adding waitForEvent to our code review Workflow, so it can seek explicit approval.</i></sup></p>
 	<p>You could even imagine an AI agent itself sending and/or acting on behalf of a human here: <code>waitForEvent</code> simply exposes a way for a Workflow to retrieve and pause on something in the world to change before it continues (or not).</p>
-	<p>Critically, you can call <code>waitForEvent</code> just like any other step in Workflows: you can call it conditionally, and/or multiple times, and/or in a loop. Workflows are just Workers: you have the full power of a programming language and are not restricted by a <a href="https://en.wikipedia.org/wiki/Domain-specific_language"><u>domain specific language (DSL)</u></a> or config language.</p>
+	<p>Critically, you can call <code>waitForEvent</code> just like any other step in Workflows: you can call it conditionally, and/or multiple times, and/or in a loop. Workflows are just Workers: you have the full power of a programming language and are not restricted by a <a href="https://en.wikipedia.org/wiki/Domain-specific_language" target="_blank" rel="noopener noreferrer"><u>domain specific language (DSL)</u></a> or config language.</p>
 	<div class="flex anchor relative">
 		<h2 id="pricing">Pricing</h2>
 		<a href="https://blog.cloudflare.com/#pricing" aria-hidden="true" class="relative sm:absolute sm:-start-5">
@@ -247,7 +247,7 @@ step.waitForEvent("payment failure", { type: "payment-failure-webhook", timeout:
 					<p><b>Requests</b></p>
 				</td>
 				<td>
-					<p>100,000 Workflow invocations per day (<a href="https://developers.cloudflare.com/workers/platform/pricing/#workers"><u>shared with Workers</u></a>)</p>
+					<p>100,000 Workflow invocations per day (<a href="https://developers.cloudflare.com/workers/platform/pricing/#workers" target="_blank" rel="noopener noreferrer"><u>shared with Workers</u></a>)</p>
 				</td>
 				<td>
 					<p>10 million included per month</p>
@@ -274,7 +274,7 @@ step.waitForEvent("payment failure", { type: "payment-failure-webhook", timeout:
 		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6zRZ3gFQ0TrCetwlW0bqWG/87e41b7ab75ae48a4f2a6655d8ac2a86/3.png" alt="" class="kg-image" width="1912" height="832" loading="lazy">
 	</figure>
 	<p><sup><i>Bill for CPU, not for time spent when a Workflow is idle or waiting.</i></sup></p>
-	<p>Workflow engines, especially, tend to spend a lot of time waiting: reading data from <a href="https://www.cloudflare.com/learning/cloud/what-is-object-storage">object storage</a> (like <a href="https://www.cloudflare.com/developer-platform/products/r2"><u>Cloudflare R2</u></a>), calling third-party APIs or LLMs like o3-mini or Claude 3.7, even querying databases like <a href="https://developers.cloudflare.com/d1"><u>D1</u></a>, Postgres, or MySQL. With Workflows, just like Workers: you don’t pay for time your application is just waiting.</p>
+	<p>Workflow engines, especially, tend to spend a lot of time waiting: reading data from <a href="https://www.cloudflare.com/learning/cloud/what-is-object-storage" target="_blank" rel="noopener noreferrer">object storage</a> (like <a href="https://www.cloudflare.com/developer-platform/products/r2" target="_blank" rel="noopener noreferrer"><u>Cloudflare R2</u></a>), calling third-party APIs or LLMs like o3-mini or Claude 3.7, even querying databases like <a href="https://developers.cloudflare.com/d1" target="_blank" rel="noopener noreferrer"><u>D1</u></a>, Postgres, or MySQL. With Workflows, just like Workers: you don’t pay for time your application is just waiting.</p>
 	<div class="flex anchor relative">
 		<h2 id="start-building">Start building</h2>
 		<a href="https://blog.cloudflare.com/#start-building" aria-hidden="true" class="relative sm:absolute sm:-start-5">
@@ -286,10 +286,10 @@ step.waitForEvent("payment failure", { type: "payment-failure-webhook", timeout:
 	<p>So you’ve got a good handle on Workflows, how it works, and want to get building. What next?</p>
 	<ol>
 		<li>
-			<p><a href="https://developers.cloudflare.com/workflows"><u>Visit the Workflows documentation</u></a> to learn how it works, understand the Workflows API, and best practices</p>
+			<p><a href="https://developers.cloudflare.com/workflows" target="_blank" rel="noopener noreferrer"><u>Visit the Workflows documentation</u></a> to learn how it works, understand the Workflows API, and best practices</p>
 		</li>
 		<li>
-			<p>Review the code in the <a href="https://github.com/cloudflare/workflows-starter"><u>starter project</u></a></p>
+			<p>Review the code in the <a href="https://github.com/cloudflare/workflows-starter" target="_blank" rel="noopener noreferrer"><u>starter project</u></a></p>
 		</li>
 		<li>
 			<p>And lastly, deploy the starter to your own Cloudflare account with a few clicks:</p>

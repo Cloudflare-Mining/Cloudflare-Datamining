@@ -38,7 +38,7 @@
 			</svg>
 		</a>
 	</div>
-	<p>workerd can be used to self-host applications that you'd otherwise <a href="https://www.cloudflare.com/developer-platform/solutions/hosting">run on Cloudflare Workers</a>. It is intended to be a production-ready web server for this purpose. workerd has been designed to be unopinionated about hosting environments, so that it should fit nicely into whatever server/VM/container hosting and orchestration system you prefer. It's just a web server.</p>
+	<p>workerd can be used to self-host applications that you'd otherwise <a href="https://www.cloudflare.com/developer-platform/solutions/hosting" target="_blank" rel="noopener noreferrer">run on Cloudflare Workers</a>. It is intended to be a production-ready web server for this purpose. workerd has been designed to be unopinionated about hosting environments, so that it should fit nicely into whatever server/VM/container hosting and orchestration system you prefer. It's just a web server.</p>
 	<p>Workers has always been based on standardized APIs, so that code is not locked into Cloudflare, and <a href="https://blog.cloudflare.com/introducing-the-wintercg">we work closely with other runtimes to promote compatibility</a>. workerd provides another option to ensure that applications built on Workers can run anywhere, by leveraging the same underlying code to get exact, "bug-for-bug" compatibility.</p>
 	<div class="flex anchor relative">
 		<h3 id="local-development-and-testing">Local development and testing</h3>
@@ -48,7 +48,7 @@
 			</svg>
 		</a>
 	</div>
-	<p>workerd is also designed to facilitate realistic local testing of Workers. Up until now, this has been achieved using <a href="https://miniflare.dev">Miniflare</a>, which simulated the Workers API within a Node.js environment. Miniflare has worked well, but in a number of cases its behavior did not exactly match Workers running on Cloudflare. With the release of workerd, Miniflare and the Wrangler CLI tool will now be able to provide a more accurate simulation by leveraging the same runtime code we use in production.</p>
+	<p>workerd is also designed to facilitate realistic local testing of Workers. Up until now, this has been achieved using <a href="https://miniflare.dev" target="_blank" rel="noopener noreferrer">Miniflare</a>, which simulated the Workers API within a Node.js environment. Miniflare has worked well, but in a number of cases its behavior did not exactly match Workers running on Cloudflare. With the release of workerd, Miniflare and the Wrangler CLI tool will now be able to provide a more accurate simulation by leveraging the same runtime code we use in production.</p>
 	<div class="flex anchor relative">
 		<h3 id="programmable-proxies">Programmable proxies</h3>
 		<a href="https://blog.cloudflare.com/#programmable-proxies" aria-hidden="true" class="relative sm:absolute sm:-start-5">
@@ -137,7 +137,7 @@ env.AUTH_SERVICE.fetch("https://auth/api", {
  method: "POST",
  body: JSON.stringify(authRequest),
 });</code></pre>
-	<p>This may at first appear to be a trivial difference. In both cases, we have to use configuration to <a href="https://www.cloudflare.com/learning/access-management/what-is-access-control">control access</a> to external services. In the traditional approach, we'd provide access tokens (and probably the service's hostname) as environment variables. In the new approach, the environment goes a bit further to provide a full-fledged object. Is this just syntax sugar?</p>
+	<p>This may at first appear to be a trivial difference. In both cases, we have to use configuration to <a href="https://www.cloudflare.com/learning/access-management/what-is-access-control" target="_blank" rel="noopener noreferrer">control access</a> to external services. In the traditional approach, we'd provide access tokens (and probably the service's hostname) as environment variables. In the new approach, the environment goes a bit further to provide a full-fledged object. Is this just syntax sugar?</p>
 	<p>It turns out, this slight change has huge advantages:</p>
 	<p>First, we can now restrict the global fetch() function to accept only publicly-routable URLs. <b>This makes applications totally immune to SSRF attacks!</b> You cannot trick an application into accessing an internal service unintentionally if the code to access internal services is explicitly different. (In fact, the global fetch() is itself backed by a binding, which can be configured. workerd defaults to connecting it to the public internet, but you can also override it to permit private addresses if you want, or to route to a specific proxy service, or to be blocked entirely.)</p>
 	<p>With that done, we now have an interesting property: All internal services which an application uses <i>must</i> be configurable. This means:</p>
@@ -163,7 +163,7 @@ env.AUTH_SERVICE.fetch("https://auth/api", {
 		</a>
 	</div>
 	<p>Cloudflare Workers has a hard rule against ever breaking a live Worker running in production. This same dedication to backwards compatibility extends to workerd.</p>
-	<p>workerd shares <a href="https://blog.cloudflare.com/backwards-compatibility-in-cloudflare-workers">Workers' compatibility date system</a> to manage breaking changes. Every Worker must be configured with a "compatibility date". The runtime then ensures that the API behaves exactly as it did on that date. At your leisure, you may <a href="https://developers.cloudflare.com/workers/platform/compatibility-dates">check the documentation</a> to see if new breaking changes are introduced at a future date, and update your code for them. Most such changes are minor and most code won't require any changes. However, you are never obliged to update. Old dates will continue to be supported by newer versions of workerd. It is always safe to update workerd itself without updating your code.</p>
+	<p>workerd shares <a href="https://blog.cloudflare.com/backwards-compatibility-in-cloudflare-workers">Workers' compatibility date system</a> to manage breaking changes. Every Worker must be configured with a "compatibility date". The runtime then ensures that the API behaves exactly as it did on that date. At your leisure, you may <a href="https://developers.cloudflare.com/workers/platform/compatibility-dates" target="_blank" rel="noopener noreferrer">check the documentation</a> to see if new breaking changes are introduced at a future date, and update your code for them. Most such changes are minor and most code won't require any changes. However, you are never obliged to update. Old dates will continue to be supported by newer versions of workerd. It is always safe to update workerd itself without updating your code.</p>
 	<div class="flex anchor relative">
 		<h2 id="what-its-not">What it's not</h2>
 		<a href="https://blog.cloudflare.com/#what-its-not" aria-hidden="true" class="relative sm:absolute sm:-start-5">

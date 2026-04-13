@@ -13,7 +13,7 @@
 		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/68vBJYkfVP0kh5oNFxCXFX/a977ab2c917072d0b7cbd359b95bc486/download-11.png" alt="" class="kg-image" width="1600" height="813" loading="lazy">
 
 	</figure>
-	<p>We used the robust <a href="https://microsoft.github.io/monaco-editor">Monaco editor</a>, which took us pretty far—it’s even what VSCode uses under the hood! However, Monaco is fairly limited in what it can do. Developers are used to the full power of their local development environment, with advanced IntelliSense support and all the power of a full-fledged IDE. Compared to that, a single file text editor is a step-down in expressiveness and functionality.</p>
+	<p>We used the robust <a href="https://microsoft.github.io/monaco-editor" target="_blank" rel="noopener noreferrer">Monaco editor</a>, which took us pretty far—it’s even what VSCode uses under the hood! However, Monaco is fairly limited in what it can do. Developers are used to the full power of their local development environment, with advanced IntelliSense support and all the power of a full-fledged IDE. Compared to that, a single file text editor is a step-down in expressiveness and functionality.</p>
 	<div class="flex anchor relative">
 		<h2 id="vscode-for-web">VSCode for Web</h2>
 		<a href="https://blog.cloudflare.com/#vscode-for-web" aria-hidden="true" class="relative sm:absolute sm:-start-5">
@@ -22,7 +22,7 @@
 			</svg>
 		</a>
 	</div>
-	<p>Today, we’re rolling out a new Quick Edit experience for Workers, powered by <a href="https://code.visualstudio.com/docs/editor/vscode-web">VSCode for Web</a>. This is a huge upgrade, allowing developers to work in a familiar environment. This isn’t just about familiarity though—using VSCode for Web to power Quick Edit unlocks significant new functionality that was previously only possible with a local development setup using <a href="https://blog.cloudflare.com/10-things-i-love-about-wrangler">Wrangler</a>.</p>
+	<p>Today, we’re rolling out a new Quick Edit experience for Workers, powered by <a href="https://code.visualstudio.com/docs/editor/vscode-web" target="_blank" rel="noopener noreferrer">VSCode for Web</a>. This is a huge upgrade, allowing developers to work in a familiar environment. This isn’t just about familiarity though—using VSCode for Web to power Quick Edit unlocks significant new functionality that was previously only possible with a local development setup using <a href="https://blog.cloudflare.com/10-things-i-love-about-wrangler">Wrangler</a>.</p>
 	<figure class="kg-card kg-image-card ">
 
 		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7Dg5Pph7cGcx3fKb4zMiYZ/f26625e62400119738e40a0d366d57c0/download--1--7.png" alt="" class="kg-image" width="1600" height="814" loading="lazy">
@@ -87,7 +87,7 @@
 			</svg>
 		</a>
 	</div>
-	<p>TypeScript is incredibly popular, and developers are more and more used to writing their workers in TypeScript. While the dashboard editor still only allows JavaScript files (and you’re unable to write TypeScript directly) we wanted to support modern typed JavaScript development as much as we could. To that end, the new dashboard editor has full support for <a href="https://www.typescriptlang.org/docs/handbook/type-checking-javascript-files.html">JSDoc TypeScript syntax</a>, with <a href="https://www.npmjs.com/package/@cloudflare/workers-types">the TypeScript environment for workers preloaded</a>. This means that writing code with type errors will show a familiar squiggly red line, and Cloudflare APIs like HTMLRewriter will be autocompleted.</p>
+	<p>TypeScript is incredibly popular, and developers are more and more used to writing their workers in TypeScript. While the dashboard editor still only allows JavaScript files (and you’re unable to write TypeScript directly) we wanted to support modern typed JavaScript development as much as we could. To that end, the new dashboard editor has full support for <a href="https://www.typescriptlang.org/docs/handbook/type-checking-javascript-files.html" target="_blank" rel="noopener noreferrer">JSDoc TypeScript syntax</a>, with <a href="https://www.npmjs.com/package/@cloudflare/workers-types" target="_blank" rel="noopener noreferrer">the TypeScript environment for workers preloaded</a>. This means that writing code with type errors will show a familiar squiggly red line, and Cloudflare APIs like HTMLRewriter will be autocompleted.</p>
 	<figure class="kg-card kg-image-card ">
 
 		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4vXG2YZQvTAdXe9hghyD67/164bb87679259a6a27bb6bb92dcb3cea/download--5--4.png" alt="" class="kg-image" width="1600" height="1227" loading="lazy">
@@ -104,9 +104,9 @@
 		</a>
 	</div>
 	<p>It wouldn’t be a Cloudflare blog post without a deep dive into the nuts and bolts of what we’ve built!</p>
-	<p>First, an overview—how does this work at a high level? We embed VSCode for Web in the Cloudflare dashboard as an <code>iframe</code>, and communicate with it over a <a href="https://developer.mozilla.org/en-US/docs/Web/API/MessageChannel"><code>MessageChannel</code></a>. When the <code>iframe</code> is loaded, the Cloudflare dashboard sends over the contents of your worker to a VSCode for Web extension. This extension seeds an in-memory filesystem from which VSCode for Web reads. When you edit files in VSCode for Web, the updated files are sent back over the same <code>MessageChannel</code> to the Cloudflare dashboard, where they’re uploaded as a previewed worker to Cloudflare's global network.</p>
+	<p>First, an overview—how does this work at a high level? We embed VSCode for Web in the Cloudflare dashboard as an <code>iframe</code>, and communicate with it over a <a href="https://developer.mozilla.org/en-US/docs/Web/API/MessageChannel" target="_blank" rel="noopener noreferrer"><code>MessageChannel</code></a>. When the <code>iframe</code> is loaded, the Cloudflare dashboard sends over the contents of your worker to a VSCode for Web extension. This extension seeds an in-memory filesystem from which VSCode for Web reads. When you edit files in VSCode for Web, the updated files are sent back over the same <code>MessageChannel</code> to the Cloudflare dashboard, where they’re uploaded as a previewed worker to Cloudflare's global network.</p>
 	<p>As with any project of this size, the devil is in the details. Let’s focus on a specific area —how we communicate with VSCode for Web’s <code>iframe</code> from the Cloudflare dashboard.</p>
-	<p>The <a href="https://developer.mozilla.org/en-US/docs/Web/API/MessageChannel"><code>MessageChannel</code></a> browser API enables relatively easy cross-frame communication—in this case, from an iframe embedder to the iframe itself. To use it, you construct an instance and access the <code>port1</code> and <code>port2</code> properties:</p>
+	<p>The <a href="https://developer.mozilla.org/en-US/docs/Web/API/MessageChannel" target="_blank" rel="noopener noreferrer"><code>MessageChannel</code></a> browser API enables relatively easy cross-frame communication—in this case, from an iframe embedder to the iframe itself. To use it, you construct an instance and access the <code>port1</code> and <code>port2</code> properties:</p>
 	<pre class="language-javascript"><code class="language-javascript">const channel = new MessageChannel()
 
 // The MessagePort you keep a hold of
@@ -126,7 +126,7 @@ editor.contentWindow.postMessage('PORT', '*', [
 channel.port2
 ]);
 });</code></pre>
-	<p>An interesting detail here is how the <code>MessagePort</code> is sent over to the iframe. The third argument to <code>postMessage()</code> indicates a sequence of <a href="https://developer.mozilla.org/en-US/docs/Web/API/Web_Workers_API/Transferable_objects">Transferable objects</a>. This <i>transfers</i> ownership of <code>port2</code> to the iframe, which means that any attempts to access it in the original context will throw an exception.</p>
+	<p>An interesting detail here is how the <code>MessagePort</code> is sent over to the iframe. The third argument to <code>postMessage()</code> indicates a sequence of <a href="https://developer.mozilla.org/en-US/docs/Web/API/Web_Workers_API/Transferable_objects" target="_blank" rel="noopener noreferrer">Transferable objects</a>. This <i>transfers</i> ownership of <code>port2</code> to the iframe, which means that any attempts to access it in the original context will throw an exception.</p>
 	<p>At this stage the dashboard has loaded an iframe containing VSCode for Web, initialised a <code>MessageChannel</code>, and sent over a <code>MessagePort</code> to the iframe. Let’s switch context—the iframe now needs to catch the <code>MessagePort</code> and start using it to communicate with the embedder (Cloudflare’s dashboard).</p>
 	<pre class="language-javascript"><code class="language-javascript">window.onmessage = (e) =&gt; {
 if (e.data === "PORT") {
@@ -164,7 +164,7 @@ channel.port1.postMessage({
   // The worker's modules
   files: files
 });</code></pre>
-	<p>If you’d like to learn more about our approach, you can explore the code we’ve open sourced as part of this project, including the <a href="https://github.com/cloudflare/workers-sdk/tree/main/packages/quick-edit-extension">VSCode extension</a> we’ve written to load data from the Cloudflare dashboard, our <a href="https://github.com/cloudflare/workers-sdk/tree/main/packages/quick-edit">patches to VSCode</a>, and our <a href="https://github.com/cloudflare/workers-sdk/tree/main/packages/solarflare-theme">VSCode theme</a>.</p>
+	<p>If you’d like to learn more about our approach, you can explore the code we’ve open sourced as part of this project, including the <a href="https://github.com/cloudflare/workers-sdk/tree/main/packages/quick-edit-extension" target="_blank" rel="noopener noreferrer">VSCode extension</a> we’ve written to load data from the Cloudflare dashboard, our <a href="https://github.com/cloudflare/workers-sdk/tree/main/packages/quick-edit" target="_blank" rel="noopener noreferrer">patches to VSCode</a>, and our <a href="https://github.com/cloudflare/workers-sdk/tree/main/packages/solarflare-theme" target="_blank" rel="noopener noreferrer">VSCode theme</a>.</p>
 	<div class="flex anchor relative">
 		<h2 id="were-not-done">We’re not done!</h2>
 		<a href="https://blog.cloudflare.com/#were-not-done" aria-hidden="true" class="relative sm:absolute sm:-start-5">
@@ -174,5 +174,5 @@ channel.port1.postMessage({
 		</a>
 	</div>
 	<p>This is a huge overhaul of the dashboard editing experience for Workers, but we’re not resting on our laurels! We know there’s a long way to go before developing a worker in the browser will offer the same experience as developing a worker locally with Wrangler, and we’re working on ways to close that gap. In particular, we’re working on adding Typescript support to the editor, and supporting syncing to external Git providers like GitHub and GitLab.</p>
-	<p>We’d love to hear any feedback from you on the new editing experience—come say hi and ask us any questions you have on the <a href="https://discord.cloudflare.com">Cloudflare Discord</a>!</p>
+	<p>We’d love to hear any feedback from you on the new editing experience—come say hi and ask us any questions you have on the <a href="https://discord.cloudflare.com" target="_blank" rel="noopener noreferrer">Cloudflare Discord</a>!</p>
 </div>

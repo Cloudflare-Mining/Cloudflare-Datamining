@@ -61,7 +61,7 @@
 		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3Lz6pTBIAuP5fumgeqQEP5/65353694941e554cacd8e05990deb69f/sine.drawio--4-.png" alt="A sine wave is a geometric waveform that oscillates (moves up, down, or side-to-side) periodically." class="kg-image" width="534" height="286" loading="lazy">
 
 	</figure>
-	<p>In practice, various programming language packages exist to fit an arbitrary dataset on a curve. For example, Python has the <a href="https://docs.scipy.org/doc/scipy/reference/generated/scipy.optimize.curve_fit.html">scipy curve_fit function</a>.</p>
+	<p>In practice, various programming language packages exist to fit an arbitrary dataset on a curve. For example, Python has the <a href="https://docs.scipy.org/doc/scipy/reference/generated/scipy.optimize.curve_fit.html" target="_blank" rel="noopener noreferrer">scipy curve_fit function</a>.</p>
 	<p>We used Python and to make the result more accurate, it is recommended to include arbitrary values as initial guesses. These are described below;</p>
 	<p><b>Amplitude</b>: This is the distance from the peak/valley to the time axis, and is approximated as the standard deviation multiplied by √2. The standard deviation represents the variability in the data points, and for a sine wave that varies between -1 and +1, the standard deviation is approximately 0.707 (or 1/√2). Therefore, by multiplying the standard deviation of the data by √2, we can represent an approximation of the amplitude.</p>
 	<p><b>Frequency</b>: This is the number of cycles (time periods) in one second. We are concerned with the daily CPU pattern, meaning that the guess should be one full wave every 24 hours (i.e. 1/86400).</p>
@@ -112,7 +112,7 @@ amplitude, frequency, phase, offset, _ = scipy.optimize.curve_fit(
 	</div>
 	<p>Most load patterns fit into the sine wave, but there are some edge cases occasionally. e.g. a smaller data center that has a constant CPU. In those cases we have fallback mechanisms, but it also got us thinking about how to determine the accuracy of each fit.</p>
 	<p>With accuracy data we can make smarter decisions about accepting the automatic window, track regressions and unearth data centers with unexpected patterns. The theoretical solution here is referred to as the <b>goodness of fit</b>.</p>
-	<p><a href="https://youtu.be/Jl-Ye38qkRc">Curve fitting in Python with curve_fit</a> describes curve fitting and calculating the chi-squared value. The formula for a goodness of fit chi-squared test in the image below:</p>
+	<p><a href="https://youtu.be/Jl-Ye38qkRc" target="_blank" rel="noopener noreferrer">Curve fitting in Python with curve_fit</a> describes curve fitting and calculating the chi-squared value. The formula for a goodness of fit chi-squared test in the image below:</p>
 	<figure class="kg-card kg-image-card ">
 
 		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5H29tgQrHcJFXZg2BSAhYA/e61c1354768aaf36eadcfdc2e0d6e60e/Untitled.png" alt="" class="kg-image" width="1600" height="808" loading="lazy">
@@ -188,5 +188,5 @@ amplitude, frequency, phase, offset, _ = scipy.optimize.curve_fit(
 			</svg>
 		</a>
 	</div>
-	<p>If you found this post very interesting and want to contribute, take a look at our <a href="https://www.cloudflare.com/en-gb/careers">careers page</a> for open positions! We’d love to have a conversation with you. </p>
+	<p>If you found this post very interesting and want to contribute, take a look at our <a href="https://www.cloudflare.com/en-gb/careers" target="_blank" rel="noopener noreferrer">careers page</a> for open positions! We’d love to have a conversation with you. </p>
 </div>

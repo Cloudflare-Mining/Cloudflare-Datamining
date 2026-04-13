@@ -5,7 +5,7 @@
 		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4erH7OasTo8mE8mhF1oEu4/f83683295d2d6dede03fc6b38fb70faa/tXnAVVjW7s4o475UtWZNzRyZXKdKpRWniLRUziVX0ohuQehj0NDgNTW7FaMAE9ZUEdvpU04d4fR7_1XqVseW0mgA0fZT2E8KS_3c3GICC6HxpPWG5nMYmhm1b4zl.png" alt="" class="kg-image" width="1200" height="675" loading="lazy">
 
 	</figure>
-	<p>Images are a massive part of the Internet. On the median web page, <a href="https://almanac.httparchive.org/en/2020/page-weight">images account for 51% of the bytes loaded</a>, so any improvement made to their speed or their size has a significant impact on performance.</p>
+	<p>Images are a massive part of the Internet. On the median web page, <a href="https://almanac.httparchive.org/en/2020/page-weight" target="_blank" rel="noopener noreferrer">images account for 51% of the bytes loaded</a>, so any improvement made to their speed or their size has a significant impact on performance.</p>
 	<p>Today, we are excited to announce Cloudflare’s Image Optimization Testing Tool <i>(as of JUL 2023, this tool is no longer available)</i>. Simply enter your website’s URL, and we’ll run a series of automated tests to determine if there are any possible improvements you could make in delivering optimal images to visitors.</p>
 	<figure class="kg-card kg-image-card ">
 
@@ -31,9 +31,9 @@
 			</svg>
 		</a>
 	</div>
-	<p>Since the end of August 2021, <a href="https://developers.google.com/search/blog/2020/11/timing-for-page-experience">Google has used the Core Web Vitals to quantify page performance when considering search results rankings</a>. These metrics are three numbers: <a href="https://web.dev/lcp">Largest Contentful Paint (LCP)</a>, <a href="https://web.dev/fid">First Input Delay (FID)</a>, and <a href="https://web.dev/cls">Cumulative Layout Shift (CLS)</a>. They approximate the experience of loading, interactivity and visual stability respectively.</p>
+	<p>Since the end of August 2021, <a href="https://developers.google.com/search/blog/2020/11/timing-for-page-experience" target="_blank" rel="noopener noreferrer">Google has used the Core Web Vitals to quantify page performance when considering search results rankings</a>. These metrics are three numbers: <a href="https://web.dev/lcp" target="_blank" rel="noopener noreferrer">Largest Contentful Paint (LCP)</a>, <a href="https://web.dev/fid" target="_blank" rel="noopener noreferrer">First Input Delay (FID)</a>, and <a href="https://web.dev/cls" target="_blank" rel="noopener noreferrer">Cumulative Layout Shift (CLS)</a>. They approximate the experience of loading, interactivity and visual stability respectively.</p>
 	<p>CLS and LCP are the two metrics we can improve by optimizing images. When CLS is high, this indicates that large amounts of the page layout is shifting as it loads. LCP measures the time it takes for the single largest image or text block in the viewport to render.</p>
-	<p>These can both be measured “in the field” with Real User Monitoring (RUM) analytics such as <a href="https://blog.cloudflare.com/start-measuring-web-vitals-with-browser-insights">Cloudflare's Web Analytics</a>, or in a “lab environment” using <a href="https://images.cloudflare.com">Cloudflare’s Image Optimization Testing Tool</a>.</p>
+	<p>These can both be measured “in the field” with Real User Monitoring (RUM) analytics such as <a href="https://blog.cloudflare.com/start-measuring-web-vitals-with-browser-insights">Cloudflare's Web Analytics</a>, or in a “lab environment” using <a href="https://images.cloudflare.com" target="_blank" rel="noopener noreferrer">Cloudflare’s Image Optimization Testing Tool</a>.</p>
 	<div class="flex anchor relative">
 		<h2 id="how-to-optimize-for-speed">How to optimize for speed</h2>
 		<a href="https://blog.cloudflare.com/#how-to-optimize-for-speed" aria-hidden="true" class="relative sm:absolute sm:-start-5">
@@ -62,7 +62,7 @@
 	</ul>
 	<p>When embedding an image on a webpage, traditionally the author would simply pass a <code>src</code> attribute on an <code>img</code> tag:</p>
 	<pre class="language-html"><code class="language-html">&lt;img src="hello_world_12000.jpg" alt="Hello, world!" /&gt;</code></pre>
-	<p><a href="https://caniuse.com/srcset">Since 2017, all modern browsers have supported the more dynamic <code>srcset</code> attribute</a>. This allows authors to set multiple image sources, depending on the matching media condition of the visitor’s browser:</p>
+	<p><a href="https://caniuse.com/srcset" target="_blank" rel="noopener noreferrer">Since 2017, all modern browsers have supported the more dynamic <code>srcset</code> attribute</a>. This allows authors to set multiple image sources, depending on the matching media condition of the visitor’s browser:</p>
 	<pre class="language-html"><code class="language-html">&lt;img srcset="hello_world_1500.jpg 1500w,
              hello_world_2000.jpg 2000w,
              hello_world_12000.jpg 12000w"
@@ -78,7 +78,7 @@
 			<p><b><b><b>Client Hints</b></b></b></p>
 		</li>
 	</ul>
-	<p>Client Hints are a standard that some browsers are choosing to implement, and some not. They are a set of HTTP request headers which tell the server about the client's device. For example, the browser can attach a <code>Viewport-Width</code> header when requesting an image which informs the server of the width of that particular browser's viewport (note this header is currently in the process of <a href="https://wicg.github.io/responsive-image-client-hints/#sec-ch-viewport-width">being renamed</a> to <code>Sec-CH-Viewport-Width</code>).</p>
+	<p>Client Hints are a standard that some browsers are choosing to implement, and some not. They are a set of HTTP request headers which tell the server about the client's device. For example, the browser can attach a <code>Viewport-Width</code> header when requesting an image which informs the server of the width of that particular browser's viewport (note this header is currently in the process of <a href="https://wicg.github.io/responsive-image-client-hints/#sec-ch-viewport-width" target="_blank" rel="noopener noreferrer">being renamed</a> to <code>Sec-CH-Viewport-Width</code>).</p>
 	<p>This simplifies the markup in the previous example greatly — in fact, no changes are required from the original simple HTML:</p>
 	<pre class="language-html"><code class="language-html">&lt;img src="hello_world_12000.jpg" alt="Hello, world!" /&gt;</code></pre>
 	<p>If Client Hints are supported, when the browser makes a request for <code>hello_world_12000.jpg</code>, it might attach the following header:</p>
@@ -94,7 +94,7 @@
 		</a>
 	</div>
 	<p>JPEG, PNG, GIF, WebP, and now, AVIF. AVIF is the latest image format with widespread industry support, and it often outperforms its preceding formats. AVIF supports transparency with an alpha channel, it supports animations, and it is typically 50% smaller than comparable JPEGs (vs. WebP's reduction of only 30%).</p>
-	<p><a href="https://blog.cloudflare.com/generate-avif-images-with-image-resizing">We added the AVIF format to Cloudflare's Image Resizing product last year</a> as soon as Google Chrome added support. Firefox 93 (scheduled for release on October 5, 2021) will be Firefox's first stable release, and with both Microsoft and Apple as members of AVIF's <a href="https://aomedia.org">Alliance for Open Media</a>, we hope to see support in Edge and Safari soon. Before these modern formats, we also saw innovative approaches to improving how an image loads on a webpage. <a href="https://blurha.sh">BlurHash</a> is a technique of embedding a very small representation of the image inside the HTML markup which can be immediately rendered and acts as a placeholder until the final image loads. This small representation (hash) produced a blurry mix of colors similar to that of the final image and so eased the loading experience for users.</p>
+	<p><a href="https://blog.cloudflare.com/generate-avif-images-with-image-resizing">We added the AVIF format to Cloudflare's Image Resizing product last year</a> as soon as Google Chrome added support. Firefox 93 (scheduled for release on October 5, 2021) will be Firefox's first stable release, and with both Microsoft and Apple as members of AVIF's <a href="https://aomedia.org" target="_blank" rel="noopener noreferrer">Alliance for Open Media</a>, we hope to see support in Edge and Safari soon. Before these modern formats, we also saw innovative approaches to improving how an image loads on a webpage. <a href="https://blurha.sh" target="_blank" rel="noopener noreferrer">BlurHash</a> is a technique of embedding a very small representation of the image inside the HTML markup which can be immediately rendered and acts as a placeholder until the final image loads. This small representation (hash) produced a blurry mix of colors similar to that of the final image and so eased the loading experience for users.</p>
 	<p><a href="https://blog.cloudflare.com/parallel-streaming-of-progressive-images">Progressive JPEGs</a> are similar in effect, but are a built-in feature of the image format itself. Instead of encoding the image bytes from top-to-bottom, bytes are ordered in increasing levels of image detail. This again produces a more subtle loading experience, where the user first sees a low quality image which progressively “enhances” as more bytes are loaded.</p>
 	<figure class="kg-card kg-image-card ">
 
@@ -111,7 +111,7 @@ At the bottom, a progressive JPEG loading with incrementally more detail at the 
 		</a>
 	</div>
 	<p>The newer image formats (WebP and AVIF) support lossless compression, unlike their predecessor, JPEG. For some uses, lossless compression might be appropriate, but for the majority of websites, speed is prioritized and this minor loss in quality is worth the time and bytes saved.</p>
-	<p>Optimizing where to set the quality is a balancing act: too aggressive and artifacts become visible on your image; too little and the image is unnecessarily large. <a href="https://opensource.google/projects/butteraugli">Butteraugli</a> and <a href="https://en.wikipedia.org/wiki/Structural_similarity">SSIM</a> are examples of algorithms which approximate our perception of image quality, but this is currently difficult to automate and is therefore best set manually. In general, however, we find that around 85% in most compression libraries is a sensible default.</p>
+	<p>Optimizing where to set the quality is a balancing act: too aggressive and artifacts become visible on your image; too little and the image is unnecessarily large. <a href="https://opensource.google/projects/butteraugli" target="_blank" rel="noopener noreferrer">Butteraugli</a> and <a href="https://en.wikipedia.org/wiki/Structural_similarity" target="_blank" rel="noopener noreferrer">SSIM</a> are examples of algorithms which approximate our perception of image quality, but this is currently difficult to automate and is therefore best set manually. In general, however, we find that around 85% in most compression libraries is a sensible default.</p>
 	<div class="flex anchor relative">
 		<h3 id="markup">Markup</h3>
 		<a href="https://blog.cloudflare.com/#markup" aria-hidden="true" class="relative sm:absolute sm:-start-5">
@@ -133,7 +133,7 @@ At the bottom, a progressive JPEG loading with incrementally more detail at the 
             12000px"
      src="hello_world_12000.jpg"
      alt="Hello, world!" /&gt;</code></pre>
-	<p>Finally, lazy-loading is a technique which reduces the work that the browser has to perform right at the onset of page loading. By deferring image loads to only just before they're needed, the browser can prioritize more critical assets such as fonts, styles and JavaScript. By setting the <code>loading</code> property on an image to <code>lazy</code>, you instruct the browser to only load the image as it enters the viewport. For example, on an e-commerce site which renders a grid of products, this would mean that the page loads faster for visitors, and seamlessly fetches images below the fold, as a user scrolls down. This is <a href="https://caniuse.com/loading-lazy-attr">supported by all major browsers except Safari</a> which currently has this feature hidden behind an experimental flag.</p>
+	<p>Finally, lazy-loading is a technique which reduces the work that the browser has to perform right at the onset of page loading. By deferring image loads to only just before they're needed, the browser can prioritize more critical assets such as fonts, styles and JavaScript. By setting the <code>loading</code> property on an image to <code>lazy</code>, you instruct the browser to only load the image as it enters the viewport. For example, on an e-commerce site which renders a grid of products, this would mean that the page loads faster for visitors, and seamlessly fetches images below the fold, as a user scrolls down. This is <a href="https://caniuse.com/loading-lazy-attr" target="_blank" rel="noopener noreferrer">supported by all major browsers except Safari</a> which currently has this feature hidden behind an experimental flag.</p>
 	<pre class="language-html"><code class="language-html">&lt;img loading="lazy" … /&gt;</code></pre>
 
 	<div class="flex anchor relative">
@@ -153,7 +153,7 @@ At the bottom, a progressive JPEG loading with incrementally more detail at the 
 			</svg>
 		</a>
 	</div>
-	<p>Today, we’re excited to announce the launch of <a href="https://images.cloudflare.com">Cloudflare’s Image Optimization Testing Tool</a>. Simply enter your website URL, and we’ll run a series of automated tests to determine if there are any possible improvements you could make in delivering optimal images to visitors.</p>
+	<p>Today, we’re excited to announce the launch of <a href="https://images.cloudflare.com" target="_blank" rel="noopener noreferrer">Cloudflare’s Image Optimization Testing Tool</a>. Simply enter your website URL, and we’ll run a series of automated tests to determine if there are any possible improvements you could make in delivering optimal images to visitors.</p>
 	<p>We use WebPageTest and Lighthouse to calculate the Core Web Vitals on two versions of your page: one as the original, and one with Cloudflare's best-effort automatic optimizations. These optimizations are performed using a Cloudflare Worker in combination with our Image Resizing product, and will transform an image's format, quality, and dimensions.</p>
 	<p>We report key summary metrics about your webpage's performance, including the aforementioned Cumulative Layout Shift (CLS) and Largest Contentful Page (LCP), as well as a detailed breakdown of each image on your page and the optimizations that can be made.</p>
 	<div class="flex anchor relative">
@@ -165,7 +165,7 @@ At the bottom, a progressive JPEG loading with incrementally more detail at the 
 		</a>
 	</div>
 	<p><a href="https://blog.cloudflare.com/announcing-cloudflare-images">Cloudflare Images</a> can help you to solve a number of the problems outlined in this post. By storing your images with Cloudflare and configuring a set of variants, we can deliver optimized images from our edge to your website or app. We automatically set the optimal image format and allow you to customize the dimensions and fit for your use-cases.</p>
-	<p>We're excited to see what you build with Cloudflare Images, and you can expect additional features and integrations in the near future. <a href="https://dash.cloudflare.com/sign-up/images">Get started with Images today from $6/month</a>.</p>
+	<p>We're excited to see what you build with Cloudflare Images, and you can expect additional features and integrations in the near future. <a href="https://dash.cloudflare.com/sign-up/images" target="_blank" rel="noopener noreferrer">Get started with Images today from $6/month</a>.</p>
 	<div class="flex anchor relative">
 		<h2 id="watch-on-cloudflare-tv">Watch on Cloudflare TV</h2>
 		<a href="https://blog.cloudflare.com/#watch-on-cloudflare-tv" aria-hidden="true" class="relative sm:absolute sm:-start-5">

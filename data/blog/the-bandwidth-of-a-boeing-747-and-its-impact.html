@@ -1,7 +1,7 @@
 <div class="mb2 gray5">3 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/34bsH5KEHcHXYMj93Y3LrH/2e497ad35ea672d0835ebc12714a623c/the-bandwidth-of-a-boeing-747-and-its-impact.jpg" alt="">
 <div class="post-content lh-copy gray1">
 	<p></p>
-	<p>Image credit: <a href="http://www.flickr.com/photos/markyharky">markyharky</a></p>
+	<p>Image credit: <a href="http://www.flickr.com/photos/markyharky" target="_blank" rel="noopener noreferrer">markyharky</a></p>
 	<p>This is the first in a series of posts looking at what makes the web slow and what to do about it.</p>
 	<p>Suppose you needed to transfer 1TB of data (perhaps your home movie collection) from San Francisco to London. What would be the fastest route? Put the disk on British Airways flight 286 at SFO, or transfer it across the Internet using a 100 Mbps connection?</p>
 	<p>Surprisingly, the answer is the former not the latter. If you had a perfect 100 Mbps Internet connection and could fill it completely with data the transfer would take 22 hours 13 minutes. British Airways make the flight in under 10 hours.</p>
@@ -16,7 +16,7 @@
 		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1rTqeYfCV1ToUQMAuZftw3/6138eacaf0e7f3205a0e875cbd9055cb/5080064040_cfa89f55d2.jpeg.scaled500.jpg" alt="The bandwidth of a Boeing 747 and its impact on web browsing" class="kg-image" width="500" height="342" loading="lazy">
 
 	</figure>
-	<p>Image credit: <a href="http://www.flickr.com/photos/ronniechan">El Ronzo</a></p>
+	<p>Image credit: <a href="http://www.flickr.com/photos/ronniechan" target="_blank" rel="noopener noreferrer">El Ronzo</a></p>
 	<p>To ensure reliability, TCP breaks data to be sent up into chunks (which are further broken down into packets) and sends chunks of data and then waits for an acknowledgement that the chunk was successfully received. It's while waiting for the acknowledgement that the speed of light comes into play.</p>
 	<p>Imagine that a 65kB chunk of data has been sent across a link with a latency of 150ms. The 65kB take 150ms to reach their destination and the receiving machine sends an acknowledgement that takes a further 150ms to arrive. So 0.3s is taken up making sure that 65KB have arrived successfully; that number is called the Round Trip Time.</p>
 	<p>Those acknowledgement delays significantly hamper connections across long distances (and also from mobile phones).</p>

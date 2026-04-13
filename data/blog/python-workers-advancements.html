@@ -2,9 +2,9 @@
 <div class="mt4">This post is also available in <a href="https://blog.cloudflare.com/zh-cn/python-workers-advancements">简体中文</a>, <a href="https://blog.cloudflare.com/ja-jp/python-workers-advancements">日本語</a>, <a href="https://blog.cloudflare.com/ko-kr/python-workers-advancements">한국어</a> and <a href="https://blog.cloudflare.com/zh-tw/python-workers-advancements">繁體中文</a>.</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4Wu87IZkO6g7IBGyjMqYcQ/4658c65f65a28d9636ee0f2bdd3a433c/image3.png" alt="">
 <div class="post-content lh-copy gray1">
 	<p><sup><i>Note: This post was updated with additional details regarding AWS Lambda.</i></sup></p>
-	<p>Last year we announced <a href="https://blog.cloudflare.com/python-workers"><u>basic support for Python Workers</u></a>, allowing Python developers to ship Python to region: Earth in a single command and take advantage of the <a href="https://workers.cloudflare.com"><u>Workers platform</u></a>.</p>
-	<p>Since then, we’ve been hard at work making the <a href="https://developers.cloudflare.com/workers/languages/python"><u>Python experience on Workers</u></a> feel great. We’ve focused on bringing package support to the platform, a reality that’s now here — with exceptionally fast cold starts and a Python-native developer experience.</p>
-	<p>This means a change in how packages are incorporated into a Python Worker. Instead of offering a limited set of built-in packages, we now support any <a href="https://pyodide.org/en/stable/usage/packages-in-pyodide.html"><u>package supported by Pyodide</u></a>, the WebAssembly runtime powering Python Workers. This includes all pure Python packages, as well as many packages that rely on dynamic libraries. We also built tooling around <a href="https://docs.astral.sh/uv"><u>uv</u></a> to make package installation easy.</p>
+	<p>Last year we announced <a href="https://blog.cloudflare.com/python-workers"><u>basic support for Python Workers</u></a>, allowing Python developers to ship Python to region: Earth in a single command and take advantage of the <a href="https://workers.cloudflare.com" target="_blank" rel="noopener noreferrer"><u>Workers platform</u></a>.</p>
+	<p>Since then, we’ve been hard at work making the <a href="https://developers.cloudflare.com/workers/languages/python" target="_blank" rel="noopener noreferrer"><u>Python experience on Workers</u></a> feel great. We’ve focused on bringing package support to the platform, a reality that’s now here — with exceptionally fast cold starts and a Python-native developer experience.</p>
+	<p>This means a change in how packages are incorporated into a Python Worker. Instead of offering a limited set of built-in packages, we now support any <a href="https://pyodide.org/en/stable/usage/packages-in-pyodide.html" target="_blank" rel="noopener noreferrer"><u>package supported by Pyodide</u></a>, the WebAssembly runtime powering Python Workers. This includes all pure Python packages, as well as many packages that rely on dynamic libraries. We also built tooling around <a href="https://docs.astral.sh/uv" target="_blank" rel="noopener noreferrer"><u>uv</u></a> to make package installation easy.</p>
 	<p>We’ve also implemented dedicated memory snapshots to reduce cold start times. These snapshots result in serious speed improvements over other serverless Python vendors. In cold start tests using common packages, Cloudflare Workers start over <b>2.4x faster than AWS Lambda</b> <b>without SnapStart </b>and <b>3x faster than Google Cloud Run</b>.</p>
 	<p>In this blog post, we’ll explain what makes Python Workers unique and share some of the technical details of how we’ve achieved the wins described above. But first, for those who may not be familiar with Workers or serverless platforms – and especially those coming from a Python background — let us share why you might want to use Workers at all.</p>
 	<div class="flex anchor relative">
@@ -35,9 +35,9 @@ class Default(WorkerEntrypoint):
 $ pywrangler init --template \
     https://github.com/cloudflare/python-workers-examples/03-fastapi
 $ pywrangler deploy</code></pre>
-	<p>With just a little code and a <code>pywrangler deploy</code>, you’ve now deployed your application across Cloudflare’s edge network that extends to <a href="https://www.cloudflare.com/network"><u>330 locations across 125 countries</u></a>. No worrying about infrastructure or scaling.</p>
-	<p>And for many use cases, Python Workers are completely free. Our free tier offers 100,000 requests per day and 10ms CPU time per invocation. For more information, check out the <a href="https://developers.cloudflare.com/workers/platform/pricing"><u>pricing page in our documentation</u></a>.</p>
-	<p>For more examples, <a href="https://github.com/cloudflare/python-workers-examples"><u>check out the repo in GitHub</u></a>. And read on to find out more about Python Workers.</p>
+	<p>With just a little code and a <code>pywrangler deploy</code>, you’ve now deployed your application across Cloudflare’s edge network that extends to <a href="https://www.cloudflare.com/network" target="_blank" rel="noopener noreferrer"><u>330 locations across 125 countries</u></a>. No worrying about infrastructure or scaling.</p>
+	<p>And for many use cases, Python Workers are completely free. Our free tier offers 100,000 requests per day and 10ms CPU time per invocation. For more information, check out the <a href="https://developers.cloudflare.com/workers/platform/pricing" target="_blank" rel="noopener noreferrer"><u>pricing page in our documentation</u></a>.</p>
+	<p>For more examples, <a href="https://github.com/cloudflare/python-workers-examples" target="_blank" rel="noopener noreferrer"><u>check out the repo in GitHub</u></a>. And read on to find out more about Python Workers.</p>
 	<div class="flex anchor relative">
 		<h3 id="so-what-can-you-do-with-python-workers">So what can you do with Python Workers?</h3>
 		<a href="https://blog.cloudflare.com/#so-what-can-you-do-with-python-workers" aria-hidden="true" class="relative sm:absolute sm:-start-5">
@@ -47,26 +47,26 @@ $ pywrangler deploy</code></pre>
 		</a>
 	</div>
 	<p>Now that you’ve got a Worker, just about anything is possible. You write the code, so you get to decide. Your Python Worker receives HTTP requests and can make requests to any server on the public Internet.</p>
-	<p>You can set up cron triggers, so your Worker runs on a regular schedule. Plus, if you have more complex requirements, you can make use of <a href="https://blog.cloudflare.com/python-workflows"><u>Workflows for Python Workers</u></a>, or even long-running WebSocket servers and clients <a href="https://developers.cloudflare.com/durable-objects/get-started"><u>using Durable Objects</u></a>.</p>
+	<p>You can set up cron triggers, so your Worker runs on a regular schedule. Plus, if you have more complex requirements, you can make use of <a href="https://blog.cloudflare.com/python-workflows"><u>Workflows for Python Workers</u></a>, or even long-running WebSocket servers and clients <a href="https://developers.cloudflare.com/durable-objects/get-started" target="_blank" rel="noopener noreferrer"><u>using Durable Objects</u></a>.</p>
 	<p>Here are more examples of the sorts of things you can do using Python Workers:</p>
 	<ul>
 		<li>
-			<p><a href="https://github.com/cloudflare/python-workers-examples/tree/main/03-fastapi"><u>Render HTML templates on the edge, with a library like Jinja, while fetching dynamic content directly from your server</u></a></p>
+			<p><a href="https://github.com/cloudflare/python-workers-examples/tree/main/03-fastapi" target="_blank" rel="noopener noreferrer"><u>Render HTML templates on the edge, with a library like Jinja, while fetching dynamic content directly from your server</u></a></p>
 		</li>
 		<li>
-			<p><a href="https://github.com/cloudflare/python-workers-examples/tree/main/11-opengraph"><u>Modify the response from your server — for example, you can inject opengraph tags into your HTML dynamically, based on the content requested</u></a></p>
+			<p><a href="https://github.com/cloudflare/python-workers-examples/tree/main/11-opengraph" target="_blank" rel="noopener noreferrer"><u>Modify the response from your server — for example, you can inject opengraph tags into your HTML dynamically, based on the content requested</u></a></p>
 		</li>
 		<li>
-			<p><a href="https://github.com/cloudflare/python-workers-examples/tree/main/15-chatroom"><u>Build a chat room using Durable Objects and WebSockets</u></a></p>
+			<p><a href="https://github.com/cloudflare/python-workers-examples/tree/main/15-chatroom" target="_blank" rel="noopener noreferrer"><u>Build a chat room using Durable Objects and WebSockets</u></a></p>
 		</li>
 		<li>
-			<p><a href="https://github.com/cloudflare/python-workers-examples/tree/main/14-websocket-stream-consumer"><u>Consume data from WebSocket connections, like the Bluesky firehose</u></a></p>
+			<p><a href="https://github.com/cloudflare/python-workers-examples/tree/main/14-websocket-stream-consumer" target="_blank" rel="noopener noreferrer"><u>Consume data from WebSocket connections, like the Bluesky firehose</u></a></p>
 		</li>
 		<li>
-			<p><a href="https://github.com/cloudflare/python-workers-examples/tree/main/12-image-gen"><u>Generate images using the Pillow Python package</u></a></p>
+			<p><a href="https://github.com/cloudflare/python-workers-examples/tree/main/12-image-gen" target="_blank" rel="noopener noreferrer"><u>Generate images using the Pillow Python package</u></a></p>
 		</li>
 		<li>
-			<p><a href="https://github.com/cloudflare/python-workers-examples/tree/main/13-js-api-pygments"><u>Write a small Python Worker that exposes the API of a Python package, and then access it from your JavaScript Worker using RPC</u></a></p>
+			<p><a href="https://github.com/cloudflare/python-workers-examples/tree/main/13-js-api-pygments" target="_blank" rel="noopener noreferrer"><u>Write a small Python Worker that exposes the API of a Python package, and then access it from your JavaScript Worker using RPC</u></a></p>
 		</li>
 	</ul>
 	<div class="flex anchor relative">
@@ -80,8 +80,8 @@ $ pywrangler deploy</code></pre>
 	<p>Serverless platforms like Workers save you money by only running your code when it’s necessary to do so. This means that if your Worker isn’t receiving requests, it may be shut down and will need to be restarted once a new request comes in. This typically incurs a resource overhead we refer to as the “cold start.” It’s important to keep these as short as possible to minimize latency for end users.</p>
 	<p>In standard Python, booting the runtime is expensive, and our initial implementation of Python Workers focused on making the <i>runtime</i> boot fast. However, we quickly realized that this wasn’t enough. Even if the Python runtime boots quickly, in real-world scenarios the initial startup usually includes loading modules from packages, and unfortunately, in Python many popular packages can take several seconds to load.</p>
 	<p>We set out to make cold starts fast, regardless of whether packages were loaded.</p>
-	<p>To measure realistic cold start performance, we set up a benchmark that imports common packages, as well as a benchmark running a “hello world” using a bare Python runtime. Standard Lambda is able to <a href="https://cold.picheta.me/#bare"><u>start just the runtime</u></a> quickly, but once you need to import packages, the cold start times shoot up. In order to optimize for faster cold starts with packages, you can use SnapStart on Lambda (which we will be adding to the linked benchmarks shortly). This incurs a cost to store the snapshot and an additional cost on every restore. Python Workers will automatically apply memory snapshots for free for every Python Worker.</p>
-	<p>Here are the average cold start times when loading three common packages (<a href="https://www.python-httpx.org"><u>httpx</u></a>, <a href="https://fastapi.tiangolo.com"><u>fastapi</u></a> and <a href="https://docs.pydantic.dev/latest"><u>pydantic</u></a>):</p>
+	<p>To measure realistic cold start performance, we set up a benchmark that imports common packages, as well as a benchmark running a “hello world” using a bare Python runtime. Standard Lambda is able to <a href="https://cold.picheta.me/#bare" target="_blank" rel="noopener noreferrer"><u>start just the runtime</u></a> quickly, but once you need to import packages, the cold start times shoot up. In order to optimize for faster cold starts with packages, you can use SnapStart on Lambda (which we will be adding to the linked benchmarks shortly). This incurs a cost to store the snapshot and an additional cost on every restore. Python Workers will automatically apply memory snapshots for free for every Python Worker.</p>
+	<p>Here are the average cold start times when loading three common packages (<a href="https://www.python-httpx.org" target="_blank" rel="noopener noreferrer"><u>httpx</u></a>, <a href="https://fastapi.tiangolo.com" target="_blank" rel="noopener noreferrer"><u>fastapi</u></a> and <a href="https://docs.pydantic.dev/latest" target="_blank" rel="noopener noreferrer"><u>pydantic</u></a>):</p>
 	<table>
 		<tbody>
 			<tr>
@@ -119,8 +119,8 @@ $ pywrangler deploy</code></pre>
 		</tbody>
 	</table>
 	<p>In this case, <b>Cloudflare Python Workers have 2.4x faster cold starts than AWS Lambda without SnapStart and 3x faster cold starts than Google Cloud Run</b>. We achieved these low cold start numbers by using memory snapshots, and in a later section we explain how we did so.</p>
-	<p>We are regularly running these benchmarks. Go <a href="https://cold.picheta.me/#bare"><u>here</u></a> for up-to-date data and more info on our testing methodology.</p>
-	<p>We’re architecturally different from these other platforms — namely, <a href="https://developers.cloudflare.com/workers/reference/how-workers-works"><u>Workers is isolate-based</u></a>. Because of that, our aims are high, and we are planning for a zero cold start future.</p>
+	<p>We are regularly running these benchmarks. Go <a href="https://cold.picheta.me/#bare" target="_blank" rel="noopener noreferrer"><u>here</u></a> for up-to-date data and more info on our testing methodology.</p>
+	<p>We’re architecturally different from these other platforms — namely, <a href="https://developers.cloudflare.com/workers/reference/how-workers-works" target="_blank" rel="noopener noreferrer"><u>Workers is isolate-based</u></a>. Because of that, our aims are high, and we are planning for a zero cold start future.</p>
 	<div class="flex anchor relative">
 		<h3 id="package-tooling-integrated-with-uv">Package tooling integrated with uv</h3>
 		<a href="https://blog.cloudflare.com/#package-tooling-integrated-with-uv" aria-hidden="true" class="relative sm:absolute sm:-start-5">
@@ -131,7 +131,7 @@ $ pywrangler deploy</code></pre>
 	</div>
 	<p>The diverse package ecosystem is a large part of what makes Python so amazing. That’s why we’ve been hard at work ensuring that using packages in Workers is as easy as possible.</p>
 	<p>We realised that working with the existing Python tooling is the best path towards a great development experience. So we picked the <code>uv</code> package and project manager, as it’s fast, mature, and gaining momentum in the Python ecosystem.</p>
-	<p>We built our own tooling around <code>uv</code> called <a href="https://github.com/cloudflare/workers-py#pywrangler"><u>pywrangler</u></a>. This tool essentially performs the following actions:</p>
+	<p>We built our own tooling around <code>uv</code> called <a href="https://github.com/cloudflare/workers-py#pywrangler" target="_blank" rel="noopener noreferrer"><u>pywrangler</u></a>. This tool essentially performs the following actions:</p>
 	<ul>
 		<li>
 			<p>Reads your Worker’s pyproject.toml file to determine the dependencies specified in it</p>
@@ -150,8 +150,8 @@ $ pywrangler deploy</code></pre>
 			</svg>
 		</a>
 	</div>
-	<p>You can generate type hints for all of the <a href="https://developers.cloudflare.com/workers/runtime-apis/bindings"><u>bindings</u></a> defined in your wrangler config using <code>pywrangler types</code>. These type hints will work with <a href="https://marketplace.visualstudio.com/items?itemName=ms-python.vscode-pylance"><u>Pylance</u></a> or with recent versions of <a href="https://mypy-lang.org"><u>mypy</u></a>.</p>
-	<p>To generate the types, we use <a href="https://developers.cloudflare.com/workers/wrangler/commands/#types"><u>wrangler types</u></a> to create typescript type hints, then we use the typescript compiler to generate an abstract syntax tree for the types. Finally, we use the TypeScript hints — such as whether a JS object has an iterator field — to generate <code>mypy</code> type hints that work with the Pyodide foreign function interface.</p>
+	<p>You can generate type hints for all of the <a href="https://developers.cloudflare.com/workers/runtime-apis/bindings" target="_blank" rel="noopener noreferrer"><u>bindings</u></a> defined in your wrangler config using <code>pywrangler types</code>. These type hints will work with <a href="https://marketplace.visualstudio.com/items?itemName=ms-python.vscode-pylance" target="_blank" rel="noopener noreferrer"><u>Pylance</u></a> or with recent versions of <a href="https://mypy-lang.org" target="_blank" rel="noopener noreferrer"><u>mypy</u></a>.</p>
+	<p>To generate the types, we use <a href="https://developers.cloudflare.com/workers/wrangler/commands/#types" target="_blank" rel="noopener noreferrer"><u>wrangler types</u></a> to create typescript type hints, then we use the typescript compiler to generate an abstract syntax tree for the types. Finally, we use the TypeScript hints — such as whether a JS object has an iterator field — to generate <code>mypy</code> type hints that work with the Pyodide foreign function interface.</p>
 	<div class="flex anchor relative">
 		<h3 id="decreasing-cold-start-duration-using-snapshots">Decreasing cold start duration using snapshots</h3>
 		<a href="https://blog.cloudflare.com/#decreasing-cold-start-duration-using-snapshots" aria-hidden="true" class="relative sm:absolute sm:-start-5">
@@ -171,7 +171,7 @@ $ pywrangler deploy</code></pre>
 			</svg>
 		</a>
 	</div>
-	<p>WebAssembly runtimes do not require features like address space layout randomization for security, so most of the difficulties with memory snapshots on a modern operating system do not arise. Just like with native memory snapshots, we still have to carefully handle entropy at startup to avoid using the <a href="https://xkcd.com/221"><u>XKCD random number generator</u></a> (we’re <a href="https://www.cloudflare.com/learning/ssl/lava-lamp-encryption"><u>very into actual randomness</u></a>).</p>
+	<p>WebAssembly runtimes do not require features like address space layout randomization for security, so most of the difficulties with memory snapshots on a modern operating system do not arise. Just like with native memory snapshots, we still have to carefully handle entropy at startup to avoid using the <a href="https://xkcd.com/221" target="_blank" rel="noopener noreferrer"><u>XKCD random number generator</u></a> (we’re <a href="https://www.cloudflare.com/learning/ssl/lava-lamp-encryption" target="_blank" rel="noopener noreferrer"><u>very into actual randomness</u></a>).</p>
 	<figure class="kg-card kg-image-card">
 		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2Q2LYb3LZhfC2q3vQCFr1R/ff8f229715a0d37484585664c61908dc/image1.png" alt="" class="kg-image" width="400" height="144" loading="lazy">
 	</figure>
@@ -273,5 +273,5 @@ $ pywrangler deploy</code></pre>
 			<p>Support for native TCP sockets, native WebSockets, and more bindings</p>
 		</li>
 	</ul>
-	<p>To learn more about Python Workers, check out the documentation available <a href="https://developers.cloudflare.com/workers/languages/python"><u>here</u></a>. To get help, be sure to join our <a href="https://discord.cloudflare.com"><u>Discord</u></a>.</p>
+	<p>To learn more about Python Workers, check out the documentation available <a href="https://developers.cloudflare.com/workers/languages/python" target="_blank" rel="noopener noreferrer"><u>here</u></a>. To get help, be sure to join our <a href="https://discord.cloudflare.com" target="_blank" rel="noopener noreferrer"><u>Discord</u></a>.</p>
 </div>

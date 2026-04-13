@@ -1,6 +1,6 @@
 <div class="mb2 gray5">7 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/40sSc6VikabsV34fFE8iCD/1d1d18614bbc689136a7c48944daded9/image4.png" alt="">
 <div class="post-content lh-copy gray1">
-	<p>A <a href="https://www.cloudflare.com/learning/video/turn-server"><u>TURN server</u></a> helps maintain connections during video calls when local networking conditions prevent participants from connecting directly to other participants. It acts as an intermediary, passing data between users when their networks block direct communication. TURN servers ensure that peer-to-peer calls go smoothly, even in less-than-ideal network conditions.</p>
+	<p>A <a href="https://www.cloudflare.com/learning/video/turn-server" target="_blank" rel="noopener noreferrer"><u>TURN server</u></a> helps maintain connections during video calls when local networking conditions prevent participants from connecting directly to other participants. It acts as an intermediary, passing data between users when their networks block direct communication. TURN servers ensure that peer-to-peer calls go smoothly, even in less-than-ideal network conditions.</p>
 	<p>When building their own TURN infrastructure, developers often have to answer a few critical questions:</p>
 	<ol>
 		<li>
@@ -14,7 +14,7 @@
 			</p>
 		</li>
 	</ol>
-	<p>In April, we launched Cloudflare Calls TURN in <a href="https://blog.cloudflare.com/cloudflare-calls-anycast-webrtc"><u>open beta</u></a> to help answer these questions. Starting today, <a href="https://developers.cloudflare.com/calls/turn"><u>Cloudflare Calls’ TURN service</u></a> is now generally available to all Cloudflare accounts. Our TURN server works on our anycast network, which helps deliver global coverage and near-zero latency required by real time applications.</p>
+	<p>In April, we launched Cloudflare Calls TURN in <a href="https://blog.cloudflare.com/cloudflare-calls-anycast-webrtc"><u>open beta</u></a> to help answer these questions. Starting today, <a href="https://developers.cloudflare.com/calls/turn" target="_blank" rel="noopener noreferrer"><u>Cloudflare Calls’ TURN service</u></a> is now generally available to all Cloudflare accounts. Our TURN server works on our anycast network, which helps deliver global coverage and near-zero latency required by real time applications.</p>
 	<div class="flex anchor relative">
 		<h2 id="turn-solves-connectivity-and-privacy-problems-for-real-time-apps">TURN solves connectivity and privacy problems for real time apps</h2>
 		<a href="https://blog.cloudflare.com/#turn-solves-connectivity-and-privacy-problems-for-real-time-apps" aria-hidden="true" class="relative sm:absolute sm:-start-5">
@@ -23,7 +23,7 @@
 			</svg>
 		</a>
 	</div>
-	<p>When Internet Protocol version 4 (IPv4, <a href="https://datatracker.ietf.org/doc/html/rfc791"><u>RFC 791</u></a>) was designed back in 1981, it was assumed that the 32-bit address space was big enough for all computers to be able to connect to each other. When IPv4 was created, billions of people didn’t have smartphones in their pockets and the idea of the Internet of Things didn’t exist yet. It didn’t take long for companies, ISPs, and even entire countries to realize they didn’t have enough IPv4 address space to meet their needs.</p>
+	<p>When Internet Protocol version 4 (IPv4, <a href="https://datatracker.ietf.org/doc/html/rfc791" target="_blank" rel="noopener noreferrer"><u>RFC 791</u></a>) was designed back in 1981, it was assumed that the 32-bit address space was big enough for all computers to be able to connect to each other. When IPv4 was created, billions of people didn’t have smartphones in their pockets and the idea of the Internet of Things didn’t exist yet. It didn’t take long for companies, ISPs, and even entire countries to realize they didn’t have enough IPv4 address space to meet their needs.</p>
 	<div class="flex anchor relative">
 		<h3 id="nats-are-unpredictable">NATs are unpredictable</h3>
 		<a href="https://blog.cloudflare.com/#nats-are-unpredictable" aria-hidden="true" class="relative sm:absolute sm:-start-5">
@@ -34,7 +34,7 @@
 	</div>
 	<p>Fortunately, you can have multiple devices share the same IP address because the most common protocols run on top of IP are TCP and UDP, both of which support up to 65,535 port numbers. (Think of port numbers on an IP address as extensions behind a single phone number.) To solve this problem of IP scarcity, network engineers developed a way to share a single IP address across multiple devices by exploiting the port numbers. This is called Network Address Translation (NAT) and it is a process through which your router knows which packets to send to your smartphone versus your laptop or other devices, all of which are connecting to the public Internet through the IP address assigned to the router.</p>
 	<p>In a typical NAT setup, when a device sends a packet to the Internet, the NAT assigns a random, unused port to track it, keeping a forwarding table to map the device to the port. This allows NAT to direct responses back to the correct device, even if the source IP address and port vary across different destinations. The system works as long as the internal device initiates the connection and waits for the response.</p>
-	<p>However, real-time apps like video or audio calls are more challenging with NAT. Since NATs don't reveal how they assign ports, devices can't pre-communicate where to send responses, making it difficult to establish reliable connections. Earlier solutions like STUN (<a href="https://datatracker.ietf.org/doc/html/rfc3489"><u>RFC 3489</u></a>) couldn't fully solve this, which gave rise to the TURN protocol.</p>
+	<p>However, real-time apps like video or audio calls are more challenging with NAT. Since NATs don't reveal how they assign ports, devices can't pre-communicate where to send responses, making it difficult to establish reliable connections. Earlier solutions like STUN (<a href="https://datatracker.ietf.org/doc/html/rfc3489" target="_blank" rel="noopener noreferrer"><u>RFC 3489</u></a>) couldn't fully solve this, which gave rise to the TURN protocol.</p>
 	<p>TURN predictably relays traffic between devices while ensuring minimal delay, which is crucial for real-time communication where even a second of lag can disrupt the experience.</p>
 	<div class="flex anchor relative">
 		<h3 id="ice-to-determine-if-a-relay-server-is-needed">ICE to determine if a relay server is needed</h3>
@@ -44,7 +44,7 @@
 			</svg>
 		</a>
 	</div>
-	<p>The <a href="https://datatracker.ietf.org/doc/html/rfc8445"><u>ICE (Interactive Connectivity Establishment) protocol</u></a> was designed to find the fastest communication path between devices. It works by testing multiple routes and choosing the one with the least delay. ICE determines whether a TURN server is needed to relay the connection when a direct peer-to-peer path cannot be established or is not performant enough.</p>
+	<p>The <a href="https://datatracker.ietf.org/doc/html/rfc8445" target="_blank" rel="noopener noreferrer"><u>ICE (Interactive Connectivity Establishment) protocol</u></a> was designed to find the fastest communication path between devices. It works by testing multiple routes and choosing the one with the least delay. ICE determines whether a TURN server is needed to relay the connection when a direct peer-to-peer path cannot be established or is not performant enough.</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
 		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/71IX3n5RLM24rwRhwrpM2E/1ef5ecbf98cc85a46e385f333d6cb90c/image3.png" alt="" class="kg-image" width="1999" height="1015" loading="lazy">
@@ -72,8 +72,8 @@
 			</svg>
 		</a>
 	</div>
-	<p>Lots of real time communication services run their own TURN servers on a commercial cloud provider because they don’t want to leave a certain percentage of their customers with non-working communication. This results in additional costs for DevOps, egress bandwidth, etc. And honestly, just deploying and running a TURN server, like <a href="https://github.com/coturn/coturn"><u>CoTURN</u></a>, in a VPS isn’t an interesting project for most engineers.</p>
-	<p>Because using a TURN relay adds extra delay for the packets to travel between the peers, the relays should be located as close as possible to the peers. Cloudflare’s TURN service avoids all these headaches by simply running in all of the <a href="https://www.cloudflare.com/network"><u>330 cities where Cloudflare has data centers</u></a>. And any time Cloudflare adds another city, the TURN service automatically becomes available there as well.&nbsp;</p>
+	<p>Lots of real time communication services run their own TURN servers on a commercial cloud provider because they don’t want to leave a certain percentage of their customers with non-working communication. This results in additional costs for DevOps, egress bandwidth, etc. And honestly, just deploying and running a TURN server, like <a href="https://github.com/coturn/coturn" target="_blank" rel="noopener noreferrer"><u>CoTURN</u></a>, in a VPS isn’t an interesting project for most engineers.</p>
+	<p>Because using a TURN relay adds extra delay for the packets to travel between the peers, the relays should be located as close as possible to the peers. Cloudflare’s TURN service avoids all these headaches by simply running in all of the <a href="https://www.cloudflare.com/network" target="_blank" rel="noopener noreferrer"><u>330 cities where Cloudflare has data centers</u></a>. And any time Cloudflare adds another city, the TURN service automatically becomes available there as well.&nbsp;</p>
 	<div class="flex anchor relative">
 		<h3 id="anycast-is-the-perfect-network-topology-for-turn">Anycast is the perfect network topology for TURN</h3>
 		<a href="https://blog.cloudflare.com/#anycast-is-the-perfect-network-topology-for-turn" aria-hidden="true" class="relative sm:absolute sm:-start-5">
@@ -82,7 +82,7 @@
 			</svg>
 		</a>
 	</div>
-	<p><a href="https://www.cloudflare.com/learning/cdn/glossary/anycast-network"><u>Anycast</u></a> is a network addressing and routing methodology in which a single IP address is shared by multiple servers in different locations. When a client sends a request to an anycast address, the network automatically routes the request via <a href="https://www.cloudflare.com/learning/security/glossary/what-is-bgp"><u>BGP</u></a> to the topologically nearest server. This is in contrast to unicast, where each destination has a unique IP address. Anycast allows multiple servers to have the same IP address, and enables clients to automatically connect to a server close to them. This is similar to emergency phone networks (911, 112, etc.) which connect you to the closest emergency communications center in your area.</p>
+	<p><a href="https://www.cloudflare.com/learning/cdn/glossary/anycast-network" target="_blank" rel="noopener noreferrer"><u>Anycast</u></a> is a network addressing and routing methodology in which a single IP address is shared by multiple servers in different locations. When a client sends a request to an anycast address, the network automatically routes the request via <a href="https://www.cloudflare.com/learning/security/glossary/what-is-bgp" target="_blank" rel="noopener noreferrer"><u>BGP</u></a> to the topologically nearest server. This is in contrast to unicast, where each destination has a unique IP address. Anycast allows multiple servers to have the same IP address, and enables clients to automatically connect to a server close to them. This is similar to emergency phone networks (911, 112, etc.) which connect you to the closest emergency communications center in your area.</p>
 	<p>Anycast allows for lower latency because of the sheer number of locations available around the world. Approximately 95% of the Internet-connected population globally is within approximately 50ms away from a Cloudflare location. For real-time communication applications that use TURN, leads to improved call quality and user experience.</p>
 	<div class="flex anchor relative">
 		<h3 id="auto-scaling-and-inherently-global">Auto-scaling and inherently global</h3>
@@ -104,7 +104,7 @@
 		</a>
 	</div>
 	<p>TURN servers act as relay points to help connect clients. This process involves two types of connections: the client-server connection and the third-party connection (relayed address).</p>
-	<p>The client-server connection uses <a href="https://developers.cloudflare.com/calls/turn/#_top"><u>published</u></a> IP and port information to communicate with TURN clients using anycast.</p>
+	<p>The client-server connection uses <a href="https://developers.cloudflare.com/calls/turn/#_top" target="_blank" rel="noopener noreferrer"><u>published</u></a> IP and port information to communicate with TURN clients using anycast.</p>
 	<p>For the relayed address, using anycast poses a challenge. The TURN protocol requires that packets reach the specific Cloudflare server handling the client connection. If we used anycast for relay addresses, packets might not arrive at the correct data center or server.
 	</p>
 	<p>One alternative is to use unicast addresses for relay candidates. However, this approach has drawbacks, including making servers vulnerable to attacks and requiring many IP addresses.</p>
@@ -148,5 +148,5 @@
 		</li>
 	</ul>
 	<p>Cloudflare Calls TURN service is billed on a usage basis. It is available to self-serve and Enterprise customers alike. There is no cost for the first 1,000 GB (one terabyte) of Cloudflare Calls usage each month. It costs five cents per GB after your first terabyte of usage on self-serve. Volume pricing is available for Enterprise customers through your account team.</p>
-	<p>Switching TURN providers is likely as simple as changing a single configuration in your real-time app. To get started with Cloudflare’s TURN service, create a TURN app from your <a href="https://dash.cloudflare.com/?to=%2F%3Aaccount%2Fcalls"><u>Cloudflare Calls Dashboard</u></a> or read the <a href="https://developers.cloudflare.com/calls/turn"><u>Developer Docs</u></a>.</p>
+	<p>Switching TURN providers is likely as simple as changing a single configuration in your real-time app. To get started with Cloudflare’s TURN service, create a TURN app from your <a href="https://dash.cloudflare.com/?to=%2F%3Aaccount%2Fcalls" target="_blank" rel="noopener noreferrer"><u>Cloudflare Calls Dashboard</u></a> or read the <a href="https://developers.cloudflare.com/calls/turn" target="_blank" rel="noopener noreferrer"><u>Developer Docs</u></a>.</p>
 </div>

@@ -8,7 +8,7 @@
 	</blockquote>
 	<p>It seems obvious enough, but this policy has deep consequences. What if our API has a bug, and some deployed Workers accidentally depend on that bug? Then, seemingly, we can't fix the bug! That sounds… bad?</p>
 	<p>This post will dig deeper into our policy, explaining why Workers is different from traditional server stacks in this respect, and how we're now making backwards-incompatible changes possible by introducing "compatibility dates".</p>
-	<p><b>TL;DR:</b> Developers may now opt into backwards-incompatible fixes by setting a <a href="https://developers.cloudflare.com/workers/platform/compatibility-dates">compatibility date</a>.</p>
+	<p><b>TL;DR:</b> Developers may now opt into backwards-incompatible fixes by setting a <a href="https://developers.cloudflare.com/workers/platform/compatibility-dates" target="_blank" rel="noopener noreferrer">compatibility date</a>.</p>
 	<div class="flex anchor relative">
 		<h2 id="serverless-demands-strict-compatibility">Serverless demands strict compatibility</h2>
 		<a href="https://blog.cloudflare.com/#serverless-demands-strict-compatibility" aria-hidden="true" class="relative sm:absolute sm:-start-5">
@@ -30,7 +30,7 @@
 		</a>
 	</div>
 	<p>Sometimes, we get things wrong, and we need to fix them. But sometimes, the fix would break people.</p>
-	<p>For example, in Workers, the <code>fetch()</code> function is used to make outgoing HTTP requests. Unfortunately, due to an oversight, our original implementation of <code>fetch()</code>, when given a non-HTTP URL, would silently interpret it as HTTP instead. For example, if you did fetch("ftp://example.com"), you'd get the same result as fetch("<a href="http://example.com">http://example.com</a>").</p>
+	<p>For example, in Workers, the <code>fetch()</code> function is used to make outgoing HTTP requests. Unfortunately, due to an oversight, our original implementation of <code>fetch()</code>, when given a non-HTTP URL, would silently interpret it as HTTP instead. For example, if you did fetch("ftp://example.com"), you'd get the same result as fetch("<a href="http://example.com" target="_blank" rel="noopener noreferrer">http://example.com</a>").</p>
 	<p>This is obviously not what we want and could lead to confusion or deeper bugs. Instead, <code>fetch()</code> should throw an exception in these cases. However, we couldn't simply fix the problem, because a surprising number of live Workers depended on the behavior. For whatever reason, some Workers fetch FTP URLs and expect to get a result back. Perhaps they are fetching from sites that support both FTP and HTTP, and they arbitrarily chose FTP and it worked. Perhaps the fetches aren't actually working, but changing a 404 error result into an exception would break things worse. When you have tens of thousands of new developers deploying applications every month, inevitably there's always someone relying on any bug. We can't "fix" the bug because it would break these applications.</p>
 	<div class="flex anchor relative">
 		<h2 id="the-obvious-solutions-dont-work">The obvious solutions don't work</h2>
@@ -62,7 +62,7 @@
 		</a>
 	</div>
 	<p>No, for three reasons.</p>
-	<p>First, in order for edge computing to be effective, we need to be able to <a href="https://www.cloudflare.com/developer-platform/solutions/hosting">host a very large number of applications</a> in each instance of the Workers Runtime. This is what allows us to run your code in hundreds of locations around the world at minimal cost. If we ran a separate copy of the runtime for each application, we'd need to charge a lot more, or deploy your code to far fewer locations. So, realistically it is infeasible for us to have different Workers asking for different versions of the runtime.</p>
+	<p>First, in order for edge computing to be effective, we need to be able to <a href="https://www.cloudflare.com/developer-platform/solutions/hosting" target="_blank" rel="noopener noreferrer">host a very large number of applications</a> in each instance of the Workers Runtime. This is what allows us to run your code in hundreds of locations around the world at minimal cost. If we ran a separate copy of the runtime for each application, we'd need to charge a lot more, or deploy your code to far fewer locations. So, realistically it is infeasible for us to have different Workers asking for different versions of the runtime.</p>
 	<p>Second, part of the promise of serverless is that developers shouldn't have to worry about updating their stack. If we start letting people pin old versions, then we have to start telling people how long they are allowed to do so, alerting people about security updates, giving people documentation that differentiates versions, and so on. We don't want developers to have to think about any of that.</p>
 	<p>Third, this doesn't actually solve the real problem anyway. We can easily implement multiple behaviors within the same runtime binary. But how do we know which behavior to use for any particular Worker?</p>
 	<div class="flex anchor relative">
@@ -77,7 +77,7 @@
 	<pre class="language-toml"><code class="language-toml"># wrangler.toml
 compatibility_date = "2021-09-20"</code></pre>
 	<p>We can now introduce breaking changes. When we do, the Workers Runtime must implement both the old and the new behavior, and chooses behavior based on the compatibility date. Each time we introduce a new change, we choose a date in the future when that change will become the default. Workers with a later compatibility date will see the change; Workers with an older compatibility date will retain the old behavior.</p>
-	<p><a href="https://developers.cloudflare.com/workers/platform/compatibility-dates">A page in our documentation</a> lists the history of breaking changes -- and only breaking changes. When you wish to update your Worker's compatibility date, you can refer to this page to quickly determine what might be affected, so that you can test for problems.</p>
+	<p><a href="https://developers.cloudflare.com/workers/platform/compatibility-dates" target="_blank" rel="noopener noreferrer">A page in our documentation</a> lists the history of breaking changes -- and only breaking changes. When you wish to update your Worker's compatibility date, you can refer to this page to quickly determine what might be affected, so that you can test for problems.</p>
 	<p>We will reserve the compatibility system strictly for changes which cannot be made without causing a breakage. We don't want to force people to update their compatibility date to get regular updates, including new features, non-breaking bug fixes, and so on.</p>
 	<p>If you'd prefer never to update your compatibility date, that's OK! Old compatibility dates are intended to be supported forever. However, if you are frequently updating your code, you should update your compatibility date along with it.</p>
 	<div class="flex anchor relative">

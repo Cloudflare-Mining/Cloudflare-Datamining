@@ -13,7 +13,7 @@
 	</div>
 	<p>Before we look at how to deconstruct malicious filters, we need to understand the engine running them. The Berkeley Packet Filter (BPF) is a highly efficient technology that allows the kernel to pull specific packets from the network stack based on a set of bytecode instructions.</p>
 	<p>While many modern developers are familiar with <a href="https://blog.cloudflare.com/tag/ebpf">eBPF</a> (Extended BPF), the powerful evolution used for observability and security, this post focuses on "classic" BPF. Originally designed for tools like tcpdump, classic BPF uses a simple virtual machine with just two registers to evaluate network traffic at high speeds. Because it runs deep within the kernel and can "hide" traffic from user-space tools, it has become a favorite tool for malware authors looking to build stealthy backdoors.</p>
-	<p>Creating a contextual representation of BPF instructions using <a href="https://www.cloudflare.com/learning/ai/what-is-large-language-model"><u>LLMs</u></a> is already reducing the manual overhead for analysts, crafting the network packets that correspond to the validating condition can still be a lot of work, even with the added context provided by LLM’s.</p>
+	<p>Creating a contextual representation of BPF instructions using <a href="https://www.cloudflare.com/learning/ai/what-is-large-language-model" target="_blank" rel="noopener noreferrer"><u>LLMs</u></a> is already reducing the manual overhead for analysts, crafting the network packets that correspond to the validating condition can still be a lot of work, even with the added context provided by LLM’s.</p>
 	<p>Most of the time this is not a problem if your BPF program has only ~20 instructions, but this can get exponentially more complex and time-consuming when a BPF program consists of over 100 instructions as we’ve observed in some of the samples.</p>
 	<p>If we deconstruct the problem we can see that it boils down to reading a buffer and checking a constraint, depending on the outcome we either continue our execution path or stop and check the end result.</p>
 	<p>This kind of problem that has a deterministic outcome can be solved by Z3, a theorem prover that has the means to solve problems with a set of given constraints.</p>
@@ -35,7 +35,7 @@
 			</svg>
 		</a>
 	</div>
-	<p>Let’s focus on the sample of which was shared for the research done by <a href="https://www.fortinet.com/blog/threat-research/new-ebpf-filters-for-symbiote-and-bpfdoor-malware"><u>Fortinet</u></a> (82ed617816453eba2d755642e3efebfcbd19705ac626f6bc8ed238f4fc111bb0). If we dissect the BPF instructions and add some annotations, we can write the following:</p>
+	<p>Let’s focus on the sample of which was shared for the research done by <a href="https://www.fortinet.com/blog/threat-research/new-ebpf-filters-for-symbiote-and-bpfdoor-malware" target="_blank" rel="noopener noreferrer"><u>Fortinet</u></a> (82ed617816453eba2d755642e3efebfcbd19705ac626f6bc8ed238f4fc111bb0). If we dissect the BPF instructions and add some annotations, we can write the following:</p>
 	<pre class="language-Rust"><code class="language-Rust">(000) ldh [0xc]                   ; Read halfword at offset 12 (EtherType)
 (001) jeq #0x86dd, jt 2, jf 6     ; 0x86DD (IPv6) -&gt; ins 002 else ins 006
 (002) ldb [0x14]                  ; Read byte at offset 20 (Protocol)
@@ -122,8 +122,8 @@ if instruction.class == jump_instruction:
 			</svg>
 		</a>
 	</div>
-	<p>One such tool that is perfect to solve problems given a set of constraints is <a href="https://github.com/z3Prover/z3"><u>Z3</u></a>. Developed by Microsoft the tool is labeled as a theorem prover and exposes easy to use functions performing very complex mathematical operations under the hood.</p>
-	<p>The other tool we will use for crafting our valid magic packets is <a href="https://github.com/secdev/scapy"><u>scapy</u></a>, a popular Python library for interactive packet manipulation.</p>
+	<p>One such tool that is perfect to solve problems given a set of constraints is <a href="https://github.com/z3Prover/z3" target="_blank" rel="noopener noreferrer"><u>Z3</u></a>. Developed by Microsoft the tool is labeled as a theorem prover and exposes easy to use functions performing very complex mathematical operations under the hood.</p>
+	<p>The other tool we will use for crafting our valid magic packets is <a href="https://github.com/secdev/scapy" target="_blank" rel="noopener noreferrer"><u>scapy</u></a>, a popular Python library for interactive packet manipulation.</p>
 	<p>Given that we already have a way to figure out the path to an accepted packet, we are left with solving the problem by itself, and then translating this solution to the bytes at their respective offsets in a network packet.</p>
 	<div class="flex anchor relative">
 		<h3 id="symbolic-execution">Symbolic execution</h3>
@@ -274,6 +274,6 @@ if instruction.class == jump_instruction:
 		</a>
 	</div>
 	<p>Understanding what a specific BPF set of instructions is doing can be cumbersome and time-consuming work. The example used is only a total of sixteen instructions, but we’ve encountered samples that were over 200 instructions that would’ve taken at least a day to understand. By using the Z3 solver, we can now reduce this time to just seconds, and not only display the path to an accepted packet, but also the packet skeleton for this as well.</p>
-	<p>We have open-sourced the <b>filterforge</b> tool to help the community automate the deconstruction of BPF-based implants. You can find the source code, along with usage examples, on <a href="https://github.com/cloudflare/filterforge"><u>our GitHub repository</u></a>.</p>
+	<p>We have open-sourced the <b>filterforge</b> tool to help the community automate the deconstruction of BPF-based implants. You can find the source code, along with usage examples, on <a href="https://github.com/cloudflare/filterforge" target="_blank" rel="noopener noreferrer"><u>our GitHub repository</u></a>.</p>
 	<p>By publishing this research and sharing our tool for reducing analysts’ time spent figuring out the BPF instructions, we hope to spark further research by others to expand on this form of automation.</p>
 </div>

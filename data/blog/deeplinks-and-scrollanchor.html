@@ -8,7 +8,7 @@
 			</svg>
 		</a>
 	</div>
-	<p>To directly quote <a href="https://en.wikipedia.org/wiki/Deep_linking">Wikipedia</a>:</p>
+	<p>To directly quote <a href="https://en.wikipedia.org/wiki/Deep_linking" target="_blank" rel="noopener noreferrer">Wikipedia</a>:</p>
 	<p><b>“Deep linking</b> is the use of a hyperlink that links to a specific, generally searchable or indexed, piece of web content on a website (e.g. <code>http://example.com/path/page</code>), rather than the website's home page (e.g., <code>http://example.com</code>). The URL contains all the information needed to point to a particular item.”</p>
 	<div class="flex anchor relative">
 		<h3 id="why-deeplinks-in-dashboard">Why DeepLinks in Dashboard?</h3>
@@ -311,7 +311,7 @@ const finalUrl = resolvedParts.join(‘/’);</code></pre>
 
 	</figure>
 	<p>This CSS trick alone would work for a static site with a fixed header, but the Dashboard is very dynamic. We found early on in testing that using a normal HTML ID anchor in a URL would cause the browser to jump to the tag <i>on page load</i> but the DOM would change in response to newly fetched information or re-rendering, and the anchored content would be pushed out of view.</p>
-	<p>A solution: scroll to the anchored content after the page content is fully loaded, i.e. after all API calls are resolved, spinners removed, content is rendered. Fortunately, there’s a good way to programmatically scroll a browser window: <a href="https://developer.mozilla.org/en-US/docs/Web/API/Element/scrollIntoView">Element.scrollIntoView()</a>. However, there isn’t a good way to tell <i>when</i> the DOM is finished changing, since it can be modified at any time after page load. Let’s consider two possible strategies for determining when to scroll anchored content into view.</p>
+	<p>A solution: scroll to the anchored content after the page content is fully loaded, i.e. after all API calls are resolved, spinners removed, content is rendered. Fortunately, there’s a good way to programmatically scroll a browser window: <a href="https://developer.mozilla.org/en-US/docs/Web/API/Element/scrollIntoView" target="_blank" rel="noopener noreferrer">Element.scrollIntoView()</a>. However, there isn’t a good way to tell <i>when</i> the DOM is finished changing, since it can be modified at any time after page load. Let’s consider two possible strategies for determining when to scroll anchored content into view.</p>
 	<p>Strategy #1: scroll after a fixed duration. If our goal is to make sure we only scroll to content after a page is “fully loaded”, we can simplify the problem by making some assumptions. Namely, we can assume a maximum amount of time it will take a given page to fetch resources from the backend and re-render the DOM. Let’s call this assumed max duration <code>M</code> milliseconds. We can then easily scroll to some content by running a timeout on page load:</p>
 	<pre class="language-typescript"><code class="language-typescript">setTimeout(() =&gt; scrollTo(htmlId), M)</code></pre>
 	<p>The problem with this approach is that the DOM might finish updating before or after we scroll. We end up with vertical alignment problems (as the DOM is still settling) or a jarring, unexpected scroll (if we scroll long after the DOM is settled). Both options are bad UX, and in practice it’s difficult to choose a duration constant M that is “just right” for every single page.</p>

@@ -52,7 +52,7 @@
 			</svg>
 		</a>
 	</div>
-	<p><a href="https://en.wikipedia.org/wiki/IPv4_address_exhaustion#:~:text=On%2025%20November%202019%2C%20RIPE,run%20out%20of%20IPv4%20addresses.%22">As of 2019</a>, the available pool of allocatable IPv4 space has been exhausted, making addresses a limited resource. In order to conserve their IPv4 space while the industry <a href="https://radar.cloudflare.com/notebooks/ipv6-adoption-2022">slowly transitions to IPv6</a>, ISPs have adopted carrier-grade NAT solutions to map multiple users to a single IP, maximizing the mileage of the space they have available. This uses the same mechanisms for address translation we’ve already described, but at a large scale - ISPs need to deploy devices that can handle thousands or millions of concurrent connections without impacting traffic performance.</p>
+	<p><a href="https://en.wikipedia.org/wiki/IPv4_address_exhaustion#:~:text=On%2025%20November%202019%2C%20RIPE,run%20out%20of%20IPv4%20addresses.%22" target="_blank" rel="noopener noreferrer">As of 2019</a>, the available pool of allocatable IPv4 space has been exhausted, making addresses a limited resource. In order to conserve their IPv4 space while the industry <a href="https://radar.cloudflare.com/notebooks/ipv6-adoption-2022" target="_blank" rel="noopener noreferrer">slowly transitions to IPv6</a>, ISPs have adopted carrier-grade NAT solutions to map multiple users to a single IP, maximizing the mileage of the space they have available. This uses the same mechanisms for address translation we’ve already described, but at a large scale - ISPs need to deploy devices that can handle thousands or millions of concurrent connections without impacting traffic performance.</p>
 	<figure class="kg-card kg-image-card ">
 
 		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3aDQgZ0q1V0dRjmMi4OgnQ/9c613bded60b0a5bc9c28b381bb9e6e0/image4-11.png" alt="" class="kg-image" width="1163" height="649" loading="lazy">
@@ -112,7 +112,7 @@
 			</svg>
 		</a>
 	</div>
-	<p>Over the past few years, as we’ve been growing our portfolio of <a href="https://www.cloudflare.com/network-services">network services</a>, we’ve heard over and over from customers that you want an alternative to the NAT solutions currently available on the market and a better way to address the challenges we described. We’re excited to introduce Magic NAT, the latest entrant in our “Magic” family of services designed to help customers build their next-generation networks on Cloudflare.</p>
+	<p>Over the past few years, as we’ve been growing our portfolio of <a href="https://www.cloudflare.com/network-services" target="_blank" rel="noopener noreferrer">network services</a>, we’ve heard over and over from customers that you want an alternative to the NAT solutions currently available on the market and a better way to address the challenges we described. We’re excited to introduce Magic NAT, the latest entrant in our “Magic” family of services designed to help customers build their next-generation networks on Cloudflare.</p>
 	<div class="flex anchor relative">
 		<h3 id="how-does-it-work">How does it work?</h3>
 		<a href="https://blog.cloudflare.com/#how-does-it-work" aria-hidden="true" class="relative sm:absolute sm:-start-5">
@@ -121,10 +121,10 @@
 			</svg>
 		</a>
 	</div>
-	<p>Magic NAT is built on the foundational components of <a href="https://www.cloudflare.com/cloudflare-one">Cloudflare One</a>, our Zero Trust <a href="https://www.cloudflare.com/learning/network-layer/network-as-a-service-naas">network-as-a-service</a> platform. You can follow a few simple steps to get set up:</p>
+	<p>Magic NAT is built on the foundational components of <a href="https://www.cloudflare.com/cloudflare-one" target="_blank" rel="noopener noreferrer">Cloudflare One</a>, our Zero Trust <a href="https://www.cloudflare.com/learning/network-layer/network-as-a-service-naas" target="_blank" rel="noopener noreferrer">network-as-a-service</a> platform. You can follow a few simple steps to get set up:</p>
 	<ol>
 		<li>
-			<p><b>Connect to Cloudflare.</b> Magic NAT works with all of our network-layer on-ramps including Anycast <a href="https://www.cloudflare.com/learning/network-layer/what-is-gre-tunneling">GRE</a> or <a href="https://blog.cloudflare.com/anycast-ipsec">IPsec</a>, <a href="https://blog.cloudflare.com/cloudflare-network-interconnect">CNI</a>, and <a href="https://developers.cloudflare.com/cloudflare-one/connections/connect-devices/warp/download-warp">WARP</a>. Users set up a tunnel or direct connection and route privately sourced traffic across it; packets land at the closest Cloudflare location automatically.</p>
+			<p><b>Connect to Cloudflare.</b> Magic NAT works with all of our network-layer on-ramps including Anycast <a href="https://www.cloudflare.com/learning/network-layer/what-is-gre-tunneling" target="_blank" rel="noopener noreferrer">GRE</a> or <a href="https://blog.cloudflare.com/anycast-ipsec">IPsec</a>, <a href="https://blog.cloudflare.com/cloudflare-network-interconnect">CNI</a>, and <a href="https://developers.cloudflare.com/cloudflare-one/connections/connect-devices/warp/download-warp" target="_blank" rel="noopener noreferrer">WARP</a>. Users set up a tunnel or direct connection and route privately sourced traffic across it; packets land at the closest Cloudflare location automatically.</p>
 		</li>
 		<li>
 			<p><b>Upgrade for Internet connectivity.</b> Users can enable Internet-bound TCP and UDP traffic (any port) to access resources on the Internet from Cloudflare IPs.</p>
@@ -133,7 +133,7 @@
 			<p><b>(Optional) Enable dedicated egress IPs.</b> Available if you need traffic to egress from one or multiple dedicated IPs rather than a shared pool. Dedicated egress IPs may be useful if you interact with services that “allowlist” specific IP addresses or otherwise care about which IP addresses are seen by servers on the Internet.</p>
 		</li>
 		<li>
-			<p><b>(Optional) Layer on security policies for safe access.</b> Magic NAT works natively with Cloudflare One security tools including <a href="https://www.cloudflare.com/magic-firewall">Magic Firewall</a> and our <a href="https://www.cloudflare.com/products/zero-trust/gateway">Secure Web Gateway</a>. Users can add policies on top of East/West and Internet-bound traffic to secure all network traffic with L3 through L7 protection.</p>
+			<p><b>(Optional) Layer on security policies for safe access.</b> Magic NAT works natively with Cloudflare One security tools including <a href="https://www.cloudflare.com/magic-firewall" target="_blank" rel="noopener noreferrer">Magic Firewall</a> and our <a href="https://www.cloudflare.com/products/zero-trust/gateway" target="_blank" rel="noopener noreferrer">Secure Web Gateway</a>. Users can add policies on top of East/West and Internet-bound traffic to secure all network traffic with L3 through L7 protection.</p>
 		</li>
 	</ol>
 	<p>Address translation between IP versions will also be supported, including <i>4to6</i> and <i>6to4</i> NAT capabilities to ensure backwards and forwards compatibility when clients or servers are only reachable via IPv4 or IPv6.</p>
@@ -150,7 +150,7 @@
 			</svg>
 		</a>
 	</div>
-	<p>With Cloudflare’s Anycast architecture and <a href="https://www.cloudflare.com/network">global network</a> of over 275 cities across the world, users no longer need to think about deploying NAT capabilities in specific locations or “availability zones.” Anycast on-ramps mean that traffic automatically lands at the closest Cloudflare location. If that location becomes unavailable (e.g. for maintenance), traffic fails over automatically to the next closest - zero configuration work from customers required. Failover from Cloudflare to customer networks is also automatic; we’ll always route traffic across the healthiest available path to you.</p>
+	<p>With Cloudflare’s Anycast architecture and <a href="https://www.cloudflare.com/network" target="_blank" rel="noopener noreferrer">global network</a> of over 275 cities across the world, users no longer need to think about deploying NAT capabilities in specific locations or “availability zones.” Anycast on-ramps mean that traffic automatically lands at the closest Cloudflare location. If that location becomes unavailable (e.g. for maintenance), traffic fails over automatically to the next closest - zero configuration work from customers required. Failover from Cloudflare to customer networks is also automatic; we’ll always route traffic across the healthiest available path to you.</p>
 	<div class="flex anchor relative">
 		<h3 id="scale-magic-nat-leverages-cloudflares-entire-network-capacity">Scale: Magic NAT leverages Cloudflare's entire network capacity</h3>
 		<a href="https://blog.cloudflare.com/#scale-magic-nat-leverages-cloudflares-entire-network-capacity" aria-hidden="true" class="relative sm:absolute sm:-start-5">
@@ -159,7 +159,7 @@
 			</svg>
 		</a>
 	</div>
-	<p>Cloudflare’s global capacity is at <a href="https://www.cloudflare.com/network">141 Tbps and counting</a>, and automated traffic management systems like <a href="https://blog.cloudflare.com/unimog-cloudflares-edge-load-balancer">Unimog</a> allow us to take full advantage of that capacity to serve high volumes of traffic smoothly. We absorb some of the <a href="https://blog.cloudflare.com/15m-rps-ddos-attack">largest DDoS attacks</a> on the Internet, <a href="https://blog.cloudflare.com/magic-firewall-optimizing-ip-lists">process hundreds of Gbps</a> for customers through Magic Firewall, and provide <a href="https://blog.cloudflare.com/icloud-private-relay">privacy for millions of user devices</a> across the world – and Magic NAT is built with this scale in mind. You’ll never need to provision and load balance across multiple instances or worry about traffic throttling or congestion again.</p>
+	<p>Cloudflare’s global capacity is at <a href="https://www.cloudflare.com/network" target="_blank" rel="noopener noreferrer">141 Tbps and counting</a>, and automated traffic management systems like <a href="https://blog.cloudflare.com/unimog-cloudflares-edge-load-balancer">Unimog</a> allow us to take full advantage of that capacity to serve high volumes of traffic smoothly. We absorb some of the <a href="https://blog.cloudflare.com/15m-rps-ddos-attack">largest DDoS attacks</a> on the Internet, <a href="https://blog.cloudflare.com/magic-firewall-optimizing-ip-lists">process hundreds of Gbps</a> for customers through Magic Firewall, and provide <a href="https://blog.cloudflare.com/icloud-private-relay">privacy for millions of user devices</a> across the world – and Magic NAT is built with this scale in mind. You’ll never need to provision and load balance across multiple instances or worry about traffic throttling or congestion again.</p>
 	<div class="flex anchor relative">
 		<h3 id="cost-no-more-hardware-costs-and-no-surprises">Cost: no more hardware costs and no surprises</h3>
 		<a href="https://blog.cloudflare.com/#cost-no-more-hardware-costs-and-no-surprises" aria-hidden="true" class="relative sm:absolute sm:-start-5">
@@ -177,7 +177,7 @@
 			</svg>
 		</a>
 	</div>
-	<p>Today, customers deploying NAT across on-prem environments and cloud properties need to manage separate instances for each network. As with Cloudflare’s other products that provide an overlay across multiple environments (e.g. <a href="https://www.cloudflare.com/magic-firewall">Magic Firewall</a>), we can dramatically simplify this architecture by giving users a single place for all their traffic to NAT through regardless of source/origin network.</p>
+	<p>Today, customers deploying NAT across on-prem environments and cloud properties need to manage separate instances for each network. As with Cloudflare’s other products that provide an overlay across multiple environments (e.g. <a href="https://www.cloudflare.com/magic-firewall" target="_blank" rel="noopener noreferrer">Magic Firewall</a>), we can dramatically simplify this architecture by giving users a single place for all their traffic to NAT through regardless of source/origin network.</p>
 	<div class="flex anchor relative">
 		<h3 id="summary">Summary</h3>
 		<a href="https://blog.cloudflare.com/#summary" aria-hidden="true" class="relative sm:absolute sm:-start-5">
@@ -246,5 +246,5 @@
 			</svg>
 		</a>
 	</div>
-	<p>Magic NAT is currently in beta, translating network addresses globally for a variety of workloads, large and small. We’re excited to get your feedback about it and other new capabilities we’re cooking up to help you simplify and future-proof your network - <a href="https://www.cloudflare.com/lp/magic-nat">learn more</a> or contact your account team about getting access today!</p>
+	<p>Magic NAT is currently in beta, translating network addresses globally for a variety of workloads, large and small. We’re excited to get your feedback about it and other new capabilities we’re cooking up to help you simplify and future-proof your network - <a href="https://www.cloudflare.com/lp/magic-nat" target="_blank" rel="noopener noreferrer">learn more</a> or contact your account team about getting access today!</p>
 </div>

@@ -23,7 +23,7 @@
 		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/Mlb3C96uo4KLWgNe835l2/31ccbe118c20ce15f4c35c5ceb0cd377/image6.jpg" alt="" class="kg-image" width="700" height="606" loading="lazy">
 
 	</figure>
-	<p>This works great in the JPEG format, where only about 10-15% of the data is needed to display a preview of the image, and at 50% of the data the image looks almost as good as when the whole file is delivered. Progressive JPEG images contain exactly the same data as baseline images, merely reshuffled in a more useful order, so progressive rendering doesn’t add any cost to the file size. This is possible, because JPEG doesn't store the image as pixels. Instead, it represents the image as frequency coefficients, which are like a set of predefined patterns that can be blended together, in any order, to reconstruct the original image. The inner workings of JPEG are really fascinating, and you can learn more about them from my recent <a href="https://www.youtube.com/watch?v=jTXhYj2aCDU">performance.now() conference talk</a>.</p>
+	<p>This works great in the JPEG format, where only about 10-15% of the data is needed to display a preview of the image, and at 50% of the data the image looks almost as good as when the whole file is delivered. Progressive JPEG images contain exactly the same data as baseline images, merely reshuffled in a more useful order, so progressive rendering doesn’t add any cost to the file size. This is possible, because JPEG doesn't store the image as pixels. Instead, it represents the image as frequency coefficients, which are like a set of predefined patterns that can be blended together, in any order, to reconstruct the original image. The inner workings of JPEG are really fascinating, and you can learn more about them from my recent <a href="https://www.youtube.com/watch?v=jTXhYj2aCDU" target="_blank" rel="noopener noreferrer">performance.now() conference talk</a>.</p>
 	<p>The end result is that the images can look almost fully loaded in half of the time, for free! The page appears to be visually complete and can be used much sooner. The rest of the image data arrives shortly after, upgrading images to their full quality, before visitors have time to notice anything is missing.</p>
 	<div class="flex anchor relative">
 		<h3 id="http-2-progressive-streaming">HTTP/2 progressive streaming</h3>
@@ -75,7 +75,7 @@
 			</svg>
 		</a>
 	</div>
-	<p>Here are waterfall charts from <a href="https://webpagetest.org">WebPageTest</a> showing comparison of regular HTTP/2 responses and progressive streaming. In both cases the files were exactly the same, the amount of data transferred was the same, and the overall page loading time was the same (within measurement noise). In the charts, blue segments show when data was transferred, and green shows when each request was idle.</p>
+	<p>Here are waterfall charts from <a href="https://webpagetest.org" target="_blank" rel="noopener noreferrer">WebPageTest</a> showing comparison of regular HTTP/2 responses and progressive streaming. In both cases the files were exactly the same, the amount of data transferred was the same, and the overall page loading time was the same (within measurement noise). In the charts, blue segments show when data was transferred, and green shows when each request was idle.</p>
 	<figure class="kg-card kg-image-card ">
 
 		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4gWR5w8eEc3VASAU81KwBS/986a63df2f51f9f88237bc1bc74d5273/image8.png" alt="" class="kg-image" width="1613" height="763" loading="lazy">

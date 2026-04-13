@@ -29,7 +29,7 @@
 			</svg>
 		</a>
 	</div>
-	<p>Initially <a href="https://skaffold.dev/docs/quickstart">Skaffold</a> seemed to match the criteria. It watches for change in source code, builds new images and deploys applications onto any k8s. Following Skaffold’s tutorial, we picked minikube as the local k8s, but together they didn’t meet our expectations. Port forwarding wasn’t stable, we got frequent connections refused or timeout.</p>
+	<p>Initially <a href="https://skaffold.dev/docs/quickstart" target="_blank" rel="noopener noreferrer">Skaffold</a> seemed to match the criteria. It watches for change in source code, builds new images and deploys applications onto any k8s. Following Skaffold’s tutorial, we picked minikube as the local k8s, but together they didn’t meet our expectations. Port forwarding wasn’t stable, we got frequent connections refused or timeout.</p>
 	<p>In addition, iteration time didn’t improve, because spinning up minikube takes a long time and it doesn’t use the host's docker registry and so it can’t take advantage of caching. At this point we considered reverting back to using docker compose, but the k8s ecosystem is booming, so we did some more research.</p>
 	<div class="flex anchor relative">
 		<h3 id="tilt-docker-for-mac-k8s">Tilt + Docker for mac k8s</h3>
@@ -39,7 +39,7 @@
 			</svg>
 		</a>
 	</div>
-	<p>Eventually we found a great <a href="https://docs.tilt.dev/choosing_clusters.html">blog post</a> from Tilt comparing different options for local k8s, and they seem to be solving the exact problem we are having. Tilt is a tool that makes local development on k8s easier. It detects changes in local sources and updates your deployment accordingly.</p>
+	<p>Eventually we found a great <a href="https://docs.tilt.dev/choosing_clusters.html" target="_blank" rel="noopener noreferrer">blog post</a> from Tilt comparing different options for local k8s, and they seem to be solving the exact problem we are having. Tilt is a tool that makes local development on k8s easier. It detects changes in local sources and updates your deployment accordingly.</p>
 	<p>In addition, it supports live updates without having to rebuild containers, a process that used to take around 20 minutes. With live updates, we can copy the newest source into the container, run <code>cargo build</code> within the container, and restart the service without building a new image. Following Tilt’s blog post, we switched to Docker for Mac’s built-in k8s. Combining Tilt and Docker for Mac k8s, we finally have a development environment that meets our needs.</p>
 	<p>Rust services that could take 20 minutes to rebuild now take less than a minute.</p>
 	<div class="flex anchor relative">
@@ -74,7 +74,7 @@
 	<p>Your team can use the same model to develop remotely. Here’s how to get started.</p>
 	<ol>
 		<li>
-			<p>Start a local k8s cluster. <a href="https://docs.tilt.dev/choosing_clusters.html">https://docs.tilt.dev/choosing_clusters.html</a> offers great advice in choosing a local cluster based on your OS and experience with k8s</p>
+			<p>Start a local k8s cluster. <a href="https://docs.tilt.dev/choosing_clusters.html" target="_blank" rel="noopener noreferrer">https://docs.tilt.dev/choosing_clusters.html</a> offers great advice in choosing a local cluster based on your OS and experience with k8s</p>
 		</li>
 	</ol>
 	<figure class="kg-card kg-image-card ">
@@ -226,6 +226,6 @@ spec:
 		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/61Z1uIFPgr41mOw524Z0tC/ac3cf2116f14d74394b173061f834808/image4-7.png" alt="" class="kg-image" width="1999" height="1378" loading="lazy">
 
 	</figure>
-	<p>You can find the source code for the example in <a href="https://github.com/cloudflare/argo-tunnel-examples/tree/master/sharing-k8s-dashboard">https://github.com/cloudflare/argo-tunnel-examples/tree/master/sharing-k8s-dashboard</a></p>
-	<p>If this sounds like a team you want to be on, we are <a href="https://www.cloudflare.com/careers">hiring</a>!</p>
+	<p>You can find the source code for the example in <a href="https://github.com/cloudflare/argo-tunnel-examples/tree/master/sharing-k8s-dashboard" target="_blank" rel="noopener noreferrer">https://github.com/cloudflare/argo-tunnel-examples/tree/master/sharing-k8s-dashboard</a></p>
+	<p>If this sounds like a team you want to be on, we are <a href="https://www.cloudflare.com/careers" target="_blank" rel="noopener noreferrer">hiring</a>!</p>
 </div>

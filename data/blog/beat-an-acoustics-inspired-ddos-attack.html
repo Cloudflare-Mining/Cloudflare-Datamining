@@ -5,7 +5,7 @@
 		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1tMtwsT8jBy65DAgY8rvGu/78b042c0b4125c50d3f8133f1b0c97b3/1-1.png" alt="" class="kg-image" width="1600" height="900" loading="lazy">
 
 	</figure>
-	<p>On the week of Black Friday, Cloudflare automatically detected and mitigated a unique ACK DDoS attack, which we’ve codenamed “Beat”, that targeted a <a href="https://www.cloudflare.com/magic-transit">Magic Transit</a> customer. Usually, when attacks make headlines, it’s because of their size. However, in this case, it’s not the size that is unique but the method that appears to have been borrowed from the world of acoustics.</p>
+	<p>On the week of Black Friday, Cloudflare automatically detected and mitigated a unique ACK DDoS attack, which we’ve codenamed “Beat”, that targeted a <a href="https://www.cloudflare.com/magic-transit" target="_blank" rel="noopener noreferrer">Magic Transit</a> customer. Usually, when attacks make headlines, it’s because of their size. However, in this case, it’s not the size that is unique but the method that appears to have been borrowed from the world of acoustics.</p>
 	<div class="flex anchor relative">
 		<h3 id="acoustic-inspired-attack">Acoustic inspired attack</h3>
 		<a href="https://blog.cloudflare.com/#acoustic-inspired-attack" aria-hidden="true" class="relative sm:absolute sm:-start-5">
@@ -14,7 +14,7 @@
 			</svg>
 		</a>
 	</div>
-	<p>As can be seen in the graph below, the attack’s packet rate follows a wave-shaped pattern for over 19 hours. It seems as though the attacker was inspired by an acoustics concept called <a href="https://en.wikipedia.org/wiki/Beat_%28acoustics%29">beat</a>. In acoustics, a beat is a term that is used to describe an interference of two different wave frequencies. It is the superposition of the two waves. When the two waves are nearly 180 degrees <a href="https://en.wikipedia.org/wiki/Out_of_phase">out of phase</a>, they create the beating phenomenon. When the two waves merge they amplify the sound and when they are out of sync they cancel one another, creating the beating effect.</p>
+	<p>As can be seen in the graph below, the attack’s packet rate follows a wave-shaped pattern for over 19 hours. It seems as though the attacker was inspired by an acoustics concept called <a href="https://en.wikipedia.org/wiki/Beat_%28acoustics%29" target="_blank" rel="noopener noreferrer">beat</a>. In acoustics, a beat is a term that is used to describe an interference of two different wave frequencies. It is the superposition of the two waves. When the two waves are nearly 180 degrees <a href="https://en.wikipedia.org/wiki/Out_of_phase" target="_blank" rel="noopener noreferrer">out of phase</a>, they create the beating phenomenon. When the two waves merge they amplify the sound and when they are out of sync they cancel one another, creating the beating effect.</p>
 	<figure class="kg-card kg-image-card ">
 
 		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3lptML3dUmhiTecMKMOwQm/19c85518fcc7ad5e78f5ba6c90f3843f/image24.png" alt="" class="kg-image" width="1894" height="830" loading="lazy">
@@ -27,7 +27,7 @@
 		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3je9tkvO6g9Fj83GyJediy/66ebd2159c3bc15061158a30ffd74a2e/image27.png" alt="" class="kg-image" width="1111" height="582" loading="lazy">
 
 	</figure>
-	<p>Source: <a href="https://academo.org/demos/wave-interference-beat-frequency">https://academo.org/demos/wave-interference-beat-frequency/</a>&nbsp;</p>
+	<p>Source: <a href="https://academo.org/demos/wave-interference-beat-frequency" target="_blank" rel="noopener noreferrer">https://academo.org/demos/wave-interference-beat-frequency/</a>&nbsp;</p>
 	<div class="flex anchor relative">
 		<h3 id="reverse-engineering-the-attack">Reverse engineering the attack</h3>
 		<a href="https://blog.cloudflare.com/#reverse-engineering-the-attack" aria-hidden="true" class="relative sm:absolute sm:-start-5">
@@ -58,7 +58,7 @@
 		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/27hlcDTbdY4jgCfHide7jC/ec82328f696ffb4be4bcf02ea3adf40f/Screen-Shot-2020-12-21-at-13.28.39-1.png" alt="Screen-Shot-2020-12-21-at-13.28.39-1" class="kg-image" width="520" height="60" loading="lazy">
 
 	</figure>
-	<p>by playing around with desmos’s cool <a href="https://www.desmos.com/calculator">graph visualizer tool</a>, if we set f<sub>1</sub>=0.0000345 and f<sub>2</sub>=0.00003455 we can generate a graph that resembles the attack graph. Plotting in those variables, we get:</p>
+	<p>by playing around with desmos’s cool <a href="https://www.desmos.com/calculator" target="_blank" rel="noopener noreferrer">graph visualizer tool</a>, if we set f<sub>1</sub>=0.0000345 and f<sub>2</sub>=0.00003455 we can generate a graph that resembles the attack graph. Plotting in those variables, we get:</p>
 	<figure class="kg-card kg-image-card ">
 
 		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/437LtgPNFTP5jC8Y1qt7Ty/e557796369dbc649610d4e8d2128e553/Screen-Shot-2020-12-21-at-13.33.26.png" alt="Screen-Shot-2020-12-21-at-13.33.26" class="kg-image" width="1273" height="113" loading="lazy">
@@ -70,7 +70,7 @@
 		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/bVJSt4GhQI9itvE6g4MJI/42641f938b746ee04e0132dae35b8122/Screen-Shot-2020-12-21-at-13.37.24-1.png" alt="" class="kg-image" width="1400" height="150" loading="lazy">
 
 	</figure>
-	<p>In the screenshot below, g = f<sub>1</sub>. You can view this graph <a href="https://www.desmos.com/calculator/7j86q3x9xd">here</a>.</p>
+	<p>In the screenshot below, g = f<sub>1</sub>. You can view this graph <a href="https://www.desmos.com/calculator/7j86q3x9xd" target="_blank" rel="noopener noreferrer">here</a>.</p>
 	<div class="flex anchor relative">
 		<h3 id="beating-the-drum">Beating the drum</h3>
 		<a href="https://blog.cloudflare.com/#beating-the-drum" aria-hidden="true" class="relative sm:absolute sm:-start-5">
@@ -79,8 +79,8 @@
 			</svg>
 		</a>
 	</div>
-	<p>The attacker may have utilized this method in order to try and overcome our <a href="https://www.cloudflare.com/ddos">DDoS protection systems</a> (perhaps thinking that the rhythmic rise and fall of the attack would fool our systems). However, <a href="https://blog.cloudflare.com/announcing-flowtrackd">flowtrackd</a>, our unidirectional TCP state tracking machine, detected it as being a flood of ACK packets that do not belong to any existing TCP connection. Therefore, flowtrackd automatically dropped the attack packets at Cloudflare’s edge.</p>
-	<p>The attacker was beating the drum for over 19 hours with an <a href="https://en.wikipedia.org/wiki/Amplitude">amplitude</a> of ~7 Mpps, a <a href="https://en.wikipedia.org/wiki/Wavelength">wavelength</a> of ~4 hours, and peaking at ~42 Mpps. During the two days in which the attack took place, Cloudflare systems automatically detected and mitigated over 700 DDoS attacks that targeted this customer. The attack traffic accumulated at almost 500 Terabytes out of a total of 3.6 Petabytes of attack traffic that targeted this single customer in November alone. During those two days, the attackers utilized mainly ACK floods, UDP floods, SYN floods, Christmas floods (where all of the TCP flags are ‘lit’), ICMP floods, and RST floods.</p>
+	<p>The attacker may have utilized this method in order to try and overcome our <a href="https://www.cloudflare.com/ddos" target="_blank" rel="noopener noreferrer">DDoS protection systems</a> (perhaps thinking that the rhythmic rise and fall of the attack would fool our systems). However, <a href="https://blog.cloudflare.com/announcing-flowtrackd">flowtrackd</a>, our unidirectional TCP state tracking machine, detected it as being a flood of ACK packets that do not belong to any existing TCP connection. Therefore, flowtrackd automatically dropped the attack packets at Cloudflare’s edge.</p>
+	<p>The attacker was beating the drum for over 19 hours with an <a href="https://en.wikipedia.org/wiki/Amplitude" target="_blank" rel="noopener noreferrer">amplitude</a> of ~7 Mpps, a <a href="https://en.wikipedia.org/wiki/Wavelength" target="_blank" rel="noopener noreferrer">wavelength</a> of ~4 hours, and peaking at ~42 Mpps. During the two days in which the attack took place, Cloudflare systems automatically detected and mitigated over 700 DDoS attacks that targeted this customer. The attack traffic accumulated at almost 500 Terabytes out of a total of 3.6 Petabytes of attack traffic that targeted this single customer in November alone. During those two days, the attackers utilized mainly ACK floods, UDP floods, SYN floods, Christmas floods (where all of the TCP flags are ‘lit’), ICMP floods, and RST floods.</p>
 	<div class="flex anchor relative">
 		<h3 id="the-challenge-of-tcp-based-attacks">The challenge of TCP based attacks</h3>
 		<a href="https://blog.cloudflare.com/#the-challenge-of-tcp-based-attacks" aria-hidden="true" class="relative sm:absolute sm:-start-5">
@@ -89,7 +89,7 @@
 			</svg>
 		</a>
 	</div>
-	<p>TCP is a stateful protocol, which means that in some cases, you’d need to keep track of a TCP connection’s state in order to know if a packet is legitimate or part of an attack, i.e. out of state. We were able to provide protection against out-of-state TCP packet attacks for our “classic” <a href="https://www.cloudflare.com/waf">WAF/CDN</a> service and <a href="https://www.cloudflare.com/products/cloudflare-spectrum">Spectrum</a> service because in both cases Cloudflare serves as a reverse-proxy seeing both ingress and egress traffic.</p>
+	<p>TCP is a stateful protocol, which means that in some cases, you’d need to keep track of a TCP connection’s state in order to know if a packet is legitimate or part of an attack, i.e. out of state. We were able to provide protection against out-of-state TCP packet attacks for our “classic” <a href="https://www.cloudflare.com/waf" target="_blank" rel="noopener noreferrer">WAF/CDN</a> service and <a href="https://www.cloudflare.com/products/cloudflare-spectrum" target="_blank" rel="noopener noreferrer">Spectrum</a> service because in both cases Cloudflare serves as a reverse-proxy seeing both ingress and egress traffic.</p>
 	<figure class="kg-card kg-image-card ">
 
 		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/50TeDfJThryAPOnT6jAyxJ/80a190ac4cc430b1cfa86b1215183388/image28.png" alt="While not entirely trivial to implement with Linux, we were able to provide protection for out-of-state TCP packet attacks for our “classic” WAF/CDN service and Spectrum service, where in both cases Cloudflare serves as a reverse-proxy -- and sees both ingress and egress traffic." class="kg-image" width="1306" height="685" loading="lazy">

@@ -42,7 +42,7 @@ rtt min/avg/max/mdev = 10.432/11.025/122.768/4.114 ms</code></pre>
 		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1vnwnZD3FgIURuAAT7oHOs/4f60b0d3f3822e92e23a63cbe4ce8efc/ping-router-1.png" alt="" class="kg-image" width="2048" height="768" loading="lazy">
 
 	</figure>
-	<p>This ~20 ms is a decent <a href="https://www.cloudflare.com/learning/cdn/glossary/round-trip-time-rtt">round trip time (RTT)</a> for that network and confirms the network connection was in fact stable.</p>
+	<p>This ~20 ms is a decent <a href="https://www.cloudflare.com/learning/cdn/glossary/round-trip-time-rtt" target="_blank" rel="noopener noreferrer">round trip time (RTT)</a> for that network and confirms the network connection was in fact stable.</p>
 	<p>The second "ping" session was launched from our external test machine against one of our Linux servers behind the router:</p>
 	<pre class="language-.txt"><code class="language-.txt">--- ping statistics ---
 114931 packets transmitted, 114805 received, 0% packet loss
@@ -76,7 +76,7 @@ rtt min/avg/max/mdev = 10.434/11.607/1868.110/22.703 ms</code></pre>
 			</svg>
 		</a>
 	</div>
-	<p>To understand what's going on we had to look at the internals of operating system packet processing. Nowadays there are a plethora of debugging tools for Linux and, for no particular reason, we chose <a href="https://en.wikipedia.org/wiki/SystemTap">System Tap</a> (<code>stap</code>). With a help of <a href="http://brendangregg.com/FlameGraphs/cpuflamegraphs.html">a flame graph</a> we identified a function of interest: <code>net_rx_action</code>.</p>
+	<p>To understand what's going on we had to look at the internals of operating system packet processing. Nowadays there are a plethora of debugging tools for Linux and, for no particular reason, we chose <a href="https://en.wikipedia.org/wiki/SystemTap" target="_blank" rel="noopener noreferrer">System Tap</a> (<code>stap</code>). With a help of <a href="http://brendangregg.com/FlameGraphs/cpuflamegraphs.html" target="_blank" rel="noopener noreferrer">a flame graph</a> we identified a function of interest: <code>net_rx_action</code>.</p>
 	<pre class="language-bash"><code class="language-bash">$ ./flame-kernel-global.sh
 $ ./stackcollapse-stap.pl out.stap-stacks | ./flamegraph.pl &gt; stap-kernel.svg</code></pre>
 	<p>The flamegraph itself:</p>
@@ -88,7 +88,7 @@ $ ./stackcollapse-stap.pl out.stap-stacks | ./flamegraph.pl &gt; stap-kernel.svg
 	<p>The <code>net_rx_action</code> function is responsible for handling packets in Soft IRQ mode. It will handle up to <code>netdev_budget</code> packets in one go:</p>
 	<pre class="language-bash"><code class="language-bash">$ sysctl net.core.netdev_budget
 net.core.netdev_budget = 300</code></pre>
-	<p>Here is a run of <a href="https://github.com/majek/dump/blob/master/system-tap/histogram-kernel.stp">our <code>stap</code> script showing the latency</a> distribution for this function:</p>
+	<p>Here is a run of <a href="https://github.com/majek/dump/blob/master/system-tap/histogram-kernel.stp" target="_blank" rel="noopener noreferrer">our <code>stap</code> script showing the latency</a> distribution for this function:</p>
 	<pre class="language-.sh"><code class="language-.sh">$ stap -v histogram-kernel.stp 'kernel.function("net_rx_action")' 30
 Duration min:0ms avg:0ms max:23ms count:3685271
 Duration (ms):
@@ -113,13 +113,13 @@ value |-------------------------------------------------- count
 	<p>We repeated the procedure a couple more times. That is:</p>
 	<ul>
 		<li>
-			<p>We made a flame graph <a href="https://github.com/majek/dump/blob/master/system-tap/flame-kernel.stp">source</a>.</p>
+			<p>We made a flame graph <a href="https://github.com/majek/dump/blob/master/system-tap/flame-kernel.stp" target="_blank" rel="noopener noreferrer">source</a>.</p>
 		</li>
 		<li>
-			<p>By trial and error figured out which descendant of<code>net_rx_action</code> caused the latency spike <a href="https://github.com/majek/dump/blob/master/system-tap/histogram-kernel.stp">source</a>.</p>
+			<p>By trial and error figured out which descendant of<code>net_rx_action</code> caused the latency spike <a href="https://github.com/majek/dump/blob/master/system-tap/histogram-kernel.stp" target="_blank" rel="noopener noreferrer">source</a>.</p>
 		</li>
 	</ul>
-	<p>This procedure was pretty effective, and after a couple of runs we identified the culprit: the <a href="http://lxr.free-electrons.com/source/net/ipv4/tcp_input.c?v=4.2#L4602"><code>tcp_collapse</code></a> function. Here's a summary of the latency measurements:</p>
+	<p>This procedure was pretty effective, and after a couple of runs we identified the culprit: the <a href="http://lxr.free-electrons.com/source/net/ipv4/tcp_input.c?v=4.2#L4602" target="_blank" rel="noopener noreferrer"><code>tcp_collapse</code></a> function. Here's a summary of the latency measurements:</p>
 	<pre class="language-.txt"><code class="language-.txt">$ stap -v histogram-kernel.stp 'kernel.function("tcp_collapse")' 300
 Duration min:0ms avg:3ms max:21ms count:1552</code></pre>
 	<p>Over 300 seconds there were just about 1,500 executions of the <code>tcp_collapse</code> function. Out of these executions half finished in under 3ms, but the max time was 21ms.</p>
@@ -134,11 +134,11 @@ Duration min:0ms avg:3ms max:21ms count:1552</code></pre>
 	<p>The <code>tcp_collapse</code> function is interesting. It turns out to be deeply intermixed with how the BSD sockets API works. To fully understand it let's start with a pub question:</p>
 	<blockquote>
 		<p><b>If you set a "receive buffer size" on a TCP socket, what does it actually mean?</b></p>
-		<p>Go on, read <a href="http://man7.org/linux/man-pages/man7/tcp.7.html">the man page</a>, dust off your <a href="https://books.google.co.uk/books?id=X-l9NX3iemAC">Stevens</a>. I'll wait.</p>
+		<p>Go on, read <a href="http://man7.org/linux/man-pages/man7/tcp.7.html" target="_blank" rel="noopener noreferrer">the man page</a>, dust off your <a href="https://books.google.co.uk/books?id=X-l9NX3iemAC" target="_blank" rel="noopener noreferrer">Stevens</a>. I'll wait.</p>
 	</blockquote>
 	<p>The naive answer would go something along the lines of: the TCP receive buffer setting indicates the maximum number of bytes a <code>read()</code> syscall could retrieve without blocking.</p>
-	<p>While this is the intention, this is not exactly how it works. In fact, <a href="http://lxr.free-electrons.com/source/include/net/sock.h?v=4.2#L228">the receive buffer size value</a> on a socket is a hint to the operating system of how much total memory it could use to handle the received data. Most importantly, this includes not only the payload bytes that could be delivered to the application, but also the metadata around it.</p>
-	<p>Under normal circumstances, a TCP socket structure contains a doubly-linked list of packets—the <a href="http://people.cs.clemson.edu/~westall/853/notes/skbuff.pdf"><code>sk_buff</code> structures</a>. Each packet contains not only the data, but also the <code>sk_buff</code> metadata (sk_buff is said <a href="https://lwn.net/Articles/466494">to take 240 bytes</a>). The metadata size does count against the receive buffer size counter. In a pessimistic case—when the packets are very short—<i>it is possible the receive buffer memory is almost entirely used by the metadata</i>.</p>
+	<p>While this is the intention, this is not exactly how it works. In fact, <a href="http://lxr.free-electrons.com/source/include/net/sock.h?v=4.2#L228" target="_blank" rel="noopener noreferrer">the receive buffer size value</a> on a socket is a hint to the operating system of how much total memory it could use to handle the received data. Most importantly, this includes not only the payload bytes that could be delivered to the application, but also the metadata around it.</p>
+	<p>Under normal circumstances, a TCP socket structure contains a doubly-linked list of packets—the <a href="http://people.cs.clemson.edu/~westall/853/notes/skbuff.pdf" target="_blank" rel="noopener noreferrer"><code>sk_buff</code> structures</a>. Each packet contains not only the data, but also the <code>sk_buff</code> metadata (sk_buff is said <a href="https://lwn.net/Articles/466494" target="_blank" rel="noopener noreferrer">to take 240 bytes</a>). The metadata size does count against the receive buffer size counter. In a pessimistic case—when the packets are very short—<i>it is possible the receive buffer memory is almost entirely used by the metadata</i>.</p>
 	<p>Using a large chunk of receive buffer space for the metadata is not really what the programmer wants. To counter that, when the socket is under memory pressure complex logic is run with the intention of freeing some space. One of the operations is <code>tcp_collapse</code> and it will merge adjacent TCP packets into one larger <code>sk_buff</code>. This behavior is pretty much a garbage collection (GC)—and as everyone knows, when the garbage collection kicks in, the latency must spike.</p>
 	<div class="flex anchor relative">
 		<h3 id="tuning-the-rmem">Tuning the rmem</h3>
@@ -188,7 +188,7 @@ value |-------------------------------------------------- count
 	</div>
 	<p>Setting the <code>rmem</code> sysctl to only 2MiB is not recommended as it could affect the performance of high throughput, high latency connections. On the other hand reducing <code>rmem</code> definitely helps to alleviate the observed latency issue. We settled with 4MiB max <code>rmem</code> value which offers a compromise of reasonable GC times and shouldn't affect the throughput on the TCP layer.</p>
 	<p>But most importantly, we showed how to use System Tap to debug latency issues. Use our scripts to measure the <code>net_rx_action</code> latency on your system!</p>
-	<p>Our <a href="https://github.com/majek/dump/blob/master/system-tap">simple Stap scripts</a> are available on GitHub.</p>
+	<p>Our <a href="https://github.com/majek/dump/blob/master/system-tap" target="_blank" rel="noopener noreferrer">simple Stap scripts</a> are available on GitHub.</p>
 	<p>The fixes mentioned in this article have already been rolled out. All our customers should feel just a tiny bit faster :)</p>
-	<p>If it sounds interesting to work on this type of debugging... <a href="https://www.cloudflare.com/join-our-team">we're hiring</a> in London, Singapore and San Francisco!</p>
+	<p>If it sounds interesting to work on this type of debugging... <a href="https://www.cloudflare.com/join-our-team" target="_blank" rel="noopener noreferrer">we're hiring</a> in London, Singapore and San Francisco!</p>
 </div>

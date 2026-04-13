@@ -6,7 +6,7 @@
 		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2v4jReMMfDFsc62GnuXpFo/13aafcf00d9d9b425cdf294f62fa7f76/6372385465_014a4e56af_z.jpg" alt="" class="kg-image" width="640" height="513" loading="lazy">
 
 	</figure>
-	<p><a href="https://creativecommons.org/licenses/by-sa/2.0">CC BY-SA 2.0</a> <a href="https://www.flickr.com/photos/wiredforsound23/6372385465">image</a> by <a href="https://www.flickr.com/photos/wiredforsound23">wiredforlego</a></p>
+	<p><a href="https://creativecommons.org/licenses/by-sa/2.0" target="_blank" rel="noopener noreferrer">CC BY-SA 2.0</a> <a href="https://www.flickr.com/photos/wiredforsound23/6372385465" target="_blank" rel="noopener noreferrer">image</a> by <a href="https://www.flickr.com/photos/wiredforsound23" target="_blank" rel="noopener noreferrer">wiredforlego</a></p>
 	<p>When there are thousands of goroutines running, debug output quickly becomes difficult to interpret. For example, last week I was tracking down a problem with a file descriptor and wanted to know what its listening goroutine was doing. <i>With 40k stack traces, good luck figuring out which one is having trouble.</i></p>
 	<p>Go stack traces include parameter values, but most Go types are (or are implemented as) pointers, so what you will see passed to the goroutine function is just a meaningless memory address.</p>
 	<p>We have a couple options to make sense of the addresses: get a heap dump at the same time as the stack trace and cross-reference the pointers, or have a debug endpoint that prints a goroutine/pointer -&gt; IP map. Neither are seamless.</p>
@@ -40,7 +40,7 @@ func addrToUint32(addr net.Addr) uint32 {
        }
        return uint32(ipv4[0])&lt;&lt;24 | uint32(ipv4[1])&lt;&lt;16 | uint32(ipv4[2])&lt;&lt;8 | uint32(ipv4[3])
 }</code></pre>
-	<p>And then <i>pass the IPv4-as-uint32 to the listening goroutine as an </i><code><i>_</i></code><i> parameter</i>. Yes, as a parameter with name <code>_</code>; it's known as the <a href="https://golang.org/ref/spec#Blank_identifier">blank identifier</a> in Go.</p>
+	<p>And then <i>pass the IPv4-as-uint32 to the listening goroutine as an </i><code><i>_</i></code><i> parameter</i>. Yes, as a parameter with name <code>_</code>; it's known as the <a href="https://golang.org/ref/spec#Blank_identifier" target="_blank" rel="noopener noreferrer">blank identifier</a> in Go.</p>
 	<pre class="language-go"><code class="language-go">// PacketUDPRead is a goroutine that listens on a specific UDP socket and reads
 // in new requests
 // The first parameter is the int representation of the listening IP address,
@@ -58,5 +58,5 @@ created by rrdns/core.PacketIO
 	/.../server.go:230 +0x8be</code></pre>
 	<p><code>0xc27f000001</code> -&gt; remove alignment byte -&gt; <code>0x7f000001</code> -&gt; <code>127.0.0.1</code></p>
 	<p>Obviously you can do the same with any piece of information you can represent as an <code>int</code>.</p>
-	<p><i>Are you interested in taming the goroutines that run the web? We're </i><a href="https://www.cloudflare.com/join-our-team"><i>hiring</i></a><i> in London, San Francisco and Singapore!</i></p>
+	<p><i>Are you interested in taming the goroutines that run the web? We're </i><a href="https://www.cloudflare.com/join-our-team" target="_blank" rel="noopener noreferrer"><i>hiring</i></a><i> in London, San Francisco and Singapore!</i></p>
 </div>

@@ -1,8 +1,8 @@
 <div class="mb2 gray5">5 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5Ew2vdH63vTxNo4n8gmUpC/54835d9d1ee828f54c7257e1409bc86c/automatic-signed-exchanges.png" alt="">
 <div class="post-content lh-copy gray1">
 	<p></p>
-	<p>We’re excited to announce that, starting today, Cloudflare customers will be able to generate Signed Exchanges (SXG) for Google Search with just one click. Signed Exchanges is an open <a href="https://wicg.github.io/webpackage/draft-yasskin-http-origin-signed-responses.html">web platform specification</a> Google developed as a way of verifying a cached version of a website — enabling massively <a href="https://www.cloudflare.com/learning/performance/speed-up-a-website">faster delivery of a website from a third party</a>, such as Google itself from its search results page, or from a news aggregator that is linking out to other sites.</p>
-	<p>The advantage to you as a website owner? Not only will your site load faster when linked to from a site supporting SXG, but because many search engines use page load times in order to determine search results, you should see a very nice <a href="https://www.cloudflare.com/learning/performance/how-website-speed-boosts-seo">boost in SEO</a>.</p>
+	<p>We’re excited to announce that, starting today, Cloudflare customers will be able to generate Signed Exchanges (SXG) for Google Search with just one click. Signed Exchanges is an open <a href="https://wicg.github.io/webpackage/draft-yasskin-http-origin-signed-responses.html" target="_blank" rel="noopener noreferrer">web platform specification</a> Google developed as a way of verifying a cached version of a website — enabling massively <a href="https://www.cloudflare.com/learning/performance/speed-up-a-website" target="_blank" rel="noopener noreferrer">faster delivery of a website from a third party</a>, such as Google itself from its search results page, or from a news aggregator that is linking out to other sites.</p>
+	<p>The advantage to you as a website owner? Not only will your site load faster when linked to from a site supporting SXG, but because many search engines use page load times in order to determine search results, you should see a very nice <a href="https://www.cloudflare.com/learning/performance/how-website-speed-boosts-seo" target="_blank" rel="noopener noreferrer">boost in SEO</a>.</p>
 	<div class="flex anchor relative">
 		<h3 id="what-are-signed-exchanges-and-how-do-they-work">What are signed exchanges, and how do they work?</h3>
 		<a href="https://blog.cloudflare.com/#what-are-signed-exchanges-and-how-do-they-work" aria-hidden="true" class="relative sm:absolute sm:-start-5">
@@ -11,7 +11,7 @@
 			</svg>
 		</a>
 	</div>
-	<p><a href="https://web.dev/signed-exchanges">Introduced by Google</a>, a Signed Exchange (SXG) is an open standard delivery mechanism that makes it possible to authenticate the origin of a resource, independent of how it was delivered. This decoupling advances a variety of use cases, such as prefetching, offline Internet experiences, and serving from third-party caches. It does so in a secure and privacy-preserving manner.</p>
+	<p><a href="https://web.dev/signed-exchanges" target="_blank" rel="noopener noreferrer">Introduced by Google</a>, a Signed Exchange (SXG) is an open standard delivery mechanism that makes it possible to authenticate the origin of a resource, independent of how it was delivered. This decoupling advances a variety of use cases, such as prefetching, offline Internet experiences, and serving from third-party caches. It does so in a secure and privacy-preserving manner.</p>
 	<figure class="kg-card kg-image-card ">
 
 		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4OjZeHJZXsvdoFZoI2cfvj/35372e8e6ea9617382148e7729ac4104/image5-6.png" alt="" class="kg-image" width="1201" height="675" loading="lazy">
@@ -19,7 +19,7 @@
 	</figure>
 	<p>Now, imagine yourself as the ruler of your kingdom with an important message to deliver to all your subjects. You have too many people to reach, so you can’t do it alone. You decide to enlist your trusty knights to ride out with large chests filled with copies of your message. There are villains everywhere that would love to take these messages and modify them for their own nefarious machinations for their own profit.</p>
 	<p>You, being the wise ruler you are, have a crafty plan: you have a very special stamp made that can imprint a seal that everyone can recognize, yet no one can recreate. With this wondrous seal, no one can tamper with the messages without breaking the seal and proving the forgery for all to see. Now, your knights can bring these chests to all corners of the kingdom and hand out the messages to the masses, and your subjects can trust that the message came from you. There is a side benefit for your people, too. They can come whenever they want to pick up the message without your watchful eye, so they’re more inclined to read it at their leisure.</p>
-	<p>Maybe this is stretching the analogy a bit, but in the case of Signed Exchanges, a cryptographic signature on a digest of the response and headers acts as the tamper proof seal for the message. Fast forwarding our example to the present day: you want to get your newest web experience out to global distribution with the understanding that just about everyone will come through a search engine or aggregator site. Ahead of time, when you publish your content, the search engine <a href="https://www.cloudflare.com/learning/bots/what-is-a-web-crawler">crawls your site</a> for content, but instead of delivering the raw content, you negotiate the delivery of the signed exchange. (This is accomplished simply through additional “Accept: application/signed-exchange;v=” request headers from the crawler that announces the preference for signed exchanges).</p>
+	<p>Maybe this is stretching the analogy a bit, but in the case of Signed Exchanges, a cryptographic signature on a digest of the response and headers acts as the tamper proof seal for the message. Fast forwarding our example to the present day: you want to get your newest web experience out to global distribution with the understanding that just about everyone will come through a search engine or aggregator site. Ahead of time, when you publish your content, the search engine <a href="https://www.cloudflare.com/learning/bots/what-is-a-web-crawler" target="_blank" rel="noopener noreferrer">crawls your site</a> for content, but instead of delivering the raw content, you negotiate the delivery of the signed exchange. (This is accomplished simply through additional “Accept: application/signed-exchange;v=” request headers from the crawler that announces the preference for signed exchanges).</p>
 	<p>Then Cloudflare generates the Signed Exchange, using the following process:</p>
 	<figure class="kg-card kg-image-card ">
 
@@ -49,7 +49,7 @@
 		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3fxVcYcnHZHJqUUKXXbr8N/b06a1958c4908c1bfaf22222852a4973/image4-8.png" alt="" class="kg-image" width="1201" height="675" loading="lazy">
 
 	</figure>
-	<p>There are many resources on the web available that go into detail about the specific format of <a href="https://wicg.github.io/webpackage/draft-yasskin-httpbis-origin-signed-exchanges-impl.html">Signed Exchanges</a>, so we won’t rehash them here in detail. But one important aspect that isn’t obvious at first glance is the complexity of managing the signing process itself. The many details involve:</p>
+	<p>There are many resources on the web available that go into detail about the specific format of <a href="https://wicg.github.io/webpackage/draft-yasskin-httpbis-origin-signed-exchanges-impl.html" target="_blank" rel="noopener noreferrer">Signed Exchanges</a>, so we won’t rehash them here in detail. But one important aspect that isn’t obvious at first glance is the complexity of managing the signing process itself. The many details involve:</p>
 	<ul>
 		<li>
 			<p>The inclusion of the atypical CanSignHttpExchanges extension to your certificate.</p>
@@ -61,13 +61,13 @@
 			<p><a href="https://blog.cloudflare.com/high-reliability-ocsp-stapling">OCSP stapling</a> to ensure the validity of the certificates is required.</p>
 		</li>
 		<li>
-			<p>Renewals of these certificates on a more frequent basis (i.e. requires <a href="https://www.cloudflare.com/application-services/solutions/certificate-lifecycle-management">automation</a>).</p>
+			<p>Renewals of these certificates on a more frequent basis (i.e. requires <a href="https://www.cloudflare.com/application-services/solutions/certificate-lifecycle-management" target="_blank" rel="noopener noreferrer">automation</a>).</p>
 		</li>
 		<li>
 			<p>Caching of the generated signed exchanges, since they can be expensive to generate.</p>
 		</li>
 	</ul>
-	<p>Luckily, all of these are in Cloudflare’s wheelhouse, since we already have deep expertise in <a href="https://www.cloudflare.com/advanced-certificate-manager">Certificate Management</a> and <a href="https://www.cloudflare.com/learning/ssl/transport-layer-security-tls">TLS delivery</a> infrastructure. By partnering with Google on the Signed Exchange implementation, we can ensure the consistency of implementation, but improve the simplicity of integrating the technology with the single push of a button.</p>
+	<p>Luckily, all of these are in Cloudflare’s wheelhouse, since we already have deep expertise in <a href="https://www.cloudflare.com/advanced-certificate-manager" target="_blank" rel="noopener noreferrer">Certificate Management</a> and <a href="https://www.cloudflare.com/learning/ssl/transport-layer-security-tls" target="_blank" rel="noopener noreferrer">TLS delivery</a> infrastructure. By partnering with Google on the Signed Exchange implementation, we can ensure the consistency of implementation, but improve the simplicity of integrating the technology with the single push of a button.</p>
 	<blockquote>
 		<p><i>“Signed Exchanges make the web faster and a better user experience for users, by enabling cross-site prefetching. Site owners have seen clear improvement to Largest Contentful Paint, one of the Core Web Vitals, as well as increased user stickiness. Cloudflare now makes it simple for sites to implement Signed Exchanges and derive these benefits.” —</i> Jeff Jose, Product Manager, Google</p>
 	</blockquote>
@@ -79,8 +79,8 @@
 			</svg>
 		</a>
 	</div>
-	<p>The broader implication of SXGs is that they make content portable: content delivered via an SXG can be easily distributed by third parties while maintaining full assurance and attribution of its origin. Historically, the only way for a site to use a third party to distribute its content while maintaining attribution has been for the site to share its <a href="https://www.cloudflare.com/application-services/products/ssl">SSL certificates</a> with the distributor. This has security drawbacks. Moreover, it is a far stretch from making content truly portable.</p>
-	<p>In the long-term, truly portable content can be used to achieve use cases like fully offline experiences. In the immediate term, the primary use case of SXGs is the delivery of faster user experiences by providing content in an easily cacheable format. Specifically, <a href="https://web.dev/signed-exchanges/#google-search">Google Search</a> will cache and sometimes prefetch SXGs. For sites that receive a large portion of their traffic from Google Search, SXGs can be an important tool for delivering faster page loads to users.</p>
+	<p>The broader implication of SXGs is that they make content portable: content delivered via an SXG can be easily distributed by third parties while maintaining full assurance and attribution of its origin. Historically, the only way for a site to use a third party to distribute its content while maintaining attribution has been for the site to share its <a href="https://www.cloudflare.com/application-services/products/ssl" target="_blank" rel="noopener noreferrer">SSL certificates</a> with the distributor. This has security drawbacks. Moreover, it is a far stretch from making content truly portable.</p>
+	<p>In the long-term, truly portable content can be used to achieve use cases like fully offline experiences. In the immediate term, the primary use case of SXGs is the delivery of faster user experiences by providing content in an easily cacheable format. Specifically, <a href="https://web.dev/signed-exchanges/#google-search" target="_blank" rel="noopener noreferrer">Google Search</a> will cache and sometimes prefetch SXGs. For sites that receive a large portion of their traffic from Google Search, SXGs can be an important tool for delivering faster page loads to users.</p>
 	<p>It’s also possible that all sites could eventually support this standard. Every time a site is loaded, all the linked articles could be pre-loaded. Web speeds across the board would be dramatically increased. <a href="https://blog.cloudflare.com/from-amp-to-signed-exchanges-or-how-innovation-happens-at-cloudflare">Matthew’s blog post</a> talks more about this possibility.</p>
 	<div class="flex anchor relative">
 		<h3 id="sign-up-today">Sign up today</h3>
@@ -90,9 +90,9 @@
 			</svg>
 		</a>
 	</div>
-	<p>Automatic Signed Exchanges will be free for all Cloudflare Pro, Business and Enterprise customers as well as for customers using our <a href="https://www.cloudflare.com/automatic-platform-optimization/wordpress">Advanced Platform Optimization</a> product.</p>
+	<p>Automatic Signed Exchanges will be free for all Cloudflare Pro, Business and Enterprise customers as well as for customers using our <a href="https://www.cloudflare.com/automatic-platform-optimization/wordpress" target="_blank" rel="noopener noreferrer">Advanced Platform Optimization</a> product.</p>
 	<p>Sign up for the Automatic Signed Exchange beta waitlist today and after being approved, activating is only one flip of a switch.</p>
-	<p>To sign up for the waitlist go to the <a href="https://dash.cloudflare.com/?to=%2F%3Aaccount%2F%3Azone%2Fspeed%2Foptimization#sxg-card">Speed page</a> on the Cloudflare dashboard and click on “Join Waitlist” on the Automatic Signed Exchanges (SXGs) card.</p>
+	<p>To sign up for the waitlist go to the <a href="https://dash.cloudflare.com/?to=%2F%3Aaccount%2F%3Azone%2Fspeed%2Foptimization#sxg-card" target="_blank" rel="noopener noreferrer">Speed page</a> on the Cloudflare dashboard and click on “Join Waitlist” on the Automatic Signed Exchanges (SXGs) card.</p>
 	<figure class="kg-card kg-image-card ">
 
 		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/IAJGfwzNRXcjVs5nzhi5W/1abf7168ca5caef0b460ce643bdffb85/image1-7.png" alt="" class="kg-image" width="1051" height="320" loading="lazy">

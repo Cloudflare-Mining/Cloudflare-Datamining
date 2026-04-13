@@ -14,7 +14,7 @@
 			</svg>
 		</a>
 	</div>
-	<p>Optimizing for user-experience is vital to the long-term success of both Cloudflare and our customers. Reliability and availability of the dashboard are also important, since millions of customers depend on our <a href="https://www.cloudflare.com/application-services">services</a> every day. To avoid any potential service interruptions while we made changes to the application’s architecture, we decided to gradually roll out the improvements, starting with the login page.</p>
+	<p>Optimizing for user-experience is vital to the long-term success of both Cloudflare and our customers. Reliability and availability of the dashboard are also important, since millions of customers depend on our <a href="https://www.cloudflare.com/application-services" target="_blank" rel="noopener noreferrer">services</a> every day. To avoid any potential service interruptions while we made changes to the application’s architecture, we decided to gradually roll out the improvements, starting with the login page.</p>
 	<p>As a global company, we strive to deliver the best experience to all of our customers around the world. While we were aware that performance was regional, with regions furthest from our core data centers experiencing up to 10 times longer loading speeds, we wanted to focus on improvements that would benefit all of our users, no matter where they geographically connect to the Dashboard.</p>
 	<p>Finally, throughout this exercise, it was important to keep in mind that our overall goal was to improve the user experience of the dashboard, with regards to loading performance. We chose to use a Lighthouse Performance score as a metric to measure performance, but we were careful to not set a target score. <i>Once a measure becomes a target, it ceases to be a good measure.</i></p>
 	<div class="flex anchor relative">
@@ -25,7 +25,7 @@
 			</svg>
 		</a>
 	</div>
-	<p>Using a combination of open-source tools offered by Google (Lighthouse and PageSpeed Insights) and our own homegrown solution (<a href="https://developers.cloudflare.com/fundamentals/speed/speed-test/run-speed-test">Cloudflare Speed Test</a>), we benchmarked our Lighthouse performance scores starting in Q1 2023. We found the results were… somewhat disappointing:</p>
+	<p>Using a combination of open-source tools offered by Google (Lighthouse and PageSpeed Insights) and our own homegrown solution (<a href="https://developers.cloudflare.com/fundamentals/speed/speed-test/run-speed-test" target="_blank" rel="noopener noreferrer">Cloudflare Speed Test</a>), we benchmarked our Lighthouse performance scores starting in Q1 2023. We found the results were… somewhat disappointing:</p>
 	<ul>
 		<li>
 			<p>Although the site’s initial render occurred quickly (200ms), it took more than two seconds for the site to finish loading and be fully interactive.</p>
@@ -61,7 +61,7 @@
 		</a>
 	</div>
 	<p>As obvious as it sounds, shipping less code to the user means they have to download fewer resources to load the application. In practice however, accomplishing this was harder than expected, especially for a five year old monolithic application.</p>
-	<p>We identified some of our largest dependencies with multiple versions, like <a href="https://lodash.com">lodash</a> and our icon library, and deduped them. Bloated packages like the datacenter colo catalogs were refactored and drastically slimmed down. Packages containing unused code like development-only components, deprecated translations, and old Cloudflare Access UI components were removed entirely.</p>
+	<p>We identified some of our largest dependencies with multiple versions, like <a href="https://lodash.com" target="_blank" rel="noopener noreferrer">lodash</a> and our icon library, and deduped them. Bloated packages like the datacenter colo catalogs were refactored and drastically slimmed down. Packages containing unused code like development-only components, deprecated translations, and old Cloudflare Access UI components were removed entirely.</p>
 	<p>The result was a reduction in total assets being served to the user, going from 10MB (2.7MB gzipped) to 6.5MB (1.7MB gzipped). Lighthouse performance score improved to about 70. This was a good first step, but we could do better.</p>
 	<div class="flex anchor relative">
 		<h3 id="identified-and-code-split-top-level-boundaries">Identified and code split top-level boundaries</h3>
@@ -136,5 +136,5 @@ const Root: React.FC = () =&gt; {
 		</a>
 	</div>
 	<p>Overall, we were able to get some quick wins, but we’re still not done! This is just the first step in our mission to continually improve performance for all of our dashboard users. Here’s a look at some next steps that we will be experimenting with and testing in the coming months: decoupling signup pages from the main application, redesigning SSO login experience, exploring microfrontends and edge-side rendering.</p>
-	<p>In the meantime, check out <a href="https://developers.cloudflare.com/fundamentals/speed/speed-test/run-speed-test">Cloudflare Speed Test</a> to generate a performance report and receive recommendations on how to improve the performance of your site <a href="https://blog.cloudflare.com/cloudflare-observatory-generally-available">today</a>.</p>
+	<p>In the meantime, check out <a href="https://developers.cloudflare.com/fundamentals/speed/speed-test/run-speed-test" target="_blank" rel="noopener noreferrer">Cloudflare Speed Test</a> to generate a performance report and receive recommendations on how to improve the performance of your site <a href="https://blog.cloudflare.com/cloudflare-observatory-generally-available">today</a>.</p>
 </div>

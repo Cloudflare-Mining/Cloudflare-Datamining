@@ -10,7 +10,7 @@
 			</svg>
 		</a>
 	</div>
-	<p>Today we are announcing the general availability of API Tokens - a scalable and more secure way to interact with the Cloudflare API. As part of making a better Internet, Cloudflare strives to simplify manageability of a customer’s presence at the edge. Part of the way we do this is by ensuring that all of our products and services are configurable by API. Customers ranging from partners to enterprises to developers want to automate management of Cloudflare. Sometimes that is done via our <a href="https://api.cloudflare.com">API directly</a>, and other times it is done via open source software we help maintain like our <a href="https://www.terraform.io/docs/providers/cloudflare">Terraform provider</a> or <a href="https://github.com/cloudflare/cloudflare-go">Cloudflare-Go library</a>. It is critical that customers who are automating management of Cloudflare can keep their Cloudflare services as secure as possible.</p>
+	<p>Today we are announcing the general availability of API Tokens - a scalable and more secure way to interact with the Cloudflare API. As part of making a better Internet, Cloudflare strives to simplify manageability of a customer’s presence at the edge. Part of the way we do this is by ensuring that all of our products and services are configurable by API. Customers ranging from partners to enterprises to developers want to automate management of Cloudflare. Sometimes that is done via our <a href="https://api.cloudflare.com" target="_blank" rel="noopener noreferrer">API directly</a>, and other times it is done via open source software we help maintain like our <a href="https://www.terraform.io/docs/providers/cloudflare" target="_blank" rel="noopener noreferrer">Terraform provider</a> or <a href="https://github.com/cloudflare/cloudflare-go" target="_blank" rel="noopener noreferrer">Cloudflare-Go library</a>. It is critical that customers who are automating management of Cloudflare can keep their Cloudflare services as secure as possible.</p>
 	<div class="flex anchor relative">
 		<h2 id="least-privilege-and-why-it-matters">Least Privilege and Why it Matters</h2>
 		<a href="https://blog.cloudflare.com/#least-privilege-and-why-it-matters" aria-hidden="true" class="relative sm:absolute sm:-start-5">
@@ -19,7 +19,7 @@
 			</svg>
 		</a>
 	</div>
-	<p>Securing software systems is hard. Limiting what a piece of software can do is a good defense to prevent mistakes or malicious actions from having greater impact than they could. The <a href="https://en.wikipedia.org/wiki/Principle_of_least_privilege">principle of least privilege</a> helps guide how much access a given system should have to perform actions. Originally formulated by Jerome Saltzer, “Every program and every privileged user of the system should operate using the least amount of privilege necessary to complete the job.” In the case of Cloudflare, many customers have various domains routing traffic leveraging many different services. If a bad actor gets unauthorized access to a system they can use whatever access that system has to cause further damage or steal additional information.</p>
+	<p>Securing software systems is hard. Limiting what a piece of software can do is a good defense to prevent mistakes or malicious actions from having greater impact than they could. The <a href="https://en.wikipedia.org/wiki/Principle_of_least_privilege" target="_blank" rel="noopener noreferrer">principle of least privilege</a> helps guide how much access a given system should have to perform actions. Originally formulated by Jerome Saltzer, “Every program and every privileged user of the system should operate using the least amount of privilege necessary to complete the job.” In the case of Cloudflare, many customers have various domains routing traffic leveraging many different services. If a bad actor gets unauthorized access to a system they can use whatever access that system has to cause further damage or steal additional information.</p>
 	<p>Let’s see how the capabilities of API Tokens fit into the principle of least privilege.</p>
 	<div class="flex anchor relative">
 		<h2 id="about-api-tokens">About API Tokens</h2>
@@ -78,7 +78,7 @@
 			</svg>
 		</a>
 	</div>
-	<p>To create your first API Token go to the ‘API Tokens’ section of your user profile which can be found here: <a href="https://dash.cloudflare.com/profile/api-tokens">dash.cloudflare.com/profile/api-tokens</a></p>
+	<p>To create your first API Token go to the ‘API Tokens’ section of your user profile which can be found here: <a href="https://dash.cloudflare.com/profile/api-tokens" target="_blank" rel="noopener noreferrer">dash.cloudflare.com/profile/api-tokens</a></p>
 	<p>1. On this page, you will find both a list of all of your API Tokens in addition to your Global API Key and Origin CA Key.</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
@@ -121,7 +121,7 @@
 
 	</figure>
 	<p>Token creation completion screen with the token secret</p>
-	<p>In addition to the secret itself this screen provides an example curl request that can be used to verify that the token was successfully created. It also provides an example of how the token should be used for any direct HTTP requests. With API Tokens we now follow the <a href="https://tools.ietf.org/html/rfc6750#section-2.1">RFC Authorization Bearer standard</a>. Calling that API we see a successful response telling us that the token is valid and active</p>
+	<p>In addition to the secret itself this screen provides an example curl request that can be used to verify that the token was successfully created. It also provides an example of how the token should be used for any direct HTTP requests. With API Tokens we now follow the <a href="https://tools.ietf.org/html/rfc6750#section-2.1" target="_blank" rel="noopener noreferrer">RFC Authorization Bearer standard</a>. Calling that API we see a successful response telling us that the token is valid and active</p>
 	<pre class="language-js"><code class="language-js">~$ curl -X GET "https://api.cloudflare.com/client/v4/user/tokens/verify" \
 &gt;      -H "Authorization: Bearer vh9awGupxxxxxxxxxxxxxxxxxxx" \
 &gt;      -H "Content-Type:application/json" | jq
@@ -150,6 +150,6 @@
 			</svg>
 		</a>
 	</div>
-	<p>For anyone using the Cloudflare API, we recommend moving to using API Tokens over their predecessor API Keys going forward. With this announcement, our <a href="https://www.terraform.io/docs/providers/cloudflare">Terraform provider</a>, <a href="https://github.com/cloudflare/cloudflare-go">Cloudflare-Go library</a>, and <a href="https://github.com/cloudflare/Cloudflare-WordPress">WordPress plugin</a> are all updated for API Token compatibility. Other libraries will receive updates soon. Both API Tokens and API Keys will be supported for the time being for customers to be able to safely migrate. We have more planned capabilities for API Tokens to further safeguard how and when tokens are used, so stay tuned for future announcements!</p>
-	<p>Let us know what you think and what you'd like to see next regarding API security on the <a href="https://community.cloudflare.com">Cloudflare Community</a>.</p>
+	<p>For anyone using the Cloudflare API, we recommend moving to using API Tokens over their predecessor API Keys going forward. With this announcement, our <a href="https://www.terraform.io/docs/providers/cloudflare" target="_blank" rel="noopener noreferrer">Terraform provider</a>, <a href="https://github.com/cloudflare/cloudflare-go" target="_blank" rel="noopener noreferrer">Cloudflare-Go library</a>, and <a href="https://github.com/cloudflare/Cloudflare-WordPress" target="_blank" rel="noopener noreferrer">WordPress plugin</a> are all updated for API Token compatibility. Other libraries will receive updates soon. Both API Tokens and API Keys will be supported for the time being for customers to be able to safely migrate. We have more planned capabilities for API Tokens to further safeguard how and when tokens are used, so stay tuned for future announcements!</p>
+	<p>Let us know what you think and what you'd like to see next regarding API security on the <a href="https://community.cloudflare.com" target="_blank" rel="noopener noreferrer">Cloudflare Community</a>.</p>
 </div>

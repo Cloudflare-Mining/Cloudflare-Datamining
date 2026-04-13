@@ -9,8 +9,8 @@
 			</svg>
 		</a>
 	</div>
-	<p>On May 10, 2023, Google <a href="https://developers.google.com/search/blog/2023/05/introducing-inp?hl=en">announced</a> that INP will replace FID in the Core Web Vitals in March 2024. The Core Web Vitals play a role in the Google Search algorithm. So website owners who care about <a href="https://www.cloudflare.com/learning/performance/how-website-speed-boosts-seo">Search Engine Optimization (SEO)</a> should prepare for the change. Otherwise their search ranking might suffer.</p>
-	<p>This post will first explain what FID, INP and the <a href="https://www.cloudflare.com/learning/performance/what-are-core-web-vitals">Core Web Vitals</a> are. Then it will show how FID and INP relate to each other across a large range of Cloudflare sites. (Spoiler alert - If a site has ‘Good’ scoring FID, it might not have ‘Good’ scoring INP). Then it will discuss how to prepare for this change and how Cloudflare can help.</p>
+	<p>On May 10, 2023, Google <a href="https://developers.google.com/search/blog/2023/05/introducing-inp?hl=en" target="_blank" rel="noopener noreferrer">announced</a> that INP will replace FID in the Core Web Vitals in March 2024. The Core Web Vitals play a role in the Google Search algorithm. So website owners who care about <a href="https://www.cloudflare.com/learning/performance/how-website-speed-boosts-seo" target="_blank" rel="noopener noreferrer">Search Engine Optimization (SEO)</a> should prepare for the change. Otherwise their search ranking might suffer.</p>
+	<p>This post will first explain what FID, INP and the <a href="https://www.cloudflare.com/learning/performance/what-are-core-web-vitals" target="_blank" rel="noopener noreferrer">Core Web Vitals</a> are. Then it will show how FID and INP relate to each other across a large range of Cloudflare sites. (Spoiler alert - If a site has ‘Good’ scoring FID, it might not have ‘Good’ scoring INP). Then it will discuss how to prepare for this change and how Cloudflare can help.</p>
 	<div class="flex anchor relative">
 		<h2 id="a-few-definitions">A few definitions</h2>
 		<a href="https://blog.cloudflare.com/#a-few-definitions" aria-hidden="true" class="relative sm:absolute sm:-start-5">
@@ -28,8 +28,8 @@
 			</svg>
 		</a>
 	</div>
-	<p>Measuring user-centric web performance is challenging. To face this challenge, Google developed a series of metrics called the <a href="https://web.dev/vitals">Web Vitals</a>. These Web Vitals are signals that measure different aspects of web performance. For example <a href="https://web.dev/ttfb">Time To First Byte (TTFB)</a> is one of the Web Vitals: from the perspective of the browser, TTFB <i>“measures the time between the request for a resource and when the first byte of a response begins to arrive.” -</i> <a href="https://web.dev/ttfb"><i>https://web.dev/ttfb/</i></a></p>
-	<p>A subset of the Web Vitals are the <a href="https://web.dev/vitals/#core-web-vitals">Core Web Vitals</a>. The Core Web Vitals are identified as the most critical Web Vitals to pay attention to. As such, they play a role in the Google Search algorithm. Improving a webpage’s Core Web Vitals can <a href="https://developers.google.com/search/docs/appearance/core-web-vitals">improve success</a> with Google Search. The Core Web Vitals currently consist of three metrics: <a href="https://web.dev/lcp"><i>Largest Contentful Paint (LCP)</i></a>, <a href="https://web.dev/fid"><i>First Input Delay (FID)</i></a> and <a href="https://web.dev/cls"><i>Cumulative Layout Shift (CLS)</i></a>. Respectively they measure <i>Loading Speed</i>, <i>Interactivity</i> and <i>Visual Stability</i>. This will change in March 2024 when <a href="https://web.dev/inp">Interaction To Next Paint (INP)</a> replaces FID as the Core Web Vital for Interactivity.</p>
+	<p>Measuring user-centric web performance is challenging. To face this challenge, Google developed a series of metrics called the <a href="https://web.dev/vitals" target="_blank" rel="noopener noreferrer">Web Vitals</a>. These Web Vitals are signals that measure different aspects of web performance. For example <a href="https://web.dev/ttfb" target="_blank" rel="noopener noreferrer">Time To First Byte (TTFB)</a> is one of the Web Vitals: from the perspective of the browser, TTFB <i>“measures the time between the request for a resource and when the first byte of a response begins to arrive.” -</i> <a href="https://web.dev/ttfb" target="_blank" rel="noopener noreferrer"><i>https://web.dev/ttfb/</i></a></p>
+	<p>A subset of the Web Vitals are the <a href="https://web.dev/vitals/#core-web-vitals" target="_blank" rel="noopener noreferrer">Core Web Vitals</a>. The Core Web Vitals are identified as the most critical Web Vitals to pay attention to. As such, they play a role in the Google Search algorithm. Improving a webpage’s Core Web Vitals can <a href="https://developers.google.com/search/docs/appearance/core-web-vitals" target="_blank" rel="noopener noreferrer">improve success</a> with Google Search. The Core Web Vitals currently consist of three metrics: <a href="https://web.dev/lcp" target="_blank" rel="noopener noreferrer"><i>Largest Contentful Paint (LCP)</i></a>, <a href="https://web.dev/fid" target="_blank" rel="noopener noreferrer"><i>First Input Delay (FID)</i></a> and <a href="https://web.dev/cls" target="_blank" rel="noopener noreferrer"><i>Cumulative Layout Shift (CLS)</i></a>. Respectively they measure <i>Loading Speed</i>, <i>Interactivity</i> and <i>Visual Stability</i>. This will change in March 2024 when <a href="https://web.dev/inp" target="_blank" rel="noopener noreferrer">Interaction To Next Paint (INP)</a> replaces FID as the Core Web Vital for Interactivity.</p>
 	<div class="flex anchor relative">
 		<h3 id="interaction">Interaction</h3>
 		<a href="https://blog.cloudflare.com/#interaction" aria-hidden="true" class="relative sm:absolute sm:-start-5">
@@ -44,7 +44,7 @@
 		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/v1ixaxetIiOPyxnlzed6D/d68e72a63239924c8975c286cb07fbbd/image2.png" alt="" class="kg-image" width="1999" height="529" loading="lazy">
 
 	</figure>
-	<p><i>Image from</i> <a href="https://web.dev/inp/#whats-in-an-interaction"><i>https://web.dev/inp/#whats-in-an-interaction</i></a></p>
+	<p><i>Image from</i> <a href="https://web.dev/inp/#whats-in-an-interaction" target="_blank" rel="noopener noreferrer"><i>https://web.dev/inp/#whats-in-an-interaction</i></a></p>
 	<p>Keeping in mind that an interaction is composed of these three serialized durations - <i>input delay</i>, <i>processing time</i> and <i>presentation delay</i> - will help later on to understand the difference between FID and INP.</p>
 	<div class="flex anchor relative">
 		<h3 id="first-input-delay-fid">First Input Delay (FID)</h3>
@@ -55,7 +55,7 @@
 		</a>
 	</div>
 	<blockquote>
-		<p><i>“FID measures the time from when a user first interacts with a page (that is, when they click a link, tap on a button, or use a custom, JavaScript-powered control) to the time when the browser is actually able to begin processing event handlers in response to that interaction.” -</i> <a href="https://web.dev/fid"><i>https://web.dev/fid/</i></a></p>
+		<p><i>“FID measures the time from when a user first interacts with a page (that is, when they click a link, tap on a button, or use a custom, JavaScript-powered control) to the time when the browser is actually able to begin processing event handlers in response to that interaction.” -</i> <a href="https://web.dev/fid" target="_blank" rel="noopener noreferrer"><i>https://web.dev/fid/</i></a></p>
 	</blockquote>
 	<p>FID is the current Core Web Vital that measures interactivity. FID measures the first interaction with the page. User interactions after the first interaction are not measured with FID. FID also only measures the <i>input delay</i> part of the first interaction. It does not measure the <i>processing time</i> and the <i>presentation delay.</i></p>
 	<p>FID is classed as ‘Good’ if the <i>input delay</i> is less than 100 ms. FID is classed as ‘Needs Improvement’ between 100ms and 300ms. Delays above 300 ms are classed as ‘Poor’.</p>
@@ -64,7 +64,7 @@
 		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/15AbByQT49Wj3VkqDw88MA/876bfdc1fc930388af6e0df260b4ebbd/image3.png" alt="" class="kg-image" width="736" height="186" loading="lazy">
 
 	</figure>
-	<p><i>Image from</i> <a href="https://web.dev/fid"><i>https://web.dev/fid/</i></a></p>
+	<p><i>Image from</i> <a href="https://web.dev/fid" target="_blank" rel="noopener noreferrer"><i>https://web.dev/fid/</i></a></p>
 	<div class="flex anchor relative">
 		<h3 id="interaction-to-next-paint-inp">Interaction to Next Paint (INP)</h3>
 		<a href="https://blog.cloudflare.com/#interaction-to-next-paint-inp" aria-hidden="true" class="relative sm:absolute sm:-start-5">
@@ -74,7 +74,7 @@
 		</a>
 	</div>
 	<blockquote>
-		<p><i>“INP is a metric that assesses a page's overall responsiveness to user interactions by observing the latency of all click, tap, and keyboard interactions that occur throughout the lifespan of a user's visit to a page. The final INP value is the longest interaction observed, ignoring outliers.” &nbsp;-</i> <a href="https://web.dev/inp"><i>https://web.dev/inp/</i></a></p>
+		<p><i>“INP is a metric that assesses a page's overall responsiveness to user interactions by observing the latency of all click, tap, and keyboard interactions that occur throughout the lifespan of a user's visit to a page. The final INP value is the longest interaction observed, ignoring outliers.” &nbsp;-</i> <a href="https://web.dev/inp" target="_blank" rel="noopener noreferrer"><i>https://web.dev/inp/</i></a></p>
 	</blockquote>
 	<p>INP, like FID, is also a Web Vital that measures interactivity. INP observes all user interactions in a page view and reports the longest. It measures more than just the <i>input delay</i> duration of each interaction. It also measures the <i>processing time</i> and the <i>presentation delay</i> until the next paint occurs. Once you understand the mechanics of it, the name ‘Interaction to Next Paint’ is a good description of the duration it measures.</p>
 	<p>INP is classed as ‘Good’ if the final reported value is less than 200 ms. INP is classed as ‘Needs Improvement’ between 200ms and 500ms. Any measurement above 500 ms is classed as ‘Poor’.</p>
@@ -83,7 +83,7 @@
 		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2hHOK24dJm0d5NkQuiFIcK/786ed6480edc871ffe879febfcb985d2/image5-1.png" alt="" class="kg-image" width="763" height="183" loading="lazy">
 
 	</figure>
-	<p>Image from <a href="https://web.dev/inp">https://web.dev/inp/</a></p>
+	<p>Image from <a href="https://web.dev/inp" target="_blank" rel="noopener noreferrer">https://web.dev/inp/</a></p>
 	<div class="flex anchor relative">
 		<h2 id="a-more-comprehensive-measure-of-interactivity">A more comprehensive measure of interactivity</h2>
 		<a href="https://blog.cloudflare.com/#a-more-comprehensive-measure-of-interactivity" aria-hidden="true" class="relative sm:absolute sm:-start-5">
@@ -142,11 +142,11 @@
 		</a>
 	</div>
 	<p>INP will start affecting Google Search rankings when it becomes a Core Web Vital in March 2024. To get ready, websites need to improve interactivity beyond the initial load of the site.</p>
-	<p>As always, in order to improve on a metric, a baseline must be drawn by collecting data on the metric. But with INP, this can be challenging because INP is best reported from <a href="https://web.dev/lab-and-field-data-differences/#field-data">field data</a>. Field data means that the data comes from real users interacting with web pages on real browsers. With field data, synthetic tools like Google Lighthouse aren’t a great fit. Synthetic tools are not designed to emulate the wide range of users on the wide range of browsers and operating systems that will navigate a web page.</p>
-	<p>In order to collect real user data from real browsers, websites need to enable a RUM provider. RUM providers collect performance data from real browsers, and process the data so that it can be aggregated and analyzed. It’s worth noting that performance data is anonymous and does not include any <a href="https://www.cloudflare.com/learning/privacy/what-is-pii">personal identifiable information (PII)</a>.</p>
+	<p>As always, in order to improve on a metric, a baseline must be drawn by collecting data on the metric. But with INP, this can be challenging because INP is best reported from <a href="https://web.dev/lab-and-field-data-differences/#field-data" target="_blank" rel="noopener noreferrer">field data</a>. Field data means that the data comes from real users interacting with web pages on real browsers. With field data, synthetic tools like Google Lighthouse aren’t a great fit. Synthetic tools are not designed to emulate the wide range of users on the wide range of browsers and operating systems that will navigate a web page.</p>
+	<p>In order to collect real user data from real browsers, websites need to enable a RUM provider. RUM providers collect performance data from real browsers, and process the data so that it can be aggregated and analyzed. It’s worth noting that performance data is anonymous and does not include any <a href="https://www.cloudflare.com/learning/privacy/what-is-pii" target="_blank" rel="noopener noreferrer">personal identifiable information (PII)</a>.</p>
 	<p>So the first step to understanding INP on a website is to enable a RUM provider.</p>
 	<p>Once a RUM provider is enabled on a website, it is then possible to analyze INP data to understand which web pages are not optimized for interactivity. There can be many possible causes for this. Since INP is composed of <i>input delay, processing time</i> and <i>presentation delay,</i> optimizing INP can be broken down into optimizing these distinct durations.</p>
-	<p>The best advice for optimizing INP is set out by <a href="https://web.dev/optimize-inp">web.dev</a>. Optimizing INP is not straight-forward - it can involve breaking up JavaScript tasks, reducing DOM interactions and layouts, avoiding use of timers, and limiting third-party code amongst a range of other measures. That’s why it’s best to get started early and learn as much as possible before the change takes place.</p>
+	<p>The best advice for optimizing INP is set out by <a href="https://web.dev/optimize-inp" target="_blank" rel="noopener noreferrer">web.dev</a>. Optimizing INP is not straight-forward - it can involve breaking up JavaScript tasks, reducing DOM interactions and layouts, avoiding use of timers, and limiting third-party code amongst a range of other measures. That’s why it’s best to get started early and learn as much as possible before the change takes place.</p>
 	<div class="flex anchor relative">
 		<h2 id="how-cloudflare-can-help">How Cloudflare can help</h2>
 		<a href="https://blog.cloudflare.com/#how-cloudflare-can-help" aria-hidden="true" class="relative sm:absolute sm:-start-5">
@@ -175,7 +175,7 @@
 		</a>
 	</div>
 	<p>One of the contributing causes of degraded INP is JavaScript blocking the main thread after an interaction. Often this can be caused by heavy third-party scripts attaching event listeners to DOM elements. For example, third-party analytics scripts can register listeners on interactive elements of a page to power various forms of analytics. Many sites have dozens, if not hundreds of third-party scripts running, each one potentially degrading INP.</p>
-	<p>Cloudflare offers a unique product that can entirely remove third-party scripts from the browser. This frees up the main thread, boosting interactivity. If you haven’t come across <a href="https://developers.cloudflare.com/zaraz">Cloudflare Zaraz</a> before, check it out in our docs. Not only can it improve INP, but it can also dramatically improve the security posture of your site by reducing (or even entirely removing) the amount of third-party JavaScript that runs on your website.</p>
+	<p>Cloudflare offers a unique product that can entirely remove third-party scripts from the browser. This frees up the main thread, boosting interactivity. If you haven’t come across <a href="https://developers.cloudflare.com/zaraz" target="_blank" rel="noopener noreferrer">Cloudflare Zaraz</a> before, check it out in our docs. Not only can it improve INP, but it can also dramatically improve the security posture of your site by reducing (or even entirely removing) the amount of third-party JavaScript that runs on your website.</p>
 	<div class="flex anchor relative">
 		<h3 id="watch-on-cloudflare-tv">Watch on Cloudflare TV</h3>
 		<a href="https://blog.cloudflare.com/#watch-on-cloudflare-tv" aria-hidden="true" class="relative sm:absolute sm:-start-5">

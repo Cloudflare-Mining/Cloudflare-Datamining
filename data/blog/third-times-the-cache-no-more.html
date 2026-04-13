@@ -2,7 +2,7 @@
 <div class="post-content lh-copy gray1">
 	<p></p>
 	<p>Caching is a big part of how Cloudflare CDN makes the Internet faster and more reliable. When a visitor to a customer’s website requests an asset, we retrieve it from the customer’s origin server. After that first request, in many cases we <i>cache</i> that asset. Whenever anyone requests it again, we can serve it from one of our data centers close to them, dramatically speeding up load times.</p>
-	<p>Did you notice the small caveat? We cache after the <i>first</i> request in <i>many</i> cases, not all. One notable exception since 2010 up until now: requests with <i>query strings</i>. When a request came with a query string (think <a href="https://example.com/image.jpg?width=500">https://example.com/image.jpg?width=500</a>; the <code>?width=500</code> is the query string), we needed to see it a whole <i>three</i> times before we would cache it on our <a href="https://support.cloudflare.com/hc/en-us/articles/200168256-Understand-Cloudflare-Caching-Level">default cache level</a>. Weird!</p>
+	<p>Did you notice the small caveat? We cache after the <i>first</i> request in <i>many</i> cases, not all. One notable exception since 2010 up until now: requests with <i>query strings</i>. When a request came with a query string (think <a href="https://example.com/image.jpg?width=500" target="_blank" rel="noopener noreferrer">https://example.com/image.jpg?width=500</a>; the <code>?width=500</code> is the query string), we needed to see it a whole <i>three</i> times before we would cache it on our <a href="https://support.cloudflare.com/hc/en-us/articles/200168256-Understand-Cloudflare-Caching-Level" target="_blank" rel="noopener noreferrer">default cache level</a>. Weird!</p>
 	<p>This is a short tale of that strange exception, why we thought we needed it, and how, more than ten years later, we showed ourselves that we didn’t.</p>
 	<div class="flex anchor relative">
 		<h3 id="two-misses-too-many">Two MISSes too many</h3>
@@ -12,7 +12,7 @@
 			</svg>
 		</a>
 	</div>
-	<p>To see the exception in action, here’s a command we ran a couple weeks ago. It requests an image hosted on <code>example.com</code> five times and prints each response’s <a href="https://support.cloudflare.com/hc/en-us/articles/200172516-Understanding-Cloudflare-s-CDN#h_bd959d6a-39c0-4786-9bcd-6e6504dcdb97">CF-Cache-Status header</a>. That header tells us what the cache did while serving the request.</p>
+	<p>To see the exception in action, here’s a command we ran a couple weeks ago. It requests an image hosted on <code>example.com</code> five times and prints each response’s <a href="https://support.cloudflare.com/hc/en-us/articles/200172516-Understanding-Cloudflare-s-CDN#h_bd959d6a-39c0-4786-9bcd-6e6504dcdb97" target="_blank" rel="noopener noreferrer">CF-Cache-Status header</a>. That header tells us what the cache did while serving the request.</p>
 	<pre class="language-bash"><code class="language-bash">❯ for i in {1..5}; do curl -svo /dev/null example.com/image.jpg 2&gt;&amp;1 | grep -e 'CF-Cache-Status'; sleep 3; done
 &lt; CF-Cache-Status: MISS
 &lt; CF-Cache-Status: HIT
@@ -45,7 +45,7 @@
 			<p>Some query strings simply pass along data to the origin server that may not actually result in a different response from the base URL, for example, a visitor’s browser metadata. We end up caching the same response behind many different, potentially unique, cache keys.</p>
 		</li>
 		<li>
-			<p>Some query strings are <i>intended</i> to bypass caches. These “cache busting” requests append randomized query strings in order to force pulling from the origin, a strategy that some <a href="https://support.google.com/campaignmanager/answer/2837435?hl=en#zippy=%2Chow-does-cache-busting-work">ad managers use to count impressions</a>.</p>
+			<p>Some query strings are <i>intended</i> to bypass caches. These “cache busting” requests append randomized query strings in order to force pulling from the origin, a strategy that some <a href="https://support.google.com/campaignmanager/answer/2837435?hl=en#zippy=%2Chow-does-cache-busting-work" target="_blank" rel="noopener noreferrer">ad managers use to count impressions</a>.</p>
 		</li>
 	</ol>
 	<p>Unpopular requests are not a new problem for us. Previously, <a href="https://blog.cloudflare.com/why-we-started-putting-unpopular-assets-in-memory">we wrote about how we use an in-memory transient cache</a> to store requests we only ever see once (dubbed “one-hit-wonders”) so that they are never written to disk. This transient cache, enabled for just a subset of traffic, reduces our disk writes by 20-25%.</p>
@@ -63,7 +63,7 @@
 			</svg>
 		</a>
 	</div>
-	<p>Good news: our metrics showed only around 3.5% of requests use the default cache level with query strings. Thus, we shouldn’t expect more than a few percentage points difference in disk writes. Less good: <a href="https://www.cloudflare.com/learning/cdn/what-is-a-cache-hit-ratio">cache hit rate</a> shouldn’t increase much either.</p>
+	<p>Good news: our metrics showed only around 3.5% of requests use the default cache level with query strings. Thus, we shouldn’t expect more than a few percentage points difference in disk writes. Less good: <a href="https://www.cloudflare.com/learning/cdn/what-is-a-cache-hit-ratio" target="_blank" rel="noopener noreferrer">cache hit rate</a> shouldn’t increase much either.</p>
 	<p>On the other hand, we also found that a significant portion of these requests are images, which could potentially take up lots of disk space and hike up cache eviction rates. Enough napkin math - we needed to start assessing real world data.</p>
 	<div class="flex anchor relative">
 		<h3 id="a-b-testing-caching-the-queries">A/B testing: caching the queries</h3>
@@ -73,7 +73,7 @@
 			</svg>
 		</a>
 	</div>
-	<p>We were able to validate our hypotheses using an <a href="https://en.wikipedia.org/wiki/A/B_testing">A/B test</a>, where half the machines in a data center use the old behavior and half do not. This enabled us to control for Internet traffic fluctuations over time and get more precise impact numbers.</p>
+	<p>We were able to validate our hypotheses using an <a href="https://en.wikipedia.org/wiki/A/B_testing" target="_blank" rel="noopener noreferrer">A/B test</a>, where half the machines in a data center use the old behavior and half do not. This enabled us to control for Internet traffic fluctuations over time and get more precise impact numbers.</p>
 	<p>Other considerations: we limited the test to one data center handling a small slice of our traffic to minimize the impact of any negative side effects. We also disabled transient cache, which would nullify some of the I/O costs we expected to observe. By turning transient cache off for the experiment, we should see the upper bound of the disk write increase.</p>
 	<p>We ran this test for a couple days and, as hypothesized, found a minor but acceptable increase in disk writes per request to the tune of 2.5%.</p>
 	<figure class="kg-card kg-image-card ">
@@ -82,7 +82,7 @@
 
 	</figure>
 	<p>What’s more, we saw a modest hit rate increase of around +3% on average for our Enterprise customers. More hits meant fewer trips to origin servers and thus bandwidth savings for customers: in this case, a -5% decrease in total bytes served from origin.</p>
-	<p>Note that we saw hit rate increases for certain customers across <i>all</i> plan types. Those with the biggest boost had a variety of query strings across different visitor populations (e.g. appending query strings such as <code>?resize=100px:*&amp;output-quality=60</code> <a href="https://developers.cloudflare.com/images/resizing-with-workers">to optimize serving images for different screen sizes</a>). A few additional HITs for many different, but still popular, cache keys really added up.</p>
+	<p>Note that we saw hit rate increases for certain customers across <i>all</i> plan types. Those with the biggest boost had a variety of query strings across different visitor populations (e.g. appending query strings such as <code>?resize=100px:*&amp;output-quality=60</code> <a href="https://developers.cloudflare.com/images/resizing-with-workers" target="_blank" rel="noopener noreferrer">to optimize serving images for different screen sizes</a>). A few additional HITs for many different, but still popular, cache keys really added up.</p>
 	<div class="flex anchor relative">
 		<h3 id="revisiting-old-assumptions">Revisiting old assumptions</h3>
 		<a href="https://blog.cloudflare.com/#revisiting-old-assumptions" aria-hidden="true" class="relative sm:absolute sm:-start-5">

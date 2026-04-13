@@ -1,7 +1,7 @@
 <div class="mb2 gray5">3 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2HZEjHVnWVRyoS9CfwLHgn/ddcc2ce30966862da4f417bd3fb15fe4/identifying-and-alerting-on-data-loss-using-workers.jpg" alt="">
 <div class="post-content lh-copy gray1">
 	<p></p>
-	<p>Photo by <a href="https://unsplash.com/@markusspiske?utm_source=ghost&amp;utm_medium=referral&amp;utm_campaign=api-credit">Markus Spiske</a> / <a href="https://unsplash.com/?utm_source=ghost&amp;utm_medium=referral&amp;utm_campaign=api-credit">Unsplash</a></p>
+	<p>Photo by <a href="https://unsplash.com/@markusspiske?utm_source=ghost&amp;utm_medium=referral&amp;utm_campaign=api-credit" target="_blank" rel="noopener noreferrer">Markus Spiske</a> / <a href="https://unsplash.com/?utm_source=ghost&amp;utm_medium=referral&amp;utm_campaign=api-credit" target="_blank" rel="noopener noreferrer">Unsplash</a></p>
 	<p>You hear about data breaches almost every day in the news these days. New regulations, such as GDPR, require companies to disclose data breaches within 72 hours of becoming aware. Becoming aware of and identifying data breaches as they happen, however, is not an easy task. It is often challenging for companies to become aware of their own data breaches and losses well-before they get picked up by the media.</p>
 	<p>One symptom of a data breach is data (such as passwords or PII) that should never leave internal systems making its way through an HTTP response into the public Internet. Since Cloudflare Workers sits between your infrastructure and the public for any endpoints exposed to the Internet, Workers can be used as a way of alerting you of canary data leaving.</p>
 	<p>In the following example, we will be inspecting the content of each response, checking to see if our canary data has leaked out, and if so, returning a static response and calling the PagerDuty API to notify of a potential breach.</p>
@@ -181,6 +181,6 @@ async function createPagerDutyIncident(event) {
 		</a>
 	</div>
 	<p>Cloudflare Workers give you full control over each request and response that flows through Cloudflare. Being able to inspect the body of the response means that you can identify, alert and modify content sent back by your origin, and thus use Workers for things such as data loss prevention.</p>
-	<p>You can check out more uses and recipes for Workers <a href="https://developers.cloudflare.com/workers/recipes">here</a>.</p>
+	<p>You can check out more uses and recipes for Workers <a href="https://developers.cloudflare.com/workers/recipes" target="_blank" rel="noopener noreferrer">here</a>.</p>
 	<p>As always, we would love to hear what you are doing with Workers.</p>
 </div>

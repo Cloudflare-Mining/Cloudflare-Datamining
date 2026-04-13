@@ -6,7 +6,7 @@
 		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6IYT1Gc6y5cogG4X4H9skK/583baf4700006967596b41b2dbff7908/image1-4.png" alt="Running Zig with WASI on Cloudflare Workers" class="kg-image" width="1801" height="1013" loading="lazy">
 
 	</figure>
-	<p>After the recent announcement regarding <a href="https://blog.cloudflare.com/announcing-wasi-on-workers">WASI support in Workers</a>, I decided to see what it would take to get code written in <a href="https://ziglang.org">Zig</a> to run as a Worker, and it turned out to be trivial. This post documents the process I followed as a new user of Zig. It’s so exciting to see how Cloudflare Workers is a polyglot platform allowing you to write programs in the language you love, or the language you’re learning!</p>
+	<p>After the recent announcement regarding <a href="https://blog.cloudflare.com/announcing-wasi-on-workers">WASI support in Workers</a>, I decided to see what it would take to get code written in <a href="https://ziglang.org" target="_blank" rel="noopener noreferrer">Zig</a> to run as a Worker, and it turned out to be trivial. This post documents the process I followed as a new user of Zig. It’s so exciting to see how Cloudflare Workers is a polyglot platform allowing you to write programs in the language you love, or the language you’re learning!</p>
 	<div class="flex anchor relative">
 		<h3 id="hello-world">Hello, World!</h3>
 		<a href="https://blog.cloudflare.com/#hello-world" aria-hidden="true" class="relative sm:absolute sm:-start-5">
@@ -71,7 +71,7 @@ $ echo "Hello\nWorld" | ./zig-out/bin/print-with-line-numbers
 		</a>
 	</div>
 	<p>The next step is to get this running on Workers, but first I need to compile it into WASM with WASI support.</p>
-	<p>Thankfully, this comes out of the box with recent versions of Zig, so you can just tell the compiler to build your executable using the <code>wasm32-wasi</code> target, which will produce a file that can be run on any WASI-compatible WebAssembly runtime, such as <a href="https://wasmtime.dev">wasmtime</a>.</p>
+	<p>Thankfully, this comes out of the box with recent versions of Zig, so you can just tell the compiler to build your executable using the <code>wasm32-wasi</code> target, which will produce a file that can be run on any WASI-compatible WebAssembly runtime, such as <a href="https://wasmtime.dev" target="_blank" rel="noopener noreferrer">wasmtime</a>.</p>
 	<p>This same .wasm file can be run in wasmtime and deployed directly to Cloudflare Workers. This makes building, testing and deploying seamless.</p>
 	<pre class="language-bash"><code class="language-bash">$ zig build -Dtarget=wasm32-wasi
 
@@ -90,7 +90,7 @@ $ echo "Hello\nWorld" | wasmtime ./zig-out/bin/print-with-line-numbers.wasm
 			</svg>
 		</a>
 	</div>
-	<p>With our binary ready to go, the last piece is to get it running on Cloudflare Workers using <a href="https://blog.cloudflare.com/wrangler-v2-beta">wrangler2</a>. That is as simple as publishing the .wasm file on workers.dev. If you don’t have a <a href="https://workers.dev">workers.dev</a> account, you can follow the tutorial on our <a href="https://developers.cloudflare.com/workers/get-started/guide">getting started guide</a> that will get you from code to deployment within minutes!</p>
+	<p>With our binary ready to go, the last piece is to get it running on Cloudflare Workers using <a href="https://blog.cloudflare.com/wrangler-v2-beta">wrangler2</a>. That is as simple as publishing the .wasm file on workers.dev. If you don’t have a <a href="https://workers.dev" target="_blank" rel="noopener noreferrer">workers.dev</a> account, you can follow the tutorial on our <a href="https://developers.cloudflare.com/workers/get-started/guide" target="_blank" rel="noopener noreferrer">getting started guide</a> that will get you from code to deployment within minutes!</p>
 	<p>In fact, once I signed up for my account, all I needed to do was complete the first two steps, install wrangler and login.</p>
 	<pre class="language-bash"><code class="language-bash">$ npx wrangler@wasm login
 Attempting to login via OAuth...

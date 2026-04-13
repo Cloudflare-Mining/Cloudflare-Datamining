@@ -1,14 +1,14 @@
 <div class="mb2 gray5">5 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5UD9KzpQP3jP9fi1LLSD5T/915a602ef55a9663390e9fbb8ef76c00/cloudflare-workers-now-support-cobol.png" alt="">
 <div class="post-content lh-copy gray1">
-	<p>Recently, COBOL has been in the news as the State of New Jersey has <a href="https://slate.com/technology/2020/04/new-jersey-unemployment-cobol-coronavirus.html">asked for help with</a> a COBOL-based system for unemployment claims. The system has come under heavy load because of the societal effects of the SARS-CoV-2 virus. This appears to have prompted IBM to offer <a href="https://newsroom.ibm.com/2020-04-09-IBM-and-Open-Mainframe-Project-Mobilize-to-Connect-States-with-COBOL-Skills">free online COBOL training</a>.</p>
+	<p>Recently, COBOL has been in the news as the State of New Jersey has <a href="https://slate.com/technology/2020/04/new-jersey-unemployment-cobol-coronavirus.html" target="_blank" rel="noopener noreferrer">asked for help with</a> a COBOL-based system for unemployment claims. The system has come under heavy load because of the societal effects of the SARS-CoV-2 virus. This appears to have prompted IBM to offer <a href="https://newsroom.ibm.com/2020-04-09-IBM-and-Open-Mainframe-Project-Mobilize-to-Connect-States-with-COBOL-Skills" target="_blank" rel="noopener noreferrer">free online COBOL training</a>.</p>
 	<figure class="kg-card kg-image-card ">
 
 		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2qg5A3hv0YpbnboG8IJJr9/4bfaf53fc989dea7496f44654b0d9e08/report-cropped.png" alt="" class="kg-image" width="500" height="656" loading="lazy">
 
 	</figure>
-	<p>As old as COBOL is (60 years old this month), it is still heavily used in information management systems and pretty much anywhere there’s an IBM mainframe around. Three years ago Thomson Reuters <a href="http://fingfx.thomsonreuters.com/gfx/rngs/USA-BANKS-COBOL/010040KH18J/index.html">reported</a> that COBOL is used in 43% of banking systems, is behind 80% of in-person financial transactions and 95% of times an ATM card is used. They also reported 100s of billions of lines of running COBOL.</p>
+	<p>As old as COBOL is (60 years old this month), it is still heavily used in information management systems and pretty much anywhere there’s an IBM mainframe around. Three years ago Thomson Reuters <a href="http://fingfx.thomsonreuters.com/gfx/rngs/USA-BANKS-COBOL/010040KH18J/index.html" target="_blank" rel="noopener noreferrer">reported</a> that COBOL is used in 43% of banking systems, is behind 80% of in-person financial transactions and 95% of times an ATM card is used. They also reported 100s of billions of lines of running COBOL.</p>
 	<p>COBOL is often a source of amusement for programmers because it is seen as old, verbose, clunky, and difficult to maintain. And it’s often the case that people making the jokes have never actually written any COBOL. We plan to give them a chance: COBOL can now be used to write code for Cloudflare’s serverless platform Workers.</p>
-	<p>Here’s a simple “Hello, World!” program written in COBOL and accessible at <a href="https://hello-world.cobol.workers.dev">https://hello-world.cobol.workers.dev/</a>. It doesn’t do much--it just outputs “Hello, World!”--but it does it using COBOL.</p>
+	<p>Here’s a simple “Hello, World!” program written in COBOL and accessible at <a href="https://hello-world.cobol.workers.dev" target="_blank" rel="noopener noreferrer">https://hello-world.cobol.workers.dev/</a>. It doesn’t do much--it just outputs “Hello, World!”--but it does it using COBOL.</p>
 	<pre class="language-bash"><code class="language-bash">        IDENTIFICATION DIVISION.
         PROGRAM-ID. HELLO-WORLD.
         DATA DIVISION.
@@ -19,7 +19,7 @@
             CALL "set_http_status" USING HTTP_OK.
             CALL "append_http_body" USING OUTPUT_TEXT.
         STOP RUN.</code></pre>
-	<p>If you’ve never seen a COBOL program before, it might look very odd. The language emerged in 1960 from the work of a committee designing a language for business (COBOL = COmmon Business Oriented Language) and was intended to be easy to read and understand (hence the verbose syntax). It was partly based on an early language called <a href="https://en.wikipedia.org/wiki/FLOW-MATIC">FLOW-MATIC</a> created by Grace Hopper.</p>
+	<p>If you’ve never seen a COBOL program before, it might look very odd. The language emerged in 1960 from the work of a committee designing a language for business (COBOL = COmmon Business Oriented Language) and was intended to be easy to read and understand (hence the verbose syntax). It was partly based on an early language called <a href="https://en.wikipedia.org/wiki/FLOW-MATIC" target="_blank" rel="noopener noreferrer">FLOW-MATIC</a> created by Grace Hopper.</p>
 	<div class="flex anchor relative">
 		<h3 id="identification-division">IDENTIFICATION DIVISION.</h3>
 		<a href="https://blog.cloudflare.com/#identification-division" aria-hidden="true" class="relative sm:absolute sm:-start-5">
@@ -29,7 +29,7 @@
 		</a>
 	</div>
 	<p>To put COBOL in context: FORTRAN arrived in 1957, LISP and ALGOL in 1958, APL in 1962 and BASIC in 1964. The C language didn’t arrive on scene until 1972. The late 1950s and early 1960s saw a huge amount of work on programming languages, some coming from industry (such as FORTRAN and COBOL) and others from academia (such as LISP and ALGOL).</p>
-	<p>COBOL is a compiled language and can easily be compiled to WebAssembly and run on Cloudflare Workers. If you want to get started with COBOL, the <a href="https://ftp.gnu.org/gnu/gnucobol">GNUCobol</a> project is a good place to begin.</p>
+	<p>COBOL is a compiled language and can easily be compiled to WebAssembly and run on Cloudflare Workers. If you want to get started with COBOL, the <a href="https://ftp.gnu.org/gnu/gnucobol" target="_blank" rel="noopener noreferrer">GNUCobol</a> project is a good place to begin.</p>
 	<p>Here’s a program that waits for you to press ENTER and then adds up the numbers 1 to 1000 and outputs the result:</p>
 	<pre class="language-bash"><code class="language-bash">       IDENTIFICATION DIVISION.
        PROGRAM-ID. ADD.
@@ -57,7 +57,7 @@ $ ./terminator
 $</code></pre>
 	<p><code>cobc</code> compiles the COBOL program to an executable file. It can also output a C file containing C code to implement the COBOL program:</p>
 	<p><code>$ cobc -C -o terminator.c -x terminator.cob</code></p>
-	<p>This <code>.c</code> file can then be compiled to WebAssembly. I’ve done that and placed this program (with small modifications to make it output via HTTP, as in the Hello, World! program above) at <a href="https://terminator.cobol.workers.dev">https://terminator.cobol.workers.dev/</a>. Note that the online version doesn’t wait for you to press ENTER, it just does the calculation and gives you the answer.</p>
+	<p>This <code>.c</code> file can then be compiled to WebAssembly. I’ve done that and placed this program (with small modifications to make it output via HTTP, as in the Hello, World! program above) at <a href="https://terminator.cobol.workers.dev" target="_blank" rel="noopener noreferrer">https://terminator.cobol.workers.dev/</a>. Note that the online version doesn’t wait for you to press ENTER, it just does the calculation and gives you the answer.</p>
 	<div class="flex anchor relative">
 		<h3 id="data-division">DATA DIVISION.</h3>
 		<a href="https://blog.cloudflare.com/#data-division" aria-hidden="true" class="relative sm:absolute sm:-start-5">
@@ -73,10 +73,10 @@ $</code></pre>
 
 	</figure>
 	<p>The screenshot shows the view from one of the HK-Aerial hunter-killer VTOL craft used by Skynet to try to wipe out the remnants of humanity. Using COBOL.</p>
-	<p>You can learn all about that in this <a href="https://behind-the-screens.tv">Behind The Screens</a> video I produced:</p><!--kg-card-begin: html-->
+	<p>You can learn all about that in this <a href="https://behind-the-screens.tv" target="_blank" rel="noopener noreferrer">Behind The Screens</a> video I produced:</p><!--kg-card-begin: html-->
 	<div style="position: relative; padding-top: 56.25%;"><iframe src="https://customer-rww76yind8iym5aw.cloudflarestream.com/3403d8cc179b8cc9583cb323af5e6845/iframe?poster=https%3A%2F%2Fcustomer-rww76yind8iym5aw.cloudflarestream.com%2F3403d8cc179b8cc9583cb323af5e6845%2Fthumbnails%2Fthumbnail.jpg%3Ftime%3D%26height%3D600" style="border: none; position: absolute; top: 0; left: 0; height: 100%; width: 100%;" allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;" allowfullscreen="true"></iframe></div>
 	<!--kg-card-end: html-->
-	<p>For those of you of the nerdy persuasion, here’s the original code as it appeared in the <a href="https://archive.org/details/73-magazine-1984-05/mode/2up">May 1984 edition</a> of “73 Magazine” and was copied to look cool on screen in The Terminator.</p>
+	<p>For those of you of the nerdy persuasion, here’s the original code as it appeared in the <a href="https://archive.org/details/73-magazine-1984-05/mode/2up" target="_blank" rel="noopener noreferrer">May 1984 edition</a> of “73 Magazine” and was copied to look cool on screen in The Terminator.</p>
 	<figure class="kg-card kg-image-card ">
 
 		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1G9wxa3Hndwn9aieIQntRD/b6060b3d63de33e8514856a948cc8e7e/dr-digital-cropped.png" alt="" class="kg-image" width="500" height="686" loading="lazy">
@@ -95,15 +95,15 @@ $</code></pre>
 	<p>There are multiple compiler implementations of the COBOL language and a few of them are proprietary. We decided to use GnuCOBOL (formerly OpenCOBOL) because it's free software.</p>
 	<p>Given that Cloudflare Workers supports WebAssembly, it sounded quite straightforward: GnuCOBOL can compile COBOL to C and Emscripten compiles C/C++ to WebAssembly. However, we need to make sure that our WebAssembly binary is as small and fast as possible to maximize the time for user-code to run instead of COBOL's runtime.</p>
 	<p>GnuCOBOL has a runtime library called libcob, which implements COBOL's runtime semantics, using GMP (GNU Multiple Precision Arithmetic Library) for arithmetic. After we compiled both these libraries to WebAssembly and linked against our compiled COBOL program, we threw the WebAssembly binary in a Cloudflare Worker.</p>
-	<p>It was too big and it hit the CPU limit (you can find <a href="https://developers.cloudflare.com/workers/about/limits/#cpu-execution-time-limit">Cloudflare Worker’s limits</a> here), so it was time to optimize.</p>
-	<p>GMP turns out to be a big library, but luckily for us someone made an optimized version for JavaScript (<a href="https://github.com/kripken/gmp.js">https://github.com/kripken/gmp.js</a>), which was much smaller and reduced the WebAssembly instantiation time. As a side note, it's often the case that functions implemented in C could be removed in favour of a JavaScript implementation already existing on the web platform. But for this project we didn’t want to rewrite GMP.</p>
+	<p>It was too big and it hit the CPU limit (you can find <a href="https://developers.cloudflare.com/workers/about/limits/#cpu-execution-time-limit" target="_blank" rel="noopener noreferrer">Cloudflare Worker’s limits</a> here), so it was time to optimize.</p>
+	<p>GMP turns out to be a big library, but luckily for us someone made an optimized version for JavaScript (<a href="https://github.com/kripken/gmp.js" target="_blank" rel="noopener noreferrer">https://github.com/kripken/gmp.js</a>), which was much smaller and reduced the WebAssembly instantiation time. As a side note, it's often the case that functions implemented in C could be removed in favour of a JavaScript implementation already existing on the web platform. But for this project we didn’t want to rewrite GMP.</p>
 	<p>While Emscripten can emulate a file system with all its syscalls, it didn't seem necessary in a Cloudflare Worker. We patched GnuCOBOL to remove the support for local user configuration and other small things, allowing us to remove the emulated file system.</p>
 	<p>The size of our Wasm binary is relatively small compared to other languages. For example, around 230KB with optimization enabled for the Game of Life later in this blog post.</p>
 	<p>Now that we have a COBOL program running in a Cloudflare Worker, we still need a way to generate an HTTP response.</p>
 	<p>The HTTP response generation and manipulation is written in JavaScript (for now... some changes to WebAssembly are currently being discussed that would allow a better integration). Emscripten imports these functions and makes them available in C, and finally we link all the C code with our COBOL program. COBOL already has good interoperability with C code.</p>
-	<p>As an example, we implemented the rock-paper-scissors game (<a href="https://github.com/cloudflare/cobol-worker/blob/master/src/worker.cob">https://github.com/cloudflare/cobol-worker/blob/master/src/worker.cob</a>). See the full source (<a href="https://github.com/cloudflare/cobol-worker">https://github.com/cloudflare/cobol-worker</a>).</p><!--kg-card-begin: html--><iframe src="https://cobol.demos.cloudflare.com/" width="740" height="700" border="0"></iframe><!--kg-card-end: html-->
-	<p>Our work can be used by anyone wanting to compile COBOL to WebAssembly; the toolchain we used is available on GitHub (<a href="https://github.com/cloudflare/cobaul">https://github.com/cloudflare/cobaul</a>) and is free to use.</p>
-	<p>To deploy your own COBOL Worker, you can run the following commands. Make sure that you have wrangler installed on your machine (<a href="https://github.com/cloudflare/wrangler">https://github.com/cloudflare/wrangler</a>).</p>
+	<p>As an example, we implemented the rock-paper-scissors game (<a href="https://github.com/cloudflare/cobol-worker/blob/master/src/worker.cob" target="_blank" rel="noopener noreferrer">https://github.com/cloudflare/cobol-worker/blob/master/src/worker.cob</a>). See the full source (<a href="https://github.com/cloudflare/cobol-worker" target="_blank" rel="noopener noreferrer">https://github.com/cloudflare/cobol-worker</a>).</p><!--kg-card-begin: html--><iframe src="https://cobol.demos.cloudflare.com/" width="740" height="700" border="0"></iframe><!--kg-card-end: html-->
+	<p>Our work can be used by anyone wanting to compile COBOL to WebAssembly; the toolchain we used is available on GitHub (<a href="https://github.com/cloudflare/cobaul" target="_blank" rel="noopener noreferrer">https://github.com/cloudflare/cobaul</a>) and is free to use.</p>
+	<p>To deploy your own COBOL Worker, you can run the following commands. Make sure that you have wrangler installed on your machine (<a href="https://github.com/cloudflare/wrangler" target="_blank" rel="noopener noreferrer">https://github.com/cloudflare/wrangler</a>).</p>
 	<p><code>wrangler generate cobol-worker [https://github.com/cloudflare/cobol-worker-template](https://github.com/cloudflare/cobol-worker-template)</code></p>
 	<p>It will generate a cobol-worker directory containing the Worker. Follow the instructions in your terminal to configure your Cloudflare account with wrangler.</p>
 	<p>Your worker is ready to go; enter <code>npm run deploy</code> and once deployed the URL will be displayed in the console.</p>
@@ -125,7 +125,7 @@ $</code></pre>
 			</svg>
 		</a>
 	</div>
-	<p>We learnt the other day of the death of <a href="https://en.wikipedia.org/wiki/John_Horton_Conway">John Conway</a> who is well known for <a href="https://en.wikipedia.org/wiki/Conway%27s_Game_of_Life">Conway’s Game of Life</a>. In tribute to Conway, XKCD <a href="https://xkcd.com/2293">dedicated a cartoon</a>:</p><!--kg-card-begin: html-->
+	<p>We learnt the other day of the death of <a href="https://en.wikipedia.org/wiki/John_Horton_Conway" target="_blank" rel="noopener noreferrer">John Conway</a> who is well known for <a href="https://en.wikipedia.org/wiki/Conway%27s_Game_of_Life" target="_blank" rel="noopener noreferrer">Conway’s Game of Life</a>. In tribute to Conway, XKCD <a href="https://xkcd.com/2293" target="_blank" rel="noopener noreferrer">dedicated a cartoon</a>:</p><!--kg-card-begin: html-->
 	<center><img style="border-width: 0px;" src="http://staging.blog.mrk.cfdata.org/content/images/2020/04/image4-3.gif" alt="" width="500" height="657"></center><!--kg-card-end: html-->
 	<p>I decided to implement the Game of Life in COBOL and reproduce the cartoon.</p><!--kg-card-begin: html--><iframe src="https://game-of-life.cobol.workers.dev/" width="740" height="300" border="0"></iframe><!--kg-card-end: html-->
 	<p>Here’s the code:</p>
@@ -237,10 +237,10 @@ $</code></pre>
 			<p>Sign up for Cloudflare</p>
 		</li>
 		<li>
-			<p>Sign up for a <a href="https://workers.dev">workers.dev</a> subdomain. I've already grabbed <code>cobol.workers.dev</code>, but imagine you’ve managed to grab <code>my-cool-name.workers.dev</code></p>
+			<p>Sign up for a <a href="https://workers.dev" target="_blank" rel="noopener noreferrer">workers.dev</a> subdomain. I've already grabbed <code>cobol.workers.dev</code>, but imagine you’ve managed to grab <code>my-cool-name.workers.dev</code></p>
 		</li>
 		<li>
-			<p>Install <a href="https://github.com/cloudflare/wrangler">wrangler</a>, Cloudflare’s CLI for deploying Workers</p>
+			<p>Install <a href="https://github.com/cloudflare/wrangler" target="_blank" rel="noopener noreferrer">wrangler</a>, Cloudflare’s CLI for deploying Workers</p>
 		</li>
 		<li>
 			<p>Create a new COBOL Worker using the template</p>
@@ -250,7 +250,7 @@ $</code></pre>
 			<p>Configure <code>wrangler.toml</code> to point to your account and set a name for this project, let’s say <code>my-first-cobol</code>.</p>
 		</li>
 		<li>
-			<p>Grab the files <code>src/index.js</code> and <code>src/worker.cob</code> from my repo here: <a href="https://github.com/jgrahamc/game-of-life">https://github.com/jgrahamc/game-of-life</a> and replace them in the <code>cobol-worker</code>.</p>
+			<p>Grab the files <code>src/index.js</code> and <code>src/worker.cob</code> from my repo here: <a href="https://github.com/jgrahamc/game-of-life" target="_blank" rel="noopener noreferrer">https://github.com/jgrahamc/game-of-life</a> and replace them in the <code>cobol-worker</code>.</p>
 		</li>
 		<li>
 			<p><code>npm run deploy</code></p>

@@ -3,8 +3,8 @@
 <div class="post-content lh-copy gray1">
 	<p></p>
 	<p>When you’re dealing with large amounts of data, it’s helpful to get a quick overview — which is exactly what aggregations provide in SQL. Aggregations, known as “GROUP BY queries”, provide a bird’s eye view, so you can quickly gain insights from vast volumes of data.</p>
-	<p>That’s why we are excited to announce support for aggregations in <a href="https://blog.cloudflare.com/r2-sql-deep-dive"><u>R2 SQL</u></a>, Cloudflare's serverless, distributed, analytics query engine, which is capable of running SQL queries over data stored in <a href="https://developers.cloudflare.com/r2/data-catalog"><u>R2 Data Catalog</u></a>. Aggregations will allow users of <a href="https://developers.cloudflare.com/r2-sql"><u>R2 SQL</u></a> to spot important trends and changes in the data, generate reports and find anomalies in logs.</p>
-	<p>This release builds on the already supported filter queries, which are foundational for analytical workloads, and allow users to find needles in haystacks of <a href="https://parquet.apache.org"><u>Apache Parquet</u></a> files.</p>
+	<p>That’s why we are excited to announce support for aggregations in <a href="https://blog.cloudflare.com/r2-sql-deep-dive"><u>R2 SQL</u></a>, Cloudflare's serverless, distributed, analytics query engine, which is capable of running SQL queries over data stored in <a href="https://developers.cloudflare.com/r2/data-catalog" target="_blank" rel="noopener noreferrer"><u>R2 Data Catalog</u></a>. Aggregations will allow users of <a href="https://developers.cloudflare.com/r2-sql" target="_blank" rel="noopener noreferrer"><u>R2 SQL</u></a> to spot important trends and changes in the data, generate reports and find anomalies in logs.</p>
+	<p>This release builds on the already supported filter queries, which are foundational for analytical workloads, and allow users to find needles in haystacks of <a href="https://parquet.apache.org" target="_blank" rel="noopener noreferrer"><u>Apache Parquet</u></a> files.</p>
 	<p>In this post, we’ll unpack the utility and quirks of aggregations, and then dive into how we extended R2 SQL to support running such queries over vast amounts of data stored in R2 Data Catalog.</p>
 	<div class="flex anchor relative">
 		<h2 id="the-importance-of-aggregations-in-analytics">The importance of aggregations in analytics</h2>
@@ -102,7 +102,7 @@ LIMIT 2</code></pre>
 		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3Mw7FvL7ZJgDZqnh3ygkZM/9cfb493b5889d7efe43e4719d9523c93/image1.png" alt="" class="kg-image" width="1999" height="1740" loading="lazy">
 	</figure>
 	<p>Shuffling aggregates produces the correct results. However, this all-to-all exchange creates a timing dependency. If Worker 1 begins calculating the final total for "Dept A" before Worker 3 has finished sending its share of the data, the result will be incomplete.</p>
-	<p>To address this, we enforce a strict <b>synchronization barrier</b>. The coordinator tracks the progress of the entire cluster while workers buffer their outgoing data and flush it via <a href="https://grpc.io"><u>gRPC</u></a> streams to their peers. Only when every worker confirms that it has finished processing its input files and flushing its shuffle buffers does the coordinator issue the command to proceed. This barrier guarantees that when the next stage begins, the dataset on each worker is complete and accurate.</p>
+	<p>To address this, we enforce a strict <b>synchronization barrier</b>. The coordinator tracks the progress of the entire cluster while workers buffer their outgoing data and flush it via <a href="https://grpc.io" target="_blank" rel="noopener noreferrer"><u>gRPC</u></a> streams to their peers. Only when every worker confirms that it has finished processing its input files and flushing its shuffle buffers does the coordinator issue the command to proceed. This barrier guarantees that when the next stage begins, the dataset on each worker is complete and accurate.</p>
 	<div class="flex anchor relative">
 		<h3 id="local-finalization">Local finalization</h3>
 		<a href="https://blog.cloudflare.com/#local-finalization" aria-hidden="true" class="relative sm:absolute sm:-start-5">
@@ -133,7 +133,7 @@ LIMIT 2</code></pre>
 			</svg>
 		</a>
 	</div>
-	<p>With the addition of aggregations, <a href="https://developers.cloudflare.com/r2-sql/?cf_target_id=84F4CFDF79EFE12291D34EF36907F300"><u>R2 SQL</u></a> transforms from a tool great for filtering data into a powerful engine capable of data processing on massive datasets. This is made possible by implementing distributed execution strategies like scatter-gather and shuffling, where we are able to push the compute to where the data lives, using the scale of Cloudflare’s global compute and network.&nbsp;</p>
+	<p>With the addition of aggregations, <a href="https://developers.cloudflare.com/r2-sql/?cf_target_id=84F4CFDF79EFE12291D34EF36907F300" target="_blank" rel="noopener noreferrer"><u>R2 SQL</u></a> transforms from a tool great for filtering data into a powerful engine capable of data processing on massive datasets. This is made possible by implementing distributed execution strategies like scatter-gather and shuffling, where we are able to push the compute to where the data lives, using the scale of Cloudflare’s global compute and network.&nbsp;</p>
 	<p>Whether you are generating reports, monitoring high-volume logs for anomalies, or simply trying to spot trends in your data, you can now easily do it all within Cloudflare’s Developer Platform without the overhead of managing complex OLAP infrastructure or moving data out of R2.</p>
 	<div class="flex anchor relative">
 		<h2 id="try-it-now">Try it now</h2>
@@ -146,10 +146,10 @@ LIMIT 2</code></pre>
 	<p>Support for aggregations in R2 SQL is available today. We are excited to see how you use these new functions with data in R2 Data Catalog.</p>
 	<ul>
 		<li>
-			<p><b>Get Started:</b> Check out our <a href="https://developers.cloudflare.com/r2-sql/sql-reference"><u>documentation</u></a> for examples and syntax guides on running aggregation queries.</p>
+			<p><b>Get Started:</b> Check out our <a href="https://developers.cloudflare.com/r2-sql/sql-reference" target="_blank" rel="noopener noreferrer"><u>documentation</u></a> for examples and syntax guides on running aggregation queries.</p>
 		</li>
 		<li>
-			<p><b>Join the Conversation:</b> If you have questions, feedback, or want to share what you’re building, join us in the Cloudflare <a href="https://discord.com/invite/cloudflaredev"><u>Developer Discord</u></a>.</p>
+			<p><b>Join the Conversation:</b> If you have questions, feedback, or want to share what you’re building, join us in the Cloudflare <a href="https://discord.com/invite/cloudflaredev" target="_blank" rel="noopener noreferrer"><u>Developer Discord</u></a>.</p>
 		</li>
 	</ul>
 	<p></p>

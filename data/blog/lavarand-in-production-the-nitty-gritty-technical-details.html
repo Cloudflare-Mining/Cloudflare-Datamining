@@ -5,7 +5,7 @@
 		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3GpGyNbUwxO7rvWhWGw0St/0fbdcd80d0a93d7bbee4966b7f2a2f66/lava-lamps.jpg" alt="" class="kg-image" width="2048" height="1152" loading="lazy">
 
 	</figure>
-	<p>Lava lamps in the Cloudflare lobby. Courtesy of <a href="https://twitter.com/mahtin/status/888251632550424577">@mahtin</a></p>
+	<p>Lava lamps in the Cloudflare lobby. Courtesy of <a href="https://twitter.com/mahtin/status/888251632550424577" target="_blank" rel="noopener noreferrer">@mahtin</a></p>
 	<div class="flex anchor relative">
 		<h2 id="introduction">Introduction</h2>
 		<a href="https://blog.cloudflare.com/#introduction" aria-hidden="true" class="relative sm:absolute sm:-start-5">
@@ -14,7 +14,7 @@
 			</svg>
 		</a>
 	</div>
-	<p>As some of you may know, <a href="https://www.fastcodesign.com/90137157/the-hardest-working-office-design-in-america-encrypts-your-data-with-lava-lamps">there's a wall of lava lamps</a> in the lobby of our San Francisco office that we use for cryptography. In this post, we’re going to explore how that works in technical detail. This post assumes a technical background. For a higher-level discussion that requires no technical background, see <a href="https://blog.cloudflare.com/randomness-101-lavarand-in-production">Randomness 101: LavaRand in Production</a>.</p>
+	<p>As some of you may know, <a href="https://www.fastcodesign.com/90137157/the-hardest-working-office-design-in-america-encrypts-your-data-with-lava-lamps" target="_blank" rel="noopener noreferrer">there's a wall of lava lamps</a> in the lobby of our San Francisco office that we use for cryptography. In this post, we’re going to explore how that works in technical detail. This post assumes a technical background. For a higher-level discussion that requires no technical background, see <a href="https://blog.cloudflare.com/randomness-101-lavarand-in-production">Randomness 101: LavaRand in Production</a>.</p>
 	<div class="flex anchor relative">
 		<h2 id="background">Background</h2>
 		<a href="https://blog.cloudflare.com/#background" aria-hidden="true" class="relative sm:absolute sm:-start-5">
@@ -46,7 +46,7 @@
 		</a>
 	</div>
 	<p>A common misconception is that a CSPRNG, if used for long enough, can “run out” of randomness. This is an understandable belief since, as we’ll discuss in the next section, operating systems often re-seed their CSPRNGs with new randomness to hedge against attackers discovering internal state, broken CSPRNGs, and other maladies.</p>
-	<p>But if an algorithm is a true CSPRNG in the <a href="https://en.wikipedia.org/wiki/Cryptographically_secure_pseudorandom_number_generator#Definitions">technical sense</a>, then the only way for it to run out of randomness is for somebody to consume far more values from it than could ever be consumed in practice (think consuming values from a CSPRNG as fast as possible for thousands of years or more).<sup>2</sup></p>
+	<p>But if an algorithm is a true CSPRNG in the <a href="https://en.wikipedia.org/wiki/Cryptographically_secure_pseudorandom_number_generator#Definitions" target="_blank" rel="noopener noreferrer">technical sense</a>, then the only way for it to run out of randomness is for somebody to consume far more values from it than could ever be consumed in practice (think consuming values from a CSPRNG as fast as possible for thousands of years or more).<sup>2</sup></p>
 	<p>However, none of the fast CSPRNGs that we use in practice are proven to be true CSPRNGs. They’re just <i>strongly believed</i> to be true CSPRNGs, or something close to it. They’ve withstood the test of academic analysis, years of being used in production, attacks by resourced adversaries, and so on. But that doesn’t mean that they are without flaws. For example, SHA-1, long considered to be a cryptographically-secure collision-resistant hash function (a building block that can be used to construct a CSPRNG) was eventually discovered to be insecure. Today, it can be broken for $110,000’s worth of cloud computing resources.<sup>3</sup></p>
 	<p>Thus, even though we aren’t concerned with running out of randomness in a true CSPRNG, we also aren’t sure that what we’re using in practice are true CSPRNGs. As a result, to hedge against the possibility that an attacker has figured out how to break our CSPRNGs, designers of cryptographic systems often choose to re-seed CSPRNGs with fresh, newly-acquired true randomness just in case.</p>
 	<div class="flex anchor relative">
@@ -95,10 +95,10 @@
 
 	</figure>
 	<p>The view from the camera</p>
-	<p>While the probability is obviously very low that somebody will manage to predict or modify the output of the entropy sources on our production machines, it would be irresponsible of us to pretend that it is impossible. Similarly, while cryptographic attacks against state-of-the-art CSPRNGs are rare, they do occasionally happen. It’s important that we hedge against these possibilities by adding <a href="https://en.wikipedia.org/wiki/Defense_in_depth_(computing)">extra layers of defense</a>.</p>
+	<p>While the probability is obviously very low that somebody will manage to predict or modify the output of the entropy sources on our production machines, it would be irresponsible of us to pretend that it is impossible. Similarly, while cryptographic attacks against state-of-the-art CSPRNGs are rare, they do occasionally happen. It’s important that we hedge against these possibilities by adding <a href="https://en.wikipedia.org/wiki/Defense_in_depth_(computing)" target="_blank" rel="noopener noreferrer">extra layers of defense</a>.</p>
 	<p>That’s where LavaRand comes in.</p>
 	<p>In short, LavaRand is a system that provides an additional entropy source to our production machines. In the lobby of our San Francisco office, we have a wall of lava lamps (pictured above). A video feed of this wall is used to generate entropy that is made available to our production fleet.</p>
-	<p>We're not the first ones to do this. Our LavaRand system was inspired by a similar system first <a href="https://en.wikipedia.org/wiki/Lavarand">proposed and built</a> by Silicon Graphics and <a href="https://www.google.com/patents/US5732138">patented</a> in 1996 (the patent has since expired).</p>
+	<p>We're not the first ones to do this. Our LavaRand system was inspired by a similar system first <a href="https://en.wikipedia.org/wiki/Lavarand" target="_blank" rel="noopener noreferrer">proposed and built</a> by Silicon Graphics and <a href="https://www.google.com/patents/US5732138" target="_blank" rel="noopener noreferrer">patented</a> in 1996 (the patent has since expired).</p>
 	<p>The flow of the “lava” in a lava lamp is very unpredictable,6 and so the entropy in those lamps is incredibly high. Even if we conservatively assume that the camera has a resolution of 100x100 pixels (of course it’s actually much higher) and that an attacker can guess the value of any pixel of that image to within one bit of precision (e.g., they know that a particular pixel has a red value of either 123 or 124, but they aren’t sure which it is), then the total amount of entropy produced by the image is 100x100x3 = 30,000 bits (the x3 is because each pixel comprises three values - a red, a green, and a blue channel). This is orders of magnitude more entropy than we need.</p>
 	<div class="flex anchor relative">
 		<h3 id="design">Design</h3>
@@ -180,10 +180,10 @@
 	<p>Hopefully we’ll never need LavaRand. Hopefully, the primary entropy sources used by our production machines will remain secure, and LavaRand will serve little purpose beyond adding some flair to our office. But if it turns out that we’re wrong, and that our randomness sources in production are actually flawed, then hopefully LavaRand will be our hedge, making it just a little bit harder to hack Cloudflare.</p>
 	<hr>
 	<p><sup>1</sup> Some CSPRNGs exist with constraints on how much output can be consumed securely, but those are not the sort that we are concerned with in this post.</p>
-	<p><sup>2</sup> Section 3.1, <a href="https://www.usenix.org/system/files/conference/hotos15/hotos15-paper-corrigan-gibbs.pdf">Recommendations for Randomness in the Operating System</a></p>
-	<p><sup>3</sup> <a href="https://shattered.io/static/shattered.pdf">The first collision for full SHA-1</a></p>
+	<p><sup>2</sup> Section 3.1, <a href="https://www.usenix.org/system/files/conference/hotos15/hotos15-paper-corrigan-gibbs.pdf" target="_blank" rel="noopener noreferrer">Recommendations for Randomness in the Operating System</a></p>
+	<p><sup>3</sup> <a href="https://shattered.io/static/shattered.pdf" target="_blank" rel="noopener noreferrer">The first collision for full SHA-1</a></p>
 	<p><sup>4</sup> “Entropy” and “randomness” are synonyms in cryptography - the former is the more technical term.</p>
-	<p><sup>5</sup> If the attacker controls <i>X</i> and <i>Y</i> and can also observe the output of <i>Z</i>, then the attacker can still partially influence the output of <i>H(x, y, z)</i>. See <a href="http://blog.cr.yp.to/20140205-entropy.html">here</a> for a discussion of possible attacks.</p>
-	<p><sup>6</sup> Noll, L.C. and Mende, R.G. and Sisodiya, S., <a href="https://www.google.com/patents/US5732138"><i>Method for seeding a pseudo-random number generator with a cryptographic hash of a digitization of a chaotic system</i></a></p>
+	<p><sup>5</sup> If the attacker controls <i>X</i> and <i>Y</i> and can also observe the output of <i>Z</i>, then the attacker can still partially influence the output of <i>H(x, y, z)</i>. See <a href="http://blog.cr.yp.to/20140205-entropy.html" target="_blank" rel="noopener noreferrer">here</a> for a discussion of possible attacks.</p>
+	<p><sup>6</sup> Noll, L.C. and Mende, R.G. and Sisodiya, S., <a href="https://www.google.com/patents/US5732138" target="_blank" rel="noopener noreferrer"><i>Method for seeding a pseudo-random number generator with a cryptographic hash of a digitization of a chaotic system</i></a></p>
 	<p><sup>7</sup> A surprising example of the effectiveness of entropy is the mixing of the image captured by the camera with the random noise in the camera’s photoreceptors. If we assume that every pixel captured is either recorded as the “true” value or is instead recorded as one value higher than the true value (50% probability for each), then even if the input image can be reproduced by an attacker with perfect accuracy, the camera <i>still</i> provides one bit of entropy for each pixel channel. As discussed before, even for a 100x100 pixel camera, that’s 30,000 bits!</p>
 </div>

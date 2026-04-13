@@ -2,7 +2,7 @@
 <div class="post-content lh-copy gray1">
 	<p>At Cloudflare, we do everything we can to avoid interruption to our services. We frequently deploy new versions of the code that delivers the services, so we need to be able to restart the server processes to upgrade them without missing a beat. In particular, performing graceful restarts (also known as "zero downtime") for UDP servers has proven to be surprisingly difficult.</p>
 	<p>We've <a href="https://blog.cloudflare.com/graceful-upgrades-in-go"><u>previously</u></a> <a href="https://blog.cloudflare.com/oxy-the-journey-of-graceful-restarts"><u>written</u></a> about graceful restarts in the context of TCP, which is much easier to handle. We didn't have a strong reason to deal with UDP until recently — when protocols like HTTP3/QUIC became critical. This blog post introduces <b><i>udpgrm</i></b>, a lightweight daemon that helps us to upgrade UDP servers without dropping a single packet.</p>
-	<p><a href="https://github.com/cloudflare/udpgrm/blob/main/README.md"><u>Here's the </u><i><u>udpgrm</u></i><u> GitHub repo</u></a>.</p>
+	<p><a href="https://github.com/cloudflare/udpgrm/blob/main/README.md" target="_blank" rel="noopener noreferrer"><u>Here's the </u><i><u>udpgrm</u></i><u> GitHub repo</u></a>.</p>
 	<div class="flex anchor relative">
 		<h2 id="historical-context">Historical context</h2>
 		<a href="https://blog.cloudflare.com/#historical-context" aria-hidden="true" class="relative sm:absolute sm:-start-5">
@@ -100,7 +100,7 @@ int udpgrm_reuseport_prog(struct sk_reuseport_md *md)
 │           └───────────────────────────────┘  │
 │   ...                                        │
 └──────────────────────────────────────────────┘</code></pre>
-	<p>For this to work, we first need to be able to differentiate packets belonging to new connections from packets belonging to old connections. This is very tricky and highly dependent on the specific UDP protocol. For example, QUIC has an <a href="https://datatracker.ietf.org/doc/html/rfc9000#name-initial-packet"><i><u>initial packet</u></i></a> concept, similar to a TCP SYN, but other protocols might not.</p>
+	<p>For this to work, we first need to be able to differentiate packets belonging to new connections from packets belonging to old connections. This is very tricky and highly dependent on the specific UDP protocol. For example, QUIC has an <a href="https://datatracker.ietf.org/doc/html/rfc9000#name-initial-packet" target="_blank" rel="noopener noreferrer"><i><u>initial packet</u></i></a> concept, similar to a TCP SYN, but other protocols might not.</p>
 	<p>There needs to be some flexibility in this and <i>udpgrm</i> makes this configurable. Each reuseport group sets a specific <b>flow dissector</b>.</p>
 	<p>Flow dissector has two tasks:</p>
 	<ul>
@@ -111,7 +111,7 @@ int udpgrm_reuseport_prog(struct sk_reuseport_md *md)
 			<p>For recognized flows, it tells <i>udpgrm</i> which specific socket the flow belongs to.</p>
 		</li>
 	</ul>
-	<p>These concepts are closely related and depend on the specific server. Different UDP protocols define flows differently. For example, a naive UDP server might use a typical 5-tuple to define flows, while QUIC uses a "connection ID" field in the QUIC packet header to survive <a href="https://www.rfc-editor.org/rfc/rfc9308.html#section-3.2"><u>NAT rebinding</u></a>.</p>
+	<p>These concepts are closely related and depend on the specific server. Different UDP protocols define flows differently. For example, a naive UDP server might use a typical 5-tuple to define flows, while QUIC uses a "connection ID" field in the QUIC packet header to survive <a href="https://www.rfc-editor.org/rfc/rfc9308.html#section-3.2" target="_blank" rel="noopener noreferrer"><u>NAT rebinding</u></a>.</p>
 	<p><i>udpgrm</i> supports three flow dissectors out of the box and is highly configurable to support any UDP protocol. More on this later.</p>
 	<div class="flex anchor relative">
 		<h2 id="welcome-udpgrm">Welcome udpgrm!</h2>
@@ -205,7 +205,7 @@ sd.setsockopt(IPPROTO_UDP, UDP_GRM_WORKING_GEN, work_gen + 1)</code></pre>
 			</svg>
 		</a>
 	</div>
-	<p>In practice, we often need sockets bound to low ports like <code>:443</code>, which requires elevated privileges like <code>CAP_NET_BIND_SERVICE</code>. It's usually better to configure listening sockets outside the server itself. A typical pattern is to pass the listening sockets using <a href="https://0pointer.de/blog/projects/socket-activation.html"><u>socket activation</u></a>.</p>
+	<p>In practice, we often need sockets bound to low ports like <code>:443</code>, which requires elevated privileges like <code>CAP_NET_BIND_SERVICE</code>. It's usually better to configure listening sockets outside the server itself. A typical pattern is to pass the listening sockets using <a href="https://0pointer.de/blog/projects/socket-activation.html" target="_blank" rel="noopener noreferrer"><u>socket activation</u></a>.</p>
 	<p>Sadly, systemd cannot create a new set of UDP <code>SO_REUSEPORT</code> sockets for each server instance. To overcome this limitation, <i>udpgrm</i> provides a script called <code>udpgrm_activate.py</code>, which can be used like this:</p>
 	<pre class="language-Rust"><code class="language-Rust">[Service]
 Type=notify                 # Enable access to fd store
@@ -257,7 +257,7 @@ KillSignal=SIGTERM         # Make signals explicit</code></pre>
 	<p><b>DISSECTOR_CBPF</b>: A cookie-based model where the target socket identifier — called a udpgrm cookie — is encoded in each incoming UDP packet. For example, in QUIC, this identifier can be stored as part of the connection ID. The dissection logic is expressed as cBPF code. This model does not require a flow table in <i>udpgrm</i> but is harder to integrate because it needs protocol and server support.</p>
 	<p><b>DISSECTOR_NOOP</b>: A no-op mode with no state tracking at all. It is useful for traditional UDP services like DNS, where we want to avoid losing even a single packet during an upgrade.</p>
 	<p>Finally, <i>udpgrm</i> provides a template for a more advanced dissector called <b>DISSECTOR_BESPOKE</b>. Currently, it includes a QUIC dissector that can decode the QUIC TLS SNI and direct specific TLS hostnames to specific socket generations.</p>
-	<p>For more details, <a href="https://github.com/cloudflare/udpgrm/blob/main/README.md"><u>please consult the </u><i><u>udpgrm</u></i><u> README</u></a>. In short: the FLOW dissector is the simplest one, useful for old protocols. CBPF dissector is good for experimentation when the protocol allows storing a custom connection id (cookie) — we used it to develop our own QUIC Connection ID schema (also named DCID) — but it's slow, because it interprets cBPF inside eBPF (yes really!). NOOP is useful, but only for very specific niche servers. The real magic is in the BESPOKE type, where users can create arbitrary, fast, and powerful dissector logic.</p>
+	<p>For more details, <a href="https://github.com/cloudflare/udpgrm/blob/main/README.md" target="_blank" rel="noopener noreferrer"><u>please consult the </u><i><u>udpgrm</u></i><u> README</u></a>. In short: the FLOW dissector is the simplest one, useful for old protocols. CBPF dissector is good for experimentation when the protocol allows storing a custom connection id (cookie) — we used it to develop our own QUIC Connection ID schema (also named DCID) — but it's slow, because it interprets cBPF inside eBPF (yes really!). NOOP is useful, but only for very specific niche servers. The real magic is in the BESPOKE type, where users can create arbitrary, fast, and powerful dissector logic.</p>
 	<div class="flex anchor relative">
 		<h2 id="summary">Summary</h2>
 		<a href="https://blog.cloudflare.com/#summary" aria-hidden="true" class="relative sm:absolute sm:-start-5">

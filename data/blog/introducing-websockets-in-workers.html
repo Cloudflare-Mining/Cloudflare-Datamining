@@ -36,7 +36,7 @@ async function handleRequest(request) {
 
   // Set up WebSocket
 }</code></pre>
-	<p>If the Upgrade header is present, we set up a new instance of WebSocketPair — a set of two WebSockets, one for the client, and one for the server. In our code, we'll use the server WebSocket to set up our server-side logic, and return the client socket back to the client. Note the usage of the 101 status code (<a href="https://httpstatuses.com/101">"Switching Protocols"</a>) and the new webSocket property on Response:</p>
+	<p>If the Upgrade header is present, we set up a new instance of WebSocketPair — a set of two WebSockets, one for the client, and one for the server. In our code, we'll use the server WebSocket to set up our server-side logic, and return the client socket back to the client. Note the usage of the 101 status code (<a href="https://httpstatuses.com/101" target="_blank" rel="noopener noreferrer">"Switching Protocols"</a>) and the new webSocket property on Response:</p>
 	<pre class="language-js"><code class="language-js">addEventListener('fetch', event =&gt; {
   event.respondWith(handleRequest(event.request))
 })
@@ -117,7 +117,7 @@ const closeConnection = () =&gt; websocket.close()</code></pre>
 	</div>
 	<p>WebSockets are a powerful addition to the Workers toolkit, but you'll notice that in the above example, your WebSocket connections are effectively stateless. I can click the "Click me" button a hundred times, send data back and forth in my WebSocket connection, but as soon as I refresh the page, all of that information is gone. How do we provide state for our WebSocket and for our application in general?</p>
 	<p>Our solution for this is Durable Objects. Instead of using external state solutions and making requests to origin servers for a database or API provider, Durable Objects provide simple APIs for accessing and updating stateful data directly at the edge, right alongside your serverless functions.</p>
-	<p>Durable Objects complements WebSockets perfectly, providing the stateful primitives needed to make WebSockets at the edge uniquely powerful and performant. When we initially announced the Durable Objects private beta, we also previewed WebSockets in Workers for the first time, as part of our live chat demo. That demo, <a href="https://edge-chat-demo.cloudflareworkers.com">available here</a>, still serves as a great example of a more complex application that can be built entirely on Workers, Durable Objects, and WebSockets.</p>
+	<p>Durable Objects complements WebSockets perfectly, providing the stateful primitives needed to make WebSockets at the edge uniquely powerful and performant. When we initially announced the Durable Objects private beta, we also previewed WebSockets in Workers for the first time, as part of our live chat demo. That demo, <a href="https://edge-chat-demo.cloudflareworkers.com" target="_blank" rel="noopener noreferrer">available here</a>, still serves as a great example of a more complex application that can be built entirely on Workers, Durable Objects, and WebSockets.</p>
 	<div class="flex anchor relative">
 		<h2 id="additional-resources">Additional resources</h2>
 		<a href="https://blog.cloudflare.com/#additional-resources" aria-hidden="true" class="relative sm:absolute sm:-start-5">
@@ -128,13 +128,13 @@ const closeConnection = () =&gt; websocket.close()</code></pre>
 	</div>
 	<p>With the release of WebSocket support in Workers, we're providing two resources to help you get started.</p>
 	<p>First, a new websocket-template that will help you get started with WebSockets on Workers. The template includes a simple HTML page that shows you how to connect to a Workers-based WebSocket, send and receive messages, as well as how to close the connection and handle any unknown messages or data. This template is the logical extension of the code that I shared above, and could be extended for most use-cases with WebSockets in your application.</p>
-	<p><a href="https://websocket-template.cloudflare-docs.workers.dev">You can see a demo version of the project here.</a></p>
+	<p><a href="https://websocket-template.cloudflare-docs.workers.dev" target="_blank" rel="noopener noreferrer">You can see a demo version of the project here.</a></p>
 	<figure class="kg-card kg-image-card ">
 
 		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2sdk1ix59XmdNLQcgcqR7W/0853ac10e9e44d7725107db975501057/image1-17.png" alt="" class="kg-image" width="1922" height="1461" loading="lazy">
 
 	</figure>
-	<p><a href="https://developers.cloudflare.com/workers/learning/using-websockets">We've also released documentation for WebSocket usage in Workers.</a> This includes a new Learning page on working with WebSockets, as well as a collection of reference documentation for <a href="https://developers.cloudflare.com/workers/runtime-apis/websockets">understanding the new WebSocketPair API</a>, and changes to the Response class to allow WebSocket upgrade responses, as seen in the code above.</p>
+	<p><a href="https://developers.cloudflare.com/workers/learning/using-websockets" target="_blank" rel="noopener noreferrer">We've also released documentation for WebSocket usage in Workers.</a> This includes a new Learning page on working with WebSockets, as well as a collection of reference documentation for <a href="https://developers.cloudflare.com/workers/runtime-apis/websockets" target="_blank" rel="noopener noreferrer">understanding the new WebSocketPair API</a>, and changes to the Response class to allow WebSocket upgrade responses, as seen in the code above.</p>
 	<div class="flex anchor relative">
 		<h2 id="pricing-considerations">Pricing considerations</h2>
 		<a href="https://blog.cloudflare.com/#pricing-considerations" aria-hidden="true" class="relative sm:absolute sm:-start-5">
@@ -150,5 +150,5 @@ const closeConnection = () =&gt; websocket.close()</code></pre>
 	<p>Today, while in beta, Durable Objects are not being billed, so there is no cost for terminating the WebSocket connection in a Durable Object.</p>
 	<p>We’re currently working on the best way to price WebSockets that are terminated in a Durable Object.</p>
 	<p>Our current thinking is that when using WebSockets, you'll be charged for wall clock time whenever a message is being processed by the Durable Object on any WebSocket connection - this charge would be shared across all WebSockets connected to a given Durable Object. When there is no CPU activity on a Durable Object, but any number of WebSocket connections remain established, you'll be billed a much lower active connection charge, per second.</p>
-	<p>We want your feedback on how this pricing would affect your usage of Workers! Send the <a href="mailto:workers-product@cloudflare.com">Workers Product</a> team your thoughts on how we could improve your WebSockets experience, particularly on pricing.</p>
+	<p>We want your feedback on how this pricing would affect your usage of Workers! Send the <a href="https://blog.cloudflare.com/#">Workers Product</a> team your thoughts on how we could improve your WebSockets experience, particularly on pricing.</p>
 </div>

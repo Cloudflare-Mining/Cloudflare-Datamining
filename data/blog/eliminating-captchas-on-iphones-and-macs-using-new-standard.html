@@ -6,7 +6,7 @@
 		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1MXprIYDqrhnoQhWnQ9V5x/b7e3b0d906f122a54dbca8f3636de8d6/Private-Authentication-Token-open-source-standard-to-eliminate-CAPTCHAs.png" alt="" class="kg-image" width="1600" height="900" loading="lazy">
 
 	</figure>
-	<p>Today we’re announcing Private Access Tokens, a completely invisible, private way to validate that real users are visiting your site. Visitors using operating systems that support these tokens, including <a href="https://developer.apple.com/wwdc22/10077">the upcoming versions of macOS or iOS</a>, can now prove they’re human without completing a CAPTCHA or giving up personal data. This will eliminate nearly 100% of CAPTCHAs served to these users.</p>
+	<p>Today we’re announcing Private Access Tokens, a completely invisible, private way to validate that real users are visiting your site. Visitors using operating systems that support these tokens, including <a href="https://developer.apple.com/wwdc22/10077" target="_blank" rel="noopener noreferrer">the upcoming versions of macOS or iOS</a>, can now prove they’re human without completing a CAPTCHA or giving up personal data. This will eliminate nearly 100% of CAPTCHAs served to these users.</p>
 	<p>What does this mean for you?</p>
 	<p>If you’re an Internet user:</p>
 	<ul>
@@ -43,7 +43,7 @@
 			</svg>
 		</a>
 	</div>
-	<p>Over the past year, Cloudflare has collaborated with Apple, Google, and other industry leaders to extend the <a href="https://www.ietf.org/archive/id/draft-ietf-privacypass-auth-scheme-01.html">Privacy Pass protocol</a> with support for a new cryptographic token. These tokens simplify application security for developers and security teams, and obsolete legacy, third-party SDK based approaches to determining if a human is using a device. They work for browsers, APIs called by browsers, and APIs called within apps. We call these new tokens Private Access Tokens (PATs). This morning, <a href="https://developer.apple.com/wwdc22/10077">Apple announced that PATs will be incorporated</a> into iOS 16, iPad 16, and macOS 13, and we expect additional vendors to announce support in the near future.</p>
+	<p>Over the past year, Cloudflare has collaborated with Apple, Google, and other industry leaders to extend the <a href="https://www.ietf.org/archive/id/draft-ietf-privacypass-auth-scheme-01.html" target="_blank" rel="noopener noreferrer">Privacy Pass protocol</a> with support for a new cryptographic token. These tokens simplify application security for developers and security teams, and obsolete legacy, third-party SDK based approaches to determining if a human is using a device. They work for browsers, APIs called by browsers, and APIs called within apps. We call these new tokens Private Access Tokens (PATs). This morning, <a href="https://developer.apple.com/wwdc22/10077" target="_blank" rel="noopener noreferrer">Apple announced that PATs will be incorporated</a> into iOS 16, iPad 16, and macOS 13, and we expect additional vendors to announce support in the near future.</p>
 	<p>Cloudflare has already incorporated PATs into our <a href="https://blog.cloudflare.com/end-cloudflare-captcha">Managed Challenge platform</a>, so any customer using this feature will automatically take advantage of this new technology to improve the browsing experience for supported devices.</p>
 	<figure class="kg-card kg-image-card ">
 
@@ -64,7 +64,7 @@
 		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1nIPAH3gWctx5emjDD4Yp4/0f4843b09702b44e53e95aff6ca305ab/image5-2.png" alt="" class="kg-image" width="1800" height="1013" loading="lazy">
 
 	</figure>
-	<p>Usability aside, mobile environments present an additional challenge in that they are increasingly <a href="https://www.cloudflare.com/learning/security/api/what-is-an-api">API-driven</a>. CAPTCHAs simply cannot work in an API environment where JavaScript can’t be rendered, or a WebView can’t be called. So, mobile app developers often have no easy option for challenging a user when necessary. They sometimes resort to using a clunky SDK to embed a CAPTCHA directly into an app. This requires work to embed and customize the CAPTCHA, continued maintenance and monitoring, and results in higher abandonment rates. For these reasons, when our customers choose to show a CAPTCHA today, it's only shown on mobile 20% of the time.</p>
+	<p>Usability aside, mobile environments present an additional challenge in that they are increasingly <a href="https://www.cloudflare.com/learning/security/api/what-is-an-api" target="_blank" rel="noopener noreferrer">API-driven</a>. CAPTCHAs simply cannot work in an API environment where JavaScript can’t be rendered, or a WebView can’t be called. So, mobile app developers often have no easy option for challenging a user when necessary. They sometimes resort to using a clunky SDK to embed a CAPTCHA directly into an app. This requires work to embed and customize the CAPTCHA, continued maintenance and monitoring, and results in higher abandonment rates. For these reasons, when our customers choose to show a CAPTCHA today, it's only shown on mobile 20% of the time.</p>
 	<p>We recently posted about how we used our Managed Challenge platform to <a href="https://blog.cloudflare.com/end-cloudflare-captcha">reduce our CAPTCHA use by 91%</a>. But because the CAPTCHA experience is so much worse on mobile, we’ve been separately working on ways we can specifically reduce CAPTCHA use on mobile even further.</p>
 	<div class="flex anchor relative">
 		<h3 id="when-sites-cant-challenge-a-visitor-they-collect-more-data">When sites can’t challenge a visitor, they collect more data</h3>
@@ -76,7 +76,7 @@
 	</div>
 	<p>So, you either can’t use CAPTCHA to protect an API, or the UX is too terrible to use on your mobile website. What options are left for confirming whether a visitor is real? A common one is to look at client-specific data, commonly known as fingerprinting.</p>
 	<p>You could ask for device IMEI and security patch versions, look at screen sizes or fonts, check for the presence of APIs that indicate human behavior, like interactive touch screen events and compare those to expected outcomes for the stated client. However, all of this data collection is expensive and, ultimately, not respectful of the end user. As a company that deeply cares about privacy and helping make the Internet better, we want to use as little data as possible without compromising the security of the services we provide.</p>
-	<p>Another alternative is to use system-level APIs that offer device validation checks. This includes <a href="https://developer.apple.com/documentation/devicecheck">DeviceCheck</a> on Apple platforms and <a href="https://developer.android.com/training/safetynet/attestation">SafetyNet</a> on Android. <a href="https://www.cloudflare.com/application-services">Application services</a> can use these client APIs with their own services to assert that the clients they’re communicating with are valid devices. However, adopting these APIs requires both application and server changes, and can be just as difficult to maintain as SDKs.</p>
+	<p>Another alternative is to use system-level APIs that offer device validation checks. This includes <a href="https://developer.apple.com/documentation/devicecheck" target="_blank" rel="noopener noreferrer">DeviceCheck</a> on Apple platforms and <a href="https://developer.android.com/training/safetynet/attestation" target="_blank" rel="noopener noreferrer">SafetyNet</a> on Android. <a href="https://www.cloudflare.com/application-services" target="_blank" rel="noopener noreferrer">Application services</a> can use these client APIs with their own services to assert that the clients they’re communicating with are valid devices. However, adopting these APIs requires both application and server changes, and can be just as difficult to maintain as SDKs.</p>
 	<div class="flex anchor relative">
 		<h3 id="private-access-tokens-vastly-improve-privacy-by-validating-without-fingerprinting">Private Access Tokens vastly improve privacy by validating without fingerprinting</h3>
 		<a href="https://blog.cloudflare.com/#private-access-tokens-vastly-improve-privacy-by-validating-without-fingerprinting" aria-hidden="true" class="relative sm:absolute sm:-start-5">
@@ -126,13 +126,13 @@
 			</svg>
 		</a>
 	</div>
-	<p>With <a href="https://www.ietf.org/archive/id/draft-ietf-privacypass-auth-scheme-01.html#name-security-considerations">Private Access Tokens</a>, four parties agree to work in concert with a common framework to generate and exchange anonymous, unforgeable tokens. Without all four parties in the process, PATs won’t work.</p>
+	<p>With <a href="https://www.ietf.org/archive/id/draft-ietf-privacypass-auth-scheme-01.html#name-security-considerations" target="_blank" rel="noopener noreferrer">Private Access Tokens</a>, four parties agree to work in concert with a common framework to generate and exchange anonymous, unforgeable tokens. Without all four parties in the process, PATs won’t work.</p>
 	<ol>
 		<li>
 			<p>An <b>Origin</b>. A website, application, or API that receives requests from a client. When a website receives a request to their origin, the origin must know to look for and request a token from the client making the request. For Cloudflare customers, Cloudflare acts as the origin (on behalf of customers) and handles the requesting and processing of tokens.</p>
 		</li>
 		<li>
-			<p>A <b>Client</b>. Whatever tool the visitor is using to attempt to access the Origin. This will usually be a web browser or mobile application. In our example, let’s say the client is a <a href="https://developer.apple.com/wwdc22/10077">mobile Safari Browser</a>.</p>
+			<p>A <b>Client</b>. Whatever tool the visitor is using to attempt to access the Origin. This will usually be a web browser or mobile application. In our example, let’s say the client is a <a href="https://developer.apple.com/wwdc22/10077" target="_blank" rel="noopener noreferrer">mobile Safari Browser</a>.</p>
 		</li>
 		<li>
 			<p>An <b>Attester</b>. The Attester is who the client asks to prove something (i.e that a mobile device has a valid IMEI) before a token can be issued. In our example below, the Attester is Apple, the device vendor.</p>

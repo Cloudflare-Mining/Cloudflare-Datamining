@@ -25,7 +25,7 @@
 		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4CLprcnKtcCYzpCCnDkjl2/97ba996da2c9ee81c95ec2e97ed08ff9/image1-40.png" alt="" class="kg-image" width="590" height="512" loading="lazy">
 
 	</figure>
-	<p>IPVS doesn't support Foo-over-UDP as an encapsulation type. As part of this project we switched to a similar option, <a href="https://datatracker.ietf.org/doc/html/draft-ietf-intarea-gue-09">Generic UDP Encapsulation</a> (GUE). This encapsulation option does include the "next protocol", allowing one listener on the worker nodes to support both IPv4 and IPv6.</p>
+	<p>IPVS doesn't support Foo-over-UDP as an encapsulation type. As part of this project we switched to a similar option, <a href="https://datatracker.ietf.org/doc/html/draft-ietf-intarea-gue-09" target="_blank" rel="noopener noreferrer">Generic UDP Encapsulation</a> (GUE). This encapsulation option does include the "next protocol", allowing one listener on the worker nodes to support both IPv4 and IPv6.</p>
 	<div class="flex anchor relative">
 		<h3 id="what-went-wrong">What went wrong?</h3>
 		<a href="https://blog.cloudflare.com/#what-went-wrong" aria-hidden="true" class="relative sm:absolute sm:-start-5">
@@ -54,7 +54,7 @@
 	</div>
 	<p>With the symptoms of the issues identified, we started to try to understand the root cause. Once the root cause was understood, we could come up with a satisfactory solution.</p>
 	<p>Knowing the packets were larger than the Internet MTU, our first thought was that this was a misconfiguration of the machine in our configuration management tool. However, we found the interface MTUs were all set as expected, and there were no overriding MTUs in the routing table. We also found that sending packets from the director that exceeded the Internet MTU worked fine with no drops.</p>
-	<p>Cilium has developed a debugging tool <a href="https://github.com/cilium/pwru">pwru</a>, short for "packet, where are you?", that uses eBPF to aid in debugging the kernel networking state. We used pwru in our staging environment and found the location where the packet had been dropped.</p>
+	<p>Cilium has developed a debugging tool <a href="https://github.com/cilium/pwru" target="_blank" rel="noopener noreferrer">pwru</a>, short for "packet, where are you?", that uses eBPF to aid in debugging the kernel networking state. We used pwru in our staging environment and found the location where the packet had been dropped.</p>
 	<pre class="language-bash"><code class="language-bash">sudo pwru --output-skb --output-tuple --per-cpu-buffer 2097152 --output-file pwru.log</code></pre>
 	<p>This captures tracing data for all packets that reach the traffic director, and saves the trace data to "pwru.log". There are filters built into <code>pwru</code> to select matching packets, but unfortunately they could not be used as the packet was being modified by the encapsulation. Instead, we used grep afterwards to find a matching packet, and then filtered farther based on the pointer in the first column.</p>
 	<pre class="language-bash"><code class="language-bash">0xffff947712f34400      9        [&lt;empty&gt;]               packet_rcv netns=4026531840 mark=0x0 ifindex=4 proto=8 mtu=1600 len=1512 172.70.2.6:49756-&gt;198.51.100.150:8000(tcp)
@@ -101,7 +101,7 @@ syscall_exit_work
 syscall_exit_to_user_mode
 do_syscall_64
 entry_SYSCALL_64_after_hwframe</code></pre>
-	<p>This <code>stacktrace</code> shows that <code>kfree_skb_reason</code> was called from within the <code>validate_xmit_skb</code> function and this is called from <code>ip_vs_tunnel_xmit</code>. However, when looking at the <a href="https://git.kernel.org/pub/scm/linux/kernel/git/stable/linux.git/tree/net/core/dev.c?h=v6.1.32&amp;id=76ba310227d2490018c271f1ecabb6c0a3212eb0#n3660">implementation of validate_xmit_skb</a>, we find there are three paths to <code>kfree_skb</code>. How can we determine which path is taken?</p>
+	<p>This <code>stacktrace</code> shows that <code>kfree_skb_reason</code> was called from within the <code>validate_xmit_skb</code> function and this is called from <code>ip_vs_tunnel_xmit</code>. However, when looking at the <a href="https://git.kernel.org/pub/scm/linux/kernel/git/stable/linux.git/tree/net/core/dev.c?h=v6.1.32&amp;id=76ba310227d2490018c271f1ecabb6c0a3212eb0#n3660" target="_blank" rel="noopener noreferrer">implementation of validate_xmit_skb</a>, we find there are three paths to <code>kfree_skb</code>. How can we determine which path is taken?</p>
 	<p>In addition to the eBPF support used by pwru, Linux has support for attaching dynamic tracepoints using <code>perf-probe</code>. After installing the kernel source code and debugging symbols, we can ask the <code>kprobe</code> mechanism what lines of <code>validate_xmit_skb</code> we can create a dynamic tracepoint. It prints the line numbers for the line we can attach a tracepoint onto.</p>
 	<figure class="kg-card kg-image-card ">
 
@@ -115,7 +115,7 @@ sudo perf probe --add 'validate_xmit_skb:24 skb'
 sudo perf probe --add 'validate_xmit_skb:32 skb'</code></pre>
 	<p>Access to these tracepoints could be recorded by using <code>perf-record</code> and providing the tracepoint names given when they were added.</p>
 	<pre class="language-bash"><code class="language-bash">sudo perf record -a -e 'probe:validate_xmit_skb_L17,probe:validate_xmit_skb_L20,probe:validate_xmit_skb_L24,probe:validate_xmit_skb_L32'</code></pre>
-	<p>The tests can be rerun so some packets are logged, before using <code>perf-script</code> to read the generated "perf.data" file. When inspecting the output file, we found that all the packets that were dropped were coming from the control flow of <code>netif_needs_gso</code> succeeding (that is, from the goto on line 18). We continued to create and record tracepoints, following the failing control flow, until execution reached <a href="https://git.kernel.org/pub/scm/linux/kernel/git/stable/linux.git/tree/net/ipv4/udp_offload.c?h=v6.1.32&amp;id=76ba310227d2490018c271f1ecabb6c0a3212eb0#n15"><code>__skb_udp_tunnel_segment</code></a>.</p>
+	<p>The tests can be rerun so some packets are logged, before using <code>perf-script</code> to read the generated "perf.data" file. When inspecting the output file, we found that all the packets that were dropped were coming from the control flow of <code>netif_needs_gso</code> succeeding (that is, from the goto on line 18). We continued to create and record tracepoints, following the failing control flow, until execution reached <a href="https://git.kernel.org/pub/scm/linux/kernel/git/stable/linux.git/tree/net/ipv4/udp_offload.c?h=v6.1.32&amp;id=76ba310227d2490018c271f1ecabb6c0a3212eb0#n15" target="_blank" rel="noopener noreferrer"><code>__skb_udp_tunnel_segment</code></a>.</p>
 	<p>When <code>netif_needs_gso</code> returns false, we do not see packet drops and no problems are reported. It returns true when the packet is larger than the maximum segment size (MSS) advertised by our peer in the connection handshake. For IPv4, the MSS is usually 40 bytes smaller than the MTU (though this can be adjusted by the application or system configuration). For most packets the traffic directors see, the MSS is 40 bytes less than the Internet MTU of 1500, or in this case 1460.</p>
 	<p>The tracepoints in this function showed that control flow was leaving through the error case on line 33: that kernel was unable to allocate memory for the tunnel header. GUE was designed to have a minimal tunnel header, so this seemed suspicious. We updated the probe to also record the calculated <code>tnl_hlen</code>, and reran the tests. To our surprise the value recorded by the probes was "-2". Huh, somehow the encapsulated packet got smaller?</p>
 	<pre class="language-c++"><code class="language-c++">static struct sk_buff *__skb_udp_tunnel_segment(struct sk_buff *skb,
@@ -194,7 +194,7 @@ index c7652da78c88..9193e109e6b3 100644
 		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4SVrX3EiwZFhiRRkN1BMar/0f450c536cc0e2f3f6535dc23eb0b37e/image7-8.png" alt="" class="kg-image" width="775" height="450" loading="lazy">
 
 	</figure>
-	<p>I've <a href="https://lore.kernel.org/all/20230609205842.2333727-1-terin@cloudflare.com/T/#u">submitted the Linux kernel patch upstream</a>, which is currently queued for inclusion in future releases of the kernel.</p>
+	<p>I've <a href="https://lore.kernel.org/all/20230609205842.2333727-1-terin@cloudflare.com/T/#u" target="_blank" rel="noopener noreferrer">submitted the Linux kernel patch upstream</a>, which is currently queued for inclusion in future releases of the kernel.</p>
 	<div class="flex anchor relative">
 		<h3 id="conclusion">Conclusion</h3>
 		<a href="https://blog.cloudflare.com/#conclusion" aria-hidden="true" class="relative sm:absolute sm:-start-5">

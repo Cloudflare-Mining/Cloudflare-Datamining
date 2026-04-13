@@ -87,5 +87,5 @@ map auto_home          0B     0B     0B   100%        0       0  100%   /home
 	<p>Suppose you are downloading real-time rainfall data from the UK's Environment Agency and would like to know the total current rainfall. <code>mmsum</code> can help:</p>
 	<pre class="language-bash"><code class="language-bash">$ curl -s 'https://environment.data.gov.uk/flood-monitoring/id/measures?parameter=rainfall' | jq -e '.items[].latestReading.value+0' | ./mmsum
 40.2</code></pre>
-	<p>All these tools can be found on the Cloudflare <a href="https://github.com/cloudflare/cloudflare-blog/blob/master/2017-06-29-ssdp">Github</a>.</p>
+	<p>All these tools can be found on the Cloudflare <a href="https://github.com/cloudflare/cloudflare-blog/blob/master/2017-06-29-ssdp" target="_blank" rel="noopener noreferrer">Github</a>.</p>
 </div>

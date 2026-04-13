@@ -2,10 +2,10 @@
 <div class="mt4">This post is also available in <a href="https://blog.cloudflare.com/fr-fr/whats-new-with-d1">Français</a> and <a href="https://blog.cloudflare.com/de-de/whats-new-with-d1">Deutsch</a>.</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/a2RcLo9BsL6UUPMkSkP8e/34d88ce0d20b4111be1a59712a63b96c/whats-new-with-d1.png" alt="">
 <div class="post-content lh-copy gray1">
 	<p><i></i></p>
-	<p><i>This blog post references a feature which has updated documentation. For the latest reference content, visit </i><a href="https://developers.cloudflare.com/d1/best-practices/read-replication"><i>D1 read replication documentation</i></a><i>.</i></p>
-	<p>When we announced D1 in May of this year, we knew it would be the start of something new – our first SQL database with Cloudflare Workers. Prior to D1 we’ve announced storage options like KV (key-value store), Durable Objects (single location, strongly consistent data storage) and <a href="https://www.cloudflare.com/learning/cloud/what-is-blob-storage">R2 (blob storage)</a>. But the question always remained “How can I store and query relational data without latency concerns and an easy API?”</p>
+	<p><i>This blog post references a feature which has updated documentation. For the latest reference content, visit </i><a href="https://developers.cloudflare.com/d1/best-practices/read-replication" target="_blank" rel="noopener noreferrer"><i>D1 read replication documentation</i></a><i>.</i></p>
+	<p>When we announced D1 in May of this year, we knew it would be the start of something new – our first SQL database with Cloudflare Workers. Prior to D1 we’ve announced storage options like KV (key-value store), Durable Objects (single location, strongly consistent data storage) and <a href="https://www.cloudflare.com/learning/cloud/what-is-blob-storage" target="_blank" rel="noopener noreferrer">R2 (blob storage)</a>. But the question always remained “How can I store and query relational data without latency concerns and an easy API?”</p>
 	<p>The long awaited “Cloudflare Database'' was the true missing piece to build your application <b>entirely</b> on Cloudflare’s global network, going from a blank canvas in VSCode to a full stack application in seconds. Compatible with the popular SQLite API, D1 empowers developers to build out their databases without getting bogged down by complexity and having to manage every underlying layer.</p>
-	<p>Since our launch announcement in May and private beta in June, we’ve made great strides in building out our vision of a <a href="https://www.cloudflare.com/developer-platform/products/d1">serverless database</a>. With D1 still in <a href="https://www.cloudflare.com/lp/d1">private beta</a> but an open beta on the horizon, we’re excited to show and tell our journey of building D1 and what’s to come.</p>
+	<p>Since our launch announcement in May and private beta in June, we’ve made great strides in building out our vision of a <a href="https://www.cloudflare.com/developer-platform/products/d1" target="_blank" rel="noopener noreferrer">serverless database</a>. With D1 still in <a href="https://www.cloudflare.com/lp/d1" target="_blank" rel="noopener noreferrer">private beta</a> but an open beta on the horizon, we’re excited to show and tell our journey of building D1 and what’s to come.</p>
 	<div class="flex anchor relative">
 		<h2 id="the-d1-experience">The D1 Experience</h2>
 		<a href="https://blog.cloudflare.com/#the-d1-experience" aria-hidden="true" class="relative sm:absolute sm:-start-5">
@@ -23,7 +23,7 @@
 			</svg>
 		</a>
 	</div>
-	<p>With the latest version of <a href="https://github.com/cloudflare/wrangler2">Wrangler</a> installed, you can create an initialized empty database with a quick</p>
+	<p>With the latest version of <a href="https://github.com/cloudflare/wrangler2" target="_blank" rel="noopener noreferrer">Wrangler</a> installed, you can create an initialized empty database with a quick</p>
 	<p><code>npx wrangler d1 create my_database_name</code></p>
 	<p>To get your database up and running! Now it’s time to add your data.</p>
 	<div class="flex anchor relative">
@@ -51,7 +51,7 @@
 		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7JRGM62yWrL3h7BKLhj5Jf/6d324ce4a2b19691ef4ec39095d2e43b/image2-43.png" alt="" class="kg-image" width="1756" height="1300" loading="lazy">
 
 	</figure>
-	<p>When running <code>wrangler dev -–local -–persist</code>, an SQLite file will be created inside <code>.wrangler/state</code>. You can then use a local GUI program for managing it, like SQLiteFlow (<a href="https://www.sqliteflow.com">https://www.sqliteflow.com/</a>) or Beekeeper (<a href="https://www.beekeeperstudio.io">https://www.beekeeperstudio.io/</a>).</p>
+	<p>When running <code>wrangler dev -–local -–persist</code>, an SQLite file will be created inside <code>.wrangler/state</code>. You can then use a local GUI program for managing it, like SQLiteFlow (<a href="https://www.sqliteflow.com" target="_blank" rel="noopener noreferrer">https://www.sqliteflow.com/</a>) or Beekeeper (<a href="https://www.beekeeperstudio.io" target="_blank" rel="noopener noreferrer">https://www.beekeeperstudio.io/</a>).</p>
 	<p>Or you can simply use SQLite directly with the SQLite command line by running <code>sqlite3 .wrangler/state/d1/DB.sqlite3</code>:</p>
 	<figure class="kg-card kg-image-card ">
 
@@ -143,7 +143,7 @@
 	</ul>
 	<p>With D1, we can do better.</p>
 	<p>The <i>point</i> of a stored procedure was to execute directly next to the data—uploading the code and executing it inside the database was simply a means to that end. But we're using Workers, a global JavaScript execution platform, can we use them to solve this problem?</p>
-	<p>It turns out, absolutely! But here we have a few options of exactly how to make it work, and we're working with our private beta users to find the right <a href="https://www.cloudflare.com/learning/security/api/what-is-an-api">API</a>. In this section, I'd like to share with you our current leading proposal, and invite you all to give us your feedback.</p>
+	<p>It turns out, absolutely! But here we have a few options of exactly how to make it work, and we're working with our private beta users to find the right <a href="https://www.cloudflare.com/learning/security/api/what-is-an-api" target="_blank" rel="noopener noreferrer">API</a>. In this section, I'd like to share with you our current leading proposal, and invite you all to give us your feedback.</p>
 	<p>When you connect a Worker project to a D1 database, you add the section like the following to your <code>wrangler.toml</code>:</p>
 	<pre class="language-yaml"><code class="language-yaml">[[ d1_databases ]]
 # What binding name to use (e.g. env.DB):
@@ -285,7 +285,7 @@ if (error) {
 			</svg>
 		</a>
 	</div>
-	<p>Dealing with raw SQL syntax is powerful (and using the D1 .bind() API, safe against <a href="https://www.cloudflare.com/learning/security/threats/how-to-prevent-sql-injection">SQL injections</a>) but it can be a little clumsy. On the other hand, most existing query builders assume direct access to the underlying DB, and so aren’t suitable to use with D1. So Cloudflare developer Gabriel Massadas designed a small, zero-dependency query builder called <code>workers-qb</code>:</p>
+	<p>Dealing with raw SQL syntax is powerful (and using the D1 .bind() API, safe against <a href="https://www.cloudflare.com/learning/security/threats/how-to-prevent-sql-injection" target="_blank" rel="noopener noreferrer">SQL injections</a>) but it can be a little clumsy. On the other hand, most existing query builders assume direct access to the underlying DB, and so aren’t suitable to use with D1. So Cloudflare developer Gabriel Massadas designed a small, zero-dependency query builder called <code>workers-qb</code>:</p>
 	<pre class="language-javascript"><code class="language-javascript">import { D1QB } from 'workers-qb'
 const qb = new D1QB(env.DB)
 
@@ -297,7 +297,7 @@ const fetched = await qb.fetchOne({
       params: [true]
     },
 })</code></pre>
-	<p>Check out the project homepage for more information: <a href="https://workers-qb.massadas.com">https://workers-qb.massadas.com/</a>.</p>
+	<p>Check out the project homepage for more information: <a href="https://workers-qb.massadas.com" target="_blank" rel="noopener noreferrer">https://workers-qb.massadas.com/</a>.</p>
 	<div class="flex anchor relative">
 		<h3 id="d1-console">D1 console</h3>
 		<a href="https://blog.cloudflare.com/#d1-console" aria-hidden="true" class="relative sm:absolute sm:-start-5">
@@ -308,7 +308,7 @@ const fetched = await qb.fetchOne({
 	</div>
 	<p>While you can interact with D1 through both Wrangler and the dashboard, Cloudflare Community champion, Isaac McFadyen created the very first D1 console where you can quickly execute a series of queries right through your terminal. With the D1 console, you don’t need to spend time writing the various Wrangler commands we’ve created – just execute your queries.</p>
 	<p>This includes all bells and whistles you would expect from a modern database console including multiline input, command history, validation for things D1 may not yet support, and ability to save your Cloudflare credentials for later use.</p>
-	<p>Check out the full project on <a href="https://github.com/isaac-mcfadyen/d1-console">GitHub</a> or <a href="https://www.npmjs.com/package/d1-console">NPM</a> for more information.</p>
+	<p>Check out the full project on <a href="https://github.com/isaac-mcfadyen/d1-console" target="_blank" rel="noopener noreferrer">GitHub</a> or <a href="https://www.npmjs.com/package/d1-console" target="_blank" rel="noopener noreferrer">NPM</a> for more information.</p>
 	<div class="flex anchor relative">
 		<h3 id="miniflare-test-integration">Miniflare test Integration</h3>
 		<a href="https://blog.cloudflare.com/#miniflare-test-integration" aria-hidden="true" class="relative sm:absolute sm:-start-5">
@@ -317,7 +317,7 @@ const fetched = await qb.fetchOne({
 			</svg>
 		</a>
 	</div>
-	<p>The <a href="https://miniflare.dev">Miniflare project,</a> which powers Wrangler’s local development experience, also provides fully-fledged test environments for popular JavaScript test runners, <a href="https://miniflare.dev/testing/jest">Jest</a> and <a href="https://miniflare.dev/testing/vitest">Vitest</a>. With this comes the concept of <a href="https://miniflare.dev/testing/jest#isolated-storage"><i>Isolated Storage</i></a>, allowing each test to run independently, so that changes made in one don’t affect the others. Brendan Coll, creator of Miniflare, guided the D1 test implementation to give the same benefits:</p>
+	<p>The <a href="https://miniflare.dev" target="_blank" rel="noopener noreferrer">Miniflare project,</a> which powers Wrangler’s local development experience, also provides fully-fledged test environments for popular JavaScript test runners, <a href="https://miniflare.dev/testing/jest" target="_blank" rel="noopener noreferrer">Jest</a> and <a href="https://miniflare.dev/testing/vitest" target="_blank" rel="noopener noreferrer">Vitest</a>. With this comes the concept of <a href="https://miniflare.dev/testing/jest#isolated-storage" target="_blank" rel="noopener noreferrer"><i>Isolated Storage</i></a>, allowing each test to run independently, so that changes made in one don’t affect the others. Brendan Coll, creator of Miniflare, guided the D1 test implementation to give the same benefits:</p>
 	<pre class="language-javascript"><code class="language-javascript">import Worker from ‘../src/index.ts’
 const { DB } = getMiniflareBindings();
 
@@ -362,6 +362,6 @@ describe(‘with two entries in the DB’, () =&gt; {
 		</a>
 	</div>
 	<p>Feeling inspired?</p>
-	<p>We love to see what our beta users build or want to build especially when our products are at an early stage. As we march toward an open beta, we’ll be looking specifically for your feedback. We are slowly letting more folks into the beta, but if you haven’t received your “golden ticket” yet with access, sign up <a href="https://www.cloudflare.com/lp/d1">here</a>! Once you’ve been invited in, you’ll receive an official welcome email.</p>
+	<p>We love to see what our beta users build or want to build especially when our products are at an early stage. As we march toward an open beta, we’ll be looking specifically for your feedback. We are slowly letting more folks into the beta, but if you haven’t received your “golden ticket” yet with access, sign up <a href="https://www.cloudflare.com/lp/d1" target="_blank" rel="noopener noreferrer">here</a>! Once you’ve been invited in, you’ll receive an official welcome email.</p>
 	<p>As always, happy building!</p>
 </div>

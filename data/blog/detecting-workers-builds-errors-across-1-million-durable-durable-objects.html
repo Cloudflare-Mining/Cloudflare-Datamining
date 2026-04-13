@@ -1,10 +1,10 @@
 <div class="mb2 gray5">8 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5S97X9X0Cv2pBhrhD8NfTw/bef505a8d29d024f0cf4e89c7491e349/image3.png" alt="">
 <div class="post-content lh-copy gray1">
-	<p>Cloudflare Workers Builds is our <a href="https://en.wikipedia.org/wiki/CI/CD"><u>CI/CD</u></a> product that makes it easy to build and deploy Workers applications every time code is pushed to GitHub or GitLab. What makes Workers Builds special is that projects can be built and deployed with minimal configuration.<a href="https://developers.cloudflare.com/workers/ci-cd/builds/#get-started"> <u>Just hook up your project and let us take care of the rest!</u></a></p>
+	<p>Cloudflare Workers Builds is our <a href="https://en.wikipedia.org/wiki/CI/CD" target="_blank" rel="noopener noreferrer"><u>CI/CD</u></a> product that makes it easy to build and deploy Workers applications every time code is pushed to GitHub or GitLab. What makes Workers Builds special is that projects can be built and deployed with minimal configuration.<a href="https://developers.cloudflare.com/workers/ci-cd/builds/#get-started" target="_blank" rel="noopener noreferrer"> <u>Just hook up your project and let us take care of the rest!</u></a></p>
 	<p>But what happens when things go wrong, such as failing to install tools or dependencies? What usually happens is that we don’t fix the problem until a customer contacts us about it, at which point many other customers have likely faced the same issue. This can be a frustrating experience for both us and our customers because of the lag time between issues occurring and us fixing them.</p>
 	<p>We want Workers Builds to be reliable, fast, and easy to use so that developers can focus on building, not dealing with our bugs. That’s why we recently started building an error detection system that can detect, categorize, and surface all build issues occurring on Workers Builds, enabling us to proactively fix issues and add missing features.</p>
-	<p>It’s also no secret that we’re big fans of being “<a href="https://www.cloudflare.com/the-net/top-of-mind-security/customer-zero">Customer Zero</a>” at Cloudflare, and Workers Builds is itself a product that’s built end-to-end on our <a href="https://www.cloudflare.com/developer-platform"><u>Developer Platform</u></a> using <a href="https://developers.cloudflare.com/workers"><u>Workers</u></a>, <a href="https://developers.cloudflare.com/durable-objects"><u>Durable Objects</u></a>, <a href="https://developers.cloudflare.com/hyperdrive"><u>Hyperdrive</u></a>, <a href="https://blog.cloudflare.com/cloudflare-containers-coming-2025"><u>Containers</u></a>, <a href="https://developers.cloudflare.com/queues"><u>Queues</u></a>, <a href="https://developers.cloudflare.com/kv"><u>Workers KV</u></a>, <a href="https://developers.cloudflare.com/r2"><u>R2</u></a>, and <a href="https://developers.cloudflare.com/workers/observability"><u>Workers Observability</u></a>.</p>
-	<p>In this post, we will dive into how we used the <a href="https://www.cloudflare.com/developer-platform">Cloudflare Developer Platform</a> to check for issues across more than <b>1 million Durable Objects</b>.</p>
+	<p>It’s also no secret that we’re big fans of being “<a href="https://www.cloudflare.com/the-net/top-of-mind-security/customer-zero" target="_blank" rel="noopener noreferrer">Customer Zero</a>” at Cloudflare, and Workers Builds is itself a product that’s built end-to-end on our <a href="https://www.cloudflare.com/developer-platform" target="_blank" rel="noopener noreferrer"><u>Developer Platform</u></a> using <a href="https://developers.cloudflare.com/workers" target="_blank" rel="noopener noreferrer"><u>Workers</u></a>, <a href="https://developers.cloudflare.com/durable-objects" target="_blank" rel="noopener noreferrer"><u>Durable Objects</u></a>, <a href="https://developers.cloudflare.com/hyperdrive" target="_blank" rel="noopener noreferrer"><u>Hyperdrive</u></a>, <a href="https://blog.cloudflare.com/cloudflare-containers-coming-2025"><u>Containers</u></a>, <a href="https://developers.cloudflare.com/queues" target="_blank" rel="noopener noreferrer"><u>Queues</u></a>, <a href="https://developers.cloudflare.com/kv" target="_blank" rel="noopener noreferrer"><u>Workers KV</u></a>, <a href="https://developers.cloudflare.com/r2" target="_blank" rel="noopener noreferrer"><u>R2</u></a>, and <a href="https://developers.cloudflare.com/workers/observability" target="_blank" rel="noopener noreferrer"><u>Workers Observability</u></a>.</p>
+	<p>In this post, we will dive into how we used the <a href="https://www.cloudflare.com/developer-platform" target="_blank" rel="noopener noreferrer">Cloudflare Developer Platform</a> to check for issues across more than <b>1 million Durable Objects</b>.</p>
 	<div class="flex anchor relative">
 		<h2 id="background-workers-builds-architecture">Background: Workers Builds architecture</h2>
 		<a href="https://blog.cloudflare.com/#background-workers-builds-architecture" aria-hidden="true" class="relative sm:absolute sm:-start-5">
@@ -27,7 +27,7 @@
 			</svg>
 		</a>
 	</div>
-	<p>While this architecture has worked well for us so far, we found ourselves with a problem: compared to<a href="https://developers.cloudflare.com/pages"> <u>Cloudflare Pages</u></a>, a concerning percentage of builds were failing. We needed to dig deeper and figure out what was wrong, and understand how we could improve Workers Builds so that developers can focus more on shipping instead of build failures.</p>
+	<p>While this architecture has worked well for us so far, we found ourselves with a problem: compared to<a href="https://developers.cloudflare.com/pages" target="_blank" rel="noopener noreferrer"> <u>Cloudflare Pages</u></a>, a concerning percentage of builds were failing. We needed to dig deeper and figure out what was wrong, and understand how we could improve Workers Builds so that developers can focus more on shipping instead of build failures.</p>
 	<div class="flex anchor relative">
 		<h2 id="types-of-build-failures">Types of build failures</h2>
 		<a href="https://blog.cloudflare.com/#types-of-build-failures" aria-hidden="true" class="relative sm:absolute sm:-start-5">
@@ -254,8 +254,8 @@ const wranglerRegexMatchers: RegexMatcher[] = [
 			</svg>
 		</a>
 	</div>
-	<p>At this point, we already had the Queue to process new builds. If we could somehow send all of the old build IDs to the queue, it could scan them all quickly using<a href="https://developers.cloudflare.com/queues/configuration/consumer-concurrency"> <u>Queues concurrent consumers</u></a> to quickly work through all builds. We thought about hacking together a local script to fetch all of the log IDs and sending them to an API to put them on a queue. But we wanted something more secure and easier to use so that running a new backfill was as simple as an API call.</p>
-	<p>That’s when an idea hit us: what if we used a Durable Object with alarms to fetch a range of builds and send them to BuildErrorsQueue? At first, it seemed far-fetched, given that Durable Object alarms have a limited amount of work they can do per invocation. But wait, if<a href="https://agents.cloudflare.com"> <u>AI Agents built on Durable Objects</u></a> can manage background tasks, why can’t we fetch millions of build IDs and forward them to queues?</p>
+	<p>At this point, we already had the Queue to process new builds. If we could somehow send all of the old build IDs to the queue, it could scan them all quickly using<a href="https://developers.cloudflare.com/queues/configuration/consumer-concurrency" target="_blank" rel="noopener noreferrer"> <u>Queues concurrent consumers</u></a> to quickly work through all builds. We thought about hacking together a local script to fetch all of the log IDs and sending them to an API to put them on a queue. But we wanted something more secure and easier to use so that running a new backfill was as simple as an API call.</p>
+	<p>That’s when an idea hit us: what if we used a Durable Object with alarms to fetch a range of builds and send them to BuildErrorsQueue? At first, it seemed far-fetched, given that Durable Object alarms have a limited amount of work they can do per invocation. But wait, if<a href="https://agents.cloudflare.com" target="_blank" rel="noopener noreferrer"> <u>AI Agents built on Durable Objects</u></a> can manage background tasks, why can’t we fetch millions of build IDs and forward them to queues?</p>
 	<div class="flex anchor relative">
 		<h3 id="building-a-build-errors-agent-with-durable-objects">Building a Build Errors Agent with Durable Objects</h3>
 		<a href="https://blog.cloudflare.com/#building-a-build-errors-agent-with-durable-objects" aria-hidden="true" class="relative sm:absolute sm:-start-5">
@@ -268,7 +268,7 @@ const wranglerRegexMatchers: RegexMatcher[] = [
 	<figure class="kg-card kg-image-card">
 		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3kmsS4LACzLUUoECSJT08g/b6a9ccffcbe8a41c300a74546a17ba85/image5.png" alt="" class="kg-image" width="1999" height="1119" loading="lazy">
 	</figure>
-	<p>The first thing we did was set up an RPC method to start a backfill and save the parameters in<a href="https://developers.cloudflare.com/durable-objects/api/storage-api/#kv-api"> <u>Durable Object KV storage</u></a> so that it can be read each time the alarm executes:</p>
+	<p>The first thing we did was set up an RPC method to start a backfill and save the parameters in<a href="https://developers.cloudflare.com/durable-objects/api/storage-api/#kv-api" target="_blank" rel="noopener noreferrer"> <u>Durable Object KV storage</u></a> so that it can be read each time the alarm executes:</p>
 	<pre class="language-JavaScript"><code class="language-JavaScript">async start({
   min_build_id,
   max_build_id,
@@ -431,7 +431,7 @@ const wranglerRegexMatchers: RegexMatcher[] = [
     throw e
   }
 }</code></pre>
-	<p>Using pattern matching with <a href="https://github.com/gvergnaud/ts-pattern"><u>ts-pattern</u></a> made it much easier to understand what states we were expecting and what will happen compared to procedural code. We considered using a more powerful library like <a href="https://stately.ai/docs/xstate"><u>XState</u></a>, but decided on ts-pattern due to its simplicity.</p>
+	<p>Using pattern matching with <a href="https://github.com/gvergnaud/ts-pattern" target="_blank" rel="noopener noreferrer"><u>ts-pattern</u></a> made it much easier to understand what states we were expecting and what will happen compared to procedural code. We considered using a more powerful library like <a href="https://stately.ai/docs/xstate" target="_blank" rel="noopener noreferrer"><u>XState</u></a>, but decided on ts-pattern due to its simplicity.</p>
 	<div class="flex anchor relative">
 		<h3 id="running-the-backfill">Running the backfill</h3>
 		<a href="https://blog.cloudflare.com/#running-the-backfill" aria-hidden="true" class="relative sm:absolute sm:-start-5">
@@ -455,7 +455,7 @@ const wranglerRegexMatchers: RegexMatcher[] = [
 	<p>Having a better understanding of what’s going wrong has already enabled us to make several improvements:</p>
 	<ul>
 		<li>
-			<p>Wrangler now shows a<a href="https://github.com/cloudflare/workers-sdk/pull/8534"> <u>clearer error message when no config file is found</u></a>.</p>
+			<p>Wrangler now shows a<a href="https://github.com/cloudflare/workers-sdk/pull/8534" target="_blank" rel="noopener noreferrer"> <u>clearer error message when no config file is found</u></a>.</p>
 		</li>
 		<li>
 			<p>Fixed multiple edge-cases where the wrong package manager was used in TypeScript/JavaScript projects.</p>
@@ -483,7 +483,7 @@ const wranglerRegexMatchers: RegexMatcher[] = [
 			</svg>
 		</a>
 	</div>
-	<p>In addition to continuing to improve build reliability and speed, we’ve also started thinking about other ways to help developers build their applications on Workers. For example, we built a<a href="https://github.com/cloudflare/mcp-server-cloudflare/tree/main/apps/workers-builds"> <u>Builds MCP server</u></a> that allows users to debug builds directly in Cursor/Claude/etc. We’re also thinking about ways we can expose these detected issues in the Cloudflare Dashboard so that users can identify issues more easily without scrolling through hundreds of logs.</p>
+	<p>In addition to continuing to improve build reliability and speed, we’ve also started thinking about other ways to help developers build their applications on Workers. For example, we built a<a href="https://github.com/cloudflare/mcp-server-cloudflare/tree/main/apps/workers-builds" target="_blank" rel="noopener noreferrer"> <u>Builds MCP server</u></a> that allows users to debug builds directly in Cursor/Claude/etc. We’re also thinking about ways we can expose these detected issues in the Cloudflare Dashboard so that users can identify issues more easily without scrolling through hundreds of logs.</p>
 	<div class="flex anchor relative">
 		<h2 id="ready-to-get-started">Ready to get started?</h2>
 		<a href="https://blog.cloudflare.com/#ready-to-get-started" aria-hidden="true" class="relative sm:absolute sm:-start-5">
@@ -492,6 +492,6 @@ const wranglerRegexMatchers: RegexMatcher[] = [
 			</svg>
 		</a>
 	</div>
-	<p>Building applications on Workers has never been easier! Try deploying a Durable Object-backed <a href="https://github.com/cloudflare/templates/tree/main/durable-chat-template"><u>chat application</u></a> with Workers Builds:&nbsp;</p><a href="https://deploy.workers.cloudflare.com/?url=https%3A%2F%2Fgithub.com%2Fcloudflare%2Ftemplates%2Ftree%2Fmain%2Fdurable-chat-template"><img src="https://deploy.workers.cloudflare.com/button" alt="Deploy to Cloudflare"></a>
+	<p>Building applications on Workers has never been easier! Try deploying a Durable Object-backed <a href="https://github.com/cloudflare/templates/tree/main/durable-chat-template" target="_blank" rel="noopener noreferrer"><u>chat application</u></a> with Workers Builds:&nbsp;</p><a href="https://deploy.workers.cloudflare.com/?url=https%3A%2F%2Fgithub.com%2Fcloudflare%2Ftemplates%2Ftree%2Fmain%2Fdurable-chat-template"><img src="https://deploy.workers.cloudflare.com/button" alt="Deploy to Cloudflare"></a>
 	<p></p>
 </div>

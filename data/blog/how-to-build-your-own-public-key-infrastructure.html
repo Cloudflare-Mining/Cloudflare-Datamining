@@ -6,7 +6,7 @@
 		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4LLkau2uBvAD4G7wNt1wWt/faf1e0ac7ce890c8800ee0bd06bbf156/23390123_b6caaefc16_z.jpg" alt="" class="kg-image" width="640" height="429" loading="lazy">
 
 	</figure>
-	<p><a href="https://creativecommons.org/licenses/by-sa/2.0">CC BY-SA 2.0</a> <a href="https://www.flickr.com/photos/kk/23390123/in/photolist-34T4Z-eCaWn2-98sYER-7Hx7ig-ejcw3L-n7qDvJ-dYj3cw-ayZi8V-8qi3MQ-8vR8W5-73xSvY-ehPXNM-oaLWEs-qKGKFC-29GeC-7oEdaD-dAFKPa-az45tU-hjsKL-bikriH-dCz8na-6UKyJq-cJLzGh-drbr3g-5ru4oK-9gGswk-dU3PK3-edjQhq-d7exeW-cdBJCm-9XE9R5-62J5N-brKi7f-4uwyQL-6u3Npt-ccX3-qixk9G-2vj3k2-4DjUnW-cXXqXy-92Cgam-cv6bco-dA29Tj-87az7W-98P4W5-9AipNF-buwS46-9nKh7L-69WpZo-evqszn">image</a> by <a href="https://www.flickr.com/photos/kk">kris krüg</a></p>
+	<p><a href="https://creativecommons.org/licenses/by-sa/2.0" target="_blank" rel="noopener noreferrer">CC BY-SA 2.0</a> <a href="https://www.flickr.com/photos/kk/23390123/in/photolist-34T4Z-eCaWn2-98sYER-7Hx7ig-ejcw3L-n7qDvJ-dYj3cw-ayZi8V-8qi3MQ-8vR8W5-73xSvY-ehPXNM-oaLWEs-qKGKFC-29GeC-7oEdaD-dAFKPa-az45tU-hjsKL-bikriH-dCz8na-6UKyJq-cJLzGh-drbr3g-5ru4oK-9gGswk-dU3PK3-edjQhq-d7exeW-cdBJCm-9XE9R5-62J5N-brKi7f-4uwyQL-6u3Npt-ccX3-qixk9G-2vj3k2-4DjUnW-cXXqXy-92Cgam-cv6bco-dA29Tj-87az7W-98P4W5-9AipNF-buwS46-9nKh7L-69WpZo-evqszn" target="_blank" rel="noopener noreferrer">image</a> by <a href="https://www.flickr.com/photos/kk" target="_blank" rel="noopener noreferrer">kris krüg</a></p>
 	<p>Great security architecture requires a defense system with multiple layers of protection. As CloudFlare’s services have grown, the need to secure application-to-application communication has grown with it. As a result, we needed a simple and maintainable way to ensure that all communication between CloudFlare’s internal services stay protected, so we built one based on known and reliable protocols.</p>
 	<p>Our system of trust is based on a Public Key Infrastructure (PKI) using internally-hosted Certificate Authorities (CAs). In this post we will describe how we built our PKI, how we use it internally, and how to run your own with our open source software. This is a long post with lots of information, grab a coffee!</p>
 	<div class="flex anchor relative">
@@ -28,7 +28,7 @@
 			</svg>
 		</a>
 	</div>
-	<p>One approach to mitigate the risks posed by attackers is to encrypt and authenticate data in transit. Our approach is to require that all new services use an encrypted protocol, Transport Layer Security (TLS), to keep inter-service communication protected. It was a natural choice: TLS is the “S” in HTTPS and is the foundation of the encrypted web. Furthermore, modern web services and <a href="https://www.cloudflare.com/learning/security/api/what-is-an-api">APIs</a> have embraced TLS as the de-facto standard for application layer encryption. It works seamlessly with RESTful services, is supported in <a href="https://blog.cloudflare.com/kyoto-tycoon-secure-replication">Kyoto Tycoon</a>, <a href="http://www.postgresql.org/docs/8.3/static/libpq-ssl.html">PostgreSQL</a>, and the Go standard library.</p>
+	<p>One approach to mitigate the risks posed by attackers is to encrypt and authenticate data in transit. Our approach is to require that all new services use an encrypted protocol, Transport Layer Security (TLS), to keep inter-service communication protected. It was a natural choice: TLS is the “S” in HTTPS and is the foundation of the encrypted web. Furthermore, modern web services and <a href="https://www.cloudflare.com/learning/security/api/what-is-an-api" target="_blank" rel="noopener noreferrer">APIs</a> have embraced TLS as the de-facto standard for application layer encryption. It works seamlessly with RESTful services, is supported in <a href="https://blog.cloudflare.com/kyoto-tycoon-secure-replication">Kyoto Tycoon</a>, <a href="http://www.postgresql.org/docs/8.3/static/libpq-ssl.html" target="_blank" rel="noopener noreferrer">PostgreSQL</a>, and the Go standard library.</p>
 	<p>As we have described in <a href="https://blog.cloudflare.com/an-introduction-to-javascript-based-ddos">previous blog posts</a>, unauthenticated encryption can be foiled by <a href="https://blog.cloudflare.com/introducing-strict-ssl-protecting-against-a-man-in-the-middle-attack-on-origin-traffic">on-path attackers</a>. Encryption without authentication does not protect data in transit. For connections to be safe, each party needs to prove their identity to the other. Public key cryptography provides many mechanisms for trust, including PGP’s “web of trust” and HTTPS’s public key infrastructure (PKI) model. We chose the PKI model because of ease of use and deployment. TLS with PKI provides trusted communication.</p>
 	<div class="flex anchor relative">
 		<h2 id="be-picky-with-your-pki">Be picky with your PKI</h2>
@@ -91,7 +91,7 @@
 		</a>
 	</div>
 	<p>The most painful part of getting a certificate for a website is going through the process of obtaining it. For websites, we eliminated this pain by launching <a href="https://blog.cloudflare.com/introducing-universal-ssl">Universal SSL</a>. The most painful part of running a CA is the administration. When we decided to build our internal CA, we sought to make both obtaining certificates and operating the CA painless and even fun.</p>
-	<p>The software we are using is <a href="https://github.com/cloudflare/cfssl">CFSSL</a>, CloudFlare’s open source PKI toolkit. This tool was open sourced last year and has all the capabilities needed to run a certificate authority. Although CFSSL was built for an internal CA, it’s robust enough to be use a publicly trusted CA; in fact, the <a href="https://letsencrypt.org">Let’s Encrypt</a> project is using CFSSL as a core part of their CA infrastructure.</p>
+	<p>The software we are using is <a href="https://github.com/cloudflare/cfssl" target="_blank" rel="noopener noreferrer">CFSSL</a>, CloudFlare’s open source PKI toolkit. This tool was open sourced last year and has all the capabilities needed to run a certificate authority. Although CFSSL was built for an internal CA, it’s robust enough to be use a publicly trusted CA; in fact, the <a href="https://letsencrypt.org" target="_blank" rel="noopener noreferrer">Let’s Encrypt</a> project is using CFSSL as a core part of their CA infrastructure.</p>
 	<div class="flex anchor relative">
 		<h3 id="key-protection">Key protection</h3>
 		<a href="https://blog.cloudflare.com/#key-protection" aria-hidden="true" class="relative sm:absolute sm:-start-5">
@@ -113,7 +113,7 @@
 			<p><i>Plaintext</i>CFSSL accepts plain unencrypted private keys. This works well when the private key is generated on the machine running CFSSL or by another program. If the machine that is running the CA is highly secure, this mode is a compromise between security, cost, and usability. This is also useful in development mode, allowing users to test changes to their infrastructure designs.</p>
 		</li>
 	</ol>
-	<p>Next I’ll show you how to quickly configure an internal CA using plaintext private keys. Note: The following expects <a href="https://github.com/cloudflare/cfssl#readme">CFSSL to be installed</a>.</p>
+	<p>Next I’ll show you how to quickly configure an internal CA using plaintext private keys. Note: The following expects <a href="https://github.com/cloudflare/cfssl#readme" target="_blank" rel="noopener noreferrer">CFSSL to be installed</a>.</p>
 	<div class="flex anchor relative">
 		<h3 id="generating-a-ca-key-and-certificate">Generating a CA key and certificate</h3>
 		<a href="https://blog.cloudflare.com/#generating-a-ca-key-and-certificate" aria-hidden="true" class="relative sm:absolute sm:-start-5">
@@ -183,7 +183,7 @@
     }
   }
 }</code></pre>
-	<p>We also added an authentication key to this signing policy. This authentication key should be randomly generated and kept private. The API key is a basic authentication mechanism that prevents unauthorized parties from requesting certificates. There are several other features you can use for the CA (subject name allowlisting, etc.), <a href="https://github.com/cloudflare/cfssl/tree/master/doc">CFSSL documentation</a> for more information.</p>
+	<p>We also added an authentication key to this signing policy. This authentication key should be randomly generated and kept private. The API key is a basic authentication mechanism that prevents unauthorized parties from requesting certificates. There are several other features you can use for the CA (subject name allowlisting, etc.), <a href="https://github.com/cloudflare/cfssl/tree/master/doc" target="_blank" rel="noopener noreferrer">CFSSL documentation</a> for more information.</p>
 	<p>To run the service, call<code>$ cfssl serve -ca-key ca-key.pem -ca ca.pem -config config_ca.json</code></p>
 	<p>This opens up a CA service listening on port 8888.</p>
 	<div class="flex anchor relative">
@@ -315,7 +315,7 @@
 			</svg>
 		</a>
 	</div>
-	<p>Internal services need to trust each other. Browsers validate website certificates by checking the signature on the certificate and checking the hostname against the list of Subject Alternative Names (SANs) in the certificate. This type of explicit check is useful, but it has a record of <a href="https://cwe.mitre.org/data/definitions/297.html">not working as expected</a>. Another way for services to trust each other is an implicit check based on per-service CAs.</p>
+	<p>Internal services need to trust each other. Browsers validate website certificates by checking the signature on the certificate and checking the hostname against the list of Subject Alternative Names (SANs) in the certificate. This type of explicit check is useful, but it has a record of <a href="https://cwe.mitre.org/data/definitions/297.html" target="_blank" rel="noopener noreferrer">not working as expected</a>. Another way for services to trust each other is an implicit check based on per-service CAs.</p>
 	<p>The idea is simple: use a different CA for each set of services. Issue all database certificates from a database CA and all API servers from an API server CA.</p>
 	<figure class="kg-card kg-image-card ">
 
@@ -348,7 +348,7 @@
 			</svg>
 		</a>
 	</div>
-	<p>Internal PKIs are very flexible and can be used to issue certificates to third parties who are integrating with your network. For example, CloudFlare has a service called <a href="https://www.cloudflare.com/railgun">Railgun</a> that can be used to optimize connections between CloudFlare and an origin server. Communication between Railgun and CloudFlare is done over an encrypted and authenticated channel using certificates from a CloudFlare certificate authority.</p>
+	<p>Internal PKIs are very flexible and can be used to issue certificates to third parties who are integrating with your network. For example, CloudFlare has a service called <a href="https://www.cloudflare.com/railgun" target="_blank" rel="noopener noreferrer">Railgun</a> that can be used to optimize connections between CloudFlare and an origin server. Communication between Railgun and CloudFlare is done over an encrypted and authenticated channel using certificates from a CloudFlare certificate authority.</p>
 	<p>This ensures that data is secure in transit. When a new Railgun instance is set up on the origin server, it creates a private key and sends a CSR to CloudFlare, which then issues the appropriate certificate. The Railgun server keeps the private key in memory and deletes it when it shuts down, preventing other services from getting access to it.</p>
 	<figure class="kg-card kg-image-card ">
 

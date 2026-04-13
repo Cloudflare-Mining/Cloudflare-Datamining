@@ -2,7 +2,7 @@
 <div class="mt4">This post is also available in <a href="https://blog.cloudflare.com/ja-jp/a-deep-dive-into-bpf-lpm-trie-performance-and-optimization">日本語</a>.</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/29PWgCn1cfUU5ReqLRXT9C/ff8b2bf9ade18e5bf17aedd957c359fe/image6.png" alt="">
 <div class="post-content lh-copy gray1">
 	<p>It started with a mysterious soft lockup message in production. A single, cryptic line that led us down a rabbit hole into the performance of one of the most fundamental data structures we use: the BPF LPM trie.</p>
-	<p>BPF trie maps (<a href="https://docs.ebpf.io/linux/map-type/BPF_MAP_TYPE_LPM_TRIE">BPF_MAP_TYPE_LPM_TRIE</a>) are heavily used for things like IP and IP+Port matching when routing network packets, ensuring your request passes through the right services before returning a result. The performance of this data structure is critical for serving our customers, but the speed of the current implementation leaves a lot to be desired. We’ve run into several bottlenecks when storing millions of entries in BPF LPM trie maps, such as entry lookup times taking hundreds of milliseconds to complete and freeing maps locking up a CPU for over 10 seconds. For instance, BPF maps are used when evaluating Cloudflare’s <a href="https://www.cloudflare.com/network-services/products/magic-firewall"><u>Magic Firewall</u></a> rules and these bottlenecks have even led to traffic packet loss for some customers.</p>
+	<p>BPF trie maps (<a href="https://docs.ebpf.io/linux/map-type/BPF_MAP_TYPE_LPM_TRIE" target="_blank" rel="noopener noreferrer">BPF_MAP_TYPE_LPM_TRIE</a>) are heavily used for things like IP and IP+Port matching when routing network packets, ensuring your request passes through the right services before returning a result. The performance of this data structure is critical for serving our customers, but the speed of the current implementation leaves a lot to be desired. We’ve run into several bottlenecks when storing millions of entries in BPF LPM trie maps, such as entry lookup times taking hundreds of milliseconds to complete and freeing maps locking up a CPU for over 10 seconds. For instance, BPF maps are used when evaluating Cloudflare’s <a href="https://www.cloudflare.com/network-services/products/magic-firewall" target="_blank" rel="noopener noreferrer"><u>Magic Firewall</u></a> rules and these bottlenecks have even led to traffic packet loss for some customers.</p>
 	<p>This post gives a refresher of how tries and prefix matching work, benchmark results, and a list of the shortcomings of the current BPF LPM trie implementation.</p>
 	<div class="flex anchor relative">
 		<h2 id="a-brief-recap-of-tries">A brief recap of tries</h2>
@@ -50,7 +50,7 @@
 		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1ADY3lNtF7NIgfUX7bX9vY/828a14e155d6530a4dc8cf3286ce8cc3/image13.png" alt="" class="kg-image" width="939" height="1165" loading="lazy">
 	</figure>
 	<p>If you traverse the tree and hit “I”, you still need to compare the search key with the bits you skipped (“CDEFGH”) to make sure your search key matches the string. Exactly how and where you store the skipped bits is implementation dependent – BPF LPM tries simply store the entire key in the leaf node. As your data becomes denser, path compression is less effective.</p>
-	<p>What if your data distribution is dense and, say, all the first 3 levels in a trie are fully populated? In that case you can use <b><i>level compression</i></b><i> </i>and replace all the nodes in those levels with a single node that has 2**3 children. This is how Level-Compressed Tries work which are used for <a href="https://vincent.bernat.ch/en/blog/2017-ipv4-route-lookup-linux">IP route lookup</a> in the Linux kernel (see <a href="https://elixir.bootlin.com/linux/v6.12.43/source/net/ipv4/fib_trie.c"><u>net/ipv4/fib_trie.c</u></a>).</p>
+	<p>What if your data distribution is dense and, say, all the first 3 levels in a trie are fully populated? In that case you can use <b><i>level compression</i></b><i> </i>and replace all the nodes in those levels with a single node that has 2**3 children. This is how Level-Compressed Tries work which are used for <a href="https://vincent.bernat.ch/en/blog/2017-ipv4-route-lookup-linux" target="_blank" rel="noopener noreferrer">IP route lookup</a> in the Linux kernel (see <a href="https://elixir.bootlin.com/linux/v6.12.43/source/net/ipv4/fib_trie.c" target="_blank" rel="noopener noreferrer"><u>net/ipv4/fib_trie.c</u></a>).</p>
 	<p>There are other optimisations too, but this brief detour is sufficient for this post because the BPF LPM trie implementation in the kernel doesn’t fully use the three we just discussed.</p>
 	<div class="flex anchor relative">
 		<h2 id="how-fast-are-bpf-lpm-trie-maps">How fast are BPF LPM trie maps?</h2>
@@ -60,7 +60,7 @@
 			</svg>
 		</a>
 	</div>
-	<p>Here are some numbers from running <a href="https://lore.kernel.org/bpf/20250827140149.1001557-1-matt@readmodwrite.com"><u>BPF selftests benchmark</u></a> on AMD EPYC 9684X 96-Core machines. Here the trie has 10K entries, a 32-bit prefix length, and an entry for every key in the range [0, 10K).</p>
+	<p>Here are some numbers from running <a href="https://lore.kernel.org/bpf/20250827140149.1001557-1-matt@readmodwrite.com" target="_blank" rel="noopener noreferrer"><u>BPF selftests benchmark</u></a> on AMD EPYC 9684X 96-Core machines. Here the trie has 10K entries, a 32-bit prefix length, and an entry for every key in the range [0, 10K).</p>
 	<table>
 		<tbody>
 			<tr>
@@ -135,7 +135,7 @@
 			</tr>
 		</tbody>
 	</table>
-	<p>The time to free a BPF LPM trie with 10K entries is noticeably large. We recently ran into an issue where this took so long that it caused <a href="https://lore.kernel.org/lkml/20250616095532.47020-1-matt@readmodwrite.com"><u>soft lockup messages</u></a> to spew in production.</p>
+	<p>The time to free a BPF LPM trie with 10K entries is noticeably large. We recently ran into an issue where this took so long that it caused <a href="https://lore.kernel.org/lkml/20250616095532.47020-1-matt@readmodwrite.com" target="_blank" rel="noopener noreferrer"><u>soft lockup messages</u></a> to spew in production.</p>
 	<p>This benchmark gives some idea of worst case behaviour. Since the keys are so densely populated, path compression is completely ineffective. In the next section, we explore the lookup operation to understand the bottlenecks involved.</p>
 	<div class="flex anchor relative">
 		<h2 id="why-are-bpf-lpm-tries-slow">Why are BPF LPM tries slow?</h2>
@@ -145,7 +145,7 @@
 			</svg>
 		</a>
 	</div>
-	<p>The LPM trie implementation in <a href="https://elixir.bootlin.com/linux/v6.12.43/source/kernel/bpf/lpm_trie.c"><u>kernel/bpf/lpm_trie.c</u></a> has a couple of the optimisations we discussed in the introduction. It is capable of multibit comparisons at leaf nodes, but since there are only two child pointers in each internal node, if your tree is densely populated with a lot of data that only differs by one bit, these multibit comparisons degrade into single bit comparisons.</p>
+	<p>The LPM trie implementation in <a href="https://elixir.bootlin.com/linux/v6.12.43/source/kernel/bpf/lpm_trie.c" target="_blank" rel="noopener noreferrer"><u>kernel/bpf/lpm_trie.c</u></a> has a couple of the optimisations we discussed in the introduction. It is capable of multibit comparisons at leaf nodes, but since there are only two child pointers in each internal node, if your tree is densely populated with a lot of data that only differs by one bit, these multibit comparisons degrade into single bit comparisons.</p>
 	<p>Here’s an example. Suppose you store the numbers 0, 1, and 3 in a BPF LPM trie. You might hope that since these values fit in a single 32 or 64-bit machine word, you could use a single comparison to decide which next node to visit in the trie. But that’s only possible if your trie implementation has 3 child pointers in the current node (which, to be fair, most trie implementations do). In other words, you want to make a 3-way branching decision but since BPF LPM tries only have two children, you’re limited to a 2-way branch.</p>
 	<p>A diagram for this 2-child trie is given below.</p>
 	<figure class="kg-card kg-image-card">
@@ -190,8 +190,8 @@
 		</a>
 	</div>
 	<p>By understanding the current limitations of the BPF LPM trie, we can now work towards building a more performant and efficient solution for the future of the Internet.</p>
-	<p>We’ve already contributed these benchmarks to the upstream Linux kernel — but that’s only the start. We have plans to improve the performance of BPM LPM tries, particularly the lookup function which is heavily used for our workloads. This post covered a number of optimisations that are already used by the <a href="https://elixir.bootlin.com/linux/v6.12.43/source/net/ipv4/fib_trie.c"><u>net/ipv4/fib_trie.c</u></a> code, so a natural first step is to refactor that code so that a common Level Compressed trie implementation can be used. Expect future blog posts to explore this work in depth.</p>
-	<p>If you’re interested in looking at more performance numbers, <a href="https://wiki.cfdata.org/display/~jesper">Jesper Brouer</a> has recorded some here: <a href="https://github.com/xdp-project/xdp-project/blob/main/areas/bench/bench02_lpm-trie-lookup.org">https://github.com/xdp-project/xdp-project/blob/main/areas/bench/bench02_lpm-trie-lookup.org</a>.</p>
-	<h6><i>If the Linux kernel, performance, or optimising data structures excites you, </i><a href="https://www.cloudflare.com/en-gb/careers/jobs/?department=Engineering&amp;location=default"><i>our engineering teams are hiring</i></a><i>.</i></h6>
+	<p>We’ve already contributed these benchmarks to the upstream Linux kernel — but that’s only the start. We have plans to improve the performance of BPM LPM tries, particularly the lookup function which is heavily used for our workloads. This post covered a number of optimisations that are already used by the <a href="https://elixir.bootlin.com/linux/v6.12.43/source/net/ipv4/fib_trie.c" target="_blank" rel="noopener noreferrer"><u>net/ipv4/fib_trie.c</u></a> code, so a natural first step is to refactor that code so that a common Level Compressed trie implementation can be used. Expect future blog posts to explore this work in depth.</p>
+	<p>If you’re interested in looking at more performance numbers, <a href="https://wiki.cfdata.org/display/~jesper" target="_blank" rel="noopener noreferrer">Jesper Brouer</a> has recorded some here: <a href="https://github.com/xdp-project/xdp-project/blob/main/areas/bench/bench02_lpm-trie-lookup.org" target="_blank" rel="noopener noreferrer">https://github.com/xdp-project/xdp-project/blob/main/areas/bench/bench02_lpm-trie-lookup.org</a>.</p>
+	<h6><i>If the Linux kernel, performance, or optimising data structures excites you, </i><a href="https://www.cloudflare.com/en-gb/careers/jobs/?department=Engineering&amp;location=default" target="_blank" rel="noopener noreferrer"><i>our engineering teams are hiring</i></a><i>.</i></h6>
 	<p></p>
 </div>

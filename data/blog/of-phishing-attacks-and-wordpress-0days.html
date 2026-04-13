@@ -17,7 +17,7 @@
 		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1ievhyb1PeFa6DJpZUERYP/e3340bc4f8c7c727a7797f060592aca2/Screen-Shot-2015-04-20-at-9-28-35-PM.png" alt="Example Phish" class="kg-image" width="1004" height="980" loading="lazy">
 
 	</figure>
-	<p><b>Note</b> — CloudFlare will never send you an email like this. If you see one like it, it is fake and should be reported to our abuse team by forwarding it to <a href="mailto:support@cloudflare.com">support@cloudflare.com</a>.</p>
+	<p><b>Note</b> — CloudFlare will never send you an email like this. If you see one like it, it is fake and should be reported to our abuse team by forwarding it to <a href="https://blog.cloudflare.com/#">support@cloudflare.com</a>.</p>
 	<p>In terms of the phishing campaign timeline, these emails aren’t the first event. Much like a spider looking to trap flies, a phisher first has to build a web to trap his or her victims. One way is through landing pages.</p>
 	<p>Looking like the legitimate login page of a target domain, these landing pages have one goal - to collect your credentials. Since these landing pages are quickly identified, the phisher will often go to great lengths to ensure that he or she can put up tens or even hundreds of pages during the lifetime of a campaign, all while being extra careful that these pages can't be traced back to him or her. Generally, this means compromising a large number of vulnerable websites in order to inject a phishing toolkit.</p>
 	<p>It's no surprise that first step in most phishing campaigns will usually be the mass compromise of a large number of vulnerable websites. This is why you will often see a notable uptick in the volume of phishing emails whenever a major vulnerability comes out for one of the popular CMS platforms. This is also why protecting the Internet’s back-office is a critical step in building a better Internet. If vulnerable CMS sites are protected, not only can they flourish, but the thousands of potential victims that could get abused when their infrastructure gets hijacked for malicious purposes are also protected.</p>
@@ -53,7 +53,7 @@
 	<p>A clever phisher could have used one of the many well known tricks to obfuscate the URL. Below are some of those techniques possible so you will know them if you see them.</p>
 	<ul>
 		<li>
-			<p><b>Image Maps.</b> Instead of using a traditional hyperlink as above, phishers have been known to put an image map in their emails. The image, of course, is of a link to a trusted site such as “<a href="http://www.safesite.xn--com-9o0a">www.safesite.com”</a>. When an unsuspecting user clicks within the coordinates of the image map, they are diverted to the phishing site.</p>
+			<p><b>Image Maps.</b> Instead of using a traditional hyperlink as above, phishers have been known to put an image map in their emails. The image, of course, is of a link to a trusted site such as “<a href="http://www.safesite.xn--com-9o0a" target="_blank" rel="noopener noreferrer">www.safesite.com”</a>. When an unsuspecting user clicks within the coordinates of the image map, they are diverted to the phishing site.</p>
 		</li>
 	</ul>
 	<p>Here's an example of this technique taken from an old eBay phishing email:</p>
@@ -91,28 +91,28 @@
 	</ul>
 	<p><b>Note</b>: many modern browsers now warn against some of these techniques.</p>
 	<p><b>First</b> is username:password@url abuse. This notation, now deprecated because only an idiot would pass credentials in the HTTP query string these days, was designed to allow seamless access to password protected areas. Abuse is easy, for example:</p>
-	<p><a href="mailto:www.safesite.com@www.evilsite.com">www.safesite.com@www.evilsite.com</a></p>
+	<p><a href="https://blog.cloudflare.com/#">www.safesite.com@www.evilsite.com</a></p>
 	<p><b>Next</b> is IP address obfuscation. You are probably familiar with the IP address as a dotted quad? 123.123.123.123 Well, IP addresses can also be expressed in a number of other formats which browsers will accept. By combining this with the “username:password@” trick above, an attacker can effectively hide his true destination. Below are four different methods for presenting one of Google’s IP addresses -- 74.125.131.105</p>
 	<ul>
 		<li>
-			<p><a href="http://www.safesite.com@74.125.131.105">http://www.safesite.com@74.125.131.105</a></p>
+			<p><a href="http://www.safesite.com@74.125.131.105" target="_blank" rel="noopener noreferrer">http://www.safesite.com@74.125.131.105</a></p>
 		</li>
 		<li>
-			<p><a href="http://www.safesite.com@74.125.131.105">http://www.safesite.com@1249739625/</a></p>
+			<p><a href="http://www.safesite.com@74.125.131.105" target="_blank" rel="noopener noreferrer">http://www.safesite.com@1249739625/</a></p>
 		</li>
 		<li>
-			<p><a href="http://www.safesite.com@74.125.131.105">http://www.safesite.com@0x4a.0x7d.0x83.0x69/</a></p>
+			<p><a href="http://www.safesite.com@74.125.131.105" target="_blank" rel="noopener noreferrer">http://www.safesite.com@0x4a.0x7d.0x83.0x69/</a></p>
 		</li>
 		<li>
-			<p><a href="http://www.safesite.com@74.125.131.105">http://www.safesite.com@0112.0175.0203.0151/</a></p>
+			<p><a href="http://www.safesite.com@74.125.131.105" target="_blank" rel="noopener noreferrer">http://www.safesite.com@0112.0175.0203.0151/</a></p>
 		</li>
 	</ul>
 	<p>All of these URLs go to 74.125.131.150.</p>
 	<p><b>Finally</b> we have Punycode and Homoglyph based obfuscation. Punycode was created as a way for international characters to map to valid characters for DNS, e.g., “café.com”. Using punycode this would be represented as xn--caf-dma.com. As mentioned at the start, homoglyphs are symbols which closely resemble other symbols, like 0 and O, or I and l.</p>
 	<p>By combining these two methods we can create URLs like:</p>
-	<p><a href="http://www.safesite.xn--comlogin-g03d.html.evilsite.com">www.safesite.com⁄login.html.evilsite.com</a></p>
+	<p><a href="http://www.safesite.xn--comlogin-g03d.html.evilsite.com" target="_blank" rel="noopener noreferrer">www.safesite.com⁄login.html.evilsite.com</a></p>
 	<p>The secret to this obfuscated URL is to use a non-standard character which happens to be a homoglyph for /. The result? Instead of a page on safesite.com, you are actually taken to a subdomain of the following punycode domain:</p>
-	<p><a href="http://www.safesite.xn--comlogin-g03d.html.evilsite.com">www.safesite.xn--comlogin-g03d.html.evilsite.com</a></p>
+	<p><a href="http://www.safesite.xn--comlogin-g03d.html.evilsite.com" target="_blank" rel="noopener noreferrer">www.safesite.xn--comlogin-g03d.html.evilsite.com</a></p>
 	<p>New obfuscation techniques like these appear all the time. Phishing is both the most common and arguably the most effective method of attack for medium to low skill attackers. Staying up to date with these techniques can be extremely useful when it comes to spotting potential phishing attempts.</p>
 	<div class="flex anchor relative">
 		<h3 id="conclusions">Conclusions</h3>

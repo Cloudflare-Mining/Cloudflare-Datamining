@@ -1,6 +1,6 @@
 <div class="mb2 gray5">3 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5duYikgrCEWjsZrJ5C2vrl/9c03606209f2a3fe2cd72a3e4af6bde5/a-free-argo-tunnel-for-your-next-project.png" alt="">
 <div class="post-content lh-copy gray1">
-	<p><a href="https://www.cloudflare.com/products/argo-tunnel">Argo Tunnel</a> lets you expose a server to the Internet without opening any ports. The service runs a lightweight process on your server that creates outbound tunnels to the Cloudflare network. Instead of managing DNS, network, and firewall complexity, Argo Tunnel helps administrators serve traffic from their origin through Cloudflare with a single command.</p>
+	<p><a href="https://www.cloudflare.com/products/argo-tunnel" target="_blank" rel="noopener noreferrer">Argo Tunnel</a> lets you expose a server to the Internet without opening any ports. The service runs a lightweight process on your server that creates outbound tunnels to the Cloudflare network. Instead of managing DNS, network, and firewall complexity, Argo Tunnel helps administrators serve traffic from their origin through Cloudflare with a single command.</p>
 	<p>We built Argo Tunnel to remove the burden of securing and connecting servers to the Internet. This new model makes it easier to run a service in multi-cloud and hybrid deployments by replacing manual and error-prone work with a process that adds intelligence to the last-mile between Cloudflare and your origins or clusters. However, the service was previously only available to users with Cloudflare accounts. We want to make Argo Tunnel more accessible for any project.</p>
 	<p>Starting today, any user, even those without a Cloudflare account, can try this new method of connecting their server to the Internet. Argo Tunnel can now be used in a free model that will create a new URL, known only to you, that will proxy traffic to your server. We’re excited to make connecting a server to the Internet more accessible for everyone.</p>
 	<div class="flex anchor relative">
@@ -11,7 +11,7 @@
 			</svg>
 		</a>
 	</div>
-	<p>Argo Tunnel replaces legacy models of connecting a server to the Internet with a secure, persistent connection to Cloudflare. Since Cloudflare first launched in 2010, customers have added their site to our platform by changing their name servers at their domain’s <a href="https://www.cloudflare.com/learning/dns/glossary/what-is-a-domain-name-registrar">registrar</a> to ones managed by Cloudflare. Administrators then create a DNS record in our dashboard that points visitors to their domain to their origin server.</p>
+	<p>Argo Tunnel replaces legacy models of connecting a server to the Internet with a secure, persistent connection to Cloudflare. Since Cloudflare first launched in 2010, customers have added their site to our platform by changing their name servers at their domain’s <a href="https://www.cloudflare.com/learning/dns/glossary/what-is-a-domain-name-registrar" target="_blank" rel="noopener noreferrer">registrar</a> to ones managed by Cloudflare. Administrators then create a DNS record in our dashboard that points visitors to their domain to their origin server.</p>
 	<p>When requests are made for those domains, the queries hit our data centers first. We’re able to use that position to block malicious traffic like DDoS attacks. However, if attackers discovered that origin IP, they could bypass Cloudflare’s security features and attack the server directly. Adding additional protections against that risk introduced more hassle and configuration.</p>
 	<figure class="kg-card kg-image-card ">
 
@@ -31,7 +31,7 @@
 	<p>Argo Tunnel is now available to all users without a Cloudflare account. All that is needed is the Cloudflare daemon, <code>cloudflared</code>, running on your machine. With a single command, <code>cloudflared</code> will generate a random subdomain of “trycloudflare.com” and begin proxying traffic to your server.</p>
 	<ol>
 		<li>
-			<p>Install <code>cloudflared</code> on your web server or laptop; instructions are available <a href="https://developers.cloudflare.com/argo-tunnel/downloads">here</a>. If you have an older copy, you’ll first need to update your version to the latest (2019.6.0)</p>
+			<p>Install <code>cloudflared</code> on your web server or laptop; instructions are available <a href="https://developers.cloudflare.com/argo-tunnel/downloads" target="_blank" rel="noopener noreferrer">here</a>. If you have an older copy, you’ll first need to update your version to the latest (2019.6.0)</p>
 		</li>
 		<li>
 			<p>Launch a web server.</p>
@@ -86,5 +86,5 @@
 			</svg>
 		</a>
 	</div>
-	<p>You can read our guide <a href="https://developers.cloudflare.com/argo-tunnel/trycloudflare">here</a> to start using the free version of Argo Tunnel. Got feedback? Please send it <a href="https://community.cloudflare.com/t/trycloudflare-free-argo-tunnel-tool/74871">here</a>.</p>
+	<p>You can read our guide <a href="https://developers.cloudflare.com/argo-tunnel/trycloudflare" target="_blank" rel="noopener noreferrer">here</a> to start using the free version of Argo Tunnel. Got feedback? Please send it <a href="https://community.cloudflare.com/t/trycloudflare-free-argo-tunnel-tool/74871" target="_blank" rel="noopener noreferrer">here</a>.</p>
 </div>

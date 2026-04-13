@@ -7,7 +7,7 @@
 		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/55VlABQ44OeATPuW7eZIzQ/abbe5df4ecea8e7cf8aaf70ee6221f8e/image1-26.png" alt="Announcing Pub/Sub: Programmable MQTT-based Messaging" class="kg-image" width="1920" height="1013" loading="lazy">
 
 	</figure>
-	<p>One of the underlying questions that drives Platform Week is “how do we enable developers to build full stack applications on Cloudflare?”. With Workers as a serverless environment for easily deploying distributed-by-default applications, <a href="https://developers.cloudflare.com/workers/learning/how-kv-works">KV</a> and <a href="https://developers.cloudflare.com/workers/learning/using-durable-objects">Durable Objects</a> for caching and coordination, and <a href="https://www.cloudflare.com/developer-platform/products/r2">R2</a> as our zero-egress cost <a href="https://www.cloudflare.com/learning/cloud/what-is-object-storage">object store</a>, we’ve continued to discuss what else we need to build to help developers both build new apps and/or bring existing ones over to Cloudflare’s Developer Platform.</p>
+	<p>One of the underlying questions that drives Platform Week is “how do we enable developers to build full stack applications on Cloudflare?”. With Workers as a serverless environment for easily deploying distributed-by-default applications, <a href="https://developers.cloudflare.com/workers/learning/how-kv-works" target="_blank" rel="noopener noreferrer">KV</a> and <a href="https://developers.cloudflare.com/workers/learning/using-durable-objects" target="_blank" rel="noopener noreferrer">Durable Objects</a> for caching and coordination, and <a href="https://www.cloudflare.com/developer-platform/products/r2" target="_blank" rel="noopener noreferrer">R2</a> as our zero-egress cost <a href="https://www.cloudflare.com/learning/cloud/what-is-object-storage" target="_blank" rel="noopener noreferrer">object store</a>, we’ve continued to discuss what else we need to build to help developers both build new apps and/or bring existing ones over to Cloudflare’s Developer Platform.</p>
 	<p>With that in mind, we’re excited to announce the private beta of Cloudflare Pub/Sub, a <i>programmable</i> message bus built on the ubiquitous and industry-standard MQTT protocol supported by tens of millions of existing devices today.</p>
 	<p>In a nutshell, Pub/Sub allows you to:</p>
 	<ul>
@@ -21,10 +21,10 @@
 			<p>Push events from applications in other clouds, or from on-prem, with Pub/Sub acting as a programmable event router or a hook into persistent data storage (such as R2 or KV)</p>
 		</li>
 		<li>
-			<p>Move logic out of the client, where it can be hard (or risky!) to push updates, or where running code on devices raises the materials cost (CPU, memory), while still keeping latency as low as possible (your code runs in <a href="https://www.cloudflare.com/network">every location</a>).</p>
+			<p>Move logic out of the client, where it can be hard (or risky!) to push updates, or where running code on devices raises the materials cost (CPU, memory), while still keeping latency as low as possible (your code runs in <a href="https://www.cloudflare.com/network" target="_blank" rel="noopener noreferrer">every location</a>).</p>
 		</li>
 	</ul>
-	<p>And there’s likely a long list of things we haven’t even predicted yet. We’ve seen developers <a href="https://workers.cloudflare.com/built-with">build incredible things</a> on top of Cloudflare Workers, and we’re excited to see what they build with the power of a programmable message bus like Pub/Sub, too.</p>
+	<p>And there’s likely a long list of things we haven’t even predicted yet. We’ve seen developers <a href="https://workers.cloudflare.com/built-with" target="_blank" rel="noopener noreferrer">build incredible things</a> on top of Cloudflare Workers, and we’re excited to see what they build with the power of a programmable message bus like Pub/Sub, too.</p>
 	<div class="flex anchor relative">
 		<h3 id="why-and-what-is-mqtt">Why, and what is, MQTT?</h3>
 		<a href="https://blog.cloudflare.com/#why-and-what-is-mqtt" aria-hidden="true" class="relative sm:absolute sm:-start-5">
@@ -33,7 +33,7 @@
 			</svg>
 		</a>
 	</div>
-	<p>If you haven’t heard of <a href="https://mqtt.org">MQTT</a> before, you might be surprised to know that it’s one of the most pervasive “messaging protocols” deployed today. There are tens of millions (at least!) of devices that speak MQTT today, from connected payment terminals through to autonomous vehicles, cell phones, and even video games. Sensor readings, telemetry, financial transactions and/or mobile notifications &amp; messages are all common use-cases for MQTT, and the flexibility of the protocol allows developers to make trade-offs around reliability, topic hierarchy and persistence specific to their use-case.</p>
+	<p>If you haven’t heard of <a href="https://mqtt.org" target="_blank" rel="noopener noreferrer">MQTT</a> before, you might be surprised to know that it’s one of the most pervasive “messaging protocols” deployed today. There are tens of millions (at least!) of devices that speak MQTT today, from connected payment terminals through to autonomous vehicles, cell phones, and even video games. Sensor readings, telemetry, financial transactions and/or mobile notifications &amp; messages are all common use-cases for MQTT, and the flexibility of the protocol allows developers to make trade-offs around reliability, topic hierarchy and persistence specific to their use-case.</p>
 	<p>We chose MQTT as the foundation for Cloudflare Pub/Sub as we believe in building on top of open, accessible standards, as we did when we chose the Service Worker API as the foundation for Workers, and with our recently announced participation in the <a href="https://blog.cloudflare.com/introducing-the-wintercg">Winter Community Group around server-side runtime APIs.</a> We also wanted to enable existing clients an easy path to benefit from Cloudflare’s scale and programmability, and ensure that developers have a rich ecosystem of client libraries in languages they’re familiar with today.</p>
 	<p>Beyond that, however, we also think MQTT meets the needs of a modern “publish-subscribe” messaging service. It has flexible delivery guarantees, TLS for transport encryption (no bespoke crypto!), a scalable topic creation and subscription model, extensible per-message metadata, and importantly, it provides a well-defined specification with clear error messages.</p>
 	<p>With that in mind, we expect to support many more “on-ramps” to Pub/Sub: a lot of the best parts of MQTT can be abstracted away from clients who might want to talk to us over HTTP or WebSockets.</p>
@@ -128,10 +128,10 @@ LIMIT 10</code></pre>
 	<p>You could replace or augment the calls to Analytics Engine with any number of examples:</p>
 	<ul>
 		<li>
-			<p>Asynchronously writing messages (using <a href="https://developers.cloudflare.com/workers/runtime-apis/fetch-event/#waituntil">ctx.waitUntil</a>) on specific topics to our R2 <a href="https://www.cloudflare.com/learning/cloud/what-is-object-storage">object storage</a> without blocking message delivery</p>
+			<p>Asynchronously writing messages (using <a href="https://developers.cloudflare.com/workers/runtime-apis/fetch-event/#waituntil" target="_blank" rel="noopener noreferrer">ctx.waitUntil</a>) on specific topics to our R2 <a href="https://www.cloudflare.com/learning/cloud/what-is-object-storage" target="_blank" rel="noopener noreferrer">object storage</a> without blocking message delivery</p>
 		</li>
 		<li>
-			<p>Rewriting messages on-the-fly with data <a href="https://developers.cloudflare.com/workers/runtime-apis/kv">populated from KV</a>, before the message is pushed to subscribers</p>
+			<p>Rewriting messages on-the-fly with data <a href="https://developers.cloudflare.com/workers/runtime-apis/kv" target="_blank" rel="noopener noreferrer">populated from KV</a>, before the message is pushed to subscribers</p>
 		</li>
 		<li>
 			<p>Aggregate messages based on their payload and HTTP POST them to legacy infrastructure hosted outside of Cloudflare</p>
@@ -147,20 +147,20 @@ LIMIT 10</code></pre>
 		</a>
 	</div>
 	<p>As we often like to say: we’re just getting started. The private beta for Pub/Sub is just the beginning of our journey, and we have a long list of capabilities we’re already working on.</p>
-	<p>Critically, one of our priorities is to cover as much of the MQTT v5.0 specification as we can, so that customers can migrate existing deployments and have it “just work”. Useful capabilities like <a href="https://docs.oasis-open.org/mqtt/mqtt/v5.0/os/mqtt-v5.0-os.html#_Toc3901250">shared subscriptions</a> that allow you to load-balance messages across many subscribers; <a href="https://docs.oasis-open.org/mqtt/mqtt/v5.0/os/mqtt-v5.0-os.html#_Toc3901242">wildcard subscriptions</a> (both single- and multi-tier) for aggregation use cases, stronger delivery guarantees (<a href="https://docs.oasis-open.org/mqtt/mqtt/v5.0/os/mqtt-v5.0-os.html#_Toc3901234">QoS</a>), and support for additional authentication modes (specifically, Mutual TLS) are just a few of the things we’re working on.</p>
+	<p>Critically, one of our priorities is to cover as much of the MQTT v5.0 specification as we can, so that customers can migrate existing deployments and have it “just work”. Useful capabilities like <a href="https://docs.oasis-open.org/mqtt/mqtt/v5.0/os/mqtt-v5.0-os.html#_Toc3901250" target="_blank" rel="noopener noreferrer">shared subscriptions</a> that allow you to load-balance messages across many subscribers; <a href="https://docs.oasis-open.org/mqtt/mqtt/v5.0/os/mqtt-v5.0-os.html#_Toc3901242" target="_blank" rel="noopener noreferrer">wildcard subscriptions</a> (both single- and multi-tier) for aggregation use cases, stronger delivery guarantees (<a href="https://docs.oasis-open.org/mqtt/mqtt/v5.0/os/mqtt-v5.0-os.html#_Toc3901234" target="_blank" rel="noopener noreferrer">QoS</a>), and support for additional authentication modes (specifically, Mutual TLS) are just a few of the things we’re working on.</p>
 	<p>Beyond that, we’re focused on making sure Pub/Sub’s developer experience is the best it &nbsp;can be, and during the beta we’ll be:</p>
 	<ul>
 		<li>
-			<p>Supporting a new set of “pubsub” sub-commands in <a href="https://www.npmjs.com/package/wrangler">Wrangler</a>, our developer CLI, so that getting started is as low-friction as possible</p>
+			<p>Supporting a new set of “pubsub” sub-commands in <a href="https://www.npmjs.com/package/wrangler" target="_blank" rel="noopener noreferrer">Wrangler</a>, our developer CLI, so that getting started is as low-friction as possible</p>
 		</li>
 		<li>
-			<p>Building ‘native’ bindings (similar to how <a href="https://developers.cloudflare.com/workers/runtime-apis/kv">Workers KV</a> operates) that allow you to publish messages and subscribe to topics directly from Worker code, regardless of whether the message originates from (or is destined for) a client beyond Cloudflare</p>
+			<p>Building ‘native’ bindings (similar to how <a href="https://developers.cloudflare.com/workers/runtime-apis/kv" target="_blank" rel="noopener noreferrer">Workers KV</a> operates) that allow you to publish messages and subscribe to topics directly from Worker code, regardless of whether the message originates from (or is destined for) a client beyond Cloudflare</p>
 		</li>
 		<li>
 			<p>Exploring more ways to publish &amp; subscribe from non-MQTT based clients, including HTTP requests and WebSockets, so that integrating existing code is even easier.</p>
 		</li>
 	</ul>
-	<p>Our <a href="https://developers.cloudflare.com/pub-sub">developer documentation</a> will cover these capabilities as we land them.</p>
+	<p>Our <a href="https://developers.cloudflare.com/pub-sub" target="_blank" rel="noopener noreferrer">developer documentation</a> will cover these capabilities as we land them.</p>
 	<p>We’re also aware that pricing is a huge part of developer experience, and are committed to ensuring that there is an accessible and flexible free tier. We want to enable developers to experiment, prototype and solve problems we haven’t thought of yet. We’ll be sharing more on pricing during the course of the beta.</p>
 	<div class="flex anchor relative">
 		<h3 id="getting-started">Getting Started</h3>
@@ -170,6 +170,6 @@ LIMIT 10</code></pre>
 			</svg>
 		</a>
 	</div>
-	<p>If you want to start using Pub/Sub, <a href="https://www.cloudflare.com/cloudflare-pub-sub-lightweight-messaging-private-beta">sign up for the private beta</a>: we plan to start enabling access within the next month. We’re looking forward to collecting feedback from developers and seeing what folks start to build.</p>
-	<p>In the meantime, review the <a href="https://developers.cloudflare.com/pub-sub">brand-new Pub/Sub developer documentation</a> to understand how Pub/Sub works under the hood, the MQTT protocol, and how it integrates with Cloudflare Workers.</p>
+	<p>If you want to start using Pub/Sub, <a href="https://www.cloudflare.com/cloudflare-pub-sub-lightweight-messaging-private-beta" target="_blank" rel="noopener noreferrer">sign up for the private beta</a>: we plan to start enabling access within the next month. We’re looking forward to collecting feedback from developers and seeing what folks start to build.</p>
+	<p>In the meantime, review the <a href="https://developers.cloudflare.com/pub-sub" target="_blank" rel="noopener noreferrer">brand-new Pub/Sub developer documentation</a> to understand how Pub/Sub works under the hood, the MQTT protocol, and how it integrates with Cloudflare Workers.</p>
 </div>

@@ -24,7 +24,7 @@
 	</figure>
 	<p>We kept this in mind when we built our SSL for SaaS a few years ago. SSL for SaaS takes away the burden of certificate issuance and management from the SaaS provider by proxying traffic through Cloudflare’s edge. All the SaaS provider needs to do is onboard their zone to Cloudflare and ask their end customers to create a CNAME to the SaaS zone — something they were already doing.</p>
 	<p>The big benefit of giving your customers a CNAME record (instead of a fixed IP address) is that it gives you, the SaaS provider, more flexibility and control. It allows you to seamlessly change the IP address of your server in the background. For example, if your IP gets blocked by ISP providers, you can update that address on your customers’ behalf with a CNAME record. With a fixed A record, you rely on each of your customers to make a change.</p>
-	<p>While the CNAME record works great for most customers, some came back and wanted to bypass the limitation that CNAME records present. RFC 1912 states that CNAME records cannot coexist with other DNS records, so in most cases, you cannot have a CNAME at the root of your domain, e.g. example.com. Instead, the CNAME needs to exist at the subdomain level, i.e. <a href="http://www.example.com">www.example.com</a>. Some DNS providers (including Cloudflare) bypass this restriction through a method called <a href="https://blog.cloudflare.com/introducing-cname-flattening-rfc-compliant-cnames-at-a-domains-root">CNAME flattening</a>.</p>
+	<p>While the CNAME record works great for most customers, some came back and wanted to bypass the limitation that CNAME records present. RFC 1912 states that CNAME records cannot coexist with other DNS records, so in most cases, you cannot have a CNAME at the root of your domain, e.g. example.com. Instead, the CNAME needs to exist at the subdomain level, i.e. <a href="http://www.example.com" target="_blank" rel="noopener noreferrer">www.example.com</a>. Some DNS providers (including Cloudflare) bypass this restriction through a method called <a href="https://blog.cloudflare.com/introducing-cname-flattening-rfc-compliant-cnames-at-a-domains-root">CNAME flattening</a>.</p>
 	<p>Since SaaS providers have no control over the DNS provider that their customers are using, the feedback they got from their customers was that they wanted to use the apex of their zone and not the subdomain. So when our SaaS customers came back asking us for a solution, we delivered. We call it Apex Proxying.</p>
 	<div class="flex anchor relative">
 		<h3 id="apex-proxying">Apex Proxying</h3>
@@ -67,7 +67,7 @@
 		</a>
 	</div>
 	<p>When setting up Cloudflare for SaaS, you indicate your fallback origin, which defines the origin that all of your Custom Hostnames are routed to. This origin can be defined by an IP address or point to a load balancer defined in the zone. However, you might not want to route all customers to the same origin. Instead, you want to route different customers (or custom hostnames) to different origins — either because you want to group customers together or to help you scale the origins supporting your application.</p>
-	<p>Our Enterprise customers can now choose a custom origin that is not the default fallback origin for any of their Custom Hostnames. Traditionally, this has been done by emailing your account manager and requesting custom logic at Cloudflare's edge, a very cumbersome and outdated practice. But now, customers can easily indicate this in the UI or in their <a href="https://api.cloudflare.com/#custom-hostname-for-a-zone-properties">API requests.</a></p>
+	<p>Our Enterprise customers can now choose a custom origin that is not the default fallback origin for any of their Custom Hostnames. Traditionally, this has been done by emailing your account manager and requesting custom logic at Cloudflare's edge, a very cumbersome and outdated practice. But now, customers can easily indicate this in the UI or in their <a href="https://api.cloudflare.com/#custom-hostname-for-a-zone-properties" target="_blank" rel="noopener noreferrer">API requests.</a></p>
 	<div class="flex anchor relative">
 		<h3 id="wildcard-support">Wildcard Support</h3>
 		<a href="https://blog.cloudflare.com/#wildcard-support" aria-hidden="true" class="relative sm:absolute sm:-start-5">
@@ -77,15 +77,15 @@
 		</a>
 	</div>
 	<p>Oftentimes, SaaS providers have customers that don’t just want their domain to stay protected and encrypted, but also the subdomains that fall under it.</p>
-	<p>We wanted to give our Enterprise customers the flexibility to extend this benefit to their end customers by offering wildcard support for <a href="https://developers.cloudflare.com/ssl/ssl-for-saas">Custom Hostnames</a>.</p>
+	<p>We wanted to give our Enterprise customers the flexibility to extend this benefit to their end customers by offering wildcard support for <a href="https://developers.cloudflare.com/ssl/ssl-for-saas" target="_blank" rel="noopener noreferrer">Custom Hostnames</a>.</p>
 	<p>Wildcard Custom Hostnames extend the Custom Hostname’s configuration from a specific hostname — e.g. “blog.example.com” — to the next level of subdomains of that hostname, e.g. “*.blog.example.com”.</p>
-	<p>To create a Custom Hostname with a wildcard, you can either indicate <b>Enable wildcard support</b> when creating a Custom Hostname in the Cloudflare dashboard or when you’re creating a Custom Hostname <a href="https://api.cloudflare.com/#custom-hostname-for-a-zone-create-custom-hostname">through the API</a>, indicate wildcard: “true”.</p>
+	<p>To create a Custom Hostname with a wildcard, you can either indicate <b>Enable wildcard support</b> when creating a Custom Hostname in the Cloudflare dashboard or when you’re creating a Custom Hostname <a href="https://api.cloudflare.com/#custom-hostname-for-a-zone-create-custom-hostname" target="_blank" rel="noopener noreferrer">through the API</a>, indicate wildcard: “true”.</p>
 	<figure class="kg-card kg-image-card ">
 
 		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4Y7NGTSMfEDIQU0c1lmamk/4a36f05ef3b828febad17945c0d8f045/image5.png" alt="" class="kg-image" width="1076" height="790" loading="lazy">
 
 	</figure>
-	<p>Now let’s switch gears to <a href="https://www.cloudflare.com/application-services/products/ssl">TLS certificate management</a> and the improvements our team has been working on.</p>
+	<p>Now let’s switch gears to <a href="https://www.cloudflare.com/application-services/products/ssl" target="_blank" rel="noopener noreferrer">TLS certificate management</a> and the improvements our team has been working on.</p>
 	<div class="flex anchor relative">
 		<h3 id="tls-management-for-all">TLS Management for All</h3>
 		<a href="https://blog.cloudflare.com/#tls-management-for-all" aria-hidden="true" class="relative sm:absolute sm:-start-5">
@@ -94,7 +94,7 @@
 			</svg>
 		</a>
 	</div>
-	<p>SSL for SaaS was built to <a href="https://www.cloudflare.com/application-services/solutions/certificate-lifecycle-management">reduce the burden of certificate management</a> for SaaS providers. The initial functionality was meant to serve most customers and their need to issue, maintain, and renew certificates on their customers’ behalf. But one size does not fit all, and some of our customers have more specific needs for their certificate management — and we want to make sure we accommodate them.</p>
+	<p>SSL for SaaS was built to <a href="https://www.cloudflare.com/application-services/solutions/certificate-lifecycle-management" target="_blank" rel="noopener noreferrer">reduce the burden of certificate management</a> for SaaS providers. The initial functionality was meant to serve most customers and their need to issue, maintain, and renew certificates on their customers’ behalf. But one size does not fit all, and some of our customers have more specific needs for their certificate management — and we want to make sure we accommodate them.</p>
 	<div class="flex anchor relative">
 		<h3 id="csr-support-custom-certs">CSR Support/Custom certs</h3>
 		<a href="https://blog.cloudflare.com/#csr-support-custom-certs" aria-hidden="true" class="relative sm:absolute sm:-start-5">
@@ -103,11 +103,11 @@
 			</svg>
 		</a>
 	</div>
-	<p>One of the superpowers of <a href="https://www.cloudflare.com/application-services/products/ssl-for-saas-providers">SSL for SaaS</a> is that it allows Cloudflare to manage all the certificate issuance and renewals on behalf of our customers and their customers. However, some customers want to allow their end customers to upload their own certificates.</p>
+	<p>One of the superpowers of <a href="https://www.cloudflare.com/application-services/products/ssl-for-saas-providers" target="_blank" rel="noopener noreferrer">SSL for SaaS</a> is that it allows Cloudflare to manage all the certificate issuance and renewals on behalf of our customers and their customers. However, some customers want to allow their end customers to upload their own certificates.</p>
 	<p>For example, a bank may only trust certain certificate authorities (CAs) for their certificate issuance. Alternatively, the SaaS provider may have initially built out TLS support for their customers and now their customers expect that functionality to be available. Regardless of the reasoning, we have given our customers a few options that satisfy these requirements.</p>
 	<p>For customers who want to maintain control over their TLS private keys or give their customers the flexibility to use their certification authority (CA) of choice, we allow the SaaS provider to upload their customer’s certificate.</p>
-	<p>If you are a SaaS provider and one of your customers does not allow third parties to generate keys on their behalf, then you want to allow that customer to <a href="https://developers.cloudflare.com/ssl/ssl-for-saas/uploading-certificates">upload their own certificate</a>. Cloudflare allows SaaS providers to upload their customers’ certificates to any of their custom hostnames — in just one API call!</p>
-	<p>Some SaaS providers never want a person to see private key material, but want to be able to use the CA of their choice. They can do so by generating a <a href="https://developers.cloudflare.com/ssl/ssl-for-saas/certificate-signing-requests">Certificate Signing Request (CSR)</a> for their Custom Hostnames, and then either use those CSRs themselves to order certificates for their customers or relay the CSRs to their customers so that they can provision their own certificates. In either case, the SaaS provider is able to then upload the certificate for the Custom Hostname after the certificate has been issued from their customer’s CA for use at Cloudflare’s edge.</p>
+	<p>If you are a SaaS provider and one of your customers does not allow third parties to generate keys on their behalf, then you want to allow that customer to <a href="https://developers.cloudflare.com/ssl/ssl-for-saas/uploading-certificates" target="_blank" rel="noopener noreferrer">upload their own certificate</a>. Cloudflare allows SaaS providers to upload their customers’ certificates to any of their custom hostnames — in just one API call!</p>
+	<p>Some SaaS providers never want a person to see private key material, but want to be able to use the CA of their choice. They can do so by generating a <a href="https://developers.cloudflare.com/ssl/ssl-for-saas/certificate-signing-requests" target="_blank" rel="noopener noreferrer">Certificate Signing Request (CSR)</a> for their Custom Hostnames, and then either use those CSRs themselves to order certificates for their customers or relay the CSRs to their customers so that they can provision their own certificates. In either case, the SaaS provider is able to then upload the certificate for the Custom Hostname after the certificate has been issued from their customer’s CA for use at Cloudflare’s edge.</p>
 	<div class="flex anchor relative">
 		<h3 id="custom-metadata">Custom Metadata</h3>
 		<a href="https://blog.cloudflare.com/#custom-metadata" aria-hidden="true" class="relative sm:absolute sm:-start-5">
@@ -116,7 +116,7 @@
 			</svg>
 		</a>
 	</div>
-	<p>For our customers who need to customize their configuration to handle specific rules for their customer’s domains, they can do so by using <a href="https://developers.cloudflare.com/ssl/ssl-for-saas/hostname-specific-behavior/custom-metadata">Custom Metadata and Workers</a>.</p>
+	<p>For our customers who need to customize their configuration to handle specific rules for their customer’s domains, they can do so by using <a href="https://developers.cloudflare.com/ssl/ssl-for-saas/hostname-specific-behavior/custom-metadata" target="_blank" rel="noopener noreferrer">Custom Metadata and Workers</a>.</p>
 	<p>By adding metadata to an individual custom hostname and then deploying a Worker to read the data, you can use the Worker to customize per-hostname behavior.</p>
 	<p>Some customers use this functionality to add a customer_id field to each custom hostname that they then send in a request header to their origin. Another way to use this is to set headers like HTTP Strict Transport Security (HSTS) on a per-customer basis.</p>
 	<div class="flex anchor relative">

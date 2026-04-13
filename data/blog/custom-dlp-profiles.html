@@ -15,7 +15,7 @@
 			</svg>
 		</a>
 	</div>
-	<p>Where does sensitive data live? Who has access to that data? How do I know if that data has been improperly shared or leaked? These questions keep many IT and security administrators up at night. The goal of <a href="https://www.cloudflare.com/learning/access-management/what-is-dlp">data loss prevention (DLP)</a> is to give administrators the desired visibility and control over their sensitive data.</p>
+	<p>Where does sensitive data live? Who has access to that data? How do I know if that data has been improperly shared or leaked? These questions keep many IT and security administrators up at night. The goal of <a href="https://www.cloudflare.com/learning/access-management/what-is-dlp" target="_blank" rel="noopener noreferrer">data loss prevention (DLP)</a> is to give administrators the desired visibility and control over their sensitive data.</p>
 	<p>We shipped the <a href="https://blog.cloudflare.com/inline-dlp-ga">general availability of DLP</a> in September 2022, offering Cloudflare One customers better protection of their sensitive data. With DLP, customers can identify sensitive data in their corporate traffic, evaluate the intended destination of the data, and then allow or block it accordingly -- with details logged as permitted by your privacy and sovereignty requirements. We began by offering customers predefined detections for identifier numbers (e.g. Social Security #s) and financial information (e.g. credit card #s). Since then, nearly every customer has asked:</p>
 	<blockquote>
 		<p>“When can I build my own detections?”</p>
@@ -30,7 +30,7 @@
 			</svg>
 		</a>
 	</div>
-	<p><a href="https://www.cloudflare.com/products/zero-trust/dlp">Cloudflare’s DLP</a> is embedded in our <a href="https://www.cloudflare.com/learning/access-management/what-is-a-secure-web-gateway">secure web gateway (SWG)</a> product, <a href="https://www.cloudflare.com/products/zero-trust/gateway">Cloudflare Gatewa</a>y, which routes your corporate traffic through Cloudflare for fast, safe Internet browsing. As your traffic passes through Cloudflare, you can inspect that HTTP traffic for sensitive data and apply DLP policies.</p>
+	<p><a href="https://www.cloudflare.com/products/zero-trust/dlp" target="_blank" rel="noopener noreferrer">Cloudflare’s DLP</a> is embedded in our <a href="https://www.cloudflare.com/learning/access-management/what-is-a-secure-web-gateway" target="_blank" rel="noopener noreferrer">secure web gateway (SWG)</a> product, <a href="https://www.cloudflare.com/products/zero-trust/gateway" target="_blank" rel="noopener noreferrer">Cloudflare Gatewa</a>y, which routes your corporate traffic through Cloudflare for fast, safe Internet browsing. As your traffic passes through Cloudflare, you can inspect that HTTP traffic for sensitive data and apply DLP policies.</p>
 	<p>Building DLP custom profiles follows the same intuitive approach you’ve come to expect from Cloudflare.</p>
 	<p>First, once within the Zero Trust dashboard, navigate to the DLP Profiles tab under Gateway:</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
@@ -44,15 +44,15 @@
 		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/199ahBcyglz52Lpsofvl1F/0ef3b17dd0a17ffc290db20d735bdc98/image1-20.png" alt="" class="kg-image" width="1999" height="748" loading="lazy">
 
 	</figure>
-	<p>Select to <b>Create Profile</b> to begin a new one. &nbsp;After providing a name and description, select <b>Add detection entry</b> to add a custom regular expression. A <a href="https://en.wikipedia.org/wiki/Regular_expression">regular expression</a>, or regex, is a sequence of characters that specifies a search pattern in text, and is a standard way for administrators to achieve the flexibility and granularity they need in policy building.</p>
-	<p>Cloudflare Gateway currently supports regexes in HTTP policies using the <a href="https://docs.rs/regex/latest/regex/#syntax">Rust regex crate</a>. For consistency, we used the same crate to offer custom DLP detections. For documentation on our regex support, see <a href="https://developers.cloudflare.com/cloudflare-one/policies/filtering/http-policies/data-loss-prevention/#build-a-custom-profile">our documentation</a>.</p>
+	<p>Select to <b>Create Profile</b> to begin a new one. &nbsp;After providing a name and description, select <b>Add detection entry</b> to add a custom regular expression. A <a href="https://en.wikipedia.org/wiki/Regular_expression" target="_blank" rel="noopener noreferrer">regular expression</a>, or regex, is a sequence of characters that specifies a search pattern in text, and is a standard way for administrators to achieve the flexibility and granularity they need in policy building.</p>
+	<p>Cloudflare Gateway currently supports regexes in HTTP policies using the <a href="https://docs.rs/regex/latest/regex/#syntax" target="_blank" rel="noopener noreferrer">Rust regex crate</a>. For consistency, we used the same crate to offer custom DLP detections. For documentation on our regex support, see <a href="https://developers.cloudflare.com/cloudflare-one/policies/filtering/http-policies/data-loss-prevention/#build-a-custom-profile" target="_blank" rel="noopener noreferrer">our documentation</a>.</p>
 	<p>Regular expressions can be used to build custom PII detections of your choosing, such as email addresses, or to detect keywords for sensitive intellectual property.</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
 		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6KclkjaZOxF6PMVkY0L2yM/9b327971802a650d2ffc7977fcd712c0/image3-9.png" alt="" class="kg-image" width="1999" height="844" loading="lazy">
 
 	</figure>
-	<p>Provide a name and a regex of your choosing. Every entry in a DLP profile is a new detection that you can scan for in your corporate traffic. Our <a href="https://developers.cloudflare.com/cloudflare-one/policies/filtering/http-policies/data-loss-prevention/#build-a-custom-profile">documentation</a> provides resources to help you create and test Rust regexes.</p>
+	<p>Provide a name and a regex of your choosing. Every entry in a DLP profile is a new detection that you can scan for in your corporate traffic. Our <a href="https://developers.cloudflare.com/cloudflare-one/policies/filtering/http-policies/data-loss-prevention/#build-a-custom-profile" target="_blank" rel="noopener noreferrer">documentation</a> provides resources to help you create and test Rust regexes.</p>
 	<p>Below is an example of regex to detect a simple email address:</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
@@ -133,6 +133,6 @@
 			</svg>
 		</a>
 	</div>
-	<p>DLP is part of Cloudflare One, our <a href="https://www.cloudflare.com/learning/security/glossary/what-is-zero-trust">Zero Trust</a> <a href="https://blog.cloudflare.com/custom-dlp-profiles/edit">network-as-a-service</a> platform that connects users to enterprise resources. Our <a href="https://blog.cloudflare.com/inline-dlp-ga">GA blog announcement</a> provides more detail about using Cloudflare One to onboard traffic to DLP.</p>
-	<p>To get access to DLP via Cloudflare One, <a href="https://www.cloudflare.com/lp/cio-week-2023-cloudflare-one-contact-us">reach out for a consultation</a>, or contact your account manager.</p>
+	<p>DLP is part of Cloudflare One, our <a href="https://www.cloudflare.com/learning/security/glossary/what-is-zero-trust" target="_blank" rel="noopener noreferrer">Zero Trust</a> <a href="https://blog.cloudflare.com/custom-dlp-profiles/edit">network-as-a-service</a> platform that connects users to enterprise resources. Our <a href="https://blog.cloudflare.com/inline-dlp-ga">GA blog announcement</a> provides more detail about using Cloudflare One to onboard traffic to DLP.</p>
+	<p>To get access to DLP via Cloudflare One, <a href="https://www.cloudflare.com/lp/cio-week-2023-cloudflare-one-contact-us" target="_blank" rel="noopener noreferrer">reach out for a consultation</a>, or contact your account manager.</p>
 </div>

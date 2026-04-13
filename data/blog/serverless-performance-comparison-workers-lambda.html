@@ -1,6 +1,6 @@
 <div class="mb2 gray5">3 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3H9qyjhJzEuV6GdKzbTJ0S/68e2fad6dc262caf29a06615750855d5/serverless-performance-comparison-workers-lambda.png" alt="">
 <div class="post-content lh-copy gray1">
-	<p>A few months ago we released a new way for people to run serverless Javascript called <a href="https://developers.cloudflare.com/workers">Cloudflare Workers</a>. We believe Workers is the fastest way to execute serverless functions.</p>
+	<p>A few months ago we released a new way for people to run serverless Javascript called <a href="https://developers.cloudflare.com/workers" target="_blank" rel="noopener noreferrer">Cloudflare Workers</a>. We believe Workers is the fastest way to execute serverless functions.</p>
 	<p>If it is truly the fastest, and it is comparable in price, it should be how every team deploys all of their serverless infrastructure. So I set out to see just how fast Worker execution is and prove it.</p>
 	<p>tl;dr Workers is much faster than Lambda and Lambda@Edge:</p>
 	<figure class="kg-card kg-image-card ">
@@ -9,7 +9,7 @@
 
 	</figure>
 	<p>This is a chart showing what percentage of requests to each service were faster than a given number of ms. It is based on thousands of tests from all around the world, evenly sampled over the past 12 hours. <b>At the 95th percentile, Workers is 441% faster than a Lambda function, and 192% faster than Lambda@Edge.</b> &nbsp;</p>
-	<p>The functions being tested simply return the current time. All three scripts are available on <a href="https://github.com/cloudflare/worker-performance-examples/tree/master/time">Github</a>. The testing is being done by a service called <a href="http://www.catchpoint.com">Catchpoint</a> which has hundreds of testing locations around the world.</p>
+	<p>The functions being tested simply return the current time. All three scripts are available on <a href="https://github.com/cloudflare/worker-performance-examples/tree/master/time" target="_blank" rel="noopener noreferrer">Github</a>. The testing is being done by a service called <a href="http://www.catchpoint.com" target="_blank" rel="noopener noreferrer">Catchpoint</a> which has hundreds of testing locations around the world.</p>
 	<div class="flex anchor relative">
 		<h3 id="the-gold-coast">The Gold Coast</h3>
 		<a href="https://blog.cloudflare.com/#the-gold-coast" aria-hidden="true" class="relative sm:absolute sm:-start-5">
@@ -70,7 +70,7 @@
 		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/gg2eRiorfbynR5Ycb5Esz/c299ff3a91de79d7b61d5f573ff0504b/Screen-Shot-2018-06-28-at-3.16.37-PM.png" alt="Screen-Shot-2018-06-28-at-3.16.37-PM" class="kg-image" width="1966" height="884" loading="lazy">
 
 	</figure>
-	<p><b>With no geographic explanation the 95th percentile of Workers is 126% faster than Lambda and 65% faster than Lambda@Edge.</b> I find this incredible. Please feel free <a href="https://p.catchpoint.com/ui/Entry/PC/V/ARU8-C-D-K3hmOjV28DtDEAA">play with the chart</a> yourself.</p>
+	<p><b>With no geographic explanation the 95th percentile of Workers is 126% faster than Lambda and 65% faster than Lambda@Edge.</b> I find this incredible. Please feel free <a href="https://p.catchpoint.com/ui/Entry/PC/V/ARU8-C-D-K3hmOjV28DtDEAA" target="_blank" rel="noopener noreferrer">play with the chart</a> yourself.</p>
 	<div class="flex anchor relative">
 		<h3 id="how">How?!</h3>
 		<a href="https://blog.cloudflare.com/#how" aria-hidden="true" class="relative sm:absolute sm:-start-5">
@@ -87,10 +87,10 @@
 	</figure>
 	<p>Workers has also been carefully architected to avoid moving memory and blocking when it could be avoided, complete with our own optimized implementations of the Javascript APIs. Finally, Workers runs on the same thousands of machines which serve Cloudflare traffic around the world, benefiting from over half a decade of experience pushing the limits of our hardware.</p>
 	<p>This post has been somewhat self-congratulatory, and I apologize for that. We certainly still have a lot to build and a lot we can still do to improve our performance. It was originally going to be about the power of running your functions distributed all around the world, instead of at a single region. What I'm left with though is the belief that Workers is faster, period.</p>
-	<p>Here is a <a href="https://p.catchpoint.com/ui/Entry/PC/V/ARA-C-D-K3hlIjV3IoXdgAA">full chart</a> for the last hour. I've also exported <a href="http://cloudflare.works/files/PerformanceChart-27062018-060148.csv">a CSV</a> of all the data for the past 12 hours for you to explore.</p>
-	<p>Please reproduce the tests I've done here and share in the comments here or on <a href="http://news.ycombinator.com">Hacker News</a>. If I've missed anything, we want to hear about it.</p>
+	<p>Here is a <a href="https://p.catchpoint.com/ui/Entry/PC/V/ARA-C-D-K3hlIjV3IoXdgAA" target="_blank" rel="noopener noreferrer">full chart</a> for the last hour. I've also exported <a href="http://cloudflare.works/files/PerformanceChart-27062018-060148.csv" target="_blank" rel="noopener noreferrer">a CSV</a> of all the data for the past 12 hours for you to explore.</p>
+	<p>Please reproduce the tests I've done here and share in the comments here or on <a href="http://news.ycombinator.com" target="_blank" rel="noopener noreferrer">Hacker News</a>. If I've missed anything, we want to hear about it.</p>
 	<p>I'll also be sharing a price comparison between the various systems soon. Please <a href="https://blog.cloudflare.com/#mc_embed_signup">subscribe to our blog</a> if you'd like to be notified.</p>
-	<p>Finally, please <a href="https://cloudflareworkers.com">try Workers</a>!</p>
+	<p>Finally, please <a href="https://cloudflareworkers.com" target="_blank" rel="noopener noreferrer">try Workers</a>!</p>
 	<p><b>Additional reading on Cloudflare Workers</b></p>
 	<ul>
 		<li>

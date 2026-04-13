@@ -5,19 +5,19 @@
 		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3F39KwzghBsFpEWzc0k5mI/5cd517735e44c4af6347ad4cff12da51/image1.png" alt="Account Takeover Protection and WAF mitigations to help stop Global Brute Force Campaigns" class="kg-image" width="1640" height="820" loading="lazy">
 
 	</figure>
-	<p>Earlier today a cybersecurity advisory was published by international security agencies identifying widespread attacks against government and private sector targets worldwide. You can read the full <a href="https://www.nsa.gov/news-features/press-room/Article/2677750/nsa-partners-release-cybersecurity-advisory-on-brute-force-global-cyber-campaign">report here</a>, which discusses widespread, distributed, and anonymized brute force access attempts since mid-2019 and still active through early 2021.</p>
-	<p>Today, we have rolled out <a href="https://www.cloudflare.com/learning/ddos/glossary/web-application-firewall-waf">WAF</a> mitigations to protect our customers against these types of attacks.</p>
-	<p>And we are making the exposed credential check feature of <a href="https://www.cloudflare.com/zero-trust/solutions/account-takeover-prevention">Account Takeover Protection</a> available to <a href="https://www.cloudflare.com/plans">all paid plans</a> at no additional charge today. We had been planning to release these features later this month to a subset of our customers, but when we were informed of this ongoing attack we accelerated the release timeline and expanded those eligible to use the protections.</p>
+	<p>Earlier today a cybersecurity advisory was published by international security agencies identifying widespread attacks against government and private sector targets worldwide. You can read the full <a href="https://www.nsa.gov/news-features/press-room/Article/2677750/nsa-partners-release-cybersecurity-advisory-on-brute-force-global-cyber-campaign" target="_blank" rel="noopener noreferrer">report here</a>, which discusses widespread, distributed, and anonymized brute force access attempts since mid-2019 and still active through early 2021.</p>
+	<p>Today, we have rolled out <a href="https://www.cloudflare.com/learning/ddos/glossary/web-application-firewall-waf" target="_blank" rel="noopener noreferrer">WAF</a> mitigations to protect our customers against these types of attacks.</p>
+	<p>And we are making the exposed credential check feature of <a href="https://www.cloudflare.com/zero-trust/solutions/account-takeover-prevention" target="_blank" rel="noopener noreferrer">Account Takeover Protection</a> available to <a href="https://www.cloudflare.com/plans" target="_blank" rel="noopener noreferrer">all paid plans</a> at no additional charge today. We had been planning to release these features later this month to a subset of our customers, but when we were informed of this ongoing attack we accelerated the release timeline and expanded those eligible to use the protections.</p>
 	<p>The attack which we are now protecting against was carried out in three main steps:</p>
 	<ol>
 		<li>
 			<p>Initial account compromise performed via brute force attacks against authentication endpoints;</p>
 		</li>
 		<li>
-			<p>Once access was gained, network traversal was performed leveraging several publicly known vulnerabilities, including but not limited to <a href="https://msrc.microsoft.com/update-guide/en-US/vulnerability/CVE-2020-0688">CVE 2020-0688</a> and <a href="https://msrc.microsoft.com/update-guide/vulnerability/CVE-2020-17144">CVE 2020-17144</a> that widely affected Microsoft Exchange Servers;</p>
+			<p>Once access was gained, network traversal was performed leveraging several publicly known vulnerabilities, including but not limited to <a href="https://msrc.microsoft.com/update-guide/en-US/vulnerability/CVE-2020-0688" target="_blank" rel="noopener noreferrer">CVE 2020-0688</a> and <a href="https://msrc.microsoft.com/update-guide/vulnerability/CVE-2020-17144" target="_blank" rel="noopener noreferrer">CVE 2020-17144</a> that widely affected Microsoft Exchange Servers;</p>
 		</li>
 		<li>
-			<p>Deployment of remote shells, such as a variant of the <a href="https://github.com/xl7dev/WebShell/tree/master/reGeorg-master">reGeorg web shell</a>, and network reconnaissance to gather additional information;</p>
+			<p>Deployment of remote shells, such as a variant of the <a href="https://github.com/xl7dev/WebShell/tree/master/reGeorg-master" target="_blank" rel="noopener noreferrer">reGeorg web shell</a>, and network reconnaissance to gather additional information;</p>
 		</li>
 	</ol>
 	<div class="flex anchor relative">
@@ -68,7 +68,7 @@
 			<p>A standard login HTML form (<code>application/x-www-form-urlencoded</code>), under a URL that contains “login”. The form fields should be named <code>username</code> and <code>password</code> respectively;</p>
 		</li>
 	</ul>
-	<p>Developer documentation can <a href="https://developers.cloudflare.com/waf/exposed-credentials-check">be found here</a>.</p>
+	<p>Developer documentation can <a href="https://developers.cloudflare.com/waf/exposed-credentials-check" target="_blank" rel="noopener noreferrer">be found here</a>.</p>
 	<div class="flex anchor relative">
 		<h2 id="waf-rule-update">WAF Rule Update</h2>
 		<a href="https://blog.cloudflare.com/#waf-rule-update" aria-hidden="true" class="relative sm:absolute sm:-start-5">
@@ -105,13 +105,13 @@ Socket</code></pre>
 	<p>Cloudflare has a number of additional features that customers are also advised to deploy where possible on their environments to strengthen their security posture:</p>
 	<ul>
 		<li>
-			<p><a href="https://www.cloudflare.com/teams/access">Cloudflare Access</a> can be used to provide strong, multi-factor authentication for both internal and external facing applications, and integrates directly with your organization’s SSO and identity providers (IdP);</p>
+			<p><a href="https://www.cloudflare.com/teams/access" target="_blank" rel="noopener noreferrer">Cloudflare Access</a> can be used to provide strong, multi-factor authentication for both internal and external facing applications, and integrates directly with your organization’s SSO and identity providers (IdP);</p>
 		</li>
 		<li>
-			<p>Where possible, implementing Mutual TLS rules (mTLS) in front of authentication endpoints will increase an application security posture considerably by avoiding the use of passwords. This can be done both <a href="https://developers.cloudflare.com/firewall/cf-dashboard/create-mtls-rule">as a Firewall Rule</a> or as an option when <a href="https://developers.cloudflare.com/cloudflare-one/identity/devices/mutual-tls-authentication">setting up Cloudflare Access</a>;</p>
+			<p>Where possible, implementing Mutual TLS rules (mTLS) in front of authentication endpoints will increase an application security posture considerably by avoiding the use of passwords. This can be done both <a href="https://developers.cloudflare.com/firewall/cf-dashboard/create-mtls-rule" target="_blank" rel="noopener noreferrer">as a Firewall Rule</a> or as an option when <a href="https://developers.cloudflare.com/cloudflare-one/identity/devices/mutual-tls-authentication" target="_blank" rel="noopener noreferrer">setting up Cloudflare Access</a>;</p>
 		</li>
 		<li>
-			<p>We recently announced a <a href="https://developers.cloudflare.com/firewall/cf-firewall-rules/rules-lists#managed-ip-lists-open-proxies">Managed IP list that will contain Open Proxy endpoints</a> identified by Cloudflare’s intelligence - this list can be used when creating Firewall Rules to protect authentication endpoints by issuing Captcha (or other) challenges;</p>
+			<p>We recently announced a <a href="https://developers.cloudflare.com/firewall/cf-firewall-rules/rules-lists#managed-ip-lists-open-proxies" target="_blank" rel="noopener noreferrer">Managed IP list that will contain Open Proxy endpoints</a> identified by Cloudflare’s intelligence - this list can be used when creating Firewall Rules to protect authentication endpoints by issuing Captcha (or other) challenges;</p>
 		</li>
 		<li>
 			<p>The use of our Bot Management detection has recently been expanded to all self-serve paid plans via our <a href="https://blog.cloudflare.com/super-bot-fight-mode">Super Bot Fight Mode product</a> - this product allows customers to set up rules to challenge/block automated traffic, such as bots attempting brute force attacks, while letting verified bots access Internet properties normally.</p>
@@ -125,6 +125,6 @@ Socket</code></pre>
 			</svg>
 		</a>
 	</div>
-	<p>Brute force attacks are a prevalent and successful means to gain initial access to private networks, especially when applications require only username and password pairs for authentication. The <a href="https://www.nsa.gov/news-features/press-room/Article/2677750/nsa-partners-release-cybersecurity-advisory-on-brute-force-global-cyber-campaign">report</a> released today reinforced the widespread use of these credential stuffing attacks to gain access and then pivot to additional sensitive resources and data using other vulnerabilities.</p>
+	<p>Brute force attacks are a prevalent and successful means to gain initial access to private networks, especially when applications require only username and password pairs for authentication. The <a href="https://www.nsa.gov/news-features/press-room/Article/2677750/nsa-partners-release-cybersecurity-advisory-on-brute-force-global-cyber-campaign" target="_blank" rel="noopener noreferrer">report</a> released today reinforced the widespread use of these credential stuffing attacks to gain access and then pivot to additional sensitive resources and data using other vulnerabilities.</p>
 	<p>Cloudflare customers are protected against these automated attacks by two new WAF rules, and also through the exposed credential check feature of our Account Takeover Protection offering. We have made the exposed credential check feature available today, to all paid plans, in advance of our planned launch later this month. Reach out to our support team immediately if you would like this feature enabled as we work to turn it on for everyone.</p>
 </div>

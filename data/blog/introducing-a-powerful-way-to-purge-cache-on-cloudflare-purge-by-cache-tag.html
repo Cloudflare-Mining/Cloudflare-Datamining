@@ -10,7 +10,7 @@
 			</svg>
 		</a>
 	</div>
-	<p>With <a href="https://www.cloudflare.com/network-map">42 data centers around the world</a>, web pages served directly from CloudFlare’s cache are guaranteed to be just a few hops away from any visitor, anywhere. With a little bit of fine tuning, many websites succeed in delivering most of their content from cache, saving a majority of bandwidth on their origin servers. One website even managed to <a href="https://www.cloudflare.com/case-studies-buzzlie">reduce their AWS bill by 96%</a> when they started caching assets behind CloudFlare.</p>
+	<p>With <a href="https://www.cloudflare.com/network-map" target="_blank" rel="noopener noreferrer">42 data centers around the world</a>, web pages served directly from CloudFlare’s cache are guaranteed to be just a few hops away from any visitor, anywhere. With a little bit of fine tuning, many websites succeed in delivering most of their content from cache, saving a majority of bandwidth on their origin servers. One website even managed to <a href="https://www.cloudflare.com/case-studies-buzzlie" target="_blank" rel="noopener noreferrer">reduce their AWS bill by 96%</a> when they started caching assets behind CloudFlare.</p>
 	<figure class="kg-card kg-image-card ">
 
 		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5WwCLa4cieBz9TriRLuT6F/c8d04ed0c3282c1f8d2e72a8344246c8/cache-hit.png" alt="" class="kg-image" width="1856" height="777" loading="lazy">
@@ -20,13 +20,13 @@
 	<p>CloudFlare now offers three different ways to purge the cache.</p>
 	<ol>
 		<li>
-			<p><a href="https://support.cloudflare.com/hc/en-us/articles/200169246-How-do-I-purge-my-cache-#Caching-HowdoIpurgeasinglefilefromthecache?">Purge individual files in the cache</a></p>
+			<p><a href="https://support.cloudflare.com/hc/en-us/articles/200169246-How-do-I-purge-my-cache-#Caching-HowdoIpurgeasinglefilefromthecache?" target="_blank" rel="noopener noreferrer">Purge individual files in the cache</a></p>
 		</li>
 		<li>
-			<p><a href="https://support.cloudflare.com/hc/en-us/articles/200169246-How-do-I-purge-my-cache-#Caching-HowdoIpurgemycache?">Purge all files in the cache</a></p>
+			<p><a href="https://support.cloudflare.com/hc/en-us/articles/200169246-How-do-I-purge-my-cache-#Caching-HowdoIpurgemycache?" target="_blank" rel="noopener noreferrer">Purge all files in the cache</a></p>
 		</li>
 		<li>
-			<p><a href="https://support.cloudflare.com/hc/en-us/articles/206596608-How-to-Purge-Cache-Using-Cache-Tags">Cache-Tags for granular control</a></p>
+			<p><a href="https://support.cloudflare.com/hc/en-us/articles/206596608-How-to-Purge-Cache-Using-Cache-Tags" target="_blank" rel="noopener noreferrer">Cache-Tags for granular control</a></p>
 		</li>
 	</ol>
 	<div class="flex anchor relative">
@@ -40,7 +40,7 @@
 	<p>To setup a Cache-Tag for an item, simply add a Cache-Tag response header to that object. A Cache-Tag header can have multiple tags, separated by a comma.</p>
 	<pre class="language-bash"><code class="language-bash">Cache-Tag: tag1,tag2,tag3 </code></pre>
 	<p>CloudFlare will automatically assign any tags in the response header as metadata to that object when it is cached. Before the response is proxied to the website visitor, CloudFlare will remove the Cache-Tag header so that end users of your website cannot see the Cache-Tags assigned to an object.</p>
-	<p>To purge content by its Cache-Tag, use the CloudFlare dashboard or purge programmatically <a href="https://api.cloudflare.com">with the API</a>.</p>
+	<p>To purge content by its Cache-Tag, use the CloudFlare dashboard or purge programmatically <a href="https://api.cloudflare.com" target="_blank" rel="noopener noreferrer">with the API</a>.</p>
 	<figure class="kg-card kg-image-card ">
 
 		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/66cDZsowle0ceEEFIgMi9T/8387e57b2b73d4a7dd20c154d99228ff/Screen-Shot-2015-08-14-at-4-08-43-PM.png" alt="" class="kg-image" width="993" height="322" loading="lazy">
@@ -58,7 +58,7 @@
 		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1165KRG4GmgKynKGlaneNa/c153110c48acc2e70388bd6fdfb5c4ff/Screen-Shot-2015-08-11-at-7-20-05-AM.png" alt="" class="kg-image" width="942" height="250" loading="lazy">
 
 	</figure>
-	<p>To read more about how to use Cache-Tags, check out our support article: <a href="https://support.cloudflare.com/hc/en-us/articles/206596608">here</a>.</p>
+	<p>To read more about how to use Cache-Tags, check out our support article: <a href="https://support.cloudflare.com/hc/en-us/articles/206596608" target="_blank" rel="noopener noreferrer">here</a>.</p>
 	<div class="flex anchor relative">
 		<h3 id="cache-tag-availability">Cache Tag Availability</h3>
 		<a href="https://blog.cloudflare.com/#cache-tag-availability" aria-hidden="true" class="relative sm:absolute sm:-start-5">
@@ -67,5 +67,5 @@
 			</svg>
 		</a>
 	</div>
-	<p>Purge by Cache-Tag is enabled automatically for all Enterprise plan websites. All a developer has to do to get started is add the Cache-Tag HTTP response header to items on their website. If you are not yet an Enterprise customer, get in touch with our team <a href="https://www.cloudflare.com/enterprise-service-request">here</a>.</p>
+	<p>Purge by Cache-Tag is enabled automatically for all Enterprise plan websites. All a developer has to do to get started is add the Cache-Tag HTTP response header to items on their website. If you are not yet an Enterprise customer, get in touch with our team <a href="https://www.cloudflare.com/enterprise-service-request" target="_blank" rel="noopener noreferrer">here</a>.</p>
 </div>

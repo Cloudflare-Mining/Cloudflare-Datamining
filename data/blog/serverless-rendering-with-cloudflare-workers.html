@@ -25,14 +25,14 @@
 			</svg>
 		</a>
 	</div>
-	<p>Without further ado, let’s dive into building a dynamic web page using the Cloudflare Workers platform! This example leverages <a href="https://workers.cloudflare.com/sites">Workers Sites</a>, which allows you to serve static web pages from <a href="https://blog.cloudflare.com/workers-kv-is-ga">Cloudflare’s Key Value store</a>. From there, Workers application logic (using <a href="https://developers.cloudflare.com/workers/reference/apis/html-rewriter">HTMLRewriter</a>) transforms that static response based on user input to deliver modified responses with the requested data embedded in the returned web page.</p>
+	<p>Without further ado, let’s dive into building a dynamic web page using the Cloudflare Workers platform! This example leverages <a href="https://workers.cloudflare.com/sites" target="_blank" rel="noopener noreferrer">Workers Sites</a>, which allows you to serve static web pages from <a href="https://blog.cloudflare.com/workers-kv-is-ga">Cloudflare’s Key Value store</a>. From there, Workers application logic (using <a href="https://developers.cloudflare.com/workers/reference/apis/html-rewriter" target="_blank" rel="noopener noreferrer">HTMLRewriter</a>) transforms that static response based on user input to deliver modified responses with the requested data embedded in the returned web page.</p>
 	<figure class="kg-card kg-image-card ">
 
 		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6XuG4SNJszaYu3CHgIsG9X/415a3248cca3ca4ca53ebfbba553e8db/image4-6.png" alt="The Peer With Cloudflare application, hosted on peering.rad.workers.dev" class="kg-image" width="1578" height="440" loading="lazy">
 
 	</figure>
-	<p>The Peer With Cloudflare application, hosted on <a href="https://peering.rad.workers.dev">peering.rad.workers.dev</a></p>
-	<p><a href="https://www.peeringdb.com">PeeringDB</a> is a user-maintained public database of networks, exchanges, facilities, and interconnection on the Internet. The <a href="https://peering.rad.workers.dev">Peer With Cloudflare</a> (PWC) application leverages the <a href="https://www.peeringdb.com">PeeringDB</a> API to query live information on facilities and exchange points from multiple ASNs, compares the resulting networks, and lists to the user shared exchanges and facilities. In this example, we’ll also explore using templating languages in conjunction with Cloudflare’s HTMLRewriter.</p>
+	<p>The Peer With Cloudflare application, hosted on <a href="https://peering.rad.workers.dev" target="_blank" rel="noopener noreferrer">peering.rad.workers.dev</a></p>
+	<p><a href="https://www.peeringdb.com" target="_blank" rel="noopener noreferrer">PeeringDB</a> is a user-maintained public database of networks, exchanges, facilities, and interconnection on the Internet. The <a href="https://peering.rad.workers.dev" target="_blank" rel="noopener noreferrer">Peer With Cloudflare</a> (PWC) application leverages the <a href="https://www.peeringdb.com" target="_blank" rel="noopener noreferrer">PeeringDB</a> API to query live information on facilities and exchange points from multiple ASNs, compares the resulting networks, and lists to the user shared exchanges and facilities. In this example, we’ll also explore using templating languages in conjunction with Cloudflare’s HTMLRewriter.</p>
 	<div class="flex anchor relative">
 		<h3 id="generate-a-workers-site">Generate a Workers Site</h3>
 		<a href="https://blog.cloudflare.com/#generate-a-workers-site" aria-hidden="true" class="relative sm:absolute sm:-start-5">
@@ -41,9 +41,9 @@
 			</svg>
 		</a>
 	</div>
-	<p>We’ll start by <a href="https://developers.cloudflare.com/workers/sites/start-from-scratch">generating a workers site</a> using <a href="https://developers.cloudflare.com/workers/tooling/wrangler/install">wrangler</a>.</p>
+	<p>We’ll start by <a href="https://developers.cloudflare.com/workers/sites/start-from-scratch" target="_blank" rel="noopener noreferrer">generating a workers site</a> using <a href="https://developers.cloudflare.com/workers/tooling/wrangler/install" target="_blank" rel="noopener noreferrer">wrangler</a>.</p>
 	<pre class="language-javascript"><code class="language-javascript">&gt; wrangler generate --site peering</code></pre>
-	<p>PWC will be entirely served from <code>index.html</code>, which will be generated in the <code>/public</code> directory. Next, ensure that we only serve <code>index.html</code>, regardless of the path supplied by the user. Modify <code>index.js</code> to serve a single page application, using the <a href="https://github.com/cloudflare/kv-asset-handler#servesinglepageapp">serveSinglePageApp</a> method.</p>
+	<p>PWC will be entirely served from <code>index.html</code>, which will be generated in the <code>/public</code> directory. Next, ensure that we only serve <code>index.html</code>, regardless of the path supplied by the user. Modify <code>index.js</code> to serve a single page application, using the <a href="https://github.com/cloudflare/kv-asset-handler#servesinglepageapp" target="_blank" rel="noopener noreferrer">serveSinglePageApp</a> method.</p>
 	<pre class="language-javascript"><code class="language-javascript">import { getAssetFromKV, serveSinglePageApp } from '@cloudflare/kv-asset-handler'
 
 addEventListener('fetch', event =&gt; {
@@ -128,7 +128,7 @@ entry-point="./"</code></pre>
 } catch (e) {
   // C) error state
 }</code></pre>
-	<p>To provide the initial state and styling of the PWC application, index.html uses a third party framework called <a href="https://milligram.io">milligram</a>, chosen due to its lightweight nature, which requires <a href="https://necolas.github.io/normalize.css">normalize.css</a> and the <a href="https://fonts.google.com/specimen/Roboto">Roboto</a> font family. Also defined is a custom style for basic formatting. For state storage, a form is defined such that upon submission a GET request is sent to #, which is effectively a request to self with supplied parameters. The parameter in this case is named asn and must be a number:</p>
+	<p>To provide the initial state and styling of the PWC application, index.html uses a third party framework called <a href="https://milligram.io" target="_blank" rel="noopener noreferrer">milligram</a>, chosen due to its lightweight nature, which requires <a href="https://necolas.github.io/normalize.css" target="_blank" rel="noopener noreferrer">normalize.css</a> and the <a href="https://fonts.google.com/specimen/Roboto" target="_blank" rel="noopener noreferrer">Roboto</a> font family. Also defined is a custom style for basic formatting. For state storage, a form is defined such that upon submission a GET request is sent to #, which is effectively a request to self with supplied parameters. The parameter in this case is named asn and must be a number:</p>
 	<pre class="language-html"><code class="language-html">&lt;!doctype html&gt;
 &lt;html&gt;
     &lt;head&gt;
@@ -163,8 +163,8 @@ entry-point="./"</code></pre>
 			</svg>
 		</a>
 	</div>
-	<p>The <a href="https://peeringdb.com/apidocs/#operation/list%20net">PeeringDB API</a> defines networks primarily with metadata outlining key information about the network and owners, as well as two lists of public peering exchange points and private peering facilities. The PWC application will list any peering points (exchanges and facilities) shared between the user-provided network and Cloudflare’s network in a single table. PWC uses a model-view paradigm to retrieve, store, and display these data from the PeeringDB API. Defined below are the three data models representing a Network, Facility, and Exchange.</p>
-	<p>To define a network, first inspect a sample response from the PeeringDB API (use <a href="https://peeringdb.com/api/net?asn__in=13335&amp;depth=2">https://peeringdb.com/api/net?asn__in=13335&amp;depth=2</a> for a sample from Cloudflare’s network). Some key pieces of information displayed in PWC are the network name, website, notes, exchanges, and facilities.</p>
+	<p>The <a href="https://peeringdb.com/apidocs/#operation/list%20net" target="_blank" rel="noopener noreferrer">PeeringDB API</a> defines networks primarily with metadata outlining key information about the network and owners, as well as two lists of public peering exchange points and private peering facilities. The PWC application will list any peering points (exchanges and facilities) shared between the user-provided network and Cloudflare’s network in a single table. PWC uses a model-view paradigm to retrieve, store, and display these data from the PeeringDB API. Defined below are the three data models representing a Network, Facility, and Exchange.</p>
+	<p>To define a network, first inspect a sample response from the PeeringDB API (use <a href="https://peeringdb.com/api/net?asn__in=13335&amp;depth=2" target="_blank" rel="noopener noreferrer">https://peeringdb.com/api/net?asn__in=13335&amp;depth=2</a> for a sample from Cloudflare’s network). Some key pieces of information displayed in PWC are the network name, website, notes, exchanges, and facilities.</p>
 	<figure class="kg-card kg-image-card ">
 
 		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1X1V64b4YC9iQPMQfwhJv2/d68e6aab43901b6e0eb4aac1f095b374/image7.png" alt="" class="kg-image" width="1999" height="1333" loading="lazy">
@@ -284,7 +284,7 @@ export {findAsn, fetchAdditionalDetails}</code></pre>
 			</svg>
 		</a>
 	</div>
-	<p>In building a single page application with workers, the PWC application needs the ability to modify HTML responses returned to the user. To accomplish this, PWC uses Cloudflare’s <a href="https://developers.cloudflare.com/workers/reference/apis/html-rewriter">HTMLRewriter interface</a>. HTMLRewriter streams any supplied response through a transformer, applying any supplied transformations to the raw response object. This returns a modified response object that can then be returned to the user.</p>
+	<p>In building a single page application with workers, the PWC application needs the ability to modify HTML responses returned to the user. To accomplish this, PWC uses Cloudflare’s <a href="https://developers.cloudflare.com/workers/reference/apis/html-rewriter" target="_blank" rel="noopener noreferrer">HTMLRewriter interface</a>. HTMLRewriter streams any supplied response through a transformer, applying any supplied transformations to the raw response object. This returns a modified response object that can then be returned to the user.</p>
 	<p>In the case of PWC, three cases need to be handled, and two of them require some form of transformation before returning <code>index.html</code> to the user. Define a generic <code>AsnHandler</code> to provide to the user their supplied ASN. The <code>element()</code> method in this handler will simply set a value attribute on the target element.</p>
 	<pre class="language-javascript"><code class="language-javascript">class AsnHandler {
 	constructor(asn) {
@@ -317,7 +317,7 @@ export {findAsn, fetchAdditionalDetails}</code></pre>
 
 	</figure>
 	<p>The ErrorConditionHandler provides feedback on invalid user-supplied input.</p>
-	<p>For cases where a result needs to be returned, a NetworkComparisonHandler is implemented. Instead of defining raw HTML in a string format, NetworkComparisonHandler uses a templating language (<a href="https://handlebarsjs.com">Handlebars</a>) to provide a dynamic transformation based on data returned from PeeringDB. First, install both handlebars and handlebars loader with npm:</p>
+	<p>For cases where a result needs to be returned, a NetworkComparisonHandler is implemented. Instead of defining raw HTML in a string format, NetworkComparisonHandler uses a templating language (<a href="https://handlebarsjs.com" target="_blank" rel="noopener noreferrer">Handlebars</a>) to provide a dynamic transformation based on data returned from PeeringDB. First, install both handlebars and handlebars loader with npm:</p>
 	<pre class="language-javascript"><code class="language-javascript">&gt; npm install handlebars handlebars-loader</code></pre>
 	<p>Now define the <code>NetworkComparisonHandler</code>, including an import of the <code>networkTable</code> template.</p>
 	<pre class="language-javascript"><code class="language-javascript">import networkTable from '../templates/networktable.hbs'
@@ -368,7 +368,7 @@ export default function(text, url) {
 	<p>Great! Handlebars and other templating languages are extremely useful for building complex view logic into Cloudflare’s HTMLRewriter. To tie Handlebars into our build process, and have wrangler understand the currently foreign code, modify <code>wrangler.toml</code> to use a custom webpack configuration:</p>
 	<pre class="language-javascript"><code class="language-javascript">type = "webpack"
 webpack_config = "webpack.config.js"</code></pre>
-	<p>In <code>webpack.config.js</code>, configure any .hbs files to be compiled using the handlebars-loader module. <a href="https://developers.cloudflare.com/workers/tooling/wrangler/webpack">Custom webpack configurations</a> can be used in conjunction with Wrangler to create more complex build schemes, including environment-specific schemes.</p>
+	<p>In <code>webpack.config.js</code>, configure any .hbs files to be compiled using the handlebars-loader module. <a href="https://developers.cloudflare.com/workers/tooling/wrangler/webpack" target="_blank" rel="noopener noreferrer">Custom webpack configurations</a> can be used in conjunction with Wrangler to create more complex build schemes, including environment-specific schemes.</p>
 	<pre class="language-javascript"><code class="language-javascript">module.exports = {
   target: 'webworker',
   entry: './index.js',
@@ -414,7 +414,7 @@ webpack_config = "webpack.config.js"</code></pre>
 			</svg>
 		</a>
 	</div>
-	<p>You can view the final code <a href="https://github.com/kabirsikand/peering">on Github</a>, or navigate to <a href="https://peering.rad.workers.dev">peering.rad.workers.dev</a> to see a working example. The final <code>wrangler.toml</code> includes instructions to publish the code up to a workers.dev site, allowing you to easily build, deploy, and test without a domain - simply by setting <code>workers_dev</code> to “true”.</p>
+	<p>You can view the final code <a href="https://github.com/kabirsikand/peering" target="_blank" rel="noopener noreferrer">on Github</a>, or navigate to <a href="https://peering.rad.workers.dev" target="_blank" rel="noopener noreferrer">peering.rad.workers.dev</a> to see a working example. The final <code>wrangler.toml</code> includes instructions to publish the code up to a workers.dev site, allowing you to easily build, deploy, and test without a domain - simply by setting <code>workers_dev</code> to “true”.</p>
 	<pre class="language-javascript"><code class="language-javascript">name = "peering"
 type = "webpack"
 webpack_config = "webpack.config.js"
@@ -437,7 +437,7 @@ entry-point="./"</code></pre>
 			</svg>
 		</a>
 	</div>
-	<p>Taking advantage of our server-rendered content is as simple as matching the request against any previously cached assets. To accomplish this, add a few simple lines to the top of our <code>handleEvent</code> function using Cloudflare’s <a href="https://developers.cloudflare.com/workers/reference/apis/cache">Cache API</a>. If an asset is found, return the response without going into the application logic.</p>
+	<p>Taking advantage of our server-rendered content is as simple as matching the request against any previously cached assets. To accomplish this, add a few simple lines to the top of our <code>handleEvent</code> function using Cloudflare’s <a href="https://developers.cloudflare.com/workers/reference/apis/cache" target="_blank" rel="noopener noreferrer">Cache API</a>. If an asset is found, return the response without going into the application logic.</p>
 	<pre class="language-javascript"><code class="language-javascript">async function handleEvent(event) {
   let cache = caches.default
   let response = await cache.match(event.request)
@@ -455,5 +455,5 @@ entry-point="./"</code></pre>
 		</a>
 	</div>
 	<p>Using the Workers platform to deploy applications allow users to load lightweight and static html, with all application logic residing on the network edge. While there are certainly a host of improvements which can be made to the Peer With Cloudflare application (use of Workers KV, more input validation, or mixing in other APIs to present more interesting information); it should present a compelling introduction to the possibilities of Workers!</p>
-	<p>Check out <a href="https://workers.cloudflare.com/built-with">Built With Workers</a> for more examples of applications built on the Workers platform, or build your own projects at <a href="https://workers.cloudflare.com">workers.cloudflare.com</a>! For more information on peering with Cloudflare, please visit our <a href="https://www.cloudflare.com/partners/peering-portal">Peering Portal</a>.</p>
+	<p>Check out <a href="https://workers.cloudflare.com/built-with" target="_blank" rel="noopener noreferrer">Built With Workers</a> for more examples of applications built on the Workers platform, or build your own projects at <a href="https://workers.cloudflare.com" target="_blank" rel="noopener noreferrer">workers.cloudflare.com</a>! For more information on peering with Cloudflare, please visit our <a href="https://www.cloudflare.com/partners/peering-portal" target="_blank" rel="noopener noreferrer">Peering Portal</a>.</p>
 </div>

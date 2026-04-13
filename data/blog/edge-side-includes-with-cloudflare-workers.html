@@ -1,6 +1,6 @@
 <div class="mb2 gray5">4 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3gNQvxZ6I9cTwFSRjR5MUY/1a76149a8917e75e5bcac5d5608b0859/edge-side-includes-with-cloudflare-workers.png" alt="">
 <div class="post-content lh-copy gray1">
-	<p>At Cloudflare we’re accelerating web assets in a number of different ways. Part of this is <a href="https://www.cloudflare.com/cdn">caching</a>, by storing the response given by the origin server directly within our <a href="https://www.cloudflare.com/network">151+ global data centers</a>. This will dramatically improve the delivery of the resources as the visitor will directly get them from the data center closest to them, instead of waiting for us to fetch the request from the origin web server.</p>
+	<p>At Cloudflare we’re accelerating web assets in a number of different ways. Part of this is <a href="https://www.cloudflare.com/cdn" target="_blank" rel="noopener noreferrer">caching</a>, by storing the response given by the origin server directly within our <a href="https://www.cloudflare.com/network" target="_blank" rel="noopener noreferrer">151+ global data centers</a>. This will dramatically improve the delivery of the resources as the visitor will directly get them from the data center closest to them, instead of waiting for us to fetch the request from the origin web server.</p>
 	<div class="flex anchor relative">
 		<h3 id="the-issue-with-dynamic-but-not-a-lot-pages">The issue with dynamic (but not a lot) pages</h3>
 		<a href="https://blog.cloudflare.com/#the-issue-with-dynamic-but-not-a-lot-pages" aria-hidden="true" class="relative sm:absolute sm:-start-5">
@@ -19,9 +19,9 @@
 			</svg>
 		</a>
 	</div>
-	<p>Back in time, we’ve released <a href="https://www.cloudflare.com/website-optimization/railgun">Railgun</a>, which consist in doing delta-compression of the requests received by a web server so Railgun listener could just send the delta bytes since the last request. We’re also working on the inclusion of this delta-compression in our <a href="https://blog.cloudflare.com/argo-tunnel">Argo Tunnel</a> listener, which is a small agent opening tunnels to us so you don’t even have to have your applications public on the internet, a simple outbound HTTPS access is enough to publish, secure and accelerate applications on Internet.</p>
+	<p>Back in time, we’ve released <a href="https://www.cloudflare.com/website-optimization/railgun" target="_blank" rel="noopener noreferrer">Railgun</a>, which consist in doing delta-compression of the requests received by a web server so Railgun listener could just send the delta bytes since the last request. We’re also working on the inclusion of this delta-compression in our <a href="https://blog.cloudflare.com/argo-tunnel">Argo Tunnel</a> listener, which is a small agent opening tunnels to us so you don’t even have to have your applications public on the internet, a simple outbound HTTPS access is enough to publish, secure and accelerate applications on Internet.</p>
 	<p>In both cases, we’ll need to fetch the complete webpage in order to calculate the difference from the last request, right? This is where Edge-Side-Includes takes place.</p>
-	<p>The Edge-Side-Includes standard has been submitted to the W3C (<a href="https://www.w3.org/TR/esi-lang">https://www.w3.org/TR/esi-lang</a>) in August 2001 and defines an XML markup language that can be inserted in HTML or other text based contents which defines how interstitial proxies/CDNs need to combine static and dynamic portion and were to get them. The result is that it’s possible to keep those 99% in cache and for the remaining 1%, the interstitial cache proxy will fetch directly from the destination defined in the Edge-Side-Include block for finally combining both static and dynamic parts and sending the final webpage to the visitor.</p>
+	<p>The Edge-Side-Includes standard has been submitted to the W3C (<a href="https://www.w3.org/TR/esi-lang" target="_blank" rel="noopener noreferrer">https://www.w3.org/TR/esi-lang</a>) in August 2001 and defines an XML markup language that can be inserted in HTML or other text based contents which defines how interstitial proxies/CDNs need to combine static and dynamic portion and were to get them. The result is that it’s possible to keep those 99% in cache and for the remaining 1%, the interstitial cache proxy will fetch directly from the destination defined in the Edge-Side-Include block for finally combining both static and dynamic parts and sending the final webpage to the visitor.</p>
 	<figure class="kg-card kg-image-card ">
 
 		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/31aYZUXaOHwqH6Aw2OQVqn/a89c67de77722e00e6c27173d03a8bea/static-and-dynamic-content-diagram-blog-post-edge-side-workers_2x-1.png" alt="static-and-dynamic-content-diagram-blog-post-edge-side-workers@2x-1" class="kg-image" width="1474" height="480" loading="lazy">
@@ -38,7 +38,7 @@
 			</svg>
 		</a>
 	</div>
-	<p>We released months ago <a href="https://www.cloudflare.com/products/cloudflare-workers">Cloudflare Workers</a>, our serverless framework which helps to implement custom logics directly within the Edge. The Workers are triggering in the path of the requests and the responses and can manipulate almost everything and spin subrequests on-the-fly.This could dramatically improve the time to action for the implementation of new logics on your applications since you won’t have to modify them anymore as this can directly be done in the Edge, even if your applications are <a href="https://www.cloudflare.com/developer-platform/solutions/hosting">hosted</a> on a bunch of different locations (Cloud and on-premise).</p>
+	<p>We released months ago <a href="https://www.cloudflare.com/products/cloudflare-workers" target="_blank" rel="noopener noreferrer">Cloudflare Workers</a>, our serverless framework which helps to implement custom logics directly within the Edge. The Workers are triggering in the path of the requests and the responses and can manipulate almost everything and spin subrequests on-the-fly.This could dramatically improve the time to action for the implementation of new logics on your applications since you won’t have to modify them anymore as this can directly be done in the Edge, even if your applications are <a href="https://www.cloudflare.com/developer-platform/solutions/hosting" target="_blank" rel="noopener noreferrer">hosted</a> on a bunch of different locations (Cloud and on-premise).</p>
 	<p>This scenario sounds then quite compatible with what we can achieve with Cloudflare Workers. For memories, here are the actions the EDGE needs to do for implementing the ESIs:</p>
 	<ul>
 		<li>
@@ -74,7 +74,7 @@
 &lt;esi:include src="https://httpbin.org/headers" onerror="continue" /&gt;
 &lt;/body&gt;
 &lt;/html&gt;</code></pre>
-	<p>So in this page we can see that most of the content will be static and we can find just before the end of the <code>&lt;body&gt;</code> an ESI pointing to <a href="https://httpbin.org/headers">https://httpbin.org/headers</a> that the Edge will need to combine with the static content, in place of the ESI block.</p>
+	<p>So in this page we can see that most of the content will be static and we can find just before the end of the <code>&lt;body&gt;</code> an ESI pointing to <a href="https://httpbin.org/headers" target="_blank" rel="noopener noreferrer">https://httpbin.org/headers</a> that the Edge will need to combine with the static content, in place of the ESI block.</p>
 	<div class="flex anchor relative">
 		<h2 id="the-worker-explained">The worker explained</h2>
 		<a href="https://blog.cloudflare.com/#the-worker-explained" aria-hidden="true" class="relative sm:absolute sm:-start-5">
@@ -104,7 +104,7 @@ async function fetchAndStream(request) {
 }</code></pre>
 	<p>This is the main portion of the script, testing first if the response is text-based and return the content directly to the visitor if not. Then instanciating a stream pipeline to send to the visitor using a specific function called <code>streamTransformBody()</code> in charge of the payload chunking.</p>
 	<p>You'll notice that I'm setting a <code>max-age=0</code> cache-control header in the response as I don't want browsers to cache this response in case of a bad configuration on the Origin side.</p>
-	<p>I’m also declaring this script as fail-safe so that the request will go through normally if raising an Exception. More debugging information can be found <a href="https://developers.cloudflare.com/workers/writing-workers/debugging-tips">on our developer HUB</a>. Feel free to adapt for your use-cases and for example sending the Exception to a specific header, or even fancier <a href="https://blog.cloudflare.com/dogfooding-edge-workers">sending the event to a logging tool</a>.</p>
+	<p>I’m also declaring this script as fail-safe so that the request will go through normally if raising an Exception. More debugging information can be found <a href="https://developers.cloudflare.com/workers/writing-workers/debugging-tips" target="_blank" rel="noopener noreferrer">on our developer HUB</a>. Feel free to adapt for your use-cases and for example sending the Exception to a specific header, or even fancier <a href="https://blog.cloudflare.com/dogfooding-edge-workers">sending the event to a logging tool</a>.</p>
 	<pre class="language-javascript"><code class="language-javascript">async function handleTemplate(encoder, templateKey) {
   const linkRegex = /(esi:include.*src="(.*?)".*\/)/gm
   let result = linkRegex.exec(templateKey);
@@ -132,7 +132,7 @@ async function fetchAndStream(request) {
   
   return text
 }</code></pre>
-	<p>This portion is quite simple as it defines the function that does the subrequest to the ESI destination, pay attention to what the Origin server is serving as cache-control response header for those dynamic parts as we want to keep them dynamic and not cached by Cloudflare. It’s also possible to override the TTL via Cloudflare directly if you don’t want to modify your application. The documentation about how to manipulate Cloudflare features is available <a href="https://developers.cloudflare.com/workers/reference/cloudflare-features">on the developers HUB</a></p>
+	<p>This portion is quite simple as it defines the function that does the subrequest to the ESI destination, pay attention to what the Origin server is serving as cache-control response header for those dynamic parts as we want to keep them dynamic and not cached by Cloudflare. It’s also possible to override the TTL via Cloudflare directly if you don’t want to modify your application. The documentation about how to manipulate Cloudflare features is available <a href="https://developers.cloudflare.com/workers/reference/cloudflare-features" target="_blank" rel="noopener noreferrer">on the developers HUB</a></p>
 	<pre class="language-javascript"><code class="language-javascript">async function streamTransformBody(readable, writable) {
   const startTag = "&lt;".charCodeAt(0);
   const endTag = "&gt;".charCodeAt(0);
@@ -301,7 +301,7 @@ async function translate(chunks) {
 			<p>CF-Cache-Status is the header Cloudflare is using indicating if the requests has been fetched from the cache</p>
 		</li>
 		<li>
-			<p>Second CF-Ray is the CF-Ray coming from the call made to <a href="https://httpbin.org/headers">https://httpbin.org/headers</a>, this will change as the CF-Ray is unique for any new requests made through our Edge</p>
+			<p>Second CF-Ray is the CF-Ray coming from the call made to <a href="https://httpbin.org/headers" target="_blank" rel="noopener noreferrer">https://httpbin.org/headers</a>, this will change as the CF-Ray is unique for any new requests made through our Edge</p>
 		</li>
 	</ul>
 	<p>The answer is that one</p>
@@ -327,6 +327,6 @@ async function translate(chunks) {
 			</svg>
 		</a>
 	</div>
-	<p>You can find additional worker recipes and examples in our <a href="https://developers.cloudflare.com/workers/recipes">official documentation</a></p>
-	<p>Have you written a worker that you'd like to share? <a href="mailto:community@cloudflare.com">Send it to us</a> and you might get featured on our blog or added to our Cloudflare worker recipe collection with a credit.</p>
+	<p>You can find additional worker recipes and examples in our <a href="https://developers.cloudflare.com/workers/recipes" target="_blank" rel="noopener noreferrer">official documentation</a></p>
+	<p>Have you written a worker that you'd like to share? <a href="https://blog.cloudflare.com/#">Send it to us</a> and you might get featured on our blog or added to our Cloudflare worker recipe collection with a credit.</p>
 </div>

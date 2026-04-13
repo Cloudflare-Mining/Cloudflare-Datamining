@@ -1,7 +1,7 @@
 <div class="mb2 gray5">4 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7zMTx67ODSpf2Ve0icELa8/c02043daddb09a3805bb80e89f36e283/i-wanna-go-fast-load-balancing-dynamic-steering.png" alt="">
 <div class="post-content lh-copy gray1">
 	<p></p>
-	<p>Earlier this month we released <a href="https://support.cloudflare.com/hc/en-us/articles/360006900952-Load-Balancing-Dynamic-Steering">Dynamic Steering</a> for Load Balancing which allows you to have your Cloudflare load balancer direct traffic to the fastest pool for a given Cloudflare region or colo (Enterprise only).</p>
+	<p>Earlier this month we released <a href="https://support.cloudflare.com/hc/en-us/articles/360006900952-Load-Balancing-Dynamic-Steering" target="_blank" rel="noopener noreferrer">Dynamic Steering</a> for Load Balancing which allows you to have your Cloudflare load balancer direct traffic to the fastest pool for a given Cloudflare region or colo (Enterprise only).</p>
 	<p>To build this feature, we had to solve two key problems: 1) How to decide which pool of origins was the fastest and 2) How to distribute this decision to a growing group of 151 locations around the world.</p>
 	<figure class="kg-card kg-image-card ">
 
@@ -16,12 +16,12 @@
 			</svg>
 		</a>
 	</div>
-	<p>As my math teacher taught me, the shortest distance between two points is a straight line. This is also typically true on the internet - the shorter approximate distance there is between a user going through Cloudflare location to a customer origin, the better the experience is for the user. Geography is one way to approximate speed and we included the <a href="https://support.cloudflare.com/hc/en-us/articles/115000540888-Load-Balancing-Geographic-Regions">Geo Steering</a> function when we initially introduced the <a href="https://blog.cloudflare.com/introducing-load-balancing-intelligent-failover-with-cloudflare">Cloudflare Load Balancer</a>. It is powerful, but manual; it’s not the best way. A customer on Twitter said it best:</p>
+	<p>As my math teacher taught me, the shortest distance between two points is a straight line. This is also typically true on the internet - the shorter approximate distance there is between a user going through Cloudflare location to a customer origin, the better the experience is for the user. Geography is one way to approximate speed and we included the <a href="https://support.cloudflare.com/hc/en-us/articles/115000540888-Load-Balancing-Geographic-Regions" target="_blank" rel="noopener noreferrer">Geo Steering</a> function when we initially introduced the <a href="https://blog.cloudflare.com/introducing-load-balancing-intelligent-failover-with-cloudflare">Cloudflare Load Balancer</a>. It is powerful, but manual; it’s not the best way. A customer on Twitter said it best:</p>
 	<blockquote>
-		<p><a href="https://twitter.com/Cloudflare?ref_src=twsrc%5Etfw">@Cloudflare</a> <a href="https://twitter.com/hashtag/FeatureRequest?src=hash&amp;ref_src=twsrc%5Etfw">#FeatureRequest</a> why can’t your load balancers determine which server is closest to the user then direct them to that one?</p>
+		<p><a href="https://twitter.com/Cloudflare?ref_src=twsrc%5Etfw" target="_blank" rel="noopener noreferrer">@Cloudflare</a> <a href="https://twitter.com/hashtag/FeatureRequest?src=hash&amp;ref_src=twsrc%5Etfw" target="_blank" rel="noopener noreferrer">#FeatureRequest</a> why can’t your load balancers determine which server is closest to the user then direct them to that one?</p>
 		<p>I don't want to have configure 10+ regions manually. This feels like something that should be built in? Am I missing it?</p>
-		<p>cc: <a href="https://twitter.com/eastdakota?ref_src=twsrc%5Etfw">@eastdakota</a></p>
-		<p>— Adam Evers ? OAK / SFO (@adamevers) <a href="https://twitter.com/adamevers/status/979849896738963456?ref_src=twsrc%5Etfw">March 30, 2018</a></p>
+		<p>cc: <a href="https://twitter.com/eastdakota?ref_src=twsrc%5Etfw" target="_blank" rel="noopener noreferrer">@eastdakota</a></p>
+		<p>— Adam Evers ? OAK / SFO (@adamevers) <a href="https://twitter.com/adamevers/status/979849896738963456?ref_src=twsrc%5Etfw" target="_blank" rel="noopener noreferrer">March 30, 2018</a></p>
 	</blockquote>
 	<div class="flex anchor relative">
 		<h3 id="a-brief-refresher-on-cloudflare-load-balancing">A Brief Refresher on Cloudflare Load Balancing</h3>
@@ -31,7 +31,7 @@
 			</svg>
 		</a>
 	</div>
-	<p>Cloudflare’s <a href="https://www.cloudflare.com/load-balancing">Load Balancers</a> are comprised of a combination of origins, pools, and health checks. Origins are IPs or hostnames from which our customers serve content. Pools are collections of origins, usually grouped in along some dimension, like geography, cloud service provider, or a combination thereof (eg. a pool named GCP-West-1 may contain a customer’s origins in Google Cloud’s Oregon west1 region). Finally, there are health checks — configurable probes by our customers to their pools and origins to identify whether a given pool or origin is up or down. These health checks allow Cloudflare load balancers to quickly identify and fail over from downed origins from a network of systems that can map to the customer’s user base.</p>
+	<p>Cloudflare’s <a href="https://www.cloudflare.com/load-balancing" target="_blank" rel="noopener noreferrer">Load Balancers</a> are comprised of a combination of origins, pools, and health checks. Origins are IPs or hostnames from which our customers serve content. Pools are collections of origins, usually grouped in along some dimension, like geography, cloud service provider, or a combination thereof (eg. a pool named GCP-West-1 may contain a customer’s origins in Google Cloud’s Oregon west1 region). Finally, there are health checks — configurable probes by our customers to their pools and origins to identify whether a given pool or origin is up or down. These health checks allow Cloudflare load balancers to quickly identify and fail over from downed origins from a network of systems that can map to the customer’s user base.</p>
 	<div class="flex anchor relative">
 		<h3 id="measuring-and-determining-fast">Measuring and Determining “Fast”</h3>
 		<a href="https://blog.cloudflare.com/#measuring-and-determining-fast" aria-hidden="true" class="relative sm:absolute sm:-start-5">
@@ -40,7 +40,7 @@
 			</svg>
 		</a>
 	</div>
-	<p>The first decision we faced was when and how to measure speed. We already probe at regular intervals for uptime from the Cloudflare locations that our customers tell us are relevant for their setup. It was an obvious choice to use our existing health checks and gather the <a href="https://www.cloudflare.com/learning/cdn/glossary/round-trip-time-rtt">round trip time (RTT)</a> from there.</p>
+	<p>The first decision we faced was when and how to measure speed. We already probe at regular intervals for uptime from the Cloudflare locations that our customers tell us are relevant for their setup. It was an obvious choice to use our existing health checks and gather the <a href="https://www.cloudflare.com/learning/cdn/glossary/round-trip-time-rtt" target="_blank" rel="noopener noreferrer">round trip time (RTT)</a> from there.</p>
 	<p>As pool origins are probed periodically we get RTT information from the edge. The next question was how to use this data to decide which pool is the fastest: we decided to calculate the pool RTT using Exponential Weighted Moving Average (EWMA).</p>
 	<div class="flex anchor relative">
 		<h4 id="why-did-we-choose-ewma">Why did we choose EWMA?</h4>
@@ -84,7 +84,7 @@
 		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/14niTMB5ZnIjSfRkYSke3N/a6febb2d0d368d41249bd98e85e7fc4c/data_model.png" alt="data_model" class="kg-image" width="707" height="625" loading="lazy">
 
 	</figure>
-	<p>Since we keep a copy of the data on every machine in <a href="https://www.cloudflare.com/network">every data center</a>, we need to make sure our dataset is as small as possible. We evaluated what additional data we actually needed to select a pool inside a Load Balancer configured with Dynamic Steering. Currently the only information we propagate is a map of the pool identifier to the EWMA.</p>
+	<p>Since we keep a copy of the data on every machine in <a href="https://www.cloudflare.com/network" target="_blank" rel="noopener noreferrer">every data center</a>, we need to make sure our dataset is as small as possible. We evaluated what additional data we actually needed to select a pool inside a Load Balancer configured with Dynamic Steering. Currently the only information we propagate is a map of the pool identifier to the EWMA.</p>
 	<div class="flex anchor relative">
 		<h3 id="eyeball-experience">Eyeball Experience</h3>
 		<a href="https://blog.cloudflare.com/#eyeball-experience" aria-hidden="true" class="relative sm:absolute sm:-start-5">
@@ -107,7 +107,7 @@
 			</svg>
 		</a>
 	</div>
-	<p>All Enterprise customers and customers with the Geo Routing add-on for Load Balancing have access to Dynamic Steering. To enable Dynamic Steering, select the option in your Load Balancing traffic steering configuration. Please see the <a href="https://support.cloudflare.com/hc/en-us/articles/360006900952-Load-Balancing-Dynamic-Steering">KB article</a> or your Cloudflare account team for more information.</p>
+	<p>All Enterprise customers and customers with the Geo Routing add-on for Load Balancing have access to Dynamic Steering. To enable Dynamic Steering, select the option in your Load Balancing traffic steering configuration. Please see the <a href="https://support.cloudflare.com/hc/en-us/articles/360006900952-Load-Balancing-Dynamic-Steering" target="_blank" rel="noopener noreferrer">KB article</a> or your Cloudflare account team for more information.</p>
 	<figure class="kg-card kg-image-card ">
 
 		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4OKw6wPzI1kyNZK7GPf5ZD/0883d9e807dbf9ff319095f13c9a75f2/Step_4.png" alt="Dynamic Steering Configuration" class="kg-image" width="1526" height="372" loading="lazy">
@@ -122,5 +122,5 @@
 		</a>
 	</div>
 	<p>The Cloudflare Load Balancing and DNS Engineering teams are hiring in San Francisco and London.</p>
-	<p><a href="https://boards.greenhouse.io/cloudflare/jobs/935603?gh_jid=935603">Backend Systems Engineer San Francisco</a><a href="https://boards.greenhouse.io/cloudflare/jobs/982644?gh_jid=982644">Backend Systems Engineer London</a><a href="https://boards.greenhouse.io/cloudflare/jobs/1213352?gh_jid=1213352">Software Engineer London</a></p>
+	<p><a href="https://boards.greenhouse.io/cloudflare/jobs/935603?gh_jid=935603" target="_blank" rel="noopener noreferrer">Backend Systems Engineer San Francisco</a><a href="https://boards.greenhouse.io/cloudflare/jobs/982644?gh_jid=982644" target="_blank" rel="noopener noreferrer">Backend Systems Engineer London</a><a href="https://boards.greenhouse.io/cloudflare/jobs/1213352?gh_jid=1213352" target="_blank" rel="noopener noreferrer">Software Engineer London</a></p>
 </div>

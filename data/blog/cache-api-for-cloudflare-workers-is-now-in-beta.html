@@ -12,7 +12,7 @@
 		</a>
 	</div>
 	<p>You can always have more control, so today we are announcing support for the Cache API! As some of you may know, Cloudflare Workers are built against the existing Service Worker APIs. One of the reasons we originally chose to model Cloudflare Workers after Service Workers was due to the existing familiarity and audience of Service Workers, as well as documentation.</p>
-	<p>We’ve received overwhelming feedback and evidence from customers that there are many uses for supporting an implementation modeled after the <a href="https://developer.mozilla.org/en-US/docs/Web/API/Cache">Service Workers Cache API</a>. Today we are opening up a beta to offer our customers the ability to explicitly read and write items in our cache from within their Workers. The capability to do this will allow them to implement virtually any cache semantics they might need.</p>
+	<p>We’ve received overwhelming feedback and evidence from customers that there are many uses for supporting an implementation modeled after the <a href="https://developer.mozilla.org/en-US/docs/Web/API/Cache" target="_blank" rel="noopener noreferrer">Service Workers Cache API</a>. Today we are opening up a beta to offer our customers the ability to explicitly read and write items in our cache from within their Workers. The capability to do this will allow them to implement virtually any cache semantics they might need.</p>
 	<div class="flex anchor relative">
 		<h2 id="so-what-can-you-do-with-the-cache-api">So what can you do with the Cache API?</h2>
 		<a href="https://blog.cloudflare.com/#so-what-can-you-do-with-the-cache-api" aria-hidden="true" class="relative sm:absolute sm:-start-5">
@@ -74,7 +74,7 @@
 			</svg>
 		</a>
 	</div>
-	<p>One of the ways to purge assets within the Cloudflare cache is using <a href="https://support.cloudflare.com/hc/en-us/articles/206596608-How-to-Purge-Cache-Using-Cache-Tags-Enterprise-only-">Cache-Tags</a>. Cache-Tags allow you to group assets by category, version, etc and purge them all at once using a single API call. Cache-Tags were traditionally set using an origin Cache-Tag header. Some backends, however, don’t allow you control over the response headers that are sent, which makes it challenging to set Cache-Tags at the origin. With the Cache API, you can set Cache-Tags directly from a Worker, without having to modify any code at your origin.</p>
+	<p>One of the ways to purge assets within the Cloudflare cache is using <a href="https://support.cloudflare.com/hc/en-us/articles/206596608-How-to-Purge-Cache-Using-Cache-Tags-Enterprise-only-" target="_blank" rel="noopener noreferrer">Cache-Tags</a>. Cache-Tags allow you to group assets by category, version, etc and purge them all at once using a single API call. Cache-Tags were traditionally set using an origin Cache-Tag header. Some backends, however, don’t allow you control over the response headers that are sent, which makes it challenging to set Cache-Tags at the origin. With the Cache API, you can set Cache-Tags directly from a Worker, without having to modify any code at your origin.</p>
 	<pre class="language-javascript"><code class="language-javascript">addEventListener('fetch', event =&gt; {
  event.respondWith(handleRequest(event))
 })
@@ -106,7 +106,7 @@ async function handleRequest(event) {
 			</svg>
 		</a>
 	</div>
-	<p>We are super excited for you to start playing with the Cache API. <b>You can find </b><a href="https://developers.cloudflare.com/workers/reference/cache-api"><b>documentation here</b></a><b>, and feel free to start using the APIs.</b></p>
+	<p>We are super excited for you to start playing with the Cache API. <b>You can find </b><a href="https://developers.cloudflare.com/workers/reference/cache-api" target="_blank" rel="noopener noreferrer"><b>documentation here</b></a><b>, and feel free to start using the APIs.</b></p>
 	<p>We want to hear about all the cool ways you are using this. We also want to hear if you are having trouble or running into any issues.</p>
-	<p>Please feel free to contact us at <a href="mailto:cacheapibeta@cloudflare.com">cacheapibeta@cloudflare.com</a></p>
+	<p>Please feel free to contact us at <a href="https://blog.cloudflare.com/#">cacheapibeta@cloudflare.com</a></p>
 </div>

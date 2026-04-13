@@ -15,7 +15,7 @@
 		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3FnevZNzXIRKdWPfTWvSA9/0a904b77ed060939da7b89d44d87774a/2.png" alt="The final results of the elections as published by the official Tribunal Super Eleitoral, with more than 124 million votes counted.)" class="kg-image" width="1600" height="929" loading="lazy">
 
 	</figure>
-	<p>The final results of the elections as published by the official <a href="https://resultados.tse.jus.br/oficial/app/index.html#/eleicao/resultados">Tribunal Superior Eleitoral</a>, with more than 124 million votes counted.)</p>
+	<p>The final results of the elections as published by the official <a href="https://resultados.tse.jus.br/oficial/app/index.html#/eleicao/resultados" target="_blank" rel="noopener noreferrer">Tribunal Superior Eleitoral</a>, with more than 124 million votes counted.)</p>
 	<p>Using Cloudflare’s data, we can explore the impact that this election had on Internet traffic patterns in Brazil, as well as interest in content from election-related websites, news organizations, social media platforms, and video platforms.</p>
 	<p>Here are a few highlights: while the runoff generated much more interest to election related websites (we actually have a view to DNS queries, a proxy to websites), the first round showed bigger increases in traffic to news organizations.</p>
 	<p>For the candidate’s domains, Lula’s win had the higher impact.</p>
@@ -30,7 +30,7 @@
 			</svg>
 		</a>
 	</div>
-	<p>Using <a href="https://radar.cloudflare.com/br">Cloudflare Radar</a>, we can see something that has also been observed in other countries that hold Sunday elections: when most people are getting outside to vote, Internet traffic goes down (in comparison with previous Sundays). We saw this in the two rounds of the Presidential <a href="https://blog.cloudflare.com/french-elections-2022-runoff">elections in France</a> back in April 2022, in Portugal’s legislative elections in January 2022 and now, in Brazil.</p>
+	<p>Using <a href="https://radar.cloudflare.com/br" target="_blank" rel="noopener noreferrer">Cloudflare Radar</a>, we can see something that has also been observed in other countries that hold Sunday elections: when most people are getting outside to vote, Internet traffic goes down (in comparison with previous Sundays). We saw this in the two rounds of the Presidential <a href="https://blog.cloudflare.com/french-elections-2022-runoff">elections in France</a> back in April 2022, in Portugal’s legislative elections in January 2022 and now, in Brazil.</p>
 	<figure class="kg-card kg-image-card ">
 
 		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2CICFojD0WJWjWas4Ljpew/a252f44fcdf7d361430b0a075deaed1a/3.png" alt="" class="kg-image" width="1600" height="578" loading="lazy">
@@ -54,7 +54,7 @@
 		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5vICfPTs8Nlkpx7L6G7b8y/81c0e550ed4c7e30cd29ac35c3aacb23/6.png" alt="" class="kg-image" width="1600" height="491" loading="lazy">
 
 	</figure>
-	<p>If we look at the main network providers (<a href="https://www.cloudflare.com/learning/network-layer/what-is-an-autonomous-system">ASNs</a>) in <a href="https://radar.cloudflare.com/br">Brazil</a>, the trend is the same. Claro (<a href="https://radar.cloudflare.com/as28573">AS28573</a>) also shows the drop in traffic on October 30, as does Telefonica (<a href="https://radar.cloudflare.com/as27699">AS27699</a>):</p>
+	<p>If we look at the main network providers (<a href="https://www.cloudflare.com/learning/network-layer/what-is-an-autonomous-system" target="_blank" rel="noopener noreferrer">ASNs</a>) in <a href="https://radar.cloudflare.com/br" target="_blank" rel="noopener noreferrer">Brazil</a>, the trend is the same. Claro (<a href="https://radar.cloudflare.com/as28573" target="_blank" rel="noopener noreferrer">AS28573</a>) also shows the drop in traffic on October 30, as does Telefonica (<a href="https://radar.cloudflare.com/as27699" target="_blank" rel="noopener noreferrer">AS27699</a>):</p>
 	<figure class="kg-card kg-image-card ">
 
 		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4ryJMtgTgIepKjFQGJ7tsx/af6d17bb680e26450e17607dd2682c4e/7.png" alt="" class="kg-image" width="1600" height="593" loading="lazy">
@@ -82,7 +82,7 @@
 
 	</figure>
 	<p>This chart also shows how mobile device usage in Brazil is at its highest on the weekends (all the main spikes for percentage of mobile devices are over the weekend, and more on Sundays).</p>
-	<p>Now, let’s look at anonymized and aggregated DNS traffic data from our <a href="https://1.1.1.1">1.1.1.1</a> resolver. This data provides a proxy for traffic to, and thus interest in, different categories of sites from users in Brazil around the election.</p>
+	<p>Now, let’s look at anonymized and aggregated DNS traffic data from our <a href="https://1.1.1.1" target="_blank" rel="noopener noreferrer">1.1.1.1</a> resolver. This data provides a proxy for traffic to, and thus interest in, different categories of sites from users in Brazil around the election.</p>
 	<div class="flex anchor relative">
 		<h3 id="election-related-sites-higher-interest-in-the-runoff">Election-related sites: higher interest in the runoff</h3>
 		<a href="https://blog.cloudflare.com/#election-related-sites-higher-interest-in-the-runoff" aria-hidden="true" class="relative sm:absolute sm:-start-5">
@@ -91,7 +91,7 @@
 			</svg>
 		</a>
 	</div>
-	<p>Brazil has government websites related to elections, but also its own Tribunal Superior Eleitoral (Electoral Superior Court) that includes a <a href="https://resultados.tse.jus.br/oficial/app/index.html#/eleicao/resultados">website</a> and <a href="https://www.tse.jus.br/eleicoes/eleicoes-2022/divulgacao-dos-resultados-das-eleicoes-2022">app</a> with live updates on the results of the elections for everyone to check. Looking at those related domains and using mean hourly traffic in September as a baseline, we can see that the October 2 first round spiked to 16x more DNS queries at 20:00 local time. However, DNS query traffic during the runoff election peaked at 18:00 local time on October 30 with 17.4x more DNS traffic as compared to the September baseline.</p>
+	<p>Brazil has government websites related to elections, but also its own Tribunal Superior Eleitoral (Electoral Superior Court) that includes a <a href="https://resultados.tse.jus.br/oficial/app/index.html#/eleicao/resultados" target="_blank" rel="noopener noreferrer">website</a> and <a href="https://www.tse.jus.br/eleicoes/eleicoes-2022/divulgacao-dos-resultados-das-eleicoes-2022" target="_blank" rel="noopener noreferrer">app</a> with live updates on the results of the elections for everyone to check. Looking at those related domains and using mean hourly traffic in September as a baseline, we can see that the October 2 first round spiked to 16x more DNS queries at 20:00 local time. However, DNS query traffic during the runoff election peaked at 18:00 local time on October 30 with 17.4x more DNS traffic as compared to the September baseline.</p>
 	<figure class="kg-card kg-image-card ">
 
 		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/0hjlM60Hfs5pk5qspWAbo/f92abc29f7efef6f2ee909a6186ae9c6/10.png" alt="" class="kg-image" width="1600" height="604" loading="lazy">
@@ -172,5 +172,5 @@
 	</div>
 	<p>Cloudflare Radar, our tool for Internet insights, can provide a unique perspective on how major global or national events impact the Internet. It is interesting to not only see that a real world event can impact Internet traffic (and different types of websites) for a whole country, but also see how much that impact is represented at specific times. It’s all about human behavior at relevant moments in time, like elections as a collective event is.</p>
 	<p>Past examples of this include important <a href="https://blog.cloudflare.com/elections-france-2022">presidential elections</a>, the <a href="https://blog.cloudflare.com/who-won-super-bowl-lvi-a-look-at-internet-traffic-during-the-big-game">Super Bowl</a>, the <a href="https://blog.cloudflare.com/oscars-2022-impact">Oscars</a>, <a href="https://blog.cloudflare.com/eurovision-2022-internet-trends">Eurovision</a>, never before seen views of the universe from a <a href="https://blog.cloudflare.com/how-the-james-webb-telescopes-cosmic-pictures-impacted-the-internet">telescope</a> , the holiday shopping season, or religious events such as <a href="https://blog.cloudflare.com/how-ramadan-shows-up-in-internet-trends">Ramadan</a>.</p>
-	<p>You can keep an eye on these trends using <a href="https://radar.cloudflare.com">Cloudflare Radar</a>.</p>
+	<p>You can keep an eye on these trends using <a href="https://radar.cloudflare.com" target="_blank" rel="noopener noreferrer">Cloudflare Radar</a>.</p>
 </div>

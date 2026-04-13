@@ -1,8 +1,8 @@
 <div class="mb2 gray5">5 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6EhgFGV0DVJ7ezha87Uj7z/f1f76260834d99dbb35b0cddb5a6cf2b/building-serverless-apps-with-workers.png" alt="">
 <div class="post-content lh-copy gray1">
 	<p></p>
-	<p>You’ve had a chance to build a <a href="https://developers.cloudflare.com/workers/about">Cloudflare Worker</a>. You’ve tried <a href="https://developers.cloudflare.com/workers/kv">KV Storage</a> and have a great use case for your Worker. You’ve even demonstrated the usefulness to your product or organization. Now you need to go from writing a single file in the Cloudflare Dashboard UI Editor to source controlled code with multiple environments deployed using your favorite CI tool.</p>
-	<p>Fortunately, we have a powerful and flexible <a href="https://developers.cloudflare.com/workers/api">API</a> for managing your workers. You can customize your deployment to your heart’s content. Our blog has already featured many things made possible by that API:</p>
+	<p>You’ve had a chance to build a <a href="https://developers.cloudflare.com/workers/about" target="_blank" rel="noopener noreferrer">Cloudflare Worker</a>. You’ve tried <a href="https://developers.cloudflare.com/workers/kv" target="_blank" rel="noopener noreferrer">KV Storage</a> and have a great use case for your Worker. You’ve even demonstrated the usefulness to your product or organization. Now you need to go from writing a single file in the Cloudflare Dashboard UI Editor to source controlled code with multiple environments deployed using your favorite CI tool.</p>
+	<p>Fortunately, we have a powerful and flexible <a href="https://developers.cloudflare.com/workers/api" target="_blank" rel="noopener noreferrer">API</a> for managing your workers. You can customize your deployment to your heart’s content. Our blog has already featured many things made possible by that API:</p>
 	<ul>
 		<li>
 			<p><a href="https://blog.cloudflare.com/introducing-wrangler-cli">The Wrangler CLI</a></p>
@@ -17,7 +17,7 @@
 			<p><a href="https://blog.cloudflare.com/create-cloudflare-worker-bootstrap-your-cloudflare-worker">Worker bootstrap template</a></p>
 		</li>
 	</ul>
-	<p>These tools make deployments easier to configure, but it still takes time to manage. The <a href="https://serverless.com">Serverless Framework</a> <a href="https://serverless.com/plugins/serverless-cloudflare-workers">Cloudflare Workers plugin</a> removes that deployment overhead so you can spend more time working on your application and less on your deployment.</p>
+	<p>These tools make deployments easier to configure, but it still takes time to manage. The <a href="https://serverless.com" target="_blank" rel="noopener noreferrer">Serverless Framework</a> <a href="https://serverless.com/plugins/serverless-cloudflare-workers" target="_blank" rel="noopener noreferrer">Cloudflare Workers plugin</a> removes that deployment overhead so you can spend more time working on your application and less on your deployment.</p>
 	<div class="flex anchor relative">
 		<h3 id="focus-on-your-application">Focus on your application</h3>
 		<a href="https://blog.cloudflare.com/#focus-on-your-application" aria-hidden="true" class="relative sm:absolute sm:-start-5">
@@ -57,7 +57,7 @@
 			<p>Custom Scripting</p>
 		</li>
 		<li>
-			<p><a href="https://www.terraform.io/docs/providers/cloudflare/index.html">Terraform</a></p>
+			<p><a href="https://www.terraform.io/docs/providers/cloudflare/index.html" target="_blank" rel="noopener noreferrer">Terraform</a></p>
 		</li>
 		<li>
 			<p>Serverless Framework</p>
@@ -109,7 +109,7 @@ functions:
 	<p>Now for the good part: functions. Each block under functions is a Worker script.</p>
 	<p><b>name</b>: (optional) If left blank it will be STAGE-service.name-script.identifier. If I removed name from this file and deployed in production stage, the script would be named production-hello-world-hello.</p>
 	<p><b>script</b>: the relative path to the javascript file with the worker script. I like to organize mine in a folder called handlers.</p>
-	<p><b>events</b>: Currently Workers only support http events. We call these routes. The example provided says that GET <a href="https://example.com/hello">https://example.com/hello/</a> will &nbsp;cause this worker to execute. The headers block is for testing invocations.</p>
+	<p><b>events</b>: Currently Workers only support http events. We call these routes. The example provided says that GET <a href="https://example.com/hello" target="_blank" rel="noopener noreferrer">https://example.com/hello/</a> will &nbsp;cause this worker to execute. The headers block is for testing invocations.</p>
 	<p>At this point you can deploy your worker!</p>
 	<pre class="language-yaml"><code class="language-yaml">CLOUDFLARE_AUTH_EMAIL=you@yourdomain.com CLOUDFLARE_AUTH_KEY=XXXXXXXX serverless deploy</code></pre>
 	<p>This is very easy to deploy, but it doesn’t address our requirements. Luckily, there’s just a few simple modifications to make.</p>
@@ -182,13 +182,13 @@ SUBDOMAIN: dev</code></pre>
 	<p>Now under our function we have added webpack, resources, and environment.</p>
 	<p><b>webpack</b>: If set to true, will simply bundle each handler into a single file for deployment. It will also take a string representing a path to a webpack config file so you can customize it. This is how we add Typescript support to our projects.</p>
 	<p><b>resources</b>: This block is used to automate resource creation. In resources we're linking back to the kv block we created earlier.</p>
-	<p><i>Side note: If you would like to include WASM bindings in your project, it can be done in a very similar way to how we included Workers KV. For more information on WASM, see the </i><a href="https://serverless.com/plugins/serverless-cloudflare-workers"><i>documentation</i></a><i>.</i></p>
+	<p><i>Side note: If you would like to include WASM bindings in your project, it can be done in a very similar way to how we included Workers KV. For more information on WASM, see the </i><a href="https://serverless.com/plugins/serverless-cloudflare-workers" target="_blank" rel="noopener noreferrer"><i>documentation</i></a><i>.</i></p>
 	<p><b>environment</b>: This is the butter for the bread that is managing configuration for different stages. Here we can specify values to bind to variables to use in worker scripts. Combined with YAML magic, we can store our values in the aforementioned config files so that we deploy different values in different stages. With environments, we can easily tie into our CI tool. The CI tool has our deploy.production.yml. We simply run the following command from within our CI.</p>
 	<pre class="language-bash"><code class="language-bash">sls deploy --stage=production</code></pre>
 	<p>Finally, I added a route to demonstrate that a script can be executed on multiple routes.</p>
 	<p>At this point I’ve covered (or hinted) at everything on our original list except Unit Testing. There are a few ways to do this.</p>
-	<p>We have a previous blog post about <a href="https://blog.cloudflare.com/unit-testing-worker-functions">Unit Testing</a> that covers using <a href="https://github.com/dollarshaveclub/cloudworker">cloud worker</a>, a great tool built by <a href="https://www.dollarshaveclub.com">Dollar Shave Club</a>.</p>
-	<p>My team opted to use the classic node frameworks mocha and sinon. Because we are using Typescript, we can build for node or build for v8. You can also make mocha work for non-typescript projects if you use an <a href="https://nodejs.org/api/esm.html">experimental feature that adds import/export support to node</a>.</p>
+	<p>We have a previous blog post about <a href="https://blog.cloudflare.com/unit-testing-worker-functions">Unit Testing</a> that covers using <a href="https://github.com/dollarshaveclub/cloudworker" target="_blank" rel="noopener noreferrer">cloud worker</a>, a great tool built by <a href="https://www.dollarshaveclub.com" target="_blank" rel="noopener noreferrer">Dollar Shave Club</a>.</p>
+	<p>My team opted to use the classic node frameworks mocha and sinon. Because we are using Typescript, we can build for node or build for v8. You can also make mocha work for non-typescript projects if you use an <a href="https://nodejs.org/api/esm.html" target="_blank" rel="noopener noreferrer">experimental feature that adds import/export support to node</a>.</p>
 	<pre class="language-bash"><code class="language-bash">--experimental-modules</code></pre>
-	<p>We’re excited about moving more and more of our services to Cloudflare Workers, and the Serverless Framework makes that easier to do. If you’d like to learn even more or get involved with the project, see us on <a href="https://github.com/cloudflare/serverless-cloudflare-workers">github.com</a>. For additional information on using Serverless Framework with Cloudflare Workers, check out our <a href="https://developers.cloudflare.com/workers/deploying-workers/serverless">documentation on the Serverless Framework</a>.</p>
+	<p>We’re excited about moving more and more of our services to Cloudflare Workers, and the Serverless Framework makes that easier to do. If you’d like to learn even more or get involved with the project, see us on <a href="https://github.com/cloudflare/serverless-cloudflare-workers" target="_blank" rel="noopener noreferrer">github.com</a>. For additional information on using Serverless Framework with Cloudflare Workers, check out our <a href="https://developers.cloudflare.com/workers/deploying-workers/serverless" target="_blank" rel="noopener noreferrer">documentation on the Serverless Framework</a>.</p>
 </div>

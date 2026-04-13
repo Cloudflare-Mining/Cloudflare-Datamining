@@ -2,7 +2,7 @@
 <div class="post-content lh-copy gray1">
 	<p>Connecting to an application should be as simple as knowing its name. Yet, many security models still force us to rely on brittle, ever-changing IP addresses. And we heard from many of you that managing those ever-changing IP lists was a constant struggle.&nbsp;</p>
 	<p>Today, we’re taking a major step toward making that a relic of the past.</p>
-	<p>We're excited to announce that you can now route traffic to <a href="https://developers.cloudflare.com/cloudflare-one/connections/connect-networks"><u>Cloudflare Tunnel</u></a> based on a hostname or a domain. This allows you to use Cloudflare Tunnel to build simple zero-trust and egress policies for your private and public web applications without ever needing to know their underlying IP. This is one more step on our <a href="https://blog.cloudflare.com/egress-policies-by-hostname"><u>mission</u></a> to strengthen platform-wide support for hostname- and domain-based policies in the <a href="https://developers.cloudflare.com/cloudflare-one"><u>Cloudflare One</u></a> <a href="https://www.cloudflare.com/learning/access-management/what-is-sase">SASE</a> platform, simplifying complexity and improving security for our customers and end users.&nbsp;</p>
+	<p>We're excited to announce that you can now route traffic to <a href="https://developers.cloudflare.com/cloudflare-one/connections/connect-networks" target="_blank" rel="noopener noreferrer"><u>Cloudflare Tunnel</u></a> based on a hostname or a domain. This allows you to use Cloudflare Tunnel to build simple zero-trust and egress policies for your private and public web applications without ever needing to know their underlying IP. This is one more step on our <a href="https://blog.cloudflare.com/egress-policies-by-hostname"><u>mission</u></a> to strengthen platform-wide support for hostname- and domain-based policies in the <a href="https://developers.cloudflare.com/cloudflare-one" target="_blank" rel="noopener noreferrer"><u>Cloudflare One</u></a> <a href="https://www.cloudflare.com/learning/access-management/what-is-sase" target="_blank" rel="noopener noreferrer">SASE</a> platform, simplifying complexity and improving security for our customers and end users.&nbsp;</p>
 	<div class="flex anchor relative">
 		<h2 id="grant-access-to-applications-not-networks">Grant access to applications, not networks</h2>
 		<a href="https://blog.cloudflare.com/#grant-access-to-applications-not-networks" aria-hidden="true" class="relative sm:absolute sm:-start-5">
@@ -11,7 +11,7 @@
 			</svg>
 		</a>
 	</div>
-	<p>In August 2020, the National Institute of Standards (NIST) published <a href="https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-207.pdf"><u>Special Publication 800-207</u></a>, encouraging organizations to abandon the "castle-and-moat" model of security (where trust is established on the basis of network location) and move to a <a href="https://www.cloudflare.com/learning/security/glossary/what-is-zero-trust">Zero Trust model </a>(where we “<a href="https://www.whitehouse.gov/wp-content/uploads/2022/01/M-22-09.pdf"><u>verify anything and everything attempting to establish access</u></a>").</p>
+	<p>In August 2020, the National Institute of Standards (NIST) published <a href="https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-207.pdf" target="_blank" rel="noopener noreferrer"><u>Special Publication 800-207</u></a>, encouraging organizations to abandon the "castle-and-moat" model of security (where trust is established on the basis of network location) and move to a <a href="https://www.cloudflare.com/learning/security/glossary/what-is-zero-trust" target="_blank" rel="noopener noreferrer">Zero Trust model </a>(where we “<a href="https://www.whitehouse.gov/wp-content/uploads/2022/01/M-22-09.pdf" target="_blank" rel="noopener noreferrer"><u>verify anything and everything attempting to establish access</u></a>").</p>
 	<p>Now, instead of granting broad network permissions, you grant specific access to individual resources. This concept, known as per-resource authorization, is a cornerstone of the Zero Trust framework, and it presents a huge change to how organizations have traditionally run networks. Per-resource authorization requires that access policies be configured on a per-resource basis. By applying the principle of least privilege, you give users access only to the resources they absolutely need to do their job. This tightens security and shrinks the potential attack surface for any given resource.</p>
 	<p>Instead of allowing your users to access an entire network segment, like <code><b>10.131.0.0/24</b></code>, your security policies become much more precise. For example:</p>
 	<ul>
@@ -38,13 +38,13 @@
 	<p>This happens for a few common reasons:</p>
 	<ul>
 		<li>
-			<p><b>Cloud instances</b>: When you launch a compute instance in a cloud environment like AWS, you're responsible for its <a href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/hostname-types.html"><u>hostname</u></a>, but not always its IP address. As a result, you might only be tracking the hostname and may not even know the server's IP.</p>
+			<p><b>Cloud instances</b>: When you launch a compute instance in a cloud environment like AWS, you're responsible for its <a href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/hostname-types.html" target="_blank" rel="noopener noreferrer"><u>hostname</u></a>, but not always its IP address. As a result, you might only be tracking the hostname and may not even know the server's IP.</p>
 		</li>
 		<li>
-			<p><b>Load Balancers</b>: If the server is behind a load balancer in a cloud environment (like AWS ELB), its IP address could be changing dynamically in response to <a href="https://docs.aws.amazon.com/elasticloadbalancing/latest/application/application-load-balancers.html"><u>changes in traffic</u></a>.</p>
+			<p><b>Load Balancers</b>: If the server is behind a load balancer in a cloud environment (like AWS ELB), its IP address could be changing dynamically in response to <a href="https://docs.aws.amazon.com/elasticloadbalancing/latest/application/application-load-balancers.html" target="_blank" rel="noopener noreferrer"><u>changes in traffic</u></a>.</p>
 		</li>
 		<li>
-			<p><b>Ephemeral infrastructure</b>: This is the "<a href="https://cloudscaling.com/blog/cloud-computing/the-history-of-pets-vs-cattle"><u>cattle, not pets</u></a>" world of modern infrastructure. Resources like servers in an autoscaling group, containers in a Kubernetes cluster, or applications that spin down overnight are created and destroyed as needed. They keep a persistent hostname so users can find them, but their IP is ephemeral and changes every time they spin up.</p>
+			<p><b>Ephemeral infrastructure</b>: This is the "<a href="https://cloudscaling.com/blog/cloud-computing/the-history-of-pets-vs-cattle" target="_blank" rel="noopener noreferrer"><u>cattle, not pets</u></a>" world of modern infrastructure. Resources like servers in an autoscaling group, containers in a Kubernetes cluster, or applications that spin down overnight are created and destroyed as needed. They keep a persistent hostname so users can find them, but their IP is ephemeral and changes every time they spin up.</p>
 		</li>
 	</ul>
 	<p>To cope with this, we've seen customers build complex scripts to maintain dynamic "IP Lists" — mappings from a hostname to its IPs that are updated every time the address changes. While this approach is clever, maintaining IP Lists is a chore. They are brittle, and a single error could cause employees to lose access to vital resources.</p>
@@ -59,7 +59,7 @@
 	</div>
 	<p>To see this in action, let's create a policy from our earlier example: we want to grant employees in the "finance" group located in Canada access to <code><b>canada-payroll-server.acme.local</b></code>. Here’s how you do it, without ever touching an IP address.</p>
 	<p><b>Step 1: Connect your private network</b></p>
-	<p>First, the server's network needs a secure connection to Cloudflare's global network. You do this by installing our lightweight agent, <a href="https://developers.cloudflare.com/cloudflare-one/connections/connect-networks"><u>cloudflared</u></a>, in the same local area network as the server, which creates a secure Cloudflare Tunnel. You can create a new tunnel directly from cloudflared by running <code><b>cloudflared tunnel create &lt;TUNNEL-NAME&gt;</b></code> or using your Zero Trust dashboard.</p>
+	<p>First, the server's network needs a secure connection to Cloudflare's global network. You do this by installing our lightweight agent, <a href="https://developers.cloudflare.com/cloudflare-one/connections/connect-networks" target="_blank" rel="noopener noreferrer"><u>cloudflared</u></a>, in the same local area network as the server, which creates a secure Cloudflare Tunnel. You can create a new tunnel directly from cloudflared by running <code><b>cloudflared tunnel create &lt;TUNNEL-NAME&gt;</b></code> or using your Zero Trust dashboard.</p>
 	<div style="position: relative; padding-top: 56.25%;">
 		<iframe src="https://customer-1mwganm1ma0xgnmj.cloudflarestream.com/0410c73fe3fdd36142ec08bac77e8f97/iframe?preload=true&amp;letterboxColor=transparent&amp;poster=https%3A%2F%2Fpub-d9bf66e086fb4b639107aa52105b49dd.r2.dev%2FVideo-2-Stop-hosting-your-own-VPN-service.jpg" loading="lazy" style="border: none; position: absolute; top: 0; left: 0; height: 100%; width: 100%;" allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;" allowfullscreen="true"></iframe>
 	</div>
@@ -70,13 +70,13 @@
 	<figure class="kg-card kg-image-card">
 		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3mcoBAILYENIP6kGW4tw96/bb7ec6571ae7b4f04b5dc0456f694d59/1.png" alt="" class="kg-image" width="1990" height="530" loading="lazy">
 	</figure>
-	<p>For this to work, you must delete your private network’s subnet (in this case <code>10.0.0.0/8</code>) and <code>100.64.0.0/10</code> from the <a href="https://developers.cloudflare.com/cloudflare-one/connections/connect-devices/warp/configure-warp/route-traffic/split-tunnels"><u>Split Tunnels Exclude</u></a> list. You also need to remove <code>.local</code> from the <a href="https://developers.cloudflare.com/cloudflare-one/connections/connect-devices/warp/configure-warp/route-traffic/local-domains"><u>Local Domain Fallback</u></a>.</p>
+	<p>For this to work, you must delete your private network’s subnet (in this case <code>10.0.0.0/8</code>) and <code>100.64.0.0/10</code> from the <a href="https://developers.cloudflare.com/cloudflare-one/connections/connect-devices/warp/configure-warp/route-traffic/split-tunnels" target="_blank" rel="noopener noreferrer"><u>Split Tunnels Exclude</u></a> list. You also need to remove <code>.local</code> from the <a href="https://developers.cloudflare.com/cloudflare-one/connections/connect-devices/warp/configure-warp/route-traffic/local-domains" target="_blank" rel="noopener noreferrer"><u>Local Domain Fallback</u></a>.</p>
 	<p>(As an aside, we note that this feature also works with domains. For example, you could bind <code>*.acme.local</code> to a single tunnel, if desired.)</p>
 	<p><b>Step 3: Write your zero trust policy</b></p>
 	<p>Now that Cloudflare knows <i>how</i> to reach your server by its name, you can write a policy to control <i>who</i> can access it. You have a couple of options:</p>
 	<ul>
 		<li>
-			<p><b>In Cloudflare Access (for HTTPS applications):</b> Write an <a href="https://developers.cloudflare.com/cloudflare-one/applications/non-http/self-hosted-private-app"><u>Access policy</u></a> that grants employees in the “finance” group access to the private hostname <code>canada-payroll-server.acme.local</code>. This is ideal for applications accessible over HTTPS on port 443.
+			<p><b>In Cloudflare Access (for HTTPS applications):</b> Write an <a href="https://developers.cloudflare.com/cloudflare-one/applications/non-http/self-hosted-private-app" target="_blank" rel="noopener noreferrer"><u>Access policy</u></a> that grants employees in the “finance” group access to the private hostname <code>canada-payroll-server.acme.local</code>. This is ideal for applications accessible over HTTPS on port 443.
 			</p>
 			<figure class="kg-card kg-image-card">
 				<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7lIZI9ThsAWtxFZZis3HtZ/08451586dbe373ff137bd9e91d23dea6/2.png" alt="" class="kg-image" width="1970" height="1204" loading="lazy">
@@ -84,7 +84,7 @@
 			<p></p>
 		</li>
 		<li>
-			<p><b>In Cloudflare Gateway (for HTTPS applications):</b> Alternatively, write a <a href="https://developers.cloudflare.com/cloudflare-one/policies/gateway"><u>Gateway policy</u></a> that grants employees in the “finance” group access to the <a href="https://developers.cloudflare.com/cloudflare-one/policies/gateway/network-policies/#sni"><u>SNI</u></a> <code>canada-payroll-server.acme.local</code>. This <a href="https://developers.cloudflare.com/cloudflare-one/policies/gateway/network-policies/protocol-detection"><u>works</u></a> for services accessible over HTTPS on any port.
+			<p><b>In Cloudflare Gateway (for HTTPS applications):</b> Alternatively, write a <a href="https://developers.cloudflare.com/cloudflare-one/policies/gateway" target="_blank" rel="noopener noreferrer"><u>Gateway policy</u></a> that grants employees in the “finance” group access to the <a href="https://developers.cloudflare.com/cloudflare-one/policies/gateway/network-policies/#sni" target="_blank" rel="noopener noreferrer"><u>SNI</u></a> <code>canada-payroll-server.acme.local</code>. This <a href="https://developers.cloudflare.com/cloudflare-one/policies/gateway/network-policies/protocol-detection" target="_blank" rel="noopener noreferrer"><u>works</u></a> for services accessible over HTTPS on any port.
 			</p>
 			<figure class="kg-card kg-image-card">
 				<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5GpwDZNmdzapOyjOgFFlKD/50e2d0df64d2230479ad8d0a013de24b/3.png" alt="" class="kg-image" width="1978" height="1030" loading="lazy">
@@ -92,7 +92,7 @@
 			<p></p>
 		</li>
 		<li>
-			<p><b>In Cloudflare Gateway (for non-HTTP applications):</b> You can also write a <a href="https://developers.cloudflare.com/cloudflare-one/policies/gateway"><u>Gateway policy</u></a> that blocks DNS resolution <code>canada-payroll-server.acme.local</code> for all employees except the “finance” group.</p>
+			<p><b>In Cloudflare Gateway (for non-HTTP applications):</b> You can also write a <a href="https://developers.cloudflare.com/cloudflare-one/policies/gateway" target="_blank" rel="noopener noreferrer"><u>Gateway policy</u></a> that blocks DNS resolution <code>canada-payroll-server.acme.local</code> for all employees except the “finance” group.</p>
 		</li>
 	</ul>
 	<figure class="kg-card kg-image-card">
@@ -118,13 +118,13 @@
 	<p>Here’s how this works:</p>
 	<ol>
 		<li>
-			<p><b>Force traffic through your dedicated IP.</b> First, you deploy a <a href="https://developers.cloudflare.com/cloudflare-one/connections/connect-networks"><u>Cloudflare Tunnel</u></a> in the network that owns your dedicated IP (for example, your primary VPC in a cloud provider). All traffic you send through this tunnel will exit to the Internet with <code>203.0.113.9</code> as its source IP.</p>
+			<p><b>Force traffic through your dedicated IP.</b> First, you deploy a <a href="https://developers.cloudflare.com/cloudflare-one/connections/connect-networks" target="_blank" rel="noopener noreferrer"><u>Cloudflare Tunnel</u></a> in the network that owns your dedicated IP (for example, your primary VPC in a cloud provider). All traffic you send through this tunnel will exit to the Internet with <code>203.0.113.9</code> as its source IP.</p>
 		</li>
 		<li>
 			<p><b>Route the banking app to that tunnel.</b> Next, you create a hostname route in your Zero Trust dashboard. This rule tells Cloudflare: "Any traffic destined for <code>bank.example.com</code> must be sent through this specific tunnel."</p>
 		</li>
 		<li>
-			<p><b>Apply your user policies.</b> Finally, in Cloudflare Gateway, you create your granular access rules. A low-priority <a href="https://developers.cloudflare.com/cloudflare-one/policies/gateway/network-policies"><u>network policy</u></a> blocks access to the <a href="https://developers.cloudflare.com/cloudflare-one/policies/gateway/network-policies/#sni"><u>SNI</u></a> <code>bank.example.com</code> for everyone. Then, a second, higher-priority policy explicitly allows users in the "finance" group to access the <a href="https://developers.cloudflare.com/cloudflare-one/policies/gateway/network-policies/#sni"><u>SNI</u></a> <code>bank.example.com</code>.</p>
+			<p><b>Apply your user policies.</b> Finally, in Cloudflare Gateway, you create your granular access rules. A low-priority <a href="https://developers.cloudflare.com/cloudflare-one/policies/gateway/network-policies" target="_blank" rel="noopener noreferrer"><u>network policy</u></a> blocks access to the <a href="https://developers.cloudflare.com/cloudflare-one/policies/gateway/network-policies/#sni" target="_blank" rel="noopener noreferrer"><u>SNI</u></a> <code>bank.example.com</code> for everyone. Then, a second, higher-priority policy explicitly allows users in the "finance" group to access the <a href="https://developers.cloudflare.com/cloudflare-one/policies/gateway/network-policies/#sni" target="_blank" rel="noopener noreferrer"><u>SNI</u></a> <code>bank.example.com</code>.</p>
 		</li>
 	</ol>
 	<p>Now, when a finance team member accesses the portal, their traffic is correctly routed through the tunnel and arrives with the source IP the bank expects. An employee from any other department is blocked by Gateway before their traffic even enters the tunnel. You've enforced a precise, user-based zero trust policy for a third-party service, all by using its public hostname.</p>
@@ -189,7 +189,7 @@
 		</a>
 	</div>
 	<p>The routing capabilities we've discussed provide simple, powerful ways to connect to private resources. But what happens when your network architecture is more complex? For example, what if your private DNS servers are in one part of your network, but the application itself is in another?</p>
-	<p>With Cloudflare One, you can solve this by creating policies that separate the path for DNS resolution from the path for application traffic for the very same hostname using <a href="https://developers.cloudflare.com/cloudflare-one/policies/gateway/resolver-policies"><u>Gateway Resolver Policies</u></a>. This gives you fine-grained control to match complex network topologies.</p>
+	<p>With Cloudflare One, you can solve this by creating policies that separate the path for DNS resolution from the path for application traffic for the very same hostname using <a href="https://developers.cloudflare.com/cloudflare-one/policies/gateway/resolver-policies" target="_blank" rel="noopener noreferrer"><u>Gateway Resolver Policies</u></a>. This gives you fine-grained control to match complex network topologies.</p>
 	<p>Let's walk through a scenario:</p>
 	<ul>
 		<li>
@@ -238,7 +238,7 @@
 		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3Ufzpsb1FUYrM39gMiyovs/c5d10828f58b0e7c854ff9fa721e1757/10.png" alt="" class="kg-image" width="1980" height="550" loading="lazy">
 	</figure>
 	<p>This rule instructs Gateway that any application traffic (like HTTP, SSH, or any TCP/UDP traffic) for <code><b>canada-payroll-server.acme.local</b></code> must be sent through <code><b>tunnel-2</b></code><b> </b>leading to your cloud VPC.</p>
-	<p>Similarly to a setup without Gateway Resolver Policy, for this to work, you must delete your private network’s subnet (in this case <code>10.0.0.0/8</code>) and <code>100.64.0.0/10</code> from the <a href="https://developers.cloudflare.com/cloudflare-one/connections/connect-devices/warp/configure-warp/route-traffic/split-tunnels"><u>Split Tunnels Exclude</u></a> list. You also need to remove <code>.local</code> from the <a href="https://developers.cloudflare.com/cloudflare-one/connections/connect-devices/warp/configure-warp/route-traffic/local-domains"><u>Local Domain Fallback</u></a>.</p>
+	<p>Similarly to a setup without Gateway Resolver Policy, for this to work, you must delete your private network’s subnet (in this case <code>10.0.0.0/8</code>) and <code>100.64.0.0/10</code> from the <a href="https://developers.cloudflare.com/cloudflare-one/connections/connect-devices/warp/configure-warp/route-traffic/split-tunnels" target="_blank" rel="noopener noreferrer"><u>Split Tunnels Exclude</u></a> list. You also need to remove <code>.local</code> from the <a href="https://developers.cloudflare.com/cloudflare-one/connections/connect-devices/warp/configure-warp/route-traffic/local-domains" target="_blank" rel="noopener noreferrer"><u>Local Domain Fallback</u></a>.</p>
 	<p><b>Putting It All Together</b></p>
 	<p>With these two sets of policies, the "synthetic IP" mechanism handles the complex flow:</p>
 	<ol>
@@ -285,8 +285,8 @@
 			</svg>
 		</a>
 	</div>
-	<p>For end-users to connect to private hostnames, the feature currently works with <a href="https://developers.cloudflare.com/cloudflare-one/connections/connect-devices/warp"><b><u>WARP Client</u></b></a>, agentless <a href="https://developers.cloudflare.com/cloudflare-one/connections/connect-devices/agentless/pac-files"><b><u>PAC files</u></b></a> and <a href="https://developers.cloudflare.com/cloudflare-one/policies/browser-isolation"><b><u>Browser Isolation</u></b></a>.</p>
-	<p>Connectivity is also possible when users are behind <a href="https://developers.cloudflare.com/magic-wan"><b><u>Magic WAN</u></b></a> (in active-passive mode) or <a href="https://developers.cloudflare.com/cloudflare-one/connections/connect-networks/private-net/warp-connector"><b><u>WARP Connector</u></b></a>, but it requires some additional configuration. To ensure traffic is routed correctly, you must update the routing table on your device or router to send traffic for the following destinations through Gateway:</p>
+	<p>For end-users to connect to private hostnames, the feature currently works with <a href="https://developers.cloudflare.com/cloudflare-one/connections/connect-devices/warp" target="_blank" rel="noopener noreferrer"><b><u>WARP Client</u></b></a>, agentless <a href="https://developers.cloudflare.com/cloudflare-one/connections/connect-devices/agentless/pac-files" target="_blank" rel="noopener noreferrer"><b><u>PAC files</u></b></a> and <a href="https://developers.cloudflare.com/cloudflare-one/policies/browser-isolation" target="_blank" rel="noopener noreferrer"><b><u>Browser Isolation</u></b></a>.</p>
+	<p>Connectivity is also possible when users are behind <a href="https://developers.cloudflare.com/magic-wan" target="_blank" rel="noopener noreferrer"><b><u>Magic WAN</u></b></a> (in active-passive mode) or <a href="https://developers.cloudflare.com/cloudflare-one/connections/connect-networks/private-net/warp-connector" target="_blank" rel="noopener noreferrer"><b><u>WARP Connector</u></b></a>, but it requires some additional configuration. To ensure traffic is routed correctly, you must update the routing table on your device or router to send traffic for the following destinations through Gateway:</p>
 	<ul>
 		<li>
 			<p>The initially resolved IP ranges: <code>100.80.0.0/16</code> (IPv4) and <code>2606:4700:0cf1:4000::/64</code> (IPv6).</p>
@@ -310,7 +310,7 @@
 			</svg>
 		</a>
 	</div>
-	<p>On the other side of the connection, hostname-based routing is designed specifically for applications connected via <a href="https://developers.cloudflare.com/cloudflare-one/connections/connect-networks"><b><u>Cloudflare Tunnel</u></b></a> (<code>cloudflared</code>). This is currently the only supported off-ramp for routing by hostname.</p>
+	<p>On the other side of the connection, hostname-based routing is designed specifically for applications connected via <a href="https://developers.cloudflare.com/cloudflare-one/connections/connect-networks" target="_blank" rel="noopener noreferrer"><b><u>Cloudflare Tunnel</u></b></a> (<code>cloudflared</code>). This is currently the only supported off-ramp for routing by hostname.</p>
 	<p>Other traffic off-ramps, while fully supported for IP-based routing, are not yet compatible with this specific hostname-based feature. This includes using Magic WAN, WARP Connector, or WARP-to-WARP connections as the off-ramp to your private network. We are actively working to expand support for more on-ramps and off-ramps in the future, so stay tuned for more updates.</p>
 	<div class="flex anchor relative">
 		<h2 id="conclusion">Conclusion</h2>
@@ -322,5 +322,5 @@
 	</div>
 	<p>By enabling routing by hostname directly within Cloudflare Tunnel, we’re making security policies simpler, more resilient, and more aligned with how modern applications are built. You no longer need to track ever-changing IP addresses. You can now build precise, per-resource authorization policies for HTTPS applications based on the one thing that should matter: the name of the service you want to connect to. This is a fundamental step in making a zero trust architecture intuitive and achievable for everyone.</p>
 	<p>This powerful capability is available today, built directly into Cloudflare Tunnel and free for all Cloudflare One customers.</p>
-	<p>Ready to leave IP Lists behind for good? Get started by exploring our <a href="https://developers.cloudflare.com/cloudflare-one/connections/connect-networks/private-net/cloudflared/connect-private-hostname"><u>developer documentation</u></a> to configure your first hostname route. If you're new to <a href="https://developers.cloudflare.com/cloudflare-one"><u>Cloudflare One</u></a>, you can sign up today and begin securing your applications and networks in minutes.</p>
+	<p>Ready to leave IP Lists behind for good? Get started by exploring our <a href="https://developers.cloudflare.com/cloudflare-one/connections/connect-networks/private-net/cloudflared/connect-private-hostname" target="_blank" rel="noopener noreferrer"><u>developer documentation</u></a> to configure your first hostname route. If you're new to <a href="https://developers.cloudflare.com/cloudflare-one" target="_blank" rel="noopener noreferrer"><u>Cloudflare One</u></a>, you can sign up today and begin securing your applications and networks in minutes.</p>
 </div>

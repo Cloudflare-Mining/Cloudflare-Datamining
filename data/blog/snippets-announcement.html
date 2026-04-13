@@ -14,7 +14,7 @@
 			</svg>
 		</a>
 	</div>
-	<p>Cloudflare is used by a highly diverse customer base. We offer simple-to-use products for everything from setting HTTP headers to rewriting the URI path and performing URL redirects. Sometimes customers need more than the out-of-the-box functionality, not just adding an HTTP header - but performing some advanced calculation to create the output. Today they would need to create a feature request and wait for it to be shipped, write a <a href="https://workers.cloudflare.com">Cloudflare Worker</a>, or keep this modification ‘on origin’ - on their own infrastructure.</p>
+	<p>Cloudflare is used by a highly diverse customer base. We offer simple-to-use products for everything from setting HTTP headers to rewriting the URI path and performing URL redirects. Sometimes customers need more than the out-of-the-box functionality, not just adding an HTTP header - but performing some advanced calculation to create the output. Today they would need to create a feature request and wait for it to be shipped, write a <a href="https://workers.cloudflare.com" target="_blank" rel="noopener noreferrer">Cloudflare Worker</a>, or keep this modification ‘on origin’ - on their own infrastructure.</p>
 	<p>To simplify this, we are delighted to announce Cloudflare Snippets. Snippets are a new way to perform traffic modifications that users either cannot do via our productised offerings, or want to do programmatically. The best part? The vast majority of customers will pay <i>nothing extra</i> for using Snippets.</p>
 	<p>Users now have a choice. Perform the action via a rule. Or, if more functionality is needed, write a Snippet. &nbsp;Neither will mean waiting. Neither will incur additional cost (although a high fair usage cap will apply). Snippets unblocks users to do what they want, when they want. All on Cloudflare.</p>
 	<p>Snippets will support the import of code written in various languages, such as JavaScript (modern), VCL (legacy) and Apache .htaccess files (legacy). This allows customers to migrate legacy operational code onto our platform - whilst also consolidating their JavaScript operations.</p>
@@ -38,7 +38,7 @@
 			</svg>
 		</a>
 	</div>
-	<p><a href="https://varnish-cache.org/docs/trunk/users-guide/vcl.html">Varnish Control Language</a> (VCL) is only used within the context of Varnish. Launched around 16 years ago, it has historically been used to configure traffic and routing for <a href="https://www.cloudflare.com/learning/cdn/what-is-a-cdn">Content Delivery Networks</a> as it was extensible to a wide range of use cases.</p>
+	<p><a href="https://varnish-cache.org/docs/trunk/users-guide/vcl.html" target="_blank" rel="noopener noreferrer">Varnish Control Language</a> (VCL) is only used within the context of Varnish. Launched around 16 years ago, it has historically been used to configure traffic and routing for <a href="https://www.cloudflare.com/learning/cdn/what-is-a-cdn" target="_blank" rel="noopener noreferrer">Content Delivery Networks</a> as it was extensible to a wide range of use cases.</p>
 	<p>There are still a good number of businesses out there using VCL to perform routing and traffic modification actions. Whilst other providers are deprecating support for VCL, we want to make sure those of you comfortable using it are still supported.</p>
 	<p>Snippets won't run pure VCL. Instead, we will convert VCL into easy to maintain rules or Snippets. To achieve this we’re building a simple-to-use, self-serve VCL converter that analyzes uploaded VCL code and auto-generates suggested Snippets, and if we can find a match, also generates suggested rules for products such as Transform Rules or Cache Rules.</p>
 	<p>This topic was initially handled via <a href="https://blog.cloudflare.com/announcing-turpentine">Project Turpentine</a>, a suite of tools used by Cloudflare employees to parse a customer’s VCL into a suggested JavaScript configuration. This JavaScript could then be loaded into a Worker, or series of Workers.</p>
@@ -48,7 +48,7 @@
 		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7783datzERcQclqZ8Ey84u/12736fcb80fffecbdb6a73f7053e9deb/image1-55.png" alt="" class="kg-image" width="1999" height="1266" loading="lazy">
 
 	</figure>
-	<p>We’ll give Apache <a href="https://developer.mozilla.org/en-US/docs/Learn/Server-side/Apache_Configuration_htaccess">htaccess</a> and NGINX <a href="https://www.nginx.com/resources/wiki/start/topics/examples/full">configuration files</a> the same treatment. The goal being users simply upload the files from their websites Apache or NGINX configuration, and we generate suggested Snippets and/or rules.</p>
+	<p>We’ll give Apache <a href="https://developer.mozilla.org/en-US/docs/Learn/Server-side/Apache_Configuration_htaccess" target="_blank" rel="noopener noreferrer">htaccess</a> and NGINX <a href="https://www.nginx.com/resources/wiki/start/topics/examples/full" target="_blank" rel="noopener noreferrer">configuration files</a> the same treatment. The goal being users simply upload the files from their websites Apache or NGINX configuration, and we generate suggested Snippets and/or rules.</p>
 	<p>The days of having to use legacy code for operational tasks are coming to an end. Snippets allow users to migrate these workloads to Cloudflare, and let them focus on the bigger problems of the business vs maintaining legacy systems.</p>
 	<div class="flex anchor relative">
 		<h2 id="the-difference-between-snippets-and-workers">The difference between Snippets and Workers</h2>
@@ -59,7 +59,7 @@
 		</a>
 	</div>
 	<p>Most readers will already be familiar with Cloudflare Workers, our powerful developer platform which allows businesses to run and build entire products and solutions on Cloudflare's global network. Snippets is also built on this platform, but has a few key differences.</p>
-	<p>The first major difference is that a Snippet will run as part of the <a href="https://developers.cloudflare.com/ruleset-engine">Ruleset Engine</a> as dedicated new <i>phases</i>, similar to Transform Rules and Cache Rules. Customers will be able to select and execute a Snippet based on any <a href="https://developers.cloudflare.com/ruleset-engine/rules-language/fields">ruleset engine filter</a>. This allows customers to run a Snippet against every request, or filter for specific HTTP traffic based on the fields we offer, such as traffic with a certain bot score, originating from a specific country, or with a specific cookie. Snippets will be additive, meaning users can have one Snippet to add an HTTP header, and another to rewrite the URL, and both will execute if they match:</p>
+	<p>The first major difference is that a Snippet will run as part of the <a href="https://developers.cloudflare.com/ruleset-engine" target="_blank" rel="noopener noreferrer">Ruleset Engine</a> as dedicated new <i>phases</i>, similar to Transform Rules and Cache Rules. Customers will be able to select and execute a Snippet based on any <a href="https://developers.cloudflare.com/ruleset-engine/rules-language/fields" target="_blank" rel="noopener noreferrer">ruleset engine filter</a>. This allows customers to run a Snippet against every request, or filter for specific HTTP traffic based on the fields we offer, such as traffic with a certain bot score, originating from a specific country, or with a specific cookie. Snippets will be additive, meaning users can have one Snippet to add an HTTP header, and another to rewrite the URL, and both will execute if they match:</p>
 	<figure class="kg-card kg-image-card ">
 
 		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1RAJyoslLJf0Q7yiGjqTiD/1b0b09e884088b571e513fd8225e8892/image2-39.png" alt="" class="kg-image" width="1999" height="824" loading="lazy">
@@ -190,7 +190,7 @@
 			</svg>
 		</a>
 	</div>
-	<p>When creating Snippets customers will be able to access Cloudflare <a href="https://developers.cloudflare.com/workers/runtime-apis/request">features</a> available in the Workers runtime, such as the bot score field. This enables customers to forward an HTTP request to a honeypot or use the RegExp Javascript function to change the URL construct being sent back to the end user when traffic is assigned a bot score below a certain threshold, e.g. <a href="https://developers.cloudflare.com/bots/concepts/bot-score/#:~:text=A%20bot%20score%20is%20a,request%20came%20from%20a%20human.">29 and lower</a>.</p>
+	<p>When creating Snippets customers will be able to access Cloudflare <a href="https://developers.cloudflare.com/workers/runtime-apis/request" target="_blank" rel="noopener noreferrer">features</a> available in the Workers runtime, such as the bot score field. This enables customers to forward an HTTP request to a honeypot or use the RegExp Javascript function to change the URL construct being sent back to the end user when traffic is assigned a bot score below a certain threshold, e.g. <a href="https://developers.cloudflare.com/bots/concepts/bot-score/#:~:text=A%20bot%20score%20is%20a,request%20came%20from%20a%20human." target="_blank" rel="noopener noreferrer">29 and lower</a>.</p>
 	<pre class="language-javascript"><code class="language-javascript">…
 if (request.cf.botManagement.score &lt; 30) {
 const honeypot = "https://example.com/";
@@ -258,6 +258,6 @@ if (userAgent.includes("Facebook")) {
 			</svg>
 		</a>
 	</div>
-	<p>Snippets are currently under development — you can sign up <a href="https://www.cloudflare.com/lp/cloudflare-snippets">here</a> to join the waitlist for access.</p>
+	<p>Snippets are currently under development — you can sign up <a href="https://www.cloudflare.com/lp/cloudflare-snippets" target="_blank" rel="noopener noreferrer">here</a> to join the waitlist for access.</p>
 	<p>We hope to begin admitting users into the closed beta in early 2023, with an open beta to follow.</p>
 </div>

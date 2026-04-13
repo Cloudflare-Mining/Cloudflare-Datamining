@@ -12,7 +12,7 @@
 	</figure>
 	<p>For the Cloudflare products then in existence, this was not a major problem, as connections terminate and content is served from nearby servers due to our BGP anycast routing.</p>
 	<p>Since then, we have added new products, such as Magic WAN, WARP, Spectrum, Gateway, and others. These represent new types of use cases and traffic flows.</p>
-	<p>For example, imagine you're a typical Magic WAN customer. You have connected all of your worldwide offices together using the Cloudflare global network. While Time to First Byte still matters, Magic WAN office-to-office traffic also needs good throughput. For example, a lot of traffic over these corporate connections will be file sharing using protocols such as SMB. These are <a href="https://en.wikipedia.org/wiki/Elephant_flow">elephant flows</a> over <a href="https://datatracker.ietf.org/doc/html/rfc1072">long fat networks</a>. Throughput is the metric every eyeball watches as they are downloading files.</p>
+	<p>For example, imagine you're a typical Magic WAN customer. You have connected all of your worldwide offices together using the Cloudflare global network. While Time to First Byte still matters, Magic WAN office-to-office traffic also needs good throughput. For example, a lot of traffic over these corporate connections will be file sharing using protocols such as SMB. These are <a href="https://en.wikipedia.org/wiki/Elephant_flow" target="_blank" rel="noopener noreferrer">elephant flows</a> over <a href="https://datatracker.ietf.org/doc/html/rfc1072" target="_blank" rel="noopener noreferrer">long fat networks</a>. Throughput is the metric every eyeball watches as they are downloading files.</p>
 	<p>We need to continue to provide world-class low latency while simultaneously providing high throughput over high-latency connections.</p>
 	<p>Before we begin, let’s introduce the players in our game.</p>
 	<p><b>TCP receive window</b> is the maximum number of unacknowledged user payload bytes the sender should transmit (bytes-in-flight) at any point in time. The size of the receive window can and does go up and down during the course of a TCP session. It is a mechanism whereby the receiver can tell the sender to stop sending if the sent packets cannot be successfully received because the receive buffers are full. It is this receive window that often limits throughput over high-latency networks.</p>
@@ -105,7 +105,7 @@
 			</svg>
 		</a>
 	</div>
-	<p>Linux autotuning is logic in the Linux kernel that adjusts the buffer size limits and the receive window based on actual packet processing. It takes into consideration a number of things including TCP session <a href="https://www.cloudflare.com/learning/cdn/glossary/round-trip-time-rtt">RTT</a>, L7 read rates, and the amount of available host memory.</p>
+	<p>Linux autotuning is logic in the Linux kernel that adjusts the buffer size limits and the receive window based on actual packet processing. It takes into consideration a number of things including TCP session <a href="https://www.cloudflare.com/learning/cdn/glossary/round-trip-time-rtt" target="_blank" rel="noopener noreferrer">RTT</a>, L7 read rates, and the amount of available host memory.</p>
 	<p>Autotuning can sometimes seem mysterious, but it is actually fairly straightforward.</p>
 	<p>The central idea is that Linux can track the rate at which the local application is reading data off of the receive queue. It also knows the session RTT. Because Linux knows these things, it can automatically increase the buffers and receive window until it reaches the point at which the application layer or network bottleneck links are the constraint on throughput (and not host buffer settings). At the same time, autotuning prevents slow local readers from having excessively large receive queues. The way autotuning does that is by limiting the receive window and its corresponding receive buffer to an appropriate size for each socket.</p>
 	<p>The values set by autotuning can be seen via the Linux “<code>ss</code>” command from the <code>iproute</code> package (e.g. “<code>ss -tmi</code>”). &nbsp;The relevant output fields from that command are:</p>
@@ -116,7 +116,7 @@
 	<p><b>skmem_rb</b> is the maximum amount of memory that could be allocated by the socket for the receive buffer. This is higher than rcv_ssthresh to account for memory needed for packet processing that is not packet data. Autotuning can increase this value (up to tcp_rmem max) based on how fast the L7 application is able to read data from the socket and the RTT of the session. This is known within the kernel as sk_rcvbuf.</p>
 	<p><b>rcv_space</b> is the high water mark of the rate of the local application reading from the receive buffer during any RTT. This is used internally within the kernel to adjust sk_rcvbuf.</p>
 	<p>Earlier we mentioned a setting called tcp_rmem. <b>net.ipv4.tcp_rmem</b> consists of three values, but in this document we are always referring to the third value (except where noted). It is a global setting that specifies the maximum amount of memory that any TCP receive buffer can allocate, i.e. the maximum permissible value that autotuning can use for sk_rcvbuf. This is essentially just a failsafe for autotuning, and under normal circumstances should play only a minor role in TCP memory management.</p>
-	<p>It’s worth mentioning that receive buffer memory is not preallocated. Memory is allocated based on actual packets arriving and sitting in the receive queue. It’s also important to realize that filling up a receive queue is not one of the criteria that autotuning uses to increase sk_rcvbuf. Indeed, preventing this type of excessive buffering (<a href="https://en.wikipedia.org/wiki/Bufferbloat">bufferbloat</a>) is one of the benefits of autotuning.</p>
+	<p>It’s worth mentioning that receive buffer memory is not preallocated. Memory is allocated based on actual packets arriving and sitting in the receive queue. It’s also important to realize that filling up a receive queue is not one of the criteria that autotuning uses to increase sk_rcvbuf. Indeed, preventing this type of excessive buffering (<a href="https://en.wikipedia.org/wiki/Bufferbloat" target="_blank" rel="noopener noreferrer">bufferbloat</a>) is one of the benefits of autotuning.</p>
 	<div class="flex anchor relative">
 		<h2 id="whats-the-problem">What’s the problem?</h2>
 		<a href="https://blog.cloudflare.com/#whats-the-problem" aria-hidden="true" class="relative sm:absolute sm:-start-5">
@@ -125,7 +125,7 @@
 			</svg>
 		</a>
 	</div>
-	<p>The problem is that we must have a large TCP receive window for high <a href="https://en.wikipedia.org/wiki/Bandwidth-delay_product">BDP</a> sessions. This is directly at odds with the latency spike problem mentioned above.</p>
+	<p>The problem is that we must have a large TCP receive window for high <a href="https://en.wikipedia.org/wiki/Bandwidth-delay_product" target="_blank" rel="noopener noreferrer">BDP</a> sessions. This is directly at odds with the latency spike problem mentioned above.</p>
 	<p>Something has to give. The laws of physics (speed of light in glass, etc.) dictate that we must use large window sizes. There is no way to get around that. So we are forced to solve the latency spikes differently.</p>
 	<div class="flex anchor relative">
 		<h2 id="a-brief-recap-of-the-latency-spike-problem">A brief recap of the latency spike problem</h2>
@@ -522,7 +522,7 @@ net.ipv4.tcp_adv_win_scale = -2</code></pre>
 	<p>In hindsight, we should have noticed that tcp_prune_queue() actually raises sk_rcvbuf when it can. So we modified the patch in response to that, added a guard to allow the collapse to execute when sk_rmem_alloc is less than the threshold value.</p>
 	<p><code>net.ipv4.tcp_collapse_max_bytes = 6291456</code></p>
 	<p>The next section discusses how we arrived at this value for tcp_collapse_max_bytes.</p>
-	<p>The patch is available <a href="https://github.com/cloudflare/linux/blob/master/patches/0014-add-a-sysctl-to-enable-disable-tcp_collapse-logic.patch">here</a>.</p>
+	<p>The patch is available <a href="https://github.com/cloudflare/linux/blob/master/patches/0014-add-a-sysctl-to-enable-disable-tcp_collapse-logic.patch" target="_blank" rel="noopener noreferrer">here</a>.</p>
 	<p>The results with the new patch are as follows:</p>
 	<p>oscil – 300ms tests</p>
 	<table>
@@ -2267,7 +2267,7 @@ net.ipv4.tcp_notsent_lowat = 131072</code></pre>
 	</div>
 	<p>What we have shown so far is that the receiver side seems to be working well, but what about the sender side?</p>
 	<p>As part of this work, we are setting tcp_wmem max to 512 MiB. For oscillating reader flows, this can cause the send buffer to become quite large. This represents bufferbloat and wasted kernel memory, both things that nobody likes or wants.</p>
-	<p>Fortunately, there is already a solution: <b>tcp_notsent_lowat</b>. This setting limits the size of unsent bytes in the write queue. More details can be found at <a href="https://lwn.net/Articles/560082">https://lwn.net/Articles/560082</a>.</p>
+	<p>Fortunately, there is already a solution: <b>tcp_notsent_lowat</b>. This setting limits the size of unsent bytes in the write queue. More details can be found at <a href="https://lwn.net/Articles/560082" target="_blank" rel="noopener noreferrer">https://lwn.net/Articles/560082</a>.</p>
 	<p>The results are significant:</p>
 	<figure class="kg-card kg-image-card ">
 
@@ -2286,6 +2286,6 @@ net.ipv4.tcp_notsent_lowat = 131072</code></pre>
 	</div>
 	<p>The goal of this work is to open the throughput floodgates for high BDP connections while simultaneously ensuring very low HTTP request latency.</p>
 	<p>We have accomplished that goal.</p>
-	<p>...<i>We protect </i><a href="https://www.cloudflare.com/network-services"><i>entire corporate networks</i></a><i>, help customers build </i><a href="https://workers.cloudflare.com"><i>Internet-scale applications efficiently</i></a><i>, accelerate any </i><a href="https://www.cloudflare.com/performance/accelerate-internet-applications"><i>website or Internet application</i></a><i>, ward off </i><a href="https://www.cloudflare.com/ddos"><i>DDoS attacks</i></a><i>, keep </i><a href="https://www.cloudflare.com/application-security"><i>hackers at bay</i></a><i>, and can help you on </i><a href="https://www.cloudflare.com/products/zero-trust"><i>your journey to Zero Trust</i></a><i>.</i></p>
-	<p><i>Visit </i><a href="https://1.1.1.1"><i>1.1.1.1</i></a><i> from any device to get started with our free app that makes your Internet faster and safer.To learn more about our mission to help build a better Internet, start </i><a href="https://www.cloudflare.com/learning/what-is-cloudflare"><i>here</i></a><i>. If you’re looking for a new career direction, check out </i><a href="https://cloudflare.com/careers"><i>our open positions</i></a><i>.</i></p>
+	<p>...<i>We protect </i><a href="https://www.cloudflare.com/network-services" target="_blank" rel="noopener noreferrer"><i>entire corporate networks</i></a><i>, help customers build </i><a href="https://workers.cloudflare.com" target="_blank" rel="noopener noreferrer"><i>Internet-scale applications efficiently</i></a><i>, accelerate any </i><a href="https://www.cloudflare.com/performance/accelerate-internet-applications" target="_blank" rel="noopener noreferrer"><i>website or Internet application</i></a><i>, ward off </i><a href="https://www.cloudflare.com/ddos" target="_blank" rel="noopener noreferrer"><i>DDoS attacks</i></a><i>, keep </i><a href="https://www.cloudflare.com/application-security" target="_blank" rel="noopener noreferrer"><i>hackers at bay</i></a><i>, and can help you on </i><a href="https://www.cloudflare.com/products/zero-trust" target="_blank" rel="noopener noreferrer"><i>your journey to Zero Trust</i></a><i>.</i></p>
+	<p><i>Visit </i><a href="https://1.1.1.1" target="_blank" rel="noopener noreferrer"><i>1.1.1.1</i></a><i> from any device to get started with our free app that makes your Internet faster and safer.To learn more about our mission to help build a better Internet, start </i><a href="https://www.cloudflare.com/learning/what-is-cloudflare" target="_blank" rel="noopener noreferrer"><i>here</i></a><i>. If you’re looking for a new career direction, check out </i><a href="https://cloudflare.com/careers" target="_blank" rel="noopener noreferrer"><i>our open positions</i></a><i>.</i></p>
 </div>

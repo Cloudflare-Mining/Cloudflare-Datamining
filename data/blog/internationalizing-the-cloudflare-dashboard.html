@@ -1,7 +1,7 @@
 <div class="mb2 gray5">17 min read</div>
 <div class="mt4">This post is also available in <a href="https://blog.cloudflare.com/zh-cn/internationalizing-the-cloudflare-dashboard">简体中文</a>, <a href="https://blog.cloudflare.com/de-de/internationalizing-the-cloudflare-dashboard">Deutsch</a>, <a href="https://blog.cloudflare.com/ja-jp/internationalizing-the-cloudflare-dashboard">日本語</a> and <a href="https://blog.cloudflare.com/fr-fr/internationalizing-the-cloudflare-dashboard">Français</a>.</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/51fZziOS1hvKKIdS4QBCTp/becca5657be9bec4adcbb80469f4764a/internationalizing-the-cloudflare-dashboard.png" alt="">
 <div class="post-content lh-copy gray1">
-	<p><a href="https://dash.cloudflare.com/sign-up">Cloudflare’s dashboard</a> now supports four new languages (and multiple locales): Spanish (with country-specific locales: Chile, Ecuador, Mexico, Peru, and Spain), Brazilian Portuguese, Korean, and Traditional Chinese. Our customers are global and diverse, so in helping build a better Internet for everyone, it is imperative that we bring our products and services to customers in their native language.</p>
+	<p><a href="https://dash.cloudflare.com/sign-up" target="_blank" rel="noopener noreferrer">Cloudflare’s dashboard</a> now supports four new languages (and multiple locales): Spanish (with country-specific locales: Chile, Ecuador, Mexico, Peru, and Spain), Brazilian Portuguese, Korean, and Traditional Chinese. Our customers are global and diverse, so in helping build a better Internet for everyone, it is imperative that we bring our products and services to customers in their native language.</p>
 	<p>Since last year Cloudflare has been hard at work internationalizing our dashboard. At the end of 2019, we launched our first language other than US English: German. At the end of March 2020, we released three additional languages: French, Japanese, and Simplified Chinese. If you want to start using the dashboard in any of these languages, you can change your language preference in the top right of the Cloudflare dashboard. The preference selected will be saved and used across all sessions.</p>
 	<figure class="kg-card kg-image-card ">
 
@@ -77,7 +77,7 @@
 }
 </code></pre>
 	<p>This gets the job done and may even seem like an elegant solution. After all, both the <code>selected.prefix</code> and <code>pageRules.suffix</code> strings seem like they are destined to be reused. Unfortunately, chopping sentences up and then concatenating translated bits back together like this turns out to be the single largest pitfall when externalizing strings for internationalization.</p>
-	<p>The problem is that when translated, the various words that make up a sentence can be <a href="https://en.wikipedia.org/wiki/Inflection">morphed in different ways</a> based on context (singular vs plural contexts, due to word gender, subject/verb agreement, etc). This varies significantly from language to language, as does <a href="https://en.wikipedia.org/wiki/Word_order">word order</a>. For example in English, the sentence “We like them” follows a subject-verb-object order, while other languages might follow subject-object-verb (We them like), verb-subject-object (Like we them), or even other orderings. Because of these nuanced differences between languages, concatenating translated phrases into a sentence will almost always lead to localization errors.</p>
+	<p>The problem is that when translated, the various words that make up a sentence can be <a href="https://en.wikipedia.org/wiki/Inflection" target="_blank" rel="noopener noreferrer">morphed in different ways</a> based on context (singular vs plural contexts, due to word gender, subject/verb agreement, etc). This varies significantly from language to language, as does <a href="https://en.wikipedia.org/wiki/Word_order" target="_blank" rel="noopener noreferrer">word order</a>. For example in English, the sentence “We like them” follows a subject-verb-object order, while other languages might follow subject-object-verb (We them like), verb-subject-object (Like we them), or even other orderings. Because of these nuanced differences between languages, concatenating translated phrases into a sentence will almost always lead to localization errors.</p>
 	<p>The code example above contains actual translations we got back from our translation teams when we supplied them with “You’ve selected” and “Page Rules” as separate strings. Here’s how this sentence would look when rendered in the different languages:</p>
 	<table>
 		<tbody>
@@ -282,7 +282,7 @@
 		</a>
 	</div>
 	<p>So far we've talked at length about our <code>&lt;Trans&gt;</code> component and what it can do. Now, let's talk about how it's built.</p>
-	<p>Perhaps unsurprisingly, we didn't want to reinvent the wheel and come up with a base i18n library from scratch. Due to prior efforts to internationalize the legacy parts of our application written in Backbone, we were already using Airbnb's <a href="https://airbnb.io/polyglot.js">Polyglot library</a>, a "tiny I18n helper library written in JavaScript" which, among other things, "provides a simple solution for interpolation and pluralization, based off of Airbnb’s experience adding I18n functionality to its Backbone.js and Node apps".</p>
+	<p>Perhaps unsurprisingly, we didn't want to reinvent the wheel and come up with a base i18n library from scratch. Due to prior efforts to internationalize the legacy parts of our application written in Backbone, we were already using Airbnb's <a href="https://airbnb.io/polyglot.js" target="_blank" rel="noopener noreferrer">Polyglot library</a>, a "tiny I18n helper library written in JavaScript" which, among other things, "provides a simple solution for interpolation and pluralization, based off of Airbnb’s experience adding I18n functionality to its Backbone.js and Node apps".</p>
 	<p>We took a look at a few of the most popular libraries that had been purpose-built for internationalizing React applications, but ultimately decided to stick with Polyglot. We created our <code>&lt;Trans&gt;</code> component to bridge the gap to React. We chose this direction for a few reasons:</p>
 	<ul>
 		<li>
@@ -297,7 +297,7 @@
 	</ul>
 	<p>If you're just getting started with i18n in a new React based web-app, react-intl and i18n-next are 2 popular libraries that supply a component similar to <code>&lt;Trans&gt;</code> described above.</p>
 	<p>The biggest pain point of the <code>&lt;Trans&gt;</code> component as outlined is that strings have to be kept in a separate file from your source code. Switching between multiple files as you author new code or modify existing features is just plain annoying. It's even more annoying if the translation files are kept far away in the directory structure, as they often need to be.</p>
-	<p>There are some new i18n libraries such as <a href="https://github.com/lingui/js-lingui">jslingui</a> that obviate this problem by taking an extraction based approach to handling translation catalogs. In this scheme, you still use a <code>&lt;Trans&gt;</code>component, but you keep your strings in the component itself, not a separate catalog:</p>
+	<p>There are some new i18n libraries such as <a href="https://github.com/lingui/js-lingui" target="_blank" rel="noopener noreferrer">jslingui</a> that obviate this problem by taking an extraction based approach to handling translation catalogs. In this scheme, you still use a <code>&lt;Trans&gt;</code>component, but you keep your strings in the component itself, not a separate catalog:</p>
 	<pre class="language-jsx"><code class="language-jsx">&lt;span&gt;
   &lt;Trans&gt;Hmm... We couldn't find any matching websites.&lt;/Trans&gt;
 &lt;/span&gt;</code></pre>
@@ -327,7 +327,7 @@
 	<p>Earlier when we talked about injecting data translated strings, we glossed over a major issue: the data we're injecting may also need to be formatted to conform to the user's local customs. This is true for dates, times, numbers, currencies and some other types of data.</p>
 	<p>Let's take our simple example from earlier:</p>
 	<pre class="language-jsx"><code class="language-jsx">&lt;span&gt;You've selected { totalSelected } Page Rules.&lt;/span&gt;</code></pre>
-	<p>Without proper formatting, this will appear correct for small numbers, but as soon as things get into the thousands, localization problems will arise, since the way that digits are grouped and separated with symbols <a href="https://en.wikipedia.org/wiki/Decimal_separator">varies by culture</a>. Here's how three-hundred thousand and three hundredths is formatted in a few different locales:</p>
+	<p>Without proper formatting, this will appear correct for small numbers, but as soon as things get into the thousands, localization problems will arise, since the way that digits are grouped and separated with symbols <a href="https://en.wikipedia.org/wiki/Decimal_separator" target="_blank" rel="noopener noreferrer">varies by culture</a>. Here's how three-hundred thousand and three hundredths is formatted in a few different locales:</p>
 	<table>
 		<tbody>
 			<tr>
@@ -486,7 +486,7 @@
 			</tr>
 		</tbody>
 	</table>
-	<p>The way that dates are formatted <a href="https://en.wikipedia.org/wiki/Date_format_by_country">varies significantly from country to country</a>. If you've developed your UI mainly with a US audience in mind, you're probably displaying dates in a way that will feel foreign and perhaps unintuitive to users from just about any other place in the world. Among other things, date formatting can vary in terms of separator choice, whether single digits are zero padded, and in the way that the day, month, and year portions are ordered. Here's how the March 4th of the current year is formatted in a few different locales:</p>
+	<p>The way that dates are formatted <a href="https://en.wikipedia.org/wiki/Date_format_by_country" target="_blank" rel="noopener noreferrer">varies significantly from country to country</a>. If you've developed your UI mainly with a US audience in mind, you're probably displaying dates in a way that will feel foreign and perhaps unintuitive to users from just about any other place in the world. Among other things, date formatting can vary in terms of separator choice, whether single digits are zero padded, and in the way that the day, month, and year portions are ordered. Here's how the March 4th of the current year is formatted in a few different locales:</p>
 	<table>
 		<tbody>
 			<tr>
@@ -813,16 +813,16 @@
 		</a>
 	</div>
 	<p>Ensuring the correct format for all these types of data for all supported locales is no easy task. Fortunately, there are a number of mature, battle-tested libraries that can help you out.</p>
-	<p>When we kicked off our project, we were using the <a href="https://momentjs.com">Moment.js</a> library extensively for date and time formatting. This handy library abstracts away the details of formatting dates to different lengths ("Jul 9th 20", "July 9th 2020", vs "Thursday"), displaying relative dates ("2 days ago"), amongst many other things. Since almost all of our dates were already being formatted via Moment.js for readability, and since Moment.js already has i18n support for numerous locales, it meant that we were able to flip a couple of switches and have properly localized dates with very little effort.</p>
+	<p>When we kicked off our project, we were using the <a href="https://momentjs.com" target="_blank" rel="noopener noreferrer">Moment.js</a> library extensively for date and time formatting. This handy library abstracts away the details of formatting dates to different lengths ("Jul 9th 20", "July 9th 2020", vs "Thursday"), displaying relative dates ("2 days ago"), amongst many other things. Since almost all of our dates were already being formatted via Moment.js for readability, and since Moment.js already has i18n support for numerous locales, it meant that we were able to flip a couple of switches and have properly localized dates with very little effort.</p>
 	<p>There are some strong criticisms of Moment.js (mainly bloat), but ultimately the benefits realized from switching to a lower footprint alternative when compared to the cost it would take to redo every date and time didn't add up.</p>
 	<p>Numbers were a very different story. We had, as you might imagine, thousands of raw, unformatted numbers being displayed throughout the dashboard. Hunting them down was a laborious and often manual process.</p>
-	<p>To handle the actual formatting of numbers, we used the <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl">Intl API</a> (the Internationalization library defined by the ECMAScript standard):</p>
+	<p>To handle the actual formatting of numbers, we used the <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl" target="_blank" rel="noopener noreferrer">Intl API</a> (the Internationalization library defined by the ECMAScript standard):</p>
 	<pre class="language-javascript"><code class="language-javascript">var number = 300000.03;
 var formatted = number.toLocaleString('hi-IN'); // 3,00,000.03
 // This probably works in the browser you're using right now!</code></pre>
 	<p>Fortunately, browser support for Intl has come quite a long way in recent years, with all modern browsers having full support.</p>
-	<p>Some modern JavaScript engines like V8 have even moved away from self-hosted JavaScript implementations of these libraries in favor of C++ based builtins, <a href="https://v8.dev/blog/intl">resulting in significant speedup</a>.</p>
-	<p>Support for older browsers can be somewhat lacking, however. Here's a <a href="https://intl-formatting.jculvey.workers.dev">simple demo site</a> (<a href="https://github.com/jculvey/intl-formatting-worker">source code</a>) that’s built with <a href="https://workers.cloudflare.com">Cloudflare Workers</a> that shows how dates, times, and numbers are rendered in a hand-full of locales.</p>
+	<p>Some modern JavaScript engines like V8 have even moved away from self-hosted JavaScript implementations of these libraries in favor of C++ based builtins, <a href="https://v8.dev/blog/intl" target="_blank" rel="noopener noreferrer">resulting in significant speedup</a>.</p>
+	<p>Support for older browsers can be somewhat lacking, however. Here's a <a href="https://intl-formatting.jculvey.workers.dev" target="_blank" rel="noopener noreferrer">simple demo site</a> (<a href="https://github.com/jculvey/intl-formatting-worker" target="_blank" rel="noopener noreferrer">source code</a>) that’s built with <a href="https://workers.cloudflare.com" target="_blank" rel="noopener noreferrer">Cloudflare Workers</a> that shows how dates, times, and numbers are rendered in a hand-full of locales.</p>
 	<p>Some combinations of old browsers and OS's will yield less than ideal results. For example, here's how the same dates and times from above are rendered on Windows 8 with IE 10:</p><!--kg-card-begin: html-->
 	<table>
 		<tbody>
@@ -893,8 +893,8 @@ var formatted = number.toLocaleString('hi-IN'); // 3,00,000.03
 		</a>
 	</div>
 	<p>There are a few more things we can do to optimize the user experience in our newly localized application.</p>
-	<p>First, we want to make sure there isn’t any performance degradation. If our application made the user fetch all of its translated strings before rendering the page, this would surely happen. So, in order to keep everything running smoothly, the translation catalogs are fetched asynchronously and only as the application needs them to render some content on the page. This is easy to accomplish nowadays with the code splitting features available in module bundlers that support dynamic import statements such as <a href="https://parceljs.org/code_splitting.html">Parcel</a> or <a href="https://webpack.js.org/guides/code-splitting">Webpack</a>.</p>
-	<p>We also want to eliminate any friction the user might experience with needing to constantly select their desired language when visiting different Cloudflare properties. To this end, we made sure that any language preference a user selects on our <a href="https://www.cloudflare.com/fr-fr">marketing site</a> or our <a href="https://support.cloudflare.com/hc/fr-fr">support site</a> persists as they navigate to and from our <a href="https://dash.cloudflare.com/login?lang=fr-fr">dashboard</a> (all links are in French to belabor the point).</p>
+	<p>First, we want to make sure there isn’t any performance degradation. If our application made the user fetch all of its translated strings before rendering the page, this would surely happen. So, in order to keep everything running smoothly, the translation catalogs are fetched asynchronously and only as the application needs them to render some content on the page. This is easy to accomplish nowadays with the code splitting features available in module bundlers that support dynamic import statements such as <a href="https://parceljs.org/code_splitting.html" target="_blank" rel="noopener noreferrer">Parcel</a> or <a href="https://webpack.js.org/guides/code-splitting" target="_blank" rel="noopener noreferrer">Webpack</a>.</p>
+	<p>We also want to eliminate any friction the user might experience with needing to constantly select their desired language when visiting different Cloudflare properties. To this end, we made sure that any language preference a user selects on our <a href="https://www.cloudflare.com/fr-fr" target="_blank" rel="noopener noreferrer">marketing site</a> or our <a href="https://support.cloudflare.com/hc/fr-fr" target="_blank" rel="noopener noreferrer">support site</a> persists as they navigate to and from our <a href="https://dash.cloudflare.com/login?lang=fr-fr" target="_blank" rel="noopener noreferrer">dashboard</a> (all links are in French to belabor the point).</p>
 	<div class="flex anchor relative">
 		<h3 id="whats-next">What’s next?</h3>
 		<a href="https://blog.cloudflare.com/#whats-next" aria-hidden="true" class="relative sm:absolute sm:-start-5">
@@ -910,7 +910,7 @@ var formatted = number.toLocaleString('hi-IN'); // 3,00,000.03
 			<p>Collation. String comparison is language sensitive, and as such, the code you’ve written to lexicographically sort lists and tables of data in your app is probably doing the wrong thing for some of your users. This is especially apparent in languages that use logo graphic writing systems (such as Chinese or Japanese) as opposed to languages that use alphabets (like English or Spanish).</p>
 		</li>
 		<li>
-			<p>Support for <a href="https://en.wikipedia.org/wiki/Right-to-left">right-to-left languages</a> like Arabic and Hebrew.</p>
+			<p>Support for <a href="https://en.wikipedia.org/wiki/Right-to-left" target="_blank" rel="noopener noreferrer">right-to-left languages</a> like Arabic and Hebrew.</p>
 		</li>
 		<li>
 			<p>Localizing API responses is harder than localizing static copy in your user interface, as it takes a coordinated effort between teams. In the age of microservices, finding a solution that works well across the myriad of tech stacks that power each service can be very challenging.</p>
@@ -922,5 +922,5 @@ var formatted = number.toLocaleString('hi-IN'); // 3,00,000.03
 			<p>Machine translation has come a long way in recent years, but not far enough to churn our translations unsupervised. We would however like to experiment more with using machine translation as a first pass that translation reviewers then edit for correctness and tone.</p>
 		</li>
 	</ul>
-	<p>I hope you have enjoyed this overview of how Cloudflare internationalized and localized our dashboard. &nbsp;Check out <a href="https://www.cloudflare.com/careers/jobs">our careers page</a> for more information on full-time positions and internship roles across the globe.</p>
+	<p>I hope you have enjoyed this overview of how Cloudflare internationalized and localized our dashboard. &nbsp;Check out <a href="https://www.cloudflare.com/careers/jobs" target="_blank" rel="noopener noreferrer">our careers page</a> for more information on full-time positions and internship roles across the globe.</p>
 </div>

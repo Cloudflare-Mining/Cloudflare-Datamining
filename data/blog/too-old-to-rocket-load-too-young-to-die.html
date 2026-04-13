@@ -43,7 +43,7 @@
 			<p><i>Vendor</i>: Use <code>&lt;script defer&gt;</code>.It’s 1997, and IE4 introduces the <code>defer</code> attribute. Scripts that do not contribute to the initial rendering of the page should be marked with <code>defer</code>, and they will load in parallel, without blocking, and be executed in their markup order before <code>window.load</code> is fired (later, before <code>document.DOMContentLoaded</code>). Script tags could remain in the <code>&lt;head&gt;</code>, and execute as if they were at the end of page.The main benefit to page rendering was the saving in script retrieval time.</p>
 		</li>
 		<li>
-			<p><i>Community</i>: Reduce latency by reducing actual script size.What began as script <i>obfuscation</i> for intellectual property and vanity reasons, quickly became script <a href="https://en.wikipedia.org/wiki/Minification_(programming)"><i>minification</i></a>, still used widely.</p>
+			<p><i>Community</i>: Reduce latency by reducing actual script size.What began as script <i>obfuscation</i> for intellectual property and vanity reasons, quickly became script <a href="https://en.wikipedia.org/wiki/Minification_(programming)" target="_blank" rel="noopener noreferrer"><i>minification</i></a>, still used widely.</p>
 		</li>
 		<li>
 			<p><i>Community</i>: Reduce latency and http handshake instances through concatenation of all scripts, delivered as one.</p>
@@ -70,7 +70,7 @@
 		</a>
 	</div>
 	<p>Much has been written in this blog space about <a href="https://blog.cloudflare.com/tag/rocketloader">Rocket Loader</a>, from its <a href="https://blog.cloudflare.com/how-cloudflare-rocket-loader-redefines-the-modern-cdn">initial launch</a>, to the <a href="https://blog.cloudflare.com/we-have-lift-off-rocket-loader-ga-is-mobile">current one</a>.</p>
-	<p>If reading outdated blog posts is not your thing, perhaps watching an extremely short video of a high-profile early Rocket Loader success (June 9, 2011) is:<a href="https://vimeo.com/24900882">CloudFlare Rocket Loader makes the Financial Times website (FT.com) faster</a></p>
+	<p>If reading outdated blog posts is not your thing, perhaps watching an extremely short video of a high-profile early Rocket Loader success (June 9, 2011) is:<a href="https://vimeo.com/24900882" target="_blank" rel="noopener noreferrer">CloudFlare Rocket Loader makes the Financial Times website (FT.com) faster</a></p>
 	<p>Rocket Loader improved page load times by:</p>
 	<ol>
 		<li>
@@ -92,7 +92,7 @@
 			<p>It did not honour Subresource IntegrityRocket Loader loaded scripts through XHR, so browsers could not validate the fetched script.</p>
 		</li>
 		<li>
-			<p>It allowed for <a href="https://www.cloudflare.com/learning/security/threats/cross-site-scripting">XSS</a> PersistenceSince Rocket Loader stored scripts in LocalStorage, a site’s compromised script could exist as a trojan in a customer’s storage, loading whenever the customer visited the site.</p>
+			<p>It allowed for <a href="https://www.cloudflare.com/learning/security/threats/cross-site-scripting" target="_blank" rel="noopener noreferrer">XSS</a> PersistenceSince Rocket Loader stored scripts in LocalStorage, a site’s compromised script could exist as a trojan in a customer’s storage, loading whenever the customer visited the site.</p>
 		</li>
 		<li>
 			<p>It was just out-of-date</p>
@@ -143,8 +143,8 @@
 			<p>insert the client-side component of Rocket Loader into the page.</p>
 		</li>
 	</ol>
-	<p>The server-side component is built on top of our CF-HTML pipeline. CF-HTML is an nginx module that provides streaming HTML parsing and rewriting functionality with a SAX-style (<a href="https://en.wikipedia.org/wiki/Simple_API_for_XML">Simple API for XML</a>) API on top of it.</p>
-	<p>To make the scripts non-executable, we simply prepend their <code>type</code> attribute value with a randomly generated value (<a href="https://en.wikipedia.org/wiki/Cryptographic_nonce">nonce</a>), unique for each page request. Having a unique prefix for each page prevents Rocket Loader from being used as an XSS gadget to bypass various XSS filters.</p>
+	<p>The server-side component is built on top of our CF-HTML pipeline. CF-HTML is an nginx module that provides streaming HTML parsing and rewriting functionality with a SAX-style (<a href="https://en.wikipedia.org/wiki/Simple_API_for_XML" target="_blank" rel="noopener noreferrer">Simple API for XML</a>) API on top of it.</p>
+	<p>To make the scripts non-executable, we simply prepend their <code>type</code> attribute value with a randomly generated value (<a href="https://en.wikipedia.org/wiki/Cryptographic_nonce" target="_blank" rel="noopener noreferrer">nonce</a>), unique for each page request. Having a unique prefix for each page prevents Rocket Loader from being used as an XSS gadget to bypass various XSS filters.</p>
 	<p>Markup that looked like this:</p>
 	<pre class="language-html"><code class="language-html">&lt;!DOCTYPE html&gt;
 &lt;html&gt;
@@ -202,7 +202,7 @@
 		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4jwj7cYA0lu9sgSsf9boRx/86993ee16e0cd1eda9a3178017961b53/loadExecute1.png" alt="loadExecute1" class="kg-image" width="1882" height="448" loading="lazy">
 
 	</figure>
-	<p>Modified diagram from <a href="https://html.spec.whatwg.org/#attr-script-defer">HTML Standard</a></p>
+	<p>Modified diagram from <a href="https://html.spec.whatwg.org/#attr-script-defer" target="_blank" rel="noopener noreferrer">HTML Standard</a></p>
 	<p>To handle load and execution of all script types, Rocket Loader needs two passes.</p>
 	<div class="flex anchor relative">
 		<h4 id="pass-one">Pass One</h4>
@@ -269,7 +269,7 @@
 		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1tjsG9hdMmd8QDZduzsrXF/bfbd69cda8f237c8eed1826a1196b58f/withRocketCroppedSm.png" alt="" class="kg-image" width="378" height="352" loading="lazy">
 
 	</figure>
-	<p>In our attempt to improve page load performance, we significantly slowed down some script loading. Ironic. Fortunately, we have a workaround: we can insert <i>preload hints</i> (see <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Preloading_content">Preloading content with rel="preload"</a>) before we begin unwinding our script stack, giving the browser notice that we’ll soon be requiring these scripts. It begins fetching them as it would do during speculative parsing.</p>
+	<p>In our attempt to improve page load performance, we significantly slowed down some script loading. Ironic. Fortunately, we have a workaround: we can insert <i>preload hints</i> (see <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Preloading_content" target="_blank" rel="noopener noreferrer">Preloading content with rel="preload"</a>) before we begin unwinding our script stack, giving the browser notice that we’ll soon be requiring these scripts. It begins fetching them as it would do during speculative parsing.</p>
 	<p>Our waterfall is replaced with improved parallel loading and better load metrics.</p>
 	<div class="flex anchor relative">
 		<h4 id="quirks-ii-document-write-is-not-dead-yet">Quirks II: <code>document.write()</code> is not dead yet</h4>
@@ -304,8 +304,8 @@ document.write('"&gt;some content&lt;/div&gt;');</code></pre>
 		</a>
 	</div>
 	<p>As mentioned, it’s not enough to just insert parsed markup. There are various modifications of the DOM performed by the parser during full document parsing that contend with <i>malformed markup</i>. We felt we should simulate at least some of them, because, well… scripts may rely on malformed markup.</p>
-	<p>Our initial implementation even included simulation of relatively exotic mechanisms such as <a href="https://html.spec.whatwg.org/multipage/parsing.html#unexpected-markup-in-tables"><i>foster parenting</i></a>, but eventually we decided to keep things simple and the only thing that Rocket Loader simulates is the squeezing out of unallowed content from the <code>&lt;head&gt;</code> element.</p>
-	<p>To perform this simulation we wrap our <code>document.write</code> buffer in a <code>&lt;head&gt;</code> element and feed this markup to the <a href="https://developer.mozilla.org/en-US/docs/Web/API/DOMParser">DOM Parser</a>.</p>
+	<p>Our initial implementation even included simulation of relatively exotic mechanisms such as <a href="https://html.spec.whatwg.org/multipage/parsing.html#unexpected-markup-in-tables" target="_blank" rel="noopener noreferrer"><i>foster parenting</i></a>, but eventually we decided to keep things simple and the only thing that Rocket Loader simulates is the squeezing out of unallowed content from the <code>&lt;head&gt;</code> element.</p>
+	<p>To perform this simulation we wrap our <code>document.write</code> buffer in a <code>&lt;head&gt;</code> element and feed this markup to the <a href="https://developer.mozilla.org/en-US/docs/Web/API/DOMParser" target="_blank" rel="noopener noreferrer">DOM Parser</a>.</p>
 	<p>Using the resulting document from the parser, we identify all nodes in its <code>&lt;head&gt;</code> and move them into the page, immediately following the script that performed the <code>document.write</code>. If we encounter any nodes in the parsed document's <code>&lt;body&gt;</code> element, we copy all nodes that follow the current script to the <code>&lt;body&gt;</code> element, prepended with the nodes in the parsed document.</p>
 	<p>To illustrate this simulation, consider the following page markup:</p>
 	<pre class="language-html"><code class="language-html">&lt;!DOCTYPE&gt;
@@ -428,7 +428,7 @@ document.write('"&gt;some content&lt;/div&gt;');</code></pre>
 	<hr>
 	<ol>
 		<li>
-			<p>Oscar Wilde, Lady Windermere's Fan (1892), and apologies to <a href="http://jethrotull.com/too-old">Jethro Tull</a> for the blog post title. <a href="https://blog.cloudflare.com/#fnref1">↩︎</a></p>
+			<p>Oscar Wilde, Lady Windermere's Fan (1892), and apologies to <a href="http://jethrotull.com/too-old" target="_blank" rel="noopener noreferrer">Jethro Tull</a> for the blog post title. <a href="https://blog.cloudflare.com/#fnref1">↩︎</a></p>
 		</li>
 	</ol>
 </div>

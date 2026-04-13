@@ -35,7 +35,7 @@
 			</svg>
 		</a>
 	</div>
-	<p>With LLMs, there are usually two stages of generation – the first is known as “pre-fill”, which processes the user’s input tokens such as the prompt and context. Prefix caching is aimed at reducing the pre-fill time of a request. As an example, if you were asking a model to generate code based on a given file, you might insert the whole file into the context window of a request. Then, if you want to make a second request to generate the next line of code, you might send us the whole file again in the second request. Prefix caching allows us to cache the pre-fill tokens so we don’t have to process the context twice. With the same example, we would only do the pre-fill stage once for both requests, rather than doing it per request. This method is especially useful for requests that reuse the same context, such as <a href="https://www.cloudflare.com/learning/ai/retrieval-augmented-generation-rag"><u>Retrieval Augmented Generation (RAG)</u></a>, code generation, chatbots with memory, and more. Skipping the pre-fill stage for similar requests means faster responses for our users and more efficient usage of resources.&nbsp;</p>
+	<p>With LLMs, there are usually two stages of generation – the first is known as “pre-fill”, which processes the user’s input tokens such as the prompt and context. Prefix caching is aimed at reducing the pre-fill time of a request. As an example, if you were asking a model to generate code based on a given file, you might insert the whole file into the context window of a request. Then, if you want to make a second request to generate the next line of code, you might send us the whole file again in the second request. Prefix caching allows us to cache the pre-fill tokens so we don’t have to process the context twice. With the same example, we would only do the pre-fill stage once for both requests, rather than doing it per request. This method is especially useful for requests that reuse the same context, such as <a href="https://www.cloudflare.com/learning/ai/retrieval-augmented-generation-rag" target="_blank" rel="noopener noreferrer"><u>Retrieval Augmented Generation (RAG)</u></a>, code generation, chatbots with memory, and more. Skipping the pre-fill stage for similar requests means faster responses for our users and more efficient usage of resources.&nbsp;</p>
 	<div class="flex anchor relative">
 		<h3 id="how-did-you-validate-that-quality-is-preserved-through-these-optimizations">How did you validate that quality is preserved through these optimizations?</h3>
 		<a href="https://blog.cloudflare.com/#how-did-you-validate-that-quality-is-preserved-through-these-optimizations" aria-hidden="true" class="relative sm:absolute sm:-start-5">
@@ -44,7 +44,7 @@
 			</svg>
 		</a>
 	</div>
-	<p>Since this is an in-place update to an existing model, we were particularly cautious in ensuring that we would not break any existing applications with this update. We did extensive A/B testing through a blind arena with internal employees to validate the model quality, and we asked internal and external customers to test the new version of the model to ensure that response formats were compatible and model quality was acceptable. Our testing concluded that the model performed up to standards, with people being extremely excited about the speed of the model. Most LLMs are not perfectly deterministic even with the same set of inputs, but if you do notice something off, please let us know through <a href="https://discord.com/invite/cloudflaredev"><u>Discord</u></a> or <a href="http://x.com/cloudflaredev"><u>X</u></a>.</p>
+	<p>Since this is an in-place update to an existing model, we were particularly cautious in ensuring that we would not break any existing applications with this update. We did extensive A/B testing through a blind arena with internal employees to validate the model quality, and we asked internal and external customers to test the new version of the model to ensure that response formats were compatible and model quality was acceptable. Our testing concluded that the model performed up to standards, with people being extremely excited about the speed of the model. Most LLMs are not perfectly deterministic even with the same set of inputs, but if you do notice something off, please let us know through <a href="https://discord.com/invite/cloudflaredev" target="_blank" rel="noopener noreferrer"><u>Discord</u></a> or <a href="http://x.com/cloudflaredev" target="_blank" rel="noopener noreferrer"><u>X</u></a>.</p>
 	<div class="flex anchor relative">
 		<h2 id="asynchronous-batch-api">Asynchronous batch API</h2>
 		<a href="https://blog.cloudflare.com/#asynchronous-batch-api" aria-hidden="true" class="relative sm:absolute sm:-start-5">
@@ -70,16 +70,16 @@
 	<p>We have select models that support batch inference today, which include:</p>
 	<ul>
 		<li>
-			<p><a href="https://developers.cloudflare.com/workers-ai/models/llama-3.3-70b-instruct-fp8-fast"><u>@cf/meta/llama-3.3-70b-instruct-fp8-fast</u></a></p>
+			<p><a href="https://developers.cloudflare.com/workers-ai/models/llama-3.3-70b-instruct-fp8-fast" target="_blank" rel="noopener noreferrer"><u>@cf/meta/llama-3.3-70b-instruct-fp8-fast</u></a></p>
 		</li>
 		<li>
-			<p><a href="https://developers.cloudflare.com/workers-ai/models/bge-small-en-v1.5"><u>@cf/baai/bge-small-en-v1.5</u></a>, <a href="https://developers.cloudflare.com/workers-ai/models/bge-base-en-v1.5"><u>@cf/baai/bge-base-en-v1.5</u></a>, <a href="https://developers.cloudflare.com/workers-ai/models/bge-large-en-v1.5"><u>@cf/baai/bge-large-en-v1.5</u></a></p>
+			<p><a href="https://developers.cloudflare.com/workers-ai/models/bge-small-en-v1.5" target="_blank" rel="noopener noreferrer"><u>@cf/baai/bge-small-en-v1.5</u></a>, <a href="https://developers.cloudflare.com/workers-ai/models/bge-base-en-v1.5" target="_blank" rel="noopener noreferrer"><u>@cf/baai/bge-base-en-v1.5</u></a>, <a href="https://developers.cloudflare.com/workers-ai/models/bge-large-en-v1.5" target="_blank" rel="noopener noreferrer"><u>@cf/baai/bge-large-en-v1.5</u></a></p>
 		</li>
 		<li>
-			<p><a href="https://developers.cloudflare.com/workers-ai/models/bge-m3"><u>@cf/baai/bge-m3</u></a></p>
+			<p><a href="https://developers.cloudflare.com/workers-ai/models/bge-m3" target="_blank" rel="noopener noreferrer"><u>@cf/baai/bge-m3</u></a></p>
 		</li>
 		<li>
-			<p><a href="https://developers.cloudflare.com/workers-ai/models/m2m100-1.2b"><u>@cf/meta/m2m100-1.2b</u></a></p>
+			<p><a href="https://developers.cloudflare.com/workers-ai/models/m2m100-1.2b" target="_blank" rel="noopener noreferrer"><u>@cf/meta/m2m100-1.2b</u></a></p>
 		</li>
 	</ul>
 	<div class="flex anchor relative">
@@ -100,8 +100,8 @@
 }, {
   queueRequest: true
 });</code></pre>
-	<p>Check out our <a href="https://developers.cloudflare.com/workers-ai/features/batch-api"><u>developer docs</u></a> to learn more about the batch API, or use our <a href="https://github.com/craigsdennis/batch-please-workers-ai"><u>template</u></a> to deploy a worker that implements the batch API.</p>
-	<p>Today, our batch API can be used by sending us an array of requests, and we’ll return your responses in an array.&nbsp; This is helpful for use cases like summarizing large amounts of data that you know beforehand. This means you can send us a single HTTP request with all of your requests, and receive a single HTTP request back with your responses. You can check on the status of the batch by polling it with the request ID we return when your batch is submitted. For the next iteration of our async API, we plan to allow queue-based inputs and outputs, where you push requests and pull responses from a queue. This will integrate tightly with <a href="https://developers.cloudflare.com/r2/buckets/event-notifications"><u>Event Notifications</u></a> and <a href="https://developers.cloudflare.com/workflows"><u>Workflows</u></a>, so you can execute subsequent actions upon receiving a response.</p>
+	<p>Check out our <a href="https://developers.cloudflare.com/workers-ai/features/batch-api" target="_blank" rel="noopener noreferrer"><u>developer docs</u></a> to learn more about the batch API, or use our <a href="https://github.com/craigsdennis/batch-please-workers-ai" target="_blank" rel="noopener noreferrer"><u>template</u></a> to deploy a worker that implements the batch API.</p>
+	<p>Today, our batch API can be used by sending us an array of requests, and we’ll return your responses in an array.&nbsp; This is helpful for use cases like summarizing large amounts of data that you know beforehand. This means you can send us a single HTTP request with all of your requests, and receive a single HTTP request back with your responses. You can check on the status of the batch by polling it with the request ID we return when your batch is submitted. For the next iteration of our async API, we plan to allow queue-based inputs and outputs, where you push requests and pull responses from a queue. This will integrate tightly with <a href="https://developers.cloudflare.com/r2/buckets/event-notifications" target="_blank" rel="noopener noreferrer"><u>Event Notifications</u></a> and <a href="https://developers.cloudflare.com/workflows" target="_blank" rel="noopener noreferrer"><u>Workflows</u></a>, so you can execute subsequent actions upon receiving a response.</p>
 	<div class="flex anchor relative">
 		<h2 id="expanded-lora-support">Expanded LoRA support</h2>
 		<a href="https://blog.cloudflare.com/#expanded-lora-support" aria-hidden="true" class="relative sm:absolute sm:-start-5">
@@ -114,31 +114,31 @@
 	<p>iterated on this and now support 8 models as well as larger ranks of up to 32 and LoRA files up to 300 MB. Models that support LoRA inference now include:</p>
 	<ul>
 		<li>
-			<p><a href="https://developers.cloudflare.com/workers-ai/models/llama-3.2-11b-vision-instruct"><u>@cf/meta/llama-3.2-11b-vision-instruct</u></a> (soon)</p>
+			<p><a href="https://developers.cloudflare.com/workers-ai/models/llama-3.2-11b-vision-instruct" target="_blank" rel="noopener noreferrer"><u>@cf/meta/llama-3.2-11b-vision-instruct</u></a> (soon)</p>
 		</li>
 		<li>
-			<p><a href="https://developers.cloudflare.com/workers-ai/models/llama-3.3-70b-instruct-fp8-fast"><u>@cf/meta/llama-3.3-70b-instruct-fp8-fast</u></a> (soon)</p>
+			<p><a href="https://developers.cloudflare.com/workers-ai/models/llama-3.3-70b-instruct-fp8-fast" target="_blank" rel="noopener noreferrer"><u>@cf/meta/llama-3.3-70b-instruct-fp8-fast</u></a> (soon)</p>
 		</li>
 		<li>
-			<p><a href="https://developers.cloudflare.com/workers-ai/models/llama-guard-3-8b"><u>@cf/meta/llama-guard-3-8b</u></a></p>
+			<p><a href="https://developers.cloudflare.com/workers-ai/models/llama-guard-3-8b" target="_blank" rel="noopener noreferrer"><u>@cf/meta/llama-guard-3-8b</u></a></p>
 		</li>
 		<li>
-			<p><a href="https://developers.cloudflare.com/workers-ai/models/llama-3.1-8b-instruct-fast"><u>@cf/meta/llama-3.1-8b-instruct-fast</u></a> (soon)</p>
+			<p><a href="https://developers.cloudflare.com/workers-ai/models/llama-3.1-8b-instruct-fast" target="_blank" rel="noopener noreferrer"><u>@cf/meta/llama-3.1-8b-instruct-fast</u></a> (soon)</p>
 		</li>
 		<li>
-			<p><a href="https://developers.cloudflare.com/workers-ai/models/deepseek-r1-distill-qwen-32b"><u>@cf/deepseek-ai/deepseek-r1-distill-qwen-32b</u></a> (soon)</p>
+			<p><a href="https://developers.cloudflare.com/workers-ai/models/deepseek-r1-distill-qwen-32b" target="_blank" rel="noopener noreferrer"><u>@cf/deepseek-ai/deepseek-r1-distill-qwen-32b</u></a> (soon)</p>
 		</li>
 		<li>
-			<p><a href="https://developers.cloudflare.com/workers-ai/models/qwen2.5-coder-32b-instruct"><u>@cf/qwen/qwen2.5-coder-32b-instruct</u></a></p>
+			<p><a href="https://developers.cloudflare.com/workers-ai/models/qwen2.5-coder-32b-instruct" target="_blank" rel="noopener noreferrer"><u>@cf/qwen/qwen2.5-coder-32b-instruct</u></a></p>
 		</li>
 		<li>
-			<p><a href="https://developers.cloudflare.com/workers-ai/models/qwq-32b"><u>@cf/qwen/qwq-32b</u></a></p>
+			<p><a href="https://developers.cloudflare.com/workers-ai/models/qwq-32b" target="_blank" rel="noopener noreferrer"><u>@cf/qwen/qwq-32b</u></a></p>
 		</li>
 		<li>
-			<p><a href="https://developers.cloudflare.com/workers-ai/models/mistral-small-3.1-24b-instruct"><u>@cf/mistralai/mistral-small-3.1-24b-instruct</u></a> (soon)</p>
+			<p><a href="https://developers.cloudflare.com/workers-ai/models/mistral-small-3.1-24b-instruct" target="_blank" rel="noopener noreferrer"><u>@cf/mistralai/mistral-small-3.1-24b-instruct</u></a> (soon)</p>
 		</li>
 		<li>
-			<p><a href="https://developers.cloudflare.com/workers-ai/models/gemma-3-12b-it"><u>@cf/google/gemma-3-12b-it</u></a> (soon)</p>
+			<p><a href="https://developers.cloudflare.com/workers-ai/models/gemma-3-12b-it" target="_blank" rel="noopener noreferrer"><u>@cf/google/gemma-3-12b-it</u></a> (soon)</p>
 		</li>
 	</ul>
 	<div class="flex anchor relative">
@@ -158,7 +158,7 @@
 			</svg>
 		</a>
 	</div>
-	<p>To get started, you first need to train your own LoRA adapter or find a public one on HuggingFace. Then, you’ll upload the <code>adapter_model.safetensors</code> and <code>adapter_config.json</code> to your account with the <a href="https://developers.cloudflare.com/workers-ai/fine-tunes/loras"><u>documented wrangler commands or through the REST API</u></a>. LoRA files are private and scoped to your own account. After that, you can start running fine-tuned inference — check out our <a href="https://developers.cloudflare.com/workers-ai/features/fine-tunes/loras"><u>LoRA developer docs</u></a> to get started.</p>
+	<p>To get started, you first need to train your own LoRA adapter or find a public one on HuggingFace. Then, you’ll upload the <code>adapter_model.safetensors</code> and <code>adapter_config.json</code> to your account with the <a href="https://developers.cloudflare.com/workers-ai/fine-tunes/loras" target="_blank" rel="noopener noreferrer"><u>documented wrangler commands or through the REST API</u></a>. LoRA files are private and scoped to your own account. After that, you can start running fine-tuned inference — check out our <a href="https://developers.cloudflare.com/workers-ai/features/fine-tunes/loras" target="_blank" rel="noopener noreferrer"><u>LoRA developer docs</u></a> to get started.</p>
 	<pre class="language-JavaScript"><code class="language-JavaScript">const response = await env.AI.run(
   "@cf/qwen/qwen2.5-coder-32b-instruct", //the model supporting LoRAs
   {
@@ -176,7 +176,7 @@
 			</svg>
 		</a>
 	</div>
-	<p>While the team has been focused on large engineering milestones, we’ve also landed some quality of life improvements over the last few months. In case you missed it, we’ve announced <a href="https://developers.cloudflare.com/changelog/2025-02-20-updated-pricing-docs"><u>an updated pricing model</u></a> where usage will be shown in units such as tokens, audio seconds, image size/steps, etc. but still billed in neurons in the backend.</p>
+	<p>While the team has been focused on large engineering milestones, we’ve also landed some quality of life improvements over the last few months. In case you missed it, we’ve announced <a href="https://developers.cloudflare.com/changelog/2025-02-20-updated-pricing-docs" target="_blank" rel="noopener noreferrer"><u>an updated pricing model</u></a> where usage will be shown in units such as tokens, audio seconds, image size/steps, etc. but still billed in neurons in the backend.</p>
 	<p>Today, we’re unveiling a new dashboard that allows users to see their usage in both units as well as neurons (built on <a href="https://blog.cloudflare.com/introducing-workers-observability-logs-metrics-and-queries-all-in-one-place"><u>new Workers Observabilit</u></a>y components!). Model pricing is also available via dashboard and developer docs on the models page. And if you use AI Gateway, Workers AI usage will also be displayed as metrics now.</p>
 	<figure class="kg-card kg-image-card">
 		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2ABZi7EC8dedCY4ru0ffsA/8eb63a9f4a626ca70ce6101760d23900/image1.png" alt="" class="kg-image" width="1999" height="1145" loading="lazy">
@@ -192,46 +192,46 @@
 	<p>Lastly, we’ve steadily been adding new models on Workers AI, with over 10 new models and a few updates on existing models. Pricing is also now listed directly on the model page in the developer docs. To summarize, here are the new models we’ve added on Workers AI, including four new ones we’re releasing today:</p>
 	<ul>
 		<li>
-			<p><a href="https://developers.cloudflare.com/workers-ai/models/deepseek-r1-distill-qwen-32b"><u>@cf/deepseek-ai/deepseek-r1-distill-qwen-32b</u></a>: a version of Qwen 32B distilled from Deepseek’s R1 that is capable of doing chain-of-thought reasoning.</p>
+			<p><a href="https://developers.cloudflare.com/workers-ai/models/deepseek-r1-distill-qwen-32b" target="_blank" rel="noopener noreferrer"><u>@cf/deepseek-ai/deepseek-r1-distill-qwen-32b</u></a>: a version of Qwen 32B distilled from Deepseek’s R1 that is capable of doing chain-of-thought reasoning.</p>
 		</li>
 		<li>
-			<p><a href="https://developers.cloudflare.com/workers-ai/models/bge-m3"><u>@cf/baai/bge-m3</u></a>: a multi-lingual embeddings model that supports over 100 languages. It can also simultaneously perform dense retrieval, multi-vector retrieval, and sparse retrieval, with the ability to process inputs of different granularities.</p>
+			<p><a href="https://developers.cloudflare.com/workers-ai/models/bge-m3" target="_blank" rel="noopener noreferrer"><u>@cf/baai/bge-m3</u></a>: a multi-lingual embeddings model that supports over 100 languages. It can also simultaneously perform dense retrieval, multi-vector retrieval, and sparse retrieval, with the ability to process inputs of different granularities.</p>
 		</li>
 		<li>
-			<p><a href="https://developers.cloudflare.com/workers-ai/models/bge-reranker-base"><u>@cf/baai/bge-reranker-base</u></a>: our first reranker model! Rerankers are a type of text classification model that takes a query and context, and outputs a similarity score between the two. When used in RAG systems, you can use a reranker after the initial vector search to find the most relevant documents to return to a user by reranking the outputs.</p>
+			<p><a href="https://developers.cloudflare.com/workers-ai/models/bge-reranker-base" target="_blank" rel="noopener noreferrer"><u>@cf/baai/bge-reranker-base</u></a>: our first reranker model! Rerankers are a type of text classification model that takes a query and context, and outputs a similarity score between the two. When used in RAG systems, you can use a reranker after the initial vector search to find the most relevant documents to return to a user by reranking the outputs.</p>
 		</li>
 		<li>
-			<p><a href="https://developers.cloudflare.com/workers-ai/models/whisper-large-v3-turbo"><u>@cf/openai/whisper-large-v3-turbo</u></a>: a faster, more accurate speech-to-text model. This model was added earlier but is graduating out of beta with pricing included today.</p>
+			<p><a href="https://developers.cloudflare.com/workers-ai/models/whisper-large-v3-turbo" target="_blank" rel="noopener noreferrer"><u>@cf/openai/whisper-large-v3-turbo</u></a>: a faster, more accurate speech-to-text model. This model was added earlier but is graduating out of beta with pricing included today.</p>
 		</li>
 		<li>
-			<p><a href="https://developers.cloudflare.com/workers-ai/models/melotts"><u>@cf/myshell-ai/melotts</u></a>: our first text-to-speech model that allows users to generate an MP3 with voice audio from text input.</p>
+			<p><a href="https://developers.cloudflare.com/workers-ai/models/melotts" target="_blank" rel="noopener noreferrer"><u>@cf/myshell-ai/melotts</u></a>: our first text-to-speech model that allows users to generate an MP3 with voice audio from text input.</p>
 		</li>
 		<li>
-			<p><a href="https://developers.cloudflare.com/workers-ai/models/llama-4-scout-17b-16e-instruct"><u>@cf/meta/llama-4-scout-17b-16e-instruct</u></a>: 17 billion parameter MoE model with 16 experts that is natively multimodal. Offers industry-leading performance in text and image understanding.</p>
+			<p><a href="https://developers.cloudflare.com/workers-ai/models/llama-4-scout-17b-16e-instruct" target="_blank" rel="noopener noreferrer"><u>@cf/meta/llama-4-scout-17b-16e-instruct</u></a>: 17 billion parameter MoE model with 16 experts that is natively multimodal. Offers industry-leading performance in text and image understanding.</p>
 		</li>
 		<li>
-			<p>[NEW] <a href="https://developers.cloudflare.com/workers-ai/models/mistral-small-3.1-24b-instruct"><u>@cf/mistralai/mistral-small-3.1-24b-instruct</u></a>: a 24B parameter model achieving state-of-the-art capabilities comparable to larger models, with support for vision and tool calling.</p>
+			<p>[NEW] <a href="https://developers.cloudflare.com/workers-ai/models/mistral-small-3.1-24b-instruct" target="_blank" rel="noopener noreferrer"><u>@cf/mistralai/mistral-small-3.1-24b-instruct</u></a>: a 24B parameter model achieving state-of-the-art capabilities comparable to larger models, with support for vision and tool calling.</p>
 		</li>
 		<li>
-			<p>[NEW] <a href="https://developers.cloudflare.com/workers-ai/models/gemma-3-12b-it"><u>@cf/google/gemma-3-12b-it</u></a>: well-suited for a variety of text generation and image understanding tasks, including question answering, summarization and reasoning, with a 128K context window, and multilingual support in over 140 languages.</p>
+			<p>[NEW] <a href="https://developers.cloudflare.com/workers-ai/models/gemma-3-12b-it" target="_blank" rel="noopener noreferrer"><u>@cf/google/gemma-3-12b-it</u></a>: well-suited for a variety of text generation and image understanding tasks, including question answering, summarization and reasoning, with a 128K context window, and multilingual support in over 140 languages.</p>
 		</li>
 		<li>
-			<p>[NEW] <a href="https://developers.cloudflare.com/workers-ai/models/qwq-32b"><u>@cf/qwen/qwq-32b</u></a>: a medium-sized reasoning model, which is capable of achieving competitive performance against state-of-the-art reasoning models, e.g., DeepSeek-R1, o1-mini.</p>
+			<p>[NEW] <a href="https://developers.cloudflare.com/workers-ai/models/qwq-32b" target="_blank" rel="noopener noreferrer"><u>@cf/qwen/qwq-32b</u></a>: a medium-sized reasoning model, which is capable of achieving competitive performance against state-of-the-art reasoning models, e.g., DeepSeek-R1, o1-mini.</p>
 		</li>
 		<li>
-			<p>[NEW] <a href="https://developers.cloudflare.com/workers-ai/models/qwen2.5-coder-32b-instruct"><u>@cf/qwen/qwen2.5-coder-32b-instruct</u></a>: the current state-of-the-art open-source code LLM, with its coding abilities matching those of GPT-4o.</p>
+			<p>[NEW] <a href="https://developers.cloudflare.com/workers-ai/models/qwen2.5-coder-32b-instruct" target="_blank" rel="noopener noreferrer"><u>@cf/qwen/qwen2.5-coder-32b-instruct</u></a>: the current state-of-the-art open-source code LLM, with its coding abilities matching those of GPT-4o.</p>
 		</li>
 	</ul>
 	<p>In addition, we are rolling out some in-place updates to existing models in our catalog:</p>
 	<ul>
 		<li>
-			<p><a href="https://developers.cloudflare.com/workers-ai/models/llama-3.3-70b-instruct-fp8-fast"><u>@cf/meta/llama-3.3-70b-instruct-fp8-fast</u></a> - Llama 3.3 70b gets a speed boost with new techniques such as speculative decoding, prefix caching, and an updated server back end (<a href="https://blog.cloudflare.com/#speeding-up-inference-by-2-4x-with-speculative-decoding-and-more"><u>see above</u></a>).</p>
+			<p><a href="https://developers.cloudflare.com/workers-ai/models/llama-3.3-70b-instruct-fp8-fast" target="_blank" rel="noopener noreferrer"><u>@cf/meta/llama-3.3-70b-instruct-fp8-fast</u></a> - Llama 3.3 70b gets a speed boost with new techniques such as speculative decoding, prefix caching, and an updated server back end (<a href="https://blog.cloudflare.com/#speeding-up-inference-by-2-4x-with-speculative-decoding-and-more"><u>see above</u></a>).</p>
 		</li>
 		<li>
-			<p><a href="https://developers.cloudflare.com/workers-ai/models/bge-small-en-v1.5"><u>@cf/baai/bge-small-en-v1.5</u></a>, <a href="https://developers.cloudflare.com/workers-ai/models/bge-base-en-v1.5"><u>@cf/baai/bge-base-en-v1.5</u></a>, <a href="https://developers.cloudflare.com/workers-ai/models/bge-large-en-v1.5"><u>@cf/baai/bge-large-en-v1.5</u></a> - get a new input parameter called “pooling” which takes either “cls” or “mean”</p>
+			<p><a href="https://developers.cloudflare.com/workers-ai/models/bge-small-en-v1.5" target="_blank" rel="noopener noreferrer"><u>@cf/baai/bge-small-en-v1.5</u></a>, <a href="https://developers.cloudflare.com/workers-ai/models/bge-base-en-v1.5" target="_blank" rel="noopener noreferrer"><u>@cf/baai/bge-base-en-v1.5</u></a>, <a href="https://developers.cloudflare.com/workers-ai/models/bge-large-en-v1.5" target="_blank" rel="noopener noreferrer"><u>@cf/baai/bge-large-en-v1.5</u></a> - get a new input parameter called “pooling” which takes either “cls” or “mean”</p>
 		</li>
 	</ul>
-	<p>As we release these new models, we’ll be deprecating old models to encourage use of the state-of-the-art models and make room in our catalog. We will send out an email notice on this shortly. Stay up to date with our model releases and deprecation announcements by <a href="https://developers.cloudflare.com/changelog"><u>subscribing to our Developer Docs changelog</u></a>.</p>
+	<p>As we release these new models, we’ll be deprecating old models to encourage use of the state-of-the-art models and make room in our catalog. We will send out an email notice on this shortly. Stay up to date with our model releases and deprecation announcements by <a href="https://developers.cloudflare.com/changelog" target="_blank" rel="noopener noreferrer"><u>subscribing to our Developer Docs changelog</u></a>.</p>
 	<div class="flex anchor relative">
 		<h2 id="were-still-just-getting-started">We’re (still) just getting started</h2>
 		<a href="https://blog.cloudflare.com/#were-still-just-getting-started" aria-hidden="true" class="relative sm:absolute sm:-start-5">
@@ -240,5 +240,5 @@
 			</svg>
 		</a>
 	</div>
-	<p>Workers AI is one of Cloudflare’s newer products in a nascent industry, but we still operate with very traditional Cloudflare principles – learning how we can do more with less. Our engineering team is focused on solving the difficult problems that come with growing a distributed inference platform at a global scale, and we’re excited to release these new features today that we think will improve the platform as a whole for all our users. With faster inference times, better reliability, more customization possibilities, and better usability, we’re excited to see what you can do with more Workers AI — <a href="https://discord.com/invite/cloudflaredev"><u>let us know what you think</u></a>!</p>
+	<p>Workers AI is one of Cloudflare’s newer products in a nascent industry, but we still operate with very traditional Cloudflare principles – learning how we can do more with less. Our engineering team is focused on solving the difficult problems that come with growing a distributed inference platform at a global scale, and we’re excited to release these new features today that we think will improve the platform as a whole for all our users. With faster inference times, better reliability, more customization possibilities, and better usability, we’re excited to see what you can do with more Workers AI — <a href="https://discord.com/invite/cloudflaredev" target="_blank" rel="noopener noreferrer"><u>let us know what you think</u></a>!</p>
 </div>

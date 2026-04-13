@@ -5,8 +5,8 @@
 		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2yQdeNHftkPvZAq7tcEYN9/eaf572b5329ea631b4df66b36e14e538/image1-4.png" alt="Introducing Foundations - our open source Rust service foundation library" class="kg-image" width="1999" height="1125" loading="lazy">
 
 	</figure>
-	<p>In this blog post, we're excited to present Foundations, our foundational library for Rust services, now released as <a href="https://github.com/cloudflare/foundations">open source on GitHub</a>. Foundations is a foundational Rust library, designed to help scale programs for distributed, production-grade systems. It enables engineers to concentrate on the core business logic of their services, rather than the intricacies of production operation setups.</p>
-	<p>Originally developed as part of our <a href="https://blog.cloudflare.com/introducing-oxy">Oxy proxy framework</a>, Foundations has evolved to serve a wider range of applications. For those interested in exploring its technical capabilities, we recommend consulting the library’s <a href="https://docs.rs/foundations/latest/foundations">API documentation</a>. Additionally, this post will cover the motivations behind Foundations' creation and provide a concise summary of its key features. Stay with us to learn more about how Foundations can support your Rust projects.</p>
+	<p>In this blog post, we're excited to present Foundations, our foundational library for Rust services, now released as <a href="https://github.com/cloudflare/foundations" target="_blank" rel="noopener noreferrer">open source on GitHub</a>. Foundations is a foundational Rust library, designed to help scale programs for distributed, production-grade systems. It enables engineers to concentrate on the core business logic of their services, rather than the intricacies of production operation setups.</p>
+	<p>Originally developed as part of our <a href="https://blog.cloudflare.com/introducing-oxy">Oxy proxy framework</a>, Foundations has evolved to serve a wider range of applications. For those interested in exploring its technical capabilities, we recommend consulting the library’s <a href="https://docs.rs/foundations/latest/foundations" target="_blank" rel="noopener noreferrer">API documentation</a>. Additionally, this post will cover the motivations behind Foundations' creation and provide a concise summary of its key features. Stay with us to learn more about how Foundations can support your Rust projects.</p>
 	<div class="flex anchor relative">
 		<h2 id="what-is-foundations">What is Foundations?</h2>
 		<a href="https://blog.cloudflare.com/#what-is-foundations" aria-hidden="true" class="relative sm:absolute sm:-start-5">
@@ -41,7 +41,7 @@
 			<p><b>Simplified setup and configuration</b>: our goal is for engineers to spend minimal time on setup. Foundations is designed to be 'plug and play', with essential functions working immediately and adjustable settings for fine-tuning. We understand that this focus on ease of setup over extreme flexibility might be debatable, as it implies a trade-off. Unlike other libraries that cater to a wide range of environments with potentially verbose setup requirements, Foundations is tailored for specific, production-tested environments and workflows. This doesn't restrict Foundations’ adaptability to other settings, but we approach this with compile-time features to manage setup workflows, rather than a complex setup API.</p>
 		</li>
 	</ul>
-	<p>Next, let's delve into the components Foundations offers. To better illustrate the functionality that Foundations provides we will refer to the <a href="https://github.com/cloudflare/foundations/tree/main/examples/http_server">example web server</a> from Foundations’ source code repository.</p>
+	<p>Next, let's delve into the components Foundations offers. To better illustrate the functionality that Foundations provides we will refer to the <a href="https://github.com/cloudflare/foundations/tree/main/examples/http_server" target="_blank" rel="noopener noreferrer">example web server</a> from Foundations’ source code repository.</p>
 	<div class="flex anchor relative">
 		<h3 id="telemetry">Telemetry</h3>
 		<a href="https://blog.cloudflare.com/#telemetry" aria-hidden="true" class="relative sm:absolute sm:-start-5">
@@ -50,7 +50,7 @@
 			</svg>
 		</a>
 	</div>
-	<p>In any production system, <a href="https://www.cloudflare.com/learning/performance/what-is-observability">observability</a>, which we refer to as telemetry, plays an essential role. Generally, three primary types of telemetry are adequate for most service needs:</p>
+	<p>In any production system, <a href="https://www.cloudflare.com/learning/performance/what-is-observability" target="_blank" rel="noopener noreferrer">observability</a>, which we refer to as telemetry, plays an essential role. Generally, three primary types of telemetry are adequate for most service needs:</p>
 	<ul>
 		<li>
 			<p><b>Logging</b>: this involves recording arbitrary textual information, which can be enhanced with tags or structured fields. It's particularly useful for documenting operational errors that aren't critical to the service.</p>
@@ -71,7 +71,7 @@
 			</svg>
 		</a>
 	</div>
-	<p>Foundations’ tracing API shares similarities with <a href="https://github.com/tokio-rs/tracing">tokio/tracing</a>, employing a comparable approach with implicit context propagation, instrumentation macros, and futures wrapping:</p>
+	<p>Foundations’ tracing API shares similarities with <a href="https://github.com/tokio-rs/tracing" target="_blank" rel="noopener noreferrer">tokio/tracing</a>, employing a comparable approach with implicit context propagation, instrumentation macros, and futures wrapping:</p>
 	<pre class="language-rust"><code class="language-rust">#[tracing::span_fn("respond to request")]
 async fn respond(
     endpoint_name: Arc&lt;String&gt;,
@@ -80,14 +80,14 @@ async fn respond(
 ) -&gt; Result&lt;Response&lt;Body&gt;, Infallible&gt; {
     …
 }</code></pre>
-	<p>Refer to the <a href="https://github.com/cloudflare/foundations/blob/347548000cab0ac549f8f23e2a0ce9e1147b7640/examples/http_server/main.rs#L154">example web server</a> and <a href="https://docs.rs/foundations/latest/foundations/telemetry/tracing/index.html">documentation</a> for more comprehensive examples.</p>
+	<p>Refer to the <a href="https://github.com/cloudflare/foundations/blob/347548000cab0ac549f8f23e2a0ce9e1147b7640/examples/http_server/main.rs#L154" target="_blank" rel="noopener noreferrer">example web server</a> and <a href="https://docs.rs/foundations/latest/foundations/telemetry/tracing/index.html" target="_blank" rel="noopener noreferrer">documentation</a> for more comprehensive examples.</p>
 	<p>However, Foundations distinguishes itself in a few key ways:</p>
 	<ul>
 		<li>
 			<p><b>Simplified API</b>: we've streamlined the setup process for tracing, aiming for a more minimalistic approach compared to tokio/tracing.</p>
 		</li>
 		<li>
-			<p><b>Enhanced trace sampling flexibility</b>: Foundations allows for selective override of the sampling ratio in specific code branches. This feature is particularly useful for detailed performance bug investigations, enabling a balance between global trace sampling for overall <a href="https://www.cloudflare.com/application-services/solutions/app-performance-monitoring">performance monitoring</a> and targeted sampling for specific accounts, connections, or requests.</p>
+			<p><b>Enhanced trace sampling flexibility</b>: Foundations allows for selective override of the sampling ratio in specific code branches. This feature is particularly useful for detailed performance bug investigations, enabling a balance between global trace sampling for overall <a href="https://www.cloudflare.com/application-services/solutions/app-performance-monitoring" target="_blank" rel="noopener noreferrer">performance monitoring</a> and targeted sampling for specific accounts, connections, or requests.</p>
 		</li>
 		<li>
 			<p><b>Distributed trace stitching</b>: our API supports the integration of trace data from multiple services, contributing to a comprehensive view of the entire pipeline. This functionality includes fine-tuned control over sampling ratios, allowing upstream services to dictate the sampling of specific traffic flows in downstream services.</p>
@@ -105,10 +105,10 @@ async fn respond(
 			</svg>
 		</a>
 	</div>
-	<p>Foundations’ logging API shares its foundation with tokio/tracing and <a href="https://github.com/slog-rs/slog">slog</a>, but introduces several notable enhancements.</p>
+	<p>Foundations’ logging API shares its foundation with tokio/tracing and <a href="https://github.com/slog-rs/slog" target="_blank" rel="noopener noreferrer">slog</a>, but introduces several notable enhancements.</p>
 	<p>During our work on various services, we recognized the hierarchical nature of logging contextual information. For instance, in a scenario involving a connection, we might want to tag each log record with the connection ID and HTTP protocol version. Additionally, for requests served over this connection, it would be useful to attach the request URL to each log record, while still including connection-specific information.</p>
 	<p>Typically, achieving this would involve creating a new logger for each request, copying tags from the connection’s logger, and then manually passing this new logger throughout the relevant code. This method, however, is cumbersome, requiring explicit handling and storage of the logger object.</p>
-	<p>To streamline this process and prevent telemetry from obstructing business logic, we adopted a technique similar to tokio/tracing's approach for tracing, applying it to logging. This method relies on future instrumentation machinery (<a href="https://docs.rs/tracing/latest/tracing/struct.Span.html#in-asynchronous-code">tracing-rs documentation</a> has a good explanation of the concept), allowing for implicit passing of the current logger. This enables us to "fork" logs for each request and use this forked log seamlessly within the current code scope, automatically propagating it down the call stack, including through asynchronous function calls:</p>
+	<p>To streamline this process and prevent telemetry from obstructing business logic, we adopted a technique similar to tokio/tracing's approach for tracing, applying it to logging. This method relies on future instrumentation machinery (<a href="https://docs.rs/tracing/latest/tracing/struct.Span.html#in-asynchronous-code" target="_blank" rel="noopener noreferrer">tracing-rs documentation</a> has a good explanation of the concept), allowing for implicit passing of the current logger. This enables us to "fork" logs for each request and use this forked log seamlessly within the current code scope, automatically propagating it down the call stack, including through asynchronous function calls:</p>
 	<pre class="language-rust"><code class="language-rust"> let conn_tele_ctx = TelemetryContext::current();
 
  let on_request = service_fn({
@@ -126,7 +126,7 @@ async fn respond(
                 .apply(async move { respond(endpoint_name, req, routes).await })
         }
 });</code></pre>
-	<p>Refer to <a href="https://github.com/cloudflare/foundations/blob/347548000cab0ac549f8f23e2a0ce9e1147b7640/examples/http_server/main.rs#L155-L198">example web server</a> and <a href="https://docs.rs/foundations/latest/foundations/telemetry/log/index.html">documentation</a> for more comprehensive examples.</p>
+	<p>Refer to <a href="https://github.com/cloudflare/foundations/blob/347548000cab0ac549f8f23e2a0ce9e1147b7640/examples/http_server/main.rs#L155-L198" target="_blank" rel="noopener noreferrer">example web server</a> and <a href="https://docs.rs/foundations/latest/foundations/telemetry/log/index.html" target="_blank" rel="noopener noreferrer">documentation</a> for more comprehensive examples.</p>
 	<p>In an effort to simplify the user experience, we merged all APIs related to context management into a single, implicitly available in each code scope, TelemetryContext object. This integration not only simplifies the process but also lays the groundwork for future advanced features. These features could blend tracing and logging information into a cohesive narrative by cross-referencing each other.</p>
 	<p>Like tracing, Foundations also offers a user-friendly API for testing service’s logging.</p>
 	<div class="flex anchor relative">
@@ -137,7 +137,7 @@ async fn respond(
 			</svg>
 		</a>
 	</div>
-	<p>Foundations incorporates the official <a href="https://github.com/prometheus/client_rust">Prometheus Rust client library</a> for its metrics functionality, with a few enhancements for ease of use. One key addition is a procedural macro provided by Foundations, which simplifies the definition of new metrics with typed labels, reducing boilerplate code:</p>
+	<p>Foundations incorporates the official <a href="https://github.com/prometheus/client_rust" target="_blank" rel="noopener noreferrer">Prometheus Rust client library</a> for its metrics functionality, with a few enhancements for ease of use. One key addition is a procedural macro provided by Foundations, which simplifies the definition of new metrics with typed labels, reducing boilerplate code:</p>
 	<pre class="language-rust"><code class="language-rust">use foundations::telemetry::metrics::{metrics, Counter, Gauge};
 use std::sync::Arc;
 
@@ -155,7 +155,7 @@ pub(crate) mod http_server {
     /// Number of failed requests.
     pub fn requests_failed_total(endpoint_name: &amp;Arc&lt;String&gt;, status_code: u16) -&gt; Counter;
 }</code></pre>
-	<p>Refer to the <a href="https://github.com/cloudflare/foundations/blob/347548000cab0ac549f8f23e2a0ce9e1147b7640/examples/http_server/metrics.rs">example web server</a> and <a href="https://docs.rs/foundations/latest/foundations/telemetry/metrics/index.html">documentation</a> for more information of how metrics can be defined and used.</p>
+	<p>Refer to the <a href="https://github.com/cloudflare/foundations/blob/347548000cab0ac549f8f23e2a0ce9e1147b7640/examples/http_server/metrics.rs" target="_blank" rel="noopener noreferrer">example web server</a> and <a href="https://docs.rs/foundations/latest/foundations/telemetry/metrics/index.html" target="_blank" rel="noopener noreferrer">documentation</a> for more information of how metrics can be defined and used.</p>
 	<p>In addition to this, we have refined the approach to metrics collection and structuring. Foundations offers a streamlined, user-friendly API for both these tasks, focusing on simplicity and minimalism.</p>
 	<div class="flex anchor relative">
 		<h3 id="memory-profiling">Memory profiling</h3>
@@ -165,7 +165,7 @@ pub(crate) mod http_server {
 			</svg>
 		</a>
 	</div>
-	<p>Recognizing the <a href="https://mjeanroy.dev/2021/04/19/Java-in-K8s-how-weve-reduced-memory-usage-without-changing-any-code.html">efficiency</a> of <a href="https://jemalloc.net">jemalloc</a> for long-lived services, Foundations includes a feature for enabling jemalloc memory allocation. A notable aspect of jemalloc is its memory profiling capability. Foundations packages this functionality into a straightforward and safe Rust API, making it accessible and easy to integrate.</p>
+	<p>Recognizing the <a href="https://mjeanroy.dev/2021/04/19/Java-in-K8s-how-weve-reduced-memory-usage-without-changing-any-code.html" target="_blank" rel="noopener noreferrer">efficiency</a> of <a href="https://jemalloc.net" target="_blank" rel="noopener noreferrer">jemalloc</a> for long-lived services, Foundations includes a feature for enabling jemalloc memory allocation. A notable aspect of jemalloc is its memory profiling capability. Foundations packages this functionality into a straightforward and safe Rust API, making it accessible and easy to integrate.</p>
 	<div class="flex anchor relative">
 		<h3 id="telemetry-server">Telemetry server</h3>
 		<a href="https://blog.cloudflare.com/#telemetry-server" aria-hidden="true" class="relative sm:absolute sm:-start-5">
@@ -183,7 +183,7 @@ pub(crate) mod http_server {
 			</svg>
 		</a>
 	</div>
-	<p>A vital component of Foundations is its robust and ergonomic API for <a href="https://en.wikipedia.org/wiki/Seccomp">seccomp</a>, a Linux kernel feature for syscall sandboxing. This feature enables the setting up of hooks for syscalls used by an application, allowing actions like blocking or logging. Seccomp acts as a formidable line of defense, offering an additional layer of security against threats like arbitrary code execution.</p>
+	<p>A vital component of Foundations is its robust and ergonomic API for <a href="https://en.wikipedia.org/wiki/Seccomp" target="_blank" rel="noopener noreferrer">seccomp</a>, a Linux kernel feature for syscall sandboxing. This feature enables the setting up of hooks for syscalls used by an application, allowing actions like blocking or logging. Seccomp acts as a formidable line of defense, offering an additional layer of security against threats like arbitrary code execution.</p>
 	<p>Foundations provides a simple way to define lists of all allowed syscalls, also allowing a composition of multiple lists (in addition, Foundations ships predefined lists for common use cases):</p>
 	<pre class="language-rust"><code class="language-rust">  use foundations::security::common_syscall_allow_lists::{ASYNC, NET_SOCKET_API, SERVICE_BASICS};
     use foundations::security::{allow_list, enable_syscall_sandboxing, ViolationAction};
@@ -198,7 +198,7 @@ pub(crate) mod http_server {
 
     enable_syscall_sandboxing(ViolationAction::KillProcess, &amp;ALLOWED)
  </code></pre>
-	<p>Refer to the <a href="https://github.com/cloudflare/foundations/blob/347548000cab0ac549f8f23e2a0ce9e1147b7640/examples/http_server/main.rs#L239-L254">web server example</a> and <a href="https://docs.rs/foundations/latest/foundations/security/index.html">documentation</a> for more comprehensive examples of this functionality.</p>
+	<p>Refer to the <a href="https://github.com/cloudflare/foundations/blob/347548000cab0ac549f8f23e2a0ce9e1147b7640/examples/http_server/main.rs#L239-L254" target="_blank" rel="noopener noreferrer">web server example</a> and <a href="https://docs.rs/foundations/latest/foundations/security/index.html" target="_blank" rel="noopener noreferrer">documentation</a> for more comprehensive examples of this functionality.</p>
 	<div class="flex anchor relative">
 		<h2 id="settings-and-cli">Settings and CLI</h2>
 		<a href="https://blog.cloudflare.com/#settings-and-cli" aria-hidden="true" class="relative sm:absolute sm:-start-5">
@@ -328,7 +328,7 @@ endpoints:
         status_code: 403
         # Content of the route's response.
         response: bar</code></pre>
-	<p>Refer to the <a href="https://github.com/cloudflare/foundations/blob/347548000cab0ac549f8f23e2a0ce9e1147b7640/examples/http_server/settings.rs">example web server</a> and documentation for <a href="https://docs.rs/foundations/latest/foundations/settings/index.html">settings</a> and <a href="https://docs.rs/foundations/latest/foundations/cli/index.html">CLI API</a> for more comprehensive examples of how settings can be defined and used with Foundations-provided CLI API.</p>
+	<p>Refer to the <a href="https://github.com/cloudflare/foundations/blob/347548000cab0ac549f8f23e2a0ce9e1147b7640/examples/http_server/settings.rs" target="_blank" rel="noopener noreferrer">example web server</a> and documentation for <a href="https://docs.rs/foundations/latest/foundations/settings/index.html" target="_blank" rel="noopener noreferrer">settings</a> and <a href="https://docs.rs/foundations/latest/foundations/cli/index.html" target="_blank" rel="noopener noreferrer">CLI API</a> for more comprehensive examples of how settings can be defined and used with Foundations-provided CLI API.</p>
 	<div class="flex anchor relative">
 		<h2 id="wrapping-up">Wrapping Up</h2>
 		<a href="https://blog.cloudflare.com/#wrapping-up" aria-hidden="true" class="relative sm:absolute sm:-start-5">
@@ -338,5 +338,5 @@ endpoints:
 		</a>
 	</div>
 	<p>At Cloudflare, we greatly value the contributions of the open source community and are eager to reciprocate by sharing our work. Foundations has been instrumental in reducing our development friction, and we hope it can do the same for others. We welcome external contributions to Foundations, aiming to integrate diverse experiences into the project for the benefit of all.</p>
-	<p>If you're interested in working on projects like Foundations, consider joining our team — <a href="https://www.cloudflare.com/en-gb/careers">we're hiring</a>!</p>
+	<p>If you're interested in working on projects like Foundations, consider joining our team — <a href="https://www.cloudflare.com/en-gb/careers" target="_blank" rel="noopener noreferrer">we're hiring</a>!</p>
 </div>

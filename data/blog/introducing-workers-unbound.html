@@ -3,7 +3,7 @@
 <div class="post-content lh-copy gray1">
 	<p></p>
 	<p>We launched Cloudflare Workers® in 2017 with the goal of building the development platform that we wished we had. We want to enable developers to build great software while Cloudflare manages the overhead of configuring and maintaining the infrastructure. Workers are with you from the first line of code, to the first application, all the way to a globally scaled product. By making our Edge network programmable and providing servers in 200+ locations around the world, we offer you the power to execute on even the biggest ideas.</p>
-	<p>Behind the scenes at Cloudflare, we’ve been steadily working towards making development on the Edge even more powerful and flexible. Today, we are excited to announce the next phase of this with the launch of our new platform, Workers Unbound, without restrictive CPU limits in a private beta (sign up for details <a href="https://www.cloudflare.com/workers-unbound-beta">here</a>).</p>
+	<p>Behind the scenes at Cloudflare, we’ve been steadily working towards making development on the Edge even more powerful and flexible. Today, we are excited to announce the next phase of this with the launch of our new platform, Workers Unbound, without restrictive CPU limits in a private beta (sign up for details <a href="https://www.cloudflare.com/workers-unbound-beta" target="_blank" rel="noopener noreferrer">here</a>).</p>
 	<figure class="kg-card kg-image-card ">
 
 		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2jQ86X9qoEKfdA1rHg2xd2/bf79311419d3cfa6563d01d8bdba3474/image2-9-3.png" alt="" class="kg-image" width="1999" height="336" loading="lazy">
@@ -28,7 +28,7 @@
 			</svg>
 		</a>
 	</div>
-	<p>We are excited to offer Workers Unbound to a select group of developers in a private beta. Please reach out via this <a href="https://www.cloudflare.com/workers-unbound-beta">form</a> with some details about your use case, and we’ll be in touch! We’d love to hear your feedback and can’t wait to see what you build.</p>
+	<p>We are excited to offer Workers Unbound to a select group of developers in a private beta. Please reach out via this <a href="https://www.cloudflare.com/workers-unbound-beta" target="_blank" rel="noopener noreferrer">form</a> with some details about your use case, and we’ll be in touch! We’d love to hear your feedback and can’t wait to see what you build.</p>
 	<div class="flex anchor relative">
 		<h3 id="whats-going-on-behind-the-scenes">What’s going on behind the scenes?</h3>
 		<a href="https://blog.cloudflare.com/#whats-going-on-behind-the-scenes" aria-hidden="true" class="relative sm:absolute sm:-start-5">
@@ -37,8 +37,8 @@
 			</svg>
 		</a>
 	</div>
-	<p><a href="https://www.cloudflare.com/learning/serverless/what-is-serverless">Serverless</a> as it’s known today is constrained by being built on top of old paradigms. Most serverless platforms have inherited containers from their cloud computing origins. Cloudflare has had the opportunity to rethink serverless by building on the Edge and making this technology more performant at scale for complex applications.</p>
-	<p>We reap performance benefits by running code on <a href="https://v8docs.nodesource.com/node-0.8/d5/dda/classv8_1_1_isolate.html">V8 Isolates</a>, which are designed to start very quickly with minimal cold start times. Isolates are a technology built by the Google Chrome team to power the JavaScript engine in the browser, and they introduce a new model for running multi-tenant code. They provide lightweight contexts that group variables with the code allowed to mutate them.</p>
+	<p><a href="https://www.cloudflare.com/learning/serverless/what-is-serverless" target="_blank" rel="noopener noreferrer">Serverless</a> as it’s known today is constrained by being built on top of old paradigms. Most serverless platforms have inherited containers from their cloud computing origins. Cloudflare has had the opportunity to rethink serverless by building on the Edge and making this technology more performant at scale for complex applications.</p>
+	<p>We reap performance benefits by running code on <a href="https://v8docs.nodesource.com/node-0.8/d5/dda/classv8_1_1_isolate.html" target="_blank" rel="noopener noreferrer">V8 Isolates</a>, which are designed to start very quickly with minimal cold start times. Isolates are a technology built by the Google Chrome team to power the JavaScript engine in the browser, and they introduce a new model for running multi-tenant code. They provide lightweight contexts that group variables with the code allowed to mutate them.</p>
 	<p>Isolates are far more lightweight than containers, a central tenet of most other serverless providers’ architecture. Containers effectively run a virtual machine, and there’s a lot of overhead associated with them. That, in turn, makes it very hard to run the workload outside a centralized environment.</p>
 	<figure class="kg-card kg-image-card ">
 
@@ -56,7 +56,7 @@
 		</a>
 	</div>
 	<p>Performance at scale is top of mind for us because improving performance on our Edge means we can pass those cost savings down to you. We pay the overhead of a JavaScript runtime once, and then are able to run essentially limitless scripts with almost no individual overhead.</p>
-	<p>Workers Unbound is a truly cost-effective platform when compared to AWS Lambda. With serverless, you should only pay for what you use with no hidden fees. Workers will not charge you for hidden extras like <a href="https://www.cloudflare.com/learning/security/api/what-is-an-api-gateway">API gateway</a> or DNS request fees.</p>
+	<p>Workers Unbound is a truly cost-effective platform when compared to AWS Lambda. With serverless, you should only pay for what you use with no hidden fees. Workers will not charge you for hidden extras like <a href="https://www.cloudflare.com/learning/security/api/what-is-an-api-gateway" target="_blank" rel="noopener noreferrer">API gateway</a> or DNS request fees.</p>
 	<p>Serverless Pricing Comparison*</p>
 	<table>
 		<tbody>
@@ -156,8 +156,8 @@
 			</svg>
 		</a>
 	</div>
-	<p>To put our numbers to the test, we deployed a <a href="https://github.com/Electroid/serverless-compare">hello world</a> GraphQL server to both Workers and Lambda. The median execution time on Lambda was 1.54ms, whereas the same workload took 0.90ms on Workers. After crunching the numbers and factoring in all the opaque fees that AWS charges (including API Gateway to allow for requests from the Internet), we found that using Workers Unbound can save you up to 75% -- and that’s just for a hello world! Imagine the cost savings when you’re running complex workloads for millions of users.</p>
-	<p>You might be wondering how we’re able to be so competitive. It all comes down to efficiency. The lightweight nature of Workers allows us to do the same work, but with less platform overhead and resource consumption. The execution times from this <a href="https://github.com/Electroid/serverless-compare">GraphQL hello world test are shown below and put platform providers’ overhead on display</a>. Since the test is truly a hello world, the variation is explained by architectural differences between providers (e.g. <a href="https://blog.cloudflare.com/cloud-computing-without-containers">isolates v. containers</a>).</p>
+	<p>To put our numbers to the test, we deployed a <a href="https://github.com/Electroid/serverless-compare" target="_blank" rel="noopener noreferrer">hello world</a> GraphQL server to both Workers and Lambda. The median execution time on Lambda was 1.54ms, whereas the same workload took 0.90ms on Workers. After crunching the numbers and factoring in all the opaque fees that AWS charges (including API Gateway to allow for requests from the Internet), we found that using Workers Unbound can save you up to 75% -- and that’s just for a hello world! Imagine the cost savings when you’re running complex workloads for millions of users.</p>
+	<p>You might be wondering how we’re able to be so competitive. It all comes down to efficiency. The lightweight nature of Workers allows us to do the same work, but with less platform overhead and resource consumption. The execution times from this <a href="https://github.com/Electroid/serverless-compare" target="_blank" rel="noopener noreferrer">GraphQL hello world test are shown below and put platform providers’ overhead on display</a>. Since the test is truly a hello world, the variation is explained by architectural differences between providers (e.g. <a href="https://blog.cloudflare.com/cloud-computing-without-containers">isolates v. containers</a>).</p>
 	<p>GraphQL hello world Execution Time (ms) across Serverless Platforms*</p>
 	<table>
 		<tbody>
@@ -276,6 +276,6 @@
 			</svg>
 		</a>
 	</div>
-	<p>Workers Unbound is a major change to our platform, so we’ll be rolling it out slowly and tweaking it over time. If you’d like to get early access or want to be notified when it’s ready, sign up for details <a href="https://www.cloudflare.com/workers-unbound-beta">here</a>!</p>
+	<p>Workers Unbound is a major change to our platform, so we’ll be rolling it out slowly and tweaking it over time. If you’d like to get early access or want to be notified when it’s ready, sign up for details <a href="https://www.cloudflare.com/workers-unbound-beta" target="_blank" rel="noopener noreferrer">here</a>!</p>
 	<p>We’ve got some exciting announcements to share this week. Stay tuned for the rest of Serverless Week!</p>
 </div>

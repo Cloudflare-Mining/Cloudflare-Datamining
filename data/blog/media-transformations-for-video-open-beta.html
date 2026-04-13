@@ -1,6 +1,6 @@
 <div class="mb2 gray5">6 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5Dx09du5dZmrz0ZSS8APi3/14fac8699c7e96cd9d64a14964970323/image2.png" alt="">
 <div class="post-content lh-copy gray1">
-	<p>Today, we are thrilled to announce Media Transformations, a new service that brings the magic of <a href="https://developers.cloudflare.com/images/transform-images"><u>Image Transformations</u></a> to short-form video files wherever they are stored.</p>
+	<p>Today, we are thrilled to announce Media Transformations, a new service that brings the magic of <a href="https://developers.cloudflare.com/images/transform-images" target="_blank" rel="noopener noreferrer"><u>Image Transformations</u></a> to short-form video files wherever they are stored.</p>
 	<p>Since 2018, Cloudflare Stream has offered a managed video pipeline that empowers customers to serve rich video experiences at global scale easily, in multiple formats and quality levels. Sometimes, the greatest friction to getting started isn't even about video, but rather the thought of migrating all those files. Customers want a simpler solution that retains their current storage strategy to deliver small, optimized MP4 files. Now you can do that with Media Transformations.</p>
 	<div class="flex anchor relative">
 		<h3 id="short-videos-big-volume">Short videos, big volume</h3>
@@ -35,7 +35,7 @@
 	</figure>
 	<p>After enabling Media Transformations on a website, it is simple to construct a URL that transforms a video. The pattern is similar to Image Transformations, but uses the <code>media</code> endpoint instead of the <code>image</code> endpoint:</p>
 	<pre class="language-Rust"><code class="language-Rust">https://example.com/cdn-cgi/media/&lt;OPTIONS&gt;/&lt;SOURCE-VIDEO&gt;</code></pre>
-	<p>The <code>&lt;OPTIONS&gt;</code> portion of the URL is a comma-separated <a href="https://developers.cloudflare.com/stream/transform-videos"><u>list of flags</u></a> written as <code>key=value</code>. A few noteworthy flags:</p>
+	<p>The <code>&lt;OPTIONS&gt;</code> portion of the URL is a comma-separated <a href="https://developers.cloudflare.com/stream/transform-videos" target="_blank" rel="noopener noreferrer"><u>list of flags</u></a> written as <code>key=value</code>. A few noteworthy flags:</p>
 	<ul>
 		<li>
 			<p><code>mode</code> can be <code>video</code> (the default) to output a video, <code>frame</code> to pull a still image of a single frame, or even spritesheet to generate an image with multiple frames, which is useful for seek previews or storyboarding.</p>
@@ -54,7 +54,7 @@
 		</li>
 	</ul>
 	<p>The <code>&lt;SOURCE-VIDEO&gt;</code> is a full URL to a source file or a root-relative path if the origin is on the same zone as the transformation request.</p>
-	<p>A full list of supported options, examples, and troubleshooting information is <a href="https://developers.cloudflare.com/stream/transform-videos"><u>available in DevDocs</u></a>.</p>
+	<p>A full list of supported options, examples, and troubleshooting information is <a href="https://developers.cloudflare.com/stream/transform-videos" target="_blank" rel="noopener noreferrer"><u>available in DevDocs</u></a>.</p>
 	<div class="flex anchor relative">
 		<h3 id="a-few-examples">A few examples</h3>
 		<a href="https://blog.cloudflare.com/#a-few-examples" aria-hidden="true" class="relative sm:absolute sm:-start-5">
@@ -90,10 +90,10 @@
 			<p>Enable transformations on your website/zone and use the endpoint: <code>https://[your-site]/cdn-cgi/media/</code></p>
 		</li>
 		<li>
-			<p>Mobile video: <a href="https://pub-d9fcbc1abcd244c1821f38b99017347f.r2.dev/aus-mobile.mp4"><u>https://pub-d9fcbc1abcd244c1821f38b99017347f.r2.dev/aus-mobile.mp4</u></a>&nbsp;</p>
+			<p>Mobile video: <a href="https://pub-d9fcbc1abcd244c1821f38b99017347f.r2.dev/aus-mobile.mp4" target="_blank" rel="noopener noreferrer"><u>https://pub-d9fcbc1abcd244c1821f38b99017347f.r2.dev/aus-mobile.mp4</u></a>&nbsp;</p>
 		</li>
 		<li>
-			<p>Check out the <a href="https://stream-video-transformer.kristianfreeman.com"><u>Media Transformation URL Generator</u></a> from Kristian Freeman on our Developer Relations team, which he built using the <a href="https://streamlit.io"><u>Streamlit</u></a> Python framework on Workers.</p>
+			<p>Check out the <a href="https://stream-video-transformer.kristianfreeman.com" target="_blank" rel="noopener noreferrer"><u>Media Transformation URL Generator</u></a> from Kristian Freeman on our Developer Relations team, which he built using the <a href="https://streamlit.io" target="_blank" rel="noopener noreferrer"><u>Streamlit</u></a> Python framework on Workers.</p>
 		</li>
 	</ul>
 	<div class="flex anchor relative">
@@ -125,7 +125,7 @@
 		</a>
 	</div>
 	<p>Unlike Stream, Media Transformations receives requests on a customer’s own website. Internally, however, these requests are passed to the same <a href="https://blog.cloudflare.com/behind-the-scenes-with-stream-live-cloudflares-live-streaming-service"><u>On-the-Fly Encoder (“OTFE”) platform that Stream Live uses</u></a>. To achieve this, the Stream team built modules that run on our servers to act as entry points for these requests.</p>
-	<p>These entry points perform some initial validation on the URL formatting and flags before building a request to Stream’s own Delivery Worker, which in turn calls OTFE’s set of transformation handlers. The original asset is fetched from the <i>customer’s</i> origin, validated for size and type, and passed to the same OTFE methods responsible for manipulating and optimizing <a href="https://developers.cloudflare.com/stream/viewing-videos/displaying-thumbnails"><u>video or still frame thumbnails</u></a> for videos uploaded to Stream. These tools do a final inspection of the media type and encoding for compatibility, then generate the requested variant. If any errors were raised along the way, an HTTP error response will be generated using <a href="https://developers.cloudflare.com/images/reference/troubleshooting/#error-responses-from-resizing"><u>similar error codes</u></a> to Image Transformations. When successful, the result is cached for future use and delivered to the requestor as a single file. Even for new or uncached requests, all of this operates much faster than the video’s play time.</p>
+	<p>These entry points perform some initial validation on the URL formatting and flags before building a request to Stream’s own Delivery Worker, which in turn calls OTFE’s set of transformation handlers. The original asset is fetched from the <i>customer’s</i> origin, validated for size and type, and passed to the same OTFE methods responsible for manipulating and optimizing <a href="https://developers.cloudflare.com/stream/viewing-videos/displaying-thumbnails" target="_blank" rel="noopener noreferrer"><u>video or still frame thumbnails</u></a> for videos uploaded to Stream. These tools do a final inspection of the media type and encoding for compatibility, then generate the requested variant. If any errors were raised along the way, an HTTP error response will be generated using <a href="https://developers.cloudflare.com/images/reference/troubleshooting/#error-responses-from-resizing" target="_blank" rel="noopener noreferrer"><u>similar error codes</u></a> to Image Transformations. When successful, the result is cached for future use and delivered to the requestor as a single file. Even for new or uncached requests, all of this operates much faster than the video’s play time.</p>
 	<figure class="kg-card kg-image-card">
 		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7wfYn8FLcgzgIdLT6NFeq3/f6c51134363231ffed964300cb9992b0/flowchart.png" alt="" class="kg-image" width="1500" height="1500" loading="lazy">
 	</figure>

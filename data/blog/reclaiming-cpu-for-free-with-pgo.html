@@ -1,7 +1,7 @@
 <div class="mb2 gray5">4 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3Eh9CutmKzzir3UkBhGbUb/8d917b01d8e3d1647a686421a036f103/reclaiming-cpu-for-free-with-pgo.png" alt="">
 <div class="post-content lh-copy gray1">
 	<p></p>
-	<p><a href="https://tip.golang.org/doc/go1.20">Golang 1.20</a> introduced support for Profile Guided Optimization (PGO) to the go compiler. This allows guiding the compiler to introduce optimizations based on the real world behaviour of your system. In the Observability Team at Cloudflare, we maintain a few Go-based services that use thousands of cores worldwide, so even the 2-7% savings advertised would drastically reduce our CPU footprint, effectively for free. This would reduce the CPU usage for our internal services, freeing up those resources to serve customer requests, providing measurable improvements to our customer experience. In this post, I will cover the process we created for experimenting with PGO – collecting representative profiles across our production infrastructure and then deploying new PGO binaries and measuring the CPU savings.</p>
+	<p><a href="https://tip.golang.org/doc/go1.20" target="_blank" rel="noopener noreferrer">Golang 1.20</a> introduced support for Profile Guided Optimization (PGO) to the go compiler. This allows guiding the compiler to introduce optimizations based on the real world behaviour of your system. In the Observability Team at Cloudflare, we maintain a few Go-based services that use thousands of cores worldwide, so even the 2-7% savings advertised would drastically reduce our CPU footprint, effectively for free. This would reduce the CPU usage for our internal services, freeing up those resources to serve customer requests, providing measurable improvements to our customer experience. In this post, I will cover the process we created for experimenting with PGO – collecting representative profiles across our production infrastructure and then deploying new PGO binaries and measuring the CPU savings.</p>
 	<div class="flex anchor relative">
 		<h3 id="how-does-pgo-work">How does PGO work?</h3>
 		<a href="https://blog.cloudflare.com/#how-does-pgo-work" aria-hidden="true" class="relative sm:absolute sm:-start-5">
@@ -20,7 +20,7 @@
 			</svg>
 		</a>
 	</div>
-	<p>In the Observability team, we operate a system we call “wshim”. Wshim is a service that runs on every one of our edge servers, providing a push gateway for telemetry sourced from our internal Cloudflare Workers. Because this service runs on every server, and is called every time an internal worker is called, wshim requires a lot of CPU time to run. In order to track exactly how much, we put wshim into its own <a href="https://en.wikipedia.org/wiki/Cgroups">cgroup</a>, and use <a href="https://github.com/google/cadvisor">cadvisor</a> to expose Prometheus metrics pertaining to the resources that it uses.</p>
+	<p>In the Observability team, we operate a system we call “wshim”. Wshim is a service that runs on every one of our edge servers, providing a push gateway for telemetry sourced from our internal Cloudflare Workers. Because this service runs on every server, and is called every time an internal worker is called, wshim requires a lot of CPU time to run. In order to track exactly how much, we put wshim into its own <a href="https://en.wikipedia.org/wiki/Cgroups" target="_blank" rel="noopener noreferrer">cgroup</a>, and use <a href="https://github.com/google/cadvisor" target="_blank" rel="noopener noreferrer">cadvisor</a> to expose Prometheus metrics pertaining to the resources that it uses.</p>
 	<p>Before deploying PGO, wshim was using over 3000 cores globally:</p>
 	<figure class="kg-card kg-image-card ">
 
@@ -30,12 +30,12 @@
 	<p><code>container_cpu_time_seconds</code> is our internal metric that tracks the amount of time a CPU has spent running wshim across the world. Even a 2% saving would return 60 cores to our customers, making the Cloudflare network even more efficient.</p>
 	<p>The first step in deploying PGO was to collect representative profiles from our servers worldwide. The first problem we run into is that we run thousands of servers, each with different usage patterns at given points in time – a datacenter serving lots of requests during daytime hours will have a different usage pattern than a different data center that locally is in the middle of the night. As such, selecting exactly which servers to profile is paramount to collecting good profiles for PGO to use.</p>
 	<p>In the end, we decided that the best samples would be from those datacenters experiencing heavy load – those are the ones where the slowest parts of wshim would be most obvious. Even further, we will only collect profiles from our Tier 1 data centers. These are data centers that serve our most heavily populated regions, are generally our largest, and are generally under very heavy loads during peak hours.</p>
-	<p>Concretely, we can get a list of high CPU servers by querying our <a href="https://thanos.io">Thanos</a> infrastructure:</p>
+	<p>Concretely, we can get a list of high CPU servers by querying our <a href="https://thanos.io" target="_blank" rel="noopener noreferrer">Thanos</a> infrastructure:</p>
 	<pre class="language-bash"><code class="language-bash">num_profiles="1000"
 
 # Fetch the top n CPU users for wshim across the edge using Thanos.
 cloudflared access curl "https://thanos/api/v1/query?query=topk%28${num_profiles}%2Cinstance%3Acontainer_cpu_time_seconds_total%3Arate2m%7Bapp_name%3D%22wshim.service%22%7D%29&amp;dedup=true&amp;partial_response=true" --compressed | jq '.data.result[].metric.instance' -r &gt; "${instances_file}"</code></pre>
-	<p>Go makes actually fetching CPU profiles trivial with <a href="https://pkg.go.dev/net/http/pprof">pprof</a>. In order for our engineers to debug their systems in production, we provide a method to easily retrieve production profiles that we can use here. Wshim provides a pprof interface that we can use to retrieve profiles, and we can collect these again with bash:</p>
+	<p>Go makes actually fetching CPU profiles trivial with <a href="https://pkg.go.dev/net/http/pprof" target="_blank" rel="noopener noreferrer">pprof</a>. In order for our engineers to debug their systems in production, we provide a method to easily retrieve production profiles that we can use here. Wshim provides a pprof interface that we can use to retrieve profiles, and we can collect these again with bash:</p>
 	<pre class="language-bash"><code class="language-bash"># For every instance, attempt to pull a CPU profile. Note that due to the transient nature of some data centers
 # a certain percentage of these will fail, which is fine, as long as we get enough nodes to form a representative sample.
 while read instance; do fetch-pprof $instance –port 8976 –seconds 30' &gt; "${working_dir}/${instance}.pprof" &amp; done &lt; "${instances_file}"
@@ -75,7 +75,7 @@ pgo
 		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/I7piaGicvlQbFmzpiHxUT/65553d182d296b4b1d663b69eb34cb41/image4-1.png" alt="" class="kg-image" width="1475" height="191" loading="lazy">
 
 	</figure>
-	<p>This indicates that following the release, we’re using ~97 cores fewer than before the release, a ~3.5% reduction. This seems to be inline with the <a href="https://go.dev/doc/pgo#overview">upstream documentation</a> that gives numbers between 2% and 14%.</p>
+	<p>This indicates that following the release, we’re using ~97 cores fewer than before the release, a ~3.5% reduction. This seems to be inline with the <a href="https://go.dev/doc/pgo#overview" target="_blank" rel="noopener noreferrer">upstream documentation</a> that gives numbers between 2% and 14%.</p>
 	<p>The second number we can look at is the usage at the same time of day on different days of the week. The average usage for the 7 days prior to the release was 3067.83 cores, whereas the 7 days <i>after</i> the release were 2996.78, a savings of 71 CPUs. Not quite as good as our 97 CPU savings, but still pretty substantial!</p>
 	<p>This seems to prove the benefits of PGO – without changing the code at all, we managed to save ourselves several servers worth of CPU time.</p>
 	<div class="flex anchor relative">
@@ -89,7 +89,7 @@ pgo
 	<p>Looking at these initial results certainly seems to prove the case for PGO – saving multiple servers worth of CPU without any code changes is a big win for freeing up resources to better serve customer requests. However, there is definitely more work to be done here. In particular:</p>
 	<ul>
 		<li>
-			<p>Automating the collection of profiles, perhaps using <a href="https://www.cncf.io/blog/2022/05/31/what-is-continuous-profiling">continuous profiling</a></p>
+			<p>Automating the collection of profiles, perhaps using <a href="https://www.cncf.io/blog/2022/05/31/what-is-continuous-profiling" target="_blank" rel="noopener noreferrer">continuous profiling</a></p>
 		</li>
 		<li>
 			<p>Refining the deployment process to handle the new “two-step deployment”, deploying a non PGO binary, and then a PGO one</p>
@@ -98,8 +98,8 @@ pgo
 			<p>Refining our techniques to derive representative profiling samples</p>
 		</li>
 		<li>
-			<p>Implementing further improvements with <a href="https://github.com/facebookarchive/BOLT">BOLT</a>, or other Link Time Optimization (LTO) techniques</p>
+			<p>Implementing further improvements with <a href="https://github.com/facebookarchive/BOLT" target="_blank" rel="noopener noreferrer">BOLT</a>, or other Link Time Optimization (LTO) techniques</p>
 		</li>
 	</ul>
-	<p><i>If that sounds interesting to you, we’re hiring in both the </i><a href="https://boards.greenhouse.io/cloudflare/jobs/5563753?gh_jid=5563753"><i>USA</i></a><i> and </i><a href="https://boards.greenhouse.io/cloudflare/jobs/5443710?gh_jid=5443710"><i>EMEA</i></a><i>!</i></p>
+	<p><i>If that sounds interesting to you, we’re hiring in both the </i><a href="https://boards.greenhouse.io/cloudflare/jobs/5563753?gh_jid=5563753" target="_blank" rel="noopener noreferrer"><i>USA</i></a><i> and </i><a href="https://boards.greenhouse.io/cloudflare/jobs/5443710?gh_jid=5443710" target="_blank" rel="noopener noreferrer"><i>EMEA</i></a><i>!</i></p>
 </div>

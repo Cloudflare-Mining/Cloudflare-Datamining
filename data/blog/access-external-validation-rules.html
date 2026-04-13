@@ -2,9 +2,9 @@
 <div class="mt4">This post is also available in <a href="https://blog.cloudflare.com/zh-cn/access-external-validation-rules">简体中文</a>, <a href="https://blog.cloudflare.com/ko-kr/access-external-validation-rules">한국어</a>, <a href="https://blog.cloudflare.com/es-es/access-external-validation-rules">Español</a> and <a href="https://blog.cloudflare.com/ja-jp/access-external-validation-rules">日本語</a>.</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1nbofnnzI1SdUMEul7486i/14bc7472d0c51bf17284a5503b323cdc/access-external-validation-rules.png" alt="">
 <div class="post-content lh-copy gray1">
 	<p></p>
-	<p>Zero Trust application security means that every request to an application is denied unless it passes a specific set of defined security policies. Most <a href="https://www.cloudflare.com/learning/security/glossary/what-is-zero-trust">Zero Trust</a> solutions allow the use of a user’s identity, device, and location as variables to define these security policies.</p>
+	<p>Zero Trust application security means that every request to an application is denied unless it passes a specific set of defined security policies. Most <a href="https://www.cloudflare.com/learning/security/glossary/what-is-zero-trust" target="_blank" rel="noopener noreferrer">Zero Trust</a> solutions allow the use of a user’s identity, device, and location as variables to define these security policies.</p>
 	<p>We heard from customers that they wanted more control and more customizability in defining their Zero Trust policies.</p>
-	<p>Starting today, we’re excited that Access policies can consider anything before allowing a user access to an application. And by anything, we really do mean absolutely <i>anything</i>. You can now build infinitely customizable policies through the External Evaluation rule option, which allows you to call any <a href="https://www.cloudflare.com/learning/security/api/what-is-an-api">API</a> during the evaluation of an Access policy.</p>
+	<p>Starting today, we’re excited that Access policies can consider anything before allowing a user access to an application. And by anything, we really do mean absolutely <i>anything</i>. You can now build infinitely customizable policies through the External Evaluation rule option, which allows you to call any <a href="https://www.cloudflare.com/learning/security/api/what-is-an-api" target="_blank" rel="noopener noreferrer">API</a> during the evaluation of an Access policy.</p>
 	<div class="flex anchor relative">
 		<h3 id="why-we-built-external-evaluation-rules">Why we built external evaluation rules</h3>
 		<a href="https://blog.cloudflare.com/#why-we-built-external-evaluation-rules" aria-hidden="true" class="relative sm:absolute sm:-start-5">
@@ -52,7 +52,7 @@
 async function externalEvaluation(claims) {
   return claims.identity.email === 'address@example.com'
 }</code></pre>
-	<p>Where the claims object contains all the information about the user, device and network making the request. This <code>externalEvaluation</code> function can be extended to perform any desired business logic. We have made an <a href="https://github.com/cloudflare/workers-access-external-auth-example">open-source repository</a> available with example code for consuming the Access claims and verifying the signing keys from Access.</p>
+	<p>Where the claims object contains all the information about the user, device and network making the request. This <code>externalEvaluation</code> function can be extended to perform any desired business logic. We have made an <a href="https://github.com/cloudflare/workers-access-external-auth-example" target="_blank" rel="noopener noreferrer">open-source repository</a> available with example code for consuming the Access claims and verifying the signing keys from Access.</p>
 	<p>This is really powerful! Any Access policy can now be infinitely extended to consider any information before allowing a user access. Potential examples include:</p>
 	<ul>
 		<li>
@@ -69,5 +69,5 @@ async function externalEvaluation(claims) {
 		</li>
 	</ul>
 	<p>We’re just getting started with extending Access policies. In the future we’ll make it easier to programmatically decide how a user should be treated before accessing an application, not just allow or deny access.</p>
-	<p>This feature is available in the Cloudflare Zero Trust dashboard today. Follow <a href="https://developers.cloudflare.com/cloudflare-one/policies/access/external-evaluation">this guide</a> to get started!</p>
+	<p>This feature is available in the Cloudflare Zero Trust dashboard today. Follow <a href="https://developers.cloudflare.com/cloudflare-one/policies/access/external-evaluation" target="_blank" rel="noopener noreferrer">this guide</a> to get started!</p>
 </div>

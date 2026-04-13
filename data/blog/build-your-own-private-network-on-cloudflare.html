@@ -2,9 +2,9 @@
 <div class="post-content lh-copy gray1">
 	<p></p>
 	<p>Starting today, your team can create a private network on Cloudflare’s network. Team members click a single button to connect to private IPs in environments that you control. Cloudflare’s network routes their connection through a data center in one of over 200 cities around the world. On the other side, administrators deploy a lightweight software connector that replaces traditional VPN appliances.</p>
-	<p>Cloudflare’s private network combines IP level connectivity and <a href="https://www.cloudflare.com/learning/security/glossary/what-is-zero-trust">Zero Trust controls</a>. Thick clients like RDP software, SMB file viewers, or other programs can connect to the private IPs already in use in your deployment without any additional configuration. Coming soon, you’ll be able to layer additional identity-based network-level rules to control which users, from which devices, can reach specific IPs.</p>
-	<p>We are launching this feature as a follow-up to Cloudflare’s <a href="https://www.cloudflare.com/developer-week">Developer Week</a> because we are excited to give your development team, and your entire organization, a seamless platform for building and connecting your internal resources. We built this solution based on feedback from customers who want to move to a Zero Trust model without sacrificing some convenience of a private network.</p>
-	<p>We’re excited to give any team the ability to run their internal network on Cloudflare’s global edge. Organizations that have 50 or fewer team members can use this feature, as well as nearly all of Cloudflare for Teams, at no cost by starting <a href="https://dash.cloudflare.com/sign-up/teams">here</a>.</p>
+	<p>Cloudflare’s private network combines IP level connectivity and <a href="https://www.cloudflare.com/learning/security/glossary/what-is-zero-trust" target="_blank" rel="noopener noreferrer">Zero Trust controls</a>. Thick clients like RDP software, SMB file viewers, or other programs can connect to the private IPs already in use in your deployment without any additional configuration. Coming soon, you’ll be able to layer additional identity-based network-level rules to control which users, from which devices, can reach specific IPs.</p>
+	<p>We are launching this feature as a follow-up to Cloudflare’s <a href="https://www.cloudflare.com/developer-week" target="_blank" rel="noopener noreferrer">Developer Week</a> because we are excited to give your development team, and your entire organization, a seamless platform for building and connecting your internal resources. We built this solution based on feedback from customers who want to move to a Zero Trust model without sacrificing some convenience of a private network.</p>
+	<p>We’re excited to give any team the ability to run their internal network on Cloudflare’s global edge. Organizations that have 50 or fewer team members can use this feature, as well as nearly all of Cloudflare for Teams, at no cost by starting <a href="https://dash.cloudflare.com/sign-up/teams" target="_blank" rel="noopener noreferrer">here</a>.</p>
 	<div class="flex anchor relative">
 		<h3 id="challenges-with-non-web-applications">Challenges with non-web applications</h3>
 		<a href="https://blog.cloudflare.com/#challenges-with-non-web-applications" aria-hidden="true" class="relative sm:absolute sm:-start-5">
@@ -13,7 +13,7 @@
 			</svg>
 		</a>
 	</div>
-	<p>Over the last three years, Cloudflare Access has helped thousands of organizations <a href="https://www.cloudflare.com/products/zero-trust/vpn-replacement">replace their VPN with a Zero Trust model</a>. Most of those teams started with web applications like homegrown intranet sites or self-hosted tools. In less than 10 minutes, customers could connect an application to Cloudflare’s network, add Zero Trust rules, and make connectivity seamless and fast for their users.</p>
+	<p>Over the last three years, Cloudflare Access has helped thousands of organizations <a href="https://www.cloudflare.com/products/zero-trust/vpn-replacement" target="_blank" rel="noopener noreferrer">replace their VPN with a Zero Trust model</a>. Most of those teams started with web applications like homegrown intranet sites or self-hosted tools. In less than 10 minutes, customers could connect an application to Cloudflare’s network, add Zero Trust rules, and make connectivity seamless and fast for their users.</p>
 	<p>Web applications make that flow easier thanks to client software that already runs on every device: the browser. Browsers send HTTP requests over the public Internet to the application. Cloudflare’s network checks every request against the Zero Trust rules configured for that application.</p>
 	<figure class="kg-card kg-image-card ">
 
@@ -36,7 +36,7 @@
 			<p>“What about everything else outside of the browser?”</p>
 		</li>
 	</ul>
-	<p>Use cases outside of the browser introduce two challenges: they each rely on a different piece of client software and they each handle authentication in unique ways. For example, <a href="https://www.cloudflare.com/learning/access-management/what-is-ssh">SSH sessions</a> can support client certificates or password authentication. RDP workflows rely on passwords and tend to lack multifactor requirements or SSO integration. Other protocols lack authentication altogether. Exposing any of these directly on the Internet would make them vulnerable to attack.</p>
+	<p>Use cases outside of the browser introduce two challenges: they each rely on a different piece of client software and they each handle authentication in unique ways. For example, <a href="https://www.cloudflare.com/learning/access-management/what-is-ssh" target="_blank" rel="noopener noreferrer">SSH sessions</a> can support client certificates or password authentication. RDP workflows rely on passwords and tend to lack multifactor requirements or SSO integration. Other protocols lack authentication altogether. Exposing any of these directly on the Internet would make them vulnerable to attack.</p>
 	<p>As a result, organizations hide these types of resources behind a private network as a band-aid. Users toggle their VPN and their client software connects to internal IPs and ports. Administrators suffer through maintaining VPN appliances while their users deal with the slower performance.</p>
 	<p>Cloudflare attempted to solve this type of use case a <a href="https://blog.cloudflare.com/cloudflare-access-now-supports-rdp">couple of years ago</a>. We built an option that relied on a connector, `cloudflared`, that bridged user devices and the environment where the services ran.</p>
 	<p>The instance of <code>cloudflared</code> running in the data center or cloud environment created a WebSocket connection between the connector and Cloudflare’s edge. End users ran the same connector on their own devices. <code>cloudflared</code> running on the client device exposed a local port which could receive traffic from services like an SMB or RDP client and send it over WebSocket to the corresponding <code>cloudflared</code> in the data center.</p>
@@ -69,7 +69,7 @@
 
 	</figure>
 	<p>On the client side, end users run an agent, Cloudflare WARP, and authenticate with their <a href="https://blog.cloudflare.com/multi-sso-and-cloudflare-access-adding-linkedin-and-github-teams">identity provider</a> into the same Cloudflare account that administers the Tunnels. They can then click a single button to connect and the WARP agent creates a Wireguard tunnel from the device to Cloudflare’s network.</p>
-	<p>The Cloudflare WARP agent routes traffic from the device to Cloudflare’s edge. By default, the client excludes traffic to RFC 1918 IP addresses and a <a href="https://developers.cloudflare.com/cloudflare-one/tutorials/split-tunnel">few other defaults</a>. In this mode, administrators can configure the client to instead pick up traffic bound for those IP ranges.</p>
+	<p>The Cloudflare WARP agent routes traffic from the device to Cloudflare’s edge. By default, the client excludes traffic to RFC 1918 IP addresses and a <a href="https://developers.cloudflare.com/cloudflare-one/tutorials/split-tunnel" target="_blank" rel="noopener noreferrer">few other defaults</a>. In this mode, administrators can configure the client to instead pick up traffic bound for those IP ranges.</p>
 	<p>When that traffic arrives, Cloudflare’s edge locates the Tunnel in that account that represents the IP range enrolled. If the user connects to the same data center as the Tunnel, Cloudflare proxies a TCP connection by opening a bidirectional stream to the corresponding instance of <code>cloudflared</code>. If the user first reaches a different data center, Cloudflare’s smart routing technology finds the fastest path to the Tunnel.</p>
 	<p>Client applications that connect to specific IP addresses can continue to do so without any configuration changes. When those applications attempt to reach those IPs, the Cloudflare WARP agent handles routing that traffic to Cloudflare’s edge and to the instance of <code>cloudflared</code>.</p>
 	<p><code>cloudflared</code> then operates like a bastion inside of the data center and connects to the services running at those IP addresses.</p>
@@ -92,7 +92,7 @@
 			</svg>
 		</a>
 	</div>
-	<p>You can start running your virtual private network on Cloudflare <a href="https://developers.cloudflare.com/cloudflare-one/connections/connect-networks">with just four steps</a>.</p>
+	<p>You can start running your virtual private network on Cloudflare <a href="https://developers.cloudflare.com/cloudflare-one/connections/connect-networks" target="_blank" rel="noopener noreferrer">with just four steps</a>.</p>
 	<p>1. Install and authenticate <code>cloudflared</code> in a data center, public cloud environment, or even on a single server with the command below. Once authenticated, <code>cloudflared</code> will become part of your Cloudflare account and available.</p>
 	<p><code>cloudflared tunnel login</code></p>
 	<p>2. Create a Tunnel with a name that represents that service or environment.</p>
@@ -113,7 +113,7 @@
 	<p><code>cloudflared tunnel run grafana</code></p>
 	<ol>
 		<li>
-			<p>Configure traffic to private IP addresses to be <a href="https://developers.cloudflare.com/cloudflare-one/tutorials/split-tunnel">included through WARP</a>, as opposed to being run in the default split tunnel mode.</p>
+			<p>Configure traffic to private IP addresses to be <a href="https://developers.cloudflare.com/cloudflare-one/tutorials/split-tunnel" target="_blank" rel="noopener noreferrer">included through WARP</a>, as opposed to being run in the default split tunnel mode.</p>
 		</li>
 		<li>
 			<p>Enroll your device and enable WARP to connect.</p>
@@ -124,7 +124,7 @@
 		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5MhBwLmP8odlu8blEBE6Oj/026acfa8b2d223c1b346c363ed477ffa/image4-11.png" alt="" class="kg-image" width="500" height="581" loading="lazy">
 
 	</figure>
-	<p>We've provided a <a href="https://developers.cloudflare.com/cloudflare-one/tutorials/warp-to-tunnel">step-by-step tutorial</a> as well to help your team get started.</p>
+	<p>We've provided a <a href="https://developers.cloudflare.com/cloudflare-one/tutorials/warp-to-tunnel" target="_blank" rel="noopener noreferrer">step-by-step tutorial</a> as well to help your team get started.</p>
 	<div class="flex anchor relative">
 		<h3 id="whats-next">What’s next?</h3>
 		<a href="https://blog.cloudflare.com/#whats-next" aria-hidden="true" class="relative sm:absolute sm:-start-5">

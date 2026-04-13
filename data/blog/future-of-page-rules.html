@@ -20,7 +20,7 @@
 		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/cyicKWH3ZiZNtQmjNSGEi/2f7fbea400ccc34e9d4996c999fa5980/image3-33.png" alt="" class="kg-image" width="1999" height="1500" loading="lazy">
 
 	</figure>
-	<p>Photo by <a href="https://unsplash.com/@zelebb?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText">Andrey Matveev</a> on <a href="https://unsplash.com/?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText">Unsplash</a></p>
+	<p>Photo by <a href="https://unsplash.com/@zelebb?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText" target="_blank" rel="noopener noreferrer">Andrey Matveev</a> on <a href="https://unsplash.com/?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText" target="_blank" rel="noopener noreferrer">Unsplash</a></p>
 	<p>Like multitools and other generalist products, Page Rules does a good job at many things, but is not best-of-breed at anything. This is the trade-off of generalism. As we have grown as a company our customers have rightfully demanded more. Filtering on URL-alone is no longer sufficient; users are demanding more - and today we are delivering.</p>
 	<p>Over the last two years we have been working on the future of Page Rules and distilling hundreds of pieces of feedback into common themes, such as:</p>
 	<ol>
@@ -79,7 +79,7 @@
 		</a>
 	</div>
 	<p>One of the limitations of Page Rules was how each Page Rule was stored and executed on our backend architecture. We are unable to offer more than 125 Page Rules per zone before we begin to see a performance hit - latency on HTTP requests begins to increase as evaluating them vs the Page Rules takes longer and longer. To combat this limitation users moved simple workloads to Workers, or split the zone into multiple sub domains, each with a 125 Page Rules quota. Neither of these are ideal for the customer.</p>
-	<p>To combat this limitation we have built <i>all</i> of the replacement products atop our lightning-fast <a href="https://developers.cloudflare.com/ruleset-engine/about/rulesets">Rulesets Engine</a>, which also runs products such as Transform Rules, Custom Rules (WAF), Bulk Redirects and API Shield.</p>
+	<p>To combat this limitation we have built <i>all</i> of the replacement products atop our lightning-fast <a href="https://developers.cloudflare.com/ruleset-engine/about/rulesets" target="_blank" rel="noopener noreferrer">Rulesets Engine</a>, which also runs products such as Transform Rules, Custom Rules (WAF), Bulk Redirects and API Shield.</p>
 	<p>This allows us to offer much more quota to customers, as this engine is built to scale well beyond 125 rules per product. The table below summarizes the before and after impact of these new products, showing the default rules quota per plan:</p><!--kg-card-begin: html-->
 	<table>
 		<thead>
@@ -131,7 +131,7 @@
 	<p>This means zone’s on the Enterprise plan now have a minimum of <b>500</b> rules to use where before they had 125 via Page Rules. For Enterprises the quota for the new products is negotiable. Pro plan zones go from 20 Page Rules to 100. &nbsp;Combined with the fine-grained control that the ruleset engine offers, these changes allow customers to customize their zone’s traffic to the finest of margins.</p>
 	<p>The other benefit from building all of these products on the Rulesets Engine is extensibility. Currently there are over 30 products that are built and running on the Rulesets Engine. Each of these products is essentially a logical bucket called a ‘phase’ which contains a single ruleset scoped to that product. Each phase is restricted to specific actions and fields, for example the field cf.bot_management.score is unavailable in http_request_transform as we have not calculated the bot score at the time we perform URL rewrites. Also, only the <code>rewrite</code> action is permitted. Whereas in Origin Rules (http_request_origin) we only allow the action <code>route</code></p>
 	<p>When we create new capabilities for a product that is built atop the Rulesets Engine it is trivially simple for us to extend that new capability to other products at a later date.</p>
-	<p>For example, we added a new <a href="https://developers.cloudflare.com/ruleset-engine/rules-language/fields">‘field’</a>, <code>http.request.accepted_languages</code> to Transform Rules earlier in the year. Until recently this was only available in Transform Rules. However, as both products are built on the <a href="https://developers.cloudflare.com/ruleset-engine/about/rulesets">Rulesets Engine</a> it was trivial to enable this feature for Dynamic Redirects. This allows customers to perform URL redirects based on the visitor's language preference, and the cost to us from an engineering perspective is negligible as the field is already implemented.</p>
+	<p>For example, we added a new <a href="https://developers.cloudflare.com/ruleset-engine/rules-language/fields" target="_blank" rel="noopener noreferrer">‘field’</a>, <code>http.request.accepted_languages</code> to Transform Rules earlier in the year. Until recently this was only available in Transform Rules. However, as both products are built on the <a href="https://developers.cloudflare.com/ruleset-engine/about/rulesets" target="_blank" rel="noopener noreferrer">Rulesets Engine</a> it was trivial to enable this feature for Dynamic Redirects. This allows customers to perform URL redirects based on the visitor's language preference, and the cost to us from an engineering perspective is negligible as the field is already implemented.</p>
 	<p>This also means in the future should a new field be created for Cache Rules due to a customer request, e.g. http.request.super_cool_field, in a matter of clicks we can enable this field for any of the other 30 products rather than have to duplicate effort across multiple platforms.</p>
 	<p>Simply put, the more products we build on top of the Rulesets Engine, the faster we can move and the more functionality we can put into users hands.</p>
 	<div class="flex anchor relative">
@@ -159,5 +159,5 @@
 		</a>
 	</div>
 	<p>We are replacing Page Rules with a new suite of products, each built to be best-of-breed and put more power into the hands of our users.</p>
-	<p>Read more about the new products in each of their dedicated blogs. Then, <a href="https://dash.cloudflare.com/?to=%2F%3Aaccount%2F%3Azone%2Frules%2F">try</a> them for yourself!</p>
+	<p>Read more about the new products in each of their dedicated blogs. Then, <a href="https://dash.cloudflare.com/?to=%2F%3Aaccount%2F%3Azone%2Frules%2F" target="_blank" rel="noopener noreferrer">try</a> them for yourself!</p>
 </div>

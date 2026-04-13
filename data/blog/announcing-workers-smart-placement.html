@@ -10,7 +10,7 @@
 	<p>One way to make things fast is to bring resources as close to the user as possible — this is what Cloudflare has been doing with compute by running within milliseconds of most of the world’s population. But, counterintuitive as it may seem, sometimes bringing compute closer to the user can actually slow applications down. If your application needs to connect to APIs, databases or other resources that aren’t located near the end user then it can be more performant to run the application near the resources instead of the user.</p>
 	<p>So today we’re excited to announce Smart Placement for Workers and Pages Functions, making every interaction as fast as possible. With Smart Placement, Cloudflare is taking serverless computing to the Supercloud by moving compute resources to optimal locations in order to speed up applications. The best part – it’s completely automatic, without any extra input (like the dreaded “region”) needed.</p>
 	<p>Smart Placement is available now, in open beta, to all Workers and Pages customers!</p>
-	<p><a href="https://smart-placement-demo.pages.dev">Check out our demo on how Smart Placement works!</a></p><!--kg-card-begin: html-->
+	<p><a href="https://smart-placement-demo.pages.dev" target="_blank" rel="noopener noreferrer">Check out our demo on how Smart Placement works!</a></p><!--kg-card-begin: html-->
 	<p></p><!--kg-card-end: html-->
 	<div class="flex anchor relative">
 		<h2 id="the-serverless-shift">The serverless shift</h2>
@@ -39,7 +39,7 @@
 			</svg>
 		</a>
 	</div>
-	<p>We have our own growing suite of storage offerings: Workers KV, Durable Objects, D1, <a href="https://www.cloudflare.com/developer-platform/r2">R2</a>. As we’re maturing our data products, we think deeply about their interactions with Workers so that you don’t have to! For example, another approach that has better performance in some cases is moving storage, rather than compute close to users. If you’re using Durable Objects to create a real-time game we could move the Durable Objects to minimize latency for all users.</p>
+	<p>We have our own growing suite of storage offerings: Workers KV, Durable Objects, D1, <a href="https://www.cloudflare.com/developer-platform/r2" target="_blank" rel="noopener noreferrer">R2</a>. As we’re maturing our data products, we think deeply about their interactions with Workers so that you don’t have to! For example, another approach that has better performance in some cases is moving storage, rather than compute close to users. If you’re using Durable Objects to create a real-time game we could move the Durable Objects to minimize latency for all users.</p>
 	<p>Our goal for the future state is that you set mode = "smart"and we evaluate the optimal placement of all your resources with no additional configuration needed.</p>
 	<div class="flex anchor relative">
 		<h3 id="cloudflare-compute-backendservice">Cloudflare compute + ${backendService}</h3>
@@ -57,7 +57,7 @@
 		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6Xh0tIBnMeZp7z1mDeonqd/2d55124ff2c831d964eb36a98852a968/map.png" alt="A map of the globe illustrating global users, global workers and a centralized database. " class="kg-image" width="1600" height="900" loading="lazy">
 
 	</figure>
-	<p>The Cloudflare network is <a href="https://www.cloudflare.com/network">~50ms from 95% of the world’s connected population</a>. Turning this on its head, we're also very close to your backend services.</p>
+	<p>The Cloudflare network is <a href="https://www.cloudflare.com/network" target="_blank" rel="noopener noreferrer">~50ms from 95% of the world’s connected population</a>. Turning this on its head, we're also very close to your backend services.</p>
 	<div class="flex anchor relative">
 		<h2 id="application-performance-is-user-experience">Application performance is user experience</h2>
 		<a href="https://blog.cloudflare.com/#application-performance-is-user-experience" aria-hidden="true" class="relative sm:absolute sm:-start-5">
@@ -80,7 +80,7 @@
 
 	</figure>
 	<p>Let’s put this to the test.</p>
-	<p>We measured the request duration for a Worker without Smart Placement and compared it to one with Smart Placement enabled. For both tests, we sent 3,500 requests from Sydney to a Worker which does three round trips to an <a href="https://upstash.com">Upstash</a> instance (free-tier) located in eu-central-1 (Frankfurt).</p>
+	<p>We measured the request duration for a Worker without Smart Placement and compared it to one with Smart Placement enabled. For both tests, we sent 3,500 requests from Sydney to a Worker which does three round trips to an <a href="https://upstash.com" target="_blank" rel="noopener noreferrer">Upstash</a> instance (free-tier) located in eu-central-1 (Frankfurt).</p>
 	<figure class="kg-card kg-image-card ">
 
 		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/54nvh0FI2RcDh1gQ9ea4Tq/6a0ca6a7ea678cd965c79b25d7b90874/image3-7.png" alt="A graph showing request duration with and without Smart Placement enabled. " class="kg-image" width="1524" height="920" loading="lazy">
@@ -108,10 +108,10 @@ mode = "smart"</code></pre>
 			<p>Globally distributed services: If the services that your Worker communicates with are geo-distributed in many regions, Smart Placement isn’t a good fit. We automatically rule these out of the Smart Placement optimization.</p>
 		</li>
 		<li>
-			<p>Analytics or logging services: Requests to analytics or logging services don’t need to be in the critical path of your application. <a href="https://developers.cloudflare.com/workers/runtime-apis/fetch-event/#waituntil"><code>waitUntil()</code></a> should be used so that the response back to users isn’t blocked when instrumenting your code. Since <code>waitUntil()</code> doesn’t impact the request duration from a user’s perspective, we automatically rule analytics/logging services out of the Smart Placement optimization.</p>
+			<p>Analytics or logging services: Requests to analytics or logging services don’t need to be in the critical path of your application. <a href="https://developers.cloudflare.com/workers/runtime-apis/fetch-event/#waituntil" target="_blank" rel="noopener noreferrer"><code>waitUntil()</code></a> should be used so that the response back to users isn’t blocked when instrumenting your code. Since <code>waitUntil()</code> doesn’t impact the request duration from a user’s perspective, we automatically rule analytics/logging services out of the Smart Placement optimization.</p>
 		</li>
 	</ul>
-	<p>Refer to our <a href="https://developers.cloudflare.com/workers/platform/smart-placement/#supported-backends">documentation</a> for a list of services not considered by the Smart Placement algorithm.</p>
+	<p>Refer to our <a href="https://developers.cloudflare.com/workers/platform/smart-placement/#supported-backends" target="_blank" rel="noopener noreferrer">documentation</a> for a list of services not considered by the Smart Placement algorithm.</p>
 	<p>Once Smart Placement kicks in, you’ll be able to see a new “Request Duration” tab on your Worker. We route 1% of requests without Smart Placement enabled so that you can see its impact on request duration.</p>
 	<figure class="kg-card kg-image-card ">
 
@@ -119,7 +119,7 @@ mode = "smart"</code></pre>
 
 	</figure>
 	<p>And yes, it is really that easy!</p>
-	<p>Try out Smart Placement by checking out our <a href="https://smart-placement-demo.pages.dev">demo</a> (it’s a lot of fun to play with!). To learn more, visit our <a href="https://developers.cloudflare.com/workers/platform/smart-placement">developer documentation</a>.</p>
+	<p>Try out Smart Placement by checking out our <a href="https://smart-placement-demo.pages.dev" target="_blank" rel="noopener noreferrer">demo</a> (it’s a lot of fun to play with!). To learn more, visit our <a href="https://developers.cloudflare.com/workers/platform/smart-placement" target="_blank" rel="noopener noreferrer">developer documentation</a>.</p>
 	<div class="flex anchor relative">
 		<h2 id="whats-next-for-smart-placement">What’s next for Smart Placement?</h2>
 		<a href="https://blog.cloudflare.com/#whats-next-for-smart-placement" aria-hidden="true" class="relative sm:absolute sm:-start-5">
@@ -140,7 +140,7 @@ mode = "smart"</code></pre>
 			<p>Support for TCP based connections</p>
 		</li>
 	</ul>
-	<p>We would like to hear from you! If you have feedback or feature requests, reach out through the <a href="https://discord.com/invite/cloudflaredev">Cloudflare Developer Discord</a>.</p>
+	<p>We would like to hear from you! If you have feedback or feature requests, reach out through the <a href="https://discord.com/invite/cloudflaredev" target="_blank" rel="noopener noreferrer">Cloudflare Developer Discord</a>.</p>
 	<div class="flex anchor relative">
 		<h3 id="watch-on-cloudflare-tv">Watch on Cloudflare TV</h3>
 		<a href="https://blog.cloudflare.com/#watch-on-cloudflare-tv" aria-hidden="true" class="relative sm:absolute sm:-start-5">

@@ -30,10 +30,10 @@
 			</svg>
 		</a>
 	</div>
-	<p>In DNSSEC, <a href="https://www.cloudflare.com/dnssec/how-dnssec-works">trust is chained</a> down from the root zone, to the <a href="https://www.cloudflare.com/learning/dns/top-level-domain">Top Level Domain (TLD)</a>, to the domain, and then to any subdomain. You can trust cloudflare.com in DNSSEC because it is verified by a key contained at the .com zone, and you can trust .com because it is verified by a key contained at the root zone.</p>
+	<p>In DNSSEC, <a href="https://www.cloudflare.com/dnssec/how-dnssec-works" target="_blank" rel="noopener noreferrer">trust is chained</a> down from the root zone, to the <a href="https://www.cloudflare.com/learning/dns/top-level-domain" target="_blank" rel="noopener noreferrer">Top Level Domain (TLD)</a>, to the domain, and then to any subdomain. You can trust cloudflare.com in DNSSEC because it is verified by a key contained at the .com zone, and you can trust .com because it is verified by a key contained at the root zone.</p>
 	<p>cloudflare.com ECDSA public key:<code>mdsswUyr3DPW132mOi8V9xESWE8jTo0dxCjjnopKl+GqJxpVXckHAeF+ KkxLbxILfDLUT0rAK9iUzy1L53eKGQ==</code></p>
 	<p>SHA-256 hash of cloudflare.com key in .com zone:<code>32996839a6d808afe3eb4a795a0e6a7a39a76fc52ff228b22b76f6d63826f2b9</code></p>
-	<p>SHA-256 hash of .com key published in the <a href="https://www.internic.net/domain/root.zone">root zone</a>:<code>E2D3C916F6DEEAC73294E8268FB5885044A833FC5459588F4A9184CFC41A5766</code></p>
+	<p>SHA-256 hash of .com key published in the <a href="https://www.internic.net/domain/root.zone" target="_blank" rel="noopener noreferrer">root zone</a>:<code>E2D3C916F6DEEAC73294E8268FB5885044A833FC5459588F4A9184CFC41A5766</code></p>
 	<p>Keys in DNSSEC can be trusted because their hashes are stored in the zone above them, allowing DNS resolvers to compare the key against its hash. Therefore, to activate DNSSEC, a website owner needs to:</p>
 	<ul>
 		<li>
@@ -43,15 +43,15 @@
 			<p>Paste them in the registrar’s dashboard</p>
 		</li>
 		<li>
-			<p>The <a href="https://www.cloudflare.com/learning/dns/glossary/what-is-a-domain-name-registrar">registrar</a> then updates the information contained in the registry with the new keys</p>
+			<p>The <a href="https://www.cloudflare.com/learning/dns/glossary/what-is-a-domain-name-registrar" target="_blank" rel="noopener noreferrer">registrar</a> then updates the information contained in the registry with the new keys</p>
 		</li>
 	</ul>
 	<p>This part is problematic -- copying and pasting opens up the possibility to human error, and prevents the spread of DNSSEC on the web if the registrar still hasn’t added support in their interface for the protocol or our DNSSEC cipher choice.</p>
 	<blockquote>
-		<p><a href="https://twitter.com/puntcat">@puntcat</a> can you guys *please* add support for algorithm 13 for DNSSEC so I can use <a href="https://twitter.com/CloudFlare">@CloudFlare</a>?</p>
-		<p>— Evan Kinney (@evankinney) <a href="https://twitter.com/evankinney/status/659115663752044545">October 27, 2015</a></p>
+		<p><a href="https://twitter.com/puntcat" target="_blank" rel="noopener noreferrer">@puntcat</a> can you guys *please* add support for algorithm 13 for DNSSEC so I can use <a href="https://twitter.com/CloudFlare" target="_blank" rel="noopener noreferrer">@CloudFlare</a>?</p>
+		<p>— Evan Kinney (@evankinney) <a href="https://twitter.com/evankinney/status/659115663752044545" target="_blank" rel="noopener noreferrer">October 27, 2015</a></p>
 	</blockquote>
-	<p>If CloudFlare could instead communicate directly with the registry, we could activate DNSSEC for every website on CloudFlare automatically, a full <a href="http://www.datanyze.com/market-share/DNS">42% of managed DNS</a>. The sheer scale could fundamentally upgrade the mechanism of trust in the Internet backbone.</p>
+	<p>If CloudFlare could instead communicate directly with the registry, we could activate DNSSEC for every website on CloudFlare automatically, a full <a href="http://www.datanyze.com/market-share/DNS" target="_blank" rel="noopener noreferrer">42% of managed DNS</a>. The sheer scale could fundamentally upgrade the mechanism of trust in the Internet backbone.</p>
 	<div class="flex anchor relative">
 		<h3 id="creating-internet-standards">Creating Internet Standards</h3>
 		<a href="https://blog.cloudflare.com/#creating-internet-standards" aria-hidden="true" class="relative sm:absolute sm:-start-5">
@@ -60,9 +60,9 @@
 			</svg>
 		</a>
 	</div>
-	<p>At CloudFlare, we care about advancing what’s possible on the Internet, so <a href="https://tools.ietf.org/html/draft-latour-dnsoperator-to-rrr-protocol">we have published an Internet Draft</a> proposing a protocol for DNS providers such as CloudFlare to communicate directly to registries and registrars. We are pushing it to become an accepted Internet Standard RFC.</p>
+	<p>At CloudFlare, we care about advancing what’s possible on the Internet, so <a href="https://tools.ietf.org/html/draft-latour-dnsoperator-to-rrr-protocol" target="_blank" rel="noopener noreferrer">we have published an Internet Draft</a> proposing a protocol for DNS providers such as CloudFlare to communicate directly to registries and registrars. We are pushing it to become an accepted Internet Standard RFC.</p>
 	<p>Registries all over the world are already building support for this protocol, which means that over the next year, CloudFlare will be able to activate DNSSEC automatically for the tens of thousands of websites on CloudFlare with the .ca, .cl and .ee TLDs without users having to manage the activation.</p>
-	<p>We are inviting all registries and registrars to take a step forward with us towards a better and safer web. If you’re a registry or registrar and want to get involved, get in touch by emailing <a href="mailto:dnssec-integration@cloudflare.com">dnssec-integration@cloudflare.com</a>. Help us keep the Internet trustworthy.</p>
+	<p>We are inviting all registries and registrars to take a step forward with us towards a better and safer web. If you’re a registry or registrar and want to get involved, get in touch by emailing <a href="https://blog.cloudflare.com/#">dnssec-integration@cloudflare.com</a>. Help us keep the Internet trustworthy.</p>
 	<div class="flex anchor relative">
 		<h3 id="dnssec-and-cloudflare">DNSSEC and CloudFlare</h3>
 		<a href="https://blog.cloudflare.com/#dnssec-and-cloudflare" aria-hidden="true" class="relative sm:absolute sm:-start-5">
@@ -72,6 +72,6 @@
 		</a>
 	</div>
 	<p>Since we launched the DNSSEC public beta just three weeks ago, we have protected 150 million people and 21 billion web requests with DNSSEC.</p>
-	<p>Several registries and registrars have added support for <a href="https://www.cloudflare.com/learning/dns/dnssec/ecdsa-and-dnssec">DNSSEC with ECDSA</a>, <a href="https://www.cloudflare.com/dnssec/ecdsa-and-dnssec">our chosen cipher</a>, since we started our beta just a few weeks ago. Big shoutout to <a href="https://ovh.com">OVH</a>, <a href="https://hover.com">Hover</a>, <a href="https://internet.bs">Internet.bs</a> and <a href="https://metaname.net">Metaname</a>, as well as <a href="https://eurid.eu">EURid</a> (.EU) and <a href="https://nzrs.net.nz">NZRS</a> (.NZ), allowing hundreds of thousands of websites on CloudFlare to turn on DNSSEC right now.</p>
+	<p>Several registries and registrars have added support for <a href="https://www.cloudflare.com/learning/dns/dnssec/ecdsa-and-dnssec" target="_blank" rel="noopener noreferrer">DNSSEC with ECDSA</a>, <a href="https://www.cloudflare.com/dnssec/ecdsa-and-dnssec" target="_blank" rel="noopener noreferrer">our chosen cipher</a>, since we started our beta just a few weeks ago. Big shoutout to <a href="https://ovh.com" target="_blank" rel="noopener noreferrer">OVH</a>, <a href="https://hover.com" target="_blank" rel="noopener noreferrer">Hover</a>, <a href="https://internet.bs" target="_blank" rel="noopener noreferrer">Internet.bs</a> and <a href="https://metaname.net" target="_blank" rel="noopener noreferrer">Metaname</a>, as well as <a href="https://eurid.eu" target="_blank" rel="noopener noreferrer">EURid</a> (.EU) and <a href="https://nzrs.net.nz" target="_blank" rel="noopener noreferrer">NZRS</a> (.NZ), allowing hundreds of thousands of websites on CloudFlare to turn on DNSSEC right now.</p>
 	<p>This is just the start. Now it’s your turn. Join us in making the web better.</p>
 </div>

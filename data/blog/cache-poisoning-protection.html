@@ -1,7 +1,7 @@
 <div class="mb2 gray5">3 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/dbuzfY837nCckWOlkTfxM/176a253901b27e9d0639e8b0d4058272/cache-poisoning-protection.png" alt="">
 <div class="post-content lh-copy gray1">
-	<p>A few days ago, Cloudflare — along with the rest of the world — learned of a <a href="https://portswigger.net/blog/practical-web-cache-poisoning">"practical" cache poisoning attack</a>. In this post I’ll walk through the attack and explain how Cloudflare mitigated it for our customers. While any web cache is vulnerable to this attack, Cloudflare is uniquely able to take proactive steps to defend millions of customers.</p>
-	<p>In addition to the steps we’ve taken, we strongly recommend that customers update their origin web servers to mitigate vulnerabilities. Some popular vendors have applied patches that can be installed right away, including <a href="https://www.drupal.org/SA-CORE-2018-005">Drupal</a>, <a href="https://symfony.com/blog/cve-2018-14773-remove-support-for-legacy-and-risky-http-headers">Symfony</a>, and <a href="https://framework.zend.com/security/advisory/ZF2018-01">Zend</a>.</p>
+	<p>A few days ago, Cloudflare — along with the rest of the world — learned of a <a href="https://portswigger.net/blog/practical-web-cache-poisoning" target="_blank" rel="noopener noreferrer">"practical" cache poisoning attack</a>. In this post I’ll walk through the attack and explain how Cloudflare mitigated it for our customers. While any web cache is vulnerable to this attack, Cloudflare is uniquely able to take proactive steps to defend millions of customers.</p>
+	<p>In addition to the steps we’ve taken, we strongly recommend that customers update their origin web servers to mitigate vulnerabilities. Some popular vendors have applied patches that can be installed right away, including <a href="https://www.drupal.org/SA-CORE-2018-005" target="_blank" rel="noopener noreferrer">Drupal</a>, <a href="https://symfony.com/blog/cve-2018-14773-remove-support-for-legacy-and-risky-http-headers" target="_blank" rel="noopener noreferrer">Symfony</a>, and <a href="https://framework.zend.com/security/advisory/ZF2018-01" target="_blank" rel="noopener noreferrer">Zend</a>.</p>
 	<div class="flex anchor relative">
 		<h3 id="how-a-shared-web-cache-works">How a shared web cache works</h3>
 		<a href="https://blog.cloudflare.com/#how-a-shared-web-cache-works" aria-hidden="true" class="relative sm:absolute sm:-start-5">
@@ -17,7 +17,7 @@
 		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5jMHNvdj7hDJAiEb7ureAq/ad5182cfe46cc64c74d3cd53405373c0/cache-ok.png" alt="How cache normally works" class="kg-image" width="1478" height="586" loading="lazy">
 
 	</figure>
-	<p><i>(See </i><a href="https://support.cloudflare.com/hc/en-us/articles/200172256-How-do-I-cache-static-HTML-"><i>this support page</i></a><i> for more info about how to cache HTML with Cloudflare.)</i></p>
+	<p><i>(See </i><a href="https://support.cloudflare.com/hc/en-us/articles/200172256-How-do-I-cache-static-HTML-" target="_blank" rel="noopener noreferrer"><i>this support page</i></a><i> for more info about how to cache HTML with Cloudflare.)</i></p>
 	<p>How do we know it’s the same file? We create something called a “cache key” which contains several fields, for example:</p>
 	<ul>
 		<li>
@@ -139,7 +139,7 @@
 		</li>
 	</ul>
 	<p>In order to prevent unnecessary cache sharding, we only include these header values when they differ from what’s in the URL or Host header. For example, if the HTTP Host is <code>www.example.com</code>, and X-Forwarded-Host is also <code>www.example.com</code>, we will not add the X-Forwarded-Host header to the cache key. Of course, it’s still crucial that applications do not send back data from any other headers!</p>
-	<p>One side effect of this change is that customers who use these headers, and also rely on Purge by URL, may need to specify more headers in their Purge API calls. You can read more detail in <a href="https://support.cloudflare.com/hc/en-us/articles/200169246">this support page</a>.</p>
+	<p>One side effect of this change is that customers who use these headers, and also rely on Purge by URL, may need to specify more headers in their Purge API calls. You can read more detail in <a href="https://support.cloudflare.com/hc/en-us/articles/200169246" target="_blank" rel="noopener noreferrer">this support page</a>.</p>
 	<div class="flex anchor relative">
 		<h3 id="conclusion">Conclusion</h3>
 		<a href="https://blog.cloudflare.com/#conclusion" aria-hidden="true" class="relative sm:absolute sm:-start-5">
@@ -148,5 +148,5 @@
 			</svg>
 		</a>
 	</div>
-	<p>Cloudflare is committed to protecting our customers. If you notice anything unusual with your account, or have more questions, please contact <a href="mailto:support@cloudflare.com">Cloudflare Support</a>.</p>
+	<p>Cloudflare is committed to protecting our customers. If you notice anything unusual with your account, or have more questions, please contact <a href="https://blog.cloudflare.com/#">Cloudflare Support</a>.</p>
 </div>

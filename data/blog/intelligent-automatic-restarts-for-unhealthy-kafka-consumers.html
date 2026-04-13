@@ -54,7 +54,7 @@
 			</svg>
 		</a>
 	</div>
-	<p>Kubernetes uses <a href="https://kubernetes.io/docs/tasks/configure-pod-container/configure-liveness-readiness-startup-probes">probes</a> to understand if a service is healthy and is ready to receive traffic or to run. When a liveness probe fails and the bounds for retrying are exceeded, Kubernetes restarts the services.</p>
+	<p>Kubernetes uses <a href="https://kubernetes.io/docs/tasks/configure-pod-container/configure-liveness-readiness-startup-probes" target="_blank" rel="noopener noreferrer">probes</a> to understand if a service is healthy and is ready to receive traffic or to run. When a liveness probe fails and the bounds for retrying are exceeded, Kubernetes restarts the services.</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
 		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4FagbTygES9L7dmEQ6ratD/0a6f0d4c5ac117b723ad726a12d3936a/4-3.png" alt="" class="kg-image" width="1600" height="818" loading="lazy">
@@ -102,7 +102,7 @@
 			</svg>
 		</a>
 	</div>
-	<p>PagerDuty wrote an excellent <a href="https://www.pagerduty.com/eng/kafka-health-checks">blog</a> on this topic which we used as inspiration when coming up with our approach.</p>
+	<p>PagerDuty wrote an excellent <a href="https://www.pagerduty.com/eng/kafka-health-checks" target="_blank" rel="noopener noreferrer">blog</a> on this topic which we used as inspiration when coming up with our approach.</p>
 	<p>Their approach used the current (latest) offset and the committed offset values. The current offset signifies the last message that was sent to the topic, while the committed offset is the last message that was processed by the consumer.</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 

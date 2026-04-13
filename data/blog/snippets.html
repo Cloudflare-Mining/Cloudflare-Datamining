@@ -8,9 +8,9 @@
 			</svg>
 		</a>
 	</div>
-	<p><a href="https://developers.cloudflare.com/rules/snippets"><u>Cloudflare Snippets</u></a> are <b>now generally available (GA)</b> for all paid plans, giving you a fast, flexible way to control HTTP traffic using lightweight JavaScript “code rules” — at no extra cost.</p>
-	<p>Need to transform headers dynamically, fine-tune <a href="https://www.cloudflare.com/learning/cdn/what-is-caching">caching</a>, rewrite URLs, retry failed requests, replace expired links, throttle suspicious traffic, or validate authentication tokens? Snippets provide a production-ready solution built for performance, security, and control.</p>
-	<p>With GA, we’re introducing a new <a href="https://developers.cloudflare.com/changelog/2025-01-29-snippets-code-editor"><u>code editor</u></a> to streamline writing and testing logic. This summer, we’re also rolling out an integration with <a href="https://blog.cloudflare.com/secrets-store-beta"><u>Secrets Store</u></a> — enabling you to bind and manage sensitive values like API keys directly in Snippets, securely and at scale.</p>
+	<p><a href="https://developers.cloudflare.com/rules/snippets" target="_blank" rel="noopener noreferrer"><u>Cloudflare Snippets</u></a> are <b>now generally available (GA)</b> for all paid plans, giving you a fast, flexible way to control HTTP traffic using lightweight JavaScript “code rules” — at no extra cost.</p>
+	<p>Need to transform headers dynamically, fine-tune <a href="https://www.cloudflare.com/learning/cdn/what-is-caching" target="_blank" rel="noopener noreferrer">caching</a>, rewrite URLs, retry failed requests, replace expired links, throttle suspicious traffic, or validate authentication tokens? Snippets provide a production-ready solution built for performance, security, and control.</p>
+	<p>With GA, we’re introducing a new <a href="https://developers.cloudflare.com/changelog/2025-01-29-snippets-code-editor" target="_blank" rel="noopener noreferrer"><u>code editor</u></a> to streamline writing and testing logic. This summer, we’re also rolling out an integration with <a href="https://blog.cloudflare.com/secrets-store-beta"><u>Secrets Store</u></a> — enabling you to bind and manage sensitive values like API keys directly in Snippets, securely and at scale.</p>
 	<div class="flex anchor relative">
 		<h2 id="what-are-snippets">What are Snippets?</h2>
 		<a href="https://blog.cloudflare.com/#what-are-snippets" aria-hidden="true" class="relative sm:absolute sm:-start-5">
@@ -19,8 +19,8 @@
 			</svg>
 		</a>
 	</div>
-	<p>Snippets bring the power of JavaScript to <a href="https://developers.cloudflare.com/rules"><u>Cloudflare Rules</u></a>, letting you write logic that runs before a request reaches your origin or after a response returns from upstream. They’re ideal when built-in rule actions aren’t quite enough. While Cloudflare Rules let you define traffic logic without code, Snippets extend that model with greater flexibility for advanced scenarios.</p>
-	<p>Think of Snippets as the ultra-fast <b>“code layer” </b>of <a href="https://developers.cloudflare.com/rules"><u>Cloudflare Rules</u></a>: the <a href="https://developers.cloudflare.com/ruleset-engine"><u>Ruleset Engine</u></a> evaluates your rules and invokes your code, which then runs on the <a href="https://developers.cloudflare.com/workers/runtime-apis"><u>Workers runtime</u></a>.</p>
+	<p>Snippets bring the power of JavaScript to <a href="https://developers.cloudflare.com/rules" target="_blank" rel="noopener noreferrer"><u>Cloudflare Rules</u></a>, letting you write logic that runs before a request reaches your origin or after a response returns from upstream. They’re ideal when built-in rule actions aren’t quite enough. While Cloudflare Rules let you define traffic logic without code, Snippets extend that model with greater flexibility for advanced scenarios.</p>
+	<p>Think of Snippets as the ultra-fast <b>“code layer” </b>of <a href="https://developers.cloudflare.com/rules" target="_blank" rel="noopener noreferrer"><u>Cloudflare Rules</u></a>: the <a href="https://developers.cloudflare.com/ruleset-engine" target="_blank" rel="noopener noreferrer"><u>Ruleset Engine</u></a> evaluates your rules and invokes your code, which then runs on the <a href="https://developers.cloudflare.com/workers/runtime-apis" target="_blank" rel="noopener noreferrer"><u>Workers runtime</u></a>.</p>
 	<div class="flex anchor relative">
 		<h3 id="key-capabilities-of-snippets">Key capabilities of Snippets:</h3>
 		<a href="https://blog.cloudflare.com/#key-capabilities-of-snippets" aria-hidden="true" class="relative sm:absolute sm:-start-5">
@@ -31,39 +31,39 @@
 	</div>
 	<ul>
 		<li>
-			<p><b>Ultra-fast execution</b>: optimized for speed with the <a href="https://developers.cloudflare.com/ruleset-engine"><u>Ruleset Engine</u></a> and <a href="https://developers.cloudflare.com/workers/runtime-apis"><u>Workers runtime</u></a>.</p>
+			<p><b>Ultra-fast execution</b>: optimized for speed with the <a href="https://developers.cloudflare.com/ruleset-engine" target="_blank" rel="noopener noreferrer"><u>Ruleset Engine</u></a> and <a href="https://developers.cloudflare.com/workers/runtime-apis" target="_blank" rel="noopener noreferrer"><u>Workers runtime</u></a>.</p>
 		</li>
 		<li>
-			<p><b>Granular request matching</b>: trigger Snippets based on <a href="https://developers.cloudflare.com/ruleset-engine/rules-language/fields/reference/http.request.full_uri"><u>URI</u></a>, <a href="https://developers.cloudflare.com/ruleset-engine/rules-language/fields/reference/http.user_agent"><u>user-agent</u></a>, <a href="https://developers.cloudflare.com/ruleset-engine/rules-language/fields/reference/http.request.cookies"><u>cookies</u></a>, headers and more.</p>
+			<p><b>Granular request matching</b>: trigger Snippets based on <a href="https://developers.cloudflare.com/ruleset-engine/rules-language/fields/reference/http.request.full_uri" target="_blank" rel="noopener noreferrer"><u>URI</u></a>, <a href="https://developers.cloudflare.com/ruleset-engine/rules-language/fields/reference/http.user_agent" target="_blank" rel="noopener noreferrer"><u>user-agent</u></a>, <a href="https://developers.cloudflare.com/ruleset-engine/rules-language/fields/reference/http.request.cookies" target="_blank" rel="noopener noreferrer"><u>cookies</u></a>, headers and more.</p>
 		</li>
 		<li>
-			<p><b>Sequential execution</b>: <a href="https://developers.cloudflare.com/rules/snippets/how-it-works"><u>run</u></a> multiple Snippets on the same request, applying modifications step by step.</p>
+			<p><b>Sequential execution</b>: <a href="https://developers.cloudflare.com/rules/snippets/how-it-works" target="_blank" rel="noopener noreferrer"><u>run</u></a> multiple Snippets on the same request, applying modifications step by step.</p>
 		</li>
 		<li>
-			<p>Native <a href="https://developers.cloudflare.com/rules"><u>Cloudflare Rules</u></a> integration: Snippets <a href="https://developers.cloudflare.com/ruleset-engine/reference/phases-list/#request-phases"><u>inherit</u></a> request modifications from other Cloudflare products.</p>
+			<p>Native <a href="https://developers.cloudflare.com/rules" target="_blank" rel="noopener noreferrer"><u>Cloudflare Rules</u></a> integration: Snippets <a href="https://developers.cloudflare.com/ruleset-engine/reference/phases-list/#request-phases" target="_blank" rel="noopener noreferrer"><u>inherit</u></a> request modifications from other Cloudflare products.</p>
 		</li>
 		<li>
-			<p>JavaScript and Web APIs support, plus essential <a href="https://developers.cloudflare.com/workers/runtime-apis"><u>Workers runtime</u></a> features:</p>
+			<p>JavaScript and Web APIs support, plus essential <a href="https://developers.cloudflare.com/workers/runtime-apis" target="_blank" rel="noopener noreferrer"><u>Workers runtime</u></a> features:</p>
 			<ul>
 				<li>
-					<p><a href="https://developers.cloudflare.com/workers/runtime-apis/fetch"><u>fetch API</u></a></p>
+					<p><a href="https://developers.cloudflare.com/workers/runtime-apis/fetch" target="_blank" rel="noopener noreferrer"><u>fetch API</u></a></p>
 				</li>
 				<li>
-					<p><a href="https://developers.cloudflare.com/workers/runtime-apis/cache"><u>cache API</u></a></p>
+					<p><a href="https://developers.cloudflare.com/workers/runtime-apis/cache" target="_blank" rel="noopener noreferrer"><u>cache API</u></a></p>
 				</li>
 				<li>
-					<p><a href="https://developers.cloudflare.com/workers/runtime-apis/request/#incomingrequestcfproperties"><u>request.cf object</u></a></p>
+					<p><a href="https://developers.cloudflare.com/workers/runtime-apis/request/#incomingrequestcfproperties" target="_blank" rel="noopener noreferrer"><u>request.cf object</u></a></p>
 				</li>
 				<li>
-					<p><a href="https://developers.cloudflare.com/workers/runtime-apis/html-rewriter"><u>HTMLRewriter</u></a></p>
+					<p><a href="https://developers.cloudflare.com/workers/runtime-apis/html-rewriter" target="_blank" rel="noopener noreferrer"><u>HTMLRewriter</u></a></p>
 				</li>
 			</ul>
 		</li>
 		<li>
-			<p>Automated deployment and versioning via <a href="https://developers.cloudflare.com/rules/snippets/create-terraform"><u>Terraform</u></a>.</p>
+			<p>Automated deployment and versioning via <a href="https://developers.cloudflare.com/rules/snippets/create-terraform" target="_blank" rel="noopener noreferrer"><u>Terraform</u></a>.</p>
 		</li>
 	</ul>
-	<p>Best of all? Snippets are <a href="https://developers.cloudflare.com/rules/snippets/#availability"><u>included</u></a> at no extra cost for Pro, Business, and Enterprise plans — with&nbsp;<b>no usage-based fees</b>.</p>
+	<p>Best of all? Snippets are <a href="https://developers.cloudflare.com/rules/snippets/#availability" target="_blank" rel="noopener noreferrer"><u>included</u></a> at no extra cost for Pro, Business, and Enterprise plans — with&nbsp;<b>no usage-based fees</b>.</p>
 	<div class="flex anchor relative">
 		<h2 id="the-journey-to-ga-how-snippets-became-production-grade">The journey to GA: How Snippets became production-grade</h2>
 		<a href="https://blog.cloudflare.com/#the-journey-to-ga-how-snippets-became-production-grade" aria-hidden="true" class="relative sm:absolute sm:-start-5">
@@ -77,7 +77,7 @@
 	<p><b>2022:</b> Cloudflare Snippets were <a href="https://blog.cloudflare.com/snippets-announcement"><u>announced</u></a> during Developer Week as a solution for users needing flexible HTTP traffic modifications without a full Worker.</p>
 	<p><b>2023:</b> <b>Alpha launch </b>— hundreds of users tested Snippets for high-performance traffic logic.</p>
 	<p><b>2024:</b> <b>7x traffic growth</b>, processing 17,000 requests per second. Terraform support and production-grade backend were released.</p>
-	<p><b>2025:</b> <b>General Availability </b>— Snippets introduces a <a href="https://developers.cloudflare.com/changelog/2025-01-29-snippets-code-editor"><u>new code editor</u></a>, <a href="https://developers.cloudflare.com/changelog/2025-02-12-rules-upgraded-limits"><u>increased limits</u></a> alongside other Cloudflare Rules products, integration with <a href="https://developers.cloudflare.com/fundamentals/trace-request/#_top"><u>Trace</u></a>, and a production-grade experience built for scale, handling <b>over 2 million requests per second</b> at peak. Integration with the Secrets Store is rolling out this summer.</p>
+	<p><b>2025:</b> <b>General Availability </b>— Snippets introduces a <a href="https://developers.cloudflare.com/changelog/2025-01-29-snippets-code-editor" target="_blank" rel="noopener noreferrer"><u>new code editor</u></a>, <a href="https://developers.cloudflare.com/changelog/2025-02-12-rules-upgraded-limits" target="_blank" rel="noopener noreferrer"><u>increased limits</u></a> alongside other Cloudflare Rules products, integration with <a href="https://developers.cloudflare.com/fundamentals/trace-request/#_top" target="_blank" rel="noopener noreferrer"><u>Trace</u></a>, and a production-grade experience built for scale, handling <b>over 2 million requests per second</b> at peak. Integration with the Secrets Store is rolling out this summer.</p>
 	<figure class="kg-card kg-image-card">
 		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1fZv7cpSGntSQadS761Zkv/31707075a85d393f4883b190599581f7/1.png" alt="" class="kg-image" width="1999" height="1031" loading="lazy">
 	</figure>
@@ -89,7 +89,7 @@
 			</svg>
 		</a>
 	</div>
-	<p><a href="https://developers.cloudflare.com/fundamentals/trace-request/#_top"><u>Cloudflare Trace</u></a> now shows exactly which Snippets were triggered on a request. This makes it easier to debug traffic behavior, verify logic execution, and understand how your Snippets interact with other products in the request pipeline.</p>
+	<p><a href="https://developers.cloudflare.com/fundamentals/trace-request/#_top" target="_blank" rel="noopener noreferrer"><u>Cloudflare Trace</u></a> now shows exactly which Snippets were triggered on a request. This makes it easier to debug traffic behavior, verify logic execution, and understand how your Snippets interact with other products in the request pipeline.</p>
 	<p>Whether you’re fine-tuning header logic or troubleshooting a routing issue, Trace gives you real-time insight into how your edge logic behaves in production.</p>
 	<div style="position: relative; padding-top: 41.72453703703704%;">
 		<iframe src="https://customer-eq7kiuol0tk9chox.cloudflarestream.com/5ef9a151a67a362fc2b7591c9573538f/iframe?preload=true&amp;poster=https%3A%2F%2Fcustomer-eq7kiuol0tk9chox.cloudflarestream.com%2F5ef9a151a67a362fc2b7591c9573538f%2Fthumbnails%2Fthumbnail.jpg%3Ftime%3D%26height%3D600" loading="lazy" style="border: none; position: absolute; top: 0; left: 0; height: 100%; width: 100%;" allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;" allowfullscreen="true"></iframe>
@@ -107,7 +107,7 @@
 	<figure class="kg-card kg-image-card">
 		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/51QyhWrvtGEQ568lzuqRD/f8eb60c0258d28ef1431fad7f5d03b12/2.png" alt="" class="kg-image" width="1999" height="886" loading="lazy">
 	</figure>
-	<p>Once rolled out, secrets can be configured for Snippets via the <a href="https://developers.cloudflare.com/rules/snippets/create-dashboard"><u>dashboard</u></a> or <a href="https://developers.cloudflare.com/rules/snippets/create-api"><u>API</u></a> under the new <b>“Settings”</b> button.</p>
+	<p>Once rolled out, secrets can be configured for Snippets via the <a href="https://developers.cloudflare.com/rules/snippets/create-dashboard" target="_blank" rel="noopener noreferrer"><u>dashboard</u></a> or <a href="https://developers.cloudflare.com/rules/snippets/create-api" target="_blank" rel="noopener noreferrer"><u>API</u></a> under the new <b>“Settings”</b> button.</p>
 	<figure class="kg-card kg-image-card">
 		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2ipprc9qz2mPpp7XGOURgH/47112dde677906746ef4f798d5c082c0/3.png" alt="" class="kg-image" width="1796" height="780" loading="lazy">
 	</figure>
@@ -263,7 +263,7 @@
 			<p>You want to extend Cloudflare Rules beyond built-in actions.</p>
 		</li>
 		<li>
-			<p>You need free, unlimited invocations within the <a href="https://developers.cloudflare.com/rules/snippets/#limits"><u>execution limits</u></a>.</p>
+			<p>You need free, unlimited invocations within the <a href="https://developers.cloudflare.com/rules/snippets/#limits" target="_blank" rel="noopener noreferrer"><u>execution limits</u></a>.</p>
 		</li>
 		<li>
 			<p>You are migrating from VCL, Akamai’s EdgeWorkers, or on-premise logic.</p>
@@ -281,7 +281,7 @@
 			<p>You need logging, debugging tools, CLI support, and gradual rollouts.</p>
 		</li>
 	</ul>
-	<p>Still unsure? Check out our <a href="https://developers.cloudflare.com/rules/snippets/when-to-use"><u>detailed guide</u></a> for best practices.</p>
+	<p>Still unsure? Check out our <a href="https://developers.cloudflare.com/rules/snippets/when-to-use" target="_blank" rel="noopener noreferrer"><u>detailed guide</u></a> for best practices.</p>
 	<div class="flex anchor relative">
 		<h2 id="snippets-in-action-real-world-use-cases">Snippets in action: real-world use cases</h2>
 		<a href="https://blog.cloudflare.com/#snippets-in-action-real-world-use-cases" aria-hidden="true" class="relative sm:absolute sm:-start-5">
@@ -290,7 +290,7 @@
 			</svg>
 		</a>
 	</div>
-	<p>Below are practical use cases demonstrating Snippets. Each script can be dynamically triggered using our powerful <a href="https://developers.cloudflare.com/ruleset-engine/rules-language"><u>Rules</u></a> language, so you can granularly control which requests your Snippets will be applied to.</p>
+	<p>Below are practical use cases demonstrating Snippets. Each script can be dynamically triggered using our powerful <a href="https://developers.cloudflare.com/ruleset-engine/rules-language" target="_blank" rel="noopener noreferrer"><u>Rules</u></a> language, so you can granularly control which requests your Snippets will be applied to.</p>
 	<div class="flex anchor relative">
 		<h3 id="1-dynamically-modify-headers">1. Dynamically modify headers</h3>
 		<a href="https://blog.cloudflare.com/#1-dynamically-modify-headers" aria-hidden="true" class="relative sm:absolute sm:-start-5">
@@ -402,7 +402,7 @@
 			<p>Go to Rules → Snippets.</p>
 		</li>
 		<li>
-			<p>Use prebuilt <a href="https://developers.cloudflare.com/rules/examples"><u>templates</u></a> or write your own JavaScript code.</p>
+			<p>Use prebuilt <a href="https://developers.cloudflare.com/rules/examples" target="_blank" rel="noopener noreferrer"><u>templates</u></a> or write your own JavaScript code.</p>
 		</li>
 		<li>
 			<p>Configure a flexible rule to trigger your Snippet.</p>
@@ -411,7 +411,7 @@
 			<p>Test and deploy instantly.</p>
 		</li>
 		<li>
-			<p>Automate via <a href="https://developers.cloudflare.com/rules/snippets/create-api"><u>API</u></a> or <a href="https://developers.cloudflare.com/rules/snippets/create-terraform"><u>Terraform</u></a>.</p>
+			<p>Automate via <a href="https://developers.cloudflare.com/rules/snippets/create-api" target="_blank" rel="noopener noreferrer"><u>API</u></a> or <a href="https://developers.cloudflare.com/rules/snippets/create-terraform" target="_blank" rel="noopener noreferrer"><u>Terraform</u></a>.</p>
 		</li>
 	</ol>
 	<div class="flex anchor relative">

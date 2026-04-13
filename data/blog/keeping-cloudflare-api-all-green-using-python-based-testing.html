@@ -25,7 +25,7 @@
 		</a>
 	</div>
 	<p>Scout is built in Python and leverages the functionalities of Pytest. Before diving into the exact capabilities of Scout and its architecture, let’s have a quick look at how to use it!</p>
-	<p>Following is an example of a Scout test on the Rulesets API (the docs are available <a href="https://developers.cloudflare.com/ruleset-engine/about">here</a>):</p>
+	<p>Following is an example of a Scout test on the Rulesets API (the docs are available <a href="https://developers.cloudflare.com/ruleset-engine/about" target="_blank" rel="noopener noreferrer">here</a>):</p>
 	<pre class="language-python"><code class="language-python">from scout import requires, validate, Account, Zone
 
 @validate(schema="rulesets", ignorePaths=["accounts/[^/]+/rules/lists"])

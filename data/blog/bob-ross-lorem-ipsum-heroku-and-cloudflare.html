@@ -1,15 +1,15 @@
 <div class="mb2 gray5">3 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/33af7SU5eESxrPMsvStsbr/b0232edee1018fd355fec68bdaf006ac/bob-ross-lorem-ipsum-heroku-and-cloudflare.png" alt="">
 <div class="post-content lh-copy gray1">
 	<p>It may not be immediately obvious how these things are related, but bear with me... It was 4pm Friday and one of the engineers on the Cloudflare Tools team came to me with an emergency. "<i>Steve! The Bob Ross Ipsum generator is down!</i>".</p>
-	<p>If you've not heard of <a href="https://en.wikipedia.org/wiki/Lorem_ipsum">Lorem Ipsum</a>, it's an extract from a latin poem that designers use as placeholder text when designing the layout of a document. There are generators all over the web that will spit out as much text as you need.</p>
+	<p>If you've not heard of <a href="https://en.wikipedia.org/wiki/Lorem_ipsum" target="_blank" rel="noopener noreferrer">Lorem Ipsum</a>, it's an extract from a latin poem that designers use as placeholder text when designing the layout of a document. There are generators all over the web that will spit out as much text as you need.</p>
 	<figure class="kg-card kg-image-card ">
 
 		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1AuGhmLTCklTkAseu8noU3/87b59bfb7d627aefd95a28772c27315a/Lorem_ipsum_design.svg" alt="" class="kg-image" width="1008" height="1132" loading="lazy">
 
 	</figure>
 	<p><i>Source: Wikipedia</i></p>
-	<p>Of course, the web being the web that we all love, there are also endless parodies of Lorem Ipsum. You can generate <a href="https://www.shopify.com/partners/blog/79940998-15-funny-lorem-ipsum-generators-to-shake-up-your-design-mockups">Hodor Ipsum, Cat Ipsum and Hipster Ipsum</a>. I have a new, undisputed favourite: Bob Ross Ipsum.</p>
-	<p>Not growing up in the U.S., I hadn't come across the lovable, calm, serene and beautiful human that is Bob Ross. If you haven't spent 30 mins watching him <a href="https://www.youtube.com/watch?v=pw5ETGiiBRg">paint a landscape</a>, you should do that now. He built a following as host of the TV show “<i>The Joy of Painting</i>” which ran on the U.S. PBS channel from 1983-1994. He became famous for his relaxed approach to painting and his catch phrases like “Happy Little Trees”</p>
+	<p>Of course, the web being the web that we all love, there are also endless parodies of Lorem Ipsum. You can generate <a href="https://www.shopify.com/partners/blog/79940998-15-funny-lorem-ipsum-generators-to-shake-up-your-design-mockups" target="_blank" rel="noopener noreferrer">Hodor Ipsum, Cat Ipsum and Hipster Ipsum</a>. I have a new, undisputed favourite: Bob Ross Ipsum.</p>
+	<p>Not growing up in the U.S., I hadn't come across the lovable, calm, serene and beautiful human that is Bob Ross. If you haven't spent 30 mins watching him <a href="https://www.youtube.com/watch?v=pw5ETGiiBRg" target="_blank" rel="noopener noreferrer">paint a landscape</a>, you should do that now. He built a following as host of the TV show “<i>The Joy of Painting</i>” which ran on the U.S. PBS channel from 1983-1994. He became famous for his relaxed approach to painting and his catch phrases like “Happy Little Trees”</p>
 	<figure class="kg-card kg-image-card ">
 
 		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6DX6AWOOqrnYTYZqdgA6N6/c81f86420c79f8cb0c7d7cd5a33342e9/image.png" alt="" class="kg-image" width="500" height="549" loading="lazy">
@@ -57,7 +57,7 @@ function getPhrases (length) {
 
 // Compiled by http://www.bobrosslipsum.com/ 2016 January
 var phrases = [...elided for clarity...]</code></pre>
-	<p>Assuming we've registered a domain and <a href="https://support.cloudflare.com/hc/en-us/articles/201720164-Step-2-Create-a-Cloudflare-account-and-add-a-website">put it on Cloudflare</a>, let's see how quickly can we get a globally distributed, highly available API running in 150+ data centers, to generate some Bob Ross Lorem Ipsum.</p>
+	<p>Assuming we've registered a domain and <a href="https://support.cloudflare.com/hc/en-us/articles/201720164-Step-2-Create-a-Cloudflare-account-and-add-a-website" target="_blank" rel="noopener noreferrer">put it on Cloudflare</a>, let's see how quickly can we get a globally distributed, highly available API running in 150+ data centers, to generate some Bob Ross Lorem Ipsum.</p>
 	<p>I'm going to:</p>
 	<ol>
 		<li>
@@ -88,7 +88,7 @@ var phrases = [...elided for clarity...]</code></pre>
 	<p>* This pushes it to 150+ data centers... no biggie.</p>
 	<p>So it takes about 90 secs to build a basic Worker serving dynamically generated text from the Edge. It blows me away just how productive you can be with Cloudflare Workers. With a few clicks, we have code deployed to 150+ data centers and within 10ms of 90% of the world's Internet population. And it's <a href="https://blog.cloudflare.com/serverless-performance-comparison-workers-lambda"><i>fast</i></a><i>.</i></p>
 	<p>The more I use it, the more it reminds of Heroku, and how ease-of-deployment and the developer experience really drove adoption of that platform.</p>
-	<p>OK, so generating dynamic text is OK for an MVP, it would be nice if we at least had a UI and some options. You can use <a href="https://blog.cloudflare.com/using-webpack-to-bundle-workers">Webpack to bundle resources</a> in your Workers, but I wanted this app to be as simple as possible, so I created a basic HTML page to capture some options, included my HTML as a string, and served it from the root of my Worker. The full code listing is on &nbsp;<a href="https://github.com/stevenpack/bob-ross-lipsum">Github</a>.</p>
+	<p>OK, so generating dynamic text is OK for an MVP, it would be nice if we at least had a UI and some options. You can use <a href="https://blog.cloudflare.com/using-webpack-to-bundle-workers">Webpack to bundle resources</a> in your Workers, but I wanted this app to be as simple as possible, so I created a basic HTML page to capture some options, included my HTML as a string, and served it from the root of my Worker. The full code listing is on &nbsp;<a href="https://github.com/stevenpack/bob-ross-lipsum" target="_blank" rel="noopener noreferrer">Github</a>.</p>
 	<pre class="language-javascript"><code class="language-javascript">const ui = '...basic html page...';
 
 async function handleRequest(request) {
@@ -109,11 +109,11 @@ async function handleRequest(request) {
     }
     return new Response(phraseArr.join(''));
 }</code></pre>
-	<p>The team is now unblocked. Development can continue. Here's the full version in action. You can play with it live at: <a href="https://www.bobrossloremipsum.com">https://www.bobrossloremipsum.com</a></p>
+	<p>The team is now unblocked. Development can continue. Here's the full version in action. You can play with it live at: <a href="https://www.bobrossloremipsum.com" target="_blank" rel="noopener noreferrer">https://www.bobrossloremipsum.com</a></p>
 	<figure class="kg-card kg-image-card ">
 
 		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7HhtsmrQre7phjaweK2dkW/bf9cc451b372cf2faa2faffebcc6c7c8/bob-ross-worker-full.gif" alt="" class="kg-image" width="1024" height="600" loading="lazy">
 
 	</figure>
-	<p>Want to join a rocketship? <a href="https://boards.greenhouse.io/cloudflare/jobs/589482?gh_jid=589482">I’m hiring in Austin and San Francisco</a></p>
+	<p>Want to join a rocketship? <a href="https://boards.greenhouse.io/cloudflare/jobs/589482?gh_jid=589482" target="_blank" rel="noopener noreferrer">I’m hiring in Austin and San Francisco</a></p>
 </div>

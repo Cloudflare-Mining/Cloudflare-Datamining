@@ -5,9 +5,9 @@
 		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/A8lQLOj0zrB1oUjv2YTtX/c7982b28eb35d74286e2ca4e130ae1e7/image5-14.png" alt="Today we’re excited to announce an update to our Tiered Cache offering: Regional Tiered Cache." class="kg-image" width="1999" height="1125" loading="lazy">
 
 	</figure>
-	<p>Today we’re excited to announce an update to our <a href="https://developers.cloudflare.com/cache/about/tiered-cache">Tiered Cache</a> offering: Regional Tiered Cache.</p>
-	<p>Tiered Cache allows customers to organize Cloudflare data centers into tiers so that only some “<a href="https://developers.cloudflare.com/cache/about/tiered-cache/#:~:text=upper%2Dtier%20does%20not%20have%20the%20content%2C%20only%20the%20upper%2Dtier%20can%20ask%20the%20origin%20for%20content">upper-tier</a>” data centers can request content from an origin server, and then send content to “<a href="https://developers.cloudflare.com/cache/about/tiered-cache/#:~:text=lower%2Dtier%20data%20centers%20(generally%20the%20ones%20closest%20to%20a%20visitor)">lower-tiers</a>” closer to visitors. Tiered Cache helps content load faster for visitors, makes it cheaper to serve, and <a href="https://developers.cloudflare.com/cache/about/tiered-cache#:~:text=Tiered%20Cache%20concentrates%20connections%20to%20origin%20servers%20so%20they%20come%20from%20a%20small%20number%20of%20data%20centers%20rather%20than%20the%20full%20set%20of%20network%20locations.%20This%20results%20in%20fewer%20open%20connections%20using%20server%20resources.">reduces</a> origin resource consumption.</p>
-	<p>Regional Tiered Cache provides an additional layer of caching for Enterprise customers who have a global traffic footprint and want to serve content faster by avoiding <a href="https://www.cloudflare.com/learning/performance/glossary/what-is-latency">network latency</a> when there is a cache miss in a lower-tier, resulting in an upper-tier fetch in a data center located far away. In our trials, customers who have enabled Regional Tiered Cache have seen a 50-100ms improvement in tail <a href="https://developers.cloudflare.com/cache/about/default-cache-behavior/#cloudflare-cache-responses">cache hit</a> response times from Cloudflare’s CDN.</p>
+	<p>Today we’re excited to announce an update to our <a href="https://developers.cloudflare.com/cache/about/tiered-cache" target="_blank" rel="noopener noreferrer">Tiered Cache</a> offering: Regional Tiered Cache.</p>
+	<p>Tiered Cache allows customers to organize Cloudflare data centers into tiers so that only some “<a href="https://developers.cloudflare.com/cache/about/tiered-cache/#:~:text=upper%2Dtier%20does%20not%20have%20the%20content%2C%20only%20the%20upper%2Dtier%20can%20ask%20the%20origin%20for%20content" target="_blank" rel="noopener noreferrer">upper-tier</a>” data centers can request content from an origin server, and then send content to “<a href="https://developers.cloudflare.com/cache/about/tiered-cache/#:~:text=lower%2Dtier%20data%20centers%20(generally%20the%20ones%20closest%20to%20a%20visitor)" target="_blank" rel="noopener noreferrer">lower-tiers</a>” closer to visitors. Tiered Cache helps content load faster for visitors, makes it cheaper to serve, and <a href="https://developers.cloudflare.com/cache/about/tiered-cache#:~:text=Tiered%20Cache%20concentrates%20connections%20to%20origin%20servers%20so%20they%20come%20from%20a%20small%20number%20of%20data%20centers%20rather%20than%20the%20full%20set%20of%20network%20locations.%20This%20results%20in%20fewer%20open%20connections%20using%20server%20resources." target="_blank" rel="noopener noreferrer">reduces</a> origin resource consumption.</p>
+	<p>Regional Tiered Cache provides an additional layer of caching for Enterprise customers who have a global traffic footprint and want to serve content faster by avoiding <a href="https://www.cloudflare.com/learning/performance/glossary/what-is-latency" target="_blank" rel="noopener noreferrer">network latency</a> when there is a cache miss in a lower-tier, resulting in an upper-tier fetch in a data center located far away. In our trials, customers who have enabled Regional Tiered Cache have seen a 50-100ms improvement in tail <a href="https://developers.cloudflare.com/cache/about/default-cache-behavior/#cloudflare-cache-responses" target="_blank" rel="noopener noreferrer">cache hit</a> response times from Cloudflare’s CDN.</p>
 	<div class="flex anchor relative">
 		<h2 id="what-problem-does-tiered-cache-help-solve">What problem does Tiered Cache help solve?</h2>
 		<a href="https://blog.cloudflare.com/#what-problem-does-tiered-cache-help-solve" aria-hidden="true" class="relative sm:absolute sm:-start-5">
@@ -16,7 +16,7 @@
 			</svg>
 		</a>
 	</div>
-	<p>First, a quick refresher on <a href="https://www.cloudflare.com/learning/cdn/what-is-caching">caching</a>: a request for content is initiated from a visitor on their phone or computer. This request is generally routed to the closest Cloudflare data center. When the request arrives, we look to see if we have the content cached to respond to that request with. If it’s not in cache (it’s a miss), Cloudflare data centers must contact the <a href="https://www.cloudflare.com/learning/cdn/glossary/origin-server">origin server</a> to get a new copy of the content.</p>
+	<p>First, a quick refresher on <a href="https://www.cloudflare.com/learning/cdn/what-is-caching" target="_blank" rel="noopener noreferrer">caching</a>: a request for content is initiated from a visitor on their phone or computer. This request is generally routed to the closest Cloudflare data center. When the request arrives, we look to see if we have the content cached to respond to that request with. If it’s not in cache (it’s a miss), Cloudflare data centers must contact the <a href="https://www.cloudflare.com/learning/cdn/glossary/origin-server" target="_blank" rel="noopener noreferrer">origin server</a> to get a new copy of the content.</p>
 	<p>Getting content from an origin server suffers from two issues: latency and increased origin egress and load.</p>
 	<div class="flex anchor relative">
 		<h3 id="latency">Latency</h3>
@@ -35,7 +35,7 @@
 			</svg>
 		</a>
 	</div>
-	<p>Even when using a <a href="https://www.cloudflare.com/learning/cdn/what-is-a-cdn">CDN</a>, many different visitors can be interacting with different data centers around the world and each data center, without the content visitors are requesting, will need to reach out to the origin for a copy. This can cost customers money because of egress fees origins charge for sending traffic to Cloudflare, and it places needless load on the origin by opening multiple connections for the same content, just headed to different data centers.</p>
+	<p>Even when using a <a href="https://www.cloudflare.com/learning/cdn/what-is-a-cdn" target="_blank" rel="noopener noreferrer">CDN</a>, many different visitors can be interacting with different data centers around the world and each data center, without the content visitors are requesting, will need to reach out to the origin for a copy. This can cost customers money because of egress fees origins charge for sending traffic to Cloudflare, and it places needless load on the origin by opening multiple connections for the same content, just headed to different data centers.</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
 		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5E2xM6zZw1uUJld0wbCn97/b7c2e5723ad36fe15e538aaa89dec94d/download-19.png" alt="" class="kg-image" width="1420" height="572" loading="lazy">
@@ -134,7 +134,7 @@
 			</svg>
 		</a>
 	</div>
-	<p>Please see the <a href="https://developers.cloudflare.com/api/operations/zone-cache-settings-get-regional-tiered-cache-setting">documentation</a> for detailed information about how to configure Regional Tiered Cache from the API.</p>
+	<p>Please see the <a href="https://developers.cloudflare.com/api/operations/zone-cache-settings-get-regional-tiered-cache-setting" target="_blank" rel="noopener noreferrer">documentation</a> for detailed information about how to configure Regional Tiered Cache from the API.</p>
 	<p><b>GET</b></p>
 	<pre class="language-bash"><code class="language-bash">curl --request GET \
  --url https://api.cloudflare.com/client/v4/zones/zone_identifier/cache/regional_tiered_cache \
@@ -157,5 +157,5 @@
 			</svg>
 		</a>
 	</div>
-	<p>Regional Tiered Cache is the first of many planned improvements to Cloudflare’s Tiered Cache offering which are currently in development. We look forward to hearing what you think about Regional Tiered Cache, and if you’re interested in helping us improve our CDN, <a href="https://www.cloudflare.com/careers/jobs/?department=Engineering">we’re hiring</a>.</p>
+	<p>Regional Tiered Cache is the first of many planned improvements to Cloudflare’s Tiered Cache offering which are currently in development. We look forward to hearing what you think about Regional Tiered Cache, and if you’re interested in helping us improve our CDN, <a href="https://www.cloudflare.com/careers/jobs/?department=Engineering" target="_blank" rel="noopener noreferrer">we’re hiring</a>.</p>
 </div>

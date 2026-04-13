@@ -60,7 +60,7 @@
 	<p>To maintain a proactive defense, our engine produces and refreshes over 10 million actionable insights every day to ensure protection is always current.</p>
 	<p>Operating at this level presents two distinct engineering challenges. The first is scale: processing massive volumes of data seamlessly. The second and arguably harder challenge, is breadth. True security is horizontal, spanning your entire stack. To generate actionable insights that give you a comprehensive view of your risks and vulnerabilities, our engine must validate everything from simple SSL certificates to complex AI bot configurations.</p>
 	<p>To solve this, we built a system composed of smaller, specialized micro services, which we call checkers. Each checker is a subject-matter expert for a specific part of your stack, such as DNS records. The distribution of our checkers allows them to scale independently, hooked into the system in two ways: scheduled configuration checks or real-time listeners that flag a risk the instant an event occurs.</p>
-	<p><b>1. Scheduled checks</b>: We deploy this mode for risks that need deep inspection. These are triggered by an orchestrator (scheduler), which periodically pushes tasks for the checkers to execute. We distribute the checker workload across a massively parallel system. For example, a task sent to the DNS checker might be: "Scan all the DNS related configurations of zone <a href="http://xyz.com">xyz.com</a> and find anomalies."</p>
+	<p><b>1. Scheduled checks</b>: We deploy this mode for risks that need deep inspection. These are triggered by an orchestrator (scheduler), which periodically pushes tasks for the checkers to execute. We distribute the checker workload across a massively parallel system. For example, a task sent to the DNS checker might be: "Scan all the DNS related configurations of zone <a href="http://xyz.com" target="_blank" rel="noopener noreferrer">xyz.com</a> and find anomalies."</p>
 	<p>The checkers pick up these tasks independently. They use their specialized intelligence to scan through the assets and configurations. In the case of the DNS checker, it uses specialized and intelligent rules to scan all the DNS assets and configurations of a zone, be it A/AAAA/CNAME records or DMARC or SPF records.&nbsp;</p>
 	<p>This is what the insight lifecycle looks like:&nbsp;</p>
 	<ol>
@@ -152,7 +152,7 @@
 			<p>Step 1: Active Insight detection</p>
 			<ul>
 				<li>
-					<p>The checker starts verification as soon as it gets the message to start a scan. This process has been described in <a href="https://docs.google.com/document/d/1zpAjKdCU_80KZtIXwpHnlq05xGV54gTA-KehiOvlVc0/edit?tab=t.0#bookmark=id.fmv2o2tkjmvj"><u>an earlier section</u></a>.</p>
+					<p>The checker starts verification as soon as it gets the message to start a scan. This process has been described in <a href="https://docs.google.com/document/d/1zpAjKdCU_80KZtIXwpHnlq05xGV54gTA-KehiOvlVc0/edit?tab=t.0#bookmark=id.fmv2o2tkjmvj" target="_blank" rel="noopener noreferrer"><u>an earlier section</u></a>.</p>
 				</li>
 			</ul>
 		</li>
@@ -241,5 +241,5 @@
 	</div>
 	<p>While this experience is launching at the domain level today, we know that for enterprise customers, security isn't managed just one domain at a time. Our roadmap is focused on bringing this intelligence to the account level next. Soon, security teams can use a centralized view that aggregates security action items and prioritizes the most critical risks to remediate across all of their Cloudflare domains.</p>
 	<p>Security shouldn't feel like a game of catch-up. For too long, the complexity of managing application security has given the advantage to the attacker. Through our architecture of specialized checkers and real-time event handlers, we detect potential risks and enrich them with critical context, ensuring defenders can respond with speed and precision.</p>
-	<p>The new Security Overview is now the starting point for your day, a place where risk data is transformed into a prioritized strategy. <a href="https://dash.cloudflare.com"><u>Log in to the Cloudflare dashboard</u></a> today to explore your new Application Security Overview page!</p>
+	<p>The new Security Overview is now the starting point for your day, a place where risk data is transformed into a prioritized strategy. <a href="https://dash.cloudflare.com" target="_blank" rel="noopener noreferrer"><u>Log in to the Cloudflare dashboard</u></a> today to explore your new Application Security Overview page!</p>
 </div>

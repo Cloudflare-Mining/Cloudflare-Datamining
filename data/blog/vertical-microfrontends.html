@@ -2,7 +2,7 @@
 <div class="mt4">This post is also available in <a href="https://blog.cloudflare.com/ja-jp/vertical-microfrontends">日本語</a> and <a href="https://blog.cloudflare.com/ko-kr/vertical-microfrontends">한국어</a>.</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3LGvFjshhIGn4Qfcfmx2eu/28d86446d5f5b0a2d45fdba8f5d6d991/BLOG-3015_1.png" alt="">
 <div class="post-content lh-copy gray1">
 	<p><i>Updated at 6:55 a.m. PT</i></p>
-	<p>Today, we’re introducing a new Worker template for Vertical Microfrontends (VMFE). <a href="https://dash.cloudflare.com/?to=%2F%3Aaccount%2Fworkers-and-pages%2Fcreate%3Ftype%3Dvmfe"><u>This template</u></a> allows you to map multiple independent <a href="https://workers.cloudflare.com"><u>Cloudflare Workers</u></a> to a single domain, enabling teams to work in complete silos — shipping marketing, docs, and dashboards independently — while presenting a single, seamless application to the user.</p><a href="https://dash.cloudflare.com/?to=%2F%3Aaccount%2Fworkers-and-pages%2Fcreate%3Ftype%3Dvmfe"><img src="https://deploy.workers.cloudflare.com/button" alt="Deploy to Cloudflare"></a>
+	<p>Today, we’re introducing a new Worker template for Vertical Microfrontends (VMFE). <a href="https://dash.cloudflare.com/?to=%2F%3Aaccount%2Fworkers-and-pages%2Fcreate%3Ftype%3Dvmfe" target="_blank" rel="noopener noreferrer"><u>This template</u></a> allows you to map multiple independent <a href="https://workers.cloudflare.com" target="_blank" rel="noopener noreferrer"><u>Cloudflare Workers</u></a> to a single domain, enabling teams to work in complete silos — shipping marketing, docs, and dashboards independently — while presenting a single, seamless application to the user.</p><a href="https://dash.cloudflare.com/?to=%2F%3Aaccount%2Fworkers-and-pages%2Fcreate%3Ftype%3Dvmfe"><img src="https://deploy.workers.cloudflare.com/button" alt="Deploy to Cloudflare"></a>
 	<p></p>
 	<p>Most microfrontend architectures are "horizontal", meaning different <i>parts</i> of a single page are fetched from different services. Vertical microfrontends take a different approach by splitting the application by URL path. In this model, a team owning the `/blog` path doesn't <i>just</i> own a component; they own the entire vertical stack for that route –&nbsp;framework, library choice, CI/CD and more. Owning the entire stack of a path, or set of paths, allows teams to have true ownership of their work and ship with confidence.</p>
 	<p>Teams face problems as they grow, where different frameworks serve varying use cases. A marketing website could be better utilized with Astro, for example, while a dashboard might be better with React. Or say you have a monolithic code base where many teams ship as a collective. An update to add new features from several teams can get frustratingly rolled back because a single team introduced a regression. How do we solve the problem of obscuring the technical implementation details away from the user and letting teams ship a cohesive user experience with full autonomy and control of their domains?</p>
@@ -15,7 +15,7 @@
 			</svg>
 		</a>
 	</div>
-	<p>A vertical microfrontend is an architectural pattern where a single independent team owns an entire slice of the application’s functionality, from the user interface all the way down to the <a href="https://www.cloudflare.com/learning/serverless/glossary/what-is-ci-cd">CI/CD pipeline</a>. These slices are defined by paths on a domain where you can associate individual Workers with specific paths:</p>
+	<p>A vertical microfrontend is an architectural pattern where a single independent team owns an entire slice of the application’s functionality, from the user interface all the way down to the <a href="https://www.cloudflare.com/learning/serverless/glossary/what-is-ci-cd" target="_blank" rel="noopener noreferrer">CI/CD pipeline</a>. These slices are defined by paths on a domain where you can associate individual Workers with specific paths:</p>
 	<pre class="language-Rust"><code class="language-Rust">/      = Marketing
 /docs  = Documentation
 /blog  = Blog
@@ -46,9 +46,9 @@
 			</svg>
 		</a>
 	</div>
-	<p>When we want to seamlessly navigate between two distinct pages while making it feel smooth to the end user, <a href="https://developer.mozilla.org/en-US/docs/Web/API/View_Transition_API"><u>view transitions</u></a> are quite useful. Defining specific <a href="https://www.w3schools.com/jsref/dom_obj_all.asp"><u>DOM elements</u></a> on our page to stick around until the next page is visible, and defining how any changes are handled, make for quite the powerful quilt-stitching tool for multi-page applications.</p>
+	<p>When we want to seamlessly navigate between two distinct pages while making it feel smooth to the end user, <a href="https://developer.mozilla.org/en-US/docs/Web/API/View_Transition_API" target="_blank" rel="noopener noreferrer"><u>view transitions</u></a> are quite useful. Defining specific <a href="https://www.w3schools.com/jsref/dom_obj_all.asp" target="_blank" rel="noopener noreferrer"><u>DOM elements</u></a> on our page to stick around until the next page is visible, and defining how any changes are handled, make for quite the powerful quilt-stitching tool for multi-page applications.</p>
 	<p>There may be, however, instances where making the various vertical microfrontends feel different is more than acceptable. Perhaps our marketing website, documentation, and dashboard are each uniquely defined, for instance. A user would not expect all three of those to feel cohesive as you navigate between the three parts. But… if you decide to introduce vertical slices to an individual experience such as the dashboard (e.g. <code>/dash/product-a</code> &amp; <code>/dash/product-b</code>), then users should <b>never</b> know they are two different repositories/workers/projects underneath.</p>
-	<p>Okay, enough talk — let’s get to work. I mentioned it was low-effort to make two separate projects feel as if they were one to a user, and if you have yet to hear about <a href="https://developer.mozilla.org/en-US/docs/Web/API/View_Transition_API"><u>CSS View Transitions</u></a> then I’m about to blow your mind.</p>
+	<p>Okay, enough talk — let’s get to work. I mentioned it was low-effort to make two separate projects feel as if they were one to a user, and if you have yet to hear about <a href="https://developer.mozilla.org/en-US/docs/Web/API/View_Transition_API" target="_blank" rel="noopener noreferrer"><u>CSS View Transitions</u></a> then I’m about to blow your mind.</p>
 	<p>What if I told you that you could make animated transitions between different views&nbsp; — single-page app (SPA) or multi-page app (MPA) — feel as if they were one? Before any view transitions are added, if we navigate between pages owned by two different Workers, the interstitial loading state would be the white blank screen in our browser for some few hundred milliseconds until the full next page began rendering. Pages would not feel cohesive, and it certainly would not feel like a single-page application.</p>
 	<figure class="kg-card kg-image-card">
 		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4vw1Am7gYUQPtmFFCRcsu1/774b881dff7ce1c26db88f30623dfc13/image3.png" alt="" class="kg-image" width="1999" height="877" loading="lazy">
@@ -77,7 +77,7 @@
 			</svg>
 		</a>
 	</div>
-	<p>Transitioning between two pages makes it <i>look</i> seamless — and we also want it to <i>feel</i> as instant as a client-side SPA. While currently Firefox and Safari do not support <a href="https://developer.mozilla.org/en-US/docs/Web/API/Speculation_Rules_API"><u>Speculation Rules</u></a>, Chrome/Edge/Opera do support the more recent newcomer. The speculation rules API is designed to improve performance for future navigations, particularly for document URLs, making multi-page applications feel more like single-page applications.</p>
+	<p>Transitioning between two pages makes it <i>look</i> seamless — and we also want it to <i>feel</i> as instant as a client-side SPA. While currently Firefox and Safari do not support <a href="https://developer.mozilla.org/en-US/docs/Web/API/Speculation_Rules_API" target="_blank" rel="noopener noreferrer"><u>Speculation Rules</u></a>, Chrome/Edge/Opera do support the more recent newcomer. The speculation rules API is designed to improve performance for future navigations, particularly for document URLs, making multi-page applications feel more like single-page applications.</p>
 	<p>Breaking it down into code, what we need to define is a script rule in a specific format that tells the supporting browsers how to prefetch the other vertical slices that are connected to our web application — likely linked through some shared navigation.</p>
 	<pre class="language-JavaScript"><code class="language-JavaScript">&lt;script type="speculationrules"&gt;
   {
@@ -92,7 +92,7 @@
 &lt;/script&gt;</code></pre>
 	<p>With that, our application prefetches our other microfrontends and holds them in our in-memory cache, so if we were to navigate to those pages it would feel nearly instant.</p>
 	<p>You likely won’t require this for clearly discernible vertical slices (marketing, docs, dashboard) because users would expect a slight load between them. However, it is highly encouraged to use when vertical slices are defined within a specific visible experience (e.g. within dashboard pages).</p>
-	<p>Between <a href="https://developer.mozilla.org/en-US/docs/Web/API/View_Transition_API"><u>View Transitions</u></a> and <a href="https://developer.mozilla.org/en-US/docs/Web/API/Speculation_Rules_API"><u>Speculation Rules</u></a>, we are able to tie together entirely different code repositories to feel as if they were served from a single-page application. Wild if you ask me.</p>
+	<p>Between <a href="https://developer.mozilla.org/en-US/docs/Web/API/View_Transition_API" target="_blank" rel="noopener noreferrer"><u>View Transitions</u></a> and <a href="https://developer.mozilla.org/en-US/docs/Web/API/Speculation_Rules_API" target="_blank" rel="noopener noreferrer"><u>Speculation Rules</u></a>, we are able to tie together entirely different code repositories to feel as if they were served from a single-page application. Wild if you ask me.</p>
 	<div class="flex anchor relative">
 		<h2 id="zero-config-request-routing">Zero-config request routing</h2>
 		<a href="https://blog.cloudflare.com/#zero-config-request-routing" aria-hidden="true" class="relative sm:absolute sm:-start-5">
@@ -110,7 +110,7 @@
 			</svg>
 		</a>
 	</div>
-	<p>If you have yet to explore Cloudflare Worker <a href="https://developers.cloudflare.com/workers/runtime-apis/bindings/service-bindings"><u>service bindings</u></a>, then it is worth taking a moment to do so. </p>
+	<p>If you have yet to explore Cloudflare Worker <a href="https://developers.cloudflare.com/workers/runtime-apis/bindings/service-bindings" target="_blank" rel="noopener noreferrer"><u>service bindings</u></a>, then it is worth taking a moment to do so. </p>
 	<p>Service bindings allow one Worker to call into another, without going through a publicly-accessible URL. A Service binding allows Worker A to call a method on Worker B, or to forward a request from Worker A to Worker. Breaking it down further, the Router Worker can call into each vertical microfrontend Worker that has been defined (e.g. marketing, docs, dashboard), assuming each of them were Cloudflare Workers.</p>
 	<p>Why is this important? This is precisely the mechanism that “stitches” these vertical slices together. We’ll dig into how the request routing is handling the traffic split in the next section. But to define each of these microfrontends, we’ll need to update our Router Worker’s wrangler definition, so it knows which frontends it’s allowed to call into.
 	</p>
@@ -172,7 +172,7 @@
 	<figure class="kg-card kg-image-card">
 		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/10jKx6qt2YcarpDyEsFNYV/3b0f11f56e3c9b2deef59934cf8efa7f/image2.png" alt="" class="kg-image" width="1338" height="674" loading="lazy">
 	</figure>
-	<p>Let’s return for a moment to the magic of CSS view transitions and document preloading. We could of course manually place that code into our projects and have it work, but this Router Worker will <i>automatically</i> handle that logic for us by also using <a href="https://developers.cloudflare.com/workers/runtime-apis/html-rewriter"><u>HTMLRewriter</u></a>.&nbsp;</p>
+	<p>Let’s return for a moment to the magic of CSS view transitions and document preloading. We could of course manually place that code into our projects and have it work, but this Router Worker will <i>automatically</i> handle that logic for us by also using <a href="https://developers.cloudflare.com/workers/runtime-apis/html-rewriter" target="_blank" rel="noopener noreferrer"><u>HTMLRewriter</u></a>.&nbsp;</p>
 	<p>In your Router Worker <code>ROUTES</code> variable, if you set <code>smoothTransitions</code> to <code>true</code> at the root level, then the CSS transition views code will be added automatically. Additionally, if you set the <code>preload</code> key within a route to <code>true</code>, then the script code speculation rules for that route will automatically be added as well.&nbsp;</p>
 	<p>Below is an example of both in action:</p>
 	<pre class="language-JSON"><code class="language-JSON">{
@@ -192,10 +192,10 @@
 		</a>
 	</div>
 	<p>You can start building with the Vertical Microfrontend template today.</p>
-	<p>Visit the Cloudflare Dashboard <a href="https://dash.cloudflare.com/?to=%2F%3Aaccount%2Fworkers-and-pages%2Fcreate%3Ftype%3Dvmfe"><u>deeplink here</u></a> or go to “Workers &amp; Pages” and click the “Create application” button to get started. From there, click “Select a template” and then “Create microfrontend” and you can begin configuring your setup.</p>
+	<p>Visit the Cloudflare Dashboard <a href="https://dash.cloudflare.com/?to=%2F%3Aaccount%2Fworkers-and-pages%2Fcreate%3Ftype%3Dvmfe" target="_blank" rel="noopener noreferrer"><u>deeplink here</u></a> or go to “Workers &amp; Pages” and click the “Create application” button to get started. From there, click “Select a template” and then “Create microfrontend” and you can begin configuring your setup.</p>
 	<figure class="kg-card kg-image-card">
 		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1teTcTNHzQH3yCvbTz3xyU/8f9a4b2ef3ec1c6ed13cbdc51d6b13c5/image5.png" alt="" class="kg-image" width="1999" height="1569" loading="lazy">
 	</figure>
 	<p>
-		Check out the <a href="https://developers.cloudflare.com/workers/framework-guides/web-apps/microfrontends"><u>documentation</u></a> to see how to map your existing Workers and enable View Transitions. We can't wait to see what complex, multi-team applications you build on the edge!</p>
+		Check out the <a href="https://developers.cloudflare.com/workers/framework-guides/web-apps/microfrontends" target="_blank" rel="noopener noreferrer"><u>documentation</u></a> to see how to map your existing Workers and enable View Transitions. We can't wait to see what complex, multi-team applications you build on the edge!</p>
 </div>

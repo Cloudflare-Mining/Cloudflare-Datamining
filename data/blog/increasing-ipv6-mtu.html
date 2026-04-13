@@ -1,13 +1,13 @@
 <div class="mb2 gray5">6 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2zYPGrhkfV8AMzgS6G7pg3/2fe3587725932a9f1f920cc7a2641dd8/increasing-ipv6-mtu.png" alt="">
 <div class="post-content lh-copy gray1">
-	<p>Back in 2015 we deployed <a href="https://en.wikipedia.org/wiki/Equal-cost_multi-path_routing">ECMP routing</a> - Equal Cost Multi Path - within our datacenters. This technology allowed us to spread traffic heading to a single IP address across multiple physical servers.</p>
+	<p>Back in 2015 we deployed <a href="https://en.wikipedia.org/wiki/Equal-cost_multi-path_routing" target="_blank" rel="noopener noreferrer">ECMP routing</a> - Equal Cost Multi Path - within our datacenters. This technology allowed us to spread traffic heading to a single IP address across multiple physical servers.</p>
 	<p>You can think about it as a third layer of load balancing.</p>
 	<ul>
 		<li>
 			<p>First we split the traffic across multiple IP addresses with DNS.</p>
 		</li>
 		<li>
-			<p>Then we split the traffic across <a href="https://www.cloudflare.com/learning/cdn/glossary/anycast-network">multiple datacenters with Anycast</a>.</p>
+			<p>Then we split the traffic across <a href="https://www.cloudflare.com/learning/cdn/glossary/anycast-network" target="_blank" rel="noopener noreferrer">multiple datacenters with Anycast</a>.</p>
 		</li>
 		<li>
 			<p>Finally, we split the traffic across multiple servers with ECMP.</p>
@@ -18,9 +18,9 @@
 		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6brB6jYvBwnIHL5UyGZZpq/dbc2f52a7ba7056bebc36eb90ec98c55/5799659266_28038df72f_b.jpg" alt="" class="kg-image" width="1024" height="683" loading="lazy">
 
 	</figure>
-	<p><a href="https://www.flickr.com/photos/superlatif/5799659266">photo</a> by <a href="https://www.flickr.com/photos/superlatif">Sahra</a> by-sa/2.0</p>
+	<p><a href="https://www.flickr.com/photos/superlatif/5799659266" target="_blank" rel="noopener noreferrer">photo</a> by <a href="https://www.flickr.com/photos/superlatif" target="_blank" rel="noopener noreferrer">Sahra</a> by-sa/2.0</p>
 	<p>When deploying ECMP we hit a problem with Path MTU discovery. The ICMP packets destined to our Anycast IP's were being dropped. You can read more about that (and the solution) in the 2015 blog post <a href="https://blog.cloudflare.com/path-mtu-discovery-in-practice">Path MTU Discovery in practice</a>.</p>
-	<p>To solve the problem we created a small piece of software, called <code>pmtud</code> (<a href="https://github.com/cloudflare/pmtud">https://github.com/cloudflare/pmtud</a>). Since deploying <code>pmtud</code>, our ECMP setup has been working smoothly.</p>
+	<p>To solve the problem we created a small piece of software, called <code>pmtud</code> (<a href="https://github.com/cloudflare/pmtud" target="_blank" rel="noopener noreferrer">https://github.com/cloudflare/pmtud</a>). Since deploying <code>pmtud</code>, our ECMP setup has been working smoothly.</p>
 	<div class="flex anchor relative">
 		<h3 id="hardcoding-ipv6-mtu">Hardcoding IPv6 MTU</h3>
 		<a href="https://blog.cloudflare.com/#hardcoding-ipv6-mtu" aria-hidden="true" class="relative sm:absolute sm:-start-5">
@@ -42,15 +42,15 @@ default via 2400:xxxx::1 dev eth0 src 2400:xxxx:2  metric 1024  mtu 1280</code><
 
 	</figure>
 	<p>Remember - the original problem introduced by ECMP was that ICMP routed back to our Anycast addresses could go to a wrong machine within the ECMP group. Therefore we became ICMP black holes. Cloudflare would send large packets, they would be dropped with ICMP PTB packet flying back to us. Which, in turn would fail to be delivered to the right machine due to ECMP.</p>
-	<p>But why did this problem not appear for IPv4 traffic? We believe the same issue exists on IPv4, but it's less damaging due to the different nature of the network. IPv4 is more mature and the great majority of end-hosts support either MTU 1500 or have their MSS option well configured - or clamped by some middle box. This is different in IPv6 where a large proportion of &nbsp;users use tunnels, have Path MTU strictly smaller than 1500 and use incorrect MSS settings in the TCP header. Finally, Linux implements <a href="https://tools.ietf.org/html/rfc4821">RFC4821</a> for IPv4 but not IPv6. RFC4821 (PLPMTUD) has its disadvantages, but does slightly help to alleviate the ICMP blackhole issue.</p>
+	<p>But why did this problem not appear for IPv4 traffic? We believe the same issue exists on IPv4, but it's less damaging due to the different nature of the network. IPv4 is more mature and the great majority of end-hosts support either MTU 1500 or have their MSS option well configured - or clamped by some middle box. This is different in IPv6 where a large proportion of &nbsp;users use tunnels, have Path MTU strictly smaller than 1500 and use incorrect MSS settings in the TCP header. Finally, Linux implements <a href="https://tools.ietf.org/html/rfc4821" target="_blank" rel="noopener noreferrer">RFC4821</a> for IPv4 but not IPv6. RFC4821 (PLPMTUD) has its disadvantages, but does slightly help to alleviate the ICMP blackhole issue.</p>
 	<p>Our "fix" - reducing the MTU to 1280 - was serving us well and we had no pressing reason to revert it.</p>
 	<p>Researchers did notice though. We were caught red-handed twice:</p>
 	<ul>
 		<li>
-			<p><a href="https://blog.apnic.net/2016/11/15/scoring-dns-root-server-system">In 2017 Geoff Huston noticed (pdf)</a> that we sent DNS fragments of 1280 only (<a href="https://blog.apnic.net/2016/11/15/scoring-dns-root-server-system">older blog post</a>).</p>
+			<p><a href="https://blog.apnic.net/2016/11/15/scoring-dns-root-server-system" target="_blank" rel="noopener noreferrer">In 2017 Geoff Huston noticed (pdf)</a> that we sent DNS fragments of 1280 only (<a href="https://blog.apnic.net/2016/11/15/scoring-dns-root-server-system" target="_blank" rel="noopener noreferrer">older blog post</a>).</p>
 		</li>
 		<li>
-			<p>In June 2018 the paper <a href="http://tma.ifip.org/2018/wp-content/uploads/sites/3/2018/06/tma2018_paper57.pdf">"Exploring usable Path MTU in the Internet" (pdf)</a> mentioned our weird setting - where we can accept 1500 bytes just fine, but transmit is limited to 1280.</p>
+			<p>In June 2018 the paper <a href="http://tma.ifip.org/2018/wp-content/uploads/sites/3/2018/06/tma2018_paper57.pdf" target="_blank" rel="noopener noreferrer">"Exploring usable Path MTU in the Internet" (pdf)</a> mentioned our weird setting - where we can accept 1500 bytes just fine, but transmit is limited to 1280.</p>
 		</li>
 	</ul>
 	<div class="flex anchor relative">
@@ -67,7 +67,7 @@ default via 2400:xxxx::1 dev eth0 src 2400:xxxx:2  metric 1024  mtu 1280</code><
 		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3yo93AUS4hONJUarTUlGP/1c9fd02139519ea6f947b61a39da9d8b/6545737741_077583ca1f_b-1.jpg" alt="" class="kg-image" width="1024" height="768" loading="lazy">
 
 	</figure>
-	<p><a href="https://www.flickr.com/photos/nh53/6545737741">photo</a> by <a href="https://www.flickr.com/photos/nh53">NH53</a> by/2.0</p>
+	<p><a href="https://www.flickr.com/photos/nh53/6545737741" target="_blank" rel="noopener noreferrer">photo</a> by <a href="https://www.flickr.com/photos/nh53" target="_blank" rel="noopener noreferrer">NH53</a> by/2.0</p>
 	<p>This changed recently, when we started working on <a href="https://blog.cloudflare.com/spectrum">Cloudflare Spectrum</a> support for UDP. Spectrum is a terminating proxy, able to handle protocols other than HTTP. Getting Spectrum to <a href="https://blog.cloudflare.com/how-we-built-spectrum">forward TCP was relatively straightforward</a> (barring couple of <a href="https://blog.cloudflare.com/mmproxy-creative-way-of-preserving-client-ips-in-spectrum">awesome hacks</a>). UDP is different.</p>
 	<p>One of the major issues we hit was related to the MTU on our servers.</p>
 	<p>During tests we wanted to forward UDP VPN packets through Spectrum. As you can imagine, any VPN would encapsulate a packet in another packet. Spectrum received packets like this:</p>
@@ -94,10 +94,10 @@ default via 2400:xxxx::1 dev eth0 src 2400:xxxx:2  metric 1024  mtu 1280</code><
 	<p>I believe Google and Facebook adjust their MTU due to their use of L4 load balancers. Their implementations do IP-in-IP encapsulation so need a bit of space for the header. Read more:</p>
 	<ul>
 		<li>
-			<p>Google - <a href="https://ai.google/research/pubs/pub44824">Maglev</a></p>
+			<p>Google - <a href="https://ai.google/research/pubs/pub44824" target="_blank" rel="noopener noreferrer">Maglev</a></p>
 		</li>
 		<li>
-			<p>Facebook - <a href="https://code.fb.com/open-source/open-sourcing-katran-a-scalable-network-load-balancer">Katran</a></p>
+			<p>Facebook - <a href="https://code.fb.com/open-source/open-sourcing-katran-a-scalable-network-load-balancer" target="_blank" rel="noopener noreferrer">Katran</a></p>
 		</li>
 	</ul>
 	<p>There may be other reasons for having a smaller MTU. A reduced value may decrease the probability of the Path MTU detection algorithm kicking in (ie: relying on ICMP PTB). We can theorize that for the misconfigured eyeballs:</p>
@@ -141,7 +141,7 @@ default via 2400:xxxx::1 dev eth0 src 2400:xxxx:2  metric 1024  mtu 1280</code><
   1412 |                                               ***  3.64%   68.21%
   1420 |                                                 *  2.02%   64.54%
   1440 |************************************************** 54.31%   54.34%</code></pre>
-	<p>On IPv6 87.7% connections had MTU &gt;= 1422 (1362+60). 75% had MTU &gt;= 1450. (See also: <a href="https://blog.apnic.net/2016/05/19/fragmenting-ipv6">MTU distribution of DNS &nbsp;servers</a>).</p>
+	<p>On IPv6 87.7% connections had MTU &gt;= 1422 (1362+60). 75% had MTU &gt;= 1450. (See also: <a href="https://blog.apnic.net/2016/05/19/fragmenting-ipv6" target="_blank" rel="noopener noreferrer">MTU distribution of DNS &nbsp;servers</a>).</p>
 	<div class="flex anchor relative">
 		<h3 id="interpretation">Interpretation</h3>
 		<a href="https://blog.cloudflare.com/#interpretation" aria-hidden="true" class="relative sm:absolute sm:-start-5">
@@ -245,12 +245,12 @@ IP6 2001:ac8:xxx &gt; 2400:xxx ICMP6, packet too big, mtu 1390, length 1240</cod
 	<p>Finally, if you are an IPv6 user with a weird MTU and have misconfigured MSS - basically if you are doing tunneling - please let us know of any issues. We know that debugging MTU issues is notoriously hard. To aid that we created <a href="https://blog.cloudflare.com/ip-fragmentation-is-broken">an online fragmentation and ICMP delivery test</a>. You can run it:</p>
 	<ul>
 		<li>
-			<p>IPv6 version: <a href="http://icmpcheckv6.popcount.org">http://icmpcheckv6.popcount.org</a></p>
+			<p>IPv6 version: <a href="http://icmpcheckv6.popcount.org" target="_blank" rel="noopener noreferrer">http://icmpcheckv6.popcount.org</a></p>
 		</li>
 		<li>
-			<p>(for completeness, we also have an <a href="http://icmpcheck.popcount.org">IPv4 version</a>)</p>
+			<p>(for completeness, we also have an <a href="http://icmpcheck.popcount.org" target="_blank" rel="noopener noreferrer">IPv4 version</a>)</p>
 		</li>
 	</ul>
 	<p>If you are a server operator running IPv6 applications, you should not worry. In most cases leaving the MTU at default 1500 is a good choice and should work for the majority of connections. &nbsp;Just remember to allow ICMP PTB packets on the firewall and you should be good. If you serve variety of IPv6 users and need to optimize latency, you may consider choosing a slightly smaller MTU for outbound packets, to reduce the risk of relying on Path MTU Detection / ICMP.</p>
-	<p><i>Low level network tuning sound interesting? Join our </i><a href="https://boards.greenhouse.io/cloudflare/jobs/589572"><i>world famous team</i></a><i> in London, Austin, San Francisco, Champaign and our elite office in Warsaw, Poland.</i></p>
+	<p><i>Low level network tuning sound interesting? Join our </i><a href="https://boards.greenhouse.io/cloudflare/jobs/589572" target="_blank" rel="noopener noreferrer"><i>world famous team</i></a><i> in London, Austin, San Francisco, Champaign and our elite office in Warsaw, Poland.</i></p>
 </div>

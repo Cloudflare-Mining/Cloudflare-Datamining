@@ -1,6 +1,6 @@
 <div class="mb2 gray5">12 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1yXzyZDnhtRQkiULdIAWCK/221255b93aab8c3fe5dce7eb2d871a80/privacy-pass-the-math.png" alt="">
 <div class="post-content lh-copy gray1">
-	<p><i>This is a guest post by Alex Davidson, a PhD student in Cryptography at Royal Holloway, University of London, who is part of the team that developed </i><a href="https://privacypass.github.io"><i>Privacy Pass</i></a><i>. Alex worked at Cloudflare for the summer on deploying Privacy Pass on the Cloudflare network</i>.</p>
+	<p><i>This is a guest post by Alex Davidson, a PhD student in Cryptography at Royal Holloway, University of London, who is part of the team that developed </i><a href="https://privacypass.github.io" target="_blank" rel="noopener noreferrer"><i>Privacy Pass</i></a><i>. Alex worked at Cloudflare for the summer on deploying Privacy Pass on the Cloudflare network</i>.</p>
 	<p>During a recent internship at Cloudflare, I had the chance to help integrate support for improving the accessibility of websites that are protected by the Cloudflare edge network. Specifically, I helped develop an open-source browser extension named ‘Privacy Pass’ and added support for the Privacy Pass protocol within Cloudflare infrastructure. Currently, Privacy Pass works with the Cloudflare edge to help honest users to reduce the number of Cloudflare CAPTCHA pages that they see when browsing the web. However, the operation of Privacy Pass is not limited to the Cloudflare use-case and we envisage that it has applications over a wider and more diverse range of applications as support grows.</p>
 	<p>In summary, this browser extension allows a user to generate cryptographically ‘blinded’ tokens that can then be signed by supporting servers following some receipt of authenticity (e.g. a CAPTCHA solution). The browser extension can then use these tokens to ‘prove’ honesty in future communications with the server, without having to solve more authenticity challenges.</p>
 	<p>The ‘blind’ aspect of the protocol means that it is infeasible for a server to link tokens token that it signs to tokens that are redeemed in the future. This means that a client using the browser extension should not compromise their own privacy with respect to the server they are communicating with.</p>
@@ -13,7 +13,7 @@
 			</svg>
 		</a>
 	</div>
-	<p>The research team released a specification last year for a “blind signing” protocol (very similar to the original proposal of <a href="https://blog.cloudflare.com/#Cha82">Chaum</a> using a variant of RSA known as ‘blind RSA’. Blind RSA simply uses the homomorphic properties of the textbook RSA signature scheme to allow the user to have messages signed <i>obliviously</i>. Since then, George Tankersley and Filippo Valsorda gave a talk at <a href="https://youtu.be/GqY7YUv8b5Y">Real World Crypto 2017</a> explaining the idea in more detail and how the protocol could be implemented. The intuition behind a blind signing protocol is also given in <a href="https://blog.cloudflare.com/cloudflare-supports-privacy-pass">Nick’s blog post</a>.</p>
+	<p>The research team released a specification last year for a “blind signing” protocol (very similar to the original proposal of <a href="https://blog.cloudflare.com/#Cha82">Chaum</a> using a variant of RSA known as ‘blind RSA’. Blind RSA simply uses the homomorphic properties of the textbook RSA signature scheme to allow the user to have messages signed <i>obliviously</i>. Since then, George Tankersley and Filippo Valsorda gave a talk at <a href="https://youtu.be/GqY7YUv8b5Y" target="_blank" rel="noopener noreferrer">Real World Crypto 2017</a> explaining the idea in more detail and how the protocol could be implemented. The intuition behind a blind signing protocol is also given in <a href="https://blog.cloudflare.com/cloudflare-supports-privacy-pass">Nick’s blog post</a>.</p>
 	<p>A blind signing protocol between a server A and a client B roughly takes the following form:</p>
 	<ul>
 		<li>
@@ -45,7 +45,7 @@
 	<p><code>y^2 = x^3 + a*x + b (modulo p)</code></p>
 	<p>Nick Sullivan wrote an introductory <a href="https://blog.cloudflare.com/a-relatively-easy-to-understand-primer-on-elliptic-curve-cryptography">blog post</a> on the use of elliptic curves in cryptography a while back, so this may be a good place to start if you’re new to the area.</p>
 	<p>Elliptic curves have been studied for use in cryptography since the independent works of Koblitz and Miller (1984-85). However, EC-based ciphers and signature algorithms have rapidly started replacing older primitives in the Internet-space due to large improvements in the choice of security parameters available. What this translates to is that encryption/signing keys can be much smaller in EC cryptography when compared to more traditional methods such as RSA. This comes with huge efficiency benefits when computing encryption and signing operations, thus making EC cipher suites perfect for use on an Internet-wide scale.</p>
-	<p>Importantly, there are many different elliptic curve configurations that are defined by the choice of <code>p</code>, <code>a</code> and <code>b</code> for the equation above. These prevent different security and efficiency benefits; some have been standardized by NIST. In this work, we will be using the NIST specified <a href="https://csrc.nist.gov/publications/detail/fips/186/4/final">P256 curve</a>, however, this choice is largely agnostic to the protocol that we have designed.</p>
+	<p>Importantly, there are many different elliptic curve configurations that are defined by the choice of <code>p</code>, <code>a</code> and <code>b</code> for the equation above. These prevent different security and efficiency benefits; some have been standardized by NIST. In this work, we will be using the NIST specified <a href="https://csrc.nist.gov/publications/detail/fips/186/4/final" target="_blank" rel="noopener noreferrer">P256 curve</a>, however, this choice is largely agnostic to the protocol that we have designed.</p>
 	<div class="flex anchor relative">
 		<h4 id="blind-signing-via-elliptic-curves">Blind signing via elliptic curves</h4>
 		<a href="https://blog.cloudflare.com/#blind-signing-via-elliptic-curves" aria-hidden="true" class="relative sm:absolute sm:-start-5">
@@ -74,7 +74,7 @@
 		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5LG1M3dg4OwiUYd1TFWIWJ/8e26d23ae4dd905c599cece4cf9c1cbd/image3-1.png" alt="" class="kg-image" width="600" height="400" loading="lazy">
 
 	</figure>
-	<p>It may seem difficult to construct such a functionality without revealing the input x or the key K. However, there are numerous (and very efficient) constructions of OPRFs with applications to many different cryptographic problems such as <a href="https://eprint.iacr.org/2016/799">private set intersection</a>, <a href="https://eprint.iacr.org/2016/144">password-protected secret-sharing</a> and <a href="http://webee.technion.ac.il/~hugo/sphinx.pdf">cryptographic password storage</a> to name a few.</p>
+	<p>It may seem difficult to construct such a functionality without revealing the input x or the key K. However, there are numerous (and very efficient) constructions of OPRFs with applications to many different cryptographic problems such as <a href="https://eprint.iacr.org/2016/799" target="_blank" rel="noopener noreferrer">private set intersection</a>, <a href="https://eprint.iacr.org/2016/144" target="_blank" rel="noopener noreferrer">password-protected secret-sharing</a> and <a href="http://webee.technion.ac.il/~hugo/sphinx.pdf" target="_blank" rel="noopener noreferrer">cryptographic password storage</a> to name a few.</p>
 	<div class="flex anchor relative">
 		<h4 id="oprfs-from-elliptic-curves">OPRFs from elliptic curves</h4>
 		<a href="https://blog.cloudflare.com/#oprfs-from-elliptic-curves" aria-hidden="true" class="relative sm:absolute sm:-start-5">
@@ -143,7 +143,7 @@
 	<p>Firstly, there is a <b>blind signing phase</b> that is carried out between the user and the edge after the user has successfully solved a challenge. The result is that the user receives a number of <code>signed</code> tokens (default 30) that are unblinded and stored for future use. Intuitively, this mirrors the execution of the OPRF protocol above.</p>
 	<p>Secondly, there is a <b>redemption phase</b> where an unblinded token is used for bypassing a future iteration of the challenge.</p>
 	<p>Let <code><b>G</b></code> be a cyclic group of prime-order <code>q</code>. Let <code>H_1</code>,<code>H_2</code> be a pair of collision-resistant hash functions; <code>H_1</code> hashes into the group <code><b>G</b></code> as before, <code>H_2</code> hashes into a binary string of length <code>n</code>.</p>
-	<p>In the following, we will slightly different notation to make it consistent with existing literature. Let <code>x</code> be a private key held by the server S. Let <code>t</code> be the input held by the user/client C. Let <code>ZZ_q</code> be the ring of integers modulo <code>q</code>. We write all operations in their scalar multiplication form to be consistent with EC notation. Let <code>MAC_K()</code> be a <a href="https://en.wikipedia.org/wiki/Message_authentication_code">message-authentication code</a> algorithm keyed by a key <code>K</code>.</p>
+	<p>In the following, we will slightly different notation to make it consistent with existing literature. Let <code>x</code> be a private key held by the server S. Let <code>t</code> be the input held by the user/client C. Let <code>ZZ_q</code> be the ring of integers modulo <code>q</code>. We write all operations in their scalar multiplication form to be consistent with EC notation. Let <code>MAC_K()</code> be a <a href="https://en.wikipedia.org/wiki/Message_authentication_code" target="_blank" rel="noopener noreferrer">message-authentication code</a> algorithm keyed by a key <code>K</code>.</p>
 	<div class="flex anchor relative">
 		<h4 id="signing-phase">Signing phase</h4>
 		<a href="https://blog.cloudflare.com/#signing-phase" aria-hidden="true" class="relative sm:absolute sm:-start-5">
@@ -246,7 +246,7 @@
 		</a>
 	</div>
 	<p>While the proof of security above gives some assurances about the cryptographic design of the protocol, it does not cover the possibility of possible out-of-band deanonymization. For instance, the edge server can sign tokens with a new secret key each time. Ignoring the cost that this would incur, the server would be able to link token signing and redemption phases by simply checking the validation for each private key in use.</p>
-	<p>There is a solution known as a ‘discrete log equivalence proof’ (DLEQ proof). Using this, a server commits to a secret key <code>x</code> by publicly posting a pair <code>(G, xG)</code> for a generator <code>G</code> of the prime-order group <code><b>G</b></code>. A DLEQ proof intuitively allows the server to prove to the user that the signed tokens <code>Z = xrT</code> and commitment <code>xG</code> both have the same discrete log relation <code>x</code>. Since the commitment is posted publicly (similarly to a <a href="https://www.certificate-transparency.org">Certificate Transparency Log</a>) this would be verifiable by all users and so the deanonymization attack above would not be possible.</p>
+	<p>There is a solution known as a ‘discrete log equivalence proof’ (DLEQ proof). Using this, a server commits to a secret key <code>x</code> by publicly posting a pair <code>(G, xG)</code> for a generator <code>G</code> of the prime-order group <code><b>G</b></code>. A DLEQ proof intuitively allows the server to prove to the user that the signed tokens <code>Z = xrT</code> and commitment <code>xG</code> both have the same discrete log relation <code>x</code>. Since the commitment is posted publicly (similarly to a <a href="https://www.certificate-transparency.org" target="_blank" rel="noopener noreferrer">Certificate Transparency Log</a>) this would be verifiable by all users and so the deanonymization attack above would not be possible.</p>
 	<div class="flex anchor relative">
 		<h4 id="dleq-proofs">DLEQ proofs</h4>
 		<a href="https://blog.cloudflare.com/#dleq-proofs" aria-hidden="true" class="relative sm:absolute sm:-start-5">
@@ -360,7 +360,7 @@ Z_2 = x(M_2),
 			</svg>
 		</a>
 	</div>
-	<p>Privacy Pass v1.0 is available as a browser extension for <a href="https://chrome.google.com/webstore/detail/privacy-pass/ajhmfdgkijocedmfjonnpjfojldioehi">Chrome</a> and <a href="https://addons.mozilla.org/en-US/firefox/addon/privacy-pass">Firefox</a>. If you find any issues while using then <a href="https://privacypass.github.io">let us know</a>.</p>
+	<p>Privacy Pass v1.0 is available as a browser extension for <a href="https://chrome.google.com/webstore/detail/privacy-pass/ajhmfdgkijocedmfjonnpjfojldioehi" target="_blank" rel="noopener noreferrer">Chrome</a> and <a href="https://addons.mozilla.org/en-US/firefox/addon/privacy-pass" target="_blank" rel="noopener noreferrer">Firefox</a>. If you find any issues while using then <a href="https://privacypass.github.io" target="_blank" rel="noopener noreferrer">let us know</a>.</p>
 	<div class="flex anchor relative">
 		<h4 id="source-code">Source code</h4>
 		<a href="https://blog.cloudflare.com/#source-code" aria-hidden="true" class="relative sm:absolute sm:-start-5">
@@ -369,7 +369,7 @@ Z_2 = x(M_2),
 			</svg>
 		</a>
 	</div>
-	<p>The code for the browser extension and server has been open-sourced and can be found at <a href="https://github.com/privacypass/challenge-bypass-extension">https://github.com/privacypass/challenge-bypass-extension</a> and <a href="https://github.com/privacypass/challenge-bypass-server">https://github.com/privacypass/challenge-bypass-server</a> respectively. We are welcoming contributions if you happen to notice any improvements that can be made to either component. If you would like to get in contact with the Privacy Pass team then find us at our <a href="https://privacypass.github.io">website</a>.</p>
+	<p>The code for the browser extension and server has been open-sourced and can be found at <a href="https://github.com/privacypass/challenge-bypass-extension" target="_blank" rel="noopener noreferrer">https://github.com/privacypass/challenge-bypass-extension</a> and <a href="https://github.com/privacypass/challenge-bypass-server" target="_blank" rel="noopener noreferrer">https://github.com/privacypass/challenge-bypass-server</a> respectively. We are welcoming contributions if you happen to notice any improvements that can be made to either component. If you would like to get in contact with the Privacy Pass team then find us at our <a href="https://privacypass.github.io" target="_blank" rel="noopener noreferrer">website</a>.</p>
 	<div class="flex anchor relative">
 		<h4 id="protocol-details">Protocol details</h4>
 		<a href="https://blog.cloudflare.com/#protocol-details" aria-hidden="true" class="relative sm:absolute sm:-start-5">
@@ -378,7 +378,7 @@ Z_2 = x(M_2),
 			</svg>
 		</a>
 	</div>
-	<p>More information about the protocol can be found <a href="https://privacypass.github.io/protocol">here</a>.</p>
+	<p>More information about the protocol can be found <a href="https://privacypass.github.io/protocol" target="_blank" rel="noopener noreferrer">here</a>.</p>
 	<div class="flex anchor relative">
 		<h4 id="acknowledgements">Acknowledgements</h4>
 		<a href="https://blog.cloudflare.com/#acknowledgements" aria-hidden="true" class="relative sm:absolute sm:-start-5">
@@ -397,5 +397,5 @@ Z_2 = x(M_2),
 			</svg>
 		</a>
 	</div>
-	<p>Cha82: Chaum. <a href="https://dl.acm.org/citation.cfm?doid=4372.4373">Blind signatures for untraceable payments. CRYPTO’82</a>CP93: Chaum, Pedersen. <a href="http://chaum.com/publications/Wallet_Databases.pdf">Wallet Databases with Observers. CRYPTO'92.</a>Hen14: Ryan Henry. <a href="https://uwspace.uwaterloo.ca/bitstream/handle/10012/8621/Henry_Ryan.pdf">Efficient Zero-Knowledge Proofs and Applications, August 2014.</a>JKK14: Jarecki, Kiayias, Krawczyk. <a href="https://eprint.iacr.org/2014/650.pdf">Round-Optimal Password-Protected Secret Sharing and T-PAKE in the Password-Only model.</a>JKKX16: Jarecki, Kiayias, Krawczyk, Xu. <a href="https://eprint.iacr.org/2016/144.pdf">Highly-Efficient and Composable Password-Protected Secret Sharing.</a></p>
+	<p>Cha82: Chaum. <a href="https://dl.acm.org/citation.cfm?doid=4372.4373" target="_blank" rel="noopener noreferrer">Blind signatures for untraceable payments. CRYPTO’82</a>CP93: Chaum, Pedersen. <a href="http://chaum.com/publications/Wallet_Databases.pdf" target="_blank" rel="noopener noreferrer">Wallet Databases with Observers. CRYPTO'92.</a>Hen14: Ryan Henry. <a href="https://uwspace.uwaterloo.ca/bitstream/handle/10012/8621/Henry_Ryan.pdf" target="_blank" rel="noopener noreferrer">Efficient Zero-Knowledge Proofs and Applications, August 2014.</a>JKK14: Jarecki, Kiayias, Krawczyk. <a href="https://eprint.iacr.org/2014/650.pdf" target="_blank" rel="noopener noreferrer">Round-Optimal Password-Protected Secret Sharing and T-PAKE in the Password-Only model.</a>JKKX16: Jarecki, Kiayias, Krawczyk, Xu. <a href="https://eprint.iacr.org/2016/144.pdf" target="_blank" rel="noopener noreferrer">Highly-Efficient and Composable Password-Protected Secret Sharing.</a></p>
 </div>

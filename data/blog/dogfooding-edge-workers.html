@@ -1,6 +1,6 @@
 <div class="mb2 gray5">3 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/625Bpi9sa9TW6Y31S7FMbT/9b64813a530efc9b25fcb01d51d2286f/dogfooding-edge-workers.png" alt="">
 <div class="post-content lh-copy gray1">
-	<p>On the WWW team, we’re responsible for Cloudflare’s REST APIs, account management services and the dashboard experience. We take security and <a href="https://www.cloudflare.com/learning/privacy/what-is-pci-dss-compliance">PCI compliance</a> seriously, which means we move quickly to stay up to date with regulations and relevant laws.</p>
+	<p>On the WWW team, we’re responsible for Cloudflare’s REST APIs, account management services and the dashboard experience. We take security and <a href="https://www.cloudflare.com/learning/privacy/what-is-pci-dss-compliance" target="_blank" rel="noopener noreferrer">PCI compliance</a> seriously, which means we move quickly to stay up to date with regulations and relevant laws.</p>
 	<p>A <a href="https://blog.cloudflare.com/deprecating-old-tls-versions-on-cloudflare-dashboard-and-api">recent compliance project</a> had a requirement of detecting certain end user request data at the edge, and reacting to it both in API responses as well as visually in the dashboard. We realized that this was an excellent opportunity to dogfood Cloudflare Workers.</p>
 	<div class="flex anchor relative">
 		<h3 id="deploying-workers-to-and-api-cloudflare-com">Deploying workers to <a href="https://www.cloudflare.com">www.cloudflare.com</a> and api.cloudflare.com</h3>
@@ -11,7 +11,7 @@
 		</a>
 	</div>
 	<p>In this blog post, we’ll break down the problem we solved using a single worker that we shipped to multiple hosts, share the annotated source code of our worker, and share some best practices and tips and tricks we discovered along the way.</p>
-	<p>Since being deployed, <b>our worker has served over 400 million requests</b> for both calls to api.cloudflare.com and the <a href="https://www.cloudflare.com">www.cloudflare.com</a> dashboard.</p>
+	<p>Since being deployed, <b>our worker has served over 400 million requests</b> for both calls to api.cloudflare.com and the <a href="https://www.cloudflare.com" target="_blank" rel="noopener noreferrer">www.cloudflare.com</a> dashboard.</p>
 	<div class="flex anchor relative">
 		<h3 id="the-task">The task</h3>
 		<a href="https://blog.cloudflare.com/#the-task" aria-hidden="true" class="relative sm:absolute sm:-start-5">
@@ -190,7 +190,7 @@ async function requestWithTLSHeader(event) {
 	</ol>
 	<p>This pattern fixes a common race condition: if you don't leverage event.waitUntil, the runtime will race the passthrough subrequest and your logging subrequest.</p>
 	<p>If the passthrough subrequest completes significantly faster than your logging subrequest, the logging request could be cancelled. In practice, you'll notice this issue manifesting as dropped logging messages - whether or not a given exception will be logged properly becomes a roll of the dice on every request.</p>
-	<p>For additional insight, check out our <a href="https://developers.cloudflare.com/workers/writing-workers/debugging-tips">official guide to debugging Cloudflare workers</a>.</p>
+	<p>For additional insight, check out our <a href="https://developers.cloudflare.com/workers/writing-workers/debugging-tips" target="_blank" rel="noopener noreferrer">official guide to debugging Cloudflare workers</a>.</p>
 	<div class="flex anchor relative">
 		<h3 id="failing-open-to-ensure-service-continuity">Failing open to ensure service continuity</h3>
 		<a href="https://blog.cloudflare.com/#failing-open-to-ensure-service-continuity" aria-hidden="true" class="relative sm:absolute sm:-start-5">
@@ -222,6 +222,6 @@ async function requestWithTLSHeader(event) {
 			</svg>
 		</a>
 	</div>
-	<p>You can find additional worker recipes and examples in our <a href="https://developers.cloudflare.com/workers/about">official documentation</a>.</p>
-	<p>Have you written a worker that you'd like to share? <a href="mailto:community@cloudflare.com">Send it to us</a> and you might get featured on our blog or added to our <a href="https://developers.cloudflare.com/workers/recipes/a-b-testing">Cloudflare worker recipe collection</a> with a credit.</p>
+	<p>You can find additional worker recipes and examples in our <a href="https://developers.cloudflare.com/workers/about" target="_blank" rel="noopener noreferrer">official documentation</a>.</p>
+	<p>Have you written a worker that you'd like to share? <a href="https://blog.cloudflare.com/#">Send it to us</a> and you might get featured on our blog or added to our <a href="https://developers.cloudflare.com/workers/recipes/a-b-testing" target="_blank" rel="noopener noreferrer">Cloudflare worker recipe collection</a> with a credit.</p>
 </div>

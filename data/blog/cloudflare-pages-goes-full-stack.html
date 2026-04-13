@@ -3,7 +3,7 @@
 <div class="post-content lh-copy gray1">
 	<p></p>
 	<p>When we announced Cloudflare Pages as <a href="https://blog.cloudflare.com/cloudflare-pages-ga/#:~:text=In%20December%2C%20we%20announced%20the,powerful%20tool%20in%20developers'%20hands.">generally available</a> in April, we promised you it was just the beginning. The journey of our platform started with support for static sites with small bits of dynamic functionality like setting <a href="https://blog.cloudflare.com/custom-headers-for-pages">redirects and custom headers</a>. But we wanted to give even more power to you and your teams to begin building the unimaginable. We envisioned a future where your entire application — frontend, APIs, storage, data — could all be deployed with a single commit, easily testable in staging and requiring a single merge to deploy to production. So in the spirit of “Full Stack” Week, we’re bringing you the tools to do just that.</p>
-	<p>Welcome to the future, everyone. We’re thrilled to announce that Pages is now a Full Stack platform with help from <a href="https://workers.cloudflare.com/?_bt=521144407143&amp;_bk=&amp;_bm=b&amp;_bn=g&amp;_bg=123914288844&amp;_placement=&amp;_target=&amp;_loc=9067609&amp;_dv=c&amp;awsearchcpc=1&amp;gclid=Cj0KCQiAsqOMBhDFARIsAFBTN3eyQsvbPzy3y3BOeCnYZMDVjSd8QkaoPbOfFiFWxSK8zEm9lSCNAJsaAnfkEALw_wcB&amp;gclsrc=aw.ds">Cloudflare Workers</a>!</p>
+	<p>Welcome to the future, everyone. We’re thrilled to announce that Pages is now a Full Stack platform with help from <a href="https://workers.cloudflare.com/?_bt=521144407143&amp;_bk=&amp;_bm=b&amp;_bn=g&amp;_bg=123914288844&amp;_placement=&amp;_target=&amp;_loc=9067609&amp;_dv=c&amp;awsearchcpc=1&amp;gclid=Cj0KCQiAsqOMBhDFARIsAFBTN3eyQsvbPzy3y3BOeCnYZMDVjSd8QkaoPbOfFiFWxSK8zEm9lSCNAJsaAnfkEALw_wcB&amp;gclsrc=aw.ds" target="_blank" rel="noopener noreferrer">Cloudflare Workers</a>!</p>
 	<div class="flex anchor relative">
 		<h2 id="but-how">But how?</h2>
 		<a href="https://blog.cloudflare.com/#but-how" aria-hidden="true" class="relative sm:absolute sm:-start-5">
@@ -78,7 +78,7 @@ export const onRequestPost = async ({ request }) =&gt; {
 			<p><b>Durable Object namespace:</b> Our strongly consistent coordination primitive that makes connecting WebSockets, handling state and building entire applications a breeze. As with KV, you can set your namespaces within the Workers dashboard and choose from that list within the Pages interface.</p>
 		</li>
 		<li>
-			<p><b>R2 (coming soon!):</b> Our <a href="https://www.cloudflare.com/developer-platform/solutions/s3-compatible-object-storage">S3-compatible Object Storage solution</a> that’s slashing <a href="https://www.cloudflare.com/learning/cloud/what-are-data-egress-fees">egress fees</a> to zero.</p>
+			<p><b>R2 (coming soon!):</b> Our <a href="https://www.cloudflare.com/developer-platform/solutions/s3-compatible-object-storage" target="_blank" rel="noopener noreferrer">S3-compatible Object Storage solution</a> that’s slashing <a href="https://www.cloudflare.com/learning/cloud/what-are-data-egress-fees" target="_blank" rel="noopener noreferrer">egress fees</a> to zero.</p>
 		</li>
 		<li>
 			<p><b>Environment Variable: </b> An injected value that can be accessed by your functions and is stored as plain-text. You can set your environment variables directly within the Pages interface for both your production and preview environments at build-time and run-time.</p>
@@ -137,8 +137,8 @@ npx wrangler pages dev -- npx react-scripts start</code></pre>
 			</svg>
 		</a>
 	</div>
-	<p><a href="https://github.com/sveltejs/kit">SvelteKit</a> is a web framework for building Svelte applications. It’s built and maintained by the Svelte team, which makes it the Svelte user’s go-to solution for all their application needs. Out of the box, SvelteKit allows users to build projects with complex API backends.</p>
-	<p>As of today, SvelteKit projects can attach and configure the <a href="https://github.com/sveltejs/kit"><code>@sveltejs/adapter-cloudflare</code></a> package. After doing this, the project can be added to Pages and is ready for its first deployment! With Pages, your SvelteKit project(s) can deploy with API endpoints and full server-side rendering support. Better yet, the entire project — including the API endpoints — can enjoy the benefits of preview deployments, too! This, even on its own, is a huge victory for advanced projects that were previously on the Workers adapter. Check out this <a href="https://github.com/lukeed/pages-fullstack">example to see the SvelteKit adapter</a> for Pages in action!</p>
+	<p><a href="https://github.com/sveltejs/kit" target="_blank" rel="noopener noreferrer">SvelteKit</a> is a web framework for building Svelte applications. It’s built and maintained by the Svelte team, which makes it the Svelte user’s go-to solution for all their application needs. Out of the box, SvelteKit allows users to build projects with complex API backends.</p>
+	<p>As of today, SvelteKit projects can attach and configure the <a href="https://github.com/sveltejs/kit" target="_blank" rel="noopener noreferrer"><code>@sveltejs/adapter-cloudflare</code></a> package. After doing this, the project can be added to Pages and is ready for its first deployment! With Pages, your SvelteKit project(s) can deploy with API endpoints and full server-side rendering support. Better yet, the entire project — including the API endpoints — can enjoy the benefits of preview deployments, too! This, even on its own, is a huge victory for advanced projects that were previously on the Workers adapter. Check out this <a href="https://github.com/lukeed/pages-fullstack" target="_blank" rel="noopener noreferrer">example to see the SvelteKit adapter</a> for Pages in action!</p>
 	<div class="flex anchor relative">
 		<h3 id="use-server-side-rendering">Use server-side rendering</h3>
 		<a href="https://blog.cloudflare.com/#use-server-side-rendering" aria-hidden="true" class="relative sm:absolute sm:-start-5">
@@ -166,7 +166,7 @@ npx wrangler pages dev -- npx react-scripts start</code></pre>
 			</svg>
 		</a>
 	</div>
-	<p>We’re thrilled to be releasing our open beta today for everyone to try at no additional cost to your Cloudflare plan. While we will still have <a href="https://developers.cloudflare.com/pages/platform/functions#pricing-and-limits">limits</a> in place, we are using this open beta period to learn more about how you and your teams are deploying functions with your Pages projects. For the time being, we encourage you to lean into your creativity and build out that site you’ve been thinking about for a long time — without the worry of getting billed.</p>
+	<p>We’re thrilled to be releasing our open beta today for everyone to try at no additional cost to your Cloudflare plan. While we will still have <a href="https://developers.cloudflare.com/pages/platform/functions#pricing-and-limits" target="_blank" rel="noopener noreferrer">limits</a> in place, we are using this open beta period to learn more about how you and your teams are deploying functions with your Pages projects. For the time being, we encourage you to lean into your creativity and build out that site you’ve been thinking about for a long time — without the worry of getting billed.</p>
 	<p>In just a few short months, when we announce General Availability, you can expect our billing to reflect that of the Workers Bundled plan — after all, these are just Workers under the hood!</p>
 	<div class="flex anchor relative">
 		<h2 id="coming-up">Coming up…</h2>
@@ -177,7 +177,7 @@ npx wrangler pages dev -- npx react-scripts start</code></pre>
 		</a>
 	</div>
 	<p>As we’re only announcing this release as an open beta, we have some really exciting things planned for the coming weeks and months. We want to improve on the quick and easy Pages developer experience that you're already familiar with by adding support for integrated logging and more analytics for your deployed functions.</p>
-	<p>Beyond that, we'll be expanding our first-class support for the next generation of frontend frameworks. As we've shown with SvelteKit, Pages' ability to seamlessly deploy both static and dynamic code together enables unbeatable end-user performance &amp; developer ease, and we're excited to unlock that for more people. Fans of similar frameworks &amp; technologies, such as NextJS, NuxtJS, React Server Components, Remix, Hydrogen, etc., stay tuned to this blog for more announcements. Or better yet, come <a href="https://www.cloudflare.com/careers">join us</a> and help make it happen!</p>
+	<p>Beyond that, we'll be expanding our first-class support for the next generation of frontend frameworks. As we've shown with SvelteKit, Pages' ability to seamlessly deploy both static and dynamic code together enables unbeatable end-user performance &amp; developer ease, and we're excited to unlock that for more people. Fans of similar frameworks &amp; technologies, such as NextJS, NuxtJS, React Server Components, Remix, Hydrogen, etc., stay tuned to this blog for more announcements. Or better yet, come <a href="https://www.cloudflare.com/careers" target="_blank" rel="noopener noreferrer">join us</a> and help make it happen!</p>
 	<p>Additionally, as we’ve done with SvelteKit, we’re looking to include more first-class integration with existing frameworks, so Pages can become the primary home for your preferred frameworks of choice. Work is underway on making NextJS, NuxtJS, React Server Components, Shopify Hydrogen and more integrate seamlessly as you develop your full stack apps.</p>
 	<p>Finally, we’re working to speed up those build times, so you can focus on pushing changes and iterating quickly — without the wait!</p>
 	<div class="flex anchor relative">
@@ -188,8 +188,8 @@ npx wrangler pages dev -- npx react-scripts start</code></pre>
 			</svg>
 		</a>
 	</div>
-	<p>To get started head over to our <a href="https://developers.cloudflare.com/pages/platform/functions">Pages docs</a> and check out our <a href="https://blog.cloudflare.com/building-full-stack-with-pages">demo blog</a> to learn more about how to deploy serverless functions to Pages using Cloudflare Workers.</p>
-	<p>Of course, what we love most is seeing what you build! Pop into <a href="https://discord.com/invite/cloudflaredev">our Discord</a> and show us how you’re using Pages to build your full stack apps.</p>
+	<p>To get started head over to our <a href="https://developers.cloudflare.com/pages/platform/functions" target="_blank" rel="noopener noreferrer">Pages docs</a> and check out our <a href="https://blog.cloudflare.com/building-full-stack-with-pages">demo blog</a> to learn more about how to deploy serverless functions to Pages using Cloudflare Workers.</p>
+	<p>Of course, what we love most is seeing what you build! Pop into <a href="https://discord.com/invite/cloudflaredev" target="_blank" rel="noopener noreferrer">our Discord</a> and show us how you’re using Pages to build your full stack apps.</p>
 	<figure class="kg-card kg-image-card ">
 
 		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5TghCmJGOGyp3tdbWO6xmV/9cb9456f183c182837b9b0fd19d6b692/image3-21.png" alt="To get started head over to our Pages docs and check out our demo blog to learn more about how to deploy serverless functions to Pages using Cloudflare Workers." class="kg-image" width="1800" height="578" loading="lazy">

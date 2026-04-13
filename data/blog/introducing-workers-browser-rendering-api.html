@@ -36,7 +36,7 @@
 			</svg>
 		</a>
 	</div>
-	<p>One of the most common browser automation frameworks is <a href="https://github.com/puppeteer/puppeteer">Puppeteer</a>. It’s common to run Puppeteer in a containerization tool like Docker or in a serverless environment. Taking automated screenshots should be as easy as writing some code, hitting deploy and having it run when a particular event is triggered or on a regular schedule.</p>
+	<p>One of the most common browser automation frameworks is <a href="https://github.com/puppeteer/puppeteer" target="_blank" rel="noopener noreferrer">Puppeteer</a>. It’s common to run Puppeteer in a containerization tool like Docker or in a serverless environment. Taking automated screenshots should be as easy as writing some code, hitting deploy and having it run when a particular event is triggered or on a regular schedule.</p>
 	<p>It should be, but it's not.</p>
 	<p>Even on a serverless solution like AWS Lambda, running Puppeteer means packaging it, making sure dependencies are covered, uploading packages to S3 and deploying using Layers. Whether using Docker or something like Lambda, it’s clear that this is not easy to set up.</p>
 	<p>One of the pillars of Cloudflare’s development platform is to provide our developers with tools that are incredibly simple, yet powerful to build on. Rendering API is our out-of-the-box solution for running Puppeteer in Workers.</p>
@@ -86,7 +86,7 @@ export default {
 			</svg>
 		</a>
 	</div>
-	<p><a href="https://www.cloudflare.com/learning/access-management/what-is-browser-isolation">Remote browser isolation technology</a> is an integral part of our <a href="https://www.cloudflare.com/products/zero-trust">Zero Trust</a> product offering. Remote browser isolation lets users interact with a web browser that instead of running on the client’s device, runs in a remote environment. The Rendering API repurposes this under the hood!</p>
+	<p><a href="https://www.cloudflare.com/learning/access-management/what-is-browser-isolation" target="_blank" rel="noopener noreferrer">Remote browser isolation technology</a> is an integral part of our <a href="https://www.cloudflare.com/products/zero-trust" target="_blank" rel="noopener noreferrer">Zero Trust</a> product offering. Remote browser isolation lets users interact with a web browser that instead of running on the client’s device, runs in a remote environment. The Rendering API repurposes this under the hood!</p>
 	<figure class="kg-card kg-image-card ">
 
 		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2vVRXYPzKbQekTnLyMRyW6/4df732b07e3b883341b40bc81826d1b2/image2-32.png" alt="Rendering API architecture diagram" class="kg-image" width="1402" height="390" loading="lazy">
@@ -94,7 +94,7 @@ export default {
 	</figure>
 	<p>We’ve wrapped the Puppeteer library so that it can be run directly from your own Worker. You can think of your Worker as the client. Each of Cloudflare’s data centers has a pool of warm browsers ready to go and when a Worker requests a browser, the browser is instantly returned and is connected to via a WebSocket. Once the WebSocket connection is established, our internal browser API Worker handles all communication to the browser session via the Chrome Devtools Protocol.</p>
 	<p>To ensure the security of your Worker, individual remote browsers are run as disposable instances – one instance per request, and never shared. They are secured using gVisor to protect against kernel level exploits. On top of that, the browser is running sandboxed processes with the lowest privilege level using a Linux seccomp profile.</p>
-	<p>The Rendering API should be used when you’re building and testing your applications. &nbsp;To prevent abuse, <a href="https://www.cloudflare.com/products/bot-management">Cloudflare Bot Management</a> has baked in signals to indicate that a request is coming from a Worker running Puppeteer. As a Cloudflare Bot Management customer, this will automatically be added to your blocklist, with the option to explicitly opt in and allow it.</p>
+	<p>The Rendering API should be used when you’re building and testing your applications. &nbsp;To prevent abuse, <a href="https://www.cloudflare.com/products/bot-management" target="_blank" rel="noopener noreferrer">Cloudflare Bot Management</a> has baked in signals to indicate that a request is coming from a Worker running Puppeteer. As a Cloudflare Bot Management customer, this will automatically be added to your blocklist, with the option to explicitly opt in and allow it.</p>
 	<div class="flex anchor relative">
 		<h3 id="how-can-you-get-started">How can you get started?</h3>
 		<a href="https://blog.cloudflare.com/#how-can-you-get-started" aria-hidden="true" class="relative sm:absolute sm:-start-5">
@@ -103,5 +103,5 @@ export default {
 			</svg>
 		</a>
 	</div>
-	<p>We’re introducing the Workers Browser Rendering API in closed beta. If you’re interested, please tell us a bit about your use case and join the <a href="https://www.cloudflare.com/lp/workers-browser-rendering-api">waitlist</a>. We would love to hear what else you want to build using the Workers Browser Rendering API, let us know in the Workers channel on the <a href="https://discord.gg/cloudflaredev">Cloudflare Developers Discord</a>!</p>
+	<p>We’re introducing the Workers Browser Rendering API in closed beta. If you’re interested, please tell us a bit about your use case and join the <a href="https://www.cloudflare.com/lp/workers-browser-rendering-api" target="_blank" rel="noopener noreferrer">waitlist</a>. We would love to hear what else you want to build using the Workers Browser Rendering API, let us know in the Workers channel on the <a href="https://discord.gg/cloudflaredev" target="_blank" rel="noopener noreferrer">Cloudflare Developers Discord</a>!</p>
 </div>

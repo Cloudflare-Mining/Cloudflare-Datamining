@@ -3,7 +3,7 @@
 	<p></p>
 	<p>Creators and broadcasters expect to be able to go live from anywhere, on any device. Viewers expect “live” to mean “real-time”. The protocols that power most live streams are unable to meet these growing expectations.</p>
 	<p>In talking to developers building live streaming into their apps and websites, we’ve heard near universal frustration with the limitations of existing live streaming technologies. Developers in 2022 rightly expect to be able to deliver low latency to viewers, broadcast reliably, and use web standards rather than old protocols that date back to the era of Flash.</p>
-	<p>Today, we’re excited to announce in open beta that Cloudflare Stream now supports live video streaming over WebRTC, with sub-second latency, to unlimited concurrent viewers. This is a new feature of Cloudflare Stream, and you can start using it right now in the Cloudflare Dashboard — read the <a href="https://developers.cloudflare.com/stream/webrtc-beta">docs</a> to get started.</p>
+	<p>Today, we’re excited to announce in open beta that Cloudflare Stream now supports live video streaming over WebRTC, with sub-second latency, to unlimited concurrent viewers. This is a new feature of Cloudflare Stream, and you can start using it right now in the Cloudflare Dashboard — read the <a href="https://developers.cloudflare.com/stream/webrtc-beta" target="_blank" rel="noopener noreferrer">docs</a> to get started.</p>
 	<p>WebRTC with Cloudflare Stream leapfrogs existing tools and protocols, exclusively uses open standards with zero dependency on a specific SDK, and empowers any developer to build both low latency live streaming and playback into their website or app.</p>
 	<div class="flex anchor relative">
 		<h3 id="the-status-quo-of-streaming-live-video-is-broken">The status quo of streaming live video is broken</h3>
@@ -17,7 +17,7 @@
 	<p><b>Viewers</b> increasingly expect “live” to mean “real-time”. People want to place bets on sports broadcasts in real-time, interact and ask questions to presenters in real-time, and never feel behind their friends at a live event.</p>
 	<p>In practice, the HLS and DASH standards used to deliver video have 10+ seconds of latency. LL-HLS and LL-DASH bring this down to closer to 5 seconds, but only as a hack on top of the existing protocol that delivers segments of video in individual HTTP requests. Sending mini video clips over TCP simply cannot deliver video in real-time. HLS and DASH are here to stay, but aren’t the future of real-time live video.</p>
 	<p><b>Creators and broadcasters</b> expect to be able to go live from anywhere, on any device.</p>
-	<p>In practice, people creating live content are stuck with a limited set of native apps, and can’t go live using RTMP from a web browser. Because it’s built on top of TCP, the RTMP broadcasting protocol struggles under even the slightest network disruption, making it a poor or often unworkable option when broadcasting from mobile networks. RTMP, originally built for use with Adobe Flash Player, was <a href="https://rtmp.veriskope.com/pdf/rtmp_specification_1.0.pdf">last updated in 2012</a>, and while Stream supports the <a href="https://blog.cloudflare.com/magic-hdmi-cable">newer SRT protocol</a>, creators need an option that works natively on the web and can more easily be integrated in native apps.</p>
+	<p>In practice, people creating live content are stuck with a limited set of native apps, and can’t go live using RTMP from a web browser. Because it’s built on top of TCP, the RTMP broadcasting protocol struggles under even the slightest network disruption, making it a poor or often unworkable option when broadcasting from mobile networks. RTMP, originally built for use with Adobe Flash Player, was <a href="https://rtmp.veriskope.com/pdf/rtmp_specification_1.0.pdf" target="_blank" rel="noopener noreferrer">last updated in 2012</a>, and while Stream supports the <a href="https://blog.cloudflare.com/magic-hdmi-cable">newer SRT protocol</a>, creators need an option that works natively on the web and can more easily be integrated in native apps.</p>
 	<p><b>Developers</b> expect to be able to build using standard APIs that are built into web browsers and native apps.</p>
 	<p>In practice, RTMP can’t be used from a web browser, and creating a native app that supports RTMP broadcasting typically requires diving into lower-level programming languages like C and Rust. Only those with expertise in both live video protocols and these languages have full access to the tools needed to create novel live streaming client applications.</p>
 	<div class="flex anchor relative">
@@ -40,7 +40,7 @@
 	</ul>
 	<p>As a result, developers have had to implement this on their own, and client applications on both sides are often tightly coupled to provider-specific implementations. Developers we talk to often express frustration, having sunk months of engineering work into building around a specific vendor’s SDK, unable to switch without a significant rewrite of their client apps.</p>
 	<p>At Cloudflare, our mission is broader — we’re helping to build a better Internet. Today we’re launching not just a new feature of Cloudflare Stream, but a vote of confidence in new WebRTC standards for both ingestion and egress. We think you should be able to start using Stream without feeling locked into an SDK or implementation specific to Cloudflare, and we’re committed to using open standards whenever possible.</p>
-	<p>For ingestion, <a href="https://www.ietf.org/archive/id/draft-ietf-wish-whip-03.html">WHIP</a> is an IETF draft on the Standards Track, with many applications already successfully using it in production. For delivery (egress), <a href="https://www.ietf.org/id/draft-murillo-whep-00.html">WHEP</a> is an IETF draft with broad agreement. Combined, they provide a standardized end-to-end way to broadcast one-to-many over WebRTC at scale.</p>
+	<p>For ingestion, <a href="https://www.ietf.org/archive/id/draft-ietf-wish-whip-03.html" target="_blank" rel="noopener noreferrer">WHIP</a> is an IETF draft on the Standards Track, with many applications already successfully using it in production. For delivery (egress), <a href="https://www.ietf.org/id/draft-murillo-whep-00.html" target="_blank" rel="noopener noreferrer">WHEP</a> is an IETF draft with broad agreement. Combined, they provide a standardized end-to-end way to broadcast one-to-many over WebRTC at scale.</p>
 	<p><b>Cloudflare Stream is the first cloud service to let you both broadcast using WHIP and playback using WHEP — no vendor-specific SDK needed.</b> Here’s how it works:</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
@@ -69,7 +69,7 @@
 			</svg>
 		</a>
 	</div>
-	<p>While hobbyist and professional creators might take the time to download and learn how to use an application like <a href="https://obsproject.com">OBS Studio</a>, most Internet users won’t get past this friction of new tools, and copying RTMP keys from one tool to another. To empower more people to go live, they need to be able to broadcast from within your website or app, just by enabling access to the camera and microphone.</p>
+	<p>While hobbyist and professional creators might take the time to download and learn how to use an application like <a href="https://obsproject.com" target="_blank" rel="noopener noreferrer">OBS Studio</a>, most Internet users won’t get past this friction of new tools, and copying RTMP keys from one tool to another. To empower more people to go live, they need to be able to broadcast from within your website or app, just by enabling access to the camera and microphone.</p>
 	<p>Cloudflare Stream with WebRTC lets you build live streaming into your app as a front-end developer, without any special knowledge of video protocols. And our approach, using the WHIP and WHEP open standards, means you can do this with zero dependencies, with 100% your code that you control.</p>
 	<div class="flex anchor relative">
 		<h3 id="go-live-from-a-web-browser-with-just-a-few-lines-of-code">Go live from a web browser with just a few lines of code</h3>
@@ -79,8 +79,8 @@
 			</svg>
 		</a>
 	</div>
-	<p>You can go live right now, from your web browser, by creating a live input in the <a href="https://dash.cloudflare.com/?to=%2F%3Aaccount%2Fstream%2Finputs">Cloudflare Stream dashboard</a>, and pasting a URL into the example linked below.</p>
-	<p>Read the <a href="https://developers.cloudflare.com/stream/webrtc-beta">docs</a> or <a href="https://workers.new/stream/webrtc">run the example code below in your browser using Stackblitz</a>.</p>
+	<p>You can go live right now, from your web browser, by creating a live input in the <a href="https://dash.cloudflare.com/?to=%2F%3Aaccount%2Fstream%2Finputs" target="_blank" rel="noopener noreferrer">Cloudflare Stream dashboard</a>, and pasting a URL into the example linked below.</p>
+	<p>Read the <a href="https://developers.cloudflare.com/stream/webrtc-beta" target="_blank" rel="noopener noreferrer">docs</a> or <a href="https://workers.new/stream/webrtc" target="_blank" rel="noopener noreferrer">run the example code below in your browser using Stackblitz</a>.</p>
 	<pre class="language-html"><code class="language-html">&lt;video id="input-video" autoplay autoplay muted&gt;&lt;/video&gt;</code></pre>
 
 	<pre class="language-javascript"><code class="language-javascript">import WHIPClient from "./WHIPClient.js";
@@ -88,7 +88,7 @@
 const url = "&lt;WEBRTC_URL_FROM_YOUR_LIVE_INPUT&gt;";
 const videoElement = document.getElementById("input-video");
 const client = new WHIPClient(url, videoElement);</code></pre>
-	<p>This example uses an example WHIP client, written in just 100 lines of Javascript, using APIs that are native to web browsers, with zero dependencies. But because WHIP is an open standard, you can use any WHIP client you choose. Support for WHIP is growing across the video streaming industry — it has recently been added to <a href="https://gstreamer.freedesktop.org">Gstreamer</a>, and one of the authors of the WHIP specification has written a <a href="https://github.com/medooze/whip-js">Javascript client implementation</a>. We intend to support the full <a href="https://www.ietf.org/archive/id/draft-ietf-wish-whip-03.html">WHIP specification</a>, including supporting <a href="https://www.rfc-editor.org/rfc/rfc8838">Trickle ICE</a> for fast NAT traversal.</p>
+	<p>This example uses an example WHIP client, written in just 100 lines of Javascript, using APIs that are native to web browsers, with zero dependencies. But because WHIP is an open standard, you can use any WHIP client you choose. Support for WHIP is growing across the video streaming industry — it has recently been added to <a href="https://gstreamer.freedesktop.org" target="_blank" rel="noopener noreferrer">Gstreamer</a>, and one of the authors of the WHIP specification has written a <a href="https://github.com/medooze/whip-js" target="_blank" rel="noopener noreferrer">Javascript client implementation</a>. We intend to support the full <a href="https://www.ietf.org/archive/id/draft-ietf-wish-whip-03.html" target="_blank" rel="noopener noreferrer">WHIP specification</a>, including supporting <a href="https://www.rfc-editor.org/rfc/rfc8838" target="_blank" rel="noopener noreferrer">Trickle ICE</a> for fast NAT traversal.</p>
 	<div class="flex anchor relative">
 		<h3 id="play-a-live-stream-in-a-browser-with-sub-second-latency-no-sdk-required">Play a live stream in a browser, with sub-second latency, no SDK required</h3>
 		<a href="https://blog.cloudflare.com/#play-a-live-stream-in-a-browser-with-sub-second-latency-no-sdk-required" aria-hidden="true" class="relative sm:absolute sm:-start-5">
@@ -98,14 +98,14 @@ const client = new WHIPClient(url, videoElement);</code></pre>
 		</a>
 	</div>
 	<p>Once you’ve started streaming, copy the playback URL from the live input you just created, and paste it into the example linked below.</p>
-	<p>Read the <a href="https://developers.cloudflare.com/stream/webrtc-beta">docs</a> or <a href="https://workers.new/stream/webrtc">run the example code below in your browser using Stackbltiz</a>.</p>
+	<p>Read the <a href="https://developers.cloudflare.com/stream/webrtc-beta" target="_blank" rel="noopener noreferrer">docs</a> or <a href="https://workers.new/stream/webrtc" target="_blank" rel="noopener noreferrer">run the example code below in your browser using Stackbltiz</a>.</p>
 	<pre class="language-html"><code class="language-html">&lt;video id="playback" controls autoplay muted&gt;&lt;/video&gt;</code></pre>
 
 	<pre class="language-javascript"><code class="language-javascript">import WHEPClient from './WHEPClient.js';
 const url = "&lt;WEBRTC_PLAYBACK_URL_FROM_YOUR_LIVE_INPUT&gt;";
 const videoElement = document.getElementById("playback");
 const client = new WHEPClient(url, videoElement);</code></pre>
-	<p>Just like the WHIP example before, this one uses an example WHEP client we’ve written that has zero dependencies. WHEP is an earlier IETF draft than WHIP, <a href="https://www.ietf.org/id/draft-murillo-whep-00.html">published in July of this year</a>, but adoption is moving quickly. People in the community have already written open-source client implementations in both <a href="https://github.com/medooze/whip-js/blob/main/whep.js">Javascript</a>, <a href="https://github.com/meetecho/simple-whep-client">C</a>, with more to come.</p>
+	<p>Just like the WHIP example before, this one uses an example WHEP client we’ve written that has zero dependencies. WHEP is an earlier IETF draft than WHIP, <a href="https://www.ietf.org/id/draft-murillo-whep-00.html" target="_blank" rel="noopener noreferrer">published in July of this year</a>, but adoption is moving quickly. People in the community have already written open-source client implementations in both <a href="https://github.com/medooze/whip-js/blob/main/whep.js" target="_blank" rel="noopener noreferrer">Javascript</a>, <a href="https://github.com/meetecho/simple-whep-client" target="_blank" rel="noopener noreferrer">C</a>, with more to come.</p>
 	<div class="flex anchor relative">
 		<h3 id="start-experimenting-with-real-time-live-video-in-open-beta-today">Start experimenting with real-time live video, in open beta today</h3>
 		<a href="https://blog.cloudflare.com/#start-experimenting-with-real-time-live-video-in-open-beta-today" aria-hidden="true" class="relative sm:absolute sm:-start-5">
@@ -114,6 +114,6 @@ const client = new WHEPClient(url, videoElement);</code></pre>
 			</svg>
 		</a>
 	</div>
-	<p>WebRTC streaming is in open beta today, ready for you to use as an integrated feature of <a href="https://www.cloudflare.com/products/cloudflare-stream">Cloudflare Stream</a>. Once Generally Available, WebRTC streaming will be priced like the rest of Cloudflare Stream, based on minutes of video delivered and minutes stored.</p>
-	<p><a href="https://developers.cloudflare.com/stream/webrtc-beta">Read the docs</a> to get started.</p>
+	<p>WebRTC streaming is in open beta today, ready for you to use as an integrated feature of <a href="https://www.cloudflare.com/products/cloudflare-stream" target="_blank" rel="noopener noreferrer">Cloudflare Stream</a>. Once Generally Available, WebRTC streaming will be priced like the rest of Cloudflare Stream, based on minutes of video delivered and minutes stored.</p>
+	<p><a href="https://developers.cloudflare.com/stream/webrtc-beta" target="_blank" rel="noopener noreferrer">Read the docs</a> to get started.</p>
 </div>

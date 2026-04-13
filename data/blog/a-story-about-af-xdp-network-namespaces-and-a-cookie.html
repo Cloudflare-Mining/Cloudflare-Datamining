@@ -1,10 +1,10 @@
 <div class="mb2 gray5">10 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5OFIoNwSfuVrVI5RbqVOwu/97f354d394959acd5e013d11e5489cfd/a-story-about-af-xdp-network-namespaces-and-a-cookie.png" alt="">
 <div class="post-content lh-copy gray1">
 	<p></p>
-	<p>A crash in a development version of <a href="https://blog.cloudflare.com/announcing-flowtrackd">flowtrackd</a> (the daemon that powers our <a href="https://developers.cloudflare.com/ddos-protection/managed-rulesets/tcp-protection">Advanced TCP Protection</a>) highlighted the fact that <a href="https://www.mankier.com/3/libxdp">libxdp</a> (and specifically the <a href="https://www.kernel.org/doc/html/latest/networking/af_xdp.html">AF_XDP</a> part) was not Linux <a href="https://man7.org/linux/man-pages/man7/network_namespaces.7.html">network namespace</a> aware.</p>
+	<p>A crash in a development version of <a href="https://blog.cloudflare.com/announcing-flowtrackd">flowtrackd</a> (the daemon that powers our <a href="https://developers.cloudflare.com/ddos-protection/managed-rulesets/tcp-protection" target="_blank" rel="noopener noreferrer">Advanced TCP Protection</a>) highlighted the fact that <a href="https://www.mankier.com/3/libxdp" target="_blank" rel="noopener noreferrer">libxdp</a> (and specifically the <a href="https://www.kernel.org/doc/html/latest/networking/af_xdp.html" target="_blank" rel="noopener noreferrer">AF_XDP</a> part) was not Linux <a href="https://man7.org/linux/man-pages/man7/network_namespaces.7.html" target="_blank" rel="noopener noreferrer">network namespace</a> aware.</p>
 	<p>This blogpost describes the debugging journey to find the bug, as well as a fix.</p>
-	<p><a href="https://blog.cloudflare.com/announcing-flowtrackd">flowtrackd</a> is a volumetric denial of service defense mechanism that sits in the <a href="https://www.cloudflare.com/magic-transit">Magic Transit</a> customer’s data path and protects the network from complex randomized TCP floods. It does so by challenging TCP connection establishments and by verifying that TCP packets make sense in an ongoing flow.</p>
-	<p>It uses the Linux kernel <a href="https://www.kernel.org/doc/html/latest/networking/af_xdp.html">AF_XDP</a> feature to transfer packets from a network device in kernel space to a memory buffer in user space without going through the network stack. We use most of the helper functions of the <a href="https://github.com/libbpf/libbpf/tree/v0.8.0">C libbpf</a> with the <a href="https://github.com/libbpf/libbpf-sys">Rust bindings</a> to interact with AF_XDP.</p>
+	<p><a href="https://blog.cloudflare.com/announcing-flowtrackd">flowtrackd</a> is a volumetric denial of service defense mechanism that sits in the <a href="https://www.cloudflare.com/magic-transit" target="_blank" rel="noopener noreferrer">Magic Transit</a> customer’s data path and protects the network from complex randomized TCP floods. It does so by challenging TCP connection establishments and by verifying that TCP packets make sense in an ongoing flow.</p>
+	<p>It uses the Linux kernel <a href="https://www.kernel.org/doc/html/latest/networking/af_xdp.html" target="_blank" rel="noopener noreferrer">AF_XDP</a> feature to transfer packets from a network device in kernel space to a memory buffer in user space without going through the network stack. We use most of the helper functions of the <a href="https://github.com/libbpf/libbpf/tree/v0.8.0" target="_blank" rel="noopener noreferrer">C libbpf</a> with the <a href="https://github.com/libbpf/libbpf-sys" target="_blank" rel="noopener noreferrer">Rust bindings</a> to interact with AF_XDP.</p>
 	<p>In our setup, both the ingress and the egress network interfaces are in different network namespaces. When a packet is determined to be valid (after a challenge or under some thresholds), it is forwarded to the second network interface.</p>
 	<p>For the rest of this post the network setup will be the following:</p>
 	<figure class="kg-card kg-image-card ">
@@ -107,7 +107,7 @@
 	</table>
 	<p>When the UMEM is created, a FILL and a COMPLETION queue are associated with it.</p>
 	<p>An RX and a TX queue are associated with the AF_XDP socket (abbreviated <b>Xsk</b>) at its creation. This particular socket is bound to a network device queue id. The userspace can then <code>poll()</code> on the socket to know when new descriptors are ready to be consumed from the RX queue and to let the kernel deal with the descriptors that were set on the TX queue by the application.</p>
-	<p>The last plumbing operation to be done to use AF_XDP is to load a BPF program attached with XDP on the network device we want to interact with and insert the Xsk file descriptor into a BPF map (of type XSKMAP). Doing so will enable the BPF program to redirect incoming packets (with the <code>bpf_redirect_map()</code> <a href="https://man7.org/linux/man-pages/man7/bpf-helpers.7.html">function</a>) to a specific socket that we created in userspace:</p>
+	<p>The last plumbing operation to be done to use AF_XDP is to load a BPF program attached with XDP on the network device we want to interact with and insert the Xsk file descriptor into a BPF map (of type XSKMAP). Doing so will enable the BPF program to redirect incoming packets (with the <code>bpf_redirect_map()</code> <a href="https://man7.org/linux/man-pages/man7/bpf-helpers.7.html" target="_blank" rel="noopener noreferrer">function</a>) to a specific socket that we created in userspace:</p>
 	<figure class="kg-card kg-image-card ">
 
 		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3K8DUwo8pARFEwtKmpRjp0/9b6e624d5d159b87e8bb3875f338312a/image4-9.png" alt="AF_XDP BPF redirect map action" class="kg-image" width="1999" height="782" loading="lazy">
@@ -132,7 +132,7 @@
 	<p>To increase flowtrackd performance and to be able to scale with the growth of the Magic Transit product we decided to rewrite the I/O subsystem.</p>
 	<p>There will be a public blogpost about the technical aspects of the rewrite.</p>
 	<p>Prior to the rewrite, each customer had a dedicated flowtrackd instance (Unix process) that attached itself to dedicated network devices. A dedicated UMEM was created per network device (see schema on the left side below). The packets were copied from one UMEM to the other.</p>
-	<p>In this blogpost, we will only focus on the new usage of the <a href="https://www.kernel.org/doc/html/latest/networking/af_xdp.html#xdp-shared-umem-bind-flag">AF_XDP shared UMEM feature</a> which enables us to handle all customer accounts with a single flowtrackd instance per server and with a single shared UMEM (see schema on the right side below).</p>
+	<p>In this blogpost, we will only focus on the new usage of the <a href="https://www.kernel.org/doc/html/latest/networking/af_xdp.html#xdp-shared-umem-bind-flag" target="_blank" rel="noopener noreferrer">AF_XDP shared UMEM feature</a> which enables us to handle all customer accounts with a single flowtrackd instance per server and with a single shared UMEM (see schema on the right side below).</p>
 	<figure class="kg-card kg-image-card ">
 
 		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5fzyIwrz5hCvFe5nvvPgf8/ed34ea06fa7d9f2ccc54e1df103ecde3/unnamed-4.png" alt="previous flowtrackd version next to the I/O rewrite one" class="kg-image" width="1600" height="1537" loading="lazy">
@@ -188,8 +188,8 @@ note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace</c
 		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2xd6YfIKTsCJOEq9OHGYfW/2b06a4be3d9ab9d64842d99b68b998c6/image3-6.png" alt="Rust Xsk creation code snippet" class="kg-image" width="1354" height="1168" loading="lazy">
 
 	</figure>
-	<p>The call to the libbpf function <a href="https://github.com/libbpf/libbpf/blob/v0.8.0/src/xsk.c#L994"><code>xsk_socket__create_shared()</code></a> didn't return 0.</p>
-	<p>The <a href="https://www.mankier.com/3/libxdp">libxdp manual page</a> doesn't help us here…</p>
+	<p>The call to the libbpf function <a href="https://github.com/libbpf/libbpf/blob/v0.8.0/src/xsk.c#L994" target="_blank" rel="noopener noreferrer"><code>xsk_socket__create_shared()</code></a> didn't return 0.</p>
+	<p>The <a href="https://www.mankier.com/3/libxdp" target="_blank" rel="noopener noreferrer">libxdp manual page</a> doesn't help us here…</p>
 	<p>Which argument is "invalid"? And why is this error not showing up when we run flowtrackd locally but only in the CI?</p>
 	<p>We can try to reproduce locally with a similar network setup script used in the CI:</p>
 	<pre class="language-bash"><code class="language-bash">#!/bin/bash
@@ -281,12 +281,12 @@ ip netns exec $TEST_NAMESPACE ip addr add 169.254.0.2/30 dev $INNER_VETH</code><
 [...]</code></pre>
 	<p>Ok, the second <code>bind() syscall</code> returns the EINVAL value.</p>
 	<p>The <code>sa_family</code> is the right one. Is something wrong with <code>sa_data="\x01\x00\x92\x10\x00\x00\x00\x00\x00\x00\x09\x00\x00\x00"</code> ?</p>
-	<p>Let's look at the <a href="https://elixir.bootlin.com/linux/v5.15/source/net/socket.c#L1702">bind syscall kernel code</a>:</p>
+	<p>Let's look at the <a href="https://elixir.bootlin.com/linux/v5.15/source/net/socket.c#L1702" target="_blank" rel="noopener noreferrer">bind syscall kernel code</a>:</p>
 	<pre class="language-bash"><code class="language-bash">err = sock-&gt;ops-&gt;bind(sock, (struct sockaddr *) &amp;address, addrlen);</code></pre>
-	<p>The bind function of the protocol specific socket operations gets called. Searching for "AF_XDP" in the code, we quickly found the bind function call related to the <a href="https://elixir.bootlin.com/linux/v5.15/source/net/xdp/xsk.c#L857">AF_XDP socket address family</a>.</p>
+	<p>The bind function of the protocol specific socket operations gets called. Searching for "AF_XDP" in the code, we quickly found the bind function call related to the <a href="https://elixir.bootlin.com/linux/v5.15/source/net/xdp/xsk.c#L857" target="_blank" rel="noopener noreferrer">AF_XDP socket address family</a>.</p>
 	<p>So, where in the syscall could this value be returned?</p>
 	<p>First, let's examine the syscall parameters to see if the libbpf <code>xsk_socket__create_shared()</code> function sets weird values for us.</p>
-	<p>We use the <a href="https://linux.die.net/man/1/pahole">pahole</a> tool to print the structure definitions:</p>
+	<p>We use the <a href="https://linux.die.net/man/1/pahole" target="_blank" rel="noopener noreferrer">pahole</a> tool to print the structure definitions:</p>
 	<pre class="language-bash"><code class="language-bash">$ pahole sockaddr
 struct sockaddr {
         sa_family_t                sa_family;            /*     0     2 */
@@ -329,7 +329,7 @@ struct sockaddr_xdp {
 			</tr>
 			<tr>
 				<td>
-					<p><a href="http://web.archive.org/web/20220814030152/https://elixir.bootlin.com/linux/v5.15/source/include/uapi/linux/if_xdp.h#L15">sxdp_flags</a></p>
+					<p><a href="http://web.archive.org/web/20220814030152/https://elixir.bootlin.com/linux/v5.15/source/include/uapi/linux/if_xdp.h#L15" target="_blank" rel="noopener noreferrer">sxdp_flags</a></p>
 				</td>
 				<td>
 					<p>\x08\x00</p>
@@ -419,7 +419,7 @@ struct sockaddr_xdp {
 			</tr>
 			<tr>
 				<td>
-					<p><a href="http://web.archive.org/web/20220814030152/https://elixir.bootlin.com/linux/v5.15/source/include/uapi/linux/if_xdp.h#L15">sxdp_flags</a></p>
+					<p><a href="http://web.archive.org/web/20220814030152/https://elixir.bootlin.com/linux/v5.15/source/include/uapi/linux/if_xdp.h#L15" target="_blank" rel="noopener noreferrer">sxdp_flags</a></p>
 				</td>
 				<td>
 					<p>\x01\x00</p>
@@ -509,7 +509,7 @@ struct sockaddr_xdp {
 			<p>Generate a root filesystem for the kernel to boot.</p>
 		</li>
 		<li>
-			<p>Boot in <a href="https://www.qemu.org">QEMU</a>.</p>
+			<p>Boot in <a href="https://www.qemu.org" target="_blank" rel="noopener noreferrer">QEMU</a>.</p>
 		</li>
 		<li>
 			<p>Attach gdb to it and set a breakpoint on the syscall.</p>
@@ -518,7 +518,7 @@ struct sockaddr_xdp {
 			<p>Check where the EINVAL value is returned.</p>
 		</li>
 	</ul>
-	<p>We could have used <a href="https://buildroot.org">buildroot</a> with a minimal reproduction code, but it wasn't funny enough. Instead, we install a minimal Ubuntu and load our custom kernel. This has the benefit of having a package manager if we need to install other debugging tools.</p>
+	<p>We could have used <a href="https://buildroot.org" target="_blank" rel="noopener noreferrer">buildroot</a> with a minimal reproduction code, but it wasn't funny enough. Instead, we install a minimal Ubuntu and load our custom kernel. This has the benefit of having a package manager if we need to install other debugging tools.</p>
 	<p>Let's install a minimal Ubuntu server 21.10 (with ext4, no LVM and an ssh server selected in the installation wizard):</p>
 	<pre class="language-bash"><code class="language-bash">qemu-img create -f qcow2 ubuntu-21.10-live-server-amd64.qcow2 20G
  
@@ -531,7 +531,7 @@ qemu-system-x86_64 \
   -cpu host \
   -net nic,model=virtio \
   -net user,hostfwd=tcp::10022-:22</code></pre>
-	<p>And then build a kernel (<a href="https://www.josehu.com/memo/2021/01/02/linux-kernel-build-debug.html">link</a> and <a href="https://www.starlab.io/blog/using-gdb-to-debug-the-linux-kernel">link</a>) with the following changes in the menuconfig:</p>
+	<p>And then build a kernel (<a href="https://www.josehu.com/memo/2021/01/02/linux-kernel-build-debug.html" target="_blank" rel="noopener noreferrer">link</a> and <a href="https://www.starlab.io/blog/using-gdb-to-debug-the-linux-kernel" target="_blank" rel="noopener noreferrer">link</a>) with the following changes in the menuconfig:</p>
 	<ul>
 		<li>
 			<p>Cryptographic API → Certificates for signature checking → Provide system-wide ring of trusted keys</p>
@@ -594,22 +594,22 @@ make -j$(nproc) bzImage</code></pre>
 		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5gubA71gEppejdOkeME2rL/61ea127cb68fdfd4a6603445bb28630c/image6-7.png" alt="gdb with breakpoint hit at xsk_bind" class="kg-image" width="1076" height="820" loading="lazy">
 
 	</figure>
-	<p>We continue to hit the second <code>xsk_bind</code> breakpoint (the one that returns EINVAL) and after a few <code>next</code> and <code>step</code> commands, we find <a href="https://elixir.bootlin.com/linux/v5.15/source/net/xdp/xsk.c#L938">which function</a> returned the <a href="https://elixir.bootlin.com/linux/v5.15/source/net/xdp/xsk_buff_pool.c#L201">EINVAL value</a>:</p>
+	<p>We continue to hit the second <code>xsk_bind</code> breakpoint (the one that returns EINVAL) and after a few <code>next</code> and <code>step</code> commands, we find <a href="https://elixir.bootlin.com/linux/v5.15/source/net/xdp/xsk.c#L938" target="_blank" rel="noopener noreferrer">which function</a> returned the <a href="https://elixir.bootlin.com/linux/v5.15/source/net/xdp/xsk_buff_pool.c#L201" target="_blank" rel="noopener noreferrer">EINVAL value</a>:</p>
 	<figure class="kg-card kg-image-card ">
 
 		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1GRpxt6bPf3f42tL0rTmf7/a99d880dc0579353c49bb21703adfc79/image8-2.png" alt="gdb stepping next to the EINVAL value" class="kg-image" width="1276" height="906" loading="lazy">
 
 	</figure>
-	<p>In our Rust code, we allocate a new FILL and a COMPLETION queue for each queue id of the device prior to calling <code>xsk_socket__create_shared()</code>. Why are those set to NULL? Looking at the code, <code>pool-&gt;fq</code> comes from a struct field named <code>fq_tmp</code> that is accessed from the sock pointer <code>(print ((struct xdp_sock *)sock-&gt;sk)-&gt;fq_tmp)</code>. The field is set in the first call to xsk_bind() but isn't in the second call. We note that at the end of the xsk_bind() function, <a href="https://elixir.bootlin.com/linux/v5.15/source/net/xdp/xsk.c#L981">fq_tmp and cq_tmp are set to NULL</a> as per this comment: "FQ and CQ are now owned by the buffer pool and cleaned up with it.".</p>
+	<p>In our Rust code, we allocate a new FILL and a COMPLETION queue for each queue id of the device prior to calling <code>xsk_socket__create_shared()</code>. Why are those set to NULL? Looking at the code, <code>pool-&gt;fq</code> comes from a struct field named <code>fq_tmp</code> that is accessed from the sock pointer <code>(print ((struct xdp_sock *)sock-&gt;sk)-&gt;fq_tmp)</code>. The field is set in the first call to xsk_bind() but isn't in the second call. We note that at the end of the xsk_bind() function, <a href="https://elixir.bootlin.com/linux/v5.15/source/net/xdp/xsk.c#L981" target="_blank" rel="noopener noreferrer">fq_tmp and cq_tmp are set to NULL</a> as per this comment: "FQ and CQ are now owned by the buffer pool and cleaned up with it.".</p>
 	<p>Something is definitely going wrong in libbpf because the FILL queue and COMPLETION queue pointers are missing.</p>
 	<p>Back to the libbpf <code>xsk_socket__create_shared()</code> function to check where the queues are set for the socket, and we quickly notice two functions that interact with the FILL and COMPLETION queues:</p>
-	<p>The first function called is <a href="https://github.com/libbpf/libbpf/blob/v0.8.0/src/xsk.c#L879"><code>xsk_get_ctx()</code></a>:</p>
+	<p>The first function called is <a href="https://github.com/libbpf/libbpf/blob/v0.8.0/src/xsk.c#L879" target="_blank" rel="noopener noreferrer"><code>xsk_get_ctx()</code></a>:</p>
 	<figure class="kg-card kg-image-card ">
 
 		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3ZJQXz150mnzj47exyaKUB/c0cc03d40a70873a21725abc4401886f/image18-2.png" alt="xsk_get_ctx() function code" class="kg-image" width="993" height="508" loading="lazy">
 
 	</figure>
-	<p>The second is <a href="https://github.com/libbpf/libbpf/blob/v0.8.0/src/xsk.c#L923"><code>xsk_create_ctx()</code></a>:</p>
+	<p>The second is <a href="https://github.com/libbpf/libbpf/blob/v0.8.0/src/xsk.c#L923" target="_blank" rel="noopener noreferrer"><code>xsk_create_ctx()</code></a>:</p>
 	<figure class="kg-card kg-image-card ">
 
 		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/37eShbafNDmVglIOd8RUPt/c1ade49287889ec4a9b31e350b47c889/image16-3.png" alt="xsk_create_ctx() function code" class="kg-image" width="795" height="1164" loading="lazy">
@@ -624,7 +624,7 @@ make -j$(nproc) bzImage</code></pre>
 			</svg>
 		</a>
 	</div>
-	<p>The issue is in the comparison performed in the <a href="https://github.com/libbpf/libbpf/blob/v0.8.0/src/xsk.c#L888"><code>xsk_get_ctx()</code></a> to find the right socket context structure associated with the (ifindex, queue_id) pair in the linked-list. The UMEM being shared across Xsks, the same <code>umem-&gt;ctx_list</code> linked list head is used to find the sockets that use this UMEM. Remember that in our setup, flowtrackd attaches itself to two network devices that live in different network namespaces. Using the interface index and the queue_id to find the right context (FILL and COMPLETION queues) associated to a socket is not sufficient because another network interface with the same interface index can exist at the same time in another network namespace.</p>
+	<p>The issue is in the comparison performed in the <a href="https://github.com/libbpf/libbpf/blob/v0.8.0/src/xsk.c#L888" target="_blank" rel="noopener noreferrer"><code>xsk_get_ctx()</code></a> to find the right socket context structure associated with the (ifindex, queue_id) pair in the linked-list. The UMEM being shared across Xsks, the same <code>umem-&gt;ctx_list</code> linked list head is used to find the sockets that use this UMEM. Remember that in our setup, flowtrackd attaches itself to two network devices that live in different network namespaces. Using the interface index and the queue_id to find the right context (FILL and COMPLETION queues) associated to a socket is not sufficient because another network interface with the same interface index can exist at the same time in another network namespace.</p>
 	<div class="flex anchor relative">
 		<h2 id="what-can-we-do-about-it">What can we do about it?</h2>
 		<a href="https://blog.cloudflare.com/#what-can-we-do-about-it" aria-hidden="true" class="relative sm:absolute sm:-start-5">
@@ -634,7 +634,7 @@ make -j$(nproc) bzImage</code></pre>
 		</a>
 	</div>
 	<p>We need to tell apart two network devices "system-wide". That means across the network namespace boundaries.</p>
-	<p>Could we fetch and store the network namespace inode number of the current process (<code>stat -c%i -L /proc/self/ns/net</code>) at the context creation and then use it in the comparison? According to <a href="https://man7.org/linux/man-pages/man7/inode.7.html">man 7 inode</a>: "Each file in a filesystem has a unique inode number. Inode numbers are guaranteed to be unique only within a filesystem". However, inode numbers can be reused:</p>
+	<p>Could we fetch and store the network namespace inode number of the current process (<code>stat -c%i -L /proc/self/ns/net</code>) at the context creation and then use it in the comparison? According to <a href="https://man7.org/linux/man-pages/man7/inode.7.html" target="_blank" rel="noopener noreferrer">man 7 inode</a>: "Each file in a filesystem has a unique inode number. Inode numbers are guaranteed to be unique only within a filesystem". However, inode numbers can be reused:</p>
 	<pre class="language-bash"><code class="language-bash"># ip netns add a
 # stat -c%i /run/netns/a
 4026532570
@@ -654,14 +654,14 @@ make -j$(nproc) bzImage</code></pre>
 			<p>Take our chances and look for Linux patches that contain the words “netns” and “cookie”</p>
 		</li>
 	</ul>
-	<p>Well, well, well: <a href="https://lore.kernel.org/bpf/c47d2346982693a9cf9da0e12690453aded4c788.1585323121.git.daniel@iogearbox.net">[PATCH bpf-next 3/7] bpf: add netns cookie and enable it for bpf cgroup hooks</a></p>
+	<p>Well, well, well: <a href="https://lore.kernel.org/bpf/c47d2346982693a9cf9da0e12690453aded4c788.1585323121.git.daniel@iogearbox.net" target="_blank" rel="noopener noreferrer">[PATCH bpf-next 3/7] bpf: add netns cookie and enable it for bpf cgroup hooks</a></p>
 	<p>This is almost what we need! This patch adds a kernel function named <code>bpf_get_netns_cookie()</code> that would get us the network namespace cookie linked to a socket:</p>
 	<figure class="kg-card kg-image-card ">
 
 		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4yeyvSXN19FPw3gJvKGPdh/31c07d8740a52ce7de8073565d181de0/image15-3.png" alt="bpf_get_netns_cookie manual page" class="kg-image" width="987" height="413" loading="lazy">
 
 	</figure>
-	<p>A <a href="https://patchwork.kernel.org/project/linux-parisc/patch/20210210120425.53438-2-lmb@cloudflare.com">second patch</a> enables us to get this cookie from userspace:</p>
+	<p>A <a href="https://patchwork.kernel.org/project/linux-parisc/patch/20210210120425.53438-2-lmb@cloudflare.com" target="_blank" rel="noopener noreferrer">second patch</a> enables us to get this cookie from userspace:</p>
 	<figure class="kg-card kg-image-card ">
 
 		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2fkodeI6Um1we4uArDAl9w/864571b824f22e85d43265d964efc138/image17-2.png" alt="add SO_NETNS_COOKIE socket option patch" class="kg-image" width="1108" height="527" loading="lazy">
@@ -745,6 +745,6 @@ make -j$(nproc) bzImage</code></pre>
 		</a>
 	</div>
 	<p>We retrieve the <code>netns_cookie</code> associated with the socket at its creation and add it in the comparison operation.</p>
-	<p>The <a href="https://github.com/xdp-project/xdp-tools/pull/205">fix</a> has been submitted and merged in libxdp which is where the AF_XDP parts of libbpf now <a href="https://github.com/libbpf/libbpf/wiki/Libbpf:-the-road-to-v1.0#xskch-is-moving-into-libxdp">live</a>.</p>
-	<p>We’ve also <a href="https://github.com/libbpf/libbpf/releases/tag/v0.8.1">backported the fix</a> in libbpf and updated the <a href="https://github.com/libbpf/libbpf-sys/releases/tag/0.8.2%2Bv0.8.1">libbpf-sys Rust crate</a> accordingly.</p>
+	<p>The <a href="https://github.com/xdp-project/xdp-tools/pull/205" target="_blank" rel="noopener noreferrer">fix</a> has been submitted and merged in libxdp which is where the AF_XDP parts of libbpf now <a href="https://github.com/libbpf/libbpf/wiki/Libbpf:-the-road-to-v1.0#xskch-is-moving-into-libxdp" target="_blank" rel="noopener noreferrer">live</a>.</p>
+	<p>We’ve also <a href="https://github.com/libbpf/libbpf/releases/tag/v0.8.1" target="_blank" rel="noopener noreferrer">backported the fix</a> in libbpf and updated the <a href="https://github.com/libbpf/libbpf-sys/releases/tag/0.8.2%2Bv0.8.1" target="_blank" rel="noopener noreferrer">libbpf-sys Rust crate</a> accordingly.</p>
 </div>

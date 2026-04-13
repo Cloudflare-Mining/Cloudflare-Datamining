@@ -62,7 +62,7 @@
 		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/pGJS2FVLjiyF6otz5yHiB/7b23bcaa6e45a1f68674dbe65d7f8bd8/image1-4.png" alt="" class="kg-image" width="1140" height="487" loading="lazy">
 
 	</figure>
-	<p>Cloudflare has over 200 edge locations around the world, making it one of the largest Anycast networks. We make sure that your Load Balancer config information is available at all our Cloudflare edge locations. For example, you may have your website hosted on a third-party cloud provider like Heroku. You would set up a Load Balancer with pools and associated origin <code>example.com</code>. To reach <code>example.com</code> hosted on Heroku, you would set the heroku url <code>example.herokuapp.com</code> as the origin Host header “Host:example.herokuapp.com”. When a request hits a Cloudflare edge, we would first check the load balancing config and the health monitor to check the origin health status. Then, we would set the Host header override and Server Name Indication (SNI).For more about, visit our <a href="https://www.cloudflare.com/learning/ssl/what-is-sni">learning center</a>.</p>
+	<p>Cloudflare has over 200 edge locations around the world, making it one of the largest Anycast networks. We make sure that your Load Balancer config information is available at all our Cloudflare edge locations. For example, you may have your website hosted on a third-party cloud provider like Heroku. You would set up a Load Balancer with pools and associated origin <code>example.com</code>. To reach <code>example.com</code> hosted on Heroku, you would set the heroku url <code>example.herokuapp.com</code> as the origin Host header “Host:example.herokuapp.com”. When a request hits a Cloudflare edge, we would first check the load balancing config and the health monitor to check the origin health status. Then, we would set the Host header override and Server Name Indication (SNI).For more about, visit our <a href="https://www.cloudflare.com/learning/ssl/what-is-sni" target="_blank" rel="noopener noreferrer">learning center</a>.</p>
 	<p>There are some restrictions that limit the domain set as the Host header override on an origin:</p>
 	<ol>
 		<li>
@@ -82,5 +82,5 @@
 		</li>
 	</ol>
 	<p>These requirements make sure you are directing requests to domains that belong to you. With future development, we may relax some restrictions.</p>
-	<p>If you want to understand more about Load Balancing on Cloudflare, visit our <a href="https://www.cloudflare.com/load-balancing">product</a> page or look at our help articles, such as <a href="https://support.cloudflare.com/hc/en-us/articles/205893698-Configure-Cloudflare-and-Heroku-over-HTTPS">Configure Cloudflare &amp; Heroku</a>.</p>
+	<p>If you want to understand more about Load Balancing on Cloudflare, visit our <a href="https://www.cloudflare.com/load-balancing" target="_blank" rel="noopener noreferrer">product</a> page or look at our help articles, such as <a href="https://support.cloudflare.com/hc/en-us/articles/205893698-Configure-Cloudflare-and-Heroku-over-HTTPS" target="_blank" rel="noopener noreferrer">Configure Cloudflare &amp; Heroku</a>.</p>
 </div>

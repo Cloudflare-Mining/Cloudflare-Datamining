@@ -1,8 +1,8 @@
 <div class="mb2 gray5">8 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2SZ1fpLEMXLfjidRspvQ3p/35aaef41cf7231cf349019d54143c00e/Feature_Image.png" alt="">
 <div class="post-content lh-copy gray1">
-	<p>Today we’re excited to announce <b>AutoRAG </b>in open beta, a fully managed <a href="https://www.cloudflare.com/learning/ai/retrieval-augmented-generation-rag">Retrieval-Augmented Generation (RAG)</a> pipeline powered by Cloudflare, designed to simplify how developers integrate context-aware AI into their applications. RAG is a method that improves the accuracy of AI responses by retrieving information from your own data, and providing it to the <a href="https://www.cloudflare.com/learning/ai/what-is-large-language-model">large language model (LLM)</a> to generate more grounded responses.</p>
-	<p><a href="https://www.cloudflare.com/learning/ai/how-to-build-rag-pipelines">Building a RAG pipeline</a> is a patchwork of moving parts. You have to stitch together multiple tools and services — your data storage, a <a href="https://www.cloudflare.com/learning/ai/what-is-vector-database">vector database</a>, an embedding model, LLMs, and custom indexing, retrieval, and generation logic — all just to get started. Maintaining it is even harder. As your data changes, you have to manually reindex and regenerate <a href="https://www.cloudflare.com/learning/ai/what-are-embeddings">embeddings</a> to keep the system relevant and performant. What should be a simple “ask a question, get a smart answer” experience becomes a brittle pipeline of glue code, fragile integrations, and constant upkeep.</p>
-	<p>AutoRAG removes that complexity. With just a few clicks, it delivers a fully-managed RAG pipeline end-to-end: from ingesting your data and automatically chunking and embedding it, to storing vectors in Cloudflare’s <a href="https://developers.cloudflare.com/vectorize"><u>Vectorize</u></a> database, performing semantic retrieval, and generating high-quality responses using <a href="https://developers.cloudflare.com/workers-ai"><u>Workers AI</u></a>. AutoRAG continuously monitors your data sources and indexes in the background so your AI stays fresh without manual effort. It abstracts away the mess, letting you focus on building smarter, faster applications on Cloudflare’s developer platform. Get started today in the <a href="https://dash.cloudflare.com/?to=%2F%3Aaccount%2Fai%2Fautorag"><u>Cloudflare Dashboard</u></a>!</p>
+	<p>Today we’re excited to announce <b>AutoRAG </b>in open beta, a fully managed <a href="https://www.cloudflare.com/learning/ai/retrieval-augmented-generation-rag" target="_blank" rel="noopener noreferrer">Retrieval-Augmented Generation (RAG)</a> pipeline powered by Cloudflare, designed to simplify how developers integrate context-aware AI into their applications. RAG is a method that improves the accuracy of AI responses by retrieving information from your own data, and providing it to the <a href="https://www.cloudflare.com/learning/ai/what-is-large-language-model" target="_blank" rel="noopener noreferrer">large language model (LLM)</a> to generate more grounded responses.</p>
+	<p><a href="https://www.cloudflare.com/learning/ai/how-to-build-rag-pipelines" target="_blank" rel="noopener noreferrer">Building a RAG pipeline</a> is a patchwork of moving parts. You have to stitch together multiple tools and services — your data storage, a <a href="https://www.cloudflare.com/learning/ai/what-is-vector-database" target="_blank" rel="noopener noreferrer">vector database</a>, an embedding model, LLMs, and custom indexing, retrieval, and generation logic — all just to get started. Maintaining it is even harder. As your data changes, you have to manually reindex and regenerate <a href="https://www.cloudflare.com/learning/ai/what-are-embeddings" target="_blank" rel="noopener noreferrer">embeddings</a> to keep the system relevant and performant. What should be a simple “ask a question, get a smart answer” experience becomes a brittle pipeline of glue code, fragile integrations, and constant upkeep.</p>
+	<p>AutoRAG removes that complexity. With just a few clicks, it delivers a fully-managed RAG pipeline end-to-end: from ingesting your data and automatically chunking and embedding it, to storing vectors in Cloudflare’s <a href="https://developers.cloudflare.com/vectorize" target="_blank" rel="noopener noreferrer"><u>Vectorize</u></a> database, performing semantic retrieval, and generating high-quality responses using <a href="https://developers.cloudflare.com/workers-ai" target="_blank" rel="noopener noreferrer"><u>Workers AI</u></a>. AutoRAG continuously monitors your data sources and indexes in the background so your AI stays fresh without manual effort. It abstracts away the mess, letting you focus on building smarter, faster applications on Cloudflare’s developer platform. Get started today in the <a href="https://dash.cloudflare.com/?to=%2F%3Aaccount%2Fai%2Fautorag" target="_blank" rel="noopener noreferrer"><u>Cloudflare Dashboard</u></a>!</p>
 	<div style="position: relative; padding-top: 56.25%;">
 		<iframe src="https://customer-eq7kiuol0tk9chox.cloudflarestream.com/d73058307da73973d22c48292a75b66c/iframe?poster=https%3A%2F%2Fimages.ctfassets.net%2Fzkvhlag99gkb%2F7yxxbj4PqDnqg4r7cjQxOg%2Fe24cda6a858d76144fa1d0ede6b43fb8%2FAutoRAG_Thumbnail.png" loading="lazy" style="border: none; position: absolute; top: 0; left: 0; height: 100%; width: 100%;" allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;" allowfullscreen="true"></iframe>
 	</div>
@@ -28,7 +28,7 @@
 			</svg>
 		</a>
 	</div>
-	<p>AutoRAG sets up a RAG pipeline for you, using the building blocks of Cloudflare’s developer platform. Instead of you having to write code to create a RAG system using <a href="https://developers.cloudflare.com/workers-ai"><u>Workers AI</u></a>, <a href="https://developers.cloudflare.com/vectorize"><u>Vectorize</u></a>, and <a href="https://developers.cloudflare.com/ai-gateway"><u>AI Gateway</u></a>, you just create an AutoRAG instance and point it at a data source, like an <a href="https://developers.cloudflare.com/r2"><u>R2 </u></a>storage bucket.</p>
+	<p>AutoRAG sets up a RAG pipeline for you, using the building blocks of Cloudflare’s developer platform. Instead of you having to write code to create a RAG system using <a href="https://developers.cloudflare.com/workers-ai" target="_blank" rel="noopener noreferrer"><u>Workers AI</u></a>, <a href="https://developers.cloudflare.com/vectorize" target="_blank" rel="noopener noreferrer"><u>Vectorize</u></a>, and <a href="https://developers.cloudflare.com/ai-gateway" target="_blank" rel="noopener noreferrer"><u>AI Gateway</u></a>, you just create an AutoRAG instance and point it at a data source, like an <a href="https://developers.cloudflare.com/r2" target="_blank" rel="noopener noreferrer"><u>R2 </u></a>storage bucket.</p>
 	<p>Behind the scenes, AutoRAG is powered by two processes: <b>indexing</b> and <b>querying</b>.</p>
 	<ul>
 		<li>
@@ -55,7 +55,7 @@
 			</p>
 		</li>
 		<li>
-			<p><b>Markdown conversion:</b> AutoRAG uses <a href="https://developers.cloudflare.com/workers-ai/markdown-conversion"><u>Workers AI’s Markdown Conversion</u></a> to convert all files into structured <a href="https://blog.cloudflare.com/markdown-for-agents">Markdown</a>. This ensures consistency across diverse file types. For images, <a href="https://www.cloudflare.com/developer-platform/products/workers-ai">Workers AI</a> is used to perform object detection followed by vision-to-language transformation to convert images into Markdown text.</p>
+			<p><b>Markdown conversion:</b> AutoRAG uses <a href="https://developers.cloudflare.com/workers-ai/markdown-conversion" target="_blank" rel="noopener noreferrer"><u>Workers AI’s Markdown Conversion</u></a> to convert all files into structured <a href="https://blog.cloudflare.com/markdown-for-agents">Markdown</a>. This ensures consistency across diverse file types. For images, <a href="https://www.cloudflare.com/developer-platform/products/workers-ai" target="_blank" rel="noopener noreferrer">Workers AI</a> is used to perform object detection followed by vision-to-language transformation to convert images into Markdown text.</p>
 		</li>
 		<li>
 			<p><b>Chunking:</b> The extracted text is chunked into smaller pieces to improve retrieval granularity.</p>
@@ -111,7 +111,7 @@
 			</svg>
 		</a>
 	</div>
-	<p>Most of the time, getting started with AutoRAG is as simple as pointing it to an existing R2 bucket — just drop in your content, and you're ready to go. But what if your content isn’t already in a bucket? What if it’s still on a webpage or needs to first be rendered dynamically by a frontend UI? You're in luck, because with the <a href="https://developers.cloudflare.com/browser-rendering"><b><u>Browser Rendering API</u></b></a>, you can crawl your own websites to gather information that powers your RAG. The Browser Rendering REST API is now<b> generally available</b>, offering endpoints for common browser actions including extracting HTML content, capturing screenshots, and generating PDFs. Additionally, a crawl endpoint is coming soon, making it even easier to ingest websites.</p>
+	<p>Most of the time, getting started with AutoRAG is as simple as pointing it to an existing R2 bucket — just drop in your content, and you're ready to go. But what if your content isn’t already in a bucket? What if it’s still on a webpage or needs to first be rendered dynamically by a frontend UI? You're in luck, because with the <a href="https://developers.cloudflare.com/browser-rendering" target="_blank" rel="noopener noreferrer"><b><u>Browser Rendering API</u></b></a>, you can crawl your own websites to gather information that powers your RAG. The Browser Rendering REST API is now<b> generally available</b>, offering endpoints for common browser actions including extracting HTML content, capturing screenshots, and generating PDFs. Additionally, a crawl endpoint is coming soon, making it even easier to ingest websites.</p>
 	<p>In this walkthrough, we’ll show you how to take your website and feed it into AutoRAG for Q&amp;A. We’ll use a Cloudflare Worker to render web pages in a headless browser, upload the content to R2, and hook that into AutoRAG for semantic search and generation.</p>
 	<div class="flex anchor relative">
 		<h4 id="step-1-create-a-worker-to-fetch-webpages-and-upload-into-r2">Step 1. Create a Worker to fetch webpages and upload into R2</h4>
@@ -227,7 +227,7 @@ return new Response('Please send a POST request with a target URL', { status: 40
 	<p>Now that you have created your R2 bucket and filled it with your content that you’d like to query from, you are ready to create an AutoRAG instance:</p>
 	<ol>
 		<li>
-			<p>In your <a href="https://dash.cloudflare.com/?to=%2F%3Aaccount%2Fai%2Fautorag"><u>Cloudflare dashboard</u></a>, navigate to AI &gt; AutoRAG</p>
+			<p>In your <a href="https://dash.cloudflare.com/?to=%2F%3Aaccount%2Fai%2Fautorag" target="_blank" rel="noopener noreferrer"><u>Cloudflare dashboard</u></a>, navigate to AI &gt; AutoRAG</p>
 		</li>
 		<li>
 			<p>Select Create AutoRAG and complete the setup process:</p>
@@ -288,19 +288,19 @@ return new Response('Please send a POST request with a target URL', { status: 40
 			</svg>
 		</a>
 	</div>
-	<p>During the open beta, AutoRAG is <b>free to enable</b>. AutoRAG is built entirely on top of <a href="https://www.cloudflare.com/developer-platform/products">Cloudflare’s Developer Platform</a>, using the same tools you’d reach for if you were building a RAG pipeline yourself. When you create an AutoRAG instance, it provisions and runs on top of Cloudflare resources within your own account. These resources are <b>billed as part of your Cloudflare usage</b>, and include:</p>
+	<p>During the open beta, AutoRAG is <b>free to enable</b>. AutoRAG is built entirely on top of <a href="https://www.cloudflare.com/developer-platform/products" target="_blank" rel="noopener noreferrer">Cloudflare’s Developer Platform</a>, using the same tools you’d reach for if you were building a RAG pipeline yourself. When you create an AutoRAG instance, it provisions and runs on top of Cloudflare resources within your own account. These resources are <b>billed as part of your Cloudflare usage</b>, and include:</p>
 	<ul>
 		<li>
-			<p><a href="https://developers.cloudflare.com/r2"><b><u>R2</u></b></a><b>: </b>stores your source data.</p>
+			<p><a href="https://developers.cloudflare.com/r2" target="_blank" rel="noopener noreferrer"><b><u>R2</u></b></a><b>: </b>stores your source data.</p>
 		</li>
 		<li>
-			<p><a href="https://developers.cloudflare.com/vectorize"><b><u>Vectorize</u></b></a><b>:</b> stores vector embeddings and powers semantic retrieval.</p>
+			<p><a href="https://developers.cloudflare.com/vectorize" target="_blank" rel="noopener noreferrer"><b><u>Vectorize</u></b></a><b>:</b> stores vector embeddings and powers semantic retrieval.</p>
 		</li>
 		<li>
-			<p><a href="https://developers.cloudflare.com/workers-ai"><b><u>Workers AI</u></b></a><b>: </b>converts images to Markdown, generates embeddings, rewrites queries, and generates responses.</p>
+			<p><a href="https://developers.cloudflare.com/workers-ai" target="_blank" rel="noopener noreferrer"><b><u>Workers AI</u></b></a><b>: </b>converts images to Markdown, generates embeddings, rewrites queries, and generates responses.</p>
 		</li>
 		<li>
-			<p><a href="https://developers.cloudflare.com/ai-gateway"><b><u>AI Gateway</u></b></a><b>:</b> tracks and controls your model’s usage.</p>
+			<p><a href="https://developers.cloudflare.com/ai-gateway" target="_blank" rel="noopener noreferrer"><b><u>AI Gateway</u></b></a><b>:</b> tracks and controls your model’s usage.</p>
 		</li>
 	</ul>
 	<p>To help manage resources during the beta, each account is limited to <b>10 AutoRAG</b> instances, with up to <b>100,000 files</b> <b>per AutoRAG</b>.&nbsp;</p>
@@ -315,7 +315,7 @@ return new Response('Please send a POST request with a target URL', { status: 40
 	<p>We’re just getting started with AutoRAG, and we have more planned throughout 2025 to make it more powerful and flexible. Here are a few things we’re actively working on:</p>
 	<ul>
 		<li>
-			<p><b>More data source integrations:</b> We’re expanding beyond R2, with support for new input types like direct website URL parsing (powered by browser rendering) and structured data sources like Cloudflare <a href="https://developers.cloudflare.com/d1"><u>D1</u></a>.</p>
+			<p><b>More data source integrations:</b> We’re expanding beyond R2, with support for new input types like direct website URL parsing (powered by browser rendering) and structured data sources like Cloudflare <a href="https://developers.cloudflare.com/d1" target="_blank" rel="noopener noreferrer"><u>D1</u></a>.</p>
 		</li>
 		<li>
 			<p><b>Smarter, higher-quality responses: </b>We’re exploring built-in reranking, recursive chunking, and other processing techniques to improve the quality and relevance of generated answers.</p>
@@ -330,6 +330,6 @@ return new Response('Please send a POST request with a target URL', { status: 40
 			</svg>
 		</a>
 	</div>
-	<p>Get started with AutoRAG today by visiting the <a href="https://dash.cloudflare.com/?to=%2F%3Aaccount%2Fai%2Fautorag"><u>Cloudflare Dashboard</u></a>, navigate to AI &gt; AutoRAG, and select Create AutoRAG. Whether you’re building an AI-powered search experience, an internal knowledge assistant, or just experimenting with LLMs, AutoRAG gives you a fast and flexible way to get started with RAG on Cloudflare’s global network. For more details, refer to the <a href="https://developers.cloudflare.com/autorag"><u>Developer Docs</u></a>. Also, try out the <a href="https://developers.cloudflare.com/browser-rendering"><u>Browser Rendering API</u></a> that is now generally available for your browser action needs.</p>
-	<p>We’re excited to see what you build, and we’re here to help. Have questions or feedback? Join the conversation on the <a href="https://discord.com/channels/595317990191398933/1356674457355423895"><u>Cloudflare Developers Discord</u></a>.</p>
+	<p>Get started with AutoRAG today by visiting the <a href="https://dash.cloudflare.com/?to=%2F%3Aaccount%2Fai%2Fautorag" target="_blank" rel="noopener noreferrer"><u>Cloudflare Dashboard</u></a>, navigate to AI &gt; AutoRAG, and select Create AutoRAG. Whether you’re building an AI-powered search experience, an internal knowledge assistant, or just experimenting with LLMs, AutoRAG gives you a fast and flexible way to get started with RAG on Cloudflare’s global network. For more details, refer to the <a href="https://developers.cloudflare.com/autorag" target="_blank" rel="noopener noreferrer"><u>Developer Docs</u></a>. Also, try out the <a href="https://developers.cloudflare.com/browser-rendering" target="_blank" rel="noopener noreferrer"><u>Browser Rendering API</u></a> that is now generally available for your browser action needs.</p>
+	<p>We’re excited to see what you build, and we’re here to help. Have questions or feedback? Join the conversation on the <a href="https://discord.com/channels/595317990191398933/1356674457355423895" target="_blank" rel="noopener noreferrer"><u>Cloudflare Developers Discord</u></a>.</p>
 </div>

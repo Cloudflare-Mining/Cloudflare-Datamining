@@ -7,7 +7,7 @@
 		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/71imYZhzjgJ0CBHCdm80a8/27c197efb749c2d4814c210e68e73de4/image1-55.png" alt="Killnet and AnonymousSudan DDoS attack Australian university websites, and threaten more attacks — here’s what to do about it" class="kg-image" width="1200" height="676" loading="lazy">
 
 	</figure>
-	<p>Over the past 24 hours, Cloudflare has observed HTTP DDoS attacks targeting university websites in Australia. Universities were the first of several groups publicly targeted by the pro-Russian hacker group Killnet and their affiliate <a href="https://www.cloudflare.com/learning/ddos/glossary/anonymous-sudan">AnonymousSudan</a>, as revealed in a recent <a href="https://twitter.com/FalconFeedsio/status/1639574349131677697?s=20">Telegram</a> post. The threat actors called for additional attacks against 8 universities, 10 airports, and 8 hospital websites in Australia beginning on Tuesday, March 28.</p>
+	<p>Over the past 24 hours, Cloudflare has observed HTTP DDoS attacks targeting university websites in Australia. Universities were the first of several groups publicly targeted by the pro-Russian hacker group Killnet and their affiliate <a href="https://www.cloudflare.com/learning/ddos/glossary/anonymous-sudan" target="_blank" rel="noopener noreferrer">AnonymousSudan</a>, as revealed in a recent <a href="https://twitter.com/FalconFeedsio/status/1639574349131677697?s=20" target="_blank" rel="noopener noreferrer">Telegram</a> post. The threat actors called for additional attacks against 8 universities, 10 airports, and 8 hospital websites in Australia beginning on Tuesday, March 28.</p>
 	<p>Killnet is a loosely formed group of individuals who collaborate via Telegram. Their Telegram channels provide a space for pro-Russian sympathizers to volunteer their expertise by participating in cyberattacks against western interests.</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
@@ -27,7 +27,7 @@
 			</svg>
 		</a>
 	</div>
-	<p><a href="https://en.wikipedia.org/wiki/Killnet">Killnet</a> is not a traditional hacking group: it does not have membership, it does not have tools or infrastructure, and it does not operate for financial gain. Instead, Killnet is a space for pro-Russian "hacktivist" sympathizers to volunteer their expertise by participating in cyberattacks against western interests. This collaboration happens entirely in the open via Telegram, where anyone is welcome to join.</p>
+	<p><a href="https://en.wikipedia.org/wiki/Killnet" target="_blank" rel="noopener noreferrer">Killnet</a> is not a traditional hacking group: it does not have membership, it does not have tools or infrastructure, and it does not operate for financial gain. Instead, Killnet is a space for pro-Russian "hacktivist" sympathizers to volunteer their expertise by participating in cyberattacks against western interests. This collaboration happens entirely in the open via Telegram, where anyone is welcome to join.</p>
 	<p>Killnet was formed shortly after (and likely in response to) the IT Army of Ukraine, and it emulates their tactics. Most days, administrators of the Killnet telegram channel will put out a call for volunteers to attack some particular target. Participants share many different tools and techniques for launching successful attacks, and inexperienced individuals are often coached on how to launch cyber attacks by those who are more experienced.</p>
 	<p>AnonymousSudan is another nontraditional hacking group similar to Killnet who is ostensibly composed of Sudanese "hacktivists". The two groups have recently begun collaborating to attack various western interests.</p>
 	<p>Attackers, including from these groups, are becoming more audacious in &nbsp;the size and scale of the organizations they are targeting. What this means for businesses, especially those with limited cyber resources, is an increasing threat level against vulnerable networks.</p>
@@ -44,27 +44,27 @@
 	<p>As an additional step of precaution, customers in the Education, Travel, and Healthcare industries are advised to follow the below recommendations.</p>
 	<ol>
 		<li>
-			<p>Ensure all other <a href="https://developers.cloudflare.com/ddos-protection/managed-rulesets">DDoS Managed Rules</a> are set to default settings (High sensitivity level and mitigation actions).</p>
+			<p>Ensure all other <a href="https://developers.cloudflare.com/ddos-protection/managed-rulesets" target="_blank" rel="noopener noreferrer">DDoS Managed Rules</a> are set to default settings (High sensitivity level and mitigation actions).</p>
 		</li>
 		<li>
-			<p>Enterprise customers with Advanced DDoS should consider enabling <a href="https://developers.cloudflare.com/ddos-protection/managed-rulesets/adaptive-protection">Adaptive DDoS Protection</a>.</p>
+			<p>Enterprise customers with Advanced DDoS should consider enabling <a href="https://developers.cloudflare.com/ddos-protection/managed-rulesets/adaptive-protection" target="_blank" rel="noopener noreferrer">Adaptive DDoS Protection</a>.</p>
 		</li>
 		<li>
-			<p>Deploy <a href="https://developers.cloudflare.com/firewall/cf-firewall-rules">firewall rules</a> and <a href="https://developers.cloudflare.com/waf/rate-limiting-rules">rate-limiting rules</a> to enforce a combined positive and negative security model. Reduce the traffic allowed to your website based on your known usage.</p>
+			<p>Deploy <a href="https://developers.cloudflare.com/firewall/cf-firewall-rules" target="_blank" rel="noopener noreferrer">firewall rules</a> and <a href="https://developers.cloudflare.com/waf/rate-limiting-rules" target="_blank" rel="noopener noreferrer">rate-limiting rules</a> to enforce a combined positive and negative security model. Reduce the traffic allowed to your website based on your known usage.</p>
 		</li>
 		<li>
-			<p>Turn on <a href="https://developers.cloudflare.com/bots/get-started/free">Bot Fight Mode</a> or the equivalent level (SBFM, Enterprise Bot Management) available to you.</p>
+			<p>Turn on <a href="https://developers.cloudflare.com/bots/get-started/free" target="_blank" rel="noopener noreferrer">Bot Fight Mode</a> or the equivalent level (SBFM, Enterprise Bot Management) available to you.</p>
 		</li>
 		<li>
 			<p>Ensure your origin is not exposed to the public Internet, i.e., only enable access to Cloudflare IP addresses.</p>
 		</li>
 		<li>
-			<p>Enable <a href="https://developers.cloudflare.com/cache">caching</a> as much as possible to reduce the strain on your origin servers, and when using <a href="https://workers.cloudflare.com">Workers</a>, avoid overwhelming your origin server with more subrequests than necessary</p>
+			<p>Enable <a href="https://developers.cloudflare.com/cache" target="_blank" rel="noopener noreferrer">caching</a> as much as possible to reduce the strain on your origin servers, and when using <a href="https://workers.cloudflare.com" target="_blank" rel="noopener noreferrer">Workers</a>, avoid overwhelming your origin server with more subrequests than necessary</p>
 		</li>
 		<li>
-			<p>Enable <a href="https://developers.cloudflare.com/ddos-protection/reference/alerts">DDoS alerting</a>.</p>
+			<p>Enable <a href="https://developers.cloudflare.com/ddos-protection/reference/alerts" target="_blank" rel="noopener noreferrer">DDoS alerting</a>.</p>
 		</li>
 	</ol>
 	<p>As easy as it has become for the attackers to launch DDoS attacks, we want to make sure that it is even easier - and free - for defenders of organizations of all sizes to protect themselves against DDoS attacks of all types. We've been providing unmetered and unlimited DDoS protection for free to all of our customers since 2017. Cloudflare's mission is to help build a better Internet. A better Internet is one that is more secure, faster, and reliable for everyone - even in the face of DDoS attacks.</p>
-	<p>If you’d like to learn more about key DDoS trends, download the <a href="https://www.cloudflare.com/lp/ddos-trends-report">Cloudflare DDoS Threat Report</a> for quarterly insights.</p>
+	<p>If you’d like to learn more about key DDoS trends, download the <a href="https://www.cloudflare.com/lp/ddos-trends-report" target="_blank" rel="noopener noreferrer">Cloudflare DDoS Threat Report</a> for quarterly insights.</p>
 </div>

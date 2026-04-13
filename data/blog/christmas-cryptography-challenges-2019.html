@@ -1,7 +1,7 @@
 <div class="mb2 gray5">3 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3uorddW0QLohjJbIBlo6v9/54460f728d87e53b7c35f31e67f3060a/christmas-cryptography-challenges-2019.png" alt="">
 <div class="post-content lh-copy gray1">
 	<p>Last year <a href="https://blog.cloudflare.com/concise-post-christmas-cryptographic-challenges">we published some crypto challenges</a> to keep you momentarily occupied from the festivities. This year, we're doing the same. Whether you're bored or just want to learn a bit more about the technologies that encrypt the internet, feel free to give these short cryptography quizzes a go.</p>
-	<p>We're withholding answers until the start of the new year, to give you a chance to solve them without spoilers. Before we reveal the answers; if you manage to solve them, we'll be giving the first 5 people to get the answers right some Cloudflare swag. Fill out your <a href="https://goo.gl/forms/KexYSIfTgVaiPPKK2">answers and details using this form</a> so we know where to send it.</p>
+	<p>We're withholding answers until the start of the new year, to give you a chance to solve them without spoilers. Before we reveal the answers; if you manage to solve them, we'll be giving the first 5 people to get the answers right some Cloudflare swag. Fill out your <a href="https://goo.gl/forms/KexYSIfTgVaiPPKK2" target="_blank" rel="noopener noreferrer">answers and details using this form</a> so we know where to send it.</p>
 	<p>Have fun!</p>
 	<p><b>UPDATE: This quiz is now closed.</b> Thank you to everyone who's played. We have received many responses, 15 of which got all the answers right; we will shortly be sending out some swag to those who got the answers right.</p>
 	<p><b>NOTE:</b> Hints, <i>now followed with solutions</i>, are below the questions, avoid scrolling too far if you want to avoid any spoilers.</p>
@@ -31,7 +31,7 @@
 	<blockquote>
 		<p>00000c07ac01784f437dbfc70800450000f2560140004006db58ac1020c843c7f80cd1f701bbc8b2af3449b598758018102a72a700000101080a675bce16787abd8716030100b9010000b503035c1ea569d5f64df3d8630de8bdddd1152e75f528ae577d2436949ce8deb7108600004400ffc02cc02bc024c023c00ac009c008c030c02fc028c027c014c013c012009f009e006b0067003900330016009d009c003d003c0035002f000a00af00ae008d008c008b010000480000000b000900000663666c2e7265000a00080006001700180019000b00020100000d0012001004010201050106010403020305030603000500050100000000001200000017000052305655494338795157524c656d6443436c5246574651675430346754456c4f52564d674e434242546b51674e513d3d</p>
 	</blockquote>
-	<p>[<a href="https://gist.github.com/IcyApril/bb95c93a333aef24368242fe2af4c5ad">Raw puzzle without text wrap</a>]</p>
+	<p>[<a href="https://gist.github.com/IcyApril/bb95c93a333aef24368242fe2af4c5ad" target="_blank" rel="noopener noreferrer">Raw puzzle without text wrap</a>]</p>
 	<div class="flex anchor relative">
 		<h3 id="time-based-one-time-password">Time-Based One-Time Password</h3>
 		<a href="https://blog.cloudflare.com/#time-based-one-time-password" aria-hidden="true" class="relative sm:absolute sm:-start-5">
@@ -100,7 +100,7 @@
 			</svg>
 		</a>
 	</div>
-	<p>The Time-Based One-Time Password Algorithm is described in <a href="https://tools.ietf.org/html/rfc6238">RFC 6238</a>, which was based of <a href="https://tools.ietf.org/html/rfc4226">RFC4226</a> (providing an algorithm for HOTP). The TOTP algorithm requires input of two important parameters, the time and a shared secret - could one be missing?</p>
+	<p>The Time-Based One-Time Password Algorithm is described in <a href="https://tools.ietf.org/html/rfc6238" target="_blank" rel="noopener noreferrer">RFC 6238</a>, which was based of <a href="https://tools.ietf.org/html/rfc4226" target="_blank" rel="noopener noreferrer">RFC4226</a> (providing an algorithm for HOTP). The TOTP algorithm requires input of two important parameters, the time and a shared secret - could one be missing?</p>
 	<p>The implementation used to generate the TOTP codes for the challenge uses SHA-1 as a digest algorithm.</p>
 	<div class="flex anchor relative">
 		<h3 id="rpki">RPKI</h3>
@@ -148,7 +148,7 @@
 	<blockquote>
 		<p>GET /2AdKzgBTEXT ON LINES 4 AND 5</p>
 	</blockquote>
-	<p>Accordingly; <a href="https://cfl.re/2AdKzgB">https://cfl.re/2AdKzgB</a> redirects to <a href="https://www.cloudflare.com/robots.txt">https://www.cloudflare.com/robots.txt</a>; on lines 4 and 5 is the phrase: "Dear robot be nice".</p>
+	<p>Accordingly; <a href="https://cfl.re/2AdKzgB" target="_blank" rel="noopener noreferrer">https://cfl.re/2AdKzgB</a> redirects to <a href="https://www.cloudflare.com/robots.txt" target="_blank" rel="noopener noreferrer">https://www.cloudflare.com/robots.txt</a>; on lines 4 and 5 is the phrase: "Dear robot be nice".</p>
 	<p>The GET request would obviously ordinarily not be appended to the Client Hello like this; however SNI information would be. You can find more about the work Cloudflare is doing to encrypt such information, so attackers cannot see which site you're visiting, in the following post: <a href="https://blog.cloudflare.com/esni">Encrypting SNI: Fixing One of the Core Internet Bugs</a></p>
 	<div class="flex anchor relative">
 		<h3 id="totp">TOTP</h3>
@@ -158,7 +158,7 @@
 			</svg>
 		</a>
 	</div>
-	<p>For this part, I'm going to use the <a href="https://github.com/pyauth/pyotp">pyotp</a> library to demonstrate how the challenge is set-up:</p>
+	<p>For this part, I'm going to use the <a href="https://github.com/pyauth/pyotp" target="_blank" rel="noopener noreferrer">pyotp</a> library to demonstrate how the challenge is set-up:</p>
 	<blockquote>
 		<p>&gt;&gt;&gt; import pyotp&gt;&gt;&gt; totp = pyotp.TOTP('')&gt;&gt;&gt; print totp.at(1545409768)084342&gt;&gt;&gt; print totp.at(1545484313)411907&gt;&gt;&gt; print totp.at(1545740103)617041</p>
 	</blockquote>
@@ -172,8 +172,8 @@
 			</svg>
 		</a>
 	</div>
-	<p>Cloudflare can only generate ROAs based on their prefixes. The IPv6 prefixes are listed here: <a href="https://cloudflare.com/ips-v6">https://cloudflare.com/ips-v6</a>.</p>
-	<p>Using any RPKI validated prefix list (<a href="https://rpki.cloudflare.com/rpki.json">https://rpki.cloudflare.com/rpki.json</a>, or using the GUI of the RIPE’s RPKI Validator), test out our IPv6 prefixes. Some of them will appear coming from Reserved ASNs for Private Use:</p>
+	<p>Cloudflare can only generate ROAs based on their prefixes. The IPv6 prefixes are listed here: <a href="https://cloudflare.com/ips-v6" target="_blank" rel="noopener noreferrer">https://cloudflare.com/ips-v6</a>.</p>
+	<p>Using any RPKI validated prefix list (<a href="https://rpki.cloudflare.com/rpki.json" target="_blank" rel="noopener noreferrer">https://rpki.cloudflare.com/rpki.json</a>, or using the GUI of the RIPE’s RPKI Validator), test out our IPv6 prefixes. Some of them will appear coming from Reserved ASNs for Private Use:</p>
 	<ul>
 		<li>
 			<p>2803:f800:cfcf:cfcf:cfcf:cfcf:cfcf:1 - <b>B</b></p>
@@ -193,5 +193,5 @@
 	</ul>
 	<p>Subtract 4200000000, it will give you one byte for each character of the secret word.</p>
 	<p>Repeat until the word is decoded.</p>
-	<p><i>Interested in helping build a better internet and drive security online? </i><a href="https://www.cloudflare.com/careers"><i>Cloudflare is hiring</i></a><i>.</i></p>
+	<p><i>Interested in helping build a better internet and drive security online? </i><a href="https://www.cloudflare.com/careers" target="_blank" rel="noopener noreferrer"><i>Cloudflare is hiring</i></a><i>.</i></p>
 </div>

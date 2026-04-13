@@ -11,7 +11,7 @@
 			</svg>
 		</a>
 	</div>
-	<p>Cloudflare customers use our <a href="https://www.cloudflare.com/dns">DNS service</a> to serve the authoritative answers for DNS queries for their domains. They need to tell us the IP address of their origin web servers so we can contact the servers to handle non-cached requests. They do this in two ways: either they enter the IP addresses associated with the names (e.g. the IP address of example.com is 192.0.2.123 and is entered as an A record) or they enter a CNAME (e.g. example.com is origin-server.example-hosting.biz).</p>
+	<p>Cloudflare customers use our <a href="https://www.cloudflare.com/dns" target="_blank" rel="noopener noreferrer">DNS service</a> to serve the authoritative answers for DNS queries for their domains. They need to tell us the IP address of their origin web servers so we can contact the servers to handle non-cached requests. They do this in two ways: either they enter the IP addresses associated with the names (e.g. the IP address of example.com is 192.0.2.123 and is entered as an A record) or they enter a CNAME (e.g. example.com is origin-server.example-hosting.biz).</p>
 	<p>This image shows a test site with an A record for <code>theburritobot.com</code> and a CNAME for <code>www.theburritobot.com</code> pointing directly to Heroku.</p>
 	<figure class="kg-card kg-image-card ">
 
@@ -30,7 +30,7 @@
 		</a>
 	</div>
 	<p>The root cause of the bug that affected our DNS service was the belief that <i>time cannot go backwards</i>. In our case, some code assumed that the <i>difference</i> between two times would always be, at worst, zero.</p>
-	<p>RRDNS is written in Go and uses Go’s <a href="https://golang.org/pkg/time/#Now">time.Now()</a> function to get the time. Unfortunately, this function does not guarantee monotonicity. Go currently doesn’t offer a monotonic time source (see issue <a href="https://github.com/golang/go/issues/12914">12914</a> for discussion).</p>
+	<p>RRDNS is written in Go and uses Go’s <a href="https://golang.org/pkg/time/#Now" target="_blank" rel="noopener noreferrer">time.Now()</a> function to get the time. Unfortunately, this function does not guarantee monotonicity. Go currently doesn’t offer a monotonic time source (see issue <a href="https://github.com/golang/go/issues/12914" target="_blank" rel="noopener noreferrer">12914</a> for discussion).</p>
 	<p>In measuring the performance of the upstream DNS resolvers used for CNAME lookups RRDNS contains the following code:</p>
 	<pre class="language-bash"><code class="language-bash">// Update upstream sRTT on UDP queries, penalize it if it fails
 if !start.IsZero() {
@@ -47,8 +47,8 @@ if !start.IsZero() {
 	<p>In the code above <code>rtt</code> could be negative if time.Now() was earlier than <code>start</code> (which was set by a call to <code>time.Now()</code> earlier).</p>
 	<p>That code works well if time moves forward. Unfortunately, we’ve tuned our resolvers to be very fast which means that it’s normal for them to answer in a few milliseconds. If, right when a resolution is happening, time goes back a second the perceived resolution time will be <i>negative</i>.</p>
 	<p>RRDNS doesn’t just keep a single measurement for each resolver, it takes many measurements and smoothes them. So, the single measurement wouldn’t cause RRDNS to think the resolver was working in negative time, but after a few measurements the smoothed value would eventually become negative.</p>
-	<p>When RRDNS selects an upstream to resolve a CNAME it uses a weighted selection algorithm. The code takes the upstream time values and feeds them to Go’s <a href="https://golang.org/pkg/math/rand/#Int63n">rand.Int63n()</a> function. <code>rand.Int63n</code> promptly panics if its argument is negative. That's where the RRDNS panics were coming from.</p>
-	<p>(Aside: there are many other <a href="http://infiniteundo.com/post/25326999628/falsehoods-programmers-believe-about-time">falsehoods programmers believe about time</a>)</p>
+	<p>When RRDNS selects an upstream to resolve a CNAME it uses a weighted selection algorithm. The code takes the upstream time values and feeds them to Go’s <a href="https://golang.org/pkg/math/rand/#Int63n" target="_blank" rel="noopener noreferrer">rand.Int63n()</a> function. <code>rand.Int63n</code> promptly panics if its argument is negative. That's where the RRDNS panics were coming from.</p>
+	<p>(Aside: there are many other <a href="http://infiniteundo.com/post/25326999628/falsehoods-programmers-believe-about-time" target="_blank" rel="noopener noreferrer">falsehoods programmers believe about time</a>)</p>
 	<div class="flex anchor relative">
 		<h3 id="the-one-character-fix">The one character fix</h3>
 		<a href="https://blog.cloudflare.com/#the-one-character-fix" aria-hidden="true" class="relative sm:absolute sm:-start-5">

@@ -1,7 +1,7 @@
 <div class="mb2 gray5">5 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4LctttGyZ2VXOeLaWNHQ7x/9292187b89d7cb745f3b474d1bf965e1/devcycle-customer-story.png" alt="">
 <div class="post-content lh-copy gray1">
 	<p></p>
-	<p>While scaling our new Feature Flagging product <a href="https://devcycle.com">DevCycle</a>, we’ve encountered an interesting challenge: our Cloudflare Workers-based infrastructure can handle way more instantaneous load than our traditional AWS infrastructure. This led us to rethink how we design our infrastructure to always use Cloudflare Workers for everything.</p>
+	<p>While scaling our new Feature Flagging product <a href="https://devcycle.com" target="_blank" rel="noopener noreferrer">DevCycle</a>, we’ve encountered an interesting challenge: our Cloudflare Workers-based infrastructure can handle way more instantaneous load than our traditional AWS infrastructure. This led us to rethink how we design our infrastructure to always use Cloudflare Workers for everything.</p>
 	<div class="flex anchor relative">
 		<h3 id="the-origin-of-devcycle">The origin of DevCycle</h3>
 		<a href="https://blog.cloudflare.com/#the-origin-of-devcycle" aria-hidden="true" class="relative sm:absolute sm:-start-5">
@@ -62,7 +62,7 @@
 	<p>Cloudflare provides multiple products and services to help with data on their global network:</p>
 	<ul>
 		<li>
-			<p><a href="https://developers.cloudflare.com/workers/learning/how-kv-works">KV</a>: “global, low-latency, key-value data store.”</p>
+			<p><a href="https://developers.cloudflare.com/workers/learning/how-kv-works" target="_blank" rel="noopener noreferrer">KV</a>: “global, low-latency, key-value data store.”</p>
 			<ul>
 				<li>
 					<p>However, the lowest latency way of retrieving data from within a Worker is limited by a minimum 60-second TTL. So you’ll need to be ok with cached data that is 60 seconds stale.</p>
@@ -70,7 +70,7 @@
 			</ul>
 		</li>
 		<li>
-			<p><a href="https://developers.cloudflare.com/workers/learning/using-durable-objects/'">Durable Objects</a>: “provide low-latency coordination and consistent storage for the Workers platform through two features: global uniqueness and a transactional storage API.”</p>
+			<p><a href="https://developers.cloudflare.com/workers/learning/using-durable-objects/'" target="_blank" rel="noopener noreferrer">Durable Objects</a>: “provide low-latency coordination and consistent storage for the Workers platform through two features: global uniqueness and a transactional storage API.”</p>
 			<ul>
 				<li>
 					<p>Ability to store user-level information closer to the end user.</p>
@@ -81,7 +81,7 @@
 			</ul>
 		</li>
 		<li>
-			<p><a href="https://developers.cloudflare.com/r2/data-access/workers-api/workers-api-usage">R2</a>: “store large amounts of unstructured data.”</p>
+			<p><a href="https://developers.cloudflare.com/r2/data-access/workers-api/workers-api-usage" target="_blank" rel="noopener noreferrer">R2</a>: “store large amounts of unstructured data.”</p>
 			<ul>
 				<li>
 					<p>Ability to store arbitrarily large amounts of unstructured data using familiar S3 APIs.</p>
@@ -92,10 +92,10 @@
 			</ul>
 		</li>
 		<li>
-			<p><a href="https://blog.cloudflare.com/introducing-d1">D1</a>: “<a href="https://www.cloudflare.com/developer-platform/products/d1">serverless SQLite database</a>”</p>
+			<p><a href="https://blog.cloudflare.com/introducing-d1">D1</a>: “<a href="https://www.cloudflare.com/developer-platform/products/d1" target="_blank" rel="noopener noreferrer">serverless SQLite database</a>”</p>
 		</li>
 	</ul>
-	<p>Each of these tools that Cloudflare provides has made building APIs far more accessible than when Workers launched initially; however, each service has aspects which need to be accounted for when architecting your systems. Being an open platform, you can also access any publically available database you want from a Worker. For example, we are making use of <a href="https://www.macrometa.com/platform/global-data-mesh">Macrometa</a> for our <a href="https://devcycle.com/features/edge-flags">EdgeDB</a> product built into our Workers to help customers access their user data.</p>
+	<p>Each of these tools that Cloudflare provides has made building APIs far more accessible than when Workers launched initially; however, each service has aspects which need to be accounted for when architecting your systems. Being an open platform, you can also access any publically available database you want from a Worker. For example, we are making use of <a href="https://www.macrometa.com/platform/global-data-mesh" target="_blank" rel="noopener noreferrer">Macrometa</a> for our <a href="https://devcycle.com/features/edge-flags" target="_blank" rel="noopener noreferrer">EdgeDB</a> product built into our Workers to help customers access their user data.</p>
 	<div class="flex anchor relative">
 		<h3 id="the-predictable-cost-structure-of-workers">The predictable cost structure of Workers</h3>
 		<a href="https://blog.cloudflare.com/#the-predictable-cost-structure-of-workers" aria-hidden="true" class="relative sm:absolute sm:-start-5">

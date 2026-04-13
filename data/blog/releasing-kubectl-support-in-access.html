@@ -11,8 +11,8 @@
 			</svg>
 		</a>
 	</div>
-	<p>A Kubernetes <a href="https://kubernetes.io/docs/concepts/overview/components">deployment consists</a> of a cluster that contains nodes, which run the containers, as well as a control plane that can be used to manage those nodes. Central to that control plane is the Kubernetes API server, which interacts with components like the scheduler and manager.</p>
-	<p><a href="https://kubernetes.io/docs/tasks/tools/install-kubectl">kubectl</a> is the Kubernetes command-line tool that developers can use to interact with that API server. Users run <code>kubectl</code> commands to perform actions like starting and stopping the nodes, or modifying other elements of the control plane.</p>
+	<p>A Kubernetes <a href="https://kubernetes.io/docs/concepts/overview/components" target="_blank" rel="noopener noreferrer">deployment consists</a> of a cluster that contains nodes, which run the containers, as well as a control plane that can be used to manage those nodes. Central to that control plane is the Kubernetes API server, which interacts with components like the scheduler and manager.</p>
+	<p><a href="https://kubernetes.io/docs/tasks/tools/install-kubectl" target="_blank" rel="noopener noreferrer">kubectl</a> is the Kubernetes command-line tool that developers can use to interact with that API server. Users run <code>kubectl</code> commands to perform actions like starting and stopping the nodes, or modifying other elements of the control plane.</p>
 	<p>In most deployments, users connect to a VPN that allows them to run commands against that API server by addressing it over the same local network. In that architecture, user traffic to run these commands must be backhauled through a physical or virtual VPN appliance. More concerning, in most cases the user connecting to the API server will also be able to connect to other addresses and ports in the private network where the cluster runs.</p>
 	<div class="flex anchor relative">
 		<h3 id="how-does-cloudflare-access-apply">How does Cloudflare Access apply?</h3>
@@ -22,14 +22,14 @@
 			</svg>
 		</a>
 	</div>
-	<p>Cloudflare Access can secure web applications as well as non-HTTP connections like <a href="https://www.cloudflare.com/learning/access-management/what-is-ssh">SSH</a>, RDP, and the commands sent over <code>kubectl</code>. Access deploys Cloudflare’s network in front of all of these resources. Every time a request is made to one of these destinations, Cloudflare’s network checks for identity like a bouncer in front of each door.</p>
+	<p>Cloudflare Access can secure web applications as well as non-HTTP connections like <a href="https://www.cloudflare.com/learning/access-management/what-is-ssh" target="_blank" rel="noopener noreferrer">SSH</a>, RDP, and the commands sent over <code>kubectl</code>. Access deploys Cloudflare’s network in front of all of these resources. Every time a request is made to one of these destinations, Cloudflare’s network checks for identity like a bouncer in front of each door.</p>
 	<figure class="kg-card kg-image-card ">
 
 		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/135CckjPYvwTnJPzEwqwjq/ecafea64a120ae117e7b63e192eb778b/image1-21.png" alt="" class="kg-image" width="960" height="540" loading="lazy">
 
 	</figure>
 	<p>If the request lacks identity, we send the user to your team’s SSO provider, like Okta, AzureAD, and G Suite, where the user can login. Once they login, they are redirected to Cloudflare where we check their identity against a list of users who are allowed to connect. If the user is permitted, we let their request reach the destination.</p>
-	<p>In most cases, those granular checks on every request would slow down the experience. However, Cloudflare Access completes the entire check in just a few milliseconds. The authentication flow relies on Cloudflare’s serverless product, <a href="https://workers.cloudflare.com">Workers</a>, and runs in every one of our data centers in 200 cities around the world. With that distribution, we can improve performance for your applications while also authenticating every request.</p>
+	<p>In most cases, those granular checks on every request would slow down the experience. However, Cloudflare Access completes the entire check in just a few milliseconds. The authentication flow relies on Cloudflare’s serverless product, <a href="https://workers.cloudflare.com" target="_blank" rel="noopener noreferrer">Workers</a>, and runs in every one of our data centers in 200 cities around the world. With that distribution, we can improve performance for your applications while also authenticating every request.</p>
 	<div class="flex anchor relative">
 		<h3 id="how-does-it-work-with-kubectl">How does it work with kubectl?</h3>
 		<a href="https://blog.cloudflare.com/#how-does-it-work-with-kubectl" aria-hidden="true" class="relative sm:absolute sm:-start-5">
@@ -74,8 +74,8 @@
 		</a>
 	</div>
 	<p>End users do not need an agent or client application to connect to web applications secured by Cloudflare Access. They can authenticate to on-premise applications through a browser, without a VPN, like they would for SaaS tools. When we apply that same security model to non-HTTP protocols, we need to establish that secure connection from the client with an alternative to the web browser.</p>
-	<p>Unlike our SSH flow, end users cannot modify <code>kubeconfig</code> to proxy requests through <code>cloudflared</code>. <a href="https://github.com/kubernetes/kubernetes/pull/81443">Pull requests</a> have been submitted to add this functionality to <code>kubeconfig</code>, but in the meantime users can set an alias to serve a similar function.</p>
-	<p>First, users need <a href="https://developers.cloudflare.com/argo-tunnel/quickstart">to download</a> the same <code>cloudflared</code> tool that administrators deploy on the cluster. Once downloaded, they will need to run a corresponding command to create a local SOCKS proxy. When the user runs the command, <code>cloudflared</code> will launch a browser window to prompt them to login with their SSO and check that they are allowed to reach this hostname.</p>
+	<p>Unlike our SSH flow, end users cannot modify <code>kubeconfig</code> to proxy requests through <code>cloudflared</code>. <a href="https://github.com/kubernetes/kubernetes/pull/81443" target="_blank" rel="noopener noreferrer">Pull requests</a> have been submitted to add this functionality to <code>kubeconfig</code>, but in the meantime users can set an alias to serve a similar function.</p>
+	<p>First, users need <a href="https://developers.cloudflare.com/argo-tunnel/quickstart" target="_blank" rel="noopener noreferrer">to download</a> the same <code>cloudflared</code> tool that administrators deploy on the cluster. Once downloaded, they will need to run a corresponding command to create a local SOCKS proxy. When the user runs the command, <code>cloudflared</code> will launch a browser window to prompt them to login with their SSO and check that they are allowed to reach this hostname.</p>
 	<pre class="language-bash"><code class="language-bash">$ cloudflared access tcp --hostname cluster.site.com url --127.0.0.1:1234</code></pre>
 	<p>The proxy allows your local kubectl tool to connect to <code>cloudflared</code> via a SOCKS5 proxy, which helps avoid issues with TLS handshakes to the cluster itself. In this model, TLS verification can still be exchanged with the <code>kubectl</code> API server without disabling or modifying that flow for end users.</p>
 	<p>Users can then create an alias to save time when connecting. The example below aliases all of the steps required to connect in a single command. This can be added to the user’s bash profile so that it persists between restarts.</p>
@@ -103,7 +103,7 @@
 			</svg>
 		</a>
 	</div>
-	<p>Support for <code>kubectl</code> is available in the latest release of the <code>cloudflared</code> tool. You can begin using it today, on any plan. More <a href="https://developers.cloudflare.com/access/other-protocols/kubectl">detailed instructions are available</a> to get started.</p>
-	<p>If you try it out, <a href="https://community.cloudflare.com/t/feedback-for-cloudflare-access-support-for-kubectl/168530">please send us your feedback</a>! We’re focused on improving the ease of use for this feature, and other non-HTTP workflows in Access, and need your input.</p>
-	<p>New to Cloudflare for Teams? You can use all of the Teams products for free through September, including Cloudflare Access and Argo Tunnel. You can learn more about the program, and request a dedicated onboarding session, <a href="https://teams.cloudflare.com">here</a>.</p>
+	<p>Support for <code>kubectl</code> is available in the latest release of the <code>cloudflared</code> tool. You can begin using it today, on any plan. More <a href="https://developers.cloudflare.com/access/other-protocols/kubectl" target="_blank" rel="noopener noreferrer">detailed instructions are available</a> to get started.</p>
+	<p>If you try it out, <a href="https://community.cloudflare.com/t/feedback-for-cloudflare-access-support-for-kubectl/168530" target="_blank" rel="noopener noreferrer">please send us your feedback</a>! We’re focused on improving the ease of use for this feature, and other non-HTTP workflows in Access, and need your input.</p>
+	<p>New to Cloudflare for Teams? You can use all of the Teams products for free through September, including Cloudflare Access and Argo Tunnel. You can learn more about the program, and request a dedicated onboarding session, <a href="https://teams.cloudflare.com" target="_blank" rel="noopener noreferrer">here</a>.</p>
 </div>

@@ -1,9 +1,9 @@
 <div class="mb2 gray5">4 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/39nX0W7IYKYjzjJ4aHhhqC/32abbb1ae63ce5340ff2b48bb883c6c0/using-edge-side-includes-with-workers-for-high-availability.png" alt="">
 <div class="post-content lh-copy gray1">
 	<p></p>
-	<p><i>Last week, we wrote about </i><a href="https://blog.cloudflare.com/edge-side-includes-with-cloudflare-workers"><i>implementing ESI with Cloudflare Workers</i></a><i>. This is a guest post by </i><a href="https://twitter.com/Overbryd"><i>Lukas Reider</i></a><i> on how to use ESI not only for better performance, but to optimize availability while migrating backends.</i></p>
+	<p><i>Last week, we wrote about </i><a href="https://blog.cloudflare.com/edge-side-includes-with-cloudflare-workers"><i>implementing ESI with Cloudflare Workers</i></a><i>. This is a guest post by </i><a href="https://twitter.com/Overbryd" target="_blank" rel="noopener noreferrer"><i>Lukas Reider</i></a><i> on how to use ESI not only for better performance, but to optimize availability while migrating backends.</i></p>
 	<p>In this post, you will learn about how my client Titel Media was able to use Cloudflare Workers to implement simple edge side includes.</p>
-	<p>The idea is to partially replace the parts of the online magazine <a href="https://www.highsnobiety.com">highsnobiety.com</a> with a new, and much more refined frontend implementation. In this article, you will get to know the use case, and how I found a powerful application for Cloudflare Workers.</p>
+	<p>The idea is to partially replace the parts of the online magazine <a href="https://www.highsnobiety.com" target="_blank" rel="noopener noreferrer">highsnobiety.com</a> with a new, and much more refined frontend implementation. In this article, you will get to know the use case, and how I found a powerful application for Cloudflare Workers.</p>
 	<div class="flex anchor relative">
 		<h3 id="backstory">Backstory</h3>
 		<a href="https://blog.cloudflare.com/#backstory" aria-hidden="true" class="relative sm:absolute sm:-start-5">
@@ -12,8 +12,8 @@
 			</svg>
 		</a>
 	</div>
-	<p>My current project, <a href="https://www.highsnobiety.com">highsnobiety.com</a> is in the process of replacing Wordpress with a dedicated content pipeline and a custom frontend. It is a huge magazine, with tons of contents, hundreds of daily updates and an international team of more than 60 editors, researching and writing exciting stories.</p>
-	<p>The company behind it, Titel Media GmbH, a publishing house with offices in Berlin, and New York, surely has grown out of Wordpress for <a href="https://www.cloudflare.com/developer-platform/solutions/hosting">hosting</a> their content.</p>
+	<p>My current project, <a href="https://www.highsnobiety.com" target="_blank" rel="noopener noreferrer">highsnobiety.com</a> is in the process of replacing Wordpress with a dedicated content pipeline and a custom frontend. It is a huge magazine, with tons of contents, hundreds of daily updates and an international team of more than 60 editors, researching and writing exciting stories.</p>
+	<p>The company behind it, Titel Media GmbH, a publishing house with offices in Berlin, and New York, surely has grown out of Wordpress for <a href="https://www.cloudflare.com/developer-platform/solutions/hosting" target="_blank" rel="noopener noreferrer">hosting</a> their content.</p>
 	<div class="flex anchor relative">
 		<h3 id="the-show-must-go-on">The show must go on</h3>
 		<a href="https://blog.cloudflare.com/#the-show-must-go-on" aria-hidden="true" class="relative sm:absolute sm:-start-5">
@@ -128,7 +128,7 @@
 			</svg>
 		</a>
 	</div>
-	<p>Here is what I wrote for Titel Media (<a href="https://gist.github.com/Overbryd/c070bb1fa769609d404f648cd506340f">available on GitHub</a>):</p>
+	<p>Here is what I wrote for Titel Media (<a href="https://gist.github.com/Overbryd/c070bb1fa769609d404f648cd506340f" target="_blank" rel="noopener noreferrer">available on GitHub</a>):</p>
 	<p>Let me break it down for you here.</p>
 	<p>A client request comes in, the Cloudflare worker is picking it up, and passing it to the origin.</p>
 	<pre class="language-javascript"><code class="language-javascript">addEventListener('fetch', event =&gt; {
@@ -242,6 +242,6 @@ async function main(request) {
 		</a>
 	</div>
 	<p>The article shows the power of running code on the http-edge. With the power of V8 at your fingertips, you can really build great services right in front of your content delivery. Edge side includes, if narrowed down to a small feature set, are simple to implement and can even be safely controlled with timeouts.</p>
-	<p>My client, Titel Media, financed the work on this worker. Stop by at <a href="https://www.highsnobiety.com">highsnobiety.com</a>. Also, I want to thank the folk from Cloudflare, Harris Hancock and Matthew Prince for their outstanding support, while developing this worker.</p>
+	<p>My client, Titel Media, financed the work on this worker. Stop by at <a href="https://www.highsnobiety.com" target="_blank" rel="noopener noreferrer">highsnobiety.com</a>. Also, I want to thank the folk from Cloudflare, Harris Hancock and Matthew Prince for their outstanding support, while developing this worker.</p>
 	<p>Always Remember: “Web development is the art of finding the most complex way to concatenate strings.” Leave a message, or subscribe if you liked this post. I am curious what you think about this solution.</p>
 </div>

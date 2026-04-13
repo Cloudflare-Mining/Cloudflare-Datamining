@@ -9,7 +9,7 @@
 			</svg>
 		</a>
 	</div>
-	<p>Cloudflare has servers in <a href="https://www.cloudflare.com/network"><u>330 cities spread across 125+ countries</u></a>. All of these servers run Quicksilver, which is a key-value database that contains important configuration information for many of our services, and is queried for all requests that hit the Cloudflare network.</p>
+	<p>Cloudflare has servers in <a href="https://www.cloudflare.com/network" target="_blank" rel="noopener noreferrer"><u>330 cities spread across 125+ countries</u></a>. All of these servers run Quicksilver, which is a key-value database that contains important configuration information for many of our services, and is queried for all requests that hit the Cloudflare network.</p>
 	<p>Because it is used while handling requests, Quicksilver is designed to be very fast; it currently responds to 90% of requests in less than 1 ms and 99.9% of requests in less than 7 ms. Most requests are only for a few keys, but some are for hundreds or even more keys.</p>
 	<p>Quicksilver currently contains over five billion key-value pairs with a combined size of 1.6 TB, and it serves over three billion keys per second, worldwide. Keeping Quicksilver fast provides some unique challenges, given that our dataset is always growing, and new use cases are added regularly.</p>
 	<p>Quicksilver used to store all key-values on all servers everywhere, but there is obviously a limit to how much disk space can be used on every single server. For instance, the more disk space used by Quicksilver, the less disk space is left for content caching. Also, with each added server that contains a particular key-value, the cost of storing that key-value increases.</p>
@@ -168,7 +168,7 @@
 		</a>
 	</div>
 	<p>It took the team quite a few years to go from the old Quicksilver V1, where all data was stored on each server to the tiered caching Quicksilver V2, where all but a handful of servers only have cache. We faced many challenges, including migrating hundreds of thousands of live databases without interruptions, while serving billions of requests per second. A lot of code changes were rolled out, with the result that Quicksilver now has a significantly different architecture. All of this was done transparently to our customers. It was all done iteratively, always learning from the previous step before taking the next one. And always making sure that, if at all possible, all changes are easy to revert. These are important strategies for migrating complex systems safely.</p>
-	<p>If you like these kinds of stories, keep an eye out for more development stories on our blog. And if you are enthusiastic about solving these kinds of problems, <a href="https://www.cloudflare.com/en-gb/careers/jobs"><u>we are hiring for multiple types of roles across the organization</u></a></p>
+	<p>If you like these kinds of stories, keep an eye out for more development stories on our blog. And if you are enthusiastic about solving these kinds of problems, <a href="https://www.cloudflare.com/en-gb/careers/jobs" target="_blank" rel="noopener noreferrer"><u>we are hiring for multiple types of roles across the organization</u></a></p>
 	<div class="flex anchor relative">
 		<h2 id="thank-you">Thank you</h2>
 		<a href="https://blog.cloudflare.com/#thank-you" aria-hidden="true" class="relative sm:absolute sm:-start-5">

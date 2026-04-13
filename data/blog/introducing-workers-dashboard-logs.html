@@ -34,7 +34,7 @@
 			</svg>
 		</a>
 	</div>
-	<p>It’s really simple to get started with logging for Workers. Simply invoke one of the standard <a href="https://developer.mozilla.org/en-US/docs/Web/API/console">console</a> APIs, such as <code>console.log()</code>, and we handle the rest. That’s it! There’s no extra setup, no configuration needed, and no hidden logging fees.</p>
+	<p>It’s really simple to get started with logging for Workers. Simply invoke one of the standard <a href="https://developer.mozilla.org/en-US/docs/Web/API/console" target="_blank" rel="noopener noreferrer">console</a> APIs, such as <code>console.log()</code>, and we handle the rest. That’s it! There’s no extra setup, no configuration needed, and no hidden logging fees.</p>
 	<pre class="language-javascript"><code class="language-javascript">function logRequest (request) {
   const { cf, headers } = request
   const { city, region, country, colo, clientTcpRtt  } = cf
@@ -57,7 +57,7 @@
 			</svg>
 		</a>
 	</div>
-	<p>If you need more advanced filters you can use <a href="https://github.com/cloudflare/wrangler">wrangler</a>, our command-line tool for deploying Workers. We’ve updated the <code>wrangler tail</code> command to support sampling and a new set of advanced filters. You also no longer need to install or configure <code>cloudflared</code> to use the command. Not to mention it’s <i>much</i> faster, no more waiting around for logs to appear. Here are a few examples:</p>
+	<p>If you need more advanced filters you can use <a href="https://github.com/cloudflare/wrangler" target="_blank" rel="noopener noreferrer">wrangler</a>, our command-line tool for deploying Workers. We’ve updated the <code>wrangler tail</code> command to support sampling and a new set of advanced filters. You also no longer need to install or configure <code>cloudflared</code> to use the command. Not to mention it’s <i>much</i> faster, no more waiting around for logs to appear. Here are a few examples:</p>
 	<pre class="language-bash"><code class="language-bash"># Filter by your own IP address, and if there was an uncaught exception.
 wrangler tail --format=pretty --ip-address=self --status=error
 
@@ -69,7 +69,7 @@ wrangler tail --format=pretty --search="TypeError"</code></pre>
 	<p>We recommend using the “pretty” format, since wrangler will output your logs in a colored, human-readable format. (We’re also working on a similar display for the dashboard.)</p><!--kg-card-begin: html-->
 	<div style="position: relative; padding-top: 47%;"><iframe src="https://iframe.videodelivery.net/401421eff1a14f81c50e563212c3f48d?preload=true" style="border: none; position: absolute; top: 0; height: 100%; width: 100%;" allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;" allowfullscreen="true"></iframe></div>
 	<p></p><!--kg-card-end: html-->
-	<p>However, if you want to access structured logs, you can use the “json” format. This is great if you want to pipe your logs to another tool, such as <a href="https://stedolan.github.io/jq/tutorial">jq</a>, or save them to a file. Here are a few more examples:</p>
+	<p>However, if you want to access structured logs, you can use the “json” format. This is great if you want to pipe your logs to another tool, such as <a href="https://stedolan.github.io/jq/tutorial" target="_blank" rel="noopener noreferrer">jq</a>, or save them to a file. Here are a few more examples:</p>
 	<pre class="language-bash"><code class="language-bash"># Parses each log event, but only outputs the url.
 wrangler tail --format=json | jq .event.request?.url
 
@@ -88,13 +88,13 @@ wrangler tail --format=json --once &gt; event.json</code></pre>
 	<p>Both logs from the dashboard and <code>wrangler tail</code> are available and free for existing Workers customers. If you would like more information or a step-by-step guide, check out any of the resources below.</p>
 	<ul>
 		<li>
-			<p>Go to the <a href="https://dash.cloudflare.com/?to=%2F%3Aaccount%2Fworkers%2Foverview">dashboard</a> and look at some logs!</p>
+			<p>Go to the <a href="https://dash.cloudflare.com/?to=%2F%3Aaccount%2Fworkers%2Foverview" target="_blank" rel="noopener noreferrer">dashboard</a> and look at some logs!</p>
 		</li>
 		<li>
-			<p>Read the <a href="https://developers.cloudflare.com/workers/learning/logging-workers">getting started</a> guide for logging.</p>
+			<p>Read the <a href="https://developers.cloudflare.com/workers/learning/logging-workers" target="_blank" rel="noopener noreferrer">getting started</a> guide for logging.</p>
 		</li>
 		<li>
-			<p>Look at the tail logs API <a href="https://api.cloudflare.com/#worker-tail-logs-properties">reference</a>.</p>
+			<p>Look at the tail logs API <a href="https://api.cloudflare.com/#worker-tail-logs-properties" target="_blank" rel="noopener noreferrer">reference</a>.</p>
 		</li>
 	</ul>
 </div>

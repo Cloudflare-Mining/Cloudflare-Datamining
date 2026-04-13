@@ -2,9 +2,9 @@
 <div class="post-content lh-copy gray1">
 	<p><i>You can read Part 2 of Getting Started with Terraform </i><a href="https://blog.cloudflare.com/getting-started-with-terraform-and-cloudflare-part-2"><i>here</i></a><i>.</i></p>
 	<p>As a Product Manager at Cloudflare, I spend quite a bit of my time talking to customers. One of the most common topics I'm asked about is configuration management. Developers want to know how they can write code to manage their Cloudflare config, without interacting with our APIs or UI directly.</p>
-	<p>Following best practices in software development, they want to store configuration in their own source code repository (be it <a href="https://github.com">GitHub</a> or otherwise), institute a change management process that includes code review, and be able to track their configuration versions and history over time. Additionally, they want the ability to quickly and easily roll back changes when required.</p>
-	<p>When I first spoke with our engineering teams about these requirements, they gave me the best answer a Product Manager could hope to hear: there's already an open source tool out there that does all of that (and more), with a strong community and plugin system to boot—it's called <a href="https://terraform.io">Terraform</a>.</p>
-	<p>This blog post is about getting started using Terraform with Cloudflare and the new version 1.0 of our Terraform provider. A "provider" is simply a plugin that knows how to talk to a specific set of APIs—in this case, Cloudflare, but there are also providers available for AWS, Azure, Google Cloud, Kubernetes, VMware, and <a href="https://www.terraform.io/docs/providers">many more services</a>. Today's release extends our existing provider that previously only supported DNS records with support for Zone Settings, Rate Limiting, Load Balancing, and Page Rules.</p>
+	<p>Following best practices in software development, they want to store configuration in their own source code repository (be it <a href="https://github.com" target="_blank" rel="noopener noreferrer">GitHub</a> or otherwise), institute a change management process that includes code review, and be able to track their configuration versions and history over time. Additionally, they want the ability to quickly and easily roll back changes when required.</p>
+	<p>When I first spoke with our engineering teams about these requirements, they gave me the best answer a Product Manager could hope to hear: there's already an open source tool out there that does all of that (and more), with a strong community and plugin system to boot—it's called <a href="https://terraform.io" target="_blank" rel="noopener noreferrer">Terraform</a>.</p>
+	<p>This blog post is about getting started using Terraform with Cloudflare and the new version 1.0 of our Terraform provider. A "provider" is simply a plugin that knows how to talk to a specific set of APIs—in this case, Cloudflare, but there are also providers available for AWS, Azure, Google Cloud, Kubernetes, VMware, and <a href="https://www.terraform.io/docs/providers" target="_blank" rel="noopener noreferrer">many more services</a>. Today's release extends our existing provider that previously only supported DNS records with support for Zone Settings, Rate Limiting, Load Balancing, and Page Rules.</p>
 	<div class="flex anchor relative">
 		<h3 id="before-and-after-terraform">Before and after Terraform</h3>
 		<a href="https://blog.cloudflare.com/#before-and-after-terraform" aria-hidden="true" class="relative sm:absolute sm:-start-5">
@@ -19,7 +19,7 @@
 		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2VfXSQWtmvcXHDMG27XO5T/018f57def84f3a2d66f33d29a8a8727d/before-terraform-_3x.png" alt="before-terraform-@3x" class="kg-image" width="2394" height="1254" loading="lazy">
 
 	</figure>
-	<p>Before Terraform, you needed to learn how to use the configuration interfaces or <a href="https://www.cloudflare.com/learning/security/api/what-is-an-api">APIs</a> of each cloud and edge provider, e.g., Google Cloud and Cloudflare below. Additionally, your ability to store your configuration in your own source code control system depends on vendor-specific configuration export mechanisms (which may or may not exist).</p>
+	<p>Before Terraform, you needed to learn how to use the configuration interfaces or <a href="https://www.cloudflare.com/learning/security/api/what-is-an-api" target="_blank" rel="noopener noreferrer">APIs</a> of each cloud and edge provider, e.g., Google Cloud and Cloudflare below. Additionally, your ability to store your configuration in your own source code control system depends on vendor-specific configuration export mechanisms (which may or may not exist).</p>
 	<figure class="kg-card kg-image-card ">
 
 		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1PfbFLbgtZrfToqvJNr4SD/7b9be75ae4d633f6e54ab7ecdc9f3b5f/with-terraform-_3x-2.png" alt="with-terraform-@3x-2" class="kg-image" width="2394" height="1254" loading="lazy">
@@ -34,7 +34,7 @@
 			</svg>
 		</a>
 	</div>
-	<p>The installation process for Terraform is extremely simple as it ships as a single binary file. Official instructions for installing Terraform can be found <a href="https://www.terraform.io/intro/getting-started/install.html">here</a>, and for purposes of this example we'll show to do so on a macOS using <a href="https://brew.sh">Homebrew</a>:</p>
+	<p>The installation process for Terraform is extremely simple as it ships as a single binary file. Official instructions for installing Terraform can be found <a href="https://www.terraform.io/intro/getting-started/install.html" target="_blank" rel="noopener noreferrer">here</a>, and for purposes of this example we'll show to do so on a macOS using <a href="https://brew.sh" target="_blank" rel="noopener noreferrer">Homebrew</a>:</p>
 	<pre class="language-bash"><code class="language-bash">$ brew install terraform
 ==&gt; Downloading https://homebrew.bintray.com/bottles/terraform-0.11.7.sierra.bottle.tar.gz
 ######################################################################## 100.0%
@@ -43,7 +43,7 @@
 
 $ terraform version
 Terraform v0.11.7</code></pre>
-	<p>The following instructions are adapted from the <a href="https://developers.cloudflare.com/terraform">Cloudflare Developers - Terraform documentation</a> site, which includes a <a href="https://developers.cloudflare.com/terraform/tutorial">full tutorial</a> and coverage of <a href="https://developers.cloudflare.com/terraform/advanced-topics">advanced topics</a>.</p>
+	<p>The following instructions are adapted from the <a href="https://developers.cloudflare.com/terraform" target="_blank" rel="noopener noreferrer">Cloudflare Developers - Terraform documentation</a> site, which includes a <a href="https://developers.cloudflare.com/terraform/tutorial" target="_blank" rel="noopener noreferrer">full tutorial</a> and coverage of <a href="https://developers.cloudflare.com/terraform/advanced-topics" target="_blank" rel="noopener noreferrer">advanced topics</a>.</p>
 	<p>If you're interested in seeing how to use a specific Terraform resource or technique, click on one of the following anchor links:</p>
 	<ul>
 		<li>
@@ -375,7 +375,7 @@ To git@github.com:$GITHUB_USER/cf-config.git
 		</a>
 	</div>
 	<p>Now that you've got a basic website proxied through Cloudflare, it's time to use Terraform to adjust some additional settings on your zone. Below we'll configure some optional HTTPS settings, and then push the updated configuration to GitHub for posterity.</p>
-	<p>We'll use a new git branch for the changes, and then merge it into master before applying. On a team, you might consider using this step as an opportunity for others to review your change before merging and deploying it. Or you may integrate Terraform into your <a href="https://www.cloudflare.com/learning/serverless/glossary/what-is-ci-cd">CI/CD system</a> to perform tests automatically using another Cloudflare domain.</p>
+	<p>We'll use a new git branch for the changes, and then merge it into master before applying. On a team, you might consider using this step as an opportunity for others to review your change before merging and deploying it. Or you may integrate Terraform into your <a href="https://www.cloudflare.com/learning/serverless/glossary/what-is-ci-cd" target="_blank" rel="noopener noreferrer">CI/CD system</a> to perform tests automatically using another Cloudflare domain.</p>
 	<div class="flex anchor relative">
 		<h4 id="1-create-a-new-branch-and-append-the-new-zone-settings">1. Create a new branch and append the new zone settings</h4>
 		<a href="https://blog.cloudflare.com/#1-create-a-new-branch-and-append-the-new-zone-settings" aria-hidden="true" class="relative sm:absolute sm:-start-5">
@@ -384,7 +384,7 @@ To git@github.com:$GITHUB_USER/cf-config.git
 			</svg>
 		</a>
 	</div>
-	<p>Here, we modify the Terraform configuration to enable the following settings: <a href="https://www.cloudflare.com/learning-resources/tls-1-3">TLS 1.3</a>, <a href="https://blog.cloudflare.com/how-to-make-your-site-https-only">Always Use HTTPS</a>, <a href="https://blog.cloudflare.com/introducing-strict-ssl-protecting-against-a-man-in-the-middle-attack-on-origin-traffic">Strict SSL mode</a>, and the <a href="https://www.cloudflare.com/waf">Cloudflare WAF</a>. Strict mode requires a valid SSL certificate on your origin, so be sure to use the <a href="https://blog.cloudflare.com/cloudflare-ca-encryption-origin">Cloudflare Origin CA</a> to generate one.</p>
+	<p>Here, we modify the Terraform configuration to enable the following settings: <a href="https://www.cloudflare.com/learning-resources/tls-1-3" target="_blank" rel="noopener noreferrer">TLS 1.3</a>, <a href="https://blog.cloudflare.com/how-to-make-your-site-https-only">Always Use HTTPS</a>, <a href="https://blog.cloudflare.com/introducing-strict-ssl-protecting-against-a-man-in-the-middle-attack-on-origin-traffic">Strict SSL mode</a>, and the <a href="https://www.cloudflare.com/waf" target="_blank" rel="noopener noreferrer">Cloudflare WAF</a>. Strict mode requires a valid SSL certificate on your origin, so be sure to use the <a href="https://blog.cloudflare.com/cloudflare-ca-encryption-origin">Cloudflare Origin CA</a> to generate one.</p>
 	<pre class="language-bash"><code class="language-bash">$ git checkout -b step3-https
 Switched to a new branch 'step3-https'
 
@@ -410,7 +410,7 @@ EOF</code></pre>
 			</svg>
 		</a>
 	</div>
-	<p>Let's take a look at what Terraform is proposing before we apply it. We filter the <code>terraform plan</code> output to ignore those values that will be "computed”—in this case, settings that will be left at their default values. For brevity from here on out, we'll omit some extranneous Terraform output; if you'd like to see the output exactly as run, please see the <a href="https://developers.cloudflare.com/terraform/tutorial">full tutorial</a>.</p>
+	<p>Let's take a look at what Terraform is proposing before we apply it. We filter the <code>terraform plan</code> output to ignore those values that will be "computed”—in this case, settings that will be left at their default values. For brevity from here on out, we'll omit some extranneous Terraform output; if you'd like to see the output exactly as run, please see the <a href="https://developers.cloudflare.com/terraform/tutorial" target="_blank" rel="noopener noreferrer">full tutorial</a>.</p>
 	<pre class="language-bash"><code class="language-bash">$ terraform plan | grep -v "&lt;computed&gt;"
 Refreshing Terraform state in-memory prior to plan...
 The refreshed state will be used to calculate this plan, but will not be
@@ -542,7 +542,7 @@ Apply complete! Resources: 1 added, 0 changed, 0 destroyed.</code></pre>
 		</a>
 	</div>
 	<p><i>Before proceeding, make sure that your account is enabled for Rate Limiting. If you’re on an Enterprise plan, you should ask your Customer Success Manager to do this; otherwise, you can subscribe to Rate Limiting within the Cloudflare Dashboard.</i></p>
-	<p>With our zone settings locked down, and our site starting to get some more attention, it's unfortunately begun attracting some of the less scrupulous characters on the internet. Our server access logs show attempts to brute force our login page at <code>https://www.example.com/login</code>. Let's see what we can do with Cloudflare's <a href="https://www.cloudflare.com/application-services/products/rate-limiting">rate limiting product</a>) to put a stop to these efforts.</p>
+	<p>With our zone settings locked down, and our site starting to get some more attention, it's unfortunately begun attracting some of the less scrupulous characters on the internet. Our server access logs show attempts to brute force our login page at <code>https://www.example.com/login</code>. Let's see what we can do with Cloudflare's <a href="https://www.cloudflare.com/application-services/products/rate-limiting" target="_blank" rel="noopener noreferrer">rate limiting product</a>) to put a stop to these efforts.</p>
 	<div class="flex anchor relative">
 		<h4 id="1-create-a-new-branch-and-append-the-rate-limiting-settings">1. Create a new branch and append the rate limiting settings</h4>
 		<a href="https://blog.cloudflare.com/#1-create-a-new-branch-and-append-the-rate-limiting-settings" aria-hidden="true" class="relative sm:absolute sm:-start-5">

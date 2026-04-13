@@ -30,10 +30,10 @@
 			</svg>
 		</a>
 	</div>
-	<p>If you want to scale the delivery of a <a href="https://www.cloudflare.com/solutions/ecommerce/optimization">fast, high-performance website</a>, then caching is critical. Caching has two main goals:</p>
+	<p>If you want to scale the delivery of a <a href="https://www.cloudflare.com/solutions/ecommerce/optimization" target="_blank" rel="noopener noreferrer">fast, high-performance website</a>, then caching is critical. Caching has two main goals:</p>
 	<p>First, caching improves <b>performance</b>. Cloudflare data centers are within 100ms of 90% of the planet; putting your content in Cloudflare’s cache gets it <i>physically</i> closer to your customers and visitors, meaning that visitors will see your website <i>faster</i> when they request it! (Plus, reading assets on our edge SSDs is really fast, rather than waiting for origins to generate a response.)</p>
 	<p>Second, caching helps <b>reduce bandwidth costs</b> associated with operating a presence on the Internet**.** Origin data transfer is one of the biggest expenses of running a web service, so serving content out of Cloudflare’s cache can significantly reduce costs incurred by origin infrastructure.</p>
-	<p>Because it’s not safe to cache all content (we wouldn’t want to cache your bank balance by default), Cloudflare relies on customers to tell us what’s safe to cache with <a href="https://support.cloudflare.com/hc/en-us/articles/115003206852-Understanding-Origin-Cache-Control">HTTP Cache-Control headers</a> and <a href="https://support.cloudflare.com/hc/en-us/articles/360021023712-Best-Practices-Speed-up-your-Site-with-Custom-Caching-via-Cloudflare-Page-Rules">page rules</a>. But even with page rules, it can be hard to understand what’s actually getting cached — or more importantly, what’s <i>not</i> getting cached, and why. Is a resource expired? Or was it even eligible for cache in the first place?</p>
+	<p>Because it’s not safe to cache all content (we wouldn’t want to cache your bank balance by default), Cloudflare relies on customers to tell us what’s safe to cache with <a href="https://support.cloudflare.com/hc/en-us/articles/115003206852-Understanding-Origin-Cache-Control" target="_blank" rel="noopener noreferrer">HTTP Cache-Control headers</a> and <a href="https://support.cloudflare.com/hc/en-us/articles/360021023712-Best-Practices-Speed-up-your-Site-with-Custom-Caching-via-Cloudflare-Page-Rules" target="_blank" rel="noopener noreferrer">page rules</a>. But even with page rules, it can be hard to understand what’s actually getting cached — or more importantly, what’s <i>not</i> getting cached, and why. Is a resource expired? Or was it even eligible for cache in the first place?</p>
 	<div class="flex anchor relative">
 		<h2 id="faster-or-cheaper-why-not-both">Faster or cheaper? Why not both!</h2>
 		<a href="https://blog.cloudflare.com/#faster-or-cheaper-why-not-both" aria-hidden="true" class="relative sm:absolute sm:-start-5">
@@ -76,7 +76,7 @@
 			</svg>
 		</a>
 	</div>
-	<p>When analyzing traffic patterns, it’s essential to understand how things change over time. Perhaps you just applied a configuration change and want to see the impact, or just launched a big sale on your <a href="https://www.cloudflare.com/ecommerce">e-commerce site</a>.</p>
+	<p>When analyzing traffic patterns, it’s essential to understand how things change over time. Perhaps you just applied a configuration change and want to see the impact, or just launched a big sale on your <a href="https://www.cloudflare.com/ecommerce" target="_blank" rel="noopener noreferrer">e-commerce site</a>.</p>
 	<figure class="kg-card kg-image-card ">
 
 		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1qAzVrLDsOjvybzVUIipiB/b37687b061cab69c20ef747dc0a56d1e/image5-4.png" alt="" class="kg-image" width="1882" height="998" loading="lazy">
@@ -101,19 +101,19 @@
 	<p>Cache statuses are also essential for understanding what you need to do to optimize cache ratios. For example:</p>
 	<ul>
 		<li>
-			<p><b><b><b>Dynamic</b></b></b> indicates that a request was never eligible for cache, and went straight to origin. This is the default for many file types, including HTML. <a href="https://support.cloudflare.com/hc/en-us/articles/360021023712-Best-Practices-Speed-up-your-Site-with-Custom-Caching-via-Cloudflare-Page-Rules">Learn more about making more content eligible for cache using page rules</a>. Fixing this is one of the fastest ways to reduce origin data transfer cost.</p>
+			<p><b><b><b>Dynamic</b></b></b> indicates that a request was never eligible for cache, and went straight to origin. This is the default for many file types, including HTML. <a href="https://support.cloudflare.com/hc/en-us/articles/360021023712-Best-Practices-Speed-up-your-Site-with-Custom-Caching-via-Cloudflare-Page-Rules" target="_blank" rel="noopener noreferrer">Learn more about making more content eligible for cache using page rules</a>. Fixing this is one of the fastest ways to reduce origin data transfer cost.</p>
 		</li>
 		<li>
-			<p><b><b><b>Revalidated</b></b></b> indicates content that was expired, but after Cloudflare checked the origin, it was still fresh! If you see a lot of revalidated content, it’s a good sign you should increase your Edge Cache TTLs through a <a href="https://support.cloudflare.com/hc/en-us/articles/218411427#summary-of-page-rules-settings">page rule</a> or <a href="https://support.cloudflare.com/hc/en-us/articles/115003206852-Understanding-Origin-Cache-Control">max-age origin directive</a>. Updating TTLs is one of the easiest ways to make your site faster.</p>
+			<p><b><b><b>Revalidated</b></b></b> indicates content that was expired, but after Cloudflare checked the origin, it was still fresh! If you see a lot of revalidated content, it’s a good sign you should increase your Edge Cache TTLs through a <a href="https://support.cloudflare.com/hc/en-us/articles/218411427#summary-of-page-rules-settings" target="_blank" rel="noopener noreferrer">page rule</a> or <a href="https://support.cloudflare.com/hc/en-us/articles/115003206852-Understanding-Origin-Cache-Control" target="_blank" rel="noopener noreferrer">max-age origin directive</a>. Updating TTLs is one of the easiest ways to make your site faster.</p>
 		</li>
 		<li>
 			<p><b><b><b>Expired</b></b></b> resources are ones that were in our cache, but were expired. Consider if you can extend TTLs on these, or at least support revalidation at your origin.</p>
 		</li>
 		<li>
-			<p>A <b><b><b>miss</b></b></b> indicates that Cloudflare has not seen that resource recently. These can be tricky to optimize, but there are a few potential remedies: Enable <a href="https://support.cloudflare.com/hc/en-us/articles/115000224552">Argo Tiered Caching</a> to check another datacenter’s cache before going to origin, or use a <a href="https://support.cloudflare.com/hc/en-us/articles/115004290387-Creating-Cache-Keys#6aSlDJLc9DvvBv5mXc2n4O">Custom Cache Key</a> to make multiple URLs match the same cached resource (for example, by ignoring query string)</p>
+			<p>A <b><b><b>miss</b></b></b> indicates that Cloudflare has not seen that resource recently. These can be tricky to optimize, but there are a few potential remedies: Enable <a href="https://support.cloudflare.com/hc/en-us/articles/115000224552" target="_blank" rel="noopener noreferrer">Argo Tiered Caching</a> to check another datacenter’s cache before going to origin, or use a <a href="https://support.cloudflare.com/hc/en-us/articles/115004290387-Creating-Cache-Keys#6aSlDJLc9DvvBv5mXc2n4O" target="_blank" rel="noopener noreferrer">Custom Cache Key</a> to make multiple URLs match the same cached resource (for example, by ignoring query string)</p>
 		</li>
 	</ul>
-	<p>For a full explanation of each cache status, see our <a href="https://support.cloudflare.com/hc/en-us/articles/200172516-Understanding-Cloudflare-s-CDN">help center</a>.</p>
+	<p>For a full explanation of each cache status, see our <a href="https://support.cloudflare.com/hc/en-us/articles/200172516-Understanding-Cloudflare-s-CDN" target="_blank" rel="noopener noreferrer">help center</a>.</p>
 	<div class="flex anchor relative">
 		<h2 id="to-the-nth-dimension">To the Nth dimension</h2>
 		<a href="https://blog.cloudflare.com/#to-the-nth-dimension" aria-hidden="true" class="relative sm:absolute sm:-start-5">

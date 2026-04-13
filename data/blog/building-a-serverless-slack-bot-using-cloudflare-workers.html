@@ -1,6 +1,6 @@
 <div class="mb2 gray5">6 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7qmShlW12Dgyv2u8U1AVir/52b761d5aa3ba51054d5aef992b77d5d/building-a-serverless-slack-bot-using-cloudflare-workers.jpg" alt="">
 <div class="post-content lh-copy gray1">
-	<p>Our <a href="https://www.cloudflare.com/products/cloudflare-workers">Workers platform</a> can be used for a ton of useful purposes: for A/B (multivariate) testing, storage bucket authentication, coalescing responses from multiple APIs, and more. But Workers can also be put to use beyond "HTTP middleware": a Worker can effectively be a web application in its own right. Given the rise of 'chatbots', we can also build a <a href="https://api.slack.com/slack-apps">Slack app</a> using Cloudflare Workers, with no servers required (well, at least not yours!).</p>
+	<p>Our <a href="https://www.cloudflare.com/products/cloudflare-workers" target="_blank" rel="noopener noreferrer">Workers platform</a> can be used for a ton of useful purposes: for A/B (multivariate) testing, storage bucket authentication, coalescing responses from multiple APIs, and more. But Workers can also be put to use beyond "HTTP middleware": a Worker can effectively be a web application in its own right. Given the rise of 'chatbots', we can also build a <a href="https://api.slack.com/slack-apps" target="_blank" rel="noopener noreferrer">Slack app</a> using Cloudflare Workers, with no servers required (well, at least not yours!).</p>
 	<figure class="kg-card kg-image-card ">
 
 		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6yecvBDkVigJV3qqH9PlBt/1678a848896b754a217fbff8d04cd4ee/workers_slack_bot2-1.jpg" alt="workers_slack_bot2-1" class="kg-image" width="1200" height="600" loading="lazy">
@@ -14,12 +14,12 @@
 			</svg>
 		</a>
 	</div>
-	<p>We're going to build a <a href="https://api.slack.com/slash-commands">Slack bot</a> (as an external webhook) for fetching the latest stock prices.</p>
-	<p>This Worker could also be adapted to fetch <a href="https://developer.github.com/v3/issues">open issues</a> from GitHub's API; to <a href="https://www.themoviedb.org/documentation/api/discover">discover what movie to watch</a> after work; anything with a REST API you can make query against.</p>
+	<p>We're going to build a <a href="https://api.slack.com/slash-commands" target="_blank" rel="noopener noreferrer">Slack bot</a> (as an external webhook) for fetching the latest stock prices.</p>
+	<p>This Worker could also be adapted to fetch <a href="https://developer.github.com/v3/issues" target="_blank" rel="noopener noreferrer">open issues</a> from GitHub's API; to <a href="https://www.themoviedb.org/documentation/api/discover" target="_blank" rel="noopener noreferrer">discover what movie to watch</a> after work; anything with a REST API you can make query against.</p>
 	<p>Nevertheless, our "stock prices bot":</p>
 	<ul>
 		<li>
-			<p>Uses the <a href="https://www.alphavantage.co">Alpha Vantage Open Stock API</a> to fetch stock prices. Alpha Vantage is a finance API that provides free cloud-based access to the global financial market.</p>
+			<p>Uses the <a href="https://www.alphavantage.co" target="_blank" rel="noopener noreferrer">Alpha Vantage Open Stock API</a> to fetch stock prices. Alpha Vantage is a finance API that provides free cloud-based access to the global financial market.</p>
 		</li>
 		<li>
 			<p>Caches a map of the top equities to their public identifiers, so you can request <code>/stocks MSFT</code> as a shorthand.</p>
@@ -46,7 +46,7 @@
 			<p>Some basic programming experience.</p>
 		</li>
 		<li>
-			<p>An existing Slack workspace. If you don't have one set up, follow Slack's <a href="https://get.slack.help/hc/en-us/articles/206845317-Create-a-Slack-workspace">helpful guide</a> to get one started.</p>
+			<p>An existing Slack workspace. If you don't have one set up, follow Slack's <a href="https://get.slack.help/hc/en-us/articles/206845317-Create-a-Slack-workspace" target="_blank" rel="noopener noreferrer">helpful guide</a> to get one started.</p>
 		</li>
 	</ul>
 	<blockquote>
@@ -84,7 +84,7 @@
 			</svg>
 		</a>
 	</div>
-	<p>Like all Cloudflare Workers, we need to add a hook for the <code>fetch</code> event and attach the entry point to our Worker. Our <code>slackWebhookHandler</code> function will then be responsible for triggering the rest of our logic and returning a <a href="https://developer.mozilla.org/en-US/docs/Web/API/Response"><code>Response</code></a> to Slack's request.</p>
+	<p>Like all Cloudflare Workers, we need to add a hook for the <code>fetch</code> event and attach the entry point to our Worker. Our <code>slackWebhookHandler</code> function will then be responsible for triggering the rest of our logic and returning a <a href="https://developer.mozilla.org/en-US/docs/Web/API/Response" target="_blank" rel="noopener noreferrer"><code>Response</code></a> to Slack's request.</p>
 	<pre class="language-js"><code class="language-js">// SLACK_TOKEN is used to authenticate requests are from Slack.
 // Keep this value secret.
 const SLACK_TOKEN = "SLACKTOKENGOESHERE"
@@ -203,7 +203,7 @@ function parseMessage(message) {
 	<p>Let's step through what we're doing:</p>
 	<ol>
 		<li>
-			<p>We pass in our <a href="https://developer.mozilla.org/en-US/docs/Web/API/FormData"><code>FormData</code></a> containing the user's message</p>
+			<p>We pass in our <a href="https://developer.mozilla.org/en-US/docs/Web/API/FormData" target="_blank" rel="noopener noreferrer"><code>FormData</code></a> containing the user's message</p>
 		</li>
 		<li>
 			<p>We clean it up (i.e. trim surrounding whitespace, convert to uppercase)</p>
@@ -220,7 +220,7 @@ function parseMessage(message) {
 		</a>
 	</div>
 	<p>We want to make sure our bot doesn't have to make a request to the Alpha Vantage API unnecessarily: if we had thousands of users every minute, there's no need to fetch the (same) price every time. We can fetch it once (per Cloudflare PoP), store in the Cloudflare cache for a short period of time (say 1 minute), and serve users that cached copy. This is win-win: our bot responds more quickly and we're kinder to the API we're consuming).</p>
-	<p>For customers on the <a href="https://www.cloudflare.com/plans/enterprise">Enterprise plan</a>, you may also use the <code>cacheTtlByStatus</code> functionality, which allows you to set different TTLs based on the response status. This way, if you get an error code, you may only cache it for 1 second, or not cache at all, so that subsequent requests (once the API has been updated) will not fail as well.</p>
+	<p>For customers on the <a href="https://www.cloudflare.com/plans/enterprise" target="_blank" rel="noopener noreferrer">Enterprise plan</a>, you may also use the <code>cacheTtlByStatus</code> functionality, which allows you to set different TTLs based on the response status. This way, if you get an error code, you may only cache it for 1 second, or not cache at all, so that subsequent requests (once the API has been updated) will not fail as well.</p>
 	<p>Given the requested stock, we'll make a HTTP request to the API, confirm we got an acceptable response (HTTP 200), and then return an object with the fields we need:</p>
 	<pre class="language-js"><code class="language-js">
     let resp = await fetch(
@@ -297,7 +297,7 @@ async function stockRequest(stock) {
 			</svg>
 		</a>
 	</div>
-	<p>Slack expects responses in <a href="https://api.slack.com/slash-commands#responding_to_a_command">two possible formats</a>: a plain text string, or a simple JSON structure. Thus, we need to take our reply and build a response for Slack.</p>
+	<p>Slack expects responses in <a href="https://api.slack.com/slash-commands#responding_to_a_command" target="_blank" rel="noopener noreferrer">two possible formats</a>: a plain text string, or a simple JSON structure. Thus, we need to take our reply and build a response for Slack.</p>
 	<pre class="language-js"><code class="language-js">/**
  * slackResponse builds a message for Slack with the given text
  * and optional attachment text
@@ -337,7 +337,7 @@ function slackResponse(text) {
 			</svg>
 		</a>
 	</div>
-	<p>With our bot ready, let's configure Slack to talk to it for our chosen slash-command. First, log into Slack and head to the <a href="https://api.slack.com/apps">app management</a> dashboard.</p>
+	<p>With our bot ready, let's configure Slack to talk to it for our chosen slash-command. First, log into Slack and head to the <a href="https://api.slack.com/apps" target="_blank" rel="noopener noreferrer">app management</a> dashboard.</p>
 	<p>You'll then want to click "Create an App" and fill in the fields, including nominating which workspace to attach it to:</p>
 	<figure class="kg-card kg-image-card ">
 
@@ -407,7 +407,7 @@ let SLACK_TOKEN = "PUTYOURTOKENHERE"</code></pre>
 			</svg>
 		</a>
 	</div>
-	<p>Thank you to <a href="https://github.com/elithrar">Matt Silverlock</a> for his contribution to this post, and Cloudflare.</p>
+	<p>Thank you to <a href="https://github.com/elithrar" target="_blank" rel="noopener noreferrer">Matt Silverlock</a> for his contribution to this post, and Cloudflare.</p>
 	<hr>
-	<p><i>If you have a worker you'd like to share, or want to check out workers from other Cloudflare users, visit the </i><a href="https://community.cloudflare.com/tags/recipe-exchange"><i>“Recipe Exchange”</i></a><i> in the Workers section of the </i><a href="https://community.cloudflare.com/c/developers/workers"><i>Cloudflare Community Forum</i></a><i>.</i></p>
+	<p><i>If you have a worker you'd like to share, or want to check out workers from other Cloudflare users, visit the </i><a href="https://community.cloudflare.com/tags/recipe-exchange" target="_blank" rel="noopener noreferrer"><i>“Recipe Exchange”</i></a><i> in the Workers section of the </i><a href="https://community.cloudflare.com/c/developers/workers" target="_blank" rel="noopener noreferrer"><i>Cloudflare Community Forum</i></a><i>.</i></p>
 </div>

@@ -14,7 +14,7 @@
 			</svg>
 		</a>
 	</div>
-	<p>For this project, I'm using components from Waveshare. They offer <a href="https://www.waveshare.com/product/displays/e-paper/epaper-1.htm?___SID=U&amp;limit=80"><u>a variety of e-paper displays</u></a>, ranging from credit card-sized to A4-sized models. I chose the 7.5-inch, two-color "e-Paper (G)" display. For the controller, I'm using a Waveshare <a href="https://www.waveshare.com/e-Paper-ESP32-Driver-Board.htm"><u>ESP32-based universal board</u></a>. With just these two components — a display and a controller — I was ready to get started.</p>
+	<p>For this project, I'm using components from Waveshare. They offer <a href="https://www.waveshare.com/product/displays/e-paper/epaper-1.htm?___SID=U&amp;limit=80" target="_blank" rel="noopener noreferrer"><u>a variety of e-paper displays</u></a>, ranging from credit card-sized to A4-sized models. I chose the 7.5-inch, two-color "e-Paper (G)" display. For the controller, I'm using a Waveshare <a href="https://www.waveshare.com/e-Paper-ESP32-Driver-Board.htm" target="_blank" rel="noopener noreferrer"><u>ESP32-based universal board</u></a>. With just these two components — a display and a controller — I was ready to get started.</p>
 	<figure class="kg-card kg-image-card">
 		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7A6SqnMUHriAgRAAJM5Mbj/0d1282a915a1192d276e7dff1b901013/Screenshot_2024-12-23_at_15.25.45.png" alt="" class="kg-image" width="1404" height="704" loading="lazy">
 	</figure>
@@ -33,21 +33,21 @@
 		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6WNVmUFDsLdewKrZJr4Otl/ae5eb976d1c7dc176cc288619b18c036/image1.png" alt="" class="kg-image" width="1206" height="589" loading="lazy">
 	</figure>
 	<p style="text-align:center;"><span style="background-color:transparent;color:#000000;"><span style="font-style:normal;font-variant:normal;font-weight:400;text-decoration:none;vertical-align:baseline;white-space:pre-wrap;"><sup>(</sup></span></span><a style="text-decoration:none;" target="_blank" rel="noopener noreferrer" href="https://www.waveshare.com/e-paper-esp32-driver-board.htm"><span style="background-color:transparent;color:#1155cc;"><span style="-webkit-text-decoration-skip:none;font-style:normal;font-variant:normal;font-weight:400;text-decoration-skip-ink:none;vertical-align:baseline;white-space:pre-wrap;"><sup><u>source</u></sup></span></span></a><span style="background-color:transparent;color:#000000;"><span style="font-style:normal;font-variant:normal;font-weight:400;text-decoration:none;vertical-align:baseline;white-space:pre-wrap;"><sup>)</sup></span></span></p>
-	<p>This was my first time working with the <a href="https://en.wikipedia.org/wiki/ESP32"><u>ESP32 CPU family</u></a>, and I’m really impressed. It’s a system-on-chip controller with built-in Bluetooth and Wi-Fi. It’s relatively fast, very power-efficient, and <a href="https://youtu.be/qLh1FOcGysY?t=157"><u>quite popular in DSP</u></a> (digital signal processing) applications. For example, your audio device might be powered by a CPU like this. Interestingly, the newer models have switched to the <a href="https://en.wikipedia.org/wiki/RISC-V"><u>RISC-V</u></a> instruction set.</p>
-	<p>For our purposes, we’ll only scratch the surface of what the ESP32 is capable of. The chip is straightforward to work with, thanks to the familiar Arduino environment. A great starting point is <a href="https://www.waveshare.com/wiki/E-Paper_ESP32_Driver_Board#How_to_Use"><u>the demo provided by Waveshare</u></a>. It sets up a web page where you can easily upload a custom image to the display.</p>
+	<p>This was my first time working with the <a href="https://en.wikipedia.org/wiki/ESP32" target="_blank" rel="noopener noreferrer"><u>ESP32 CPU family</u></a>, and I’m really impressed. It’s a system-on-chip controller with built-in Bluetooth and Wi-Fi. It’s relatively fast, very power-efficient, and <a href="https://youtu.be/qLh1FOcGysY?t=157" target="_blank" rel="noopener noreferrer"><u>quite popular in DSP</u></a> (digital signal processing) applications. For example, your audio device might be powered by a CPU like this. Interestingly, the newer models have switched to the <a href="https://en.wikipedia.org/wiki/RISC-V" target="_blank" rel="noopener noreferrer"><u>RISC-V</u></a> instruction set.</p>
+	<p>For our purposes, we’ll only scratch the surface of what the ESP32 is capable of. The chip is straightforward to work with, thanks to the familiar Arduino environment. A great starting point is <a href="https://www.waveshare.com/wiki/E-Paper_ESP32_Driver_Board#How_to_Use" target="_blank" rel="noopener noreferrer"><u>the demo provided by Waveshare</u></a>. It sets up a web page where you can easily upload a custom image to the display.</p>
 	<p>To run the demo you need to:</p>
 	<ul>
 		<li>
-			<p>Install the <a href="https://support.arduino.cc/hc/en-us/articles/360019833020-Download-and-install-Arduino-IDE"><u>Arduino IDE</u></a>.</p>
+			<p>Install the <a href="https://support.arduino.cc/hc/en-us/articles/360019833020-Download-and-install-Arduino-IDE" target="_blank" rel="noopener noreferrer"><u>Arduino IDE</u></a>.</p>
 		</li>
 		<li>
 			<p>Fix permissions of the <code>/dev/ACM0</code> device.</p>
 		</li>
 		<li>
-			<p>Install "Additional Boards Manager URL" as per the <a href="https://www.waveshare.com/wiki/Arduino_ESP32/8266_Online_Installation"><u>instructions</u></a>, and install the "esp32 by expressif" bundle.</p>
+			<p>Install "Additional Boards Manager URL" as per the <a href="https://www.waveshare.com/wiki/Arduino_ESP32/8266_Online_Installation" target="_blank" rel="noopener noreferrer"><u>instructions</u></a>, and install the "esp32 by expressif" bundle.</p>
 		</li>
 		<li>
-			<p>Open the "Loader_esp32wf" example downloaded from <a href="https://www.waveshare.com/wiki/E-Paper_ESP32_Driver_Board#Download_Demo"><u>waveshare</u></a>.</p>
+			<p>Open the "Loader_esp32wf" example downloaded from <a href="https://www.waveshare.com/wiki/E-Paper_ESP32_Driver_Board#Download_Demo" target="_blank" rel="noopener noreferrer"><u>waveshare</u></a>.</p>
 		</li>
 		<li>
 			<p>Change the Wi-Fi name, password and IP address in the Arduino IDE <code>srvr.h</code> tab.</p>
@@ -98,17 +98,17 @@
 	<p>The ESP32 provides some great higher-level libraries to simplify development. For this project, we’ll need three key components:</p>
 	<ol>
 		<li>
-			<p><a href="https://github.com/espressif/arduino-esp32/blob/master/libraries/WiFi/examples/WiFiClientBasic/WiFiClientBasic.ino"><b><u>Wi-Fi Arduino Library</u></b></a><b>:</b> To connect the ESP32 to a Wi-Fi network.</p>
+			<p><a href="https://github.com/espressif/arduino-esp32/blob/master/libraries/WiFi/examples/WiFiClientBasic/WiFiClientBasic.ino" target="_blank" rel="noopener noreferrer"><b><u>Wi-Fi Arduino Library</u></b></a><b>:</b> To connect the ESP32 to a Wi-Fi network.</p>
 		</li>
 		<li>
-			<p><a href="https://github.com/espressif/arduino-esp32/blob/master/libraries/HTTPClient/examples/BasicHttpClient/BasicHttpClient.ino"><b><u>HTTP Arduino Library</u></b></a><b>:</b> To handle HTTP requests and fetch the rendered bitmap from the server.</p>
+			<p><a href="https://github.com/espressif/arduino-esp32/blob/master/libraries/HTTPClient/examples/BasicHttpClient/BasicHttpClient.ino" target="_blank" rel="noopener noreferrer"><b><u>HTTP Arduino Library</u></b></a><b>:</b> To handle HTTP requests and fetch the rendered bitmap from the server.</p>
 		</li>
 		<li>
 			<p><b>EPD (e-Paper Display) Driver:</b> To control the e-paper display and render the fetched bitmap.</p>
 		</li>
 	</ol>
 	<p>These libraries make it much easier to implement the required functionality without dealing with low-level details.</p>
-	<p><a href="https://github.com/cloudflare/cloudflare-blog/blob/master/2024-12-e-paper/ESP32-fetch-from-worker/ESP32-fetch-from-worker.ino#L31"><u>Here's my ESP32 Arduino project code</u></a>. It's actually pretty straightforward:</p>
+	<p><a href="https://github.com/cloudflare/cloudflare-blog/blob/master/2024-12-e-paper/ESP32-fetch-from-worker/ESP32-fetch-from-worker.ino#L31" target="_blank" rel="noopener noreferrer"><u>Here's my ESP32 Arduino project code</u></a>. It's actually pretty straightforward:</p>
 	<ul>
 		<li>
 			<p>First, it connects to Wi-Fi</p>
@@ -135,8 +135,8 @@
 			</svg>
 		</a>
 	</div>
-	<p>Now for the exciting part! We need an online service that can fetch a website, render it, rasterize it to fit our small monochromatic display, and return it as a display-sized binary blob. Initially, I considered using headless Chrome paired with an ImageMagick script, but then I discovered <a href="https://developers.cloudflare.com/browser-rendering"><u>Cloudflare’s </u><b><u>Browser Rendering API</u></b></a>, which fits our needs perfectly.</p>
-	<p>This API can be used quite trivially and nicely fits our needs. <a href="https://github.com/cloudflare/cloudflare-blog/blob/master/2024-12-e-paper/worker-render-raster/index.ts#L79"><u>Here's the typescript worker code</u></a>, and there are two particularly interesting parts: handling a remote browser and dithering.</p>
+	<p>Now for the exciting part! We need an online service that can fetch a website, render it, rasterize it to fit our small monochromatic display, and return it as a display-sized binary blob. Initially, I considered using headless Chrome paired with an ImageMagick script, but then I discovered <a href="https://developers.cloudflare.com/browser-rendering" target="_blank" rel="noopener noreferrer"><u>Cloudflare’s </u><b><u>Browser Rendering API</u></b></a>, which fits our needs perfectly.</p>
+	<p>This API can be used quite trivially and nicely fits our needs. <a href="https://github.com/cloudflare/cloudflare-blog/blob/master/2024-12-e-paper/worker-render-raster/index.ts#L79" target="_blank" rel="noopener noreferrer"><u>Here's the typescript worker code</u></a>, and there are two particularly interesting parts: handling a remote browser and dithering.</p>
 	<div class="flex anchor relative">
 		<h3 id="remote-browser-api">Remote Browser API</h3>
 		<a href="https://blog.cloudflare.com/#remote-browser-api" aria-hidden="true" class="relative sm:absolute sm:-start-5">
@@ -170,7 +170,7 @@ img = (await page.screenshot()) as Buffer;</code></pre>
 			</svg>
 		</a>
 	</div>
-	<p>To prepare the bitmap for the ESP32, we need to decode the PNG, reduce the color palette to monochromatic, and apply <a href="https://en.wikipedia.org/wiki/Dither"><u>dithering</u></a>. Here's the dithering code:</p>
+	<p>To prepare the bitmap for the ESP32, we need to decode the PNG, reduce the color palette to monochromatic, and apply <a href="https://en.wikipedia.org/wiki/Dither" target="_blank" rel="noopener noreferrer"><u>dithering</u></a>. Here's the dithering code:</p>
 	<pre class="language-C"><code class="language-C">function ditherTwoBits(px: Buffer,
                        width: number,
                        height: number
@@ -232,7 +232,7 @@ Total Upload: 755.39 KiB / gzip: 149.05 KiB
 			</svg>
 		</a>
 	</div>
-	<p>To create the weather panel, I designed a simple HTML and CSS page and <a href="https://github.com/cloudflare/cloudflare-blog/blob/master/2024-12-e-paper/worker-weather-panel/entry.py#L165"><u>published it as another Cloudflare Worker</u></a>. This time, I used <a href="https://developers.cloudflare.com/workers/languages/python"><u>Python in Cloudflare Workers</u></a> because it felt more straightforward, especially since the site needs to query an external weather API. The simplicity of the code was surprising and made the process smooth.</p>
+	<p>To create the weather panel, I designed a simple HTML and CSS page and <a href="https://github.com/cloudflare/cloudflare-blog/blob/master/2024-12-e-paper/worker-weather-panel/entry.py#L165" target="_blank" rel="noopener noreferrer"><u>published it as another Cloudflare Worker</u></a>. This time, I used <a href="https://developers.cloudflare.com/workers/languages/python" target="_blank" rel="noopener noreferrer"><u>Python in Cloudflare Workers</u></a> because it felt more straightforward, especially since the site needs to query an external weather API. The simplicity of the code was surprising and made the process smooth.</p>
 	<pre class="language-Python"><code class="language-Python">async def on_fetch(request, env):
     cached = await env.KV.get("weather")
     if cached:

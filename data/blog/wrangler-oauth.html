@@ -1,6 +1,6 @@
 <div class="mb2 gray5">4 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4YIIWbNBJF290mAtPKef8T/9dc6d3a8dcf198fbaadf64080f3a0e92/wrangler-oauth.png" alt="">
 <div class="post-content lh-copy gray1">
-	<p>Over the course of this summer, I had the incredible opportunity to join the Workers Developer Productivity team and help improve the developer experience of Workers. Today, I’ll talk about my project to implement the OAuth 2.0 login protocol for <a href="https://github.com/cloudflare/wrangler">Wrangler</a>, the Workers command line interface (CLI).</p>
+	<p>Over the course of this summer, I had the incredible opportunity to join the Workers Developer Productivity team and help improve the developer experience of Workers. Today, I’ll talk about my project to implement the OAuth 2.0 login protocol for <a href="https://github.com/cloudflare/wrangler" target="_blank" rel="noopener noreferrer">Wrangler</a>, the Workers command line interface (CLI).</p>
 	<p>Wrangler needs to be authorized in order to carry out its job. API tokens are one way to authorize Wrangler, but they do not provide the best user experience as the user needs to manually copy and paste their tokens. This is where the OAuth 2.0 protocol comes into play.</p>
 	<figure class="kg-card kg-image-card ">
 
@@ -59,7 +59,7 @@
 	</div>
 	<p>In addition to providing a smoother developer experience, the new <code>wrangler login</code> also allows a user to specify which scopes they need. For example, if you would like to have an OAuth token with just account and user read permissions, you can do so by running:</p>
 	<pre class="language-bash"><code class="language-bash">wrangler login --scopes account:read user:read</code></pre>
-	<p>For more information about the currently available scopes, you can run <code>wrangler login --scopes-list</code> or visit the Wrangler login <a href="https://developers.cloudflare.com/workers/cli-wrangler/commands#login">documentation</a>.</p>
+	<p>For more information about the currently available scopes, you can run <code>wrangler login --scopes-list</code> or visit the Wrangler login <a href="https://developers.cloudflare.com/workers/cli-wrangler/commands#login" target="_blank" rel="noopener noreferrer">documentation</a>.</p>
 	<div class="flex anchor relative">
 		<h3 id="revoke-access-at-any-time">Revoke access at any time</h3>
 		<a href="https://blog.cloudflare.com/#revoke-access-at-any-time" aria-hidden="true" class="relative sm:absolute sm:-start-5">
@@ -88,6 +88,6 @@
 			</svg>
 		</a>
 	</div>
-	<p>OAuth 2.0 integration is now available in the 1.19.3 version release of <a href="https://github.com/cloudflare/wrangler">Wrangler</a>. Try it out and let us know your experience. If you prefer the API tokens or global API keys, no worries. You can still access them using the <a href="https://developers.cloudflare.com/workers/cli-wrangler/commands#config"><code>wrangler config</code></a> command.</p>
+	<p>OAuth 2.0 integration is now available in the 1.19.3 version release of <a href="https://github.com/cloudflare/wrangler" target="_blank" rel="noopener noreferrer">Wrangler</a>. Try it out and let us know your experience. If you prefer the API tokens or global API keys, no worries. You can still access them using the <a href="https://developers.cloudflare.com/workers/cli-wrangler/commands#config" target="_blank" rel="noopener noreferrer"><code>wrangler config</code></a> command.</p>
 	<p>I would also like to thank the Workers team and other Cloudflare teams for the incredible internship experience. This opportunity gave me a glimpse into what industry software development looks like, and the opportunity to dive deep into a meaningful project. I enjoyed the responsiveness and teamwork during the internship, making this a great summer.</p>
 </div>

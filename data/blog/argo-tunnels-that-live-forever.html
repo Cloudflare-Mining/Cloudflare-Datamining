@@ -1,12 +1,12 @@
 <div class="mb2 gray5">7 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2GyyZwR94yu2ykvXt29EOl/3c7ab99c48cf0581840ee508980e704d/argo-tunnels-that-live-forever.png" alt="">
 <div class="post-content lh-copy gray1">
-	<p>Cloudflare secures your origin servers by proxying requests to your <a href="https://www.cloudflare.com/learning/dns/what-is-dns">DNS records</a> through our anycast network and to the external IP of your origin. However, external IP addresses can provide attackers with a path around Cloudflare security if they discover those destinations.</p>
+	<p>Cloudflare secures your origin servers by proxying requests to your <a href="https://www.cloudflare.com/learning/dns/what-is-dns" target="_blank" rel="noopener noreferrer">DNS records</a> through our anycast network and to the external IP of your origin. However, external IP addresses can provide attackers with a path around Cloudflare security if they discover those destinations.</p>
 	<figure class="kg-card kg-image-card ">
 
 		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1SytOc3A5w9c9ruinpHR5V/eb39001a465279b6d27c451328e46de0/BDES-1096_Argo-Tunnel-Diagram_1_3x-2.png" alt="" class="kg-image" width="1754" height="975" loading="lazy">
 
 	</figure>
-	<p>We launched <a href="https://developers.cloudflare.com/argo-tunnel">Argo Tunnel</a> as a secure way to connect your origin to Cloudflare without a publicly routable IP address. With Tunnel, you don’t send traffic to an external IP. Instead, a lightweight daemon runs in your infrastructure and creates outbound-only connections to Cloudflare’s edge. With Argo Tunnel, you can quickly deploy infrastructure in a <a href="https://www.cloudflare.com/learning/security/glossary/what-is-zero-trust">Zero Trust model</a> by ensuring all requests to your resources pass through Cloudflare’s security filters.</p>
+	<p>We launched <a href="https://developers.cloudflare.com/argo-tunnel" target="_blank" rel="noopener noreferrer">Argo Tunnel</a> as a secure way to connect your origin to Cloudflare without a publicly routable IP address. With Tunnel, you don’t send traffic to an external IP. Instead, a lightweight daemon runs in your infrastructure and creates outbound-only connections to Cloudflare’s edge. With Argo Tunnel, you can quickly deploy infrastructure in a <a href="https://www.cloudflare.com/learning/security/glossary/what-is-zero-trust" target="_blank" rel="noopener noreferrer">Zero Trust model</a> by ensuring all requests to your resources pass through Cloudflare’s security filters.</p>
 	<figure class="kg-card kg-image-card ">
 
 		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4sjwbzgxbO2pusIoHeAVhc/5c754e9cccf7250aedaab8caed544e92/image6-6.png" alt="" class="kg-image" width="1639" height="616" loading="lazy">
@@ -207,5 +207,5 @@
 			</svg>
 		</a>
 	</div>
-	<p>The new Argo Tunnel architecture is available today. You’ll need <code>cloudflared</code> version 2020.9.3 or later to begin using these features. The latest version of <code>cloudflared</code> is backwards compatible with the legacy model of Argo Tunnel. Additional documentation is available <a href="https://developers.cloudflare.com/argo-tunnel">here</a>.</p>
+	<p>The new Argo Tunnel architecture is available today. You’ll need <code>cloudflared</code> version 2020.9.3 or later to begin using these features. The latest version of <code>cloudflared</code> is backwards compatible with the legacy model of Argo Tunnel. Additional documentation is available <a href="https://developers.cloudflare.com/argo-tunnel" target="_blank" rel="noopener noreferrer">here</a>.</p>
 </div>

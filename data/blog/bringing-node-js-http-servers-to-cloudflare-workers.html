@@ -1,7 +1,7 @@
 <div class="mb2 gray5">3 min read</div>
 <div class="mt4">This post is also available in <a href="https://blog.cloudflare.com/ja-jp/bringing-node-js-http-servers-to-cloudflare-workers">日本語</a>.</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6P6ZgL9jCOVpCb7HTit5fK/44032d6e590cd214de637caad0275fac/image1.png" alt="">
 <div class="post-content lh-copy gray1">
-	<p>We’re making it easier to run your Node.js applications on <a href="https://www.cloudflare.com/developer-platform/products/workers"><u>Cloudflare Workers </u></a>by adding support for the <code>node:http</code> client and server APIs. This significant addition brings familiar Node.js HTTP interfaces to the edge, enabling you to deploy existing Express.js, Koa, and other Node.js applications globally with zero cold starts, automatic scaling, and significantly lower latency for your users — all without rewriting your codebase. Whether you're looking to migrate legacy applications to a modern serverless platform or build new ones using the APIs you already know, you can now leverage Workers' global network while maintaining your existing development patterns and frameworks.</p>
+	<p>We’re making it easier to run your Node.js applications on <a href="https://www.cloudflare.com/developer-platform/products/workers" target="_blank" rel="noopener noreferrer"><u>Cloudflare Workers </u></a>by adding support for the <code>node:http</code> client and server APIs. This significant addition brings familiar Node.js HTTP interfaces to the edge, enabling you to deploy existing Express.js, Koa, and other Node.js applications globally with zero cold starts, automatic scaling, and significantly lower latency for your users — all without rewriting your codebase. Whether you're looking to migrate legacy applications to a modern serverless platform or build new ones using the APIs you already know, you can now leverage Workers' global network while maintaining your existing development patterns and frameworks.</p>
 	<div class="flex anchor relative">
 		<h2 id="the-challenge-node-js-style-http-in-a-serverless-environment">The Challenge: Node.js-style HTTP in a Serverless Environment</h2>
 		<a href="https://blog.cloudflare.com/#the-challenge-node-js-style-http-in-a-serverless-environment" aria-hidden="true" class="relative sm:absolute sm:-start-5">
@@ -10,7 +10,7 @@
 			</svg>
 		</a>
 	</div>
-	<p>Cloudflare Workers operate in a unique <a href="https://www.cloudflare.com/learning/serverless/what-is-serverless"><u>serverless</u></a> environment where direct tcp connection isn't available. Instead, all networking operations are fully managed by specialized services outside the Workers runtime itself — systems like our <a href="https://blog.cloudflare.com/introducing-oxy"><u>Open Egress Router (OER)</u></a> and <a href="https://github.com/cloudflare/pingora"><u>Pingora</u></a> that handle connection pooling, keeping connections warm, managing egress IPs, and all the complex networking details. This means as a developer, you don't need to worry about TLS negotiation, connection management, or network optimization — it's all handled for you automatically.</p>
+	<p>Cloudflare Workers operate in a unique <a href="https://www.cloudflare.com/learning/serverless/what-is-serverless" target="_blank" rel="noopener noreferrer"><u>serverless</u></a> environment where direct tcp connection isn't available. Instead, all networking operations are fully managed by specialized services outside the Workers runtime itself — systems like our <a href="https://blog.cloudflare.com/introducing-oxy"><u>Open Egress Router (OER)</u></a> and <a href="https://github.com/cloudflare/pingora" target="_blank" rel="noopener noreferrer"><u>Pingora</u></a> that handle connection pooling, keeping connections warm, managing egress IPs, and all the complex networking details. This means as a developer, you don't need to worry about TLS negotiation, connection management, or network optimization — it's all handled for you automatically.</p>
 	<p>This fully-managed approach is actually why we can't support certain Node.js APIs — these networking decisions are handled at the system level for performance and security. While this makes Workers different from traditional Node.js environments, it also makes them better for serverless computing — you get enterprise-grade networking without the complexity.</p>
 	<p>This fundamental difference required us to rethink how HTTP APIs work at the edge while maintaining compatibility with existing Node.js code patterns.</p>
 	<p>Our Solution: we've implemented the core `node:http` APIs by building on top of the web-standard technologies that Workers already excel at. Here's how it works:</p>
@@ -31,7 +31,7 @@
 			<p><code>http.request()</code> - For full control over HTTP requests</p>
 		</li>
 	</ul>
-	<p>Our implementations of these APIs are built on top of the standard <a href="https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API"><code><u>fetch()</u></code></a> API that Workers use natively, providing excellent performance while maintaining Node.js compatibility.</p>
+	<p>Our implementations of these APIs are built on top of the standard <a href="https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API" target="_blank" rel="noopener noreferrer"><code><u>fetch()</u></code></a> API that Workers use natively, providing excellent performance while maintaining Node.js compatibility.</p>
 	<pre class="language-JavaScript"><code class="language-JavaScript">import http from 'node:http';
 
 export default {
@@ -90,10 +90,10 @@ export default {
 	</div>
 	<ul>
 		<li>
-			<p>The <a href="https://nodejs.org/api/http.html#class-httpagent"><code><u>Agent</u></code></a> API is provided but operates as a no-op.</p>
+			<p>The <a href="https://nodejs.org/api/http.html#class-httpagent" target="_blank" rel="noopener noreferrer"><code><u>Agent</u></code></a> API is provided but operates as a no-op.</p>
 		</li>
 		<li>
-			<p><a href="https://nodejs.org/docs/v22.19.0/api/http.html#responseaddtrailersheaders"><u>Trailers</u></a>, <a href="https://nodejs.org/docs/v22.19.0/api/http.html#responsewriteearlyhintshints-callback"><u>early hints</u></a>, and <a href="https://nodejs.org/docs/v22.19.0/api/http.html#event-continue"><u>1xx responses</u></a> are not supported.</p>
+			<p><a href="https://nodejs.org/docs/v22.19.0/api/http.html#responseaddtrailersheaders" target="_blank" rel="noopener noreferrer"><u>Trailers</u></a>, <a href="https://nodejs.org/docs/v22.19.0/api/http.html#responsewriteearlyhintshints-callback" target="_blank" rel="noopener noreferrer"><u>early hints</u></a>, and <a href="https://nodejs.org/docs/v22.19.0/api/http.html#event-continue" target="_blank" rel="noopener noreferrer"><u>1xx responses</u></a> are not supported.</p>
 		</li>
 		<li>
 			<p>TLS-specific options are not supported (Workers handle TLS automatically).</p>
@@ -119,7 +119,7 @@ export default {
 			</svg>
 		</a>
 	</div>
-	<p>This approach gives you the flexibility to integrate Node.js HTTP servers with other Worker features, and allows you to have multiple handlers in your default <a href="https://developers.cloudflare.com/workers/runtime-apis/bindings/service-bindings/rpc"><u>entrypoint</u></a> such as <code>fetch</code>, <code>scheduled</code>, <code>queue</code>, etc.</p>
+	<p>This approach gives you the flexibility to integrate Node.js HTTP servers with other Worker features, and allows you to have multiple handlers in your default <a href="https://developers.cloudflare.com/workers/runtime-apis/bindings/service-bindings/rpc" target="_blank" rel="noopener noreferrer"><u>entrypoint</u></a> such as <code>fetch</code>, <code>scheduled</code>, <code>queue</code>, etc.</p>
 	<pre class="language-JavaScript"><code class="language-JavaScript">import { handleAsNodeRequest } from 'cloudflare:node';
 import { createServer } from 'node:http';
 
@@ -155,7 +155,7 @@ export default {
 	<p>This approach is perfect when you need to:</p>
 	<ul>
 		<li>
-			<p>Integrate with other Workers features like <a href="https://www.cloudflare.com/developer-platform/products/workers-kv"><u>KV</u></a>, <a href="https://www.cloudflare.com/developer-platform/products/durable-objects"><u>Durable Objects</u></a>, or <a href="https://www.cloudflare.com/developer-platform/products/r2"><u>R2</u></a></p>
+			<p>Integrate with other Workers features like <a href="https://www.cloudflare.com/developer-platform/products/workers-kv" target="_blank" rel="noopener noreferrer"><u>KV</u></a>, <a href="https://www.cloudflare.com/developer-platform/products/durable-objects" target="_blank" rel="noopener noreferrer"><u>Durable Objects</u></a>, or <a href="https://www.cloudflare.com/developer-platform/products/r2" target="_blank" rel="noopener noreferrer"><u>R2</u></a></p>
 		</li>
 		<li>
 			<p>Handle some routes differently while delegating others to the Node.js server</p>
@@ -205,7 +205,7 @@ export default httpServerHandler({ port: 8080 });
 			</svg>
 		</a>
 	</div>
-	<p>These HTTP APIs open the door to running popular Node.js frameworks like Express.js on Workers. If any of the middlewares for these frameworks don’t work as expected, please <a href="https://github.com/cloudflare/workerd/issues"><u>open an issue</u></a> to Cloudflare Workers repository.</p>
+	<p>These HTTP APIs open the door to running popular Node.js frameworks like Express.js on Workers. If any of the middlewares for these frameworks don’t work as expected, please <a href="https://github.com/cloudflare/workerd/issues" target="_blank" rel="noopener noreferrer"><u>open an issue</u></a> to Cloudflare Workers repository.</p>
 	<pre class="language-JavaScript"><code class="language-JavaScript">import { httpServerHandler } from 'cloudflare:node';
 import express from 'express';
 
@@ -226,7 +226,7 @@ app.listen(3000);
 export default httpServerHandler({ port: 3000 });
 // Or you can simply pass the http.Server instance directly:
 // export default httpServerHandler(app.listen(3000));</code></pre>
-	<p>In addition to <a href="https://expressjs.com"><u>Express.js</u></a>, <a href="https://koajs.com"><u>Koa.js</u></a> is also supported:</p>
+	<p>In addition to <a href="https://expressjs.com" target="_blank" rel="noopener noreferrer"><u>Express.js</u></a>, <a href="https://koajs.com" target="_blank" rel="noopener noreferrer"><u>Koa.js</u></a> is also supported:</p>
 	<pre class="language-JavaScript"><code class="language-JavaScript">import Koa from 'koa';
 import { httpServerHandler } from 'cloudflare:node';
 
@@ -248,8 +248,8 @@ export default httpServerHandler({ port: 8080 });</code></pre>
 			</svg>
 		</a>
 	</div>
-	<p>The <code>node:http </code>and <code>node:https</code> APIs are available in Workers with Node.js compatibility enabled using the <a href="https://developers.cloudflare.com/workers/configuration/compatibility-dates/#nodejs-compatibility-flag"><code><u>nodejs_compat</u></code></a> compatibility flag with a compatibility date later than 08-15-2025.</p>
+	<p>The <code>node:http </code>and <code>node:https</code> APIs are available in Workers with Node.js compatibility enabled using the <a href="https://developers.cloudflare.com/workers/configuration/compatibility-dates/#nodejs-compatibility-flag" target="_blank" rel="noopener noreferrer"><code><u>nodejs_compat</u></code></a> compatibility flag with a compatibility date later than 08-15-2025.</p>
 	<p>The addition of <code>node:http</code> support brings us closer to our goal of making Cloudflare Workers the best platform for running JavaScript at the edge, whether you're building new applications or migrating existing ones.</p><a href="https://deploy.workers.cloudflare.com/?url=%3Chttps%3A%2F%2Fgithub.com%2Fcloudflare%2Ftemplates%2Ftree%2Fmain%2Fnodejs-http-server-template"><img src="https://deploy.workers.cloudflare.com/button" alt="Deploy to Cloudflare"></a>
 	<p></p>
-	<p>Ready to try it out? <a href="https://developers.cloudflare.com/workers/runtime-apis/nodejs"><u>Enable Node.js compatibility</u></a> in your Worker and start exploring the possibilities of familiar<a href="https://developers.cloudflare.com/workers/runtime-apis/nodejs/http"><u> HTTP APIs at the edge</u></a>.</p>
+	<p>Ready to try it out? <a href="https://developers.cloudflare.com/workers/runtime-apis/nodejs" target="_blank" rel="noopener noreferrer"><u>Enable Node.js compatibility</u></a> in your Worker and start exploring the possibilities of familiar<a href="https://developers.cloudflare.com/workers/runtime-apis/nodejs/http" target="_blank" rel="noopener noreferrer"><u> HTTP APIs at the edge</u></a>.</p>
 </div>

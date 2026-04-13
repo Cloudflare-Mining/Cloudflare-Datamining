@@ -8,7 +8,7 @@
 		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3bb2am85Di5godGargTcgE/8d8b3a6c8db786eb1256ced19bf1b787/5934405346_edd94956e8_b.jpg" alt="" class="kg-image" width="1024" height="680" loading="lazy">
 
 	</figure>
-	<p><a href="https://creativecommons.org/licenses/by-sa/2.0">CC BY-SA 2.0</a> <a href="https://c1.staticflickr.com/7/6004/5934405346_edd94956e8_b.jpg">image</a> by <a href="https://www.flickr.com/photos/39483037@N00">Christian Ortiz</a></p>
+	<p><a href="https://creativecommons.org/licenses/by-sa/2.0" target="_blank" rel="noopener noreferrer">CC BY-SA 2.0</a> <a href="https://c1.staticflickr.com/7/6004/5934405346_edd94956e8_b.jpg" target="_blank" rel="noopener noreferrer">image</a> by <a href="https://www.flickr.com/photos/39483037@N00" target="_blank" rel="noopener noreferrer">Christian Ortiz</a></p>
 	<div class="flex anchor relative">
 		<h3 id="playing-hide-and-seek-with-bots-and-hackers">Playing Hide and Seek with Bots and Hackers</h3>
 		<a href="https://blog.cloudflare.com/#playing-hide-and-seek-with-bots-and-hackers" aria-hidden="true" class="relative sm:absolute sm:-start-5">
@@ -59,7 +59,7 @@
 	<p>Only Cloudflare knows how to dial back to the application through the virtual tunnel created between the application and Cloudflare. Traffic can never hit your origin directly because it can never find it, your origin isn’t on the internet, it’s only there if you go through Cloudflare, via Warp. Instead, the client connects to the nearest Cloudflare data center, never directly to the application itself.</p>
 	<p>To start up Cloudflare Warp, it’s just one command. For example, if I want to run Cloudflare Warp to expose an application running locally on port 4000, I run:</p>
 	<pre class="language-bash"><code class="language-bash">cloudflare-warp --hostname example.com https://localhost:4000</code></pre>
-	<p>Behind the scenes, Cloudflare Warp issues an <a href="https://www.cloudflare.com/application-services/products/ssl">SSL certificate</a>, installs it on the application server and uses it to generate an encrypted, tunnelled connection back to Cloudflare. (The internal project name for Cloudflare Warp was E.T. because of this ‘phoning home’ behavior). Cloudflare Warp then sets up the corresponding DNS records for the application so that when a visitor next goes to your application, they will be connected through the virtual tunnel back to the application running locally at port 4000.</p>
+	<p>Behind the scenes, Cloudflare Warp issues an <a href="https://www.cloudflare.com/application-services/products/ssl" target="_blank" rel="noopener noreferrer">SSL certificate</a>, installs it on the application server and uses it to generate an encrypted, tunnelled connection back to Cloudflare. (The internal project name for Cloudflare Warp was E.T. because of this ‘phoning home’ behavior). Cloudflare Warp then sets up the corresponding DNS records for the application so that when a visitor next goes to your application, they will be connected through the virtual tunnel back to the application running locally at port 4000.</p>
 	<figure class="kg-card kg-image-card ">
 
 		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5RDYfy14A0lBORLEnBLr3t/e9fab4eb1eefde05bc224f72c4fa5d50/Screen-Shot-2017-09-27-at-7.54.05-PM.png" alt="" class="kg-image" width="1234" height="595" loading="lazy">
@@ -92,5 +92,5 @@
 			</svg>
 		</a>
 	</div>
-	<p>The Cloudflare Warp beta is available today and we’re gradually adding people every day. Ready to get started? You can <a href="https://warp.cloudflare.com">jump in and read the docs</a> or <a href="https://cloudflare.com/products/cloudflare-warp">sign up for access to the beta</a>.</p>
+	<p>The Cloudflare Warp beta is available today and we’re gradually adding people every day. Ready to get started? You can <a href="https://warp.cloudflare.com" target="_blank" rel="noopener noreferrer">jump in and read the docs</a> or <a href="https://cloudflare.com/products/cloudflare-warp" target="_blank" rel="noopener noreferrer">sign up for access to the beta</a>.</p>
 </div>

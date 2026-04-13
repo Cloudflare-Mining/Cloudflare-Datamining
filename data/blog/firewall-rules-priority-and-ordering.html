@@ -2,7 +2,7 @@
 <div class="post-content lh-copy gray1">
 	<p></p>
 	<p>Firewall Rules are one of the best security features we released this year and have been an overwhelming success. Customers have been using Firewall Rules to solve interesting security related use cases; for example, advanced hotlink protection, restricting access to embargoed content (e.g. productId=1234), locking down sensitive API endpoints, and more.</p>
-	<p>One of the biggest pieces of feedback from the <a href="https://community.cloudflare.com/c/security">Cloudflare community</a>, Twitter, and via customer support, has been around the order in which rules are actioned. By default, Firewall Rules have a default precedence, based on the actions set on the rule:</p>
+	<p>One of the biggest pieces of feedback from the <a href="https://community.cloudflare.com/c/security" target="_blank" rel="noopener noreferrer">Cloudflare community</a>, Twitter, and via customer support, has been around the order in which rules are actioned. By default, Firewall Rules have a default precedence, based on the actions set on the rule:</p>
 	<figure class="kg-card kg-image-card ">
 
 		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2rL1K406rCKQ3YftQq1ULq/b5801c680dc13c33522ac3bea55bc4ea/Default-Precedence.png" alt="" class="kg-image" width="188" height="142" loading="lazy">
@@ -25,7 +25,7 @@
 			</svg>
 		</a>
 	</div>
-	<p>For customers managing a large number of rules, or predominantly using the API or <a href="https://www.terraform.io/docs/providers/cloudflare/index.html">Terraform</a> for configuration, priority numbering is a great solution. Within Firewall Rules, as explained above, the default precedence is the final “conflict resolver”, providing a very useful way of grouping rules.</p>
+	<p>For customers managing a large number of rules, or predominantly using the API or <a href="https://www.terraform.io/docs/providers/cloudflare/index.html" target="_blank" rel="noopener noreferrer">Terraform</a> for configuration, priority numbering is a great solution. Within Firewall Rules, as explained above, the default precedence is the final “conflict resolver”, providing a very useful way of grouping rules.</p>
 	<p>For example, one of the engineers behind Firewall Rules uses Priority to organise their rules into specific groups, e.g.</p>
 	<pre class="language-bash"><code class="language-bash">5000-9999 - Trusted IP addresses
 10000-19999 - Blocking Rules for Bad Crawlers
@@ -46,5 +46,5 @@
 
 	</figure>
 	<p>There is currently a 200 rule limit with this method, so upon creating your 201st rule, you will be switched to Priority Numbering, automatically.</p>
-	<p>For more information on how Ordering and Priority Number operates, please visit our Firewall Rules documentation, found <a href="https://developers.cloudflare.com/firewall/cf-firewall-rules/order-priority">here</a>.</p>
+	<p>For more information on how Ordering and Priority Number operates, please visit our Firewall Rules documentation, found <a href="https://developers.cloudflare.com/firewall/cf-firewall-rules/order-priority" target="_blank" rel="noopener noreferrer">here</a>.</p>
 </div>

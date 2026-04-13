@@ -1,16 +1,16 @@
 <div class="mb2 gray5">8 min read</div>
 <div class="mt4">This post is also available in <a href="https://blog.cloudflare.com/zh-cn/building-agents-at-knock-agents-sdk">简体中文</a> and <a href="https://blog.cloudflare.com/ja-jp/building-agents-at-knock-agents-sdk">日本語</a>.</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4QDMGATQYFYtzw9CfEpZeA/b850ebb2dd2b22fd415807c4a7a09cf2/hero-knock-cloudflare-agents.png" alt="">
 <div class="post-content lh-copy gray1">
-	<p><sub><i>This is a guest post by Chris Bell, CTO of </i></sub><a href="https://knock.app"><sub><i><u>Knock</u></i></sub></a></p>
-	<p>There’s a lot of talk right now about building <a href="https://www.cloudflare.com/learning/ai/what-is-agentic-ai">AI agents</a>, but not a lot out there about what it takes to make those agents truly <i>useful</i>.</p>
+	<p><sub><i>This is a guest post by Chris Bell, CTO of </i></sub><a href="https://knock.app" target="_blank" rel="noopener noreferrer"><sub><i><u>Knock</u></i></sub></a></p>
+	<p>There’s a lot of talk right now about building <a href="https://www.cloudflare.com/learning/ai/what-is-agentic-ai" target="_blank" rel="noopener noreferrer">AI agents</a>, but not a lot out there about what it takes to make those agents truly <i>useful</i>.</p>
 	<p>An Agent is an autonomous system designed to make decisions and perform actions to achieve a specific goal or set of goals, without human input.</p>
 	<p>No matter how good your agent is at making decisions, you will need a person to provide guidance or input on the agent’s path towards its goal. After all, an agent that cannot interact or respond to the outside world and the systems that govern it will be limited in the problems it can solve.</p>
 	<p>That’s where the “human-in-the-loop” interaction pattern comes in. You're bringing a human <i>into</i> the agent's loop and requiring an input from that human before the agent can continue on its task.</p>
 	<figure class="kg-card kg-image-card">
 		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6dhEhrOtwdaWOjJqhrzmMw/cc8576e7ccce43e2df1bacfd91b125ff/image3.png" alt="" class="kg-image" width="625" height="565" loading="lazy">
 	</figure>
-	<p>In this blog post, we'll use<a href="https://knock.app"> <u>Knock</u></a> and the Cloudflare<a href="https://developers.cloudflare.com/agents"> <u>Agents SDK</u></a> to build an AI Agent for a virtual card issuing workflow that requires human approval when a new card is requested.</p>
-	<p>You can find the complete code for this example<a href="https://github.com/knocklabs/ai-agent-examples/tree/main/card-issue-agent"> <u>in the repository</u></a>.</p>
+	<p>In this blog post, we'll use<a href="https://knock.app" target="_blank" rel="noopener noreferrer"> <u>Knock</u></a> and the Cloudflare<a href="https://developers.cloudflare.com/agents" target="_blank" rel="noopener noreferrer"> <u>Agents SDK</u></a> to build an AI Agent for a virtual card issuing workflow that requires human approval when a new card is requested.</p>
+	<p>You can find the complete code for this example<a href="https://github.com/knocklabs/ai-agent-examples/tree/main/card-issue-agent" target="_blank" rel="noopener noreferrer"> <u>in the repository</u></a>.</p>
 	<div class="flex anchor relative">
 		<h2 id="what-is-knock">What is Knock?</h2>
 		<a href="https://blog.cloudflare.com/#what-is-knock" aria-hidden="true" class="relative sm:absolute sm:-start-5">
@@ -19,9 +19,9 @@
 			</svg>
 		</a>
 	</div>
-	<p><a href="https://knock.app"><u>Knock</u></a> is messaging infrastructure you can use to send multi-channel messages across in-app, email, SMS, push, and Slack, without writing any integration code.</p>
+	<p><a href="https://knock.app" target="_blank" rel="noopener noreferrer"><u>Knock</u></a> is messaging infrastructure you can use to send multi-channel messages across in-app, email, SMS, push, and Slack, without writing any integration code.</p>
 	<p>With Knock, you gain complete visibility into the messages being sent to your users while also handling reliable delivery, user notification preferences, and more.</p>
-	<p>You can use Knock to power human-in-the-loop flows for your agents using Knock’s<a href="https://docs.knock.app/developer-tools/agent-toolkit/overview"> <u>Agent Toolkit</u></a>, which is a set of tools that expose Knock’s APIs and messaging capabilities to your AI agents.</p>
+	<p>You can use Knock to power human-in-the-loop flows for your agents using Knock’s<a href="https://docs.knock.app/developer-tools/agent-toolkit/overview" target="_blank" rel="noopener noreferrer"> <u>Agent Toolkit</u></a>, which is a set of tools that expose Knock’s APIs and messaging capabilities to your AI agents.</p>
 	<div class="flex anchor relative">
 		<h2 id="using-the-agent-sdk-as-the-foundation-of-our-ai-agent">Using the Agent SDK as the foundation of our AI Agent</h2>
 		<a href="https://blog.cloudflare.com/#using-the-agent-sdk-as-the-foundation-of-our-ai-agent" aria-hidden="true" class="relative sm:absolute sm:-start-5">
@@ -30,7 +30,7 @@
 			</svg>
 		</a>
 	</div>
-	<p>The Agents SDK provides an abstraction for building stateful, real-time agents on top of <a href="https://developers.cloudflare.com/durable-objects"><u>Durable Objects</u></a> that are globally addressable and persist state using an embedded, <a href="https://blog.cloudflare.com/sqlite-in-durable-objects"><u>zero-latency</u></a> SQLite database.</p>
+	<p>The Agents SDK provides an abstraction for building stateful, real-time agents on top of <a href="https://developers.cloudflare.com/durable-objects" target="_blank" rel="noopener noreferrer"><u>Durable Objects</u></a> that are globally addressable and persist state using an embedded, <a href="https://blog.cloudflare.com/sqlite-in-durable-objects"><u>zero-latency</u></a> SQLite database.</p>
 	<p>Building an AI agent outside of using the Agents SDK and the Cloudflare platform means we need to consider WebSocket servers, state persistence, and how to scale our service horizontally. Because a Durable Object backs the Agents SDK, we receive these benefits for free, while having a globally addressable piece of compute with built-in storage, that’s completely serverless and scales to zero.</p>
 	<p>In the example, we’ll use these features to build an agent that users interact with in real-time via chat, and that can be paused and resumed as needed. The Agents SDK is the ideal platform for powering asynchronous agentic workflows, such as those required in human-in-the-loop interactions.</p>
 	<div class="flex anchor relative">
@@ -42,11 +42,11 @@
 		</a>
 	</div>
 	<p>Within Knock, we design our approval workflow using the visual workflow builder to create the cross-channel messaging logic. We then make the notification templates associated with each channel to which we want to send messages.</p>
-	<p>Knock will automatically apply the<a href="https://docs.knock.app/concepts/preferences"> <u>user’s preferences</u></a> as part of the workflow execution, ensuring that your user’s notification settings are respected.</p>
+	<p>Knock will automatically apply the<a href="https://docs.knock.app/concepts/preferences" target="_blank" rel="noopener noreferrer"> <u>user’s preferences</u></a> as part of the workflow execution, ensuring that your user’s notification settings are respected.</p>
 	<figure class="kg-card kg-image-card">
 		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5f1hOpKg3xTxZwYuJYmUAl/83088b52e8cb26aaed561d00733fd2e1/image1.png" alt="" class="kg-image" width="1999" height="1299" loading="lazy">
 	</figure>
-	<p>You can find an example workflow that we’ve already created for this demo in the repository. You can use this workflow template via the<a href="https://docs.knock.app/cli"> <u>Knock CLI</u></a> to import it into your account.</p>
+	<p>You can find an example workflow that we’ve already created for this demo in the repository. You can use this workflow template via the<a href="https://docs.knock.app/cli" target="_blank" rel="noopener noreferrer"> <u>Knock CLI</u></a> to import it into your account.</p>
 	<div class="flex anchor relative">
 		<h2 id="building-our-chat-ui">Building our chat UI</h2>
 		<a href="https://blog.cloudflare.com/#building-our-chat-ui" aria-hidden="true" class="relative sm:absolute sm:-start-5">
@@ -55,7 +55,7 @@
 			</svg>
 		</a>
 	</div>
-	<p>We’ve built the AI Agent as a chat interface on top of the <code>AIChatAgent</code> abstraction from Cloudflare’s Agents SDK (<a href="https://developers.cloudflare.com/agents/api-reference/agents-api/#chat-agent"><u>docs</u></a>). The Agents SDK here takes care of the bulk of the complexity, and we’re left to implement our LLM calling code with our system prompt.</p>
+	<p>We’ve built the AI Agent as a chat interface on top of the <code>AIChatAgent</code> abstraction from Cloudflare’s Agents SDK (<a href="https://developers.cloudflare.com/agents/api-reference/agents-api/#chat-agent" target="_blank" rel="noopener noreferrer"><u>docs</u></a>). The Agents SDK here takes care of the bulk of the complexity, and we’re left to implement our LLM calling code with our system prompt.</p>
 	<pre class="language-TypeScript"><code class="language-TypeScript">// src/index.ts
 
 import { AIChatAgent } from "agents/ai-chat-agent";
@@ -167,7 +167,7 @@ async function initializeToolkit(agent: AIAgent) {
 			<p>The wrapped tool is then returned as <code>issueCard</code></p>
 		</li>
 	</ul>
-	<p>Under the hood, these options are passed to the<a href="https://docs.knock.app/api-reference/workflows/trigger"> <u>Knock workflow trigger API</u></a> to invoke a workflow per-recipient. The set of the recipients listed here could be dynamic, or go to a group of users through<a href="https://docs.knock.app/concepts/subscriptions"> <u>Knock’s subscriptions API</u></a>.</p>
+	<p>Under the hood, these options are passed to the<a href="https://docs.knock.app/api-reference/workflows/trigger" target="_blank" rel="noopener noreferrer"> <u>Knock workflow trigger API</u></a> to invoke a workflow per-recipient. The set of the recipients listed here could be dynamic, or go to a group of users through<a href="https://docs.knock.app/concepts/subscriptions" target="_blank" rel="noopener noreferrer"> <u>Knock’s subscriptions API</u></a>.</p>
 	<p>We can then pass the wrapped issue card tool to our LLM call in the <code>onChatMessage</code> method on the agent so that the tool call can be called as part of the interaction with the agent.</p>
 	<pre class="language-TypeScript"><code class="language-TypeScript">export class AIAgent extends AIChatAgent {
   // ... other methods
@@ -192,7 +192,7 @@ async function initializeToolkit(agent: AIAgent) {
   }
 }</code></pre>
 	<p>Now when the agent calls the <code>issueCardTool</code>, we invoke Knock to send our approval notifications, deferring the tool call to issue the card until we receive an approval. Knock’s workflows take care of sending out the message to the set of recipient’s specified, generating and delivering messages according to each user’s preferences.</p>
-	<p>Using Knock<a href="https://docs.knock.app/concepts/workflows"> <u>workflows</u></a> for our approval message makes it easy to build cross-channel messaging to reach the user according to their communication<a href="https://docs.knock.app/concepts/preferences"> <u>preferences</u></a>. We can also leverage<a href="https://docs.knock.app/designing-workflows/delay-function"> <u>delays</u></a>,<a href="https://docs.knock.app/designing-workflows/throttle-function"> <u>throttles</u></a>,<a href="https://docs.knock.app/designing-workflows/batch-function"> <u>batching</u></a>, and<a href="https://docs.knock.app/designing-workflows/step-conditions"> <u>conditions</u></a> to orchestrate more complex messaging.</p>
+	<p>Using Knock<a href="https://docs.knock.app/concepts/workflows" target="_blank" rel="noopener noreferrer"> <u>workflows</u></a> for our approval message makes it easy to build cross-channel messaging to reach the user according to their communication<a href="https://docs.knock.app/concepts/preferences" target="_blank" rel="noopener noreferrer"> <u>preferences</u></a>. We can also leverage<a href="https://docs.knock.app/designing-workflows/delay-function" target="_blank" rel="noopener noreferrer"> <u>delays</u></a>,<a href="https://docs.knock.app/designing-workflows/throttle-function" target="_blank" rel="noopener noreferrer"> <u>throttles</u></a>,<a href="https://docs.knock.app/designing-workflows/batch-function" target="_blank" rel="noopener noreferrer"> <u>batching</u></a>, and<a href="https://docs.knock.app/designing-workflows/step-conditions" target="_blank" rel="noopener noreferrer"> <u>conditions</u></a> to orchestrate more complex messaging.</p>
 	<div class="flex anchor relative">
 		<h2 id="handling-the-approval">Handling the approval</h2>
 		<a href="https://blog.cloudflare.com/#handling-the-approval" aria-hidden="true" class="relative sm:absolute sm:-start-5">
@@ -202,13 +202,13 @@ async function initializeToolkit(agent: AIAgent) {
 		</a>
 	</div>
 	<p>Once the message has been sent to our approvers, the next step is to handle the approval coming back, bringing the human into the agent’s loop.</p>
-	<p>The approval request is asynchronous, meaning that the response can come at any point in the future. Fortunately, Knock takes care of the heavy lifting here for you, routing the event to the agent worker via a<a href="https://docs.knock.app/developer-tools/outbound-webhooks/overview"> <u>webhook</u></a> that tracks the interaction with the underlying message. In our case, that’s a click to the "approve" or "reject" button.</p>
+	<p>The approval request is asynchronous, meaning that the response can come at any point in the future. Fortunately, Knock takes care of the heavy lifting here for you, routing the event to the agent worker via a<a href="https://docs.knock.app/developer-tools/outbound-webhooks/overview" target="_blank" rel="noopener noreferrer"> <u>webhook</u></a> that tracks the interaction with the underlying message. In our case, that’s a click to the "approve" or "reject" button.</p>
 	<p>First, we set up a <code>message.interacted</code> webhook handler within the Knock dashboard to forward the interactions to our worker, and ultimately to our agent process.</p>
 	<figure class="kg-card kg-image-card">
 		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5CZkwJmmOw09FNmhRUqFrC/7e7d195276331b42778518b821f7707f/image4.png" alt="" class="kg-image" width="1999" height="1299" loading="lazy">
 	</figure>
 	<p>In our example here, we route the approval click back to the worker to handle, appending a Knock message ID to the end of the <code>approve_url</code> and <code>reject_url</code> to track engagement against the specific message sent. We do this via liquid inside of our message templates in Knock: <code>{{ data.approve_url }}?messageId={{ current_message.id }} </code>. One caveat here is that if this were a production application, we’re likely going to handle our approval click in a different application than this agent is running. We co-located it here for the purposes of this demo only.</p>
-	<p>Once the link is clicked, we have a handler in our worker to mark the message as interacted using Knock’s<a href="https://docs.knock.app/api-reference/messages/mark_as_interacted"> <u>message interaction API</u></a>, passing through the status as metadata so that it can be used later.</p>
+	<p>Once the link is clicked, we have a handler in our worker to mark the message as interacted using Knock’s<a href="https://docs.knock.app/api-reference/messages/mark_as_interacted" target="_blank" rel="noopener noreferrer"> <u>message interaction API</u></a>, passing through the status as metadata so that it can be used later.</p>
 	<pre class="language-TypeScript"><code class="language-TypeScript">import Knock from '@knocklabs/node';
 import { Hono } from "hono";
 
@@ -323,7 +323,7 @@ app.post("/incoming/knock/webhook", async (c) =&gt; {
 		</a>
 	</div>
 	<p>One issue with the above implementation is that we’re prone to issuing multiple cards if someone clicks on the approve button more than once. To rectify this, we want to keep track of the tool calls being issued, and ensure that the call is processed at most once.</p>
-	<p>To power this we leverage the<a href="https://developers.cloudflare.com/agents/api-reference/store-and-sync-state"> <u>agent’s built-in state</u></a>, which can be used to persist information without reaching for another persistence store like a database or Redis, although we could absolutely do so if we wished. We can track the tool calls by their ID and capture their current status, right inside the agent process.</p>
+	<p>To power this we leverage the<a href="https://developers.cloudflare.com/agents/api-reference/store-and-sync-state" target="_blank" rel="noopener noreferrer"> <u>agent’s built-in state</u></a>, which can be used to persist information without reaching for another persistence store like a database or Redis, although we could absolutely do so if we wished. We can track the tool calls by their ID and capture their current status, right inside the agent process.</p>
 	<pre class="language-TypeScript"><code class="language-TypeScript">type ToolCallStatus = "requested" | "approved" | "rejected";
 
 export interface AgentState {
@@ -385,5 +385,5 @@ class AIAgent extends AIChatAgent&lt;Env, AgentState&gt; {
 	<p>Using the Agents SDK and Knock, it’s easy to build advanced human-in-the-loop experiences that defer tool calls.</p>
 	<p>Knock’s workflow builder and notification engine gives you building blocks to create sophisticated cross-channel messaging for your agents. You can easily create escalation flows that send messages through SMS, push, email, or Slack that respect the notification preferences of your users. Knock also gives you complete visibility into the messages your users are receiving.</p>
 	<p>The Durable Object abstraction underneath the Agents SDK means that we get a globally addressable agent process that’s easy to yield and resume back to. The persistent storage in the Durable Object means we can retain the complete chat history per-user, and any other state that’s required in the agent process to resume the agent with (like our tool calls). Finally, the serverless nature of the underlying Durable Object means we’re able to horizontally scale to support a large number of users with no effort.</p>
-	<p>If you’re looking to build your own AI Agent chat experience with a multiplayer human-in-the-loop experience, you’ll find the complete code from this guide<a href="https://github.com/knocklabs/ai-agent-examples/tree/main/card-issue-agent"> <u>available in GitHub</u></a>.</p>
+	<p>If you’re looking to build your own AI Agent chat experience with a multiplayer human-in-the-loop experience, you’ll find the complete code from this guide<a href="https://github.com/knocklabs/ai-agent-examples/tree/main/card-issue-agent" target="_blank" rel="noopener noreferrer"> <u>available in GitHub</u></a>.</p>
 </div>

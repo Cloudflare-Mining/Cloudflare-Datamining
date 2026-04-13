@@ -1,8 +1,8 @@
 <div class="mb2 gray5">6 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2MAGf0LDRzkrCjZXQkeHMx/8c29d5eb06c1b7d31a9727096049edc6/protecting-data-on-apple-devices-with-cloudflare-and-jamf.png" alt="">
 <div class="post-content lh-copy gray1">
 	<p></p>
-	<p>Today we’re excited to announce Cloudflare’s partnership with Jamf to extend Cloudflare’s Zero Trust Solutions to Jamf customers. This unique offering will enable Jamf customers to easily implement network <a href="https://www.cloudflare.com/products/zero-trust/dlp">Data Loss Prevention (DLP)</a>, <a href="https://www.cloudflare.com/products/zero-trust/browser-isolation">Remote Browser Isolation (RBI)</a>, and <a href="https://blog.cloudflare.com/gateway-tenant-control">SaaS Tenancy Controls</a> from Cloudflare to prevent sensitive data loss from their Apple devices.</p>
-	<p>Jamf is a leader in protecting Apple devices and ensures secure, consumer-simple technology for 71,000+ businesses, schools and hospitals. Today Jamf manages <a href="https://www.globenewswire.com/en/news-release/2023/01/10/2586305/0/en/Jamf-Ends-2022-Helping-Approximately-71-000-Customers-Succeed-with-Apple.html">~30 million</a> Apple devices with MDM, and our partnership extends powerful policy capabilities into the network.</p>
+	<p>Today we’re excited to announce Cloudflare’s partnership with Jamf to extend Cloudflare’s Zero Trust Solutions to Jamf customers. This unique offering will enable Jamf customers to easily implement network <a href="https://www.cloudflare.com/products/zero-trust/dlp" target="_blank" rel="noopener noreferrer">Data Loss Prevention (DLP)</a>, <a href="https://www.cloudflare.com/products/zero-trust/browser-isolation" target="_blank" rel="noopener noreferrer">Remote Browser Isolation (RBI)</a>, and <a href="https://blog.cloudflare.com/gateway-tenant-control">SaaS Tenancy Controls</a> from Cloudflare to prevent sensitive data loss from their Apple devices.</p>
+	<p>Jamf is a leader in protecting Apple devices and ensures secure, consumer-simple technology for 71,000+ businesses, schools and hospitals. Today Jamf manages <a href="https://www.globenewswire.com/en/news-release/2023/01/10/2586305/0/en/Jamf-Ends-2022-Helping-Approximately-71-000-Customers-Succeed-with-Apple.html" target="_blank" rel="noopener noreferrer">~30 million</a> Apple devices with MDM, and our partnership extends powerful policy capabilities into the network.</p>
 	<blockquote>
 		<p><i>“One of the most unforgettable lines I’ve heard from an enterprise customer is their belief that ‘Modern devices are like walking USB sticks that leave through the business’s front door every day.’ It doesn’t have to be that way! We are on a mission at Jamf to help our customers achieve the security and compliance controls they need to confidently support Apple devices at scale in their complex environments. While we are doing everything we can to reach this future, we can’t do it alone. I’m thrilled to be partnering with Cloudflare to deliver a set of enterprise-grade compliance controls in a novel way that leverages our combined next-generation cloud-native infrastructures to deliver a fast, highly-available end user experience.”</i><i>- </i><b><i>Matt Vlasach</i></b><i>, VP Product, Jamf</i></p>
 	</blockquote>
@@ -15,7 +15,7 @@
 		</a>
 	</div>
 	<p>Jamf’s Apple-first Zero Trust Network Access (ZTNA) agent, Jamf Trust, is designed to seamlessly deploy via Jamf Pro with rich identity, endpoint security, and networking integrations that span the Jamf platform. All of these components work together as part of Jamf Security Cloud to protect laptop and mobile endpoints from network and endpoint threats while enabling fast, least-privilege access to company resources in the cloud or behind the firewall.</p>
-	<p>Through this partnership, Jamf customers can now dynamically steer select traffic to Cloudflare’s network using Magic WAN. This enables customers to unlock rich <a href="https://www.cloudflare.com/learning/access-management/what-is-dlp">DLP</a> capabilities, <a href="https://www.cloudflare.com/learning/access-management/what-is-browser-isolation">Remote Browser Isolation</a>, and SaaS Tenancy Controls in a cloud-first, cloud-native architecture that works great on Apple devices.</p>
+	<p>Through this partnership, Jamf customers can now dynamically steer select traffic to Cloudflare’s network using Magic WAN. This enables customers to unlock rich <a href="https://www.cloudflare.com/learning/access-management/what-is-dlp" target="_blank" rel="noopener noreferrer">DLP</a> capabilities, <a href="https://www.cloudflare.com/learning/access-management/what-is-browser-isolation" target="_blank" rel="noopener noreferrer">Remote Browser Isolation</a>, and SaaS Tenancy Controls in a cloud-first, cloud-native architecture that works great on Apple devices.</p>
 	<figure class="kg-card kg-image-card ">
 
 		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5oCDoZu5fCZNbQzuQzjxuy/28e0c2ac95731b8f234704c7f28bd8b5/image2-12.png" alt="" class="kg-image" width="1999" height="1095" loading="lazy">
@@ -29,8 +29,8 @@
 			</svg>
 		</a>
 	</div>
-	<p>While content inspection policies can be created, they cannot be applied to HTTPS traffic since content payloads are encrypted. This is a problem for organizations as it is common for sensitive data to live within an encrypted payload and bypass IT content inspection policies. <a href="https://radar.cloudflare.com/adoption-and-usage?dateRange=52w">99.7% of all requests</a> use HTTPS today and the usage has been seeing a steady increase.</p>
-	<p>To address this visibility gap, organizations can decrypt packets using HTTPS inspection. With Cloudflare Gateway, <a href="https://www.cloudflare.com/learning/security/what-is-https-inspection">SSL/TLS decryption</a> can be performed to inspect HTTPS traffic for security risks. When TLS decryption is enabled, Gateway will decrypt all traffic sent over HTTPS, apply your HTTP policies, and then re-encrypt the request with a <a href="https://developers.cloudflare.com/cloudflare-one/connections/connect-devices/warp/user-side-certificates">user-side certificate</a>. Jamf is able to seamlessly enable this process on managed devices.</p>
+	<p>While content inspection policies can be created, they cannot be applied to HTTPS traffic since content payloads are encrypted. This is a problem for organizations as it is common for sensitive data to live within an encrypted payload and bypass IT content inspection policies. <a href="https://radar.cloudflare.com/adoption-and-usage?dateRange=52w" target="_blank" rel="noopener noreferrer">99.7% of all requests</a> use HTTPS today and the usage has been seeing a steady increase.</p>
+	<p>To address this visibility gap, organizations can decrypt packets using HTTPS inspection. With Cloudflare Gateway, <a href="https://www.cloudflare.com/learning/security/what-is-https-inspection" target="_blank" rel="noopener noreferrer">SSL/TLS decryption</a> can be performed to inspect HTTPS traffic for security risks. When TLS decryption is enabled, Gateway will decrypt all traffic sent over HTTPS, apply your HTTP policies, and then re-encrypt the request with a <a href="https://developers.cloudflare.com/cloudflare-one/connections/connect-devices/warp/user-side-certificates" target="_blank" rel="noopener noreferrer">user-side certificate</a>. Jamf is able to seamlessly enable this process on managed devices.</p>
 	<div class="flex anchor relative">
 		<h3 id="protect-sensitive-data-with-data-loss-prevention">Protect sensitive data with Data Loss Prevention</h3>
 		<a href="https://blog.cloudflare.com/#protect-sensitive-data-with-data-loss-prevention" aria-hidden="true" class="relative sm:absolute sm:-start-5">
@@ -45,14 +45,14 @@
 		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2AZdzJmKbN3bWa3PIUyO3o/44119be2232b31ed8dbfd3c98d25b15a/image3-2.png" alt="" class="kg-image" width="1672" height="588" loading="lazy">
 
 	</figure>
-	<p><a href="https://www.cloudflare.com/products/zero-trust/dlp">Cloudflare’s Data Loss Prevention (DLP)</a> allows for policies to be built in with ease to keep highly sensitive data secure. Cloudflare also provides <a href="https://developers.cloudflare.com/cloudflare-one/policies/data-loss-prevention/dlp-profiles/predefined-profiles">predefined profiles</a> for detecting financial information such as credit card numbers and national identifiers such as social security numbers or tax file numbers in addition to credentials and secrets such as GCP keys, AWS keys, Azure API keys, and SSH keys. On top of that, Cloudflare DLP allows for the creation of expanded regex profiles to detect custom keywords and phrases.</p>
+	<p><a href="https://www.cloudflare.com/products/zero-trust/dlp" target="_blank" rel="noopener noreferrer">Cloudflare’s Data Loss Prevention (DLP)</a> allows for policies to be built in with ease to keep highly sensitive data secure. Cloudflare also provides <a href="https://developers.cloudflare.com/cloudflare-one/policies/data-loss-prevention/dlp-profiles/predefined-profiles" target="_blank" rel="noopener noreferrer">predefined profiles</a> for detecting financial information such as credit card numbers and national identifiers such as social security numbers or tax file numbers in addition to credentials and secrets such as GCP keys, AWS keys, Azure API keys, and SSH keys. On top of that, Cloudflare DLP allows for the creation of expanded regex profiles to detect custom keywords and phrases.</p>
 	<p><b>Steps to implement Cloudflare DLP with Jamf:</b></p>
 	<ol>
 		<li>
-			<p>In Jamf’s Security Cloud portal, <a href="https://learn.jamf.com/bundle/jamf-security-documentation/page/Connecting_to_Cloud_Infrastructure_for_Cloudflare.html">configure a Magic WAN interconnect</a> to your Cloudflare account.</p>
+			<p>In Jamf’s Security Cloud portal, <a href="https://learn.jamf.com/bundle/jamf-security-documentation/page/Connecting_to_Cloud_Infrastructure_for_Cloudflare.html" target="_blank" rel="noopener noreferrer">configure a Magic WAN interconnect</a> to your Cloudflare account.</p>
 		</li>
 		<li>
-			<p>Create an <a href="https://learn.jamf.com/bundle/jamf-security-documentation/page/Access_Policies.html">access policy</a> to route traffic for DLP inspection via your Cloudflare Magic WAN interconnect</p>
+			<p>Create an <a href="https://learn.jamf.com/bundle/jamf-security-documentation/page/Access_Policies.html" target="_blank" rel="noopener noreferrer">access policy</a> to route traffic for DLP inspection via your Cloudflare Magic WAN interconnect</p>
 			<ul>
 				<li>
 					<p>Traffic may be matched by hostname, domain, or IP address/CIDR block</p>
@@ -66,10 +66,10 @@
 			</ul>
 		</li>
 		<li>
-			<p><a href="https://developers.cloudflare.com/cloudflare-one/policies/data-loss-prevention/dlp-policies">Configure a DLP policy</a> in your Cloudflare One portal.</p>
+			<p><a href="https://developers.cloudflare.com/cloudflare-one/policies/data-loss-prevention/dlp-policies" target="_blank" rel="noopener noreferrer">Configure a DLP policy</a> in your Cloudflare One portal.</p>
 		</li>
 		<li>
-			<p>In Jamf Pro, create a new Configuration Profile with the <a href="https://developers.cloudflare.com/cloudflare-one/connections/connect-devices/warp/user-side-certificates/install-cloudflare-cert/#download-the-cloudflare-root-certificate">Cloudflare Gateway Root Certificate Authority</a> and scope it to your target Apple devices.</p>
+			<p>In Jamf Pro, create a new Configuration Profile with the <a href="https://developers.cloudflare.com/cloudflare-one/connections/connect-devices/warp/user-side-certificates/install-cloudflare-cert/#download-the-cloudflare-root-certificate" target="_blank" rel="noopener noreferrer">Cloudflare Gateway Root Certificate Authority</a> and scope it to your target Apple devices.</p>
 		</li>
 	</ol>
 	<p>Using Activation Profiles in Jamf Security Cloud, deploy Jamf Trust and supporting mobile configuration profiles to your end users to enable access to organization resources while enforcing DLP policies.</p>
@@ -92,10 +92,10 @@
 	<p><b>Steps to implement Remote Browser Isolation:</b></p>
 	<ol>
 		<li>
-			<p>In Jamf’s Security Cloud portal, <a href="https://learn.jamf.com/bundle/jamf-security-documentation/page/Connecting_to_Cloud_Infrastructure_for_Cloudflare.html">configure a Magic WAN interconnect</a> to your Cloudflare account.</p>
+			<p>In Jamf’s Security Cloud portal, <a href="https://learn.jamf.com/bundle/jamf-security-documentation/page/Connecting_to_Cloud_Infrastructure_for_Cloudflare.html" target="_blank" rel="noopener noreferrer">configure a Magic WAN interconnect</a> to your Cloudflare account.</p>
 		</li>
 		<li>
-			<p><a href="https://learn.jamf.com/bundle/jamf-security-documentation/page/Configuring_Access_Policy.html">Configure an Access policy</a> and specify the domains or hostnames to be rendered via remote browser isolation in the Cloudflare network</p>
+			<p><a href="https://learn.jamf.com/bundle/jamf-security-documentation/page/Configuring_Access_Policy.html" target="_blank" rel="noopener noreferrer">Configure an Access policy</a> and specify the domains or hostnames to be rendered via remote browser isolation in the Cloudflare network</p>
 			<ul>
 				<li>
 					<p>Be sure to include *.browser.run as a hostname in your Jamf access policy.</p>
@@ -112,13 +112,13 @@
 			</ul>
 		</li>
 		<li>
-			<p>In your Cloudflare One console, <a href="https://developers.cloudflare.com/cloudflare-one/policies/browser-isolation/setup/non-identity">enable Non-identity on-ramps</a> in your Cloudflare One portal.</p>
+			<p>In your Cloudflare One console, <a href="https://developers.cloudflare.com/cloudflare-one/policies/browser-isolation/setup/non-identity" target="_blank" rel="noopener noreferrer">enable Non-identity on-ramps</a> in your Cloudflare One portal.</p>
 		</li>
 		<li>
-			<p>Configure a <a href="https://developers.cloudflare.com/cloudflare-one/policies/browser-isolation/isolation-policies">Remote Browser Isolation policy</a> in your Cloudflare One portal.</p>
+			<p>Configure a <a href="https://developers.cloudflare.com/cloudflare-one/policies/browser-isolation/isolation-policies" target="_blank" rel="noopener noreferrer">Remote Browser Isolation policy</a> in your Cloudflare One portal.</p>
 		</li>
 		<li>
-			<p>In Jamf Pro, create a new Configuration Profile with the <a href="https://developers.cloudflare.com/cloudflare-one/connections/connect-devices/warp/user-side-certificates/install-cloudflare-cert/#download-the-cloudflare-root-certificate">Cloudflare Gateway Root Certificate Authority</a> and scope it to your target Apple devices.</p>
+			<p>In Jamf Pro, create a new Configuration Profile with the <a href="https://developers.cloudflare.com/cloudflare-one/connections/connect-devices/warp/user-side-certificates/install-cloudflare-cert/#download-the-cloudflare-root-certificate" target="_blank" rel="noopener noreferrer">Cloudflare Gateway Root Certificate Authority</a> and scope it to your target Apple devices.</p>
 		</li>
 	</ol>
 	<p>Using Activation Profiles in Jamf Security Cloud, deploy Jamf Trust and supporting mobile configuration profiles to your end users to enable access to organization resources while enforcing remote browser isolation routing.</p>
@@ -132,16 +132,16 @@
 	</div>
 	<p>Companies often rely on platforms like Google Workspace or Microsoft 365 for business collaboration and productivity, while individuals use these services for their personal use.</p>
 	<p>Allowing users to access these cloud services with both business and personal credentials from the same corporate endpoint poses a significant risk for unauthorized data access and loss. Imagine a scenario where an employee can log in into the corporate account of a SaaS application, download sensitive files, and then login into their personal account on the same company device to upload the stolen files to their personal SaaS application account.</p>
-	<p>Cloudflare's Gateway HTTP policies provide <a href="https://developers.cloudflare.com/cloudflare-one/policies/filtering/http-policies/tenant-control/#tenant-control">SaaS Tenancy Control</a> to ensure that users can only log in to admin-defined SaaS provider tenants with their enterprise credentials, effectively blocking login ability to personal accounts or other business tenants within the defined SaaS provider.</p>
+	<p>Cloudflare's Gateway HTTP policies provide <a href="https://developers.cloudflare.com/cloudflare-one/policies/filtering/http-policies/tenant-control/#tenant-control" target="_blank" rel="noopener noreferrer">SaaS Tenancy Control</a> to ensure that users can only log in to admin-defined SaaS provider tenants with their enterprise credentials, effectively blocking login ability to personal accounts or other business tenants within the defined SaaS provider.</p>
 	<p>Jamf's Access Policies serve as the initial assessment, determining if the users are authorized for the targeted cloud application and if they are requesting access from a company-sanctioned device.</p>
 	<p>Cloudflare's Gateway HTTP policy then processes the requests forwarded from Jamf to define the domains that are permitted to log in to that SaaS provider.</p>
 	<p><b>Steps to implement SaaS Tenancy Control:</b></p>
 	<ol>
 		<li>
-			<p>In Jamf’s Security Cloud portal, <a href="https://learn.jamf.com/bundle/jamf-security-documentation/page/Connecting_to_Cloud_Infrastructure_for_Cloudflare.html">configure a Magic WAN interconnect</a> to your Cloudflare account.</p>
+			<p>In Jamf’s Security Cloud portal, <a href="https://learn.jamf.com/bundle/jamf-security-documentation/page/Connecting_to_Cloud_Infrastructure_for_Cloudflare.html" target="_blank" rel="noopener noreferrer">configure a Magic WAN interconnect</a> to your Cloudflare account.</p>
 		</li>
 		<li>
-			<p><a href="https://learn.jamf.com/bundle/jamf-security-documentation/page/Configuring_Access_Policy.html">Configure one or more Access policies</a> that define the SaaS providers for which you would like to enable tenant controls. Use the below pre-defined SaaS app access policy templates for the respective SaaS provider:</p>
+			<p><a href="https://learn.jamf.com/bundle/jamf-security-documentation/page/Configuring_Access_Policy.html" target="_blank" rel="noopener noreferrer">Configure one or more Access policies</a> that define the SaaS providers for which you would like to enable tenant controls. Use the below pre-defined SaaS app access policy templates for the respective SaaS provider:</p>
 			<ul>
 				<li>
 					<p>“Microsoft Authentication” for Microsoft 365</p>
@@ -161,10 +161,10 @@
 			<p>To ensure these policies are enforced on any network, enable “Restrict access when Jamf Trust is disabled” under the Security tab of the policy to prevent bypassing of these tenancy controls.</p>
 		</li>
 		<li>
-			<p>Configure <a href="https://developers.cloudflare.com/cloudflare-one/policies/filtering/http-policies/tenant-control">SaaS Tenant Control</a> in your Cloudflare One portal.</p>
+			<p>Configure <a href="https://developers.cloudflare.com/cloudflare-one/policies/filtering/http-policies/tenant-control" target="_blank" rel="noopener noreferrer">SaaS Tenant Control</a> in your Cloudflare One portal.</p>
 		</li>
 		<li>
-			<p>In Jamf Pro, create a new Configuration Profile with the <a href="https://developers.cloudflare.com/cloudflare-one/connections/connect-devices/warp/user-side-certificates/install-cloudflare-cert/#download-the-cloudflare-root-certificate">Cloudflare Gateway Root Certificate Authority</a> and scope it to your target Apple devices.</p>
+			<p>In Jamf Pro, create a new Configuration Profile with the <a href="https://developers.cloudflare.com/cloudflare-one/connections/connect-devices/warp/user-side-certificates/install-cloudflare-cert/#download-the-cloudflare-root-certificate" target="_blank" rel="noopener noreferrer">Cloudflare Gateway Root Certificate Authority</a> and scope it to your target Apple devices.</p>
 		</li>
 		<li>
 			<p>Using Activation Profiles in Jamf Security Cloud, deploy Jamf Trust and supporting mobile configuration profiles to your end users to enable access to organization resources while enforcing remote browser isolation routing.</p>
@@ -179,5 +179,5 @@
 		</a>
 	</div>
 	<p>If you are a Cloudflare customer and are interested in using this integration, please reach out to your account team with your questions and feedback.</p>
-	<p>If you are new to Cloudflare or Jamf and interested in using this integration with the Cloudflare Zero Trust product suite, please fill up this <a href="https://www.cloudflare.com/partners/technology-partners/jamf">form</a> and someone from our team will contact you.</p>
+	<p>If you are new to Cloudflare or Jamf and interested in using this integration with the Cloudflare Zero Trust product suite, please fill up this <a href="https://www.cloudflare.com/partners/technology-partners/jamf" target="_blank" rel="noopener noreferrer">form</a> and someone from our team will contact you.</p>
 </div>

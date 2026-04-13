@@ -5,7 +5,7 @@
 		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4kRo39XsUp3WJjldKkZhhZ/fb1970ec6417d47dbed3affadfc1c9b2/Cloudflarerd-updates-2.png" alt="" class="kg-image" width="1510" height="892" loading="lazy">
 
 	</figure>
-	<p>Load Balancing — functionality that’s been around for the last 30 years to help businesses leverage their existing infrastructure resources. Load balancing works by proactively steering traffic away from unhealthy origin servers and — for more advanced solutions — intelligently distributing traffic load based on different steering <a href="https://www.cloudflare.com/learning/performance/types-of-load-balancing-algorithms">algorithms</a>. This process ensures that errors aren’t served to end users and empowers businesses to tightly couple overall business objectives to their traffic behavior.</p>
+	<p>Load Balancing — functionality that’s been around for the last 30 years to help businesses leverage their existing infrastructure resources. Load balancing works by proactively steering traffic away from unhealthy origin servers and — for more advanced solutions — intelligently distributing traffic load based on different steering <a href="https://www.cloudflare.com/learning/performance/types-of-load-balancing-algorithms" target="_blank" rel="noopener noreferrer">algorithms</a>. This process ensures that errors aren’t served to end users and empowers businesses to tightly couple overall business objectives to their traffic behavior.</p>
 	<div class="flex anchor relative">
 		<h2 id="whats-important-for-load-balancing-today">What’s important for load balancing today?</h2>
 		<a href="https://blog.cloudflare.com/#whats-important-for-load-balancing-today" aria-hidden="true" class="relative sm:absolute sm:-start-5">
@@ -69,7 +69,7 @@
 			</svg>
 		</a>
 	</div>
-	<p>We built Load Balancing rules on top of our <a href="https://github.com/cloudflare/wirefilter">open-source wirefilter execution engine</a>. People familiar with Firewall Rules and other products will notice similar syntax since both products are built on top of this execution engine.</p>
+	<p>We built Load Balancing rules on top of our <a href="https://github.com/cloudflare/wirefilter" target="_blank" rel="noopener noreferrer">open-source wirefilter execution engine</a>. People familiar with Firewall Rules and other products will notice similar syntax since both products are built on top of this execution engine.</p>
 	<p>By reusing the same underlying engine, we can take advantage of a battle-tested production library used by other products that have the performance and stability requirements of their own. For those experienced with our rule-based products, you can reuse your knowledge due to the shared syntax to define conditionals statements. For new users, the Wireshark-like syntax is often familiar and relatively simple.</p>
 	<div class="flex anchor relative">
 		<h2 id="dns-vs-proxied">DNS vs Proxied?</h2>
@@ -80,7 +80,7 @@
 		</a>
 	</div>
 	<p>Our Load Balancer supports both DNS and Proxied load balancing. These two protocols operate very differently and as such are handled differently.</p>
-	<p>For <a href="https://www.cloudflare.com/learning/performance/what-is-dns-load-balancing">DNS-based load balancing</a>, our load balancer responds to DNS queries sent from recursive resolvers. These resolvers are normally not the end user directly requesting the traffic nor is there a 1-to-1 ratio between DNS query and end-user requests. The DNS makes extensive use of caching at all levels so the result of each query could potentially be used by thousands of users. Combined, this greatly limits the possible feature set for DNS. Since you don’t see the end user directly nor know if your response is going to be used by one or more users, all responses can only be customized to a limited degree.</p>
+	<p>For <a href="https://www.cloudflare.com/learning/performance/what-is-dns-load-balancing" target="_blank" rel="noopener noreferrer">DNS-based load balancing</a>, our load balancer responds to DNS queries sent from recursive resolvers. These resolvers are normally not the end user directly requesting the traffic nor is there a 1-to-1 ratio between DNS query and end-user requests. The DNS makes extensive use of caching at all levels so the result of each query could potentially be used by thousands of users. Combined, this greatly limits the possible feature set for DNS. Since you don’t see the end user directly nor know if your response is going to be used by one or more users, all responses can only be customized to a limited degree.</p>
 	<p>Our Proxied load balancing, on the other hand, processes rules logic for every request going through the system. Since we act as a proxy for all these requests, we can invoke this logic for all requests and access user-specific data.</p>
 	<p>These different modes mean the fields available to each end up being quite different. The DNS load balancer gets access to DNS-specific fields such as “dns.qry.name” (the query name) while our Proxied load balancer has access to “http.request.method” (the HTTP method used to access the proxied resource). Some more general fields — like the name of the load balancer being used — are available in both modes.</p>
 	<figure class="kg-card kg-image-card ">
@@ -108,6 +108,6 @@
 			</svg>
 		</a>
 	</div>
-	<p>For you, the next steps are simple. Start building custom load balancing rules! For more guidance, check out our <a href="https://developers.cloudflare.com/load-balancing/understand-basics/load-balancing-rules">developer documentation</a>.</p>
+	<p>For you, the next steps are simple. Start building custom load balancing rules! For more guidance, check out our <a href="https://developers.cloudflare.com/load-balancing/understand-basics/load-balancing-rules" target="_blank" rel="noopener noreferrer">developer documentation</a>.</p>
 	<p>For us, we’re looking to expand this functionality. As this new feature develops, we are going to be identifying new fields for conditionals and new options for overrides to allow more specific behavior. As an example, we’ve been looking into exposing a means to creating more time-based conditionals, so users can create rules that only apply during certain times of the day or month. Stay tuned to the blog for more!</p>
 </div>

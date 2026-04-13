@@ -19,7 +19,7 @@
 			<p>Secondary DNS as active backup - The secondary DNS server works alongside the primary server to serve records.</p>
 		</li>
 		<li>
-			<p>Secondary DNS with a hidden primary - The nameserver records at the <a href="https://www.cloudflare.com/learning/dns/glossary/what-is-a-domain-name-registrar">registrar</a> point towards the secondary servers only, essentially treating them as the primary nameservers.</p>
+			<p>Secondary DNS with a hidden primary - The nameserver records at the <a href="https://www.cloudflare.com/learning/dns/glossary/what-is-a-domain-name-registrar" target="_blank" rel="noopener noreferrer">registrar</a> point towards the secondary servers only, essentially treating them as the primary nameservers.</p>
 		</li>
 	</ol>
 	<div class="flex anchor relative">
@@ -30,7 +30,7 @@
 			</svg>
 		</a>
 	</div>
-	<p>Secondary DNS Override builds on the Secondary DNS with a hidden primary model by allowing our customers to not only serve records as they tell us to, but also enable them to proxy any A/AAAA/CNAME records through <a href="https://www.cloudflare.com/network">Cloudflare's network</a>. This is similar to how Cloudflare as a primary DNS provider currently works.</p>
+	<p>Secondary DNS Override builds on the Secondary DNS with a hidden primary model by allowing our customers to not only serve records as they tell us to, but also enable them to proxy any A/AAAA/CNAME records through <a href="https://www.cloudflare.com/network" target="_blank" rel="noopener noreferrer">Cloudflare's network</a>. This is similar to how Cloudflare as a primary DNS provider currently works.</p>
 	<p>Consider the following example:</p>
 	<p>example.com Cloudflare IP - 192.0.2.0example.com origin IP - 203.0.113.0</p>
 	<p>In order to take advantage of Cloudflare's security and performance services, we need to make sure that the origin IP stays hidden from the Internet.</p>
@@ -43,7 +43,7 @@
 	<p>Figure 1 shows that without a hidden primary nameserver, the resolver can choose to query either one. This opens up two issues:</p>
 	<ol>
 		<li>
-			<p>Violates <a href="https://tools.ietf.org/html/rfc1034">RFC 1034</a> and <a href="https://tools.ietf.org/html/rfc2182">RFC 2182</a> because the Cloudflare server will be responding differently than the primary nameserver.</p>
+			<p>Violates <a href="https://tools.ietf.org/html/rfc1034" target="_blank" rel="noopener noreferrer">RFC 1034</a> and <a href="https://tools.ietf.org/html/rfc2182" target="_blank" rel="noopener noreferrer">RFC 2182</a> because the Cloudflare server will be responding differently than the primary nameserver.</p>
 		</li>
 		<li>
 			<p>The origin IP will be exposed to the Internet.</p>
@@ -75,7 +75,7 @@
 	<p>Behind the scenes we store override records that pair with transferred records based on the name. For secondary override we don’t care about the type when overriding records, because of two things:</p>
 	<ol>
 		<li>
-			<p>According to <a href="https://tools.ietf.org/html/rfc1912#section-2.4">RFC 1912</a> you cannot have a CNAME record with the same name as any other record. (This does not apply to some DNSSEC records, see <a href="https://tools.ietf.org/html/rfc2181">RFC 2181</a>)</p>
+			<p>According to <a href="https://tools.ietf.org/html/rfc1912#section-2.4" target="_blank" rel="noopener noreferrer">RFC 1912</a> you cannot have a CNAME record with the same name as any other record. (This does not apply to some DNSSEC records, see <a href="https://tools.ietf.org/html/rfc2181" target="_blank" rel="noopener noreferrer">RFC 2181</a>)</p>
 		</li>
 		<li>
 			<p>A and AAAA records are both address type records which should be either all proxied or all not proxied under the same name.</p>
@@ -92,7 +92,7 @@
 	</div>
 	<p>Normally, putting a CNAME at the apex of a zone is not allowed. For example:</p>
 	<p><code>example.com CNAME other-domain.com</code></p>
-	<p>Is not allowed because this means that there will be at least one other SOA record and one other NS record with the same name, disobeying RFC 1912 as mentioned above. Cloudflare can overcome this through the use of <a href="https://support.cloudflare.com/hc/en-us/articles/200169056-CNAME-Flattening-RFC-compliant-support-for-CNAME-at-the-root">CNAME Flattening</a>, which is a common technique used within the primary DNS product today. CNAME flattening allows us to return address records instead of the CNAME record when a query comes into our authoritative server.</p>
+	<p>Is not allowed because this means that there will be at least one other SOA record and one other NS record with the same name, disobeying RFC 1912 as mentioned above. Cloudflare can overcome this through the use of <a href="https://support.cloudflare.com/hc/en-us/articles/200169056-CNAME-Flattening-RFC-compliant-support-for-CNAME-at-the-root" target="_blank" rel="noopener noreferrer">CNAME Flattening</a>, which is a common technique used within the primary DNS product today. CNAME flattening allows us to return address records instead of the CNAME record when a query comes into our authoritative server.</p>
 	<p>Contrary to what was said above regarding the prevention of editing records through the Secondary DNS Override UI, the CNAME at the apex is the one exception to this rule. Users are able to create a CNAME at the apex in addition to the regular secondary DNS records, however the same rules defined in RFC 1912 also apply here. What this means is that the CNAME at the apex record can be treated as a regular DNS record or a proxied record, depending on what the user decides. Regardless of the proxy status of the CNAME at the apex record, it will override any other A/AAAA records that have been transferred from the primary DNS server.</p>
 	<div class="flex anchor relative">
 		<h3 id="merging-secondary-override-and-cname-at-apex-records">Merging Secondary, Override and CNAME at Apex Records</h3>
@@ -102,7 +102,7 @@
 			</svg>
 		</a>
 	</div>
-	<p>At record edit time we do all of the merging of the secondary, override and CNAME at the apex records. This means that when a DNS request comes in to our authoritative server at the edge, we can still return the records in <a href="https://www.dnsperf.com">blazing fast times</a>. The workflow is shown in figure 4.</p>
+	<p>At record edit time we do all of the merging of the secondary, override and CNAME at the apex records. This means that when a DNS request comes in to our authoritative server at the edge, we can still return the records in <a href="https://www.dnsperf.com" target="_blank" rel="noopener noreferrer">blazing fast times</a>. The workflow is shown in figure 4.</p>
 	<figure class="kg-card kg-image-card ">
 
 		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/28Q1ApTislcuCz1JZlE57M/ce770c426fe865fbed639a06440d8412/image4-6.png" alt="" class="kg-image" width="1004" height="1530" loading="lazy">
@@ -130,5 +130,5 @@
 		</a>
 	</div>
 	<p>Secondary DNS Override is a great option for any users that want to take advantage of the Cloudflare network, without transferring all of their zones to Cloudflare DNS as a primary provider. Security and access control can be managed on the primary side, without worrying about unauthorized edits of information on the Cloudflare side.</p>
-	<p>Secondary DNS Override is currently available on the Enterprise plan, if you’d like to take advantage of it, please let your account team know. For additional documentation on Secondary DNS Override, please refer to our <a href="https://support.cloudflare.com/hc/en-us/articles/360042169091-Understanding-Secondary-DNS-Override#:~:text=Secondary%20Override%20allows%20customers%20to,record%20at%20the%20root%20domain.">support article</a>.</p>
+	<p>Secondary DNS Override is currently available on the Enterprise plan, if you’d like to take advantage of it, please let your account team know. For additional documentation on Secondary DNS Override, please refer to our <a href="https://support.cloudflare.com/hc/en-us/articles/360042169091-Understanding-Secondary-DNS-Override#:~:text=Secondary%20Override%20allows%20customers%20to,record%20at%20the%20root%20domain." target="_blank" rel="noopener noreferrer">support article</a>.</p>
 </div>

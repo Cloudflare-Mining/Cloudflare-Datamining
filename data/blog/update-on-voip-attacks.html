@@ -17,8 +17,8 @@
 			</svg>
 		</a>
 	</div>
-	<p>The attackers primarily use off-the-shelf <a href="https://www.cloudflare.com/learning/ddos/ddos-attack-tools/ddos-booter-ip-stresser">booter</a> services to launch attacks against VoIP infrastructure. The attack methods being used are not novel, <b>but the persistence of the attacker and their attempts to understand the target’s infrastructure are.</b></p>
-	<p>Attackers have used various attack vectors to probe the existing defenses of targets and try to infiltrate any existing defenses to disrupt VoIP services offered by certain providers. In some cases, they have been successful. HTTP attacks against <a href="https://www.cloudflare.com/learning/security/api/what-is-an-api-gateway">API gateways</a> and the corporate websites of the providers have been combined with network-layer and transport-layer attack against VoIP infrastructures. Examples:</p>
+	<p>The attackers primarily use off-the-shelf <a href="https://www.cloudflare.com/learning/ddos/ddos-attack-tools/ddos-booter-ip-stresser" target="_blank" rel="noopener noreferrer">booter</a> services to launch attacks against VoIP infrastructure. The attack methods being used are not novel, <b>but the persistence of the attacker and their attempts to understand the target’s infrastructure are.</b></p>
+	<p>Attackers have used various attack vectors to probe the existing defenses of targets and try to infiltrate any existing defenses to disrupt VoIP services offered by certain providers. In some cases, they have been successful. HTTP attacks against <a href="https://www.cloudflare.com/learning/security/api/what-is-an-api-gateway" target="_blank" rel="noopener noreferrer">API gateways</a> and the corporate websites of the providers have been combined with network-layer and transport-layer attack against VoIP infrastructures. Examples:</p>
 	<ol>
 		<li>
 			<p><b><b><b>TCP floods targeting stateful firewalls</b></b></b>These are being used in “trial-and-error” type attacks. They are not very effective against telephony infrastructure specifically (because it’s mostly UDP) but very effective at overwhelming stateful firewalls.</p>
@@ -27,7 +27,7 @@
 			<p><b><b><b>UDP floods targeting SIP infrastructure</b></b></b>Floods of UDP traffic that have no well-known fingerprint, aimed at critical VoIP services. Generic floods like this may look like legitimate traffic to unsophisticated filtering systems.</p>
 		</li>
 		<li>
-			<p><b><b><b>UDP reflection targeting SIP infrastructure</b></b></b>These methods, when targeted at SIP or RTP services, can easily overwhelm <a href="https://en.wikipedia.org/wiki/Session_border_controller">Session Border Controllers</a> (SBCs) and other telephony infrastructure. The attacker seems to learn enough about the target’s infrastructure to target such services with high precision.</p>
+			<p><b><b><b>UDP reflection targeting SIP infrastructure</b></b></b>These methods, when targeted at SIP or RTP services, can easily overwhelm <a href="https://en.wikipedia.org/wiki/Session_border_controller" target="_blank" rel="noopener noreferrer">Session Border Controllers</a> (SBCs) and other telephony infrastructure. The attacker seems to learn enough about the target’s infrastructure to target such services with high precision.</p>
 		</li>
 		<li>
 			<p><b><b><b>SIP protocol-specific attacks</b></b></b>Attacks at the application layer are of particular concern because of the higher resource cost of generating application errors vs filtering on network devices.</p>
@@ -43,7 +43,7 @@
 	</div>
 	<ol>
 		<li>
-			<p><b><b><b>Deploy an always-on DDoS mitigation service</b></b></b>Cloudflare recommends the deployment of always-on network level protection, like <a href="https://www.cloudflare.com/magic-transit">Cloudflare Magic Transit</a>, prior to your organization being attacked.</p>
+			<p><b><b><b>Deploy an always-on DDoS mitigation service</b></b></b>Cloudflare recommends the deployment of always-on network level protection, like <a href="https://www.cloudflare.com/magic-transit" target="_blank" rel="noopener noreferrer">Cloudflare Magic Transit</a>, prior to your organization being attacked.</p>
 			<p>Do not rely on reactive on-demand SOC-based DDoS Protection services that require humans to analyze attack traffic — they take too long to respond. Instead, onboard to a cloud service that has sufficient network capacity and automated DDoS mitigation systems.</p>
 			<p><b>Cloudflare has effective mitigations in place for the attacks seen against VoIP infrastructure</b>, including for <a href="https://blog.cloudflare.com/announcing-flowtrackd">sophisticated TCP floods</a> and SIP specific attacks.</p>
 		</li>
@@ -86,5 +86,5 @@
 	</div>
 	<p>With over 100 Tbps of network capacity, a network architecture that <a href="https://blog.cloudflare.com/magic-transit-network-functions">efficiently filters traffic close to the source</a>, and a physical presence in over 250 cities, Cloudflare can help protect critical VoIP infrastructure without impacting latency, jitter, and call quality. Test results demonstrate a performance improvement of 36% on average across the globe for a real customer network using Cloudflare Magic Transit.</p>
 	<p>Some of the largest voice and video providers in the world rely on Cloudflare to protect their networks and ensure their services remain online and fast. We stand ready to help.</p>
-	<p>Talk to a Cloudflare specialist to <a href="https://www.cloudflare.com/lp/voip-ddos-protection">learn more</a>.Under attack? Contact our <a href="https://www.cloudflare.com/under-attack-hotline">hotline</a> to speak with someone immediately.</p>
+	<p>Talk to a Cloudflare specialist to <a href="https://www.cloudflare.com/lp/voip-ddos-protection" target="_blank" rel="noopener noreferrer">learn more</a>.Under attack? Contact our <a href="https://www.cloudflare.com/under-attack-hotline" target="_blank" rel="noopener noreferrer">hotline</a> to speak with someone immediately.</p>
 </div>

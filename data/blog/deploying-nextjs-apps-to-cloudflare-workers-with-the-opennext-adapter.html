@@ -1,8 +1,8 @@
 <div class="mb2 gray5">3 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1Gg8cO6ERWqiDNog07xt9q/6acf1db0494a091914745c44a2948f0f/image1.png" alt="">
 <div class="post-content lh-copy gray1">
 	<p>We first announced the Cloudflare adapter for OpenNext at <a href="https://blog.cloudflare.com/builder-day-2024-announcements/#cloudflare-joins-opennext"><u>Builder Day 2024</u></a>. It transforms Next.js applications to enable them to run on Cloudflare’s infrastructure.</p>
-	<p>Over the seven months since that September announcement, we have been working hard to improve the adapter. It is now more tightly integrated with OpenNext to enable supporting many more Next.js features. We kept improving the <a href="https://developers.cloudflare.com/workers/runtime-apis/nodejs"><u>Node.js compatibility</u></a> of Workers and <a href="https://github.com/unjs/unenv"><u>unenv</u></a> was also improved to <a href="https://developer.mozilla.org/en-US/docs/Glossary/Polyfill"><u>polyfill</u></a> the Node.js features not yet implemented by the runtime.</p>
-	<p>With all of this work, we are proud to announce the 1.0.0-beta release of <a href="https://www.npmjs.com/package/@opennextjs/cloudflare"><u>@opennextjs/cloudflare</u></a>. Using the Cloudflare adapter is now the preferred way to deploy Next applications to the Cloudflare platform, instead of <a href="https://blog.cloudflare.com/next-on-pages"><u>Next on Pages</u></a>.</p>
+	<p>Over the seven months since that September announcement, we have been working hard to improve the adapter. It is now more tightly integrated with OpenNext to enable supporting many more Next.js features. We kept improving the <a href="https://developers.cloudflare.com/workers/runtime-apis/nodejs" target="_blank" rel="noopener noreferrer"><u>Node.js compatibility</u></a> of Workers and <a href="https://github.com/unjs/unenv" target="_blank" rel="noopener noreferrer"><u>unenv</u></a> was also improved to <a href="https://developer.mozilla.org/en-US/docs/Glossary/Polyfill" target="_blank" rel="noopener noreferrer"><u>polyfill</u></a> the Node.js features not yet implemented by the runtime.</p>
+	<p>With all of this work, we are proud to announce the 1.0.0-beta release of <a href="https://www.npmjs.com/package/@opennextjs/cloudflare" target="_blank" rel="noopener noreferrer"><u>@opennextjs/cloudflare</u></a>. Using the Cloudflare adapter is now the preferred way to deploy Next applications to the Cloudflare platform, instead of <a href="https://blog.cloudflare.com/next-on-pages"><u>Next on Pages</u></a>.</p>
 	<p>Read on to learn what is possible today, and about our plans for the coming months.</p>
 	<div class="flex anchor relative">
 		<h2 id="opennext">OpenNext</h2>
@@ -12,7 +12,7 @@
 			</svg>
 		</a>
 	</div>
-	<p><a href="https://opennext.js.org"><u>OpenNext</u></a> is a build tool designed to transform Next.js applications into packages optimized for deployment across various platforms. Initially created for serverless environments on AWS Lambda, OpenNext has expanded its capabilities to support a wider range of environments, including Cloudflare Workers and traditional Node.js servers.</p>
+	<p><a href="https://opennext.js.org" target="_blank" rel="noopener noreferrer"><u>OpenNext</u></a> is a build tool designed to transform Next.js applications into packages optimized for deployment across various platforms. Initially created for serverless environments on AWS Lambda, OpenNext has expanded its capabilities to support a wider range of environments, including Cloudflare Workers and traditional Node.js servers.</p>
 	<p>By integrating with the OpenNext codebase, the Cloudflare adapter is now able to support many more features than its original version. We are also leveraging the end-to-end (e2e) test suite of OpenNext to validate the implementation of these features.
 
 		Being part of OpenNext allows us to support future Next.js features shortly after they are released. We intend to support the latest minor version of Next.js 14 and all the minor versions of Next.js 15.</p>
@@ -24,12 +24,12 @@
 			</svg>
 		</a>
 	</div>
-	<p>Most of the Next.js 15 features are supported in <a href="https://www.npmjs.com/package/@opennextjs/cloudflare"><code><u>@opennextjs/cloudflare</u></code></a>. You can find an exhaustive list on the <a href="https://opennext.js.org/cloudflare#supported-nextjs-features"><u>OpenNext website</u></a>, but here are a few highlights:</p>
+	<p>Most of the Next.js 15 features are supported in <a href="https://www.npmjs.com/package/@opennextjs/cloudflare" target="_blank" rel="noopener noreferrer"><code><u>@opennextjs/cloudflare</u></code></a>. You can find an exhaustive list on the <a href="https://opennext.js.org/cloudflare#supported-nextjs-features" target="_blank" rel="noopener noreferrer"><u>OpenNext website</u></a>, but here are a few highlights:</p>
 	<table>
 		<tbody>
 			<tr>
 				<td>
-					<p><a href="https://nextjs.org/docs/app/building-your-application/caching"><u>Caching</u></a></p>
+					<p><a href="https://nextjs.org/docs/app/building-your-application/caching" target="_blank" rel="noopener noreferrer"><u>Caching</u></a></p>
 				</td>
 				<td>
 					<p>The Cloudflare adapter provides a cache handler for Next.js, optimizing the management of ISR/SSG and the data cache to speed up your apps.</p>
@@ -37,7 +37,7 @@
 			</tr>
 			<tr>
 				<td>
-					<p><a href="https://nextjs.org/docs/app/building-your-application/rendering/partial-prerendering"><u>Partial Prerendering (PPR)</u></a></p>
+					<p><a href="https://nextjs.org/docs/app/building-your-application/rendering/partial-prerendering" target="_blank" rel="noopener noreferrer"><u>Partial Prerendering (PPR)</u></a></p>
 				</td>
 				<td>
 					<p>PPR immediately sends the pre-rendered HTML and begins streaming from the server in parallel.</p>
@@ -45,7 +45,7 @@
 			</tr>
 			<tr>
 				<td>
-					<p><a href="https://nextjs.org/docs/app/building-your-application/routing/middleware"><u>Middleware</u></a></p>
+					<p><a href="https://nextjs.org/docs/app/building-your-application/routing/middleware" target="_blank" rel="noopener noreferrer"><u>Middleware</u></a></p>
 				</td>
 				<td>
 					<p>Middleware allows modifying the response by rewriting, redirecting, or modifying the request and response headers, or responding directly before the request hits the app.</p>
@@ -53,7 +53,7 @@
 			</tr>
 			<tr>
 				<td>
-					<p><a href="https://nextjs.org/docs/app"><u>App</u></a> and <a href="https://nextjs.org/docs/pages"><u>Pages</u></a> routers</p>
+					<p><a href="https://nextjs.org/docs/app" target="_blank" rel="noopener noreferrer"><u>App</u></a> and <a href="https://nextjs.org/docs/pages" target="_blank" rel="noopener noreferrer"><u>Pages</u></a> routers</p>
 				</td>
 				<td>
 					<p>Both the new App router and Pages routers are supported.</p>
@@ -61,10 +61,10 @@
 			</tr>
 			<tr>
 				<td>
-					<p><a href="https://nextjs.org/docs/pages/building-your-application/optimizing/images"><u>Image Optimization</u></a></p>
+					<p><a href="https://nextjs.org/docs/pages/building-your-application/optimizing/images" target="_blank" rel="noopener noreferrer"><u>Image Optimization</u></a></p>
 				</td>
 				<td>
-					<p>The adapter easily integrates with <a href="https://developers.cloudflare.com/images"><u>Cloudflare Images</u></a> to deliver optimized images.</p>
+					<p>The adapter easily integrates with <a href="https://developers.cloudflare.com/images" target="_blank" rel="noopener noreferrer"><u>Cloudflare Images</u></a> to deliver optimized images.</p>
 				</td>
 			</tr>
 		</tbody>
@@ -75,7 +75,7 @@
 			<p>Microsoft Windows is not yet fully supported by the adapter. We plan to fully support Windows for development in the 1.0 release.</p>
 		</li>
 		<li>
-			<p>The adapter currently only supports the Node runtime of Next.js. You can opt-out of the <a href="https://nextjs.org/docs/app/api-reference/edge"><u>Edge runtime</u></a> by removing <code>export const runtime = "edge"</code> from your application. We plan to add support for the edge runtime in the next major release. Note that applications deployed to Cloudflare Workers run close to the user, whatever the Next.js runtime used, giving similar performance.</p>
+			<p>The adapter currently only supports the Node runtime of Next.js. You can opt-out of the <a href="https://nextjs.org/docs/app/api-reference/edge" target="_blank" rel="noopener noreferrer"><u>Edge runtime</u></a> by removing <code>export const runtime = "edge"</code> from your application. We plan to add support for the edge runtime in the next major release. Note that applications deployed to Cloudflare Workers run close to the user, whatever the Next.js runtime used, giving similar performance.</p>
 		</li>
 		<li>
 			<p>Composable caching (<code>use cache</code>) should also be supported in the next major release. It is a canary feature of Next.js that is still in development. It will be supported in OpenNext once it stabilizes.</p>
@@ -90,8 +90,8 @@
 		</a>
 	</div>
 	<p>While the adapter has vastly improved over the last several months, we should also mention the updates to the ecosystem that are enabling more applications to be supported.</p>
-	<p><a href="https://developers.cloudflare.com/workers/runtime-apis/nodejs"><u>NodeJS compatibility</u></a> for Workers is becoming more comprehensive with the <code>crypto</code>, <code>dns</code>, <code>timers</code>, <code>tls</code>, and <code>net</code> NodeJS modules now being natively implemented by the Workers runtime. The remaining modules that are not yet implemented are supported through <a href="https://github.com/unjs/unenv"><u>unenv</u></a>.</p>
-	<p>The Worker size limit <a href="https://developers.cloudflare.com/workers/platform/limits/#account-plan-limits"><u>was bumped</u></a> from 1 MiB to 3 MiB on free plans and from 10 MiB to 15 MiB for paid plans.&nbsp;</p>
+	<p><a href="https://developers.cloudflare.com/workers/runtime-apis/nodejs" target="_blank" rel="noopener noreferrer"><u>NodeJS compatibility</u></a> for Workers is becoming more comprehensive with the <code>crypto</code>, <code>dns</code>, <code>timers</code>, <code>tls</code>, and <code>net</code> NodeJS modules now being natively implemented by the Workers runtime. The remaining modules that are not yet implemented are supported through <a href="https://github.com/unjs/unenv" target="_blank" rel="noopener noreferrer"><u>unenv</u></a>.</p>
+	<p>The Worker size limit <a href="https://developers.cloudflare.com/workers/platform/limits/#account-plan-limits" target="_blank" rel="noopener noreferrer"><u>was bumped</u></a> from 1 MiB to 3 MiB on free plans and from 10 MiB to 15 MiB for paid plans.&nbsp;</p>
 	<div class="flex anchor relative">
 		<h2 id="1-0-and-the-road-ahead">1.0 and the road ahead</h2>
 		<a href="https://blog.cloudflare.com/#1-0-and-the-road-ahead" aria-hidden="true" class="relative sm:absolute sm:-start-5">
@@ -101,7 +101,7 @@
 		</a>
 	</div>
 	<p>With the release of 1.0-beta, we expect most Next.js 14 and 15 applications to be able to run seamlessly on Cloudflare.</p>
-	<p>We have already tackled a lot of the issues reported on <a href="https://github.com/opennextjs/opennextjs-cloudflare"><u>GitHub</u></a> by early adopters, and once the adapter stabilizes, we will release the 1.0 version.</p>
+	<p>We have already tackled a lot of the issues reported on <a href="https://github.com/opennextjs/opennextjs-cloudflare" target="_blank" rel="noopener noreferrer"><u>GitHub</u></a> by early adopters, and once the adapter stabilizes, we will release the 1.0 version.</p>
 	<p>After that, we are planning a v2 release with a focus on:</p>
 	<ul>
 		<li>
@@ -132,6 +132,6 @@
 		<iframe src="https://customer-eq7kiuol0tk9chox.cloudflarestream.com/d5d9ba95d77ea6a07962dff21d44bdb8/iframe?preload=true&amp;poster=https%3A%2F%2Fimages.ctfassets.net%2Fzkvhlag99gkb%2F3oRqpFUVGeAW5K9rXQBERr%2F937987aee73b6299482c1b4938ada01e%2Fnextjs_on_workers.png" loading="lazy" style="border: none; position: absolute; top: 0; left: 0; height: 100%; width: 100%;" allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;" allowfullscreen="true"></iframe>
 	</div>
 	<p></p>
-	<p>You can find more details in the documentation, on both the <a href="https://developers.cloudflare.com/workers/frameworks/framework-guides/nextjs"><u>Cloudflare site</u></a> and the <a href="https://opennext.js.org/cloudflare"><u>OpenNext site</u></a>.</p>
-	<p>We want your feedback! Report issues and contribute code at <a href="https://github.com/opennextjs/opennextjs-cloudflare"><u>opennextjs/opennextjs-cloudflare on Github</u></a>, and join the discussion on the <a href="https://discord.gg/WUNsBM69"><u>OpenNext Discord</u></a>.</p>
+	<p>You can find more details in the documentation, on both the <a href="https://developers.cloudflare.com/workers/frameworks/framework-guides/nextjs" target="_blank" rel="noopener noreferrer"><u>Cloudflare site</u></a> and the <a href="https://opennext.js.org/cloudflare" target="_blank" rel="noopener noreferrer"><u>OpenNext site</u></a>.</p>
+	<p>We want your feedback! Report issues and contribute code at <a href="https://github.com/opennextjs/opennextjs-cloudflare" target="_blank" rel="noopener noreferrer"><u>opennextjs/opennextjs-cloudflare on Github</u></a>, and join the discussion on the <a href="https://discord.gg/WUNsBM69" target="_blank" rel="noopener noreferrer"><u>OpenNext Discord</u></a>.</p>
 </div>

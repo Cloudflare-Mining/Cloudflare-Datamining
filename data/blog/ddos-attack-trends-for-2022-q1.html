@@ -91,9 +91,9 @@
 			<p>Volumetric attacks increased in Q1. Attacks above 10 Mpps (million packets per second) grew by over 300% QoQ, and attacks over 100 Gbps grew by 645% QoQ.</p>
 		</li>
 	</ul>
-	<p>This report is based on DDoS attacks that were automatically detected and mitigated by <a href="https://www.cloudflare.com/ddos">Cloudflare’s DDoS Protection systems</a>. To learn more about how it works, check out <a href="https://blog.cloudflare.com/deep-dive-cloudflare-autonomous-edge-ddos-protection">this deep-dive blog post</a>.</p>
+	<p>This report is based on DDoS attacks that were automatically detected and mitigated by <a href="https://www.cloudflare.com/ddos" target="_blank" rel="noopener noreferrer">Cloudflare’s DDoS Protection systems</a>. To learn more about how it works, check out <a href="https://blog.cloudflare.com/deep-dive-cloudflare-autonomous-edge-ddos-protection">this deep-dive blog post</a>.</p>
 	<p><b>A note on how we measure DDoS attacks observed over our network</b>To analyze attack trends, we calculate the “DDoS activity” rate, which is either the percentage of attack traffic out of the total traffic (attack + clean) observed over our global network, or in a specific location, or in a specific category (e.g., industry or billing country). Measuring the percentages allows us to normalize data points and avoid biases reflected in absolute numbers towards, for example, a Cloudflare data center that receives more total traffic and likely, also more attacks.</p>
-	<p>To view an interactive version of this report view it on <a href="https://radar.cloudflare.com/notebooks/ddos-2022-q1">Cloudflare Radar</a>.</p>
+	<p>To view an interactive version of this report view it on <a href="https://radar.cloudflare.com/notebooks/ddos-2022-q1" target="_blank" rel="noopener noreferrer">Cloudflare Radar</a>.</p>
 	<div class="flex anchor relative">
 		<h2 id="ransom-attacks">Ransom Attacks</h2>
 		<a href="https://blog.cloudflare.com/#ransom-attacks" aria-hidden="true" class="relative sm:absolute sm:-start-5">
@@ -123,7 +123,7 @@
 			</svg>
 		</a>
 	</div>
-	<p><a href="https://www.cloudflare.com/learning/ddos/application-layer-ddos-attack">Application-layer DDoS attacks</a>, specifically HTTP DDoS attacks, are attacks that usually aim to disrupt a web server by making it unable to process legitimate user requests. If a server is bombarded with more requests than it can process, the server will drop legitimate requests and — in some cases — crash, resulting in degraded performance or an outage for legitimate users.</p>
+	<p><a href="https://www.cloudflare.com/learning/ddos/application-layer-ddos-attack" target="_blank" rel="noopener noreferrer">Application-layer DDoS attacks</a>, specifically HTTP DDoS attacks, are attacks that usually aim to disrupt a web server by making it unable to process legitimate user requests. If a server is bombarded with more requests than it can process, the server will drop legitimate requests and — in some cases — crash, resulting in degraded performance or an outage for legitimate users.</p>
 	<figure class="kg-card kg-image-card ">
 
 		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5Nk5a1cd1TpBCMSBUshW5p/14f88e849feca723c3d59e4932f779db/unnamed1.png" alt="A diagram of a DDoS attack denying service to legitimate users" class="kg-image" width="1600" height="847" loading="lazy">
@@ -184,7 +184,7 @@
 			</svg>
 		</a>
 	</div>
-	<p>To understand the origin of the HTTP attacks, we look at the geolocation of the source IP address belonging to the client that generated the attack HTTP requests. Unlike network-layer attacks, source IP addresses cannot be <a href="https://www.cloudflare.com/learning/ddos/glossary/ip-spoofing">spoofed</a> in HTTP attacks. A high percentage of DDoS activity in a given country usually indicates the presence of botnets operating from within the country's borders.</p>
+	<p>To understand the origin of the HTTP attacks, we look at the geolocation of the source IP address belonging to the client that generated the attack HTTP requests. Unlike network-layer attacks, source IP addresses cannot be <a href="https://www.cloudflare.com/learning/ddos/glossary/ip-spoofing" target="_blank" rel="noopener noreferrer">spoofed</a> in HTTP attacks. A high percentage of DDoS activity in a given country usually indicates the presence of botnets operating from within the country's borders.</p>
 	<p>After four consecutive quarters in a row with China as the top source of HTTP DDoS attacks, the US stepped into the lead this quarter. HTTP DDoS attacks originating from the US increased by a staggering 6,777% QoQ and 2,225% YoY. Following China in second place are India, Germany, Brazil, and Ukraine.</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
@@ -214,7 +214,7 @@
 			</svg>
 		</a>
 	</div>
-	<p>While application-layer attacks target the application (Layer 7 of the <a href="https://www.cloudflare.com/learning/ddos/glossary/open-systems-interconnection-model-osi">OSI model</a>) running the service that end users are trying to access (HTTP/S in our case), <a href="https://www.cloudflare.com/learning/ddos/layer-3-ddos-attacks">network-layer attacks</a> aim to overwhelm network infrastructure (such as in-line routers and servers) and the Internet link itself.</p>
+	<p>While application-layer attacks target the application (Layer 7 of the <a href="https://www.cloudflare.com/learning/ddos/glossary/open-systems-interconnection-model-osi" target="_blank" rel="noopener noreferrer">OSI model</a>) running the service that end users are trying to access (HTTP/S in our case), <a href="https://www.cloudflare.com/learning/ddos/layer-3-ddos-attacks" target="_blank" rel="noopener noreferrer">network-layer attacks</a> aim to overwhelm network infrastructure (such as in-line routers and servers) and the Internet link itself.</p>
 	<figure class="kg-card kg-image-card ">
 
 		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/30aPmdSMAbPwwyujWllA2X/351c3c9b05c09616ecdb47dd556c3f1f/unnamed--1--1.png" alt="" class="kg-image" width="1600" height="847" loading="lazy">
@@ -267,7 +267,7 @@
 			</svg>
 		</a>
 	</div>
-	<p>Many network-layer DDoS attacks target Cloudflare’s IP ranges directly. These IP ranges serve our <a href="https://www.cloudflare.com/cdn">WAF/CDN customers</a>, <a href="https://www.cloudflare.com/dns">Cloudflare authoritative DNS</a>, <a href="https://www.cloudflare.com/learning/dns/what-is-1.1.1.1">Cloudflare public DNS resolver 1.1.1.1</a>, &nbsp;<a href="https://www.cloudflare.com/products/zero-trust/zero-trust-network-access">Cloudflare Zero Trust</a> products, and our corporate offices, to name a few. Additionally, we also allocate dedicated IP addresses to customers via our <a href="https://www.cloudflare.com/products/cloudflare-spectrum">Spectrum</a> product and advertise the IP prefixes of other companies via our <a href="https://www.cloudflare.com/magic-transit">Magic Transit</a>, <a href="https://www.cloudflare.com/magic-wan">Magic WAN</a>, and <a href="https://www.cloudflare.com/magic-firewall">Magic Firewall</a> Products for L3/4 DDoS protection.</p>
+	<p>Many network-layer DDoS attacks target Cloudflare’s IP ranges directly. These IP ranges serve our <a href="https://www.cloudflare.com/cdn" target="_blank" rel="noopener noreferrer">WAF/CDN customers</a>, <a href="https://www.cloudflare.com/dns" target="_blank" rel="noopener noreferrer">Cloudflare authoritative DNS</a>, <a href="https://www.cloudflare.com/learning/dns/what-is-1.1.1.1" target="_blank" rel="noopener noreferrer">Cloudflare public DNS resolver 1.1.1.1</a>, &nbsp;<a href="https://www.cloudflare.com/products/zero-trust/zero-trust-network-access" target="_blank" rel="noopener noreferrer">Cloudflare Zero Trust</a> products, and our corporate offices, to name a few. Additionally, we also allocate dedicated IP addresses to customers via our <a href="https://www.cloudflare.com/products/cloudflare-spectrum" target="_blank" rel="noopener noreferrer">Spectrum</a> product and advertise the IP prefixes of other companies via our <a href="https://www.cloudflare.com/magic-transit" target="_blank" rel="noopener noreferrer">Magic Transit</a>, <a href="https://www.cloudflare.com/magic-wan" target="_blank" rel="noopener noreferrer">Magic WAN</a>, and <a href="https://www.cloudflare.com/magic-firewall" target="_blank" rel="noopener noreferrer">Magic Firewall</a> Products for L3/4 DDoS protection.</p>
 	<p>In this report, for the first time, we've begun classifying network-layer DDoS attacks according to the industries of our customers using the Spectrum and Magic products. This classification allows us to understand which industries are targeted the most by network-layer DDoS attacks.</p>
 	<p>When we look at Q1 statistics, we can see that in terms of attack packets and attack bytes launched towards Cloudflare customers, the Telecommunications industry was targeted the most. &nbsp;More than 8% of all attack bytes and 10% of all attack packets that Cloudflare mitigated targeted Telecommunications companies.</p>
 	<p>Following not too far behind, in second and third place were the Gaming / Gambling and Information Technology and Services industries.</p>
@@ -311,8 +311,8 @@
 			</svg>
 		</a>
 	</div>
-	<p>When trying to understand where network-layer DDoS attacks originate, we cannot use the same method as we use for the application-layer attack analysis. To launch an application-layer DDoS attack, <a href="https://www.cloudflare.com/learning/ssl/what-happens-in-a-tls-handshake">successful handshakes</a> must occur between the client and the server in order to establish an HTTP/S connection. For a successful handshake to occur, the attacker cannot <a href="https://www.cloudflare.com/learning/ddos/glossary/ip-spoofing">spoof</a> their source IP address. While the attacker may use botnets, proxies, and other methods to obfuscate their identity, the attacking client's source IP location does sufficiently represent the attack source of application-layer DDoS attacks.</p>
-	<p>On the other hand, to launch network-layer DDoS attacks, in most cases, no handshake is needed. Attackers can <a href="https://www.cloudflare.com/learning/ddos/glossary/ip-spoofing">spoof</a> the source IP address in order to obfuscate the attack source and introduce randomness into the attack properties, which can make it harder for simple DDoS protection systems to block the attack. So if we were to derive the source country based on a spoofed source IP, we would get a ‘spoofed country’.</p>
+	<p>When trying to understand where network-layer DDoS attacks originate, we cannot use the same method as we use for the application-layer attack analysis. To launch an application-layer DDoS attack, <a href="https://www.cloudflare.com/learning/ssl/what-happens-in-a-tls-handshake" target="_blank" rel="noopener noreferrer">successful handshakes</a> must occur between the client and the server in order to establish an HTTP/S connection. For a successful handshake to occur, the attacker cannot <a href="https://www.cloudflare.com/learning/ddos/glossary/ip-spoofing" target="_blank" rel="noopener noreferrer">spoof</a> their source IP address. While the attacker may use botnets, proxies, and other methods to obfuscate their identity, the attacking client's source IP location does sufficiently represent the attack source of application-layer DDoS attacks.</p>
+	<p>On the other hand, to launch network-layer DDoS attacks, in most cases, no handshake is needed. Attackers can <a href="https://www.cloudflare.com/learning/ddos/glossary/ip-spoofing" target="_blank" rel="noopener noreferrer">spoof</a> the source IP address in order to obfuscate the attack source and introduce randomness into the attack properties, which can make it harder for simple DDoS protection systems to block the attack. So if we were to derive the source country based on a spoofed source IP, we would get a ‘spoofed country’.</p>
 	<p>For this reason, when analyzing network-layer DDoS attack sources, we bucket the traffic by the Cloudflare edge data center locations where the traffic was ingested, and not by the (potentially) spoofed source IP to get an understanding of where the attacks originate from. We are able to achieve geographical accuracy in our report because we have data centers in <a href="https://blog.cloudflare.com/mid-2022-new-cities">over 270 cities</a> around the world. However, even this method is not 100% accurate, as traffic may be back hauled and routed via various Internet Service Providers and countries for reasons that vary from cost reduction to congestion and failure management.</p>
 	<p>In Q1, the percentage of attacks detected in Cloudflare’s data centers in Azerbaijan increased by 16,624% QoQ and 96,900% YoY, making it the country with the highest percentage of network-layer DDoS activity (48.5%).</p>
 	<p>Following our Azerbaijanian data center is our Palestinian data center where a staggering 41.9% of all traffic was DDoS traffic. This represents a 10,120% increase QoQ and 46,456% YoY.</p>
@@ -327,7 +327,7 @@
 		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/h4otwpiEvjRN9OFzyHgqp/2f0c9cf45c20a3d1a7aad667433675f1/image12-1.png" alt="Map of the distribution of network-layer DDoS attacks by source country in 2022 Q1" class="kg-image" width="2000" height="1000" loading="lazy">
 
 	</figure>
-	<p>To view all regions and countries, check out the <a href="https://radar.cloudflare.com/notebooks/ddos-2022-q1">interactive map</a>.</p>
+	<p>To view all regions and countries, check out the <a href="https://radar.cloudflare.com/notebooks/ddos-2022-q1" target="_blank" rel="noopener noreferrer">interactive map</a>.</p>
 	<div class="flex anchor relative">
 		<h3 id="attack-vectors">Attack vectors</h3>
 		<a href="https://blog.cloudflare.com/#attack-vectors" aria-hidden="true" class="relative sm:absolute sm:-start-5">
@@ -371,7 +371,7 @@
 			</svg>
 		</a>
 	</div>
-	<p>The Simple Service Discovery Protocol (SSDP) protocol works similarly to the Lantronix Discovery protocol, but for Universal Plug and Play (UPnP) devices such as network-connected printers. By abusing the SSDP protocol, attackers can generate a reflection-based DDoS attack overwhelming the target’s infrastructure and taking their Internet properties offline. Read more about <a href="https://www.cloudflare.com/learning/ddos/ssdp-ddos-attack">SSDP-based DDoS attacks</a>.</p>
+	<p>The Simple Service Discovery Protocol (SSDP) protocol works similarly to the Lantronix Discovery protocol, but for Universal Plug and Play (UPnP) devices such as network-connected printers. By abusing the SSDP protocol, attackers can generate a reflection-based DDoS attack overwhelming the target’s infrastructure and taking their Internet properties offline. Read more about <a href="https://www.cloudflare.com/learning/ddos/ssdp-ddos-attack" target="_blank" rel="noopener noreferrer">SSDP-based DDoS attacks</a>.</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
 		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6vdleq21CxFyxVpMsuseIT/51eed46af450728ced3f01fe3b3da68a/image21.png" alt="Graph of the top emerging network-layer DDoS attack threats in 2022 Q1" class="kg-image" width="2000" height="1000" loading="lazy">
@@ -416,7 +416,7 @@
 			</svg>
 		</a>
 	</div>
-	<p>In Q1, most of the network-layer DDoS attacks remain below 500 Mbps. This too is a tiny drop in the water at <a href="https://www.cloudflare.com/network">Cloudflare scale</a>, but can very quickly shut down unprotected Internet properties with less capacity or at the very least congest, even a standard Gigabit Ethernet connection.</p>
+	<p>In Q1, most of the network-layer DDoS attacks remain below 500 Mbps. This too is a tiny drop in the water at <a href="https://www.cloudflare.com/network" target="_blank" rel="noopener noreferrer">Cloudflare scale</a>, but can very quickly shut down unprotected Internet properties with less capacity or at the very least congest, even a standard Gigabit Ethernet connection.</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
 		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5RNEoynAmbXZQU7VaZGFU7/58138c225812ae7dcc4a81c619f3985e/image6-4.png" alt="" class="kg-image" width="2000" height="1000" loading="lazy">
@@ -458,5 +458,5 @@
 		</a>
 	</div>
 	<p>Cloudflare’s mission is to help build a better Internet. A better Internet is one that is more secure, faster, and reliable for everyone — even in the face of DDoS attacks. As part of our mission, since 2017, we’ve been providing <a href="https://blog.cloudflare.com/unmetered-mitigation">unmetered and unlimited DDoS protection</a> for free to all of our customers. Over the years, it has become increasingly easier for attackers to launch DDoS attacks. But as easy as it has become, we want to make sure that it is even easier — and free — for organizations of all sizes to protect themselves against DDoS attacks of all types.</p>
-	<p>Not using Cloudflare yet? <a href="https://dash.cloudflare.com/sign-up">Start now</a> with our Free and <a href="https://www.cloudflare.com/plans/pro">Pro plans</a> to protect your websites, or <a href="https://www.cloudflare.com/magic-transit">contact us</a> for comprehensive DDoS protection for your entire network using Magic Transit.</p>
+	<p>Not using Cloudflare yet? <a href="https://dash.cloudflare.com/sign-up" target="_blank" rel="noopener noreferrer">Start now</a> with our Free and <a href="https://www.cloudflare.com/plans/pro" target="_blank" rel="noopener noreferrer">Pro plans</a> to protect your websites, or <a href="https://www.cloudflare.com/magic-transit" target="_blank" rel="noopener noreferrer">contact us</a> for comprehensive DDoS protection for your entire network using Magic Transit.</p>
 </div>

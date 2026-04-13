@@ -10,7 +10,7 @@
 			</svg>
 		</a>
 	</div>
-	<p>First, some background. <a href="https://fonts.google.com">Google Fonts</a> provides a rich selection of royalty-free fonts for sites to use. You select the fonts you want to use, and end up with a simple stylesheet URL to include on your pages, as well as styles to use for applying the fonts to parts of the page:</p>
+	<p>First, some background. <a href="https://fonts.google.com" target="_blank" rel="noopener noreferrer">Google Fonts</a> provides a rich selection of royalty-free fonts for sites to use. You select the fonts you want to use, and end up with a simple stylesheet URL to include on your pages, as well as styles to use for applying the fonts to parts of the page:</p>
 	<pre class="language-html"><code class="language-html">&lt;link href="https://fonts.googleapis.com/css?family=Open+Sans|Roboto+Slab"
       rel="stylesheet"&gt;
 &lt;style&gt;
@@ -36,7 +36,7 @@ h1 {
 
 	</figure>
 	<p>CSS and font download competing with low-priority images for bandwidth.</p>
-	<p>Users will see the images and skeleton for the page <a href="https://www.webpagetest.org/video/view.php?id=181016_befafeb79a563c08a7c4012ec10379ccb1c2f755">long before</a> the actual text is displayed:</p>
+	<p>Users will see the images and skeleton for the page <a href="https://www.webpagetest.org/video/view.php?id=181016_befafeb79a563c08a7c4012ec10379ccb1c2f755" target="_blank" rel="noopener noreferrer">long before</a> the actual text is displayed:</p>
 	<figure class="kg-card kg-image-card ">
 
 		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7tAfGVsUZxzYE99QUHQTlr/44bfe9947e72383443afb6f29b88e343/b1-image-paint.png" alt="The page starts painting at 3.3 seconds with partial images and no text." class="kg-image" width="408" height="384" loading="lazy">
@@ -104,14 +104,14 @@ h1 {
 			</svg>
 		</a>
 	</div>
-	<p>In practice, the results can be quite dramatic. On <a href="https://www.perftests.com/googlefonts">this test page</a> for example, the wait time for fonts to become available dropped from 5.5 seconds to 1 second (an 81% improvement!):</p>
+	<p>In practice, the results can be quite dramatic. On <a href="https://www.perftests.com/googlefonts" target="_blank" rel="noopener noreferrer">this test page</a> for example, the wait time for fonts to become available dropped from 5.5 seconds to 1 second (an 81% improvement!):</p>
 	<figure class="kg-card kg-image-card ">
 
 		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6c3mWxyg3E5LclNnSBxdCy/6c0aea538a3c2b7d7c5ecb383ec5bfe0/after.png" alt="Network waterfall diagram showing the fonts loading immediately after the HTML." class="kg-image" width="932" height="365" loading="lazy">
 
 	</figure>
 	<p>The fonts load immediately after the HTML.</p>
-	<p>Visually, the improvement to the user experience is also <a href="https://www.webpagetest.org/video/view.php?id=181016_040e1e2365d95c4c7836281c9cf713ccc8aed3f5">quite dramatic</a>. Instead of seeing a skeleton page of images followed by the text eventually appearing, the text is available (and correctly styled) immediately and the user can start consuming the content right away:</p>
+	<p>Visually, the improvement to the user experience is also <a href="https://www.webpagetest.org/video/view.php?id=181016_040e1e2365d95c4c7836281c9cf713ccc8aed3f5" target="_blank" rel="noopener noreferrer">quite dramatic</a>. Instead of seeing a skeleton page of images followed by the text eventually appearing, the text is available (and correctly styled) immediately and the user can start consuming the content right away:</p>
 	<figure class="kg-card kg-image-card ">
 
 		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5kWjTwTLDvAES4n8TJg2IH/e94c6635c0ba15d43b61a1a17f249efc/1-initial-text.png" alt="The first paint happens much sooner at 2.5 seconds with all of the text displayed while the original page is still blank." class="kg-image" width="816" height="384" loading="lazy">
@@ -145,7 +145,7 @@ h1 {
 			</svg>
 		</a>
 	</div>
-	<p>The full Cloudflare worker code for implementing the font optimization is available on <a href="https://github.com/cloudflare/worker-examples/tree/master/examples/fast-google-fonts">GitHub here</a>. Buckle-in because this is quite a bit more involved than most of the samples in the documentation.</p>
+	<p>The full Cloudflare worker code for implementing the font optimization is available on <a href="https://github.com/cloudflare/worker-examples/tree/master/examples/fast-google-fonts" target="_blank" rel="noopener noreferrer">GitHub here</a>. Buckle-in because this is quite a bit more involved than most of the samples in the documentation.</p>
 	<p>At a high level this code:</p>
 	<ul>
 		<li>
@@ -261,7 +261,7 @@ h1 {
  
  return response;
 }</code></pre>
-	<p>In addition to filtering the request headers we also filter the response headers sent back to the browser. If you’re not careful you could end up in a situation where a third-party is setting cookies on your origin or even turning on something like <a href="https://en.wikipedia.org/wiki/HTTP_Strict_Transport_Security">HTTP Strict Transport Security</a> for your site.</p>
+	<p>In addition to filtering the request headers we also filter the response headers sent back to the browser. If you’re not careful you could end up in a situation where a third-party is setting cookies on your origin or even turning on something like <a href="https://en.wikipedia.org/wiki/HTTP_Strict_Transport_Security" target="_blank" rel="noopener noreferrer">HTTP Strict Transport Security</a> for your site.</p>
 	<div class="flex anchor relative">
 		<h4 id="streaming-html-processing">Streaming HTML Processing</h4>
 		<a href="https://blog.cloudflare.com/#streaming-html-processing" aria-hidden="true" class="relative sm:absolute sm:-start-5">
@@ -293,7 +293,7 @@ h1 {
 			<p>The memory use can be unbounded and only limited by the size of the largest HTML response (possibly causing the worker to be terminated for using too much memory).</p>
 		</li>
 		<li>
-			<p>Significant delay will be added to any pages where the server <a href="https://www.stevesouders.com/blog/2009/05/18/flushing-the-document-early">flushes the initial content early</a> and then does some expensive/slow work before returning the rest of the HTML.</p>
+			<p>Significant delay will be added to any pages where the server <a href="https://www.stevesouders.com/blog/2009/05/18/flushing-the-document-early" target="_blank" rel="noopener noreferrer">flushes the initial content early</a> and then does some expensive/slow work before returning the rest of the HTML.</p>
 		</li>
 		<li>
 			<p>This only works if the text content uses an encoding that JavaScript can decode directly as UTF-8. Any other character encodings will fail to decode.</p>
@@ -610,7 +610,7 @@ h1 {
  
  return content;
 }</code></pre>
-	<p>The fetching (and modifying) of the CSS is a little more complicated than a straight passthrough because we want to cache the result when possible. We cache the responses locally using the worker’s <a href="https://developers.cloudflare.com/workers/reference/cache-api">Cache API</a>. Since the response is browser-specific, and we don’t want to fragment the cache too crazily, we create a custom cache key based on the browser user agent string that is basically browser+version+mobile.</p>
+	<p>The fetching (and modifying) of the CSS is a little more complicated than a straight passthrough because we want to cache the result when possible. We cache the responses locally using the worker’s <a href="https://developers.cloudflare.com/workers/reference/cache-api" target="_blank" rel="noopener noreferrer">Cache API</a>. Since the response is browser-specific, and we don’t want to fragment the cache too crazily, we create a custom cache key based on the browser user agent string that is basically browser+version+mobile.</p>
 	<p>Some plans have access to named cache storage, but to work with all plans it is easiest if we just modify the font URL that gets stored in cache and append the cache key to the end of the URL as a query parameter. The cache URL never gets sent to a server but is useful for local caching of different content that shares the same URL. For example:</p>
 	<pre class="language-bash"><code class="language-bash">https://fonts.googleapis.com/css?family=Roboto&amp;chrome71</code></pre>
 	<p>If the CSS isn’t available in the cache then we create a fetch request for the original URL from the Google servers, passing through the HTML url as the referer, the correct browser user agent string and the client’s IP address in a standard proxy X-Forwarded-For header. Once the response is available we store it in the cache for future requests.</p>
@@ -729,7 +729,7 @@ h1 {
 			</svg>
 		</a>
 	</div>
-	<p>Any site served through Cloudflare can implement workers to rewrite their content but for something like Google fonts or other third-party resources it gets much more interesting when someone implements it once and everyone else can benefit. With <a href="https://www.cloudflare.com/apps/developer/docs/getting-started">Cloudflare Apps’</a> new <a href="https://blog.cloudflare.com/introducing-apps-with-workers">worker support</a> you can bundle up and deliver complex worker logic for anyone else to consume and publish it to the Apps marketplace.</p>
+	<p>Any site served through Cloudflare can implement workers to rewrite their content but for something like Google fonts or other third-party resources it gets much more interesting when someone implements it once and everyone else can benefit. With <a href="https://www.cloudflare.com/apps/developer/docs/getting-started" target="_blank" rel="noopener noreferrer">Cloudflare Apps’</a> new <a href="https://blog.cloudflare.com/introducing-apps-with-workers">worker support</a> you can bundle up and deliver complex worker logic for anyone else to consume and publish it to the Apps marketplace.</p>
 	<p>If you are a third-party content provider for sites, think about what you might be able to do to leverage workers for your content for sites that are served through Cloudflare.</p>
 	<p>I get excited thinking about the performance implications of something like a tag manager running entirely on the edge without the sites having to change their published pages and without browsers having to fetch heavy JavaScript to do the page modifications. It can be done dynamically for every request directly on the edge!</p>
 </div>

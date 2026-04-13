@@ -16,7 +16,7 @@
 
 	</figure>
 	<p>First, our source files are compiled by a <i>compiler</i> translating the high-level programming language into machine code. The output of the compiler is a number of <i>object</i> files. If the project contains multiple source files, we usually get as many object files. The next step is the <i>linker</i>: since the code in different object files may reference each other, the linker is responsible for assembling all these object files into one big program and binding these references together. The output of the linker is usually our target executable, so only one file.</p>
-	<p>However, at this point, our executable might still be incomplete. These days, most executables on Linux are dynamically linked: the executable itself does not have all the code it needs to run a program. Instead it expects to "borrow" part of the code at runtime from <a href="https://en.wikipedia.org/wiki/Library_(computing)#Shared_libraries">shared libraries</a> for some of its functionality:</p>
+	<p>However, at this point, our executable might still be incomplete. These days, most executables on Linux are dynamically linked: the executable itself does not have all the code it needs to run a program. Instead it expects to "borrow" part of the code at runtime from <a href="https://en.wikipedia.org/wiki/Library_(computing)#Shared_libraries" target="_blank" rel="noopener noreferrer">shared libraries</a> for some of its functionality:</p>
 	<figure class="kg-card kg-image-card ">
 
 		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4qgviYFjrBDkGj5OckqJFi/a94b46caad8bfcda8eb96ad7eba84d67/runtime.png" alt="dynamic loader" class="kg-image" width="537" height="657" loading="lazy">
@@ -96,7 +96,7 @@ int main(void)
     return 0;
 }</code></pre>
 	<p>Above is a self-contained object loader program with some functions as placeholders. We will be implementing these functions (and adding more) in the course of this post.</p>
-	<p>First, as we established already, we need to load our object file into the process address space. We could just read the whole file into a buffer, but that would not be very efficient. Real-world object files might be big, but as we will see later, we don't need all of the object's file contents. So it is better to <a href="https://man7.org/linux/man-pages/man2/mmap.2.html"><code>mmap</code></a> the file instead: this way the operating system will lazily read the parts from the file we need at the time we need them. Let's implement the <code>load_obj</code> function:</p>
+	<p>First, as we established already, we need to load our object file into the process address space. We could just read the whole file into a buffer, but that would not be very efficient. Real-world object files might be big, but as we will see later, we don't need all of the object's file contents. So it is better to <a href="https://man7.org/linux/man-pages/man2/mmap.2.html" target="_blank" rel="noopener noreferrer"><code>mmap</code></a> the file instead: this way the operating system will lazily read the parts from the file we need at the time we need them. Let's implement the <code>load_obj</code> function:</p>
 	<p><i>loader.c</i>:</p>
 	<pre class="language-c"><code class="language-c">...
 /* for open(2), fstat(2) */
@@ -149,7 +149,7 @@ static void load_obj(void)
     close(fd);
 }
 ...</code></pre>
-	<p>If we don't encounter any errors, after <code>load_obj</code> executes we should get the memory address, which points to the beginning of our <code>obj.o</code> in the <code>obj</code> global variable. It is worth noting we have created a special union type for the <code>obj</code> variable: we will be parsing <code>obj.o</code> later (and peeking ahead - object files are actually <a href="https://en.wikipedia.org/wiki/Executable_and_Linkable_Format">ELF files</a>), so will be referring to the address both as <code>Elf64_Ehdr</code> (ELF header structure in C) and a byte pointer (parsing ELF files involves calculations of byte offsets from the beginning of the file).</p>
+	<p>If we don't encounter any errors, after <code>load_obj</code> executes we should get the memory address, which points to the beginning of our <code>obj.o</code> in the <code>obj</code> global variable. It is worth noting we have created a special union type for the <code>obj</code> variable: we will be parsing <code>obj.o</code> later (and peeking ahead - object files are actually <a href="https://en.wikipedia.org/wiki/Executable_and_Linkable_Format" target="_blank" rel="noopener noreferrer">ELF files</a>), so will be referring to the address both as <code>Elf64_Ehdr</code> (ELF header structure in C) and a byte pointer (parsing ELF files involves calculations of byte offsets from the beginning of the file).</p>
 	<div class="flex anchor relative">
 		<h3 id="a-peek-inside-an-object-file">A peek inside an object file</h3>
 		<a href="https://blog.cloudflare.com/#a-peek-inside-an-object-file" aria-hidden="true" class="relative sm:absolute sm:-start-5">
@@ -158,7 +158,7 @@ static void load_obj(void)
 			</svg>
 		</a>
 	</div>
-	<p>To use some code from an object file, we need to find it first. As I've leaked above, object files are actually <a href="https://en.wikipedia.org/wiki/Executable_and_Linkable_Format">ELF files</a> (the same format as Linux executables and shared libraries) and luckily they’re easy to parse on Linux with the help of the standard <code>elf.h</code> header, which includes many useful definitions related to the ELF file structure. But we actually need to know what we’re looking for, so a high-level understanding of an ELF file is needed.</p>
+	<p>To use some code from an object file, we need to find it first. As I've leaked above, object files are actually <a href="https://en.wikipedia.org/wiki/Executable_and_Linkable_Format" target="_blank" rel="noopener noreferrer">ELF files</a> (the same format as Linux executables and shared libraries) and luckily they’re easy to parse on Linux with the help of the standard <code>elf.h</code> header, which includes many useful definitions related to the ELF file structure. But we actually need to know what we’re looking for, so a high-level understanding of an ELF file is needed.</p>
 	<div class="flex anchor relative">
 		<h4 id="elf-segments-and-sections">ELF segments and sections</h4>
 		<a href="https://blog.cloudflare.com/#elf-segments-and-sections" aria-hidden="true" class="relative sm:absolute sm:-start-5">
@@ -173,7 +173,7 @@ static void load_obj(void)
 		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7E14iCMhz5ADpvhMnfyswT/8f97b1cf69b5788744e31b1a5853c8db/segments-sections.png" alt="segments and sections" class="kg-image" width="751" height="620" loading="lazy">
 
 	</figure>
-	<p>Furthermore, object files do not contain any segments at all: an object file is not meant to be directly loaded by the OS. Instead, it is assumed it will be linked with some other code, so ELF segments are usually generated by the linker, not the compiler. We can check this by using the <a href="https://man7.org/linux/man-pages/man1/readelf.1.html">readelf command</a>:</p>
+	<p>Furthermore, object files do not contain any segments at all: an object file is not meant to be directly loaded by the OS. Instead, it is assumed it will be linked with some other code, so ELF segments are usually generated by the linker, not the compiler. We can check this by using the <a href="https://man7.org/linux/man-pages/man1/readelf.1.html" target="_blank" rel="noopener noreferrer">readelf command</a>:</p>
 	<pre class="language-bash"><code class="language-bash">$ readelf --segments obj.o
 
 There are no program headers in this file.</code></pre>
@@ -186,7 +186,7 @@ There are no program headers in this file.</code></pre>
 			</svg>
 		</a>
 	</div>
-	<p>The same <a href="https://man7.org/linux/man-pages/man1/readelf.1.html">readelf command</a> can be used to get all the sections from our object file:</p>
+	<p>The same <a href="https://man7.org/linux/man-pages/man1/readelf.1.html" target="_blank" rel="noopener noreferrer">readelf command</a> can be used to get all the sections from our object file:</p>
 	<pre class="language-bash"><code class="language-bash">$ readelf --sections obj.o
 There are 11 section headers, starting at offset 0x268:
 
@@ -220,7 +220,7 @@ Key to Flags:
   L (link order), O (extra OS processing required), G (group), T (TLS),
   C (compressed), x (unknown), o (OS specific), E (exclude),
   l (large), p (processor specific)</code></pre>
-	<p>There are different tutorials online describing the most popular ELF sections in detail. Another great reference is the <a href="https://man7.org/linux/man-pages/man5/elf.5.html">Linux manpages project</a>. It is handy because it describes both sections’ purpose as well as C structure definitions from <code>elf.h</code>, which makes it a one-stop shop for parsing ELF files. However, for completeness, below is a short description of the most popular sections one may encounter in an ELF file:</p>
+	<p>There are different tutorials online describing the most popular ELF sections in detail. Another great reference is the <a href="https://man7.org/linux/man-pages/man5/elf.5.html" target="_blank" rel="noopener noreferrer">Linux manpages project</a>. It is handy because it describes both sections’ purpose as well as C structure definitions from <code>elf.h</code>, which makes it a one-stop shop for parsing ELF files. However, for completeness, below is a short description of the most popular sections one may encounter in an ELF file:</p>
 	<ul>
 		<li>
 			<p><code>.text</code>: this section contains the executable code (the actual machine code, which was created by the compiler from our source code). This section is the primary area of interest for this post as it should contain the <code>add5</code> and <code>add10</code> functions we want to use.</p>
@@ -246,7 +246,7 @@ Key to Flags:
 			</svg>
 		</a>
 	</div>
-	<p>At this point, we know that the code we want to import and execute is located in the <code>obj.o</code>'s <code>.text</code> section. But we have two functions, <code>add5</code> and <code>add10</code>, remember? At this level the <code>.text</code> section is just a byte blob - how do we know where each of these functions is located? This is where the <code>.symtab</code> (the "symbol table") comes in handy. It is so important that it has its own dedicated parameter in <a href="https://man7.org/linux/man-pages/man1/readelf.1.html">readelf</a>:</p>
+	<p>At this point, we know that the code we want to import and execute is located in the <code>obj.o</code>'s <code>.text</code> section. But we have two functions, <code>add5</code> and <code>add10</code>, remember? At this level the <code>.text</code> section is just a byte blob - how do we know where each of these functions is located? This is where the <code>.symtab</code> (the "symbol table") comes in handy. It is so important that it has its own dedicated parameter in <a href="https://man7.org/linux/man-pages/man1/readelf.1.html" target="_blank" rel="noopener noreferrer">readelf</a>:</p>
 	<pre class="language-bash"><code class="language-bash">$ readelf --symbols obj.o
 
 Symbol table '.symtab' contains 10 entries:
@@ -395,7 +395,7 @@ static void parse_obj(void)
 	<p>Next, let's focus on the <code>.text</code> section. We noted earlier in our plan that it is not enough to just locate the <code>.text</code> section in the object file, like we did with other sections. We would need to copy it over to a different location in RAM with executable permissions. There are several reasons for that, but these are the main ones:</p>
 	<ul>
 		<li>
-			<p>Many CPU architectures either don't allow execution of the machine code, which is <a href="https://en.wikipedia.org/wiki/Page_(computer_memory)">unaligned in memory</a> (4 kilobytes for x86 systems), or they execute it with a performance penalty. However, the <code>.text</code> section in an ELF file is not guaranteed to be positioned at a page aligned offset, because the on-disk version of the ELF file aims to be compact rather than convenient.</p>
+			<p>Many CPU architectures either don't allow execution of the machine code, which is <a href="https://en.wikipedia.org/wiki/Page_(computer_memory)" target="_blank" rel="noopener noreferrer">unaligned in memory</a> (4 kilobytes for x86 systems), or they execute it with a performance penalty. However, the <code>.text</code> section in an ELF file is not guaranteed to be positioned at a page aligned offset, because the on-disk version of the ELF file aims to be compact rather than convenient.</p>
 		</li>
 		<li>
 			<p>We may need to modify some bytes in the <code>.text</code> section to perform relocations (we don't need to do it in this case, but will be dealing with relocations in future posts). If, for example, we forget to use the <code>MAP_PRIVATE</code> flag, when mapping the ELF file, our modifications may propagate to the underlying file and corrupt it.</p>
@@ -560,5 +560,5 @@ add10(42) = 52</code></pre>
 		</a>
 	</div>
 	<p>Processing external inputs, like parsing an ELF file from the disk above, should be handled with care. The code from <i>loader.c</i> omits a lot of bounds checking and additional ELF integrity checks, when parsing the object file. The code is simplified for the purposes of this post, but most likely not production ready, as it can probably be exploited by specifically crafted malicious inputs. Use it only for educational purposes!</p>
-	<p>The complete source code from this post can be found <a href="https://github.com/cloudflare/cloudflare-blog/tree/master/2021-03-obj-file/1">here</a>.</p>
+	<p>The complete source code from this post can be found <a href="https://github.com/cloudflare/cloudflare-blog/tree/master/2021-03-obj-file/1" target="_blank" rel="noopener noreferrer">here</a>.</p>
 </div>

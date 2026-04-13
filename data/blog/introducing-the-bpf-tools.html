@@ -1,6 +1,6 @@
 <div class="mb2 gray5">6 min read</div><img class="mr2" src="https:undefined" alt="">
 <div class="post-content lh-copy gray1">
-	<p>In <a href="https://blog.cloudflare.com/bpf-the-forgotten-bytecode">a recent article</a> I described the basic concepts behind the use of Berkeley Packet Filter (aka BSD Packet filter or BPF) bytecode for high performance packet filtering, and the <a href="https://github.com/torvalds/linux/blob/master/net/netfilter/xt_bpf.c">xt_bpf</a> iptables module. In this post I'll explain how we use BPF and xt_bpf as one tool to deal with large scale DDoS attacks.</p>
+	<p>In <a href="https://blog.cloudflare.com/bpf-the-forgotten-bytecode">a recent article</a> I described the basic concepts behind the use of Berkeley Packet Filter (aka BSD Packet filter or BPF) bytecode for high performance packet filtering, and the <a href="https://github.com/torvalds/linux/blob/master/net/netfilter/xt_bpf.c" target="_blank" rel="noopener noreferrer">xt_bpf</a> iptables module. In this post I'll explain how we use BPF and xt_bpf as one tool to deal with large scale DDoS attacks.</p>
 	<p>And, today, CloudFlare is open sourcing the tools we've created to generate and deploy BPF rules.</p>
 	<div class="flex anchor relative">
 		<h3 id="the-code">The Code</h3>
@@ -10,9 +10,9 @@
 			</svg>
 		</a>
 	</div>
-	<p>Our BPF Tools are now available on the CloudFlare Github: <a href="https://github.com/cloudflare/bpftools">https://github.com/cloudflare/bpftools</a></p>
-	<p>For installation instructions review the <a href="https://github.com/cloudflare/bpftools#bpf-tools">README</a>, but typing <code>make</code> should do most of the work:</p>
-	<p>$ git clone <a href="https://github.com/cloudflare/bpftools.git">https://github.com/cloudflare/bpftools.git</a>
+	<p>Our BPF Tools are now available on the CloudFlare Github: <a href="https://github.com/cloudflare/bpftools" target="_blank" rel="noopener noreferrer">https://github.com/cloudflare/bpftools</a></p>
+	<p>For installation instructions review the <a href="https://github.com/cloudflare/bpftools#bpf-tools" target="_blank" rel="noopener noreferrer">README</a>, but typing <code>make</code> should do most of the work:</p>
+	<p>$ git clone <a href="https://github.com/cloudflare/bpftools.git" target="_blank" rel="noopener noreferrer">https://github.com/cloudflare/bpftools.git</a>
 		$ cd bpftools
 		$ make</p>
 	<p>The BPF Tools repository contains a number of simple Python scripts, some of them focus on analyzing pcap files, others focus more on the generation and use of the BPF bytecode itself:</p>
@@ -33,8 +33,8 @@
 			<p><code>iptables_bpf</code>, <code>iptables_bpf_chain</code></p>
 		</li>
 	</ul>
-	<p>We rely on the BPF assembler from the Linux Kernel <a href="https://github.com/torvalds/linux/tree/master/tools/net"><code>/tools/net</code></a> directory. To make your life easier we ship a copy in <code>linux_tools</code>.</p>
-	<p>Here at CloudFlare we run a very large number of <a href="https://en.wikipedia.org/wiki/Domain_Name_System#Authoritative_name_server">authoritative DNS servers</a> and we constantly deal with malicious actors flooding our servers with, amongst other things, <a href="https://www.cloudflare.com/learning/dns/what-is-dns">DNS requests</a>. So no surprise that our current BPF Tools focus on DNS traffic, although they are easily adaptable to any other stateless floods.</p>
+	<p>We rely on the BPF assembler from the Linux Kernel <a href="https://github.com/torvalds/linux/tree/master/tools/net" target="_blank" rel="noopener noreferrer"><code>/tools/net</code></a> directory. To make your life easier we ship a copy in <code>linux_tools</code>.</p>
+	<p>Here at CloudFlare we run a very large number of <a href="https://en.wikipedia.org/wiki/Domain_Name_System#Authoritative_name_server" target="_blank" rel="noopener noreferrer">authoritative DNS servers</a> and we constantly deal with malicious actors flooding our servers with, amongst other things, <a href="https://www.cloudflare.com/learning/dns/what-is-dns" target="_blank" rel="noopener noreferrer">DNS requests</a>. So no surprise that our current BPF Tools focus on DNS traffic, although they are easily adaptable to any other stateless floods.</p>
 	<p>The BPF Tools should be usable and in working order, but don't expect too much. These small utilities were written to be easily hackable and they will be in a state of constant flux: this <i>is</i> our toolkit after all. Please expect some degree of code instability.</p>
 	<div class="flex anchor relative">
 		<h3 id="it-all-starts-with-a-pcap">It all starts with a pcap</h3>
@@ -45,7 +45,7 @@
 		</a>
 	</div>
 	<p>Here's a concrete example of using these tools to identify and filter a DNS attack. This is based on a real world attack but the actual details have been changed for anonymization.</p>
-	<p>To start you need a <a href="http://www.tcpdump.org/manpages/pcap-savefile.5.txt">pcap savefile</a> containing a traffic dump. For example to capture a pcap of DNS requests we run:</p>
+	<p>To start you need a <a href="http://www.tcpdump.org/manpages/pcap-savefile.5.txt" target="_blank" rel="noopener noreferrer">pcap savefile</a> containing a traffic dump. For example to capture a pcap of DNS requests we run:</p>
 	<p>$ sudo tcpdump -pni eth0 -s0 -w example.pcap -vv -c 10000 \
 		"ip and dst port 53"
 		listening on eth0, link-type EN10MB (Ethernet)</p>
@@ -57,7 +57,7 @@
 		adf53a1aa408003500426dd26366000000010000000000010e697471766d
 		6e737a656c757a6f6a03777777076578616d706c6502756b000001000100
 		00291000000080000000 ..S..`&lt;...G...E..V.{@...G.......
-		:....5.Bm.cf...........itqvmnszeluzoj.<a href="http://www.example.uk">www.example.uk</a>.......)
+		:....5.Bm.cf...........itqvmnszeluzoj.<a href="http://www.example.uk" target="_blank" rel="noopener noreferrer">www.example.uk</a>.......)
 		........
 		000ffffff6603c94d5cb47f008004520004fdf234000f41110107b1e341c
 		adf53a1a84a00035003b4a99e25c00000001000000000001076969766c69
@@ -108,17 +108,17 @@
 	<p>Blocking this flood is however, simple - we can safely assume that the <code>www.example.uk</code> domain doesn't have <i>any</i> subdomains, instead of looking at low level bits of DNS packets we can drop all the packets asking for <code>*.www.example.uk</code>.</p>
 	<p>The tool <code>bpfgen</code> generates the BPF bytecode to do that. This is the most important tool in the repo.</p>
 	<p>Right now it has three "BPF generators": <code>dns</code>, <code>dns_validate</code> and <code>suffix</code>. We'll focus only on the first one which generates BPF rules matching given DNS domains. To match all the requests matching the pattern <code>*.www.example.uk</code> run:</p>
-	<p>$ ./bpfgen dns -- *.<a href="http://www.example.uk">www.example.uk</a>
+	<p>$ ./bpfgen dns -- *.<a href="http://www.example.uk" target="_blank" rel="noopener noreferrer">www.example.uk</a>
 		18,177 0 0 0,0 0 0 20,12 0 0 0,7 0 0 0,80 0 0 0, ...</p>
 	<p>That does look pretty cryptic, here's how can you generate an assembly-like BPF syntax:</p>
-	<p>$ ./bpfgen --assembly dns -- *.<a href="http://www.example.uk">www.example.uk</a>
+	<p>$ ./bpfgen --assembly dns -- *.<a href="http://www.example.uk" target="_blank" rel="noopener noreferrer">www.example.uk</a>
 		ldx 4*([0]&amp;0xf)
 		; l3_off(0) + 8 of udp + 12 of dns
 		ld #20
 		add x
 		tax
 		...</p>
-	<p>The generated code is way too long to post and explain here, I strongly recommend looking at the <code>bpftools/gen_dns.py</code> file and reviewing the kernel <a href="https://github.com/torvalds/linux/blob/master/Documentation/networking/filter.txt"><code>networking/filter.txt</code></a> documentation.</p>
+	<p>The generated code is way too long to post and explain here, I strongly recommend looking at the <code>bpftools/gen_dns.py</code> file and reviewing the kernel <a href="https://github.com/torvalds/linux/blob/master/Documentation/networking/filter.txt" target="_blank" rel="noopener noreferrer"><code>networking/filter.txt</code></a> documentation.</p>
 	<p>For more details about the <code>bpfgen</code> tool and its features see the documentation:</p>
 	<p>$ ./bpfgen --help
 		$ ./bpfgen dns -- --help
@@ -126,9 +126,9 @@
 		$ ./bpfgen suffix -- --help</p>
 	<p>The BPF bytecode generated by <code>bpfgen</code> is somewhat special - it's prepared to be passed to the <code>xt_bpf</code> iptables module and <i>not</i> the usual tcpdump. The bytecode passed to <code>xt_bpf</code> must assume the packet starts from the IP header without any layer 2 header. This is not how it usually works for tcpdump which assumes packets do have a proper layer 2 header. In other words: you can't swap bytecodes between tcpdump and <code>xt_bpf</code>.</p>
 	<p>To work around that <code>bpfgen</code> has an <code>--offset</code> flag. To create BPF for <code>xt_bpf</code> you can supply the explicit <code>--offset=0</code> flag:</p>
-	<p>$ ./bpfgen --offset=0 dns -- *.<a href="http://www.example.uk">www.example.uk</a></p>
+	<p>$ ./bpfgen --offset=0 dns -- *.<a href="http://www.example.uk" target="_blank" rel="noopener noreferrer">www.example.uk</a></p>
 	<p>To create BPF for tcpdump on Ethernet packets you must supply <code>--offset=14</code> flag:</p>
-	<p>$ ./bpfgen --offset=14 dns -- *.<a href="http://www.example.uk">www.example.uk</a></p>
+	<p>$ ./bpfgen --offset=14 dns -- *.<a href="http://www.example.uk" target="_blank" rel="noopener noreferrer">www.example.uk</a></p>
 	<div class="flex anchor relative">
 		<h3 id="verification">Verification</h3>
 		<a href="https://blog.cloudflare.com/#verification" aria-hidden="true" class="relative sm:absolute sm:-start-5">
@@ -140,12 +140,12 @@
 	<p>It's always a good idea to test the bytecode before putting it on production servers. For that we have a <code>filter</code> script. It consumes a pcap file, runs it through a <i>tcpdump</i>-like BPF and produces another pcap with only packets that matched given bytecode.</p>
 	<p>To see what traffic will <i>match</i> our BPF:</p>
 	<p>$ cat example.pcap \
-		| ./filter -b "`./bpfgen --offset 14 dns -- *.<a href="http://www.example.uk`">www.example.uk`</a>" \
+		| ./filter -b "`./bpfgen --offset 14 dns -- *.<a href="http://www.example.uk`" target="_blank" rel="noopener noreferrer">www.example.uk`</a>" \
 		| tcpdump -nr - | wc -l
 		9997</p>
 	<p>Hooray, our BPF successfully matches 99.97% of the flood we recorded. Now let's see that which packets it will <i>not match</i>:</p>
 	<p>$ cat example.pcap \
-		| ./filter -b "`./bpfgen -o 14 --negate dns *.<a href="http://www.example.uk`">www.example.uk`</a>" \
+		| ./filter -b "`./bpfgen -o 14 --negate dns *.<a href="http://www.example.uk`" target="_blank" rel="noopener noreferrer">www.example.uk`</a>" \
 		| tcpdump -nr - | wc -l
 		3</p>
 	<p>It's often worthwhile to inspect the matched and unmatched packets and make sure the BPF is indeed correct.</p>
@@ -202,7 +202,7 @@
 	</div>
 	<p>In extreme cases you might want to chain BPF rules. As an example see the <code>iptables_bpf_chain</code> script, you can run it like this:</p>
 	<p>$ ./iptables_bpf_chain -w example_uk \
-		--accept <a href="http://www.example.uk">www.example.uk</a> \
+		--accept <a href="http://www.example.uk" target="_blank" rel="noopener noreferrer">www.example.uk</a> \
 		--accept ns.example.uk \
 		--drop any
 		Generated file 'example_uk_ip4.sh'</p>

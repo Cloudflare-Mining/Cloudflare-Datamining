@@ -1,12 +1,12 @@
 <div class="mb2 gray5">3 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5gRltbrLmeUguopTnCxPLH/db304c3a25e657b6584c909bd2bfa95f/unwrap-the-servfail.jpg" alt="">
 <div class="post-content lh-copy gray1">
-	<p>We recently released a new version of <a href="https://1.1.1.1/dns">Cloudflare Resolver</a> which adds a piece of information called “<a href="https://datatracker.ietf.org/doc/draft-ietf-dnsop-extended-error">Extended DNS Errors</a>” (EDE) along with the response code under certain circumstances. This will be helpful in tracing DNS resolution errors and figuring out what went wrong behind the scenes.</p>
+	<p>We recently released a new version of <a href="https://1.1.1.1/dns" target="_blank" rel="noopener noreferrer">Cloudflare Resolver</a> which adds a piece of information called “<a href="https://datatracker.ietf.org/doc/draft-ietf-dnsop-extended-error" target="_blank" rel="noopener noreferrer">Extended DNS Errors</a>” (EDE) along with the response code under certain circumstances. This will be helpful in tracing DNS resolution errors and figuring out what went wrong behind the scenes.</p>
 	<figure class="kg-card kg-image-card ">
 
 		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6pI28dXSUFpxeVT9fbOtXN/cf7d24e9340ec93201ecafa232370d5b/image1-1.jpg" alt="" class="kg-image" width="910" height="513" loading="lazy">
 
 	</figure>
-	<p>(image from: <a href="https://www.pxfuel.com/en/free-photo-expka">https://www.pxfuel.com/en/free-photo-expka</a>)</p>
+	<p>(image from: <a href="https://www.pxfuel.com/en/free-photo-expka" target="_blank" rel="noopener noreferrer">https://www.pxfuel.com/en/free-photo-expka</a>)</p>
 	<div class="flex anchor relative">
 		<h3 id="a-tight-lipped-agent">A tight-lipped agent</h3>
 		<a href="https://blog.cloudflare.com/#a-tight-lipped-agent" aria-hidden="true" class="relative sm:absolute sm:-start-5">
@@ -38,7 +38,7 @@ try {
     return SERVFAIL
 }</code></pre>
 	<p>Although the context hasn't changed much, protocol extensions such as DNSSEC have been added, which makes the RCODE run out of space to express the server's internal status. To keep backward compatibility, DNS servers have to squeeze various statuses into existing ones. This behavior could confuse the client, especially with the "catch-all" SERVFAIL: something went wrong but what exactly?</p>
-	<p>Most often, end users don't talk to authoritative name servers directly, but use a <a href="https://tools.ietf.org/html/rfc8499#section-6">stub</a> and/or a recursive resolver as an agent to acquire the information it needs. When a user receives &nbsp;SERVFAIL, the failure can be one of the following:</p>
+	<p>Most often, end users don't talk to authoritative name servers directly, but use a <a href="https://tools.ietf.org/html/rfc8499#section-6" target="_blank" rel="noopener noreferrer">stub</a> and/or a recursive resolver as an agent to acquire the information it needs. When a user receives &nbsp;SERVFAIL, the failure can be one of the following:</p>
 	<ul>
 		<li>
 			<p>The stub resolver fails to send the request.</p>
@@ -72,14 +72,14 @@ try {
 		</a>
 	</div>
 	<p>It seems we need to return more information, but (there's always a but) we also need to keep the behavior of existing clients unchanged.</p>
-	<p>One way is to extend the RCODE space, which came out with the <a href="https://www.ietf.org/rfc/rfc6891.txt">Extension mechanisms for DNS</a> or EDNS. It defines a 8 bit EXTENDED-RCODE, as high-order bits to current 4 bit RCODE. Together they make up a 12 bit integer. This changes the processing of RCODE, requires both client and server to fully support the logic unfortunately.</p>
-	<p>Another approach is to provide out-of-band data without touching the current RCODE. This is how Extended DNS Errors is defined. It introduces a <a href="https://www.iana.org/assignments/dns-parameters/dns-parameters.xhtml#dns-parameters-11">new option</a> to EDNS, containing an INFO-CODE to describe error details with an EXTRA-TEXT as an optional supplement. The option can be repeated as many times as needed, so it's possible for the client to get a full error chain with detailed messages. The INFO-CODE is just something like RCODE, but is 16 bits wide, while the EXTRA-TEXT is an utf-8 encoded string. For example, let’s say a client sends a request to a resolver, and the requested domain has two name servers. The client may receive a SERVFAIL response with an OPT record (see below) which contains two extended errors, one from one of the authoritative servers that shows it's not ready to serve, and the other from the resolver, showing it cannot connect to the other name server.</p>
+	<p>One way is to extend the RCODE space, which came out with the <a href="https://www.ietf.org/rfc/rfc6891.txt" target="_blank" rel="noopener noreferrer">Extension mechanisms for DNS</a> or EDNS. It defines a 8 bit EXTENDED-RCODE, as high-order bits to current 4 bit RCODE. Together they make up a 12 bit integer. This changes the processing of RCODE, requires both client and server to fully support the logic unfortunately.</p>
+	<p>Another approach is to provide out-of-band data without touching the current RCODE. This is how Extended DNS Errors is defined. It introduces a <a href="https://www.iana.org/assignments/dns-parameters/dns-parameters.xhtml#dns-parameters-11" target="_blank" rel="noopener noreferrer">new option</a> to EDNS, containing an INFO-CODE to describe error details with an EXTRA-TEXT as an optional supplement. The option can be repeated as many times as needed, so it's possible for the client to get a full error chain with detailed messages. The INFO-CODE is just something like RCODE, but is 16 bits wide, while the EXTRA-TEXT is an utf-8 encoded string. For example, let’s say a client sends a request to a resolver, and the requested domain has two name servers. The client may receive a SERVFAIL response with an OPT record (see below) which contains two extended errors, one from one of the authoritative servers that shows it's not ready to serve, and the other from the resolver, showing it cannot connect to the other name server.</p>
 	<pre class="language-bash"><code class="language-bash">;; OPT PSEUDOSECTION:
 ; ...
 ; EDE: 14 (Not Ready)
 ; EDE: 23 (Network Error): (cannot reach upstream 192.0.2.1)
 ; ...</code></pre>
-	<p>Google has something similar in their <a href="https://developers.google.com/speed/public-dns/docs/doh/json">DoH JSON API</a>, which provides diagnostic information in the "Comment" field.</p>
+	<p>Google has something similar in their <a href="https://developers.google.com/speed/public-dns/docs/doh/json" target="_blank" rel="noopener noreferrer">DoH JSON API</a>, which provides diagnostic information in the "Comment" field.</p>
 	<div class="flex anchor relative">
 		<h3 id="lets-dig-into-it">Let's dig into it</h3>
 		<a href="https://blog.cloudflare.com/#lets-dig-into-it" aria-hidden="true" class="relative sm:absolute sm:-start-5">
@@ -89,7 +89,7 @@ try {
 		</a>
 	</div>
 	<p>Our 1.1.1.1 service has an initial support of the draft version of Extended DNS Errors, while we are still trying to find the best practice. As we mentioned above, this is not a breaking change, and existing clients will not be affected. The additional options can be safely ignored without any problem, since the RCODE stays the same.</p>
-	<p>If you have a <a href="https://downloads.isc.org/isc/bind9/9.16.4/doc/arm/html/notes.html#new-features">newer version of dig</a>, you can simply check it out with a known problematic domain. As you can see, due to DNSSEC verification failing, the RCODE is still SERVFAIL, but the extended error shows the failure is "DNSSEC Bogus".</p>
+	<p>If you have a <a href="https://downloads.isc.org/isc/bind9/9.16.4/doc/arm/html/notes.html#new-features" target="_blank" rel="noopener noreferrer">newer version of dig</a>, you can simply check it out with a known problematic domain. As you can see, due to DNSSEC verification failing, the RCODE is still SERVFAIL, but the extended error shows the failure is "DNSSEC Bogus".</p>
 	<pre class="language-bash"><code class="language-bash">$ dig @1.1.1.1 dnssec-failed.org
 
 ; &lt;&lt;&gt;&gt; DiG 9.16.4-Debian &lt;&lt;&gt;&gt; @1.1.1.1 dnssec-failed.org

@@ -13,7 +13,7 @@ var (
 )</code></pre>
 	<p>and was used to embed version information in RRDNS. It was built inside the Makefile using <code>sed</code> and <code>git describe</code> from a template file. It worked, but was pretty ugly.</p>
 	<p>Today we noticed that another Go team at CloudFlare, the <a href="https://blog.cloudflare.com/tag/data">Data</a> team, had <b>a much smarter way to bake version numbers into binaries using the </b><code><b>-X</b></code><b> linker option</b>.</p>
-	<p>The <code>-X</code> <a href="https://golang.org/cmd/ld">Go linker option</a>, which you can set with <code>-ldflags</code>, sets the value of a string variable in the Go program being linked. You use it like this: <code>-X main.version 1.0.0</code>.</p>
+	<p>The <code>-X</code> <a href="https://golang.org/cmd/ld" target="_blank" rel="noopener noreferrer">Go linker option</a>, which you can set with <code>-ldflags</code>, sets the value of a string variable in the Go program being linked. You use it like this: <code>-X main.version 1.0.0</code>.</p>
 	<p>A simple example: let's say you have this source file saved as <code>hello.go</code>.</p>
 	<pre class="language-go"><code class="language-go">package main
 
@@ -29,8 +29,8 @@ func main() {
 Hello, World.
 $ go run -ldflags="-X main.who CloudFlare" hello.go
 Hello, CloudFlare.</code></pre>
-	<p>The format is <code>importpath.name string</code>, so it's possible to set the value of any string anywhere in the Go program, not just in main. Note that from Go 1.5 the syntax has <a href="https://tip.golang.org/cmd/link">changed</a> to <code>importpath.name=string</code>. The old style is still supported but the linker will complain.</p>
-	<p>I was worried this would not work with external linking (<a href="https://docs.google.com/document/d/1nr-TQHw_er6GOQRsF6T43GGhFDelrAP0NqSS_00RgZQ/view">for example when using cgo</a>) but as we can see with <code>-ldflags="-linkmode=external -v"</code> the Go linker runs first anyway and takes care of our <code>-X</code>.</p>
+	<p>The format is <code>importpath.name string</code>, so it's possible to set the value of any string anywhere in the Go program, not just in main. Note that from Go 1.5 the syntax has <a href="https://tip.golang.org/cmd/link" target="_blank" rel="noopener noreferrer">changed</a> to <code>importpath.name=string</code>. The old style is still supported but the linker will complain.</p>
+	<p>I was worried this would not work with external linking (<a href="https://docs.google.com/document/d/1nr-TQHw_er6GOQRsF6T43GGhFDelrAP0NqSS_00RgZQ/view" target="_blank" rel="noopener noreferrer">for example when using cgo</a>) but as we can see with <code>-ldflags="-linkmode=external -v"</code> the Go linker runs first anyway and takes care of our <code>-X</code>.</p>
 	<pre class="language-bash"><code class="language-bash">$ go build -x -ldflags="-X main.who CloudFlare -linkmode=external -v" hello.go
 WORK=/var/folders/v8/xdj2snz51sg2m2bnpmwl_91c0000gn/T/go-build149644699
 mkdir -p $WORK/command-line-arguments/_obj/
@@ -61,5 +61,5 @@ host link: clang -m64 -gdwarf-2 -Wl,-no_pie,-pagezero_size,4000000 -o hello -Qun
 64 sizeof adr
 216 sizeof prog
 23412 liveness data</code></pre>
-	<p><i>Do you want to work next to Go developers that can always make you learn a new trick? </i><a href="https://www.cloudflare.com/join-our-team"><i>We are hiring in London, San Francisco and Singapore</i></a><i>.</i></p>
+	<p><i>Do you want to work next to Go developers that can always make you learn a new trick? </i><a href="https://www.cloudflare.com/join-our-team" target="_blank" rel="noopener noreferrer"><i>We are hiring in London, San Francisco and Singapore</i></a><i>.</i></p>
 </div>

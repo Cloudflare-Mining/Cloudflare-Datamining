@@ -15,7 +15,7 @@
 		</a>
 	</div>
 	<p>At Cloudflare, we take pride in our Free tier which gives any customer the ability to make use of our Network to stay secure and online. We are eager to extend the same support to customers looking to build a new SaaS offering, giving them a Free tier of Cloudflare for SaaS and allowing them to onboard 100 custom hostnames at no charge. The 100 custom hostnames will be automatically allocated to new and existing Cloudflare for SaaS customers. Beyond that, we are also dropping the custom hostname price from \$2 to \$0.10 a month, giving SaaS providers the power to onboard and scale their application. Existing Cloudflare for SaaS customers will see the updated custom hostname pricing reflected in their next billing cycle.</p>
-	<p>Cloudflare for SaaS started as a <a href="https://www.cloudflare.com/application-services/products/ssl-for-saas-providers">TLS certificate issuance product for SaaS providers</a>. Now, we’re helping our customers go a step further in keeping their customers safe and secure.</p>
+	<p>Cloudflare for SaaS started as a <a href="https://www.cloudflare.com/application-services/products/ssl-for-saas-providers" target="_blank" rel="noopener noreferrer">TLS certificate issuance product for SaaS providers</a>. Now, we’re helping our customers go a step further in keeping their customers safe and secure.</p>
 	<div class="flex anchor relative">
 		<h2 id="introducing-waf-for-saas">Introducing WAF for SaaS</h2>
 		<a href="https://blog.cloudflare.com/#introducing-waf-for-saas" aria-hidden="true" class="relative sm:absolute sm:-start-5">
@@ -74,7 +74,7 @@
 		</a>
 	</div>
 	<p>Next, create an association between the custom hostnames — your customer’s domain — and the firewall ruleset that you’d like to attach to it.</p>
-	<p>This is done by associating a JSON blob to a custom hostname. Our product, <a href="https://developers.cloudflare.com/ssl/ssl-for-saas/hostname-specific-behavior/custom-metadata">Custom Metadata</a> allows customers to easily do this via API.</p>
+	<p>This is done by associating a JSON blob to a custom hostname. Our product, <a href="https://developers.cloudflare.com/ssl/ssl-for-saas/hostname-specific-behavior/custom-metadata" target="_blank" rel="noopener noreferrer">Custom Metadata</a> allows customers to easily do this via API.</p>
 	<p>In the example below, a JSON blob with two fields (“customer_id” and “security_level”) will be associated to each request for <code>*.example.com</code> and <code>example.com</code>.</p>
 	<p>There is no predetermined schema for custom metadata. Field names and structure are fully customisable based on our customer’s needs. In this example, we have chosen the tag “security_level” to which we expect to assign three values (low, medium or high). These will, in turn, trigger three different sets of rules.</p>
 	<pre class="language-bash"><code class="language-bash">curl -sXPATCH "https://api.cloudflare.com/client/v4/zones/{zone:id}/custom_hostnames/{custom_hostname:id}"\
@@ -118,7 +118,7 @@
               }
             ]
           }}'</code></pre>
-	<p>If you’d like to learn more about our Advanced Rate Limiting rules, check out our <a href="https://developers.cloudflare.com/waf/custom-rules/rate-limiting">documentation</a>.</p>
+	<p>If you’d like to learn more about our Advanced Rate Limiting rules, check out our <a href="https://developers.cloudflare.com/waf/custom-rules/rate-limiting" target="_blank" rel="noopener noreferrer">documentation</a>.</p>
 	<figure class="kg-card kg-image-card ">
 
 		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3t61u0EnyFpfimgd7J5QPr/14082a32a9be92818d799d478c6f8671/image2-30.png" alt="" class="kg-image" width="1801" height="599" loading="lazy">
@@ -132,5 +132,5 @@
 			</svg>
 		</a>
 	</div>
-	<p>We’re excited to be the provider for our SaaS customers’ infrastructure needs. From custom domains to T<a href="https://www.cloudflare.com/application-services/products/ssl">LS certificates</a> to Web Application Firewall, we’re here to help. Sign up for Cloudflare for SaaS today, or if you’re an Enterprise customer, reach out to your account team to get started with WAF for SaaS.</p>
+	<p>We’re excited to be the provider for our SaaS customers’ infrastructure needs. From custom domains to T<a href="https://www.cloudflare.com/application-services/products/ssl" target="_blank" rel="noopener noreferrer">LS certificates</a> to Web Application Firewall, we’re here to help. Sign up for Cloudflare for SaaS today, or if you’re an Enterprise customer, reach out to your account team to get started with WAF for SaaS.</p>
 </div>

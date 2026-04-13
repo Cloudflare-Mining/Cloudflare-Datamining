@@ -112,7 +112,7 @@
 			</svg>
 		</a>
 	</div>
-	<p>To ensure all load balancers are sending traffic to the same backends, we decided to use the <a href="https://research.google/pubs/pub44824">Maglev connection scheduler</a>. Maglev is a consistent hash scheduler hashing a 5-tuple of information from each packet—the protocol, source address and port, and destination address and port—to determine a backend server.</p>
+	<p>To ensure all load balancers are sending traffic to the same backends, we decided to use the <a href="https://research.google/pubs/pub44824" target="_blank" rel="noopener noreferrer">Maglev connection scheduler</a>. Maglev is a consistent hash scheduler hashing a 5-tuple of information from each packet—the protocol, source address and port, and destination address and port—to determine a backend server.</p>
 	<p>By being a consistent hash, the same backend server is chosen by every load balancer for a packet without needing to persist any connection state. This allows us to transparently move traffic between load balancers without requiring explicit connection synchronization between them.</p>
 	<div class="flex anchor relative">
 		<h3 id="ipvs-and-foo-over-udp">IPVS and Foo-Over-UDP</h3>
@@ -122,7 +122,7 @@
 			</svg>
 		</a>
 	</div>
-	<p>Where possible, we wanted to use commonplace and reliable Linux features. Linux has implemented a powerful layer 4 load balancer, the IP Virtual Server (IPVS), since the early 2000s. IPVS has supported the Maglev scheduler <a href="https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=039f32e8cdea29b4d0680df7a83817b5ec4166e1">since Linux 4.18</a>.</p>
+	<p>Where possible, we wanted to use commonplace and reliable Linux features. Linux has implemented a powerful layer 4 load balancer, the IP Virtual Server (IPVS), since the early 2000s. IPVS has supported the Maglev scheduler <a href="https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=039f32e8cdea29b4d0680df7a83817b5ec4166e1" target="_blank" rel="noopener noreferrer">since Linux 4.18</a>.</p>
 	<figure class="kg-card kg-image-card ">
 
 		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2FK6ZVvqjjOVdFwdvTZM3L/5617f15dd5cf447bff3a47e7dff5702f/image2-3.png" alt="" class="kg-image" width="1200" height="843" loading="lazy">
@@ -192,7 +192,7 @@ $ sysctl -w net.ipv4.conf.all.rp_filter=0</code></pre>
 		</a>
 	</div>
 	<p>We've written a Go agent running on each load balancer that synchronizes with a control plane layer that's tracking the location of services. The agent then configures the system based on active services and available backend servers.</p>
-	<p>To configure IPVS and the routing table we're using packages built upon the <a href="https://github.com/mdlayher/netlink">netlink</a> Go package. We're <a href="https://github.com/cloudflare/ipvs">open sourcing</a> the IPVS netlink package we built today, which supports querying, creating and updating IPVS virtual servers, destinations, and statistics.</p>
+	<p>To configure IPVS and the routing table we're using packages built upon the <a href="https://github.com/mdlayher/netlink" target="_blank" rel="noopener noreferrer">netlink</a> Go package. We're <a href="https://github.com/cloudflare/ipvs" target="_blank" rel="noopener noreferrer">open sourcing</a> the IPVS netlink package we built today, which supports querying, creating and updating IPVS virtual servers, destinations, and statistics.</p>
 	<p>Unfortunately, there is no official programming interface for iptables, so we must instead execute the iptables binary. The agent computes an ideal set of iptables chains and rules, which is then reconciled with the live rules.</p>
 	<p><b>Subset of iptables for a service</b></p>
 	<pre class="language-bash"><code class="language-bash">*filter
@@ -213,8 +213,8 @@ $ sysctl -w net.ipv4.conf.all.rp_filter=0</code></pre>
 			</svg>
 		</a>
 	</div>
-	<p>We use the network load balancer described here as a <a href="https://www.cloudflare.com/learning/performance/cloud-load-balancing-lbaas">cloud load balancer</a> for Kubernetes. A controller assigns virtual IP addresses to Kubernetes services requesting a load balancer IP. These IPs get configured by the agent in IPVS. Traffic is directed to a subset of cluster nodes for handling by kube-proxy, unless the External Traffic Policy is set to "Local" in which case the traffic is sent to the specific backends the workloads are running on.</p>
-	<p>This allows us to have internal Kubernetes clusters that better replicate the load balancer behavior of managed clusters on cloud providers. Services running Kubernetes, such as ingress controllers, <a href="https://www.cloudflare.com/learning/security/api/what-is-an-api-gateway">API gateways</a>, and databases, have access to correct client IP addresses of load balanced traffic.</p>
+	<p>We use the network load balancer described here as a <a href="https://www.cloudflare.com/learning/performance/cloud-load-balancing-lbaas" target="_blank" rel="noopener noreferrer">cloud load balancer</a> for Kubernetes. A controller assigns virtual IP addresses to Kubernetes services requesting a load balancer IP. These IPs get configured by the agent in IPVS. Traffic is directed to a subset of cluster nodes for handling by kube-proxy, unless the External Traffic Policy is set to "Local" in which case the traffic is sent to the specific backends the workloads are running on.</p>
+	<p>This allows us to have internal Kubernetes clusters that better replicate the load balancer behavior of managed clusters on cloud providers. Services running Kubernetes, such as ingress controllers, <a href="https://www.cloudflare.com/learning/security/api/what-is-an-api-gateway" target="_blank" rel="noopener noreferrer">API gateways</a>, and databases, have access to correct client IP addresses of load balanced traffic.</p>
 	<div class="flex anchor relative">
 		<h2 id="future-work">Future Work</h2>
 		<a href="https://blog.cloudflare.com/#future-work" aria-hidden="true" class="relative sm:absolute sm:-start-5">
@@ -247,22 +247,22 @@ $ sysctl -w net.ipv4.conf.all.rp_filter=0</code></pre>
 	</div>
 	<ul>
 		<li>
-			<p><a href="https://vincent.bernat.im/en/blog/2018-multi-tier-loadbalancer"><i>Multi-tier load-balancing with Linux</i></a>. Vincent Bernat (2018). Describes a network load balancer using IPVS and IPIP.</p>
+			<p><a href="https://vincent.bernat.im/en/blog/2018-multi-tier-loadbalancer" target="_blank" rel="noopener noreferrer"><i>Multi-tier load-balancing with Linux</i></a>. Vincent Bernat (2018). Describes a network load balancer using IPVS and IPIP.</p>
 		</li>
 		<li>
-			<p><a href="https://githubengineering.com/introducing-glb"><i>Introducing the GitHub Load Balancer</i></a>. Joe Williams, Theo Julienne (2017). Describes a similar split layer 4 and layer 7 architecture, using consistent hashing and Foo-Over-UDP. They seemed to have limitations with IPVS that looked to have been resolved.</p>
+			<p><a href="https://githubengineering.com/introducing-glb" target="_blank" rel="noopener noreferrer"><i>Introducing the GitHub Load Balancer</i></a>. Joe Williams, Theo Julienne (2017). Describes a similar split layer 4 and layer 7 architecture, using consistent hashing and Foo-Over-UDP. They seemed to have limitations with IPVS that looked to have been resolved.</p>
 		</li>
 		<li>
-			<p><a href="https://lwn.net/Articles/614348"><i>Foo over UDP</i></a>. Jonathan Corbet (2014). Describes the basics of IPIP and Foo-Over-UDP, which was just introduced at the time.</p>
+			<p><a href="https://lwn.net/Articles/614348" target="_blank" rel="noopener noreferrer"><i>Foo over UDP</i></a>. Jonathan Corbet (2014). Describes the basics of IPIP and Foo-Over-UDP, which was just introduced at the time.</p>
 		</li>
 		<li>
-			<p><a href="https://www.netdevconf.org/0.1/sessions/11.html"><i>UDP encapsulation, FOU, GUE, &amp; RCO</i></a>. Tom Herbert (2015). Describes the different UDP encapsulation options.</p>
+			<p><a href="https://www.netdevconf.org/0.1/sessions/11.html" target="_blank" rel="noopener noreferrer"><i>UDP encapsulation, FOU, GUE, &amp; RCO</i></a>. Tom Herbert (2015). Describes the different UDP encapsulation options.</p>
 		</li>
 		<li>
-			<p><a href="https://archive.nanog.org/sites/default/files/1_Saino_Hashing_On_Broken_Assumptions.pdf"><i>Hashing on broken assumptions</i></a>. Lorenzo Saino (2017). Farther discussion on hashing difficulties with ECMP.</p>
+			<p><a href="https://archive.nanog.org/sites/default/files/1_Saino_Hashing_On_Broken_Assumptions.pdf" target="_blank" rel="noopener noreferrer"><i>Hashing on broken assumptions</i></a>. Lorenzo Saino (2017). Farther discussion on hashing difficulties with ECMP.</p>
 		</li>
 		<li>
-			<p><a href="https://archive.nanog.org/meetings/nanog45/presentations/Monday/Scholl_BFD_N45.pdf"><i>BFD (Bidirectional Forwarding Detection): Does it work and is it worth it?</i></a>. Tom School (2009). Discussion on BFD with common protocols and where it can become a problem.</p>
+			<p><a href="https://archive.nanog.org/meetings/nanog45/presentations/Monday/Scholl_BFD_N45.pdf" target="_blank" rel="noopener noreferrer"><i>BFD (Bidirectional Forwarding Detection): Does it work and is it worth it?</i></a>. Tom School (2009). Discussion on BFD with common protocols and where it can become a problem.</p>
 		</li>
 	</ul>
 </div>

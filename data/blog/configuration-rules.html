@@ -14,7 +14,7 @@
 		<p><i><b>“Page Rules is a powerful new set of tools that allows you to control how CloudFlare works on your site on a page-by-page basis.”</b></i></p>
 	</blockquote>
 	<p>Ten years later, and with all F’s lowercase, we are excited to introduce <b>Configuration Rules</b> — a Page Rules successor and a much improved way of controlling Cloudflare features and settings. With Configuration Rules, users can selectively turn on/off features which would typically be applied to every HTTP request going through the zone. They can do this based on URLs - and more, such as cookies or country of origin.</p>
-	<p>Configuration Rules opens up a wide range of use cases for our users that previously were impossible without writing custom code in a <a href="https://workers.cloudflare.com">Cloudflare Worker</a>. Such use cases as A/B testing configuration or only enabling features for a set of file extensions are now made possible thanks to the rich filtering capabilities of the product.</p>
+	<p>Configuration Rules opens up a wide range of use cases for our users that previously were impossible without writing custom code in a <a href="https://workers.cloudflare.com" target="_blank" rel="noopener noreferrer">Cloudflare Worker</a>. Such use cases as A/B testing configuration or only enabling features for a set of file extensions are now made possible thanks to the rich filtering capabilities of the product.</p>
 	<p>Configuration Rules are available for use immediately across all plan levels.</p>
 	<div class="flex anchor relative">
 		<h3 id="turn-it-on-but-only-when">Turn it on, but only when…</h3>
@@ -31,7 +31,7 @@
 		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5lCHWaSYhQ6dCCY4l7auNM/d937ed4b350a30d95f54e7fec70e46dc/image6-9.png" alt="" class="kg-image" width="1084" height="389" loading="lazy">
 
 	</figure>
-	<p>Configuration Rules lets users selectively enable or disable features based on one or more ruleset engine <a href="https://developers.cloudflare.com/ruleset-engine/rules-language/fields">fields</a>.</p>
+	<p>Configuration Rules lets users selectively enable or disable features based on one or more ruleset engine <a href="https://developers.cloudflare.com/ruleset-engine/rules-language/fields" target="_blank" rel="noopener noreferrer">fields</a>.</p>
 	<p>Currently, there are 16 available <i>actions</i> within Configuration Rules. These actions range from Disable Apps, Disable Railgun and Disable Zaraz to Auto Minify, Polish and Mirage.</p>
 	<p>These actions effectively ‘override’ the corresponding zone-wide setting for matching traffic. For example, Rocket Loader may be enabled for the zone <code>example.com</code>:</p>
 	<figure class="kg-card kg-image-card ">
@@ -46,8 +46,8 @@
 
 	</figure>
 	<p>This interplay between zone level settings and Configuration Rules allows users to selectively enable features, allowing them to test Rocket Loader on <code>staging.example.com</code> prior to flipping the zone-level toggle.</p>
-	<p>With Configuration Rules, users also have access to various other non-URL related fields. For example, users could use the <code>ip.geoip.country</code> <a href="https://developers.cloudflare.com/ruleset-engine/rules-language/fields">field</a> to ensure that visitors for specific countries always have the ‘Security Level’ set to ‘I’m under attack’.</p>
-	<p>Historically, these configuration overrides were achieved with the setting of a <a href="https://support.cloudflare.com/hc/en-us/articles/218411427-Understanding-and-configuring-Cloudflare-Page-Rules-Page-Rules-Tutorial-">Page Rule</a>.</p>
+	<p>With Configuration Rules, users also have access to various other non-URL related fields. For example, users could use the <code>ip.geoip.country</code> <a href="https://developers.cloudflare.com/ruleset-engine/rules-language/fields" target="_blank" rel="noopener noreferrer">field</a> to ensure that visitors for specific countries always have the ‘Security Level’ set to ‘I’m under attack’.</p>
+	<p>Historically, these configuration overrides were achieved with the setting of a <a href="https://support.cloudflare.com/hc/en-us/articles/218411427-Understanding-and-configuring-Cloudflare-Page-Rules-Page-Rules-Tutorial-" target="_blank" rel="noopener noreferrer">Page Rule</a>.</p>
 	<p>Page Rules is the ‘If This Then That’ of Cloudflare. Where the ‘If…’ is a URL, and the ‘Then That’ is changing how we handle traffic to specific parts of a ‘zone’. It allows users to selectively change how traffic is handled, and in this case specifically, which settings are and aren’t applied. It is very well adopted, with over one million Page Rules in the past three months alone.</p>
 	<p>Page Rules, however, are limited to performing actions based upon the requested URL. This means if users want to disable Rocket Loader for certain traffic, they need to make that decision based on the URL alone. This can be challenging for users who may want to perform this decision-making on more nuanced aspects, like the user agent of the visitor or on the presence of a specific cookie.</p>
 	<p>For example, users might want to set the ‘Security Level’ to ‘I'm under attack’ when the HTTP request originates in certain countries. This is where Configuration Rules help.</p>
@@ -66,7 +66,7 @@
 		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4sDX4fz5R0yYVwYjGOHqIR/b3c74589103361deb70e6b41d03c4b5d/image2-51.png" alt="" class="kg-image" width="1084" height="389" loading="lazy">
 
 	</figure>
-	<p>With Configuration Rules, this task is much simpler. Leveraging one or more <a href="https://developers.cloudflare.com/ruleset-engine/rules-language/fields">fields</a>, users can filter on other parameters of a HTTP request to define which features and products to enable.</p>
+	<p>With Configuration Rules, this task is much simpler. Leveraging one or more <a href="https://developers.cloudflare.com/ruleset-engine/rules-language/fields" target="_blank" rel="noopener noreferrer">fields</a>, users can filter on other parameters of a HTTP request to define which features and products to enable.</p>
 	<p>For example, by using the expression <code>any(http.request.cookies["app"][*] == "test")</code> a user can ensure that Auto Minify, Mirage and Polish are enabled only when this cookie is present on the HTTP request. This allows comparison testing to happen before enabling these products either globally, or on a wider set of traffic. All without impacting existing production traffic.</p>
 	<figure class="kg-card kg-image-card ">
 
@@ -83,7 +83,7 @@
 	</div>
 	<p>Configuration Rules can be used to augment existing requirements, also. One example given in <a href="https://blog.cloudflare.com/future-of-page-rules">‘The Future of Page Rules’</a> blog is increasing the Security Level to ‘High’ for visitors trying to access the contact page of a website, to reduce the number of malicious visitors to that page.</p>
 	<p>In Page Rules, this would be done by simply specifying the contact page URL and specifying the security level, e.g. URL: <code>example.com/contact*</code>. This ensures that any “visitors that exhibit threatening behavior within the last 14 days” are served with a challenge prior to having that page load.</p>
-	<p>Configuration Rules can take this use case and augment it with additional fields, such as whether the source IP address is in a Cloudflare <a href="https://developers.cloudflare.com/firewall/cf-firewall-rules/rules-lists/#managed-ip-lists">Managed IP List</a>. This allows users to be more specific about when the security level is changed to ‘High’, such as only when the request <i>also</i> is marged as coming from an open HTTP and SOCKS proxy endpoints, which are frequently used to launch attacks and hide attackers identity:</p>
+	<p>Configuration Rules can take this use case and augment it with additional fields, such as whether the source IP address is in a Cloudflare <a href="https://developers.cloudflare.com/firewall/cf-firewall-rules/rules-lists/#managed-ip-lists" target="_blank" rel="noopener noreferrer">Managed IP List</a>. This allows users to be more specific about when the security level is changed to ‘High’, such as only when the request <i>also</i> is marged as coming from an open HTTP and SOCKS proxy endpoints, which are frequently used to launch attacks and hide attackers identity:</p>
 	<figure class="kg-card kg-image-card ">
 
 		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/gTfYrqfIMypitpU8oxngo/ac7f71dd2ad2bac606b87635efd9158f/image3-35.png" alt="" class="kg-image" width="1999" height="474" loading="lazy">
@@ -98,5 +98,5 @@
 			</svg>
 		</a>
 	</div>
-	<p>Configuration Rules are available <a href="https://dash.cloudflare.com/?to=%2F%3Aaccount%2F%3Azone%2Frules%2F">now</a> via API, UI, and Terraform for <a href="https://www.cloudflare.com/plans">all Cloudflare plans</a>! We are excited to see how you will use them in conjunction with all our new rules releases from this week.</p>
+	<p>Configuration Rules are available <a href="https://dash.cloudflare.com/?to=%2F%3Aaccount%2F%3Azone%2Frules%2F" target="_blank" rel="noopener noreferrer">now</a> via API, UI, and Terraform for <a href="https://www.cloudflare.com/plans" target="_blank" rel="noopener noreferrer">all Cloudflare plans</a>! We are excited to see how you will use them in conjunction with all our new rules releases from this week.</p>
 </div>

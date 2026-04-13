@@ -1,12 +1,12 @@
 <div class="mb2 gray5">5 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/46AoGwL7L54V7STfNQEaQv/b7a2441fe8e63d131c8153188d89e38b/announcing-support-for-http-2-server-push-2.jpg" alt="">
 <div class="post-content lh-copy gray1">
-	<p>Last November, we <a href="https://blog.cloudflare.com/introducing-http2">rolled out</a> HTTP/2 support for all our customers. At the time, HTTP/2 was not in wide use, but more than 88k of the Alexa 2 million websites are now HTTP/2-enabled. Today, <a href="http://isthewebhttp2yet.com/measurements/adoption.html#organization">more than 70%</a> of sites that use HTTP/2 are served via CloudFlare.</p>
+	<p>Last November, we <a href="https://blog.cloudflare.com/introducing-http2">rolled out</a> HTTP/2 support for all our customers. At the time, HTTP/2 was not in wide use, but more than 88k of the Alexa 2 million websites are now HTTP/2-enabled. Today, <a href="http://isthewebhttp2yet.com/measurements/adoption.html#organization" target="_blank" rel="noopener noreferrer">more than 70%</a> of sites that use HTTP/2 are served via CloudFlare.</p>
 	<figure class="kg-card kg-image-card ">
 
 		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5BllrfZ3osa7oyYGPEUgfa/d97891945a77819a659806b652af406d/They_started_our_car_by_pushing_it_backwards_up_the_hill-_-3854246685-.jpg" alt="" class="kg-image" width="1024" height="768" loading="lazy">
 
 	</figure>
-	<p><a href="https://creativecommons.org/licenses/by/2.0">CC BY 2.0</a> <a href="https://commons.wikimedia.org/wiki/File:They_started_our_car_by_pushing_it_backwards_up_the_hill!_(3854246685).jpg">image</a> by <a href="https://www.flickr.com/people/83555001@N00">Roger Price</a></p>
+	<p><a href="https://creativecommons.org/licenses/by/2.0" target="_blank" rel="noopener noreferrer">CC BY 2.0</a> <a href="https://commons.wikimedia.org/wiki/File:They_started_our_car_by_pushing_it_backwards_up_the_hill!_(3854246685).jpg" target="_blank" rel="noopener noreferrer">image</a> by <a href="https://www.flickr.com/people/83555001@N00" target="_blank" rel="noopener noreferrer">Roger Price</a></p>
 	<div class="flex anchor relative">
 		<h3 id="incremental-improvements-on-spdy">Incremental Improvements On SPDY</h3>
 		<a href="https://blog.cloudflare.com/#incremental-improvements-on-spdy" aria-hidden="true" class="relative sm:absolute sm:-start-5">
@@ -25,15 +25,15 @@
 			</svg>
 		</a>
 	</div>
-	<p>Today, we’re happy to announce <a href="https://cloudflare.com/http2/server-push">HTTP/2 Server Push support</a> for all of our customers. Server Push enables websites and APIs to speculatively deliver content to the web browser before the browser sends a request for it. This behavior is opportunistic, since in some cases, the content might already be in the client’s cache or not required at all.</p>
+	<p>Today, we’re happy to announce <a href="https://cloudflare.com/http2/server-push" target="_blank" rel="noopener noreferrer">HTTP/2 Server Push support</a> for all of our customers. Server Push enables websites and APIs to speculatively deliver content to the web browser before the browser sends a request for it. This behavior is opportunistic, since in some cases, the content might already be in the client’s cache or not required at all.</p>
 	<figure class="kg-card kg-image-card ">
 
 		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/dHj9DypA42vVajxh1mB94/ba8f12ebadb8a3f405af9049cd254d3e/http2-server-push-2.png" alt="Server Push Diagram" class="kg-image" width="600" height="320" loading="lazy">
 
 	</figure>
-	<p>It’s been <a href="https://www.igvita.com/2013/06/12/innovating-with-http-2.0-server-push">touted as one of the major features</a> of HTTP/2, and by enabling it, we cover the entire set of HTTP/2 features for all of our users. You can see it in action on our <a href="https://cloudflare.com/http2/server-push">live Server Push demo</a>.</p>
-	<p>Server Push provides significant performance gains if used judiciously. In its most basic form, Server Push allows the server to “bundle” assets that the client didn’t ask for. It works by sending <a href="https://tools.ietf.org/html/rfc7540#section-6.6"><code>PUSH_PROMISE</code></a>—a declaration of the intention to send the assets, followed by the actual assets.</p>
-	<p>Upon the receipt of a <code>PUSH_PROMISE</code>, the client may respond with a <a href="https://tools.ietf.org/html/rfc7540#section-6.4"><code>RST_STREAM</code></a> message, indicating this asset is not needed. Even in this case, due to the asynchronous nature of HTTP/2, the client may receive the asset before the server gets the <code>RST_STREAM</code> message.</p>
+	<p>It’s been <a href="https://www.igvita.com/2013/06/12/innovating-with-http-2.0-server-push" target="_blank" rel="noopener noreferrer">touted as one of the major features</a> of HTTP/2, and by enabling it, we cover the entire set of HTTP/2 features for all of our users. You can see it in action on our <a href="https://cloudflare.com/http2/server-push" target="_blank" rel="noopener noreferrer">live Server Push demo</a>.</p>
+	<p>Server Push provides significant performance gains if used judiciously. In its most basic form, Server Push allows the server to “bundle” assets that the client didn’t ask for. It works by sending <a href="https://tools.ietf.org/html/rfc7540#section-6.6" target="_blank" rel="noopener noreferrer"><code>PUSH_PROMISE</code></a>—a declaration of the intention to send the assets, followed by the actual assets.</p>
+	<p>Upon the receipt of a <code>PUSH_PROMISE</code>, the client may respond with a <a href="https://tools.ietf.org/html/rfc7540#section-6.4" target="_blank" rel="noopener noreferrer"><code>RST_STREAM</code></a> message, indicating this asset is not needed. Even in this case, due to the asynchronous nature of HTTP/2, the client may receive the asset before the server gets the <code>RST_STREAM</code> message.</p>
 	<p>The <code>PUSH_PROMISE</code> looks a lot like an HTTP/2 GET request, and the client attempts to match received push promises before sending outgoing requests.</p>
 	<div class="flex anchor relative">
 		<h3 id="enabling-server-push">Enabling Server Push</h3>
@@ -44,7 +44,7 @@
 		</a>
 	</div>
 	<p>All of our customers using HTTP/2 now have Server Push enabled, but unfortunately, Server Push isn’t one of those features that just works—you’ll need to do a little bit of work to truly leverage the benefits of Server Push.</p>
-	<p>Our implementation follows the guidelines laid out in the W3C’s draft standard on the use of a <a href="https://w3c.github.io/preload/#server-push-http-2"><code>preload</code></a> keyword in <code>Link</code> headers<a href="https://blog.cloudflare.com/#fn1">[1]</a>, and we will continue to track that standard as it evolves.</p>
+	<p>Our implementation follows the guidelines laid out in the W3C’s draft standard on the use of a <a href="https://w3c.github.io/preload/#server-push-http-2" target="_blank" rel="noopener noreferrer"><code>preload</code></a> keyword in <code>Link</code> headers<a href="https://blog.cloudflare.com/#fn1">[1]</a>, and we will continue to track that standard as it evolves.</p>
 	<p>So, if you want to push assets for a given request, you simply add a specially formatted <code>Link</code> header to the response:</p>
 	<pre class="language-bash"><code class="language-bash">Link: &lt;/asset/to/push.js&gt;; rel=preload; as=script</code></pre>
 	<p>Those links can be manually added, but they’re already created automatically by many publishing tools or via plugins for popular content management systems (CMS) such as WordPress.</p>
@@ -91,7 +91,7 @@
 			</svg>
 		</a>
 	</div>
-	<p>There are currently several tools and browsers that support Server Push. However, to visualize the performance benefits of the feature, the current <a href="https://www.google.co.uk/chrome/browser/canary.html">Canary</a> version of Google Chrome is the best. Here is an example of a webpage with five images loading with and without Server Push, as depicted in the timeline:</p>
+	<p>There are currently several tools and browsers that support Server Push. However, to visualize the performance benefits of the feature, the current <a href="https://www.google.co.uk/chrome/browser/canary.html" target="_blank" rel="noopener noreferrer">Canary</a> version of Google Chrome is the best. Here is an example of a webpage with five images loading with and without Server Push, as depicted in the timeline:</p>
 	<div class="flex anchor relative">
 		<h4 id="plain-http-2">Plain HTTP/2:</h4>
 		<a href="https://blog.cloudflare.com/#plain-http-2" aria-hidden="true" class="relative sm:absolute sm:-start-5">

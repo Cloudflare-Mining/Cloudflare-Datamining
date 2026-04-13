@@ -10,9 +10,9 @@
 			</svg>
 		</a>
 	</div>
-	<p>Log Explorer stores your Cloudflare logs for a 30-day retention period so that you can analyze them natively and in a single interface, within the Cloudflare Dashboard. Cloudflare log data is diverse, reflecting the breadth of capabilities available.&nbsp; For example, HTTP requests contain information about the client such as their IP address, request method, <a href="https://www.cloudflare.com/learning/network-layer/what-is-an-autonomous-system"><u>autonomous system (ASN)</u></a>, request paths, and TLS versions used. Additionally, Cloudflare’s Application Security <a href="https://developers.cloudflare.com/waf/detections"><u>WAF Detections</u></a> enrich these HTTP request logs with additional context, such as the <a href="https://developers.cloudflare.com/waf/detections/attack-score"><u>WAF attack score</u></a>, to identify threats.</p>
-	<p>Today we are announcing that seven additional Cloudflare product datasets are now available in Log Explorer. These seven datasets are the logs generated from our Zero Trust product suite, and include logs from <a href="https://developers.cloudflare.com/logs/reference/log-fields/account/access_requests"><u>Access</u></a>, <a href="https://developers.cloudflare.com/logs/reference/log-fields/account/gateway_dns"><u>Gateway DNS</u></a>, <a href="https://developers.cloudflare.com/logs/reference/log-fields/account/gateway_http"><u>Gateway HTTP</u></a>, <a href="https://developers.cloudflare.com/logs/reference/log-fields/account/gateway_network"><u>Gateway Network</u></a>, <a href="https://developers.cloudflare.com/logs/reference/log-fields/account/casb_findings"><u>CASB</u></a>, <a href="https://developers.cloudflare.com/logs/reference/log-fields/account/zero_trust_network_sessions"><u>Zero&nbsp;</u></a></p>
-	<p><a href="https://developers.cloudflare.com/logs/reference/log-fields/account/zero_trust_network_sessions"><u>Trust Network Session</u></a>, and <a href="https://developers.cloudflare.com/logs/reference/log-fields/account/device_posture_results"><u>Device Posture Results</u></a>. Read on for examples of how to use these logs to identify common threats.</p>
+	<p>Log Explorer stores your Cloudflare logs for a 30-day retention period so that you can analyze them natively and in a single interface, within the Cloudflare Dashboard. Cloudflare log data is diverse, reflecting the breadth of capabilities available.&nbsp; For example, HTTP requests contain information about the client such as their IP address, request method, <a href="https://www.cloudflare.com/learning/network-layer/what-is-an-autonomous-system" target="_blank" rel="noopener noreferrer"><u>autonomous system (ASN)</u></a>, request paths, and TLS versions used. Additionally, Cloudflare’s Application Security <a href="https://developers.cloudflare.com/waf/detections" target="_blank" rel="noopener noreferrer"><u>WAF Detections</u></a> enrich these HTTP request logs with additional context, such as the <a href="https://developers.cloudflare.com/waf/detections/attack-score" target="_blank" rel="noopener noreferrer"><u>WAF attack score</u></a>, to identify threats.</p>
+	<p>Today we are announcing that seven additional Cloudflare product datasets are now available in Log Explorer. These seven datasets are the logs generated from our Zero Trust product suite, and include logs from <a href="https://developers.cloudflare.com/logs/reference/log-fields/account/access_requests" target="_blank" rel="noopener noreferrer"><u>Access</u></a>, <a href="https://developers.cloudflare.com/logs/reference/log-fields/account/gateway_dns" target="_blank" rel="noopener noreferrer"><u>Gateway DNS</u></a>, <a href="https://developers.cloudflare.com/logs/reference/log-fields/account/gateway_http" target="_blank" rel="noopener noreferrer"><u>Gateway HTTP</u></a>, <a href="https://developers.cloudflare.com/logs/reference/log-fields/account/gateway_network" target="_blank" rel="noopener noreferrer"><u>Gateway Network</u></a>, <a href="https://developers.cloudflare.com/logs/reference/log-fields/account/casb_findings" target="_blank" rel="noopener noreferrer"><u>CASB</u></a>, <a href="https://developers.cloudflare.com/logs/reference/log-fields/account/zero_trust_network_sessions" target="_blank" rel="noopener noreferrer"><u>Zero&nbsp;</u></a></p>
+	<p><a href="https://developers.cloudflare.com/logs/reference/log-fields/account/zero_trust_network_sessions" target="_blank" rel="noopener noreferrer"><u>Trust Network Session</u></a>, and <a href="https://developers.cloudflare.com/logs/reference/log-fields/account/device_posture_results" target="_blank" rel="noopener noreferrer"><u>Device Posture Results</u></a>. Read on for examples of how to use these logs to identify common threats.</p>
 	<div class="flex anchor relative">
 		<h3 id="investigating-unauthorized-access">Investigating unauthorized access</h3>
 		<a href="https://blog.cloudflare.com/#investigating-unauthorized-access" aria-hidden="true" class="relative sm:absolute sm:-start-5">
@@ -30,7 +30,7 @@
 	<figure class="kg-card kg-image-card">
 		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4b38nYNdpLbmHFt0BHkapa/88e1acf82d8bbc257a7cbbe102cbd723/http_requests.png" alt="A query in Log Explorer, selecting 12 columns of the HTTP requests dataset, filtering on the BotScore, OriginResponseStatus, and ClientRequestPath fields" class="kg-image" width="2980" height="972" loading="lazy">
 	</figure>
-	<p>With this information, you can craft targeted <a href="https://developers.cloudflare.com/waf/custom-rules"><u>Custom Rules</u></a> to block the offending traffic.&nbsp;</p>
+	<p>With this information, you can craft targeted <a href="https://developers.cloudflare.com/waf/custom-rules" target="_blank" rel="noopener noreferrer"><u>Custom Rules</u></a> to block the offending traffic.&nbsp;</p>
 	<div class="flex anchor relative">
 		<h3 id="detecting-malware">Detecting malware</h3>
 		<a href="https://blog.cloudflare.com/#detecting-malware" aria-hidden="true" class="relative sm:absolute sm:-start-5">
@@ -39,7 +39,7 @@
 			</svg>
 		</a>
 	</div>
-	<p>Cloudflare's <a href="https://developers.cloudflare.com/cloudflare-one/policies/gateway"><u>Web Gateway</u></a> can track which websites users are accessing, allowing administrators to identify and block access to malicious or inappropriate sites. These logs can be used to detect if a user’s machine or account is compromised by malware attacks. When reviewing logs, this may become apparent when we look for records that show a rapid succession of attempts to browse known malicious sites, such as hostnames that have long strings of seemingly random characters that hide their true destination. In this example, we can query logs looking for requests to a spoofed YouTube URL.</p>
+	<p>Cloudflare's <a href="https://developers.cloudflare.com/cloudflare-one/policies/gateway" target="_blank" rel="noopener noreferrer"><u>Web Gateway</u></a> can track which websites users are accessing, allowing administrators to identify and block access to malicious or inappropriate sites. These logs can be used to detect if a user’s machine or account is compromised by malware attacks. When reviewing logs, this may become apparent when we look for records that show a rapid succession of attempts to browse known malicious sites, such as hostnames that have long strings of seemingly random characters that hide their true destination. In this example, we can query logs looking for requests to a spoofed YouTube URL.</p>
 	<figure class="kg-card kg-image-card">
 		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5Nkm4udjUw9tmzPk0Fk1eK/524dc1a6d4070a1f6cc9478e09b67ffd/gateway_requests.png" alt="A query in Log Explorer, selecting 7 columns of the Gateway DNS dataset, filtering on the QueryName field" class="kg-image" width="2976" height="926" loading="lazy">
 	</figure>
@@ -129,7 +129,7 @@
 			</svg>
 		</a>
 	</div>
-	<p>Stay tuned as we continue to develop more capabilities in the areas of <a href="https://www.cloudflare.com/learning/performance/what-is-observability">observability and forensics</a>, with additional features including:&nbsp;</p>
+	<p>Stay tuned as we continue to develop more capabilities in the areas of <a href="https://www.cloudflare.com/learning/performance/what-is-observability" target="_blank" rel="noopener noreferrer">observability and forensics</a>, with additional features including:&nbsp;</p>
 	<ul>
 		<li>
 			<p><b>Custom alerts</b>: create alerts based on specific metrics or anomalies</p>
@@ -150,7 +150,7 @@
 		</a>
 	</div>
 	<p>Current Log Explorer beta users get immediate access to the new custom dashboards feature. Pricing will be made available to everyone during Q2 2025. Between now and then, these features continue to be available at no cost.</p>
-	<p>Let us know if you are interested in joining our Beta program by completing <a href="https://www.cloudflare.com/lp/log-explorer"><u>this form</u></a>, and a member of our team will contact you.</p>
+	<p>Let us know if you are interested in joining our Beta program by completing <a href="https://www.cloudflare.com/lp/log-explorer" target="_blank" rel="noopener noreferrer"><u>this form</u></a>, and a member of our team will contact you.</p>
 	<div class="flex anchor relative">
 		<h2 id="watch-on-cloudflare-tv">Watch on Cloudflare TV</h2>
 		<a href="https://blog.cloudflare.com/#watch-on-cloudflare-tv" aria-hidden="true" class="relative sm:absolute sm:-start-5">

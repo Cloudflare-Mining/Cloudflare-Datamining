@@ -7,9 +7,9 @@
 		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7aQBSJRQlM3b1ZRdvJycqY/72f9bd908abc139faba41716074d69d5/Rock-crab-pingora-open-source-mascot.png" alt="Open sourcing Pingora: our Rust framework for building programmable network services" class="kg-image" width="2000" height="548" loading="lazy">
 
 	</figure>
-	<p>Today, we are proud to open source Pingora, the Rust framework we have been using to build services that power a significant portion of the traffic on Cloudflare. Pingora is <a href="https://github.com/cloudflare/pingora">released</a> under the <a href="https://www.apache.org/licenses/LICENSE-2.0">Apache License version 2.0</a>.</p>
+	<p>Today, we are proud to open source Pingora, the Rust framework we have been using to build services that power a significant portion of the traffic on Cloudflare. Pingora is <a href="https://github.com/cloudflare/pingora" target="_blank" rel="noopener noreferrer">released</a> under the <a href="https://www.apache.org/licenses/LICENSE-2.0" target="_blank" rel="noopener noreferrer">Apache License version 2.0</a>.</p>
 	<p>As mentioned in our previous blog post, <a href="https://blog.cloudflare.com/how-we-built-pingora-the-proxy-that-connects-cloudflare-to-the-internet">Pingora</a> is a Rust async multithreaded framework that assists us in constructing HTTP proxy services. Since our last blog post, Pingora has handled nearly a quadrillion Internet requests across our global network.</p>
-	<p>We are open sourcing Pingora to help build a better and more secure Internet beyond our own infrastructure. We want to provide tools, ideas, and inspiration to our customers, users, and others to build their own Internet infrastructure using a memory safe framework. Having such a framework is especially crucial given the increasing awareness of the importance of memory safety across the <a href="https://www.theregister.com/2022/09/20/rust_microsoft_c">industry</a> and the <a href="https://www.whitehouse.gov/oncd/briefing-room/2024/02/26/press-release-technical-report">US government</a>. Under this common goal, we are collaborating with the <a href="https://www.abetterinternet.org">Internet Security Research Group</a> (ISRG) <a href="https://www.memorysafety.org/blog/introducing-river">Prossimo project</a> to help advance the adoption of Pingora in the Internet’s most critical infrastructure.</p>
+	<p>We are open sourcing Pingora to help build a better and more secure Internet beyond our own infrastructure. We want to provide tools, ideas, and inspiration to our customers, users, and others to build their own Internet infrastructure using a memory safe framework. Having such a framework is especially crucial given the increasing awareness of the importance of memory safety across the <a href="https://www.theregister.com/2022/09/20/rust_microsoft_c" target="_blank" rel="noopener noreferrer">industry</a> and the <a href="https://www.whitehouse.gov/oncd/briefing-room/2024/02/26/press-release-technical-report" target="_blank" rel="noopener noreferrer">US government</a>. Under this common goal, we are collaborating with the <a href="https://www.abetterinternet.org" target="_blank" rel="noopener noreferrer">Internet Security Research Group</a> (ISRG) <a href="https://www.memorysafety.org/blog/introducing-river" target="_blank" rel="noopener noreferrer">Prossimo project</a> to help advance the adoption of Pingora in the Internet’s most critical infrastructure.</p>
 	<p>In our <a href="https://blog.cloudflare.com/how-we-built-pingora-the-proxy-that-connects-cloudflare-to-the-internet">previous blog post</a>, we discussed why and how we built Pingora. In this one, we will talk about why and how you might use Pingora.</p>
 	<p>Pingora provides building blocks for not only proxies but also clients and servers. Along with these components, we also provide a few utility libraries that implement common logic such as <a href="https://blog.cloudflare.com/how-pingora-keeps-count">event counting</a>, error handling, and caching.</p>
 	<div class="flex anchor relative">
@@ -20,7 +20,7 @@
 			</svg>
 		</a>
 	</div>
-	<p>Pingora provides libraries and APIs to build services on top of HTTP/1 and HTTP/2, TLS, or just TCP/UDS. As a proxy, it supports HTTP/1 and HTTP/2 end-to-end, gRPC, and websocket proxying. (HTTP/3 support is on the roadmap.) It also comes with customizable load balancing and failover strategies. For compliance and security, it supports both the commonly used OpenSSL and BoringSSL libraries, which come with FIPS compliance and <a href="https://pq.cloudflareresearch.com">post-quantum crypto</a>.</p>
+	<p>Pingora provides libraries and APIs to build services on top of HTTP/1 and HTTP/2, TLS, or just TCP/UDS. As a proxy, it supports HTTP/1 and HTTP/2 end-to-end, gRPC, and websocket proxying. (HTTP/3 support is on the roadmap.) It also comes with customizable load balancing and failover strategies. For compliance and security, it supports both the commonly used OpenSSL and BoringSSL libraries, which come with FIPS compliance and <a href="https://pq.cloudflareresearch.com" target="_blank" rel="noopener noreferrer">post-quantum crypto</a>.</p>
 	<p>Besides providing these features, Pingora provides filters and callbacks to allow its users to fully customize how the service should process, transform and forward the requests. These APIs will be especially familiar to OpenResty and NGINX users, as many map intuitively onto OpenResty's "*_by_lua" callbacks.</p>
 	<p>Operationally, Pingora provides zero downtime graceful restarts to upgrade itself without dropping a single incoming request. Syslog, Prometheus, Sentry, OpenTelemetry and other must-have observability tools are also easily integrated with Pingora as well.</p>
 	<div class="flex anchor relative">
@@ -43,7 +43,7 @@
 			</svg>
 		</a>
 	</div>
-	<p>Let's explore Pingora's programmable API by building a simple load balancer. The load balancer will select between <a href="https://1.1.1.1">https://1.1.1.1/</a> and <a href="https://1.0.0.1">https://1.0.0.1/</a> to be the upstream in a round-robin fashion.</p>
+	<p>Let's explore Pingora's programmable API by building a simple load balancer. The load balancer will select between <a href="https://1.1.1.1" target="_blank" rel="noopener noreferrer">https://1.1.1.1/</a> and <a href="https://1.0.0.1" target="_blank" rel="noopener noreferrer">https://1.0.0.1/</a> to be the upstream in a round-robin fashion.</p>
 	<p>First let’s create a blank HTTP proxy.</p>
 	<pre class="language-bash"><code class="language-bash">pub struct LB();
 
@@ -96,8 +96,8 @@ impl ProxyHttp for LB {
 	<p>Let’s try again:</p>
 	<pre class="language-bash"><code class="language-bash">curl 127.0.0.1:6188 -svo /dev/null
 &lt; HTTP/1.1 200 OK</code></pre>
-	<p>This time it works! The complete example can be found <a href="https://github.com/cloudflare/pingora/blob/main/pingora-proxy/examples/load_balancer.rs">here</a>.</p>
-	<p>Below is a very simple diagram of how this request flows through the callback and filter we used in this example. The Pingora proxy framework currently provides <a href="https://github.com/cloudflare/pingora/blob/main/docs/user_guide/phase.md">more filters</a> and callbacks at different stages of a request to allow users to modify, reject, route and/or log the request (and response).</p>
+	<p>This time it works! The complete example can be found <a href="https://github.com/cloudflare/pingora/blob/main/pingora-proxy/examples/load_balancer.rs" target="_blank" rel="noopener noreferrer">here</a>.</p>
+	<p>Below is a very simple diagram of how this request flows through the callback and filter we used in this example. The Pingora proxy framework currently provides <a href="https://github.com/cloudflare/pingora/blob/main/docs/user_guide/phase.md" target="_blank" rel="noopener noreferrer">more filters</a> and callbacks at different stages of a request to allow users to modify, reject, route and/or log the request (and response).</p>
 	<figure class="kg-card kg-image-card ">
 
 		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/WvHfhONcYEEL4kPRwGzKp/f2456d177e727063a49265eea831b8af/Flow_Diagram.png" alt="" class="kg-image" width="710" height="213" loading="lazy">
@@ -130,7 +130,7 @@ impl ProxyHttp for LB {
 			</svg>
 		</a>
 	</div>
-	<p>Feel free to raise bug reports, documentation issues, or feature requests in our GitHub <a href="https://github.com/cloudflare/pingora/issues">issue tracker</a>. Before opening a pull request, we strongly suggest you take a look at our <a href="https://github.com/cloudflare/pingora/blob/main/.github/CONTRIBUTING.md">contribution guide</a>.</p>
+	<p>Feel free to raise bug reports, documentation issues, or feature requests in our GitHub <a href="https://github.com/cloudflare/pingora/issues" target="_blank" rel="noopener noreferrer">issue tracker</a>. Before opening a pull request, we strongly suggest you take a look at our <a href="https://github.com/cloudflare/pingora/blob/main/.github/CONTRIBUTING.md" target="_blank" rel="noopener noreferrer">contribution guide</a>.</p>
 	<div class="flex anchor relative">
 		<h2 id="conclusion">Conclusion</h2>
 		<a href="https://blog.cloudflare.com/#conclusion" aria-hidden="true" class="relative sm:absolute sm:-start-5">

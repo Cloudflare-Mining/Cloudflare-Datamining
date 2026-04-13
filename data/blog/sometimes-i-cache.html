@@ -1,6 +1,6 @@
 <div class="mb2 gray5">8 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5JRBcwN5l6vgSUG2l3sdz/25eb0496b0b2baa30ea890dd7c1dc078/image__1_.png" alt="">
 <div class="post-content lh-copy gray1">
-	<p>HTTP caching is conceptually simple: if the response to a request is in the cache, serve it, and if not, pull it from your origin, put it in the cache, and return it. When the response is old, you repeat the process. This is called cache revalidation. If you are worried about too many requests going to your origin at once, you protect it with a <a href="https://developers.cloudflare.com/cache/concepts/revalidation"><u>cache lock</u></a>: a small program, possibly distinct from your cache, that indicates if a request is already going to your origin. This is called request collapsing.</p>
+	<p>HTTP caching is conceptually simple: if the response to a request is in the cache, serve it, and if not, pull it from your origin, put it in the cache, and return it. When the response is old, you repeat the process. This is called cache revalidation. If you are worried about too many requests going to your origin at once, you protect it with a <a href="https://developers.cloudflare.com/cache/concepts/revalidation" target="_blank" rel="noopener noreferrer"><u>cache lock</u></a>: a small program, possibly distinct from your cache, that indicates if a request is already going to your origin. This is called request collapsing.</p>
 	<p>In this blog post, we dive into how cache revalidation works, and present a new approach based on probability. For every request going to the origin, we simulate a die roll. If it’s 6, the request can go to the origin. Otherwise, it stays stale to protect our origin from being overloaded. To see how this is built and optimised, read on.</p>
 	<div class="flex anchor relative">
 		<h2 id="background">Background</h2>
@@ -19,7 +19,7 @@
 		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4J5KIW2CocyvlLXLuVBTWH/1f6174983e1fc1de72b48a9801da160e/BLOG-2639_3.png" alt="BLOG-2639 3" class="kg-image" width="1048" height="188" loading="lazy">
 	</figure>
 	<p><i>Figure 2: Cached request stops at the cache</i></p>
-	<p>And this is where things get complex. The image of a cat might be quite popular. Let's say it's requested 10 times per second. Let’s also assume the image server cannot handle more than 1 request per second. After a day, the cache expires. 10 requests hit the service. Given there are no up-to-date items in cache, these 10 requests are going to go directly to the image server. This problem is known as <a href="https://en.wikipedia.org/wiki/Cache_stampede"><u>cache stampede</u></a>. When the image server sees these 10 requests all happening at the same time, it gets overloaded.</p>
+	<p>And this is where things get complex. The image of a cat might be quite popular. Let's say it's requested 10 times per second. Let’s also assume the image server cannot handle more than 1 request per second. After a day, the cache expires. 10 requests hit the service. Given there are no up-to-date items in cache, these 10 requests are going to go directly to the image server. This problem is known as <a href="https://en.wikipedia.org/wiki/Cache_stampede" target="_blank" rel="noopener noreferrer"><u>cache stampede</u></a>. When the image server sees these 10 requests all happening at the same time, it gets overloaded.</p>
 	<figure class="kg-card kg-image-card">
 		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3xDMJ6iloIjNHWpAbkfXWv/bee11bc4e1bb83a5b330529d8d98fbaa/BLOG-2639_4.png" alt="BLOG-2639 4" class="kg-image" width="1200" height="208" loading="lazy">
 	</figure>
@@ -38,8 +38,8 @@
 			</svg>
 		</a>
 	</div>
-	<p>Let's write this image service. We need an image, a server, and a cache. For the image we're going to use a picture of <a href="https://files.research.cloudflare.com/images/cat.jpg"><u>my cat</u></a>, Cloudflare Workers for the server, and the Cloudflare Cache API for caching.</p>
-	<p>Note to the reader: On purpose, we aren’t using <a href="https://developers.cloudflare.com/kv"><u>Cloudflare KV</u></a> or <a href="https://developers.cloudflare.com/cache"><u>Cloudflare CDN Cache</u></a>, because they already solve our cache validation problem by using a cache lock.</p>
+	<p>Let's write this image service. We need an image, a server, and a cache. For the image we're going to use a picture of <a href="https://files.research.cloudflare.com/images/cat.jpg" target="_blank" rel="noopener noreferrer"><u>my cat</u></a>, Cloudflare Workers for the server, and the Cloudflare Cache API for caching.</p>
+	<p>Note to the reader: On purpose, we aren’t using <a href="https://developers.cloudflare.com/kv" target="_blank" rel="noopener noreferrer"><u>Cloudflare KV</u></a> or <a href="https://developers.cloudflare.com/cache" target="_blank" rel="noopener noreferrer"><u>Cloudflare CDN Cache</u></a>, because they already solve our cache validation problem by using a cache lock.</p>
 	<pre class="language-JavaScript"><code class="language-JavaScript">let cache = caches.default
 const CACHE_KEY = new Request('https://cache.local/')
 const CACHE_AGE_IN_S = 86_400 // 1 day
@@ -150,7 +150,7 @@ export default {
 			<p><code>unlock</code> releases the lock.</p>
 		</li>
 	</ul>
-	<p>Such a lock can be implemented as a <a href="https://developers.cloudflare.com/workers/runtime-apis/rpc"><u>Cloudflare RPC service</u></a>:</p>
+	<p>Such a lock can be implemented as a <a href="https://developers.cloudflare.com/workers/runtime-apis/rpc" target="_blank" rel="noopener noreferrer"><u>Cloudflare RPC service</u></a>:</p>
 	<pre class="language-Javascript"><code class="language-Javascript">import { WorkerEntrypoint } from 'cloudflare:workers'
 
 class Lock extends WorkerEntryPoint {
@@ -191,7 +191,7 @@ function shouldRevalidate(env, expirationDate) {
 }
 </code></pre>
 	<p><i>Codeblock 4: Image server with early-revalidation and a cache using a cache-lock</i></p>
-	<p>Now you might say "Et voilà. No need for probabilities and mathematics. Peak engineering has triumphed." And you might be right, in most cases. That's why cache locks are so <a href="https://developers.cloudflare.com/cache/concepts/revalidation"><u>predominant</u></a>: they are conceptually simple, deterministic for the same key, and scale well with predictable resource usage.</p>
+	<p>Now you might say "Et voilà. No need for probabilities and mathematics. Peak engineering has triumphed." And you might be right, in most cases. That's why cache locks are so <a href="https://developers.cloudflare.com/cache/concepts/revalidation" target="_blank" rel="noopener noreferrer"><u>predominant</u></a>: they are conceptually simple, deterministic for the same key, and scale well with predictable resource usage.</p>
 	<p>On the other hand, cache locks add latency and fallibility. To take ownership of a lock, cache revalidation has to contact the lock service. This service is shared across different processes, possibly different machines in different locations. Requests therefore take time. In addition, this service might be unavailable. Probabilistic cache revalidation does not suffer from these, given it does not reach out to an external service but rolls a die with the local randomness generator. It does so at the cost of not guaranteeing the number of requests going to the origin server: maybe zero for an extended period, maybe more than one. On average, this is going to be fine. But there can be border cases, similar to how one can roll a die 10 times and get 10 sixes. It’s unlikely, but not unrealistic, and certain services need that certainty. In the following sections, we dissect this approach.</p>
 	<div class="flex anchor relative">
 		<h2 id="first-dive-into-probabilities-given-a-stable-request-rate">First dive into probabilities given a stable request rate</h2>
@@ -350,7 +350,7 @@ function shouldRevalidate(expirationDate) {
 			</svg>
 		</a>
 	</div>
-	<p>There seems to be a lot of decisions going on here. To solve this, we can reference an academic paper written by A Vattani, T Chierichetti, and K Lowenstein in 2015 called <a href="https://cseweb.ucsd.edu/~avattani/papers/cache_stampede.pdf"><u>Optimal Probabilistic Cache Stampede Prevention</u></a>. If you read it, you'll recognise that what we have been discussing until now is close to what the paper presents. For instance, both the cache revalidation algorithm structure and the early revalidation function look similar.</p>
+	<p>There seems to be a lot of decisions going on here. To solve this, we can reference an academic paper written by A Vattani, T Chierichetti, and K Lowenstein in 2015 called <a href="https://cseweb.ucsd.edu/~avattani/papers/cache_stampede.pdf" target="_blank" rel="noopener noreferrer"><u>Optimal Probabilistic Cache Stampede Prevention</u></a>. If you read it, you'll recognise that what we have been discussing until now is close to what the paper presents. For instance, both the cache revalidation algorithm structure and the early revalidation function look similar.</p>
 	<figure class="kg-card kg-image-card">
 		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1MLwwNsci3XxhK0uAvWcFu/62a17cc9056d6b12832160acc9e40fb9/BLOG-2639_8.png" alt="BLOG-2639 8" class="kg-image" width="850" height="445" loading="lazy">
 	</figure>
@@ -381,7 +381,7 @@ function shouldRevalidate(expirationDate) {
 }
 </code></pre>
 	<p><i>Codeblock 7: Image server with early-revalidation and a probabilistic cache using exponential distribution</i></p>
-	<p>And that's it. Given <code>Date.now(</code>) has a granularity, and is not continuous, it would also be possible to discretise these functions, even though the gains are minimal. This is what we have done in a <a href="https://github.com/cloudflare/privacypass-issuer/blob/main/src/cache.ts#L60-L103"><u>production worker implementation</u></a>, where the number of requests is important. It is a service that benefits from caching for performance consideration, and that cannot use built-in <a href="https://developers.cloudflare.com/workers/runtime-apis/cache"><u>stale-while-revalidate</u></a> from within Cloudflare workers. Probabilistic cache stampede prevention is well-suited here, as no new component has to be built, and it performs well at different request rates.</p>
+	<p>And that's it. Given <code>Date.now(</code>) has a granularity, and is not continuous, it would also be possible to discretise these functions, even though the gains are minimal. This is what we have done in a <a href="https://github.com/cloudflare/privacypass-issuer/blob/main/src/cache.ts#L60-L103" target="_blank" rel="noopener noreferrer"><u>production worker implementation</u></a>, where the number of requests is important. It is a service that benefits from caching for performance consideration, and that cannot use built-in <a href="https://developers.cloudflare.com/workers/runtime-apis/cache" target="_blank" rel="noopener noreferrer"><u>stale-while-revalidate</u></a> from within Cloudflare workers. Probabilistic cache stampede prevention is well-suited here, as no new component has to be built, and it performs well at different request rates.</p>
 	<div class="flex anchor relative">
 		<h2 id="conclusion">Conclusion</h2>
 		<a href="https://blog.cloudflare.com/#conclusion" aria-hidden="true" class="relative sm:absolute sm:-start-5">
@@ -390,6 +390,6 @@ function shouldRevalidate(expirationDate) {
 			</svg>
 		</a>
 	</div>
-	<p>We have seen how to solve cache stampede without a lock, its implementation, and why it is optimal. In the real world, you likely will not encounter this issue: either because it’s good enough to optimize your origin service to serve more requests, or because you can leverage a CDN cache. In fact, most HTTP caches provide an API that follows <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Cache-Control"><u>Cache Control</u></a>, and likely have all the tools you need. This primitive is also built into certain products, such as <a href="https://developers.cloudflare.com/kv/platform/limits"><u>Cloudflare KV</u></a>.</p>
-	<p>If you have not done so, you can go and experiment with all the code snippets presented in this blog on the Cloudflare Workers Playground at <a href="https://cloudflareworkers.com"><u>cloudflareworkers.com</u></a>.</p>
+	<p>We have seen how to solve cache stampede without a lock, its implementation, and why it is optimal. In the real world, you likely will not encounter this issue: either because it’s good enough to optimize your origin service to serve more requests, or because you can leverage a CDN cache. In fact, most HTTP caches provide an API that follows <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Cache-Control" target="_blank" rel="noopener noreferrer"><u>Cache Control</u></a>, and likely have all the tools you need. This primitive is also built into certain products, such as <a href="https://developers.cloudflare.com/kv/platform/limits" target="_blank" rel="noopener noreferrer"><u>Cloudflare KV</u></a>.</p>
+	<p>If you have not done so, you can go and experiment with all the code snippets presented in this blog on the Cloudflare Workers Playground at <a href="https://cloudflareworkers.com" target="_blank" rel="noopener noreferrer"><u>cloudflareworkers.com</u></a>.</p>
 </div>

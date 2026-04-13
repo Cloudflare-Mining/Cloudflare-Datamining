@@ -2,13 +2,13 @@
 <div class="mt4">This post is also available in <a href="https://blog.cloudflare.com/zh-cn/tackling-email-spoofing">简体中文</a>, <a href="https://blog.cloudflare.com/ja-jp/tackling-email-spoofing">日本語</a>, <a href="https://blog.cloudflare.com/ko-kr/tackling-email-spoofing">한국어</a> and <a href="https://blog.cloudflare.com/zh-tw/tackling-email-spoofing">繁體中文</a>.</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2rbkcMnVh5LQWwqGjLe2Wp/797cec5e3b8d92014111c9d61805dd87/tackling-email-spoofing.png" alt="">
 <div class="post-content lh-copy gray1">
 	<p></p>
-	<p>Today we’re rolling out a new tool to tackle email spoofing and phishing and improve email deliverability: The new <i>Email Security DNS Wizard</i> can be used to create DNS records that prevent others from sending malicious emails on behalf of your domain. This new feature also warns users about insecure DNS configurations on their domain and shows recommendations on how to fix them. The feature will first be rolled out to users on the <a href="https://www.cloudflare.com/plans/free">Free plan</a> and over the next weeks be made available for Pro, Business and Enterprise customers, as well.</p>
+	<p>Today we’re rolling out a new tool to tackle email spoofing and phishing and improve email deliverability: The new <i>Email Security DNS Wizard</i> can be used to create DNS records that prevent others from sending malicious emails on behalf of your domain. This new feature also warns users about insecure DNS configurations on their domain and shows recommendations on how to fix them. The feature will first be rolled out to users on the <a href="https://www.cloudflare.com/plans/free" target="_blank" rel="noopener noreferrer">Free plan</a> and over the next weeks be made available for Pro, Business and Enterprise customers, as well.</p>
 	<figure class="kg-card kg-image-card ">
 
 		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7aEZCdU9gaKn96DeylxQ6o/35f01fb59be4eb7cafbbe1cc44d3d77f/image4-24.png" alt="" class="kg-image" width="1800" height="751" loading="lazy">
 
 	</figure>
-	<p>Before we dive into what magic this wizard is capable of, let’s take a step back and take a look at the problem: <a href="https://www.cloudflare.com/learning/email-security/what-is-email-spoofing">email spoofing</a> and phishing.</p>
+	<p>Before we dive into what magic this wizard is capable of, let’s take a step back and take a look at the problem: <a href="https://www.cloudflare.com/learning/email-security/what-is-email-spoofing" target="_blank" rel="noopener noreferrer">email spoofing</a> and phishing.</p>
 	<div class="flex anchor relative">
 		<h2 id="what-is-email-spoofing-and-phishing">What is email spoofing and phishing?</h2>
 		<a href="https://blog.cloudflare.com/#what-is-email-spoofing-and-phishing" aria-hidden="true" class="relative sm:absolute sm:-start-5">
@@ -41,13 +41,13 @@ To: &lt;my_personal_email_address&gt;</code></pre>
 
 	</figure>
 	<p>This brings us to the second attack type: <b>phishing</b>. Let’s say a malicious actor has successfully used email spoofing to send emails to your company’s customers that seem to originate from one of your corporate service emails. The content of these emails look exactly like a legitimate email from your company using the same styling and format. The email text could be an urgent message to update some account information including a hyperlink to the alleged web portal. If the receiving mail server of a user does not flag the email as spam or insecure origin, the user might click on the link which could execute malicious code or lead them to a spoofed domain asking for sensitive information.</p>
-	<p>According to the <a href="https://www.ic3.gov/Media/PDF/AnnualReport/2020_IC3Report.pdf">FBI’s 2020 Internet Crime Report</a>, phishing was the most common cyber crime in 2020 with over 240,000 victims leading to a loss of over $50M. And the number of victims has more than doubled since 2019 and is almost ten times higher than in 2018.</p>
+	<p>According to the <a href="https://www.ic3.gov/Media/PDF/AnnualReport/2020_IC3Report.pdf" target="_blank" rel="noopener noreferrer">FBI’s 2020 Internet Crime Report</a>, phishing was the most common cyber crime in 2020 with over 240,000 victims leading to a loss of over $50M. And the number of victims has more than doubled since 2019 and is almost ten times higher than in 2018.</p>
 	<figure class="kg-card kg-image-card ">
 
 		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6VvX416Rl6OBzDvGgNav1V/685b7969b190b249c4b9bec3d1f7d0f9/image5-23.png" alt="" class="kg-image" width="1200" height="742" loading="lazy">
 
 	</figure>
-	<p>In order to understand how most phishing attacks are carried out, let's take a closer look at the findings of the <a href="https://enterprise.verizon.com/resources/reports/2020/2020-data-breach-investigations-report.pdf">2020 Verizon Data Breach Investigations Report</a>. It lays out that phishing accounts for more than 80% of all "social actions", another word for social engineering attacks, making it by far the most common type of such an attack. Furthermore, the report states that 96% of social actions are sent via email and only 3% through a website and 1% via phone or text.</p>
+	<p>In order to understand how most phishing attacks are carried out, let's take a closer look at the findings of the <a href="https://enterprise.verizon.com/resources/reports/2020/2020-data-breach-investigations-report.pdf" target="_blank" rel="noopener noreferrer">2020 Verizon Data Breach Investigations Report</a>. It lays out that phishing accounts for more than 80% of all "social actions", another word for social engineering attacks, making it by far the most common type of such an attack. Furthermore, the report states that 96% of social actions are sent via email and only 3% through a website and 1% via phone or text.</p>
 	<figure class="kg-card kg-image-card ">
 
 		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6Ke7b9XwyfjM1Y2jAU56uO/774ad9250113105fe79f44e2403cb135/zJaupW_6sFUgHngoCJ6naiTt_XpKHahn5P63J9jlxpynfThhNpDb9wAREZbAkL9SSIuUfu4l_K0rnYUP-iOQZvmZinl5Kt9BNKrreXFyQ07q0YZApEAdw927zjk7.png" alt="" class="kg-image" width="1214" height="752" loading="lazy">
@@ -62,7 +62,7 @@ To: &lt;my_personal_email_address&gt;</code></pre>
 			</svg>
 		</a>
 	</div>
-	<p>Luckily, there are three anti-spoofing mechanisms already built into the <a href="https://www.cloudflare.com/learning/dns/what-is-dns">Domain Name System (DNS)</a>:</p>
+	<p>Luckily, there are three anti-spoofing mechanisms already built into the <a href="https://www.cloudflare.com/learning/dns/what-is-dns" target="_blank" rel="noopener noreferrer">Domain Name System (DNS)</a>:</p>
 	<ul>
 		<li>
 			<p>Sender Policy Framework (SPF)</p>
@@ -104,7 +104,7 @@ To: &lt;my_personal_email_address&gt;</code></pre>
 			<p>The receiver checks if the sending IP address <code>203.0.113.10</code> is listed in the SPF record. If it is, the email succeeds the SPF check. If it is not, the qualifier of the <code>all</code> mechanism defines the outcome.</p>
 		</li>
 	</ol>
-	<p>For a full list of all mechanisms and more details about SPF, refer to <a href="https://datatracker.ietf.org/doc/html/rfc7208">RFC7208</a>.</p>
+	<p>For a full list of all mechanisms and more details about SPF, refer to <a href="https://datatracker.ietf.org/doc/html/rfc7208" target="_blank" rel="noopener noreferrer">RFC7208</a>.</p>
 	<div class="flex anchor relative">
 		<h3 id="domainkeys-identified-mail-dkim">DomainKeys Identified Mail (DKIM)</h3>
 		<a href="https://blog.cloudflare.com/#domainkeys-identified-mail-dkim" aria-hidden="true" class="relative sm:absolute sm:-start-5">
@@ -114,7 +114,7 @@ To: &lt;my_personal_email_address&gt;</code></pre>
 		</a>
 	</div>
 	<p>Okay, with SPF we’ve ensured that only permitted IP addresses and domains can send emails on behalf of cloudflare.com. But what if one of the IPs changes owner without us noticing and updating the SPF record? Or what if someone else who is also using Google’s email server on the same IP tries to spoof emails coming from cloudflare.com?</p>
-	<p>This is where DKIM comes in. DKIM provides a mechanism to cryptographically sign parts of an email — usually the body and certain headers — using <a href="https://www.cloudflare.com/learning/ssl/how-does-public-key-encryption-work">public key encryption</a>. Before we dive into how this works, let’s take a look at the DKIM record used for cloudflare.com:</p>
+	<p>This is where DKIM comes in. DKIM provides a mechanism to cryptographically sign parts of an email — usually the body and certain headers — using <a href="https://www.cloudflare.com/learning/ssl/how-does-public-key-encryption-work" target="_blank" rel="noopener noreferrer">public key encryption</a>. Before we dive into how this works, let’s take a look at the DKIM record used for cloudflare.com:</p>
 	<pre class="language-bash"><code class="language-bash">google._domainkey.cloudflare.com.	TXT	"v=DKIM1; k=rsa; p=MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQDMxbNxA2V84XMpZgzMgHHey3TQFvHkwlPF2a11Ex6PGD71Sp8elVMMCdZhPYqDlzbehg9aWVwPz0+n3oRD73o+JXoSswgUXPV82O8s8dGny/BAJklo0+y+Bh2Op4YPGhClT6mRO2i5Qiqo4vPCuc6GB34Fyx7yhreDNKY9BNMUtQIDAQAB"</code></pre>
 	<p>The structure of a DKIM record is <code>&lt;selector&gt;._domainkey.&lt;domain&gt;</code>, where the selector is provided by your email provider. The content of the <code>DKIM TXT</code> record always starts with <code>v=DKIM1</code> followed by the public key. We can see the public key type, referenced by the <code>k</code> tag, and the public key itself, preceded by the <code>p</code> tag.</p>
 	<p>Besides the TXT record that contains the public DKIM key, receiving email servers will parse an email header that contains the DKIM signature -- the part that has been signed with the private DKIM key -- besides some other information the email receiver needs to perform the DKIM check. Below is an example of this email header which is part of a Cloudflare product update email:</p>
@@ -150,7 +150,7 @@ To: &lt;my_personal_email_address&gt;</code></pre>
 			<p>If the DKIM signature is valid, email authenticity is proven. Otherwise, the DKIM check fails.</p>
 		</li>
 	</ol>
-	<p>The full DKIM specification can be found in <a href="https://datatracker.ietf.org/doc/html/rfc4871">RFC4871</a> and <a href="https://datatracker.ietf.org/doc/html/rfc5672">RFC5672</a>.</p>
+	<p>The full DKIM specification can be found in <a href="https://datatracker.ietf.org/doc/html/rfc4871" target="_blank" rel="noopener noreferrer">RFC4871</a> and <a href="https://datatracker.ietf.org/doc/html/rfc5672" target="_blank" rel="noopener noreferrer">RFC5672</a>.</p>
 	<div class="flex anchor relative">
 		<h3 id="domain-based-message-authentication-reporting-and-conformance-dmarc">Domain-based Message Authentication Reporting and Conformance (DMARC)</h3>
 		<a href="https://blog.cloudflare.com/#domain-based-message-authentication-reporting-and-conformance-dmarc" aria-hidden="true" class="relative sm:absolute sm:-start-5">
@@ -186,7 +186,7 @@ To: &lt;my_personal_email_address&gt;</code></pre>
 			<p>Finally, the receiver sends back an aggregate report. Depending on the email specified in the <code>rua</code> tag this report could also be sent to a different email server which is responsible for that email address.</p>
 		</li>
 	</ol>
-	<p>Other optional tags and the complete DMARC specification is described in <a href="https://datatracker.ietf.org/doc/html/rfc7489">RFC7489</a>.</p>
+	<p>Other optional tags and the complete DMARC specification is described in <a href="https://datatracker.ietf.org/doc/html/rfc7489" target="_blank" rel="noopener noreferrer">RFC7489</a>.</p>
 	<div class="flex anchor relative">
 		<h3 id="a-few-numbers-on-the-current-adoption">A few numbers on the current adoption</h3>
 		<a href="https://blog.cloudflare.com/#a-few-numbers-on-the-current-adoption" aria-hidden="true" class="relative sm:absolute sm:-start-5">
@@ -196,13 +196,13 @@ To: &lt;my_personal_email_address&gt;</code></pre>
 		</a>
 	</div>
 	<p>Now that we’ve learned what the problem is and how to tackle it using SPF, DKIM, and DMARC, let’s see how widely they’re adopted.</p>
-	<p><a href="https://dmarc.org/stats/farsight/dmarc">Dmarc.org</a> has published the adoption of DMARC records of domains in a representative dataset. It shows that by the end of 2020, still less than 50% of domains even had a DMARC record. And remember, without a DMARC record there is no clear enforcement of SPF and DKIM checks. The study further shows that, of the domains that have a DMARC record, more than 65% are using the monitoring only policy (<code>p=none</code>), so there is a significant potential to drive this adoption higher. The study does not mention if these domains are sending or receiving emails, but even if they didn’t, a secure configuration should include a DMARC record (more about this later).</p>
+	<p><a href="https://dmarc.org/stats/farsight/dmarc" target="_blank" rel="noopener noreferrer">Dmarc.org</a> has published the adoption of DMARC records of domains in a representative dataset. It shows that by the end of 2020, still less than 50% of domains even had a DMARC record. And remember, without a DMARC record there is no clear enforcement of SPF and DKIM checks. The study further shows that, of the domains that have a DMARC record, more than 65% are using the monitoring only policy (<code>p=none</code>), so there is a significant potential to drive this adoption higher. The study does not mention if these domains are sending or receiving emails, but even if they didn’t, a secure configuration should include a DMARC record (more about this later).</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
 		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/LZQMSYmzWUIFhTD2JfTuZ/46f5a4d4626ef5978449cc63ed3ce58a/image2-37.png" alt="" class="kg-image" width="950" height="524" loading="lazy">
 
 	</figure>
-	<p>Another <a href="https://www.dmarc360.com/dmarc-adoption-rate">report</a> from August 1, 2021 tells a similar story for domains that belong to entities in the banking sector. Of 2,881 banking entities in the United States, only 44% have published a DMARC record on their domain. Of those that have a DMARC record, roughly 2 out of 5 have set the DMARC policy to <code>None</code> and another 8% are considered “Misconfigured”. Denmark has a very high adoption of DMARC on domains in the banking sector of 94%, in contrast to Japan where only 13% of domains are using DMARC. SPF adoption is on average significantly higher than DMARC, which might have to do with the fact that the SPF standard was first introduced as <a href="https://datatracker.ietf.org/doc/html/rfc4408">experimental RFC</a> in 2006 and DMARC only <a href="https://datatracker.ietf.org/doc/html/rfc7489">became a standard</a> in 2015.</p><!--kg-card-begin: html-->
+	<p>Another <a href="https://www.dmarc360.com/dmarc-adoption-rate" target="_blank" rel="noopener noreferrer">report</a> from August 1, 2021 tells a similar story for domains that belong to entities in the banking sector. Of 2,881 banking entities in the United States, only 44% have published a DMARC record on their domain. Of those that have a DMARC record, roughly 2 out of 5 have set the DMARC policy to <code>None</code> and another 8% are considered “Misconfigured”. Denmark has a very high adoption of DMARC on domains in the banking sector of 94%, in contrast to Japan where only 13% of domains are using DMARC. SPF adoption is on average significantly higher than DMARC, which might have to do with the fact that the SPF standard was first introduced as <a href="https://datatracker.ietf.org/doc/html/rfc4408" target="_blank" rel="noopener noreferrer">experimental RFC</a> in 2006 and DMARC only <a href="https://datatracker.ietf.org/doc/html/rfc7489" target="_blank" rel="noopener noreferrer">became a standard</a> in 2015.</p><!--kg-card-begin: html-->
 	<style type="text/css">
 		.tg {
 			border-collapse: collapse;
@@ -314,7 +314,7 @@ To: &lt;my_personal_email_address&gt;</code></pre>
 		</a>
 	</div>
 	<p>So what are we doing to increase the adoption of SPF, DKIM, and DMARC and tackle email spoofing and phishing? Enter the new Cloudflare <i>Email Security DNS Wizard</i>.</p>
-	<p>Starting today, when you’re navigating to the <a href="https://dash.cloudflare.com/?to=%2F%3Aaccount%2F%3Azone%2Fdns">DNS tab</a> of the Cloudflare dashboard, you’ll see two new features:</p>
+	<p>Starting today, when you’re navigating to the <a href="https://dash.cloudflare.com/?to=%2F%3Aaccount%2F%3Azone%2Fdns" target="_blank" rel="noopener noreferrer">DNS tab</a> of the Cloudflare dashboard, you’ll see two new features:</p>
 	<ol>
 		<li>
 			<p>A new section called Email Security</p>
@@ -335,7 +335,7 @@ To: &lt;my_personal_email_address&gt;</code></pre>
 		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5mzRxukzm24D0TyFcRZl2m/c02c0c75777b33c3d90e62b63e3c8a28/image.png" alt="" class="kg-image" width="2074" height="452" loading="lazy">
 
 	</figure>
-	<p>In order to start using the <i>Email Security DNS Wizard,</i> you can either directly click the link in the warning which brings you to the relevant section of the wizard or click <b>Configure</b> in the new <a href="https://dash.cloudflare.com/?to=%2F%3Aaccount%2F%3Azone%2Fdns%2Fwizard">Email Security section</a>. The latter will show you the following available options:</p>
+	<p>In order to start using the <i>Email Security DNS Wizard,</i> you can either directly click the link in the warning which brings you to the relevant section of the wizard or click <b>Configure</b> in the new <a href="https://dash.cloudflare.com/?to=%2F%3Aaccount%2F%3Azone%2Fdns%2Fwizard" target="_blank" rel="noopener noreferrer">Email Security section</a>. The latter will show you the following available options:</p>
 	<figure class="kg-card kg-image-card ">
 
 		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2sB5AoCErbZ3TAUWdJ2cFS/151cf3fade55dae8f8378cd01e58b66f/HTcq6CITW8kzRBSoK23qWiekQRf2cfGwKp_aNoIcIdJOSw7ZeNXAoR3UtJ2-jZ9RDgweHIZQqrpDzLvy210kwRNjRT8lBeS1cUd0D4LLawcOJ_xT-6v4SY81-shQ.png" alt="" class="kg-image" width="1547" height="2048" loading="lazy">
@@ -363,8 +363,8 @@ _dmarc.example.com.		TXT	"v=DMARC1; p=reject; sp=reject; adkim=s; aspf=s;"</code
 			</svg>
 		</a>
 	</div>
-	<p>Out you go and make sure your domain is secured against email spoofing and phishing. Just head over to the <a href="https://dash.cloudflare.com/?to=%2F%3Aaccount%2F%3Azone%2Fdns">DNS tab</a> in the Cloudflare dashboard or if you are not yet using Cloudflare DNS, <a href="https://dash.cloudflare.com/sign-up">sign up for free</a> in just a few minutes on <a href="https://www.cloudflare.com">cloudflare.com</a>.</p>
-	<p>If you want to read more about SPF, DKIM and DMARC, go check out our <a href="https://www.cloudflare.com/learning/dns/dns-records/dns-txt-record">new learning pages</a> about email related DNS records.</p>
+	<p>Out you go and make sure your domain is secured against email spoofing and phishing. Just head over to the <a href="https://dash.cloudflare.com/?to=%2F%3Aaccount%2F%3Azone%2Fdns" target="_blank" rel="noopener noreferrer">DNS tab</a> in the Cloudflare dashboard or if you are not yet using Cloudflare DNS, <a href="https://dash.cloudflare.com/sign-up" target="_blank" rel="noopener noreferrer">sign up for free</a> in just a few minutes on <a href="https://www.cloudflare.com" target="_blank" rel="noopener noreferrer">cloudflare.com</a>.</p>
+	<p>If you want to read more about SPF, DKIM and DMARC, go check out our <a href="https://www.cloudflare.com/learning/dns/dns-records/dns-txt-record" target="_blank" rel="noopener noreferrer">new learning pages</a> about email related DNS records.</p>
 	<div class="flex anchor relative">
 		<h3 id="watch-on-cloudflare-tv">Watch on Cloudflare TV</h3>
 		<a href="https://blog.cloudflare.com/#watch-on-cloudflare-tv" aria-hidden="true" class="relative sm:absolute sm:-start-5">

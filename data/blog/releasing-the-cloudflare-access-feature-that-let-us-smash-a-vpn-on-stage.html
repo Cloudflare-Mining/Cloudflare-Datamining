@@ -1,7 +1,7 @@
 <div class="mb2 gray5">3 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/456JX6R8zq7DS5h8vk4YyP/ee995981c80019c8a7aa0d2ebda2c724/releasing-the-cloudflare-access-feature-that-let-us-smash-a-vpn-on-stage.JPG" alt="">
 <div class="post-content lh-copy gray1">
 	<p>We held our annual Cloudflare Retreat last week. Over 750 team members from nearly a dozen offices spent three days learning, bonding and some of them got to smash a VPN piñata on stage with a baseball bat. Yes, you read that right.</p>
-	<p>The latest feature added to Cloudflare Access let us celebrate the replacement of our clunky VPN with a faster, safer way to reach our internal applications. You can now place applications that require <a href="https://www.cloudflare.com/learning/access-management/what-is-ssh">SSH connections</a>, like your source control repository, behind Cloudflare Access. We’re excited to release that same feature so that your team can also destroy your own VPN (piñata not included).</p>
+	<p>The latest feature added to Cloudflare Access let us celebrate the replacement of our clunky VPN with a faster, safer way to reach our internal applications. You can now place applications that require <a href="https://www.cloudflare.com/learning/access-management/what-is-ssh" target="_blank" rel="noopener noreferrer">SSH connections</a>, like your source control repository, behind Cloudflare Access. We’re excited to release that same feature so that your team can also destroy your own VPN (piñata not included).</p>
 	<figure class="kg-card kg-image-card ">
 
 		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2pgRyIufiD6HlNouI8MQpa/ee5c9bf645af3f3a9f0553dd6f7086ff/IMG-0298.JPG.jpeg" alt="" class="kg-image" width="2000" height="2667" loading="lazy">
@@ -28,8 +28,8 @@
 			</svg>
 		</a>
 	</div>
-	<p>To protect a server you need to reach over SSH, start by exposing that machine to the Cloudflare network with <a href="https://www.cloudflare.com/products/argo-tunnel">Argo Tunnel</a>. Argo Tunnel connects your server to Cloudflare without the need to configure firewall ports or ACLs. Creating a tunnel ensures that Cloudflare evaluates all requests to your machine to deliver security features like our web application firewall and unmetered DDoS mitigation.</p>
-	<p>When you <a href="https://developers.cloudflare.com/argo-tunnel/quickstart">configure</a> Argo Tunnel, you’ll assign a hostname to that server that can be reached over the internet through the Cloudflare network. Cloudflare Access can then control who is allowed to reach your server. With the hostname ready and a policy applied, you can start to use <code>cloudflared</code> and your identity provider to connect over SSH.</p>
+	<p>To protect a server you need to reach over SSH, start by exposing that machine to the Cloudflare network with <a href="https://www.cloudflare.com/products/argo-tunnel" target="_blank" rel="noopener noreferrer">Argo Tunnel</a>. Argo Tunnel connects your server to Cloudflare without the need to configure firewall ports or ACLs. Creating a tunnel ensures that Cloudflare evaluates all requests to your machine to deliver security features like our web application firewall and unmetered DDoS mitigation.</p>
+	<p>When you <a href="https://developers.cloudflare.com/argo-tunnel/quickstart" target="_blank" rel="noopener noreferrer">configure</a> Argo Tunnel, you’ll assign a hostname to that server that can be reached over the internet through the Cloudflare network. Cloudflare Access can then control who is allowed to reach your server. With the hostname ready and a policy applied, you can start to use <code>cloudflared</code> and your identity provider to connect over SSH.</p>
 	<div class="flex anchor relative">
 		<h3 id="connecting-to-your-server-over-ssh">Connecting to your server over SSH</h3>
 		<a href="https://blog.cloudflare.com/#connecting-to-your-server-over-ssh" aria-hidden="true" class="relative sm:absolute sm:-start-5">
@@ -50,6 +50,6 @@
 		</a>
 	</div>
 	<p>When we place a tool behind Access, we help every member of our team do their best work faster. We review pull requests more quickly and deliver more iterative feedback from any device. We add new details to our product documentation more often. Instead of waiting to batch work that requires the VPN, we can complete those tasks without slowing down our day.</p>
-	<p>Most importantly, Access also makes a team’s work more secure. We’ve been excited to partner with our own security team to build a <a href="https://www.cloudflare.com/network-security">solution</a> that better protects what we build here at Cloudflare.</p>
-	<p>You can start protecting your applications that require SSH connections by using this guide <a href="https://developers.cloudflare.com/access/ssh">here</a>. If you host your own VPN smashing parties, please send us an invitation - we’ll do everything we can to attend (we’ll bring pizza).</p>
+	<p>Most importantly, Access also makes a team’s work more secure. We’ve been excited to partner with our own security team to build a <a href="https://www.cloudflare.com/network-security" target="_blank" rel="noopener noreferrer">solution</a> that better protects what we build here at Cloudflare.</p>
+	<p>You can start protecting your applications that require SSH connections by using this guide <a href="https://developers.cloudflare.com/access/ssh" target="_blank" rel="noopener noreferrer">here</a>. If you host your own VPN smashing parties, please send us an invitation - we’ll do everything we can to attend (we’ll bring pizza).</p>
 </div>

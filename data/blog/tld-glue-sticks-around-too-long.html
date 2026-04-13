@@ -1,12 +1,12 @@
 <div class="mb2 gray5">6 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5zpynga8050ZbuClWEraW2/cf2f6cb84e51e25ce0b44b4d70bcdb1e/tld-glue-sticks-around-too-long.jpg" alt="">
 <div class="post-content lh-copy gray1">
-	<p>Recent <a href="https://en.wikipedia.org/wiki/2016_Dyn_cyberattack">headline grabbing DDoS attacks</a> provoked heated debates in the DNS community. Everyone has strong opinions on how to harden DNS to avoid downtime in the future. Is it better to use a single DNS provider or multiple? What DNS TTL values are best? Does DNSSEC make you more or less exposed?</p>
+	<p>Recent <a href="https://en.wikipedia.org/wiki/2016_Dyn_cyberattack" target="_blank" rel="noopener noreferrer">headline grabbing DDoS attacks</a> provoked heated debates in the DNS community. Everyone has strong opinions on how to harden DNS to avoid downtime in the future. Is it better to use a single DNS provider or multiple? What DNS TTL values are best? Does DNSSEC make you more or less exposed?</p>
 	<figure class="kg-card kg-image-card ">
 
 		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1chXWEgO8xyyBw5R2bGrSE/4d34c63a6d0ca9fa3efdc8d9e5c1a72f/4536619509_0a576921df_z.jpg" alt="" class="kg-image" width="512" height="427" loading="lazy">
 
 	</figure>
-	<p><a href="https://creativecommons.org/licenses/by/2.0">CC BY 2.0</a> <a href="https://www.flickr.com/photos/07anycolouryoulike/4536619509">image</a> by <a href="https://www.flickr.com/photos/07anycolouryoulike">Leticia Chamorro</a></p>
+	<p><a href="https://creativecommons.org/licenses/by/2.0" target="_blank" rel="noopener noreferrer">CC BY 2.0</a> <a href="https://www.flickr.com/photos/07anycolouryoulike/4536619509" target="_blank" rel="noopener noreferrer">image</a> by <a href="https://www.flickr.com/photos/07anycolouryoulike" target="_blank" rel="noopener noreferrer">Leticia Chamorro</a></p>
 	<p>These are valid questions worth serious discussion, but tuning your own DNS server settings is not the full story. Together, as a community, we need to harden the DNS protocol itself. We need to prepare it to withstand the toughest DDoS attacks the future will surely bring. In this blog post I'll point out an obscure feature in the core DNS protocol. It is not practical to use this "hidden" feature for DDoS mitigation now, but with a small tweak it could become extremely useful. The feature is currently unused <i>not</i> due to protocol problems - it's unused because of the DNS Top Level Domain (TLD) operators' apathy. If it was working it would reduce DDoS recovery time for the DNS servers under attack.</p>
 	<p>The feature in question is: DNS TLD glue records. More specifically DNS TLD glue records with custom TTL values.</p>
 	<p>DNS glue is one of the least understood quirks in the DNS protocol. Allow me to explain why I think reducing glue TTL is a good idea.</p>
@@ -16,7 +16,7 @@
 		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1pD5DVcAtxcliRRVaWJRDI/1ca9f529ea8ea349fcdc9662f05eac3c/7230017432_fd71ce6a85_z.jpg" alt="" class="kg-image" width="640" height="480" loading="lazy">
 
 	</figure>
-	<p><a href="https://creativecommons.org/licenses/by/2.0">CC BY 2.0</a> <a href="https://www.flickr.com/photos/armydre2008/7230017432">image</a> by <a href="https://www.flickr.com/photos/armydre2008">Frankieleon</a></p>
+	<p><a href="https://creativecommons.org/licenses/by/2.0" target="_blank" rel="noopener noreferrer">CC BY 2.0</a> <a href="https://www.flickr.com/photos/armydre2008/7230017432" target="_blank" rel="noopener noreferrer">image</a> by <a href="https://www.flickr.com/photos/armydre2008" target="_blank" rel="noopener noreferrer">Frankieleon</a></p>
 	<div class="flex anchor relative">
 		<h3 id="dns-glue">DNS Glue</h3>
 		<a href="https://blog.cloudflare.com/#dns-glue" aria-hidden="true" class="relative sm:absolute sm:-start-5">
@@ -25,7 +25,7 @@
 			</svg>
 		</a>
 	</div>
-	<p>DNS glue is a solution to <a href="https://en.wikipedia.org/wiki/Chicken_or_the_egg">"the chicken or the egg problem"</a> that is inherent in DNS. It's easiest to explain it with a concrete example.</p>
+	<p>DNS glue is a solution to <a href="https://en.wikipedia.org/wiki/Chicken_or_the_egg" target="_blank" rel="noopener noreferrer">"the chicken or the egg problem"</a> that is inherent in DNS. It's easiest to explain it with a concrete example.</p>
 	<p>Imagine you want to resolve the <code>cloudflare.net</code> domain. For that you ask your local recursive DNS server for the resolution. OK, but that doesn't answer the question, what does the resolver do?</p>
 	<p>For simplicity let's make a couple of assumptions:</p>
 	<ul>
@@ -57,7 +57,7 @@ cloudflare.net.         172800  IN      NS      ns1.cloudflare.net.
 		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/64Z4EPs4mJr6qPSfUClSPP/c7a63b0bad1370f9da14de9a948a4505/3326878608_c7d9273897_z.jpg" alt="" class="kg-image" width="640" height="426" loading="lazy">
 
 	</figure>
-	<p><a href="https://creativecommons.org/licenses/by/2.0">CC BY 2.0</a> <a href="https://www.flickr.com/photos/samcatchesides/3326878608">image</a> by <a href="https://www.flickr.com/photos/samcatchesides">Sam-Cat</a></p>
+	<p><a href="https://creativecommons.org/licenses/by/2.0" target="_blank" rel="noopener noreferrer">CC BY 2.0</a> <a href="https://www.flickr.com/photos/samcatchesides/3326878608" target="_blank" rel="noopener noreferrer">image</a> by <a href="https://www.flickr.com/photos/samcatchesides" target="_blank" rel="noopener noreferrer">Sam-Cat</a></p>
 	<div class="flex anchor relative">
 		<h3 id="the-glue">The glue</h3>
 		<a href="https://blog.cloudflare.com/#the-glue" aria-hidden="true" class="relative sm:absolute sm:-start-5">
@@ -85,8 +85,8 @@ cloudflare.net.         172800  IN      NS      ns1.cloudflare.net.
 ;; ADDITIONAL SECTION:
 ns1.cloudflare.net.     172800  IN      A       173.245.59.31
 www.google.com          172800  IN      A       1.2.3.4</code></pre>
-	<p>The fun story is: it used to "work" and confuse recursors. This is precisely what the <a href="http://www.secure64.com/news-internic-alternic-dns-poisoning">Kashpureff attack did in 1997</a>.</p>
-	<p>This is a good old school DNS cache injection or cache poisoning attack. The recursor logic of interpreting DNS glue answers is pretty twisted. The details are poorly understood, and vary with every implementation. Conceptually the barrier between a valid glue record and cache injection is very thin. This is being actively discussed by the DNS gurus, see <a href="https://tools.ietf.org/html/draft-fujiwara-dnsop-resolver-update-00">draft-fujiwara-dnsop-resolver-update-00</a> and <a href="https://tools.ietf.org/id/draft-weaver-dnsext-comprehensive-resolver-00.html#object_scope">draft-weaver-dnsext-comprehensive-resolver-00</a>.</p>
+	<p>The fun story is: it used to "work" and confuse recursors. This is precisely what the <a href="http://www.secure64.com/news-internic-alternic-dns-poisoning" target="_blank" rel="noopener noreferrer">Kashpureff attack did in 1997</a>.</p>
+	<p>This is a good old school DNS cache injection or cache poisoning attack. The recursor logic of interpreting DNS glue answers is pretty twisted. The details are poorly understood, and vary with every implementation. Conceptually the barrier between a valid glue record and cache injection is very thin. This is being actively discussed by the DNS gurus, see <a href="https://tools.ietf.org/html/draft-fujiwara-dnsop-resolver-update-00" target="_blank" rel="noopener noreferrer">draft-fujiwara-dnsop-resolver-update-00</a> and <a href="https://tools.ietf.org/id/draft-weaver-dnsext-comprehensive-resolver-00.html#object_scope" target="_blank" rel="noopener noreferrer">draft-weaver-dnsext-comprehensive-resolver-00</a>.</p>
 	<div class="flex anchor relative">
 		<h3 id="whats-the-problem">What's the problem?</h3>
 		<a href="https://blog.cloudflare.com/#whats-the-problem" aria-hidden="true" class="relative sm:absolute sm:-start-5">
@@ -134,8 +134,8 @@ ns1.cloudflare.net.	900	IN	A	173.245.59.31</code></pre>
 		</a>
 	</div>
 	<p>While I strongly believe that short DNS TTLs are a good thing, others disagree.</p>
-	<p>An often raised point is that short TTLs increase the load on DNS servers. This is certainly true, but as pointed out in <a href="https://indico.dns-oarc.net/event/22/session/1/contribution/26/material/slides/0.pdf">this OARC presentation</a> by the <code>.nl</code> operators, the impact is minimal. DNS servers <i>must</i> be heavily over provisioned anyway to deal with attacks. Actually the <code>.nl</code> operators have been serving 1 hour glue TTL since the beginning of 2016 without issues.</p>
-	<p>In <a href="https://techblog.bozho.net/short-dns-ttl-and-centralization-are-serious-risks-for-the-internet">this blog post</a>, Bozhidar Bozhanov argues that short TTLs in general are undesirable.</p>
+	<p>An often raised point is that short TTLs increase the load on DNS servers. This is certainly true, but as pointed out in <a href="https://indico.dns-oarc.net/event/22/session/1/contribution/26/material/slides/0.pdf" target="_blank" rel="noopener noreferrer">this OARC presentation</a> by the <code>.nl</code> operators, the impact is minimal. DNS servers <i>must</i> be heavily over provisioned anyway to deal with attacks. Actually the <code>.nl</code> operators have been serving 1 hour glue TTL since the beginning of 2016 without issues.</p>
+	<p>In <a href="https://techblog.bozho.net/short-dns-ttl-and-centralization-are-serious-risks-for-the-internet" target="_blank" rel="noopener noreferrer">this blog post</a>, Bozhidar Bozhanov argues that short TTLs in general are undesirable.</p>
 	<p><i>What matters is that the glue TTL should be configurable.</i></p>
 	<div class="flex anchor relative">
 		<h2 id="testing-things">Testing things</h2>

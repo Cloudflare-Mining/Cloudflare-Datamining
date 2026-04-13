@@ -25,7 +25,7 @@
 		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5nnwNUFQmflIHHioGDISlg/250c388a2d796d0dc8139b4eddda6c05/image5-1.png" alt="" class="kg-image" width="1999" height="124" loading="lazy">
 
 	</figure>
-	<p>Here, the external DNS resolution is the part where DNS queries to <code>blog.cloudflare.com</code> sent by public resolvers like <code>1.1.1.1</code> or <code>8.8.8.8</code> on behalf of a visitor return a set of Cloudflare Anycast IP addresses. This ensures that the visitor’s browser knows where to send an HTTPS request to load the website. Under the hood your browser performs a DNS query that looks something like this (the trailing dot indicates the <a href="https://en.wikipedia.org/wiki/DNS_root_zone">DNS root zone</a>):</p>
+	<p>Here, the external DNS resolution is the part where DNS queries to <code>blog.cloudflare.com</code> sent by public resolvers like <code>1.1.1.1</code> or <code>8.8.8.8</code> on behalf of a visitor return a set of Cloudflare Anycast IP addresses. This ensures that the visitor’s browser knows where to send an HTTPS request to load the website. Under the hood your browser performs a DNS query that looks something like this (the trailing dot indicates the <a href="https://en.wikipedia.org/wiki/DNS_root_zone" target="_blank" rel="noopener noreferrer">DNS root zone</a>):</p>
 	<pre class="language-bash"><code class="language-bash">$ dig blog.cloudflare.com. +short
 104.18.28.7
 104.18.29.7</code></pre>
@@ -34,7 +34,7 @@
 	<p>The domain <code>origin.example</code> needs to be resolved by Cloudflare as part of the upstream or origin DNS resolution. This time, the Cloudflare data center needs to perform an outbound DNS query that looks like this:</p>
 	<pre class="language-bash"><code class="language-bash">$ dig origin.example. +short
 192.0.2.1</code></pre>
-	<p>DNS is a hierarchical protocol, so the recursive DNS resolver, which usually handles DNS resolution for whoever wants to resolve a <a href="https://www.cloudflare.com/learning/dns/glossary/what-is-a-domain-name">domain name</a>, needs to talk to several involved nameservers until it finally gets an answer from the authoritative nameservers of the domain (assuming no DNS responses are cached). This is the same process during the external DNS resolution and the origin DNS resolution. Here is an example for the origin DNS resolution:</p>
+	<p>DNS is a hierarchical protocol, so the recursive DNS resolver, which usually handles DNS resolution for whoever wants to resolve a <a href="https://www.cloudflare.com/learning/dns/glossary/what-is-a-domain-name" target="_blank" rel="noopener noreferrer">domain name</a>, needs to talk to several involved nameservers until it finally gets an answer from the authoritative nameservers of the domain (assuming no DNS responses are cached). This is the same process during the external DNS resolution and the origin DNS resolution. Here is an example for the origin DNS resolution:</p>
 	<figure class="kg-card kg-image-card ">
 
 		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7E1GLN7i8qGi3oB6Zentug/8b55136d3c67a79d0d9c711c428911b4/image6-1.png" alt="" class="kg-image" width="1165" height="863" loading="lazy">
@@ -82,10 +82,10 @@
 	<p>As mentioned in the introduction, the underlying cause for this incident was expired DNSSEC signatures for .net and .com zones. Expired DNSSEC signatures will cause a DNS response to be interpreted as invalid. There are two main scenarios in which this error was observed by a user:</p>
 	<ol>
 		<li>
-			<p><a href="https://developers.cloudflare.com/dns/cname-flattening">CNAME flattening</a> for external DNS resolution. This is when our authoritative nameservers attempt to return the IP address(es) that a CNAME record target resolves to rather than the CNAME record itself.</p>
+			<p><a href="https://developers.cloudflare.com/dns/cname-flattening" target="_blank" rel="noopener noreferrer">CNAME flattening</a> for external DNS resolution. This is when our authoritative nameservers attempt to return the IP address(es) that a CNAME record target resolves to rather than the CNAME record itself.</p>
 		</li>
 		<li>
-			<p>CNAME target lookup for origin DNS resolution. This is most commonly used when an HTTPS request is sent to a Cloudflare anycast IP address, and we need to determine what IP address to forward the request to. See <a href="https://developers.cloudflare.com/fundamentals/get-started/concepts/how-cloudflare-works">How Cloudflare works</a> for more details.</p>
+			<p>CNAME target lookup for origin DNS resolution. This is most commonly used when an HTTPS request is sent to a Cloudflare anycast IP address, and we need to determine what IP address to forward the request to. See <a href="https://developers.cloudflare.com/fundamentals/get-started/concepts/how-cloudflare-works" target="_blank" rel="noopener noreferrer">How Cloudflare works</a> for more details.</p>
 		</li>
 	</ol>
 	<p>In both cases, behind the scenes the DNS query goes through an in-house recursive DNS resolver in order to lookup what a hostname resolves to. The purpose of this resolver is to cache queries, optimize future queries and provide DNSSEC validation. If the query from this resolver fails for whatever reason, our authoritative DNS system will not be able to perform the two scenarios outlined above.</p>
@@ -122,7 +122,7 @@
 	</div>
 	<p>This incident <a href="https://blog.cloudflare.com/october-2021-facebook-outage">once again</a> shows how impactful DNS failures are and how crucial this technology is for the Internet. We will investigate how we can improve our systems to detect and resolve issues like this more efficiently and quickly if they occur again in the future.</p>
 	<p>While Cloudflare was not the cause of this issue, and we are certain that we were not the only ones affected by this, we are still sorry for the disruption to our customers and to all the users who were unable to access Internet properties during this incident.</p>
-	<p><b>Update</b>: On Tue Jul 11 22:24:21 UTC 2023_,_ Verisign posted an <a href="https://lists.dns-oarc.net/pipermail/dns-operations/2023-July/022174.html">announcement</a>, providing more details:</p>
+	<p><b>Update</b>: On Tue Jul 11 22:24:21 UTC 2023_,_ Verisign posted an <a href="https://lists.dns-oarc.net/pipermail/dns-operations/2023-July/022174.html" target="_blank" rel="noopener noreferrer">announcement</a>, providing more details:</p>
 	<blockquote>
 		<p><i>Last week, during a migration of one of our DNS resolution sites in Singapore, from one provider to another, we unexpectedly lost management access and the ability to deliver changes and DNS updates to the site. Following our standard procedure, we disabled all transit links to the affected site. Unfortunately, a peering router remained active, which was not immediately obvious to our teams due to the lack of connectivity there.</i></p>
 	</blockquote>

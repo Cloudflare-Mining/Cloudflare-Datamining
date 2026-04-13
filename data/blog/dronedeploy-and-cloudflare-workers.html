@@ -1,9 +1,9 @@
 <div class="mb2 gray5">3 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5m3AkSJ2KyZ5gIsgpSZgM8/7a56181bb1b1a8727f9886e36b5b5194/dronedeploy-and-cloudflare-workers.jpg" alt="">
 <div class="post-content lh-copy gray1">
 	<p></p>
-	<p>Images courtesty of <a href="https://www.dronedeploy.com">DroneDeploy</a></p>
+	<p>Images courtesty of <a href="https://www.dronedeploy.com" target="_blank" rel="noopener noreferrer">DroneDeploy</a></p>
 	<p>When we launched <a href="https://blog.cloudflare.com/cloudflare-workers-is-now-on-open-beta">Workers</a> a few months ago, much of the focus was on use cases surrounding websites running on origins that needed extra oomph. With Workers you can easily take a site, introduce a raft of personalization capabilities, A/B test changes or even aggregate a set of API responses around a range of services. In short by layering in Cloudflare Workers we can take origin websites and do transformational things.</p>
-	<p>One of the joys of a platform, is that you never know where you are going to see the next use case. Enter <a href="https://www.dronedeploy.com">DroneDeploy</a></p>
+	<p>One of the joys of a platform, is that you never know where you are going to see the next use case. Enter <a href="https://www.dronedeploy.com" target="_blank" rel="noopener noreferrer">DroneDeploy</a></p>
 	<figure class="kg-card kg-image-card ">
 
 		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4OM3J7Ic30OYj2Ha59eYAI/47cd5c3c81fb8d2e13e13cc714143356/image3.png" alt="image3" class="kg-image" width="1586" height="506" loading="lazy">
@@ -39,13 +39,13 @@
 		</a>
 	</div>
 	<p>It’s important to understand that they want to maintain architectural freedom around the many services they use to make their service. As with many software stacks today, they use GCP, AWS, and others, but they want to maintain flexibility in their network routing and authentication layer.</p>
-	<p>By offering a dramatically better experience to drone users in the field, they can both push the authentication out in front of a <a href="https://www.cloudflare.com/learning/cdn/what-is-a-cdn">CDN</a> and also serve collected images directly from our CDN (typically hundreds or thousands of tiles used to render maps or 3D models). Many of DroneDeploy’s users operate in highly variable network conditions on job sites or in the field. Workers allows them to push their authentication to the edge; and use Workers to build a custom signed URL to ensure the correct images are surfaced to the correct consumer - in effect ensuring their multi-tenancy image storage model is safe guarded at the edge. To do this, DroneDeploy employs a URL authentication method commonly known as request signing which uses the Web Crypto API.</p>
+	<p>By offering a dramatically better experience to drone users in the field, they can both push the authentication out in front of a <a href="https://www.cloudflare.com/learning/cdn/what-is-a-cdn" target="_blank" rel="noopener noreferrer">CDN</a> and also serve collected images directly from our CDN (typically hundreds or thousands of tiles used to render maps or 3D models). Many of DroneDeploy’s users operate in highly variable network conditions on job sites or in the field. Workers allows them to push their authentication to the edge; and use Workers to build a custom signed URL to ensure the correct images are surfaced to the correct consumer - in effect ensuring their multi-tenancy image storage model is safe guarded at the edge. To do this, DroneDeploy employs a URL authentication method commonly known as request signing which uses the Web Crypto API.</p>
 	<p>Commenting on this Eric Hauser, VP Engineering of DroneDeploy detailed the upside of Cloudflare Workers for his team:</p>
 	<blockquote>
 		<p><i>Cloudflare Workers provided us with flexibility when we ran into limitations with the shared capabilities of our primary infrastructure providers CDNs. Unique enterprise requirements around authentication, data security, and locality require us to have flexibility at our routing layer. From just the work we’ve done around authentication to date, we see an exciting and productive relationship with Cloudflare.</i></p>
 	</blockquote>
 	<p>Let's peel back the layers and understand how they use Workers.</p>
-	<p>DroneDeploy uses standard JWT authentication - if you are not sure what a JWT Token is, read more <a href="https://jwt.io">here</a>. So the general flow requires the Worker to:</p>
+	<p>DroneDeploy uses standard JWT authentication - if you are not sure what a JWT Token is, read more <a href="https://jwt.io" target="_blank" rel="noopener noreferrer">here</a>. So the general flow requires the Worker to:</p>
 	<ol>
 		<li>
 			<p>Intercept requests for images from the DroneDeploy mobile app or website. These requests can number in the hundreds or thousands of image tiles all of which are needed to render a typical map or 3D model and are stored on either S3 or Google Cloud Storage.</p>
@@ -206,5 +206,5 @@ function createMessage(url, headers) {
 	</div>
 	<p>This Worker is the first of a few DroneDeploy are exploring. In next generation Workers, DroneDeploy is looking to deliver a range of improvements all with a view of optimizing their customers experience by using Cloudflare’s cache in addition to other features Cloudflare has to offer. We’ll update the blog at that time.</p>
 	<hr>
-	<p><i>If you have a worker you'd like to share, or want to check out workers from other Cloudflare users, visit the </i><a href="https://community.cloudflare.com/tags/recipe-exchange"><i>“Recipe Exchange”</i></a><i> in the Workers section of the </i><a href="https://community.cloudflare.com/c/developers/workers"><i>Cloudflare Community Forum</i></a><i>.</i></p>
+	<p><i>If you have a worker you'd like to share, or want to check out workers from other Cloudflare users, visit the </i><a href="https://community.cloudflare.com/tags/recipe-exchange" target="_blank" rel="noopener noreferrer"><i>“Recipe Exchange”</i></a><i> in the Workers section of the </i><a href="https://community.cloudflare.com/c/developers/workers" target="_blank" rel="noopener noreferrer"><i>Cloudflare Community Forum</i></a><i>.</i></p>
 </div>

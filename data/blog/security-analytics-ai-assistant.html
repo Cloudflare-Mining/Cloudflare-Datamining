@@ -77,14 +77,14 @@
 			</svg>
 		</a>
 	</div>
-	<p>Using Cloudflare’s powerful <a href="https://ai.cloudflare.com">Workers AI</a> global network inference platform, we were able to use one of the off-the-shelf large language models (LLMs) offered on the platform to convert customer queries into GraphQL filters. By teaching an AI model about the available filters we have on our Security Analytics GraphQL dataset, we can have the AI model turn a request such as “<i>Compare attack traffic on /api and /admin endpoints</i>” &nbsp;into a matching set of structured filters:</p>
+	<p>Using Cloudflare’s powerful <a href="https://ai.cloudflare.com" target="_blank" rel="noopener noreferrer">Workers AI</a> global network inference platform, we were able to use one of the off-the-shelf large language models (LLMs) offered on the platform to convert customer queries into GraphQL filters. By teaching an AI model about the available filters we have on our Security Analytics GraphQL dataset, we can have the AI model turn a request such as “<i>Compare attack traffic on /api and /admin endpoints</i>” &nbsp;into a matching set of structured filters:</p>
 	<pre class="language-bash"><code class="language-bash">```
 [
   {“name”: “Attack Traffic on /api”, “filters”: [{“key”: “clientRequestPath”, “operator”: “eq”, “value”: “/api”}, {“key”: “wafAttackScoreClass”, “operator”: “eq”, “value”: “attack”}]},
   {“name”: “Attack Traffic on /admin”, “filters”: [{“key”: “clientRequestPath”, “operator”: “eq”, “value”: “/admin”}, {“key”: “wafAttackScoreClass”, “operator”: “eq”, “value”: “attack”}]}
 ]
 ```</code></pre>
-	<p>Then, using the filters provided by the AI model, we can make requests to our <a href="https://developers.cloudflare.com/analytics/graphql-api">GraphQL APIs</a>, gather the requisite data, and plot a data visualization to answer the customer query.</p>
+	<p>Then, using the filters provided by the AI model, we can make requests to our <a href="https://developers.cloudflare.com/analytics/graphql-api" target="_blank" rel="noopener noreferrer">GraphQL APIs</a>, gather the requisite data, and plot a data visualization to answer the customer query.</p>
 	<p>By using this method, we are able to keep customer information private and avoid exposing any security analytics data to the AI model itself, while still allowing humans to query their data with ease. This ensures that your queries will never be used to train the model. And because Workers AI hosts a local instance of the LLM on Cloudflare’s own network, your queries and resulting data never leave Cloudflare’s network.</p>
 	<div class="flex anchor relative">
 		<h2 id="future-development">Future Development</h2>
@@ -104,6 +104,6 @@
 			</svg>
 		</a>
 	</div>
-	<p>Starting today, AI Assistant is available for a select few users and rolling out to all Business and Enterprise customers throughout March. Look out for it and try for free and let us know what you think by using the <a href="https://docs.google.com/forms/d/e/1FAIpQLSfKtXvPvKUZpjoKZa93ceTk_NAdRY4CF_PpjvFwZwa69o7i6A/viewform?entry.2073820081=Account+security+analytics">Feedback</a> link at the top of the Security Analytics page.</p>
+	<p>Starting today, AI Assistant is available for a select few users and rolling out to all Business and Enterprise customers throughout March. Look out for it and try for free and let us know what you think by using the <a href="https://docs.google.com/forms/d/e/1FAIpQLSfKtXvPvKUZpjoKZa93ceTk_NAdRY4CF_PpjvFwZwa69o7i6A/viewform?entry.2073820081=Account+security+analytics" target="_blank" rel="noopener noreferrer">Feedback</a> link at the top of the Security Analytics page.</p>
 	<p>Final pricing will be determined prior to general availability.</p>
 </div>

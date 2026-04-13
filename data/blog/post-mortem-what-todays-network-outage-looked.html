@@ -1,7 +1,7 @@
 <div class="mb2 gray5">3 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1zXHY40R34jLJNYYYpTCJf/ce1e2476f5218e268eb2f33f773e652b/post-mortem-what-todays-network-outage-looked.png" alt="">
 <div class="post-content lh-copy gray1">
 	<p></p>
-	<p>Yesterday, around 16:36 GMT, we had an <a href="https://www.cloudflare.com/system-status">interruption to our network services</a>. The interruption was caused by a combination of factors. First, we had an upstream bandwidth provider with some network issues that primarily affected our European data centers. Second, we misapplied a network rate limit in an attempt to mitigate a large DDoS our ops team had been fighting throughout the night.</p>
+	<p>Yesterday, around 16:36 GMT, we had an <a href="https://www.cloudflare.com/system-status" target="_blank" rel="noopener noreferrer">interruption to our network services</a>. The interruption was caused by a combination of factors. First, we had an upstream bandwidth provider with some network issues that primarily affected our European data centers. Second, we misapplied a network rate limit in an attempt to mitigate a large DDoS our ops team had been fighting throughout the night.</p>
 	<p>CloudFlare is designed to make sites faster, safer and more reliable so any time an incident on our network causes any of our customers' sites to be unreachable it is unacceptable. I wanted to take some time to give you more of a sense of exactly what happened and what our ops and engineering teams have been working on since we got things restored in order to protect our network from incidents like this in the future.</p>
 	<div class="flex anchor relative">
 		<h3 id="two-visible-events">Two Visible Events</h3>
@@ -11,7 +11,7 @@
 			</svg>
 		</a>
 	</div>
-	<p>The graph at the top of this post is the aggregate traffic across CloudFlare's <a href="https://www.cloudflare.com/network-map">eight European data centers</a>. The green section represents traffic that is inbound to our network, the blue line represents traffic that is outbound from our network. Inbound traffic includes both requests that we receive from visitors to our customers' sites as well as any content that we pull from our customers' origin servers. Since we cache content on our network, the blue line should always be significantly above the green one.</p>
+	<p>The graph at the top of this post is the aggregate traffic across CloudFlare's <a href="https://www.cloudflare.com/network-map" target="_blank" rel="noopener noreferrer">eight European data centers</a>. The green section represents traffic that is inbound to our network, the blue line represents traffic that is outbound from our network. Inbound traffic includes both requests that we receive from visitors to our customers' sites as well as any content that we pull from our customers' origin servers. Since we cache content on our network, the blue line should always be significantly above the green one.</p>
 	<p>Two things you notice from the graph: the big green spike around 13:30 GMT and the fall off in the blue line around 16:30 GMT. While the two were almost 3 hours apart, they are in fact related. Here's what happened.</p>
 	<div class="flex anchor relative">
 		<h3 id="limited-network-and-a-nasty-attack">Limited Network and a Nasty Attack</h3>
@@ -31,7 +31,7 @@
 			</svg>
 		</a>
 	</div>
-	<p>The attacker switched to trying other vectors over the next several hours. While we have automated systems to deal with many of these attacks, the size of the attack was sufficient that several members of our ops team were monitoring the situation and manually adjusting routing and rules in order to ensure the customer under attack <a href="https://www.cloudflare.com/ddos/under-attack">stayed online</a> and none of the rest of the network was impacted.</p>
+	<p>The attacker switched to trying other vectors over the next several hours. While we have automated systems to deal with many of these attacks, the size of the attack was sufficient that several members of our ops team were monitoring the situation and manually adjusting routing and rules in order to ensure the customer under attack <a href="https://www.cloudflare.com/ddos/under-attack" target="_blank" rel="noopener noreferrer">stayed online</a> and none of the rest of the network was impacted.</p>
 	<p>Around 16:30 GMT the attacker switched vectors again. Our team implemented a new rate limit. The rate limit was supposed to apply only to the affected customer, but was misapplied to a wider number of customers. Because traffic was already concentrated in Europe more so than usual, the misapplied network rate limit impacted a large number of customers in the region. There was some spillover to traffic to our facilities in North America and Asia Pacific, however the brunt of the outage was felt in Europe.</p>
 	<p>As you can see from the graph, both inbound and outbound traffic fell off almost entirely in the region. We realized our mistake and reverted the rate limit. In some cases, the rate limit also affected BGP announcements that setup routes to our network. The spikes on the graph you see over the next hour are from the network routing rebalancing in the region.</p>
 	<div class="flex anchor relative">

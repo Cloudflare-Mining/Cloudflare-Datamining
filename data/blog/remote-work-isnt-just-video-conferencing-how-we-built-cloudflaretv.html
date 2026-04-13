@@ -1,7 +1,7 @@
 <div class="mb2 gray5">3 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5wjNgwHIKKYSxmtFYTxVBD/bd0d746f82c9726857ad5601cf239c6f/remote-work-isnt-just-video-conferencing-how-we-built-cloudflaretv.png" alt="">
 <div class="post-content lh-copy gray1">
 	<p></p>
-	<p>At Cloudflare, we produce all types of video content, ranging from recordings of our Weekly All-Hands to product demos. Being able to <a href="https://www.cloudflare.com/developer-platform/solutions/video-on-demand">stream video on demand</a> has two major advantages when compared to live video:</p>
+	<p>At Cloudflare, we produce all types of video content, ranging from recordings of our Weekly All-Hands to product demos. Being able to <a href="https://www.cloudflare.com/developer-platform/solutions/video-on-demand" target="_blank" rel="noopener noreferrer">stream video on demand</a> has two major advantages when compared to live video:</p>
 	<ol>
 		<li>
 			<p>It encourages asynchronous communication within the organization</p>
@@ -24,7 +24,7 @@
 			<p>Tagging: allow the videos to be categorized so they can be found easily</p>
 		</li>
 		<li>
-			<p>Originless: build the entire backend using <a href="https://workers.cloudflare.com">Workers</a> and <a href="https://www.cloudflare.com/products/cloudflare-stream">Stream</a> so we don’t need separate infrastructure for encoding, storage and delivery</p>
+			<p>Originless: build the entire backend using <a href="https://workers.cloudflare.com" target="_blank" rel="noopener noreferrer">Workers</a> and <a href="https://www.cloudflare.com/products/cloudflare-stream" target="_blank" rel="noopener noreferrer">Stream</a> so we don’t need separate infrastructure for encoding, storage and delivery</p>
 		</li>
 	</ul>
 	<div class="flex anchor relative">
@@ -42,7 +42,7 @@
 
 	</figure>
 	<p>Once locked down in this way videos can’t be accessed directly. Instead, they can only be accessed using a temporary token.</p>
-	<p>In order to create signed tokens, we must first make an <a href="https://support.cloudflare.com/hc/en-us/articles/200167836-Managing-API-Tokens-and-Keys#12345682">API call</a> to create a key:</p>
+	<p>In order to create signed tokens, we must first make an <a href="https://support.cloudflare.com/hc/en-us/articles/200167836-Managing-API-Tokens-and-Keys#12345682" target="_blank" rel="noopener noreferrer">API call</a> to create a key:</p>
 	<pre class="language-bash"><code class="language-bash">curl -X POST -H "X-Auth-Email: {$EMAIL}" -H "X-Auth-Key: {$AUTH_KEY}"  "https://api.cloudflare.com/client/v4/accounts/{$ACCOUNT_ID}/media/keys"</code></pre>
 	<p>The API call will return a JSON object similar to this:</p>
 	<pre class="language-bash"><code class="language-bash">{
@@ -172,13 +172,13 @@ var exp_time = Math.round((new Date()).getTime() / 1000)+3600;
 	<p>If you have interesting ideas around video, Cloudflare Stream lets you focus on your idea while it handles storage, encoding and the viewing experience for your users. Coupled that with Access and Workers, you can build powerful applications. Here are the docs to help you get started:</p>
 	<ul>
 		<li>
-			<p><a href="https://developers.cloudflare.com/stream/getting-started">Cloudflare Stream Developer Docs</a></p>
+			<p><a href="https://developers.cloudflare.com/stream/getting-started" target="_blank" rel="noopener noreferrer">Cloudflare Stream Developer Docs</a></p>
 		</li>
 		<li>
-			<p><a href="https://developers.cloudflare.com/access/setting-up-access">Setting up Cloudflare Access</a></p>
+			<p><a href="https://developers.cloudflare.com/access/setting-up-access" target="_blank" rel="noopener noreferrer">Setting up Cloudflare Access</a></p>
 		</li>
 		<li>
-			<p><a href="https://developers.cloudflare.com/workers/quickstart">Workers Quick Start</a></p>
+			<p><a href="https://developers.cloudflare.com/workers/quickstart" target="_blank" rel="noopener noreferrer">Workers Quick Start</a></p>
 		</li>
 	</ul>
 </div>

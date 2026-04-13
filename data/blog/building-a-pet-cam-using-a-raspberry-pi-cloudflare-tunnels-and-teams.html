@@ -2,8 +2,8 @@
 <div class="post-content lh-copy gray1">
 	<p></p>
 	<p>I adopted Ziggy in late 2020. It took me quite a while to get used to his routine and mix it with mine. He consistently jumped on the kitchen counter in search of food, albeit only when no one was around. And I only found out when he tossed the ceramic butter box. It shattered and made a loud bang in the late hours of the night. Thankfully, no one was asleep yet.</p>
-	<p>This got me thinking that I should keep an eye on his mischievous behaviour, even when I'm not physically at home. I briefly considered buying a pet cam, but I remembered I had bought a Raspberry Pi a few months before. It was hardly being used, and it had a case (like <a href="https://thepihut.com/collections/raspberry-pi-4-cases/products/pir-camera-case-for-raspberry-pi-4-3">this</a>) allowing a camera module to be added. I hadn’t found a use for the camera module — until now.</p>
-	<p>This was a perfect weekend project: I would set up my own pet cam, connect it to the Internet, and make it available for me to check from anywhere in the world. I also wanted to ensure that only I could access it and that it had some easy way to login, possibly using my Google account. The solution? Cloudflare Tunnel and Teams. Cloudflare would help me expose a service running in an internal network using <a href="https://www.cloudflare.com/products/tunnel">Tunnel</a> while providing a security solution on top of it to keep it secure. <a href="https://www.cloudflare.com/teams">Teams</a> on the other hand, would help me by adding access control in the form of Google authentication.</p>
+	<p>This got me thinking that I should keep an eye on his mischievous behaviour, even when I'm not physically at home. I briefly considered buying a pet cam, but I remembered I had bought a Raspberry Pi a few months before. It was hardly being used, and it had a case (like <a href="https://thepihut.com/collections/raspberry-pi-4-cases/products/pir-camera-case-for-raspberry-pi-4-3" target="_blank" rel="noopener noreferrer">this</a>) allowing a camera module to be added. I hadn’t found a use for the camera module — until now.</p>
+	<p>This was a perfect weekend project: I would set up my own pet cam, connect it to the Internet, and make it available for me to check from anywhere in the world. I also wanted to ensure that only I could access it and that it had some easy way to login, possibly using my Google account. The solution? Cloudflare Tunnel and Teams. Cloudflare would help me expose a service running in an internal network using <a href="https://www.cloudflare.com/products/tunnel" target="_blank" rel="noopener noreferrer">Tunnel</a> while providing a security solution on top of it to keep it secure. <a href="https://www.cloudflare.com/teams" target="_blank" rel="noopener noreferrer">Teams</a> on the other hand, would help me by adding access control in the form of Google authentication.</p>
 	<figure class="kg-card kg-image-card ">
 
 		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5bWBM8Z87zIOnvBG8TYXJ3/54946b52cfe1989747b9400f2c2f2b66/image10.jpg" alt="" class="kg-image" width="1600" height="1200" loading="lazy">
@@ -12,7 +12,7 @@
 	<p>So all I am left to do is configure my Raspberry Pi to be able to run a camera as a web service. That weekend, I started researching for it and made a list of things I needed:</p>
 	<ul>
 		<li>
-			<p>A Raspberry Pi with a compatible camera module. I used a <a href="https://www.raspberrypi.org/products/raspberry-pi-4-model-b">Raspberry Pi 4 model B</a> with <a href="https://www.raspberrypi.org/products/camera-module-v2">camera module v2</a>.</p>
+			<p>A Raspberry Pi with a compatible camera module. I used a <a href="https://www.raspberrypi.org/products/raspberry-pi-4-model-b" target="_blank" rel="noopener noreferrer">Raspberry Pi 4 model B</a> with <a href="https://www.raspberrypi.org/products/camera-module-v2" target="_blank" rel="noopener noreferrer">camera module v2</a>.</p>
 		</li>
 		<li>
 			<p>Linux knowledge.</p>
@@ -30,7 +30,7 @@
 			<p>Internet connection.</p>
 		</li>
 	</ul>
-	<p>In this blog post, I’ll walk you through the process I followed to set everything up for the pet cam. To keep things simple and succinct, I will not cover how to set up your Raspberry Pi, but you should make sure it has Internet access and that you can run shell commands on it, either via <a href="https://www.cloudflare.com/learning/access-management/what-is-ssh">SSH</a> or using a <a href="https://www.realvnc.com/en">VNC connection</a>.</p>
+	<p>In this blog post, I’ll walk you through the process I followed to set everything up for the pet cam. To keep things simple and succinct, I will not cover how to set up your Raspberry Pi, but you should make sure it has Internet access and that you can run shell commands on it, either via <a href="https://www.cloudflare.com/learning/access-management/what-is-ssh" target="_blank" rel="noopener noreferrer">SSH</a> or using a <a href="https://www.realvnc.com/en" target="_blank" rel="noopener noreferrer">VNC connection</a>.</p>
 	<div class="flex anchor relative">
 		<h3 id="setup">Setup</h3>
 		<a href="https://blog.cloudflare.com/#setup" aria-hidden="true" class="relative sm:absolute sm:-start-5">
@@ -39,13 +39,13 @@
 			</svg>
 		</a>
 	</div>
-	<p>The first thing we need to do is connect the camera module to the Raspberry Pi. For more detailed instructions, follow the <a href="https://projects.raspberrypi.org/en/projects/getting-started-with-picamera/1">official guide</a>, steps 1 to 3.</p>
+	<p>The first thing we need to do is connect the camera module to the Raspberry Pi. For more detailed instructions, follow the <a href="https://projects.raspberrypi.org/en/projects/getting-started-with-picamera/1" target="_blank" rel="noopener noreferrer">official guide</a>, steps 1 to 3.</p>
 	<figure class="kg-card kg-image-card ">
 
 		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4nMbgxZI3HylSD6wKx5ImA/cef37fd42e0ea3f4338658d08f45f168/image2.jpg" alt="" class="kg-image" width="1999" height="1872" loading="lazy">
 
 	</figure>
-	<p>After setting up the camera and testing that it works, we need to set it up as a camera with a web server. This is so we can access it at a URL such as <a href="https://192.168.0.2:8080">https://192.168.0.2:8080</a> within the local network, to which the Raspberry Pi is also connected. To do that, we will use <a href="https://motion-project.github.io">Motion</a>, a program for setting up the camera module v2 as a web server.</p>
+	<p>After setting up the camera and testing that it works, we need to set it up as a camera with a web server. This is so we can access it at a URL such as <a href="https://192.168.0.2:8080" target="_blank" rel="noopener noreferrer">https://192.168.0.2:8080</a> within the local network, to which the Raspberry Pi is also connected. To do that, we will use <a href="https://motion-project.github.io" target="_blank" rel="noopener noreferrer">Motion</a>, a program for setting up the camera module v2 as a web server.</p>
 	<p>To install Motion, input these commands:</p>
 	<pre class="language-bash"><code class="language-bash">$ sudo apt-get update &amp;&amp; sudo apt-get upgrade
 $ sudo apt install autoconf automake build-essential pkgconf libtool git libzip-dev libjpeg-dev gettext libmicrohttpd-dev libavformat-dev libavcodec-dev libavutil-dev libswscale-dev libavdevice-dev default-libmysqlclient-dev libpq-dev libsqlite3-dev libwebp-dev
@@ -64,9 +64,9 @@ $ sudo dpkg -i pi_buster_motion_4.3.1-1_armhf.deb</code></pre>
 # start_motion_daemon=yes
 # save and exit and run the next command
 $ sudo service motion start</code></pre>
-	<p>Great. Now that we have Motion set up, we can see the live feed from our camera in a browser on Raspberry Pi module at the default URL: <a href="http://0.0.0.0:8081"><b>http://localhost:8081</b></a> (the port can be changed in the config edit step above). Alternatively, we can open it on another machine within the same network by replacing 0.0.0.0 with the IP of the Raspberry Pi in the network.</p>
-	<p>For now, the camera web server is available only within our local network. However, I wanted to keep an eye on Ziggy no matter where I am, as long as I have Internet access and a browser. This is perfect for <a href="https://www.cloudflare.com/products/tunnel">Cloudflare Tunnel</a>. An alternative would be to open a port in the firewall on the router in my home network, but I hate that idea of having to mess with the router configuration. I am not really an expert at that, and if I leave a backdoor open to my internal network, it can get scary quickly!</p>
-	<p>The Cloudflare Tunnel documentation takes us through <a href="https://developers.cloudflare.com/cloudflare-one/connections/connect-apps/install-and-setup/installation">its installation</a>. The only issue is that the architecture of the Raspberry Pi is based on armv7l (32-bit) and there is no package for it in the remote repositories_._ We could build cloudflared from source if we wanted as it’s an <a href="https://github.com/cloudflare/cloudflared">open source project</a>, but an easier route is to <code>wget</code> it.</p>
+	<p>Great. Now that we have Motion set up, we can see the live feed from our camera in a browser on Raspberry Pi module at the default URL: <a href="http://0.0.0.0:8081" target="_blank" rel="noopener noreferrer"><b>http://localhost:8081</b></a> (the port can be changed in the config edit step above). Alternatively, we can open it on another machine within the same network by replacing 0.0.0.0 with the IP of the Raspberry Pi in the network.</p>
+	<p>For now, the camera web server is available only within our local network. However, I wanted to keep an eye on Ziggy no matter where I am, as long as I have Internet access and a browser. This is perfect for <a href="https://www.cloudflare.com/products/tunnel" target="_blank" rel="noopener noreferrer">Cloudflare Tunnel</a>. An alternative would be to open a port in the firewall on the router in my home network, but I hate that idea of having to mess with the router configuration. I am not really an expert at that, and if I leave a backdoor open to my internal network, it can get scary quickly!</p>
+	<p>The Cloudflare Tunnel documentation takes us through <a href="https://developers.cloudflare.com/cloudflare-one/connections/connect-apps/install-and-setup/installation" target="_blank" rel="noopener noreferrer">its installation</a>. The only issue is that the architecture of the Raspberry Pi is based on armv7l (32-bit) and there is no package for it in the remote repositories_._ We could build cloudflared from source if we wanted as it’s an <a href="https://github.com/cloudflare/cloudflared" target="_blank" rel="noopener noreferrer">open source project</a>, but an easier route is to <code>wget</code> it.</p>
 	<pre class="language-bash"><code class="language-bash">$ wget https://bin.equinox.io/c/VdrWdbjqyF/cloudflared-stable-linux-arm.tgz
 # a quick check of version shall confirm if it installed correctly
 $ cloudflared -v 
@@ -127,13 +127,13 @@ ingress:
 	</figure>
 	<ol>
 		<li>
-			<p><b>Use </b><a href="https://motion-project.github.io/motion_config.html#webcontrol_authentication"><b>Motion’s inbuilt authentication mechanisms</b></a>. However, we shall not choose this option as it’s just another username/password to remember which one can easily forget and who knows if in the future, there is a vulnerability found in the way motion authenticates and my credentials are leaked? We are looking for an SSO using Google which is easy and quick to use and gives us a secure login based on Google credentials.</p>
+			<p><b>Use </b><a href="https://motion-project.github.io/motion_config.html#webcontrol_authentication" target="_blank" rel="noopener noreferrer"><b>Motion’s inbuilt authentication mechanisms</b></a>. However, we shall not choose this option as it’s just another username/password to remember which one can easily forget and who knows if in the future, there is a vulnerability found in the way motion authenticates and my credentials are leaked? We are looking for an SSO using Google which is easy and quick to use and gives us a secure login based on Google credentials.</p>
 		</li>
 		<li>
-			<p><b>Use Cloudflare Access</b>. Access gives us the ability to create policies based on IP addresses and email addresses, and it lets us integrate different <a href="https://developers.cloudflare.com/cloudflare-one/identity">types of authentication methods</a>, such as OTP or <a href="https://developers.cloudflare.com/cloudflare-one/identity/idp-integration/google">Google</a>. In our case, we require authentication through Google.</p>
+			<p><b>Use Cloudflare Access</b>. Access gives us the ability to create policies based on IP addresses and email addresses, and it lets us integrate different <a href="https://developers.cloudflare.com/cloudflare-one/identity" target="_blank" rel="noopener noreferrer">types of authentication methods</a>, such as OTP or <a href="https://developers.cloudflare.com/cloudflare-one/identity/idp-integration/google" target="_blank" rel="noopener noreferrer">Google</a>. In our case, we require authentication through Google.</p>
 		</li>
 	</ol>
-	<p>To take advantage of this Cloudflare Access functionality, the first step is to set up Cloudflare for Teams. Visit <a href="https://dash.teams.cloudflare.com">https://dash.teams.cloudflare.com/</a>, follow the <a href="https://developers.cloudflare.com/cloudflare-one/setup">setup guide</a> and choose a team name (imohak in my case).</p>
+	<p>To take advantage of this Cloudflare Access functionality, the first step is to set up Cloudflare for Teams. Visit <a href="https://dash.teams.cloudflare.com" target="_blank" rel="noopener noreferrer">https://dash.teams.cloudflare.com/</a>, follow the <a href="https://developers.cloudflare.com/cloudflare-one/setup" target="_blank" rel="noopener noreferrer">setup guide</a> and choose a team name (imohak in my case).</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
 		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4Ckc0vrJf3mhwd00R4EPuO/43a6df1837a7eaf0fffd2128e8b467f1/image6-1.png" alt="" class="kg-image" width="1529" height="943" loading="lazy">
@@ -144,7 +144,7 @@ ingress:
 		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7ECuaRhkiYYhB0PAn5wb66/495aced4d3bd416324e365018e0da159/image13.png" alt="" class="kg-image" width="1996" height="1999" loading="lazy">
 
 	</figure>
-	<p>After this, we have two things left to do: add a login method and add an application. Let’s cover how we add a login method first. Navigate to <b>Configuration</b> &gt; <b>Authentication</b> and click on <b>+Add</b>, under the Login tab. The Dashboard will show us a list of identity providers to choose from. Select <b>Google</b> — follow <a href="https://developers.cloudflare.com/cloudflare-one/identity/idp-integration/google">this guide</a> for a walkthrough of how to set up a Google Cloud application, get a ClientID and Client Secret, and use them to configure the identity provider in Teams.</p>
+	<p>After this, we have two things left to do: add a login method and add an application. Let’s cover how we add a login method first. Navigate to <b>Configuration</b> &gt; <b>Authentication</b> and click on <b>+Add</b>, under the Login tab. The Dashboard will show us a list of identity providers to choose from. Select <b>Google</b> — follow <a href="https://developers.cloudflare.com/cloudflare-one/identity/idp-integration/google" target="_blank" rel="noopener noreferrer">this guide</a> for a walkthrough of how to set up a Google Cloud application, get a ClientID and Client Secret, and use them to configure the identity provider in Teams.</p>
 	<p>After adding a login method and testing it, we should see a confirmation page like this:</p>
 	<figure class="kg-card kg-image-card ">
 
@@ -169,7 +169,7 @@ ingress:
 		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4afTGRdT9HqB27ijtHV1sz/899a61e1508a2b83cfa8542c6ebe5754/image3-7.png" alt="" class="kg-image" width="1999" height="572" loading="lazy">
 
 	</figure>
-	<p>Now we add policies to the application. Here, we add an email check so that after the Google authentication, a check is made to ensure the specified email address is the only one who is able to access the URL. If needed, we can choose to configure other, more <a href="https://developers.cloudflare.com/cloudflare-one/policies/zero-trust">complex rules</a>. At this point, we click on <b>Next</b> and finish the setup.</p>
+	<p>Now we add policies to the application. Here, we add an email check so that after the Google authentication, a check is made to ensure the specified email address is the only one who is able to access the URL. If needed, we can choose to configure other, more <a href="https://developers.cloudflare.com/cloudflare-one/policies/zero-trust" target="_blank" rel="noopener noreferrer">complex rules</a>. At this point, we click on <b>Next</b> and finish the setup.</p>
 	<figure class="kg-card kg-image-card ">
 
 		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1geMYdeb3TxwfOdNX2EbXc/ea5c14428ed5cdcdc83ec87dfa246c2c/image12.png" alt="" class="kg-image" width="1999" height="1336" loading="lazy">

@@ -1,9 +1,9 @@
 <div class="mb2 gray5">7 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7hw1XcalmYZYKeGDqf4FQ9/756804637f525cd8085dd866e902dda1/tls-1-3-overview-and-q-and-a.png" alt="">
 <div class="post-content lh-copy gray1">
-	<p>The CloudFlare London office hosts weekly internal Tech Talks (with free lunch picked by the speaker). My recent one was an explanation of the latest version of <a href="https://www.cloudflare.com/ssl">TLS, 1.3</a>, how it works and why it's faster and safer.</p>
-	<p>You can <a href="https://vimeo.com/177333631">watch the complete talk</a> below or just read my summarized transcript.</p>
+	<p>The CloudFlare London office hosts weekly internal Tech Talks (with free lunch picked by the speaker). My recent one was an explanation of the latest version of <a href="https://www.cloudflare.com/ssl" target="_blank" rel="noopener noreferrer">TLS, 1.3</a>, how it works and why it's faster and safer.</p>
+	<p>You can <a href="https://vimeo.com/177333631" target="_blank" rel="noopener noreferrer">watch the complete talk</a> below or just read my summarized transcript.</p>
 	<p><i>Update: you might want to watch my more recent and extended </i><a href="https://blog.cloudflare.com/tls-1-3-explained-by-the-cloudflare-crypto-team-at-33c3"><i>33c3 talk</i></a><i> instead.</i></p>
-	<p><b>The Q&amp;A session is open!</b> Send us your questions about TLS 1.3 at <a href="mailto:tls13@cloudflare.com">tls13@cloudflare.com</a> or leave them in the Disqus comments below and I'll answer them in an upcoming blog post.</p>
+	<p><b>The Q&amp;A session is open!</b> Send us your questions about TLS 1.3 at <a href="https://blog.cloudflare.com/#">tls13@cloudflare.com</a> or leave them in the Disqus comments below and I'll answer them in an upcoming blog post.</p>
 	<p>.post-content iframe { margin: 0; }</p>
 	<div class="flex anchor relative">
 		<h4 id="summarized-transcript">Summarized transcript</h4>
@@ -33,7 +33,7 @@
 	<p>The client receives all that, and <i>then</i> generates its own key share, mixes it with the server key share, and thus generates the encryption keys for the session.</p>
 	<p>Finally, the client sends the server its key share, enables encryption and sends a <code>Finished</code> message (which is a hash of a transcript of what happened so far). The server does the same: it mixes the key shares to get the key and sends its own <code>Finished</code> message.</p>
 	<p>At that point we are done, and we can finally send useful data encrypted on the connection.</p>
-	<p>Notice that this takes two round-trips between the client and the server before the HTTP request can be transferred. And <a href="https://www.cloudflare.com/learning/cdn/glossary/round-trip-time-rtt">round-trips on the Internet</a> can be slow.</p>
+	<p>Notice that this takes two round-trips between the client and the server before the HTTP request can be transferred. And <a href="https://www.cloudflare.com/learning/cdn/glossary/round-trip-time-rtt" target="_blank" rel="noopener noreferrer">round-trips on the Internet</a> can be slow.</p>
 	<figure class="kg-card kg-image-card ">
 
 		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3d2jAu0W5lMg2PQm8zrdtz/221af7783bc17706e2d3a2587ecf1312/TLS-1.3.006.png" alt="TLS 1.3" class="kg-image" width="1920" height="1080" loading="lazy">
@@ -166,11 +166,11 @@
 		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3xQPlSJ4uBQaS60OpFogxD/7967fae7cd0f8766658a02c0534b95c5/TLS-1.3.023.png" alt="github" class="kg-image" width="1920" height="1080" loading="lazy">
 
 	</figure>
-	<p>The TLS 1.3 spec is <a href="https://github.com/tlswg/tls13-spec">on GitHub</a>, so anyone can contribute. Just while making the slides for this presentation I noticed I was having a hard time understanding a system because a diagram was missing some details, so I submitted a PR to fix it. How easy is that!?</p>
+	<p>The TLS 1.3 spec is <a href="https://github.com/tlswg/tls13-spec" target="_blank" rel="noopener noreferrer">on GitHub</a>, so anyone can contribute. Just while making the slides for this presentation I noticed I was having a hard time understanding a system because a diagram was missing some details, so I submitted a PR to fix it. How easy is that!?</p>
 	<figure class="kg-card kg-image-card ">
 
 		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3Ecgvi8YtzFKhcoQjoPLzU/cb6a281fbd8246c453bc145ca36a7b56/TLS-1.3.026.png" alt="questions" class="kg-image" width="1920" height="1080" loading="lazy">
 
 	</figure>
-	<p>Like any talk, at the end there's the Q&amp;A. Send your questions to <a href="mailto:tls13@cloudflare.com">tls13@cloudflare.com</a> or leave them in the Disqus comments below and I'll answer them in an upcoming blog post!</p>
+	<p>Like any talk, at the end there's the Q&amp;A. Send your questions to <a href="https://blog.cloudflare.com/#">tls13@cloudflare.com</a> or leave them in the Disqus comments below and I'll answer them in an upcoming blog post!</p>
 </div>

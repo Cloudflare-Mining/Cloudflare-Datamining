@@ -12,7 +12,7 @@
 		</a>
 	</div>
 	<p>A packet capture is a file that contains all packets that were seen by a particular network box, usually a firewall or router, during a specific time frame. Packet captures are a powerful and commonly used tool for debugging network issues or getting better visibility into attack traffic to tighten security (e.g. by adding firewall rules to block a specific attack pattern).</p>
-	<p>A network engineer might use a pcap file in combination with other tools, like <a href="https://www.cloudflare.com/learning/network-layer/what-is-mtr">mtr</a>, to troubleshoot problems with reachability to their network. For example, if an end user reports intermittent connectivity to a specific application, an engineer can set up a packet capture filtered to the user’s source IP address to record all packets received from their device. They can then analyze that packet capture and compare it to other sources of information (e.g. pcaps from the end user’s side of the network path, traffic logs and analytics) to understand the magnitude and isolate the source of the problem.</p>
+	<p>A network engineer might use a pcap file in combination with other tools, like <a href="https://www.cloudflare.com/learning/network-layer/what-is-mtr" target="_blank" rel="noopener noreferrer">mtr</a>, to troubleshoot problems with reachability to their network. For example, if an end user reports intermittent connectivity to a specific application, an engineer can set up a packet capture filtered to the user’s source IP address to record all packets received from their device. They can then analyze that packet capture and compare it to other sources of information (e.g. pcaps from the end user’s side of the network path, traffic logs and analytics) to understand the magnitude and isolate the source of the problem.</p>
 	<p>Security engineers can also use packet captures to gain a better understanding of potentially malicious traffic. Let’s say an engineer notices an unexpected spike in traffic that they suspect could be an attempted attack. They can grab a packet capture to record the traffic as it’s hitting their network and analyze it to determine whether the packets are valid. If they’re not, for example, if the packet payload is randomly generated gibberish, the security engineer can create a firewall rule to block traffic that looks like this from entering their network.</p>
 	<figure class="kg-card kg-image-card ">
 
@@ -28,7 +28,7 @@
 			</svg>
 		</a>
 	</div>
-	<p>Traditionally, users capture packets by logging into their router or firewall and starting a process like <a href="https://www.tcpdump.org">tcpdump</a>. They’d set up a filter to only match on certain packets and grab the file. But as networks have become more fragmented and users are moving security functions out to the edge, it’s become increasingly challenging to collect packet captures for relevant traffic. Instead of just one device that all traffic flows through (think of a drawbridge in the “<a href="https://www.cloudflare.com/learning/access-management/castle-and-moat-network-security">castle and moat</a>” analogy) engineers may have to capture packets across many different physical and virtual devices spread across locations. Many of these packets may not allow taking pcaps at all, and then users have to try to &nbsp;stitch them back together to create a full picture of their network traffic. This is a nearly impossible task today and only getting harder as networks become more fractured and complex.</p>
+	<p>Traditionally, users capture packets by logging into their router or firewall and starting a process like <a href="https://www.tcpdump.org" target="_blank" rel="noopener noreferrer">tcpdump</a>. They’d set up a filter to only match on certain packets and grab the file. But as networks have become more fragmented and users are moving security functions out to the edge, it’s become increasingly challenging to collect packet captures for relevant traffic. Instead of just one device that all traffic flows through (think of a drawbridge in the “<a href="https://www.cloudflare.com/learning/access-management/castle-and-moat-network-security" target="_blank" rel="noopener noreferrer">castle and moat</a>” analogy) engineers may have to capture packets across many different physical and virtual devices spread across locations. Many of these packets may not allow taking pcaps at all, and then users have to try to &nbsp;stitch them back together to create a full picture of their network traffic. This is a nearly impossible task today and only getting harder as networks become more fractured and complex.</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
 		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2oAYhpR8RTzQKGijeIYDbq/a815a486f88dc8a31a5d9bcb0a91df78/image2-56.png" alt="" class="kg-image" width="1802" height="1001" loading="lazy">
@@ -42,7 +42,7 @@
 			</svg>
 		</a>
 	</div>
-	<p>With Cloudflare, you can regain this visibility. With <a href="https://www.cloudflare.com/magic-transit">Magic Transit</a> and <a href="https://www.cloudflare.com/magic-wan">Magic WAN</a>, customers route all their public and private IP traffic through Cloudflare’s network to make it more secure, faster, and more reliable, but also to increase visibility. You can think of Cloudflare like a giant, globally distributed version of the drawbridge in our old analogy: because we act as a single cloud-based router and firewall across all your traffic, we can capture packets across your entire network and deliver them back to you in one place.</p>
+	<p>With Cloudflare, you can regain this visibility. With <a href="https://www.cloudflare.com/magic-transit" target="_blank" rel="noopener noreferrer">Magic Transit</a> and <a href="https://www.cloudflare.com/magic-wan" target="_blank" rel="noopener noreferrer">Magic WAN</a>, customers route all their public and private IP traffic through Cloudflare’s network to make it more secure, faster, and more reliable, but also to increase visibility. You can think of Cloudflare like a giant, globally distributed version of the drawbridge in our old analogy: because we act as a single cloud-based router and firewall across all your traffic, we can capture packets across your entire network and deliver them back to you in one place.</p>
 	<div class="flex anchor relative">
 		<h3 id="how-does-it-work">How does it work?</h3>
 		<a href="https://blog.cloudflare.com/#how-does-it-work" aria-hidden="true" class="relative sm:absolute sm:-start-5">
@@ -51,7 +51,7 @@
 			</svg>
 		</a>
 	</div>
-	<p>Customers can request a packet capture using our <a href="https://developers.cloudflare.com/magic-firewall/how-to/collect-pcaps">Packet Captures API</a>. To get the packets you’re looking for you can provide a filter with the IP address, ports, and protocol of the packets you want.</p>
+	<p>Customers can request a packet capture using our <a href="https://developers.cloudflare.com/magic-firewall/how-to/collect-pcaps" target="_blank" rel="noopener noreferrer">Packet Captures API</a>. To get the packets you’re looking for you can provide a filter with the IP address, ports, and protocol of the packets you want.</p>
 	<pre class="language-bash"><code class="language-bash">curl -X POST https://api.cloudflare.com/client/v4/accounts/${account_id}/pcaps \
 -H 'Content-Type: application/json' \
 -H 'X-Auth-Email: user@example.com' \
@@ -68,7 +68,7 @@
         "system": "magic-transit"
 }'</code></pre>
 	<p>Example of a request for packet capture using our API.</p>
-	<p>We leverage <a href="https://netfilter.org/projects/nftables">nftables</a> to apply the filter to the customer’s incoming packets and log them using <a href="https://www.netfilter.org/projects/libnetfilter_log/index.html">nflog</a>:</p>
+	<p>We leverage <a href="https://netfilter.org/projects/nftables" target="_blank" rel="noopener noreferrer">nftables</a> to apply the filter to the customer’s incoming packets and log them using <a href="https://www.netfilter.org/projects/libnetfilter_log/index.html" target="_blank" rel="noopener noreferrer">nflog</a>:</p>
 	<pre class="language-bash"><code class="language-bash">table inet pcaps_1 {
     chain pcap_1 {
         ip protocol 6 ip saddr 1.2.3.4 log group 1 comment “packet capture”
@@ -88,5 +88,5 @@
 			</svg>
 		</a>
 	</div>
-	<p>On-demand packet captures are now generally available for customers who have purchased the Advanced features of Magic Firewall. The <a href="https://developers.cloudflare.com/magic-firewall/how-to/collect-pcaps">packet capture API</a> allows customers to capture the first 160 bytes of packets, sampled at a default rate of 1/100. More functionality including full packet captures and on-demand packet capture control in the Cloudflare Dashboard is coming in the following weeks. Contact your account team to stay updated on the latest!</p>
+	<p>On-demand packet captures are now generally available for customers who have purchased the Advanced features of Magic Firewall. The <a href="https://developers.cloudflare.com/magic-firewall/how-to/collect-pcaps" target="_blank" rel="noopener noreferrer">packet capture API</a> allows customers to capture the first 160 bytes of packets, sampled at a default rate of 1/100. More functionality including full packet captures and on-demand packet capture control in the Cloudflare Dashboard is coming in the following weeks. Contact your account team to stay updated on the latest!</p>
 </div>

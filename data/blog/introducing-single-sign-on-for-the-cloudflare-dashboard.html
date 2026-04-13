@@ -9,7 +9,7 @@
 		</a>
 	</div>
 	<p>As the &nbsp;number of SaaS services people use everyday grows, it has become more challenging to juggle the number of password and multi-factor authentication combinations users have to keep track of to get online.</p>
-	<p>Adopting identity services have allowed companies to centralize employee authentication. With <a href="https://www.cloudflare.com/products/cloudflare-access">Cloudflare Access</a>, companies can ensure employees use a company managed identity provider when accessing websites behind Cloudflare. Last week, Sam <a href="https://blog.cloudflare.com/cloudflare-access-sharing-our-single-sign-on-plugin-for-atlassian">published a blog</a> on how Cloudflare has made it easier to connect Cloudflare Access to the Atlassian suite of tools.</p>
+	<p>Adopting identity services have allowed companies to centralize employee authentication. With <a href="https://www.cloudflare.com/products/cloudflare-access" target="_blank" rel="noopener noreferrer">Cloudflare Access</a>, companies can ensure employees use a company managed identity provider when accessing websites behind Cloudflare. Last week, Sam <a href="https://blog.cloudflare.com/cloudflare-access-sharing-our-single-sign-on-plugin-for-atlassian">published a blog</a> on how Cloudflare has made it easier to connect Cloudflare Access to the Atlassian suite of tools.</p>
 	<p>Since Cloudflare has simplified access control for corporate applications, many enterprise customers have commonly asked for the ability to extend the same ease of access and control to the Cloudflare dashboard itself.</p>
 	<div class="flex anchor relative">
 		<h3 id="single-sign-on-for-the-cloudflare-dashboard">Single Sign-On for the Cloudflare Dashboard</h3>
@@ -21,7 +21,7 @@
 	</div>
 	<p>Today, we are announcing support for enterprise customers to use single sign-on (SSO) through their identity provider to access the Cloudflare dashboard.</p>
 	<p>Cloudflare is a critical piece of infrastructure for customers, and SSO ensures that customers can apply the same authentication policies to access the Cloudflare dashboard as other critical resources.</p>
-	<p>Once onboarded for SSO, all company user logins to the Cloudflare dashboard redirect to the customer’s identity provider. Once all required authentication checks complete successfully, the user is seamlessly redirected back to <a href="https://dash.cloudflare.com">dash.cloudflare.com</a> and logged in.</p>
+	<p>Once onboarded for SSO, all company user logins to the Cloudflare dashboard redirect to the customer’s identity provider. Once all required authentication checks complete successfully, the user is seamlessly redirected back to <a href="https://dash.cloudflare.com" target="_blank" rel="noopener noreferrer">dash.cloudflare.com</a> and logged in.</p>
 	<div class="flex anchor relative">
 		<h3 id="leveraging-access-workers-to-build-sso">Leveraging Access &amp; Workers to Build SSO</h3>
 		<a href="https://blog.cloudflare.com/#leveraging-access-workers-to-build-sso" aria-hidden="true" class="relative sm:absolute sm:-start-5">
@@ -30,7 +30,7 @@
 			</svg>
 		</a>
 	</div>
-	<p>At Cloudflare, we &nbsp;dogfood our own services as both a way to make them better for our customers and to make developing new services more efficient and robust. With SSO, this is no different. Authentication configurations are managed through Access, which allows us to launch with support for the same <a href="https://developers.cloudflare.com/access/configuring-identity-providers">identity providers</a> available in Access today, including SAML.</p>
+	<p>At Cloudflare, we &nbsp;dogfood our own services as both a way to make them better for our customers and to make developing new services more efficient and robust. With SSO, this is no different. Authentication configurations are managed through Access, which allows us to launch with support for the same <a href="https://developers.cloudflare.com/access/configuring-identity-providers" target="_blank" rel="noopener noreferrer">identity providers</a> available in Access today, including SAML.</p>
 	<p><a href="https://blog.cloudflare.com/cloudflare-turns-8">Cloudflare is 8 years old</a> and we built our user authentication system way before Cloudflare Access existed. In order to connect Access to our existing authentication system, we built a Cloudflare Worker that converts Access authentication tokens to our own authentication tokens. This greatly simplified the code changes required in our system, and results in faster SSO logins because the Worker runs at the network edge and reduces the number of round trips required to authenticate users.</p>
 	<p>In addition to leveraging Cloudflare services to build Single Sign-On, we are moving all Cloudflare employees to use SSO through our existing G Suite setup. This ensures Cloudflare can uniformly enforce multi-factor authentication policies for the services we protect with Cloudflare itself.</p>
 	<div class="flex anchor relative">
@@ -41,5 +41,5 @@
 			</svg>
 		</a>
 	</div>
-	<p><a href="https://www.cloudflare.com/plans/enterprise">Cloudflare Enterprise</a> customers can reach out to their Customer Success Manager to learn how to start using SSO to log-in to the Cloudflare dashboard. If you are interested in using SSO yourself and becoming a Cloudflare Enterprise customer, then please <a href="https://www.cloudflare.com/plans/enterprise/contact">get in touch</a>.</p>
+	<p><a href="https://www.cloudflare.com/plans/enterprise" target="_blank" rel="noopener noreferrer">Cloudflare Enterprise</a> customers can reach out to their Customer Success Manager to learn how to start using SSO to log-in to the Cloudflare dashboard. If you are interested in using SSO yourself and becoming a Cloudflare Enterprise customer, then please <a href="https://www.cloudflare.com/plans/enterprise/contact" target="_blank" rel="noopener noreferrer">get in touch</a>.</p>
 </div>

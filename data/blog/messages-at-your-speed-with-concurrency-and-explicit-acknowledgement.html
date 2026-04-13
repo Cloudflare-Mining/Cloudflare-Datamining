@@ -1,7 +1,7 @@
 <div class="mb2 gray5">6 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1vztiOk2jdSEjD8q0D5xQB/8cafd1442c71ed06e31c7282a0139535/messages-at-your-speed-with-concurrency-and-explicit-acknowledgement.png" alt="">
 <div class="post-content lh-copy gray1">
 	<p></p>
-	<p>Communicating between systems can be a balancing act that has a major impact on your business. <a href="https://www.cloudflare.com/learning/security/api/what-is-an-api">APIs</a> have limits, billing frequently depends on usage, and end-users are always looking for more speed in the services they use. With so many conflicting considerations, it can feel like a challenge to get it just right. Cloudflare Queues is a tool to make this balancing act simple. With our latest features like consumer concurrency and explicit acknowledgment, it’s easier than ever for developers to focus on writing great code, rather than worrying about the fees and rate limits of the systems they work with.</p>
+	<p>Communicating between systems can be a balancing act that has a major impact on your business. <a href="https://www.cloudflare.com/learning/security/api/what-is-an-api" target="_blank" rel="noopener noreferrer">APIs</a> have limits, billing frequently depends on usage, and end-users are always looking for more speed in the services they use. With so many conflicting considerations, it can feel like a challenge to get it just right. Cloudflare Queues is a tool to make this balancing act simple. With our latest features like consumer concurrency and explicit acknowledgment, it’s easier than ever for developers to focus on writing great code, rather than worrying about the fees and rate limits of the systems they work with.</p>
 	<p>Queues is a messaging service, enabling developers to send and receive messages across systems asynchronously with guaranteed delivery. It integrates directly with Cloudflare Workers, making for easy message production and consumption working with the many products and services we offer.</p>
 	<div class="flex anchor relative">
 		<h2 id="whats-new-in-queues">What’s new in Queues?</h2>
@@ -45,7 +45,7 @@
 //this defines the total amount of consumers running simultaneously
 
 max_concurrency = 7</code></pre>
-	<p>To learn more about concurrency you can check out our developer documentation <a href="https://developers.cloudflare.com/queues/learning/consumer-concurrency">here</a>.</p>
+	<p>To learn more about concurrency you can check out our developer documentation <a href="https://developers.cloudflare.com/queues/learning/consumer-concurrency" target="_blank" rel="noopener noreferrer">here</a>.</p>
 	<div class="flex anchor relative">
 		<h3 id="concurrency-in-practice">Concurrency in practice</h3>
 		<a href="https://blog.cloudflare.com/#concurrency-in-practice" aria-hidden="true" class="relative sm:absolute sm:-start-5">
@@ -127,7 +127,7 @@ catch (error) {
     }
   }</code></pre>
 	<p>ackAll() and retryAll() work similarly, but act on the entire batch of messages instead of individual messages.</p>
-	<p>For more details check out our developer documentation <a href="https://developers.cloudflare.com/queues/learning/batching-retries">here</a>.</p>
+	<p>For more details check out our developer documentation <a href="https://developers.cloudflare.com/queues/learning/batching-retries" target="_blank" rel="noopener noreferrer">here</a>.</p>
 	<div class="flex anchor relative">
 		<h3 id="explicit-acknowledgment-in-practice">Explicit Acknowledgment in practice</h3>
 		<a href="https://blog.cloudflare.com/#explicit-acknowledgment-in-practice" aria-hidden="true" class="relative sm:absolute sm:-start-5">
@@ -183,7 +183,7 @@ export default {
 			</svg>
 		</a>
 	</div>
-	<p>Today, the only type of consumer you can configure for a queue is a Workers script. While Workers are incredibly powerful, we want to take it a step further and give customers a chance to write directly to other services, starting with <a href="https://www.cloudflare.com/developer-platform/r2">R2</a>. Coming soon, customers will be able to select an R2 bucket in the Cloudflare Dashboard for a Queue to write to directly, no code required. This will save valuable developer time by avoiding the initial setup in a Workers script, and any maintenance that is required as services evolve. With R2 as a first party consumer in Queues, customers can simply select their bucket, and let Cloudflare handle the rest.</p>
+	<p>Today, the only type of consumer you can configure for a queue is a Workers script. While Workers are incredibly powerful, we want to take it a step further and give customers a chance to write directly to other services, starting with <a href="https://www.cloudflare.com/developer-platform/r2" target="_blank" rel="noopener noreferrer">R2</a>. Coming soon, customers will be able to select an R2 bucket in the Cloudflare Dashboard for a Queue to write to directly, no code required. This will save valuable developer time by avoiding the initial setup in a Workers script, and any maintenance that is required as services evolve. With R2 as a first party consumer in Queues, customers can simply select their bucket, and let Cloudflare handle the rest.</p>
 	<div class="flex anchor relative">
 		<h3 id="http-pull">HTTP pull</h3>
 		<a href="https://blog.cloudflare.com/#http-pull" aria-hidden="true" class="relative sm:absolute sm:-start-5">
@@ -203,7 +203,7 @@ export default {
 	</div>
 	<p>For the Queues team, speed is always our focus, as we understand our customers don't want bottlenecks in the performance of their applications. With this in mind the team will be continuing to look for ways to increase the velocity through which developers can build best in class applications on our developer platform. Whether it's reducing message processing time, the amount of code you need to manage, or giving developers control over their application pipeline, we will continue to implement solutions to allow you to focus on just the important things, while we handle the rest.</p>
 	<p>Cloudflare Queues is currently in Open Beta and ready to power your most complex applications.</p>
-	<p>Check out our getting started <a href="https://developers.cloudflare.com/queues/learning/how-queues-works">guide</a> and build your service with us today!</p>
+	<p>Check out our getting started <a href="https://developers.cloudflare.com/queues/learning/how-queues-works" target="_blank" rel="noopener noreferrer">guide</a> and build your service with us today!</p>
 	<div class="flex anchor relative">
 		<h3 id="watch-on-cloudflare-tv">Watch on Cloudflare TV</h3>
 		<a href="https://blog.cloudflare.com/#watch-on-cloudflare-tv" aria-hidden="true" class="relative sm:absolute sm:-start-5">

@@ -7,10 +7,10 @@
 		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2HFWBu7dmLiLxn5ZJIyZSh/07c104656900ba4f17f5129e471f9036/image4-7.png" alt="Top 50 most impersonated brands in phishing attacks and new tools you can use to protect your employees from them" class="kg-image" width="1201" height="675" loading="lazy">
 
 	</figure>
-	<p>Someone in your organization may have just submitted an administrator username and password for an internal system to the wrong website. And just like that, an attacker is now able to <a href="https://www.cloudflare.com/learning/security/what-is-data-exfiltration">exfiltrate sensitive data</a>.</p>
+	<p>Someone in your organization may have just submitted an administrator username and password for an internal system to the wrong website. And just like that, an attacker is now able to <a href="https://www.cloudflare.com/learning/security/what-is-data-exfiltration" target="_blank" rel="noopener noreferrer">exfiltrate sensitive data</a>.</p>
 	<p>How did it all happen? A well crafted email.</p>
 	<p>Detecting, blocking, and mitigating the risks of phishing attacks is arguably one of the hardest challenges any security team is constantly facing.</p>
-	<p>Starting today, we are opening beta access to our new brand and <a href="https://www.cloudflare.com/zero-trust/products/email-security">anti-phishing tools</a> directly from our Security Center dashboard, allowing you to catch and mitigate phishing campaigns targeting your organization even before they happen.</p>
+	<p>Starting today, we are opening beta access to our new brand and <a href="https://www.cloudflare.com/zero-trust/products/email-security" target="_blank" rel="noopener noreferrer">anti-phishing tools</a> directly from our Security Center dashboard, allowing you to catch and mitigate phishing campaigns targeting your organization even before they happen.</p>
 	<div class="flex anchor relative">
 		<h2 id="the-challenge-of-phishing-attacks">The challenge of phishing attacks</h2>
 		<a href="https://blog.cloudflare.com/#the-challenge-of-phishing-attacks" aria-hidden="true" class="relative sm:absolute sm:-start-5">
@@ -20,9 +20,9 @@
 		</a>
 	</div>
 	<p>Perhaps the most publicized threat vector over the past several months has been phishing attacks. These attacks are highly sophisticated, difficult to detect, becoming more frequent, and can have devastating consequences for businesses that fall victim to them.</p>
-	<p>One of the biggest challenges in <a href="https://www.cloudflare.com/learning/email-security/how-to-prevent-phishing">preventing phishing attacks</a> is the sheer volume and the difficulty of distinguishing legitimate emails and websites from <a href="https://www.cloudflare.com/learning/email-security/what-is-email-fraud">fraudulent ones</a>. Even when users are vigilant, it can be hard to spot the subtle differences that attackers use to make their phishing emails and websites look convincing.</p>
-	<p>For example, last July our Cloudflare One suite of products and use of physical security keys <a href="https://blog.cloudflare.com/2022-07-sms-phishing-attacks">thwarted the sophisticated “Oktapus” phishing attack targeting Cloudflare employees</a>. The attacker behind the “Oktapus” attack that successfully compromised <a href="https://www.theregister.com/2022/08/25/twilio_cloudflare_oktapus_phishing">more than one hundred companies</a>, registered the “cloudflare-okta.com” domain name just 40 minutes before sending it to our employees.</p>
-	<p>At that time, we identified phishing domains with our <a href="https://www.cloudflare.com/products/registrar/custom-domain-protection">secure registrar product</a>—but there was a delay in receiving the list of newly registered domains for monitoring purposes. Today, by streaming newly observed domains resolved by our <a href="https://blog.cloudflare.com/announcing-1111">1.1.1.1 resolver</a> (and other resolvers), we are able to detect phishing domains almost immediately. This gives us the upper hand and allows us to block phishing attempts before they happen.</p>
+	<p>One of the biggest challenges in <a href="https://www.cloudflare.com/learning/email-security/how-to-prevent-phishing" target="_blank" rel="noopener noreferrer">preventing phishing attacks</a> is the sheer volume and the difficulty of distinguishing legitimate emails and websites from <a href="https://www.cloudflare.com/learning/email-security/what-is-email-fraud" target="_blank" rel="noopener noreferrer">fraudulent ones</a>. Even when users are vigilant, it can be hard to spot the subtle differences that attackers use to make their phishing emails and websites look convincing.</p>
+	<p>For example, last July our Cloudflare One suite of products and use of physical security keys <a href="https://blog.cloudflare.com/2022-07-sms-phishing-attacks">thwarted the sophisticated “Oktapus” phishing attack targeting Cloudflare employees</a>. The attacker behind the “Oktapus” attack that successfully compromised <a href="https://www.theregister.com/2022/08/25/twilio_cloudflare_oktapus_phishing" target="_blank" rel="noopener noreferrer">more than one hundred companies</a>, registered the “cloudflare-okta.com” domain name just 40 minutes before sending it to our employees.</p>
+	<p>At that time, we identified phishing domains with our <a href="https://www.cloudflare.com/products/registrar/custom-domain-protection" target="_blank" rel="noopener noreferrer">secure registrar product</a>—but there was a delay in receiving the list of newly registered domains for monitoring purposes. Today, by streaming newly observed domains resolved by our <a href="https://blog.cloudflare.com/announcing-1111">1.1.1.1 resolver</a> (and other resolvers), we are able to detect phishing domains almost immediately. This gives us the upper hand and allows us to block phishing attempts before they happen.</p>
 	<p>We want to start giving our customers access to the same tools we use internally, to help you fight the ongoing challenge.</p>
 	<div class="flex anchor relative">
 		<h2 id="new-brand-and-phishing-protection-tools-in-cloudflares-security-center">New Brand and Phishing Protection tools in Cloudflare’s Security Center</h2>
@@ -48,7 +48,7 @@
 		</a>
 	</div>
 	<p>At the heart of our new brand protection feature is our ability to detect hostnames created specifically for phishing legitimate brands. We start by monitoring the first use of a domain or subdomain by sifting through trillions of daily DNS queries made to 1.1.1.1, Cloudflare’s public DNS resolver, in order to compile a list of hostnames in the wild for the first time.</p>
-	<p>Using this list, we perform <a href="https://en.wikipedia.org/wiki/Fuzzy_matching_(computer-assisted_translation)">”fuzzy” matching</a>, a technique used to match two strings that are similar in meaning or spelling, against our users' saved patterns in real-time. We compare the strings and calculate a similarity score based on various factors (ie: phonetics, distance, substring matching). These saved patterns, which can be strings with <a href="https://en.wikipedia.org/wiki/Edit_distance">edit distances</a>, enable our system to generate alerts whenever we detect a match with any of the domains in the list.</p>
+	<p>Using this list, we perform <a href="https://en.wikipedia.org/wiki/Fuzzy_matching_(computer-assisted_translation)" target="_blank" rel="noopener noreferrer">”fuzzy” matching</a>, a technique used to match two strings that are similar in meaning or spelling, against our users' saved patterns in real-time. We compare the strings and calculate a similarity score based on various factors (ie: phonetics, distance, substring matching). These saved patterns, which can be strings with <a href="https://en.wikipedia.org/wiki/Edit_distance" target="_blank" rel="noopener noreferrer">edit distances</a>, enable our system to generate alerts whenever we detect a match with any of the domains in the list.</p>
 	<p>While our users currently have to create and save these queries, we will introduce an automated matching system in the future. This system will simplify the process of detecting matches for our users, &nbsp;though custom strings will still be available for security teams tracking more complex patterns.</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
@@ -395,7 +395,7 @@
 			</svg>
 		</a>
 	</div>
-	<p>The new features become a lot more effective for customers using our <a href="https://www.cloudflare.com/learning/security/glossary/what-is-zero-trust">Zero Trust</a> product suite. You can in fact easily block any confusable domains found as soon as they are detected by creating Cloudflare Gateway or DNS policy rules. This immediately stops your users from resolving or browsing to potentially malicious sites thwarting attacks before they happen.</p>
+	<p>The new features become a lot more effective for customers using our <a href="https://www.cloudflare.com/learning/security/glossary/what-is-zero-trust" target="_blank" rel="noopener noreferrer">Zero Trust</a> product suite. You can in fact easily block any confusable domains found as soon as they are detected by creating Cloudflare Gateway or DNS policy rules. This immediately stops your users from resolving or browsing to potentially malicious sites thwarting attacks before they happen.</p>
 	<figure class="kg-card kg-image-card ">
 
 		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/383IIsROAH5m5OksbCuoDx/a2c24f7ce128c9eed83477505669710e/image1-12.png" alt="Example of a DNS policy rule to block confusable domains" class="kg-image" width="1173" height="984" loading="lazy">
@@ -418,7 +418,7 @@
 			</svg>
 		</a>
 	</div>
-	<p>In addition to matching against domains, we plan to also match against new <a href="https://www.cloudflare.com/application-services/products/ssl">SSL/TLS certificates</a> logged to <a href="https://blog.cloudflare.com/introducing-certificate-transparency-and-nimbus">Nimbus, our Certificate Transparency log</a>. By analyzing CT logs, we can identify potentially fraudulent certificates that may be used in phishing attacks. This is helpful as certificates are typically created shortly after domain registration in an attempt to give the phishing site more legitimacy by supporting HTTPS.</p>
+	<p>In addition to matching against domains, we plan to also match against new <a href="https://www.cloudflare.com/application-services/products/ssl" target="_blank" rel="noopener noreferrer">SSL/TLS certificates</a> logged to <a href="https://blog.cloudflare.com/introducing-certificate-transparency-and-nimbus">Nimbus, our Certificate Transparency log</a>. By analyzing CT logs, we can identify potentially fraudulent certificates that may be used in phishing attacks. This is helpful as certificates are typically created shortly after domain registration in an attempt to give the phishing site more legitimacy by supporting HTTPS.</p>
 	<div class="flex anchor relative">
 		<h3 id="automatic-population-of-managed-lists">Automatic population of managed lists</h3>
 		<a href="https://blog.cloudflare.com/#automatic-population-of-managed-lists" aria-hidden="true" class="relative sm:absolute sm:-start-5">
@@ -445,5 +445,5 @@
 			</svg>
 		</a>
 	</div>
-	<p>If you’re an Enterprise customer, <a href="https://www.cloudflare.com/lp/brandprotection">sign up for Beta access</a> for Brand protection now to gain access to private scanning for your domains, save queries and set up alerts on matched domains.</p>
+	<p>If you’re an Enterprise customer, <a href="https://www.cloudflare.com/lp/brandprotection" target="_blank" rel="noopener noreferrer">sign up for Beta access</a> for Brand protection now to gain access to private scanning for your domains, save queries and set up alerts on matched domains.</p>
 </div>

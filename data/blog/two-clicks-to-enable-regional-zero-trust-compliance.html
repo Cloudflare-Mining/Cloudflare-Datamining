@@ -60,9 +60,9 @@
 			</svg>
 		</a>
 	</div>
-	<p><a href="https://www.cloudflare.com/learning/security/glossary/what-is-zero-trust">Zero trust security</a> starts with a username. Administrators build rules to determine which users can reach specific applications. Cloudflare Access integrates with your team’s identity provider, or even <a href="https://blog.cloudflare.com/multi-sso-and-cloudflare-access-adding-linkedin-and-github-teams">multiple identity providers</a>, to make those username-based decisions at the edge of our network.</p>
+	<p><a href="https://www.cloudflare.com/learning/security/glossary/what-is-zero-trust" target="_blank" rel="noopener noreferrer">Zero trust security</a> starts with a username. Administrators build rules to determine which users can reach specific applications. Cloudflare Access integrates with your team’s identity provider, or even <a href="https://blog.cloudflare.com/multi-sso-and-cloudflare-access-adding-linkedin-and-github-teams">multiple identity providers</a>, to make those username-based decisions at the edge of our network.</p>
 	<p>However, identity consists of more than just a username. Cloudflare Access can aggregate multiple sources of signal in Cloudflare's network. Access can use that information to make a decision about identity in our network - long before that request ever reaches your infrastructure.</p>
-	<p>You can combine user rules with mutual TLS requirements, or <a href="https://blog.cloudflare.com/tanium-cloudflare-teams">device posture checks</a>, and even force logins to <a href="https://blog.cloudflare.com/require-hard-key-auth-with-cloudflare-access">always use a hard key</a>. All of these zero-trust rules run inline with Cloudflare’s existing security features, like our <a href="https://www.cloudflare.com/learning/ddos/glossary/web-application-firewall-waf">WAF</a> and DDoS mitigation, to add layers of security to every request. The Cloudflare network gives your team a zero-trust platform to apply all of the data we can gather about a request to determine whether or not it should be allowed.</p>
+	<p>You can combine user rules with mutual TLS requirements, or <a href="https://blog.cloudflare.com/tanium-cloudflare-teams">device posture checks</a>, and even force logins to <a href="https://blog.cloudflare.com/require-hard-key-auth-with-cloudflare-access">always use a hard key</a>. All of these zero-trust rules run inline with Cloudflare’s existing security features, like our <a href="https://www.cloudflare.com/learning/ddos/glossary/web-application-firewall-waf" target="_blank" rel="noopener noreferrer">WAF</a> and DDoS mitigation, to add layers of security to every request. The Cloudflare network gives your team a zero-trust platform to apply all of the data we can gather about a request to determine whether or not it should be allowed.</p>
 	<p>The country rules we’re announcing today become another layer in that zero trust model. Like other sources of signal, you can combine these rules to build a comprehensive policy tailored to your organization’s compliance or security needs. For example, you can build a rule that only allows users to login to your application when they connect from Germany and use a physical hard key.</p>
 	<figure class="kg-card kg-image-card ">
 
@@ -81,7 +81,7 @@
 	<p>Inside of a policy you can define the criteria with three types of operators:</p>
 	<ul>
 		<li>
-			<p><b>Include</b>: Include rules function like OR operators. Users must meet at least one criterion in an Include rule. For example, an include rule can be constructed to allow anyone with @cloudflare.com email domains or <a href="mailto:user@team.com">user@team.com</a> email domains to connect.</p>
+			<p><b>Include</b>: Include rules function like OR operators. Users must meet at least one criterion in an Include rule. For example, an include rule can be constructed to allow anyone with @cloudflare.com email domains or <a href="https://blog.cloudflare.com/#">user@team.com</a> email domains to connect.</p>
 		</li>
 		<li>
 			<p><b>Require</b>: Require rules function like AND operators. Users must meet all Require rule criteria.</p>

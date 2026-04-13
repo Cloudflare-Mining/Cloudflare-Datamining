@@ -2,17 +2,17 @@
 <div class="post-content lh-copy gray1">
 	<p>As engineers, we’re obsessed with efficiency and automating anything we find ourselves doing more than twice. If you’ve ever done this, you know that the happy path is always easy, but the second the inputs get complex, automation becomes really hard. This is because computers have traditionally required extremely specific instructions in order to execute.</p>
 	<p>The state of AI models available to us today has changed that. We now have access to computers that can reason, and make judgement calls in lieu of specifying every edge case under the sun.</p>
-	<p>That’s what <a href="https://www.cloudflare.com/learning/ai/what-is-agentic-ai">AI agents</a> are all about.</p>
+	<p>That’s what <a href="https://www.cloudflare.com/learning/ai/what-is-agentic-ai" target="_blank" rel="noopener noreferrer">AI agents</a> are all about.</p>
 	<p>Today we’re excited to share a few announcements on how we’re making it <i>even</i> <i>easier</i> to build AI agents on Cloudflare, including:</p>
 	<ul>
 		<li>
 			<p><code>agents-sdk</code> — a new JavaScript framework for building AI agents</p>
 		</li>
 		<li>
-			<p>Updates to Workers AI: structured outputs, tool calling, and longer context windows for <a href="https://developers.cloudflare.com/workers-ai"><u>Workers AI</u></a>, Cloudflare’s serverless inference engine</p>
+			<p>Updates to Workers AI: structured outputs, tool calling, and longer context windows for <a href="https://developers.cloudflare.com/workers-ai" target="_blank" rel="noopener noreferrer"><u>Workers AI</u></a>, Cloudflare’s serverless inference engine</p>
 		</li>
 		<li>
-			<p>An update to the <a href="https://github.com/cloudflare/workers-ai-provider"><u>workers-ai-provider</u></a> for the AI SDK</p>
+			<p>An update to the <a href="https://github.com/cloudflare/workers-ai-provider" target="_blank" rel="noopener noreferrer"><u>workers-ai-provider</u></a> for the AI SDK</p>
 		</li>
 	</ul>
 	<p>We truly believe that Cloudflare is the ideal platform for building Agents and AI applications (more on why below), and we’re constantly working to make it better —&nbsp;you can expect to see more announcements from us in this space in the future.</p>
@@ -72,7 +72,7 @@
 	</div>
 	<p>You can now add agent powers to any existing Workers project with just one command:</p>
 	<pre class="language-Rust"><code class="language-Rust">$ npm i agents-sdk</code></pre>
-	<p>… or if you want to build something from scratch, you can bootstrap your project with the <a href="https://github.com/cloudflare/agents-starter"><u>agents-starter template</u></a>:</p>
+	<p>… or if you want to build something from scratch, you can bootstrap your project with the <a href="https://github.com/cloudflare/agents-starter" target="_blank" rel="noopener noreferrer"><u>agents-starter template</u></a>:</p>
 	<pre class="language-Rust"><code class="language-Rust">$ npm create cloudflare@latest -- --template cloudflare/agents-starter
 // ... and then deploy it
 $ npm run deploy</code></pre>
@@ -166,14 +166,14 @@ export default {
     );
   },
 } satisfies ExportedHandler&lt;Env&gt;;</code></pre>
-	<p>… and connect to your Agent with any React-based front-end with the <a href="https://github.com/cloudflare/agents-starter/blob/main/src/app.tsx"><code><u>useAgent</u></code></a> hook that can automatically establish a bidirectional WebSocket, sync client state, and allow you to build Agent-based applications without a mountain of bespoke code:</p>
+	<p>… and connect to your Agent with any React-based front-end with the <a href="https://github.com/cloudflare/agents-starter/blob/main/src/app.tsx" target="_blank" rel="noopener noreferrer"><code><u>useAgent</u></code></a> hook that can automatically establish a bidirectional WebSocket, sync client state, and allow you to build Agent-based applications without a mountain of bespoke code:</p>
 	<pre class="language-JavaScript"><code class="language-JavaScript">// src/app.tsx
 import { useAgent } from "agents-sdk/react";  
 
 const agent = useAgent({
   agent: "chat",
 });</code></pre>
-	<p>We spent some time thinking about the production story here too: an agent framework that absolves itself of the hard parts — durably persisting state, handling long-running tasks &amp; loops, and horizontal scale — is only going to get you so far. Agents built with <code>agents-sdk</code> can be deployed directly to Cloudflare and run on top of <a href="https://developers.cloudflare.com/durable-objects"><u>Durable Objects</u></a> — which you can think of as stateful micro-servers that can scale to tens of millions — and are able to run wherever they need to. Close to a user for low-latency, close to your data, and/or anywhere in between.</p>
+	<p>We spent some time thinking about the production story here too: an agent framework that absolves itself of the hard parts — durably persisting state, handling long-running tasks &amp; loops, and horizontal scale — is only going to get you so far. Agents built with <code>agents-sdk</code> can be deployed directly to Cloudflare and run on top of <a href="https://developers.cloudflare.com/durable-objects" target="_blank" rel="noopener noreferrer"><u>Durable Objects</u></a> — which you can think of as stateful micro-servers that can scale to tens of millions — and are able to run wherever they need to. Close to a user for low-latency, close to your data, and/or anywhere in between.</p>
 	<p><code>agents-sdk</code> also exposes:</p>
 	<ul>
 		<li>
@@ -278,30 +278,30 @@ const agent = useAgent({
 	<p>This is the list of models that now support JSON mode:</p>
 	<ul>
 		<li>
-			<p><a href="https://developers.cloudflare.com/workers-ai/models/llama-3.1-8b-instruct-fast"><u>@cf/meta/llama-3.1-8b-instruct-fast</u></a></p>
+			<p><a href="https://developers.cloudflare.com/workers-ai/models/llama-3.1-8b-instruct-fast" target="_blank" rel="noopener noreferrer"><u>@cf/meta/llama-3.1-8b-instruct-fast</u></a></p>
 		</li>
 		<li>
-			<p><a href="https://developers.cloudflare.com/workers-ai/models/llama-3.1-70b-instruct"><u>@cf/meta/llama-3.1-70b-instruct</u></a></p>
+			<p><a href="https://developers.cloudflare.com/workers-ai/models/llama-3.1-70b-instruct" target="_blank" rel="noopener noreferrer"><u>@cf/meta/llama-3.1-70b-instruct</u></a></p>
 		</li>
 		<li>
-			<p><a href="https://developers.cloudflare.com/workers-ai/models/llama-3.3-70b-instruct-fp8-fast"><u>@cf/meta/llama-3.3-70b-instruct-fp8-fast</u></a></p>
+			<p><a href="https://developers.cloudflare.com/workers-ai/models/llama-3.3-70b-instruct-fp8-fast" target="_blank" rel="noopener noreferrer"><u>@cf/meta/llama-3.3-70b-instruct-fp8-fast</u></a></p>
 		</li>
 		<li>
-			<p><a href="https://developers.cloudflare.com/workers-ai/models/deepseek-r1-distill-qwen-32b"><u>@cf/deepseek-ai/deepseek-r1-distill-qwen-32b</u></a></p>
+			<p><a href="https://developers.cloudflare.com/workers-ai/models/deepseek-r1-distill-qwen-32b" target="_blank" rel="noopener noreferrer"><u>@cf/deepseek-ai/deepseek-r1-distill-qwen-32b</u></a></p>
 		</li>
 		<li>
-			<p><a href="https://developers.cloudflare.com/workers-ai/models/llama-3-8b-instruct"><u>@cf/meta/llama-3-8b-instruct</u></a></p>
+			<p><a href="https://developers.cloudflare.com/workers-ai/models/llama-3-8b-instruct" target="_blank" rel="noopener noreferrer"><u>@cf/meta/llama-3-8b-instruct</u></a></p>
 		</li>
 		<li>
-			<p><a href="https://developers.cloudflare.com/workers-ai/models/llama-3.1-8b-instruct"><u>@cf/meta/llama-3.1-8b-instruct</u></a></p>
+			<p><a href="https://developers.cloudflare.com/workers-ai/models/llama-3.1-8b-instruct" target="_blank" rel="noopener noreferrer"><u>@cf/meta/llama-3.1-8b-instruct</u></a></p>
 		</li>
 		<li>
-			<p><a href="https://developers.cloudflare.com/workers-ai/models/hermes-2-pro-mistral-7b"><u>@hf/nousresearch/hermes-2-pro-mistral-7b</u></a></p>
+			<p><a href="https://developers.cloudflare.com/workers-ai/models/hermes-2-pro-mistral-7b" target="_blank" rel="noopener noreferrer"><u>@hf/nousresearch/hermes-2-pro-mistral-7b</u></a></p>
 		</li>
 	</ul>
 	<p>We will continue extending this list to keep up with new, and requested models.</p>
 	<p>Lastly, we are changing how we restrict the size of AI requests to text generation models, moving from byte-counts to token-counts, introducing the concept of <b>context window</b> and raising the limits of the models in our catalog.</p>
-	<p>In generative AI, the context window is the sum of the number of input, reasoning, and completion or response tokens a model supports. You can now find the context window limit on each <a href="https://developers.cloudflare.com/workers-ai/models/llama-3.1-70b-instruct"><u>model page</u></a> in our developer documentation and decide which suits your requirements and use case.</p>
+	<p>In generative AI, the context window is the sum of the number of input, reasoning, and completion or response tokens a model supports. You can now find the context window limit on each <a href="https://developers.cloudflare.com/workers-ai/models/llama-3.1-70b-instruct" target="_blank" rel="noopener noreferrer"><u>model page</u></a> in our developer documentation and decide which suits your requirements and use case.</p>
 	<p>JSON mode is also the perfect companion when using function calling. You can use structured JSON outputs with traditional function calling or the Vercel AI SDK via the <code>workers-ai-provider</code>.</p>
 	<div class="flex anchor relative">
 		<h2 id="0-1-1"><a href="https://github.com/cloudflare/workers-ai-provider">workers-ai-provider</a> 0.1.1</h2>
@@ -311,8 +311,8 @@ const agent = useAgent({
 			</svg>
 		</a>
 	</div>
-	<p>One of the most common ways to build with AI tooling today is by using the popular <a href="https://sdk.vercel.ai/docs/introduction"><u>AI SDK</u></a>. <a href="https://github.com/cloudflare/workers-ai-provider"><u>Cloudflare’s provider</u></a> for the AI SDK makes it easy to use Workers AI the same way you would call any other LLM, directly from your code.</p>
-	<p>In the <a href="https://github.com/cloudflare/workers-ai-provider/tree/workers-ai-provider%400.1.1"><u>most recent version</u></a>, we’ve shipped the following improvements:&nbsp;</p>
+	<p>One of the most common ways to build with AI tooling today is by using the popular <a href="https://sdk.vercel.ai/docs/introduction" target="_blank" rel="noopener noreferrer"><u>AI SDK</u></a>. <a href="https://github.com/cloudflare/workers-ai-provider" target="_blank" rel="noopener noreferrer"><u>Cloudflare’s provider</u></a> for the AI SDK makes it easy to use Workers AI the same way you would call any other LLM, directly from your code.</p>
+	<p>In the <a href="https://github.com/cloudflare/workers-ai-provider/tree/workers-ai-provider%400.1.1" target="_blank" rel="noopener noreferrer"><u>most recent version</u></a>, we’ve shipped the following improvements:&nbsp;</p>
 	<ul>
 		<li>
 			<p>Tool calling enabled for generateText</p>
@@ -338,7 +338,7 @@ const agent = useAgent({
 		</a>
 	</div>
 	<p>Since launching Workers in 2017, we’ve been building a platform to allow developers to build applications that are fast, scalable, and cost-efficient from day one. We took a fundamentally different approach from the way code was previously run on servers, making a bet about what the future of applications was going to look like — isolates running on a global network, in a way that was truly serverless. No regions, no concurrency management, no managing or scaling infrastructure.&nbsp;</p>
-	<p>The release of Workers was just the beginning, and we continued shipping primitives to extend what developers could build. Some more familiar, like a key-value store (<a href="https://developers.cloudflare.com/kv"><u>Workers KV</u></a>), and some that we thought would play a role in enabling net new use cases like <a href="https://developers.cloudflare.com/durable-objects"><u>Durable Objects</u></a>. While we didn’t quite predict AI agents (though “Agents” was one of the proposed names for Durable Objects), we inadvertently created the perfect platform for building them.&nbsp;</p>
+	<p>The release of Workers was just the beginning, and we continued shipping primitives to extend what developers could build. Some more familiar, like a key-value store (<a href="https://developers.cloudflare.com/kv" target="_blank" rel="noopener noreferrer"><u>Workers KV</u></a>), and some that we thought would play a role in enabling net new use cases like <a href="https://developers.cloudflare.com/durable-objects" target="_blank" rel="noopener noreferrer"><u>Durable Objects</u></a>. While we didn’t quite predict AI agents (though “Agents” was one of the proposed names for Durable Objects), we inadvertently created the perfect platform for building them.&nbsp;</p>
 	<p>What do we mean by that?&nbsp;</p>
 	<div class="flex anchor relative">
 		<h3 id="a-platform-that-only-charges-you-for-what-you-use-regardless-of-how-long-it-takes">A platform that only charges you for what you use (regardless of how long it takes)</h3>
@@ -358,7 +358,7 @@ const agent = useAgent({
 			</svg>
 		</a>
 	</div>
-	<p>We took a similar serverless approach when it comes to inference itself. When you need to call an AI model, you need it to be instantaneously available. While the foundation model providers offer APIs that make it possible to just call the LLM, if you’re running open-source models, <a href="https://www.cloudflare.com/learning/ai/what-is-lora"><u>LoRAs</u></a>, or self-trained models, most cloud providers today require you to pre-provision resources for what your peak traffic will look like. This means that the rest of the time, you’re still paying for GPUs to sit there idle. With Workers AI, you can pay only when you’re calling our inference APIs, as opposed to unused infrastructure. In fact, you don’t have to think about infrastructure at all, which is the principle at the core of everything we do.&nbsp;</p>
+	<p>We took a similar serverless approach when it comes to inference itself. When you need to call an AI model, you need it to be instantaneously available. While the foundation model providers offer APIs that make it possible to just call the LLM, if you’re running open-source models, <a href="https://www.cloudflare.com/learning/ai/what-is-lora" target="_blank" rel="noopener noreferrer"><u>LoRAs</u></a>, or self-trained models, most cloud providers today require you to pre-provision resources for what your peak traffic will look like. This means that the rest of the time, you’re still paying for GPUs to sit there idle. With Workers AI, you can pay only when you’re calling our inference APIs, as opposed to unused infrastructure. In fact, you don’t have to think about infrastructure at all, which is the principle at the core of everything we do.&nbsp;</p>
 	<div class="flex anchor relative">
 		<h3 id="a-platform-designed-for-durable-execution">A platform designed for durable execution</h3>
 		<a href="https://blog.cloudflare.com/#a-platform-designed-for-durable-execution" aria-hidden="true" class="relative sm:absolute sm:-start-5">
@@ -367,7 +367,7 @@ const agent = useAgent({
 			</svg>
 		</a>
 	</div>
-	<p><a href="https://developers.cloudflare.com/durable-objects"><u>Durable Objects</u></a> and <a href="https://developers.cloudflare.com/workflows"><u>Workflows</u></a> provide a robust programming model that ensures guaranteed execution for asynchronous tasks that require persistence and reliability. This makes them ideal for handling complex operations like long-running deep thinking LLM calls, human-in-the-loop approval processes, or interactions with unreliable third-party APIs. By maintaining state across requests and automatically handling retries, these tools create a resilient foundation for building sophisticated AI agents that can perform complex, multistep tasks without losing context or progress, even when operations take significant time to complete.</p>
+	<p><a href="https://developers.cloudflare.com/durable-objects" target="_blank" rel="noopener noreferrer"><u>Durable Objects</u></a> and <a href="https://developers.cloudflare.com/workflows" target="_blank" rel="noopener noreferrer"><u>Workflows</u></a> provide a robust programming model that ensures guaranteed execution for asynchronous tasks that require persistence and reliability. This makes them ideal for handling complex operations like long-running deep thinking LLM calls, human-in-the-loop approval processes, or interactions with unreliable third-party APIs. By maintaining state across requests and automatically handling retries, these tools create a resilient foundation for building sophisticated AI agents that can perform complex, multistep tasks without losing context or progress, even when operations take significant time to complete.</p>
 	<div class="flex anchor relative">
 		<h2 id="lastly-new-and-updated-agents-documentation">Lastly, new and updated agents documentation</h2>
 		<a href="https://blog.cloudflare.com/#lastly-new-and-updated-agents-documentation" aria-hidden="true" class="relative sm:absolute sm:-start-5">
@@ -377,8 +377,8 @@ const agent = useAgent({
 		</a>
 	</div>
 	<p>Did you catch all of that?</p>
-	<p>No worries if not: we’ve updated our <a href="https://developers.cloudflare.com/agents"><u>agents documentation</u></a> to include everything we talked about above, from breaking down the basics of agents, to showing you how to tackle foundational examples of building with agents.</p>
-	<p>We’ve also updated our <a href="https://developers.cloudflare.com/workers/get-started/prompting"><u>Workers prompt</u></a> with knowledge of the agents-sdk library, so you can use Cursor, Windsurf, Zed, ChatGPT or Claude to help you build AI Agents and deploy them to Cloudflare.</p>
+	<p>No worries if not: we’ve updated our <a href="https://developers.cloudflare.com/agents" target="_blank" rel="noopener noreferrer"><u>agents documentation</u></a> to include everything we talked about above, from breaking down the basics of agents, to showing you how to tackle foundational examples of building with agents.</p>
+	<p>We’ve also updated our <a href="https://developers.cloudflare.com/workers/get-started/prompting" target="_blank" rel="noopener noreferrer"><u>Workers prompt</u></a> with knowledge of the agents-sdk library, so you can use Cursor, Windsurf, Zed, ChatGPT or Claude to help you build AI Agents and deploy them to Cloudflare.</p>
 	<div class="flex anchor relative">
 		<h2 id="cant-wait-to-see-what-you-build">Can’t wait to see what you build!&nbsp;</h2>
 		<a href="https://blog.cloudflare.com/#cant-wait-to-see-what-you-build" aria-hidden="true" class="relative sm:absolute sm:-start-5">
@@ -387,5 +387,5 @@ const agent = useAgent({
 			</svg>
 		</a>
 	</div>
-	<p>We’re just getting started, and we love to see all that you build. Please join our <a href="https://discord.com/invite/cloudflaredev"><u>Discord</u></a>, ask questions, and tell us what you’re building.</p>
+	<p>We’re just getting started, and we love to see all that you build. Please join our <a href="https://discord.com/invite/cloudflaredev" target="_blank" rel="noopener noreferrer"><u>Discord</u></a>, ask questions, and tell us what you’re building.</p>
 </div>

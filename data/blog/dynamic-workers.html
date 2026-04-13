@@ -1,10 +1,10 @@
 <div class="mb2 gray5">9 min read</div>
 <div class="mt4">This post is also available in <a href="https://blog.cloudflare.com/zh-cn/dynamic-workers">简体中文</a> and <a href="https://blog.cloudflare.com/zh-tw/dynamic-workers">繁體中文</a>.</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/bHNbiOYjl5jRXSCglsAG8/5bc5cc820b5249142294429edb106296/BLOG-3243_1.png" alt="">
 <div class="post-content lh-copy gray1">
-	<p>Last September we introduced <a href="https://blog.cloudflare.com/code-mode"><u>Code Mode</u></a>, the idea that agents should perform tasks not by making tool calls, but instead by writing code that calls APIs. We've shown that simply converting an MCP server into a TypeScript API can <a href="https://www.youtube.com/watch?v=L2j3tYTtJwk"><u>cut token usage by 81%</u></a>. We demonstrated that Code Mode can also operate <i>behind</i> an MCP server instead of in front of it, creating the new <a href="https://blog.cloudflare.com/code-mode-mcp"><u>Cloudflare MCP server that exposes the entire Cloudflare API with just two tools and under 1,000 tokens</u></a>.</p>
+	<p>Last September we introduced <a href="https://blog.cloudflare.com/code-mode"><u>Code Mode</u></a>, the idea that agents should perform tasks not by making tool calls, but instead by writing code that calls APIs. We've shown that simply converting an MCP server into a TypeScript API can <a href="https://www.youtube.com/watch?v=L2j3tYTtJwk" target="_blank" rel="noopener noreferrer"><u>cut token usage by 81%</u></a>. We demonstrated that Code Mode can also operate <i>behind</i> an MCP server instead of in front of it, creating the new <a href="https://blog.cloudflare.com/code-mode-mcp"><u>Cloudflare MCP server that exposes the entire Cloudflare API with just two tools and under 1,000 tokens</u></a>.</p>
 	<p>But if an agent (or an MCP server) is going to execute code generated on-the-fly by AI to perform tasks, that code needs to run somewhere, and that somewhere needs to be secure. You can't just <code>eval() </code>AI-generated code directly in your app: a malicious user could trivially prompt the AI to inject vulnerabilities.</p>
 	<p>You need a <b>sandbox</b>: a place to execute code that is isolated from your application and from the rest of the world, except for the specific capabilities the code is meant to access.</p>
-	<p>Sandboxing is a hot topic in the AI industry. For this task, most people are reaching for containers. Using a Linux-based container, you can start up any sort of code execution environment you want. Cloudflare even offers <a href="https://developers.cloudflare.com/containers"><u>our container runtime</u></a> and <a href="https://developers.cloudflare.com/sandbox"><u>our Sandbox SDK</u></a> for this purpose.</p>
+	<p>Sandboxing is a hot topic in the AI industry. For this task, most people are reaching for containers. Using a Linux-based container, you can start up any sort of code execution environment you want. Cloudflare even offers <a href="https://developers.cloudflare.com/containers" target="_blank" rel="noopener noreferrer"><u>our container runtime</u></a> and <a href="https://developers.cloudflare.com/sandbox" target="_blank" rel="noopener noreferrer"><u>our Sandbox SDK</u></a> for this purpose.</p>
 	<p>But containers are expensive and slow to start, taking hundreds of milliseconds to boot and hundreds of megabytes of memory to run. You probably need to keep them warm to avoid delays, and you may be tempted to reuse existing containers for multiple tasks, compromising the security.</p>
 	<p><b>If we want to support consumer-scale agents, where every end user has an agent (or many!) and every agent writes code, containers are not enough. We need something lighter.</b></p>
 	<h6>And we have it.</h6>
@@ -18,7 +18,7 @@
 	</div>
 	<p>Tucked into our Code Mode post in September was the announcement of a new, experimental feature: the Dynamic Worker Loader API. This API allows a Cloudflare Worker to instantiate a new Worker, in its own sandbox, with code specified at runtime, all on the fly.</p>
 	<p><b>Dynamic Worker Loader is now in open beta, available to all paid Workers users.</b></p>
-	<p><a href="https://developers.cloudflare.com/workers/runtime-apis/bindings/worker-loader"><u>Read the docs for full details</u></a>, but here's what it looks like:</p>
+	<p><a href="https://developers.cloudflare.com/workers/runtime-apis/bindings/worker-loader" target="_blank" rel="noopener noreferrer"><u>Read the docs for full details</u></a>, but here's what it looks like:</p>
 	<pre class="language-javascript"><code class="language-javascript">// Have your LLM generate code like this.
 let agentCode: string = `
   export default {
@@ -59,7 +59,7 @@ await worker.getEntrypoint().myAgent(param);
 			</svg>
 		</a>
 	</div>
-	<p>Dynamic Workers use the same underlying sandboxing mechanism that the entire Cloudflare Workers platform has been built on since its launch, eight years ago: isolates. An isolate is an instance of the V8 JavaScript execution engine, the same engine used by Google Chrome. They are <a href="https://developers.cloudflare.com/workers/reference/how-workers-works"><u>how Workers work</u></a>.</p>
+	<p>Dynamic Workers use the same underlying sandboxing mechanism that the entire Cloudflare Workers platform has been built on since its launch, eight years ago: isolates. An isolate is an instance of the V8 JavaScript execution engine, the same engine used by Google Chrome. They are <a href="https://developers.cloudflare.com/workers/reference/how-workers-works" target="_blank" rel="noopener noreferrer"><u>how Workers work</u></a>.</p>
 	<p>An isolate takes a few milliseconds to start and uses a few megabytes of memory. That's around 100x faster and 10x-100x more memory efficient than a typical container.</p>
 	<p><b>That means that if you want to start a new isolate for every user request, on-demand, to run one snippet of code, then throw it away, you can.</b></p>
 	<div class="flex anchor relative">
@@ -269,7 +269,7 @@ return history.filter(msg =&gt; msg.author == "alice");
 			</svg>
 		</a>
 	</div>
-	<p><a href="https://www.npmjs.com/package/@cloudflare/codemode"><code>@cloudflare/codemode</code></a> simplifies running model-generated code against AI tools using Dynamic Workers. At its core is <code>DynamicWorkerExecutor()</code>, which constructs a purpose-built sandbox with code normalisation to handle common formatting errors, and direct access to a <code>globalOutbound</code> fetcher for controlling <code>fetch()</code> behaviour inside the sandbox — set it to <code>null</code> for full isolation, or pass a <code>Fetcher</code> binding to route, intercept or enrich outbound requests from the sandbox.</p>
+	<p><a href="https://www.npmjs.com/package/@cloudflare/codemode" target="_blank" rel="noopener noreferrer"><code>@cloudflare/codemode</code></a> simplifies running model-generated code against AI tools using Dynamic Workers. At its core is <code>DynamicWorkerExecutor()</code>, which constructs a purpose-built sandbox with code normalisation to handle common formatting errors, and direct access to a <code>globalOutbound</code> fetcher for controlling <code>fetch()</code> behaviour inside the sandbox — set it to <code>null</code> for full isolation, or pass a <code>Fetcher</code> binding to route, intercept or enrich outbound requests from the sandbox.</p>
 	<pre class="language-Typescript"><code class="language-Typescript">const executor = new DynamicWorkerExecutor({
   loader: env.LOADER,
   globalOutbound: null, // fully isolated 
@@ -288,7 +288,7 @@ return generateText({
 </code></pre>
 	<p>The Code Mode SDK also provides two server-side utility functions. <code>codeMcpServer({ server, executor })</code> wraps an existing MCP Server, replacing its tool surface with a single <code>code()</code> tool. <code>openApiMcpServer({ spec, executor, request })</code> goes further: given an OpenAPI spec and an executor, it builds a complete MCP Server with <code>search()</code> and <code>execute()</code> tools as used by the Cloudflare MCP Server, and better suited to larger APIs.</p>
 	<p>In both cases, the code generated by the model runs inside Dynamic Workers, with calls to external services made over RPC bindings passed to the executor.</p>
-	<p><a href="https://www.npmjs.com/package/@cloudflare/codemode"><u>Learn more about the library and how to use it.</u></a> </p>
+	<p><a href="https://www.npmjs.com/package/@cloudflare/codemode" target="_blank" rel="noopener noreferrer"><u>Learn more about the library and how to use it.</u></a> </p>
 	<div class="flex anchor relative">
 		<h3 id="bundling">Bundling</h3>
 		<a href="https://blog.cloudflare.com/#bundling" aria-hidden="true" class="relative sm:absolute sm:-start-5">
@@ -297,7 +297,7 @@ return generateText({
 			</svg>
 		</a>
 	</div>
-	<p>Dynamic Workers expect pre-bundled modules. <a href="https://www.npmjs.com/package/@cloudflare/worker-bundler"><code>@cloudflare/worker-bundler</code></a> handles that for you: give it source files and a <code>package.json</code>, and it resolves npm dependencies from the registry, bundles everything with <code>esbuild</code>, and returns the module map the Worker Loader expects.</p>
+	<p>Dynamic Workers expect pre-bundled modules. <a href="https://www.npmjs.com/package/@cloudflare/worker-bundler" target="_blank" rel="noopener noreferrer"><code>@cloudflare/worker-bundler</code></a> handles that for you: give it source files and a <code>package.json</code>, and it resolves npm dependencies from the registry, bundles everything with <code>esbuild</code>, and returns the module map the Worker Loader expects.</p>
 	<pre class="language-Typescript"><code class="language-Typescript">import { createWorker } from "@cloudflare/worker-bundler";
 
 const worker = env.LOADER.get("my-worker", async () =&gt; {
@@ -326,7 +326,7 @@ const worker = env.LOADER.get("my-worker", async () =&gt; {
 await worker.getEntrypoint().fetch(request);
 </code></pre>
 	<p>It also supports full-stack apps via <code>createApp</code> — bundle a server Worker, client-side JavaScript, and static assets together, with built-in asset serving that handles content types, ETags, and SPA routing.</p>
-	<p><a href="https://www.npmjs.com/package/@cloudflare/worker-bundler"><u>Learn more about the library and how to use it.</u></a></p>
+	<p><a href="https://www.npmjs.com/package/@cloudflare/worker-bundler" target="_blank" rel="noopener noreferrer"><u>Learn more about the library and how to use it.</u></a></p>
 	<div class="flex anchor relative">
 		<h3 id="file-manipulation">File manipulation</h3>
 		<a href="https://blog.cloudflare.com/#file-manipulation" aria-hidden="true" class="relative sm:absolute sm:-start-5">
@@ -335,7 +335,7 @@ await worker.getEntrypoint().fetch(request);
 			</svg>
 		</a>
 	</div>
-	<p><a href="https://www.npmjs.com/package/@cloudflare/shell"><code>@cloudflare/shell</code></a> gives your agent a virtual filesystem inside a Dynamic Worker. Agent code calls typed methods on a <code>state</code> object — read, write, search, replace, diff, glob, JSON query/update, archive — with structured inputs and outputs instead of string parsing.</p>
+	<p><a href="https://www.npmjs.com/package/@cloudflare/shell" target="_blank" rel="noopener noreferrer"><code>@cloudflare/shell</code></a> gives your agent a virtual filesystem inside a Dynamic Worker. Agent code calls typed methods on a <code>state</code> object — read, write, search, replace, diff, glob, JSON query/update, archive — with structured inputs and outputs instead of string parsing.</p>
 	<p>Storage is backed by a durable <code>Workspace</code> (SQLite + R2), so files persist across executions. Coarse operations like <code>searchFiles</code>, <code>replaceInFiles</code>, and <code>planEdits</code> minimize RPC round-trips — the agent issues one call instead of looping over individual files. Batch writes are transactional by default: if any write fails, earlier writes roll back automatically.</p>
 	<pre class="language-Typescript"><code class="language-Typescript">import { Workspace } from "@cloudflare/shell";
 import { stateTools } from "@cloudflare/shell/workers";
@@ -368,7 +368,7 @@ const result = await executor.execute(
   [resolveProvider(stateTools(workspace))]
 );</code></pre>
 	<p>The package also ships prebuilt TypeScript type declarations and a system prompt template, so you can drop the full <code>state</code> API into your LLM context in a handful of tokens.</p>
-	<p><a href="https://www.npmjs.com/package/@cloudflare/shell"><u>Learn more about the library and how to use it.</u></a></p>
+	<p><a href="https://www.npmjs.com/package/@cloudflare/shell" target="_blank" rel="noopener noreferrer"><u>Learn more about the library and how to use it.</u></a></p>
 	<div class="flex anchor relative">
 		<h2 id="how-are-people-using-it">How are people using it?</h2>
 		<a href="https://blog.cloudflare.com/#how-are-people-using-it" aria-hidden="true" class="relative sm:absolute sm:-start-5">
@@ -387,7 +387,7 @@ const result = await executor.execute(
 		</a>
 	</div>
 	<p>Developers want their agents to write and execute code against tool APIs, rather than making sequential tool calls one at a time. With Dynamic Workers, the LLM generates a single TypeScript function that chains multiple API calls together, runs it in a Dynamic Worker, and returns the final result back to the agent. As a result, only the output, and not every intermediate step, ends up in the context window. This cuts both latency and token usage, and produces better results, especially when the tool surface is large.</p>
-	<p>Our own <a href="https://github.com/cloudflare/mcp-server-cloudflare">Cloudflare MCP server</a> is built exactly this way: it exposes the entire Cloudflare API through just two tools — search and execute — in under 1,000 tokens, because the agent writes code against a typed API instead of navigating hundreds of individual tool definitions.</p>
+	<p>Our own <a href="https://github.com/cloudflare/mcp-server-cloudflare" target="_blank" rel="noopener noreferrer">Cloudflare MCP server</a> is built exactly this way: it exposes the entire Cloudflare API through just two tools — search and execute — in under 1,000 tokens, because the agent writes code against a typed API instead of navigating hundreds of individual tool definitions.</p>
 	<div class="flex anchor relative">
 		<h4 id="building-custom-automations">Building custom automations&nbsp;</h4>
 		<a href="https://blog.cloudflare.com/#building-custom-automations" aria-hidden="true" class="relative sm:absolute sm:-start-5">
@@ -396,7 +396,7 @@ const result = await executor.execute(
 			</svg>
 		</a>
 	</div>
-	<p>Developers are using Dynamic Workers to let agents build custom automations on the fly. <a href="https://www.zite.com"><u>Zite</u></a>, for example, is building an app platform where users interact through a chat interface — the LLM writes TypeScript behind the scenes to build CRUD apps, connect to services like Stripe, Airtable, and Google Calendar, and run backend logic, all without the user ever seeing a line of code. Every automation runs in its own Dynamic Worker, with access to only the specific services and libraries that the endpoint needs.</p>
+	<p>Developers are using Dynamic Workers to let agents build custom automations on the fly. <a href="https://www.zite.com" target="_blank" rel="noopener noreferrer"><u>Zite</u></a>, for example, is building an app platform where users interact through a chat interface — the LLM writes TypeScript behind the scenes to build CRUD apps, connect to services like Stripe, Airtable, and Google Calendar, and run backend logic, all without the user ever seeing a line of code. Every automation runs in its own Dynamic Worker, with access to only the specific services and libraries that the endpoint needs.</p>
 	<blockquote>
 		<p><i>“To enable server-side code for Zite’s LLM-generated apps, we needed an execution layer that was instant, isolated, and secure. Cloudflare’s Dynamic Workers hit the mark on all three, and out-performed all of the other platforms we benchmarked for speed and library support. The NodeJS compatible runtime supported all of Zite’s workflows, allowing hundreds of third party integrations, without sacrificing on startup time. Zite now services millions of execution requests daily thanks to Dynamic Workers.” </i></p>
 		<p><i>— </i><b><i>Antony Toron</i></b><i>, CTO and Co-Founder, Zite&nbsp;</i></p>
@@ -420,7 +420,7 @@ const result = await executor.execute(
 	</div>
 	<p>Dynamically-loaded Workers are priced at $0.002 per unique Worker loaded per day (as of this post’s publication), in addition to the usual CPU time and invocation pricing of regular Workers.</p>
 	<p>For AI-generated "code mode" use cases, where every Worker is a unique one-off, this means the price is $0.002 per Worker loaded (plus CPU and invocations). This cost is typically negligible compared to the inference costs to generate the code.</p>
-	<p>During the beta period, the $0.002 charge is waived. As pricing is subject to change, please always check our Dynamic Workers <a href="https://developers.cloudflare.com/dynamic-workers/pricing"><u>pricing</u></a> for the most current information.&nbsp;</p>
+	<p>During the beta period, the $0.002 charge is waived. As pricing is subject to change, please always check our Dynamic Workers <a href="https://developers.cloudflare.com/dynamic-workers/pricing" target="_blank" rel="noopener noreferrer"><u>pricing</u></a> for the most current information.&nbsp;</p>
 	<div class="flex anchor relative">
 		<h2 id="get-started">Get Started</h2>
 		<a href="https://blog.cloudflare.com/#get-started" aria-hidden="true" class="relative sm:absolute sm:-start-5">
@@ -429,7 +429,7 @@ const result = await executor.execute(
 			</svg>
 		</a>
 	</div>
-	<p>If you’re on the Workers Paid plan, you can start using <a href="https://developers.cloudflare.com/dynamic-workers">Dynamic Workers</a> today.&nbsp;</p>
+	<p>If you’re on the Workers Paid plan, you can start using <a href="https://developers.cloudflare.com/dynamic-workers" target="_blank" rel="noopener noreferrer">Dynamic Workers</a> today.&nbsp;</p>
 	<div class="flex anchor relative">
 		<h4 id="dynamic-workers-starter">Dynamic Workers Starter</h4>
 		<a href="https://blog.cloudflare.com/#dynamic-workers-starter" aria-hidden="true" class="relative sm:absolute sm:-start-5">
@@ -440,7 +440,7 @@ const result = await executor.execute(
 	</div>
 	<a href="https://deploy.workers.cloudflare.com/?url=https%3A%2F%2Fgithub.com%2Fcloudflare%2Fagents%2Ftree%2Fmain%2Fexamples%2Fdynamic-workers"><img src="https://deploy.workers.cloudflare.com/button" alt="Deploy to Cloudflare"></a>
 	<p></p>
-	<p>Use this “hello world” <a href="https://github.com/cloudflare/agents/tree/main/examples/dynamic-workers">starter</a> to get a Worker deployed that can load and execute Dynamic Workers.&nbsp;</p>
+	<p>Use this “hello world” <a href="https://github.com/cloudflare/agents/tree/main/examples/dynamic-workers" target="_blank" rel="noopener noreferrer">starter</a> to get a Worker deployed that can load and execute Dynamic Workers.&nbsp;</p>
 	<div class="flex anchor relative">
 		<h4 id="dynamic-workers-playground">Dynamic Workers Playground</h4>
 		<a href="https://blog.cloudflare.com/#dynamic-workers-playground" aria-hidden="true" class="relative sm:absolute sm:-start-5">
@@ -451,11 +451,11 @@ const result = await executor.execute(
 	</div>
 	<a href="https://deploy.workers.cloudflare.com/?url=https%3A%2F%2Fgithub.com%2Fcloudflare%2Fagents%2Ftree%2Fmain%2Fexamples%2Fdynamic-workers-playground"><img src="https://deploy.workers.cloudflare.com/button" alt="Deploy to Cloudflare"></a>
 	<p></p>
-	<p>You can also deploy the <a href="https://github.com/cloudflare/agents/tree/main/examples/dynamic-workers-playground">Dynamic Workers Playground</a>, where you’ll be able to write or import code, bundle it at runtime with <code>@cloudflare/worker-bundler</code>, execute it through a Dynamic Worker, see real-time responses and execution logs. </p>
+	<p>You can also deploy the <a href="https://github.com/cloudflare/agents/tree/main/examples/dynamic-workers-playground" target="_blank" rel="noopener noreferrer">Dynamic Workers Playground</a>, where you’ll be able to write or import code, bundle it at runtime with <code>@cloudflare/worker-bundler</code>, execute it through a Dynamic Worker, see real-time responses and execution logs. </p>
 	<figure class="kg-card kg-image-card">
 		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/32d0ficYALnSneKc4jZPja/0d4d07d747fc14936f16071714b7a8e5/BLOG-3243_2.png" alt="BLOG-3243 2" class="kg-image" width="1999" height="1163" loading="lazy">
 	</figure>
-	<p>Dynamic Workers are fast, scalable, and lightweight. <a href="https://discord.com/channels/595317990191398933/1460655307255578695"><u>Find us on Discord</u></a> if you have any questions. We’d love to see what you build!</p>
+	<p>Dynamic Workers are fast, scalable, and lightweight. <a href="https://discord.com/channels/595317990191398933/1460655307255578695" target="_blank" rel="noopener noreferrer"><u>Find us on Discord</u></a> if you have any questions. We’d love to see what you build!</p>
 	<figure class="kg-card kg-image-card">
 		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/mQOJLnMtXULmj6l3DgKZg/ef2ee4cef616bc2d9a7caf35df5834f5/BLOG-3243_3.png" alt="BLOG-3243 3" class="kg-image" width="1999" height="500" loading="lazy">
 	</figure>

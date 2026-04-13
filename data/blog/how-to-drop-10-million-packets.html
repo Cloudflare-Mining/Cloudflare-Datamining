@@ -7,7 +7,7 @@
 		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7yS2j3vUrdmAkLkGjcunWg/cabb3814dc89260f1338ee65cd38466f/38464589350_d00908ee98_b.jpg" alt="38464589350_d00908ee98_b" class="kg-image" width="1024" height="820" loading="lazy">
 
 	</figure>
-	<p><a href="https://creativecommons.org/licenses/by-sa/2.0">CC BY-SA 2.0</a> <a href="https://www.flickr.com/photos/beegee49/38464589350">image</a> by <a href="https://www.flickr.com/photos/beegee49">Brian Evans</a></p>
+	<p><a href="https://creativecommons.org/licenses/by-sa/2.0" target="_blank" rel="noopener noreferrer">CC BY-SA 2.0</a> <a href="https://www.flickr.com/photos/beegee49/38464589350" target="_blank" rel="noopener noreferrer">image</a> by <a href="https://www.flickr.com/photos/beegee49" target="_blank" rel="noopener noreferrer">Brian Evans</a></p>
 	<p>Being able to quickly discard packets is very important to withstand DDoS attacks.</p>
 	<p>Dropping packets hitting our servers, as simple as it sounds, can be done on multiple layers. Each technique has its advantages and limitations. In this blog post we'll review all the techniques we tried thus far.</p>
 	<div class="flex anchor relative">
@@ -75,7 +75,7 @@ iptables -I INPUT -t filter -d 198.18.0.12 -p udp --dport 1234 -j ACCEPT</code><
 s.bind(("0.0.0.0", 1234))
 while True:
     s.recvmmsg([...])</code></pre>
-	<p><a href="https://github.com/cloudflare/cloudflare-blog/blob/master/2018-07-dropping-packets/recvmmsg-loop.c">We prepared the code</a>, to run it:</p>
+	<p><a href="https://github.com/cloudflare/cloudflare-blog/blob/master/2018-07-dropping-packets/recvmmsg-loop.c" target="_blank" rel="noopener noreferrer">We prepared the code</a>, to run it:</p>
 	<pre class="language-bash"><code class="language-bash">$ ./dropping-packets/recvmmsg-loop
 packets=171261 bytes=1940176</code></pre>
 	<p>This setup allows the kernel to receive a meagre 175kpps from the hardware receive queue, as measured by <code>ethtool</code> and using our simple <a href="https://blog.cloudflare.com/three-little-tools-mmsum-mmwatch-mmhistogram"><code>mmwatch</code> tool</a>:</p>
@@ -134,7 +134,7 @@ packets=331008 bytes=5296128</code></pre>
 		</a>
 	</div>
 	<p>Going further, why deliver packets to userspace application at all? While this technique is uncommon, we can attach a classical BPF filter to a SOCK_DGRAM socket with <code>setsockopt(SO_ATTACH_FILTER)</code> and program the filter to discard packets in kernel space.</p>
-	<p><a href="https://github.com/cloudflare/cloudflare-blog/blob/master/2018-07-dropping-packets/bpf-drop.c">See the code</a>, to run it:</p>
+	<p><a href="https://github.com/cloudflare/cloudflare-blog/blob/master/2018-07-dropping-packets/bpf-drop.c" target="_blank" rel="noopener noreferrer">See the code</a>, to run it:</p>
 	<pre class="language-bash"><code class="language-bash">$ ./bpf-drop
 packets=0 bytes=0</code></pre>
 	<p>With drops in BPF (both Classical as well as extended eBPF have similar performance) we process roughly 512kpps. All of them get dropped in the BPF filter while still in software interrupt mode, which saves us CPU needed to wake up the userspace application.</p>
@@ -177,7 +177,7 @@ Chain INPUT (policy DROP 0 packets, 0 bytes)
 			</svg>
 		</a>
 	</div>
-	<p>Iptables is considered passé these days. The new kid in town is nftables. See this <a href="https://www.youtube.com/watch?v=9Zr8XqdET1c">video for a technical explanation why</a> nftables is superior. Nftables promises to be faster than gray haired iptables for many reasons, among them is a rumor that retpolines (aka: no speculation for indirect jumps) hurt iptables quite badly.</p>
+	<p>Iptables is considered passé these days. The new kid in town is nftables. See this <a href="https://www.youtube.com/watch?v=9Zr8XqdET1c" target="_blank" rel="noopener noreferrer">video for a technical explanation why</a> nftables is superior. Nftables promises to be faster than gray haired iptables for many reasons, among them is a rumor that retpolines (aka: no speculation for indirect jumps) hurt iptables quite badly.</p>
 	<p>Since this article is not about comparing the nftables vs iptables speed, let's try only the fastest drop I could came up with:</p>
 	<pre class="language-bash"><code class="language-bash">nft add table netdev filter
 nft -- add chain netdev filter input { type filter hook ingress device vlan100 priority -500 \; policy accept \; }
@@ -202,7 +202,7 @@ table netdev filter {
 			</svg>
 		</a>
 	</div>
-	<p>A somewhat surprising fact is that a tc (traffic control) ingress hook happens before even PREROUTING. tc makes it possible to select packets based on basic criteria and indeed - action drop - them. The syntax is rather hacky, so it's recommended to <a href="https://github.com/netoptimizer/network-testing/blob/master/bin/tc_ingress_drop.sh">use this script</a> to set it up. We need a tiny bit more complex tc match, here is the command line:</p>
+	<p>A somewhat surprising fact is that a tc (traffic control) ingress hook happens before even PREROUTING. tc makes it possible to select packets based on basic criteria and indeed - action drop - them. The syntax is rather hacky, so it's recommended to <a href="https://github.com/netoptimizer/network-testing/blob/master/bin/tc_ingress_drop.sh" target="_blank" rel="noopener noreferrer">use this script</a> to set it up. We need a tiny bit more complex tc match, here is the command line:</p>
 	<pre class="language-bash"><code class="language-bash">tc qdisc add dev vlan100 ingress
 tc filter add dev vlan100 parent ffff: prio 4 protocol ip u32 match ip protocol 17 0xff match ip dport 1234 0xffff match ip dst 198.18.0.0/24 flowid 1:1 action drop
 tc filter add dev vlan100 parent ffff: protocol ipv6 u32 match ip6 dport 1234 0xffff match ip6 dst fd00::/64 flowid 1:1 action drop</code></pre>
@@ -230,7 +230,7 @@ filter parent ffff: protocol ip pref 4 u32 fh 800::800 order 2048 key ht 800 bkt
 			</svg>
 		</a>
 	</div>
-	<p>Finally, the ultimate weapon is XDP - <a href="https://prototype-kernel.readthedocs.io/en/latest/networking/XDP">eXpress Data Path</a>. With XDP we can run eBPF code in the context of a network driver. Most importantly, this is before the <code>skbuff</code> memory allocation, allowing great speeds.</p>
+	<p>Finally, the ultimate weapon is XDP - <a href="https://prototype-kernel.readthedocs.io/en/latest/networking/XDP" target="_blank" rel="noopener noreferrer">eXpress Data Path</a>. With XDP we can run eBPF code in the context of a network driver. Most importantly, this is before the <code>skbuff</code> memory allocation, allowing great speeds.</p>
 	<p>Usually XDP projects have two parts:</p>
 	<ul>
 		<li>
@@ -240,10 +240,10 @@ filter parent ffff: protocol ip pref 4 u32 fh 800::800 order 2048 key ht 800 bkt
 			<p>the userspace loader, which loads the code onto the right network card and manages it</p>
 		</li>
 	</ul>
-	<p>Writing the loader is pretty hard, so instead we can use the <a href="https://cilium.readthedocs.io/en/latest/bpf/#iproute2">new <code>iproute2</code> feature</a> and load the code with this trivial command:</p>
+	<p>Writing the loader is pretty hard, so instead we can use the <a href="https://cilium.readthedocs.io/en/latest/bpf/#iproute2" target="_blank" rel="noopener noreferrer">new <code>iproute2</code> feature</a> and load the code with this trivial command:</p>
 	<pre class="language-bash"><code class="language-bash">ip link set dev ext0 xdp obj xdp-drop-ebpf.o</code></pre>
 	<p>Tadam!</p>
-	<p>The source code for <a href="https://github.com/cloudflare/cloudflare-blog/blob/master/2018-07-dropping-packets/xdp-drop-ebpf.c">the loaded eBPF XDP program is available here</a>. The program parses IP packets and looks for desired characteristics: IP transport, UDP protocol, desired target subnet and destination port:</p>
+	<p>The source code for <a href="https://github.com/cloudflare/cloudflare-blog/blob/master/2018-07-dropping-packets/xdp-drop-ebpf.c" target="_blank" rel="noopener noreferrer">the loaded eBPF XDP program is available here</a>. The program parses IP packets and looks for desired characteristics: IP transport, UDP protocol, desired target subnet and destination port:</p>
 	<pre class="language-.c"><code class="language-.c">if (h_proto == htons(ETH_P_IP)) {
     if (iph-&gt;protocol == IPPROTO_UDP
         &amp;&amp; (htonl(iph-&gt;daddr) &amp; 0xFFFFFF00) == 0xC6120000 // 198.18.0.0/24
@@ -267,7 +267,7 @@ filter parent ffff: protocol ip pref 4 u32 fh 800::800 order 2048 key ht 800 bkt
 		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5SE8JnlqRwU9PvWk57Drtp/f399e77d9a09e6ca767caf3818d35bee/225821241_ed5da2da91_o.jpg" alt="225821241_ed5da2da91_o" class="kg-image" width="800" height="600" loading="lazy">
 
 	</figure>
-	<p><a href="https://creativecommons.org/licenses/by-sa/2.0">CC BY-SA 2.0</a> <a href="https://www.flickr.com/photos/afiler/225821241">image</a> by <a href="https://www.flickr.com/photos/afiler">Andrew Filer</a></p>
+	<p><a href="https://creativecommons.org/licenses/by-sa/2.0" target="_blank" rel="noopener noreferrer">CC BY-SA 2.0</a> <a href="https://www.flickr.com/photos/afiler/225821241" target="_blank" rel="noopener noreferrer">image</a> by <a href="https://www.flickr.com/photos/afiler" target="_blank" rel="noopener noreferrer">Andrew Filer</a></p>
 	<div class="flex anchor relative">
 		<h3 id="summary">Summary</h3>
 		<a href="https://blog.cloudflare.com/#summary" aria-hidden="true" class="relative sm:absolute sm:-start-5">
@@ -293,8 +293,8 @@ filter parent ffff: protocol ip pref 4 u32 fh 800::800 order 2048 key ht 800 bkt
 		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2OUdMjazlfP6gpm6usqmj7/20f07e262782d9ef5c67ca46a603fed6/numbers-xdp-1.png" alt="numbers-xdp-1" class="kg-image" width="1500" height="900" loading="lazy">
 
 	</figure>
-	<p>If you want to reproduce these numbers, <a href="https://github.com/cloudflare/cloudflare-blog/blob/master/2018-07-dropping-packets/README.md">see the README where we documented everything</a>.</p>
+	<p>If you want to reproduce these numbers, <a href="https://github.com/cloudflare/cloudflare-blog/blob/master/2018-07-dropping-packets/README.md" target="_blank" rel="noopener noreferrer">see the README where we documented everything</a>.</p>
 	<p>Here at Cloudflare we are using... almost all of these techniques. Some of the userspace tricks are integrated with our applications. The iptables layer is managed by <a href="https://blog.cloudflare.com/meet-gatebot-a-bot-that-allows-us-to-sleep">our Gatebot DDoS pipeline</a>. Finally, we are working on replacing our proprietary kernel offload solution with XDP.</p>
 	<p>Want to help us drop more packets? We're hiring for many roles, including packet droppers, systems engineers and more!</p>
-	<p><i>Special thanks to </i><a href="https://twitter.com/JesperBrouer"><i>Jesper Dangaard Brouer</i></a><i> for helping with this work.</i></p>
+	<p><i>Special thanks to </i><a href="https://twitter.com/JesperBrouer" target="_blank" rel="noopener noreferrer"><i>Jesper Dangaard Brouer</i></a><i> for helping with this work.</i></p>
 </div>

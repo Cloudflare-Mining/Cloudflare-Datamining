@@ -41,12 +41,12 @@
 		</a>
 	</div>
 	<p>Requests come over connections that are reused for performance reasons, which is sometimes referred to as “keepalive”. It's generally expensive for a client to open a new TCP connection and our servers keep some memory pools associated with connections that need to be recycled. In fact, one of the range of mitigations we use for attack traffic is disabling keepalives for abusive clients, forcing them to reopen connections, which slows them down considerably.</p>
-	<p>To illustrate the usefulness of keepalives, here's me requesting <a href="http://example.com">http://example.com/</a> from curl over the same connection:</p>
+	<p>To illustrate the usefulness of keepalives, here's me requesting <a href="http://example.com" target="_blank" rel="noopener noreferrer">http://example.com/</a> from curl over the same connection:</p>
 	<pre class="language-rust"><code class="language-rust">$ curl -s -w "Time to connect: %{time_connect} Time to first byte: %{time_starttransfer}\n" -o /dev/null http://example.com/ -o /dev/null http://example.com/
 
 Time to connect: 0.012108 Time to first byte: 0.018724
 Time to connect: 0.000019 Time to first byte: 0.007391</code></pre>
-	<p>The first request took 18.7ms and out of them 12.1ms were used to establish a new connection, which is not even a TLS one. When I sent another request over the same connection, I didn't need to pay extra and it took just 7.3ms to service my request. That's a big win, which gets even bigger if you need to establish a brand new connection (especially if it’s not <a href="https://www.cloudflare.com/learning-resources/tls-1-3">TLSv1.3</a> or <a href="https://blog.cloudflare.com/http3-the-past-present-and-future">QUIC</a>). DNS was also cached in the example above, but it may be another negative factor for domains with low TTL.</p>
+	<p>The first request took 18.7ms and out of them 12.1ms were used to establish a new connection, which is not even a TLS one. When I sent another request over the same connection, I didn't need to pay extra and it took just 7.3ms to service my request. That's a big win, which gets even bigger if you need to establish a brand new connection (especially if it’s not <a href="https://www.cloudflare.com/learning-resources/tls-1-3" target="_blank" rel="noopener noreferrer">TLSv1.3</a> or <a href="https://blog.cloudflare.com/http3-the-past-present-and-future">QUIC</a>). DNS was also cached in the example above, but it may be another negative factor for domains with low TTL.</p>
 	<p>Keepalives tend to be used extensively, because they seem beneficial. Generally keepalives are enabled by default for this exact reason.</p>
 	<div class="flex anchor relative">
 		<h3 id="taking-all-the-load">Taking all the load</h3>
@@ -297,7 +297,7 @@ func main() {
 		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3MSawWBrDEpUIbWHgWpGut/72484ee745fd1620f617d5cf8c124a68/image4-3.png" alt="" class="kg-image" width="1999" height="535" loading="lazy">
 
 	</figure>
-	<p>Overall CPU usage did not change, just the distribution of it. We already know of a way of dealing with this: SO_REUSEPORT. Either that or <a href="https://lkml.org/lkml/2015/2/17/518">EPOLLROUNDROBIN</a>, which doesn’t have some of the drawbacks of SO_REUSEPORT (which does not work for a Unix socket, for example), but requires a patched kernel. If we combine both disabled keepalives and EPOLLROUNDROBIN changes, we can see CPUs allocated to FL converge in their utilization nicely:</p>
+	<p>Overall CPU usage did not change, just the distribution of it. We already know of a way of dealing with this: SO_REUSEPORT. Either that or <a href="https://lkml.org/lkml/2015/2/17/518" target="_blank" rel="noopener noreferrer">EPOLLROUNDROBIN</a>, which doesn’t have some of the drawbacks of SO_REUSEPORT (which does not work for a Unix socket, for example), but requires a patched kernel. If we combine both disabled keepalives and EPOLLROUNDROBIN changes, we can see CPUs allocated to FL converge in their utilization nicely:</p>
 	<figure class="kg-card kg-image-card ">
 
 		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/zN1XbJxUeCeVx2fyDYljN/fdef9e0f2810338b90ea094b1050a879/image6-3.png" alt="" class="kg-image" width="1739" height="280" loading="lazy">

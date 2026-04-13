@@ -1,6 +1,6 @@
 <div class="mb2 gray5">3 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6Iuge2F8aQRmCIDvci80Lu/362b6ed4b5d3916bba8ddb1e39b24be3/integrating-redirection-io-with-cloudflare-workers.png" alt="">
 <div class="post-content lh-copy gray1">
-	<p><i>The following is a guest post by </i><a href="https://twitter.com/xavierlacot"><i>Xavier Lacot</i></a><i>, a developer at </i><a href="https://redirection.io"><i>redirection.io</i></a><i> and founder at </i><a href="https://jolicode.com"><i>JoliCode</i></a><i>. He works primarily on Web and mobile projects as a consultant, trainer and technical expert.</i></p>
+	<p><i>The following is a guest post by </i><a href="https://twitter.com/xavierlacot" target="_blank" rel="noopener noreferrer"><i>Xavier Lacot</i></a><i>, a developer at </i><a href="https://redirection.io" target="_blank" rel="noopener noreferrer"><i>redirection.io</i></a><i> and founder at </i><a href="https://jolicode.com" target="_blank" rel="noopener noreferrer"><i>JoliCode</i></a><i>. He works primarily on Web and mobile projects as a consultant, trainer and technical expert.</i></p>
 	<div class="flex anchor relative">
 		<h3 id="what-is-redirection-io">What is redirection.io</h3>
 		<a href="https://blog.cloudflare.com/#what-is-redirection-io" aria-hidden="true" class="relative sm:absolute sm:-start-5">
@@ -10,7 +10,7 @@
 		</a>
 	</div>
 	<p>Redirection.io is a Web traffic redirection manager. It provides a collection of tools for website administrators, SEO agencies, and developers, which help analyze HTTP errors, setup HTTP redirections, customize HTTP responses, and monitor the traffic efficiently.</p>
-	<p>The main part of a traditional redirection.io setup is the proxy, a software component which parses every request to check if a redirection or another response override is required. This "proxy" can be of several types - we <a href="https://redirection.io/documentation/developer-documentation/integrations">provide libraries in several languages</a> - but this setup can be simplified for Cloudflare clients by taking advantage of Cloudflare Workers.</p>
+	<p>The main part of a traditional redirection.io setup is the proxy, a software component which parses every request to check if a redirection or another response override is required. This "proxy" can be of several types - we <a href="https://redirection.io/documentation/developer-documentation/integrations" target="_blank" rel="noopener noreferrer">provide libraries in several languages</a> - but this setup can be simplified for Cloudflare clients by taking advantage of Cloudflare Workers.</p>
 	<div class="flex anchor relative">
 		<h3 id="here-come-cloudflare-workers">Here come Cloudflare Workers</h3>
 		<a href="https://blog.cloudflare.com/#here-come-cloudflare-workers" aria-hidden="true" class="relative sm:absolute sm:-start-5">
@@ -19,8 +19,8 @@
 			</svg>
 		</a>
 	</div>
-	<p>Earlier this year, Cloudflare unveiled its <a href="https://www.cloudflare.com/fr-fr/products/cloudflare-workers">Workers</a> product, a smart way of running code <i>on the edge</i> of Cloudflare locations. This computing feature is particularly interesting, as it allows performing several traffic operations without requiring any change on your own platform, code, or infrastructure: just enable Workers, write some code, and let Cloudflare handle the magic ✨</p>
-	<p>In practical terms, Workers act as application middleware. They proxy incoming HTTP requests to your stack, and can modify both requests and responses. Cloudflare has <a href="https://developers.cloudflare.com/workers/recipes">examples and code ideas</a> to help you build your own Worker.</p>
+	<p>Earlier this year, Cloudflare unveiled its <a href="https://www.cloudflare.com/fr-fr/products/cloudflare-workers" target="_blank" rel="noopener noreferrer">Workers</a> product, a smart way of running code <i>on the edge</i> of Cloudflare locations. This computing feature is particularly interesting, as it allows performing several traffic operations without requiring any change on your own platform, code, or infrastructure: just enable Workers, write some code, and let Cloudflare handle the magic ✨</p>
+	<p>In practical terms, Workers act as application middleware. They proxy incoming HTTP requests to your stack, and can modify both requests and responses. Cloudflare has <a href="https://developers.cloudflare.com/workers/recipes" target="_blank" rel="noopener noreferrer">examples and code ideas</a> to help you build your own Worker.</p>
 	<p>Here is a very basic Cloudflare Worker:</p>
 	<pre class="language-js"><code class="language-js">addEventListener('fetch', event =&gt; {
   event.respondWith(handleRequest(event.request))
@@ -66,7 +66,7 @@ async function redirectAndLog(request) {
 async function log(request, response) {
     ...
 }</code></pre>
-	<p>Let's go with the <code>redirectOrPass()</code> implementation! Using the <a href="https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API">fetch API</a>, we can call redirection.io's agent API:</p>
+	<p>Let's go with the <code>redirectOrPass()</code> implementation! Using the <a href="https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API" target="_blank" rel="noopener noreferrer">fetch API</a>, we can call redirection.io's agent API:</p>
 	<pre class="language-js"><code class="language-js">const urlObject = new URL(request.url);
 const context = {
     'host': urlObject.host,
@@ -209,5 +209,5 @@ return new Response('', {
 			</tr>
 		</tbody>
 	</table>
-	<p>This means that you can benefit from redirection.io on your website through Cloudflare workers at the price of ~8ms. And, once responses from redirection.io's API are cached, we do not notice any difference compared to a standard Cloudflare-enabled website. We strongly believe Cloudflare Workers is an amazing way to integrate redirection.io into your website. Try <a href="https://redirection.io">redirection.io</a> and <a href="https://www.cloudflare.com/products/cloudflare-workers">Cloudflare Workers</a> today, and report back!</p>
+	<p>This means that you can benefit from redirection.io on your website through Cloudflare workers at the price of ~8ms. And, once responses from redirection.io's API are cached, we do not notice any difference compared to a standard Cloudflare-enabled website. We strongly believe Cloudflare Workers is an amazing way to integrate redirection.io into your website. Try <a href="https://redirection.io" target="_blank" rel="noopener noreferrer">redirection.io</a> and <a href="https://www.cloudflare.com/products/cloudflare-workers" target="_blank" rel="noopener noreferrer">Cloudflare Workers</a> today, and report back!</p>
 </div>

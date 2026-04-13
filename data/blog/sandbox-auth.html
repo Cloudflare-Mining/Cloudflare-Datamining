@@ -1,10 +1,10 @@
 <div class="mb2 gray5">7 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1kCgJwzOCo7hraawrdxbI9/49ae9dd1a791a60859c9c2beacdf9870/image3.png" alt="">
 <div class="post-content lh-copy gray1">
-	<p>As <a href="https://www.cloudflare.com/learning/ai/what-is-large-language-model"><u>AI Large Language Models</u></a> and harnesses like OpenCode and Claude Code become increasingly capable, we see more users kicking off sandboxed agents in response to chat messages, Kanban updates, <a href="https://www.cloudflare.com/learning/ai/ai-vibe-coding"><u>vibe coding</u></a> UIs, terminal sessions, GitHub comments, and more.</p>
+	<p>As <a href="https://www.cloudflare.com/learning/ai/what-is-large-language-model" target="_blank" rel="noopener noreferrer"><u>AI Large Language Models</u></a> and harnesses like OpenCode and Claude Code become increasingly capable, we see more users kicking off sandboxed agents in response to chat messages, Kanban updates, <a href="https://www.cloudflare.com/learning/ai/ai-vibe-coding" target="_blank" rel="noopener noreferrer"><u>vibe coding</u></a> UIs, terminal sessions, GitHub comments, and more.</p>
 	<p>The sandbox is an important step beyond simple containers, because it gives you a few things:</p>
 	<ul>
 		<li>
-			<p><b>Security</b>: Any untrusted end user (or a rogue LLM) can run in the sandbox and not compromise the host machine or other sandboxes running alongside it. This is traditionally (<a href="https://developers.cloudflare.com/workers/runtime-apis/bindings/worker-loader"><u>but not always</u></a>) accomplished with a microVM.</p>
+			<p><b>Security</b>: Any untrusted end user (or a rogue LLM) can run in the sandbox and not compromise the host machine or other sandboxes running alongside it. This is traditionally (<a href="https://developers.cloudflare.com/workers/runtime-apis/bindings/worker-loader" target="_blank" rel="noopener noreferrer"><u>but not always</u></a>) accomplished with a microVM.</p>
 		</li>
 		<li>
 			<p><b>Speed</b>: An end user should be able to pick up a new sandbox quickly <i>and</i> restore the state from a previously used one quickly.</p>
@@ -13,7 +13,7 @@
 			<p><b>Control</b>: The <i>trusted</i> platform needs to be able to take actions within the <i>untrusted</i> domain of the sandbox. This might mean mounting files in the sandbox, or controlling which requests access it, or executing specific commands.</p>
 		</li>
 	</ul>
-	<p>Today, we’re excited to add another key component of control to our <a href="https://developers.cloudflare.com/sandbox"><u>Sandboxes</u></a> and all <a href="https://developers.cloudflare.com/containers"><u>Containers</u></a>: outbound Workers. These are programmatic egress proxies that allow users running sandboxes to easily connect to different services, add <a href="https://www.cloudflare.com/learning/performance/what-is-observability"><u>observability</u></a>, and, importantly for agents, add flexible and safe authentication.</p>
+	<p>Today, we’re excited to add another key component of control to our <a href="https://developers.cloudflare.com/sandbox" target="_blank" rel="noopener noreferrer"><u>Sandboxes</u></a> and all <a href="https://developers.cloudflare.com/containers" target="_blank" rel="noopener noreferrer"><u>Containers</u></a>: outbound Workers. These are programmatic egress proxies that allow users running sandboxes to easily connect to different services, add <a href="https://www.cloudflare.com/learning/performance/what-is-observability" target="_blank" rel="noopener noreferrer"><u>observability</u></a>, and, importantly for agents, add flexible and safe authentication.</p>
 	<div class="flex anchor relative">
 		<h2 id="how-it-works">How it works</h2>
 		<a href="https://blog.cloudflare.com/#how-it-works" aria-hidden="true" class="relative sm:absolute sm:-start-5">
@@ -113,7 +113,7 @@
 }
 </code></pre>
 	<p>This proxy runs on Workers and runs on the same machine as the sandboxed VM. Workers were built for quick response times, often sitting in front of cached CDN traffic, so additional latency is extremely minimal.</p>
-	<p>Because this is running on Workers, we get observability out of the box. You can view logs and outbound requests <a href="https://developers.cloudflare.com/workers/observability/logs/workers-logs"><u>in the Workers dashboard</u></a> or <a href="https://developers.cloudflare.com/workers/observability/logs/logpush"><u>export them</u></a> to your application performance monitoring tool of choice.</p>
+	<p>Because this is running on Workers, we get observability out of the box. You can view logs and outbound requests <a href="https://developers.cloudflare.com/workers/observability/logs/workers-logs" target="_blank" rel="noopener noreferrer"><u>in the Workers dashboard</u></a> or <a href="https://developers.cloudflare.com/workers/observability/logs/logpush" target="_blank" rel="noopener noreferrer"><u>export them</u></a> to your application performance monitoring tool of choice.</p>
 	<div class="flex anchor relative">
 		<h3 id="zero-trust-credential-injection">Zero trust credential injection</h3>
 		<a href="https://blog.cloudflare.com/#zero-trust-credential-injection" aria-hidden="true" class="relative sm:absolute sm:-start-5">
@@ -122,7 +122,7 @@
 			</svg>
 		</a>
 	</div>
-	<p>How would we use this to enforce a <a href="https://www.cloudflare.com/learning/security/glossary/what-is-zero-trust"><u>zero trust environment</u></a> for our agent? Let’s imagine we want to make a request to a private GitHub instance, but we never want our LLM to access a private token.</p>
+	<p>How would we use this to enforce a <a href="https://www.cloudflare.com/learning/security/glossary/what-is-zero-trust" target="_blank" rel="noopener noreferrer"><u>zero trust environment</u></a> for our agent? Let’s imagine we want to make a request to a private GitHub instance, but we never want our LLM to access a private token.</p>
 	<p>We can use <code>outboundByHost</code> to define functions for specific domains or IPs. In this case, we’ll inject a protected credential if the domain is “my-internal-vcs.dev”. The sandboxed agent <i>never has access</i> to these credentials.</p>
 	<pre class="language-javascript"><code class="language-javascript">class OpenCodeInABox extends Sandbox {
   static outboundByHost = {
@@ -155,8 +155,8 @@
 			</svg>
 		</a>
 	</div>
-	<p>As you may have noticed in the last example, another major advantage of using outbound Workers is that it makes integration into the Workers ecosystem easier. Previously, if a user wanted to access <a href="https://www.cloudflare.com/developer-platform/products/r2"><u>R2</u></a>, they would have to inject an R2 credential, then make a call from their container to the public R2 API. Same for <a href="https://developers.cloudflare.com/kv"><u>KV</u></a>, <a href="https://developers.cloudflare.com/agents"><u>Agents</u></a>, other <a href="https://developers.cloudflare.com/containers"><u>Containers</u></a>, other <a href="https://developers.cloudflare.com/workers/runtime-apis/bindings/service-bindings"><u>Worker services</u></a>, <a href="https://developers.cloudflare.com/workers/runtime-apis/bindings"><u>etc</u></a>.</p>
-	<p>Now, you just call <a href="https://developers.cloudflare.com/workers/runtime-apis/bindings"><u>any binding</u></a> from your outbound Workers.</p>
+	<p>As you may have noticed in the last example, another major advantage of using outbound Workers is that it makes integration into the Workers ecosystem easier. Previously, if a user wanted to access <a href="https://www.cloudflare.com/developer-platform/products/r2" target="_blank" rel="noopener noreferrer"><u>R2</u></a>, they would have to inject an R2 credential, then make a call from their container to the public R2 API. Same for <a href="https://developers.cloudflare.com/kv" target="_blank" rel="noopener noreferrer"><u>KV</u></a>, <a href="https://developers.cloudflare.com/agents" target="_blank" rel="noopener noreferrer"><u>Agents</u></a>, other <a href="https://developers.cloudflare.com/containers" target="_blank" rel="noopener noreferrer"><u>Containers</u></a>, other <a href="https://developers.cloudflare.com/workers/runtime-apis/bindings/service-bindings" target="_blank" rel="noopener noreferrer"><u>Worker services</u></a>, <a href="https://developers.cloudflare.com/workers/runtime-apis/bindings" target="_blank" rel="noopener noreferrer"><u>etc</u></a>.</p>
+	<p>Now, you just call <a href="https://developers.cloudflare.com/workers/runtime-apis/bindings" target="_blank" rel="noopener noreferrer"><u>any binding</u></a> from your outbound Workers.</p>
 	<pre class="language-javascript"><code class="language-javascript">class MySandboxedApp extends Sandbox {
   static outboundByHost = {
     "my.kv": async (req, env, ctx) =&gt; {
@@ -253,7 +253,7 @@ MyContainer.outbound = (req, env, ctx) =&gt; {
 			</svg>
 		</a>
 	</div>
-	<p>To enable the functionality shown above in both <a href="https://github.com/cloudflare/containers"><code><u>Container</u></code></a> and <a href="https://github.com/cloudflare/sandbox-sdk"><code><u>Sandbox</u></code></a>, we added new methods to the <a href="https://developers.cloudflare.com/durable-objects/api/container"><code><u>ctx.container</u></code></a> object: <code>interceptOutboundHttp and interceptOutboundHttps</code>, which intercept outgoing requests on specific hostnames (with basic glob matching), IP ranges, and it can be used to intercept all outbound requests. These methods are called with a <a href="https://developers.cloudflare.com/workers/runtime-apis/bindings/service-bindings/rpc"><u>WorkerEntrypoint</u></a>, which gets set up as the front door to the outbound Worker.</p>
+	<p>To enable the functionality shown above in both <a href="https://github.com/cloudflare/containers" target="_blank" rel="noopener noreferrer"><code><u>Container</u></code></a> and <a href="https://github.com/cloudflare/sandbox-sdk" target="_blank" rel="noopener noreferrer"><code><u>Sandbox</u></code></a>, we added new methods to the <a href="https://developers.cloudflare.com/durable-objects/api/container" target="_blank" rel="noopener noreferrer"><code><u>ctx.container</u></code></a> object: <code>interceptOutboundHttp and interceptOutboundHttps</code>, which intercept outgoing requests on specific hostnames (with basic glob matching), IP ranges, and it can be used to intercept all outbound requests. These methods are called with a <a href="https://developers.cloudflare.com/workers/runtime-apis/bindings/service-bindings/rpc" target="_blank" rel="noopener noreferrer"><u>WorkerEntrypoint</u></a>, which gets set up as the front door to the outbound Worker.</p>
 	<pre class="language-javascript"><code class="language-javascript">export class MyWorker extends WorkerEntrypoint {
  fetch() {
    return new Response(this.ctx.props.message);
@@ -283,7 +283,7 @@ await this.ctx.container.interceptOutboundHttp('123.123.123.123/23', secoundOutb
 	<figure class="kg-card kg-image-card">
 		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/21utJcR5UpS7c0YNj8Y385/4a47d83acad42c5708ca23a7b04342f3/BLOG-3199_3.png" alt="BLOG-3199 3" class="kg-image" width="1862" height="900" loading="lazy">
 	</figure>
-	<p>Local development with <a href="https://developers.cloudflare.com/workers/wrangler/commands/#dev"><u>wrangler dev</u></a> also has support for egress interception. To make it possible, we automatically spawn a sidecar process inside the local container’s network namespace. We called this sidecar component <a href="https://github.com/cloudflare/proxy-everything"><i><u>proxy-everything</u></i></a>. Once <i>proxy-everything </i>is attached, it applies the appropriate TPROXY nftable rules, routing matching traffic from the local Container to <a href="https://github.com/cloudflare/workerd"><u>workerd</u></a>, Cloudflare’s open source JavaScript runtime, which runs the outbound Worker. This allows the local development experience to mirror what happens in prod, so testing and development remain simple.</p>
+	<p>Local development with <a href="https://developers.cloudflare.com/workers/wrangler/commands/#dev" target="_blank" rel="noopener noreferrer"><u>wrangler dev</u></a> also has support for egress interception. To make it possible, we automatically spawn a sidecar process inside the local container’s network namespace. We called this sidecar component <a href="https://github.com/cloudflare/proxy-everything" target="_blank" rel="noopener noreferrer"><i><u>proxy-everything</u></i></a>. Once <i>proxy-everything </i>is attached, it applies the appropriate TPROXY nftable rules, routing matching traffic from the local Container to <a href="https://github.com/cloudflare/workerd" target="_blank" rel="noopener noreferrer"><u>workerd</u></a>, Cloudflare’s open source JavaScript runtime, which runs the outbound Worker. This allows the local development experience to mirror what happens in prod, so testing and development remain simple.</p>
 	<div class="flex anchor relative">
 		<h2 id="giving-outbound-workers-a-try">Giving outbound Workers a try</h2>
 		<a href="https://blog.cloudflare.com/#giving-outbound-workers-a-try" aria-hidden="true" class="relative sm:absolute sm:-start-5">
@@ -292,5 +292,5 @@ await this.ctx.container.interceptOutboundHttp('123.123.123.123/23', secoundOutb
 			</svg>
 		</a>
 	</div>
-	<p>If you haven’t tried Cloudflare Sandboxes, check out the <a href="https://developers.cloudflare.com/sandbox/get-started"><u>Getting Started guide</u></a>. If you are a current user of <a href="https://developers.cloudflare.com/containers"><u>Containers</u></a> or <a href="https://developers.cloudflare.com/sandbox"><u>Sandboxes</u></a>, start using outbound Workers now by <a href="https://developers.cloudflare.com/containers/platform-details/outbound-traffic"><u>reading the documentation</u></a> and upgrading to <code>@cloudflare/containers@0.3.0</code> or <code>@cloudflare/sandbox@0.8.9</code>.</p>
+	<p>If you haven’t tried Cloudflare Sandboxes, check out the <a href="https://developers.cloudflare.com/sandbox/get-started" target="_blank" rel="noopener noreferrer"><u>Getting Started guide</u></a>. If you are a current user of <a href="https://developers.cloudflare.com/containers" target="_blank" rel="noopener noreferrer"><u>Containers</u></a> or <a href="https://developers.cloudflare.com/sandbox" target="_blank" rel="noopener noreferrer"><u>Sandboxes</u></a>, start using outbound Workers now by <a href="https://developers.cloudflare.com/containers/platform-details/outbound-traffic" target="_blank" rel="noopener noreferrer"><u>reading the documentation</u></a> and upgrading to <code>@cloudflare/containers@0.3.0</code> or <code>@cloudflare/sandbox@0.8.9</code>.</p>
 </div>

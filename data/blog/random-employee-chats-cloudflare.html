@@ -11,7 +11,7 @@
 			</svg>
 		</a>
 	</div>
-	<p>We wanted to automate these repetitive manual tasks, and naturally, we wanted to use <a href="https://workers.cloudflare.com">Cloudflare Workers</a> to do it. This is a great example of a complete application that runs entirely in Cloudflare Workers on the edge with no backend or origin server.</p>
+	<p>We wanted to automate these repetitive manual tasks, and naturally, we wanted to use <a href="https://workers.cloudflare.com" target="_blank" rel="noopener noreferrer">Cloudflare Workers</a> to do it. This is a great example of a complete application that runs entirely in Cloudflare Workers on the edge with no backend or origin server.</p>
 	<p>The technical requirements included:</p>
 	<ul>
 		<li>
@@ -28,7 +28,7 @@
 		</li>
 	</ul>
 	<p>Workers met all of these requirements, and the resulting application runs in Cloudflare's edge network without any need to run code or store data on other platforms. The Workers script supplies the UI that returns static HTML and JavaScript assets, and for storage, Workers KV keeps track of people who signed in.</p>
-	<p>We also recently announced <a href="https://developers.cloudflare.com/workers/platform/cron-triggers">Workers Cron Triggers</a> which allow us to run a Cloudflare Workers script on a defined schedule. The Workers Cron Triggers are perfect for pairing people up before the sessions and reminding users to register for the next session.</p>
+	<p>We also recently announced <a href="https://developers.cloudflare.com/workers/platform/cron-triggers" target="_blank" rel="noopener noreferrer">Workers Cron Triggers</a> which allow us to run a Cloudflare Workers script on a defined schedule. The Workers Cron Triggers are perfect for pairing people up before the sessions and reminding users to register for the next session.</p>
 	<div class="flex anchor relative">
 		<h3 id="the-user-interface">The User Interface</h3>
 		<a href="https://blog.cloudflare.com/#the-user-interface" aria-hidden="true" class="relative sm:absolute sm:-start-5">
@@ -48,7 +48,7 @@
 	<pre class="language-bash"><code class="language-bash">key: register:ID
 value: {"name":"Sven Sauleau","picture":"picture.jpg","email":"example@cloudflare.com"}</code></pre>
 	<p>User information is stored in Workers KV and displayed in the interface to create the list of participants. The user information gets deleted during pairing so the list is ready for the next round of chats. We require weekly sign-ups from participants who want to participate in the chats to confirm their availability.</p>
-	<p>The code for the interface can be found <a href="https://github.com/cloudflare/random-employee-chat/tree/master/src/workers/randengchat/public">here</a> and the API is <a href="https://github.com/cloudflare/random-employee-chat/blob/master/src/workers/randengchat/server/index.js">here</a>.</p>
+	<p>The code for the interface can be found <a href="https://github.com/cloudflare/random-employee-chat/tree/master/src/workers/randengchat/public" target="_blank" rel="noopener noreferrer">here</a> and the API is <a href="https://github.com/cloudflare/random-employee-chat/blob/master/src/workers/randengchat/server/index.js" target="_blank" rel="noopener noreferrer">here</a>.</p>
 	<div class="flex anchor relative">
 		<h3 id="forming-the-pairs">Forming the pairs</h3>
 		<a href="https://blog.cloudflare.com/#forming-the-pairs" aria-hidden="true" class="relative sm:absolute sm:-start-5">
@@ -57,7 +57,7 @@ value: {"name":"Sven Sauleau","picture":"picture.jpg","email":"example@cloudflar
 			</svg>
 		</a>
 	</div>
-	<p>A Random Employee Chat is a one-on-one conversation, so at a set time, the application puts participants into pairs. Each Monday morning at 0800 UTC, a Workers cron job runs the pairing script which is deployed using <a href="https://developers.cloudflare.com/workers/cli-wrangler">Wrangler</a>.</p>
+	<p>A Random Employee Chat is a one-on-one conversation, so at a set time, the application puts participants into pairs. Each Monday morning at 0800 UTC, a Workers cron job runs the pairing script which is deployed using <a href="https://developers.cloudflare.com/workers/cli-wrangler" target="_blank" rel="noopener noreferrer">Wrangler</a>.</p>
 	<p>Wrangler supports configuring the schedule for a job using the familiar cron notation. For instance, our wrangler.toml has:</p>
 	<pre class="language-bash"><code class="language-bash">name = "randengchat-cron-pair"
 type = "webpack"
@@ -69,7 +69,7 @@ kv_namespaces = [...]
 
 [triggers]
 crons = ["0 8 * * 2"]</code></pre>
-	<p>The pairing script is the most intricate part of the application, so let’s run through its code. First, we list the users that are currently registered. This is done using the <a href="https://developers.cloudflare.com/workers/runtime-apis/kv#listing-by-prefix">list</a> function in Workers KV extracting keys with the prefix <code>register:</code>.</p>
+	<p>The pairing script is the most intricate part of the application, so let’s run through its code. First, we list the users that are currently registered. This is done using the <a href="https://developers.cloudflare.com/workers/runtime-apis/kv#listing-by-prefix" target="_blank" rel="noopener noreferrer">list</a> function in Workers KV extracting keys with the prefix <code>register:</code>.</p>
 	<pre class="language-js"><code class="language-js">const list = await KV_NAMESPACE.list({ prefix: "register:" });</code></pre>
 	<p>If we don’t have an even number of participants, we remove one person from the list (David!).</p>
 	<p>Then, we create all possible pairs and attach a weight to them.</p>
@@ -83,7 +83,7 @@ crons = ["0 8 * * 2"]</code></pre>
   }
   return pairs;
 }</code></pre>
-	<p>For example, suppose four people have registered (Tom, Edie, Ivie and Ada), that’s 6 possible pairs (<a href="https://www.wolframalpha.com/input/?i=4+choose+2">4 choose 2</a>). We might end up with the following pairs and their associated weights:</p>
+	<p>For example, suppose four people have registered (Tom, Edie, Ivie and Ada), that’s 6 possible pairs (<a href="https://www.wolframalpha.com/input/?i=4+choose+2" target="_blank" rel="noopener noreferrer">4 choose 2</a>). We might end up with the following pairs and their associated weights:</p>
 	<pre class="language-bash"><code class="language-bash">(Tom, Edie, 1)
 (Tom, Ivie, 0)
 (Tom, Ada, 1)
@@ -105,7 +105,7 @@ crons = ["0 8 * * 2"]</code></pre>
 		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/anoEru6iUYXNlVFxpCk4w/67d7587b1440044c1a9072545dc8cce6/image5-20.png" alt="The people form a complete graph with people as nodes and the edges weighted by the number of times the two people connected by the edge have met." class="kg-image" width="570" height="468" loading="lazy">
 
 	</figure>
-	<p>Next, we run a weighted matching algorithm, in our case the <a href="https://en.wikipedia.org/wiki/Blossom_algorithm">Blossom algorithm</a>, which will find a maximum matching on the graph (a set of edges that maximize the number of pairs of people connected with each person appearing exactly once). As we use the weighted form of the Blossom algorithm we also minimize the path weights. This has the effect of finding the optimal set of pairs minimizing the number of times people have met previously.</p>
+	<p>Next, we run a weighted matching algorithm, in our case the <a href="https://en.wikipedia.org/wiki/Blossom_algorithm" target="_blank" rel="noopener noreferrer">Blossom algorithm</a>, which will find a maximum matching on the graph (a set of edges that maximize the number of pairs of people connected with each person appearing exactly once). As we use the weighted form of the Blossom algorithm we also minimize the path weights. This has the effect of finding the optimal set of pairs minimizing the number of times people have met previously.</p>
 	<p>In the case above the algorithm suggests the optimal pairs are &nbsp;(Tom, Ivie) and (Edie, Ada). In this case, those pairs have never met before.</p>
 	<figure class="kg-card kg-image-card ">
 
@@ -122,7 +122,7 @@ value: {"emails":["left@cloudflare.com","right@cloudflare.com", "count": 1]}</co
 
 	</figure>
 	<p>Once the pairing is done, all <code>register:</code> keys are deleted from KV.</p>
-	<p>All the pairing logic is <a href="https://github.com/cloudflare/random-employee-chat/blob/master/src/workers/cron-pair/index.js">here</a>.</p>
+	<p>All the pairing logic is <a href="https://github.com/cloudflare/random-employee-chat/blob/master/src/workers/cron-pair/index.js" target="_blank" rel="noopener noreferrer">here</a>.</p>
 	<div class="flex anchor relative">
 		<h3 id="reminders">Reminders</h3>
 		<a href="https://blog.cloudflare.com/#reminders" aria-hidden="true" class="relative sm:absolute sm:-start-5">
@@ -140,6 +140,6 @@ crons = ["0 13 * * 5"]</code></pre>
 		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7ACIIWbP4COwxXbImfqiQE/78488aeabc86a3a1b6d382ffe32f42a2/image3-19.png" alt="" class="kg-image" width="655" height="192" loading="lazy">
 
 	</figure>
-	<p>All the reminder code is <a href="https://github.com/cloudflare/random-employee-chat/blob/master/src/workers/cron-reminder/index.js">here</a>.</p>
+	<p>All the reminder code is <a href="https://github.com/cloudflare/random-employee-chat/blob/master/src/workers/cron-reminder/index.js" target="_blank" rel="noopener noreferrer">here</a>.</p>
 	<p>We hope you find this code useful and that it inspires you to use Workers, Workers KV, Workers Unbound and Workers Cron Triggers to write large, real applications that run entirely without a backend server.</p>
 </div>

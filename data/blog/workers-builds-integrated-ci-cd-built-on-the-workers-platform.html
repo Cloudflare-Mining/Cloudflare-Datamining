@@ -1,8 +1,8 @@
 <div class="mb2 gray5">8 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/le4lYyHpoBKwuVJbiH4eW/793952ca6fa5a152d029526991db31f4/BLOG-2594_1.png" alt="">
 <div class="post-content lh-copy gray1">
-	<p>During 2024’s Birthday Week, we <a href="https://blog.cloudflare.com/builder-day-2024-announcements/#continuous-integration-and-delivery"><u>launched Workers Builds</u></a> in open beta — an integrated <a href="https://www.cloudflare.com/learning/serverless/glossary/what-is-ci-cd">Continuous Integration and Delivery (CI/CD) </a>workflow you can use to build and deploy everything from full-stack applications built with the most popular frameworks to simple static websites onto the Workers platform. With Workers Builds, you can connect a GitHub or GitLab repository to a Worker, and Cloudflare will automatically build and deploy your changes each time you push a commit.</p>
+	<p>During 2024’s Birthday Week, we <a href="https://blog.cloudflare.com/builder-day-2024-announcements/#continuous-integration-and-delivery"><u>launched Workers Builds</u></a> in open beta — an integrated <a href="https://www.cloudflare.com/learning/serverless/glossary/what-is-ci-cd" target="_blank" rel="noopener noreferrer">Continuous Integration and Delivery (CI/CD) </a>workflow you can use to build and deploy everything from full-stack applications built with the most popular frameworks to simple static websites onto the Workers platform. With Workers Builds, you can connect a GitHub or GitLab repository to a Worker, and Cloudflare will automatically build and deploy your changes each time you push a commit.</p>
 	<p>Workers Builds is intended to bridge the gap between the developer experiences for Workers and Pages, the latter of which <a href="https://blog.cloudflare.com/cloudflare-pages"><u>launched with an integrated CI/CD system in 2020</u></a>. As we continue to <a href="https://blog.cloudflare.com/pages-and-workers-are-converging-into-one-experience"><u>merge the experiences of Pages and Workers</u></a>, we wanted to bring one of the best features of Pages to Workers: the ability to tie deployments to existing development workflows in GitHub and GitLab with minimal developer overhead.&nbsp;</p>
-	<p>In this post, we’re going to share how we built the Workers Builds system on Cloudflare’s Developer Platform, using <a href="https://developers.cloudflare.com/workers"><u>Workers</u></a>, <a href="https://developers.cloudflare.com/durable-objects"><u>Durable Objects</u></a>, <a href="https://developers.cloudflare.com/hyperdrive"><u>Hyperdrive</u></a>, <a href="https://developers.cloudflare.com/logs/log-explorer"><u>Workers Logs</u></a>, and <a href="https://developers.cloudflare.com/workers/configuration/smart-placement"><u>Smart Placement</u></a>.</p>
+	<p>In this post, we’re going to share how we built the Workers Builds system on Cloudflare’s Developer Platform, using <a href="https://developers.cloudflare.com/workers" target="_blank" rel="noopener noreferrer"><u>Workers</u></a>, <a href="https://developers.cloudflare.com/durable-objects" target="_blank" rel="noopener noreferrer"><u>Durable Objects</u></a>, <a href="https://developers.cloudflare.com/hyperdrive" target="_blank" rel="noopener noreferrer"><u>Hyperdrive</u></a>, <a href="https://developers.cloudflare.com/logs/log-explorer" target="_blank" rel="noopener noreferrer"><u>Workers Logs</u></a>, and <a href="https://developers.cloudflare.com/workers/configuration/smart-placement" target="_blank" rel="noopener noreferrer"><u>Smart Placement</u></a>.</p>
 	<div class="flex anchor relative">
 		<h2 id="the-design-problem">The design problem</h2>
 		<a href="https://blog.cloudflare.com/#the-design-problem" aria-hidden="true" class="relative sm:absolute sm:-start-5">
@@ -34,9 +34,9 @@
 			</svg>
 		</a>
 	</div>
-	<p>We can begin with our configuration plane, which consists of a simple Client Worker that implements a RESTful API (using <a href="https://hono.dev/docs/getting-started/cloudflare-workers"><u>Hono</u></a>) and connects to a PostgreSQL database. It’s in this database that we store build configurations for our users, and through this Worker that users can view and manage their builds.&nbsp;</p>
-	<p>We use a <a href="https://developers.cloudflare.com/hyperdrive"><u>Hyperdrive binding</u></a> to connect to our database <a href="https://developers.cloudflare.com/hyperdrive/configuration/connect-to-private-database"><u>securely over Cloudflare Access</u></a> (which also manages connection pooling and query caching).</p>
-	<p>We considered a more distributed data model (like <a href="https://developers.cloudflare.com/d1"><u>D1</u></a>, sharded by account), but ultimately decided that keeping our database in a datacenter more easily fit our use-case. The Workers Builds data model is relational — Workers belong to Cloudflare Accounts, and Builds belong to Workers — and build metadata must be consistent in order to properly manage build queues. We chose to keep our failover-ready database in a centralized datacenter and take advantage of two other Workers products, Smart Placement and Hyperdrive, in order to keep the benefits of a distributed control plane.&nbsp;</p>
+	<p>We can begin with our configuration plane, which consists of a simple Client Worker that implements a RESTful API (using <a href="https://hono.dev/docs/getting-started/cloudflare-workers" target="_blank" rel="noopener noreferrer"><u>Hono</u></a>) and connects to a PostgreSQL database. It’s in this database that we store build configurations for our users, and through this Worker that users can view and manage their builds.&nbsp;</p>
+	<p>We use a <a href="https://developers.cloudflare.com/hyperdrive" target="_blank" rel="noopener noreferrer"><u>Hyperdrive binding</u></a> to connect to our database <a href="https://developers.cloudflare.com/hyperdrive/configuration/connect-to-private-database" target="_blank" rel="noopener noreferrer"><u>securely over Cloudflare Access</u></a> (which also manages connection pooling and query caching).</p>
+	<p>We considered a more distributed data model (like <a href="https://developers.cloudflare.com/d1" target="_blank" rel="noopener noreferrer"><u>D1</u></a>, sharded by account), but ultimately decided that keeping our database in a datacenter more easily fit our use-case. The Workers Builds data model is relational — Workers belong to Cloudflare Accounts, and Builds belong to Workers — and build metadata must be consistent in order to properly manage build queues. We chose to keep our failover-ready database in a centralized datacenter and take advantage of two other Workers products, Smart Placement and Hyperdrive, in order to keep the benefits of a distributed control plane.&nbsp;</p>
 	<figure class="kg-card kg-image-card">
 		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/33eYqRr5LXKbAvfP8RR7X7/b82858c39b9755c6e056577c9449b00f/BLOG-2594_3.png" alt="BLOG-2594 3" class="kg-image" width="1706" height="560" loading="lazy">
 	</figure>
@@ -61,7 +61,7 @@
 			<p>Customer build logs should be stored in a secure, private, and long-lived way.</p>
 		</li>
 	</ol>
-	<p>To solve these problems, we leaned heavily into the technology of <a href="https://developers.cloudflare.com/durable-objects"><u>Durable Objects</u></a> (DO).&nbsp;</p>
+	<p>To solve these problems, we leaned heavily into the technology of <a href="https://developers.cloudflare.com/durable-objects" target="_blank" rel="noopener noreferrer"><u>Durable Objects</u></a> (DO).&nbsp;</p>
 	<p>We created a Build Management Worker with two DO classes: A Scheduler class to manage the scheduling of builds, and a class called BuildBuddy to manage individual builds. We chose to design our system this way for an efficient and scalable system. Since each build is assigned its own build manager DO, its operation won’t ever block other builds or the scheduler, meaning we can start up builds with minimal latency. Below, we dive into each of these Durable Objects classes.</p>
 	<figure class="kg-card kg-image-card">
 		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6RUDJI7IYIlzcX4qjF9EYY/7e959b7a4489a41d275d74d634389f31/BLOG-2594_4.png" alt="BLOG-2594 4" class="kg-image" width="1999" height="1109" loading="lazy">
@@ -74,7 +74,7 @@
 			</svg>
 		</a>
 	</div>
-	<p>The Scheduler DO class is relatively simple. Using <a href="https://developers.cloudflare.com/durable-objects/api/alarms"><u>Durable Objects Alarms</u></a>, it is triggered every second to pull up a list of user build configurations that are ready to be started. For each of those builds, the Scheduler creates an instance of our other DO Class, the Build Buddy.&nbsp;</p>
+	<p>The Scheduler DO class is relatively simple. Using <a href="https://developers.cloudflare.com/durable-objects/api/alarms" target="_blank" rel="noopener noreferrer"><u>Durable Objects Alarms</u></a>, it is triggered every second to pull up a list of user build configurations that are ready to be started. For each of those builds, the Scheduler creates an instance of our other DO Class, the Build Buddy.&nbsp;</p>
 	<pre class="language-javascript"><code class="language-javascript">import { DurableObject } from 'cloudflare:workers'
 
 
@@ -161,7 +161,7 @@ export class BuildScheduler extends DurableObject {
 			</svg>
 		</a>
 	</div>
-	<p>A running build generates output logs that are important to store and surface to the user. The containerized build flushes these logs to the Build Buddy every second, which, in turn, stores those logs in <a href="https://developers.cloudflare.com/durable-objects/api/storage-api"><u>DO storage</u></a>.&nbsp;</p>
+	<p>A running build generates output logs that are important to store and surface to the user. The containerized build flushes these logs to the Build Buddy every second, which, in turn, stores those logs in <a href="https://developers.cloudflare.com/durable-objects/api/storage-api" target="_blank" rel="noopener noreferrer"><u>DO storage</u></a>.&nbsp;</p>
 	<p>The decision to use Durable Object storage here makes it easy to multicast logs to multiple clients efficiently, and allows us to use the same API for both streaming logs and viewing historical logs.&nbsp;</p>
 	<p>// build-management-app.ts</p>
 	<pre class="language-javascript"><code class="language-javascript">// We created a Hono app to for use by our Client Worker API
@@ -288,7 +288,7 @@ export class BuildBuddy extends DurableObject {
 			</svg>
 		</a>
 	</div>
-	<p>We utilize <a href="https://developers.cloudflare.com/durable-objects/api/alarms"><u>alarms</u></a> in the Build Buddy to check that a build has a healthy startup and to terminate any builds that run longer than 20 minutes.&nbsp;</p>
+	<p>We utilize <a href="https://developers.cloudflare.com/durable-objects/api/alarms" target="_blank" rel="noopener noreferrer"><u>alarms</u></a> in the Build Buddy to check that a build has a healthy startup and to terminate any builds that run longer than 20 minutes.&nbsp;</p>
 	<div class="flex anchor relative">
 		<h2 id="how-else-have-we-leveraged-the-developer-platform">How else have we leveraged the Developer Platform?</h2>
 		<a href="https://blog.cloudflare.com/#how-else-have-we-leveraged-the-developer-platform" aria-hidden="true" class="relative sm:absolute sm:-start-5">
@@ -307,7 +307,7 @@ export class BuildBuddy extends DurableObject {
 		</a>
 	</div>
 	<p>While our control plane is distributed in the sense that it can be run across multiple datacenters, to reduce latency costs, we want most requests to be served from locations close to our primary database in the western US.</p>
-	<p>While a build is running, Build Buddy, a Durable Object, is continuously writing status updates to our database. For the Client and the Build Management API Workers, we enabled <a href="https://developers.cloudflare.com/workers/configuration/smart-placement"><u>Smart Placement</u></a> with <a href="https://developers.cloudflare.com/durable-objects/reference/data-location/#provide-a-location-hint"><u>location hints</u></a> to ensure requests run close to the database.</p>
+	<p>While a build is running, Build Buddy, a Durable Object, is continuously writing status updates to our database. For the Client and the Build Management API Workers, we enabled <a href="https://developers.cloudflare.com/workers/configuration/smart-placement" target="_blank" rel="noopener noreferrer"><u>Smart Placement</u></a> with <a href="https://developers.cloudflare.com/durable-objects/reference/data-location/#provide-a-location-hint" target="_blank" rel="noopener noreferrer"><u>location hints</u></a> to ensure requests run close to the database.</p>
 	<figure class="kg-card kg-image-card">
 		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4hhFLpYizLZ6cyu4h80YL8/40af67320a6bf44f375d6055b2997a99/BLOG-2594_5.png" alt="BLOG-2594 5" class="kg-image" width="987" height="542" loading="lazy">
 	</figure>
@@ -320,8 +320,8 @@ export class BuildBuddy extends DurableObject {
 			</svg>
 		</a>
 	</div>
-	<p>We needed a logging tool that allows us to aggregate and search across persistent operational logs from our Workers to assist with identifying and troubleshooting issues. We worked with the Workers Observability team to become early adopters of <a href="https://developers.cloudflare.com/workers/observability/logs/workers-logs"><u>Workers Logs</u></a>.</p>
-	<p>Workers Logs worked out of the box, giving us fast and easy to use logs directly within the Cloudflare dashboard. To improve our ability to search logs, we created a <a href="https://www.npmjs.com/package/workers-tagged-logger"><u>tagging library</u></a> that allows us to easily add metadata like the git tag of the deployed worker that the log comes from, allowing us to filter logs by release.</p>
+	<p>We needed a logging tool that allows us to aggregate and search across persistent operational logs from our Workers to assist with identifying and troubleshooting issues. We worked with the Workers Observability team to become early adopters of <a href="https://developers.cloudflare.com/workers/observability/logs/workers-logs" target="_blank" rel="noopener noreferrer"><u>Workers Logs</u></a>.</p>
+	<p>Workers Logs worked out of the box, giving us fast and easy to use logs directly within the Cloudflare dashboard. To improve our ability to search logs, we created a <a href="https://www.npmjs.com/package/workers-tagged-logger" target="_blank" rel="noopener noreferrer"><u>tagging library</u></a> that allows us to easily add metadata like the git tag of the deployed worker that the log comes from, allowing us to filter logs by release.</p>
 	<p>See a shortened example below for how we handle and log errors on the Client Worker.&nbsp;</p>
 	<p>// client-worker-app.ts</p>
 	<pre class="language-javascript"><code class="language-javascript">// The Client Worker is a RESTful API built with Hono
@@ -353,7 +353,7 @@ function useOnError(e: Error, c: Context&lt;HonoContext&gt;): Response {
 	<figure class="kg-card kg-image-card">
 		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6gfd725NCFNrhlDt3gK515/90138c159285e91535a986266918be13/BLOG-2594_6.png" alt="BLOG-2594 6" class="kg-image" width="600" height="490" loading="lazy">
 	</figure>
-	<p>We can get a better sense of the impact of the error by adding filters to the Workers Logs view, as shown below. We are able to filter on any of the fields since we’re <a href="https://developers.cloudflare.com/workers/observability/logs/workers-logs#logging-structured-json-objects"><u>logging with structured JSON</u></a>.&nbsp;&nbsp;</p>
+	<p>We can get a better sense of the impact of the error by adding filters to the Workers Logs view, as shown below. We are able to filter on any of the fields since we’re <a href="https://developers.cloudflare.com/workers/observability/logs/workers-logs#logging-structured-json-objects" target="_blank" rel="noopener noreferrer"><u>logging with structured JSON</u></a>.&nbsp;&nbsp;</p>
 	<figure class="kg-card kg-image-card">
 		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6XqXINluVzzyHd4O17JsnZ/0ac714792a4d21623b4a875291ae0ad0/BLOG-2594_7.png" alt="BLOG-2594 7" class="kg-image" width="472" height="238" loading="lazy">
 	</figure>
@@ -365,7 +365,7 @@ function useOnError(e: Error, c: Context&lt;HonoContext&gt;): Response {
 			</svg>
 		</a>
 	</div>
-	<p>Coming soon to Workers Builds is build caching, used to store artifacts of a build for subsequent builds to reuse, such as package dependencies and build outputs. Build caching can speed up customer builds by avoiding the need to redownload dependencies from NPM or to rebuild projects from scratch. The cache itself will be backed by <a href="https://www.cloudflare.com/developer-platform/products/r2">R2 storage</a>.&nbsp;</p>
+	<p>Coming soon to Workers Builds is build caching, used to store artifacts of a build for subsequent builds to reuse, such as package dependencies and build outputs. Build caching can speed up customer builds by avoiding the need to redownload dependencies from NPM or to rebuild projects from scratch. The cache itself will be backed by <a href="https://www.cloudflare.com/developer-platform/products/r2" target="_blank" rel="noopener noreferrer">R2 storage</a>.&nbsp;</p>
 	<div class="flex anchor relative">
 		<h3 id="testing">Testing</h3>
 		<a href="https://blog.cloudflare.com/#testing" aria-hidden="true" class="relative sm:absolute sm:-start-5">
@@ -447,7 +447,7 @@ it('correctly selects a single build', async () =&gt; {
 			</svg>
 		</a>
 	</div>
-	<p>We use the technology underlying the <a href="https://developers.cloudflare.com/analytics/analytics-engine"><u>Workers Analytics Engine</u></a> to collect all of the metrics for our system. We set up <a href="https://developers.cloudflare.com/analytics/analytics-engine/grafana"><u>Grafana</u></a> dashboards to display these metrics.&nbsp;</p>
+	<p>We use the technology underlying the <a href="https://developers.cloudflare.com/analytics/analytics-engine" target="_blank" rel="noopener noreferrer"><u>Workers Analytics Engine</u></a> to collect all of the metrics for our system. We set up <a href="https://developers.cloudflare.com/analytics/analytics-engine/grafana" target="_blank" rel="noopener noreferrer"><u>Grafana</u></a> dashboards to display these metrics.&nbsp;</p>
 	<div class="flex anchor relative">
 		<h3 id="javascript-native-rpc">JavaScript-native RPC</h3>
 		<a href="https://blog.cloudflare.com/#javascript-native-rpc" aria-hidden="true" class="relative sm:absolute sm:-start-5">
@@ -482,5 +482,5 @@ await bb.startBuild(build)
 	<p>By using Workers and Durable Objects, we were able to build a complex and distributed system that is easy to understand and is easily scalable.&nbsp;</p>
 	<p>It’s been a blast for our team to build on top of the very platform that we work on, something that would have been much harder to achieve on Workers just a few years ago. We believe in being Customer Zero for our own products — to identify pain points firsthand and to continuously improve the developer experience by applying them to our own use cases. It was fulfilling to have our needs as developers met by other teams and then see those tools quickly become available to the rest of the world — we were collaborators and internal testers for Workers Logs and private network support for Hyperdrive (both released on Birthday Week), and the soon to be released container platform.</p>
 	<p>Opportunities to build complex applications on the Developer Platform have increased in recent years as the platform has matured and expanded product offerings for more use cases. We hope that Workers Builds will be yet another tool in the Workers toolbox that enables developers to spend less time thinking about configuration and more time writing code.&nbsp;</p>
-	<p>Want to try it out? Check out the <a href="https://developers.cloudflare.com/workers/ci-cd/builds"><u>docs</u></a> to learn more about how to deploy your first project with Workers Builds.</p>
+	<p>Want to try it out? Check out the <a href="https://developers.cloudflare.com/workers/ci-cd/builds" target="_blank" rel="noopener noreferrer"><u>docs</u></a> to learn more about how to deploy your first project with Workers Builds.</p>
 </div>

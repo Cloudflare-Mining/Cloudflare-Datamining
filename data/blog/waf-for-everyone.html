@@ -3,10 +3,10 @@
 <div class="post-content lh-copy gray1">
 	<p></p>
 	<p>At Cloudflare, we like disruptive ideas. Pair that with our core belief that security is something that should be accessible to everyone and the outcome is a better and safer Internet for all.</p>
-	<p>This isn’t idle talk. For example, back in 2014, we announced <a href="https://blog.cloudflare.com/introducing-universal-ssl">Universal SSL</a>. Overnight, we provided SSL/TLS encryption to over one million Internet properties <a href="https://www.cloudflare.com/application-services/products/ssl">without anyone having to pay a dime</a>, or configure a certificate. This was good not only for our customers, but also for everyone using the web.</p>
+	<p>This isn’t idle talk. For example, back in 2014, we announced <a href="https://blog.cloudflare.com/introducing-universal-ssl">Universal SSL</a>. Overnight, we provided SSL/TLS encryption to over one million Internet properties <a href="https://www.cloudflare.com/application-services/products/ssl" target="_blank" rel="noopener noreferrer">without anyone having to pay a dime</a>, or configure a certificate. This was good not only for our customers, but also for everyone using the web.</p>
 	<p>In 2017, we announced <a href="https://blog.cloudflare.com/unmetered-mitigation">unmetered DDoS mitigation</a>. We’ve never asked customers to pay for DDoS bandwidth as it never felt right, but it took us some time to reach the network size where we could offer completely unmetered mitigation for everyone, paying customer or not.</p>
 	<p>Still, I often get the question: how do we do this? It’s simple really. We do it by building great, efficient technology that scales well—and this allows us to keep costs low.</p>
-	<p><b><i>Today, we’re doing it again, by providing a Cloudflare WAF (Web Application Firewall) Managed Ruleset to all </i></b><a href="https://www.cloudflare.com/plans"><b><i>Cloudflare plans</i></b></a><b><i>, free of charge.</i></b></p>
+	<p><b><i>Today, we’re doing it again, by providing a Cloudflare WAF (Web Application Firewall) Managed Ruleset to all </i></b><a href="https://www.cloudflare.com/plans" target="_blank" rel="noopener noreferrer"><b><i>Cloudflare plans</i></b></a><b><i>, free of charge.</i></b></p>
 	<div class="flex anchor relative">
 		<h3 id="why-are-we-doing-this">Why are we doing this?</h3>
 		<a href="https://blog.cloudflare.com/#why-are-we-doing-this" aria-hidden="true" class="relative sm:absolute sm:-start-5">
@@ -26,8 +26,8 @@
 			</svg>
 		</a>
 	</div>
-	<p>If you are on a <a href="https://blog.cloudflare.com/www.cloudflare.com/plans/free">FREE plan</a>, you are already receiving protection. Over the coming months, all our FREE zone plan users will also receive access to the <a href="https://www.cloudflare.com/waf">Cloudflare WAF</a> user interface in the dashboard and will be able to deploy and configure the new ruleset. This ruleset will provide mitigation rules for high profile vulnerabilities such as Shellshock and Log4J among others.</p>
-	<p>To access our broader set of WAF rulesets (Cloudflare Managed Rules, Cloudflare OWASP Core Ruleset and Cloudflare Leaked Credential Check Ruleset) along with advanced WAF features, customers will still have to upgrade to PRO or higher <a href="https://www.cloudflare.com/plans">plans</a>.</p>
+	<p>If you are on a <a href="https://blog.cloudflare.com/#">FREE plan</a>, you are already receiving protection. Over the coming months, all our FREE zone plan users will also receive access to the <a href="https://www.cloudflare.com/waf" target="_blank" rel="noopener noreferrer">Cloudflare WAF</a> user interface in the dashboard and will be able to deploy and configure the new ruleset. This ruleset will provide mitigation rules for high profile vulnerabilities such as Shellshock and Log4J among others.</p>
+	<p>To access our broader set of WAF rulesets (Cloudflare Managed Rules, Cloudflare OWASP Core Ruleset and Cloudflare Leaked Credential Check Ruleset) along with advanced WAF features, customers will still have to upgrade to PRO or higher <a href="https://www.cloudflare.com/plans" target="_blank" rel="noopener noreferrer">plans</a>.</p>
 	<div class="flex anchor relative">
 		<h3 id="the-challenge">The Challenge</h3>
 		<a href="https://blog.cloudflare.com/#the-challenge" aria-hidden="true" class="relative sm:absolute sm:-start-5">
@@ -37,7 +37,7 @@
 		</a>
 	</div>
 	<p>With over 32 million HTTP requests per second being proxied by the Cloudflare global network, running the WAF on every single request is no easy task.</p>
-	<p><a href="https://www.cloudflare.com/learning/ddos/glossary/web-application-firewall-waf">WAFs</a> secure all HTTP request components, including bodies, by running a set of rules, sometimes referred as signatures, that look for specific patterns that could represent a malicious payload. These rules vary in complexity, and the more rules you have, the harder the system is to optimize. Additionally, many rules will take advantage of regex capabilities, allowing the author to perform complex matching logic.</p>
+	<p><a href="https://www.cloudflare.com/learning/ddos/glossary/web-application-firewall-waf" target="_blank" rel="noopener noreferrer">WAFs</a> secure all HTTP request components, including bodies, by running a set of rules, sometimes referred as signatures, that look for specific patterns that could represent a malicious payload. These rules vary in complexity, and the more rules you have, the harder the system is to optimize. Additionally, many rules will take advantage of regex capabilities, allowing the author to perform complex matching logic.</p>
 	<p>All of this needs to happen with a negligible latency impact, as security should not come with a performance penalty and many application owners come to Cloudflare for performance benefits.</p>
 	<p>By leveraging our new Edge Rules Engine, on top of which the <a href="https://blog.cloudflare.com/new-cloudflare-waf">new WAF has been built on</a>, we have been able to reach the performance and memory milestones that make us feel comfortable and that allow us to provide a good baseline WAF protection to everyone. Enter the new Cloudflare Free Managed Ruleset.</p>
 	<div class="flex anchor relative">
@@ -86,7 +86,7 @@
 			<p>Completely disabling the ruleset or any specific rule.</p>
 		</li>
 	</ul>
-	<p>All options are easily accessible via the <a href="https://dash.cloudflare.com/?to=%2F%3Aaccount%2F%3Azone%2Fsecurity%2Fwaf%2Fmanaged-rules">dashboard</a>, but can also be performed via API. Documentation on how to configure the ruleset, once it is available in the UI, will be found on our <a href="https://developers.cloudflare.com/waf/managed-rulesets">developer site</a>.</p>
+	<p>All options are easily accessible via the <a href="https://dash.cloudflare.com/?to=%2F%3Aaccount%2F%3Azone%2Fsecurity%2Fwaf%2Fmanaged-rules" target="_blank" rel="noopener noreferrer">dashboard</a>, but can also be performed via API. Documentation on how to configure the ruleset, once it is available in the UI, will be found on our <a href="https://developers.cloudflare.com/waf/managed-rulesets" target="_blank" rel="noopener noreferrer">developer site</a>.</p>
 	<div class="flex anchor relative">
 		<h3 id="whats-next">What’s next?</h3>
 		<a href="https://blog.cloudflare.com/#whats-next" aria-hidden="true" class="relative sm:absolute sm:-start-5">
@@ -95,6 +95,6 @@
 			</svg>
 		</a>
 	</div>
-	<p>The Cloudflare Free Managed Ruleset will be updated by Cloudflare whenever a relevant wide-ranging vulnerability is discovered. Updates to the ruleset will be published on our <a href="https://developers.cloudflare.com/waf/change-log">change log</a>, &nbsp;like that customers can keep up to date with any new rules.</p>
-	<p>We love building cool new technology. But we also love making it widely available and easy to use. We’re really excited about making the web much safer for everyone with a WAF that won’t cost you a dime. If you’re interested in getting started, <a href="https://dash.cloudflare.com/sign-up">just head over here</a> to sign up for our free plan.</p>
+	<p>The Cloudflare Free Managed Ruleset will be updated by Cloudflare whenever a relevant wide-ranging vulnerability is discovered. Updates to the ruleset will be published on our <a href="https://developers.cloudflare.com/waf/change-log" target="_blank" rel="noopener noreferrer">change log</a>, &nbsp;like that customers can keep up to date with any new rules.</p>
+	<p>We love building cool new technology. But we also love making it widely available and easy to use. We’re really excited about making the web much safer for everyone with a WAF that won’t cost you a dime. If you’re interested in getting started, <a href="https://dash.cloudflare.com/sign-up" target="_blank" rel="noopener noreferrer">just head over here</a> to sign up for our free plan.</p>
 </div>

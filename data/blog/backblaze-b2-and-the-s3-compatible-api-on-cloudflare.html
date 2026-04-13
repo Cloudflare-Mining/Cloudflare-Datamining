@@ -1,6 +1,6 @@
 <div class="mb2 gray5">4 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/40Wel75nPvEosuf1dBXFv9/79746872c2ec7ea9f32c7bba55108e6c/backblaze-b2-and-the-s3-compatible-api-on-cloudflare.png" alt="">
 <div class="post-content lh-copy gray1">
-	<p>In May 2020, Backblaze, a founding Bandwidth Alliance partner announced <a href="https://www.backblaze.com/blog/backblaze-b2-s3-compatible-api">S3 compatible APIs</a> for their B2 Cloud Storage service. As a refresher, the <a href="https://blog.cloudflare.com/bandwidth-alliance">Bandwidth Alliance</a> is a group of forward-thinking cloud and networking companies that are committed to discounting or waiving data transfer fees for shared customers. Backblaze has been a proud partner since 2018. We are excited to see Backblaze introduce a new level of compatibility in their Cloud Storage service.</p>
+	<p>In May 2020, Backblaze, a founding Bandwidth Alliance partner announced <a href="https://www.backblaze.com/blog/backblaze-b2-s3-compatible-api" target="_blank" rel="noopener noreferrer">S3 compatible APIs</a> for their B2 Cloud Storage service. As a refresher, the <a href="https://blog.cloudflare.com/bandwidth-alliance">Bandwidth Alliance</a> is a group of forward-thinking cloud and networking companies that are committed to discounting or waiving data transfer fees for shared customers. Backblaze has been a proud partner since 2018. We are excited to see Backblaze introduce a new level of compatibility in their Cloud Storage service.</p>
 	<div class="flex anchor relative">
 		<h3 id="history-of-the-s3-api">History of the S3 API</h3>
 		<a href="https://blog.cloudflare.com/#history-of-the-s3-api" aria-hidden="true" class="relative sm:absolute sm:-start-5">
@@ -61,10 +61,10 @@
 			</svg>
 		</a>
 	</div>
-	<p>Here’s how it is done using Cloudflare Worker’s CLI tool <a href="https://developers.cloudflare.com/workers/quickstart#installing-the-cli">Wrangler</a>:</p>
+	<p>Here’s how it is done using Cloudflare Worker’s CLI tool <a href="https://developers.cloudflare.com/workers/quickstart#installing-the-cli" target="_blank" rel="noopener noreferrer">Wrangler</a>:</p>
 	<p>Generate a new project in Wrangler using a template intended for use with Amazon S3:</p>
 	<pre class="language-javascript"><code class="language-javascript">wrangler generate &lt;projectname&gt; https://github.com/obezuk/worker-signed-s3-template</code></pre>
-	<p>This template uses <a href="https://github.com/mhart/aws4fetch">aws4fetch</a>. A fast, lightweight implementation of an S3 Compatible signing library that is commonly used in Service Worker environments like Cloudflare Workers.</p>
+	<p>This template uses <a href="https://github.com/mhart/aws4fetch" target="_blank" rel="noopener noreferrer">aws4fetch</a>. A fast, lightweight implementation of an S3 Compatible signing library that is commonly used in Service Worker environments like Cloudflare Workers.</p>
 	<p>The template creates an index.js file with a standard request signing implementation:</p>
 	<pre class="language-javascript"><code class="language-javascript">import { AwsClient } from 'aws4fetch'
 
@@ -101,7 +101,7 @@ AWS_DEFAULT_REGION = "",
 AWS_S3_BUCKET = "&lt;BACKBLAZE B2 bucketName&gt;.&lt;BACKBLAZE B2 S3 Endpoint&gt;"}</code></pre>
 	<p><code>AWS_S3_BUCKET</code> environment variable will be the combination of your bucket name, period and S3 Endpoint. For a Backblaze B2 Bucket named <code>example-bucket</code> and S3 Endpoint <code>s3.us-west-002.backblazeb2.com</code> use <code>example-bucket.s3.us-west-002.backblazeb2.com</code></p>
 	<p><code>AWS_DEFAULT_REGION</code> environment variable is interpreted from your S3 Endpoint. I use <code>us-west-002</code>.</p>
-	<p>We recommend using <a href="https://developers.cloudflare.com/workers/tooling/wrangler/secrets">Secret Environment</a> variables to store your <code>AWS_SECRET_ACCESS_KEY</code> content when using this script in production.</p>
+	<p>We recommend using <a href="https://developers.cloudflare.com/workers/tooling/wrangler/secrets" target="_blank" rel="noopener noreferrer">Secret Environment</a> variables to store your <code>AWS_SECRET_ACCESS_KEY</code> content when using this script in production.</p>
 	<div class="flex anchor relative">
 		<h3 id="preview-your-cloudflare-worker">Preview your Cloudflare Worker</h3>
 		<a href="https://blog.cloudflare.com/#preview-your-cloudflare-worker" aria-hidden="true" class="relative sm:absolute sm:-start-5">
@@ -116,7 +116,7 @@ AWS_S3_BUCKET = "&lt;BACKBLAZE B2 bucketName&gt;.&lt;BACKBLAZE B2 S3 Endpoint&gt
 		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5IjZRYdJMjcMjaYuxWlSiG/d5271e0124db9c0bdb859306c8f68bc8/image1-3.png" alt="" class="kg-image" width="778" height="925" loading="lazy">
 
 	</figure>
-	<p><i>Note: We permit caching of third party video content only for enterprise domains. Free/Pro/Biz users wanting to serve video content via Cloudflare may use</i> <a href="https://www.cloudflare.com/products/cloudflare-stream"><i>Stream</i></a> <i>which delivers an end-to-end video delivery service.</i></p>
-	<p>Backblaze B2’s compatibility for the S3 API is an exciting update that has made their storage platform highly compatible with existing code bases and legacy systems. And, as a special offer to Cloudflare blog readers, Backblaze will pay the migration costs for transferring your data from S3 to Backblaze B2 (<a href="https://hub.backblaze.com/bandwidth-alliance-summerswitch2020">click here for more detail</a>). With the cost of migration covered and compatibility for your existing workflows, it is now easier than ever to switch to a Bandwidth Alliance partner and save on first-mile costs. By doing so, you can slash your cloud bills, gain flexibility, and make no compromises to your performance.</p>
-	<p>To learn more, <a href="https://www.brighttalk.com/webcast/14807/405472">join us on May 14th</a> for a webinar focused on getting you ultra fast worldwide content delivery.</p>
+	<p><i>Note: We permit caching of third party video content only for enterprise domains. Free/Pro/Biz users wanting to serve video content via Cloudflare may use</i> <a href="https://www.cloudflare.com/products/cloudflare-stream" target="_blank" rel="noopener noreferrer"><i>Stream</i></a> <i>which delivers an end-to-end video delivery service.</i></p>
+	<p>Backblaze B2’s compatibility for the S3 API is an exciting update that has made their storage platform highly compatible with existing code bases and legacy systems. And, as a special offer to Cloudflare blog readers, Backblaze will pay the migration costs for transferring your data from S3 to Backblaze B2 (<a href="https://hub.backblaze.com/bandwidth-alliance-summerswitch2020" target="_blank" rel="noopener noreferrer">click here for more detail</a>). With the cost of migration covered and compatibility for your existing workflows, it is now easier than ever to switch to a Bandwidth Alliance partner and save on first-mile costs. By doing so, you can slash your cloud bills, gain flexibility, and make no compromises to your performance.</p>
+	<p>To learn more, <a href="https://www.brighttalk.com/webcast/14807/405472" target="_blank" rel="noopener noreferrer">join us on May 14th</a> for a webinar focused on getting you ultra fast worldwide content delivery.</p>
 </div>

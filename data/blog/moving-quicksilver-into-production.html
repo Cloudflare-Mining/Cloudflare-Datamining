@@ -17,7 +17,7 @@
 		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6pUDqhqWX3ZCG0ihI9972P/a6b75ed8cf5e34d9c44c1d6229faf98e/image3-16.png" alt="" class="kg-image" width="1635" height="1067" loading="lazy">
 
 	</figure>
-	<p><i>Image Credit: </i><a href="https://en.wikipedia.org/wiki/Bodie_Creek_Suspension_Bridge"><i>https://en.wikipedia.org/wiki/Bodie_Creek_Suspension_Bridge</i></a></p>
+	<p><i>Image Credit: </i><a href="https://en.wikipedia.org/wiki/Bodie_Creek_Suspension_Bridge" target="_blank" rel="noopener noreferrer"><i>https://en.wikipedia.org/wiki/Bodie_Creek_Suspension_Bridge</i></a></p>
 	<figure class="kg-card kg-image-card ">
 
 		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4AeGYvTKsKEaF4n4llh3KY/56f665316d1a91f6f1635a9fc0e13b96/image1-18.png" alt="" class="kg-image" width="693" height="404" loading="lazy">
@@ -43,7 +43,7 @@
 			</svg>
 		</a>
 	</div>
-	<p>To make life easier for SREs provisioning a new data center, we implemented a bootstrap mechanism that pulls an entire database from a remote server. This was an easy win because our datastore library - <a href="https://symas.com/lmdb">LMDB</a> - provides the ability to copy an entire LMDB environment to a file descriptor. Quicksilver simply wrapped this code and sent a specific version of the DB to a network socket using its file descriptor.</p>
+	<p>To make life easier for SREs provisioning a new data center, we implemented a bootstrap mechanism that pulls an entire database from a remote server. This was an easy win because our datastore library - <a href="https://symas.com/lmdb" target="_blank" rel="noopener noreferrer">LMDB</a> - provides the ability to copy an entire LMDB environment to a file descriptor. Quicksilver simply wrapped this code and sent a specific version of the DB to a network socket using its file descriptor.</p>
 	<p>When bootstrapping our Quicksilver DBs to more servers, Kyoto Tycoon was still serving production traffic in parallel. As we mentioned in the first blogpost, Kyoto Tycoon has an exclusive write lock that is sensitive to I/O. We were used to the problems this can cause such as write bursts slowing down reads. This time around we found the separate bootstrap process caused issues. It filled the page cache quickly, causing I/O saturation, which impacted all production services reading from Kyoto Tycoon.</p>
 	<p>There was no easy fix to that, to bootstrap Quicksilver DBs in a datacenter we'd have to wait until it was moved offline for maintenance, which pushed the schedule beyond our initial estimates. Once we had a data center deployment we could finally see metrics of Quicksilver running in the wild. It was important to validate that the performance was healthy before moving on to the next data center. This required coordination with the engineering teams that consume from Quicksilver.</p>
 	<div class="flex anchor relative">
@@ -54,7 +54,7 @@
 			</svg>
 		</a>
 	</div>
-	<p>Many requests reaching Cloudflare’s edge are forwarded to a component called FL, which acts as the "brain". It uses multiple configuration values to decide what to do with the request. It might apply the <a href="https://www.cloudflare.com/learning/ddos/glossary/web-application-firewall-waf">WAF</a>, pass the request to Workers and so on. FL requires a lot of QS access, so it was the perfect candidate to help validate Quicksilver performance in a real environment.</p>
+	<p>Many requests reaching Cloudflare’s edge are forwarded to a component called FL, which acts as the "brain". It uses multiple configuration values to decide what to do with the request. It might apply the <a href="https://www.cloudflare.com/learning/ddos/glossary/web-application-firewall-waf" target="_blank" rel="noopener noreferrer">WAF</a>, pass the request to Workers and so on. FL requires a lot of QS access, so it was the perfect candidate to help validate Quicksilver performance in a real environment.</p>
 	<p>Here are some screenshots showing FL metrics. The vertical red line marks the switchover point, on the left of the line is Kyoto Tycoon, on the right is Quicksilver. The drop immediately before the line is due to the upgrade procedure itself. We saw an immediate and significant improvement in error rates and response time by migrating to Quicksilver.</p>
 	<figure class="kg-card kg-image-card ">
 
@@ -162,7 +162,7 @@
 		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2TAvdFTskE3MjXy8GF8GUP/c5959a7d5ae9ea84a195db68fd673491/Quicksilver-blog-2_2x.png" alt="" class="kg-image" width="517" height="520" loading="lazy">
 
 	</figure>
-	<p>The job is still far from done though. The Quicksilver root server was still a single point of failure, so we decided to build Quicksilver Raft - a <a href="https://en.wikipedia.org/wiki/Raft_(computer_science)">Raft</a>-enabled root cluster using the etcd Raft package. It was harder than I originally thought. Adding Raft into Quicksilver required proper synchronization between the Raft snapshot and the current Quicksilver DB. Sometimes there are situations where Quicksilver needs to fall back to asynchronous replication to catch up before doing proper Raft synchronous writes. Getting all of this to work required deep changes in our code base, which also proved to be hard to build proper unit and integration tests. But removing single points of failure is worth it.</p>
+	<p>The job is still far from done though. The Quicksilver root server was still a single point of failure, so we decided to build Quicksilver Raft - a <a href="https://en.wikipedia.org/wiki/Raft_(computer_science)" target="_blank" rel="noopener noreferrer">Raft</a>-enabled root cluster using the etcd Raft package. It was harder than I originally thought. Adding Raft into Quicksilver required proper synchronization between the Raft snapshot and the current Quicksilver DB. Sometimes there are situations where Quicksilver needs to fall back to asynchronous replication to catch up before doing proper Raft synchronous writes. Getting all of this to work required deep changes in our code base, which also proved to be hard to build proper unit and integration tests. But removing single points of failure is worth it.</p>
 	<div class="flex anchor relative">
 		<h2 id="introducing-qsqsbridge">Introducing QSQSBridge</h2>
 		<a href="https://blog.cloudflare.com/#introducing-qsqsbridge" aria-hidden="true" class="relative sm:absolute sm:-start-5">

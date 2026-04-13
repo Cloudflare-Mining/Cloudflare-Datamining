@@ -35,7 +35,7 @@
 			</svg>
 		</a>
 	</div>
-	<p>In order to use this application in DC/OS you must have a zone on Cloudflare with the <a href="https://blog.cloudflare.com/Argo">Argo service enabled</a>. Argo can be enabled for any plan type and is billed on usage. Because this application requires the use of a DC/OS ‘secrets’ the Enterprise version of DC/OS is required. To get started on Cloudflare please see <a href="https://www.cloudflare.com/plans">here</a> and sign up for an account. To do the same with DC/OS, please see <a href="https://docs.mesosphere.com/1.12/installing/evaluation">here</a>.</p>
+	<p>In order to use this application in DC/OS you must have a zone on Cloudflare with the <a href="https://blog.cloudflare.com/Argo">Argo service enabled</a>. Argo can be enabled for any plan type and is billed on usage. Because this application requires the use of a DC/OS ‘secrets’ the Enterprise version of DC/OS is required. To get started on Cloudflare please see <a href="https://www.cloudflare.com/plans" target="_blank" rel="noopener noreferrer">here</a> and sign up for an account. To do the same with DC/OS, please see <a href="https://docs.mesosphere.com/1.12/installing/evaluation" target="_blank" rel="noopener noreferrer">here</a>.</p>
 	<div class="flex anchor relative">
 		<h3 id="cloudflare-argo-tunnel-support-for-dc-os">Cloudflare Argo Tunnel Support for DC/OS</h3>
 		<a href="https://blog.cloudflare.com/#cloudflare-argo-tunnel-support-for-dc-os" aria-hidden="true" class="relative sm:absolute sm:-start-5">
@@ -60,7 +60,7 @@
 	<p>Configuration of the Argo Tunnel requires you to specify three things.</p>
 	<ul>
 		<li>
-			<p>Cloudflare Hostname - The DNS name of your service on the Cloudflare network. This is the address where you wish your service to be available from on the Internet. (Note: adding a zone to Cloudflare is extremely simple, you can get started here (link: <a href="https://www.cloudflare.com/plans">https://www.cloudflare.com/plans/</a>)</p>
+			<p>Cloudflare Hostname - The DNS name of your service on the Cloudflare network. This is the address where you wish your service to be available from on the Internet. (Note: adding a zone to Cloudflare is extremely simple, you can get started here (link: <a href="https://www.cloudflare.com/plans" target="_blank" rel="noopener noreferrer">https://www.cloudflare.com/plans/</a>)</p>
 		</li>
 		<li>
 			<p>Local Service Url - The local URL of the service that you want to make available, on the machines running Argo Tunnel.</p>
@@ -74,12 +74,12 @@
 		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5VsuRFMMuVxqBNba5cUjR0/0f06d0d22282b82610390f3c951bd3e6/LB-Configuration.png" alt="" class="kg-image" width="1790" height="810" loading="lazy">
 
 	</figure>
-	<p>Assuming you do that setup for a service in a West Coast DC/OS cluster and an East Coast DC/OS cluster, with a respective us-west and us-east LB pool, then you end up with a Cloudflare load balancer globally balancing traffic between these clusters. The load balancer can be configured to do geosteering, which you can learn more about <a href="https://support.cloudflare.com/hc/en-us/articles/115000081911-Tutorial-How-to-Set-Up-Load-Balancing-Intelligent-Failover-on-Cloudflare">here</a>.</p>
+	<p>Assuming you do that setup for a service in a West Coast DC/OS cluster and an East Coast DC/OS cluster, with a respective us-west and us-east LB pool, then you end up with a Cloudflare load balancer globally balancing traffic between these clusters. The load balancer can be configured to do geosteering, which you can learn more about <a href="https://support.cloudflare.com/hc/en-us/articles/115000081911-Tutorial-How-to-Set-Up-Load-Balancing-Intelligent-Failover-on-Cloudflare" target="_blank" rel="noopener noreferrer">here</a>.</p>
 	<figure class="kg-card kg-image-card ">
 
 		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5XLHj1d6PnXMgyoRrj7ICc/84715d0fc25f14045c0a36454d7d1f12/LB-Settings.png" alt="" class="kg-image" width="1798" height="670" loading="lazy">
 
 	</figure>
-	<p>For more details see the DC/OS Argo Tunnel <a href="https://github.com/dcos/examples/tree/master/cloudflare-argotunnel">documentation</a>. We hope this partnership is a meaningful step towards a simple multi-cloud solution for DC/OS customers.</p>
-	<p>To sign up for Cloudflare click <a href="https://www.cloudflare.com/plans">here</a> and to sign up for DC/OS click <a href="https://docs.mesosphere.com/1.12/installing/evaluation">here</a>. This partnership between Cloudflare and Mesosphere we hope will help you drive private secure and performant multi cloud deployments</p>
+	<p>For more details see the DC/OS Argo Tunnel <a href="https://github.com/dcos/examples/tree/master/cloudflare-argotunnel" target="_blank" rel="noopener noreferrer">documentation</a>. We hope this partnership is a meaningful step towards a simple multi-cloud solution for DC/OS customers.</p>
+	<p>To sign up for Cloudflare click <a href="https://www.cloudflare.com/plans" target="_blank" rel="noopener noreferrer">here</a> and to sign up for DC/OS click <a href="https://docs.mesosphere.com/1.12/installing/evaluation" target="_blank" rel="noopener noreferrer">here</a>. This partnership between Cloudflare and Mesosphere we hope will help you drive private secure and performant multi cloud deployments</p>
 </div>

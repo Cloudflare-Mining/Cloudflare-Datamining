@@ -9,7 +9,7 @@
 			</svg>
 		</a>
 	</div>
-	<p>In April, <a href="https://twitter.com/jgrahamc/status/983278388059058181">John tweeted about a gigantic 942Gbps SYN flood</a>:</p>
+	<p>In April, <a href="https://twitter.com/jgrahamc/status/983278388059058181" target="_blank" rel="noopener noreferrer">John tweeted about a gigantic 942Gbps SYN flood</a>:</p>
 	<figure class="kg-card kg-image-card ">
 
 		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/zDV2Skl4GNNghhywbXthQ/3d3e9b64eec480cacc4844756f7c55c3/DaVOetFVMAI9W8m.jpg-large.jpeg.jpeg" alt="DaVOetFVMAI9W8m.jpg-large" class="kg-image" width="1688" height="454" loading="lazy">
@@ -28,9 +28,9 @@
 		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5dVX774vMX9ALTOhJbOADy/405b6ffd1b2e7c48be9a7a2be4f210cf/ams-1.png" alt="ams-1" class="kg-image" width="2000" height="1016" loading="lazy">
 
 	</figure>
-	<p>Thirdly, the attack seem to be partially spoofed. While our analysis was not conclusive, we saw random, spoofed source IP addresses in the largest internet exchanges. The above <a href="https://en.wikipedia.org/wiki/Hilbert_curve">Hilbert curve</a> shows the source IP distribution in AMS-IX. As you can see we even saw the 127.0.0.0/8 block attacking us!</p>
+	<p>Thirdly, the attack seem to be partially spoofed. While our analysis was not conclusive, we saw random, spoofed source IP addresses in the largest internet exchanges. The above <a href="https://en.wikipedia.org/wiki/Hilbert_curve" target="_blank" rel="noopener noreferrer">Hilbert curve</a> shows the source IP distribution in AMS-IX. As you can see we even saw the 127.0.0.0/8 block attacking us!</p>
 	<p>Lastly, it was a one-off. We have seen a couple of smaller SYN floods with similar characteristics before, but not after this event.</p>
-	<p>We believe the traffic was caused by <a href="https://en.wikipedia.org/wiki/Xor_DDoS">Xor.DDoS malware</a>. Others have <a href="https://www.yumpu.com/en/document/view/54673736/the-linux-xor-ddos-botnets">investigated this</a> botnet <a href="https://blogs.akamai.com/2015/09/xor-ddos-threat-advisory.html">in the past</a>.</p>
+	<p>We believe the traffic was caused by <a href="https://en.wikipedia.org/wiki/Xor_DDoS" target="_blank" rel="noopener noreferrer">Xor.DDoS malware</a>. Others have <a href="https://www.yumpu.com/en/document/view/54673736/the-linux-xor-ddos-botnets" target="_blank" rel="noopener noreferrer">investigated this</a> botnet <a href="https://blogs.akamai.com/2015/09/xor-ddos-threat-advisory.html" target="_blank" rel="noopener noreferrer">in the past</a>.</p>
 	<div class="flex anchor relative">
 		<h2 id="syn-landscape">SYN landscape</h2>
 		<a href="https://blog.cloudflare.com/#syn-landscape" aria-hidden="true" class="relative sm:absolute sm:-start-5">
@@ -87,7 +87,7 @@
 			<p><a href="https://blog.cloudflare.com/memcrashed-major-amplification-attacks-from-port-11211">Memcrashed - Major amplification attacks from UDP port 11211</a></p>
 		</li>
 	</ul>
-	<p>Initially the attacks were scary, starting at 260Gbps when first reported, reaching a <a href="https://githubengineering.com/ddos-incident-report">terabit a day later</a>. But after the initial hype the attacks have weakened - the industry reacted rapidly and cleaned up the vulnerable servers. Nowadays, we don't see very large attacks of this type. Here is a chart for the last 30 days, with memcached reaching 80Gbps tops:</p>
+	<p>Initially the attacks were scary, starting at 260Gbps when first reported, reaching a <a href="https://githubengineering.com/ddos-incident-report" target="_blank" rel="noopener noreferrer">terabit a day later</a>. But after the initial hype the attacks have weakened - the industry reacted rapidly and cleaned up the vulnerable servers. Nowadays, we don't see very large attacks of this type. Here is a chart for the last 30 days, with memcached reaching 80Gbps tops:</p>
 	<figure class="kg-card kg-image-card ">
 
 		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4ypEYQgJt0L1ShN5t6b60e/40e846171ee726e03b03967406c36253/memcached.png" alt="memcached" class="kg-image" width="1972" height="552" loading="lazy">

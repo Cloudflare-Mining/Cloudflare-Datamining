@@ -136,7 +136,7 @@
 			<p>BGP will be updated on the routers once enough machines have received the notification to update the prefix</p>
 		</li>
 		<li>
-			<p>Finally, customers can configure Cloudflare products to use BYOIP addresses via <a href="https://developers.cloudflare.com/byoip/service-bindings"><u>service bindings</u></a> which will assign products to these ranges</p>
+			<p>Finally, customers can configure Cloudflare products to use BYOIP addresses via <a href="https://developers.cloudflare.com/byoip/service-bindings" target="_blank" rel="noopener noreferrer"><u>service bindings</u></a> which will assign products to these ranges</p>
 		</li>
 	</ul>
 	<p>The Addressing API allows us to automate most of the processes surrounding how we advertise or withdraw addresses, but some processes still require manual actions. These manual processes are risky because of their close proximity to Production. As a part of <a href="https://blog.cloudflare.com/fail-small-resilience-plan"><u>Code Orange: Fail Small</u></a>, one of the goals of remediation was to remove manual actions taken in the Addressing API and replace them with safe workflows.</p>
@@ -165,7 +165,7 @@
 		return
 	}
 </code></pre>
-	<p>Because the client is passing pending_delete with no value, the result of Query().Get(“pending_delete”) here will be an empty string (“”), so the API server interprets this as a request for all BYOIP prefixes instead of just those prefixes that were supposed to be removed. The system interpreted this as all returned prefixes being queued for deletion. The new sub-task then began systematically deleting all BYOIP prefixes and all of their related dependent objects including <a href="https://developers.cloudflare.com/byoip/service-bindings"><u>service bindings</u></a>, until the impact was noticed, and an engineer identified the sub-task and shut it down.</p>
+	<p>Because the client is passing pending_delete with no value, the result of Query().Get(“pending_delete”) here will be an empty string (“”), so the API server interprets this as a request for all BYOIP prefixes instead of just those prefixes that were supposed to be removed. The system interpreted this as all returned prefixes being queued for deletion. The new sub-task then began systematically deleting all BYOIP prefixes and all of their related dependent objects including <a href="https://developers.cloudflare.com/byoip/service-bindings" target="_blank" rel="noopener noreferrer"><u>service bindings</u></a>, until the impact was noticed, and an engineer identified the sub-task and shut it down.</p>
 	<div class="flex anchor relative">
 		<h3 id="why-did-cloudflare-not-catch-the-bug-in-our-staging-environment-or-testing">Why did Cloudflare not catch the bug in our staging environment or testing?</h3>
 		<a href="https://blog.cloudflare.com/#why-did-cloudflare-not-catch-the-bug-in-our-staging-environment-or-testing" aria-hidden="true" class="relative sm:absolute sm:-start-5">
@@ -194,7 +194,7 @@
 			<p>Some customers had their prefixes withdrawn and some bindings removed. These customers were in a partial state of recovery where they could toggle some prefixes but not others.</p>
 		</li>
 		<li>
-			<p>Some customers had their prefixes withdrawn and all service bindings removed. They could not toggle their prefixes in the dashboard because there was no <a href="https://developers.cloudflare.com/byoip/service-bindings"><u>service</u></a> (Magic Transit, Spectrum, CDN) bound to them. These customers took the longest to mitigate, as a global configuration update had to be initiated to reapply the service bindings for all these customers to every single machine on Cloudflare’s edge.</p>
+			<p>Some customers had their prefixes withdrawn and all service bindings removed. They could not toggle their prefixes in the dashboard because there was no <a href="https://developers.cloudflare.com/byoip/service-bindings" target="_blank" rel="noopener noreferrer"><u>service</u></a> (Magic Transit, Spectrum, CDN) bound to them. These customers took the longest to mitigate, as a global configuration update had to be initiated to reapply the service bindings for all these customers to every single machine on Cloudflare’s edge.</p>
 		</li>
 	</ul>
 	<div class="flex anchor relative">

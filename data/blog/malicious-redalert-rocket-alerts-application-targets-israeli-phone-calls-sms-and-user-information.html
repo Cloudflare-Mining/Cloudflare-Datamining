@@ -1,9 +1,9 @@
 <div class="mb2 gray5">4 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5aXWOdv5cPnlRRLs1Ql56d/7acd426b2358dd812270826ed5fd68e7/malicious-redalert-rocket-alerts-application-targets-israeli-phone-calls-sms-and-user-information.png" alt="">
 <div class="post-content lh-copy gray1">
 	<p></p>
-	<p>On October 13, 2023, Cloudflare’s Cloudforce One Threat Operations Team became aware of a website hosting a Google Android Application (APK) impersonating the legitimate RedAlert - Rocket Alerts application (<a href="https://play.google.com/store/apps/details?id=com.red.alert&amp;hl=en&amp;pli=1">https://play.google.com/store/apps/details?id=com.red.alert&amp;hl=en&amp;pli=1</a>). &nbsp;More than 5,000 rockets have been launched into Israel since the attacks from Hamas began on October 7th 2023. &nbsp;RedAlert - Rocket Alerts developed by Elad Nava allows individuals to receive timely and precise alerts about incoming airstrikes. Many people living in Israel rely on these alerts to seek safety - a service which has become increasingly important given the newest escalations in the region.</p>
-	<p>Applications alerting of incoming airstrikes have become targets as only days ago, Pro-Palestinian hacktivist group AnonGhost exploited a vulnerability in another application, “Red Alert: Israel” by Kobi Snir. (<a href="https://cybernews.com/cyber-war/israel-redalert-breached-anonghost-hamas">https://cybernews.com/cyber-war/israel-redalert-breached-anonghost-hamas/</a>) Their exploit allowed them to intercept requests, expose servers and APIs, and send fake alerts to some app users, including a message that a “nuclear bomb is coming”. AnonGhost also claimed they attacked other rocket alert applications, including RedAlert by Elad Nava. As of October 11, 2023, the RedAlert app was reportedly functioning normally.</p>
-	<p>In the last two days, a new malicious website (<i>hxxps://redalerts[.]me</i>) has advertised the download of well-known open source application RedAlert by Elad Nava (<a href="https://github.com/eladnava/redalert-android">https://github.com/eladnava/redalert-android</a>). Domain impersonation continues to be a popular vector for attackers, as the legitimate website for the application (<i>hxxps://redalert[.]me</i> ) differs from the malicious website by only one letter. Further, threat actors continue to exploit open source code and deploy modified, malicious versions to unsuspecting users.</p>
+	<p>On October 13, 2023, Cloudflare’s Cloudforce One Threat Operations Team became aware of a website hosting a Google Android Application (APK) impersonating the legitimate RedAlert - Rocket Alerts application (<a href="https://play.google.com/store/apps/details?id=com.red.alert&amp;hl=en&amp;pli=1" target="_blank" rel="noopener noreferrer">https://play.google.com/store/apps/details?id=com.red.alert&amp;hl=en&amp;pli=1</a>). &nbsp;More than 5,000 rockets have been launched into Israel since the attacks from Hamas began on October 7th 2023. &nbsp;RedAlert - Rocket Alerts developed by Elad Nava allows individuals to receive timely and precise alerts about incoming airstrikes. Many people living in Israel rely on these alerts to seek safety - a service which has become increasingly important given the newest escalations in the region.</p>
+	<p>Applications alerting of incoming airstrikes have become targets as only days ago, Pro-Palestinian hacktivist group AnonGhost exploited a vulnerability in another application, “Red Alert: Israel” by Kobi Snir. (<a href="https://cybernews.com/cyber-war/israel-redalert-breached-anonghost-hamas" target="_blank" rel="noopener noreferrer">https://cybernews.com/cyber-war/israel-redalert-breached-anonghost-hamas/</a>) Their exploit allowed them to intercept requests, expose servers and APIs, and send fake alerts to some app users, including a message that a “nuclear bomb is coming”. AnonGhost also claimed they attacked other rocket alert applications, including RedAlert by Elad Nava. As of October 11, 2023, the RedAlert app was reportedly functioning normally.</p>
+	<p>In the last two days, a new malicious website (<i>hxxps://redalerts[.]me</i>) has advertised the download of well-known open source application RedAlert by Elad Nava (<a href="https://github.com/eladnava/redalert-android" target="_blank" rel="noopener noreferrer">https://github.com/eladnava/redalert-android</a>). Domain impersonation continues to be a popular vector for attackers, as the legitimate website for the application (<i>hxxps://redalert[.]me</i> ) differs from the malicious website by only one letter. Further, threat actors continue to exploit open source code and deploy modified, malicious versions to unsuspecting users.</p>
 	<p>The malicious website hosted links to both the iOS and the Android version of the RedAlert app. But while the link to the Apple App Store referred to the legitimate version of the RedAlert app by Elad Nava, the link supposedly referring to the Android version hosted on the Play Store directly downloads a malicious APK file. This attack demonstrates the danger of sideloading applications directly from the Internet as opposed to installing applications from the approved app store.</p>
 	<p>The malicious RedAlert version imitates the legitimate rocket alert application but simultaneously collects sensitive user data. Additional permissions requested by the malicious app include access to contacts, call logs, SMS, account information, as well as an overview of all installed apps.</p>
 	<p>The website hosting the malicious file was created on October 12, 2023 and has since been taken offline. Only users who installed the Android version of the app from this specific website are impacted and urgently advised to delete the app. Users can determine if they installed the malicious version by reviewing the permissions granted to the RedAlert app. If users are unsure whether they installed the malicious version, they can delete the RedAlert applications and reinstall the legitimate version directly in the Play Store.</p>
@@ -12,7 +12,7 @@
 		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6nCyNtOTncD702msYn7mzW/9550d6742b8bbf6ba382d36166da4357/pasted-image-0--13-.png" alt="" class="kg-image" width="1600" height="1334" loading="lazy">
 
 	</figure>
-	<p><i>Screenshot of the attacker site </i><a href="https://redalerts/[./]me"><i>https://redalerts\[.\]me</i></a></p>
+	<p><i>Screenshot of the attacker site </i><a href="https://redalerts/[./]me" target="_blank" rel="noopener noreferrer"><i>https://redalerts\[.\]me</i></a></p>
 	<div class="flex anchor relative">
 		<h3 id="malicious-android-package-kit-apk-analysis">Malicious Android Package Kit (APK) Analysis</h3>
 		<a href="https://blog.cloudflare.com/#malicious-android-package-kit-apk-analysis" aria-hidden="true" class="relative sm:absolute sm:-start-5">
@@ -214,7 +214,7 @@
 			<p>Keep your mobile device up to date on the latest software version at all times</p>
 		</li>
 		<li>
-			<p>Consider using Cloudflare Teams (with <a href="https://www.cloudflare.com/zero-trust/products/gateway">Cloudflare Gateway</a>)</p>
+			<p>Consider using Cloudflare Teams (with <a href="https://www.cloudflare.com/zero-trust/products/gateway" target="_blank" rel="noopener noreferrer">Cloudflare Gateway</a>)</p>
 		</li>
 		<li>
 			<p>Avoid using third party mobile application stores</p>
@@ -223,7 +223,7 @@
 			<p>Never install applications from Internet URLs or sideload payloads</p>
 		</li>
 		<li>
-			<p>Consider using <a href="https://1.1.1.1/family">1.1.1.1 for families</a> to block malicious domains on your network</p>
+			<p>Consider using <a href="https://1.1.1.1/family" target="_blank" rel="noopener noreferrer">1.1.1.1 for families</a> to block malicious domains on your network</p>
 		</li>
 	</ul>
 	<div class="flex anchor relative">
@@ -284,5 +284,5 @@
 		</tbody>
 	</table><!--kg-card-end: html-->
 	<hr>
-	<p>Under attack? Contact our <a href="https://www.cloudflare.com/under-attack-hotline">hotline</a> to speak with someone immediately.<i>Visit</i> <a href="https://1.1.1.1"><i>1.1.1.1</i></a> <i>from any device to get started with our free app that makes your Internet faster and safer.To learn more about our mission to help build a better Internet, start</i> <a href="https://www.cloudflare.com/learning/what-is-cloudflare"><i>here</i></a><i>. If you’re looking for a new career direction, check out</i> <a href="https://cloudflare.com/careers"><i>our open positions</i></a><i>.</i></p>
+	<p>Under attack? Contact our <a href="https://www.cloudflare.com/under-attack-hotline" target="_blank" rel="noopener noreferrer">hotline</a> to speak with someone immediately.<i>Visit</i> <a href="https://1.1.1.1" target="_blank" rel="noopener noreferrer"><i>1.1.1.1</i></a> <i>from any device to get started with our free app that makes your Internet faster and safer.To learn more about our mission to help build a better Internet, start</i> <a href="https://www.cloudflare.com/learning/what-is-cloudflare" target="_blank" rel="noopener noreferrer"><i>here</i></a><i>. If you’re looking for a new career direction, check out</i> <a href="https://cloudflare.com/careers" target="_blank" rel="noopener noreferrer"><i>our open positions</i></a><i>.</i></p>
 </div>

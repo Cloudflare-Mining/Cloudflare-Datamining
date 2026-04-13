@@ -6,9 +6,9 @@
 
 	</figure>
 	<p><i>(Check for the latest updates at the end of this blog: Internet traffic started to come back at around July 9, 01:00 UTC, after 17 hours)</i></p>
-	<p>An outage at one of the largest ISPs in Canada, Rogers Communications, started earlier today, July 8, 2022, and is ongoing (eight hours and counting), and is <a href="https://www.reuters.com/business/media-telecom/rogers-communications-services-down-thousands-users-downdetector-2022-07-08">impacting businesses</a> and consumers. At the time of writing, we are seeing a very small amount of traffic from Rogers, but we are only seeing residual traffic, and nothing close to a full recovery to normal traffic levels.</p>
+	<p>An outage at one of the largest ISPs in Canada, Rogers Communications, started earlier today, July 8, 2022, and is ongoing (eight hours and counting), and is <a href="https://www.reuters.com/business/media-telecom/rogers-communications-services-down-thousands-users-downdetector-2022-07-08" target="_blank" rel="noopener noreferrer">impacting businesses</a> and consumers. At the time of writing, we are seeing a very small amount of traffic from Rogers, but we are only seeing residual traffic, and nothing close to a full recovery to normal traffic levels.</p>
 	<p>Based on what we’re seeing and similar incidents in the past, we believe this is likely to be an internal error, not a cyber attack.</p>
-	<p><a href="https://radar.cloudflare.com/ca">Cloudflare Radar</a> shows a near complete loss of traffic from Rogers <a href="https://www.cloudflare.com/learning/network-layer/what-is-an-autonomous-system">ASN</a>, <a href="https://radar.cloudflare.com/asn/812?date_filter=last_24_hours">AS812</a>, that started around 08:45 UTC (all times in this blog are UTC).</p>
+	<p><a href="https://radar.cloudflare.com/ca" target="_blank" rel="noopener noreferrer">Cloudflare Radar</a> shows a near complete loss of traffic from Rogers <a href="https://www.cloudflare.com/learning/network-layer/what-is-an-autonomous-system" target="_blank" rel="noopener noreferrer">ASN</a>, <a href="https://radar.cloudflare.com/asn/812?date_filter=last_24_hours" target="_blank" rel="noopener noreferrer">AS812</a>, that started around 08:45 UTC (all times in this blog are UTC).</p>
 	<figure class="kg-card kg-image-card ">
 
 		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/tZHDhahk4nR00oDfI8szG/c36a5003edbe59c3d12d780a259f4945/Rogers1.png" alt="" class="kg-image" width="1600" height="800" loading="lazy">
@@ -22,7 +22,7 @@
 			</svg>
 		</a>
 	</div>
-	<p>Cloudflare <a href="https://radar.cloudflare.com/asn/812?date_filter=last_24_hours">data</a> shows that there was a clear spike in <a href="https://www.cloudflare.com/learning/security/glossary/what-is-bgp">BGP</a> (Border Gateway Protocol) updates after 08:15, reaching its peak at 08:45.</p>
+	<p>Cloudflare <a href="https://radar.cloudflare.com/asn/812?date_filter=last_24_hours" target="_blank" rel="noopener noreferrer">data</a> shows that there was a clear spike in <a href="https://www.cloudflare.com/learning/security/glossary/what-is-bgp" target="_blank" rel="noopener noreferrer">BGP</a> (Border Gateway Protocol) updates after 08:15, reaching its peak at 08:45.</p>
 	<figure class="kg-card kg-image-card ">
 
 		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/15UuM3cVejUo6RdHzU7SBq/0cc79af234bdecfb3cdd2c87582c6496/Rogers2.png" alt="" class="kg-image" width="1600" height="800" loading="lazy">
@@ -49,7 +49,7 @@
 
 	</figure>
 	<p>Outages happen more regularly than people think. This week we did an <a href="https://blog.cloudflare.com/q2-2022-internet-disruption-summary">Internet disruptions overview for Q2 2022</a> where you can get a better sense of that, and on how collaborative and interconnected the Internet (the network of networks) is. And not so long ago <a href="https://blog.cloudflare.com/october-2021-facebook-outage">Facebook had an hours long outage</a> where BGP updates showed Facebook itself disappearing from the Internet.</p>
-	<p>Follow <a href="https://twitter.com/CloudflareRadar">@CloudflareRadar</a> on Twitter for updates on Internet disruptions as they occur, and find up-to-date information on Internet trends using <a href="https://radar.cloudflare.com">Cloudflare Radar</a>.</p><!--kg-card-begin: html--><a href="https://cloudflare.tv">
+	<p>Follow <a href="https://twitter.com/CloudflareRadar" target="_blank" rel="noopener noreferrer">@CloudflareRadar</a> on Twitter for updates on Internet disruptions as they occur, and find up-to-date information on Internet trends using <a href="https://radar.cloudflare.com" target="_blank" rel="noopener noreferrer">Cloudflare Radar</a>.</p><!--kg-card-begin: html--><a href="https://cloudflare.tv">
 		<img alt="Cloudflare TV" src="http://staging.blog.mrk.cfdata.org/content/images/2020/06/tube-blog-banner.png">
 	</a>
 	<p></p><!--kg-card-end: html-->
@@ -80,7 +80,7 @@
 		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1H3QK3p9qoLO1cDOpyRQws/4720379465eecab90cd536e8bdad69f4/Rogers8.png" alt="" class="kg-image" width="1600" height="340" loading="lazy">
 
 	</figure>
-	<p>It seems that the internal sessions in the Rogers core network flap, causing withdrawals when going down, and advertisements when coming up.Rogers Senior Vice President, Kye Prigg, said a few hours ago in an <a href="https://twitter.com/PnPCBC/status/1545512971878662145">interview</a> that they haven’t identified the root cause for the outage and still don’t have an estimate on when the service will be restored.</p>
+	<p>It seems that the internal sessions in the Rogers core network flap, causing withdrawals when going down, and advertisements when coming up.Rogers Senior Vice President, Kye Prigg, said a few hours ago in an <a href="https://twitter.com/PnPCBC/status/1545512971878662145" target="_blank" rel="noopener noreferrer">interview</a> that they haven’t identified the root cause for the outage and still don’t have an estimate on when the service will be restored.</p>
 	<div class="flex anchor relative">
 		<h3 id="update-july-9-2022-01-50-utc-21-50-est">UPDATE: July 9, 2022, 01:50 UTC (21:50 EST)</h3>
 		<a href="https://blog.cloudflare.com/#update-july-9-2022-01-50-utc-21-50-est" aria-hidden="true" class="relative sm:absolute sm:-start-5">
@@ -109,7 +109,7 @@
 			</svg>
 		</a>
 	</div>
-	<p>Rogers traffic seems to be climbing back up to usual levels, for the past eight hours. Cloudflare's data shows that Saturday, July 9, at 08:40 UTC, there was around 76% of the previous day traffic at the same time. You can track it <a href="https://radar.cloudflare.com/asn/812?date_filter=last_7_days">here</a>.</p>
+	<p>Rogers traffic seems to be climbing back up to usual levels, for the past eight hours. Cloudflare's data shows that Saturday, July 9, at 08:40 UTC, there was around 76% of the previous day traffic at the same time. You can track it <a href="https://radar.cloudflare.com/asn/812?date_filter=last_7_days" target="_blank" rel="noopener noreferrer">here</a>.</p>
 	<figure class="kg-card kg-image-card ">
 
 		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7tpuR6DegLsBaBms5scN2L/06cc0f7750cc77d39d23641ebcaa0ff4/unnamed-2.png" alt="" class="kg-image" width="1600" height="800" loading="lazy">

@@ -1,6 +1,6 @@
 <div class="mb2 gray5">11 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7KiVSk77axvMmgv3UKTyIC/d3844f6471553d176c53f10b1cfe3c9e/building-fast-interpreters-in-rust.png" alt="">
 <div class="post-content lh-copy gray1">
-	<p>In the <a href="https://blog.cloudflare.com/how-we-made-firewall-rules">previous post</a> we described the Firewall Rules architecture and how the different components are integrated together. We also mentioned that we created a configurable Rust library for writing and executing <a href="https://www.wireshark.org">Wireshark</a>®-like filters in different parts of our stack written in Go, Lua, C, C++ and JavaScript Workers.</p>
+	<p>In the <a href="https://blog.cloudflare.com/how-we-made-firewall-rules">previous post</a> we described the Firewall Rules architecture and how the different components are integrated together. We also mentioned that we created a configurable Rust library for writing and executing <a href="https://www.wireshark.org" target="_blank" rel="noopener noreferrer">Wireshark</a>®-like filters in different parts of our stack written in Go, Lua, C, C++ and JavaScript Workers.</p>
 	<blockquote>
 		<p>With a mixed set of requirements of performance, memory safety, low memory use, and the capability to be part of other products that we’re working on like Spectrum, Rust stood out as the strongest option.</p>
 	</blockquote>
@@ -9,7 +9,7 @@
 		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3emjeRzzAw9z6ipj1FIjoD/fbfb5538cf10d6a5f0c096676dabfa63/Langs.png" alt="" class="kg-image" width="1330" height="723" loading="lazy">
 
 	</figure>
-	<p>We have now open-sourced this library under our Github account: <a href="https://github.com/cloudflare/wirefilter">https://github.com/cloudflare/wirefilter</a>. This post will dive into its design, explain why we didn’t use a parser generator and how our execution engine balances security, runtime performance and compilation cost for the generated filters.</p>
+	<p>We have now open-sourced this library under our Github account: <a href="https://github.com/cloudflare/wirefilter" target="_blank" rel="noopener noreferrer">https://github.com/cloudflare/wirefilter</a>. This post will dive into its design, explain why we didn’t use a parser generator and how our execution engine balances security, runtime performance and compilation cost for the generated filters.</p>
 	<div class="flex anchor relative">
 		<h3 id="parsing-wireshark-syntax">Parsing Wireshark syntax</h3>
 		<a href="https://blog.cloudflare.com/#parsing-wireshark-syntax" aria-hidden="true" class="relative sm:absolute sm:-start-5">
@@ -25,10 +25,10 @@
 			<p>Manual char-by-char parsing using state machines, regular expression and/or native string APIs.</p>
 		</li>
 		<li>
-			<p>Parser combinators, which use higher-level functions to combine different parsers together (in Rust-land these are represented by <a href="https://github.com/Geal/nom">nom</a>, <a href="https://github.com/m4rw3r/chomp">chomp</a>, <a href="https://github.com/Marwes/combine">combine</a> and <a href="https://crates.io/keywords/parser-combinators">others</a>).</p>
+			<p>Parser combinators, which use higher-level functions to combine different parsers together (in Rust-land these are represented by <a href="https://github.com/Geal/nom" target="_blank" rel="noopener noreferrer">nom</a>, <a href="https://github.com/m4rw3r/chomp" target="_blank" rel="noopener noreferrer">chomp</a>, <a href="https://github.com/Marwes/combine" target="_blank" rel="noopener noreferrer">combine</a> and <a href="https://crates.io/keywords/parser-combinators" target="_blank" rel="noopener noreferrer">others</a>).</p>
 		</li>
 		<li>
-			<p>Fully automated generators which, provided with a grammar, can generate a fully working parser for you (examples are <a href="https://github.com/kevinmehall/rust-peg">peg</a>, <a href="https://github.com/pest-parser/pest">pest</a>, <a href="https://github.com/lalrpop/lalrpop">LALRPOP</a>, etc.).</p>
+			<p>Fully automated generators which, provided with a grammar, can generate a fully working parser for you (examples are <a href="https://github.com/kevinmehall/rust-peg" target="_blank" rel="noopener noreferrer">peg</a>, <a href="https://github.com/pest-parser/pest" target="_blank" rel="noopener noreferrer">pest</a>, <a href="https://github.com/lalrpop/lalrpop" target="_blank" rel="noopener noreferrer">LALRPOP</a>, etc.).</p>
 		</li>
 	</ol>
 	<div class="flex anchor relative">
@@ -39,7 +39,7 @@
 			</svg>
 		</a>
 	</div>
-	<p>But before trying to figure out which approach would work best for us, let’s take a look at some of the simple <a href="https://wiki.wireshark.org/DisplayFilters">official Wireshark examples</a>, to understand what we’re dealing with:</p>
+	<p>But before trying to figure out which approach would work best for us, let’s take a look at some of the simple <a href="https://wiki.wireshark.org/DisplayFilters" target="_blank" rel="noopener noreferrer">official Wireshark examples</a>, to understand what we’re dealing with:</p>
 	<ul>
 		<li>
 			<p><code>ip.len le 1500</code></p>
@@ -64,7 +64,7 @@
 		</li>
 	</ul>
 	<p>You can see that the right hand side of a comparison can be a number, an IPv4 / IPv6 address, a set of bytes or a string. They are used interchangeably, without any special notion of a type, which is fine given that they are easily distinguishable… or are they?</p>
-	<p>Let’s take a look at some <a href="https://en.wikipedia.org/wiki/IPv6#Address_representation">IPv6 forms</a> on Wikipedia:</p>
+	<p>Let’s take a look at some <a href="https://en.wikipedia.org/wiki/IPv6#Address_representation" target="_blank" rel="noopener noreferrer">IPv6 forms</a> on Wikipedia:</p>
 	<ul>
 		<li>
 			<p><code>2001:0db8:0000:0000:0000:ff00:0042:8329</code></p>
@@ -245,7 +245,7 @@ test parsing  ... bench:     197,574 ns/iter (+/- 16,568)</code></pre>
 	<p>First of all, even though you’re not loading untrusted code over the network, you still need to generate it into the memory, mark that memory as executable and trust that it will always contain valid code and not garbage or something worse. Depending on your choice of libraries and complexity of the DSL, you might be willing to trust it or put heavy sandboxing around, but, either way, it’s a risk that one must explicitly be willing to take.</p>
 	<p>Another issue is the cost of compilation itself. Usually, when measuring the speed of native code vs interpretation, the cost of compilation is not taken into the account because it happens out of the process.</p>
 	<p>With JIT compilers though, it’s different as you’re now compiling things the moment they’re used and cache the native code only for a limited time. Turns out, generating native code can be rather expensive, so you must be absolutely sure that the compilation cost doesn’t offset any benefits you might gain from the native execution speedup.</p>
-	<p>I’ve talked a bit more about this at <a href="https://www.meetup.com/rust-atx">Rust Austin meetup</a> and, I believe, this topic deserves a separate blog post so won’t go into much more details here, but feel free to check out the slides: <a href="https://www.slideshare.net/RReverser/building-fast-interpreters-in-rust">https://www.slideshare.net/RReverser/building-fast-interpreters-in-rust</a>. Oh, and if you’re in Austin, you should pop into our office for the next meetup!</p>
+	<p>I’ve talked a bit more about this at <a href="https://www.meetup.com/rust-atx" target="_blank" rel="noopener noreferrer">Rust Austin meetup</a> and, I believe, this topic deserves a separate blog post so won’t go into much more details here, but feel free to check out the slides: <a href="https://www.slideshare.net/RReverser/building-fast-interpreters-in-rust" target="_blank" rel="noopener noreferrer">https://www.slideshare.net/RReverser/building-fast-interpreters-in-rust</a>. Oh, and if you’re in Austin, you should pop into our office for the next meetup!</p>
 	<p>Let’s get back to our original question: is there anything else we can do to get the best balance between security, runtime performance and compilation cost? Turns out, there is.</p>
 	<div class="flex anchor relative">
 		<h4 id="dynamic-dispatch-and-closures-to-the-rescue">Dynamic dispatch and closures to the rescue</h4>
@@ -367,7 +367,7 @@ match op {
 	<p>Why would we be interested in that? Apart from the parts of the stack where our rules would run, and the API that publishes them, we also have users who like to write their own rules. To do that, they use a UI editor that allows either writing raw expressions in Wireshark syntax or as a WYSIWYG builder.</p>
 	<p>We thought it would be great to expose the parser - the same one as we use on the backend - to the frontend JavaScript for a consistent real-time editing experience. And, honestly, we were just looking for an excuse to play with WASM support in Rust.</p>
 	<p>WebAssembly could be targeted via regular C FFI, but in that case you would need to manually provide all the glue for the JavaScript side to hold and convert strings, arrays and objects forth and back.</p>
-	<p>In Rust, this is all handled by <a href="https://github.com/rustwasm/wasm-bindgen">wasm-bindgen</a>. While it provides various attributes and methods for direct conversions, the simplest way to get started is to activate the “serde” feature which will automatically convert types using <code>JSON.parse</code>, <code>JSON.stringify</code> and <code>[serde_json](https://docs.serde.rs/serde_json/)</code> under the hood.</p>
+	<p>In Rust, this is all handled by <a href="https://github.com/rustwasm/wasm-bindgen" target="_blank" rel="noopener noreferrer">wasm-bindgen</a>. While it provides various attributes and methods for direct conversions, the simplest way to get started is to activate the “serde” feature which will automatically convert types using <code>JSON.parse</code>, <code>JSON.stringify</code> and <code>[serde_json](https://docs.serde.rs/serde_json/)</code> under the hood.</p>
 	<p>In our case, creating a wrapper for the parser with only 20 lines of code was enough to get started and have all the WASM code + JavaScript glue required:</p>
 	<pre class="language-rust"><code class="language-rust">#[wasm_bindgen]
 pub struct Scheme(wirefilter::Scheme);
@@ -388,7 +388,7 @@ impl Scheme {
        JsValue::from_serde(&amp;filter).map_err(into_js_error)
    }
 }</code></pre>
-	<p>And by using a higher-level tool called <a href="https://github.com/rustwasm/wasm-pack">wasm-pack</a>, we also got automated npm package generation and publishing, for free.</p>
+	<p>And by using a higher-level tool called <a href="https://github.com/rustwasm/wasm-pack" target="_blank" rel="noopener noreferrer">wasm-pack</a>, we also got automated npm package generation and publishing, for free.</p>
 	<p>This is not used in the production UI yet because we still need to figure out some details for unsupported browsers, but it’s great to have all the tooling and packages ready with minimal efforts. Extending and reusing the same package, it should be even possible to run filters in Cloudflare Workers too (which <a href="https://blog.cloudflare.com/webassembly-on-cloudflare-workers">also support WebAssembly</a>).</p>
 	<div class="flex anchor relative">
 		<h3 id="the-future">The future</h3>

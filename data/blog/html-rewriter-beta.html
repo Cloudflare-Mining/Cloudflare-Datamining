@@ -3,7 +3,7 @@
 <div class="post-content lh-copy gray1">
 	<p></p>
 	<p>Today, we’re excited to announce HTMLRewriter beta — a streaming HTML parser with an easy to use selector based JavaScript API for DOM manipulation, available in the Cloudflare Workers runtime.</p>
-	<p>For those of you who are unfamiliar, <a href="https://workers.cloudflare.com">Cloudflare Workers</a> is a lightweight serverless platform that allows developers to leverage Cloudflare’s network to augment existing applications or create entirely new ones without configuring or maintaining infrastructure.</p>
+	<p>For those of you who are unfamiliar, <a href="https://workers.cloudflare.com" target="_blank" rel="noopener noreferrer">Cloudflare Workers</a> is a lightweight serverless platform that allows developers to leverage Cloudflare’s network to augment existing applications or create entirely new ones without configuring or maintaining infrastructure.</p>
 	<div class="flex anchor relative">
 		<h2 id="static-sites-to-dynamic-applications">Static Sites to Dynamic Applications</h2>
 		<a href="https://blog.cloudflare.com/#static-sites-to-dynamic-applications" aria-hidden="true" class="relative sm:absolute sm:-start-5">
@@ -12,9 +12,9 @@
 			</svg>
 		</a>
 	</div>
-	<p>On Friday we announced <a href="https://workers.cloudflare.com/sites">Workers Sites</a>: a static site deployment workflow built into the <a href="https://github.com/cloudflare/wrangler">Wrangler</a> CLI tool. Now, paired with the HTML Rewriter API, you can perform DOM transformations on top of your static HTML, right on the Cloudflare edge.</p>
+	<p>On Friday we announced <a href="https://workers.cloudflare.com/sites" target="_blank" rel="noopener noreferrer">Workers Sites</a>: a static site deployment workflow built into the <a href="https://github.com/cloudflare/wrangler" target="_blank" rel="noopener noreferrer">Wrangler</a> CLI tool. Now, paired with the HTML Rewriter API, you can perform DOM transformations on top of your static HTML, right on the Cloudflare edge.</p>
 	<p>You could previously do this by ingesting the entire body of the response into the Worker, however, that method was prone to introducing a few issues. First, parsing a large file was bound to run into memory or CPU limits. Additionally, it would impact your TTFB as the body could no longer be streamed, and the browser would be prevented from doing any speculative parsing to load subsequent assets.</p>
-	<p>HTMLRewriter was the missing piece to having your application fully live on the edge – soup to nuts. You can <a href="https://developers.cloudflare.com/workers/tutorials/build-a-serverless-function">build your API</a> on Cloudflare Workers as a serverless function, have the static elements of your frontend hosted on <a href="https://workers.cloudflare.com/sites">Workers Sites</a>, and dynamically tie them together using the HTMLRewriter API.</p>
+	<p>HTMLRewriter was the missing piece to having your application fully live on the edge – soup to nuts. You can <a href="https://developers.cloudflare.com/workers/tutorials/build-a-serverless-function" target="_blank" rel="noopener noreferrer">build your API</a> on Cloudflare Workers as a serverless function, have the static elements of your frontend hosted on <a href="https://workers.cloudflare.com/sites" target="_blank" rel="noopener noreferrer">Workers Sites</a>, and dynamically tie them together using the HTMLRewriter API.</p>
 	<div class="flex anchor relative">
 		<h2 id="enter-jamstack">Enter JAMStack</h2>
 		<a href="https://blog.cloudflare.com/#enter-jamstack" aria-hidden="true" class="relative sm:absolute sm:-start-5">
@@ -25,8 +25,8 @@
 	</div>
 	<p>You may be thinking “wait!”, JavaScript, serverless APIs… this is starting to sound a little familiar. It sounded familiar to us too.</p>
 	<blockquote>
-		<p><a href="https://t.co/1yWAxV6KMK">pic.twitter.com/1yWAxV6KMK</a></p>
-		<p>— steveklabnik (@steveklabnik) <a href="https://twitter.com/steveklabnik/status/1177615137588568065?ref_src=twsrc%5Etfw">September 27, 2019</a></p>
+		<p><a href="https://t.co/1yWAxV6KMK" target="_blank" rel="noopener noreferrer">pic.twitter.com/1yWAxV6KMK</a></p>
+		<p>— steveklabnik (@steveklabnik) <a href="https://twitter.com/steveklabnik/status/1177615137588568065?ref_src=twsrc%5Etfw" target="_blank" rel="noopener noreferrer">September 27, 2019</a></p>
 	</blockquote>
 	<p>Is this JAMStack?</p>
 	<p>First, let’s answer the question — what is JAMStack? JAMStack is a term coined by Mathias Biilmann, that stands for JavaScript, APIs, and Markup. JAMStack applications are intended to be very easy to scale since they rely on simplified static site deployment. They are also intended to simplify the web development workflow, especially for frontend developers, by bringing data manipulation and rendering that traditionally happened on the backend to the front-end and interacting with the backend only via API calls.</p>
@@ -60,7 +60,7 @@ async function handleRequest(req) {
   return REWRITER.transform(res);
 }</code></pre>
 	<p>In the example above, we create a new instance of HTMLRewriter, and use the selector to find all instances of <code>a</code> and <code>img</code> elements, and call the <code>rewriteURL</code> function on the <code>href</code> and <code>src</code> properties respectively.</p>
-	<p><b>Internationalization and localization tutorial:</b> If you’d like to take things further, we have a <a href="https://developers.cloudflare.com/workers/tutorials/localize-a-website">full tutorial</a> on how to make your application i18n friendly using HTMLRewriter.</p>
+	<p><b>Internationalization and localization tutorial:</b> If you’d like to take things further, we have a <a href="https://developers.cloudflare.com/workers/tutorials/localize-a-website" target="_blank" rel="noopener noreferrer">full tutorial</a> on how to make your application i18n friendly using HTMLRewriter.</p>
 	<figure class="kg-card kg-image-card ">
 
 		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6Hx5zCalSwUhO7RfpEy6v/94ec193602747f661e591403b262b118/i18n-htmlrewriter.jpg" alt="" class="kg-image" width="1280" height="779" loading="lazy">
@@ -74,7 +74,7 @@ async function handleRequest(req) {
 			</svg>
 		</a>
 	</div>
-	<p>If you’re already using Cloudflare Workers, you can simply get started with the HTMLRewriter by consulting our <a href="https://developers.cloudflare.com/workers/reference/apis/html-rewriter">documentation</a> (no sign up or anything else required!). If you’re new to Cloudflare Workers, we recommend starting out by signing up <a href="https://workers.cloudflare.com/sign-up">here</a>.</p>
+	<p>If you’re already using Cloudflare Workers, you can simply get started with the HTMLRewriter by consulting our <a href="https://developers.cloudflare.com/workers/reference/apis/html-rewriter" target="_blank" rel="noopener noreferrer">documentation</a> (no sign up or anything else required!). If you’re new to Cloudflare Workers, we recommend starting out by signing up <a href="https://workers.cloudflare.com/sign-up" target="_blank" rel="noopener noreferrer">here</a>.</p>
 	<p>If you’re interested in the nitty, gritty details of how the HTMLRewriter works, and learning more than you’ve ever wanted to know about parsing the DOM, stay tuned. We’re excited to share the details with you in a future post.</p>
 	<p>One last thing, you are not limited to Workers Sites only. Since Cloudflare Workers can be deployed as a proxy in front of any application you can use the HTMLRewriter as an elegant way to augment your existing site, and easily add dynamic elements, regardless of backend.</p>
 	<div class="flex anchor relative">
@@ -85,7 +85,7 @@ async function handleRequest(req) {
 			</svg>
 		</a>
 	</div>
-	<p>We’re always iterating and working to improve our product based on customer feedback! Please help us out by <a href="https://docs.google.com/forms/d/e/1FAIpQLSffHlmO_4iyvDU6KbPLpZ820gZBymIlbjq6KL-oZCC97cCnTw/viewform?usp=sf_link">filling out our survey</a> about your experience.</p>
+	<p>We’re always iterating and working to improve our product based on customer feedback! Please help us out by <a href="https://docs.google.com/forms/d/e/1FAIpQLSffHlmO_4iyvDU6KbPLpZ820gZBymIlbjq6KL-oZCC97cCnTw/viewform?usp=sf_link" target="_blank" rel="noopener noreferrer">filling out our survey</a> about your experience.</p>
 	<hr>
-	<p><i>Have you built something interesting with Workers? Let us know </i><a href="https://twitter.com/CloudflareDev"><i>@CloudflareDev</i></a><i>!</i></p>
+	<p><i>Have you built something interesting with Workers? Let us know </i><a href="https://twitter.com/CloudflareDev" target="_blank" rel="noopener noreferrer"><i>@CloudflareDev</i></a><i>!</i></p>
 </div>

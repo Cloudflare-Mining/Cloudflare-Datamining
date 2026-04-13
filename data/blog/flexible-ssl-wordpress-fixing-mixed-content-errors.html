@@ -1,7 +1,7 @@
 <div class="mb2 gray5">2 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4UkqASeKhsX28KaBIqH4KE/e886cde3a8e94735cfd43d765dcfcf7d/flexible-ssl-wordpress-fixing-mixed-content-errors.png" alt="">
 <div class="post-content lh-copy gray1">
 	<p></p>
-	<p>As many are aware, CloudFlare launched <a href="https://support.google.com/webmasters/answer/6073543?utm_source=wmx_blog&amp;utm_medium=referral&amp;utm_campaign=tls_en_post">Universal SSL</a> several months ago. We saw lots of customers sign up and start using these new, <a href="https://www.cloudflare.com/application-services/products/ssl">free SSL certificates</a>. For many customers that didn’t already have an SSL certificate, they were able to use “Flexible SSL”.</p>
+	<p>As many are aware, CloudFlare launched <a href="https://support.google.com/webmasters/answer/6073543?utm_source=wmx_blog&amp;utm_medium=referral&amp;utm_campaign=tls_en_post" target="_blank" rel="noopener noreferrer">Universal SSL</a> several months ago. We saw lots of customers sign up and start using these new, <a href="https://www.cloudflare.com/application-services/products/ssl" target="_blank" rel="noopener noreferrer">free SSL certificates</a>. For many customers that didn’t already have an SSL certificate, they were able to use “Flexible SSL”.</p>
 	<p>Flexible SSL creates a secure (HTTPS) connection between the website visitor and CloudFlare and then an in-secure (HTTP) connection between CloudFlare and the origin server. For any site using absolute links to assets (i.e. javascript, css, and image files), this can lead to a “Mixed Content” error.</p>
 	<figure class="kg-card kg-image-card ">
 
@@ -30,7 +30,7 @@
 	<pre class="language-bash"><code class="language-bash">http://www.example.com/wp/wp-content/themes/twentyfifteen/style.css?ver=4.1</code></pre>
 	<p>We’ll remove the “http:” part to make this into a relative protocol:</p>
 	<pre class="language-bash"><code class="language-bash">//www.example.com/wp/wp-content/themes/twentyfifteen/style.css?ver=4.1</code></pre>
-	<p>A further update to this rewriting doesn’t enable this rewriting for canonical URLs, since Google and other search engines expect this to be an absolute URL. Google also <a href="https://support.google.com/webmasters/answer/6073543?utm_source=wmx_blog&amp;utm_medium=referral&amp;utm_campaign=tls_en_post">recommends securing your site with SSL</a>, and being able to enable Flexible SSL is a great way to achieve this SEO boost!</p>
+	<p>A further update to this rewriting doesn’t enable this rewriting for canonical URLs, since Google and other search engines expect this to be an absolute URL. Google also <a href="https://support.google.com/webmasters/answer/6073543?utm_source=wmx_blog&amp;utm_medium=referral&amp;utm_campaign=tls_en_post" target="_blank" rel="noopener noreferrer">recommends securing your site with SSL</a>, and being able to enable Flexible SSL is a great way to achieve this SEO boost!</p>
 	<div class="flex anchor relative">
 		<h4 id="relative-protocol">Relative Protocol</h4>
 		<a href="https://blog.cloudflare.com/#relative-protocol" aria-hidden="true" class="relative sm:absolute sm:-start-5">
@@ -49,8 +49,8 @@
 			</svg>
 		</a>
 	</div>
-	<p>Protocol rewriting is on by default in our current version of the Wordpress plugin, so you should be able to enable Flexible SSL on your account and have traffic go to <a href="https://www.yourdomain.com">https://www.yourdomain.com</a>.</p>
-	<p>CloudFlare recommends also adding a page rule for <a href="http://www.yourdomain.com">http://www.yourdomain.com</a>* that redirects all traffic to HTTPS (assuming that Wordpress is set up for the WWW subdomain and isn’t within a directory on your domain).</p>
+	<p>Protocol rewriting is on by default in our current version of the Wordpress plugin, so you should be able to enable Flexible SSL on your account and have traffic go to <a href="https://www.yourdomain.com" target="_blank" rel="noopener noreferrer">https://www.yourdomain.com</a>.</p>
+	<p>CloudFlare recommends also adding a page rule for <a href="http://www.yourdomain.com" target="_blank" rel="noopener noreferrer">http://www.yourdomain.com</a>* that redirects all traffic to HTTPS (assuming that Wordpress is set up for the WWW subdomain and isn’t within a directory on your domain).</p>
 	<p>With these two changes we can secure all traffic to your Wordpress site between the customer and CloudFlare’s server.</p>
 	<div class="flex anchor relative">
 		<h4 id="limitations-of-protocol-rewriting">Limitations of Protocol Rewriting</h4>

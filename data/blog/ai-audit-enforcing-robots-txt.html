@@ -11,9 +11,9 @@
 			</svg>
 		</a>
 	</div>
-	<p><a href="https://www.cloudflare.com/learning/bots/what-is-robots-txt"><u>Robots.txt</u></a> is a plain text file hosted on your domain that implements the <a href="https://www.rfc-editor.org/rfc/rfc9309.html"><u>Robots Exclusion Protocol</u></a>, a standard that has been around since 1994. This file tells crawlers like Google, Bing, and many others which parts of your site, if any, they are allowed to access.&nbsp;</p>
+	<p><a href="https://www.cloudflare.com/learning/bots/what-is-robots-txt" target="_blank" rel="noopener noreferrer"><u>Robots.txt</u></a> is a plain text file hosted on your domain that implements the <a href="https://www.rfc-editor.org/rfc/rfc9309.html" target="_blank" rel="noopener noreferrer"><u>Robots Exclusion Protocol</u></a>, a standard that has been around since 1994. This file tells crawlers like Google, Bing, and many others which parts of your site, if any, they are allowed to access.&nbsp;</p>
 	<p>There are many reasons why site owners would want to define which portions of their websites crawlers are allowed to access: they might not want certain content available on search engines or social networks, they might trust one platform more than another, or they might simply want to reduce automated traffic to their servers.</p>
-	<p>With the advent of <a href="https://www.cloudflare.com/learning/ai/what-is-generative-ai"><u>generative AI</u></a>, AI services have started crawling the Internet to collect training data for their models. These models are often proprietary and commercial and are used to generate new content. Many content creators and publishers that want to exercise control over how their content is used have started using robots.txt to declare policies that cover these AI bots, in addition to the traditional search engines.</p>
+	<p>With the advent of <a href="https://www.cloudflare.com/learning/ai/what-is-generative-ai" target="_blank" rel="noopener noreferrer"><u>generative AI</u></a>, AI services have started crawling the Internet to collect training data for their models. These models are often proprietary and commercial and are used to generate new content. Many content creators and publishers that want to exercise control over how their content is used have started using robots.txt to declare policies that cover these AI bots, in addition to the traditional search engines.</p>
 	<p>Here’s an abbreviated real-world example of the robots.txt policy from a top online news site:</p>
 	<pre class="language-RUST"><code class="language-RUST">User-agent: GPTBot
 Disallow: /
@@ -40,7 +40,7 @@ Disallow: /
 		</a>
 	</div>
 	<p>Compliance with the Robots Exclusion Protocol has historically been voluntary.&nbsp;</p>
-	<p>That’s where our new feature comes in. We’ve extended <a href="https://blog.cloudflare.com/cloudflare-ai-audit-control-ai-content-crawlers"><u>AI Crawl Control</u></a> to give our customers both the visibility into how AI services providers honor their robots.txt policies <i>and</i> the ability to enforce those policies at the network level in your <a href="https://developers.cloudflare.com/waf"><u>WAF</u></a>.&nbsp;</p>
+	<p>That’s where our new feature comes in. We’ve extended <a href="https://blog.cloudflare.com/cloudflare-ai-audit-control-ai-content-crawlers"><u>AI Crawl Control</u></a> to give our customers both the visibility into how AI services providers honor their robots.txt policies <i>and</i> the ability to enforce those policies at the network level in your <a href="https://developers.cloudflare.com/waf" target="_blank" rel="noopener noreferrer"><u>WAF</u></a>.&nbsp;</p>
 	<p>Your robots.txt file declares your policy, but now we can help you enforce it. You might even call it … your Robotcop.&nbsp;&nbsp;</p>
 	<div class="flex anchor relative">
 		<h3 id="how-it-works">How it works</h3>

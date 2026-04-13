@@ -1,7 +1,7 @@
 <div class="mb2 gray5">4 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4KH7AZv9ab8HD2mA9vxMim/52c246d506c88d16a1921516bbe740d0/enhancing-privacy-focused-web-analytics-to-better-meet-your-metrics-needs.png" alt="">
 <div class="post-content lh-copy gray1">
 	<p></p>
-	<p>Last December we opened up our brand new privacy-first Web Analytics platform to everyone. Today, we’re excited to announce the release of three of the most requested features: adding multiple websites to an account, supporting Single-page Applications (SPA) as well as showing <a href="https://www.cloudflare.com/learning/performance/what-are-core-web-vitals">Core Web Vitals</a> in Web Analytics.</p>
+	<p>Last December we opened up our brand new privacy-first Web Analytics platform to everyone. Today, we’re excited to announce the release of three of the most requested features: adding multiple websites to an account, supporting Single-page Applications (SPA) as well as showing <a href="https://www.cloudflare.com/learning/performance/what-are-core-web-vitals" target="_blank" rel="noopener noreferrer">Core Web Vitals</a> in Web Analytics.</p>
 	<div class="flex anchor relative">
 		<h3 id="bringing-privacy-first-analytics-to-everyone">Bringing privacy-first analytics to everyone</h3>
 		<a href="https://blog.cloudflare.com/#bringing-privacy-first-analytics-to-everyone" aria-hidden="true" class="relative sm:absolute sm:-start-5">
@@ -12,7 +12,7 @@
 	</div>
 	<p>Since we launched two months ago, we’ve received a lot of feedback from our users. We are really happy that we are able to provide our privacy-first analytics to so many of you.</p>
 	<p>Popular analytics vendors have business models driven by ad revenue. Using them implies a bargain: they track visitor behavior and create buyer profiles to retarget your visitors with ads; in exchange, you get free analytics.</p>
-	<p>Our mission is to help build a better Internet, and part of that is to deliver essential web analytics to everyone with a website without compromising user <a href="https://www.cloudflare.com/learning/privacy/what-is-data-privacy">privacy</a>. We’ve never been interested in tracking users or selling advertising. We don’t want to know what you do on the Internet — it’s not our business.</p>
+	<p>Our mission is to help build a better Internet, and part of that is to deliver essential web analytics to everyone with a website without compromising user <a href="https://www.cloudflare.com/learning/privacy/what-is-data-privacy" target="_blank" rel="noopener noreferrer">privacy</a>. We’ve never been interested in tracking users or selling advertising. We don’t want to know what you do on the Internet — it’s not our business.</p>
 	<div class="flex anchor relative">
 		<h3 id="you-now-can-measure-multiple-sites">You now can measure multiple sites</h3>
 		<a href="https://blog.cloudflare.com/#you-now-can-measure-multiple-sites" aria-hidden="true" class="relative sm:absolute sm:-start-5">
@@ -62,7 +62,7 @@
 			</svg>
 		</a>
 	</div>
-	<p>With frameworks such as Angular, React, or Vue.js being very popular, one of the most requested features for Web Analytics was supporting single-page applications (<a href="https://en.wikipedia.org/wiki/Single-page_application">SPA</a>).</p>
+	<p>With frameworks such as Angular, React, or Vue.js being very popular, one of the most requested features for Web Analytics was supporting single-page applications (<a href="https://en.wikipedia.org/wiki/Single-page_application" target="_blank" rel="noopener noreferrer">SPA</a>).</p>
 	<p>SPAs work differently from a standard web application or website because they don't load a new page every time there's user interaction. Instead, they dynamically rewrite the current web page with new data retrieved from the web server.</p>
 	<p>Since we've previously collected metrics only when the page load event is triggered, we had to change the transmission and interpretation of the signals from our JavaScript snippet to include sending metrics whenever there are any route changes made by the application or the website.</p>
 	<p>We are happy to announce that we successfully implemented SPA support and enabled it for all customers.</p>
@@ -78,7 +78,7 @@
 	<pre class="language-bash"><code class="language-bash">https://cloudflare.com/#blog
 https://cloudflare.com/#marketing</code></pre>
 	<p>The portion separated by the # is called a fragment, and based on the fragment changes, SPAs dynamically pull the resources to rewrite the webpage. That is how it was done before the HTML 5 History API was introduced and widely used. These days most SPA libraries/frameworks use HTML 5 History API to keep your UI in sync with the URL instead of using # (although, some still support #-based routers). In most cases you won’t easily notice a SPA by looking at the URL path.</p>
-	<p>To support analytics for SPAs, we implemented sending additional payloads to the beacon endpoint, which collects the data for analytics, whenever we detect any changes to the state of the <a href="https://developer.mozilla.org/en-US/docs/Web/API/History/state">History API</a>. The JavaScript snippet overrides the <a href="https://developer.mozilla.org/en-US/docs/Web/API/History/pushState"><b>pushState</b></a> method and listens to the <a href="https://developer.mozilla.org/en-US/docs/Web/API/WindowEventHandlers/onpopstate"><b>onpopstate</b></a> event. By tracking the History API's state, you'll now see the route changes in SPAs within the Web Analytics dashboard.</p>
+	<p>To support analytics for SPAs, we implemented sending additional payloads to the beacon endpoint, which collects the data for analytics, whenever we detect any changes to the state of the <a href="https://developer.mozilla.org/en-US/docs/Web/API/History/state" target="_blank" rel="noopener noreferrer">History API</a>. The JavaScript snippet overrides the <a href="https://developer.mozilla.org/en-US/docs/Web/API/History/pushState" target="_blank" rel="noopener noreferrer"><b>pushState</b></a> method and listens to the <a href="https://developer.mozilla.org/en-US/docs/Web/API/WindowEventHandlers/onpopstate" target="_blank" rel="noopener noreferrer"><b>onpopstate</b></a> event. By tracking the History API's state, you'll now see the route changes in SPAs within the Web Analytics dashboard.</p>
 	<p>Some older SPA libraries/frameworks still support hash-based routers. If your application or website is using a hash-based router, unfortunately it is not yet supported in Web Analytics. However, this is our initial launch to support SPAs, so stay tuned for any improvements and updates.</p>
 	<div class="flex anchor relative">
 		<h3 id="how-can-i-add-my-single-page-application-to-web-analytics">How can I add my Single Page Application to Web Analytics?</h3>

@@ -9,10 +9,10 @@
 			<p>Zone Analytics API with 2 endpoints</p>
 			<ul>
 				<li>
-					<p><a href="https://api.cloudflare.com/#zone-analytics-dashboard">Dashboard endpoint</a></p>
+					<p><a href="https://api.cloudflare.com/#zone-analytics-dashboard" target="_blank" rel="noopener noreferrer">Dashboard endpoint</a></p>
 				</li>
 				<li>
-					<p><a href="https://api.cloudflare.com/#zone-analytics-analytics-by-co-locations">Co-locations endpoint</a> (Enterprise plan only)</p>
+					<p><a href="https://api.cloudflare.com/#zone-analytics-analytics-by-co-locations" target="_blank" rel="noopener noreferrer">Co-locations endpoint</a> (Enterprise plan only)</p>
 				</li>
 			</ul>
 		</li>
@@ -91,7 +91,7 @@
 		</li>
 	</ul>
 	<p>Over time, as our request volume grew, the challenges of operating this pipeline became more apparent, and we realized that this system was being pushed to its limits. This realization inspired us to think about which components would be ideal candidates for replacement, and led us to build new data pipeline.</p>
-	<p>Our first design of an improved analytics pipeline centred around the use of the <a href="https://flink.apache.org">Apache Flink</a> stream processing system. We had previously used Flink for other data pipelines, so it was a natural choice for us. However, these pipelines had been at a much lower rate than the 6M requests per second we needed to process for HTTP Analytics, and we struggled to get Flink to scale to this volume - it just couldn't keep up with ingestion rate per partition on all 6M HTTP requests per second.</p>
+	<p>Our first design of an improved analytics pipeline centred around the use of the <a href="https://flink.apache.org" target="_blank" rel="noopener noreferrer">Apache Flink</a> stream processing system. We had previously used Flink for other data pipelines, so it was a natural choice for us. However, these pipelines had been at a much lower rate than the 6M requests per second we needed to process for HTTP Analytics, and we struggled to get Flink to scale to this volume - it just couldn't keep up with ingestion rate per partition on all 6M HTTP requests per second.</p>
 	<p>Our colleagues on our DNS team had already built and productionized DNS analytics pipeline atop ClickHouse. They wrote about it in <a href="https://blog.cloudflare.com/how-cloudflare-analyzes-1m-dns-queries-per-second">"How Cloudflare analyzes 1M DNS queries per second"</a> blog post. So, we decided to take a deeper look at ClickHouse.</p>
 	<div class="flex anchor relative">
 		<h3 id="clickhouse">ClickHouse</h3>
@@ -107,10 +107,10 @@
 			© ClickHouse core developers</p>
 	</blockquote>
 	<p>When exploring additional candidates for replacing some of the key infrastructure of our old pipeline, we realized that using a column oriented database might be well suited to our analytics workloads. We wanted to identify a column oriented database that was horizontally scalable and fault tolerant to help us deliver good uptime guarantees, and extremely performant and space efficient such that it could handle our scale. We quickly realized that ClickHouse could satisfy these criteria, and then some.</p>
-	<p><a href="https://clickhouse.yandex">ClickHouse</a> is an open source column-oriented database management system capable of real time generation of analytical data reports using SQL queries. It is blazing fast, linearly scalable, hardware efficient, fault tolerant, feature rich, highly reliable, simple and handy. ClickHouse core developers provide great help on solving issues, merging and maintaining our PRs into ClickHouse. For example, engineers from Cloudflare have contributed a whole bunch of code back upstream:</p>
+	<p><a href="https://clickhouse.yandex" target="_blank" rel="noopener noreferrer">ClickHouse</a> is an open source column-oriented database management system capable of real time generation of analytical data reports using SQL queries. It is blazing fast, linearly scalable, hardware efficient, fault tolerant, feature rich, highly reliable, simple and handy. ClickHouse core developers provide great help on solving issues, merging and maintaining our PRs into ClickHouse. For example, engineers from Cloudflare have contributed a whole bunch of code back upstream:</p>
 	<ul>
 		<li>
-			<p>Aggregate function <a href="https://clickhouse.com/docs/en/sql-reference/aggregate-functions/reference/topk">topK</a> by <a href="https://github.com/vavrusa">Marek Vavruša</a></p>
+			<p>Aggregate function <a href="https://clickhouse.com/docs/en/sql-reference/aggregate-functions/reference/topk" target="_blank" rel="noopener noreferrer">topK</a> by <a href="https://github.com/vavrusa" target="_blank" rel="noopener noreferrer">Marek Vavruša</a></p>
 		</li>
 		<li>
 			<p>IP prefix dictionary by Marek Vavruša</p>
@@ -119,16 +119,16 @@
 			<p>SummingMergeTree engine optimizations by Marek Vavruša</p>
 		</li>
 		<li>
-			<p><a href="https://clickhouse.com/docs/en/engines/table-engines/integrations/kafka">Kafka table Engine</a> by Marek Vavruša. We're thinking to replace Kafka Go consumers with this engine when it will be stable enough and ingest from Kafka into ClickHouse directly.</p>
+			<p><a href="https://clickhouse.com/docs/en/engines/table-engines/integrations/kafka" target="_blank" rel="noopener noreferrer">Kafka table Engine</a> by Marek Vavruša. We're thinking to replace Kafka Go consumers with this engine when it will be stable enough and ingest from Kafka into ClickHouse directly.</p>
 		</li>
 		<li>
-			<p>Aggregate function <a href="https://clickhouse.yandex/docs/en/single/index.html#summapkey-value">sumMap</a> by <a href="https://github.com/bocharov">Alex Bocharov</a>. Without this function it would be impossible to build our new Zone Analytics API.</p>
+			<p>Aggregate function <a href="https://clickhouse.yandex/docs/en/single/index.html#summapkey-value" target="_blank" rel="noopener noreferrer">sumMap</a> by <a href="https://github.com/bocharov" target="_blank" rel="noopener noreferrer">Alex Bocharov</a>. Without this function it would be impossible to build our new Zone Analytics API.</p>
 		</li>
 		<li>
-			<p><a href="https://github.com/yandex/ClickHouse/pull/1636">Mark cache fix</a> by Alex Bocharov</p>
+			<p><a href="https://github.com/yandex/ClickHouse/pull/1636" target="_blank" rel="noopener noreferrer">Mark cache fix</a> by Alex Bocharov</p>
 		</li>
 		<li>
-			<p><a href="https://github.com/yandex/ClickHouse/pull/1844">uniqHLL12 function fix</a> for big cardinalities by Alex Bocharov. The description of the issue and its fix should be an interesting reading.</p>
+			<p><a href="https://github.com/yandex/ClickHouse/pull/1844" target="_blank" rel="noopener noreferrer">uniqHLL12 function fix</a> for big cardinalities by Alex Bocharov. The description of the issue and its fix should be an interesting reading.</p>
 		</li>
 	</ul>
 	<figure class="kg-card kg-image-card">
@@ -157,7 +157,7 @@
 		</a>
 	</div>
 	<p>Once we identified ClickHouse as a potential candidate, we began exploring how we could port our existing Postgres/Citus schemas to make them compatible with ClickHouse.</p>
-	<p>For our <a href="https://api.cloudflare.com/#zone-analytics-dashboard">Zone Analytics API</a> we need to produce many different aggregations for each zone (domain) and time period (minutely / hourly / daily / monthly). For deeper dive about specifics of aggregates please follow Zone Analytics API documentation or this handy <a href="https://docs.google.com/spreadsheets/d/1zQ3yI3HB2p8hiM-Jwvq1-MaeEyIouix2I-iUAPZtJYw/edit#gid=1788221216">spreadsheet</a>.</p>
+	<p>For our <a href="https://api.cloudflare.com/#zone-analytics-dashboard" target="_blank" rel="noopener noreferrer">Zone Analytics API</a> we need to produce many different aggregations for each zone (domain) and time period (minutely / hourly / daily / monthly). For deeper dive about specifics of aggregates please follow Zone Analytics API documentation or this handy <a href="https://docs.google.com/spreadsheets/d/1zQ3yI3HB2p8hiM-Jwvq1-MaeEyIouix2I-iUAPZtJYw/edit#gid=1788221216" target="_blank" rel="noopener noreferrer">spreadsheet</a>.</p>
 	<p>These aggregations should be available for any time range for the last 365 days. While ClickHouse is a really great tool to work with non-aggregated data, with our volume of 6M requests per second we just cannot afford yet to store non-aggregated data for that long.</p>
 	<p>To give you an idea of how much data is that, here is some "napkin-math" capacity planning. I'm going to use an average insertion rate of 6M requests per second and $100 as a cost estimate of 1 TiB to calculate storage cost for 1 year in different message formats:</p>
 	<table>
@@ -230,7 +230,7 @@
 			</svg>
 		</a>
 	</div>
-	<p>We store over <a href="https://docs.google.com/spreadsheets/d/1zQ3yI3HB2p8hiM-Jwvq1-MaeEyIouix2I-iUAPZtJYw/edit?usp=sharing">100+ columns</a>, collecting lots of different kinds of metrics about each request passed through Cloudflare. Some of these columns are also available in our <a href="https://support.cloudflare.com/hc/en-us/articles/216672448-Enterprise-Log-Share-Logpull-REST-API">Enterprise Log Share</a> product, however ClickHouse non-aggregated requests table has more fields.</p>
+	<p>We store over <a href="https://docs.google.com/spreadsheets/d/1zQ3yI3HB2p8hiM-Jwvq1-MaeEyIouix2I-iUAPZtJYw/edit?usp=sharing" target="_blank" rel="noopener noreferrer">100+ columns</a>, collecting lots of different kinds of metrics about each request passed through Cloudflare. Some of these columns are also available in our <a href="https://support.cloudflare.com/hc/en-us/articles/216672448-Enterprise-Log-Share-Logpull-REST-API" target="_blank" rel="noopener noreferrer">Enterprise Log Share</a> product, however ClickHouse non-aggregated requests table has more fields.</p>
 	<p>With so many columns to store and huge storage requirements we've decided to proceed with the aggregated-data approach, which worked well for us before in old pipeline and which will provide us with backward compatibility.</p>
 	<div class="flex anchor relative">
 		<h4 id="aggregations-schema-design-1">Aggregations schema design #1</h4>
@@ -240,10 +240,10 @@
 			</svg>
 		</a>
 	</div>
-	<p>According to the <a href="https://api.cloudflare.com/#zone-analytics-dashboard">API documentation</a>, we need to provide lots of different requests breakdowns and to satisfy these requirements we decided to test the following approach:</p>
+	<p>According to the <a href="https://api.cloudflare.com/#zone-analytics-dashboard" target="_blank" rel="noopener noreferrer">API documentation</a>, we need to provide lots of different requests breakdowns and to satisfy these requirements we decided to test the following approach:</p>
 	<ol>
 		<li>
-			<p>Create Cickhouse <a href="https://clickhouse.com/docs/en/sql-reference/statements/create/view">materialized views</a> with <a href="https://clickhouse.com/docs/en/engines/table-engines/mergetree-family/aggregatingmergetree">ReplicatedAggregatingMergeTree</a> engine pointing to non-aggregated requests table and containing minutely aggregates data for each of the breakdowns:</p>
+			<p>Create Cickhouse <a href="https://clickhouse.com/docs/en/sql-reference/statements/create/view" target="_blank" rel="noopener noreferrer">materialized views</a> with <a href="https://clickhouse.com/docs/en/engines/table-engines/mergetree-family/aggregatingmergetree" target="_blank" rel="noopener noreferrer">ReplicatedAggregatingMergeTree</a> engine pointing to non-aggregated requests table and containing minutely aggregates data for each of the breakdowns:</p>
 			<ul>
 				<li>
 					<p><b>Requests totals</b> - containing numbers like total requests, bytes, threats, uniques, etc.</p>
@@ -289,7 +289,7 @@
 	<figure class="kg-card kg-image-card">
 		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3iQvOQSik5xLDR7lkG0X9H/ee505f826947f6844c3e001bb83c7e7b/Schema-design--1-1.jpg" alt="Schema-design--1-1" class="kg-image" width="981" height="151" loading="lazy">
 	</figure>
-	<p>Schema design #1 didn't work out well. ClickHouse JOIN syntax forces to write monstrous query over 300 lines of SQL, repeating the selected columns many times because you can do only <a href="https://github.com/yandex/ClickHouse/issues/873">pairwise joins</a> in ClickHouse.</p>
+	<p>Schema design #1 didn't work out well. ClickHouse JOIN syntax forces to write monstrous query over 300 lines of SQL, repeating the selected columns many times because you can do only <a href="https://github.com/yandex/ClickHouse/issues/873" target="_blank" rel="noopener noreferrer">pairwise joins</a> in ClickHouse.</p>
 	<p>As for querying each of materialized views separately in parallel, benchmark showed prominent, but moderate results - query throughput would be a little bit better than using our Citus based old pipeline.</p>
 	<div class="flex anchor relative">
 		<h4 id="aggregations-schema-design-2">Aggregations schema design #2</h4>
@@ -299,11 +299,11 @@
 			</svg>
 		</a>
 	</div>
-	<p>In our second iteration of the schema design, we strove to keep a similar structure to our existing Citus tables. To do this, we experimented with the SummingMergeTree engine, which is described in detail by the excellent ClickHouse <a href="https://clickhouse.com/docs/en/engines/table-engines/mergetree-family/summingmergetree">documentation</a>:</p>
+	<p>In our second iteration of the schema design, we strove to keep a similar structure to our existing Citus tables. To do this, we experimented with the SummingMergeTree engine, which is described in detail by the excellent ClickHouse <a href="https://clickhouse.com/docs/en/engines/table-engines/mergetree-family/summingmergetree" target="_blank" rel="noopener noreferrer">documentation</a>:</p>
 	<blockquote>
 		<p>In addition, a table can have nested data structures that are processed in a special way. If the name of a nested table ends in 'Map' and it contains at least two columns that meet the following criteria... then this nested table is interpreted as a mapping of key =&gt; (values...), and when merging its rows, the elements of two data sets are merged by 'key' with a summation of the corresponding (values...).</p>
 	</blockquote>
-	<p>We were pleased to find this feature, because the SummingMergeTree engine allowed us to significantly reduce the number of tables required as compared to our initial approach. At the same time, it allowed us to match the structure of our existing Citus tables. The reason was that the ClickHouse Nested structure ending in 'Map' was similar to the <a href="https://www.postgresql.org/docs/9.6/static/hstore.html">Postgres hstore</a> data type, which we used extensively in the old pipeline.</p>
+	<p>We were pleased to find this feature, because the SummingMergeTree engine allowed us to significantly reduce the number of tables required as compared to our initial approach. At the same time, it allowed us to match the structure of our existing Citus tables. The reason was that the ClickHouse Nested structure ending in 'Map' was similar to the <a href="https://www.postgresql.org/docs/9.6/static/hstore.html" target="_blank" rel="noopener noreferrer">Postgres hstore</a> data type, which we used extensively in the old pipeline.</p>
 	<p>However, there were two existing issues with ClickHouse maps:</p>
 	<ul>
 		<li>
@@ -313,7 +313,7 @@
 			<p>For storing uniques (uniques visitors based on IP), we need to use AggregateFunction data type, and although SummingMergeTree allows you to create column with such data type, it will not perform aggregation on it for records with same primary keys.</p>
 		</li>
 	</ul>
-	<p>To resolve problem #1, we had to create a new aggregation function <a href="https://clickhouse.yandex/docs/en/single/index.html#summapkey-value">sumMap</a>. Luckily, ClickHouse source code is of excellent quality and its core developers are very helpful with reviewing and merging requested changes.</p>
+	<p>To resolve problem #1, we had to create a new aggregation function <a href="https://clickhouse.yandex/docs/en/single/index.html#summapkey-value" target="_blank" rel="noopener noreferrer">sumMap</a>. Luckily, ClickHouse source code is of excellent quality and its core developers are very helpful with reviewing and merging requested changes.</p>
 	<p>As for problem #2, we had to put uniques into separate materialized view, which uses the ReplicatedAggregatingMergeTree Engine and supports merge of AggregateFunction states for records with the same primary keys. We're considering adding the same functionality into SummingMergeTree, so it will simplify our schema even more.</p>
 	<p>We also created a separate materialized view for the Colo endpoint because it has much lower usage (5% for Colo endpoint queries, 95% for Zone dashboard queries), so its more dispersed primary key will not affect performance of Zone dashboard queries.</p>
 	<figure class="kg-card kg-image-card">
@@ -329,7 +329,7 @@
 		</a>
 	</div>
 	<p>We explored a number of avenues for performance improvement in ClickHouse. These included tuning index granularity, and improving the merge performance of the SummingMergeTree engine.</p>
-	<p>By default ClickHouse recommends to use 8192 index granularity. There is <a href="https://medium.com/@f1yegor/clickhouse-primary-keys-2cf2a45d7324">nice article</a> explaining ClickHouse primary keys and index granularity in depth.</p>
+	<p>By default ClickHouse recommends to use 8192 index granularity. There is <a href="https://medium.com/@f1yegor/clickhouse-primary-keys-2cf2a45d7324" target="_blank" rel="noopener noreferrer">nice article</a> explaining ClickHouse primary keys and index granularity in depth.</p>
 	<p>While default index granularity might be excellent choice for most of use cases, in our case we decided to choose the following index granularities:</p>
 	<ul>
 		<li>
@@ -340,7 +340,7 @@
 		</li>
 	</ul>
 	<p>Not relevant to performance, but we also disabled the min_execution_speed setting, so queries scanning just a few rows won't return exception because of "slow speed" of scanning rows per second.</p>
-	<p>On the aggregation/merge side, we've made some ClickHouse optimizations as well, like <a href="https://github.com/yandex/ClickHouse/pull/1330">increasing SummingMergeTree maps merge speed</a> by x7 times, which we contributed back into ClickHouse for everyone's benefit.</p>
+	<p>On the aggregation/merge side, we've made some ClickHouse optimizations as well, like <a href="https://github.com/yandex/ClickHouse/pull/1330" target="_blank" rel="noopener noreferrer">increasing SummingMergeTree maps merge speed</a> by x7 times, which we contributed back into ClickHouse for everyone's benefit.</p>
 	<p>Once we had completed the performance tuning for ClickHouse, we could bring it all together into a new data pipeline. Next, we describe the architecture for our new, ClickHouse-based data pipeline.</p>
 	<div class="flex anchor relative">
 		<h3 id="new-data-pipeline">New data pipeline</h3>
@@ -371,7 +371,7 @@
 	<figure class="kg-card kg-image-card">
 		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/zjubA3CgetykRE8Angxln/7509dd5dea82ad7408339a5f78561b41/HTTP-Logfwdr-throughput.png" alt="HTTP-Logfwdr-throughput" class="kg-image" width="1833" height="764" loading="lazy">
 	</figure>
-	<p>Average log message size in <a href="https://capnproto.org">Cap’n Proto</a> format used to be ~1630B, but thanks to amazing job on Kafka compression by our Platform Operations Team, it decreased significantly. Please see <a href="https://blog.cloudflare.com/squeezing-the-firehose">"Squeezing the firehose: getting the most from Kafka compression"</a> blog post with deeper dive into those optimisations.</p>
+	<p>Average log message size in <a href="https://capnproto.org" target="_blank" rel="noopener noreferrer">Cap’n Proto</a> format used to be ~1630B, but thanks to amazing job on Kafka compression by our Platform Operations Team, it decreased significantly. Please see <a href="https://blog.cloudflare.com/squeezing-the-firehose">"Squeezing the firehose: getting the most from Kafka compression"</a> blog post with deeper dive into those optimisations.</p>
 	<div class="flex anchor relative">
 		<h4 id="benefits-of-new-pipeline">Benefits of new pipeline</h4>
 		<a href="https://blog.cloudflare.com/#benefits-of-new-pipeline" aria-hidden="true" class="relative sm:absolute sm:-start-5">
@@ -391,7 +391,7 @@
 			<p><b>Scalable</b> - we can add more Kafka brokers or ClickHouse nodes and scale ingestion as we grow. We are not so confident about query performance when cluster will grow to hundreds of nodes. However, Yandex team managed to scale their cluster to 500+ nodes, distributed geographically between several data centers, using two-level sharding.</p>
 		</li>
 		<li>
-			<p><b>Reduced complexity</b> - due to removing messy crons and consumers which were doing aggregations and <a href="https://www.cloudflare.com/learning/cloud/how-to-refactor-applications">refactoring</a> API code we were able to:</p>
+			<p><b>Reduced complexity</b> - due to removing messy crons and consumers which were doing aggregations and <a href="https://www.cloudflare.com/learning/cloud/how-to-refactor-applications" target="_blank" rel="noopener noreferrer">refactoring</a> API code we were able to:</p>
 			<ul>
 				<li>
 					<p>Shutdown Postgres RollupDB instance and free it up for reuse.</p>
@@ -449,7 +449,7 @@
 			<p><b>Network</b> - 2 x 25G Mellanox ConnectX-4 in MC-LAG instead of 2 x 10G Intel 82599ES</p>
 		</li>
 	</ul>
-	<p>Our Platform Operations team noticed that ClickHouse is not great at running heterogeneous clusters yet, so we need to gradually replace all nodes in the existing cluster with new hardware, all 36 of them. The process is fairly straightforward, it's no different than replacing a failed node. The problem is that <a href="https://github.com/yandex/ClickHouse/issues/1821">ClickHouse doesn't throttle recovery</a>.</p>
+	<p>Our Platform Operations team noticed that ClickHouse is not great at running heterogeneous clusters yet, so we need to gradually replace all nodes in the existing cluster with new hardware, all 36 of them. The process is fairly straightforward, it's no different than replacing a failed node. The problem is that <a href="https://github.com/yandex/ClickHouse/issues/1821" target="_blank" rel="noopener noreferrer">ClickHouse doesn't throttle recovery</a>.</p>
 	<p>Here is more information about our cluster:</p>
 	<ul>
 		<li>
@@ -550,8 +550,8 @@
 			<p><b>Aggregated data from requests logs</b> (e.g. SELECT clientIPv4, count() FROM requests GROUP BY clientIPv4 ORDER BY count() DESC LIMIT 10)</p>
 		</li>
 	</ul>
-	<p>Google BigQuery provides similar <a href="https://cloud.google.com/bigquery/docs/reference/rest/v2/jobs/query">SQL API</a> and Amazon has product callled <a href="https://docs.aws.amazon.com/kinesisanalytics/latest/sqlref/analytics-sql-reference.html">Kinesis Data analytics</a> with SQL API support as well.</p>
-	<p>Another option we're exploring is to provide syntax similar to <a href="https://api.cloudflare.com/#dns-analytics-properties">DNS Analytics API</a> with filters and dimensions.</p>
+	<p>Google BigQuery provides similar <a href="https://cloud.google.com/bigquery/docs/reference/rest/v2/jobs/query" target="_blank" rel="noopener noreferrer">SQL API</a> and Amazon has product callled <a href="https://docs.aws.amazon.com/kinesisanalytics/latest/sqlref/analytics-sql-reference.html" target="_blank" rel="noopener noreferrer">Kinesis Data analytics</a> with SQL API support as well.</p>
+	<p>Another option we're exploring is to provide syntax similar to <a href="https://api.cloudflare.com/#dns-analytics-properties" target="_blank" rel="noopener noreferrer">DNS Analytics API</a> with filters and dimensions.</p>
 	<p>We're excited to hear your feedback and know more about your analytics use case. It can help us a lot to build new products!</p>
 	<div class="flex anchor relative">
 		<h3 id="conclusion">Conclusion</h3>
@@ -562,5 +562,5 @@
 		</a>
 	</div>
 	<p>All this could not be possible without hard work across multiple teams! First of all thanks to other Data team engineers for their tremendous efforts to make this all happen. Platform Operations Team made significant contributions to this project, especially Ivan Babrou and Daniel Dao. Contributions from Marek Vavruša in DNS Team were also very helpful.</p>
-	<p>Finally, Data team at Cloudflare is a small team, so if you're interested in building and operating distributed services, you stand to have some great problems to work on. Check out the <a href="https://boards.greenhouse.io/cloudflare/jobs/613800">Distributed Systems Engineer - Data</a> and <a href="https://boards.greenhouse.io/cloudflare/jobs/688056">Data Infrastructure Engineer</a> roles in London, UK and San Francisco, US, and let us know what you think.</p>
+	<p>Finally, Data team at Cloudflare is a small team, so if you're interested in building and operating distributed services, you stand to have some great problems to work on. Check out the <a href="https://boards.greenhouse.io/cloudflare/jobs/613800" target="_blank" rel="noopener noreferrer">Distributed Systems Engineer - Data</a> and <a href="https://boards.greenhouse.io/cloudflare/jobs/688056" target="_blank" rel="noopener noreferrer">Data Infrastructure Engineer</a> roles in London, UK and San Francisco, US, and let us know what you think.</p>
 </div>

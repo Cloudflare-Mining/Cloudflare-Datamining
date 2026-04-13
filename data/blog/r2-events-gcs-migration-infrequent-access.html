@@ -7,7 +7,7 @@
 		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5Flc3qGmiXyzHl6OvpYwie/f574acf452142205171995e892627fb6/image3-1.png" alt="R2 adds event notifications, support for migrations from Google Cloud Storage, and an infrequent access storage tier" class="kg-image" width="1800" height="1013" loading="lazy">
 
 	</figure>
-	<p>We’re excited to announce three new features for <a href="https://www.cloudflare.com/developer-platform/r2">Cloudflare R2</a>, our zero <a href="https://www.cloudflare.com/learning/cloud/what-are-data-egress-fees">egress fee</a> <a href="https://www.cloudflare.com/learning/cloud/what-is-object-storage">object storage</a> platform:</p>
+	<p>We’re excited to announce three new features for <a href="https://www.cloudflare.com/developer-platform/r2" target="_blank" rel="noopener noreferrer">Cloudflare R2</a>, our zero <a href="https://www.cloudflare.com/learning/cloud/what-are-data-egress-fees" target="_blank" rel="noopener noreferrer">egress fee</a> <a href="https://www.cloudflare.com/learning/cloud/what-is-object-storage" target="_blank" rel="noopener noreferrer">object storage</a> platform:</p>
 	<ul>
 		<li>
 			<p><a href="https://blog.cloudflare.com/#event-notifications-open-beta">Event Notifications</a>: Automatically trigger Workers and take action when data in your R2 bucket changes.</p>
@@ -16,7 +16,7 @@
 			<p><a href="https://blog.cloudflare.com/#super-slurper-for-google-cloud-storage">Super Slurper for Google Cloud Storage</a>: Easily migrate data from Google Cloud Storage to Cloudflare R2.</p>
 		</li>
 		<li>
-			<p><a href="https://blog.cloudflare.com/#infrequent-access-private-beta">Infrequent Access Private Beta</a>: Pay less to store data that isn’t frequently accessed. Now in private beta (<a href="https://forms.gle/hnwHFjaZktWyzmbd9">sign up now</a>).</p>
+			<p><a href="https://blog.cloudflare.com/#infrequent-access-private-beta">Infrequent Access Private Beta</a>: Pay less to store data that isn’t frequently accessed. Now in private beta (<a href="https://forms.gle/hnwHFjaZktWyzmbd9" target="_blank" rel="noopener noreferrer">sign up now</a>).</p>
 		</li>
 	</ul>
 	<div class="flex anchor relative">
@@ -34,10 +34,10 @@
 
 	</figure>
 	<p>The lifecycle of data often doesn’t stop immediately after upload to an R2 bucket – event data may need to be transformed and loaded into a data warehouse, media files may need to go through a post-processing step, etc. We’re releasing event notifications for R2 in open beta to enable building applications and workflows driven by your changing data.</p>
-	<p>Event notifications work by sending messages to your <a href="https://developers.cloudflare.com/queues">queue</a> each time there is a change to your data. These messages are then received by a <a href="https://developers.cloudflare.com/queues/get-started/#5-create-your-consumer-worker">consumer Worker</a> where you can then define any subsequent action that needs to be taken.</p>
-	<p>To get started enabling event notifications on your R2 bucket, you can run the following <a href="https://developers.cloudflare.com/workers/wrangler">Wrangler</a> command (replacing bucket_name and queue_name with your bucket and queue names respectively):</p>
+	<p>Event notifications work by sending messages to your <a href="https://developers.cloudflare.com/queues" target="_blank" rel="noopener noreferrer">queue</a> each time there is a change to your data. These messages are then received by a <a href="https://developers.cloudflare.com/queues/get-started/#5-create-your-consumer-worker" target="_blank" rel="noopener noreferrer">consumer Worker</a> where you can then define any subsequent action that needs to be taken.</p>
+	<p>To get started enabling event notifications on your R2 bucket, you can run the following <a href="https://developers.cloudflare.com/workers/wrangler" target="_blank" rel="noopener noreferrer">Wrangler</a> command (replacing bucket_name and queue_name with your bucket and queue names respectively):</p>
 	<pre class="language-bash"><code class="language-bash">wrangler r2 bucket notification create &lt;bucket_name&gt; --event-type object-create --queue &lt;queue_name&gt;</code></pre>
-	<p>For more information on how to set up event notifications on your R2 buckets today and limitations during beta, please refer to the <a href="https://developers.cloudflare.com/r2/buckets/event-notifications">documentation</a>.</p>
+	<p>For more information on how to set up event notifications on your R2 buckets today and limitations during beta, please refer to the <a href="https://developers.cloudflare.com/r2/buckets/event-notifications" target="_blank" rel="noopener noreferrer">documentation</a>.</p>
 	<div class="flex anchor relative">
 		<h2 id="super-slurper-for-google-cloud-storage">Super Slurper for Google Cloud Storage</h2>
 		<a href="https://blog.cloudflare.com/#super-slurper-for-google-cloud-storage" aria-hidden="true" class="relative sm:absolute sm:-start-5">
@@ -52,7 +52,7 @@
 		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6laBf0PdVhtHWnwoQDwd7V/b3ae6bfe81fbffaeb20589b642e5738a/image4-1.png" alt="" class="kg-image" width="1999" height="677" loading="lazy">
 
 	</figure>
-	<p><a href="https://developers.cloudflare.com/r2/data-migration/super-slurper">Super Slurper</a> can now migrate data from Google Cloud Storage (GCS) to <a href="https://developers.cloudflare.com/r2">Cloudflare R2</a>. We released Super Slurper <a href="https://blog.cloudflare.com/r2-super-slurper-ga">last year</a> with the goal of making one-time comprehensive data migrations fast, reliable, and easy: there’s no need to spin up migration VMs and implement complicated retry logic. Since then, thousands of developers have used Super Slurper to migrate petabytes of data from AWS S3 to R2. Now Google Cloud Storage customers can migrate data to Cloudflare R2 to benefit from Cloudflare’s zero egress fees, whether you are permanently moving data to another provider or not.</p>
+	<p><a href="https://developers.cloudflare.com/r2/data-migration/super-slurper" target="_blank" rel="noopener noreferrer">Super Slurper</a> can now migrate data from Google Cloud Storage (GCS) to <a href="https://developers.cloudflare.com/r2" target="_blank" rel="noopener noreferrer">Cloudflare R2</a>. We released Super Slurper <a href="https://blog.cloudflare.com/r2-super-slurper-ga">last year</a> with the goal of making one-time comprehensive data migrations fast, reliable, and easy: there’s no need to spin up migration VMs and implement complicated retry logic. Since then, thousands of developers have used Super Slurper to migrate petabytes of data from AWS S3 to R2. Now Google Cloud Storage customers can migrate data to Cloudflare R2 to benefit from Cloudflare’s zero egress fees, whether you are permanently moving data to another provider or not.</p>
 	<p>To get started migrating data from GCS:</p>
 	<ol>
 		<li>
@@ -74,7 +74,7 @@
 			<p>After you finish reviewing the details of your migration, select <b>Migrate files</b>.</p>
 		</li>
 	</ol>
-	<p>You can view the status of your migration job at any time on the dashboard. For more information on how to use Super Slurper, please refer to the documentation <a href="https://developers.cloudflare.com/r2/data-migration/super-slurper">here</a>.</p>
+	<p>You can view the status of your migration job at any time on the dashboard. For more information on how to use Super Slurper, please refer to the documentation <a href="https://developers.cloudflare.com/r2/data-migration/super-slurper" target="_blank" rel="noopener noreferrer">here</a>.</p>
 	<div class="flex anchor relative">
 		<h2 id="infrequent-access-private-beta">Infrequent Access Private Beta</h2>
 		<a href="https://blog.cloudflare.com/#infrequent-access-private-beta" aria-hidden="true" class="relative sm:absolute sm:-start-5">
@@ -90,7 +90,7 @@
 
 	</figure>
 	<p>We’re excited to introduce the private beta of our new Infrequent Access storage class. For use cases that involve data that isn’t frequently accessed (long tail user-generated content, logs, etc), Infrequent Access gives you the ability to pay less for storage while maintaining performance and durability.</p>
-	<p>Here’s an example of how you can upload an object to your R2 bucket with the new Infrequent Access storage class using <a href="https://developers.cloudflare.com/workers">Workers</a>:</p>
+	<p>Here’s an example of how you can upload an object to your R2 bucket with the new Infrequent Access storage class using <a href="https://developers.cloudflare.com/workers" target="_blank" rel="noopener noreferrer">Workers</a>:</p>
 	<pre class="language-js"><code class="language-js"># wrangler.toml
 [[r2_buckets]]
 binding = 'MY_BUCKET'
@@ -106,8 +106,8 @@ export default {
       return new Response("Not a PUT!");
    }
 }</code></pre>
-	<p>In addition to uploading objects directly to Infrequent Access, you can define an <a href="https://developers.cloudflare.com/r2/buckets/object-lifecycles">object lifecycle policy</a> to move data to Infrequent Access after a period of time goes by and you no longer need to access your data as often. In the future, we plan to automatically optimize storage classes for data so you can avoid manually creating rules and better adapt to changing data access patterns.</p>
-	<p>For data stored in the Infrequent Access storage class, the pricing components will be similar to <a href="https://developers.cloudflare.com/r2/pricing">what you’re used to with R2</a>: storage, <a href="https://developers.cloudflare.com/r2/pricing/#class-a-operations">Class A operations</a> (writes, lists), <a href="https://developers.cloudflare.com/r2/pricing/#class-b-operations">Class B operations</a> (reads), and data retrieval (processing). Data retrieval is charged per GB when data in the Infrequent Access storage class is retrieved and is what allows us to provide storage at a lower price. It reflects the additional computational resources required to fetch data from underlying storage optimized for less frequent access. And when the time comes, and you do need to use your data, there are still no egress fees.</p><!--kg-card-begin: html-->
+	<p>In addition to uploading objects directly to Infrequent Access, you can define an <a href="https://developers.cloudflare.com/r2/buckets/object-lifecycles" target="_blank" rel="noopener noreferrer">object lifecycle policy</a> to move data to Infrequent Access after a period of time goes by and you no longer need to access your data as often. In the future, we plan to automatically optimize storage classes for data so you can avoid manually creating rules and better adapt to changing data access patterns.</p>
+	<p>For data stored in the Infrequent Access storage class, the pricing components will be similar to <a href="https://developers.cloudflare.com/r2/pricing" target="_blank" rel="noopener noreferrer">what you’re used to with R2</a>: storage, <a href="https://developers.cloudflare.com/r2/pricing/#class-a-operations" target="_blank" rel="noopener noreferrer">Class A operations</a> (writes, lists), <a href="https://developers.cloudflare.com/r2/pricing/#class-b-operations" target="_blank" rel="noopener noreferrer">Class B operations</a> (reads), and data retrieval (processing). Data retrieval is charged per GB when data in the Infrequent Access storage class is retrieved and is what allows us to provide storage at a lower price. It reflects the additional computational resources required to fetch data from underlying storage optimized for less frequent access. And when the time comes, and you do need to use your data, there are still no egress fees.</p><!--kg-card-begin: html-->
 	<style type="text/css">
 		.tg {
 			border-collapse: collapse;
@@ -190,7 +190,7 @@ export default {
 			</svg>
 		</a>
 	</div>
-	<p><a href="https://forms.gle/hnwHFjaZktWyzmbd9">Join the private beta waitlist</a> to get access.</p>
+	<p><a href="https://forms.gle/hnwHFjaZktWyzmbd9" target="_blank" rel="noopener noreferrer">Join the private beta waitlist</a> to get access.</p>
 	<div class="flex anchor relative">
 		<h3 id="have-any-feedback">Have any feedback?</h3>
 		<a href="https://blog.cloudflare.com/#have-any-feedback" aria-hidden="true" class="relative sm:absolute sm:-start-5">
@@ -199,5 +199,5 @@ export default {
 			</svg>
 		</a>
 	</div>
-	<p>We would love to hear from you! To share your feedback about R2 and our data migration services, please join the <a href="https://discord.com/invite/cloudflaredev">Cloudflare Developer Discord</a>. If you're interested in learning more about R2, get started by visiting R2's <a href="https://developers.cloudflare.com/r2">developer documentation</a> or see how much you could save with our <a href="https://r2-calculator.cloudflare.com">pricing calculator</a>.</p>
+	<p>We would love to hear from you! To share your feedback about R2 and our data migration services, please join the <a href="https://discord.com/invite/cloudflaredev" target="_blank" rel="noopener noreferrer">Cloudflare Developer Discord</a>. If you're interested in learning more about R2, get started by visiting R2's <a href="https://developers.cloudflare.com/r2" target="_blank" rel="noopener noreferrer">developer documentation</a> or see how much you could save with our <a href="https://r2-calculator.cloudflare.com" target="_blank" rel="noopener noreferrer">pricing calculator</a>.</p>
 </div>

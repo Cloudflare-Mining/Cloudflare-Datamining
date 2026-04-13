@@ -1,8 +1,8 @@
 <div class="mb2 gray5">12 min read</div>
 <div class="mt4">This post is also available in <a href="https://blog.cloudflare.com/zh-cn/capnweb-javascript-rpc-library">简体中文</a>.</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5i59EQLnkQYe3oZrCzCk1y/43c20e671782e6ec9f878f786535bd15/BLOG-2954_1.png" alt="">
 <div class="post-content lh-copy gray1">
-	<p>Allow us to introduce <a href="https://github.com/cloudflare/capnweb"><u>Cap'n Web</u></a>, an RPC protocol and implementation in pure TypeScript.</p>
-	<p>Cap'n Web is a spiritual sibling to <a href="https://capnproto.org"><u>Cap'n Proto</u></a>, an RPC protocol I (Kenton) created a decade ago, but designed to play nice in the web stack. That means:</p>
+	<p>Allow us to introduce <a href="https://github.com/cloudflare/capnweb" target="_blank" rel="noopener noreferrer"><u>Cap'n Web</u></a>, an RPC protocol and implementation in pure TypeScript.</p>
+	<p>Cap'n Web is a spiritual sibling to <a href="https://capnproto.org" target="_blank" rel="noopener noreferrer"><u>Cap'n Proto</u></a>, an RPC protocol I (Kenton) created a decade ago, but designed to play nice in the web stack. That means:</p>
 	<ul>
 		<li>
 			<p>Like Cap'n Proto, it is an object-capability protocol. ("Cap'n" is short for "capabilities and".) We'll get into this more below, but it's incredibly powerful.</p>
@@ -26,7 +26,7 @@
 			<p>The whole thing compresses (minify+gzip) to under 10&nbsp;kB with no dependencies.</p>
 		</li>
 		<li>
-			<p><a href="https://github.com/cloudflare/capnweb"><u>It's open source</u></a> under the MIT license.</p>
+			<p><a href="https://github.com/cloudflare/capnweb" target="_blank" rel="noopener noreferrer"><u>It's open source</u></a> under the MIT license.</p>
 		</li>
 	</ul>
 	<p>Cap'n Web is more expressive than almost every other RPC system, because it implements an <b>object-capability RPC model</b>. That means it:</p>
@@ -107,8 +107,8 @@ export default {
 			</svg>
 		</a>
 	</div>
-	<p>Remote Procedure Calls (RPC) are a way of expressing communications between two programs over a network. Without RPC, you might communicate using a protocol like HTTP. With HTTP, though, you must format and parse your communications as an HTTP request and response, perhaps designed in <a href="https://en.wikipedia.org/wiki/REST"><u>REST</u></a> style. RPC systems try to make communications look like a regular function call instead, as if you were calling a library rather than a remote service. The RPC system provides a "stub" object on the client side which stands in for the real server-side object. When a method is called on the stub, the RPC system figures out how to serialize and transmit the parameters to the server, invoke the method on the server, and then transmit the return value back.</p>
-	<p>The merits of RPC have been subject to a great deal of debate. RPC is often accused of committing many of the <a href="https://en.wikipedia.org/wiki/Fallacies_of_distributed_computing"><u>fallacies of distributed computing</u></a>.</p>
+	<p>Remote Procedure Calls (RPC) are a way of expressing communications between two programs over a network. Without RPC, you might communicate using a protocol like HTTP. With HTTP, though, you must format and parse your communications as an HTTP request and response, perhaps designed in <a href="https://en.wikipedia.org/wiki/REST" target="_blank" rel="noopener noreferrer"><u>REST</u></a> style. RPC systems try to make communications look like a regular function call instead, as if you were calling a library rather than a remote service. The RPC system provides a "stub" object on the client side which stands in for the real server-side object. When a method is called on the stub, the RPC system figures out how to serialize and transmit the parameters to the server, invoke the method on the server, and then transmit the return value back.</p>
+	<p>The merits of RPC have been subject to a great deal of debate. RPC is often accused of committing many of the <a href="https://en.wikipedia.org/wiki/Fallacies_of_distributed_computing" target="_blank" rel="noopener noreferrer"><u>fallacies of distributed computing</u></a>.</p>
 	<p>But this reputation is outdated. When RPC was first invented some 40 years ago, async programming barely existed. We did not have Promises, much less async and await. Early RPC was synchronous: calls would block the calling thread waiting for a reply. At best, latency made the program slow. At worst, network failures would hang or crash the program. No wonder it was deemed "broken".</p>
 	<p>Things are different today. We have Promise and async and await, and we can throw exceptions on network failures. We even understand how RPCs can be pipelined so that a chain of calls takes only one network round trip. Many large distributed systems you likely use every day are built on RPC. It works.</p>
 	<p>The fact is, RPC fits the programming model we're used to. Every programmer is trained to think in terms of APIs composed of function calls, not in terms of byte stream protocols nor even REST. Using RPC frees you from the need to constantly translate between mental models, allowing you to move faster.</p>
@@ -393,7 +393,7 @@ let results = await friendsWithPhotos;
 }
 </code></pre>
 	<p>In other words, an array with just one element which is itself an array, evaluates to the inner array literally. An array whose first element is a type name, evaluates to an instance of that type, where the remaining elements are parameters to the type.</p>
-	<p>Note that only a fixed set of types are supported: essentially, <a href="https://developer.mozilla.org/en-US/docs/Web/API/Web_Workers_API/Structured_clone_algorithm"><u>"structured clonable" types</u></a>, and RPC stub types.</p>
+	<p>Note that only a fixed set of types are supported: essentially, <a href="https://developer.mozilla.org/en-US/docs/Web/API/Web_Workers_API/Structured_clone_algorithm" target="_blank" rel="noopener noreferrer"><u>"structured clonable" types</u></a>, and RPC stub types.</p>
 	<p>On top of this basic encoding, we define an RPC protocol inspired by Cap'n Proto – but greatly simplified.</p>
 	<div class="flex anchor relative">
 		<h3 id="rpc-protocol">RPC protocol</h3>
@@ -433,7 +433,7 @@ console.log(result);</code></pre>
 -&gt; ["pull", 2]
 // Server responds.
 &lt;- ["resolve", 2, "Hello, Alice!"]</code></pre>
-	<p>For more details about the protocol, <a href="https://github.com/cloudflare/capnweb/blob/main/protocol.md"><u>check out the docs</u></a>.</p>
+	<p>For more details about the protocol, <a href="https://github.com/cloudflare/capnweb/blob/main/protocol.md" target="_blank" rel="noopener noreferrer"><u>check out the docs</u></a>.</p>
 	<div class="flex anchor relative">
 		<h2 id="try-it-out">Try it out!</h2>
 		<a href="https://blog.cloudflare.com/#try-it-out" aria-hidden="true" class="relative sm:absolute sm:-start-5">
@@ -442,9 +442,9 @@ console.log(result);</code></pre>
 			</svg>
 		</a>
 	</div>
-	<p>Cap'n Web is new and still highly experimental. There may be bugs to shake out. But, we're already using it today. Cap'n Web is the basis of <a href="https://developers.cloudflare.com/changelog/2025-09-16-remote-bindings-ga"><u>the recently-launched "remote bindings" feature in Wrangler</u></a>, allowing a local test instance of workerd to speak RPC to services in production. We've also begun to experiment with it in various frontend applications – expect more blog posts on this in the future.</p>
+	<p>Cap'n Web is new and still highly experimental. There may be bugs to shake out. But, we're already using it today. Cap'n Web is the basis of <a href="https://developers.cloudflare.com/changelog/2025-09-16-remote-bindings-ga" target="_blank" rel="noopener noreferrer"><u>the recently-launched "remote bindings" feature in Wrangler</u></a>, allowing a local test instance of workerd to speak RPC to services in production. We've also begun to experiment with it in various frontend applications – expect more blog posts on this in the future.</p>
 	<p>In any case, Cap'n Web is open source, and you can start using it in your own projects now.</p>
-	<p><a href="https://github.com/cloudflare/capnweb"><u>Check it out on GitHub.</u></a></p>
+	<p><a href="https://github.com/cloudflare/capnweb" target="_blank" rel="noopener noreferrer"><u>Check it out on GitHub.</u></a></p>
 	<figure class="kg-card kg-image-card">
 		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/53YF87AtEsYhHMN3PV23UV/8e9a938099c71e6f274e95292b16b382/BLOG-2954_2.png" alt="BLOG-2954 2" class="kg-image" width="1200" height="446" loading="lazy">
 	</figure>

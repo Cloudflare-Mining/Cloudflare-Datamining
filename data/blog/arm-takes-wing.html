@@ -11,7 +11,7 @@
 		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2OerKvEoy4NXTwjEpDA1tY/d8d9c4dad28ab5bc7100710b3dcf644e/25704115174_061e907e57_o.jpg" alt="" class="kg-image" width="1705" height="1262" loading="lazy">
 
 	</figure>
-	<p>The majestic Amberwing powered by the Falkor CPU <a href="https://creativecommons.org/licenses/by-sa/2.0">CC BY-SA 2.0</a> <a href="https://www.flickr.com/photos/drphotomoto/25704115174/in/photolist-FaoiVy-oqK2j2-f6A8TL-6PTBkR-gRasf9-f2R2Hz-7bZeUp-fmxSzZ-o9fogQ-8evb42-f4tgSX-eGzXYi-6umTDd-8evd8H-gdCU2L-uhCbnz-fmxSsX-oxnuko-wb7in9-oqsJSH-uxxAS2-CzS4Eh-6y8KQA-brLjKf-YT2jrY-eGG5QJ-8pLnKt-8eyvgY-cnQqJs-fXYs9f-f2R2jK-28ahBA-fXYjkD-a9K25u-289gvW-PHrqDS-cmkggf-Ff9NXa-EhMcP4-f36dMm-289xP7-Ehrz1y-f2QZRZ-GqT3vt-uUeHBq-xUDQoa-ymMxE9-wWFi3q-MDva8W-8CWG5X">image</a> by <a href="https://www.flickr.com/photos/drphotomoto">DrPhotoMoto</a></p>
+	<p>The majestic Amberwing powered by the Falkor CPU <a href="https://creativecommons.org/licenses/by-sa/2.0" target="_blank" rel="noopener noreferrer">CC BY-SA 2.0</a> <a href="https://www.flickr.com/photos/drphotomoto/25704115174/in/photolist-FaoiVy-oqK2j2-f6A8TL-6PTBkR-gRasf9-f2R2Hz-7bZeUp-fmxSzZ-o9fogQ-8evb42-f4tgSX-eGzXYi-6umTDd-8evd8H-gdCU2L-uhCbnz-fmxSsX-oxnuko-wb7in9-oqsJSH-uxxAS2-CzS4Eh-6y8KQA-brLjKf-YT2jrY-eGG5QJ-8pLnKt-8eyvgY-cnQqJs-fXYs9f-f2R2jK-28ahBA-fXYjkD-a9K25u-289gvW-PHrqDS-cmkggf-Ff9NXa-EhMcP4-f36dMm-289xP7-Ehrz1y-f2QZRZ-GqT3vt-uUeHBq-xUDQoa-ymMxE9-wWFi3q-MDva8W-8CWG5X" target="_blank" rel="noopener noreferrer">image</a> by <a href="https://www.flickr.com/photos/drphotomoto" target="_blank" rel="noopener noreferrer">DrPhotoMoto</a></p>
 	<p>Recently, both Qualcomm and Cavium provided us with engineering samples of their ARM based platforms, and in this blog post I would like to share my findings about Centriq, the Qualcomm platform.</p>
 	<figure class="kg-card kg-image-card ">
 
@@ -209,7 +209,7 @@
 	<p>Up until now, a major obstacle to the deployment of ARM servers was lack, or weak, support by the majority of the software vendors. In the past two years, ARM’s enablement efforts have paid off, as most Linux distros, as well as most popular libraries support the 64-bit ARM architecture. Driver availability, however, is unclear at that point.</p>
 	<p>At Cloudflare, we run a complex software stack that consists of many integrated services, and running each of them efficiently is top priority.</p>
 	<p>On the edge we have the NGINX server software, that does support ARMv8. NGINX is written in C, and it also uses several libraries written in C, such as zlib and BoringSSL, therefore solid C compiler support is very important.</p>
-	<p>In addition, our flavor of NGINX is highly integrated with the <a href="https://github.com/openresty/lua-nginx-module">lua-nginx-module</a>, and we rely a lot on <a href="https://blog.cloudflare.com/pushing-nginx-to-its-limit-with-lua">LuaJIT</a>.</p>
+	<p>In addition, our flavor of NGINX is highly integrated with the <a href="https://github.com/openresty/lua-nginx-module" target="_blank" rel="noopener noreferrer">lua-nginx-module</a>, and we rely a lot on <a href="https://blog.cloudflare.com/pushing-nginx-to-its-limit-with-lua">LuaJIT</a>.</p>
 	<p>Finally, a lot of our services, such as our DNS server, <a href="https://blog.cloudflare.com/what-weve-been-doing-with-go/#sts=RRDNS">RRDNS</a>, are written in Go.</p>
 	<p>The good news is that both gcc and clang not only support ARMv8 in general, but have optimization profiles for the Falkor core.</p>
 	<p>Go has official support for ARMv8 as well, and they improve the arm64 backend constantly.</p>
@@ -254,7 +254,7 @@
 	</figure>
 	<p>Public key cryptography is all about raw ALU performance. It is interesting, but not surprising to see that in the single core benchmark, the Broadwell core is faster than Skylake, and both in turn are faster than Falkor. This is because Broadwell runs at a higher frequency, while architecturally it is not much inferior to Skylake.</p>
 	<p>Falkor is at a disadvantage here. First, in a single core benchmark, the turbo is engaged, meaning the Intel processors run at a higher frequency. Second, in Broadwell, Intel introduced two special instructions to accelerate big number multiplication: ADCX and ADOX. These perform two independent add-with-carry operations per cycle, whereas ARM can only do one. Similarly, the ARMv8 instruction set does not have a single instruction to perform 64-bit multiplication, instead it uses a pair of MUL and UMULH instructions.</p>
-	<p>Nevertheless, at the SoC level, Falkor wins big time. It is only marginally slower than Skylake at an RSA2048 signature, and only because RSA2048 does not have an optimized implementation for ARM. The <a href="https://www.cloudflare.com/learning/dns/dnssec/ecdsa-and-dnssec">ECDSA</a> performance is ridiculously fast. A single Centriq chip can satisfy the ECDSA needs of almost any company in the world.</p>
+	<p>Nevertheless, at the SoC level, Falkor wins big time. It is only marginally slower than Skylake at an RSA2048 signature, and only because RSA2048 does not have an optimized implementation for ARM. The <a href="https://www.cloudflare.com/learning/dns/dnssec/ecdsa-and-dnssec" target="_blank" rel="noopener noreferrer">ECDSA</a> performance is ridiculously fast. A single Centriq chip can satisfy the ECDSA needs of almost any company in the world.</p>
 	<p>It is also very interesting to see Skylake outperform Broadwell by a 30% margin, despite losing the single core benchmark, and only having 20% more cores. This can be explained by more efficient all-core turbo, and improved hyper-threading.</p>
 	<div class="flex anchor relative">
 		<h4 id="symmetric-key-cryptography">Symmetric key cryptography</h4>
@@ -288,7 +288,7 @@
 		</a>
 	</div>
 	<p>The next benchmark I wanted to see was compression. This is for two reasons. First, it is a very important workload on the edge, as having better compression saves bandwidth, and helps deliver content faster to the client. Second, it is a very demanding workload, with a high rate of branch mispredictions.</p>
-	<p>Obviously the first benchmark would be the popular zlib library. At Cloudflare, we use an <a href="https://blog.cloudflare.com/cloudflare-fights-cancer">improved version of the library</a>, optimized for 64-bit Intel processors, and although it is written mostly in C, it does use some Intel specific intrinsics. Comparing this optimized version to the generic zlib library wouldn’t be fair. Not to worry, with little effort I <a href="https://github.com/cloudflare/zlib/tree/vlad/aarch64">adapted the library</a> to work very well on the ARMv8 architecture, with the use of NEON and CRC32 intrinsics. In the process it is twice as fast as the generic library for some files.</p>
+	<p>Obviously the first benchmark would be the popular zlib library. At Cloudflare, we use an <a href="https://blog.cloudflare.com/cloudflare-fights-cancer">improved version of the library</a>, optimized for 64-bit Intel processors, and although it is written mostly in C, it does use some Intel specific intrinsics. Comparing this optimized version to the generic zlib library wouldn’t be fair. Not to worry, with little effort I <a href="https://github.com/cloudflare/zlib/tree/vlad/aarch64" target="_blank" rel="noopener noreferrer">adapted the library</a> to work very well on the ARMv8 architecture, with the use of NEON and CRC32 intrinsics. In the process it is twice as fast as the generic library for some files.</p>
 	<p>The second benchmark is the emerging brotli library, it is written in C, and allows for a level playing field for all platforms.</p>
 	<p>All the benchmarks are performed on the HTML of <a href="https://blog.cloudflare.com">blog.cloudflare.com</a>, in memory, similar to the way NGINX performs streaming compression. The size of the specific version of the HTML file is 29,329 bytes, making it a good representative of the type of files we usually compress. The parallel benchmark compresses multiple files in parallel, as opposed to compressing a single file on many threads, also similar to the way NGINX works.</p>
 	<div class="flex anchor relative">
@@ -373,7 +373,7 @@
 
 	</figure>
 	<p>As far as Go crypto is concerned ARM and Intel are not even on the same playground. Go has very optimized assembly code for ECDSA, AES-GCM and Chacha20-Poly1305 on Intel. It also has Intel optimized math functions, used in RSA computations. All those are missing for ARMv8, putting it at a big disadvantage.</p>
-	<p>Nevertheless, the gap can be bridged with a relatively small effort, and we know that with the right optimizations, performance can be on par with OpenSSL. Even a very minor change, such as implementing the function <a href="https://go-review.googlesource.com/c/go/+/76270">addMulVVW</a> in assembly, lead to an over tenfold improvement in RSA performance, putting Falkor ahead of both Broadwell and Skylake, with 8,009 signatures/second.</p>
+	<p>Nevertheless, the gap can be bridged with a relatively small effort, and we know that with the right optimizations, performance can be on par with OpenSSL. Even a very minor change, such as implementing the function <a href="https://go-review.googlesource.com/c/go/+/76270" target="_blank" rel="noopener noreferrer">addMulVVW</a> in assembly, lead to an over tenfold improvement in RSA performance, putting Falkor ahead of both Broadwell and Skylake, with 8,009 signatures/second.</p>
 	<p>Another interesting thing to note is that on Skylake, the Go Chacha20-Poly1305 code, that uses AVX2 performs almost identically to the OpenSSL AVX512 code, this is again due to AVX2 running at higher clock speeds.</p>
 	<div class="flex anchor relative">
 		<h4 id="go-gzip">Go gzip</h4>
@@ -454,7 +454,7 @@
 			</svg>
 		</a>
 	</div>
-	<p>Go support for aarch64 is quite disappointing. I am very happy to say that everything compiles and works flawlessly, but on the performance side, things should get better. Is seems like the enablement effort so far was concentrated on the compiler back end, and the library was left largely untouched. There are a lot of low hanging optimization fruits out there, like my 20-minute fix for <a href="https://go-review.googlesource.com/c/go/+/76270">addMulVVW</a> clearly shows. Qualcomm and other ARMv8 vendors intends to put significant engineering resources to amend this situation, but really anyone can contribute to Go. So if you want to leave your mark, now is the time.</p>
+	<p>Go support for aarch64 is quite disappointing. I am very happy to say that everything compiles and works flawlessly, but on the performance side, things should get better. Is seems like the enablement effort so far was concentrated on the compiler back end, and the library was left largely untouched. There are a lot of low hanging optimization fruits out there, like my 20-minute fix for <a href="https://go-review.googlesource.com/c/go/+/76270" target="_blank" rel="noopener noreferrer">addMulVVW</a> clearly shows. Qualcomm and other ARMv8 vendors intends to put significant engineering resources to amend this situation, but really anyone can contribute to Go. So if you want to leave your mark, now is the time.</p>
 	<div class="flex anchor relative">
 		<h3 id="luajit">LuaJIT</h3>
 		<a href="https://blog.cloudflare.com/#luajit" aria-hidden="true" class="relative sm:absolute sm:-start-5">
@@ -488,7 +488,7 @@
 	<p>I set up a server that serves the HTML file used in the gzip benchmark, over https, with the ECDHE-ECDSA-AES128-GCM-SHA256 cipher suite.</p>
 	<p>It also uses LuaJIT to redirect the incoming request, remove all line breaks and extra spaces from the HTML file, while adding a timestamp. The HTML is then compressed using brotli with quality 5.</p>
 	<p>Each server was configured to work with as many workers as it has virtual CPUs. 40 for Broadwell, 48 for Skylake and 46 for Falkor.</p>
-	<p>As the client for this test, I used the <a href="https://github.com/rakyll/hey">hey</a> program, running from 3 Broadwell servers.</p>
+	<p>As the client for this test, I used the <a href="https://github.com/rakyll/hey" target="_blank" rel="noopener noreferrer">hey</a> program, running from 3 Broadwell servers.</p>
 	<p>Concurrently with the test, we took power readings from the respective BMC units of each server.</p>
 	<figure class="kg-card kg-image-card ">
 
@@ -512,5 +512,5 @@
 	<p>Currently, my main concern is weak Go language performance, but that is bound to improve quickly once ARM based servers start gaining some market share.</p>
 	<p>Both C and LuaJIT performance is very competitive, and in many cases outperforms the Skylake contender. In almost every benchmark Falkor shows itself as a worthy upgrade from Broadwell.</p>
 	<p>The largest win by far for Falkor is the low power consumption. Although it has a TDP of 120W, during my tests it never went above 89W (for the go benchmark). In comparison, Skylake and Broadwell both went over 160W, while the TDP of the two CPUs is 170W.</p>
-	<p><i>If you enjoy testing and selecting hardware on behalf of millions of Internet properties, come [join us](</i><a href="https://www.cloudflare.com/careers"><i>https://www.cloudflare.com/careers/</i></a><i>).</i></p>
+	<p><i>If you enjoy testing and selecting hardware on behalf of millions of Internet properties, come [join us](</i><a href="https://www.cloudflare.com/careers" target="_blank" rel="noopener noreferrer"><i>https://www.cloudflare.com/careers/</i></a><i>).</i></p>
 </div>

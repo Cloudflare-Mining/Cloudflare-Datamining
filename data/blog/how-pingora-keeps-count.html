@@ -28,7 +28,7 @@
 		</li>
 	</ul>
 	<p>The motivation to improve the above algorithm is even stronger considering such algorithms need to be deployed at scale. This algorithm operates on tens of thousands of machines. It handles more than twenty million requests per second. The benefits of efficiency improvement can be significant.</p>
-	<p>pingora-limits adopts a different approach: <a href="https://en.wikipedia.org/wiki/Count%E2%80%93min_sketch">count–min sketch</a> (CM sketch) estimation. CM sketch estimates the counts of events in O(1) (per event) but only using O(log(n)) of space (polylogarithmic, to be precise, more details <a href="https://dsf.berkeley.edu/cs286/papers/countmin-latin2004.pdf">here</a>). Because of the simplicity of this algorithm, which we will discuss in a bit, it can be implemented without locks. Therefore, pingora-limits runs much faster and more efficiently compared to the hash table approach discussed earlier.</p>
+	<p>pingora-limits adopts a different approach: <a href="https://en.wikipedia.org/wiki/Count%E2%80%93min_sketch" target="_blank" rel="noopener noreferrer">count–min sketch</a> (CM sketch) estimation. CM sketch estimates the counts of events in O(1) (per event) but only using O(log(n)) of space (polylogarithmic, to be precise, more details <a href="https://dsf.berkeley.edu/cs286/papers/countmin-latin2004.pdf" target="_blank" rel="noopener noreferrer">here</a>). Because of the simplicity of this algorithm, which we will discuss in a bit, it can be implemented without locks. Therefore, pingora-limits runs much faster and more efficiently compared to the hash table approach discussed earlier.</p>
 	<div class="flex anchor relative">
 		<h3 id="cm-sketch">CM sketch</h3>
 		<a href="https://blog.cloudflare.com/#cm-sketch" aria-hidden="true" class="relative sm:absolute sm:-start-5">
@@ -37,8 +37,8 @@
 			</svg>
 		</a>
 	</div>
-	<p>The idea of a CM sketch is similar to a Bloom filter. The mathematical details of the CM sketch can be found in <a href="http://dimacs.rutgers.edu/~graham/pubs/papers/cmencyc.pdf">this paper</a>. In this section, we will just illustrate how it works.</p>
-	<p>A CM sketch data structure takes two parameters, H: number of hashes (rows) and N number of counters (columns) per hash (row). The rows and columns form a matrix. The space they take is H*N. Each row has its own <a href="https://en.wikipedia.org/wiki/K-independent_hashing">independent</a> hash function (hash_i()).</p>
+	<p>The idea of a CM sketch is similar to a Bloom filter. The mathematical details of the CM sketch can be found in <a href="http://dimacs.rutgers.edu/~graham/pubs/papers/cmencyc.pdf" target="_blank" rel="noopener noreferrer">this paper</a>. In this section, we will just illustrate how it works.</p>
+	<p>A CM sketch data structure takes two parameters, H: number of hashes (rows) and N number of counters (columns) per hash (row). The rows and columns form a matrix. The space they take is H*N. Each row has its own <a href="https://en.wikipedia.org/wiki/K-independent_hashing" target="_blank" rel="noopener noreferrer">independent</a> hash function (hash_i()).</p>
 	<p>For this example, we use H=3 and N=4:</p><!--kg-card-begin: html-->
 	<style type="text/css">
 		.tg {
@@ -383,7 +383,7 @@ impl Estimator {
 			<p>naive: Mutex&lt;HashMap&lt;u32, usize&gt;&gt;. This approach references the simple hash table approach mentioned above. This design requires a lock on every operation.</p>
 		</li>
 		<li>
-			<p>optimized: DashMap&lt;u32, AtomicUsize&gt;. <a href="https://docs.rs/dashmap/latest/dashmap">DashMap</a> leverages multiple hash tables in order to shard the keys to reduce contentions across different keys. We also use atomic counters here so that counting existing keys won't need a write lock.</p>
+			<p>optimized: DashMap&lt;u32, AtomicUsize&gt;. <a href="https://docs.rs/dashmap/latest/dashmap" target="_blank" rel="noopener noreferrer">DashMap</a> leverages multiple hash tables in order to shard the keys to reduce contentions across different keys. We also use atomic counters here so that counting existing keys won't need a write lock.</p>
 		</li>
 	</ol>
 	<p>We have two test cases, one that is single threaded and another that is multi-threaded. In both cases, we have one million keys. We generate 100 million events from the keys. The keys are uniformly distributed among the events.</p>
@@ -547,7 +547,7 @@ impl Estimator {
 			</svg>
 		</a>
 	</div>
-	<p>In production, pingora uses this library in a few places. The most common one is the connection limit feature. When our servers try to establish too many connections to a single origin server, in order to protect the server and our infrastructure from becoming overloaded, this feature will start rejecting new requests with <a href="https://developers.cloudflare.com/support/troubleshooting/cloudflare-errors/troubleshooting-cloudflare-5xx-errors/#error-503-service-temporarily-unavailable">503 errors</a>.</p>
+	<p>In production, pingora uses this library in a few places. The most common one is the connection limit feature. When our servers try to establish too many connections to a single origin server, in order to protect the server and our infrastructure from becoming overloaded, this feature will start rejecting new requests with <a href="https://developers.cloudflare.com/support/troubleshooting/cloudflare-errors/troubleshooting-cloudflare-5xx-errors/#error-503-service-temporarily-unavailable" target="_blank" rel="noopener noreferrer">503 errors</a>.</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
 		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/WEm9dkrBXLof8baG7ph9e/8ac9205ac8c47ec1a89fabbab848f2ae/image2-4.png" alt="" class="kg-image" width="1999" height="919" loading="lazy">
@@ -562,8 +562,8 @@ impl Estimator {
 			</svg>
 		</a>
 	</div>
-	<p>Pingora-limits crate is available now on <a href="https://github.com/cloudflare/pingora/tree/main/pingora-limits">GitHub</a>. Both the core functionality and the performance benchmark performed above can be found there.</p>
+	<p>Pingora-limits crate is available now on <a href="https://github.com/cloudflare/pingora/tree/main/pingora-limits" target="_blank" rel="noopener noreferrer">GitHub</a>. Both the core functionality and the performance benchmark performed above can be found there.</p>
 	<p>In this blog post, we introduced pingora-limits, a library that counts events efficiently. We explained the core idea, which is based on a probabilistic data structure. We also showed through a performance benchmark that the pingora-limits implementation is fast and very efficient for memory consumption.</p>
 	<p>Not only that, but we will continue introducing and open sourcing Pingora components and libraries because we believe that sharing the idea behind the code is equally important as sharing the code itself.</p>
-	<p>Interested in joining us to help build a better Internet? Our engineering teams are <a href="https://www.cloudflare.com/careers/jobs/?department=Engineering">hiring</a>.</p>
+	<p>Interested in joining us to help build a better Internet? Our engineering teams are <a href="https://www.cloudflare.com/careers/jobs/?department=Engineering" target="_blank" rel="noopener noreferrer">hiring</a>.</p>
 </div>

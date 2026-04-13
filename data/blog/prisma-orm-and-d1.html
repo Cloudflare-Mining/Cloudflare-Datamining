@@ -1,8 +1,8 @@
 <div class="mb2 gray5">3 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/26o8O090SjtKiIcXtt14OD/33e47b832e8f6a959a39cc2b3350bbb2/prisma-orm-and-d1.png" alt="">
 <div class="post-content lh-copy gray1">
 	<p></p>
-	<p>Working with <a href="https://www.cloudflare.com/developer-platform/products/d1">databases</a> can be difficult. Developers face increasing data complexity and needs beyond simple create, read, update, and delete (CRUD) operations. Unfortunately, these issues also compound on themselves: developers have a harder time iterating in an increasingly complex environment. Cloudflare Workers and D1 help by reducing time spent managing infrastructure and deploying applications, and <a href="https://prisma.io">Prisma</a> provides a great experience for your team to work and interact with data. &nbsp;</p>
-	<p>Together, Cloudflare and Prisma make it easier than ever to deploy globally available apps with a focus on developer experience. To further that goal, Prisma Object Relational Mapper (ORM) now natively supports Cloudflare Workers and D1 in Preview. With version <code>5.12.0</code> of Prisma ORM you can now interact with your data stored in D1 from your Cloudflare Workers with the convenience of the Prisma Client API. Learn more and <a href="https://pris.ly/d/d1">try it out now</a>.</p>
+	<p>Working with <a href="https://www.cloudflare.com/developer-platform/products/d1" target="_blank" rel="noopener noreferrer">databases</a> can be difficult. Developers face increasing data complexity and needs beyond simple create, read, update, and delete (CRUD) operations. Unfortunately, these issues also compound on themselves: developers have a harder time iterating in an increasingly complex environment. Cloudflare Workers and D1 help by reducing time spent managing infrastructure and deploying applications, and <a href="https://prisma.io" target="_blank" rel="noopener noreferrer">Prisma</a> provides a great experience for your team to work and interact with data. &nbsp;</p>
+	<p>Together, Cloudflare and Prisma make it easier than ever to deploy globally available apps with a focus on developer experience. To further that goal, Prisma Object Relational Mapper (ORM) now natively supports Cloudflare Workers and D1 in Preview. With version <code>5.12.0</code> of Prisma ORM you can now interact with your data stored in D1 from your Cloudflare Workers with the convenience of the Prisma Client API. Learn more and <a href="https://pris.ly/d/d1" target="_blank" rel="noopener noreferrer">try it out now</a>.</p>
 	<div class="flex anchor relative">
 		<h3 id="what-is-prisma">What is Prisma?</h3>
 		<a href="https://blog.cloudflare.com/#what-is-prisma" aria-hidden="true" class="relative sm:absolute sm:-start-5">
@@ -12,7 +12,7 @@
 		</a>
 	</div>
 	<p>From writing to debugging, SQL queries take a long time and slow developer productivity. Even before writing queries, modeling tables can quickly become unwieldy, and migrating data is a nerve-wracking process. Prisma ORM looks to resolve all of these issues by providing an intuitive data modeling language, an automated migration workflow, and a developer-friendly and type-safe client for JavaScript and TypeScript, allowing developers to focus on what they enjoy: developing!</p>
-	<p><a href="https://prisma.io">Prisma</a> is focused on making working with data easy. Alongside an ORM, Prisma offers <a href="https://www.prisma.io/data-platform/accelerate">Accelerate</a> and <a href="https://www.prisma.io/data-platform/pulse">Pulse</a>, products built on Cloudflare that cover needs from connection pooling, to query caching, to real-time type-safe database subscriptions.</p>
+	<p><a href="https://prisma.io" target="_blank" rel="noopener noreferrer">Prisma</a> is focused on making working with data easy. Alongside an ORM, Prisma offers <a href="https://www.prisma.io/data-platform/accelerate" target="_blank" rel="noopener noreferrer">Accelerate</a> and <a href="https://www.prisma.io/data-platform/pulse" target="_blank" rel="noopener noreferrer">Pulse</a>, products built on Cloudflare that cover needs from connection pooling, to query caching, to real-time type-safe database subscriptions.</p>
 	<div class="flex anchor relative">
 		<h2 id="how-to-get-started-with-prisma-orm-cloudflare-workers-and-d1"><b>How to get started with Prisma ORM, Cloudflare Workers, and D1</b></h2>
 		<a href="https://blog.cloudflare.com/#how-to-get-started-with-prisma-orm-cloudflare-workers-and-d1" aria-hidden="true" class="relative sm:absolute sm:-start-5">
@@ -51,7 +51,7 @@ database_id = "&lt;unique-ID-for-your-database&gt;"</code></pre>
 	<p><code>npm install prisma@latest @prisma/client@latest @prisma/adapter-d1</code></p>
 	<p>Now run <code>npx prisma init</code> in order to create the necessary files to start with. Since D1 uses SQLite’s SQL dialect, we set the provider to be <code>sqlite</code>.</p>
 	<p><code>npx prisma init --datasource-provider sqlite</code></p>
-	<p>This will create a few files, but the one to look at first is your <a href="https://www.prisma.io/docs/orm/prisma-schema/overview">Prisma schema file</a>, available at <code>prisma/schema.prisma</code></p>
+	<p>This will create a few files, but the one to look at first is your <a href="https://www.prisma.io/docs/orm/prisma-schema/overview" target="_blank" rel="noopener noreferrer">Prisma schema file</a>, available at <code>prisma/schema.prisma</code></p>
 	<pre class="language-bash"><code class="language-bash">// schema.prisma
 // This is your Prisma schema file,
 // learn more about it in the docs: https://pris.ly/d/prisma-schema
@@ -185,5 +185,5 @@ export default {
 			</svg>
 		</a>
 	</div>
-	<p>We were able to build a simple app easily with Cloudflare Workers, D1 and Prisma ORM, but the benefits don’t stop there! Check the <a href="https://www.prisma.io/docs">official documentation</a> for information on using Prisma ORM with <a href="https://www.prisma.io/docs/orm/prisma-client/deployment/edge/deploy-to-cloudflare#d1">D1</a> along with workflows for <a href="https://www.prisma.io/docs/orm/prisma-migrate/getting-started">migrating your data</a>, and even <a href="https://www.prisma.io/docs/orm/prisma-client/client-extensions">extending the Prisma Client</a> for your specific needs.</p>
+	<p>We were able to build a simple app easily with Cloudflare Workers, D1 and Prisma ORM, but the benefits don’t stop there! Check the <a href="https://www.prisma.io/docs" target="_blank" rel="noopener noreferrer">official documentation</a> for information on using Prisma ORM with <a href="https://www.prisma.io/docs/orm/prisma-client/deployment/edge/deploy-to-cloudflare#d1" target="_blank" rel="noopener noreferrer">D1</a> along with workflows for <a href="https://www.prisma.io/docs/orm/prisma-migrate/getting-started" target="_blank" rel="noopener noreferrer">migrating your data</a>, and even <a href="https://www.prisma.io/docs/orm/prisma-client/client-extensions" target="_blank" rel="noopener noreferrer">extending the Prisma Client</a> for your specific needs.</p>
 </div>

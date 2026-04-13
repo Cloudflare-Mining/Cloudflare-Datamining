@@ -22,7 +22,7 @@
 	<p>To this end, here are some of the features of Workers RPC:</p>
 	<ul>
 		<li>
-			<p>For starters, you can pass <a href="https://developer.mozilla.org/en-US/docs/Web/API/Web_Workers_API/Structured_clone_algorithm#supported_types"><b>Structured Clonable</b></a> <b>types</b> as the params or return value of an RPC. (That means that, unlike JSON, Dates just work, and you can even have cycles.)</p>
+			<p>For starters, you can pass <a href="https://developer.mozilla.org/en-US/docs/Web/API/Web_Workers_API/Structured_clone_algorithm#supported_types" target="_blank" rel="noopener noreferrer"><b>Structured Clonable</b></a> <b>types</b> as the params or return value of an RPC. (That means that, unlike JSON, Dates just work, and you can even have cycles.)</p>
 		</li>
 		<li>
 			<p>You can additionally pass <b>functions</b> in the params or return value of other functions. When the other side calls the function you passed to it, they make a new RPC back to you.</p>
@@ -43,11 +43,11 @@
 			<p>All of this is <i>secure</i>, based on the <b>object-capability model</b>.</p>
 		</li>
 		<li>
-			<p>The <a href="https://github.com/cloudflare/workerd/blob/03629a6553751d3614a8b91926e380213e100d94/src/workerd/io/worker-interface.capnp#L302">protocol</a> and <a href="https://github.com/cloudflare/workerd/blob/03629a6553751d3614a8b91926e380213e100d94/src/workerd/api/worker-rpc.c++">implementation</a> are fully open source as part of <a href="https://github.com/cloudflare/workerd">workerd</a>.</p>
+			<p>The <a href="https://github.com/cloudflare/workerd/blob/03629a6553751d3614a8b91926e380213e100d94/src/workerd/io/worker-interface.capnp#L302" target="_blank" rel="noopener noreferrer">protocol</a> and <a href="https://github.com/cloudflare/workerd/blob/03629a6553751d3614a8b91926e380213e100d94/src/workerd/api/worker-rpc.c++" target="_blank" rel="noopener noreferrer">implementation</a> are fully open source as part of <a href="https://github.com/cloudflare/workerd" target="_blank" rel="noopener noreferrer">workerd</a>.</p>
 		</li>
 	</ul>
-	<p>Workers RPC is a JavaScript-native RPC system. Under the hood, it is built on <a href="https://capnproto.org/rpc.html">Cap'n Proto</a>. However, unlike Cap'n Proto, Workers RPC does not require you to write a schema. (Of course, you can use TypeScript if you like, and we provide tools to help with this.)</p>
-	<p>In general, Workers RPC is designed to "just work" using idiomatic JavaScript code, so you shouldn't have to spend too much time looking at docs. We'll give you an overview in this blog post. But if you want to understand the full feature set, <a href="https://developers.cloudflare.com/workers/runtime-apis/rpc">check out the documentation</a>.</p>
+	<p>Workers RPC is a JavaScript-native RPC system. Under the hood, it is built on <a href="https://capnproto.org/rpc.html" target="_blank" rel="noopener noreferrer">Cap'n Proto</a>. However, unlike Cap'n Proto, Workers RPC does not require you to write a schema. (Of course, you can use TypeScript if you like, and we provide tools to help with this.)</p>
+	<p>In general, Workers RPC is designed to "just work" using idiomatic JavaScript code, so you shouldn't have to spend too much time looking at docs. We'll give you an overview in this blog post. But if you want to understand the full feature set, <a href="https://developers.cloudflare.com/workers/runtime-apis/rpc" target="_blank" rel="noopener noreferrer">check out the documentation</a>.</p>
 	<div class="flex anchor relative">
 		<h2 id="why-rpc-and-what-is-rpc-anyway">Why RPC? (And what is RPC anyway?)</h2>
 		<a href="https://blog.cloudflare.com/#why-rpc-and-what-is-rpc-anyway" aria-hidden="true" class="relative sm:absolute sm:-start-5">
@@ -56,8 +56,8 @@
 			</svg>
 		</a>
 	</div>
-	<p>Remote Procedure Calls (RPC) are a way of expressing communications between two programs over a network. Without RPC, you might communicate using a protocol like HTTP. With HTTP, though, you must format and parse your communications as an HTTP request and response, perhaps designed in <a href="https://en.wikipedia.org/wiki/REST">REST</a> style. RPC systems try to make communications look like a regular function call instead, as if you were calling a library rather than a remote service. The RPC system provides a "stub" object on the client side which stands in for the real server-side object. When a method is called on the stub, the RPC system figures out how to serialize and transmit the parameters to the server, invoke the method on the server, and then transmit the return value back.</p>
-	<p>The merits of RPC have been subject to a great deal of debate. RPC is often accused of committing many of the <a href="https://en.wikipedia.org/wiki/Fallacies_of_distributed_computing">fallacies of distributed computing</a>.</p>
+	<p>Remote Procedure Calls (RPC) are a way of expressing communications between two programs over a network. Without RPC, you might communicate using a protocol like HTTP. With HTTP, though, you must format and parse your communications as an HTTP request and response, perhaps designed in <a href="https://en.wikipedia.org/wiki/REST" target="_blank" rel="noopener noreferrer">REST</a> style. RPC systems try to make communications look like a regular function call instead, as if you were calling a library rather than a remote service. The RPC system provides a "stub" object on the client side which stands in for the real server-side object. When a method is called on the stub, the RPC system figures out how to serialize and transmit the parameters to the server, invoke the method on the server, and then transmit the return value back.</p>
+	<p>The merits of RPC have been subject to a great deal of debate. RPC is often accused of committing many of the <a href="https://en.wikipedia.org/wiki/Fallacies_of_distributed_computing" target="_blank" rel="noopener noreferrer">fallacies of distributed computing</a>.</p>
 	<p>But this reputation is outdated. When RPC was first invented some 40 years ago, async programming barely existed. We did not have Promises, much less async and await. Early RPC was synchronous: calls would block the calling thread waiting for a reply. At best, latency made the program slow. At worst, network failures would hang or crash the program. No wonder it was deemed "broken".</p>
 	<p>Things are different today. We have Promise and async and await, and we can throw exceptions on network failures. We even understand how RPCs can be pipelined so that a chain of calls takes only one network round trip. Many large distributed systems you likely use every day are built on RPC. It works.</p>
 	<p>The fact is, RPC fits the programming model we're used to. Every programmer is trained to think in terms of APIs composed of function calls, not in terms of byte stream protocols nor even REST. Using RPC frees you from the need to constantly translate between mental models, allowing you to move faster.</p>
@@ -301,14 +301,14 @@ entrypoint = "AuthService"  # name of the exported RPC class</code></pre>
 		</a>
 	</div>
 	<p>What exactly happened here? The Server created an instance of the class User and returned it to the client. It has methods that the client can then just call? Are we somehow transferring code over the wire?</p>
-	<p>No, absolutely not! All code runs strictly in the <a href="https://developers.cloudflare.com/workers/reference/how-workers-works/#isolates">isolate</a> where it was originally loaded. What actually happens is, when the return value is passed over RPC, all class instances are replaced with RPC stubs. The stub, when called, makes a new RPC back to the server, where it calls the method on the original User object that was created there:</p>
+	<p>No, absolutely not! All code runs strictly in the <a href="https://developers.cloudflare.com/workers/reference/how-workers-works/#isolates" target="_blank" rel="noopener noreferrer">isolate</a> where it was originally loaded. What actually happens is, when the return value is passed over RPC, all class instances are replaced with RPC stubs. The stub, when called, makes a new RPC back to the server, where it calls the method on the original User object that was created there:</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
 		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3npoG6d0ArXOiSEtHb9uhx/301d9f07566dbe7cdc84db7ab07a69d3/image1-8.png" alt="" class="kg-image" width="1999" height="1000" loading="lazy">
 
 	</figure>
 	<p>But then you might ask: how does the RPC stub know what methods are available? Is a list of methods passed over the wire?</p>
-	<p>In fact, no. The RPC stub is a special object called a "<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Proxy">Proxy</a>". It implements a "wildcard method", that is, it appears to have an infinite number of methods of every possible name. When you try to call a method, the name you called is sent to the server. If the original object has no such method, an exception is thrown.</p>
+	<p>In fact, no. The RPC stub is a special object called a "<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Proxy" target="_blank" rel="noopener noreferrer">Proxy</a>". It implements a "wildcard method", that is, it appears to have an infinite number of methods of every possible name. When you try to call a method, the name you called is sent to the server. If the original object has no such method, an exception is thrown.</p>
 	<div class="flex anchor relative">
 		<h3 id="did-you-spot-the-security">Did you spot the security?</h3>
 		<a href="https://blog.cloudflare.com/#did-you-spot-the-security" aria-hidden="true" class="relative sm:absolute sm:-start-5">
@@ -346,8 +346,8 @@ entrypoint = "AuthService"  # name of the exported RPC class</code></pre>
 		</a>
 	</div>
 	<p>Workers RPC works in an entirely dynamically-typed way, just as JavaScript itself does. But just as you can apply TypeScript on top of JavaScript in general, you can apply it to Workers RPC.</p>
-	<p>The <a href="https://www.npmjs.com/package/@cloudflare/workers-types"><code>@cloudflare/workers-types package</code></a> defines the type <code>Service&lt;MyEntrypointType&gt;</code>, which describes the type of a service binding. <code>MyEntrypointType</code> is the type of your server-side interface. <code>Service&lt;MyEntrypointType&gt;</code> applies all the necessary transformations to turn this into a client-side type, such as converting all methods to async, replacing functions and <code>RpcTargets</code> with (properly-typed) stubs, and so on.</p>
-	<p>It is up to you to share the definition of <code>MyEntrypointType</code> between your server app and its clients. You might do this by defining the interface in a separate shared TypeScript file, or by extracting a <code>.d.ts</code> type declaration file from your server code using <a href="https://www.typescriptlang.org/tsconfig/#declaration"><code>tsc --declaration</code></a>.</p>
+	<p>The <a href="https://www.npmjs.com/package/@cloudflare/workers-types" target="_blank" rel="noopener noreferrer"><code>@cloudflare/workers-types package</code></a> defines the type <code>Service&lt;MyEntrypointType&gt;</code>, which describes the type of a service binding. <code>MyEntrypointType</code> is the type of your server-side interface. <code>Service&lt;MyEntrypointType&gt;</code> applies all the necessary transformations to turn this into a client-side type, such as converting all methods to async, replacing functions and <code>RpcTargets</code> with (properly-typed) stubs, and so on.</p>
+	<p>It is up to you to share the definition of <code>MyEntrypointType</code> between your server app and its clients. You might do this by defining the interface in a separate shared TypeScript file, or by extracting a <code>.d.ts</code> type declaration file from your server code using <a href="https://www.typescriptlang.org/tsconfig/#declaration" target="_blank" rel="noopener noreferrer"><code>tsc --declaration</code></a>.</p>
 	<p>With that done, you can apply types to your client:</p>
 	<pre class="language-javascript"><code class="language-javascript">import { WorkerEntrypoint } from "cloudflare:workers";
 
@@ -381,7 +381,7 @@ export default &lt;ExportedHandler&lt;Env&gt;&gt; {
 			</svg>
 		</a>
 	</div>
-	<p><a href="https://developers.cloudflare.com/durable-objects">Durable Objects</a> allow you to create a "named" worker instance somewhere on the network that multiple other workers can then talk to, in order to coordinate between them. Each Durable Object also has its own private on-disk storage where it can store state long-term.</p>
+	<p><a href="https://developers.cloudflare.com/durable-objects" target="_blank" rel="noopener noreferrer">Durable Objects</a> allow you to create a "named" worker instance somewhere on the network that multiple other workers can then talk to, in order to coordinate between them. Each Durable Object also has its own private on-disk storage where it can store state long-term.</p>
 	<p>Previously, communications with a Durable Object had to take the form of HTTP requests and responses. With RPC, you can now just declare methods on your Durable Object class, and call them on the stub. One catch: to opt into RPC, you must declare your Durable Object class with extends DurableObject, like so:</p>
 	<pre class="language-javascript"><code class="language-javascript">import { DurableObject } from "cloudflare:workers";
 
@@ -422,7 +422,7 @@ let foo = stub.foo();
 let baz = foo.bar.baz();
 let corge = await baz.qux[3].corge();</code></pre>
 	<p>Whoa! How does this work?</p>
-	<p>RPC methods do not return normal promises. Instead, they return special RPC promises. These objects are "<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise#thenables">custom thenables</a>", which means you can use them in all the ways you'd use a regular Promise, like awaiting it or calling .then() on it.</p>
+	<p>RPC methods do not return normal promises. Instead, they return special RPC promises. These objects are "<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise#thenables" target="_blank" rel="noopener noreferrer">custom thenables</a>", which means you can use them in all the ways you'd use a regular Promise, like awaiting it or calling .then() on it.</p>
 	<p>But an RPC promise is more than just a thenable. It is also a proxy. Like an RPC stub, it has a wildcard property. You can use this to express speculative RPC calls on the eventual result, before it has actually resolved. These speculative calls will be sent to the server immediately, so that they can begin executing as soon as the first RPC has finished there, before the result has actually made its way back over the network to the client.</p>
 	<p>This feature is also known as "Promise Pipelining". Although it isn't explicitly a security feature, it is commonly provided by object-capability RPC systems like Cap'n Proto.</p>
 	<div class="flex anchor relative">
@@ -446,5 +446,5 @@ let corge = await baz.qux[3].corge();</code></pre>
 			</svg>
 		</a>
 	</div>
-	<p>Workers RPC is available today for all Workers users. To get started, <a href="https://developers.cloudflare.com/workers/runtime-apis/rpc">check out the docs</a>.</p>
+	<p>Workers RPC is available today for all Workers users. To get started, <a href="https://developers.cloudflare.com/workers/runtime-apis/rpc" target="_blank" rel="noopener noreferrer">check out the docs</a>.</p>
 </div>

@@ -8,7 +8,7 @@
 
 	</figure>
 	<p>indicating that trying to browse to a CloudFlare customer web site using the Twitter in-app browser was resulting in an error page. Which was <i>very odd</i> because it was clearly only happening occasionally: <i>very</i> occasionally.</p>
-	<p>Luckily, the person who tweeted that was in the same timezone as me and able to help debug together (thanks <a href="https://twitter.com/jamesrwhite">James White</a>!); we discovered that the following sequence of events was necessary to reproduce the bug:</p>
+	<p>Luckily, the person who tweeted that was in the same timezone as me and able to help debug together (thanks <a href="https://twitter.com/jamesrwhite" target="_blank" rel="noopener noreferrer">James White</a>!); we discovered that the following sequence of events was necessary to reproduce the bug:</p>
 	<ol>
 		<li>
 			<p>Click on a link in a tweet to a web site that is using an <i>https</i> URL and open in the Twitter in-app browser (not mobile Safari). This site may or may not be a CloudFlare customer.</p>
@@ -21,7 +21,7 @@
 		</li>
 	</ol>
 	<p>That explained why this happened very rarely, but the question became... why did it happen at all? After some debugging it appeared to happen in recent versions of both iOS and the Twitter app (including the iOS 9 beta).</p>
-	<p>To figure out what was going on I turned to <a href="http://www.charlesproxy.com">Charles Proxy</a> and used it to intercept the communication between my iPhone and CloudFlare. Happily, Charles Proxy can <a href="http://www.charlesproxy.com/documentation/faqs/ssl-connections-from-within-iphone-applications">intercept SSL connections</a> by installing a custom certificate on a phone. I ran Charles Proxy on my laptop, pointed my iPhone it at (to use it as a proxy) and clicked on a tweet to a site that I had set up specially for testing.</p>
+	<p>To figure out what was going on I turned to <a href="http://www.charlesproxy.com" target="_blank" rel="noopener noreferrer">Charles Proxy</a> and used it to intercept the communication between my iPhone and CloudFlare. Happily, Charles Proxy can <a href="http://www.charlesproxy.com/documentation/faqs/ssl-connections-from-within-iphone-applications" target="_blank" rel="noopener noreferrer">intercept SSL connections</a> by installing a custom certificate on a phone. I ran Charles Proxy on my laptop, pointed my iPhone it at (to use it as a proxy) and clicked on a tweet to a site that I had set up specially for testing.</p>
 	<p>Charles Proxy showed that the request that generated an error looked like this:</p>
 	<pre class="language-bash"><code class="language-bash">GET /test HTTP/1.1\r\n
 Host: www.example.com\r\n
@@ -34,7 +34,7 @@ User-Agent: Mozilla/5.0 (iPhone; CPU iPhone OS 8_4_1 like Mac OS X) AppleWebKit/
 \r\n</code></pre>
 	<p>At first glance this looked pretty normal but on a second look something really stuck out:</p>
 	<pre class="language-bash"><code class="language-bash">Referer: \r\n</code></pre>
-	<p><a href="https://tools.ietf.org/html/rfc7231#section-5.5.2">RFC7231</a> clearly states that if the Referer header is present it must contain a URI:</p>
+	<p><a href="https://tools.ietf.org/html/rfc7231#section-5.5.2" target="_blank" rel="noopener noreferrer">RFC7231</a> clearly states that if the Referer header is present it must contain a URI:</p>
 	<pre class="language-bash"><code class="language-bash">Referer = absolute-URI / partial-URI</code></pre>
 	<p>The RFC also gives a clue is to why the header is in this state when jumping from HTTPS to HTTP:</p>
 	<blockquote>
@@ -45,8 +45,8 @@ User-Agent: Mozilla/5.0 (iPhone; CPU iPhone OS 8_4_1 like Mac OS X) AppleWebKit/
 		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6mtfnt5DXeYMJ6SXR7GOgg/33a121a054a1e600f9c9a7ba81a81020/Screen-Shot-2015-09-07-at-14-48-07.png" alt="" class="kg-image" width="1904" height="327" loading="lazy">
 
 	</figure>
-	<p>CloudFlare's <a href="https://support.cloudflare.com/hc/en-us/articles/200170086-What-does-the-Browser-Integrity-Check-do-">Browser Integrity Check</a> was verifying that the Referer header was well formed and generating the error (since there's a Referer, but it's empty) and it looks like the Twitter app in-app browser (and, we later discovered, the Facebook app in-app browser) are, instead of removing the header, blanking it out.</p>
-	<p>This is a good example of how it's not always easy to be "strictly" RFC-compliant. <a href="https://en.wikipedia.org/wiki/Robustness_principle">Postel's Law</a> tells us that in this case CloudFlare needs to relax its check.</p>
+	<p>CloudFlare's <a href="https://support.cloudflare.com/hc/en-us/articles/200170086-What-does-the-Browser-Integrity-Check-do-" target="_blank" rel="noopener noreferrer">Browser Integrity Check</a> was verifying that the Referer header was well formed and generating the error (since there's a Referer, but it's empty) and it looks like the Twitter app in-app browser (and, we later discovered, the Facebook app in-app browser) are, instead of removing the header, blanking it out.</p>
+	<p>This is a good example of how it's not always easy to be "strictly" RFC-compliant. <a href="https://en.wikipedia.org/wiki/Robustness_principle" target="_blank" rel="noopener noreferrer">Postel's Law</a> tells us that in this case CloudFlare needs to relax its check.</p>
 	<p>We reported this problem to both Twitter and Facebook and rolled out a fix that allows this behavior on the part of these clients and will turn the strict checking back on when it makes sense.</p>
 	<p>But watch your software if you validate the Referer header. You might be running into this oddness.</p>
 </div>

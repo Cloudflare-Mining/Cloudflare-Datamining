@@ -28,7 +28,7 @@
 
 	</figure>
 	<p><i>Learn more about how isolates enable Cloudflare Workers to be performant and secure</i> <a href="https://blog.cloudflare.com/cloud-computing-without-containers"><i>here.</i></a></p>
-	<p>Cold starts are ugly. They’re unexpected, unavoidable, and cause unpredictable code execution times. You shouldn’t have to compromise your customers’ experience to enjoy <a href="https://www.cloudflare.com/learning/serverless/what-is-serverless">the benefits of serverless</a>. In a collaborative effort between our Workers and Protocols teams, we set out to create a solution where you never have to worry about cold starts, warm starts, or pre-warming ever again.</p>
+	<p>Cold starts are ugly. They’re unexpected, unavoidable, and cause unpredictable code execution times. You shouldn’t have to compromise your customers’ experience to enjoy <a href="https://www.cloudflare.com/learning/serverless/what-is-serverless" target="_blank" rel="noopener noreferrer">the benefits of serverless</a>. In a collaborative effort between our Workers and Protocols teams, we set out to create a solution where you never have to worry about cold starts, warm starts, or pre-warming ever again.</p>
 	<div class="flex anchor relative">
 		<h3 id="how-is-a-zero-cold-start-even-possible">How is a zero cold start even possible?</h3>
 		<a href="https://blog.cloudflare.com/#how-is-a-zero-cold-start-even-possible" aria-hidden="true" class="relative sm:absolute sm:-start-5">
@@ -38,7 +38,7 @@
 		</a>
 	</div>
 	<p>Like many features at Cloudflare, security and encryption make our network more intelligent. Since 95% of Worker requests are securely handled over HTTPS, we engineered a solution that uses the Internet’s encryption protocols to our advantage.</p>
-	<p>Before a client can send an HTTPS request, it needs to establish a secure channel with the server. This process is known as “handshaking” in the <a href="https://www.cloudflare.com/learning/ssl/what-happens-in-a-tls-handshake">TLS</a>, or Transport Layer Security, protocol. Most clients also send a hostname (e.g. cloudflare.com) in that handshake, which is referred to as the <a href="https://www.cloudflare.com/learning/ssl/what-is-sni">SNI</a>, or Server Name Indication. The server receives the handshake, sends back a certificate, and now the client is allowed to send its original request, encrypted.</p>
+	<p>Before a client can send an HTTPS request, it needs to establish a secure channel with the server. This process is known as “handshaking” in the <a href="https://www.cloudflare.com/learning/ssl/what-happens-in-a-tls-handshake" target="_blank" rel="noopener noreferrer">TLS</a>, or Transport Layer Security, protocol. Most clients also send a hostname (e.g. cloudflare.com) in that handshake, which is referred to as the <a href="https://www.cloudflare.com/learning/ssl/what-is-sni" target="_blank" rel="noopener noreferrer">SNI</a>, or Server Name Indication. The server receives the handshake, sends back a certificate, and now the client is allowed to send its original request, encrypted.</p>
 	<p>Previously, Workers would only load and compile after the <i>entire</i> handshake process was complete, which involves two round-trips between the client and server. But wait, we thought, if the hostname is present in the handshake, why wait until the entire process is done to preload the Worker? Since the handshake takes some time, there is an opportunity to warm up resources during the waiting time before the request arrives.</p>
 	<figure class="kg-card kg-image-card ">
 
@@ -69,7 +69,7 @@
 			</svg>
 		</a>
 	</div>
-	<p>We also recognize that performance is more than just zero cold starts. That’s why we announced the beta of <a href="https://www.cloudflare.com/workers-unbound-beta">Workers Unbound</a> earlier this week. Workers Unbound has the simplicity and performance of Workers with no limits, just raw performance.</p>
+	<p>We also recognize that performance is more than just zero cold starts. That’s why we announced the beta of <a href="https://www.cloudflare.com/workers-unbound-beta" target="_blank" rel="noopener noreferrer">Workers Unbound</a> earlier this week. Workers Unbound has the simplicity and performance of Workers with no limits, just raw performance.</p>
 	<p>Workers, equipped with zero cold starts, no CPU limits, and a network that spans over 200 cities is prime and ready to take on any serious workload. Now that’s performance.</p>
 	<div class="flex anchor relative">
 		<h3 id="interested-in-deploying-with-workers">Interested in deploying with Workers?</h3>
@@ -81,13 +81,13 @@
 	</div>
 	<ul>
 		<li>
-			<p>Learn more about <a href="https://workers.dev">Cloudflare Workers</a></p>
+			<p>Learn more about <a href="https://workers.dev" target="_blank" rel="noopener noreferrer">Cloudflare Workers</a></p>
 		</li>
 		<li>
-			<p>Join the Workers Unbound <a href="https://www.cloudflare.com/workers-unbound-beta">Beta</a></p>
+			<p>Join the Workers Unbound <a href="https://www.cloudflare.com/workers-unbound-beta" target="_blank" rel="noopener noreferrer">Beta</a></p>
 		</li>
 		<li>
-			<p>Try our new language support for <a href="https://github.com/cloudflare/python-worker-hello-world">Python</a> and <a href="https://github.com/cloudflare/kotlin-worker-hello-world">Kotlin</a></p>
+			<p>Try our new language support for <a href="https://github.com/cloudflare/python-worker-hello-world" target="_blank" rel="noopener noreferrer">Python</a> and <a href="https://github.com/cloudflare/kotlin-worker-hello-world" target="_blank" rel="noopener noreferrer">Kotlin</a></p>
 		</li>
 	</ul>
 </div>

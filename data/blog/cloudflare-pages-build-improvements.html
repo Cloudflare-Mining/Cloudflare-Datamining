@@ -11,7 +11,7 @@
 		</a>
 	</div>
 	<p>Since the launch of Cloudflare Pages, there is no doubt that the build experience has been its biggest source of criticism. From the amount of waiting to inflexibility of CI workflow, Pages had a lot of opportunity for growth and improvement. With Pages, our North Star has always been designing a developer platform that fits right into your workflow and oozes simplicity. User pain points have been and always will be our priority, which is why today we are thrilled to share a list of exciting updates to our build times, logs and settings!</p>
-	<p>Over the last three quarters, we implemented a new build infrastructure that speeds up Pages builds, so you can iterate quickly and efficiently. In February, we soft released the Pages Fast Builds Beta, allowing you to opt in to this new infrastructure on a per-project basis. This not only allowed us to test our implementation, but also gave our community the opportunity to try it out and give us direct feedback in <a href="https://discord.gg/cloudflaredev">Discord</a>. Today we are excited to announce the new build infrastructure is now generally available and automatically enabled for all existing and new projects!</p>
+	<p>Over the last three quarters, we implemented a new build infrastructure that speeds up Pages builds, so you can iterate quickly and efficiently. In February, we soft released the Pages Fast Builds Beta, allowing you to opt in to this new infrastructure on a per-project basis. This not only allowed us to test our implementation, but also gave our community the opportunity to try it out and give us direct feedback in <a href="https://discord.gg/cloudflaredev" target="_blank" rel="noopener noreferrer">Discord</a>. Today we are excited to announce the new build infrastructure is now generally available and automatically enabled for all existing and new projects!</p>
 	<div class="flex anchor relative">
 		<h2 id="faster-build-times">Faster build times</h2>
 		<a href="https://blog.cloudflare.com/#faster-build-times" aria-hidden="true" class="relative sm:absolute sm:-start-5">
@@ -33,7 +33,7 @@
 		</a>
 	</div>
 	<p>In our old build infrastructure, because we spun up a new virtual machine (VM) for every build, it would take several minutes to boot up and initialize with the Pages build image needed to execute the build. Alternatively, one could reuse a collection of VMs, assigning a new build to the next available VM, but containers share a kernel with the host operating system, making them far less isolated, posing a huge security risk. This could allow a malicious actor to perform a "container escape" to break out of their sandbox. We wanted the best of both worlds: the speed of a container with the isolation of a virtual machine.</p>
-	<p>Enter <a href="https://gvisor.dev">gVisor</a>, a container sandboxing technology that drastically limits the attack surface of a host. In the new infrastructure, each container running with gVisor is given its own independent application "kernel,” instead of directly sharing the kernel with its host. Then, to address the speed, we keep a cluster of virtual machines warm and ready to execute builds so that when a new Pages deployment is triggered, it takes just a few seconds for a new gVisor container to start up and begin executing meaningful work in a secure sandbox with near native performance.</p>
+	<p>Enter <a href="https://gvisor.dev" target="_blank" rel="noopener noreferrer">gVisor</a>, a container sandboxing technology that drastically limits the attack surface of a host. In the new infrastructure, each container running with gVisor is given its own independent application "kernel,” instead of directly sharing the kernel with its host. Then, to address the speed, we keep a cluster of virtual machines warm and ready to execute builds so that when a new Pages deployment is triggered, it takes just a few seconds for a new gVisor container to start up and begin executing meaningful work in a secure sandbox with near native performance.</p>
 	<div class="flex anchor relative">
 		<h2 id="stream-your-build-logs">Stream your build logs</h2>
 		<a href="https://blog.cloudflare.com/#stream-your-build-logs" aria-hidden="true" class="relative sm:absolute sm:-start-5">
@@ -73,7 +73,7 @@
 		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7fw9Ltufs0OqoXuByAcKdD/8e871205590c8270f36eb33627a13ae9/image1-15.png" alt="configuration with wild card syntax" class="kg-image" width="1404" height="946" loading="lazy">
 
 	</figure>
-	<p><a href="https://developers.cloudflare.com/pages/platform/branch-build-controls">Read more in our Pages docs</a> on how to get started with configuring automatic deployments with Wildcard Syntax.</p>
+	<p><a href="https://developers.cloudflare.com/pages/platform/branch-build-controls" target="_blank" rel="noopener noreferrer">Read more in our Pages docs</a> on how to get started with configuring automatic deployments with Wildcard Syntax.</p>
 	<div class="flex anchor relative">
 		<h3 id="using-ci-skip">Using CI Skip</h3>
 		<a href="https://blog.cloudflare.com/#using-ci-skip" aria-hidden="true" class="relative sm:absolute sm:-start-5">
@@ -124,7 +124,7 @@
 			</svg>
 		</a>
 	</div>
-	<p>Lastly, while streaming build logs helps you to identify those easily addressable issues, the infamous “Internal error occurred” is sometimes a little more cryptic to decipher depending on the failure. While we recently published a “<a href="https://developers.cloudflare.com/pages/platform/debugging-pages">Debugging Cloudflare Pages</a>” guide, in the future we’d like to provide the error feedback in a more productive manner, so you can easily identify the issue.</p>
+	<p>Lastly, while streaming build logs helps you to identify those easily addressable issues, the infamous “Internal error occurred” is sometimes a little more cryptic to decipher depending on the failure. While we recently published a “<a href="https://developers.cloudflare.com/pages/platform/debugging-pages" target="_blank" rel="noopener noreferrer">Debugging Cloudflare Pages</a>” guide, in the future we’d like to provide the error feedback in a more productive manner, so you can easily identify the issue.</p>
 	<div class="flex anchor relative">
 		<h2 id="have-feedback">Have feedback?</h2>
 		<a href="https://blog.cloudflare.com/#have-feedback" aria-hidden="true" class="relative sm:absolute sm:-start-5">
@@ -133,7 +133,7 @@
 			</svg>
 		</a>
 	</div>
-	<p>As always, your feedback defines our roadmap. With all the updates we’ve made to our build experience, it’s important we hear from you! You can get in touch with our team directly through <a href="https://discord.gg/cloudflaredev">Discord</a>. Navigate to our Pages specific section and check out our various channels specific to different parts of the product!</p>
+	<p>As always, your feedback defines our roadmap. With all the updates we’ve made to our build experience, it’s important we hear from you! You can get in touch with our team directly through <a href="https://discord.gg/cloudflaredev" target="_blank" rel="noopener noreferrer">Discord</a>. Navigate to our Pages specific section and check out our various channels specific to different parts of the product!</p>
 	<div class="flex anchor relative">
 		<h3 id="join-us-at-cloudflare-connect">Join us at Cloudflare Connect!</h3>
 		<a href="https://blog.cloudflare.com/#join-us-at-cloudflare-connect" aria-hidden="true" class="relative sm:absolute sm:-start-5">
@@ -142,5 +142,5 @@
 			</svg>
 		</a>
 	</div>
-	<p>Interested in learning more about building with Cloudflare Pages? If you’re based in the New York City area, join us on Thursday, May 12th for a series of workshops on how to build a full stack application on Pages! Follow along with a fully hands-on lab, featuring Pages in conjunction with other products like Workers, Images and Cloudflare Gateway, and hear directly from our product managers. <a href="https://events.www.cloudflare.com/flow/cloudflare/connect2022nyc/landing/page/page">Register now</a>!</p>
+	<p>Interested in learning more about building with Cloudflare Pages? If you’re based in the New York City area, join us on Thursday, May 12th for a series of workshops on how to build a full stack application on Pages! Follow along with a fully hands-on lab, featuring Pages in conjunction with other products like Workers, Images and Cloudflare Gateway, and hear directly from our product managers. <a href="https://events.www.cloudflare.com/flow/cloudflare/connect2022nyc/landing/page/page" target="_blank" rel="noopener noreferrer">Register now</a>!</p>
 </div>

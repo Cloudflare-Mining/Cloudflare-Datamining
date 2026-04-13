@@ -8,8 +8,8 @@
 			</svg>
 		</a>
 	</div>
-	<p>We use <a href="https://www.consul.io">Consul</a> for service discovery, and we’ve deployed a cluster that spans several of our data centers. This cluster exposes HTTP and DNS interfaces so that clients can query the Consul catalog and search for a particular service and the majority of the clients use DNS. We were aware from the start that the DNS query latencies were not great from certain parts of the world that were furthest away from these data centers. This, together with the fact that we use <a href="https://en.wikipedia.org/wiki/DNS_over_TLS">DNS over TLS</a>, results in some long latencies. The TTL of these names being low makes it even more impractical when resolving these names in the hot path.</p>
-	<p>The usual way to solve these issues is by caching values so that at least subsequent requests are resolved quickly, and this is exactly what our resolver of choice, <a href="https://www.nlnetlabs.nl/projects/unbound/about">Unbound</a>, is configured to do. The problem remains when the cache expires. When it expires, the next client will have to wait while Unbound resolves the name using the network. To have a low recovery time in case some service needs to failover and clients need to use another address we use a small TTL (30 seconds) in our records and as such cache expirations happen often.</p>
+	<p>We use <a href="https://www.consul.io" target="_blank" rel="noopener noreferrer">Consul</a> for service discovery, and we’ve deployed a cluster that spans several of our data centers. This cluster exposes HTTP and DNS interfaces so that clients can query the Consul catalog and search for a particular service and the majority of the clients use DNS. We were aware from the start that the DNS query latencies were not great from certain parts of the world that were furthest away from these data centers. This, together with the fact that we use <a href="https://en.wikipedia.org/wiki/DNS_over_TLS" target="_blank" rel="noopener noreferrer">DNS over TLS</a>, results in some long latencies. The TTL of these names being low makes it even more impractical when resolving these names in the hot path.</p>
+	<p>The usual way to solve these issues is by caching values so that at least subsequent requests are resolved quickly, and this is exactly what our resolver of choice, <a href="https://www.nlnetlabs.nl/projects/unbound/about" target="_blank" rel="noopener noreferrer">Unbound</a>, is configured to do. The problem remains when the cache expires. When it expires, the next client will have to wait while Unbound resolves the name using the network. To have a low recovery time in case some service needs to failover and clients need to use another address we use a small TTL (30 seconds) in our records and as such cache expirations happen often.</p>
 	<p>There are at least two strategies to deal with this: prefetching and stale cache.</p>
 	<div class="flex anchor relative">
 		<h2 id="prefetching">Prefetching</h2>
@@ -50,7 +50,7 @@
 		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4ixBixKeeIwU63f485mr2U/18844f87438211049fcfcf923e12c231/image7.png" alt="" class="kg-image" width="1041" height="107" loading="lazy">
 
 	</figure>
-	<p>Being able to serve stale entries from the cache for a period after the TTL expires affords us some time in which we can return a result to a client either immediately or after some small amount of time has passed. The latter is the behaviour that we are looking for which also makes us compliant with <a href="https://www.rfc-editor.org/rfc/rfc8767">RFC 8767</a>, “Serving Stale Data to Improve DNS Resiliency”, published March 2020.</p>
+	<p>Being able to serve stale entries from the cache for a period after the TTL expires affords us some time in which we can return a result to a client either immediately or after some small amount of time has passed. The latter is the behaviour that we are looking for which also makes us compliant with <a href="https://www.rfc-editor.org/rfc/rfc8767" target="_blank" rel="noopener noreferrer">RFC 8767</a>, “Serving Stale Data to Improve DNS Resiliency”, published March 2020.</p>
 	<div class="flex anchor relative">
 		<h3 id="previous-dealings-with-unbounds-stale-cache">Previous dealings with Unbound's stale cache</h3>
 		<a href="https://blog.cloudflare.com/#previous-dealings-with-unbounds-stale-cache" aria-hidden="true" class="relative sm:absolute sm:-start-5">
@@ -151,7 +151,7 @@ service1.query.consul. 30 IN A 192.0.2.1
 ;; Query time: 509 msec
 ;; WHEN: Thu Dec 31 17:07:56 WET 2020</code></pre>
 	<p>We lowered <i>serve-expired-ttl</i> to 40 to help testing the issue and we were able to see that as soon as the A entry was deemed not serve-able, the CNAME was also not returned, which is the behaviour that we want.</p>
-	<p>One last thing that we wanted to test was if the cache was really refreshed in the background while the stale entry was returned. <a href="https://developer.apple.com/download/more/?q=Additional+Tools">Network Link Conditioner</a> was used to simulate high latency:</p>
+	<p>One last thing that we wanted to test was if the cache was really refreshed in the background while the stale entry was returned. <a href="https://developer.apple.com/download/more/?q=Additional+Tools" target="_blank" rel="noopener noreferrer">Network Link Conditioner</a> was used to simulate high latency:</p>
 	<figure class="kg-card kg-image-card ">
 
 		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2LzVKSaIVIOaKuMuHbq9Fa/578619d90974ef897ae8e5d58ca9fe12/image16.png" alt="" class="kg-image" width="669" height="343" loading="lazy">
@@ -193,7 +193,7 @@ service2.service.consul. 58 IN A 192.0.2.200
 			</svg>
 		</a>
 	</div>
-	<p>All the test scenarios completed successfully, even though we did find an <a href="https://github.com/NLnetLabs/unbound/issues/394">issue</a> that has since been fixed upstream. We realised that the prefetching logic blocked the cache while it attempted to refresh the entry, which prevented stale entries from being served if the upstream was unresponsive. This fix is included in version 1.13.1.</p>
+	<p>All the test scenarios completed successfully, even though we did find an <a href="https://github.com/NLnetLabs/unbound/issues/394" target="_blank" rel="noopener noreferrer">issue</a> that has since been fixed upstream. We realised that the prefetching logic blocked the cache while it attempted to refresh the entry, which prevented stale entries from being served if the upstream was unresponsive. This fix is included in version 1.13.1.</p>
 	<div class="flex anchor relative">
 		<h2 id="deployment-status">Deployment status</h2>
 		<a href="https://blog.cloudflare.com/#deployment-status" aria-hidden="true" class="relative sm:absolute sm:-start-5">

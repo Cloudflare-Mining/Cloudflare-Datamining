@@ -54,7 +54,7 @@
 			<p><b>Estimated reachable hosts:</b> Unique hosts that responded successfully to an exploit attempt—the "smoking gun" of an attack. A simple <code>200 OK</code> response (such as one triggered by appending <code>?debug=true</code>) could be a false positive. We validated paths to filter out noise caused by authenticated paths that require credentials despite the 200 status code, redirects that mask the true exploit path, and origin misconfigurations that serve success codes for unreachable paths.</p>
 		</li>
 	</ul>
-	<p>In the next sections, we’ll dig into the specific findings and the logic behind the combinations that drove them. The detection queries provided are necessary but not sufficient without testing for reachability; it is possible that the findings might be false positives. In some cases, <a href="https://www.cloudflare.com/application-services/products/log-explorer"><u>Cloudflare Log Explorer</u></a> allows these queries to be executed on unsampled Cloudflare logs.&nbsp;</p>
+	<p>In the next sections, we’ll dig into the specific findings and the logic behind the combinations that drove them. The detection queries provided are necessary but not sufficient without testing for reachability; it is possible that the findings might be false positives. In some cases, <a href="https://www.cloudflare.com/application-services/products/log-explorer" target="_blank" rel="noopener noreferrer"><u>Cloudflare Log Explorer</u></a> allows these queries to be executed on unsampled Cloudflare logs.&nbsp;</p>
 	<p><code>Table 1. Summary of Toxic Combinations</code></p>
 	<figure class="kg-card kg-image-card">
 		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4SKPqWjxWQQ0FTBnuVxWjh/a72acfa372fc7838b69b30ab63147bd5/image3.png" alt="" class="kg-image" width="1999" height="420" loading="lazy">
@@ -79,7 +79,7 @@
 			</svg>
 		</a>
 	</div>
-	<p>We observed automated tools scanning common administrative login pages — like WordPress admin panels (/wp-admin), database managers, and server dashboards. A templatized version of the query, executable in <a href="https://www.cloudflare.com/application-services/products/log-explorer"><u>Cloudflare Log Explorer</u></a>, is below:</p>
+	<p>We observed automated tools scanning common administrative login pages — like WordPress admin panels (/wp-admin), database managers, and server dashboards. A templatized version of the query, executable in <a href="https://www.cloudflare.com/application-services/products/log-explorer" target="_blank" rel="noopener noreferrer"><u>Cloudflare Log Explorer</u></a>, is below:</p>
 	<pre class="language-Rust"><code class="language-Rust">SELECT
   clientRequestHTTPHost,
   COUNT(*) AS request_count
@@ -105,7 +105,7 @@ ORDER BY
 			</svg>
 		</a>
 	</div>
-	<p>Publicly accessible admin panels can enable <a href="https://www.cloudflare.com/learning/bots/brute-force-attack"><u>brute force attacks</u></a>. If successful, an attacker can further compromise the host by adding it to a botnet that probes additional websites for similar vulnerability. In addition, this toxic combination can lead to:</p>
+	<p>Publicly accessible admin panels can enable <a href="https://www.cloudflare.com/learning/bots/brute-force-attack" target="_blank" rel="noopener noreferrer"><u>brute force attacks</u></a>. If successful, an attacker can further compromise the host by adding it to a botnet that probes additional websites for similar vulnerability. In addition, this toxic combination can lead to:</p>
 	<ul>
 		<li>
 			<p><b>Exploit scanning:</b> Attackers identify the specific software version you're running (like Tomcat or WordPress) and launch targeted exploits for known vulnerabilities (CVEs).</p>
@@ -181,10 +181,10 @@ ORDER BY
 	</div>
 	<ol>
 		<li>
-			<p><b>Implement </b><a href="https://www.cloudflare.com/sase/products/access"><b><u>Zero Trust Access</u></b></a>.<b>&nbsp;</b></p>
+			<p><b>Implement </b><a href="https://www.cloudflare.com/sase/products/access" target="_blank" rel="noopener noreferrer"><b><u>Zero Trust Access</u></b></a>.<b>&nbsp;</b></p>
 		</li>
 		<li>
-			<p>If for any reason the endpoint has to remain public, implement<b> </b><a href="https://www.cloudflare.com/application-services/products/turnstile"><b><u>a challenge platform to add friction to bots</u></b></a>.</p>
+			<p>If for any reason the endpoint has to remain public, implement<b> </b><a href="https://www.cloudflare.com/application-services/products/turnstile" target="_blank" rel="noopener noreferrer"><b><u>a challenge platform to add friction to bots</u></b></a>.</p>
 		</li>
 		<li>
 			<p><b>Implement IP allowlist:</b> Use your <a href="https://blog.cloudflare.com/wildcard-rules"><u>WAF</u></a> or server configuration to ensure that administrative paths are only reachable from your corporate VPN or specific office IP addresses.</p>
@@ -216,7 +216,7 @@ ORDER BY
 			</svg>
 		</a>
 	</div>
-	<p>We found API endpoints that are accessible to anyone on the Internet without a password or login (see <a href="https://owasp.org/API-Security/editions/2023/en/0xa2-broken-authentication"><u>OWASP: API2:2023 – Broken Authentication</u></a>). Even worse, the way it identifies records (using simple, predictable ID numbers,see <a href="https://owasp.org/API-Security/editions/2023/en/0xa1-broken-object-level-authorization"><u>OWASP: API1:2023- Broken Object Level Authorization</u></a>) allows anyone to simply "count" through your database — making it much simpler for attackers to enumerate and “scrape” your business records, without even visiting your website directly.</p>
+	<p>We found API endpoints that are accessible to anyone on the Internet without a password or login (see <a href="https://owasp.org/API-Security/editions/2023/en/0xa2-broken-authentication" target="_blank" rel="noopener noreferrer"><u>OWASP: API2:2023 – Broken Authentication</u></a>). Even worse, the way it identifies records (using simple, predictable ID numbers,see <a href="https://owasp.org/API-Security/editions/2023/en/0xa1-broken-object-level-authorization" target="_blank" rel="noopener noreferrer"><u>OWASP: API1:2023- Broken Object Level Authorization</u></a>) allows anyone to simply "count" through your database — making it much simpler for attackers to enumerate and “scrape” your business records, without even visiting your website directly.</p>
 	<pre class="language-Rust"><code class="language-Rust">SELECT
   uniqExact(clientRequestHTTPHost) AS unique_host_count
 FROM  http_requests
@@ -373,7 +373,7 @@ WHERE timestamp &gt;= '2026-02-13'
 			</svg>
 		</a>
 	</div>
-	<p>We found evidence of <code>debug=true</code> appended to web paths to reveal system details. A templatized version of the query, executable in <a href="https://www.cloudflare.com/application-services/products/log-explorer"><u>Cloudflare Log Explorer</u></a>, is below:</p>
+	<p>We found evidence of <code>debug=true</code> appended to web paths to reveal system details. A templatized version of the query, executable in <a href="https://www.cloudflare.com/application-services/products/log-explorer" target="_blank" rel="noopener noreferrer"><u>Cloudflare Log Explorer</u></a>, is below:</p>
 	<pre class="language-Rust"><code class="language-Rust">SELECT
   clientRequestHTTPHost,
   COUNT(rayId) AS request_count
@@ -539,7 +539,7 @@ ORDER BY
 			</svg>
 		</a>
 	</div>
-	<p>We discovered "health check" and monitoring dashboards are visible to the entire Internet. Specifically, paths like <code>/actuator/metrics</code> are responding to anyone who asks. A templatized version of the query, executable in <a href="https://www.cloudflare.com/application-services/products/log-explorer"><u>Cloudflare Log Explorer</u></a>, is below::</p>
+	<p>We discovered "health check" and monitoring dashboards are visible to the entire Internet. Specifically, paths like <code>/actuator/metrics</code> are responding to anyone who asks. A templatized version of the query, executable in <a href="https://www.cloudflare.com/application-services/products/log-explorer" target="_blank" rel="noopener noreferrer"><u>Cloudflare Log Explorer</u></a>, is below::</p>
 	<pre class="language-Rust"><code class="language-Rust">SELECT
   clientRequestHTTPHost,
   count() AS request_count
@@ -556,7 +556,7 @@ ORDER BY request_count DESC</code></pre>
 	<p>While these endpoints don't usually leak customer passwords directly, they provide the "blueprints" for a sophisticated attack. Exposure leads to:</p>
 	<ul>
 		<li>
-			<p><b>Strategic timing:</b> Attackers can monitor your CPU and memory usage in real-time to launch a <a href="https://www.cloudflare.com/learning/ddos/glossary/denial-of-service"><u>Denial of Service (DoS) attack</u></a> exactly when your systems are already stressed.</p>
+			<p><b>Strategic timing:</b> Attackers can monitor your CPU and memory usage in real-time to launch a <a href="https://www.cloudflare.com/learning/ddos/glossary/denial-of-service" target="_blank" rel="noopener noreferrer"><u>Denial of Service (DoS) attack</u></a> exactly when your systems are already stressed.</p>
 		</li>
 		<li>
 			<p><b>Infrastructure mapping:</b> These logs often reveal the names of internal services, dependencies, and version numbers, helping attackers find known vulnerabilities to exploit.</p>
@@ -836,7 +836,7 @@ GROUP BY
 			</svg>
 		</a>
 	</div>
-	<p>We’ve identified attackers who sent a malicious request—specifically a <a href="https://www.cloudflare.com/learning/security/threats/sql-injection"><u>SQL injection</u></a> designed to trick databases. A templatized version of the query, executable in <a href="https://www.cloudflare.com/application-services/products/log-explorer"><u>Cloudflare Log Explorer</u></a>, is below:</p>
+	<p>We’ve identified attackers who sent a malicious request—specifically a <a href="https://www.cloudflare.com/learning/security/threats/sql-injection" target="_blank" rel="noopener noreferrer"><u>SQL injection</u></a> designed to trick databases. A templatized version of the query, executable in <a href="https://www.cloudflare.com/application-services/products/log-explorer" target="_blank" rel="noopener noreferrer"><u>Cloudflare Log Explorer</u></a>, is below:</p>
 	<pre class="language-Rust"><code class="language-Rust">SELECT
   clientRequestHTTPHost,
   count() AS request_count
@@ -1195,5 +1195,5 @@ ORDER BY request_count DESC</code></pre>
 		</a>
 	</div>
 	<p>We are currently working on integrating these "toxic combination" detections directly into the Security Insights dashboard to provide immediate visibility for such risks. Our roadmap includes building AI-assisted remediation paths — where the dashboard doesn't just show you a toxic combination, but proposes the specific WAF rule or <a href="https://blog.cloudflare.com/api-abuse-detection"><u>API Shield</u></a> configuration required to neutralize it.</p>
-	<p>We would love to have you try our Security Insights featuring toxic combinations. You can <a href="https://www.cloudflare.com/lp/toxic-combinations-security"><u>join the waitlist here</u></a>.&nbsp;</p>
+	<p>We would love to have you try our Security Insights featuring toxic combinations. You can <a href="https://www.cloudflare.com/lp/toxic-combinations-security" target="_blank" rel="noopener noreferrer"><u>join the waitlist here</u></a>.&nbsp;</p>
 </div>

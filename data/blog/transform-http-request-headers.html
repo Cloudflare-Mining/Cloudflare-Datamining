@@ -2,7 +2,7 @@
 <div class="post-content lh-copy gray1">
 	<p></p>
 	<p>HTTP headers are central to how the web works. They are used for passing additional information between the client and server, such as which security permissions to apply and information about the client, allowing the correct content to be served.</p>
-	<p>Today we are announcing the immediate availability of the second action within Transform Rules, “<b>HTTP Request Header Modification</b>”, available for all Cloudflare plans. This new functionality provides Cloudflare administrators with the ability to easily set or remove HTTP request headers as traffic flows through Cloudflare. This allows customers to enrich requests with information such as the <a href="https://www.cloudflare.com/products/bot-management">Cloudflare Bot Management</a> ‘<b>Bot Score</b>’ prior to being sent to their servers. Previously, HTTP request header modification was done using a <a href="https://workers.cloudflare.com">Cloudflare Worker</a>. Today we’re introducing an easier way to do this without writing a single line of code.</p>
+	<p>Today we are announcing the immediate availability of the second action within Transform Rules, “<b>HTTP Request Header Modification</b>”, available for all Cloudflare plans. This new functionality provides Cloudflare administrators with the ability to easily set or remove HTTP request headers as traffic flows through Cloudflare. This allows customers to enrich requests with information such as the <a href="https://www.cloudflare.com/products/bot-management" target="_blank" rel="noopener noreferrer">Cloudflare Bot Management</a> ‘<b>Bot Score</b>’ prior to being sent to their servers. Previously, HTTP request header modification was done using a <a href="https://workers.cloudflare.com" target="_blank" rel="noopener noreferrer">Cloudflare Worker</a>. Today we’re introducing an easier way to do this without writing a single line of code.</p>
 	<div class="flex anchor relative">
 		<h3 id="luggage-tags-of-the-world-wide-web">Luggage tags of the World Wide Web</h3>
 		<a href="https://blog.cloudflare.com/#luggage-tags-of-the-world-wide-web" aria-hidden="true" class="relative sm:absolute sm:-start-5">
@@ -17,7 +17,7 @@
 		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5weknAkW93x2spAcDSstwZ/75245c756aeb06e38831de9a4c6e119a/markus-spiske-pMxKbn5ucZs-unsplash.jpeg.jpeg" alt="" class="kg-image" width="2000" height="1322" loading="lazy">
 
 	</figure>
-	<p>Photo by <a href="https://unsplash.com/@markusspiske?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText">Markus Spiske</a> on <a href="https://unsplash.com/?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText">Unsplash</a></p>
+	<p>Photo by <a href="https://unsplash.com/@markusspiske?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText" target="_blank" rel="noopener noreferrer">Markus Spiske</a> on <a href="https://unsplash.com/?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText" target="_blank" rel="noopener noreferrer">Unsplash</a></p>
 	<p>Think of HTTP headers as the “luggage tag” attached to your bags when you check in at the airport.</p>
 	<p>Generally, you don't need to know what those numbers and words mean. You just know they are important in getting your suitcase from the boarding desk, to the correct airplane, and back to the correct luggage carousel at your destination.</p>
 	<p>These tags contain information about the weight of the suitcase, the destination airport code, baggage tag number, airline carrier, customs handling information, and more. These attributes are all essential, not only for ensuring that your luggage arrives at the correct destination, but also it does so in the safest, most efficient manner.</p>
@@ -34,9 +34,9 @@
 	<p>Many organizations use HTTP request headers to ensure visitor requests are served correctly. They are used to route requests to different clusters, serve mobile-friendly content, and legacy-browser friendly content.</p>
 	<p>HTTP request headers are also used for security purposes, namely authentication and authorization. Simple examples include adding a static, pre-shared key as a custom header which adds an additional security check to all inbound HTTP requests.</p>
 	<p>Ensuring these headers are present on the HTTP request is often the job of the reverse proxy — a server which sits between the client and the server whose job is, amongst many others, to enrich the HTTP request data sent to the server.</p>
-	<p>For example, when using NGINX, a <a href="https://w3techs.com/technologies/overview/web_server">popular</a> web server used as a reverse proxy, the administrator would have a line in the config similar to:</p>
+	<p>For example, when using NGINX, a <a href="https://w3techs.com/technologies/overview/web_server" target="_blank" rel="noopener noreferrer">popular</a> web server used as a reverse proxy, the administrator would have a line in the config similar to:</p>
 	<pre class="language-bash"><code class="language-bash">proxy_set_header X-Header-Name "custom";</code></pre>
-	<p>When using &nbsp;<a href="https://workers.cloudflare.com">Cloudflare Workers</a>, the code would be similar to:</p>
+	<p>When using &nbsp;<a href="https://workers.cloudflare.com" target="_blank" rel="noopener noreferrer">Cloudflare Workers</a>, the code would be similar to:</p>
 	<pre class="language-bash"><code class="language-bash">request.headers.set("X-Header-Name", "custom")</code></pre>
 	<p>Each of these lines of code would add a custom HTTP request header to the next-hop destination with a name of ‘X-Header-Name’ and a value of ‘custom’.</p>
 	<div class="flex anchor relative">
@@ -78,7 +78,7 @@
 		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5Ju4GXquzb1Sgd5t4It714/1b9f5c9f70ecfe51706536f00e936020/image6-2.png" alt="" class="kg-image" width="1999" height="97" loading="lazy">
 
 	</figure>
-	<p>Cloudflare <a href="https://developers.cloudflare.com/firewall/cf-firewall-language/functions">functions</a> can be used within ‘set dynamic’ header modifications. These functions include:</p>
+	<p>Cloudflare <a href="https://developers.cloudflare.com/firewall/cf-firewall-language/functions" target="_blank" rel="noopener noreferrer">functions</a> can be used within ‘set dynamic’ header modifications. These functions include:</p>
 	<ul>
 		<li>
 			<p>concat()</p>
@@ -103,5 +103,5 @@
 			</svg>
 		</a>
 	</div>
-	<p>HTTP Request Header Modification can be used to improve operations, remove sensitive data, and increase security, amongst many other use cases. Try out the latest <a href="https://dash.cloudflare.com">Transform Rule</a> yourself today.</p>
+	<p>HTTP Request Header Modification can be used to improve operations, remove sensitive data, and increase security, amongst many other use cases. Try out the latest <a href="https://dash.cloudflare.com" target="_blank" rel="noopener noreferrer">Transform Rule</a> yourself today.</p>
 </div>

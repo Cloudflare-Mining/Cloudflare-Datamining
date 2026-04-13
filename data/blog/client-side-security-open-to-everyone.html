@@ -4,14 +4,14 @@
 	<p>If that sounds abstract, here are two recent examples of such skimming attacks:</p>
 	<ul>
 		<li>
-			<p>In January 2026, <a href="https://sansec.io/research/keylogger-major-us-bank-employees"><u>Sansec reported</u></a> a browser-side keylogger running on an employee merchandise store for a major U.S. bank, harvesting personal data, login credentials, and credit card information.</p>
+			<p>In January 2026, <a href="https://sansec.io/research/keylogger-major-us-bank-employees" target="_blank" rel="noopener noreferrer"><u>Sansec reported</u></a> a browser-side keylogger running on an employee merchandise store for a major U.S. bank, harvesting personal data, login credentials, and credit card information.</p>
 		</li>
 		<li>
 			<p>In September 2025, attackers published malicious releases of <a href="https://blog.cloudflare.com/how-cloudflares-client-side-security-made-the-npm-supply-chain-attack-a-non"><u>widely used npm packages</u></a>. If those packages were bundled into front-end code, end users could be exposed to crypto-stealing in the browser.</p>
 		</li>
 	</ul>
-	<p>To further our goal of building a better Internet, Cloudflare established a core tenet during our <a href="https://www.cloudflare.com/innovation-week/birthday-week-2025"><u>Birthday Week 2025</u></a>: powerful security features should be accessible <a href="https://blog.cloudflare.com/enterprise-grade-features-for-all"><u>without requiring a sales engagement</u></a>. In pursuit of this objective, we are announcing two key changes today:</p>
-	<p>First, Cloudflare <b>Client-Side Security Advanced</b> (formerly <b>Page Shield add-on</b>) is now <a href="https://dash.cloudflare.com/?to=%2F%3Aaccount%2F%3Azone%2Fsecurity%2Fsettings%3Ftabs%3Dclient-side-abuse"><u>available to self-serve</u></a> customers. And second, domain-based threat intelligence is now complimentary for all customers on the <a href="https://developers.cloudflare.com/page-shield/#availability"><u>free </u><b><u>Client-Side Security</u></b><u> bundle</u></a>.</p>
+	<p>To further our goal of building a better Internet, Cloudflare established a core tenet during our <a href="https://www.cloudflare.com/innovation-week/birthday-week-2025" target="_blank" rel="noopener noreferrer"><u>Birthday Week 2025</u></a>: powerful security features should be accessible <a href="https://blog.cloudflare.com/enterprise-grade-features-for-all"><u>without requiring a sales engagement</u></a>. In pursuit of this objective, we are announcing two key changes today:</p>
+	<p>First, Cloudflare <b>Client-Side Security Advanced</b> (formerly <b>Page Shield add-on</b>) is now <a href="https://dash.cloudflare.com/?to=%2F%3Aaccount%2F%3Azone%2Fsecurity%2Fsettings%3Ftabs%3Dclient-side-abuse" target="_blank" rel="noopener noreferrer"><u>available to self-serve</u></a> customers. And second, domain-based threat intelligence is now complimentary for all customers on the <a href="https://developers.cloudflare.com/page-shield/#availability" target="_blank" rel="noopener noreferrer"><u>free </u><b><u>Client-Side Security</u></b><u> bundle</u></a>.</p>
 	<p>In this post, we’ll explain how this product works and highlight a new AI detection system designed to identify malicious JavaScript while minimizing false alarms. We’ll also discuss several real-world applications for these tools.</p>
 	<div class="flex anchor relative">
 		<h2 id="how-cloudflare-client-side-security-works">How Cloudflare Client-Side Security works</h2>
@@ -22,14 +22,14 @@
 		</a>
 	</div>
 	<p>Cloudflare Client-Side Security assesses 3.5 billion scripts per day, protecting 2,200 scripts per enterprise zone on average.</p>
-	<p>Under the hood, Client-Side Security collects these signals using browser reporting (for example, <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Guides/CSP"><u>Content Security Policy</u></a>), which means you don’t need scanners or app instrumentation to get started, and there is zero latency impact to your web applications. The only prerequisite is that your traffic is proxied through Cloudflare.</p>
+	<p>Under the hood, Client-Side Security collects these signals using browser reporting (for example, <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Guides/CSP" target="_blank" rel="noopener noreferrer"><u>Content Security Policy</u></a>), which means you don’t need scanners or app instrumentation to get started, and there is zero latency impact to your web applications. The only prerequisite is that your traffic is proxied through Cloudflare.</p>
 	<p>Client-Side Security <b>Advanced</b> provides immediate access to powerful security features:</p>
 	<ul>
 		<li>
 			<p><b>Smarter malicious script detection:</b> Using in-house machine learning, this capability is now enhanced with assessments from a Large Language Model (LLM). Read more details below.</p>
 		</li>
 		<li>
-			<p><b>Code change monitoring:</b> Continuous code change detection and monitoring is included, which is essential for meeting compliance like<a href="https://developers.cloudflare.com/page-shield/reference/pci-dss"> <u>PCI DSS v4</u></a>, requirement 11.6.1.</p>
+			<p><b>Code change monitoring:</b> Continuous code change detection and monitoring is included, which is essential for meeting compliance like<a href="https://developers.cloudflare.com/page-shield/reference/pci-dss" target="_blank" rel="noopener noreferrer"> <u>PCI DSS v4</u></a>, requirement 11.6.1.</p>
 		</li>
 		<li>
 			<p><b>Proactive blocking rules:</b> Benefit from positive content security rules that are maintained and enforced through continuous monitoring.</p>
@@ -74,7 +74,7 @@
 			<p><b>Every script is first evaluated by the GNN</b>. If the GNN predicts the script as benign, the detection pipeline terminates immediately. <b>This incurs only the minimal latency of the GNN for the vast majority of traffic, completely bypassing the heavier computation time of the LLM</b>.</p>
 		</li>
 		<li>
-			<p>If the GNN flags the script as potentially malicious (above the decision threshold), the script is <b>forwarded to an open-source LLM</b> hosted on Cloudflare <a href="https://developers.cloudflare.com/workers-ai"><u>Workers AI</u></a> for a second opinion.</p>
+			<p>If the GNN flags the script as potentially malicious (above the decision threshold), the script is <b>forwarded to an open-source LLM</b> hosted on Cloudflare <a href="https://developers.cloudflare.com/workers-ai" target="_blank" rel="noopener noreferrer"><u>Workers AI</u></a> for a second opinion.</p>
 		</li>
 		<li>
 			<p>The LLM, provided with a security-specialized prompt context, <b>semantically evaluates the script’s intent</b>. If it determines the script is benign, it overrides the GNN’s verdict.</p>
@@ -84,8 +84,8 @@
 	<figure class="kg-card kg-image-card">
 		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/438frLuYPU51j0uhtM5foj/10c53b3b3ccc84b00c754c872ad20492/image3.png" alt="" class="kg-image" width="1999" height="1125" loading="lazy">
 	</figure>
-	<p><a href="https://blog.cloudflare.com/how-we-train-ai-to-uncover-malicious-javascript-intent-and-make-web-surfing-safer/#training-the-model-to-detect-hidden-malicious-intent"><u>As we previously explained</u></a>, our GNN is trained on publicly accessible script URLs, the same scripts any browser would fetch. The LLM inference at runtime runs entirely within Cloudflare’s network via <a href="https://developers.cloudflare.com/workers-ai"><u>Workers AI</u></a> using open-source models (we currently use <code>gpt-oss-120b</code>).</p>
-	<p>As an additional safety net, every script flagged by the GNN is logged to Cloudflare <a href="https://developers.cloudflare.com/r2"><u>R2</u></a> for posterior analysis. This allows us to continuously audit whether the LLM’s overrides are correct and catch any edge cases where a true attack might have been inadvertently filtered out. Yes, we dogfood our own storage products for our own ML pipeline.</p>
+	<p><a href="https://blog.cloudflare.com/how-we-train-ai-to-uncover-malicious-javascript-intent-and-make-web-surfing-safer/#training-the-model-to-detect-hidden-malicious-intent"><u>As we previously explained</u></a>, our GNN is trained on publicly accessible script URLs, the same scripts any browser would fetch. The LLM inference at runtime runs entirely within Cloudflare’s network via <a href="https://developers.cloudflare.com/workers-ai" target="_blank" rel="noopener noreferrer"><u>Workers AI</u></a> using open-source models (we currently use <code>gpt-oss-120b</code>).</p>
+	<p>As an additional safety net, every script flagged by the GNN is logged to Cloudflare <a href="https://developers.cloudflare.com/r2" target="_blank" rel="noopener noreferrer"><u>R2</u></a> for posterior analysis. This allows us to continuously audit whether the LLM’s overrides are correct and catch any edge cases where a true attack might have been inadvertently filtered out. Yes, we dogfood our own storage products for our own ML pipeline.</p>
 	<p>The results from our internal evaluations on real production traffic are compelling. Focusing on total analyzed traffic under the JS Integrity threat category, the secondary LLM validation layer reduced false positives by nearly 3x: dropping the already low ~0.3% FP rate down to ~0.1%. When evaluating unique scripts, the impact is even more dramatic: the FP rate plummets a whopping ~200x, from ~1.39% down to just 0.007%.</p>
 	<p>At our scale, cutting the overall false positive rate by two-thirds translates to millions fewer false alarms for our customers every single day. Crucially, our True Positive (actual attack) detection capability includes a fallback mechanism:as noted above, we audit the LLM’s overrides to check for possible true attacks that were filtered by the LLM.</p>
 	<p>Because the LLM acts as a highly reliable precision filter in this pipeline, we can now afford to lower the GNN’s decision threshold, making it even more aggressive. This means we catch novel, highly obfuscated True Attacks that would have previously fallen just below the detection boundary, all without overwhelming customers with false alarms. In the next phase, we plan to push this even further.</p>
@@ -135,7 +135,7 @@ const _0x4b08=function(_0x5cc416,_0x2b0c4c){_0x5cc416=_0x5cc416-0x1d5;let _0xd00
 	<p>Today we are making domain-based threat intelligence available to all Cloudflare Client-Side Security customers, regardless of whether you use the Advanced offering.</p>
 	<p>In 2025, we saw many non-enterprise customers affected by client-side attacks, particularly those customers running webshops on the Magento platform. These attacks persisted for days or even weeks after they were publicized. Small and medium-sized companies often lack the enterprise-level resources and expertise needed to maintain a high security standard.</p>
 	<p>By providing domain-based threat intelligence to everyone, we give site owners a critical, direct signal of attacks affecting their users. This information allows them to take immediate action to clean up their site and investigate potential origin compromises.</p>
-	<p>To begin, simply enable Client-Side Security with a toggle <a href="https://dash.cloudflare.com/?to=%2F%3Aaccount%2F%3Azone%2Fsecurity%2Fsettings%3Ftabs%3Dclient-side-abuse"><u>in the dashboard</u></a>. We will then highlight any JavaScript or connections associated with a known malicious domain.</p>
+	<p>To begin, simply enable Client-Side Security with a toggle <a href="https://dash.cloudflare.com/?to=%2F%3Aaccount%2F%3Azone%2Fsecurity%2Fsettings%3Ftabs%3Dclient-side-abuse" target="_blank" rel="noopener noreferrer"><u>in the dashboard</u></a>. We will then highlight any JavaScript or connections associated with a known malicious domain.</p>
 	<div class="flex anchor relative">
 		<h2 id="get-started-with-client-side-security-advanced-for-pci-dss-v4">Get started with Client-Side Security Advanced for PCI DSS v4</h2>
 		<a href="https://blog.cloudflare.com/#get-started-with-client-side-security-advanced-for-pci-dss-v4" aria-hidden="true" class="relative sm:absolute sm:-start-5">
@@ -144,6 +144,6 @@ const _0x4b08=function(_0x5cc416,_0x2b0c4c){_0x5cc416=_0x5cc416-0x1d5;let _0xd00
 			</svg>
 		</a>
 	</div>
-	<p>To learn more about Client-Side Security Advanced pricing, please visit <a href="https://www.cloudflare.com/plans"><u>the plans page</u></a>. Before committing, we will estimate the cost based on your last month’s HTTP requests, so you know exactly what to expect.</p>
-	<p>Client-Side Security Advanced has all the tools you need to meet the requirements <a href="https://developers.cloudflare.com/page-shield/reference/pci-dss"><u>of PCI DSS v4</u></a> as an e-commerce merchant, particularly 6.4.3 and 11.6.1. Sign up today <a href="https://dash.cloudflare.com/?to=%2F%3Aaccount%2F%3Azone%2Fsecurity%2Fsettings%3Ftabs%3Dclient-side-abuse"><u>in the dashboard</u></a>.</p>
+	<p>To learn more about Client-Side Security Advanced pricing, please visit <a href="https://www.cloudflare.com/plans" target="_blank" rel="noopener noreferrer"><u>the plans page</u></a>. Before committing, we will estimate the cost based on your last month’s HTTP requests, so you know exactly what to expect.</p>
+	<p>Client-Side Security Advanced has all the tools you need to meet the requirements <a href="https://developers.cloudflare.com/page-shield/reference/pci-dss" target="_blank" rel="noopener noreferrer"><u>of PCI DSS v4</u></a> as an e-commerce merchant, particularly 6.4.3 and 11.6.1. Sign up today <a href="https://dash.cloudflare.com/?to=%2F%3Aaccount%2F%3Azone%2Fsecurity%2Fsettings%3Ftabs%3Dclient-side-abuse" target="_blank" rel="noopener noreferrer"><u>in the dashboard</u></a>.</p>
 </div>

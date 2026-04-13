@@ -1,7 +1,7 @@
 <div class="mb2 gray5">2 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/347UCPC50kO1S03PiqqWBz/ec95c264552985e1239b944dc4c2c250/kyoto_tycoon_with_postgresql.png" alt="">
 <div class="post-content lh-copy gray1">
 	<p></p>
-	<p>CloudFlare has Points of Presence (PoPs) in 23 datacenters around the world and plans to expand to many more soon. It also has a single portal, <a href="https://cloudflare.com">CloudFlare.com</a>, where website owners interact with the system. This creates a giant configuration propagation problem.</p>
+	<p>CloudFlare has Points of Presence (PoPs) in 23 datacenters around the world and plans to expand to many more soon. It also has a single portal, <a href="https://cloudflare.com" target="_blank" rel="noopener noreferrer">CloudFlare.com</a>, where website owners interact with the system. This creates a giant configuration propagation problem.</p>
 	<p>Any time you log into CloudFlare.com and turn on a feature, app, or update a DNS record, you create what we refer to as a new rule. Whenever a request arrives at a PoP our DNS and web servers use these rules to determine how to respond.</p>
 	<div class="flex anchor relative">
 		<h3 id="replicating-rules">Replicating Rules</h3>
@@ -12,8 +12,8 @@
 		</a>
 	</div>
 	<p>When you make a new rule, you expect this rule to be in effect everywhere, right away. Furthermore, you want CloudFlare to respect creation time ordering. For example, if you turn an app on and then off, you need a guarantee that the final state is off rather than on. And just to make things more fun, at peak times CloudFlare sees thousands of these rules created per second.</p>
-	<p>To solve this problem, CloudFlare uses two technologies. The first, <a href="http://www.postgresql.org">PostgreSQL</a>, is a classic SQL database engine. It powers CloudFlare.com. Any time you create a rule, on the backend this logic is inserted into a row oriented table.</p>
-	<p>The second, <a href="http://fallabs.com/kyototycoon">Kyoto Tycoon</a> or KT, is a distributed key-value store. A primary instance here in our main datacenter is replicated out to all of our PoPs. This means that any key/value pair inserted in the primary location will be readable at any place in the world. Timestamp-based replication ensures eventual consistency and guarantees ordering. In practice, we see at most around 3 seconds of delay for full propagation in normal conditions. The trick though is in moving data from PostgreSQL to Kyoto Tycoon.</p>
+	<p>To solve this problem, CloudFlare uses two technologies. The first, <a href="http://www.postgresql.org" target="_blank" rel="noopener noreferrer">PostgreSQL</a>, is a classic SQL database engine. It powers CloudFlare.com. Any time you create a rule, on the backend this logic is inserted into a row oriented table.</p>
+	<p>The second, <a href="http://fallabs.com/kyototycoon" target="_blank" rel="noopener noreferrer">Kyoto Tycoon</a> or KT, is a distributed key-value store. A primary instance here in our main datacenter is replicated out to all of our PoPs. This means that any key/value pair inserted in the primary location will be readable at any place in the world. Timestamp-based replication ensures eventual consistency and guarantees ordering. In practice, we see at most around 3 seconds of delay for full propagation in normal conditions. The trick though is in moving data from PostgreSQL to Kyoto Tycoon.</p>
 	<div class="flex anchor relative">
 		<h3 id="getting-rules-out-of-postgres">Getting Rules Out of Postgres</h3>
 		<a href="https://blog.cloudflare.com/#getting-rules-out-of-postgres" aria-hidden="true" class="relative sm:absolute sm:-start-5">
@@ -32,7 +32,7 @@
 			</svg>
 		</a>
 	</div>
-	<p>Thanks to PostgreSQL 9.3's new writable <a href="http://www.postgresql.org/docs/9.3/static/postgres-fdw.html">foreign data wrappers</a> (FDW) though, that's all about to change.</p>
+	<p>Thanks to PostgreSQL 9.3's new writable <a href="http://www.postgresql.org/docs/9.3/static/postgres-fdw.html" target="_blank" rel="noopener noreferrer">foreign data wrappers</a> (FDW) though, that's all about to change.</p>
 	<p>PostgreSQL's FDW are a method of integrating external sources of data within databases.</p>
 	<p>To a PostgreSQL user, FDW data sources appear as any other database table while the logic to communicate with the external data sources and convert data into tables is handled by the FDW. Prior to version 9.3, FDW were read-only with no capacity to export data. But now, PostgreSQL can write to foreign data sources.</p>
 	<p>By making a FDW for Kyoto Tycoon, we allow data in KT to be represented as a database table. This then allows us to use database triggers to perform data synchronization with KT, both lowering latency and simplifying the logic of data synchronization.</p>
@@ -46,7 +46,7 @@
 			</svg>
 		</a>
 	</div>
-	<p>We think this integration is so useful that we have decided to open source the FDW code and make it available at <a href="https://github.com/cloudflare/kt_fdw">https://github.com/cloudflare/kt_fdw</a>.</p>
+	<p>We think this integration is so useful that we have decided to open source the FDW code and make it available at <a href="https://github.com/cloudflare/kt_fdw" target="_blank" rel="noopener noreferrer">https://github.com/cloudflare/kt_fdw</a>.</p>
 	<p>Usage is very simple. After installing the KT FDW simply run:</p>
 	<p>CREATE SERVER FOREIGN DATA WRAPPER kt_fdw OPTIONS
 		(host '127.0.0.1', port '1978', timeout '-1');

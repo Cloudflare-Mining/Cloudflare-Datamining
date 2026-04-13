@@ -1,7 +1,7 @@
 <div class="mb2 gray5">7 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1SXiWOhmwfDs86m6u84i8l/7b6b0874f6f2f91964b87383349c7785/image2.png" alt="">
 <div class="post-content lh-copy gray1">
-	<p>OPKSSH makes it easy to <a href="https://en.wikipedia.org/wiki/Secure_Shell"><u>SSH</u></a> with single sign-on technologies like OpenID Connect, thereby removing the need to manually manage and configure SSH keys. It does this without adding a trusted party other than your identity provider (IdP).</p>
-	<p>We are excited to announce <a href="https://github.com/openpubkey/opkssh"><u>OPKSSH (OpenPubkey SSH)</u></a> has been open-sourced under the umbrella of the OpenPubkey project. While the underlying protocol <a href="https://github.com/openpubkey/openpubkey"><u>OpenPubkey</u></a> became <a href="https://www.linuxfoundation.org/press/announcing-openpubkey-project"><u>an open source Linux foundation project in 2023</u></a>, OPKSSH was closed source and owned by <a href="https://www.cloudflare.com/press-releases/2024/cloudflare-acquires-bastionzero-to-add-zero-trust-infrastructure-access"><u>BastionZero (now Cloudflare)</u></a>. Cloudflare has gifted this code to the OpenPubkey project, making it open source.</p>
+	<p>OPKSSH makes it easy to <a href="https://en.wikipedia.org/wiki/Secure_Shell" target="_blank" rel="noopener noreferrer"><u>SSH</u></a> with single sign-on technologies like OpenID Connect, thereby removing the need to manually manage and configure SSH keys. It does this without adding a trusted party other than your identity provider (IdP).</p>
+	<p>We are excited to announce <a href="https://github.com/openpubkey/opkssh" target="_blank" rel="noopener noreferrer"><u>OPKSSH (OpenPubkey SSH)</u></a> has been open-sourced under the umbrella of the OpenPubkey project. While the underlying protocol <a href="https://github.com/openpubkey/openpubkey" target="_blank" rel="noopener noreferrer"><u>OpenPubkey</u></a> became <a href="https://www.linuxfoundation.org/press/announcing-openpubkey-project" target="_blank" rel="noopener noreferrer"><u>an open source Linux foundation project in 2023</u></a>, OPKSSH was closed source and owned by <a href="https://www.cloudflare.com/press-releases/2024/cloudflare-acquires-bastionzero-to-add-zero-trust-infrastructure-access" target="_blank" rel="noopener noreferrer"><u>BastionZero (now Cloudflare)</u></a>. Cloudflare has gifted this code to the OpenPubkey project, making it open source.</p>
 	<p>In this post, we describe what OPKSSH is, how it simplifies SSH management, and what OPKSSH being open source means for you.</p>
 	<div class="flex anchor relative">
 		<h2 id="background">Background</h2>
@@ -11,7 +11,7 @@
 			</svg>
 		</a>
 	</div>
-	<p>A cornerstone of modern access control is single sign-on <a href="https://www.cloudflare.com/learning/access-management/what-is-sso"><u>(SSO)</u></a>, where a user authenticates to an <a href="https://www.cloudflare.com/learning/access-management/what-is-an-identity-provider"><u>identity provider (IdP)</u></a>, and in response the IdP issues the user a <i>token</i>. The user can present this token to prove their identity, such as “Google says I am Alice”. SSO is the rare security technology that both increases convenience — users only need to sign in once to get access to many different systems — and increases security.</p>
+	<p>A cornerstone of modern access control is single sign-on <a href="https://www.cloudflare.com/learning/access-management/what-is-sso" target="_blank" rel="noopener noreferrer"><u>(SSO)</u></a>, where a user authenticates to an <a href="https://www.cloudflare.com/learning/access-management/what-is-an-identity-provider" target="_blank" rel="noopener noreferrer"><u>identity provider (IdP)</u></a>, and in response the IdP issues the user a <i>token</i>. The user can present this token to prove their identity, such as “Google says I am Alice”. SSO is the rare security technology that both increases convenience — users only need to sign in once to get access to many different systems — and increases security.</p>
 	<div class="flex anchor relative">
 		<h3 id="openid-connect">OpenID Connect</h3>
 		<a href="https://blog.cloudflare.com/#openid-connect" aria-hidden="true" class="relative sm:absolute sm:-start-5">
@@ -20,8 +20,8 @@
 			</svg>
 		</a>
 	</div>
-	<p><a href="https://openid.net/developers/how-connect-works"><u>OpenID Connect (OIDC)</u></a> is the main protocol used for SSO. As shown below, in OIDC the IdP, called an OpenID Provider (OP), issues the user an ID Token which contains identity claims about the user, such as “email is alice@example.com”. These claims are digitally signed by the OP, so anyone who receives the ID Token can check that it really was issued by the OP.</p>
-	<p>Unfortunately, while ID Tokens <i>do </i>include identity claims like name, organization, and email address, they <i>do not</i> include the user’s public key. This prevents them from being used to directly secure protocols like SSH or <a href="https://www.cloudflare.com/learning/privacy/what-is-end-to-end-encryption"><u>End-to-End Encrypted messaging</u></a>.</p>
+	<p><a href="https://openid.net/developers/how-connect-works" target="_blank" rel="noopener noreferrer"><u>OpenID Connect (OIDC)</u></a> is the main protocol used for SSO. As shown below, in OIDC the IdP, called an OpenID Provider (OP), issues the user an ID Token which contains identity claims about the user, such as “email is alice@example.com”. These claims are digitally signed by the OP, so anyone who receives the ID Token can check that it really was issued by the OP.</p>
+	<p>Unfortunately, while ID Tokens <i>do </i>include identity claims like name, organization, and email address, they <i>do not</i> include the user’s public key. This prevents them from being used to directly secure protocols like SSH or <a href="https://www.cloudflare.com/learning/privacy/what-is-end-to-end-encryption" target="_blank" rel="noopener noreferrer"><u>End-to-End Encrypted messaging</u></a>.</p>
 	<p>Note that throughout this post we use the term OpenID Provider (OP) rather than IdP, as OP specifies the exact type of IdP we are using, i.e., an OpenID IdP. We use Google as an example OP, but OpenID Connect works with Google, Azure, Okta, etc.</p>
 	<figure class="kg-card kg-image-card">
 		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2zfixdknoL3a9HqBzcsmAY/605f469bdd25b4b8cfaf29dac3561c4f/image1.png" alt="Shows a user Alice signing in to Google using OpenID Connect/OpenPubkey and then producing a PK Token" class="kg-image" width="2000" height="1078" loading="lazy">
@@ -52,7 +52,7 @@
 	<p>OPKSSH frees users and administrators from the need to manage long-lived SSH keys, making SSH more secure and more convenient.</p>
 	<blockquote>
 		<p><i>“In many organizations – even very security-conscious organizations – there are many times more obsolete authorized keys than they have employees. Worse, authorized keys generally grant command-line shell access, which in itself is often considered privileged. We have found that in many organizations about 10% of the authorized keys grant root or administrator access. SSH keys never expire.”</i>&nbsp;
-			- <a href="https://ylonen.org/papers/ssh-key-challenges.pdf">Challenges in Managing SSH Keys – and a Call for Solutions</a> by Tatu Ylonen (Inventor of SSH)</p>
+			- <a href="https://ylonen.org/papers/ssh-key-challenges.pdf" target="_blank" rel="noopener noreferrer">Challenges in Managing SSH Keys – and a Call for Solutions</a> by Tatu Ylonen (Inventor of SSH)</p>
 	</blockquote>
 	<p>In SSH, users generate a long-lived SSH public key and SSH private key. To enable a user to access a server, the user or the administrator of that server configures that server to trust that user’s public key. Users must protect the file containing their SSH private key. If the user loses this file, they are locked out. If they copy their SSH private key to multiple computers or back up the key, they increase the risk that the key will be compromised. When a private key is compromised or a user no longer needs access, the user or administrator must remove that public key from any servers it currently trusts. All of these problems create headaches for users and administrators.</p>
 	<p>OPKSSH overcomes these issues:</p>
@@ -109,9 +109,9 @@
 	</ul>
 	<p>Consider the problems we face in getting OpenPubkey to work with SSH without requiring any changes to the SSH protocol or software:</p>
 	<p><b>How do we get the PK Token from the user’s machine to the SSH server inside the SSH protocol?</b>
-		We use the fact that SSH public keys can be SSH certificates, and that SSH certificates have <a href="https://cvsweb.openbsd.org/cgi-bin/cvsweb/src/usr.bin/ssh/PROTOCOL.certkeys?rev=1.4&amp;content-type=text%2Fx-cvsweb-markup"><u>an extension field</u></a> that allows arbitrary data to be included in the certificate. Thus, we package the PK Token into an SSH certificate extension so that the PK Token will be transmitted inside the SSH public key as a normal part of the SSH protocol. This enables us to send the PK Token to the SSH server as additional data in the SSH certificate, and allows OPKSSH to work without any changes to the SSH client.</p>
+		We use the fact that SSH public keys can be SSH certificates, and that SSH certificates have <a href="https://cvsweb.openbsd.org/cgi-bin/cvsweb/src/usr.bin/ssh/PROTOCOL.certkeys?rev=1.4&amp;content-type=text%2Fx-cvsweb-markup" target="_blank" rel="noopener noreferrer"><u>an extension field</u></a> that allows arbitrary data to be included in the certificate. Thus, we package the PK Token into an SSH certificate extension so that the PK Token will be transmitted inside the SSH public key as a normal part of the SSH protocol. This enables us to send the PK Token to the SSH server as additional data in the SSH certificate, and allows OPKSSH to work without any changes to the SSH client.</p>
 	<p><b>How do we check that the PK Token is valid once it arrives at the SSH server?
-		</b>SSH servers support a configuration parameter called the <a href="https://man.openbsd.org/sshd_config#AuthorizedKeysCommand"><i><u>AuthorizedKeysCommand</u></i></a><i> </i>that allows us to use a custom program to determine if an SSH public key is authorized or not. Thus, we change the SSH server’s config file to use the OpenPubkey verifier instead of the SSH verifier by making the following two line change to <code>sshd_config</code>:</p>
+		</b>SSH servers support a configuration parameter called the <a href="https://man.openbsd.org/sshd_config#AuthorizedKeysCommand" target="_blank" rel="noopener noreferrer"><i><u>AuthorizedKeysCommand</u></i></a><i> </i>that allows us to use a custom program to determine if an SSH public key is authorized or not. Thus, we change the SSH server’s config file to use the OpenPubkey verifier instead of the SSH verifier by making the following two line change to <code>sshd_config</code>:</p>
 	<pre class="language-Rust"><code class="language-Rust">AuthorizedKeysCommand /usr/local/bin/opkssh verify %u %k %t
 AuthorizedKeysCommandUser root</code></pre>
 	<p>The OpenPubkey verifier will check that the PK Token is unexpired, valid and signed by the OP. It checks the user’s email address in the PK Token to determine if the user is authorized to access the server.</p>
@@ -125,7 +125,7 @@ AuthorizedKeysCommandUser root</code></pre>
 			</svg>
 		</a>
 	</div>
-	<p>We have <a href="https://github.com/openpubkey/openpubkey/pull/234"><u>open sourced OPKSSH</u></a> under the <a href="https://www.apache.org/licenses/LICENSE-2.0"><u>Apache 2.0 license</u></a>, and released it as <a href="https://github.com/openpubkey/opkssh"><u>openpubkey/opkssh on GitHub</u></a>. While the OpenPubkey project has had code for using SSH with OpenPubkey since the early days of the project, this code was intended as a prototype and was missing many important features. With OPKSSH, SSH support in OpenPubkey is no longer a prototype and is now a complete feature. Cloudflare is not endorsing OPKSSH, but simply donating code to OPKSSH.</p>
+	<p>We have <a href="https://github.com/openpubkey/openpubkey/pull/234" target="_blank" rel="noopener noreferrer"><u>open sourced OPKSSH</u></a> under the <a href="https://www.apache.org/licenses/LICENSE-2.0" target="_blank" rel="noopener noreferrer"><u>Apache 2.0 license</u></a>, and released it as <a href="https://github.com/openpubkey/opkssh" target="_blank" rel="noopener noreferrer"><u>openpubkey/opkssh on GitHub</u></a>. While the OpenPubkey project has had code for using SSH with OpenPubkey since the early days of the project, this code was intended as a prototype and was missing many important features. With OPKSSH, SSH support in OpenPubkey is no longer a prototype and is now a complete feature. Cloudflare is not endorsing OPKSSH, but simply donating code to OPKSSH.</p>
 	<p><b>OPKSSH provides the following improvements to OpenPubkey:</b></p>
 	<ul>
 		<li>
@@ -146,7 +146,7 @@ AuthorizedKeysCommandUser root</code></pre>
 			</svg>
 		</a>
 	</div>
-	<p>See the <a href="https://github.com/openpubkey/opkssh/blob/main/README.md"><u>OPKSSH readme</u></a> for documentation on how to install and connect using OPKSSH.</p>
+	<p>See the <a href="https://github.com/openpubkey/opkssh/blob/main/README.md" target="_blank" rel="noopener noreferrer"><u>OPKSSH readme</u></a> for documentation on how to install and connect using OPKSSH.</p>
 	<div class="flex anchor relative">
 		<h2 id="how-to-get-involved">How to get involved</h2>
 		<a href="https://blog.cloudflare.com/#how-to-get-involved" aria-hidden="true" class="relative sm:absolute sm:-start-5">
@@ -155,6 +155,6 @@ AuthorizedKeysCommandUser root</code></pre>
 			</svg>
 		</a>
 	</div>
-	<p>There are a number of ways to get involved in OpenPubkey or OPKSSH. The project is organized through the <a href="https://github.com/openpubkey/opkssh"><u>OPKSSH GitHub</u></a>. We are building an open and friendly community and welcome pull requests from anyone. If you are interested in contributing, see <a href="https://github.com/openpubkey/openpubkey/blob/main/CONTRIBUTING.md"><u>our contribution guide</u></a>.</p>
-	<p>We run a <a href="https://github.com/openpubkey/community"><u>community</u></a> meeting every month which is open to everyone, and you can also find us over on the <a href="https://openssf.org/getinvolved"><u>OpenSSF Slack</u></a> in the #openpubkey channel.</p>
+	<p>There are a number of ways to get involved in OpenPubkey or OPKSSH. The project is organized through the <a href="https://github.com/openpubkey/opkssh" target="_blank" rel="noopener noreferrer"><u>OPKSSH GitHub</u></a>. We are building an open and friendly community and welcome pull requests from anyone. If you are interested in contributing, see <a href="https://github.com/openpubkey/openpubkey/blob/main/CONTRIBUTING.md" target="_blank" rel="noopener noreferrer"><u>our contribution guide</u></a>.</p>
+	<p>We run a <a href="https://github.com/openpubkey/community" target="_blank" rel="noopener noreferrer"><u>community</u></a> meeting every month which is open to everyone, and you can also find us over on the <a href="https://openssf.org/getinvolved" target="_blank" rel="noopener noreferrer"><u>OpenSSF Slack</u></a> in the #openpubkey channel.</p>
 </div>

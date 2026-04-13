@@ -17,7 +17,7 @@
 	</figure>
 	<p>Something just like this happens inside the CPU in pretty much every computer. Fundamental to the very essence and operation of a computer is the ability to branch, to choose between two different code paths. As you read this, your web browser is making branch decisions continuously (for example, some part of it is waiting for you to click a link to go to some other page).</p>
 	<p>One way that CPUs have reached incredible speeds is the ability to predict which of two branches is most likely and start executing it before it knows whether that’s the correct path to take.</p>
-	<p>For example, the code that checks for you clicking <a href="https://cloudflare.com">this link</a> might be a little slow because it’s waiting for mouse movements and button clicks. Rather than wait the CPU will start automatically executing the branch it thinks is most likely (probably that you don’t click the link). Once the check actually indicates “clicked” or “not clicked” the CPU will either continue down the branch it took, or abandon the code it has executed and restart at the ‘fork in the path’.</p>
+	<p>For example, the code that checks for you clicking <a href="https://cloudflare.com" target="_blank" rel="noopener noreferrer">this link</a> might be a little slow because it’s waiting for mouse movements and button clicks. Rather than wait the CPU will start automatically executing the branch it thinks is most likely (probably that you don’t click the link). Once the check actually indicates “clicked” or “not clicked” the CPU will either continue down the branch it took, or abandon the code it has executed and restart at the ‘fork in the path’.</p>
 	<p>This is known as “branch prediction” and saves a great deal of idling processor time. It relies on the ability of the CPU to run code “speculatively” and throw away results if that code should not have been run in the first place.</p>
 	<figure class="kg-card kg-image-card ">
 
@@ -34,7 +34,7 @@
 	</figure>
 	<p>Something similar to this happens in the Spectre/Meltdown attack. The CPU starts executing a branch of code that it has previously learnt is typically the right code to run. But it’s been tricked by a clever attacker and this time it’s the wrong branch. Worse, the code will access memory that it shouldn’t (perhaps from another program) giving it access to otherwise secret information (such as passwords).</p>
 	<p>When the CPU realizes it’s gone the wrong way it forgets all the erroneous work it’s done (and the fact that it accessed memory it shouldn’t have) and executes the correct branch instead. Even though illegal memory was accessed what it contained has been forgotten by the CPU.</p>
-	<p>The core of Meltdown and Spectre is the ability to <a href="https://www.cloudflare.com/learning/security/what-is-data-exfiltration">exfiltrate information</a>, from this speculatively executed code, concerning the illegally accessed memory through what’s known as a “side channel”.</p>
+	<p>The core of Meltdown and Spectre is the ability to <a href="https://www.cloudflare.com/learning/security/what-is-data-exfiltration" target="_blank" rel="noopener noreferrer">exfiltrate information</a>, from this speculatively executed code, concerning the illegally accessed memory through what’s known as a “side channel”.</p>
 	<figure class="kg-card kg-image-card ">
 
 		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4ZUYu6jBF8RbxSvwfqXHuv/b5b63df0d68a936d8b4efba2d3acdee2/reactor-core-_0.5x.png" alt="" class="kg-image" width="928" height="326" loading="lazy">
@@ -63,6 +63,6 @@
 		</a>
 	</div>
 	<p>I hope that this helps you understand the essence of Meltdown and Spectre. There are many variations of both attacks that all rely on the same ideas: get the CPU to speculatively run some code (through branch prediction or another technique) that illegally accesses memory and extract information using a timing side channel through the CPU cache.</p>
-	<p>If you care to read all the gory detail there’s a <a href="https://meltdownattack.com/meltdown.pdf">paper on Meltdown</a> and a separate one <a href="https://spectreattack.com/spectre.pdf">on Spectre</a>.</p>
+	<p>If you care to read all the gory detail there’s a <a href="https://meltdownattack.com/meltdown.pdf" target="_blank" rel="noopener noreferrer">paper on Meltdown</a> and a separate one <a href="https://spectreattack.com/spectre.pdf" target="_blank" rel="noopener noreferrer">on Spectre</a>.</p>
 	<p>Acknowledgements: I’m grateful to all the people who read this and gave me feedback (including gently telling me the ways in which I didn’t understand branch prediction and speculative execution). Thank you especially to David Wragg, Kenton Varda, Chris Branch, Vlad Krasnov, Matthew Prince, Michelle Zatlyn and Ben Cartwright-Cox. And huge thanks for Kari Linder for the illustrations.</p>
 </div>

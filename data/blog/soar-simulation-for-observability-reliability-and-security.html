@@ -19,7 +19,7 @@
 	</figure>
 	<p>Figure 2. SOAR architectural view: by simulating the end users and origin on Cloudflare servers in the same VLAN, we can focus on examining the problems occurring in our edge network.</p>
 	<p>To demonstrate how this works, let’s go through a running example using Magic Transit.</p>
-	<p><a href="https://www.cloudflare.com/magic-transit">Magic Transit</a> is a product that provides IP layer protection and acceleration. One of the main functions of Magic Transit is to shield customers from DDoS attacks.</p>
+	<p><a href="https://www.cloudflare.com/magic-transit" target="_blank" rel="noopener noreferrer">Magic Transit</a> is a product that provides IP layer protection and acceleration. One of the main functions of Magic Transit is to shield customers from DDoS attacks.</p>
 	<figure class="kg-card kg-image-card ">
 
 		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7tEzWft9k3pSOjMFuI19Pu/812c03938859f751957ceb4a077ed4e9/image1-4.png" alt="" class="kg-image" width="631" height="191" loading="lazy">
@@ -60,7 +60,7 @@
 			</svg>
 		</a>
 	</div>
-	<p>Before we created SOAR, we had already built a “performance simulation” for our layer 7 services. It is based on <a href="https://www.saltstack.com">SaltStack</a>, our configuration management software. All the simulation cases are system test cases against Cloudflare-owned HTTP sites. These cases are statically configured and run non-stop. Each simulation case produces multiple Prometheus metrics such as requests per second and latency. We monitor these metrics daily on our Grafana dashboard.</p>
+	<p>Before we created SOAR, we had already built a “performance simulation” for our layer 7 services. It is based on <a href="https://www.saltstack.com" target="_blank" rel="noopener noreferrer">SaltStack</a>, our configuration management software. All the simulation cases are system test cases against Cloudflare-owned HTTP sites. These cases are statically configured and run non-stop. Each simulation case produces multiple Prometheus metrics such as requests per second and latency. We monitor these metrics daily on our Grafana dashboard.</p>
 	<p>While this simulation system is very useful, it becomes less efficient as we have more and more simulation cases and products to run and analyze.</p>
 	<div class="flex anchor relative">
 		<h3 id="isolation-and-coordination">Isolation and Coordination</h3>
@@ -114,9 +114,9 @@
 			<p>Dispatch and coordinate simulation tasks to each simulation server, where a simulation agent executes these tasks. The coordinator will isolate simulations properly so none of them contends on system resources. For example, the simplest policy we implemented is to never run two simulations on the same server at the same time.</p>
 		</li>
 	</ol>
-	<p>The coordinator is secured by <a href="https://www.cloudflare.com/teams-access">Cloudflare Access</a>, so that only employees can visit this service. The coordinator will serve two types of simulations: one-time simulation to be run in an ad-hoc way and mainly on a per pull request manner, to ease development testing. It’s also callable from our CI system. Another type is repetitive simulations that are stored in the coordinator’s persistent storage. These simulations serve daily monitoring purposes and will be executed periodically.</p>
+	<p>The coordinator is secured by <a href="https://www.cloudflare.com/teams-access" target="_blank" rel="noopener noreferrer">Cloudflare Access</a>, so that only employees can visit this service. The coordinator will serve two types of simulations: one-time simulation to be run in an ad-hoc way and mainly on a per pull request manner, to ease development testing. It’s also callable from our CI system. Another type is repetitive simulations that are stored in the coordinator’s persistent storage. These simulations serve daily monitoring purposes and will be executed periodically.</p>
 	<p>Each simulation server runs a simulation agent. This agent will execute two types of tasks received from the coordinator: system tasks and user tasks. System tasks change the system-wide configurations and will be reverted after each simulation terminates. These will include but are not limited to route change, link change, address change, ipset change and iptables change.</p>
-	<p>User tasks, on the other hand, run benchmarks that we are interested in evaluating, and will be terminated if it exceeds an allocated execution budget. Each user task is isolated in a cgroup, and the agent will ensure all user tasks are executed with dedicated resources. The generic runtime metrics of user tasks is monitored by <a href="https://github.com/google/cadvisor">Cadvisor</a> and sent to <a href="https://prometheus.io">Prometheus</a> and Alert Manager. A user task can export its own metrics to Prometheus as well.</p>
+	<p>User tasks, on the other hand, run benchmarks that we are interested in evaluating, and will be terminated if it exceeds an allocated execution budget. Each user task is isolated in a cgroup, and the agent will ensure all user tasks are executed with dedicated resources. The generic runtime metrics of user tasks is monitored by <a href="https://github.com/google/cadvisor" target="_blank" rel="noopener noreferrer">Cadvisor</a> and sent to <a href="https://prometheus.io" target="_blank" rel="noopener noreferrer">Prometheus</a> and Alert Manager. A user task can export its own metrics to Prometheus as well.</p>
 	<p>For SOAR to run reliably, we provisioned a dedicated environment that enforces the same settings for the production environment and operates it as a production system: hardened security, standard alerts on watch, no engineer access except approved tools. This to a large extent allows us to run simulations as a stable source of anomaly detection.</p>
 	<div class="flex anchor relative">
 		<h2 id="simulating-with-customer-specific-configuration">Simulating with customer-specific configuration</h2>

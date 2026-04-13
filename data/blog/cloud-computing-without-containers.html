@@ -1,7 +1,7 @@
 <div class="mb2 gray5">6 min read</div>
 <div class="mt4">This post is also available in <a href="https://blog.cloudflare.com/zh-cn/cloud-computing-without-containers">简体中文</a>, <a href="https://blog.cloudflare.com/de-de/cloud-computing-without-containers">Deutsch</a>, <a href="https://blog.cloudflare.com/es-es/cloud-computing-without-containers">Español</a> and <a href="https://blog.cloudflare.com/fr-fr/cloud-computing-without-containers">Français</a>.</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2HhFV0o3X8HeitagVRwg0W/0fef2e289b974b15a8ac0cd6b943a68f/cloud-computing-without-containers.png" alt="">
 <div class="post-content lh-copy gray1">
-	<p>Cloudflare has a cloud computing platform called <a href="https://www.cloudflare.com/developer-platform/workers">Workers</a>. <b>Unlike essentially every other cloud computing platform I know of, it doesn’t use containers or virtual machines.</b> We believe that is the future of Serverless and cloud computing in general, and I’ll try to convince you why.</p>
+	<p>Cloudflare has a cloud computing platform called <a href="https://www.cloudflare.com/developer-platform/workers" target="_blank" rel="noopener noreferrer">Workers</a>. <b>Unlike essentially every other cloud computing platform I know of, it doesn’t use containers or virtual machines.</b> We believe that is the future of Serverless and cloud computing in general, and I’ll try to convince you why.</p>
 	<div class="flex anchor relative">
 		<h3 id="isolates">Isolates</h3>
 		<a href="https://blog.cloudflare.com/#isolates" aria-hidden="true" class="relative sm:absolute sm:-start-5">
@@ -21,7 +21,7 @@
 	<p>What we ended up settling on was a technology built by the Google Chrome team to power the Javascript engine in that browser, V8: Isolates.</p>
 	<p>Isolates are lightweight contexts that group variables with the code allowed to mutate them. Most importantly, a single process can run hundreds or thousands of Isolates, seamlessly switching between them. They make it possible to run untrusted code from many different customers within a single operating system process. They’re designed to start very quickly (several had to start in your web browser just for you to load this web page), and to not allow one Isolate to access the memory of another.</p>
 	<p>We pay the overhead of a Javascript runtime once, and then are able to run essentially limitless scripts with almost no individual overhead. Any given Isolate can start around a hundred times faster than I can get a Node process to start on my machine. Even more importantly, they consume an order of magnitude less memory than that process.</p>
-	<p>They have all the lovely <a href="https://www.cloudflare.com/learning/serverless/glossary/function-as-a-service-faas">function-as-a-service</a> ergonomics of getting to just write code and not worry how it runs or scales. Simultaneously, they don’t use a virtual machine or a container, which means <b>you are actually running </b><i><b>closer</b></i><b> to the metal than any other form of cloud computing I’m aware of</b>. I believe it’s possible with this model to get close to the economics of running code on bare metal, but in an entirely <a href="https://www.cloudflare.com/learning/serverless/what-is-serverless">Serverless</a> environment.</p>
+	<p>They have all the lovely <a href="https://www.cloudflare.com/learning/serverless/glossary/function-as-a-service-faas" target="_blank" rel="noopener noreferrer">function-as-a-service</a> ergonomics of getting to just write code and not worry how it runs or scales. Simultaneously, they don’t use a virtual machine or a container, which means <b>you are actually running </b><i><b>closer</b></i><b> to the metal than any other form of cloud computing I’m aware of</b>. I believe it’s possible with this model to get close to the economics of running code on bare metal, but in an entirely <a href="https://www.cloudflare.com/learning/serverless/what-is-serverless" target="_blank" rel="noopener noreferrer">Serverless</a> environment.</p>
 	<p>This is not meant to be an ad for Workers, but I do want to show you a chart to reflect just how stark the difference is, to showcase why I believe this is not iterative improvement but an actual paradigm shift:</p>
 	<figure class="kg-card kg-image-card ">
 
@@ -130,11 +130,11 @@
 		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4QHHWB6zgfeaEgDDvg84na/62c17628b583ed458ff8d8c4c387fe11/no-VM-_3x-3.png" alt="" class="kg-image" width="2000" height="792" loading="lazy">
 
 	</figure>
-	<p>I would love for you to <a href="https://developers.cloudflare.com/workers/about">try Workers</a> and let us and the community know about your experience. There is still a lot for us to build, we could use your feedback.</p>
+	<p>I would love for you to <a href="https://developers.cloudflare.com/workers/about" target="_blank" rel="noopener noreferrer">try Workers</a> and let us and the community know about your experience. There is still a lot for us to build, we could use your feedback.</p>
 	<p>We also need engineers and product managers who think this is interesting and want to take it in new directions. If you’re in San Francisco, Austin, or London, please reach out.</p>
 	<hr>
-	<p>Interested in deploying a Cloudflare Worker without setting up a domain on Cloudflare? We’re making it easier to get started building serverless applications with custom subdomains on <a href="https://workers.dev">workers.dev</a>. <i>If you’re already a Cloudflare customer, you can add Workers to your existing website</i> <a href="https://dash.cloudflare.com/workers"><i>here</i></a>.</p>
-	<p><a href="https://workers.dev">Reserve a workers.dev subdomain</a></p><!--kg-card-begin: html-->
+	<p>Interested in deploying a Cloudflare Worker without setting up a domain on Cloudflare? We’re making it easier to get started building serverless applications with custom subdomains on <a href="https://workers.dev" target="_blank" rel="noopener noreferrer">workers.dev</a>. <i>If you’re already a Cloudflare customer, you can add Workers to your existing website</i> <a href="https://dash.cloudflare.com/workers" target="_blank" rel="noopener noreferrer"><i>here</i></a>.</p>
+	<p><a href="https://workers.dev" target="_blank" rel="noopener noreferrer">Reserve a workers.dev subdomain</a></p><!--kg-card-begin: html-->
 	<style>
 		figcaption {
 			text-align: center;

@@ -31,9 +31,9 @@
 	<p>Unfortunately, if a network starts to send out an announcement of a particular IP address or network behind it, when in fact it is not, if that network is trusted by its upstreams and peers then packets can end up misrouted. That is what was happening here.</p>
 	<p>I looked at the BGP Routes for a Google IP Address. The route traversed Moratel (23947), an Indonesian ISP. Given that I'm looking at the routing from California and Google is operating Data Centre's not far from our office, packets should never be routed via Indonesia. The most likely cause was that Moratel was announcing a network that wasn't actually behind them.</p>
 	<p>The BGP Route I saw at the time was:</p>
-	<p><a href="mailto:tom@edge01.sfo01">tom@edge01.sfo01</a>&gt; show route 216.239.34.10 inet.0: 422168 destinations, 422168 routes (422154 active, 0 holddown, 14 hidden)+ = Active Route, - = Last Active, * = Both216.239.34.0/24 *[BGP/170] 00:15:47, MED 18, localpref 100 AS path: 4436 3491 23947 15169 I &gt; to 69.22.153.1 via ge-1/0/9.0</p>
+	<p><a href="https://blog.cloudflare.com/#">tom@edge01.sfo01</a>&gt; show route 216.239.34.10 inet.0: 422168 destinations, 422168 routes (422154 active, 0 holddown, 14 hidden)+ = Active Route, - = Last Active, * = Both216.239.34.0/24 *[BGP/170] 00:15:47, MED 18, localpref 100 AS path: 4436 3491 23947 15169 I &gt; to 69.22.153.1 via ge-1/0/9.0</p>
 	<p>Looking at other routes, for example to Google's Public DNS, it was also stuck routing down the same (incorrect) path:</p>
-	<p><a href="mailto:tom@edge01.sfo01">tom@edge01.sfo01</a>&gt; show route 8.8.8.8 inet.0: 422196 destinations, 422196 routes (422182 active, 0 holddown, 14 hidden)+ = Active Route, - = Last Active, * = Both8.8.8.0/24 *[BGP/170] 00:27:02, MED 18, localpref 100 AS path: 4436 3491 23947 15169 I &gt; to 69.22.153.1 via ge-1/0/9.0</p>
+	<p><a href="https://blog.cloudflare.com/#">tom@edge01.sfo01</a>&gt; show route 8.8.8.8 inet.0: 422196 destinations, 422196 routes (422182 active, 0 holddown, 14 hidden)+ = Active Route, - = Last Active, * = Both8.8.8.0/24 *[BGP/170] 00:27:02, MED 18, localpref 100 AS path: 4436 3491 23947 15169 I &gt; to 69.22.153.1 via ge-1/0/9.0</p>
 	<div class="flex anchor relative">
 		<h3 id="route-leakage">Route Leakage</h3>
 		<a href="https://blog.cloudflare.com/#route-leakage" aria-hidden="true" class="relative sm:absolute sm:-start-5">
@@ -50,7 +50,7 @@ Works" class="kg-image" width="500" height="375" loading="lazy">
 
 	</figure>
 	<p>(Image Credit: The Simpsons)</p>
-	<p>Situations like this are referred to in the industry as "route leakage", as the route has "leaked" past normal paths. This isn't an unprecedented event. Google previously suffered a <a href="http://www.renesys.com/blog/2008/02/pakistan-hijacks-youtube-1.shtml">similar outage</a> when Pakistan was allegedly trying to censor a video on YouTube and the National ISP of Pakistan null routed the service's IP addresses. Unfortunately, they leaked the null route externally. Pakistan Telecom's upstream provider, PCCW, trusted what Pakistan Telecom's was sending them and the routes spread across the Internet. The effect was YouTube was knocked offline for around 2 hours.</p>
+	<p>Situations like this are referred to in the industry as "route leakage", as the route has "leaked" past normal paths. This isn't an unprecedented event. Google previously suffered a <a href="http://www.renesys.com/blog/2008/02/pakistan-hijacks-youtube-1.shtml" target="_blank" rel="noopener noreferrer">similar outage</a> when Pakistan was allegedly trying to censor a video on YouTube and the National ISP of Pakistan null routed the service's IP addresses. Unfortunately, they leaked the null route externally. Pakistan Telecom's upstream provider, PCCW, trusted what Pakistan Telecom's was sending them and the routes spread across the Internet. The effect was YouTube was knocked offline for around 2 hours.</p>
 	<p>The case today was similar. Someone at Moratel likely "fat fingered" an Internet route. PCCW, who was Moratel's upstream provider, trusted the routes Moratel was sending to them. And, quickly, the bad routes spread. It is unlikely this was malicious, but rather a misconfiguaration or an error evidencing some of the failings in the BGP Trust model.</p>
 	<div class="flex anchor relative">
 		<h3 id="the-fix">The Fix</h3>
@@ -70,7 +70,7 @@ Works" class="kg-image" width="500" height="375" loading="lazy">
 			</svg>
 		</a>
 	</div>
-	<p>This all is a reminder about how the Internet is a system built on trust. Today's incident shows that, even if you're as big as Google, factors outside of your direct control can impact the ability of your customers to get to your site so it's important to have a network engineering team that is watching routes and managing your connectivity around the clock. CloudFlare works every day to ensure our customers get the optimal possible routes. We look out for all the websites on our network to ensure that their traffic is always delivered as fast as possible. Just another day in our ongoing efforts to <a href="https://twitter.com/search?q=%23savetheweb">#savetheweb</a>.</p>
+	<p>This all is a reminder about how the Internet is a system built on trust. Today's incident shows that, even if you're as big as Google, factors outside of your direct control can impact the ability of your customers to get to your site so it's important to have a network engineering team that is watching routes and managing your connectivity around the clock. CloudFlare works every day to ensure our customers get the optimal possible routes. We look out for all the websites on our network to ensure that their traffic is always delivered as fast as possible. Just another day in our ongoing efforts to <a href="https://twitter.com/search?q=%23savetheweb" target="_blank" rel="noopener noreferrer">#savetheweb</a>.</p>
 	<div class="flex anchor relative">
 		<h4 id="update-tuesday-november-6-11-00am-pst">Update: Tuesday, November 6 11:00am PST</h4>
 		<a href="https://blog.cloudflare.com/#update-tuesday-november-6-11-00am-pst" aria-hidden="true" class="relative sm:absolute sm:-start-5">
@@ -81,5 +81,5 @@ Works" class="kg-image" width="500" height="375" loading="lazy">
 	</div>
 	<p>Moratel says the issue was caused by an unexpected hardware failure, causing this abnormal condition. This was not a malicious attempt. Moratel immediately shutdown the BGP peering with Google after contact was made while the hardware failure was being looked into.</p>
 	<hr>
-	<p><i>Thanks for reading all the way to the end. If you enjoyed this post, take a second to </i><a href="https://www.cloudflare.com/overview"><i>learn more about CloudFlare</i></a><i> or </i><a href="http://crunchies2012.techcrunch.com/nominate/?MTpDbG91ZEZsYXJl="><i>nominate us for the 2012 Crunchie Award for Best Technical</i><i>Innovation</i></a><i>.</i></p>
+	<p><i>Thanks for reading all the way to the end. If you enjoyed this post, take a second to </i><a href="https://www.cloudflare.com/overview" target="_blank" rel="noopener noreferrer"><i>learn more about CloudFlare</i></a><i> or </i><a href="http://crunchies2012.techcrunch.com/nominate/?MTpDbG91ZEZsYXJl=" target="_blank" rel="noopener noreferrer"><i>nominate us for the 2012 Crunchie Award for Best Technical</i><i>Innovation</i></a><i>.</i></p>
 </div>

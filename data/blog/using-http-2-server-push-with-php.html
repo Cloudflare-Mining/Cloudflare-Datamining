@@ -1,7 +1,7 @@
 <div class="mb2 gray5">2 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4NPP0lk9059Fun7XgYDpJv/abefe80a280891839114d756339d10d3/using-http-2-server-push-with-php.png" alt="">
 <div class="post-content lh-copy gray1">
 	<p>Two weeks ago CloudFlare announced that it was supporting <a href="https://blog.cloudflare.com/announcing-support-for-http-2-server-push-2">HTTP/2 Server</a> Push for all our customers. By simply adding a <code>Link</code> header to an HTTP response specifying <code>preload</code> CloudFlare would automatically push items to web browsers that support Server Push.</p>
-	<p>To illustrate how easy this is I create a small PHP page that uses the PHP <a href="https://secure.php.net/manual/en/function.header.php"><code>header</code></a> function to insert appropriate <code>Link</code> headers to push images to the web browser via CloudFlare. The web page looks like this when loaded:</p>
+	<p>To illustrate how easy this is I create a small PHP page that uses the PHP <a href="https://secure.php.net/manual/en/function.header.php" target="_blank" rel="noopener noreferrer"><code>header</code></a> function to insert appropriate <code>Link</code> headers to push images to the web browser via CloudFlare. The web page looks like this when loaded:</p>
 	<figure class="kg-card kg-image-card ">
 
 		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2KEen2kNGsrXXEKZZnQSni/27615c7b083c1aff54f087eb5225c1c6/Screen-Shot-2016-05-13-at-11-50-00-AM.png" alt="" class="kg-image" width="436" height="675" loading="lazy">
@@ -16,8 +16,8 @@ Transfer-Encoding: chunked
 Connection: keep-alive
 Link: &lt;/images/drucken.jpg&gt;; rel=preload; as=image
 Link: &lt;/images/empire.jpg&gt;; rel=preload; as=image</code></pre>
-	<p>At the bottom are the two <code>Link</code> headers corresponding to the two images on the page with the <code>rel=preload</code> directive as specified in W3C <a href="https://www.w3.org/TR/preload/#server-push-http-2">preload draft</a>.</p>
-	<p>The complete code can be found in this <a href="https://gist.github.com/jgrahamc/df91229381366105c7ff0f88c8c38485">gist</a> but the core of the code looks like this:</p>
+	<p>At the bottom are the two <code>Link</code> headers corresponding to the two images on the page with the <code>rel=preload</code> directive as specified in W3C <a href="https://www.w3.org/TR/preload/#server-push-http-2" target="_blank" rel="noopener noreferrer">preload draft</a>.</p>
+	<p>The complete code can be found in this <a href="https://gist.github.com/jgrahamc/df91229381366105c7ff0f88c8c38485" target="_blank" rel="noopener noreferrer">gist</a> but the core of the code looks like this:</p>
 	<pre class="language-php"><code class="language-php">    &lt;?php
     function pushImage($uri) {
         header("Link: &lt;{$uri}&gt;; rel=preload; as=image", false);

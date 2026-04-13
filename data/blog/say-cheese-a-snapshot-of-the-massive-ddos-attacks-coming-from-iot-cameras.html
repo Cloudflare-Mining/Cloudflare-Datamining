@@ -1,13 +1,13 @@
 <div class="mb2 gray5">4 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1tSRqtIaVy2BR68lNgXRj1/f3a9f4e8ac7475b3156253216fccf420/say-cheese-a-snapshot-of-the-massive-ddos-attacks-coming-from-iot-cameras.jpg" alt="">
 <div class="post-content lh-copy gray1">
-	<p>Over the last few weeks we've seen DDoS attacks hitting our systems that show that attackers have switched to new, large methods of bringing down web applications. They appear to come from an IoT botnet (like Mirai and relations) which were responsible for the <a href="http://uk.businessinsider.com/akamai-brian-krebs-ddos-attack-2016-9">large attacks against Brian Krebs</a>.</p>
+	<p>Over the last few weeks we've seen DDoS attacks hitting our systems that show that attackers have switched to new, large methods of bringing down web applications. They appear to come from an IoT botnet (like Mirai and relations) which were responsible for the <a href="http://uk.businessinsider.com/akamai-brian-krebs-ddos-attack-2016-9" target="_blank" rel="noopener noreferrer">large attacks against Brian Krebs</a>.</p>
 	<p>Our automatic DDoS mitigation systems have been handling these attacks, but we thought it would be interesting to publish some of the details of what we are seeing. In this article we'll share data on two attacks, which are perfect examples of the new trends in DDoS.</p>
 	<figure class="kg-card kg-image-card ">
 
 		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7koNzfrpuLEAvqVIkrBYOm/b1588f531747efc4e28ac5d095c9744d/4766316315_48242afc03_b.jpg" alt="" class="kg-image" width="1024" height="736" loading="lazy">
 
 	</figure>
-	<p><a href="https://creativecommons.org/licenses/by/2.0">CC BY 2.0</a> <a href="https://www.flickr.com/photos/maderik/4766316315/in/photolist-8gbBMv-7HnuE5-8BjP3g-rbsb76-6j3F2b-6j3F2L-4P4uCw-pkG9KA-doPM2q-omvaV-pkGoDz-D1Nbt-qveZtC-bHAKgz-bHBSLv-buH773-bmdm7S-myGet-u1jWDt-hfLE98-7HiziR-7JfdZn-tkVTSV-tkKHvo-tkKLbo-8BnVdE-jkvs-7Hizc6-bHBSJT-qdKGZf-o6HNXo-rbiiWD-7Hiz7x-8vmyNs-8BnVib-vSMrhj-8BnVqJ-8J36Hc-fh4LmT-et7dSA-8J6efA-7os11Z-6N6KyX-brDjkd-9nfCDq-ipefs1-cpVwkE-a6bS7t-b4JLhe-a8WfQr">image</a> by <a href="https://www.flickr.com/photos/maderik">E Magnuson</a></p>
+	<p><a href="https://creativecommons.org/licenses/by/2.0" target="_blank" rel="noopener noreferrer">CC BY 2.0</a> <a href="https://www.flickr.com/photos/maderik/4766316315/in/photolist-8gbBMv-7HnuE5-8BjP3g-rbsb76-6j3F2b-6j3F2L-4P4uCw-pkG9KA-doPM2q-omvaV-pkGoDz-D1Nbt-qveZtC-bHAKgz-bHBSLv-buH773-bmdm7S-myGet-u1jWDt-hfLE98-7HiziR-7JfdZn-tkVTSV-tkKHvo-tkKLbo-8BnVdE-jkvs-7Hizc6-bHBSJT-qdKGZf-o6HNXo-rbiiWD-7Hiz7x-8vmyNs-8BnVib-vSMrhj-8BnVqJ-8J36Hc-fh4LmT-et7dSA-8J6efA-7os11Z-6N6KyX-brDjkd-9nfCDq-ipefs1-cpVwkE-a6bS7t-b4JLhe-a8WfQr" target="_blank" rel="noopener noreferrer">image</a> by <a href="https://www.flickr.com/photos/maderik" target="_blank" rel="noopener noreferrer">E Magnuson</a></p>
 	<p>In the past we've written extensively about <a href="https://blog.cloudflare.com/the-ddos-that-almost-broke-the-internet">volumetric DDoS</a> attacks and how to <a href="https://blog.cloudflare.com/introducing-the-bpf-tools">mitigate</a> them. The attacks are distinguished by their heavy use of L7 (i.e. HTTP) attacks as opposed to the more familiar SYN floods, ACK floods, and <a href="https://blog.cloudflare.com/understanding-and-mitigating-ntp-based-ddos-attacks">NTP</a> and <a href="https://blog.cloudflare.com/deep-inside-a-dns-amplification-ddos-attack">DNS</a> reflection attacks.</p>
 	<p>Many DDoS mitigation systems are tuned to handle volumetric L3/4 attacks; in this instance attackers have switched to L7 attacks in an attempt to knock web applications offline.</p>
 	<p>Seeing the move towards L7 DDoS attacks we put in place a new system that recognizes and blocks these attacks as they happen. The L7 mitigator recognizes attacks against a single host and distributes a fingerprint that protects all 4 million Cloudflare customers. We'll write more about it in the future.</p>
@@ -29,7 +29,7 @@
 	</figure>
 	<p>This attack continued for 15 minutes. Multiple recent attacks had &gt;1 Mrps and lasted for minutes.</p>
 	<p>This particular attack peaked at 1.75 Mrps. It was composed of short HTTP requests (around 121 bytes per request), without anything unusual in the HTTP headers. The requests had a fixed <code>Cookie</code> header. We counted 52,467 unique IP addresses taking part in this attack.</p>
-	<p>Due to the Anycast nature of the <a href="https://www.cloudflare.com/network">Cloudflare network</a>, the malicious traffic was spread across multiple Cloudflare cities and with 100 cities we are able to get a good picture of where the bots are located.</p>
+	<p>Due to the Anycast nature of the <a href="https://www.cloudflare.com/network" target="_blank" rel="noopener noreferrer">Cloudflare network</a>, the malicious traffic was spread across multiple Cloudflare cities and with 100 cities we are able to get a good picture of where the bots are located.</p>
 	<p>Here are the top affected datacenters:</p>
 	<figure class="kg-card kg-image-card ">
 
@@ -37,7 +37,7 @@
 
 	</figure>
 	<p>This attack went largely to our Hong Kong and Prague datacenters. This is another common characteristic; most of the recent attacks looked similar.</p>
-	<p>Since the attack looks concentrated, we wondered if only a small number of <a href="https://en.wikipedia.org/wiki/Autonomous_system_(Internet)">AS</a> numbers (networks) were the source of the attack. Unfortunately no, the IP addresses participating in the flood are evenly distributed. Out of 10,000 random requests we analyzed, we saw source IP addresses from over 300 AS numbers. These are the biggest sources:</p>
+	<p>Since the attack looks concentrated, we wondered if only a small number of <a href="https://en.wikipedia.org/wiki/Autonomous_system_(Internet)" target="_blank" rel="noopener noreferrer">AS</a> numbers (networks) were the source of the attack. Unfortunately no, the IP addresses participating in the flood are evenly distributed. Out of 10,000 random requests we analyzed, we saw source IP addresses from over 300 AS numbers. These are the biggest sources:</p>
 	<pre class="language-bash"><code class="language-bash">   48 AS24086 ; Vietnam
   101 AS4134  ; China
   128 AS7552  ; Vietnam
@@ -140,7 +140,7 @@ a[]=&amp;b[]=&amp;a[]=&amp;b[]=&amp;a[]=&amp;b[]=&amp;a[]=&amp;b[]=&amp;a[]=&amp
 
 	</figure>
 	<p>The Ukrainian devices are a bit different though. Most have port 80 closed, making it harder to identify.</p>
-	<p>We had noticed one device with port 443 open serving a valid TLS cert issued by Western Digital, handling domain <code>device-xxxx.wd2go.com</code> suggesting it was a hard drive (<a href="https://en.wikipedia.org/wiki/Network-attached_storage">Network Attached Storage</a> to be precise).</p>
+	<p>We had noticed one device with port 443 open serving a valid TLS cert issued by Western Digital, handling domain <code>device-xxxx.wd2go.com</code> suggesting it was a hard drive (<a href="https://en.wikipedia.org/wiki/Network-attached_storage" target="_blank" rel="noopener noreferrer">Network Attached Storage</a> to be precise).</p>
 	<div class="flex anchor relative">
 		<h3 id="wei-lai-the-future-of-ddos">未来: the future of DDoS</h3>
 		<a href="https://blog.cloudflare.com/#wei-lai-the-future-of-ddos" aria-hidden="true" class="relative sm:absolute sm:-start-5">
@@ -156,8 +156,8 @@ a[]=&amp;b[]=&amp;a[]=&amp;b[]=&amp;a[]=&amp;b[]=&amp;a[]=&amp;b[]=&amp;a[]=&amp
 		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7xTBgyJiewTcdNWJ6ELskn/07bf9d571ee3e6a7eb246cb72f16066f/15197555485_82029aa9df_k.jpg" alt="" class="kg-image" width="2048" height="1365" loading="lazy">
 
 	</figure>
-	<p><a href="https://creativecommons.org/licenses/by/2.0">CC BY 2.0</a> <a href="https://www.flickr.com/photos/codeofthenew/15197555485/in/photolist-p9VwGA-p9XrVF-p9XrLH-oSrX9R-oSrXvx-oSsKUL-p9Vy6C-i5tukY-fP8skv-fPq1aQ-oSAiHj-p83wk5-fMLz3H-fKoxbS-fKoMJj-dokcef-dojRpi-K1p7WG">image</a> by <a href="https://www.flickr.com/photos/codeofthenew">CODE_n</a></p>
-	<p>We're hiring <a href="https://www.cloudflare.com/join-our-team">multiple roles</a>, including our DDoS mitigation team. Help us save the Internet from DDoS attacks.</p>
+	<p><a href="https://creativecommons.org/licenses/by/2.0" target="_blank" rel="noopener noreferrer">CC BY 2.0</a> <a href="https://www.flickr.com/photos/codeofthenew/15197555485/in/photolist-p9VwGA-p9XrVF-p9XrLH-oSrX9R-oSrXvx-oSsKUL-p9Vy6C-i5tukY-fP8skv-fPq1aQ-oSAiHj-p83wk5-fMLz3H-fKoxbS-fKoMJj-dokcef-dojRpi-K1p7WG" target="_blank" rel="noopener noreferrer">image</a> by <a href="https://www.flickr.com/photos/codeofthenew" target="_blank" rel="noopener noreferrer">CODE_n</a></p>
+	<p>We're hiring <a href="https://www.cloudflare.com/join-our-team" target="_blank" rel="noopener noreferrer">multiple roles</a>, including our DDoS mitigation team. Help us save the Internet from DDoS attacks.</p>
 	<div class="flex anchor relative">
 		<h4 id="update">Update:</h4>
 		<a href="https://blog.cloudflare.com/#update" aria-hidden="true" class="relative sm:absolute sm:-start-5">

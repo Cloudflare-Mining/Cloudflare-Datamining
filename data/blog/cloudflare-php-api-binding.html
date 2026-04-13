@@ -1,15 +1,15 @@
 <div class="mb2 gray5">4 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4OFWKEgPI4IyhIiu5PcBvj/d53422877f3173bc8165438c2e88a1d2/cloudflare-php-api-binding.JPG" alt="">
 <div class="post-content lh-copy gray1">
 	<p></p>
-	<p>Back in May last year, one of my colleagues blogged about the introduction of our <a href="https://blog.cloudflare.com/python-cloudflare">Python binding for the Cloudflare API</a> and drew reference to our other bindings in <a href="https://github.com/cloudflare/cloudflare-go">Go</a> and <a href="https://github.com/cloudflare/node-cloudflare">Node</a>. Today we are complimenting this range by introducing a new official binding, this time in <a href="https://github.com/cloudflare/cloudflare-php">PHP</a>.</p>
-	<p>This binding is available via Packagist as <a href="https://packagist.org/packages/cloudflare/sdk">cloudflare/sdk</a>, you can install it using Composer simply by running <code>composer require cloudflare/sdk</code>. We have documented various use-cases in our <a href="https://support.cloudflare.com/hc/en-us/articles/115001661191">"Cloudflare PHP API Binding" KB article</a> to help you get started.</p>
-	<p>Alternatively should you wish to help contribute, or just give us a star on GitHub, feel free to browse to the <a href="https://github.com/cloudflare/cloudflare-php">cloudflare-php source code</a>.</p>
+	<p>Back in May last year, one of my colleagues blogged about the introduction of our <a href="https://blog.cloudflare.com/python-cloudflare">Python binding for the Cloudflare API</a> and drew reference to our other bindings in <a href="https://github.com/cloudflare/cloudflare-go" target="_blank" rel="noopener noreferrer">Go</a> and <a href="https://github.com/cloudflare/node-cloudflare" target="_blank" rel="noopener noreferrer">Node</a>. Today we are complimenting this range by introducing a new official binding, this time in <a href="https://github.com/cloudflare/cloudflare-php" target="_blank" rel="noopener noreferrer">PHP</a>.</p>
+	<p>This binding is available via Packagist as <a href="https://packagist.org/packages/cloudflare/sdk" target="_blank" rel="noopener noreferrer">cloudflare/sdk</a>, you can install it using Composer simply by running <code>composer require cloudflare/sdk</code>. We have documented various use-cases in our <a href="https://support.cloudflare.com/hc/en-us/articles/115001661191" target="_blank" rel="noopener noreferrer">"Cloudflare PHP API Binding" KB article</a> to help you get started.</p>
+	<p>Alternatively should you wish to help contribute, or just give us a star on GitHub, feel free to browse to the <a href="https://github.com/cloudflare/cloudflare-php" target="_blank" rel="noopener noreferrer">cloudflare-php source code</a>.</p>
 	<figure class="kg-card kg-image-card ">
 
 		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1cb8c0aCRK1QxtwReVtMDc/de48b0c9191df68bab840c53f5efea8b/installing-cloudflare-php.png" alt="Installing cloudflare/sdk" class="kg-image" width="1940" height="888" loading="lazy">
 
 	</figure>
-	<p>PHP is a controversial language, and there is no doubt there are elements of bad design within the language (as is the case with many other languages). However, love it or hate it, PHP is a language of high adoption; as of September 2017 <a href="https://w3techs.com/technologies/overview/programming_language/all">W3Techs</a> report that PHP is used by 82.8% of all the websites whose server-side programming language is known. In creating this binding the question clearly wasn't on the merits of PHP, but whether we wanted to help drive improvements to the developer experience for the sizeable number of developers integrating with us whilst using PHP.</p>
+	<p>PHP is a controversial language, and there is no doubt there are elements of bad design within the language (as is the case with many other languages). However, love it or hate it, PHP is a language of high adoption; as of September 2017 <a href="https://w3techs.com/technologies/overview/programming_language/all" target="_blank" rel="noopener noreferrer">W3Techs</a> report that PHP is used by 82.8% of all the websites whose server-side programming language is known. In creating this binding the question clearly wasn't on the merits of PHP, but whether we wanted to help drive improvements to the developer experience for the sizeable number of developers integrating with us whilst using PHP.</p>
 	<p>In order to help those looking to contribute or build upon this library, I write this blog post to explain some of the design decisions made in putting this together.</p>
 	<div class="flex anchor relative">
 		<h3 id="exclusively-for-php-7">Exclusively for PHP 7</h3>
@@ -21,7 +21,7 @@
 	</div>
 	<p>PHP 5 initially introduced the ability for type hinting on the basis of classes and interfaces, this opened up (albeit seldom used) parametric polymorphic behaviour in PHP. Type hinting on the basis of interfaces made it easier for those developing in PHP to follow the Gang of Four's famous guidance: "Program to an 'interface', not an 'implementation'."</p>
 	<p>Type hinting has slowly developed in PHP, in PHP 7.0 the ability for Scalar Type Hinting was released after a few rounds of RFCs. Additionally PHP 7.0 introduced Return Type Declarations, allowing return values to be type hinted in a similar way to argument type hinting. In this library we extensively use Scalar Type Hinting and Return Type Declarations thereby restricting the backward compatibility that's available with PHP 5.</p>
-	<p>In order for backward compatibility to be available, these improvements to type hinting simply would not be implementable and the associated benefits would be lost. With Active Support <a href="http://php.net/supported-versions.php">no longer being offered to PHP 5.6</a> and Security Support little over a year away from disappearing for the entirety of PHP 5.x, we decided the additional coverage wasn't worth the cost.</p>
+	<p>In order for backward compatibility to be available, these improvements to type hinting simply would not be implementable and the associated benefits would be lost. With Active Support <a href="http://php.net/supported-versions.php" target="_blank" rel="noopener noreferrer">no longer being offered to PHP 5.6</a> and Security Support little over a year away from disappearing for the entirety of PHP 5.x, we decided the additional coverage wasn't worth the cost.</p>
 	<figure class="kg-card kg-image-card ">
 
 		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/RJX9jaiMJuc3J7e8OBCor/2998f5d9da54264b9774aa8e18fe00b6/php-support.png" alt="PHP version history" class="kg-image" width="1890" height="462" loading="lazy">
@@ -36,7 +36,7 @@
 		</a>
 	</div>
 	<blockquote>
-		<p>What do we mean by a software architecture? To me the term architecture conveys a notion of the core elements of the system, the pieces that are difficult to change. A foundation on which the rest must be built. <a href="https://www.martinfowler.com/articles/designDead.html">Martin Fowler</a></p>
+		<p>What do we mean by a software architecture? To me the term architecture conveys a notion of the core elements of the system, the pieces that are difficult to change. A foundation on which the rest must be built. <a href="https://www.martinfowler.com/articles/designDead.html" target="_blank" rel="noopener noreferrer">Martin Fowler</a></p>
 	</blockquote>
 	<p>When getting started with this package, you'll notice there are 3 classes you'll need to instantiate:</p>
 	<pre class="language-php"><code class="language-php">$key     = new \Cloudflare\API\Auth\APIKey('user@example.com', 'apiKey');
@@ -81,7 +81,7 @@ $pageRulesConfig-&gt;setCacheLevel('bypass');
 
 $pageRules = new \Cloudflare\API\Endpoints\PageRules($adapter);
 $pageRules-&gt;createPageRule($zoneID, $pageRulesTarget, $pageRulesConfig, true, 6);</code></pre>
-	<p>The structure of this project is overall based on simple object composition; this provides a far more simple object model for the long-term and a design that provides higher flexibility. For example; should we later want to create an Endpoint class which is a <a href="https://en.wikipedia.org/wiki/Composite_pattern">composite</a> of other Endpoints, it becomes fairly trivial for us to build this by implementing the same interface as the other Endpoint classes. As more code is added, we are able to keep the design of the software relatively thinly layered.</p>
+	<p>The structure of this project is overall based on simple object composition; this provides a far more simple object model for the long-term and a design that provides higher flexibility. For example; should we later want to create an Endpoint class which is a <a href="https://en.wikipedia.org/wiki/Composite_pattern" target="_blank" rel="noopener noreferrer">composite</a> of other Endpoints, it becomes fairly trivial for us to build this by implementing the same interface as the other Endpoint classes. As more code is added, we are able to keep the design of the software relatively thinly layered.</p>
 	<div class="flex anchor relative">
 		<h3 id="testing-mocking-http-requests">Testing/Mocking HTTP Requests</h3>
 		<a href="https://blog.cloudflare.com/#testing-mocking-http-requests" aria-hidden="true" class="relative sm:absolute sm:-start-5">
@@ -99,7 +99,7 @@ $pageRules-&gt;createPageRule($zoneID, $pageRulesTarget, $pageRulesConfig, true,
 			<p>Building out test coverage of those endpoint classes</p>
 		</li>
 	</ol>
-	<p>The PHP-FIG (PHP Framework Interop Group) put together a standard on how HTTP responses can be represented in an interface, this is described in the <a href="http://www.php-fig.org/psr/psr-7">PSR-7 standard</a>. This response interface is utilised by our HTTP <code>Adapter</code> interface in which responses to API requests are type hinted to this interface (<code>Psr\Http\Message\ResponseInterface</code>).</p>
+	<p>The PHP-FIG (PHP Framework Interop Group) put together a standard on how HTTP responses can be represented in an interface, this is described in the <a href="http://www.php-fig.org/psr/psr-7" target="_blank" rel="noopener noreferrer">PSR-7 standard</a>. This response interface is utilised by our HTTP <code>Adapter</code> interface in which responses to API requests are type hinted to this interface (<code>Psr\Http\Message\ResponseInterface</code>).</p>
 	<p>By using this standard, it's easier to add further abstractions for additional HTTP clients and mock HTTP responses for unit testing. Let's assume the JSON response is stored in the <code>$response</code> variable and we want to test the <code>listIPs</code> method in the <code>IPs</code> Endpoint class:</p>
 	<pre class="language-php"><code class="language-php">public function testListIPs() {
   $stream = GuzzleHttp\Psr7\stream_for($response);
@@ -127,6 +127,6 @@ $pageRules-&gt;createPageRule($zoneID, $pageRulesTarget, $pageRulesConfig, true,
 		</a>
 	</div>
 	<p>Through building on modern versions of PHP, using good Object-Oriented Programming theory and allowing for effective testing we hope our PHP API binding provides a developer experience that is pleasant to build upon.</p>
-	<p>If you're interesting in helping improve the design of this codebase, I'd encourage you to take a look at the <a href="https://github.com/cloudflare/cloudflare-php">PHP API binding source code</a> on GitHub (and optionally give us a star).</p>
-	<p>If you work with Go or PHP and you're interested in helping Cloudflare turn our high-traffic customer-facing API into an ever more modern service-oriented environment; we're hiring for Web Engineers in <a href="https://boards.greenhouse.io/cloudflare/jobs/745994#.WcWKLtOGPys">San Francisco</a>, <a href="https://boards.greenhouse.io/cloudflare/jobs/682927#.WcWKPdOGPys">Austin</a> and <a href="https://boards.greenhouse.io/cloudflare/jobs/574636#.WcWKQdOGPys">London</a>.</p>
+	<p>If you're interesting in helping improve the design of this codebase, I'd encourage you to take a look at the <a href="https://github.com/cloudflare/cloudflare-php" target="_blank" rel="noopener noreferrer">PHP API binding source code</a> on GitHub (and optionally give us a star).</p>
+	<p>If you work with Go or PHP and you're interested in helping Cloudflare turn our high-traffic customer-facing API into an ever more modern service-oriented environment; we're hiring for Web Engineers in <a href="https://boards.greenhouse.io/cloudflare/jobs/745994#.WcWKLtOGPys" target="_blank" rel="noopener noreferrer">San Francisco</a>, <a href="https://boards.greenhouse.io/cloudflare/jobs/682927#.WcWKPdOGPys" target="_blank" rel="noopener noreferrer">Austin</a> and <a href="https://boards.greenhouse.io/cloudflare/jobs/574636#.WcWKQdOGPys" target="_blank" rel="noopener noreferrer">London</a>.</p>
 </div>

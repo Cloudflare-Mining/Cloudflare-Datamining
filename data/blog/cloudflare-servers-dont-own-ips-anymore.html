@@ -39,10 +39,10 @@
 			<p>In our CDN product, before the content is cached, it's fetched from the origin servers. See "<a href="https://blog.cloudflare.com/how-we-built-pingora-the-proxy-that-connects-cloudflare-to-the-internet">Pingora, the proxy that connects Cloudflare to the Internet (2022)</a>", <a href="https://blog.cloudflare.com/argo-v2">Argo</a> and <a href="https://blog.cloudflare.com/tiered-cache-smart-topology">Tiered Cache</a>.</p>
 		</li>
 		<li>
-			<p>For the <a href="https://www.cloudflare.com/products/cloudflare-spectrum">Spectrum</a> product, each ingress TCP connection results in one egress connection.</p>
+			<p>For the <a href="https://www.cloudflare.com/products/cloudflare-spectrum" target="_blank" rel="noopener noreferrer">Spectrum</a> product, each ingress TCP connection results in one egress connection.</p>
 		</li>
 		<li>
-			<p><a href="https://workers.cloudflare.com">Workers</a> often run multiple subrequests to construct an HTTP response. Some of them might be querying servers to the Internet.</p>
+			<p><a href="https://workers.cloudflare.com" target="_blank" rel="noopener noreferrer">Workers</a> often run multiple subrequests to construct an HTTP response. Some of them might be querying servers to the Internet.</p>
 		</li>
 		<li>
 			<p>We also operate client-facing forward proxy products - like WARP and Cloudflare Gateway. These proxies deal with eyeball connections destined to the Internet. Our servers need to establish connections to the Internet on behalf of our users.</p>
@@ -84,7 +84,7 @@
 			</svg>
 		</a>
 	</div>
-	<p>Originally connections sourced by Cloudflare were mostly HTTP fetches going to origin servers on the Internet. As our product line grew, so did the variety of traffic. The most notable example is <a href="https://blog.cloudflare.com/1111-warp-better-vpn">our WARP app</a>. For WARP, our servers operate a forward proxy, and handle the traffic sourced by end-user devices. It's done without the same degree of intermediation as in our <a href="https://www.cloudflare.com/application-services/products/cdn">CDN product</a>. This creates a problem. Third party servers on the Internet — like the origin servers — must be able to distinguish between connections coming from Cloudflare services and our WARP users. Such traffic segmentation is traditionally done by using different IP ranges for different traffic types (although recently we introduced more robust techniques like <a href="https://developers.cloudflare.com/ssl/origin-configuration/authenticated-origin-pull">Authenticated Origin Pulls</a>).</p>
+	<p>Originally connections sourced by Cloudflare were mostly HTTP fetches going to origin servers on the Internet. As our product line grew, so did the variety of traffic. The most notable example is <a href="https://blog.cloudflare.com/1111-warp-better-vpn">our WARP app</a>. For WARP, our servers operate a forward proxy, and handle the traffic sourced by end-user devices. It's done without the same degree of intermediation as in our <a href="https://www.cloudflare.com/application-services/products/cdn" target="_blank" rel="noopener noreferrer">CDN product</a>. This creates a problem. Third party servers on the Internet — like the origin servers — must be able to distinguish between connections coming from Cloudflare services and our WARP users. Such traffic segmentation is traditionally done by using different IP ranges for different traffic types (although recently we introduced more robust techniques like <a href="https://developers.cloudflare.com/ssl/origin-configuration/authenticated-origin-pull" target="_blank" rel="noopener noreferrer">Authenticated Origin Pulls</a>).</p>
 	<p>To work around the trusted vs untrusted traffic pool differentiation problem, we added an untrusted WARP IP address to each of our servers:</p>
 	<figure class="kg-card kg-image-card ">
 
@@ -100,7 +100,7 @@
 		</a>
 	</div>
 	<p>It quickly became apparent that trusted vs untrusted weren't the only tags needed. For WARP service we also need country tags. For example, United Kingdom based WARP users expect the bbc.com website to just work. However, the BBC restricts many of its services to people just in the UK.</p>
-	<p>It does this by <i>geofencing</i> — using a database mapping public IP addresses to countries, and allowing only the UK ones. Geofencing is widespread on today's Internet. To avoid geofencing issues, we need to choose specific egress addresses tagged with an appropriate country, depending on WARP user location. Like many other parties on the Internet, we tag our egress IP space with country codes and publish it as a geofeed (like <a href="https://mask-api.icloud.com/egress-ip-ranges.csv">this one</a>). Notice, the published geofeed is just data. The fact that an IP is tagged as say UK does not mean it is served from the UK, it just means the operator wants it to be geolocated to the UK. Like many things on the Internet, it is based on trust.</p>
+	<p>It does this by <i>geofencing</i> — using a database mapping public IP addresses to countries, and allowing only the UK ones. Geofencing is widespread on today's Internet. To avoid geofencing issues, we need to choose specific egress addresses tagged with an appropriate country, depending on WARP user location. Like many other parties on the Internet, we tag our egress IP space with country codes and publish it as a geofeed (like <a href="https://mask-api.icloud.com/egress-ip-ranges.csv" target="_blank" rel="noopener noreferrer">this one</a>). Notice, the published geofeed is just data. The fact that an IP is tagged as say UK does not mean it is served from the UK, it just means the operator wants it to be geolocated to the UK. Like many things on the Internet, it is based on trust.</p>
 	<p>Notice, at this point we have three independent geographical tags:</p>
 	<ul>
 		<li>
@@ -129,7 +129,7 @@
 		</a>
 	</div>
 	<p>Let me recap: with anycast ingress we don't control which data center the user is routed to. Therefore, each of our data centers must be able to egress from an address with any conceivable tag. Inside the data center we also don't control which server the connection is routed to. There are potentially many tags, many data centers, and many servers inside a data center.</p>
-	<p>Maybe the problem is the ingress architecture? Perhaps it's better to use a traditional networking design where a specific eyeball is routed with <a href="https://www.cloudflare.com/learning/dns/what-is-dns">DNS</a> to a specific data center, or even a server?</p>
+	<p>Maybe the problem is the ingress architecture? Perhaps it's better to use a traditional networking design where a specific eyeball is routed with <a href="https://www.cloudflare.com/learning/dns/what-is-dns" target="_blank" rel="noopener noreferrer">DNS</a> to a specific data center, or even a server?</p>
 	<p>That's one way of thinking, but we decided against it. We like our anycast on ingress. It brings us many advantages:</p>
 	<ul>
 		<li>
@@ -139,7 +139,7 @@
 			<p><b>Automatic failover</b>: if one of our data centers becomes unavailable, the traffic will be instantly, automatically re-routed to the next best place.</p>
 		</li>
 		<li>
-			<p><b>DDoS resilience</b>: during a <a href="https://www.cloudflare.com/learning/ddos/what-is-a-ddos-attack">denial of service attack</a> or a traffic spike, the load is automatically balanced across many data centers, significantly reducing the impact.</p>
+			<p><b>DDoS resilience</b>: during a <a href="https://www.cloudflare.com/learning/ddos/what-is-a-ddos-attack" target="_blank" rel="noopener noreferrer">denial of service attack</a> or a traffic spike, the load is automatically balanced across many data centers, significantly reducing the impact.</p>
 		</li>
 		<li>
 			<p><b>Uniform software</b>: The functionality of every data center and of every server inside a data center is identical. We use the same software stack on all the servers around the world. Each machine can perform any action, for any product. This enables easy debugging and good scalability.</p>
@@ -243,7 +243,7 @@
 
 	</figure>
 	<p>When return packets arrive from the Internet, we have to route them back to the correct machine. For this task we've customized "Unimog" - our L4 XDP-based load balancer - ("<a href="https://blog.cloudflare.com/unimog-cloudflares-edge-load-balancer">Unimog, Cloudflare's load balancer (2020)</a>") and it's working flawlessly.</p>
-	<p>With a port slice of say 2,048 ports, we can share one IP among 31 servers. However, there is always a possibility of running out of ports. To address this, we've worked hard to be able to reuse the egress ports efficiently. See the "<a href="https://blog.cloudflare.com/how-to-stop-running-out-of-ephemeral-ports-and-start-to-love-long-lived-connections">How to stop running out of ports (2022)</a>", "<a href="https://lpc.events/event/16/contributions/1349">How to share IPv4 addresses (2022)</a>" and our <a href="https://cloudflare.tv/event/oZKxMJg4">Cloudflare.TV segment</a>.</p>
+	<p>With a port slice of say 2,048 ports, we can share one IP among 31 servers. However, there is always a possibility of running out of ports. To address this, we've worked hard to be able to reuse the egress ports efficiently. See the "<a href="https://blog.cloudflare.com/how-to-stop-running-out-of-ephemeral-ports-and-start-to-love-long-lived-connections">How to stop running out of ports (2022)</a>", "<a href="https://lpc.events/event/16/contributions/1349" target="_blank" rel="noopener noreferrer">How to share IPv4 addresses (2022)</a>" and our <a href="https://cloudflare.tv/event/oZKxMJg4" target="_blank" rel="noopener noreferrer">Cloudflare.TV segment</a>.</p>
 	<p>This is pretty much it. Each server is aware which IP addresses and port slices it owns. For inbound routing Unimog inspects the ports and dispatches the packets to appropriate machines.</p>
 	<div class="flex anchor relative">
 		<h3 id="sharing-a-subnet-between-data-centers">Sharing a subnet between data centers</h3>
@@ -259,7 +259,7 @@
 198.51.100.2 - forward to CDG
 198.51.100.3 - forward to MAN
 ...</code></pre>
-	<p>With this design, it doesn't matter to which data center return packets are delivered. Unimog can always fix it and forward the data to the right place. Basically, while at the <a href="https://www.cloudflare.com/learning/security/glossary/what-is-bgp">BGP layer</a> we are using anycast, due to our design, semantically an IP identifies a datacenter and an IP and port range identify a specific machine. It behaves almost like a unicast.</p>
+	<p>With this design, it doesn't matter to which data center return packets are delivered. Unimog can always fix it and forward the data to the right place. Basically, while at the <a href="https://www.cloudflare.com/learning/security/glossary/what-is-bgp" target="_blank" rel="noopener noreferrer">BGP layer</a> we are using anycast, due to our design, semantically an IP identifies a datacenter and an IP and port range identify a specific machine. It behaves almost like a unicast.</p>
 	<figure class="kg-card kg-image-card ">
 
 		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1aQ9FLJSpyr3OjcEynnyse/0274312eac4adaa6f391e7e48d3d6e3c/image7-6.png" alt="" class="kg-image" width="1720" height="880" loading="lazy">
@@ -286,7 +286,7 @@
 			<p>We can <b>group similar IP addresses</b> together. For example, all the IP addresses tagged with the "UK" tag might form a single continuous range. This reduces the size of the published geofeed.</p>
 		</li>
 		<li>
-			<p>It's easy for us to <b>onboard new egress IP ranges</b>, like customer IP's. This is useful for some of our products, like <a href="https://www.cloudflare.com/products/zero-trust">Cloudflare Zero Trust</a>.</p>
+			<p>It's easy for us to <b>onboard new egress IP ranges</b>, like customer IP's. This is useful for some of our products, like <a href="https://www.cloudflare.com/products/zero-trust" target="_blank" rel="noopener noreferrer">Cloudflare Zero Trust</a>.</p>
 		</li>
 	</ul>
 	<p>All this is done at sensible cost, at no loss to performance and reliability:</p>
@@ -336,7 +336,7 @@
 			<p>The country tag of the IP addresses we chose for the egress connections.</p>
 		</li>
 	</ul>
-	<p>The fact that our egress address is tagged as "UK" doesn't always mean it actually is being used in the UK. We’ve had cases when a UK-tagged WARP user, due to the maintenance of our LHR data center, was routed to Paris. A popular <a href="https://www.cloudflare.com/learning/cdn/what-is-a-cdn">CDN</a> performed a reverse-lookup of our egress IP, found it tagged as "UK", and directed the user to a London CDN server. This is generally OK... but we actually egressed from Paris at the time. This user ended up routing packets from their home in the UK, to Paris, and back to the UK. This is bad for performance.</p>
+	<p>The fact that our egress address is tagged as "UK" doesn't always mean it actually is being used in the UK. We’ve had cases when a UK-tagged WARP user, due to the maintenance of our LHR data center, was routed to Paris. A popular <a href="https://www.cloudflare.com/learning/cdn/what-is-a-cdn" target="_blank" rel="noopener noreferrer">CDN</a> performed a reverse-lookup of our egress IP, found it tagged as "UK", and directed the user to a London CDN server. This is generally OK... but we actually egressed from Paris at the time. This user ended up routing packets from their home in the UK, to Paris, and back to the UK. This is bad for performance.</p>
 	<p>We address this issue by performing DNS requests in the egressing data center. For DNS we use IP addresses tagged with the location of the <b>data center</b>, not the intended geolocation for the user. This generally fixes the problem, but sadly, there are still some exceptions.</p>
 	<div class="flex anchor relative">
 		<h3 id="the-future-is-here">The future is here</h3>

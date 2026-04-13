@@ -1,9 +1,9 @@
 <div class="mb2 gray5">8 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7nUf0sdRuBcvc3KlZjC1G7/37129ec57be84829f3e57c5b7db9ce9f/yet-another-padding-oracle-in-openssl-cbc-ciphersuites.jpg" alt="">
 <div class="post-content lh-copy gray1">
-	<p>Yesterday a new vulnerability <a href="https://www.openssl.org/news/secadv/20160503.txt">has been announced</a> in OpenSSL/LibreSSL. A <i>padding oracle in CBC mode decryption</i>, to be precise. Just like <a href="https://en.wikipedia.org/wiki/Lucky_Thirteen_attack">Lucky13</a>. Actually, it’s in the code that fixes Lucky13.</p>
-	<p>It was found by <a href="http://web-in-security.blogspot.co.uk/2016/05/curious-padding-oracle-in-openssl-cve.html">Juraj Somorovsky</a> using a tool he developed called <a href="https://github.com/RUB-NDS/TLS-Attacker">TLS-Attacker</a>. Like in the “old days”, it has no name except CVE-2016-2107. (I call it LuckyNegative20[^1])</p>
+	<p>Yesterday a new vulnerability <a href="https://www.openssl.org/news/secadv/20160503.txt" target="_blank" rel="noopener noreferrer">has been announced</a> in OpenSSL/LibreSSL. A <i>padding oracle in CBC mode decryption</i>, to be precise. Just like <a href="https://en.wikipedia.org/wiki/Lucky_Thirteen_attack" target="_blank" rel="noopener noreferrer">Lucky13</a>. Actually, it’s in the code that fixes Lucky13.</p>
+	<p>It was found by <a href="http://web-in-security.blogspot.co.uk/2016/05/curious-padding-oracle-in-openssl-cve.html" target="_blank" rel="noopener noreferrer">Juraj Somorovsky</a> using a tool he developed called <a href="https://github.com/RUB-NDS/TLS-Attacker" target="_blank" rel="noopener noreferrer">TLS-Attacker</a>. Like in the “old days”, it has no name except CVE-2016-2107. (I call it LuckyNegative20[^1])</p>
 	<p>It’s a wonderful example of a padding oracle in constant time code, so we’ll dive deep into it. But first, two quick background paragraphs. If you already know all about Lucky13 and how it's mitigated in OpenSSL <a href="https://blog.cloudflare.com/#offby20">jump to "Off by 20"</a> for the hot and new.</p>
-	<p>If, before reading, you want to check that your server is safe, you can do it <a href="https://filippo.io/CVE-2016-2107">with this one-click online test</a>.</p>
+	<p>If, before reading, you want to check that your server is safe, you can do it <a href="https://filippo.io/CVE-2016-2107" target="_blank" rel="noopener noreferrer">with this one-click online test</a>.</p>
 	<div class="flex anchor relative">
 		<h3 id="tls-cbc-and-mac-then-encrypt">TLS, CBC, and Mac-then-Encrypt</h3>
 		<a href="https://blog.cloudflare.com/#tls-cbc-and-mac-then-encrypt" aria-hidden="true" class="relative sm:absolute sm:-start-5">
@@ -18,7 +18,7 @@
 			<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/44IkC1Y8GbkE4EY00AfCBO/2bf4bf76ebbc1f91d4e060b66d7e4c7d/S22C-6e16050319300-1.jpg" alt="S22C-6e16050319300-1" class="kg-image" width="2000" height="576" loading="lazy">
 		</a>
 	</figure>
-	<p>In other words, the CBC mode cipher suites are doomed by <a href="https://moxie.org/2011/12/13/the-cryptographic-doom-principle.html">The Cryptographic Doom Principle</a>. Sadly though, they are the only “safe” cipher suites to use with TLS prior to version 1.2, and they account for <b>26% of connections to the CloudFlare edge</b>, so attacks against them like this one are still very relevant.</p>
+	<p>In other words, the CBC mode cipher suites are doomed by <a href="https://moxie.org/2011/12/13/the-cryptographic-doom-principle.html" target="_blank" rel="noopener noreferrer">The Cryptographic Doom Principle</a>. Sadly though, they are the only “safe” cipher suites to use with TLS prior to version 1.2, and they account for <b>26% of connections to the CloudFlare edge</b>, so attacks against them like this one are still very relevant.</p>
 	<p>My colleague Nick Sullivan explained CBC padding oracles and their history in much more detail <a href="https://blog.cloudflare.com/padding-oracles-and-the-decline-of-cbc-mode-ciphersuites">on this very blog</a>. If you didn’t understand my coarse summary, please take the time to read his post as it’s needed to understand what goes wrong next.</p>
 	<div class="flex anchor relative">
 		<h3 id="constant-time-programming-crash-course">Constant time programming crash course</h3>
@@ -37,7 +37,7 @@
 
 	</figure>
 	<p>This technique is crucial to this vulnerability, as it’s exactly its constant time, no-complaints nature that made the mistake possible.</p>
-	<p>The <a href="https://github.com/openssl/openssl/blob/cba792a1e941788cba7dc700a2ef59420e7f2522/crypto/evp/e_aes_cbc_hmac_sha1.c#L739-L763">OpenSSL checking code</a> was written after the discovery of <a href="http://www.isg.rhul.ac.uk/tls/TLStiming.pdf">Lucky13</a>, and Adam Langley wrote <a href="https://www.imperialviolet.org/2013/02/04/luckythirteen.html">a long blog post</a> explaining how the generic version works. I glossed over many details here, in particular the incredible pain that is generating the HMAC of a variable-length message in constant time (which is where Lucky13 and <a href="https://eprint.iacr.org/2015/1129.pdf">Lucky Microseconds</a> happened), so go read his incredible write-up to learn more.</p>
+	<p>The <a href="https://github.com/openssl/openssl/blob/cba792a1e941788cba7dc700a2ef59420e7f2522/crypto/evp/e_aes_cbc_hmac_sha1.c#L739-L763" target="_blank" rel="noopener noreferrer">OpenSSL checking code</a> was written after the discovery of <a href="http://www.isg.rhul.ac.uk/tls/TLStiming.pdf" target="_blank" rel="noopener noreferrer">Lucky13</a>, and Adam Langley wrote <a href="https://www.imperialviolet.org/2013/02/04/luckythirteen.html" target="_blank" rel="noopener noreferrer">a long blog post</a> explaining how the generic version works. I glossed over many details here, in particular the incredible pain that is generating the HMAC of a variable-length message in constant time (which is where Lucky13 and <a href="https://eprint.iacr.org/2015/1129.pdf" target="_blank" rel="noopener noreferrer">Lucky Microseconds</a> happened), so go read his incredible write-up to learn more.</p>
 	<div class="flex anchor relative">
 		<h3 id="off-by-20">Off by 20</h3>
 		<a href="https://blog.cloudflare.com/#off-by-20" aria-hidden="true" class="relative sm:absolute sm:-start-5">
@@ -46,7 +46,7 @@
 			</svg>
 		</a>
 	</div>
-	<p>Like any respectable vulnerability analysis, let’s start with <a href="https://github.com/openssl/openssl/commit/70428eada9bc4cf31424d723d1f992baffeb0dfb">the patch</a>. We’ll focus on the SHA1 part for simplicity, but the SHA256 one is exactly the same.</p>
+	<p>Like any respectable vulnerability analysis, let’s start with <a href="https://github.com/openssl/openssl/commit/70428eada9bc4cf31424d723d1f992baffeb0dfb" target="_blank" rel="noopener noreferrer">the patch</a>. We’ll focus on the SHA1 part for simplicity, but the SHA256 one is exactly the same.</p>
 	<p>The patch for <i>LuckyMinus20</i> is one line in the OpenSSL function that performs AES-CBC decryption and checks HMAC and padding. All it is doing is flagging the check as failed if the padding length value is higher than the maximum it could possibly be.</p>
 	<pre class="language-patch"><code class="language-patch">              pad = plaintext[len - 1];
               maxpad = len - (SHA_DIGEST_LENGTH + 1);
@@ -80,11 +80,11 @@
 	</figure>
 	<p>I like to box and label these kinds of “cryptanalytic functions” and call them capabilities. Here’s our capability:</p>
 	<p><b>We can discover if a message is made entirely of bytes with value n, where n &gt;= maxpad + 20</b> by sending it to the server and observing an error different from BAD_MAC. This can only work with messages shorter than 256-20=236 bytes, as pad can be at most 255, being a 8-bit value.</p>
-	<p>NOTE: As <a href="http://web-in-security.blogspot.co.uk/2016/05/curious-padding-oracle-in-openssl-cve.html">Juraj clarifies</a>, there is no need to do delicate timing statistics like in Lucky 13, because if the tampered message is sent at the time the Finished message should be sent, the server response (BAD_MAC or not) will be unencrypted.</p>
+	<p>NOTE: As <a href="http://web-in-security.blogspot.co.uk/2016/05/curious-padding-oracle-in-openssl-cve.html" target="_blank" rel="noopener noreferrer">Juraj clarifies</a>, there is no need to do delicate timing statistics like in Lucky 13, because if the tampered message is sent at the time the Finished message should be sent, the server response (BAD_MAC or not) will be unencrypted.</p>
 	<p>We can use this capability as an oracle.</p>
 	<p>In other words, the entire trick is making the computed payload length "negative" by at least <code>DIGEST_LENGTH</code> so that the computed position of the HMAC mask is fully "outside" the message and the MAC ends up not being checked at all.</p>
-	<p>By the way, the fact that the affected function is called <code>aesni_cbc_hmac_sha1_cipher</code> explains why only servers with <a href="https://en.wikipedia.org/wiki/AES_instruction_set">AES-NI instructions</a> are vulnerable.</p>
-	<p><i>You can find a standalone, simplified version of the vulnerable function </i><a href="https://gist.github.com/FiloSottile/064cae24c11e792a46af881dfd826f76"><i>here</i></a><i>, if you want to play with the debugger yourself.</i></p>
+	<p>By the way, the fact that the affected function is called <code>aesni_cbc_hmac_sha1_cipher</code> explains why only servers with <a href="https://en.wikipedia.org/wiki/AES_instruction_set" target="_blank" rel="noopener noreferrer">AES-NI instructions</a> are vulnerable.</p>
+	<p><i>You can find a standalone, simplified version of the vulnerable function </i><a href="https://gist.github.com/FiloSottile/064cae24c11e792a46af881dfd826f76" target="_blank" rel="noopener noreferrer"><i>here</i></a><i>, if you want to play with the debugger yourself.</i></p>
 	<div class="flex anchor relative">
 		<h3 id="from-there-to-decryption">From there to decryption</h3>
 		<a href="https://blog.cloudflare.com/#from-there-to-decryption" aria-hidden="true" class="relative sm:absolute sm:-start-5">
@@ -119,7 +119,7 @@
 	</figure>
 	<p>We iterate this process, moving all bytes one position to the right (for example by making the POST path one character longer), and XOR’ing the first byte of the IV with our <code>n</code> guesses, and the second byte with the number we now know will turn it into a <code>31</code>.</p>
 	<p>And so on and so forth. This gets us to decrypt any 16 bytes that consistently appear just before a sequence of at least 31 attacker-controlled bytes and after a string of attacker-controlled length (for alignment).</p>
-	<p>It might be possible to extend the decryption to all blocks preceding the two controlled ones by carefully pausing the client request and using the early feedback, but I'm not sure it works. (Chances of me being wrong on full decryption capabilities are high, considering that an <a href="https://twitter.com/RichSalz/status/727527231686344705">OpenSSL team member said they are not aware of such a technique</a>.) UPDATE: we chatted a bit with Juraj, and no, it doesn't work.</p>
+	<p>It might be possible to extend the decryption to all blocks preceding the two controlled ones by carefully pausing the client request and using the early feedback, but I'm not sure it works. (Chances of me being wrong on full decryption capabilities are high, considering that an <a href="https://twitter.com/RichSalz/status/727527231686344705" target="_blank" rel="noopener noreferrer">OpenSSL team member said they are not aware of such a technique</a>.) UPDATE: we chatted a bit with Juraj, and no, it doesn't work.</p>
 	<div class="flex anchor relative">
 		<h3 id="but-no-further">But no further</h3>
 		<a href="https://blog.cloudflare.com/#but-no-further" aria-hidden="true" class="relative sm:absolute sm:-start-5">
@@ -131,7 +131,7 @@
 	<p>One might think that since this boils down to a MAC check bypass, we might use it to inject unauthenticated messages into the connection. However, since we rely on making <code>pad</code> higher than <code>maxpad + DIGEST_LENGTH</code>, we can't avoid making the payload length (<code>totlen - 1 - DIGEST_LENGTH - pad</code>) negative.</p>
 	<pre class="language-bash"><code class="language-bash">pad &gt; maxpad + DIGEST_LENGTH = (totlen - DIGEST_LENGTH - 1) + DIGEST_LENGTH = totlen - 1 &gt; totlen - 1 - DIGEST_LENGTH
 0 &gt; totlen - 1 - DIGEST_LENGTH - pad = payload_len</code></pre>
-	<p>Since <code>length</code> is stored as an unsigned integer, when it goes negative it wraps around to a very high number <a href="https://github.com/openssl/openssl/blob/9f2ccf1d718ab66c778a623f9aed3cddf17503a2/ssl/s3_pkt.c#L550-L554">and triggers the "payload too long" error</a>, which terminates the connection. Too bad... Good. I meant good :-)</p>
+	<p>Since <code>length</code> is stored as an unsigned integer, when it goes negative it wraps around to a very high number <a href="https://github.com/openssl/openssl/blob/9f2ccf1d718ab66c778a623f9aed3cddf17503a2/ssl/s3_pkt.c#L550-L554" target="_blank" rel="noopener noreferrer">and triggers the "payload too long" error</a>, which terminates the connection. Too bad... Good. I meant good :-)</p>
 	<p>This means, by the way, that successful attempts to exploit or test this vulnerability show up in OpenSSL logs as</p>
 	<pre class="language-bash"><code class="language-bash">SSL routines:SSL3_GET_RECORD:data length too long:s3_pkt.c:</code></pre>
 
@@ -145,7 +145,7 @@
 	</div>
 	<p>Detecting a vulnerable server is as easy as sending an encrypted message which decrypts to <code>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA</code>, and checking if the TLS alert is <code>DATA_LENGTH_TOO_LONG</code> (vulnerable) or <code>BAD_RECORD_MAC</code> (not vulnerable).</p>
 	<p>It works because <code>A</code> is 65, which is more than 32 - 1.</p>
-	<p>There’s a simple implementation at <a href="https://github.com/FiloSottile/CVE-2016-2107">https://github.com/FiloSottile/CVE-2016-2107</a> and an online version at <a href="https://filippo.io/CVE-2016-2107">https://filippo.io/CVE-2016-2107/</a></p>
+	<p>There’s a simple implementation at <a href="https://github.com/FiloSottile/CVE-2016-2107" target="_blank" rel="noopener noreferrer">https://github.com/FiloSottile/CVE-2016-2107</a> and an online version at <a href="https://filippo.io/CVE-2016-2107" target="_blank" rel="noopener noreferrer">https://filippo.io/CVE-2016-2107/</a></p>
 	<div class="flex anchor relative">
 		<h3 id="conclusion">Conclusion</h3>
 		<a href="https://blog.cloudflare.com/#conclusion" aria-hidden="true" class="relative sm:absolute sm:-start-5">
@@ -158,7 +158,7 @@
 	<p>A more skilled attacker than me might also be able to decrypt more than 16 bytes, but no one has shown that it’s possible yet.</p>
 	<p>All CloudFlare websites are protected from this vulnerability. Connections from the CloudFlare edge to origins use TLS 1.2 and AES-GCM if the server supports it, so are safe in that case. Customers supporting only AES-CBC should upgrade as soon as possible.</p>
 	<p>In closing, the cryptographic development community has shown that writing secure constant-time MtE decryption code is extremely difficult to do. We can keep patching this code, but the safer thing to do is to move to cryptographic primitives like <a href="https://blog.cloudflare.com/go-crypto-bridging-the-performance-gap">AEAD</a> that are designed not to require constant time acrobatics. Eventually, TLS 1.2 adoption will be high enough to give CBC the <a href="https://blog.cloudflare.com/killing-rc4-the-long-goodbye">RC4</a> <a href="https://blog.cloudflare.com/end-of-the-road-for-rc4">treatment</a>. But we are not there yet.</p>
-	<p><i>Are you crazy enough that analyzing a padding oracle in a complex crypto protocol sounds </i><b><i>exciting</i></b><i> to you? </i><a href="https://www.cloudflare.com/join-our-team"><i>We are hiring in London, San Francisco, Austin and Singapore</i></a><i>, including cryptography roles.</i></p>
+	<p><i>Are you crazy enough that analyzing a padding oracle in a complex crypto protocol sounds </i><b><i>exciting</i></b><i> to you? </i><a href="https://www.cloudflare.com/join-our-team" target="_blank" rel="noopener noreferrer"><i>We are hiring in London, San Francisco, Austin and Singapore</i></a><i>, including cryptography roles.</i></p>
 	<p>Thanks to Anna Bernardi who helped with the analysis and the painful process of reading OpenSSL code. Thanks (in no particular order) to Nick Sullivan, Ryan Hodson, Evan Johnson, Joshua A. Kroll, John Graham-Cumming and Alessandro Ghedini for their help with this write-up.</p>
 	<hr>
 	<pre class="language-bash"><code class="language-bash">[^1]: Although JGC insists it should be called FreezerBurn because -20, geddit?.</code></pre>

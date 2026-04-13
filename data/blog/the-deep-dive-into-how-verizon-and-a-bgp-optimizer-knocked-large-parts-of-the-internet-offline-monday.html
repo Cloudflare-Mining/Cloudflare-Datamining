@@ -11,8 +11,8 @@
 	<p>On Monday we <a href="https://blog.cloudflare.com/how-verizon-and-a-bgp-optimizer-knocked-large-parts-of-the-internet-offline-today">wrote</a> about a painful Internet wide route leak. We wrote that this should never have happened because Verizon should never have forwarded those routes to the rest of the Internet. That blog entry came out around 19:58 UTC, just over seven hours after the route leak finished (which will we see below was around 12:39 UTC). Today we will dive into the archived routing data and analyze it. The format of the code below is meant to use simple shell commands so that any reader can follow along and, more importantly, do their own investigations on the routing tables.</p>
 	<p>This was a very public BGP route leak event. It was both reported online via many news outlets and the event’s BGP data was reported via social media as it was happening. Andree Toonk tweeted a quick list of 2,400 ASNs that were affected.</p>
 	<blockquote>
-		<p>Quick dumps through the data, showing about 2400 ASns (networks) affected. Cloudflare being hit the hardest. Top 20 of affected ASns below <a href="https://t.co/9J7uvyasw2">pic.twitter.com/9J7uvyasw2</a></p>
-		<p>— Andree Toonk (@atoonk) <a href="https://twitter.com/atoonk/status/1143143943531454464?ref_src=twsrc%5Etfw">June 24, 2019</a></p>
+		<p>Quick dumps through the data, showing about 2400 ASns (networks) affected. Cloudflare being hit the hardest. Top 20 of affected ASns below <a href="https://t.co/9J7uvyasw2" target="_blank" rel="noopener noreferrer">pic.twitter.com/9J7uvyasw2</a></p>
+		<p>— Andree Toonk (@atoonk) <a href="https://twitter.com/atoonk/status/1143143943531454464?ref_src=twsrc%5Etfw" target="_blank" rel="noopener noreferrer">June 24, 2019</a></p>
 	</blockquote>
 	<p>This blog contains a large number of acronyms and those are explained at the end of the blog.</p>
 	<div class="flex anchor relative">
@@ -23,7 +23,7 @@
 			</svg>
 		</a>
 	</div>
-	<p>The RIPE NCC operates a very useful archive of BGP routing. It runs collectors globally and provides an API for querying the data. More can be seen at <a href="https://stat.ripe.net">https://stat.ripe.net/</a>. In the world of BGP all routing is public (within the ability of anyone collecting data to have enough collections points). The archived data is very valuable for research and that’s what we will do in this blog. The site can create some very useful data visualizations.</p>
+	<p>The RIPE NCC operates a very useful archive of BGP routing. It runs collectors globally and provides an API for querying the data. More can be seen at <a href="https://stat.ripe.net" target="_blank" rel="noopener noreferrer">https://stat.ripe.net/</a>. In the world of BGP all routing is public (within the ability of anyone collecting data to have enough collections points). The archived data is very valuable for research and that’s what we will do in this blog. The site can create some very useful data visualizations.</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
 		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7GNF7gEDv0Q7yA6eYomf00/ab625e1fc607841d1c4579030199d083/396531-bgplay-3.png" alt="" class="kg-image" width="1386" height="1043" loading="lazy">
@@ -38,7 +38,7 @@
 		</a>
 	</div>
 	<p>Presently, the RIPEstat data gets ingested around eight to twelve hours after real-time. It’s not meant to be a real-time service. The data can be queried in many ways, including a full web interface and an API. We are using the API to extract the data in a JSON format.</p>
-	<p>We are going to focus only on the Cloudflare routes that were leaked. Many other ASNs were leaked (see the tweet above); however, we want to deal with a finite data set and focus on what happened to Cloudflare’s routing. All the commands below can be run with ease on many systems. Both the scripts and the raw data file are now available on <a href="https://github.com/cloudflare/the-deep-dive-into-how-verizon-and-a-bgp-optimizer-knocked-large-parts-of-the-internet-offline-monda">GitHub</a>. The following was done on MacBook Pro running macOS Mojave.</p>
+	<p>We are going to focus only on the Cloudflare routes that were leaked. Many other ASNs were leaked (see the tweet above); however, we want to deal with a finite data set and focus on what happened to Cloudflare’s routing. All the commands below can be run with ease on many systems. Both the scripts and the raw data file are now available on <a href="https://github.com/cloudflare/the-deep-dive-into-how-verizon-and-a-bgp-optimizer-knocked-large-parts-of-the-internet-offline-monda" target="_blank" rel="noopener noreferrer">GitHub</a>. The following was done on MacBook Pro running macOS Mojave.</p>
 	<p>First we collect 24 hours of route announcements and AS-PATH data that RIPEstat sees coming from AS13335 (Cloudflare).</p>
 	<pre class="language-bash"><code class="language-bash">$ # Collect 24 hours of data - more than enough
 $ ASN="AS13335"
@@ -51,7 +51,7 @@ $ curl -sS "${URL}" | jq . &gt; 13335-routes.json
 $ ls -l 13335-routes.json
 -rw-r--r--  1 martin  staff  339363899 Jun 25 08:47 13335-routes.json
 $</code></pre>
-	<p>That’s 340MB of data - which seems like a lot, but it contains plenty of white space and plenty of data we just don’t need. Our second task is to reduce this raw data down to just the required data - that’s timestamps, actual routes, and AS-PATH. The third item will be very useful. Note we are using <a href="https://stedolan.github.io/jq">jq</a>, which can be installed on macOS with the &nbsp;<a href="https://brew.sh">brew package manager</a>.</p>
+	<p>That’s 340MB of data - which seems like a lot, but it contains plenty of white space and plenty of data we just don’t need. Our second task is to reduce this raw data down to just the required data - that’s timestamps, actual routes, and AS-PATH. The third item will be very useful. Note we are using <a href="https://stedolan.github.io/jq" target="_blank" rel="noopener noreferrer">jq</a>, which can be installed on macOS with the &nbsp;<a href="https://brew.sh" target="_blank" rel="noopener noreferrer">brew package manager</a>.</p>
 	<pre class="language-bash"><code class="language-bash">$ # Extract just the times, routes, and AS-PATH
 $ jq -rc '.data.updates[]|.timestamp,.attrs.target_prefix,.attrs.path' &lt; 13335-routes.json | paste - - - &gt; 13335-listing-a.txt
 $ wc -l 13335-listing-a.txt
@@ -70,7 +70,7 @@ $ cut -f2 &lt; 13335-listing-b.txt | sort -V -u &gt; 13335-listing-c.txt
 $ wc -l 13335-listing-c.txt
 101 13335-listing-c.txt
 $</code></pre>
-	<p>It’s a much smaller number. We now have a listing of at least 101 routes that were leaked via Verizon. This may not be the full list because route collectors like RIPEstat don’t have direct feeds from Verizon, so this data is a blended view with Verizon’s path and other paths. We can see that if we look at the AS-PATH in the above files. Please note that I had a typo in this script when this blog was first published and only 20 routes showed up because the -n vs -V option was used on sort. Now the list is correct with 101 affected routes. Please see this short article from <a href="https://stackoverflow.com/questions/42526860/bash-sort-nu-results-in-unexpected-behaviour">stackoverflow</a> to see the issue.</p>
+	<p>It’s a much smaller number. We now have a listing of at least 101 routes that were leaked via Verizon. This may not be the full list because route collectors like RIPEstat don’t have direct feeds from Verizon, so this data is a blended view with Verizon’s path and other paths. We can see that if we look at the AS-PATH in the above files. Please note that I had a typo in this script when this blog was first published and only 20 routes showed up because the -n vs -V option was used on sort. Now the list is correct with 101 affected routes. Please see this short article from <a href="https://stackoverflow.com/questions/42526860/bash-sort-nu-results-in-unexpected-behaviour" target="_blank" rel="noopener noreferrer">stackoverflow</a> to see the issue.</p>
 	<p>Here’s a partial listing of affected routes.</p>
 	<pre class="language-bash"><code class="language-bash">$ cat 13335-listing-c.txt
 8.39.214.0/24
@@ -127,7 +127,7 @@ Path:         rsync://rpki.arin.net/repository/arin-rpki-ta/5e4a23ea-...</code><
 104.28.16.0/21    -&gt;  104.28.16.0/20          /20
 104.31.0.0/21     -&gt;  104.31.0.0/20           /20</code></pre>
 	<p>So how did all these /21’s show up? That’s where we dive into the world of BGP route optimization systems and their propensity to synthesize routes that should not exist. If those routes leak (and it’s very clear after this week that they can), all hell breaks loose. That can be compounded when not one, but two ISPs allow invalid routes to be propagated outside their autonomous network. We will explore the AS-PATH further down this blog.</p>
-	<p>More than 20 years ago, <a href="https://tools.ietf.org/html/rfc1997">RFC1997</a> added the concept of <i>communities</i> to BGP. Communities are a way of tagging or grouping route advertisements. Communities are often used to label routes so that specific handling policies can be applied. RFC1997 includes a small number of universal <i>well-known communities</i>. One of these is the NO_EXPORT community, which has the following specification:</p>
+	<p>More than 20 years ago, <a href="https://tools.ietf.org/html/rfc1997" target="_blank" rel="noopener noreferrer">RFC1997</a> added the concept of <i>communities</i> to BGP. Communities are a way of tagging or grouping route advertisements. Communities are often used to label routes so that specific handling policies can be applied. RFC1997 includes a small number of universal <i>well-known communities</i>. One of these is the NO_EXPORT community, which has the following specification:</p>
 	<pre class="language-bash"><code class="language-bash">    All routes received carrying a communities attribute
     containing this value MUST NOT be advertised outside a BGP
     confederation boundary (a stand-alone autonomous system that
@@ -237,8 +237,8 @@ $</code></pre>
 	<p>What’s missing from that list are three networks worthy of mentioning - 1299 (Telia), 2914 (NTT), and 7018 (AT&amp;T). All three implement a very simple AS-PATH filter which saved the day for their network. They do not allow one tier 1 ISP to send them a route which has another tier 1 further down the path. That’s because when that happens, it’s officially a leak as each tier 1 is fully connected to all other tier 1’s (which is part of the definition of a tier 1 network). The topology of the Internet’s global BGP routing tables simply states that if you see another tier 1 in the path, then it’s a bad route and it should be filtered away.</p>
 	<p>Additionally we know that 7018 (AT&amp;T) operates a network which drops RPKI invalids. Because Cloudflare routes are <a href="https://blog.cloudflare.com/rpki-details">RPKI signed</a>, this also means that AT&amp;T would have dropped these routes when it receives them from Verizon. This shows a clear win for RPKI (and for AT&amp;T when you see their bandwidth graph below)!</p>
 	<blockquote>
-		<p>BREAKING - AT&amp;T / AS 7018 is now rejecting RPKI Invalid BGP announcements they receive from their peering partners. This is big news for routing security! If AT&amp;T can do it - you can do it! :-) <a href="https://t.co/FhjmWByagO">https://t.co/FhjmWByagO</a></p>
-		<p>— Job Snijders (@JobSnijders) <a href="https://twitter.com/JobSnijders/status/1094976832267522048?ref_src=twsrc%5Etfw">February 11, 2019</a></p>
+		<p>BREAKING - AT&amp;T / AS 7018 is now rejecting RPKI Invalid BGP announcements they receive from their peering partners. This is big news for routing security! If AT&amp;T can do it - you can do it! :-) <a href="https://t.co/FhjmWByagO" target="_blank" rel="noopener noreferrer">https://t.co/FhjmWByagO</a></p>
+		<p>— Job Snijders (@JobSnijders) <a href="https://twitter.com/JobSnijders/status/1094976832267522048?ref_src=twsrc%5Etfw" target="_blank" rel="noopener noreferrer">February 11, 2019</a></p>
 	</blockquote>
 	<p>That all said, keep in mind we are still talking about routes that Cloudflare didn't announce. They all came from the route optimizer.</p>
 	<div class="flex anchor relative">
@@ -283,7 +283,7 @@ mnt-by:     MAINT-AS3257
 mnt-by:     MAINT-AS5050
 $</code></pre>
 	<p>None of these maintainers are directly related to 33154 (DQE Communications). They have been created by other parties and hence they become a dead-end in that search.</p>
-	<p>It’s worth doing a secondary search to see if any as-set object exists with 33154 or 396531 included. We turned to the most excellent <a href="http://irrexplorer.nlnog.net">IRR Explorer</a> website run by NLNOG. It provides deep insight into the routing registry data. We did a simple search for 33154 using <a href="http://irrexplorer.nlnog.net/search/33154">http://irrexplorer.nlnog.net/search/33154</a> and we found these as-set objects.</p>
+	<p>It’s worth doing a secondary search to see if any as-set object exists with 33154 or 396531 included. We turned to the most excellent <a href="http://irrexplorer.nlnog.net" target="_blank" rel="noopener noreferrer">IRR Explorer</a> website run by NLNOG. It provides deep insight into the routing registry data. We did a simple search for 33154 using <a href="http://irrexplorer.nlnog.net/search/33154" target="_blank" rel="noopener noreferrer">http://irrexplorer.nlnog.net/search/33154</a> and we found these as-set objects.</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
 		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4EYvX8VV7OrqAymwSwjOdl/6bc48a047ddf172b54b9bef773e3f488/as-set-containing-as33154.png" alt="" class="kg-image" width="1308" height="534" loading="lazy">
@@ -314,7 +314,7 @@ $</code></pre>
 
 	</figure>
 	<p>This uptick in IPv6 traffic could be the direct result of Happy Eyeballs on mobile handsets picking a working IPv6 path into Cloudflare vs a non-working IPv4 path. Happy Eyeballs is meant to protect against IPv6 failure, however in this case it’s doing a wonderful job in protecting from an IPv4 failure. Yet we have to be careful with this graph because after further thought and investigation the percentage only increased because IPv4 reduces. Sometimes graphs can be misinterpreted, yet Happy Eyeballs still did a good job even as end users were being affected.</p>
-	<p>Happy Eyeballs, described in <a href="https://tools.ietf.org/html/rfc8305">RFC8305</a>, is a mechanism where a client (lets say a mobile device) tries to connect to a website both on IPv4 and IPv6 simultaneously. IPv6 is sometimes given a head-start. The theory is that, should a failure exist on one of the paths (sadly IPv6 is the norm), then IPv4 will save the day. Monday was a day of opposites for Verizon.</p>
+	<p>Happy Eyeballs, described in <a href="https://tools.ietf.org/html/rfc8305" target="_blank" rel="noopener noreferrer">RFC8305</a>, is a mechanism where a client (lets say a mobile device) tries to connect to a website both on IPv4 and IPv6 simultaneously. IPv6 is sometimes given a head-start. The theory is that, should a failure exist on one of the paths (sadly IPv6 is the norm), then IPv4 will save the day. Monday was a day of opposites for Verizon.</p>
 	<p>In fact, enabling IPv6 for mobile users is the one area where we can praise the Verizon network this week (or at least the Verizon mobile network), unlike the residential Verizon networks where IPv6 is almost non-existent.</p>
 	<div class="flex anchor relative">
 		<h3 id="using-bandwidth-graphs-to-confirm-routing-leaks-and-stability">Using bandwidth graphs to confirm routing leaks and stability.</h3>
@@ -353,11 +353,11 @@ $</code></pre>
 			</svg>
 		</a>
 	</div>
-	<p>The IETF is doing work in the area of BGP path protection within the <a href="https://datatracker.ietf.org/wg/sidrops/about">Secure Inter-Domain Routing Operations Working Group</a> (sidrops) area. The charter of this IETF group is:</p>
+	<p>The IETF is doing work in the area of BGP path protection within the <a href="https://datatracker.ietf.org/wg/sidrops/about" target="_blank" rel="noopener noreferrer">Secure Inter-Domain Routing Operations Working Group</a> (sidrops) area. The charter of this IETF group is:</p>
 	<blockquote>
 		<p>The SIDR Operations Working Group (sidrops) develops guidelines for the operation of SIDR-aware networks, and provides operational guidance on how to deploy and operate SIDR technologies in existing and new networks.</p>
 	</blockquote>
-	<p>One new effort from this group should be called out to show how important the issue of route leaks like today’s event is. The draft document from Alexander Azimov et al named <a href="https://tools.ietf.org/html/draft-ietf-sidrops-aspa-profile-00">draft-ietf-sidrops-aspa-profile</a> (ASPA stands for Autonomous System Provider Authorization) extends the RPKI data structures to handle BGP path information. This in ongoing work and Cloudflare and other companies are clearly interested in seeing it progress further.</p>
+	<p>One new effort from this group should be called out to show how important the issue of route leaks like today’s event is. The draft document from Alexander Azimov et al named <a href="https://tools.ietf.org/html/draft-ietf-sidrops-aspa-profile-00" target="_blank" rel="noopener noreferrer">draft-ietf-sidrops-aspa-profile</a> (ASPA stands for Autonomous System Provider Authorization) extends the RPKI data structures to handle BGP path information. This in ongoing work and Cloudflare and other companies are clearly interested in seeing it progress further.</p>
 	<p>However, as we said in Monday’s blog and something we should reiterate again and again: Cloudflare encourages all network operators to <a href="https://blog.cloudflare.com/rpki-details">deploy RPKI</a> now!</p>
 	<div class="flex anchor relative">
 		<h3 id="acronyms-used-in-the-blog">Acronyms used in the blog</h3>
@@ -417,7 +417,7 @@ $</code></pre>
 			<p>UTC - Coordinated Universal Time - a time standard for clocks and time</p>
 		</li>
 		<li>
-			<p>"there be dragons" - a mistype, as it was meant to be "<a href="https://en.wikipedia.org/wiki/Here_be_dragons">here be dragons</a>" which means dangerous or unexplored territories</p>
+			<p>"there be dragons" - a mistype, as it was meant to be "<a href="https://en.wikipedia.org/wiki/Here_be_dragons" target="_blank" rel="noopener noreferrer">here be dragons</a>" which means dangerous or unexplored territories</p>
 		</li>
 	</ul>
 </div>

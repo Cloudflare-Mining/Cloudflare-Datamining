@@ -5,9 +5,9 @@
 		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/55s423iV6BrsVfI9TBlvCB/6ae9c29261fa9c929d422646d43429e6/image2-33.png" alt="Verify Apple devices with no installed software" class="kg-image" width="1800" height="1013" loading="lazy">
 
 	</figure>
-	<p>One of the foundations of <a href="https://www.cloudflare.com/learning/security/glossary/what-is-zero-trust">Zero Trust</a> is determining if a user’s device is “healthy” — that it has its operating system up-to-date with the latest security patches, that it’s not jailbroken, that it doesn’t have malware installed, and so on. Traditionally, determining this has required installing software directly onto a user’s device.</p>
+	<p>One of the foundations of <a href="https://www.cloudflare.com/learning/security/glossary/what-is-zero-trust" target="_blank" rel="noopener noreferrer">Zero Trust</a> is determining if a user’s device is “healthy” — that it has its operating system up-to-date with the latest security patches, that it’s not jailbroken, that it doesn’t have malware installed, and so on. Traditionally, determining this has required installing software directly onto a user’s device.</p>
 	<p>Earlier this month, Cloudflare participated in the announcement of <a href="https://blog.cloudflare.com/eliminating-captchas-on-iphones-and-macs-using-new-standard">an open source standard called a Private Access Token</a>. Device manufacturers who support the standard can now supply a Private Access Token with any request made by one of their devices. On the IT Administration side, Private Access Tokens means that security teams can verify a user’s device before they access a sensitive application — without the need to install any software or collect a user’s device data.</p>
-	<p>At WWDC 2022, Apple <a href="https://developer.apple.com/videos/play/wwdc2022/10077">announced</a> Private Access Tokens. Today, we’re announcing that Cloudflare Access will support verifying a Private Access Token. This means that security teams that rely on Cloudflare Access can verify a user’s Apple device before they access a sensitive application — no additional software required.</p>
+	<p>At WWDC 2022, Apple <a href="https://developer.apple.com/videos/play/wwdc2022/10077" target="_blank" rel="noopener noreferrer">announced</a> Private Access Tokens. Today, we’re announcing that Cloudflare Access will support verifying a Private Access Token. This means that security teams that rely on Cloudflare Access can verify a user’s Apple device before they access a sensitive application — no additional software required.</p>
 	<div class="flex anchor relative">
 		<h3 id="determining-a-healthy-device">Determining a “healthy” device</h3>
 		<a href="https://blog.cloudflare.com/#determining-a-healthy-device" aria-hidden="true" class="relative sm:absolute sm:-start-5">
@@ -26,7 +26,7 @@
 			</svg>
 		</a>
 	</div>
-	<p>Private Access Tokens leverage the <a href="https://www.ietf.org/archive/id/draft-ietf-privacypass-auth-scheme-01.html">Privacy Pass Protocol</a>, which Cloudflare authored with major device manufacturers, to attest to a device’s health and integrity.</p>
+	<p>Private Access Tokens leverage the <a href="https://www.ietf.org/archive/id/draft-ietf-privacypass-auth-scheme-01.html" target="_blank" rel="noopener noreferrer">Privacy Pass Protocol</a>, which Cloudflare authored with major device manufacturers, to attest to a device’s health and integrity.</p>
 	<p>In order for Private Access Tokens to work, four parties agree to work in concert with a common framework to generate and exchange anonymous, unforgeable tokens. Without all four parties in the process, PATs won’t work.</p>
 	<ol>
 		<li>
@@ -73,5 +73,5 @@
 		</li>
 	</ul>
 	<p>Over time, we are working with other device manufacturers to expand device support and what is verified as part of the device attestation process. The attributes that are attested will also continue to expand over time, which means the device verification in Access will only strengthen.</p>
-	<p>In the next few months, we will move Private Attestation Support in Cloudflare Access to a closed beta. The first version will work for iOS devices and support will expand from there. The only change required will be an updated Access policy, no software will need to be installed. If you would like to be part of the beta program, <a href="https://www.cloudflare.com/zero-trust/lp/private-attestation-tokens-access-waitlist">sign up here today</a>!</p>
+	<p>In the next few months, we will move Private Attestation Support in Cloudflare Access to a closed beta. The first version will work for iOS devices and support will expand from there. The only change required will be an updated Access policy, no software will need to be installed. If you would like to be part of the beta program, <a href="https://www.cloudflare.com/zero-trust/lp/private-attestation-tokens-access-waitlist" target="_blank" rel="noopener noreferrer">sign up here today</a>!</p>
 </div>

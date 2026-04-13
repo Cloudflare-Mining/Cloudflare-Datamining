@@ -5,7 +5,7 @@
 		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4orYvvMFXsOYqJH0tpL4Y7/b89e432069398acb30aeff8fd417d4c9/Magic-Transit-Heath-Checks.png" alt="" class="kg-image" width="1600" height="801" loading="lazy">
 
 	</figure>
-	<p><a href="https://www.cloudflare.com/magic-transit">Magic Transit</a> advertises our customer’s IP prefixes directly from our edge network, applying DDoS mitigation and firewall policies to all traffic destined for the customer’s network. After the traffic is scrubbed, we deliver clean traffic to the customer over <a href="https://www.cloudflare.com/learning/network-layer/what-is-gre-tunneling">GRE tunnels</a> (over the public Internet or <a href="https://www.cloudflare.com/network-interconnect">Cloudflare Network Interconnect</a>). But sometimes, we experience inclement weather on the Internet: network paths between Cloudflare and the customer can become unreliable or go down. Customers often configure multiple tunnels through different network paths and rely on Cloudflare to pick the best tunnel to use if, for example, some router on the Internet is having a stormy day and starts dropping traffic.</p>
+	<p><a href="https://www.cloudflare.com/magic-transit" target="_blank" rel="noopener noreferrer">Magic Transit</a> advertises our customer’s IP prefixes directly from our edge network, applying DDoS mitigation and firewall policies to all traffic destined for the customer’s network. After the traffic is scrubbed, we deliver clean traffic to the customer over <a href="https://www.cloudflare.com/learning/network-layer/what-is-gre-tunneling" target="_blank" rel="noopener noreferrer">GRE tunnels</a> (over the public Internet or <a href="https://www.cloudflare.com/network-interconnect" target="_blank" rel="noopener noreferrer">Cloudflare Network Interconnect</a>). But sometimes, we experience inclement weather on the Internet: network paths between Cloudflare and the customer can become unreliable or go down. Customers often configure multiple tunnels through different network paths and rely on Cloudflare to pick the best tunnel to use if, for example, some router on the Internet is having a stormy day and starts dropping traffic.</p>
 	<figure class="kg-card kg-image-card ">
 
 		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5oMkYeGKWm0pGXZ1j7418Q/edd502203a8124d601913fba908eecc6/Magic-Transit-Health-Checks-GRE-Tunnels-1.png" alt="" class="kg-image" width="1330" height="574" loading="lazy">
@@ -21,7 +21,7 @@
 			</svg>
 		</a>
 	</div>
-	<p>To decide where to send traffic, Cloudflare edge servers need to periodically send <a href="https://developers.cloudflare.com/magic-transit/about/health-checks">health checks</a> to each customer tunnel endpoint.</p>
+	<p>To decide where to send traffic, Cloudflare edge servers need to periodically send <a href="https://developers.cloudflare.com/magic-transit/about/health-checks" target="_blank" rel="noopener noreferrer">health checks</a> to each customer tunnel endpoint.</p>
 	<p>When Magic Transit was first launched, every server sent a health check to every tunnel once per minute. This naive, “shared-nothing” approach was simple to implement and served customers well, but would occasionally deliver less than optimal health check behavior in two specific ways.</p>
 	<div class="flex anchor relative">
 		<h3 id="way-1-inconsistent-weather-reports">Way #1: Inconsistent weather reports</h3>
@@ -54,7 +54,7 @@
 	<p>Clearly, we needed to hammer out some kinks. We wanted servers in the same location to come to the same conclusions about where to send traffic, and we wanted faster detection of issues without increasing the frequency of tunnel checks.</p>
 	<p>Health checks sent from servers in the same data center take the same route across the Internet. Why not share the results among them?</p>
 	<p>Instead of a single raindrop causing me to declare that it’s raining, I’d tell you about the raindrop I felt, and you’d tell me about the clear sky you’re looking at. Together, we come to the same conclusion: there isn’t enough rain to open an umbrella.</p>
-	<p>There is even a special networking protocol that allows us to easily share information between servers in the same private network. From the makers of <a href="https://www.cloudflare.com/learning/cdn/glossary/anycast-network">Unicast and Anycast</a>, now presenting: <i>Multicast</i>!</p>
+	<p>There is even a special networking protocol that allows us to easily share information between servers in the same private network. From the makers of <a href="https://www.cloudflare.com/learning/cdn/glossary/anycast-network" target="_blank" rel="noopener noreferrer">Unicast and Anycast</a>, now presenting: <i>Multicast</i>!</p>
 	<p>A single IP address does not necessarily represent a single machine in a network. The Internet Protocol specifies a way to send one message that gets delivered to a group of machines, like writing to an email list. Every machine has to opt into the group—we can’t just enroll people at random for our email list—but once a machine joins, it receives a copy of any message sent to the group’s address.</p>
 	<figure class="kg-card kg-image-card ">
 
@@ -74,7 +74,7 @@
 		</a>
 	</div>
 	<p>As an engineering intern on the Magic Transit team, my project this summer has been developing a third approach. Rather than having every server <i>infrequently</i> check the weather for <i>every</i> tunnel and shouting the <i>observation</i> to everyone else, now every server tunnel can <i>frequently</i> check the weather for <i>a few</i> tunnels. With this new approach, servers would then only tell the others about the overall weather report—not every individual measurement.</p>
-	<p>That scenario sounds more efficient, but we need to distribute the task of sending tunnel health checks across all the servers in a location so one server doesn’t get an overwhelming amount of work. So how can we assign tunnels to servers in a way that doesn’t require a centralized orchestrator or shared database? Enter <a href="https://www.toptal.com/big-data/consistent-hashing">consistent hashing</a>, the single coolest distributed computing concept I got to apply this summer.</p>
+	<p>That scenario sounds more efficient, but we need to distribute the task of sending tunnel health checks across all the servers in a location so one server doesn’t get an overwhelming amount of work. So how can we assign tunnels to servers in a way that doesn’t require a centralized orchestrator or shared database? Enter <a href="https://www.toptal.com/big-data/consistent-hashing" target="_blank" rel="noopener noreferrer">consistent hashing</a>, the single coolest distributed computing concept I got to apply this summer.</p>
 	<p>Every server sends a multicast “heartbeat” every few seconds. Then, by listening for multicast heartbeats, each server can construct a list of the IP addresses of peers known to be alive, including its own address, sorted by taking the hash of each address. Every server in a data center has the same list of peers in the same order.</p>
 	<p>When a server needs to decide which tunnels it is responsible for sending health checks to, the server simply hashes each tunnel to an integer and searches through the list of peer addresses to find the peer with the smallest hash greater than the tunnel’s hash, wrapping around to the first peer if no peer is found. The server is responsible for sending health checks to the tunnel when the assigned peer’s address equals the server’s address.</p>
 	<p>If a server stops sending messages for a long enough period of time, the server gets removed from the known peers list. As a consequence, the next time another server tries to hash a tunnel the removed peer was previously assigned, the tunnel simply gets reassigned to the next peer in the list.</p>
@@ -101,5 +101,5 @@
 
 	</figure>
 	<p>Reducing the number of multicast messages means that servers can now keep up with the Internet weather, even in the largest data centers. We’re now poised for the next stage of Magic Transit’s growth, just in time for our <a href="https://blog.cloudflare.com/magic-transit">two-year anniversary</a>.</p>
-	<p>If you want to help build the future of networking, <a href="https://www.cloudflare.com/careers">join our team</a>.</p>
+	<p>If you want to help build the future of networking, <a href="https://www.cloudflare.com/careers" target="_blank" rel="noopener noreferrer">join our team</a>.</p>
 </div>

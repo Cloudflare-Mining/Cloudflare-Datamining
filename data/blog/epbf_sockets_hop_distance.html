@@ -6,7 +6,7 @@
 		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1UrWjrMBPW4l3ipvThL0sn/1e78cd221cc63a5fb9964b3bd55cd11d/3845353725_7d7c624f34_z.jpg" alt="3845353725_7d7c624f34_z" class="kg-image" width="640" height="426" loading="lazy">
 
 	</figure>
-	<p><a href="https://creativecommons.org/licenses/by-sa/2.0">CC BY-SA 2.0</a> <a href="https://www.flickr.com/photos/paulmiller/3845353725">image</a> by <a href="https://www.flickr.com/photos/paulmiller">Paul Miller</a></p>
+	<p><a href="https://creativecommons.org/licenses/by-sa/2.0" target="_blank" rel="noopener noreferrer">CC BY-SA 2.0</a> <a href="https://www.flickr.com/photos/paulmiller/3845353725" target="_blank" rel="noopener noreferrer">image</a> by <a href="https://www.flickr.com/photos/paulmiller" target="_blank" rel="noopener noreferrer">Paul Miller</a></p>
 	<div class="flex anchor relative">
 		<h3 id="context">Context</h3>
 		<a href="https://blog.cloudflare.com/#context" aria-hidden="true" class="relative sm:absolute sm:-start-5">
@@ -80,9 +80,9 @@
 		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1qX4zkQCTMRtJsnaqzysvp/a95be0f638ee764a86591c9576671281/315128991_d49c312fbc_z.jpg" alt="315128991_d49c312fbc_z" class="kg-image" width="500" height="375" loading="lazy">
 
 	</figure>
-	<p><a href="https://creativecommons.org/licenses/by-sa/2.0">CC BY-SA 2.0</a> <a href="https://www.flickr.com/photos/leejordan/315128991">image</a> by <a href="https://www.flickr.com/photos/leejordan">Lee Jordan</a></p>
+	<p><a href="https://creativecommons.org/licenses/by-sa/2.0" target="_blank" rel="noopener noreferrer">CC BY-SA 2.0</a> <a href="https://www.flickr.com/photos/leejordan/315128991" target="_blank" rel="noopener noreferrer">image</a> by <a href="https://www.flickr.com/photos/leejordan" target="_blank" rel="noopener noreferrer">Lee Jordan</a></p>
 	<p>Wait, there is a third way!</p>
-	<p>You see, for quite some time it has been possible to attach a BPF filtering program to a socket. See <a href="http://man7.org/linux/man-pages/man7/socket.7.html"><code>socket(7)</code></a></p>
+	<p>You see, for quite some time it has been possible to attach a BPF filtering program to a socket. See <a href="http://man7.org/linux/man-pages/man7/socket.7.html" target="_blank" rel="noopener noreferrer"><code>socket(7)</code></a></p>
 	<pre class="language-bash"><code class="language-bash">SO_ATTACH_FILTER (since Linux 2.2), SO_ATTACH_BPF (since Linux 3.19)
     Attach a classic BPF (SO_ATTACH_FILTER) or an extended BPF
     (SO_ATTACH_BPF) program to the socket for use as a filter of
@@ -113,7 +113,7 @@
 			<p>eBPF maps</p>
 		</li>
 		<li>
-			<p><a href="https://man7.org/linux/man-pages/man2/bpf.2.html"><code>bpf()</code> syscall</a></p>
+			<p><a href="https://man7.org/linux/man-pages/man2/bpf.2.html" target="_blank" rel="noopener noreferrer"><code>bpf()</code> syscall</a></p>
 		</li>
 		<li>
 			<p>SO_ATTACH_BPF socket option</p>
@@ -135,9 +135,9 @@
 			</svg>
 		</a>
 	</div>
-	<p>To use eBPF we need a number of things set up. First, we need to create an "eBPF map". There <a href="https://elixir.bootlin.com/linux/v4.15.13/source/include/uapi/linux/bpf.h#L99">are many specialized map types</a>, but for our purposes let's use the "hash" BPF_MAP_TYPE_HASH type.</p>
+	<p>To use eBPF we need a number of things set up. First, we need to create an "eBPF map". There <a href="https://elixir.bootlin.com/linux/v4.15.13/source/include/uapi/linux/bpf.h#L99" target="_blank" rel="noopener noreferrer">are many specialized map types</a>, but for our purposes let's use the "hash" BPF_MAP_TYPE_HASH type.</p>
 	<p>We need to figure out the <i>"bpf(BPF_MAP_CREATE, map type, key size, value size, limit, flags)"</i> parameters. For our small TTL program, let's set 4 bytes for key size, and 8 byte value size. The max element limit is set to 5. It doesn't matter, we expect all the packets in one connection to have just one coherent TTL value anyway.</p>
-	<p>This is how it would look in a <a href="https://github.com/cloudflare/cloudflare-blog/blob/master/2018-03-ebpf/ebpf.go#L57">Golang code</a>:</p>
+	<p>This is how it would look in a <a href="https://github.com/cloudflare/cloudflare-blog/blob/master/2018-03-ebpf/ebpf.go#L57" target="_blank" rel="noopener noreferrer">Golang code</a>:</p>
 	<pre class="language-bash"><code class="language-bash">bpfMapFd, err := ebpf.NewMap(ebpf.Hash, 4, 8, 5, 0)</code></pre>
 	<p>A word of warning is needed here. BPF maps use the "locked memory" resource. With multiple BPF programs and maps, it's easy to exhaust the default tiny 64 KiB limit. Consider bumping this with <code>ulimit -l</code>, for example:</p>
 	<pre class="language-bash"><code class="language-bash">ulimit -l 10240</code></pre>
@@ -158,7 +158,7 @@
 	</ul>
 	<p>More on this later.</p>
 	<p>With the map created, we need to create a BPF program. As opposed to classical BPF - where the bytecode was a parameter to SO_ATTACH_FILTER - the bytecode is now loaded by the <code>bpf()</code> syscall. Specifically: <code>bpf(BPF_PROG_LOAD)</code>.</p>
-	<p>In our <a href="https://github.com/cloudflare/cloudflare-blog/blob/master/2018-03-ebpf/ebpf.go#L78-L131">Golang program the eBPF program setup</a> looks like:</p>
+	<p>In our <a href="https://github.com/cloudflare/cloudflare-blog/blob/master/2018-03-ebpf/ebpf.go#L78-L131" target="_blank" rel="noopener noreferrer">Golang program the eBPF program setup</a> looks like:</p>
 	<pre class="language-bash"><code class="language-bash">ebpfInss := ebpf.Instructions{
 	ebpf.BPFIDstOffSrc(ebpf.LdXW, ebpf.Reg0, ebpf.Reg1, 16),
 	ebpf.BPFIDstOffImm(ebpf.JEqImm, ebpf.Reg0, 3, int32(htons(ETH_P_IPV6))),
@@ -183,7 +183,7 @@ bpfProgram, err := ebpf.NewProgram(ebpf.SocketFilter, &amp;ebpfInss, "GPL", 0)</
 	<p>Before we go further we should highlight couple of things about the eBPF environment. The official kernel documentation isn't too friendly:</p>
 	<ul>
 		<li>
-			<p><a href="https://www.kernel.org/doc/Documentation/networking/filter.txt">Documentation/networking/filter.txt</a></p>
+			<p><a href="https://www.kernel.org/doc/Documentation/networking/filter.txt" target="_blank" rel="noopener noreferrer">Documentation/networking/filter.txt</a></p>
 		</li>
 	</ul>
 	<p>The first important bit to know, is the calling convention:</p>
@@ -201,7 +201,7 @@ bpfProgram, err := ebpf.NewProgram(ebpf.SocketFilter, &amp;ebpfInss, "GPL", 0)</
 			<p>R10 - read-only frame pointer to access stack</p>
 		</li>
 	</ul>
-	<p>When the BPF is started, R1 contains a pointer to <code>ctx</code>. This data structure <a href="https://elixir.bootlin.com/linux/latest/source/include/uapi/linux/bpf.h#L799">is defined as <code>struct __sk_buff</code></a>. For example, to access the <code>protocol</code> field you'd need to run:</p>
+	<p>When the BPF is started, R1 contains a pointer to <code>ctx</code>. This data structure <a href="https://elixir.bootlin.com/linux/latest/source/include/uapi/linux/bpf.h#L799" target="_blank" rel="noopener noreferrer">is defined as <code>struct __sk_buff</code></a>. For example, to access the <code>protocol</code> field you'd need to run:</p>
 	<pre class="language-bash"><code class="language-bash">r0 = *(u32 *)(r1 + 16)</code></pre>
 	<p>Or in other words:</p>
 	<pre class="language-bash"><code class="language-bash">ebpf.BPFIDstOffSrc(ebpf.LdXW, ebpf.Reg0, ebpf.Reg1, 16),</code></pre>
@@ -241,7 +241,7 @@ BPF_IND | BPF_LD instructions.</code></pre>
 		</a>
 	</div>
 	<p>Next note the load offset - we loaded the <code>-0x100000+7</code> byte of the packet. This magic offset is another BPF context curiosity. It turns out that the BPF script loaded under SO_ATTACH_BPF on a SOCK_STREAM (or SOCK_DGRAM) socket, will only see Layer 4 and higher OSI layers by default. To extract the TTL we need access to the layer 3 header (i.e. the IP header). To access L3 in the L4 context, we must offset the data lookups by magical -0x100000.</p>
-	<p>This magic constant <a href="https://github.com/torvalds/linux/blob/ead751507de86d90fa250431e9990a8b881f713c/include/uapi/linux/filter.h#L84">is defined in the kernel</a>.</p>
+	<p>This magic constant <a href="https://github.com/torvalds/linux/blob/ead751507de86d90fa250431e9990a8b881f713c/include/uapi/linux/filter.h#L84" target="_blank" rel="noopener noreferrer">is defined in the kernel</a>.</p>
 	<p>For completeness, the <code>+7</code> is, of course, the offset of the TTL field in an IPv4 packet. Our small BPF program also supports IPv6 where the TTL/Hop Count is at offset <code>+8</code>.</p>
 	<div class="flex anchor relative">
 		<h3 id="return-value">Return value</h3>
@@ -294,19 +294,19 @@ for {
 	<p>Now with all the pieces ready we can make it a proper runnable program. There is little point in discussing it here, so allow me to refer to the source code. The BPF pieces are here:</p>
 	<ul>
 		<li>
-			<p><a href="https://github.com/cloudflare/cloudflare-blog/blob/master/2018-03-ebpf/ebpf.go">ebpf.go</a></p>
+			<p><a href="https://github.com/cloudflare/cloudflare-blog/blob/master/2018-03-ebpf/ebpf.go" target="_blank" rel="noopener noreferrer">ebpf.go</a></p>
 		</li>
 	</ul>
 	<p>We haven't discussed how to catch inbound SYN+ACK in the BPF program. This is a matter of setting up BPF before calling <code>connect()</code>. Sadly, it's impossible to customize <code>net.Dial</code> in Golang. Instead we wrote a surprisingly painful and awful custom Dial implementation. The ugly custom dialer code is here:</p>
 	<ul>
 		<li>
-			<p><a href="https://github.com/cloudflare/cloudflare-blog/blob/master/2018-03-ebpf/magic_conn.go">magic_conn.go</a></p>
+			<p><a href="https://github.com/cloudflare/cloudflare-blog/blob/master/2018-03-ebpf/magic_conn.go" target="_blank" rel="noopener noreferrer">magic_conn.go</a></p>
 		</li>
 	</ul>
 	<p>To run all this you need kernel 4.4+ Kernel with the <code>bpf()</code> syscall compiled in. BPF features of specific kernels are documented in this superb page from BCC:</p>
 	<ul>
 		<li>
-			<p><a href="https://github.com/iovisor/bcc/blob/master/docs/kernel-versions.md">docs/kernel-versions.md</a></p>
+			<p><a href="https://github.com/iovisor/bcc/blob/master/docs/kernel-versions.md" target="_blank" rel="noopener noreferrer">docs/kernel-versions.md</a></p>
 		</li>
 	</ul>
 	<p>Run the code to observe the TTL Hop Counts:</p>
@@ -327,14 +327,14 @@ for {
 	</div>
 	<p>In this blog post we dived into the new eBPF machinery, including the <code>bpf()</code> syscall, maps and SO_ATTACH_BPF. This work allowed me to realize the potential of running SO_ATTACH_BPF on fully established TCP sockets. Undoubtedly, eBPF still requires plenty of love and documentation, but it seems to be a perfect bridge to expose low level toggles to userspace applications.</p>
 	<p>I highly recommend keeping the dependencies small. For small BPF programs, like the one shown, there is little need for complex clang compilation and ELF loading. Don't be afraid of the eBPF bytecode!</p>
-	<p>We only touched on SO_ATTACH_BPF, where we analyzed network packets with BPF running on network sockets. There is more! First, you can attach BPFs to a dozen "things", XDP being the most obvious example. <a href="https://elixir.bootlin.com/linux/latest/source/include/uapi/linux/bpf.h#L119">Full list</a>. Then, it's possible to actually affect kernel packet processing, here is a <a href="https://elixir.bootlin.com/linux/latest/source/include/uapi/linux/bpf.h#L318">full list of helper functions</a>, some of which can modify kernel data structures.</p>
-	<p>In February <a href="https://lwn.net/Articles/747551">LWN jokingly wrote</a>:</p>
+	<p>We only touched on SO_ATTACH_BPF, where we analyzed network packets with BPF running on network sockets. There is more! First, you can attach BPFs to a dozen "things", XDP being the most obvious example. <a href="https://elixir.bootlin.com/linux/latest/source/include/uapi/linux/bpf.h#L119" target="_blank" rel="noopener noreferrer">Full list</a>. Then, it's possible to actually affect kernel packet processing, here is a <a href="https://elixir.bootlin.com/linux/latest/source/include/uapi/linux/bpf.h#L318" target="_blank" rel="noopener noreferrer">full list of helper functions</a>, some of which can modify kernel data structures.</p>
+	<p>In February <a href="https://lwn.net/Articles/747551" target="_blank" rel="noopener noreferrer">LWN jokingly wrote</a>:</p>
 	<pre class="language-bash"><code class="language-bash">Developers should be careful, though; this could
 prove to be a slippery slope leading toward something 
 that starts to look like a microkernel architecture.</code></pre>
-	<p>There is a grain of truth here. Maybe the ability to run eBPF on variety of subsystems feels like microkernel coding, but definitely the SO_ATTACH_BPF smells like <a href="https://en.wikipedia.org/wiki/STREAMS">STREAMS</a> programming model <a href="https://cseweb.ucsd.edu/classes/fa01/cse221/papers/ritchie-stream-io-belllabs84.pdf">from 1984</a>.</p>
+	<p>There is a grain of truth here. Maybe the ability to run eBPF on variety of subsystems feels like microkernel coding, but definitely the SO_ATTACH_BPF smells like <a href="https://en.wikipedia.org/wiki/STREAMS" target="_blank" rel="noopener noreferrer">STREAMS</a> programming model <a href="https://cseweb.ucsd.edu/classes/fa01/cse221/papers/ritchie-stream-io-belllabs84.pdf" target="_blank" rel="noopener noreferrer">from 1984</a>.</p>
 	<hr>
-	<p>Thanks to <a href="https://twitter.com/akajibi">Gilberto Bertin</a> and <a href="https://twitter.com/dwragg">David Wragg</a> for helping out with the eBPF bytecode.</p>
+	<p>Thanks to <a href="https://twitter.com/akajibi" target="_blank" rel="noopener noreferrer">Gilberto Bertin</a> and <a href="https://twitter.com/dwragg" target="_blank" rel="noopener noreferrer">David Wragg</a> for helping out with the eBPF bytecode.</p>
 	<hr>
-	<p><i>Doing eBPF work sound interesting? Join our </i><a href="https://boards.greenhouse.io/cloudflare/jobs/589572"><i>world famous team</i></a><i> in London, Austin, San Francisco, Champaign and our elite office in Warsaw, Poland</i>.</p>
+	<p><i>Doing eBPF work sound interesting? Join our </i><a href="https://boards.greenhouse.io/cloudflare/jobs/589572" target="_blank" rel="noopener noreferrer"><i>world famous team</i></a><i> in London, Austin, San Francisco, Champaign and our elite office in Warsaw, Poland</i>.</p>
 </div>

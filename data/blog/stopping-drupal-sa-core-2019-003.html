@@ -1,6 +1,6 @@
 <div class="mb2 gray5">3 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6nNINh3XsTGMn2l5jdzrb7/86b37ec5cecc43359c2d4ecf47f32a4e/stopping-drupal-sa-core-2019-003.png" alt="">
 <div class="post-content lh-copy gray1">
-	<p>On the 20th February 2019, Drupal <a href="https://www.drupal.org/psa-2019-02-19">announced</a> that they had discovered a severe vulnerability and that they would be releasing a patch for it the next day. Drupal is a Content Management System used by many of our customers, which made it important that our WAF protect against the vulnerability as quickly as possible.</p>
+	<p>On the 20th February 2019, Drupal <a href="https://www.drupal.org/psa-2019-02-19" target="_blank" rel="noopener noreferrer">announced</a> that they had discovered a severe vulnerability and that they would be releasing a patch for it the next day. Drupal is a Content Management System used by many of our customers, which made it important that our WAF protect against the vulnerability as quickly as possible.</p>
 	<p>As soon as Drupal released their patch, we analysed it to establish what kind of payloads could be used against it and created rules to mitigate these. By analysing the patch we were able to put together WAF rules to protect cloudflare customers running Drupal.</p>
 	<p>We identified the type of vulnerability we were dealing within 15 minutes. From here, we were able to deploy rules to block the exploit well before any real attacks were seen.</p>
 	<div class="flex anchor relative">
@@ -11,20 +11,20 @@
 			</svg>
 		</a>
 	</div>
-	<p>As Drupal's <a href="https://www.drupal.org/sa-core-2019-003">release announcement</a> explains, a site is affected if:</p>
+	<p>As Drupal's <a href="https://www.drupal.org/sa-core-2019-003" target="_blank" rel="noopener noreferrer">release announcement</a> explains, a site is affected if:</p>
 	<ul>
 		<li>
 			<p>It has the Drupal 8 RESTful API enabled &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</p>
 		</li>
 		<li>
-			<p>Or it uses <a href="https://www.drupal.org/sa-contrib-2019-020">one</a> of the <a href="https://www.drupal.org/security/contrib">8 modules</a> found to be affected</p>
+			<p>Or it uses <a href="https://www.drupal.org/sa-contrib-2019-020" target="_blank" rel="noopener noreferrer">one</a> of the <a href="https://www.drupal.org/security/contrib" target="_blank" rel="noopener noreferrer">8 modules</a> found to be affected</p>
 		</li>
 	</ul>
-	<p>From looking at the <a href="https://github.com/drupal/drupal/commit/9b3e441c2c6d98da402fcc8cab1e921ab8286936">patch</a> we very quickly realised the exploit would be based on deserialization. The option <code>['allowed_classes' =&gt; FALSE]</code> was added as part of the patch to the <a href="https://github.com/drupal/drupal/commit/9b3e441c2c6d98da402fcc8cab1e921ab8286936#diff-9077dc961778b7c8d9c47882c4248e42L67">link</a> and <a href="https://github.com/drupal/drupal/commit/9b3e441c2c6d98da402fcc8cab1e921ab8286936#diff-d200adc66611cf78e65f2a3258144c49L194">map</a> field types. This indicates that while these items are supposed to receive some serialized PHP, there was no legitimate case for supplying a serialized PHP object.</p>
+	<p>From looking at the <a href="https://github.com/drupal/drupal/commit/9b3e441c2c6d98da402fcc8cab1e921ab8286936" target="_blank" rel="noopener noreferrer">patch</a> we very quickly realised the exploit would be based on deserialization. The option <code>['allowed_classes' =&gt; FALSE]</code> was added as part of the patch to the <a href="https://github.com/drupal/drupal/commit/9b3e441c2c6d98da402fcc8cab1e921ab8286936#diff-9077dc961778b7c8d9c47882c4248e42L67" target="_blank" rel="noopener noreferrer">link</a> and <a href="https://github.com/drupal/drupal/commit/9b3e441c2c6d98da402fcc8cab1e921ab8286936#diff-d200adc66611cf78e65f2a3258144c49L194" target="_blank" rel="noopener noreferrer">map</a> field types. This indicates that while these items are supposed to receive some serialized PHP, there was no legitimate case for supplying a serialized PHP object.</p>
 	<p>This is important because the easiest way to exploit a deserialization vulnerability in PHP is to supply a serialized Object that is crafted to execute code when deserialized.</p>
 	<p>Making the situation worse was the fact that the deserialization was performed regardless of any authentication.</p>
-	<p>We also realised that this meant blindly blocking all serialized PHP would break their intended functionality, as clearly these fields are supposed to receive specific kinds of serialized PHP, for example arrays or strings. Although as the PHP documentation <a href="https://secure.php.net/manual/en/function.unserialize.php">notes</a>, it’s always a risky thing to deserialize untrusted data, even when restricting the set of data that’s excepted.</p>
-	<p>This blog <a href="https://www.ambionics.io/blog/drupal8-rce">post from Ambionics</a> does a good job at explaining what a concrete exploitation of the vulnerability looks like, when applied to the Drupal 8 RESTful API.</p>
+	<p>We also realised that this meant blindly blocking all serialized PHP would break their intended functionality, as clearly these fields are supposed to receive specific kinds of serialized PHP, for example arrays or strings. Although as the PHP documentation <a href="https://secure.php.net/manual/en/function.unserialize.php" target="_blank" rel="noopener noreferrer">notes</a>, it’s always a risky thing to deserialize untrusted data, even when restricting the set of data that’s excepted.</p>
+	<p>This blog <a href="https://www.ambionics.io/blog/drupal8-rce" target="_blank" rel="noopener noreferrer">post from Ambionics</a> does a good job at explaining what a concrete exploitation of the vulnerability looks like, when applied to the Drupal 8 RESTful API.</p>
 	<div class="flex anchor relative">
 		<h3 id="what-we-caught">What we caught</h3>
 		<a href="https://blog.cloudflare.com/#what-we-caught" aria-hidden="true" class="relative sm:absolute sm:-start-5">
@@ -41,7 +41,7 @@
 
 	</figure>
 	<p>Figure 1: Hits on rule D0020, with the first attack seen on the 22th February 2019.</p>
-	<p>These first attacks leveraged the “guzzle/rce1” gadget from phpggc to invoke the linux command “id” via PHP’s “system” function, exactly as <a href="https://www.ambionics.io/blog/drupal8-rce">ambionics</a> did.</p>
+	<p>These first attacks leveraged the “guzzle/rce1” gadget from phpggc to invoke the linux command “id” via PHP’s “system” function, exactly as <a href="https://www.ambionics.io/blog/drupal8-rce" target="_blank" rel="noopener noreferrer">ambionics</a> did.</p>
 	<pre class="language-bash"><code class="language-bash">'O:24:"GuzzleHttp\Psr7\FnStream":2:{s:33:"GuzzleHttp\Psr7\FnStreammethods";a:1:{s:5:"close";a:2:{i:0;O:23:"GuzzleHttp\HandlerStack":3:{s:32:"GuzzleHttp\HandlerStackhandler";s:2:"id";s:30:"GuzzleHttp\HandlerStackstack";a:1:{i:0;a:1:{i:0;s:6:"system";}}s:31:"GuzzleHttp\HandlerStackcached";b:0;}i:1;s:7:"resolve";}}s:9:"_fn_close";a:2:{i:0;r:4;i:1;s:7:"resolve";}}''</code></pre>
 	<p>After this we saw several more attempts to use this gadget for executing various payloads, mostly to test whether targeted servers were vulnerable. Things like ‘phpinfo’, echoing strings and performing calculations.</p>
 	<p>The first malicious payload we saw used the same gadget, but this time to save a malicious payload from pastebin onto the user’s server.</p>

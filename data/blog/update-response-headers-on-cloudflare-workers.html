@@ -1,7 +1,7 @@
 <div class="mb2 gray5">2 min read</div><img class="mr2" src="https:undefined" alt="">
 <div class="post-content lh-copy gray1">
-	<p><i>The following is a guest post by </i><a href="https://www.linkedin.com/in/jayaprabhakar"><i>Jayaprabhakar Kadarkarai</i></a><i>, Developer of </i><a href="https://www.codiva.io"><i>Codiva.io</i></a><i>, an Online IDE used by computer science students across the world. He works full stack to deliver low latency and scalable web applications.</i></p>
-	<p>Have you launched your website? Getting a lot of traffic? And you are planning to add more servers? You’ll need load balancing to maintain the scalability and reliability of your website. Cloudflare offers powerful <a href="https://www.cloudflare.com/load-balancing">Load Balancing</a>, but there are situations where off-the-shelf options can’t satisfy your specific needs. For those situations, you can write your own Cloudflare Worker.</p>
+	<p><i>The following is a guest post by </i><a href="https://www.linkedin.com/in/jayaprabhakar" target="_blank" rel="noopener noreferrer"><i>Jayaprabhakar Kadarkarai</i></a><i>, Developer of </i><a href="https://www.codiva.io" target="_blank" rel="noopener noreferrer"><i>Codiva.io</i></a><i>, an Online IDE used by computer science students across the world. He works full stack to deliver low latency and scalable web applications.</i></p>
+	<p>Have you launched your website? Getting a lot of traffic? And you are planning to add more servers? You’ll need load balancing to maintain the scalability and reliability of your website. Cloudflare offers powerful <a href="https://www.cloudflare.com/load-balancing" target="_blank" rel="noopener noreferrer">Load Balancing</a>, but there are situations where off-the-shelf options can’t satisfy your specific needs. For those situations, you can write your own Cloudflare Worker.</p>
 	<p>In this post, we’ll learn about load balancers and how to set them up at a low cost with Cloudflare Service Workers.</p>
 	<p>This post assumes you have a basic understanding of JavaScript, as that’s the language used to write a Cloudflare Worker.</p>
 	<div class="flex anchor relative">
@@ -12,7 +12,7 @@
 			</svg>
 		</a>
 	</div>
-	<p>The basic pattern starts with adding ‘fetch’ event listener to intercept the requests. You can configure which requests to intercept on the Cloudflare dashboard or using the <a href="https://developers.cloudflare.com/workers/api/#create-a-route">Cloudflare API</a>.</p>
+	<p>The basic pattern starts with adding ‘fetch’ event listener to intercept the requests. You can configure which requests to intercept on the Cloudflare dashboard or using the <a href="https://developers.cloudflare.com/workers/api/#create-a-route" target="_blank" rel="noopener noreferrer">Cloudflare API</a>.</p>
 	<p>Then, modify the hostname of the URL and send the request to the new host.</p>
 	<pre class="language-javascript"><code class="language-javascript">addEventListener('fetch', event =&gt; {
   var url = new URL(event.request.url);
@@ -97,7 +97,7 @@ function getRandomInt(max) {
 			</svg>
 		</a>
 	</div>
-	<p>Cloudflare adds <a href="https://support.cloudflare.com/hc/en-us/articles/200168236-What-does-Cloudflare-IP-Geolocation-do-">CF-IPCountry</a> header to all requests once Cloudflare IP Geolocation is enabled.</p>
+	<p>Cloudflare adds <a href="https://support.cloudflare.com/hc/en-us/articles/200168236-What-does-Cloudflare-IP-Geolocation-do-" target="_blank" rel="noopener noreferrer">CF-IPCountry</a> header to all requests once Cloudflare IP Geolocation is enabled.</p>
 	<p>You can access it using:</p>
 	<pre class="language-javascript"><code class="language-javascript">var countryCode = event.request.headers.get(‘CF-IPCountry’);</code></pre>
 	<p>We can use the countryCode to route requests from different locations to different servers in different regions.</p>
@@ -200,6 +200,6 @@ function getRandomInt(max) {
 			</svg>
 		</a>
 	</div>
-	<p>In this article, you saw the power of Cloudflare workers and how simple it is to use it. Before implementing custom load balancer with workers, take a look at <a href="https://www.cloudflare.com/load-balancing">Cloudflare’s load balancer</a>.</p>
-	<p>For more examples, take a look at the <a href="https://developers.cloudflare.com/workers/recipes">recipes</a> on the developer docs page.</p>
+	<p>In this article, you saw the power of Cloudflare workers and how simple it is to use it. Before implementing custom load balancer with workers, take a look at <a href="https://www.cloudflare.com/load-balancing" target="_blank" rel="noopener noreferrer">Cloudflare’s load balancer</a>.</p>
+	<p>For more examples, take a look at the <a href="https://developers.cloudflare.com/workers/recipes" target="_blank" rel="noopener noreferrer">recipes</a> on the developer docs page.</p>
 </div>

@@ -1,6 +1,6 @@
 <div class="mb2 gray5">7 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1yA1TgNlIUZwtZ4bIL39EJ/0bfc765dae00213eca7e48a337c8178e/image1.png" alt="">
 <div class="post-content lh-copy gray1">
-	<p>So the story begins with a pair programming session I had with my colleague, which I desperately needed because my node skill tree is still at level 1, and I needed to get started with React because I'll be working on our internal <a href="https://github.com/backstage/backstage"><u>backstage</u></a> instance.</p>
+	<p>So the story begins with a pair programming session I had with my colleague, which I desperately needed because my node skill tree is still at level 1, and I needed to get started with React because I'll be working on our internal <a href="https://github.com/backstage/backstage" target="_blank" rel="noopener noreferrer"><u>backstage</u></a> instance.</p>
 	<p>We worked together on a small feature, tested it locally, and it worked. Great. Now it's time to make My Very First React Commit. So I ran the usual <code>git add</code> and <code>git commit</code>, which hooked into <code>yarn test</code>, to automatically run unit tests for backstage, and that's when <i>everything got derailed</i>. For all the React tutorials I have followed, I have never actually run a <code>yarn test</code> on <i>my machine</i>. And the first time I tried yarn test, it hung, and after a long time, the command eventually failed:</p>
 	<pre class="language-Rust"><code class="language-Rust">Determining test suites to run...
 
@@ -47,7 +47,7 @@ PASS   @cloudflare/backstage-entities  plugins/backstage-entities/src/AccessLink
 
 thrown: [Error]</code></pre>
 	<p>Re-running it or matching different tests will give slightly different run logs, but they always end with the same error.</p>
-	<p>By now, I've figured out that yarn test is actually backed by <a href="https://jestjs.io"><u>Jest, a JavaScript testing framework</u></a>, so my next strategy is simply trying different Jest flags to see what sticks, but invariably, none do:</p>
+	<p>By now, I've figured out that yarn test is actually backed by <a href="https://jestjs.io" target="_blank" rel="noopener noreferrer"><u>Jest, a JavaScript testing framework</u></a>, so my next strategy is simply trying different Jest flags to see what sticks, but invariably, none do:</p>
 	<pre class="language-Rust"><code class="language-Rust">2025-03-19 15:16  time yarn test --detectOpenHandles plugins
 2025-03-19 15:18  time yarn test --runInBand .
 2025-03-19 15:19  time yarn test --detectLeaks .
@@ -111,13 +111,13 @@ yarn test  2.05s user 0.71s system 10% cpu 27.094 total
 			<p>his system (MacOS) is not affected at all versus mine (Linux)</p>
 		</li>
 		<li>
-			<p><a href="https://github.com/nvm-sh/nvm?tab=readme-ov-file#intro"><u>nvm use v20</u></a> didn't fix it</p>
+			<p><a href="https://github.com/nvm-sh/nvm?tab=readme-ov-file#intro" target="_blank" rel="noopener noreferrer"><u>nvm use v20</u></a> didn't fix it</p>
 		</li>
 		<li>
-			<p>I can reproduce it on a clean clone of <a href="https://github.com/backstage/backstage"><u>github.com/backstage/backstage</u></a>. The tests seem to progress further, about 50+ seconds. This lends credence to a running theory that the filesystem crawler/watcher is the one crashing, and backstage/backstage is a bigger repo than the internal Cloudflare instance, so it takes longer.</p>
+			<p>I can reproduce it on a clean clone of <a href="https://github.com/backstage/backstage" target="_blank" rel="noopener noreferrer"><u>github.com/backstage/backstage</u></a>. The tests seem to progress further, about 50+ seconds. This lends credence to a running theory that the filesystem crawler/watcher is the one crashing, and backstage/backstage is a bigger repo than the internal Cloudflare instance, so it takes longer.</p>
 		</li>
 	</ul>
-	<p>I next went <i>on a little detour</i> to grab another colleague who I know has been working on a <a href="https://nextjs.org"><u>Next.js</u></a> project. He's one of the few other people nearby who knows anything about <a href="https://nodejs.org/en"><u>Node.js</u></a>. In my experience with troubleshooting it’s helpful to get multiple perspectives, so we can cover each other’s blind spots and avoid tunnel vision.</p>
+	<p>I next went <i>on a little detour</i> to grab another colleague who I know has been working on a <a href="https://nextjs.org" target="_blank" rel="noopener noreferrer"><u>Next.js</u></a> project. He's one of the few other people nearby who knows anything about <a href="https://nodejs.org/en" target="_blank" rel="noopener noreferrer"><u>Node.js</u></a>. In my experience with troubleshooting it’s helpful to get multiple perspectives, so we can cover each other’s blind spots and avoid tunnel vision.</p>
 	<p>I then tried invoking many yarn tests in parallel, and I did manage to get the crash time to stretch out to 28 or 29 seconds if the system was under heavy load. So this tells me that it might not be a hard timeout but rather processing driven. A series of sleeps <i>chugging along</i> perhaps?</p>
 	<p>By now, there is a veritable crowd of curious onlookers gathered in front of my terminal marveling at the consistent 27 seconds crash and trading theories. At some point, someone asked if I had tried rebooting yet, and I had to sheepishly reply that I haven't but "I'm absolutely sure it wouldn't help whatsoever".</p>
 	<p>And the astute reader can already guess that rebooting did nothing at all, or else this wouldn't even be a story worth telling. Besides, haven't I teased in the clickbaity title about some crazy Steam Locomotive from 1993?</p>
@@ -129,7 +129,7 @@ yarn test  2.05s user 0.71s system 10% cpu 27.094 total
 			</svg>
 		</a>
 	</div>
-	<p>My colleague then put us <i>back on track</i> and suggested <a href="https://strace.io"><u>strace</u></a>, and I decided to trace the simpler case of the idling menu (rather than trace running tests, which generated far more syscalls).</p>
+	<p>My colleague then put us <i>back on track</i> and suggested <a href="https://strace.io" target="_blank" rel="noopener noreferrer"><u>strace</u></a>, and I decided to trace the simpler case of the idling menu (rather than trace running tests, which generated far more syscalls).</p>
 	<pre class="language-Rust"><code class="language-Rust">Watch Usage
  › Press a to run all tests.
  › Press f to run only failed tests.
@@ -173,7 +173,7 @@ madvise(0x34ecad880000, 1495040, MADV_DONTFORK) = 0
 munmap(0x34ecad9ae000, 258048)      	= 0
 mprotect(0x34ecad880000, 1236992, PROT_READ|PROT_WRITE) = 0</code></pre>
 	<p>I don't know about you, but sometimes I look at straces and wonder “Do people actually read this gibberish?” Fortunately, in the modern generative AI era, we can count on GPT-4o to gently chide: the process was interrupted <code>EINTR</code> by its child <code>SIGCHLD</code>, which means you forgot about the children, silly human. Is the problem with <i>one of the cars rather than the engine</i>?</p>
-	<p>Following this <i>train of thought</i>, I now re-ran with <code>strace --follow-forks</code>, which revealed a giant flurry of activity that promptly overflowed my terminal buffer. The investigation is really <i>gaining steam</i> now. The original trace weighs in at a hefty 500,000 lines, but here is a smaller equivalent version derived from a clean instance of backstage: <a href="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3IX3GEpe1WPllLf4tJBw5l/9a6c00a3eb06693d545ca49834ded987/trace.log.gz"><u>trace.log.gz</u></a>. I have uploaded this trace here because the by-now overhyped Steam Locomotive is finally making its grand appearance<b> </b>and I know there'll be people who'd love nothing more than to crawl through a haystack of system calls looking for a train-sized needle. Consider yourself lucky, I had to do it without even knowing what I was looking for, much less that it was a whole Steam Locomotive.</p>
+	<p>Following this <i>train of thought</i>, I now re-ran with <code>strace --follow-forks</code>, which revealed a giant flurry of activity that promptly overflowed my terminal buffer. The investigation is really <i>gaining steam</i> now. The original trace weighs in at a hefty 500,000 lines, but here is a smaller equivalent version derived from a clean instance of backstage: <a href="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3IX3GEpe1WPllLf4tJBw5l/9a6c00a3eb06693d545ca49834ded987/trace.log.gz" target="_blank" rel="noopener noreferrer"><u>trace.log.gz</u></a>. I have uploaded this trace here because the by-now overhyped Steam Locomotive is finally making its grand appearance<b> </b>and I know there'll be people who'd love nothing more than to crawl through a haystack of system calls looking for a train-sized needle. Consider yourself lucky, I had to do it without even knowing what I was looking for, much less that it was a whole Steam Locomotive.</p>
 	<hr>
 	<p>This section is left intentionally blank to allow locomotive enthusiasts who want to find the train on their own to do so first.</p>
 	<hr>
@@ -205,7 +205,7 @@ execve("/home/yew/.nvm/versions/node/v18.20.6/bin/node", ["node", "/home/yew/.nv
       1 yarn
       1 backstage-cli</code></pre>
 	<p>Have you spotted the <b>S</b>team <b>L</b>ocomotive yet? I spotted it immediately because this is My Own System and Surely This Means I Am Perfectly Aware Of Everything That Is Installed Unlike, er, <code>node_modules</code>.</p>
-	<p><code>sl</code>&nbsp; is actually a<a href="https://github.com/mtoyoda/sl"> <u>fun little joke program from 1993</u></a> that plays on users' tendencies to make a typo on <a href="https://man7.org/linux/man-pages/man1/ls.1.html"><code><u>ls</u></code></a>. When <code>sl</code>&nbsp; runs, it clears your terminal to make way for an animated steam locomotive to come chugging through.</p>
+	<p><code>sl</code>&nbsp; is actually a<a href="https://github.com/mtoyoda/sl" target="_blank" rel="noopener noreferrer"> <u>fun little joke program from 1993</u></a> that plays on users' tendencies to make a typo on <a href="https://man7.org/linux/man-pages/man1/ls.1.html" target="_blank" rel="noopener noreferrer"><code><u>ls</u></code></a>. When <code>sl</code>&nbsp; runs, it clears your terminal to make way for an animated steam locomotive to come chugging through.</p>
 	<pre class="language-Rust"><code class="language-Rust">                        (  ) (@@) ( )  (@)  ()	@@	O 	@ 	O 	@  	O
                    (@@@)
                (	)
@@ -225,7 +225,7 @@ __/ =| o |=-~~\  /~~\  /~~\  /~~\ ____Y___________|__|__________________________
 	<div style="position: relative; padding-top: 68.6046511627907%;">
 		<iframe src="https://customer-eq7kiuol0tk9chox.cloudflarestream.com/4d5cf36262674071cbb0c7520d569666/iframe?preload=true&amp;loop=true&amp;autoplay=true&amp;poster=https%3A%2F%2Fcustomer-eq7kiuol0tk9chox.cloudflarestream.com%2F4d5cf36262674071cbb0c7520d569666%2Fthumbnails%2Fthumbnail.jpg%3Ftime%3D%26height%3D600" loading="lazy" style="border: none; position: absolute; top: 0; left: 0; height: 100%; width: 100%;" allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;" allowfullscreen="true"></iframe>
 	</div>
-	<p>When I first saw that Jest was running <code>sl</code> so many times, my first thought was to ask my colleague if <code>sl</code> is a valid command on his Mac, and of course it is not. After all, which serious engineer would stuff their machine full of silly commands like <code>sl</code>, <a href="https://r-wos.org/hacks/gti"><code><u>gti</u></code></a>, <a href="https://en.wikipedia.org/wiki/Cowsay"><code><u>cowsay</u></code></a>, or <a href="https://linuxcommandlibrary.com/man/toilet"><code><u>toilet</u></code></a> ? The next thing I tried was to rename <code>sl</code> to something else, and sure enough all my problems disappeared: <code>yarn test</code> started working perfectly.</p>
+	<p>When I first saw that Jest was running <code>sl</code> so many times, my first thought was to ask my colleague if <code>sl</code> is a valid command on his Mac, and of course it is not. After all, which serious engineer would stuff their machine full of silly commands like <code>sl</code>, <a href="https://r-wos.org/hacks/gti" target="_blank" rel="noopener noreferrer"><code><u>gti</u></code></a>, <a href="https://en.wikipedia.org/wiki/Cowsay" target="_blank" rel="noopener noreferrer"><code><u>cowsay</u></code></a>, or <a href="https://linuxcommandlibrary.com/man/toilet" target="_blank" rel="noopener noreferrer"><code><u>toilet</u></code></a> ? The next thing I tried was to rename <code>sl</code> to something else, and sure enough all my problems disappeared: <code>yarn test</code> started working perfectly.</p>
 	<div class="flex anchor relative">
 		<h2 id="so-what-does-jest-have-to-do-with-steam-locomotives">So what does Jest have to do with Steam Locomotives?</h2>
 		<a href="https://blog.cloudflare.com/#so-what-does-jest-have-to-do-with-steam-locomotives" aria-hidden="true" class="relative sm:absolute sm:-start-5">
@@ -234,11 +234,11 @@ __/ =| o |=-~~\  /~~\  /~~\  /~~\ ____Y___________|__|__________________________
 			</svg>
 		</a>
 	</div>
-	<p><a href="https://github.com/jestjs/jest/issues/14046"><u>Nothing, that's what</u></a>. The whole affair is an unfortunate naming clash between <code>sl</code> the Steam Locomotive and <code>sl</code> the<a href="https://github.com/facebook/sapling?tab=readme-ov-file#sapling-cli"> <u>Sapling CLI</u></a>. Jest wanted <code>sl</code> the source control system, but ended up getting steam-rolled by <code>sl </code>the Steam Locomotive.</p>
+	<p><a href="https://github.com/jestjs/jest/issues/14046" target="_blank" rel="noopener noreferrer"><u>Nothing, that's what</u></a>. The whole affair is an unfortunate naming clash between <code>sl</code> the Steam Locomotive and <code>sl</code> the<a href="https://github.com/facebook/sapling?tab=readme-ov-file#sapling-cli" target="_blank" rel="noopener noreferrer"> <u>Sapling CLI</u></a>. Jest wanted <code>sl</code> the source control system, but ended up getting steam-rolled by <code>sl </code>the Steam Locomotive.</p>
 	<figure class="kg-card kg-image-card">
 		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6BDDm4dEbvMuVyn1J5reqf/ac7f914b3b23608941c84a6cd7aadbb1/image3.png" alt="" class="kg-image" width="877" height="1028" loading="lazy">
 	</figure>
-	<p>Fortunately the devs took it in good humor, and<a href="https://github.com/jestjs/jest/pull/15053"> <u>made a (still unreleased) fix</u></a>. Check out the train memes!</p>
+	<p>Fortunately the devs took it in good humor, and<a href="https://github.com/jestjs/jest/pull/15053" target="_blank" rel="noopener noreferrer"> <u>made a (still unreleased) fix</u></a>. Check out the train memes!</p>
 	<figure class="kg-card kg-image-card">
 		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/n8MrPDXuVMuze7UEkxCie/5d187401c8bb12d8e3e0ef89d03b87f3/image4.png" alt="" class="kg-image" width="962" height="523" loading="lazy">
 	</figure>
@@ -307,7 +307,7 @@ aster] t
 put cols
         
 8</code></pre>
-	<p>Alas, the terminal width doesn't affect jest at all. Jest calls<a href="https://github.com/jestjs/jest/pull/13941/files#diff-4c649a2515ae8d1dc1ed6ebccbe3b43e54e5d7217cb011df616dcf471a80319cR59"> <code><u>sl via execa</u></code></a> so let's mock that up locally:</p>
+	<p>Alas, the terminal width doesn't affect jest at all. Jest calls<a href="https://github.com/jestjs/jest/pull/13941/files#diff-4c649a2515ae8d1dc1ed6ebccbe3b43e54e5d7217cb011df616dcf471a80319cR59" target="_blank" rel="noopener noreferrer"> <code><u>sl via execa</u></code></a> so let's mock that up locally:</p>
 	<pre class="language-Rust"><code class="language-Rust">🌈  choochoo  cat runSl.mjs 
 import {execa} from 'execa';
 const { stdout } = await execa('tput', ['cols']);
@@ -316,7 +316,7 @@ await execa('sl', ['root']);
 🌈  choochoo  time node runSl.mjs
 terminal colwidth: 80
 node runSl.mjs  0.21s user 0.06s system 4% cpu 6.730 total</code></pre>
-	<p>So <code>execa</code> uses the default terminal width of 80, which takes the train 6.7 seconds to cross. And 27 seconds divided by 6.7 is awfully close to 4. So is Jest running <code>sl</code> 4 times? Let's do a poor man's <a href="https://github.com/bpftrace/bpftrace"><u>bpftrace</u></a> by hooking into <code>sl</code> like so:</p>
+	<p>So <code>execa</code> uses the default terminal width of 80, which takes the train 6.7 seconds to cross. And 27 seconds divided by 6.7 is awfully close to 4. So is Jest running <code>sl</code> 4 times? Let's do a poor man's <a href="https://github.com/bpftrace/bpftrace" target="_blank" rel="noopener noreferrer"><u>bpftrace</u></a> by hooking into <code>sl</code> like so:</p>
 	<pre class="language-Rust"><code class="language-Rust">#!/bin/bash
 
 uniqid=$RANDOM
@@ -398,7 +398,7 @@ echo "$(date --utc +"%Y-%m-%d %H:%M:%S.%N") $uniqid ended" &gt;&gt; /home/yew/ex
 			</svg>
 		</a>
 	</div>
-	<p>Let's go back to the very start of our journey. The original <code>[Error]</code> thrown was actually<a href="https://github.com/jestjs/jest/pull/13941/files#diff-4c649a2515ae8d1dc1ed6ebccbe3b43e54e5d7217cb011df616dcf471a80319cR48"> <u>from here</u></a> and after modifying <code>node_modules/jest-changed-files/index.js</code>, I found that the error is <code>shortMessage: 'Command failed with ENAMETOOLONG: sl status...</code>'&nbsp; and the reason why became clear when I interrogated Jest about what it thinks the repos are.</p>
+	<p>Let's go back to the very start of our journey. The original <code>[Error]</code> thrown was actually<a href="https://github.com/jestjs/jest/pull/13941/files#diff-4c649a2515ae8d1dc1ed6ebccbe3b43e54e5d7217cb011df616dcf471a80319cR48" target="_blank" rel="noopener noreferrer"> <u>from here</u></a> and after modifying <code>node_modules/jest-changed-files/index.js</code>, I found that the error is <code>shortMessage: 'Command failed with ENAMETOOLONG: sl status...</code>'&nbsp; and the reason why became clear when I interrogated Jest about what it thinks the repos are.</p>
 	<p>While the git repo is what you'd expect, the sl "repo" looks amazingly like a <i>train wreck in motion</i>:</p>
 	<pre class="language-Rust"><code class="language-Rust">got repos.git as Set(1) { '/home/yew/cloudflare/repos/backstage' }
 got repos.sl as Set(1) {
@@ -441,5 +441,5 @@ got repos.sl as Set(1) {
 		</a>
 	</div>
 	<p>Thank you to my colleagues Mengnan Gong and Shuhao Zhang, whose ideas and perspectives helped narrow down the root causes of this mystery.</p>
-	<p>If you enjoy troubleshooting weird and tricky production issues, <a href="https://www.cloudflare.com/en-gb/careers/jobs/?department=Engineering"><i><u>our engineering teams are hiring</u></i></a><i>.</i></p>
+	<p>If you enjoy troubleshooting weird and tricky production issues, <a href="https://www.cloudflare.com/en-gb/careers/jobs/?department=Engineering" target="_blank" rel="noopener noreferrer"><i><u>our engineering teams are hiring</u></i></a><i>.</i></p>
 </div>

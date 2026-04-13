@@ -1,18 +1,18 @@
 <div class="mb2 gray5">7 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5TtMV3hldWCtQP7KSwaJc5/9b0dc3c1aea1a5706aeb2a344cd43d83/introducing-cname-flattening-rfc-compliant-cnames-at-a-domains-root.png" alt="">
 <div class="post-content lh-copy gray1">
 	<p></p>
-	<p>This post is about a new feature we've been quietly rolling out over the last few months. Last week we began enabling it for everyone by default. It's called CNAME Flattening and it's a bit geeky, but very useful and important if you’re using cloud-based services and you hate having a “www” subdomain. The gist is: you can now safely use a <a href="https://www.cloudflare.com/learning/dns/dns-records/dns-cname-record">CNAME record</a>, as opposed to an A record that points to a fixed IP address, as your root record in <a href="https://www.cloudflare.com/dns">CloudFlare DNS</a> without triggering a number of edge case error conditions because you’re violating the DNS spec. Geeky, I know, so before asking you to wade through why this is cool, here are some of our customers singing the feature’s praises:</p>
+	<p>This post is about a new feature we've been quietly rolling out over the last few months. Last week we began enabling it for everyone by default. It's called CNAME Flattening and it's a bit geeky, but very useful and important if you’re using cloud-based services and you hate having a “www” subdomain. The gist is: you can now safely use a <a href="https://www.cloudflare.com/learning/dns/dns-records/dns-cname-record" target="_blank" rel="noopener noreferrer">CNAME record</a>, as opposed to an A record that points to a fixed IP address, as your root record in <a href="https://www.cloudflare.com/dns" target="_blank" rel="noopener noreferrer">CloudFlare DNS</a> without triggering a number of edge case error conditions because you’re violating the DNS spec. Geeky, I know, so before asking you to wade through why this is cool, here are some of our customers singing the feature’s praises:</p>
 	<figure class="kg-card kg-image-card ">
 
 		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4x4R3Clrwx8HW49RxMbLTT/ed811ca71d906fec3763bd0b8d707151/image_1.jpg" alt="" class="kg-image" width="640" height="515" loading="lazy">
 
 	</figure>
 	<p><i>"CloudFlare's CNAME Flattening feature enabled us to easily front our Amazon Elastic Load Balancer (ELB) with CloudFlare's DDoS and WAF protection."</i></p>
-	<p>Gregory S. Woodward, Ph.D., CTO,<a href="https://www.nasdaqprivatemarket.com">NASDAQ Private Market</a></p>
+	<p>Gregory S. Woodward, Ph.D., CTO,<a href="https://www.nasdaqprivatemarket.com" target="_blank" rel="noopener noreferrer">NASDAQ Private Market</a></p>
 	<p><i>"This was a hard problem that needed solving. Leave it to the team at CloudFlare to come up with a great solution that will act as a gateway to a virtually unlimited number of other cloud services."</i></p>
-	<p>Alex Polvi, CEO, <a href="https://coreos.com">CoreOS</a></p>
+	<p>Alex Polvi, CEO, <a href="https://coreos.com" target="_blank" rel="noopener noreferrer">CoreOS</a></p>
 	<p><i>"CNAME Flattening allowed us to use a root domain while still maintaining DNS fault-tolerance across multiple IP addresses."</i></p>
-	<p>Andrew Warner, Director of Engineering, <a href="http://genius.com">RapGenius</a></p>
+	<p>Andrew Warner, Director of Engineering, <a href="http://genius.com" target="_blank" rel="noopener noreferrer">RapGenius</a></p>
 	<p>Intrigued? Read on to understand the technical details of exactly what it is and why we needed to build it.</p>
 	<div class="flex anchor relative">
 		<h3 id="the-inflexibility-of-dns">The Inflexibility of DNS</h3>
@@ -34,7 +34,7 @@
 	</div>
 	<p>The solution is a CNAME. A CNAME is an alias. It allows one domain to point to another domain which, eventually if you follow the CNAME chain, will resolve to an A record and IP address. If WordPlumblr had handed out a unique CNAME for every customer then they wouldn't have had a problem. For example, WordPlumblr might have assigned the CNAME 6equj5.wordplumblr.com for Foo.com. Foo.com and the other customers may have all initially resolved, at the end of the CNAME chain, to the same IP address. However, when Foo.com started using too many resources WordPlumblr could have updated the CNAME and isolated Foo.com from the rest of the customers.</p>
 	<p>If you're familiar with programming, this is just like the idea of a pointer. When you're programming in C, in order to allow flexibility in memory management, you usually don't want to address memory directly but, instead, you set up a pointer to a block of memory where you're going to store something. If the operating system needs to move the memory around then it just updates the pointer to point to wherever the chunk of memory has been moved to. The program references the pointer and is none the wiser.</p>
-	<p>CNAMEs work great for subdomains like <a href="http://www.foo.com">www.foo.com</a> or blog.foo.com. Unfortunately, they don't work for a naked domain like foo.com itself. And, for reasons that somewhat perplex me, a lot of people are obsessed with using their naked domain for their website. So why don't CNAMEs work at the root?</p>
+	<p>CNAMEs work great for subdomains like <a href="http://www.foo.com" target="_blank" rel="noopener noreferrer">www.foo.com</a> or blog.foo.com. Unfortunately, they don't work for a naked domain like foo.com itself. And, for reasons that somewhat perplex me, a lot of people are obsessed with using their naked domain for their website. So why don't CNAMEs work at the root?</p>
 	<div class="flex anchor relative">
 		<h3 id="no-root-for-you">No Root For You</h3>
 		<a href="https://blog.cloudflare.com/#no-root-for-you" aria-hidden="true" class="relative sm:absolute sm:-start-5">
@@ -49,7 +49,7 @@
 		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1p32DFkA1vxgdSk98cna0Y/8ec5aee8525f6beaf3b59748f2ba706b/image_2.png" alt="" class="kg-image" width="400" height="366" loading="lazy">
 
 	</figure>
-	<p>The problem stems from the fact that the <a href="http://www.ietf.org/rfc/rfc1035.txt">DNS specification</a> dates from 1987. At the time, no one conceived of website -- it was two years before Tim Berners-Lee’s seminal paper first laying out the idea for the world wide web -- let alone modern outsourced cloud services like Amazon Web Services (AWS) or Heroku. As a result, the DNS spec enshrined that the root record -- the naked domain without any subdomain -- could not be a CNAME. Technically, the root could be a CNAME but the RFCs state that once a record has a CNAME it can't have any other entries associated with it: that's a problem for a root record like example.com because it will often have an MX record (so email gets delivered), an NS record (to find out which nameserver handles the zone) and an SOA record.</p>
+	<p>The problem stems from the fact that the <a href="http://www.ietf.org/rfc/rfc1035.txt" target="_blank" rel="noopener noreferrer">DNS specification</a> dates from 1987. At the time, no one conceived of website -- it was two years before Tim Berners-Lee’s seminal paper first laying out the idea for the world wide web -- let alone modern outsourced cloud services like Amazon Web Services (AWS) or Heroku. As a result, the DNS spec enshrined that the root record -- the naked domain without any subdomain -- could not be a CNAME. Technically, the root could be a CNAME but the RFCs state that once a record has a CNAME it can't have any other entries associated with it: that's a problem for a root record like example.com because it will often have an MX record (so email gets delivered), an NS record (to find out which nameserver handles the zone) and an SOA record.</p>
 	<p>Because they follow this specification, most authoritative DNS servers won't allow you to include CNAME records at the root. At CloudFlare, <a href="https://blog.cloudflare.com/zone-apex-naked-domain-root-domain-cname-supp">we decided to let our users include a CNAME at the root</a> even though we knew it violated the DNS specification. And that worked, most of the time. Unfortunately, there were a handful of edge cases that caused all sorts of problems.</p>
 	<div class="flex anchor relative">
 		<h3 id="break-the-rfc-at-your-own-peril">Break the RFC at Your Own Peril</h3>
@@ -90,26 +90,26 @@
 		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6Fth2oAHolLRMvFmj7nEJJ/c42c4ca186f16c4db36a0c30d8480879/image_4.png" alt="" class="kg-image" width="300" height="249" loading="lazy">
 
 	</figure>
-	<p>While we're defaulting this on just for root records, we've begun experimenting with turning CNAME Flattening on more broadly. We've begun to flatten all the CNAMEs that CloudFlare uses internally. For example, if you signed up via a <a href="https://www.cloudflare.com/cloudflare-partners-self-serve-program-open-beta">hosting partner</a> then you may have gotten a CNAME that included in the CNAME chain something like cf-ssl2463-protected-<a href="http://www.cloudflare.com.cdn.cloudflare.net">www.cloudflare.com.cdn.cloudflare.net</a>. That is increasingly going away and will now resolve directly from your domain to an IP address. This makes DNS resolution a bit faster and also better obscures the fact that you're using CloudFlare.</p>
-	<p>As of last week, CNAME Flattening is on by default. To take advantage of it, just <a href="https://dash.cloudflare.com/?to=%2F%3Aaccount%2F%3Azone%2Fdns">add a CNAME to your root record</a>. The new feature is included for free for everyone using CloudFlare's DNS. If you've been looking for a way to make your root record work on a hosted service like AWS, Heroku, or that hot new blogging platform WordPlumblr, look no further.</p>
+	<p>While we're defaulting this on just for root records, we've begun experimenting with turning CNAME Flattening on more broadly. We've begun to flatten all the CNAMEs that CloudFlare uses internally. For example, if you signed up via a <a href="https://www.cloudflare.com/cloudflare-partners-self-serve-program-open-beta" target="_blank" rel="noopener noreferrer">hosting partner</a> then you may have gotten a CNAME that included in the CNAME chain something like cf-ssl2463-protected-<a href="http://www.cloudflare.com.cdn.cloudflare.net" target="_blank" rel="noopener noreferrer">www.cloudflare.com.cdn.cloudflare.net</a>. That is increasingly going away and will now resolve directly from your domain to an IP address. This makes DNS resolution a bit faster and also better obscures the fact that you're using CloudFlare.</p>
+	<p>As of last week, CNAME Flattening is on by default. To take advantage of it, just <a href="https://dash.cloudflare.com/?to=%2F%3Aaccount%2F%3Azone%2Fdns" target="_blank" rel="noopener noreferrer">add a CNAME to your root record</a>. The new feature is included for free for everyone using CloudFlare's DNS. If you've been looking for a way to make your root record work on a hosted service like AWS, Heroku, or that hot new blogging platform WordPlumblr, look no further.</p>
 	<p>And, if you still need some convincing, here are some more quotes from happy beta testers:</p>
 	<p><i>"CNAME flattening solved email resolution errors for us which was very key. It also enables us to point our app hosted on skyprepapp.com to Amazon ELB and resolve emails there too."</i></p>
 	<ul>
 		<li>
-			<p>Arash Barkhodaee, Co-Founder and CTO, <a href="https://skyprep.com">SkyPrep.com</a></p>
+			<p>Arash Barkhodaee, Co-Founder and CTO, <a href="https://skyprep.com" target="_blank" rel="noopener noreferrer">SkyPrep.com</a></p>
 		</li>
 	</ul>
 	<p><i>"We chose to drop the www in our domain name around 6 years ago. Whilst I understand there are plenty of technical reasons to not use these APEX domains in URLs, in reality I don't like the idea of technical issues preventing us doing what we think is right. Our customers are internet savvy, and the www legacy is quite simply not needed anymore. So we dropped it and have used Amazon's Route 53 to date to balance our econsultancy.com traffic to our load balancers. When we moved across to CloudFlare, we had no intention to lose the Apex domain, but without CNAME flattening I do not believe this would have been possible. So this feature is very welcome and eased the migration to CloudFlare."</i></p>
 	<ul>
 		<li>
-			<p>Matthew O'Riordan, CTO, <a href="https://econsultancy.com">eConsultancy.com</a></p>
+			<p>Matthew O'Riordan, CTO, <a href="https://econsultancy.com" target="_blank" rel="noopener noreferrer">eConsultancy.com</a></p>
 		</li>
 	</ul>
 	<p><i>"CloudFlare's CNAME flattening solved a specific issue we saw with email resolution on our domain. When we first configured our DNS records for Junction we took advantage of a CloudFlare feature to set a CNAME record for our zone apex. This helped us resolve our root -- jct.com -- to an AWS ELB which routed traffic to our webservers and handled SSL termination. This worked well for resolving our http traffic, but we saw some issues with sending domains on older infrastructure that couldn't pick up our MX records correctly (we specifically saw this from senders on older versions of Microsoft SMTP Server). We worked with CloudFlare to isolate the problem and transition our domain to use their CNAME flattening solution. This effectively translates our CNAME to A records and keeps the IP addresses in sync with what is associated with our load balancer. All previous email problems have been resolved since we made the switch three months ago. A huge thanks to the CloudFlare team for getting a solution in place so quickly and an incredible level of support throughout the process."</i></p>
 	<ul>
 		<li>
-			<p>Dennis Coldwell, Head of Platform, <a href="https://jct.com">Junction Investments</a></p>
+			<p>Dennis Coldwell, Head of Platform, <a href="https://jct.com" target="_blank" rel="noopener noreferrer">Junction Investments</a></p>
 		</li>
 	</ul>
-	<p>Not using Cloudflare yet? <a href="https://dash.cloudflare.com/sign-up">Sign up free</a> or choose one of our feature rich <a href="https://www.cloudflare.com/plans/#overview">paid plans</a>.</p>
+	<p>Not using Cloudflare yet? <a href="https://dash.cloudflare.com/sign-up" target="_blank" rel="noopener noreferrer">Sign up free</a> or choose one of our feature rich <a href="https://www.cloudflare.com/plans/#overview" target="_blank" rel="noopener noreferrer">paid plans</a>.</p>
 </div>

@@ -1,7 +1,7 @@
 <div class="mb2 gray5">5 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6DQflfop4UxXW8sBxjEuOE/22d733aff4b24c59e70b694fe834ae1e/introducing-strict-ssl-protecting-against-a-man-in-the-middle-attack-on-origin-traffic.png" alt="">
 <div class="post-content lh-copy gray1">
 	<p></p>
-	<p><b>Update:</b> Cloudflare now issues <a href="https://www.cloudflare.com/application-services/products/ssl">free certificates for the origin</a>.</p>
+	<p><b>Update:</b> Cloudflare now issues <a href="https://www.cloudflare.com/application-services/products/ssl" target="_blank" rel="noopener noreferrer">free certificates for the origin</a>.</p>
 	<hr>
 	<p>At CloudFlare, we are always looking for ways to improve the security of our customers’ websites. One of the features we provide is the ability to serve their website encrypted over SSL/TLS. Today we are announcing a new feature to help make encryption on the web safer and more secure: Full SSL (Strict). With strict mode, CloudFlare does additional validation of the identity of the origin server in order to prevent active snooping and modification of your traffic on the Internet backbone. This feature is available today for all paying customers so current and new customers can take advantage of the added security immediately.</p>
 	<div class="flex anchor relative">
@@ -50,7 +50,7 @@
 
 	</figure>
 	<p>One type of attack that could trigger a browser warning is a on-path attack. In this attack, an attacker places himself in between a visitor and a web site, impersonating both. With this attack, the browser thinks it is talking to the server on an encrypted channel, and the server thinks it is talking to the browser, but they are both talking to the attacker who is sitting in the middle. All traffic passes through this attacker, who is able to read and modify any of the data.</p>
-	<p>The certificate authority system is designed to stop the on-path attacks. In TLS, the server uses the private key associated with their certificate to establish a valid connection. The server keeps the key secret, so the attacker can’t use the site’s real certificate; they have to use one of their own. The attacker has to either convince a certificate authority to sign their certificate, or just use it, as is. An attacker trying to use a certificate that is not validated by a known trusted CA will be caught immediately by modern browsers. However, not all internet connected services are as <a href="http://www2.dcsec.uni-hannover.de/files/android/p50-fahl.pdf">diligent about checking certificates</a>.</p>
+	<p>The certificate authority system is designed to stop the on-path attacks. In TLS, the server uses the private key associated with their certificate to establish a valid connection. The server keeps the key secret, so the attacker can’t use the site’s real certificate; they have to use one of their own. The attacker has to either convince a certificate authority to sign their certificate, or just use it, as is. An attacker trying to use a certificate that is not validated by a known trusted CA will be caught immediately by modern browsers. However, not all internet connected services are as <a href="http://www2.dcsec.uni-hannover.de/files/android/p50-fahl.pdf" target="_blank" rel="noopener noreferrer">diligent about checking certificates</a>.</p>
 	<div class="flex anchor relative">
 		<h3 id="two-segments-of-the-internet">Two Segments of the Internet</h3>
 		<a href="https://blog.cloudflare.com/#two-segments-of-the-internet" aria-hidden="true" class="relative sm:absolute sm:-start-5">
@@ -66,7 +66,7 @@
 		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/79aEj1Yu8IqIJgz7s1eewW/e2570dd82845e63c6035f2b578a1eef6/illustration-no-ssl.png" alt="Internet" class="kg-image" width="645" height="340" loading="lazy">
 
 	</figure>
-	<p>The communication on the back-end is harder to spy on, since most server-to-server data flows through the Internet backbone. The coffee shop snooper can’t read or modify the information flowing through transatlantic pipelines, but large telecommunications and nation-state level attackers can still potentially intercept this data. This is what <a href="https://www.techdirt.com/articles/20130910/10470024468/flying-pig-nsa-is-running-man-middle-attacks-imitating-googles-servers.shtml">Operation FLYING PIG</a> is said to be doing.</p>
+	<p>The communication on the back-end is harder to spy on, since most server-to-server data flows through the Internet backbone. The coffee shop snooper can’t read or modify the information flowing through transatlantic pipelines, but large telecommunications and nation-state level attackers can still potentially intercept this data. This is what <a href="https://www.techdirt.com/articles/20130910/10470024468/flying-pig-nsa-is-running-man-middle-attacks-imitating-googles-servers.shtml" target="_blank" rel="noopener noreferrer">Operation FLYING PIG</a> is said to be doing.</p>
 	<figure class="kg-card kg-image-card ">
 
 		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/suz0TAvIimakV95KT3FMj/2491400cf2414c7fa69dbf8962185a53/image08_1.png" alt="FLYING PIG" class="kg-image" width="368" height="323" loading="lazy">
@@ -87,7 +87,7 @@
 			</svg>
 		</a>
 	</div>
-	<p>Until today, CloudFlare offered three options for SSL/TLS for site operators: <a href="https://support.cloudflare.com/hc/en-us/articles/200170416-What-do-the-SSL-options-Off-Flexible-Full-Full-Strict-mean-">Off, Flexible and Full</a>. They are available in the site’s control panel under “CloudFlare Settings” and in the Page Rules section for a given zone.</p>
+	<p>Until today, CloudFlare offered three options for SSL/TLS for site operators: <a href="https://support.cloudflare.com/hc/en-us/articles/200170416-What-do-the-SSL-options-Off-Flexible-Full-Full-Strict-mean-" target="_blank" rel="noopener noreferrer">Off, Flexible and Full</a>. They are available in the site’s control panel under “CloudFlare Settings” and in the Page Rules section for a given zone.</p>
 	<p>We are now introducing a new option: Full SSL (Strict). There are now three different modes for enabling SSL: Flexible SSL, Full SSL, and Full SSL (Strict). Below is a description of what the different options mean.</p>
 	<div class="flex anchor relative">
 		<h4 id="flexible-ssl-front-end-over-tls-back-end-unencrypted">Flexible SSL - front-end over TLS, back-end unencrypted</h4>
@@ -128,7 +128,7 @@
 			</svg>
 		</a>
 	</div>
-	<p>In strict mode, CloudFlare validates the certificate chain on the back-end using its own list of trusted certificate authorities. Customers can enable this globally for their site, or they can have different settings for different subdomains, using Page Rules. CloudFlare’s list is more exclusive than the ones used by the popular browsers. By trusting a smaller and more exclusive list of certificate authorities, we protect our customers against MitM attacks using certificates signed by <a href="http://arstechnica.com/security/2011/09/comodo-hacker-i-hacked-diginotar-too-other-cas-breached">rogue or compromised certificate authorities</a>. We are automatically upgrading customers from Full SSL to Full SSL (Strict) if we determine that their origin server has a valid certificate installed.</p>
+	<p>In strict mode, CloudFlare validates the certificate chain on the back-end using its own list of trusted certificate authorities. Customers can enable this globally for their site, or they can have different settings for different subdomains, using Page Rules. CloudFlare’s list is more exclusive than the ones used by the popular browsers. By trusting a smaller and more exclusive list of certificate authorities, we protect our customers against MitM attacks using certificates signed by <a href="http://arstechnica.com/security/2011/09/comodo-hacker-i-hacked-diginotar-too-other-cas-breached" target="_blank" rel="noopener noreferrer">rogue or compromised certificate authorities</a>. We are automatically upgrading customers from Full SSL to Full SSL (Strict) if we determine that their origin server has a valid certificate installed.</p>
 	<figure class="kg-card kg-image-card ">
 
 		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3X9sJZmVW7ThiJXLOMlK2k/bb9252efdb4c7a27a2579979bcb1e9b2/illustration-strict-ssl.png" alt="Full SSL (Strict)" class="kg-image" width="645" height="440" loading="lazy">
@@ -143,6 +143,6 @@
 			</svg>
 		</a>
 	</div>
-	<p>One of the core technologies CloudFlare uses for TLS connections is the open source web server/reverse proxy called <a href="http://nginx.org">nginx</a>. The current public version of nginx does not have the ability to validate a certificate when talking to an origin server. In the spirit of open source and making the web a safer place, we have upstreamed our changes to nginx that <a href="http://mailman.nginx.org/pipermail/nginx-devel/2014-February/004967.html">enable origin certificate validation</a>. We also added support for SNI (Server Name Identification) to allow nginx to speak to <a href="http://mailman.nginx.org/pipermail/nginx-devel/2014-February/004966.html">multiple domains behind the same IP over TLS</a>.</p>
+	<p>One of the core technologies CloudFlare uses for TLS connections is the open source web server/reverse proxy called <a href="http://nginx.org" target="_blank" rel="noopener noreferrer">nginx</a>. The current public version of nginx does not have the ability to validate a certificate when talking to an origin server. In the spirit of open source and making the web a safer place, we have upstreamed our changes to nginx that <a href="http://mailman.nginx.org/pipermail/nginx-devel/2014-February/004967.html" target="_blank" rel="noopener noreferrer">enable origin certificate validation</a>. We also added support for SNI (Server Name Identification) to allow nginx to speak to <a href="http://mailman.nginx.org/pipermail/nginx-devel/2014-February/004966.html" target="_blank" rel="noopener noreferrer">multiple domains behind the same IP over TLS</a>.</p>
 	<p>Threats on the Internet are changing and evolving constantly. We hope this option lets web site operators and web site visitors sleep easier knowing that their data is protected in transit, even against highly motivated and capable attackers.</p>
 </div>

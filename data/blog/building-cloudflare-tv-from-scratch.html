@@ -29,7 +29,7 @@
 	<p>Building a lot of the technology behind Cloudflare TV from scratch was not part of the plan, especially given our aggressive timeline. So why did we decide to pursue it? After evaluating multiple live streaming solutions, we reached the following conclusion:</p>
 	<ul>
 		<li>
-			<p>24x7 linear streaming is not something that is a priority for most video streaming platforms. This makes sense: the rise of <a href="https://www.cloudflare.com/developer-platform/solutions/video-on-demand">video-on-demand</a> and event-based live streaming has come at the expense of linear streaming.</p>
+			<p>24x7 linear streaming is not something that is a priority for most video streaming platforms. This makes sense: the rise of <a href="https://www.cloudflare.com/developer-platform/solutions/video-on-demand" target="_blank" rel="noopener noreferrer">video-on-demand</a> and event-based live streaming has come at the expense of linear streaming.</p>
 		</li>
 		<li>
 			<p>Most broadcasting platforms have their own guest apps which must be downloaded and set up in advance. This introduces unnecessary friction compared to clicking a link in the calendar invite to join a video call.</p>
@@ -82,7 +82,7 @@ rtmp {
     }
 }
 </code></pre>
-	<p>Once we had NGINX set up to ingest RTMP and HLS, we followed Zoom’s instructions on <a href="https://support.zoom.us/hc/en-us/articles/360028478292-Streaming-a-Meeting-or-Webinar-on-YouTube-Live">Custom Live Streaming</a>. And soon enough, we had a basic prototype of live streaming Zoom calls using the Cloudflare network!</p>
+	<p>Once we had NGINX set up to ingest RTMP and HLS, we followed Zoom’s instructions on <a href="https://support.zoom.us/hc/en-us/articles/360028478292-Streaming-a-Meeting-or-Webinar-on-YouTube-Live" target="_blank" rel="noopener noreferrer">Custom Live Streaming</a>. And soon enough, we had a basic prototype of live streaming Zoom calls using the Cloudflare network!</p>
 	<div class="flex anchor relative">
 		<h3 id="transitions-without-interruption">Transitions without interruption</h3>
 		<a href="https://blog.cloudflare.com/#transitions-without-interruption" aria-hidden="true" class="relative sm:absolute sm:-start-5">
@@ -123,7 +123,7 @@ rtmp {
 		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/32SC1qaxTOiSGmirYSKsdD/b5911f46cdc34b13e829375578b77405/image4.png" alt="" class="kg-image" width="608" height="329" loading="lazy">
 
 	</figure>
-	<p><a href="https://github.com/bbc/brave">Brave</a> is an open-source project started by the BBC. Using Brave, we were able to set up multiple virtual rooms and smoothly make any virtual room go on-air.</p>
+	<p><a href="https://github.com/bbc/brave" target="_blank" rel="noopener noreferrer">Brave</a> is an open-source project started by the BBC. Using Brave, we were able to set up multiple virtual rooms and smoothly make any virtual room go on-air.</p>
 	<p>Under the hood, Brave is doing two key things:</p>
 	<ol>
 		<li>
@@ -141,8 +141,8 @@ rtmp {
 			</svg>
 		</a>
 	</div>
-	<p><a href="http://contentful.com">Contentful</a> is a headless content management platform designed to be API-first; it eliminated the need for a database and helped us build our scheduling feature rapidly.</p>
-	<p>Most of the necessary fields are pretty straightforward for a CMS: title, presenters, and, of course, the time slot. Each of these is automatically synced with the publicly-facing schedule at <a href="https://cloudflare.tv/schedule">cloudflare.tv/schedule</a>.</p>
+	<p><a href="http://contentful.com" target="_blank" rel="noopener noreferrer">Contentful</a> is a headless content management platform designed to be API-first; it eliminated the need for a database and helped us build our scheduling feature rapidly.</p>
+	<p>Most of the necessary fields are pretty straightforward for a CMS: title, presenters, and, of course, the time slot. Each of these is automatically synced with the publicly-facing schedule at <a href="https://cloudflare.tv/schedule" target="_blank" rel="noopener noreferrer">cloudflare.tv/schedule</a>.</p>
 	<p>We are able to use Workers to fetch events from Contentful:</p>
 	<pre class="language-json"><code class="language-json">export async function fetchEventRaw(id: string) {
   let r = await fetch(`${CONTENTFUL_API}/entries/${id}`, {
@@ -220,7 +220,7 @@ rtmp {
 			</svg>
 		</a>
 	</div>
-	<p>So far, we’ve described the different pieces of the backend (NGINX, Brave, Contentful) that make Cloudflare TV possible. How do we bring them all together? Cloudflare Workers serves as the glue that brings these systems together. The <a href="https://cloudflare.tv">Cloudflare TV frontend</a> is built on Worker Sites. The frontend calls our Worker endpoints to fetch data, such as the programming calendar.</p>
+	<p>So far, we’ve described the different pieces of the backend (NGINX, Brave, Contentful) that make Cloudflare TV possible. How do we bring them all together? Cloudflare Workers serves as the glue that brings these systems together. The <a href="https://cloudflare.tv" target="_blank" rel="noopener noreferrer">Cloudflare TV frontend</a> is built on Worker Sites. The frontend calls our Worker endpoints to fetch data, such as the programming calendar.</p>
 	<div class="flex anchor relative">
 		<h3 id="thinking-ahead">Thinking Ahead...</h3>
 		<a href="https://blog.cloudflare.com/#thinking-ahead" aria-hidden="true" class="relative sm:absolute sm:-start-5">

@@ -1,7 +1,7 @@
 <div class="mb2 gray5">7 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/9dwM2xtvFppiZch8oBBY2/1c5a02fd1bc9effb5e97a7970e30ab7f/keeping-our-users-safe.png" alt="">
 <div class="post-content lh-copy gray1">
 	<p>To everyone in Cloudflare, account security is one of our most important tasks. We recognize that to every customer on our platform, we are critical infrastructure. We also know that the simplest attacks often lead to the most devastating of outcomes. Most people think that if they are going to get hacked it will be by some clever ”zero day”. The reality couldn’t be farther from the truth.</p>
-	<p>Attackers are smart and they have realized that even in 2018, the human is still the weakest link in the chain. <a href="http://www.verizonenterprise.com/resources/reports/rp_DBIR_2017_Report_en_xg.pdf">The 2017 Verizon breach report</a> identified that 81% of hacking related breaches occurred as a result of weak credentials or credential theft, an increase from the 63% reported in <a href="http://www.verizonenterprise.com/resources/reports/rp_DBIR_2016_Report_en_xg.pdf">2016’s breach report</a>.</p>
+	<p>Attackers are smart and they have realized that even in 2018, the human is still the weakest link in the chain. <a href="http://www.verizonenterprise.com/resources/reports/rp_DBIR_2017_Report_en_xg.pdf" target="_blank" rel="noopener noreferrer">The 2017 Verizon breach report</a> identified that 81% of hacking related breaches occurred as a result of weak credentials or credential theft, an increase from the 63% reported in <a href="http://www.verizonenterprise.com/resources/reports/rp_DBIR_2016_Report_en_xg.pdf" target="_blank" rel="noopener noreferrer">2016’s breach report</a>.</p>
 	<figure class="kg-card kg-image-card ">
 
 		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/bHJOWM7kUVLJfSApcuHcg/ef977cc58a2379e9a87eb4a57c1ae338/Verizon-2017-DBR-Graph-2.png" alt="Verizon-2017-DBR-Graph-2" class="kg-image" width="1050" height="1252" loading="lazy">
@@ -11,7 +11,7 @@
 	<p><i>Source: Verizon 2017 data breach report</i></p>
 	<p>Your credentials are as important as your house or car keys. If someone copies or steals them, the repercussions can be catastrophic. If you suspect someone has access to your house keys you change your locks. If you aren’t fast enough, someone might break in.</p>
 	<p>Likewise if you realize that someone might have access to your password, the remedy is to change it. Too often, as with house keys, we are slow to change our passwords. This is why we see so many account compromises happen after a big public breach like Yahoo. As soon as the attacker gets their hands on a cache of credentials from a breach they immediately try them against every other account the user has. They know that a very high percentage of users still reuse the same credentials across multiple sites. So their chances of success are high - sometimes years after a breach has happened.</p>
-	<p>This is especially problematic with API keys because they often leak without anyone ever knowing it’s happened. Common examples include attackers who steal API keys by reversing client software, or using malicious code inside the browser to navigate and steal secrets - often long after the user has logged out. Some banking trojans such as the <a href="https://www.americanexpress.com/us/small-business/openforum/articles/vicious-malware-can-wipe-out-your-bank-account-in-secret">infamous Zeus</a> even continue to browse after you have logged out, and display fake balance information to hide withdrawals it makes. This is why many banks now force you to re-authenticate often with 2FA when you log in and again when you perform any kind of financial transaction.</p>
+	<p>This is especially problematic with API keys because they often leak without anyone ever knowing it’s happened. Common examples include attackers who steal API keys by reversing client software, or using malicious code inside the browser to navigate and steal secrets - often long after the user has logged out. Some banking trojans such as the <a href="https://www.americanexpress.com/us/small-business/openforum/articles/vicious-malware-can-wipe-out-your-bank-account-in-secret" target="_blank" rel="noopener noreferrer">infamous Zeus</a> even continue to browse after you have logged out, and display fake balance information to hide withdrawals it makes. This is why many banks now force you to re-authenticate often with 2FA when you log in and again when you perform any kind of financial transaction.</p>
 	<figure class="kg-card kg-image-card ">
 
 		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1HKGLnd6bUd1EXPIt3w7Su/a667584331dfda2ae26ff700a6a03d8b/trojan-horse-woodcut1.jpg" alt="trojan-horse-woodcut1" class="kg-image" width="700" height="450" loading="lazy">
@@ -66,7 +66,7 @@
 			<p>First it checks to make sure its been installed for at least 10 minutes.</p>
 		</li>
 		<li>
-			<p>If it determines the coast is clear, it connects to a machine generated <a href="https://www.cloudflare.com/learning/dns/glossary/what-is-a-domain-name">domain name</a>, also called a DGA or “Domain Generation Algorithm” domain. These are random seeming domain names that are actually made by an algorithm so that they are harder to find and the attacker can automatically change to a new domain if the old one gets shut down, without changing any code. On August 2nd 2017 the DGA domain for this malicious extension was “wd7bdb20e4d622f6569f3e8503138c859d[.]win”. By August 3rd it had changed to “wd8a2b7d68f1c7c7f34381dc1a198465b4[.]win” as you can imagine this makes predicting new domains very hard unless you break the code behind the DGA algorithm.</p>
+			<p>If it determines the coast is clear, it connects to a machine generated <a href="https://www.cloudflare.com/learning/dns/glossary/what-is-a-domain-name" target="_blank" rel="noopener noreferrer">domain name</a>, also called a DGA or “Domain Generation Algorithm” domain. These are random seeming domain names that are actually made by an algorithm so that they are harder to find and the attacker can automatically change to a new domain if the old one gets shut down, without changing any code. On August 2nd 2017 the DGA domain for this malicious extension was “wd7bdb20e4d622f6569f3e8503138c859d[.]win”. By August 3rd it had changed to “wd8a2b7d68f1c7c7f34381dc1a198465b4[.]win” as you can imagine this makes predicting new domains very hard unless you break the code behind the DGA algorithm.</p>
 		</li>
 		<li>
 			<p>If the connection is successful it downloads a fresh payload, ga.js over HTTPS which is meant to fool anyone that sees it into thinking that it is downloading Google analytics.</p>
@@ -117,8 +117,8 @@
 
 	</figure>
 	<p></p>
-	<p><i>Phishing email sent to </i><a href="https://a9t9.com/blog/chrome-extension-adware"><i>Chrome developer a9t9.com</i></a></p>
-	<p><a href="https://a9t9.com/blog/chrome-extension-adware">If you want to read more about this, our friends over at proofpoint</a> <a href="https://www.proofpoint.com/us/threat-insight/post/threat-actor-goes-chrome-extension-hijacking-spree">have an in depth teardown</a> of all the other aspects of this particular campaign.</p>
+	<p><i>Phishing email sent to </i><a href="https://a9t9.com/blog/chrome-extension-adware" target="_blank" rel="noopener noreferrer"><i>Chrome developer a9t9.com</i></a></p>
+	<p><a href="https://a9t9.com/blog/chrome-extension-adware" target="_blank" rel="noopener noreferrer">If you want to read more about this, our friends over at proofpoint</a> <a href="https://www.proofpoint.com/us/threat-insight/post/threat-actor-goes-chrome-extension-hijacking-spree" target="_blank" rel="noopener noreferrer">have an in depth teardown</a> of all the other aspects of this particular campaign.</p>
 	<div class="flex anchor relative">
 		<h2 id="how-we-protect-credentials">How we protect credentials</h2>
 		<a href="https://blog.cloudflare.com/#how-we-protect-credentials" aria-hidden="true" class="relative sm:absolute sm:-start-5">
@@ -192,7 +192,7 @@
 	</figure>
 	<p></p>
 	<p><i>MFA Alert generated by accessing the dashboard</i></p>
-	<p><a href="https://www.cloudflare.com/a/profile">Make sure the email registered to your Cloudflare account is correct</a> and that it is one whose emails you can quickly see for maximum benefit. The faster you react to an alert the better!</p>
+	<p><a href="https://www.cloudflare.com/a/profile" target="_blank" rel="noopener noreferrer">Make sure the email registered to your Cloudflare account is correct</a> and that it is one whose emails you can quickly see for maximum benefit. The faster you react to an alert the better!</p>
 	<div class="flex anchor relative">
 		<h3 id="api-keys">API Keys</h3>
 		<a href="https://blog.cloudflare.com/#api-keys" aria-hidden="true" class="relative sm:absolute sm:-start-5">
@@ -221,7 +221,7 @@
 	</div>
 	<ul>
 		<li>
-			<p><a href="https://www.cloudflare.com/a/profile">Turn on 2FA and ensure your email address is correct</a> The sooner you see an alert, the faster you can take action to lock your account down.Handle your credentials with care, NEVER enter them into a site other than Cloudflare.com if in doubt check the website certificate fingerprints:</p>
+			<p><a href="https://www.cloudflare.com/a/profile" target="_blank" rel="noopener noreferrer">Turn on 2FA and ensure your email address is correct</a> The sooner you see an alert, the faster you can take action to lock your account down.Handle your credentials with care, NEVER enter them into a site other than Cloudflare.com if in doubt check the website certificate fingerprints:</p>
 		</li>
 	</ul>
 	<pre class="language-bash"><code class="language-bash">SHA 256 - 12 C4 A5 74 7E D5 6E 37 2C 87 89 02 25 E4 CD 51 89 6D 8E AD 7D 55 CF 76 BF D1 9B 6B 74 6C 70 D0
@@ -247,7 +247,7 @@ SHA1 - D4 AD AB 1B 95 72 8D 3D 6E 26 4A 70 70 B1 1E 88 2F CA 71 67</code></pre>
 			<p>Review your code before you release it. Use a tool that’s part of your CI or Build processes to automatically check for accidental key leakage. How many times have we seen API Keys for major institutions leak because they were accidentally checked into GitHub? Don’t be that person.</p>
 		</li>
 		<li>
-			<p>IBM has some great additional security guidance for organizations building with APIs <a href="https://www.ibm.com/blogs/cloud-computing/2015/09/api-security-key-takeaways-from-recent-breaches">here,</a></p>
+			<p>IBM has some great additional security guidance for organizations building with APIs <a href="https://www.ibm.com/blogs/cloud-computing/2015/09/api-security-key-takeaways-from-recent-breaches" target="_blank" rel="noopener noreferrer">here,</a></p>
 		</li>
 		<li>
 			<p>Finally, it may seem obvious but take care when clicking on links in emails. Even experienced Chrome developers get tricked sometimes!</p>

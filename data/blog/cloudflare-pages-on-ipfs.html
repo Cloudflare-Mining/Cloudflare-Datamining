@@ -2,7 +2,7 @@
 <div class="post-content lh-copy gray1">
 	<p></p>
 	<p>Four years ago, <a href="https://blog.cloudflare.com/distributed-web-gateway">Cloudflare went Interplanetary</a> by offering a gateway to the IPFS network. This meant that if you hosted content on IPFS, we offered to make it available to every user of the Internet through HTTPS and with Cloudflare protection. IPFS allows you to choose a storage provider you are comfortable with, while providing a standard interface for Cloudflare to serve this data.</p>
-	<p>Since then, businesses have new tools to streamline web development. <a href="https://workers.dev">Cloudflare Workers</a>, <a href="https://pages.cloudflare.com">Pages</a>, and <a href="https://blog.cloudflare.com/introducing-r2-object-storage">R2</a> are enabling developers to bring services online in a matter of minutes, with built-in scaling, security, and analytics.</p>
+	<p>Since then, businesses have new tools to streamline web development. <a href="https://workers.dev" target="_blank" rel="noopener noreferrer">Cloudflare Workers</a>, <a href="https://pages.cloudflare.com" target="_blank" rel="noopener noreferrer">Pages</a>, and <a href="https://blog.cloudflare.com/introducing-r2-object-storage">R2</a> are enabling developers to bring services online in a matter of minutes, with built-in scaling, security, and analytics.</p>
 	<p>Today, we're announcing we're bridging the two. We will make it possible for our customers to serve their sites on the IPFS network.</p>
 	<p>In this post, we'll learn how you will be able to build your website with Cloudflare Pages, and leverage the IPFS integration to make your content accessible and available across multiple providers.</p>
 	<div class="flex anchor relative">
@@ -92,7 +92,7 @@
 		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7stjDpQPAhOugUqBcwRV8H/1bf1f181f61793fa0d6c1d1c2a860d77/image6-13.png" alt="MerkleDAG for the demo website. At the root, / folder. Then, files and folders are nodes in the DAG." class="kg-image" width="1256" height="1208" loading="lazy">
 
 	</figure>
-	<p>This works similarly to a Merkle tree, except nodes can reference each other as long as they still form a Directed Acyclic Graph (DAG). This structure is therefore referred to as a <a href="https://docs.ipfs.io/concepts/merkle-dag">MerkleDAG</a>.</p>
+	<p>This works similarly to a Merkle tree, except nodes can reference each other as long as they still form a Directed Acyclic Graph (DAG). This structure is therefore referred to as a <a href="https://docs.ipfs.io/concepts/merkle-dag" target="_blank" rel="noopener noreferrer">MerkleDAG</a>.</p>
 	<p>In our example, it's not unlikely for <code>cats.txt</code> and <code>beautiful_cats.txt</code> to have data in common. In this case, Cloudflare can be smart in the way it builds the MerkleDAG.</p>
 	<figure class="kg-card kg-image-card ">
 
@@ -100,7 +100,7 @@
 
 	</figure>
 	<p>This reduces the storage and bandwidth requirement when accessing the website on IPFS.</p>
-	<p><i>If you want to learn more about how you can model a file system on IPFS, you can check the</i> <a href="https://github.com/ipfs/specs/blob/master/UNIXFS.md"><i>UnixFS</i></a> <i>specification.</i></p>
+	<p><i>If you want to learn more about how you can model a file system on IPFS, you can check the</i> <a href="https://github.com/ipfs/specs/blob/master/UNIXFS.md" target="_blank" rel="noopener noreferrer"><i>UnixFS</i></a> <i>specification.</i></p>
 	<p>Cloudflare stores every CID and the content it references in IndexDB. This allows Cloudflare IPFS nodes to serve Cloudflare Pages assets when requested.</p>
 	<div class="flex anchor relative">
 		<h2 id="lets-put-this-together">Let's put this together</h2>
@@ -110,23 +110,23 @@
 			</svg>
 		</a>
 	</div>
-	<p>Let’s take an example: pages-on-ipfs.com is hosted on IPFS. It is built using Hugo, a static site generator, and Cloudflare Pages with the <a href="https://developers.cloudflare.com/pages/framework-guides/deploy-a-hugo-site">public documentation template</a>. Its source is available on <a href="https://github.com/thibmeu/pages-on-ipfs">GitHub</a>. If you have an IPFS compatible client, you can access it at ipns://pages-on-ipfs.com as well.</p>
+	<p>Let’s take an example: pages-on-ipfs.com is hosted on IPFS. It is built using Hugo, a static site generator, and Cloudflare Pages with the <a href="https://developers.cloudflare.com/pages/framework-guides/deploy-a-hugo-site" target="_blank" rel="noopener noreferrer">public documentation template</a>. Its source is available on <a href="https://github.com/thibmeu/pages-on-ipfs" target="_blank" rel="noopener noreferrer">GitHub</a>. If you have an IPFS compatible client, you can access it at ipns://pages-on-ipfs.com as well.</p>
 	<p>1. Read Cloudflare Pages deployment documentation</p>
 	<p>For the purpose of this blog, I want to create a simple Cloudflare page website. I have experience with Hugo, so I choose it as my framework for the project.</p>
-	<p>I type "<a href="https://lmddgtfy.net/?q=cloudflare+pages">cloudflare pages</a>" in the search bar of my web browser, then head to the Read the docs &gt; Framework Guide &gt; <a href="https://developers.cloudflare.com/pages/framework-guides/deploy-a-hugo-site">Deploy a Hugo site</a>.</p>
+	<p>I type "<a href="https://lmddgtfy.net/?q=cloudflare+pages" target="_blank" rel="noopener noreferrer">cloudflare pages</a>" in the search bar of my web browser, then head to the Read the docs &gt; Framework Guide &gt; <a href="https://developers.cloudflare.com/pages/framework-guides/deploy-a-hugo-site" target="_blank" rel="noopener noreferrer">Deploy a Hugo site</a>.</p>
 	<p>2. Create a site</p>
-	<p>This is where I use Hugo, and your configuration might differ. In short, I use hugo new site pages-on-ipfs, create an index and two static resources, et voilà. The result is available on the source <a href="https://github.com/thibmeu/pages-on-ipfs">GitHub</a> for this project.</p>
+	<p>This is where I use Hugo, and your configuration might differ. In short, I use hugo new site pages-on-ipfs, create an index and two static resources, et voilà. The result is available on the source <a href="https://github.com/thibmeu/pages-on-ipfs" target="_blank" rel="noopener noreferrer">GitHub</a> for this project.</p>
 	<p>3. Deploy using Cloudflare Pages</p>
-	<p>On the Cloudflare Dashboard, I go to Account Home &gt; Pages &gt; Create a project. I select the GitHub repository I created, and configure the build tool to build Hugo website. Basically, I follow what's written on <a href="https://developers.cloudflare.com/pages/framework-guides/deploy-a-hugo-site/#deploying-with-cloudflare-pages">Cloudflare Pages documentation</a>.</p>
+	<p>On the Cloudflare Dashboard, I go to Account Home &gt; Pages &gt; Create a project. I select the GitHub repository I created, and configure the build tool to build Hugo website. Basically, I follow what's written on <a href="https://developers.cloudflare.com/pages/framework-guides/deploy-a-hugo-site/#deploying-with-cloudflare-pages" target="_blank" rel="noopener noreferrer">Cloudflare Pages documentation</a>.</p>
 	<p>Upon clicking Save and Deploy, my website is deployed on pages-on-ipfs.pages.dev. I also configure it to be available at pages-on-ipfs.com</p>
 	<p>4. Serve my content on IPFS</p>
 	<p>First, I opt in my zone on Cloudflare Pages integration with IPFS. This feature is not available yet for everyone to try out.</p>
-	<p>This allows Cloudflare to index the content of my website. Once indexed, I get the CID for my deployment baf...1. I can check that my content is available at this hash on IPFS using an IPFS gateway <a href="https://bafybeig7hluox6xefqdgmwcntvsguxcziw2oeogg2fbvygex2aj6qcfo64.ipfs.cf-ipfs.com">https://baf...1.ipfs.cf-ipfs.com/</a>.</p>
+	<p>This allows Cloudflare to index the content of my website. Once indexed, I get the CID for my deployment baf...1. I can check that my content is available at this hash on IPFS using an IPFS gateway <a href="https://bafybeig7hluox6xefqdgmwcntvsguxcziw2oeogg2fbvygex2aj6qcfo64.ipfs.cf-ipfs.com" target="_blank" rel="noopener noreferrer">https://baf...1.ipfs.cf-ipfs.com/</a>.</p>
 	<p>5. Make my IPFS website available at pages-on-ipfs.com</p>
 	<p>Having one domain name to access both Cloudflare Pages and IPFS version, depending on if the client supports IPFS or not is ideal. Fortunately, the IPFS ecosystem supports such a feature via DNSLink. DNSLink is a way to specify the IPFS content a domain is associated with.</p>
 	<p>For pages-on-ipfs.com, I create a TXT record on _dnslink.pages-on-ipfs.com with value dnslink=/ipfs/baf...1. Et voilà. I can now access ipns://pages-on-ipfs.com via an IPFS client.</p>
 	<p>6. (Optional) Replicate my website</p>
-	<p>The content of my website can now easily be replicated and <a href="https://docs.ipfs.io/how-to/pin-files">pinned</a> by other IPFS nodes. This can either be done at home via an IPFS client or using a pinning service such as <a href="https://www.pinata.cloud">Pinata</a>.</p>
+	<p>The content of my website can now easily be replicated and <a href="https://docs.ipfs.io/how-to/pin-files" target="_blank" rel="noopener noreferrer">pinned</a> by other IPFS nodes. This can either be done at home via an IPFS client or using a pinning service such as <a href="https://www.pinata.cloud" target="_blank" rel="noopener noreferrer">Pinata</a>.</p>
 	<div class="flex anchor relative">
 		<h2 id="whats-next">What's next</h2>
 		<a href="https://blog.cloudflare.com/#whats-next" aria-hidden="true" class="relative sm:absolute sm:-start-5">
@@ -150,7 +150,7 @@
 			<p>I am already hosting my website on IPFS. Can I pin it using Cloudflare?</p>
 			<ul>
 				<li>
-					<p>No. This project aims at serving <a href="https://www.cloudflare.com/developer-platform/solutions/hosting">Cloudflare hosted content</a> via IPFS. We are still investigating how to best replicate and re-provide already-existing IPFS content via Cloudflare infrastructure.</p>
+					<p>No. This project aims at serving <a href="https://www.cloudflare.com/developer-platform/solutions/hosting" target="_blank" rel="noopener noreferrer">Cloudflare hosted content</a> via IPFS. We are still investigating how to best replicate and re-provide already-existing IPFS content via Cloudflare infrastructure.</p>
 				</li>
 			</ul>
 		</li>
@@ -182,7 +182,7 @@
 			<p>Can users verify the integrity of my website?</p>
 			<ul>
 				<li>
-					<p>Yes. They need to access your website through an IPFS compatible client. Ideally, IPFS content integrity is turned into a web standard, similar to <a href="https://developer.mozilla.org/en-US/docs/Web/Security/Subresource_Integrity">subresource integrity</a>.</p>
+					<p>Yes. They need to access your website through an IPFS compatible client. Ideally, IPFS content integrity is turned into a web standard, similar to <a href="https://developer.mozilla.org/en-US/docs/Web/Security/Subresource_Integrity" target="_blank" rel="noopener noreferrer">subresource integrity</a>.</p>
 				</li>
 			</ul>
 		</li>

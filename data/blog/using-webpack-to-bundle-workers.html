@@ -6,13 +6,13 @@
 		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4NwkPVtyHfmAOZMPI2Z4as/47366eb8eb56dc184584166cdaab3bff/photo-1523212727988-82c430c79c8e" alt="" class="kg-image" width="1080" height="720" loading="lazy">
 
 	</figure>
-	<p>Photo by <a href="https://unsplash.com/@joyceromero?utm_source=ghost&amp;utm_medium=referral&amp;utm_campaign=api-credit">Joyce Romero</a> / <a href="https://unsplash.com/?utm_source=ghost&amp;utm_medium=referral&amp;utm_campaign=api-credit">Unsplash</a></p>
+	<p>Photo by <a href="https://unsplash.com/@joyceromero?utm_source=ghost&amp;utm_medium=referral&amp;utm_campaign=api-credit" target="_blank" rel="noopener noreferrer">Joyce Romero</a> / <a href="https://unsplash.com/?utm_source=ghost&amp;utm_medium=referral&amp;utm_campaign=api-credit" target="_blank" rel="noopener noreferrer">Unsplash</a></p>
 	<pre class="language-javascript"><code class="language-javascript">// The simplest Service Worker: A passthrough script
 addEventListener('fetch', event =&gt; {
   event.respondWith(fetch(event.request))
 })</code></pre>
-	<p>The code above is simple and sweet: when a request comes into one of Cloudflare’s data centers, passthrough to the origin server. There is <i>absolutely no need</i> for us to introduce any complex tooling or dependencies. Nevertheless, introduce we will! The problem is, once your script grows even just a little bit, you’ll be tempted to use <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/import">JavaScript’s fancy new module system</a>. However, in doing so, you’ll have a little bit of trouble uploading your script via our API (we only accept a single JS file).</p>
-	<p>Throughout this post, we’ll use contrived examples, shaky metaphors, and questionably accurate weather predictions to explain how to bundle your Service Worker with <a href="https://webpack.js.org">Webpack</a>.</p>
+	<p>The code above is simple and sweet: when a request comes into one of Cloudflare’s data centers, passthrough to the origin server. There is <i>absolutely no need</i> for us to introduce any complex tooling or dependencies. Nevertheless, introduce we will! The problem is, once your script grows even just a little bit, you’ll be tempted to use <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/import" target="_blank" rel="noopener noreferrer">JavaScript’s fancy new module system</a>. However, in doing so, you’ll have a little bit of trouble uploading your script via our API (we only accept a single JS file).</p>
+	<p>Throughout this post, we’ll use contrived examples, shaky metaphors, and questionably accurate weather predictions to explain how to bundle your Service Worker with <a href="https://webpack.js.org" target="_blank" rel="noopener noreferrer">Webpack</a>.</p>
 	<div class="flex anchor relative">
 		<h3 id="webpack">Webpack</h3>
 		<a href="https://blog.cloudflare.com/#webpack" aria-hidden="true" class="relative sm:absolute sm:-start-5">
@@ -44,7 +44,7 @@ import { FancyShoes } from './closet'</code></pre>
 		</a>
 	</div>
 	<p>Remember when I said something about predicting weather? Let’s build a worker with TypeScript that responds with the current weather.</p>
-	<p>Make sure to have <a href="https://nodejs.org">NodeJS</a> installed.</p>
+	<p>Make sure to have <a href="https://nodejs.org" target="_blank" rel="noopener noreferrer">NodeJS</a> installed.</p>
 	<pre class="language-bash"><code class="language-bash"># Make a new project directory
 mkdir weather-worker
 cd weather-worker
@@ -231,7 +231,7 @@ GET /weather/toronto</code></pre>
 			</svg>
 		</a>
 	</div>
-	<p>Webpack also understands how to import npm modules into your bundle. To illustrate this, we’re going to use the fantastic <a href="https://www.npmjs.com/package/path-to-regexp">path-to-regexp</a> module.</p>
+	<p>Webpack also understands how to import npm modules into your bundle. To illustrate this, we’re going to use the fantastic <a href="https://www.npmjs.com/package/path-to-regexp" target="_blank" rel="noopener noreferrer">path-to-regexp</a> module.</p>
 	<p>Install and save the module:</p>
 	<pre class="language-bash"><code class="language-bash">npm install -S path-to-regexp</code></pre>
 	<p>The path-to-regexp module converts the url path pattern <code>/weather/:city</code> to a regular expression. Using that regular expression, we can extract the variable <code>city</code> out of a pathname string. For instance, in the string ‘/weather/toronto’, the city variable is ‘toronto’. However, for the string ‘/users/123’, there is no match at all.</p>
@@ -298,7 +298,7 @@ async function handleWeatherRequest(params: TWeatherRequestParams) {
 		</a>
 	</div>
 	<p>Webpack is an incredibly robust and configurable piece of technology. It’s not just a module bundler, but rather a general static asset build system for web development. Although it was built with front-end assets in mind, it’s a perfect fit for bundling Cloudflare Service Workers.</p>
-	<p>You can view the full source of our weather script here: <a href="https://github.com/jrf0110/weather-workers">github.com/jrf0110/weather-workers</a></p>
+	<p>You can view the full source of our weather script here: <a href="https://github.com/jrf0110/weather-workers" target="_blank" rel="noopener noreferrer">github.com/jrf0110/weather-workers</a></p>
 	<hr>
-	<p><i>If you have a worker you'd like to share, or want to check out workers from other Cloudflare users, visit the </i><a href="https://community.cloudflare.com/tags/recipe-exchange"><i>“Recipe Exchange”</i></a><i> in the Workers section of the </i><a href="https://community.cloudflare.com/c/developers/workers"><i>Cloudflare Community Forum</i></a><i>.</i></p>
+	<p><i>If you have a worker you'd like to share, or want to check out workers from other Cloudflare users, visit the </i><a href="https://community.cloudflare.com/tags/recipe-exchange" target="_blank" rel="noopener noreferrer"><i>“Recipe Exchange”</i></a><i> in the Workers section of the </i><a href="https://community.cloudflare.com/c/developers/workers" target="_blank" rel="noopener noreferrer"><i>Cloudflare Community Forum</i></a><i>.</i></p>
 </div>
