@@ -139,7 +139,6 @@
 	links: {
 		skip: "Skip",
 		back: "Back",
-		dismiss: "Go to account home",
 		aiSidebar: "I'm looking for something else",
 		apiOnboarding: {
 			label: "Get started with the Cloudflare API",

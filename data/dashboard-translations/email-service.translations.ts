@@ -15,7 +15,23 @@
 		enabled: "Enabled",
 		disabled: "Disabled",
 		unknown: "Unknown",
-		goToSettings: "Go to Settings",
+		notConfigured: "Not configured",
+		subdomainCount: "%{smart_count} subdomain |||| %{smart_count} subdomains",
+		tooltips: {
+			syncing: "The service is syncing DNS records",
+			disabled: "The service is not configured",
+			enabled: "The service is enabled and working correctly",
+			enabledMisconfigured: "The service is enabled but may not work correctly due to DNS misconfiguration",
+			dnsNotConfigured: "No DNS records have been configured",
+			dnsMissing: "There are missing DNS records",
+			dnsConflicting: "There are conflicting DNS records",
+			dnsMissingAndConflicting: "There are missing and conflicting DNS records",
+			dnsLocked: "DNS records are locked and configured correctly",
+			dnsUnlocked: "DNS records are configured but not locked",
+			subdomainsOk: "All subdomains are configured correctly",
+			subdomainsIssues: "%{smart_count} subdomain has DNS issues |||| %{smart_count} subdomains have DNS issues"
+		},
+		add: "Add",
 		done: "Done",
 		active: "Active",
 		beta: "Beta",
@@ -36,16 +52,7 @@
 		reviewDnsRecords: "Review DNS records that will be added",
 		domainsTable: {
 			subdomain: "Subdomain",
-			domain: "Domain",
-			routingStatus: "Routing status",
-			emailDnsRecords: "Email DNS records",
-			mxRecords: "MX records",
-			locked: "Locked",
-			unlocked: "Unlocked",
-			lastUpdated: "Last updated",
-			disableOrDelete: "Disable or delete",
-			lock: "Lock",
-			error: "Something went wrong."
+			lock: "Lock"
 		},
 		dnsTable: {
 			recordType: "Record type",
@@ -55,6 +62,9 @@
 			status: "Status",
 			missing: "Missing",
 			added: "Added",
+			locked: "Locked",
+			unlocked: "Unlocked",
+			conflicting: "Conflicting",
 			delete: "Delete"
 		},
 		deleteDnsRecordDialog: {
@@ -62,27 +72,12 @@
 			description: "Deleting records could interrupt other services. Make sure these records are not used by critical services before deleting.",
 			permanentWarning: "Deleting records is permanent and cannot be undone"
 		},
-		dnsDetailDialog: {
-			multipleSPFTitle: "Multiple SPF records found",
-			multipleSPFBody: "The records listed below were found on the DNS for %{domain}. Multiple SPF records are not valid for %{featureLabel} to work properly, even though the correct one exists. To enable %{featureLabel}, click Fix records.",
-			conflictingRecords: "Conflicting records",
-			conflictingBody: "The records listed below were found on the DNS for %{domain}. These records need to be deleted for %{featureLabel} to work properly.",
-			requiredRecords: "Required records",
-			requiredBody: "The records listed below are required on %{domain} to enable %{featureLabel}. MX records allow your domain to receive email. The TXT record is configured to allow your domain to send incoming emails out to your preferred email provider.",
-			fixRecords: "Fix records"
-		},
 		configured: "Configured",
 		misconfigured: "Misconfigured",
 		syncing: "Syncing",
 		dnsMisconfigured: "Email DNS records misconfigured",
 		dnsConfigured: "Email DNS records configured",
 		disableDelete: {
-			subtitle: "Select the option that best describes your offboarding needs.",
-			subdomainSubtitle: "The following records will be deleted",
-			legend: "Offboarding option",
-			deleteAndDisable: "Delete and disable",
-			unlockAndKeepDns: "Unlock and keep DNS records",
-			deleteRecords: "Delete records",
 			unlock: "Unlock"
 		},
 		activityLog: {
@@ -95,11 +90,6 @@
 				received: "Received",
 				result: "Result"
 			}
-		},
-		fixRecords: {
-			addAndEnable: "Add records and enable",
-			deleteConflicting: "Delete conflicting DNS records",
-			deleteMultipleSPF: "Delete multiple SPF records"
 		},
 		logDetail: {
 			action: "Action",
@@ -120,13 +110,26 @@
 			email: "user@example.com",
 			subdomain: "example"
 		},
+		settings: {
+			dnsRecords: "DNS records",
+			dnsRecordsDescription: "DNS records associated with this service.",
+			disable: "Disable",
+			disableDescription: "Disabling will remove all DNS records and stop the service.",
+			deleteDialogTitle: "Delete and disable",
+			deleteDialogDescription: "This will delete all DNS records and disable the service. This action cannot be undone.",
+			subdomainAlreadyExists: "This subdomain already exists.",
+			noSubdomains: "No subdomains yet.",
+			noSubdomainsDescription: "Use the form below to add a subdomain.",
+			addMissingRecords: "Add missing records"
+		},
+		emailsReceived: "Emails received",
+		emailsSent: "Emails sent",
 		msUnit: "ms",
 		noResultsFound: "No results found"
 	},
 	emailSending: {
 		title: "Email Sending",
 		description: "Send emails to your users from your domain reliably, securely, and at scale.",
-		errorBanner: "There might be some conflict or missing records. Configure the records to make sure Email Sending works properly.",
 		zoneList: {
 			name: "Name",
 			emptyState: {
@@ -154,6 +157,18 @@
 				suppressions: "Suppressions",
 				settings: "Settings"
 			},
+			overview: {
+				analytics: {
+					title: "Analytics",
+					delivered: "Delivered",
+					dropped: "Dropped",
+					deliveryFailed: "Delivery failed",
+					rejected: "Rejected",
+					other: "Other",
+					total: "Total sent",
+					noData: "No data available"
+				}
+			},
 			activityLog: {
 				delivered: "Delivered",
 				deliveryFailed: "Delivery failed",
@@ -161,10 +176,6 @@
 				recipient: "Recipient",
 				destination: "Destination",
 				noActivityFound: "No activity found"
-			},
-			settings: {
-				domain: "Domain",
-				domainDescription: "A combination of MX and TXT records need to be added to your DNS for Email Sending to be able to receive and route emails appropriately. Domain must be enabled for all subdomains to work."
 			},
 			suppressions: {
 				title: "Suppressions",
@@ -187,18 +198,6 @@
 				delivered: "Delivered",
 				deliveryFailed: "Delivery failed",
 				error: "Error"
-			},
-			disableDelete: {
-				title: "Delete or disable Email Sending",
-				deleteDescription: "Select this option if you want to immediately disable Email Sending and remove its MX records. The subdomain will be deleted from the table.",
-				unlockDescription: "Select this option if you plan to migrate to another provider by adding new records before removing Email Sending records. Modifying MX records will disable the Email Sending service."
-			},
-			fixRecords: {
-				title: "Enable Email Sending",
-				addDnsRecords: "Add Email Sending DNS records",
-				addDnsRecordsDescription: "A combination of MX and TXT records need to be added to your DNS for Email Sending to function properly. MX records allow your domain to receive email. The TXT record is configured to allow your domain to send incoming emails out to your preferred email provider.",
-				deleteConflictingDescription: "A combination of MX and TXT records need to be added to your DNS for Email Sending to function properly. The records listed below were found on the DNS for %{domain}.",
-				multipleSPFDescription: "A combination of MX and TXT records need to be added to your DNS for Email Sending to function properly. The records listed below were found on the DNS for %{domain}. Multiple SPF records are not valid for Email Sending to work properly, even though the correct one exists. Before Email Sending's SPF record can be added, these records must be deleted."
 			}
 		},
 		addSuppressionDialog: {
@@ -217,7 +216,6 @@
 	emailRouting: {
 		title: "Email Routing",
 		description: "Create custom email addresses and route email to your verified email addresses or Workers.",
-		errorBanner: "There might be some conflict or missing records. Configure the records to make sure Email Routing works properly.",
 		onboarding: {
 			subtitle: "Create custom email addresses to use whenever you do not want to share your primary email address.",
 			emptyDescription: "No available zones found for email routing",
@@ -296,7 +294,7 @@
 				},
 				analytics: {
 					title: "Analytics",
-					forwarded: "Forwarded",
+					delivered: "Forwarded",
 					dropped: "Dropped",
 					deliveryFailed: "Delivery failed",
 					rejected: "Rejected",
@@ -398,26 +396,8 @@
 					domainLockedSuccessfully: "%{domain} locked successfully",
 					failedToLockDomain: "Failed to lock %{domain}"
 				},
-				domain: "Domain",
-				domainDescription: "A combination of MX and TXT records need to be added to your DNS for Email Routing to be able to receive and route emails appropriately. Domain must be enabled for all subdomains to work.",
 				subdomains: "Subdomains",
-				subdomainsDescription: "Subdomains are dependent on the domain. If the domain is disabled, subdomains will be disabled too.",
-				addSubdomainDialog: {
-					title: "Add subdomain",
-					description: "Enable subdomains to route emails to destination."
-				}
-			},
-			disableDelete: {
-				title: "Delete or disable Email Routing",
-				deleteDescription: "Select this option if you want to immediately disable Email Routing and remove its MX records. The subdomain will be deleted from the table.",
-				unlockDescription: "Select this option if you plan to migrate to another provider by adding new records before removing Email Routing records. Modifying MX records will disable the Email Routing service."
-			},
-			fixRecords: {
-				title: "Enable Email Routing",
-				addDnsRecords: "Add Email Routing DNS records",
-				addDnsRecordsDescription: "A combination of MX and TXT records need to be added to your DNS for Email Routing to function properly. MX records allow your domain to receive email. The TXT record is configured to allow your domain to send incoming emails out to your preferred email provider.",
-				deleteConflictingDescription: "A combination of MX and TXT records need to be added to your DNS for Email Routing to function properly. The records listed below were found on the DNS for %{domain}.",
-				multipleSPFDescription: "A combination of MX and TXT records need to be added to your DNS for Email Routing to function properly. The records listed below were found on the DNS for %{domain}. Multiple SPF records are not valid for Email Routing to work properly, even though the correct one exists. Before Email Routing's SPF record can be added, these records must be deleted."
+				subdomainsDescription: "Subdomains are dependent on the domain. If the domain is disabled, subdomains will be disabled too."
 			},
 			workers: {
 				title: "Email Workers",

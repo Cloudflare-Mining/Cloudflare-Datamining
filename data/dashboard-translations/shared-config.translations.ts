@@ -11,7 +11,6 @@
 	incoming: "Shared with %{accountName}",
 	outgoing: "Shared with others",
 	acct_count: "%{smart_count} Account |||| %{smart_count} Accounts",
-	org_count: "%{smart_count} Organization |||| %{smart_count} Organizations",
 	resources: "Resources",
 	source_account: "Source account",
 	share_status: "Share status",

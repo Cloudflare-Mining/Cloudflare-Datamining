@@ -190,12 +190,12 @@
 	},
 	registration_card: {
 		title: "Registration",
-		pending_deletion: (0, i.p)(N(), "expired_on", "purchaseable_on"),
+		pending_deletion: (0, i.p)(I(), "expired_on", "purchaseable_on"),
 		renew_btn: "Renew your domain",
 		auto_renew_on: "Automatic renewal is on",
 		auto_renew_off: "Automatic renewal is off",
 		auto_renew_description: "Your domain will automatically renew every year.",
-		expires_on: (0, i.p)(I(), "expires_on"),
+		expires_on: (0, i.p)(N(), "expires_on"),
 		billing_permissions_error_message: "You need permission to manage billing in order to renew a domain. Please reach out to a super-admin on the account for assistance.",
 		grace_period: {
 			title: "Domain expired",
@@ -203,6 +203,9 @@
 		},
 		not_on_cloudflare: {
 			expiration: (0, i.p)(x(), "expiration"),
+			registrar_label: "Registrar",
+			expiration_label: "Expiration date",
+			transfer_price_label: "Transfer price",
 			transfer_cta: "Transfer to Cloudflare",
 			transfer_cta_subext: (0, i.p)(E(), "price")
 		},
@@ -226,8 +229,8 @@
 			modal_title: "Extend your domain registration",
 			renew_for_label: "Renew for",
 			select_year_placeholder: "Select a year",
-			year_option_singular: (0, i.p)(U(), "years", "pricePerYear"),
-			year_option_plural: (0, i.p)(Y(), "years", "pricePerYear"),
+			year_option_singular: (0, i.p)(Y(), "years", "pricePerYear"),
+			year_option_plural: (0, i.p)(U(), "years", "pricePerYear"),
 			renewal_price_label: "Renewal price",
 			close_button: "Close",
 			cancel_button: "Cancel",
@@ -235,11 +238,11 @@
 			confirm_renewal_button: "Confirm renewal",
 			renewing_button: "Renewing...",
 			billing_permissions_error_message: "You need permission to manage billing in order to renew a domain. Please reach out to a super-admin on the account for assistance.",
-			grace_period_message: "This domain expired on %{gracePeriodStart}, and you have a 40-day grace period to renew it, ending %{gracePeriodEnd}.",
+			grace_period_message: (0, i.p)(W(), "gracePeriodStart", "gracePeriodEnd"),
 			continue_to_domain: "Continue to Domain",
 			back_to_domain: "Back to Domain Management",
-			redemption_banner_expired: "This domain expired %{daysAgo} and is currently in the redemption period. It can be restored until %{deadline}.",
-			redemption_banner_deleted: "This domain is currently in the redemption period. It can be restored until %{deadline}.",
+			redemption_banner_expired: (0, i.p)(B(), "daysAgo", "deadline"),
+			redemption_banner_deleted: (0, i.p)(F(), "deadline"),
 			expired_status: "Expired",
 			redemption_fee: "Redemption fee",
 			restore_notice: "Cloudflare can attempt to restore your domain, which will also extend its registration by 1 year. <0>Learn more</0>",
@@ -252,8 +255,8 @@
 		},
 		redemption_period: {
 			title: "Domain in Redemption Period",
-			description: (0, i.p)(W(), "expiresOn", "redemptionFee"),
-			description_domain_active: (0, i.p)(F(), "redemptionFee"),
+			description: (0, i.p)(M(), "expiresOn", "redemptionFee"),
+			description_domain_active: (0, i.p)(H(), "redemptionFee"),
 			description_common: "<br /><br />If you would like to proceed with the restore and renewal click the Restore button below. You will be given the opportunity to review the charges before proceeding.<br /><0>Learn more about domain restoration</0>.",
 			restore_cta: "Restore",
 			billing_permissions_error_message: "You need permission to manage billing in order to restore a domain. Please reach out to a super-admin on the account for assistance.",
@@ -270,8 +273,8 @@
 				}
 			},
 			messages: {
-				success: (0, i.p)(B(), "domainName"),
-				error: (0, i.p)(M(), "domainName")
+				success: (0, i.p)(G(), "domainName"),
+				error: (0, i.p)(V(), "domainName")
 			},
 			in_progress: {
 				title: "Domain Restoration",
@@ -298,7 +301,7 @@
 		renew: "Renew for",
 		close: "Close",
 		years: "%{smart_count} year |||| %{smart_count} years",
-		due: (0, i.p)(H(), "amount"),
+		due: (0, i.p)(j(), "amount"),
 		disabled_tooltip: "Domain state does not permit renewal. Please contact support for assistance.",
 		notification_success_domain: "Successfully renewed %{domainName}!",
 		notification_success: "Domain successfully renewed",
@@ -369,7 +372,8 @@
 		whois_visibility_enabled: "Enabled",
 		whois_visibility_disabled: "Disabled",
 		email_verification_warning_register: "We will email you a verification link after registration. Please use an accessible address to ensure your domain remains active.",
-		email_verification_warning_transfer: "We will email you a verification link after transfer. Please use an accessible address to ensure your domain remains active."
+		email_verification_warning_transfer: "We will email you a verification link after transfer. Please use an accessible address to ensure your domain remains active.",
+		label: "Contact information"
 	},
 	cor_header: "Registrant Contact Change Pending",
 	cor_subheader: "The following changes are pending approval:",
@@ -383,13 +387,13 @@
 	cor_resend_email_success: "Change of registrant email resent",
 	cor_cancel_error_message: "Unable to cancel a partially approved change of registrant request for %{domainName}",
 	renewal_info: {
-		expires_on: (0, i.p)(G(), "expiresOn"),
-		renews_on: (0, i.p)(V(), "renewsOn"),
+		expires_on: (0, i.p)(K(), "expiresOn"),
+		renews_on: (0, i.p)(Z(), "renewsOn"),
 		price: "Price",
 		price_per_year: "%{domainRenewalFee}/year",
-		billing: (0, i.p)(j(), "last4"),
-		billing_paypal: (0, i.p)(K(), "email"),
-		billing_cloud: (0, i.p)(Z(), "last4"),
+		billing: (0, i.p)(X(), "last4"),
+		billing_paypal: (0, i.p)(Q(), "email"),
+		billing_cloud: (0, i.p)(J(), "last4"),
 		fees: "Domain fees subject to change."
 	},
 	domain_page_sidebar_domain_details: "Domain details",
@@ -411,9 +415,9 @@
 	domain_page_sidebar_buy: "Buy",
 	related_domains_modal_buy_related_domain: "Buy %{domainName}",
 	related_domains_modal_renews_at: "Your domain will renew at %{renewalFee}/year",
-	registered_on: (0, i.p)(X(), "registration_date"),
+	registered_on: (0, i.p)($(), "registration_date"),
 	success_page: {
-		page_title: (0, i.p)(Q(), "domainName"),
+		page_title: (0, i.p)(ee(), "domainName"),
 		page_description: "Have an idea for a website or app? Use Cloudflare to launch it with optimal security and speed.",
 		bots: {
 			title: "Detect and block bots",
@@ -434,7 +438,7 @@
 		},
 		auto_renewal: {
 			title: "Auto Renew",
-			description: (0, i.p)(J(), "date")
+			description: (0, i.p)(et(), "date")
 		},
 		email_verification_cnr: {
 			text: "Please check your registrant contact email inbox for a verification email from @emailverification.info. Be sure to check your spam or junk folder. If you have previously verified this contact email, no further action is needed. We are required to verify your email address. If not verified within 14 days, your domain will be suspended.",
@@ -476,6 +480,7 @@
 	status_pending_domain_move_in: "Pending Account Move In",
 	status_pending_domain_move_out: "Pending Account Move Out",
 	status_suspended: "Suspended",
+	status_verify_email: "Email Verification Required",
 	status_unknown: "Unknown",
 	back_to_domains: "Back to domains",
 	back_to_registration: "Back to registration",
@@ -691,7 +696,7 @@
 	retry_transfer_body: "It appears that the transfer at your previous registrar was cancelled. To continue transferring to Cloudflare, enter a new auth code and click retry. You will not be billed twice.",
 	retry_transfer_retry: "Retry transfer",
 	retry_transfer_auth_code: "Auth code",
-	wizard_step_indicator: (0, i.p)($(), "currentStep", "totalSteps"),
+	wizard_step_indicator: (0, i.p)(ea(), "currentStep", "totalSteps"),
 	wizard_auth_code_tooltip: "There was an error with the request. Please try again.",
 	wizard_error_no_domains: "Select at least one domain to transfer",
 	wizard_error_no_auth_key: "All authorization codes must be valid to continue",
@@ -781,7 +786,7 @@
 		transfers_in_progress_table: {
 			title: "Transfers in progress",
 			domain: "Domain",
-			verification_required: (0, i.p)(ee(), "email"),
+			verification_required: (0, i.p)(er(), "email"),
 			track_status: "Track status",
 			empty_title: "No transfers in progress"
 		},
@@ -907,21 +912,21 @@
 	wizard_transfer_error_retry: "System error. Try again in a few minutes.",
 	wizard_transfer_error_auth_code_fail: "Auth code entry failed. Retry in zone overview.",
 	transfer_error_messages: {
-		[o.no.VALIDATION_ERROR_MISSING_CONTACT_EXTENSIONS]: "Required contact information is missing for this domain.",
-		[o.no.AUTHORIZATION_ERROR_FORBIDDEN]: "You don't have permission to transfer domains. Please contact your account admin for assistance.",
-		[o.no.VALIDATION_ERROR_INVALID_MIN_YEARS_FOR_DOMAIN]: "This domain cannot be transferred because it does not meet the minimum registration period for this TLD. Please contact support for assistance.",
-		[o.no.AUTHORIZATION_ERROR_INVALID_AUTH_CODE]: "Incorrect authorization code. Please enter the latest code from your previous registrar and try again.",
-		[o.no.VALIDATION_ERROR_INVALID_MAX_YEARS_FOR_DOMAIN]: "This domain cannot be transferred because it would exceed the %{yearLimit}-year maximum registration period for this TLD, as transferring automatically adds a year. Wait until the domain has %{maxCurrentYears} years or fewer remaining on its registration period.",
-		[o.no.TRANSFER_ERROR_UNABLE_TO_TRANSFER_DOMAIN_EXCEEDS_MAX_YEARS]: "This domain cannot be transferred because it would exceed the %{yearLimit}-year maximum registration period for this TLD, as transferring automatically adds a year. Wait until the domain has %{maxCurrentYears} years or fewer remaining on its registration period.",
-		[o.no.TRANSFER_ERROR_TRANSFER_LOCK_ERROR]: "Domain is locked. Please unlock it at your current registrar, then try again.",
-		[o.no.TRANSFER_ERROR_TRANSFER_IN_PROHIBITED]: "Domain transfer is prohibited until 60 days after the last transfer, update, or registration.",
-		[o.no.TRANSFER_ERROR_PAYMENT_FAILED]: "Payment failed. Please verify your payment information and try again.",
-		[o.no.VALIDATION_ERROR_INVALID_CONTACT]: "Registrant information is missing or incorrect. Please check for typos and try again.",
-		[o.no.SYSTEM_ERROR_REQUEST_TIMED_OUT]: "System error. Please try again in a few minutes.",
-		[o.no.TRANSFER_ERROR_BILLING_ERROR]: "System error. Please try again in a few minutes.",
-		[o.no.TRANSFER_ERROR_COULD_NOT_CREATE_TRANSFER]: "System error. Please try again in a few minutes.",
-		[o.no.TRANSFER_ERROR_UNABLE_TO_TRANSFER_PREMIUM_DOMAIN]: "System error. Please try again in a few minutes.",
-		[o.no.TRANSFER_ERROR_TRANSFER_FROZEN]: "Transfers are temporarily unavailable for this TLD. Please try again later."
+		[n.no.VALIDATION_ERROR_MISSING_CONTACT_EXTENSIONS]: "Required contact information is missing for this domain.",
+		[n.no.AUTHORIZATION_ERROR_FORBIDDEN]: "You don't have permission to transfer domains. Please contact your account admin for assistance.",
+		[n.no.VALIDATION_ERROR_INVALID_MIN_YEARS_FOR_DOMAIN]: "This domain cannot be transferred because it does not meet the minimum registration period for this TLD. Please contact support for assistance.",
+		[n.no.AUTHORIZATION_ERROR_INVALID_AUTH_CODE]: "Incorrect authorization code. Please enter the latest code from your previous registrar and try again.",
+		[n.no.VALIDATION_ERROR_INVALID_MAX_YEARS_FOR_DOMAIN]: "This domain cannot be transferred because it would exceed the %{yearLimit}-year maximum registration period for this TLD, as transferring automatically adds a year. Wait until the domain has %{maxCurrentYears} years or fewer remaining on its registration period.",
+		[n.no.TRANSFER_ERROR_UNABLE_TO_TRANSFER_DOMAIN_EXCEEDS_MAX_YEARS]: "This domain cannot be transferred because it would exceed the %{yearLimit}-year maximum registration period for this TLD, as transferring automatically adds a year. Wait until the domain has %{maxCurrentYears} years or fewer remaining on its registration period.",
+		[n.no.TRANSFER_ERROR_TRANSFER_LOCK_ERROR]: "Domain is locked. Please unlock it at your current registrar, then try again.",
+		[n.no.TRANSFER_ERROR_TRANSFER_IN_PROHIBITED]: "Domain transfer is prohibited until 60 days after the last transfer, update, or registration.",
+		[n.no.TRANSFER_ERROR_PAYMENT_FAILED]: "Payment failed. Please verify your payment information and try again.",
+		[n.no.VALIDATION_ERROR_INVALID_CONTACT]: "Registrant information is missing or incorrect. Please check for typos and try again.",
+		[n.no.SYSTEM_ERROR_REQUEST_TIMED_OUT]: "System error. Please try again in a few minutes.",
+		[n.no.TRANSFER_ERROR_BILLING_ERROR]: "System error. Please try again in a few minutes.",
+		[n.no.TRANSFER_ERROR_COULD_NOT_CREATE_TRANSFER]: "System error. Please try again in a few minutes.",
+		[n.no.TRANSFER_ERROR_UNABLE_TO_TRANSFER_PREMIUM_DOMAIN]: "System error. Please try again in a few minutes.",
+		[n.no.TRANSFER_ERROR_TRANSFER_FROZEN]: "Transfers are temporarily unavailable for this TLD. Please try again later."
 	},
 	wizard_four_post_x: "Post",
 	wizard_four_post_x_text: "I just started transferring my domains to Cloudflare, the world's first no-markup registrar.",
@@ -957,7 +962,7 @@
 	registration_checkout_loading_2: "Confirming domain name availability...",
 	registration_checkout_loading_3: "Checking for trademark claims...",
 	registration_checkout_loading_4: "Loading checkout cart...",
-	registration_checkout_refund_disclaimer: (0, i.p)(et(), "domainName"),
+	registration_checkout_refund_disclaimer: (0, i.p)(ei(), "domainName"),
 	registration_checkout_error: {
 		title: "Unable to check domain availability",
 		subtitle: 'We\'re currently unable to check the availability of <strong>%{domainName}</strong> at the registry. Please try again. If the issue persists, please <a href="https://support.cloudflare.com" target="_blank">contact support</a> for assistance.',
@@ -1129,7 +1134,7 @@
 	nexus_form_placeholder: "Select a value",
 	delete_domain: {
 		card: {
-			title: (0, i.p)(ea(), "domainName"),
+			title: (0, i.p)(en(), "domainName"),
 			description: "This domain registration is eligible for deletion.",
 			description_delete_not_available: "Domain deletion is not available at this time, refer to our <1>delete a domain documentation</1> if you would like to delete this domain.<0></0>This domain is currently not able to be deleted due to one of the following <2>reasons</2>:",
 			description_delete_not_available_reason_1: "The status of the domain does not permit deletions",
@@ -1148,11 +1153,11 @@
 		},
 		verification_modal: {
 			description: "We need to confirm that you really intend to delete the domain and an email has been sent with a confirmation code.<0></0>Enter the code below and click Verify Code.",
-			expiration_notice: (0, i.p)(er(), "minutesLeft", "secondsLeft"),
-			new_code: (0, i.p)(ei()),
+			expiration_notice: (0, i.p)(eo(), "minutesLeft", "secondsLeft"),
+			new_code: (0, i.p)(es()),
 			button: "Verify Code",
 			error: {
-				too_many_attempts: (0, i.p)(eo(), "date")
+				too_many_attempts: (0, i.p)(ed(), "date")
 			}
 		},
 		confirmation_modal: {
@@ -1160,25 +1165,25 @@
 			button: "Delete Domain Permanently"
 		},
 		notifications: {
-			success: (0, i.p)(en(), "domainName")
+			success: (0, i.p)(ec(), "domainName")
 		},
 		errors: {
 			title: "Error:",
 			invalid_confirmation_code: "The confirmation code entered is not valid.",
 			no_permission: "Your account does not have permission to delete this domain.",
-			generic: (0, i.p)(es(), "domainName")
+			generic: (0, i.p)(el(), "domainName")
 		}
 	},
 	no_access: {
 		title: {
-			[o.KK.REGISTER]: "Domain registration unavailable",
-			[o.KK.TRANSFER]: "Domain transfer unavailable"
+			[n.KK.REGISTER]: "Domain registration unavailable",
+			[n.KK.TRANSFER]: "Domain transfer unavailable"
 		},
 		subtitle: {
-			[o.go.ACCOUNT_BLOCKED]: "Your account has been blocked from performing this action",
-			[o.go.FEATURE_DISABLED]: "This feature has been disabled for your account",
-			[o.go.EMAIL_UNVERIFIED]: "You need to verify your email before proceeding",
-			[o.go.DEFAULT]: "This feature is currently unavailable"
+			[n.go.ACCOUNT_BLOCKED]: "Your account has been blocked from performing this action",
+			[n.go.FEATURE_DISABLED]: "This feature has been disabled for your account",
+			[n.go.EMAIL_UNVERIFIED]: "You need to verify your email before proceeding",
+			[n.go.DEFAULT]: "This feature is currently unavailable"
 		}
 	},
 	premium_domain_pricing_confirmation_modal_title: "Pricing confirmation",
@@ -1201,11 +1206,12 @@
 			description_ineligible: "This domain is ineligible to move to another account for the following reasons:",
 			description_ineligible_nonspecific: "This domain is ineligible to move to another account.",
 			ineligibility_reasons: {
-				[o.BA.DOMAIN_REGISTRY_STATUS]: "Domain has blocking registry status",
-				[o.BA.DOMAIN_FROZEN]: "Domain is administratively locked",
-				[o.BA.DOMAIN_SECURE]: "Domain is secure",
-				[o.BA.DOMAIN_EXPIRED]: "Domain has expired",
-				[o.BA.DOMAIN_EXISTING_PENDING_REQUEST]: "Domain has pending account move request"
+				[n.BA.DOMAIN_REGISTRY_STATUS]: "Domain has blocking registry status",
+				[n.BA.DOMAIN_FROZEN]: "Domain is administratively locked",
+				[n.BA.DOMAIN_SECURE]: "Domain is secure",
+				[n.BA.DOMAIN_EXPIRED]: "Domain has expired",
+				[n.BA.DOMAIN_RECENTLY_REGISTERED]: "Domain was registered within the last 10 days and is not eligible for transfer.",
+				[n.BA.DOMAIN_EXISTING_PENDING_REQUEST]: "Domain has pending account move request"
 			},
 			actions: {
 				start: "Start",
@@ -1259,42 +1265,43 @@
 		},
 		decision_notifications: {
 			success: {
-				[o.C8.APPROVED]: "Inter-account move of %{domainName} approved.",
-				[o.C8.REJECTED]: "Inter-account move of %{domainName} rejected.",
-				[o.C8.CANCELLED]: "Inter-account move of %{domainName} successfully cancelled."
+				[n.C8.APPROVED]: "Inter-account move of %{domainName} approved.",
+				[n.C8.REJECTED]: "Inter-account move of %{domainName} rejected.",
+				[n.C8.CANCELLED]: "Inter-account move of %{domainName} successfully cancelled."
 			},
 			error: {
-				[o.C8.APPROVED]: "Failed to approve the inter-account move of %{domainName}.",
-				[o.C8.REJECTED]: "Failed to reject the inter-account move of %{domainName}.",
-				[o.C8.CANCELLED]: "Failed to cancel the inter-account move of %{domainName}."
+				[n.C8.APPROVED]: "Failed to approve the inter-account move of %{domainName}.",
+				[n.C8.REJECTED]: "Failed to reject the inter-account move of %{domainName}.",
+				[n.C8.CANCELLED]: "Failed to cancel the inter-account move of %{domainName}."
 			}
 		},
 		errors: {
 			nonspecific: "This domain could not be moved. Please try again or contact support for assistance.",
 			messages: {
-				[o.BA.DOMAIN_REGISTRY_STATUS]: "Domain has a registry status preventing an inter-account move.",
-				[o.BA.DOMAIN_FROZEN]: "Domain is administratively locked.",
-				[o.BA.DOMAIN_SECURE]: "Domain is protected from an inter-account move.",
-				[o.BA.DOMAIN_EXPIRED]: "Domain has expired.",
-				[o.BA.DOMAIN_PENDING_TRANSFER_RELATION]: "Domain has a pending transfer relation.",
-				[o.BA.DOMAIN_PARKED]: "Domain is parked.",
-				[o.BA.DOMAIN_EXISTING_PENDING_REQUEST]: "Domain has existing pending request.",
-				[o.BA.DOMAIN_SERVER_ERROR]: "Server error while determining domain eligibility.",
-				[o.BA.GAINING_ACCOUNT_NOT_IN_GOOD_STANDING]: "Gaining account is not in good standing.",
-				[o.BA.GAINING_ACCOUNT_EMAIL_UNVERIFIED]: "Gaining account email is unverified.",
-				[o.BA.GAINING_ACCOUNT_NO_ZONE]: "Gaining account must first add the domain as a website.",
-				[o.BA.GAINING_ACCOUNT_ZONE_INITIALIZING]: "Gaining account must first select a plan for the website.",
-				[o.BA.GAINING_ACCOUNT_SERVER_ERROR]: "Server error while determining gaining account eligibility.",
-				[o.BA.GAINING_ACCOUNT_NO_VERIFIED_SUPER_ADMIN]: "Gaining account Super Admin email has not been verified.",
-				[o.BA.API_PAYLOAD_VALIDATION_FEATURE_FLAG_DISABLED]: "Feature is not currently available.",
-				[o.BA.API_PAYLOAD_VALIDATION_INVALID_DOMAIN]: "Domain is invalid.",
-				[o.BA.API_PAYLOAD_VALIDATION_DOMAIN_DOES_NOT_BELONG_TO_ACCOUNT]: "Domain does not belong to this account.",
-				[o.BA.API_PAYLOAD_VALIDATION_INVALID_DECISION]: "Decision applied is not valid.",
-				[o.BA.API_PAYLOAD_VALIDATION_INVALID_ACCOUNT_ID]: "Gaining account ID specified is invalid.",
-				[o.BA.API_PAYLOAD_VALIDATION_CANNOT_MOVE_DOMAIN_TO_EXISTING_ACCOUNT]: "Domain is already in target account.",
-				[o.BA.API_PAYLOAD_VALIDATION_EXISTING_PENDING_REQUEST]: "Pending move request for domain exists.",
-				[o.BA.API_PAYLOAD_VALIDATION_NO_PENDING_REQUEST]: "No pending move request for domain.",
-				[o.BA.API_PAYLOAD_VALIDATION_USER_IS_NOT_SUPER_ADMIN]: "Only super admins can move a domain."
+				[n.BA.DOMAIN_REGISTRY_STATUS]: "Domain has a registry status preventing an inter-account move.",
+				[n.BA.DOMAIN_FROZEN]: "Domain is administratively locked.",
+				[n.BA.DOMAIN_SECURE]: "Domain is protected from an inter-account move.",
+				[n.BA.DOMAIN_EXPIRED]: "Domain has expired.",
+				[n.BA.DOMAIN_RECENTLY_REGISTERED]: "Domain was registered within the last 10 days and is not eligible for transfer.",
+				[n.BA.DOMAIN_PENDING_TRANSFER_RELATION]: "Domain has a pending transfer relation.",
+				[n.BA.DOMAIN_PARKED]: "Domain is parked.",
+				[n.BA.DOMAIN_EXISTING_PENDING_REQUEST]: "Domain has existing pending request.",
+				[n.BA.DOMAIN_SERVER_ERROR]: "Server error while determining domain eligibility.",
+				[n.BA.GAINING_ACCOUNT_NOT_IN_GOOD_STANDING]: "Gaining account is not in good standing.",
+				[n.BA.GAINING_ACCOUNT_EMAIL_UNVERIFIED]: "Gaining account email is unverified.",
+				[n.BA.GAINING_ACCOUNT_NO_ZONE]: "Gaining account must first add the domain as a website.",
+				[n.BA.GAINING_ACCOUNT_ZONE_INITIALIZING]: "Gaining account must first select a plan for the website.",
+				[n.BA.GAINING_ACCOUNT_SERVER_ERROR]: "Server error while determining gaining account eligibility.",
+				[n.BA.GAINING_ACCOUNT_NO_VERIFIED_SUPER_ADMIN]: "Gaining account Super Admin email has not been verified.",
+				[n.BA.API_PAYLOAD_VALIDATION_FEATURE_FLAG_DISABLED]: "Feature is not currently available.",
+				[n.BA.API_PAYLOAD_VALIDATION_INVALID_DOMAIN]: "Domain is invalid.",
+				[n.BA.API_PAYLOAD_VALIDATION_DOMAIN_DOES_NOT_BELONG_TO_ACCOUNT]: "Domain does not belong to this account.",
+				[n.BA.API_PAYLOAD_VALIDATION_INVALID_DECISION]: "Decision applied is not valid.",
+				[n.BA.API_PAYLOAD_VALIDATION_INVALID_ACCOUNT_ID]: "Gaining account ID specified is invalid.",
+				[n.BA.API_PAYLOAD_VALIDATION_CANNOT_MOVE_DOMAIN_TO_EXISTING_ACCOUNT]: "Domain is already in target account.",
+				[n.BA.API_PAYLOAD_VALIDATION_EXISTING_PENDING_REQUEST]: "Pending move request for domain exists.",
+				[n.BA.API_PAYLOAD_VALIDATION_NO_PENDING_REQUEST]: "No pending move request for domain.",
+				[n.BA.API_PAYLOAD_VALIDATION_USER_IS_NOT_SUPER_ADMIN]: "Only super admins can move a domain."
 			}
 		}
 	},
@@ -1382,8 +1389,8 @@
 	},
 	email_domain_warning_modal: {
 		title: "Use a separate email for safer recovery",
-		description: (0, i.p)(ed(), "domainName"),
-		continue_button: (0, i.p)(ec(), "email"),
+		description: (0, i.p)(e_(), "domainName"),
+		continue_button: (0, i.p)(eu(), "email"),
 		use_different_email_button: "Use a different email"
 	},
 	transfer_domains_header: {
@@ -1423,11 +1430,32 @@
 	contact_type_administrator: "Administrator",
 	contact_type_technical: "Technical",
 	contact_type_billing: "Billing",
-	contact_edit_modal_title: (0, i.p)(el(), "type"),
+	contact_edit_modal_title: (0, i.p)(em(), "type"),
 	transfer_domains_footer: {
 		navigation_label: "Domain transfer steps",
-		step_indicator: (0, i.p)(e_(), "currentStep", "totalSteps"),
+		step_indicator: (0, i.p)(ef(), "currentStep", "totalSteps"),
 		subtotal: "Subtotal (Before tax)",
 		submit_button: "Continue with %{smart_count} domain |||| Continue with %{smart_count} domains"
-	}
+	},
+	register_via_api: {
+		cta: "Registrar API",
+		create_payment_profile: "Create payment profile",
+		create_api_token: "Create Registrar API token",
+		docs: "API docs",
+		docs_button: "API Documentation",
+		checklist_title: "Register domains via API",
+		checklist_default_contact: "Default contact",
+		checklist_default_contact_create: "Create default contact",
+		checklist_default_contact_edit: "Edit default contact",
+		checklist_default_contact_review: "Review default contact",
+		checklist_dra_review: "Review and accept <0>Domain Registration Agreement</0>",
+		checklist_dra_accepted: "Accepted",
+		checklist_edit: "Edit",
+		contact_save_success: "Successfully saved your contact details.",
+		no_default_contact_title: "No default contact information found",
+		no_default_contact_description: "Set the default contact information for new domain registrations and transfers. For your privacy, Cloudflare redacts WHOIS information from your domain by default.",
+		create_default_contact_cta: "+ Create default contact"
+	},
+	dra_agreement_checkbox_label: "I agree to the <0>Domain Registration Agreement</0>",
+	dra_agreement_accepted_banner: "You have already accepted the <0>Domain Registration Agreement</0>."
 }

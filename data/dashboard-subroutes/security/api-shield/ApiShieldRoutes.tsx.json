@@ -1,4 +1,10 @@
 [
+	"/:configurationId",
+	"/:id",
+	"/:operationId",
+	"/:ruleId",
+	"/:sequenceRuleId",
 	"/[id]/[id]/firewall/firewall-rules",
-	"/[id]/[id]/ssl-tls/client-certificates"
+	"/[id]/[id]/ssl-tls/client-certificates",
+	"/new"
 ]

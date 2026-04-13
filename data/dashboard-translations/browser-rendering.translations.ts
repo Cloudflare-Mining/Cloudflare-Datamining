@@ -1,9 +1,11 @@
 {
-	banner: (0, t.p)(a()),
+	banner: (0, r.p)(a()),
 	common: {
 		title: "Browser Rendering",
-		description: "The Workers Browser Rendering API allows developers to programmatically control and interact with a headless browser instance and create automation flows for their applications and products. ",
-		documentation: (0, t.p)(i()),
+		browser_run: "Browser Run",
+		description: (0, r.p)(i()),
+		browser_run_description: (0, r.p)(l()),
+		documentation: (0, r.p)(c()),
 		labels: {
 			beta: "Beta",
 			documentation: "Browser Rendering documentation"
@@ -18,9 +20,17 @@
 		browser: "browser",
 		browsers: "browsers"
 	},
+	overview: {
+		metrics: "Metrics",
+		rest_api_requests: "REST API Requests",
+		quick_action_requests: "Quick Action Requests",
+		browser_hours: "Browser Hours"
+	},
 	tabs: {
 		overview: "Overview",
 		logs: "Logs",
+		runs: "Runs",
+		live: "Live Sessions",
 		examples: "Examples",
 		playground: "Playground"
 	},
@@ -45,7 +55,10 @@
 		connection_start: "Connection Start",
 		connection_end: "Connection End",
 		connection_close: "Connection Close",
-		browser_close: "Browser Close"
+		browser_close: "Browser Close",
+		browser_tabs: "Browser Tabs",
+		failed_to_load_tabs: "Failed to load browser tabs.",
+		no_active_tabs: "No active tabs for this session."
 	},
 	sidebar: {
 		usage: {
@@ -55,6 +68,7 @@
 			avg_concurrent_sessions_short: "Avg Concurrent Sessions",
 			num_hours: "Total browser hours",
 			num_api_requests: "Total REST API requests",
+			num_quick_actions: "Quick Action requests",
 			browser_sessions: "Browser sessions",
 			browser_hours: "Browser hours",
 			api_requests: "REST API requests"
@@ -70,6 +84,7 @@
 		filters: {
 			select_all: "Select All"
 		},
+		empty: "No runs found that match your criteria. If you have a browser session that has not appeared, please re-deploy",
 		logs: {
 			head: {
 				session_id: "Session ID",
@@ -88,6 +103,39 @@
 				event: "event"
 			}
 		}
+	},
+	liveView: {
+		title: "Live View",
+		remoteBrowserClosed: "Remote browser has closed",
+		sessionNoLongerAvailable: "This browser session is no longer available.",
+		goBackToSessions: "Back to sessions",
+		openInNewTab: "Open in new tab",
+		open: "Open",
+		newTab: "New Tab",
+		closeTab: "Close tab",
+		closeBrowser: "Close Browser",
+		connected: "Connected",
+		disconnected: "Disconnected",
+		devtoolsIframeTitle: "DevTools - Live View"
+	},
+	sessions: {
+		title: "Active Sessions",
+		description: "Live browser sessions currently running.",
+		noSessions: "No active sessions",
+		noSessionsDescription: "There are no active browser sessions at this time.",
+		sessionId: "Session ID",
+		startTime: "Start Time",
+		connectionId: "Connection ID",
+		actions: "Actions",
+		openLiveView: "Open Live View",
+		deleteSession: "Delete Session",
+		createSession: "Create Session",
+		noTargets: "Session has closed or no browser tabs available. Please refresh.",
+		tabId: "Tab ID",
+		tabTitle: "Title",
+		tabUrl: "URL",
+		getStarted: "Get started",
+		results: (0, r.p)(u(), "count")
 	},
 	recording: {
 		replay: "Replay",
@@ -119,12 +167,16 @@
 		no_data_description: "The session Id you looked up does not exist or has expired.",
 		go_back: "Go back to sessions"
 	},
+	playground: {
+		ai_extraction_notice: (0, r.p)(d()),
+		usage_notice: (0, r.p)(_())
+	},
 	crawl: {
 		invalid_job_id: "Invalid crawl job ID",
 		no_pages_crawled: "No pages crawled yet",
 		load_more: "Load more",
 		no_content_available: "No content available",
-		showing_first_records: (0, t.p)(l(), "count"),
+		showing_first_records: (0, r.p)(b(), "count"),
 		failed_to_load_detail: "Failed to load crawl job detail.",
 		view_records: "View Records",
 		col_title: "Title",

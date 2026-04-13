@@ -4,7 +4,9 @@
 			change_applied: "Change Applied",
 			change_failed: "Change Failed",
 			change_cancelled: "Change Cancelled",
-			verify_change: "Verify this change"
+			verify_change: "Verify this change",
+			write_operation: "Write operation",
+			destructive_operation: "Destructive operation"
 		},
 		summary_label: "The following changes will be made:",
 		delete_warning: "This action is permanent and cannot be undone.",
@@ -21,7 +23,9 @@
 		actions: {
 			cancel: "Cancel",
 			delete: "Delete",
-			approve: "Approve"
+			approve: "Approve",
+			allow: "Allow",
+			deny: "Deny"
 		},
 		status: {
 			applying: "Applying changes...",

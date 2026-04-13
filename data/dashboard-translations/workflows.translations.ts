@@ -64,6 +64,10 @@
 			title: "Failed to render workflow diagram.",
 			description: "We ran into a problem while rendering the workflow diagram:"
 		},
+		graphPythonNotSupported: {
+			title: "Diagram is not yet supported for Python Workflows",
+			description: "Workflow diagram visualization is currently only available for JavaScript Workflows."
+		},
 		graphFallbackLoading: "The latest version graph is being generated. Showing the previous version.",
 		diagram: {
 			expand: "Expand diagram",

@@ -1,4 +1,6 @@
 [
+	"/accounts/[id]/addressing/address_maps",
+	"/accounts/[id]/addressing/address_maps/[id]/*",
 	"/accounts/[id]/custom_ns",
 	"/accounts/[id]/custom_ns/[id]/*",
 	"/accounts/[id]/dns_settings",
@@ -11,5 +13,6 @@
 	"/zones/[id]/dns_records/batch",
 	"/zones/[id]/dns_records/export",
 	"/zones/[id]/dns_records/import",
-	"/zones/[id]/dns_settings"
+	"/zones/[id]/dns_settings",
+	"/zones/[id]/ips/edge"
 ]

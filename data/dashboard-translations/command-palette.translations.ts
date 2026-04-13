@@ -15,14 +15,14 @@
 		select_domain: "Search for a domain…"
 	},
 	drilldown: {
-		select_domain_for: (0, o.p)(s(), "feature")
+		select_domain_for: (0, n.p)(a(), "feature")
 	},
 	empty: {
 		accounts: "No accounts found",
 		no_results_found: "No results found",
-		no_product_results: (0, o.p)(i(), "query"),
+		no_product_results: (0, n.p)(c(), "query"),
 		no_domains_found: "No domains found in this account",
-		not_found_for: (0, o.p)(l(), "query")
+		not_found_for: (0, n.p)(i(), "query")
 	},
 	sections: {
 		accounts: "Accounts",
@@ -33,6 +33,8 @@
 		switch_to_light_mode_description: "Switch to light theme",
 		switch_to_dark_mode: "Switch to dark mode",
 		switch_to_dark_mode_description: "Switch to dark theme",
+		switch_to_system_mode: "Switch to system mode",
+		switch_to_system_mode_description: "Automatically match your operating system appearance",
 		create_worker: "Create Worker",
 		create_worker_description: "Deploy a new Worker",
 		copy_account_id_description: "Copy your account ID to your clipboard",
@@ -66,7 +68,7 @@
 	},
 	ask_ai: {
 		label: "Ask AI",
-		description: (0, o.p)(c(), "query")
+		description: (0, n.p)(d(), "query")
 	},
 	tip: {
 		access_description: "Search Access applications",
