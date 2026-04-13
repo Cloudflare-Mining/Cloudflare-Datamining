@@ -1,0 +1,61 @@
+/**
+ * get-custom-asset command
+ * @generated from apis/custom-pages/schema.ts
+ */
+import { Cloudflare } from '@cloudflare/sdk';
+import type { ArgumentsCamelCase, Argv, CommandModule } from 'yargs';
+import { getAccountId, getAuthToken } from '../../../../lib/auth.js';
+import { getDefaultHeaders } from '../../../../lib/request-headers.js';
+import { handleError } from '../../../../lib/errors.js';
+import { formatOutput } from '../../../../lib/output.js';
+import { validateResourceId, validateStringInput } from '../../../../lib/input-validation.js';
+
+interface GetCustomAssetArgs {
+  assetName: string;
+  fields?: string;
+  ndjson?: boolean;
+  accountId?: string;
+}
+
+const command: CommandModule<object, GetCustomAssetArgs> = {
+  command: 'get-custom-asset <assetName>',
+  describe: 'Fetches the details of a custom asset.',
+
+  builder: (yargs: Argv): Argv<GetCustomAssetArgs> => {
+    return yargs
+      .positional('assetName', {
+        type: 'string',
+        description:
+          'The unique name of the custom asset. Can only contain letters (A-Z, a-z), numbers (0-9), and underscores (_).',
+        demandOption: true,
+      })
+      .option('fields', {
+        type: 'string',
+        description: 'Comma-separated list of fields to include in output',
+      })
+      .option('ndjson', {
+        type: 'boolean',
+        description: 'Output as newline-delimited JSON (one object per line)',
+        default: false,
+      }) as Argv<GetCustomAssetArgs>;
+  },
+
+  handler: async (argv: ArgumentsCamelCase<GetCustomAssetArgs>): Promise<void> => {
+    try {
+      validateResourceId(argv.assetName as string | undefined, 'assetName');
+      const client = new Cloudflare({
+        apiToken: await getAuthToken(),
+        baseURL: process.env.CLOUDFLARE_BASE_URL,
+        defaultHeaders: getDefaultHeaders(),
+      });
+      const accountId = await getAccountId({ accountId: argv.accountId }, client);
+
+      const result = await client.customPages.assets.getCustomAsset(argv.assetName, argv.accountIdentifier as string);
+      formatOutput(result, { fields: argv.fields, ndjson: argv.ndjson ?? false });
+    } catch (error) {
+      handleError(error);
+    }
+  },
+};
+
+export default command;

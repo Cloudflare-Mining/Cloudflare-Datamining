@@ -1,0 +1,113 @@
+/**
+ * config-create command
+ * @generated from apis/cloudforce-one/schema.ts
+ */
+import { Cloudflare } from '@cloudflare/sdk';
+import type { ArgumentsCamelCase, Argv, CommandModule } from 'yargs';
+import { getAccountId, getAuthToken } from '../../../../lib/auth.js';
+import { getDefaultHeaders } from '../../../../lib/request-headers.js';
+import { handleError } from '../../../../lib/errors.js';
+import { formatOutput } from '../../../../lib/output.js';
+import { validateResourceId } from '../../../../lib/input-validation.js';
+import { formatDryRun } from '../../../../lib/dry-run.js';
+import { parseBody, setNestedValue } from '../../../../lib/body-parser.js';
+
+interface ConfigCreateArgs {
+  frequency?: number;
+  ips: string;
+  ports?: string;
+  fields?: string;
+  ndjson?: boolean;
+  dryRun?: boolean;
+  body?: string;
+  accountId?: string;
+}
+
+const command: CommandModule<object, ConfigCreateArgs> = {
+  command: 'config-create',
+  describe: "Creates a new scan configuration for Cloudforce One's network scanning service.",
+
+  builder: (yargs: Argv): Argv<ConfigCreateArgs> => {
+    return yargs
+      .option('frequency', {
+        type: 'number',
+        description: 'Defines the number of days between each scan (0 = One-off scan).',
+        default: undefined,
+      })
+      .option('ips', {
+        type: 'string',
+        description:
+          'Defines a list of IP addresses or CIDR blocks to scan. The maximum number of total IP addresses allowed is 5000.',
+      })
+      .option('ports', {
+        type: 'string',
+        description:
+          'Defines a list of ports to scan. Valid values are:"default", "all", or a comma-separated list of ports or range of ports (e.g. ["1-80", "443"]). "default" scans the 100 most commonly open ports.',
+        default: undefined,
+      })
+      .option('fields', {
+        type: 'string',
+        description: 'Comma-separated list of fields to include in output',
+      })
+      .option('ndjson', {
+        type: 'boolean',
+        description: 'Output as newline-delimited JSON (one object per line)',
+        default: false,
+      })
+      .option('dry-run', {
+        type: 'boolean',
+        description: 'Validate and show what would happen without executing',
+        default: false,
+      })
+      .option('body', {
+        type: 'string',
+        description: 'Raw JSON request body (bypasses individual flags)',
+      }) as Argv<ConfigCreateArgs>;
+  },
+
+  handler: async (argv: ArgumentsCamelCase<ConfigCreateArgs>): Promise<void> => {
+    try {
+      if (argv.dryRun) {
+        if (argv.accountId) validateResourceId(argv.accountId, 'accountId');
+        formatDryRun({
+          command: 'cf cloudforce-one scans config-create',
+          method: 'POST',
+          url: `https://api.cloudflare.com/client/v4/accounts/${argv.accountId ?? '<account-id>'}/cloudforce-one/scans/config`,
+          pathParams: {},
+          body: { frequency: argv.frequency, ips: argv.ips, ports: argv.ports },
+          validation: 'passed',
+        });
+        return;
+      }
+      const client = new Cloudflare({
+        apiToken: await getAuthToken(),
+        baseURL: process.env.CLOUDFLARE_BASE_URL,
+        defaultHeaders: getDefaultHeaders(),
+      });
+      const accountId = await getAccountId({ accountId: argv.accountId }, client);
+
+      if (argv.body) {
+        const bodyData = parseBody(argv.body);
+        const result = await client.post<unknown>(`/accounts/${accountId}/cloudforce-one/scans/config`, {
+          body: bodyData,
+        });
+        formatOutput(result, { fields: argv.fields, ndjson: argv.ndjson ?? false });
+        return;
+      }
+
+      // Assemble request body from individual flags
+      const bodyData: Record<string, unknown> = {};
+      if (argv.frequency !== undefined) setNestedValue(bodyData, ['frequency'], argv.frequency);
+      if (argv.ips !== undefined) setNestedValue(bodyData, ['ips'], argv.ips);
+      if (argv.ports !== undefined) setNestedValue(bodyData, ['ports'], argv.ports);
+      const result = await client.post<unknown>(`/accounts/${accountId}/cloudforce-one/scans/config`, {
+        body: Object.keys(bodyData).length > 0 ? bodyData : undefined,
+      });
+      formatOutput(result, { fields: argv.fields, ndjson: argv.ndjson ?? false });
+    } catch (error) {
+      handleError(error);
+    }
+  },
+};
+
+export default command;

@@ -1,0 +1,20 @@
+/**
+ * datasets-extra command group
+ * @generated from apis/logpush/schema.ts
+ */
+import type { CommandModule } from 'yargs';
+import fieldsget from './fields-get.js';
+import jobsget from './jobs-get.js';
+
+const command: CommandModule = {
+  command: 'datasets-extra',
+  describe: 'Datasets (additional) operations',
+
+  builder: (yargs) => {
+    return yargs.command(fieldsget).command(jobsget).demandCommand(1);
+  },
+
+  handler: () => {},
+};
+
+export default command;

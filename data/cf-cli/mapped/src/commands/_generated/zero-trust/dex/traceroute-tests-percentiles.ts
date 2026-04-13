@@ -1,0 +1,94 @@
+/**
+ * traceroute-tests-percentiles command
+ * @generated from apis/zero-trust/schema.ts
+ */
+import { Cloudflare } from '@cloudflare/sdk';
+import type { ArgumentsCamelCase, Argv, CommandModule } from 'yargs';
+import { getAccountId, getAuthToken } from '../../../../lib/auth.js';
+import { getDefaultHeaders } from '../../../../lib/request-headers.js';
+import { handleError } from '../../../../lib/errors.js';
+import { formatOutput } from '../../../../lib/output.js';
+import { validateResourceId, validateStringInput } from '../../../../lib/input-validation.js';
+
+interface TracerouteTestsPercentilesArgs {
+  testId: string;
+  'device-id'?: string;
+  from: string;
+  to: string;
+  colo?: string;
+  fields?: string;
+  ndjson?: boolean;
+  accountId?: string;
+}
+
+const command: CommandModule<object, TracerouteTestsPercentilesArgs> = {
+  command: 'traceroute-tests-percentiles <testId>',
+  describe: 'Get percentiles for a traceroute test for a given time period between 1 hour and 7 days.',
+
+  builder: (yargs: Argv): Argv<TracerouteTestsPercentilesArgs> => {
+    return yargs
+      .positional('testId', {
+        type: 'string',
+        description: 'unique identifier for a specific test',
+        demandOption: true,
+      })
+      .option('device-id', {
+        type: 'string',
+        description:
+          'Optionally filter result stats to a specific device(s). Cannot be used in combination with colo param.',
+        default: undefined,
+      })
+      .option('from', {
+        type: 'string',
+        description: 'Start time for the query in ISO (RFC3339 - ISO 8601) format',
+      })
+      .option('to', {
+        type: 'string',
+        description: 'End time for the query in ISO (RFC3339 - ISO 8601) format',
+      })
+      .option('colo', {
+        type: 'string',
+        description:
+          'Optionally filter result stats to a Cloudflare colo. Cannot be used in combination with deviceId param.',
+        default: undefined,
+      })
+      .option('fields', {
+        type: 'string',
+        description: 'Comma-separated list of fields to include in output',
+      })
+      .option('ndjson', {
+        type: 'boolean',
+        description: 'Output as newline-delimited JSON (one object per line)',
+        default: false,
+      }) as Argv<TracerouteTestsPercentilesArgs>;
+  },
+
+  handler: async (argv: ArgumentsCamelCase<TracerouteTestsPercentilesArgs>): Promise<void> => {
+    try {
+      validateResourceId(argv.testId as string | undefined, 'testId');
+
+      const params: Record<string, unknown> = {};
+      if (argv.deviceId !== undefined) params['deviceId'] = argv.deviceId;
+      if (argv.from !== undefined) params['from'] = argv.from;
+      if (argv.to !== undefined) params['to'] = argv.to;
+      if (argv.colo !== undefined) params['colo'] = argv.colo;
+      const client = new Cloudflare({
+        apiToken: await getAuthToken(),
+        baseURL: process.env.CLOUDFLARE_BASE_URL,
+        defaultHeaders: getDefaultHeaders(),
+      });
+      const accountId = await getAccountId({ accountId: argv.accountId }, client);
+
+      const result = await client.zeroTrust.dex.tracerouteTestsPercentiles(
+        accountId,
+        argv.testId,
+        Object.keys(params).length > 0 ? params : undefined,
+      );
+      formatOutput(result, { fields: argv.fields, ndjson: argv.ndjson ?? false });
+    } catch (error) {
+      handleError(error);
+    }
+  },
+};
+
+export default command;
