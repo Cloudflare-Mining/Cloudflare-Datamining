@@ -2,7 +2,7 @@
 	try {
 		var e = "undefined" != typeof window ? window : "undefined" != typeof global ? global : "undefined" != typeof globalThis ? globalThis : "undefined" != typeof self ? self : {},
 			n = (new e.Error).stack;
-		n && (e._sentryDebugIds = e._sentryDebugIds || {}, e._sentryDebugIds[n] = "1d7e3b14-be21-53d6-95c4-9f0304683827")
+		n && (e._sentryDebugIds = e._sentryDebugIds || {}, e._sentryDebugIds[n] = "b7afcd56-0f4d-57e7-aded-a593c744dda1")
 	} catch (e) {}
 }();
 (self.webpackChunk_cloudflare_app_dash = self.webpackChunk_cloudflare_app_dash || []).push([
@@ -997,10 +997,10 @@
 						}({}, {
 							branch: "master",
 							isReleaseCandidate: "true",
-							commit: "0985de233f99b87c483fa673b8c94d30d98ac8e2",
-							dashVersion: "22333876",
+							commit: "f8d1123c61491443e68f482d46a03f0ce67e1b1f",
+							dashVersion: "22348002",
 							env: "production",
-							builtAt: 0x19d882be07c,
+							builtAt: 0x19d887b4f0d,
 							versions: {
 								"@cloudflare/app-dash": "25.161.23",
 								"@cloudflare/kumo": "1.18.0",
@@ -1413,31 +1413,34 @@
 			"use strict";
 			e.d(r, {
 				JW: function() {
-					return v
+					return b
 				},
 				Zh: function() {
-					return f
-				},
-				ao: function() {
 					return k
 				},
+				ao: function() {
+					return x
+				},
 				d4: function() {
-					return y
+					return _
 				},
 				hP: function() {
-					return _
+					return E
 				},
 				kT: function() {
 					return s
 				},
-				q_: function() {
-					return b
+				oJ: function() {
+					return O
 				},
-				s4: function() {
+				q_: function() {
 					return w
 				},
+				s4: function() {
+					return f
+				},
 				z_: function() {
-					return x
+					return y
 				}
 			});
 			var o = e("webpack/sharing/consume/default/react/react"),
@@ -1483,16 +1486,18 @@
 				g = "account home empty state - domain buy clicked",
 				m = "account home empty state - domain transfer clicked",
 				h = "account home empty state - domain onboard clicked",
-				v = {
+				v = "account home empty state - dismiss clicked",
+				b = {
 					SPARROW_ACCOUNT_HOME_EMPTY_STATE_PAGE_VIEWED: s,
 					SPARROW_ACCOUNT_HOME_EMPTY_STATE_ACTION_CLICKED: d,
 					SPARROW_ACCOUNT_HOME_EMPTY_STATE_DOMAIN_SEARCHED_MANUAL: p,
 					SPARROW_ACCOUNT_HOME_EMPTY_STATE_DOMAIN_SEARCHED_AUTO: u,
 					SPARROW_ACCOUNT_HOME_EMPTY_STATE_DOMAIN_BUY_CLICKED: g,
 					SPARROW_ACCOUNT_HOME_EMPTY_STATE_DOMAIN_TRANSFER_CLICKED: m,
-					SPARROW_ACCOUNT_HOME_EMPTY_STATE_DOMAIN_ONBOARD_CLICKED: h
+					SPARROW_ACCOUNT_HOME_EMPTY_STATE_DOMAIN_ONBOARD_CLICKED: h,
+					SPARROW_ACCOUNT_HOME_EMPTY_STATE_DISMISS_CLICKED: v
 				},
-				b = (n, r, e) => {
+				w = (n, r, e) => {
 					let {
 						href: o,
 						variant: t
@@ -1504,7 +1509,7 @@
 					};
 					o && (c.href = (0, i.UG)(o)), a().sendEvent(d, c)
 				},
-				w = (n, r, e) => {
+				f = (n, r, e) => {
 					let {
 						variant: o
 					} = e;
@@ -1517,7 +1522,7 @@
 						variant: o
 					}))
 				},
-				f = (n, r, e) => {
+				k = (n, r, e) => {
 					let {
 						variant: o
 					} = e;
@@ -1530,7 +1535,7 @@
 						variant: o
 					}))
 				},
-				k = (n, r, e) => {
+				x = (n, r, e) => {
 					let {
 						href: o,
 						variant: t
@@ -1545,7 +1550,7 @@
 						variant: t
 					}))
 				},
-				x = (n, r, e) => {
+				y = (n, r, e) => {
 					let {
 						href: o,
 						variant: t
@@ -1560,7 +1565,7 @@
 						variant: t
 					}))
 				},
-				y = (n, r, e) => {
+				_ = (n, r, e) => {
 					let {
 						href: o,
 						variant: t
@@ -1575,7 +1580,7 @@
 						variant: t
 					}))
 				},
-				_ = (n, r) => {
+				E = (n, r) => {
 					let e = (0, o.useRef)(!1);
 					(0, o.useEffect)(() => {
 						!e.current && void 0 !== n && void 0 !== r && (a().sendEvent(s, l(c({
@@ -1586,6 +1591,13 @@
 							variant: r
 						})), e.current = !0)
 					}, [n, r])
+				},
+				O = n => {
+					a().sendEvent(v, c({
+						type: "action clicked"
+					}, n && {
+						signup_source: n
+					}))
 				}
 		},
 		"./react/app/components/AccountHome/tracking.ts": function(n, r, e) {
@@ -12137,4 +12149,4 @@
 		}
 	}
 ]);
-//# debugId=1d7e3b14-be21-53d6-95c4-9f0304683827
+//# debugId=b7afcd56-0f4d-57e7-aded-a593c744dda1
