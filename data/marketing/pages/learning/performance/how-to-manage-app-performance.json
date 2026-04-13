@@ -1,26 +1,15 @@
 {
 	"componentChunkName": "component---src-components-learning-center-templates-learning-center-article-template-tsx",
-	"path": "/learning/performance/speed-up-a-website/",
+	"path": "/learning/performance/how-to-manage-app-performance/",
 	"result": {
 		"data": {
 			"learningCenterArticle": {
 				"contentTypeId": "learningCenterArticle",
-				"contentfulId": "4G3o1LfNpHQ6eI0fDb6sux",
-				"urlSlug": "performance/speed-up-a-website",
-				"metaTags": {
-					"metaTitle": "Tips to improve website speed | How to speed up websites",
-					"metaDescription": "Slow website speed and performance hurt user experiences. Learn how to measure a web page's performance, and explore ways to boost site speed.",
-					"twitterCustomImage": null,
-					"metaImage": {
-						"file": {
-							"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/4otLmvV5Jsz4sjBxyMNi5I/0b6516a150d683384d5364fe6c089d38/performance-lc.png"
-						},
-						"description": "Learning Center Performance OG Image"
-					},
-					"facebookCustomImage": null
-				},
-				"metaTitle": "Tips to improve website speed | How to speed up websites",
-				"metaDescription": "Slow website speed and performance can have major negative effects. Learn how to boost site speed, and get started by performing a website speed test.",
+				"contentfulId": "6HLtOeZlYYeQerKlnDOhk2",
+				"urlSlug": "performance/how-to-manage-app-performance",
+				"metaTags": null,
+				"metaTitle": null,
+				"metaDescription": null,
 				"learningCenterArticleSubHeader": {
 					"contentTypeId": "learningCenterArticleSubHeader",
 					"contentfulId": "3EXwEdnC7JnXLjoWOxHdT9",
@@ -592,16 +581,34 @@
 						]
 					}
 				},
-				"header": "Tips to improve website speed",
-				"blurbSubHeader": "If a website is performing poorly, developers can take several steps to diagnose and fix its problems. ",
-				"objectivesHeader": "Website Speed",
+				"header": "How to manage application performance",
+				"blurbSubHeader": "Slow or unreliable applications can drive away customers and frustrate workforces. Modernizing applications and using caching, load balancing, and other content acceleration techniques can help optimize application performance.",
+				"objectivesHeader": "Application Performance",
 				"objectivesList": [
-					"Learn how to get started on optimizing website performance",
-					"Understand some of the factors that affect website speed",
-					"Choose between various performance-improving strategies"
+					"List the negative outcomes of poor application performance",
+					"Understand how to overcome challenges like latency and suboptimal network routing",
+					"Understand how application modernization impacts ROI"
 				],
 				"relatedContentLinkText": "Related Content",
 				"relatedContent": [
+					{
+						"contentTypeId": "learningCenterArticleLink",
+						"contentfulId": "205Es4ofD2BShliEBNj1Z6",
+						"displayText": "What is load balancing?",
+						"url": "/learning/performance/what-is-load-balancing/"
+					},
+					{
+						"contentTypeId": "learningCenterArticleLink",
+						"contentfulId": "4hXJMYjP1hdIbiiVUwShgR",
+						"displayText": "Application availability",
+						"url": "/learning/performance/glossary/application-availability/"
+					},
+					{
+						"contentTypeId": "learningCenterArticleLink",
+						"contentfulId": "VYxJ3tNC2P75oqD7U1j5x",
+						"displayText": "What is observability?",
+						"url": "/learning/performance/what-is-observability/"
+					},
 					{
 						"contentTypeId": "learningCenterArticleLink",
 						"contentfulId": "e3oFRMHsIzHQZYTLmPDOr",
@@ -610,76 +617,27 @@
 					},
 					{
 						"contentTypeId": "learningCenterArticleLink",
-						"contentfulId": "31bAifmor3KmJTmOyGUYGu",
-						"displayText": "Test the Speed of a Site",
-						"url": "/learning/performance/test-the-speed-of-a-website/"
-					},
-					{
-						"contentTypeId": "learningCenterArticleLink",
-						"contentfulId": "7FhDfdAOVUHyf0C2tFqGMl",
-						"displayText": "How to Make a Site Mobile Friendly",
-						"url": "/learning/performance/how-to-make-a-site-mobile-friendly/"
-					},
-					{
-						"contentTypeId": "learningCenterArticleLink",
-						"contentfulId": "7moLeG9MM9pqBp3ACdPg1i",
-						"displayText": "Performance and Conversion Rates",
-						"url": "/learning/performance/more/website-performance-conversion-rates/"
-					},
-					{
-						"contentTypeId": "learningCenterArticleLink",
-						"contentfulId": "3n7LgS1F3I881eXiTOJVti",
-						"displayText": "What is an Image Optimizer?",
-						"url": "/learning/performance/glossary/what-is-an-image-optimizer/"
+						"contentfulId": "7LQi33SEfVIys6UyNq8f9K",
+						"displayText": "What is Latency?",
+						"url": "/learning/performance/glossary/what-is-latency/"
 					}
 				],
-				"enablementBlade": {
-					"contentTypeId": "bladeEnablement",
-					"contentfulId": "4ErtkWJoXBNrWQbsA1HkBO",
-					"title": "Boost website performance with Cloudflare Pro and our speed tools add-ons",
-					"titleSize": null,
-					"backgroundColor": "image-background",
-					"buttonText": null,
-					"buttonUrl": null,
-					"buttonText2": null,
-					"buttonModalId2": null,
-					"buttonUrl2": null,
-					"bladeSizeType": "large",
-					"htmlId": null,
-					"bladeBorder": "none",
-					"buttonOne": {
-						"buttonAssetFile": null,
-						"buttonTextLoggedIn": null,
-						"contentTypeId": "button",
-						"contentfulId": "2Z8ZTW2FAuJkd1zrwdftlI",
-						"elementName": "Boost website performance with Cloudflare Pro and speed tools add-ons - button",
-						"standardText": null,
-						"text": "Explore Bundles",
-						"url": "https://www.cloudflare.com/plans/pro/",
-						"loggedInUrl": null,
-						"buttonModal": null,
-						"openInNewTab": true,
-						"locale": "en-US"
-					},
-					"buttonTwo": null,
-					"sectionPadding": null,
-					"eyebrow": null
-				},
-				"desktopMainContent": "<p>Web performance is a catch-all term for the measurable and perceived quality of a website's user experience — with a particular emphasis on the page's speed and reliability.</p> \n\n<p>Developers and website owners can take a number of steps to improve their website's performance. These steps include optimizing web design factors like image sizes, code formatting, and external script usage, along with choosing good providers for <a href='https://www.cloudflare.com/developer-platform/solutions/hosting/'>hosting</a>, content caching, and load balancing.</p> \n\n<p>When webpages load faster and more reliably, they not only offer a better user experience, but also tend to rank higher in organic search results, are more visible to potential visitors, and often see <a href='/learning/performance/more/website-performance-conversion-rates/'>higher conversion rates</a>.</p>\n\n <img class=\"responsive-image--50-pct-center\" title=\"site speed\" alt=\"site speed\" src=\"/img/learning/performance/speed-up-a-website/site-speed-page-loading.svg\" itemprop=\"image\" />\n\n<h2 class=\"learning-content-h2\" itemprop=\"headline\">How to test website performance</h2>\n<p>A critical first step in improving a website's performance is measuring its current performance. A variety of factors determine how users (and other parties) perceive a website's speed and reliability, and measuring these factors is the only way to know which actions will drive the most improvement.</p>\n\n<p>A number of free tools exist for performance measurements, including <a href='https://developer.chrome.com/docs/lighthouse/overview/' target='_blank'>Google Lighthouse</a> (available in Google Chrome web browser's <a href='https://developer.chrome.com/docs/devtools/' target='_blank'>DevTools suite</a>) and Cloudflare Observatory (available to any Cloudflare user in their dashboard).</p>\n\n<p>What should website owners use these tools to evaluate? A good place to start is the <a href='/learning/performance/what-are-core-web-vitals/'>Core Web Vitals</a> — a set of three metrics which measure important web performance aspects:</p>\n\n<ul class=\"learning-list\">\n<li><strong>Largest Contentful Paint</strong> measures how quickly the largest element on a page loads</li>\n<li><strong>First Input Delay</strong> measures how quickly a page responds to user input</li>\n<li><strong>Cumulative Layout Shift</strong> measures the visual stability of a page's elements</li></ul> \n\n<p>In addition to providing valuable user experience signals, improving a page's Core Web Vitals <a href='/learning/performance/how-website-speed-boosts-seo/'>can make it rank higher in organic Google search results</a>.</p>\n\n<p>Other important metrics to evaluate include Time to First Byte (how quickly a page begins loading), DNS lookup speed (how quickly a page's <a href='/learning/dns/what-is-dns/'>Domain Name Service</a> translates a <a href='https://www.cloudflare.com/learning/dns/glossary/what-is-a-domain-name/'>domain name</a> into an IP address), and Time to Interactive (how quickly a user can interact with a page).</p>\n\n<p>To see how measuring these metrics might translate into action, consider the following examples:</p>\n\n<ul class=\"learning-list\">\n\n<li>A webpage with a slow Largest Contentful Paint is taking too long to show users its biggest component. The webpage's owner could investigate whether any unnecessary code is loading before that component — and consider whether to remove said code. \n<li>A webpage with a slow Time to First Byte is taking too long to retrieve website resources from its <a href='/learning/cdn/glossary/origin-server/'>origin server</a>. The webpage's owner could investigate response times for their DNS provider and website host — with an eye towards reconfiguring or replacing one or both services.</li></ul>\n\n<h2 class=\"learning-content-h2\" itemprop=\"headline\">How to improve website performance</h2>\n<p>While there is no guaranteed blueprint for strong web performance, website owners can use the following best practices to help boost site speed and reliability:</p>\n\n<h4 class=\"learning-content-h4\">Optimize images</h4>\n<p>Images often take the longest to load on a website since image files tend to be larger in size than HTML and CSS files. Luckily, image load time can be reduced via <a href='/learning/performance/glossary/what-is-an-image-optimizer/'>image optimization</a>, which typically involves reducing its resolution and dimensions, and <a href='/learning/performance/glossary/what-is-image-compression/'>compressing the image file</a> itself.</p>\n\n<h4 class=\"learning-content-h4\">Limit the number of HTTP requests</h4>\n<p>Most webpages require browsers to make multiple <a href='/learning/ddos/glossary/hypertext-transfer-protocol-http/'>HTTP</a> requests for various assets on the page, including images, scripts, and CSS files. In fact, many webpages require dozens of these requests. Each request results in a round trip to and from the server hosting the resource, which can add to the overall load time for a webpage.</p> \n\n<p>Because of these potential issues, the total number of assets each page needs to load should be kept to a minimum. A speed test should help identify which HTTP requests are taking the most time.</p> \n\n<h4 class=\"learning-content-h4\">Use browser HTTP caching</h4>\n<p>The browser cache is a temporary storage location where browsers save copies of static files so that they can load recently visited webpages more quickly. Developers can instruct browsers to cache elements of a webpage that will not change often. Instructions for browser caching go in the headers of HTTP responses from the hosting server. This greatly reduces the amount of data that the server needs to transfer to the browser, shortening load times for users who frequently visit certain pages.</p>\n\n<h4 class=\"learning-content-h4\">Remove unnecessary render-blocking JavaScript</h4>\n<p>Webpages may have unnecessary code that loads before more important page content, slowing down the overall load time. This is especially common on large websites with many owners independently adding code and content. Web page owners can use a web performance tool to identify unnecessary code on poorly performing pages.</p> \n\n<h4 class=\"learning-content-h4\">Limit the use of external scripts</h4>\n<p>Any scripted webpage elements that are loaded from somewhere else — such as external commenting systems, CTA buttons, CMS plugins, or lead-generation popups — need to be loaded each time a page loads.</p>\n\n<p>Depending on the size of the script, these can slow a webpage down, or cause the webpage to not load all at once (this is called 'content jumping' or 'layout shifting' and can be especially frustrating for mobile users, who often have to scroll to see the entire webpage).</p>\n\n<h4 class=\"learning-content-h4\">Limit redirect usage<h4>\n<p>A redirect is when visitors to one webpage get forwarded to a different page instead. Redirects add a few fractions of a second, or sometimes even whole seconds, to page load times. Redirects are sometimes unavoidable, but they can be overused — and may accumulate over time on larger websites with multiple owners. Website owners should institute clear guidelines on redirect usage and periodically scan important web pages for unnecessary redirects.</p> \n\n<h4 class=\"learning-content-h4\">Minify CSS and JavaScript files</h4>\n<p>Minifying code means removing anything that a computer doesn't need in order to understand and carry out the code, including code comments, whitespace, and unnecessary semicolons. This makes CSS and JavaScript files slightly smaller so that they load faster in the browser and take up less bandwidth. Although minification usually provides marginal performance improvements, it is still an important best practice.</p>\n\n<h4 class=\"learning-content-h4\">Use effective third-party services for important website functions</h4>\n\n<ul class=\"learning-list\">\n\n<li><strong>Hosting:</strong> Even the best-designed website will load slowly if its origin server responds slowly to requests. Website owners should choose a server with an average response time of under 200 ms, and with a good record for reliability.</li> \n<li><strong>DNS:</strong> DNS is a system that translates domains (e.g. example.com) into IP addresses — an important part of the page loading process. Website owners should choose DNS services that <a href='/learning/dns/what-is-1.1.1.1/'>deliver results ('resolve') quickly and reliably</a>, rather than relying on their web host's DNS.</li>   \n<li><strong>Caching:</strong> The closer website content sits to the people requesting it, the faster they'll be able to receive it. Website owners should use a <a href='/learning/cdn/what-is-a-cdn/'>content delivery network</a> (CDN) to <a href='/learning/cdn/what-is-caching/'>cache</a> web content in many locations around the world, so user requests do not have to travel hundreds or thousands of miles (and across many <a href='/learning/network-layer/what-is-an-autonomous-system/'>autonomous networks</a>) to reach the website's origin server.</li>  \n<li><strong>Cybersecurity:</strong> DDoS attacks, malicious bots, and other cyber attacks can degrade a website's performance. This topic is too broad to cover in detail here, but website owners should choose a <a href='/learning/security/what-is-web-application-security/'>web application security</a> provider which filters out malicious traffic without slowing down legitimate traffic.</li> </ul>\n\n<h2 class=\"learning-content-h2\" itemprop=\"headline\">How Cloudflare helps improve web performance</h2>\n<p>Cloudflare is a global platform for Internet security and performance. The platform can help websites of any size and complexity improve their performance by connecting to a %{DataCenterCount}-city global network.</p>\n\n  <p>For <a href='/personal/'>personal websites</a> and <a href='/small-business/'>small businesses</a>, Cloudflare offers <a href='/plans/'>free and low-cost plans</a> that activate in minutes and automatically include important website performance enhancements:</p>\n\n<ul class=\"learning-list\">\n\n<li>High-performing DNS services</li>\n<li>CDN</li>\n<li>Image optimization</li>\n<li>Mobile optimization</li>\n<li>Protection against DDoS attacks and common malicious bots</li></ul>\n\n<p>For larger businesses, Cloudflare also offers <a href='/performance/'>enterprise-grade performance services</a> that work with any sort of web application or infrastructure.</p> \n",
+				"enablementBlade": null,
+				"desktopMainContent": "<h2 class=\"learning-content-h2\" itemprop=\"headline\">How to manage application performance</h2>\n<p>Application performance refers to the responsiveness, reliability, and scalability of an application. When an application takes too long to load, is unavailable, or slows as more people use it, users quickly become frustrated and look for alternatives. Steps to improving application performance include optimizing code and databases, setting up effective <a href=\"/learning/performance/what-is-load-balancing/\">load balancing</a>, optimizing for <a href=\"/learning/performance/glossary/application-availability/\">availability</a> to minimize downtime, using a <a href=\"/learning/cdn/what-is-a-cdn/\">content delivery network (CDN)</a>, and architecting applications for efficiency.</p>\n<p>Customers and employees alike expect software to respond in milliseconds. An application's performance determines whether these expectations are met or not. Applications powered by <a href=\"/learning/ai/what-is-artificial-intelligence/\">artificial intelligence (AI)</a> raise the bar for performance. They are supposed to provide dynamic, personalized experiences for customers and improve employee decision-making, but if they fail to deliver fast responses to user input, their benefits tend to dissipate.</p>\n <h4 class=\"learning-content-h4\">Application performance management (APM)</h4>\n <p>Application performance management (APM) refers to the set of practices and technologies that track and enhance application performance. \"APM\" as an acronym can also refer to application performance monitoring, a concept that most in the industry now refer to as \"<a href=\"/learning/performance/what-is-observability/\">observability</a>.\"</p>\n <h2 class=\"learning-content-h2\" itemprop=\"headline\">What are the consequences of poor application performance?</h2>\n<p>Poor performance for customer-facing applications, like websites and mobile apps, affects:</p>\n<ul class=\"learning-list\"><li><strong>Revenue:</strong> If an ecommerce site is slow, visitors buy from competitors and spend their money elsewhere.</li>\n<li><strong>Customer experience and brand reputation:</strong> When a website gains a reputation for being slow or unreliable, customers view the brand the same way.</li>\n<li><strong>Competitive advantage and market share:</strong> As slow experiences compel customers to leave bad reviews and move to faster sites and mobile apps, a business's competitive advantage erodes.</li>\n</ul>\n<p>For internal software, poor performance impacts employee productivity and satisfaction.</p>\n<ul class=\"learning-list\"><li><strong>Reduced productivity and efficiency:</strong> When office productivity applications are slow or offline, key internal processes come to a halt. If that software is unresponsive or unavailable, organizations lose hours and days of work.</li>\n<li><strong>Increased frustration:</strong> Ensuring employees have positive experiences with the tools they use is crucial for maintaining satisfaction. Internal websites for payroll, benefits, or HR that load slowly diminish employee morale.</li>\n</ul>\n<p>See <a href=\"/learning/performance/why-site-speed-matters/\">Why does site speed matter?</a> to learn more.</p>\n<h2 class=\"learning-content-h2\" itemprop=\"headline\">What are the causes of application performance issues?</h2>\n<p>Causes range from the physical distance between users and data centers to unoptimized code. These causes can be divided into network / infrastructure factors and internal application factors.</p>\n<h4 class=\"learning-content-h4\">Network and infrastructure factors affecting application performance</h4>\n<p>Enterprise networks and infrastructure play key roles in performance. Several factors affect <a href=\"/learning/performance/glossary/what-is-latency/\">latency</a>, bandwidth, and congestion, including:</p>\n<ul class=\"learning-list\"><li><strong>Physical distance:</strong> When users are far from the data centers hosting applications, inputs and responses take longer to reach their destinations. Even with fast Internet connections, a video conferencing app hosted in a centralized data center introduces latency for participants on different continents. Organizations can reduce the latency caused by the distance between users and data centers by using a CDN to <a href=\"/learning/cdn/what-is-caching/\">cache</a> content on distributed <a href=\"/learning/cdn/glossary/edge-server/\">edge servers</a> close to users.</li>\n</ul>\n<ul class=\"learning-list\"><li><strong>Undercapacity and inefficient routing:</strong> Insufficient networks restrict how much data can move at once. A lack of bandwidth and throughput increases queueing, delays, and drops. Suboptimal network <a href=\"/learning/network-layer/what-is-routing/\">routing</a> or asymmetric paths add hops and processing delays, which increase response times. <a href=\"/learning/performance/routing-vs-smart-routing/\">Smart routing</a> can help eliminate these issues.</li>\n<li><strong>Infrastructure resource allocation: </strong>The compute, memory, or storage capacity IT teams allot to each application affects speed and reliability. Server health checks, redundancy, load balancing, and other <a href=\"/learning/performance/glossary/application-availability/\">availability</a> techniques are part of ensuring applications have sufficient resources.</li>\n</ul>\n<h4 class=\"learning-content-h4\">Internal software factors affecting application performance</h4>\n<p>Internal factors — involving how developers code and deploy applications — can affect performance. These include:</p>\n<ul class=\"learning-list\"><li><strong>Unoptimized code:</strong> When developer teams do not optimize code — or they over-use AI-assisted <a href=\"/learning/ai/ai-vibe-coding/\">vibe coding</a> — they can degrade application performance. Unoptimized code or an excessive reliance on third-party scripts introduces inefficiencies, including redundant computations and poor resource use. Development teams should adopt standards for simplifying, <a href=\"/learning/performance/why-minify-javascript-code/\">minifying</a>, and reducing code. Reducing resource requests decreases network overhead and improves performance.</li>\n</ul>\n<ul class=\"learning-list\"><li><strong>Misconfigured servers: </strong>Misconfigured servers increase latency and cause outages that degrade application performance. These misconfigurations include incorrect settings in configuration files that dictate how servers handle requests, databases, and resources. Test servers to ensure they perform as expected.</li>\n<li><strong>Suboptimal load balancing: </strong>Uneven workload distribution across server pools results in slower response times, resource waste, and outages under high demand. Sometimes this occurs due to a reliance on static load balancing when a more dynamic approach should be used instead (see <a href=\"/learning/performance/types-of-load-balancing-algorithms/\">Types of load balancing</a>).</li>\n<li><strong>Legacy applications:</strong> Outdated software introduces architectural bottlenecks, resource inefficiencies, and integration overhead. By contrast, <a href=\"/learning/cloud/what-is-the-cloud/\">cloud</a>-native architectures like <a href=\"/learning/serverless/what-is-serverless/\">serverless computing</a> allow organizations to shift from the rigid monolithic designs of legacy software to flexible, scalable applications that perform better.</li>\n</ul>\n<ul class=\"learning-list\"><li><strong>Monitoring gaps: </strong>Gaps in application monitoring prevent IT teams from identifying and addressing performance issues early. These gaps may occur in complex environments with <a href=\"/learning/serverless/glossary/serverless-microservice/\">microservices</a> or cloud dependencies. (See <a href=\"/learning/performance/what-is-observability/\">What is observability?</a>)</li>\n</ul>\n <h2 class=\"learning-content-h2\" itemprop=\"headline\">How to boost application performance</h2>\n<p>Improving performance through application modernization prepares your organization to capitalize on AI, which delivers revenue and efficiency benefits. According to the <a href=\"/resource/g/app-innovation-report/2026/\">2026 Cloudflare App Innovation Report</a>, organizations that modernize applications are three times more likely to see ROI from AI investments compared to companies that do not. Likewise, 93% of leaders cite updating software as the most important factor in boosting their company's AI capabilities.</p>\nCloudflare offers a range of solutions to improve application performance and assist with modernization. For example, the <a href=\"/developer-platform/\">Cloudflare Developer Platform</a> lets development teams deploy serverless code instantly across the globe to increase performance, reliability, and scale. The <a href=\"/network/\">global Cloudflare network</a> and CDN platform — with caching, <a href=\"/learning/performance/glossary/what-is-image-compression/\">image optimization</a>, smart routing, and load balancing included — reduce application latency and improve load times. Using the Cloudflare network with <a href=\"/developer-platform/products/workers-ai/\">Workers AI</a> lets developers run AI-powered applications at the edge, close to users, giving them the responsive experiences they expect.\n<p>&nbsp;</p>\n<h2>FAQs</h2>\n<h4>What is application performance?</h4>\n<p>Application performance encompasses how quickly an application responds, how reliable it is, and how well it scales. When software takes too long to load or becomes unavailable, users often experience frustration and seek alternative options.</p>\n<h4>What is application performance management (APM)?</h4>\n<p>Application performance management involves the technologies and practices organizations use to track and enhance how their software runs.</p>\n<h4>How does poor application performance impact a business?</h4>\n<p>For customer-facing software, slow response times lead to lost revenue, damaged brand reputation, and eroded competitive advantage. For internal tools, poor performance halts crucial processes, reduces efficiency, and lowers employee morale.</p>\n<h4>Why is updating legacy applications important for artificial intelligence (AI)?</h4>\n<p>Modernizing software allows organizations to shift from rigid monolithic architectures to flexible, scalable systems. Companies that update their applications are three times more likely to achieve a return on investment from their AI implementations compared to companies that do not.</p>\n<h4>How can organizations improve their application performance?</h4>\n<p>Teams can boost responsiveness through several methods: by optimizing code and databases, using dynamic load balancing, implementing a content delivery network (CDN) to cache content on distributed edge servers close to users, and adopting cloud-native architectures.</p>\n<script type=\"application/ld+json\">\n{\n\"@context\": \"https://schema.org\"\n,\n\"@type\": \"FAQPage\"\n,\n\"mainEntity\": [\n{\n\"@type\": \"Question\"\n,\n\"name\": \"What is application performance?\"\n,\n\"acceptedAnswer\": {\n\"@type\": \"Answer\"\n,\n\"text\": \"Application performance encompasses how quickly an application responds, how reliable it is, and how well it scales. When software takes too long to load or becomes unavailable, users often experience frustration and seek alternative options.\n\"\n}\n},\n{\n\"@type\": \"Question\"\n,\n\"name\": \"What is application performance management (APM)?\"\n,\n\"acceptedAnswer\": {\n\"@type\": \"Answer\"\n,\n\"text\": \"Application performance management involves the technologies and practices organizations use to track and enhance how their software runs.\n\"\n}\n},\n{\n\"@type\": \"Question\"\n,\n\"name\": \"How does poor application performance impact a business?\"\n,\n\"acceptedAnswer\": {\n\"@type\": \"Answer\"\n,\n\"text\": \"For customer-facing software, slow response times lead to lost revenue, damaged brand reputation, and eroded competitive advantage. For internal tools, poor performance halts crucial processes, reduces efficiency, and lowers employee morale.\n\"\n}\n},\n{\n\"@type\": \"Question\"\n,\n\"name\": \"Why is updating legacy applications important for artificial intelligence (AI)?\"\n,\n\"acceptedAnswer\": {\n\"@type\": \"Answer\"\n,\n\"text\": \"Modernizing software allows organizations to shift from rigid monolithic architectures to flexible, scalable systems. Companies that update their applications are three times more likely to achieve a return on investment from their AI implementations compared to companies that do not.\n\"\n}\n},\n{\n\"@type\": \"Question\"\n,\n\"name\": \"How can organizations improve their application performance?\"\n,\n\"acceptedAnswer\": {\n\"@type\": \"Answer\"\n,\n\"text\": \"Teams can boost responsiveness through several methods: by optimizing code and databases, using dynamic load balancing, implementing a content delivery network (CDN) to cache content on distributed edge servers close to users, and adopting cloud-native architectures.\n\"\n}\n}\n]\n}\n</script>",
 				"availableLocales": null,
-				"localized": true,
+				"localized": null,
 				"localeList": {
 					"enUS": "English for Locale",
-					"zhCN": "Translated for Locale",
-					"zhTW": "Translated for Locale",
-					"frFR": "Translated for Locale",
-					"deDE": "Translated for Locale",
-					"itIT": "Translated for Locale",
-					"jaJP": "Translated for Locale",
-					"koKR": "Translated for Locale",
-					"ptBR": "Translated for Locale",
-					"esES": "Translated for Locale",
-					"esLA": "Translated for Locale",
+					"zhCN": "English for Locale",
+					"zhTW": "English for Locale",
+					"frFR": "English for Locale",
+					"deDE": "English for Locale",
+					"itIT": "English for Locale",
+					"jaJP": "English for Locale",
+					"koKR": "English for Locale",
+					"ptBR": "English for Locale",
+					"esES": "English for Locale",
+					"esLA": "English for Locale",
 					"enAU": "English for Locale",
 					"enCA": "English for Locale",
 					"enIN": "English for Locale",
@@ -691,100 +649,20 @@
 					"svSE": "English for Locale",
 					"viVN": "English for Locale",
 					"trTR": "English for Locale",
-					"zhHansCN": "Translated for Locale",
+					"zhHansCN": "English for Locale",
 					"plPL": "English for Locale"
 				},
-				"proactivePopup": {
-					"contentTypeId": "proactivePopup",
-					"contentfulId": "4g1Pt1sKrA9BOPdZsrimQK",
-					"headerText": "Subscribe to theNET",
-					"subHeadingText": "Receive a monthly recap of the most popular Internet insights!",
-					"hasMarketoForm": true,
-					"marketoForm": {
-						"contentTypeId": "marketoEmbeddedForm",
-						"contentfulId": "3soF5uZQQ3FUQig9wvpk69",
-						"bladeName": "theNET - Trending Stories - Form: Proactive Pop-up - Subscribe (Learning Center version)",
-						"backgroundColor": "white",
-						"marketoFormId": 2459,
-						"marketoFormLeadSource": "Inbound - Blog Subscriber",
-						"marketoFormLeadSourceDetail": "[BRD] Q4'24 WEB - GBL - Learning Center Subscription",
-						"marketoFormAssetName": null,
-						"marketoFormHeaderText": "Receive a monthly recap of the most popular Internet insights!",
-						"marketoFormDefaultComment": null,
-						"showCommentBox": false,
-						"marketoFormThankYouText": null,
-						"marketoFormCustomSuccessMessage": "We're looking forward to sharing content with you.",
-						"marketoFormPdfDownload": null,
-						"marketoFormPdfDownloadI18n": [],
-						"marketoFormAssetDownloadButtonText": null,
-						"marketoFormSuccessRedirectUrl": null,
-						"sendAdRoll": null,
-						"meta_adRollCustomSegment": null,
-						"enableSandbox": null,
-						"marketoFormSubmitButtonText": "Subscribe",
-						"marketoFormSubmitButtonColor": "orange",
-						"enableEmailVerification": null,
-						"disableEnterpriseEmailNotification": null,
-						"enableRingout": null
-					},
-					"timeDelay": 1500,
-					"ctaButton": null
-				},
-				"sidebarForm": {
-					"contentTypeId": "learningCenterArticleSidebarForm",
-					"contentfulId": "4ad3l3edBzH8KRefyi225g",
-					"heading": "Want to keep learning?",
-					"postSubmissionHeading": "Thank you for subscribing",
-					"description": "Subscribe to theNET, Cloudflare's monthly recap of the Internet's most popular insights!",
-					"postSubmissionDescription": "We're looking forward to sharing content with you.",
-					"marketoForm": {
-						"contentTypeId": "marketoEmbeddedForm",
-						"contentfulId": "4N6NOUDQwA5AAjxuGTnCMu",
-						"bladeName": "Form-Marketo Single Inline - Learning Center Newsletter Form",
-						"backgroundColor": "blue",
-						"marketoFormId": 2459,
-						"marketoFormLeadSource": "Inbound - Blog Subscriber",
-						"marketoFormLeadSourceDetail": "[BRD] Q4'24 WEB - GBL - Learning Center Subscription",
-						"marketoFormAssetName": null,
-						"marketoFormHeaderText": null,
-						"marketoFormDefaultComment": null,
-						"showCommentBox": null,
-						"marketoFormThankYouText": "Thank you for subscribing!",
-						"marketoFormCustomSuccessMessage": "We're looking forward to sharing content with you.",
-						"marketoFormPdfDownload": null,
-						"marketoFormPdfDownloadI18n": [],
-						"marketoFormAssetDownloadButtonText": null,
-						"marketoFormSuccessRedirectUrl": null,
-						"sendAdRoll": null,
-						"meta_adRollCustomSegment": null,
-						"enableSandbox": null,
-						"marketoFormSubmitButtonText": "Subscribe  to theNET",
-						"marketoFormSubmitButtonColor": null,
-						"enableEmailVerification": null,
-						"disableEnterpriseEmailNotification": null,
-						"enableRingout": null
-					}
-				}
+				"proactivePopup": null,
+				"sidebarForm": null
 			}
 		},
 		"pageContext": {
 			"locale": "en-US",
-			"contentfulId": "4G3o1LfNpHQ6eI0fDb6sux",
-			"pathname": "/learning/performance/speed-up-a-website/",
+			"contentfulId": "6HLtOeZlYYeQerKlnDOhk2",
+			"pathname": "/learning/performance/how-to-manage-app-performance/",
 			"baseURL": "https://www.cloudflare.com",
 			"allowedHrefLangs": [
-				"en-US",
-				"zh-CN",
-				"zh-TW",
-				"fr-FR",
-				"de-DE",
-				"it-IT",
-				"ja-JP",
-				"ko-KR",
-				"pt-BR",
-				"es-ES",
-				"es-LA",
-				"zh-Hans-CN"
+				"en-US"
 			]
 		}
 	}

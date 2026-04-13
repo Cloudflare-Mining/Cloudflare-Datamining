@@ -441,45 +441,6 @@
 									"nodeType": "document",
 									"content": [
 										{
-											"nodeType": "embedded-asset-block",
-											"data": {
-												"target": {
-													"sys": {
-														"id": "2VNM0U4NMTl5756pkR7149",
-														"type": "Link",
-														"linkType": "Asset"
-													},
-													"related_asset": [
-														{
-															"contentfulId": "2VNM0U4NMTl5756pkR7149",
-															"locale": "en-US",
-															"title": "theNET - Top of Mind - Blue",
-															"file": {
-																"name": "topofmindonebigideablue.png",
-																"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/2VNM0U4NMTl5756pkR7149/20c17b691fb23afaaa778985e629d287/topofmindonebigideablue.png",
-																"internal": {
-																	"mediaType": "image/png"
-																}
-															}
-														}
-													],
-													"entry_elementMarkdown": [],
-													"entry_assetFile": [],
-													"entry_button": [],
-													"entry_elementLink": [],
-													"entry_page": [],
-													"entry_elementIcon": [],
-													"entry_bladeTable": [],
-													"entry_bladeThreeFeatures": [],
-													"entry_bladeFourFeatures": []
-												},
-												"uri": null
-											},
-											"value": null,
-											"marks": null,
-											"content": []
-										},
-										{
 											"nodeType": "heading-1",
 											"data": {
 												"target": null,
@@ -501,25 +462,43 @@
 											]
 										},
 										{
-											"nodeType": "heading-4",
+											"nodeType": "embedded-asset-block",
 											"data": {
-												"target": null,
+												"target": {
+													"sys": {
+														"id": "3GF14WzsqmhzttK6I0bUFR",
+														"type": "Link",
+														"linkType": "Asset"
+													},
+													"related_asset": [
+														{
+															"contentfulId": "3GF14WzsqmhzttK6I0bUFR",
+															"locale": "en-US",
+															"title": "theNET - Catching the phish - Meta - Image",
+															"file": {
+																"name": "catchingthephish.jpg",
+																"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/3GF14WzsqmhzttK6I0bUFR/23f0564c10b4bdfa1733b9c6bd264670/catchingthephish.jpg",
+																"internal": {
+																	"mediaType": "image/jpeg"
+																}
+															}
+														}
+													],
+													"entry_elementMarkdown": [],
+													"entry_assetFile": [],
+													"entry_button": [],
+													"entry_elementLink": [],
+													"entry_page": [],
+													"entry_elementIcon": [],
+													"entry_bladeTable": [],
+													"entry_bladeThreeFeatures": [],
+													"entry_bladeFourFeatures": []
+												},
 												"uri": null
 											},
 											"value": null,
 											"marks": null,
-											"content": [
-												{
-													"nodeType": "text",
-													"data": {
-														"target": null,
-														"uri": null
-													},
-													"value": "89% of malicious messages evade email security",
-													"marks": [],
-													"content": null
-												}
-											]
+											"content": []
 										},
 										{
 											"nodeType": "paragraph",
@@ -543,6 +522,31 @@
 											]
 										},
 										{
+											"nodeType": "heading-4",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "How malicious messages evade email security",
+													"marks": [
+														{
+															"type": "bold"
+														}
+													],
+													"content": null
+												}
+											]
+										},
+										{
 											"nodeType": "paragraph",
 											"data": {
 												"target": null,
@@ -557,7 +561,7 @@
 														"target": null,
 														"uri": null
 													},
-													"value": "Today's reality is dominated by and relies upon digital interactions. Top amongst the IT and security risks are ",
+													"value": "Today's reality is dominated by and relies upon digital interactions. Top among the IT and security risks are ",
 													"marks": [],
 													"content": null
 												},
@@ -588,7 +592,7 @@
 														"target": null,
 														"uri": null
 													},
-													"value": ", the initial vector for 9 out of every 10 cyber attacks. In the past year alone, phishing has caused over $50B losses globally for businesses with attackers posing as more than 1,000 different organizations in almost 40 million identity deception threats and over 1 billion ",
+													"value": ", the initial vector for by far most cyber attacks. And in 2025, the average cost of a data breach where phishing was the initial vector was approximately ",
 													"marks": [],
 													"content": null
 												},
@@ -596,7 +600,7 @@
 													"nodeType": "hyperlink",
 													"data": {
 														"target": null,
-														"uri": "https://www.cloudflare.com/the-net/phishing-impersonation/"
+														"uri": "https://www.ibm.com/reports/data-breach"
 													},
 													"value": null,
 													"marks": null,
@@ -607,8 +611,12 @@
 																"target": null,
 																"uri": null
 															},
-															"value": "brand impersonation",
-															"marks": [],
+															"value": "$4.8 million",
+															"marks": [
+																{
+																	"type": "underline"
+																}
+															],
 															"content": null
 														}
 													]
@@ -619,7 +627,7 @@
 														"target": null,
 														"uri": null
 													},
-													"value": " attempts. Phishing works, period. And threat actors will never stop leveraging methods that lead them down the road of successful exploits. ",
+													"value": ".\n\nPhishing works, period. And threat actors will never stop leveraging methods that lead them down the road of successful exploits.",
 													"marks": [],
 													"content": null
 												}
@@ -640,7 +648,7 @@
 														"target": null,
 														"uri": null
 													},
-													"value": "Why? These attacks are focused against people, and we love a good story. In fact some argue that all of humanity is driven by stories. To make these attacks work, cyber actors have only one tactic to employ, and that is authenticity. Visual authenticity most directly tied to brand impersonation phishing, and organizational authenticity, most closely tied to ",
+													"value": "Why? These attacks are focused against people, and people love a good story. In fact some argue that all of humanity is driven by stories. To make these attacks work, cyber actors have only one tactic to employ, and that is authenticity. Visual authenticity most directly tied to brand impersonation phishing, and organizational authenticity, most closely tied to ",
 													"marks": [],
 													"content": null
 												},
@@ -659,7 +667,7 @@
 																"target": null,
 																"uri": null
 															},
-															"value": "Business Email Compromise (BEC) phishing",
+															"value": "business email compromise (BEC) phishing",
 															"marks": [],
 															"content": null
 														}
@@ -692,69 +700,7 @@
 														"target": null,
 														"uri": null
 													},
-													"value": "The first goal is attaining authenticity–e.g., targeting commonly known brands to make it increasingly difficult for people to tell what is genuine or malicious. A case in point: email attackers most often (",
-													"marks": [],
-													"content": null
-												},
-												{
-													"nodeType": "hyperlink",
-													"data": {
-														"target": null,
-														"uri": "https://blog.cloudflare.com/2023-phishing-report/"
-													},
-													"value": null,
-													"marks": null,
-													"content": [
-														{
-															"nodeType": "text",
-															"data": {
-																"target": null,
-																"uri": null
-															},
-															"value": "51.7%",
-															"marks": [],
-															"content": null
-														}
-													]
-												},
-												{
-													"nodeType": "text",
-													"data": {
-														"target": null,
-														"uri": null
-													},
-													"value": " of the time) impersonated one of 20 well-known global brands. These brands are popular and highly interacted with organizations, with ",
-													"marks": [],
-													"content": null
-												},
-												{
-													"nodeType": "hyperlink",
-													"data": {
-														"target": null,
-														"uri": "https://www.cloudflare.com/the-net/securing-m365/"
-													},
-													"value": null,
-													"marks": null,
-													"content": [
-														{
-															"nodeType": "text",
-															"data": {
-																"target": null,
-																"uri": null
-															},
-															"value": "Microsoft",
-															"marks": [],
-															"content": null
-														}
-													]
-												},
-												{
-													"nodeType": "text",
-													"data": {
-														"target": null,
-														"uri": null
-													},
-													"value": " coming in at #1 on the list, alongside other companies such as Google, Amazon, Facebook and World Health Organization on the list.",
+													"value": "The first goal is attaining authenticity — e.g., targeting commonly known brands to make it increasingly difficult for people to tell what is genuine or malicious. Email attackers often impersonate well-known global brands, such as Microsoft, Stripe, Facebook, Amazon, and Costco. ",
 													"marks": [],
 													"content": null
 												}
@@ -775,7 +721,7 @@
 														"target": null,
 														"uri": null
 													},
-													"value": "Threat actors also capitalize and latch onto large-scale world events or trends tied to brands. For example, when there is a World Cup, there are campaigns that leverage assets related to the World Cup. When there is a G20 Summit, there are campaigns that leverage assets related to G20. When Covid-19 came to fruition, there were a slew of attacks leveraging Covid-19 related trends. In some ways, threat actors are incredibly predictable, with physical events transcending into cyberspace. This ultimately underscores that phishing, like any attack, exploits avenues that are the weakest link–in these cases, the inherent human inclination to be trusting.",
+													"value": "Threat actors also capitalize and latch onto large-scale world events or trends tied to brands. For example, when there is a World Cup, there are campaigns that leverage assets related to the World Cup. When there is a G20 Summit, there are campaigns that leverage assets related to G20. During the pandemic, there were a slew of attacks leveraging pandemic-related trends. In some ways, threat actors are incredibly predictable, with physical events transcending into cyberspace. This ultimately underscores that phishing, like any attack, exploits avenues that are the weakest link — in these cases, the inherent human inclination to be trusting.",
 													"marks": [],
 													"content": null
 												}
@@ -796,7 +742,7 @@
 														"target": null,
 														"uri": null
 													},
-													"value": "When threat actors disguise themselves as legitimate, their second major objective–to trick victims into clicking links or downloading harmful files–can be easily achieved. It's natural to want to interact with a timely link or file from someone you think you know. Earlier this year, threat actors took advantage of the havoc spurred by Silicon Valley Bank's collapse ",
+													"value": "When threat actors disguise themselves as legitimate, their second major objective — to trick victims into clicking links or downloading harmful files — can be easily achieved. It's natural to want to interact with a timely link or file from someone you think you know. For example, a few years ago, threat actors took advantage of the havoc spurred by Silicon Valley Bank's collapse ",
 													"marks": [],
 													"content": null
 												},
@@ -835,7 +781,7 @@
 													"nodeType": "hyperlink",
 													"data": {
 														"target": null,
-														"uri": "https://www.cloudflare.com/the-net/phishing-impersonation"
+														"uri": "https://www.cloudflare.com/the-net/phishing-impersonation/"
 													},
 													"value": null,
 													"marks": null,
@@ -858,7 +804,7 @@
 														"target": null,
 														"uri": null
 													},
-													"value": ". ",
+													"value": ".",
 													"marks": [],
 													"content": null
 												}
@@ -925,69 +871,7 @@
 														"target": null,
 														"uri": null
 													},
-													"value": "One fraudulent email has the power to inflict significant harm on an organization – with standard email inbox security tools not viable for combatting these attacks. Between 2013 and 2015, Facebook and Google ",
-													"marks": [],
-													"content": null
-												},
-												{
-													"nodeType": "hyperlink",
-													"data": {
-														"target": null,
-														"uri": "https://www.cnbc.com/2019/03/27/phishing-email-scam-stole-100-million-from-facebook-and-google.html"
-													},
-													"value": null,
-													"marks": null,
-													"content": [
-														{
-															"nodeType": "text",
-															"data": {
-																"target": null,
-																"uri": null
-															},
-															"value": "lost $100 million",
-															"marks": [],
-															"content": null
-														}
-													]
-												},
-												{
-													"nodeType": "text",
-													"data": {
-														"target": null,
-														"uri": null
-													},
-													"value": " after falling victim to a fraudulent invoice scam where a threat attack sent a series of multi-million dollar invoices by replicating the tech giant's vendor. In 2016, Austrian aerospace parts manufacturer FACC ",
-													"marks": [],
-													"content": null
-												},
-												{
-													"nodeType": "hyperlink",
-													"data": {
-														"target": null,
-														"uri": "https://www.reuters.com/article/us-facc-cyber-arrest-china-idUSKCN1110PR"
-													},
-													"value": null,
-													"marks": null,
-													"content": [
-														{
-															"nodeType": "text",
-															"data": {
-																"target": null,
-																"uri": null
-															},
-															"value": "lost $47 million",
-															"marks": [],
-															"content": null
-														}
-													]
-												},
-												{
-													"nodeType": "text",
-													"data": {
-														"target": null,
-														"uri": null
-													},
-													"value": " when an employee transferred money after believing a phishing scheme impersonating the company's CEO. ",
+													"value": "One fraudulent email has the power to inflict significant harm on an organization — with standard email inbox security tools not viable for combatting these attacks. ",
 													"marks": [],
 													"content": null
 												}
@@ -1039,38 +923,7 @@
 														"target": null,
 														"uri": null
 													},
-													"value": " procedure requires multiple protection layers to be enacted before, during, and after messages reach the inbox. While SPF, DKIM, and DMARC authentication standards are a crucial safeguarding step, they alone fail to provide comprehensive protection against phishing attacks. These standards were not designed to detect the presence of dangerous emails and/or links that are typical of phishing attacks – proven by the fact that ",
-													"marks": [],
-													"content": null
-												},
-												{
-													"nodeType": "hyperlink",
-													"data": {
-														"target": null,
-														"uri": "https://blog.cloudflare.com/2023-phishing-report/"
-													},
-													"value": null,
-													"marks": null,
-													"content": [
-														{
-															"nodeType": "text",
-															"data": {
-																"target": null,
-																"uri": null
-															},
-															"value": "89%",
-															"marks": [],
-															"content": null
-														}
-													]
-												},
-												{
-													"nodeType": "text",
-													"data": {
-														"target": null,
-														"uri": null
-													},
-													"value": " of unwanted messages cleared through these tools. ",
+													"value": " procedure requires multiple protection layers to be enacted before, during, and after messages reach the inbox. While SPF, DKIM, and DMARC authentication standards are a crucial safeguarding step, they alone fail to provide comprehensive protection against phishing attacks. These standards were not designed to detect the presence of dangerous emails and / or links that are typical of phishing attacks — many unwanted messages have cleared through these tools.",
 													"marks": [],
 													"content": null
 												}
@@ -1091,7 +944,7 @@
 														"target": null,
 														"uri": null
 													},
-													"value": "The key to combating and keeping up with modern phishing tactics is adopting an assumed breach mindset – never trust, always verify. Organizations must implement a ",
+													"value": "The key to combating and keeping up with modern phishing tactics is adopting an assumed breach mindset — never trust, always verify. Organizations must implement a ",
 													"marks": [],
 													"content": null
 												},
@@ -1122,7 +975,52 @@
 														"target": null,
 														"uri": null
 													},
-													"value": " model for every email. Implementing phishing-resistant multi-factor authentication, augmenting cloud email security with multiple anti-phishing barriers, and equipping employees with secure tools are all critical pieces of achieving this. \n",
+													"value": " model for every email. Implementing phishing-resistant ",
+													"marks": [],
+													"content": null
+												},
+												{
+													"nodeType": "hyperlink",
+													"data": {
+														"target": null,
+														"uri": "https://www.cloudflare.com/learning/access-management/what-is-multi-factor-authentication/"
+													},
+													"value": null,
+													"marks": null,
+													"content": [
+														{
+															"nodeType": "text",
+															"data": {
+																"target": null,
+																"uri": null
+															},
+															"value": "multi-factor authentication",
+															"marks": [
+																{
+																	"type": "underline"
+																}
+															],
+															"content": null
+														}
+													]
+												},
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": ", augmenting cloud email security with multiple anti-phishing barriers, and equipping employees with secure tools are all critical pieces of achieving this.",
+													"marks": [],
+													"content": null
+												},
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "\n",
 													"marks": [],
 													"content": null
 												}
@@ -1168,7 +1066,7 @@
 														"target": null,
 														"uri": null
 													},
-													"value": "When processes and tools aren't working, the natural inclination is to throw more resources at the problem – more people, time, and money. This is the wrong move as taking reactive measures means it's already too late. Take spam filters, for instance, while they were the primary focus of email security at one point they are only the tip of the iceberg in what's needed to proactively combat phishing attacks. ",
+													"value": "When processes and tools aren't working, the natural inclination is to throw more resources at the problem — more people, time, and money. This is the wrong move as taking reactive measures means it's already too late. Take spam filters, for instance. While they were the primary focus of email security at one point, they are only the tip of the iceberg in what's needed to proactively combat phishing attacks.",
 													"marks": [],
 													"content": null
 												}
@@ -1189,38 +1087,28 @@
 														"target": null,
 														"uri": null
 													},
-													"value": "Categorizing phishing threats into different buckets, though successful in other contexts, is ineffective when taking a holistic view of phishing with the goal of confronting the problem. Many industry phishing reports divide the space granularly as if it is approaching and solving for 100 different problems – the same threat being discussed in 100 different ways can make it daunting to approach a solution. A comprehensive approach is essential, and as proven by the rising number of attacks, splicing data isn't leading to a solution. With ",
+													"value": "Categorizing phishing threats into different buckets, though successful in other contexts, is ineffective when taking a holistic view of phishing with the goal of confronting the problem. Many industry phishing reports divide the space granularly as if it is approaching and solving for 100 different problems — the same threat being discussed in 100 different ways can make it daunting to approach a solution. ",
 													"marks": [],
 													"content": null
-												},
-												{
-													"nodeType": "hyperlink",
-													"data": {
-														"target": null,
-														"uri": "https://www.cloudflare.com/lp/signals-report-2025/"
-													},
-													"value": null,
-													"marks": null,
-													"content": [
-														{
-															"nodeType": "text",
-															"data": {
-																"target": null,
-																"uri": null
-															},
-															"value": "90%",
-															"marks": [],
-															"content": null
-														}
-													]
-												},
+												}
+											]
+										},
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
 												{
 													"nodeType": "text",
 													"data": {
 														"target": null,
 														"uri": null
 													},
-													"value": " of security decision-makers in agreement that the type and scope of phishing threats are expanding, it's clear that there needs to be a streamlined, holistic strategy to safeguard our digital environments.  ",
+													"value": "A comprehensive approach is essential, and as proven by the rising number of attacks, splicing data isn't leading to a solution. With security decision-makers in agreement that the type and scope of phishing threats are expanding, it's clear that there needs to be a streamlined, holistic strategy to safeguard our digital environments.\n",
 													"marks": [],
 													"content": null
 												}
@@ -1266,38 +1154,7 @@
 														"target": null,
 														"uri": null
 													},
-													"value": "The cybersecurity landscape is inundated with solutions that each promise enhanced security, However, very few effectively address the exacerbated issue of phishing – one that no organization is immune to. ",
-													"marks": [],
-													"content": null
-												},
-												{
-													"nodeType": "hyperlink",
-													"data": {
-														"target": null,
-														"uri": "https://www.cloudflare.com/lp/signals-report-2025/"
-													},
-													"value": null,
-													"marks": null,
-													"content": [
-														{
-															"nodeType": "text",
-															"data": {
-																"target": null,
-																"uri": null
-															},
-															"value": "In 2022 alone",
-															"marks": [],
-															"content": null
-														}
-													]
-												},
-												{
-													"nodeType": "text",
-													"data": {
-														"target": null,
-														"uri": null
-													},
-													"value": ", Cloudflare detected over 1.4 million BEC threats, double the volume compared to 2021, with 71% of organizations experiencing an attempted or actual business email compromise attack. ",
+													"value": "The cybersecurity landscape is inundated with solutions that each promise enhanced security, However, very few effectively address the exacerbated issue of phishing — one that no organization is immune to. ",
 													"marks": [],
 													"content": null
 												}
@@ -1318,38 +1175,7 @@
 														"target": null,
 														"uri": null
 													},
-													"value": "This data shows phishing permeates across industries, effectively dismantling traditional security investments with the click of a single link. Users are more susceptible to clicking links than downloading a file, as they perceive the link as a more authentic form of communication. Threat actors repeatedly capitalize on this human weakness which has moved malicious links to the most common threat category, compromising ",
-													"marks": [],
-													"content": null
-												},
-												{
-													"nodeType": "hyperlink",
-													"data": {
-														"target": null,
-														"uri": "https://blog.cloudflare.com/2023-phishing-report/"
-													},
-													"value": null,
-													"marks": null,
-													"content": [
-														{
-															"nodeType": "text",
-															"data": {
-																"target": null,
-																"uri": null
-															},
-															"value": "35.6%",
-															"marks": [],
-															"content": null
-														}
-													]
-												},
-												{
-													"nodeType": "text",
-													"data": {
-														"target": null,
-														"uri": null
-													},
-													"value": " of all detected threats. These links and files can lead to credential harvesting, remote code execution that lets the attacker install malware or ransomware, steal data, or take other actions, and ultimately a full network compromise just by taking over a single workstation. ",
+													"value": "Phishing affects all industries, effectively dismantling traditional security investments with the click of a single link. Users are more susceptible to clicking links than downloading a file, as they perceive the link as a more authentic form of communication. Threat actors repeatedly capitalize on this human weakness, making malicious links one of the most common threats. These links and files can lead to credential harvesting, remote code execution that lets the attacker install malware or ransomware, steal data, or take other actions, and ultimately a full network compromise just by taking over a single workstation.",
 													"marks": [],
 													"content": null
 												}
@@ -1370,7 +1196,7 @@
 														"target": null,
 														"uri": null
 													},
-													"value": "As phishing continues to surge, business leaders must leverage data points to enact solutions. This ensures that resources are being properly allocated to proactively defend against breaches resulting from successful phishing attacks. The data is clear that phishing is an overwhelming issue for businesses of all sizes, but there are pointed answers on how to apply resources to prevent phishing attacks from causing irreversible damage.  ",
+													"value": "As phishing continues to surge, business leaders must leverage data points to enact solutions. This ensures that resources are being properly allocated to proactively defend against breaches resulting from successful phishing attacks. The data is clear that phishing is an overwhelming issue for businesses of all sizes, but there are pointed answers on how to apply resources to prevent phishing attacks from causing irreversible damage.",
 													"marks": [],
 													"content": null
 												}
@@ -1391,7 +1217,7 @@
 														"target": null,
 														"uri": null
 													},
-													"value": "It's not all doom and gloom: Modernizing the fight against phishing ",
+													"value": "Modernizing the fight against phishing",
 													"marks": [
 														{
 															"type": "bold"
@@ -1424,7 +1250,7 @@
 													"nodeType": "hyperlink",
 													"data": {
 														"target": null,
-														"uri": "https://www.cloudflare.com/sase/products/access/"
+														"uri": "https://www.cloudflare.com/zero-trust/products/access/"
 													},
 													"value": null,
 													"marks": null,
@@ -1455,7 +1281,7 @@
 													"nodeType": "hyperlink",
 													"data": {
 														"target": null,
-														"uri": "https://www.cloudflare.com/sase/use-cases/email-security-services"
+														"uri": "https://www.cloudflare.com/zero-trust/solutions/email-security-services/"
 													},
 													"value": null,
 													"marks": null,
@@ -1478,7 +1304,7 @@
 														"target": null,
 														"uri": null
 													},
-													"value": " to address high-risk areas for attack exposure, and implement phishing-resistant MFA security tools. ",
+													"value": " to address high-risk areas for attack exposure, and implement phishing-resistant MFA security tools.",
 													"marks": [],
 													"content": null
 												}
@@ -1499,7 +1325,7 @@
 														"target": null,
 														"uri": null
 													},
-													"value": "The tech stack is just as important as addressing your own organizational culture: teams within large organizations have their own preferred tools, so meeting employees where they are by making the tools they already use more secure helps prevent potential phishing attacks. Encouraging a ",
+													"value": "The tech stack is just as important as addressing your own organizational culture: Teams within large organizations have their own preferred tools, so meeting employees where they are by making the tools they already use more secure helps prevent potential phishing attacks. Encouraging a ",
 													"marks": [],
 													"content": null
 												},
@@ -1530,7 +1356,7 @@
 														"target": null,
 														"uri": null
 													},
-													"value": ", transparent \"see something, say something\" approach to reporting suspicious activities is paramount because the minutes between reporting a suspicious activity and taking action are critical. ",
+													"value": ", transparent \"see something, say something\" approach to reporting suspicious activities is paramount because the minutes between reporting a suspicious activity and taking action are critical.",
 													"marks": [],
 													"content": null
 												}
@@ -1551,7 +1377,7 @@
 														"target": null,
 														"uri": null
 													},
-													"value": "By implementing modern technical solutions, confronting the problem head-on, and leveraging data-driven solutions, organizations can break free of band-aid solutions and extensively protect themselves and their data from phishing attacks. Such solutions necessitate a cross-functional approach, blending technical measures with organizational awareness to create a formidable defense against the insidious threat of phishing. ",
+													"value": "By implementing modern technical solutions, confronting the problem head-on, and leveraging data-driven solutions, organizations can break free of band-aid solutions and extensively protect themselves and their data from phishing attacks. Such solutions necessitate a cross-functional approach, blending technical measures with organizational awareness to create a formidable defense against the insidious threat of phishing.",
 													"marks": [],
 													"content": null
 												}
@@ -1711,7 +1537,7 @@
 														"target": null,
 														"uri": null
 													},
-													"value": "Learn more about the latest phishing trends in the ",
+													"value": "Identify the types of phishing attacks your current email security systems miss with a free ",
 													"marks": [],
 													"content": null
 												},
@@ -1719,7 +1545,7 @@
 													"nodeType": "hyperlink",
 													"data": {
 														"target": null,
-														"uri": "https://www.cloudflare.com/lp/signals-report-2025/"
+														"uri": "https://www.cloudflare.com/lp/emailsecurity/"
 													},
 													"value": null,
 													"marks": null,
@@ -1730,7 +1556,7 @@
 																"target": null,
 																"uri": null
 															},
-															"value": "Phishing Threats Report",
+															"value": "Phishing Risk Assessment",
 															"marks": [
 																{
 																	"type": "italic"
@@ -1746,7 +1572,21 @@
 														"target": null,
 														"uri": null
 													},
-													"value": ".\n",
+													"value": ".",
+													"marks": [
+														{
+															"type": "italic"
+														}
+													],
+													"content": null
+												},
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "\n",
 													"marks": [],
 													"content": null
 												}
