@@ -10,10 +10,11 @@
 	"scripts": {
 		"lint": "eslint .",
 		"lint:fix": "eslint . --fix",
-		"mine": "npm run mine:npm && npm run mine:types && npm run mine:github && npm run mine:api-schemas && npm run mine:ips && npm run mine:coveo && npm run mine:gates && npm run mine:products && npm run mine:graphql && npm run mine:account && npm run mine:investors && npm run mine:doh && npm run mine:icons && npm run mine:marketing-pages && npm run mine:workers-types && npm run mine:warp",
+		"mine": "npm run mine:npm && npm run mine:types && npm run mine:github && npm run mine:api-schemas && npm run mine:ips && npm run mine:coveo && npm run mine:gates && npm run mine:products && npm run mine:graphql && npm run mine:account && npm run mine:investors && npm run mine:doh && npm run mine:icons && npm run mine:marketing-pages && npm run mine:workers-types && npm run mine:warp && npm run mine:cf-cli",
 		"mine:account": "node src/account.js",
 		"mine:api-schemas": "node src/api-schemas.js",
 		"mine:blog": "node src/blog.js",
+		"mine:cf-cli": "node src/cf-cli.js",
 		"mine:cdn-cgi": "node src/cdn-cgi.js",
 		"mine:cdn-cgi-dev": "node src/cdn-cgi-dev.js",
 		"mine:cdn-cgi-files": "node src/cdn-cgi-files.js",
