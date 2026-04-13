@@ -113,13 +113,13 @@
 													"latitude": {
 														"description": "A numeric string.",
 														"example": "10",
-														"pattern": "^\\d+$",
+														"pattern": "^-?\\d+(\\.\\d+)?$",
 														"type": "string"
 													},
 													"longitude": {
 														"description": "A numeric string.",
 														"example": "10",
-														"pattern": "^\\d+$",
+														"pattern": "^-?\\d+(\\.\\d+)?$",
 														"type": "string"
 													},
 													"name": {
@@ -287,13 +287,13 @@
 												"latitude": {
 													"description": "A numeric string.",
 													"example": "10",
-													"pattern": "^\\d+$",
+													"pattern": "^-?\\d+(\\.\\d+)?$",
 													"type": "string"
 												},
 												"longitude": {
 													"description": "A numeric string.",
 													"example": "10",
-													"pattern": "^\\d+$",
+													"pattern": "^-?\\d+(\\.\\d+)?$",
 													"type": "string"
 												},
 												"name": {

@@ -828,19 +828,19 @@
 												"FAIL": {
 													"description": "A numeric string.",
 													"example": "10",
-													"pattern": "^\\d+$",
+													"pattern": "^-?\\d+(\\.\\d+)?$",
 													"type": "string"
 												},
 												"NONE": {
 													"description": "A numeric string.",
 													"example": "10",
-													"pattern": "^\\d+$",
+													"pattern": "^-?\\d+(\\.\\d+)?$",
 													"type": "string"
 												},
 												"PASS": {
 													"description": "A numeric string.",
 													"example": "10",
-													"pattern": "^\\d+$",
+													"pattern": "^-?\\d+(\\.\\d+)?$",
 													"type": "string"
 												}
 											},
@@ -1283,19 +1283,19 @@
 												"FAIL": {
 													"description": "A numeric string.",
 													"example": "10",
-													"pattern": "^\\d+$",
+													"pattern": "^-?\\d+(\\.\\d+)?$",
 													"type": "string"
 												},
 												"NONE": {
 													"description": "A numeric string.",
 													"example": "10",
-													"pattern": "^\\d+$",
+													"pattern": "^-?\\d+(\\.\\d+)?$",
 													"type": "string"
 												},
 												"PASS": {
 													"description": "A numeric string.",
 													"example": "10",
-													"pattern": "^\\d+$",
+													"pattern": "^-?\\d+(\\.\\d+)?$",
 													"type": "string"
 												}
 											},
@@ -1738,19 +1738,19 @@
 												"FAIL": {
 													"description": "A numeric string.",
 													"example": "10",
-													"pattern": "^\\d+$",
+													"pattern": "^-?\\d+(\\.\\d+)?$",
 													"type": "string"
 												},
 												"NONE": {
 													"description": "A numeric string.",
 													"example": "10",
-													"pattern": "^\\d+$",
+													"pattern": "^-?\\d+(\\.\\d+)?$",
 													"type": "string"
 												},
 												"PASS": {
 													"description": "A numeric string.",
 													"example": "10",
-													"pattern": "^\\d+$",
+													"pattern": "^-?\\d+(\\.\\d+)?$",
 													"type": "string"
 												}
 											},
@@ -2194,13 +2194,13 @@
 												"ENCRYPTED": {
 													"description": "A numeric string.",
 													"example": "10",
-													"pattern": "^\\d+$",
+													"pattern": "^-?\\d+(\\.\\d+)?$",
 													"type": "string"
 												},
 												"NOT_ENCRYPTED": {
 													"description": "A numeric string.",
 													"example": "10",
-													"pattern": "^\\d+$",
+													"pattern": "^-?\\d+(\\.\\d+)?$",
 													"type": "string"
 												}
 											},
@@ -2643,13 +2643,13 @@
 												"IPv4": {
 													"description": "A numeric string.",
 													"example": "10",
-													"pattern": "^\\d+$",
+													"pattern": "^-?\\d+(\\.\\d+)?$",
 													"type": "string"
 												},
 												"IPv6": {
 													"description": "A numeric string.",
 													"example": "10",
-													"pattern": "^\\d+$",
+													"pattern": "^-?\\d+(\\.\\d+)?$",
 													"type": "string"
 												}
 											},
@@ -3091,19 +3091,19 @@
 												"FAIL": {
 													"description": "A numeric string.",
 													"example": "10",
-													"pattern": "^\\d+$",
+													"pattern": "^-?\\d+(\\.\\d+)?$",
 													"type": "string"
 												},
 												"NONE": {
 													"description": "A numeric string.",
 													"example": "10",
-													"pattern": "^\\d+$",
+													"pattern": "^-?\\d+(\\.\\d+)?$",
 													"type": "string"
 												},
 												"PASS": {
 													"description": "A numeric string.",
 													"example": "10",
-													"pattern": "^\\d+$",
+													"pattern": "^-?\\d+(\\.\\d+)?$",
 													"type": "string"
 												}
 											},
@@ -3619,7 +3619,7 @@
 												"items": {
 													"description": "A numeric string.",
 													"example": "10",
-													"pattern": "^\\d+$",
+													"pattern": "^-?\\d+(\\.\\d+)?$",
 													"type": "string"
 												},
 												"type": "array"
@@ -4106,7 +4106,7 @@
 													"items": {
 														"description": "A numeric string.",
 														"example": "10",
-														"pattern": "^\\d+$",
+														"pattern": "^-?\\d+(\\.\\d+)?$",
 														"type": "string"
 													},
 													"type": "array"
@@ -4115,7 +4115,7 @@
 													"items": {
 														"description": "A numeric string.",
 														"example": "10",
-														"pattern": "^\\d+$",
+														"pattern": "^-?\\d+(\\.\\d+)?$",
 														"type": "string"
 													},
 													"type": "array"
@@ -4124,7 +4124,7 @@
 													"items": {
 														"description": "A numeric string.",
 														"example": "10",
-														"pattern": "^\\d+$",
+														"pattern": "^-?\\d+(\\.\\d+)?$",
 														"type": "string"
 													},
 													"type": "array"
@@ -4598,7 +4598,7 @@
 													"items": {
 														"description": "A numeric string.",
 														"example": "10",
-														"pattern": "^\\d+$",
+														"pattern": "^-?\\d+(\\.\\d+)?$",
 														"type": "string"
 													},
 													"type": "array"
@@ -4607,7 +4607,7 @@
 													"items": {
 														"description": "A numeric string.",
 														"example": "10",
-														"pattern": "^\\d+$",
+														"pattern": "^-?\\d+(\\.\\d+)?$",
 														"type": "string"
 													},
 													"type": "array"
@@ -4616,7 +4616,7 @@
 													"items": {
 														"description": "A numeric string.",
 														"example": "10",
-														"pattern": "^\\d+$",
+														"pattern": "^-?\\d+(\\.\\d+)?$",
 														"type": "string"
 													},
 													"type": "array"
@@ -5090,7 +5090,7 @@
 													"items": {
 														"description": "A numeric string.",
 														"example": "10",
-														"pattern": "^\\d+$",
+														"pattern": "^-?\\d+(\\.\\d+)?$",
 														"type": "string"
 													},
 													"type": "array"
@@ -5099,7 +5099,7 @@
 													"items": {
 														"description": "A numeric string.",
 														"example": "10",
-														"pattern": "^\\d+$",
+														"pattern": "^-?\\d+(\\.\\d+)?$",
 														"type": "string"
 													},
 													"type": "array"
@@ -5108,7 +5108,7 @@
 													"items": {
 														"description": "A numeric string.",
 														"example": "10",
-														"pattern": "^\\d+$",
+														"pattern": "^-?\\d+(\\.\\d+)?$",
 														"type": "string"
 													},
 													"type": "array"
@@ -5583,7 +5583,7 @@
 													"items": {
 														"description": "A numeric string.",
 														"example": "10",
-														"pattern": "^\\d+$",
+														"pattern": "^-?\\d+(\\.\\d+)?$",
 														"type": "string"
 													},
 													"type": "array"
@@ -5592,7 +5592,7 @@
 													"items": {
 														"description": "A numeric string.",
 														"example": "10",
-														"pattern": "^\\d+$",
+														"pattern": "^-?\\d+(\\.\\d+)?$",
 														"type": "string"
 													},
 													"type": "array"
@@ -6066,7 +6066,7 @@
 													"items": {
 														"description": "A numeric string.",
 														"example": "10",
-														"pattern": "^\\d+$",
+														"pattern": "^-?\\d+(\\.\\d+)?$",
 														"type": "string"
 													},
 													"type": "array"
@@ -6075,7 +6075,7 @@
 													"items": {
 														"description": "A numeric string.",
 														"example": "10",
-														"pattern": "^\\d+$",
+														"pattern": "^-?\\d+(\\.\\d+)?$",
 														"type": "string"
 													},
 													"type": "array"
@@ -6548,7 +6548,7 @@
 													"items": {
 														"description": "A numeric string.",
 														"example": "10",
-														"pattern": "^\\d+$",
+														"pattern": "^-?\\d+(\\.\\d+)?$",
 														"type": "string"
 													},
 													"type": "array"
@@ -6557,7 +6557,7 @@
 													"items": {
 														"description": "A numeric string.",
 														"example": "10",
-														"pattern": "^\\d+$",
+														"pattern": "^-?\\d+(\\.\\d+)?$",
 														"type": "string"
 													},
 													"type": "array"
@@ -6566,7 +6566,7 @@
 													"items": {
 														"description": "A numeric string.",
 														"example": "10",
-														"pattern": "^\\d+$",
+														"pattern": "^-?\\d+(\\.\\d+)?$",
 														"type": "string"
 													},
 													"type": "array"

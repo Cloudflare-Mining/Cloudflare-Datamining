@@ -270,7 +270,7 @@
 											"additionalProperties": {
 												"description": "A numeric string.",
 												"example": "10",
-												"pattern": "^\\d+$",
+												"pattern": "^-?\\d+(\\.\\d+)?$",
 												"type": "string"
 											},
 											"example": {
@@ -649,7 +649,7 @@
 												"items": {
 													"description": "A numeric string.",
 													"example": "10",
-													"pattern": "^\\d+$",
+													"pattern": "^-?\\d+(\\.\\d+)?$",
 													"type": "string"
 												},
 												"type": "array"

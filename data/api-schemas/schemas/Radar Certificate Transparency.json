@@ -912,14 +912,14 @@
 													"description": "Number of certificates that are eligible for inclusion to this log but have not been included yet. Based on certificates signed by trusted root CAs within the log's accepted date range.",
 													"example": "10",
 													"nullable": true,
-													"pattern": "^\\d+$",
+													"pattern": "^-?\\d+(\\.\\d+)?$",
 													"type": "string"
 												},
 												"submittedCertCount": {
 													"description": "Number of certificates already included in this CT log.",
 													"example": "10",
 													"nullable": true,
-													"pattern": "^\\d+$",
+													"pattern": "^-?\\d+(\\.\\d+)?$",
 													"type": "string"
 												},
 												"url": {
@@ -1560,7 +1560,7 @@
 													"additionalProperties": {
 														"description": "A numeric string.",
 														"example": "10",
-														"pattern": "^\\d+$",
+														"pattern": "^-?\\d+(\\.\\d+)?$",
 														"type": "string"
 													},
 													"example": {
@@ -2138,7 +2138,7 @@
 												"items": {
 													"description": "A numeric string.",
 													"example": "10",
-													"pattern": "^\\d+$",
+													"pattern": "^-?\\d+(\\.\\d+)?$",
 													"type": "string"
 												},
 												"type": "array"
@@ -2995,7 +2995,7 @@
 														"items": {
 															"description": "A numeric string.",
 															"example": "10",
-															"pattern": "^\\d+$",
+															"pattern": "^-?\\d+(\\.\\d+)?$",
 															"type": "string"
 														},
 														"type": "array"

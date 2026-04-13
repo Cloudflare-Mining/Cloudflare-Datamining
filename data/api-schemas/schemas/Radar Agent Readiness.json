@@ -1,0 +1,264 @@
+{
+	"GET /radar/agent_readiness/summary/{dimension}": {
+		"description": "Returns a summary of AI agent readiness scores across scanned domains, grouped by the specified dimension. Data is sourced from weekly bulk scans. All values are raw domain counts.",
+		"operationId": "radar-get-agent-readiness-summary",
+		"parameters": [
+			{
+				"description": "Specifies the agent readiness data dimension by which to group the results.",
+				"in": "path",
+				"name": "dimension",
+				"required": true,
+				"schema": {
+					"description": "Specifies the agent readiness data dimension by which to group the results.",
+					"enum": [
+						"CHECK"
+					],
+					"type": "string"
+				}
+			},
+			{
+				"description": "Filters results by the specified date.",
+				"in": "query",
+				"name": "date",
+				"schema": {
+					"description": "Filters results by the specified date.",
+					"example": "2024-09-19",
+					"format": "date",
+					"type": "string"
+				}
+			},
+			{
+				"description": "Filters results by domain category.",
+				"in": "query",
+				"name": "domainCategory",
+				"schema": {
+					"description": "Filters results by domain category.",
+					"example": "News & Media",
+					"items": {
+						"maxLength": 100,
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
+				"description": "Array of names used to label the series in the response.",
+				"in": "query",
+				"name": "name",
+				"schema": {
+					"description": "Array of names used to label the series in the response.",
+					"items": {
+						"example": "main_series",
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
+				"description": "Format in which results will be returned.",
+				"in": "query",
+				"name": "format",
+				"schema": {
+					"description": "Format in which results will be returned.",
+					"enum": [
+						"JSON",
+						"CSV"
+					],
+					"example": "json",
+					"type": "string"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"result": {
+									"properties": {
+										"meta": {
+											"properties": {
+												"date": {
+													"description": "Date of the returned scan (YYYY-MM-DD). May differ from the requested date if no scan exists for that exact date.",
+													"example": "2026-03-24",
+													"type": "string"
+												},
+												"domainCategories": {
+													"description": "Available domain sub-categories with their scan counts. Use as filter options for the domainCategory parameter.",
+													"items": {
+														"properties": {
+															"name": {
+																"description": "Sub-category name.",
+																"example": "News & Media",
+																"type": "string"
+															},
+															"value": {
+																"description": "Number of successfully scanned domains in this sub-category.",
+																"type": "integer"
+															}
+														},
+														"required": [
+															"name",
+															"value"
+														],
+														"type": "object"
+													},
+													"type": "array"
+												},
+												"lastUpdated": {
+													"description": "Timestamp of the last dataset update.",
+													"format": "date-time",
+													"type": "string"
+												},
+												"normalization": {
+													"description": "Normalization method applied to the results. Refer to [Normalization methods](https://developers.cloudflare.com/radar/concepts/normalization/).",
+													"enum": [
+														"PERCENTAGE",
+														"MIN0_MAX",
+														"MIN_MAX",
+														"RAW_VALUES",
+														"PERCENTAGE_CHANGE",
+														"ROLLING_AVERAGE",
+														"OVERLAPPED_PERCENTAGE",
+														"RATIO"
+													],
+													"type": "string"
+												},
+												"successfulDomains": {
+													"description": "Domains successfully scanned (excludes errors).",
+													"type": "integer"
+												},
+												"totalDomains": {
+													"description": "Total domains attempted in the scan.",
+													"type": "integer"
+												},
+												"units": {
+													"description": "Measurement units for the results.",
+													"items": {
+														"properties": {
+															"name": {
+																"example": "*",
+																"type": "string"
+															},
+															"value": {
+																"example": "requests",
+																"type": "string"
+															}
+														},
+														"required": [
+															"name",
+															"value"
+														],
+														"type": "object"
+													},
+													"type": "array"
+												}
+											},
+											"required": [
+												"date",
+												"totalDomains",
+												"successfulDomains",
+												"normalization",
+												"lastUpdated",
+												"units",
+												"domainCategories"
+											],
+											"type": "object"
+										},
+										"summary_0": {
+											"additionalProperties": {
+												"description": "Raw domain count as a numeric string.",
+												"example": "280000",
+												"type": "string"
+											},
+											"example": {
+												"markdownNegotiation": "45000",
+												"robotsTxt": "280000"
+											},
+											"type": "object"
+										}
+									},
+									"required": [
+										"summary_0",
+										"meta"
+									],
+									"type": "object"
+								},
+								"success": {
+									"example": true,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"result",
+								"success"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Successful response."
+			},
+			"400": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"result": {
+									"type": "object"
+								},
+								"success": {
+									"example": false,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"result",
+								"success",
+								"errors"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Bad request."
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": [],
+				"api_token": []
+			}
+		],
+		"summary": "Get agent readiness summary",
+		"tags": [
+			"Radar Agent Readiness"
+		],
+		"x-api-token-group": [
+			"User Details Write",
+			"User Details Read"
+		],
+		"x-cfPlanAvailability": {
+			"business": true,
+			"enterprise": true,
+			"free": true,
+			"pro": true
+		}
+	}
+}
