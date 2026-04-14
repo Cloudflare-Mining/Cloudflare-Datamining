@@ -594,6 +594,12 @@
 																		"type": "boolean",
 																		"x-auditable": true
 																	},
+																	"has_extended_context": {
+																		"description": "Indicates whether the insight has a large payload that requires fetching via the context endpoint.",
+																		"example": false,
+																		"type": "boolean",
+																		"x-auditable": true
+																	},
 																	"id": {
 																		"type": "string",
 																		"x-auditable": true
@@ -652,6 +658,16 @@
 																		"type": "string",
 																		"x-auditable": true
 																	},
+																	"status": {
+																		"description": "The current status of the insight.",
+																		"enum": [
+																			"active",
+																			"resolved"
+																		],
+																		"example": "active",
+																		"type": "string",
+																		"x-auditable": true
+																	},
 																	"subject": {
 																		"example": "example.com",
 																		"type": "string",
@@ -659,6 +675,19 @@
 																	},
 																	"timestamp": {
 																		"format": "date-time",
+																		"type": "string",
+																		"x-auditable": true
+																	},
+																	"user_classification": {
+																		"description": "User-defined classification for the insight. Can be 'false_positive', 'accept_risk', 'other', or null.",
+																		"enum": [
+																			"false_positive",
+																			"accept_risk",
+																			"other",
+																			null
+																		],
+																		"example": "false_positive",
+																		"nullable": true,
 																		"type": "string",
 																		"x-auditable": true
 																	}
@@ -2514,6 +2543,12 @@
 																		"type": "boolean",
 																		"x-auditable": true
 																	},
+																	"has_extended_context": {
+																		"description": "Indicates whether the insight has a large payload that requires fetching via the context endpoint.",
+																		"example": false,
+																		"type": "boolean",
+																		"x-auditable": true
+																	},
 																	"id": {
 																		"type": "string",
 																		"x-auditable": true
@@ -2572,6 +2607,16 @@
 																		"type": "string",
 																		"x-auditable": true
 																	},
+																	"status": {
+																		"description": "The current status of the insight.",
+																		"enum": [
+																			"active",
+																			"resolved"
+																		],
+																		"example": "active",
+																		"type": "string",
+																		"x-auditable": true
+																	},
 																	"subject": {
 																		"example": "example.com",
 																		"type": "string",
@@ -2579,6 +2624,19 @@
 																	},
 																	"timestamp": {
 																		"format": "date-time",
+																		"type": "string",
+																		"x-auditable": true
+																	},
+																	"user_classification": {
+																		"description": "User-defined classification for the insight. Can be 'false_positive', 'accept_risk', 'other', or null.",
+																		"enum": [
+																			"false_positive",
+																			"accept_risk",
+																			"other",
+																			null
+																		],
+																		"example": "false_positive",
+																		"nullable": true,
 																		"type": "string",
 																		"x-auditable": true
 																	}
@@ -4671,6 +4729,12 @@
 																		"type": "boolean",
 																		"x-auditable": true
 																	},
+																	"has_extended_context": {
+																		"description": "Indicates whether the insight has a large payload that requires fetching via the context endpoint.",
+																		"example": false,
+																		"type": "boolean",
+																		"x-auditable": true
+																	},
 																	"id": {
 																		"type": "string",
 																		"x-auditable": true
@@ -4729,6 +4793,16 @@
 																		"type": "string",
 																		"x-auditable": true
 																	},
+																	"status": {
+																		"description": "The current status of the insight.",
+																		"enum": [
+																			"active",
+																			"resolved"
+																		],
+																		"example": "active",
+																		"type": "string",
+																		"x-auditable": true
+																	},
 																	"subject": {
 																		"example": "example.com",
 																		"type": "string",
@@ -4736,6 +4810,19 @@
 																	},
 																	"timestamp": {
 																		"format": "date-time",
+																		"type": "string",
+																		"x-auditable": true
+																	},
+																	"user_classification": {
+																		"description": "User-defined classification for the insight. Can be 'false_positive', 'accept_risk', 'other', or null.",
+																		"enum": [
+																			"false_positive",
+																			"accept_risk",
+																			"other",
+																			null
+																		],
+																		"example": "false_positive",
+																		"nullable": true,
 																		"type": "string",
 																		"x-auditable": true
 																	}
@@ -6250,6 +6337,570 @@
 		"x-api-token-group": [
 			"Zone Settings Write",
 			"Zone Settings Read"
+		]
+	},
+	"PATCH /accounts/{account_id}/security-center/insights/{issue_id}/classification": {
+		"description": "Updates the user classification for a Security Center insight. Valid values are 'false_positive' or 'accept_risk'. To reset, set classification to null. Cannot change directly between classification values - must reset to null first.",
+		"operationId": "update-security-center-insight-classification",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"description": "Identifier.",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"type": "string",
+					"x-auditable": true
+				}
+			},
+			{
+				"in": "path",
+				"name": "issue_id",
+				"required": true,
+				"schema": {
+					"type": "string"
+				}
+			}
+		],
+		"requestBody": {
+			"content": {
+				"application/json": {
+					"schema": {
+						"properties": {
+							"classification": {
+								"description": "User-defined classification for the insight. Can be 'false_positive', 'accept_risk', 'other', or null.",
+								"enum": [
+									"false_positive",
+									"accept_risk",
+									"other",
+									null
+								],
+								"example": "false_positive",
+								"nullable": true,
+								"type": "string",
+								"x-auditable": true
+							},
+							"rationale": {
+								"description": "Rationale for the classification change. Required when classification is 'accept_risk' or 'other'.",
+								"type": "string",
+								"x-auditable": true
+							}
+						},
+						"type": "object"
+					}
+				}
+			},
+			"required": true
+		},
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"properties": {
+												"errors": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																},
+																"type": "object"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"messages": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																},
+																"type": "object"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"success": {
+													"description": "Whether the API call was successful.",
+													"enum": [
+														true
+													],
+													"example": true,
+													"type": "boolean"
+												}
+											},
+											"required": [
+												"success",
+												"errors",
+												"messages"
+											],
+											"type": "object"
+										}
+									],
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "The request was successful."
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"allOf": [
+										{
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														},
+														"type": "object"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										}
+									],
+									"example": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
+										}
+									],
+									"minLength": 1
+								},
+								"messages": {
+									"allOf": [
+										{
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														},
+														"type": "object"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										}
+									],
+									"example": []
+								},
+								"result": {
+									"enum": [
+										null
+									],
+									"nullable": true,
+									"type": "object"
+								},
+								"success": {
+									"description": "Whether the API call was successful.",
+									"enum": [
+										false
+									],
+									"example": false,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "A client error occurred."
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			},
+			{
+				"api_token": []
+			}
+		],
+		"summary": "Updates Security Center Insight Classification",
+		"tags": [
+			"Security Center Insights"
+		]
+	},
+	"PATCH /zones/{zone_id}/security-center/insights/{issue_id}/classification": {
+		"description": "Updates the user classification for a zone-specific Security Center insight. Valid values are 'false_positive' or 'accept_risk'. To reset, set classification to null. Cannot change directly between classification values - must reset to null first.",
+		"operationId": "update-zone-security-center-insight-classification",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "zone_id",
+				"required": true,
+				"schema": {
+					"description": "Identifier.",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"type": "string",
+					"x-auditable": true
+				}
+			},
+			{
+				"in": "path",
+				"name": "issue_id",
+				"required": true,
+				"schema": {
+					"type": "string"
+				}
+			}
+		],
+		"requestBody": {
+			"content": {
+				"application/json": {
+					"schema": {
+						"properties": {
+							"classification": {
+								"description": "User-defined classification for the insight. Can be 'false_positive', 'accept_risk', 'other', or null.",
+								"enum": [
+									"false_positive",
+									"accept_risk",
+									"other",
+									null
+								],
+								"example": "false_positive",
+								"nullable": true,
+								"type": "string",
+								"x-auditable": true
+							},
+							"rationale": {
+								"description": "Rationale for the classification change. Required when classification is 'accept_risk' or 'other'.",
+								"type": "string",
+								"x-auditable": true
+							}
+						},
+						"type": "object"
+					}
+				}
+			},
+			"required": true
+		},
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"properties": {
+												"errors": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																},
+																"type": "object"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"messages": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																},
+																"type": "object"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"success": {
+													"description": "Whether the API call was successful.",
+													"enum": [
+														true
+													],
+													"example": true,
+													"type": "boolean"
+												}
+											},
+											"required": [
+												"success",
+												"errors",
+												"messages"
+											],
+											"type": "object"
+										}
+									],
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "The request was successful."
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"allOf": [
+										{
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														},
+														"type": "object"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										}
+									],
+									"example": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
+										}
+									],
+									"minLength": 1
+								},
+								"messages": {
+									"allOf": [
+										{
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														},
+														"type": "object"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										}
+									],
+									"example": []
+								},
+								"result": {
+									"enum": [
+										null
+									],
+									"nullable": true,
+									"type": "object"
+								},
+								"success": {
+									"description": "Whether the API call was successful.",
+									"enum": [
+										false
+									],
+									"example": false,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "A client error occurred."
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			},
+			{
+				"api_token": []
+			}
+		],
+		"summary": "Updates Zone Security Center Insight Classification",
+		"tags": [
+			"Security Center Insights"
 		]
 	},
 	"PUT /accounts/{account_id}/intel/attack-surface-report/{issue_id}/dismiss": {
