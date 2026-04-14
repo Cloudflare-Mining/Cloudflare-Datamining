@@ -20,7 +20,8 @@ interface WorkersVersionsCreateArgs {
   'assets-jwt'?: string;
   'compatibility-date'?: string;
   'compatibility-flags'?: string;
-  'limits-cpu-ms': number;
+  'limits-cpu-ms'?: number;
+  'limits-subrequests'?: number;
   'main-module'?: string;
   'migrations-new-tag'?: string;
   'migrations-old-tag'?: string;
@@ -88,6 +89,12 @@ const command: CommandModule<object, WorkersVersionsCreateArgs> = {
       .option('limits-cpu-ms', {
         type: 'number',
         description: 'CPU time limit in milliseconds.',
+        default: undefined,
+      })
+      .option('limits-subrequests', {
+        type: 'number',
+        description: 'Subrequest limit per request.',
+        default: undefined,
       })
       .option('main-module', {
         type: 'string',
@@ -208,6 +215,7 @@ const command: CommandModule<object, WorkersVersionsCreateArgs> = {
             compatibilityDate: argv.compatibilityDate,
             compatibilityFlags: argv.compatibilityFlags,
             limitsCpuMs: argv.limitsCpuMs,
+            limitsSubrequests: argv.limitsSubrequests,
             mainModule: argv.mainModule,
             migrationsNewTag: argv.migrationsNewTag,
             migrationsOldTag: argv.migrationsOldTag,
@@ -252,6 +260,8 @@ const command: CommandModule<object, WorkersVersionsCreateArgs> = {
       if (argv.compatibilityFlags !== undefined)
         setNestedValue(bodyData, ['compatibility_flags'], argv.compatibilityFlags);
       if (argv.limitsCpuMs !== undefined) setNestedValue(bodyData, ['limits', 'cpu_ms'], argv.limitsCpuMs);
+      if (argv.limitsSubrequests !== undefined)
+        setNestedValue(bodyData, ['limits', 'subrequests'], argv.limitsSubrequests);
       if (argv.mainModule !== undefined) setNestedValue(bodyData, ['main_module'], argv.mainModule);
       if (argv.migrationsNewTag !== undefined)
         setNestedValue(bodyData, ['migrations', 'new_tag'], argv.migrationsNewTag);

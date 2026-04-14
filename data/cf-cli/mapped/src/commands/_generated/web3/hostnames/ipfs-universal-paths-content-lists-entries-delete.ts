@@ -27,7 +27,7 @@ interface IpfsUniversalPathsContentListsEntriesDeleteArgs {
 
 const command: CommandModule<object, IpfsUniversalPathsContentListsEntriesDeleteArgs> = {
   command: 'ipfs-universal-paths-content-lists-entries-delete <contentListEntryIdentifier> <identifier> [zoneId]',
-  describe: 'Deletes an entry from an IPFS Universal Path Gateway content list.',
+  describe: 'Delete an IPFS content list entry',
 
   builder: (yargs: Argv): Argv<IpfsUniversalPathsContentListsEntriesDeleteArgs> => {
     return yargs

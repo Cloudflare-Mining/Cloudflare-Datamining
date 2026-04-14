@@ -13,6 +13,7 @@ interface ListArgs {
   namespace?: string;
   recursive?: string;
   search?: string;
+  'is-public'?: string;
   limit?: number;
   offset?: number;
   fields?: string;
@@ -42,6 +43,12 @@ const command: CommandModule<object, ListArgs> = {
         description: 'Search',
         default: undefined,
       })
+      .option('is-public', {
+        type: 'string',
+        description: 'Filter by public visibility.',
+        choices: ['true', 'false'] as const,
+        default: undefined,
+      })
       .option('limit', {
         type: 'number',
         description: 'Limit',
@@ -69,6 +76,7 @@ const command: CommandModule<object, ListArgs> = {
       if (argv.namespace !== undefined) params['namespace'] = argv.namespace;
       if (argv.recursive !== undefined) params['recursive'] = argv.recursive;
       if (argv.search !== undefined) params['search'] = argv.search;
+      if (argv.isPublic !== undefined) params['is_public'] = argv.isPublic;
       if (argv.limit !== undefined) params['limit'] = argv.limit;
       if (argv.offset !== undefined) params['offset'] = argv.offset;
       const client = new Cloudflare({

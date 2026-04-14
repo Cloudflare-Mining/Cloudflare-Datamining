@@ -13,6 +13,7 @@ import { formatDryRun } from '../../../../lib/dry-run.js';
 import { parseBody, setNestedValue } from '../../../../lib/body-parser.js';
 
 interface PreviewCreateArgs {
+  submission?: boolean;
   'postfix-id': string;
   fields?: string;
   ndjson?: boolean;
@@ -27,6 +28,12 @@ const command: CommandModule<object, PreviewCreateArgs> = {
 
   builder: (yargs: Argv): Argv<PreviewCreateArgs> => {
     return yargs
+      .option('submission', {
+        type: 'boolean',
+        description:
+          'When true, search the submissions datastore only. When false or omitted, search the regular datastore only.',
+        default: false,
+      })
       .option('postfix-id', {
         type: 'string',
         description: 'The identifier of the message.',
@@ -53,6 +60,9 @@ const command: CommandModule<object, PreviewCreateArgs> = {
 
   handler: async (argv: ArgumentsCamelCase<PreviewCreateArgs>): Promise<void> => {
     try {
+      const params: Record<string, unknown> = {};
+      if (argv.submission !== undefined) params['submission'] = argv.submission;
+
       if (argv.dryRun) {
         if (argv.accountId) validateResourceId(argv.accountId, 'accountId');
         formatDryRun({
@@ -60,7 +70,7 @@ const command: CommandModule<object, PreviewCreateArgs> = {
           method: 'POST',
           url: `https://api.cloudflare.com/client/v4/accounts/${argv.accountId ?? '<account-id>'}/email-security/investigate/preview`,
           pathParams: {},
-          body: { postfixId: argv.postfixId },
+          body: { ...params, postfixId: argv.postfixId },
           validation: 'passed',
         });
         return;
@@ -84,9 +94,15 @@ const command: CommandModule<object, PreviewCreateArgs> = {
       // Assemble request body from individual flags
       const bodyData: Record<string, unknown> = {};
       if (argv.postfixId !== undefined) setNestedValue(bodyData, ['postfix_id'], argv.postfixId);
-      const result = await client.post<unknown>(`/accounts/${accountId}/email-security/investigate/preview`, {
-        body: Object.keys(bodyData).length > 0 ? bodyData : undefined,
-      });
+      const qs = new URLSearchParams(
+        Object.entries(params)
+          .filter(([, v]) => v !== undefined)
+          .map(([k, v]) => [k, String(v)]),
+      ).toString();
+      const result = await client.post<unknown>(
+        `/accounts/${accountId}/email-security/investigate/preview${qs ? '?' + qs : ''}`,
+        { body: Object.keys(bodyData).length > 0 ? bodyData : undefined },
+      );
       formatOutput(result, { fields: argv.fields, ndjson: argv.ndjson ?? false });
     } catch (error) {
       handleError(error);

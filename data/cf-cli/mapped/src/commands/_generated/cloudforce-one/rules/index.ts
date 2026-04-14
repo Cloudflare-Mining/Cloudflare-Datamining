@@ -3,9 +3,6 @@
  * @generated from apis/cloudforce-one/schema.ts
  */
 import type { CommandModule } from 'yargs';
-import actionscreate from './actions-create.js';
-import actionsdelete from './actions-delete.js';
-import actionsget from './actions-get.js';
 import create from './create.js';
 import deleteallrules from './delete-all-rules.js';
 import deleteonerule from './delete-one-rule.js';
@@ -22,9 +19,6 @@ const command: CommandModule = {
 
   builder: (yargs) => {
     return yargs
-      .command(actionscreate)
-      .command(actionsdelete)
-      .command(actionsget)
       .command(create)
       .command(deleteallrules)
       .command(deleteonerule)

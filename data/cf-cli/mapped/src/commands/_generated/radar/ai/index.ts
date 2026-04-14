@@ -13,6 +13,8 @@ import inferencesummaryv2 from './inference-summary-v2.js';
 import inferencetimeseriesgroupssummarymodel from './inference-timeseries-groups-summary-model.js';
 import inferencetimeseriesgroupssummarytask from './inference-timeseries-groups-summary-task.js';
 import inferencetimeseriesgroupsv2 from './inference-timeseries-groups-v2.js';
+import markdownforagentssummary from './markdown-for-agents-summary.js';
+import markdownforagentstimeseries from './markdown-for-agents-timeseries.js';
 import timeseriesgroupssummary from './timeseries-groups-summary.js';
 import timeseriesgroupstimeseries from './timeseries-groups-timeseries.js';
 import timeseriesgroupstimeseriesgroups from './timeseries-groups-timeseries-groups.js';
@@ -35,6 +37,8 @@ const command: CommandModule = {
       .command(inferencetimeseriesgroupssummarymodel)
       .command(inferencetimeseriesgroupssummarytask)
       .command(inferencetimeseriesgroupsv2)
+      .command(markdownforagentssummary)
+      .command(markdownforagentstimeseries)
       .command(timeseriesgroupssummary)
       .command(timeseriesgroupstimeseries)
       .command(timeseriesgroupstimeseriesgroups)

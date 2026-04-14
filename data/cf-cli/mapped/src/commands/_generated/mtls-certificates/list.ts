@@ -10,6 +10,7 @@ import { handleError } from '../../../lib/errors.js';
 import { formatOutput } from '../../../lib/output.js';
 
 interface ListArgs {
+  type?: string;
   fields?: string;
   ndjson?: boolean;
   accountId?: string;
@@ -22,6 +23,11 @@ const command: CommandModule<object, ListArgs> = {
 
   builder: (yargs: Argv): Argv<ListArgs> => {
     return yargs
+      .option('type', {
+        type: 'string',
+        description: 'Filters results by certificate type. Multiple types can be comma-separated.',
+        default: undefined,
+      })
       .option('fields', {
         type: 'string',
         description: 'Comma-separated list of fields to include in output',
@@ -35,6 +41,8 @@ const command: CommandModule<object, ListArgs> = {
 
   handler: async (argv: ArgumentsCamelCase<ListArgs>): Promise<void> => {
     try {
+      const params: Record<string, unknown> = {};
+      if (argv.type !== undefined) params['type'] = argv.type;
       const client = new Cloudflare({
         apiToken: await getAuthToken(),
         baseURL: process.env.CLOUDFLARE_BASE_URL,
@@ -42,7 +50,7 @@ const command: CommandModule<object, ListArgs> = {
       });
       const accountId = await getAccountId({ accountId: argv.accountId }, client);
 
-      const result = await client.mtlsCertificates.list(accountId);
+      const result = await client.mtlsCertificates.list(accountId, Object.keys(params).length > 0 ? params : undefined);
       formatOutput(result, { fields: argv.fields, ndjson: argv.ndjson ?? false });
     } catch (error) {
       handleError(error);

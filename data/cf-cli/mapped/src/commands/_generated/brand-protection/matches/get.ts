@@ -15,6 +15,7 @@ interface GetArgs {
   'query-id': string;
   'include-domain-id'?: string;
   'include-dismissed'?: string;
+  'domain-search'?: string;
   'order-by'?: string;
   order?: string;
   fields?: string;
@@ -24,7 +25,8 @@ interface GetArgs {
 
 const command: CommandModule<object, GetArgs> = {
   command: 'get',
-  describe: 'Get paginated list of domain matches for a specific brand protection query',
+  describe:
+    'Get paginated list of domain matches for one or more brand protection queries. When multiple query_ids are provided (comma-separated), matches are deduplicated across queries and each match includes a matched_queries array.',
 
   builder: (yargs: Argv): Argv<GetArgs> => {
     return yargs
@@ -40,7 +42,8 @@ const command: CommandModule<object, GetArgs> = {
       })
       .option('query-id', {
         type: 'string',
-        description: 'Query ID',
+        description:
+          'Query ID or comma-separated list of Query IDs. When multiple IDs are provided, matches are deduplicated across queries and each match includes matched_queries and match_ids arrays.',
       })
       .option('include-domain-id', {
         type: 'string',
@@ -52,10 +55,15 @@ const command: CommandModule<object, GetArgs> = {
         description: 'Include dismissed',
         default: undefined,
       })
+      .option('domain-search', {
+        type: 'string',
+        description: 'Filter matches by domain name (substring match)',
+        default: undefined,
+      })
       .option('order-by', {
         type: 'string',
-        description: "Column to sort by. Options: 'domain' or 'first_seen'",
-        choices: ['domain', 'first_seen'] as const,
+        description: "Column to sort by. Options: 'domain', 'first_seen', or 'registrar'",
+        choices: ['domain', 'first_seen', 'registrar'] as const,
         default: undefined,
       })
       .option('order', {
@@ -83,6 +91,7 @@ const command: CommandModule<object, GetArgs> = {
       if (argv.queryId !== undefined) params['query_id'] = argv.queryId;
       if (argv.includeDomainId !== undefined) params['include_domain_id'] = argv.includeDomainId;
       if (argv.includeDismissed !== undefined) params['include_dismissed'] = argv.includeDismissed;
+      if (argv.domainSearch !== undefined) params['domain_search'] = argv.domainSearch;
       if (argv.orderBy !== undefined) params['orderBy'] = argv.orderBy;
       if (argv.order !== undefined) params['order'] = argv.order;
       const client = new Cloudflare({

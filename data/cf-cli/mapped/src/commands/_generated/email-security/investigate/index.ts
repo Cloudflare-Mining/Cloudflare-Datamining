@@ -5,6 +5,7 @@
 import type { CommandModule } from 'yargs';
 import detectionsget from './detections-get.js';
 import get from './get.js';
+import getactionlog from './get-action-log.js';
 import list from './list.js';
 import movebulk from './move-bulk.js';
 import movecreate from './move-create.js';
@@ -24,6 +25,7 @@ const command: CommandModule = {
     return yargs
       .command(detectionsget)
       .command(get)
+      .command(getactionlog)
       .command(list)
       .command(movebulk)
       .command(movecreate)

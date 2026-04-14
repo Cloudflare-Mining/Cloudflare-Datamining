@@ -14,6 +14,9 @@ import { parseBody, setNestedValue } from '../../../../lib/body-parser.js';
 
 interface CreateArgs {
   content: string;
+  description?: string;
+  enabled?: boolean;
+  'is-public'?: boolean;
   name: string;
   namespaces: string;
   fields?: string;
@@ -32,6 +35,21 @@ const command: CommandModule<object, CreateArgs> = {
       .option('content', {
         type: 'string',
         description: 'The content field',
+      })
+      .option('description', {
+        type: 'string',
+        description: 'Human-readable description of the rule. Auto-extracted from YARA meta if present.',
+        default: undefined,
+      })
+      .option('enabled', {
+        type: 'boolean',
+        description: 'Whether this rule is active for dice consumers.',
+        default: false,
+      })
+      .option('is-public', {
+        type: 'boolean',
+        description: 'Whether this rule is visible to other internal accounts.',
+        default: false,
       })
       .option('name', {
         type: 'string',
@@ -70,7 +88,14 @@ const command: CommandModule<object, CreateArgs> = {
           method: 'POST',
           url: `https://api.cloudflare.com/client/v4/accounts/${argv.accountId ?? '<account-id>'}/cloudforce-one/rules`,
           pathParams: {},
-          body: { content: argv.content, name: argv.name, namespaces: argv.namespaces },
+          body: {
+            content: argv.content,
+            description: argv.description,
+            enabled: argv.enabled,
+            isPublic: argv.isPublic,
+            name: argv.name,
+            namespaces: argv.namespaces,
+          },
           validation: 'passed',
         });
         return;
@@ -92,6 +117,9 @@ const command: CommandModule<object, CreateArgs> = {
       // Assemble request body from individual flags
       const bodyData: Record<string, unknown> = {};
       if (argv.content !== undefined) setNestedValue(bodyData, ['content'], argv.content);
+      if (argv.description !== undefined) setNestedValue(bodyData, ['description'], argv.description);
+      if (argv.enabled !== undefined) setNestedValue(bodyData, ['enabled'], argv.enabled);
+      if (argv.isPublic !== undefined) setNestedValue(bodyData, ['is_public'], argv.isPublic);
       if (argv.name !== undefined) setNestedValue(bodyData, ['name'], argv.name);
       if (argv.namespaces !== undefined) setNestedValue(bodyData, ['namespaces'], argv.namespaces);
       const result = await client.post<unknown>(`/accounts/${accountId}/cloudforce-one/rules`, {

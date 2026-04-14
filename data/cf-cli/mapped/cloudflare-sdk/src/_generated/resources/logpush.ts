@@ -322,6 +322,228 @@ export class ValidateExtra extends APIResource {
 }
 
 /**
+ * Log Explorer datasets for account-level log analysis and querying
+ */
+export class LogExplorerDatasets extends APIResource {
+  constructor(client: CloudflareClient) {
+    super(client);
+  }
+
+  /**
+   * Returns all Log Explorer datasets configured for the account. Pass `include_zones=true` to also include zone-level datasets that belong to this account. List responses omit the `fields` property; use the single-dataset endpoint to retrieve field configuration.
+   *
+   * @see accounts-logs-explorer-datasets-list
+   */
+  async accountsList(accountId: string, params?: Record<string, unknown>): Promise<unknown> {
+    return this._client.get<unknown>(`/accounts/${accountId}/logs/explorer/datasets`, {
+      query: params,
+    });
+  }
+
+  /**
+   * Create a new Log Explorer dataset for the account. Use the `/accounts/{account_id}/logs/explorer/datasets/available` endpoint to list dataset types you can create along with their available fields. The `fields` property is optional. If not specified, all available fields will be enabled.
+   *
+   * @see accounts-logs-explorer-datasets-create
+   */
+  async accountsCreate(accountId: string): Promise<unknown> {
+    return this._client.post<unknown>(`/accounts/${accountId}/logs/explorer/datasets`);
+  }
+
+  /**
+   * Returns all dataset types that this account can create. Each entry includes the dataset schema and timestamp field. The schema shows all possible fields for a dataset. However, not all fields may be available for your account. When creating or updating a dataset, only fields available to your account can be enabled. If you request a field that is not available, you will receive an error.
+   *
+   * @see accounts-logs-explorer-datasets-available-list
+   */
+  async accountsAvailableList(accountId: string): Promise<unknown> {
+    return this._client.get<unknown>(`/accounts/${accountId}/logs/explorer/datasets/available`);
+  }
+
+  /**
+   * Retrieve a single Log Explorer dataset by ID for the account.
+   *
+   * @see accounts-logs-explorer-datasets-get
+   */
+  async accountsGet(accountId: string, datasetId: string): Promise<unknown> {
+    return this._client.get<unknown>(`/accounts/${accountId}/logs/explorer/datasets/${datasetId}`);
+  }
+
+  /**
+   * Updates the enabled state and/or field configuration of an account dataset.
+   *
+   * @see accounts-logs-explorer-datasets-update
+   */
+  async accountsUpdate(accountId: string, datasetId: string): Promise<unknown> {
+    return this._client.put<unknown>(`/accounts/${accountId}/logs/explorer/datasets/${datasetId}`);
+  }
+
+  /**
+   * Returns all Log Explorer datasets configured for the zone. List responses omit the `fields` property; use the single-dataset endpoint to retrieve field configuration.
+   *
+   * @see zones-logs-explorer-datasets-list
+   */
+  async zonesList(zoneId: string): Promise<unknown> {
+    return this._client.get<unknown>(`/zones/${zoneId}/logs/explorer/datasets`);
+  }
+
+  /**
+   * Create a new Log Explorer dataset for the zone. Use the `/zones/{zone_id}/logs/explorer/datasets/available` endpoint to list dataset types you can create along with their available fields. The `fields` property is optional. If not specified, all available fields will be enabled.
+   *
+   * @see zones-logs-explorer-datasets-create
+   */
+  async zonesCreate(zoneId: string): Promise<unknown> {
+    return this._client.post<unknown>(`/zones/${zoneId}/logs/explorer/datasets`);
+  }
+
+  /**
+   * Returns all dataset types that this zone can create. Each entry includes the dataset schema and timestamp field. The schema shows all possible fields for a dataset. However, not all fields may be available for your account. When creating or updating a dataset, only fields available to your account can be enabled. If you request a field that is not available, you will receive an error.
+   *
+   * @see zones-logs-explorer-datasets-available-list
+   */
+  async zonesAvailableList(zoneId: string): Promise<unknown> {
+    return this._client.get<unknown>(`/zones/${zoneId}/logs/explorer/datasets/available`);
+  }
+
+  /**
+   * Retrieve a single Log Explorer dataset by ID for the zone.
+   *
+   * @see zones-logs-explorer-datasets-get
+   */
+  async zonesGet(zoneId: string, datasetId: string): Promise<unknown> {
+    return this._client.get<unknown>(`/zones/${zoneId}/logs/explorer/datasets/${datasetId}`);
+  }
+
+  /**
+   * Updates the enabled state and/or field configuration of a zone dataset.
+   *
+   * @see zones-logs-explorer-datasets-update
+   */
+  async zonesUpdate(zoneId: string, datasetId: string): Promise<unknown> {
+    return this._client.put<unknown>(`/zones/${zoneId}/logs/explorer/datasets/${datasetId}`);
+  }
+}
+
+/**
+ * Query log data using the Log Explorer query engine
+ */
+export class LogExplorerQuery extends APIResource {
+  constructor(client: CloudflareClient) {
+    super(client);
+  }
+
+  /**
+   * Run a SQL query against account-level datasets.
+   *
+   * @see accounts-logs-explorer-query-post
+   */
+  async accountsQuery(accountId: string): Promise<unknown> {
+    return this._client.post<unknown>(`/accounts/${accountId}/logs/explorer/query/sql`);
+  }
+
+  /**
+   * Run a SQL query against zone-level datasets.
+   *
+   * @see zones-logs-explorer-query-post
+   */
+  async zonesQuery(zoneId: string): Promise<unknown> {
+    return this._client.post<unknown>(`/zones/${zoneId}/logs/explorer/query/sql`);
+  }
+}
+
+/**
+ * Central Management of Billing (CMB) log control configuration
+ */
+export class LogcontrolCmb extends APIResource {
+  constructor(client: CloudflareClient) {
+    super(client);
+  }
+
+  /**
+   * Gets CMB config.
+   *
+   * @see get-accounts-account_id-logs-control-cmb-config
+   */
+  async get(accountId: string): Promise<unknown> {
+    return this._client.get<unknown>(`/accounts/${accountId}/logs/control/cmb/config`);
+  }
+
+  /**
+   * Updates CMB config.
+   *
+   * @see post-accounts-account_id-logs-control-cmb-config
+   */
+  async create(accountId: string): Promise<unknown> {
+    return this._client.post<unknown>(`/accounts/${accountId}/logs/control/cmb/config`);
+  }
+
+  /**
+   * Deletes CMB config.
+   *
+   * @see delete-accounts-account_id-logs-control-cmb-config
+   */
+  async delete(accountId: string): Promise<void> {
+    return this._client.delete<void>(`/accounts/${accountId}/logs/control/cmb/config`);
+  }
+}
+
+/**
+ * Access raw log data received at the edge — retention flags, ray ID lookups, and field listings
+ */
+export class LogsReceived extends APIResource {
+  constructor(client: CloudflareClient) {
+    super(client);
+  }
+
+  /**
+   * Gets log retention flag for Logpull API.
+   *
+   * @see get-zones-zone_id-logs-control-retention-flag
+   */
+  async retentionFlagGet(zoneId: string): Promise<unknown> {
+    return this._client.get<unknown>(`/zones/${zoneId}/logs/control/retention/flag`);
+  }
+
+  /**
+   * Updates log retention flag for Logpull API.
+   *
+   * @see post-zones-zone_id-logs-control-retention-flag
+   */
+  async retentionFlagCreate(zoneId: string): Promise<unknown> {
+    return this._client.post<unknown>(`/zones/${zoneId}/logs/control/retention/flag`);
+  }
+
+  /**
+   * The `/rayids` api route allows lookups by specific rayid. The rayids route will return zero, one, or more records (ray ids are not unique).
+   *
+   * @see get-zones-zone_id-logs-rayids-ray_id
+   */
+  async rayidGet(zoneId: string, rayId: string, params?: Record<string, unknown>): Promise<unknown> {
+    return this._client.get<unknown>(`/zones/${zoneId}/logs/rayids/${rayId}`, {
+      query: params,
+    });
+  }
+
+  /**
+   * The `/received` api route allows customers to retrieve their edge HTTP logs. The basic access pattern is "give me all the logs for zone Z for minute M", where the minute M refers to the time records were received at Cloudflare's central data center. `start` is inclusive, and `end` is exclusive. Because of that, to get all data, at minutely cadence, starting at 10AM, the proper values are: `start=2018-05-20T10:00:00Z&end=2018-05-20T10:01:00Z`, then `start=2018-05-20T10:01:00Z&end=2018-05-20T10:02:00Z` and so on; the overlap will be handled properly.
+   *
+   * @see get-zones-zone_id-logs-received
+   */
+  async list(zoneId: string, params?: Record<string, unknown>): Promise<unknown> {
+    return this._client.get<unknown>(`/zones/${zoneId}/logs/received`, {
+      query: params,
+    });
+  }
+
+  /**
+   * Lists all fields available. The response is json object with key-value pairs, where keys are field names, and values are descriptions.
+   *
+   * @see get-zones-zone_id-logs-received-fields
+   */
+  async fieldsGet(zoneId: string): Promise<unknown> {
+    return this._client.get<unknown>(`/zones/${zoneId}/logs/received/fields`);
+  }
+}
+
+/**
  * Push Cloudflare logs to external storage destinations — R2, S3, Splunk, Datadog, and more
  */
 export class Logpush extends APIResource {
@@ -334,6 +556,10 @@ export class Logpush extends APIResource {
   readonly jobsextra: JobsExtra;
   readonly ownershipextra: OwnershipExtra;
   readonly validateextra: ValidateExtra;
+  readonly logexplorerdatasets: LogExplorerDatasets;
+  readonly logexplorerquery: LogExplorerQuery;
+  readonly logcontrolcmb: LogcontrolCmb;
+  readonly logsreceived: LogsReceived;
 
   constructor(client: CloudflareClient) {
     super(client);
@@ -346,5 +572,9 @@ export class Logpush extends APIResource {
     this.jobsextra = new JobsExtra(client);
     this.ownershipextra = new OwnershipExtra(client);
     this.validateextra = new ValidateExtra(client);
+    this.logexplorerdatasets = new LogExplorerDatasets(client);
+    this.logexplorerquery = new LogExplorerQuery(client);
+    this.logcontrolcmb = new LogcontrolCmb(client);
+    this.logsreceived = new LogsReceived(client);
   }
 }

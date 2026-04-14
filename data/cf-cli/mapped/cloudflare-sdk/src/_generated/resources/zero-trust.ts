@@ -692,6 +692,73 @@ export class Devices extends APIResource {
   async overrideCodesGet(accountId: string, registrationId: string): Promise<unknown> {
     return this._client.get<unknown>(`/accounts/${accountId}/devices/registrations/${registrationId}/override_codes`);
   }
+
+  /**
+   * Lists all deployment groups for an account. Use deployment groups to assign target WARP client versions to specific devices. This endpoint is in Beta.
+   *
+   * @see list-deployment-groups
+   */
+  async deploymentGroupsList(accountId: string, params?: Record<string, unknown>): Promise<unknown> {
+    return this._client.get<unknown>(`/accounts/${accountId}/devices/deployment-groups`, {
+      query: params,
+    });
+  }
+
+  /**
+   * Creates a new deployment group. Policy IDs must be unique across all deployment groups. This endpoint is in Beta.
+   *
+   * @see create-deployment-group
+   */
+  async deploymentGroupsCreate(accountId: string): Promise<unknown> {
+    return this._client.post<unknown>(`/accounts/${accountId}/devices/deployment-groups`);
+  }
+
+  /**
+   * Fetches a single deployment group by its ID. This endpoint is in Beta.
+   *
+   * @see get-deployment-group
+   */
+  async deploymentGroupsGet(accountId: string, groupId: string): Promise<unknown> {
+    return this._client.get<unknown>(`/accounts/${accountId}/devices/deployment-groups/${groupId}`);
+  }
+
+  /**
+   * Updates a deployment group. Returns 409 if any newly added policy IDs already belong to another deployment group. This endpoint is in Beta.
+   *
+   * @see update-deployment-group
+   */
+  async deploymentGroupsUpdate(accountId: string, groupId: string): Promise<unknown> {
+    return this._client.patch<unknown>(`/accounts/${accountId}/devices/deployment-groups/${groupId}`);
+  }
+
+  /**
+   * Deletes a deployment group. Associated policies no longer apply and devices stop receiving version targets. This endpoint is in Beta.
+   *
+   * @see delete-deployment-group
+   */
+  async deploymentGroupsDelete(accountId: string, groupId: string): Promise<void> {
+    return this._client.delete<void>(`/accounts/${accountId}/devices/deployment-groups/${groupId}`);
+  }
+
+  /**
+   * Lists available WARP client versions for a specific target environment and release track. This endpoint is in Beta.
+   *
+   * @see list-client-versions
+   */
+  async clientVersionsList(accountId: string, params?: Record<string, unknown>): Promise<unknown> {
+    return this._client.get<unknown>(`/accounts/${accountId}/devices/client-versions`, {
+      query: params,
+    });
+  }
+
+  /**
+   * Retrieves a list of all available target environments with their display names. This endpoint is in Beta.
+   *
+   * @see list-client-target-environments
+   */
+  async clientTargetEnvironmentsList(accountId: string): Promise<unknown> {
+    return this._client.get<unknown>(`/accounts/${accountId}/devices/client-versions/target-environments`);
+  }
 }
 
 /**
@@ -2631,7 +2698,7 @@ export class Dlp extends APIResource {
   }
 
   /**
-   * Retrieves current DLP usage limits and quotas for the account, including dataset limits and scan quotas.
+   * Retrieves current DLP usage limits and quotas for the account, including maximum allowed counts and current usage for custom entries, dataset cells, and document fingerprints.
    *
    * @see dlp-limits-get
    */

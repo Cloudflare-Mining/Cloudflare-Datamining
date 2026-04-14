@@ -55,7 +55,7 @@ export class Matches extends APIResource {
   }
 
   /**
-   * Get paginated list of domain matches for a specific brand protection query
+   * Get paginated list of domain matches for one or more brand protection queries. When multiple query_ids are provided (comma-separated), matches are deduplicated across queries and each match includes a matched_queries array.
    *
    * @see get_DomainMatchList
    */

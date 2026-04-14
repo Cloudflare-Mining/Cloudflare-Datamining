@@ -77,6 +77,7 @@ import mistralmistral7binstructv01create from './mistral-mistral7b-instruct-v01-
 import mistralmistral7binstructv02create from './mistral-mistral7b-instruct-v02-create.js';
 import mistralmistral7binstructv02loracreate from './mistral-mistral7b-instruct-v02-lora-create.js';
 import mistralaimistralsmall3124binstructcreate from './mistralai-mistral-small3124b-instruct-create.js';
+import moonshotaikimik25create from './moonshotai-kimi-k25-create.js';
 import myshellaimelottscreate from './myshell-ai-melotts-create.js';
 import nexusflowstarlinglm7bbetacreate from './nexusflow-starling-lm7b-beta-create.js';
 import nousresearchhermes2promistral7bcreate from './nousresearch-hermes2-pro-mistral7b-create.js';
@@ -195,6 +196,7 @@ const command: CommandModule = {
       .command(mistralmistral7binstructv02create)
       .command(mistralmistral7binstructv02loracreate)
       .command(mistralaimistralsmall3124binstructcreate)
+      .command(moonshotaikimik25create)
       .command(myshellaimelottscreate)
       .command(nexusflowstarlinglm7bbetacreate)
       .command(nousresearchhermes2promistral7bcreate)

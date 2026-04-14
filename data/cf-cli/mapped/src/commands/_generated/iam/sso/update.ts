@@ -25,7 +25,7 @@ interface UpdateArgs {
 
 const command: CommandModule<object, UpdateArgs> = {
   command: 'update <ssoConnectorId>',
-  describe: 'Updates the state or configuration of an SSO connector.',
+  describe: 'Update SSO connector state',
 
   builder: (yargs: Argv): Argv<UpdateArgs> => {
     return yargs

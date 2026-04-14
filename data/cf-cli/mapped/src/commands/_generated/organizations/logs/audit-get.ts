@@ -91,7 +91,7 @@ const command: CommandModule<object, AuditGetArgs> = {
       })
       .option('actor-id', {
         type: 'string',
-        description: 'Filters by the actor ID. This can be either the Organization ID or User ID.',
+        description: "Filters by the actor's user ID.",
         default: undefined,
       })
       .option('actor-ip-address', {
@@ -182,7 +182,7 @@ const command: CommandModule<object, AuditGetArgs> = {
       })
       .option('actor-id-not', {
         type: 'string',
-        description: 'Filters out audit logs by the actor ID. This can be either the Organization ID or User ID.',
+        description: "Filters out audit logs by the actor's user ID.",
         default: undefined,
       })
       .option('actor-ip-address-not', {

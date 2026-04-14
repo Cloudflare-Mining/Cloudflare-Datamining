@@ -22,6 +22,8 @@ interface WebCrawlersTimeseriesGroupsArgs {
   vertical?: string;
   industry?: string;
   'client-type'?: string;
+  'response-status'?: string;
+  'response-status-category'?: string;
   format?: string;
   fields?: string;
   ndjson?: boolean;
@@ -93,6 +95,17 @@ const command: CommandModule<object, WebCrawlersTimeseriesGroupsArgs> = {
         description: 'Filters results by agent type.',
         default: undefined,
       })
+      .option('response-status', {
+        type: 'string',
+        description:
+          'Filters results by HTTP response status code (e.g. 200, 403, 404). Only [IANA-registered codes](https://www.iana.org/assignments/http-status-codes/http-status-codes.xhtml) are accepted.',
+        default: undefined,
+      })
+      .option('response-status-category', {
+        type: 'string',
+        description: 'Filters results by HTTP response status code category.',
+        default: undefined,
+      })
       .option('format', {
         type: 'string',
         description: 'Format in which results will be returned.',
@@ -125,6 +138,8 @@ const command: CommandModule<object, WebCrawlersTimeseriesGroupsArgs> = {
       if (argv.vertical !== undefined) params['vertical'] = argv.vertical;
       if (argv.industry !== undefined) params['industry'] = argv.industry;
       if (argv.clientType !== undefined) params['clientType'] = argv.clientType;
+      if (argv.responseStatus !== undefined) params['responseStatus'] = argv.responseStatus;
+      if (argv.responseStatusCategory !== undefined) params['responseStatusCategory'] = argv.responseStatusCategory;
       if (argv.format !== undefined) params['format'] = argv.format;
       const client = new Cloudflare({
         apiToken: await getAuthToken(),

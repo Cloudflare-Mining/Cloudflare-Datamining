@@ -54,8 +54,8 @@ const command: CommandModule<object, ListArgs> = {
       })
       .option('direction', {
         type: 'string',
-        description: 'The sort order of returned user groups by name (ascending or descending).',
-        choices: ['asc', 'desc'] as const,
+        description:
+          'The sort order of returned user groups by name. Default sort order is ascending. To switch to descending, set this parameter to "desc"',
         default: undefined,
       })
       .option('fields', {

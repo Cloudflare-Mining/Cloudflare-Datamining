@@ -41,12 +41,6 @@ import graphqlcreategraphql from './graphql-create-graph-ql.js';
 import graphqlcreategraphqlv2 from './graphql-create-graph-qlv2.js';
 import indicatortypesget from './indicator-types-get.js';
 import indicatorsget from './indicators-get.js';
-import queriesalertscreate from './queries-alerts-create.js';
-import queriesalertscreatecreate from './queries-alerts-create-create.js';
-import queriesalertsdelete from './queries-alerts-delete.js';
-import queriesalertsgeteventalert from './queries-alerts-get-event-alert.js';
-import queriesalertsgetv2 from './queries-alerts-get-v2.js';
-import queriesalertspatch from './queries-alerts-patch.js';
 import queriescreate from './queries-create.js';
 import queriescreatecreate from './queries-create-create.js';
 import queriesdelete from './queries-delete.js';
@@ -112,12 +106,6 @@ const command: CommandModule = {
       .command(graphqlcreategraphqlv2)
       .command(indicatortypesget)
       .command(indicatorsget)
-      .command(queriesalertscreate)
-      .command(queriesalertscreatecreate)
-      .command(queriesalertsdelete)
-      .command(queriesalertsgeteventalert)
-      .command(queriesalertsgetv2)
-      .command(queriesalertspatch)
       .command(queriescreate)
       .command(queriescreatecreate)
       .command(queriesdelete)

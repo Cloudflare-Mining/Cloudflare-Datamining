@@ -21,7 +21,7 @@ interface DeleteArgs {
 
 const command: CommandModule<object, DeleteArgs> = {
   command: 'delete <ssoConnectorId>',
-  describe: 'Deletes an SSO connector from the account.',
+  describe: 'Delete an SSO connector',
 
   builder: (yargs: Argv): Argv<DeleteArgs> => {
     return yargs

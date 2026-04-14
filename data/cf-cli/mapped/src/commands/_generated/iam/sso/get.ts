@@ -19,7 +19,7 @@ interface GetArgs {
 
 const command: CommandModule<object, GetArgs> = {
   command: 'get <ssoConnectorId>',
-  describe: 'Retrieves details for a specific SSO connector.',
+  describe: 'Get SSO connector details',
 
   builder: (yargs: Argv): Argv<GetArgs> => {
     return yargs

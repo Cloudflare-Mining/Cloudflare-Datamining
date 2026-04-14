@@ -29,7 +29,7 @@ interface CreateArgs {
 const command: CommandModule<object, CreateArgs> = {
   command: 'create [zoneId]',
   describe:
-    'Rules consist of a set of criteria for matching emails (such as an email being sent to a specific custom email address) plus a set of actions to take on the email (like forwarding it to a specific destination address).',
+    'Rules consist of a set of criteria for matching emails (such as an email being sent to a specific custom email address) plus a set of actions to take on the email (like forwarding it to a specific destination address). Forward actions require all destination addresses to be verified.',
 
   builder: (yargs: Argv): Argv<CreateArgs> => {
     return yargs

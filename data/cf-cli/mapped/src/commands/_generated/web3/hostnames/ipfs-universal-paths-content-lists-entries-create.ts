@@ -29,7 +29,7 @@ interface IpfsUniversalPathsContentListsEntriesCreateArgs {
 
 const command: CommandModule<object, IpfsUniversalPathsContentListsEntriesCreateArgs> = {
   command: 'ipfs-universal-paths-content-lists-entries-create <identifier> [zoneId]',
-  describe: 'Creates a new entry in an IPFS Universal Path Gateway content list.',
+  describe: 'Create an IPFS content list entry',
 
   builder: (yargs: Argv): Argv<IpfsUniversalPathsContentListsEntriesCreateArgs> => {
     return yargs

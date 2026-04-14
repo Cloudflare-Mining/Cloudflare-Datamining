@@ -29,7 +29,8 @@ interface UpdateArgs {
 
 const command: CommandModule<object, UpdateArgs> = {
   command: 'update <ruleIdentifier> [zoneId]',
-  describe: 'Update actions and matches, or enable/disable specific routing rules.',
+  describe:
+    'Update actions and matches, or enable/disable specific routing rules. Forward actions require all destination addresses to be verified.',
 
   builder: (yargs: Argv): Argv<UpdateArgs> => {
     return yargs

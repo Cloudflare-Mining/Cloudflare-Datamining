@@ -14,6 +14,7 @@ import { parseBody, setNestedValue } from '../../../../lib/body-parser.js';
 
 interface MoveCreateArgs {
   postfixId: string;
+  submission?: boolean;
   destination: string;
   fields?: string;
   ndjson?: boolean;
@@ -32,6 +33,12 @@ const command: CommandModule<object, MoveCreateArgs> = {
         type: 'string',
         description: 'The identifier of the message.',
         demandOption: true,
+      })
+      .option('submission', {
+        type: 'boolean',
+        description:
+          'When true, search the submissions datastore only. When false or omitted, search the regular datastore only.',
+        default: false,
       })
       .option('destination', {
         type: 'string',
@@ -69,6 +76,9 @@ const command: CommandModule<object, MoveCreateArgs> = {
     try {
       validateResourceId(argv.postfixId as string | undefined, 'postfixId');
 
+      const params: Record<string, unknown> = {};
+      if (argv.submission !== undefined) params['submission'] = argv.submission;
+
       if (argv.dryRun) {
         if (argv.accountId) validateResourceId(argv.accountId, 'accountId');
         formatDryRun({
@@ -76,7 +86,7 @@ const command: CommandModule<object, MoveCreateArgs> = {
           method: 'POST',
           url: `https://api.cloudflare.com/client/v4/accounts/${argv.accountId ?? '<account-id>'}/email-security/investigate/${argv.postfixId ?? '<postfixId>'}/move`,
           pathParams: { postfixId: String(argv.postfixId ?? '') },
-          body: { destination: argv.destination },
+          body: { ...params, destination: argv.destination },
           validation: 'passed',
         });
         return;
@@ -101,8 +111,13 @@ const command: CommandModule<object, MoveCreateArgs> = {
       // Assemble request body from individual flags
       const bodyData: Record<string, unknown> = {};
       if (argv.destination !== undefined) setNestedValue(bodyData, ['destination'], argv.destination);
+      const qs = new URLSearchParams(
+        Object.entries(params)
+          .filter(([, v]) => v !== undefined)
+          .map(([k, v]) => [k, String(v)]),
+      ).toString();
       const result = await client.post<unknown>(
-        `/accounts/${accountId}/email-security/investigate/${argv.postfixId}/move`,
+        `/accounts/${accountId}/email-security/investigate/${argv.postfixId}/move${qs ? '?' + qs : ''}`,
         { body: Object.keys(bodyData).length > 0 ? bodyData : undefined },
       );
       formatOutput(result, { fields: argv.fields, ndjson: argv.ndjson ?? false });

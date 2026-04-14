@@ -27,7 +27,7 @@ interface IpfsUniversalPathsContentListsUpdateArgs {
 
 const command: CommandModule<object, IpfsUniversalPathsContentListsUpdateArgs> = {
   command: 'ipfs-universal-paths-content-lists-update <identifier> [zoneId]',
-  describe: 'Updates the IPFS Universal Path Gateway content list for a Web3 hostname.',
+  describe: 'Update IPFS content list',
 
   builder: (yargs: Argv): Argv<IpfsUniversalPathsContentListsUpdateArgs> => {
     return yargs

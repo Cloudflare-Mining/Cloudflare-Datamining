@@ -27,7 +27,6 @@ interface UpdateArgs {
   'output-options-batch-suffix'?: string;
   'output-options-field-delimiter'?: string;
   'output-options-field-names'?: string;
-  'output-options-merge-subrequests'?: boolean;
   'output-options-output-type'?: string;
   'output-options-record-delimiter'?: string;
   'output-options-record-prefix'?: string;
@@ -130,12 +129,6 @@ const command: CommandModule<object, UpdateArgs> = {
           'List of field names to be included in the Logpush output. For the moment, there is no option to add all fields at once, so you must specify all the fields names you are interested in.',
         default: undefined,
       })
-      .option('output-options-merge-subrequests', {
-        type: 'boolean',
-        description:
-          'If set to true, subrequests will be merged into the parent request. Only supported for the \`http_requests\` dataset.',
-        default: false,
-      })
       .option('output-options-output-type', {
         type: 'string',
         description:
@@ -235,7 +228,6 @@ const command: CommandModule<object, UpdateArgs> = {
             outputOptionsBatchSuffix: argv.outputOptionsBatchSuffix,
             outputOptionsFieldDelimiter: argv.outputOptionsFieldDelimiter,
             outputOptionsFieldNames: argv.outputOptionsFieldNames,
-            outputOptionsMergeSubrequests: argv.outputOptionsMergeSubrequests,
             outputOptionsOutputType: argv.outputOptionsOutputType,
             outputOptionsRecordDelimiter: argv.outputOptionsRecordDelimiter,
             outputOptionsRecordPrefix: argv.outputOptionsRecordPrefix,
@@ -284,8 +276,6 @@ const command: CommandModule<object, UpdateArgs> = {
         setNestedValue(bodyData, ['output_options', 'field_delimiter'], argv.outputOptionsFieldDelimiter);
       if (argv.outputOptionsFieldNames !== undefined)
         setNestedValue(bodyData, ['output_options', 'field_names'], argv.outputOptionsFieldNames);
-      if (argv.outputOptionsMergeSubrequests !== undefined)
-        setNestedValue(bodyData, ['output_options', 'merge_subrequests'], argv.outputOptionsMergeSubrequests);
       if (argv.outputOptionsOutputType !== undefined)
         setNestedValue(bodyData, ['output_options', 'output_type'], argv.outputOptionsOutputType);
       if (argv.outputOptionsRecordDelimiter !== undefined)

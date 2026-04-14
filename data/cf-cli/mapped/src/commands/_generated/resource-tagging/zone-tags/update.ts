@@ -55,7 +55,6 @@ const command: CommandModule<object, UpdateArgs> = {
           'custom_certificate',
           'custom_hostname',
           'dns_record',
-          'load_balancer',
           'managed_client_certificate',
           'zone',
         ] as const,
@@ -88,7 +87,6 @@ const command: CommandModule<object, UpdateArgs> = {
         'custom_certificate',
         'custom_hostname',
         'dns_record',
-        'load_balancer',
         'managed_client_certificate',
         'zone',
       ] as const) as Argv<UpdateArgs>;

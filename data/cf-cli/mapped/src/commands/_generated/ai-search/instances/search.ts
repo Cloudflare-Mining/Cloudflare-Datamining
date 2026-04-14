@@ -27,6 +27,7 @@ interface SearchArgs {
   'ai-search-options-retrieval-max-num-results'?: number;
   'ai-search-options-retrieval-retrieval-type'?: string;
   'ai-search-options-retrieval-return-on-failure'?: boolean;
+  query?: string;
   fields?: string;
   ndjson?: boolean;
   dryRun?: boolean;
@@ -115,6 +116,12 @@ const command: CommandModule<object, SearchArgs> = {
         description: 'The ai_search_options.retrieval.return_on_failure field',
         default: false,
       })
+      .option('query', {
+        type: 'string',
+        description:
+          "A simple text query string. Alternative to 'messages' — provide either this or 'messages', not both.",
+        default: undefined,
+      })
       .option('fields', {
         type: 'string',
         description: 'Comma-separated list of fields to include in output',
@@ -173,6 +180,7 @@ const command: CommandModule<object, SearchArgs> = {
             aiSearchOptionsRetrievalMaxNumResults: argv.aiSearchOptionsRetrievalMaxNumResults,
             aiSearchOptionsRetrievalRetrievalType: argv.aiSearchOptionsRetrievalRetrievalType,
             aiSearchOptionsRetrievalReturnOnFailure: argv.aiSearchOptionsRetrievalReturnOnFailure,
+            query: argv.query,
           },
           validation: 'passed',
         });
@@ -266,6 +274,7 @@ const command: CommandModule<object, SearchArgs> = {
           ['ai_search_options', 'retrieval', 'return_on_failure'],
           argv.aiSearchOptionsRetrievalReturnOnFailure,
         );
+      if (argv.query !== undefined) setNestedValue(bodyData, ['query'], argv.query);
       const result = await client.post<unknown>(`/accounts/${accountId}/ai-search/instances/${argv.id}/search`, {
         body: Object.keys(bodyData).length > 0 ? bodyData : undefined,
       });

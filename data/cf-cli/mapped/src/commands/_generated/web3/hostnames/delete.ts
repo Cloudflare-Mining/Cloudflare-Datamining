@@ -26,7 +26,7 @@ interface DeleteArgs {
 
 const command: CommandModule<object, DeleteArgs> = {
   command: 'delete <identifier> [zoneId]',
-  describe: 'Deletes a Web3 hostname and its configuration from the zone.',
+  describe: 'Delete a Web3 hostname',
 
   builder: (yargs: Argv): Argv<DeleteArgs> => {
     return yargs

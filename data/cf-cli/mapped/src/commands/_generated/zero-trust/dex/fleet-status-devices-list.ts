@@ -88,7 +88,7 @@ const command: CommandModule<object, FleetStatusDevicesListArgs> = {
       .option('source', {
         type: 'string',
         description:
-          'Source:   * \`hourly\` - device details aggregated hourly, up to 7 days prior   * \`last_seen\` - device details, up to 60 minutes prior   * \`raw\` - device details, up to 7 days prior',
+          "Source:   * \`hourly\` - device details aggregated hourly, up to 7 days prior   * \`last_seen\` - device details, up to 60 minutes prior. Time windows exceeding 60 minutes will be rejected from June 1st, 2026. Please use 'hourly' or 'raw' instead for longer time ranges.   * \`raw\` - device details, up to 7 days prior",
         choices: ['last_seen', 'hourly', 'raw'] as const,
         default: undefined,
       })

@@ -21,7 +21,8 @@ interface GetArgs {
 
 const command: CommandModule<object, GetArgs> = {
   command: 'get [zoneId]',
-  describe: 'Retrieves Argo Smart Routing latency analytics for the zone, showing time-to-first-byte improvements.',
+  describe:
+    'Retrieves aggregate Argo Smart Routing analytics for a zone, including latency improvements, bandwidth savings, and routing statistics.',
 
   builder: (yargs: Argv): Argv<GetArgs> => {
     return yargs

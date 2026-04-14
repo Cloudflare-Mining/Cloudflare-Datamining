@@ -19,8 +19,7 @@ interface ResultsGetArgs {
 
 const command: CommandModule<object, ResultsGetArgs> = {
   command: 'results-get <configId>',
-  describe:
-    'Retrieves the latest scan results for a Cloudforce One scan configuration, including discovered open ports.',
+  describe: 'Get open ports scan results',
 
   builder: (yargs: Argv): Argv<ResultsGetArgs> => {
     return yargs

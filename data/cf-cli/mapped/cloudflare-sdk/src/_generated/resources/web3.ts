@@ -15,7 +15,7 @@ export class Hostnames extends APIResource {
   }
 
   /**
-   * Lists all Web3 hostnames configured for the zone.
+   * List Web3 hostnames
    *
    * @see web3-hostname-list-web3-hostnames
    */
@@ -24,7 +24,7 @@ export class Hostnames extends APIResource {
   }
 
   /**
-   * Retrieves details for a specific Web3 hostname, including its target gateway and DNSLink settings.
+   * Get Web3 hostname details
    *
    * @see web3-hostname-web3-hostname-details
    */
@@ -33,7 +33,7 @@ export class Hostnames extends APIResource {
   }
 
   /**
-   * Creates a new Web3 hostname for serving decentralized web content.
+   * Create a Web3 hostname
    *
    * @see web3-hostname-create-web3-hostname
    */
@@ -42,7 +42,7 @@ export class Hostnames extends APIResource {
   }
 
   /**
-   * Updates a Web3 hostname configuration.
+   * Edit a Web3 hostname
    *
    * @see web3-hostname-edit-web3-hostname
    */
@@ -51,7 +51,7 @@ export class Hostnames extends APIResource {
   }
 
   /**
-   * Deletes a Web3 hostname and its configuration from the zone.
+   * Delete a Web3 hostname
    *
    * @see web3-hostname-delete-web3-hostname
    */
@@ -60,7 +60,7 @@ export class Hostnames extends APIResource {
   }
 
   /**
-   * Retrieves the IPFS Universal Path Gateway content list configuration for a Web3 hostname.
+   * Get IPFS content list details
    *
    * @see web3-hostname-ipfs-universal-path-gateway-content-list-details
    */
@@ -69,7 +69,7 @@ export class Hostnames extends APIResource {
   }
 
   /**
-   * Updates the IPFS Universal Path Gateway content list for a Web3 hostname.
+   * Update IPFS content list
    *
    * @see web3-hostname-update-ipfs-universal-path-gateway-content-list
    */
@@ -78,7 +78,7 @@ export class Hostnames extends APIResource {
   }
 
   /**
-   * Lists entries in an IPFS Universal Path Gateway content list.
+   * List IPFS content list entries
    *
    * @see web3-hostname-list-ipfs-universal-path-gateway-content-list-entries
    */
@@ -89,7 +89,7 @@ export class Hostnames extends APIResource {
   }
 
   /**
-   * Retrieves details for a specific IPFS Universal Path Gateway content list entry.
+   * Get IPFS content list entry details
    *
    * @see web3-hostname-ipfs-universal-path-gateway-content-list-entry-details
    */
@@ -104,7 +104,7 @@ export class Hostnames extends APIResource {
   }
 
   /**
-   * Creates a new entry in an IPFS Universal Path Gateway content list.
+   * Create an IPFS content list entry
    *
    * @see web3-hostname-create-ipfs-universal-path-gateway-content-list-entry
    */
@@ -115,7 +115,7 @@ export class Hostnames extends APIResource {
   }
 
   /**
-   * Updates an IPFS Universal Path Gateway content list entry.
+   * Edit an IPFS content list entry
    *
    * @see web3-hostname-edit-ipfs-universal-path-gateway-content-list-entry
    */
@@ -130,7 +130,7 @@ export class Hostnames extends APIResource {
   }
 
   /**
-   * Deletes an entry from an IPFS Universal Path Gateway content list.
+   * Delete an IPFS content list entry
    *
    * @see web3-hostname-delete-ipfs-universal-path-gateway-content-list-entry
    */

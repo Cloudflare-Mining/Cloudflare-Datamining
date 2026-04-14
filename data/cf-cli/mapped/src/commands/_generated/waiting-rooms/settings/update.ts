@@ -26,7 +26,7 @@ interface UpdateArgs {
 
 const command: CommandModule<object, UpdateArgs> = {
   command: 'update [zoneId]',
-  describe: 'Fully updates zone-level Waiting Room settings, replacing the existing configuration.',
+  describe: 'Update zone-level waiting room settings',
 
   builder: (yargs: Argv): Argv<UpdateArgs> => {
     return yargs

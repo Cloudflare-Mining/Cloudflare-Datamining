@@ -11,6 +11,7 @@ import { formatOutput } from '../../../../lib/output.js';
 
 interface GetArgs {
   domain?: string;
+  'skip-dns'?: boolean;
   fields?: string;
   ndjson?: boolean;
   accountId?: string;
@@ -27,6 +28,11 @@ const command: CommandModule<object, GetArgs> = {
         description: 'Domain',
         default: undefined,
       })
+      .option('skip-dns', {
+        type: 'boolean',
+        description: 'Skip DNS resolution lookups for faster response.',
+        default: false,
+      })
       .option('fields', {
         type: 'string',
         description: 'Comma-separated list of fields to include in output',
@@ -42,6 +48,7 @@ const command: CommandModule<object, GetArgs> = {
     try {
       const params: Record<string, unknown> = {};
       if (argv.domain !== undefined) params['domain'] = argv.domain;
+      if (argv.skipDns !== undefined) params['skip_dns'] = argv.skipDns;
       const client = new Cloudflare({
         apiToken: await getAuthToken(),
         baseURL: process.env.CLOUDFLARE_BASE_URL,

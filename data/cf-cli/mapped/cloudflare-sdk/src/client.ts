@@ -93,11 +93,13 @@ export class CloudflareClient {
   /**
    * Make a PUT request
    */
-  async put<T>(path: string, options?: RequestOptions & { body?: unknown }): Promise<T> {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  async put<T>(path: string, options?: RequestOptions & { body?: unknown; query?: any }): Promise<T> {
     return this._request<T>({
       method: 'PUT',
       path,
       body: options?.body,
+      query: options?.query,
       ...options,
     });
   }
@@ -105,11 +107,13 @@ export class CloudflareClient {
   /**
    * Make a PATCH request
    */
-  async patch<T>(path: string, options?: RequestOptions & { body?: unknown }): Promise<T> {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  async patch<T>(path: string, options?: RequestOptions & { body?: unknown; query?: any }): Promise<T> {
     return this._request<T>({
       method: 'PATCH',
       path,
       body: options?.body,
+      query: options?.query,
       ...options,
     });
   }

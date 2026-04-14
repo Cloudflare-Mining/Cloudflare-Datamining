@@ -14,8 +14,6 @@ interface MembersListArgs {
   userGroupId: string;
   page?: number;
   'per-page'?: number;
-  'fuzzy-email'?: string;
-  direction?: string;
   fields?: string;
   ndjson?: boolean;
   accountId?: string;
@@ -42,17 +40,6 @@ const command: CommandModule<object, MembersListArgs> = {
         description: 'Maximum number of results per page.',
         default: undefined,
       })
-      .option('fuzzy-email', {
-        type: 'string',
-        description: 'A string used for filtering members by partial email match.',
-        default: undefined,
-      })
-      .option('direction', {
-        type: 'string',
-        description: 'The sort order of returned user group members by email.',
-        choices: ['asc', 'desc'] as const,
-        default: undefined,
-      })
       .option('fields', {
         type: 'string',
         description: 'Comma-separated list of fields to include in output',
@@ -71,8 +58,6 @@ const command: CommandModule<object, MembersListArgs> = {
       const params: Record<string, unknown> = {};
       if (argv.page !== undefined) params['page'] = argv.page;
       if (argv.perPage !== undefined) params['per_page'] = argv.perPage;
-      if (argv.fuzzyEmail !== undefined) params['fuzzyEmail'] = argv.fuzzyEmail;
-      if (argv.direction !== undefined) params['direction'] = argv.direction;
       const client = new Cloudflare({
         apiToken: await getAuthToken(),
         baseURL: process.env.CLOUDFLARE_BASE_URL,

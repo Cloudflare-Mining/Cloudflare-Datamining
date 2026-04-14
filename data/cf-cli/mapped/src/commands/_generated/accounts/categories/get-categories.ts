@@ -10,6 +10,8 @@ import { handleError } from '../../../../lib/errors.js';
 import { formatOutput } from '../../../../lib/output.js';
 
 interface GetCategoriesArgs {
+  limit?: number;
+  offset?: number;
   fields?: string;
   ndjson?: boolean;
   accountId?: string;
@@ -21,6 +23,16 @@ const command: CommandModule<object, GetCategoriesArgs> = {
 
   builder: (yargs: Argv): Argv<GetCategoriesArgs> => {
     return yargs
+      .option('limit', {
+        type: 'number',
+        description: 'Limit of number of results to return.',
+        default: undefined,
+      })
+      .option('offset', {
+        type: 'number',
+        description: 'Offset of results to return.',
+        default: undefined,
+      })
       .option('fields', {
         type: 'string',
         description: 'Comma-separated list of fields to include in output',
@@ -34,6 +46,9 @@ const command: CommandModule<object, GetCategoriesArgs> = {
 
   handler: async (argv: ArgumentsCamelCase<GetCategoriesArgs>): Promise<void> => {
     try {
+      const params: Record<string, unknown> = {};
+      if (argv.limit !== undefined) params['limit'] = argv.limit;
+      if (argv.offset !== undefined) params['offset'] = argv.offset;
       const client = new Cloudflare({
         apiToken: await getAuthToken(),
         baseURL: process.env.CLOUDFLARE_BASE_URL,
@@ -41,7 +56,10 @@ const command: CommandModule<object, GetCategoriesArgs> = {
       });
       const accountId = await getAccountId({ accountId: argv.accountId }, client);
 
-      const result = await client.accounts.categories.getCategories(accountId);
+      const result = await client.accounts.categories.getCategories(
+        accountId,
+        Object.keys(params).length > 0 ? params : undefined,
+      );
       formatOutput(result, { fields: argv.fields, ndjson: argv.ndjson ?? false });
     } catch (error) {
       handleError(error);

@@ -194,7 +194,7 @@ export class Sso extends APIResource {
   }
 
   /**
-   * Lists all SSO connectors configured for the account.
+   * List all SSO connectors
    *
    * @see get-all-sso-connectors
    */
@@ -203,7 +203,7 @@ export class Sso extends APIResource {
   }
 
   /**
-   * Retrieves details for a specific SSO connector.
+   * Get SSO connector details
    *
    * @see get-sso-connector
    */
@@ -212,7 +212,7 @@ export class Sso extends APIResource {
   }
 
   /**
-   * Creates a new SSO connector for logging into Cloudflare through an identity provider.
+   * Create a new SSO connector
    *
    * @see init-new-sso-connector
    */
@@ -221,7 +221,7 @@ export class Sso extends APIResource {
   }
 
   /**
-   * Updates the state or configuration of an SSO connector.
+   * Update SSO connector state
    *
    * @see update-sso-connector-state
    */
@@ -230,7 +230,7 @@ export class Sso extends APIResource {
   }
 
   /**
-   * Deletes an SSO connector from the account.
+   * Delete an SSO connector
    *
    * @see delete-sso-connector
    */
@@ -239,30 +239,12 @@ export class Sso extends APIResource {
   }
 
   /**
-   * Validates the user has added the DNS TXT record required for validating ownership of the domain they are trying to set up a connector for.
+   * Begin SSO connector verification
    *
    * @see begin-sso-connector-verification
    */
   async beginVerification(accountId: string, ssoConnectorId: string): Promise<unknown> {
     return this._client.post<unknown>(`/accounts/${accountId}/sso_connectors/${ssoConnectorId}/begin_verification`);
-  }
-}
-
-/**
- * User Groups (additional) operations
- */
-export class UserGroupsExtra extends APIResource {
-  constructor(client: CloudflareClient) {
-    super(client);
-  }
-
-  /**
-   * Get details of a specific member in a user group.
-   *
-   * @see account-user-group-member-get
-   */
-  async membersGet(accountId: string, userGroupId: string, memberId: string): Promise<unknown> {
-    return this._client.get<unknown>(`/accounts/${accountId}/iam/user_groups/${userGroupId}/members/${memberId}`);
   }
 }
 
@@ -274,7 +256,6 @@ export class Iam extends APIResource {
   readonly resourcegroups: ResourceGroups;
   readonly usergroups: UserGroups;
   readonly sso: Sso;
-  readonly usergroupsextra: UserGroupsExtra;
 
   constructor(client: CloudflareClient) {
     super(client);
@@ -282,6 +263,5 @@ export class Iam extends APIResource {
     this.resourcegroups = new ResourceGroups(client);
     this.usergroups = new UserGroups(client);
     this.sso = new Sso(client);
-    this.usergroupsextra = new UserGroupsExtra(client);
   }
 }

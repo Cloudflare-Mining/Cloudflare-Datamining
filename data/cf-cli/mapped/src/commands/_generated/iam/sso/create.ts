@@ -25,7 +25,7 @@ interface CreateArgs {
 
 const command: CommandModule<object, CreateArgs> = {
   command: 'create',
-  describe: 'Creates a new SSO connector for logging into Cloudflare through an identity provider.',
+  describe: 'Create a new SSO connector',
 
   builder: (yargs: Argv): Argv<CreateArgs> => {
     return yargs

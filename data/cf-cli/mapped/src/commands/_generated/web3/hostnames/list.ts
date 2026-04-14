@@ -20,7 +20,7 @@ interface ListArgs {
 
 const command: CommandModule<object, ListArgs> = {
   command: 'list [zoneId]',
-  describe: 'Lists all Web3 hostnames configured for the zone.',
+  describe: 'List Web3 hostnames',
 
   builder: (yargs: Argv): Argv<ListArgs> => {
     return yargs

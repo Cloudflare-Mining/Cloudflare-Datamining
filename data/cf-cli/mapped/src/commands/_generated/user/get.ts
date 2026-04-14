@@ -17,8 +17,7 @@ interface GetArgs {
 
 const command: CommandModule<object, GetArgs> = {
   command: 'get',
-  describe:
-    'Retrieves detailed information about the currently authenticated user, including email, name, and account memberships.',
+  describe: 'Get current user details',
 
   builder: (yargs: Argv): Argv<GetArgs> => {
     return yargs

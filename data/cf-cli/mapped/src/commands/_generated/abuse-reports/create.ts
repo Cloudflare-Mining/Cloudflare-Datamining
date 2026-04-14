@@ -42,6 +42,13 @@ interface CreateArgs {
   'ports-protocols'?: string;
   'source-ips'?: string;
   'ncmec-notification'?: string;
+  'reg-who-request-reg-who-authorization-statement'?: string;
+  'reg-who-request-reg-who-good-faith-affirmation': boolean;
+  'reg-who-request-reg-who-lawful-processing-agreement': boolean;
+  'reg-who-request-reg-who-legal-basis': string;
+  'reg-who-request-reg-who-request-type': string;
+  'reg-who-request-reg-who-requested-data-elements': string;
+  'reg-who-request-reg-who-requestor-type'?: string;
   'ncsei-subject-representation'?: boolean;
   fields?: string;
   ndjson?: boolean;
@@ -216,6 +223,39 @@ const command: CommandModule<object, CreateArgs> = {
         description:
           'Notification type based on the abuse type. NOTE: Copyright (DMCA) and Trademark reports cannot be anonymous. ',
         choices: ['send', 'send-anon'] as const,
+        default: undefined,
+      })
+      .option('reg-who-request-reg-who-authorization-statement', {
+        type: 'string',
+        description: 'Optional authorization statement or power of attorney per RDP 10.2.1.3.',
+        default: undefined,
+      })
+      .option('reg-who-request-reg-who-good-faith-affirmation', {
+        type: 'boolean',
+        description: 'Affirmation that the request is made in good faith per RDP 10.2.4. Must be true.',
+      })
+      .option('reg-who-request-reg-who-lawful-processing-agreement', {
+        type: 'boolean',
+        description: 'Agreement to process data lawfully per RDP 10.2.5. Must be true.',
+      })
+      .option('reg-who-request-reg-who-legal-basis', {
+        type: 'string',
+        description: 'Legal rights and rationale for the request per RDP 10.2.3. Required for all WHOIS requests.',
+      })
+      .option('reg-who-request-reg-who-request-type', {
+        type: 'string',
+        description: 'The type of WHOIS data request per RDP procedure.',
+        choices: ['disclosure', 'invalid_whois'] as const,
+      })
+      .option('reg-who-request-reg-who-requested-data-elements', {
+        type: 'string',
+        description:
+          'The specific WHOIS data elements being requested per RDP 10.2.2. Required for all WHOIS requests.',
+      })
+      .option('reg-who-request-reg-who-requestor-type', {
+        type: 'string',
+        description: 'The nature of the requestor per RDP 10.2.1.2.',
+        choices: ['government', 'corporation', 'individual'] as const,
         default: undefined,
       })
       .option('ncsei-subject-representation', {
@@ -573,7 +613,13 @@ const command: CommandModule<object, CreateArgs> = {
       .implies('ncsei-subject-representation', ['hostNotification'])
       .choices('host-notification', ['send'] as const)
       .choices('owner-notification', ['send'] as const)
-      .choices('ncmec-notification', ['send', 'send-anon'] as const) as Argv<CreateArgs>;
+      .choices('ncmec-notification', ['send', 'send-anon'] as const)
+      .choices('reg-who-request-reg-who-request-type', ['disclosure', 'invalid_whois'] as const)
+      .choices('reg-who-request-reg-who-requestor-type', [
+        'government',
+        'corporation',
+        'individual',
+      ] as const) as Argv<CreateArgs>;
   },
 
   handler: async (argv: ArgumentsCamelCase<CreateArgs>): Promise<void> => {
@@ -616,6 +662,13 @@ const command: CommandModule<object, CreateArgs> = {
             portsProtocols: argv.portsProtocols,
             sourceIps: argv.sourceIps,
             ncmecNotification: argv.ncmecNotification,
+            regWhoRequestRegWhoAuthorizationStatement: argv.regWhoRequestRegWhoAuthorizationStatement,
+            regWhoRequestRegWhoGoodFaithAffirmation: argv.regWhoRequestRegWhoGoodFaithAffirmation,
+            regWhoRequestRegWhoLawfulProcessingAgreement: argv.regWhoRequestRegWhoLawfulProcessingAgreement,
+            regWhoRequestRegWhoLegalBasis: argv.regWhoRequestRegWhoLegalBasis,
+            regWhoRequestRegWhoRequestType: argv.regWhoRequestRegWhoRequestType,
+            regWhoRequestRegWhoRequestedDataElements: argv.regWhoRequestRegWhoRequestedDataElements,
+            regWhoRequestRegWhoRequestorType: argv.regWhoRequestRegWhoRequestorType,
             ncseiSubjectRepresentation: argv.ncseiSubjectRepresentation,
           },
           validation: 'passed',
@@ -671,6 +724,36 @@ const command: CommandModule<object, CreateArgs> = {
       if (argv.sourceIps !== undefined) setNestedValue(bodyData, ['source_ips'], argv.sourceIps);
       if (argv.ncmecNotification !== undefined)
         setNestedValue(bodyData, ['ncmec_notification'], argv.ncmecNotification);
+      if (argv.regWhoRequestRegWhoAuthorizationStatement !== undefined)
+        setNestedValue(
+          bodyData,
+          ['reg_who_request', 'reg_who_authorization_statement'],
+          argv.regWhoRequestRegWhoAuthorizationStatement,
+        );
+      if (argv.regWhoRequestRegWhoGoodFaithAffirmation !== undefined)
+        setNestedValue(
+          bodyData,
+          ['reg_who_request', 'reg_who_good_faith_affirmation'],
+          argv.regWhoRequestRegWhoGoodFaithAffirmation,
+        );
+      if (argv.regWhoRequestRegWhoLawfulProcessingAgreement !== undefined)
+        setNestedValue(
+          bodyData,
+          ['reg_who_request', 'reg_who_lawful_processing_agreement'],
+          argv.regWhoRequestRegWhoLawfulProcessingAgreement,
+        );
+      if (argv.regWhoRequestRegWhoLegalBasis !== undefined)
+        setNestedValue(bodyData, ['reg_who_request', 'reg_who_legal_basis'], argv.regWhoRequestRegWhoLegalBasis);
+      if (argv.regWhoRequestRegWhoRequestType !== undefined)
+        setNestedValue(bodyData, ['reg_who_request', 'reg_who_request_type'], argv.regWhoRequestRegWhoRequestType);
+      if (argv.regWhoRequestRegWhoRequestedDataElements !== undefined)
+        setNestedValue(
+          bodyData,
+          ['reg_who_request', 'reg_who_requested_data_elements'],
+          argv.regWhoRequestRegWhoRequestedDataElements,
+        );
+      if (argv.regWhoRequestRegWhoRequestorType !== undefined)
+        setNestedValue(bodyData, ['reg_who_request', 'reg_who_requestor_type'], argv.regWhoRequestRegWhoRequestorType);
       if (argv.ncseiSubjectRepresentation !== undefined)
         setNestedValue(bodyData, ['ncsei_subject_representation'], argv.ncseiSubjectRepresentation);
       const result = await client.post<unknown>(`/accounts/${accountId}/abuse-reports/${argv.reportParam}`, {

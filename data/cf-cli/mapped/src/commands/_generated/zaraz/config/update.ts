@@ -192,7 +192,7 @@ const command: CommandModule<object, UpdateArgs> = {
       })
       .option('settings-hide-user-agent', {
         type: 'boolean',
-        description: 'Removing sensitive data from User Aagent string enabled.',
+        description: 'Removing sensitive data from User Agent string enabled.',
         default: false,
       })
       .option('settings-init-path', {

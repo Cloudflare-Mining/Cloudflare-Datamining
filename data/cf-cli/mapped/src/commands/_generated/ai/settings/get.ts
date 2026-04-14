@@ -20,7 +20,7 @@ interface GetArgs {
 
 const command: CommandModule<object, GetArgs> = {
   command: 'get [zoneId]',
-  describe: 'Get the Firewall for AI settings for a zone.',
+  describe: 'Get whether Firewall for AI is enabled or disabled for a zone.',
 
   builder: (yargs: Argv): Argv<GetArgs> => {
     return yargs

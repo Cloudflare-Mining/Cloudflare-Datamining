@@ -11,6 +11,7 @@ import configuration from './configuration/index.js';
 import crawler from './crawler/index.js';
 import dispatch from './dispatch/index.js';
 import domains from './domains/index.js';
+import observability from './observability/index.js';
 import placement from './placement/index.js';
 import publisher from './publisher/index.js';
 import registries from './registries/index.js';
@@ -19,6 +20,7 @@ import scripts from './scripts/index.js';
 import scriptsextra from './scripts-extra/index.js';
 import services from './services/index.js';
 import subdomains from './subdomains/index.js';
+import workflows from './workflows/index.js';
 import zonescanbeenabled from './zones-can-be-enabled/index.js';
 
 const command: CommandModule = {
@@ -35,6 +37,7 @@ const command: CommandModule = {
       .command(crawler)
       .command(dispatch)
       .command(domains)
+      .command(observability)
       .command(placement)
       .command(publisher)
       .command(registries)
@@ -43,6 +46,7 @@ const command: CommandModule = {
       .command(scriptsextra)
       .command(services)
       .command(subdomains)
+      .command(workflows)
       .command(zonescanbeenabled)
       .demandCommand(1);
   },

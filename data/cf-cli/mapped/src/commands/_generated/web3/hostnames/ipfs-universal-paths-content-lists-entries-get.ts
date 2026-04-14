@@ -23,7 +23,7 @@ interface IpfsUniversalPathsContentListsEntriesGetArgs {
 
 const command: CommandModule<object, IpfsUniversalPathsContentListsEntriesGetArgs> = {
   command: 'ipfs-universal-paths-content-lists-entries-get <contentListEntryIdentifier> <identifier> [zoneId]',
-  describe: 'Retrieves details for a specific IPFS Universal Path Gateway content list entry.',
+  describe: 'Get IPFS content list entry details',
 
   builder: (yargs: Argv): Argv<IpfsUniversalPathsContentListsEntriesGetArgs> => {
     return yargs

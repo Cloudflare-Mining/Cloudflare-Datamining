@@ -21,7 +21,7 @@ interface ConfigDeleteArgs {
 
 const command: CommandModule<object, ConfigDeleteArgs> = {
   command: 'config-delete <configId>',
-  describe: "Deletes a scan configuration from Cloudforce One's network scanning service.",
+  describe: 'Delete scan configurations',
 
   builder: (yargs: Argv): Argv<ConfigDeleteArgs> => {
     return yargs

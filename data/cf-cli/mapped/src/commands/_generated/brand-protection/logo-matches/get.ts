@@ -48,8 +48,8 @@ const command: CommandModule<object, GetArgs> = {
       })
       .option('order-by', {
         type: 'string',
-        description: "Column to sort by. Options: 'matchedAt', 'domain', or 'similarityScore'",
-        choices: ['matchedAt', 'domain', 'similarityScore'] as const,
+        description: "Column to sort by. Options: 'matchedAt', 'domain', 'similarityScore', or 'registrar'",
+        choices: ['matchedAt', 'domain', 'similarityScore', 'registrar'] as const,
         default: undefined,
       })
       .option('order', {

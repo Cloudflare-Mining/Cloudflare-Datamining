@@ -13,12 +13,16 @@ import { formatDryRun } from '../../../../lib/dry-run.js';
 import { parseBody, setNestedValue } from '../../../../lib/body-parser.js';
 
 interface CreateArgs {
-  'automatic-advertisement'?: boolean;
-  bandwidth?: number;
-  duration: string;
+  'automatic-advertisement': boolean;
+  'bandwidth-threshold'?: number;
+  duration?: string;
   name: string;
   'packet-threshold'?: number;
-  prefixes?: string;
+  'prefix-match'?: string;
+  prefixes: string;
+  type: string;
+  'zscore-sensitivity'?: string;
+  'zscore-target'?: string;
   fields?: string;
   ndjson?: boolean;
   dryRun?: boolean;
@@ -37,9 +41,8 @@ const command: CommandModule<object, CreateArgs> = {
         type: 'boolean',
         description:
           'Toggle on if you would like Cloudflare to automatically advertise the IP Prefixes within the rule via Magic Transit when the rule is triggered. Only available for users of Magic Transit.',
-        default: false,
       })
-      .option('bandwidth', {
+      .option('bandwidth-threshold', {
         type: 'number',
         description:
           'The number of bits per second for the rule. When this value is exceeded for the set duration, an alert notification is sent. Minimum of 1 and no maximum.',
@@ -50,6 +53,7 @@ const command: CommandModule<object, CreateArgs> = {
         description:
           'The amount of time that the rule threshold must be exceeded to send an alert notification. The final value must be equivalent to one of the following 8 values ["1m","5m","10m","15m","20m","30m","45m","60m"].',
         choices: ['1m', '5m', '10m', '15m', '20m', '30m', '45m', '60m'] as const,
+        default: undefined,
       })
       .option('name', {
         type: 'string',
@@ -62,9 +66,32 @@ const command: CommandModule<object, CreateArgs> = {
           'The number of packets per second for the rule. When this value is exceeded for the set duration, an alert notification is sent. Minimum of 1 and no maximum.',
         default: undefined,
       })
+      .option('prefix-match', {
+        type: 'string',
+        description:
+          'Prefix match type to be applied for a prefix auto advertisement when using an advanced_ddos rule.',
+        choices: ['exact', 'subnet', 'supernet'] as const,
+        default: undefined,
+      })
       .option('prefixes', {
         type: 'string',
         description: 'The prefixes field',
+      })
+      .option('type', {
+        type: 'string',
+        description: 'MNM rule type.',
+        choices: ['threshold', 'zscore', 'advanced_ddos'] as const,
+      })
+      .option('zscore-sensitivity', {
+        type: 'string',
+        description: 'Level of sensitivity set for zscore rules.',
+        choices: ['low', 'medium', 'high'] as const,
+        default: undefined,
+      })
+      .option('zscore-target', {
+        type: 'string',
+        description: 'Target of the zscore rule analysis.',
+        choices: ['bits', 'packets'] as const,
         default: undefined,
       })
       .option('fields', {
@@ -85,7 +112,11 @@ const command: CommandModule<object, CreateArgs> = {
         type: 'string',
         description: 'Raw JSON request body (bypasses individual flags)',
       })
-      .choices('duration', ['1m', '5m', '10m', '15m', '20m', '30m', '45m', '60m'] as const) as Argv<CreateArgs>;
+      .choices('duration', ['1m', '5m', '10m', '15m', '20m', '30m', '45m', '60m'] as const)
+      .choices('prefix-match', ['exact', 'subnet', 'supernet'] as const)
+      .choices('type', ['threshold', 'zscore', 'advanced_ddos'] as const)
+      .choices('zscore-sensitivity', ['low', 'medium', 'high'] as const)
+      .choices('zscore-target', ['bits', 'packets'] as const) as Argv<CreateArgs>;
   },
 
   handler: async (argv: ArgumentsCamelCase<CreateArgs>): Promise<void> => {
@@ -99,11 +130,15 @@ const command: CommandModule<object, CreateArgs> = {
           pathParams: {},
           body: {
             automaticAdvertisement: argv.automaticAdvertisement,
-            bandwidth: argv.bandwidth,
+            bandwidthThreshold: argv.bandwidthThreshold,
             duration: argv.duration,
             name: argv.name,
             packetThreshold: argv.packetThreshold,
+            prefixMatch: argv.prefixMatch,
             prefixes: argv.prefixes,
+            type: argv.type,
+            zscoreSensitivity: argv.zscoreSensitivity,
+            zscoreTarget: argv.zscoreTarget,
           },
           validation: 'passed',
         });
@@ -127,11 +162,17 @@ const command: CommandModule<object, CreateArgs> = {
       const bodyData: Record<string, unknown> = {};
       if (argv.automaticAdvertisement !== undefined)
         setNestedValue(bodyData, ['automatic_advertisement'], argv.automaticAdvertisement);
-      if (argv.bandwidth !== undefined) setNestedValue(bodyData, ['bandwidth'], argv.bandwidth);
+      if (argv.bandwidthThreshold !== undefined)
+        setNestedValue(bodyData, ['bandwidth_threshold'], argv.bandwidthThreshold);
       if (argv.duration !== undefined) setNestedValue(bodyData, ['duration'], argv.duration);
       if (argv.name !== undefined) setNestedValue(bodyData, ['name'], argv.name);
       if (argv.packetThreshold !== undefined) setNestedValue(bodyData, ['packet_threshold'], argv.packetThreshold);
+      if (argv.prefixMatch !== undefined) setNestedValue(bodyData, ['prefix_match'], argv.prefixMatch);
       if (argv.prefixes !== undefined) setNestedValue(bodyData, ['prefixes'], argv.prefixes);
+      if (argv.type !== undefined) setNestedValue(bodyData, ['type'], argv.type);
+      if (argv.zscoreSensitivity !== undefined)
+        setNestedValue(bodyData, ['zscore_sensitivity'], argv.zscoreSensitivity);
+      if (argv.zscoreTarget !== undefined) setNestedValue(bodyData, ['zscore_target'], argv.zscoreTarget);
       const result = await client.post<unknown>(`/accounts/${accountId}/mnm/rules`, {
         body: Object.keys(bodyData).length > 0 ? bodyData : undefined,
       });

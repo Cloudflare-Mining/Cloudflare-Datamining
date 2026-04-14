@@ -960,6 +960,302 @@ export class Configuration extends APIResource {
 }
 
 /**
+ * Workers observability — destinations, queries, and telemetry for monitoring and debugging
+ */
+export class Observability extends APIResource {
+  constructor(client: CloudflareClient) {
+    super(client);
+  }
+
+  /**
+   * List your Workers Observability Telemetry Destinations.
+   *
+   * @see destination.list
+   */
+  async destinationsList(accountId: string, params?: Record<string, unknown>): Promise<unknown> {
+    return this._client.get<unknown>(`/accounts/${accountId}/workers/observability/destinations`, {
+      query: params,
+    });
+  }
+
+  /**
+   * Create a new Workers Observability Telemetry Destination.
+   *
+   * @see destination.create
+   */
+  async destinationsCreate(accountId: string): Promise<unknown> {
+    return this._client.post<unknown>(`/accounts/${accountId}/workers/observability/destinations`);
+  }
+
+  /**
+   * Update an existing Workers Observability Telemetry Destination.
+   *
+   * @see destination.update
+   */
+  async destinationsEdit(slug: string, accountId: string): Promise<unknown> {
+    return this._client.patch<unknown>(`/accounts/${accountId}/workers/observability/destinations/${slug}`);
+  }
+
+  /**
+   * Delete a Workers Observability Telemetry Destination.
+   *
+   * @see destinations.delete
+   */
+  async destinationsDelete(slug: string, accountId: string): Promise<void> {
+    return this._client.delete<void>(`/accounts/${accountId}/workers/observability/destinations/${slug}`);
+  }
+
+  /**
+   * List saved queries.
+   *
+   * @see queries.list
+   */
+  async queriesList(accountId: string, params?: Record<string, unknown>): Promise<unknown> {
+    return this._client.get<unknown>(`/accounts/${accountId}/workers/observability/queries`, {
+      query: params,
+    });
+  }
+
+  /**
+   * Persist query for later use.
+   *
+   * @see queries.post
+   */
+  async queriesCreate(accountId: string): Promise<unknown> {
+    return this._client.post<unknown>(`/accounts/${accountId}/workers/observability/queries`);
+  }
+
+  /**
+   * Delete a saved query.
+   *
+   * @see queries.delete
+   */
+  async queriesDelete(queryid: string, accountId: string): Promise<void> {
+    return this._client.delete<void>(`/accounts/${accountId}/workers/observability/queries/${queryid}`);
+  }
+
+  /**
+   * Retrieve a saved query.
+   *
+   * @see queries.get
+   */
+  async queriesGet(queryid: string, accountId: string): Promise<unknown> {
+    return this._client.get<unknown>(`/accounts/${accountId}/workers/observability/queries/${queryid}`);
+  }
+
+  /**
+   * Update saved query.
+   *
+   * @see queries.patch
+   */
+  async queriesEdit(queryid: string, accountId: string): Promise<unknown> {
+    return this._client.patch<unknown>(`/accounts/${accountId}/workers/observability/queries/${queryid}`);
+  }
+
+  /**
+   * List all the keys in your telemetry events.
+   *
+   * @see telemetry.keys.list
+   */
+  async telemetryKeysList(accountId: string): Promise<unknown> {
+    return this._client.post<unknown>(`/accounts/${accountId}/workers/observability/telemetry/keys`);
+  }
+
+  /**
+   * Run a temporary or saved query.
+   *
+   * @see telemetry.query
+   */
+  async telemetryQuery(accountId: string): Promise<unknown> {
+    return this._client.post<unknown>(`/accounts/${accountId}/workers/observability/telemetry/query`);
+  }
+
+  /**
+   * List unique values found in your events.
+   *
+   * @see telemetry.values.list
+   */
+  async telemetryValuesList(accountId: string): Promise<unknown> {
+    return this._client.post<unknown>(`/accounts/${accountId}/workers/observability/telemetry/values`);
+  }
+}
+
+/**
+ * Durable, multi-step workflows that run on Workers with automatic retries and state persistence
+ */
+export class Workflows extends APIResource {
+  constructor(client: CloudflareClient) {
+    super(client);
+  }
+
+  /**
+   * Lists all workflows configured for the account.
+   *
+   * @see wor-list-workflows
+   */
+  async list(accountId: string, params?: Record<string, unknown>): Promise<unknown> {
+    return this._client.get<unknown>(`/accounts/${accountId}/workflows`, {
+      query: params,
+    });
+  }
+
+  /**
+   * Retrieves configuration and metadata for a specific workflow.
+   *
+   * @see wor-get-workflow-details
+   */
+  async get(workflowName: string, accountId: string): Promise<unknown> {
+    return this._client.get<unknown>(`/accounts/${accountId}/workflows/${workflowName}`);
+  }
+
+  /**
+   * Creates a new workflow or updates an existing workflow definition.
+   *
+   * @see wor-create-or-modify-workflow
+   */
+  async create(workflowName: string, accountId: string): Promise<unknown> {
+    return this._client.put<unknown>(`/accounts/${accountId}/workflows/${workflowName}`);
+  }
+
+  /**
+   * Deletes a Workflow. This only deletes the Workflow and does not delete or modify any Worker associated to this Workflow or bounded to it.
+   *
+   * @see wor-delete-workflow
+   */
+  async delete(workflowName: string, accountId: string): Promise<void> {
+    return this._client.delete<void>(`/accounts/${accountId}/workflows/${workflowName}`);
+  }
+
+  /**
+   * Lists all instances of a workflow with their execution status.
+   *
+   * @see wor-list-workflow-instances
+   */
+  async instancesList(workflowName: string, accountId: string, params?: Record<string, unknown>): Promise<unknown> {
+    return this._client.get<unknown>(`/accounts/${accountId}/workflows/${workflowName}/instances`, {
+      query: params,
+    });
+  }
+
+  /**
+   * Creates a new instance of a workflow, starting its execution.
+   *
+   * @see wor-create-new-workflow-instance
+   */
+  async instancesCreate(workflowName: string, accountId: string): Promise<unknown> {
+    return this._client.post<unknown>(`/accounts/${accountId}/workflows/${workflowName}/instances`);
+  }
+
+  /**
+   * Creates multiple workflow instances in a single batch operation.
+   *
+   * @see wor-batch-create-workflow-instance
+   */
+  async instancesBatchCreate(workflowName: string, accountId: string): Promise<unknown> {
+    return this._client.post<unknown>(`/accounts/${accountId}/workflows/${workflowName}/instances/batch`);
+  }
+
+  /**
+   * Terminates multiple workflow instances in a single batch operation.
+   *
+   * @see wor-batch-terminate-workflow-instances
+   */
+  async instancesBatchTerminate(workflowName: string, accountId: string): Promise<unknown> {
+    return this._client.post<unknown>(`/accounts/${accountId}/workflows/${workflowName}/instances/batch/terminate`);
+  }
+
+  /**
+   * Gets the status of a bulk workflow instance termination job.
+   *
+   * @see wor-status-terminate-workflow-instances
+   */
+  async instancesBatchTerminateStatus(workflowName: string, accountId: string): Promise<unknown> {
+    return this._client.get<unknown>(`/accounts/${accountId}/workflows/${workflowName}/instances/terminate`);
+  }
+
+  /**
+   * Retrieves logs and execution status for a specific workflow instance.
+   *
+   * @see wor-describe-workflow-instance
+   */
+  async instancesGet(
+    workflowName: string,
+    instanceId: string,
+    accountId: string,
+    params?: Record<string, unknown>,
+  ): Promise<unknown> {
+    return this._client.get<unknown>(`/accounts/${accountId}/workflows/${workflowName}/instances/${instanceId}`, {
+      query: params,
+    });
+  }
+
+  /**
+   * Sends an event to a running workflow instance to trigger state transitions.
+   *
+   * @see wor-send-event-workflow-instance
+   */
+  async instancesEventCreate(
+    workflowName: string,
+    instanceId: string,
+    eventType: string,
+    accountId: string,
+  ): Promise<unknown> {
+    return this._client.post<unknown>(
+      `/accounts/${accountId}/workflows/${workflowName}/instances/${instanceId}/events/${eventType}`,
+    );
+  }
+
+  /**
+   * Changes the execution status of a workflow instance (e.g., pause, resume, terminate).
+   *
+   * @see wor-change-status-workflow-instance
+   */
+  async instancesStatusEdit(workflowName: string, instanceId: string, accountId: string): Promise<unknown> {
+    return this._client.patch<unknown>(
+      `/accounts/${accountId}/workflows/${workflowName}/instances/${instanceId}/status`,
+    );
+  }
+
+  /**
+   * Lists all deployed versions of a workflow.
+   *
+   * @see wor-list-workflow-versions
+   */
+  async versionsList(workflowName: string, accountId: string, params?: Record<string, unknown>): Promise<unknown> {
+    return this._client.get<unknown>(`/accounts/${accountId}/workflows/${workflowName}/versions`, {
+      query: params,
+    });
+  }
+
+  /**
+   * Retrieves details for a specific deployed workflow version.
+   *
+   * @see wor-describe-workflow-versions
+   */
+  async versionsGet(workflowName: string, versionId: string, accountId: string): Promise<unknown> {
+    return this._client.get<unknown>(`/accounts/${accountId}/workflows/${workflowName}/versions/${versionId}`);
+  }
+
+  /**
+   * Retrieves the directed acyclic graph (DAG) representation of a workflow version.
+   *
+   * @see wor-describe-workflow-versions-dag
+   */
+  async versionsDagGet(workflowName: string, versionId: string, accountId: string): Promise<unknown> {
+    return this._client.get<unknown>(`/accounts/${accountId}/workflows/${workflowName}/versions/${versionId}/dag`);
+  }
+
+  /**
+   * Retrieves the graph visualization of a workflow version.
+   *
+   * @see wor-describe-workflow-versions-graph
+   */
+  async versionsGraphGet(workflowName: string, versionId: string, accountId: string): Promise<unknown> {
+    return this._client.get<unknown>(`/accounts/${accountId}/workflows/${workflowName}/versions/${versionId}/graph`);
+  }
+}
+
+/**
  * Deploy and manage serverless JavaScript/WASM applications on Cloudflare's global network
  */
 export class Workers extends APIResource {
@@ -979,6 +1275,8 @@ export class Workers extends APIResource {
   readonly scriptsextra: ScriptsExtra;
   readonly services: Services;
   readonly configuration: Configuration;
+  readonly observability: Observability;
+  readonly workflows: Workflows;
 
   constructor(client: CloudflareClient) {
     super(client);
@@ -998,6 +1296,8 @@ export class Workers extends APIResource {
     this.scriptsextra = new ScriptsExtra(client);
     this.services = new Services(client);
     this.configuration = new Configuration(client);
+    this.observability = new Observability(client);
+    this.workflows = new Workflows(client);
   }
 
   /**

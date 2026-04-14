@@ -24,6 +24,8 @@ interface TimeseriesGroupsSummaryArgs {
   vertical?: string;
   industry?: string;
   'content-type'?: string;
+  'response-status'?: string;
+  'response-status-category'?: string;
   'limit-per-group'?: number;
   format?: string;
   fields?: string;
@@ -106,6 +108,17 @@ const command: CommandModule<object, TimeseriesGroupsSummaryArgs> = {
         description: 'Filters results by content type category.',
         default: undefined,
       })
+      .option('response-status', {
+        type: 'string',
+        description:
+          'Filters results by HTTP response status code (e.g. 200, 403, 404). Only [IANA-registered codes](https://www.iana.org/assignments/http-status-codes/http-status-codes.xhtml) are accepted.',
+        default: undefined,
+      })
+      .option('response-status-category', {
+        type: 'string',
+        description: 'Filters results by HTTP response status code category.',
+        default: undefined,
+      })
       .option('limit-per-group', {
         type: 'number',
         description:
@@ -146,6 +159,8 @@ const command: CommandModule<object, TimeseriesGroupsSummaryArgs> = {
       if (argv.vertical !== undefined) params['vertical'] = argv.vertical;
       if (argv.industry !== undefined) params['industry'] = argv.industry;
       if (argv.contentType !== undefined) params['contentType'] = argv.contentType;
+      if (argv.responseStatus !== undefined) params['responseStatus'] = argv.responseStatus;
+      if (argv.responseStatusCategory !== undefined) params['responseStatusCategory'] = argv.responseStatusCategory;
       if (argv.limitPerGroup !== undefined) params['limitPerGroup'] = argv.limitPerGroup;
       if (argv.format !== undefined) params['format'] = argv.format;
       const client = new Cloudflare({

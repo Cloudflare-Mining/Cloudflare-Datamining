@@ -13,6 +13,7 @@ interface TestsListArgs {
   colo?: string;
   'test-name'?: string;
   'device-id'?: string;
+  'registration-id'?: string;
   page?: number;
   'per-page'?: number;
   kind?: string;
@@ -42,6 +43,12 @@ const command: CommandModule<object, TestsListArgs> = {
         type: 'string',
         description:
           'Optionally filter result stats to a specific device(s). Cannot be used in combination with colo param.',
+        default: undefined,
+      })
+      .option('registration-id', {
+        type: 'string',
+        description:
+          'Optionally filter results to a specific device registration. Must be used in combination with a single deviceId.',
         default: undefined,
       })
       .option('page', {
@@ -77,6 +84,7 @@ const command: CommandModule<object, TestsListArgs> = {
       if (argv.colo !== undefined) params['colo'] = argv.colo;
       if (argv.testName !== undefined) params['testName'] = argv.testName;
       if (argv.deviceId !== undefined) params['deviceId'] = argv.deviceId;
+      if (argv.registrationId !== undefined) params['registration_id'] = argv.registrationId;
       if (argv.page !== undefined) params['page'] = argv.page;
       if (argv.perPage !== undefined) params['per_page'] = argv.perPage;
       if (argv.kind !== undefined) params['kind'] = argv.kind;

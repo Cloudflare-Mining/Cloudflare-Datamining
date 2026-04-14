@@ -1249,6 +1249,17 @@ export class RunExtra extends APIResource {
   }
 
   /**
+   * Runs inference on the @cf/moonshotai/kimi-k2.5 model.
+   *
+   * @see workers-ai-post-run-cf-moonshotai-kimi-k2-5
+   */
+  async moonshotaiKimiK25Create(accountId: string, params?: Record<string, unknown>): Promise<unknown> {
+    return this._client.post<unknown>(`/accounts/${accountId}/ai/run/@cf/moonshotai/kimi-k2.5`, {
+      body: { ...params },
+    });
+  }
+
+  /**
    * Runs inference on the @hf/google/gemma-7b-it model.
    *
    * @see workers-ai-post-run-hf-google-gemma-7b-it
@@ -1460,7 +1471,7 @@ export class Settings extends APIResource {
   }
 
   /**
-   * Get the Firewall for AI settings for a zone.
+   * Get whether Firewall for AI is enabled or disabled for a zone.
    *
    * @see firewall-for-ai-settings-get
    */
@@ -1469,12 +1480,39 @@ export class Settings extends APIResource {
   }
 
   /**
-   * Set the Firewall for AI settings for a zone. Changes can take up to a minute to propagate to the zone.
+   * Enable or disable Firewall for AI for a zone. Changes can take up to a minute to propagate to the zone.
    *
    * @see firewall-for-ai-settings-put
    */
   async update(zoneId: string): Promise<unknown> {
     return this._client.put<unknown>(`/zones/${zoneId}/firewall-for-ai/settings`);
+  }
+}
+
+/**
+ * Firewall for AI custom topics management
+ */
+export class FirewallCustomTopics extends APIResource {
+  constructor(client: CloudflareClient) {
+    super(client);
+  }
+
+  /**
+   * Get the Firewall for AI custom topic categories for a zone.
+   *
+   * @see firewall-for-ai-custom-topics-get
+   */
+  async get(zoneId: string): Promise<unknown> {
+    return this._client.get<unknown>(`/zones/${zoneId}/firewall-for-ai/custom-topics`);
+  }
+
+  /**
+   * Set the Firewall for AI custom topic categories for a zone. A maximum of 20 custom topics can be configured per zone. Each topic label must be 2–20 characters using only lowercase letters (a–z), digits (0–9), and hyphens. Each topic description must be 2–50 printable ASCII characters. Changes can take up to a minute to propagate to the zone.
+   *
+   * @see firewall-for-ai-custom-topics-put
+   */
+  async update(zoneId: string): Promise<unknown> {
+    return this._client.put<unknown>(`/zones/${zoneId}/firewall-for-ai/custom-topics`);
   }
 }
 
@@ -1490,6 +1528,7 @@ export class AI extends APIResource {
   readonly runextra: RunExtra;
   readonly rags: Rags;
   readonly settings: Settings;
+  readonly firewallcustomtopics: FirewallCustomTopics;
 
   constructor(client: CloudflareClient) {
     super(client);
@@ -1501,6 +1540,7 @@ export class AI extends APIResource {
     this.runextra = new RunExtra(client);
     this.rags = new Rags(client);
     this.settings = new Settings(client);
+    this.firewallcustomtopics = new FirewallCustomTopics(client);
   }
 
   /**

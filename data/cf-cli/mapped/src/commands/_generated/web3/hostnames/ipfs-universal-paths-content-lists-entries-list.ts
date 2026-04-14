@@ -22,7 +22,7 @@ interface IpfsUniversalPathsContentListsEntriesListArgs {
 
 const command: CommandModule<object, IpfsUniversalPathsContentListsEntriesListArgs> = {
   command: 'ipfs-universal-paths-content-lists-entries-list <identifier> [zoneId]',
-  describe: 'Lists entries in an IPFS Universal Path Gateway content list.',
+  describe: 'List IPFS content list entries',
 
   builder: (yargs: Argv): Argv<IpfsUniversalPathsContentListsEntriesListArgs> => {
     return yargs

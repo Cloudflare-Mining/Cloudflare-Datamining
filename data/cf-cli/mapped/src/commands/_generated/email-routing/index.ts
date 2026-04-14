@@ -10,6 +10,7 @@ import addresses from './addresses/index.js';
 import dns from './dns/index.js';
 import rules from './rules/index.js';
 import sending from './sending/index.js';
+import suppression from './suppression/index.js';
 
 const command: CommandModule = {
   command: 'email-routing',
@@ -25,6 +26,7 @@ const command: CommandModule = {
       .command(dns)
       .command(rules)
       .command(sending)
+      .command(suppression)
       .demandCommand(1);
   },
 

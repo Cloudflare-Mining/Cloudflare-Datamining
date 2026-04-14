@@ -12,6 +12,7 @@ import { validateResourceId, validateStringInput } from '../../../../lib/input-v
 
 interface TraceGetArgs {
   postfixId: string;
+  submission?: boolean;
   fields?: string;
   ndjson?: boolean;
   accountId?: string;
@@ -28,6 +29,12 @@ const command: CommandModule<object, TraceGetArgs> = {
         description: 'The identifier of the message.',
         demandOption: true,
       })
+      .option('submission', {
+        type: 'boolean',
+        description:
+          'When true, search the submissions datastore only. When false or omitted, search the regular datastore only.',
+        default: false,
+      })
       .option('fields', {
         type: 'string',
         description: 'Comma-separated list of fields to include in output',
@@ -42,6 +49,9 @@ const command: CommandModule<object, TraceGetArgs> = {
   handler: async (argv: ArgumentsCamelCase<TraceGetArgs>): Promise<void> => {
     try {
       validateResourceId(argv.postfixId as string | undefined, 'postfixId');
+
+      const params: Record<string, unknown> = {};
+      if (argv.submission !== undefined) params['submission'] = argv.submission;
       const client = new Cloudflare({
         apiToken: await getAuthToken(),
         baseURL: process.env.CLOUDFLARE_BASE_URL,
@@ -49,7 +59,11 @@ const command: CommandModule<object, TraceGetArgs> = {
       });
       const accountId = await getAccountId({ accountId: argv.accountId }, client);
 
-      const result = await client.emailSecurity.investigate.traceGet(accountId, argv.postfixId);
+      const result = await client.emailSecurity.investigate.traceGet(
+        accountId,
+        argv.postfixId,
+        Object.keys(params).length > 0 ? params : undefined,
+      );
       formatOutput(result, { fields: argv.fields, ndjson: argv.ndjson ?? false });
     } catch (error) {
       handleError(error);

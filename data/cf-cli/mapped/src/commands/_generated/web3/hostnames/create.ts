@@ -29,7 +29,7 @@ interface CreateArgs {
 
 const command: CommandModule<object, CreateArgs> = {
   command: 'create [zoneId]',
-  describe: 'Creates a new Web3 hostname for serving decentralized web content.',
+  describe: 'Create a Web3 hostname',
 
   builder: (yargs: Argv): Argv<CreateArgs> => {
     return yargs

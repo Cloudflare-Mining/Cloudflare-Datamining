@@ -26,7 +26,7 @@ interface EditArgs {
 
 const command: CommandModule<object, EditArgs> = {
   command: 'edit [zoneId]',
-  describe: 'Partially updates zone-level Waiting Room settings using PATCH semantics.',
+  describe: 'Edit zone-level waiting room settings',
 
   builder: (yargs: Argv): Argv<EditArgs> => {
     return yargs

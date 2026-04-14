@@ -45,8 +45,6 @@ const command: CommandModule<object, GetArgs> = {
           'gateway_rule',
           'image',
           'kv_namespace',
-          'load_balancer_monitor',
-          'load_balancer_pool',
           'queue',
           'r2_bucket',
           'resource_share',

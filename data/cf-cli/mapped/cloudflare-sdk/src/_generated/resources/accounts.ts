@@ -272,30 +272,12 @@ export class Applications extends APIResource {
   }
 
   /**
-   * Create application.
-   *
-   * @see createApplication
-   */
-  async create(accountid: string): Promise<unknown> {
-    return this._client.post<unknown>(`/accounts/${accountid}/resource-library/applications`);
-  }
-
-  /**
    * Get application by ID.
    *
    * @see getApplicationById
    */
   async getById(accountid: string, id: string): Promise<unknown> {
     return this._client.get<unknown>(`/accounts/${accountid}/resource-library/applications/${id}`);
-  }
-
-  /**
-   * Update application version.
-   *
-   * @see updateApplicationVersion
-   */
-  async update(accountid: string, id: string): Promise<unknown> {
-    return this._client.patch<unknown>(`/accounts/${accountid}/resource-library/applications/${id}`);
   }
 }
 
@@ -312,8 +294,10 @@ export class Categories extends APIResource {
    *
    * @see getCategories
    */
-  async getCategories(accountid: string): Promise<unknown> {
-    return this._client.get<unknown>(`/accounts/${accountid}/resource-library/categories`);
+  async getCategories(accountid: string, params?: Record<string, unknown>): Promise<unknown> {
+    return this._client.get<unknown>(`/accounts/${accountid}/resource-library/categories`, {
+      query: params,
+    });
   }
 
   /**
@@ -412,15 +396,6 @@ export class Accounts extends APIResource {
    */
   async createExtra(accountId: string): Promise<unknown> {
     return this._client.post<unknown>(`/accounts/${accountId}/move`);
-  }
-
-  /**
-   * Test Open API upload
-   *
-   * @see openapi_Test
-   */
-  async test(accountId: string): Promise<unknown> {
-    return this._client.post<unknown>(`/accounts/${accountId}/openapi/test`);
   }
 
   /**

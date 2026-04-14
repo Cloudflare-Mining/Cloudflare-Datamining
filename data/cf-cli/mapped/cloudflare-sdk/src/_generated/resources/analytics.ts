@@ -55,7 +55,7 @@ export class Latency extends APIResource {
   }
 
   /**
-   * Retrieves Argo Smart Routing latency analytics for the zone, showing time-to-first-byte improvements.
+   * Retrieves aggregate Argo Smart Routing analytics for a zone, including latency improvements, bandwidth savings, and routing statistics.
    *
    * @see argo-analytics-for-zone-argo-analytics-for-a-zone
    */
@@ -66,7 +66,7 @@ export class Latency extends APIResource {
   }
 
   /**
-   * Retrieves Argo Smart Routing latency analytics broken down by data center (PoP) for the zone.
+   * Retrieves Argo Smart Routing analytics broken down by geographic points of presence (PoPs). Shows latency improvements and routing efficiency per location.
    *
    * @see argo-analytics-for-geolocation-argo-analytics-for-a-zone-at-different-po-ps
    */

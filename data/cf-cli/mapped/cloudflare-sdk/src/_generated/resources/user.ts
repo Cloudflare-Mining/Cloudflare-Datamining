@@ -547,7 +547,7 @@ export class User extends APIResource {
   }
 
   /**
-   * Retrieves detailed information about the currently authenticated user, including email, name, and account memberships.
+   * Get current user details
    *
    * @see user-user-details
    */

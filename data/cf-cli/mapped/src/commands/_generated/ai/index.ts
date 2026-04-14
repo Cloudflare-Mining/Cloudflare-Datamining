@@ -6,6 +6,7 @@ import type { CommandModule } from 'yargs';
 import run from './run.js';
 import authors from './authors/index.js';
 import finetunes from './finetunes/index.js';
+import firewallcustomtopics from './firewall-custom-topics/index.js';
 import models from './models/index.js';
 import rags from './rags/index.js';
 import runextra from './run-extra/index.js';
@@ -22,6 +23,7 @@ const command: CommandModule = {
       .command(run)
       .command(authors)
       .command(finetunes)
+      .command(firewallcustomtopics)
       .command(models)
       .command(rags)
       .command(runextra)

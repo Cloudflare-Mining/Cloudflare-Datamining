@@ -24,10 +24,11 @@ interface CreateArgs {
   'origin-password': string;
   'origin-scheme': string;
   'origin-user': string;
-  'origin-host': string;
+  'origin-host'?: string;
   'origin-port'?: number;
   'origin-access-client-id'?: string;
   'origin-access-client-secret'?: string;
+  'origin-service-id'?: string;
   'origin-connection-limit'?: number;
   fields?: string;
   ndjson?: boolean;
@@ -100,6 +101,7 @@ const command: CommandModule<object, CreateArgs> = {
       .option('origin-host', {
         type: 'string',
         description: 'Defines the host (hostname or IP) of your origin database.',
+        default: undefined,
       })
       .option('origin-port', {
         type: 'number',
@@ -116,6 +118,12 @@ const command: CommandModule<object, CreateArgs> = {
         type: 'string',
         description:
           'Defines the Client Secret of the Access Token to use when connecting to the origin database. The API never returns this write-only value.',
+        default: undefined,
+      })
+      .option('origin-service-id', {
+        type: 'string',
+        description:
+          'The identifier of the Workers VPC Service to connect through. Hyperdrive will egress through the specified VPC Service to reach the origin database.',
         default: undefined,
       })
       .option('origin-connection-limit', {
@@ -142,11 +150,15 @@ const command: CommandModule<object, CreateArgs> = {
         type: 'string',
         description: 'Raw JSON request body (bypasses individual flags)',
       })
-      .conflicts('origin-port', ['originAccessClientId', 'originAccessClientSecret'])
-      .conflicts('origin-access-client-id', ['originPort'])
-      .implies('origin-access-client-id', ['originAccessClientSecret'])
-      .conflicts('origin-access-client-secret', ['originPort'])
-      .implies('origin-access-client-secret', ['originAccessClientId'])
+      .conflicts('origin-host', ['originServiceId'])
+      .implies('origin-host', ['originPort', 'originAccessClientId', 'originAccessClientSecret'])
+      .conflicts('origin-port', ['originAccessClientId', 'originAccessClientSecret', 'originServiceId'])
+      .implies('origin-port', ['originHost'])
+      .conflicts('origin-access-client-id', ['originPort', 'originServiceId'])
+      .implies('origin-access-client-id', ['originHost', 'originAccessClientSecret'])
+      .conflicts('origin-access-client-secret', ['originPort', 'originServiceId'])
+      .implies('origin-access-client-secret', ['originHost', 'originAccessClientId'])
+      .conflicts('origin-service-id', ['originHost', 'originPort', 'originAccessClientId', 'originAccessClientSecret'])
       .choices('origin-scheme', ['postgres', 'postgresql', 'mysql'] as const) as Argv<CreateArgs>;
   },
 
@@ -175,6 +187,7 @@ const command: CommandModule<object, CreateArgs> = {
             originPort: argv.originPort,
             originAccessClientId: argv.originAccessClientId,
             originAccessClientSecret: argv.originAccessClientSecret,
+            originServiceId: argv.originServiceId,
             originConnectionLimit: argv.originConnectionLimit,
           },
           validation: 'passed',
@@ -217,6 +230,7 @@ const command: CommandModule<object, CreateArgs> = {
         setNestedValue(bodyData, ['origin', 'access_client_id'], argv.originAccessClientId);
       if (argv.originAccessClientSecret !== undefined)
         setNestedValue(bodyData, ['origin', 'access_client_secret'], argv.originAccessClientSecret);
+      if (argv.originServiceId !== undefined) setNestedValue(bodyData, ['origin', 'service_id'], argv.originServiceId);
       if (argv.originConnectionLimit !== undefined)
         setNestedValue(bodyData, ['origin_connection_limit'], argv.originConnectionLimit);
       const result = await client.post<unknown>(`/accounts/${accountId}/hyperdrive/configs`, {

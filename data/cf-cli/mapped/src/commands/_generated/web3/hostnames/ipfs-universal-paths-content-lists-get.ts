@@ -22,7 +22,7 @@ interface IpfsUniversalPathsContentListsGetArgs {
 
 const command: CommandModule<object, IpfsUniversalPathsContentListsGetArgs> = {
   command: 'ipfs-universal-paths-content-lists-get <identifier> [zoneId]',
-  describe: 'Retrieves the IPFS Universal Path Gateway content list configuration for a Web3 hostname.',
+  describe: 'Get IPFS content list details',
 
   builder: (yargs: Argv): Argv<IpfsUniversalPathsContentListsGetArgs> => {
     return yargs

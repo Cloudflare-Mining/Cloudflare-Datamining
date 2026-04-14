@@ -40,8 +40,10 @@ export class MtlsCertificates extends APIResource {
    *
    * @see m-tls-certificate-management-list-m-tls-certificates
    */
-  async list(accountId: string): Promise<unknown> {
-    return this._client.get<unknown>(`/accounts/${accountId}/mtls_certificates`);
+  async list(accountId: string, params?: Record<string, unknown>): Promise<unknown> {
+    return this._client.get<unknown>(`/accounts/${accountId}/mtls_certificates`, {
+      query: params,
+    });
   }
 
   /**

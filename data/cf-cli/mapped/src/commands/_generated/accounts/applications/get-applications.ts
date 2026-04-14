@@ -33,7 +33,7 @@ const command: CommandModule<object, GetApplicationsArgs> = {
       })
       .option('limit', {
         type: 'number',
-        description: 'Limit of number of results to return.',
+        description: 'Limit of number of results to return (max 250).',
         default: undefined,
       })
       .option('offset', {

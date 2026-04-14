@@ -10,7 +10,6 @@ import get from './get.js';
 import getextra from './get-extra.js';
 import list from './list.js';
 import move from './move.js';
-import test from './test.js';
 import update from './update.js';
 import updateextra from './update-extra.js';
 import applications from './applications/index.js';
@@ -34,7 +33,6 @@ const command: CommandModule = {
       .command(getextra)
       .command(list)
       .command(move)
-      .command(test)
       .command(update)
       .command(updateextra)
       .command(applications)

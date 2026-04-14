@@ -3,6 +3,13 @@
  * @generated from apis/zero-trust/schema.ts
  */
 import type { CommandModule } from 'yargs';
+import clienttargetenvironmentslist from './client-target-environments-list.js';
+import clientversionslist from './client-versions-list.js';
+import deploymentgroupscreate from './deployment-groups-create.js';
+import deploymentgroupsdelete from './deployment-groups-delete.js';
+import deploymentgroupsget from './deployment-groups-get.js';
+import deploymentgroupslist from './deployment-groups-list.js';
+import deploymentgroupsupdate from './deployment-groups-update.js';
 import devicesdelete from './devices-delete.js';
 import devicesget from './devices-get.js';
 import deviceslist from './devices-list.js';
@@ -79,6 +86,13 @@ const command: CommandModule = {
 
   builder: (yargs) => {
     return yargs
+      .command(clienttargetenvironmentslist)
+      .command(clientversionslist)
+      .command(deploymentgroupscreate)
+      .command(deploymentgroupsdelete)
+      .command(deploymentgroupsget)
+      .command(deploymentgroupslist)
+      .command(deploymentgroupsupdate)
       .command(devicesdelete)
       .command(devicesget)
       .command(deviceslist)

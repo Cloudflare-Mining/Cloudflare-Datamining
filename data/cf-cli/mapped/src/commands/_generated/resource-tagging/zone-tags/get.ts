@@ -44,7 +44,6 @@ const command: CommandModule<object, GetArgs> = {
           'custom_certificate',
           'custom_hostname',
           'dns_record',
-          'load_balancer',
           'managed_client_certificate',
           'zone',
         ] as const,

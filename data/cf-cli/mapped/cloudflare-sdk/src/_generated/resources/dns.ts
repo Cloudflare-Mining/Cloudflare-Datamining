@@ -45,6 +45,15 @@ export class Dnssec extends APIResource {
   async delete(zoneId: string): Promise<void> {
     return this._client.delete<void>(`/zones/${zoneId}/dnssec`);
   }
+
+  /**
+   * List the Zone Signing Keys (ZSKs) that DNSSEC uses for the zone.
+   *
+   * @see dnssec-list-dnssec-zsks
+   */
+  async listZsks(zoneId: string): Promise<unknown> {
+    return this._client.get<unknown>(`/zones/${zoneId}/dnssec/zsk`);
+  }
 }
 
 /**

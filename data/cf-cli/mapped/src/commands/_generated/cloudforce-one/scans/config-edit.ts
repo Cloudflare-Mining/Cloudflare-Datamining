@@ -26,7 +26,7 @@ interface ConfigEditArgs {
 
 const command: CommandModule<object, ConfigEditArgs> = {
   command: 'config-edit <configId>',
-  describe: "Updates an existing scan configuration in Cloudforce One's network scanning service.",
+  describe: 'Update a scan configuration',
 
   builder: (yargs: Argv): Argv<ConfigEditArgs> => {
     return yargs

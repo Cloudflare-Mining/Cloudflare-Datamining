@@ -15,9 +15,12 @@ import { parseBody, setNestedValue } from '../../../../lib/body-parser.js';
 interface ServicesUpdateArgs {
   serviceId: string;
   name: string;
+  'tls-settings-cert-verification-mode': string;
   type: string;
   'http-port'?: number;
   'https-port'?: number;
+  'app-protocol'?: string;
+  'tcp-port'?: number;
   fields?: string;
   ndjson?: boolean;
   dryRun?: boolean;
@@ -40,10 +43,15 @@ const command: CommandModule<object, ServicesUpdateArgs> = {
         type: 'string',
         description: 'The name field',
       })
+      .option('tls-settings-cert-verification-mode', {
+        type: 'string',
+        description:
+          'TLS certificate verification mode for the connection to the origin.  - \`"verify_full"\` — verify certificate chain and hostname (default) - \`"verify_ca"\` — verify certificate chain only, skip hostname check - \`"disabled"\` — do not verify the server certificate at all',
+      })
       .option('type', {
         type: 'string',
         description: 'The type field',
-        choices: ['http'] as const,
+        choices: ['tcp', 'http'] as const,
       })
       .option('http-port', {
         type: 'number',
@@ -53,6 +61,17 @@ const command: CommandModule<object, ServicesUpdateArgs> = {
       .option('https-port', {
         type: 'number',
         description: 'The https_port field',
+        default: undefined,
+      })
+      .option('app-protocol', {
+        type: 'string',
+        description: 'The app_protocol field',
+        choices: ['postgresql', 'mysql'] as const,
+        default: undefined,
+      })
+      .option('tcp-port', {
+        type: 'number',
+        description: 'The tcp_port field',
         default: undefined,
       })
       .option('fields', {
@@ -73,7 +92,12 @@ const command: CommandModule<object, ServicesUpdateArgs> = {
         type: 'string',
         description: 'Raw JSON request body (bypasses individual flags)',
       })
-      .choices('type', ['http'] as const) as Argv<ServicesUpdateArgs>;
+      .conflicts('http-port', ['appProtocol', 'tcpPort'])
+      .conflicts('https-port', ['appProtocol', 'tcpPort'])
+      .conflicts('app-protocol', ['httpPort', 'httpsPort'])
+      .conflicts('tcp-port', ['httpPort', 'httpsPort'])
+      .choices('type', ['tcp', 'http'] as const)
+      .choices('app-protocol', ['postgresql', 'mysql'] as const) as Argv<ServicesUpdateArgs>;
   },
 
   handler: async (argv: ArgumentsCamelCase<ServicesUpdateArgs>): Promise<void> => {
@@ -87,7 +111,15 @@ const command: CommandModule<object, ServicesUpdateArgs> = {
           method: 'PUT',
           url: `https://api.cloudflare.com/client/v4/accounts/${argv.accountId ?? '<account-id>'}/connectivity/directory/services/${argv.serviceId ?? '<serviceId>'}`,
           pathParams: { serviceId: String(argv.serviceId ?? '') },
-          body: { name: argv.name, type: argv.type, httpPort: argv.httpPort, httpsPort: argv.httpsPort },
+          body: {
+            name: argv.name,
+            tlsSettingsCertVerificationMode: argv.tlsSettingsCertVerificationMode,
+            type: argv.type,
+            httpPort: argv.httpPort,
+            httpsPort: argv.httpsPort,
+            appProtocol: argv.appProtocol,
+            tcpPort: argv.tcpPort,
+          },
           validation: 'passed',
         });
         return;
@@ -112,9 +144,13 @@ const command: CommandModule<object, ServicesUpdateArgs> = {
       // Assemble request body from individual flags
       const bodyData: Record<string, unknown> = {};
       if (argv.name !== undefined) setNestedValue(bodyData, ['name'], argv.name);
+      if (argv.tlsSettingsCertVerificationMode !== undefined)
+        setNestedValue(bodyData, ['tls_settings', 'cert_verification_mode'], argv.tlsSettingsCertVerificationMode);
       if (argv.type !== undefined) setNestedValue(bodyData, ['type'], argv.type);
       if (argv.httpPort !== undefined) setNestedValue(bodyData, ['http_port'], argv.httpPort);
       if (argv.httpsPort !== undefined) setNestedValue(bodyData, ['https_port'], argv.httpsPort);
+      if (argv.appProtocol !== undefined) setNestedValue(bodyData, ['app_protocol'], argv.appProtocol);
+      if (argv.tcpPort !== undefined) setNestedValue(bodyData, ['tcp_port'], argv.tcpPort);
       const result = await client.put<unknown>(
         `/accounts/${accountId}/connectivity/directory/services/${argv.serviceId}`,
         { body: Object.keys(bodyData).length > 0 ? bodyData : undefined },

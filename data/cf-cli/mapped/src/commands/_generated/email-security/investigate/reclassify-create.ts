@@ -14,6 +14,7 @@ import { parseBody, setNestedValue } from '../../../../lib/body-parser.js';
 
 interface ReclassifyCreateArgs {
   postfixId: string;
+  submission?: boolean;
   'eml-content'?: string;
   'escalated-submission-id'?: string;
   'expected-disposition': string;
@@ -34,6 +35,12 @@ const command: CommandModule<object, ReclassifyCreateArgs> = {
         type: 'string',
         description: 'The identifier of the message.',
         demandOption: true,
+      })
+      .option('submission', {
+        type: 'boolean',
+        description:
+          'When true, search the submissions datastore only. When false or omitted, search the regular datastore only.',
+        default: false,
       })
       .option('eml-content', {
         type: 'string',
@@ -82,6 +89,9 @@ const command: CommandModule<object, ReclassifyCreateArgs> = {
     try {
       validateResourceId(argv.postfixId as string | undefined, 'postfixId');
 
+      const params: Record<string, unknown> = {};
+      if (argv.submission !== undefined) params['submission'] = argv.submission;
+
       if (argv.dryRun) {
         if (argv.accountId) validateResourceId(argv.accountId, 'accountId');
         formatDryRun({
@@ -90,6 +100,7 @@ const command: CommandModule<object, ReclassifyCreateArgs> = {
           url: `https://api.cloudflare.com/client/v4/accounts/${argv.accountId ?? '<account-id>'}/email-security/investigate/${argv.postfixId ?? '<postfixId>'}/reclassify`,
           pathParams: { postfixId: String(argv.postfixId ?? '') },
           body: {
+            ...params,
             emlContent: argv.emlContent,
             escalatedSubmissionId: argv.escalatedSubmissionId,
             expectedDisposition: argv.expectedDisposition,
@@ -122,8 +133,13 @@ const command: CommandModule<object, ReclassifyCreateArgs> = {
         setNestedValue(bodyData, ['escalated_submission_id'], argv.escalatedSubmissionId);
       if (argv.expectedDisposition !== undefined)
         setNestedValue(bodyData, ['expected_disposition'], argv.expectedDisposition);
+      const qs = new URLSearchParams(
+        Object.entries(params)
+          .filter(([, v]) => v !== undefined)
+          .map(([k, v]) => [k, String(v)]),
+      ).toString();
       const result = await client.post<unknown>(
-        `/accounts/${accountId}/email-security/investigate/${argv.postfixId}/reclassify`,
+        `/accounts/${accountId}/email-security/investigate/${argv.postfixId}/reclassify${qs ? '?' + qs : ''}`,
         { body: Object.keys(bodyData).length > 0 ? bodyData : undefined },
       );
       formatOutput(result, { fields: argv.fields, ndjson: argv.ndjson ?? false });

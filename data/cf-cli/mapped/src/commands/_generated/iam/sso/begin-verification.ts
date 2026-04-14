@@ -21,8 +21,7 @@ interface BeginVerificationArgs {
 
 const command: CommandModule<object, BeginVerificationArgs> = {
   command: 'begin-verification <ssoConnectorId>',
-  describe:
-    'Validates the user has added the DNS TXT record required for validating ownership of the domain they are trying to set up a connector for.',
+  describe: 'Begin SSO connector verification',
 
   builder: (yargs: Argv): Argv<BeginVerificationArgs> => {
     return yargs

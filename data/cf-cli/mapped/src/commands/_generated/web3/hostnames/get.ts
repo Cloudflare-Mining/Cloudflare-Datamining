@@ -22,7 +22,7 @@ interface GetArgs {
 
 const command: CommandModule<object, GetArgs> = {
   command: 'get <identifier> [zoneId]',
-  describe: 'Retrieves details for a specific Web3 hostname, including its target gateway and DNSLink settings.',
+  describe: 'Get Web3 hostname details',
 
   builder: (yargs: Argv): Argv<GetArgs> => {
     return yargs

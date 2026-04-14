@@ -26,7 +26,7 @@ interface UpdateArgs {
 
 const command: CommandModule<object, UpdateArgs> = {
   command: 'update [zoneId]',
-  describe: 'Set the Firewall for AI settings for a zone. Changes can take up to a minute to propagate to the zone.',
+  describe: 'Enable or disable Firewall for AI for a zone. Changes can take up to a minute to propagate to the zone.',
 
   builder: (yargs: Argv): Argv<UpdateArgs> => {
     return yargs
@@ -37,7 +37,7 @@ const command: CommandModule<object, UpdateArgs> = {
       .option('pii-detection-enabled', {
         type: 'boolean',
         description:
-          'Defines whether Firewall for AI can run on the zone. Despite the name, this is not specific to PII detection.',
+          'Whether Firewall for AI is enabled on the zone. Despite the field name, this controls the entire Firewall for AI feature, not just PII detection.',
         default: false,
       })
       .option('fields', {

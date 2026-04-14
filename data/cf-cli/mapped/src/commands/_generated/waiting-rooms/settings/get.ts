@@ -20,7 +20,7 @@ interface GetArgs {
 
 const command: CommandModule<object, GetArgs> = {
   command: 'get [zoneId]',
-  describe: 'Gets the zone-level Waiting Room settings that apply as defaults to all waiting rooms on the zone.',
+  describe: 'Get zone-level waiting room settings',
 
   builder: (yargs: Argv): Argv<GetArgs> => {
     return yargs

@@ -28,7 +28,7 @@ export class Scans extends APIResource {
   }
 
   /**
-   * Retrieves the latest scan results for a Cloudforce One scan configuration, including discovered open ports.
+   * Get open ports scan results
    *
    * @see get_GetOpenPorts
    */
@@ -37,7 +37,7 @@ export class Scans extends APIResource {
   }
 
   /**
-   * Lists scan configurations for Cloudforce One's network scanning service.
+   * List scan configurations
    *
    * @see get_ConfigFetch
    */
@@ -48,7 +48,7 @@ export class Scans extends APIResource {
   }
 
   /**
-   * Creates a new scan configuration for Cloudforce One's network scanning service.
+   * Create a scan configuration
    *
    * @see post_ConfigCreate
    */
@@ -59,7 +59,7 @@ export class Scans extends APIResource {
   }
 
   /**
-   * Updates an existing scan configuration in Cloudforce One's network scanning service.
+   * Update a scan configuration
    *
    * @see post_ConfigUpdate
    */
@@ -73,7 +73,7 @@ export class Scans extends APIResource {
   }
 
   /**
-   * Deletes a scan configuration from Cloudforce One's network scanning service.
+   * Delete scan configurations
    *
    * @see delete_DeleteScans
    */
@@ -993,60 +993,6 @@ export class Events extends APIResource {
   }
 
   /**
-   * Retrieve all event query alerts for the account
-   *
-   * @see get_EventQueryAlertList
-   */
-  async queriesAlertsGetEventAlert(accountId: string): Promise<unknown> {
-    return this._client.get<unknown>(`/accounts/${accountId}/cloudforce-one/events/queries/alerts`);
-  }
-
-  /**
-   * Create a new alert subscription for an event query
-   *
-   * @see post_EventQueryAlertCreate
-   */
-  async queriesAlertsCreateCreate(accountId: string): Promise<unknown> {
-    return this._client.post<unknown>(`/accounts/${accountId}/cloudforce-one/events/queries/alerts/create`);
-  }
-
-  /**
-   * Delete an event query alert subscription by its ID
-   *
-   * @see delete_EventQueryAlertDelete
-   */
-  async queriesAlertsDelete(accountId: string, alertId: string): Promise<void> {
-    return this._client.delete<void>(`/accounts/${accountId}/cloudforce-one/events/queries/alerts/${alertId}`);
-  }
-
-  /**
-   * Retrieve an event query alert by its ID
-   *
-   * @see get_EventQueryAlertRead
-   */
-  async queriesAlertsGetV2(accountId: string, alertId: string): Promise<unknown> {
-    return this._client.get<unknown>(`/accounts/${accountId}/cloudforce-one/events/queries/alerts/${alertId}`);
-  }
-
-  /**
-   * Update an existing event query alert by its ID
-   *
-   * @see patch_EventQueryAlertUpdate
-   */
-  async queriesAlertsPatch(accountId: string, alertId: string): Promise<unknown> {
-    return this._client.patch<unknown>(`/accounts/${accountId}/cloudforce-one/events/queries/alerts/${alertId}`);
-  }
-
-  /**
-   * Update an existing event query alert by its ID
-   *
-   * @see post_EventQueryAlertUpdate
-   */
-  async queriesAlertsCreate(accountId: string, alertId: string): Promise<unknown> {
-    return this._client.post<unknown>(`/accounts/${accountId}/cloudforce-one/events/queries/alerts/${alertId}`);
-  }
-
-  /**
    * Create a new saved event query for the account
    *
    * @see post_EventQueryCreate
@@ -1376,33 +1322,6 @@ export class Rules extends APIResource {
    */
   async update(accountId: string, id: string): Promise<unknown> {
     return this._client.put<unknown>(`/accounts/${accountId}/cloudforce-one/rules/${id}`);
-  }
-
-  /**
-   * Get all actions configured for a rule.
-   *
-   * @see cloudforce-one-get-rule-actions
-   */
-  async actionsGet(accountId: string, id: string): Promise<unknown> {
-    return this._client.get<unknown>(`/accounts/${accountId}/cloudforce-one/rules/${id}/actions`);
-  }
-
-  /**
-   * Add a new action to a rule.
-   *
-   * @see cloudforce-one-add-rule-action
-   */
-  async actionsCreate(accountId: string, id: string): Promise<unknown> {
-    return this._client.post<unknown>(`/accounts/${accountId}/cloudforce-one/rules/${id}/actions`);
-  }
-
-  /**
-   * Delete an action from a rule.
-   *
-   * @see cloudforce-one-delete-rule-action
-   */
-  async actionsDelete(accountId: string, id: string, actionid: string): Promise<void> {
-    return this._client.delete<void>(`/accounts/${accountId}/cloudforce-one/rules/${id}/actions/${actionid}`);
   }
 }
 

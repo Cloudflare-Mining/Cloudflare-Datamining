@@ -17,7 +17,8 @@ interface LimitsListArgs {
 
 const command: CommandModule<object, LimitsListArgs> = {
   command: 'limits-list',
-  describe: 'Retrieves current DLP usage limits and quotas for the account, including dataset limits and scan quotas.',
+  describe:
+    'Retrieves current DLP usage limits and quotas for the account, including maximum allowed counts and current usage for custom entries, dataset cells, and document fingerprints.',
 
   builder: (yargs: Argv): Argv<LimitsListArgs> => {
     return yargs

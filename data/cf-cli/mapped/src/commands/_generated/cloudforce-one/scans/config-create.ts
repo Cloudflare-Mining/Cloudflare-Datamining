@@ -25,7 +25,7 @@ interface ConfigCreateArgs {
 
 const command: CommandModule<object, ConfigCreateArgs> = {
   command: 'config-create',
-  describe: "Creates a new scan configuration for Cloudforce One's network scanning service.",
+  describe: 'Create a scan configuration',
 
   builder: (yargs: Argv): Argv<ConfigCreateArgs> => {
     return yargs

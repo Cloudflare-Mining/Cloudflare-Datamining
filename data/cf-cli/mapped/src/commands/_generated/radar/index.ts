@@ -3,6 +3,7 @@
  * @generated from apis/radar/schema.ts
  */
 import type { CommandModule } from 'yargs';
+import agentreadiness from './agent-readiness/index.js';
 import ai from './ai/index.js';
 import annotations from './annotations/index.js';
 import as112 from './as112/index.js';
@@ -35,6 +36,7 @@ const command: CommandModule = {
 
   builder: (yargs) => {
     return yargs
+      .command(agentreadiness)
       .command(ai)
       .command(annotations)
       .command(as112)

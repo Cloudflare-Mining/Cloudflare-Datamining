@@ -121,7 +121,7 @@ import { Zones } from './resources/zones.js';
  * This pins SDK users to the API contract that existed when the SDK was generated,
  * protecting them from breaking changes in newer API versions.
  */
-export const DEFAULT_API_VERSION = '2026-04-13';
+export const DEFAULT_API_VERSION = '2026-04-14';
 
 /**
  * Main Cloudflare SDK client with all resources attached

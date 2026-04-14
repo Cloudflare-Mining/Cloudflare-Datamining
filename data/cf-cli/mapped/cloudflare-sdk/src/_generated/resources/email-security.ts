@@ -49,8 +49,10 @@ export class Investigate extends APIResource {
    *
    * @see email_security_get_message
    */
-  async get(accountId: string, postfixId: string): Promise<unknown> {
-    return this._client.get<unknown>(`/accounts/${accountId}/email-security/investigate/${postfixId}`);
+  async get(accountId: string, postfixId: string, params?: Record<string, unknown>): Promise<unknown> {
+    return this._client.get<unknown>(`/accounts/${accountId}/email-security/investigate/${postfixId}`, {
+      query: params,
+    });
   }
 
   /**
@@ -76,8 +78,10 @@ export class Investigate extends APIResource {
    *
    * @see email_security_post_preview
    */
-  async previewCreate(accountId: string): Promise<unknown> {
-    return this._client.post<unknown>(`/accounts/${accountId}/email-security/investigate/preview`);
+  async previewCreate(accountId: string, params?: Record<string, unknown>): Promise<unknown> {
+    return this._client.post<unknown>(`/accounts/${accountId}/email-security/investigate/preview`, {
+      body: { ...params },
+    });
   }
 
   /**
@@ -94,8 +98,10 @@ export class Investigate extends APIResource {
    *
    * @see email_security_get_message_trace
    */
-  async traceGet(accountId: string, postfixId: string): Promise<unknown> {
-    return this._client.get<unknown>(`/accounts/${accountId}/email-security/investigate/${postfixId}/trace`);
+  async traceGet(accountId: string, postfixId: string, params?: Record<string, unknown>): Promise<unknown> {
+    return this._client.get<unknown>(`/accounts/${accountId}/email-security/investigate/${postfixId}/trace`, {
+      query: params,
+    });
   }
 
   /**
@@ -106,9 +112,13 @@ export class Investigate extends APIResource {
   async moveCreate(
     accountId: string,
     postfixId: string,
+    params?: Record<string, unknown>,
   ): Promise<components['schemas']['email-security_MoveResponseItem'][]> {
     return this._client.post<components['schemas']['email-security_MoveResponseItem'][]>(
       `/accounts/${accountId}/email-security/investigate/${postfixId}/move`,
+      {
+        body: { ...params },
+      },
     );
   }
 
@@ -128,8 +138,10 @@ export class Investigate extends APIResource {
    *
    * @see email_security_post_reclassify
    */
-  async reclassifyCreate(accountId: string, postfixId: string): Promise<unknown> {
-    return this._client.post<unknown>(`/accounts/${accountId}/email-security/investigate/${postfixId}/reclassify`);
+  async reclassifyCreate(accountId: string, postfixId: string, params?: Record<string, unknown>): Promise<unknown> {
+    return this._client.post<unknown>(`/accounts/${accountId}/email-security/investigate/${postfixId}/reclassify`, {
+      body: { ...params },
+    });
   }
 
   /**
@@ -141,6 +153,15 @@ export class Investigate extends APIResource {
     return this._client.post<components['schemas']['email-security_ReleaseResponse'][]>(
       `/accounts/${accountId}/email-security/investigate/release`,
     );
+  }
+
+  /**
+   * Returns the list of post-delivery actions (moves, quarantine releases, previews, etc.) that have been applied to a specific email message.
+   *
+   * @see email_security_get_message_action_log
+   */
+  async getActionLog(accountId: string, investigateId: string): Promise<unknown> {
+    return this._client.get<unknown>(`/accounts/${accountId}/email-security/investigate/${investigateId}/action_log`);
   }
 }
 

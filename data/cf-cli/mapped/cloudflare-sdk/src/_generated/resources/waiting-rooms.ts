@@ -179,7 +179,7 @@ export class Settings extends APIResource {
   }
 
   /**
-   * Gets the zone-level Waiting Room settings that apply as defaults to all waiting rooms on the zone.
+   * Get zone-level waiting room settings
    *
    * @see waiting-room-get-zone-settings
    */
@@ -188,7 +188,7 @@ export class Settings extends APIResource {
   }
 
   /**
-   * Fully updates zone-level Waiting Room settings, replacing the existing configuration.
+   * Update zone-level waiting room settings
    *
    * @see waiting-room-update-zone-settings
    */
@@ -197,7 +197,7 @@ export class Settings extends APIResource {
   }
 
   /**
-   * Partially updates zone-level Waiting Room settings using PATCH semantics.
+   * Edit zone-level waiting room settings
    *
    * @see waiting-room-patch-zone-settings
    */

@@ -12,6 +12,7 @@ import update from './update.js';
 import consumers from './consumers/index.js';
 import messages from './messages/index.js';
 import purge from './purge/index.js';
+import subscriptions from './subscriptions/index.js';
 
 const command: CommandModule = {
   command: 'queues',
@@ -28,6 +29,7 @@ const command: CommandModule = {
       .command(consumers)
       .command(messages)
       .command(purge)
+      .command(subscriptions)
       .demandCommand(1);
   },
 

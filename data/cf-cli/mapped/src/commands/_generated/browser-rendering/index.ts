@@ -5,6 +5,7 @@
 import type { CommandModule } from 'yargs';
 import content from './content/index.js';
 import crawl from './crawl/index.js';
+import devtools from './devtools/index.js';
 import json from './json/index.js';
 import links from './links/index.js';
 import markdown from './markdown/index.js';
@@ -22,6 +23,7 @@ const command: CommandModule = {
     return yargs
       .command(content)
       .command(crawl)
+      .command(devtools)
       .command(json)
       .command(links)
       .command(markdown)

@@ -123,26 +123,6 @@ export class Values extends APIResource {
 }
 
 /**
- * Summary operations
- */
-export class Summary extends APIResource {
-  constructor(client: CloudflareClient) {
-    super(client);
-  }
-
-  /**
-   * Lists all distinct tag keys and their distinct values across resources in an account.
-   *
-   * @see tags-list-key-summary
-   */
-  async list(accountId: string, params?: Record<string, unknown>): Promise<unknown> {
-    return this._client.get<unknown>(`/accounts/${accountId}/tags/summary`, {
-      query: params,
-    });
-  }
-}
-
-/**
  * Tag accounts and zones with key-value metadata for organization, filtering, and policy targeting
  */
 export class ResourceTagging extends APIResource {
@@ -150,7 +130,6 @@ export class ResourceTagging extends APIResource {
   readonly zonetags: ZoneTags;
   readonly keys: Keys;
   readonly values: Values;
-  readonly summary: Summary;
 
   constructor(client: CloudflareClient) {
     super(client);
@@ -158,7 +137,6 @@ export class ResourceTagging extends APIResource {
     this.zonetags = new ZoneTags(client);
     this.keys = new Keys(client);
     this.values = new Values(client);
-    this.summary = new Summary(client);
   }
 
   /**

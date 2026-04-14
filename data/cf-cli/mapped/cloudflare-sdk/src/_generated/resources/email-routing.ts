@@ -82,7 +82,7 @@ export class Rules extends APIResource {
   }
 
   /**
-   * Rules consist of a set of criteria for matching emails (such as an email being sent to a specific custom email address) plus a set of actions to take on the email (like forwarding it to a specific destination address).
+   * Rules consist of a set of criteria for matching emails (such as an email being sent to a specific custom email address) plus a set of actions to take on the email (like forwarding it to a specific destination address). Forward actions require all destination addresses to be verified.
    *
    * @see email-routing-routing-rules-create-routing-rule
    */
@@ -91,7 +91,7 @@ export class Rules extends APIResource {
   }
 
   /**
-   * Update actions and matches, or enable/disable specific routing rules.
+   * Update actions and matches, or enable/disable specific routing rules. Forward actions require all destination addresses to be verified.
    *
    * @see email-routing-routing-rules-update-routing-rule
    */
@@ -118,7 +118,7 @@ export class Rules extends APIResource {
   }
 
   /**
-   * Enable or disable catch-all routing rule, or change action to forward to specific destination address.
+   * Enable or disable catch-all routing rule, or change action to forward to specific destination address. Forward actions require all destination addresses to be verified.
    *
    * @see email-routing-routing-rules-update-catch-all-rule
    */
@@ -253,6 +253,176 @@ export class Sending extends APIResource {
   async subdomainsDnsGet(subdomainId: string, zoneId: string): Promise<unknown> {
     return this._client.get<unknown>(`/zones/${zoneId}/email/sending/subdomains/${subdomainId}/dns`);
   }
+
+  /**
+   * Returns the current daily sending quota for the account. Null when the quota is not yet available.
+   *
+   * @see email-sending-get-sending-limits
+   */
+  async getLimits(accountId: string): Promise<unknown> {
+    return this._client.get<unknown>(`/accounts/${accountId}/email/sending/limits`);
+  }
+}
+
+/**
+ * Email suppression list management for routing and sending
+ */
+export class Suppression extends APIResource {
+  constructor(client: CloudflareClient) {
+    super(client);
+  }
+
+  /**
+   * List routing suppression entries
+   *
+   * @see get_publicListSuppressionRouting
+   */
+  async routingList(accountId: string, params?: Record<string, unknown>): Promise<unknown> {
+    return this._client.get<unknown>(`/accounts/${accountId}/email/routing/suppression`, {
+      query: params,
+    });
+  }
+
+  /**
+   * Create a routing suppression entry
+   *
+   * @see post_publicNewSuppressionRouting
+   */
+  async routingCreate(accountId: string): Promise<unknown> {
+    return this._client.post<unknown>(`/accounts/${accountId}/email/routing/suppression`);
+  }
+
+  /**
+   * Delete a routing suppression entry
+   *
+   * @see delete_publicDeleteSuppressionRouting
+   */
+  async routingDelete(accountId: string, suppressionId: string): Promise<void> {
+    return this._client.delete<void>(`/accounts/${accountId}/email/routing/suppression/${suppressionId}`);
+  }
+
+  /**
+   * Get a routing suppression entry
+   *
+   * @see get_publicGetSuppressionRouting
+   */
+  async routingGet(accountId: string, suppressionId: string): Promise<unknown> {
+    return this._client.get<unknown>(`/accounts/${accountId}/email/routing/suppression/${suppressionId}`);
+  }
+
+  /**
+   * List sending suppression entries
+   *
+   * @see get_publicListSuppressionSending
+   */
+  async sendingList(accountId: string, params?: Record<string, unknown>): Promise<unknown> {
+    return this._client.get<unknown>(`/accounts/${accountId}/email/sending/suppression`, {
+      query: params,
+    });
+  }
+
+  /**
+   * Create a sending suppression entry
+   *
+   * @see post_publicNewSuppressionSending
+   */
+  async sendingCreate(accountId: string): Promise<unknown> {
+    return this._client.post<unknown>(`/accounts/${accountId}/email/sending/suppression`);
+  }
+
+  /**
+   * Delete a sending suppression entry
+   *
+   * @see delete_publicDeleteSuppressionSending
+   */
+  async sendingDelete(accountId: string, suppressionId: string): Promise<void> {
+    return this._client.delete<void>(`/accounts/${accountId}/email/sending/suppression/${suppressionId}`);
+  }
+
+  /**
+   * Get a sending suppression entry
+   *
+   * @see get_publicGetSuppressionSending
+   */
+  async sendingGet(accountId: string, suppressionId: string): Promise<unknown> {
+    return this._client.get<unknown>(`/accounts/${accountId}/email/sending/suppression/${suppressionId}`);
+  }
+
+  /**
+   * List zone routing suppression entries
+   *
+   * @see get_publicListSuppressionZoneRouting
+   */
+  async zoneRoutingList(zoneId: string, params?: Record<string, unknown>): Promise<unknown> {
+    return this._client.get<unknown>(`/zones/${zoneId}/email/routing/suppression`, {
+      query: params,
+    });
+  }
+
+  /**
+   * Create a zone routing suppression entry
+   *
+   * @see post_publicNewSuppressionZoneRouting
+   */
+  async zoneRoutingCreate(zoneId: string): Promise<unknown> {
+    return this._client.post<unknown>(`/zones/${zoneId}/email/routing/suppression`);
+  }
+
+  /**
+   * Delete a zone routing suppression entry
+   *
+   * @see delete_publicDeleteSuppressionZoneRouting
+   */
+  async zoneRoutingDelete(zoneId: string, suppressionId: string): Promise<void> {
+    return this._client.delete<void>(`/zones/${zoneId}/email/routing/suppression/${suppressionId}`);
+  }
+
+  /**
+   * Get a zone routing suppression entry
+   *
+   * @see get_publicGetSuppressionZoneRouting
+   */
+  async zoneRoutingGet(zoneId: string, suppressionId: string): Promise<unknown> {
+    return this._client.get<unknown>(`/zones/${zoneId}/email/routing/suppression/${suppressionId}`);
+  }
+
+  /**
+   * List zone sending suppression entries
+   *
+   * @see get_publicListSuppressionZoneSending
+   */
+  async zoneSendingList(zoneId: string, params?: Record<string, unknown>): Promise<unknown> {
+    return this._client.get<unknown>(`/zones/${zoneId}/email/sending/suppression`, {
+      query: params,
+    });
+  }
+
+  /**
+   * Create a zone sending suppression entry
+   *
+   * @see post_publicNewSuppressionZoneSending
+   */
+  async zoneSendingCreate(zoneId: string): Promise<unknown> {
+    return this._client.post<unknown>(`/zones/${zoneId}/email/sending/suppression`);
+  }
+
+  /**
+   * Delete a zone sending suppression entry
+   *
+   * @see delete_publicDeleteSuppressionZoneSending
+   */
+  async zoneSendingDelete(zoneId: string, suppressionId: string): Promise<void> {
+    return this._client.delete<void>(`/zones/${zoneId}/email/sending/suppression/${suppressionId}`);
+  }
+
+  /**
+   * Get a zone sending suppression entry
+   *
+   * @see get_publicGetSuppressionZoneSending
+   */
+  async zoneSendingGet(zoneId: string, suppressionId: string): Promise<unknown> {
+    return this._client.get<unknown>(`/zones/${zoneId}/email/sending/suppression/${suppressionId}`);
+  }
 }
 
 /**
@@ -263,6 +433,7 @@ export class EmailRouting extends APIResource {
   readonly rules: Rules;
   readonly addresses: Addresses;
   readonly sending: Sending;
+  readonly suppression: Suppression;
 
   constructor(client: CloudflareClient) {
     super(client);
@@ -270,6 +441,7 @@ export class EmailRouting extends APIResource {
     this.rules = new Rules(client);
     this.addresses = new Addresses(client);
     this.sending = new Sending(client);
+    this.suppression = new Suppression(client);
   }
 
   /**

@@ -15,6 +15,13 @@ import { parseBody, setNestedValue } from '../../../../lib/body-parser.js';
 interface CreateArgs {
   queueId: string;
   'dead-letter-queue'?: string;
+  'script-name'?: string;
+  'settings-batch-size'?: number;
+  'settings-max-concurrency'?: number;
+  'settings-max-retries'?: number;
+  'settings-max-wait-time-ms'?: number;
+  'settings-retry-delay'?: number;
+  type: string;
   fields?: string;
   ndjson?: boolean;
   dryRun?: boolean;
@@ -38,6 +45,42 @@ const command: CommandModule<object, CreateArgs> = {
         description: 'The dead_letter_queue field',
         default: undefined,
       })
+      .option('script-name', {
+        type: 'string',
+        description: 'Name of a Worker',
+        default: undefined,
+      })
+      .option('settings-batch-size', {
+        type: 'number',
+        description: 'The maximum number of messages to include in a batch.',
+        default: undefined,
+      })
+      .option('settings-max-concurrency', {
+        type: 'number',
+        description:
+          "Maximum number of concurrent consumers that may consume from this Queue. Set to \`null\` to automatically opt in to the platform's maximum (recommended).",
+        default: undefined,
+      })
+      .option('settings-max-retries', {
+        type: 'number',
+        description: 'The maximum number of retries',
+        default: undefined,
+      })
+      .option('settings-max-wait-time-ms', {
+        type: 'number',
+        description: 'The number of milliseconds to wait for a batch to fill up before attempting to deliver it',
+        default: undefined,
+      })
+      .option('settings-retry-delay', {
+        type: 'number',
+        description: 'The number of seconds to delay before making the message available for another attempt.',
+        default: undefined,
+      })
+      .option('type', {
+        type: 'string',
+        description: 'The type field',
+        choices: ['worker'] as const,
+      })
       .option('fields', {
         type: 'string',
         description: 'Comma-separated list of fields to include in output',
@@ -55,7 +98,8 @@ const command: CommandModule<object, CreateArgs> = {
       .option('body', {
         type: 'string',
         description: 'Raw JSON request body (bypasses individual flags)',
-      }) as Argv<CreateArgs>;
+      })
+      .choices('type', ['worker'] as const) as Argv<CreateArgs>;
   },
 
   handler: async (argv: ArgumentsCamelCase<CreateArgs>): Promise<void> => {
@@ -69,7 +113,16 @@ const command: CommandModule<object, CreateArgs> = {
           method: 'POST',
           url: `https://api.cloudflare.com/client/v4/accounts/${argv.accountId ?? '<account-id>'}/queues/${argv.queueId ?? '<queueId>'}/consumers`,
           pathParams: { queueId: String(argv.queueId ?? '') },
-          body: { deadLetterQueue: argv.deadLetterQueue },
+          body: {
+            deadLetterQueue: argv.deadLetterQueue,
+            scriptName: argv.scriptName,
+            settingsBatchSize: argv.settingsBatchSize,
+            settingsMaxConcurrency: argv.settingsMaxConcurrency,
+            settingsMaxRetries: argv.settingsMaxRetries,
+            settingsMaxWaitTimeMs: argv.settingsMaxWaitTimeMs,
+            settingsRetryDelay: argv.settingsRetryDelay,
+            type: argv.type,
+          },
           validation: 'passed',
         });
         return;
@@ -93,6 +146,18 @@ const command: CommandModule<object, CreateArgs> = {
       // Assemble request body from individual flags
       const bodyData: Record<string, unknown> = {};
       if (argv.deadLetterQueue !== undefined) setNestedValue(bodyData, ['dead_letter_queue'], argv.deadLetterQueue);
+      if (argv.scriptName !== undefined) setNestedValue(bodyData, ['script_name'], argv.scriptName);
+      if (argv.settingsBatchSize !== undefined)
+        setNestedValue(bodyData, ['settings', 'batch_size'], argv.settingsBatchSize);
+      if (argv.settingsMaxConcurrency !== undefined)
+        setNestedValue(bodyData, ['settings', 'max_concurrency'], argv.settingsMaxConcurrency);
+      if (argv.settingsMaxRetries !== undefined)
+        setNestedValue(bodyData, ['settings', 'max_retries'], argv.settingsMaxRetries);
+      if (argv.settingsMaxWaitTimeMs !== undefined)
+        setNestedValue(bodyData, ['settings', 'max_wait_time_ms'], argv.settingsMaxWaitTimeMs);
+      if (argv.settingsRetryDelay !== undefined)
+        setNestedValue(bodyData, ['settings', 'retry_delay'], argv.settingsRetryDelay);
+      if (argv.type !== undefined) setNestedValue(bodyData, ['type'], argv.type);
       const result = await client.post<unknown>(`/accounts/${accountId}/queues/${argv.queueId}/consumers`, {
         body: Object.keys(bodyData).length > 0 ? bodyData : undefined,
       });

@@ -31,7 +31,7 @@ const command: CommandModule<object, ConfigsGetArgs> = {
       })
       .option('ids', {
         type: 'string',
-        description: 'Comma separated list of Zaraz configuration IDs',
+        description: 'Comma separated list of Zaraz configuration IDs.',
       })
       .option('fields', {
         type: 'string',

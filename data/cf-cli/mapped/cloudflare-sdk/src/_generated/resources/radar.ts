@@ -176,6 +176,48 @@ export class AI extends APIResource {
       query: params,
     });
   }
+
+  /**
+   * Retrieves the overall median HTML-to-markdown reduction ratio for AI agent requests over the given date range.
+   *
+   * @see radar-get-ai-markdown-for-agents-summary
+   */
+  async markdownForAgentsSummary(params?: Record<string, unknown>): Promise<unknown> {
+    return this._client.get<unknown>(`/radar/ai/markdown_for_agents/summary`, {
+      query: params,
+    });
+  }
+
+  /**
+   * Retrieves the median HTML-to-markdown reduction ratio over time for AI agent requests.
+   *
+   * @see radar-get-ai-markdown-for-agents-timeseries
+   */
+  async markdownForAgentsTimeseries(params?: Record<string, unknown>): Promise<unknown> {
+    return this._client.get<unknown>(`/radar/ai/markdown_for_agents/timeseries`, {
+      query: params,
+    });
+  }
+}
+
+/**
+ * Agent readiness summary statistics across the Cloudflare network
+ */
+export class AgentReadiness extends APIResource {
+  constructor(client: CloudflareClient) {
+    super(client);
+  }
+
+  /**
+   * Returns a summary of AI agent readiness scores across scanned domains, grouped by the specified dimension. Data is sourced from weekly bulk scans. All values are raw domain counts.
+   *
+   * @see radar-get-agent-readiness-summary
+   */
+  async summary(dimension: string, params?: Record<string, unknown>): Promise<unknown> {
+    return this._client.get<unknown>(`/radar/agent_readiness/summary/${dimension}`, {
+      query: params,
+    });
+  }
 }
 
 /**
@@ -3224,6 +3266,7 @@ export class Tlds extends APIResource {
  */
 export class Radar extends APIResource {
   readonly ai: AI;
+  readonly agentreadiness: AgentReadiness;
   readonly ct: Ct;
   readonly annotations: Annotations;
   readonly bgp: Bgp;
@@ -3252,6 +3295,7 @@ export class Radar extends APIResource {
   constructor(client: CloudflareClient) {
     super(client);
     this.ai = new AI(client);
+    this.agentreadiness = new AgentReadiness(client);
     this.ct = new Ct(client);
     this.annotations = new Annotations(client);
     this.bgp = new Bgp(client);

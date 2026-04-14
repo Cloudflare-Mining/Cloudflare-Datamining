@@ -207,6 +207,166 @@ export class Crawl extends APIResource {
 }
 
 /**
+ * Chrome DevTools Protocol endpoints for browser automation and debugging
+ */
+export class Devtools extends APIResource {
+  constructor(client: CloudflareClient) {
+    super(client);
+  }
+
+  /**
+   * Acquires and establishes a WebSocket connection to a browser session.
+   *
+   * @see brapi-get_DevtoolsBrowserAcquire
+   */
+  async browserAcquire(accountId: string, params?: Record<string, unknown>): Promise<unknown> {
+    return this._client.get<unknown>(`/accounts/${accountId}/browser-rendering/devtools/browser`, {
+      query: params,
+    });
+  }
+
+  /**
+   * Acquire a new browser DevTools session
+   *
+   * @see brapi-post_DevtoolsAcquire
+   */
+  async acquire(accountId: string, params?: Record<string, unknown>): Promise<unknown> {
+    return this._client.post<unknown>(`/accounts/${accountId}/browser-rendering/devtools/browser`, {
+      query: params,
+    });
+  }
+
+  /**
+   * Closes an existing browser session.
+   *
+   * @see brapi-delete_DevtoolsBrowserDelete
+   */
+  async browserDelete(accountId: string, sessionId: string): Promise<void> {
+    return this._client.delete<void>(`/accounts/${accountId}/browser-rendering/devtools/browser/${sessionId}`);
+  }
+
+  /**
+   * Establishes a WebSocket connection to an existing browser session.
+   *
+   * @see brapi-get_DevtoolsBrowser
+   */
+  async browserGet(accountId: string, sessionId: string, params?: Record<string, unknown>): Promise<unknown> {
+    return this._client.get<unknown>(`/accounts/${accountId}/browser-rendering/devtools/browser/${sessionId}`, {
+      query: params,
+    });
+  }
+
+  /**
+   * Returns a list of all debuggable targets including tabs, pages, service workers, and other browser contexts.
+   *
+   * @see brapi-get_DevtoolsJson
+   */
+  async jsonGet(accountId: string, sessionId: string): Promise<unknown> {
+    return this._client.get<unknown>(`/accounts/${accountId}/browser-rendering/devtools/browser/${sessionId}/json`);
+  }
+
+  /**
+   * Activates (brings to front) a specific browser target by its ID.
+   *
+   * @see brapi-get_DevtoolsJsonActivate
+   */
+  async jsonActivate(sessionId: string, accountId: string, targetId: string): Promise<unknown> {
+    return this._client.get<unknown>(
+      `/accounts/${accountId}/browser-rendering/devtools/browser/${sessionId}/json/activate/${targetId}`,
+    );
+  }
+
+  /**
+   * Returns a list of all debuggable targets including tabs, pages, service workers, and other browser contexts.
+   *
+   * @see brapi-get_DevtoolsJsonList
+   */
+  async jsonList(accountId: string, sessionId: string): Promise<unknown> {
+    return this._client.get<unknown>(
+      `/accounts/${accountId}/browser-rendering/devtools/browser/${sessionId}/json/list`,
+    );
+  }
+
+  /**
+   * Returns the debuggable target with the given ID.
+   *
+   * @see brapi-get_DevtoolsJsonTarget
+   */
+  async jsonTarget(accountId: string, sessionId: string, targetId: string): Promise<unknown> {
+    return this._client.get<unknown>(
+      `/accounts/${accountId}/browser-rendering/devtools/browser/${sessionId}/json/list/${targetId}`,
+    );
+  }
+
+  /**
+   * Opens a new tab in the browser. Optionally specify a URL to navigate to.
+   *
+   * @see brapi-put_DevtoolsJsonNew
+   */
+  async jsonNew(accountId: string, sessionId: string, params?: Record<string, unknown>): Promise<unknown> {
+    return this._client.put<unknown>(
+      `/accounts/${accountId}/browser-rendering/devtools/browser/${sessionId}/json/new`,
+      {
+        query: params,
+      },
+    );
+  }
+
+  /**
+   * Returns the complete Chrome DevTools Protocol schema including all domains, commands, events, and types. This schema describes the entire CDP API surface.
+   *
+   * @see brapi-get_DevtoolsJsonProtocol
+   */
+  async jsonProtocol(accountId: string, sessionId: string): Promise<unknown> {
+    return this._client.get<unknown>(
+      `/accounts/${accountId}/browser-rendering/devtools/browser/${sessionId}/json/protocol`,
+    );
+  }
+
+  /**
+   * Get browser version metadata.
+   *
+   * @see brapi-get_DevtoolsJsonVersion
+   */
+  async jsonVersion(accountId: string, sessionId: string): Promise<unknown> {
+    return this._client.get<unknown>(
+      `/accounts/${accountId}/browser-rendering/devtools/browser/${sessionId}/json/version`,
+    );
+  }
+
+  /**
+   * Establishes a WebSocket connection to a specific Chrome DevTools target or page.
+   *
+   * @see brapi-get_DevtoolsPage
+   */
+  async pageGet(accountId: string, sessionId: string, targetId: string): Promise<unknown> {
+    return this._client.get<unknown>(
+      `/accounts/${accountId}/browser-rendering/devtools/browser/${sessionId}/page/${targetId}`,
+    );
+  }
+
+  /**
+   * List active browser sessions.
+   *
+   * @see brapi-get_DevtoolsSessionList
+   */
+  async sessionList(accountId: string, params?: Record<string, unknown>): Promise<unknown> {
+    return this._client.get<unknown>(`/accounts/${accountId}/browser-rendering/devtools/session`, {
+      query: params,
+    });
+  }
+
+  /**
+   * Get details for a specific browser session.
+   *
+   * @see brapi-get_DevtoolsSessionDetails
+   */
+  async sessionDetails(accountId: string, sessionId: string): Promise<unknown> {
+    return this._client.get<unknown>(`/accounts/${accountId}/browser-rendering/devtools/session/${sessionId}`);
+  }
+}
+
+/**
  * Headless browser API — render pages, take screenshots, generate PDFs, scrape content, and extract structured data
  */
 export class BrowserRendering extends APIResource {
@@ -219,6 +379,7 @@ export class BrowserRendering extends APIResource {
   readonly links: Links;
   readonly markdown: Markdown;
   readonly crawl: Crawl;
+  readonly devtools: Devtools;
 
   constructor(client: CloudflareClient) {
     super(client);
@@ -231,5 +392,6 @@ export class BrowserRendering extends APIResource {
     this.links = new Links(client);
     this.markdown = new Markdown(client);
     this.crawl = new Crawl(client);
+    this.devtools = new Devtools(client);
   }
 }

@@ -27,7 +27,8 @@ interface CatchAllsUpdateArgs {
 
 const command: CommandModule<object, CatchAllsUpdateArgs> = {
   command: 'catch-alls-update [zoneId]',
-  describe: 'Enable or disable catch-all routing rule, or change action to forward to specific destination address.',
+  describe:
+    'Enable or disable catch-all routing rule, or change action to forward to specific destination address. Forward actions require all destination addresses to be verified.',
 
   builder: (yargs: Argv): Argv<CatchAllsUpdateArgs> => {
     return yargs

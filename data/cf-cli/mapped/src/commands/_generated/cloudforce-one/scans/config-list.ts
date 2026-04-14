@@ -17,7 +17,7 @@ interface ConfigListArgs {
 
 const command: CommandModule<object, ConfigListArgs> = {
   command: 'config-list',
-  describe: "Lists scan configurations for Cloudforce One's network scanning service.",
+  describe: 'List scan configurations',
 
   builder: (yargs: Argv): Argv<ConfigListArgs> => {
     return yargs

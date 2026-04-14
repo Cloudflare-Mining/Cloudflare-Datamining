@@ -28,7 +28,7 @@ interface EditArgs {
 
 const command: CommandModule<object, EditArgs> = {
   command: 'edit <identifier> [zoneId]',
-  describe: 'Updates a Web3 hostname configuration.',
+  describe: 'Edit a Web3 hostname',
 
   builder: (yargs: Argv): Argv<EditArgs> => {
     return yargs

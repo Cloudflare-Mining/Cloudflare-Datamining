@@ -3,6 +3,7 @@
  * @generated from apis/email-routing/schema.ts
  */
 import type { CommandModule } from 'yargs';
+import getlimits from './get-limits.js';
 import sendcreate from './send-create.js';
 import sendrawcreate from './send-raw-create.js';
 import subdomainscreate from './subdomains-create.js';
@@ -18,6 +19,7 @@ const command: CommandModule = {
 
   builder: (yargs) => {
     return yargs
+      .command(getlimits)
       .command(sendcreate)
       .command(sendrawcreate)
       .command(subdomainscreate)

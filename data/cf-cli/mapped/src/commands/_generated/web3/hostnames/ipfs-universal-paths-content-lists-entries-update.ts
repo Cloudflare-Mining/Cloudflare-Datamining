@@ -30,7 +30,7 @@ interface IpfsUniversalPathsContentListsEntriesUpdateArgs {
 
 const command: CommandModule<object, IpfsUniversalPathsContentListsEntriesUpdateArgs> = {
   command: 'ipfs-universal-paths-content-lists-entries-update <contentListEntryIdentifier> <identifier> [zoneId]',
-  describe: 'Updates an IPFS Universal Path Gateway content list entry.',
+  describe: 'Edit an IPFS content list entry',
 
   builder: (yargs: Argv): Argv<IpfsUniversalPathsContentListsEntriesUpdateArgs> => {
     return yargs

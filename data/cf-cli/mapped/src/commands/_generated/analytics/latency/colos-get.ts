@@ -20,7 +20,8 @@ interface ColosGetArgs {
 
 const command: CommandModule<object, ColosGetArgs> = {
   command: 'colos-get [zoneId]',
-  describe: 'Retrieves Argo Smart Routing latency analytics broken down by data center (PoP) for the zone.',
+  describe:
+    'Retrieves Argo Smart Routing analytics broken down by geographic points of presence (PoPs). Shows latency improvements and routing efficiency per location.',
 
   builder: (yargs: Argv): Argv<ColosGetArgs> => {
     return yargs

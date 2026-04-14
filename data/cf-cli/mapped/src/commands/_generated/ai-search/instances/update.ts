@@ -23,10 +23,14 @@ interface UpdateArgs {
   'chunk-size'?: number;
   'embedding-model'?: string;
   'fusion-method'?: string;
-  'hybrid-search-enabled'?: boolean;
+  'index-method-keyword': boolean;
+  'index-method-vector': boolean;
   'indexing-options-keyword-tokenizer'?: string;
   'max-num-results'?: number;
   'metadata-created-from-aisearch-wizard'?: boolean;
+  'metadata-search-for-agents-hostname': string;
+  'metadata-search-for-agents-zone-id': string;
+  'metadata-search-for-agents-zone-name': string;
   'metadata-worker-domain'?: string;
   paused?: boolean;
   'public-endpoint-params-authorized-hosts'?: string;
@@ -102,6 +106,8 @@ const command: CommandModule<object, UpdateArgs> = {
           '@cf/deepseek-ai/deepseek-r1-distill-qwen-32b',
           '@cf/moonshotai/kimi-k2-instruct',
           '@cf/google/gemma-3-12b-it',
+          '@cf/google/gemma-4-26b-a4b-it',
+          '@cf/moonshotai/kimi-k2.5',
           'anthropic/claude-3-7-sonnet',
           'anthropic/claude-sonnet-4',
           'anthropic/claude-opus-4',
@@ -170,10 +176,13 @@ const command: CommandModule<object, UpdateArgs> = {
         choices: ['max', 'rrf'] as const,
         default: undefined,
       })
-      .option('hybrid-search-enabled', {
+      .option('index-method-keyword', {
         type: 'boolean',
-        description: 'The hybrid_search_enabled field',
-        default: false,
+        description: 'Enable keyword (BM25) storage backend.',
+      })
+      .option('index-method-vector', {
+        type: 'boolean',
+        description: 'Enable vector (embedding) storage backend.',
       })
       .option('indexing-options-keyword-tokenizer', {
         type: 'string',
@@ -191,6 +200,18 @@ const command: CommandModule<object, UpdateArgs> = {
         type: 'boolean',
         description: 'The metadata.created_from_aisearch_wizard field',
         default: false,
+      })
+      .option('metadata-search-for-agents-hostname', {
+        type: 'string',
+        description: 'The metadata.search_for_agents.hostname field',
+      })
+      .option('metadata-search-for-agents-zone-id', {
+        type: 'string',
+        description: 'The metadata.search_for_agents.zone_id field',
+      })
+      .option('metadata-search-for-agents-zone-name', {
+        type: 'string',
+        description: 'The metadata.search_for_agents.zone_name field',
       })
       .option('metadata-worker-domain', {
         type: 'string',
@@ -279,6 +300,8 @@ const command: CommandModule<object, UpdateArgs> = {
           '@cf/deepseek-ai/deepseek-r1-distill-qwen-32b',
           '@cf/moonshotai/kimi-k2-instruct',
           '@cf/google/gemma-3-12b-it',
+          '@cf/google/gemma-4-26b-a4b-it',
+          '@cf/moonshotai/kimi-k2.5',
           'anthropic/claude-3-7-sonnet',
           'anthropic/claude-sonnet-4',
           'anthropic/claude-opus-4',
@@ -412,6 +435,8 @@ const command: CommandModule<object, UpdateArgs> = {
           '@cf/deepseek-ai/deepseek-r1-distill-qwen-32b',
           '@cf/moonshotai/kimi-k2-instruct',
           '@cf/google/gemma-3-12b-it',
+          '@cf/google/gemma-4-26b-a4b-it',
+          '@cf/moonshotai/kimi-k2.5',
           'anthropic/claude-3-7-sonnet',
           'anthropic/claude-sonnet-4',
           'anthropic/claude-opus-4',
@@ -481,6 +506,8 @@ const command: CommandModule<object, UpdateArgs> = {
         '@cf/deepseek-ai/deepseek-r1-distill-qwen-32b',
         '@cf/moonshotai/kimi-k2-instruct',
         '@cf/google/gemma-3-12b-it',
+        '@cf/google/gemma-4-26b-a4b-it',
+        '@cf/moonshotai/kimi-k2.5',
         'anthropic/claude-3-7-sonnet',
         'anthropic/claude-sonnet-4',
         'anthropic/claude-opus-4',
@@ -526,6 +553,8 @@ const command: CommandModule<object, UpdateArgs> = {
         '@cf/deepseek-ai/deepseek-r1-distill-qwen-32b',
         '@cf/moonshotai/kimi-k2-instruct',
         '@cf/google/gemma-3-12b-it',
+        '@cf/google/gemma-4-26b-a4b-it',
+        '@cf/moonshotai/kimi-k2.5',
         'anthropic/claude-3-7-sonnet',
         'anthropic/claude-sonnet-4',
         'anthropic/claude-opus-4',
@@ -558,6 +587,8 @@ const command: CommandModule<object, UpdateArgs> = {
         '@cf/deepseek-ai/deepseek-r1-distill-qwen-32b',
         '@cf/moonshotai/kimi-k2-instruct',
         '@cf/google/gemma-3-12b-it',
+        '@cf/google/gemma-4-26b-a4b-it',
+        '@cf/moonshotai/kimi-k2.5',
         'anthropic/claude-3-7-sonnet',
         'anthropic/claude-sonnet-4',
         'anthropic/claude-opus-4',
@@ -600,10 +631,14 @@ const command: CommandModule<object, UpdateArgs> = {
             chunkSize: argv.chunkSize,
             embeddingModel: argv.embeddingModel,
             fusionMethod: argv.fusionMethod,
-            hybridSearchEnabled: argv.hybridSearchEnabled,
+            indexMethodKeyword: argv.indexMethodKeyword,
+            indexMethodVector: argv.indexMethodVector,
             indexingOptionsKeywordTokenizer: argv.indexingOptionsKeywordTokenizer,
             maxNumResults: argv.maxNumResults,
             metadataCreatedFromAisearchWizard: argv.metadataCreatedFromAisearchWizard,
+            metadataSearchForAgentsHostname: argv.metadataSearchForAgentsHostname,
+            metadataSearchForAgentsZoneId: argv.metadataSearchForAgentsZoneId,
+            metadataSearchForAgentsZoneName: argv.metadataSearchForAgentsZoneName,
             metadataWorkerDomain: argv.metadataWorkerDomain,
             paused: argv.paused,
             publicEndpointParamsAuthorizedHosts: argv.publicEndpointParamsAuthorizedHosts,
@@ -679,13 +714,21 @@ const command: CommandModule<object, UpdateArgs> = {
       if (argv.chunkSize !== undefined) setNestedValue(bodyData, ['chunk_size'], argv.chunkSize);
       if (argv.embeddingModel !== undefined) setNestedValue(bodyData, ['embedding_model'], argv.embeddingModel);
       if (argv.fusionMethod !== undefined) setNestedValue(bodyData, ['fusion_method'], argv.fusionMethod);
-      if (argv.hybridSearchEnabled !== undefined)
-        setNestedValue(bodyData, ['hybrid_search_enabled'], argv.hybridSearchEnabled);
+      if (argv.indexMethodKeyword !== undefined)
+        setNestedValue(bodyData, ['index_method', 'keyword'], argv.indexMethodKeyword);
+      if (argv.indexMethodVector !== undefined)
+        setNestedValue(bodyData, ['index_method', 'vector'], argv.indexMethodVector);
       if (argv.indexingOptionsKeywordTokenizer !== undefined)
         setNestedValue(bodyData, ['indexing_options', 'keyword_tokenizer'], argv.indexingOptionsKeywordTokenizer);
       if (argv.maxNumResults !== undefined) setNestedValue(bodyData, ['max_num_results'], argv.maxNumResults);
       if (argv.metadataCreatedFromAisearchWizard !== undefined)
         setNestedValue(bodyData, ['metadata', 'created_from_aisearch_wizard'], argv.metadataCreatedFromAisearchWizard);
+      if (argv.metadataSearchForAgentsHostname !== undefined)
+        setNestedValue(bodyData, ['metadata', 'search_for_agents', 'hostname'], argv.metadataSearchForAgentsHostname);
+      if (argv.metadataSearchForAgentsZoneId !== undefined)
+        setNestedValue(bodyData, ['metadata', 'search_for_agents', 'zone_id'], argv.metadataSearchForAgentsZoneId);
+      if (argv.metadataSearchForAgentsZoneName !== undefined)
+        setNestedValue(bodyData, ['metadata', 'search_for_agents', 'zone_name'], argv.metadataSearchForAgentsZoneName);
       if (argv.metadataWorkerDomain !== undefined)
         setNestedValue(bodyData, ['metadata', 'worker_domain'], argv.metadataWorkerDomain);
       if (argv.paused !== undefined) setNestedValue(bodyData, ['paused'], argv.paused);

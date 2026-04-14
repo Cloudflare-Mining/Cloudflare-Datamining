@@ -17,7 +17,7 @@ interface ListArgs {
 
 const command: CommandModule<object, ListArgs> = {
   command: 'list',
-  describe: 'Lists all SSO connectors configured for the account.',
+  describe: 'List all SSO connectors',
 
   builder: (yargs: Argv): Argv<ListArgs> => {
     return yargs
