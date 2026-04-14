@@ -100,6 +100,9 @@
 										},
 										"total_count": {
 											"type": "number"
+										},
+										"total_pages": {
+											"type": "number"
 										}
 									},
 									"required": [
@@ -444,6 +447,9 @@
 										},
 										"total_count": {
 											"type": "number"
+										},
+										"total_pages": {
+											"type": "number"
 										}
 									},
 									"required": [
@@ -712,6 +718,9 @@
 										},
 										"total_count": {
 											"type": "number"
+										},
+										"total_pages": {
+											"type": "number"
 										}
 									},
 									"required": [
@@ -896,11 +905,11 @@
 				}
 			},
 			{
-				"description": "`page` and `cursor` are mutually exclusive, use one or the other.",
 				"in": "query",
 				"name": "page",
 				"schema": {
-					"description": "`page` and `cursor` are mutually exclusive, use one or the other.",
+					"deprecated": true,
+					"description": "Deprecated: use `cursor` for pagination instead.",
 					"minimum": 1,
 					"type": "number"
 				}
@@ -916,20 +925,20 @@
 				}
 			},
 			{
-				"description": "`page` and `cursor` are mutually exclusive, use one or the other.",
+				"description": "Opaque token for cursor-based pagination. Mutually exclusive with `page`.",
 				"in": "query",
 				"name": "cursor",
 				"schema": {
-					"description": "`page` and `cursor` are mutually exclusive, use one or the other.",
+					"description": "Opaque token for cursor-based pagination. Mutually exclusive with `page`.",
 					"type": "string"
 				}
 			},
 			{
-				"description": "should only be used when `cursor` is used, defines a new direction for the cursor",
+				"description": "Defines the direction for cursor-based pagination.",
 				"in": "query",
 				"name": "direction",
 				"schema": {
-					"description": "should only be used when `cursor` is used, defines a new direction for the cursor",
+					"description": "Defines the direction for cursor-based pagination.",
 					"enum": [
 						"asc",
 						"desc"
@@ -1097,12 +1106,19 @@
 											"type": "string"
 										},
 										"page": {
+											"deprecated": true,
+											"description": "Deprecated: use cursor-based pagination instead.",
 											"type": "number"
 										},
 										"per_page": {
 											"type": "number"
 										},
 										"total_count": {
+											"deprecated": true,
+											"description": "Deprecated: total count is not reliable with cursor-based pagination.",
+											"type": "number"
+										},
+										"total_pages": {
 											"type": "number"
 										}
 									},
@@ -1766,6 +1782,9 @@
 										},
 										"total_count": {
 											"type": "number"
+										},
+										"total_pages": {
+											"type": "number"
 										}
 									},
 									"required": [
@@ -2030,6 +2049,9 @@
 											"type": "number"
 										},
 										"total_count": {
+											"type": "number"
+										},
+										"total_pages": {
 											"type": "number"
 										}
 									},
@@ -2356,6 +2378,9 @@
 										},
 										"total_count": {
 											"type": "number"
+										},
+										"total_pages": {
+											"type": "number"
 										}
 									},
 									"required": [
@@ -2612,6 +2637,9 @@
 											"type": "number"
 										},
 										"total_count": {
+											"type": "number"
+										},
+										"total_pages": {
 											"type": "number"
 										}
 									},
@@ -2907,6 +2935,9 @@
 											"type": "number"
 										},
 										"total_count": {
+											"type": "number"
+										},
+										"total_pages": {
 											"type": "number"
 										}
 									},
@@ -3905,6 +3936,9 @@
 										},
 										"total_count": {
 											"type": "number"
+										},
+										"total_pages": {
+											"type": "number"
 										}
 									},
 									"required": [
@@ -4161,6 +4195,9 @@
 											"type": "number"
 										},
 										"total_count": {
+											"type": "number"
+										},
+										"total_pages": {
 											"type": "number"
 										}
 									},
@@ -4574,6 +4611,9 @@
 										},
 										"total_count": {
 											"type": "number"
+										},
+										"total_pages": {
+											"type": "number"
 										}
 									},
 									"required": [
@@ -4855,6 +4895,9 @@
 											"type": "number"
 										},
 										"total_count": {
+											"type": "number"
+										},
+										"total_pages": {
 											"type": "number"
 										}
 									},
@@ -5220,6 +5263,9 @@
 										},
 										"total_count": {
 											"type": "number"
+										},
+										"total_pages": {
+											"type": "number"
 										}
 									},
 									"required": [
@@ -5503,6 +5549,9 @@
 											"type": "number"
 										},
 										"total_count": {
+											"type": "number"
+										},
+										"total_pages": {
 											"type": "number"
 										}
 									},
@@ -5842,6 +5891,9 @@
 											"type": "number"
 										},
 										"total_count": {
+											"type": "number"
+										},
+										"total_pages": {
 											"type": "number"
 										}
 									},
