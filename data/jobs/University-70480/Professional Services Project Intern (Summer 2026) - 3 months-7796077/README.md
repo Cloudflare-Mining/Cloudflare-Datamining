@@ -5,37 +5,29 @@
 		<p>At Cloudflare, we’re not looking for people who wait for a polished roadmap; we’re looking for the builders who see the cracks in the Internet that everyone else has simply learned to live with. We value candidates who have the instinct to spot a "normalized" problem and the AI-native curiosity to create a solution using the latest tools. Our culture is built on iteration, leveraging AI to ship faster today to make it better tomorrow, while ensuring that every improvement, no matter how small, is shared across the team to lift everyone up. If you’re the type of person who values curiosity over bureaucracy, and that AI is a partner in solving tough problems to keep the Internet moving forward, you’ll fit right in.</p>
 	</div>
 </div>
-<p><strong>Available location:&nbsp;</strong>London, UK</p>
-<p><strong>About the Team</strong></p>
-<p>The Marketing team at Cloudflare is at the forefront of sharing our mission to help build a better internet. We are a dynamic and fast-paced team dedicated to showcasing Cloudflare's innovative products and solutions to a global audience. Through strategic campaigns, engaging events, and compelling content, we drive awareness, generate demand, and support our company's rapid growth. As an intern, you'll gain hands-on experience and contribute directly to our efforts in making an impact.</p>
+<p><strong>Available Location(s): London, UK,</strong></p>
+<p><strong>About the Department</strong></p>
+<p>Cloudflare’s Global Professional Services organization is expanding its Professional Services</p>
+<p>consultancy in London to support customers adopting Cloudflare’s developer platform and application services. This team partners closely with customers and internal engineering teams to help organizations build, deploy, and optimize modern applications on Cloudflare.</p>
 <p><strong>About the Role</strong></p>
-<p>As a Marketing Events &amp; Campaigns Intern, you will play a crucial supporting role in the successful execution of Cloudflare's marketing initiatives. This is an exciting opportunity to gain hands-on experience across a variety of marketing channels, including webinars, trade shows, and digital advertising. You will contribute to the end-to-end process, from logistical coordination to ensuring our creative assets are polished and ready for launch. Your work will directly support lead generation efforts and help deliver impactful marketing experiences to our prospects and customers.</p>
+<p>The Project intern will support the Professional Services (PS)team by assisting with foundational project tasks and contributing to projects that enable customers to successfully build and deploy on Cloudflare. This role provides exposure to Cloudflare’s Professional Services while working alongside Project Managers, Project Co-Ordinators and consultants who deliver technical solutions to customers. Through this role, you will gain hands-on experience working with Professional Services teams deliver technical solutions for global customers, mentorship from experienced PMO members, and real-world experience contributing to projects that support customer adoption of Cloudflare technologies.</p>
 <p><strong>Responsibilities</strong></p>
 <ul>
-	<li>Assist with the logistical planning and execution of virtual webinars and in-person trade shows, including scheduling, vendor coordination, and materials preparation.</li>
-	<li>Support the development and deployment of digital ad campaigns across various platforms, ensuring proper tracking and optimization.</li>
-	<li>Coordinate the readiness of marketing assets, such as website banners, email communications, and landing pages, collaborating with design and content teams.</li>
-	<li>Help manage and track leads generated from events and campaigns, ensuring data accuracy and timely follow-up.</li>
-	<li>Contribute to post-event and campaign reporting by gathering data and assisting with performance analysis.</li>
-	<li>Participate in team meetings and contribute ideas for improving marketing processes and campaign effectiveness.</li>
+	<li>Support the creation of projects, delivery engagement and resourcing activities</li>
+	<li>Help document and control project workflows and deployment steps for internal teams and customers with the PMO and Resourcing functions</li>
+	<li>Collaborate with PS consultants to support customer-facing engagements</li>
+	<li>Contribute to internal knowledge bases and documentation to improve team efficiency and consistency</li>
 </ul>
 <p><strong>Skills &amp; Qualifications</strong></p>
 <ul>
-	<li>Currently pursuing a Bachelor's degree in Marketing, Communications, Business, or a related field.</li>
-	<li>Available for a full-time 12-week internship, working from our London office 3-5 days a week during the fall (Sept-Dec).</li>
-	<li>Strong organizational skills with a keen eye for detail and the ability to manage multiple tasks simultaneously.</li>
-	<li>Excellent written and verbal communication skills.</li>
-	<li>Familiarity with digital marketing concepts and platforms is a plus.</li>
-	<li>Proactive attitude with a desire to learn and contribute in a fast-paced environment.</li>
-	<li>Ability to collaborate effectively within a team and with cross-functional partners.</li>
-	<li>Proficiency with standard office productivity tools (e.g., Google Workspace, Microsoft Office).</li>
+	<li>Currently pursuing a Bachelor’s or Master’s degree in Business, Project Management or a related technical field</li>
+	<li>Effective Communication: Proficiency in verbal, written, and visual communication is essential for conveying project goals and sharing progress updates.&nbsp;</li>
+	<li>Team Collaboration: Working seamlessly with diverse teams (e.g., developers, designers, and managers) to foster a cooperative environment and resolve internal conflicts.</li>
+	<li>Problem-Solving &amp; Critical Thinking: The ability to identify bottlenecks, analyse root causes, and propose practical solutions rather than waiting for direct instructions.</li>
+	<li>Adaptability &amp; Resilience: Projects rarely go exactly to plan; interns must pivot gracefully when scopes change or unforeseen challenges</li>
+	<li>Initiative: Standing out by anticipating team needs and offering support before being asked.</li>
+	<li>Relationship Building: Leveraging networking opportunities within the organisation to learn from experienced mentors.</li>
 </ul>
-<p><strong>Bonus Points</strong></p>
-<ul>
-	<li>Previous experience (academic or professional) with event coordination or digital campaign support.</li>
-	<li>Understanding of lead tracking and CRM systems.</li>
-</ul>
-<p>You can check out our <a href="https://blog.cloudflare.com/tag/internship-experience/">internship blogs</a> to learn more about our program and hear directly from our past interns.</p>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
 	<p><span style="font-weight: 400;">We’re not just a highly ambitious, large-scale technology company. We’re a highly ambitious, large-scale technology company with a soul. Fundamental to our mission to help build a better Internet is protecting the free and open Internet.</span></p>
