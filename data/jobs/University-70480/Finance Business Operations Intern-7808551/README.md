@@ -5,67 +5,36 @@
 		<p>At Cloudflare, we’re not looking for people who wait for a polished roadmap; we’re looking for the builders who see the cracks in the Internet that everyone else has simply learned to live with. We value candidates who have the instinct to spot a "normalized" problem and the AI-native curiosity to create a solution using the latest tools. Our culture is built on iteration, leveraging AI to ship faster today to make it better tomorrow, while ensuring that every improvement, no matter how small, is shared across the team to lift everyone up. If you’re the type of person who values curiosity over bureaucracy, and that AI is a partner in solving tough problems to keep the Internet moving forward, you’ll fit right in.</p>
 	</div>
 </div>
-<p><strong>Available Locations: Sydney, Australia</strong></p>
-<p><strong>About The Role</strong></p>
-<p>You will be responsible for driving incremental partner-initiated pipeline and revenue by activating partners, accelerating deal cycles, and ensuring strong execution across enablement, demand generation, and distributor collaboration.</p>
-<ol>
-	<li><strong>Partner Sales:</strong> Serve as the primary sales engine working with Partner Account Managers (PAMs) across focus partners.</li>
-	<li><strong>Partner Management &amp; Development:</strong> Directly manage and develop a specific group of Distribution Managed Partners (DMP) while assisting Cloudflare’s distributor with deal and opportunity support.</li>
-</ol>
-<p>The iPAM will be instrumental in driving incremental partner-initiated pipeline and revenue. Key to this will be activating partners, accelerating deal cycles, and ensuring robust execution in enablement, demand generation, and collaboration with our distributor.</p>
-<p>This position is an excellent stepping stone and development pathway toward Senior Partner Account Management roles.</p>
-<h3 data-start="1080" data-end="1103">Key Responsibilities</h3>
-<p><span style="text-decoration: underline;"><strong>Partner Management and Development</strong></span></p>
+<p><strong>Available location: San Francisco</strong></p>
+<h4><strong>About Cloudflare's</strong><strong> Business Operations Team</strong></h4>
+<p>The Business Operations team sits under the CFO organization and is responsible for core company KPI reporting, incubating new analytics capabilities, leading and/or facilitating cross-functional projects to devise and operationalize high impact programs. We are looking for a strong data analyst intern to join Cloudflare to help develop analytics solutions and scale internal data processes. Success in this role comes from combining a strong technical foundation with sharp business acumen and a builder’s mindset — someone who’s energized by turning scrappy, manual workflows into streamlined, durable solutions to deliver strategic and compelling insights.&nbsp;</p>
+<h4><strong>About the Internship Program</strong></h4>
+<p>As a Business Operations intern on the Finance BizOps Team, you will:</p>
 <ul>
-	<li>Manage and cultivate a specific subset of Distribution Managed Partners (DMPs).</li>
-	<li>Drive the recruitment, onboarding, and activation of new partners within the DMP segment.</li>
-	<li>Establish and maintain a consistent engagement framework, including:</li>
-	<ul>
-		<li>Goal setting</li>
-		<li>Partner business planning</li>
-		<li>Performance reviews</li>
-		<li>Pipeline tracking</li>
-	</ul>
-	<li>Increase deal registrations, partner-initiated opportunities, and partner-sourced revenue across the assigned partner portfolio.</li>
+	<li>Build workflows to streamline existing processes and address existing pain points. You will lead the project scoping, solution design and code execution to achieve the defined objectives.</li>
+	<li>Design, build, and support data or insight solutions that help incubate new data capabilities or programs. Example projects: commission forecast modelling, product margin analysis&nbsp;</li>
+	<li>Create applications and internal tools that can be used by the broader FP&amp;A and BizOps team to elevate everyone’s&nbsp; game&nbsp;</li>
+	<li>Prototype leveraging latest AI technologies incl. Cloudflare Platform, emerging best practices to illustrate what can be possible in how we work&nbsp;</li>
+	<li>Work in sprints to achieve critical milestones and update your progress through daily asynchronous updates.&nbsp;&nbsp;&nbsp;</li>
 </ul>
-<p><span style="text-decoration: underline;"><strong>Distributor Management and Enablement</strong></span></p>
+<h4><strong>Examples of desirable skills, knowledge and experience</strong></h4>
 <ul>
-	<li>Oversee the Distributor relationship, managing processes and coordinating activities such as business plans and enablement initiatives.</li>
-	<li>Support and collaborate on joint campaigns and demand generation activities with the Distributor and the DMP ecosystem.</li>
-	<li>Coordinate and facilitate monthly sales and technical enablement sessions.</li>
+	<li>Currently pursuing a Bachelor’s or Master’s or program in Business Analytics, Data Science, Computer Science, or a related field.</li>
+	<li>Passionate about solving business problems or challenges using technology&nbsp;</li>
+	<li>Are curious, proactive, and self-directed, have a natural drive to explore new technologies and a "figure it out" mindset.</li>
+	<li>Can write working code in Python, JavaScript, or a similar language and have shipped something independently or as part of hackathon project, open source contribution, or a previous internship</li>
+	<li>Communication: Ability to distill complex business or technical requirements into clear actionable insights. Can explain what you built and why, to a technical or non-technical audience.</li>
+	<li>Technical Curiosity: Experience using LLM interfaces (such as Gemini) and prompt engineering, paired with a strong interest in the emerging field of AI agents.</li>
+	<li>Nice to have: Have used any part of the Cloudflare developer platform: Workers, R2, Pages, or anything similar</li>
+	<li>Ability to commit to a minimum 12 week summer internship from May to August 2026</li>
+	<li>In office 2-3 days a week</li>
 </ul>
-<p><span style="text-decoration: underline;"><strong>Driving Partner-Initiated Pipeline</strong></span></p>
+<p>You can check out our <a href="https://blog.cloudflare.com/tag/internship-experience/">internship blogs</a> to learn more about our program and hear directly from our past interns.</p>
+<p><strong>Compensation</strong></p>
 <ul>
-	<li><strong>Lead Demand Generation:</strong> Collaborate with sales and marketing teams to execute demand generation initiatives that result in a measurable partner-initiated pipeline.</li>
-	<li><strong>Enablement &amp; Training:</strong> Equip partners with the knowledge of Cloudflare’s technology, value proposition, and go-to-market strategy, along with clear guidance on deal registration and rules of engagement.</li>
-	<li><strong>Maximizing Engagement:</strong> Promote understanding and utilization of available marketing assets, SPIFFs, incentives, and promotions to ensure maximum partner participation and motivation.</li>
-	<li><strong>Performance Follow-up:</strong> Monitor and track the execution of enablement activities to ensure they translate into concrete, measurable business outcomes.</li>
+	<li>$33/hr</li>
 </ul>
-<hr data-start="3087" data-end="3090">
-<h3 data-start="3092" data-end="3110">Success Metrics</h3>
-<ul data-start="3112" data-end="3328">
-	<li data-start="3112" data-end="3144">Growth in deal registrations</li>
-	<li data-start="3145" data-end="3192">Increase in partner-initiated opportunities</li>
-	<li data-start="3193" data-end="3230">Growth in partner-sourced revenue</li>
-	<li data-start="3231" data-end="3274">DMP partner activation and productivity</li>
-	<li data-start="3275" data-end="3328">Pipeline contribution aligned to regional targets</li>
-</ul>
-<hr data-start="3330" data-end="3333">
-<h3 data-start="3335" data-end="3378">Desirable Skills, Knowledge &amp; Experience</h3>
-<ul data-start="3380" data-end="4220">
-	<li data-start="3380" data-end="3463">3+ years of experience working with partners in a sales or channel-focused role</li>
-	<li data-start="3464" data-end="3554">Experience in technology, cybersecurity, networking, or cloud infrastructure preferred</li>
-	<li data-start="3555" data-end="3636">Strong understanding of the cloud infrastructure and cloud security ecosystem</li>
-	<li data-start="3637" data-end="3713">Direct experience recruiting, onboarding, enabling, and scaling partners</li>
-	<li data-start="3714" data-end="3780">Experience working with distributors and indirect sales models</li>
-	<li data-start="3781" data-end="3869">Confident presentation, communication, and interpersonal skills (verbal and written)</li>
-	<li data-start="3870" data-end="3928">Strong familiarity with the regional partner ecosystem</li>
-	<li data-start="3929" data-end="3994">Builder mentality with hustle, grit, and a bias toward action</li>
-	<li data-start="3995" data-end="4056">Entrepreneurial mindset focused on continuous improvement</li>
-	<li data-start="4057" data-end="4112">Naturally curious and committed to ongoing learning</li>
-	<li data-start="4113" data-end="4176">Experience working in a fast-paced, high-growth environment</li>
-	<li data-start="4177" data-end="4220">Technical competence strongly preferred</li>
-</ul>
+<p>&nbsp;</p>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
 	<p><span style="font-weight: 400;">We’re not just a highly ambitious, large-scale technology company. We’re a highly ambitious, large-scale technology company with a soul. Fundamental to our mission to help build a better Internet is protecting the free and open Internet.</span></p>
