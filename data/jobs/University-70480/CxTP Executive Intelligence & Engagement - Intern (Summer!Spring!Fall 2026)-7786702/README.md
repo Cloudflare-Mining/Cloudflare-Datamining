@@ -5,34 +5,39 @@
 		<p>At Cloudflare, we’re not looking for people who wait for a polished roadmap; we’re looking for the builders who see the cracks in the Internet that everyone else has simply learned to live with. We value candidates who have the instinct to spot a "normalized" problem and the AI-native curiosity to create a solution using the latest tools. Our culture is built on iteration, leveraging AI to ship faster today to make it better tomorrow, while ensuring that every improvement, no matter how small, is shared across the team to lift everyone up. If you’re the type of person who values curiosity over bureaucracy, and that AI is a partner in solving tough problems to keep the Internet moving forward, you’ll fit right in.</p>
 	</div>
 </div>
-<p><strong>Available location: Austin</strong></p>
+<p><strong>CxO Transformation Partners Intern</strong></p>
+<p>&nbsp;</p>
+<p>Executive Intelligence &amp; Engagement Intern</p>
+<p><br><br></p>
+<p><strong>Available Location: </strong>Austin, USA</p>
+<p>&nbsp;</p>
 <p><strong>Job Title: </strong>Executive Intelligence &amp; Engagement Intern</p>
 <p><strong>About The Team</strong></p>
 <p>The CxO Transformation Partners (CXTP) team serves as trusted advisors to Cloudflare’s most senior customers and prospects. We are a highly strategic group who simplify technical complexity and align our solutions with large-scale business objectives. Our mission is to unlock commercial outcomes by bridging the gap between deep technical capabilities and executive-level strategic goals.</p>
-<h4><strong>About The Internship</strong></h4>
-<p>The Executive Engagement Intern will help operationalize our Executive Community experience (a CxO Engagement platform working in conjunction with Field Marketing). This role focuses on supporting the program launch, which will include the creation of an Executive Council, designing executive engagements, and establishing foundational processes for summits, dinners, and the Academy pilot. This intern enables scale, consistency, and quality in CxO interactions. Everything created will see tangible impact on executive meetings, customer engagements, and internal efficiency.</p>
+<p>This is a high-stakes, senior executive facing environment. We are looking for a highly operational, polished, and strategic candidate who possesses a consulting mindset and is eager to design the foundational processes that enable executive-level transformation.</p>
+<p><strong>About The Internship</strong></p>
+<p>The Executive Engagement Intern will help operationalize our Executive Community experience enabling scale, consistency, and quality in CxO interactions. We define this "experience" as a curated, high-touch peer platform designed to foster trust and facilitate strategic dialogue among CxOs. This role focuses on supporting the program launch, which will include the creation of an Executive Council, designing executive engagements, and establishing foundational processes for:</p>
+<ul>
+	<li>Summits, &amp; Networking Peer Networking Events:&nbsp; Designing the operational playbooks for these intimate, high-impact events.</li>
+	<li>&nbsp;Academy pilot. The CXO Academy is our premier executive education program. This pilot focuses on building a curriculum that helps CxOs navigate technological and business change. The intern will support the pilot by designing participant workflows, supporting development of curriculum and feedback mechanisms.</li>
+</ul>
 <p><strong>What You’ll Get To Do In This Role</strong></p>
 <ul>
-	<li>
-		<ul>
-			<li>Own the delivery of the Executive Engagement Playbook and the council operations toolkit, providing a strong portfolio deliverable and presentation to leadership.</li>
-			<li>Key projects will include:
-				<ul>
-					<li>Building the Executive Council operations kit, encompassing bios, briefing notes, and tracking mechanisms.</li>
-					<li>Developing an executive event playbook for summits and dinners.</li>
-					<li>Supporting the Academy curriculum and participant workflow.</li>
-					<li>Creating standardized templates for immersion labs and sprints.</li>
-				</ul>
-			</li>
-		</ul>
-	</li>
+	<li>Own the delivery of the Executive Engagement Playbook and the council operations toolkit, providing a strong portfolio deliverable and presentation to leadership.</li>
+	<li>Key projects will include:</li>
+	<ul>
+		<li>Building the Executive Council operations kit, encompassing bios, briefing notes, and tracking mechanisms.</li>
+		<li>Developing an executive event playbook for summits and dinners.</li>
+		<li>Supporting the Academy curriculum and participant workflow.</li>
+		<li>Creating standardized templates for immersion labs and sprints.</li>
+	</ul>
 </ul>
-<p>You can check out our <a href="https://blog.cloudflare.com/tag/internship-experience/">internship blogs</a> to learn more about our program and hear directly from our past interns.</p>
 <p><strong>Qualifications</strong></p>
 <ul>
-	<li>Currently pursuing an Undergrad BA/BS or Masters MA/MS (MBA not required).</li>
-	<li>Available for a full-time 12-week internship, working from our Austin office 3 days a week during the summer (May-Aug).</li>
+	<li>Currently pursuing an Undergrad Masters MA/MS (MBA not required).</li>
+	<li>Available for a full-time 12-week internship, working from our Austin office 3 days a week during the summer (May26-Aug14).</li>
 	<li>Experience or strong interest in developing executive-level content, playbooks, operational kits, and program materials.</li>
+	<li>A tech-savvy and iterative creator, proficient in leveraging AI coding assistants (e.g., Copilot, ChatGPT) or low-code tools to rapidly build and improve functional prototypes, automation scripts, or operational materials based on stakeholder feedback.</li>
 	<li>Ability to own a high-impact project end-to-end and deliver portfolio-ready results.</li>
 	<li>Excellent written and presentation skills. This role demands someone who is gifted in their ability to communicate effectively with all stakeholders, including executives, sales, and marketing.</li>
 	<li>Self-starter who truly enjoys working in a fast-paced, innovative cloud services company.</li>

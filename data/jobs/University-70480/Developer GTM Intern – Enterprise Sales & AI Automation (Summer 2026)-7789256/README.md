@@ -5,63 +5,39 @@
 		<p>At Cloudflare, we’re not looking for people who wait for a polished roadmap; we’re looking for the builders who see the cracks in the Internet that everyone else has simply learned to live with. We value candidates who have the instinct to spot a "normalized" problem and the AI-native curiosity to create a solution using the latest tools. Our culture is built on iteration, leveraging AI to ship faster today to make it better tomorrow, while ensuring that every improvement, no matter how small, is shared across the team to lift everyone up. If you’re the type of person who values curiosity over bureaucracy, and that AI is a partner in solving tough problems to keep the Internet moving forward, you’ll fit right in.</p>
 	</div>
 </div>
-<p><strong>Available Locations: Austin</strong></p>
-<h2>About the Team</h2>
-<p>The Core Data team’s mission is building a centralized data platform for Cloudflare that provides&nbsp; secure, democratized access to data for internal customers throughout the company. We operate infrastructure and craft tools to empower both technical and non-technical users to answer their most important questions. We facilitate access to data from federated sources across the company for dashboarding, ad-hoc querying and in-product use cases. We power data pipelines and data products, secure and monitor data, and drive data governance at Cloudflare. Our work enables every individual at the company to act with greater information and make more informed decisions.&nbsp;</p>
-<h2>About the Role</h2>
-<p>We are looking for a Machine Learning Engineer to lead the transformation of our data lakehouse into a semantically-aware intelligence platform. Instead of traditional ETL, this role focuses on building the software layer that extracts meaning from our vast data stores. You will be responsible for developing and leveraging a Semantic Knowledge Graph to power LLM-driven applications, discovery tools, and automated reasoning systems that serve business needs across Product, Marketing, and Billing.</p>
-<h2>What You'll Do</h2>
+<p><strong>Available Location: Austin, TX</strong></p>
+<p>&nbsp;</p>
+<p><strong>About The Internship</strong>Cloudflare's Developer GTM team is on a mission to drive enterprise adoption of Cloudflare's developer platform — and we're building AI into the core of how we do it. As a Developer GTM Intern, your primary focus will be identifying manual, repetitive processes across our enterprise sales motion and replacing them with AI-powered workflows. You will analyze how our team operates today, find the bottlenecks, and ship working solutions that save time and improve outcomes. This is not a research or PowerPoint role — you will build things that the team actually uses. If you want to spend a summer at the intersection of enterprise sales, developer technology, and applied AI, this role is for you.</p>
+<p>&nbsp;</p>
+<p><strong>What You’ll Get To Do In This Role</strong></p>
+<p><strong>AI Workflow Automation</strong>: Audit existing enterprise sales workflows — account research, technical discovery, competitive analysis, proposal drafting, follow-up sequences — and identify the highest-value opportunities to automate using AI. Build and deploy working automations using tools like n8n, Make, Zapier, or custom scripts, and measure their impact.</p>
+<p><strong>AI Tool Evaluation &amp; Adoption</strong>: Research, evaluate, and pilot AI tools relevant to enterprise GTM — from AI-powered prospecting and CRM enrichment to meeting summarization, deal coaching, and content personalization. Document findings and create adoption guides so the broader team can use what works.</p>
+<p><strong>Sales Process Documentation &amp; Optimization</strong>: Shadow enterprise sales cycles, map out current-state workflows in detail, and identify where AI can reduce friction. Build internal playbooks that combine process documentation with the AI tools that improve each step.</p>
+<p><strong>Demo &amp; Technical Asset Building</strong>: Build demo applications and technical assets using Cloudflare Workers, AI, D1, and other platform primitives that help enterprise sales teams make Cloudflare's developer platform tangible in customer conversations.</p>
+<p><strong>Competitive &amp; Market Intelligence</strong>: Use AI tools to automate the collection and synthesis of competitive intelligence — tracking competitor developer programs, pricing changes, and enterprise GTM moves. Deliver regular reports that help the team stay sharp in competitive deals.</p>
+<p><strong>Metrics &amp; Impact Reporting</strong>: Define and track metrics that measure the impact of AI automation on enterprise sales productivity. Build dashboards that make it easy to see what's working, what isn't, and where to invest next.</p>
+<p>You can check out our<a href="https://blog.cloudflare.com/tag/internship-experience/"> internship blogs</a> to learn more about our program and hear directly from our past interns.</p>
+<p>&nbsp;</p>
+<p><strong>Skills &amp; Qualifications</strong></p>
 <ul>
-	<li>Architect Semantic Layers: Design and develop the software infrastructure to layer semantic meaning over our existing data stack, including Kubernetes, Trino, and Iceberg.</li>
-	<li>Build Knowledge Graphs: Construct and maintain large-scale knowledge graphs from unstructured and structured sources to enable advanced reasoning.</li>
-	<li>Develop AI Software: Build production-grade software and APIs that leverage LLMs and Graph RAG pipelines to solve complex business queries.</li>
-	<li>Enhance Data Intelligence: Implement embedding-based retrieval and semantic deduplication to improve the precision and reliability of AI agents.</li>
-	<li>Collaborate on AI Solutions: Work with cross-functional teams to deploy conversational agents and automated diagnostics tools that turn data into actionable business value.</li>
+	<li>Pursuing a degree in Computer Science, Engineering, Business, or a related field.</li>
+	<li>Interest in enterprise sales, developer ecosystems, and how technical products get adopted at large companies.</li>
+	<li>Hands-on experience with AI tools — you use LLMs, automation platforms, or no-code tools or are excited to learn how to use them.</li>
+	<li>Strong analytical skills and a bias toward action: you identify a problem and build a solution, not a slide deck.</li>
+	<li>Excellent written and verbal communication — you can explain a workflow to an engineer and the business case to a sales leader.</li>
+	<li>Self-starter who thrives in ambiguity and measures success by what ships, not what gets planned.</li>
+	<li>Ability to commit to a minimum 12 week summer internship.</li>
+	<li>In office 3-5 days a week in [Austin].</li>
 </ul>
-<h2>Requirements</h2>
+<p><strong>What You'll Learn</strong></p>
 <ul>
-	<li>3-5+ years of experience in software or machine learning engineering with a focus on AI-driven applications.</li>
-	<li>Expertise in Knowledge Representation: Proven experience building knowledge graphs (e.g., HNSW, Neptune) and using graph-based reasoning for AI.</li>
-	<li>Proficiency with LLMs &amp; GenAI: Hands-on experience with RAG pipelines, fine-tuning (SFT/LoRA), and LLM-as-a-judge evaluation frameworks.</li>
-	<li>Strong Backend Skills: Proficient in Python, Go, or TypeScript, with the ability to build and debug complex software systems.</li>
-	<li>Analytical Mindset: Strong ability to understand how semantic data structures drive business value and improve user decision-making.</li>
-	<li>B.S. or M.S. in Computer Science, Engineering, Mathematics, or related fields.</li>
-	<li>Solid understanding of systems engineering principles and practices.</li>
-</ul>
-<h2>Desirable Skills</h2>
-<ul>
-	<li>Experience with Semantic Search and hybrid vector search query engines.</li>
-	<li>Familiarity with MLOps and deploying models within Kubernetes environments.</li>
-	<li>Published research or a strong background in Applied ML or Computational Intelligence.</li>
+	<li>How to apply AI and automation to a real enterprise sales organization — not in theory, but in production.</li>
+	<li>How Cloudflare's developer platform is sold and adopted at enterprise scale.</li>
+	<li>How to build and deploy applications on Cloudflare Workers, AI, and related primitives.</li>
+	<li>How to identify, prioritize, and measure process improvement opportunities in a GTM team.</li>
+	<li>What it takes to drive AI adoption across a sales team and make it stick.</li>
 </ul>
 <p>&nbsp;</p>
-<p><strong>Equity</strong></p>
-<p>This role is eligible to participate in Cloudflare’s equity plan.</p>
-<p><strong>Benefits</strong></p>
-<p>Cloudflare offers a complete package of benefits and programs to support you and your family.&nbsp; Our benefits programs can help you pay health care expenses, support caregiving, build capital for the future and make life a little easier and fun!&nbsp; The below is a description of our benefits for employees in the United States, and benefits may vary for employees based outside the U.S.</p>
-<p><strong>Health &amp; Welfare Benefits</strong></p>
-<ul>
-	<li>Medical/Rx Insurance</li>
-	<li>Dental Insurance</li>
-	<li>Vision Insurance</li>
-	<li>Flexible Spending Accounts</li>
-	<li>Commuter Spending Accounts</li>
-	<li>Fertility &amp; Family Forming Benefits</li>
-	<li>On-demand mental health support and Employee Assistance Program</li>
-	<li>Global Travel Medical Insurance</li>
-</ul>
-<p><strong>Financial Benefits</strong></p>
-<ul>
-	<li>Short and Long Term Disability Insurance</li>
-	<li>Life &amp; Accident Insurance</li>
-	<li>401(k) Retirement Savings Plan</li>
-	<li>Employee Stock Participation Plan</li>
-</ul>
-<p><strong>Time Off</strong></p>
-<ul>
-	<li>Flexible paid time off covering vacation and sick leave</li>
-	<li>Leave programs, including parental, pregnancy health, medical, and bereavement leave</li>
-</ul>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
 	<p><span style="font-weight: 400;">We’re not just a highly ambitious, large-scale technology company. We’re a highly ambitious, large-scale technology company with a soul. Fundamental to our mission to help build a better Internet is protecting the free and open Internet.</span></p>
