@@ -700,6 +700,1584 @@
 			"Cloudforce One Read"
 		]
 	},
+	"GET /accounts/{account_id}/vuln_scanner/scans": {
+		"description": "Returns all scans for the account.",
+		"operationId": "list-scans",
+		"parameters": [
+			{
+				"description": "Page number of paginated results.",
+				"in": "query",
+				"name": "page",
+				"schema": {
+					"default": 1,
+					"minimum": 1,
+					"type": "integer"
+				}
+			},
+			{
+				"description": "Number of results per page.",
+				"in": "query",
+				"name": "per_page",
+				"schema": {
+					"default": 20,
+					"maximum": 50,
+					"minimum": 5,
+					"type": "integer"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"properties": {
+												"errors": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																},
+																"type": "object"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"messages": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																},
+																"type": "object"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"success": {
+													"description": "Whether the API call was successful.",
+													"enum": [
+														true
+													],
+													"example": true,
+													"type": "boolean"
+												}
+											},
+											"required": [
+												"success",
+												"errors",
+												"messages"
+											],
+											"type": "object"
+										},
+										{
+											"properties": {
+												"result_info": {
+													"properties": {
+														"count": {
+															"description": "Total number of results for the requested service.",
+															"example": 1,
+															"type": "number"
+														},
+														"page": {
+															"description": "Current page within paginated list of results.",
+															"example": 1,
+															"type": "number"
+														},
+														"per_page": {
+															"description": "Number of results per page of results.",
+															"example": 20,
+															"type": "number"
+														},
+														"total_count": {
+															"description": "Total results available without any search parameters.",
+															"example": 2000,
+															"type": "number"
+														},
+														"total_pages": {
+															"description": "The number of total pages in the entire result set.",
+															"example": 100,
+															"type": "number"
+														}
+													},
+													"type": "object"
+												}
+											},
+											"type": "object"
+										}
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"result": {
+											"items": {
+												"properties": {
+													"id": {
+														"description": "Scan identifier.",
+														"format": "uuid",
+														"type": "string",
+														"x-auditable": true
+													},
+													"report": {
+														"allOf": [
+															{
+																"description": "A BOLA vulnerability scan report, versioned for future evolution.",
+																"properties": {
+																	"report": {
+																		"allOf": [
+																			{
+																				"description": "Version 1 of the BOLA vulnerability scan report.",
+																				"properties": {
+																					"summary": {
+																						"allOf": [
+																							{
+																								"description": "Overall report summary.",
+																								"properties": {
+																									"verdict": {
+																										"allOf": [
+																											{
+																												"description": "A verdict. `ok` means the scan passed, `warning` means the scan detected issues, `inconclusive` means errors prevented the scanner from reaching an accurate verdict.",
+																												"enum": [
+																													"ok",
+																													"warning",
+																													"inconclusive"
+																												],
+																												"type": "string"
+																											}
+																										],
+																										"description": "Overall verdict of the vulnerability scan."
+																									}
+																								},
+																								"required": [
+																									"verdict"
+																								],
+																								"type": "object"
+																							}
+																						],
+																						"description": "Summary of all steps and findings."
+																					},
+																					"tests": {
+																						"description": "List of tests that were run.",
+																						"items": {
+																							"description": "Result of a single test.",
+																							"properties": {
+																								"preflight_errors": {
+																									"description": "Errors that prevented step execution.",
+																									"items": {
+																										"description": "Error that occurred during a test.",
+																										"properties": {
+																											"description": {
+																												"description": "Human-readable error description.",
+																												"type": "string"
+																											},
+																											"error_code": {
+																												"description": "Numeric error code identifying the class of error, if available.",
+																												"format": "uint32",
+																												"minimum": 0,
+																												"nullable": true,
+																												"type": "integer"
+																											}
+																										},
+																										"required": [
+																											"description"
+																										],
+																										"type": "object"
+																									},
+																									"type": "array"
+																								},
+																								"steps": {
+																									"description": "Steps that were executed.",
+																									"items": {
+																										"description": "A single step in a test.",
+																										"properties": {
+																											"assertions": {
+																												"description": "Assertions that were made against the received response.",
+																												"items": {
+																													"description": "Assertion that was made against the received response.",
+																													"properties": {
+																														"description": {
+																															"description": "Human-readable description of the assertion, explaining what was checked.",
+																															"type": "string"
+																														},
+																														"kind": {
+																															"allOf": [
+																																{
+																																	"description": "The kind of assertion to make.",
+																																	"oneOf": [
+																																		{
+																																			"description": "Assert that an HTTP status code is within a range, e.g. to assert success for the 2xx range, or expected failure for the 4xx/5xx range.",
+																																			"properties": {
+																																				"parameters": {
+																																					"description": "Range of HTTP status codes.",
+																																					"properties": {
+																																						"max": {
+																																							"description": "Maximum (inclusive) status code of the range.",
+																																							"maximum": 65535,
+																																							"minimum": 0,
+																																							"type": "integer"
+																																						},
+																																						"min": {
+																																							"description": "Minimum (inclusive) status code of the range.",
+																																							"maximum": 65535,
+																																							"minimum": 0,
+																																							"type": "integer"
+																																						}
+																																					},
+																																					"required": [
+																																						"min",
+																																						"max"
+																																					],
+																																					"type": "object"
+																																				},
+																																				"type": {
+																																					"enum": [
+																																						"http_status_within_range"
+																																					],
+																																					"type": "string"
+																																				}
+																																			},
+																																			"required": [
+																																				"type",
+																																				"parameters"
+																																			],
+																																			"type": "object"
+																																		}
+																																	]
+																																}
+																															],
+																															"description": "Kind of assertion."
+																														},
+																														"observed": {
+																															"description": "Observed value on which the assertion was made.",
+																															"nullable": true,
+																															"type": "integer"
+																														},
+																														"outcome": {
+																															"allOf": [
+																																{
+																																	"description": "Outcome of an assertion. `ok` means the assertion passed, `fail` means the assertion failed, `inconclusive` means the scanner could not evaluate the assertion.",
+																																	"enum": [
+																																		"ok",
+																																		"fail",
+																																		"inconclusive"
+																																	],
+																																	"type": "string"
+																																}
+																															],
+																															"description": "Outcome of the assertion."
+																														}
+																													},
+																													"required": [
+																														"description",
+																														"kind",
+																														"observed",
+																														"outcome"
+																													],
+																													"type": "object"
+																												},
+																												"type": "array"
+																											},
+																											"errors": {
+																												"description": "Errors the step encountered that may explain absent or incomplete fields.",
+																												"items": {
+																													"description": "Error that occurred during a test.",
+																													"properties": {
+																														"description": {
+																															"description": "Human-readable error description.",
+																															"type": "string"
+																														},
+																														"error_code": {
+																															"description": "Numeric error code identifying the class of error, if available.",
+																															"format": "uint32",
+																															"minimum": 0,
+																															"nullable": true,
+																															"type": "integer"
+																														}
+																													},
+																													"required": [
+																														"description"
+																													],
+																													"type": "object"
+																												},
+																												"type": "array"
+																											},
+																											"request": {
+																												"allOf": [
+																													{
+																														"description": "HTTP request that was made.",
+																														"properties": {
+																															"body": {
+																																"description": "Request body, if any.",
+																																"nullable": true,
+																																"type": "object"
+																															},
+																															"credential_set": {
+																																"allOf": [
+																																	{
+																																		"description": "Credential set that was used.",
+																																		"properties": {
+																																			"id": {
+																																				"description": "ID of the credential set.",
+																																				"format": "uuid",
+																																				"type": "string"
+																																			},
+																																			"role": {
+																																				"allOf": [
+																																					{
+																																						"description": "Identifies the role a request was made with. The credential set governs this role. `owner` is the resource owner, `attacker` attempts to access resources.",
+																																						"enum": [
+																																							"owner",
+																																							"attacker"
+																																						],
+																																						"type": "string"
+																																					}
+																																				],
+																																				"description": "Role of the credential set."
+																																			}
+																																		},
+																																		"required": [
+																																			"id",
+																																			"role"
+																																		],
+																																		"type": "object"
+																																	}
+																																],
+																																"description": "Credential set that was used."
+																															},
+																															"header_names": {
+																																"description": "Names of headers that were sent.",
+																																"items": {
+																																	"type": "string"
+																																},
+																																"type": "array"
+																															},
+																															"method": {
+																																"allOf": [
+																																	{
+																																		"description": "HTTP method.",
+																																		"enum": [
+																																			"GET",
+																																			"DELETE",
+																																			"PATCH",
+																																			"POST",
+																																			"PUT"
+																																		],
+																																		"type": "string"
+																																	}
+																																],
+																																"description": "HTTP method."
+																															},
+																															"url": {
+																																"description": "Exact and full URL (including host, query parameters) that was requested.",
+																																"format": "uri",
+																																"type": "string"
+																															},
+																															"variable_captures": {
+																																"description": "Variable captures requested for this step.",
+																																"items": {
+																																	"description": "A variable to capture from the response body.",
+																																	"properties": {
+																																		"json_path": {
+																																			"description": "JSONPath expression used for capture, e.g. `\"$.id\"`.",
+																																			"type": "string"
+																																		},
+																																		"name": {
+																																			"description": "Variable name, e.g. `\"resource_id\"`.",
+																																			"type": "string"
+																																		}
+																																	},
+																																	"required": [
+																																		"name",
+																																		"json_path"
+																																	],
+																																	"type": "object"
+																																},
+																																"type": "array"
+																															}
+																														},
+																														"required": [
+																															"method",
+																															"url",
+																															"credential_set",
+																															"header_names",
+																															"variable_captures"
+																														],
+																														"type": "object"
+																													}
+																												],
+																												"description": "HTTP request that was made, if any.",
+																												"nullable": true,
+																												"type": "object"
+																											},
+																											"response": {
+																												"allOf": [
+																													{
+																														"description": "HTTP response that was received.",
+																														"properties": {
+																															"body": {
+																																"allOf": [
+																																	{
+																																		"description": "HTTP response body preview.",
+																																		"oneOf": [
+																																			{
+																																				"description": "No body was received.",
+																																				"properties": {
+																																					"kind": {
+																																						"enum": [
+																																							"not_found"
+																																						],
+																																						"type": "string"
+																																					}
+																																				},
+																																				"required": [
+																																					"kind"
+																																				],
+																																				"type": "object"
+																																			},
+																																			{
+																																				"description": "Body received but unable to read as UTF-8. Raw bytes, base64-encoded.",
+																																				"properties": {
+																																					"contents": {
+																																						"type": "string"
+																																					},
+																																					"kind": {
+																																						"enum": [
+																																							"bytes"
+																																						],
+																																						"type": "string"
+																																					},
+																																					"truncated": {
+																																						"type": "boolean"
+																																					}
+																																				},
+																																				"required": [
+																																					"kind",
+																																					"contents",
+																																					"truncated"
+																																				],
+																																				"type": "object"
+																																			},
+																																			{
+																																				"description": "Body received as valid UTF-8 text but not valid JSON.",
+																																				"properties": {
+																																					"contents": {
+																																						"type": "string"
+																																					},
+																																					"kind": {
+																																						"enum": [
+																																							"text"
+																																						],
+																																						"type": "string"
+																																					},
+																																					"truncated": {
+																																						"type": "boolean"
+																																					}
+																																				},
+																																				"required": [
+																																					"kind",
+																																					"contents",
+																																					"truncated"
+																																				],
+																																				"type": "object"
+																																			},
+																																			{
+																																				"description": "Body received as valid JSON.",
+																																				"properties": {
+																																					"contents": {
+																																						"type": "string"
+																																					},
+																																					"kind": {
+																																						"enum": [
+																																							"json"
+																																						],
+																																						"type": "string"
+																																					},
+																																					"truncated": {
+																																						"type": "boolean"
+																																					}
+																																				},
+																																				"required": [
+																																					"kind",
+																																					"contents",
+																																					"truncated"
+																																				],
+																																				"type": "object"
+																																			}
+																																		]
+																																	}
+																																],
+																																"description": "HTTP response body."
+																															},
+																															"header_names": {
+																																"description": "Names of headers that were received.",
+																																"items": {
+																																	"type": "string"
+																																},
+																																"type": "array"
+																															},
+																															"status": {
+																																"description": "HTTP status code.",
+																																"maximum": 65535,
+																																"minimum": 0,
+																																"type": "integer"
+																															},
+																															"status_text": {
+																																"description": "HTTP status text, if available for the status code.",
+																																"nullable": true,
+																																"type": "string"
+																															}
+																														},
+																														"required": [
+																															"status",
+																															"header_names",
+																															"body"
+																														],
+																														"type": "object"
+																													}
+																												],
+																												"description": "HTTP response that was received, if any.",
+																												"nullable": true,
+																												"type": "object"
+																											}
+																										},
+																										"required": [
+																											"assertions"
+																										],
+																										"type": "object"
+																									},
+																									"type": "array"
+																								},
+																								"verdict": {
+																									"allOf": [
+																										{
+																											"description": "A verdict. `ok` means the scan passed, `warning` means the scan detected issues, `inconclusive` means errors prevented the scanner from reaching an accurate verdict.",
+																											"enum": [
+																												"ok",
+																												"warning",
+																												"inconclusive"
+																											],
+																											"type": "string"
+																										}
+																									],
+																									"description": "Verdict of this single test."
+																								}
+																							},
+																							"required": [
+																								"verdict",
+																								"steps"
+																							],
+																							"type": "object"
+																						},
+																						"type": "array"
+																					}
+																				},
+																				"required": [
+																					"summary",
+																					"tests"
+																				],
+																				"type": "object"
+																			}
+																		]
+																	},
+																	"report_schema_version": {
+																		"description": "Version of the report schema.",
+																		"enum": [
+																			"v1"
+																		],
+																		"type": "string"
+																	}
+																},
+																"required": [
+																	"report_schema_version",
+																	"report"
+																],
+																"type": "object"
+															}
+														],
+														"description": "Vulnerability report produced after the scan completes. The shape depends on the scan type. Present only for finished scans.",
+														"nullable": true,
+														"type": "object"
+													},
+													"scan_type": {
+														"description": "The type of vulnerability scan.",
+														"enum": [
+															"bola"
+														],
+														"type": "string",
+														"x-auditable": true
+													},
+													"status": {
+														"description": "Current lifecycle status of the scan.",
+														"enum": [
+															"created",
+															"scheduled",
+															"planning",
+															"running",
+															"finished",
+															"failed"
+														],
+														"type": "string",
+														"x-auditable": true
+													},
+													"target_environment_id": {
+														"description": "The target environment this scan runs against.",
+														"format": "uuid",
+														"type": "string",
+														"x-auditable": true
+													}
+												},
+												"required": [
+													"id",
+													"target_environment_id",
+													"scan_type",
+													"status"
+												],
+												"type": "object"
+											},
+											"type": "array"
+										}
+									},
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "Successful response."
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"allOf": [
+										{
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														},
+														"type": "object"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										}
+									],
+									"example": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
+										}
+									],
+									"minLength": 1
+								},
+								"messages": {
+									"allOf": [
+										{
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														},
+														"type": "object"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										}
+									],
+									"example": []
+								},
+								"result": {
+									"enum": [
+										null
+									],
+									"nullable": true,
+									"type": "object"
+								},
+								"success": {
+									"description": "Whether the API call was successful.",
+									"enum": [
+										false
+									],
+									"example": false,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Client error."
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "List Scans",
+		"tags": [
+			"Scans"
+		]
+	},
+	"GET /accounts/{account_id}/vuln_scanner/scans/{scan_id}": {
+		"description": "Returns a single scan by ID.",
+		"operationId": "get-scan",
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"properties": {
+										"errors": {
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														},
+														"type": "object"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										},
+										"messages": {
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														},
+														"type": "object"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										},
+										"success": {
+											"description": "Whether the API call was successful.",
+											"enum": [
+												true
+											],
+											"example": true,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages"
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"result": {
+											"properties": {
+												"id": {
+													"description": "Scan identifier.",
+													"format": "uuid",
+													"type": "string",
+													"x-auditable": true
+												},
+												"report": {
+													"allOf": [
+														{
+															"description": "A BOLA vulnerability scan report, versioned for future evolution.",
+															"properties": {
+																"report": {
+																	"allOf": [
+																		{
+																			"description": "Version 1 of the BOLA vulnerability scan report.",
+																			"properties": {
+																				"summary": {
+																					"allOf": [
+																						{
+																							"description": "Overall report summary.",
+																							"properties": {
+																								"verdict": {
+																									"allOf": [
+																										{
+																											"description": "A verdict. `ok` means the scan passed, `warning` means the scan detected issues, `inconclusive` means errors prevented the scanner from reaching an accurate verdict.",
+																											"enum": [
+																												"ok",
+																												"warning",
+																												"inconclusive"
+																											],
+																											"type": "string"
+																										}
+																									],
+																									"description": "Overall verdict of the vulnerability scan."
+																								}
+																							},
+																							"required": [
+																								"verdict"
+																							],
+																							"type": "object"
+																						}
+																					],
+																					"description": "Summary of all steps and findings."
+																				},
+																				"tests": {
+																					"description": "List of tests that were run.",
+																					"items": {
+																						"description": "Result of a single test.",
+																						"properties": {
+																							"preflight_errors": {
+																								"description": "Errors that prevented step execution.",
+																								"items": {
+																									"description": "Error that occurred during a test.",
+																									"properties": {
+																										"description": {
+																											"description": "Human-readable error description.",
+																											"type": "string"
+																										},
+																										"error_code": {
+																											"description": "Numeric error code identifying the class of error, if available.",
+																											"format": "uint32",
+																											"minimum": 0,
+																											"nullable": true,
+																											"type": "integer"
+																										}
+																									},
+																									"required": [
+																										"description"
+																									],
+																									"type": "object"
+																								},
+																								"type": "array"
+																							},
+																							"steps": {
+																								"description": "Steps that were executed.",
+																								"items": {
+																									"description": "A single step in a test.",
+																									"properties": {
+																										"assertions": {
+																											"description": "Assertions that were made against the received response.",
+																											"items": {
+																												"description": "Assertion that was made against the received response.",
+																												"properties": {
+																													"description": {
+																														"description": "Human-readable description of the assertion, explaining what was checked.",
+																														"type": "string"
+																													},
+																													"kind": {
+																														"allOf": [
+																															{
+																																"description": "The kind of assertion to make.",
+																																"oneOf": [
+																																	{
+																																		"description": "Assert that an HTTP status code is within a range, e.g. to assert success for the 2xx range, or expected failure for the 4xx/5xx range.",
+																																		"properties": {
+																																			"parameters": {
+																																				"description": "Range of HTTP status codes.",
+																																				"properties": {
+																																					"max": {
+																																						"description": "Maximum (inclusive) status code of the range.",
+																																						"maximum": 65535,
+																																						"minimum": 0,
+																																						"type": "integer"
+																																					},
+																																					"min": {
+																																						"description": "Minimum (inclusive) status code of the range.",
+																																						"maximum": 65535,
+																																						"minimum": 0,
+																																						"type": "integer"
+																																					}
+																																				},
+																																				"required": [
+																																					"min",
+																																					"max"
+																																				],
+																																				"type": "object"
+																																			},
+																																			"type": {
+																																				"enum": [
+																																					"http_status_within_range"
+																																				],
+																																				"type": "string"
+																																			}
+																																		},
+																																		"required": [
+																																			"type",
+																																			"parameters"
+																																		],
+																																		"type": "object"
+																																	}
+																																]
+																															}
+																														],
+																														"description": "Kind of assertion."
+																													},
+																													"observed": {
+																														"description": "Observed value on which the assertion was made.",
+																														"nullable": true,
+																														"type": "integer"
+																													},
+																													"outcome": {
+																														"allOf": [
+																															{
+																																"description": "Outcome of an assertion. `ok` means the assertion passed, `fail` means the assertion failed, `inconclusive` means the scanner could not evaluate the assertion.",
+																																"enum": [
+																																	"ok",
+																																	"fail",
+																																	"inconclusive"
+																																],
+																																"type": "string"
+																															}
+																														],
+																														"description": "Outcome of the assertion."
+																													}
+																												},
+																												"required": [
+																													"description",
+																													"kind",
+																													"observed",
+																													"outcome"
+																												],
+																												"type": "object"
+																											},
+																											"type": "array"
+																										},
+																										"errors": {
+																											"description": "Errors the step encountered that may explain absent or incomplete fields.",
+																											"items": {
+																												"description": "Error that occurred during a test.",
+																												"properties": {
+																													"description": {
+																														"description": "Human-readable error description.",
+																														"type": "string"
+																													},
+																													"error_code": {
+																														"description": "Numeric error code identifying the class of error, if available.",
+																														"format": "uint32",
+																														"minimum": 0,
+																														"nullable": true,
+																														"type": "integer"
+																													}
+																												},
+																												"required": [
+																													"description"
+																												],
+																												"type": "object"
+																											},
+																											"type": "array"
+																										},
+																										"request": {
+																											"allOf": [
+																												{
+																													"description": "HTTP request that was made.",
+																													"properties": {
+																														"body": {
+																															"description": "Request body, if any.",
+																															"nullable": true,
+																															"type": "object"
+																														},
+																														"credential_set": {
+																															"allOf": [
+																																{
+																																	"description": "Credential set that was used.",
+																																	"properties": {
+																																		"id": {
+																																			"description": "ID of the credential set.",
+																																			"format": "uuid",
+																																			"type": "string"
+																																		},
+																																		"role": {
+																																			"allOf": [
+																																				{
+																																					"description": "Identifies the role a request was made with. The credential set governs this role. `owner` is the resource owner, `attacker` attempts to access resources.",
+																																					"enum": [
+																																						"owner",
+																																						"attacker"
+																																					],
+																																					"type": "string"
+																																				}
+																																			],
+																																			"description": "Role of the credential set."
+																																		}
+																																	},
+																																	"required": [
+																																		"id",
+																																		"role"
+																																	],
+																																	"type": "object"
+																																}
+																															],
+																															"description": "Credential set that was used."
+																														},
+																														"header_names": {
+																															"description": "Names of headers that were sent.",
+																															"items": {
+																																"type": "string"
+																															},
+																															"type": "array"
+																														},
+																														"method": {
+																															"allOf": [
+																																{
+																																	"description": "HTTP method.",
+																																	"enum": [
+																																		"GET",
+																																		"DELETE",
+																																		"PATCH",
+																																		"POST",
+																																		"PUT"
+																																	],
+																																	"type": "string"
+																																}
+																															],
+																															"description": "HTTP method."
+																														},
+																														"url": {
+																															"description": "Exact and full URL (including host, query parameters) that was requested.",
+																															"format": "uri",
+																															"type": "string"
+																														},
+																														"variable_captures": {
+																															"description": "Variable captures requested for this step.",
+																															"items": {
+																																"description": "A variable to capture from the response body.",
+																																"properties": {
+																																	"json_path": {
+																																		"description": "JSONPath expression used for capture, e.g. `\"$.id\"`.",
+																																		"type": "string"
+																																	},
+																																	"name": {
+																																		"description": "Variable name, e.g. `\"resource_id\"`.",
+																																		"type": "string"
+																																	}
+																																},
+																																"required": [
+																																	"name",
+																																	"json_path"
+																																],
+																																"type": "object"
+																															},
+																															"type": "array"
+																														}
+																													},
+																													"required": [
+																														"method",
+																														"url",
+																														"credential_set",
+																														"header_names",
+																														"variable_captures"
+																													],
+																													"type": "object"
+																												}
+																											],
+																											"description": "HTTP request that was made, if any.",
+																											"nullable": true,
+																											"type": "object"
+																										},
+																										"response": {
+																											"allOf": [
+																												{
+																													"description": "HTTP response that was received.",
+																													"properties": {
+																														"body": {
+																															"allOf": [
+																																{
+																																	"description": "HTTP response body preview.",
+																																	"oneOf": [
+																																		{
+																																			"description": "No body was received.",
+																																			"properties": {
+																																				"kind": {
+																																					"enum": [
+																																						"not_found"
+																																					],
+																																					"type": "string"
+																																				}
+																																			},
+																																			"required": [
+																																				"kind"
+																																			],
+																																			"type": "object"
+																																		},
+																																		{
+																																			"description": "Body received but unable to read as UTF-8. Raw bytes, base64-encoded.",
+																																			"properties": {
+																																				"contents": {
+																																					"type": "string"
+																																				},
+																																				"kind": {
+																																					"enum": [
+																																						"bytes"
+																																					],
+																																					"type": "string"
+																																				},
+																																				"truncated": {
+																																					"type": "boolean"
+																																				}
+																																			},
+																																			"required": [
+																																				"kind",
+																																				"contents",
+																																				"truncated"
+																																			],
+																																			"type": "object"
+																																		},
+																																		{
+																																			"description": "Body received as valid UTF-8 text but not valid JSON.",
+																																			"properties": {
+																																				"contents": {
+																																					"type": "string"
+																																				},
+																																				"kind": {
+																																					"enum": [
+																																						"text"
+																																					],
+																																					"type": "string"
+																																				},
+																																				"truncated": {
+																																					"type": "boolean"
+																																				}
+																																			},
+																																			"required": [
+																																				"kind",
+																																				"contents",
+																																				"truncated"
+																																			],
+																																			"type": "object"
+																																		},
+																																		{
+																																			"description": "Body received as valid JSON.",
+																																			"properties": {
+																																				"contents": {
+																																					"type": "string"
+																																				},
+																																				"kind": {
+																																					"enum": [
+																																						"json"
+																																					],
+																																					"type": "string"
+																																				},
+																																				"truncated": {
+																																					"type": "boolean"
+																																				}
+																																			},
+																																			"required": [
+																																				"kind",
+																																				"contents",
+																																				"truncated"
+																																			],
+																																			"type": "object"
+																																		}
+																																	]
+																																}
+																															],
+																															"description": "HTTP response body."
+																														},
+																														"header_names": {
+																															"description": "Names of headers that were received.",
+																															"items": {
+																																"type": "string"
+																															},
+																															"type": "array"
+																														},
+																														"status": {
+																															"description": "HTTP status code.",
+																															"maximum": 65535,
+																															"minimum": 0,
+																															"type": "integer"
+																														},
+																														"status_text": {
+																															"description": "HTTP status text, if available for the status code.",
+																															"nullable": true,
+																															"type": "string"
+																														}
+																													},
+																													"required": [
+																														"status",
+																														"header_names",
+																														"body"
+																													],
+																													"type": "object"
+																												}
+																											],
+																											"description": "HTTP response that was received, if any.",
+																											"nullable": true,
+																											"type": "object"
+																										}
+																									},
+																									"required": [
+																										"assertions"
+																									],
+																									"type": "object"
+																								},
+																								"type": "array"
+																							},
+																							"verdict": {
+																								"allOf": [
+																									{
+																										"description": "A verdict. `ok` means the scan passed, `warning` means the scan detected issues, `inconclusive` means errors prevented the scanner from reaching an accurate verdict.",
+																										"enum": [
+																											"ok",
+																											"warning",
+																											"inconclusive"
+																										],
+																										"type": "string"
+																									}
+																								],
+																								"description": "Verdict of this single test."
+																							}
+																						},
+																						"required": [
+																							"verdict",
+																							"steps"
+																						],
+																						"type": "object"
+																					},
+																					"type": "array"
+																				}
+																			},
+																			"required": [
+																				"summary",
+																				"tests"
+																			],
+																			"type": "object"
+																		}
+																	]
+																},
+																"report_schema_version": {
+																	"description": "Version of the report schema.",
+																	"enum": [
+																		"v1"
+																	],
+																	"type": "string"
+																}
+															},
+															"required": [
+																"report_schema_version",
+																"report"
+															],
+															"type": "object"
+														}
+													],
+													"description": "Vulnerability report produced after the scan completes. The shape depends on the scan type. Present only for finished scans.",
+													"nullable": true,
+													"type": "object"
+												},
+												"scan_type": {
+													"description": "The type of vulnerability scan.",
+													"enum": [
+														"bola"
+													],
+													"type": "string",
+													"x-auditable": true
+												},
+												"status": {
+													"description": "Current lifecycle status of the scan.",
+													"enum": [
+														"created",
+														"scheduled",
+														"planning",
+														"running",
+														"finished",
+														"failed"
+													],
+													"type": "string",
+													"x-auditable": true
+												},
+												"target_environment_id": {
+													"description": "The target environment this scan runs against.",
+													"format": "uuid",
+													"type": "string",
+													"x-auditable": true
+												}
+											},
+											"required": [
+												"id",
+												"target_environment_id",
+												"scan_type",
+												"status"
+											],
+											"type": "object"
+										},
+										"result_info": {
+											"nullable": true,
+											"type": "object"
+										}
+									},
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "Successful response."
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"allOf": [
+										{
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														},
+														"type": "object"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										}
+									],
+									"example": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
+										}
+									],
+									"minLength": 1
+								},
+								"messages": {
+									"allOf": [
+										{
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														},
+														"type": "object"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										}
+									],
+									"example": []
+								},
+								"result": {
+									"enum": [
+										null
+									],
+									"nullable": true,
+									"type": "object"
+								},
+								"success": {
+									"description": "Whether the API call was successful.",
+									"enum": [
+										false
+									],
+									"example": false,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Client error."
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Get Scan",
+		"tags": [
+			"Scans"
+		]
+	},
 	"PATCH /accounts/{account_id}/cloudforce-one/scans/config/{config_id}": {
 		"operationId": "post_ConfigUpdate",
 		"parameters": [
@@ -1377,6 +2955,828 @@
 		],
 		"x-api-token-group": [
 			"Cloudforce One Write"
+		]
+	},
+	"POST /accounts/{account_id}/vuln_scanner/scans": {
+		"description": "Creates and starts a new vulnerability scan. The response may include\nnon-fatal warnings in the `messages` array.\n",
+		"operationId": "create-scan",
+		"requestBody": {
+			"content": {
+				"application/json": {
+					"schema": {
+						"description": "Create a new vulnerability scan. The `scan_type` discriminator\nselects the scan variant and its required context fields.\n",
+						"discriminator": {
+							"mapping": {
+								"bola": "#/components/schemas/vuln_scanner_create-bola-scan-request"
+							},
+							"propertyName": "scan_type"
+						},
+						"oneOf": [
+							{
+								"properties": {
+									"credential_sets": {
+										"description": "Credential set references for a BOLA scan. The scanner uses the\n`owner` credentials for legitimate requests and the `attacker`\ncredentials to attempt unauthorized access.\n",
+										"properties": {
+											"attacker": {
+												"description": "Credential set ID for the attacker.",
+												"format": "uuid",
+												"type": "string"
+											},
+											"owner": {
+												"description": "Credential set ID for the resource owner.",
+												"format": "uuid",
+												"type": "string"
+											}
+										},
+										"required": [
+											"owner",
+											"attacker"
+										],
+										"type": "object"
+									},
+									"open_api": {
+										"description": "OpenAPI schema definition for the API under test. The scanner\nuses this to discover endpoints and construct requests.\n",
+										"type": "string"
+									},
+									"scan_type": {
+										"enum": [
+											"bola"
+										],
+										"type": "string"
+									},
+									"target_environment_id": {
+										"description": "The target environment to scan.",
+										"format": "uuid",
+										"type": "string"
+									}
+								},
+								"required": [
+									"target_environment_id",
+									"scan_type",
+									"open_api",
+									"credential_sets"
+								],
+								"type": "object"
+							}
+						]
+					}
+				}
+			},
+			"required": true
+		},
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"properties": {
+										"errors": {
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														},
+														"type": "object"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										},
+										"messages": {
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														},
+														"type": "object"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										},
+										"success": {
+											"description": "Whether the API call was successful.",
+											"enum": [
+												true
+											],
+											"example": true,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages"
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"result": {
+											"properties": {
+												"id": {
+													"description": "Scan identifier.",
+													"format": "uuid",
+													"type": "string",
+													"x-auditable": true
+												},
+												"report": {
+													"allOf": [
+														{
+															"description": "A BOLA vulnerability scan report, versioned for future evolution.",
+															"properties": {
+																"report": {
+																	"allOf": [
+																		{
+																			"description": "Version 1 of the BOLA vulnerability scan report.",
+																			"properties": {
+																				"summary": {
+																					"allOf": [
+																						{
+																							"description": "Overall report summary.",
+																							"properties": {
+																								"verdict": {
+																									"allOf": [
+																										{
+																											"description": "A verdict. `ok` means the scan passed, `warning` means the scan detected issues, `inconclusive` means errors prevented the scanner from reaching an accurate verdict.",
+																											"enum": [
+																												"ok",
+																												"warning",
+																												"inconclusive"
+																											],
+																											"type": "string"
+																										}
+																									],
+																									"description": "Overall verdict of the vulnerability scan."
+																								}
+																							},
+																							"required": [
+																								"verdict"
+																							],
+																							"type": "object"
+																						}
+																					],
+																					"description": "Summary of all steps and findings."
+																				},
+																				"tests": {
+																					"description": "List of tests that were run.",
+																					"items": {
+																						"description": "Result of a single test.",
+																						"properties": {
+																							"preflight_errors": {
+																								"description": "Errors that prevented step execution.",
+																								"items": {
+																									"description": "Error that occurred during a test.",
+																									"properties": {
+																										"description": {
+																											"description": "Human-readable error description.",
+																											"type": "string"
+																										},
+																										"error_code": {
+																											"description": "Numeric error code identifying the class of error, if available.",
+																											"format": "uint32",
+																											"minimum": 0,
+																											"nullable": true,
+																											"type": "integer"
+																										}
+																									},
+																									"required": [
+																										"description"
+																									],
+																									"type": "object"
+																								},
+																								"type": "array"
+																							},
+																							"steps": {
+																								"description": "Steps that were executed.",
+																								"items": {
+																									"description": "A single step in a test.",
+																									"properties": {
+																										"assertions": {
+																											"description": "Assertions that were made against the received response.",
+																											"items": {
+																												"description": "Assertion that was made against the received response.",
+																												"properties": {
+																													"description": {
+																														"description": "Human-readable description of the assertion, explaining what was checked.",
+																														"type": "string"
+																													},
+																													"kind": {
+																														"allOf": [
+																															{
+																																"description": "The kind of assertion to make.",
+																																"oneOf": [
+																																	{
+																																		"description": "Assert that an HTTP status code is within a range, e.g. to assert success for the 2xx range, or expected failure for the 4xx/5xx range.",
+																																		"properties": {
+																																			"parameters": {
+																																				"description": "Range of HTTP status codes.",
+																																				"properties": {
+																																					"max": {
+																																						"description": "Maximum (inclusive) status code of the range.",
+																																						"maximum": 65535,
+																																						"minimum": 0,
+																																						"type": "integer"
+																																					},
+																																					"min": {
+																																						"description": "Minimum (inclusive) status code of the range.",
+																																						"maximum": 65535,
+																																						"minimum": 0,
+																																						"type": "integer"
+																																					}
+																																				},
+																																				"required": [
+																																					"min",
+																																					"max"
+																																				],
+																																				"type": "object"
+																																			},
+																																			"type": {
+																																				"enum": [
+																																					"http_status_within_range"
+																																				],
+																																				"type": "string"
+																																			}
+																																		},
+																																		"required": [
+																																			"type",
+																																			"parameters"
+																																		],
+																																		"type": "object"
+																																	}
+																																]
+																															}
+																														],
+																														"description": "Kind of assertion."
+																													},
+																													"observed": {
+																														"description": "Observed value on which the assertion was made.",
+																														"nullable": true,
+																														"type": "integer"
+																													},
+																													"outcome": {
+																														"allOf": [
+																															{
+																																"description": "Outcome of an assertion. `ok` means the assertion passed, `fail` means the assertion failed, `inconclusive` means the scanner could not evaluate the assertion.",
+																																"enum": [
+																																	"ok",
+																																	"fail",
+																																	"inconclusive"
+																																],
+																																"type": "string"
+																															}
+																														],
+																														"description": "Outcome of the assertion."
+																													}
+																												},
+																												"required": [
+																													"description",
+																													"kind",
+																													"observed",
+																													"outcome"
+																												],
+																												"type": "object"
+																											},
+																											"type": "array"
+																										},
+																										"errors": {
+																											"description": "Errors the step encountered that may explain absent or incomplete fields.",
+																											"items": {
+																												"description": "Error that occurred during a test.",
+																												"properties": {
+																													"description": {
+																														"description": "Human-readable error description.",
+																														"type": "string"
+																													},
+																													"error_code": {
+																														"description": "Numeric error code identifying the class of error, if available.",
+																														"format": "uint32",
+																														"minimum": 0,
+																														"nullable": true,
+																														"type": "integer"
+																													}
+																												},
+																												"required": [
+																													"description"
+																												],
+																												"type": "object"
+																											},
+																											"type": "array"
+																										},
+																										"request": {
+																											"allOf": [
+																												{
+																													"description": "HTTP request that was made.",
+																													"properties": {
+																														"body": {
+																															"description": "Request body, if any.",
+																															"nullable": true,
+																															"type": "object"
+																														},
+																														"credential_set": {
+																															"allOf": [
+																																{
+																																	"description": "Credential set that was used.",
+																																	"properties": {
+																																		"id": {
+																																			"description": "ID of the credential set.",
+																																			"format": "uuid",
+																																			"type": "string"
+																																		},
+																																		"role": {
+																																			"allOf": [
+																																				{
+																																					"description": "Identifies the role a request was made with. The credential set governs this role. `owner` is the resource owner, `attacker` attempts to access resources.",
+																																					"enum": [
+																																						"owner",
+																																						"attacker"
+																																					],
+																																					"type": "string"
+																																				}
+																																			],
+																																			"description": "Role of the credential set."
+																																		}
+																																	},
+																																	"required": [
+																																		"id",
+																																		"role"
+																																	],
+																																	"type": "object"
+																																}
+																															],
+																															"description": "Credential set that was used."
+																														},
+																														"header_names": {
+																															"description": "Names of headers that were sent.",
+																															"items": {
+																																"type": "string"
+																															},
+																															"type": "array"
+																														},
+																														"method": {
+																															"allOf": [
+																																{
+																																	"description": "HTTP method.",
+																																	"enum": [
+																																		"GET",
+																																		"DELETE",
+																																		"PATCH",
+																																		"POST",
+																																		"PUT"
+																																	],
+																																	"type": "string"
+																																}
+																															],
+																															"description": "HTTP method."
+																														},
+																														"url": {
+																															"description": "Exact and full URL (including host, query parameters) that was requested.",
+																															"format": "uri",
+																															"type": "string"
+																														},
+																														"variable_captures": {
+																															"description": "Variable captures requested for this step.",
+																															"items": {
+																																"description": "A variable to capture from the response body.",
+																																"properties": {
+																																	"json_path": {
+																																		"description": "JSONPath expression used for capture, e.g. `\"$.id\"`.",
+																																		"type": "string"
+																																	},
+																																	"name": {
+																																		"description": "Variable name, e.g. `\"resource_id\"`.",
+																																		"type": "string"
+																																	}
+																																},
+																																"required": [
+																																	"name",
+																																	"json_path"
+																																],
+																																"type": "object"
+																															},
+																															"type": "array"
+																														}
+																													},
+																													"required": [
+																														"method",
+																														"url",
+																														"credential_set",
+																														"header_names",
+																														"variable_captures"
+																													],
+																													"type": "object"
+																												}
+																											],
+																											"description": "HTTP request that was made, if any.",
+																											"nullable": true,
+																											"type": "object"
+																										},
+																										"response": {
+																											"allOf": [
+																												{
+																													"description": "HTTP response that was received.",
+																													"properties": {
+																														"body": {
+																															"allOf": [
+																																{
+																																	"description": "HTTP response body preview.",
+																																	"oneOf": [
+																																		{
+																																			"description": "No body was received.",
+																																			"properties": {
+																																				"kind": {
+																																					"enum": [
+																																						"not_found"
+																																					],
+																																					"type": "string"
+																																				}
+																																			},
+																																			"required": [
+																																				"kind"
+																																			],
+																																			"type": "object"
+																																		},
+																																		{
+																																			"description": "Body received but unable to read as UTF-8. Raw bytes, base64-encoded.",
+																																			"properties": {
+																																				"contents": {
+																																					"type": "string"
+																																				},
+																																				"kind": {
+																																					"enum": [
+																																						"bytes"
+																																					],
+																																					"type": "string"
+																																				},
+																																				"truncated": {
+																																					"type": "boolean"
+																																				}
+																																			},
+																																			"required": [
+																																				"kind",
+																																				"contents",
+																																				"truncated"
+																																			],
+																																			"type": "object"
+																																		},
+																																		{
+																																			"description": "Body received as valid UTF-8 text but not valid JSON.",
+																																			"properties": {
+																																				"contents": {
+																																					"type": "string"
+																																				},
+																																				"kind": {
+																																					"enum": [
+																																						"text"
+																																					],
+																																					"type": "string"
+																																				},
+																																				"truncated": {
+																																					"type": "boolean"
+																																				}
+																																			},
+																																			"required": [
+																																				"kind",
+																																				"contents",
+																																				"truncated"
+																																			],
+																																			"type": "object"
+																																		},
+																																		{
+																																			"description": "Body received as valid JSON.",
+																																			"properties": {
+																																				"contents": {
+																																					"type": "string"
+																																				},
+																																				"kind": {
+																																					"enum": [
+																																						"json"
+																																					],
+																																					"type": "string"
+																																				},
+																																				"truncated": {
+																																					"type": "boolean"
+																																				}
+																																			},
+																																			"required": [
+																																				"kind",
+																																				"contents",
+																																				"truncated"
+																																			],
+																																			"type": "object"
+																																		}
+																																	]
+																																}
+																															],
+																															"description": "HTTP response body."
+																														},
+																														"header_names": {
+																															"description": "Names of headers that were received.",
+																															"items": {
+																																"type": "string"
+																															},
+																															"type": "array"
+																														},
+																														"status": {
+																															"description": "HTTP status code.",
+																															"maximum": 65535,
+																															"minimum": 0,
+																															"type": "integer"
+																														},
+																														"status_text": {
+																															"description": "HTTP status text, if available for the status code.",
+																															"nullable": true,
+																															"type": "string"
+																														}
+																													},
+																													"required": [
+																														"status",
+																														"header_names",
+																														"body"
+																													],
+																													"type": "object"
+																												}
+																											],
+																											"description": "HTTP response that was received, if any.",
+																											"nullable": true,
+																											"type": "object"
+																										}
+																									},
+																									"required": [
+																										"assertions"
+																									],
+																									"type": "object"
+																								},
+																								"type": "array"
+																							},
+																							"verdict": {
+																								"allOf": [
+																									{
+																										"description": "A verdict. `ok` means the scan passed, `warning` means the scan detected issues, `inconclusive` means errors prevented the scanner from reaching an accurate verdict.",
+																										"enum": [
+																											"ok",
+																											"warning",
+																											"inconclusive"
+																										],
+																										"type": "string"
+																									}
+																								],
+																								"description": "Verdict of this single test."
+																							}
+																						},
+																						"required": [
+																							"verdict",
+																							"steps"
+																						],
+																						"type": "object"
+																					},
+																					"type": "array"
+																				}
+																			},
+																			"required": [
+																				"summary",
+																				"tests"
+																			],
+																			"type": "object"
+																		}
+																	]
+																},
+																"report_schema_version": {
+																	"description": "Version of the report schema.",
+																	"enum": [
+																		"v1"
+																	],
+																	"type": "string"
+																}
+															},
+															"required": [
+																"report_schema_version",
+																"report"
+															],
+															"type": "object"
+														}
+													],
+													"description": "Vulnerability report produced after the scan completes. The shape depends on the scan type. Present only for finished scans.",
+													"nullable": true,
+													"type": "object"
+												},
+												"scan_type": {
+													"description": "The type of vulnerability scan.",
+													"enum": [
+														"bola"
+													],
+													"type": "string",
+													"x-auditable": true
+												},
+												"status": {
+													"description": "Current lifecycle status of the scan.",
+													"enum": [
+														"created",
+														"scheduled",
+														"planning",
+														"running",
+														"finished",
+														"failed"
+													],
+													"type": "string",
+													"x-auditable": true
+												},
+												"target_environment_id": {
+													"description": "The target environment this scan runs against.",
+													"format": "uuid",
+													"type": "string",
+													"x-auditable": true
+												}
+											},
+											"required": [
+												"id",
+												"target_environment_id",
+												"scan_type",
+												"status"
+											],
+											"type": "object"
+										},
+										"result_info": {
+											"nullable": true,
+											"type": "object"
+										}
+									},
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "Successful response. Check the `messages` array for non-fatal\nwarnings that arose during scan creation.\n"
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"allOf": [
+										{
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														},
+														"type": "object"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										}
+									],
+									"example": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
+										}
+									],
+									"minLength": 1
+								},
+								"messages": {
+									"allOf": [
+										{
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														},
+														"type": "object"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										}
+									],
+									"example": []
+								},
+								"result": {
+									"enum": [
+										null
+									],
+									"nullable": true,
+									"type": "object"
+								},
+								"success": {
+									"description": "Whether the API call was successful.",
+									"enum": [
+										false
+									],
+									"example": false,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Client error."
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Create Scan",
+		"tags": [
+			"Scans"
 		]
 	}
 }

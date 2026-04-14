@@ -802,6 +802,186 @@
 			}
 		}
 	],
+	"PARAMETERS /accounts/{account_id}/vuln_scanner/credential_sets": [
+		{
+			"description": "Account identifier.",
+			"in": "path",
+			"name": "account_id",
+			"required": true,
+			"schema": {
+				"description": "Identifier.",
+				"example": "023e105f4ecef8ad9ca31a8372d0c353",
+				"maxLength": 32,
+				"type": "string",
+				"x-auditable": true
+			}
+		}
+	],
+	"PARAMETERS /accounts/{account_id}/vuln_scanner/credential_sets/{credential_set_id}": [
+		{
+			"description": "Account identifier.",
+			"in": "path",
+			"name": "account_id",
+			"required": true,
+			"schema": {
+				"description": "Identifier.",
+				"example": "023e105f4ecef8ad9ca31a8372d0c353",
+				"maxLength": 32,
+				"type": "string",
+				"x-auditable": true
+			}
+		},
+		{
+			"description": "Credential set identifier.",
+			"in": "path",
+			"name": "credential_set_id",
+			"required": true,
+			"schema": {
+				"format": "uuid",
+				"type": "string"
+			}
+		}
+	],
+	"PARAMETERS /accounts/{account_id}/vuln_scanner/credential_sets/{credential_set_id}/credentials": [
+		{
+			"description": "Account identifier.",
+			"in": "path",
+			"name": "account_id",
+			"required": true,
+			"schema": {
+				"description": "Identifier.",
+				"example": "023e105f4ecef8ad9ca31a8372d0c353",
+				"maxLength": 32,
+				"type": "string",
+				"x-auditable": true
+			}
+		},
+		{
+			"description": "Credential set identifier.",
+			"in": "path",
+			"name": "credential_set_id",
+			"required": true,
+			"schema": {
+				"format": "uuid",
+				"type": "string"
+			}
+		}
+	],
+	"PARAMETERS /accounts/{account_id}/vuln_scanner/credential_sets/{credential_set_id}/credentials/{credential_id}": [
+		{
+			"description": "Account identifier.",
+			"in": "path",
+			"name": "account_id",
+			"required": true,
+			"schema": {
+				"description": "Identifier.",
+				"example": "023e105f4ecef8ad9ca31a8372d0c353",
+				"maxLength": 32,
+				"type": "string",
+				"x-auditable": true
+			}
+		},
+		{
+			"description": "Credential set identifier.",
+			"in": "path",
+			"name": "credential_set_id",
+			"required": true,
+			"schema": {
+				"format": "uuid",
+				"type": "string"
+			}
+		},
+		{
+			"description": "Credential identifier.",
+			"in": "path",
+			"name": "credential_id",
+			"required": true,
+			"schema": {
+				"format": "uuid",
+				"type": "string"
+			}
+		}
+	],
+	"PARAMETERS /accounts/{account_id}/vuln_scanner/scans": [
+		{
+			"description": "Account identifier.",
+			"in": "path",
+			"name": "account_id",
+			"required": true,
+			"schema": {
+				"description": "Identifier.",
+				"example": "023e105f4ecef8ad9ca31a8372d0c353",
+				"maxLength": 32,
+				"type": "string",
+				"x-auditable": true
+			}
+		}
+	],
+	"PARAMETERS /accounts/{account_id}/vuln_scanner/scans/{scan_id}": [
+		{
+			"description": "Account identifier.",
+			"in": "path",
+			"name": "account_id",
+			"required": true,
+			"schema": {
+				"description": "Identifier.",
+				"example": "023e105f4ecef8ad9ca31a8372d0c353",
+				"maxLength": 32,
+				"type": "string",
+				"x-auditable": true
+			}
+		},
+		{
+			"description": "Scan identifier.",
+			"in": "path",
+			"name": "scan_id",
+			"required": true,
+			"schema": {
+				"format": "uuid",
+				"type": "string"
+			}
+		}
+	],
+	"PARAMETERS /accounts/{account_id}/vuln_scanner/target_environments": [
+		{
+			"description": "Account identifier.",
+			"in": "path",
+			"name": "account_id",
+			"required": true,
+			"schema": {
+				"description": "Identifier.",
+				"example": "023e105f4ecef8ad9ca31a8372d0c353",
+				"maxLength": 32,
+				"type": "string",
+				"x-auditable": true
+			}
+		}
+	],
+	"PARAMETERS /accounts/{account_id}/vuln_scanner/target_environments/{target_environment_id}": [
+		{
+			"description": "Account identifier.",
+			"in": "path",
+			"name": "account_id",
+			"required": true,
+			"schema": {
+				"description": "Identifier.",
+				"example": "023e105f4ecef8ad9ca31a8372d0c353",
+				"maxLength": 32,
+				"type": "string",
+				"x-auditable": true
+			}
+		},
+		{
+			"description": "Target environment identifier.",
+			"in": "path",
+			"name": "target_environment_id",
+			"required": true,
+			"schema": {
+				"format": "uuid",
+				"type": "string"
+			}
+		}
+	],
 	"PARAMETERS /accounts/{account_id}/workers/observability/destinations": [
 		{
 			"description": "Your Cloudflare account ID.",
