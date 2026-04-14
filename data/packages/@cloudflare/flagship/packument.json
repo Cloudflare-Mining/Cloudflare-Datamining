@@ -1,7 +1,7 @@
 {
 	"name": "@cloudflare/flagship",
 	"dist-tags": {
-		"latest": "0.0.2"
+		"latest": "0.0.3"
 	},
 	"versions": {
 		"0.0.0": {
@@ -57,6 +57,38 @@
 			"name": "@cloudflare/flagship",
 			"version": "0.0.2",
 			"devDependencies": {
+				"tsx": "^4.21.0",
+				"tsdown": "^0.21.7",
+				"vitest": "^4.1.4",
+				"typescript": "^5.9.3",
+				"@types/node": "^24.12.2",
+				"@openfeature/core": "^1.9.2",
+				"@vitest/coverage-v8": "^4.1.4",
+				"@openfeature/web-sdk": "^1.7.3",
+				"@openfeature/server-sdk": "^1.20.2"
+			},
+			"peerDependencies": {
+				"@openfeature/web-sdk": "^1.7.3",
+				"@openfeature/server-sdk": "^1.20.2"
+			},
+			"dist": {
+				"shasum": "2085c808d147ac8c68fa6b667cf8357d13288069",
+				"tarball": "https://registry.npmjs.org/@cloudflare/flagship/-/flagship-0.0.2.tgz",
+				"fileCount": 19,
+				"integrity": "sha512-coSDrXej7d3QEmredT34sUcx5MFt8/cjwjjRW8kEAFaHIyMmkIphHUvbrJoOOvM067vFIVFz78h115nsDONWQg==",
+				"signatures": [
+					{
+						"sig": "MEYCIQCbLld4zqHpnbJPwR9x3UYYY24hSwCb3k0s8pfj4M/JogIhAN5jqwjA57ZA8CXjIPen3eIjrrBf64HPZwA5blT1OtMV",
+						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
+					}
+				],
+				"unpackedSize": 100764
+			}
+		},
+		"0.0.3": {
+			"name": "@cloudflare/flagship",
+			"version": "0.0.3",
+			"devDependencies": {
 				"@openfeature/core": "^1.9.2",
 				"@openfeature/server-sdk": "^1.20.2",
 				"@openfeature/web-sdk": "^1.7.3",
@@ -72,15 +104,15 @@
 				"@openfeature/web-sdk": "^1.7.3"
 			},
 			"dist": {
-				"integrity": "sha512-coSDrXej7d3QEmredT34sUcx5MFt8/cjwjjRW8kEAFaHIyMmkIphHUvbrJoOOvM067vFIVFz78h115nsDONWQg==",
-				"shasum": "2085c808d147ac8c68fa6b667cf8357d13288069",
-				"tarball": "https://registry.npmjs.org/@cloudflare/flagship/-/flagship-0.0.2.tgz",
+				"integrity": "sha512-8JW9QES9fIly/7Yks4hh85MsqppMMaNC4qwfeZZiTOcI48oE5NV9M0ndFqNNLFa7L1nPlRJV93oX3tU226p0sA==",
+				"shasum": "f150febe7de819a8c67bbe13c8d5351a427e9173",
+				"tarball": "https://registry.npmjs.org/@cloudflare/flagship/-/flagship-0.0.3.tgz",
 				"fileCount": 19,
-				"unpackedSize": 100764,
+				"unpackedSize": 100664,
 				"signatures": [
 					{
 						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U",
-						"sig": "MEYCIQCbLld4zqHpnbJPwR9x3UYYY24hSwCb3k0s8pfj4M/JogIhAN5jqwjA57ZA8CXjIPen3eIjrrBf64HPZwA5blT1OtMV"
+						"sig": "MEYCIQCIRZFik5C86oMVz5rPvVGgY8hJ0Gb3KKA0sJY9ftykfAIhAOEjI/vpiu8rRFpNW7etcMzB1kq1wNd9SRSD6cIZ+rt+"
 					}
 				]
 			}
