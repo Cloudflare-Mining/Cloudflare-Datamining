@@ -80,6 +80,8 @@
 		disableDelete: {
 			unlock: "Unlock"
 		},
+		delayWarning: "Metrics and logs can take up to 2 minutes to appear in the dashboard",
+		refresh: "Refresh",
 		activityLog: {
 			filters: {
 				all: "All"

@@ -169,6 +169,7 @@
 		card: {
 			expiration_date: "Expiration date",
 			number: "Card number",
+			on_file: "Card on file",
 			security_code: "Security code",
 			ending_in: "Card ending in %{last_four}",
 			ending_in_expires: "Card ending in <0>%{last_four}</0> — expires %{month_year}",

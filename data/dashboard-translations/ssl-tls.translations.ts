@@ -121,6 +121,8 @@
 	custom_hostnames_form_bundle_method_label: "Bundle method",
 	custom_hostnames_form_create_success_message: "Custom Hostname %{hostname} has been added",
 	custom_hostnames_form_edit_success_message: "Custom Hostname %{hostname} has been edited",
+	custom_hostnames_form_create_error_message: "Failed to add Custom Hostname %{hostname}",
+	custom_hostnames_form_edit_error_message: "Failed to edit Custom Hostname %{hostname}",
 	custom_hostnames_form_replace_certificate_placeholder: "Leaving both certificate and key field empty will keep the current state.",
 	custom_hostnames_form_replace_certificate_placeholder_min_tls_changed: "Changing minimum TLS version requires you to provide certificate and key.",
 	custom_hostnames_purchase_success: "Cloudflare for SaaS Enabled",

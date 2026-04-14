@@ -8,7 +8,85 @@
 		metrics: "Metrics",
 		playground: "Playground",
 		jobs: "Jobs",
+		items: "Items",
 		settings: "Settings"
+	},
+	items_tab: {
+		title: "Items",
+		search_placeholder: "Search items...",
+		empty: {
+			title: "No items found",
+			description: "Items will appear here once your data source is indexed."
+		},
+		error: {
+			title: "Failed to load items",
+			description: "An error occurred while loading items. Please try again.",
+			retry: "Retry"
+		},
+		table: {
+			columns: {
+				public_id: "Public ID",
+				status: "Status",
+				key: "Key",
+				chunks: "Chunks",
+				file_size: "File Size",
+				source: "Source",
+				next_action: "Next Action",
+				last_seen: "Last Seen",
+				created: "Created"
+			}
+		},
+		details: {
+			chunks_title: "Chunks",
+			logs_title: "Processing Logs",
+			no_chunks: "No chunks available",
+			no_logs: "No logs available",
+			chunk_bytes: "Bytes %{start} - %{end}",
+			action: "Action",
+			message: "Message",
+			processing_time: "Processing Time",
+			error_type: "Error Type",
+			chunk_count: "Chunk Count",
+			timestamp: "Timestamp",
+			reindex: "Re-index",
+			id_label: "ID",
+			key_label: "Key",
+			chunk_id_label: "Chunk ID",
+			show_full_content: "Show full content",
+			show_more: "Show more",
+			load_more: "Load more",
+			loading: "Loading...",
+			close: "Close",
+			status_label: "Status",
+			status_ok: "OK",
+			status_outdated: "Outdated",
+			status_outdated_tooltip: "This item will be included in your search",
+			metadata_title: "Metadata",
+			source_label: "Source",
+			source_builtin: "Uploaded",
+			source_legacy: "Legacy",
+			download: "Download"
+		},
+		upload: {
+			button: "Upload files",
+			title: "Upload files",
+			description: "Upload files to your AI Search instance. Max 4MB per file.",
+			drag_text: "Drag and drop files here or",
+			choose_files: "choose files",
+			uploading: "Uploading...",
+			success: "%{count} file(s) uploaded successfully",
+			error: "Failed to upload %{name}",
+			max_size: "Maximum file size: 4MB",
+			no_files: "No files selected"
+		},
+		delete: {
+			button: "Delete",
+			title: "Delete item",
+			description: "Are you sure you want to delete this item? This action cannot be undone.",
+			confirm: "Delete",
+			success: "Item deleted successfully",
+			error: "Failed to delete item"
+		}
 	},
 	overview: {
 		empty_state: {
@@ -24,9 +102,10 @@
 				index_results: "Index results",
 				last_sync: "Last sync"
 			},
+			search_placeholder: "Search instances…",
 			error: "sorry, an error occurred",
-			empty: "No AI Search instance found",
-			empty_description: "Clear your search and try again."
+			empty: "No results found",
+			empty_description: "Try adjusting your search to find what you're looking for."
 		}
 	},
 	metrics: {
@@ -39,7 +118,7 @@
 						title: "Items status over time",
 						empty: "No data available",
 						status: {
-							completed: "completed",
+							completed: "indexed",
 							errored: "errored",
 							running: "running",
 							queued: "queued"
@@ -256,7 +335,7 @@
 				},
 				keyword_tokenizer: {
 					title: "Keyword tokenizer",
-					description: "Select the tokenizer used for keyword search indexing. Changing this triggers a full re-index."
+					description: "Choose how text is broken down for keyword indexing."
 				}
 			},
 			chunking: {
@@ -340,7 +419,12 @@
 				description: "This enables AI Search to create and access resources in your account",
 				api_token: "API Token:",
 				exist: "I already have one",
-				crete: "Create one for me"
+				crete: "Create one for me",
+				create_new: "+ Create new token",
+				auto_create_note: "A new token will be created automatically",
+				permission_account: "Account: AI Search (edit), R2 Storage (read/write)",
+				permission_zone: "Zone: Workers Routes (edit) for all zones",
+				permission_user: "User: User Details (read), Memberships (read)"
 			},
 			custom_metadata: {
 				title: "Custom Metadata",
@@ -489,6 +573,7 @@
 				title: "Boost by",
 				description: "Boost search results by ranking documents with specific metadata field values higher.",
 				no_boost_by: "Not configured",
+				fields_count: (0, r.p)(n(), "count"),
 				add_button: "Add field",
 				remove_button: "Remove",
 				field_label: "Field",
@@ -513,7 +598,7 @@
 			description: "Configure the model and system prompt used to generate responses.",
 			model: "Generation model",
 			system_prompt: "System prompt",
-			note: (0, r.p)(a()),
+			note: (0, r.p)(s()),
 			drawer: {
 				title: "Generation model"
 			}
@@ -530,6 +615,7 @@
 		hybrid_search: {
 			title: "Hybrid search",
 			description: "Enable hybrid search to combine vector and keyword search for improved results.",
+			confirm_description: "A new indexing job will be created to reindex all items within this instance with this configuration. The existing version of the items will still be available to query while the job is completing.",
 			fusion_method: "Fusion method",
 			keyword_match_mode: "Keyword match mode",
 			keyword_tokenizer: "Keyword tokenizer"
@@ -577,6 +663,32 @@
 		general: {
 			title: "General",
 			name: "Name",
+			sync_interval: "Sync interval",
+			sync_interval_drawer: {
+				title: "Sync interval",
+				description: "How often the source data is re-synced.",
+				3600: "1 hour",
+				7200: "2 hours",
+				14400: "4 hours",
+				21600: "6 hours",
+				43200: "12 hours",
+				86400: "24 hours"
+			},
+			namespace: "Namespace",
+			move_namespace: {
+				title: "Move to namespace",
+				description: "Move this instance to a different namespace. The instance URL will change after moving.",
+				select_label: "Target namespace",
+				confirm: "Move",
+				success: "Instance moved successfully.",
+				no_other_namespaces: "No other namespaces available. Create a new namespace first."
+			},
+			namespace_description: "Move this instance to a different namespace or create a new one.",
+			namespace_create_error: "Failed to create namespace.",
+			namespace_create_button: "Create namespace",
+			namespace_create_placeholder: "New namespace name",
+			namespace_create_label: "Namespace name",
+			namespace_move_error: "Failed to move instance.",
 			api_token: "Service API Token",
 			delete_rag: "Permanently delete this AI Search and the associated Vector Database.",
 			drawer: {
@@ -624,7 +736,7 @@
 				not_found: "Sorry no results found",
 				no_response: "No response received from the model.",
 				not_found_description: "Either the data has not yet been indexed or no data is available for this specific search.",
-				authentication_error: "Authentication failed. Please go to {link} and create a new API token for this instance.",
+				authentication_error: "Authentication failed. Please go to %{link} and create a new API token for this instance.",
 				authentication_error_link: "Settings",
 				api: {
 					workers_ai_timeout: "Workers AI took too long to respond. Please try again.",
@@ -687,7 +799,7 @@
 				value_placeholder_array: "val1, val2, ...",
 				value_placeholder_date: "Select date",
 				value_placeholder_dates: "Select dates",
-				value_dates_selected: "{count} date(s) selected",
+				value_dates_selected: "%{count} date(s) selected",
 				remove_filter_aria: "Remove filter",
 				op_eq: "equals",
 				op_ne: "not equals",
@@ -756,7 +868,7 @@
 		},
 		status: {
 			canceled: "Canceled",
-			completed: "Completed",
+			completed: "Indexed",
 			processing: "Processing"
 		},
 		action: {
@@ -802,7 +914,7 @@
 			},
 			status: {
 				all: "All",
-				completed: "Completed",
+				completed: "Indexed",
 				indexed: "Indexed",
 				queued: "Queued",
 				running: "Processing",
@@ -818,6 +930,11 @@
 		public_url_label: "Your Public URL:",
 		try_configurator: "Try Configurator",
 		enable_public_url: "Enable Public URL"
+	},
+	managed_banner: {
+		title: "Get Started with AI Search",
+		description: "Your AI Search instance comes with built-in storage. Upload a file to get started.",
+		upload_button: "Upload files"
 	},
 	resources: {
 		docs: "Get started with AI Search",
@@ -898,12 +1015,12 @@
 	},
 	keyword_tokenizer: {
 		porter: {
-			title: "Porter stemming",
-			description: "Word-level tokenization with Porter stemming. Good for natural language queries."
+			title: "Standard with Stemming (Porter)",
+			description: 'Breaks text into words and reduces them to their root form (e.g., "connections" becomes "connect"). Best for natural language.'
 		},
 		trigram: {
-			title: "Trigram",
-			description: "Character-level substring matching. Good for partial matches, code, and identifiers."
+			title: "Character Trigram",
+			description: 'Breaks text into sequences of three characters (e.g., "apple" becomes "app, ppl, ple"). Best for partial matches, IDs, and code.'
 		}
 	},
 	errors: {
@@ -916,8 +1033,19 @@
 	},
 	common: {
 		beta: "Beta",
+		test: "Test",
 		default: "Default",
 		default_model: "Smart default (auto)",
+		on: "On",
+		off: "Off",
+		show_n_more: "Show %{count} more",
+		show_less: "Show less",
+		filter_by_provider: "Filter by provider",
+		edit_field: "Edit %{field}",
+		close_field_editor: "Close %{field} editor",
+		dismiss: "Dismiss",
+		edit: "Edit",
+		workers_ai: "Workers AI",
 		rag: "rag",
 		rags: "rags",
 		job: "job",
@@ -982,5 +1110,246 @@
 		title: "R2 Subscription Required",
 		description: "AI Search requires an R2 subscription to store and manage the data for your AI Search pipelines. Please enable R2 to continue.",
 		button: "Enable R2"
+	},
+	namespaces: {
+		title: "Namespaces",
+		description: "Manage namespaces to organize your AI Search instances.",
+		selector_label: "Namespace:",
+		manage_button: "Manage Namespaces",
+		empty: "No namespaces found",
+		default_label: "default",
+		create: {
+			button: "Create Namespace",
+			title: "Create a new namespace",
+			name_label: "Name",
+			name_description: "Lowercase letters, digits, and hyphens only. Must start and end with a letter or digit. Max 28 characters.",
+			desc_label: "Description",
+			desc_description: "Optional. Max 256 characters.",
+			confirm: "Create",
+			name_required: "Name is required",
+			name_duplicate: "A namespace with this name already exists"
+		},
+		edit: {
+			title: "Edit description",
+			confirm: "Save"
+		},
+		delete: {
+			title: "Delete namespace",
+			description_prefix: "Are you sure you want to delete ",
+			description_suffix: "? All instances must be moved or deleted first.",
+			confirm: "Delete"
+		},
+		table: {
+			columns: {
+				name: "Name",
+				description: "Description",
+				created_at: "Created"
+			},
+			empty: "No namespaces yet",
+			error: "Failed to load namespaces"
+		}
+	},
+	create_instance: {
+		title: "Create Instance",
+		steps: {
+			name_and_source: "Name & Source",
+			source_config: "Configure Source",
+			source_settings: "Source Settings",
+			webcrawl_settings: "WebCrawl Settings",
+			review_config: "Review Settings",
+			confirm_create: "Create"
+		},
+		choose_source: {
+			title: "Choose your data source",
+			description: "Select where AI Search will index your data from. You can change this later.",
+			managed_label: "Built-in Storage",
+			managed_description: "Upload and manage files directly. Always available as the default storage for every instance.",
+			managed_default_badge: "Default",
+			r2_label: "R2 Bucket",
+			r2_description: "Index files stored in one of your existing R2 buckets.",
+			r2_disabled_message: "Enable R2 to use this source type.",
+			webcrawl_label: "Web Crawl",
+			webcrawl_description: "Crawl and index content from a website URL or sitemap."
+		},
+		source_config: {
+			r2_title: "Select an R2 bucket",
+			r2_description: "Choose the R2 bucket that contains your data.",
+			token_auto_note: "An AI Search API token will be automatically created for this instance.",
+			webcrawl_title: "Configure web crawl",
+			webcrawl_description: "Enter the website URL to crawl. AI Search will index the content it finds.",
+			url_label: "Website URL",
+			url_placeholder: "https://example.com",
+			url_description: "Enter a domain or URL. Include a subdomain if needed.",
+			parse_type_legend: "Parse type",
+			parse_type_sitemap: "Sitemap",
+			parse_type_crawl: "Browser Render - Crawl",
+			depth_label: "Crawl depth",
+			depth_description: "Maximum number of pages to crawl (1–100,000).",
+			max_age_label: "Max cache age (seconds)",
+			max_age_description: "Maximum age of cached content in seconds.",
+			include_external_links_label: "Include external links",
+			include_subdomains_label: "Include subdomains",
+			section_crawl_target: "Crawl Target",
+			section_crawl_options: "Crawl Options",
+			parse_type_sitemap_description: "Reads your sitemap.xml to discover and index pages systematically.",
+			parse_type_crawl_description: "Follows links from a starting URL to discover and index pages.",
+			parse_type_info: "How AI Search discovers pages. Sitemap reads your sitemap.xml; Web Crawl follows links.",
+			depth_info: "Maximum number of link-hops from the start URL. Higher values discover more pages.",
+			max_age_info: "How long (in seconds) cached crawl content is considered fresh before re-crawling.",
+			include_external_links_info: "Whether to follow and index links that point to other domains.",
+			include_subdomains_info: "Whether to include pages on subdomains of the crawl target URL.",
+			section_parsing_options: "Parsing Options",
+			parsing_mode_label: "Parsing mode",
+			parsing_mode_info: "Static uses basic HTTP fetching. Rendered uses a headless browser for JavaScript-rendered pages.",
+			parsing_mode_static_title: "Static site",
+			parsing_mode_static_description: "Fast and cost-efficient. Best for plain HTML pages.",
+			parsing_mode_dynamic_title: "Rendered site",
+			parsing_mode_dynamic_description: "Uses a headless browser. Best for JavaScript-rendered content.",
+			extra_headers_title: "Extra headers",
+			extra_headers_description: "Add custom HTTP headers sent with every crawl request. Useful for authentication.",
+			extra_headers_add: "Add Header",
+			extra_header_key_label: "Header key",
+			extra_header_key_placeholder: "ex: Authorization",
+			extra_header_key_invalid: "Header key contains invalid characters. Use letters, digits, hyphens, and underscores only.",
+			extra_header_value_label: "Header value",
+			extra_header_value_placeholder: "ex: Bearer XXX...",
+			max_extra_headers: "Maximum 5 extra headers allowed",
+			specific_sitemaps_title: "Specific sitemaps",
+			specific_sitemaps_description: "Specify exact sitemap URLs instead of relying on automatic discovery.",
+			specific_sitemaps_add: "Add Sitemap",
+			specific_sitemaps_placeholder: "https://example.com/sitemap.xml",
+			specific_sitemaps_invalid: "Please enter a valid URL.",
+			max_specific_sitemaps: "Maximum 10 specific sitemaps allowed",
+			crawl_source_label: "Crawl source",
+			crawl_source_info: "Which links to follow when crawling the target domain.",
+			crawl_source_all_title: "All",
+			crawl_source_all_description: "Follow all discovered links — both sitemap and page links.",
+			crawl_source_sitemaps_title: "Sitemaps",
+			crawl_source_sitemaps_description: "Follow only links discovered via sitemaps.",
+			crawl_source_links_title: "Links",
+			crawl_source_links_description: "Follow only links found on crawled pages.",
+			section_content_extraction: "Content Extraction",
+			content_selectors_title: "Content selectors",
+			content_selectors_description: "Map URL glob patterns to CSS selectors to extract specific content. The first matching path wins.",
+			content_selectors_add: "Add Selector",
+			content_selector_path_label: "URL pattern",
+			content_selector_path_placeholder: "**/blog/**",
+			content_selector_selector_label: "CSS selector",
+			content_selector_selector_placeholder: "article .post-body",
+			max_content_selectors: "Maximum 10 content selectors allowed",
+			section_webcrawl_settings: "WebCrawl Settings",
+			webcrawl_settings_description: "Configure content extraction, URL filters, and custom metadata for your crawl.",
+			summary_no_selectors: "No selectors"
+		},
+		review_config: {
+			title: "Review your configuration",
+			description: "All settings below use smart defaults.",
+			section_ai_gateway: "AI Gateway",
+			section_indexing: "Indexing",
+			section_retrieval: "Retrieval",
+			section_cache: "Cache",
+			show_more: "Show more",
+			ai_gateway_label: "AI Gateway",
+			ai_gateway_default: "No gateway",
+			embedding_model_label: "Embedding model",
+			chunk_size_label: "Chunk size",
+			chunk_overlap_label: "Chunk overlap",
+			hybrid_search_label: "Hybrid search",
+			fusion_method_label: "Fusion method",
+			keyword_match_mode_label: "Keyword match mode",
+			keyword_tokenizer_label: "Keyword tokenizer",
+			generation_model_label: "Generation model",
+			query_rewrite_label: "Query rewriting",
+			rewrite_model_label: "Rewrite model",
+			reranking_label: "Reranking",
+			reranking_model_label: "Reranking model",
+			max_results_label: "Max results",
+			score_threshold_label: "Score threshold",
+			cache_enabled_label: "Similarity cache",
+			cache_threshold_label: "Cache strictness",
+			embedding_label: "Embedding Model",
+			retrieval_label: "Retrieval Settings",
+			cache_label: "Cache Settings",
+			cache_default_on: "Enabled",
+			cache_default_off: "Disabled",
+			cache_threshold_legend: "Cache strictness",
+			ai_gateway_info: "Connect an AI Gateway to monitor model usage and unlock additional providers via BYOK. Changing this resets available models.",
+			embedding_model_info: "Converts your content into vector embeddings. Affects search quality and cost.",
+			chunk_size_info: "Number of tokens per chunk. Smaller = more precise results; larger = more context per result.",
+			chunk_overlap_info: "Token overlap between adjacent chunks to maintain context continuity across boundaries.",
+			hybrid_search_info: "Combines vector similarity search with BM25 keyword search for improved relevance.",
+			hybrid_search_limits_info: "Hybrid search combines vector and keyword search, requiring two search pipelines. This reduces the maximum results per query compared to vector-only search, as results from both pipelines are merged using the selected fusion method.",
+			fusion_method_info: "How vector and keyword scores are merged. RRF (Reciprocal Rank Fusion) is the default and works well in most cases.",
+			keyword_match_mode_info: "Exact match requires all keywords to be present. Fuzzy match allows partial or approximate matches.",
+			keyword_tokenizer_info: "How text is tokenized for keyword search. Porter stemming is best for natural language; trigram is best for partial matches and IDs.",
+			generation_model_info: "The LLM used to generate the final natural language answer from retrieved chunks.",
+			query_rewrite_info: "Automatically rewrites the user query before retrieval to improve relevance and recall.",
+			rewrite_model_info: "The model used to rewrite the query. Defaults to the generation model if left empty.",
+			reranking_info: "Re-scores retrieved chunks using a dedicated model to improve relevance ranking before generation.",
+			reranking_model_info: "The model used to re-rank retrieved chunks. Only reranking-type models are available.",
+			max_results_info: "Maximum number of content chunks retrieved from the index per query. Higher = more results but slower.",
+			score_threshold_info: "Minimum similarity score (0–1) required for a chunk to be included in results. Higher = stricter matching.",
+			cache_enabled_info: "Caches responses for semantically similar queries to reduce model calls and cost.",
+			cache_threshold_info: "How similar two queries must be to reuse a cached response instead of calling the model.",
+			summary_cache: (0, r.p)(l(), "status"),
+			summary_cache_with_threshold: (0, r.p)(c(), "status", "threshold"),
+			summary_indexing: (0, r.p)(d(), "model", "chunkSize", "chunkOverlap"),
+			summary_rewriting: (0, r.p)(u(), "status"),
+			summary_reranking: (0, r.p)(m(), "status"),
+			summary_results_score: (0, r.p)(_(), "count", "score"),
+			n_tokens: (0, r.p)(h(), "count"),
+			n_dimensions: (0, r.p)(p(), "count"),
+			k_context: (0, r.p)(g(), "count"),
+			tokens_unit: "tokens"
+		},
+		source_settings: {
+			title: "Configure your R2 source",
+			description: "Optionally set path filters, custom metadata fields, and choose your API token.",
+			path_filters_title: "Path Filters",
+			path_filters_description: "Control which files to index by specifying include and exclude patterns.",
+			include_rules_title: "Include Rules",
+			include_rules_description: "Only index files matching these wildcard patterns (e.g. */docs/*, *.pdf). Leave empty to include all.",
+			exclude_rules_title: "Exclude Rules",
+			exclude_rules_description: "Skip files matching these wildcard patterns. Applied after include rules.",
+			add_rule: "Add Rule",
+			invalid_rule: "Invalid pattern. Use wildcards like */docs/* or *.pdf.",
+			max_include_rules: "Maximum 10 include rules allowed",
+			max_exclude_rules: "Maximum 10 exclude rules allowed",
+			metadata_title: "Metadata",
+			custom_metadata_title: "Custom Metadata",
+			custom_metadata_description: "Define additional metadata fields to attach to indexed documents.",
+			add_metadata: "Add Field",
+			field_name_label: "Field name",
+			field_type_label: "Type",
+			token_title: "API Token",
+			token_description: "Select an existing AI Search token or create a new one automatically.",
+			summary_no_filters: "No filters",
+			summary_no_metadata: "No custom metadata",
+			remove_rule: "Remove rule",
+			remove_header: "Remove header",
+			remove_field: "Remove field",
+			remove_selector: "Remove selector",
+			remove_sitemap: "Remove sitemap",
+			field_name_placeholder: "field_name",
+			filter_rule_placeholder: "e.g. /docs/*, *.pdf"
+		},
+		name_create: {
+			title: "Name your instance",
+			description: "Give your AI Search instance a unique name. This cannot be changed after creation.",
+			name_label: "Instance name",
+			name_placeholder: "my-ai-search",
+			name_description: "Lowercase letters, numbers, and hyphens only.",
+			token_auto_note: "An AI Search API token will be automatically created for this instance."
+		},
+		name_and_source: {
+			title: "Name your instance",
+			description: "Give your AI Search instance a name and optionally connect a data source.",
+			builtin_storage_note: "Optionally connect an additional data source.",
+			source_label: "Data source"
+		},
+		confirm_create: {
+			title: "Create your instance",
+			description: "Review your choices and create your AI Search instance."
+		}
 	}
 }

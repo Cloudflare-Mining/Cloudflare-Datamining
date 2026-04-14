@@ -23,8 +23,8 @@
 	form: {
 		field_validation_error: (0, i.p)(s(), "field"),
 		field_required_error: "This field is required",
-		field_name_required_error: (0, i.p)(d(), "field"),
-		field_mismatch_error: (0, i.p)(c(), "fieldPlural"),
+		field_name_required_error: (0, i.p)(c(), "field"),
+		field_mismatch_error: (0, i.p)(d(), "fieldPlural"),
 		field_min_length_error: (0, i.p)(l(), "length", "characters"),
 		field_length_error: (0, i.p)(_(), "length", "characters"),
 		field_must_contain_alpha_characters_error: "This field must contain more than one alphabetical character",
@@ -248,6 +248,7 @@
 			restore_notice: "Cloudflare can attempt to restore your domain, which will also extend its registration by 1 year. <0>Learn more</0>",
 			learn_more: "Learn more",
 			restore_button: "Restore domain",
+			restoring_button: "Restoring...",
 			restore_billing_permissions_error_message: "You need permission to manage billing in order to restore a domain. Please reach out to a super-admin on the account for assistance.",
 			restore_notification_success: "Domain successfully restored",
 			restore_notification_failure: "Domain restoration failed. Please try again or contact support for assistance.",
@@ -332,7 +333,15 @@
 		notification_failure_domain_blocked: "This domain is blocked and cannot be restored. Please contact support.",
 		notification_failure_permission_denied: "You don't have permission to restore this domain.",
 		notification_failure_tld_frozen: "Restorations for this domain extension are temporarily unavailable. Please try again later.",
-		notification_failure_domain_frozen: "This domain is currently frozen and cannot be restored. Please contact support for assistance."
+		notification_failure_domain_frozen: "This domain is currently frozen and cannot be restored. Please contact support for assistance.",
+		notification_failure_failed_to_determine_premium_status: "We couldn't verify the restore price for this domain. Please refresh the page and try again or contact support for assistance.",
+		notification_failure_invalid_price_acknowledgement: "The restore price has changed. Please refresh the page to get the latest pricing.",
+		premium_price_confirmation_modal_title: "Premium domain restore price has changed",
+		premium_price_confirmation_modal_description: "The redemption fee for this premium domain has changed at the registry. Please review the updated pricing below.",
+		premium_price_confirmation_modal_old_price: "Previous price",
+		premium_price_confirmation_modal_new_price: "Current price",
+		premium_price_confirmation_modal_back_button: "Go back",
+		premium_price_confirmation_modal_continue_button: "Continue with new price"
 	},
 	domainPageNotifications: {
 		expiration: "This domain will expire in <0>%{smart_count}</0> day. See registration options below.||||This domain will expire in <1>%{smart_count}</1> days. See registration options below.",
@@ -1157,7 +1166,7 @@
 			new_code: (0, i.p)(es()),
 			button: "Verify Code",
 			error: {
-				too_many_attempts: (0, i.p)(ed(), "date")
+				too_many_attempts: (0, i.p)(ec(), "date")
 			}
 		},
 		confirmation_modal: {
@@ -1165,7 +1174,7 @@
 			button: "Delete Domain Permanently"
 		},
 		notifications: {
-			success: (0, i.p)(ec(), "domainName")
+			success: (0, i.p)(ed(), "domainName")
 		},
 		errors: {
 			title: "Error:",
