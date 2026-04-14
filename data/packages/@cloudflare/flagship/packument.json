@@ -1,0 +1,89 @@
+{
+	"name": "@cloudflare/flagship",
+	"dist-tags": {
+		"latest": "0.0.2"
+	},
+	"versions": {
+		"0.0.0": {
+			"name": "@cloudflare/flagship",
+			"version": "0.0.0",
+			"dist": {
+				"shasum": "6db4e253838c09c25ca2cd7024460432ec5cd622",
+				"tarball": "https://registry.npmjs.org/@cloudflare/flagship/-/flagship-0.0.0.tgz",
+				"fileCount": 1,
+				"integrity": "sha512-1T6OcuyDIYDA2ibbFYd9Nv1ohuAqt+RmDEHw4/hB77XZyTEQ5TlEQQ7QlKwljPLD7A1T8MIx/YbcT+mYTJncBw==",
+				"signatures": [
+					{
+						"sig": "MEQCIBi/+KEg19pDW3nra10VZ1Kij9z5gUA61EPWQ1S6vJnCAiA42O9WRqZf6QuqItxmeOkcK8f5MNcW+35IJ+gdeABdwg==",
+						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
+					}
+				],
+				"unpackedSize": 256
+			}
+		},
+		"0.0.1": {
+			"name": "@cloudflare/flagship",
+			"version": "0.0.1",
+			"devDependencies": {
+				"tsx": "^4.21.0",
+				"tsdown": "^0.21.7",
+				"vitest": "^4.1.4",
+				"typescript": "^5.9.3",
+				"@types/node": "^24.12.2",
+				"@openfeature/core": "^1.9.2",
+				"@vitest/coverage-v8": "^4.1.4",
+				"@openfeature/web-sdk": "^1.7.3",
+				"@openfeature/server-sdk": "^1.20.2"
+			},
+			"peerDependencies": {
+				"@openfeature/web-sdk": "^1.7.3",
+				"@openfeature/server-sdk": "^1.20.2"
+			},
+			"dist": {
+				"shasum": "c95e39d6fc37a0460de404238a9338a1fc28b75f",
+				"tarball": "https://registry.npmjs.org/@cloudflare/flagship/-/flagship-0.0.1.tgz",
+				"fileCount": 19,
+				"integrity": "sha512-7e7eWjgBVAqmjnFOvyUmigBYzautowY91c0nRD1KvUxGLtkMAfn7zbb4s+4uXJcqBmg5UdYiRfUBUTZrQ5brfA==",
+				"signatures": [
+					{
+						"sig": "MEUCIAtSAQdzTj4mZ16gluBD2s6zaxxQi0ZP/GSHn+1YH/6uAiEA3Ui0mI2T2XbhdQifqJO697irtjDvtPxh3aCQUYJx12E=",
+						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
+					}
+				],
+				"unpackedSize": 100764
+			}
+		},
+		"0.0.2": {
+			"name": "@cloudflare/flagship",
+			"version": "0.0.2",
+			"devDependencies": {
+				"@openfeature/core": "^1.9.2",
+				"@openfeature/server-sdk": "^1.20.2",
+				"@openfeature/web-sdk": "^1.7.3",
+				"@types/node": "^24.12.2",
+				"@vitest/coverage-v8": "^4.1.4",
+				"tsdown": "^0.21.7",
+				"tsx": "^4.21.0",
+				"typescript": "^5.9.3",
+				"vitest": "^4.1.4"
+			},
+			"peerDependencies": {
+				"@openfeature/server-sdk": "^1.20.2",
+				"@openfeature/web-sdk": "^1.7.3"
+			},
+			"dist": {
+				"integrity": "sha512-coSDrXej7d3QEmredT34sUcx5MFt8/cjwjjRW8kEAFaHIyMmkIphHUvbrJoOOvM067vFIVFz78h115nsDONWQg==",
+				"shasum": "2085c808d147ac8c68fa6b667cf8357d13288069",
+				"tarball": "https://registry.npmjs.org/@cloudflare/flagship/-/flagship-0.0.2.tgz",
+				"fileCount": 19,
+				"unpackedSize": 100764,
+				"signatures": [
+					{
+						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U",
+						"sig": "MEYCIQCbLld4zqHpnbJPwR9x3UYYY24hSwCb3k0s8pfj4M/JogIhAN5jqwjA57ZA8CXjIPen3eIjrrBf64HPZwA5blT1OtMV"
+					}
+				]
+			}
+		}
+	}
+}
