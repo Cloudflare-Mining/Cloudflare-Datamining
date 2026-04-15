@@ -393,7 +393,7 @@
 											"zones": {
 												"default": [],
 												"items": {
-													"type": "number"
+													"type": "string"
 												},
 												"type": "array"
 											}
@@ -574,6 +574,85 @@
 			"Public"
 		]
 	},
+	"GET /accounts/{account_id}/email/sending/feedback": {
+		"operationId": "get_publicFeedbackStatus",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"example": "54442216",
+					"type": "string"
+				}
+			},
+			{
+				"in": "query",
+				"name": "start_at",
+				"schema": {
+					"example": "2026-04-08T00:00:00Z",
+					"format": "date-time",
+					"type": "string"
+				}
+			},
+			{
+				"in": "query",
+				"name": "end_at",
+				"schema": {
+					"example": "2026-04-15T00:00:00Z",
+					"format": "date-time",
+					"type": "string"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"result": {
+									"properties": {
+										"count": {
+											"type": "number"
+										},
+										"end_at": {
+											"format": "date-time",
+											"type": "string"
+										},
+										"start_at": {
+											"format": "date-time",
+											"type": "string"
+										}
+									},
+									"required": [
+										"count",
+										"start_at",
+										"end_at"
+									],
+									"type": "object"
+								}
+							},
+							"required": [
+								"result"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Returns feedback statistics."
+			}
+		},
+		"security": [
+			{
+				"bearerAuth": []
+			}
+		],
+		"summary": "Get feedback emails statistics",
+		"tags": [
+			"Public"
+		]
+	},
 	"GET /accounts/{account_id}/email/sending/suppression": {
 		"operationId": "get_publicListSuppressionSending",
 		"parameters": [
@@ -672,7 +751,7 @@
 											"zones": {
 												"default": [],
 												"items": {
-													"type": "number"
+													"type": "string"
 												},
 												"type": "array"
 											}
@@ -951,7 +1030,7 @@
 											"zones": {
 												"default": [],
 												"items": {
-													"type": "number"
+													"type": "string"
 												},
 												"type": "array"
 											}
@@ -1238,7 +1317,7 @@
 											"zones": {
 												"default": [],
 												"items": {
-													"type": "number"
+													"type": "string"
 												},
 												"type": "array"
 											}
