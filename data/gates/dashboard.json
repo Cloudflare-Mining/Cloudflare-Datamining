@@ -279,7 +279,7 @@
 		]
 	},
 	"artifacts-enabled": {
-		"enabled": false
+		"enabled": true
 	},
 	"asn-lists": {
 		"enabled": true
@@ -1035,9 +1035,6 @@
 			"experiment"
 		]
 	},
-	"dx-loading-improvements": {
-		"enabled": true
-	},
 	"dx-login-flows-kumo": {
 		"enabled": true
 	},
@@ -1604,7 +1601,7 @@
 		"enabled": false
 	},
 	"origin-analytics": {
-		"enabled": false
+		"enabled": true
 	},
 	"page-rules-templates": {
 		"enabled": true
@@ -2696,6 +2693,9 @@
 	},
 	"wobs-issues": {
 		"enabled": true
+	},
+	"wobs-trace-query-v3": {
+		"enabled": false
 	},
 	"worker-add-binding-component": {
 		"enabled": false,
