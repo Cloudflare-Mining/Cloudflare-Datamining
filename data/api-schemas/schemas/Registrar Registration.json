@@ -1,4 +1,653 @@
 {
+	"GET /accounts/{account_id}/registrar/registrations": {
+		"description": "Returns a paginated list of domain registrations owned by the account.\n\nThis endpoint uses cursor-based pagination. Results are ordered by registration\ndate by default. To fetch the next page, pass the `cursor` value from the\n`result_info` object in the response as the `cursor` query parameter in\nyour next request. An empty `cursor` string indicates there are no more\npages.\n",
+		"operationId": "registrar-domain-registration-list",
+		"parameters": [
+			{
+				"description": "Cloudflare account ID.",
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"description": "Identifier",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"readOnly": true,
+					"type": "string"
+				}
+			},
+			{
+				"description": "Opaque token from a previous response's `result_info.cursor`.\nPass this value to fetch the next page of results. Omit (or\npass an empty string) for the first page.\n",
+				"in": "query",
+				"name": "cursor",
+				"schema": {
+					"maxLength": 256,
+					"type": "string"
+				}
+			},
+			{
+				"description": "Number of items to return per page.",
+				"in": "query",
+				"name": "per_page",
+				"schema": {
+					"default": 20,
+					"maximum": 50,
+					"minimum": 1,
+					"type": "integer"
+				}
+			},
+			{
+				"description": "Sort direction for results. Defaults to ascending order.\n",
+				"in": "query",
+				"name": "direction",
+				"schema": {
+					"default": "asc",
+					"enum": [
+						"asc",
+						"desc"
+					],
+					"type": "string"
+				}
+			},
+			{
+				"description": "Column to sort results by. Defaults to registration date\n(`registry_created_at`) when omitted.\n",
+				"in": "query",
+				"name": "sort_by",
+				"schema": {
+					"default": "registry_created_at",
+					"enum": [
+						"registry_created_at",
+						"registry_expires_at",
+						"name"
+					],
+					"type": "string"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"examples": {
+							"empty_account": {
+								"summary": "Account with no registrations",
+								"value": {
+									"errors": [],
+									"messages": [],
+									"result": [],
+									"result_info": {
+										"count": 0,
+										"cursor": "",
+										"per_page": 20
+									},
+									"success": true
+								}
+							},
+							"multiple_domains": {
+								"summary": "Account with multiple domains",
+								"value": {
+									"errors": [],
+									"messages": [],
+									"result": [
+										{
+											"auto_renew": true,
+											"created_at": "2025-01-15T10:00:00Z",
+											"domain_name": "example.com",
+											"expires_at": "2026-01-15T10:00:00Z",
+											"locked": true,
+											"privacy_mode": "redaction",
+											"status": "active"
+										},
+										{
+											"auto_renew": false,
+											"created_at": "2025-03-20T14:30:00Z",
+											"domain_name": "mybrand.dev",
+											"expires_at": "2026-03-20T14:30:00Z",
+											"locked": true,
+											"privacy_mode": "redaction",
+											"status": "active"
+										}
+									],
+									"result_info": {
+										"count": 2,
+										"cursor": "",
+										"per_page": 20
+									},
+									"success": true
+								}
+							},
+							"next_page": {
+								"description": "Response when fetching the next page by passing the cursor from a previous response. The empty cursor indicates this is the last page.",
+								"summary": "Next page of results (last page)",
+								"value": {
+									"errors": [],
+									"messages": [],
+									"result": [
+										{
+											"auto_renew": true,
+											"created_at": "2025-04-01T09:00:00Z",
+											"domain_name": "charlie.org",
+											"expires_at": "2026-04-01T09:00:00Z",
+											"locked": true,
+											"privacy_mode": "redaction",
+											"status": "active"
+										}
+									],
+									"result_info": {
+										"count": 1,
+										"cursor": "",
+										"per_page": 20
+									},
+									"success": true
+								}
+							},
+							"paginated": {
+								"summary": "First page with more results available",
+								"value": {
+									"errors": [],
+									"messages": [],
+									"result": [
+										{
+											"auto_renew": true,
+											"created_at": "2024-01-15T09:30:00Z",
+											"domain_name": "acmecorp.com",
+											"expires_at": "2026-01-15T09:30:00Z",
+											"locked": true,
+											"privacy_mode": "redaction",
+											"status": "active"
+										},
+										{
+											"auto_renew": true,
+											"created_at": "2024-02-20T14:00:00Z",
+											"domain_name": "brightwave.net",
+											"expires_at": "2026-02-20T14:00:00Z",
+											"locked": true,
+											"privacy_mode": "redaction",
+											"status": "active"
+										},
+										{
+											"auto_renew": true,
+											"created_at": "2024-03-05T11:15:00Z",
+											"domain_name": "cloudpeak.org",
+											"expires_at": "2026-03-05T11:15:00Z",
+											"locked": true,
+											"privacy_mode": "redaction",
+											"status": "active"
+										},
+										{
+											"auto_renew": true,
+											"created_at": "2024-03-22T08:45:00Z",
+											"domain_name": "solarpanel.io",
+											"expires_at": "2026-03-22T08:45:00Z",
+											"locked": true,
+											"privacy_mode": "off",
+											"status": "active"
+										},
+										{
+											"auto_renew": false,
+											"created_at": "2024-04-10T16:00:00Z",
+											"domain_name": "greenleaf.dev",
+											"expires_at": "2026-04-10T16:00:00Z",
+											"locked": true,
+											"privacy_mode": "redaction",
+											"status": "active"
+										},
+										{
+											"auto_renew": true,
+											"created_at": "2024-05-03T10:30:00Z",
+											"domain_name": "swiftrunner.app",
+											"expires_at": "2026-05-03T10:30:00Z",
+											"locked": true,
+											"privacy_mode": "redaction",
+											"status": "active"
+										},
+										{
+											"auto_renew": false,
+											"created_at": "2024-05-18T13:00:00Z",
+											"domain_name": "northerntrail.co",
+											"expires_at": "2025-05-18T13:00:00Z",
+											"locked": true,
+											"privacy_mode": "redaction",
+											"status": "expired"
+										},
+										{
+											"auto_renew": true,
+											"created_at": "2024-06-01T07:20:00Z",
+											"domain_name": "pixelforge.xyz",
+											"expires_at": "2026-06-01T07:20:00Z",
+											"locked": false,
+											"privacy_mode": "redaction",
+											"status": "active"
+										},
+										{
+											"auto_renew": true,
+											"created_at": "2024-06-25T15:45:00Z",
+											"domain_name": "oceandrift.com",
+											"expires_at": "2026-06-25T15:45:00Z",
+											"locked": true,
+											"privacy_mode": "redaction",
+											"status": "active"
+										},
+										{
+											"auto_renew": true,
+											"created_at": "2024-07-12T09:00:00Z",
+											"domain_name": "rocketlaunch.net",
+											"expires_at": "2026-07-12T09:00:00Z",
+											"locked": true,
+											"privacy_mode": "off",
+											"status": "active"
+										},
+										{
+											"auto_renew": false,
+											"created_at": "2024-08-08T12:30:00Z",
+											"domain_name": "blueprintlab.io",
+											"expires_at": "2026-08-08T12:30:00Z",
+											"locked": true,
+											"privacy_mode": "redaction",
+											"status": "active"
+										},
+										{
+											"auto_renew": true,
+											"created_at": "2024-09-01T18:00:00Z",
+											"domain_name": "maplewood.org",
+											"expires_at": "2026-09-01T18:00:00Z",
+											"locked": true,
+											"privacy_mode": "redaction",
+											"status": "active"
+										},
+										{
+											"auto_renew": false,
+											"created_at": "2024-09-20T10:15:00Z",
+											"domain_name": "thunderbolt.dev",
+											"expires_at": "2025-09-20T10:15:00Z",
+											"locked": false,
+											"privacy_mode": "off",
+											"status": "expired"
+										},
+										{
+											"auto_renew": true,
+											"created_at": "2024-10-05T14:45:00Z",
+											"domain_name": "silverbranch.app",
+											"expires_at": "2026-10-05T14:45:00Z",
+											"locked": true,
+											"privacy_mode": "redaction",
+											"status": "active"
+										},
+										{
+											"auto_renew": true,
+											"created_at": "2024-11-11T08:00:00Z",
+											"domain_name": "nightowl.co",
+											"expires_at": "2026-11-11T08:00:00Z",
+											"locked": true,
+											"privacy_mode": "redaction",
+											"status": "active"
+										},
+										{
+											"auto_renew": true,
+											"created_at": "2024-12-01T11:30:00Z",
+											"domain_name": "crimsongate.com",
+											"expires_at": "2026-12-01T11:30:00Z",
+											"locked": true,
+											"privacy_mode": "redaction",
+											"status": "active"
+										},
+										{
+											"auto_renew": false,
+											"created_at": "2025-01-07T16:20:00Z",
+											"domain_name": "frostedpine.net",
+											"expires_at": "2027-01-07T16:20:00Z",
+											"locked": true,
+											"privacy_mode": "redaction",
+											"status": "active"
+										},
+										{
+											"auto_renew": true,
+											"created_at": "2025-01-25T09:50:00Z",
+											"domain_name": "horizonline.xyz",
+											"expires_at": "2027-01-25T09:50:00Z",
+											"locked": true,
+											"privacy_mode": "redaction",
+											"status": "active"
+										},
+										{
+											"auto_renew": true,
+											"created_at": "2025-02-14T13:00:00Z",
+											"domain_name": "coppervine.io",
+											"expires_at": "2027-02-14T13:00:00Z",
+											"locked": true,
+											"privacy_mode": "off",
+											"status": "active"
+										},
+										{
+											"auto_renew": true,
+											"created_at": "2025-03-02T07:40:00Z",
+											"domain_name": "starlitpath.org",
+											"expires_at": "2027-03-02T07:40:00Z",
+											"locked": true,
+											"privacy_mode": "redaction",
+											"status": "active"
+										}
+									],
+									"result_info": {
+										"count": 20,
+										"cursor": "eyJ0IjoiMjAyNS0wNi0xNVQxMjowMDowMC4wMDAwMDBaIiwibiI6ImJyYXZvLm5ldCJ9",
+										"per_page": 20
+									},
+									"success": true
+								}
+							}
+						},
+						"schema": {
+							"allOf": [
+								{
+									"properties": {
+										"errors": {
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										},
+										"messages": {
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										},
+										"result": {
+											"anyOf": [
+												{
+													"type": "object"
+												},
+												{
+													"items": {
+														"type": "object"
+													},
+													"type": "array"
+												},
+												{
+													"type": "string"
+												}
+											]
+										},
+										"success": {
+											"description": "Whether the API call was successful",
+											"enum": [
+												true
+											],
+											"example": true,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"result": {
+											"items": {
+												"description": "A domain registration resource representing the current state of a registered domain.",
+												"properties": {
+													"auto_renew": {
+														"description": "Whether the domain will be automatically renewed before expiration.",
+														"example": true,
+														"type": "boolean"
+													},
+													"created_at": {
+														"description": "When the domain was registered. Present when the registration resource exists.",
+														"example": "2025-01-15T10:00:00Z",
+														"format": "date-time",
+														"type": "string"
+													},
+													"domain_name": {
+														"description": "Fully qualified domain name (FQDN) including the extension\n(e.g., `example.com`, `mybrand.app`). The domain name uniquely\nidentifies a registration — the same domain cannot be registered\ntwice, making it a natural idempotency key for registration requests.\n",
+														"example": "example.com",
+														"type": "string",
+														"x-auditable": true
+													},
+													"expires_at": {
+														"description": "When the domain registration expires. Present when the registration is ready; may be null only while `status` is `registration_pending`.",
+														"example": "2026-01-15T10:00:00Z",
+														"format": "date-time",
+														"nullable": true,
+														"type": "string"
+													},
+													"locked": {
+														"description": "Whether the domain is locked for transfer.",
+														"example": true,
+														"type": "boolean"
+													},
+													"privacy_mode": {
+														"description": "Current WHOIS privacy mode for the registration.",
+														"enum": [
+															false,
+															"redaction"
+														],
+														"example": "redaction",
+														"type": "string"
+													},
+													"status": {
+														"description": "Current registration status.\n- `active`: Domain is registered and operational\n- `registration_pending`: Registration is in progress\n- `expired`: Domain has expired\n- `suspended`: Domain is suspended by the registry\n- `redemption_period`: Domain is in the redemption grace period\n- `pending_delete`: Domain is pending deletion by the registry\n",
+														"enum": [
+															"active",
+															"registration_pending",
+															"expired",
+															"suspended",
+															"redemption_period",
+															"pending_delete"
+														],
+														"example": "active",
+														"type": "string"
+													}
+												},
+												"required": [
+													"domain_name",
+													"status",
+													"created_at",
+													"expires_at",
+													"auto_renew",
+													"privacy_mode",
+													"locked"
+												],
+												"type": "object"
+											},
+											"type": "array"
+										},
+										"result_info": {
+											"description": "Cursor-based pagination metadata. Used by list endpoints that support\ncursor pagination. Pass the `cursor` value as a query parameter in the\nnext request to fetch the next page. An empty string indicates there\nare no more pages.\n",
+											"properties": {
+												"count": {
+													"description": "Number of items in the current result set.",
+													"example": 20,
+													"type": "integer"
+												},
+												"cursor": {
+													"description": "Opaque cursor for fetching the next page. Pass this value as the\n`cursor` query parameter in a subsequent request. An empty string\nindicates there are no more pages.\n",
+													"example": "eyJ0IjoiMjAyNS0wNi0xNVQxMjowMDowMC4wMDAwMDBaIiwibiI6ImJyYXZvLm5ldCJ9",
+													"type": "string"
+												},
+												"per_page": {
+													"description": "Maximum number of items per page.",
+													"example": 20,
+													"type": "integer"
+												}
+											},
+											"required": [
+												"cursor",
+												"per_page",
+												"count"
+											],
+											"type": "object"
+										}
+									},
+									"required": [
+										"result",
+										"result_info"
+									],
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "List of registrations for the account."
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"examples": {
+							"invalid_cursor": {
+								"summary": "Invalid cursor",
+								"value": {
+									"errors": [
+										{
+											"code": 10000,
+											"message": "Invalid pagination cursor"
+										}
+									],
+									"messages": [],
+									"result": null,
+									"success": false
+								}
+							}
+						},
+						"schema": {
+							"properties": {
+								"errors": {
+									"allOf": [
+										{
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										}
+									],
+									"example": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
+										}
+									],
+									"minItems": 1
+								},
+								"messages": {
+									"allOf": [
+										{
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										}
+									],
+									"example": []
+								},
+								"result": {
+									"enum": [
+										null
+									],
+									"nullable": true,
+									"type": "object"
+								},
+								"success": {
+									"description": "Whether the API call was successful",
+									"enum": [
+										false
+									],
+									"example": false,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "List registrations failure."
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "List Registrations",
+		"tags": [
+			"Registrar Registration"
+		]
+	},
 	"GET /accounts/{account_id}/registrar/registrations/{domain_name}": {
 		"description": "Returns the current state of a domain registration.\n\nThis is the canonical read endpoint for a domain you own. It returns\nthe full registration resource including current settings and expiration.\nWhen the registration resource is ready, both `created_at` and `expires_at`\nare present in the response.\n",
 		"operationId": "registrar-domain-registration-get",

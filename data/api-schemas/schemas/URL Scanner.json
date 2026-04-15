@@ -1601,6 +1601,1972 @@
 									"properties": {
 										"processors": {
 											"properties": {
+												"agentReadiness": {
+													"properties": {
+														"checks": {
+															"properties": {
+																"botAccessControl": {
+																	"properties": {
+																		"contentSignals": {
+																			"properties": {
+																				"details": {
+																					"type": "object"
+																				},
+																				"durationMs": {
+																					"type": "number"
+																				},
+																				"evidence": {
+																					"items": {
+																						"properties": {
+																							"action": {
+																								"example": "fetch",
+																								"type": "string"
+																							},
+																							"finding": {
+																								"properties": {
+																									"outcome": {
+																										"example": "positive",
+																										"type": "string"
+																									},
+																									"summary": {
+																										"example": "Found valid robots.txt",
+																										"type": "string"
+																									}
+																								},
+																								"required": [
+																									"outcome",
+																									"summary"
+																								],
+																								"type": "object"
+																							},
+																							"label": {
+																								"example": "GET /robots.txt",
+																								"type": "string"
+																							},
+																							"request": {
+																								"properties": {
+																									"headers": {
+																										"type": "object"
+																									},
+																									"method": {
+																										"example": "GET",
+																										"type": "string"
+																									},
+																									"url": {
+																										"example": "https://example.com/robots.txt",
+																										"type": "string"
+																									}
+																								},
+																								"required": [
+																									"url",
+																									"method"
+																								],
+																								"type": "object"
+																							},
+																							"response": {
+																								"properties": {
+																									"bodyPreview": {
+																										"type": "string"
+																									},
+																									"bodySize": {
+																										"type": "integer"
+																									},
+																									"headers": {
+																										"type": "object"
+																									},
+																									"redirectedTo": {
+																										"type": "string"
+																									},
+																									"status": {
+																										"example": 200,
+																										"type": "integer"
+																									},
+																									"statusText": {
+																										"example": "OK",
+																										"type": "string"
+																									}
+																								},
+																								"required": [
+																									"status",
+																									"statusText"
+																								],
+																								"type": "object"
+																							}
+																						},
+																						"required": [
+																							"action",
+																							"label"
+																						],
+																						"type": "object"
+																					},
+																					"type": "array"
+																				},
+																				"message": {
+																					"type": "string"
+																				},
+																				"status": {
+																					"example": "pass",
+																					"type": "string"
+																				}
+																			},
+																			"required": [
+																				"status"
+																			],
+																			"type": "object"
+																		},
+																		"robotsTxtAiRules": {
+																			"properties": {
+																				"details": {
+																					"type": "object"
+																				},
+																				"durationMs": {
+																					"type": "number"
+																				},
+																				"evidence": {
+																					"items": {
+																						"properties": {
+																							"action": {
+																								"example": "fetch",
+																								"type": "string"
+																							},
+																							"finding": {
+																								"properties": {
+																									"outcome": {
+																										"example": "positive",
+																										"type": "string"
+																									},
+																									"summary": {
+																										"example": "Found valid robots.txt",
+																										"type": "string"
+																									}
+																								},
+																								"required": [
+																									"outcome",
+																									"summary"
+																								],
+																								"type": "object"
+																							},
+																							"label": {
+																								"example": "GET /robots.txt",
+																								"type": "string"
+																							},
+																							"request": {
+																								"properties": {
+																									"headers": {
+																										"type": "object"
+																									},
+																									"method": {
+																										"example": "GET",
+																										"type": "string"
+																									},
+																									"url": {
+																										"example": "https://example.com/robots.txt",
+																										"type": "string"
+																									}
+																								},
+																								"required": [
+																									"url",
+																									"method"
+																								],
+																								"type": "object"
+																							},
+																							"response": {
+																								"properties": {
+																									"bodyPreview": {
+																										"type": "string"
+																									},
+																									"bodySize": {
+																										"type": "integer"
+																									},
+																									"headers": {
+																										"type": "object"
+																									},
+																									"redirectedTo": {
+																										"type": "string"
+																									},
+																									"status": {
+																										"example": 200,
+																										"type": "integer"
+																									},
+																									"statusText": {
+																										"example": "OK",
+																										"type": "string"
+																									}
+																								},
+																								"required": [
+																									"status",
+																									"statusText"
+																								],
+																								"type": "object"
+																							}
+																						},
+																						"required": [
+																							"action",
+																							"label"
+																						],
+																						"type": "object"
+																					},
+																					"type": "array"
+																				},
+																				"message": {
+																					"type": "string"
+																				},
+																				"status": {
+																					"example": "pass",
+																					"type": "string"
+																				}
+																			},
+																			"required": [
+																				"status"
+																			],
+																			"type": "object"
+																		},
+																		"webBotAuth": {
+																			"properties": {
+																				"details": {
+																					"type": "object"
+																				},
+																				"durationMs": {
+																					"type": "number"
+																				},
+																				"evidence": {
+																					"items": {
+																						"properties": {
+																							"action": {
+																								"example": "fetch",
+																								"type": "string"
+																							},
+																							"finding": {
+																								"properties": {
+																									"outcome": {
+																										"example": "positive",
+																										"type": "string"
+																									},
+																									"summary": {
+																										"example": "Found valid robots.txt",
+																										"type": "string"
+																									}
+																								},
+																								"required": [
+																									"outcome",
+																									"summary"
+																								],
+																								"type": "object"
+																							},
+																							"label": {
+																								"example": "GET /robots.txt",
+																								"type": "string"
+																							},
+																							"request": {
+																								"properties": {
+																									"headers": {
+																										"type": "object"
+																									},
+																									"method": {
+																										"example": "GET",
+																										"type": "string"
+																									},
+																									"url": {
+																										"example": "https://example.com/robots.txt",
+																										"type": "string"
+																									}
+																								},
+																								"required": [
+																									"url",
+																									"method"
+																								],
+																								"type": "object"
+																							},
+																							"response": {
+																								"properties": {
+																									"bodyPreview": {
+																										"type": "string"
+																									},
+																									"bodySize": {
+																										"type": "integer"
+																									},
+																									"headers": {
+																										"type": "object"
+																									},
+																									"redirectedTo": {
+																										"type": "string"
+																									},
+																									"status": {
+																										"example": 200,
+																										"type": "integer"
+																									},
+																									"statusText": {
+																										"example": "OK",
+																										"type": "string"
+																									}
+																								},
+																								"required": [
+																									"status",
+																									"statusText"
+																								],
+																								"type": "object"
+																							}
+																						},
+																						"required": [
+																							"action",
+																							"label"
+																						],
+																						"type": "object"
+																					},
+																					"type": "array"
+																				},
+																				"message": {
+																					"type": "string"
+																				},
+																				"status": {
+																					"example": "fail",
+																					"type": "string"
+																				}
+																			},
+																			"required": [
+																				"status"
+																			],
+																			"type": "object"
+																		}
+																	},
+																	"required": [
+																		"robotsTxtAiRules",
+																		"contentSignals",
+																		"webBotAuth"
+																	],
+																	"type": "object"
+																},
+																"commerce": {
+																	"properties": {
+																		"ap2": {
+																			"properties": {
+																				"details": {
+																					"type": "object"
+																				},
+																				"durationMs": {
+																					"type": "number"
+																				},
+																				"evidence": {
+																					"items": {
+																						"properties": {
+																							"action": {
+																								"example": "fetch",
+																								"type": "string"
+																							},
+																							"finding": {
+																								"properties": {
+																									"outcome": {
+																										"example": "positive",
+																										"type": "string"
+																									},
+																									"summary": {
+																										"example": "Found valid robots.txt",
+																										"type": "string"
+																									}
+																								},
+																								"required": [
+																									"outcome",
+																									"summary"
+																								],
+																								"type": "object"
+																							},
+																							"label": {
+																								"example": "GET /robots.txt",
+																								"type": "string"
+																							},
+																							"request": {
+																								"properties": {
+																									"headers": {
+																										"type": "object"
+																									},
+																									"method": {
+																										"example": "GET",
+																										"type": "string"
+																									},
+																									"url": {
+																										"example": "https://example.com/robots.txt",
+																										"type": "string"
+																									}
+																								},
+																								"required": [
+																									"url",
+																									"method"
+																								],
+																								"type": "object"
+																							},
+																							"response": {
+																								"properties": {
+																									"bodyPreview": {
+																										"type": "string"
+																									},
+																									"bodySize": {
+																										"type": "integer"
+																									},
+																									"headers": {
+																										"type": "object"
+																									},
+																									"redirectedTo": {
+																										"type": "string"
+																									},
+																									"status": {
+																										"example": 200,
+																										"type": "integer"
+																									},
+																									"statusText": {
+																										"example": "OK",
+																										"type": "string"
+																									}
+																								},
+																								"required": [
+																									"status",
+																									"statusText"
+																								],
+																								"type": "object"
+																							}
+																						},
+																						"required": [
+																							"action",
+																							"label"
+																						],
+																						"type": "object"
+																					},
+																					"type": "array"
+																				},
+																				"message": {
+																					"type": "string"
+																				},
+																				"status": {
+																					"example": "fail",
+																					"type": "string"
+																				}
+																			},
+																			"required": [
+																				"status"
+																			],
+																			"type": "object"
+																		},
+																		"ucp": {
+																			"properties": {
+																				"details": {
+																					"type": "object"
+																				},
+																				"durationMs": {
+																					"type": "number"
+																				},
+																				"evidence": {
+																					"items": {
+																						"properties": {
+																							"action": {
+																								"example": "fetch",
+																								"type": "string"
+																							},
+																							"finding": {
+																								"properties": {
+																									"outcome": {
+																										"example": "positive",
+																										"type": "string"
+																									},
+																									"summary": {
+																										"example": "Found valid robots.txt",
+																										"type": "string"
+																									}
+																								},
+																								"required": [
+																									"outcome",
+																									"summary"
+																								],
+																								"type": "object"
+																							},
+																							"label": {
+																								"example": "GET /robots.txt",
+																								"type": "string"
+																							},
+																							"request": {
+																								"properties": {
+																									"headers": {
+																										"type": "object"
+																									},
+																									"method": {
+																										"example": "GET",
+																										"type": "string"
+																									},
+																									"url": {
+																										"example": "https://example.com/robots.txt",
+																										"type": "string"
+																									}
+																								},
+																								"required": [
+																									"url",
+																									"method"
+																								],
+																								"type": "object"
+																							},
+																							"response": {
+																								"properties": {
+																									"bodyPreview": {
+																										"type": "string"
+																									},
+																									"bodySize": {
+																										"type": "integer"
+																									},
+																									"headers": {
+																										"type": "object"
+																									},
+																									"redirectedTo": {
+																										"type": "string"
+																									},
+																									"status": {
+																										"example": 200,
+																										"type": "integer"
+																									},
+																									"statusText": {
+																										"example": "OK",
+																										"type": "string"
+																									}
+																								},
+																								"required": [
+																									"status",
+																									"statusText"
+																								],
+																								"type": "object"
+																							}
+																						},
+																						"required": [
+																							"action",
+																							"label"
+																						],
+																						"type": "object"
+																					},
+																					"type": "array"
+																				},
+																				"message": {
+																					"type": "string"
+																				},
+																				"status": {
+																					"example": "fail",
+																					"type": "string"
+																				}
+																			},
+																			"required": [
+																				"status"
+																			],
+																			"type": "object"
+																		},
+																		"x402": {
+																			"properties": {
+																				"details": {
+																					"type": "object"
+																				},
+																				"durationMs": {
+																					"type": "number"
+																				},
+																				"evidence": {
+																					"items": {
+																						"properties": {
+																							"action": {
+																								"example": "fetch",
+																								"type": "string"
+																							},
+																							"finding": {
+																								"properties": {
+																									"outcome": {
+																										"example": "positive",
+																										"type": "string"
+																									},
+																									"summary": {
+																										"example": "Found valid robots.txt",
+																										"type": "string"
+																									}
+																								},
+																								"required": [
+																									"outcome",
+																									"summary"
+																								],
+																								"type": "object"
+																							},
+																							"label": {
+																								"example": "GET /robots.txt",
+																								"type": "string"
+																							},
+																							"request": {
+																								"properties": {
+																									"headers": {
+																										"type": "object"
+																									},
+																									"method": {
+																										"example": "GET",
+																										"type": "string"
+																									},
+																									"url": {
+																										"example": "https://example.com/robots.txt",
+																										"type": "string"
+																									}
+																								},
+																								"required": [
+																									"url",
+																									"method"
+																								],
+																								"type": "object"
+																							},
+																							"response": {
+																								"properties": {
+																									"bodyPreview": {
+																										"type": "string"
+																									},
+																									"bodySize": {
+																										"type": "integer"
+																									},
+																									"headers": {
+																										"type": "object"
+																									},
+																									"redirectedTo": {
+																										"type": "string"
+																									},
+																									"status": {
+																										"example": 200,
+																										"type": "integer"
+																									},
+																									"statusText": {
+																										"example": "OK",
+																										"type": "string"
+																									}
+																								},
+																								"required": [
+																									"status",
+																									"statusText"
+																								],
+																								"type": "object"
+																							}
+																						},
+																						"required": [
+																							"action",
+																							"label"
+																						],
+																						"type": "object"
+																					},
+																					"type": "array"
+																				},
+																				"message": {
+																					"type": "string"
+																				},
+																				"status": {
+																					"example": "fail",
+																					"type": "string"
+																				}
+																			},
+																			"required": [
+																				"status"
+																			],
+																			"type": "object"
+																		}
+																	},
+																	"required": [
+																		"ucp",
+																		"x402",
+																		"ap2"
+																	],
+																	"type": "object"
+																},
+																"contentAccessibility": {
+																	"properties": {
+																		"markdownNegotiation": {
+																			"properties": {
+																				"details": {
+																					"type": "object"
+																				},
+																				"durationMs": {
+																					"type": "number"
+																				},
+																				"evidence": {
+																					"items": {
+																						"properties": {
+																							"action": {
+																								"example": "fetch",
+																								"type": "string"
+																							},
+																							"finding": {
+																								"properties": {
+																									"outcome": {
+																										"example": "positive",
+																										"type": "string"
+																									},
+																									"summary": {
+																										"example": "Found valid robots.txt",
+																										"type": "string"
+																									}
+																								},
+																								"required": [
+																									"outcome",
+																									"summary"
+																								],
+																								"type": "object"
+																							},
+																							"label": {
+																								"example": "GET /robots.txt",
+																								"type": "string"
+																							},
+																							"request": {
+																								"properties": {
+																									"headers": {
+																										"type": "object"
+																									},
+																									"method": {
+																										"example": "GET",
+																										"type": "string"
+																									},
+																									"url": {
+																										"example": "https://example.com/robots.txt",
+																										"type": "string"
+																									}
+																								},
+																								"required": [
+																									"url",
+																									"method"
+																								],
+																								"type": "object"
+																							},
+																							"response": {
+																								"properties": {
+																									"bodyPreview": {
+																										"type": "string"
+																									},
+																									"bodySize": {
+																										"type": "integer"
+																									},
+																									"headers": {
+																										"type": "object"
+																									},
+																									"redirectedTo": {
+																										"type": "string"
+																									},
+																									"status": {
+																										"example": 200,
+																										"type": "integer"
+																									},
+																									"statusText": {
+																										"example": "OK",
+																										"type": "string"
+																									}
+																								},
+																								"required": [
+																									"status",
+																									"statusText"
+																								],
+																								"type": "object"
+																							}
+																						},
+																						"required": [
+																							"action",
+																							"label"
+																						],
+																						"type": "object"
+																					},
+																					"type": "array"
+																				},
+																				"message": {
+																					"type": "string"
+																				},
+																				"status": {
+																					"example": "fail",
+																					"type": "string"
+																				}
+																			},
+																			"required": [
+																				"status"
+																			],
+																			"type": "object"
+																		}
+																	},
+																	"required": [
+																		"markdownNegotiation"
+																	],
+																	"type": "object"
+																},
+																"discoverability": {
+																	"properties": {
+																		"linkHeaders": {
+																			"properties": {
+																				"details": {
+																					"type": "object"
+																				},
+																				"durationMs": {
+																					"type": "number"
+																				},
+																				"evidence": {
+																					"items": {
+																						"properties": {
+																							"action": {
+																								"example": "fetch",
+																								"type": "string"
+																							},
+																							"finding": {
+																								"properties": {
+																									"outcome": {
+																										"example": "positive",
+																										"type": "string"
+																									},
+																									"summary": {
+																										"example": "Found valid robots.txt",
+																										"type": "string"
+																									}
+																								},
+																								"required": [
+																									"outcome",
+																									"summary"
+																								],
+																								"type": "object"
+																							},
+																							"label": {
+																								"example": "GET /robots.txt",
+																								"type": "string"
+																							},
+																							"request": {
+																								"properties": {
+																									"headers": {
+																										"type": "object"
+																									},
+																									"method": {
+																										"example": "GET",
+																										"type": "string"
+																									},
+																									"url": {
+																										"example": "https://example.com/robots.txt",
+																										"type": "string"
+																									}
+																								},
+																								"required": [
+																									"url",
+																									"method"
+																								],
+																								"type": "object"
+																							},
+																							"response": {
+																								"properties": {
+																									"bodyPreview": {
+																										"type": "string"
+																									},
+																									"bodySize": {
+																										"type": "integer"
+																									},
+																									"headers": {
+																										"type": "object"
+																									},
+																									"redirectedTo": {
+																										"type": "string"
+																									},
+																									"status": {
+																										"example": 200,
+																										"type": "integer"
+																									},
+																									"statusText": {
+																										"example": "OK",
+																										"type": "string"
+																									}
+																								},
+																								"required": [
+																									"status",
+																									"statusText"
+																								],
+																								"type": "object"
+																							}
+																						},
+																						"required": [
+																							"action",
+																							"label"
+																						],
+																						"type": "object"
+																					},
+																					"type": "array"
+																				},
+																				"message": {
+																					"type": "string"
+																				},
+																				"status": {
+																					"example": "fail",
+																					"type": "string"
+																				}
+																			},
+																			"required": [
+																				"status"
+																			],
+																			"type": "object"
+																		},
+																		"robotsTxt": {
+																			"properties": {
+																				"details": {
+																					"type": "object"
+																				},
+																				"durationMs": {
+																					"type": "number"
+																				},
+																				"evidence": {
+																					"items": {
+																						"properties": {
+																							"action": {
+																								"example": "fetch",
+																								"type": "string"
+																							},
+																							"finding": {
+																								"properties": {
+																									"outcome": {
+																										"example": "positive",
+																										"type": "string"
+																									},
+																									"summary": {
+																										"example": "Found valid robots.txt",
+																										"type": "string"
+																									}
+																								},
+																								"required": [
+																									"outcome",
+																									"summary"
+																								],
+																								"type": "object"
+																							},
+																							"label": {
+																								"example": "GET /robots.txt",
+																								"type": "string"
+																							},
+																							"request": {
+																								"properties": {
+																									"headers": {
+																										"type": "object"
+																									},
+																									"method": {
+																										"example": "GET",
+																										"type": "string"
+																									},
+																									"url": {
+																										"example": "https://example.com/robots.txt",
+																										"type": "string"
+																									}
+																								},
+																								"required": [
+																									"url",
+																									"method"
+																								],
+																								"type": "object"
+																							},
+																							"response": {
+																								"properties": {
+																									"bodyPreview": {
+																										"type": "string"
+																									},
+																									"bodySize": {
+																										"type": "integer"
+																									},
+																									"headers": {
+																										"type": "object"
+																									},
+																									"redirectedTo": {
+																										"type": "string"
+																									},
+																									"status": {
+																										"example": 200,
+																										"type": "integer"
+																									},
+																									"statusText": {
+																										"example": "OK",
+																										"type": "string"
+																									}
+																								},
+																								"required": [
+																									"status",
+																									"statusText"
+																								],
+																								"type": "object"
+																							}
+																						},
+																						"required": [
+																							"action",
+																							"label"
+																						],
+																						"type": "object"
+																					},
+																					"type": "array"
+																				},
+																				"message": {
+																					"type": "string"
+																				},
+																				"status": {
+																					"example": "pass",
+																					"type": "string"
+																				}
+																			},
+																			"required": [
+																				"status"
+																			],
+																			"type": "object"
+																		},
+																		"sitemap": {
+																			"properties": {
+																				"details": {
+																					"type": "object"
+																				},
+																				"durationMs": {
+																					"type": "number"
+																				},
+																				"evidence": {
+																					"items": {
+																						"properties": {
+																							"action": {
+																								"example": "fetch",
+																								"type": "string"
+																							},
+																							"finding": {
+																								"properties": {
+																									"outcome": {
+																										"example": "positive",
+																										"type": "string"
+																									},
+																									"summary": {
+																										"example": "Found valid robots.txt",
+																										"type": "string"
+																									}
+																								},
+																								"required": [
+																									"outcome",
+																									"summary"
+																								],
+																								"type": "object"
+																							},
+																							"label": {
+																								"example": "GET /robots.txt",
+																								"type": "string"
+																							},
+																							"request": {
+																								"properties": {
+																									"headers": {
+																										"type": "object"
+																									},
+																									"method": {
+																										"example": "GET",
+																										"type": "string"
+																									},
+																									"url": {
+																										"example": "https://example.com/robots.txt",
+																										"type": "string"
+																									}
+																								},
+																								"required": [
+																									"url",
+																									"method"
+																								],
+																								"type": "object"
+																							},
+																							"response": {
+																								"properties": {
+																									"bodyPreview": {
+																										"type": "string"
+																									},
+																									"bodySize": {
+																										"type": "integer"
+																									},
+																									"headers": {
+																										"type": "object"
+																									},
+																									"redirectedTo": {
+																										"type": "string"
+																									},
+																									"status": {
+																										"example": 200,
+																										"type": "integer"
+																									},
+																									"statusText": {
+																										"example": "OK",
+																										"type": "string"
+																									}
+																								},
+																								"required": [
+																									"status",
+																									"statusText"
+																								],
+																								"type": "object"
+																							}
+																						},
+																						"required": [
+																							"action",
+																							"label"
+																						],
+																						"type": "object"
+																					},
+																					"type": "array"
+																				},
+																				"message": {
+																					"type": "string"
+																				},
+																				"status": {
+																					"example": "pass",
+																					"type": "string"
+																				}
+																			},
+																			"required": [
+																				"status"
+																			],
+																			"type": "object"
+																		}
+																	},
+																	"required": [
+																		"robotsTxt",
+																		"sitemap",
+																		"linkHeaders"
+																	],
+																	"type": "object"
+																},
+																"discovery": {
+																	"properties": {
+																		"a2aAgentCard": {
+																			"properties": {
+																				"details": {
+																					"type": "object"
+																				},
+																				"durationMs": {
+																					"type": "number"
+																				},
+																				"evidence": {
+																					"items": {
+																						"properties": {
+																							"action": {
+																								"example": "fetch",
+																								"type": "string"
+																							},
+																							"finding": {
+																								"properties": {
+																									"outcome": {
+																										"example": "positive",
+																										"type": "string"
+																									},
+																									"summary": {
+																										"example": "Found valid robots.txt",
+																										"type": "string"
+																									}
+																								},
+																								"required": [
+																									"outcome",
+																									"summary"
+																								],
+																								"type": "object"
+																							},
+																							"label": {
+																								"example": "GET /robots.txt",
+																								"type": "string"
+																							},
+																							"request": {
+																								"properties": {
+																									"headers": {
+																										"type": "object"
+																									},
+																									"method": {
+																										"example": "GET",
+																										"type": "string"
+																									},
+																									"url": {
+																										"example": "https://example.com/robots.txt",
+																										"type": "string"
+																									}
+																								},
+																								"required": [
+																									"url",
+																									"method"
+																								],
+																								"type": "object"
+																							},
+																							"response": {
+																								"properties": {
+																									"bodyPreview": {
+																										"type": "string"
+																									},
+																									"bodySize": {
+																										"type": "integer"
+																									},
+																									"headers": {
+																										"type": "object"
+																									},
+																									"redirectedTo": {
+																										"type": "string"
+																									},
+																									"status": {
+																										"example": 200,
+																										"type": "integer"
+																									},
+																									"statusText": {
+																										"example": "OK",
+																										"type": "string"
+																									}
+																								},
+																								"required": [
+																									"status",
+																									"statusText"
+																								],
+																								"type": "object"
+																							}
+																						},
+																						"required": [
+																							"action",
+																							"label"
+																						],
+																						"type": "object"
+																					},
+																					"type": "array"
+																				},
+																				"message": {
+																					"type": "string"
+																				},
+																				"status": {
+																					"example": "fail",
+																					"type": "string"
+																				}
+																			},
+																			"required": [
+																				"status"
+																			],
+																			"type": "object"
+																		},
+																		"agentSkills": {
+																			"properties": {
+																				"details": {
+																					"type": "object"
+																				},
+																				"durationMs": {
+																					"type": "number"
+																				},
+																				"evidence": {
+																					"items": {
+																						"properties": {
+																							"action": {
+																								"example": "fetch",
+																								"type": "string"
+																							},
+																							"finding": {
+																								"properties": {
+																									"outcome": {
+																										"example": "positive",
+																										"type": "string"
+																									},
+																									"summary": {
+																										"example": "Found valid robots.txt",
+																										"type": "string"
+																									}
+																								},
+																								"required": [
+																									"outcome",
+																									"summary"
+																								],
+																								"type": "object"
+																							},
+																							"label": {
+																								"example": "GET /robots.txt",
+																								"type": "string"
+																							},
+																							"request": {
+																								"properties": {
+																									"headers": {
+																										"type": "object"
+																									},
+																									"method": {
+																										"example": "GET",
+																										"type": "string"
+																									},
+																									"url": {
+																										"example": "https://example.com/robots.txt",
+																										"type": "string"
+																									}
+																								},
+																								"required": [
+																									"url",
+																									"method"
+																								],
+																								"type": "object"
+																							},
+																							"response": {
+																								"properties": {
+																									"bodyPreview": {
+																										"type": "string"
+																									},
+																									"bodySize": {
+																										"type": "integer"
+																									},
+																									"headers": {
+																										"type": "object"
+																									},
+																									"redirectedTo": {
+																										"type": "string"
+																									},
+																									"status": {
+																										"example": 200,
+																										"type": "integer"
+																									},
+																									"statusText": {
+																										"example": "OK",
+																										"type": "string"
+																									}
+																								},
+																								"required": [
+																									"status",
+																									"statusText"
+																								],
+																								"type": "object"
+																							}
+																						},
+																						"required": [
+																							"action",
+																							"label"
+																						],
+																						"type": "object"
+																					},
+																					"type": "array"
+																				},
+																				"message": {
+																					"type": "string"
+																				},
+																				"status": {
+																					"example": "fail",
+																					"type": "string"
+																				}
+																			},
+																			"required": [
+																				"status"
+																			],
+																			"type": "object"
+																		},
+																		"apiCatalog": {
+																			"properties": {
+																				"details": {
+																					"type": "object"
+																				},
+																				"durationMs": {
+																					"type": "number"
+																				},
+																				"evidence": {
+																					"items": {
+																						"properties": {
+																							"action": {
+																								"example": "fetch",
+																								"type": "string"
+																							},
+																							"finding": {
+																								"properties": {
+																									"outcome": {
+																										"example": "positive",
+																										"type": "string"
+																									},
+																									"summary": {
+																										"example": "Found valid robots.txt",
+																										"type": "string"
+																									}
+																								},
+																								"required": [
+																									"outcome",
+																									"summary"
+																								],
+																								"type": "object"
+																							},
+																							"label": {
+																								"example": "GET /robots.txt",
+																								"type": "string"
+																							},
+																							"request": {
+																								"properties": {
+																									"headers": {
+																										"type": "object"
+																									},
+																									"method": {
+																										"example": "GET",
+																										"type": "string"
+																									},
+																									"url": {
+																										"example": "https://example.com/robots.txt",
+																										"type": "string"
+																									}
+																								},
+																								"required": [
+																									"url",
+																									"method"
+																								],
+																								"type": "object"
+																							},
+																							"response": {
+																								"properties": {
+																									"bodyPreview": {
+																										"type": "string"
+																									},
+																									"bodySize": {
+																										"type": "integer"
+																									},
+																									"headers": {
+																										"type": "object"
+																									},
+																									"redirectedTo": {
+																										"type": "string"
+																									},
+																									"status": {
+																										"example": 200,
+																										"type": "integer"
+																									},
+																									"statusText": {
+																										"example": "OK",
+																										"type": "string"
+																									}
+																								},
+																								"required": [
+																									"status",
+																									"statusText"
+																								],
+																								"type": "object"
+																							}
+																						},
+																						"required": [
+																							"action",
+																							"label"
+																						],
+																						"type": "object"
+																					},
+																					"type": "array"
+																				},
+																				"message": {
+																					"type": "string"
+																				},
+																				"status": {
+																					"example": "fail",
+																					"type": "string"
+																				}
+																			},
+																			"required": [
+																				"status"
+																			],
+																			"type": "object"
+																		},
+																		"mcpServerCard": {
+																			"properties": {
+																				"details": {
+																					"type": "object"
+																				},
+																				"durationMs": {
+																					"type": "number"
+																				},
+																				"evidence": {
+																					"items": {
+																						"properties": {
+																							"action": {
+																								"example": "fetch",
+																								"type": "string"
+																							},
+																							"finding": {
+																								"properties": {
+																									"outcome": {
+																										"example": "positive",
+																										"type": "string"
+																									},
+																									"summary": {
+																										"example": "Found valid robots.txt",
+																										"type": "string"
+																									}
+																								},
+																								"required": [
+																									"outcome",
+																									"summary"
+																								],
+																								"type": "object"
+																							},
+																							"label": {
+																								"example": "GET /robots.txt",
+																								"type": "string"
+																							},
+																							"request": {
+																								"properties": {
+																									"headers": {
+																										"type": "object"
+																									},
+																									"method": {
+																										"example": "GET",
+																										"type": "string"
+																									},
+																									"url": {
+																										"example": "https://example.com/robots.txt",
+																										"type": "string"
+																									}
+																								},
+																								"required": [
+																									"url",
+																									"method"
+																								],
+																								"type": "object"
+																							},
+																							"response": {
+																								"properties": {
+																									"bodyPreview": {
+																										"type": "string"
+																									},
+																									"bodySize": {
+																										"type": "integer"
+																									},
+																									"headers": {
+																										"type": "object"
+																									},
+																									"redirectedTo": {
+																										"type": "string"
+																									},
+																									"status": {
+																										"example": 200,
+																										"type": "integer"
+																									},
+																									"statusText": {
+																										"example": "OK",
+																										"type": "string"
+																									}
+																								},
+																								"required": [
+																									"status",
+																									"statusText"
+																								],
+																								"type": "object"
+																							}
+																						},
+																						"required": [
+																							"action",
+																							"label"
+																						],
+																						"type": "object"
+																					},
+																					"type": "array"
+																				},
+																				"message": {
+																					"type": "string"
+																				},
+																				"status": {
+																					"example": "fail",
+																					"type": "string"
+																				}
+																			},
+																			"required": [
+																				"status"
+																			],
+																			"type": "object"
+																		},
+																		"oauthDiscovery": {
+																			"properties": {
+																				"details": {
+																					"type": "object"
+																				},
+																				"durationMs": {
+																					"type": "number"
+																				},
+																				"evidence": {
+																					"items": {
+																						"properties": {
+																							"action": {
+																								"example": "fetch",
+																								"type": "string"
+																							},
+																							"finding": {
+																								"properties": {
+																									"outcome": {
+																										"example": "positive",
+																										"type": "string"
+																									},
+																									"summary": {
+																										"example": "Found valid robots.txt",
+																										"type": "string"
+																									}
+																								},
+																								"required": [
+																									"outcome",
+																									"summary"
+																								],
+																								"type": "object"
+																							},
+																							"label": {
+																								"example": "GET /robots.txt",
+																								"type": "string"
+																							},
+																							"request": {
+																								"properties": {
+																									"headers": {
+																										"type": "object"
+																									},
+																									"method": {
+																										"example": "GET",
+																										"type": "string"
+																									},
+																									"url": {
+																										"example": "https://example.com/robots.txt",
+																										"type": "string"
+																									}
+																								},
+																								"required": [
+																									"url",
+																									"method"
+																								],
+																								"type": "object"
+																							},
+																							"response": {
+																								"properties": {
+																									"bodyPreview": {
+																										"type": "string"
+																									},
+																									"bodySize": {
+																										"type": "integer"
+																									},
+																									"headers": {
+																										"type": "object"
+																									},
+																									"redirectedTo": {
+																										"type": "string"
+																									},
+																									"status": {
+																										"example": 200,
+																										"type": "integer"
+																									},
+																									"statusText": {
+																										"example": "OK",
+																										"type": "string"
+																									}
+																								},
+																								"required": [
+																									"status",
+																									"statusText"
+																								],
+																								"type": "object"
+																							}
+																						},
+																						"required": [
+																							"action",
+																							"label"
+																						],
+																						"type": "object"
+																					},
+																					"type": "array"
+																				},
+																				"message": {
+																					"type": "string"
+																				},
+																				"status": {
+																					"example": "fail",
+																					"type": "string"
+																				}
+																			},
+																			"required": [
+																				"status"
+																			],
+																			"type": "object"
+																		},
+																		"oauthProtectedResource": {
+																			"properties": {
+																				"details": {
+																					"type": "object"
+																				},
+																				"durationMs": {
+																					"type": "number"
+																				},
+																				"evidence": {
+																					"items": {
+																						"properties": {
+																							"action": {
+																								"example": "fetch",
+																								"type": "string"
+																							},
+																							"finding": {
+																								"properties": {
+																									"outcome": {
+																										"example": "positive",
+																										"type": "string"
+																									},
+																									"summary": {
+																										"example": "Found valid robots.txt",
+																										"type": "string"
+																									}
+																								},
+																								"required": [
+																									"outcome",
+																									"summary"
+																								],
+																								"type": "object"
+																							},
+																							"label": {
+																								"example": "GET /robots.txt",
+																								"type": "string"
+																							},
+																							"request": {
+																								"properties": {
+																									"headers": {
+																										"type": "object"
+																									},
+																									"method": {
+																										"example": "GET",
+																										"type": "string"
+																									},
+																									"url": {
+																										"example": "https://example.com/robots.txt",
+																										"type": "string"
+																									}
+																								},
+																								"required": [
+																									"url",
+																									"method"
+																								],
+																								"type": "object"
+																							},
+																							"response": {
+																								"properties": {
+																									"bodyPreview": {
+																										"type": "string"
+																									},
+																									"bodySize": {
+																										"type": "integer"
+																									},
+																									"headers": {
+																										"type": "object"
+																									},
+																									"redirectedTo": {
+																										"type": "string"
+																									},
+																									"status": {
+																										"example": 200,
+																										"type": "integer"
+																									},
+																									"statusText": {
+																										"example": "OK",
+																										"type": "string"
+																									}
+																								},
+																								"required": [
+																									"status",
+																									"statusText"
+																								],
+																								"type": "object"
+																							}
+																						},
+																						"required": [
+																							"action",
+																							"label"
+																						],
+																						"type": "object"
+																					},
+																					"type": "array"
+																				},
+																				"message": {
+																					"type": "string"
+																				},
+																				"status": {
+																					"example": "fail",
+																					"type": "string"
+																				}
+																			},
+																			"required": [
+																				"status"
+																			],
+																			"type": "object"
+																		},
+																		"webMcp": {
+																			"properties": {
+																				"details": {
+																					"type": "object"
+																				},
+																				"durationMs": {
+																					"type": "number"
+																				},
+																				"evidence": {
+																					"items": {
+																						"properties": {
+																							"action": {
+																								"example": "fetch",
+																								"type": "string"
+																							},
+																							"finding": {
+																								"properties": {
+																									"outcome": {
+																										"example": "positive",
+																										"type": "string"
+																									},
+																									"summary": {
+																										"example": "Found valid robots.txt",
+																										"type": "string"
+																									}
+																								},
+																								"required": [
+																									"outcome",
+																									"summary"
+																								],
+																								"type": "object"
+																							},
+																							"label": {
+																								"example": "GET /robots.txt",
+																								"type": "string"
+																							},
+																							"request": {
+																								"properties": {
+																									"headers": {
+																										"type": "object"
+																									},
+																									"method": {
+																										"example": "GET",
+																										"type": "string"
+																									},
+																									"url": {
+																										"example": "https://example.com/robots.txt",
+																										"type": "string"
+																									}
+																								},
+																								"required": [
+																									"url",
+																									"method"
+																								],
+																								"type": "object"
+																							},
+																							"response": {
+																								"properties": {
+																									"bodyPreview": {
+																										"type": "string"
+																									},
+																									"bodySize": {
+																										"type": "integer"
+																									},
+																									"headers": {
+																										"type": "object"
+																									},
+																									"redirectedTo": {
+																										"type": "string"
+																									},
+																									"status": {
+																										"example": 200,
+																										"type": "integer"
+																									},
+																									"statusText": {
+																										"example": "OK",
+																										"type": "string"
+																									}
+																								},
+																								"required": [
+																									"status",
+																									"statusText"
+																								],
+																								"type": "object"
+																							}
+																						},
+																						"required": [
+																							"action",
+																							"label"
+																						],
+																						"type": "object"
+																					},
+																					"type": "array"
+																				},
+																				"message": {
+																					"type": "string"
+																				},
+																				"status": {
+																					"example": "neutral",
+																					"type": "string"
+																				}
+																			},
+																			"required": [
+																				"status"
+																			],
+																			"type": "object"
+																		}
+																	},
+																	"required": [
+																		"apiCatalog",
+																		"oauthDiscovery",
+																		"oauthProtectedResource",
+																		"mcpServerCard",
+																		"a2aAgentCard",
+																		"agentSkills",
+																		"webMcp"
+																	],
+																	"type": "object"
+																}
+															},
+															"required": [
+																"discoverability",
+																"contentAccessibility",
+																"botAccessControl",
+																"discovery",
+																"commerce"
+															],
+															"type": "object"
+														},
+														"commerceSignals": {
+															"items": {
+																"type": "string"
+															},
+															"type": "array"
+														},
+														"isCommerce": {
+															"type": "boolean"
+														},
+														"level": {
+															"example": 2,
+															"type": "integer"
+														},
+														"levelName": {
+															"example": "Bot-Aware",
+															"type": "string"
+														},
+														"nextLevel": {
+															"properties": {
+																"name": {
+																	"example": "Agent-Readable",
+																	"type": "string"
+																},
+																"requirements": {
+																	"items": {
+																		"properties": {
+																			"check": {
+																				"example": "markdownNegotiation",
+																				"type": "string"
+																			},
+																			"description": {
+																				"example": "Support content negotiation with Accept: text/markdown",
+																				"type": "string"
+																			},
+																			"prompt": {
+																				"example": "Add markdown content negotiation support",
+																				"type": "string"
+																			},
+																			"skillUrl": {
+																				"example": "https://agentready.cloudflare.com/.well-known/skills/markdown-negotiation",
+																				"type": "string"
+																			},
+																			"specUrls": {
+																				"items": {
+																					"example": "https://markdownforagents.org",
+																					"type": "string"
+																				},
+																				"type": "array"
+																			}
+																		},
+																		"required": [
+																			"check",
+																			"description",
+																			"specUrls",
+																			"prompt",
+																			"skillUrl"
+																		],
+																		"type": "object"
+																	},
+																	"type": "array"
+																},
+																"target": {
+																	"example": 3,
+																	"type": "integer"
+																}
+															},
+															"required": [
+																"target",
+																"name",
+																"requirements"
+															],
+															"type": "object"
+														}
+													},
+													"required": [
+														"level",
+														"levelName",
+														"checks"
+													],
+													"type": "object"
+												},
 												"asn": {
 													"properties": {
 														"data": {
@@ -3376,6 +5342,10 @@
 						"description": "List of urls to scan (up to a 100).",
 						"items": {
 							"properties": {
+								"agentReadiness": {
+									"description": "Enable agent readiness checks.",
+									"type": "boolean"
+								},
 								"customHeaders": {
 									"additionalProperties": {
 										"type": "string"
@@ -3636,6 +5606,10 @@
 				"application/json": {
 					"schema": {
 						"properties": {
+							"agentReadiness": {
+								"description": "Enable agent readiness checks.",
+								"type": "boolean"
+							},
 							"country": {
 								"description": "Country to geo egress from",
 								"enum": [
