@@ -1,0 +1,1902 @@
+{
+	"DELETE /accounts/{account_id}/moq/relays/{relay_id}": {
+		"description": "Soft-deletes a MoQ relay.",
+		"parameters": [
+			{
+				"description": "Cloudflare account identifier.",
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"description": "Cloudflare account identifier.",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"type": "string"
+				}
+			},
+			{
+				"description": "Relay unique identifier (32 hex characters).",
+				"in": "path",
+				"name": "relay_id",
+				"required": true,
+				"schema": {
+					"example": "a1b2c3d4e5f67890a1b2c3d4e5f67890",
+					"pattern": "^[0-9a-f]{32}$",
+					"type": "string"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"properties": {
+										"errors": {
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"type": "object"
+											},
+											"type": "array"
+										},
+										"messages": {
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"type": "object"
+											},
+											"type": "array"
+										},
+										"success": {
+											"example": true,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages"
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"result": {
+											"nullable": true,
+											"type": "object"
+										}
+									},
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "Relay deleted successfully."
+			},
+			"400": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"example": [
+										{
+											"code": 21007,
+											"message": "A MoQ relay with this ID was not found."
+										}
+									],
+									"items": {
+										"properties": {
+											"code": {
+												"description": "Error codes:\n- 21001: Request body too large (HTTP 413)\n- 21002: Request body too small / missing name (HTTP 400)\n- 21003: Relay ID should be 32 hex characters (HTTP 400)\n- 21004: Failed to decode body — invalid JSON (HTTP 400)\n- 21005: Failed to read body (HTTP 400)\n- 21006: Unexpected server error (HTTP 500)\n- 21007: Relay not found (HTTP 404)\n- 21008: Relay limit exceeded for this account (HTTP 409)\n- 21009: origin_fallback and lingering_subscribe are mutually exclusive (HTTP 400)\n- 21010: Invalid token type — must be \"publish_subscribe\" or \"subscribe\" (HTTP 400)\n- 21011: Invalid relay name — name must not be empty (HTTP 400)\n",
+												"type": "integer"
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"messages": {
+									"items": {
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"result": {
+									"nullable": true,
+									"type": "object"
+								},
+								"success": {
+									"example": false,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Error 21003: Relay ID should be 32 hex characters."
+			},
+			"404": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"example": [
+										{
+											"code": 21007,
+											"message": "A MoQ relay with this ID was not found."
+										}
+									],
+									"items": {
+										"properties": {
+											"code": {
+												"description": "Error codes:\n- 21001: Request body too large (HTTP 413)\n- 21002: Request body too small / missing name (HTTP 400)\n- 21003: Relay ID should be 32 hex characters (HTTP 400)\n- 21004: Failed to decode body — invalid JSON (HTTP 400)\n- 21005: Failed to read body (HTTP 400)\n- 21006: Unexpected server error (HTTP 500)\n- 21007: Relay not found (HTTP 404)\n- 21008: Relay limit exceeded for this account (HTTP 409)\n- 21009: origin_fallback and lingering_subscribe are mutually exclusive (HTTP 400)\n- 21010: Invalid token type — must be \"publish_subscribe\" or \"subscribe\" (HTTP 400)\n- 21011: Invalid relay name — name must not be empty (HTTP 400)\n",
+												"type": "integer"
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"messages": {
+									"items": {
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"result": {
+									"nullable": true,
+									"type": "object"
+								},
+								"success": {
+									"example": false,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Error 21007: Relay not found."
+			},
+			"500": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"example": [
+										{
+											"code": 21007,
+											"message": "A MoQ relay with this ID was not found."
+										}
+									],
+									"items": {
+										"properties": {
+											"code": {
+												"description": "Error codes:\n- 21001: Request body too large (HTTP 413)\n- 21002: Request body too small / missing name (HTTP 400)\n- 21003: Relay ID should be 32 hex characters (HTTP 400)\n- 21004: Failed to decode body — invalid JSON (HTTP 400)\n- 21005: Failed to read body (HTTP 400)\n- 21006: Unexpected server error (HTTP 500)\n- 21007: Relay not found (HTTP 404)\n- 21008: Relay limit exceeded for this account (HTTP 409)\n- 21009: origin_fallback and lingering_subscribe are mutually exclusive (HTTP 400)\n- 21010: Invalid token type — must be \"publish_subscribe\" or \"subscribe\" (HTTP 400)\n- 21011: Invalid relay name — name must not be empty (HTTP 400)\n",
+												"type": "integer"
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"messages": {
+									"items": {
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"result": {
+									"nullable": true,
+									"type": "object"
+								},
+								"success": {
+									"example": false,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Error 21006: Unexpected server error."
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			}
+		],
+		"summary": "Delete a relay",
+		"tags": [
+			"MoQ Relays"
+		]
+	},
+	"GET /accounts/{account_id}/moq/relays": {
+		"description": "Lists all MoQ relays for the account. Returns only metadata.\nConfig, status, and tokens are omitted.\n",
+		"parameters": [
+			{
+				"description": "Cloudflare account identifier.",
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"description": "Cloudflare account identifier.",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"type": "string"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"properties": {
+										"errors": {
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"type": "object"
+											},
+											"type": "array"
+										},
+										"messages": {
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"type": "object"
+											},
+											"type": "array"
+										},
+										"success": {
+											"example": true,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages"
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"result": {
+											"items": {
+												"description": "Abbreviated relay for list responses.",
+												"properties": {
+													"created": {
+														"format": "date-time",
+														"type": "string"
+													},
+													"modified": {
+														"format": "date-time",
+														"type": "string"
+													},
+													"name": {
+														"type": "string"
+													},
+													"uid": {
+														"example": "a1b2c3d4e5f67890a1b2c3d4e5f67890",
+														"type": "string"
+													}
+												},
+												"required": [
+													"uid",
+													"created",
+													"modified",
+													"name"
+												],
+												"type": "object"
+											},
+											"type": "array"
+										},
+										"result_info": {
+											"properties": {
+												"count": {
+													"type": "integer"
+												},
+												"total": {
+													"type": "integer"
+												}
+											},
+											"type": "object"
+										}
+									},
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "Relay list retrieved successfully."
+			},
+			"500": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"example": [
+										{
+											"code": 21007,
+											"message": "A MoQ relay with this ID was not found."
+										}
+									],
+									"items": {
+										"properties": {
+											"code": {
+												"description": "Error codes:\n- 21001: Request body too large (HTTP 413)\n- 21002: Request body too small / missing name (HTTP 400)\n- 21003: Relay ID should be 32 hex characters (HTTP 400)\n- 21004: Failed to decode body — invalid JSON (HTTP 400)\n- 21005: Failed to read body (HTTP 400)\n- 21006: Unexpected server error (HTTP 500)\n- 21007: Relay not found (HTTP 404)\n- 21008: Relay limit exceeded for this account (HTTP 409)\n- 21009: origin_fallback and lingering_subscribe are mutually exclusive (HTTP 400)\n- 21010: Invalid token type — must be \"publish_subscribe\" or \"subscribe\" (HTTP 400)\n- 21011: Invalid relay name — name must not be empty (HTTP 400)\n",
+												"type": "integer"
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"messages": {
+									"items": {
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"result": {
+									"nullable": true,
+									"type": "object"
+								},
+								"success": {
+									"example": false,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Error 21006: Unexpected server error."
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			}
+		],
+		"summary": "List relays",
+		"tags": [
+			"MoQ Relays"
+		]
+	},
+	"GET /accounts/{account_id}/moq/relays/{relay_id}": {
+		"description": "Retrieves a single MoQ relay including config and status.\nTokens are NOT included.\n",
+		"parameters": [
+			{
+				"description": "Cloudflare account identifier.",
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"description": "Cloudflare account identifier.",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"type": "string"
+				}
+			},
+			{
+				"description": "Relay unique identifier (32 hex characters).",
+				"in": "path",
+				"name": "relay_id",
+				"required": true,
+				"schema": {
+					"example": "a1b2c3d4e5f67890a1b2c3d4e5f67890",
+					"pattern": "^[0-9a-f]{32}$",
+					"type": "string"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"properties": {
+										"errors": {
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"type": "object"
+											},
+											"type": "array"
+										},
+										"messages": {
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"type": "object"
+											},
+											"type": "array"
+										},
+										"success": {
+											"example": true,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages"
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"result": {
+											"description": "Full relay details (no tokens).",
+											"properties": {
+												"config": {
+													"description": "origin_fallback and lingering_subscribe are mutually exclusive.\n",
+													"properties": {
+														"lingering_subscribe": {
+															"properties": {
+																"enabled": {
+																	"default": true,
+																	"type": "boolean"
+																},
+																"max_timeout_ms": {
+																	"default": 30000,
+																	"description": "Relay-level ceiling on lingering subscribe timeout (ms). Default 30000.",
+																	"maximum": 300000,
+																	"minimum": 0,
+																	"type": "integer"
+																}
+															},
+															"type": "object"
+														},
+														"origin_fallback": {
+															"properties": {
+																"enabled": {
+																	"default": false,
+																	"type": "boolean"
+																},
+																"urls": {
+																	"default": [],
+																	"description": "Ordered list of upstream origin relay URLs.",
+																	"items": {
+																		"type": "string"
+																	},
+																	"type": "array"
+																}
+															},
+															"type": "object"
+														}
+													},
+													"type": "object"
+												},
+												"created": {
+													"format": "date-time",
+													"type": "string"
+												},
+												"modified": {
+													"format": "date-time",
+													"type": "string"
+												},
+												"name": {
+													"example": "Production Live Stream",
+													"type": "string"
+												},
+												"status": {
+													"description": "\"connected\" when active, omitted otherwise.",
+													"enum": [
+														"connected"
+													],
+													"type": "string"
+												},
+												"uid": {
+													"example": "a1b2c3d4e5f67890a1b2c3d4e5f67890",
+													"type": "string"
+												}
+											},
+											"required": [
+												"uid",
+												"created",
+												"modified",
+												"name",
+												"config"
+											],
+											"type": "object"
+										}
+									},
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "Relay retrieved successfully."
+			},
+			"400": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"example": [
+										{
+											"code": 21007,
+											"message": "A MoQ relay with this ID was not found."
+										}
+									],
+									"items": {
+										"properties": {
+											"code": {
+												"description": "Error codes:\n- 21001: Request body too large (HTTP 413)\n- 21002: Request body too small / missing name (HTTP 400)\n- 21003: Relay ID should be 32 hex characters (HTTP 400)\n- 21004: Failed to decode body — invalid JSON (HTTP 400)\n- 21005: Failed to read body (HTTP 400)\n- 21006: Unexpected server error (HTTP 500)\n- 21007: Relay not found (HTTP 404)\n- 21008: Relay limit exceeded for this account (HTTP 409)\n- 21009: origin_fallback and lingering_subscribe are mutually exclusive (HTTP 400)\n- 21010: Invalid token type — must be \"publish_subscribe\" or \"subscribe\" (HTTP 400)\n- 21011: Invalid relay name — name must not be empty (HTTP 400)\n",
+												"type": "integer"
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"messages": {
+									"items": {
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"result": {
+									"nullable": true,
+									"type": "object"
+								},
+								"success": {
+									"example": false,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Error 21003: Relay ID should be 32 hex characters."
+			},
+			"404": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"example": [
+										{
+											"code": 21007,
+											"message": "A MoQ relay with this ID was not found."
+										}
+									],
+									"items": {
+										"properties": {
+											"code": {
+												"description": "Error codes:\n- 21001: Request body too large (HTTP 413)\n- 21002: Request body too small / missing name (HTTP 400)\n- 21003: Relay ID should be 32 hex characters (HTTP 400)\n- 21004: Failed to decode body — invalid JSON (HTTP 400)\n- 21005: Failed to read body (HTTP 400)\n- 21006: Unexpected server error (HTTP 500)\n- 21007: Relay not found (HTTP 404)\n- 21008: Relay limit exceeded for this account (HTTP 409)\n- 21009: origin_fallback and lingering_subscribe are mutually exclusive (HTTP 400)\n- 21010: Invalid token type — must be \"publish_subscribe\" or \"subscribe\" (HTTP 400)\n- 21011: Invalid relay name — name must not be empty (HTTP 400)\n",
+												"type": "integer"
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"messages": {
+									"items": {
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"result": {
+									"nullable": true,
+									"type": "object"
+								},
+								"success": {
+									"example": false,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Error 21007: Relay not found."
+			},
+			"500": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"example": [
+										{
+											"code": 21007,
+											"message": "A MoQ relay with this ID was not found."
+										}
+									],
+									"items": {
+										"properties": {
+											"code": {
+												"description": "Error codes:\n- 21001: Request body too large (HTTP 413)\n- 21002: Request body too small / missing name (HTTP 400)\n- 21003: Relay ID should be 32 hex characters (HTTP 400)\n- 21004: Failed to decode body — invalid JSON (HTTP 400)\n- 21005: Failed to read body (HTTP 400)\n- 21006: Unexpected server error (HTTP 500)\n- 21007: Relay not found (HTTP 404)\n- 21008: Relay limit exceeded for this account (HTTP 409)\n- 21009: origin_fallback and lingering_subscribe are mutually exclusive (HTTP 400)\n- 21010: Invalid token type — must be \"publish_subscribe\" or \"subscribe\" (HTTP 400)\n- 21011: Invalid relay name — name must not be empty (HTTP 400)\n",
+												"type": "integer"
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"messages": {
+									"items": {
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"result": {
+									"nullable": true,
+									"type": "object"
+								},
+								"success": {
+									"example": false,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Error 21006: Unexpected server error."
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			}
+		],
+		"summary": "Get a relay",
+		"tags": [
+			"MoQ Relays"
+		]
+	},
+	"POST /accounts/{account_id}/moq/relays": {
+		"description": "Provisions a new MoQ relay instance. Auto-creates a publish+subscribe\ntoken and a subscribe-only token. Token values are included in the\nresponse (shown once). Config is set to defaults (lingering subscribe\nenabled, 30s ceiling, origin fallback off). Use PUT to modify.\n",
+		"parameters": [
+			{
+				"description": "Cloudflare account identifier.",
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"description": "Cloudflare account identifier.",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"type": "string"
+				}
+			}
+		],
+		"requestBody": {
+			"content": {
+				"application/json": {
+					"schema": {
+						"properties": {
+							"name": {
+								"description": "Human-readable name for the relay.",
+								"example": "Production Live Stream",
+								"type": "string"
+							}
+						},
+						"required": [
+							"name"
+						],
+						"type": "object"
+					}
+				}
+			},
+			"required": true
+		},
+		"responses": {
+			"201": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"properties": {
+										"errors": {
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"type": "object"
+											},
+											"type": "array"
+										},
+										"messages": {
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"type": "object"
+											},
+											"type": "array"
+										},
+										"success": {
+											"example": true,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages"
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"result": {
+											"description": "Relay with auto-generated tokens (shown once).",
+											"properties": {
+												"config": {
+													"description": "origin_fallback and lingering_subscribe are mutually exclusive.\n",
+													"properties": {
+														"lingering_subscribe": {
+															"properties": {
+																"enabled": {
+																	"default": true,
+																	"type": "boolean"
+																},
+																"max_timeout_ms": {
+																	"default": 30000,
+																	"description": "Relay-level ceiling on lingering subscribe timeout (ms). Default 30000.",
+																	"maximum": 300000,
+																	"minimum": 0,
+																	"type": "integer"
+																}
+															},
+															"type": "object"
+														},
+														"origin_fallback": {
+															"properties": {
+																"enabled": {
+																	"default": false,
+																	"type": "boolean"
+																},
+																"urls": {
+																	"default": [],
+																	"description": "Ordered list of upstream origin relay URLs.",
+																	"items": {
+																		"type": "string"
+																	},
+																	"type": "array"
+																}
+															},
+															"type": "object"
+														}
+													},
+													"type": "object"
+												},
+												"created": {
+													"format": "date-time",
+													"type": "string"
+												},
+												"modified": {
+													"format": "date-time",
+													"type": "string"
+												},
+												"name": {
+													"example": "Production Live Stream",
+													"type": "string"
+												},
+												"token_publish_subscribe": {
+													"description": "Full access token (publish + subscribe). Treat as sensitive.",
+													"example": "eyJhbGciOiJFZDI1NTE5...",
+													"type": "string"
+												},
+												"token_subscribe": {
+													"description": "Subscribe-only token. Treat as sensitive.",
+													"example": "eyJhbGciOiJFZDI1NTE5...",
+													"type": "string"
+												},
+												"uid": {
+													"description": "Server-generated unique identifier (32 hex chars).",
+													"example": "a1b2c3d4e5f67890a1b2c3d4e5f67890",
+													"type": "string"
+												}
+											},
+											"required": [
+												"uid",
+												"created",
+												"modified",
+												"name",
+												"token_publish_subscribe",
+												"token_subscribe",
+												"config"
+											],
+											"type": "object"
+										}
+									},
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "Relay created successfully."
+			},
+			"400": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"example": [
+										{
+											"code": 21007,
+											"message": "A MoQ relay with this ID was not found."
+										}
+									],
+									"items": {
+										"properties": {
+											"code": {
+												"description": "Error codes:\n- 21001: Request body too large (HTTP 413)\n- 21002: Request body too small / missing name (HTTP 400)\n- 21003: Relay ID should be 32 hex characters (HTTP 400)\n- 21004: Failed to decode body — invalid JSON (HTTP 400)\n- 21005: Failed to read body (HTTP 400)\n- 21006: Unexpected server error (HTTP 500)\n- 21007: Relay not found (HTTP 404)\n- 21008: Relay limit exceeded for this account (HTTP 409)\n- 21009: origin_fallback and lingering_subscribe are mutually exclusive (HTTP 400)\n- 21010: Invalid token type — must be \"publish_subscribe\" or \"subscribe\" (HTTP 400)\n- 21011: Invalid relay name — name must not be empty (HTTP 400)\n",
+												"type": "integer"
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"messages": {
+									"items": {
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"result": {
+									"nullable": true,
+									"type": "object"
+								},
+								"success": {
+									"example": false,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Bad request. Possible errors:\n- 21002: Request body too small (empty or missing name)\n- 21004: Failed to decode body (invalid JSON)\n"
+			},
+			"409": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"example": [
+										{
+											"code": 21007,
+											"message": "A MoQ relay with this ID was not found."
+										}
+									],
+									"items": {
+										"properties": {
+											"code": {
+												"description": "Error codes:\n- 21001: Request body too large (HTTP 413)\n- 21002: Request body too small / missing name (HTTP 400)\n- 21003: Relay ID should be 32 hex characters (HTTP 400)\n- 21004: Failed to decode body — invalid JSON (HTTP 400)\n- 21005: Failed to read body (HTTP 400)\n- 21006: Unexpected server error (HTTP 500)\n- 21007: Relay not found (HTTP 404)\n- 21008: Relay limit exceeded for this account (HTTP 409)\n- 21009: origin_fallback and lingering_subscribe are mutually exclusive (HTTP 400)\n- 21010: Invalid token type — must be \"publish_subscribe\" or \"subscribe\" (HTTP 400)\n- 21011: Invalid relay name — name must not be empty (HTTP 400)\n",
+												"type": "integer"
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"messages": {
+									"items": {
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"result": {
+									"nullable": true,
+									"type": "object"
+								},
+								"success": {
+									"example": false,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Error 21008: Relay limit exceeded for this account."
+			},
+			"413": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"example": [
+										{
+											"code": 21007,
+											"message": "A MoQ relay with this ID was not found."
+										}
+									],
+									"items": {
+										"properties": {
+											"code": {
+												"description": "Error codes:\n- 21001: Request body too large (HTTP 413)\n- 21002: Request body too small / missing name (HTTP 400)\n- 21003: Relay ID should be 32 hex characters (HTTP 400)\n- 21004: Failed to decode body — invalid JSON (HTTP 400)\n- 21005: Failed to read body (HTTP 400)\n- 21006: Unexpected server error (HTTP 500)\n- 21007: Relay not found (HTTP 404)\n- 21008: Relay limit exceeded for this account (HTTP 409)\n- 21009: origin_fallback and lingering_subscribe are mutually exclusive (HTTP 400)\n- 21010: Invalid token type — must be \"publish_subscribe\" or \"subscribe\" (HTTP 400)\n- 21011: Invalid relay name — name must not be empty (HTTP 400)\n",
+												"type": "integer"
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"messages": {
+									"items": {
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"result": {
+									"nullable": true,
+									"type": "object"
+								},
+								"success": {
+									"example": false,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Error 21001: Request body too large."
+			},
+			"500": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"example": [
+										{
+											"code": 21007,
+											"message": "A MoQ relay with this ID was not found."
+										}
+									],
+									"items": {
+										"properties": {
+											"code": {
+												"description": "Error codes:\n- 21001: Request body too large (HTTP 413)\n- 21002: Request body too small / missing name (HTTP 400)\n- 21003: Relay ID should be 32 hex characters (HTTP 400)\n- 21004: Failed to decode body — invalid JSON (HTTP 400)\n- 21005: Failed to read body (HTTP 400)\n- 21006: Unexpected server error (HTTP 500)\n- 21007: Relay not found (HTTP 404)\n- 21008: Relay limit exceeded for this account (HTTP 409)\n- 21009: origin_fallback and lingering_subscribe are mutually exclusive (HTTP 400)\n- 21010: Invalid token type — must be \"publish_subscribe\" or \"subscribe\" (HTTP 400)\n- 21011: Invalid relay name — name must not be empty (HTTP 400)\n",
+												"type": "integer"
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"messages": {
+									"items": {
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"result": {
+									"nullable": true,
+									"type": "object"
+								},
+								"success": {
+									"example": false,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Error 21006: Unexpected server error."
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			}
+		],
+		"summary": "Create a relay",
+		"tags": [
+			"MoQ Relays"
+		]
+	},
+	"POST /accounts/{account_id}/moq/relays/{relay_id}/tokens/rotate": {
+		"description": "Generates a new token for the specified type. The old token is\nimmediately invalidated. Token value is shown once in the response.\n",
+		"parameters": [
+			{
+				"description": "Cloudflare account identifier.",
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"description": "Cloudflare account identifier.",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"type": "string"
+				}
+			},
+			{
+				"description": "Relay unique identifier (32 hex characters).",
+				"in": "path",
+				"name": "relay_id",
+				"required": true,
+				"schema": {
+					"example": "a1b2c3d4e5f67890a1b2c3d4e5f67890",
+					"pattern": "^[0-9a-f]{32}$",
+					"type": "string"
+				}
+			}
+		],
+		"requestBody": {
+			"content": {
+				"application/json": {
+					"schema": {
+						"properties": {
+							"type": {
+								"description": "Which token type to rotate.",
+								"enum": [
+									"publish_subscribe",
+									"subscribe"
+								],
+								"type": "string"
+							}
+						},
+						"required": [
+							"type"
+						],
+						"type": "object"
+					}
+				}
+			},
+			"required": true
+		},
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"properties": {
+										"errors": {
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"type": "object"
+											},
+											"type": "array"
+										},
+										"messages": {
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"type": "object"
+											},
+											"type": "array"
+										},
+										"success": {
+											"example": true,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages"
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"result": {
+											"properties": {
+												"token": {
+													"description": "New token value (shown once). Treat as sensitive.",
+													"example": "eyJhbGciOiJFZDI1NTE5...",
+													"type": "string"
+												},
+												"type": {
+													"enum": [
+														"publish_subscribe",
+														"subscribe"
+													],
+													"type": "string"
+												}
+											},
+											"required": [
+												"type",
+												"token"
+											],
+											"type": "object"
+										}
+									},
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "Token rotated successfully."
+			},
+			"400": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"example": [
+										{
+											"code": 21007,
+											"message": "A MoQ relay with this ID was not found."
+										}
+									],
+									"items": {
+										"properties": {
+											"code": {
+												"description": "Error codes:\n- 21001: Request body too large (HTTP 413)\n- 21002: Request body too small / missing name (HTTP 400)\n- 21003: Relay ID should be 32 hex characters (HTTP 400)\n- 21004: Failed to decode body — invalid JSON (HTTP 400)\n- 21005: Failed to read body (HTTP 400)\n- 21006: Unexpected server error (HTTP 500)\n- 21007: Relay not found (HTTP 404)\n- 21008: Relay limit exceeded for this account (HTTP 409)\n- 21009: origin_fallback and lingering_subscribe are mutually exclusive (HTTP 400)\n- 21010: Invalid token type — must be \"publish_subscribe\" or \"subscribe\" (HTTP 400)\n- 21011: Invalid relay name — name must not be empty (HTTP 400)\n",
+												"type": "integer"
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"messages": {
+									"items": {
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"result": {
+									"nullable": true,
+									"type": "object"
+								},
+								"success": {
+									"example": false,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Bad request. Possible errors: 21003 (relay ID should be 32 hex characters), 21004 (failed to decode body, invalid JSON), 21010 (invalid token type)."
+			},
+			"404": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"example": [
+										{
+											"code": 21007,
+											"message": "A MoQ relay with this ID was not found."
+										}
+									],
+									"items": {
+										"properties": {
+											"code": {
+												"description": "Error codes:\n- 21001: Request body too large (HTTP 413)\n- 21002: Request body too small / missing name (HTTP 400)\n- 21003: Relay ID should be 32 hex characters (HTTP 400)\n- 21004: Failed to decode body — invalid JSON (HTTP 400)\n- 21005: Failed to read body (HTTP 400)\n- 21006: Unexpected server error (HTTP 500)\n- 21007: Relay not found (HTTP 404)\n- 21008: Relay limit exceeded for this account (HTTP 409)\n- 21009: origin_fallback and lingering_subscribe are mutually exclusive (HTTP 400)\n- 21010: Invalid token type — must be \"publish_subscribe\" or \"subscribe\" (HTTP 400)\n- 21011: Invalid relay name — name must not be empty (HTTP 400)\n",
+												"type": "integer"
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"messages": {
+									"items": {
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"result": {
+									"nullable": true,
+									"type": "object"
+								},
+								"success": {
+									"example": false,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Error 21007: Relay not found."
+			},
+			"500": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"example": [
+										{
+											"code": 21007,
+											"message": "A MoQ relay with this ID was not found."
+										}
+									],
+									"items": {
+										"properties": {
+											"code": {
+												"description": "Error codes:\n- 21001: Request body too large (HTTP 413)\n- 21002: Request body too small / missing name (HTTP 400)\n- 21003: Relay ID should be 32 hex characters (HTTP 400)\n- 21004: Failed to decode body — invalid JSON (HTTP 400)\n- 21005: Failed to read body (HTTP 400)\n- 21006: Unexpected server error (HTTP 500)\n- 21007: Relay not found (HTTP 404)\n- 21008: Relay limit exceeded for this account (HTTP 409)\n- 21009: origin_fallback and lingering_subscribe are mutually exclusive (HTTP 400)\n- 21010: Invalid token type — must be \"publish_subscribe\" or \"subscribe\" (HTTP 400)\n- 21011: Invalid relay name — name must not be empty (HTTP 400)\n",
+												"type": "integer"
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"messages": {
+									"items": {
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"result": {
+									"nullable": true,
+									"type": "object"
+								},
+								"success": {
+									"example": false,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Error 21006: Unexpected server error."
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			}
+		],
+		"summary": "Rotate a token",
+		"tags": [
+			"MoQ Relays"
+		]
+	},
+	"PUT /accounts/{account_id}/moq/relays/{relay_id}": {
+		"description": "Updates a relay's name and/or configuration. Partial updates:\nomitted fields are preserved. Config sub-objects replace as\nwhole objects when present. origin_fallback and lingering_subscribe\nare mutually exclusive.\n",
+		"parameters": [
+			{
+				"description": "Cloudflare account identifier.",
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"description": "Cloudflare account identifier.",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"type": "string"
+				}
+			},
+			{
+				"description": "Relay unique identifier (32 hex characters).",
+				"in": "path",
+				"name": "relay_id",
+				"required": true,
+				"schema": {
+					"example": "a1b2c3d4e5f67890a1b2c3d4e5f67890",
+					"pattern": "^[0-9a-f]{32}$",
+					"type": "string"
+				}
+			}
+		],
+		"requestBody": {
+			"content": {
+				"application/json": {
+					"schema": {
+						"properties": {
+							"config": {
+								"description": "origin_fallback and lingering_subscribe are mutually exclusive.\n",
+								"properties": {
+									"lingering_subscribe": {
+										"properties": {
+											"enabled": {
+												"default": true,
+												"type": "boolean"
+											},
+											"max_timeout_ms": {
+												"default": 30000,
+												"description": "Relay-level ceiling on lingering subscribe timeout (ms). Default 30000.",
+												"maximum": 300000,
+												"minimum": 0,
+												"type": "integer"
+											}
+										},
+										"type": "object"
+									},
+									"origin_fallback": {
+										"properties": {
+											"enabled": {
+												"default": false,
+												"type": "boolean"
+											},
+											"urls": {
+												"default": [],
+												"description": "Ordered list of upstream origin relay URLs.",
+												"items": {
+													"type": "string"
+												},
+												"type": "array"
+											}
+										},
+										"type": "object"
+									}
+								},
+								"type": "object"
+							},
+							"name": {
+								"type": "string"
+							}
+						},
+						"type": "object"
+					}
+				}
+			},
+			"required": true
+		},
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"properties": {
+										"errors": {
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"type": "object"
+											},
+											"type": "array"
+										},
+										"messages": {
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"type": "object"
+											},
+											"type": "array"
+										},
+										"success": {
+											"example": true,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages"
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"result": {
+											"description": "Full relay details (no tokens).",
+											"properties": {
+												"config": {
+													"description": "origin_fallback and lingering_subscribe are mutually exclusive.\n",
+													"properties": {
+														"lingering_subscribe": {
+															"properties": {
+																"enabled": {
+																	"default": true,
+																	"type": "boolean"
+																},
+																"max_timeout_ms": {
+																	"default": 30000,
+																	"description": "Relay-level ceiling on lingering subscribe timeout (ms). Default 30000.",
+																	"maximum": 300000,
+																	"minimum": 0,
+																	"type": "integer"
+																}
+															},
+															"type": "object"
+														},
+														"origin_fallback": {
+															"properties": {
+																"enabled": {
+																	"default": false,
+																	"type": "boolean"
+																},
+																"urls": {
+																	"default": [],
+																	"description": "Ordered list of upstream origin relay URLs.",
+																	"items": {
+																		"type": "string"
+																	},
+																	"type": "array"
+																}
+															},
+															"type": "object"
+														}
+													},
+													"type": "object"
+												},
+												"created": {
+													"format": "date-time",
+													"type": "string"
+												},
+												"modified": {
+													"format": "date-time",
+													"type": "string"
+												},
+												"name": {
+													"example": "Production Live Stream",
+													"type": "string"
+												},
+												"status": {
+													"description": "\"connected\" when active, omitted otherwise.",
+													"enum": [
+														"connected"
+													],
+													"type": "string"
+												},
+												"uid": {
+													"example": "a1b2c3d4e5f67890a1b2c3d4e5f67890",
+													"type": "string"
+												}
+											},
+											"required": [
+												"uid",
+												"created",
+												"modified",
+												"name",
+												"config"
+											],
+											"type": "object"
+										}
+									},
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "Relay updated successfully."
+			},
+			"400": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"example": [
+										{
+											"code": 21007,
+											"message": "A MoQ relay with this ID was not found."
+										}
+									],
+									"items": {
+										"properties": {
+											"code": {
+												"description": "Error codes:\n- 21001: Request body too large (HTTP 413)\n- 21002: Request body too small / missing name (HTTP 400)\n- 21003: Relay ID should be 32 hex characters (HTTP 400)\n- 21004: Failed to decode body — invalid JSON (HTTP 400)\n- 21005: Failed to read body (HTTP 400)\n- 21006: Unexpected server error (HTTP 500)\n- 21007: Relay not found (HTTP 404)\n- 21008: Relay limit exceeded for this account (HTTP 409)\n- 21009: origin_fallback and lingering_subscribe are mutually exclusive (HTTP 400)\n- 21010: Invalid token type — must be \"publish_subscribe\" or \"subscribe\" (HTTP 400)\n- 21011: Invalid relay name — name must not be empty (HTTP 400)\n",
+												"type": "integer"
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"messages": {
+									"items": {
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"result": {
+									"nullable": true,
+									"type": "object"
+								},
+								"success": {
+									"example": false,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Bad request. Possible errors: 21003 (relay ID should be 32 hex characters), 21004 (failed to decode body, invalid JSON), 21009 (origin_fallback and lingering_subscribe are mutually exclusive), 21011 (name must not be empty)."
+			},
+			"404": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"example": [
+										{
+											"code": 21007,
+											"message": "A MoQ relay with this ID was not found."
+										}
+									],
+									"items": {
+										"properties": {
+											"code": {
+												"description": "Error codes:\n- 21001: Request body too large (HTTP 413)\n- 21002: Request body too small / missing name (HTTP 400)\n- 21003: Relay ID should be 32 hex characters (HTTP 400)\n- 21004: Failed to decode body — invalid JSON (HTTP 400)\n- 21005: Failed to read body (HTTP 400)\n- 21006: Unexpected server error (HTTP 500)\n- 21007: Relay not found (HTTP 404)\n- 21008: Relay limit exceeded for this account (HTTP 409)\n- 21009: origin_fallback and lingering_subscribe are mutually exclusive (HTTP 400)\n- 21010: Invalid token type — must be \"publish_subscribe\" or \"subscribe\" (HTTP 400)\n- 21011: Invalid relay name — name must not be empty (HTTP 400)\n",
+												"type": "integer"
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"messages": {
+									"items": {
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"result": {
+									"nullable": true,
+									"type": "object"
+								},
+								"success": {
+									"example": false,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Error 21007: Relay not found."
+			},
+			"500": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"example": [
+										{
+											"code": 21007,
+											"message": "A MoQ relay with this ID was not found."
+										}
+									],
+									"items": {
+										"properties": {
+											"code": {
+												"description": "Error codes:\n- 21001: Request body too large (HTTP 413)\n- 21002: Request body too small / missing name (HTTP 400)\n- 21003: Relay ID should be 32 hex characters (HTTP 400)\n- 21004: Failed to decode body — invalid JSON (HTTP 400)\n- 21005: Failed to read body (HTTP 400)\n- 21006: Unexpected server error (HTTP 500)\n- 21007: Relay not found (HTTP 404)\n- 21008: Relay limit exceeded for this account (HTTP 409)\n- 21009: origin_fallback and lingering_subscribe are mutually exclusive (HTTP 400)\n- 21010: Invalid token type — must be \"publish_subscribe\" or \"subscribe\" (HTTP 400)\n- 21011: Invalid relay name — name must not be empty (HTTP 400)\n",
+												"type": "integer"
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"messages": {
+									"items": {
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"result": {
+									"nullable": true,
+									"type": "object"
+								},
+								"success": {
+									"example": false,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Error 21006: Unexpected server error."
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			}
+		],
+		"summary": "Update a relay",
+		"tags": [
+			"MoQ Relays"
+		]
+	}
+}

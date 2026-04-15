@@ -243,7 +243,13 @@
 																},
 																"type": "object"
 															},
+															"target_instance_count": {
+																"description": "Fixed number of instances that should receive the application-level observability overlay.\nMutually exclusive with `target_instance_percentage`.\n",
+																"minimum": 1,
+																"type": "integer"
+															},
 															"target_instance_percentage": {
+																"description": "Percentage of instances that should receive the application-level observability overlay.\nThis rounds up so at least this percentage of instances is targeted.\nMutually exclusive with `target_instance_count`.\n",
 																"maximum": 99,
 																"minimum": 1,
 																"type": "integer"
