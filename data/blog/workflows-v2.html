@@ -1,0 +1,181 @@
+<div class="mb2 gray5">8 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3RVbbRxnAMmyQiLMSfOsTp/0bc05e7cbde7a55919fdee642ef892ad/BLOG-3116_1.png" alt="">
+<div class="post-content lh-copy gray1">
+	<p>When we originally built <a href="https://developers.cloudflare.com/workflows" target="_blank" rel="noopener noreferrer"><u>Workflows</u></a>, our durable execution engine for multi-step applications, it was designed for a world in which workflows were triggered by human actions, like a user signing up or placing an order. For use cases like onboarding flows, workflows only had to support one instance per person — and people can only click so fast.&nbsp;</p>
+	<p>Over time, what we’ve actually seen is a quantitative shift in the workload and access pattern: fewer human-triggered workflows, and more agent-triggered workflows, created at machine speed.&nbsp;</p>
+	<p>As agents become persistent and autonomous infrastructure, operating on behalf of users for hours or days, they need a durable, asynchronous execution engine for the work they are doing. Workflows provides exactly that: every step is independently retryable, the workflow can pause for human-in-the-loop approval, and each instance survives failures without losing progress.&nbsp;&nbsp;</p>
+	<p>Moreover, workflows themselves are being used to implement agent loops and serve as the durable harnesses that manage and keep agents alive. Our<a href="https://developers.cloudflare.com/changelog/post/2026-02-03-agents-workflows-integration" target="_blank" rel="noopener noreferrer"> <u>Agents SDK integration</u></a> accelerated this, making it easy for agents to spawn workflow instances and get real-time progress back. A single agent session can now kick off dozens of workflows, and many agents running concurrently means thousands of instances created in seconds. With <a href="https://blog.cloudflare.com/project-think"><u>Project Think</u></a> now available, we anticipate that velocity will only increase.</p>
+	<p>To help developers scale their agents and applications on Workflows, we are excited to announce that we now support:</p>
+	<ul>
+		<li>
+			<p>50,000 concurrent instances (number of workflow executions running in parallel), <a href="https://developers.cloudflare.com/changelog/post/2025-02-25-workflows-concurrency-increased" target="_blank" rel="noopener noreferrer"><u>originally 4,500</u></a></p>
+		</li>
+		<li>
+			<p>300 instances/second created per account, previously 100</p>
+		</li>
+		<li>
+			<p>2 million queued instances (meaning instances that have been created or awoken and are waiting for a concurrency slot) per workflow, up from 1 million</p>
+		</li>
+	</ul>
+	<p>We redesigned the Workflows control plane from usage data and first principles to support these increases. For V1 of the control plane, a single Durable Object (DO) could serve as the central registry and coordinator of an entire account. For V2, we built two new components to help horizontally scale the system and alleviate the bottlenecks that V1 introduced, before migrating all customers — with live traffic — seamlessly onto the new version.</p>
+	<div class="flex anchor relative">
+		<h2 id="v1-initial-architecture-of-workflows">V1: initial architecture of Workflows</h2>
+		<a href="https://blog.cloudflare.com/#v1-initial-architecture-of-workflows" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>As described in our <a href="https://blog.cloudflare.com/building-workflows-durable-execution-on-workers/#building-cloudflare-on-cloudflare"><u>public beta blog post</u></a>, we built <a href="https://www.cloudflare.com/developer-platform/products/workflows" target="_blank" rel="noopener noreferrer"><u>Workflows</u></a> entirely on our own developer platform. Fundamentally, a workflow is a series of durable steps, each independently retryable, that can execute tasks, wait for external events, or sleep until a predetermined time.&nbsp;</p>
+	<pre class="language-javascript"><code class="language-javascript">export class MyWorkflow extends WorkflowEntrypoint {
+
+  async run(event, step) {
+    const data = await step.do("fetch-data", async () =&gt; {
+      return fetchFromAPI();
+    });
+
+    const approval = await step.waitForEvent("approval", {
+      type: "approval",
+      timeout: "24 hours",
+    });
+
+    await step.do("process-and-save", async () =&gt; {
+      return store(transform(data));
+    });
+  }
+}
+</code></pre>
+	<p>To trigger each instance, execute its logic, and store its metadata, we leverage SQLite-backed <a href="https://www.cloudflare.com/developer-platform/products/durable-objects" target="_blank" rel="noopener noreferrer"><u>Durable Objects</u></a>, which are a simple but powerful primitive for coordination and storage within a distributed system.&nbsp;</p>
+	<p>In the control plane, some Durable Objects — like the <i>Engine</i>, which executes the actual workflow instance, including its step, retry, and sleep logic — are spun up at a ratio of 1:1 per instance. On the other hand, the <i>Account</i> is an account-level Durable Object that manages all workflows and workflow instances for that account.</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/55bqaUjc30HJHe9spWYTo8/d8053955660553db8b64a484fb321ec7/BLOG-3116_2.png" alt="BLOG-3116 2" class="kg-image" width="1999" height="1466" loading="lazy">
+	</figure>
+	<p>To learn more about the V1 control plane, refer to our <a href="https://blog.cloudflare.com/building-workflows-durable-execution-on-workers"><u>Workflows announcement blog post</u></a>.</p>
+	<p>After we launched Workflows into beta, we were thrilled to see customers quickly scaling their use of the product, but we also realized that having a single Durable Object to store all that account-level information introduced a bottleneck. Many customers needed to create and execute hundreds or even thousands of Workflow instances per minute, which could quickly overwhelm the <i>Account</i> in our original architecture. The original rate limits — 4,500 concurrency slots and 100 instance creations per 10 seconds — were a result of this limitation.&nbsp;</p>
+	<p>On the V1 control plane, these limits were a hard cap. Any and all operations depending on <i>Account</i>, including create, update, and list, had to go through that single DO. Users with high concurrency workloads could have thousands of instances starting and ending at any given moment, building up to thousands of requests per second to <i>Account</i>. To solve for this, we rearchitected the workflow control plane such that it horizontally scales to higher concurrency and creation rate limits.&nbsp;</p>
+	<div class="flex anchor relative">
+		<h2 id="v2-horizontal-scale-for-higher-throughput">V2: horizontal scale for higher throughput</h2>
+		<a href="https://blog.cloudflare.com/#v2-horizontal-scale-for-higher-throughput" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>For the new version, we rethought every single operation from the ground up with the goal of optimizing for high-volume workflows. Ultimately, Workflows should scale to support whatever developers need – whether that is thousands of instances created per second or millions of instances running at a time. We also wanted to ensure that V2 allowed for flexible limits, which we can toggle and continue increasing, rather than the hard cap which V1 limits imposed. After many design iterations, we settled on the following pillars for our new architecture:&nbsp;</p>
+	<ul>
+		<li>
+			<p>The source of truth for the existence of a given instance should be its <i>Engine</i> and nothing else.&nbsp;</p>
+			<ul>
+				<li>
+					<p>In the V1 control plane architecture, we lacked a check before queuing the instance as to whether its <i>Engine</i> actually existed. This allowed for a bad state where an instance may have been queued without its corresponding <i>Engine </i>having spun up.&nbsp;</p>
+				</li>
+				<li>
+					<p>Instance lifecycle and liveness mechanisms must be horizontally scalable per-workflow and distributed throughout many regions.</p>
+				</li>
+			</ul>
+		</li>
+		<li>
+			<p>The new Account singleton should only store the minimum necessary metadata and have an invariant maximum amount of concurrent requests.</p>
+		</li>
+	</ul>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1txhhObwwIcV8C2gr9Hjfe/df7ea739567c7e42471458357c16583d/unnamed.png" alt="BLOG-3116 3" class="kg-image" width="2040" height="1180" loading="lazy">
+	</figure>
+	<p>There are two new, critical components in the V2 control plane which allowed us to improve the scalability of Workflows: <i>SousChef</i> and <i>Gatekeeper</i>. The first component, <i>SousChef</i>, is a “second in command” to the <i>Account</i>. Recall that previously, the <i>Account</i> managed the metadata and lifecycle for all of the instances across all of the workflows within a given account. <i>SousChef</i> was introduced to keep track of metadata and lifecycle on a <b>subset</b> of instances in a given workflow. Within an account, a distribution of <i>SousChefs</i> can then report back to <i>Account</i> in a more efficient and manageable way. (An added benefit of this design: not only did we already have per-account isolation, but we also inadvertently gained “per-workflow” isolation within the same account, since each <i>SousChef</i> only takes care of one specific workflow).</p>
+	<p>The second component, <i>Gatekeeper</i>, is a mechanism to distribute concurrency “slots” (derived from concurrency limits) across all <i>SousChefs</i> within the account. It acts as a leasing system. When an instance is created, it is randomly assigned to one of the <i>SousChefs</i> within that account. Then the <i>SousChef</i> makes a request to <i>Account</i> to trigger that instance. Either a slot is granted, or the instance is queued. Once the slot is granted, the <i>SousChef</i> triggers execution of the instance and assumes responsibility that the instance never gets stuck.&nbsp;</p>
+	<p><i>Gatekeeper</i> was needed to make sure that <i>Engines</i> never overloaded their <i>Account</i> (a pressing risk on V1) so every communication between <i>SousChefs</i> and their <i>Account</i> happens on a periodic cycle, once per second — each cycle will also batch all slot requests, ensuring that only one JSRPC call is made. This ensures the instance creation rate can never overload or influence the most important component, <i>Account</i> (as an aside: if the <i>SousChef </i>count is too high, we rate-limit calls or spread across different <i>SousChefs</i> throughout different time periods). Also, this periodic property allows us to preserve fairness on older instances and to ensure max-min fairness through the many <i>SousChefs</i>, allowing them all to progress. For example, if an instance wakes up, it should be prioritized for a slot over a newly created instance, but each <i>SousChef</i> ensures that its own instances do not get stuck.</p>
+	<p>This architecture is more distributed, and therefore, more scalable. Now, when an instance is created, the request path is:</p>
+	<ol>
+		<li>
+			<p>Check control plane version</p>
+		</li>
+		<li>
+			<p>Check if a cached version of the workflow and version details is available in that location</p>
+			<ol>
+				<li>
+					<p>If not, check <i>Account</i> to get workflow name, unique ID, and version, and cache that information</p>
+				</li>
+			</ol>
+		</li>
+		<li>
+			<p>Store only necessary metadata (instance payload, creation date) onto its own <i>Engine</i></p>
+		</li>
+	</ol>
+	<p>So, how does <i>Engine</i> tell the control plane that it now exists? That happens in the background after instance metadata is set. As background operations on a Durable Object can fail, due to eviction or server failure, we also set an “alarm” on <i>Engine</i> in the creation hot-path. That way, if the background task does not finish, the alarm <b>ensures</b> that the instance will begin.&nbsp;</p>
+	<p>A <a href="https://developers.cloudflare.com/durable-objects/api/alarms" target="_blank" rel="noopener noreferrer"><u>Durable Object alarm</u></a> allows a Durable Object instance to be awakened at a fine-grained time in the future with an<b> at-least-once </b>execution model, with automatic retries built in. We extensively use this combination of background “tasks” and alarms to remove operations off the hot-path while still ensuring that everything will happen as planned. That’s how we keep critical operations like <i>creating an instance</i> fast without ever compromising on reliability.&nbsp;</p>
+	<p>Other than unlocking scale, this version of the control plane means that:&nbsp;</p>
+	<ul>
+		<li>
+			<p>Instance listing performance is faster, and actually consistent with cursor pagination;&nbsp;</p>
+		</li>
+		<li>
+			<p>Any operation on an instance does exactly one network hop (as it can go directly to its <i>Engine</i>, ensuring that eyeball request latency is as small as we can manage);</p>
+		</li>
+		<li>
+			<p>We can ensure that more instances are actually behaving correctly (by running on time) concurrently (and correct them if not, making sure that <i>Engines</i> are never late to continue execution).</p>
+		</li>
+	</ul>
+	<div class="flex anchor relative">
+		<h2 id="v1-v2-migration">V1 → V2 migration</h2>
+		<a href="https://blog.cloudflare.com/#v1-v2-migration" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Now that we had a new version of the Workflows control plane that can handle a higher volume of user load, we needed to do the “boring” part: migrating our customers and instances to the new system. At Cloudflare’s scale, this becomes a problem in and of itself, so the “boring” part becomes the biggest challenge. Well before its one-year mark, Workflows had already racked up millions of instances and thousands of customers. Also, some tech debt on V1’s control plane meant that a queued instance might not have its own <i>Engine</i> Durable Object created yet, complicating matters further.</p>
+	<p>Such a migration is tricky because customers might have instances running at any given moment; we needed a way to add the <i>SousChef</i> and <i>Gatekeeper</i> components into older accounts without causing any disruption or downtime.</p>
+	<p>We ultimately decided that we would migrate existing <i>Accounts </i>(which we’ll refer to as <i>AccountOlds) </i>to behave like <i>SousChefs. </i>By persisting the <i>Account</i> DOs, we maintained the instance metadata, and simply converted the DO into a <i>SousChef</i> “DO”:&nbsp;</p>
+	<pre class="language-JavaScript"><code class="language-JavaScript">// You might be wondering what's this SousChef class? This is the SousChef DO class!
+import { SousChef } from "@repo/souschef";
+
+class AccountOld extends DurableObject {
+  constructor(state: DurableObjectState, env: Env) {
+    // We added the following snippet to the end of our AccountOld DO's
+    // constructor. This ensures that if we want, we can use any primitive
+    // that is available on SousChef DO
+    if (this.currentVersion === ControlPlaneVersions.SOUS_CHEFS) {
+      this.sousChef = new SousChef(this.ctx, this.env);
+      await this.sousChef.setup()
+    }
+  }
+
+  async updateInstance(params: UpdateInstanceParams) {
+    if (this.currentVersion === ControlPlaneVersions.SOUS_CHEFS) {
+      assert(this.sousChef !== undefined, 'SousChef must exist on v2');
+      return this.sousChef.updateInstance(params);
+    }
+
+    // old logic remains the same
+  }
+
+  @RequiresVersion&lt;AccountOld&gt;(ControlPlaneVersions.V1)
+  async getMetadata() {
+    // this method can only be run if 
+    // this.currentVersion === ControlPlaneVersions.V1
+  }
+}</code></pre>
+	<p>We can instantiate the <i>SousChef</i> class within the <i>AccountOld</i> because the SQL tables that track instance metadata, on both <i>SousChefs</i> and <i>AccountOld</i> DOs, are the same on both. As such, we could just decide which version of the code to use. If this hadn’t been the case, we would have been forced to migrate the metadata of millions of instances, which would have made the migration more difficult and longer running for each account. So, how did the migration work?</p>
+	<p>First, we prepared <i>AccountOld</i> DOs to be switched to behave as <i>SousChefs</i> (which meant creating a release with a version of the snippet above). Then, we enabled control plane V2 per account, which triggered the next three steps roughly at the same time:</p>
+	<ul>
+		<li>
+			<p>All new instance creation requests are now routed to the new <i>SousChefs</i> (<i>SousChefs</i> are created when they receive the first request), new instances never go to <i>AccountOld</i> again;</p>
+		</li>
+		<li>
+			<p><i>AccountOld</i> DOs start migrating themselves to behave like <i>SousChefs</i>;</p>
+		</li>
+		<li>
+			<p>The new <i>Account</i> DO is spun up with the corresponding metadata.</p>
+		</li>
+	</ul>
+	<p>After all accounts were migrated to the new control plane version, we were able to sunset <i>AccountOld</i> DOs as their instance retention periods expired. Once all instances on all accounts on <i>AccountOlds</i> were migrated, we could spin down those DOs permanently. The migration was completed with no downtime in a process that truly felt like changing a car’s wheels while driving.</p>
+	<div class="flex anchor relative">
+		<h2 id="try-it-out">Try it out</h2>
+		<a href="https://blog.cloudflare.com/#try-it-out" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>If you are new to Workflows, try our <a href="https://developers.cloudflare.com/workflows/get-started/guide" target="_blank" rel="noopener noreferrer"><u>Get Started guide</u></a> or <a href="https://developers.cloudflare.com/workflows/get-started/durable-agents" target="_blank" rel="noopener noreferrer"><u>build your first durable agent</u></a> with Workflows.</p>
+	<p>If your use case requires higher limits than our new defaults — a concurrency limit of 50,000 slots and account-level creation rate limit of 300 instances per second, 100 per workflow — reach out via your account team or the <a href="https://forms.gle/ukpeZVLWLnKeixDu7" target="_blank" rel="noopener noreferrer"><u>Workers Limit Request Form</u></a>. You can also reach out with feedback, feature requests, or just to share how you are using Workflows on our <a href="https://discord.com/channels/595317990191398933/1296923707792560189" target="_blank" rel="noopener noreferrer"><u>Discord server</u></a>.</p>
+</div>

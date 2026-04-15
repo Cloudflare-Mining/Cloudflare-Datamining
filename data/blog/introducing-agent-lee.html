@@ -1,0 +1,160 @@
+<div class="mb2 gray5">7 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4iEamiPfjO0IPBEaF4Ufrl/d8d458558a7c304f95d01a5aed69dcf4/BLOG-3231_1.png" alt="">
+<div class="post-content lh-copy gray1">
+	<p>While there have been small improvements along the way, the interface of technical products has not really changed since the dawn of the Internet. It still remains: clicking five pages deep, cross-referencing logs across tabs, and hunting for hidden toggles.</p>
+	<p>AI gives us the opportunity to rethink all that. Instead of complexity spread over a sprawling graphical user interface: what if you could describe in plain language what you wanted to achieve?&nbsp;</p>
+	<p>This is the future — and we’re launching it today. We didn’t want to just put an agent in a dashboard. We wanted to create an entirely new way to interact with our entire platform. Any task, any surface, a single prompt.</p>
+	<p>Introducing Agent Lee.</p>
+	<p>Agent Lee is an in-dashboard AI assistant that understands <b>your</b> Cloudflare account.&nbsp;</p>
+	<p>It can help you with troubleshooting, which, today, is a manual grind. If your Worker starts returning 503s at 02:00 UTC, finding the root cause:&nbsp;be it an R2 bucket, a misconfigured route, or a hidden rate limit, you’re opening half a dozen tabs and hoping you recognize the pattern. Most developers don't have a teammate who knows the entire platform standing over their shoulder at 2 a.m. Agent Lee does.&nbsp;</p>
+	<p>But it won’t just troubleshoot for you at 2 a.m. Agent Lee will also fix the problem for you on the spot.</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2Iva79HIiHPUrK8NLukkwH/dd1cf1709ab04f6d5825124cecd20a5e/BLOG-3231_2.png" alt="BLOG-3231 2" class="kg-image" width="1999" height="1013" loading="lazy">
+	</figure>
+	<p>Agent Lee has been running in an active beta during which it has served over 18,000 daily users, executing nearly a quarter of a million tool calls per day. While we are confident in its current capabilities and success in production, this is a system we are continuously developing. As it remains in beta, you may encounter unexpected limitations or edge cases as we refine its performance. We encourage you to use the feedback form below to help us make it better every day.</p>
+	<div class="flex anchor relative">
+		<h2 id="what-agent-lee-can-do">What Agent Lee can do</h2>
+		<a href="https://blog.cloudflare.com/#what-agent-lee-can-do" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Agent Lee is built directly into the dashboard and understands the resources in your account. It knows your Workers, your zones, your DNS configuration, your error rates. The knowledge that today lives across six tabs and two browser windows will now live in one place, and you can talk to it.</p>
+	<p>With natural language, you can use it to:</p>
+	<ul>
+		<li>
+			<p><b>Answer questions about your account:</b> "Show me the top 5 error messages on my Worker."</p>
+		</li>
+		<li>
+			<p><b>Debug an issue:</b> "I can't access my site with the www prefix."</p>
+		</li>
+		<li>
+			<p><b>Apply a change:</b> "Enable Access for my domain."</p>
+		</li>
+		<li>
+			<p><b>Deploy a resource: </b>"Create a new R2 bucket for my photos and connect it to my Worker."</p>
+		</li>
+	</ul>
+	<p>Instead of switching between products, you describe what you want to do, and Agent Lee helps you get there with instructions and visualizations. It retrieves context, uses the right tools, and creates dynamic visualizations based on the types of questions you ask. Ask what your error rate looks like over the last 24 hours, and it renders a chart inline, pulling from your actual traffic, not sending you to a separate Analytics page.</p>
+	<div style="position: relative; padding-top: 44.08713692946058%;">
+		<iframe src="https://customer-eq7kiuol0tk9chox.cloudflarestream.com/16f8e9c688d9493c1ddb124e0d597d43/iframe?poster=https%3A%2F%2Fcustomer-eq7kiuol0tk9chox.cloudflarestream.com%2F16f8e9c688d9493c1ddb124e0d597d43%2Fthumbnails%2Fthumbnail.jpg%3Ftime%3D%26height%3D600" loading="lazy" style="border: none; position: absolute; top: 0; left: 0; height: 100%; width: 100%;" allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;" allowfullscreen="true"></iframe>
+	</div>
+	<p>Agent Lee isn't answering FAQ questions — it's doing real work, against real accounts, at scale. Today, Agent Lee serves ~18,000 daily users, executing ~250k tool calls per day across DNS, Workers, SSL/TLS, R2, Registrar, Cache, Cloudflare Tunnel, API Shield, and more.&nbsp;</p>
+	<div class="flex anchor relative">
+		<h2 id="how-we-built-it">How we built it</h2>
+		<a href="https://blog.cloudflare.com/#how-we-built-it" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+
+	<div class="flex anchor relative">
+		<h3 id="codemode">Codemode</h3>
+		<a href="https://blog.cloudflare.com/#codemode" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Rather than presenting MCP tool definitions directly to the model, Agent Lee uses <a href="https://blog.cloudflare.com/code-mode"><u>Codemode</u></a> to convert the tools into a TypeScript API and asks the model to write code that calls it instead.</p>
+	<p>This works better for a couple of reasons. LLMs have seen a huge amount of real-world TypeScript but very few tool call examples, so they're more accurate when working in code. For multi-step tasks, the model can also chain calls together in a single script and return only the final result, ultimately skipping the round-trips.</p>
+	<p>The generated code is sent to an upstream Cloudflare MCP server for sandboxed execution, but it goes through a Durable Object that acts as a credentialed proxy. Before any call goes out, the DO classifies the generated code as read or write by inspecting the method and body. Read operations are proxied directly. Write operations are blocked until you explicitly approve them through the elicitation gate. API keys are never present in the generated code — they're held inside the DO and injected server-side when the upstream call is made. The security boundary isn't just a sandbox that gets thrown away; it's a permission architecture that structurally prevents writes from happening without your approval.</p>
+	<div class="flex anchor relative">
+		<h3 id="the-mcp-permission-system">The MCP permission system</h3>
+		<a href="https://blog.cloudflare.com/#the-mcp-permission-system" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Agent Lee connects to Cloudflare's own MCP server, which exposes two tools: a search tool for querying API endpoints and an execute tool for writing code that performs API requests. This is the surface through which Agent Lee reads your account and, when you approve, writes to it.</p>
+	<p>Write operations go through an elicitation system that surfaces the approval step before any code executes. Agent Lee cannot skip this step. The permission model is the enforcement layer, and the confirmation prompt you see is not a UX courtesy. It's the gate.</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/s8phQottGj8yVgc42Nzvl/3abb536756e10360b68cabc0522bcb30/BLOG-3231_4.png" alt="BLOG-3231 4" class="kg-image" width="1608" height="1378" loading="lazy">
+	</figure>
+	<div class="flex anchor relative">
+		<h2 id="built-on-the-same-stack-you-can-use">Built on the same stack you can use</h2>
+		<a href="https://blog.cloudflare.com/#built-on-the-same-stack-you-can-use" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Every primitive Agent Lee is built on is available to all our customers: <a href="https://developers.cloudflare.com/agents" target="_blank" rel="noopener noreferrer"><u>Agents SDK</u></a>, <a href="https://www.cloudflare.com/developer-platform/products/workers-ai" target="_blank" rel="noopener noreferrer"><u>Workers AI</u></a>, <a href="https://www.cloudflare.com/developer-platform/products/durable-objects" target="_blank" rel="noopener noreferrer"><u>Durable Objects</u></a>, and the same MCP infrastructure available to any Cloudflare developer. We didn't build internal tools that aren't available to you — instead we built it with the same Cloudflare lego blocks that you have access to.</p>
+	<p>Building Agent Lee on our own primitives wasn't just a design principle. It was the fastest way to find out what works and what doesn't. We built this in production, with real users, against real accounts. That means every limitation we hit is a limitation we can fix in the platform. Every pattern that works is one we can make easier for the next team that builds on top of it.</p>
+	<p>These are not opinions. They're what quarter of a million tool calls across 18,000 users a day are telling us.</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6877BA4kZUUP6qTs5ONucr/50d572b38fecdb3e77ab38d7976f06ed/image5.png" alt="" class="kg-image" width="1999" height="1135" loading="lazy">
+	</figure>
+	<div class="flex anchor relative">
+		<h2 id="generative-ui">Generative UI</h2>
+		<a href="https://blog.cloudflare.com/#generative-ui" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Interacting with a platform should feel like collaborating with an expert. Conversations should transcend simple text. With Agent Lee, as your dialogue evolves, the platform dynamically generates UI components alongside textual responses to provide a richer, more actionable experience.</p>
+	<p>For example, if you ask about website traffic trends for the month, you won’t just get a paragraph of numbers. Agent Lee will render an interactive line graph, allowing you to visualize peaks and troughs in activity at a glance.</p>
+	<p>To give you full creative control, every conversation is accompanied within an adaptive grid. Here you can click and drag across the grid to carve out space for new UI blocks, then simply describe what you want to see and let the agent handle the heavy lifting.</p>
+	<p>Today, we support a diverse library of visual blocks, including dynamic tables, interactive charts, architecture maps, and more. By blending the flexibility of natural language with the clarity of structured UI, Agent Lee transforms your chat history into a living dashboard.</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1oTLXzK5eYGyJm6Y54cKbz/98bae92dc7523f63ac6515d8088e70f7/image4.png" alt="" class="kg-image" width="1999" height="1032" loading="lazy">
+	</figure>
+	<div class="flex anchor relative">
+		<h2 id="measuring-quality-and-safety">Measuring quality and safety</h2>
+		<a href="https://blog.cloudflare.com/#measuring-quality-and-safety" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>An agent that can take action on your account needs to be reliable and secure. Elicitations allow agentic systems to actively solicit information, preferences, or approvals from users or other systems mid-execution. When Agent Lee needs to take non-read actions on a user's behalf we use elicitations by requiring an explicit approval action in the user interface. These guardrails allow Agent Lee to truly be a partner alongside you in managing your resource safely.</p>
+	<p>In addition to safety, we continuously measure quality.</p>
+	<ul>
+		<li>
+			<p>Evals to measure conversation success rate and information accuracy.</p>
+		</li>
+		<li>
+			<p>Feedback signals from user interactions (thumbs up / thumbs down).</p>
+		</li>
+		<li>
+			<p>Tool call execution success rate and hallucination scorers.</p>
+		</li>
+		<li>
+			<p>Per-product breakdown of conversation performance.</p>
+		</li>
+	</ul>
+	<p>These systems help us improve Agent Lee over time while keeping users in control.&nbsp;</p>
+	<div class="flex anchor relative">
+		<h2 id="our-vision-ahead">Our vision ahead</h2>
+		<a href="https://blog.cloudflare.com/#our-vision-ahead" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Agent Lee in the dashboard is only the beginning.</p>
+	<p>The bigger vision is Agent Lee as the interface to the entire Cloudflare platform — from anywhere. The dashboard today, the CLI next, your phone when you're on the go. The surface you use shouldn't matter. You should be able to describe what you need and have it done, regardless of where you are.</p>
+	<p>From there, Agent Lee gets proactive. Rather than waiting to be asked, it watches what matters to you, your Workers, your traffic, your error thresholds and reaches out when something warrants attention. An agent that only responds is useful. One that notices things first is something different.</p>
+	<p>Underlying all of this is context. Agent Lee already knows your account configuration. Over time, it will know more, what you've asked before, what page you're on, what you were debugging last week. That accumulated context is what makes a platform feel less like a tool and more like a collaborator.</p>
+	<p>We're not there yet. Agent Lee today is the first step, running in production, doing real work at scale. The architecture is built to get to the rest. </p>
+	<div class="flex anchor relative">
+		<h2 id="try-it-out">Try it out</h2>
+		<a href="https://blog.cloudflare.com/#try-it-out" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Agent Lee is available in beta for Free plan users. Log in to your <a href="https://dash.cloudflare.com/login" target="_blank" rel="noopener noreferrer"><u>Cloudflare dashboard</u></a> and click Ask AI in the upper right corner to get started.</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4FThQbf24TcV1mYT49yi39/05df8347e14c8ef5e591d224a1a38393/Screenshot_2026-04-13_at_3.37.29%C3%A2__PM.png" alt="BLOG-3231 5" class="kg-image" width="746" height="93" loading="lazy">
+	</figure>
+	<p>We'd love to know what you build and what you’d like to see in Agent Lee. Please share your feedback <a href="https://forms.gle/dSCHNkHpJt6Uwsvc8" target="_blank" rel="noopener noreferrer"><u>here</u></a>.</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/NsNVsMvU9v3U03jY4kU54/28182a4d9f36f75f8e93e5fcf67c1f21/BLOG-3231_6.png" alt="BLOG-3231 6" class="kg-image" width="1200" height="350" loading="lazy">
+	</figure>
+	<p></p>
+</div>
