@@ -1,7 +1,7 @@
 {
 	"name": "@cloudflare/think",
 	"dist-tags": {
-		"latest": "0.2.3"
+		"latest": "0.2.4"
 	},
 	"versions": {
 		"0.0.0": {
@@ -270,25 +270,60 @@
 			"name": "@cloudflare/think",
 			"version": "0.2.3",
 			"devDependencies": {
+				"ai": "^6.0.159",
+				"zod": "^4.3.6",
+				"@cloudflare/shell": "^0.3.2"
+			},
+			"peerDependencies": {
+				"ai": "^6.0.0",
+				"zod": "^4.0.0",
+				"agents": "^0.11.0",
+				"@cloudflare/shell": "^0.3.2",
+				"@cloudflare/codemode": "^0.3.4"
+			},
+			"dist": {
+				"shasum": "5fa0134fd4ff99737edc1d32069390b962108ae9",
+				"tarball": "https://registry.npmjs.org/@cloudflare/think/-/think-0.2.3.tgz",
+				"fileCount": 30,
+				"integrity": "sha512-iqpkCSY+IRPI5dY/Hk1CRe8hN1fJ7wF4kjoBV7hVjNtAvXiWUr3Ejs4oLaMDyvrFOSOEJ8pjNEepRsdx9sutfg==",
+				"signatures": [
+					{
+						"sig": "MEUCIQCXyOszslOwJ2mw6bPReqI/706pxC+XnxVKdkeOHvetnwIgNaxEJldudY3AoKOsrDok5PXd+nJ7uwO94cufbTrt1ZQ=",
+						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
+					}
+				],
+				"attestations": {
+					"url": "https://registry.npmjs.org/-/npm/v1/attestations/@cloudflare%2fthink@0.2.3",
+					"provenance": {
+						"predicateType": "https://slsa.dev/provenance/v1"
+					}
+				},
+				"unpackedSize": 346984
+			}
+		},
+		"0.2.4": {
+			"name": "@cloudflare/think",
+			"version": "0.2.4",
+			"devDependencies": {
 				"@cloudflare/shell": "^0.3.2",
 				"ai": "^6.0.159",
 				"zod": "^4.3.6"
 			},
 			"peerDependencies": {
-				"@cloudflare/codemode": "^0.3.4",
-				"@cloudflare/shell": "^0.3.2",
-				"agents": "^0.11.0",
+				"@cloudflare/codemode": ">=0.0.7 <1.0.0",
+				"@cloudflare/shell": ">=0.2.0 <1.0.0",
+				"agents": ">=0.8.7 <1.0.0",
 				"ai": "^6.0.0",
 				"zod": "^4.0.0"
 			},
 			"dist": {
-				"integrity": "sha512-iqpkCSY+IRPI5dY/Hk1CRe8hN1fJ7wF4kjoBV7hVjNtAvXiWUr3Ejs4oLaMDyvrFOSOEJ8pjNEepRsdx9sutfg==",
-				"shasum": "5fa0134fd4ff99737edc1d32069390b962108ae9",
-				"tarball": "https://registry.npmjs.org/@cloudflare/think/-/think-0.2.3.tgz",
+				"integrity": "sha512-yBKEprSFbn6+5H3jR7EE/uBf4lQMGxOd2c6IZpMR5fOuaLJH52fXAoGjis9e0/QfmhPEGcarSSNWoxkpJL1lGA==",
+				"shasum": "cf4b10fe07e3ac58ed15ef83ac0c6e1418f69281",
+				"tarball": "https://registry.npmjs.org/@cloudflare/think/-/think-0.2.4.tgz",
 				"fileCount": 30,
-				"unpackedSize": 346984,
+				"unpackedSize": 347005,
 				"attestations": {
-					"url": "https://registry.npmjs.org/-/npm/v1/attestations/@cloudflare%2fthink@0.2.3",
+					"url": "https://registry.npmjs.org/-/npm/v1/attestations/@cloudflare%2fthink@0.2.4",
 					"provenance": {
 						"predicateType": "https://slsa.dev/provenance/v1"
 					}
@@ -296,7 +331,7 @@
 				"signatures": [
 					{
 						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U",
-						"sig": "MEUCIQCXyOszslOwJ2mw6bPReqI/706pxC+XnxVKdkeOHvetnwIgNaxEJldudY3AoKOsrDok5PXd+nJ7uwO94cufbTrt1ZQ="
+						"sig": "MEUCIGkFYR0EJg33bt7bN2IgHoEazwR1e2E40/TLHIwhdHqHAiEAtmElEtroVgj5SQT766LrEXYP0YSxuHD1IO7IiXeleG0="
 					}
 				]
 			}
