@@ -1,9 +1,9 @@
 {
-	banner: (0, r.p)(a()),
+	banner: (0, r.p)(i()),
 	common: {
 		title: "Browser Rendering",
 		browser_run: "Browser Run",
-		description: (0, r.p)(i()),
+		description: (0, r.p)(a()),
 		browser_run_description: (0, r.p)(l()),
 		documentation: (0, r.p)(c()),
 		labels: {
@@ -130,6 +130,7 @@
 		openLiveView: "Open Live View",
 		deleteSession: "Delete Session",
 		createSession: "Create Session",
+		createSessionWithRecording: "Create Session with Recording",
 		noTargets: "Session has closed or no browser tabs available. Please refresh.",
 		tabId: "Tab ID",
 		tabTitle: "Title",

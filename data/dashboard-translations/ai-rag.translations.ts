@@ -116,13 +116,7 @@
 				panels: {
 					fileStatus: {
 						title: "Items status over time",
-						empty: "No data available",
-						status: {
-							completed: "indexed",
-							errored: "errored",
-							running: "running",
-							queued: "queued"
-						}
+						empty: "No data available"
 					}
 				}
 			},
@@ -131,22 +125,12 @@
 				panels: {
 					searchType: {
 						title: "Search type over time",
-						empty: "No data available",
-						type: {
-							search: "Search",
-							aiSearch: "AI Search"
-						}
+						empty: "No data available"
 					},
 					topFiles: {
 						title: "Top items retrieved over time",
 						status: {
-							error: "Error",
 							empty: "No data available"
-						},
-						columns: {
-							item: "Item key",
-							filename: "File name",
-							count: "Count"
 						}
 					}
 				}
