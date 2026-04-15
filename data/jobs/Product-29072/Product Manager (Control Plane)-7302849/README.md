@@ -24,7 +24,7 @@
 <h4>Examples of desirable skills, knowledge and experience</h4>
 <p>At Cloudflare, Product Managers are measured both on outcomes (“the what”) and how they accomplish results. Examples of desirable skills, knowledge and experience:</p>
 <ul>
-	<li>5+ years of experience in product management, solutions engineering, or related roles</li>
+	<li>7+ years of experience in product management, solutions engineering, or related roles</li>
 	<li>Familiarity with designing or contributing to habit-forming product experiences</li>
 	<li>Experience defining and tracking KPIs to measure product or user behavior impact</li>
 	<li>Strong collaboration skills and experience working with engineering and design teams</li>
