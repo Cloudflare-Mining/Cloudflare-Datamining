@@ -207,9 +207,6 @@
 		"tags": [
 			"DNS Records for a Zone"
 		],
-		"x-api-token-group": [
-			"DNS Write"
-		],
 		"x-cfPermissionsRequired": {
 			"enum": [
 				"#dns_records:edit"
@@ -6659,10 +6656,6 @@
 		"tags": [
 			"DNS Records for a Zone"
 		],
-		"x-api-token-group": [
-			"DNS Read",
-			"DNS Write"
-		],
 		"x-cfPermissionsRequired": {
 			"enum": [
 				"#dns_records:read"
@@ -12701,10 +12694,6 @@
 		"tags": [
 			"DNS Records for a Zone"
 		],
-		"x-api-token-group": [
-			"DNS Read",
-			"DNS Write"
-		],
 		"x-cfPermissionsRequired": {
 			"enum": [
 				"#dns_records:read"
@@ -12873,10 +12862,6 @@
 		"summary": "Export DNS Records",
 		"tags": [
 			"DNS Records for a Zone"
-		],
-		"x-api-token-group": [
-			"DNS Read",
-			"DNS Write"
 		],
 		"x-cfPermissionsRequired": {
 			"enum": [
@@ -16009,10 +15994,6 @@
 		"tags": [
 			"DNS Records for a Zone"
 		],
-		"x-api-token-group": [
-			"DNS Read",
-			"DNS Write"
-		],
 		"x-cfPermissionsRequired": {
 			"enum": [
 				"#dns_records:read"
@@ -16419,12 +16400,6 @@
 		"summary": "Get DNS Record Usage",
 		"tags": [
 			"DNS Records for a Zone"
-		],
-		"x-api-token-group": [
-			"Zone DNS Settings Write",
-			"Zone DNS Settings Read",
-			"DNS Read",
-			"DNS Write"
 		],
 		"x-cfPermissionsRequired": {
 			"enum": [
@@ -25221,9 +25196,6 @@
 		"tags": [
 			"DNS Records for a Zone"
 		],
-		"x-api-token-group": [
-			"DNS Write"
-		],
 		"x-cfPermissionsRequired": {
 			"enum": [
 				"#dns_records:edit"
@@ -34006,9 +33978,6 @@
 		"summary": "Create DNS Record",
 		"tags": [
 			"DNS Records for a Zone"
-		],
-		"x-api-token-group": [
-			"DNS Write"
 		],
 		"x-cfPermissionsRequired": {
 			"enum": [
@@ -53951,9 +53920,6 @@
 		"tags": [
 			"DNS Records for a Zone"
 		],
-		"x-api-token-group": [
-			"DNS Write"
-		],
 		"x-cfPermissionsRequired": {
 			"enum": [
 				"#dns_records:batch"
@@ -54373,9 +54339,6 @@
 		"tags": [
 			"DNS Records for a Zone"
 		],
-		"x-api-token-group": [
-			"DNS Write"
-		],
 		"x-cfPermissionsRequired": {
 			"enum": [
 				"#dns_records:edit"
@@ -54775,9 +54738,6 @@
 		"summary": "Scan DNS Records",
 		"tags": [
 			"DNS Records for a Zone"
-		],
-		"x-api-token-group": [
-			"DNS Write"
 		],
 		"x-cfPermissionsRequired": {
 			"enum": [
@@ -60683,9 +60643,6 @@
 		"tags": [
 			"DNS Records for a Zone"
 		],
-		"x-api-token-group": [
-			"DNS Write"
-		],
 		"x-cfPermissionsRequired": {
 			"enum": [
 				"#dns_records:edit"
@@ -61043,9 +61000,6 @@
 		"summary": "Trigger DNS Record Scan",
 		"tags": [
 			"DNS Records for a Zone"
-		],
-		"x-api-token-group": [
-			"DNS Write"
 		],
 		"x-cfPermissionsRequired": {
 			"enum": [
@@ -69841,9 +69795,6 @@
 		"summary": "Overwrite DNS Record",
 		"tags": [
 			"DNS Records for a Zone"
-		],
-		"x-api-token-group": [
-			"DNS Write"
 		],
 		"x-cfPermissionsRequired": {
 			"enum": [

@@ -407,10 +407,6 @@
 		"summary": "Get builds by version IDs",
 		"tags": [
 			"Builds"
-		],
-		"x-api-token-group": [
-			"Workers CI Write",
-			"Workers CI Read"
 		]
 	},
 	"GET /accounts/{account_id}/builds/builds/{build_uuid}": {
@@ -875,10 +871,6 @@
 		"summary": "Get build by UUID",
 		"tags": [
 			"Builds"
-		],
-		"x-api-token-group": [
-			"Workers CI Write",
-			"Workers CI Read"
 		]
 	},
 	"GET /accounts/{account_id}/builds/builds/{build_uuid}/logs": {
@@ -1109,10 +1101,6 @@
 		"summary": "Get build logs",
 		"tags": [
 			"Builds"
-		],
-		"x-api-token-group": [
-			"Workers CI Write",
-			"Workers CI Read"
 		]
 	},
 	"GET /accounts/{account_id}/builds/builds/latest": {
@@ -1524,10 +1512,6 @@
 		"summary": "Get latest builds by script IDs",
 		"tags": [
 			"Builds"
-		],
-		"x-api-token-group": [
-			"Workers CI Write",
-			"Workers CI Read"
 		]
 	},
 	"PUT /accounts/{account_id}/builds/builds/{build_uuid}/cancel": {
@@ -1739,9 +1723,6 @@
 		"summary": "Cancel build",
 		"tags": [
 			"Builds"
-		],
-		"x-api-token-group": [
-			"Workers CI Write"
 		]
 	}
 }

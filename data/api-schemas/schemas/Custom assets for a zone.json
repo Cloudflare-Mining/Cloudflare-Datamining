@@ -157,9 +157,6 @@
 		"tags": [
 			"Custom assets for a zone"
 		],
-		"x-api-token-group": [
-			"Custom Errors Write"
-		],
 		"x-cfPermissionsRequired": {
 			"enum": [
 				"#zone_settings:edit"
@@ -682,10 +679,6 @@
 		"tags": [
 			"Custom assets for a zone"
 		],
-		"x-api-token-group": [
-			"Custom Errors Write",
-			"Custom Errors Read"
-		],
 		"x-cfPermissionsRequired": {
 			"enum": [
 				"#zone_settings:read"
@@ -1125,10 +1118,6 @@
 		"summary": "Get a custom asset",
 		"tags": [
 			"Custom assets for a zone"
-		],
-		"x-api-token-group": [
-			"Custom Errors Write",
-			"Custom Errors Read"
 		],
 		"x-cfPermissionsRequired": {
 			"enum": [
@@ -1591,9 +1580,6 @@
 		"summary": "Create a custom asset",
 		"tags": [
 			"Custom assets for a zone"
-		],
-		"x-api-token-group": [
-			"Custom Errors Write"
 		],
 		"x-cfPermissionsRequired": {
 			"enum": [
@@ -2060,9 +2046,6 @@
 		"summary": "Update a custom asset",
 		"tags": [
 			"Custom assets for a zone"
-		],
-		"x-api-token-group": [
-			"Custom Errors Write"
 		],
 		"x-cfPermissionsRequired": {
 			"enum": [

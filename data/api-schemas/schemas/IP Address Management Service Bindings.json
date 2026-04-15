@@ -253,9 +253,6 @@
 		"summary": "Delete Service Binding",
 		"tags": [
 			"IP Address Management Service Bindings"
-		],
-		"x-api-token-group": [
-			"IP Prefixes: Write"
 		]
 	},
 	"GET /accounts/{account_id}/addressing/prefixes/{prefix_id}/bindings": {
@@ -558,10 +555,6 @@
 		"summary": "List Service Bindings",
 		"tags": [
 			"IP Address Management Service Bindings"
-		],
-		"x-api-token-group": [
-			"IP Prefixes: Write",
-			"IP Prefixes: Read"
 		]
 	},
 	"GET /accounts/{account_id}/addressing/prefixes/{prefix_id}/bindings/{binding_id}": {
@@ -873,10 +866,6 @@
 		"summary": "Get Service Binding",
 		"tags": [
 			"IP Address Management Service Bindings"
-		],
-		"x-api-token-group": [
-			"IP Prefixes: Write",
-			"IP Prefixes: Read"
 		]
 	},
 	"GET /accounts/{account_id}/addressing/services": {
@@ -1137,10 +1126,6 @@
 		"summary": "List Services",
 		"tags": [
 			"IP Address Management Service Bindings"
-		],
-		"x-api-token-group": [
-			"IP Prefixes: Write",
-			"IP Prefixes: Read"
 		]
 	},
 	"POST /accounts/{account_id}/addressing/prefixes/{prefix_id}/bindings": {
@@ -1468,9 +1453,6 @@
 		"summary": "Create Service Binding",
 		"tags": [
 			"IP Address Management Service Bindings"
-		],
-		"x-api-token-group": [
-			"IP Prefixes: Write"
 		]
 	}
 }

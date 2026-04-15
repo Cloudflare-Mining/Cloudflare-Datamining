@@ -266,9 +266,6 @@
 		"summary": "Delete an Access reusable policy",
 		"tags": [
 			"Access reusable policies"
-		],
-		"x-api-token-group": [
-			"Access: Apps and Policies Write"
 		]
 	},
 	"GET /accounts/{account_id}/access/policies": {
@@ -2747,10 +2744,6 @@
 		"summary": "List Access reusable policies",
 		"tags": [
 			"Access reusable policies"
-		],
-		"x-api-token-group": [
-			"Access: Apps and Policies Write",
-			"Access: Apps and Policies Read"
 		]
 	},
 	"GET /accounts/{account_id}/access/policies/{policy_id}": {
@@ -5184,10 +5177,6 @@
 		"summary": "Get an Access reusable policy",
 		"tags": [
 			"Access reusable policies"
-		],
-		"x-api-token-group": [
-			"Access: Apps and Policies Write",
-			"Access: Apps and Policies Read"
 		]
 	},
 	"POST /accounts/{account_id}/access/policies": {
@@ -9758,9 +9747,6 @@
 		"summary": "Create an Access reusable policy",
 		"tags": [
 			"Access reusable policies"
-		],
-		"x-api-token-group": [
-			"Access: Apps and Policies Write"
 		]
 	},
 	"PUT /accounts/{account_id}/access/policies/{policy_id}": {
@@ -14342,9 +14328,6 @@
 		"summary": "Update an Access reusable policy",
 		"tags": [
 			"Access reusable policies"
-		],
-		"x-api-token-group": [
-			"Access: Apps and Policies Write"
 		]
 	}
 }

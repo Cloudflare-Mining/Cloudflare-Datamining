@@ -267,10 +267,6 @@
 		"summary": "Delete a short-lived certificate CA",
 		"tags": [
 			"Zone-Level Access short-lived certificate CAs"
-		],
-		"x-api-token-group": [
-			"Access: Apps and Policies Write",
-			"Access: Apps and Policies Write"
 		]
 	},
 	"GET /zones/{zone_id}/access/apps/{app_id}/ca": {
@@ -554,12 +550,6 @@
 		"summary": "Get a short-lived certificate CA",
 		"tags": [
 			"Zone-Level Access short-lived certificate CAs"
-		],
-		"x-api-token-group": [
-			"Access: Apps and Policies Write",
-			"Access: Apps and Policies Read",
-			"Access: Apps and Policies Write",
-			"Access: Apps and Policies Read"
 		]
 	},
 	"GET /zones/{zone_id}/access/apps/ca": {
@@ -869,12 +859,6 @@
 		"summary": "List short-lived certificate CAs",
 		"tags": [
 			"Zone-Level Access short-lived certificate CAs"
-		],
-		"x-api-token-group": [
-			"Access: Apps and Policies Write",
-			"Access: Apps and Policies Read",
-			"Access: Apps and Policies Write",
-			"Access: Apps and Policies Read"
 		]
 	},
 	"POST /zones/{zone_id}/access/apps/{app_id}/ca": {
@@ -1158,10 +1142,6 @@
 		"summary": "Create a short-lived certificate CA",
 		"tags": [
 			"Zone-Level Access short-lived certificate CAs"
-		],
-		"x-api-token-group": [
-			"Access: Apps and Policies Write",
-			"Access: Apps and Policies Write"
 		]
 	}
 }

@@ -201,10 +201,6 @@
 		"summary": "Delete a webhook",
 		"tags": [
 			"Webhooks"
-		],
-		"x-api-token-group": [
-			"Realtime Admin",
-			"Realtime"
 		]
 	},
 	"GET /accounts/{account_id}/realtime/kit/{app_id}/webhooks": {
@@ -357,10 +353,6 @@
 		"summary": "Fetch all webhooks details",
 		"tags": [
 			"Webhooks"
-		],
-		"x-api-token-group": [
-			"Realtime Admin",
-			"Realtime"
 		]
 	},
 	"GET /accounts/{account_id}/realtime/kit/{app_id}/webhooks/{webhook_id}": {
@@ -565,10 +557,6 @@
 		"summary": "Fetch details of a webhook",
 		"tags": [
 			"Webhooks"
-		],
-		"x-api-token-group": [
-			"Realtime Admin",
-			"Realtime"
 		]
 	},
 	"PATCH /accounts/{account_id}/realtime/kit/{app_id}/webhooks/{webhook_id}": {
@@ -827,10 +815,6 @@
 		"summary": "Edit a webhook",
 		"tags": [
 			"Webhooks"
-		],
-		"x-api-token-group": [
-			"Realtime Admin",
-			"Realtime"
 		]
 	},
 	"POST /accounts/{account_id}/realtime/kit/{app_id}/webhooks": {
@@ -1088,10 +1072,6 @@
 		"summary": "Add a webhook",
 		"tags": [
 			"Webhooks"
-		],
-		"x-api-token-group": [
-			"Realtime Admin",
-			"Realtime"
 		]
 	},
 	"PUT /accounts/{account_id}/realtime/kit/{app_id}/webhooks/{webhook_id}": {
@@ -1368,10 +1348,6 @@
 		"summary": "Replace a webhook",
 		"tags": [
 			"Webhooks"
-		],
-		"x-api-token-group": [
-			"Realtime Admin",
-			"Realtime"
 		]
 	}
 }

@@ -368,9 +368,6 @@
 		"summary": "Delete a device posture integration",
 		"tags": [
 			"Device Posture Integrations"
-		],
-		"x-api-token-group": [
-			"Zero Trust Write"
 		]
 	},
 	"GET /accounts/{account_id}/devices/posture/integration": {
@@ -2224,9 +2221,6 @@
 		"summary": "Update a device posture integration",
 		"tags": [
 			"Device Posture Integrations"
-		],
-		"x-api-token-group": [
-			"Zero Trust Write"
 		]
 	},
 	"POST /accounts/{account_id}/devices/posture/integration": {
@@ -3017,9 +3011,6 @@
 		"summary": "Create a device posture integration",
 		"tags": [
 			"Device Posture Integrations"
-		],
-		"x-api-token-group": [
-			"Zero Trust Write"
 		]
 	}
 }

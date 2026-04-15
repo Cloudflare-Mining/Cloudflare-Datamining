@@ -396,12 +396,6 @@
 		"tags": [
 			"SSL Verification"
 		],
-		"x-api-token-group": [
-			"Access: Mutual TLS Certificates Write",
-			"Access: Mutual TLS Certificates Read",
-			"SSL and Certificates Write",
-			"SSL and Certificates Read"
-		],
 		"x-cfPermissionsRequired": {
 			"enum": [
 				"#ssl:read"
@@ -841,12 +835,6 @@
 		"summary": "Edit SSL Certificate Pack Validation Method",
 		"tags": [
 			"SSL Verification"
-		],
-		"x-api-token-group": [
-			"Access: Mutual TLS Certificates Write",
-			"Access: Mutual TLS Certificates Read",
-			"SSL and Certificates Write",
-			"SSL and Certificates Read"
 		],
 		"x-cfPermissionsRequired": {
 			"enum": [

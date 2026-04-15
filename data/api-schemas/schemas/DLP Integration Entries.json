@@ -253,9 +253,6 @@
 		"summary": "Delete integration entry",
 		"tags": [
 			"DLP Integration Entries"
-		],
-		"x-api-token-group": [
-			"Zero Trust Write"
 		]
 	},
 	"POST /accounts/{account_id}/dlp/entries/integration": {
@@ -566,9 +563,6 @@
 		"summary": "Create integration entry",
 		"tags": [
 			"DLP Integration Entries"
-		],
-		"x-api-token-group": [
-			"Zero Trust Write"
 		]
 	},
 	"PUT /accounts/{account_id}/dlp/entries/integration/{entry_id}": {
@@ -876,9 +870,6 @@
 		"summary": "Update integration entry",
 		"tags": [
 			"DLP Integration Entries"
-		],
-		"x-api-token-group": [
-			"Zero Trust Write"
 		]
 	}
 }

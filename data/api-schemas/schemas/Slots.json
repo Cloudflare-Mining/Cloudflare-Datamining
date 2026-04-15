@@ -156,12 +156,6 @@
 		"summary": "Retrieve a list of all slots matching the specified parameters",
 		"tags": [
 			"Slots"
-		],
-		"x-api-token-group": [
-			"Magic WAN Write",
-			"Magic WAN Read",
-			"Magic Transit Read",
-			"Magic Transit Write"
 		]
 	},
 	"GET /accounts/{account_id}/cni/slots/{slot}": {
@@ -263,12 +257,6 @@
 		"summary": "Get information about the specified slot",
 		"tags": [
 			"Slots"
-		],
-		"x-api-token-group": [
-			"Magic WAN Write",
-			"Magic WAN Read",
-			"Magic Transit Read",
-			"Magic Transit Write"
 		]
 	}
 }

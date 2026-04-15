@@ -823,14 +823,6 @@
 		"summary": "List BGP Prefixes",
 		"tags": [
 			"IP Address Management BGP Prefixes"
-		],
-		"x-api-token-group": [
-			"Magic Transit Read",
-			"Magic Transit Write",
-			"IP Prefixes: Write",
-			"IP Prefixes: Read",
-			"IP Prefixes: BGP On Demand Write",
-			"IP Prefixes: BGP On Demand Read"
 		]
 	},
 	"GET /accounts/{account_id}/addressing/prefixes/{prefix_id}/bgp/prefixes/{bgp_prefix_id}": {
@@ -1407,14 +1399,6 @@
 		"summary": "Fetch BGP Prefix",
 		"tags": [
 			"IP Address Management BGP Prefixes"
-		],
-		"x-api-token-group": [
-			"Magic Transit Read",
-			"Magic Transit Write",
-			"IP Prefixes: Write",
-			"IP Prefixes: Read",
-			"IP Prefixes: BGP On Demand Write",
-			"IP Prefixes: BGP On Demand Read"
 		]
 	},
 	"PATCH /accounts/{account_id}/addressing/prefixes/{prefix_id}/bgp/prefixes/{bgp_prefix_id}": {
@@ -2027,11 +2011,6 @@
 		"summary": "Update BGP Prefix",
 		"tags": [
 			"IP Address Management BGP Prefixes"
-		],
-		"x-api-token-group": [
-			"Magic Transit Write",
-			"IP Prefixes: Write",
-			"IP Prefixes: BGP On Demand Write"
 		]
 	},
 	"POST /accounts/{account_id}/addressing/prefixes/{prefix_id}/bgp/prefixes": {

@@ -194,9 +194,6 @@
 		"summary": "Delete zone environment",
 		"tags": [
 			"Zone Environments"
-		],
-		"x-api-token-group": [
-			"Zone Versioning Write"
 		]
 	},
 	"GET /zones/{zone_id}/environments": {
@@ -394,10 +391,6 @@
 		"summary": "List zone environments",
 		"tags": [
 			"Zone Environments"
-		],
-		"x-api-token-group": [
-			"Zone Versioning Write",
-			"Zone Versioning Read"
 		]
 	},
 	"PATCH /zones/{zone_id}/environments": {
@@ -659,9 +652,6 @@
 		"summary": "Partially update zone environments",
 		"tags": [
 			"Zone Environments"
-		],
-		"x-api-token-group": [
-			"Zone Versioning Write"
 		]
 	},
 	"POST /zones/{zone_id}/environments": {
@@ -923,9 +913,6 @@
 		"summary": "Create zone environments",
 		"tags": [
 			"Zone Environments"
-		],
-		"x-api-token-group": [
-			"Zone Versioning Write"
 		]
 	},
 	"POST /zones/{zone_id}/environments/{environment_id}/rollback": {
@@ -1123,9 +1110,6 @@
 		"summary": "Roll back zone environment",
 		"tags": [
 			"Zone Environments"
-		],
-		"x-api-token-group": [
-			"Zone Versioning Write"
 		]
 	},
 	"PUT /zones/{zone_id}/environments": {
@@ -1387,9 +1371,6 @@
 		"summary": "Upsert zone environments",
 		"tags": [
 			"Zone Environments"
-		],
-		"x-api-token-group": [
-			"Zone Versioning Write"
 		]
 	}
 }

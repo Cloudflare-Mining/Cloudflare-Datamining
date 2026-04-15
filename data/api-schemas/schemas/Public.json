@@ -1097,10 +1097,6 @@
 		"summary": "List zone email suppressions",
 		"tags": [
 			"Public"
-		],
-		"x-api-token-group": [
-			"Zone Settings Write",
-			"Zone Settings Read"
 		]
 	},
 	"GET /zones/{zone_id}/email/routing/suppression/{suppression_id}": {
@@ -1213,10 +1209,6 @@
 		"summary": "Get zone email suppression",
 		"tags": [
 			"Public"
-		],
-		"x-api-token-group": [
-			"Zone Settings Write",
-			"Zone Settings Read"
 		]
 	},
 	"GET /zones/{zone_id}/email/sending/suppression": {

@@ -72,10 +72,6 @@
 		"summary": "Fetch all apps",
 		"tags": [
 			"Apps"
-		],
-		"x-api-token-group": [
-			"Realtime Admin",
-			"Realtime"
 		]
 	},
 	"POST /accounts/{account_id}/realtime/kit/apps": {
@@ -156,10 +152,6 @@
 		"summary": "Create App",
 		"tags": [
 			"Apps"
-		],
-		"x-api-token-group": [
-			"Realtime Admin",
-			"Realtime"
 		]
 	}
 }

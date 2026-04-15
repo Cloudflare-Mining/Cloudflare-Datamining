@@ -188,10 +188,11 @@
 		"tags": [
 			"Radar Datasets"
 		],
-		"x-api-token-group": [
-			"User Details Write",
-			"User Details Read"
-		],
+		"x-cfPermissionsRequired": {
+			"enum": [
+				"com.cloudflare.api.user.read"
+			]
+		},
 		"x-cfPlanAvailability": {
 			"business": true,
 			"enterprise": true,
@@ -276,10 +277,11 @@
 		"tags": [
 			"Radar Datasets"
 		],
-		"x-api-token-group": [
-			"User Details Write",
-			"User Details Read"
-		],
+		"x-cfPermissionsRequired": {
+			"enum": [
+				"com.cloudflare.api.user.read"
+			]
+		},
 		"x-cfPlanAvailability": {
 			"business": true,
 			"enterprise": true,
@@ -411,10 +413,11 @@
 		"tags": [
 			"Radar Datasets"
 		],
-		"x-api-token-group": [
-			"User Details Write",
-			"User Details Read"
-		],
+		"x-cfPermissionsRequired": {
+			"enum": [
+				"com.cloudflare.api.user.read"
+			]
+		},
 		"x-cfPlanAvailability": {
 			"business": true,
 			"enterprise": true,

@@ -525,9 +525,6 @@
 		"tags": [
 			"mTLS Certificate Management"
 		],
-		"x-api-token-group": [
-			"Account: SSL and Certificates Write"
-		],
 		"x-cfPermissionsRequired": {
 			"enum": [
 				"#ssl:edit"
@@ -1187,10 +1184,6 @@
 		"tags": [
 			"mTLS Certificate Management"
 		],
-		"x-api-token-group": [
-			"Account: SSL and Certificates Read",
-			"Account: SSL and Certificates Write"
-		],
 		"x-cfPermissionsRequired": {
 			"enum": [
 				"#ssl:read"
@@ -1723,10 +1716,6 @@
 		"tags": [
 			"mTLS Certificate Management"
 		],
-		"x-api-token-group": [
-			"Account: SSL and Certificates Read",
-			"Account: SSL and Certificates Write"
-		],
 		"x-cfPermissionsRequired": {
 			"enum": [
 				"#ssl:read"
@@ -2204,10 +2193,6 @@
 		"summary": "List mTLS certificate associations",
 		"tags": [
 			"mTLS Certificate Management"
-		],
-		"x-api-token-group": [
-			"Account: SSL and Certificates Read",
-			"Account: SSL and Certificates Write"
 		],
 		"x-cfPermissionsRequired": {
 			"enum": [
@@ -2781,9 +2766,6 @@
 		"summary": "Upload mTLS certificate",
 		"tags": [
 			"mTLS Certificate Management"
-		],
-		"x-api-token-group": [
-			"Account: SSL and Certificates Write"
 		],
 		"x-cfPermissionsRequired": {
 			"enum": [

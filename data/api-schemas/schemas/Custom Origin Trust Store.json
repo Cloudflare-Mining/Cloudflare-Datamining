@@ -281,9 +281,6 @@
 		"tags": [
 			"Custom Origin Trust Store"
 		],
-		"x-api-token-group": [
-			"SSL and Certificates Write"
-		],
 		"x-cfPermissionsRequired": {
 			"enum": [
 				"#ssl:read",
@@ -918,10 +915,6 @@
 		"tags": [
 			"Custom Origin Trust Store"
 		],
-		"x-api-token-group": [
-			"SSL and Certificates Write",
-			"SSL and Certificates Read"
-		],
 		"x-cfPermissionsRequired": {
 			"enum": [
 				"#ssl:read"
@@ -1451,10 +1444,6 @@
 		"summary": "Custom Origin Trust Store Details",
 		"tags": [
 			"Custom Origin Trust Store"
-		],
-		"x-api-token-group": [
-			"SSL and Certificates Write",
-			"SSL and Certificates Read"
 		],
 		"x-cfPermissionsRequired": {
 			"enum": [
@@ -1992,9 +1981,6 @@
 		"summary": "Upload Custom Origin Trust Store",
 		"tags": [
 			"Custom Origin Trust Store"
-		],
-		"x-api-token-group": [
-			"SSL and Certificates Write"
 		],
 		"x-cfPermissionsRequired": {
 			"enum": [

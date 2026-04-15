@@ -307,10 +307,6 @@
 		"summary": "List account datasets",
 		"tags": [
 			"Log Explorer Datasets"
-		],
-		"x-api-token-group": [
-			"Logs Write",
-			"Logs Read"
 		]
 	},
 	"GET /accounts/{account_id}/logs/explorer/datasets/{dataset_id}": {
@@ -641,9 +637,6 @@
 		"summary": "Get an account dataset",
 		"tags": [
 			"Log Explorer Datasets"
-		],
-		"x-api-token-group": [
-			"Logs Write"
 		]
 	},
 	"GET /accounts/{account_id}/logs/explorer/datasets/available": {
@@ -937,10 +930,6 @@
 		"summary": "List available account datasets",
 		"tags": [
 			"Log Explorer Datasets"
-		],
-		"x-api-token-group": [
-			"Logs Write",
-			"Logs Read"
 		]
 	},
 	"GET /zones/{zone_id}/logs/explorer/datasets": {
@@ -1241,10 +1230,6 @@
 		"summary": "List zone datasets",
 		"tags": [
 			"Log Explorer Datasets"
-		],
-		"x-api-token-group": [
-			"Logs Write",
-			"Logs Read"
 		]
 	},
 	"GET /zones/{zone_id}/logs/explorer/datasets/{dataset_id}": {
@@ -1575,9 +1560,6 @@
 		"summary": "Get a zone dataset",
 		"tags": [
 			"Log Explorer Datasets"
-		],
-		"x-api-token-group": [
-			"Logs Write"
 		]
 	},
 	"GET /zones/{zone_id}/logs/explorer/datasets/available": {
@@ -1871,10 +1853,6 @@
 		"summary": "List available zone datasets",
 		"tags": [
 			"Log Explorer Datasets"
-		],
-		"x-api-token-group": [
-			"Logs Write",
-			"Logs Read"
 		]
 	},
 	"POST /accounts/{account_id}/logs/explorer/datasets": {
@@ -2307,9 +2285,6 @@
 		"summary": "Create an account dataset",
 		"tags": [
 			"Log Explorer Datasets"
-		],
-		"x-api-token-group": [
-			"Logs Write"
 		]
 	},
 	"POST /zones/{zone_id}/logs/explorer/datasets": {
@@ -2742,9 +2717,6 @@
 		"summary": "Create a zone dataset",
 		"tags": [
 			"Log Explorer Datasets"
-		],
-		"x-api-token-group": [
-			"Logs Write"
 		]
 	},
 	"PUT /accounts/{account_id}/logs/explorer/datasets/{dataset_id}": {
@@ -3118,9 +3090,6 @@
 		"summary": "Update an account dataset",
 		"tags": [
 			"Log Explorer Datasets"
-		],
-		"x-api-token-group": [
-			"Logs Write"
 		]
 	},
 	"PUT /zones/{zone_id}/logs/explorer/datasets/{dataset_id}": {
@@ -3494,9 +3463,6 @@
 		"summary": "Update a zone dataset",
 		"tags": [
 			"Log Explorer Datasets"
-		],
-		"x-api-token-group": [
-			"Logs Write"
 		]
 	}
 }

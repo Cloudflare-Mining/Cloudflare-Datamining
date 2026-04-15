@@ -538,12 +538,6 @@
 		"tags": [
 			"Custom pages for a zone"
 		],
-		"x-api-token-group": [
-			"Custom Pages Write",
-			"Custom Pages Read",
-			"Zone Settings Write",
-			"Zone Settings Read"
-		],
 		"x-cfPermissionsRequired": {
 			"enum": [
 				"#zone_settings:read"
@@ -947,12 +941,11 @@
 		"tags": [
 			"Custom pages for a zone"
 		],
-		"x-api-token-group": [
-			"Custom Pages Write",
-			"Custom Pages Read",
-			"Zone Settings Write",
-			"Zone Settings Read"
-		],
+		"x-cfPermissionsRequired": {
+			"enum": [
+				"#zone_settings:read"
+			]
+		},
 		"x-cfPlanAvailability": {
 			"business": true,
 			"enterprise": true,
@@ -1479,10 +1472,11 @@
 		"tags": [
 			"Custom pages for a zone"
 		],
-		"x-api-token-group": [
-			"Custom Pages Write",
-			"Zone Settings Write"
-		],
+		"x-cfPermissionsRequired": {
+			"enum": [
+				"#zone_settings:edit"
+			]
+		},
 		"x-cfPlanAvailability": {
 			"business": true,
 			"enterprise": true,

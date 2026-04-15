@@ -184,10 +184,11 @@
 		"tags": [
 			"URL Scanner"
 		],
-		"x-api-token-group": [
-			"URL Scanner Write",
-			"URL Scanner Read"
-		],
+		"x-cfPermissionsRequired": {
+			"enum": [
+				"com.cloudflare.api.account.url-scanner.read"
+			]
+		},
 		"x-cfPlanAvailability": {
 			"business": true,
 			"enterprise": true,
@@ -671,10 +672,11 @@
 		"tags": [
 			"URL Scanner"
 		],
-		"x-api-token-group": [
-			"URL Scanner Write",
-			"URL Scanner Read"
-		],
+		"x-cfPermissionsRequired": {
+			"enum": [
+				"com.cloudflare.api.account.url-scanner.read"
+			]
+		},
 		"x-cfPlanAvailability": {
 			"business": true,
 			"enterprise": true,
@@ -783,10 +785,11 @@
 		"tags": [
 			"URL Scanner"
 		],
-		"x-api-token-group": [
-			"URL Scanner Write",
-			"URL Scanner Read"
-		],
+		"x-cfPermissionsRequired": {
+			"enum": [
+				"com.cloudflare.api.account.url-scanner.read"
+			]
+		},
 		"x-cfPlanAvailability": {
 			"business": true,
 			"enterprise": true,
@@ -4857,10 +4860,11 @@
 		"tags": [
 			"URL Scanner"
 		],
-		"x-api-token-group": [
-			"URL Scanner Write",
-			"URL Scanner Read"
-		],
+		"x-cfPermissionsRequired": {
+			"enum": [
+				"com.cloudflare.api.account.url-scanner.read"
+			]
+		},
 		"x-cfPlanAvailability": {
 			"business": true,
 			"enterprise": true,
@@ -5068,10 +5072,11 @@
 		"tags": [
 			"URL Scanner"
 		],
-		"x-api-token-group": [
-			"URL Scanner Write",
-			"URL Scanner Read"
-		],
+		"x-cfPermissionsRequired": {
+			"enum": [
+				"com.cloudflare.api.account.url-scanner.read"
+			]
+		},
 		"x-cfPlanAvailability": {
 			"business": true,
 			"enterprise": true,
@@ -5309,10 +5314,11 @@
 		"tags": [
 			"URL Scanner"
 		],
-		"x-api-token-group": [
-			"URL Scanner Write",
-			"URL Scanner Read"
-		],
+		"x-cfPermissionsRequired": {
+			"enum": [
+				"com.cloudflare.api.account.url-scanner.read"
+			]
+		},
 		"x-cfPlanAvailability": {
 			"business": true,
 			"enterprise": true,
@@ -5575,10 +5581,11 @@
 		"tags": [
 			"URL Scanner"
 		],
-		"x-api-token-group": [
-			"URL Scanner Write",
-			"URL Scanner Read"
-		],
+		"x-cfPermissionsRequired": {
+			"enum": [
+				"com.cloudflare.api.account.url-scanner.read"
+			]
+		},
 		"x-cfPlanAvailability": {
 			"business": true,
 			"enterprise": true,
@@ -6096,10 +6103,11 @@
 		"tags": [
 			"URL Scanner"
 		],
-		"x-api-token-group": [
-			"URL Scanner Write",
-			"URL Scanner Read"
-		],
+		"x-cfPermissionsRequired": {
+			"enum": [
+				"com.cloudflare.api.account.url-scanner.read"
+			]
+		},
 		"x-cfPlanAvailability": {
 			"business": true,
 			"enterprise": true,

@@ -227,9 +227,6 @@
 		"tags": [
 			"Hyperdrive"
 		],
-		"x-api-token-group": [
-			"Hyperdrive Write"
-		],
 		"x-cfPermissionsRequired": {
 			"enum": [
 				"com.cloudflare.edge.hyperdrive.database.delete"
@@ -839,10 +836,6 @@
 		"tags": [
 			"Hyperdrive"
 		],
-		"x-api-token-group": [
-			"Hyperdrive Write",
-			"Hyperdrive Read"
-		],
 		"x-cfPermissionsRequired": {
 			"enum": [
 				"com.cloudflare.edge.hyperdrive.database.list"
@@ -1432,10 +1425,6 @@
 		"summary": "Get Hyperdrive",
 		"tags": [
 			"Hyperdrive"
-		],
-		"x-api-token-group": [
-			"Hyperdrive Write",
-			"Hyperdrive Read"
 		],
 		"x-cfPermissionsRequired": {
 			"enum": [
@@ -2240,9 +2229,6 @@
 		"summary": "Patch Hyperdrive",
 		"tags": [
 			"Hyperdrive"
-		],
-		"x-api-token-group": [
-			"Hyperdrive Write"
 		],
 		"x-cfPermissionsRequired": {
 			"enum": [
@@ -3178,9 +3164,6 @@
 		"summary": "Create Hyperdrive",
 		"tags": [
 			"Hyperdrive"
-		],
-		"x-api-token-group": [
-			"Hyperdrive Write"
 		],
 		"x-cfPermissionsRequired": {
 			"enum": [
@@ -4130,9 +4113,6 @@
 		"summary": "Update Hyperdrive",
 		"tags": [
 			"Hyperdrive"
-		],
-		"x-api-token-group": [
-			"Hyperdrive Write"
 		],
 		"x-cfPermissionsRequired": {
 			"enum": [

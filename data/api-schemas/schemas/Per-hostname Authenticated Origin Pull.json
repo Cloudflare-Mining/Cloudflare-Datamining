@@ -503,9 +503,11 @@
 		"tags": [
 			"Per-hostname Authenticated Origin Pull"
 		],
-		"x-api-token-group": [
-			"SSL and Certificates Write"
-		],
+		"x-cfPermissionsRequired": {
+			"enum": [
+				"#ssl:edit"
+			]
+		},
 		"x-cfPlanAvailability": {
 			"business": true,
 			"enterprise": true,
@@ -1150,10 +1152,11 @@
 		"tags": [
 			"Per-hostname Authenticated Origin Pull"
 		],
-		"x-api-token-group": [
-			"SSL and Certificates Write",
-			"SSL and Certificates Read"
-		],
+		"x-cfPermissionsRequired": {
+			"enum": [
+				"#ssl:read"
+			]
+		},
 		"x-cfPlanAvailability": {
 			"business": true,
 			"enterprise": true,
@@ -1767,10 +1770,11 @@
 		"tags": [
 			"Per-hostname Authenticated Origin Pull"
 		],
-		"x-api-token-group": [
-			"SSL and Certificates Write",
-			"SSL and Certificates Read"
-		],
+		"x-cfPermissionsRequired": {
+			"enum": [
+				"#ssl:read"
+			]
+		},
 		"x-cfPlanAvailability": {
 			"business": true,
 			"enterprise": true,
@@ -2340,10 +2344,11 @@
 		"tags": [
 			"Per-hostname Authenticated Origin Pull"
 		],
-		"x-api-token-group": [
-			"SSL and Certificates Write",
-			"SSL and Certificates Read"
-		],
+		"x-cfPermissionsRequired": {
+			"enum": [
+				"#ssl:read"
+			]
+		},
 		"x-cfPlanAvailability": {
 			"business": true,
 			"enterprise": true,
@@ -2849,10 +2854,11 @@
 		"tags": [
 			"Per-hostname Authenticated Origin Pull"
 		],
-		"x-api-token-group": [
-			"SSL and Certificates Write",
-			"SSL and Certificates Read"
-		],
+		"x-cfPermissionsRequired": {
+			"enum": [
+				"#ssl:read"
+			]
+		},
 		"x-cfPlanAvailability": {
 			"business": true,
 			"enterprise": true,
@@ -3376,9 +3382,11 @@
 		"tags": [
 			"Per-hostname Authenticated Origin Pull"
 		],
-		"x-api-token-group": [
-			"SSL and Certificates Write"
-		],
+		"x-cfPermissionsRequired": {
+			"enum": [
+				"#ssl:edit"
+			]
+		},
 		"x-cfPlanAvailability": {
 			"business": true,
 			"enterprise": true,
@@ -4197,9 +4205,11 @@
 		"tags": [
 			"Per-hostname Authenticated Origin Pull"
 		],
-		"x-api-token-group": [
-			"SSL and Certificates Write"
-		],
+		"x-cfPermissionsRequired": {
+			"enum": [
+				"#ssl:edit"
+			]
+		},
 		"x-cfPlanAvailability": {
 			"business": true,
 			"enterprise": true,

@@ -392,14 +392,6 @@
 		"summary": "Get Advertisement Status",
 		"tags": [
 			"IP Address Management Dynamic Advertisement"
-		],
-		"x-api-token-group": [
-			"Magic Transit Read",
-			"Magic Transit Write",
-			"IP Prefixes: Write",
-			"IP Prefixes: Read",
-			"IP Prefixes: BGP On Demand Write",
-			"IP Prefixes: BGP On Demand Read"
 		]
 	},
 	"PATCH /accounts/{account_id}/addressing/prefixes/{prefix_id}/bgp/status": {
@@ -815,11 +807,6 @@
 		"summary": "Update Prefix Dynamic Advertisement Status",
 		"tags": [
 			"IP Address Management Dynamic Advertisement"
-		],
-		"x-api-token-group": [
-			"Magic Transit Write",
-			"IP Prefixes: Write",
-			"IP Prefixes: BGP On Demand Write"
 		]
 	}
 }

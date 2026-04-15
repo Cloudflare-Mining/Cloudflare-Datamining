@@ -783,10 +783,6 @@
 		"summary": "Get Firewall for AI Status",
 		"tags": [
 			"Firewall for AI"
-		],
-		"x-api-token-group": [
-			"Firewall for AI Write",
-			"Firewall for AI Read"
 		]
 	},
 	"PUT /zones/{zone_id}/firewall-for-ai/custom-topics": {
@@ -1632,9 +1628,6 @@
 		"summary": "Set Firewall for AI Status",
 		"tags": [
 			"Firewall for AI"
-		],
-		"x-api-token-group": [
-			"Firewall for AI Write"
 		]
 	}
 }

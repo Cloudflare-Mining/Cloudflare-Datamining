@@ -199,10 +199,6 @@
 		"summary": "Fetch details of an active session",
 		"tags": [
 			"Active session"
-		],
-		"x-api-token-group": [
-			"Realtime Admin",
-			"Realtime"
 		]
 	},
 	"POST /accounts/{account_id}/realtime/kit/{app_id}/meetings/{meeting_id}/active-session/kick": {
@@ -390,10 +386,6 @@
 		"summary": "Kick participants from an active session",
 		"tags": [
 			"Active session"
-		],
-		"x-api-token-group": [
-			"Realtime Admin",
-			"Realtime"
 		]
 	},
 	"POST /accounts/{account_id}/realtime/kit/{app_id}/meetings/{meeting_id}/active-session/kick-all": {
@@ -469,10 +461,6 @@
 		"summary": "Kick all participants",
 		"tags": [
 			"Active session"
-		],
-		"x-api-token-group": [
-			"Realtime Admin",
-			"Realtime"
 		]
 	},
 	"POST /accounts/{account_id}/realtime/kit/{app_id}/meetings/{meeting_id}/active-session/mute": {
@@ -610,10 +598,6 @@
 		"summary": "Mute participants of an active session",
 		"tags": [
 			"Active session"
-		],
-		"x-api-token-group": [
-			"Realtime Admin",
-			"Realtime"
 		]
 	},
 	"POST /accounts/{account_id}/realtime/kit/{app_id}/meetings/{meeting_id}/active-session/mute-all": {
@@ -709,10 +693,6 @@
 		"summary": "Mute all participants",
 		"tags": [
 			"Active session"
-		],
-		"x-api-token-group": [
-			"Realtime Admin",
-			"Realtime"
 		]
 	},
 	"POST /accounts/{account_id}/realtime/kit/{app_id}/meetings/{meeting_id}/active-session/poll": {
@@ -897,10 +877,6 @@
 		"summary": "Create a poll",
 		"tags": [
 			"Active session"
-		],
-		"x-api-token-group": [
-			"Realtime Admin",
-			"Realtime"
 		]
 	}
 }

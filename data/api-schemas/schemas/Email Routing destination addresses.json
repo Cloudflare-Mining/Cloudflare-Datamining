@@ -197,9 +197,6 @@
 		"tags": [
 			"Email Routing destination addresses"
 		],
-		"x-api-token-group": [
-			"Email Routing Addresses Write"
-		],
 		"x-cfPermissionsRequired": {
 			"enum": [
 				"com.cloudflare.api.account.email.routing.address.delete"
@@ -501,10 +498,6 @@
 		"tags": [
 			"Email Routing destination addresses"
 		],
-		"x-api-token-group": [
-			"Email Routing Addresses Write",
-			"Email Routing Addresses Read"
-		],
 		"x-cfPermissionsRequired": {
 			"enum": [
 				"com.cloudflare.api.account.email.routing.address.list"
@@ -714,10 +707,6 @@
 		"summary": "Get a destination address",
 		"tags": [
 			"Email Routing destination addresses"
-		],
-		"x-api-token-group": [
-			"Email Routing Addresses Write",
-			"Email Routing Addresses Read"
 		],
 		"x-cfPermissionsRequired": {
 			"enum": [
@@ -937,9 +926,6 @@
 		"summary": "Create a destination address",
 		"tags": [
 			"Email Routing destination addresses"
-		],
-		"x-api-token-group": [
-			"Email Routing Addresses Write"
 		],
 		"x-cfPermissionsRequired": {
 			"enum": [

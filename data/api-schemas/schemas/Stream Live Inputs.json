@@ -58,9 +58,6 @@
 		"summary": "Delete a live input",
 		"tags": [
 			"Stream Live Inputs"
-		],
-		"x-api-token-group": [
-			"Stream Write"
 		]
 	},
 	"DELETE /accounts/{account_id}/stream/live_inputs/{live_input_identifier}/outputs/{output_identifier}": {
@@ -134,9 +131,6 @@
 		"summary": "Delete an output",
 		"tags": [
 			"Stream Live Inputs"
-		],
-		"x-api-token-group": [
-			"Stream Write"
 		]
 	},
 	"GET /accounts/{account_id}/stream/live_inputs": {
@@ -453,10 +447,6 @@
 		"summary": "List live inputs",
 		"tags": [
 			"Stream Live Inputs"
-		],
-		"x-api-token-group": [
-			"Stream Write",
-			"Stream Read"
 		]
 	},
 	"GET /accounts/{account_id}/stream/live_inputs/{live_input_identifier}": {
@@ -943,10 +933,6 @@
 		"summary": "Retrieve a live input",
 		"tags": [
 			"Stream Live Inputs"
-		],
-		"x-api-token-group": [
-			"Stream Write",
-			"Stream Read"
 		]
 	},
 	"GET /accounts/{account_id}/stream/live_inputs/{live_input_identifier}/outputs": {
@@ -1234,10 +1220,6 @@
 		"summary": "List all outputs associated with a specified live input",
 		"tags": [
 			"Stream Live Inputs"
-		],
-		"x-api-token-group": [
-			"Stream Write",
-			"Stream Read"
 		]
 	},
 	"POST /accounts/{account_id}/stream/live_inputs": {
@@ -1803,9 +1785,6 @@
 		"summary": "Create a live input",
 		"tags": [
 			"Stream Live Inputs"
-		],
-		"x-api-token-group": [
-			"Stream Write"
 		]
 	},
 	"POST /accounts/{account_id}/stream/live_inputs/{live_input_identifier}/disable": {
@@ -3678,9 +3657,6 @@
 		"summary": "Update a live input",
 		"tags": [
 			"Stream Live Inputs"
-		],
-		"x-api-token-group": [
-			"Stream Write"
 		]
 	},
 	"PUT /accounts/{account_id}/stream/live_inputs/{live_input_identifier}/outputs/{output_identifier}": {
@@ -4003,9 +3979,6 @@
 		"summary": "Update an output",
 		"tags": [
 			"Stream Live Inputs"
-		],
-		"x-api-token-group": [
-			"Stream Write"
 		]
 	}
 }

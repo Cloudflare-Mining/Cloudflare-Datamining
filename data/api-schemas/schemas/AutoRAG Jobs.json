@@ -221,10 +221,6 @@
 		"tags": [
 			"AutoRAG Jobs"
 		],
-		"x-api-token-group": [
-			"Auto Rag Write",
-			"Auto Rag Read"
-		],
 		"x-cfPermissionsRequired": {
 			"enum": [
 				"com.cloudflare.api.account.rag"
@@ -420,10 +416,6 @@
 		"summary": "Get a Job Details",
 		"tags": [
 			"AutoRAG Jobs"
-		],
-		"x-api-token-group": [
-			"Auto Rag Write",
-			"Auto Rag Read"
 		],
 		"x-cfPermissionsRequired": {
 			"enum": [
@@ -658,10 +650,6 @@
 		"summary": "List Job Logs",
 		"tags": [
 			"AutoRAG Jobs"
-		],
-		"x-api-token-group": [
-			"Auto Rag Write",
-			"Auto Rag Read"
 		],
 		"x-cfPermissionsRequired": {
 			"enum": [
