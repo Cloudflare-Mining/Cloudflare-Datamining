@@ -44,6 +44,7 @@
 		title: "Enable Agent Lee access",
 		description_1: "Agent Lee needs a read-only API token to access your account.",
 		description_2: "This is a one-time secure setup that lets Agent Lee understand your environment. You can revoke access anytime from the settings option below.",
+		read_more: "Read more",
 		submit: "Create Token",
 		error_generic: "Failed to create token. Please try again."
 	}
