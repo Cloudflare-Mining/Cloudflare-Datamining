@@ -174,6 +174,7 @@
 			activityLog: {
 				delivered: "Delivered",
 				deliveryFailed: "Delivery failed",
+				rejected: "Rejected",
 				error: "Error",
 				recipient: "Recipient",
 				destination: "Destination",
