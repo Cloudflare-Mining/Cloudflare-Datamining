@@ -1,7 +1,7 @@
 {
 	"name": "@cloudflare/containers",
 	"dist-tags": {
-		"latest": "0.3.0"
+		"latest": "0.3.2"
 	},
 	"versions": {
 		"0.0.1": {
@@ -1263,6 +1263,84 @@
 			"name": "@cloudflare/containers",
 			"version": "0.3.0",
 			"devDependencies": {
+				"jest": "^29.7.0",
+				"tsup": "^8.0.2",
+				"eslint": "^9.26.0",
+				"vitest": "^1.0.0",
+				"ts-jest": "^29.3.2",
+				"prettier": "^3.5.3",
+				"pkg-pr-new": "^0.0.62",
+				"typescript": "latest",
+				"@types/jest": "^29.5.14",
+				"@types/node": "^22.15.3",
+				"@changesets/cli": "^2.29.6",
+				"@cloudflare/workers-types": "^4.20260405.1",
+				"@typescript-eslint/parser": "^8.31.1",
+				"@typescript-eslint/eslint-plugin": "^8.31.1"
+			},
+			"dist": {
+				"shasum": "da5e8f61d48db5b84bf49b1d772e1f5f10fb297a",
+				"tarball": "https://registry.npmjs.org/@cloudflare/containers/-/containers-0.3.0.tgz",
+				"fileCount": 17,
+				"integrity": "sha512-8HM1NgXThWCTk7SH28QFxqMNLJwl6RrMkj3qd0KvDA59BALsn3mZXNDT94i1JaGZnP4Bc8sPGs1u9UAl/mVUVg==",
+				"signatures": [
+					{
+						"sig": "MEYCIQDyp3ZoMWwRqrDoGWUUCBxij4Cc04eQdgEFs9fDxsejZwIhAMSlDu7wKboOIh2Qi2LUrAb5tuMO8xXasMVP06bSyTvZ",
+						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
+					}
+				],
+				"attestations": {
+					"url": "https://registry.npmjs.org/-/npm/v1/attestations/@cloudflare%2fcontainers@0.3.0",
+					"provenance": {
+						"predicateType": "https://slsa.dev/provenance/v1"
+					}
+				},
+				"unpackedSize": 165657
+			}
+		},
+		"0.3.1": {
+			"name": "@cloudflare/containers",
+			"version": "0.3.1",
+			"devDependencies": {
+				"jest": "^29.7.0",
+				"tsup": "^8.0.2",
+				"eslint": "^9.26.0",
+				"vitest": "^1.0.0",
+				"ts-jest": "^29.3.2",
+				"prettier": "^3.5.3",
+				"pkg-pr-new": "^0.0.62",
+				"typescript": "latest",
+				"@types/jest": "^29.5.14",
+				"@types/node": "^22.15.3",
+				"@changesets/cli": "^2.29.6",
+				"@cloudflare/workers-types": "^4.20260405.1",
+				"@typescript-eslint/parser": "^8.31.1",
+				"@typescript-eslint/eslint-plugin": "^8.31.1"
+			},
+			"dist": {
+				"shasum": "5f208fecaf0d48e9eed4ed092c978872194a9325",
+				"tarball": "https://registry.npmjs.org/@cloudflare/containers/-/containers-0.3.1.tgz",
+				"fileCount": 17,
+				"integrity": "sha512-36lWbKY0BtGEa5+h+RSSDnhaYsO+tyxYQ1Y7kadcu/785f/IAeBesRx/HfnMJAOuC3/GHSgqVhfntCmsD/gVFQ==",
+				"signatures": [
+					{
+						"sig": "MEUCIFTqn+TlqCmE5p0qYaIdKIx9gVJHpgMSA0EUmhAIMVIHAiEAuN24SmR+Il1fE+BBlqyCxILu1YbwhSZI5n7TF6JtP/c=",
+						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
+					}
+				],
+				"attestations": {
+					"url": "https://registry.npmjs.org/-/npm/v1/attestations/@cloudflare%2fcontainers@0.3.1",
+					"provenance": {
+						"predicateType": "https://slsa.dev/provenance/v1"
+					}
+				},
+				"unpackedSize": 168466
+			}
+		},
+		"0.3.2": {
+			"name": "@cloudflare/containers",
+			"version": "0.3.2",
+			"devDependencies": {
 				"@changesets/cli": "^2.29.6",
 				"@cloudflare/workers-types": "^4.20260405.1",
 				"@types/jest": "^29.5.14",
@@ -1279,13 +1357,13 @@
 				"vitest": "^1.0.0"
 			},
 			"dist": {
-				"integrity": "sha512-8HM1NgXThWCTk7SH28QFxqMNLJwl6RrMkj3qd0KvDA59BALsn3mZXNDT94i1JaGZnP4Bc8sPGs1u9UAl/mVUVg==",
-				"shasum": "da5e8f61d48db5b84bf49b1d772e1f5f10fb297a",
-				"tarball": "https://registry.npmjs.org/@cloudflare/containers/-/containers-0.3.0.tgz",
+				"integrity": "sha512-hWobJrpXCgFJ/HYii6E49eegnnlUDWGacjLd0Fb6nQwTD005+T2eHUPI6qOEq9KPJOd7xTWkhkuXEKxDFvfyqQ==",
+				"shasum": "aef0a506f52ee13d8a86386637240afba7471228",
+				"tarball": "https://registry.npmjs.org/@cloudflare/containers/-/containers-0.3.2.tgz",
 				"fileCount": 17,
-				"unpackedSize": 165657,
+				"unpackedSize": 168535,
 				"attestations": {
-					"url": "https://registry.npmjs.org/-/npm/v1/attestations/@cloudflare%2fcontainers@0.3.0",
+					"url": "https://registry.npmjs.org/-/npm/v1/attestations/@cloudflare%2fcontainers@0.3.2",
 					"provenance": {
 						"predicateType": "https://slsa.dev/provenance/v1"
 					}
@@ -1293,7 +1371,7 @@
 				"signatures": [
 					{
 						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U",
-						"sig": "MEYCIQDyp3ZoMWwRqrDoGWUUCBxij4Cc04eQdgEFs9fDxsejZwIhAMSlDu7wKboOIh2Qi2LUrAb5tuMO8xXasMVP06bSyTvZ"
+						"sig": "MEYCIQDtAKfmS38Lnq6qxXgxhprd7OxzW66gRImZeU0uoXjNeQIhALKEFA+M7zajjsi9FJey1e7+DOSCZppmvtvVgJf1pSiK"
 					}
 				]
 			}
