@@ -44,9 +44,6 @@
 	"ai-auto-rag-br-crawler": {
 		"false": 100
 	},
-	"ai-auto-rag-custom-metadata": {
-		"true": 100
-	},
 	"ai-auto-rag-hybrid-search": {
 		"true": 100
 	},
@@ -362,9 +359,6 @@
 	"dx-account-overview-internal": {
 		"false": 100
 	},
-	"dx-add-site-copy": {
-		"experiment": 100
-	},
 	"dx-consent-to-crawl-toggle": {
 		"experiment": 100
 	},
@@ -384,8 +378,8 @@
 		"social-auth-upfront": 100
 	},
 	"dx-manage-domain-refactor": {
-		"false": 90,
-		"true": 11
+		"false": 75,
+		"true": 25
 	},
 	"dx-new-error-state-login-and-signup": {
 		"experiment": 100
@@ -652,9 +646,6 @@
 	"pre-clearance-turnstile": {
 		"true": 100
 	},
-	"prg-argo-traffic-empty-state-page": {
-		"experiment": 100
-	},
 	"prg-banner-cta-test": {
 		"grey-button": 100
 	},
@@ -698,12 +689,6 @@
 	"prg-log-explorer-empty-state-optimizations": {
 		"variant-a": 50,
 		"baseline": 50
-	},
-	"prg-login-cf-connect": {
-		"baseline": 100
-	},
-	"prg-manage-domain-empty-state": {
-		"experiment": 100
 	},
 	"prg-notification-banner-personalization": {
 		"true": 100
@@ -1040,9 +1025,6 @@
 		"true": 100
 	},
 	"wam-discovery-for-all": {
-		"true": 100
-	},
-	"web-analytics-in-speed-site-recommendations": {
 		"true": 100
 	},
 	"web-analytics-refactor": {

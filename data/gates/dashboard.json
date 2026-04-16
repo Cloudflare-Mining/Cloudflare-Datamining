@@ -83,9 +83,6 @@
 	"ai-auto-rag-br-crawler": {
 		"enabled": true
 	},
-	"ai-auto-rag-custom-metadata": {
-		"enabled": true
-	},
 	"ai-auto-rag-hybrid-search": {
 		"enabled": true
 	},
@@ -93,9 +90,6 @@
 		"enabled": true
 	},
 	"ai-auto-rag-namespaces": {
-		"enabled": true
-	},
-	"ai-auto-rag-public-endpoint": {
 		"enabled": true
 	},
 	"ai-auto-rag-test-models": {
@@ -292,6 +286,9 @@
 	},
 	"auto-save-all-discoveries": {
 		"enabled": true
+	},
+	"backup-pm-auto-retry-enabled": {
+		"enabled": false
 	},
 	"bad-debt-banner": {
 		"enabled": false
@@ -978,13 +975,6 @@
 	"dx-account-zone-selector-table-view-v2-security": {
 		"enabled": true
 	},
-	"dx-add-site-copy": {
-		"enabled": true,
-		"branches": [
-			"baseline",
-			"experiment"
-		]
-	},
 	"dx-chunkload-repro": {
 		"enabled": true
 	},
@@ -1059,13 +1049,6 @@
 			"experiment"
 		]
 	},
-	"dx-no-zone-welcome": {
-		"enabled": true,
-		"branches": [
-			"baseline",
-			"experiment"
-		]
-	},
 	"dx-plans-page": {
 		"enabled": false,
 		"branches": [
@@ -1123,16 +1106,6 @@
 	},
 	"dx-skeleton-loading": {
 		"enabled": true
-	},
-	"dx-star-zones-filter-persistence": {
-		"enabled": false
-	},
-	"dx-super-add-button-non-account-pages": {
-		"enabled": false,
-		"branches": [
-			"baseline",
-			"experiment"
-		]
 	},
 	"dx-switchers-refactor": {
 		"enabled": false
@@ -1677,13 +1650,6 @@
 			"variant-c"
 		]
 	},
-	"prg-argo-traffic-empty-state-page": {
-		"enabled": true,
-		"branches": [
-			"baseline",
-			"experiment"
-		]
-	},
 	"prg-atm-result-on-argo-page": {
 		"enabled": false,
 		"branches": [
@@ -1796,13 +1762,6 @@
 			"experiment"
 		]
 	},
-	"prg-images-stream-rate-card-copy-experiment": {
-		"enabled": false,
-		"branches": [
-			"baseline",
-			"experiment"
-		]
-	},
 	"prg-increase-apo-visibility": {
 		"enabled": false,
 		"branches": [
@@ -1839,21 +1798,6 @@
 			"variant-b"
 		]
 	},
-	"prg-login-cf-connect": {
-		"enabled": true,
-		"branches": [
-			"baseline",
-			"cta",
-			"no-cta"
-		]
-	},
-	"prg-manage-domain-empty-state": {
-		"enabled": true,
-		"branches": [
-			"baseline",
-			"experiment"
-		]
-	},
 	"prg-media-sidenav-routing-changes": {
 		"enabled": false
 	},
@@ -1878,13 +1822,6 @@
 		"branches": [
 			"baseline",
 			"variant-a"
-		]
-	},
-	"prg-onboarding-zone-plan-billing-to-monthly": {
-		"enabled": false,
-		"branches": [
-			"baseline",
-			"experiment"
 		]
 	},
 	"prg-plan-cards-video-modal-test": {
@@ -1991,6 +1928,16 @@
 	},
 	"prg-smart-shield-personalized-messaging": {
 		"enabled": true
+	},
+	"prg-ss-argo-analytics": {
+		"enabled": false,
+		"branches": [
+			"baseline",
+			"experiment"
+		]
+	},
+	"prg-ss-package-details-argo": {
+		"enabled": false
 	},
 	"prg-streaming-checkout-consolidation-experiment": {
 		"enabled": true,
@@ -2666,9 +2613,6 @@
 	"wci-create-worker-from-repo": {
 		"enabled": true
 	},
-	"web-analytics-in-speed-site-recommendations": {
-		"enabled": true
-	},
 	"web-analytics-kumo": {
 		"enabled": false
 	},
@@ -2677,13 +2621,6 @@
 	},
 	"web-assets-discovery-labels": {
 		"enabled": true
-	},
-	"welcome-page-redesign": {
-		"enabled": true,
-		"branches": [
-			"baseline",
-			"experiment"
-		]
 	},
 	"wobs-agents-dash": {
 		"enabled": false
