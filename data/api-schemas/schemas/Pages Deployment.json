@@ -38,6 +38,15 @@
 					"type": "string",
 					"x-auditable": true
 				}
+			},
+			{
+				"in": "query",
+				"name": "force",
+				"schema": {
+					"description": "Allow deletion of aliased non-production deployments when a normal delete would be rejected.",
+					"example": true,
+					"type": "boolean"
+				}
 			}
 		],
 		"responses": {
