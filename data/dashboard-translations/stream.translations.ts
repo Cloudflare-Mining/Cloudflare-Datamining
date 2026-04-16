@@ -36,11 +36,34 @@
 			bundle_pay_as_you_go: "Pay-as-you-go",
 			streamIconCopy: "Stream",
 			ImageIconCopy: "Images",
+			TransformationsIconCopy: "Transformations",
 			bundle_page_link: "Stream documentation",
 			bundle_page_main_header: "Stream",
 			bundle_page_selection_description: "Cloudflare Stream lets you or your end users upload, store, encode, and deliver live and on-demand video from a single API.",
 			bundle_page_existing_subsciption_description: "Cloudflare Stream is the most affordable and easy-to-use streaming platform.\n**You have an existing subscription to Cloudflare Images. You can purchase Starter or Creator bundles only when your Cloudflare Images subscription is canceled and has ended.**",
 			bundle_price_experiment: "%{bundlePrice}/month + additional usage",
+			transformations_only: {
+				bundle_title: "Images & Stream",
+				bundle_subtitle: "Optimize, resize, and deliver media at scale",
+				bundle_purchase: "Purchase Images & Stream",
+				bundle_price: "%{bundlePrice}/month",
+				featureCardCopy: {
+					included: {
+						transformations: "%{number} unique transformations per month"
+					},
+					pricing: {
+						header: "Pricing details",
+						videoStored: "%{price} per %{numberOfMinutes} additional minutes of video stored",
+						videoDelivered: "%{price} per %{numberOfMinutes} minutes of video delivered"
+					},
+					features: {
+						header: "Features",
+						transformVideo: "Transform videos stored anywhere on the internet",
+						optimizeVideo: "Dynamically optimize video on-the-fly",
+						noStorage: "No video storage required"
+					}
+				}
+			},
 			cloudflare_stream: {
 				bundle_title: "Stream",
 				bundle_subtitle: "Stream live and on-demand video",
@@ -113,29 +136,47 @@
 					header: "Pricing details",
 					images: {
 						in: {
-							header: "Stored in Images:",
+							header: "Hosted Images:",
 							stored: "%{price} per %{number} additional images stored",
 							delivered: "%{price} per %{number} additional images delivered"
 						},
 						out: {
 							header: "Stored outside of Images:",
 							transformations: "%{price} per %{number} additional unique transformations"
+						},
+						transformations_only: {
+							header: "Hosted Images",
+							stored: "%{price} per %{number} images stored",
+							delivered: "%{price} per %{number} images delivered"
 						}
 					},
 					stream: {
 						header: "Stream:",
+						pricing_header: "Hosted Videos:",
 						stored: "%{price} per %{number} additional minutes of video stored",
-						delivered: "%{price} per %{number} additional minutes of video delivered"
+						delivered: "%{price} per %{number} additional minutes of video delivered",
+						transformations_only: {
+							header: "Hosted Videos",
+							stored: "%{price} per %{number} minutes of video stored",
+							delivered: "%{price} per %{number} minutes of video delivered"
+						}
+					},
+					transformations: {
+						header: "Transformations",
+						transformations: "%{price} per %{number} additional unique transformations of images and video"
 					}
 				},
 				features: {
 					header: "Everything in Stream, plus Images:",
+					images_and_video: "Efficiently store images and videos - no need to upload duplicate versions",
+					transformations: "Dynamically transform images and videos stored anywhere on the Internet",
+					vod_and_live: "Seamless, all-in-one live and on-demand video streaming",
 					images: "Images: Efficiently store, transform, and deliver images",
 					stream: "Stream: Store, encode, and deliver live and on-demand video",
 					mediaTransformation: "Media transformations: Dynamically optimize and transform images and video on-the-fly, regardless of where they are stored",
 					onDemand: "Efficiently store images — no need to upload duplicate versions",
 					builtinPlayer: "Optimize images stored anywhere on the internet",
-					fees: "Dynamically transfrom and manipulate images on the fly with crop, resizing, and other visual effects"
+					fees: "Dynamically transform and manipulate images on the fly with crop, resizing, and other visual effects"
 				}
 			}
 		},
@@ -205,6 +246,7 @@
 		storage: {
 			title: "Add Storage",
 			mins: {
+				zero: "0 minutes",
 				fiftyK: "50,000 minutes",
 				tenK: "10,000 minutes",
 				oneK: "1,000 minutes",
@@ -226,10 +268,10 @@
 		used: (0, o.p)(u()),
 		usage: (0, o.p)(l(), "currentMins"),
 		video_count: (0, o.p)(c()),
-		inadequateProposedPlan: (0, o.p)(_(), "minumumRequired", "currentMinutes"),
-		inputGreaterThanZero: "Please enter a number greater than zero",
+		inadequateProposedPlan: (0, o.p)(m(), "minumumRequired", "currentMinutes"),
+		inputPositive: "Please enter a positive number",
 		inputWholeNumber: "Please enter a whole number",
-		howToCancel: (0, o.p)(m(), "accountId"),
+		howToCancel: (0, o.p)(_(), "accountId"),
 		description: "Storage is $5 per 1,000 minutes of video stored. This can be changed later.",
 		plan_title: "Price per minutes watched",
 		title: "**Select storage capacity.**",
@@ -237,8 +279,8 @@
 	},
 	modal_add_storage_custom_calculation: (0, o.p)(p(), "value"),
 	modal_add_extra_storage_custom_calculation: (0, o.p)(g(), "value"),
-	modal_extra_images: (0, o.p)(h(), "value"),
-	modal_total_storage: (0, o.p)(v(), "value"),
+	modal_extra_images: (0, o.p)(v(), "value"),
+	modal_total_storage: (0, o.p)(h(), "value"),
 	subscription: {
 		error: "There was an error enabling Stream",
 		success: "Created Stream subscription successfully",
@@ -330,7 +372,7 @@
 	captions_not_yet_available: "Captions unavailable while encoding",
 	method: "Method",
 	caption_generated: (0, o.p)(I()),
-	caption_uploaded: (0, o.p)(R()),
+	caption_uploaded: (0, o.p)(T()),
 	captions_generation_time_notice: "It may take a few minutes before captions are available.",
 	captions_tooltip: "Changes to captions may take a few minutes to appear in the video player",
 	add_captions: "Add Captions",
@@ -350,7 +392,7 @@
 	caption_file_too_large: "File is too large. Must be below 10MB",
 	caption_file_required: "A .vtt file is required.",
 	caption_replacement_warning: "The existing caption file for this language will be deleted.",
-	delete_caption_modal_title: (0, o.p)(T(), "language"),
+	delete_caption_modal_title: (0, o.p)(R(), "language"),
 	delete_caption_modal_body: "Deleting captions permanently deletes associated WebVTT file and cannot be undone.",
 	caption_status: {
 		ready: "Ready",
@@ -830,8 +872,8 @@
 	domain_notice: "Cloudflare is investigating reports of `videodelivery.net` being inaccessible from certain local ISPs. While we investigate these reports, we recommend switching to the backup domain `cloudflarestream.com`:\n  - If you are using the Stream Player: `https://iframe.cloudflarestream.com/$VIDEOID`\n  - If you are using your own player: `https://cloudflarestream.com/$VIDEOID/manifest/manifest.m3u8`",
 	custom_subdomain_notice: (0, o.p)(B(), "customer_subdomain"),
 	create_cname_record_title: "Automatically create CNAME record?",
-	coming_in_aug_15_notice: (0, o.p)(K(), "customer_subdomain"),
-	create_cname_record_description: (0, o.p)(H(), "cname", "zone"),
+	coming_in_aug_15_notice: (0, o.p)(H(), "customer_subdomain"),
+	create_cname_record_description: (0, o.p)(K(), "cname", "zone"),
 	create_cname_record: "Create CNAME Record",
 	create_cname_record_decline: "No, thanks",
 	create_cname_record_already_exists: "An A, AAAA, or CNAME record with that host already exists.",

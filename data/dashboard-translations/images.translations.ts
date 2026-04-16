@@ -432,7 +432,7 @@
 	missing_image_id: "Your url is missing an image ID. Please return to the overview page and select an image.",
 	go_to_overview: "Go to overview",
 	image_upload_error: "An error occurred while uploading the image.",
-	image_invalid_format: "Invalid image format",
+	image_invalid_format: "Invalid image format '%{format}'",
 	variant_loading_error: "An error occurred while loading the variant.",
 	variants_loading_error: "An error occurred while loading the variants.",
 	keys_loading_error: "An error occurred while loading the keys.",
@@ -684,7 +684,7 @@
 	images_usage_dashboard: {
 		images_stored: "Images stored (current)",
 		storage_warning_low: (0, i.p)(N()),
-		storage_warning_high: (0, i.p)(M()),
+		storage_warning_high: (0, i.p)(F()),
 		storage_warning_low_enterprise: "You are nearing your image storage capacity. Contact your account manager to increase your capacity.",
 		storage_warning_high_enterprise: "You have reached your image storage capacity. Contact your account manager to increase your capacity."
 	},
@@ -699,7 +699,7 @@
 	pay_as_you_go: "Pay-as-you-go",
 	payment_form: {
 		includes: "Includes",
-		variants: (0, i.p)(F(), "numberOfVariants"),
+		variants: (0, i.p)(M(), "numberOfVariants"),
 		prepaid: "Prepaid",
 		storage_title: (0, i.p)(W(), "price", "amount"),
 		storage_description: "You only pay for the original image. If you have 10 original images with 5 configured variants, only the 10 original images count towards your storage limit.",
@@ -755,12 +755,15 @@
 	create_rule: "Create rule",
 	provider_rewrite: {
 		card: {
-			title: "Rewrite URLs",
+			title: "Fastly URL Rewrites",
 			description: "Migrate from another service without changing your existing URLs. When this rule is active, Cloudflare will map your existing URLs from a supported service to be compatible with Images."
 		},
 		drawer: {
 			title: "Configure rules",
 			description: "Rewrite your URLs from an existing service to be compatible with Images"
+		},
+		confirmation: {
+			description: "Are you sure you want to disable Fastly URL Rewrites?"
 		}
 	},
 	polish_c2pa_key: "Preserve content credentials",
@@ -813,6 +816,7 @@
 	drop_to_upload: "Drop to upload",
 	flows: {
 		automation: "Automation",
+		name: "Transformation flows",
 		description: "Builds flows to automatically optimize images that are requested on this zone.",
 		provider: "Provider",
 		add_provider: "Add provider flow",

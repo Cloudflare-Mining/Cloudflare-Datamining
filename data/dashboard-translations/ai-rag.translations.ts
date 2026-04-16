@@ -832,7 +832,12 @@
 		chat: {
 			sources: "Sources",
 			show_all_sources: "Show all sources",
-			show_less: "Show less"
+			show_less: "Show less",
+			clear_conversation: "Clear conversation",
+			clear_confirm_title: "Clear conversation?",
+			clear_confirm_description: "This will permanently delete the conversation history for this instance.",
+			clear_confirm_cancel: "Cancel",
+			clear_confirm_action: "Clear"
 		}
 	},
 	jobs: {
@@ -874,6 +879,8 @@
 		}
 	},
 	overview_rag: {
+		vectorize_title: "Built-in Vector database",
+		vectorize_docs: "Docs",
 		total_index: {
 			title: "Total index results",
 			status: {

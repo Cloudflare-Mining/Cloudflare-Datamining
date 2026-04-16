@@ -492,6 +492,11 @@
 		enableButton: "Enable Observability",
 		containers: {
 			dialogTitle: "Enable Container Logs"
+		},
+		traces: {
+			title: "Workers Traces is Disabled",
+			description: "Enable Workers Traces to see distributed tracing data for your Workers.",
+			enableButton: "Enable Traces"
 		}
 	},
 	keyboardShortcuts: {

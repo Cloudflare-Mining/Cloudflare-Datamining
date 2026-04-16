@@ -132,6 +132,7 @@
 	emailSending: {
 		title: "Email Sending",
 		description: "Send emails to your users from your domain reliably, securely, and at scale.",
+		dailyQuota: "Daily sending quota",
 		zoneList: {
 			name: "Name",
 			emptyState: {
@@ -140,7 +141,9 @@
 			},
 			onboardDomain: "Onboard Domain",
 			joinWaitingList: "Join the waiting list",
-			alreadyJoined: "Already joined to the waiting list!"
+			alreadyJoined: "Already joined to the waiting list!",
+			purchaseWorkersPaid: "Purchase Workers Paid",
+			purchaseWorkersPaidDescription: "Email Sending is currently only available with the Workers Paid plan. Upgrade your plan to start sending emails."
 		},
 		onboarding: {
 			subtitle: "Send emails to your users from your domain reliably, and at scale.",
@@ -182,16 +185,28 @@
 			},
 			suppressions: {
 				title: "Suppressions",
-				description: "Maintain an up-to-date suppression list to protect your sender reputation and improve email deliverability by avoiding sends to invalid addresses or uninterested recipients.",
+				description: "Suppressed addresses will not receive emails sent from this zone.",
 				noSuppressionsFound: "No suppressions found",
 				noSuppressionsYet: "You have no suppressions yet.",
 				email: "Email",
-				createdAt: "Created at",
-				expiresAt: "Expires at",
+				reason: "Reason",
+				zones: "Zones",
+				allZones: "All",
+				reasons: {
+					manual: "Manual",
+					complaint: "Complaint",
+					hard_bounce: "Hard Bounce",
+					soft_bounce: "Soft Bounce",
+					policy: "Policy",
+					unknown: "Unknown"
+				},
+				createdAt: "Created",
+				expiresAt: "Expires",
 				toast: {
 					deleting: "Deleting suppression",
 					deleted: "Suppression deleted",
-					failedToDelete: "Failed to delete suppression"
+					failedToDelete: "Failed to delete suppression",
+					failedToCreate: "Failed to add suppression"
 				}
 			},
 			logDetail: {
@@ -201,6 +216,16 @@
 				delivered: "Delivered",
 				deliveryFailed: "Delivery failed",
 				error: "Error"
+			}
+		},
+		subdomain: {
+			suppressions: {
+				description: "Suppressed addresses will not receive emails sent from any subdomain in this zone."
+			}
+		},
+		account: {
+			suppressions: {
+				description: "Suppressed addresses will not receive emails sent from any zone in this account."
 			}
 		},
 		addSuppressionDialog: {
@@ -213,8 +238,50 @@
 			oneWeek: "1 week",
 			oneMonth: "1 month",
 			oneYear: "1 year",
+			never: "Never",
 			add: "Add"
 		}
+	},
+	reputation: {
+		cardTitle: "Sending reputation",
+		statusLabel: "Account health",
+		statusHealthy: "Healthy",
+		statusWarning: "Warning",
+		statusAtRisk: "At Risk",
+		statusPaused: "Paused",
+		statusHealthyDescription: "No issues detected. Your sending reputation is in good standing.",
+		statusWarningDescription: "Deliverability concerns detected. Review the metrics below.",
+		statusAtRiskDescription: "Sending at risk of being paused. Immediate action required.",
+		statusPausedDescription: "Sending paused. Follow the steps below to resume.",
+		metricsTitle: "Reputation metrics",
+		metrics7d: "7-day",
+		metrics24h: "24-hour",
+		bounceRate: "Bounce rate",
+		bounceRateDescription: "Percentage of sent emails that bounced (hard + soft)",
+		complaintRate: "Spam complaint rate",
+		complaintRateDescription: "Percentage of delivered emails generating a spam complaint",
+		spamRejectionRate: "Spam rejection rate",
+		spamRejectionRateDescription: "Percentage rejected by content checks",
+		deliveryRate: "Delivery rate",
+		deliveryRateDescription: "Percentage of sent emails successfully delivered",
+		thresholdGood: "Good",
+		thresholdWarning: "Warning",
+		thresholdCritical: "Critical",
+		remediationTitle: "Recommended actions",
+		remediationBounceWarning: "Your bounce rate is elevated. Clean your recipient lists and remove invalid addresses. Consider implementing email verification at signup.",
+		remediationBounceCritical: "Your bounce rate is critically high. Your sending may be paused if this rate does not improve. Immediately audit recipient lists and halt sending to unverified addresses.",
+		remediationComplaintWarning: "Your complaint rate is elevated. Ensure recipients have opted in and make unsubscribe links prominent.",
+		remediationComplaintCritical: "Your complaint rate is critically high. Your sending may be paused if this rate does not improve. Review your sending practices immediately.",
+		remediationSpamRejectionWarning: "Your content is triggering spam filters. Review email content for spam-like patterns.",
+		remediationSpamRejectionCritical: "Your content is being heavily flagged as spam. Your sending may be paused. Review and revise email templates immediately.",
+		remediationDeliveryWarning: "Your delivery rate has dropped. Check bounce and complaint rates for underlying issues.",
+		remediationDeliveryCritical: "Your delivery rate is critically low. Your sending may be paused. Investigate delivery failures urgently.",
+		updatedAt: "Updated {time}",
+		period7d: "7d",
+		period24h: "24h",
+		periodToday: "today",
+		quotaResets: "Resets 00:00 UTC",
+		quotaAccountWide: "This quota is shared across all subdomains in your account"
 	},
 	emailRouting: {
 		title: "Email Routing",
@@ -278,13 +345,22 @@
 				}
 			}
 		},
+		account: {
+			suppressions: {
+				description: "Emails from suppressed addresses will not be routed for any zone in this account."
+			}
+		},
 		zone: {
 			tabs: {
 				overview: "Overview",
 				activityLog: "Activity Log",
 				routingRules: "Routing Rules",
 				destinationWorkers: "Destination Workers",
+				suppressions: "Suppressions",
 				settings: "Settings"
+			},
+			suppressions: {
+				description: "Emails from suppressed addresses will not be routed for this zone."
 			},
 			overview: {
 				summary: {
