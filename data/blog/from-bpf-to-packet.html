@@ -1,4 +1,5 @@
-<div class="mb2 gray5">6 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/58uFNLvpda3ebe4FYcPlrZ/ca27fd15c73f3d20b92e8aeec7645666/image1.png" alt="">
+<div class="mb2 gray5">6 min read</div>
+<div class="mt4">This post is also available in <a href="https://blog.cloudflare.com/ja-jp/from-bpf-to-packet">日本語</a> and <a href="https://blog.cloudflare.com/ko-kr/from-bpf-to-packet">한국어</a>.</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/58uFNLvpda3ebe4FYcPlrZ/ca27fd15c73f3d20b92e8aeec7645666/image1.png" alt="">
 <div class="post-content lh-copy gray1">
 	<p></p>
 	<p>Linux malware often hides in Berkeley Packet Filter (BPF) socket programs, which are small bits of executable logic that can be embedded in the Linux kernel to customize how it processes network traffic. Some of the most persistent threats on the Internet use these filters to remain dormant until they receive a specific "magic" packet. Because these filters can be hundreds of instructions long and involve complex logical jumps, reverse-engineering them by hand is a slow process that creates a bottleneck for security researchers.</p>
