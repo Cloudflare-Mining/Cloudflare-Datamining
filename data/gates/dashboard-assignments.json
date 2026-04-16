@@ -555,8 +555,8 @@
 		"false": 100
 	},
 	"magic-overview-no-entitlement": {
-		"false": 91,
-		"true": 9
+		"false": 81,
+		"true": 19
 	},
 	"magic-self-serve-mconn": {
 		"true": 100
@@ -682,10 +682,6 @@
 	"prg-load-balancing-personalized-messaging": {
 		"true": 100
 	},
-	"prg-load-balancing-text-video-experiment": {
-		"baseline": 53,
-		"experiment": 47
-	},
 	"prg-log-explorer-empty-state-optimizations": {
 		"variant-a": 50,
 		"baseline": 50
@@ -748,10 +744,6 @@
 	"prg-upsell-banner-supression": {
 		"true": 100
 	},
-	"prg-waf-custom-rule-upsell-experiment": {
-		"experiment": 50,
-		"baseline": 50
-	},
 	"prg-zone-plan-post-purchase-survey": {
 		"true": 100
 	},
@@ -790,6 +782,14 @@
 	},
 	"r2-purchase-call-to-action": {
 		"activate-r2": 100
+	},
+	"rachel-test-delete-okay": {
+		"experiment": 72,
+		"baseline": 28
+	},
+	"rachel-test-okay-to-delete": {
+		"false": 54,
+		"true": 46
 	},
 	"rate-limiting-migration": {
 		"true": 100

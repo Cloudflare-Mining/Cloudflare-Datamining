@@ -1783,13 +1783,6 @@
 	"prg-load-balancing-personalized-messaging": {
 		"enabled": true
 	},
-	"prg-load-balancing-text-video-experiment": {
-		"enabled": true,
-		"branches": [
-			"baseline",
-			"experiment"
-		]
-	},
 	"prg-log-explorer-empty-state-optimizations": {
 		"enabled": true,
 		"branches": [
@@ -1825,13 +1818,6 @@
 		]
 	},
 	"prg-plan-cards-video-modal-test": {
-		"enabled": true,
-		"branches": [
-			"baseline",
-			"experiment"
-		]
-	},
-	"prg-plan-features-on-zone-plan-update-modal": {
 		"enabled": true,
 		"branches": [
 			"baseline",
@@ -1962,13 +1948,6 @@
 	"prg-upsell-banner-supression": {
 		"enabled": true
 	},
-	"prg-waf-custom-rule-upsell-experiment": {
-		"enabled": true,
-		"branches": [
-			"baseline",
-			"experiment"
-		]
-	},
 	"prg-welcome-path-questionnaire-experiment": {
 		"enabled": true,
 		"branches": [
@@ -2057,14 +2036,14 @@
 		]
 	},
 	"rachel-test-delete-okay": {
-		"enabled": false,
+		"enabled": true,
 		"branches": [
 			"baseline",
 			"experiment"
 		]
 	},
 	"rachel-test-okay-to-delete": {
-		"enabled": false
+		"enabled": true
 	},
 	"rate-limiting-migration": {
 		"enabled": true
