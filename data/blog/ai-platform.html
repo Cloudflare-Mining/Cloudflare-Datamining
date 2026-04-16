@@ -13,14 +13,11 @@
 		</a>
 	</div>
 	<p>Starting today, you can call third-party models using the same AI.run() binding you already use for Workers AI. If you’re using Workers, switching from a Cloudflare-hosted model to one from OpenAI, Anthropic, or any other provider is a one-line change.&nbsp;</p>
-	<pre class="language-Typescript"><code class="language-Typescript">const response = await env.AI.run('@cf/moonshotai/kimi-k2.5',
-      {
-prompt: 'What is AI Gateway?'
-      },
-      {
-metadata: { "teamId": "AI", "userId": 12345 }
-      }
-    );</code></pre>
+	<pre class="language-Typescript"><code class="language-Typescript">const response = await env.AI.run('anthropic/claude-opus-4-6',{
+input: 'What is Cloudflare?',
+}, {
+gateway: { id: "default" },
+});</code></pre>
 	<p>For those who don’t use Workers, we’ll be releasing REST API support in the coming weeks, so you can access the full model catalog from any environment.</p>
 	<p>We’re also excited to share that you'll now have access to 70+ models across 12+ providers — all through one API, one line of code to switch between them, and one set of credits to pay for them. And we’re quickly expanding this as we go.</p>
 	<p>You can browse through our <a href="https://developers.cloudflare.com/ai/models" target="_blank" rel="noopener noreferrer"><u>model catalog</u></a> to find the best model for your use case, from open-source models hosted on Cloudflare Workers AI to proprietary models from the major model providers. We’re excited to be expanding access to models from <b>Alibaba Cloud, AssemblyAI, Bytedance, Google, InWorld, MiniMax, OpenAI, Pixverse, Recraft, Runway, and Vidu</b> — who will provide their models through AI Gateway. Notably, we’re expanding our model offerings to include image, video, and speech models so that you can build multimodal applications</p>
@@ -36,8 +33,7 @@ prompt: 'What is AI Gateway?'
       {
 metadata: { "teamId": "AI", "userId": 12345 }
       }
-    );
-</code></pre>
+    );</code></pre>
 
 	<figure class="kg-card kg-image-card">
 		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6ez3O7rmbrCUdD5R5UcuP9/4c219ff5ce1e24a0485a931b6af47608/BLOG-3209_3.png" alt="BLOG-3209 3" class="kg-image" width="1999" height="1364" loading="lazy">
@@ -57,10 +53,9 @@ metadata: { "teamId": "AI", "userId": 12345 }
 	<pre class="language-XML"><code class="language-XML">build:
   python_version: "3.13"
   python_requirements: requirements.txt
-predict: "predict.py:Predictor"
-</code></pre>
+predict: "predict.py:Predictor"</code></pre>
 	<p>Example of a <a href="http://predict.py" target="_blank" rel="noopener noreferrer"><code><u>predict.py</u></code></a> file, which has a function to set up the model and a function that runs when you receive an inference request (a prediction):</p>
-	<pre class="language-python"><code class="language-python">from cog import BasePredictor, Path, Input
+	<pre class="language-Python"><code class="language-Python">from cog import BasePredictor, Path, Input
 import torch
 
 class Predictor(BasePredictor):
@@ -76,8 +71,7 @@ class Predictor(BasePredictor):
         # ... pre-processing ...
         output = self.net(input)
         # ... post-processing ...
-        return output
-</code></pre>
+        return output</code></pre>
 	<p>Then, you can run cog build to build your container image, and push your Cog container to Workers AI. We will deploy and serve the model for you, which you then access through your usual Workers AI APIs.&nbsp;</p>
 	<p>We’re working on some big projects to be able to bring this to more customers, like customer-facing APIs and wrangler commands so that you can push your own containers, as well as faster cold starts through GPU snapshotting. We’ve been testing this internally with Cloudflare teams and some external customers who are guiding our vision. If you’re interested in being a design partner with us, please reach out! Soon, anyone will be able to package their model and use it through Workers AI.</p>
 	<div class="flex anchor relative">
