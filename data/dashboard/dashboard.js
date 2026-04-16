@@ -2,7 +2,7 @@
 	try {
 		var e = "undefined" != typeof window ? window : "undefined" != typeof global ? global : "undefined" != typeof globalThis ? globalThis : "undefined" != typeof self ? self : {},
 			n = (new e.Error).stack;
-		n && (e._sentryDebugIds = e._sentryDebugIds || {}, e._sentryDebugIds[n] = "3d0ed8eb-6fab-5899-919d-ad91d6959cbe")
+		n && (e._sentryDebugIds = e._sentryDebugIds || {}, e._sentryDebugIds[n] = "977fd22c-ba66-5f2a-9e27-5da64e3aaf48")
 	} catch (e) {}
 }();
 (self.webpackChunk_cloudflare_app_dash = self.webpackChunk_cloudflare_app_dash || []).push([
@@ -553,7 +553,7 @@
 			var rK = o("./react/app/components/Persistence/index.tsx"),
 				rV = o("../../../node_modules/@cloudflare/elements/es/index.js"),
 				rq = o("./react/app/components/LoadingSuspense.tsx");
-			let rY = (0, re.lazy)(() => Promise.all([o.e("41553"), o.e("72238"), o.e("18921"), o.e("46140"), o.e("86917"), o.e("30122"), o.e("24164"), o.e("58091"), o.e("39859"), o.e("90606"), o.e("84896"), o.e("47043"), o.e("87642")]).then(o.bind(o, "./react/common/components/DevPanel/Main.tsx")));
+			let rY = (0, re.lazy)(() => Promise.all([o.e("41553"), o.e("18571"), o.e("18921"), o.e("46140"), o.e("86917"), o.e("30122"), o.e("24164"), o.e("58091"), o.e("39859"), o.e("90606"), o.e("84896"), o.e("47043"), o.e("87642")]).then(o.bind(o, "./react/common/components/DevPanel/Main.tsx")));
 			var rZ = () => (0, rr.jsx)(rq.A, {
 				children: (0, rr.jsx)(rY, {})
 			});
@@ -691,8 +691,8 @@
 				r6 = o("./react/common/constants/constants.ts"),
 				r8 = o("./react/utils/useDomainConnectRedirect.ts"),
 				r9 = o("./react/utils/fragments.ts");
-			let r7 = (0, re.lazy)(() => Promise.all([o.e("35132"), o.e("41553"), o.e("72238"), o.e("18921"), o.e("41954"), o.e("46140"), o.e("15158"), o.e("68243"), o.e("86917"), o.e("55734"), o.e("27346"), o.e("39374"), o.e("58854"), o.e("95936"), o.e("33217"), o.e("9656"), o.e("60671"), o.e("79897"), o.e("14120"), o.e("40320"), o.e("27407"), o.e("64250"), o.e("43254"), o.e("30122"), o.e("24164"), o.e("58091"), o.e("39859"), o.e("69253"), o.e("90606"), o.e("78327"), o.e("29463"), o.e("84896"), o.e("50540"), o.e("47043"), o.e("74363"), o.e("62533"), o.e("492"), o.e("41106"), o.e("42111"), o.e("24868"), o.e("52351"), o.e("88017"), o.e("25312"), o.e("55015"), o.e("48768"), o.e("1236"), o.e("96230"), o.e("37269"), o.e("53171")]).then(o.bind(o, "./react/AuthenticatedApp.tsx"))),
-				er = (0, re.lazy)(() => Promise.all([o.e("85370"), o.e("62818"), o.e("41553"), o.e("72238"), o.e("18921"), o.e("41954"), o.e("46140"), o.e("15158"), o.e("86917"), o.e("55734"), o.e("39374"), o.e("33217"), o.e("45037"), o.e("30122"), o.e("20883"), o.e("24164"), o.e("58091"), o.e("39859"), o.e("90606"), o.e("84896"), o.e("50540"), o.e("47043"), o.e("41106"), o.e("24868"), o.e("88017"), o.e("70647"), o.e("91633")]).then(o.bind(o, "./react/UnauthenticatedApp.tsx")));
+			let r7 = (0, re.lazy)(() => Promise.all([o.e("35132"), o.e("41553"), o.e("18571"), o.e("18921"), o.e("41954"), o.e("46140"), o.e("15158"), o.e("68243"), o.e("86917"), o.e("55734"), o.e("27346"), o.e("39374"), o.e("58854"), o.e("95936"), o.e("54544"), o.e("9656"), o.e("60671"), o.e("79897"), o.e("14120"), o.e("40320"), o.e("27407"), o.e("64250"), o.e("43254"), o.e("30122"), o.e("24164"), o.e("58091"), o.e("39859"), o.e("69253"), o.e("90606"), o.e("78327"), o.e("29463"), o.e("84896"), o.e("50540"), o.e("47043"), o.e("74363"), o.e("62533"), o.e("492"), o.e("41106"), o.e("42111"), o.e("24868"), o.e("52351"), o.e("88017"), o.e("25312"), o.e("55015"), o.e("48768"), o.e("1236"), o.e("96230"), o.e("37269"), o.e("53171")]).then(o.bind(o, "./react/AuthenticatedApp.tsx"))),
+				er = (0, re.lazy)(() => Promise.all([o.e("85370"), o.e("62818"), o.e("41553"), o.e("18571"), o.e("18921"), o.e("41954"), o.e("46140"), o.e("15158"), o.e("86917"), o.e("55734"), o.e("39374"), o.e("54544"), o.e("45037"), o.e("30122"), o.e("20883"), o.e("24164"), o.e("58091"), o.e("39859"), o.e("90606"), o.e("84896"), o.e("50540"), o.e("47043"), o.e("41106"), o.e("24868"), o.e("88017"), o.e("70647"), o.e("91633")]).then(o.bind(o, "./react/UnauthenticatedApp.tsx")));
 			var ee = r => {
 					let e, {
 						userIsAuthed: t
@@ -997,10 +997,10 @@
 						}({}, {
 							branch: "master",
 							isReleaseCandidate: "true",
-							commit: "600bdf309d01c7dbd15f1a4336eb58c84000cf66",
-							dashVersion: "22778360",
+							commit: "c655cece071daa226182a5058a364c723754c3e2",
+							dashVersion: "22791466",
 							env: "production",
-							builtAt: 0x19d95f3c297,
+							builtAt: 0x19d964a4b64,
 							versions: {
 								"@cloudflare/app-dash": "25.161.23",
 								"@cloudflare/kumo": "1.18.0",
@@ -2250,7 +2250,7 @@
 							});
 						return e
 					}(r),
-					l = (await Promise.all([o.e("2525"), o.e("41553"), o.e("72238"), o.e("18921"), o.e("96870"), o.e("64250"), o.e("43254"), o.e("30122"), o.e("24164"), o.e("58091"), o.e("69253"), o.e("74363"), o.e("18679")]).then(o.bind(o, "./react/app/components/DeepLink/resolvers/index.ts"))).default,
+					l = (await Promise.all([o.e("2525"), o.e("41553"), o.e("18571"), o.e("18921"), o.e("96870"), o.e("64250"), o.e("43254"), o.e("30122"), o.e("24164"), o.e("58091"), o.e("69253"), o.e("74363"), o.e("18679")]).then(o.bind(o, "./react/app/components/DeepLink/resolvers/index.ts"))).default,
 					s = await l(),
 					u = {},
 					p = "";
@@ -12357,4 +12357,4 @@
 		}
 	}
 ]);
-//# debugId=3d0ed8eb-6fab-5899-919d-ad91d6959cbe
+//# debugId=977fd22c-ba66-5f2a-9e27-5da64e3aaf48
