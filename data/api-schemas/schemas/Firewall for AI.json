@@ -541,8 +541,8 @@
 										"result": {
 											"description": "Firewall for AI enablement status for a zone.",
 											"properties": {
-												"pii_detection_enabled": {
-													"description": "Whether Firewall for AI is enabled on the zone. Despite the field name, this controls the entire Firewall for AI feature, not just PII detection.",
+												"enabled": {
+													"description": "Whether Firewall for AI is enabled on the zone.",
 													"example": true,
 													"type": "boolean"
 												}
@@ -669,8 +669,8 @@
 												"result": {
 													"description": "Firewall for AI enablement status for a zone.",
 													"properties": {
-														"pii_detection_enabled": {
-															"description": "Whether Firewall for AI is enabled on the zone. Despite the field name, this controls the entire Firewall for AI feature, not just PII detection.",
+														"enabled": {
+															"description": "Whether Firewall for AI is enabled on the zone.",
 															"example": true,
 															"type": "boolean"
 														}
@@ -1268,8 +1268,8 @@
 					"schema": {
 						"description": "Firewall for AI enablement status for a zone.",
 						"properties": {
-							"pii_detection_enabled": {
-								"description": "Whether Firewall for AI is enabled on the zone. Despite the field name, this controls the entire Firewall for AI feature, not just PII detection.",
+							"enabled": {
+								"description": "Whether Firewall for AI is enabled on the zone.",
 								"example": true,
 								"type": "boolean"
 							}
@@ -1390,8 +1390,8 @@
 										"result": {
 											"description": "Firewall for AI enablement status for a zone.",
 											"properties": {
-												"pii_detection_enabled": {
-													"description": "Whether Firewall for AI is enabled on the zone. Despite the field name, this controls the entire Firewall for AI feature, not just PII detection.",
+												"enabled": {
+													"description": "Whether Firewall for AI is enabled on the zone.",
 													"example": true,
 													"type": "boolean"
 												}
@@ -1518,8 +1518,8 @@
 												"result": {
 													"description": "Firewall for AI enablement status for a zone.",
 													"properties": {
-														"pii_detection_enabled": {
-															"description": "Whether Firewall for AI is enabled on the zone. Despite the field name, this controls the entire Firewall for AI feature, not just PII detection.",
+														"enabled": {
+															"description": "Whether Firewall for AI is enabled on the zone.",
 															"example": true,
 															"type": "boolean"
 														}
