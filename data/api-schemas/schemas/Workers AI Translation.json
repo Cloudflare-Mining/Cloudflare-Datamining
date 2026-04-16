@@ -167,6 +167,10 @@
 		"tags": [
 			"Workers AI Translation"
 		],
+		"x-api-token-group": [
+			"Workers AI Write",
+			"Workers AI Read"
+		],
 		"x-cfPermissionsRequired": {
 			"enum": [
 				"com.cloudflare.api.account.ai"
@@ -347,6 +351,10 @@
 		"tags": [
 			"Workers AI Translation"
 		],
+		"x-api-token-group": [
+			"Workers AI Write",
+			"Workers AI Read"
+		],
 		"x-cfPermissionsRequired": {
 			"enum": [
 				"com.cloudflare.api.account.ai"
@@ -523,6 +531,10 @@
 		"summary": "Execute @cf/meta/m2m100-1.2b model.",
 		"tags": [
 			"Workers AI Translation"
+		],
+		"x-api-token-group": [
+			"Workers AI Write",
+			"Workers AI Read"
 		],
 		"x-cfPermissionsRequired": {
 			"enum": [

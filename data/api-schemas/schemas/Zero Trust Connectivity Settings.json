@@ -233,6 +233,11 @@
 		"summary": "Get Zero Trust Connectivity Settings",
 		"tags": [
 			"Zero Trust Connectivity Settings"
+		],
+		"x-api-token-group": [
+			"Zero Trust Report",
+			"Zero Trust Read",
+			"Zero Trust Write"
 		]
 	},
 	"PATCH /accounts/{account_id}/zerotrust/connectivity_settings": {
@@ -493,6 +498,9 @@
 		"summary": "Updates the Zero Trust Connectivity Settings",
 		"tags": [
 			"Zero Trust Connectivity Settings"
+		],
+		"x-api-token-group": [
+			"Zero Trust Write"
 		]
 	}
 }

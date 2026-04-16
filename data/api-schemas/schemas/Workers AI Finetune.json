@@ -121,6 +121,10 @@
 		"tags": [
 			"Workers AI Finetune"
 		],
+		"x-api-token-group": [
+			"Workers AI Write",
+			"Workers AI Read"
+		],
 		"x-cfPermissionsRequired": {
 			"enum": [
 				"com.cloudflare.api.account.ai"
@@ -290,6 +294,10 @@
 		"tags": [
 			"Workers AI Finetune"
 		],
+		"x-api-token-group": [
+			"Workers AI Write",
+			"Workers AI Read"
+		],
 		"x-cfPermissionsRequired": {
 			"enum": [
 				"com.cloudflare.api.account.ai"
@@ -447,6 +455,9 @@
 		"tags": [
 			"Workers AI Finetune"
 		],
+		"x-api-token-group": [
+			"Workers AI Write"
+		],
 		"x-cfPermissionsRequired": {
 			"enum": [
 				"com.cloudflare.api.account.ai"
@@ -557,6 +568,9 @@
 		"summary": "Upload a Finetune Asset",
 		"tags": [
 			"Workers AI Finetune"
+		],
+		"x-api-token-group": [
+			"Workers AI Write"
 		],
 		"x-cfPermissionsRequired": {
 			"enum": [

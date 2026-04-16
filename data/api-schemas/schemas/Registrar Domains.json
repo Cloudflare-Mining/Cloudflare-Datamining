@@ -858,6 +858,7 @@
 		"tags": [
 			"Registrar Domains"
 		],
+		"x-api-token-group": null,
 		"x-stainless-deprecation-message": "This operation is deprecated and will be removed in a future release. A replacement Registrar API will be announced separately."
 	},
 	"GET /accounts/{account_id}/registrar/domains/{domain_name}": {
@@ -1206,6 +1207,7 @@
 		"tags": [
 			"Registrar Domains"
 		],
+		"x-api-token-group": null,
 		"x-stainless-deprecation-message": "This operation is deprecated and will be removed in a future release. A replacement Registrar API will be announced separately."
 	},
 	"PUT /accounts/{account_id}/registrar/domains/{domain_name}": {
@@ -1588,6 +1590,7 @@
 		"tags": [
 			"Registrar Domains"
 		],
+		"x-api-token-group": null,
 		"x-stainless-deprecation-message": "This operation is deprecated and will be removed in a future release. A replacement Registrar API will be announced separately."
 	}
 }

@@ -262,6 +262,9 @@
 		"tags": [
 			"User API Tokens"
 		],
+		"x-api-token-group": [
+			"API Tokens Write"
+		],
 		"x-cfPermissionsRequired": {
 			"enum": [
 				"com.cloudflare.api.token.delete"
@@ -829,6 +832,10 @@
 		"tags": [
 			"User API Tokens"
 		],
+		"x-api-token-group": [
+			"API Tokens Write",
+			"API Tokens Read"
+		],
 		"x-cfPermissionsRequired": {
 			"enum": [
 				"com.cloudflare.api.token.list"
@@ -1343,6 +1350,10 @@
 		"tags": [
 			"User API Tokens"
 		],
+		"x-api-token-group": [
+			"API Tokens Write",
+			"API Tokens Read"
+		],
 		"x-cfPermissionsRequired": {
 			"enum": [
 				"com.cloudflare.api.token.read"
@@ -1716,6 +1727,10 @@
 		"summary": "List Token Permission Groups",
 		"tags": [
 			"User API Tokens"
+		],
+		"x-api-token-group": [
+			"API Tokens Write",
+			"API Tokens Read"
 		],
 		"x-cfPermissionsRequired": {
 			"enum": [
@@ -2736,6 +2751,9 @@
 		"tags": [
 			"User API Tokens"
 		],
+		"x-api-token-group": [
+			"API Tokens Write"
+		],
 		"x-cfPermissionsRequired": {
 			"enum": [
 				"com.cloudflare.api.token.create"
@@ -3527,6 +3545,9 @@
 		"tags": [
 			"User API Tokens"
 		],
+		"x-api-token-group": [
+			"API Tokens Write"
+		],
 		"x-cfPermissionsRequired": {
 			"enum": [
 				"com.cloudflare.api.token.update"
@@ -3802,6 +3823,9 @@
 		"summary": "Roll Token",
 		"tags": [
 			"User API Tokens"
+		],
+		"x-api-token-group": [
+			"API Tokens Write"
 		],
 		"x-cfPermissionsRequired": {
 			"enum": [

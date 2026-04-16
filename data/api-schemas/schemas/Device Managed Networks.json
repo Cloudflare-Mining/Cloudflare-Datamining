@@ -520,6 +520,9 @@
 		"summary": "Delete a device managed network",
 		"tags": [
 			"Device Managed Networks"
+		],
+		"x-api-token-group": [
+			"Zero Trust Write"
 		]
 	},
 	"GET /accounts/{account_id}/devices/networks": {
@@ -2015,6 +2018,9 @@
 		"summary": "Create a device managed network",
 		"tags": [
 			"Device Managed Networks"
+		],
+		"x-api-token-group": [
+			"Zero Trust Write"
 		]
 	},
 	"PUT /accounts/{account_id}/devices/networks/{network_id}": {
@@ -2541,6 +2547,9 @@
 		"summary": "Update a device managed network",
 		"tags": [
 			"Device Managed Networks"
+		],
+		"x-api-token-group": [
+			"Zero Trust Write"
 		]
 	}
 }

@@ -444,6 +444,9 @@
 		"summary": "Delete WARP IP subnet",
 		"tags": [
 			"Zero Trust Subnets"
+		],
+		"x-api-token-group": [
+			"Cloudflare One Networks Write"
 		]
 	},
 	"GET /accounts/{account_id}/zerotrust/subnets": {
@@ -1079,6 +1082,10 @@
 		"summary": "List Subnets",
 		"tags": [
 			"Zero Trust Subnets"
+		],
+		"x-api-token-group": [
+			"Cloudflare One Networks Write",
+			"Cloudflare One Networks Read"
 		]
 	},
 	"GET /accounts/{account_id}/zerotrust/subnets/warp/{subnet_id}": {
@@ -1524,6 +1531,10 @@
 		"summary": "Get WARP IP subnet",
 		"tags": [
 			"Zero Trust Subnets"
+		],
+		"x-api-token-group": [
+			"Cloudflare One Networks Write",
+			"Cloudflare One Networks Read"
 		]
 	},
 	"PATCH /accounts/{account_id}/zerotrust/subnets/cloudflare_source/{address_family}": {
@@ -2003,6 +2014,9 @@
 		"summary": "Update Cloudflare Source Subnet",
 		"tags": [
 			"Zero Trust Subnets"
+		],
+		"x-api-token-group": [
+			"Cloudflare One Networks Write"
 		]
 	},
 	"PATCH /accounts/{account_id}/zerotrust/subnets/warp/{subnet_id}": {
@@ -2487,6 +2501,9 @@
 		"summary": "Update WARP IP subnet",
 		"tags": [
 			"Zero Trust Subnets"
+		],
+		"x-api-token-group": [
+			"Cloudflare One Networks Write"
 		]
 	},
 	"POST /accounts/{account_id}/zerotrust/subnets/warp": {
@@ -2963,6 +2980,9 @@
 		"summary": "Create WARP IP subnet",
 		"tags": [
 			"Zero Trust Subnets"
+		],
+		"x-api-token-group": [
+			"Cloudflare One Networks Write"
 		]
 	}
 }

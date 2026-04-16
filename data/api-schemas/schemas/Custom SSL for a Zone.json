@@ -387,6 +387,10 @@
 		"tags": [
 			"Custom SSL for a Zone"
 		],
+		"x-api-token-group": [
+			"Access: Mutual TLS Certificates Write",
+			"SSL and Certificates Write"
+		],
 		"x-cfPermissionsRequired": {
 			"enum": [
 				"#ssl:edit"
@@ -1381,6 +1385,12 @@
 		"tags": [
 			"Custom SSL for a Zone"
 		],
+		"x-api-token-group": [
+			"Access: Mutual TLS Certificates Write",
+			"Access: Mutual TLS Certificates Read",
+			"SSL and Certificates Write",
+			"SSL and Certificates Read"
+		],
 		"x-cfPermissionsRequired": {
 			"enum": [
 				"#ssl:read"
@@ -2260,6 +2270,12 @@
 		"summary": "SSL Configuration Details",
 		"tags": [
 			"Custom SSL for a Zone"
+		],
+		"x-api-token-group": [
+			"Access: Mutual TLS Certificates Write",
+			"Access: Mutual TLS Certificates Read",
+			"SSL and Certificates Write",
+			"SSL and Certificates Read"
 		],
 		"x-cfPermissionsRequired": {
 			"enum": [
@@ -3214,6 +3230,10 @@
 		"summary": "Edit SSL Configuration",
 		"tags": [
 			"Custom SSL for a Zone"
+		],
+		"x-api-token-group": [
+			"Access: Mutual TLS Certificates Write",
+			"SSL and Certificates Write"
 		],
 		"x-cfPermissionsRequired": {
 			"enum": [
@@ -4171,6 +4191,10 @@
 		"summary": "Create SSL Configuration",
 		"tags": [
 			"Custom SSL for a Zone"
+		],
+		"x-api-token-group": [
+			"Access: Mutual TLS Certificates Write",
+			"SSL and Certificates Write"
 		],
 		"x-cfPermissionsRequired": {
 			"enum": [
@@ -5162,6 +5186,10 @@
 		"summary": "Re-prioritize SSL Certificates",
 		"tags": [
 			"Custom SSL for a Zone"
+		],
+		"x-api-token-group": [
+			"Access: Mutual TLS Certificates Write",
+			"SSL and Certificates Write"
 		],
 		"x-cfPermissionsRequired": {
 			"enum": [

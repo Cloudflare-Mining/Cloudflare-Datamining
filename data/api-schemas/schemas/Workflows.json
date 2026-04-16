@@ -253,6 +253,9 @@
 		"tags": [
 			"Workflows"
 		],
+		"x-api-token-group": [
+			"Workers Scripts Write"
+		],
 		"x-cfPermissionsRequired": {
 			"enum": [
 				"com.cloudflare.api.workers.write",
@@ -541,6 +544,11 @@
 		"summary": "List all Workflows",
 		"tags": [
 			"Workflows"
+		],
+		"x-api-token-group": [
+			"Workers Tail Read",
+			"Workers Scripts Write",
+			"Workers Scripts Read"
 		],
 		"x-cfPermissionsRequired": {
 			"enum": [
@@ -862,6 +870,11 @@
 		"summary": "Get Workflow details",
 		"tags": [
 			"Workflows"
+		],
+		"x-api-token-group": [
+			"Workers Tail Read",
+			"Workers Scripts Write",
+			"Workers Scripts Read"
 		],
 		"x-cfPermissionsRequired": {
 			"enum": [
@@ -1256,6 +1269,11 @@
 		"summary": "List of workflow instances",
 		"tags": [
 			"Workflows"
+		],
+		"x-api-token-group": [
+			"Workers Tail Read",
+			"Workers Scripts Write",
+			"Workers Scripts Read"
 		],
 		"x-cfPermissionsRequired": {
 			"enum": [
@@ -1917,6 +1935,11 @@
 		"tags": [
 			"Workflows"
 		],
+		"x-api-token-group": [
+			"Workers Tail Read",
+			"Workers Scripts Write",
+			"Workers Scripts Read"
+		],
 		"x-cfPermissionsRequired": {
 			"enum": [
 				"com.cloudflare.api.workers.write",
@@ -2179,6 +2202,11 @@
 		"summary": "Get status of the job responsible for terminate all instances of a workflow",
 		"tags": [
 			"Workflows"
+		],
+		"x-api-token-group": [
+			"Workers Tail Read",
+			"Workers Scripts Write",
+			"Workers Scripts Read"
 		],
 		"x-cfPermissionsRequired": {
 			"enum": [
@@ -2447,6 +2475,11 @@
 		"summary": "List deployed Workflow versions",
 		"tags": [
 			"Workflows"
+		],
+		"x-api-token-group": [
+			"Workers Tail Read",
+			"Workers Scripts Write",
+			"Workers Scripts Read"
 		],
 		"x-cfPermissionsRequired": {
 			"enum": [
@@ -2758,6 +2791,11 @@
 		"tags": [
 			"Workflows"
 		],
+		"x-api-token-group": [
+			"Workers Tail Read",
+			"Workers Scripts Write",
+			"Workers Scripts Read"
+		],
 		"x-cfPermissionsRequired": {
 			"enum": [
 				"com.cloudflare.api.workers.write",
@@ -2995,6 +3033,11 @@
 		"summary": "Get Workflow version dag",
 		"tags": [
 			"Workflows"
+		],
+		"x-api-token-group": [
+			"Workers Tail Read",
+			"Workers Scripts Write",
+			"Workers Scripts Read"
 		],
 		"x-cfPermissionsRequired": {
 			"enum": [
@@ -3991,6 +4034,11 @@
 		"tags": [
 			"Workflows"
 		],
+		"x-api-token-group": [
+			"Workers Tail Read",
+			"Workers Scripts Write",
+			"Workers Scripts Read"
+		],
 		"x-cfPermissionsRequired": {
 			"enum": [
 				"com.cloudflare.api.workers.write",
@@ -4356,6 +4404,9 @@
 		"tags": [
 			"Workflows"
 		],
+		"x-api-token-group": [
+			"Workers Scripts Write"
+		],
 		"x-cfPermissionsRequired": {
 			"enum": [
 				"com.cloudflare.api.workers.write",
@@ -4713,6 +4764,9 @@
 		"tags": [
 			"Workflows"
 		],
+		"x-api-token-group": [
+			"Workers Scripts Write"
+		],
 		"x-cfPermissionsRequired": {
 			"enum": [
 				"com.cloudflare.api.workers.write",
@@ -4993,6 +5047,9 @@
 		"summary": "Send event to instance",
 		"tags": [
 			"Workflows"
+		],
+		"x-api-token-group": [
+			"Workers Scripts Write"
 		],
 		"x-cfPermissionsRequired": {
 			"enum": [
@@ -5359,6 +5416,9 @@
 		"tags": [
 			"Workflows"
 		],
+		"x-api-token-group": [
+			"Workers Scripts Write"
+		],
 		"x-cfPermissionsRequired": {
 			"enum": [
 				"com.cloudflare.api.workers.write",
@@ -5643,6 +5703,9 @@
 		"tags": [
 			"Workflows"
 		],
+		"x-api-token-group": [
+			"Workers Scripts Write"
+		],
 		"x-cfPermissionsRequired": {
 			"enum": [
 				"com.cloudflare.api.workers.write",
@@ -5926,6 +5989,9 @@
 		"summary": "Create/modify Workflow",
 		"tags": [
 			"Workflows"
+		],
+		"x-api-token-group": [
+			"Workers Scripts Write"
 		],
 		"x-cfPermissionsRequired": {
 			"enum": [

@@ -1409,6 +1409,10 @@
 		"summary": "Search email messages",
 		"tags": [
 			"Email Security"
+		],
+		"x-api-token-group": [
+			"Cloud Email Security: Write",
+			"Cloud Email Security: Read"
 		]
 	},
 	"GET /accounts/{account_id}/email-security/investigate/{investigate_id}/action_log": {
@@ -1674,6 +1678,10 @@
 		"summary": "Get action log for a message",
 		"tags": [
 			"Email Security"
+		],
+		"x-api-token-group": [
+			"Cloud Email Security: Write",
+			"Cloud Email Security: Read"
 		]
 	},
 	"GET /accounts/{account_id}/email-security/investigate/{postfix_id}": {
@@ -2304,6 +2312,10 @@
 		"summary": "Get message details",
 		"tags": [
 			"Email Security"
+		],
+		"x-api-token-group": [
+			"Cloud Email Security: Write",
+			"Cloud Email Security: Read"
 		]
 	},
 	"GET /accounts/{account_id}/email-security/investigate/{postfix_id}/detections": {
@@ -2776,6 +2788,10 @@
 		"summary": "Get message detection details",
 		"tags": [
 			"Email Security"
+		],
+		"x-api-token-group": [
+			"Cloud Email Security: Write",
+			"Cloud Email Security: Read"
 		]
 	},
 	"GET /accounts/{account_id}/email-security/investigate/{postfix_id}/preview": {
@@ -2982,6 +2998,10 @@
 		"summary": "Get email preview",
 		"tags": [
 			"Email Security"
+		],
+		"x-api-token-group": [
+			"Cloud Email Security: Write",
+			"Cloud Email Security: Read"
 		]
 	},
 	"GET /accounts/{account_id}/email-security/investigate/{postfix_id}/raw": {
@@ -3188,6 +3208,10 @@
 		"summary": "Get raw email content",
 		"tags": [
 			"Email Security"
+		],
+		"x-api-token-group": [
+			"Cloud Email Security: Write",
+			"Cloud Email Security: Read"
 		]
 	},
 	"GET /accounts/{account_id}/email-security/investigate/{postfix_id}/trace": {
@@ -3464,6 +3488,10 @@
 		"summary": "Get email trace",
 		"tags": [
 			"Email Security"
+		],
+		"x-api-token-group": [
+			"Cloud Email Security: Write",
+			"Cloud Email Security: Read"
 		]
 	},
 	"GET /accounts/{account_id}/email-security/phishguard/reports": {
@@ -3789,6 +3817,10 @@
 		"summary": "Get `PhishGuard` reports",
 		"tags": [
 			"Email Security"
+		],
+		"x-api-token-group": [
+			"Cloud Email Security: Write",
+			"Cloud Email Security: Read"
 		]
 	},
 	"GET /accounts/{account_id}/email-security/submissions": {
@@ -4332,7 +4364,8 @@
 		"summary": "Get reclassify submissions",
 		"tags": [
 			"Email Security"
-		]
+		],
+		"x-api-token-group": null
 	},
 	"POST /accounts/{account_id}/email-security/investigate/{postfix_id}/move": {
 		"description": "Moves a single email message to a different folder or changes its quarantine status.",
@@ -4607,6 +4640,9 @@
 		"summary": "Move a message",
 		"tags": [
 			"Email Security"
+		],
+		"x-api-token-group": [
+			"Cloud Email Security: Write"
 		]
 	},
 	"POST /accounts/{account_id}/email-security/investigate/{postfix_id}/reclassify": {
@@ -4843,6 +4879,9 @@
 		"summary": "Change email classification",
 		"tags": [
 			"Email Security"
+		],
+		"x-api-token-group": [
+			"Cloud Email Security: Write"
 		]
 	},
 	"POST /accounts/{account_id}/email-security/investigate/move": {
@@ -5118,6 +5157,9 @@
 		"summary": "Move multiple messages",
 		"tags": [
 			"Email Security"
+		],
+		"x-api-token-group": [
+			"Cloud Email Security: Write"
 		]
 	},
 	"POST /accounts/{account_id}/email-security/investigate/preview": {
@@ -5342,6 +5384,9 @@
 		"summary": "Preview for non-detection messages",
 		"tags": [
 			"Email Security"
+		],
+		"x-api-token-group": [
+			"Cloud Email Security: Write"
 		]
 	},
 	"POST /accounts/{account_id}/email-security/investigate/release": {
@@ -5590,6 +5635,9 @@
 		"summary": "Release messages from quarantine",
 		"tags": [
 			"Email Security"
+		],
+		"x-api-token-group": [
+			"Cloud Email Security: Write"
 		]
 	}
 }

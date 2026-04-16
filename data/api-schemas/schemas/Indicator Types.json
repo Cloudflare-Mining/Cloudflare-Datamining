@@ -105,6 +105,10 @@
 		"summary": "Lists indicator types across multiple datasets",
 		"tags": [
 			"Indicator Types"
+		],
+		"x-api-token-group": [
+			"Cloudforce One Write",
+			"Cloudforce One Read"
 		]
 	},
 	"GET /accounts/{account_id}/cloudforce-one/events/indicatorTypes": {
@@ -203,6 +207,10 @@
 		"summary": "Lists all indicator types",
 		"tags": [
 			"Indicator Types"
+		],
+		"x-api-token-group": [
+			"Cloudforce One Write",
+			"Cloudforce One Read"
 		]
 	}
 }

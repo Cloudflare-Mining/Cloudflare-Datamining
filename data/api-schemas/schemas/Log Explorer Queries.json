@@ -293,6 +293,10 @@
 		"tags": [
 			"Log Explorer Queries"
 		],
+		"x-api-token-group": [
+			"Logs Write",
+			"Logs Read"
+		],
 		"x-auditable": false
 	},
 	"POST /zones/{zone_id}/logs/explorer/query/sql": {
@@ -588,6 +592,10 @@
 		"summary": "Run a log query",
 		"tags": [
 			"Log Explorer Queries"
+		],
+		"x-api-token-group": [
+			"Logs Write",
+			"Logs Read"
 		],
 		"x-auditable": false
 	}

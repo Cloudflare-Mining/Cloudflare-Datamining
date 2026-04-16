@@ -101,6 +101,9 @@
 		"summary": "Delete IP profile",
 		"tags": [
 			"IP Profiles"
+		],
+		"x-api-token-group": [
+			"Zero Trust Write"
 		]
 	},
 	"GET /accounts/{account_id}/devices/ip-profiles": {
@@ -308,6 +311,10 @@
 		"summary": "List IP profiles",
 		"tags": [
 			"IP Profiles"
+		],
+		"x-api-token-group": [
+			"Zero Trust Read",
+			"Zero Trust Write"
 		]
 	},
 	"GET /accounts/{account_id}/devices/ip-profiles/{profile_id}": {
@@ -471,6 +478,10 @@
 		"summary": "Get IP profile",
 		"tags": [
 			"IP Profiles"
+		],
+		"x-api-token-group": [
+			"Zero Trust Read",
+			"Zero Trust Write"
 		]
 	},
 	"PATCH /accounts/{account_id}/devices/ip-profiles/{profile_id}": {
@@ -683,6 +694,9 @@
 		"summary": "Update IP profile",
 		"tags": [
 			"IP Profiles"
+		],
+		"x-api-token-group": [
+			"Zero Trust Write"
 		]
 	},
 	"POST /accounts/{account_id}/devices/ip-profiles": {
@@ -895,6 +909,9 @@
 		"summary": "Create IP profile",
 		"tags": [
 			"IP Profiles"
+		],
+		"x-api-token-group": [
+			"Zero Trust Write"
 		]
 	}
 }

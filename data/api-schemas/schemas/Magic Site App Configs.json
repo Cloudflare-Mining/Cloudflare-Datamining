@@ -304,6 +304,10 @@
 		"tags": [
 			"Magic Site App Configs"
 		],
+		"x-api-token-group": [
+			"Magic WAN Write",
+			"Magic Transit Write"
+		],
 		"x-cfPlanAvailability": {
 			"business": false,
 			"enterprise": true,
@@ -606,6 +610,12 @@
 		"summary": "List App Configs",
 		"tags": [
 			"Magic Site App Configs"
+		],
+		"x-api-token-group": [
+			"Magic WAN Write",
+			"Magic WAN Read",
+			"Magic Transit Read",
+			"Magic Transit Write"
 		],
 		"x-cfPlanAvailability": {
 			"business": false,
@@ -1347,6 +1357,10 @@
 		"tags": [
 			"Magic Site App Configs"
 		],
+		"x-api-token-group": [
+			"Magic WAN Write",
+			"Magic Transit Write"
+		],
 		"x-cfPlanAvailability": {
 			"business": false,
 			"enterprise": true,
@@ -1702,6 +1716,10 @@
 		"summary": "Update an App Config",
 		"tags": [
 			"Magic Site App Configs"
+		],
+		"x-api-token-group": [
+			"Magic WAN Write",
+			"Magic Transit Write"
 		],
 		"x-cfPlanAvailability": {
 			"business": false,

@@ -289,6 +289,9 @@
 		"summary": "Delete (reset) DLP account-level settings to initial values.",
 		"tags": [
 			"DLP Settings"
+		],
+		"x-api-token-group": [
+			"Zero Trust Write"
 		]
 	},
 	"GET /accounts/{account_id}/dlp/limits": {
@@ -581,6 +584,10 @@
 		"summary": "Fetch limits associated with DLP for account",
 		"tags": [
 			"DLP Settings"
+		],
+		"x-api-token-group": [
+			"Zero Trust Read",
+			"Zero Trust Write"
 		]
 	},
 	"GET /accounts/{account_id}/dlp/payload_log": {
@@ -855,6 +862,10 @@
 		"summary": "Get payload log settings",
 		"tags": [
 			"DLP Settings"
+		],
+		"x-api-token-group": [
+			"Zero Trust Read",
+			"Zero Trust Write"
 		]
 	},
 	"GET /accounts/{account_id}/dlp/settings": {
@@ -1147,6 +1158,10 @@
 		"summary": "Get DLP account-level settings.",
 		"tags": [
 			"DLP Settings"
+		],
+		"x-api-token-group": [
+			"Zero Trust Read",
+			"Zero Trust Write"
 		]
 	},
 	"PATCH /accounts/{account_id}/dlp/settings": {
@@ -1499,6 +1514,9 @@
 		"summary": "Partially update DLP account-level settings.",
 		"tags": [
 			"DLP Settings"
+		],
+		"x-api-token-group": [
+			"Zero Trust Write"
 		]
 	},
 	"POST /accounts/{account_id}/dlp/patterns/validate": {
@@ -1780,6 +1798,9 @@
 		"summary": "Validate a DLP regex pattern",
 		"tags": [
 			"DLP Settings"
+		],
+		"x-api-token-group": [
+			"Zero Trust Write"
 		]
 	},
 	"PUT /accounts/{account_id}/dlp/payload_log": {
@@ -2087,6 +2108,9 @@
 		"summary": "Set payload log settings",
 		"tags": [
 			"DLP Settings"
+		],
+		"x-api-token-group": [
+			"Zero Trust Write"
 		]
 	},
 	"PUT /accounts/{account_id}/dlp/settings": {
@@ -2439,6 +2463,9 @@
 		"summary": "Update DLP account-level settings (full replacement).",
 		"tags": [
 			"DLP Settings"
+		],
+		"x-api-token-group": [
+			"Zero Trust Write"
 		]
 	}
 }

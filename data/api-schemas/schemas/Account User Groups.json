@@ -282,6 +282,10 @@
 		"tags": [
 			"Account User Groups"
 		],
+		"x-api-token-group": [
+			"SCIM Provisioning",
+			"Account Settings Write"
+		],
 		"x-cfPermissionsRequired": {
 			"enum": [
 				"com.cloudflare.api.account.member.delete"
@@ -614,6 +618,10 @@
 		"summary": "Remove User Group Member",
 		"tags": [
 			"Account User Groups"
+		],
+		"x-api-token-group": [
+			"SCIM Provisioning",
+			"Account Settings Write"
 		],
 		"x-cfPermissionsRequired": {
 			"enum": [
@@ -1206,6 +1214,11 @@
 		"tags": [
 			"Account User Groups"
 		],
+		"x-api-token-group": [
+			"SCIM Provisioning",
+			"Account Settings Write",
+			"Account Settings Read"
+		],
 		"x-cfPermissionsRequired": {
 			"enum": [
 				"com.cloudflare.api.account.member.list"
@@ -1711,6 +1724,11 @@
 		"tags": [
 			"Account User Groups"
 		],
+		"x-api-token-group": [
+			"SCIM Provisioning",
+			"Account Settings Write",
+			"Account Settings Read"
+		],
 		"x-cfPermissionsRequired": {
 			"enum": [
 				"com.cloudflare.api.account.member.read"
@@ -2078,6 +2096,11 @@
 		"summary": "List User Group Members",
 		"tags": [
 			"Account User Groups"
+		],
+		"x-api-token-group": [
+			"SCIM Provisioning",
+			"Account Settings Write",
+			"Account Settings Read"
 		],
 		"x-cfPermissionsRequired": {
 			"enum": [
@@ -2681,6 +2704,10 @@
 		"tags": [
 			"Account User Groups"
 		],
+		"x-api-token-group": [
+			"SCIM Provisioning",
+			"Account Settings Write"
+		],
 		"x-cfPermissionsRequired": {
 			"enum": [
 				"com.cloudflare.api.account.member.create"
@@ -3026,6 +3053,10 @@
 		"summary": "Add User Group Members",
 		"tags": [
 			"Account User Groups"
+		],
+		"x-api-token-group": [
+			"SCIM Provisioning",
+			"Account Settings Write"
 		],
 		"x-cfPermissionsRequired": {
 			"enum": [
@@ -3660,6 +3691,10 @@
 		"tags": [
 			"Account User Groups"
 		],
+		"x-api-token-group": [
+			"SCIM Provisioning",
+			"Account Settings Write"
+		],
 		"x-cfPermissionsRequired": {
 			"enum": [
 				"com.cloudflare.api.account.member.update"
@@ -4011,11 +4046,10 @@
 		"tags": [
 			"Account User Groups"
 		],
-		"x-cfPermissionsRequired": {
-			"enum": [
-				"com.cloudflare.api.account.member.update"
-			]
-		},
+		"x-api-token-group": [
+			"SCIM Provisioning",
+			"Account Settings Write"
+		],
 		"x-cfPlanAvailability": {
 			"business": true,
 			"enterprise": true,

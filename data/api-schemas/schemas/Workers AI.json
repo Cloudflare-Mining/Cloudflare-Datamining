@@ -105,6 +105,10 @@
 		"tags": [
 			"Workers AI"
 		],
+		"x-api-token-group": [
+			"Workers AI Write",
+			"Workers AI Read"
+		],
 		"x-cfPermissionsRequired": {
 			"enum": [
 				"com.cloudflare.api.account.ai"
@@ -265,6 +269,10 @@
 		"summary": "Get Model Schema",
 		"tags": [
 			"Workers AI"
+		],
+		"x-api-token-group": [
+			"Workers AI Write",
+			"Workers AI Read"
 		],
 		"x-cfPermissionsRequired": {
 			"enum": [
@@ -431,6 +439,10 @@
 		"tags": [
 			"Workers AI"
 		],
+		"x-api-token-group": [
+			"Workers AI Write",
+			"Workers AI Read"
+		],
 		"x-cfPermissionsRequired": {
 			"enum": [
 				"com.cloudflare.api.account.ai"
@@ -536,6 +548,10 @@
 		"summary": "Task Search",
 		"tags": [
 			"Workers AI"
+		],
+		"x-api-token-group": [
+			"Workers AI Write",
+			"Workers AI Read"
 		],
 		"x-cfPermissionsRequired": {
 			"enum": [
@@ -654,6 +670,10 @@
 		"summary": "Get all converted formats supported",
 		"tags": [
 			"Workers AI"
+		],
+		"x-api-token-group": [
+			"Workers AI Write",
+			"Workers AI Read"
 		],
 		"x-cfPermissionsRequired": {
 			"enum": [
@@ -1951,6 +1971,10 @@
 		"tags": [
 			"Workers AI"
 		],
+		"x-api-token-group": [
+			"Workers AI Write",
+			"Workers AI Read"
+		],
 		"x-cfPermissionsRequired": {
 			"enum": [
 				"com.cloudflare.api.account.ai"
@@ -2104,6 +2128,10 @@
 		"summary": "Convert Files into Markdown",
 		"tags": [
 			"Workers AI"
+		],
+		"x-api-token-group": [
+			"Workers AI Write",
+			"Workers AI Read"
 		],
 		"x-cfPermissionsRequired": {
 			"enum": [

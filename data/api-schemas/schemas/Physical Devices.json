@@ -93,6 +93,9 @@
 		"summary": "Delete device",
 		"tags": [
 			"Physical Devices"
+		],
+		"x-api-token-group": [
+			"Zero Trust Write"
 		]
 	},
 	"DELETE /accounts/{account_id}/devices/registrations": {
@@ -228,6 +231,9 @@
 		"summary": "Delete registrations",
 		"tags": [
 			"Physical Devices"
+		],
+		"x-api-token-group": [
+			"Zero Trust Write"
 		]
 	},
 	"GET /accounts/{account_id}/devices/physical-devices": {
@@ -1095,6 +1101,9 @@
 		"summary": "Revoke device registrations",
 		"tags": [
 			"Physical Devices"
+		],
+		"x-api-token-group": [
+			"Zero Trust Write"
 		]
 	}
 }

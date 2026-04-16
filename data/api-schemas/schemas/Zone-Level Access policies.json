@@ -279,6 +279,10 @@
 		"summary": "Delete an Access policy",
 		"tags": [
 			"Zone-Level Access policies"
+		],
+		"x-api-token-group": [
+			"Access: Apps and Policies Write",
+			"Access: Apps and Policies Write"
 		]
 	},
 	"GET /zones/{zone_id}/access/apps/{app_id}/policies": {
@@ -2637,6 +2641,12 @@
 		"summary": "List Access policies",
 		"tags": [
 			"Zone-Level Access policies"
+		],
+		"x-api-token-group": [
+			"Access: Apps and Policies Write",
+			"Access: Apps and Policies Read",
+			"Access: Apps and Policies Write",
+			"Access: Apps and Policies Read"
 		]
 	},
 	"GET /zones/{zone_id}/access/apps/{app_id}/policies/{policy_id}": {
@@ -4969,6 +4979,12 @@
 		"summary": "Get an Access policy",
 		"tags": [
 			"Zone-Level Access policies"
+		],
+		"x-api-token-group": [
+			"Access: Apps and Policies Write",
+			"Access: Apps and Policies Read",
+			"Access: Apps and Policies Write",
+			"Access: Apps and Policies Read"
 		]
 	},
 	"POST /zones/{zone_id}/access/apps/{app_id}/policies": {
@@ -9343,6 +9359,10 @@
 		"summary": "Create an Access policy",
 		"tags": [
 			"Zone-Level Access policies"
+		],
+		"x-api-token-group": [
+			"Access: Apps and Policies Write",
+			"Access: Apps and Policies Write"
 		]
 	},
 	"PUT /zones/{zone_id}/access/apps/{app_id}/policies/{policy_id}": {
@@ -13729,6 +13749,10 @@
 		"summary": "Update an Access policy",
 		"tags": [
 			"Zone-Level Access policies"
+		],
+		"x-api-token-group": [
+			"Access: Apps and Policies Write",
+			"Access: Apps and Policies Write"
 		]
 	}
 }

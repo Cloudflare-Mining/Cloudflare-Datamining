@@ -135,6 +135,10 @@
 		"summary": "Delete a participant",
 		"tags": [
 			"Meetings"
+		],
+		"x-api-token-group": [
+			"Realtime Admin",
+			"Realtime"
 		]
 	},
 	"GET /accounts/{account_id}/realtime/kit/{app_id}/meetings": {
@@ -347,6 +351,10 @@
 		"summary": "Fetch all meetings for an App",
 		"tags": [
 			"Meetings"
+		],
+		"x-api-token-group": [
+			"Realtime Admin",
+			"Realtime"
 		]
 	},
 	"GET /accounts/{account_id}/realtime/kit/{app_id}/meetings/{meeting_id}": {
@@ -843,6 +851,10 @@
 		"summary": "Fetch a meeting for an App",
 		"tags": [
 			"Meetings"
+		],
+		"x-api-token-group": [
+			"Realtime Admin",
+			"Realtime"
 		]
 	},
 	"GET /accounts/{account_id}/realtime/kit/{app_id}/meetings/{meeting_id}/participants": {
@@ -1062,6 +1074,10 @@
 		"summary": "Fetch all participants of a meeting",
 		"tags": [
 			"Meetings"
+		],
+		"x-api-token-group": [
+			"Realtime Admin",
+			"Realtime"
 		]
 	},
 	"GET /accounts/{account_id}/realtime/kit/{app_id}/meetings/{meeting_id}/participants/{participant_id}": {
@@ -1221,6 +1237,10 @@
 		"summary": "Fetch a participant's detail",
 		"tags": [
 			"Meetings"
+		],
+		"x-api-token-group": [
+			"Realtime Admin",
+			"Realtime"
 		]
 	},
 	"PATCH /accounts/{account_id}/realtime/kit/{app_id}/meetings/{meeting_id}": {
@@ -1845,6 +1865,10 @@
 		"summary": "Update a meeting",
 		"tags": [
 			"Meetings"
+		],
+		"x-api-token-group": [
+			"Realtime Admin",
+			"Realtime"
 		]
 	},
 	"PATCH /accounts/{account_id}/realtime/kit/{app_id}/meetings/{meeting_id}/participants/{participant_id}": {
@@ -2046,6 +2070,10 @@
 		"summary": "Edit a participant's detail",
 		"tags": [
 			"Meetings"
+		],
+		"x-api-token-group": [
+			"Realtime Admin",
+			"Realtime"
 		]
 	},
 	"POST /accounts/{account_id}/realtime/kit/{app_id}/meetings": {
@@ -2856,6 +2884,10 @@
 		"summary": "Create a meeting",
 		"tags": [
 			"Meetings"
+		],
+		"x-api-token-group": [
+			"Realtime Admin",
+			"Realtime"
 		]
 	},
 	"POST /accounts/{account_id}/realtime/kit/{app_id}/meetings/{meeting_id}/participants": {
@@ -3080,6 +3112,10 @@
 		"summary": "Add a participant",
 		"tags": [
 			"Meetings"
+		],
+		"x-api-token-group": [
+			"Realtime Admin",
+			"Realtime"
 		]
 	},
 	"POST /accounts/{account_id}/realtime/kit/{app_id}/meetings/{meeting_id}/participants/{participant_id}/token": {
@@ -3226,6 +3262,10 @@
 		"summary": "Refresh participant's authentication token",
 		"tags": [
 			"Meetings"
+		],
+		"x-api-token-group": [
+			"Realtime Admin",
+			"Realtime"
 		]
 	},
 	"PUT /accounts/{account_id}/realtime/kit/{app_id}/meetings/{meeting_id}": {
@@ -4023,6 +4063,10 @@
 		"summary": "Replace a meeting",
 		"tags": [
 			"Meetings"
+		],
+		"x-api-token-group": [
+			"Realtime Admin",
+			"Realtime"
 		]
 	}
 }

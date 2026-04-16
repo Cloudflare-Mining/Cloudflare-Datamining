@@ -338,6 +338,9 @@
 		"summary": "Delete Pool",
 		"tags": [
 			"Load Balancer Pools"
+		],
+		"x-api-token-group": [
+			"Load Balancing: Monitors and Pools Write"
 		]
 	},
 	"GET /user/load_balancers/pools": {
@@ -1349,6 +1352,10 @@
 		"summary": "List Pools",
 		"tags": [
 			"Load Balancer Pools"
+		],
+		"x-api-token-group": [
+			"Load Balancing: Monitors and Pools Write",
+			"Load Balancing: Monitors and Pools Read"
 		]
 	},
 	"GET /user/load_balancers/pools/{pool_id}": {
@@ -2314,6 +2321,10 @@
 		"summary": "Pool Details",
 		"tags": [
 			"Load Balancer Pools"
+		],
+		"x-api-token-group": [
+			"Load Balancing: Monitors and Pools Write",
+			"Load Balancing: Monitors and Pools Read"
 		]
 	},
 	"GET /user/load_balancers/pools/{pool_id}/health": {
@@ -2787,6 +2798,10 @@
 		"summary": "Pool Health Details",
 		"tags": [
 			"Load Balancer Pools"
+		],
+		"x-api-token-group": [
+			"Load Balancing: Monitors and Pools Write",
+			"Load Balancing: Monitors and Pools Read"
 		]
 	},
 	"GET /user/load_balancers/pools/{pool_id}/references": {
@@ -3146,6 +3161,10 @@
 		"summary": "List Pool References",
 		"tags": [
 			"Load Balancer Pools"
+		],
+		"x-api-token-group": [
+			"Load Balancing: Monitors and Pools Write",
+			"Load Balancing: Monitors and Pools Read"
 		]
 	},
 	"PATCH /user/load_balancers/pools": {
@@ -4167,6 +4186,9 @@
 		"summary": "Patch Pools",
 		"tags": [
 			"Load Balancer Pools"
+		],
+		"x-api-token-group": [
+			"Load Balancing: Monitors and Pools Write"
 		]
 	},
 	"PATCH /user/load_balancers/pools/{pool_id}": {
@@ -5432,6 +5454,9 @@
 		"summary": "Patch Pool",
 		"tags": [
 			"Load Balancer Pools"
+		],
+		"x-api-token-group": [
+			"Load Balancing: Monitors and Pools Write"
 		]
 	},
 	"POST /user/load_balancers/pools": {
@@ -6695,6 +6720,9 @@
 		"summary": "Create Pool",
 		"tags": [
 			"Load Balancer Pools"
+		],
+		"x-api-token-group": [
+			"Load Balancing: Monitors and Pools Write"
 		]
 	},
 	"POST /user/load_balancers/pools/{pool_id}/preview": {
@@ -8479,6 +8507,9 @@
 		"summary": "Update Pool",
 		"tags": [
 			"Load Balancer Pools"
+		],
+		"x-api-token-group": [
+			"Load Balancing: Monitors and Pools Write"
 		]
 	}
 }

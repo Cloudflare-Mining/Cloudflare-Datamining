@@ -179,6 +179,9 @@
 		"summary": "Delete repository connection",
 		"tags": [
 			"Repository Connections"
+		],
+		"x-api-token-group": [
+			"Workers CI Write"
 		]
 	},
 	"PUT /accounts/{account_id}/builds/repos/connections": {
@@ -384,6 +387,9 @@
 		"summary": "Create or update repository connection",
 		"tags": [
 			"Repository Connections"
+		],
+		"x-api-token-group": [
+			"Workers CI Write"
 		]
 	}
 }

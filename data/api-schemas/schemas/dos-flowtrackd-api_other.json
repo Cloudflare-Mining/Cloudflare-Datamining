@@ -124,6 +124,9 @@
 		"summary": "Delete all DNS Protection rules.",
 		"tags": [
 			"dos-flowtrackd-api_other"
+		],
+		"x-api-token-group": [
+			"DDoS Protection Write"
 		]
 	},
 	"DELETE /accounts/{account_id}/magic/advanced_dns_protection/configs/dns_protection/rules/{rule_id}": {
@@ -377,6 +380,9 @@
 		"summary": "Delete DNS Protection rule.",
 		"tags": [
 			"dos-flowtrackd-api_other"
+		],
+		"x-api-token-group": [
+			"DDoS Protection Write"
 		]
 	},
 	"DELETE /accounts/{account_id}/magic/advanced_tcp_protection/configs/allowlist": {
@@ -617,6 +623,9 @@
 		"summary": "Delete all allowlist prefixes.",
 		"tags": [
 			"dos-flowtrackd-api_other"
+		],
+		"x-api-token-group": [
+			"DDoS Protection Write"
 		]
 	},
 	"DELETE /accounts/{account_id}/magic/advanced_tcp_protection/configs/allowlist/{prefix_id}": {
@@ -870,6 +879,9 @@
 		"summary": "Delete allowlist prefix.",
 		"tags": [
 			"dos-flowtrackd-api_other"
+		],
+		"x-api-token-group": [
+			"DDoS Protection Write"
 		]
 	},
 	"DELETE /accounts/{account_id}/magic/advanced_tcp_protection/configs/prefixes": {
@@ -1110,6 +1122,9 @@
 		"summary": "Delete all prefixes.",
 		"tags": [
 			"dos-flowtrackd-api_other"
+		],
+		"x-api-token-group": [
+			"DDoS Protection Write"
 		]
 	},
 	"DELETE /accounts/{account_id}/magic/advanced_tcp_protection/configs/prefixes/{prefix_id}": {
@@ -1363,6 +1378,9 @@
 		"summary": "Delete prefix.",
 		"tags": [
 			"dos-flowtrackd-api_other"
+		],
+		"x-api-token-group": [
+			"DDoS Protection Write"
 		]
 	},
 	"DELETE /accounts/{account_id}/magic/advanced_tcp_protection/configs/syn_protection/filters": {
@@ -1603,6 +1621,9 @@
 		"summary": "Delete all SYN Protection filters.",
 		"tags": [
 			"dos-flowtrackd-api_other"
+		],
+		"x-api-token-group": [
+			"DDoS Protection Write"
 		]
 	},
 	"DELETE /accounts/{account_id}/magic/advanced_tcp_protection/configs/syn_protection/filters/{filter_id}": {
@@ -1856,6 +1877,9 @@
 		"summary": "Delete SYN Protection filter.",
 		"tags": [
 			"dos-flowtrackd-api_other"
+		],
+		"x-api-token-group": [
+			"DDoS Protection Write"
 		]
 	},
 	"DELETE /accounts/{account_id}/magic/advanced_tcp_protection/configs/syn_protection/rules": {
@@ -2096,6 +2120,9 @@
 		"summary": "Delete all SYN Protection rules.",
 		"tags": [
 			"dos-flowtrackd-api_other"
+		],
+		"x-api-token-group": [
+			"DDoS Protection Write"
 		]
 	},
 	"DELETE /accounts/{account_id}/magic/advanced_tcp_protection/configs/syn_protection/rules/{rule_id}": {
@@ -2349,6 +2376,9 @@
 		"summary": "Delete SYN Protection rule.",
 		"tags": [
 			"dos-flowtrackd-api_other"
+		],
+		"x-api-token-group": [
+			"DDoS Protection Write"
 		]
 	},
 	"DELETE /accounts/{account_id}/magic/advanced_tcp_protection/configs/tcp_flow_protection/filters": {
@@ -2589,6 +2619,9 @@
 		"summary": "Delete all TCP Flow Protection filters.",
 		"tags": [
 			"dos-flowtrackd-api_other"
+		],
+		"x-api-token-group": [
+			"DDoS Protection Write"
 		]
 	},
 	"DELETE /accounts/{account_id}/magic/advanced_tcp_protection/configs/tcp_flow_protection/filters/{filter_id}": {
@@ -2842,6 +2875,9 @@
 		"summary": "Delete TCP Flow Protection filter.",
 		"tags": [
 			"dos-flowtrackd-api_other"
+		],
+		"x-api-token-group": [
+			"DDoS Protection Write"
 		]
 	},
 	"DELETE /accounts/{account_id}/magic/advanced_tcp_protection/configs/tcp_flow_protection/rules": {
@@ -3082,6 +3118,9 @@
 		"summary": "Delete all TCP Flow Protection rules.",
 		"tags": [
 			"dos-flowtrackd-api_other"
+		],
+		"x-api-token-group": [
+			"DDoS Protection Write"
 		]
 	},
 	"DELETE /accounts/{account_id}/magic/advanced_tcp_protection/configs/tcp_flow_protection/rules/{rule_id}": {
@@ -3335,6 +3374,9 @@
 		"summary": "Delete TCP Flow Protection rule.",
 		"tags": [
 			"dos-flowtrackd-api_other"
+		],
+		"x-api-token-group": [
+			"DDoS Protection Write"
 		]
 	},
 	"GET /accounts/{account_id}/magic/advanced_dns_protection/configs/dns_protection/rules": {
@@ -3732,6 +3774,10 @@
 		"summary": "List all DNS Protection rules.",
 		"tags": [
 			"dos-flowtrackd-api_other"
+		],
+		"x-api-token-group": [
+			"DDoS Protection Write",
+			"DDoS Protection Read"
 		]
 	},
 	"GET /accounts/{account_id}/magic/advanced_dns_protection/configs/dns_protection/rules/{rule_id}": {
@@ -4057,6 +4103,10 @@
 		"summary": "Get DNS Protection rule.",
 		"tags": [
 			"dos-flowtrackd-api_other"
+		],
+		"x-api-token-group": [
+			"DDoS Protection Write",
+			"DDoS Protection Read"
 		]
 	},
 	"GET /accounts/{account_id}/magic/advanced_tcp_protection/configs/allowlist": {
@@ -4435,6 +4485,10 @@
 		"summary": "List all allowlist prefixes.",
 		"tags": [
 			"dos-flowtrackd-api_other"
+		],
+		"x-api-token-group": [
+			"DDoS Protection Write",
+			"DDoS Protection Read"
 		]
 	},
 	"GET /accounts/{account_id}/magic/advanced_tcp_protection/configs/allowlist/{prefix_id}": {
@@ -4742,6 +4796,10 @@
 		"summary": "Get allowlist prefix.",
 		"tags": [
 			"dos-flowtrackd-api_other"
+		],
+		"x-api-token-group": [
+			"DDoS Protection Write",
+			"DDoS Protection Read"
 		]
 	},
 	"GET /accounts/{account_id}/magic/advanced_tcp_protection/configs/prefixes": {
@@ -5122,6 +5180,10 @@
 		"summary": "List all prefixes.",
 		"tags": [
 			"dos-flowtrackd-api_other"
+		],
+		"x-api-token-group": [
+			"DDoS Protection Write",
+			"DDoS Protection Read"
 		]
 	},
 	"GET /accounts/{account_id}/magic/advanced_tcp_protection/configs/prefixes/{prefix_id}": {
@@ -5430,6 +5492,10 @@
 		"summary": "Get prefix.",
 		"tags": [
 			"dos-flowtrackd-api_other"
+		],
+		"x-api-token-group": [
+			"DDoS Protection Write",
+			"DDoS Protection Read"
 		]
 	},
 	"GET /accounts/{account_id}/magic/advanced_tcp_protection/configs/syn_protection/filters": {
@@ -5814,6 +5880,10 @@
 		"summary": "List all SYN Protection filters.",
 		"tags": [
 			"dos-flowtrackd-api_other"
+		],
+		"x-api-token-group": [
+			"DDoS Protection Write",
+			"DDoS Protection Read"
 		]
 	},
 	"GET /accounts/{account_id}/magic/advanced_tcp_protection/configs/syn_protection/filters/{filter_id}": {
@@ -6116,6 +6186,10 @@
 		"summary": "Get SYN Protection filter.",
 		"tags": [
 			"dos-flowtrackd-api_other"
+		],
+		"x-api-token-group": [
+			"DDoS Protection Write",
+			"DDoS Protection Read"
 		]
 	},
 	"GET /accounts/{account_id}/magic/advanced_tcp_protection/configs/syn_protection/rules": {
@@ -6513,6 +6587,10 @@
 		"summary": "List all SYN Protection rules.",
 		"tags": [
 			"dos-flowtrackd-api_other"
+		],
+		"x-api-token-group": [
+			"DDoS Protection Write",
+			"DDoS Protection Read"
 		]
 	},
 	"GET /accounts/{account_id}/magic/advanced_tcp_protection/configs/syn_protection/rules/{rule_id}": {
@@ -6838,6 +6916,10 @@
 		"summary": "Get SYN Protection rule.",
 		"tags": [
 			"dos-flowtrackd-api_other"
+		],
+		"x-api-token-group": [
+			"DDoS Protection Write",
+			"DDoS Protection Read"
 		]
 	},
 	"GET /accounts/{account_id}/magic/advanced_tcp_protection/configs/tcp_flow_protection/filters": {
@@ -7222,6 +7304,10 @@
 		"summary": "List all TCP Flow Protection filters.",
 		"tags": [
 			"dos-flowtrackd-api_other"
+		],
+		"x-api-token-group": [
+			"DDoS Protection Write",
+			"DDoS Protection Read"
 		]
 	},
 	"GET /accounts/{account_id}/magic/advanced_tcp_protection/configs/tcp_flow_protection/filters/{filter_id}": {
@@ -7524,6 +7610,10 @@
 		"summary": "Get TCP Flow Protection filter.",
 		"tags": [
 			"dos-flowtrackd-api_other"
+		],
+		"x-api-token-group": [
+			"DDoS Protection Write",
+			"DDoS Protection Read"
 		]
 	},
 	"GET /accounts/{account_id}/magic/advanced_tcp_protection/configs/tcp_flow_protection/rules": {
@@ -7915,6 +8005,10 @@
 		"summary": "List all TCP Flow Protection rules.",
 		"tags": [
 			"dos-flowtrackd-api_other"
+		],
+		"x-api-token-group": [
+			"DDoS Protection Write",
+			"DDoS Protection Read"
 		]
 	},
 	"GET /accounts/{account_id}/magic/advanced_tcp_protection/configs/tcp_flow_protection/rules/{rule_id}": {
@@ -8234,6 +8328,10 @@
 		"summary": "Get TCP Flow Protection rule.",
 		"tags": [
 			"dos-flowtrackd-api_other"
+		],
+		"x-api-token-group": [
+			"DDoS Protection Write",
+			"DDoS Protection Read"
 		]
 	},
 	"GET /accounts/{account_id}/magic/advanced_tcp_protection/configs/tcp_protection_status": {
@@ -8495,6 +8593,10 @@
 		"summary": "Get protection status.",
 		"tags": [
 			"dos-flowtrackd-api_other"
+		],
+		"x-api-token-group": [
+			"DDoS Protection Write",
+			"DDoS Protection Read"
 		]
 	},
 	"PATCH /accounts/{account_id}/magic/advanced_dns_protection/configs/dns_protection/rules/{rule_id}": {
@@ -8854,6 +8956,9 @@
 		"summary": "Update DNS Protection rule.",
 		"tags": [
 			"dos-flowtrackd-api_other"
+		],
+		"x-api-token-group": [
+			"DDoS Protection Write"
 		]
 	},
 	"PATCH /accounts/{account_id}/magic/advanced_tcp_protection/configs/allowlist/{prefix_id}": {
@@ -9185,6 +9290,9 @@
 		"summary": "Update allowlist prefix.",
 		"tags": [
 			"dos-flowtrackd-api_other"
+		],
+		"x-api-token-group": [
+			"DDoS Protection Write"
 		]
 	},
 	"PATCH /accounts/{account_id}/magic/advanced_tcp_protection/configs/prefixes/{prefix_id}": {
@@ -9517,6 +9625,9 @@
 		"summary": "Update prefix.",
 		"tags": [
 			"dos-flowtrackd-api_other"
+		],
+		"x-api-token-group": [
+			"DDoS Protection Write"
 		]
 	},
 	"PATCH /accounts/{account_id}/magic/advanced_tcp_protection/configs/syn_protection/filters/{filter_id}": {
@@ -9844,6 +9955,9 @@
 		"summary": "Update SYN Protection filter.",
 		"tags": [
 			"dos-flowtrackd-api_other"
+		],
+		"x-api-token-group": [
+			"DDoS Protection Write"
 		]
 	},
 	"PATCH /accounts/{account_id}/magic/advanced_tcp_protection/configs/syn_protection/rules/{rule_id}": {
@@ -10203,6 +10317,9 @@
 		"summary": "Update SYN Protection rule.",
 		"tags": [
 			"dos-flowtrackd-api_other"
+		],
+		"x-api-token-group": [
+			"DDoS Protection Write"
 		]
 	},
 	"PATCH /accounts/{account_id}/magic/advanced_tcp_protection/configs/tcp_flow_protection/filters/{filter_id}": {
@@ -10530,6 +10647,9 @@
 		"summary": "Update TCP Flow Protection filter.",
 		"tags": [
 			"dos-flowtrackd-api_other"
+		],
+		"x-api-token-group": [
+			"DDoS Protection Write"
 		]
 	},
 	"PATCH /accounts/{account_id}/magic/advanced_tcp_protection/configs/tcp_flow_protection/rules/{rule_id}": {
@@ -10878,6 +10998,9 @@
 		"summary": "Update TCP Flow Protection rule.",
 		"tags": [
 			"dos-flowtrackd-api_other"
+		],
+		"x-api-token-group": [
+			"DDoS Protection Write"
 		]
 	},
 	"PATCH /accounts/{account_id}/magic/advanced_tcp_protection/configs/tcp_protection_status": {
@@ -11161,6 +11284,9 @@
 		"summary": "Update protection status.",
 		"tags": [
 			"dos-flowtrackd-api_other"
+		],
+		"x-api-token-group": [
+			"DDoS Protection Write"
 		]
 	},
 	"POST /accounts/{account_id}/magic/advanced_dns_protection/configs/dns_protection/rules": {
@@ -11525,6 +11651,9 @@
 		"summary": "Create DNS Protection rule.",
 		"tags": [
 			"dos-flowtrackd-api_other"
+		],
+		"x-api-token-group": [
+			"DDoS Protection Write"
 		]
 	},
 	"POST /accounts/{account_id}/magic/advanced_tcp_protection/configs/allowlist": {
@@ -11853,6 +11982,9 @@
 		"summary": "Create allowlist prefix.",
 		"tags": [
 			"dos-flowtrackd-api_other"
+		],
+		"x-api-token-group": [
+			"DDoS Protection Write"
 		]
 	},
 	"POST /accounts/{account_id}/magic/advanced_tcp_protection/configs/prefixes": {
@@ -12183,6 +12315,9 @@
 		"summary": "Create prefix.",
 		"tags": [
 			"dos-flowtrackd-api_other"
+		],
+		"x-api-token-group": [
+			"DDoS Protection Write"
 		]
 	},
 	"POST /accounts/{account_id}/magic/advanced_tcp_protection/configs/prefixes/bulk": {
@@ -12559,6 +12694,9 @@
 		"summary": "Create multiple prefixes.",
 		"tags": [
 			"dos-flowtrackd-api_other"
+		],
+		"x-api-token-group": [
+			"DDoS Protection Write"
 		]
 	},
 	"POST /accounts/{account_id}/magic/advanced_tcp_protection/configs/syn_protection/filters": {
@@ -12877,6 +13015,9 @@
 		"summary": "Create a SYN Protection filter.",
 		"tags": [
 			"dos-flowtrackd-api_other"
+		],
+		"x-api-token-group": [
+			"DDoS Protection Write"
 		]
 	},
 	"POST /accounts/{account_id}/magic/advanced_tcp_protection/configs/syn_protection/rules": {
@@ -13240,6 +13381,9 @@
 		"summary": "Create SYN Protection rule.",
 		"tags": [
 			"dos-flowtrackd-api_other"
+		],
+		"x-api-token-group": [
+			"DDoS Protection Write"
 		]
 	},
 	"POST /accounts/{account_id}/magic/advanced_tcp_protection/configs/tcp_flow_protection/filters": {
@@ -13558,6 +13702,9 @@
 		"summary": "Create a TCP Flow Protection filter.",
 		"tags": [
 			"dos-flowtrackd-api_other"
+		],
+		"x-api-token-group": [
+			"DDoS Protection Write"
 		]
 	},
 	"POST /accounts/{account_id}/magic/advanced_tcp_protection/configs/tcp_flow_protection/rules": {
@@ -13910,6 +14057,9 @@
 		"summary": "Create TCP Flow Protection rule.",
 		"tags": [
 			"dos-flowtrackd-api_other"
+		],
+		"x-api-token-group": [
+			"DDoS Protection Write"
 		]
 	}
 }

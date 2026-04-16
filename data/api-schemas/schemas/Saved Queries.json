@@ -616,6 +616,9 @@
 		"summary": "Delete query",
 		"tags": [
 			"Saved Queries"
+		],
+		"x-api-token-group": [
+			"Workers Observability Write"
 		]
 	},
 	"GET /accounts/{account_id}/workers/observability/queries": {
@@ -1273,6 +1276,10 @@
 		"summary": "List queries",
 		"tags": [
 			"Saved Queries"
+		],
+		"x-api-token-group": [
+			"Workers Observability Write",
+			"Workers Observability Read"
 		]
 	},
 	"GET /accounts/{account_id}/workers/observability/queries/{queryId}": {
@@ -1892,6 +1899,10 @@
 		"summary": "Get query",
 		"tags": [
 			"Saved Queries"
+		],
+		"x-api-token-group": [
+			"Workers Observability Write",
+			"Workers Observability Read"
 		]
 	},
 	"PATCH /accounts/{account_id}/workers/observability/queries/{queryId}": {
@@ -2867,6 +2878,9 @@
 		"summary": "Update query",
 		"tags": [
 			"Saved Queries"
+		],
+		"x-api-token-group": [
+			"Workers Observability Write"
 		]
 	},
 	"POST /accounts/{account_id}/workers/observability/queries": {
@@ -3832,6 +3846,9 @@
 		"summary": "Save query",
 		"tags": [
 			"Saved Queries"
+		],
+		"x-api-token-group": [
+			"Workers Observability Write"
 		]
 	}
 }

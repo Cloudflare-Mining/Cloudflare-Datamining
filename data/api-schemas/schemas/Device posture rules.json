@@ -384,6 +384,9 @@
 		"summary": "Delete a device posture rule",
 		"tags": [
 			"Device posture rules"
+		],
+		"x-api-token-group": [
+			"Zero Trust Write"
 		]
 	},
 	"GET /accounts/{account_id}/devices/posture": {
@@ -7774,6 +7777,9 @@
 		"summary": "Create a device posture rule",
 		"tags": [
 			"Device posture rules"
+		],
+		"x-api-token-group": [
+			"Zero Trust Write"
 		]
 	},
 	"PUT /accounts/{account_id}/devices/posture/{rule_id}": {
@@ -10832,6 +10838,9 @@
 		"summary": "Update a device posture rule",
 		"tags": [
 			"Device posture rules"
+		],
+		"x-api-token-group": [
+			"Zero Trust Write"
 		]
 	}
 }
