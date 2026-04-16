@@ -378,6 +378,7 @@
 		page_description: "Monitor how AI crawlers interact with your robots.txt files across your hostnames. Track request patterns, verify file availability, and identify crawlers that violate your directives.",
 		availability: {
 			title: "Availability",
+			title_directives: "Robots.txt availability",
 			description: "Monitor the request frequency and health status of robots.txt files.",
 			requests_label: "Requests",
 			table: {
@@ -410,8 +411,15 @@
 			description: "When enabled, Cloudflare creates or updates your robots.txt file to signal that your content should not be used for AI training.",
 			tooltip: "Cloudflare will manage your robots.txt file to signal that your content should not be used for AI training."
 		},
+		agent_readiness: {
+			title: "Agent Readiness",
+			badge: "New",
+			description: "Check if your site is ready for AI agents by testing your robots.txt and related configurations.",
+			cta: "Check your site"
+		},
 		violations: {
 			title: "Violations",
+			title_directives: "Robots.txt violations",
 			description: "Identify AI crawlers requesting paths currently disallowed by your robots.txt. This list only shows violations on highest-traffic paths. Filter by Crawler, Operator, or Hostname to view detailed activity.",
 			matched_rule: "Disallow: %{rule}",
 			table: {
@@ -581,6 +589,7 @@
 		bots: "Crawlers",
 		metrics: "Metrics",
 		robots: "Robots.txt",
+		directives: "Directives",
 		settings: "Settings"
 	},
 	filters: {
