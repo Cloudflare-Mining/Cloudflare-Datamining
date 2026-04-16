@@ -5,30 +5,35 @@
 		<p>At Cloudflare, we’re not looking for people who wait for a polished roadmap; we’re looking for the builders who see the cracks in the Internet that everyone else has simply learned to live with. We value candidates who have the instinct to spot a "normalized" problem and the AI-native curiosity to create a solution using the latest tools. Our culture is built on iteration, leveraging AI to ship faster today to make it better tomorrow, while ensuring that every improvement, no matter how small, is shared across the team to lift everyone up. If you’re the type of person who values curiosity over bureaucracy, and that AI is a partner in solving tough problems to keep the Internet moving forward, you’ll fit right in.</p>
 	</div>
 </div>
-<h4><strong>Available Locations:&nbsp;</strong>Bengaluru</h4>
-<p><strong>About the Department</strong></p>
-<p>The Security team at Cloudflare is focused and committed to helping secure both Cloudflare and our customers. The Application and Product Security team at Cloudflare is focused on and committed to securing both Cloudflare and our customers. The Application &amp; Product Security team is responsible for keeping our products, and platforms secure.</p>
-<p><strong>What you’ll do</strong></p>
-<p>We are looking for a Security Engineer to help us in our mission to build a better internet. Part engineer, part hacker, you will work with our engineering and security teams to build solutions for .</p>
+<p><strong>Available Locations: </strong>Bengaluru, India</p>
+<p><strong>About the Role:</strong></p>
+<p>The Senior OIC and OPA Developer is the definitive technical expert responsible for developing, governing, and standardizing all data movement and orchestration involving the Oracle Fusion ERP Cloud environment. This role designs the most complex and critical integration patterns using Oracle Integration Cloud and Oracle Process Automation ensuring technical solutions adhere to Enterprise Architecture and security standards.</p>
+<p><strong>Key Responsibilities:</strong></p>
 <ul>
-	<li>Work with engineering teams to help secure Cloudflare products and platforms</li>
-	<li>Assess products and new feature releases through threat modeling, code review and security testing. Also provide guidance on effective countermeasures</li>
-	<li>Contribute to security architecture/design and assist in building and rolling out processes for secure code development and deployment</li>
-	<li>Build secure frameworks &amp; libraries that engineering teams can use at scale</li>
-	<li>Build internal security tools and automate processes that help fix security problems at a massive scale.&nbsp;</li>
-	<li>Managing and prioritizing multiple tasks in accordance with high level objectives</li>
+	<li>Complex Integration Design: Architect and develop the most challenging, cross-functional, and real-time integration patterns for the Oracle Fusion program using Oracle Integration Cloud.</li>
+	<li>Architecture &amp; Governance: Act as the technical gatekeeper for all Oracle integration and process automation design, ensuring strict adherence to enterprise standards. Define the long-term technical roadmap for the OIC/OPA platform.</li>
+	<li>Technical Development: Personally drive the design and development of technical solutions (Interfaces, Conversions, Orchestrations and Workflows) within OIC, utilizing REST, SOAP, ERP, FTP, Other Application-specific Standard and Database adapters. Leverage Oracle AI Data (a.k.a Oracle ATP Database) for data staging and integration. Build BIP reports and ATP objects as needed to meet the requirements.</li>
+	<li>Security &amp; Performance: Define and validate the technical security protocols for all endpoints and interfaces (e.g., OAuth, API Gateway configuration), ensuring data transmission is compliant and performant.</li>
+	<li>Technical Mentorship: Serve as the top integration expert, providing technical leadership and direction to developers building integrations.</li>
 </ul>
-<p><strong>Key skill sets and Knowledge</strong></p>
-<p>Security engineers take part in a wide variety of tasks and projects on the team. One individual is not expected to know everything, but a working knowledge in several of the following areas is required:&nbsp;</p>
+<p><strong>Required Qualifications:</strong></p>
 <ul>
-	<li>Experience in securing large scale distributed systems</li>
-	<li>Experience in designing, building and implementing systems</li>
-	<li>Experience in assessing the security posture of systems/services</li>
-	<li>Experience in penetration testing and providing mitigating controls</li>
-	<li>Strong engineering background and programming experience (Python, Golang, Rust, Bash, etc.)</li>
-	<li>Strong communication skills and ability to work with remote teams</li>
-	<li>Results and goal-oriented</li>
+	<li>10+ years of direct experience architecting, designing, and governing enterprise-level integrations for major ERP/SCM/GTM systems.</li>
+	<li>Expert-level, hands-on knowledge of Oracle Integration Cloud including strong familiarity with its various adapters, mapping, and orchestration capabilities.</li>
+	<li>Proven experience working directly with a central Enterprise Architecture organization to define and enforce integration standards.</li>
+	<li>Deep understanding of SOA, microservices, API management, and security protocols.</li>
 </ul>
+<p><strong>Preferred Qualifications:</strong></p>
+<ul>
+	<li>Experience in an organization transitioning to Oracle Cloud Ecosystem.</li>
+	<li>Hands-on experience with other integration tools like GoLang, Boomi, etc.</li>
+	<li>Experience setting up/using CI/CD tools like FlexDeploy</li>
+	<li>General awareness of built-in adapter based integrations in various 3rd party softwares.</li>
+	<li>Exposure to the Data Center Infrastructure industry</li>
+	<li>Relevant professional product/functional certifications (e.g., OIC/OPA, Database)</li>
+	<li>Working knowledge of AI Agent Studio for Oracle Fusion Cloud Applications.</li>
+</ul>
+<p>Fraud Alert:&nbsp;Do not fall victim to recruitment fraud. Cloudflare never charges application fees or requires candidates to purchase third-party certifications or training as a condition of employment. All official communication comes strictly from @<a href="http://cloudflare.com/" target="_blank" data-saferedirecturl="https://www.google.com/url?q=http://cloudflare.com&amp;source=gmail&amp;ust=1772709497740000&amp;usg=AOvVaw0TxX4B5ll0XGIcYUaz-iZJ">cloudflare.com</a>&nbsp;email addresses.</p>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
 	<p><span style="font-weight: 400;">We’re not just a highly ambitious, large-scale technology company. We’re a highly ambitious, large-scale technology company with a soul. Fundamental to our mission to help build a better Internet is protecting the free and open Internet.</span></p>

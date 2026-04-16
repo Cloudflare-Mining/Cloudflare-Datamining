@@ -5,18 +5,41 @@
 		<p>At Cloudflare, we’re not looking for people who wait for a polished roadmap; we’re looking for the builders who see the cracks in the Internet that everyone else has simply learned to live with. We value candidates who have the instinct to spot a "normalized" problem and the AI-native curiosity to create a solution using the latest tools. Our culture is built on iteration, leveraging AI to ship faster today to make it better tomorrow, while ensuring that every improvement, no matter how small, is shared across the team to lift everyone up. If you’re the type of person who values curiosity over bureaucracy, and that AI is a partner in solving tough problems to keep the Internet moving forward, you’ll fit right in.</p>
 	</div>
 </div>
-<p><strong>Location Available: Bengaluru</strong></p>
-<p><strong>About The Team</strong></p>
-<p>Join Cloudflare Security Automation Engineering Team, where we are pivoting from traditional "Security as Code" to "Security as Agents." Our mission is to build a self-healing, autonomous defense layer. We focus on:</p>
-<p>● Agentic AI Orchestration: Building autonomous agents to manage end-to-end security workflows.<br>● Autonomous Security Assurance: Leveraging LLMs for automated vendor reviews&nbsp;and M&amp;A due diligence.<br>● Active Defense: Continuous threat automation via intelligent helper agents.<br>● Intelligence for MTTR: Using Agentic AI to diagnose, triage, and remediate incidents in&nbsp;real-time on end points as well as overall Enterprise<br>● Compliance &amp; Audit Readiness: Automating complex assessment flows and evidence&nbsp;gathering.</p>
-<p><strong>About The Role</strong></p>
-<p>As a Senior Security AI Engineer, you will be the technical architect for our Agentic AI roadmap. Your mission is to move beyond simple automation scripts and build a fleet of "AI<br>Team Members"—intelligent helper agents that execute complex security algorithms, process&nbsp;flows, and assessment logic. You will leverage Cloudflare’s Workers platform to deploy agentic&nbsp;solutions that close critical security gaps and replace traditional third-party tooling with high-&nbsp;performance, proprietary AI workflows.</p>
-<p><strong>What You’ll Do</strong></p>
-<p>● Agent Architecture: Design and deploy multi-agent systems that follow complex&nbsp;security algorithms and assessment flows to automate manual SOC and Assurance&nbsp;tasks.<br>● Skill Engineering: Standardize agent capabilities by creating and maintaining skills.md&nbsp;files and specialized Markdown documentation that define agentic personas and&nbsp;execution boundaries.<br>● Workflow Training: Train and fine-tune LLMs to function as "helper agents" capable of&nbsp;executing autonomous AI workflows as integral members of the Security Engineering&nbsp;team.<br>● Infrastructure as Agents: Utilize Cloudflare Workers, Vectorize, and AI Gateway to&nbsp;build serverless, low-latency agentic architectures for real-time traffic analysis and&nbsp;remediation.<br>● Autonomous Assessment: Build and scale the engine for autonomous vendor security&nbsp;reviews and M&amp;A assessments, transforming qualitative data into quantitative risk&nbsp;insights.<br>● Mentorship: Lead the transition for Developer and Automation Engineers into the AI&nbsp;space, fostering a culture of Agentic Security.</p>
-<p><strong>Requirements</strong></p>
-<p>● Experience: 4+ years in Information Security or Software Engineering, with at least 1+ years focused on AI Engineering, Agentic AI, or Advanced Automation using Opencode<br>● AI Expertise: Deep understanding of LLM orchestration, prompt engineering, and&nbsp;building agentic loops (e.g., LangChain, AutoGen, or custom frameworks).<br>● Agent Development: Proven ability to create agents from structured definitions&nbsp;(skills.md) and automate tasks that follow strict process/algorithmic flows.<br>● Cloudflare Ecosystem: Expert knowledge of Cloudflare Workers, KV, Durable Objects,&nbsp;and R2. Experience with Cloudflare AI tools is a significant plus.<br>● Languages: Mastery of Windsurf,Opencode or Rust.<br>● Security Domain: Strong grasp of Cyber Security fundamentals, including SIEM/SOAR&nbsp;logic, UEBA, and risk assessment frameworks.<br>● Technical Writing: Ability to document complex AI logic and "agent skills" in clear,&nbsp;executable Markdown files.</p>
-<p><strong>Preferred Qualifications</strong></p>
-<p>● Experience building custom Agentic AI solutions that have replaced enterprise-grade 3rd party security software.<br>● Background in M&amp;A Security Due Diligence or Vendor Risk Management automation.<br>● Prior experience building edge-based security products or AI-driven log-push&nbsp;integrations.<br>● Certifications: CISSP or specialized AI/Machine Learning certifications.</p>
+<p><strong>Available Locations:&nbsp; Lisbon or London (Hybrid)</strong></p>
+<h3><strong>About the Team</strong></h3>
+<p>The Cloudflare Vectorize team builds our managed, global vector database designed to power the next generation of AI-driven applications. Vectorize enables developers to store and query high-dimensional vector embeddings, providing the "long-term memory" required for Large Language Models (LLMs) and semantic search. Integrated directly into the Cloudflare Workers and Workers AI ecosystem, Vectorize allows developers to build full-stack AI applications—from generating embeddings to performing similarity searches—entirely on Cloudflare’s global network.</p>
+<p>Vectorize is a critical component of our Developer Platform and features:</p>
+<ul>
+	<li><strong>High-Performance Vector Search:</strong> Optimized for low-latency similarity search using Approximate Nearest Neighbor (ANN) algorithms (like HNSW).</li>
+	<li><strong>Metadata Filtering:</strong> Support for storing and filtering on metadata alongside vectors to provide precise, context-aware query results.</li>
+	<li><strong>Global Distribution:</strong> Built on top of Cloudflare’s distributed infrastructure to ensure that AI applications remain fast and responsive regardless of where the user is located.</li>
+</ul>
+<p>The team is geographically located in the UK.</p>
+<h3><strong>What you'll do</strong></h3>
+<p>We are looking for an Engineering Manager to join the Vectorize team. You will lead a group of engineers who are defining how stateful AI applications are built at the edge. You will play a pivotal role in scaling Vectorize to support billions of vectors and hundreds of thousands of indexes while maintaining the performance and reliability Cloudflare is known for.</p>
+<p>You will work closely with product and engineering teams to implement cutting-edge indexing strategies and improve the developer experience for RAG (Retrieval Augmented Generation) workflows. You bring a passion for making complex AI infrastructure accessible to every developer. You thrive in a fast-paced environment where you are building the foundations of the AI era. Most importantly, you have a track record of leading technical teams with a focus on high-quality execution and engineer career development.</p>
+<h3><strong>Examples of desirable skills, knowledge and experience</strong></h3>
+<ul>
+	<li><strong>Strong communication skills</strong> – Ability to build a shared understanding of complex topics like vector quantization, indexing trade-offs, and distributed state.</li>
+	<li><strong>Leading Distributed Systems</strong> – Experience leading and hiring teams that build and operate high-availability distributed databases or search engines.</li>
+	<li><strong>Navigating the AI Landscape</strong> – Comfort working in the rapidly evolving world of AI/ML, understanding how vector databases fit into the broader LLM and RAG ecosystem.</li>
+	<li><strong>Execution &amp; Predictability</strong> – Excel at planning, roadmap execution, and managing the lifecycle of a high-growth developer product.</li>
+	<li><strong>Developer-First Mindset</strong> – Experience building APIs and tools that simplify complex backend operations for frontend and full-stack developers.</li>
+	<li><strong>Technical Leadership</strong> – A track record of leading teams through hiring, onboarding, and mentorship. You can explain the "why" behind architectural decisions to both engineers and stakeholders.</li>
+	<li><strong>Systems Programming</strong> – Professional experience with <strong>Rust, Go, or TypeScript</strong>.&nbsp;</li>
+</ul>
+<h3><strong>Bonus Points</strong></h3>
+<ul>
+	<li>
+		<ul>
+			<li><strong>Search &amp; Indexing Expertise</strong> – Experience with vector search libraries (e.g., Faiss, HNSWlib) or traditional search engines (e.g., Elasticsearch, Lucene).</li>
+			<li><strong>AI/ML Infrastructure</strong> – Experience building or managing platforms that serve machine learning models or manage embeddings at scale.</li>
+			<li><strong>Database Internals</strong> – Familiarity with storage engines, query optimization, or distributed consistency models.</li>
+			<li><strong>Serverless Ecosystem</strong> – Experience working with Cloudflare Workers or other serverless platforms to build stateful applications.</li>
+		</ul>
+	</li>
+</ul>
+<p>&nbsp;</p>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
 	<p><span style="font-weight: 400;">We’re not just a highly ambitious, large-scale technology company. We’re a highly ambitious, large-scale technology company with a soul. Fundamental to our mission to help build a better Internet is protecting the free and open Internet.</span></p>
