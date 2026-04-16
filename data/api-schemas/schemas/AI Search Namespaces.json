@@ -5,20 +5,19 @@
 		"parameters": [
 			{
 				"in": "path",
-				"name": "name",
+				"name": "account_id",
 				"required": true,
 				"schema": {
-					"example": "production",
-					"pattern": "^[a-z0-9]([a-z0-9-]{0,26}[a-z0-9])?$",
+					"example": "c3dc5f0b34a14ff8e1b3ec04895e1b22",
 					"type": "string"
 				}
 			},
 			{
 				"in": "path",
-				"name": "account_id",
+				"name": "name",
 				"required": true,
 				"schema": {
-					"example": "c3dc5f0b34a14ff8e1b3ec04895e1b22",
+					"example": "production",
 					"type": "string"
 				}
 			}
@@ -30,32 +29,13 @@
 						"schema": {
 							"properties": {
 								"result": {
-									"properties": {
-										"created_at": {
-											"format": "date-time",
-											"readOnly": true,
-											"type": "string"
-										},
-										"description": {
-											"description": "Optional description for the namespace. Max 256 characters.",
-											"example": "Production environment",
-											"maxLength": 256,
-											"nullable": true,
-											"type": "string"
-										},
-										"name": {
-											"example": "production",
-											"pattern": "^[a-z0-9]([a-z0-9-]{0,26}[a-z0-9])?$",
-											"type": "string"
-										}
-									},
-									"required": [
-										"name",
-										"created_at"
-									],
+									"additionalProperties": false,
 									"type": "object"
 								},
 								"success": {
+									"enum": [
+										true
+									],
 									"type": "boolean"
 								}
 							},
@@ -67,9 +47,47 @@
 						}
 					}
 				},
-				"description": "Returns the Object if it was successfully deleted"
+				"description": "Namespace deleted."
 			},
-			"404": {
+			"400": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"result": {
+									"type": "object"
+								},
+								"success": {
+									"example": false,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"result",
+								"success",
+								"errors"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Bad Request."
+			},
+			"500": {
 				"content": {
 					"application/json": {
 						"schema": {
@@ -107,7 +125,7 @@
 						}
 					}
 				},
-				"description": "Not Found"
+				"description": "Internal Error."
 			}
 		},
 		"security": [
@@ -149,48 +167,38 @@
 				}
 			},
 			{
+				"description": "Page number (1-indexed).",
 				"in": "query",
 				"name": "page",
 				"schema": {
 					"default": 1,
+					"description": "Page number (1-indexed).",
+					"example": 1,
 					"minimum": 1,
 					"type": "integer"
 				}
 			},
 			{
+				"description": "Number of results per page.",
 				"in": "query",
 				"name": "per_page",
 				"schema": {
 					"default": 20,
+					"description": "Number of results per page.",
+					"example": 20,
 					"maximum": 100,
 					"minimum": 1,
 					"type": "integer"
 				}
 			},
 			{
-				"description": "Order By Column Name",
+				"description": "Filter namespaces whose name or description contains this string (case-insensitive).",
 				"in": "query",
-				"name": "order_by",
+				"name": "search",
 				"schema": {
-					"default": "created_at",
-					"description": "Order By Column Name",
-					"enum": [
-						"created_at"
-					],
-					"type": "string"
-				}
-			},
-			{
-				"description": "Order By Direction",
-				"in": "query",
-				"name": "order_by_direction",
-				"schema": {
-					"default": "asc",
-					"description": "Order By Direction",
-					"enum": [
-						"asc",
-						"desc"
-					],
+					"description": "Filter namespaces whose name or description contains this string (case-insensitive).",
+					"example": "prod",
+					"maxLength": 256,
 					"type": "string"
 				}
 			}
@@ -230,19 +238,46 @@
 									},
 									"type": "array"
 								},
+								"result_info": {
+									"properties": {
+										"count": {
+											"type": "number"
+										},
+										"page": {
+											"type": "number"
+										},
+										"per_page": {
+											"type": "number"
+										},
+										"total_count": {
+											"type": "number"
+										}
+									},
+									"required": [
+										"page",
+										"per_page",
+										"count",
+										"total_count"
+									],
+									"type": "object"
+								},
 								"success": {
+									"enum": [
+										true
+									],
 									"type": "boolean"
 								}
 							},
 							"required": [
 								"success",
-								"result"
+								"result",
+								"result_info"
 							],
 							"type": "object"
 						}
 					}
 				},
-				"description": "List objects"
+				"description": "List of namespaces."
 			},
 			"400": {
 				"content": {
@@ -252,36 +287,27 @@
 								"errors": {
 									"items": {
 										"properties": {
-											"code": {
-												"type": "number"
-											},
 											"message": {
 												"type": "string"
-											},
-											"path": {
-												"items": {
-													"type": "string"
-												},
-												"type": "array"
 											}
 										},
 										"required": [
-											"code",
-											"message",
-											"path"
+											"message"
 										],
 										"type": "object"
 									},
 									"type": "array"
 								},
+								"result": {
+									"type": "object"
+								},
 								"success": {
-									"enum": [
-										false
-									],
+									"example": false,
 									"type": "boolean"
 								}
 							},
 							"required": [
+								"result",
 								"success",
 								"errors"
 							],
@@ -289,7 +315,7 @@
 						}
 					}
 				},
-				"description": "Input Validation Error"
+				"description": "Bad Request."
 			}
 		},
 		"security": [
@@ -323,20 +349,19 @@
 		"parameters": [
 			{
 				"in": "path",
-				"name": "name",
+				"name": "account_id",
 				"required": true,
 				"schema": {
-					"example": "production",
-					"pattern": "^[a-z0-9]([a-z0-9-]{0,26}[a-z0-9])?$",
+					"example": "c3dc5f0b34a14ff8e1b3ec04895e1b22",
 					"type": "string"
 				}
 			},
 			{
 				"in": "path",
-				"name": "account_id",
+				"name": "name",
 				"required": true,
 				"schema": {
-					"example": "c3dc5f0b34a14ff8e1b3ec04895e1b22",
+					"example": "production",
 					"type": "string"
 				}
 			}
@@ -374,6 +399,9 @@
 									"type": "object"
 								},
 								"success": {
+									"enum": [
+										true
+									],
 									"type": "boolean"
 								}
 							},
@@ -385,7 +413,7 @@
 						}
 					}
 				},
-				"description": "Returns a single object if found"
+				"description": "Namespace details."
 			},
 			"400": {
 				"content": {
@@ -395,36 +423,27 @@
 								"errors": {
 									"items": {
 										"properties": {
-											"code": {
-												"type": "number"
-											},
 											"message": {
 												"type": "string"
-											},
-											"path": {
-												"items": {
-													"type": "string"
-												},
-												"type": "array"
 											}
 										},
 										"required": [
-											"code",
-											"message",
-											"path"
+											"message"
 										],
 										"type": "object"
 									},
 									"type": "array"
 								},
+								"result": {
+									"type": "object"
+								},
 								"success": {
-									"enum": [
-										false
-									],
+									"example": false,
 									"type": "boolean"
 								}
 							},
 							"required": [
+								"result",
 								"success",
 								"errors"
 							],
@@ -432,9 +451,9 @@
 						}
 					}
 				},
-				"description": "Input Validation Error"
+				"description": "Bad Request."
 			},
-			"404": {
+			"500": {
 				"content": {
 					"application/json": {
 						"schema": {
@@ -472,7 +491,7 @@
 						}
 					}
 				},
-				"description": "Not Found"
+				"description": "Internal Error."
 			}
 		},
 		"security": [
@@ -688,8 +707,8 @@
 		}
 	},
 	"POST /accounts/{account_id}/ai-search/namespaces": {
-		"description": "Create a new namespaces.",
-		"operationId": "ai-search-create-namespaces",
+		"description": "Create a new namespace.",
+		"operationId": "ai-search-create-namespace",
 		"parameters": [
 			{
 				"in": "path",
@@ -714,7 +733,6 @@
 								"type": "string"
 							},
 							"name": {
-								"example": "production",
 								"pattern": "^[a-z0-9]([a-z0-9-]{0,26}[a-z0-9])?$",
 								"type": "string"
 							}
@@ -760,6 +778,9 @@
 									"type": "object"
 								},
 								"success": {
+									"enum": [
+										true
+									],
 									"type": "boolean"
 								}
 							},
@@ -771,9 +792,47 @@
 						}
 					}
 				},
-				"description": "Returns the created Object"
+				"description": "Namespace created."
 			},
 			"400": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"result": {
+									"type": "object"
+								},
+								"success": {
+									"example": false,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"result",
+								"success",
+								"errors"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Bad Request."
+			},
+			"500": {
 				"content": {
 					"application/json": {
 						"schema": {
@@ -786,18 +845,11 @@
 											},
 											"message": {
 												"type": "string"
-											},
-											"path": {
-												"items": {
-													"type": "string"
-												},
-												"type": "array"
 											}
 										},
 										"required": [
 											"code",
-											"message",
-											"path"
+											"message"
 										],
 										"type": "object"
 									},
@@ -818,7 +870,7 @@
 						}
 					}
 				},
-				"description": "Input Validation Error"
+				"description": "Internal Error."
 			}
 		},
 		"security": [
@@ -830,7 +882,7 @@
 				"api_key": []
 			}
 		],
-		"summary": "Create new namespaces.",
+		"summary": "Create namespace.",
 		"tags": [
 			"AI Search Namespaces"
 		],
@@ -865,7 +917,6 @@
 				"required": true,
 				"schema": {
 					"example": "production",
-					"pattern": "^[a-z0-9]([a-z0-9-]{0,26}[a-z0-9])?$",
 					"type": "string"
 				}
 			}
@@ -921,6 +972,9 @@
 									"type": "object"
 								},
 								"success": {
+									"enum": [
+										true
+									],
 									"type": "boolean"
 								}
 							},
@@ -932,7 +986,7 @@
 						}
 					}
 				},
-				"description": "Returns the updated Object"
+				"description": "Returns the updated namespace."
 			},
 			"400": {
 				"content": {
@@ -971,6 +1025,46 @@
 					}
 				},
 				"description": "Bad Request."
+			},
+			"500": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"code": {
+												"type": "number"
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"success": {
+									"enum": [
+										false
+									],
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"errors"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Internal Error."
 			}
 		},
 		"security": [

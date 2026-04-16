@@ -3075,6 +3075,242 @@
 			]
 		}
 	},
+	"GET /accounts/{account_id}/queues/{queue_id}/metrics": {
+		"description": "Return best-effort metrics for a queue. Values may be approximate due to the distributed nature of queues.",
+		"operationId": "queues-get-metrics",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "queue_id",
+				"required": true,
+				"schema": {
+					"description": "A Resource identifier.",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"readOnly": true,
+					"type": "string",
+					"x-auditable": true
+				}
+			},
+			{
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"description": "A Resource identifier.",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"readOnly": true,
+					"type": "string",
+					"x-auditable": true
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"properties": {
+										"errors": {
+											"example": [
+												{
+													"code": 7003,
+													"message": "No route for the URI"
+												}
+											],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer",
+														"x-auditable": true
+													},
+													"message": {
+														"type": "string",
+														"x-auditable": true
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"minLength": 1,
+											"type": "array"
+										},
+										"messages": {
+											"example": [],
+											"items": {
+												"type": "string",
+												"x-auditable": true
+											},
+											"type": "array"
+										},
+										"success": {
+											"description": "Indicates if the API call was successful or not.",
+											"enum": [
+												true
+											],
+											"type": "boolean",
+											"x-auditable": true
+										}
+									},
+									"type": "object"
+								},
+								{
+									"properties": {
+										"result": {
+											"description": "Best-effort metrics for the queue. Values may be approximate due to the distributed nature of queues.",
+											"properties": {
+												"backlog_bytes": {
+													"description": "The size in bytes of unacknowledged messages in the queue.",
+													"example": 1024,
+													"type": "number",
+													"x-auditable": true
+												},
+												"backlog_count": {
+													"description": "The number of unacknowledged messages in the queue.",
+													"example": 5,
+													"type": "number",
+													"x-auditable": true
+												},
+												"oldest_message_timestamp_ms": {
+													"description": "Unix timestamp in milliseconds of the oldest unacknowledged message in the queue. Returns 0 if unknown.",
+													"example": 1710950954154,
+													"type": "number",
+													"x-auditable": true
+												}
+											},
+											"required": [
+												"backlog_count",
+												"backlog_bytes",
+												"oldest_message_timestamp_ms"
+											],
+											"type": "object"
+										}
+									},
+									"type": "object"
+								}
+							],
+							"type": "object"
+						}
+					},
+					"text/event-stream": {
+						"schema": {
+							"description": "Best-effort metrics for the queue. Values may be approximate due to the distributed nature of queues.",
+							"properties": {
+								"backlog_bytes": {
+									"description": "The size in bytes of unacknowledged messages in the queue.",
+									"example": 1024,
+									"type": "number",
+									"x-auditable": true
+								},
+								"backlog_count": {
+									"description": "The number of unacknowledged messages in the queue.",
+									"example": 5,
+									"type": "number",
+									"x-auditable": true
+								},
+								"oldest_message_timestamp_ms": {
+									"description": "Unix timestamp in milliseconds of the oldest unacknowledged message in the queue. Returns 0 if unknown.",
+									"example": 1710950954154,
+									"type": "number",
+									"x-auditable": true
+								}
+							},
+							"required": [
+								"backlog_count",
+								"backlog_bytes",
+								"oldest_message_timestamp_ms"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Queue metrics."
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"example": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
+										}
+									],
+									"items": {
+										"properties": {
+											"code": {
+												"minimum": 1000,
+												"type": "integer",
+												"x-auditable": true
+											},
+											"message": {
+												"type": "string",
+												"x-auditable": true
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object",
+										"uniqueItems": true
+									},
+									"minLength": 1,
+									"type": "array"
+								},
+								"messages": {
+									"example": [],
+									"items": {
+										"type": "string",
+										"x-auditable": true
+									},
+									"type": "array"
+								},
+								"success": {
+									"description": "Indicates if the API call was successful or not.",
+									"enum": [
+										false
+									],
+									"example": false,
+									"type": "boolean",
+									"x-auditable": true
+								}
+							},
+							"type": "object"
+						}
+					}
+				},
+				"description": "Failure response."
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": [],
+				"api_token": []
+			}
+		],
+		"summary": "Get Queue Metrics",
+		"tags": [
+			"Queue"
+		],
+		"x-api-token-group": [
+			"Queues Write",
+			"Queues Read",
+			"Workers Scripts Write",
+			"Workers Scripts Read"
+		]
+	},
 	"GET /accounts/{account_id}/queues/{queue_id}/purge": {
 		"description": "Get details about a Queue's purge status.",
 		"operationId": "queues-purge-get",
@@ -6126,58 +6362,107 @@
 				"content": {
 					"application/json": {
 						"schema": {
-							"properties": {
-								"errors": {
-									"example": [
-										{
-											"code": 7003,
-											"message": "No route for the URI"
-										}
-									],
-									"items": {
-										"properties": {
-											"code": {
-												"minimum": 1000,
-												"type": "integer",
-												"x-auditable": true
+							"allOf": [
+								{
+									"properties": {
+										"errors": {
+											"example": [
+												{
+													"code": 7003,
+													"message": "No route for the URI"
+												}
+											],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer",
+														"x-auditable": true
+													},
+													"message": {
+														"type": "string",
+														"x-auditable": true
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
 											},
-											"message": {
+											"minLength": 1,
+											"type": "array"
+										},
+										"messages": {
+											"example": [],
+											"items": {
 												"type": "string",
 												"x-auditable": true
-											}
+											},
+											"type": "array"
 										},
-										"required": [
-											"code",
-											"message"
-										],
-										"type": "object",
-										"uniqueItems": true
+										"success": {
+											"description": "Indicates if the API call was successful or not.",
+											"enum": [
+												true
+											],
+											"type": "boolean",
+											"x-auditable": true
+										}
 									},
-									"minLength": 1,
-									"type": "array"
+									"type": "object"
 								},
-								"messages": {
-									"example": [],
-									"items": {
-										"type": "string",
-										"x-auditable": true
+								{
+									"properties": {
+										"result": {
+											"properties": {
+												"metadata": {
+													"properties": {
+														"metrics": {
+															"description": "Best-effort metrics for the queue. Values may be approximate due to the distributed nature of queues.",
+															"properties": {
+																"backlog_bytes": {
+																	"description": "The size in bytes of unacknowledged messages in the queue.",
+																	"example": 1024,
+																	"type": "number",
+																	"x-auditable": true
+																},
+																"backlog_count": {
+																	"description": "The number of unacknowledged messages in the queue.",
+																	"example": 5,
+																	"type": "number",
+																	"x-auditable": true
+																},
+																"oldest_message_timestamp_ms": {
+																	"description": "Unix timestamp in milliseconds of the oldest unacknowledged message in the queue. Returns 0 if unknown.",
+																	"example": 1710950954154,
+																	"type": "number",
+																	"x-auditable": true
+																}
+															},
+															"required": [
+																"backlog_count",
+																"backlog_bytes",
+																"oldest_message_timestamp_ms"
+															],
+															"type": "object"
+														}
+													},
+													"type": "object"
+												}
+											},
+											"type": "object"
+										}
 									},
-									"type": "array"
-								},
-								"success": {
-									"description": "Indicates if the API call was successful or not.",
-									"enum": [
-										true
-									],
-									"type": "boolean",
-									"x-auditable": true
+									"type": "object"
 								}
-							},
+							],
 							"type": "object"
 						}
 					}
 				},
-				"description": "Successful message ingestion"
+				"description": "Successful message ingestion."
 			},
 			"4XX": {
 				"content": {
@@ -6612,58 +6897,107 @@
 				"content": {
 					"application/json": {
 						"schema": {
-							"properties": {
-								"errors": {
-									"example": [
-										{
-											"code": 7003,
-											"message": "No route for the URI"
-										}
-									],
-									"items": {
-										"properties": {
-											"code": {
-												"minimum": 1000,
-												"type": "integer",
-												"x-auditable": true
+							"allOf": [
+								{
+									"properties": {
+										"errors": {
+											"example": [
+												{
+													"code": 7003,
+													"message": "No route for the URI"
+												}
+											],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer",
+														"x-auditable": true
+													},
+													"message": {
+														"type": "string",
+														"x-auditable": true
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
 											},
-											"message": {
+											"minLength": 1,
+											"type": "array"
+										},
+										"messages": {
+											"example": [],
+											"items": {
 												"type": "string",
 												"x-auditable": true
-											}
+											},
+											"type": "array"
 										},
-										"required": [
-											"code",
-											"message"
-										],
-										"type": "object",
-										"uniqueItems": true
+										"success": {
+											"description": "Indicates if the API call was successful or not.",
+											"enum": [
+												true
+											],
+											"type": "boolean",
+											"x-auditable": true
+										}
 									},
-									"minLength": 1,
-									"type": "array"
+									"type": "object"
 								},
-								"messages": {
-									"example": [],
-									"items": {
-										"type": "string",
-										"x-auditable": true
+								{
+									"properties": {
+										"result": {
+											"properties": {
+												"metadata": {
+													"properties": {
+														"metrics": {
+															"description": "Best-effort metrics for the queue. Values may be approximate due to the distributed nature of queues.",
+															"properties": {
+																"backlog_bytes": {
+																	"description": "The size in bytes of unacknowledged messages in the queue.",
+																	"example": 1024,
+																	"type": "number",
+																	"x-auditable": true
+																},
+																"backlog_count": {
+																	"description": "The number of unacknowledged messages in the queue.",
+																	"example": 5,
+																	"type": "number",
+																	"x-auditable": true
+																},
+																"oldest_message_timestamp_ms": {
+																	"description": "Unix timestamp in milliseconds of the oldest unacknowledged message in the queue. Returns 0 if unknown.",
+																	"example": 1710950954154,
+																	"type": "number",
+																	"x-auditable": true
+																}
+															},
+															"required": [
+																"backlog_count",
+																"backlog_bytes",
+																"oldest_message_timestamp_ms"
+															],
+															"type": "object"
+														}
+													},
+													"type": "object"
+												}
+											},
+											"type": "object"
+										}
 									},
-									"type": "array"
-								},
-								"success": {
-									"description": "Indicates if the API call was successful or not.",
-									"enum": [
-										true
-									],
-									"type": "boolean",
-									"x-auditable": true
+									"type": "object"
 								}
-							},
+							],
 							"type": "object"
 						}
 					}
 				},
-				"description": "Successful batch ingestion"
+				"description": "Successful batch ingestion."
 			},
 			"4XX": {
 				"content": {
@@ -7343,7 +7677,7 @@
 										"result": {
 											"properties": {
 												"message_backlog_count": {
-													"description": "The number of unacknowledged messages in the queue",
+													"description": "The number of unacknowledged messages in the queue.",
 													"example": 5,
 													"type": "number"
 												},
@@ -7391,6 +7725,40 @@
 														"type": "object"
 													},
 													"type": "array"
+												},
+												"metadata": {
+													"properties": {
+														"metrics": {
+															"description": "Best-effort metrics for the queue. Values may be approximate due to the distributed nature of queues.",
+															"properties": {
+																"backlog_bytes": {
+																	"description": "The size in bytes of unacknowledged messages in the queue.",
+																	"example": 1024,
+																	"type": "number",
+																	"x-auditable": true
+																},
+																"backlog_count": {
+																	"description": "The number of unacknowledged messages in the queue.",
+																	"example": 5,
+																	"type": "number",
+																	"x-auditable": true
+																},
+																"oldest_message_timestamp_ms": {
+																	"description": "Unix timestamp in milliseconds of the oldest unacknowledged message in the queue. Returns 0 if unknown.",
+																	"example": 1710950954154,
+																	"type": "number",
+																	"x-auditable": true
+																}
+															},
+															"required": [
+																"backlog_count",
+																"backlog_bytes",
+																"oldest_message_timestamp_ms"
+															],
+															"type": "object"
+														}
+													},
+													"type": "object"
 												}
 											},
 											"type": "object"
