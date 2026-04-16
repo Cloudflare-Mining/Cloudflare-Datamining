@@ -1,0 +1,89 @@
+<div class="mb2 gray5">3 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/VPnsUenQnhvHyp33AcXzw/2534f3fec82d50f173b2bda35cf161a5/BLOG-3213_1.png" alt="">
+<div class="post-content lh-copy gray1">
+	<p>Cloudflare announced our PlanetScale partnership last September to give <a href="https://workers.cloudflare.com" target="_blank" rel="noopener noreferrer"><u>Cloudflare Workers</u></a> direct access to Postgres and MySQL databases for fast, full-stack applications.</p>
+	<p>Soon, we’re bringing our technologies even closer: you’ll be able to create PlanetScale Postgres and MySQL databases directly from the Cloudflare dashboard and API, and have them billed to your Cloudflare account.&nbsp;</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5Tj4gJrV5hxlIWxlmoXVZe/7661c1e47c0c868b88301b5f4aca4441/BLOG-3213_2.png" alt="BLOG-3213 2" class="kg-image" width="607" height="216" loading="lazy">
+	</figure>
+	<p>You choose the data storage that fits your Worker application needs and keep a single system for billing as a Cloudflare self-serve or enterprise customer. Cloudflare credits like those given in our <a href="https://www.cloudflare.com/forstartups" target="_blank" rel="noopener noreferrer"><u>startup program</u></a> or Cloudflare committed spend can be used towards PlanetScale databases.</p>
+	<div class="flex anchor relative">
+		<h2 id="postgres-mysql-for-workers">Postgres &amp; MySQL for Workers</h2>
+		<a href="https://blog.cloudflare.com/#postgres-mysql-for-workers" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>SQL relational databases like Postgres and MySQL are a foundation of modern applications. In particular, Postgres has risen in developer popularity with its rich tooling ecosystem (ORMs, GUIs, etc) and extensions like <a href="https://github.com/pgvector/pgvector" target="_blank" rel="noopener noreferrer"><u>pgvector</u></a> for building vector search in AI-driven applications. Postgres is the default choice for most developers who need a powerful, flexible, and scalable database to power their applications.</p>
+	<p>You can already connect your PlanetScale account and create Postgres databases directly from the <a href="https://dash.cloudflare.com/?to=%2F%3Aaccount%2Fworkers%2Fhyperdrive%3Fmodal%3D1" target="_blank" rel="noopener noreferrer">Cloudflare dashboard</a> for your Workers. Starting next month, a new Cloudflare subscription will bill for new PlanetScale databases direct to your Cloudflare account as a self-serve or enterprise user.</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1CHTq1qoaNGSNO5atsiS8J/a8eba618b77362aa467d94c4f625c600/BLOG-3213_3.png" alt="BLOG-3213 3" class="kg-image" width="1540" height="1304" loading="lazy">
+	</figure>
+	<p><sup><i>How to create PlanetScale databases via </i></sup><a href="https://dash.cloudflare.com/?to=%2F%3Aaccount%2Fworkers%2Fhyperdrive%3Fmodal%3D1" target="_blank" rel="noopener noreferrer"><sup><i><u>Cloudflare dashboard</u></i></sup></a><sup><i> after your PlanetScale account is connected. Cloudflare billing is coming next month.</i></sup></p>
+	<p>With our built-in integration, PlanetScale databases automatically work with Workers using Hyperdrive, our database connectivity service. <a href="https://blog.cloudflare.com/how-hyperdrive-speeds-up-database-access"><u>Hyperdrive</u></a> service manages database connection pools and query caching to make database queries fast and reliable. You just add a <a href="https://developers.cloudflare.com/workers/runtime-apis/bindings" target="_blank" rel="noopener noreferrer"><u>binding</u></a> to your Worker’s <a href="https://developers.cloudflare.com/workers/wrangler/configuration/#hyperdrive" target="_blank" rel="noopener noreferrer"><u>config file</u></a>:&nbsp;</p>
+	<pre class="language-javascript"><code class="language-javascript">// wrangler.jsonc file
+{
+  "hyperdrive": [
+    {
+      "binding": "DATABASE",
+      "id": &lt;AUTO_CREATED_ID&gt;
+    }
+  ]
+}
+</code></pre>
+	<p>And start running SQL queries via your Worker with your Postgres client of choice:</p>
+	<pre class="language-javascript"><code class="language-javascript">import { Client } from "pg";
+
+export default {
+  async fetch(request, env, ctx) {
+   
+    const client = new Client({ connectionString: env.DATABASE.connectionString });
+    await client.connect();
+
+    const result = await client.query("SELECT * FROM pg_tables");
+    ...
+}
+</code></pre>
+
+	<div class="flex anchor relative">
+		<h2 id="planetscale-developer-experience">PlanetScale developer experience</h2>
+		<a href="https://blog.cloudflare.com/#planetscale-developer-experience" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>PlanetScale was the obvious choice to provide to the Workers community due to it’s unrivaled performance and reliability. Developers can choose from two of the most popular relational databases <a href="https://planetscale.com/docs/postgres/postgres-compatibility" target="_blank" rel="noopener noreferrer"><u>with Postgres</u></a> or Vitess MySQL. PlanetScale matches how Cloudflare treats performance and reliability as key features of a developer platform. And with features like <a href="https://planetscale.com/docs/postgres/monitoring/query-insights" target="_blank" rel="noopener noreferrer"><u>query insights</u></a> and <a href="https://planetscale.com/docs/connect/ai-tooling" target="_blank" rel="noopener noreferrer"><u>agent driven</u></a> workflows for improving SQL query performance and <a href="https://planetscale.com/docs/postgres/branching" target="_blank" rel="noopener noreferrer"><u>branching</u></a> for deploying code safely, including database changes, the PlanetScale database developer experience is first-class.</p>
+	<p>Cloudflare users get the exact same PlanetScale database developer experience. Your PlanetScale databases can be deployed directly from Cloudflare with connections managed via Hyperdrive, which already makes your existing regional databases fast with global Workers. This means access to the same PlanetScale <a href="https://planetscale.com/docs/plans/planetscale-skus" target="_blank" rel="noopener noreferrer"><u>database clusters</u></a> at standard PlanetScale <a href="https://planetscale.com/pricing" target="_blank" rel="noopener noreferrer"><u>pricing</u></a> with all features included like query insights and detailed breakdown of <a href="https://planetscale.com/docs/billing#organization-usage-and-billing-page" target="_blank" rel="noopener noreferrer"><u>usage and costs</u></a>.</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2Pfh4oM8zQSUGJKGEsxF3W/700f627c38279d9d90337b38de72b44e/BLOG-3213_4.png" alt="BLOG-3213 4" class="kg-image" width="1999" height="1027" loading="lazy">
+	</figure>
+	<p><sup><i>A single node on PlanetScale Postgres starts at </i></sup><a href="https://planetscale.com/blog/5-dollar-planetscale" target="_blank" rel="noopener noreferrer"><sup><i><u>$5/month</u></i></sup></a><sup><i>.</i></sup></p>
+	<div class="flex anchor relative">
+		<h2 id="workers-placement">Workers placement</h2>
+		<a href="https://blog.cloudflare.com/#workers-placement" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>With centralized databases, Workers can run right next to your primary database to reduce latency with an <a href="https://developers.cloudflare.com/workers/configuration/placement/#configure-explicit-placement-hints" target="_blank" rel="noopener noreferrer"><u>explicit placement hint</u></a>. By default, Workers execute closest to a user request, which adds network latency when querying a central database especially for multiple queries. Instead, you can configure your Worker to execute in the closest Cloudflare data center to your PlanetScale database. In the future, Cloudflare can automatically set a placement hint based on the location of your PlanetScale database and reduce network latency to single digit milliseconds.</p>
+	<pre class="language-javascript"><code class="language-javascript">{
+  "placement": {
+    "region": "aws:us-east-1"
+  }
+}
+</code></pre>
+
+	<div class="flex anchor relative">
+		<h2 id="coming-soon">Coming soon</h2>
+		<a href="https://blog.cloudflare.com/#coming-soon" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>You can deploy a PlanetScale Postgres database or connect an existing PlanetScale database to Workers today via the <a href="https://dash.cloudflare.com/?to=%2F%3Aaccount%2Fworkers%2Fhyperdrive%3Fmodal%3D1" target="_blank" rel="noopener noreferrer"><u>Cloudflare dashboard</u></a>. Everything today is still billed via PlanetScale.</p>
+	<p>Launching next month, new PlanetScale databases can be billed to your Cloudflare account.&nbsp;</p>
+	<p>We are building more with our PlanetScale partners, such as Cloudflare API integration, so tell us what you’d like to see next.</p>
+</div>

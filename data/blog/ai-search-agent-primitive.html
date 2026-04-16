@@ -1,0 +1,423 @@
+<div class="mb2 gray5">7 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3alMYdS7B71x5pzh2vMsie/4fbcce04bc19a761fa6b0b515ed9f5a9/BLOG-3240_1.png" alt="">
+<div class="post-content lh-copy gray1">
+	<p>Every <a href="https://www.cloudflare.com/learning/ai/what-is-agentic-ai" target="_blank" rel="noopener noreferrer"><u>agent</u></a> needs search: Coding agents search millions of files across repos. Support agents search customer tickets and internal docs. Even an agent's memory, its ability to recall past interactions, is fundamentally a search problem. The use cases are different, but the underlying problem is the same: get the right information to the model at the right time.</p>
+	<p>If you're building search yourself, you need a vector index, an indexing pipeline that parses and chunks your documents, and something to keep the index up to date when your data changes. If you also need keyword search, that's a separate index and fusion logic on top. And if each of your agents needs its own searchable context, you're setting all of that up per agent.&nbsp;</p>
+	<p><a href="https://developers.cloudflare.com/ai-search" target="_blank" rel="noopener noreferrer"><u>AI Search</u></a> (formerly <a href="https://blog.cloudflare.com/introducing-autorag-on-cloudflare"><u>AutoRAG</u></a>) is the plug-and-play search primitive you need. You can dynamically create instances, give it your data, and search — from a Worker, the Agents SDK, or Wrangler CLI. Here's what we're shipping:</p>
+	<ul>
+		<li>
+			<p><b>Hybrid search</b>. Enable both semantic and keyword matching in the same query. Vector search and BM25 run in parallel and results are fused. (The search on our blog is now powered by AI Search. <i>Try the magnifying glass icon to the top right.</i>)</p>
+		</li>
+		<li>
+			<p><b>Built-in storage and index.</b> New instances come with their own storage and vector index. Upload files directly to an instance via API and they're indexed. No R2 buckets to set up, no external data sources to connect first. The new <code>ai_search_namespaces</code> binding lets you create and delete instances at runtime from your Worker, so you can spin up one per agent, per customer, or per language without redeployment.</p>
+		</li>
+	</ul>
+	<p>You can now also attach metadata to documents and use it to boost rankings at query time, and query across multiple instances in a single call.<b>&nbsp;</b></p>
+	<p>Now, let's look at what this means in practice.</p>
+	<div class="flex anchor relative">
+		<h2 id="in-action-customer-support-agent">In action: Customer Support Agent</h2>
+		<a href="https://blog.cloudflare.com/#in-action-customer-support-agent" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Let's walk through a support agent that searches for two kinds of knowledge: shared product docs, and per-customer history like past resolutions. The product docs are too large to fit in a context window, and each customer's history grows with every resolved issue, so the agent needs retrieval to find what's relevant.</p>
+	<p>Here's what that looks like with AI Search and the <a href="https://developers.cloudflare.com/agents" target="_blank" rel="noopener noreferrer"><u>Agents SDK</u></a>. Start by scaffolding a project:</p>
+	<pre class="language-Shell"><code class="language-Shell">npm create cloudflare@latest -- --template cloudflare/agents-starter
+</code></pre>
+	<p>First, bind an AI Search namespace to your Worker:</p>
+	<pre class="language-Typescript"><code class="language-Typescript">// wrangler.jsonc 
+{
+  "ai_search_namespaces": [
+    { "binding": "SUPPORT_KB", "namespace": "support" }
+  ],
+  "ai": { "binding": "AI" },
+  "durable_objects": {
+    "bindings": [
+      { "name": "SupportAgent", "class_name": "SupportAgent" }
+    ]
+  }
+}
+</code></pre>
+	<p>Let's say your shared product documentation lives in an R2 bucket called <code>product-doc</code>. You can create a one-off AI Search instance (named <code>product-knowledge</code>) backed by the bucket on the Cloudflare Dashboard within the <code>support</code> namespace:</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1b8NdFL2HDBy8FqBHEI679/f17ed98d45fb9b42a616e0b464460489/BLOG-3240_2.png" alt="BLOG-3240 2" class="kg-image" width="1014" height="730" loading="lazy">
+	</figure>
+	<p>That's your shared knowledge base, the docs every agent can reference.</p>
+	<p>When a customer comes back with a new issue, knowing what's already been tried saves everyone time. You can track this by creating an AI Search instance per customer. After each resolved issue, the agent saves a summary of what went wrong and how it was fixed. Over time, this builds up a searchable log of past resolutions. You can create instances dynamically using the namespace binding:</p>
+	<pre class="language-Typescript"><code class="language-Typescript">// create a per-customer instance when they first show up 
+await env.SUPPORT_KB.create({
+  id: `customer-${customerId}`,
+  index_method:{ keyword: true, vector: true }
+});
+</code></pre>
+	<p>Each instance gets its own built-in storage and vector index — powered by <a href="https://www.cloudflare.com/developer-platform/products/r2" target="_blank" rel="noopener noreferrer"><u>R2</u></a> and <a href="https://www.cloudflare.com/developer-platform/products/vectorize" target="_blank" rel="noopener noreferrer"><u>Vectorize</u></a>. The instance starts empty and accumulates context over time. Next time the customer comes back, all of it is searchable.</p>
+	<p>Here's what the namespace looks like after a few customers:</p>
+	<pre class="language-unset"><code class="language-unset">namespace: "support"
+├── product-knowledge     (R2 as source, shared across all agents)
+├── customer-abc123       (managed storage, per-customer)
+├── customer-def456       (managed storage, per-customer)
+└── customer-ghi789       (managed storage, per-customer)
+
+</code></pre>
+	<p>Now the agent itself. It extends <code>AIChatAgent</code> from the Agents SDK and defines two tools. We're using <a href="https://blog.cloudflare.com/workers-ai-large-models"><u>Kimi K2.5</u></a> as the LLM via <a href="https://www.cloudflare.com/developer-platform/products/workers-ai" target="_blank" rel="noopener noreferrer"><u>Workers AI</u></a>. The model decides when to call the tools based on the conversation:</p>
+	<pre class="language-Typescript"><code class="language-Typescript">import { AIChatAgent, type OnChatMessageOptions } from "@cloudflare/ai-chat";
+import { createWorkersAI } from "workers-ai-provider";
+import { streamText, convertToModelMessages, tool, stepCountIs } from "ai";
+import { routeAgentRequest } from "agents";
+import { z } from "zod";
+
+export class SupportAgent extends AIChatAgent&lt;Env&gt; {
+  async onChatMessage(_onFinish: unknown, options?: OnChatMessageOptions) {
+    // the client passes customerId in the request body
+    // via the Agent SDK's sendMessage({ body: { customerId } })
+    const customerId = options?.body?.customerId;
+
+    // create a per-customer instance when they first show up.
+    // each instance gets its own storage and vector index.
+    if (customerId) {
+      try {
+        await this.env.SUPPORT_KB.create({
+          id: `customer-${customerId}`,
+          index_method: { keyword: true, vector: true }
+        });
+      } catch {
+        // instance already exists
+      }
+    }
+
+    const workersai = createWorkersAI({ binding: this.env.AI });
+
+    const result = streamText({
+      model: workersai("@cf/moonshotai/kimi-k2.5"),
+      system: `You are a support agent. Use search_knowledge_base
+        to find relevant docs before answering. Search results
+        include both product docs and this customer's past
+        resolutions — use them to avoid repeating failed fixes
+        and to recognize recurring issues. When the issue is
+        resolved, call save_resolution before responding.`,
+      // this.messages is the full conversation history, automatically
+      // persisted by AIChatAgent across reconnects
+      messages: await convertToModelMessages(this.messages),
+      tools: {
+        // tool 1: search across shared product docs AND this
+        // customer's past resolutions in a single call
+        search_knowledge_base: tool({
+          description: "Search product docs and customer history",
+          inputSchema: z.object({
+            query: z.string().describe("The search query"),
+          }),
+          execute: async ({ query }) =&gt; {
+            // always search product docs;
+            // include customer history if available
+            const instances = ["product-knowledge"];
+            if (customerId) {
+              instances.push(`customer-${customerId}`);
+            }
+            return await this.env.SUPPORT_KB.search({
+              query: query,
+              ai_search_options: {
+                // surface recent docs over older ones
+                boost_by: [
+                  { field: "timestamp", direction: "desc" }
+                ],
+                // search across both instances at once
+                instance_ids: instances
+              }
+            });
+          }
+        }),
+
+        // tool 2: after resolving an issue, the agent saves a
+        // summary so future agents have full context
+        save_resolution: tool({
+          description:
+            "Save a resolution summary after solving a customer's issue",
+          inputSchema: z.object({
+            filename: z.string().describe(
+              "Short descriptive filename, e.g. 'billing-fix.md'"
+            ),
+            content: z.string().describe(
+              "What the problem was, what caused it, and how it was resolved"
+            ),
+          }),
+          execute: async ({ filename, content }) =&gt; {
+            if (!customerId) return { error: "No customer ID" };
+            const instance = this.env.SUPPORT_KB.get(
+              `customer-${customerId}`
+            );
+            // uploadAndPoll waits until indexing is complete,
+            // so the resolution is searchable before the next query
+            const item = await instance.items.uploadAndPoll(
+              filename, content
+            );
+            return { saved: true, filename, status: item.status };
+          }
+        }),
+      },
+      // cap agentic tool-use loops at 10 steps
+      stopWhen: stepCountIs(10),
+      abortSignal: options?.abortSignal,
+    });
+
+    return result.toUIMessageStreamResponse();
+  }
+}
+
+// route requests to the SupportAgent durable object
+export default {
+  async fetch(request: Request, env: Env) {
+    return (
+      (await routeAgentRequest(request, env)) ||
+      new Response("Not found", { status: 404 })
+    );
+  }
+} satisfies ExportedHandler&lt;Env&gt;;
+</code></pre>
+	<p>With this, the model decides when to search and when to save. When it searches, it queries <code>product-knowledge</code> and this customer's past resolutions together. When the issue is resolved, it saves a summary that's immediately searchable in future conversations.&nbsp;</p>
+	<div class="flex anchor relative">
+		<h2 id="how-ai-search-finds-what-youre-looking-for">How AI Search finds what you're looking for</h2>
+		<a href="https://blog.cloudflare.com/#how-ai-search-finds-what-youre-looking-for" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Under the hood, AI Search runs a multi-step retrieval pipeline, in which every step is configurable.</p>
+	<div class="flex anchor relative">
+		<h3 id="hybrid-search-search-that-understands-intent-and-matches-terms">Hybrid Search: search that understands intent and matches terms</h3>
+		<a href="https://blog.cloudflare.com/#hybrid-search-search-that-understands-intent-and-matches-terms" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Until now, AI Search only offered vector search. Vector search is great at understanding intent, but it can lose specifics. In a query "ERR_CONNECTION_REFUSED timeout," the embedding captures the broad concept of connection failures. But the user isn't looking for general networking docs. They're looking for the specific document that mentions “ERR_CONNECTION_REFUSED”. Vector search might return results about troubleshooting without ever surfacing the page that contains that exact error string.&nbsp;</p>
+	<p>Keyword search fills that gap. AI Search now supports BM25, one of the most widely used retrieval scoring functions. BM25 scores documents by how often your query terms appear, how rare those terms are across the entire corpus, and how long the document is. It rewards matches on specific terms, penalizes common filler words, and normalizes for document length. When you search "ERR_CONNECTION_REFUSED timeout", BM25 finds documents that actually contain "ERR_CONNECTION_REFUSED" as a term. However, BM25 may miss a page about “troubleshooting network connections” even though it may be describing the same problem. That's where vector search shines, and why you need both.</p>
+	<p>When you enable hybrid search, it runs vector and BM25 in parallel, fuses the results, and optionally reranks them:</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/27CV8IBS2dYTV5puCtIPmD/3c66c190127fa38c4a4275425de8f9c4/BLOG-3240_3.png" alt="BLOG-3240 3" class="kg-image" width="1999" height="1382" loading="lazy">
+	</figure>
+	<p>Let's take a look at the new configurations for BM25, and how they come together.</p>
+	<ol>
+		<li>
+			<p><b>Tokenizer </b>controls how your documents are broken into matchable terms at index time. Porter stemmer (option: <code>porter</code>) stems words so "running" matches "run." Trigram (option: <code>trigram</code>) matches character substrings so "conf" matches "configuration." You can use porter for natural language content like docs, and trigram for code where partial matches matter.</p>
+		</li>
+		<li>
+			<p><b>Keyword match mode </b>controls which documents are candidates for BM25 scoring at query time. <code>AND</code> requires all query terms to appear in a document, OR includes anything with at least one match.</p>
+		</li>
+		<li>
+			<p><b>Fusion </b>controls how vector and keyword results are combined into the final list of results during query time. Reciprocal rank fusion (option: <code>rrf</code>) merges by rank position rather than score, which avoids comparing two incompatible scoring scales, whereas max fusion (option: <code>max</code>) takes the higher score.</p>
+		</li>
+		<li>
+			<p><b>(Optional) Reranking </b>adds a cross-encoder pass that re-scores results by evaluating the query and document together as a pair. It can help catch cases where a result has the right terms but isn't answering the question.&nbsp;</p>
+		</li>
+	</ol>
+	<p>Every option has a sane default when omitted. You have the flexibility to configure what matters whenever you create a new instance:</p>
+	<pre class="language-javascript"><code class="language-javascript">const instance = await env.AI_SEARCH.create({
+  id: "my-instance",
+  index_method: { keyword: true, vector: true },
+  indexing_options: {
+    keyword_tokenizer: "porter"
+  },
+  retrieval_options: {
+    keyword_match_mode: "or"
+  },
+  fusion_method: "rrf",
+  reranking: true,
+  reranking_model: "@cf/baai/bge-reranker-base"
+});
+</code></pre>
+
+	<div class="flex anchor relative">
+		<h3 id="boost-relevance-surface-what-matters">Boost relevance: surface what matters</h3>
+		<a href="https://blog.cloudflare.com/#boost-relevance-surface-what-matters" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Retrieval gets you relevant results, but relevance alone isn't always enough. For example, in a news search, an article from last week and an article from three years ago might both be semantically relevant to "election results," but most users probably want the recent one. Boosting lets you layer business logic on top of retrieval by nudging rankings based on document metadata.</p>
+	<p>You can boost on timestamp (built in on every item) or any <a href="https://developers.cloudflare.com/ai-search/configuration/indexing/metadata" target="_blank" rel="noopener noreferrer"><u>custom metadata field</u></a> you define.</p>
+	<pre class="language-javascript"><code class="language-javascript">// boost high priority docs
+const results = await instance.search({
+  query: "deployment guide",
+  ai_search_options: {
+    boost_by: [
+      { field: "timestamp", direction: "desc" }
+    ]
+  }
+});
+</code></pre>
+
+	<div class="flex anchor relative">
+		<h3 id="cross-instance-search-query-across-boundaries">Cross-instance search: query across boundaries</h3>
+		<a href="https://blog.cloudflare.com/#cross-instance-search-query-across-boundaries" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>In the support agent example, product documentation and customer resolution history live in separate instances by design. But when the agent is answering a question, it needs context from both places at once. Without cross-instance search, you'd make two separate calls and merge the results yourself.</p>
+	<p>The namespace binding exposes a <code>search()</code> method that handles this for you. Pass an array of instance names and get one ranked list back:</p>
+	<pre class="language-javascript"><code class="language-javascript">const results = await env.SUPPORT_KB.search({
+  query: "billing error",
+  ai_search_options: {
+    instance_ids: ["product-knowledge", "customer-abc123"]
+  }
+});
+</code></pre>
+	<p>Results are merged and ranked across instances. The agent doesn't need to know or care that shared docs and customer resolution history live in separate places.&nbsp;</p>
+	<div class="flex anchor relative">
+		<h2 id="how-ai-search-instances-work">How AI Search instances work</h2>
+		<a href="https://blog.cloudflare.com/#how-ai-search-instances-work" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>So far we've covered how AI Search finds the right results. Now let's look at how you can create and manage your search instances.</p>
+	<p>If you used AI Search before this release, you know the setup: create an R2 bucket, link it to an AI Search instance, AI search generates a service API token for you, and you manage the Vectorize index that gets provisioned on your account. Uploading an object requires you to write to R2 and then wait for a sync job to run to have the object indexed.</p>
+	<p>New instances created now work differently. When you call <code>create()</code>, the instance comes with its own storage and vector index built-in. You can upload a file, the file is sent to index immediately, and you can poll for indexing status all with one <code>uploadAndpoll()</code> API. Once completed, you can search the instance immediately, and there are no external dependencies to wire together.</p>
+	<pre class="language-javascript"><code class="language-javascript">const instance = env.AI_SEARCH.get("my-instance");
+
+// upload and wait for indexing to complete
+const item = await instance.items.uploadAndPoll("faq.md", content, {
+  metadata: { category: "onboarding" }
+});
+console.log(item.status); // "completed"
+
+// immediately search after indexing is completed
+const results = await instance.search({
+  // alternative way to pass in users' query other than using parameter query 
+  messages: [{ role: "user", content: "onboarding guide" }],
+});
+</code></pre>
+	<p>Each instance can also connect to one external data source (an R2 bucket or a website) and run on a sync schedule. It can exist alongside the provided built-in storage. In the support agent example, <code>product-knowledge</code> is backed by an R2 bucket for shared documentation, while each customer's instance uses built-in storage for context uploaded on the fly.</p>
+	<div class="flex anchor relative">
+		<h3 id="namespaces-create-search-instances-at-runtime">Namespaces: create search instances at runtime</h3>
+		<a href="https://blog.cloudflare.com/#namespaces-create-search-instances-at-runtime" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>The <code>ai_search_namespaces</code> is a new binding you can leverage to dynamically create search instances at runtime. It replaces the previous <code>env.AI.autorag()</code> API, which accessed AI Search through the <code>AI</code> binding. The old bindings will continue to work using <a href="https://developers.cloudflare.com/workers/configuration/compatibility-dates" target="_blank" rel="noopener noreferrer"><u>Workers compatibility dates</u></a>.</p>
+	<pre class="language-javascript"><code class="language-javascript">// wrangler.jsonc 
+{
+  "ai_search_namespaces": [
+    { "binding": "AI_SEARCH", "namespace": "example" },
+  ]
+}
+</code></pre>
+	<p>The namespace binding gives you APIs like <code>create()</code>, <code>delete()</code>, <code>list()</code>, and <code>search()</code> at the namespace level. If you’re creating instances dynamically (e.g. per agent, per customer, per tenant), this is the binding to use.</p>
+	<pre class="language-javascript"><code class="language-javascript">// create an instance 
+const instance = await env.AI_SEARCH.create({
+  id: "my-instance"
+});
+
+// delete an instance and all its indexed data
+await env.AI_SEARCH.delete("old-instance");
+</code></pre>
+
+	<div class="flex anchor relative">
+		<h3 id="pricing-for-new-instances">Pricing for new instances</h3>
+		<a href="https://blog.cloudflare.com/#pricing-for-new-instances" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>New instances created as of today will get built-in storage and a vector index automatically.&nbsp;</p>
+	<p>These instances are free to use while AI Search is in open beta with the limits listed below. When using the website as a data source, website crawling using <a href="https://developers.cloudflare.com/browser-rendering" target="_blank" rel="noopener noreferrer"><u>Browser Run (formerly Browser Rendering)</u></a> is also now a built-in service, meaning that you won’t be billed for it separately. After beta, the goal is to provide unified pricing for AI Search as a single service, rather than billing separately for each underlying component. Workers AI and <a href="https://www.cloudflare.com/developer-platform/products/ai-gateway" target="_blank" rel="noopener noreferrer"><u>AI Gateway</u></a> usage will continue to be billed separately.</p>
+	<p>We'll give at least 30 days notice and communicate pricing details before any billing begins.</p>
+	<table>
+		<tbody>
+			<tr>
+				<th>
+					<p><b>Limit</b></p>
+				</th>
+				<th>
+					<p><b>Workers Free</b></p>
+				</th>
+				<th>
+					<p><b>Workers Paid</b></p>
+				</th>
+			</tr>
+			<tr>
+				<td>
+					<p>AI Search instances per account</p>
+				</td>
+				<td>
+					<p>100</p>
+				</td>
+				<td>
+					<p>5,000</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>Files per instance</p>
+				</td>
+				<td>
+					<p>100,000</p>
+				</td>
+				<td>
+					<p>1M or 500K for hybrid search</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>Max file size</p>
+				</td>
+				<td>
+					<p>4MB</p>
+				</td>
+				<td>
+					<p>4MB</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>Queries per month</p>
+				</td>
+				<td>
+					<p>20,000</p>
+				</td>
+				<td>
+					<p>Unlimited</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>Maximum pages crawled per day</p>
+				</td>
+				<td>
+					<p>500</p>
+				</td>
+				<td>
+					<p>Unlimited</p>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+	<p><i>What about existing instances?</i>&nbsp;</p>
+	<p>If you created instances before this release, they continue to work exactly as they do today. Your R2 buckets, Vectorize indexes, and Browser Run usage remain on your account and are billed as before. We'll share migration details for existing instances soon.</p>
+	<div class="flex anchor relative">
+		<h2 id="get-started-today">Get started today</h2>
+		<a href="https://blog.cloudflare.com/#get-started-today" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Search is one of the most fundamental things an agent can do. With AI Search, you don't have to build the infrastructure to make it happen. Create an instance, give it your data, and let your agents search it.</p>
+	<p>Get started today by running this command to create your first instance:</p>
+	<pre class="language-Shell"><code class="language-Shell">npx wrangler ai-search create my-search
+</code></pre>
+	<p>Check out the <a href="https://developers.cloudflare.com/ai-search" target="_blank" rel="noopener noreferrer"><u>docs</u></a> and come tell us what you're building on the <a href="https://discord.cloudflare.com" target="_blank" rel="noopener noreferrer"><u>Cloudflare Developer Discord</u></a>.</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5Y5WLWBuK7NBMLmY6ZWL96/ce7ca954f4f51ac21f8e9d3f15d0343c/BLOG-3240_4.png" alt="BLOG-3240 4" class="kg-image" width="1999" height="491" loading="lazy">
+	</figure>
+	<p></p>
+</div>
