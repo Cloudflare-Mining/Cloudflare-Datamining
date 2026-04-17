@@ -2,7 +2,7 @@
 	try {
 		var e = "undefined" != typeof window ? window : "undefined" != typeof global ? global : "undefined" != typeof globalThis ? globalThis : "undefined" != typeof self ? self : {},
 			n = (new e.Error).stack;
-		n && (e._sentryDebugIds = e._sentryDebugIds || {}, e._sentryDebugIds[n] = "636e0cdb-b09a-5359-a987-7fb9a3e49873")
+		n && (e._sentryDebugIds = e._sentryDebugIds || {}, e._sentryDebugIds[n] = "ff93b77e-e6b8-564f-b3ec-0fc48b08f65b")
 	} catch (e) {}
 }();
 (self.webpackChunk_cloudflare_app_dash = self.webpackChunk_cloudflare_app_dash || []).push([
@@ -691,7 +691,7 @@
 				r6 = o("./react/common/constants/constants.ts"),
 				r8 = o("./react/utils/useDomainConnectRedirect.ts"),
 				r9 = o("./react/utils/fragments.ts");
-			let r7 = (0, re.lazy)(() => Promise.all([o.e("35132"), o.e("41553"), o.e("18571"), o.e("18921"), o.e("41954"), o.e("78272"), o.e("15158"), o.e("68243"), o.e("86917"), o.e("55734"), o.e("27346"), o.e("39374"), o.e("58854"), o.e("95936"), o.e("54552"), o.e("9656"), o.e("60671"), o.e("79897"), o.e("79144"), o.e("40320"), o.e("27407"), o.e("64250"), o.e("43254"), o.e("30122"), o.e("24164"), o.e("58091"), o.e("39859"), o.e("69253"), o.e("90606"), o.e("78327"), o.e("29463"), o.e("84896"), o.e("50540"), o.e("47043"), o.e("74363"), o.e("62533"), o.e("492"), o.e("41106"), o.e("42111"), o.e("24868"), o.e("52351"), o.e("88017"), o.e("25312"), o.e("55015"), o.e("48768"), o.e("1236"), o.e("96230"), o.e("37269"), o.e("53171")]).then(o.bind(o, "./react/AuthenticatedApp.tsx"))),
+			let r7 = (0, re.lazy)(() => Promise.all([o.e("35132"), o.e("41553"), o.e("18571"), o.e("18921"), o.e("41954"), o.e("78272"), o.e("15158"), o.e("68243"), o.e("86917"), o.e("55734"), o.e("27346"), o.e("39374"), o.e("58854"), o.e("95936"), o.e("54552"), o.e("9656"), o.e("60671"), o.e("79897"), o.e("79144"), o.e("40320"), o.e("27407"), o.e("64250"), o.e("43254"), o.e("30122"), o.e("24164"), o.e("58091"), o.e("39859"), o.e("69253"), o.e("90606"), o.e("78327"), o.e("29463"), o.e("84896"), o.e("50540"), o.e("47043"), o.e("74363"), o.e("62533"), o.e("492"), o.e("41106"), o.e("42111"), o.e("24868"), o.e("52351"), o.e("88017"), o.e("25312"), o.e("55015"), o.e("48768"), o.e("96230"), o.e("37269"), o.e("53171")]).then(o.bind(o, "./react/AuthenticatedApp.tsx"))),
 				er = (0, re.lazy)(() => Promise.all([o.e("85370"), o.e("62818"), o.e("41553"), o.e("18571"), o.e("18921"), o.e("41954"), o.e("78272"), o.e("15158"), o.e("86917"), o.e("55734"), o.e("39374"), o.e("54552"), o.e("45037"), o.e("30122"), o.e("20883"), o.e("24164"), o.e("58091"), o.e("39859"), o.e("90606"), o.e("84896"), o.e("50540"), o.e("47043"), o.e("41106"), o.e("24868"), o.e("88017"), o.e("70647"), o.e("91633")]).then(o.bind(o, "./react/UnauthenticatedApp.tsx")));
 			var ee = r => {
 					let e, {
@@ -997,10 +997,10 @@
 						}({}, {
 							branch: "master",
 							isReleaseCandidate: "true",
-							commit: "19aab4562b989d3144db9cc0c1125ddaec3c0ab8",
-							dashVersion: "22975042",
+							commit: "1b36df15e566246cfcbad3d74aea2873f7ca0a24",
+							dashVersion: "22989107",
 							env: "production",
-							builtAt: 0x19d9b739a3e,
+							builtAt: 0x19d9bc94f38,
 							versions: {
 								"@cloudflare/app-dash": "25.161.23",
 								"@cloudflare/kumo": "1.18.0",
@@ -12747,4 +12747,4 @@
 		}
 	}
 ]);
-//# debugId=636e0cdb-b09a-5359-a987-7fb9a3e49873
+//# debugId=ff93b77e-e6b8-564f-b3ec-0fc48b08f65b
