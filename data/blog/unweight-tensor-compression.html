@@ -1,0 +1,245 @@
+<div class="mb2 gray5">12 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2IZfixjossiaf3dYJhsGJx/1ae6108dd7bd764fa391576e6c5633b5/image2.png" alt="">
+<div class="post-content lh-copy gray1">
+	<p>Running inference within 50ms of 95% of the world's Internet-connected population means being ruthlessly efficient with GPU memory. Last year we improved memory utilization with <a href="https://blog.cloudflare.com/cloudflares-most-efficient-ai-inference-engine"><u>Infire</u></a>, our Rust-based inference engine, and eliminated cold-starts with <a href="https://blog.cloudflare.com/how-cloudflare-runs-more-ai-models-on-fewer-gpus"><u>Omni</u></a>, our model scheduling platform. Now we are tackling the next big bottleneck in our inference platform: model weights.</p>
+	<p>Generating a single token from an LLM requires reading every model weight from GPU memory. On the NVIDIA <a href="https://www.nvidia.com/en-us/data-center/h100" target="_blank" rel="noopener noreferrer"><u>H100 GPUs</u></a> we use in many of our datacenters, the tensor cores can process data nearly 600 times faster than memory can deliver it, leading to a bottleneck not in compute, but memory bandwidth. Every byte that crosses the memory bus is a byte that could have been avoided if the weights were smaller.</p>
+	<p>To solve this problem, we built <i>Unweight</i>: a lossless compression system that can make model weights up to 15–22% smaller while preserving bit-exact outputs, without relying on any special hardware. The core breakthrough here is that decompressing weights in fast on-chip memory and feeding them directly to the tensor cores avoids an extra round-trip through slow main memory. Depending on the workload, Unweight’s runtime selects from multiple execution strategies – some prioritize simplicity, others minimize memory traffic – and an autotuner picks the best one per weight matrix and batch size.</p>
+	<p>This post dives into how Unweight works, but in the spirit of greater transparency and encouraging innovation in this rapidly developing space, we’re also publishing a <a href="https://research.cloudflare.com/nikulin2026" target="_blank" rel="noopener noreferrer"><u>technical paper </u></a>and open sourcing the <a href="https://github.com/cloudflareresearch/unweight-kernels" target="_blank" rel="noopener noreferrer"><u>GPU kernels</u></a>.</p>
+	<p>Our initial results on Llama-3.1-8B show ~30% compression of Multi-Layer Perceptron (MLP) weights alone. Because Unweight works selectively on the parameters for decoding, this leads to a 15-22% in model size reduction and ~3 GB VRAM savings. As shown in the graphic below, this enables us to squeeze more out of our GPUs and thus run more models in more places — making inference cheaper and faster on Cloudflare’s network. </p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4aOVSF1i241gGUwrPrhLfC/21a4f5984b89e56b1ec637f8dbe3c794/1.png" alt="" class="kg-image" width="1999" height="1027" loading="lazy">
+	</figure>
+	<p><sup><i>Thanks to Unweight, we’re able to fit more models on a single GPU&nbsp;</i></sup></p>
+	<div class="flex anchor relative">
+		<h2 id="why-compression-is-harder-than-it-sounds">Why compression is harder than it sounds</h2>
+		<a href="https://blog.cloudflare.com/#why-compression-is-harder-than-it-sounds" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>There is a growing body of research exploring how to compress model weights in creative ways to make inference faster and/or run on smaller GPUs. The most common is quantization, a technique to reduce the size of model weights and activations by converting large 32- or 16-bit floating point numbers to smaller 8 or 4-bit integers. This is a form of lossy compression: different 16-bit floating point values can be converted to the same 4-bit integer. This reduction in accuracy affects the quality of responses in unpredictable ways. For production inference serving diverse use cases, we knew we wanted something lossless that preserves exact model behaviour.</p>
+	<p>Several recent systems (<a href="https://arxiv.org/abs/2502.00922" target="_blank" rel="noopener noreferrer"><u>Huff-LLM</u></a>, <a href="https://arxiv.org/abs/2411.05239" target="_blank" rel="noopener noreferrer"><u>ZipNN</u></a>, and <a href="https://arxiv.org/abs/2603.17435" target="_blank" rel="noopener noreferrer"><u>ZipServ</u></a>) have shown that LLM weights can be compressed significantly, but these approaches target different problems than ours. ZipNN compresses weights for distribution and storage with decompression happening on the CPU. HUff-LLM proposes custom <a href="https://en.wikipedia.org/wiki/Field-programmable_gate_array" target="_blank" rel="noopener noreferrer"><u>FGPA</u></a> hardware for decoding. And ZipServ does fuse decompression with GPU inference, but targets consumer grade GPUs, which don’t work with our H100 GPUs. None of these gave us what we needed: lossless inference-time decompression on Hopper GPUs that can integrate with our Rust based <a href="https://blog.cloudflare.com/cloudflares-most-efficient-ai-inference-engine"><u>inference engine</u></a>.&nbsp;</p>
+	<p>The core challenge isn't vanilla compression — exponent bytes in BF16 weights are highly redundant, so entropy coding works well on them. The challenge is decompressing fast enough that it doesn't slow down inference. On an H100, the tensor cores sit idle waiting for memory most of the time — but that idle capacity can't simply be repurposed for decompression. Each GPU compute unit can run either the decompression kernel or the matrix multiplication kernel, not both simultaneously, due to shared memory constraints. Any decode latency that isn't perfectly overlapped with the matrix multiplication becomes directly additive to token latency. Unweight's answer is to decompress weights in fast on-chip shared memory and feed the results directly to the tensor cores — but making that work efficiently across different batch sizes and weight shapes is where the real engineering lives.</p>
+	<div class="flex anchor relative">
+		<h2 id="how-model-weights-can-be-compressed-effectively">How model weights can be compressed effectively&nbsp;</h2>
+		<a href="https://blog.cloudflare.com/#how-model-weights-can-be-compressed-effectively" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Every number in an AI model is stored as a 16-bit "brain float" (BF16). Each BF16 value has three parts:</p>
+	<ul>
+		<li>
+			<p><b>Sign</b> (1 bit): positive or negative</p>
+		</li>
+		<li>
+			<p><b>Exponent</b> (8 bits): the magnitude&nbsp;</p>
+		</li>
+		<li>
+			<p><b>Mantissa</b> (7 bits): the precise value within that magnitude</p>
+		</li>
+	</ul>
+	<p>Here’s how one of these weights breaks down:&nbsp;</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7vTyA6tepWaOJ8leVIhqqO/79b7469c7ef383f3f9ad6c688d6edc0f/2.png" alt="" class="kg-image" width="889" height="218" loading="lazy">
+	</figure>
+	<p>The sign and mantissa vary unpredictably across weights — they look like random data and can't be meaningfully compressed. But the exponent tells a different story.</p>
+	<div class="flex anchor relative">
+		<h2 id="the-exponent-is-surprisingly-predictable">The exponent is surprisingly predictable</h2>
+		<a href="https://blog.cloudflare.com/#the-exponent-is-surprisingly-predictable" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Prior research has established that across trained LLMs, out of 256 possible exponent values, just a handful dominate. The top 16 most common exponents cover over 99% of all weights in a typical layer. Information theory says you only need ~2.6 bits to represent this distribution — far less than the 8 bits allocated. If you look at the exponent value distribution in a typical LLM layer, you can see that the top 16 exponents account for 99% of all model weights.&nbsp;</p>
+	<p><b>Exponent value distribution in a typical LLM layer</b></p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/ejPYP6ALeUkkta8hfA3fA/aab913f50afb38fdb9110b6e4daa3d25/3.png" alt="" class="kg-image" width="914" height="322" loading="lazy">
+	</figure>
+	<p>This is the redundancy that Unweight exploits. We leave the sign and mantissa untouched and compress only the exponent byte using <a href="https://en.wikipedia.org/wiki/Huffman_coding" target="_blank" rel="noopener noreferrer"><u>Huffman coding</u></a> — a classic technique that assigns short codes to common values and longer codes to rare ones. Because the exponent distribution is so skewed, this achieves roughly 30% compression on the exponent stream. We apply this selectively to the MLP weight matrices (gate, up, and down projections), which make up roughly two-thirds of a model’s parameters and dominate memory traffic during token generation. Attention weights, embeddings and layer norms are uncompressed. All told the optimizations translate to about 20% reduction in overall multilayer perceptron (MLP) weight size, as explained in full detail in our technical report.</p>
+	<p>The small number of weights with rare exponents are handled separately: if any weight in a row of 64 has an exponent outside the top-16 palette, the entire row is stored verbatim. This approach eliminates per-element branching in the hot path — instead of checking every single weight for edge cases, we make one decision per row up front.</p>
+	<div class="flex anchor relative">
+		<h2 id="the-gpu-memory-bottleneck">The GPU memory bottleneck</h2>
+		<a href="https://blog.cloudflare.com/#the-gpu-memory-bottleneck" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>An NVIDIA H100 GPU has two relevant kinds of memory:</p>
+	<ul>
+		<li>
+			<p><b>High Bandwidth Memory</b> (HBM): large, but relatively slow to access. This is where model weights live.</p>
+		</li>
+		<li>
+			<p><b>Shared memory</b> (SMEM): tiny, but extremely fast. This is where the GPU stages data right before doing math.</p>
+		</li>
+	</ul>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2H57YtBN941gTST60fH7su/b66ed530c29a9c5ea20fae86467a7ca7/4.png" alt="" class="kg-image" width="914" height="216" loading="lazy">
+	</figure>
+	<p><sup><i>During inference, generating each token requires reading the full weight matrix from HBM. The memory bus between HBM and SMEM is the performance bottleneck – </i></sup><sup>not the math itself. Fewer bytes across the bus = faster token generation.</sup></p>
+	<p>During inference, generating each token requires reading the full weight matrix from HBM through the memory bus — this is the bottleneck. The H100's tensor cores can crunch numbers far faster than HBM can feed them data. Compression helps because fewer bytes need to cross the bus. But there's a catch: the GPU can't do math on compressed data. The weights must be decompressed first.</p>
+	<p>Most prior work decompresses entire weight matrices back into HBM, then runs a standard matrix multiplication. This helps with storage capacity but doesn't help with bandwidth because you still read the full uncompressed matrix from HBM for every token.</p>
+	<div class="flex anchor relative">
+		<h2 id="four-ways-to-use-compressed-weights">Four ways to use compressed weights</h2>
+		<a href="https://blog.cloudflare.com/#four-ways-to-use-compressed-weights" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>There's no single best way to use compressed weights during inference. The right approach depends on the workload — the batch size, the shape of the weight matrix, and how much GPU time is available for decompression. Unweight offers four compressed execution pipelines, each with a different balance between decompression effort and computation complexity: a full Huffman decode, exponent-only decode, palette transcode, or skipping pre-processing completely.</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/12UwJkO7buPrdzTOQOupUA/2f0bd7b3bc97f04c8958472f904d5682/5.png" alt="" class="kg-image" width="914" height="593" loading="lazy">
+	</figure>
+	<p><sup><i>Four different execution pipelines&nbsp;</i></sup></p>
+	<p>The four pipelines form a spectrum. At one end, full decode completely reconstructs the original BF16 weights and hands them to NVIDIA’s cuBLAS library for a standard matrix multiplication. This is the simplest path with cuBLAS running at full speed on ordinary data, but the preprocess step writes the most bytes back to main memory. It works well at small batch sizes where the matrix multiplication is tiny and custom kernel overhead dominates. At the other end, direct palette skips preprocessing entirely. Weights are pre-transcoded to a compact 4-bit format at model load time, and the matrix multiplication kernel reconstructs BF16 values on the fly from these indices. Zero preprocess cost, but the kernel does more work per element.</p>
+	<p>In between sit two independent paths: one that decodes only the exponent bytes (halving preprocess traffic), and one that transcodes to 4-bit palette indices at runtime (quartering it). Both use a reconstructive matrix multiplication — a custom kernel that loads compressed data, reconstructs BF16 in fast shared memory, and feeds it directly to the tensor cores without a round-trip through main memory.</p>
+	<div class="flex anchor relative">
+		<h3 id="why-no-single-pipeline-wins">Why no single pipeline wins</h3>
+		<a href="https://blog.cloudflare.com/#why-no-single-pipeline-wins" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Less preprocessing means less data written to HBM, which frees the memory bus sooner. But it shifts more reconstruction work onto the matmul kernel. Whether that tradeoff pays off depends on the situation.</p>
+	<p>With small batch sizes (i.e. 1-64 tokens), the matmul is tiny, so there isn't much computation to overlap with, and the fixed costs of a custom kernel dominate. Full decode + cuBLAS often wins simply because cuBLAS has lower overhead. With large batch sizes (i.e. 256+ tokens), the matmul runs long enough to absorb the extra reconstruction work. A lighter preprocess finishes faster, and the freed-up bus bandwidth and compute overlap pay off. The palette or exponent pipelines pull ahead. Different weight matrices within the same layer can favor different pipelines. The "gate" and "up" projections have different dimensions than the "down" projection, changing the order of operations performed within the matmul which requires different performance tradeoffs.</p>
+	<p><b>Throughput vs pipeline strategy</b></p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3jthcdROyaeOdjDxuqG3ZD/29220083376fb26580a44f8f2d8057c8/6.png" alt="" class="kg-image" width="953" height="333" loading="lazy">
+	</figure>
+	<p>This is why Unweight doesn't hard-code a single strategy. The runtime picks the best pipeline for each weight matrix at each batch size, informed by an autotuning process that measures actual end-to-end throughput on the target hardware (more on this below).</p>
+	<div class="flex anchor relative">
+		<h2 id="how-the-reconstructive-matmul-works">How the reconstructive matmul works</h2>
+		<a href="https://blog.cloudflare.com/#how-the-reconstructive-matmul-works" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Three of the four pipelines use a custom matrix multiplication kernel that fuses decompression with computation. This kernel loads compressed data from HBM, reconstructs the original BF16 values in shared memory, and feeds them directly into the tensor cores — all in one operation. The reconstructed weights never exist in main memory.</p>
+	<p><b>Traditional decompression vs Unweight</b></p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2OqxSbLVN2V90aTof0IKyb/322f45956be83ecfcbd484558a5dd7e1/7.png" alt="" class="kg-image" width="953" height="304" loading="lazy">
+	</figure>
+	<p><i>With Unweight, ~30% fewer bytes cross the memory bus for MLP weight matrices</i></p>
+	<p>Inside this kernel, the GPU's thread groups are split into two roles:</p>
+	<ul>
+		<li>
+			<p>A <b>producer</b> group loads compressed inputs from HBM into shared memory using dedicated memory-copy hardware (TMA). It stages sign+mantissa bytes, exponent data (or palette indices), and – for rows with rare exponents – the verbatim exponent rows. It runs ahead of the consumer, filling a circular buffer so data is ready before it's needed.</p>
+		</li>
+		<li>
+			<p><b>Consumer</b> groups reconstruct BF16 values by combining exponents with sign+mantissa bytes, then immediately feed the result into Hopper's WGMMA tensor-core instructions. The reconstructed weights go straight from assembly to computation without leaving shared memory.</p>
+		</li>
+	</ul>
+	<p>The reconstructive matmul comes in multiple variants, differing in how many output tiles each compute unit handles and how deep the circular buffer runs. Wider output tiles improve data reuse at large batch sizes; deeper buffers hide memory latency at small batch sizes. The autotuner selects the best variant per workload.</p>
+	<div class="flex anchor relative">
+		<h2 id="sharing-the-gpu-between-decoding-and-computation">Sharing the GPU between decoding and computation</h2>
+		<a href="https://blog.cloudflare.com/#sharing-the-gpu-between-decoding-and-computation" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>In the two fused pipelines, a separate preprocess kernel (Huffman decoder or palette transcoder) runs concurrently with the reconstructive matmul. But these kernels compete for GPU resources.</p>
+	<p>On Hopper, each compute unit (SM) has 228 KB of shared memory. The reconstructive matmul needs ~227 KB for its pipeline buffer and accumulator tiles. A decode kernel needs ~16 KB for its Huffman lookup table. Since 227 + 16 &gt; 228, these two kernels <i>cannot share the same compute unit</i>. Every SM assigned to decoding is one fewer SM available for the matmul.</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2JiEsj6QS7ntozWQJz8YH9/f207e0f863191ac245bd0f55839635c3/8.png" alt="" class="kg-image" width="907" height="362" loading="lazy">
+	</figure>
+	<p>This creates a balancing act: more decode SMs means faster preprocessing but slower matrix multiplication, and vice versa. The optimal split is another tunable parameter — and another reason why the autotuner measures real throughput rather than relying on heuristics.</p>
+	<div class="flex anchor relative">
+		<h2 id="pipelining-across-layers">Pipelining across layers</h2>
+		<a href="https://blog.cloudflare.com/#pipelining-across-layers" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Even with the SM partitioning constraint, Unweight hides much of the decompression cost by exploiting the structure of transformer models.</p>
+	<p>Not every layer needs Huffman decoding at runtime. Unweight classifies layers as "hard" (requiring Huffman preprocessing) or "easy" (using pre-transcoded palette data that the matmul can consume directly). The runtime alternates between them:</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4j8l78Iivhl6paLMudctu6/6b34b6f4726d7a00bc45acd0d206ed0f/9.png" alt="" class="kg-image" width="1219" height="182" loading="lazy">
+	</figure>
+	<p><sup><i>Decode runs on separate CUDA streams during bootstrap, attention, and easy MLP compute. By the time a hard layer's MLP runs, its preprocessed weights are already waiting</i></sup></p>
+	<p>While the GPU computes an easy layer — which needs no preprocessing — a separate set of CUDA streams is decoding the next hard layer's weights in the background. By the time the easy layers finish and the hard layer's turn arrives, its preprocessed data is already waiting. Double-buffered preprocess slots ensure that decode output from one hard layer isn't overwritten while it's still being consumed.</p>
+	<p>The down projection benefits most from this overlap: it's consumed last in the MLP sequence (after gate, activation, and up), so its decode has the longest runway to complete.</p>
+	<div class="flex anchor relative">
+		<h2 id="autotuning">Autotuning</h2>
+		<a href="https://blog.cloudflare.com/#autotuning" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>With four pipelines, multiple matmul kernel variants , and a tunable SM split between decoding and computation, the configuration space is large. Rather than hard-coding a single strategy, Unweight uses an autotuner that measures actual end-to-end inference throughput on the target hardware. It sweeps candidate configurations for the gate projection while holding up and down fixed, then sweeps up, then down, repeating until no further improvement is found. The result is a per-model configuration file that tells the runtime exactly which pipeline, matmul variant, and SM allocation to use for each projection at each batch size — all driven by measured performance rather than heuristics.</p>
+	<div class="flex anchor relative">
+		<h2 id="one-compression-format-multiple-uses">One compression format, multiple uses</h2>
+		<a href="https://blog.cloudflare.com/#one-compression-format-multiple-uses" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Encoding format, execution pipeline, and scheduling are independent choices. The same Huffman-compressed model bundle can serve both distribution and inference:</p>
+	<ul>
+		<li>
+			<p>For <b>distribution</b>, Huffman encoding maximizes compression (~22% total model size reduction), reducing transfer times when shipping models across the network.</p>
+		</li>
+		<li>
+			<p>For <b>inference</b>, Huffman-encoded projections can be transcoded to the palette intermediate format on model load, enabling the most efficient runtime execution without constraining the distribution format.</p>
+		</li>
+	</ul>
+	<p>A single model bundle doesn't need to commit to one strategy at packaging time. The runtime selects the best execution path per projection and per batch size on the fly.</p>
+	<div class="flex anchor relative">
+		<h2 id="our-results">Our results&nbsp;</h2>
+		<a href="https://blog.cloudflare.com/#our-results" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>On Llama 3.1 8B (our primary testbed), Unweight achieves:</p>
+	<ul>
+		<li>
+			<p>~13% model footprint reduction for inference bundles (compressing only gate/up MLP projections), or ~22% for distribution bundles (compressing all MLP projections including down). All compression is 100% bit-exact lossless. Extrapolating to Llama 70B, this can translate to roughly 18–28 GB saved depending on configuration.</p>
+		</li>
+		<li>
+			<p>30–40% throughput overhead at current optimization level, measured end-to-end on H100 SXM5. The overhead is largest at batch size 1 (~41%) and narrows at batch 1024 (~30%). Three known sources – small-batch fixed costs, redundant weight-tile reconstruction, and the excluded down projection – are under active optimization.</p>
+		</li>
+	</ul>
+	<p>These are intermediate results on a single model. The compression ratios should generalize to other SwiGLU architectures (exponent statistics are consistent across model scales), but the throughput numbers are specific to the current kernel implementations and will change as optimization continues. We do not yet compress attention weights, embeddings, or layer norms, which dilute the overall reduction.</p>
+	<div class="flex anchor relative">
+		<h2 id="why-this-matters">Why this matters&nbsp;</h2>
+		<a href="https://blog.cloudflare.com/#why-this-matters" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>GPUs are expensive in multiple dimensions: the cost of the cards themselves, the high-bandwidth memory they demand, and their significant power consumption.</p>
+	<p>To combat this, several researchers have shown systems with promising results of ~30% compression ratios on full models — but these target consumer GPUs and research frameworks that don’t work at production scale. The key insight into Unweight’s development is that multilayer perceptrons (MLPs) constitute the majority of model weights and a significant amount of the compute cost during inference workloads. It compresses only MLP weights (avoiding overhead on layers where compression benefit is marginal), is designed specifically for datacenter H100 GPUs with their tightly-balanced compute and memory, and comes with four execution pipelines that adapt to batch size rather than using a single approach.</p>
+	<p>However, we want to be clear: Unweight is not a free lunch. On-chip reconstruction adds computational work that wouldn't exist with uncompressed weights. On Llama 3.1 8B, the inference configuration saves approximately 13% of total model memory at a throughput cost of roughly 30% at typical serving batch sizes. This gap narrows at larger batches (where preprocess overlap improves) and is expected to narrow further as we optimize — in particular, we haven't yet compressed the down projection in each MLP layer (about one-third of the compressible weights), and several kernel improvements are in active development.</p>
+	<p>For Cloudflare's network, Unweight gives us better capacity: it allows us to serve state-of-the-art models with less GPU memory per instance, which translates to cost savings and the ability to deploy more models in more places. For model distribution, the savings are larger: Huffman-compressed bundles are about 22% smaller, reducing transfer times when shipping models to edge locations worldwide.&nbsp;</p>
+	<div class="flex anchor relative">
+		<h2 id="whats-next">What’s next&nbsp;</h2>
+		<a href="https://blog.cloudflare.com/#whats-next" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Looking forward, we have three concrete research directions we think will improve upon our efficiency gains:&nbsp;</p>
+	<p><b>Down projection compression.</b> Unweight compresses gate and up MLP projections today, but down projection accounts for roughly one-third of compressible weights. This requires a different kernel variant due to its transposed dimensions, which we will expect to reduce the total model size beyond 22%.</p>
+	<p><b>Kernel optimization.</b> The current 30–40% throughput overhead has three identified sources: small-batch fixed costs in the reconstructive matmul, redundant weight reconstruction at large batch sizes, and the missing down projection. Each has a known mitigation path, which we outline in our <a href="https://research.cloudflare.com/nikulin2026" target="_blank" rel="noopener noreferrer"><u>technical paper</u></a>.</p>
+	<p><b>More models. </b>Our results are for Llama 3.1 8B, but the underlying exponent statistics are consistent across SwiGLU architectures at all scales. We're working to bring Unweight to the larger models we serve through <a href="https://www.cloudflare.com/developer-platform/products/workers-ai" target="_blank" rel="noopener noreferrer"><u>Workers AI</u></a>.</p>
+	<p>Longer term, we are investigating what Unweight’s architecture means for Mixture-of-Experts models, where cold experts must be fetched on demand and reduced storage would further reduce cost.</p>
+	<p>This is a fast-moving field, so we’re excited to open-source our work here and contribute to a growing corpus of research in compression and GPU efficiency. Unweight is one piece of the puzzle, but we hope that other researchers find it a useful paradigm to build upon! </p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7pmxEB8lMH4Uo80E2oc368/1efdf5892d994e5506e124ea3b110b16/10.png" alt="" class="kg-image" width="1999" height="642" loading="lazy">
+	</figure>
+	<p></p>
+</div>
