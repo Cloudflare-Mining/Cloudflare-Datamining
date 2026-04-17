@@ -79,7 +79,9 @@
 		today: "Today"
 	},
 	banner: {
-		daily_neuron_exceeded: (0, i.p)(h(), "neuronLimit")
+		daily_neuron_exceeded: (0, i.p)(h(), "neuronLimit"),
+		supported_models_title: "Can't find what you're looking for?",
+		supported_models_description: (0, i.p)(k())
 	},
 	pagination: {
 		models: {
@@ -126,7 +128,6 @@
 		generate_api_token: "Generate API Token",
 		select_example_aria_label: "Select an example",
 		response_output: "Output",
-		response_json: "JSON",
 		view_fullscreen: "View fullscreen",
 		run_in_playground: "Run in Playground to see output",
 		code_copy: "Copy code",
@@ -153,7 +154,7 @@
 		no_results_found: "No results found",
 		sort_by_name: "Name",
 		sort_by_date_added: "Date added",
-		models_found: (0, i.p)(k(), "count")
+		models_found: (0, i.p)(A(), "count")
 	},
 	create_ai_worker: "Create an AI Model Worker",
 	create_ai_worker_description: "Choose an AI application template.",
@@ -175,11 +176,11 @@
 	},
 	model_catalog: "Model Catalog",
 	using_workers_ai_rest_api: "Using Workers AI REST API",
-	using_workers_ai_rest_api_description: (0, i.p)(A()),
+	using_workers_ai_rest_api_description: (0, i.p)(y()),
 	product_title: "Workers AI",
 	models_title: "Models",
 	models_tagline: "Browse and discover AI models available through Cloudflare",
-	provided_by: (0, i.p)(y(), "provider"),
+	provided_by: (0, i.p)(I(), "provider"),
 	request_access: "Request access",
 	reserve_a_full_access_seat: "Reserve spot on waitlist",
 	reserve_a_full_access_seat_description: "Join the waitlist for access to production scale Workers AI ",
@@ -230,7 +231,7 @@
 	use_rest_api: "REST API",
 	using_templates: "Build and deploy a Llama 3 Worker",
 	using_templates_description: "Get started with everything you need to run a Llama 3 model from a Worker.",
-	workers_ai_pricing_default: (0, i.p)(I(), "neurons_coefficient", "neurons_daily_total"),
+	workers_ai_pricing_default: (0, i.p)(w(), "neurons_coefficient", "neurons_daily_total"),
 	learn_more: "Learn More",
 	modelTasks: {
 		"Feature Extraction": "Feature Extraction",

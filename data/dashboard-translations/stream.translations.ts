@@ -981,6 +981,7 @@
 	minutesStored: "Minutes stored (current)",
 	videosStored: "Videos stored (current)",
 	managePlan: "Manage plan",
+	managePlan_enterprise_tooltip: "Contact your Account Manager to manage your Stream plan.",
 	live_inputs_count: "%{smart_count} input |||| %{smart_count} inputs",
 	embed_website_or_app: "Embed in your website or app",
 	embed_with_web_frameworks: "Embed with web frameworks",

@@ -239,7 +239,7 @@
 			renewing_button: "Renewing...",
 			billing_permissions_error_message: "You need permission to manage billing in order to renew a domain. Please reach out to a super-admin on the account for assistance.",
 			grace_period_message: (0, i.p)(W(), "gracePeriodStart", "gracePeriodEnd"),
-			continue_to_domain: "Continue to Domain",
+			continue_to_domain: "Continue to manage domain",
 			back_to_domain: "Back to Domain Management",
 			redemption_banner_expired: (0, i.p)(B(), "daysAgo", "deadline"),
 			redemption_banner_deleted: (0, i.p)(F(), "deadline"),

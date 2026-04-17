@@ -637,6 +637,29 @@
 		unknown: "Content type could not be determined from the response",
 		other: "Content types not matching any specific category"
 	},
+	content_format: {
+		title: "Content format",
+		description: "Compare what crawlers ask for against what your site delivers.",
+		no_data_available: "No content format data available",
+		tabs: {
+			comparison: "Comparison",
+			request_type: "Request type",
+			response_type: "Response type",
+			markdown: "Markdown"
+		},
+		comparison: {
+			matched: "Matched",
+			unmatched: "Unmatched",
+			of_requests: "%{proportion}% of requests",
+			avg_label: "%{label} (avg %{rate}%)"
+		},
+		series: {
+			fulfilled: "Fulfilled",
+			unfulfilled: "Unfulfilled"
+		},
+		markdown_fulfilled: "%{rate} of markdown requests fulfilled",
+		markdown_unfulfilled: "%{rate} of markdown requests are unfulfilled"
+	},
 	rules_engine: {
 		title: "Pay Per Crawl pricing",
 		description: "Create custom price set to control AI crawler access based on request properties, bot scores, and more. Price sets are evaluated in order and the first matching price determines the action.",
