@@ -1,10 +1,11 @@
-<div class="mb2 gray5">9 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3mZ163MhASDRQW86DQm86r/2e89a01820f1b0a87af22d18208f470c/BLOG-3269_1.png" alt="">
+<div class="mb2 gray5">9 min read</div>
+<div class="mt4">This post is also available in <a href="https://blog.cloudflare.com/de-de/artifacts-git-for-agents-beta">Deutsch</a> and <a href="https://blog.cloudflare.com/es-es/artifacts-git-for-agents-beta">Español</a>.</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3mZ163MhASDRQW86DQm86r/2e89a01820f1b0a87af22d18208f470c/BLOG-3269_1.png" alt="">
 <div class="post-content lh-copy gray1">
 	<p>Agents have changed how we think about source control, file systems, and persisting state. Developers and agents are generating more code than ever — more code will be written over the next 5 years than in all of programming history — and it’s driven an order-of-magnitude change in the scale of the systems needed to meet this demand. Source control platforms are especially struggling here: they were built to meet the needs of humans, not a 10x change in volume driven by agents who never sleep, can work on several issues at once, and never tire.</p>
 	<p>We think there’s a need for a new primitive: a distributed, versioned filesystem that’s built for agents first and foremost, and that can serve the types of applications that are being built today.</p>
 	<p>We’re calling this Artifacts: a versioned file system that speaks Git. You can create repositories programmatically, alongside your agents, sandboxes, Workers, or any other compute paradigm, and connect to it from any regular Git client.</p>
 	<p>Want to give every agent session a repo? Artifacts can do it. Every sandbox instance? Also Artifacts. Want to create 10,000 forks from a known-good starting point? You guessed it: Artifacts again. Artifacts exposes a REST API and native Workers API for creating repositories, generating credentials, and commits for environments where a Git client isn’t the right fit (i.e. in any serverless function).</p>
-	<p>Artifacts is available in private beta for any developers on the paid Workers plan, and we’re aiming to open this up as a public beta by early May.</p>
+	<p>Artifacts is available in private beta and we’re aiming to open this up as a public beta by early May.</p>
 	<pre class="language-Typescript"><code class="language-Typescript">// Create a repo
 const repo = await env.AGENT_REPOS.create(name)
 // Pass back the token &amp; remote to your agent
@@ -90,7 +91,7 @@ export default {
 	</div>
 	<p>Artifacts are built on top of Durable Objects. The ability to create millions (or tens of millions+) of instances of stateful, isolated compute is inherent to how Durable Objects work today, and that’s exactly what we needed for supporting millions of Git repos per namespace.</p>
 	<p>Major League Baseball (for live game fan-out), Confluence Whiteboards, and our own <a href="https://developers.cloudflare.com/agents" target="_blank" rel="noopener noreferrer"><u>Agents SDK</u></a> use Durable Objects under the hood at significant scale, and so we’re building this on a primitive that we’ve had in production for some time.</p>
-	<p>What we did need, however, was a Git implementation that could run on Cloudflare Workers. It needed to be small, as complete as possible, extensible (<a href="https://git-scm.com/docs/git-notes" target="_blank" rel="noopener noreferrer"><u>notes</u></a>, <a href="https://git-lfs.com" target="_blank" rel="noopener noreferrer"><u>LFS</u></a>), and efficient. So we built one in <a href="https://ziglang.org" target="_blank" rel="noopener noreferrer"><u>Zig</u></a>, and compiled it to Wasm.</p>
+	<p>What we did need, however, was a Git server implementation that could run on Cloudflare Workers. It needed to be small, as complete as possible, extensible (<a href="https://git-scm.com/docs/git-notes" target="_blank" rel="noopener noreferrer"><u>notes</u></a>, <a href="https://git-lfs.com" target="_blank" rel="noopener noreferrer"><u>LFS</u></a>), and efficient. So we built one in <a href="https://ziglang.org" target="_blank" rel="noopener noreferrer"><u>Zig</u></a>, and compiled it to Wasm.</p>
 	<p>Why did we use Zig? Three reasons:</p>
 	<ol>
 		<li>
