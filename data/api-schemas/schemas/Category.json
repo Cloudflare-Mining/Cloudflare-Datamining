@@ -467,15 +467,15 @@
 			"Cloudforce One Read"
 		]
 	},
-	"GET /accounts/{accountId}/resource-library/categories": {
-		"description": "Get all application categories.",
+	"GET /accounts/{account_id}/resource-library/categories": {
+		"description": "List application categories.",
 		"operationId": "getCategories",
 		"parameters": [
 			{
 				"description": "Account ID.",
 				"example": "023e105f4ecef8ad9ca31a8372d0c353",
 				"in": "path",
-				"name": "accountId",
+				"name": "account_id",
 				"required": true,
 				"schema": {
 					"type": "string"
@@ -887,12 +887,12 @@
 				"api_key": []
 			}
 		],
-		"summary": "Get all application categories",
+		"summary": "List application categories",
 		"tags": [
 			"Category"
 		]
 	},
-	"GET /accounts/{accountId}/resource-library/categories/{id}": {
+	"GET /accounts/{account_id}/resource-library/categories/{id}": {
 		"description": "Get application category by ID.",
 		"operationId": "getCategoryById",
 		"parameters": [
@@ -900,7 +900,7 @@
 				"description": "Account ID.",
 				"example": "023e105f4ecef8ad9ca31a8372d0c353",
 				"in": "path",
-				"name": "accountId",
+				"name": "account_id",
 				"required": true,
 				"schema": {
 					"type": "string"
@@ -1296,7 +1296,7 @@
 				"api_key": []
 			}
 		],
-		"summary": "Show application category by ID",
+		"summary": "Get application category",
 		"tags": [
 			"Category"
 		]

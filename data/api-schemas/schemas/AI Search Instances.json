@@ -686,6 +686,18 @@
 											"anyOf": [
 												{
 													"enum": [
+														900
+													],
+													"type": "number"
+												},
+												{
+													"enum": [
+														1800
+													],
+													"type": "number"
+												},
+												{
+													"enum": [
 														3600
 													],
 													"type": "number"
@@ -722,7 +734,7 @@
 												}
 											],
 											"default": 21600,
-											"description": "Interval between automatic syncs, in seconds. Allowed values: 3600 (1h), 7200 (2h), 14400 (4h), 21600 (6h), 43200 (12h), 86400 (24h).",
+											"description": "Interval between automatic syncs, in seconds. Allowed values: 900 (15min), 1800 (30min), 3600 (1h), 7200 (2h), 14400 (4h), 21600 (6h), 43200 (12h), 86400 (24h).",
 											"x-auditable": true
 										},
 										"token_id": {
@@ -1525,6 +1537,18 @@
 											"anyOf": [
 												{
 													"enum": [
+														900
+													],
+													"type": "number"
+												},
+												{
+													"enum": [
+														1800
+													],
+													"type": "number"
+												},
+												{
+													"enum": [
 														3600
 													],
 													"type": "number"
@@ -1561,7 +1585,7 @@
 												}
 											],
 											"default": 21600,
-											"description": "Interval between automatic syncs, in seconds. Allowed values: 3600 (1h), 7200 (2h), 14400 (4h), 21600 (6h), 43200 (12h), 86400 (24h).",
+											"description": "Interval between automatic syncs, in seconds. Allowed values: 900 (15min), 1800 (30min), 3600 (1h), 7200 (2h), 14400 (4h), 21600 (6h), 43200 (12h), 86400 (24h).",
 											"x-auditable": true
 										},
 										"token_id": {
@@ -2405,6 +2429,18 @@
 												"anyOf": [
 													{
 														"enum": [
+															900
+														],
+														"type": "number"
+													},
+													{
+														"enum": [
+															1800
+														],
+														"type": "number"
+													},
+													{
+														"enum": [
 															3600
 														],
 														"type": "number"
@@ -2441,7 +2477,7 @@
 													}
 												],
 												"default": 21600,
-												"description": "Interval between automatic syncs, in seconds. Allowed values: 3600 (1h), 7200 (2h), 14400 (4h), 21600 (6h), 43200 (12h), 86400 (24h).",
+												"description": "Interval between automatic syncs, in seconds. Allowed values: 900 (15min), 1800 (30min), 3600 (1h), 7200 (2h), 14400 (4h), 21600 (6h), 43200 (12h), 86400 (24h).",
 												"x-auditable": true
 											},
 											"token_id": {
@@ -3243,6 +3279,18 @@
 											"anyOf": [
 												{
 													"enum": [
+														900
+													],
+													"type": "number"
+												},
+												{
+													"enum": [
+														1800
+													],
+													"type": "number"
+												},
+												{
+													"enum": [
 														3600
 													],
 													"type": "number"
@@ -3279,7 +3327,7 @@
 												}
 											],
 											"default": 21600,
-											"description": "Interval between automatic syncs, in seconds. Allowed values: 3600 (1h), 7200 (2h), 14400 (4h), 21600 (6h), 43200 (12h), 86400 (24h).",
+											"description": "Interval between automatic syncs, in seconds. Allowed values: 900 (15min), 1800 (30min), 3600 (1h), 7200 (2h), 14400 (4h), 21600 (6h), 43200 (12h), 86400 (24h).",
 											"x-auditable": true
 										},
 										"token_id": {
@@ -4372,6 +4420,18 @@
 												"anyOf": [
 													{
 														"enum": [
+															900
+														],
+														"type": "number"
+													},
+													{
+														"enum": [
+															1800
+														],
+														"type": "number"
+													},
+													{
+														"enum": [
 															3600
 														],
 														"type": "number"
@@ -4408,7 +4468,7 @@
 													}
 												],
 												"default": 21600,
-												"description": "Interval between automatic syncs, in seconds. Allowed values: 3600 (1h), 7200 (2h), 14400 (4h), 21600 (6h), 43200 (12h), 86400 (24h).",
+												"description": "Interval between automatic syncs, in seconds. Allowed values: 900 (15min), 1800 (30min), 3600 (1h), 7200 (2h), 14400 (4h), 21600 (6h), 43200 (12h), 86400 (24h).",
 												"x-auditable": true
 											},
 											"token_id": {
@@ -5220,6 +5280,18 @@
 											"anyOf": [
 												{
 													"enum": [
+														900
+													],
+													"type": "number"
+												},
+												{
+													"enum": [
+														1800
+													],
+													"type": "number"
+												},
+												{
+													"enum": [
 														3600
 													],
 													"type": "number"
@@ -5256,7 +5328,7 @@
 												}
 											],
 											"default": 21600,
-											"description": "Interval between automatic syncs, in seconds. Allowed values: 3600 (1h), 7200 (2h), 14400 (4h), 21600 (6h), 43200 (12h), 86400 (24h).",
+											"description": "Interval between automatic syncs, in seconds. Allowed values: 900 (15min), 1800 (30min), 3600 (1h), 7200 (2h), 14400 (4h), 21600 (6h), 43200 (12h), 86400 (24h).",
 											"x-auditable": true
 										},
 										"token_id": {
@@ -6234,6 +6306,18 @@
 								"anyOf": [
 									{
 										"enum": [
+											900
+										],
+										"type": "number"
+									},
+									{
+										"enum": [
+											1800
+										],
+										"type": "number"
+									},
+									{
+										"enum": [
 											3600
 										],
 										"type": "number"
@@ -6270,7 +6354,7 @@
 									}
 								],
 								"default": 21600,
-								"description": "Interval between automatic syncs, in seconds. Allowed values: 3600 (1h), 7200 (2h), 14400 (4h), 21600 (6h), 43200 (12h), 86400 (24h).",
+								"description": "Interval between automatic syncs, in seconds. Allowed values: 900 (15min), 1800 (30min), 3600 (1h), 7200 (2h), 14400 (4h), 21600 (6h), 43200 (12h), 86400 (24h).",
 								"x-auditable": true
 							},
 							"token_id": {
@@ -6955,6 +7039,18 @@
 											"anyOf": [
 												{
 													"enum": [
+														900
+													],
+													"type": "number"
+												},
+												{
+													"enum": [
+														1800
+													],
+													"type": "number"
+												},
+												{
+													"enum": [
 														3600
 													],
 													"type": "number"
@@ -6991,7 +7087,7 @@
 												}
 											],
 											"default": 21600,
-											"description": "Interval between automatic syncs, in seconds. Allowed values: 3600 (1h), 7200 (2h), 14400 (4h), 21600 (6h), 43200 (12h), 86400 (24h).",
+											"description": "Interval between automatic syncs, in seconds. Allowed values: 900 (15min), 1800 (30min), 3600 (1h), 7200 (2h), 14400 (4h), 21600 (6h), 43200 (12h), 86400 (24h).",
 											"x-auditable": true
 										},
 										"token_id": {
@@ -8710,6 +8806,18 @@
 								"anyOf": [
 									{
 										"enum": [
+											900
+										],
+										"type": "number"
+									},
+									{
+										"enum": [
+											1800
+										],
+										"type": "number"
+									},
+									{
+										"enum": [
 											3600
 										],
 										"type": "number"
@@ -8746,7 +8854,7 @@
 									}
 								],
 								"default": 21600,
-								"description": "Interval between automatic syncs, in seconds. Allowed values: 3600 (1h), 7200 (2h), 14400 (4h), 21600 (6h), 43200 (12h), 86400 (24h).",
+								"description": "Interval between automatic syncs, in seconds. Allowed values: 900 (15min), 1800 (30min), 3600 (1h), 7200 (2h), 14400 (4h), 21600 (6h), 43200 (12h), 86400 (24h).",
 								"x-auditable": true
 							},
 							"token_id": {
@@ -9431,6 +9539,18 @@
 											"anyOf": [
 												{
 													"enum": [
+														900
+													],
+													"type": "number"
+												},
+												{
+													"enum": [
+														1800
+													],
+													"type": "number"
+												},
+												{
+													"enum": [
 														3600
 													],
 													"type": "number"
@@ -9467,7 +9587,7 @@
 												}
 											],
 											"default": 21600,
-											"description": "Interval between automatic syncs, in seconds. Allowed values: 3600 (1h), 7200 (2h), 14400 (4h), 21600 (6h), 43200 (12h), 86400 (24h).",
+											"description": "Interval between automatic syncs, in seconds. Allowed values: 900 (15min), 1800 (30min), 3600 (1h), 7200 (2h), 14400 (4h), 21600 (6h), 43200 (12h), 86400 (24h).",
 											"x-auditable": true
 										},
 										"token_id": {
@@ -11232,6 +11352,18 @@
 								"anyOf": [
 									{
 										"enum": [
+											900
+										],
+										"type": "number"
+									},
+									{
+										"enum": [
+											1800
+										],
+										"type": "number"
+									},
+									{
+										"enum": [
 											3600
 										],
 										"type": "number"
@@ -11268,7 +11400,7 @@
 									}
 								],
 								"default": 21600,
-								"description": "Interval between automatic syncs, in seconds. Allowed values: 3600 (1h), 7200 (2h), 14400 (4h), 21600 (6h), 43200 (12h), 86400 (24h).",
+								"description": "Interval between automatic syncs, in seconds. Allowed values: 900 (15min), 1800 (30min), 3600 (1h), 7200 (2h), 14400 (4h), 21600 (6h), 43200 (12h), 86400 (24h).",
 								"x-auditable": true
 							},
 							"system_prompt_ai_search": {
@@ -11955,6 +12087,18 @@
 											"anyOf": [
 												{
 													"enum": [
+														900
+													],
+													"type": "number"
+												},
+												{
+													"enum": [
+														1800
+													],
+													"type": "number"
+												},
+												{
+													"enum": [
 														3600
 													],
 													"type": "number"
@@ -11991,7 +12135,7 @@
 												}
 											],
 											"default": 21600,
-											"description": "Interval between automatic syncs, in seconds. Allowed values: 3600 (1h), 7200 (2h), 14400 (4h), 21600 (6h), 43200 (12h), 86400 (24h).",
+											"description": "Interval between automatic syncs, in seconds. Allowed values: 900 (15min), 1800 (30min), 3600 (1h), 7200 (2h), 14400 (4h), 21600 (6h), 43200 (12h), 86400 (24h).",
 											"x-auditable": true
 										},
 										"token_id": {
@@ -12764,6 +12908,18 @@
 								"anyOf": [
 									{
 										"enum": [
+											900
+										],
+										"type": "number"
+									},
+									{
+										"enum": [
+											1800
+										],
+										"type": "number"
+									},
+									{
+										"enum": [
 											3600
 										],
 										"type": "number"
@@ -12800,7 +12956,7 @@
 									}
 								],
 								"default": 21600,
-								"description": "Interval between automatic syncs, in seconds. Allowed values: 3600 (1h), 7200 (2h), 14400 (4h), 21600 (6h), 43200 (12h), 86400 (24h).",
+								"description": "Interval between automatic syncs, in seconds. Allowed values: 900 (15min), 1800 (30min), 3600 (1h), 7200 (2h), 14400 (4h), 21600 (6h), 43200 (12h), 86400 (24h).",
 								"x-auditable": true
 							},
 							"system_prompt_ai_search": {
@@ -13487,6 +13643,18 @@
 											"anyOf": [
 												{
 													"enum": [
+														900
+													],
+													"type": "number"
+												},
+												{
+													"enum": [
+														1800
+													],
+													"type": "number"
+												},
+												{
+													"enum": [
 														3600
 													],
 													"type": "number"
@@ -13523,7 +13691,7 @@
 												}
 											],
 											"default": 21600,
-											"description": "Interval between automatic syncs, in seconds. Allowed values: 3600 (1h), 7200 (2h), 14400 (4h), 21600 (6h), 43200 (12h), 86400 (24h).",
+											"description": "Interval between automatic syncs, in seconds. Allowed values: 900 (15min), 1800 (30min), 3600 (1h), 7200 (2h), 14400 (4h), 21600 (6h), 43200 (12h), 86400 (24h).",
 											"x-auditable": true
 										},
 										"token_id": {
