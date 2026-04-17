@@ -5,68 +5,43 @@
 		<p>At Cloudflare, we’re not looking for people who wait for a polished roadmap; we’re looking for the builders who see the cracks in the Internet that everyone else has simply learned to live with. We value candidates who have the instinct to spot a "normalized" problem and the AI-native curiosity to create a solution using the latest tools. Our culture is built on iteration, leveraging AI to ship faster today to make it better tomorrow, while ensuring that every improvement, no matter how small, is shared across the team to lift everyone up. If you’re the type of person who values curiosity over bureaucracy, and that AI is a partner in solving tough problems to keep the Internet moving forward, you’ll fit right in.</p>
 	</div>
 </div>
-<p><strong>Location</strong>: Austin, TX (Hybrid, 2 days per week in-office)<br><br>Many of Cloudflare’s critical internal services run on Kubernetes. These services include those responsible for Cloudflare’s control plane and APIs, data analytics and other internal tools used to manage our global network. These Kubernetes platforms are purpose-built from the ground up and run on bare metal Linux in different regions around the world. The scale we work at involves tens of thousands of containers and terabits per second of network traffic. The team takes pride in knowing this platform helps run parts of the global Internet.</p>
-<p>As an engineer on the Kubernetes platform team, you'll be building the tools to help engineers deploy and operate the services that make Cloudflare work. Our mission is to provide a reliable, yet flexible, platform to help product teams release new software efficiently and safely. The role includes both software engineering and DevOps operational responsibilities.&nbsp;</p>
-<p><strong>What You'll Do</strong></p>
+<p><strong>Available Locations: London, UK</strong></p>
+<p><strong>About the role</strong></p>
+<p>Cloudflare Managed Defense Center provides premium-level support for Cloudflare's security products and features. Our largest and most technically sophisticated customers will contact our Managed Defense Center for assistance and intelligence in dealing with threats or attacks on their infrastructure at OSI Layers 3, 4, and 7. This spans the range of Cloudflare security products from Magic Transit Infrastructure Protection, DDoS mitigation (including Advanced TCP Protection and Advanced DNS Protection), and Cloudflare Network Firewall, to using the Web Application Firewall (WAF), Spectrum, Bot Management, API Security, and Rate Limiting to help customers.</p>
+<p>Managed Defense Response [Analysts/Engineers] analyze threats using customer-facing dashboards and internal tools, make detailed and informed suggestions for mitigation, and may implement mitigation strategies directly on behalf of the customer with appropriate approval. The team provides 24x7x365 proactive monitoring via our internal alerting systems, near real-time analysis of security events, and attack reporting beyond Cloudflare's self-service reports.</p>
+<p><strong>Responsibilities</strong></p>
 <ul>
-	<li>Improve Kubernetes, Ceph and Prometheus automation, configuration management and other tooling&nbsp;</li>
-	<li>Design scalable and resilient systems that can keep up with company growth</li>
-	<li>Improve the efficiency of managing resources such as CPU, bandwidth and storage</li>
-	<li>Harden the platform against security threats and resource contention issues</li>
-	<li>Improve our GitOps systems and practices</li>
-	<li>Work with app teams to understand their potential challenges and help them choose the best way to architect their systems on Kubernetes</li>
-	<li>Contribute back to the open source community</li>
-	<ul>
-		<li>Some of our favorite open source projects include: Prometheus, Rook.io, Kubevirt, Contour, Envoy, Consul, cdk8s, Vault, Ceph, Cloudprober, Etcd, Calico, Terraform</li>
-	</ul>
-	<li>Help respond and prevent incidents impacting core platforms</li>
+	<li>Monitor and investigate proactive alerts to identify attacks</li>
+	<li>Work with Engineering and Operations teams to mitigate attacks, suggest steps to mitigate, and apply the appropriate mitigation when applicable</li>
+	<li>Work with Engineering and Product teams to improve products and tools</li>
+	<li>Communicate with customers via chat, email, and phone</li>
+	<li>Review alerts to determine relevancy and urgency; create tracking tickets for incidents requiring review or escalation</li>
+	<li>Adhere to Customer SLAs for alert response and customer communication</li>
+	<li>Configure and manage security monitoring rules; contribute to tool and threshold improvements</li>
+	<li>DDoS mitigation for OSI Layers 3, 4, &amp; 7: filter malicious traffic using Cloudflare tools including Magic Transit, Magic Firewall, Advanced TCP Protection, WAF, Custom Rules, IP Access Rules, and Rate Limiting</li>
+	<li>Maintain customer-specific runbooks and escalation matrices</li>
+	<li>Support managed customer onboarding and deliver monthly security reviews</li>
 </ul>
-<p><strong>What You'll Need</strong></p>
+<p><strong>Key Skill Sets</strong></p>
 <ul>
-	<li>Experience managing production Kubernetes or similar orchestration platforms</li>
-	<li>Recent experience with configuration management frameworks such as SaltStack or Ansible</li>
-	<li>Knowledge of how container runtimes work inside of Linux (isolation, storage, and networking)</li>
-	<li>Ability to work with codebases in Bash, TypeScript and Go</li>
-	<li>A firm grasp of IP networking including routing and iptables</li>
-	<li>Excellent debugging skills in a Linux environment</li>
-	<li>Source control experience including branching, merging and rebasing</li>
-	<li>The ability to break down complex problems into smaller pieces, provide options, talk through trade-offs and drive the effort to solve the problem</li>
+	<li>Strong understanding of internet protocols (TCP, UDP, ICMP, GRE, BGP)</li>
+	<li>Networking fundamentals are crucial for success</li>
+	<li>Analysis of traffic for attack anomaly detection and creation of mitigation rules</li>
+	<li>Experience handling attack mitigation with knowledge of L3/4 and L7 attacks</li>
+	<li>Command line / Bash shell proficiency</li>
+	<li>Customer-facing or Technical support experience is mandatory</li>
+	<li>Strong communication skills, including with VIP customers during active attacks</li>
+	<li>Ability to remain calm under pressure</li>
+	<li>Ability to work 24x7 rotating shifts</li>
+	<li>Sysadmin skills: Linux, Mac, or Windows (Preferred)</li>
+	<li>Knowledge of Cloudflare Security Products &amp; Features (Preferred)</li>
+	<li>Scripting skills, Python preferred (Preferred)</li>
+	<li>Prometheus/Grafana monitoring experience (Preferred)</li>
+	<li>Packet capture tools such as tcpdump or Wireshark (Preferred)</li>
+	<li>API/GraphQL experience (Nice to have)</li>
+	<li>Security certifications: GCIA, GCIH, GCFA, GCFE, CISSP, CISM equivalent (Strongly preferred)</li>
+	<li>Network certifications: CCNA, CCNP (Nice to have)</li>
 </ul>
-<p><strong>Bonus Points</strong></p>
-<ul>
-	<li>Experience operating Kubernetes on-premise at scale in capacities including SRE, systems design or architecture</li>
-	<li>Providing guidance and building platforms across multiple zones and regions as foundation for other teams to build distributed highly-available applications&nbsp;</li>
-	<li>Operational experience with Etcd, Prometheus, Ceph, Rook, SaltStack, Vault, Calico, other common CNIs like Cilium</li>
-</ul>
-<p><strong>Equity</strong></p>
-<p>This role is eligible to participate in Cloudflare’s equity plan.</p>
-<p><strong>Benefits</strong></p>
-<p>Cloudflare offers a complete package of benefits and programs to support you and your family.&nbsp; Our benefits programs can help you pay health care expenses, support caregiving, build capital for the future and make life a little easier and fun!&nbsp; The below is a description of our benefits for employees in the United States, and benefits may vary for employees based outside the U.S.</p>
-<p><strong>Health &amp; Welfare Benefits</strong></p>
-<ul>
-	<li>Medical/Rx Insurance</li>
-	<li>Dental Insurance</li>
-	<li>Vision Insurance</li>
-	<li>Flexible Spending Accounts</li>
-	<li>Commuter Spending Accounts</li>
-	<li>Fertility &amp; Family Forming Benefits</li>
-	<li>On-demand mental health support and Employee Assistance Program</li>
-	<li>Global Travel Medical Insurance</li>
-</ul>
-<p><strong>Financial Benefits</strong></p>
-<ul>
-	<li>Short and Long Term Disability Insurance</li>
-	<li>Life &amp; Accident Insurance</li>
-	<li>401(k) Retirement Savings Plan</li>
-	<li>Employee Stock Participation Plan</li>
-</ul>
-<p><strong>Time Off</strong></p>
-<ul>
-	<li>Flexible paid time off covering vacation and sick leave</li>
-	<li>Leave programs, including parental, pregnancy health, medical, and bereavement leave</li>
-</ul>
-<p>&nbsp;</p>
-<p><strong>This role may require flexibility to be on-call outside of standard working hours to address technical issues as needed.</strong></p>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
 	<p><span style="font-weight: 400;">We’re not just a highly ambitious, large-scale technology company. We’re a highly ambitious, large-scale technology company with a soul. Fundamental to our mission to help build a better Internet is protecting the free and open Internet.</span></p>
