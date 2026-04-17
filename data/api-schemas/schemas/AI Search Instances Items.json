@@ -285,6 +285,16 @@
 				}
 			},
 			{
+				"description": "Filter items by their unique ID. Returns at most one item.",
+				"in": "query",
+				"name": "item_id",
+				"schema": {
+					"description": "Filter items by their unique ID. Returns at most one item.",
+					"maxLength": 64,
+					"type": "string"
+				}
+			},
+			{
 				"description": "Namespace name",
 				"example": "my-namespace",
 				"in": "path",
