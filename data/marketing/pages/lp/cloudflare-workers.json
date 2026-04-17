@@ -1,10 +1,10 @@
 {
 	"componentChunkName": "component---src-components-page-page-template-tsx",
-	"path": "/lp/ppc/ddos-trends-report/",
+	"path": "/lp/cloudflare-workers/",
 	"result": {
 		"data": {
 			"page": {
-				"pageName": "PPC ONLY - DDoS Trends Report Q4'23",
+				"pageName": "LP Workers PPC Landing Page",
 				"localeList": {
 					"enUS": "English for Locale",
 					"zhCN": "Translated for Locale",
@@ -33,14 +33,14 @@
 					"arAR": "No Page for Locale",
 					"heIL": null
 				},
-				"relativePath": "lp/ppc/ddos-trends-report",
-				"topNavOptions": "empty",
+				"relativePath": "lp/cloudflare-workers",
+				"topNavOptions": "minimized",
 				"topNavButtonText": null,
 				"topNavButtonUrl": null,
-				"footerOptions": "minimized",
+				"footerOptions": "default",
 				"metaTags": {
-					"metaTitle": "2023 Q4 DDoS Report",
-					"metaDescription": "In times of economic uncertainty and geopolitical conflict, cyber attack activity heightens. Organizations must remain vigilant and have solid continuity plans in place – DDoS attacks can cause critical services, applications, and infrastructure to go down. Downtime can ultimately damage your organization's revenue, reputation, and productivity.",
+					"metaTitle": "Cloudflare Workers™",
+					"metaDescription": "Run code at the edge, deliver powerful web extensibility",
 					"twitterCustomImage": null,
 					"metaImage": {
 						"file": {
@@ -52,10 +52,10 @@
 					"author": []
 				},
 				"sys": {
-					"createdAt": "2022-08-16T21:46:35.621Z",
-					"updatedAt": "2024-04-29T03:50:44.120Z"
+					"createdAt": "2019-01-16T06:40:15.644Z",
+					"updatedAt": "2023-12-23T04:55:17.742Z"
 				},
-				"contentfulId": "6X89VmbBCmQFDKah7IRRGi",
+				"contentfulId": "4zfRIYmn16uOum4syKYYsq",
 				"contentTypeId": "page",
 				"promotionalBanner": null,
 				"psaBanner": null,
@@ -66,8 +66,8 @@
 				"relatedBlades": [
 					{
 						"contentTypeId": "bladeSignUpForm",
-						"contentfulId": "57OgfcYt4OBZ7KqV5KlHAX",
-						"bladeName": "[ACQ] Q1'24 PPC ONLY - GBL - DDoS Trends Report - Marketo Form Blade",
+						"contentfulId": "4H53DsMzgcMoA06y6cSsQE",
+						"bladeName": "LP Workers PPC - Form Blade",
 						"formType": "formRight",
 						"formTitle": null,
 						"buttonText": null,
@@ -75,44 +75,74 @@
 						"htmlId": null,
 						"marketoEmbeddedForm": {
 							"contentTypeId": "marketoEmbeddedForm",
-							"contentfulId": "5wn6QhtH9zIdMrycFl6hhI",
-							"bladeName": "[ACQ] Q4'23 PPC ONLY - GBL - DDoS Trends Report - Marketo Form",
+							"contentfulId": "245yGCK8o3Ch4QObXFhfnf",
+							"bladeName": "LP Workers PPC - Marketo Form (1341)",
 							"backgroundColor": "white",
-							"marketoFormId": 2550,
-							"marketoFormLeadSource": "Inbound - Pay Per Click",
-							"marketoFormLeadSourceDetail": "[ACQ] Q3'22 PPC - GBL - DDoS Trends Report",
+							"marketoFormId": 1341,
+							"marketoFormLeadSource": "Inbound - Web Form",
+							"marketoFormLeadSourceDetail": "Contact Us Workers",
 							"marketoFormAssetName": null,
-							"marketoFormHeaderText": "Get the report",
+							"marketoFormHeaderText": "Get Workers Now",
 							"marketoFormDefaultComment": null,
-							"showCommentBox": false,
+							"showCommentBox": null,
 							"marketoFormThankYouText": null,
-							"marketoFormCustomSuccessMessage": "You will receive the report in your inbox. You may also download the report here.",
-							"marketoFormPdfDownload": {
-								"file": {
-									"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/7ApkRmYjBhskl8rh3scVO8/ce0ecec256c8eb61b0a12eb8ddca88cd/Q4-2023-DDoS-Trends-Report_Final.pdf"
-								},
-								"description": ""
-							},
+							"marketoFormCustomSuccessMessage": null,
+							"marketoFormPdfDownload": null,
 							"marketoFormPdfDownloadI18n": [],
-							"marketoFormAssetDownloadButtonText": "Download Report",
-							"marketoFormSuccessRedirectUrl": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/7ApkRmYjBhskl8rh3scVO8/ce0ecec256c8eb61b0a12eb8ddca88cd/Q4-2023-DDoS-Trends-Report_Final.pdf?_gl=1*b9o860*_ga*MTc2ODQxODc5NS4xNjkzNTk3NDQ4*_ga_SQCRB0TXZW*MTcwOTIxNzM3Ni4yMTkuMS4xNzA5MjE3Mzg2LjAuMC4w",
-							"sendAdRoll": true,
+							"marketoFormAssetDownloadButtonText": null,
+							"marketoFormSuccessRedirectUrl": null,
+							"sendAdRoll": false,
 							"meta_adRollCustomSegment": null,
 							"enableSandbox": null,
-							"marketoFormSubmitButtonText": "Download now",
-							"marketoFormSubmitButtonColor": "orange",
+							"marketoFormSubmitButtonText": null,
+							"marketoFormSubmitButtonColor": null,
 							"enableEmailVerification": null,
 							"disableEnterpriseEmailNotification": null,
 							"enableRingout": null
 						},
-						"title": "The State of DDoS Threats: Q4 2023 Report",
-						"subtitle": null,
-						"copy": "In times of economic uncertainty and geopolitical conflict, cyber attack activity heightens. Organizations must remain vigilant and have solid continuity plans in place – DDoS attacks can cause critical services, applications, and infrastructure to go down. Downtime can ultimately damage your organization's revenue, reputation, and productivity.\n\nBy analyzing traffic patterns across our global network, we've identified emerging DDoS threats and tracked known DDoS trends over time. By understanding these threats early, your organization can prevent attacks from disrupting business operations.\n\nRead the __Q4 2023 DDoS Threat Landscape Report__ to learn more about:\n\n- DDoS trends for the year 2023\n- DDoS attacks during the Israel-Hamas war, the Taiwan general election season and after COP28 \n- The holiday season DDoS grinch\n- Best practices to deal with sophisticated network and application layer DDoS attacks",
-						"iconList": [],
-						"iconTitleList": null,
-						"iconCopyList": null,
+						"title": "Cloudflare Workers™ - Replace Varnish (VCL) with Flexible JavaScript",
+						"subtitle": "Run code at the edge, deliver powerful web extensibility",
+						"copy": null,
+						"iconList": [
+							{
+								"file": {
+									"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/3pqrlbvlX4RLW8euHuDc4w/69ce2b7b6d97f7d9610ba828b798c23c/user-blue.svg"
+								},
+								"description": ""
+							},
+							{
+								"file": {
+									"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/6iDdx7d6jVxD1RyoOd6Mjh/13e35fba0e57b196e7c4949efc128b59/network-scale__3_.svg"
+								},
+								"description": null
+							},
+							{
+								"file": {
+									"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/5ppegkNsfTD8gwhLcA4dP1/4ada77cf44d4da5564981db3ed81572c/security-bots.png"
+								},
+								"description": null
+							},
+							{
+								"file": {
+									"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/3d4Uar5Bfe7atINKDZiF8F/26c4e1815d54098bd1f3be45888b74e6/user-multi__1_.png"
+								},
+								"description": null
+							}
+						],
+						"iconTitleList": [
+							"Deliver personalized user experiences",
+							"Increase API responsiveness",
+							"Detect bot activity",
+							"Simplify A/B testing"
+						],
+						"iconCopyList": [
+							"Cache lightweight static HTML pages at the edge while incorporating dynamic content based on user location, device type or time of day. Run multiple background service requests either to the origin or third party Internet domains.",
+							"Aggregate responses from multiple API endpoints, and return as a single response, eliminating the need for each endpoint to compile individual responses. Each request can also be split into multiple parallel requests then combined into a single response.",
+							"Build conditional responses for inbound requests that can assess and block malicious bots from completing their requests. Set parameters that can identify and authorize legitimate traffic.",
+							"Enable randomized page selection by intercepting inbound HTTP requests and serving content requests at the edge to specific control and test groups."
+						],
 						"streamVideoId": null,
-						"streamThumbnails": "4s",
+						"streamThumbnails": null,
 						"streamOptions": null,
 						"rightSideCopy": null,
 						"rightSideCopyPosition": null,
@@ -121,9 +151,120 @@
 						"textColor": "black",
 						"extraClass": null,
 						"sectionPadding": null,
-						"customPrivacyPolicy": false,
+						"customPrivacyPolicy": null,
 						"customPrivacyPolicyText": null,
 						"featureList": null
+					},
+					{
+						"contentfulId": "60KdFlyak06OIC6mQwKA0m",
+						"contentTypeId": "bladeKeyFeatures",
+						"backgroundColor": "white",
+						"title": "Key Features",
+						"keyFeature": [
+							"High-performance V8 JavaScript Engine",
+							"Based on the web standard Service Workers API",
+							"Securely sandboxed",
+							"Prescripted deployment recipes",
+							"Fast startup times at all locations",
+							"Deployed across Cloudflare's %_DataCenterCount_%-city network within minutes",
+							"Fast key-value storage with Cloudflare Workers KV",
+							"Workers WebAssembly Support",
+							"Custom logic expressions for routing and caching at the edge"
+						],
+						"bladeBorder": "none",
+						"sectionPadding": null,
+						"titleColor": null,
+						"variant": null,
+						"description": null,
+						"featuresTextStyle": null,
+						"htmlId": null
+					},
+					{
+						"contentTypeId": "bladeQuote",
+						"contentfulId": "tmYykMGIrmKc6820iQGYy",
+						"quote": "\"With Workers we've been able to push routing and caching to the edge, allowing us to scale further while improving npm's performance for millions of developers. Migrating away from VCL means we can spend more time in JavaScript, which we love.\"",
+						"quoteAuthor": "Laurie Voss",
+						"quoteTitle": "Co-founder and Chief Data Officer at npm",
+						"learnMoreText": null,
+						"sectionPadding": null,
+						"backgroundColor": "white",
+						"bladeBorder": "none",
+						"learnMoreUrl": null,
+						"htmlId": null,
+						"image": {
+							"file": {
+								"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/SXutIF0kAEoyU6oGaOg6m/ad9db8d1d5a6d791971a589e81d37c37/npm-logo-red.png"
+							},
+							"description": null
+						},
+						"imageAssetFile": {
+							"id": "3aaf484a-1a5e-5473-8bb8-ffc5c5ecf9dd",
+							"altText": "Logo npm trusted by gray",
+							"title": "Logo npm trusted by gray",
+							"activeAsset": "Brandfolder Asset",
+							"locale": "en-US",
+							"contentfulAsset": null,
+							"brandfolderAsset": {
+								"size": 320,
+								"height": 608,
+								"width": 1896,
+								"filename": "logo_npm_trusted-by_gray.svg",
+								"file": {
+									"publicURL": "https://cf-assets.www.cloudflare.com/brandfolder/logo_npm_trusted-by_gray.svg"
+								}
+							},
+							"brandfolderAssetMobile": null
+						},
+						"imageLinkUrl": null,
+						"logoList": [],
+						"logoListAssetFile": [],
+						"quoteCarousel": []
+					},
+					{
+						"contentTypeId": "bladeQuote",
+						"contentfulId": "4yQmq833V682goqyssAgwY",
+						"quote": "\"Cloudflare Workers saves us a great deal of time. Managing bot traffic without Workers would consume valuable development and server resources that are better spent elsewhere.\"",
+						"quoteAuthor": "John Thompson",
+						"quoteTitle": "Senior System Administrator at MaxMind",
+						"learnMoreText": null,
+						"sectionPadding": null,
+						"backgroundColor": "white",
+						"bladeBorder": "border-top",
+						"learnMoreUrl": null,
+						"htmlId": null,
+						"image": {
+							"file": {
+								"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/2ztBE4iNTSW0c2EKUuw4CY/d6e5285255210b124bddb14e37fd0718/logo-maxmind.svg"
+							},
+							"description": null
+						},
+						"imageAssetFile": {
+							"id": "c9998207-faf4-5f6d-ac31-2fbc7f565cf3",
+							"altText": "logo-maxmind",
+							"title": "logo-maxmind",
+							"activeAsset": "Brandfolder Asset",
+							"locale": "en-US",
+							"contentfulAsset": {
+								"file": {
+									"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/2ztBE4iNTSW0c2EKUuw4CY/d6e5285255210b124bddb14e37fd0718/logo-maxmind.svg"
+								},
+								"description": null
+							},
+							"brandfolderAsset": {
+								"size": 1200,
+								"height": 398,
+								"width": 3986,
+								"filename": "logo_maxmind_gray.svg",
+								"file": {
+									"publicURL": "https://cf-assets.www.cloudflare.com/brandfolder/logo_maxmind_gray.svg"
+								}
+							},
+							"brandfolderAssetMobile": null
+						},
+						"imageLinkUrl": null,
+						"logoList": [],
+						"logoListAssetFile": [],
+						"quoteCarousel": []
 					},
 					{
 						"contentTypeId": "bladeTrustedBy",
@@ -397,7 +538,7 @@
 				],
 				"noindex": true,
 				"formModal": [],
-				"keepHashUrlSyncedWithScrollPosition": false
+				"keepHashUrlSyncedWithScrollPosition": null
 			},
 			"site": {
 				"siteMetadata": {
@@ -408,8 +549,8 @@
 		"pageContext": {
 			"currentLocale": "en-US",
 			"locale": "en-US",
-			"pathname": "/lp/ppc/ddos-trends-report/",
-			"contentfulId": "6X89VmbBCmQFDKah7IRRGi",
+			"pathname": "/lp/cloudflare-workers/",
+			"contentfulId": "4zfRIYmn16uOum4syKYYsq",
 			"allowedHrefLangs": [
 				"en-US",
 				"zh-CN",
