@@ -1480,6 +1480,116 @@
 		"bits": "Confidence interval for the corresponding point estimate",
 		"packets": "Confidence interval for the corresponding point estimate"
 	},
+	"AccountCf1GatewayDns1dGroups": {
+		"__description": "CF1 Gateway DNS analytics - 1 day rollup",
+		"dimensions": "List of dimensions to group by",
+		"sum": "",
+		"uniq": ""
+	},
+	"AccountCf1GatewayDns1dGroupsDimensions": {
+		"__description": "",
+		"coloName": "Cloudflare colo code",
+		"country": "Source country code",
+		"datetime": "Day start timestamp (daily granularity)",
+		"destination": "Query name (destination domain)",
+		"location": "Gateway location ID",
+		"policyId": "Policy ID",
+		"protocol": "DNS protocol",
+		"queryType": "DNS query type",
+		"rcode": "DNS response code",
+		"resolverDecision": "Gateway resolver decision"
+	},
+	"AccountCf1GatewayDns1dGroupsFilter_InputObject": {
+		"__description": ""
+	},
+	"AccountCf1GatewayDns1dGroupsOrderBy": {
+		"__description": ""
+	},
+	"AccountCf1GatewayDns1dGroupsSum": {
+		"__description": "",
+		"queries": "Total DNS queries",
+		"queryBytes": "Total query bytes",
+		"responseBytes": "Total response bytes"
+	},
+	"AccountCf1GatewayDns1dGroupsUniq": {
+		"__description": "",
+		"devices": "Unique devices",
+		"users": "Unique users"
+	},
+	"AccountCf1GatewayDns1hGroups": {
+		"__description": "CF1 Gateway DNS analytics - 1 hour rollup",
+		"dimensions": "List of dimensions to group by",
+		"sum": "",
+		"uniq": ""
+	},
+	"AccountCf1GatewayDns1hGroupsDimensions": {
+		"__description": "",
+		"coloName": "Cloudflare colo code",
+		"country": "Source country code",
+		"datetime": "Hour start timestamp (hourly granularity)",
+		"destination": "Query name (destination domain)",
+		"location": "Gateway location ID",
+		"policyId": "Policy ID",
+		"protocol": "DNS protocol",
+		"queryType": "DNS query type",
+		"rcode": "DNS response code",
+		"resolverDecision": "Gateway resolver decision"
+	},
+	"AccountCf1GatewayDns1hGroupsFilter_InputObject": {
+		"__description": ""
+	},
+	"AccountCf1GatewayDns1hGroupsOrderBy": {
+		"__description": ""
+	},
+	"AccountCf1GatewayDns1hGroupsSum": {
+		"__description": "",
+		"queries": "Total DNS queries",
+		"queryBytes": "Total query bytes",
+		"responseBytes": "Total response bytes"
+	},
+	"AccountCf1GatewayDns1hGroupsUniq": {
+		"__description": "",
+		"devices": "Unique devices",
+		"users": "Unique users"
+	},
+	"AccountCf1GatewayDnsRawGroups": {
+		"__description": "CF1 Gateway DNS analytics - raw data (max 3h query window). Use cf1GatewayDns1hGroups for longer ranges, or cf1GatewayDns1dGroups for 10d+",
+		"dimensions": "List of dimensions to group by",
+		"sum": "",
+		"uniq": ""
+	},
+	"AccountCf1GatewayDnsRawGroupsDimensions": {
+		"__description": "",
+		"coloName": "Cloudflare colo code",
+		"country": "Source country code",
+		"datetime": "Query timestamp",
+		"datetimeFiveMinutes": "Query timestamp truncated to five minutes",
+		"datetimeHour": "Query timestamp truncated to hour",
+		"destination": "Query name (destination domain)",
+		"location": "Gateway location ID",
+		"policyId": "Policy ID",
+		"protocol": "DNS protocol",
+		"queryType": "DNS query type",
+		"rcode": "DNS response code",
+		"resolverDecision": "Gateway resolver decision"
+	},
+	"AccountCf1GatewayDnsRawGroupsFilter_InputObject": {
+		"__description": ""
+	},
+	"AccountCf1GatewayDnsRawGroupsOrderBy": {
+		"__description": ""
+	},
+	"AccountCf1GatewayDnsRawGroupsSum": {
+		"__description": "",
+		"queries": "Total DNS queries",
+		"queryBytes": "Total query bytes",
+		"responseBytes": "Total response bytes"
+	},
+	"AccountCf1GatewayDnsRawGroupsUniq": {
+		"__description": "",
+		"devices": "Unique devices",
+		"users": "Unique users"
+	},
 	"AccountCloudchamberMetricsAdaptiveGroups": {
 		"__description": "Metrics for Cloudchamber applications and deployments",
 		"avg": "The average value of a metric per dimension",
@@ -1736,6 +1846,38 @@
 		"bits": "Confidence interval for the corresponding point estimate",
 		"egressBits": "Confidence interval for the corresponding point estimate"
 	},
+	"AccountCloudforceOneDetectionsAdaptiveGroups": {
+		"__description": "Cloudforce One detection events for Workers scripts with adaptive sampling. Each row represents a single detection rule hit.",
+		"avg": "",
+		"confidence": "ALPHA - DO NOT USE",
+		"count": "Total number of detection rule hits",
+		"dimensions": "List of dimensions to group by"
+	},
+	"AccountCloudforceOneDetectionsAdaptiveGroupsAvg": {
+		"__description": "",
+		"sampleInterval": "Average sample interval"
+	},
+	"AccountCloudforceOneDetectionsAdaptiveGroupsConfidence": {
+		"__description": "",
+		"count": "Total number of detection rule hits, with confidence intervals",
+		"level": "Confidence level that was requested"
+	},
+	"AccountCloudforceOneDetectionsAdaptiveGroupsDimensions": {
+		"__description": "",
+		"date": "Detection event date",
+		"datetime": "Detection event timestamp",
+		"datetimeFiveMinutes": "Detection event timestamp, truncated to five minutes",
+		"datetimeHour": "Detection event timestamp, truncated to hour",
+		"datetimeMinute": "Detection event timestamp, truncated to minute",
+		"detection": "Name of the detection rule that was triggered",
+		"workerName": "The name of the Workers script"
+	},
+	"AccountCloudforceOneDetectionsAdaptiveGroupsFilter_InputObject": {
+		"__description": ""
+	},
+	"AccountCloudforceOneDetectionsAdaptiveGroupsOrderBy": {
+		"__description": ""
+	},
 	"AccountContainersMetricsAdaptiveGroups": {
 		"__description": "Metrics for Cloudchamber applications and deployments",
 		"avg": "The average value of a metric per dimension",
@@ -1904,6 +2046,41 @@
 		"containerUptime": "Confidence interval for the corresponding point estimate",
 		"cpuTimeSec": "Confidence interval for the corresponding point estimate",
 		"rxBytes": "Confidence interval for the corresponding point estimate",
+		"txBytes": "Confidence interval for the corresponding point estimate"
+	},
+	"AccountContainersUsageAdaptiveGroups": {
+		"__description": "Used to compute usage queries for billing estimates in Dash",
+		"confidence": "ALPHA - DO NOT USE",
+		"dimensions": "List of dimensions to group by",
+		"sum": "The sum of values for a metric per dimension"
+	},
+	"AccountContainersUsageAdaptiveGroupsConfidence": {
+		"__description": "",
+		"level": "Confidence level that was requested",
+		"sum": "The sum of values for a metric per dimension, with confidence intervals"
+	},
+	"AccountContainersUsageAdaptiveGroupsDimensions": {
+		"__description": "",
+		"date": "The date the metric was received"
+	},
+	"AccountContainersUsageAdaptiveGroupsFilter_InputObject": {
+		"__description": ""
+	},
+	"AccountContainersUsageAdaptiveGroupsOrderBy": {
+		"__description": ""
+	},
+	"AccountContainersUsageAdaptiveGroupsSum": {
+		"__description": "",
+		"allocatedDisk": "Sum of allocated disk in byte-seconds",
+		"allocatedMemory": "Sum of allocated memory in byte-seconds",
+		"cpuTimeSec": "Sum of CPU time in seconds",
+		"txBytes": "Sum of bytes transmitted"
+	},
+	"AccountContainersUsageAdaptiveGroupsSumConfidence": {
+		"__description": "",
+		"allocatedDisk": "Confidence interval for the corresponding point estimate",
+		"allocatedMemory": "Confidence interval for the corresponding point estimate",
+		"cpuTimeSec": "Confidence interval for the corresponding point estimate",
 		"txBytes": "Confidence interval for the corresponding point estimate"
 	},
 	"AccountD1AnalyticsAdaptiveGroups": {
@@ -3856,8 +4033,8 @@
 		"clientDeviceType": "",
 		"clientIP": "The visitor's IP address (IPv4 or IPv6)",
 		"clientRefererHost": "The referrer host",
-		"clientRequestAcceptContentTypeNames": "List of MIME content type extension names explicitly accepted by the visitor",
-		"clientRequestAcceptContentTypes": "List of MIME content types explicitly accepted by the visitor",
+		"clientRequestAcceptContentTypeNames": "List of MIME content type extension names accepted by the visitor (including wildcards)",
+		"clientRequestAcceptContentTypes": "List of MIME content types accepted by the visitor (including wildcards)",
 		"clientRequestHTTPHost": "The HTTP hostname requested by the visitor",
 		"clientRequestHTTPMethodName": "HTTP method of client request",
 		"clientRequestHTTPProtocol": "The version of HTTP protocol requested by the visitor",
@@ -3881,7 +4058,8 @@
 		"datetimeMinute": "The date and time the event occurred at the edge truncated to the minute",
 		"edgeDnsResponseTimeMs": "The time elapsed resolving a CNAME if it was required to reach your origin",
 		"edgeResponseContentType": "MIME type of the response",
-		"edgeResponseContentTypeMatched": "1 if the MIME type of the response is one of the MIME content types explicitly accepted by the visitor, 0 otherwise",
+		"edgeResponseContentTypeMatched": "1 if the MIME type of the response is one of the MIME content types accepted by the visitor (including wildcards), 0 otherwise",
+		"edgeResponseContentTypeMatchedByWildcard": "1 if the MIME type of the response matched only via a wildcard in the content types accepted by the visitor (not an exact match), 0 otherwise",
 		"edgeResponseContentTypeName": "",
 		"edgeResponseStatus": "HTTP response status code returned to browser",
 		"edgeTimeToFirstByteMs": "The time elapsed between processing the first byte of the request until when we started sending a response",
@@ -3983,8 +4161,8 @@
 		"clientDeviceType": "",
 		"clientIP": "",
 		"clientRefererHost": "The referrer host",
-		"clientRequestAcceptContentTypeNames": "List of MIME content type extension names explicitly accepted by the client",
-		"clientRequestAcceptContentTypes": "List of MIME content types explicitly accepted by the client",
+		"clientRequestAcceptContentTypeNames": "List of MIME content type extension names accepted by the client (including wildcards)",
+		"clientRequestAcceptContentTypes": "List of MIME content types accepted by the client (including wildcards)",
 		"clientRequestHTTPHost": "Host requested by the client",
 		"clientRequestHTTPMethodName": "HTTP method of client request",
 		"clientRequestHTTPProtocol": "HTTP protocol version",
@@ -4008,7 +4186,8 @@
 		"datetimeMinute": "The date and time the event occurred at the edge truncated to the minute",
 		"edgeDnsResponseTimeMs": "The time elapsed resolving a CNAME if it was required to reach your origin",
 		"edgeResponseContentType": "MIME type of the response",
-		"edgeResponseContentTypeMatched": "1 if the MIME type of the response is one of the MIME content types explicitly accepted by the client, 0 otherwise",
+		"edgeResponseContentTypeMatched": "1 if the MIME type of the response is one of the MIME content types accepted by the client (including wildcards), 0 otherwise",
+		"edgeResponseContentTypeMatchedByWildcard": "1 if the MIME type of the response matched only via a wildcard in the content types accepted by the client (not an exact match), 0 otherwise",
 		"edgeResponseContentTypeName": "",
 		"edgeResponseStatus": "",
 		"edgeTimeToFirstByteMs": "The time elapsed between processing the first byte of the request until when we started sending a response",
@@ -6689,6 +6868,159 @@
 	"AccountOhttpMetricsAdaptiveOrderBy": {
 		"__description": ""
 	},
+	"AccountOhttpRelayEgressConnMetricsAdaptiveGroups": {
+		"__description": "Aggregated OHTTP relay egress (relay-to-gateway) connection metrics with adaptive sampling",
+		"confidence": "ALPHA - DO NOT USE",
+		"count": "The number of egress connections",
+		"dimensions": "List of dimensions to group by",
+		"quantiles": "",
+		"sum": "Sum of values for a metric per dimension"
+	},
+	"AccountOhttpRelayEgressConnMetricsAdaptiveGroupsConfidence": {
+		"__description": "",
+		"count": "The number of egress connections, with confidence intervals",
+		"level": "Confidence level that was requested",
+		"sum": "Sum of values for a metric per dimension, with confidence intervals"
+	},
+	"AccountOhttpRelayEgressConnMetricsAdaptiveGroupsDimensions": {
+		"__description": "",
+		"coloCode": "IATA airport code of the Cloudflare data center that handled the connection",
+		"date": "Connection date",
+		"datetimeFifteenMinutes": "Connection timestamp truncated to fifteen minutes",
+		"datetimeFiveMinutes": "Connection timestamp truncated to five minutes",
+		"datetimeHour": "Connection timestamp truncated to the hour",
+		"datetimeMinute": "Connection timestamp truncated to the minute",
+		"endpoint": "The endpoint that generated traffic",
+		"transport": "Transport protocol on the relay-to-gateway connection (TCP, UDP, QUIC)"
+	},
+	"AccountOhttpRelayEgressConnMetricsAdaptiveGroupsFilter_InputObject": {
+		"__description": ""
+	},
+	"AccountOhttpRelayEgressConnMetricsAdaptiveGroupsOrderBy": {
+		"__description": ""
+	},
+	"AccountOhttpRelayEgressConnMetricsAdaptiveGroupsQuantiles": {
+		"__description": "",
+		"durationMsP25": "Connection lifetime in milliseconds (25th percentile)",
+		"durationMsP50": "Connection lifetime in milliseconds (50th percentile)",
+		"durationMsP75": "Connection lifetime in milliseconds (75th percentile)",
+		"durationMsP90": "Connection lifetime in milliseconds (90th percentile)",
+		"durationMsP95": "Connection lifetime in milliseconds (95th percentile)",
+		"durationMsP99": "Connection lifetime in milliseconds (99th percentile)",
+		"durationMsP999": "Connection lifetime in milliseconds (99.9th percentile)",
+		"handshakeDurationUsP25": "TCP/TLS or QUIC handshake time in microseconds (25th percentile)",
+		"handshakeDurationUsP50": "TCP/TLS or QUIC handshake time in microseconds (50th percentile)",
+		"handshakeDurationUsP75": "TCP/TLS or QUIC handshake time in microseconds (75th percentile)",
+		"handshakeDurationUsP90": "TCP/TLS or QUIC handshake time in microseconds (90th percentile)",
+		"handshakeDurationUsP95": "TCP/TLS or QUIC handshake time in microseconds (95th percentile)",
+		"handshakeDurationUsP99": "TCP/TLS or QUIC handshake time in microseconds (99th percentile)",
+		"handshakeDurationUsP999": "TCP/TLS or QUIC handshake time in microseconds (99.9th percentile)"
+	},
+	"AccountOhttpRelayEgressConnMetricsAdaptiveGroupsSum": {
+		"__description": "",
+		"bytesRecvdFromGateway": "Total bytes received by the relay from the gateway",
+		"bytesSentToGateway": "Total bytes sent from the relay to the gateway",
+		"packetsRecvdFromGateway": "Total packets received by the relay from the gateway",
+		"packetsSentToGateway": "Total packets sent from the relay to the gateway"
+	},
+	"AccountOhttpRelayEgressConnMetricsAdaptiveGroupsSumConfidence": {
+		"__description": "",
+		"bytesRecvdFromGateway": "Confidence interval for the corresponding point estimate",
+		"bytesSentToGateway": "Confidence interval for the corresponding point estimate",
+		"packetsRecvdFromGateway": "Confidence interval for the corresponding point estimate",
+		"packetsSentToGateway": "Confidence interval for the corresponding point estimate"
+	},
+	"AccountOhttpRelayIngressConnMetricsAdaptiveGroups": {
+		"__description": "Aggregated OHTTP relay ingress (client-to-relay) connection metrics with adaptive sampling",
+		"confidence": "ALPHA - DO NOT USE",
+		"count": "The number of ingress connections",
+		"dimensions": "List of dimensions to group by",
+		"quantiles": "",
+		"sum": "Sum of values for a metric per dimension"
+	},
+	"AccountOhttpRelayIngressConnMetricsAdaptiveGroupsConfidence": {
+		"__description": "",
+		"count": "The number of ingress connections, with confidence intervals",
+		"level": "Confidence level that was requested",
+		"sum": "Sum of values for a metric per dimension, with confidence intervals"
+	},
+	"AccountOhttpRelayIngressConnMetricsAdaptiveGroupsDimensions": {
+		"__description": "",
+		"coloCode": "IATA airport code of the Cloudflare data center that handled the connection",
+		"date": "Connection date",
+		"datetimeFifteenMinutes": "Connection timestamp truncated to fifteen minutes",
+		"datetimeFiveMinutes": "Connection timestamp truncated to five minutes",
+		"datetimeHour": "Connection timestamp truncated to the hour",
+		"datetimeMinute": "Connection timestamp truncated to the minute",
+		"endpoint": "The endpoint that generated traffic",
+		"transport": "Transport protocol on the client-to-relay connection (TCP, UDP, QUIC)"
+	},
+	"AccountOhttpRelayIngressConnMetricsAdaptiveGroupsFilter_InputObject": {
+		"__description": ""
+	},
+	"AccountOhttpRelayIngressConnMetricsAdaptiveGroupsOrderBy": {
+		"__description": ""
+	},
+	"AccountOhttpRelayIngressConnMetricsAdaptiveGroupsQuantiles": {
+		"__description": "",
+		"durationMsP25": "Connection lifetime in milliseconds (25th percentile)",
+		"durationMsP50": "Connection lifetime in milliseconds (50th percentile)",
+		"durationMsP75": "Connection lifetime in milliseconds (75th percentile)",
+		"durationMsP90": "Connection lifetime in milliseconds (90th percentile)",
+		"durationMsP95": "Connection lifetime in milliseconds (95th percentile)",
+		"durationMsP99": "Connection lifetime in milliseconds (99th percentile)",
+		"durationMsP999": "Connection lifetime in milliseconds (99.9th percentile)",
+		"handshakeDurationUsP25": "TCP/TLS or QUIC handshake time in microseconds (25th percentile)",
+		"handshakeDurationUsP50": "TCP/TLS or QUIC handshake time in microseconds (50th percentile)",
+		"handshakeDurationUsP75": "TCP/TLS or QUIC handshake time in microseconds (75th percentile)",
+		"handshakeDurationUsP90": "TCP/TLS or QUIC handshake time in microseconds (90th percentile)",
+		"handshakeDurationUsP95": "TCP/TLS or QUIC handshake time in microseconds (95th percentile)",
+		"handshakeDurationUsP99": "TCP/TLS or QUIC handshake time in microseconds (99th percentile)",
+		"handshakeDurationUsP999": "TCP/TLS or QUIC handshake time in microseconds (99.9th percentile)"
+	},
+	"AccountOhttpRelayIngressConnMetricsAdaptiveGroupsSum": {
+		"__description": "",
+		"bytesRecvdFromClient": "Total bytes received by the relay from the client",
+		"bytesSentToClient": "Total bytes sent from the relay to the client",
+		"packetsRecvdFromClient": "Total packets received by the relay from the client",
+		"packetsSentToClient": "Total packets sent from the relay to the client"
+	},
+	"AccountOhttpRelayIngressConnMetricsAdaptiveGroupsSumConfidence": {
+		"__description": "",
+		"bytesRecvdFromClient": "Confidence interval for the corresponding point estimate",
+		"bytesSentToClient": "Confidence interval for the corresponding point estimate",
+		"packetsRecvdFromClient": "Confidence interval for the corresponding point estimate",
+		"packetsSentToClient": "Confidence interval for the corresponding point estimate"
+	},
+	"AccountOhttpRelayRequestMetricsAdaptiveGroups": {
+		"__description": "Aggregated OHTTP relay request metrics with adaptive sampling",
+		"confidence": "ALPHA - DO NOT USE",
+		"count": "The number of OHTTP relay requests",
+		"dimensions": "List of dimensions to group by"
+	},
+	"AccountOhttpRelayRequestMetricsAdaptiveGroupsConfidence": {
+		"__description": "",
+		"count": "The number of OHTTP relay requests, with confidence intervals",
+		"level": "Confidence level that was requested"
+	},
+	"AccountOhttpRelayRequestMetricsAdaptiveGroupsDimensions": {
+		"__description": "",
+		"coloCode": "IATA airport code of the Cloudflare data center that handled the request",
+		"date": "Request date",
+		"datetimeFifteenMinutes": "Request timestamp truncated to fifteen minutes",
+		"datetimeFiveMinutes": "Request timestamp truncated to five minutes",
+		"datetimeHour": "Request timestamp truncated to the hour",
+		"datetimeMinute": "Request timestamp truncated to the minute",
+		"endpoint": "The endpoint that generated traffic",
+		"proxyStatus": "Proxy-level error classification, empty when no proxy-level error occurred",
+		"relayStatusCode": "HTTP status code returned by the relay"
+	},
+	"AccountOhttpRelayRequestMetricsAdaptiveGroupsFilter_InputObject": {
+		"__description": ""
+	},
+	"AccountOhttpRelayRequestMetricsAdaptiveGroupsOrderBy": {
+		"__description": ""
+	},
 	"AccountPagesFunctionsInvocationsAdaptiveGroups": {
 		"__description": "Pages Functions invocations with adaptive sampling",
 		"avg": "",
@@ -7267,7 +7599,7 @@
 		"datetimeHour": "Request timestamp truncated to the hour",
 		"datetimeMinute": "Request timestamp truncated to the minute",
 		"endpoint": "The proxy endpoint that generated traffic",
-		"proxyStatus": "Proxy-level error classification, null when no proxy-level error occurred",
+		"proxyStatus": "Proxy-level error classification, empty when no proxy-level error occurred",
 		"statusCode": "HTTP status code returned by the proxy to the client"
 	},
 	"AccountPrivacyProxyRequestMetricsAdaptiveGroupsFilter_InputObject": {
@@ -7716,7 +8048,9 @@
 		"datetimeHalfOfHour": "Request datetime from browser, truncated to multiple of 30 minutes",
 		"datetimeHour": "Request datetime from browser, truncated to the hour",
 		"datetimeMinute": "Request datetime from browser, truncated to the minute",
+		"deliveryType": "Delivery type of the request",
 		"deviceType": "Device type used for view the page",
+		"navigationType": "Navigation type of the request",
 		"refererHost": "Host of the HTTP request referer",
 		"refererPath": "Path of the HTTP request referer",
 		"refererScheme": "Scheme of the HTTP request referer (http or https)",
@@ -7780,7 +8114,9 @@
 		"datetimeHalfOfHour": "Request datetime from browser, truncated to multiple of 30 minutes",
 		"datetimeHour": "Request datetime from browser, truncated to the hour",
 		"datetimeMinute": "Request datetime from browser, truncated to the minute",
+		"deliveryType": "Delivery type of the request",
 		"deviceType": "Device type used for view the page",
+		"navigationType": "Navigation type of the request",
 		"refererHost": "Host of the HTTP request referer",
 		"refererPath": "Path of the HTTP request referer",
 		"refererScheme": "Scheme of the HTTP request referer (http or https)",
@@ -7888,7 +8224,9 @@
 		"datetimeHalfOfHour": "Request datetime from browser, truncated to multiple of 30 minutes",
 		"datetimeHour": "Request datetime from browser, truncated to the hour",
 		"datetimeMinute": "Request datetime from browser, truncated to the minute",
+		"deliveryType": "Delivery type of the request",
 		"deviceType": "Device type used for view the page",
+		"navigationType": "Navigation type of the request",
 		"refererHost": "Host of the HTTP request referer",
 		"refererPath": "Path of the HTTP request referer",
 		"refererScheme": "Scheme of the HTTP request referer (http or https)",
@@ -7944,6 +8282,7 @@
 		"datetimeHalfOfHour": "Request datetime from browser, truncated to multiple of 30 minutes",
 		"datetimeHour": "Request datetime from browser, truncated to the hour",
 		"datetimeMinute": "Request datetime from browser, truncated to the minute",
+		"deliveryType": "Delivery type of the request",
 		"deviceType": "Device type used for view the page",
 		"firstInputDelayElement": "<small>DEPRECATED (FirstInputDelay is replaced by InteractionToNextPaint. Please use INP instead.):</small> DOM selector name of the input delay",
 		"firstInputDelayName": "<small>DEPRECATED (FirstInputDelay is replaced by InteractionToNextPaint. Please use INP instead.):</small> Action name of the input delay",
@@ -7958,6 +8297,7 @@
 		"largestContentfulPaintPath": "Observed path of the Largest Contentful Paint (Core Web Vitals)",
 		"lcpFetchPriority": "Fetch priority of the LCP element.",
 		"lcpInitiatorType": "Initiator type of the LCP element.",
+		"navigationType": "Navigation type of the request",
 		"refererHost": "Host of the HTTP request referer",
 		"refererPath": "Path of the HTTP request referer",
 		"refererScheme": "Scheme of the HTTP request referer (http or https)",
@@ -8125,9 +8465,14 @@
 		"callsTurnUsageAdaptiveGroups": "",
 		"callsUsageAdaptiveGroups": "",
 		"cdnNetworkAnalyticsAdaptiveGroups": "",
+		"cf1GatewayDns1dGroups": "",
+		"cf1GatewayDns1hGroups": "",
+		"cf1GatewayDnsRawGroups": "",
 		"cloudchamberMetricsAdaptiveGroups": "",
 		"cloudflareTunnelsAnalyticsAdaptiveGroups": "",
+		"cloudforceOneDetectionsAdaptiveGroups": "",
 		"containersMetricsAdaptiveGroups": "",
+		"containersUsageAdaptiveGroups": "",
 		"d1AnalyticsAdaptiveGroups": "",
 		"d1QueriesAdaptiveGroups": "",
 		"d1StorageAdaptiveGroups": "",
@@ -8207,6 +8552,9 @@
 		"nelReportsAdaptiveGroups": "",
 		"ohttpMetricsAdaptive": "",
 		"ohttpMetricsAdaptiveGroups": "",
+		"ohttpRelayEgressConnMetricsAdaptiveGroups": "",
+		"ohttpRelayIngressConnMetricsAdaptiveGroups": "",
+		"ohttpRelayRequestMetricsAdaptiveGroups": "",
 		"pagesFunctionsInvocationsAdaptiveGroups": "",
 		"pipelinesDeliveryAdaptiveGroups": "",
 		"pipelinesIngestionAdaptiveGroups": "",
@@ -9854,8 +10202,8 @@
 		"clientDeviceType": "",
 		"clientIP": "",
 		"clientRefererHost": "The referrer host",
-		"clientRequestAcceptContentTypeNames": "List of MIME content type extension names explicitly accepted by the client",
-		"clientRequestAcceptContentTypes": "List of MIME content types explicitly accepted by the client",
+		"clientRequestAcceptContentTypeNames": "List of MIME content type extension names accepted by the client (including wildcards)",
+		"clientRequestAcceptContentTypes": "List of MIME content types accepted by the client (including wildcards)",
 		"clientRequestHTTPHost": "Host requested by the client",
 		"clientRequestHTTPMethodName": "HTTP method of client request",
 		"clientRequestHTTPProtocol": "HTTP protocol version",
@@ -9879,7 +10227,8 @@
 		"datetimeMinute": "The date and time the event occurred at the edge truncated to the minute",
 		"edgeDnsResponseTimeMs": "The time elapsed resolving a CNAME if it was required to reach your origin",
 		"edgeResponseContentType": "MIME type of the response",
-		"edgeResponseContentTypeMatched": "1 if the MIME type of the response is one of the MIME content types explicitly accepted by the client, 0 otherwise",
+		"edgeResponseContentTypeMatched": "1 if the MIME type of the response is one of the MIME content types accepted by the client (including wildcards), 0 otherwise",
+		"edgeResponseContentTypeMatchedByWildcard": "1 if the MIME type of the response matched only via a wildcard in the content types accepted by the client (not an exact match), 0 otherwise",
 		"edgeResponseContentTypeName": "",
 		"edgeResponseStatus": "",
 		"edgeTimeToFirstByteMs": "The time elapsed between processing the first byte of the request until when we started sending a response",
@@ -11454,8 +11803,8 @@
 		"clientDeviceType": "",
 		"clientIP": "The visitor's IP address (IPv4 or IPv6)",
 		"clientRefererHost": "The referrer host",
-		"clientRequestAcceptContentTypeNames": "List of MIME content type extension names explicitly accepted by the visitor",
-		"clientRequestAcceptContentTypes": "List of MIME content types explicitly accepted by the visitor",
+		"clientRequestAcceptContentTypeNames": "List of MIME content type extension names accepted by the visitor (including wildcards)",
+		"clientRequestAcceptContentTypes": "List of MIME content types accepted by the visitor (including wildcards)",
 		"clientRequestHTTPHost": "The HTTP hostname requested by the visitor",
 		"clientRequestHTTPMethodName": "HTTP method of client request",
 		"clientRequestHTTPProtocol": "The version of HTTP protocol requested by the visitor",
@@ -11479,7 +11828,8 @@
 		"datetimeMinute": "The date and time the event occurred at the edge truncated to the minute",
 		"edgeDnsResponseTimeMs": "The time elapsed resolving a CNAME if it was required to reach your origin",
 		"edgeResponseContentType": "MIME type of the response",
-		"edgeResponseContentTypeMatched": "1 if the MIME type of the response is one of the MIME content types explicitly accepted by the visitor, 0 otherwise",
+		"edgeResponseContentTypeMatched": "1 if the MIME type of the response is one of the MIME content types accepted by the visitor (including wildcards), 0 otherwise",
+		"edgeResponseContentTypeMatchedByWildcard": "1 if the MIME type of the response matched only via a wildcard in the content types accepted by the visitor (not an exact match), 0 otherwise",
 		"edgeResponseContentTypeName": "",
 		"edgeResponseStatus": "HTTP response status code returned to browser",
 		"edgeTimeToFirstByteMs": "The time elapsed between processing the first byte of the request until when we started sending a response",
@@ -11580,8 +11930,8 @@
 		"clientDeviceType": "",
 		"clientIP": "",
 		"clientRefererHost": "The referrer host",
-		"clientRequestAcceptContentTypeNames": "List of MIME content type extension names explicitly accepted by the client",
-		"clientRequestAcceptContentTypes": "List of MIME content types explicitly accepted by the client",
+		"clientRequestAcceptContentTypeNames": "List of MIME content type extension names accepted by the client (including wildcards)",
+		"clientRequestAcceptContentTypes": "List of MIME content types accepted by the client (including wildcards)",
 		"clientRequestHTTPHost": "Host requested by the client",
 		"clientRequestHTTPMethodName": "HTTP method of client request",
 		"clientRequestHTTPProtocol": "HTTP protocol version",
@@ -11605,7 +11955,8 @@
 		"datetimeMinute": "The date and time the event occurred at the edge truncated to the minute",
 		"edgeDnsResponseTimeMs": "The time elapsed resolving a CNAME if it was required to reach your origin",
 		"edgeResponseContentType": "MIME type of the response",
-		"edgeResponseContentTypeMatched": "1 if the MIME type of the response is one of the MIME content types explicitly accepted by the client, 0 otherwise",
+		"edgeResponseContentTypeMatched": "1 if the MIME type of the response is one of the MIME content types accepted by the client (including wildcards), 0 otherwise",
+		"edgeResponseContentTypeMatchedByWildcard": "1 if the MIME type of the response matched only via a wildcard in the content types accepted by the client (not an exact match), 0 otherwise",
 		"edgeResponseContentTypeName": "",
 		"edgeResponseStatus": "",
 		"edgeTimeToFirstByteMs": "The time elapsed between processing the first byte of the request until when we started sending a response",
@@ -12880,9 +13231,14 @@
 		"callsTurnUsageAdaptiveGroups": "Aggregated Calls TURN bandwidth usage with adaptive sampling\"",
 		"callsUsageAdaptiveGroups": "Beta. Aggregated Calls SFU bandwidth usage with adaptive sampling",
 		"cdnNetworkAnalyticsAdaptiveGroups": "Network analytics data for Cloudflare CDN traffic",
+		"cf1GatewayDns1dGroups": "CF1 Gateway DNS analytics - 1 day rollup",
+		"cf1GatewayDns1hGroups": "CF1 Gateway DNS analytics - 1 hour rollup",
+		"cf1GatewayDnsRawGroups": "CF1 Gateway DNS analytics - raw data (max 3h query window). Use cf1GatewayDns1hGroups for longer ranges, or cf1GatewayDns1dGroups for 10d+",
 		"cloudchamberMetricsAdaptiveGroups": "Metrics for Cloudchamber applications and deployments",
 		"cloudflareTunnelsAnalyticsAdaptiveGroups": "Cloudflare tunnel Device Analytics",
+		"cloudforceOneDetectionsAdaptiveGroups": "Cloudforce One detection events for Workers scripts with adaptive sampling. Each row represents a single detection rule hit.",
 		"containersMetricsAdaptiveGroups": "Metrics for Cloudchamber applications and deployments",
+		"containersUsageAdaptiveGroups": "Used to compute usage queries for billing estimates in Dash",
 		"d1AnalyticsAdaptiveGroups": "Aggregated D1 analytics with adaptive sampling",
 		"d1QueriesAdaptiveGroups": "D1 query metrics with adaptive sampling",
 		"d1StorageAdaptiveGroups": "D1 storage with adaptive sampling",
@@ -12962,6 +13318,9 @@
 		"nelReportsAdaptiveGroups": "Data to visualize network error logs",
 		"ohttpMetricsAdaptive": "oHTTP request metrics with adaptive sampling",
 		"ohttpMetricsAdaptiveGroups": "Aggregated oHTTP request metrics with adaptive sampling",
+		"ohttpRelayEgressConnMetricsAdaptiveGroups": "Aggregated OHTTP relay egress (relay-to-gateway) connection metrics with adaptive sampling",
+		"ohttpRelayIngressConnMetricsAdaptiveGroups": "Aggregated OHTTP relay ingress (client-to-relay) connection metrics with adaptive sampling",
+		"ohttpRelayRequestMetricsAdaptiveGroups": "Aggregated OHTTP relay request metrics with adaptive sampling",
 		"pagesFunctionsInvocationsAdaptiveGroups": "Pages Functions invocations with adaptive sampling",
 		"pipelinesDeliveryAdaptiveGroups": "Beta. Data delivered via Workers Pipelines",
 		"pipelinesIngestionAdaptiveGroups": "Beta. Data ingested via Workers Pipelines",
