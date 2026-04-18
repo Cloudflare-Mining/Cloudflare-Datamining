@@ -358,6 +358,21 @@
 				"value": "256000"
 			},
 			{
+				"property_id": "price",
+				"value": [
+					{
+						"unit": "per M input tokens",
+						"price": 0.6,
+						"currency": "USD"
+					},
+					{
+						"unit": "per M output tokens",
+						"price": 3,
+						"currency": "USD"
+					}
+				]
+			},
+			{
 				"property_id": "function_calling",
 				"value": "true"
 			},
@@ -1935,12 +1950,12 @@
 				"value": [
 					{
 						"unit": "per M input tokens",
-						"price": 0,
+						"price": 0.5,
 						"currency": "USD"
 					},
 					{
 						"unit": "per M output tokens",
-						"price": 0,
+						"price": 1.5,
 						"currency": "USD"
 					}
 				]
