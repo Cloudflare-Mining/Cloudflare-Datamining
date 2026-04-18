@@ -4,7 +4,7 @@ An opinionated chat agent base class for Cloudflare Workers. Handles the full ch
 
 Works as both a **top-level agent** (WebSocket chat protocol for browser clients) and a **sub-agent** (RPC streaming from a parent agent).
 
-> **Experimental** — requires the `"experimental"` compatibility flag.
+> **Experimental** — the API surface is stable but may evolve before graduating out of experimental.
 
 ## Quick start
 
@@ -286,3 +286,7 @@ getTools() {
 | `zod`                  | yes      | Schema validation (v3.25+ or v4) |
 | `@cloudflare/shell`    | yes      | Workspace filesystem             |
 | `@cloudflare/codemode` | optional | For `createExecuteTool`          |
+
+## Acknowledgments
+
+Think's design is inspired by [pi](https://pi.dev).
