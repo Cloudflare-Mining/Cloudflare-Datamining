@@ -1425,7 +1425,7 @@
 		"enabled": true
 	},
 	"loui-kumo-tiered-cache": {
-		"enabled": true
+		"enabled": false
 	},
 	"loui-lb-monitor-groups": {
 		"enabled": false
@@ -2680,6 +2680,9 @@
 		"enabled": true
 	},
 	"workers-observability-billing": {
+		"enabled": true
+	},
+	"workers-observability-otlp-metrics-export": {
 		"enabled": true
 	},
 	"workers-observability-v2": {
