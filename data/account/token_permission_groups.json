@@ -272,6 +272,22 @@
 		]
 	},
 	{
+		"id": "796da9664bba4f03b2fc934b5ee86091",
+		"name": "Access: SAML Certificates Read",
+		"description": "Can read Cloudflare Access SAML certificates",
+		"scopes": [
+			"com.cloudflare.api.account"
+		]
+	},
+	{
+		"id": "5286f5b44cba457fa75b22f94716b8dd",
+		"name": "Access: SAML Certificates Write",
+		"description": "Can read and edit Cloudflare Access SAML certificates",
+		"scopes": [
+			"com.cloudflare.api.account"
+		]
+	},
+	{
 		"id": "e985ca9351db460faebbe8681c48e560",
 		"name": "Access: SCIM Logs Read",
 		"description": "Can read SCIM audit logs",

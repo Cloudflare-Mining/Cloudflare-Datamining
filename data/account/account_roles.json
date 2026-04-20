@@ -1505,14 +1505,14 @@
 		"name": "Cloudflare Zero Trust Read Only",
 		"description": "Can access Cloudflare for Zero Trust read only mode.",
 		"permissions": {
+			"access": {
+				"read": true,
+				"edit": false
+			},
 			"teams": {
 				"read": true,
 				"edit": false,
 				"report": true
-			},
-			"access": {
-				"read": true,
-				"edit": false
 			},
 			"cf1_integration": {
 				"read": true,
@@ -1561,16 +1561,16 @@
 		"name": "Cloudflare Zero Trust",
 		"description": "Can edit Cloudflare Zero Trust.",
 		"permissions": {
+			"access": {
+				"read": true,
+				"edit": true
+			},
 			"teams": {
 				"read": true,
 				"edit": true,
 				"report": true
 			},
 			"ces_submissions": {
-				"read": true,
-				"edit": true
-			},
-			"access": {
 				"read": true,
 				"edit": true
 			},
@@ -1672,6 +1672,10 @@
 		"name": "Super Administrator - All Privileges",
 		"description": "Can edit any Cloudflare setting, make purchases, update billing, and manage memberships. Super Administrators can revoke the access of other Super Administrators.",
 		"permissions": {
+			"access": {
+				"read": true,
+				"edit": true
+			},
 			"organization": {
 				"read": true,
 				"edit": true
@@ -1691,10 +1695,6 @@
 				"pii": true
 			},
 			"worker": {
-				"read": true,
-				"edit": true
-			},
-			"access": {
 				"read": true,
 				"edit": true
 			},
@@ -2386,6 +2386,10 @@
 		"name": "Administrator Read Only",
 		"description": "Can access the full account in read only mode",
 		"permissions": {
+			"access": {
+				"read": true,
+				"edit": false
+			},
 			"organization": {
 				"read": true,
 				"edit": false
@@ -2400,10 +2404,6 @@
 				"report": true
 			},
 			"worker": {
-				"read": true,
-				"edit": false
-			},
-			"access": {
 				"read": true,
 				"edit": false
 			},
@@ -2609,6 +2609,10 @@
 		"name": "Administrator",
 		"description": "Can access the full account and edit subscriptions. Cannot manage memberships nor billing profile.",
 		"permissions": {
+			"access": {
+				"read": true,
+				"edit": true
+			},
 			"organization": {
 				"read": true,
 				"edit": true
@@ -2627,10 +2631,6 @@
 				"report": true
 			},
 			"worker": {
-				"read": true,
-				"edit": true
-			},
-			"access": {
 				"read": true,
 				"edit": true
 			},
