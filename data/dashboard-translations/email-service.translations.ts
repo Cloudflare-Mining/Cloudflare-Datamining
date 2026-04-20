@@ -166,9 +166,9 @@
 				analytics: {
 					title: "Analytics",
 					delivered: "Delivered",
-					dropped: "Dropped",
 					deliveryFailed: "Delivery failed",
 					rejected: "Rejected",
+					errored: "Errored",
 					other: "Other",
 					total: "Total sent",
 					noData: "No data available"
@@ -374,6 +374,7 @@
 				analytics: {
 					title: "Analytics",
 					delivered: "Forwarded",
+					handled: "Handled",
 					dropped: "Dropped",
 					deliveryFailed: "Delivery failed",
 					rejected: "Rejected",
@@ -385,6 +386,7 @@
 			activityLog: {
 				filters: {
 					forwarded: "Forwarded",
+					handled: "Handled",
 					deliveryFailed: "Delivery failed",
 					dropped: "Dropped",
 					rejected: "Rejected",
@@ -491,7 +493,7 @@
 				moreOptions: "More options",
 				codeEditor: "Code editor",
 				manageWorker: "Manage Worker",
-				lastUpdated: "Last updated %{time}",
+				lastUpdated: "Last updated <0></0>",
 				requests: "requests",
 				createEmailWorkers: "Create Email Workers",
 				createEmailWorkersDescription: "Email Workers allow you to create custom scripts to handle your emails in different ways.",

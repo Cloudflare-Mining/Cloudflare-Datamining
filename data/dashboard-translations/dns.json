@@ -295,6 +295,7 @@
 	"dns.settings.soa.default_time": "Default value is %{default} seconds",
 	"dns.settings.soa.configuration.title": "Configure SOA record content",
 	"dns.settings.soa.configuration.description": "Adjust the <0>Start of Authority (SOA)</0> record content for %{zoneName}.",
+	"dns.settings.soa.section.timing": "Timing",
 	"dns.settings.back": "Back to DNS Records",
 	"dns.settings.zone_defaults.custom_ns.modal": "Account custom nameservers",
 	"dns.settings.zone_defaults.custom_ns.modal.set": "**Set %{set}**",
@@ -490,6 +491,7 @@
 	"dns.dns_editor.dkim.warning_modal.title": "Are you sure you want to turn on the proxy status for this DNS record?",
 	"dns.dns_editor.dkim.warning_modal.description": "A proxied DNS record always resolves to Cloudflare Anycast IPs. To make sure <0>DKIM</0> works correctly for your domain, this record should be DNS-only so it resolves to the configured target.",
 	"dns.dns_editor.dkim.proxied_tooltip": "This proxied record always resolves to Cloudflare Anycast IPs. To make sure <0>DKIM</0> works correctly for your domain, this record should be DNS-only so it resolves to the configured target.",
+	"dns.status.proxy_status": "Proxy status",
 	"dns.status.proxied": "Proxied",
 	"dns.status.dns_only": "DNS only",
 	"dns.status.dns_only_reserved_ip": "DNS only - reserved IP",
@@ -692,6 +694,7 @@
 	"dns.dns_table.edit.record_attributes.tags.warning": "You have reached the maximum number of %{maxTags} tags for this record.",
 	"dns.dns_table.edit.record_attributes.tags.name.length_warning": "A tag name should be up to a maximum %{characterLimit} character length.",
 	"dns.dns_table.edit.record_attributes.tags.value.length_warning": "A tag value should be up to a maximum %{characterLimit} character length.",
+	"dns.dns_table.edit.record_attributes.docs": "View documentation",
 	"dns.dns_table.tags.tooltip": "Tags associated with this record:",
 	"dns.import_records": "Import DNS records",
 	"dns.import_records.description": "Upload a BIND zone file to import DNS records.",
@@ -837,6 +840,9 @@
 	"dns.beta.non_dns_records.title": "Load Balancing and Spectrum records",
 	"dns.beta.records.subtitle": "Configure DNS records and review proxy status for domain names in this zone.",
 	"dns.beta.records.title": "DNS records for %{zoneName}",
+	"dns.beta.collapse": "Collapse",
+	"dns.beta.expand": "Expand",
+	"dns.beta.add_tag_placeholder": "Add a tag...",
 	"dns.internal.test_beta": "Test New DNS Experience",
 	"dns.internal.exit_beta": "Exit New DNS Experience"
 }

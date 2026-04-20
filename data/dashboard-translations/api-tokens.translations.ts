@@ -9,6 +9,7 @@
 			permissions: "Permissions",
 			last_used: "Last used",
 			created: "Created",
+			modified: "Last modified",
 			status: "Status",
 			actions: "Actions"
 		},
@@ -48,7 +49,9 @@
 		},
 		empty: {
 			no_date: "—",
-			table: "No API tokens found"
+			table: "No API tokens found",
+			title: "Create your first API token",
+			description: "API tokens authenticate access to your Cloudflare account, allowing secure integration with tools, scripts, and third-party services."
 		},
 		loading: {
 			template: "Loading Template"
@@ -86,7 +89,7 @@
 			edit: "Edit policy",
 			delete: "Delete policy",
 			deny: "Deny",
-			more_permissions: (0, s.p)(l(), "count")
+			more_permissions: (0, s.p)(a(), "count")
 		},
 		policy_editor: {
 			title: "Edit policy",
@@ -136,7 +139,7 @@
 				custom: "Custom"
 			},
 			custom_date_label: {
-				range: (0, s.p)(a(), "start", "end"),
+				range: (0, s.p)(l(), "start", "end"),
 				from: (0, s.p)(c(), "date"),
 				default: "Custom"
 			},

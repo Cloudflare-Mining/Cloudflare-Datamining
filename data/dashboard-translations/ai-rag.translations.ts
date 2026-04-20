@@ -91,8 +91,7 @@
 	overview: {
 		empty_state: {
 			title: "Get started with AI Search",
-			description: "Build an AI-powered search experience",
-			button: "New AI Search"
+			description: "Build an AI-powered search experience"
 		},
 		table: {
 			columns: {
@@ -138,25 +137,8 @@
 		}
 	},
 	create_rag: {
-		title: "Create a new AI Search",
-		description: "Connect your data source to get started. AI Search will index your content automatically once created.",
-		steps: {
-			step1: "Connect your data source",
-			step2: "Connect an AI Gateway",
-			step3: "Generate indexes",
-			step4: "Configure retrieval and generation",
-			step5: "Finalize"
-		},
 		sources: {
-			title: "Select a data source",
-			types: {
-				r2: "R2 Bucket",
-				br: "Website",
-				d1: "D1 Database",
-				managed: "Managed Instance"
-			},
 			filter_items: {
-				title: "Path Filters",
 				description: "Path filtering allows you to control which files or URLs are indexed by defining include and exclude patterns.</br> Use this to limit indexing to specific content or to skip files you do not want searchable.",
 				include_items: {
 					title: "Include Rules",
@@ -172,29 +154,13 @@
 			r2: {
 				title: "Choose an R2 bucket",
 				description: "Select the R2 bucket where your data is stored.",
-				create: "Create a new bucket in R2",
-				select_bucket_title: "Choose an R2 bucket",
-				select_bucket_description: "Select the R2 bucket where your data is stored."
+				create: "Create a new bucket in R2"
 			},
 			br: {
 				title: "Choose a website to parse",
-				description: "Enter a domain from this Cloudflare account. Include a subdomain if needed.",
-				bucket_note: "An R2 bucket will be created automatically to store your parsed results.",
-				add_domain: "Website domain",
 				r2_bucket: "Select the R2 bucket where your data is stored.",
 				parser_options: {
-					title: "Parsing options",
-					source: {
-						title: "Source type",
-						sources: {
-							sitemap: "Sitemap",
-							crawl: "Web Crawl",
-							rss_feed: "RSS Feed"
-						}
-					},
 					extract_engine: {
-						title: "Parsing mode",
-						description: "Choose how content is fetched from your website:",
 						type: {
 							dynamic: {
 								title: "Rendered site",
@@ -220,22 +186,11 @@
 						description: "Convert embedded image content during parsing."
 					}
 				},
-				custom_headers: {
-					title: "Custom headers",
-					extra_headers: {
-						title: "Extra header",
-						description: "Add additional headers to crawl your website."
-					}
-				},
 				specific_sitemaps: {
-					title: "Specific sitemaps",
-					description: "Specify specific sitemap URLs to crawl instead of using the default sitemap discovery.",
 					add_button: "Add sitemap",
 					placeholder: "https://example.com/sitemap.xml"
 				},
 				content_selector: {
-					title: "Content selectors",
-					description: "Define path-to-selector mappings to extract specific content from crawled pages. Each entry pairs a URL glob pattern with a CSS selector. The first matching path wins.",
 					path_label: "Path",
 					selector_label: "Selector",
 					path_placeholder: "**/blog/**",
@@ -244,8 +199,6 @@
 					remove_button: "Remove selector"
 				},
 				crawl_options: {
-					title: "Crawl options",
-					description: "Configure how the crawler traverses your website.",
 					depth: {
 						title: "Depth",
 						description: "Maximum number of pages to crawl (1-100,000)."
@@ -278,161 +231,38 @@
 			}
 		},
 		ai_gateway: {
-			title: "Connect an AI Gateway to access providers",
-			description: "Use an AI Gateway to track and manage model usage. All gateways will have access to <b>Workers AI</b>. To use other providers, select a gateway with your API keys added.",
-			create_default: {
-				title: "Create a new AI Gateway",
-				description: "A new AI Gateway will be deployed as part of this instance creation.",
-				action: 'Press "Next" to continue the process.'
-			},
 			gateway: {
 				byok_use: "Available providers:"
 			}
 		},
-		indexes: {
-			title: "Select a data source",
-			select_embedding_model: {
-				title: "Embedding model",
-				description: "Select the recommended model to convert your data into vectors. Note this will be included in your <b>Workers AI</b> usage and billing."
-			},
-			vectorize: {
-				note: "An index with the following specifications will be created in Vectorize:",
-				modality: "Modality",
-				dimension: "Dimension",
-				metric: "Metric",
-				extra: "Note this will be included in your <b>Vectorize</b> usage and billing."
-			},
-			models: {
-				title: "More embedding models",
-				description: "Select an embedding model to convert your data into vectors. Note this will be included in your model's usage and billing."
-			},
-			hybrid_search: {
-				title: "Hybrid Search",
-				description: "Enable hybrid search to combine vector and keyword search for improved results.",
-				fusion_method: {
-					title: "Fusion method",
-					description: "Select how vector and keyword search scores are combined."
-				},
-				keyword_match_mode: {
-					title: "Keyword match mode",
-					description: "Choose how your search terms should be combined."
-				},
-				keyword_tokenizer: {
-					title: "Keyword tokenizer",
-					description: "Choose how text is broken down for keyword indexing."
-				}
-			},
-			chunking: {
-				title: "Chunking",
-				size: {
-					title: "Chunk size",
-					description: "Controls the number of tokens per chunk. Affects search precision and context. Min %{min} tokens - Max %{max} tokens."
-				},
-				overlap: {
-					title: "Chunk overlap",
-					description: "Controls the amount of overlap between chunks to keep related information together. Min 0%  - Max 30%."
-				}
-			}
-		},
 		retrive_generation: {
-			select_generation_model: {
-				title: "Generation model",
-				description: "Select the recommended LLM to generate the response. Note this will be included in your <b>Workers AI</b> usage and billing."
-			},
 			models: {
-				title: "More generation models",
 				description: "Select an LLM to generate the response. Note this will be included in your model's usage and billing."
 			},
-			gateway: {
-				title: "Connect an AI Gateway ",
-				description: "Connect an AI Gateway to monitor and control your model usage.",
-				exist: "I already have one",
-				use_default: "Use default AI Gateway"
-			},
 			rewrite: {
-				title: "Query rewrite",
 				select: {
-					title: "Query rewrite",
 					model: {
 						title: "Query rewrite model",
 						description: "Select an LLM to rewrite your queries to improve retrieval. Note this will be included in your model's usage and billing."
 					}
 				}
 			},
-			reranking: {
-				title: "Reranking",
-				select: {
-					title: "Reranking",
-					model: {
-						title: "Reranking model",
-						description: "Select a model to re-rank retrieved results and enhance relevance. The associated usage will be included in your model's billing."
-					}
-				}
-			},
 			retrival: {
-				title: "Retrieval configuration",
-				result: {
-					title: "Maximum number of results",
-					description: "Control the maximum number of results that can be returned for each query. Higher = more results."
-				},
-				threshold: {
-					title: "Match threshold",
-					description: "Control the minimum score required for a result to be considered a match. Higher = stricter matching."
-				},
 				boost_by: {
 					title: "Boost by",
 					description: "Boost search results by ranking documents with specific metadata field values higher."
 				}
-			},
-			cache: {
-				title: "Similarity caching",
-				semantic: {
-					title: "Similarity caching",
-					description: "Select a caching strategy"
-				}
 			}
 		},
 		finalize: {
-			title: "Almost there, finalize and review permissions",
-			name: {
-				title: "Enter a name for the AI Search",
-				note: "Cannot be changed"
-			},
 			token: {
-				title: "Service API Token",
 				description: "This enables AI Search to create and access resources in your account",
 				api_token: "API Token:",
-				exist: "I already have one",
-				crete: "Create one for me",
 				create_new: "+ Create new token",
 				auto_create_note: "A new token will be created automatically",
 				permission_account: "Account: AI Search (edit), R2 Storage (read/write)",
 				permission_zone: "Zone: Workers Routes (edit) for all zones",
 				permission_user: "User: User Details (read), Memberships (read)"
-			},
-			custom_metadata: {
-				title: "Custom Metadata",
-				description: "Add custom metadata fields to your AI Search instance for filtering and organization.",
-				field_name: "Field Name",
-				field_type: "Field Type",
-				field_type_labels: {
-					text: "Text",
-					number: "Number",
-					boolean: "Boolean",
-					datetime: "Datetime"
-				},
-				add_button: "Add Metadata",
-				remove_button: "Remove",
-				max_items_error: "Maximum 5 custom metadata entries allowed",
-				duplicate_field_name_error: "Field name must be unique",
-				empty_field_name_error: "Field name cannot be empty",
-				lowercase_field_name_error: "Field name must be lowercase",
-				reserved_field_name_error: 'Field name cannot be "timestamp", "folder", or "filename"',
-				no_metadata: "No custom metadata added",
-				drawer: {
-					title: "Custom Metadata",
-					description: "Add custom metadata for your AI Search instance."
-				}
 			}
 		}
 	},
@@ -1048,7 +878,6 @@
 		back: "Back",
 		next: "Next",
 		create: "Create",
-		creating: "Creating",
 		documentation: "Documentation",
 		rag_documentation: "AI Search documentation",
 		setting_documentation: "AI Search Setting",
@@ -1107,6 +936,7 @@
 		description: "Manage namespaces to organize your AI Search instances.",
 		selector_label: "Namespace:",
 		manage_button: "Manage Namespaces",
+		settings_button: "Namespace settings",
 		empty: "No namespaces found",
 		default_label: "default",
 		create: {
@@ -1288,8 +1118,8 @@
 			summary_rewriting: (0, r.p)(u(), "status"),
 			summary_reranking: (0, r.p)(m(), "status"),
 			summary_results_score: (0, r.p)(_(), "count", "score"),
-			n_tokens: (0, r.p)(h(), "count"),
-			n_dimensions: (0, r.p)(p(), "count"),
+			n_tokens: (0, r.p)(p(), "count"),
+			n_dimensions: (0, r.p)(h(), "count"),
 			k_context: (0, r.p)(g(), "count"),
 			tokens_unit: "tokens"
 		},
