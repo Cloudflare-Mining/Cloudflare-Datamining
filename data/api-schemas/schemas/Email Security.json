@@ -185,12 +185,13 @@
 				}
 			},
 			{
-				"description": "The number of results per page.",
+				"description": "The number of results per page. Maximum value is 1000.",
 				"in": "query",
 				"name": "per_page",
 				"schema": {
-					"default": 20,
+					"default": 100,
 					"format": "int32",
+					"maximum": 1000,
 					"minimum": 1,
 					"type": "integer"
 				}
