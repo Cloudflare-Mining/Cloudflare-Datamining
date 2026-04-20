@@ -1,0 +1,636 @@
+<div class="mb2 gray5">14 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2x6bxsDcVqrW4iKrnsQ4g8/18c1d0f3f23976c0a7420f1715d2a08f/image1.png" alt="">
+<div class="post-content lh-copy gray1">
+	<p></p>
+	<p>In the last 30 days, 93% of Cloudflare’s R&amp;D organization used AI coding tools powered by infrastructure we built on our own platform.</p>
+	<p>Eleven months ago, we undertook a major project: to truly integrate AI into our engineering stack. We needed to build the internal MCP servers, access layer, and AI tooling necessary for agents to be useful at Cloudflare. We pulled together engineers from across the company to form a tiger team called iMARS (Internal MCP Agent/Server Rollout Squad). The sustained work landed with the Dev Productivity team, who also own much of our internal tooling including CI/CD, build systems, and automation.</p>
+	<p>Here are some numbers that capture our own agentic AI use over the last 30 days:</p>
+	<ul>
+		<li>
+			<p><b>3,683 internal users</b> actively using AI coding tools (60% company-wide, 93% across R&amp;D), out of approximately 6,100 total employees</p>
+		</li>
+		<li>
+			<p><b>47.95 million</b> AI requests&nbsp;</p>
+		</li>
+		<li>
+			<p><b>295 teams</b> are currently utilizing agentic AI tools and coding assistants.</p>
+		</li>
+		<li>
+			<p><b>20.18 million</b> AI Gateway requests per month</p>
+		</li>
+		<li>
+			<p><b>241.37 billion</b> tokens routed through AI Gateway</p>
+		</li>
+		<li>
+			<p><b>51.83 billion</b> tokens processed on Workers AI</p>
+		</li>
+	</ul>
+	<p>The impact on developer velocity internally is clear: we’ve never seen a quarter-to-quarter increase in merge requests to this degree.</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3lMKwBTT3m7DDmS4BnoNhB/9002104b9c6c09cf72f4052d71e22363/BLOG-3270_2.png" alt="BLOG-3270 2" class="kg-image" width="1999" height="903" loading="lazy">
+	</figure>
+	<p>As AI tooling adoption has grown the 4-week rolling average has climbed from ~5,600/week to over 8,700. The week of March 23 hit 10,952, nearly double the Q4 baseline.</p>
+	<p>MCP servers were the starting point, but the team quickly realized we needed to go further: rethink how standards are codified, how code gets reviewed, how engineers onboard, and how changes propagate across thousands of repos.</p>
+	<p>This post dives deep into what that looked like over the past eleven months and where we ended up. We're publishing now, to close out Agents Week, because the AI engineering stack we built internally runs on the same products we’re shipping and enhancing this week.</p>
+	<div class="flex anchor relative">
+		<h2 id="the-architecture-at-a-glance">The architecture at a glance</h2>
+		<a href="https://blog.cloudflare.com/#the-architecture-at-a-glance" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>The engineer-facing tools layer (<a href="https://opencode.ai" target="_blank" rel="noopener noreferrer"><u>OpenCode</u></a>, Windsurf, and other MCP-compatible clients) include both open-source and third-party coding assistant tools.</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2oZJhdVNbW05lJaSnN3hds/21c5427f275ba908388333884530f455/image8.png" alt="BLOG-3270 3" class="kg-image" width="1437" height="746" loading="lazy">
+	</figure>
+	<p>Each layer maps to a Cloudflare product or tool we use:</p>
+	<table>
+		<tbody>
+			<tr>
+				<th>
+					<p>What we built</p>
+				</th>
+				<th>
+					<p>Built with</p>
+				</th>
+			</tr>
+			<tr>
+				<td>
+					<p>Zero Trust authentication</p>
+				</td>
+				<td>
+					<p><a href="https://developers.cloudflare.com/cloudflare-one" target="_blank" rel="noopener noreferrer"><b><u>Cloudflare Access</u></b></a></p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>Centralized LLM routing, cost tracking, BYOK, and Zero Data Retention controls</p>
+				</td>
+				<td>
+					<p><a href="https://developers.cloudflare.com/ai-gateway" target="_blank" rel="noopener noreferrer"><b><u>AI Gateway</u></b></a></p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>On-platform inference with open-weight models</p>
+				</td>
+				<td>
+					<p><a href="https://developers.cloudflare.com/workers-ai" target="_blank" rel="noopener noreferrer"><b><u>Workers AI</u></b></a></p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>MCP Server Portal with single OAuth</p>
+				</td>
+				<td>
+					<p><a href="https://developers.cloudflare.com/workers" target="_blank" rel="noopener noreferrer"><b><u>Workers</u></b></a> + <a href="https://developers.cloudflare.com/cloudflare-one" target="_blank" rel="noopener noreferrer"><b><u>Access</u></b></a></p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>AI Code Reviewer CI integration</p>
+				</td>
+				<td>
+					<p><a href="https://developers.cloudflare.com/workers" target="_blank" rel="noopener noreferrer"><b><u>Workers</u></b></a> + <a href="https://developers.cloudflare.com/ai-gateway" target="_blank" rel="noopener noreferrer"><b><u>AI Gateway</u></b></a></p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>Sandboxed execution for agent-generated code (Code Mode)</p>
+				</td>
+				<td>
+					<p><a href="https://blog.cloudflare.com/dynamic-workers"><b><u>Dynamic Workers</u></b></a></p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>Stateful, long-running agent sessions</p>
+				</td>
+				<td>
+					<p><a href="https://developers.cloudflare.com/agents" target="_blank" rel="noopener noreferrer"><b><u>Agents SDK</u></b></a> (McpAgent, Durable Objects)</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>Isolated environments for cloning, building, and testing</p>
+				</td>
+				<td>
+					<p><a href="https://developers.cloudflare.com/sandbox" target="_blank" rel="noopener noreferrer"><b><u>Sandbox SDK</u></b></a> — GA as of Agents Week</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>Durable multi-step workflows</p>
+				</td>
+				<td>
+					<p><a href="https://developers.cloudflare.com/workflows" target="_blank" rel="noopener noreferrer"><b><u>Workflows</u></b></a> — scaled 10x during Agents Week</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>16K+ entity knowledge graph</p>
+				</td>
+				<td>
+					<p><a href="https://backstage.io" target="_blank" rel="noopener noreferrer"><b><u>Backstage</u></b></a> (OSS)</p>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+	<p>None of this is internal-only infrastructure. Everything (besides Backstage) listed above is a shipping product, and many of them got substantial updates during Agents Week.</p>
+	<p>We’ll walk through this in three acts:</p>
+	<ol>
+		<li>
+			<p><b>The platform layer</b> — how authentication, routing, and inference work (AI Gateway, Workers AI, MCP Portal, Code Mode)</p>
+		</li>
+		<li>
+			<p><b>The knowledge layer</b> — how agents understand our systems (Backstage, AGENTS.md)</p>
+		</li>
+		<li>
+			<p><b>The enforcement layer</b> — how we keep quality high at scale (AI Code Reviewer, Engineering Codex)</p>
+		</li>
+	</ol>
+	<div class="flex anchor relative">
+		<h2 id="act-1-the-platform-layer">Act 1: The platform layer</h2>
+		<a href="https://blog.cloudflare.com/#act-1-the-platform-layer" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+
+	<div class="flex anchor relative">
+		<h3 id="how-ai-gateway-helped-us-stay-secure-and-improve-the-developer-experience">How AI Gateway helped us stay secure and improve the developer experience</h3>
+		<a href="https://blog.cloudflare.com/#how-ai-gateway-helped-us-stay-secure-and-improve-the-developer-experience" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>When you have over 3,600+ internal users using AI coding tools daily, you need to solve for access and visibility across many clients, use cases, and roles.</p>
+	<p>Everything starts with <a href="https://developers.cloudflare.com/cloudflare-one" target="_blank" rel="noopener noreferrer"><b><u>Cloudflare Access</u></b></a>, which handles all authentication and zero-trust policy enforcement. Once authenticated, every LLM request routes through <a href="https://developers.cloudflare.com/ai-gateway" target="_blank" rel="noopener noreferrer"><b><u>AI Gateway</u></b></a>. This gives us a single place to manage provider keys, cost tracking, and data retention policies.</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5zorZ21OXIbNg7VACGzwZX/e1b35951622bab6ae7ca9fa9b8a5c844/BLOG-3270_4.png" alt="BLOG-3270 4" class="kg-image" width="992" height="516" loading="lazy">
+	</figure>
+	<p><sup><i>The OpenCode AI Gateway overview: 688.46k requests per day, 10.57B tokens per day, routing to four providers through one endpoint.</i></sup></p>
+	<p>AI Gateway analytics show how monthly usage is distributed across model providers. Over the last month, internal request volume broke down as follows.</p>
+	<table>
+		<tbody>
+			<tr>
+				<th>
+					<p>Provider</p>
+				</th>
+				<th>
+					<p>Requests/month</p>
+				</th>
+				<th>
+					<p>Share</p>
+				</th>
+			</tr>
+			<tr>
+				<td>
+					<p>Frontier Labs (OpenAI, Anthropic, Google)</p>
+				</td>
+				<td>
+					<p>13.38M</p>
+				</td>
+				<td>
+					<p>91.16%</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>Workers AI</p>
+				</td>
+				<td>
+					<p>1.3M</p>
+				</td>
+				<td>
+					<p>8.84%</p>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+	<p>Frontier models handle the bulk of complex agentic coding work for now, but Workers AI is already a significant part of the mix and handles an increasing share of our agentic engineering workloads.</p>
+	<div class="flex anchor relative">
+		<h4 id="how-we-increasingly-leverage-workers-ai">How we increasingly leverage Workers AI</h4>
+		<a href="https://blog.cloudflare.com/#how-we-increasingly-leverage-workers-ai" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p><a href="https://developers.cloudflare.com/workers-ai" target="_blank" rel="noopener noreferrer"><b><u>Workers AI</u></b></a> is Cloudflare's serverless AI inference platform which runs open-source models on GPUs across our global network. Beyond huge cost improvements compared to frontier models, a key advantage is that inference stays on the same network as your Workers, Durable Objects, and storage. No cross-cloud hops to deal with, which cause more latency, network flakiness, and additional networking configuration to manage.</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2WFqiZSL1RGbD2O7gOPDfR/2edc8c69fdea89fef76e600cb3ee5384/BLOG-3270_5.png" alt="BLOG-3270 5" class="kg-image" width="1822" height="1276" loading="lazy">
+	</figure>
+	<p><sup><i>Workers AI usage in the last month: 51.47B input tokens, 361.12M output tokens.</i></sup></p>
+	<p><a href="https://blog.cloudflare.com/workers-ai-large-models"><b><u>Kimi K2.5</u></b></a>, launched on Workers AI in March 2026, is a frontier-scale open-source model with a 256k context window, tool calling, and structured outputs. As we described in our <a href="https://blog.cloudflare.com/workers-ai-large-models"><u>Kimi K2.5 launch post</u></a>, we have a security agent that processes over 7 billion tokens per day on Kimi. That would cost an estimated $2.4M per year on a mid-tier proprietary model. But on Workers AI, it's 77% cheaper.</p>
+	<p>Beyond security, we use Workers AI for documentation review in our CI pipeline, for generating AGENTS.md context files across thousands of repositories, and for lightweight inference tasks where same-network latency matters more than peak model capability.</p>
+	<p>As open-source models continue to improve, we expect Workers AI to handle a growing share of our internal workloads.&nbsp;</p>
+	<p>One thing we got right early: routing through a single proxy Worker from day one. We could have had clients connect directly to AI Gateway, which would have been simpler to set up initially. But centralizing through a Worker meant we could add per-user attribution, model catalog management, and permission enforcement later without touching any client configs. Every feature described in the bootstrap section below exists because we had that single choke point. The proxy pattern gives you a control plane that direct connections don't, and if we plug in additional coding assistant tools later, the same Worker and discovery endpoint will handle them.</p>
+	<div class="flex anchor relative">
+		<h4 id="how-it-works-one-url-to-configure-everything">How it works: one URL to configure everything</h4>
+		<a href="https://blog.cloudflare.com/#how-it-works-one-url-to-configure-everything" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>The entire setup starts with one command:</p>
+	<pre class="language-Rust"><code class="language-Rust">opencode auth login https://opencode.internal.domain
+</code></pre>
+	<p>That command triggers a chain that configures providers, models, MCP servers, agents, commands, and permissions, without the user touching a config file.</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3sK7wVF3QbeNJ0rjLBabXh/05b9098197b7a3d084e6d860ed22b169/BLOG-3270_6.png" alt="BLOG-3270 6" class="kg-image" width="1999" height="1198" loading="lazy">
+	</figure>
+	<p><b>Step 1: Discover auth requirements.</b> OpenCode fetches <a href="https://opencode.ai/docs/config" target="_blank" rel="noopener noreferrer"><u>config</u></a> from a URL like <code>https://opencode.internal.domain/.well-known/opencode</code>.&nbsp;</p>
+	<p>This discovery endpoint is served by a Worker and the response has an <code>auth</code> block telling OpenCode how to authenticate, along with a <code>config</code> block with providers, MCP servers, agents, commands, and default permissions:</p>
+	<pre class="language-JSON"><code class="language-JSON">{
+  "auth": {
+    "command": ["cloudflared", "access", "login", "..."],
+    "env": "TOKEN"
+  },
+  "config": {
+    "provider": { "..." },
+    "mcp": { "..." },
+    "agent": { "..." },
+    "command": { "..." },
+    "permission": { "..." }
+  }
+}
+</code></pre>
+	<p><b>Step 2: Authenticate via Cloudflare Access.</b> OpenCode runs the auth command and the user authenticates through the same SSO they use for everything else at Cloudflare. <code>cloudflared</code> returns a signed JWT. OpenCode stores it locally and automatically attaches it to every subsequent provider request.</p>
+	<p><b>Step 3: Config is merged into OpenCode.</b> The config provided is shared defaults for the entire organization, but local configs always take priority. Users can override the default model, add their own agents, or adjust project and user scoped permissions without affecting anyone else.</p>
+	<p><b>Inside the proxy Worker.</b> The Worker is a simple Hono app that does three things:</p>
+	<ol>
+		<li>
+			<p><b>Serves the shared config.</b> The config is compiled at deploy time from structured source files and contains placeholder values like {baseURL} for the Worker's origin. At request time, the Worker replaces these, so all provider requests route through the Worker rather than directly to model providers. Each provider gets a path prefix (<code>/anthropic, /openai, /google-ai-studio/v1beta, /compat</code> for Workers AI) that the Worker forwards to the corresponding AI Gateway route.</p>
+		</li>
+		<li>
+			<p><b>Proxies requests to AI Gateway.</b> When OpenCode sends a request like <code>POST /anthropic/v1/messages</code>, the Worker validates the Cloudflare Access JWT, then rewrites headers before forwarding:
+			</p>
+			<pre class="language-Shell"><code class="language-Shell">Stripped:   authorization, cf-access-token, host
+Added:      cf-aig-authorization: Bearer &lt;API_KEY&gt;
+            cf-aig-metadata: {"userId": "&lt;anonymous-uuid&gt;"}
+</code></pre>
+			<p>The request goes to AI Gateway, which routes it to the appropriate provider. The response passes straight through with zero buffering. The <code>apiKey</code> field in the client config is empty because the Worker injects the real key server-side. No API keys exist on user machines.</p>
+		</li>
+		<li>
+			<p><b>Keeps the model catalog fresh.</b> An hourly cron trigger fetches the current OpenAI model list from <code>models.dev</code>, caches it in Workers KV, and injects <code>store: false</code> on every model for Zero Data Retention. New models get ZDR automatically without a config redeploy.</p>
+		</li>
+	</ol>
+	<p><b>Anonymous user tracking.</b> After JWT validation, the Worker maps the user's email to a UUID using D1 for persistent storage and KV as a read cache. AI Gateway only ever sees the anonymous UUID in <code>cf-aig-metadata</code>, never the email. This gives us per-user cost tracking and usage analytics without exposing identities to model providers or Gateway logs.</p>
+	<p><b>Config-as-code. </b>Agents and commands are authored as markdown files with YAML frontmatter. A build script compiles them into a single JSON config validated against the OpenCode JSON schema. Every new session picks up the latest version automatically.</p>
+	<p>The overall architecture is simple and easy for anyone to deploy with our developer platform: a proxy Worker, Cloudflare Access, AI Gateway, and a client-accessible discovery endpoint that configures everything automatically. Users run one command and they're done. There’s nothing for them to configure manually, no API keys on laptops or MCP server connections to manually set up. Making changes to our agentic tools and updating what 3,000+ people get in their coding environment is just a <code>wrangler deploy</code> away.</p>
+	<div class="flex anchor relative">
+		<h3 id="the-mcp-server-portal-one-oauth-multiple-mcp-tools">The MCP Server Portal: one OAuth, multiple MCP tools</h3>
+		<a href="https://blog.cloudflare.com/#the-mcp-server-portal-one-oauth-multiple-mcp-tools" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>We described our full approach to governing MCP at enterprise scale in a <a href="https://blog.cloudflare.com/enterprise-mcp"><u>separate post</u></a>, including how we use <a href="https://developers.cloudflare.com/cloudflare-one/access-controls/ai-controls/mcp-portals" target="_blank" rel="noopener noreferrer"><u>MCP Server Portals</u></a>, Cloudflare Access, and Code Mode together. Here's the short version of what we built internally.</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/36gUHwTs8CzZeS03l9yno1/42953a6dc2ac944f4dbe31e3ae51570e/BLOG-3270_7.png" alt="BLOG-3270 7" class="kg-image" width="1610" height="1484" loading="lazy">
+	</figure>
+	<p>Our internal portal aggregates 13 production MCP servers exposing 182+ tools across Backstage, GitLab, Jira, Sentry, Elasticsearch, Prometheus, Google Workspace, our internal Release Manager, and more. This unifies access and simplifies everything giving us one endpoint and one Cloudflare Access flow governing access to every tool.</p>
+	<p>Each MCP server is built on the same foundation: McpAgent from the Agents SDK, <a href="https://github.com/cloudflare/workers-oauth-provider" target="_blank" rel="noopener noreferrer"><b><u>workers-oauth-provider</u></b></a> for OAuth, and Cloudflare Access for identity. The whole thing lives in a single monorepo with shared auth infrastructure, Bazel builds, CI/CD pipelines, and <code>catalog-info.yaml </code>for Backstage registration. Adding a new server is mostly copying an existing one and changing the API it wraps. For more on how this works and the security architecture behind it, see <a href="https://blog.cloudflare.com/enterprise-mcp"><u>our enterprise MCP reference architecture</u></a>.</p>
+	<div class="flex anchor relative">
+		<h3 id="code-mode-at-the-portal-layer">Code Mode at the portal layer</h3>
+		<a href="https://blog.cloudflare.com/#code-mode-at-the-portal-layer" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>MCP is the right protocol for connecting AI agents to tools, but it has a practical problem: every tool definition consumes context window tokens before the model even starts working. As the number of MCP servers and tools grows, so does the token overhead, and at scale, this becomes a real cost. <a href="https://blog.cloudflare.com/code-mode"><u>Code Mode </u></a>is the emerging fix: instead of loading every tool schema up front, the model discovers and calls tools through code.</p>
+	<p>Our GitLab MCP server originally exposed 34 individual tools (<code>get_merge_request</code>, <code>list_pipelines</code>, <code>get_file_content</code>, and so on). Those 34 tool schemas consumed roughly 15,000 tokens of context window per request. On a 200K context window, that's 7.5% of the budget gone before asking a question. Multiplied across every request, every engineer, every day, it adds up.</p>
+	<p>MCP Server Portals now support Code Mode proxying, which lets us solve that problem centrally instead of one server at a time. Rather than exposing every upstream tool definition to the client, the portal collapses them into two portal-level tools: <code>portal_codemode_search and portal_codemode_execute</code>.</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7jQa4HPmrOaOhUojZCJQ8q/4e81201065a50dd67c07e257b725e8b8/BLOG-3270_8.png" alt="BLOG-3270 8" class="kg-image" width="1164" height="641" loading="lazy">
+	</figure>
+	<p>The nice thing about doing this at the portal layer is that it scales cleanly. Without Code Mode, every new MCP server adds more schema overhead to every request. With portal-level Code Mode, the client still only sees two tools even as we connect more servers behind the portal. That means less context bloat, lower token cost, and a cleaner architecture overall.</p>
+	<div class="flex anchor relative">
+		<h2 id="act-2-the-knowledge-layer">Act 2: The knowledge layer</h2>
+		<a href="https://blog.cloudflare.com/#act-2-the-knowledge-layer" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+
+	<div class="flex anchor relative">
+		<h3 id="backstage-the-knowledge-graph-underneath-all-of-it">Backstage: the knowledge graph underneath all of it</h3>
+		<a href="https://blog.cloudflare.com/#backstage-the-knowledge-graph-underneath-all-of-it" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Before the iMARS team could build MCP servers that were actually useful, we needed to solve a more fundamental problem: structured data about our services and infrastructure. We need our agents to understand context outside the code base, like who owns what, how services depend on each other, where the documentation lives, and what databases a service talks to.</p>
+	<p>We run <a href="https://backstage.io" target="_blank" rel="noopener noreferrer"><u>Backstage</u></a>, the open-source internal developer portal originally built by Spotify, as our service catalog. It's self-hosted (not on Cloudflare products, for the record) and it tracks things like:</p>
+	<ul>
+		<li>
+			<p>2,055 services, 167 libraries, and 122 packages</p>
+		</li>
+		<li>
+			<p>228 APIs with schema definitions</p>
+		</li>
+		<li>
+			<p>544 systems (products) across 45 domains</p>
+		</li>
+		<li>
+			<p>1,302 databases, 277 ClickHouse tables, 173 clusters</p>
+		</li>
+		<li>
+			<p>375 teams and 6,389 users with ownership mappings</p>
+		</li>
+		<li>
+			<p>Dependency graphs connecting services to the databases, Kafka topics, and cloud resources they rely on</p>
+		</li>
+	</ul>
+	<p>Our Backstage MCP server (13 tools) is available through our MCP Portal, and an agent can look up who owns a service, check what it depends on, find related API specs, and pull Tech Insights scores, all without leaving the coding session.</p>
+	<p>Without this structured data, agents are working blind. They can read the code in front of them, but they can't see the system around it. The catalog turns individual repos into a connected map of the engineering organization.</p>
+	<div class="flex anchor relative">
+		<h3 id="agents-md-getting-thousands-of-repos-ready-for-ai">AGENTS.md: getting thousands of repos ready for AI</h3>
+		<a href="https://blog.cloudflare.com/#agents-md-getting-thousands-of-repos-ready-for-ai" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Early in the rollout, we kept seeing the same failure mode: coding agents produced changes that looked plausible and were still wrong for the repo. Usually the problem was local context: the model didn't know the right test command, the team's current conventions, or which parts of the codebase were off-limits. That pushed us toward AGENTS.md: a short, structured file in each repo that tells coding agents how the codebase actually works and forces teams to make that context explicit.</p>
+	<div class="flex anchor relative">
+		<h4 id="what-agents-md-looks-like">What AGENTS.md looks like</h4>
+		<a href="https://blog.cloudflare.com/#what-agents-md-looks-like" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>We built a system that generates AGENTS.md files across our GitLab instance. Because these files sit directly in the model's context window, we wanted them to stay short and high-signal. A typical file looks like this:</p>
+	<pre class="language-rust"><code class="language-rust"># AGENTS.md
+
+## Repository
+- Runtime: cloudflare workers
+- Test command: `pnpm test`
+- Lint command: `pnpm lint`
+
+## How to navigate this codebase
+- All cloudflare workers  are in src/workers/, one file per worker
+- MCP server definitions are in src/mcp/, each tool in a separate file
+- Tests mirror source: src/foo.ts -&gt; tests/foo.test.ts
+
+## Conventions
+- Testing: use Vitest with `@cloudflare/vitest-pool-workers` (Codex: RFC 021, RFC 042)
+- API patterns: Follow internal REST conventions (Codex: API-REST-01)
+
+## Boundaries
+- Do not edit generated files in `gen/`
+- Do not introduce new background jobs without updating `config/`
+
+## Dependencies
+- Depends on: auth-service, config-service
+- Depended on by: api-gateway, dashboard
+</code></pre>
+	<p></p>
+	<p>When an agent reads this file, it doesn't have to infer the repo from scratch. It knows how the codebase is organized, which conventions to follow and which Engineering Codex rules apply.</p>
+	<div class="flex anchor relative">
+		<h4 id="how-we-generate-them-at-scale">How we generate them at scale</h4>
+		<a href="https://blog.cloudflare.com/#how-we-generate-them-at-scale" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>The generator pipeline pulls entity metadata from our Backstage service catalog (ownership, dependencies, system relationships), analyzes the repository structure to detect the language, build system, test framework, and directory layout, then maps the detected stack to relevant Engineering Codex standards. A capable model then generates the structured document, and the system opens a merge request so the owning team can review and refine it.</p>
+	<p>We've processed roughly 3,900 repositories this way. The first pass wasn't always perfect, especially for polyglot repos or unusual build setups, but even that baseline was much better than asking agents to infer everything from scratch.</p>
+	<p>The initial merge request solved the bootstrap problem, but keeping these files current mattered just as much. A stale AGENTS.md can be worse than no file at all. We closed that loop with the AI Code Reviewer, which can flag when repository changes suggest that AGENTS.md should be updated.</p>
+	<div class="flex anchor relative">
+		<h2 id="act-3-the-enforcement-layer">Act 3: The enforcement layer</h2>
+		<a href="https://blog.cloudflare.com/#act-3-the-enforcement-layer" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+
+	<div class="flex anchor relative">
+		<h3 id="the-ai-code-reviewer">The AI Code Reviewer</h3>
+		<a href="https://blog.cloudflare.com/#the-ai-code-reviewer" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Every merge request at Cloudflare gets an AI code review. Integration is straightforward: teams add a single CI component to their pipeline, and from that point every MR is reviewed automatically.</p>
+	<p>We use GitLab's self-hosted solution as our CI/CD platform. The reviewer is implemented as a GitLab CI component that teams include in their pipeline. When an MR is opened or updated, the CI job runs <a href="https://opencode.ai" target="_blank" rel="noopener noreferrer"><u>OpenCode</u></a> with a multi-agent review coordinator. The coordinator classifies the MR by risk tier (trivial, lite, or full) and delegates to specialized review agents: code quality, security, codex compliance, documentation, performance, and release impact. Each agent connects to the AI Gateway for model access, pulls Engineering Codex rules from a central repo, and reads the repository's AGENTS.md for codebase context. Results are posted back as structured MR comments.</p>
+	<p>A separate Workers-based config service handles centralized model selection per reviewer agent, so we can shift models without changing the CI template. The review process itself runs in the CI runner and is stateless per execution.</p>
+	<div class="flex anchor relative">
+		<h3 id="the-output-format">The output format</h3>
+		<a href="https://blog.cloudflare.com/#the-output-format" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5CKN6frPHygTkAHBDrY3y7/e04eb00702a25627291c904fbde2e7ea/BLOG-3270_9.png" alt="BLOG-3270 9" class="kg-image" width="945" height="1999" loading="lazy">
+	</figure>
+	<p>We spent time getting the output format right. Reviews are broken into categories (Security, Code Quality, Performance) so engineers can scan headers rather than reading walls of text. Each finding has a severity level (Critical, Important, Suggestion, or Optional Nits) that makes it immediately clear what needs attention versus what's informational.</p>
+	<p>The reviewer maintains context across iterations. If it flagged something in a previous review round that has since been fixed, it acknowledges that rather than re-raising the same issue. And when a finding maps to an Engineering Codex rule, it cites the specific rule ID, turning an AI suggestion into a reference to an organizational standard.</p>
+	<p>Workers AI handles about 15% of the reviewer's traffic, primarily for documentation review tasks where Kimi K2.5 performs well at a fraction of the cost of frontier models. Models like Opus 4.6 and GPT 5.4 handle security-sensitive and architecturally complex reviews where reasoning capability matters most.</p>
+	<p>Over the last 30 days:</p>
+	<ul>
+		<li>
+			<p><b>100%</b> AI code reviewer coverage across all repos on our standard CI pipeline.</p>
+		</li>
+		<li>
+			<p>5.47M AI Gateway requests</p>
+		</li>
+		<li>
+			<p>24.77B tokens processed</p>
+		</li>
+	</ul>
+	<p>We're releasing a <a href="https://blog.cloudflare.com/ai-code-review"><u>detailed technical blog post</u></a> alongside this one that covers the reviewer's internal architecture, including how we route between models, the multi-agent orchestration, and the cost optimization strategies we've developed.</p>
+	<div class="flex anchor relative">
+		<h3 id="engineering-codex-engineering-standards-as-agent-skills">Engineering Codex: engineering standards as agent skills</h3>
+		<a href="https://blog.cloudflare.com/#engineering-codex-engineering-standards-as-agent-skills" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>The <b>Engineering Codex</b> is Cloudflare's new internal standards system where our core engineering standards live. We have a multi-stage AI distillation process, which outputs a set of codex rules ("If you need X, use Y. You must do X, if you are doing Y or Z.") along with an agent skill that uses progressive disclosure and nested hierarchical information directories and links across markdown files.&nbsp;</p>
+	<p>This skill is available for engineers to use locally as they build with prompts like “how should I handle errors in my Rust service?” or “review this TypeScript code for compliance.” Our Network Firewall team audited <code>rampartd</code> using a multi-agent consensus process where every requirement was scored COMPLIANT, PARTIAL, or NON-COMPLIANT with specific violation details and remediation steps reducing what previously required weeks of manual work to a structured, repeatable process.</p>
+	<p>At review time, the AI Code Reviewer cites specific Codex rules in its feedback.</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6vXFmpfwqv1Xqo5CszCsEB/ada6417470b2b7533a12244578cbd9d0/BLOG-3270_10.png" alt="BLOG-3270 10" class="kg-image" width="1926" height="672" loading="lazy">
+	</figure>
+	<p><sup>&nbsp;</sup><sup><i>AI Code Review: showing categorized findings (Codex Compliance in this case) noting the codex RFC violation.</i></sup></p>
+	<p>None of these pieces are especially novel on their own. Plenty of companies run service catalogs, ship reviewer bots, or publish engineering standards. The difference is the wiring. When an agent can pull context from Backstage, read AGENTS.md for the repo it’s editing, and get reviewed against Codex rules by the same toolchain, the first draft is usually close enough to ship. That wasn’t true six months ago.</p>
+	<div class="flex anchor relative">
+		<h2 id="the-scoreboard">The scoreboard</h2>
+		<a href="https://blog.cloudflare.com/#the-scoreboard" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>From launching this effort to 93% R&amp;D adoption took less than a year.</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1OtTpHobBRjorxOV2dWG8w/9b9dc80cba9741ee65e8565f63091e1a/BLOG-3270_11.png" alt="BLOG-3270 11" class="kg-image" width="1582" height="1070" loading="lazy">
+	</figure>
+	<p><b>Company-wide adoption (Feb 5 – April 15, 2026):</b></p>
+	<table>
+		<tbody>
+			<tr>
+				<th>
+					<p>Metric</p>
+				</th>
+				<th>
+					<p>Value</p>
+				</th>
+			</tr>
+			<tr>
+				<td>
+					<p>Active users</p>
+				</td>
+				<td>
+					<p><b>3,683</b> (60% of the company)</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>R&amp;D team adoption</p>
+				</td>
+				<td>
+					<p><b>93%</b></p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>AI messages</p>
+				</td>
+				<td>
+					<p><b>47.95M</b></p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>Teams with AI activity</p>
+				</td>
+				<td>
+					<p><b>295</b></p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>OpenCode messages</p>
+				</td>
+				<td>
+					<p><b>27.08M</b></p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>Windsurf messages</p>
+				</td>
+				<td>
+					<p><b>434.9K</b></p>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+	<p><b>AI Gateway (last 30 days, combined):</b></p>
+	<table>
+		<tbody>
+			<tr>
+				<th>
+					<p>Metric</p>
+				</th>
+				<th>
+					<p>Value</p>
+				</th>
+			</tr>
+			<tr>
+				<td>
+					<p>Requests</p>
+				</td>
+				<td>
+					<p><b>20.18M</b></p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>Tokens</p>
+				</td>
+				<td>
+					<p><b>241.37B</b></p>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+	<p><b>Workers AI (last 30 days):</b></p>
+	<table>
+		<tbody>
+			<tr>
+				<th>
+					<p>Metric</p>
+				</th>
+				<th>
+					<p>Value</p>
+				</th>
+			</tr>
+			<tr>
+				<td>
+					<p>Input tokens</p>
+				</td>
+				<td>
+					<p><b>51.47B</b></p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>Output tokens</p>
+				</td>
+				<td>
+					<p><b>361.12M</b></p>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+	<div class="flex anchor relative">
+		<h2 id="whats-next-background-agents">What's next: background agents</h2>
+		<a href="https://blog.cloudflare.com/#whats-next-background-agents" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>The next evolution in our internal engineering stack will include background agents: agents that can be spun up on demand with the same tools available locally (MCP portal, git, test runners) but running entirely in the cloud. The architecture uses Durable Objects and the Agents SDK for orchestration, delegating to Sandbox containers when the job requires a full development environment like cloning a repo, installing dependencies, or running tests. The <a href="https://blog.cloudflare.com/sandbox-ga"><u>Sandbox SDK went GA</u></a> during Agents Week.</p>
+	<p>Long-running agents, <a href="https://blog.cloudflare.com/project-think"><u>shipped natively into the Agents SDK</u></a> during Agents Week, solve the durable session problem that previously required workarounds. The SDK now supports sessions that run for extended periods without eviction, enough for an agent to clone a large repo, run a full test suite, iterate on failures, and open a MR in a single session.</p>
+	<p>This represents an eleven-month effort to rethink not just how code gets written, but how it gets reviewed, how standards are enforced, and how changes ship safely across thousands of repos. Every layer runs on the same products our customers use.</p>
+	<div class="flex anchor relative">
+		<h2 id="start-building">Start building</h2>
+		<a href="https://blog.cloudflare.com/#start-building" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Agents Week just <a href="https://blogs.cloudflare.com/agents-week-in-review" target="_blank" rel="noopener noreferrer"><u>shipped</u></a> everything you need. The platform is here.</p>
+	<pre class="language-Shell"><code class="language-Shell">npx create-cloudflare@latest --template cloudflare/agents-starter
+</code></pre>
+	<p>That agents starter gets you running. The diagram below is the full architecture for when you’re ready to grow it, your tools layer on top (chatbot, web UI, CLI, browser extension), the Agents SDK handling session state and orchestration in the middle, and the Cloudflare services you call from it underneath.</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3Ebzq5neZbshbrhb5WysYY/54335791b2f731e2095fd57a4fe11cf3/image11.png" alt="BLOG-3270 12" class="kg-image" width="1079" height="658" loading="lazy">
+	</figure>
+	<p><b>Docs:</b> <a href="https://developers.cloudflare.com/agents" target="_blank" rel="noopener noreferrer"><u>Agents SDK</u></a> · <a href="https://developers.cloudflare.com/sandbox" target="_blank" rel="noopener noreferrer"><u>Sandbox SDK</u></a> · <a href="https://developers.cloudflare.com/ai-gateway" target="_blank" rel="noopener noreferrer"><u>AI Gateway</u></a> · <a href="https://developers.cloudflare.com/workers-ai" target="_blank" rel="noopener noreferrer"><u>Workers AI</u></a> · <a href="https://developers.cloudflare.com/workflows" target="_blank" rel="noopener noreferrer"><u>Workflows</u></a> · <a href="https://developers.cloudflare.com/agents/api-reference/codemode" target="_blank" rel="noopener noreferrer"><u>Code Mode</u></a> · <a href="https://blog.cloudflare.com/model-context-protocol"><u>MCP on Cloudflare</u></a></p>
+	<p><b>Repos:</b> <a href="https://github.com/cloudflare/agents" target="_blank" rel="noopener noreferrer"><u>cloudflare/agents</u></a> · <a href="https://github.com/cloudflare/sandbox-sdk" target="_blank" rel="noopener noreferrer"><u>cloudflare/sandbox-sdk</u></a> · <a href="https://github.com/cloudflare/mcp-server-cloudflare" target="_blank" rel="noopener noreferrer"><u>cloudflare/mcp-server-cloudflare</u></a> · <a href="https://github.com/cloudflare/skills" target="_blank" rel="noopener noreferrer"><u>cloudflare/skills</u></a></p>
+	<p>For more on how we’re using AI at Cloudflare, read the post on <a href="https://blog.cloudflare.com/ai-code-review"><u>our process for AI Code Review</u></a>. And check out <a href="https://www.cloudflare.com/agents-week/updates" target="_blank" rel="noopener noreferrer"><u>everything we shipped during Agents Week</u></a>.</p>
+	<p>We’d love to hear what you build. Find us on <a href="https://discord.cloudflare.com" target="_blank" rel="noopener noreferrer"><u>Discord</u>,</a> <a href="https://x.com/CloudflareDev" target="_blank" rel="noopener noreferrer"><u>X</u>, and</a> <a href="https://bsky.app/profile/cloudflare.social" target="_blank" rel="noopener noreferrer"><u>Bluesky</u></a>.</p>
+	<p><sup><i>Ayush Thakur built the AGENTS.md system and the AI Gateway integration for the OpenCode infrastructure, Scott Roemeschke is the Engineering Manager of the Developer Productivity team at Cloudflare, Rajesh Bhatia leads the Productivity Platform function at Cloudflare. This post was a collaborative effort across the Devtools team, with help from volunteers across the company through the iMARS (Internal MCP Agent/Server Rollout Squad) tiger team.</i></sup></p>
+</div>
