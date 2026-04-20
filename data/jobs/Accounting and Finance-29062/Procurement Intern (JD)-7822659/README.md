@@ -52,10 +52,7 @@
 <ol>
 	<li><strong>Networking Credits:</strong> Encourage them to have "Coffee Chats" with three people outside their department (e.g., Marketing, Engineering, HR) to see how Procurement impacts the whole business.</li>
 </ol>
-<p><strong><span data-rich-links="{&quot;dat_df&quot;:{&quot;fres_frt&quot;:1,&quot;dfie_ts&quot;:{&quot;tv&quot;:{&quot;tv_s&quot;:1772366400,&quot;tv_n&quot;:0}},&quot;dfie_l&quot;:&quot;en&quot;,&quot;dfie_p&quot;:{&quot;fres_frt&quot;:0,&quot;tres_tv&quot;:&quot;MMM d, y&quot;},&quot;dfie_dt&quot;:&quot;Mar 1, 2026&quot;,&quot;dfie_pt&quot;:3,&quot;dfie_tpt&quot;:0,&quot;dfie_tzi&quot;:&quot;&quot;},&quot;type&quot;:&quot;date&quot;}">Compensation:</span></strong></p>
-<ul>
-	<li><span data-rich-links="{&quot;dat_df&quot;:{&quot;fres_frt&quot;:1,&quot;dfie_ts&quot;:{&quot;tv&quot;:{&quot;tv_s&quot;:1772366400,&quot;tv_n&quot;:0}},&quot;dfie_l&quot;:&quot;en&quot;,&quot;dfie_p&quot;:{&quot;fres_frt&quot;:0,&quot;tres_tv&quot;:&quot;MMM d, y&quot;},&quot;dfie_dt&quot;:&quot;Mar 1, 2026&quot;,&quot;dfie_pt&quot;:3,&quot;dfie_tpt&quot;:0,&quot;dfie_tzi&quot;:&quot;&quot;},&quot;type&quot;:&quot;date&quot;}">Estimated hourly rate is $32/hr</span></li>
-</ul>
+<p>&nbsp;</p>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
 	<p><span style="font-weight: 400;">We’re not just a highly ambitious, large-scale technology company. We’re a highly ambitious, large-scale technology company with a soul. Fundamental to our mission to help build a better Internet is protecting the free and open Internet.</span></p>

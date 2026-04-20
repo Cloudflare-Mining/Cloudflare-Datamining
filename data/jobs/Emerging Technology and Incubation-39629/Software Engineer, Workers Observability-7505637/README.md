@@ -5,45 +5,34 @@
 		<p>At Cloudflare, we’re not looking for people who wait for a polished roadmap; we’re looking for the builders who see the cracks in the Internet that everyone else has simply learned to live with. We value candidates who have the instinct to spot a "normalized" problem and the AI-native curiosity to create a solution using the latest tools. Our culture is built on iteration, leveraging AI to ship faster today to make it better tomorrow, while ensuring that every improvement, no matter how small, is shared across the team to lift everyone up. If you’re the type of person who values curiosity over bureaucracy, and that AI is a partner in solving tough problems to keep the Internet moving forward, you’ll fit right in.</p>
 	</div>
 </div>
-<p><strong>Available Locations: Austin</strong></p>
-<p><strong>About the role</strong></p>
-<p>As an engineer on one of our Production Engineering teams, you'll be building the tools to help engineers deploy and operate the services that make Cloudflare work. Our mission is to provide a reliable, yet flexible, platform to help product teams release new software efficiently and safely. You’ll be building the private cloud that Cloudflare developers leverage to build Cloudflare itself. Core platforms we operate at Cloudflare include:</p>
+<p><strong>Available Locations: London, UK&nbsp;</strong></p>
+<p><strong>Role Summary</strong></p>
+<p>Workers Observability (WOBS) Team provides a growing suite of tools to monitor, troubleshoot and optimize applications on the Cloudflare Developer platform. These tools increasingly work across Cloudflare products to provide complete visibility into user applications. We aim to make these tools not only best-in-class but also frictionless and intuitive to use. All this within the context of Cloudflare's scale and globally distributed infrastructure.</p>
+<p>Team members help design and ship core software features across the observability stack - including the frontend customer experience, integrations with other Cloudflare primitives, and our internal data stores and ingestion pipelines. You will own code across the development lifecycle from design to release including QA, incident management, and performance optimization.&nbsp;</p>
+<p>The Systems Engineer role is a full-stack position which requires extensive cross-functional collaboration. On a given day you might incorporate frontend feedback from a customer, run a Clickhouse query to diagnose a data ingestion bug, and propose a better tracing integration with another product on the Workers platform.</p>
+<p><strong>Role Responsibilities</strong></p>
 <ul>
-	<li>Kubernetes</li>
-	<li>Kafka&nbsp;</li>
-	<li>Developer tools, CI, and CD systems</li>
-	<li>Vault, Consul</li>
-	<li>Terraform</li>
-	<li>Temporal Workflows</li>
-	<li>Cloudflare Developer Platform</li>
+	<li><strong>Customer Focus:</strong> Be responsive to customer escalations, bug reports, and product feedback, and participate in pager duty for our production systems.</li>
+	<li><strong>Software Development:</strong> Efficiently and reliably deliver high-quality software that meets the performance requirements of Cloudflare’s systems.</li>
+	<li><strong>Troubleshooting:</strong> Address complex and subtle issues on our platform, which may require debugging across multiple systems, languages, and datastores.</li>
+	<li><strong>Communication:</strong> Maintain clear written communication across a range of platforms as part of a globally distributed team (from US West Coast to UK) and across a range of different engineering and support teams.</li>
 </ul>
-<p><strong>What You'll Do</strong></p>
+<p><strong>Expertise: Success in this role will depend on becoming an expert not just on the observability platform, but on the Cloudflare Developer Platform as a whole.&nbsp;<br></strong></p>
+<p><strong>Role Requirements (Must-Have Skills)</strong></p>
+<p><strong>Must-Have Skills</strong></p>
 <ul>
-	<li>Build software that automates the operation of large, highly-available distributed systems.</li>
-	<li>Ensure platform security, and guide security best practices</li>
-	<li>Document your work and guide fellow developers towards optimal solutions</li>
-	<li>Contribute back to the open source community</li>
-	<li>Leave code better than we found it</li>
+	<li>Strong proficiency in at least one programming language, preferably a typed language (e.g. Go, TypeScript, Rust) as well as SQL</li>
+	<li>Experience building high-volume distributed systems using cloud primitives (AWS, GCP, CF), including queues, key-value stores, relational databases, blob storage, and serverless compute</li>
+	<li>Experience troubleshooting distributed data systems including working with logs and data stores.&nbsp;</li>
 </ul>
-<p><strong>What You'll Need</strong></p>
+<p><strong>Nice-to-Have Skills</strong></p>
+<p>The following are nice-to-haves:</p>
 <ul>
-	<li>Recent career experience with Go or Python and at least 3 years experience in the role of full-time software engineer (any language).&nbsp; Rust is an added bonus.</li>
-	<li>Experience with deploying and managing services using Docker on Linux</li>
-	<li>A firm grasp of IP networking, load balancing and DNS</li>
-	<li>Excellent debugging skills in a distributed systems environment</li>
-	<li>Source control experience including branching, merging and rebasing (we use git)</li>
-	<li>The ability to break down complex problems and drive towards a solution</li>
-	<li>Be passionate about improving User Experience</li>
+	<li>Working with lower level languages like Rust or C++</li>
+	<li>Building frontend application in Typescript and React</li>
+	<li>Building applications on the Cloudflare platform</li>
+	<li>Working with observability platforms and tools</li>
 </ul>
-<p><strong>Bonus Points</strong></p>
-<ul>
-	<li>Experience with Deployment, StatefulSets, Persistent Volumes Claims, Ingresses, CRDs on Kubernetes</li>
-	<li>Operational experience deploying and managing large systems on bare metal</li>
-	<li>Experience as a Site Reliability Engineer (SRE) for a large-scale company</li>
-	<li>You have practical knowledge of web and systems performance, and extensively used tracing tools like ebpf and strace.</li>
-	<li>Alerting and monitoring (Prometheus/Alert Manager), Configuration Management (salt)</li>
-</ul>
-<p>&nbsp;</p>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
 	<p><span style="font-weight: 400;">We’re not just a highly ambitious, large-scale technology company. We’re a highly ambitious, large-scale technology company with a soul. Fundamental to our mission to help build a better Internet is protecting the free and open Internet.</span></p>
