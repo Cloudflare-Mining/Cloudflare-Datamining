@@ -384,8 +384,8 @@
 		"social-auth-upfront": 100
 	},
 	"dx-manage-domain-refactor": {
-		"false": 75,
-		"true": 25
+		"true": 50,
+		"false": 50
 	},
 	"dx-new-error-state-login-and-signup": {
 		"experiment": 100
@@ -513,6 +513,9 @@
 		"true": 100
 	},
 	"loui-kumo-log-explorer": {
+		"true": 100
+	},
+	"loui-kumo-tiered-cache": {
 		"true": 100
 	},
 	"loui-sentry-debug-error": {
