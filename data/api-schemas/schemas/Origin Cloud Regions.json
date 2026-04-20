@@ -1,0 +1,3120 @@
+{
+	"DELETE /zones/{zone_id}/cache/origin_cloud_regions/{origin_ip}": {
+		"description": "Removes the cloud region mapping for a single origin IP address. The IP path parameter is normalized before lookup. Returns the deleted entry on success. Returns 404 (code 1163) if no mapping exists for the specified IP. When the last mapping for the zone is removed the underlying rule record is also deleted.",
+		"operationId": "origin-cloud-regions-delete",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "zone_id",
+				"required": true,
+				"schema": {
+					"description": "Identifier.",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"readOnly": true,
+					"type": "string",
+					"x-auditable": true
+				}
+			},
+			{
+				"description": "Origin IP address whose mapping should be deleted.",
+				"in": "path",
+				"name": "origin_ip",
+				"required": true,
+				"schema": {
+					"example": "192.0.2.1",
+					"type": "string"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"examples": {
+							"deleted": {
+								"value": {
+									"errors": [],
+									"messages": [],
+									"result": {
+										"editable": true,
+										"id": "origin_public_cloud_region",
+										"modified_on": "2026-03-01T12:00:00Z",
+										"value": {
+											"modified_on": "2026-03-01T12:00:00Z",
+											"origin-ip": "192.0.2.1",
+											"region": "us-east-1",
+											"vendor": "aws"
+										}
+									},
+									"success": true
+								}
+							}
+						},
+						"schema": {
+							"allOf": [
+								{
+									"properties": {
+										"errors": {
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										},
+										"messages": {
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										},
+										"success": {
+											"description": "Whether the API call was successful.",
+											"enum": [
+												true
+											],
+											"example": true,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages"
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"result": {
+											"description": "Response result for a single origin cloud region mapping.",
+											"properties": {
+												"editable": {
+													"description": "Whether the setting can be modified by the current user.",
+													"type": "boolean"
+												},
+												"id": {
+													"enum": [
+														"origin_public_cloud_region"
+													],
+													"example": "origin_public_cloud_region",
+													"type": "string",
+													"x-auditable": true
+												},
+												"modified_on": {
+													"description": "Time the mapping was last modified.",
+													"format": "date-time",
+													"type": "string",
+													"x-auditable": true
+												},
+												"value": {
+													"description": "A single origin IP-to-cloud-region mapping.",
+													"properties": {
+														"modified_on": {
+															"description": "Time this mapping was last modified.",
+															"format": "date-time",
+															"type": "string",
+															"x-auditable": true
+														},
+														"origin-ip": {
+															"description": "The origin IP address (IPv4 or IPv6, canonicalized).",
+															"example": "192.0.2.1",
+															"type": "string",
+															"x-auditable": true
+														},
+														"region": {
+															"description": "Cloud vendor region identifier.",
+															"example": "us-east-1",
+															"type": "string",
+															"x-auditable": true
+														},
+														"vendor": {
+															"description": "Cloud vendor hosting the origin.",
+															"enum": [
+																"aws",
+																"azure",
+																"gcp",
+																"oci"
+															],
+															"example": "aws",
+															"type": "string",
+															"x-auditable": true
+														}
+													},
+													"required": [
+														"origin-ip",
+														"vendor",
+														"region"
+													],
+													"type": "object"
+												}
+											},
+											"required": [
+												"id",
+												"editable",
+												"value"
+											],
+											"type": "object"
+										}
+									},
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "Delete origin cloud region mapping response."
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"examples": {
+							"not_found": {
+								"value": {
+									"errors": [
+										{
+											"code": 1142,
+											"message": "Unable to retrieve origin_public_cloud_region setting value. The zone setting does not exist."
+										}
+									],
+									"messages": [],
+									"result": null,
+									"success": false
+								}
+							}
+						},
+						"schema": {
+							"properties": {
+								"errors": {
+									"allOf": [
+										{
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										}
+									],
+									"example": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
+										}
+									],
+									"items": {
+										"type": "object"
+									},
+									"minLength": 1,
+									"type": "array"
+								},
+								"messages": {
+									"allOf": [
+										{
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										}
+									],
+									"example": [],
+									"items": {
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"result": {
+									"enum": [
+										null
+									],
+									"nullable": true,
+									"type": "object"
+								},
+								"success": {
+									"description": "Whether the API call was successful.",
+									"enum": [
+										false
+									],
+									"example": false,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Delete origin cloud region mapping failure."
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Delete an origin cloud region mapping",
+		"tags": [
+			"Origin Cloud Regions"
+		],
+		"x-cfPlanAvailability": {
+			"business": true,
+			"enterprise": true,
+			"free": true,
+			"pro": true
+		}
+	},
+	"DELETE /zones/{zone_id}/cache/origin_cloud_regions/batch": {
+		"description": "Removes up to 100 IP-to-cloud-region mappings in a single request. Each IP is validated independently — successfully deleted items are returned in the `succeeded` array and IPs that could not be found or are invalid are returned in the `failed` array.",
+		"operationId": "origin-cloud-regions-batch-delete",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "zone_id",
+				"required": true,
+				"schema": {
+					"description": "Identifier.",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"readOnly": true,
+					"type": "string",
+					"x-auditable": true
+				}
+			}
+		],
+		"requestBody": {
+			"content": {
+				"application/json": {
+					"examples": {
+						"batch_delete": {
+							"value": [
+								"192.0.2.1",
+								"2001:db8::1"
+							]
+						}
+					},
+					"schema": {
+						"items": {
+							"description": "Origin IP address to delete.",
+							"example": "192.0.2.1",
+							"type": "string"
+						},
+						"maxItems": 100,
+						"type": "array"
+					}
+				}
+			},
+			"required": true
+		},
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"examples": {
+							"batch_deleted": {
+								"value": {
+									"errors": [],
+									"messages": [],
+									"result": {
+										"editable": true,
+										"id": "origin_public_cloud_region",
+										"modified_on": "2026-03-01T12:00:00Z",
+										"value": {
+											"failed": [],
+											"succeeded": [
+												{
+													"origin-ip": "192.0.2.1",
+													"region": "us-east-1",
+													"vendor": "aws"
+												},
+												{
+													"origin-ip": "2001:db8::1",
+													"region": "us-central1",
+													"vendor": "gcp"
+												}
+											]
+										}
+									},
+									"success": true
+								}
+							}
+						},
+						"schema": {
+							"allOf": [
+								{
+									"properties": {
+										"errors": {
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										},
+										"messages": {
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										},
+										"success": {
+											"description": "Whether the API call was successful.",
+											"enum": [
+												true
+											],
+											"example": true,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages"
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"result": {
+											"description": "Response result for a batch origin cloud region operation.",
+											"properties": {
+												"editable": {
+													"description": "Whether the setting can be modified by the current user.",
+													"type": "boolean"
+												},
+												"id": {
+													"enum": [
+														"origin_public_cloud_region"
+													],
+													"example": "origin_public_cloud_region",
+													"type": "string",
+													"x-auditable": true
+												},
+												"modified_on": {
+													"description": "Time the mapping set was last modified. Null when no items were successfully applied.",
+													"format": "date-time",
+													"nullable": true,
+													"type": "string",
+													"x-auditable": true
+												},
+												"value": {
+													"properties": {
+														"failed": {
+															"description": "Items that could not be applied, with error details.",
+															"items": {
+																"description": "Result for a single item in a batch operation.",
+																"properties": {
+																	"error": {
+																		"description": "Error message explaining why the item failed. Present only on failed items.",
+																		"type": "string"
+																	},
+																	"origin-ip": {
+																		"description": "The origin IP address for this item.",
+																		"example": "192.0.2.1",
+																		"type": "string"
+																	},
+																	"region": {
+																		"description": "Cloud vendor region identifier. Present on succeeded items for patch operations.",
+																		"example": "us-east-1",
+																		"type": "string"
+																	},
+																	"vendor": {
+																		"description": "Cloud vendor identifier. Present on succeeded items for patch operations.",
+																		"example": "aws",
+																		"type": "string"
+																	}
+																},
+																"required": [
+																	"origin-ip"
+																],
+																"type": "object"
+															},
+															"type": "array"
+														},
+														"succeeded": {
+															"description": "Items that were successfully applied.",
+															"items": {
+																"description": "Result for a single item in a batch operation.",
+																"properties": {
+																	"error": {
+																		"description": "Error message explaining why the item failed. Present only on failed items.",
+																		"type": "string"
+																	},
+																	"origin-ip": {
+																		"description": "The origin IP address for this item.",
+																		"example": "192.0.2.1",
+																		"type": "string"
+																	},
+																	"region": {
+																		"description": "Cloud vendor region identifier. Present on succeeded items for patch operations.",
+																		"example": "us-east-1",
+																		"type": "string"
+																	},
+																	"vendor": {
+																		"description": "Cloud vendor identifier. Present on succeeded items for patch operations.",
+																		"example": "aws",
+																		"type": "string"
+																	}
+																},
+																"required": [
+																	"origin-ip"
+																],
+																"type": "object"
+															},
+															"type": "array"
+														}
+													},
+													"required": [
+														"succeeded",
+														"failed"
+													],
+													"type": "object"
+												}
+											},
+											"required": [
+												"id",
+												"editable",
+												"value"
+											],
+											"type": "object"
+										}
+									},
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "Batch delete origin cloud region mappings successful."
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"allOf": [
+										{
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										}
+									],
+									"example": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
+										}
+									],
+									"items": {
+										"type": "object"
+									},
+									"minLength": 1,
+									"type": "array"
+								},
+								"messages": {
+									"allOf": [
+										{
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										}
+									],
+									"example": [],
+									"items": {
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"result": {
+									"enum": [
+										null
+									],
+									"nullable": true,
+									"type": "object"
+								},
+								"success": {
+									"description": "Whether the API call was successful.",
+									"enum": [
+										false
+									],
+									"example": false,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Batch delete origin cloud region mappings failure."
+			},
+			"5XX": {
+				"content": {
+					"application/json": {
+						"examples": {
+							"internal_error": {
+								"value": {
+									"errors": [
+										{
+											"code": 1141,
+											"message": "Unable to delete origin_public_cloud_region setting. Internal error."
+										}
+									],
+									"messages": [],
+									"result": null,
+									"success": false
+								}
+							}
+						},
+						"schema": {
+							"properties": {
+								"errors": {
+									"allOf": [
+										{
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										}
+									],
+									"example": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
+										}
+									],
+									"items": {
+										"type": "object"
+									},
+									"minLength": 1,
+									"type": "array"
+								},
+								"messages": {
+									"allOf": [
+										{
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										}
+									],
+									"example": [],
+									"items": {
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"result": {
+									"enum": [
+										null
+									],
+									"nullable": true,
+									"type": "object"
+								},
+								"success": {
+									"description": "Whether the API call was successful.",
+									"enum": [
+										false
+									],
+									"example": false,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Batch delete origin cloud region mappings internal error."
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Batch delete origin cloud region mappings",
+		"tags": [
+			"Origin Cloud Regions"
+		],
+		"x-cfPlanAvailability": {
+			"business": true,
+			"enterprise": true,
+			"free": true,
+			"pro": true
+		}
+	},
+	"GET /zones/{zone_id}/cache/origin_cloud_regions": {
+		"description": "Returns all IP-to-cloud-region mappings configured for the zone. Each mapping tells Cloudflare which cloud vendor and region hosts the origin at that IP, enabling the edge to route via the nearest Tiered Cache upper-tier co-located with that cloud provider. Returns an empty array when no mappings exist.",
+		"operationId": "origin-cloud-regions-list",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "zone_id",
+				"required": true,
+				"schema": {
+					"description": "Identifier.",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"readOnly": true,
+					"type": "string",
+					"x-auditable": true
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"examples": {
+							"empty": {
+								"value": {
+									"errors": [],
+									"messages": [],
+									"result": {
+										"editable": true,
+										"id": "origin_public_cloud_region",
+										"modified_on": null,
+										"value": []
+									},
+									"success": true
+								}
+							},
+							"two_mappings": {
+								"value": {
+									"errors": [],
+									"messages": [],
+									"result": {
+										"editable": true,
+										"id": "origin_public_cloud_region",
+										"modified_on": "2026-03-01T12:00:00Z",
+										"value": [
+											{
+												"modified_on": "2026-03-01T12:00:00Z",
+												"origin-ip": "192.0.2.1",
+												"region": "us-east-1",
+												"vendor": "aws"
+											},
+											{
+												"modified_on": "2026-03-01T12:00:00Z",
+												"origin-ip": "2001:db8::1",
+												"region": "us-central1",
+												"vendor": "gcp"
+											}
+										]
+									},
+									"success": true
+								}
+							}
+						},
+						"schema": {
+							"allOf": [
+								{
+									"properties": {
+										"errors": {
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										},
+										"messages": {
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										},
+										"success": {
+											"description": "Whether the API call was successful.",
+											"enum": [
+												true
+											],
+											"example": true,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages"
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"result": {
+											"description": "Response result for a list of origin cloud region mappings.",
+											"properties": {
+												"editable": {
+													"description": "Whether the setting can be modified by the current user.",
+													"type": "boolean"
+												},
+												"id": {
+													"enum": [
+														"origin_public_cloud_region"
+													],
+													"example": "origin_public_cloud_region",
+													"type": "string",
+													"x-auditable": true
+												},
+												"modified_on": {
+													"description": "Time the mapping set was last modified. Null when no mappings exist.",
+													"format": "date-time",
+													"nullable": true,
+													"type": "string",
+													"x-auditable": true
+												},
+												"value": {
+													"items": {
+														"description": "A single origin IP-to-cloud-region mapping.",
+														"properties": {
+															"modified_on": {
+																"description": "Time this mapping was last modified.",
+																"format": "date-time",
+																"type": "string",
+																"x-auditable": true
+															},
+															"origin-ip": {
+																"description": "The origin IP address (IPv4 or IPv6, canonicalized).",
+																"example": "192.0.2.1",
+																"type": "string",
+																"x-auditable": true
+															},
+															"region": {
+																"description": "Cloud vendor region identifier.",
+																"example": "us-east-1",
+																"type": "string",
+																"x-auditable": true
+															},
+															"vendor": {
+																"description": "Cloud vendor hosting the origin.",
+																"enum": [
+																	"aws",
+																	"azure",
+																	"gcp",
+																	"oci"
+																],
+																"example": "aws",
+																"type": "string",
+																"x-auditable": true
+															}
+														},
+														"required": [
+															"origin-ip",
+															"vendor",
+															"region"
+														],
+														"type": "object"
+													},
+													"type": "array"
+												}
+											},
+											"required": [
+												"id",
+												"editable",
+												"value"
+											],
+											"type": "object"
+										}
+									},
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "List origin cloud region mappings response."
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"allOf": [
+										{
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										}
+									],
+									"example": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
+										}
+									],
+									"items": {
+										"type": "object"
+									},
+									"minLength": 1,
+									"type": "array"
+								},
+								"messages": {
+									"allOf": [
+										{
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										}
+									],
+									"example": [],
+									"items": {
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"result": {
+									"enum": [
+										null
+									],
+									"nullable": true,
+									"type": "object"
+								},
+								"success": {
+									"description": "Whether the API call was successful.",
+									"enum": [
+										false
+									],
+									"example": false,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "List origin cloud region mappings failure."
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "List origin cloud region mappings",
+		"tags": [
+			"Origin Cloud Regions"
+		],
+		"x-cfPlanAvailability": {
+			"business": true,
+			"enterprise": true,
+			"free": true,
+			"pro": true
+		}
+	},
+	"GET /zones/{zone_id}/cache/origin_cloud_regions/{origin_ip}": {
+		"description": "Returns the cloud region mapping for a single origin IP address. The IP path parameter is normalized before lookup (RFC 5952 for IPv6). Returns 404 (code 1142) if the zone has no mappings or if the specified IP has no mapping.",
+		"operationId": "origin-cloud-regions-get",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "zone_id",
+				"required": true,
+				"schema": {
+					"description": "Identifier.",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"readOnly": true,
+					"type": "string",
+					"x-auditable": true
+				}
+			},
+			{
+				"description": "Origin IP address to look up. IPv4 and IPv6 are supported.",
+				"in": "path",
+				"name": "origin_ip",
+				"required": true,
+				"schema": {
+					"example": "192.0.2.1",
+					"type": "string"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"examples": {
+							"found": {
+								"value": {
+									"errors": [],
+									"messages": [],
+									"result": {
+										"editable": true,
+										"id": "origin_public_cloud_region",
+										"modified_on": "2026-03-01T12:00:00Z",
+										"value": {
+											"modified_on": "2026-03-01T12:00:00Z",
+											"origin-ip": "192.0.2.1",
+											"region": "us-east-1",
+											"vendor": "aws"
+										}
+									},
+									"success": true
+								}
+							}
+						},
+						"schema": {
+							"allOf": [
+								{
+									"properties": {
+										"errors": {
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										},
+										"messages": {
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										},
+										"success": {
+											"description": "Whether the API call was successful.",
+											"enum": [
+												true
+											],
+											"example": true,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages"
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"result": {
+											"description": "Response result for a single origin cloud region mapping.",
+											"properties": {
+												"editable": {
+													"description": "Whether the setting can be modified by the current user.",
+													"type": "boolean"
+												},
+												"id": {
+													"enum": [
+														"origin_public_cloud_region"
+													],
+													"example": "origin_public_cloud_region",
+													"type": "string",
+													"x-auditable": true
+												},
+												"modified_on": {
+													"description": "Time the mapping was last modified.",
+													"format": "date-time",
+													"type": "string",
+													"x-auditable": true
+												},
+												"value": {
+													"description": "A single origin IP-to-cloud-region mapping.",
+													"properties": {
+														"modified_on": {
+															"description": "Time this mapping was last modified.",
+															"format": "date-time",
+															"type": "string",
+															"x-auditable": true
+														},
+														"origin-ip": {
+															"description": "The origin IP address (IPv4 or IPv6, canonicalized).",
+															"example": "192.0.2.1",
+															"type": "string",
+															"x-auditable": true
+														},
+														"region": {
+															"description": "Cloud vendor region identifier.",
+															"example": "us-east-1",
+															"type": "string",
+															"x-auditable": true
+														},
+														"vendor": {
+															"description": "Cloud vendor hosting the origin.",
+															"enum": [
+																"aws",
+																"azure",
+																"gcp",
+																"oci"
+															],
+															"example": "aws",
+															"type": "string",
+															"x-auditable": true
+														}
+													},
+													"required": [
+														"origin-ip",
+														"vendor",
+														"region"
+													],
+													"type": "object"
+												}
+											},
+											"required": [
+												"id",
+												"editable",
+												"value"
+											],
+											"type": "object"
+										}
+									},
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "Get origin cloud region mapping response."
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"examples": {
+							"not_found": {
+								"value": {
+									"errors": [
+										{
+											"code": 1142,
+											"message": "Unable to retrieve origin_public_cloud_region setting value. The zone setting does not exist."
+										}
+									],
+									"messages": [],
+									"result": null,
+									"success": false
+								}
+							}
+						},
+						"schema": {
+							"properties": {
+								"errors": {
+									"allOf": [
+										{
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										}
+									],
+									"example": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
+										}
+									],
+									"items": {
+										"type": "object"
+									},
+									"minLength": 1,
+									"type": "array"
+								},
+								"messages": {
+									"allOf": [
+										{
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										}
+									],
+									"example": [],
+									"items": {
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"result": {
+									"enum": [
+										null
+									],
+									"nullable": true,
+									"type": "object"
+								},
+								"success": {
+									"description": "Whether the API call was successful.",
+									"enum": [
+										false
+									],
+									"example": false,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Get origin cloud region mapping failure."
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Get an origin cloud region mapping",
+		"tags": [
+			"Origin Cloud Regions"
+		],
+		"x-cfPlanAvailability": {
+			"business": true,
+			"enterprise": true,
+			"free": true,
+			"pro": true
+		}
+	},
+	"GET /zones/{zone_id}/cache/origin_cloud_regions/supported_regions": {
+		"description": "Returns the cloud vendors and regions that are valid values for origin cloud region mappings. Each region includes the Tiered Cache upper-tier colocation codes that will be used for cache routing when a mapping targeting that region is active. Requires the zone to have Tiered Cache enabled.",
+		"operationId": "origin-cloud-regions-supported-regions",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "zone_id",
+				"required": true,
+				"schema": {
+					"description": "Identifier.",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"readOnly": true,
+					"type": "string",
+					"x-auditable": true
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"examples": {
+							"vendors": {
+								"value": {
+									"errors": [],
+									"messages": [],
+									"result": {
+										"obtained_codes": true,
+										"vendors": {
+											"aws": [
+												{
+													"name": "us-east-1",
+													"upper_tier_colos": [
+														"IAD",
+														"EWR"
+													]
+												},
+												{
+													"name": "us-west-2",
+													"upper_tier_colos": [
+														"SEA"
+													]
+												}
+											],
+											"gcp": [
+												{
+													"name": "us-central1",
+													"upper_tier_colos": [
+														"ORD"
+													]
+												}
+											]
+										}
+									},
+									"success": true
+								}
+							}
+						},
+						"schema": {
+							"allOf": [
+								{
+									"properties": {
+										"errors": {
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										},
+										"messages": {
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										},
+										"success": {
+											"description": "Whether the API call was successful.",
+											"enum": [
+												true
+											],
+											"example": true,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages"
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"result": {
+											"description": "Cloud vendors and their supported regions for origin cloud region mappings.",
+											"properties": {
+												"obtained_codes": {
+													"description": "Whether Cloudflare airport codes (IATA colo identifiers) were successfully resolved for the `upper_tier_colos` field on each region. When `false`, the `upper_tier_colos` arrays may be empty or incomplete.",
+													"type": "boolean"
+												},
+												"vendors": {
+													"additionalProperties": {
+														"items": {
+															"description": "A single supported cloud region with associated Tiered Cache upper-tier colocations.",
+															"properties": {
+																"name": {
+																	"description": "Cloud vendor region identifier.",
+																	"example": "us-east-1",
+																	"type": "string"
+																},
+																"upper_tier_colos": {
+																	"description": "Cloudflare Tiered Cache upper-tier colocation codes co-located with this cloud region. Requests from zones with a matching origin mapping will be routed through these colos.",
+																	"example": [
+																		"IAD",
+																		"EWR"
+																	],
+																	"items": {
+																		"type": "string"
+																	},
+																	"type": "array"
+																}
+															},
+															"required": [
+																"name",
+																"upper_tier_colos"
+															],
+															"type": "object"
+														},
+														"type": "array"
+													},
+													"description": "Map of vendor name to list of supported regions.",
+													"type": "object"
+												}
+											},
+											"required": [
+												"vendors",
+												"obtained_codes"
+											],
+											"type": "object"
+										}
+									},
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "List supported cloud vendors and regions response."
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"allOf": [
+										{
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										}
+									],
+									"example": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
+										}
+									],
+									"items": {
+										"type": "object"
+									},
+									"minLength": 1,
+									"type": "array"
+								},
+								"messages": {
+									"allOf": [
+										{
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										}
+									],
+									"example": [],
+									"items": {
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"result": {
+									"enum": [
+										null
+									],
+									"nullable": true,
+									"type": "object"
+								},
+								"success": {
+									"description": "Whether the API call was successful.",
+									"enum": [
+										false
+									],
+									"example": false,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "List supported cloud vendors and regions failure."
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "List supported cloud vendors and regions",
+		"tags": [
+			"Origin Cloud Regions"
+		],
+		"x-cfPlanAvailability": {
+			"business": true,
+			"enterprise": true,
+			"free": true,
+			"pro": true
+		}
+	},
+	"PATCH /zones/{zone_id}/cache/origin_cloud_regions": {
+		"description": "Adds or updates a single IP-to-cloud-region mapping for the zone. Unlike POST, this operation is idempotent — if a mapping for the IP already exists it is overwritten. Returns the complete updated list of all mappings for the zone. Returns 403 (code 1164) when the zone has reached the limit of 3,500 IP mappings.",
+		"operationId": "origin-cloud-regions-upsert",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "zone_id",
+				"required": true,
+				"schema": {
+					"description": "Identifier.",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"readOnly": true,
+					"type": "string",
+					"x-auditable": true
+				}
+			}
+		],
+		"requestBody": {
+			"content": {
+				"application/json": {
+					"examples": {
+						"gcp": {
+							"value": {
+								"ip": "2001:db8::1",
+								"region": "us-central1",
+								"vendor": "gcp"
+							}
+						}
+					},
+					"schema": {
+						"description": "Request body for creating or updating an origin cloud region mapping.",
+						"properties": {
+							"ip": {
+								"description": "Origin IP address (IPv4 or IPv6). Normalized to canonical form before storage (RFC 5952 for IPv6).",
+								"example": "192.0.2.1",
+								"type": "string",
+								"x-auditable": true
+							},
+							"region": {
+								"description": "Cloud vendor region identifier. Must be a valid region for the specified vendor as returned by the supported_regions endpoint.",
+								"example": "us-east-1",
+								"type": "string",
+								"x-auditable": true
+							},
+							"vendor": {
+								"description": "Cloud vendor hosting the origin. Must be one of the supported vendors.",
+								"enum": [
+									"aws",
+									"azure",
+									"gcp",
+									"oci"
+								],
+								"example": "aws",
+								"type": "string",
+								"x-auditable": true
+							}
+						},
+						"required": [
+							"ip",
+							"vendor",
+							"region"
+						],
+						"type": "object"
+					}
+				}
+			},
+			"required": true
+		},
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"examples": {
+							"patched": {
+								"value": {
+									"errors": [],
+									"messages": [],
+									"result": {
+										"editable": true,
+										"id": "origin_public_cloud_region",
+										"modified_on": "2026-03-01T12:00:00Z",
+										"value": [
+											{
+												"modified_on": "2026-03-01T12:00:00Z",
+												"origin-ip": "192.0.2.1",
+												"region": "us-east-1",
+												"vendor": "aws"
+											},
+											{
+												"modified_on": "2026-03-01T12:00:00Z",
+												"origin-ip": "2001:db8::1",
+												"region": "us-central1",
+												"vendor": "gcp"
+											}
+										]
+									},
+									"success": true
+								}
+							}
+						},
+						"schema": {
+							"allOf": [
+								{
+									"properties": {
+										"errors": {
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										},
+										"messages": {
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										},
+										"success": {
+											"description": "Whether the API call was successful.",
+											"enum": [
+												true
+											],
+											"example": true,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages"
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"result": {
+											"description": "Response result for a list of origin cloud region mappings.",
+											"properties": {
+												"editable": {
+													"description": "Whether the setting can be modified by the current user.",
+													"type": "boolean"
+												},
+												"id": {
+													"enum": [
+														"origin_public_cloud_region"
+													],
+													"example": "origin_public_cloud_region",
+													"type": "string",
+													"x-auditable": true
+												},
+												"modified_on": {
+													"description": "Time the mapping set was last modified. Null when no mappings exist.",
+													"format": "date-time",
+													"nullable": true,
+													"type": "string",
+													"x-auditable": true
+												},
+												"value": {
+													"items": {
+														"description": "A single origin IP-to-cloud-region mapping.",
+														"properties": {
+															"modified_on": {
+																"description": "Time this mapping was last modified.",
+																"format": "date-time",
+																"type": "string",
+																"x-auditable": true
+															},
+															"origin-ip": {
+																"description": "The origin IP address (IPv4 or IPv6, canonicalized).",
+																"example": "192.0.2.1",
+																"type": "string",
+																"x-auditable": true
+															},
+															"region": {
+																"description": "Cloud vendor region identifier.",
+																"example": "us-east-1",
+																"type": "string",
+																"x-auditable": true
+															},
+															"vendor": {
+																"description": "Cloud vendor hosting the origin.",
+																"enum": [
+																	"aws",
+																	"azure",
+																	"gcp",
+																	"oci"
+																],
+																"example": "aws",
+																"type": "string",
+																"x-auditable": true
+															}
+														},
+														"required": [
+															"origin-ip",
+															"vendor",
+															"region"
+														],
+														"type": "object"
+													},
+													"type": "array"
+												}
+											},
+											"required": [
+												"id",
+												"editable",
+												"value"
+											],
+											"type": "object"
+										}
+									},
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "Create or update origin cloud region mapping response."
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"examples": {
+							"invalid_vendor_region": {
+								"value": {
+									"errors": [
+										{
+											"code": 1157,
+											"message": "The vendor provided doesn't exist or the region provided does not exist for the specified cloud vendor"
+										}
+									],
+									"messages": [],
+									"result": null,
+									"success": false
+								}
+							},
+							"too_many_mappings": {
+								"value": {
+									"errors": [
+										{
+											"code": 1164,
+											"message": "Maximum number of IP mappings configured for zone."
+										}
+									],
+									"messages": [],
+									"result": null,
+									"success": false
+								}
+							}
+						},
+						"schema": {
+							"properties": {
+								"errors": {
+									"allOf": [
+										{
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										}
+									],
+									"example": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
+										}
+									],
+									"items": {
+										"type": "object"
+									},
+									"minLength": 1,
+									"type": "array"
+								},
+								"messages": {
+									"allOf": [
+										{
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										}
+									],
+									"example": [],
+									"items": {
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"result": {
+									"enum": [
+										null
+									],
+									"nullable": true,
+									"type": "object"
+								},
+								"success": {
+									"description": "Whether the API call was successful.",
+									"enum": [
+										false
+									],
+									"example": false,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Create or update origin cloud region mapping failure."
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Create or update an origin cloud region mapping",
+		"tags": [
+			"Origin Cloud Regions"
+		],
+		"x-cfPlanAvailability": {
+			"business": true,
+			"enterprise": true,
+			"free": true,
+			"pro": true
+		}
+	},
+	"PATCH /zones/{zone_id}/cache/origin_cloud_regions/batch": {
+		"description": "Adds or updates up to 100 IP-to-cloud-region mappings in a single request. Each item is validated independently — valid items are applied and invalid items are returned in the `failed` array. The vendor and region for every item are validated against the list from `GET /zones/{zone_id}/cache/origin_cloud_regions/supported_regions`.",
+		"operationId": "origin-cloud-regions-batch-upsert",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "zone_id",
+				"required": true,
+				"schema": {
+					"description": "Identifier.",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"readOnly": true,
+					"type": "string",
+					"x-auditable": true
+				}
+			}
+		],
+		"requestBody": {
+			"content": {
+				"application/json": {
+					"examples": {
+						"batch_patch": {
+							"value": [
+								{
+									"ip": "192.0.2.1",
+									"region": "us-east-1",
+									"vendor": "aws"
+								},
+								{
+									"ip": "2001:db8::1",
+									"region": "us-central1",
+									"vendor": "gcp"
+								}
+							]
+						}
+					},
+					"schema": {
+						"items": {
+							"description": "Request body for creating or updating an origin cloud region mapping.",
+							"properties": {
+								"ip": {
+									"description": "Origin IP address (IPv4 or IPv6). Normalized to canonical form before storage (RFC 5952 for IPv6).",
+									"example": "192.0.2.1",
+									"type": "string",
+									"x-auditable": true
+								},
+								"region": {
+									"description": "Cloud vendor region identifier. Must be a valid region for the specified vendor as returned by the supported_regions endpoint.",
+									"example": "us-east-1",
+									"type": "string",
+									"x-auditable": true
+								},
+								"vendor": {
+									"description": "Cloud vendor hosting the origin. Must be one of the supported vendors.",
+									"enum": [
+										"aws",
+										"azure",
+										"gcp",
+										"oci"
+									],
+									"example": "aws",
+									"type": "string",
+									"x-auditable": true
+								}
+							},
+							"required": [
+								"ip",
+								"vendor",
+								"region"
+							],
+							"type": "object"
+						},
+						"maxItems": 100,
+						"type": "array"
+					}
+				}
+			},
+			"required": true
+		},
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"examples": {
+							"batch_patched": {
+								"value": {
+									"errors": [],
+									"messages": [],
+									"result": {
+										"editable": true,
+										"id": "origin_public_cloud_region",
+										"modified_on": "2026-03-01T12:00:00Z",
+										"value": {
+											"failed": [],
+											"succeeded": [
+												{
+													"origin-ip": "192.0.2.1",
+													"region": "us-east-1",
+													"vendor": "aws"
+												},
+												{
+													"origin-ip": "2001:db8::1",
+													"region": "us-central1",
+													"vendor": "gcp"
+												}
+											]
+										}
+									},
+									"success": true
+								}
+							}
+						},
+						"schema": {
+							"allOf": [
+								{
+									"properties": {
+										"errors": {
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										},
+										"messages": {
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										},
+										"success": {
+											"description": "Whether the API call was successful.",
+											"enum": [
+												true
+											],
+											"example": true,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages"
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"result": {
+											"description": "Response result for a batch origin cloud region operation.",
+											"properties": {
+												"editable": {
+													"description": "Whether the setting can be modified by the current user.",
+													"type": "boolean"
+												},
+												"id": {
+													"enum": [
+														"origin_public_cloud_region"
+													],
+													"example": "origin_public_cloud_region",
+													"type": "string",
+													"x-auditable": true
+												},
+												"modified_on": {
+													"description": "Time the mapping set was last modified. Null when no items were successfully applied.",
+													"format": "date-time",
+													"nullable": true,
+													"type": "string",
+													"x-auditable": true
+												},
+												"value": {
+													"properties": {
+														"failed": {
+															"description": "Items that could not be applied, with error details.",
+															"items": {
+																"description": "Result for a single item in a batch operation.",
+																"properties": {
+																	"error": {
+																		"description": "Error message explaining why the item failed. Present only on failed items.",
+																		"type": "string"
+																	},
+																	"origin-ip": {
+																		"description": "The origin IP address for this item.",
+																		"example": "192.0.2.1",
+																		"type": "string"
+																	},
+																	"region": {
+																		"description": "Cloud vendor region identifier. Present on succeeded items for patch operations.",
+																		"example": "us-east-1",
+																		"type": "string"
+																	},
+																	"vendor": {
+																		"description": "Cloud vendor identifier. Present on succeeded items for patch operations.",
+																		"example": "aws",
+																		"type": "string"
+																	}
+																},
+																"required": [
+																	"origin-ip"
+																],
+																"type": "object"
+															},
+															"type": "array"
+														},
+														"succeeded": {
+															"description": "Items that were successfully applied.",
+															"items": {
+																"description": "Result for a single item in a batch operation.",
+																"properties": {
+																	"error": {
+																		"description": "Error message explaining why the item failed. Present only on failed items.",
+																		"type": "string"
+																	},
+																	"origin-ip": {
+																		"description": "The origin IP address for this item.",
+																		"example": "192.0.2.1",
+																		"type": "string"
+																	},
+																	"region": {
+																		"description": "Cloud vendor region identifier. Present on succeeded items for patch operations.",
+																		"example": "us-east-1",
+																		"type": "string"
+																	},
+																	"vendor": {
+																		"description": "Cloud vendor identifier. Present on succeeded items for patch operations.",
+																		"example": "aws",
+																		"type": "string"
+																	}
+																},
+																"required": [
+																	"origin-ip"
+																],
+																"type": "object"
+															},
+															"type": "array"
+														}
+													},
+													"required": [
+														"succeeded",
+														"failed"
+													],
+													"type": "object"
+												}
+											},
+											"required": [
+												"id",
+												"editable",
+												"value"
+											],
+											"type": "object"
+										}
+									},
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "Batch create or update origin cloud region mappings successful."
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"examples": {
+							"too_many_mappings": {
+								"value": {
+									"errors": [
+										{
+											"code": 1164,
+											"message": "Maximum number of IP mappings configured for zone."
+										}
+									],
+									"messages": [],
+									"result": null,
+									"success": false
+								}
+							}
+						},
+						"schema": {
+							"properties": {
+								"errors": {
+									"allOf": [
+										{
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										}
+									],
+									"example": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
+										}
+									],
+									"items": {
+										"type": "object"
+									},
+									"minLength": 1,
+									"type": "array"
+								},
+								"messages": {
+									"allOf": [
+										{
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										}
+									],
+									"example": [],
+									"items": {
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"result": {
+									"enum": [
+										null
+									],
+									"nullable": true,
+									"type": "object"
+								},
+								"success": {
+									"description": "Whether the API call was successful.",
+									"enum": [
+										false
+									],
+									"example": false,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Batch create or update origin cloud region mappings failure."
+			},
+			"5XX": {
+				"content": {
+					"application/json": {
+						"examples": {
+							"internal_error": {
+								"value": {
+									"errors": [
+										{
+											"code": 1140,
+											"message": "Unable to update origin_public_cloud_region setting value. Internal error."
+										}
+									],
+									"messages": [],
+									"result": null,
+									"success": false
+								}
+							},
+							"region_validation_error": {
+								"value": {
+									"errors": [
+										{
+											"code": 1156,
+											"message": "Failed to validate region against cloud vendor"
+										}
+									],
+									"messages": [],
+									"result": null,
+									"success": false
+								}
+							}
+						},
+						"schema": {
+							"properties": {
+								"errors": {
+									"allOf": [
+										{
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										}
+									],
+									"example": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
+										}
+									],
+									"items": {
+										"type": "object"
+									},
+									"minLength": 1,
+									"type": "array"
+								},
+								"messages": {
+									"allOf": [
+										{
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										}
+									],
+									"example": [],
+									"items": {
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"result": {
+									"enum": [
+										null
+									],
+									"nullable": true,
+									"type": "object"
+								},
+								"success": {
+									"description": "Whether the API call was successful.",
+									"enum": [
+										false
+									],
+									"example": false,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Batch create or update origin cloud region mappings internal error."
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Batch create or update origin cloud region mappings",
+		"tags": [
+			"Origin Cloud Regions"
+		],
+		"x-cfPlanAvailability": {
+			"business": true,
+			"enterprise": true,
+			"free": true,
+			"pro": true
+		}
+	},
+	"POST /zones/{zone_id}/cache/origin_cloud_regions": {
+		"description": "Adds a single IP-to-cloud-region mapping for the zone. The IP must be a valid IPv4 or IPv6 address and is normalized to canonical form before storage (RFC 5952 for IPv6). Returns 400 (code 1145) if a mapping for that IP already exists — use PATCH to update an existing entry. The vendor and region are validated against the list from `GET /zones/{zone_id}/cache/origin_cloud_regions/supported_regions`.",
+		"operationId": "origin-cloud-regions-create",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "zone_id",
+				"required": true,
+				"schema": {
+					"description": "Identifier.",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"readOnly": true,
+					"type": "string",
+					"x-auditable": true
+				}
+			}
+		],
+		"requestBody": {
+			"content": {
+				"application/json": {
+					"examples": {
+						"aws": {
+							"value": {
+								"ip": "192.0.2.1",
+								"region": "us-east-1",
+								"vendor": "aws"
+							}
+						}
+					},
+					"schema": {
+						"description": "Request body for creating or updating an origin cloud region mapping.",
+						"properties": {
+							"ip": {
+								"description": "Origin IP address (IPv4 or IPv6). Normalized to canonical form before storage (RFC 5952 for IPv6).",
+								"example": "192.0.2.1",
+								"type": "string",
+								"x-auditable": true
+							},
+							"region": {
+								"description": "Cloud vendor region identifier. Must be a valid region for the specified vendor as returned by the supported_regions endpoint.",
+								"example": "us-east-1",
+								"type": "string",
+								"x-auditable": true
+							},
+							"vendor": {
+								"description": "Cloud vendor hosting the origin. Must be one of the supported vendors.",
+								"enum": [
+									"aws",
+									"azure",
+									"gcp",
+									"oci"
+								],
+								"example": "aws",
+								"type": "string",
+								"x-auditable": true
+							}
+						},
+						"required": [
+							"ip",
+							"vendor",
+							"region"
+						],
+						"type": "object"
+					}
+				}
+			},
+			"required": true
+		},
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"examples": {
+							"created": {
+								"value": {
+									"errors": [],
+									"messages": [],
+									"result": {
+										"editable": true,
+										"id": "origin_public_cloud_region",
+										"modified_on": "2026-03-01T12:00:00Z",
+										"value": {
+											"modified_on": "2026-03-01T12:00:00Z",
+											"origin-ip": "192.0.2.1",
+											"region": "us-east-1",
+											"vendor": "aws"
+										}
+									},
+									"success": true
+								}
+							}
+						},
+						"schema": {
+							"allOf": [
+								{
+									"properties": {
+										"errors": {
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										},
+										"messages": {
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										},
+										"success": {
+											"description": "Whether the API call was successful.",
+											"enum": [
+												true
+											],
+											"example": true,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages"
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"result": {
+											"description": "Response result for a single origin cloud region mapping.",
+											"properties": {
+												"editable": {
+													"description": "Whether the setting can be modified by the current user.",
+													"type": "boolean"
+												},
+												"id": {
+													"enum": [
+														"origin_public_cloud_region"
+													],
+													"example": "origin_public_cloud_region",
+													"type": "string",
+													"x-auditable": true
+												},
+												"modified_on": {
+													"description": "Time the mapping was last modified.",
+													"format": "date-time",
+													"type": "string",
+													"x-auditable": true
+												},
+												"value": {
+													"description": "A single origin IP-to-cloud-region mapping.",
+													"properties": {
+														"modified_on": {
+															"description": "Time this mapping was last modified.",
+															"format": "date-time",
+															"type": "string",
+															"x-auditable": true
+														},
+														"origin-ip": {
+															"description": "The origin IP address (IPv4 or IPv6, canonicalized).",
+															"example": "192.0.2.1",
+															"type": "string",
+															"x-auditable": true
+														},
+														"region": {
+															"description": "Cloud vendor region identifier.",
+															"example": "us-east-1",
+															"type": "string",
+															"x-auditable": true
+														},
+														"vendor": {
+															"description": "Cloud vendor hosting the origin.",
+															"enum": [
+																"aws",
+																"azure",
+																"gcp",
+																"oci"
+															],
+															"example": "aws",
+															"type": "string",
+															"x-auditable": true
+														}
+													},
+													"required": [
+														"origin-ip",
+														"vendor",
+														"region"
+													],
+													"type": "object"
+												}
+											},
+											"required": [
+												"id",
+												"editable",
+												"value"
+											],
+											"type": "object"
+										}
+									},
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "Create origin cloud region mapping response."
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"examples": {
+							"already_exists": {
+								"value": {
+									"errors": [
+										{
+											"code": 1145,
+											"message": "Unable to create new origin_public_cloud_region setting. The zone setting already exists."
+										}
+									],
+									"messages": [],
+									"result": null,
+									"success": false
+								}
+							},
+							"invalid_ip": {
+								"value": {
+									"errors": [
+										{
+											"code": 1146,
+											"message": "Invalid or missing origin IP address."
+										}
+									],
+									"messages": [],
+									"result": null,
+									"success": false
+								}
+							},
+							"invalid_vendor_region": {
+								"value": {
+									"errors": [
+										{
+											"code": 1157,
+											"message": "The vendor provided doesn't exist or the region provided does not exist for the specified cloud vendor"
+										}
+									],
+									"messages": [],
+									"result": null,
+									"success": false
+								}
+							}
+						},
+						"schema": {
+							"properties": {
+								"errors": {
+									"allOf": [
+										{
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										}
+									],
+									"example": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
+										}
+									],
+									"items": {
+										"type": "object"
+									},
+									"minLength": 1,
+									"type": "array"
+								},
+								"messages": {
+									"allOf": [
+										{
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										}
+									],
+									"example": [],
+									"items": {
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"result": {
+									"enum": [
+										null
+									],
+									"nullable": true,
+									"type": "object"
+								},
+								"success": {
+									"description": "Whether the API call was successful.",
+									"enum": [
+										false
+									],
+									"example": false,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Create origin cloud region mapping failure."
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Create an origin cloud region mapping",
+		"tags": [
+			"Origin Cloud Regions"
+		],
+		"x-cfPlanAvailability": {
+			"business": true,
+			"enterprise": true,
+			"free": true,
+			"pro": true
+		}
+	}
+}
