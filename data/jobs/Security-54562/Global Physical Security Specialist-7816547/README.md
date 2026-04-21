@@ -5,36 +5,76 @@
 		<p>At Cloudflare, we’re not looking for people who wait for a polished roadmap; we’re looking for the builders who see the cracks in the Internet that everyone else has simply learned to live with. We value candidates who have the instinct to spot a "normalized" problem and the AI-native curiosity to create a solution using the latest tools. Our culture is built on iteration, leveraging AI to ship faster today to make it better tomorrow, while ensuring that every improvement, no matter how small, is shared across the team to lift everyone up. If you’re the type of person who values curiosity over bureaucracy, and that AI is a partner in solving tough problems to keep the Internet moving forward, you’ll fit right in.</p>
 	</div>
 </div>
-<p><strong>Available location: San Francisco</strong></p>
-<h4><strong>About Cloudflare's</strong><strong> Business Operations Team</strong></h4>
-<p>The Business Operations team sits under the CFO organization and is responsible for core company KPI reporting, incubating new analytics capabilities, leading and/or facilitating cross-functional projects to devise and operationalize high impact programs. We are looking for a strong data analyst intern to join Cloudflare to help develop analytics solutions and scale internal data processes. Success in this role comes from combining a strong technical foundation with sharp business acumen and a builder’s mindset — someone who’s energized by turning scrappy, manual workflows into streamlined, durable solutions to deliver strategic and compelling insights.&nbsp;</p>
-<h4><strong>About the Internship Program</strong></h4>
-<p>As a Business Operations intern on the Finance BizOps Team, you will:</p>
+<p><strong>Available Locations: New York</strong></p>
+<p><strong>Your Career</strong></p>
+<p>As our Global Physical Security Specialist, reporting to our Sr. Director of Physical Security you will take ownership of our physical security technologies across our office and data center footprint.&nbsp;</p>
+<p>We are looking for someone excited about solving physical world challenges with next-generation technology on a global scale. You will be leading the overall strategy &amp; implementation as well as partnering with other teams to unify physical and digital access into one cohesive security solution for Cloudflare’s global network powering our products.</p>
+<p><strong>What You’ll Do</strong></p>
+<p>Continue to work as a member of a unique global physical security team and program in the following areas:&nbsp;</p>
+<p><strong>Physical security systems:</strong></p>
 <ul>
-	<li>Build workflows to streamline existing processes and address existing pain points. You will lead the project scoping, solution design and code execution to achieve the defined objectives.</li>
-	<li>Design, build, and support data or insight solutions that help incubate new data capabilities or programs. Example projects: commission forecast modelling, product margin analysis&nbsp;</li>
-	<li>Create applications and internal tools that can be used by the broader FP&amp;A and BizOps team to elevate everyone’s&nbsp; game&nbsp;</li>
-	<li>Prototype leveraging latest AI technologies incl. Cloudflare Platform, emerging best practices to illustrate what can be possible in how we work&nbsp;</li>
-	<li>Work in sprints to achieve critical milestones and update your progress through daily asynchronous updates.&nbsp;&nbsp;&nbsp;</li>
+	<li>Ability to work within a global physical security program focused on developing and deploying innovative physical security technology &amp; operations across our global network of data centers. This will require traveling to a variety of locations, building relationships with our partners and working in an agile environment.&nbsp;</li>
+	<li>Ability to assist and manage investigations working with Cloudflare’s People’s Team.&nbsp;</li>
+	<li>Work alongside our SIRT Team&nbsp; as required for physical Security related incidents.&nbsp;</li>
+	<li>Deploy and remediate access control and CCTV equipment with vendor support</li>
+	<li>Coordinate and provide facility and personnel safety practices, guidance, assistance, and response as required.</li>
 </ul>
-<h4><strong>Examples of desirable skills, knowledge and experience</strong></h4>
+<p><strong>Audit and certifications:</strong></p>
 <ul>
-	<li>Currently pursuing a Bachelor’s or Master’s or program in Business Analytics, Data Science, Computer Science, or a related field.</li>
-	<li>Passionate about solving business problems or challenges using technology&nbsp;</li>
-	<li>Are curious, proactive, and self-directed, have a natural drive to explore new technologies and a "figure it out" mindset.</li>
-	<li>Can write working code in Python, JavaScript, or a similar language and have shipped something independently or as part of hackathon project, open source contribution, or a previous internship</li>
-	<li>Communication: Ability to distill complex business or technical requirements into clear actionable insights. Can explain what you built and why, to a technical or non-technical audience.</li>
-	<li>Technical Curiosity: Experience using LLM interfaces (such as Gemini) and prompt engineering, paired with a strong interest in the emerging field of AI agents.</li>
-	<li>Nice to have: Have used any part of the Cloudflare developer platform: Workers, R2, Pages, or anything similar</li>
-	<li>Ability to commit to a minimum 12 week summer internship from May to August 2026</li>
-	<li>In office 2-3 days a week</li>
+	<li>Establish, implement, and automate our physical security standards, policies, and processes globally.&nbsp;</li>
+	<li>Support implementation of operational metrics, project tracking, and status/ blockers reporting as needed.</li>
+	<li>Work alongside our infrastructure partners to enhance their standard operating procedures ensuring compliance with physical security standards and controls, including Cloudflare Data Centers and partners.</li>
+	<li>Work with the security compliance and risk management team on developing and implementing physical security controls as it relates to various compliance requirements including but not limited to FedRAMP, ISO 27001 and SOC 2; and support internal and external audits of physical security controls.</li>
 </ul>
-<p>You can check out our <a href="https://blog.cloudflare.com/tag/internship-experience/">internship blogs</a> to learn more about our program and hear directly from our past interns.</p>
+<p><strong>Examples of desirable skills, knowledge and experience</strong></p>
+<ul>
+	<li>Ability to make decisions on acceptable physical security risk and drive risk mitigation.&nbsp;</li>
+	<li>Experience managing a local physical security program and managing event security practices, preferably with experience of physical security controls.</li>
+	<li>Solid understanding of integrating and deploying access control and CCTV systems at scale, including networking and systems engineering.</li>
+	<li>Ability to coordinate with law enforcement and government agencies at every level</li>
+	<li>Understanding of networking security as it relates to physical security technology</li>
+	<li>Understanding of access control as it relates to granting logical access to systems</li>
+	<li>Previous experience working in Verkada Command and deploying Verkada cameras and access sensors</li>
+	<li>Ability to effectively prioritize and manage a large number of projects simultaneously</li>
+	<li>Equally adept at strategy formulation and tactical execution</li>
+	<li>Demonstrated success in earning trust across a broad variety of stakeholders and making principled decisions</li>
+	<li>Ability to influence and motivate people across a broad variety of job functions</li>
+	<li>Experience communicating physical security risk plans to the executive leadership</li>
+	<li>Experience performing site walk thoughts of data centers, corporate offices, and executive residences, including identification and measurement of risks and threats.</li>
+	<li>Experience in or desire to work with multiple time zones and ability to travel to all Cloudflare locations as required; roughly 35% travel required</li>
+</ul>
 <p><strong>Compensation</strong></p>
+<p>Compensation may be adjusted depending on work location.</p>
 <ul>
-	<li>$33/hr</li>
+	<li><span data-sheets-root="1">Estimated annual salary of $102,000-$141,000</span></li>
 </ul>
-<p>&nbsp;</p>
+<p><strong>Equity</strong></p>
+<p>This role is eligible to participate in Cloudflare’s equity plan.</p>
+<p><strong>Benefits</strong></p>
+<p>Cloudflare offers a complete package of benefits and programs to support you and your family.&nbsp; Our benefits programs can help you pay health care expenses, support caregiving, build capital for the future and make life a little easier and fun!&nbsp; The below is a description of our benefits for employees in the United States, and benefits may vary for employees based outside the U.S.</p>
+<p><strong>Health &amp; Welfare Benefits</strong></p>
+<ul>
+	<li>Medical/Rx Insurance</li>
+	<li>Dental Insurance</li>
+	<li>Vision Insurance</li>
+	<li>Flexible Spending Accounts</li>
+	<li>Commuter Spending Accounts</li>
+	<li>Fertility &amp; Family Forming Benefits</li>
+	<li>On-demand mental health support and Employee Assistance Program</li>
+	<li>Global Travel Medical Insurance</li>
+</ul>
+<p><strong>Financial Benefits</strong></p>
+<ul>
+	<li>Short and Long Term Disability Insurance</li>
+	<li>Life &amp; Accident Insurance</li>
+	<li>401(k) Retirement Savings Plan</li>
+	<li>Employee Stock Participation Plan</li>
+</ul>
+<p><strong>Time Off</strong></p>
+<ul>
+	<li>Flexible paid time off covering vacation and sick leave</li>
+	<li>Leave programs, including parental, pregnancy health, medical, and bereavement leave</li>
+</ul>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
 	<p><span style="font-weight: 400;">We’re not just a highly ambitious, large-scale technology company. We’re a highly ambitious, large-scale technology company with a soul. Fundamental to our mission to help build a better Internet is protecting the free and open Internet.</span></p>

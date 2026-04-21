@@ -5,29 +5,38 @@
 		<p>At Cloudflare, we’re not looking for people who wait for a polished roadmap; we’re looking for the builders who see the cracks in the Internet that everyone else has simply learned to live with. We value candidates who have the instinct to spot a "normalized" problem and the AI-native curiosity to create a solution using the latest tools. Our culture is built on iteration, leveraging AI to ship faster today to make it better tomorrow, while ensuring that every improvement, no matter how small, is shared across the team to lift everyone up. If you’re the type of person who values curiosity over bureaucracy, and that AI is a partner in solving tough problems to keep the Internet moving forward, you’ll fit right in.</p>
 	</div>
 </div>
-<p><strong>Available Locations: Austin, TX</strong></p>
-<p><strong>What You Would Do Here</strong></p>
-<p>Cloudflare is growing our People team. Our focus is finding the best people to work at Cloudflare and then allowing you to do your best work. As we continue to build out our Business Partner team, we are looking for a trusted business partner who is naturally curious about what we do and driven to help our people thrive. In this role, you will report to the Director of People Team Business Partners - R&amp;D (Americas) - and support our strategic initiatives, partnering closely with leadership across our R&amp;D Teams. You will be the People Team Business Partner to help support our Product, Engineering and Security Teams.</p>
-<p>You will develop and implement proactive solutions for a broad scope of activities, ensuring alignment on initiatives and priorities, maintaining open and transparent lines of communication and keeping our teams thriving and well supported. You will serve as a strategic partner with strong client partnership based in business acumen. You will focus on organizational design, talent management, and driving initiatives and change leadership.</p>
-<p>We passionately believe in leadership at all levels, and our fast growth has created a special opportunity to really enable our team members to acquire new skills and grow on the job. You will help us get better at this by spending time with our people and developing and implementing programs that are responsive to our leaders' needs, role model our company capabilities and will scale as we continue to grow an enterprise business.</p>
-<p><strong><em>*** Please note a cover letter is required to be considered for this position. ***</em></strong></p>
-<p><strong>Who You Are:</strong></p>
+<p>&nbsp;</p>
+<p><strong>Location:</strong> London, UK</p>
+<h3><strong>About the Team</strong></h3>
+<p>The Marketing team at Cloudflare is at the forefront of sharing our mission to help build a better internet. We are a dynamic and fast-paced team dedicated to showcasing Cloudflare's innovative products and solutions to a global audience. Through strategic campaigns, engaging events, and compelling content, we drive awareness, generate demand, and support our company's rapid growth. As an intern, you'll gain hands-on experience leveraging cutting-edge marketing strategies and technologies to directly impact our success.</p>
+<h3><strong>About the Role</strong></h3>
+<p>As an Account-Based Marketing (ABM) Intern, you will play a crucial role in scaling Cloudflare's targeted marketing initiatives to our highest-value prospects. This is an exciting opportunity to sit at the intersection of marketing, sales, and technology. You will help us modernize our approach by exploring AI adoption and developing new processes and tools to automate elements of our ABM program. From executing highly personalized campaigns to identifying productivity hacks, your work will directly support our ABM efforts and help deliver impactful, tailored experiences to our key accounts.</p>
+<h3><strong>Responsibilities</strong></h3>
 <ul>
-	<li>Motivated by cultivating company culture, building great businesses and helping people do their best work, you have served on a People/ HR team for 12+ years of experience, 5+ of which have been as a senior business partner.</li>
-	<li>You have a successful history of developing strong relationships and operating effectively through virtual support and in a distributed environment.</li>
-	<li>You have an entrepreneurial spirit, are always looking for ways to innovate, improve and operate independently.</li>
-	<li>You think of and present solutions and don’t get bogged down by problems, rather perceive them as opportunities.</li>
-	<li>You have participated in large-scale change initiatives and have a few stories about leading a few. You know what complexity looks like and are able to navigate through it to get things across the finish line.</li>
-	<li>You have a keen business acumen and a track record of partnering closely with business leaders. You can articulate how People teams bring value to an organization and are able to quickly develop the business case for People Team initiatives.</li>
-	<li>You have built at least one scalable program from the ground up and have a demonstrated history of building relationships and credibility across all levels of an organization.</li>
-	<li>You are an influencer that leads with empathy. Others have described you as skilled in implementing workforce plans, leveraging subject matter experts and your network to enable programmatic solutions in talent management, workforce planning - think ideation to action on engagement surveys, organizational design, as two examples.</li>
-	<li>You are a skillful communicator, verbally in small and large groups, as well as written through emails and presentations. Your super strength, especially when the message may be difficult, is face-to-face.</li>
-	<li>You are generous with your time and earn and maintain the trust that people place with you.</li>
-	<li>Uncompromising when it comes to your integrity, you speak truth, act with respect and lead with dignity.</li>
-	<li>You love working with people - you maybe secretly love working with spreadsheets too!</li>
+	<li><strong>Scale ABM Initiatives:</strong> Assist in the planning and execution of targeted 1:1 and 1:few ABM campaigns, helping the team expand the program to a wider list of strategic accounts.</li>
+	<li><strong>Drive AI &amp; Automation:</strong> Research, test, and help implement AI tools and automated workflows to increase team productivity, streamline asset creation, and personalize outreach at scale.</li>
+	<li><strong>Cross-Functional Collaboration:</strong> Partner with the broader marketing, design, and sales teams to coordinate the readiness of tailored marketing assets, such as account-specific landing pages, customized email sequences, and personalized digital ads.</li>
+	<li><strong>Data &amp; Engagement Tracking:</strong> Help manage and track account engagement and leads generated from targeted campaigns, ensuring data accuracy in our CRM and timely follow-ups from the sales team.</li>
+	<li><strong>Performance Analysis:</strong> Contribute to account engagement &amp; development by gathering data, analyzing account progression, and providing insights on how to continually optimize ABM efforts.</li>
+	<li><strong>Process Improvement:</strong> Actively participate in team meetings and bring a fresh perspective, contributing innovative ideas for improving our marketing processes and overall campaign effectiveness.</li>
 </ul>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
+<h3><strong>Skills &amp; Qualifications</strong></h3>
+<ul>
+	<li>Currently pursuing a Bachelor's degree in Marketing, Communications, Business, Technology, or a related field.</li>
+	<li>Available for a full-time 12-week internship, working from our London office 3-5 days a week during the fall (Sept-Dec).</li>
+	<li>Strong organizational skills with a keen eye for detail and the ability to manage multiple targeted campaigns simultaneously.</li>
+	<li>Excellent written and verbal communication skills, with an understanding of account based marketing strategies.</li>
+	<li>A strong interest in marketing technology, AI adoption, and process automation.</li>
+	<li>Proactive attitude with a desire to learn, experiment, and contribute in a fast-paced environment.</li>
+	<li>Ability to collaborate effectively within a team and with cross-functional partners, particularly Sales.</li>
+	<li>Proficiency with standard office productivity tools (e.g., Google Workspace, Microsoft Office).</li>
+</ul>
+<h3><strong>Bonus Points</strong></h3>
+<ul>
+	<li>Previous experience (academic or professional) with B2B marketing, lead generation, or Account-Based Marketing.</li>
+	<li>Familiarity with generative AI tools (e.g., Gemini, ChatGPT, Jasper) and how they can be applied to marketing.</li>
+	<li>Understanding of lead tracking, CRM systems (like Salesforce), or marketing automation platforms (like Marketo).</li>
+</ul>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
 	<p><span style="font-weight: 400;">We’re not just a highly ambitious, large-scale technology company. We’re a highly ambitious, large-scale technology company with a soul. Fundamental to our mission to help build a better Internet is protecting the free and open Internet.</span></p>
