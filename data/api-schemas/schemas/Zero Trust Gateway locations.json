@@ -464,7 +464,8 @@
 														"example": "oli3n9zkz5",
 														"readOnly": true,
 														"type": "string",
-														"x-auditable": true
+														"x-auditable": true,
+														"x-stainless-terraform-configurability": "computed"
 													},
 													"ecs_support": {
 														"default": false,
@@ -612,19 +613,22 @@
 														"example": "2001:0db8:85a3:0000:0000:8a2e:0370:7334",
 														"readOnly": true,
 														"type": "string",
-														"x-auditable": true
+														"x-auditable": true,
+														"x-stainless-terraform-configurability": "computed"
 													},
 													"ipv4_destination": {
 														"description": "Show the primary destination IPv4 address from the pair identified dns_destination_ips_id. This field read-only.",
 														"example": "172.64.36.1",
 														"readOnly": true,
-														"type": "string"
+														"type": "string",
+														"x-stainless-terraform-configurability": "computed"
 													},
 													"ipv4_destination_backup": {
 														"description": "Show the backup destination IPv4 address from the pair identified dns_destination_ips_id. This field read-only.",
 														"example": "172.64.36.2",
 														"readOnly": true,
-														"type": "string"
+														"type": "string",
+														"x-stainless-terraform-configurability": "computed"
 													},
 													"name": {
 														"description": "Specify the location name.",
@@ -814,7 +818,8 @@
 																"example": "oli3n9zkz5",
 																"readOnly": true,
 																"type": "string",
-																"x-auditable": true
+																"x-auditable": true,
+																"x-stainless-terraform-configurability": "computed"
 															},
 															"ecs_support": {
 																"default": false,
@@ -962,19 +967,22 @@
 																"example": "2001:0db8:85a3:0000:0000:8a2e:0370:7334",
 																"readOnly": true,
 																"type": "string",
-																"x-auditable": true
+																"x-auditable": true,
+																"x-stainless-terraform-configurability": "computed"
 															},
 															"ipv4_destination": {
 																"description": "Show the primary destination IPv4 address from the pair identified dns_destination_ips_id. This field read-only.",
 																"example": "172.64.36.1",
 																"readOnly": true,
-																"type": "string"
+																"type": "string",
+																"x-stainless-terraform-configurability": "computed"
 															},
 															"ipv4_destination_backup": {
 																"description": "Show the backup destination IPv4 address from the pair identified dns_destination_ips_id. This field read-only.",
 																"example": "172.64.36.2",
 																"readOnly": true,
-																"type": "string"
+																"type": "string",
+																"x-stainless-terraform-configurability": "computed"
 															},
 															"name": {
 																"description": "Specify the location name.",
@@ -1264,7 +1272,8 @@
 													"example": "oli3n9zkz5",
 													"readOnly": true,
 													"type": "string",
-													"x-auditable": true
+													"x-auditable": true,
+													"x-stainless-terraform-configurability": "computed"
 												},
 												"ecs_support": {
 													"default": false,
@@ -1412,19 +1421,22 @@
 													"example": "2001:0db8:85a3:0000:0000:8a2e:0370:7334",
 													"readOnly": true,
 													"type": "string",
-													"x-auditable": true
+													"x-auditable": true,
+													"x-stainless-terraform-configurability": "computed"
 												},
 												"ipv4_destination": {
 													"description": "Show the primary destination IPv4 address from the pair identified dns_destination_ips_id. This field read-only.",
 													"example": "172.64.36.1",
 													"readOnly": true,
-													"type": "string"
+													"type": "string",
+													"x-stainless-terraform-configurability": "computed"
 												},
 												"ipv4_destination_backup": {
 													"description": "Show the backup destination IPv4 address from the pair identified dns_destination_ips_id. This field read-only.",
 													"example": "172.64.36.2",
 													"readOnly": true,
-													"type": "string"
+													"type": "string",
+													"x-stainless-terraform-configurability": "computed"
 												},
 												"name": {
 													"description": "Specify the location name.",
@@ -1581,7 +1593,8 @@
 															"example": "oli3n9zkz5",
 															"readOnly": true,
 															"type": "string",
-															"x-auditable": true
+															"x-auditable": true,
+															"x-stainless-terraform-configurability": "computed"
 														},
 														"ecs_support": {
 															"default": false,
@@ -1729,19 +1742,22 @@
 															"example": "2001:0db8:85a3:0000:0000:8a2e:0370:7334",
 															"readOnly": true,
 															"type": "string",
-															"x-auditable": true
+															"x-auditable": true,
+															"x-stainless-terraform-configurability": "computed"
 														},
 														"ipv4_destination": {
 															"description": "Show the primary destination IPv4 address from the pair identified dns_destination_ips_id. This field read-only.",
 															"example": "172.64.36.1",
 															"readOnly": true,
-															"type": "string"
+															"type": "string",
+															"x-stainless-terraform-configurability": "computed"
 														},
 														"ipv4_destination_backup": {
 															"description": "Show the backup destination IPv4 address from the pair identified dns_destination_ips_id. This field read-only.",
 															"example": "172.64.36.2",
 															"readOnly": true,
-															"type": "string"
+															"type": "string",
+															"x-stainless-terraform-configurability": "computed"
 														},
 														"name": {
 															"description": "Specify the location name.",
@@ -2210,7 +2226,8 @@
 													"example": "oli3n9zkz5",
 													"readOnly": true,
 													"type": "string",
-													"x-auditable": true
+													"x-auditable": true,
+													"x-stainless-terraform-configurability": "computed"
 												},
 												"ecs_support": {
 													"default": false,
@@ -2358,19 +2375,22 @@
 													"example": "2001:0db8:85a3:0000:0000:8a2e:0370:7334",
 													"readOnly": true,
 													"type": "string",
-													"x-auditable": true
+													"x-auditable": true,
+													"x-stainless-terraform-configurability": "computed"
 												},
 												"ipv4_destination": {
 													"description": "Show the primary destination IPv4 address from the pair identified dns_destination_ips_id. This field read-only.",
 													"example": "172.64.36.1",
 													"readOnly": true,
-													"type": "string"
+													"type": "string",
+													"x-stainless-terraform-configurability": "computed"
 												},
 												"ipv4_destination_backup": {
 													"description": "Show the backup destination IPv4 address from the pair identified dns_destination_ips_id. This field read-only.",
 													"example": "172.64.36.2",
 													"readOnly": true,
-													"type": "string"
+													"type": "string",
+													"x-stainless-terraform-configurability": "computed"
 												},
 												"name": {
 													"description": "Specify the location name.",
@@ -2527,7 +2547,8 @@
 															"example": "oli3n9zkz5",
 															"readOnly": true,
 															"type": "string",
-															"x-auditable": true
+															"x-auditable": true,
+															"x-stainless-terraform-configurability": "computed"
 														},
 														"ecs_support": {
 															"default": false,
@@ -2675,19 +2696,22 @@
 															"example": "2001:0db8:85a3:0000:0000:8a2e:0370:7334",
 															"readOnly": true,
 															"type": "string",
-															"x-auditable": true
+															"x-auditable": true,
+															"x-stainless-terraform-configurability": "computed"
 														},
 														"ipv4_destination": {
 															"description": "Show the primary destination IPv4 address from the pair identified dns_destination_ips_id. This field read-only.",
 															"example": "172.64.36.1",
 															"readOnly": true,
-															"type": "string"
+															"type": "string",
+															"x-stainless-terraform-configurability": "computed"
 														},
 														"ipv4_destination_backup": {
 															"description": "Show the backup destination IPv4 address from the pair identified dns_destination_ips_id. This field read-only.",
 															"example": "172.64.36.2",
 															"readOnly": true,
-															"type": "string"
+															"type": "string",
+															"x-stainless-terraform-configurability": "computed"
 														},
 														"name": {
 															"description": "Specify the location name.",
@@ -3165,7 +3189,8 @@
 													"example": "oli3n9zkz5",
 													"readOnly": true,
 													"type": "string",
-													"x-auditable": true
+													"x-auditable": true,
+													"x-stainless-terraform-configurability": "computed"
 												},
 												"ecs_support": {
 													"default": false,
@@ -3313,19 +3338,22 @@
 													"example": "2001:0db8:85a3:0000:0000:8a2e:0370:7334",
 													"readOnly": true,
 													"type": "string",
-													"x-auditable": true
+													"x-auditable": true,
+													"x-stainless-terraform-configurability": "computed"
 												},
 												"ipv4_destination": {
 													"description": "Show the primary destination IPv4 address from the pair identified dns_destination_ips_id. This field read-only.",
 													"example": "172.64.36.1",
 													"readOnly": true,
-													"type": "string"
+													"type": "string",
+													"x-stainless-terraform-configurability": "computed"
 												},
 												"ipv4_destination_backup": {
 													"description": "Show the backup destination IPv4 address from the pair identified dns_destination_ips_id. This field read-only.",
 													"example": "172.64.36.2",
 													"readOnly": true,
-													"type": "string"
+													"type": "string",
+													"x-stainless-terraform-configurability": "computed"
 												},
 												"name": {
 													"description": "Specify the location name.",
@@ -3482,7 +3510,8 @@
 															"example": "oli3n9zkz5",
 															"readOnly": true,
 															"type": "string",
-															"x-auditable": true
+															"x-auditable": true,
+															"x-stainless-terraform-configurability": "computed"
 														},
 														"ecs_support": {
 															"default": false,
@@ -3630,19 +3659,22 @@
 															"example": "2001:0db8:85a3:0000:0000:8a2e:0370:7334",
 															"readOnly": true,
 															"type": "string",
-															"x-auditable": true
+															"x-auditable": true,
+															"x-stainless-terraform-configurability": "computed"
 														},
 														"ipv4_destination": {
 															"description": "Show the primary destination IPv4 address from the pair identified dns_destination_ips_id. This field read-only.",
 															"example": "172.64.36.1",
 															"readOnly": true,
-															"type": "string"
+															"type": "string",
+															"x-stainless-terraform-configurability": "computed"
 														},
 														"ipv4_destination_backup": {
 															"description": "Show the backup destination IPv4 address from the pair identified dns_destination_ips_id. This field read-only.",
 															"example": "172.64.36.2",
 															"readOnly": true,
-															"type": "string"
+															"type": "string",
+															"x-stainless-terraform-configurability": "computed"
 														},
 														"name": {
 															"description": "Specify the location name.",

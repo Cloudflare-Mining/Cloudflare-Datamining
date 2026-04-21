@@ -334,7 +334,8 @@
 						"IP",
 						"CATEGORY",
 						"LOCATION",
-						"DEVICE"
+						"DEVICE",
+						"AAGUID"
 					],
 					"example": "SERIAL",
 					"type": "string",
@@ -452,7 +453,8 @@
 														"description": "Indicate the number of items in the list.",
 														"example": 20,
 														"readOnly": true,
-														"type": "number"
+														"type": "number",
+														"x-stainless-terraform-configurability": "computed"
 													},
 													"created_at": {
 														"example": "2014-01-01T05:20:00.12345Z",
@@ -518,7 +520,8 @@
 															"IP",
 															"CATEGORY",
 															"LOCATION",
-															"DEVICE"
+															"DEVICE",
+															"AAGUID"
 														],
 														"example": "SERIAL",
 														"type": "string",
@@ -656,7 +659,8 @@
 																"description": "Indicate the number of items in the list.",
 																"example": 20,
 																"readOnly": true,
-																"type": "number"
+																"type": "number",
+																"x-stainless-terraform-configurability": "computed"
 															},
 															"created_at": {
 																"example": "2014-01-01T05:20:00.12345Z",
@@ -722,7 +726,8 @@
 																	"IP",
 																	"CATEGORY",
 																	"LOCATION",
-																	"DEVICE"
+																	"DEVICE",
+																	"AAGUID"
 																],
 																"example": "SERIAL",
 																"type": "string",
@@ -957,7 +962,8 @@
 													"description": "Indicate the number of items in the list.",
 													"example": 20,
 													"readOnly": true,
-													"type": "number"
+													"type": "number",
+													"x-stainless-terraform-configurability": "computed"
 												},
 												"created_at": {
 													"example": "2014-01-01T05:20:00.12345Z",
@@ -1023,7 +1029,8 @@
 														"IP",
 														"CATEGORY",
 														"LOCATION",
-														"DEVICE"
+														"DEVICE",
+														"AAGUID"
 													],
 													"example": "SERIAL",
 													"type": "string",
@@ -1129,7 +1136,8 @@
 															"description": "Indicate the number of items in the list.",
 															"example": 20,
 															"readOnly": true,
-															"type": "number"
+															"type": "number",
+															"x-stainless-terraform-configurability": "computed"
 														},
 														"created_at": {
 															"example": "2014-01-01T05:20:00.12345Z",
@@ -1195,7 +1203,8 @@
 																"IP",
 																"CATEGORY",
 																"LOCATION",
-																"DEVICE"
+																"DEVICE",
+																"AAGUID"
 															],
 															"example": "SERIAL",
 															"type": "string",
@@ -1951,7 +1960,8 @@
 													"description": "Indicate the number of items in the list.",
 													"example": 20,
 													"readOnly": true,
-													"type": "number"
+													"type": "number",
+													"x-stainless-terraform-configurability": "computed"
 												},
 												"created_at": {
 													"example": "2014-01-01T05:20:00.12345Z",
@@ -2017,7 +2027,8 @@
 														"IP",
 														"CATEGORY",
 														"LOCATION",
-														"DEVICE"
+														"DEVICE",
+														"AAGUID"
 													],
 													"example": "SERIAL",
 													"type": "string",
@@ -2123,7 +2134,8 @@
 															"description": "Indicate the number of items in the list.",
 															"example": 20,
 															"readOnly": true,
-															"type": "number"
+															"type": "number",
+															"x-stainless-terraform-configurability": "computed"
 														},
 														"created_at": {
 															"example": "2014-01-01T05:20:00.12345Z",
@@ -2189,7 +2201,8 @@
 																"IP",
 																"CATEGORY",
 																"LOCATION",
-																"DEVICE"
+																"DEVICE",
+																"AAGUID"
 															],
 															"example": "SERIAL",
 															"type": "string",
@@ -2382,7 +2395,8 @@
 									"IP",
 									"CATEGORY",
 									"LOCATION",
-									"DEVICE"
+									"DEVICE",
+									"AAGUID"
 								],
 								"example": "SERIAL",
 								"type": "string",
@@ -2538,7 +2552,8 @@
 														"IP",
 														"CATEGORY",
 														"LOCATION",
-														"DEVICE"
+														"DEVICE",
+														"AAGUID"
 													],
 													"example": "SERIAL",
 													"type": "string",
@@ -2703,7 +2718,8 @@
 																"IP",
 																"CATEGORY",
 																"LOCATION",
-																"DEVICE"
+																"DEVICE",
+																"AAGUID"
 															],
 															"example": "SERIAL",
 															"type": "string",
@@ -2986,7 +3002,8 @@
 													"description": "Indicate the number of items in the list.",
 													"example": 20,
 													"readOnly": true,
-													"type": "number"
+													"type": "number",
+													"x-stainless-terraform-configurability": "computed"
 												},
 												"created_at": {
 													"example": "2014-01-01T05:20:00.12345Z",
@@ -3052,7 +3069,8 @@
 														"IP",
 														"CATEGORY",
 														"LOCATION",
-														"DEVICE"
+														"DEVICE",
+														"AAGUID"
 													],
 													"example": "SERIAL",
 													"type": "string",
@@ -3158,7 +3176,8 @@
 															"description": "Indicate the number of items in the list.",
 															"example": 20,
 															"readOnly": true,
-															"type": "number"
+															"type": "number",
+															"x-stainless-terraform-configurability": "computed"
 														},
 														"created_at": {
 															"example": "2014-01-01T05:20:00.12345Z",
@@ -3224,7 +3243,8 @@
 																"IP",
 																"CATEGORY",
 																"LOCATION",
-																"DEVICE"
+																"DEVICE",
+																"AAGUID"
 															],
 															"example": "SERIAL",
 															"type": "string",

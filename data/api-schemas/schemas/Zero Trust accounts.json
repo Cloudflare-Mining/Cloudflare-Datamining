@@ -1469,14 +1469,16 @@
 																			"nullable": true,
 																			"readOnly": true,
 																			"type": "boolean",
-																			"x-auditable": true
+																			"x-auditable": true,
+																			"x-stainless-terraform-configurability": "computed"
 																		},
 																		"source_account": {
 																			"description": "Indicate the account tag of the account that shared this setting.",
 																			"nullable": true,
 																			"readOnly": true,
 																			"type": "string",
-																			"x-auditable": true
+																			"x-auditable": true,
+																			"x-stainless-terraform-configurability": "computed"
 																		},
 																		"suppress_footer": {
 																			"description": "Specify whether to suppress detailed information at the bottom of the block page when the mode is customized_block_page.",
@@ -1495,7 +1497,8 @@
 																			"nullable": true,
 																			"readOnly": true,
 																			"type": "integer",
-																			"x-auditable": true
+																			"x-auditable": true,
+																			"x-stainless-terraform-configurability": "computed"
 																		}
 																	},
 																	"type": "object",
@@ -1566,7 +1569,8 @@
 																			"example": "pending_deployment",
 																			"readOnly": true,
 																			"type": "string",
-																			"x-auditable": true
+																			"x-auditable": true,
+																			"x-stainless-terraform-configurability": "computed"
 																		},
 																		"enabled": {
 																			"description": "Specify whether to enable a custom certificate authority for signing Gateway traffic.",
@@ -1584,7 +1588,8 @@
 																		"updated_at": {
 																			"format": "date-time",
 																			"readOnly": true,
-																			"type": "string"
+																			"type": "string",
+																			"x-stainless-terraform-configurability": "computed"
 																		}
 																	},
 																	"required": [
@@ -1609,14 +1614,14 @@
 																			"readOnly": true,
 																			"type": "boolean",
 																			"x-auditable": true,
-																			"x-stainless-terraform-configurability": "optional"
+																			"x-stainless-terraform-configurability": "computed"
 																		},
 																		"source_account": {
 																			"description": "Indicate the account tag of the account that shared this setting.",
 																			"readOnly": true,
 																			"type": "string",
 																			"x-auditable": true,
-																			"x-stainless-terraform-configurability": "optional"
+																			"x-stainless-terraform-configurability": "computed"
 																		},
 																		"version": {
 																			"description": "Indicate the version number of the setting.",
@@ -1624,7 +1629,7 @@
 																			"readOnly": true,
 																			"type": "integer",
 																			"x-auditable": true,
-																			"x-stainless-terraform-configurability": "optional"
+																			"x-stainless-terraform-configurability": "computed"
 																		}
 																	},
 																	"type": "object",
@@ -1996,14 +2001,16 @@
 																					"nullable": true,
 																					"readOnly": true,
 																					"type": "boolean",
-																					"x-auditable": true
+																					"x-auditable": true,
+																					"x-stainless-terraform-configurability": "computed"
 																				},
 																				"source_account": {
 																					"description": "Indicate the account tag of the account that shared this setting.",
 																					"nullable": true,
 																					"readOnly": true,
 																					"type": "string",
-																					"x-auditable": true
+																					"x-auditable": true,
+																					"x-stainless-terraform-configurability": "computed"
 																				},
 																				"suppress_footer": {
 																					"description": "Specify whether to suppress detailed information at the bottom of the block page when the mode is customized_block_page.",
@@ -2022,7 +2029,8 @@
 																					"nullable": true,
 																					"readOnly": true,
 																					"type": "integer",
-																					"x-auditable": true
+																					"x-auditable": true,
+																					"x-stainless-terraform-configurability": "computed"
 																				}
 																			},
 																			"type": "object",
@@ -2093,7 +2101,8 @@
 																					"example": "pending_deployment",
 																					"readOnly": true,
 																					"type": "string",
-																					"x-auditable": true
+																					"x-auditable": true,
+																					"x-stainless-terraform-configurability": "computed"
 																				},
 																				"enabled": {
 																					"description": "Specify whether to enable a custom certificate authority for signing Gateway traffic.",
@@ -2111,7 +2120,8 @@
 																				"updated_at": {
 																					"format": "date-time",
 																					"readOnly": true,
-																					"type": "string"
+																					"type": "string",
+																					"x-stainless-terraform-configurability": "computed"
 																				}
 																			},
 																			"required": [
@@ -2136,14 +2146,14 @@
 																					"readOnly": true,
 																					"type": "boolean",
 																					"x-auditable": true,
-																					"x-stainless-terraform-configurability": "optional"
+																					"x-stainless-terraform-configurability": "computed"
 																				},
 																				"source_account": {
 																					"description": "Indicate the account tag of the account that shared this setting.",
 																					"readOnly": true,
 																					"type": "string",
 																					"x-auditable": true,
-																					"x-stainless-terraform-configurability": "optional"
+																					"x-stainless-terraform-configurability": "computed"
 																				},
 																				"version": {
 																					"description": "Indicate the version number of the setting.",
@@ -2151,7 +2161,7 @@
 																					"readOnly": true,
 																					"type": "integer",
 																					"x-auditable": true,
-																					"x-stainless-terraform-configurability": "optional"
+																					"x-stainless-terraform-configurability": "computed"
 																				}
 																			},
 																			"type": "object",
@@ -2422,7 +2432,8 @@
 									"example": "pending_deployment",
 									"readOnly": true,
 									"type": "string",
-									"x-auditable": true
+									"x-auditable": true,
+									"x-stainless-terraform-configurability": "computed"
 								},
 								"enabled": {
 									"description": "Specify whether to enable a custom certificate authority for signing Gateway traffic.",
@@ -2440,7 +2451,8 @@
 								"updated_at": {
 									"format": "date-time",
 									"readOnly": true,
-									"type": "string"
+									"type": "string",
+									"x-stainless-terraform-configurability": "computed"
 								}
 							},
 							"required": [
@@ -2468,7 +2480,8 @@
 											"example": "pending_deployment",
 											"readOnly": true,
 											"type": "string",
-											"x-auditable": true
+											"x-auditable": true,
+											"x-stainless-terraform-configurability": "computed"
 										},
 										"enabled": {
 											"description": "Specify whether to enable a custom certificate authority for signing Gateway traffic.",
@@ -2486,7 +2499,8 @@
 										"updated_at": {
 											"format": "date-time",
 											"readOnly": true,
-											"type": "string"
+											"type": "string",
+											"x-stainless-terraform-configurability": "computed"
 										}
 									},
 									"required": [
@@ -3736,14 +3750,16 @@
 												"nullable": true,
 												"readOnly": true,
 												"type": "boolean",
-												"x-auditable": true
+												"x-auditable": true,
+												"x-stainless-terraform-configurability": "computed"
 											},
 											"source_account": {
 												"description": "Indicate the account tag of the account that shared this setting.",
 												"nullable": true,
 												"readOnly": true,
 												"type": "string",
-												"x-auditable": true
+												"x-auditable": true,
+												"x-stainless-terraform-configurability": "computed"
 											},
 											"suppress_footer": {
 												"description": "Specify whether to suppress detailed information at the bottom of the block page when the mode is customized_block_page.",
@@ -3762,7 +3778,8 @@
 												"nullable": true,
 												"readOnly": true,
 												"type": "integer",
-												"x-auditable": true
+												"x-auditable": true,
+												"x-stainless-terraform-configurability": "computed"
 											}
 										},
 										"type": "object",
@@ -3833,7 +3850,8 @@
 												"example": "pending_deployment",
 												"readOnly": true,
 												"type": "string",
-												"x-auditable": true
+												"x-auditable": true,
+												"x-stainless-terraform-configurability": "computed"
 											},
 											"enabled": {
 												"description": "Specify whether to enable a custom certificate authority for signing Gateway traffic.",
@@ -3851,7 +3869,8 @@
 											"updated_at": {
 												"format": "date-time",
 												"readOnly": true,
-												"type": "string"
+												"type": "string",
+												"x-stainless-terraform-configurability": "computed"
 											}
 										},
 										"required": [
@@ -3876,14 +3895,14 @@
 												"readOnly": true,
 												"type": "boolean",
 												"x-auditable": true,
-												"x-stainless-terraform-configurability": "optional"
+												"x-stainless-terraform-configurability": "computed"
 											},
 											"source_account": {
 												"description": "Indicate the account tag of the account that shared this setting.",
 												"readOnly": true,
 												"type": "string",
 												"x-auditable": true,
-												"x-stainless-terraform-configurability": "optional"
+												"x-stainless-terraform-configurability": "computed"
 											},
 											"version": {
 												"description": "Indicate the version number of the setting.",
@@ -3891,7 +3910,7 @@
 												"readOnly": true,
 												"type": "integer",
 												"x-auditable": true,
-												"x-stainless-terraform-configurability": "optional"
+												"x-stainless-terraform-configurability": "computed"
 											}
 										},
 										"type": "object",
@@ -4236,14 +4255,16 @@
 																			"nullable": true,
 																			"readOnly": true,
 																			"type": "boolean",
-																			"x-auditable": true
+																			"x-auditable": true,
+																			"x-stainless-terraform-configurability": "computed"
 																		},
 																		"source_account": {
 																			"description": "Indicate the account tag of the account that shared this setting.",
 																			"nullable": true,
 																			"readOnly": true,
 																			"type": "string",
-																			"x-auditable": true
+																			"x-auditable": true,
+																			"x-stainless-terraform-configurability": "computed"
 																		},
 																		"suppress_footer": {
 																			"description": "Specify whether to suppress detailed information at the bottom of the block page when the mode is customized_block_page.",
@@ -4262,7 +4283,8 @@
 																			"nullable": true,
 																			"readOnly": true,
 																			"type": "integer",
-																			"x-auditable": true
+																			"x-auditable": true,
+																			"x-stainless-terraform-configurability": "computed"
 																		}
 																	},
 																	"type": "object",
@@ -4333,7 +4355,8 @@
 																			"example": "pending_deployment",
 																			"readOnly": true,
 																			"type": "string",
-																			"x-auditable": true
+																			"x-auditable": true,
+																			"x-stainless-terraform-configurability": "computed"
 																		},
 																		"enabled": {
 																			"description": "Specify whether to enable a custom certificate authority for signing Gateway traffic.",
@@ -4351,7 +4374,8 @@
 																		"updated_at": {
 																			"format": "date-time",
 																			"readOnly": true,
-																			"type": "string"
+																			"type": "string",
+																			"x-stainless-terraform-configurability": "computed"
 																		}
 																	},
 																	"required": [
@@ -4376,14 +4400,14 @@
 																			"readOnly": true,
 																			"type": "boolean",
 																			"x-auditable": true,
-																			"x-stainless-terraform-configurability": "optional"
+																			"x-stainless-terraform-configurability": "computed"
 																		},
 																		"source_account": {
 																			"description": "Indicate the account tag of the account that shared this setting.",
 																			"readOnly": true,
 																			"type": "string",
 																			"x-auditable": true,
-																			"x-stainless-terraform-configurability": "optional"
+																			"x-stainless-terraform-configurability": "computed"
 																		},
 																		"version": {
 																			"description": "Indicate the version number of the setting.",
@@ -4391,7 +4415,7 @@
 																			"readOnly": true,
 																			"type": "integer",
 																			"x-auditable": true,
-																			"x-stainless-terraform-configurability": "optional"
+																			"x-stainless-terraform-configurability": "computed"
 																		}
 																	},
 																	"type": "object",
@@ -4763,14 +4787,16 @@
 																					"nullable": true,
 																					"readOnly": true,
 																					"type": "boolean",
-																					"x-auditable": true
+																					"x-auditable": true,
+																					"x-stainless-terraform-configurability": "computed"
 																				},
 																				"source_account": {
 																					"description": "Indicate the account tag of the account that shared this setting.",
 																					"nullable": true,
 																					"readOnly": true,
 																					"type": "string",
-																					"x-auditable": true
+																					"x-auditable": true,
+																					"x-stainless-terraform-configurability": "computed"
 																				},
 																				"suppress_footer": {
 																					"description": "Specify whether to suppress detailed information at the bottom of the block page when the mode is customized_block_page.",
@@ -4789,7 +4815,8 @@
 																					"nullable": true,
 																					"readOnly": true,
 																					"type": "integer",
-																					"x-auditable": true
+																					"x-auditable": true,
+																					"x-stainless-terraform-configurability": "computed"
 																				}
 																			},
 																			"type": "object",
@@ -4860,7 +4887,8 @@
 																					"example": "pending_deployment",
 																					"readOnly": true,
 																					"type": "string",
-																					"x-auditable": true
+																					"x-auditable": true,
+																					"x-stainless-terraform-configurability": "computed"
 																				},
 																				"enabled": {
 																					"description": "Specify whether to enable a custom certificate authority for signing Gateway traffic.",
@@ -4878,7 +4906,8 @@
 																				"updated_at": {
 																					"format": "date-time",
 																					"readOnly": true,
-																					"type": "string"
+																					"type": "string",
+																					"x-stainless-terraform-configurability": "computed"
 																				}
 																			},
 																			"required": [
@@ -4903,14 +4932,14 @@
 																					"readOnly": true,
 																					"type": "boolean",
 																					"x-auditable": true,
-																					"x-stainless-terraform-configurability": "optional"
+																					"x-stainless-terraform-configurability": "computed"
 																				},
 																				"source_account": {
 																					"description": "Indicate the account tag of the account that shared this setting.",
 																					"readOnly": true,
 																					"type": "string",
 																					"x-auditable": true,
-																					"x-stainless-terraform-configurability": "optional"
+																					"x-stainless-terraform-configurability": "computed"
 																				},
 																				"version": {
 																					"description": "Indicate the version number of the setting.",
@@ -4918,7 +4947,7 @@
 																					"readOnly": true,
 																					"type": "integer",
 																					"x-auditable": true,
-																					"x-stainless-terraform-configurability": "optional"
+																					"x-stainless-terraform-configurability": "computed"
 																				}
 																			},
 																			"type": "object",
@@ -6168,14 +6197,16 @@
 												"nullable": true,
 												"readOnly": true,
 												"type": "boolean",
-												"x-auditable": true
+												"x-auditable": true,
+												"x-stainless-terraform-configurability": "computed"
 											},
 											"source_account": {
 												"description": "Indicate the account tag of the account that shared this setting.",
 												"nullable": true,
 												"readOnly": true,
 												"type": "string",
-												"x-auditable": true
+												"x-auditable": true,
+												"x-stainless-terraform-configurability": "computed"
 											},
 											"suppress_footer": {
 												"description": "Specify whether to suppress detailed information at the bottom of the block page when the mode is customized_block_page.",
@@ -6194,7 +6225,8 @@
 												"nullable": true,
 												"readOnly": true,
 												"type": "integer",
-												"x-auditable": true
+												"x-auditable": true,
+												"x-stainless-terraform-configurability": "computed"
 											}
 										},
 										"type": "object",
@@ -6265,7 +6297,8 @@
 												"example": "pending_deployment",
 												"readOnly": true,
 												"type": "string",
-												"x-auditable": true
+												"x-auditable": true,
+												"x-stainless-terraform-configurability": "computed"
 											},
 											"enabled": {
 												"description": "Specify whether to enable a custom certificate authority for signing Gateway traffic.",
@@ -6283,7 +6316,8 @@
 											"updated_at": {
 												"format": "date-time",
 												"readOnly": true,
-												"type": "string"
+												"type": "string",
+												"x-stainless-terraform-configurability": "computed"
 											}
 										},
 										"required": [
@@ -6308,14 +6342,14 @@
 												"readOnly": true,
 												"type": "boolean",
 												"x-auditable": true,
-												"x-stainless-terraform-configurability": "optional"
+												"x-stainless-terraform-configurability": "computed"
 											},
 											"source_account": {
 												"description": "Indicate the account tag of the account that shared this setting.",
 												"readOnly": true,
 												"type": "string",
 												"x-auditable": true,
-												"x-stainless-terraform-configurability": "optional"
+												"x-stainless-terraform-configurability": "computed"
 											},
 											"version": {
 												"description": "Indicate the version number of the setting.",
@@ -6323,7 +6357,7 @@
 												"readOnly": true,
 												"type": "integer",
 												"x-auditable": true,
-												"x-stainless-terraform-configurability": "optional"
+												"x-stainless-terraform-configurability": "computed"
 											}
 										},
 										"type": "object",
@@ -6668,14 +6702,16 @@
 																			"nullable": true,
 																			"readOnly": true,
 																			"type": "boolean",
-																			"x-auditable": true
+																			"x-auditable": true,
+																			"x-stainless-terraform-configurability": "computed"
 																		},
 																		"source_account": {
 																			"description": "Indicate the account tag of the account that shared this setting.",
 																			"nullable": true,
 																			"readOnly": true,
 																			"type": "string",
-																			"x-auditable": true
+																			"x-auditable": true,
+																			"x-stainless-terraform-configurability": "computed"
 																		},
 																		"suppress_footer": {
 																			"description": "Specify whether to suppress detailed information at the bottom of the block page when the mode is customized_block_page.",
@@ -6694,7 +6730,8 @@
 																			"nullable": true,
 																			"readOnly": true,
 																			"type": "integer",
-																			"x-auditable": true
+																			"x-auditable": true,
+																			"x-stainless-terraform-configurability": "computed"
 																		}
 																	},
 																	"type": "object",
@@ -6765,7 +6802,8 @@
 																			"example": "pending_deployment",
 																			"readOnly": true,
 																			"type": "string",
-																			"x-auditable": true
+																			"x-auditable": true,
+																			"x-stainless-terraform-configurability": "computed"
 																		},
 																		"enabled": {
 																			"description": "Specify whether to enable a custom certificate authority for signing Gateway traffic.",
@@ -6783,7 +6821,8 @@
 																		"updated_at": {
 																			"format": "date-time",
 																			"readOnly": true,
-																			"type": "string"
+																			"type": "string",
+																			"x-stainless-terraform-configurability": "computed"
 																		}
 																	},
 																	"required": [
@@ -6808,14 +6847,14 @@
 																			"readOnly": true,
 																			"type": "boolean",
 																			"x-auditable": true,
-																			"x-stainless-terraform-configurability": "optional"
+																			"x-stainless-terraform-configurability": "computed"
 																		},
 																		"source_account": {
 																			"description": "Indicate the account tag of the account that shared this setting.",
 																			"readOnly": true,
 																			"type": "string",
 																			"x-auditable": true,
-																			"x-stainless-terraform-configurability": "optional"
+																			"x-stainless-terraform-configurability": "computed"
 																		},
 																		"version": {
 																			"description": "Indicate the version number of the setting.",
@@ -6823,7 +6862,7 @@
 																			"readOnly": true,
 																			"type": "integer",
 																			"x-auditable": true,
-																			"x-stainless-terraform-configurability": "optional"
+																			"x-stainless-terraform-configurability": "computed"
 																		}
 																	},
 																	"type": "object",
@@ -7195,14 +7234,16 @@
 																					"nullable": true,
 																					"readOnly": true,
 																					"type": "boolean",
-																					"x-auditable": true
+																					"x-auditable": true,
+																					"x-stainless-terraform-configurability": "computed"
 																				},
 																				"source_account": {
 																					"description": "Indicate the account tag of the account that shared this setting.",
 																					"nullable": true,
 																					"readOnly": true,
 																					"type": "string",
-																					"x-auditable": true
+																					"x-auditable": true,
+																					"x-stainless-terraform-configurability": "computed"
 																				},
 																				"suppress_footer": {
 																					"description": "Specify whether to suppress detailed information at the bottom of the block page when the mode is customized_block_page.",
@@ -7221,7 +7262,8 @@
 																					"nullable": true,
 																					"readOnly": true,
 																					"type": "integer",
-																					"x-auditable": true
+																					"x-auditable": true,
+																					"x-stainless-terraform-configurability": "computed"
 																				}
 																			},
 																			"type": "object",
@@ -7292,7 +7334,8 @@
 																					"example": "pending_deployment",
 																					"readOnly": true,
 																					"type": "string",
-																					"x-auditable": true
+																					"x-auditable": true,
+																					"x-stainless-terraform-configurability": "computed"
 																				},
 																				"enabled": {
 																					"description": "Specify whether to enable a custom certificate authority for signing Gateway traffic.",
@@ -7310,7 +7353,8 @@
 																				"updated_at": {
 																					"format": "date-time",
 																					"readOnly": true,
-																					"type": "string"
+																					"type": "string",
+																					"x-stainless-terraform-configurability": "computed"
 																				}
 																			},
 																			"required": [
@@ -7335,14 +7379,14 @@
 																					"readOnly": true,
 																					"type": "boolean",
 																					"x-auditable": true,
-																					"x-stainless-terraform-configurability": "optional"
+																					"x-stainless-terraform-configurability": "computed"
 																				},
 																				"source_account": {
 																					"description": "Indicate the account tag of the account that shared this setting.",
 																					"readOnly": true,
 																					"type": "string",
 																					"x-auditable": true,
-																					"x-stainless-terraform-configurability": "optional"
+																					"x-stainless-terraform-configurability": "computed"
 																				},
 																				"version": {
 																					"description": "Indicate the version number of the setting.",
@@ -7350,7 +7394,7 @@
 																					"readOnly": true,
 																					"type": "integer",
 																					"x-auditable": true,
-																					"x-stainless-terraform-configurability": "optional"
+																					"x-stainless-terraform-configurability": "computed"
 																				}
 																			},
 																			"type": "object",

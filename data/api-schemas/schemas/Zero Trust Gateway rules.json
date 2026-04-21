@@ -463,7 +463,8 @@
 														"format": "date-time",
 														"nullable": true,
 														"readOnly": true,
-														"type": "string"
+														"type": "string",
+														"x-stainless-terraform-configurability": "computed"
 													},
 													"description": {
 														"description": "Specify the rule description.",
@@ -502,7 +503,8 @@
 																"example": false,
 																"readOnly": true,
 																"type": "boolean",
-																"x-auditable": true
+																"x-auditable": true,
+																"x-stainless-terraform-configurability": "computed"
 															},
 															"expires_at": {
 																"allOf": [
@@ -579,7 +581,8 @@
 														"description": "Indicate that this rule is shared via the Orgs API and read only.",
 														"readOnly": true,
 														"type": "boolean",
-														"x-auditable": true
+														"x-auditable": true,
+														"x-stainless-terraform-configurability": "computed"
 													},
 													"rule_settings": {
 														"description": "Defines settings for this rule. Settings apply only to specific rule types and must use compatible selectors. If Terraform detects drift, confirm the setting supports your rule type and check whether the API modifies the value. Use API-returned values in your configuration to prevent drift.",
@@ -658,7 +661,7 @@
 																		"x-auditable": true
 																	},
 																	"download": {
-																		"description": "Configure download behavior. When set to remote_only, users can view downloads but cannot save them. Applies only when version == \"v2\".",
+																		"description": "Configure download behavior. When set to remote_only, users can view downloads but cannot save them. If this field is absent, downloading remains enabled. Applies only when version == \"v2\".",
 																		"enum": [
 																			"enabled",
 																			"disabled",
@@ -727,6 +730,15 @@
 																			"v1",
 																			"v2"
 																		],
+																		"type": "string",
+																		"x-auditable": true
+																	},
+																	"wm_id": {
+																		"description": "Specify the watermark ID (UUID) to apply to the isolated browser session. When present, enables watermark rendering in the isolated browser.",
+																		"example": "475345dc-5299-4b6e-8f6a-3d3e4c8e9f1a",
+																		"format": "uuid",
+																		"maxLength": 36,
+																		"minLength": 1,
 																		"type": "string",
 																		"x-auditable": true
 																	}
@@ -1201,13 +1213,15 @@
 														"description": "Indicate that this rule is sharable via the Orgs API.",
 														"readOnly": true,
 														"type": "boolean",
-														"x-auditable": true
+														"x-auditable": true,
+														"x-stainless-terraform-configurability": "computed"
 													},
 													"source_account": {
 														"description": "Provide the account tag of the account that created the rule.",
 														"readOnly": true,
 														"type": "string",
-														"x-auditable": true
+														"x-auditable": true,
+														"x-stainless-terraform-configurability": "computed"
 													},
 													"traffic": {
 														"default": "",
@@ -1228,13 +1242,15 @@
 														"example": 1,
 														"readOnly": true,
 														"type": "integer",
-														"x-auditable": true
+														"x-auditable": true,
+														"x-stainless-terraform-configurability": "computed"
 													},
 													"warning_status": {
 														"description": "Indicate a warning for a misconfigured rule, if any.",
 														"nullable": true,
 														"readOnly": true,
-														"type": "string"
+														"type": "string",
+														"x-stainless-terraform-configurability": "computed"
 													}
 												},
 												"required": [
@@ -1404,7 +1420,8 @@
 																"format": "date-time",
 																"nullable": true,
 																"readOnly": true,
-																"type": "string"
+																"type": "string",
+																"x-stainless-terraform-configurability": "computed"
 															},
 															"description": {
 																"description": "Specify the rule description.",
@@ -1443,7 +1460,8 @@
 																		"example": false,
 																		"readOnly": true,
 																		"type": "boolean",
-																		"x-auditable": true
+																		"x-auditable": true,
+																		"x-stainless-terraform-configurability": "computed"
 																	},
 																	"expires_at": {
 																		"allOf": [
@@ -1520,7 +1538,8 @@
 																"description": "Indicate that this rule is shared via the Orgs API and read only.",
 																"readOnly": true,
 																"type": "boolean",
-																"x-auditable": true
+																"x-auditable": true,
+																"x-stainless-terraform-configurability": "computed"
 															},
 															"rule_settings": {
 																"description": "Defines settings for this rule. Settings apply only to specific rule types and must use compatible selectors. If Terraform detects drift, confirm the setting supports your rule type and check whether the API modifies the value. Use API-returned values in your configuration to prevent drift.",
@@ -1599,7 +1618,7 @@
 																				"x-auditable": true
 																			},
 																			"download": {
-																				"description": "Configure download behavior. When set to remote_only, users can view downloads but cannot save them. Applies only when version == \"v2\".",
+																				"description": "Configure download behavior. When set to remote_only, users can view downloads but cannot save them. If this field is absent, downloading remains enabled. Applies only when version == \"v2\".",
 																				"enum": [
 																					"enabled",
 																					"disabled",
@@ -1668,6 +1687,15 @@
 																					"v1",
 																					"v2"
 																				],
+																				"type": "string",
+																				"x-auditable": true
+																			},
+																			"wm_id": {
+																				"description": "Specify the watermark ID (UUID) to apply to the isolated browser session. When present, enables watermark rendering in the isolated browser.",
+																				"example": "475345dc-5299-4b6e-8f6a-3d3e4c8e9f1a",
+																				"format": "uuid",
+																				"maxLength": 36,
+																				"minLength": 1,
 																				"type": "string",
 																				"x-auditable": true
 																			}
@@ -2142,13 +2170,15 @@
 																"description": "Indicate that this rule is sharable via the Orgs API.",
 																"readOnly": true,
 																"type": "boolean",
-																"x-auditable": true
+																"x-auditable": true,
+																"x-stainless-terraform-configurability": "computed"
 															},
 															"source_account": {
 																"description": "Provide the account tag of the account that created the rule.",
 																"readOnly": true,
 																"type": "string",
-																"x-auditable": true
+																"x-auditable": true,
+																"x-stainless-terraform-configurability": "computed"
 															},
 															"traffic": {
 																"default": "",
@@ -2169,13 +2199,15 @@
 																"example": 1,
 																"readOnly": true,
 																"type": "integer",
-																"x-auditable": true
+																"x-auditable": true,
+																"x-stainless-terraform-configurability": "computed"
 															},
 															"warning_status": {
 																"description": "Indicate a warning for a misconfigured rule, if any.",
 																"nullable": true,
 																"readOnly": true,
-																"type": "string"
+																"type": "string",
+																"x-stainless-terraform-configurability": "computed"
 															}
 														},
 														"required": [
@@ -2439,7 +2471,8 @@
 													"format": "date-time",
 													"nullable": true,
 													"readOnly": true,
-													"type": "string"
+													"type": "string",
+													"x-stainless-terraform-configurability": "computed"
 												},
 												"description": {
 													"description": "Specify the rule description.",
@@ -2478,7 +2511,8 @@
 															"example": false,
 															"readOnly": true,
 															"type": "boolean",
-															"x-auditable": true
+															"x-auditable": true,
+															"x-stainless-terraform-configurability": "computed"
 														},
 														"expires_at": {
 															"allOf": [
@@ -2555,7 +2589,8 @@
 													"description": "Indicate that this rule is shared via the Orgs API and read only.",
 													"readOnly": true,
 													"type": "boolean",
-													"x-auditable": true
+													"x-auditable": true,
+													"x-stainless-terraform-configurability": "computed"
 												},
 												"rule_settings": {
 													"description": "Defines settings for this rule. Settings apply only to specific rule types and must use compatible selectors. If Terraform detects drift, confirm the setting supports your rule type and check whether the API modifies the value. Use API-returned values in your configuration to prevent drift.",
@@ -2634,7 +2669,7 @@
 																	"x-auditable": true
 																},
 																"download": {
-																	"description": "Configure download behavior. When set to remote_only, users can view downloads but cannot save them. Applies only when version == \"v2\".",
+																	"description": "Configure download behavior. When set to remote_only, users can view downloads but cannot save them. If this field is absent, downloading remains enabled. Applies only when version == \"v2\".",
 																	"enum": [
 																		"enabled",
 																		"disabled",
@@ -2703,6 +2738,15 @@
 																		"v1",
 																		"v2"
 																	],
+																	"type": "string",
+																	"x-auditable": true
+																},
+																"wm_id": {
+																	"description": "Specify the watermark ID (UUID) to apply to the isolated browser session. When present, enables watermark rendering in the isolated browser.",
+																	"example": "475345dc-5299-4b6e-8f6a-3d3e4c8e9f1a",
+																	"format": "uuid",
+																	"maxLength": 36,
+																	"minLength": 1,
 																	"type": "string",
 																	"x-auditable": true
 																}
@@ -3177,13 +3221,15 @@
 													"description": "Indicate that this rule is sharable via the Orgs API.",
 													"readOnly": true,
 													"type": "boolean",
-													"x-auditable": true
+													"x-auditable": true,
+													"x-stainless-terraform-configurability": "computed"
 												},
 												"source_account": {
 													"description": "Provide the account tag of the account that created the rule.",
 													"readOnly": true,
 													"type": "string",
-													"x-auditable": true
+													"x-auditable": true,
+													"x-stainless-terraform-configurability": "computed"
 												},
 												"traffic": {
 													"default": "",
@@ -3204,13 +3250,15 @@
 													"example": 1,
 													"readOnly": true,
 													"type": "integer",
-													"x-auditable": true
+													"x-auditable": true,
+													"x-stainless-terraform-configurability": "computed"
 												},
 												"warning_status": {
 													"description": "Indicate a warning for a misconfigured rule, if any.",
 													"nullable": true,
 													"readOnly": true,
-													"type": "string"
+													"type": "string",
+													"x-stainless-terraform-configurability": "computed"
 												}
 											},
 											"required": [
@@ -3347,7 +3395,8 @@
 															"format": "date-time",
 															"nullable": true,
 															"readOnly": true,
-															"type": "string"
+															"type": "string",
+															"x-stainless-terraform-configurability": "computed"
 														},
 														"description": {
 															"description": "Specify the rule description.",
@@ -3386,7 +3435,8 @@
 																	"example": false,
 																	"readOnly": true,
 																	"type": "boolean",
-																	"x-auditable": true
+																	"x-auditable": true,
+																	"x-stainless-terraform-configurability": "computed"
 																},
 																"expires_at": {
 																	"allOf": [
@@ -3463,7 +3513,8 @@
 															"description": "Indicate that this rule is shared via the Orgs API and read only.",
 															"readOnly": true,
 															"type": "boolean",
-															"x-auditable": true
+															"x-auditable": true,
+															"x-stainless-terraform-configurability": "computed"
 														},
 														"rule_settings": {
 															"description": "Defines settings for this rule. Settings apply only to specific rule types and must use compatible selectors. If Terraform detects drift, confirm the setting supports your rule type and check whether the API modifies the value. Use API-returned values in your configuration to prevent drift.",
@@ -3542,7 +3593,7 @@
 																			"x-auditable": true
 																		},
 																		"download": {
-																			"description": "Configure download behavior. When set to remote_only, users can view downloads but cannot save them. Applies only when version == \"v2\".",
+																			"description": "Configure download behavior. When set to remote_only, users can view downloads but cannot save them. If this field is absent, downloading remains enabled. Applies only when version == \"v2\".",
 																			"enum": [
 																				"enabled",
 																				"disabled",
@@ -3611,6 +3662,15 @@
 																				"v1",
 																				"v2"
 																			],
+																			"type": "string",
+																			"x-auditable": true
+																		},
+																		"wm_id": {
+																			"description": "Specify the watermark ID (UUID) to apply to the isolated browser session. When present, enables watermark rendering in the isolated browser.",
+																			"example": "475345dc-5299-4b6e-8f6a-3d3e4c8e9f1a",
+																			"format": "uuid",
+																			"maxLength": 36,
+																			"minLength": 1,
 																			"type": "string",
 																			"x-auditable": true
 																		}
@@ -4085,13 +4145,15 @@
 															"description": "Indicate that this rule is sharable via the Orgs API.",
 															"readOnly": true,
 															"type": "boolean",
-															"x-auditable": true
+															"x-auditable": true,
+															"x-stainless-terraform-configurability": "computed"
 														},
 														"source_account": {
 															"description": "Provide the account tag of the account that created the rule.",
 															"readOnly": true,
 															"type": "string",
-															"x-auditable": true
+															"x-auditable": true,
+															"x-stainless-terraform-configurability": "computed"
 														},
 														"traffic": {
 															"default": "",
@@ -4112,13 +4174,15 @@
 															"example": 1,
 															"readOnly": true,
 															"type": "integer",
-															"x-auditable": true
+															"x-auditable": true,
+															"x-stainless-terraform-configurability": "computed"
 														},
 														"warning_status": {
 															"description": "Indicate a warning for a misconfigured rule, if any.",
 															"nullable": true,
 															"readOnly": true,
-															"type": "string"
+															"type": "string",
+															"x-stainless-terraform-configurability": "computed"
 														}
 													},
 													"required": [
@@ -4398,7 +4462,8 @@
 														"format": "date-time",
 														"nullable": true,
 														"readOnly": true,
-														"type": "string"
+														"type": "string",
+														"x-stainless-terraform-configurability": "computed"
 													},
 													"description": {
 														"description": "Specify the rule description.",
@@ -4437,7 +4502,8 @@
 																"example": false,
 																"readOnly": true,
 																"type": "boolean",
-																"x-auditable": true
+																"x-auditable": true,
+																"x-stainless-terraform-configurability": "computed"
 															},
 															"expires_at": {
 																"allOf": [
@@ -4514,7 +4580,8 @@
 														"description": "Indicate that this rule is shared via the Orgs API and read only.",
 														"readOnly": true,
 														"type": "boolean",
-														"x-auditable": true
+														"x-auditable": true,
+														"x-stainless-terraform-configurability": "computed"
 													},
 													"rule_settings": {
 														"description": "Defines settings for this rule. Settings apply only to specific rule types and must use compatible selectors. If Terraform detects drift, confirm the setting supports your rule type and check whether the API modifies the value. Use API-returned values in your configuration to prevent drift.",
@@ -4593,7 +4660,7 @@
 																		"x-auditable": true
 																	},
 																	"download": {
-																		"description": "Configure download behavior. When set to remote_only, users can view downloads but cannot save them. Applies only when version == \"v2\".",
+																		"description": "Configure download behavior. When set to remote_only, users can view downloads but cannot save them. If this field is absent, downloading remains enabled. Applies only when version == \"v2\".",
 																		"enum": [
 																			"enabled",
 																			"disabled",
@@ -4662,6 +4729,15 @@
 																			"v1",
 																			"v2"
 																		],
+																		"type": "string",
+																		"x-auditable": true
+																	},
+																	"wm_id": {
+																		"description": "Specify the watermark ID (UUID) to apply to the isolated browser session. When present, enables watermark rendering in the isolated browser.",
+																		"example": "475345dc-5299-4b6e-8f6a-3d3e4c8e9f1a",
+																		"format": "uuid",
+																		"maxLength": 36,
+																		"minLength": 1,
 																		"type": "string",
 																		"x-auditable": true
 																	}
@@ -5136,13 +5212,15 @@
 														"description": "Indicate that this rule is sharable via the Orgs API.",
 														"readOnly": true,
 														"type": "boolean",
-														"x-auditable": true
+														"x-auditable": true,
+														"x-stainless-terraform-configurability": "computed"
 													},
 													"source_account": {
 														"description": "Provide the account tag of the account that created the rule.",
 														"readOnly": true,
 														"type": "string",
-														"x-auditable": true
+														"x-auditable": true,
+														"x-stainless-terraform-configurability": "computed"
 													},
 													"traffic": {
 														"default": "",
@@ -5163,13 +5241,15 @@
 														"example": 1,
 														"readOnly": true,
 														"type": "integer",
-														"x-auditable": true
+														"x-auditable": true,
+														"x-stainless-terraform-configurability": "computed"
 													},
 													"warning_status": {
 														"description": "Indicate a warning for a misconfigured rule, if any.",
 														"nullable": true,
 														"readOnly": true,
-														"type": "string"
+														"type": "string",
+														"x-stainless-terraform-configurability": "computed"
 													}
 												},
 												"required": [
@@ -5339,7 +5419,8 @@
 																"format": "date-time",
 																"nullable": true,
 																"readOnly": true,
-																"type": "string"
+																"type": "string",
+																"x-stainless-terraform-configurability": "computed"
 															},
 															"description": {
 																"description": "Specify the rule description.",
@@ -5378,7 +5459,8 @@
 																		"example": false,
 																		"readOnly": true,
 																		"type": "boolean",
-																		"x-auditable": true
+																		"x-auditable": true,
+																		"x-stainless-terraform-configurability": "computed"
 																	},
 																	"expires_at": {
 																		"allOf": [
@@ -5455,7 +5537,8 @@
 																"description": "Indicate that this rule is shared via the Orgs API and read only.",
 																"readOnly": true,
 																"type": "boolean",
-																"x-auditable": true
+																"x-auditable": true,
+																"x-stainless-terraform-configurability": "computed"
 															},
 															"rule_settings": {
 																"description": "Defines settings for this rule. Settings apply only to specific rule types and must use compatible selectors. If Terraform detects drift, confirm the setting supports your rule type and check whether the API modifies the value. Use API-returned values in your configuration to prevent drift.",
@@ -5534,7 +5617,7 @@
 																				"x-auditable": true
 																			},
 																			"download": {
-																				"description": "Configure download behavior. When set to remote_only, users can view downloads but cannot save them. Applies only when version == \"v2\".",
+																				"description": "Configure download behavior. When set to remote_only, users can view downloads but cannot save them. If this field is absent, downloading remains enabled. Applies only when version == \"v2\".",
 																				"enum": [
 																					"enabled",
 																					"disabled",
@@ -5603,6 +5686,15 @@
 																					"v1",
 																					"v2"
 																				],
+																				"type": "string",
+																				"x-auditable": true
+																			},
+																			"wm_id": {
+																				"description": "Specify the watermark ID (UUID) to apply to the isolated browser session. When present, enables watermark rendering in the isolated browser.",
+																				"example": "475345dc-5299-4b6e-8f6a-3d3e4c8e9f1a",
+																				"format": "uuid",
+																				"maxLength": 36,
+																				"minLength": 1,
 																				"type": "string",
 																				"x-auditable": true
 																			}
@@ -6077,13 +6169,15 @@
 																"description": "Indicate that this rule is sharable via the Orgs API.",
 																"readOnly": true,
 																"type": "boolean",
-																"x-auditable": true
+																"x-auditable": true,
+																"x-stainless-terraform-configurability": "computed"
 															},
 															"source_account": {
 																"description": "Provide the account tag of the account that created the rule.",
 																"readOnly": true,
 																"type": "string",
-																"x-auditable": true
+																"x-auditable": true,
+																"x-stainless-terraform-configurability": "computed"
 															},
 															"traffic": {
 																"default": "",
@@ -6104,13 +6198,15 @@
 																"example": 1,
 																"readOnly": true,
 																"type": "integer",
-																"x-auditable": true
+																"x-auditable": true,
+																"x-stainless-terraform-configurability": "computed"
 															},
 															"warning_status": {
 																"description": "Indicate a warning for a misconfigured rule, if any.",
 																"nullable": true,
 																"readOnly": true,
-																"type": "string"
+																"type": "string",
+																"x-stainless-terraform-configurability": "computed"
 															}
 														},
 														"required": [
@@ -6318,7 +6414,8 @@
 										"example": false,
 										"readOnly": true,
 										"type": "boolean",
-										"x-auditable": true
+										"x-auditable": true,
+										"x-stainless-terraform-configurability": "computed"
 									},
 									"expires_at": {
 										"allOf": [
@@ -6461,7 +6558,7 @@
 												"x-auditable": true
 											},
 											"download": {
-												"description": "Configure download behavior. When set to remote_only, users can view downloads but cannot save them. Applies only when version == \"v2\".",
+												"description": "Configure download behavior. When set to remote_only, users can view downloads but cannot save them. If this field is absent, downloading remains enabled. Applies only when version == \"v2\".",
 												"enum": [
 													"enabled",
 													"disabled",
@@ -6530,6 +6627,15 @@
 													"v1",
 													"v2"
 												],
+												"type": "string",
+												"x-auditable": true
+											},
+											"wm_id": {
+												"description": "Specify the watermark ID (UUID) to apply to the isolated browser session. When present, enables watermark rendering in the isolated browser.",
+												"example": "475345dc-5299-4b6e-8f6a-3d3e4c8e9f1a",
+												"format": "uuid",
+												"maxLength": 36,
+												"minLength": 1,
 												"type": "string",
 												"x-auditable": true
 											}
@@ -7129,7 +7235,8 @@
 													"format": "date-time",
 													"nullable": true,
 													"readOnly": true,
-													"type": "string"
+													"type": "string",
+													"x-stainless-terraform-configurability": "computed"
 												},
 												"description": {
 													"description": "Specify the rule description.",
@@ -7168,7 +7275,8 @@
 															"example": false,
 															"readOnly": true,
 															"type": "boolean",
-															"x-auditable": true
+															"x-auditable": true,
+															"x-stainless-terraform-configurability": "computed"
 														},
 														"expires_at": {
 															"allOf": [
@@ -7245,7 +7353,8 @@
 													"description": "Indicate that this rule is shared via the Orgs API and read only.",
 													"readOnly": true,
 													"type": "boolean",
-													"x-auditable": true
+													"x-auditable": true,
+													"x-stainless-terraform-configurability": "computed"
 												},
 												"rule_settings": {
 													"description": "Defines settings for this rule. Settings apply only to specific rule types and must use compatible selectors. If Terraform detects drift, confirm the setting supports your rule type and check whether the API modifies the value. Use API-returned values in your configuration to prevent drift.",
@@ -7324,7 +7433,7 @@
 																	"x-auditable": true
 																},
 																"download": {
-																	"description": "Configure download behavior. When set to remote_only, users can view downloads but cannot save them. Applies only when version == \"v2\".",
+																	"description": "Configure download behavior. When set to remote_only, users can view downloads but cannot save them. If this field is absent, downloading remains enabled. Applies only when version == \"v2\".",
 																	"enum": [
 																		"enabled",
 																		"disabled",
@@ -7393,6 +7502,15 @@
 																		"v1",
 																		"v2"
 																	],
+																	"type": "string",
+																	"x-auditable": true
+																},
+																"wm_id": {
+																	"description": "Specify the watermark ID (UUID) to apply to the isolated browser session. When present, enables watermark rendering in the isolated browser.",
+																	"example": "475345dc-5299-4b6e-8f6a-3d3e4c8e9f1a",
+																	"format": "uuid",
+																	"maxLength": 36,
+																	"minLength": 1,
 																	"type": "string",
 																	"x-auditable": true
 																}
@@ -7867,13 +7985,15 @@
 													"description": "Indicate that this rule is sharable via the Orgs API.",
 													"readOnly": true,
 													"type": "boolean",
-													"x-auditable": true
+													"x-auditable": true,
+													"x-stainless-terraform-configurability": "computed"
 												},
 												"source_account": {
 													"description": "Provide the account tag of the account that created the rule.",
 													"readOnly": true,
 													"type": "string",
-													"x-auditable": true
+													"x-auditable": true,
+													"x-stainless-terraform-configurability": "computed"
 												},
 												"traffic": {
 													"default": "",
@@ -7894,13 +8014,15 @@
 													"example": 1,
 													"readOnly": true,
 													"type": "integer",
-													"x-auditable": true
+													"x-auditable": true,
+													"x-stainless-terraform-configurability": "computed"
 												},
 												"warning_status": {
 													"description": "Indicate a warning for a misconfigured rule, if any.",
 													"nullable": true,
 													"readOnly": true,
-													"type": "string"
+													"type": "string",
+													"x-stainless-terraform-configurability": "computed"
 												}
 											},
 											"required": [
@@ -8037,7 +8159,8 @@
 															"format": "date-time",
 															"nullable": true,
 															"readOnly": true,
-															"type": "string"
+															"type": "string",
+															"x-stainless-terraform-configurability": "computed"
 														},
 														"description": {
 															"description": "Specify the rule description.",
@@ -8076,7 +8199,8 @@
 																	"example": false,
 																	"readOnly": true,
 																	"type": "boolean",
-																	"x-auditable": true
+																	"x-auditable": true,
+																	"x-stainless-terraform-configurability": "computed"
 																},
 																"expires_at": {
 																	"allOf": [
@@ -8153,7 +8277,8 @@
 															"description": "Indicate that this rule is shared via the Orgs API and read only.",
 															"readOnly": true,
 															"type": "boolean",
-															"x-auditable": true
+															"x-auditable": true,
+															"x-stainless-terraform-configurability": "computed"
 														},
 														"rule_settings": {
 															"description": "Defines settings for this rule. Settings apply only to specific rule types and must use compatible selectors. If Terraform detects drift, confirm the setting supports your rule type and check whether the API modifies the value. Use API-returned values in your configuration to prevent drift.",
@@ -8232,7 +8357,7 @@
 																			"x-auditable": true
 																		},
 																		"download": {
-																			"description": "Configure download behavior. When set to remote_only, users can view downloads but cannot save them. Applies only when version == \"v2\".",
+																			"description": "Configure download behavior. When set to remote_only, users can view downloads but cannot save them. If this field is absent, downloading remains enabled. Applies only when version == \"v2\".",
 																			"enum": [
 																				"enabled",
 																				"disabled",
@@ -8301,6 +8426,15 @@
 																				"v1",
 																				"v2"
 																			],
+																			"type": "string",
+																			"x-auditable": true
+																		},
+																		"wm_id": {
+																			"description": "Specify the watermark ID (UUID) to apply to the isolated browser session. When present, enables watermark rendering in the isolated browser.",
+																			"example": "475345dc-5299-4b6e-8f6a-3d3e4c8e9f1a",
+																			"format": "uuid",
+																			"maxLength": 36,
+																			"minLength": 1,
 																			"type": "string",
 																			"x-auditable": true
 																		}
@@ -8775,13 +8909,15 @@
 															"description": "Indicate that this rule is sharable via the Orgs API.",
 															"readOnly": true,
 															"type": "boolean",
-															"x-auditable": true
+															"x-auditable": true,
+															"x-stainless-terraform-configurability": "computed"
 														},
 														"source_account": {
 															"description": "Provide the account tag of the account that created the rule.",
 															"readOnly": true,
 															"type": "string",
-															"x-auditable": true
+															"x-auditable": true,
+															"x-stainless-terraform-configurability": "computed"
 														},
 														"traffic": {
 															"default": "",
@@ -8802,13 +8938,15 @@
 															"example": 1,
 															"readOnly": true,
 															"type": "integer",
-															"x-auditable": true
+															"x-auditable": true,
+															"x-stainless-terraform-configurability": "computed"
 														},
 														"warning_status": {
 															"description": "Indicate a warning for a misconfigured rule, if any.",
 															"nullable": true,
 															"readOnly": true,
-															"type": "string"
+															"type": "string",
+															"x-stainless-terraform-configurability": "computed"
 														}
 													},
 													"required": [
@@ -9070,7 +9208,8 @@
 													"format": "date-time",
 													"nullable": true,
 													"readOnly": true,
-													"type": "string"
+													"type": "string",
+													"x-stainless-terraform-configurability": "computed"
 												},
 												"description": {
 													"description": "Specify the rule description.",
@@ -9109,7 +9248,8 @@
 															"example": false,
 															"readOnly": true,
 															"type": "boolean",
-															"x-auditable": true
+															"x-auditable": true,
+															"x-stainless-terraform-configurability": "computed"
 														},
 														"expires_at": {
 															"allOf": [
@@ -9186,7 +9326,8 @@
 													"description": "Indicate that this rule is shared via the Orgs API and read only.",
 													"readOnly": true,
 													"type": "boolean",
-													"x-auditable": true
+													"x-auditable": true,
+													"x-stainless-terraform-configurability": "computed"
 												},
 												"rule_settings": {
 													"description": "Defines settings for this rule. Settings apply only to specific rule types and must use compatible selectors. If Terraform detects drift, confirm the setting supports your rule type and check whether the API modifies the value. Use API-returned values in your configuration to prevent drift.",
@@ -9265,7 +9406,7 @@
 																	"x-auditable": true
 																},
 																"download": {
-																	"description": "Configure download behavior. When set to remote_only, users can view downloads but cannot save them. Applies only when version == \"v2\".",
+																	"description": "Configure download behavior. When set to remote_only, users can view downloads but cannot save them. If this field is absent, downloading remains enabled. Applies only when version == \"v2\".",
 																	"enum": [
 																		"enabled",
 																		"disabled",
@@ -9334,6 +9475,15 @@
 																		"v1",
 																		"v2"
 																	],
+																	"type": "string",
+																	"x-auditable": true
+																},
+																"wm_id": {
+																	"description": "Specify the watermark ID (UUID) to apply to the isolated browser session. When present, enables watermark rendering in the isolated browser.",
+																	"example": "475345dc-5299-4b6e-8f6a-3d3e4c8e9f1a",
+																	"format": "uuid",
+																	"maxLength": 36,
+																	"minLength": 1,
 																	"type": "string",
 																	"x-auditable": true
 																}
@@ -9808,13 +9958,15 @@
 													"description": "Indicate that this rule is sharable via the Orgs API.",
 													"readOnly": true,
 													"type": "boolean",
-													"x-auditable": true
+													"x-auditable": true,
+													"x-stainless-terraform-configurability": "computed"
 												},
 												"source_account": {
 													"description": "Provide the account tag of the account that created the rule.",
 													"readOnly": true,
 													"type": "string",
-													"x-auditable": true
+													"x-auditable": true,
+													"x-stainless-terraform-configurability": "computed"
 												},
 												"traffic": {
 													"default": "",
@@ -9835,13 +9987,15 @@
 													"example": 1,
 													"readOnly": true,
 													"type": "integer",
-													"x-auditable": true
+													"x-auditable": true,
+													"x-stainless-terraform-configurability": "computed"
 												},
 												"warning_status": {
 													"description": "Indicate a warning for a misconfigured rule, if any.",
 													"nullable": true,
 													"readOnly": true,
-													"type": "string"
+													"type": "string",
+													"x-stainless-terraform-configurability": "computed"
 												}
 											},
 											"required": [
@@ -9975,7 +10129,8 @@
 															"format": "date-time",
 															"nullable": true,
 															"readOnly": true,
-															"type": "string"
+															"type": "string",
+															"x-stainless-terraform-configurability": "computed"
 														},
 														"description": {
 															"description": "Specify the rule description.",
@@ -10014,7 +10169,8 @@
 																	"example": false,
 																	"readOnly": true,
 																	"type": "boolean",
-																	"x-auditable": true
+																	"x-auditable": true,
+																	"x-stainless-terraform-configurability": "computed"
 																},
 																"expires_at": {
 																	"allOf": [
@@ -10091,7 +10247,8 @@
 															"description": "Indicate that this rule is shared via the Orgs API and read only.",
 															"readOnly": true,
 															"type": "boolean",
-															"x-auditable": true
+															"x-auditable": true,
+															"x-stainless-terraform-configurability": "computed"
 														},
 														"rule_settings": {
 															"description": "Defines settings for this rule. Settings apply only to specific rule types and must use compatible selectors. If Terraform detects drift, confirm the setting supports your rule type and check whether the API modifies the value. Use API-returned values in your configuration to prevent drift.",
@@ -10170,7 +10327,7 @@
 																			"x-auditable": true
 																		},
 																		"download": {
-																			"description": "Configure download behavior. When set to remote_only, users can view downloads but cannot save them. Applies only when version == \"v2\".",
+																			"description": "Configure download behavior. When set to remote_only, users can view downloads but cannot save them. If this field is absent, downloading remains enabled. Applies only when version == \"v2\".",
 																			"enum": [
 																				"enabled",
 																				"disabled",
@@ -10239,6 +10396,15 @@
 																				"v1",
 																				"v2"
 																			],
+																			"type": "string",
+																			"x-auditable": true
+																		},
+																		"wm_id": {
+																			"description": "Specify the watermark ID (UUID) to apply to the isolated browser session. When present, enables watermark rendering in the isolated browser.",
+																			"example": "475345dc-5299-4b6e-8f6a-3d3e4c8e9f1a",
+																			"format": "uuid",
+																			"maxLength": 36,
+																			"minLength": 1,
 																			"type": "string",
 																			"x-auditable": true
 																		}
@@ -10713,13 +10879,15 @@
 															"description": "Indicate that this rule is sharable via the Orgs API.",
 															"readOnly": true,
 															"type": "boolean",
-															"x-auditable": true
+															"x-auditable": true,
+															"x-stainless-terraform-configurability": "computed"
 														},
 														"source_account": {
 															"description": "Provide the account tag of the account that created the rule.",
 															"readOnly": true,
 															"type": "string",
-															"x-auditable": true
+															"x-auditable": true,
+															"x-stainless-terraform-configurability": "computed"
 														},
 														"traffic": {
 															"default": "",
@@ -10740,13 +10908,15 @@
 															"example": 1,
 															"readOnly": true,
 															"type": "integer",
-															"x-auditable": true
+															"x-auditable": true,
+															"x-stainless-terraform-configurability": "computed"
 														},
 														"warning_status": {
 															"description": "Indicate a warning for a misconfigured rule, if any.",
 															"nullable": true,
 															"readOnly": true,
-															"type": "string"
+															"type": "string",
+															"x-stainless-terraform-configurability": "computed"
 														}
 													},
 													"required": [
@@ -10964,7 +11134,8 @@
 										"example": false,
 										"readOnly": true,
 										"type": "boolean",
-										"x-auditable": true
+										"x-auditable": true,
+										"x-stainless-terraform-configurability": "computed"
 									},
 									"expires_at": {
 										"allOf": [
@@ -11107,7 +11278,7 @@
 												"x-auditable": true
 											},
 											"download": {
-												"description": "Configure download behavior. When set to remote_only, users can view downloads but cannot save them. Applies only when version == \"v2\".",
+												"description": "Configure download behavior. When set to remote_only, users can view downloads but cannot save them. If this field is absent, downloading remains enabled. Applies only when version == \"v2\".",
 												"enum": [
 													"enabled",
 													"disabled",
@@ -11176,6 +11347,15 @@
 													"v1",
 													"v2"
 												],
+												"type": "string",
+												"x-auditable": true
+											},
+											"wm_id": {
+												"description": "Specify the watermark ID (UUID) to apply to the isolated browser session. When present, enables watermark rendering in the isolated browser.",
+												"example": "475345dc-5299-4b6e-8f6a-3d3e4c8e9f1a",
+												"format": "uuid",
+												"maxLength": 36,
+												"minLength": 1,
 												"type": "string",
 												"x-auditable": true
 											}
@@ -11775,7 +11955,8 @@
 													"format": "date-time",
 													"nullable": true,
 													"readOnly": true,
-													"type": "string"
+													"type": "string",
+													"x-stainless-terraform-configurability": "computed"
 												},
 												"description": {
 													"description": "Specify the rule description.",
@@ -11814,7 +11995,8 @@
 															"example": false,
 															"readOnly": true,
 															"type": "boolean",
-															"x-auditable": true
+															"x-auditable": true,
+															"x-stainless-terraform-configurability": "computed"
 														},
 														"expires_at": {
 															"allOf": [
@@ -11891,7 +12073,8 @@
 													"description": "Indicate that this rule is shared via the Orgs API and read only.",
 													"readOnly": true,
 													"type": "boolean",
-													"x-auditable": true
+													"x-auditable": true,
+													"x-stainless-terraform-configurability": "computed"
 												},
 												"rule_settings": {
 													"description": "Defines settings for this rule. Settings apply only to specific rule types and must use compatible selectors. If Terraform detects drift, confirm the setting supports your rule type and check whether the API modifies the value. Use API-returned values in your configuration to prevent drift.",
@@ -11970,7 +12153,7 @@
 																	"x-auditable": true
 																},
 																"download": {
-																	"description": "Configure download behavior. When set to remote_only, users can view downloads but cannot save them. Applies only when version == \"v2\".",
+																	"description": "Configure download behavior. When set to remote_only, users can view downloads but cannot save them. If this field is absent, downloading remains enabled. Applies only when version == \"v2\".",
 																	"enum": [
 																		"enabled",
 																		"disabled",
@@ -12039,6 +12222,15 @@
 																		"v1",
 																		"v2"
 																	],
+																	"type": "string",
+																	"x-auditable": true
+																},
+																"wm_id": {
+																	"description": "Specify the watermark ID (UUID) to apply to the isolated browser session. When present, enables watermark rendering in the isolated browser.",
+																	"example": "475345dc-5299-4b6e-8f6a-3d3e4c8e9f1a",
+																	"format": "uuid",
+																	"maxLength": 36,
+																	"minLength": 1,
 																	"type": "string",
 																	"x-auditable": true
 																}
@@ -12513,13 +12705,15 @@
 													"description": "Indicate that this rule is sharable via the Orgs API.",
 													"readOnly": true,
 													"type": "boolean",
-													"x-auditable": true
+													"x-auditable": true,
+													"x-stainless-terraform-configurability": "computed"
 												},
 												"source_account": {
 													"description": "Provide the account tag of the account that created the rule.",
 													"readOnly": true,
 													"type": "string",
-													"x-auditable": true
+													"x-auditable": true,
+													"x-stainless-terraform-configurability": "computed"
 												},
 												"traffic": {
 													"default": "",
@@ -12540,13 +12734,15 @@
 													"example": 1,
 													"readOnly": true,
 													"type": "integer",
-													"x-auditable": true
+													"x-auditable": true,
+													"x-stainless-terraform-configurability": "computed"
 												},
 												"warning_status": {
 													"description": "Indicate a warning for a misconfigured rule, if any.",
 													"nullable": true,
 													"readOnly": true,
-													"type": "string"
+													"type": "string",
+													"x-stainless-terraform-configurability": "computed"
 												}
 											},
 											"required": [
@@ -12683,7 +12879,8 @@
 															"format": "date-time",
 															"nullable": true,
 															"readOnly": true,
-															"type": "string"
+															"type": "string",
+															"x-stainless-terraform-configurability": "computed"
 														},
 														"description": {
 															"description": "Specify the rule description.",
@@ -12722,7 +12919,8 @@
 																	"example": false,
 																	"readOnly": true,
 																	"type": "boolean",
-																	"x-auditable": true
+																	"x-auditable": true,
+																	"x-stainless-terraform-configurability": "computed"
 																},
 																"expires_at": {
 																	"allOf": [
@@ -12799,7 +12997,8 @@
 															"description": "Indicate that this rule is shared via the Orgs API and read only.",
 															"readOnly": true,
 															"type": "boolean",
-															"x-auditable": true
+															"x-auditable": true,
+															"x-stainless-terraform-configurability": "computed"
 														},
 														"rule_settings": {
 															"description": "Defines settings for this rule. Settings apply only to specific rule types and must use compatible selectors. If Terraform detects drift, confirm the setting supports your rule type and check whether the API modifies the value. Use API-returned values in your configuration to prevent drift.",
@@ -12878,7 +13077,7 @@
 																			"x-auditable": true
 																		},
 																		"download": {
-																			"description": "Configure download behavior. When set to remote_only, users can view downloads but cannot save them. Applies only when version == \"v2\".",
+																			"description": "Configure download behavior. When set to remote_only, users can view downloads but cannot save them. If this field is absent, downloading remains enabled. Applies only when version == \"v2\".",
 																			"enum": [
 																				"enabled",
 																				"disabled",
@@ -12947,6 +13146,15 @@
 																				"v1",
 																				"v2"
 																			],
+																			"type": "string",
+																			"x-auditable": true
+																		},
+																		"wm_id": {
+																			"description": "Specify the watermark ID (UUID) to apply to the isolated browser session. When present, enables watermark rendering in the isolated browser.",
+																			"example": "475345dc-5299-4b6e-8f6a-3d3e4c8e9f1a",
+																			"format": "uuid",
+																			"maxLength": 36,
+																			"minLength": 1,
 																			"type": "string",
 																			"x-auditable": true
 																		}
@@ -13421,13 +13629,15 @@
 															"description": "Indicate that this rule is sharable via the Orgs API.",
 															"readOnly": true,
 															"type": "boolean",
-															"x-auditable": true
+															"x-auditable": true,
+															"x-stainless-terraform-configurability": "computed"
 														},
 														"source_account": {
 															"description": "Provide the account tag of the account that created the rule.",
 															"readOnly": true,
 															"type": "string",
-															"x-auditable": true
+															"x-auditable": true,
+															"x-stainless-terraform-configurability": "computed"
 														},
 														"traffic": {
 															"default": "",
@@ -13448,13 +13658,15 @@
 															"example": 1,
 															"readOnly": true,
 															"type": "integer",
-															"x-auditable": true
+															"x-auditable": true,
+															"x-stainless-terraform-configurability": "computed"
 														},
 														"warning_status": {
 															"description": "Indicate a warning for a misconfigured rule, if any.",
 															"nullable": true,
 															"readOnly": true,
-															"type": "string"
+															"type": "string",
+															"x-stainless-terraform-configurability": "computed"
 														}
 													},
 													"required": [
