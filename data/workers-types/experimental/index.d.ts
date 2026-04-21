@@ -14331,7 +14331,12 @@ declare namespace CloudflareWorkersModule {
     type: string;
   };
   export type WorkflowStepContext = {
+    step: {
+      name: string;
+      count: number;
+    };
     attempt: number;
+    config: WorkflowStepConfig;
   };
   export abstract class WorkflowStep {
     do<T extends Rpc.Serializable<T>>(
