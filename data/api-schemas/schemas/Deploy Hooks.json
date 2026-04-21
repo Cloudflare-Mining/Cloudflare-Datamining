@@ -1,0 +1,1671 @@
+{
+	"DELETE /accounts/{account_id}/builds/workers/{script_name}/deploy_hooks/{deploy_hook_uuid}": {
+		"description": "Delete a deploy hook.",
+		"operationId": "deleteDeployHook",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"description": "Account identifier.",
+					"example": "account-123",
+					"type": "string"
+				}
+			},
+			{
+				"description": "Human-readable name of the worker.",
+				"in": "path",
+				"name": "script_name",
+				"required": true,
+				"schema": {
+					"description": "Human-readable name of the worker.",
+					"example": "my-worker",
+					"type": "string"
+				}
+			},
+			{
+				"description": "Deploy hook UUID",
+				"in": "path",
+				"name": "deploy_hook_uuid",
+				"required": true,
+				"schema": {
+					"description": "Deploy hook UUID.",
+					"format": "uuid",
+					"type": "string"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"properties": {
+										"errors": {
+											"items": {
+												"properties": {
+													"code": {
+														"example": 12000,
+														"type": "integer"
+													},
+													"message": {
+														"example": "Not found",
+														"type": "string"
+													}
+												},
+												"type": "object"
+											},
+											"type": "array"
+										},
+										"messages": {
+											"items": {
+												"type": "string"
+											},
+											"type": "array"
+										},
+										"result": {
+											"nullable": true,
+											"type": "object"
+										},
+										"result_info": {
+											"properties": {
+												"count": {
+													"example": 25,
+													"type": "integer"
+												},
+												"page": {
+													"example": 1,
+													"type": "integer"
+												},
+												"per_page": {
+													"example": 50,
+													"type": "integer"
+												},
+												"total_count": {
+													"example": 150,
+													"type": "integer"
+												},
+												"total_pages": {
+													"example": 3,
+													"type": "integer"
+												}
+											},
+											"type": "object"
+										},
+										"success": {
+											"example": true,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"result": {
+											"properties": {
+												"branch": {
+													"description": "Git branch name.",
+													"example": "main",
+													"type": "string"
+												},
+												"created_on": {
+													"format": "date-time",
+													"type": "string"
+												},
+												"deploy_hook_name": {
+													"description": "Deploy hook name (1-58 characters).",
+													"example": "Production Deploy Hook",
+													"maxLength": 58,
+													"minLength": 1,
+													"type": "string"
+												},
+												"deploy_hook_uuid": {
+													"description": "Deploy hook UUID.",
+													"format": "uuid",
+													"type": "string"
+												},
+												"external_script_id": {
+													"description": "System-generated worker script tag.",
+													"example": "dd7160bb9cef458093557736f4b9e75b",
+													"type": "string"
+												},
+												"modified_on": {
+													"format": "date-time",
+													"type": "string"
+												}
+											},
+											"type": "object"
+										}
+									},
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "Deploy hook deleted successfully"
+			},
+			"404": {
+				"content": {
+					"application/json": {
+						"example": {
+							"errors": [
+								{
+									"code": 12000,
+									"message": "Not found"
+								}
+							],
+							"messages": [],
+							"result": null,
+							"success": false
+						},
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"code": {
+												"example": 12000,
+												"type": "integer"
+											},
+											"message": {
+												"example": "Not found",
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"messages": {
+									"items": {
+										"type": "string"
+									},
+									"type": "array"
+								},
+								"result": {
+									"nullable": true,
+									"type": "object"
+								},
+								"success": {
+									"example": false,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Resource not found"
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Delete deploy hook",
+		"tags": [
+			"Deploy Hooks"
+		],
+		"x-api-token-group": [
+			"Workers CI Write"
+		]
+	},
+	"GET /accounts/{account_id}/builds/workers/{script_name}/deploy_hooks": {
+		"description": "Get all deploy hooks for a specific worker script.",
+		"operationId": "listDeployHooks",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"description": "Account identifier.",
+					"example": "account-123",
+					"type": "string"
+				}
+			},
+			{
+				"description": "Human-readable name of the worker.",
+				"in": "path",
+				"name": "script_name",
+				"required": true,
+				"schema": {
+					"description": "Human-readable name of the worker.",
+					"example": "my-worker",
+					"type": "string"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"properties": {
+										"errors": {
+											"items": {
+												"properties": {
+													"code": {
+														"example": 12000,
+														"type": "integer"
+													},
+													"message": {
+														"example": "Not found",
+														"type": "string"
+													}
+												},
+												"type": "object"
+											},
+											"type": "array"
+										},
+										"messages": {
+											"items": {
+												"type": "string"
+											},
+											"type": "array"
+										},
+										"result": {
+											"nullable": true,
+											"type": "object"
+										},
+										"result_info": {
+											"properties": {
+												"count": {
+													"example": 25,
+													"type": "integer"
+												},
+												"page": {
+													"example": 1,
+													"type": "integer"
+												},
+												"per_page": {
+													"example": 50,
+													"type": "integer"
+												},
+												"total_count": {
+													"example": 150,
+													"type": "integer"
+												},
+												"total_pages": {
+													"example": 3,
+													"type": "integer"
+												}
+											},
+											"type": "object"
+										},
+										"success": {
+											"example": true,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"result": {
+											"items": {
+												"properties": {
+													"branch": {
+														"description": "Git branch name.",
+														"example": "main",
+														"type": "string"
+													},
+													"created_on": {
+														"format": "date-time",
+														"type": "string"
+													},
+													"deploy_hook_name": {
+														"description": "Deploy hook name (1-58 characters).",
+														"example": "Production Deploy Hook",
+														"maxLength": 58,
+														"minLength": 1,
+														"type": "string"
+													},
+													"deploy_hook_uuid": {
+														"description": "Deploy hook UUID.",
+														"format": "uuid",
+														"type": "string"
+													},
+													"external_script_id": {
+														"description": "System-generated worker script tag.",
+														"example": "dd7160bb9cef458093557736f4b9e75b",
+														"type": "string"
+													},
+													"latest_build": {
+														"nullable": true,
+														"properties": {
+															"created_on": {
+																"format": "date-time",
+																"type": "string"
+															}
+														},
+														"type": "object"
+													},
+													"modified_on": {
+														"format": "date-time",
+														"type": "string"
+													}
+												},
+												"type": "object"
+											},
+											"type": "array"
+										}
+									},
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "Deploy hooks retrieved successfully"
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "List deploy hooks",
+		"tags": [
+			"Deploy Hooks"
+		],
+		"x-api-token-group": [
+			"Workers CI Write",
+			"Workers CI Read"
+		]
+	},
+	"GET /accounts/{account_id}/builds/workers/{script_name}/deploy_hooks/{deploy_hook_uuid}": {
+		"description": "Get details of a specific deploy hook.",
+		"operationId": "getDeployHook",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"description": "Account identifier.",
+					"example": "account-123",
+					"type": "string"
+				}
+			},
+			{
+				"description": "Human-readable name of the worker.",
+				"in": "path",
+				"name": "script_name",
+				"required": true,
+				"schema": {
+					"description": "Human-readable name of the worker.",
+					"example": "my-worker",
+					"type": "string"
+				}
+			},
+			{
+				"description": "Deploy hook UUID",
+				"in": "path",
+				"name": "deploy_hook_uuid",
+				"required": true,
+				"schema": {
+					"description": "Deploy hook UUID.",
+					"format": "uuid",
+					"type": "string"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"properties": {
+										"errors": {
+											"items": {
+												"properties": {
+													"code": {
+														"example": 12000,
+														"type": "integer"
+													},
+													"message": {
+														"example": "Not found",
+														"type": "string"
+													}
+												},
+												"type": "object"
+											},
+											"type": "array"
+										},
+										"messages": {
+											"items": {
+												"type": "string"
+											},
+											"type": "array"
+										},
+										"result": {
+											"nullable": true,
+											"type": "object"
+										},
+										"result_info": {
+											"properties": {
+												"count": {
+													"example": 25,
+													"type": "integer"
+												},
+												"page": {
+													"example": 1,
+													"type": "integer"
+												},
+												"per_page": {
+													"example": 50,
+													"type": "integer"
+												},
+												"total_count": {
+													"example": 150,
+													"type": "integer"
+												},
+												"total_pages": {
+													"example": 3,
+													"type": "integer"
+												}
+											},
+											"type": "object"
+										},
+										"success": {
+											"example": true,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"result": {
+											"properties": {
+												"branch": {
+													"description": "Git branch name.",
+													"example": "main",
+													"type": "string"
+												},
+												"created_on": {
+													"format": "date-time",
+													"type": "string"
+												},
+												"deploy_hook_name": {
+													"description": "Deploy hook name (1-58 characters).",
+													"example": "Production Deploy Hook",
+													"maxLength": 58,
+													"minLength": 1,
+													"type": "string"
+												},
+												"deploy_hook_uuid": {
+													"description": "Deploy hook UUID.",
+													"format": "uuid",
+													"type": "string"
+												},
+												"external_script_id": {
+													"description": "System-generated worker script tag.",
+													"example": "dd7160bb9cef458093557736f4b9e75b",
+													"type": "string"
+												},
+												"modified_on": {
+													"format": "date-time",
+													"type": "string"
+												}
+											},
+											"type": "object"
+										}
+									},
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "Deploy hook retrieved successfully"
+			},
+			"404": {
+				"content": {
+					"application/json": {
+						"example": {
+							"errors": [
+								{
+									"code": 12000,
+									"message": "Not found"
+								}
+							],
+							"messages": [],
+							"result": null,
+							"success": false
+						},
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"code": {
+												"example": 12000,
+												"type": "integer"
+											},
+											"message": {
+												"example": "Not found",
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"messages": {
+									"items": {
+										"type": "string"
+									},
+									"type": "array"
+								},
+								"result": {
+									"nullable": true,
+									"type": "object"
+								},
+								"success": {
+									"example": false,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Resource not found"
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Get deploy hook",
+		"tags": [
+			"Deploy Hooks"
+		],
+		"x-api-token-group": [
+			"Workers CI Write",
+			"Workers CI Read"
+		]
+	},
+	"POST /accounts/{account_id}/builds/workers/{script_name}/deploy_hooks": {
+		"description": "Create a new deploy hook for a worker script.",
+		"operationId": "createDeployHook",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"description": "Account identifier.",
+					"example": "account-123",
+					"type": "string"
+				}
+			},
+			{
+				"description": "Human-readable name of the worker.",
+				"in": "path",
+				"name": "script_name",
+				"required": true,
+				"schema": {
+					"description": "Human-readable name of the worker.",
+					"example": "my-worker",
+					"type": "string"
+				}
+			}
+		],
+		"requestBody": {
+			"content": {
+				"application/json": {
+					"schema": {
+						"properties": {
+							"branch": {
+								"description": "Git branch name.",
+								"example": "main",
+								"type": "string"
+							},
+							"deploy_hook_name": {
+								"description": "Deploy hook name (1-58 characters).",
+								"example": "Production Deploy Hook",
+								"maxLength": 58,
+								"minLength": 1,
+								"type": "string"
+							}
+						},
+						"required": [
+							"deploy_hook_name",
+							"branch"
+						],
+						"type": "object"
+					}
+				}
+			},
+			"required": true
+		},
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"properties": {
+										"errors": {
+											"items": {
+												"properties": {
+													"code": {
+														"example": 12000,
+														"type": "integer"
+													},
+													"message": {
+														"example": "Not found",
+														"type": "string"
+													}
+												},
+												"type": "object"
+											},
+											"type": "array"
+										},
+										"messages": {
+											"items": {
+												"type": "string"
+											},
+											"type": "array"
+										},
+										"result": {
+											"nullable": true,
+											"type": "object"
+										},
+										"result_info": {
+											"properties": {
+												"count": {
+													"example": 25,
+													"type": "integer"
+												},
+												"page": {
+													"example": 1,
+													"type": "integer"
+												},
+												"per_page": {
+													"example": 50,
+													"type": "integer"
+												},
+												"total_count": {
+													"example": 150,
+													"type": "integer"
+												},
+												"total_pages": {
+													"example": 3,
+													"type": "integer"
+												}
+											},
+											"type": "object"
+										},
+										"success": {
+											"example": true,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"result": {
+											"properties": {
+												"branch": {
+													"description": "Git branch name.",
+													"example": "main",
+													"type": "string"
+												},
+												"created_on": {
+													"format": "date-time",
+													"type": "string"
+												},
+												"deploy_hook_name": {
+													"description": "Deploy hook name (1-58 characters).",
+													"example": "Production Deploy Hook",
+													"maxLength": 58,
+													"minLength": 1,
+													"type": "string"
+												},
+												"deploy_hook_uuid": {
+													"description": "Deploy hook UUID.",
+													"format": "uuid",
+													"type": "string"
+												},
+												"external_script_id": {
+													"description": "System-generated worker script tag.",
+													"example": "dd7160bb9cef458093557736f4b9e75b",
+													"type": "string"
+												},
+												"modified_on": {
+													"format": "date-time",
+													"type": "string"
+												}
+											},
+											"type": "object"
+										}
+									},
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "Deploy hook created successfully"
+			},
+			"400": {
+				"content": {
+					"application/json": {
+						"example": {
+							"errors": [
+								{
+									"code": 12002,
+									"message": "Invalid request body"
+								}
+							],
+							"messages": [],
+							"result": null,
+							"success": false
+						},
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"code": {
+												"example": 12000,
+												"type": "integer"
+											},
+											"message": {
+												"example": "Not found",
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"messages": {
+									"items": {
+										"type": "string"
+									},
+									"type": "array"
+								},
+								"result": {
+									"nullable": true,
+									"type": "object"
+								},
+								"success": {
+									"example": false,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Invalid request"
+			},
+			"404": {
+				"content": {
+					"application/json": {
+						"example": {
+							"errors": [
+								{
+									"code": 12000,
+									"message": "Not found"
+								}
+							],
+							"messages": [],
+							"result": null,
+							"success": false
+						},
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"code": {
+												"example": 12000,
+												"type": "integer"
+											},
+											"message": {
+												"example": "Not found",
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"messages": {
+									"items": {
+										"type": "string"
+									},
+									"type": "array"
+								},
+								"result": {
+									"nullable": true,
+									"type": "object"
+								},
+								"success": {
+									"example": false,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Resource not found"
+			},
+			"409": {
+				"content": {
+					"application/json": {
+						"example": {
+							"errors": [
+								{
+									"code": 12049,
+									"message": "Resource already exists"
+								}
+							],
+							"messages": [],
+							"result": null,
+							"success": false
+						},
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"code": {
+												"example": 12000,
+												"type": "integer"
+											},
+											"message": {
+												"example": "Not found",
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"messages": {
+									"items": {
+										"type": "string"
+									},
+									"type": "array"
+								},
+								"result": {
+									"nullable": true,
+									"type": "object"
+								},
+								"success": {
+									"example": false,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Conflict - duplicate resource"
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Create deploy hook",
+		"tags": [
+			"Deploy Hooks"
+		],
+		"x-api-token-group": [
+			"Workers CI Write"
+		]
+	},
+	"POST /workers/builds/deploy_hooks/{deploy_hook_uuid}": {
+		"description": "Trigger a build using a deploy hook. This endpoint does not require authentication - the deploy_hook_uuid acts as a secret token.",
+		"operationId": "triggerDeployHook",
+		"parameters": [
+			{
+				"description": "Deploy hook UUID",
+				"in": "path",
+				"name": "deploy_hook_uuid",
+				"required": true,
+				"schema": {
+					"description": "Deploy hook UUID.",
+					"format": "uuid",
+					"type": "string"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"properties": {
+										"errors": {
+											"items": {
+												"properties": {
+													"code": {
+														"example": 12000,
+														"type": "integer"
+													},
+													"message": {
+														"example": "Not found",
+														"type": "string"
+													}
+												},
+												"type": "object"
+											},
+											"type": "array"
+										},
+										"messages": {
+											"items": {
+												"type": "string"
+											},
+											"type": "array"
+										},
+										"result": {
+											"nullable": true,
+											"type": "object"
+										},
+										"result_info": {
+											"properties": {
+												"count": {
+													"example": 25,
+													"type": "integer"
+												},
+												"page": {
+													"example": 1,
+													"type": "integer"
+												},
+												"per_page": {
+													"example": 50,
+													"type": "integer"
+												},
+												"total_count": {
+													"example": 150,
+													"type": "integer"
+												},
+												"total_pages": {
+													"example": 3,
+													"type": "integer"
+												}
+											},
+											"type": "object"
+										},
+										"success": {
+											"example": true,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"result": {
+											"properties": {
+												"already_exists": {
+													"description": "True if a pending build already exists for this branch",
+													"example": false,
+													"type": "boolean"
+												},
+												"build_uuid": {
+													"description": "Build UUID.",
+													"format": "uuid",
+													"type": "string"
+												},
+												"created_on": {
+													"format": "date-time",
+													"type": "string"
+												},
+												"status": {
+													"enum": [
+														"queued",
+														"initializing",
+														"running",
+														"stopped"
+													],
+													"example": "running",
+													"type": "string"
+												}
+											},
+											"type": "object"
+										}
+									},
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "Build triggered successfully"
+			},
+			"404": {
+				"content": {
+					"application/json": {
+						"example": {
+							"errors": [
+								{
+									"code": 12000,
+									"message": "Not found"
+								}
+							],
+							"messages": [],
+							"result": null,
+							"success": false
+						},
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"code": {
+												"example": 12000,
+												"type": "integer"
+											},
+											"message": {
+												"example": "Not found",
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"messages": {
+									"items": {
+										"type": "string"
+									},
+									"type": "array"
+								},
+								"result": {
+									"nullable": true,
+									"type": "object"
+								},
+								"success": {
+									"example": false,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Resource not found"
+			},
+			"429": {
+				"content": {
+					"application/json": {
+						"example": {
+							"errors": [
+								{
+									"code": 12051,
+									"message": "Rate limit exceeded"
+								}
+							],
+							"messages": [],
+							"result": null,
+							"success": false
+						},
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"code": {
+												"example": 12000,
+												"type": "integer"
+											},
+											"message": {
+												"example": "Not found",
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"messages": {
+									"items": {
+										"type": "string"
+									},
+									"type": "array"
+								},
+								"result": {
+									"nullable": true,
+									"type": "object"
+								},
+								"success": {
+									"example": false,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Rate limit exceeded"
+			}
+		},
+		"security": [],
+		"summary": "Trigger deploy hook",
+		"tags": [
+			"Deploy Hooks"
+		]
+	},
+	"PUT /accounts/{account_id}/builds/workers/{script_name}/deploy_hooks/{deploy_hook_uuid}": {
+		"description": "Update an existing deploy hook.",
+		"operationId": "updateDeployHook",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"description": "Account identifier.",
+					"example": "account-123",
+					"type": "string"
+				}
+			},
+			{
+				"description": "Human-readable name of the worker.",
+				"in": "path",
+				"name": "script_name",
+				"required": true,
+				"schema": {
+					"description": "Human-readable name of the worker.",
+					"example": "my-worker",
+					"type": "string"
+				}
+			},
+			{
+				"description": "Deploy hook UUID",
+				"in": "path",
+				"name": "deploy_hook_uuid",
+				"required": true,
+				"schema": {
+					"description": "Deploy hook UUID.",
+					"format": "uuid",
+					"type": "string"
+				}
+			}
+		],
+		"requestBody": {
+			"content": {
+				"application/json": {
+					"schema": {
+						"properties": {
+							"branch": {
+								"description": "Git branch name.",
+								"example": "main",
+								"type": "string"
+							},
+							"deploy_hook_name": {
+								"description": "Deploy hook name (1-58 characters).",
+								"example": "Production Deploy Hook",
+								"maxLength": 58,
+								"minLength": 1,
+								"type": "string"
+							}
+						},
+						"required": [
+							"deploy_hook_name",
+							"branch"
+						],
+						"type": "object"
+					}
+				}
+			},
+			"required": true
+		},
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"properties": {
+										"errors": {
+											"items": {
+												"properties": {
+													"code": {
+														"example": 12000,
+														"type": "integer"
+													},
+													"message": {
+														"example": "Not found",
+														"type": "string"
+													}
+												},
+												"type": "object"
+											},
+											"type": "array"
+										},
+										"messages": {
+											"items": {
+												"type": "string"
+											},
+											"type": "array"
+										},
+										"result": {
+											"nullable": true,
+											"type": "object"
+										},
+										"result_info": {
+											"properties": {
+												"count": {
+													"example": 25,
+													"type": "integer"
+												},
+												"page": {
+													"example": 1,
+													"type": "integer"
+												},
+												"per_page": {
+													"example": 50,
+													"type": "integer"
+												},
+												"total_count": {
+													"example": 150,
+													"type": "integer"
+												},
+												"total_pages": {
+													"example": 3,
+													"type": "integer"
+												}
+											},
+											"type": "object"
+										},
+										"success": {
+											"example": true,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"result": {
+											"properties": {
+												"branch": {
+													"description": "Git branch name.",
+													"example": "main",
+													"type": "string"
+												},
+												"created_on": {
+													"format": "date-time",
+													"type": "string"
+												},
+												"deploy_hook_name": {
+													"description": "Deploy hook name (1-58 characters).",
+													"example": "Production Deploy Hook",
+													"maxLength": 58,
+													"minLength": 1,
+													"type": "string"
+												},
+												"deploy_hook_uuid": {
+													"description": "Deploy hook UUID.",
+													"format": "uuid",
+													"type": "string"
+												},
+												"external_script_id": {
+													"description": "System-generated worker script tag.",
+													"example": "dd7160bb9cef458093557736f4b9e75b",
+													"type": "string"
+												},
+												"modified_on": {
+													"format": "date-time",
+													"type": "string"
+												}
+											},
+											"type": "object"
+										}
+									},
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "Deploy hook updated successfully"
+			},
+			"400": {
+				"content": {
+					"application/json": {
+						"example": {
+							"errors": [
+								{
+									"code": 12002,
+									"message": "Invalid request body"
+								}
+							],
+							"messages": [],
+							"result": null,
+							"success": false
+						},
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"code": {
+												"example": 12000,
+												"type": "integer"
+											},
+											"message": {
+												"example": "Not found",
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"messages": {
+									"items": {
+										"type": "string"
+									},
+									"type": "array"
+								},
+								"result": {
+									"nullable": true,
+									"type": "object"
+								},
+								"success": {
+									"example": false,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Invalid request"
+			},
+			"404": {
+				"content": {
+					"application/json": {
+						"example": {
+							"errors": [
+								{
+									"code": 12000,
+									"message": "Not found"
+								}
+							],
+							"messages": [],
+							"result": null,
+							"success": false
+						},
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"code": {
+												"example": 12000,
+												"type": "integer"
+											},
+											"message": {
+												"example": "Not found",
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"messages": {
+									"items": {
+										"type": "string"
+									},
+									"type": "array"
+								},
+								"result": {
+									"nullable": true,
+									"type": "object"
+								},
+								"success": {
+									"example": false,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Resource not found"
+			},
+			"409": {
+				"content": {
+					"application/json": {
+						"example": {
+							"errors": [
+								{
+									"code": 12049,
+									"message": "Resource already exists"
+								}
+							],
+							"messages": [],
+							"result": null,
+							"success": false
+						},
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"code": {
+												"example": 12000,
+												"type": "integer"
+											},
+											"message": {
+												"example": "Not found",
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"messages": {
+									"items": {
+										"type": "string"
+									},
+									"type": "array"
+								},
+								"result": {
+									"nullable": true,
+									"type": "object"
+								},
+								"success": {
+									"example": false,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Conflict - duplicate resource"
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Update deploy hook",
+		"tags": [
+			"Deploy Hooks"
+		],
+		"x-api-token-group": [
+			"Workers CI Write"
+		]
+	}
+}

@@ -285,8 +285,8 @@
 																		"type": "string"
 																	},
 																	"external_script_id": {
-																		"description": "External script identifier.",
-																		"example": "my-worker",
+																		"description": "System-generated worker script tag.",
+																		"example": "dd7160bb9cef458093557736f4b9e75b",
 																		"type": "string"
 																	},
 																	"modified_on": {
@@ -696,8 +696,8 @@
 															"type": "string"
 														},
 														"external_script_id": {
-															"description": "External script identifier.",
-															"example": "my-worker",
+															"description": "System-generated worker script tag.",
+															"example": "dd7160bb9cef458093557736f4b9e75b",
 															"type": "string"
 														},
 														"modified_on": {
@@ -1134,9 +1134,8 @@
 				"name": "external_script_ids",
 				"required": true,
 				"schema": {
-					"description": "Comma-separated list of external script IDs (max 20).",
-					"example": "worker1,worker2,worker3",
-					"pattern": "^[\\w]+([,][\\w]+)*$",
+					"description": "Comma-separated list of system-generated worker script tags (max 20).",
+					"example": "dd7160bb9cef458093557736f4b9e75b,42fb14fe81df47139d3be684e4c637a6,ff7cf9a7582f4c0d90a4b95cb17d659e",
 					"type": "string"
 				}
 			}
@@ -1402,8 +1401,8 @@
 																		"type": "string"
 																	},
 																	"external_script_id": {
-																		"description": "External script identifier.",
-																		"example": "my-worker",
+																		"description": "System-generated worker script tag.",
+																		"example": "dd7160bb9cef458093557736f4b9e75b",
 																		"type": "string"
 																	},
 																	"modified_on": {

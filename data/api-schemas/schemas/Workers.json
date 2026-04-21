@@ -755,8 +755,8 @@
 				"name": "external_script_id",
 				"required": true,
 				"schema": {
-					"description": "External script identifier.",
-					"example": "my-worker",
+					"description": "System-generated worker script tag.",
+					"example": "dd7160bb9cef458093557736f4b9e75b",
 					"type": "string"
 				}
 			},
@@ -1041,8 +1041,8 @@
 																"type": "string"
 															},
 															"external_script_id": {
-																"description": "External script identifier.",
-																"example": "my-worker",
+																"description": "System-generated worker script tag.",
+																"example": "dd7160bb9cef458093557736f4b9e75b",
 																"type": "string"
 															},
 															"modified_on": {
@@ -1210,8 +1210,8 @@
 				"name": "external_script_id",
 				"required": true,
 				"schema": {
-					"description": "External script identifier.",
-					"example": "my-worker",
+					"description": "System-generated worker script tag.",
+					"example": "dd7160bb9cef458093557736f4b9e75b",
 					"type": "string"
 				}
 			}
@@ -1341,8 +1341,8 @@
 														"type": "string"
 													},
 													"external_script_id": {
-														"description": "External script identifier.",
-														"example": "my-worker",
+														"description": "System-generated worker script tag.",
+														"example": "dd7160bb9cef458093557736f4b9e75b",
 														"type": "string"
 													},
 													"modified_on": {
