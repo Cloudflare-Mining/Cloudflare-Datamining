@@ -4136,6 +4136,9 @@
 		"edgeDnsResponseTimeMs": "",
 		"edgeTimeToFirstByteMs": "",
 		"originResponseDurationMs": "The average originResponseDuration, in milliseconds, excluding 0 values (i.e. cached ones)",
+		"originResponseHeaderReceiveDurationMs": "The average originResponseHeaderReceiveDuration, in milliseconds, excluding 0 values",
+		"originTcpHandshakeDurationMs": "The average originTcpHandshakeDuration, in milliseconds, excluding 0 values",
+		"originTlsHandshakeDurationMs": "The average originTlsHandshakeDuration, in milliseconds, excluding 0 values",
 		"sampleInterval": ""
 	},
 	"AccountHttpRequestsAdaptiveGroupsConfidence": {
@@ -4215,7 +4218,10 @@
 		"originASNDescription": "ASN associated with origin",
 		"originIP": "",
 		"originResponseDurationMs": "",
+		"originResponseHeaderReceiveDurationMs": "The time elapsed between completing the TLS handshake and receiving the origin response headers",
 		"originResponseStatus": "HTTP response status code returned by the origin",
+		"originTcpHandshakeDurationMs": "The time elapsed between the start and completion of the TCP handshake with the origin",
+		"originTlsHandshakeDurationMs": "The time elapsed between the start and completion of the TLS handshake with the origin",
 		"payPerCrawlStatus": "Pay Per Crawl outcome, when applicable (e.g. request enabled for charging and not blocked by a WAF rule)",
 		"requestSource": "",
 		"sampleInterval": "ABR sample interval",
@@ -4273,7 +4279,28 @@
 		"originResponseDurationMsP90": "90th percentile Origin Response Duration (milliseconds)",
 		"originResponseDurationMsP95": "95th percentile Origin Response Duration (milliseconds)",
 		"originResponseDurationMsP99": "99th percentile Origin Response Duration (milliseconds)",
-		"originResponseDurationMsP999": "99.9th percentile Origin Response Duration (milliseconds)"
+		"originResponseDurationMsP999": "99.9th percentile Origin Response Duration (milliseconds)",
+		"originResponseHeaderReceiveDurationMsP25": "25th percentile Origin Response Header Receive Duration (milliseconds)",
+		"originResponseHeaderReceiveDurationMsP50": "50th percentile Origin Response Header Receive Duration (milliseconds)",
+		"originResponseHeaderReceiveDurationMsP75": "75th percentile Origin Response Header Receive Duration (milliseconds)",
+		"originResponseHeaderReceiveDurationMsP90": "90th percentile Origin Response Header Receive Duration (milliseconds)",
+		"originResponseHeaderReceiveDurationMsP95": "95th percentile Origin Response Header Receive Duration (milliseconds)",
+		"originResponseHeaderReceiveDurationMsP99": "99th percentile Origin Response Header Receive Duration (milliseconds)",
+		"originResponseHeaderReceiveDurationMsP999": "99.9th percentile Origin Response Header Receive Duration (milliseconds)",
+		"originTcpHandshakeDurationMsP25": "25th percentile Origin TCP Handshake Duration (milliseconds)",
+		"originTcpHandshakeDurationMsP50": "50th percentile Origin TCP Handshake Duration (milliseconds)",
+		"originTcpHandshakeDurationMsP75": "75th percentile Origin TCP Handshake Duration (milliseconds)",
+		"originTcpHandshakeDurationMsP90": "90th percentile Origin TCP Handshake Duration (milliseconds)",
+		"originTcpHandshakeDurationMsP95": "95th percentile Origin TCP Handshake Duration (milliseconds)",
+		"originTcpHandshakeDurationMsP99": "99th percentile Origin TCP Handshake Duration (milliseconds)",
+		"originTcpHandshakeDurationMsP999": "99.9th percentile Origin TCP Handshake Duration (milliseconds)",
+		"originTlsHandshakeDurationMsP25": "25th percentile Origin TLS Handshake Duration (milliseconds)",
+		"originTlsHandshakeDurationMsP50": "50th percentile Origin TLS Handshake Duration (milliseconds)",
+		"originTlsHandshakeDurationMsP75": "75th percentile Origin TLS Handshake Duration (milliseconds)",
+		"originTlsHandshakeDurationMsP90": "90th percentile Origin TLS Handshake Duration (milliseconds)",
+		"originTlsHandshakeDurationMsP95": "95th percentile Origin TLS Handshake Duration (milliseconds)",
+		"originTlsHandshakeDurationMsP99": "99th percentile Origin TLS Handshake Duration (milliseconds)",
+		"originTlsHandshakeDurationMsP999": "99.9th percentile Origin TLS Handshake Duration (milliseconds)"
 	},
 	"AccountHttpRequestsAdaptiveGroupsRatio": {
 		"__description": "",
@@ -4296,6 +4323,9 @@
 		"fraudDetectionTagArray": "Array of fraud detection tags",
 		"fraudDetectionTagCountArray": "Count array of fraud detection tags. Elements in this array correspond to elements in fraudDetectionTagArray by index.",
 		"originResponseDurationMs": "",
+		"originResponseHeaderReceiveDurationMs": "The sum of originResponseHeaderReceiveDuration, in milliseconds",
+		"originTcpHandshakeDurationMs": "The sum of originTcpHandshakeDuration, in milliseconds",
+		"originTlsHandshakeDurationMs": "The sum of originTlsHandshakeDuration, in milliseconds",
 		"visits": "The number of requests by end-users that were initiated from a different website (i.e. where the request HTTP Referer header does not match the host in the HTTP Host header)"
 	},
 	"AccountHttpRequestsAdaptiveGroupsSumConfidence": {
@@ -4306,6 +4336,9 @@
 		"edgeResponseBytes": "Confidence interval for the corresponding point estimate",
 		"edgeTimeToFirstByteMs": "Confidence interval for the corresponding point estimate",
 		"originResponseDurationMs": "Confidence interval for the corresponding point estimate",
+		"originResponseHeaderReceiveDurationMs": "Confidence interval for the corresponding point estimate",
+		"originTcpHandshakeDurationMs": "Confidence interval for the corresponding point estimate",
+		"originTlsHandshakeDurationMs": "Confidence interval for the corresponding point estimate",
 		"visits": "Confidence interval for the corresponding point estimate"
 	},
 	"AccountHttpRequestsAdaptiveJa4SignalsElem": {
@@ -4327,6 +4360,9 @@
 	"AccountHttpRequestsOverviewAdaptiveGroupsAvg": {
 		"__description": "",
 		"originResponseDurationMs": "The average originResponseDuration, in milliseconds, excluding 0 values (i.e. cached ones)",
+		"originResponseHeaderReceiveDurationMs": "The average originResponseHeaderReceiveDuration, in milliseconds, excluding 0 values",
+		"originTcpHandshakeDurationMs": "The average originTcpHandshakeDuration, in milliseconds, excluding 0 values",
+		"originTlsHandshakeDurationMs": "The average originTlsHandshakeDuration, in milliseconds, excluding 0 values",
 		"sampleInterval": "Average sample interval"
 	},
 	"AccountHttpRequestsOverviewAdaptiveGroupsConfidence": {
@@ -10178,6 +10214,9 @@
 		"edgeDnsResponseTimeMs": "",
 		"edgeTimeToFirstByteMs": "",
 		"originResponseDurationMs": "The average originResponseDuration, in milliseconds, excluding 0 values (i.e. cached ones)",
+		"originResponseHeaderReceiveDurationMs": "The average originResponseHeaderReceiveDuration, in milliseconds, excluding 0 values",
+		"originTcpHandshakeDurationMs": "The average originTcpHandshakeDuration, in milliseconds, excluding 0 values",
+		"originTlsHandshakeDurationMs": "The average originTlsHandshakeDuration, in milliseconds, excluding 0 values",
 		"sampleInterval": ""
 	},
 	"OrganizationHttpRequestsAdaptiveGroupsConfidence": {
@@ -11889,7 +11928,10 @@
 		"originASNDescription": "ASN associated with origin",
 		"originIP": "",
 		"originResponseDurationMs": "",
+		"originResponseHeaderReceiveDurationMs": "The time elapsed between completing the TLS handshake and receiving the origin response headers",
 		"originResponseStatus": "HTTP origin response status code returned to browser",
+		"originTcpHandshakeDurationMs": "The time elapsed between the start and completion of the TCP handshake with the origin",
+		"originTlsHandshakeDurationMs": "The time elapsed between the start and completion of the TLS handshake with the origin",
 		"payPerCrawlStatus": "Pay Per Crawl outcome, when applicable (e.g. request enabled for charging and not blocked by a WAF rule)",
 		"rayName": "The RayId of the request",
 		"requestSource": "",
@@ -11935,6 +11977,9 @@
 		"edgeDnsResponseTimeMs": "",
 		"edgeTimeToFirstByteMs": "",
 		"originResponseDurationMs": "The average originResponseDuration, in milliseconds, excluding 0 values (i.e. cached ones)",
+		"originResponseHeaderReceiveDurationMs": "The average originResponseHeaderReceiveDuration, in milliseconds, excluding 0 values",
+		"originTcpHandshakeDurationMs": "The average originTcpHandshakeDuration, in milliseconds, excluding 0 values",
+		"originTlsHandshakeDurationMs": "The average originTlsHandshakeDuration, in milliseconds, excluding 0 values",
 		"sampleInterval": ""
 	},
 	"ZoneHttpRequestsAdaptiveGroupsConfidence": {
@@ -12014,7 +12059,10 @@
 		"originASNDescription": "ASN associated with origin",
 		"originIP": "",
 		"originResponseDurationMs": "",
+		"originResponseHeaderReceiveDurationMs": "The time elapsed between completing the TLS handshake and receiving the origin response headers",
 		"originResponseStatus": "HTTP response status code returned by the origin",
+		"originTcpHandshakeDurationMs": "The time elapsed between the start and completion of the TCP handshake with the origin",
+		"originTlsHandshakeDurationMs": "The time elapsed between the start and completion of the TLS handshake with the origin",
 		"payPerCrawlStatus": "Pay Per Crawl outcome, when applicable (e.g. request enabled for charging and not blocked by a WAF rule)",
 		"requestSource": "",
 		"sampleInterval": "ABR sample interval",
@@ -12071,7 +12119,28 @@
 		"originResponseDurationMsP90": "90th percentile Origin Response Duration (milliseconds)",
 		"originResponseDurationMsP95": "95th percentile Origin Response Duration (milliseconds)",
 		"originResponseDurationMsP99": "99th percentile Origin Response Duration (milliseconds)",
-		"originResponseDurationMsP999": "99.9th percentile Origin Response Duration (milliseconds)"
+		"originResponseDurationMsP999": "99.9th percentile Origin Response Duration (milliseconds)",
+		"originResponseHeaderReceiveDurationMsP25": "25th percentile Origin Response Header Receive Duration (milliseconds)",
+		"originResponseHeaderReceiveDurationMsP50": "50th percentile Origin Response Header Receive Duration (milliseconds)",
+		"originResponseHeaderReceiveDurationMsP75": "75th percentile Origin Response Header Receive Duration (milliseconds)",
+		"originResponseHeaderReceiveDurationMsP90": "90th percentile Origin Response Header Receive Duration (milliseconds)",
+		"originResponseHeaderReceiveDurationMsP95": "95th percentile Origin Response Header Receive Duration (milliseconds)",
+		"originResponseHeaderReceiveDurationMsP99": "99th percentile Origin Response Header Receive Duration (milliseconds)",
+		"originResponseHeaderReceiveDurationMsP999": "99.9th percentile Origin Response Header Receive Duration (milliseconds)",
+		"originTcpHandshakeDurationMsP25": "25th percentile Origin TCP Handshake Duration (milliseconds)",
+		"originTcpHandshakeDurationMsP50": "50th percentile Origin TCP Handshake Duration (milliseconds)",
+		"originTcpHandshakeDurationMsP75": "75th percentile Origin TCP Handshake Duration (milliseconds)",
+		"originTcpHandshakeDurationMsP90": "90th percentile Origin TCP Handshake Duration (milliseconds)",
+		"originTcpHandshakeDurationMsP95": "95th percentile Origin TCP Handshake Duration (milliseconds)",
+		"originTcpHandshakeDurationMsP99": "99th percentile Origin TCP Handshake Duration (milliseconds)",
+		"originTcpHandshakeDurationMsP999": "99.9th percentile Origin TCP Handshake Duration (milliseconds)",
+		"originTlsHandshakeDurationMsP25": "25th percentile Origin TLS Handshake Duration (milliseconds)",
+		"originTlsHandshakeDurationMsP50": "50th percentile Origin TLS Handshake Duration (milliseconds)",
+		"originTlsHandshakeDurationMsP75": "75th percentile Origin TLS Handshake Duration (milliseconds)",
+		"originTlsHandshakeDurationMsP90": "90th percentile Origin TLS Handshake Duration (milliseconds)",
+		"originTlsHandshakeDurationMsP95": "95th percentile Origin TLS Handshake Duration (milliseconds)",
+		"originTlsHandshakeDurationMsP99": "99th percentile Origin TLS Handshake Duration (milliseconds)",
+		"originTlsHandshakeDurationMsP999": "99.9th percentile Origin TLS Handshake Duration (milliseconds)"
 	},
 	"ZoneHttpRequestsAdaptiveGroupsRatio": {
 		"__description": "",
@@ -12094,6 +12163,9 @@
 		"fraudDetectionTagArray": "Array of fraud detection tags",
 		"fraudDetectionTagCountArray": "Count array of fraud detection tags. Elements in this array correspond to elements in fraudDetectionTagArray by index.",
 		"originResponseDurationMs": "",
+		"originResponseHeaderReceiveDurationMs": "The sum of originResponseHeaderReceiveDuration, in milliseconds",
+		"originTcpHandshakeDurationMs": "The sum of originTcpHandshakeDuration, in milliseconds",
+		"originTlsHandshakeDurationMs": "The sum of originTlsHandshakeDuration, in milliseconds",
 		"visits": "The number of requests by end-users that were initiated from a different website (i.e. where the request HTTP Referer header does not match the host in the HTTP Host header)"
 	},
 	"ZoneHttpRequestsAdaptiveGroupsSumConfidence": {
@@ -12104,6 +12176,9 @@
 		"edgeResponseBytes": "Confidence interval for the corresponding point estimate",
 		"edgeTimeToFirstByteMs": "Confidence interval for the corresponding point estimate",
 		"originResponseDurationMs": "Confidence interval for the corresponding point estimate",
+		"originResponseHeaderReceiveDurationMs": "Confidence interval for the corresponding point estimate",
+		"originTcpHandshakeDurationMs": "Confidence interval for the corresponding point estimate",
+		"originTlsHandshakeDurationMs": "Confidence interval for the corresponding point estimate",
 		"visits": "Confidence interval for the corresponding point estimate"
 	},
 	"ZoneHttpRequestsAdaptiveJa4SignalsElem": {
@@ -12125,6 +12200,9 @@
 	"ZoneHttpRequestsOverviewAdaptiveGroupsAvg": {
 		"__description": "",
 		"originResponseDurationMs": "The average originResponseDuration, in milliseconds, excluding 0 values (i.e. cached ones)",
+		"originResponseHeaderReceiveDurationMs": "The average originResponseHeaderReceiveDuration, in milliseconds, excluding 0 values",
+		"originTcpHandshakeDurationMs": "The average originTcpHandshakeDuration, in milliseconds, excluding 0 values",
+		"originTlsHandshakeDurationMs": "The average originTlsHandshakeDuration, in milliseconds, excluding 0 values",
 		"sampleInterval": "Average sample interval"
 	},
 	"ZoneHttpRequestsOverviewAdaptiveGroupsConfidence": {
