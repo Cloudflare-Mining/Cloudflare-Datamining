@@ -4075,7 +4075,8 @@
 					"name": "workflowsPreserveNonRetryableErrorMessage",
 					"annotations": {
 						"compatEnableFlag": "workflows_preserve_non_retryable_error_message",
-						"experimental": true
+						"compatDisableFlag": "workflows_replace_non_retryable_error_message",
+						"compatEnableDate": "2026-05-14"
 					},
 					"type": "Bool"
 				},
