@@ -2196,7 +2196,6 @@
 				"finish": "undefined",
 				"prefinish": "undefined"
 			},
-			"_eventsCount": "number",
 			"_isStdio": "boolean",
 			"_maxListeners": "undefined",
 			"_type": {
@@ -2264,6 +2263,11 @@
 				"writing": "boolean"
 			},
 			"_writev": {},
+			"allowHalfOpen": "boolean",
+			"bufferSize": "number",
+			"bytesRead": "number",
+			"bytesWritten": "number",
+			"connecting": "boolean",
 			"cork": {
 				"__proto": "function",
 				"__type": "function",
@@ -2278,6 +2282,7 @@
 				"length": "number",
 				"name": "string"
 			},
+			"domain": {},
 			"end": {
 				"__proto": "function",
 				"__type": "function",
@@ -2286,6 +2291,7 @@
 				"name": "string"
 			},
 			"fd": "number",
+			"pending": "boolean",
 			"pipe": {
 				"__proto": "function",
 				"__type": "function",
@@ -2294,14 +2300,17 @@
 				"name": "string"
 			},
 			"readable": "boolean",
-			"setDefaultEncoding": {
-				"__proto": "function",
-				"__type": "function",
-				"_prototype": {},
-				"length": "number",
-				"name": "string"
+			"readableAborted": "boolean",
+			"readableDidRead": "boolean",
+			"readableEnded": "boolean",
+			"readableHighWaterMark": "number",
+			"readableLength": "number",
+			"readableObjectMode": "boolean",
+			"readyState": {
+				"__proto": "object",
+				"__type": "string"
 			},
-			"setMaxListeners": {
+			"setDefaultEncoding": {
 				"__proto": "function",
 				"__type": "function",
 				"_prototype": {},
@@ -2330,13 +2339,6 @@
 			"name": "string"
 		},
 		"_stdout": {
-			"_destroy": {
-				"__proto": "function",
-				"__type": "function",
-				"_prototype": {},
-				"length": "number",
-				"name": "string"
-			},
 			"_events": {
 				"close": "undefined",
 				"drain": "undefined",
@@ -2411,6 +2413,11 @@
 				"writing": "boolean"
 			},
 			"_writev": {},
+			"allowHalfOpen": "boolean",
+			"bufferSize": "number",
+			"bytesRead": "number",
+			"bytesWritten": "number",
+			"connecting": "boolean",
 			"cork": {
 				"__proto": "function",
 				"__type": "function",
@@ -2425,6 +2432,7 @@
 				"length": "number",
 				"name": "string"
 			},
+			"domain": {},
 			"end": {
 				"__proto": "function",
 				"__type": "function",
@@ -2433,6 +2441,7 @@
 				"name": "string"
 			},
 			"fd": "number",
+			"pending": "boolean",
 			"pipe": {
 				"__proto": "function",
 				"__type": "function",
@@ -2441,6 +2450,16 @@
 				"name": "string"
 			},
 			"readable": "boolean",
+			"readableAborted": "boolean",
+			"readableDidRead": "boolean",
+			"readableEnded": "boolean",
+			"readableHighWaterMark": "number",
+			"readableLength": "number",
+			"readableObjectMode": "boolean",
+			"readyState": {
+				"__proto": "object",
+				"__type": "string"
+			},
 			"setDefaultEncoding": {
 				"__proto": "function",
 				"__type": "function",
@@ -2746,6 +2765,10 @@
 				"__proto": "object",
 				"__type": "string"
 			}
+		},
+		"platform": {
+			"__proto": "object",
+			"__type": "string"
 		},
 		"sendBeacon": {
 			"__proto": "function",
@@ -3173,6 +3196,12 @@
 			}
 		},
 		"QUEUE_PRODUCER_BINDING": {
+			"metrics": {
+				"__proto": "function",
+				"__type": "function",
+				"length": "number",
+				"name": "string"
+			},
 			"send": {
 				"__proto": "function",
 				"__type": "function",
@@ -5168,6 +5197,7 @@
 						}
 					},
 					"_maxListeners": "undefined",
+					"domain": {},
 					"fd": "number",
 					"readable": "boolean",
 					"_type": {
@@ -5175,6 +5205,22 @@
 						"__type": "string"
 					},
 					"_isStdio": "boolean",
+					"allowHalfOpen": "boolean",
+					"bufferSize": "number",
+					"bytesRead": "number",
+					"bytesWritten": "number",
+					"connecting": "boolean",
+					"pending": "boolean",
+					"readableAborted": "boolean",
+					"readableDidRead": "boolean",
+					"readableEnded": "boolean",
+					"readableHighWaterMark": "number",
+					"readableLength": "number",
+					"readableObjectMode": "boolean",
+					"readyState": {
+						"__proto": "object",
+						"__type": "string"
+					},
 					"pipe": {
 						"__proto": "function",
 						"__type": "function",
@@ -5448,6 +5494,7 @@
 						}
 					},
 					"_maxListeners": "undefined",
+					"domain": {},
 					"fd": "number",
 					"readable": "boolean",
 					"_type": {
@@ -5455,6 +5502,22 @@
 						"__type": "string"
 					},
 					"_isStdio": "boolean",
+					"allowHalfOpen": "boolean",
+					"bufferSize": "number",
+					"bytesRead": "number",
+					"bytesWritten": "number",
+					"connecting": "boolean",
+					"pending": "boolean",
+					"readableAborted": "boolean",
+					"readableDidRead": "boolean",
+					"readableEnded": "boolean",
+					"readableHighWaterMark": "number",
+					"readableLength": "number",
+					"readableObjectMode": "boolean",
+					"readyState": {
+						"__proto": "object",
+						"__type": "string"
+					},
 					"pipe": {
 						"__proto": "function",
 						"__type": "function",
@@ -6548,6 +6611,7 @@
 							"_events": "object",
 							"_readableState": "object",
 							"_maxListeners": "undefined",
+							"domain": "object",
 							"_read": "function",
 							"_destroy": "function",
 							"length": "undefined",
@@ -6611,6 +6675,7 @@
 							"_events": "object",
 							"_readableState": "object",
 							"_maxListeners": "undefined",
+							"domain": "object",
 							"_read": "function",
 							"_destroy": "function",
 							"length": "undefined",
@@ -6688,6 +6753,7 @@
 							"_events": "object",
 							"_readableState": "object",
 							"_maxListeners": "undefined",
+							"domain": "object",
 							"_read": "function",
 							"_destroy": "function",
 							"length": "undefined",
@@ -7235,6 +7301,7 @@
 							"_events": "object",
 							"_readableState": "object",
 							"_maxListeners": "undefined",
+							"domain": "object",
 							"_read": "function",
 							"_destroy": "function",
 							"length": "undefined",
@@ -7298,6 +7365,7 @@
 							"_events": "object",
 							"_readableState": "object",
 							"_maxListeners": "undefined",
+							"domain": "object",
 							"_read": "function",
 							"_destroy": "function",
 							"length": "undefined",
@@ -7375,6 +7443,7 @@
 							"_events": "object",
 							"_readableState": "object",
 							"_maxListeners": "undefined",
+							"domain": "object",
 							"_read": "function",
 							"_destroy": "function",
 							"length": "undefined",
@@ -9039,6 +9108,7 @@
 							"_events": "object",
 							"_readableState": "object",
 							"_maxListeners": "undefined",
+							"domain": "object",
 							"_read": "function",
 							"_destroy": "function",
 							"length": "undefined",
@@ -9102,6 +9172,7 @@
 							"_events": "object",
 							"_readableState": "object",
 							"_maxListeners": "undefined",
+							"domain": "object",
 							"_read": "function",
 							"_destroy": "function",
 							"length": "undefined",
@@ -10760,6 +10831,7 @@
 							"of": "undefined"
 						}
 					},
+					"domain": "object",
 					"length": "undefined",
 					"name": "undefined",
 					"prototype": "undefined",
@@ -10940,6 +11012,7 @@
 							"of": "undefined"
 						}
 					},
+					"domain": "object",
 					"length": "undefined",
 					"name": "undefined",
 					"prototype": "undefined"
@@ -10971,6 +11044,7 @@
 					"_events": "object",
 					"_eventsCount": "number",
 					"_maxListeners": "undefined",
+					"domain": "object",
 					"length": "undefined",
 					"name": "undefined",
 					"prototype": "undefined"
@@ -11296,6 +11370,66 @@
 						"withResolvers": "undefined",
 						"try": "undefined"
 					}
+				},
+				"constants": {
+					"COPYFILE_EXCL": "number",
+					"COPYFILE_FICLONE": "number",
+					"COPYFILE_FICLONE_FORCE": "number",
+					"EXTENSIONLESS_FORMAT_JAVASCRIPT": "number",
+					"EXTENSIONLESS_FORMAT_WASM": "number",
+					"F_OK": "number",
+					"O_APPEND": "number",
+					"O_CREAT": "number",
+					"O_DIRECT": "number",
+					"O_DIRECTORY": "number",
+					"O_DSYNC": "number",
+					"O_EXCL": "number",
+					"O_NOATIME": "number",
+					"O_NOCTTY": "number",
+					"O_NOFOLLOW": "number",
+					"O_NONBLOCK": "number",
+					"O_RDONLY": "number",
+					"O_RDWR": "number",
+					"O_SYNC": "number",
+					"O_TRUNC": "number",
+					"O_WRONLY": "number",
+					"R_OK": "number",
+					"S_IFBLK": "number",
+					"S_IFCHR": "number",
+					"S_IFDIR": "number",
+					"S_IFIFO": "number",
+					"S_IFLNK": "number",
+					"S_IFMT": "number",
+					"S_IFREG": "number",
+					"S_IFSOCK": "number",
+					"S_IRGRP": "number",
+					"S_IROTH": "number",
+					"S_IRUSR": "number",
+					"S_IRWXG": "number",
+					"S_IRWXO": "number",
+					"S_IRWXU": "number",
+					"S_IWGRP": "number",
+					"S_IWOTH": "number",
+					"S_IWUSR": "number",
+					"S_IXGRP": "number",
+					"S_IXOTH": "number",
+					"S_IXUSR": "number",
+					"UV_DIRENT_BLOCK": "number",
+					"UV_DIRENT_CHAR": "number",
+					"UV_DIRENT_DIR": "number",
+					"UV_DIRENT_FIFO": "number",
+					"UV_DIRENT_FILE": "number",
+					"UV_DIRENT_LINK": "number",
+					"UV_DIRENT_SOCKET": "number",
+					"UV_DIRENT_UNKNOWN": "number",
+					"UV_FS_COPYFILE_EXCL": "number",
+					"UV_FS_COPYFILE_FICLONE": "number",
+					"UV_FS_COPYFILE_FICLONE_FORCE": "number",
+					"UV_FS_O_FILEMAP": "number",
+					"UV_FS_SYMLINK_DIR": "number",
+					"UV_FS_SYMLINK_JUNCTION": "number",
+					"W_OK": "number",
+					"X_OK": "number"
 				},
 				"copyFile": {
 					"__proto": "function",
@@ -13430,6 +13564,7 @@
 						}
 					},
 					"_writableState": "object",
+					"domain": "object",
 					"req": "undefined",
 					"outputData": "object",
 					"outputSize": "number",
@@ -13564,6 +13699,7 @@
 					"_events": "object",
 					"_writableState": "object",
 					"_maxListeners": "undefined",
+					"domain": "object",
 					"req": "undefined",
 					"outputData": "object",
 					"outputSize": "number",
@@ -13638,6 +13774,7 @@
 					"_events": "object",
 					"_writableState": "object",
 					"_maxListeners": "undefined",
+					"domain": "object",
 					"req": "undefined",
 					"outputData": "object",
 					"outputSize": "number",
@@ -13891,6 +14028,7 @@
 						}
 					},
 					"_writableState": "object",
+					"domain": "object",
 					"req": "undefined",
 					"outputData": "object",
 					"outputSize": "number",
@@ -14156,9 +14294,11 @@
 							"of": "undefined"
 						}
 					},
+					"domain": "object",
 					"defaultPort": "number",
 					"protocol": "string",
 					"options": "object",
+					"agentKeepAliveTimeoutBuffer": "number",
 					"keepAliveMsecs": "number",
 					"keepAlive": "boolean",
 					"maxSockets": "number",
@@ -14195,6 +14335,7 @@
 				"_events": {},
 				"_eventsCount": "number",
 				"_maxListeners": "undefined",
+				"domain": {},
 				"defaultPort": "number",
 				"protocol": {
 					"__proto": "object",
@@ -14207,8 +14348,11 @@
 						"__type": "string"
 					},
 					"timeout": "number",
+					"path": {},
+					"proxyEnv": "undefined",
 					"noDelay": "boolean"
 				},
+				"agentKeepAliveTimeoutBuffer": "number",
 				"keepAliveMsecs": "number",
 				"keepAlive": "boolean",
 				"maxSockets": "number",
@@ -14517,6 +14661,7 @@
 							"_events": "object",
 							"_readableState": "object",
 							"_maxListeners": "undefined",
+							"domain": "object",
 							"_read": "function",
 							"_destroy": "function",
 							"length": "undefined",
@@ -14580,6 +14725,7 @@
 							"_events": "object",
 							"_readableState": "object",
 							"_maxListeners": "undefined",
+							"domain": "object",
 							"_read": "function",
 							"_destroy": "function",
 							"length": "undefined",
@@ -14657,6 +14803,7 @@
 							"_events": "object",
 							"_readableState": "object",
 							"_maxListeners": "undefined",
+							"domain": "object",
 							"_read": "function",
 							"_destroy": "function",
 							"length": "undefined",
@@ -14864,6 +15011,7 @@
 						}
 					},
 					"_readableState": "object",
+					"domain": "object",
 					"aborted": "boolean",
 					"url": "string",
 					"method": "object",
@@ -15121,6 +15269,7 @@
 							"of": "undefined"
 						}
 					},
+					"domain": "object",
 					"httpAllowHalfOpen": "boolean",
 					"timeout": "number",
 					"maxHeadersCount": "object",
@@ -15432,6 +15581,7 @@
 					"_events": "object",
 					"_eventsCount": "number",
 					"_maxListeners": "undefined",
+					"domain": "object",
 					"httpAllowHalfOpen": "boolean",
 					"timeout": "number",
 					"maxHeadersCount": "object",
@@ -15548,6 +15698,7 @@
 					"_events": "object",
 					"_writableState": "object",
 					"_maxListeners": "undefined",
+					"domain": "object",
 					"req": "undefined",
 					"outputData": "object",
 					"outputSize": "number",
@@ -15622,6 +15773,7 @@
 					"_events": "object",
 					"_writableState": "object",
 					"_maxListeners": "undefined",
+					"domain": "object",
 					"req": "undefined",
 					"outputData": "object",
 					"outputSize": "number",
@@ -15841,9 +15993,11 @@
 							"of": "undefined"
 						}
 					},
+					"domain": "object",
 					"defaultPort": "number",
 					"protocol": "string",
 					"options": "object",
+					"agentKeepAliveTimeoutBuffer": "number",
 					"keepAliveMsecs": "number",
 					"keepAlive": "boolean",
 					"maxSockets": "number",
@@ -15854,6 +16008,7 @@
 					"freeSockets": "object",
 					"sockets": "object",
 					"requests": "object",
+					"maxCachedSessions": "number",
 					"length": "undefined",
 					"name": "undefined",
 					"prototype": "undefined"
@@ -15879,6 +16034,7 @@
 				"_events": {},
 				"_eventsCount": "number",
 				"_maxListeners": "undefined",
+				"domain": {},
 				"defaultPort": "number",
 				"protocol": {
 					"__proto": "object",
@@ -15891,8 +16047,16 @@
 						"__type": "string"
 					},
 					"timeout": "number",
+					"defaultPort": "number",
+					"protocol": {
+						"__proto": "object",
+						"__type": "string"
+					},
+					"path": {},
+					"proxyEnv": "undefined",
 					"noDelay": "boolean"
 				},
+				"agentKeepAliveTimeoutBuffer": "number",
 				"keepAliveMsecs": "number",
 				"keepAlive": "boolean",
 				"maxSockets": "number",
@@ -15906,6 +16070,7 @@
 				"freeSockets": {},
 				"sockets": {},
 				"requests": {},
+				"maxCachedSessions": "number",
 				"setMaxListeners": {
 					"__proto": "function",
 					"__type": "function",
@@ -16061,6 +16226,7 @@
 					"_events": "object",
 					"_eventsCount": "number",
 					"_maxListeners": "undefined",
+					"domain": "object",
 					"httpAllowHalfOpen": "boolean",
 					"timeout": "number",
 					"maxHeadersCount": "object",
@@ -16248,6 +16414,7 @@
 							"of": "undefined"
 						}
 					},
+					"domain": "object",
 					"httpAllowHalfOpen": "boolean",
 					"timeout": "number",
 					"maxHeadersCount": "object",
@@ -17615,6 +17782,7 @@
 							"_events": "object",
 							"_readableState": "object",
 							"_maxListeners": "undefined",
+							"domain": "object",
 							"_read": "function",
 							"_destroy": "function",
 							"length": "undefined",
@@ -17678,6 +17846,7 @@
 							"_events": "object",
 							"_readableState": "object",
 							"_maxListeners": "undefined",
+							"domain": "object",
 							"_read": "function",
 							"_destroy": "function",
 							"length": "undefined",
@@ -17755,6 +17924,7 @@
 							"_events": "object",
 							"_readableState": "object",
 							"_maxListeners": "undefined",
+							"domain": "object",
 							"_read": "function",
 							"_destroy": "function",
 							"length": "undefined",
@@ -17975,6 +18145,7 @@
 					"_readableState": "object",
 					"_writableState": "object",
 					"allowHalfOpen": "boolean",
+					"domain": "object",
 					"length": "undefined",
 					"name": "undefined",
 					"prototype": "undefined"
@@ -18484,6 +18655,7 @@
 							"_events": "object",
 							"_readableState": "object",
 							"_maxListeners": "undefined",
+							"domain": "object",
 							"_read": "function",
 							"_destroy": "function",
 							"length": "undefined",
@@ -18547,6 +18719,7 @@
 							"_events": "object",
 							"_readableState": "object",
 							"_maxListeners": "undefined",
+							"domain": "object",
 							"_read": "function",
 							"_destroy": "function",
 							"length": "undefined",
@@ -18624,6 +18797,7 @@
 							"_events": "object",
 							"_readableState": "object",
 							"_maxListeners": "undefined",
+							"domain": "object",
 							"_read": "function",
 							"_destroy": "function",
 							"length": "undefined",
@@ -18844,6 +19018,7 @@
 					"_readableState": "object",
 					"_writableState": "object",
 					"allowHalfOpen": "boolean",
+					"domain": "object",
 					"length": "undefined",
 					"name": "undefined",
 					"prototype": "undefined"
@@ -19267,8 +19442,174 @@
 				"__type": "string"
 			},
 			"config": {
-				"target_defaults": {},
-				"variables": {}
+				"target_defaults": {
+					"default_configuration": {
+						"__proto": "object",
+						"__type": "string"
+					}
+				},
+				"variables": {
+					"asan": "number",
+					"clang": "number",
+					"control_flow_guard": "boolean",
+					"coverage": "boolean",
+					"dcheck_always_on": "number",
+					"debug_nghttp2": "boolean",
+					"debug_node": "boolean",
+					"enable_lto": "boolean",
+					"enable_pgo_generate": "boolean",
+					"enable_pgo_use": "boolean",
+					"error_on_warn": "boolean",
+					"force_dynamic_crt": "number",
+					"gas_version": {
+						"__proto": "object",
+						"__type": "string"
+					},
+					"host_arch": {
+						"__proto": "object",
+						"__type": "string"
+					},
+					"icu_data_in": {
+						"__proto": "object",
+						"__type": "string"
+					},
+					"icu_endianness": {
+						"__proto": "object",
+						"__type": "string"
+					},
+					"icu_gyp_path": {
+						"__proto": "object",
+						"__type": "string"
+					},
+					"icu_path": {
+						"__proto": "object",
+						"__type": "string"
+					},
+					"icu_small": "boolean",
+					"icu_ver_major": {
+						"__proto": "object",
+						"__type": "string"
+					},
+					"is_debug": "number",
+					"libdir": {
+						"__proto": "object",
+						"__type": "string"
+					},
+					"llvm_version": {
+						"__proto": "object",
+						"__type": "string"
+					},
+					"napi_build_version": {
+						"__proto": "object",
+						"__type": "string"
+					},
+					"node_byteorder": {
+						"__proto": "object",
+						"__type": "string"
+					},
+					"node_debug_lib": "boolean",
+					"node_enable_d8": "boolean",
+					"node_enable_v8_vtunejit": "boolean",
+					"node_enable_v8windbg": "boolean",
+					"node_fipsinstall": "boolean",
+					"node_install_corepack": "boolean",
+					"node_install_npm": "boolean",
+					"node_module_version": "number",
+					"node_no_browser_globals": "boolean",
+					"node_prefix": {
+						"__proto": "object",
+						"__type": "string"
+					},
+					"node_quic": "boolean",
+					"node_release_urlbase": {
+						"__proto": "object",
+						"__type": "string"
+					},
+					"node_section_ordering_info": {
+						"__proto": "object",
+						"__type": "string"
+					},
+					"node_shared": "boolean",
+					"node_shared_ada": "boolean",
+					"node_shared_brotli": "boolean",
+					"node_shared_cares": "boolean",
+					"node_shared_gtest": "boolean",
+					"node_shared_hdr_histogram": "boolean",
+					"node_shared_http_parser": "boolean",
+					"node_shared_libuv": "boolean",
+					"node_shared_merve": "boolean",
+					"node_shared_nbytes": "boolean",
+					"node_shared_nghttp2": "boolean",
+					"node_shared_nghttp3": "boolean",
+					"node_shared_ngtcp2": "boolean",
+					"node_shared_openssl": "boolean",
+					"node_shared_simdjson": "boolean",
+					"node_shared_simdutf": "boolean",
+					"node_shared_sqlite": "boolean",
+					"node_shared_uvwasi": "boolean",
+					"node_shared_zlib": "boolean",
+					"node_shared_zstd": "boolean",
+					"node_tag": {
+						"__proto": "object",
+						"__type": "string"
+					},
+					"node_target_type": {
+						"__proto": "object",
+						"__type": "string"
+					},
+					"node_use_amaro": "boolean",
+					"node_use_bundled_v8": "boolean",
+					"node_use_node_code_cache": "boolean",
+					"node_use_node_snapshot": "boolean",
+					"node_use_openssl": "boolean",
+					"node_use_sqlite": "boolean",
+					"node_use_v8_platform": "boolean",
+					"node_with_ltcg": "boolean",
+					"node_without_node_options": "boolean",
+					"node_write_snapshot_as_array_literals": "boolean",
+					"openssl_is_fips": "boolean",
+					"openssl_quic": "boolean",
+					"ossfuzz": "boolean",
+					"shlib_suffix": {
+						"__proto": "object",
+						"__type": "string"
+					},
+					"single_executable_application": "boolean",
+					"suppress_all_error_on_warn": "boolean",
+					"target_arch": {
+						"__proto": "object",
+						"__type": "string"
+					},
+					"ubsan": "number",
+					"use_ccache_win": "number",
+					"use_prefix_to_find_headers": "boolean",
+					"v8_enable_31bit_smis_on_64bit_arch": "number",
+					"v8_enable_extensible_ro_snapshot": "number",
+					"v8_enable_external_code_space": "number",
+					"v8_enable_gdbjit": "number",
+					"v8_enable_hugepage": "number",
+					"v8_enable_i18n_support": "number",
+					"v8_enable_inspector": "number",
+					"v8_enable_javascript_promise_hooks": "number",
+					"v8_enable_lite_mode": "number",
+					"v8_enable_maglev": "number",
+					"v8_enable_object_print": "number",
+					"v8_enable_pointer_compression": "number",
+					"v8_enable_pointer_compression_shared_cage": "number",
+					"v8_enable_sandbox": "number",
+					"v8_enable_shared_ro_heap": "number",
+					"v8_enable_short_builtin_calls": "number",
+					"v8_enable_v8_checks": "number",
+					"v8_enable_wasm_simd256_revec": "number",
+					"v8_enable_webassembly": "number",
+					"v8_no_strict_aliasing": "number",
+					"v8_optimized_debug": "number",
+					"v8_promise_internal_field_count": "number",
+					"v8_random_seed": "number",
+					"v8_trace_maps": "number",
+					"v8_use_siphash": "number",
+					"want_separate_host_toolset": "number"
+				}
 			},
 			"pid": "number",
 			"ppid": "number",
@@ -19659,7 +20000,15 @@
 					"name": "string"
 				},
 				"_maxListeners": "undefined",
+				"domain": {},
 				"_eventsCount": "number",
+				"allowHalfOpen": "boolean",
+				"bufferSize": "number",
+				"connecting": "boolean",
+				"readyState": {
+					"__proto": "object",
+					"__type": "string"
+				},
 				"close": {
 					"__proto": "function",
 					"__type": "function",
@@ -19817,6 +20166,7 @@
 						"_events": "object",
 						"_readableState": "object",
 						"_maxListeners": "undefined",
+						"domain": "object",
 						"_read": "function",
 						"_destroy": "function",
 						"length": "undefined",
@@ -19880,6 +20230,7 @@
 						"_events": "object",
 						"_readableState": "object",
 						"_maxListeners": "undefined",
+						"domain": "object",
 						"_read": "function",
 						"_destroy": "function",
 						"length": "undefined",
@@ -19957,6 +20308,7 @@
 						"_events": "object",
 						"_readableState": "object",
 						"_maxListeners": "undefined",
+						"domain": "object",
 						"_read": "function",
 						"_destroy": "function",
 						"length": "undefined",
@@ -20219,6 +20571,7 @@
 					}
 				},
 				"_maxListeners": "undefined",
+				"domain": {},
 				"fd": "number",
 				"readable": "boolean",
 				"_type": {
@@ -20226,6 +20579,22 @@
 					"__type": "string"
 				},
 				"_isStdio": "boolean",
+				"allowHalfOpen": "boolean",
+				"bufferSize": "number",
+				"bytesRead": "number",
+				"bytesWritten": "number",
+				"connecting": "boolean",
+				"pending": "boolean",
+				"readableAborted": "boolean",
+				"readableDidRead": "boolean",
+				"readableEnded": "boolean",
+				"readableHighWaterMark": "number",
+				"readableLength": "number",
+				"readableObjectMode": "boolean",
+				"readyState": {
+					"__proto": "object",
+					"__type": "string"
+				},
 				"pipe": {
 					"__proto": "function",
 					"__type": "function",
@@ -20499,6 +20868,7 @@
 					}
 				},
 				"_maxListeners": "undefined",
+				"domain": {},
 				"fd": "number",
 				"readable": "boolean",
 				"_type": {
@@ -20506,6 +20876,22 @@
 					"__type": "string"
 				},
 				"_isStdio": "boolean",
+				"allowHalfOpen": "boolean",
+				"bufferSize": "number",
+				"bytesRead": "number",
+				"bytesWritten": "number",
+				"connecting": "boolean",
+				"pending": "boolean",
+				"readableAborted": "boolean",
+				"readableDidRead": "boolean",
+				"readableEnded": "boolean",
+				"readableHighWaterMark": "number",
+				"readableLength": "number",
+				"readableObjectMode": "boolean",
+				"readyState": {
+					"__proto": "object",
+					"__type": "string"
+				},
 				"pipe": {
 					"__proto": "function",
 					"__type": "function",
@@ -21205,6 +21591,7 @@
 							"of": "undefined"
 						}
 					},
+					"domain": "object",
 					"length": "undefined",
 					"name": "undefined",
 					"prototype": "undefined",
@@ -21653,6 +22040,7 @@
 						}
 					},
 					"_writableState": "object",
+					"domain": "object",
 					"length": "undefined",
 					"name": "undefined",
 					"prototype": "undefined",
@@ -21915,6 +22303,7 @@
 							"_events": "object",
 							"_readableState": "object",
 							"_maxListeners": "undefined",
+							"domain": "object",
 							"_read": "function",
 							"_destroy": "function",
 							"length": "undefined",
@@ -21978,6 +22367,7 @@
 							"_events": "object",
 							"_readableState": "object",
 							"_maxListeners": "undefined",
+							"domain": "object",
 							"_read": "function",
 							"_destroy": "function",
 							"length": "undefined",
@@ -22055,6 +22445,7 @@
 							"_events": "object",
 							"_readableState": "object",
 							"_maxListeners": "undefined",
+							"domain": "object",
 							"_read": "function",
 							"_destroy": "function",
 							"length": "undefined",
@@ -22262,6 +22653,7 @@
 						}
 					},
 					"_readableState": "object",
+					"domain": "object",
 					"length": "undefined",
 					"name": "undefined",
 					"prototype": "undefined",
@@ -22572,6 +22964,7 @@
 							"_events": "object",
 							"_readableState": "object",
 							"_maxListeners": "undefined",
+							"domain": "object",
 							"_read": "function",
 							"_destroy": "function",
 							"length": "undefined",
@@ -22635,6 +23028,7 @@
 							"_events": "object",
 							"_readableState": "object",
 							"_maxListeners": "undefined",
+							"domain": "object",
 							"_read": "function",
 							"_destroy": "function",
 							"length": "undefined",
@@ -22712,6 +23106,7 @@
 							"_events": "object",
 							"_readableState": "object",
 							"_maxListeners": "undefined",
+							"domain": "object",
 							"_read": "function",
 							"_destroy": "function",
 							"length": "undefined",
@@ -22921,6 +23316,7 @@
 					"_readableState": "object",
 					"_writableState": "object",
 					"allowHalfOpen": "boolean",
+					"domain": "object",
 					"length": "undefined",
 					"name": "undefined",
 					"prototype": "undefined",
@@ -23247,6 +23643,7 @@
 							"_events": "object",
 							"_readableState": "object",
 							"_maxListeners": "undefined",
+							"domain": "object",
 							"_read": "function",
 							"_destroy": "function",
 							"length": "undefined",
@@ -23310,6 +23707,7 @@
 							"_events": "object",
 							"_readableState": "object",
 							"_maxListeners": "undefined",
+							"domain": "object",
 							"_read": "function",
 							"_destroy": "function",
 							"length": "undefined",
@@ -23387,6 +23785,7 @@
 							"_events": "object",
 							"_readableState": "object",
 							"_maxListeners": "undefined",
+							"domain": "object",
 							"_read": "function",
 							"_destroy": "function",
 							"length": "undefined",
@@ -23596,6 +23995,7 @@
 					"_readableState": "object",
 					"_writableState": "object",
 					"allowHalfOpen": "boolean",
+					"domain": "object",
 					"length": "undefined",
 					"name": "undefined",
 					"prototype": "undefined"
@@ -23919,6 +24319,7 @@
 							"_events": "object",
 							"_readableState": "object",
 							"_maxListeners": "undefined",
+							"domain": "object",
 							"_read": "function",
 							"_destroy": "function",
 							"length": "undefined",
@@ -23982,6 +24383,7 @@
 							"_events": "object",
 							"_readableState": "object",
 							"_maxListeners": "undefined",
+							"domain": "object",
 							"_read": "function",
 							"_destroy": "function",
 							"length": "undefined",
@@ -24059,6 +24461,7 @@
 							"_events": "object",
 							"_readableState": "object",
 							"_maxListeners": "undefined",
+							"domain": "object",
 							"_read": "function",
 							"_destroy": "function",
 							"length": "undefined",
@@ -24268,6 +24671,7 @@
 					"_readableState": "object",
 					"_writableState": "object",
 					"allowHalfOpen": "boolean",
+					"domain": "object",
 					"length": "undefined",
 					"name": "undefined",
 					"prototype": "undefined"
@@ -24641,6 +25045,7 @@
 							"of": "undefined"
 						}
 					},
+					"domain": "object",
 					"length": "undefined",
 					"name": "undefined",
 					"prototype": "undefined",
@@ -24821,6 +25226,7 @@
 							"of": "undefined"
 						}
 					},
+					"domain": "object",
 					"length": "undefined",
 					"name": "undefined",
 					"prototype": "undefined"
@@ -24852,6 +25258,7 @@
 					"_events": "object",
 					"_eventsCount": "number",
 					"_maxListeners": "undefined",
+					"domain": "object",
 					"length": "undefined",
 					"name": "undefined",
 					"prototype": "undefined"
@@ -26987,6 +27394,7 @@
 							"_events": "object",
 							"_readableState": "object",
 							"_maxListeners": "undefined",
+							"domain": "object",
 							"_read": "function",
 							"_destroy": "function",
 							"length": "undefined",
@@ -27050,6 +27458,7 @@
 							"_events": "object",
 							"_readableState": "object",
 							"_maxListeners": "undefined",
+							"domain": "object",
 							"_read": "function",
 							"_destroy": "function",
 							"length": "undefined",
@@ -27127,6 +27536,7 @@
 							"_events": "object",
 							"_readableState": "object",
 							"_maxListeners": "undefined",
+							"domain": "object",
 							"_read": "function",
 							"_destroy": "function",
 							"length": "undefined",
@@ -27356,6 +27766,7 @@
 					"_readableState": "object",
 					"_writableState": "object",
 					"allowHalfOpen": "boolean",
+					"domain": "object",
 					"ssl": "object",
 					"length": "undefined",
 					"name": "undefined",
@@ -28134,6 +28545,7 @@
 							"_events": "object",
 							"_readableState": "object",
 							"_maxListeners": "undefined",
+							"domain": "object",
 							"_read": "function",
 							"_destroy": "function",
 							"length": "undefined",
@@ -28197,6 +28609,7 @@
 							"_events": "object",
 							"_readableState": "object",
 							"_maxListeners": "undefined",
+							"domain": "object",
 							"_read": "function",
 							"_destroy": "function",
 							"length": "undefined",
@@ -28274,6 +28687,7 @@
 							"_events": "object",
 							"_readableState": "object",
 							"_maxListeners": "undefined",
+							"domain": "object",
 							"_read": "function",
 							"_destroy": "function",
 							"length": "undefined",
@@ -28483,6 +28897,7 @@
 					"_readableState": "object",
 					"_writableState": "object",
 					"allowHalfOpen": "boolean",
+					"domain": "object",
 					"bytesWritten": "number",
 					"_maxOutputLength": "number",
 					"_outBuffer": "object",
@@ -28796,6 +29211,7 @@
 							"_events": "object",
 							"_readableState": "object",
 							"_maxListeners": "undefined",
+							"domain": "object",
 							"_read": "function",
 							"_destroy": "function",
 							"length": "undefined",
@@ -28859,6 +29275,7 @@
 							"_events": "object",
 							"_readableState": "object",
 							"_maxListeners": "undefined",
+							"domain": "object",
 							"_read": "function",
 							"_destroy": "function",
 							"length": "undefined",
@@ -28936,6 +29353,7 @@
 							"_events": "object",
 							"_readableState": "object",
 							"_maxListeners": "undefined",
+							"domain": "object",
 							"_read": "function",
 							"_destroy": "function",
 							"length": "undefined",
@@ -29145,6 +29563,7 @@
 					"_readableState": "object",
 					"_writableState": "object",
 					"allowHalfOpen": "boolean",
+					"domain": "object",
 					"bytesWritten": "number",
 					"_maxOutputLength": "number",
 					"_outBuffer": "object",
@@ -29458,6 +29877,7 @@
 							"_events": "object",
 							"_readableState": "object",
 							"_maxListeners": "undefined",
+							"domain": "object",
 							"_read": "function",
 							"_destroy": "function",
 							"length": "undefined",
@@ -29521,6 +29941,7 @@
 							"_events": "object",
 							"_readableState": "object",
 							"_maxListeners": "undefined",
+							"domain": "object",
 							"_read": "function",
 							"_destroy": "function",
 							"length": "undefined",
@@ -29598,6 +30019,7 @@
 							"_events": "object",
 							"_readableState": "object",
 							"_maxListeners": "undefined",
+							"domain": "object",
 							"_read": "function",
 							"_destroy": "function",
 							"length": "undefined",
@@ -29807,6 +30229,7 @@
 					"_readableState": "object",
 					"_writableState": "object",
 					"allowHalfOpen": "boolean",
+					"domain": "object",
 					"bytesWritten": "number",
 					"_maxOutputLength": "number",
 					"_outBuffer": "object",
@@ -30120,6 +30543,7 @@
 							"_events": "object",
 							"_readableState": "object",
 							"_maxListeners": "undefined",
+							"domain": "object",
 							"_read": "function",
 							"_destroy": "function",
 							"length": "undefined",
@@ -30183,6 +30607,7 @@
 							"_events": "object",
 							"_readableState": "object",
 							"_maxListeners": "undefined",
+							"domain": "object",
 							"_read": "function",
 							"_destroy": "function",
 							"length": "undefined",
@@ -30260,6 +30685,7 @@
 							"_events": "object",
 							"_readableState": "object",
 							"_maxListeners": "undefined",
+							"domain": "object",
 							"_read": "function",
 							"_destroy": "function",
 							"length": "undefined",
@@ -30469,6 +30895,7 @@
 					"_readableState": "object",
 					"_writableState": "object",
 					"allowHalfOpen": "boolean",
+					"domain": "object",
 					"bytesWritten": "number",
 					"_maxOutputLength": "number",
 					"_outBuffer": "object",
@@ -30782,6 +31209,7 @@
 							"_events": "object",
 							"_readableState": "object",
 							"_maxListeners": "undefined",
+							"domain": "object",
 							"_read": "function",
 							"_destroy": "function",
 							"length": "undefined",
@@ -30845,6 +31273,7 @@
 							"_events": "object",
 							"_readableState": "object",
 							"_maxListeners": "undefined",
+							"domain": "object",
 							"_read": "function",
 							"_destroy": "function",
 							"length": "undefined",
@@ -30922,6 +31351,7 @@
 							"_events": "object",
 							"_readableState": "object",
 							"_maxListeners": "undefined",
+							"domain": "object",
 							"_read": "function",
 							"_destroy": "function",
 							"length": "undefined",
@@ -31131,6 +31561,7 @@
 					"_readableState": "object",
 					"_writableState": "object",
 					"allowHalfOpen": "boolean",
+					"domain": "object",
 					"bytesWritten": "number",
 					"_maxOutputLength": "number",
 					"_outBuffer": "object",
@@ -31444,6 +31875,7 @@
 							"_events": "object",
 							"_readableState": "object",
 							"_maxListeners": "undefined",
+							"domain": "object",
 							"_read": "function",
 							"_destroy": "function",
 							"length": "undefined",
@@ -31507,6 +31939,7 @@
 							"_events": "object",
 							"_readableState": "object",
 							"_maxListeners": "undefined",
+							"domain": "object",
 							"_read": "function",
 							"_destroy": "function",
 							"length": "undefined",
@@ -31584,6 +32017,7 @@
 							"_events": "object",
 							"_readableState": "object",
 							"_maxListeners": "undefined",
+							"domain": "object",
 							"_read": "function",
 							"_destroy": "function",
 							"length": "undefined",
@@ -31793,6 +32227,7 @@
 					"_readableState": "object",
 					"_writableState": "object",
 					"allowHalfOpen": "boolean",
+					"domain": "object",
 					"bytesWritten": "number",
 					"_maxOutputLength": "number",
 					"_outBuffer": "object",
@@ -32106,6 +32541,7 @@
 							"_events": "object",
 							"_readableState": "object",
 							"_maxListeners": "undefined",
+							"domain": "object",
 							"_read": "function",
 							"_destroy": "function",
 							"length": "undefined",
@@ -32169,6 +32605,7 @@
 							"_events": "object",
 							"_readableState": "object",
 							"_maxListeners": "undefined",
+							"domain": "object",
 							"_read": "function",
 							"_destroy": "function",
 							"length": "undefined",
@@ -32246,6 +32683,7 @@
 							"_events": "object",
 							"_readableState": "object",
 							"_maxListeners": "undefined",
+							"domain": "object",
 							"_read": "function",
 							"_destroy": "function",
 							"length": "undefined",
@@ -32455,6 +32893,7 @@
 					"_readableState": "object",
 					"_writableState": "object",
 					"allowHalfOpen": "boolean",
+					"domain": "object",
 					"bytesWritten": "number",
 					"_maxOutputLength": "number",
 					"_outBuffer": "object",
@@ -32768,6 +33207,7 @@
 							"_events": "object",
 							"_readableState": "object",
 							"_maxListeners": "undefined",
+							"domain": "object",
 							"_read": "function",
 							"_destroy": "function",
 							"length": "undefined",
@@ -32831,6 +33271,7 @@
 							"_events": "object",
 							"_readableState": "object",
 							"_maxListeners": "undefined",
+							"domain": "object",
 							"_read": "function",
 							"_destroy": "function",
 							"length": "undefined",
@@ -32908,6 +33349,7 @@
 							"_events": "object",
 							"_readableState": "object",
 							"_maxListeners": "undefined",
+							"domain": "object",
 							"_read": "function",
 							"_destroy": "function",
 							"length": "undefined",
@@ -33117,6 +33559,7 @@
 					"_readableState": "object",
 					"_writableState": "object",
 					"allowHalfOpen": "boolean",
+					"domain": "object",
 					"bytesWritten": "number",
 					"_maxOutputLength": "number",
 					"_outBuffer": "object",
@@ -33428,6 +33871,7 @@
 							"_events": "object",
 							"_readableState": "object",
 							"_maxListeners": "undefined",
+							"domain": "object",
 							"_read": "function",
 							"_destroy": "function",
 							"length": "undefined",
@@ -33491,6 +33935,7 @@
 							"_events": "object",
 							"_readableState": "object",
 							"_maxListeners": "undefined",
+							"domain": "object",
 							"_read": "function",
 							"_destroy": "function",
 							"length": "undefined",
@@ -33568,6 +34013,7 @@
 							"_events": "object",
 							"_readableState": "object",
 							"_maxListeners": "undefined",
+							"domain": "object",
 							"_read": "function",
 							"_destroy": "function",
 							"length": "undefined",
@@ -33777,6 +34223,7 @@
 					"_readableState": "object",
 					"_writableState": "object",
 					"allowHalfOpen": "boolean",
+					"domain": "object",
 					"bytesWritten": "number",
 					"_maxOutputLength": "number",
 					"_outBuffer": "object",
@@ -34088,6 +34535,7 @@
 							"_events": "object",
 							"_readableState": "object",
 							"_maxListeners": "undefined",
+							"domain": "object",
 							"_read": "function",
 							"_destroy": "function",
 							"length": "undefined",
@@ -34151,6 +34599,7 @@
 							"_events": "object",
 							"_readableState": "object",
 							"_maxListeners": "undefined",
+							"domain": "object",
 							"_read": "function",
 							"_destroy": "function",
 							"length": "undefined",
@@ -34228,6 +34677,7 @@
 							"_events": "object",
 							"_readableState": "object",
 							"_maxListeners": "undefined",
+							"domain": "object",
 							"_read": "function",
 							"_destroy": "function",
 							"length": "undefined",
@@ -34437,6 +34887,7 @@
 					"_readableState": "object",
 					"_writableState": "object",
 					"allowHalfOpen": "boolean",
+					"domain": "object",
 					"bytesWritten": "number",
 					"_maxOutputLength": "number",
 					"_outBuffer": "object",
@@ -34748,6 +35199,7 @@
 							"_events": "object",
 							"_readableState": "object",
 							"_maxListeners": "undefined",
+							"domain": "object",
 							"_read": "function",
 							"_destroy": "function",
 							"length": "undefined",
@@ -34811,6 +35263,7 @@
 							"_events": "object",
 							"_readableState": "object",
 							"_maxListeners": "undefined",
+							"domain": "object",
 							"_read": "function",
 							"_destroy": "function",
 							"length": "undefined",
@@ -34888,6 +35341,7 @@
 							"_events": "object",
 							"_readableState": "object",
 							"_maxListeners": "undefined",
+							"domain": "object",
 							"_read": "function",
 							"_destroy": "function",
 							"length": "undefined",
@@ -35097,6 +35551,7 @@
 					"_readableState": "object",
 					"_writableState": "object",
 					"allowHalfOpen": "boolean",
+					"domain": "object",
 					"bytesWritten": "number",
 					"_maxOutputLength": "number",
 					"_outBuffer": "object",
@@ -35209,6 +35664,7 @@
 					"_writableState": "object",
 					"allowHalfOpen": "boolean",
 					"_maxListeners": "undefined",
+					"domain": "object",
 					"_eventsCount": "number",
 					"bytesWritten": "number",
 					"_maxOutputLength": "number",
@@ -35290,6 +35746,7 @@
 					"_writableState": "object",
 					"allowHalfOpen": "boolean",
 					"_maxListeners": "undefined",
+					"domain": "object",
 					"_eventsCount": "number",
 					"bytesWritten": "number",
 					"_maxOutputLength": "number",
@@ -35371,6 +35828,7 @@
 					"_writableState": "object",
 					"allowHalfOpen": "boolean",
 					"_maxListeners": "undefined",
+					"domain": "object",
 					"_eventsCount": "number",
 					"bytesWritten": "number",
 					"_maxOutputLength": "number",
@@ -35452,6 +35910,7 @@
 					"_writableState": "object",
 					"allowHalfOpen": "boolean",
 					"_maxListeners": "undefined",
+					"domain": "object",
 					"_eventsCount": "number",
 					"bytesWritten": "number",
 					"_maxOutputLength": "number",
@@ -35533,6 +35992,7 @@
 					"_writableState": "object",
 					"allowHalfOpen": "boolean",
 					"_maxListeners": "undefined",
+					"domain": "object",
 					"_eventsCount": "number",
 					"bytesWritten": "number",
 					"_maxOutputLength": "number",
@@ -35614,6 +36074,7 @@
 					"_writableState": "object",
 					"allowHalfOpen": "boolean",
 					"_maxListeners": "undefined",
+					"domain": "object",
 					"_eventsCount": "number",
 					"bytesWritten": "number",
 					"_maxOutputLength": "number",
@@ -35695,6 +36156,7 @@
 					"_writableState": "object",
 					"allowHalfOpen": "boolean",
 					"_maxListeners": "undefined",
+					"domain": "object",
 					"_eventsCount": "number",
 					"bytesWritten": "number",
 					"_maxOutputLength": "number",
@@ -35776,6 +36238,7 @@
 					"_writableState": "object",
 					"allowHalfOpen": "boolean",
 					"_maxListeners": "undefined",
+					"domain": "object",
 					"_eventsCount": "number",
 					"bytesWritten": "number",
 					"_maxOutputLength": "number",
@@ -35855,6 +36318,7 @@
 					"_writableState": "object",
 					"allowHalfOpen": "boolean",
 					"_maxListeners": "undefined",
+					"domain": "object",
 					"_eventsCount": "number",
 					"bytesWritten": "number",
 					"_maxOutputLength": "number",
@@ -35934,6 +36398,7 @@
 					"_writableState": "object",
 					"allowHalfOpen": "boolean",
 					"_maxListeners": "undefined",
+					"domain": "object",
 					"_eventsCount": "number",
 					"bytesWritten": "number",
 					"_maxOutputLength": "number",
@@ -36013,6 +36478,7 @@
 					"_writableState": "object",
 					"allowHalfOpen": "boolean",
 					"_maxListeners": "undefined",
+					"domain": "object",
 					"_eventsCount": "number",
 					"bytesWritten": "number",
 					"_maxOutputLength": "number",
@@ -36573,6 +37039,12 @@
 					}
 				},
 				"QUEUE_PRODUCER_BINDING": {
+					"metrics": {
+						"__proto": "function",
+						"__type": "function",
+						"length": "number",
+						"name": "string"
+					},
 					"send": {
 						"__proto": "function",
 						"__type": "function",
