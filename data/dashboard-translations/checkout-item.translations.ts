@@ -195,5 +195,25 @@
 		renewal_fee: "Renewal fee",
 		restore_renewal: "%{years} year .%{tld} renewal |||| %{years} years .%{tld} renewal",
 		domain_restore: "Restore domain"
+	},
+	prod_zero_trust: {
+		zero_trust_free: "Zero Trust Free",
+		zero_trust_free_subtitle: "Protect up to 50 users at no cost",
+		zero_trust_free_pricing: "Free",
+		zero_trust_standard: "Zero Trust Standard",
+		subtitle: "Comprehensive SASE platform for your organization",
+		per_seat_pricing: "%{price}/user/month",
+		subscription_details: "Subscription details",
+		subscription_details_subtitle: "What is included in your subscription",
+		seats_title: "Seats",
+		seats_subtitle: "%{count} \xd7 %{price}/user/month",
+		browser_isolation_title: "Browser Isolation",
+		browser_isolation_subtitle: "%{count} \xd7 %{price}/user/month",
+		feature_unlimited_users: "Unlimited Users",
+		feature_50_locations: "Up to 50 Locations",
+		feature_30_day_logs: "30-day Log Retention",
+		feature_15_day_dex: "15-day DEX Tests",
+		feature_bi_addon: "Browser Isolation Add-on",
+		feature_chat_email_support: "Chat and Email Support"
 	}
 }

@@ -481,6 +481,8 @@
 			sync_interval_drawer: {
 				title: "Sync interval",
 				description: "How often the source data is re-synced.",
+				900: "15 minutes",
+				1800: "30 minutes",
 				3600: "1 hour",
 				7200: "2 hours",
 				14400: "4 hours",

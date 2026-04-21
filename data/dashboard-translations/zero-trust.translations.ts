@@ -8,7 +8,7 @@
 		subheading: "Replace legacy security perimeters with Cloudflare's global network. Zero Trust tools help make the Internet faster and safer for both teams and home networks."
 	},
 	zeroTrustView: {
-		teamName: (0, o.p)(a(), "teamName"),
+		teamName: (0, n.p)(a(), "teamName"),
 		zeroTrustHomeLink: "Go to Zero Trust",
 		zeroTrustUsersLink: "Manage active users",
 		zeroTrustAnalyticsLink: "View detailed analytics",
@@ -66,9 +66,9 @@
 	},
 	plans: {
 		categories: {
-			zeroTrust: (0, o.p)(i(), "plan"),
-			access: (0, o.p)(c(), "plan"),
-			gateway: (0, o.p)(l(), "plan")
+			zeroTrust: (0, n.p)(i(), "plan"),
+			access: (0, n.p)(c(), "plan"),
+			gateway: (0, n.p)(u(), "plan")
 		},
 		basic: "Basic",
 		premium: "Premium",
@@ -94,8 +94,8 @@
 	analyticsError: {
 		error: "Error",
 		tooltips: {
-			noPermissionError: (0, o.p)(u(), "label"),
-			otherErrors: (0, o.p)(d(), "label")
+			noPermissionError: (0, n.p)(l(), "label"),
+			otherErrors: (0, n.p)(d(), "label")
 		}
 	},
 	landingPage: {
@@ -129,5 +129,22 @@
 				explore_plans: "Explore plans"
 			}
 		}
+	},
+	configure: {
+		loading: "Loading...",
+		error: "Unable to load pricing. Please try again later.",
+		heading_prefix: "Configure",
+		heading_product: "Zero Trust Standard",
+		subtitle: "Configure your Zero Trust plan, seats, and add-ons.",
+		seats_label: "Seats",
+		seats_description: (0, n.p)(p(), "price"),
+		browser_isolation_label: "Browser Isolation",
+		browser_isolation_description: "Isolate risky web content in a secure remote browser",
+		browser_isolation_price: (0, n.p)(f(), "seats", "price", "total"),
+		estimated_monthly: "Estimated monthly",
+		per_month: "/mo",
+		go_to_payment: "Go to payment",
+		redirecting: "Redirecting to checkout...",
+		continue_to_zt: "Continue to Zero Trust"
 	}
 }

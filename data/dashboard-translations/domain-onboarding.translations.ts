@@ -10,7 +10,7 @@
 		},
 		transfer: {
 			title: "Transfer a domain",
-			description: "Move your domain to Cloudflare and save on renewals"
+			description: "Move your domain registration to Cloudflare and save on renewals"
 		},
 		buy: {
 			title: "Buy a domain",
@@ -21,10 +21,11 @@
 		onboard_title: "Connect your domain",
 		onboard_description: "Make your site faster, more secure, and more reliable.",
 		transfer_title: "Transfer your domain",
-		transfer_description: "Move your domain to Cloudflare and save on renewals.",
+		transfer_description: "Move your domain registration to Cloudflare and save on renewals.",
 		transfer_banner: "To transfer your domain, your site needs to be connected to Cloudflare first. After that, you can enter your authorization code to begin the transfer.",
 		domain_label: "Domain name",
-		placeholder: "example.com"
+		placeholder: "example.com",
+		hosted_platform_link: "Purchased domain from Shopify, Wix, or Block?"
 	},
 	advanced: {
 		title: "Configure DNS records import and AI crawler preferences"
@@ -80,15 +81,18 @@
 	},
 	domain_available_modal: {
 		title: "%{domainName} doesn't appear to be a registered domain",
-		description: "You can continue adding this site to your Cloudflare account, or you can register this domain for %{price}. If you entered the wrong domain, you can go back and enter a new one.",
-		add_site: "Add site anyway",
-		register_domain: "Register domain"
+		description: "You can continue connecting this domain to your Cloudflare account, or you can buy this domain for %{price}. If you entered the wrong domain, you can go back and enter a new one.",
+		add_site: "Connect domain anyway",
+		register_domain: "Buy domain"
 	},
 	unsupported_tld_modal: {
 		title: ".%{tld} domains aren't supported yet",
 		description: "You can't transfer this domain right now, but you can still add it to Cloudflare to improve performance and security.",
 		go_back: "Go back",
 		add_anyway: "Add site anyway"
+	},
+	hosted_platform_accordion: {
+		content: "These sites don't allow you to directly transfer your domain to Cloudflare. You'll need to move your domain to an intermediate registrar first, then transfer to Cloudflare after a 60-day waiting period."
 	},
 	hosted_platform_modal: {
 		title: "Your site seems to be built on %{platformName}",
