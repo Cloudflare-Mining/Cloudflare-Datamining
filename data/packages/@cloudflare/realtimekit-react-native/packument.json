@@ -1,7 +1,7 @@
 {
 	"name": "@cloudflare/realtimekit-react-native",
 	"dist-tags": {
-		"staging": "0.3.2-staging.1",
+		"staging": "1.0.0-staging.0",
 		"latest": "0.3.2"
 	},
 	"versions": {
@@ -1681,6 +1681,36 @@
 					}
 				],
 				"unpackedSize": 896139
+			}
+		},
+		"1.0.0-staging.0": {
+			"name": "@cloudflare/realtimekit-react-native",
+			"version": "1.0.0-staging.0",
+			"dependencies": {
+				"@cloudflare/realtimekit": "1.4.0",
+				"base-64": "^1.0.0",
+				"events": "^3.3.0",
+				"react-native-url-polyfill": "1.3.0",
+				"text-encoding-polyfill": "^0.6.7"
+			},
+			"peerDependencies": {
+				"@cloudflare/react-native-webrtc": "~125.0.1",
+				"@expo/config-plugins": "*",
+				"react": ">=18.3.1",
+				"react-native": ">=0.77.0"
+			},
+			"dist": {
+				"integrity": "sha512-SF57oPlgSOnFxkMOhIJCyUTCDW9pXVHIzyQMAzZC/qkhaowAKycAKGNqqDU8rlpxRh9WyYVLfl+9uu+5PPOIPQ==",
+				"shasum": "4c3b8f7016ff158d5a187f8e482aa2ac9c0066d7",
+				"tarball": "https://registry.npmjs.org/@cloudflare/realtimekit-react-native/-/realtimekit-react-native-1.0.0-staging.0.tgz",
+				"fileCount": 135,
+				"unpackedSize": 895997,
+				"signatures": [
+					{
+						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U",
+						"sig": "MEYCIQD8+AxzJag6uqVv3v5Vkw2n3MtihOHIQCn15MdeD1HrhAIhAP2M1YeLJk67z3dtWJE16RtQb8mDjcjkyyB7h3NOEBdh"
+					}
+				]
 			}
 		}
 	}
