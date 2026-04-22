@@ -4092,6 +4092,33 @@
 				"application/json": {
 					"schema": {
 						"properties": {
+							"from": {
+								"description": "Step to restart from. Only applicable when status is \"restart\".",
+								"properties": {
+									"count": {
+										"exclusiveMinimum": true,
+										"minimum": 0,
+										"type": "integer"
+									},
+									"name": {
+										"maxLength": 256,
+										"minLength": 1,
+										"type": "string"
+									},
+									"type": {
+										"enum": [
+											"do",
+											"sleep",
+											"waitForEvent"
+										],
+										"type": "string"
+									}
+								},
+								"required": [
+									"name"
+								],
+								"type": "object"
+							},
 							"status": {
 								"description": "Apply action to instance.",
 								"enum": [

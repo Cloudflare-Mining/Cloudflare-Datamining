@@ -283,6 +283,9 @@
 														"email@example.com"
 													],
 													"delivery_mode": "DIRECT",
+													"delivery_status": [
+														"delivered"
+													],
 													"detection_reasons": [
 														"Selector is a source of spam/uce : Smtp-Helo-Server-Ip=<b>127.0.0[dot]186</b>"
 													],
@@ -366,6 +369,22 @@
 															}
 														]
 													},
+													"delivery_status": {
+														"items": {
+															"description": "Delivery status of the message.",
+															"enum": [
+																"delivered",
+																"moved",
+																"quarantined",
+																"rejected",
+																"deferred",
+																"bounced",
+																"queued"
+															],
+															"type": "string"
+														},
+														"type": "array"
+													},
 													"detection_reasons": {
 														"items": {
 															"type": "string"
@@ -412,7 +431,7 @@
 													},
 													"findings": {
 														"deprecated": true,
-														"description": "Deprecated.",
+														"description": "Deprecated: use `/investigate/{id}/detections` instead.",
 														"items": {
 															"properties": {
 																"attachment": {
@@ -837,6 +856,9 @@
 														"email@example.com"
 													],
 													"delivery_mode": "DIRECT",
+													"delivery_status": [
+														"delivered"
+													],
 													"detection_reasons": [
 														"Selector is a source of spam/uce : Smtp-Helo-Server-Ip=<b>127.0.0[dot]186</b>"
 													],
@@ -920,6 +942,22 @@
 															}
 														]
 													},
+													"delivery_status": {
+														"items": {
+															"description": "Delivery status of the message.",
+															"enum": [
+																"delivered",
+																"moved",
+																"quarantined",
+																"rejected",
+																"deferred",
+																"bounced",
+																"queued"
+															],
+															"type": "string"
+														},
+														"type": "array"
+													},
 													"detection_reasons": {
 														"items": {
 															"type": "string"
@@ -966,7 +1004,7 @@
 													},
 													"findings": {
 														"deprecated": true,
-														"description": "Deprecated.",
+														"description": "Deprecated: use `/investigate/{id}/detections` instead.",
 														"items": {
 															"properties": {
 																"attachment": {
@@ -1795,6 +1833,9 @@
 													"email@example.com"
 												],
 												"delivery_mode": "DIRECT",
+												"delivery_status": [
+													"delivered"
+												],
 												"detection_reasons": [
 													"Selector is a source of spam/uce : Smtp-Helo-Server-Ip=<b>127.0.0[dot]186</b>"
 												],
@@ -1878,6 +1919,22 @@
 														}
 													]
 												},
+												"delivery_status": {
+													"items": {
+														"description": "Delivery status of the message.",
+														"enum": [
+															"delivered",
+															"moved",
+															"quarantined",
+															"rejected",
+															"deferred",
+															"bounced",
+															"queued"
+														],
+														"type": "string"
+													},
+													"type": "array"
+												},
 												"detection_reasons": {
 													"items": {
 														"type": "string"
@@ -1924,7 +1981,7 @@
 												},
 												"findings": {
 													"deprecated": true,
-													"description": "Deprecated.",
+													"description": "Deprecated: use `/investigate/{id}/detections` instead.",
 													"items": {
 														"properties": {
 															"attachment": {
@@ -2418,6 +2475,19 @@
 												"action": "QUARANTINED",
 												"attachments": [],
 												"final_disposition": "MALICIOUS",
+												"findings": [
+													{
+														"attachment": null,
+														"detail": null,
+														"detection": "MALICIOUS",
+														"field": null,
+														"name": "yara_hit_finding",
+														"portion": null,
+														"reason": null,
+														"score": null,
+														"value": "Phishing.Credential_Harvester.Suspicious_URL"
+													}
+												],
 												"headers": [
 													{
 														"name": "From",
@@ -2531,6 +2601,70 @@
 															"type": "string"
 														}
 													]
+												},
+												"findings": {
+													"items": {
+														"properties": {
+															"attachment": {
+																"nullable": true,
+																"type": "string"
+															},
+															"detail": {
+																"nullable": true,
+																"type": "string"
+															},
+															"detection": {
+																"allOf": [
+																	{
+																		"enum": [
+																			"MALICIOUS",
+																			"MALICIOUS-BEC",
+																			"SUSPICIOUS",
+																			"SPOOF",
+																			"SPAM",
+																			"BULK",
+																			"ENCRYPTED",
+																			"EXTERNAL",
+																			"UNKNOWN",
+																			"NONE"
+																		],
+																		"type": "string"
+																	},
+																	{
+																		"nullable": true,
+																		"type": "string"
+																	}
+																]
+															},
+															"field": {
+																"nullable": true,
+																"type": "string"
+															},
+															"name": {
+																"nullable": true,
+																"type": "string"
+															},
+															"portion": {
+																"nullable": true,
+																"type": "string"
+															},
+															"reason": {
+																"nullable": true,
+																"type": "string"
+															},
+															"score": {
+																"format": "double",
+																"nullable": true,
+																"type": "number"
+															},
+															"value": {
+																"nullable": true,
+																"type": "string"
+															}
+														},
+														"type": "object"
+													},
+													"type": "array"
 												},
 												"headers": {
 													"items": {
@@ -2690,7 +2824,8 @@
 												"sender_info",
 												"links",
 												"action",
-												"attachments"
+												"attachments",
+												"findings"
 											],
 											"type": "object"
 										}

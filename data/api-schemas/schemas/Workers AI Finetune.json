@@ -155,6 +155,7 @@
 				"in": "query",
 				"name": "limit",
 				"schema": {
+					"default": 20,
 					"description": "Pagination Limit",
 					"type": "number"
 				}
@@ -164,6 +165,7 @@
 				"in": "query",
 				"name": "offset",
 				"schema": {
+					"default": 0,
 					"description": "Pagination Offset",
 					"type": "number"
 				}
@@ -499,17 +501,24 @@
 					"schema": {
 						"properties": {
 							"file": {
+								"description": "File to upload",
 								"format": "binary",
 								"type": "string"
 							},
 							"file_name": {
+								"description": "Name of the file (adapter_config.json or adapter_model.safetensors)",
 								"type": "string"
 							}
 						},
+						"required": [
+							"file_name",
+							"file"
+						],
 						"type": "object"
 					}
 				}
-			}
+			},
+			"description": "Finetune asset file upload"
 		},
 		"responses": {
 			"200": {

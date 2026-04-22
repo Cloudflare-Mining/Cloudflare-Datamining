@@ -303,6 +303,7 @@
 				"in": "query",
 				"name": "per_page",
 				"schema": {
+					"default": 100,
 					"type": "integer"
 				}
 			},
@@ -310,6 +311,7 @@
 				"in": "query",
 				"name": "page",
 				"schema": {
+					"default": 1,
 					"type": "integer"
 				}
 			},
@@ -318,6 +320,7 @@
 				"in": "query",
 				"name": "task",
 				"schema": {
+					"default": "",
 					"description": "Filter by Task Name",
 					"example": "Text Generation",
 					"type": "string"
@@ -328,6 +331,7 @@
 				"in": "query",
 				"name": "author",
 				"schema": {
+					"default": "",
 					"description": "Filter by Author",
 					"type": "string"
 				}
@@ -346,6 +350,7 @@
 				"in": "query",
 				"name": "hide_experimental",
 				"schema": {
+					"default": false,
 					"description": "Filter to hide experimental models",
 					"type": "boolean"
 				}
@@ -355,6 +360,7 @@
 				"in": "query",
 				"name": "search",
 				"schema": {
+					"default": "",
 					"description": "Search",
 					"type": "string"
 				}
