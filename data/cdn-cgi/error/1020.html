@@ -2,7 +2,7 @@
 <html lang="en-US">
 
 <head>
-	<title>Access denied</title>
+	<title>Access denied | cloudflare.com | Cloudflare</title>
 	<meta http-equiv="X-UA-Compatible" content="IE=Edge">
 	<meta name="robots" content="noindex, nofollow">
 	<meta name="viewport" content="width=device-width,initial-scale=1">
@@ -17,10 +17,10 @@
 					a = {
 						event: "feedback clicked",
 						properties: {
-							errorCode: 1020,
-							helpful: a,
-							version: 5
-						}
+							errorCode: 1020
+						},
+						helpful: a,
+						version: 1
 					};
 					b.open("POST", "https://sparrow.cloudflare.com/api/v1/event");
 					b.setRequestHeader("Content-Type", "application/json");
@@ -42,7 +42,6 @@
 			}
 		})();
 	</script>
-
 	<script>
 		(function() {
 			function d(c) {
@@ -130,14 +129,17 @@
 				<div class="feedback-hidden py-8 text-center" id="error-feedback">
 					<div id="error-feedback-survey" class="footer-line-wrapper">
 						Was this page helpful?
-						<button class="border border-solid bg-white cf-button cursor-pointer ml-4 px-4 py-2 rounded" id="feedback-button-yes" type="button">Yes</button>
-						<button class="border border-solid bg-white cf-button cursor-pointer ml-4 px-4 py-2 rounded" id="feedback-button-no" type="button">No</button>
+						<button class="border border-solid bg-white cf-button cursor-pointer ml-4 px-4 py-2 rounded" id="feedback-button-yes" type="button">
+							Yes
+						</button>
+						<button class="border border-solid bg-white cf-button cursor-pointer ml-4 px-4 py-2 rounded" id="feedback-button-no" type="button">
+							No
+						</button>
 					</div>
 					<div class="feedback-success feedback-hidden" id="error-feedback-success">
 						Thank you for your feedback!
 					</div>
 				</div>
-
 			</div>
 			<div class="cf-column cf-footer-line-wrapper text-center">
 				<p>
@@ -146,7 +148,6 @@
 			</div>
 		</div>
 	</div>
-
 
 </body>
 
