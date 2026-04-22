@@ -514,7 +514,7 @@
 		"enabled": true
 	},
 	"cloudflare-agent-direct": {
-		"enabled": false
+		"enabled": true
 	},
 	"cloudflare-calls": {
 		"enabled": false
@@ -1851,13 +1851,6 @@
 			"variant-a"
 		]
 	},
-	"prg-plan-cards-video-modal-test": {
-		"enabled": true,
-		"branches": [
-			"baseline",
-			"experiment"
-		]
-	},
 	"prg-plan-ribbon-copy-experiment": {
 		"enabled": true,
 		"branches": [
@@ -1873,15 +1866,6 @@
 		"branches": [
 			"baseline",
 			"experiment"
-		]
-	},
-	"prg-registrar-cta-copy-experiment": {
-		"enabled": true,
-		"branches": [
-			"baseline",
-			"variant-a",
-			"variant-b",
-			"variant-c"
 		]
 	},
 	"prg-registrar-transfer-page-optimizations": {
