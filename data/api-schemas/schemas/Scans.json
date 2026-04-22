@@ -186,6 +186,255 @@
 			"Cloudforce One Write"
 		]
 	},
+	"DELETE /accounts/{account_id}/vuln_scanner/scans/{scan_id}": {
+		"description": "Deletes a scan and all associated data.\n\nOnly scans in a terminal state (`finished`, `failed`) may be deleted.\nAttempting to delete a scan that is still being created or executed\n(`created`, `scheduled`, `planning`, `running`) returns `400`.\n",
+		"operationId": "delete-scan",
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"properties": {
+										"errors": {
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														},
+														"type": "object"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										},
+										"messages": {
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														},
+														"type": "object"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										},
+										"success": {
+											"description": "Whether the API call was successful.",
+											"enum": [
+												true
+											],
+											"example": true,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages"
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"result": {
+											"description": "Successful scan deletion result.",
+											"properties": {
+												"id": {
+													"description": "ID of the deleted scan.",
+													"format": "uuid",
+													"type": "string",
+													"x-auditable": true
+												}
+											},
+											"required": [
+												"id"
+											],
+											"type": "object"
+										},
+										"result_info": {
+											"nullable": true,
+											"type": "object"
+										}
+									},
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "Successful response."
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"allOf": [
+										{
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														},
+														"type": "object"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										}
+									],
+									"example": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
+										}
+									],
+									"minLength": 1
+								},
+								"messages": {
+									"allOf": [
+										{
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														},
+														"type": "object"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										}
+									],
+									"example": []
+								},
+								"result": {
+									"enum": [
+										null
+									],
+									"nullable": true,
+									"type": "object"
+								},
+								"success": {
+									"description": "Whether the API call was successful.",
+									"enum": [
+										false
+									],
+									"example": false,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Client error."
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Delete Scan",
+		"tags": [
+			"Scans"
+		]
+	},
 	"GET /accounts/{account_id}/cloudforce-one/scans/config": {
 		"operationId": "get_ConfigFetch",
 		"parameters": [
@@ -1165,6 +1414,15 @@
 																																"allOf": [
 																																	{
 																																		"description": "HTTP response body preview.",
+																																		"discriminator": {
+																																			"mapping": {
+																																				"bytes": "#/components/schemas/vuln_scanner_bola-body-response-bytes",
+																																				"json": "#/components/schemas/vuln_scanner_bola-body-response-json",
+																																				"not_found": "#/components/schemas/vuln_scanner_bola-body-response-not-found",
+																																				"text": "#/components/schemas/vuln_scanner_bola-body-response-text"
+																																			},
+																																			"propertyName": "kind"
+																																		},
 																																		"oneOf": [
 																																			{
 																																				"description": "No body was received.",
@@ -1921,6 +2179,15 @@
 																															"allOf": [
 																																{
 																																	"description": "HTTP response body preview.",
+																																	"discriminator": {
+																																		"mapping": {
+																																			"bytes": "#/components/schemas/vuln_scanner_bola-body-response-bytes",
+																																			"json": "#/components/schemas/vuln_scanner_bola-body-response-json",
+																																			"not_found": "#/components/schemas/vuln_scanner_bola-body-response-not-found",
+																																			"text": "#/components/schemas/vuln_scanner_bola-body-response-text"
+																																		},
+																																		"propertyName": "kind"
+																																	},
 																																	"oneOf": [
 																																		{
 																																			"description": "No body was received.",
@@ -3422,6 +3689,15 @@
 																															"allOf": [
 																																{
 																																	"description": "HTTP response body preview.",
+																																	"discriminator": {
+																																		"mapping": {
+																																			"bytes": "#/components/schemas/vuln_scanner_bola-body-response-bytes",
+																																			"json": "#/components/schemas/vuln_scanner_bola-body-response-json",
+																																			"not_found": "#/components/schemas/vuln_scanner_bola-body-response-not-found",
+																																			"text": "#/components/schemas/vuln_scanner_bola-body-response-text"
+																																		},
+																																		"propertyName": "kind"
+																																	},
 																																	"oneOf": [
 																																		{
 																																			"description": "No body was received.",
