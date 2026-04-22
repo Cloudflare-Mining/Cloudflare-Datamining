@@ -13,7 +13,7 @@
 	},
 	items_tab: {
 		title: "Items",
-		search_placeholder: "Search items...",
+		search_placeholder: "Search items",
 		empty: {
 			title: "No items found",
 			description: "Items will appear here once your data source is indexed."
@@ -86,6 +86,24 @@
 			confirm: "Delete",
 			success: "Item deleted successfully",
 			error: "Failed to delete item"
+		},
+		source_filter: {
+			all: "All sources",
+			builtin: "Built-in storage",
+			web_crawler: "Web Crawl",
+			r2: "R2",
+			placeholder: "Filter by source…",
+			label: "Source"
+		},
+		filters: {
+			button: "Filters",
+			source_label: "Source",
+			metadata_label: "Metadata"
+		},
+		empty_filtered: {
+			title: "No matching items",
+			description: "Try adjusting your search or filters to find what you are looking for.",
+			clear_filters: "Clear all filters"
 		}
 	},
 	overview: {
@@ -1122,7 +1140,7 @@
 			summary_results_score: (0, r.p)(_(), "count", "score"),
 			n_tokens: (0, r.p)(p(), "count"),
 			n_dimensions: (0, r.p)(h(), "count"),
-			k_context: (0, r.p)(g(), "count"),
+			k_context: (0, r.p)(f(), "count"),
 			tokens_unit: "tokens"
 		},
 		source_settings: {

@@ -128,7 +128,7 @@
 		generate_api_token: "Generate API Token",
 		select_example_aria_label: "Select an example",
 		response_output: "Output",
-		response_json: "JSON",
+		response_raw_json: "Raw response",
 		view_fullscreen: "View fullscreen",
 		run_in_playground: "Run in Playground to see output",
 		code_copy: "Copy code",

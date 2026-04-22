@@ -40,6 +40,7 @@
 		error: "Failed to submit request",
 		validation_errors: "Please fix the errors above before submitting",
 		required_field: "{label} is required",
+		required_field_legend: "Fields marked with * are required.",
 		invalid_format: "Invalid format",
 		sections: {
 			general: "General Information"
