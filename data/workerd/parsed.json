@@ -4104,6 +4104,15 @@
 						"compatDisableFlag": "resizable_array_buffer_in_blob"
 					},
 					"type": "Bool"
+				},
+				{
+					"name": "diagnosticsChannelHasSubscribersGetter",
+					"annotations": {
+						"compatEnableFlag": "diagnostics_channel_has_subscribers_getter",
+						"compatDisableFlag": "no_diagnostics_channel_has_subscribers_getter",
+						"compatEnableDate": "2026-05-19"
+					},
+					"type": "Bool"
 				}
 			]
 		},
