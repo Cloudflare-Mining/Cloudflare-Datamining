@@ -207,11 +207,26 @@
 				}
 			},
 			{
+				"description": "Filter by namespace. Repeat the parameter to filter by multiple namespaces (e.g. namespace=foo&namespace=bar).",
 				"in": "query",
 				"name": "namespace",
 				"schema": {
-					"example": "yara/workers",
-					"type": "string"
+					"anyOf": [
+						{
+							"type": "string"
+						},
+						{
+							"items": {
+								"type": "string"
+							},
+							"type": "array"
+						}
+					],
+					"description": "Filter by namespace. Repeat the parameter to filter by multiple namespaces (e.g. namespace=foo&namespace=bar).",
+					"example": [
+						"yara/workers",
+						"yara/dns_record"
+					]
 				}
 			},
 			{
