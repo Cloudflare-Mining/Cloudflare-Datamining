@@ -319,6 +319,12 @@
 													"example": "https://platform.openai.com/docs/bots",
 													"type": "string"
 												},
+												"signatureAgentUrl": {
+													"description": "The URL of the agent's [Web Bot Auth](https://blog.cloudflare.com/web-bot-auth/) resource. Null for bots not verified via request signature.",
+													"example": "https://example.com/signature-agent",
+													"nullable": true,
+													"type": "string"
+												},
 												"slug": {
 													"description": "A kebab-case identifier derived from the bot name.",
 													"example": "gptbot",

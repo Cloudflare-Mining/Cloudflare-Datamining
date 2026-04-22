@@ -955,6 +955,206 @@
 			"pro": true
 		}
 	},
+	"GET /radar/bgp/ips/top/ases": {
+		"description": "Returns the top-N autonomous systems by announced IP space at the nearest 8-hour RIB boundary at or before the requested date. The snapped boundary is returned as `anchor_ts`.",
+		"operationId": "radar-get-bgp-ips-top-ases",
+		"parameters": [
+			{
+				"description": "Filters results by the specified datetime (ISO 8601).",
+				"in": "query",
+				"name": "date",
+				"schema": {
+					"description": "Filters results by the specified datetime (ISO 8601).",
+					"example": "2024-09-19T00:00:00Z",
+					"format": "date-time",
+					"type": "string"
+				}
+			},
+			{
+				"description": "Limits the number of objects returned in the response.",
+				"in": "query",
+				"name": "limit",
+				"schema": {
+					"default": 5,
+					"description": "Limits the number of objects returned in the response.",
+					"example": 5,
+					"maximum": 50,
+					"minimum": 1,
+					"type": "integer"
+				}
+			},
+			{
+				"description": "Ranking metric: IPv4 /24 count or IPv6 /48 count.",
+				"in": "query",
+				"name": "metric",
+				"schema": {
+					"description": "Ranking metric: IPv4 /24 count or IPv6 /48 count.",
+					"enum": [
+						"v4_24s",
+						"v6_48s"
+					],
+					"example": "v4_24s",
+					"type": "string"
+				}
+			},
+			{
+				"description": "Optional ISO 3166-1 alpha-2 country filter. Omit for global top-N.",
+				"in": "query",
+				"name": "country",
+				"schema": {
+					"description": "Optional ISO 3166-1 alpha-2 country filter. Omit for global top-N.",
+					"example": "US",
+					"maxLength": 2,
+					"minLength": 2,
+					"type": "string"
+				}
+			},
+			{
+				"description": "Format in which results will be returned.",
+				"in": "query",
+				"name": "format",
+				"schema": {
+					"description": "Format in which results will be returned.",
+					"enum": [
+						"JSON",
+						"CSV"
+					],
+					"example": "json",
+					"type": "string"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"result": {
+									"properties": {
+										"anchorTs": {
+											"example": "2026-04-18T16:00:00.000Z",
+											"format": "date-time",
+											"type": "string"
+										},
+										"asns": {
+											"items": {
+												"properties": {
+													"asn": {
+														"example": 749,
+														"type": "integer"
+													},
+													"v4_24s": {
+														"example": 875649,
+														"type": "integer"
+													},
+													"v6_48s": {
+														"type": "integer"
+													}
+												},
+												"required": [
+													"asn",
+													"v4_24s",
+													"v6_48s"
+												],
+												"type": "object"
+											},
+											"type": "array"
+										},
+										"country": {
+											"example": "US",
+											"nullable": true,
+											"type": "string"
+										},
+										"metric": {
+											"example": "v4_24s",
+											"type": "string"
+										}
+									},
+									"required": [
+										"anchorTs",
+										"metric",
+										"country",
+										"asns"
+									],
+									"type": "object"
+								},
+								"success": {
+									"example": true,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"result",
+								"success"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Successful response."
+			},
+			"400": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"result": {
+									"type": "object"
+								},
+								"success": {
+									"example": false,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"result",
+								"success",
+								"errors"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Bad request."
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": [],
+				"api_token": []
+			}
+		],
+		"summary": "Get top ASes by announced IP space",
+		"tags": [
+			"Radar BGP"
+		],
+		"x-api-token-group": [
+			"User Details Write",
+			"User Details Read"
+		],
+		"x-cfPlanAvailability": {
+			"business": true,
+			"enterprise": true,
+			"free": true,
+			"pro": true
+		}
+	},
 	"GET /radar/bgp/leaks/events": {
 		"description": "Retrieves the BGP route leak events.",
 		"operationId": "radar-get-bgp-route-leak-events",
@@ -3190,6 +3390,240 @@
 			}
 		],
 		"summary": "Get ASPA count time series",
+		"tags": [
+			"Radar BGP"
+		],
+		"x-api-token-group": [
+			"User Details Write",
+			"User Details Read"
+		],
+		"x-cfPlanAvailability": {
+			"business": true,
+			"enterprise": true,
+			"free": true,
+			"pro": true
+		}
+	},
+	"GET /radar/bgp/rpki/roas/timeseries": {
+		"description": "Retrieves RPKI ROA (Route Origin Authorization) validation ratios over time. Returns the selected metric as a time series. Supports filtering by ASN or location (country code) — multiple values of the same filter type produce one series per value. If no ASN or location is specified, returns the global aggregate.",
+		"operationId": "radar-get-bgp-rpki-roas-timeseries",
+		"parameters": [
+			{
+				"description": "Start of the date range (inclusive).",
+				"in": "query",
+				"name": "dateStart",
+				"schema": {
+					"description": "Start of the date range (inclusive).",
+					"example": "2023-09-01T11:41:33.782Z",
+					"format": "date-time",
+					"type": "string"
+				}
+			},
+			{
+				"description": "End of the date range (inclusive).",
+				"in": "query",
+				"name": "dateEnd",
+				"schema": {
+					"description": "End of the date range (inclusive).",
+					"example": "2023-09-01T11:41:33.782Z",
+					"format": "date-time",
+					"type": "string"
+				}
+			},
+			{
+				"description": "Which RPKI ROA validation metric to return. validPfxsRatio = ratio of RPKI-valid prefixes (IPv4+IPv6 combined). validPfxsV4Ratio / validPfxsV6Ratio = same, split by IP version. validIpsRatio = ratio of RPKI-valid address space (IPv4 /24s + IPv6 /48s). validIpsV4Ratio / validIpsV6Ratio = same, split by IP version.",
+				"in": "query",
+				"name": "metric",
+				"schema": {
+					"default": "validPfxsRatio",
+					"description": "Which RPKI ROA validation metric to return. validPfxsRatio = ratio of RPKI-valid prefixes (IPv4+IPv6 combined). validPfxsV4Ratio / validPfxsV6Ratio = same, split by IP version. validIpsRatio = ratio of RPKI-valid address space (IPv4 /24s + IPv6 /48s). validIpsV4Ratio / validIpsV6Ratio = same, split by IP version.",
+					"enum": [
+						"validPfxsRatio",
+						"validPfxsV4Ratio",
+						"validPfxsV6Ratio",
+						"validIpsRatio",
+						"validIpsV4Ratio",
+						"validIpsV6Ratio"
+					],
+					"example": "validPfxsRatio",
+					"type": "string"
+				}
+			},
+			{
+				"description": "Filters results by Autonomous System Number. Specify one or more ASNs. Multiple values generate one series per ASN.",
+				"in": "query",
+				"name": "asn",
+				"schema": {
+					"description": "Filters results by Autonomous System Number. Specify one or more ASNs. Multiple values generate one series per ASN.",
+					"example": "13335",
+					"items": {
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
+				"description": "Filters results by location. Specify a comma-separated list of alpha-2 location codes.",
+				"in": "query",
+				"name": "location",
+				"schema": {
+					"description": "Filters results by location. Specify a comma-separated list of alpha-2 location codes.",
+					"example": "US",
+					"items": {
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
+				"description": "Array of names used to label the series in the response.",
+				"in": "query",
+				"name": "name",
+				"schema": {
+					"description": "Array of names used to label the series in the response.",
+					"items": {
+						"example": "main_series",
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
+				"description": "Format in which results will be returned.",
+				"in": "query",
+				"name": "format",
+				"schema": {
+					"description": "Format in which results will be returned.",
+					"enum": [
+						"JSON",
+						"CSV"
+					],
+					"example": "json",
+					"type": "string"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"result": {
+									"properties": {
+										"meta": {
+											"properties": {
+												"dataTime": {
+													"description": "Timestamp of the underlying data.",
+													"format": "date-time",
+													"type": "string"
+												},
+												"queryTime": {
+													"description": "Timestamp when the query was executed.",
+													"format": "date-time",
+													"type": "string"
+												}
+											},
+											"required": [
+												"dataTime",
+												"queryTime"
+											],
+											"type": "object"
+										},
+										"serie_0": {
+											"properties": {
+												"timestamps": {
+													"items": {
+														"format": "date-time",
+														"type": "string"
+													},
+													"type": "array"
+												},
+												"values": {
+													"items": {
+														"description": "A numeric string.",
+														"example": "10",
+														"pattern": "^-?\\d+(\\.\\d+)?$",
+														"type": "string"
+													},
+													"type": "array"
+												}
+											},
+											"required": [
+												"timestamps",
+												"values"
+											],
+											"type": "object"
+										}
+									},
+									"required": [
+										"serie_0",
+										"meta"
+									],
+									"type": "object"
+								},
+								"success": {
+									"example": true,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"result",
+								"success"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Successful response."
+			},
+			"400": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"result": {
+									"type": "object"
+								},
+								"success": {
+									"example": false,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"result",
+								"success",
+								"errors"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Bad request."
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": [],
+				"api_token": []
+			}
+		],
+		"summary": "Get RPKI ROA deployment time series",
 		"tags": [
 			"Radar BGP"
 		],
