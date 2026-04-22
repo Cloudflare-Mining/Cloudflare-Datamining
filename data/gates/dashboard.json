@@ -290,8 +290,8 @@
 	"auto-save-all-discoveries": {
 		"enabled": true
 	},
-	"backup-pm-auto-retry-enabled": {
-		"enabled": false
+	"backup-payment-method-auto-retry-enabled": {
+		"enabled": true
 	},
 	"bad-debt-banner": {
 		"enabled": false
@@ -400,6 +400,9 @@
 		"enabled": true
 	},
 	"billing-unified-checkout-workers": {
+		"enabled": false
+	},
+	"billing-unified-checkout-zaraz": {
 		"enabled": false
 	},
 	"billing-unified-checkout-zero-trust": {
@@ -1437,7 +1440,7 @@
 		"enabled": true
 	},
 	"loui-kumo-tiered-cache": {
-		"enabled": false
+		"enabled": true
 	},
 	"loui-lb-monitor-groups": {
 		"enabled": false
@@ -1829,7 +1832,7 @@
 		"enabled": false
 	},
 	"prg-no-dns-redirect": {
-		"enabled": true,
+		"enabled": false,
 		"branches": [
 			"baseline",
 			"experiment"
