@@ -14,7 +14,6 @@
 	<li style="font-size: 10pt;"><span style="font-size: 10pt;"><strong>People Operations Advisory: </strong>Partners with People Ops team to ensure our policies are aligned with local employment laws and turn them into operationalised workflows, design resources to support managers and employees.&nbsp;</span></li>
 	<li style="font-size: 10pt;"><span style="font-size: 10pt;"><strong>Talent Acquisition:</strong> Partners with managers to source, attract, and recruit top talent to fill open positions.</span></li>
 	<li style="font-size: 10pt;"><span style="font-size: 10pt;"><strong>Talent Growth &amp; Enablement: </strong>Designs and delivers programs and resources to develop and retain critical talent, foster professional growth, and amplify career advancement.</span></li>
-	<li style="font-size: 10pt;"><span style="font-size: 10pt;"><strong>Benefits: </strong>Designs, manages, and administers employee benefits programs to attract and retain talent, ensure regulatory compliance, and support employee well-being while optimizing company costs. Serves as a strategic partner to multiple stakeholder groups.</span></li>
 </ul>
 <h3><span style="font-size: 10pt;"><strong>What You’ll Do</strong></span></h3>
 <ul>
