@@ -5,16 +5,41 @@
 		<p>At Cloudflare, we’re not looking for people who wait for a polished roadmap; we’re looking for the builders who see the cracks in the Internet that everyone else has simply learned to live with. We value candidates who have the instinct to spot a "normalized" problem and the AI-native curiosity to create a solution using the latest tools. Our culture is built on iteration, leveraging AI to ship faster today to make it better tomorrow, while ensuring that every improvement, no matter how small, is shared across the team to lift everyone up. If you’re the type of person who values curiosity over bureaucracy, and that AI is a partner in solving tough problems to keep the Internet moving forward, you’ll fit right in.</p>
 	</div>
 </div>
-<p><br><strong>Available Location - Bengaluru, India</strong></p>
-<p><strong>About the Department</strong></p>
-<p>The Identity and Access Management (IAM) team is dedicated to ensuring the secure and efficient&nbsp;management of user identities, access privileges, and authentication mechanisms across internal&nbsp;systems, applications, and data. Our mission is to safeguard the organization against unauthorized&nbsp;access, protect sensitive information, and enable seamless user experiences while adhering to industry&nbsp;best practices and compliance standards</p>
-<p><strong>About the role</strong></p>
-<p>As an IAM Security Analyst you will play a key role in efficiently managing user identities and access across the enterprise.You will be responsible for implementing technologies and designing processes to ensure users have the authorized access&nbsp;to resources and systems.</p>
-<p><strong>What You’ll Do</strong></p>
-<p>● Establish and execute access governance programs and policies.<br>● Define and enforce access control policies, including role-based access controls (RBAC), attributes based access&nbsp;control (ABAC) and policy based access controls (PBAC).</p>
-<p>● Ensure access adhere to the principle of least privilege and segregation of duties (SOD).<br>● Develop and execute an access certification program and scale to all systems.<br>● Design, implement, and manage identity Access &amp;amp; Governance policies and procedures.<br>● Define and enforce privileged access management (PAM) policies to secure sensitive systems and data.<br>● Manager user onboarding, off boarding and role changes, ensuring adherence to security policies and compliance&nbsp;requirements.<br>● Elaborate with cross-functional teams, including IT, security and compliance to ensure IAM aligns with business&nbsp;goals.<br>● Communicate IAM-related updates and recommendations to stakeholders.<br>● Maintain comprehensive documentation of IAM policies, processes and configurations.<br>● Generate reports and metrics related to IAM activities and security posture.<br>● Stay current with industry best practices, regulations, and compliance standards related to IAM, such as FedRamp, SOX, GDPR, PCI and NIST.<br>● Provide operational support of IAM systems including an on-call rotation that may include after hours calls.</p>
-<p><strong>Desirable Skills, Knowledge and Experience</strong></p>
-<p>● In-depth understanding of access governance<br>● 4+ Years of experience in Identity Governance &amp; amp; Administration (IGA) solutions<br>● Performing policy enforcement, role management, and access certifications<br>● Experience implementing privileged access management (PAM)<br>● Experience developing IAM security standards and policies<br>● Preferred background in scripting and/or application development to automate identity and access management&nbsp;process.</p>
+<p><strong>Available Locations: Sydney, Australia</strong></p>
+<div><strong>About the role</strong></div>
+<p>Cloudflare is looking for an Administrative Assistant to support members of our senior leadership team. We are looking for a dynamic dedicated candidate, preferably with experience of supporting VP level Executives or higher. The candidate must be comfortable with multi-tasking and prioritisation in a fast-speed environment with close attention to detail, accuracy, and timeliness.</p>
+<p>Your job is to keep our leader organised, prioritised and productive while we grow in the region. This role requires superior attention to detail, great organisational skills, and the ability to juggle multiple high-priority requests. It also requires the ability to work with team members at all levels, sometimes under pressure. A high level of integrity and discretion in handling confidential information is important, as is a positive attitude. The ideal candidate is a seasoned EA who understands the value in cultivating relationships and prides themselves in being a career EA.&nbsp;</p>
+<p><strong>Responsibilities</strong></p>
+<ul>
+	<li>
+		<p><strong>Admin:</strong>&nbsp;Provide excellent administrative support to our leaders primarily with some level of admin support to 1-2 of their&nbsp;directs, exercising high attention to detail and discretion to every matter. Plan, coordinate and execute meeting set-up and events. Provide agendas, detailed data, information and resources to the executive in preparation for meetings. Prepare and manage expense reports.</p>
+	</li>
+	<li>
+		<p><strong>Calendar:</strong>&nbsp;Proactively own and flawlessly execute on our executives' calendar, prioritising with purpose, deflecting with tact, and understanding both the short and long-term impacts of each confirmed, declined, and rescheduled meeting. Ensure the executives are equipped with all the necessary meeting information and manage inbound and outbound requests.&nbsp;</p>
+	</li>
+	<li>
+		<p><strong>Travel:&nbsp;</strong>Plan all aspects of domestic and international travel, optimising and balancing executives' time with cost of travel; monitoring flights for up to the minute changes; ensuring all documents are secured and up-to-date.</p>
+	</li>
+	<li>
+		<p><strong>Special Projects</strong>: Coordinate and organise APJC-wide internal events (including our regular All-Hands and Leadership meetings). Support Cloudflare TV sessions for APJC region&nbsp;</p>
+	</li>
+	<li>
+		<p><strong>EA Team</strong>: Our EA team has a high degree of camaraderie and so the ideal candidate will enjoy partnering closely with their peers and foster teamwork.</p>
+	</li>
+</ul>
+<p><strong>Requirements</strong></p>
+<ul>
+	<li>You have 7+ years experience as an Executive Assistant in a high growth environment, prior experience supporting the VP levels</li>
+	<li>Strong written and verbal communication skills in English is necessary</li>
+	<li>Working knowledge of Google Suite, NetSuite, and major airline carrier’s platforms</li>
+	<li>Exhibit a strong work ethic, professionalism, confidentiality and good judgment</li>
+	<li>Incredibly organised and resourceful, able to juggle and multi-task with acute attention to detail and follow through</li>
+	<li>Strong sense of urgency and organisation</li>
+	<li>Ability to manage their own time with limited or no supervision</li>
+	<li>A "no task is too small" attitude</li>
+	<li>Ability to hit the ground running and take charge of the position will be highly advantageous</li>
+	<li>Start-up background is a plus</li>
+</ul>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
 	<p><span style="font-weight: 400;">We’re not just a highly ambitious, large-scale technology company. We’re a highly ambitious, large-scale technology company with a soul. Fundamental to our mission to help build a better Internet is protecting the free and open Internet.</span></p>
