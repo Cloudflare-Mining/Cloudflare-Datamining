@@ -13733,6 +13733,7 @@ declare namespace CloudflareWorkersModule {
   ): unknown;
   export const env: Cloudflare.Env;
   export const exports: Cloudflare.Exports;
+  export const cache: CacheContext;
 }
 declare module "cloudflare:workers" {
   export = CloudflareWorkersModule;
