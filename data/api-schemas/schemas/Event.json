@@ -444,7 +444,7 @@
 		]
 	},
 	"GET /accounts/{account_id}/cloudforce-one/events": {
-		"description": "When `datasetId` is unspecified, events will be listed from the `Cloudforce One Threat Events` dataset. To list existing datasets (and their IDs), use the [`List Datasets`](https://developers.cloudflare.com/api/resources/cloudforce_one/subresources/threat_events/subresources/datasets/methods/list/) endpoint). Also, must provide query parameters.",
+		"description": "Use `datasetId=all` or `datasetId=*` to query all event datasets for the account (limited to 10). When `datasetId` is unspecified, events are listed from the default Cloudforce One Threat Events dataset. To list existing datasets, use the [`List Datasets`](https://developers.cloudflare.com/api/resources/cloudforce_one/subresources/threat_events/subresources/datasets/methods/list/) endpoint.",
 		"operationId": "get_EventListGet",
 		"parameters": [
 			{
@@ -567,6 +567,7 @@
 				"in": "query",
 				"name": "datasetId",
 				"schema": {
+					"description": "Dataset IDs to query events from (array of UUIDs), or special value 'all' or '*' to query all event datasets for the account. If not provided, uses the default dataset.",
 					"items": {
 						"type": "string"
 					},
@@ -3334,203 +3335,6 @@
 		],
 		"x-api-token-group": [
 			"Cloudforce One Write"
-		]
-	},
-	"POST /accounts/{account_id}/cloudforce-one/events/{dataset_id}/revert-do": {
-		"operationId": "post_EventDoRevert",
-		"parameters": [
-			{
-				"description": "Account ID.",
-				"in": "path",
-				"name": "account_id",
-				"required": true,
-				"schema": {
-					"description": "Account ID.",
-					"type": "string"
-				}
-			},
-			{
-				"description": "Dataset UUID.",
-				"in": "path",
-				"name": "dataset_id",
-				"required": true,
-				"schema": {
-					"description": "Dataset UUID.",
-					"format": "uuid",
-					"type": "string"
-				}
-			}
-		],
-		"requestBody": {
-			"content": {
-				"application/json": {
-					"schema": {
-						"properties": {
-							"minutesAgo": {
-								"example": 120,
-								"type": "number"
-							}
-						},
-						"required": [
-							"minutesAgo"
-						],
-						"type": "object"
-					}
-				}
-			}
-		},
-		"responses": {
-			"200": {
-				"content": {
-					"application/json": {
-						"schema": {
-							"properties": {
-								"properties": {
-									"properties": {
-										"datasetId": {
-											"properties": {
-												"type": {
-													"example": "string",
-													"type": "string"
-												}
-											},
-											"required": [
-												"type"
-											],
-											"type": "object"
-										},
-										"minutesAgo": {
-											"properties": {
-												"type": {
-													"example": "number",
-													"type": "string"
-												}
-											},
-											"required": [
-												"type"
-											],
-											"type": "object"
-										},
-										"revertBookmark": {
-											"properties": {
-												"type": {
-													"example": "string",
-													"type": "string"
-												}
-											},
-											"required": [
-												"type"
-											],
-											"type": "object"
-										},
-										"targetTimestamp": {
-											"properties": {
-												"type": {
-													"example": "string",
-													"type": "string"
-												}
-											},
-											"required": [
-												"type"
-											],
-											"type": "object"
-										},
-										"undoBookmark": {
-											"properties": {
-												"type": {
-													"example": "string",
-													"type": "string"
-												}
-											},
-											"required": [
-												"type"
-											],
-											"type": "object"
-										}
-									},
-									"required": [
-										"datasetId",
-										"minutesAgo",
-										"targetTimestamp",
-										"revertBookmark",
-										"undoBookmark"
-									],
-									"type": "object"
-								},
-								"required": {
-									"items": {
-										"example": "datasetId",
-										"type": "string"
-									},
-									"type": "array"
-								},
-								"type": {
-									"example": "object",
-									"type": "string"
-								}
-							},
-							"required": [
-								"type",
-								"properties",
-								"required"
-							],
-							"type": "object"
-						}
-					}
-				},
-				"description": "Revert scheduled for the specified Durable Object."
-			},
-			"400": {
-				"content": {
-					"application/json": {
-						"schema": {
-							"properties": {
-								"errors": {
-									"items": {
-										"properties": {
-											"message": {
-												"example": "An error occurred.",
-												"type": "string"
-											}
-										},
-										"required": [
-											"message"
-										],
-										"type": "object"
-									},
-									"type": "array"
-								},
-								"result": {
-									"type": "object"
-								},
-								"success": {
-									"type": "boolean"
-								}
-							},
-							"required": [
-								"result",
-								"success",
-								"errors"
-							],
-							"type": "object"
-						}
-					}
-				},
-				"description": "Bad Request."
-			}
-		},
-		"security": [
-			{
-				"api_token": []
-			}
-		],
-		"summary": "Revert an Events Durable Object to a point in time",
-		"tags": [
-			"Event"
-		],
-		"x-api-token-group": [
-			"Cloudforce One Write",
-			"Cloudforce One Read"
 		]
 	},
 	"POST /accounts/{account_id}/cloudforce-one/events/{event_id}": {

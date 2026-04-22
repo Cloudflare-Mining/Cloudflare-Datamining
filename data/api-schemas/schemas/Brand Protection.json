@@ -1,4 +1,64 @@
 {
+	"DELETE /accounts/{account_id}/cloudforce-one/v2/brand-protection/letter/templates/{template_id}": {
+		"description": "Delete a user-defined takedown letter template. System templates cannot be deleted.",
+		"operationId": "delete_LetterTemplateDelete",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"minLength": 1,
+					"type": "string"
+				}
+			},
+			{
+				"in": "path",
+				"name": "template_id",
+				"required": true,
+				"schema": {
+					"minLength": 1,
+					"type": "string"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"message": {
+									"type": "string"
+								},
+								"success": {
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"message"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Template deleted successfully"
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			}
+		],
+		"summary": "Delete letter template",
+		"tags": [
+			"Brand Protection"
+		],
+		"x-api-token-group": [
+			"Cloudforce One Write"
+		]
+	},
 	"DELETE /accounts/{account_id}/cloudforce-one/v2/brand-protection/logo/queries/{query_id}": {
 		"description": "Delete a saved brand protection logo query. Returns 404 if the query ID doesn't exist.",
 		"operationId": "delete_DeleteLogoQuery",
@@ -60,7 +120,7 @@
 		]
 	},
 	"GET /accounts/{account_id}/cloudforce-one/v2/brand-protection/domain/matches": {
-		"description": "Get paginated list of domain matches for one or more brand protection queries. When multiple query_ids are provided (comma-separated), matches are deduplicated across queries and each match includes a matched_queries array.",
+		"description": "Get paginated list of domain matches for one or more brand protection queries. When multiple query_ids are provided (comma-separated), matches are deduplicated across queries and each match includes a match_details array with per-match query metadata and individual dismissed state.",
 		"operationId": "get_DomainMatchList",
 		"parameters": [
 			{
@@ -93,7 +153,7 @@
 				"name": "query_id",
 				"required": true,
 				"schema": {
-					"description": "Query ID or comma-separated list of Query IDs. When multiple IDs are provided, matches are deduplicated across queries and each match includes matched_queries and match_ids arrays.",
+					"description": "Query ID or comma-separated list of Query IDs. When multiple IDs are provided, matches are deduplicated across queries and each match includes a match_details array with per-match query metadata and dismissed state.",
 					"items": {
 						"type": "string"
 					},
@@ -159,6 +219,7 @@
 									"items": {
 										"properties": {
 											"dismissed": {
+												"description": "Whether the match is dismissed. Only present for single-query requests. For multi-query requests, use the dismissed field in each match_details entry.",
 												"type": "boolean"
 											},
 											"domain": {
@@ -167,17 +228,33 @@
 											"first_seen": {
 												"type": "string"
 											},
-											"match_ids": {
-												"description": "All underlying match row IDs for this domain. Only present when multiple query_ids are requested.",
+											"match_details": {
+												"description": "Per-match detail objects with query metadata and individual dismissed state. Only present when multiple query_ids are requested.",
 												"items": {
-													"type": "integer"
-												},
-												"type": "array"
-											},
-											"matched_queries": {
-												"description": "List of query IDs that produced this match. Only present when multiple query_ids are requested.",
-												"items": {
-													"type": "integer"
+													"properties": {
+														"dismissed": {
+															"description": "Individual dismissed state for this specific match.",
+															"type": "boolean"
+														},
+														"match_id": {
+															"type": "integer"
+														},
+														"query_id": {
+															"type": "integer"
+														},
+														"query_tag": {
+															"description": "Tag associated with the query, if one exists.",
+															"nullable": true,
+															"type": "string"
+														}
+													},
+													"required": [
+														"query_id",
+														"query_tag",
+														"match_id",
+														"dismissed"
+													],
+													"type": "object"
 												},
 												"type": "array"
 											},
@@ -216,7 +293,6 @@
 											"scan_status",
 											"scan_submission_id",
 											"source",
-											"dismissed",
 											"registrar"
 										],
 										"type": "object"
@@ -356,6 +432,188 @@
 			}
 		],
 		"summary": "Get queries",
+		"tags": [
+			"Brand Protection"
+		],
+		"x-api-token-group": [
+			"Cloudforce One Write",
+			"Cloudforce One Read"
+		]
+	},
+	"GET /accounts/{account_id}/cloudforce-one/v2/brand-protection/letter/templates": {
+		"description": "List all available takedown letter templates (system templates and user-defined templates)",
+		"operationId": "get_LetterTemplateList",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"minLength": 1,
+					"type": "string"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"templates": {
+									"items": {
+										"properties": {
+											"category": {
+												"type": "string"
+											},
+											"createdAt": {
+												"nullable": true,
+												"type": "string"
+											},
+											"description": {
+												"nullable": true,
+												"type": "string"
+											},
+											"id": {
+												"type": "string"
+											},
+											"name": {
+												"type": "string"
+											},
+											"source": {
+												"enum": [
+													"system",
+													"user"
+												],
+												"type": "string"
+											},
+											"updatedAt": {
+												"nullable": true,
+												"type": "string"
+											}
+										},
+										"required": [
+											"id",
+											"source",
+											"name",
+											"category",
+											"description",
+											"createdAt",
+											"updatedAt"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								}
+							},
+							"required": [
+								"templates"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Templates listed successfully"
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			}
+		],
+		"summary": "List letter templates",
+		"tags": [
+			"Brand Protection"
+		],
+		"x-api-token-group": [
+			"Cloudforce One Write",
+			"Cloudforce One Read"
+		]
+	},
+	"GET /accounts/{account_id}/cloudforce-one/v2/brand-protection/letter/templates/{template_id}": {
+		"description": "Get a specific takedown letter template by ID",
+		"operationId": "get_LetterTemplateGet",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"minLength": 1,
+					"type": "string"
+				}
+			},
+			{
+				"in": "path",
+				"name": "template_id",
+				"required": true,
+				"schema": {
+					"minLength": 1,
+					"type": "string"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"body": {
+									"type": "string"
+								},
+								"category": {
+									"type": "string"
+								},
+								"createdAt": {
+									"nullable": true,
+									"type": "string"
+								},
+								"description": {
+									"nullable": true,
+									"type": "string"
+								},
+								"id": {
+									"type": "string"
+								},
+								"name": {
+									"type": "string"
+								},
+								"source": {
+									"enum": [
+										"system",
+										"user"
+									],
+									"type": "string"
+								},
+								"updatedAt": {
+									"nullable": true,
+									"type": "string"
+								}
+							},
+							"required": [
+								"id",
+								"source",
+								"name",
+								"category",
+								"description",
+								"body",
+								"createdAt",
+								"updatedAt"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Template retrieved successfully"
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			}
+		],
+		"summary": "Get letter template",
 		"tags": [
 			"Brand Protection"
 		],
@@ -666,6 +924,255 @@
 			"Cloudforce One Read"
 		]
 	},
+	"POST /accounts/{account_id}/cloudforce-one/v2/brand-protection/letter/generate": {
+		"description": "Generate a takedown letter from a template. Returns V4 JSON for text format or a PDF binary for pdf format.",
+		"operationId": "post_LetterGenerate",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"minLength": 1,
+					"type": "string"
+				}
+			}
+		],
+		"requestBody": {
+			"content": {
+				"application/json": {
+					"schema": {
+						"properties": {
+							"fields": {
+								"properties": {
+									"discoveryDate": {
+										"pattern": "^\\d{4}-\\d{2}-\\d{2}$",
+										"type": "string"
+									},
+									"domain": {
+										"maxLength": 500,
+										"type": "string"
+									},
+									"generationDate": {
+										"pattern": "^\\d{4}-\\d{2}-\\d{2}$",
+										"type": "string"
+									},
+									"registrantEmail": {
+										"maxLength": 500,
+										"type": "string"
+									},
+									"registrar": {
+										"maxLength": 500,
+										"type": "string"
+									},
+									"resolutionByDate": {
+										"pattern": "^\\d{4}-\\d{2}-\\d{2}$",
+										"type": "string"
+									},
+									"senderCompany": {
+										"maxLength": 500,
+										"type": "string"
+									},
+									"senderEmail": {
+										"maxLength": 500,
+										"type": "string"
+									},
+									"senderName": {
+										"maxLength": 500,
+										"type": "string"
+									},
+									"senderTitle": {
+										"maxLength": 500,
+										"type": "string"
+									},
+									"trademarkName": {
+										"maxLength": 500,
+										"type": "string"
+									},
+									"trademarkOwner": {
+										"maxLength": 500,
+										"type": "string"
+									}
+								},
+								"type": "object"
+							},
+							"format": {
+								"default": "text",
+								"enum": [
+									"text",
+									"pdf"
+								],
+								"type": "string"
+							},
+							"templateId": {
+								"minLength": 1,
+								"type": "string"
+							}
+						},
+						"required": [
+							"templateId",
+							"fields"
+						],
+						"type": "object"
+					}
+				}
+			}
+		},
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"letter": {
+									"type": "string"
+								}
+							},
+							"required": [
+								"letter"
+							],
+							"type": "object"
+						}
+					},
+					"application/pdf": {
+						"schema": {
+							"format": "binary",
+							"type": "string"
+						}
+					}
+				},
+				"description": "Letter generated successfully. When format=text, returns V4 JSON with { result: { letter: string } }. When format=pdf, returns binary with Content-Type: application/pdf."
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			}
+		],
+		"summary": "Generate takedown letter",
+		"tags": [
+			"Brand Protection"
+		],
+		"x-api-token-group": [
+			"Cloudforce One Write"
+		]
+	},
+	"POST /accounts/{account_id}/cloudforce-one/v2/brand-protection/letter/templates": {
+		"description": "Create a new user-defined takedown letter template",
+		"operationId": "post_LetterTemplateCreate",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"minLength": 1,
+					"type": "string"
+				}
+			}
+		],
+		"requestBody": {
+			"content": {
+				"application/json": {
+					"schema": {
+						"properties": {
+							"body": {
+								"minLength": 1,
+								"type": "string"
+							},
+							"category": {
+								"maxLength": 100,
+								"minLength": 1,
+								"type": "string"
+							},
+							"description": {
+								"maxLength": 1000,
+								"type": "string"
+							},
+							"name": {
+								"maxLength": 255,
+								"minLength": 1,
+								"type": "string"
+							}
+						},
+						"required": [
+							"name",
+							"category",
+							"body"
+						],
+						"type": "object"
+					}
+				}
+			}
+		},
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"body": {
+									"type": "string"
+								},
+								"category": {
+									"type": "string"
+								},
+								"createdAt": {
+									"nullable": true,
+									"type": "string"
+								},
+								"description": {
+									"nullable": true,
+									"type": "string"
+								},
+								"id": {
+									"type": "string"
+								},
+								"name": {
+									"type": "string"
+								},
+								"source": {
+									"enum": [
+										"system",
+										"user"
+									],
+									"type": "string"
+								},
+								"updatedAt": {
+									"nullable": true,
+									"type": "string"
+								}
+							},
+							"required": [
+								"id",
+								"source",
+								"name",
+								"category",
+								"description",
+								"body",
+								"createdAt",
+								"updatedAt"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Template created successfully"
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			}
+		],
+		"summary": "Create letter template",
+		"tags": [
+			"Brand Protection"
+		],
+		"x-api-token-group": [
+			"Cloudforce One Write"
+		]
+	},
 	"POST /accounts/{account_id}/cloudforce-one/v2/brand-protection/logo/queries": {
 		"description": "Create a new saved brand protection logo query for visual similarity matching",
 		"operationId": "post_InsertLogoQuery",
@@ -895,6 +1402,127 @@
 			}
 		],
 		"summary": "Search scanned images",
+		"tags": [
+			"Brand Protection"
+		],
+		"x-api-token-group": [
+			"Cloudforce One Write"
+		]
+	},
+	"PUT /accounts/{account_id}/cloudforce-one/v2/brand-protection/letter/templates/{template_id}": {
+		"description": "Update a user-defined takedown letter template. System templates cannot be modified.",
+		"operationId": "put_LetterTemplateUpdate",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"minLength": 1,
+					"type": "string"
+				}
+			},
+			{
+				"in": "path",
+				"name": "template_id",
+				"required": true,
+				"schema": {
+					"minLength": 1,
+					"type": "string"
+				}
+			}
+		],
+		"requestBody": {
+			"content": {
+				"application/json": {
+					"schema": {
+						"properties": {
+							"body": {
+								"minLength": 1,
+								"type": "string"
+							},
+							"category": {
+								"maxLength": 100,
+								"minLength": 1,
+								"type": "string"
+							},
+							"description": {
+								"maxLength": 1000,
+								"nullable": true,
+								"type": "string"
+							},
+							"name": {
+								"maxLength": 255,
+								"minLength": 1,
+								"type": "string"
+							}
+						},
+						"type": "object"
+					}
+				}
+			}
+		},
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"body": {
+									"type": "string"
+								},
+								"category": {
+									"type": "string"
+								},
+								"createdAt": {
+									"nullable": true,
+									"type": "string"
+								},
+								"description": {
+									"nullable": true,
+									"type": "string"
+								},
+								"id": {
+									"type": "string"
+								},
+								"name": {
+									"type": "string"
+								},
+								"source": {
+									"enum": [
+										"system",
+										"user"
+									],
+									"type": "string"
+								},
+								"updatedAt": {
+									"nullable": true,
+									"type": "string"
+								}
+							},
+							"required": [
+								"id",
+								"source",
+								"name",
+								"category",
+								"description",
+								"body",
+								"createdAt",
+								"updatedAt"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Template updated successfully"
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			}
+		],
+		"summary": "Update letter template",
 		"tags": [
 			"Brand Protection"
 		],
