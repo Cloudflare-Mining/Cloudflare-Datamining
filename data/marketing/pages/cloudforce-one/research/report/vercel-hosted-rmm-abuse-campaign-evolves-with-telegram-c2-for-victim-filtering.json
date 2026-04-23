@@ -2437,7 +2437,7 @@
 																		"target": null,
 																		"uri": null
 																	},
-																	"value": "SentimentCM.Banking.Invoice.Service_Abuse.Vercel.Link - 50K hits in last 30 days",
+																	"value": "SentimentCM.Banking.Invoice.Service_Abuse.Vercel.Link",
 																	"marks": [],
 																	"content": null
 																}
@@ -2469,7 +2469,7 @@
 																		"target": null,
 																		"uri": null
 																	},
-																	"value": "Brand_Impersonation.Facebook.Service_Abuse.Vercel.Link - 600 hits last 30 days",
+																	"value": "Brand_Impersonation.Facebook.Service_Abuse.Vercel.Link",
 																	"marks": [],
 																	"content": null
 																}
@@ -2501,7 +2501,7 @@
 																		"target": null,
 																		"uri": null
 																	},
-																	"value": "Sentiment_CM.Shared_Document.Service_Abuse.Vercel.Link - ",
+																	"value": "Sentiment_CM.Shared_Document.Service_Abuse.Vercel.Link",
 																	"marks": [],
 																	"content": null
 																}
@@ -2540,27 +2540,38 @@
 															]
 														}
 													]
-												}
-											]
-										},
-										{
-											"nodeType": "paragraph",
-											"data": {
-												"target": null,
-												"uri": null
-											},
-											"value": null,
-											"marks": null,
-											"content": [
+												},
 												{
-													"nodeType": "text",
+													"nodeType": "list-item",
 													"data": {
 														"target": null,
 														"uri": null
 													},
-													"value": "Service_Abuse.Vercel.URL_Shortener.Link - 500 hits last 30 days\n",
-													"marks": [],
-													"content": null
+													"value": null,
+													"marks": null,
+													"content": [
+														{
+															"nodeType": "paragraph",
+															"data": {
+																"target": null,
+																"uri": null
+															},
+															"value": null,
+															"marks": null,
+															"content": [
+																{
+																	"nodeType": "text",
+																	"data": {
+																		"target": null,
+																		"uri": null
+																	},
+																	"value": "Service_Abuse.Vercel.URL_Shortener.Link\n",
+																	"marks": [],
+																	"content": null
+																}
+															]
+														}
+													]
 												}
 											]
 										},
