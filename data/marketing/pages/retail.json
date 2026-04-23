@@ -52,7 +52,7 @@
 				},
 				"sys": {
 					"createdAt": "2025-06-04T15:39:43.399Z",
-					"updatedAt": "2025-11-08T00:37:54.583Z"
+					"updatedAt": "2026-04-23T18:11:43.980Z"
 				},
 				"contentfulId": "44YkZotbfvpRA1JpKKa6Gz",
 				"contentTypeId": "page",
@@ -63,12 +63,6 @@
 				"proactivePopup": null,
 				"template": null,
 				"relatedBlades": [
-					{
-						"contentTypeId": "bladeHtml",
-						"contentfulId": "1nPXyLPokuzF1cvviobCA1",
-						"htmlContent": "<style>\n    .wrapper {\n        background-color: #003682;\n        margin: 0;\n        padding: 20px;\n        width: 100vw;\n        margin-left: calc((100vw - 100%) / -2);\n    }\n    .content {\n        color: #ffffff;\n        margin: 0px auto;\n        width: fit-content;\n    }\n    .link-helper {\n        color: #ffffff !important;\n        margin-left: 5px;\n        text-decoration: underline !important;\n        text-underline-offset: 4px;\n    }\n    .link-helper:hover {\n        text-decoration: underline;\n        color: #ffffff !important;\n        text-underline-offset: 4px;\n    }\n</style>\n\n<section class=\"wrapper application-security-performance-psa-banner\" id=\"contentful-psa-banner\">\n    <div class=\"content\">\n        <span>Peak shopping ready: 4 pillars of secure omnichannel retail for the holidays  </span>\n\n        <a class=\"link-helper\" href=\"https://www.cloudflare.com/lp/peak-retail-ready\">\n           <strong>Get the guide></strong>\n        </a>\n    </div>\n</section>",
-						"htmlId": null
-					},
 					{
 						"contentfulId": "1Ofg0tcticjqXekQXaufwB",
 						"contentTypeId": "bladeHeroAnimation",
@@ -1189,7 +1183,21 @@
 									"openInNewTab": false,
 									"locale": "en-US"
 								},
-								"image": null
+								"image": {
+									"id": "d1b12ae8-2555-557d-81e9-8eebecec2c1f",
+									"altText": "Ebook Thumbnail",
+									"title": "Ebook Thumbnail",
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/2tGnS2OjpSmmok16lr0mI3/db2a34b69b1001d0d0b529148def3c45/Ebook-generic-106x186-300dpi.png"
+										},
+										"description": null
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								}
 							},
 							{
 								"contentTypeId": "elementResourceCard",
