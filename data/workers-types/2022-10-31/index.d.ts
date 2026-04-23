@@ -472,6 +472,7 @@ interface ExecutionContext<Props = unknown> {
   passThroughOnException(): void;
   readonly props: Props;
   cache?: CacheContext;
+  tracing?: Tracing;
 }
 type ExportedHandlerFetchHandler<
   Env = unknown,
@@ -4008,6 +4009,18 @@ declare abstract class Performance {
    * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Performance/toJSON)
    */
   toJSON(): object;
+}
+interface Tracing {
+  enterSpan<T, A extends unknown[]>(
+    name: string,
+    callback: (span: Span, ...args: A) => T,
+    ...args: A
+  ): T;
+  Span: typeof Span;
+}
+declare abstract class Span {
+  get isTraced(): boolean;
+  setAttribute(key: string, value?: boolean | number | string): void;
 }
 // ============ AI Search Error Interfaces ============
 interface AiSearchInternalError extends Error {}
@@ -13690,6 +13703,7 @@ declare namespace CloudflareWorkersModule {
   export const env: Cloudflare.Env;
   export const exports: Cloudflare.Exports;
   export const cache: CacheContext;
+  export const tracing: Tracing;
 }
 declare module "cloudflare:workers" {
   export = CloudflareWorkersModule;
@@ -14597,7 +14611,8 @@ declare namespace TailStream {
     | "exceededMemory"
     | "loadShed"
     | "responseStreamDisconnected"
-    | "scriptNotFound";
+    | "scriptNotFound"
+    | "internalError";
   interface ScriptVersion {
     readonly id: string;
     readonly tag?: string;
