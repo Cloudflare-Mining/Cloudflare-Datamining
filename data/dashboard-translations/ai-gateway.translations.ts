@@ -865,6 +865,8 @@
 		title: "Credits",
 		add_payment_error: "Add a payment method to purchase credits",
 		add_payment_error_redirect: "Set up billing",
+		paypal_only_error: "An active credit or debit card is required to purchase AI Gateway credits.",
+		paypal_only_error_redirect: "Manage payment methods",
 		no_billing_permission: "You do not have permission to manage billing for this account. Contact your account administrator to request access.",
 		top_up: "Top-up credits",
 		credits_avail: "Credits available",

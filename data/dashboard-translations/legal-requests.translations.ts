@@ -4,7 +4,7 @@
 		title: "Legal requests",
 		description: "View legal requests you've submitted to Cloudflare."
 	},
-	two_factor_required: "You cannot access this page until you have enabled two-factor authentication.",
+	two_factor_required: "You cannot access this page until you have enabled two-factor authentication or single sign-on (SSO).",
 	two_factor_required_link: "Enable two-factor authentication",
 	table: {
 		columns: {

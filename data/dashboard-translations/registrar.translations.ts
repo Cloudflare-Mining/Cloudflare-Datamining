@@ -138,6 +138,9 @@
 			},
 			suspended_trust_and_safety: {
 				text: 'This domain has been suspended for trust and safety reasons. For help, contact <a href="mailto:abuse@cloudflare.com">abuse@cloudflare.com</a>'
+			},
+			suspended_invalid_contact: {
+				text: "This domain has been suspended due to invalid contact information. Please update your contact details to resolve this issue."
 			}
 		}
 	},
@@ -505,6 +508,9 @@
 	status_pending_domain_move_in: "Pending Account Move In",
 	status_pending_domain_move_out: "Pending Account Move Out",
 	status_suspended: "Suspended",
+	status_suspended_reason_verify_email: "Email Verification Required",
+	status_suspended_reason_invalid_contact: "Invalid Contact",
+	status_suspended_reason_expired: "Expired",
 	status_verify_email: "Email Verification Required",
 	status_unknown: "Unknown",
 	back_to_domains: "Back to domains",

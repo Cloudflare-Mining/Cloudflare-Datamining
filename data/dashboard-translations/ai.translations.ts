@@ -109,6 +109,7 @@
 		context_window: "Context Window",
 		max_output: "Max output",
 		async_support: "Async support",
+		zdr: "Zero data retention",
 		available: "Available",
 		audio_not_supported: "Your browser does not support the audio element.",
 		video_not_supported: "Your browser does not support the video element.",
