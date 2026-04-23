@@ -258,6 +258,7 @@
 			"containers_pid_namespace": "boolean",
 			"crypto_preserve_public_exponent": "boolean",
 			"delete_all_deletes_alarm": "boolean",
+			"diagnostics_channel_has_subscribers_getter": "boolean",
 			"disable_top_level_await_in_require": "boolean",
 			"disallow_importable_env": "boolean",
 			"dont_substitute_null_on_type_error": "boolean",
@@ -36864,6 +36865,7 @@
 				"name": "string",
 				"_prototype": {}
 			},
+			"cache": {},
 			"env": {
 				"AI": {
 					"lastRequestId": {},
@@ -37242,6 +37244,21 @@
 					"get": "function",
 					"getByName": "function",
 					"jurisdiction": "function"
+				}
+			},
+			"tracing": {
+				"enterSpan": {
+					"__proto": "function",
+					"__type": "function",
+					"length": "number",
+					"name": "string"
+				},
+				"Span": {
+					"__proto": "function",
+					"__type": "function",
+					"length": "number",
+					"name": "string",
+					"_prototype": "object"
 				}
 			},
 			"waitUntil": {
