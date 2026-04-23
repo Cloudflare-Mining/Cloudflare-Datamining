@@ -580,7 +580,7 @@
 															}
 														},
 														"type": "object",
-														"x-stainless-terraform-configurability": "optional"
+														"x-stainless-terraform-configurability": "computed_optional"
 													},
 													"longitude": {
 														"description": "The longitude of the data center containing the origins used in this pool in decimal degrees. If this is set, latitude must also be set.",
@@ -692,7 +692,7 @@
 															}
 														},
 														"type": "object",
-														"x-stainless-terraform-configurability": "optional"
+														"x-stainless-terraform-configurability": "computed_optional"
 													},
 													"origin_steering": {
 														"description": "Configures origin steering for the pool. Controls how origins are selected for new sessions and traffic without session affinity.",
@@ -712,7 +712,7 @@
 															}
 														},
 														"type": "object",
-														"x-stainless-terraform-configurability": "optional"
+														"x-stainless-terraform-configurability": "computed_optional"
 													},
 													"origins": {
 														"description": "The list of origins within this pool. Traffic directed at this pool is balanced across all currently healthy origins, provided the pool itself is healthy.",
@@ -729,8 +729,7 @@
 																	"format": "date-time",
 																	"readOnly": true,
 																	"type": "string",
-																	"x-auditable": true,
-																	"x-stainless-terraform-configurability": "computed_optional"
+																	"x-auditable": true
 																},
 																"enabled": {
 																	"default": true,
@@ -1030,7 +1029,7 @@
 																	}
 																},
 																"type": "object",
-																"x-stainless-terraform-configurability": "optional"
+																"x-stainless-terraform-configurability": "computed_optional"
 															},
 															"longitude": {
 																"description": "The longitude of the data center containing the origins used in this pool in decimal degrees. If this is set, latitude must also be set.",
@@ -1142,7 +1141,7 @@
 																	}
 																},
 																"type": "object",
-																"x-stainless-terraform-configurability": "optional"
+																"x-stainless-terraform-configurability": "computed_optional"
 															},
 															"origin_steering": {
 																"description": "Configures origin steering for the pool. Controls how origins are selected for new sessions and traffic without session affinity.",
@@ -1162,7 +1161,7 @@
 																	}
 																},
 																"type": "object",
-																"x-stainless-terraform-configurability": "optional"
+																"x-stainless-terraform-configurability": "computed_optional"
 															},
 															"origins": {
 																"description": "The list of origins within this pool. Traffic directed at this pool is balanced across all currently healthy origins, provided the pool itself is healthy.",
@@ -1179,8 +1178,7 @@
 																			"format": "date-time",
 																			"readOnly": true,
 																			"type": "string",
-																			"x-auditable": true,
-																			"x-stainless-terraform-configurability": "computed_optional"
+																			"x-auditable": true
 																		},
 																		"enabled": {
 																			"default": true,
@@ -1575,7 +1573,7 @@
 														}
 													},
 													"type": "object",
-													"x-stainless-terraform-configurability": "optional"
+													"x-stainless-terraform-configurability": "computed_optional"
 												},
 												"longitude": {
 													"description": "The longitude of the data center containing the origins used in this pool in decimal degrees. If this is set, latitude must also be set.",
@@ -1687,7 +1685,7 @@
 														}
 													},
 													"type": "object",
-													"x-stainless-terraform-configurability": "optional"
+													"x-stainless-terraform-configurability": "computed_optional"
 												},
 												"origin_steering": {
 													"description": "Configures origin steering for the pool. Controls how origins are selected for new sessions and traffic without session affinity.",
@@ -1707,7 +1705,7 @@
 														}
 													},
 													"type": "object",
-													"x-stainless-terraform-configurability": "optional"
+													"x-stainless-terraform-configurability": "computed_optional"
 												},
 												"origins": {
 													"description": "The list of origins within this pool. Traffic directed at this pool is balanced across all currently healthy origins, provided the pool itself is healthy.",
@@ -1724,8 +1722,7 @@
 																"format": "date-time",
 																"readOnly": true,
 																"type": "string",
-																"x-auditable": true,
-																"x-stainless-terraform-configurability": "computed_optional"
+																"x-auditable": true
 															},
 															"enabled": {
 																"default": true,
@@ -2001,7 +1998,7 @@
 																}
 															},
 															"type": "object",
-															"x-stainless-terraform-configurability": "optional"
+															"x-stainless-terraform-configurability": "computed_optional"
 														},
 														"longitude": {
 															"description": "The longitude of the data center containing the origins used in this pool in decimal degrees. If this is set, latitude must also be set.",
@@ -2113,7 +2110,7 @@
 																}
 															},
 															"type": "object",
-															"x-stainless-terraform-configurability": "optional"
+															"x-stainless-terraform-configurability": "computed_optional"
 														},
 														"origin_steering": {
 															"description": "Configures origin steering for the pool. Controls how origins are selected for new sessions and traffic without session affinity.",
@@ -2133,7 +2130,7 @@
 																}
 															},
 															"type": "object",
-															"x-stainless-terraform-configurability": "optional"
+															"x-stainless-terraform-configurability": "computed_optional"
 														},
 														"origins": {
 															"description": "The list of origins within this pool. Traffic directed at this pool is balanced across all currently healthy origins, provided the pool itself is healthy.",
@@ -2150,8 +2147,7 @@
 																		"format": "date-time",
 																		"readOnly": true,
 																		"type": "string",
-																		"x-auditable": true,
-																		"x-stainless-terraform-configurability": "computed_optional"
+																		"x-auditable": true
 																	},
 																	"enabled": {
 																		"default": true,
@@ -3414,7 +3410,7 @@
 															}
 														},
 														"type": "object",
-														"x-stainless-terraform-configurability": "optional"
+														"x-stainless-terraform-configurability": "computed_optional"
 													},
 													"longitude": {
 														"description": "The longitude of the data center containing the origins used in this pool in decimal degrees. If this is set, latitude must also be set.",
@@ -3526,7 +3522,7 @@
 															}
 														},
 														"type": "object",
-														"x-stainless-terraform-configurability": "optional"
+														"x-stainless-terraform-configurability": "computed_optional"
 													},
 													"origin_steering": {
 														"description": "Configures origin steering for the pool. Controls how origins are selected for new sessions and traffic without session affinity.",
@@ -3546,7 +3542,7 @@
 															}
 														},
 														"type": "object",
-														"x-stainless-terraform-configurability": "optional"
+														"x-stainless-terraform-configurability": "computed_optional"
 													},
 													"origins": {
 														"description": "The list of origins within this pool. Traffic directed at this pool is balanced across all currently healthy origins, provided the pool itself is healthy.",
@@ -3563,8 +3559,7 @@
 																	"format": "date-time",
 																	"readOnly": true,
 																	"type": "string",
-																	"x-auditable": true,
-																	"x-stainless-terraform-configurability": "computed_optional"
+																	"x-auditable": true
 																},
 																"enabled": {
 																	"default": true,
@@ -3864,7 +3859,7 @@
 																	}
 																},
 																"type": "object",
-																"x-stainless-terraform-configurability": "optional"
+																"x-stainless-terraform-configurability": "computed_optional"
 															},
 															"longitude": {
 																"description": "The longitude of the data center containing the origins used in this pool in decimal degrees. If this is set, latitude must also be set.",
@@ -3976,7 +3971,7 @@
 																	}
 																},
 																"type": "object",
-																"x-stainless-terraform-configurability": "optional"
+																"x-stainless-terraform-configurability": "computed_optional"
 															},
 															"origin_steering": {
 																"description": "Configures origin steering for the pool. Controls how origins are selected for new sessions and traffic without session affinity.",
@@ -3996,7 +3991,7 @@
 																	}
 																},
 																"type": "object",
-																"x-stainless-terraform-configurability": "optional"
+																"x-stainless-terraform-configurability": "computed_optional"
 															},
 															"origins": {
 																"description": "The list of origins within this pool. Traffic directed at this pool is balanced across all currently healthy origins, provided the pool itself is healthy.",
@@ -4013,8 +4008,7 @@
 																			"format": "date-time",
 																			"readOnly": true,
 																			"type": "string",
-																			"x-auditable": true,
-																			"x-stainless-terraform-configurability": "computed_optional"
+																			"x-auditable": true
 																		},
 																		"enabled": {
 																			"default": true,
@@ -4308,7 +4302,7 @@
 									}
 								},
 								"type": "object",
-								"x-stainless-terraform-configurability": "optional"
+								"x-stainless-terraform-configurability": "computed_optional"
 							},
 							"longitude": {
 								"description": "The longitude of the data center containing the origins used in this pool in decimal degrees. If this is set, latitude must also be set.",
@@ -4400,7 +4394,7 @@
 									}
 								},
 								"type": "object",
-								"x-stainless-terraform-configurability": "optional"
+								"x-stainless-terraform-configurability": "computed_optional"
 							},
 							"origin_steering": {
 								"description": "Configures origin steering for the pool. Controls how origins are selected for new sessions and traffic without session affinity.",
@@ -4420,7 +4414,7 @@
 									}
 								},
 								"type": "object",
-								"x-stainless-terraform-configurability": "optional"
+								"x-stainless-terraform-configurability": "computed_optional"
 							},
 							"origins": {
 								"description": "The list of origins within this pool. Traffic directed at this pool is balanced across all currently healthy origins, provided the pool itself is healthy.",
@@ -4437,8 +4431,7 @@
 											"format": "date-time",
 											"readOnly": true,
 											"type": "string",
-											"x-auditable": true,
-											"x-stainless-terraform-configurability": "computed_optional"
+											"x-auditable": true
 										},
 										"enabled": {
 											"default": true,
@@ -4708,7 +4701,7 @@
 														}
 													},
 													"type": "object",
-													"x-stainless-terraform-configurability": "optional"
+													"x-stainless-terraform-configurability": "computed_optional"
 												},
 												"longitude": {
 													"description": "The longitude of the data center containing the origins used in this pool in decimal degrees. If this is set, latitude must also be set.",
@@ -4820,7 +4813,7 @@
 														}
 													},
 													"type": "object",
-													"x-stainless-terraform-configurability": "optional"
+													"x-stainless-terraform-configurability": "computed_optional"
 												},
 												"origin_steering": {
 													"description": "Configures origin steering for the pool. Controls how origins are selected for new sessions and traffic without session affinity.",
@@ -4840,7 +4833,7 @@
 														}
 													},
 													"type": "object",
-													"x-stainless-terraform-configurability": "optional"
+													"x-stainless-terraform-configurability": "computed_optional"
 												},
 												"origins": {
 													"description": "The list of origins within this pool. Traffic directed at this pool is balanced across all currently healthy origins, provided the pool itself is healthy.",
@@ -4857,8 +4850,7 @@
 																"format": "date-time",
 																"readOnly": true,
 																"type": "string",
-																"x-auditable": true,
-																"x-stainless-terraform-configurability": "computed_optional"
+																"x-auditable": true
 															},
 															"enabled": {
 																"default": true,
@@ -5134,7 +5126,7 @@
 																}
 															},
 															"type": "object",
-															"x-stainless-terraform-configurability": "optional"
+															"x-stainless-terraform-configurability": "computed_optional"
 														},
 														"longitude": {
 															"description": "The longitude of the data center containing the origins used in this pool in decimal degrees. If this is set, latitude must also be set.",
@@ -5246,7 +5238,7 @@
 																}
 															},
 															"type": "object",
-															"x-stainless-terraform-configurability": "optional"
+															"x-stainless-terraform-configurability": "computed_optional"
 														},
 														"origin_steering": {
 															"description": "Configures origin steering for the pool. Controls how origins are selected for new sessions and traffic without session affinity.",
@@ -5266,7 +5258,7 @@
 																}
 															},
 															"type": "object",
-															"x-stainless-terraform-configurability": "optional"
+															"x-stainless-terraform-configurability": "computed_optional"
 														},
 														"origins": {
 															"description": "The list of origins within this pool. Traffic directed at this pool is balanced across all currently healthy origins, provided the pool itself is healthy.",
@@ -5283,8 +5275,7 @@
 																		"format": "date-time",
 																		"readOnly": true,
 																		"type": "string",
-																		"x-auditable": true,
-																		"x-stainless-terraform-configurability": "computed_optional"
+																		"x-auditable": true
 																	},
 																	"enabled": {
 																		"default": true,
@@ -5557,7 +5548,7 @@
 									}
 								},
 								"type": "object",
-								"x-stainless-terraform-configurability": "optional"
+								"x-stainless-terraform-configurability": "computed_optional"
 							},
 							"longitude": {
 								"description": "The longitude of the data center containing the origins used in this pool in decimal degrees. If this is set, latitude must also be set.",
@@ -5662,7 +5653,7 @@
 									}
 								},
 								"type": "object",
-								"x-stainless-terraform-configurability": "optional"
+								"x-stainless-terraform-configurability": "computed_optional"
 							},
 							"origin_steering": {
 								"description": "Configures origin steering for the pool. Controls how origins are selected for new sessions and traffic without session affinity.",
@@ -5682,7 +5673,7 @@
 									}
 								},
 								"type": "object",
-								"x-stainless-terraform-configurability": "optional"
+								"x-stainless-terraform-configurability": "computed_optional"
 							},
 							"origins": {
 								"description": "The list of origins within this pool. Traffic directed at this pool is balanced across all currently healthy origins, provided the pool itself is healthy.",
@@ -5699,8 +5690,7 @@
 											"format": "date-time",
 											"readOnly": true,
 											"type": "string",
-											"x-auditable": true,
-											"x-stainless-terraform-configurability": "computed_optional"
+											"x-auditable": true
 										},
 										"enabled": {
 											"default": true,
@@ -5974,7 +5964,7 @@
 														}
 													},
 													"type": "object",
-													"x-stainless-terraform-configurability": "optional"
+													"x-stainless-terraform-configurability": "computed_optional"
 												},
 												"longitude": {
 													"description": "The longitude of the data center containing the origins used in this pool in decimal degrees. If this is set, latitude must also be set.",
@@ -6086,7 +6076,7 @@
 														}
 													},
 													"type": "object",
-													"x-stainless-terraform-configurability": "optional"
+													"x-stainless-terraform-configurability": "computed_optional"
 												},
 												"origin_steering": {
 													"description": "Configures origin steering for the pool. Controls how origins are selected for new sessions and traffic without session affinity.",
@@ -6106,7 +6096,7 @@
 														}
 													},
 													"type": "object",
-													"x-stainless-terraform-configurability": "optional"
+													"x-stainless-terraform-configurability": "computed_optional"
 												},
 												"origins": {
 													"description": "The list of origins within this pool. Traffic directed at this pool is balanced across all currently healthy origins, provided the pool itself is healthy.",
@@ -6123,8 +6113,7 @@
 																"format": "date-time",
 																"readOnly": true,
 																"type": "string",
-																"x-auditable": true,
-																"x-stainless-terraform-configurability": "computed_optional"
+																"x-auditable": true
 															},
 															"enabled": {
 																"default": true,
@@ -6400,7 +6389,7 @@
 																}
 															},
 															"type": "object",
-															"x-stainless-terraform-configurability": "optional"
+															"x-stainless-terraform-configurability": "computed_optional"
 														},
 														"longitude": {
 															"description": "The longitude of the data center containing the origins used in this pool in decimal degrees. If this is set, latitude must also be set.",
@@ -6512,7 +6501,7 @@
 																}
 															},
 															"type": "object",
-															"x-stainless-terraform-configurability": "optional"
+															"x-stainless-terraform-configurability": "computed_optional"
 														},
 														"origin_steering": {
 															"description": "Configures origin steering for the pool. Controls how origins are selected for new sessions and traffic without session affinity.",
@@ -6532,7 +6521,7 @@
 																}
 															},
 															"type": "object",
-															"x-stainless-terraform-configurability": "optional"
+															"x-stainless-terraform-configurability": "computed_optional"
 														},
 														"origins": {
 															"description": "The list of origins within this pool. Traffic directed at this pool is balanced across all currently healthy origins, provided the pool itself is healthy.",
@@ -6549,8 +6538,7 @@
 																		"format": "date-time",
 																		"readOnly": true,
 																		"type": "string",
-																		"x-auditable": true,
-																		"x-stainless-terraform-configurability": "computed_optional"
+																		"x-auditable": true
 																	},
 																	"enabled": {
 																		"default": true,
@@ -7344,7 +7332,7 @@
 									}
 								},
 								"type": "object",
-								"x-stainless-terraform-configurability": "optional"
+								"x-stainless-terraform-configurability": "computed_optional"
 							},
 							"longitude": {
 								"description": "The longitude of the data center containing the origins used in this pool in decimal degrees. If this is set, latitude must also be set.",
@@ -7449,7 +7437,7 @@
 									}
 								},
 								"type": "object",
-								"x-stainless-terraform-configurability": "optional"
+								"x-stainless-terraform-configurability": "computed_optional"
 							},
 							"origin_steering": {
 								"description": "Configures origin steering for the pool. Controls how origins are selected for new sessions and traffic without session affinity.",
@@ -7469,7 +7457,7 @@
 									}
 								},
 								"type": "object",
-								"x-stainless-terraform-configurability": "optional"
+								"x-stainless-terraform-configurability": "computed_optional"
 							},
 							"origins": {
 								"description": "The list of origins within this pool. Traffic directed at this pool is balanced across all currently healthy origins, provided the pool itself is healthy.",
@@ -7486,8 +7474,7 @@
 											"format": "date-time",
 											"readOnly": true,
 											"type": "string",
-											"x-auditable": true,
-											"x-stainless-terraform-configurability": "computed_optional"
+											"x-auditable": true
 										},
 										"enabled": {
 											"default": true,
@@ -7761,7 +7748,7 @@
 														}
 													},
 													"type": "object",
-													"x-stainless-terraform-configurability": "optional"
+													"x-stainless-terraform-configurability": "computed_optional"
 												},
 												"longitude": {
 													"description": "The longitude of the data center containing the origins used in this pool in decimal degrees. If this is set, latitude must also be set.",
@@ -7873,7 +7860,7 @@
 														}
 													},
 													"type": "object",
-													"x-stainless-terraform-configurability": "optional"
+													"x-stainless-terraform-configurability": "computed_optional"
 												},
 												"origin_steering": {
 													"description": "Configures origin steering for the pool. Controls how origins are selected for new sessions and traffic without session affinity.",
@@ -7893,7 +7880,7 @@
 														}
 													},
 													"type": "object",
-													"x-stainless-terraform-configurability": "optional"
+													"x-stainless-terraform-configurability": "computed_optional"
 												},
 												"origins": {
 													"description": "The list of origins within this pool. Traffic directed at this pool is balanced across all currently healthy origins, provided the pool itself is healthy.",
@@ -7910,8 +7897,7 @@
 																"format": "date-time",
 																"readOnly": true,
 																"type": "string",
-																"x-auditable": true,
-																"x-stainless-terraform-configurability": "computed_optional"
+																"x-auditable": true
 															},
 															"enabled": {
 																"default": true,
@@ -8187,7 +8173,7 @@
 																}
 															},
 															"type": "object",
-															"x-stainless-terraform-configurability": "optional"
+															"x-stainless-terraform-configurability": "computed_optional"
 														},
 														"longitude": {
 															"description": "The longitude of the data center containing the origins used in this pool in decimal degrees. If this is set, latitude must also be set.",
@@ -8299,7 +8285,7 @@
 																}
 															},
 															"type": "object",
-															"x-stainless-terraform-configurability": "optional"
+															"x-stainless-terraform-configurability": "computed_optional"
 														},
 														"origin_steering": {
 															"description": "Configures origin steering for the pool. Controls how origins are selected for new sessions and traffic without session affinity.",
@@ -8319,7 +8305,7 @@
 																}
 															},
 															"type": "object",
-															"x-stainless-terraform-configurability": "optional"
+															"x-stainless-terraform-configurability": "computed_optional"
 														},
 														"origins": {
 															"description": "The list of origins within this pool. Traffic directed at this pool is balanced across all currently healthy origins, provided the pool itself is healthy.",
@@ -8336,8 +8322,7 @@
 																		"format": "date-time",
 																		"readOnly": true,
 																		"type": "string",
-																		"x-auditable": true,
-																		"x-stainless-terraform-configurability": "computed_optional"
+																		"x-auditable": true
 																	},
 																	"enabled": {
 																		"default": true,

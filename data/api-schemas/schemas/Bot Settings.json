@@ -142,6 +142,17 @@
 																			"x-auditable": true,
 																			"x-stainless-terraform-configurability": "computed_optional"
 																		},
+																		"content_bots_protection": {
+																			"description": "Enable rule to block content bots. When enabled, blocks automated traffic with low bot scores, excluding safe verified bot categories. Exceptions should be managed via skip rules.",
+																			"enum": [
+																				"block",
+																				"disabled"
+																			],
+																			"example": "disabled",
+																			"type": "string",
+																			"x-auditable": true,
+																			"x-stainless-terraform-configurability": "computed_optional"
+																		},
 																		"crawler_protection": {
 																			"description": "Enable rule to punish AI Scrapers and Crawlers via a link maze.",
 																			"enum": [
@@ -267,6 +278,17 @@
 																				"policy_only"
 																			],
 																			"example": "policy_only",
+																			"type": "string",
+																			"x-auditable": true,
+																			"x-stainless-terraform-configurability": "computed_optional"
+																		},
+																		"content_bots_protection": {
+																			"description": "Enable rule to block content bots. When enabled, blocks automated traffic with low bot scores, excluding safe verified bot categories. Exceptions should be managed via skip rules.",
+																			"enum": [
+																				"block",
+																				"disabled"
+																			],
+																			"example": "disabled",
 																			"type": "string",
 																			"x-auditable": true,
 																			"x-stainless-terraform-configurability": "computed_optional"
@@ -400,6 +422,17 @@
 																				"policy_only"
 																			],
 																			"example": "policy_only",
+																			"type": "string",
+																			"x-auditable": true,
+																			"x-stainless-terraform-configurability": "computed_optional"
+																		},
+																		"content_bots_protection": {
+																			"description": "Enable rule to block content bots. When enabled, blocks automated traffic with low bot scores, excluding safe verified bot categories. Exceptions should be managed via skip rules.",
+																			"enum": [
+																				"block",
+																				"disabled"
+																			],
+																			"example": "disabled",
 																			"type": "string",
 																			"x-auditable": true,
 																			"x-stainless-terraform-configurability": "computed_optional"
@@ -539,6 +572,17 @@
 																				"policy_only"
 																			],
 																			"example": "policy_only",
+																			"type": "string",
+																			"x-auditable": true,
+																			"x-stainless-terraform-configurability": "computed_optional"
+																		},
+																		"content_bots_protection": {
+																			"description": "Enable rule to block content bots. When enabled, blocks automated traffic with low bot scores, excluding safe verified bot categories. Exceptions should be managed via skip rules.",
+																			"enum": [
+																				"block",
+																				"disabled"
+																			],
+																			"example": "disabled",
 																			"type": "string",
 																			"x-auditable": true,
 																			"x-stainless-terraform-configurability": "computed_optional"
@@ -795,6 +839,17 @@
 																					"x-auditable": true,
 																					"x-stainless-terraform-configurability": "computed_optional"
 																				},
+																				"content_bots_protection": {
+																					"description": "Enable rule to block content bots. When enabled, blocks automated traffic with low bot scores, excluding safe verified bot categories. Exceptions should be managed via skip rules.",
+																					"enum": [
+																						"block",
+																						"disabled"
+																					],
+																					"example": "disabled",
+																					"type": "string",
+																					"x-auditable": true,
+																					"x-stainless-terraform-configurability": "computed_optional"
+																				},
 																				"crawler_protection": {
 																					"description": "Enable rule to punish AI Scrapers and Crawlers via a link maze.",
 																					"enum": [
@@ -920,6 +975,17 @@
 																						"policy_only"
 																					],
 																					"example": "policy_only",
+																					"type": "string",
+																					"x-auditable": true,
+																					"x-stainless-terraform-configurability": "computed_optional"
+																				},
+																				"content_bots_protection": {
+																					"description": "Enable rule to block content bots. When enabled, blocks automated traffic with low bot scores, excluding safe verified bot categories. Exceptions should be managed via skip rules.",
+																					"enum": [
+																						"block",
+																						"disabled"
+																					],
+																					"example": "disabled",
 																					"type": "string",
 																					"x-auditable": true,
 																					"x-stainless-terraform-configurability": "computed_optional"
@@ -1053,6 +1119,17 @@
 																						"policy_only"
 																					],
 																					"example": "policy_only",
+																					"type": "string",
+																					"x-auditable": true,
+																					"x-stainless-terraform-configurability": "computed_optional"
+																				},
+																				"content_bots_protection": {
+																					"description": "Enable rule to block content bots. When enabled, blocks automated traffic with low bot scores, excluding safe verified bot categories. Exceptions should be managed via skip rules.",
+																					"enum": [
+																						"block",
+																						"disabled"
+																					],
+																					"example": "disabled",
 																					"type": "string",
 																					"x-auditable": true,
 																					"x-stainless-terraform-configurability": "computed_optional"
@@ -1192,6 +1269,17 @@
 																						"policy_only"
 																					],
 																					"example": "policy_only",
+																					"type": "string",
+																					"x-auditable": true,
+																					"x-stainless-terraform-configurability": "computed_optional"
+																				},
+																				"content_bots_protection": {
+																					"description": "Enable rule to block content bots. When enabled, blocks automated traffic with low bot scores, excluding safe verified bot categories. Exceptions should be managed via skip rules.",
+																					"enum": [
+																						"block",
+																						"disabled"
+																					],
+																					"example": "disabled",
 																					"type": "string",
 																					"x-auditable": true,
 																					"x-stainless-terraform-configurability": "computed_optional"
@@ -1455,7 +1543,7 @@
 		}
 	},
 	"PUT /zones/{zone_id}/bot_management": {
-		"description": "Updates the Bot Management configuration for a zone.\n\nThis API is used to update:\n- **Bot Fight Mode**\n- **Super Bot Fight Mode**\n- **Bot Management for Enterprise**\n\nSee [Bot Plans](https://developers.cloudflare.com/bots/plans/) for more information on the different plans \n\\\nIf you recently upgraded or downgraded your plan, refer to the following examples to clean up old configurations. \nCopy and paste the example body to remove old zone configurations based on your current plan.\n#### Clean up configuration for Bot Fight Mode plan\n```json\n{\n  \"sbfm_likely_automated\": \"allow\", \n  \"sbfm_definitely_automated\": \"allow\", \n  \"sbfm_verified_bots\": \"allow\", \n  \"sbfm_static_resource_protection\": false, \n  \"optimize_wordpress\": false, \n  \"suppress_session_score\": false\n}\n```\n#### Clean up configuration for SBFM Pro plan\n```json\n{\n  \"sbfm_likely_automated\": \"allow\", \n  \"fight_mode\": false \n}\n```\n#### Clean up configuration for SBFM Biz plan\n```json\n{\n  \"fight_mode\": false\n}\n```\n#### Clean up configuration for BM Enterprise Subscription plan\nIt is strongly recommended that you ensure you have [custom rules](https://developers.cloudflare.com/waf/custom-rules/) in place to protect your zone before disabling the SBFM rules. Without these protections, your zone is vulnerable to attacks.\n```json\n{\n  \"sbfm_likely_automated\": \"allow\", \n  \"sbfm_definitely_automated\": \"allow\", \n  \"sbfm_verified_bots\": \"allow\", \n  \"sbfm_static_resource_protection\": false, \n  \"optimize_wordpress\": false, \n  \"fight_mode\": false\n}\n```\n",
+		"description": "Updates the Bot Management configuration for a zone.\n\nThis API is used to update:\n- **Bot Fight Mode**\n- **Super Bot Fight Mode**\n- **Bot Management for Enterprise**\n\nSee [Bot Plans](https://developers.cloudflare.com/bots/plans/) for more information on the different plans\n\\\nIf you recently upgraded or downgraded your plan, refer to the following examples to clean up old configurations.\nCopy and paste the example body to remove old zone configurations based on your current plan.\n#### Clean up configuration for Bot Fight Mode plan\n```json\n{\n  \"sbfm_likely_automated\": \"allow\",\n  \"sbfm_definitely_automated\": \"allow\",\n  \"sbfm_verified_bots\": \"allow\",\n  \"sbfm_static_resource_protection\": false,\n  \"optimize_wordpress\": false,\n  \"suppress_session_score\": false\n}\n```\n#### Clean up configuration for SBFM Pro plan\n```json\n{\n  \"sbfm_likely_automated\": \"allow\",\n  \"fight_mode\": false\n}\n```\n#### Clean up configuration for SBFM Biz plan\n```json\n{\n  \"fight_mode\": false\n}\n```\n#### Clean up configuration for BM Enterprise Subscription plan\nIt is strongly recommended that you ensure you have [custom rules](https://developers.cloudflare.com/waf/custom-rules/) in place to protect your zone before disabling the SBFM rules. Without these protections, your zone is vulnerable to attacks.\n```json\n{\n  \"sbfm_likely_automated\": \"allow\",\n  \"sbfm_definitely_automated\": \"allow\",\n  \"sbfm_verified_bots\": \"allow\",\n  \"sbfm_static_resource_protection\": false,\n  \"optimize_wordpress\": false,\n  \"fight_mode\": false\n}\n```\n",
 		"operationId": "bot-management-for-a-zone-update-config",
 		"parameters": [
 			{
@@ -1599,6 +1687,17 @@
 														"x-auditable": true,
 														"x-stainless-terraform-configurability": "computed_optional"
 													},
+													"content_bots_protection": {
+														"description": "Enable rule to block content bots. When enabled, blocks automated traffic with low bot scores, excluding safe verified bot categories. Exceptions should be managed via skip rules.",
+														"enum": [
+															"block",
+															"disabled"
+														],
+														"example": "disabled",
+														"type": "string",
+														"x-auditable": true,
+														"x-stainless-terraform-configurability": "computed_optional"
+													},
 													"crawler_protection": {
 														"description": "Enable rule to punish AI Scrapers and Crawlers via a link maze.",
 														"enum": [
@@ -1724,6 +1823,17 @@
 															"policy_only"
 														],
 														"example": "policy_only",
+														"type": "string",
+														"x-auditable": true,
+														"x-stainless-terraform-configurability": "computed_optional"
+													},
+													"content_bots_protection": {
+														"description": "Enable rule to block content bots. When enabled, blocks automated traffic with low bot scores, excluding safe verified bot categories. Exceptions should be managed via skip rules.",
+														"enum": [
+															"block",
+															"disabled"
+														],
+														"example": "disabled",
 														"type": "string",
 														"x-auditable": true,
 														"x-stainless-terraform-configurability": "computed_optional"
@@ -1857,6 +1967,17 @@
 															"policy_only"
 														],
 														"example": "policy_only",
+														"type": "string",
+														"x-auditable": true,
+														"x-stainless-terraform-configurability": "computed_optional"
+													},
+													"content_bots_protection": {
+														"description": "Enable rule to block content bots. When enabled, blocks automated traffic with low bot scores, excluding safe verified bot categories. Exceptions should be managed via skip rules.",
+														"enum": [
+															"block",
+															"disabled"
+														],
+														"example": "disabled",
 														"type": "string",
 														"x-auditable": true,
 														"x-stainless-terraform-configurability": "computed_optional"
@@ -1996,6 +2117,17 @@
 															"policy_only"
 														],
 														"example": "policy_only",
+														"type": "string",
+														"x-auditable": true,
+														"x-stainless-terraform-configurability": "computed_optional"
+													},
+													"content_bots_protection": {
+														"description": "Enable rule to block content bots. When enabled, blocks automated traffic with low bot scores, excluding safe verified bot categories. Exceptions should be managed via skip rules.",
+														"enum": [
+															"block",
+															"disabled"
+														],
+														"example": "disabled",
 														"type": "string",
 														"x-auditable": true,
 														"x-stainless-terraform-configurability": "computed_optional"
@@ -2247,6 +2379,17 @@
 																			"x-auditable": true,
 																			"x-stainless-terraform-configurability": "computed_optional"
 																		},
+																		"content_bots_protection": {
+																			"description": "Enable rule to block content bots. When enabled, blocks automated traffic with low bot scores, excluding safe verified bot categories. Exceptions should be managed via skip rules.",
+																			"enum": [
+																				"block",
+																				"disabled"
+																			],
+																			"example": "disabled",
+																			"type": "string",
+																			"x-auditable": true,
+																			"x-stainless-terraform-configurability": "computed_optional"
+																		},
 																		"crawler_protection": {
 																			"description": "Enable rule to punish AI Scrapers and Crawlers via a link maze.",
 																			"enum": [
@@ -2372,6 +2515,17 @@
 																				"policy_only"
 																			],
 																			"example": "policy_only",
+																			"type": "string",
+																			"x-auditable": true,
+																			"x-stainless-terraform-configurability": "computed_optional"
+																		},
+																		"content_bots_protection": {
+																			"description": "Enable rule to block content bots. When enabled, blocks automated traffic with low bot scores, excluding safe verified bot categories. Exceptions should be managed via skip rules.",
+																			"enum": [
+																				"block",
+																				"disabled"
+																			],
+																			"example": "disabled",
 																			"type": "string",
 																			"x-auditable": true,
 																			"x-stainless-terraform-configurability": "computed_optional"
@@ -2505,6 +2659,17 @@
 																				"policy_only"
 																			],
 																			"example": "policy_only",
+																			"type": "string",
+																			"x-auditable": true,
+																			"x-stainless-terraform-configurability": "computed_optional"
+																		},
+																		"content_bots_protection": {
+																			"description": "Enable rule to block content bots. When enabled, blocks automated traffic with low bot scores, excluding safe verified bot categories. Exceptions should be managed via skip rules.",
+																			"enum": [
+																				"block",
+																				"disabled"
+																			],
+																			"example": "disabled",
 																			"type": "string",
 																			"x-auditable": true,
 																			"x-stainless-terraform-configurability": "computed_optional"
@@ -2644,6 +2809,17 @@
 																				"policy_only"
 																			],
 																			"example": "policy_only",
+																			"type": "string",
+																			"x-auditable": true,
+																			"x-stainless-terraform-configurability": "computed_optional"
+																		},
+																		"content_bots_protection": {
+																			"description": "Enable rule to block content bots. When enabled, blocks automated traffic with low bot scores, excluding safe verified bot categories. Exceptions should be managed via skip rules.",
+																			"enum": [
+																				"block",
+																				"disabled"
+																			],
+																			"example": "disabled",
 																			"type": "string",
 																			"x-auditable": true,
 																			"x-stainless-terraform-configurability": "computed_optional"
@@ -2900,6 +3076,17 @@
 																					"x-auditable": true,
 																					"x-stainless-terraform-configurability": "computed_optional"
 																				},
+																				"content_bots_protection": {
+																					"description": "Enable rule to block content bots. When enabled, blocks automated traffic with low bot scores, excluding safe verified bot categories. Exceptions should be managed via skip rules.",
+																					"enum": [
+																						"block",
+																						"disabled"
+																					],
+																					"example": "disabled",
+																					"type": "string",
+																					"x-auditable": true,
+																					"x-stainless-terraform-configurability": "computed_optional"
+																				},
 																				"crawler_protection": {
 																					"description": "Enable rule to punish AI Scrapers and Crawlers via a link maze.",
 																					"enum": [
@@ -3025,6 +3212,17 @@
 																						"policy_only"
 																					],
 																					"example": "policy_only",
+																					"type": "string",
+																					"x-auditable": true,
+																					"x-stainless-terraform-configurability": "computed_optional"
+																				},
+																				"content_bots_protection": {
+																					"description": "Enable rule to block content bots. When enabled, blocks automated traffic with low bot scores, excluding safe verified bot categories. Exceptions should be managed via skip rules.",
+																					"enum": [
+																						"block",
+																						"disabled"
+																					],
+																					"example": "disabled",
 																					"type": "string",
 																					"x-auditable": true,
 																					"x-stainless-terraform-configurability": "computed_optional"
@@ -3158,6 +3356,17 @@
 																						"policy_only"
 																					],
 																					"example": "policy_only",
+																					"type": "string",
+																					"x-auditable": true,
+																					"x-stainless-terraform-configurability": "computed_optional"
+																				},
+																				"content_bots_protection": {
+																					"description": "Enable rule to block content bots. When enabled, blocks automated traffic with low bot scores, excluding safe verified bot categories. Exceptions should be managed via skip rules.",
+																					"enum": [
+																						"block",
+																						"disabled"
+																					],
+																					"example": "disabled",
 																					"type": "string",
 																					"x-auditable": true,
 																					"x-stainless-terraform-configurability": "computed_optional"
@@ -3297,6 +3506,17 @@
 																						"policy_only"
 																					],
 																					"example": "policy_only",
+																					"type": "string",
+																					"x-auditable": true,
+																					"x-stainless-terraform-configurability": "computed_optional"
+																				},
+																				"content_bots_protection": {
+																					"description": "Enable rule to block content bots. When enabled, blocks automated traffic with low bot scores, excluding safe verified bot categories. Exceptions should be managed via skip rules.",
+																					"enum": [
+																						"block",
+																						"disabled"
+																					],
+																					"example": "disabled",
 																					"type": "string",
 																					"x-auditable": true,
 																					"x-stainless-terraform-configurability": "computed_optional"
