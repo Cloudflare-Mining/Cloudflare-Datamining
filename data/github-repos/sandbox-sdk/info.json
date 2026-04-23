@@ -55,13 +55,13 @@
 		"fix/bonk-oidc-permission",
 		"fix/cache-token-validation",
 		"fix/coalesce-concurrent-destroy",
+		"fix/config-setter-idempotency",
 		"fix/e2e-process-kill-test",
 		"fix/ensure-default-session-coalescer",
 		"fix/example-dockerfile",
 		"fix/persist-port-tokens-across-restarts",
 		"fix/release-e2e-image-tags",
 		"fix/remove-set-m-job-control",
-		"fix/stream-controller-race-condition",
 		"fix-clearup",
 		"fix-extract-url-token",
 		"fix-lint",
@@ -92,7 +92,7 @@
 		"testing/repro-egress-issue",
 		"threepointone-patch-1",
 		"unified-e2e-transport",
-		"update-auth-example-intercept",
+		"unified-e2e-transport-ci",
 		"v03"
 	]
 }
