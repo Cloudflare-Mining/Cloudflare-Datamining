@@ -24,7 +24,6 @@
 		"add-keep-alive-to-DO-memory",
 		"add-mount-backup-perf-tests",
 		"add-mount-perf-tests",
-		"add-nightly-push-webhook",
 		"authentication-example",
 		"back-process-kill-fix",
 		"better-logs",
@@ -32,6 +31,7 @@
 		"capnweb-rpc",
 		"captnweb",
 		"captnweb-cleanup",
+		"changeset-release/main",
 		"claude/issue-276-20251206-1345",
 		"cleanup-unused-params",
 		"configurable-transport",
@@ -51,13 +51,10 @@
 		"feature/sandbox-bridge",
 		"fix/activity-timeout-guard",
 		"fix/auto-reexpose-ports-on-recovery",
-		"fix/biome-lint-issues",
 		"fix/bonk-oidc-permission",
 		"fix/cache-token-validation",
 		"fix/coalesce-concurrent-destroy",
-		"fix/config-setter-idempotency",
 		"fix/e2e-process-kill-test",
-		"fix/ensure-default-session-coalescer",
 		"fix/example-dockerfile",
 		"fix/persist-port-tokens-across-restarts",
 		"fix/release-e2e-image-tags",
@@ -92,6 +89,7 @@
 		"threepointone-patch-1",
 		"unified-e2e-transport",
 		"unified-e2e-transport-ci",
+		"unified-e2e-transport-cleanup",
 		"v03"
 	]
 }
