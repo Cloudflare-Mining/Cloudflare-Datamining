@@ -5,46 +5,38 @@
 		<p>At Cloudflare, we’re not looking for people who wait for a polished roadmap; we’re looking for the builders who see the cracks in the Internet that everyone else has simply learned to live with. We value candidates who have the instinct to spot a "normalized" problem and the AI-native curiosity to create a solution using the latest tools. Our culture is built on iteration, leveraging AI to ship faster today to make it better tomorrow, while ensuring that every improvement, no matter how small, is shared across the team to lift everyone up. If you’re the type of person who values curiosity over bureaucracy, and that AI is a partner in solving tough problems to keep the Internet moving forward, you’ll fit right in.</p>
 	</div>
 </div>
-<p><strong>Available Locations: London, UK or Lisbon, Portugal&nbsp;</strong></p>
-<p><strong>Role Summary</strong></p>
-<p>The Egress team was formed to own a very important aspect of Cloudflare's network-as-a-service: egress connectivity for our vast portfolio of products.</p>
-<p>As a member of the Egress team, you will be a key technical contributor to a cutting edge network software infrastructure used by a growing number of Cloudflare products to connect to any destination from Cloudflare's network. Among the products powered by this technology is WARP, our Zero Trust platform, and Cloudflare's egress proxy for the <a href="https://blog.cloudflare.com/icloud-private-relay/">iCloud Private Relay</a> product.</p>
-<p>You will work closely with various Engineering teams to translate their requirements into new capabilities on the platform. Likewise you will partner with Network Engineering and SRE to ensure that the technology makes the best use of Cloudflare's world-class edge network.</p>
-<p>You will participate in all stages of the software development lifecycle, from designing and documenting systems, to writing code and automated tests, to planning, managing, and monitoring production software deployments. You will work with a wide range of technologies and programming languages, including Rust, Go, Linux networking, ClickHouse, PostgreSQL, Grafana, Kubernetes, and more.</p>
-<p>Engineering teams at Cloudflare operate a Run What You Build model, including ours. We are responsible for the health of our system and participate in our team's on-call rotation as part of operational responsibilities.</p>
-<p>Because you’ll be solving problems of massive scale and significance, you are a growth-oriented individual who enjoys being outside of your comfort zone. You are comfortable in a fast-paced but sensible work environment. You value curiosity and empathy and lead with these values.</p>
-<p><strong>Role Responsibilities</strong></p>
-<ul>
-	<li>Make daily progress on assigned engineering tasks, such as designing systems, writing specs, writing and pushing code via git, writing release plans for complex changes, rolling out production releases and working with other teams to coordinate system actions</li>
-	<li>Participate in daily and ad-hoc team meetings to share progress and collaborate</li>
-	<li>Participate in the team’s on-call schedule to ensure uptime of our production systems</li>
-	<li>Investigating customer issues that are escalated to the Egress team for triage and resolution</li>
-	<li>Responding to questions from other teams in the Egress team’s internal, public chat room</li>
-	<li>Using AI-powered tools and systems as part of your daily workflow to analyze and extend codebases, introspect production systems and datasets, and accelerate problem-solving</li>
-</ul>
-<p><strong>Role Requirements</strong></p>
-<p><strong>Must-Have Skills</strong></p>
-<ul>
-	<li>Programming experience in Go or Rust and a desire to improve your skills in both.</li>
-	<li>A solid grasp of networking protocols in Layers 3 and 4 of the OSI Model.</li>
-	<li>Knowledge of HTTP, TLS, and CDN networks.</li>
-	<li>Experience in implementing secure and highly-available distributed systems.</li>
-	<li>Strong ability to debug issues in complex systems.</li>
-	<li>Strong collaboration and communication skills.</li>
-	<li>Experience/interest in HTTP networking and VPN technologies.</li>
-	<li>Experience/interest in network performance monitoring and tuning.</li>
-	<li>Willingness to adopt and integrate AI tools and systems into your engineering workflow.</li>
-</ul>
-<p><strong>Bonus Points</strong></p>
-<ul>
-	<li>Knowledge of TCP/IP and Internet routing.</li>
-	<li>Professional systems-level programming experience in Rust.</li>
-	<li>Experience building tools and APIs.</li>
-	<li>Experience with monitoring, alerting, and debugging large-scale distributed systems</li>
-	<li>Experience participating in an on-call rotation.</li>
-	<li>Experience using AI-assisted development tools (e.g., code completion, codebase analysis, log/data exploration) in a professional setting.</li>
-</ul>
 <p>&nbsp;</p>
+<p><strong>Location:</strong> London, UK</p>
+<h3><strong>About the Team</strong></h3>
+<p>The Marketing team at Cloudflare is at the forefront of sharing our mission to help build a better internet. We are a dynamic and fast-paced team dedicated to showcasing Cloudflare's innovative products and solutions to a global audience. Through strategic campaigns, engaging events, and compelling content, we drive awareness, generate demand, and support our company's rapid growth. As an intern, you'll gain hands-on experience leveraging cutting-edge marketing strategies and technologies to directly impact our success.</p>
+<h3><strong>About the Role</strong></h3>
+<p>As a Marketing Campaigns &amp; Account-Based Marketing (ABM) Intern, you will play a crucial role in scaling Cloudflare's targeted marketing initiatives to generate engagement and pipeline across our EMEA target account base. This is an exciting opportunity to sit at the intersection of marketing, sales, and technology. You will help us modernize our approach by exploring AI adoption and developing new processes and tools to automate elements of our marketing campaigns. From analyzing audience segments to identifying productivity hacks, your work will directly support our EMEA campaign efforts and help deliver impactful, tailored experiences to our key accounts.</p>
+<h3><strong>Responsibilities</strong></h3>
+<ul>
+	<li><strong>Scale 1:Many Marketing Campaigns:</strong> Assist in the planning and execution of targeted 1:Many ABM campaigns, helping the team drive engagement and pipeline from our customer and prospect account segments across EMEA.</li>
+	<li><strong>Drive AI &amp; Automation:</strong> Research, test, and help implement AI tools and automated workflows to increase team productivity, streamline campaign creation, and personalize outreach at scale.</li>
+	<li><strong>Cross-Functional Collaboration:</strong> Partner with the broader marketing, design, and sales teams to coordinate and execute digital campaign tactics, such as paid media campaigns, webinars, customized email sequences, and direct mail campaigns.</li>
+	<li><strong>Data &amp; Engagement Tracking:</strong> Help manage and track account engagement and leads generated from targeted campaigns, ensuring data accuracy in our CRM and timely follow-ups from the sales team.</li>
+	<li><strong>Performance Analysis:</strong> Contribute to campaign analysis by gathering data, analyzing funnel metrics, and providing insights on how to continually optimize campaign efforts.</li>
+	<li><strong>Process Improvement:</strong> Actively participate in team meetings and bring a fresh perspective, contributing innovative ideas for improving our marketing processes and overall campaign effectiveness.</li>
+</ul>
+<h3><strong>Skills &amp; Qualifications</strong></h3>
+<ul>
+	<li>Currently pursuing a Bachelor's degree in Marketing, Communications, Business, Technology, or a related field.</li>
+	<li>Available for a full-time 12-week internship, working from our London office 3-5 days a week during the fall (Sept-Dec).</li>
+	<li>Strong organizational skills with a keen eye for detail and the ability to manage multiple targeted campaigns simultaneously.</li>
+	<li>Excellent written and verbal communication skills, with an understanding of account based marketing strategies.</li>
+	<li>A strong interest in marketing technology, AI adoption, and process automation.</li>
+	<li>Proactive attitude with a desire to learn, experiment, and contribute in a fast-paced environment.</li>
+	<li>Ability to collaborate effectively within a team and with cross-functional partners, particularly Sales.</li>
+	<li>Proficiency with standard office productivity tools (e.g., Google Workspace, Microsoft Office).</li>
+</ul>
+<h3><strong>Bonus Points</strong></h3>
+<ul>
+	<li>Previous experience (academic or professional) with B2B marketing, lead generation, or Account-Based Marketing.</li>
+	<li>Familiarity with generative AI tools (e.g., Gemini, ChatGPT, Jasper) and how they can be applied to marketing.</li>
+	<li>Understanding of lead tracking, CRM systems (like Salesforce), or marketing automation platforms (like Marketo).</li>
+</ul>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
 	<p><span style="font-weight: 400;">We’re not just a highly ambitious, large-scale technology company. We’re a highly ambitious, large-scale technology company with a soul. Fundamental to our mission to help build a better Internet is protecting the free and open Internet.</span></p>
