@@ -768,7 +768,7 @@
 		"enabled": true
 	},
 	"deseng-browser-playground": {
-		"enabled": false
+		"enabled": true
 	},
 	"deseng-browser-run-rename": {
 		"enabled": true
@@ -1395,6 +1395,9 @@
 	"kezi-testing-001": {
 		"enabled": false
 	},
+	"kumo-advanced-protection": {
+		"enabled": false
+	},
 	"kumo-authentication": {
 		"enabled": true
 	},
@@ -1858,6 +1861,13 @@
 		"branches": [
 			"baseline",
 			"variant-a"
+		]
+	},
+	"prg-partnership-referrals": {
+		"enabled": false,
+		"branches": [
+			"baseline",
+			"experiment"
 		]
 	},
 	"prg-plan-ribbon-copy-experiment": {
