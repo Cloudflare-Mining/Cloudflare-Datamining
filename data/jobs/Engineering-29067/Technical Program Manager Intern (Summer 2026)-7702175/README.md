@@ -35,7 +35,7 @@
 <p>You can check out our <a href="https://blog.cloudflare.com/tag/internship-experience/">internship blogs</a> to learn more about our program and hear directly from our past interns.</p>
 <p><strong>Compensation</strong></p>
 <ul>
-	<li>$25-30/hr</li>
+	<li>$24/hr</li>
 </ul>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
