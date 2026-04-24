@@ -1,0 +1,74 @@
+{
+	"name": "@cloudflare/cli-shared-helpers",
+	"dist-tags": {
+		"latest": "0.1.0"
+	},
+	"versions": {
+		"0.0.1": {
+			"name": "@cloudflare/cli-shared-helpers",
+			"version": "0.0.1",
+			"dependencies": {
+				"chalk": "^5.2.0",
+				"ci-info": "^4.4.0",
+				"log-update": "^5.0.1",
+				"@clack/core": "^1.2.0",
+				"cross-spawn": "^7.0.3",
+				"@cloudflare/workers-utils": "0.18.0"
+			},
+			"devDependencies": {
+				"tsdown": "^0.15.9",
+				"@types/cross-spawn": "^6.0.2",
+				"@cloudflare/workers-tsconfig": "0.0.0"
+			},
+			"dist": {
+				"shasum": "1435d202555ab5d45d59c886fbf23fd5f4b87cc5",
+				"tarball": "https://registry.npmjs.org/@cloudflare/cli-shared-helpers/-/cli-shared-helpers-0.0.1.tgz",
+				"fileCount": 38,
+				"integrity": "sha512-82wuLBnP59fypv+JM01jScYo4btdIPIIcNhylmiscpxLIrdoiIoxH7U5+UScOpymJ+3qh70Rnq3MX5wfYWw6eQ==",
+				"signatures": [
+					{
+						"sig": "MEUCIHxaCMHD0dU9ByF60ucXiCnJiitNZpIp8+JE5X2gkpuXAiEAyfhEZl95fPOF3/gRixHebfqioB9iWY3x/5DzIcZzqBY=",
+						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
+					}
+				],
+				"unpackedSize": 127068
+			}
+		},
+		"0.1.0": {
+			"name": "@cloudflare/cli-shared-helpers",
+			"version": "0.1.0",
+			"dependencies": {
+				"@clack/core": "^1.2.0",
+				"chalk": "^5.2.0",
+				"ci-info": "^4.4.0",
+				"cross-spawn": "^7.0.3",
+				"log-update": "^5.0.1",
+				"@cloudflare/workers-utils": "0.18.0"
+			},
+			"devDependencies": {
+				"@types/cross-spawn": "^6.0.2",
+				"tsdown": "^0.15.9",
+				"@cloudflare/workers-tsconfig": "0.0.0"
+			},
+			"dist": {
+				"integrity": "sha512-/Rs+c1Z+v4Tw2op7EknQcHYdPSu8Cgi2tvtvwgf9i6ZxisqNQBIlxtnmKg87K0oCBE7ydpg2tZt/ux+K1sfOuA==",
+				"shasum": "0f8a96705caf159a5472234fe9c8ccb1cec1d57b",
+				"tarball": "https://registry.npmjs.org/@cloudflare/cli-shared-helpers/-/cli-shared-helpers-0.1.0.tgz",
+				"fileCount": 26,
+				"unpackedSize": 51510,
+				"attestations": {
+					"url": "https://registry.npmjs.org/-/npm/v1/attestations/@cloudflare%2fcli-shared-helpers@0.1.0",
+					"provenance": {
+						"predicateType": "https://slsa.dev/provenance/v1"
+					}
+				},
+				"signatures": [
+					{
+						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U",
+						"sig": "MEUCICUqPdTcukfCR8DinzjTZEHzBWY8PkSmOYOdv8ZH8EwRAiEAoSKsWk18OTviBHVeaNBJU3vKnzlZnoivksp+q7lUm10="
+					}
+				]
+			}
+		}
+	}
+}
