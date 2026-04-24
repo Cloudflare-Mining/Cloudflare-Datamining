@@ -278,6 +278,7 @@
 	"/(^|[^-\\w\\xA0-\\uFFFF])--(?!\\s)[-_a-z\\xA0-\\uFFFF](?:(?!\\s)[-\\w\\xA0-\\uFFFF])*/i",
 	"/(^|[^-a-z0-9])[-a-z0-9]+(?=\\()/i",
 	"/(^|[^.]|\\.\\.\\.\\s*)\\b(?:as|assert(?=\\s*\\{)|async(?=\\s*(?:function\\b|\\(|[$\\w\\xA0-\\uFFFF]|$))|await|break|case|class|const|continue|debugger|default|delete|do|else|enum|export|extends|finally(?=\\s*(?:\\{|$))|for|from(?=\\s*(?:['\"]|$))|function|(?:get|set)(?=\\s*(?:[#\\[$\\w\\xA0-\\uFFFF]|$))|if|implements|import|in|instanceof|interface|let|new|null|of|package|private|protected|public|return|static|super|switch|this|throw|try|typeof|undefined|var|void|while|with|yield)\\b/",
+	"/(^|[^/])(@[a-zA-Z]+)(?=\\/|$)/",
 	"/(^|[^@\\\\])(\"|')(?:\\\\[\\s\\S]|(?!\\2)[^\\\\]|\\2\\2)*\\2/",
 	"/(^|[^@\\\\])`(?:\\\\[\\s\\S]|[^`\\\\]|``)*`/",
 	"/(^|[^\\[])\\^/g",
