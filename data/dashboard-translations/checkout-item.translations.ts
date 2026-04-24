@@ -174,6 +174,12 @@
 		includes_durable_objects: "Includes first %{requests} million requests, %{duration} GB-second duration, %{storage} GB stored data, %{reads} million read units, %{writes} million write units, and %{deletes} million delete operations of Durable Objects",
 		includes_queues: "Includes first %{count} million standard operations of Queues"
 	},
+	prod_zaraz: {
+		zaraz: "Zaraz",
+		usage_based_tag_management: "Usage-based tag management",
+		events_usage_pricing: "%{price} per 1M events",
+		zaraz_events: "Zaraz Events"
+	},
 	prod_registrar: {
 		domain_renewal: "Domain Renewal",
 		renewal_years: "Renewal Period",

@@ -45,6 +45,9 @@
 		docsLink: "Check the docs for more information",
 		zoneAlreadyOnboarded: "This zone has already been onboarded",
 		chooseDifferentZone: "Choose a different zone",
+		zoneInactive: "This zone is not active",
+		zoneInactiveDescription: "Activate this zone before enabling %{featureLabel}",
+		activateZone: "Go to zone overview",
 		actionRequired: "Action required",
 		incompatibleDnsWarning: "There are some incompatible DNS records. Delete them before enabling %{featureLabel}",
 		readyStatus: "Everything looks good",
@@ -127,7 +130,16 @@
 		emailsReceived: "Emails received",
 		emailsSent: "Emails sent",
 		msUnit: "ms",
-		noResultsFound: "No results found"
+		noResultsFound: "No results found",
+		errors: {
+			apiError: "Request failed with status %{status}",
+			apiErrorWithMessage: "%{message}",
+			networkError: "Unable to reach the server. Check your connection and try again.",
+			inputError: "An unexpected validation error occurred. Please reload the page and try again.",
+			unexpectedResponse: "Received an unexpected response. Please try again later.",
+			loadFailed: "Failed to load data. Please try again."
+		},
+		retry: "Retry"
 	},
 	emailSending: {
 		title: "Email Sending",
@@ -313,11 +325,8 @@
 			description: "Manage addresses for use when routing custom addresses. Destination addresses are available on all zones on the account. You can create up to 200 destination addresses for your account.",
 			table: {
 				email: "Email Address",
-				emailTooltip: "Destination email address",
 				status: "Status",
-				statusTooltip: "Verification status",
 				created: "Created",
-				createdTooltip: "Date created",
 				verified: "Verified",
 				pending: "Pending"
 			},

@@ -302,7 +302,8 @@
 				title: "Path Filters",
 				description: "Path filtering allows you to control which files or URLs are indexed by defining include and exclude patterns. Use this to limit indexing to specific content or to skip files you do not want searchable.",
 				include_items: "Include Rules",
-				exclude_items: "Exclude Rules"
+				exclude_items: "Exclude Rules",
+				note: "Updating the path filter settings will trigger a full re-index of your AI Search instance after you Save."
 			},
 			nlweb: {
 				title: "NLWeb Worker"
@@ -321,28 +322,38 @@
 			},
 			custom_headers: {
 				title: "Extra headers",
+				none: "no headers",
+				count: "{count} headers",
 				drawer: {
 					title: "Add extra headers",
-					description: "Add extra headers to be used in crawling:"
+					description: "Add extra headers to be used in crawling:",
+					note: "Updating the extra headers settings will trigger a full re-index of your AI Search instance after you Save."
 				}
 			},
 			specific_sitemaps: {
 				title: "Specific sitemaps",
+				none: "no sitemaps",
+				count: "{count} sitemaps",
 				drawer: {
 					title: "Specific sitemaps",
-					description: "Specify specific sitemap URLs to crawl instead of using the default sitemap discovery."
+					description: "Specify specific sitemap URLs to crawl instead of using the default sitemap discovery.",
+					note: "Updating the specific sitemaps settings will trigger a full re-index of your AI Search instance after you Save."
 				}
 			},
 			content_selector: {
 				title: "Content selectors",
+				none: "no selectors",
+				count: "{count} selectors",
 				drawer: {
 					title: "Content selectors",
-					description: "Define path-to-selector mappings to extract specific content from crawled pages. Each entry pairs a URL glob pattern with a CSS selector. The first matching path wins. Only the matched HTML fragment is stored and indexed."
+					description: "Define path-to-selector mappings to extract specific content from crawled pages. Each entry pairs a URL glob pattern with a CSS selector. The first matching path wins. Only the matched HTML fragment is stored and indexed.",
+					note: "Updating the content selectors settings will trigger a full re-index of your AI Search instance after you Save."
 				}
 			},
 			include_images: {
 				title: "Include images",
-				description: "Convert embedded image content during parsing."
+				description: "Convert embedded image content during parsing.",
+				confirm_description: "A new indexing job will be created to re-index all items within this instance with this configuration. The existing version of the items will still be available to query while the job is completing."
 			},
 			crawl_options: {
 				title: "Crawl options",
@@ -447,10 +458,11 @@
 		hybrid_search: {
 			title: "Hybrid search",
 			description: "Enable hybrid search to combine vector and keyword search for improved results.",
-			confirm_description: "A new indexing job will be created to reindex all items within this instance with this configuration. The existing version of the items will still be available to query while the job is completing.",
+			confirm_description: "A new indexing job will be created to re-index all items within this instance with this configuration. The existing version of the items will still be available to query while the job is completing.",
 			fusion_method: "Fusion method",
 			keyword_match_mode: "Keyword match mode",
-			keyword_tokenizer: "Keyword tokenizer"
+			keyword_tokenizer: "Keyword tokenizer",
+			keyword_tokenizer_note: "Updating the keyword tokenizer settings will trigger a full re-index of your AI Search instance after you Save."
 		},
 		public_url: {
 			title: "Public URL",
@@ -553,7 +565,8 @@
 			no_metadata: "No custom metadata configured",
 			drawer: {
 				title: "Custom Metadata",
-				description: "Manage custom metadata for your AI Search instance. Maximum 5 entries allowed."
+				description: "Manage custom metadata for your AI Search instance. Maximum 5 entries allowed.",
+				note: "Updating the custom metadata settings will trigger a full re-index of your AI Search instance after you Save."
 			}
 		}
 	},
@@ -1138,9 +1151,9 @@
 			summary_rewriting: (0, r.p)(u(), "status"),
 			summary_reranking: (0, r.p)(m(), "status"),
 			summary_results_score: (0, r.p)(_(), "count", "score"),
-			n_tokens: (0, r.p)(p(), "count"),
-			n_dimensions: (0, r.p)(h(), "count"),
-			k_context: (0, r.p)(f(), "count"),
+			n_tokens: (0, r.p)(h(), "count"),
+			n_dimensions: (0, r.p)(p(), "count"),
+			k_context: (0, r.p)(g(), "count"),
 			tokens_unit: "tokens"
 		},
 		source_settings: {

@@ -323,9 +323,10 @@
 		ratelimiting: {
 			title: "Rate Limit Requests",
 			description: "Control the traffic your application gets to cap spending or prevent suspicious activity by limiting requests.",
-			configuration_1: "Limit requests when rate exceeds",
-			configuration_2: "requests over a",
+			configuration_1: "Limit to",
+			configuration_2: "requests every",
 			configuration_3: "period.",
+			quick_select_hint: "Or choose a common interval:",
 			resume: (0, i.p)(m())
 		},
 		retry: {
@@ -546,8 +547,8 @@
 			cache_custom: (0, i.p)(y()),
 			custom_seconds: "Custom (seconds)",
 			seconds: "seconds",
-			ratelimiting_fixed: "Fixed",
-			ratelimiting_sliding: "Sliding",
+			ratelimiting_fixed: "fixed",
+			ratelimiting_sliding: "sliding",
 			change: "Change"
 		}
 	},

@@ -665,6 +665,7 @@
 	"account.dns_settings.custom_ns.modal.description": "Create nameservers that can be assigned to any DNS zone under %{accountName}.",
 	"account.dns_settings.custom_ns.modal.name": "**Nameserver name**",
 	"account.dns_settings.custom_ns.modal.remove.title": "Remove this nameserver?",
+	"account.dns_settings.custom_ns.modal.confirm.description": "This may affect DNS resolution for zones using these nameservers. This action cannot be undone.",
 	"account.dns_settings.custom_ns.modal.set.description": "Select a set for your nameserver",
 	"account.dns_settings.custom_ns.modal.set.option": "**Set %{setNumber}**: %{nsCount} nameserver |||| **Set %{setNumber}**: %{nsCount} nameservers",
 	"account.dns_settings.custom_ns.modal.set": "**Nameserver set**",

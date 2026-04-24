@@ -38,6 +38,8 @@
 		create_worker: "Create Worker",
 		create_worker_description: "Deploy a new Worker",
 		copy_account_id_description: "Copy your account ID to your clipboard",
+		show_keyboard_shortcuts: "Show Keyboard Shortcuts",
+		show_keyboard_shortcuts_description: "View all available keyboard shortcuts",
 		switch_to_production: "Switch to production",
 		switch_to_production_description: "Switch from the canary environment to the production environment",
 		switch_to_canary: "Switch to canary",
