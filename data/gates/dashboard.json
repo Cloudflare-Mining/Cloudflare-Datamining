@@ -384,6 +384,9 @@
 	"billing-unified-checkout-load-balancer": {
 		"enabled": true
 	},
+	"billing-unified-checkout-pay-bad-debt": {
+		"enabled": false
+	},
 	"billing-unified-checkout-payment-management": {
 		"enabled": false
 	},
@@ -1740,6 +1743,9 @@
 			"variant-b",
 			"variant-c"
 		]
+	},
+	"prg-domain-reg-success-kumo": {
+		"enabled": false
 	},
 	"prg-domain-success-page-experiment": {
 		"enabled": true,
