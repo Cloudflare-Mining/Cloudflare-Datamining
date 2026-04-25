@@ -701,6 +701,7 @@ export interface DurableObjectState<Props = unknown> {
   container?: Container;
   facets: DurableObjectFacets;
   version?: DurableObjectStateVersion;
+  readonly primaryStub?: DurableObjectStub;
   blockConcurrencyWhile<T>(callback: () => Promise<T>): Promise<T>;
   acceptWebSocket(ws: WebSocket, tags?: string[]): void;
   getWebSockets(tag?: string): WebSocket[];
@@ -711,6 +712,9 @@ export interface DurableObjectState<Props = unknown> {
   getHibernatableWebSocketEventTimeout(): number | null;
   getTags(ws: WebSocket): string[];
   abort(reason?: string): void;
+  configureReadReplication(
+    options: DurableObjectReadReplicationOptions,
+  ): Promise<void>;
 }
 export interface DurableObjectTransaction {
   get<T = unknown>(
@@ -784,12 +788,12 @@ export interface DurableObjectStorage {
   getBookmarkForTime(timestamp: number | Date): Promise<string>;
   onNextSessionRestoreBookmark(bookmark: string): Promise<string>;
   waitForBookmark(bookmark: string): Promise<void>;
+  /** @deprecated Use `ctx.primaryStub` instead. */
   readonly primary?: DurableObjectStub;
+  /** @deprecated Use `ctx.configureReadReplication()` instead. */
   ensureReplicas(): void;
+  /** @deprecated Use `ctx.configureReadReplication()` instead. */
   disableReplicas(): void;
-  configureReadReplication(
-    options: DurableObjectReadReplicationOptions,
-  ): Promise<void>;
 }
 export interface DurableObjectReadReplicationOptions {
   mode: "auto" | "disabled";
