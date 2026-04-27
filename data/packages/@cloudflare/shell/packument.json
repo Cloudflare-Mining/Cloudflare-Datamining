@@ -1,7 +1,7 @@
 {
 	"name": "@cloudflare/shell",
 	"dist-tags": {
-		"latest": "0.3.3"
+		"latest": "0.3.4"
 	},
 	"versions": {
 		"0.0.0": {
@@ -255,21 +255,52 @@
 			"name": "@cloudflare/shell",
 			"version": "0.3.3",
 			"dependencies": {
+				"isomorphic-git": "^1.37.5",
+				"@cloudflare/codemode": "^0.3.4"
+			},
+			"devDependencies": {
+				"vitest": "4.1.4",
+				"@cloudflare/vitest-pool-workers": "^0.14.7"
+			},
+			"dist": {
+				"shasum": "e67e131580b1a5d378afcb8588df43de67b64a31",
+				"tarball": "https://registry.npmjs.org/@cloudflare/shell/-/shell-0.3.3.tgz",
+				"fileCount": 18,
+				"integrity": "sha512-2k2Fg7r7L2DCYpDy9RKqt/+O+4TqJdddwhynzOAZiwMUNtwdDcQeVwDW04f1FKeeLTvUQxvgTe4fax31y9Hg4g==",
+				"signatures": [
+					{
+						"sig": "MEQCIEXi2k0BuU8NEyRrS+BLFcerZQ5W/LNh3GPb5ElTeW4SAiBu3t6ynKGKpVoc6UlP9R9cyBErDBLF252jzy8IlSLRHg==",
+						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
+					}
+				],
+				"attestations": {
+					"url": "https://registry.npmjs.org/-/npm/v1/attestations/@cloudflare%2fshell@0.3.3",
+					"provenance": {
+						"predicateType": "https://slsa.dev/provenance/v1"
+					}
+				},
+				"unpackedSize": 418178
+			}
+		},
+		"0.3.4": {
+			"name": "@cloudflare/shell",
+			"version": "0.3.4",
+			"dependencies": {
 				"@cloudflare/codemode": "^0.3.4",
 				"isomorphic-git": "^1.37.5"
 			},
 			"devDependencies": {
-				"@cloudflare/vitest-pool-workers": "^0.14.7",
-				"vitest": "4.1.4"
+				"@cloudflare/vitest-pool-workers": "^0.15.0",
+				"vitest": "4.1.5"
 			},
 			"dist": {
-				"integrity": "sha512-2k2Fg7r7L2DCYpDy9RKqt/+O+4TqJdddwhynzOAZiwMUNtwdDcQeVwDW04f1FKeeLTvUQxvgTe4fax31y9Hg4g==",
-				"shasum": "e67e131580b1a5d378afcb8588df43de67b64a31",
-				"tarball": "https://registry.npmjs.org/@cloudflare/shell/-/shell-0.3.3.tgz",
+				"integrity": "sha512-XJeSU5F9ZMHmIasonC8g3zfHpbeYI9fSCsw/ZBepiOnP900ZFfl8y/Kt4FjZAfoaOFi1VsU2LZDPdttOSSACqw==",
+				"shasum": "29b95a27d14273c0741604ce96fa4c57dde9c67d",
+				"tarball": "https://registry.npmjs.org/@cloudflare/shell/-/shell-0.3.4.tgz",
 				"fileCount": 18,
-				"unpackedSize": 418178,
+				"unpackedSize": 422505,
 				"attestations": {
-					"url": "https://registry.npmjs.org/-/npm/v1/attestations/@cloudflare%2fshell@0.3.3",
+					"url": "https://registry.npmjs.org/-/npm/v1/attestations/@cloudflare%2fshell@0.3.4",
 					"provenance": {
 						"predicateType": "https://slsa.dev/provenance/v1"
 					}
@@ -277,7 +308,7 @@
 				"signatures": [
 					{
 						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U",
-						"sig": "MEQCIEXi2k0BuU8NEyRrS+BLFcerZQ5W/LNh3GPb5ElTeW4SAiBu3t6ynKGKpVoc6UlP9R9cyBErDBLF252jzy8IlSLRHg=="
+						"sig": "MEQCID9KTmEQrQbdeLj+s96sTQimdOLlDghL4+hM4vC9IHyjAiAO6uOEis26AWtIBWiXXYVOUO9B2QlD06wwE3ly2A+Kxg=="
 					}
 				]
 			}
