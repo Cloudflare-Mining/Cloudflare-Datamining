@@ -457,6 +457,618 @@
 			}
 		}
 	],
+	"PARAMETERS /accounts/{account_id}/email-security/investigate": [
+		{
+			"description": "Account identifier tag.",
+			"in": "path",
+			"name": "account_id",
+			"required": true,
+			"schema": {
+				"description": "Identifier.",
+				"example": "023e105f4ecef8ad9ca31a8372d0c353",
+				"maxLength": 32,
+				"type": "string",
+				"x-auditable": true
+			}
+		}
+	],
+	"PARAMETERS /accounts/{account_id}/email-security/investigate/{investigate_id}": [
+		{
+			"description": "Account identifier tag.",
+			"in": "path",
+			"name": "account_id",
+			"required": true,
+			"schema": {
+				"description": "Identifier.",
+				"example": "023e105f4ecef8ad9ca31a8372d0c353",
+				"maxLength": 32,
+				"type": "string",
+				"x-auditable": true
+			}
+		},
+		{
+			"in": "path",
+			"name": "investigate_id",
+			"required": true,
+			"schema": {
+				"description": "Unique identifier for a message retrieved from investigation",
+				"example": "4Njp3P0STMz2c02Q-2024-01-05T10:00:00-12345678",
+				"type": "string"
+			}
+		},
+		{
+			"description": "When true, search the submissions datastore only. When false or omitted, search the\nregular datastore only.",
+			"in": "query",
+			"name": "submission",
+			"schema": {
+				"type": "boolean"
+			}
+		}
+	],
+	"PARAMETERS /accounts/{account_id}/email-security/investigate/{investigate_id}/action_log": [
+		{
+			"description": "Account identifier tag.",
+			"in": "path",
+			"name": "account_id",
+			"required": true,
+			"schema": {
+				"description": "Identifier.",
+				"example": "023e105f4ecef8ad9ca31a8372d0c353",
+				"maxLength": 32,
+				"type": "string",
+				"x-auditable": true
+			}
+		},
+		{
+			"in": "path",
+			"name": "investigate_id",
+			"required": true,
+			"schema": {
+				"description": "Unique identifier for a message retrieved from investigation",
+				"example": "4Njp3P0STMz2c02Q-2024-01-05T10:00:00-12345678",
+				"type": "string"
+			}
+		}
+	],
+	"PARAMETERS /accounts/{account_id}/email-security/investigate/{investigate_id}/detections": [
+		{
+			"description": "Account identifier tag.",
+			"in": "path",
+			"name": "account_id",
+			"required": true,
+			"schema": {
+				"description": "Identifier.",
+				"example": "023e105f4ecef8ad9ca31a8372d0c353",
+				"maxLength": 32,
+				"type": "string",
+				"x-auditable": true
+			}
+		},
+		{
+			"in": "path",
+			"name": "investigate_id",
+			"required": true,
+			"schema": {
+				"description": "Unique identifier for a message retrieved from investigation",
+				"example": "4Njp3P0STMz2c02Q-2024-01-05T10:00:00-12345678",
+				"type": "string"
+			}
+		}
+	],
+	"PARAMETERS /accounts/{account_id}/email-security/investigate/{investigate_id}/move": [
+		{
+			"description": "Account identifier tag.",
+			"in": "path",
+			"name": "account_id",
+			"required": true,
+			"schema": {
+				"description": "Identifier.",
+				"example": "023e105f4ecef8ad9ca31a8372d0c353",
+				"maxLength": 32,
+				"type": "string",
+				"x-auditable": true
+			}
+		},
+		{
+			"in": "path",
+			"name": "investigate_id",
+			"required": true,
+			"schema": {
+				"description": "Unique identifier for a message retrieved from investigation",
+				"example": "4Njp3P0STMz2c02Q-2024-01-05T10:00:00-12345678",
+				"type": "string"
+			}
+		}
+	],
+	"PARAMETERS /accounts/{account_id}/email-security/investigate/{investigate_id}/preview": [
+		{
+			"description": "Account identifier tag.",
+			"in": "path",
+			"name": "account_id",
+			"required": true,
+			"schema": {
+				"description": "Identifier.",
+				"example": "023e105f4ecef8ad9ca31a8372d0c353",
+				"maxLength": 32,
+				"type": "string",
+				"x-auditable": true
+			}
+		},
+		{
+			"in": "path",
+			"name": "investigate_id",
+			"required": true,
+			"schema": {
+				"description": "Unique identifier for a message retrieved from investigation",
+				"example": "4Njp3P0STMz2c02Q-2024-01-05T10:00:00-12345678",
+				"type": "string"
+			}
+		}
+	],
+	"PARAMETERS /accounts/{account_id}/email-security/investigate/{investigate_id}/raw": [
+		{
+			"description": "Account identifier tag.",
+			"in": "path",
+			"name": "account_id",
+			"required": true,
+			"schema": {
+				"description": "Identifier.",
+				"example": "023e105f4ecef8ad9ca31a8372d0c353",
+				"maxLength": 32,
+				"type": "string",
+				"x-auditable": true
+			}
+		},
+		{
+			"in": "path",
+			"name": "investigate_id",
+			"required": true,
+			"schema": {
+				"description": "Unique identifier for a message retrieved from investigation",
+				"example": "4Njp3P0STMz2c02Q-2024-01-05T10:00:00-12345678",
+				"type": "string"
+			}
+		}
+	],
+	"PARAMETERS /accounts/{account_id}/email-security/investigate/{investigate_id}/reclassify": [
+		{
+			"description": "Account identifier tag.",
+			"in": "path",
+			"name": "account_id",
+			"required": true,
+			"schema": {
+				"description": "Identifier.",
+				"example": "023e105f4ecef8ad9ca31a8372d0c353",
+				"maxLength": 32,
+				"type": "string",
+				"x-auditable": true
+			}
+		},
+		{
+			"in": "path",
+			"name": "investigate_id",
+			"required": true,
+			"schema": {
+				"description": "Unique identifier for a message retrieved from investigation",
+				"example": "4Njp3P0STMz2c02Q-2024-01-05T10:00:00-12345678",
+				"type": "string"
+			}
+		}
+	],
+	"PARAMETERS /accounts/{account_id}/email-security/investigate/{investigate_id}/trace": [
+		{
+			"description": "Account identifier tag.",
+			"in": "path",
+			"name": "account_id",
+			"required": true,
+			"schema": {
+				"description": "Identifier.",
+				"example": "023e105f4ecef8ad9ca31a8372d0c353",
+				"maxLength": 32,
+				"type": "string",
+				"x-auditable": true
+			}
+		},
+		{
+			"in": "path",
+			"name": "investigate_id",
+			"required": true,
+			"schema": {
+				"description": "Unique identifier for a message retrieved from investigation",
+				"example": "4Njp3P0STMz2c02Q-2024-01-05T10:00:00-12345678",
+				"type": "string"
+			}
+		}
+	],
+	"PARAMETERS /accounts/{account_id}/email-security/investigate/move": [
+		{
+			"description": "Account identifier tag.",
+			"in": "path",
+			"name": "account_id",
+			"required": true,
+			"schema": {
+				"description": "Identifier.",
+				"example": "023e105f4ecef8ad9ca31a8372d0c353",
+				"maxLength": 32,
+				"type": "string",
+				"x-auditable": true
+			}
+		}
+	],
+	"PARAMETERS /accounts/{account_id}/email-security/investigate/preview": [
+		{
+			"description": "Account identifier tag.",
+			"in": "path",
+			"name": "account_id",
+			"required": true,
+			"schema": {
+				"description": "Identifier.",
+				"example": "023e105f4ecef8ad9ca31a8372d0c353",
+				"maxLength": 32,
+				"type": "string",
+				"x-auditable": true
+			}
+		}
+	],
+	"PARAMETERS /accounts/{account_id}/email-security/investigate/release": [
+		{
+			"description": "Account identifier tag.",
+			"in": "path",
+			"name": "account_id",
+			"required": true,
+			"schema": {
+				"description": "Identifier.",
+				"example": "023e105f4ecef8ad9ca31a8372d0c353",
+				"maxLength": 32,
+				"type": "string",
+				"x-auditable": true
+			}
+		}
+	],
+	"PARAMETERS /accounts/{account_id}/email-security/phishguard/reports": [
+		{
+			"description": "Account identifier tag.",
+			"in": "path",
+			"name": "account_id",
+			"required": true,
+			"schema": {
+				"description": "Identifier.",
+				"example": "023e105f4ecef8ad9ca31a8372d0c353",
+				"maxLength": 32,
+				"type": "string",
+				"x-auditable": true
+			}
+		}
+	],
+	"PARAMETERS /accounts/{account_id}/email-security/settings/allow_policies": [
+		{
+			"description": "Account identifier tag.",
+			"in": "path",
+			"name": "account_id",
+			"required": true,
+			"schema": {
+				"description": "Identifier.",
+				"example": "023e105f4ecef8ad9ca31a8372d0c353",
+				"maxLength": 32,
+				"type": "string",
+				"x-auditable": true
+			}
+		}
+	],
+	"PARAMETERS /accounts/{account_id}/email-security/settings/allow_policies/{policy_id}": [
+		{
+			"description": "Account identifier tag.",
+			"in": "path",
+			"name": "account_id",
+			"required": true,
+			"schema": {
+				"description": "Identifier.",
+				"example": "023e105f4ecef8ad9ca31a8372d0c353",
+				"maxLength": 32,
+				"type": "string",
+				"x-auditable": true
+			}
+		},
+		{
+			"in": "path",
+			"name": "policy_id",
+			"required": true,
+			"schema": {
+				"description": "Allow policy identifier",
+				"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
+				"format": "uuid",
+				"type": "string",
+				"x-auditable": true
+			}
+		}
+	],
+	"PARAMETERS /accounts/{account_id}/email-security/settings/allow_policies/batch": [
+		{
+			"description": "Account identifier tag.",
+			"in": "path",
+			"name": "account_id",
+			"required": true,
+			"schema": {
+				"description": "Identifier.",
+				"example": "023e105f4ecef8ad9ca31a8372d0c353",
+				"maxLength": 32,
+				"type": "string",
+				"x-auditable": true
+			}
+		}
+	],
+	"PARAMETERS /accounts/{account_id}/email-security/settings/block_senders": [
+		{
+			"description": "Account identifier tag.",
+			"in": "path",
+			"name": "account_id",
+			"required": true,
+			"schema": {
+				"description": "Identifier.",
+				"example": "023e105f4ecef8ad9ca31a8372d0c353",
+				"maxLength": 32,
+				"type": "string",
+				"x-auditable": true
+			}
+		}
+	],
+	"PARAMETERS /accounts/{account_id}/email-security/settings/block_senders/{pattern_id}": [
+		{
+			"description": "Account identifier tag.",
+			"in": "path",
+			"name": "account_id",
+			"required": true,
+			"schema": {
+				"description": "Identifier.",
+				"example": "023e105f4ecef8ad9ca31a8372d0c353",
+				"maxLength": 32,
+				"type": "string",
+				"x-auditable": true
+			}
+		},
+		{
+			"in": "path",
+			"name": "pattern_id",
+			"required": true,
+			"schema": {
+				"description": "Blocked sender pattern identifier",
+				"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
+				"format": "uuid",
+				"type": "string",
+				"x-auditable": true
+			}
+		}
+	],
+	"PARAMETERS /accounts/{account_id}/email-security/settings/block_senders/batch": [
+		{
+			"description": "Account identifier tag.",
+			"in": "path",
+			"name": "account_id",
+			"required": true,
+			"schema": {
+				"description": "Identifier.",
+				"example": "023e105f4ecef8ad9ca31a8372d0c353",
+				"maxLength": 32,
+				"type": "string",
+				"x-auditable": true
+			}
+		}
+	],
+	"PARAMETERS /accounts/{account_id}/email-security/settings/domains": [
+		{
+			"description": "Account identifier tag.",
+			"in": "path",
+			"name": "account_id",
+			"required": true,
+			"schema": {
+				"description": "Identifier.",
+				"example": "023e105f4ecef8ad9ca31a8372d0c353",
+				"maxLength": 32,
+				"type": "string",
+				"x-auditable": true
+			}
+		}
+	],
+	"PARAMETERS /accounts/{account_id}/email-security/settings/domains/{domain_id}": [
+		{
+			"description": "Account identifier tag.",
+			"in": "path",
+			"name": "account_id",
+			"required": true,
+			"schema": {
+				"description": "Identifier.",
+				"example": "023e105f4ecef8ad9ca31a8372d0c353",
+				"maxLength": 32,
+				"type": "string",
+				"x-auditable": true
+			}
+		},
+		{
+			"in": "path",
+			"name": "domain_id",
+			"required": true,
+			"schema": {
+				"description": "Domain identifier",
+				"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
+				"format": "uuid",
+				"type": "string",
+				"x-auditable": true
+			}
+		}
+	],
+	"PARAMETERS /accounts/{account_id}/email-security/settings/impersonation_registry": [
+		{
+			"description": "Account identifier tag.",
+			"in": "path",
+			"name": "account_id",
+			"required": true,
+			"schema": {
+				"description": "Identifier.",
+				"example": "023e105f4ecef8ad9ca31a8372d0c353",
+				"maxLength": 32,
+				"type": "string",
+				"x-auditable": true
+			}
+		}
+	],
+	"PARAMETERS /accounts/{account_id}/email-security/settings/impersonation_registry/{impersonation_registry_id}": [
+		{
+			"description": "Account identifier tag.",
+			"in": "path",
+			"name": "account_id",
+			"required": true,
+			"schema": {
+				"description": "Identifier.",
+				"example": "023e105f4ecef8ad9ca31a8372d0c353",
+				"maxLength": 32,
+				"type": "string",
+				"x-auditable": true
+			}
+		},
+		{
+			"in": "path",
+			"name": "impersonation_registry_id",
+			"required": true,
+			"schema": {
+				"description": "Impersonation registry entry identifier",
+				"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
+				"format": "uuid",
+				"title": "identifier",
+				"type": "string",
+				"x-auditable": true
+			}
+		}
+	],
+	"PARAMETERS /accounts/{account_id}/email-security/settings/sending_domain_restrictions": [
+		{
+			"description": "Account identifier tag.",
+			"in": "path",
+			"name": "account_id",
+			"required": true,
+			"schema": {
+				"description": "Identifier.",
+				"example": "023e105f4ecef8ad9ca31a8372d0c353",
+				"maxLength": 32,
+				"type": "string",
+				"x-auditable": true
+			}
+		}
+	],
+	"PARAMETERS /accounts/{account_id}/email-security/settings/sending_domain_restrictions/{sending_domain_restriction_id}": [
+		{
+			"description": "Account identifier tag.",
+			"in": "path",
+			"name": "account_id",
+			"required": true,
+			"schema": {
+				"description": "Identifier.",
+				"example": "023e105f4ecef8ad9ca31a8372d0c353",
+				"maxLength": 32,
+				"type": "string",
+				"x-auditable": true
+			}
+		},
+		{
+			"in": "path",
+			"name": "sending_domain_restriction_id",
+			"required": true,
+			"schema": {
+				"description": "Sending domain restriction identifier.",
+				"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
+				"format": "uuid",
+				"title": "identifier",
+				"type": "string",
+				"x-auditable": true
+			}
+		}
+	],
+	"PARAMETERS /accounts/{account_id}/email-security/settings/sending_domain_restrictions/batch": [
+		{
+			"description": "Account identifier tag.",
+			"in": "path",
+			"name": "account_id",
+			"required": true,
+			"schema": {
+				"description": "Identifier.",
+				"example": "023e105f4ecef8ad9ca31a8372d0c353",
+				"maxLength": 32,
+				"type": "string",
+				"x-auditable": true
+			}
+		}
+	],
+	"PARAMETERS /accounts/{account_id}/email-security/settings/trusted_domains": [
+		{
+			"description": "Account identifier tag.",
+			"in": "path",
+			"name": "account_id",
+			"required": true,
+			"schema": {
+				"description": "Identifier.",
+				"example": "023e105f4ecef8ad9ca31a8372d0c353",
+				"maxLength": 32,
+				"type": "string",
+				"x-auditable": true
+			}
+		}
+	],
+	"PARAMETERS /accounts/{account_id}/email-security/settings/trusted_domains/{trusted_domain_id}": [
+		{
+			"description": "Account identifier tag.",
+			"in": "path",
+			"name": "account_id",
+			"required": true,
+			"schema": {
+				"description": "Identifier.",
+				"example": "023e105f4ecef8ad9ca31a8372d0c353",
+				"maxLength": 32,
+				"type": "string",
+				"x-auditable": true
+			}
+		},
+		{
+			"in": "path",
+			"name": "trusted_domain_id",
+			"required": true,
+			"schema": {
+				"description": "Trusted domain identifier",
+				"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
+				"format": "uuid",
+				"type": "string",
+				"x-auditable": true
+			}
+		}
+	],
+	"PARAMETERS /accounts/{account_id}/email-security/settings/trusted_domains/batch": [
+		{
+			"description": "Account identifier tag.",
+			"in": "path",
+			"name": "account_id",
+			"required": true,
+			"schema": {
+				"description": "Identifier.",
+				"example": "023e105f4ecef8ad9ca31a8372d0c353",
+				"maxLength": 32,
+				"type": "string",
+				"x-auditable": true
+			}
+		}
+	],
+	"PARAMETERS /accounts/{account_id}/email-security/submissions": [
+		{
+			"description": "Account identifier tag.",
+			"in": "path",
+			"name": "account_id",
+			"required": true,
+			"schema": {
+				"description": "Identifier.",
+				"example": "023e105f4ecef8ad9ca31a8372d0c353",
+				"maxLength": 32,
+				"type": "string",
+				"x-auditable": true
+			}
+		}
+	],
 	"PARAMETERS /accounts/{account_id}/logs/explorer/datasets": [
 		{
 			"description": "Cloudflare account ID.",

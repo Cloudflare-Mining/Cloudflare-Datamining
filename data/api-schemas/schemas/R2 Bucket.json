@@ -5107,7 +5107,8 @@
 										"result": {
 											"example": {
 												"domain": "example-domain.com",
-												"enabled": true
+												"enabled": true,
+												"zoneId": "36ca64a6d92827b8a6b90be344bb1bfd"
 											},
 											"properties": {
 												"ciphers": {
@@ -5137,11 +5138,17 @@
 													],
 													"type": "string",
 													"x-auditable": true
+												},
+												"zoneId": {
+													"description": "Zone ID of the custom domain.",
+													"type": "string",
+													"x-auditable": true
 												}
 											},
 											"required": [
 												"domain",
-												"enabled"
+												"enabled",
+												"zoneId"
 											],
 											"type": "object"
 										}

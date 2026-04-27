@@ -219,6 +219,7 @@
 							"items": {
 								"type": "string"
 							},
+							"maxItems": 50,
 							"type": "array"
 						}
 					],
@@ -584,6 +585,105 @@
 			}
 		],
 		"summary": "Get a rule",
+		"tags": [
+			"Rules"
+		]
+	},
+	"GET /accounts/{account_id}/cloudforce-one/rules/managed": {
+		"description": "Get DFP managed rule metadata (name and description) from YARA rules.",
+		"operationId": "cloudforce-one-get-managed-rules",
+		"parameters": [
+			{
+				"description": "Cloudflare account ID.",
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"type": "string"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"metadata": {
+									"properties": {
+										"fetched_at": {
+											"type": "string"
+										},
+										"total_rules": {
+											"type": "number"
+										}
+									},
+									"required": [
+										"total_rules",
+										"fetched_at"
+									],
+									"type": "object"
+								},
+								"rules": {
+									"items": {
+										"properties": {
+											"description": {
+												"type": "string"
+											},
+											"name": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"name",
+											"description"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								}
+							},
+							"required": [
+								"rules",
+								"metadata"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Managed rules metadata."
+			},
+			"401": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"error": {
+									"example": "Not found",
+									"type": "string"
+								}
+							},
+							"required": [
+								"error"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Unauthorized."
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Get managed rules",
 		"tags": [
 			"Rules"
 		]

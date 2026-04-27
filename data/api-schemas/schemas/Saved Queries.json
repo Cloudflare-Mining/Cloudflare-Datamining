@@ -200,19 +200,21 @@
 																"type": "object"
 															},
 															{
-																"description": "Filtering best practices: use observability_keys and observability_values to confirm available fields and values. If searching for errors, filter for $metadata.error exists.",
+																"description": "A filter condition applied to query results. Use the keys and values endpoints to discover available fields and their values before constructing filters.",
 																"properties": {
 																	"key": {
-																		"description": "Filter field name. IMPORTANT: do not guess keys. Always use verified keys from previous query results or the observability_keys response. Preferred keys: $metadata.service, $metadata.origin, $metadata.trigger, $metadata.message, $metadata.error.",
+																		"description": "Filter field name. Use verified keys from previous query results or the keys endpoint. Common keys include $metadata.service, $metadata.origin, $metadata.trigger, $metadata.message, and $metadata.error.",
 																		"type": "string"
 																	},
 																	"kind": {
+																		"description": "Discriminator for leaf filter nodes. Always 'filter' when present; may be omitted.",
 																		"enum": [
 																			"filter"
 																		],
 																		"type": "string"
 																	},
 																	"operation": {
+																		"description": "Comparison operator. String operators: includes, not_includes, starts_with, regex. Existence: exists, is_null. Set membership: in, not_in (comma-separated values). Numeric: eq, neq, gt, gte, lt, lte.",
 																		"enum": [
 																			"includes",
 																			"not_includes",
@@ -246,6 +248,7 @@
 																		"type": "string"
 																	},
 																	"type": {
+																		"description": "Data type of the filter field. Must match the actual type of the key being filtered.",
 																		"enum": [
 																			"string",
 																			"number",
@@ -265,7 +268,7 @@
 																				"type": "boolean"
 																			}
 																		],
-																		"description": "Filter comparison value. IMPORTANT: must match actual values in your logs. Verify using previous query results or the /values endpoint. Ensure value type matches the field type. String comparisons are case-sensitive unless using specific operations. Regex uses ClickHouse RE2 syntax (no lookaheads/lookbehinds); examples: ^5\\d{2}$ for HTTP 5xx, \\bERROR\\b for word boundary."
+																		"description": "Comparison value. Must match actual values in your data — verify with the values endpoint. Ensure the value type (string/number/boolean) matches the field type. String comparisons are case-sensitive. Regex uses RE2 syntax (no lookaheads/lookbehinds)."
 																	}
 																},
 																"required": [
@@ -858,19 +861,21 @@
 																	"type": "object"
 																},
 																{
-																	"description": "Filtering best practices: use observability_keys and observability_values to confirm available fields and values. If searching for errors, filter for $metadata.error exists.",
+																	"description": "A filter condition applied to query results. Use the keys and values endpoints to discover available fields and their values before constructing filters.",
 																	"properties": {
 																		"key": {
-																			"description": "Filter field name. IMPORTANT: do not guess keys. Always use verified keys from previous query results or the observability_keys response. Preferred keys: $metadata.service, $metadata.origin, $metadata.trigger, $metadata.message, $metadata.error.",
+																			"description": "Filter field name. Use verified keys from previous query results or the keys endpoint. Common keys include $metadata.service, $metadata.origin, $metadata.trigger, $metadata.message, and $metadata.error.",
 																			"type": "string"
 																		},
 																		"kind": {
+																			"description": "Discriminator for leaf filter nodes. Always 'filter' when present; may be omitted.",
 																			"enum": [
 																				"filter"
 																			],
 																			"type": "string"
 																		},
 																		"operation": {
+																			"description": "Comparison operator. String operators: includes, not_includes, starts_with, regex. Existence: exists, is_null. Set membership: in, not_in (comma-separated values). Numeric: eq, neq, gt, gte, lt, lte.",
 																			"enum": [
 																				"includes",
 																				"not_includes",
@@ -904,6 +909,7 @@
 																			"type": "string"
 																		},
 																		"type": {
+																			"description": "Data type of the filter field. Must match the actual type of the key being filtered.",
 																			"enum": [
 																				"string",
 																				"number",
@@ -923,7 +929,7 @@
 																					"type": "boolean"
 																				}
 																			],
-																			"description": "Filter comparison value. IMPORTANT: must match actual values in your logs. Verify using previous query results or the /values endpoint. Ensure value type matches the field type. String comparisons are case-sensitive unless using specific operations. Regex uses ClickHouse RE2 syntax (no lookaheads/lookbehinds); examples: ^5\\d{2}$ for HTTP 5xx, \\bERROR\\b for word boundary."
+																			"description": "Comparison value. Must match actual values in your data — verify with the values endpoint. Ensure the value type (string/number/boolean) matches the field type. String comparisons are case-sensitive. Regex uses RE2 syntax (no lookaheads/lookbehinds)."
 																		}
 																	},
 																	"required": [
@@ -1483,19 +1489,21 @@
 																"type": "object"
 															},
 															{
-																"description": "Filtering best practices: use observability_keys and observability_values to confirm available fields and values. If searching for errors, filter for $metadata.error exists.",
+																"description": "A filter condition applied to query results. Use the keys and values endpoints to discover available fields and their values before constructing filters.",
 																"properties": {
 																	"key": {
-																		"description": "Filter field name. IMPORTANT: do not guess keys. Always use verified keys from previous query results or the observability_keys response. Preferred keys: $metadata.service, $metadata.origin, $metadata.trigger, $metadata.message, $metadata.error.",
+																		"description": "Filter field name. Use verified keys from previous query results or the keys endpoint. Common keys include $metadata.service, $metadata.origin, $metadata.trigger, $metadata.message, and $metadata.error.",
 																		"type": "string"
 																	},
 																	"kind": {
+																		"description": "Discriminator for leaf filter nodes. Always 'filter' when present; may be omitted.",
 																		"enum": [
 																			"filter"
 																		],
 																		"type": "string"
 																	},
 																	"operation": {
+																		"description": "Comparison operator. String operators: includes, not_includes, starts_with, regex. Existence: exists, is_null. Set membership: in, not_in (comma-separated values). Numeric: eq, neq, gt, gte, lt, lte.",
 																		"enum": [
 																			"includes",
 																			"not_includes",
@@ -1529,6 +1537,7 @@
 																		"type": "string"
 																	},
 																	"type": {
+																		"description": "Data type of the filter field. Must match the actual type of the key being filtered.",
 																		"enum": [
 																			"string",
 																			"number",
@@ -1548,7 +1557,7 @@
 																				"type": "boolean"
 																			}
 																		],
-																		"description": "Filter comparison value. IMPORTANT: must match actual values in your logs. Verify using previous query results or the /values endpoint. Ensure value type matches the field type. String comparisons are case-sensitive unless using specific operations. Regex uses ClickHouse RE2 syntax (no lookaheads/lookbehinds); examples: ^5\\d{2}$ for HTTP 5xx, \\bERROR\\b for word boundary."
+																		"description": "Comparison value. Must match actual values in your data — verify with the values endpoint. Ensure the value type (string/number/boolean) matches the field type. String comparisons are case-sensitive. Regex uses RE2 syntax (no lookaheads/lookbehinds)."
 																	}
 																},
 																"required": [
@@ -2059,19 +2068,21 @@
 													"type": "object"
 												},
 												{
-													"description": "Filtering best practices: use observability_keys and observability_values to confirm available fields and values. If searching for errors, filter for $metadata.error exists.",
+													"description": "A filter condition applied to query results. Use the keys and values endpoints to discover available fields and their values before constructing filters.",
 													"properties": {
 														"key": {
-															"description": "Filter field name. IMPORTANT: do not guess keys. Always use verified keys from previous query results or the observability_keys response. Preferred keys: $metadata.service, $metadata.origin, $metadata.trigger, $metadata.message, $metadata.error.",
+															"description": "Filter field name. Use verified keys from previous query results or the keys endpoint. Common keys include $metadata.service, $metadata.origin, $metadata.trigger, $metadata.message, and $metadata.error.",
 															"type": "string"
 														},
 														"kind": {
+															"description": "Discriminator for leaf filter nodes. Always 'filter' when present; may be omitted.",
 															"enum": [
 																"filter"
 															],
 															"type": "string"
 														},
 														"operation": {
+															"description": "Comparison operator. String operators: includes, not_includes, starts_with, regex. Existence: exists, is_null. Set membership: in, not_in (comma-separated values). Numeric: eq, neq, gt, gte, lt, lte.",
 															"enum": [
 																"includes",
 																"not_includes",
@@ -2105,6 +2116,7 @@
 															"type": "string"
 														},
 														"type": {
+															"description": "Data type of the filter field. Must match the actual type of the key being filtered.",
 															"enum": [
 																"string",
 																"number",
@@ -2124,7 +2136,7 @@
 																	"type": "boolean"
 																}
 															],
-															"description": "Filter comparison value. IMPORTANT: must match actual values in your logs. Verify using previous query results or the /values endpoint. Ensure value type matches the field type. String comparisons are case-sensitive unless using specific operations. Regex uses ClickHouse RE2 syntax (no lookaheads/lookbehinds); examples: ^5\\d{2}$ for HTTP 5xx, \\bERROR\\b for word boundary."
+															"description": "Comparison value. Must match actual values in your data — verify with the values endpoint. Ensure the value type (string/number/boolean) matches the field type. String comparisons are case-sensitive. Regex uses RE2 syntax (no lookaheads/lookbehinds)."
 														}
 													},
 													"required": [
@@ -2462,19 +2474,21 @@
 																"type": "object"
 															},
 															{
-																"description": "Filtering best practices: use observability_keys and observability_values to confirm available fields and values. If searching for errors, filter for $metadata.error exists.",
+																"description": "A filter condition applied to query results. Use the keys and values endpoints to discover available fields and their values before constructing filters.",
 																"properties": {
 																	"key": {
-																		"description": "Filter field name. IMPORTANT: do not guess keys. Always use verified keys from previous query results or the observability_keys response. Preferred keys: $metadata.service, $metadata.origin, $metadata.trigger, $metadata.message, $metadata.error.",
+																		"description": "Filter field name. Use verified keys from previous query results or the keys endpoint. Common keys include $metadata.service, $metadata.origin, $metadata.trigger, $metadata.message, and $metadata.error.",
 																		"type": "string"
 																	},
 																	"kind": {
+																		"description": "Discriminator for leaf filter nodes. Always 'filter' when present; may be omitted.",
 																		"enum": [
 																			"filter"
 																		],
 																		"type": "string"
 																	},
 																	"operation": {
+																		"description": "Comparison operator. String operators: includes, not_includes, starts_with, regex. Existence: exists, is_null. Set membership: in, not_in (comma-separated values). Numeric: eq, neq, gt, gte, lt, lte.",
 																		"enum": [
 																			"includes",
 																			"not_includes",
@@ -2508,6 +2522,7 @@
 																		"type": "string"
 																	},
 																	"type": {
+																		"description": "Data type of the filter field. Must match the actual type of the key being filtered.",
 																		"enum": [
 																			"string",
 																			"number",
@@ -2527,7 +2542,7 @@
 																				"type": "boolean"
 																			}
 																		],
-																		"description": "Filter comparison value. IMPORTANT: must match actual values in your logs. Verify using previous query results or the /values endpoint. Ensure value type matches the field type. String comparisons are case-sensitive unless using specific operations. Regex uses ClickHouse RE2 syntax (no lookaheads/lookbehinds); examples: ^5\\d{2}$ for HTTP 5xx, \\bERROR\\b for word boundary."
+																		"description": "Comparison value. Must match actual values in your data — verify with the values endpoint. Ensure the value type (string/number/boolean) matches the field type. String comparisons are case-sensitive. Regex uses RE2 syntax (no lookaheads/lookbehinds)."
 																	}
 																},
 																"required": [
@@ -3027,19 +3042,21 @@
 													"type": "object"
 												},
 												{
-													"description": "Filtering best practices: use observability_keys and observability_values to confirm available fields and values. If searching for errors, filter for $metadata.error exists.",
+													"description": "A filter condition applied to query results. Use the keys and values endpoints to discover available fields and their values before constructing filters.",
 													"properties": {
 														"key": {
-															"description": "Filter field name. IMPORTANT: do not guess keys. Always use verified keys from previous query results or the observability_keys response. Preferred keys: $metadata.service, $metadata.origin, $metadata.trigger, $metadata.message, $metadata.error.",
+															"description": "Filter field name. Use verified keys from previous query results or the keys endpoint. Common keys include $metadata.service, $metadata.origin, $metadata.trigger, $metadata.message, and $metadata.error.",
 															"type": "string"
 														},
 														"kind": {
+															"description": "Discriminator for leaf filter nodes. Always 'filter' when present; may be omitted.",
 															"enum": [
 																"filter"
 															],
 															"type": "string"
 														},
 														"operation": {
+															"description": "Comparison operator. String operators: includes, not_includes, starts_with, regex. Existence: exists, is_null. Set membership: in, not_in (comma-separated values). Numeric: eq, neq, gt, gte, lt, lte.",
 															"enum": [
 																"includes",
 																"not_includes",
@@ -3073,6 +3090,7 @@
 															"type": "string"
 														},
 														"type": {
+															"description": "Data type of the filter field. Must match the actual type of the key being filtered.",
 															"enum": [
 																"string",
 																"number",
@@ -3092,7 +3110,7 @@
 																	"type": "boolean"
 																}
 															],
-															"description": "Filter comparison value. IMPORTANT: must match actual values in your logs. Verify using previous query results or the /values endpoint. Ensure value type matches the field type. String comparisons are case-sensitive unless using specific operations. Regex uses ClickHouse RE2 syntax (no lookaheads/lookbehinds); examples: ^5\\d{2}$ for HTTP 5xx, \\bERROR\\b for word boundary."
+															"description": "Comparison value. Must match actual values in your data — verify with the values endpoint. Ensure the value type (string/number/boolean) matches the field type. String comparisons are case-sensitive. Regex uses RE2 syntax (no lookaheads/lookbehinds)."
 														}
 													},
 													"required": [
@@ -3430,19 +3448,21 @@
 																"type": "object"
 															},
 															{
-																"description": "Filtering best practices: use observability_keys and observability_values to confirm available fields and values. If searching for errors, filter for $metadata.error exists.",
+																"description": "A filter condition applied to query results. Use the keys and values endpoints to discover available fields and their values before constructing filters.",
 																"properties": {
 																	"key": {
-																		"description": "Filter field name. IMPORTANT: do not guess keys. Always use verified keys from previous query results or the observability_keys response. Preferred keys: $metadata.service, $metadata.origin, $metadata.trigger, $metadata.message, $metadata.error.",
+																		"description": "Filter field name. Use verified keys from previous query results or the keys endpoint. Common keys include $metadata.service, $metadata.origin, $metadata.trigger, $metadata.message, and $metadata.error.",
 																		"type": "string"
 																	},
 																	"kind": {
+																		"description": "Discriminator for leaf filter nodes. Always 'filter' when present; may be omitted.",
 																		"enum": [
 																			"filter"
 																		],
 																		"type": "string"
 																	},
 																	"operation": {
+																		"description": "Comparison operator. String operators: includes, not_includes, starts_with, regex. Existence: exists, is_null. Set membership: in, not_in (comma-separated values). Numeric: eq, neq, gt, gte, lt, lte.",
 																		"enum": [
 																			"includes",
 																			"not_includes",
@@ -3476,6 +3496,7 @@
 																		"type": "string"
 																	},
 																	"type": {
+																		"description": "Data type of the filter field. Must match the actual type of the key being filtered.",
 																		"enum": [
 																			"string",
 																			"number",
@@ -3495,7 +3516,7 @@
 																				"type": "boolean"
 																			}
 																		],
-																		"description": "Filter comparison value. IMPORTANT: must match actual values in your logs. Verify using previous query results or the /values endpoint. Ensure value type matches the field type. String comparisons are case-sensitive unless using specific operations. Regex uses ClickHouse RE2 syntax (no lookaheads/lookbehinds); examples: ^5\\d{2}$ for HTTP 5xx, \\bERROR\\b for word boundary."
+																		"description": "Comparison value. Must match actual values in your data — verify with the values endpoint. Ensure the value type (string/number/boolean) matches the field type. String comparisons are case-sensitive. Regex uses RE2 syntax (no lookaheads/lookbehinds)."
 																	}
 																},
 																"required": [

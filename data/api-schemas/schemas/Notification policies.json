@@ -2518,6 +2518,267 @@
 			"Account Settings Read"
 		]
 	},
+	"GET /accounts/{account_id}/alerting/v3/policies/{policy_id}/email/unsubscribe": {
+		"description": "Shows details for unsubscribing an email address from a notification policy.",
+		"operationId": "notification-policies-show-email-unsubscribe-details",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"description": "The account id",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"readOnly": true,
+					"type": "string",
+					"x-auditable": true
+				}
+			},
+			{
+				"in": "path",
+				"name": "policy_id",
+				"required": true,
+				"schema": {
+					"description": "The unique identifier of a notification policy",
+					"example": "0da2b59ef118439d8097bdfb215203c9",
+					"maxLength": 32,
+					"type": "string",
+					"x-auditable": true
+				}
+			},
+			{
+				"in": "query",
+				"name": "email",
+				"required": true,
+				"schema": {
+					"format": "email",
+					"type": "string"
+				}
+			},
+			{
+				"in": "query",
+				"name": "token",
+				"required": true,
+				"schema": {
+					"type": "string"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"properties": {
+												"errors": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"messages": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"success": {
+													"description": "Whether the API call was successful",
+													"enum": [
+														true
+													],
+													"example": true,
+													"type": "boolean"
+												}
+											},
+											"required": [
+												"success",
+												"errors",
+												"messages"
+											],
+											"type": "object"
+										}
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"result": {
+											"description": "Response body for the GET show-unsubscribe-details endpoint. All fields are populated.",
+											"properties": {
+												"account_id": {
+													"description": "The account id",
+													"example": "023e105f4ecef8ad9ca31a8372d0c353",
+													"maxLength": 32,
+													"readOnly": true,
+													"type": "string",
+													"x-auditable": true
+												},
+												"email": {
+													"format": "email",
+													"type": "string"
+												},
+												"id": {
+													"description": "The unique identifier of a notification policy",
+													"example": "0da2b59ef118439d8097bdfb215203c9",
+													"maxLength": 32,
+													"type": "string",
+													"x-auditable": true
+												},
+												"name": {
+													"description": "Name of the policy.",
+													"example": "SSL Notification Event Policy",
+													"type": "string",
+													"x-auditable": true
+												},
+												"token": {
+													"type": "string",
+													"x-sensitive": true
+												}
+											},
+											"type": "object"
+										}
+									}
+								}
+							]
+						}
+					},
+					"text/html": {
+						"schema": {
+							"type": "string"
+						}
+					}
+				},
+				"description": "Show email unsubscribe details response"
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"allOf": [
+										{
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										}
+									],
+									"example": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
+										}
+									],
+									"minLength": 1
+								},
+								"messages": {
+									"allOf": [
+										{
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										}
+									],
+									"example": []
+								},
+								"success": {
+									"description": "Whether the API call was successful",
+									"enum": [
+										false
+									],
+									"example": false,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Show email unsubscribe details response failure"
+			}
+		},
+		"security": [],
+		"summary": "Show email unsubscribe details",
+		"tags": [
+			"Notification policies"
+		],
+		"x-api-token-group": [
+			"Zero Trust: PII Read",
+			"Notifications Write",
+			"Notifications Read",
+			"Account Settings Write",
+			"Account Settings Read"
+		]
+	},
 	"POST /accounts/{account_id}/alerting/v3/policies": {
 		"description": "Creates a new Notification policy.",
 		"operationId": "notification-policies-create-a-notification-policy",
@@ -3371,6 +3632,250 @@
 		"x-api-token-group": [
 			"Notifications Write",
 			"Account Settings Write"
+		]
+	},
+	"POST /accounts/{account_id}/alerting/v3/policies/{policy_id}/email/unsubscribe": {
+		"description": "Unsubscribes an email address from a notification policy.",
+		"operationId": "notification-policies-unsubscribe-email-from-notification-policy",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"description": "The account id",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"readOnly": true,
+					"type": "string",
+					"x-auditable": true
+				}
+			},
+			{
+				"in": "path",
+				"name": "policy_id",
+				"required": true,
+				"schema": {
+					"description": "The unique identifier of a notification policy",
+					"example": "0da2b59ef118439d8097bdfb215203c9",
+					"maxLength": 32,
+					"type": "string",
+					"x-auditable": true
+				}
+			},
+			{
+				"in": "query",
+				"name": "email",
+				"required": true,
+				"schema": {
+					"format": "email",
+					"type": "string"
+				}
+			},
+			{
+				"in": "query",
+				"name": "token",
+				"required": true,
+				"schema": {
+					"type": "string"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"properties": {
+												"errors": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"messages": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"success": {
+													"description": "Whether the API call was successful",
+													"enum": [
+														true
+													],
+													"example": true,
+													"type": "boolean"
+												}
+											},
+											"required": [
+												"success",
+												"errors",
+												"messages"
+											],
+											"type": "object"
+										}
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"result": {
+											"description": "Response body for the POST unsubscribe endpoint. name and token are not returned.",
+											"properties": {
+												"account_id": {
+													"description": "The account id",
+													"example": "023e105f4ecef8ad9ca31a8372d0c353",
+													"maxLength": 32,
+													"readOnly": true,
+													"type": "string",
+													"x-auditable": true
+												},
+												"email": {
+													"format": "email",
+													"type": "string"
+												},
+												"id": {
+													"description": "The unique identifier of a notification policy",
+													"example": "0da2b59ef118439d8097bdfb215203c9",
+													"maxLength": 32,
+													"type": "string",
+													"x-auditable": true
+												}
+											},
+											"type": "object"
+										}
+									}
+								}
+							]
+						}
+					},
+					"text/html": {
+						"schema": {
+							"type": "string"
+						}
+					}
+				},
+				"description": "Unsubscribe email from Notification policy response"
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"allOf": [
+										{
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										}
+									],
+									"example": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
+										}
+									],
+									"minLength": 1
+								},
+								"messages": {
+									"allOf": [
+										{
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										}
+									],
+									"example": []
+								},
+								"success": {
+									"description": "Whether the API call was successful",
+									"enum": [
+										false
+									],
+									"example": false,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Unsubscribe email from Notification policy response failure"
+			}
+		},
+		"security": [],
+		"summary": "Unsubscribe email from a Notification policy",
+		"tags": [
+			"Notification policies"
 		]
 	},
 	"PUT /accounts/{account_id}/alerting/v3/policies/{policy_id}": {
