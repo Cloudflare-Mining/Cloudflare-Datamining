@@ -1322,7 +1322,7 @@
 	{
 		"id": "04e557c45f60434c88a23b9f7c8169af",
 		"name": "DLS: Read",
-		"description": "Grants read access to Data Localization Suite regions and BYOIP prefix bindings",
+		"description": "Grants read access to Data Localization Suite regions, BYOIP prefix bindings, and regional hostnames",
 		"scopes": [
 			"com.cloudflare.api.account"
 		]
@@ -1330,7 +1330,7 @@
 	{
 		"id": "7e252e992042421c8f2cdef3ada208c9",
 		"name": "DLS: Write",
-		"description": "Grants write access to BYOIP prefix bindings and read access to Data Localization Suite regions",
+		"description": "Grants write access to BYOIP prefix bindings and regional hostnames, and read access to Data Localization Suite regions",
 		"scopes": [
 			"com.cloudflare.api.account"
 		]
