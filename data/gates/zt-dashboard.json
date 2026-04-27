@@ -38,19 +38,10 @@
 	"art-show-access-drilldown-page": {
 		"enabled": true
 	},
-	"art-show-ai-report": {
-		"enabled": true
-	},
 	"art-show-analytics-page": {
 		"enabled": true
 	},
-	"art-show-cds-overview": {
-		"enabled": true
-	},
 	"art-show-data-security-page": {
-		"enabled": true
-	},
-	"art-show-in-beta": {
 		"enabled": true
 	},
 	"art-show-in-dev-pages": {
@@ -60,9 +51,6 @@
 		"enabled": true
 	},
 	"art-show-reports-tab": {
-		"enabled": true
-	},
-	"art-show-top-hostnames": {
 		"enabled": true
 	},
 	"billing-granular-rbac-q1-2026": {
@@ -148,6 +136,9 @@
 	},
 	"dex-api-pool-recovery": {
 		"enabled": true
+	},
+	"dex-connection-metrics-over-time": {
+		"enabled": false
 	},
 	"dex-device-monitoring-ui-updates-2026-q2": {
 		"enabled": true
@@ -273,7 +264,7 @@
 		"enabled": true
 	},
 	"gateway-http-inspection-mode-q22025": {
-		"enabled": true
+		"enabled": false
 	},
 	"gateway-policy-builder-q12026": {
 		"enabled": true
@@ -387,7 +378,7 @@
 		"enabled": true
 	},
 	"zt-access-sso-q3-2025": {
-		"enabled": true
+		"enabled": false
 	},
 	"zt-access-zone-level-deny-by-default-q1-2026": {
 		"enabled": true
