@@ -5,45 +5,38 @@
 		<p>At Cloudflare, we’re not looking for people who wait for a polished roadmap; we’re looking for the builders who see the cracks in the Internet that everyone else has simply learned to live with. We value candidates who have the instinct to spot a "normalized" problem and the AI-native curiosity to create a solution using the latest tools. Our culture is built on iteration, leveraging AI to ship faster today to make it better tomorrow, while ensuring that every improvement, no matter how small, is shared across the team to lift everyone up. If you’re the type of person who values curiosity over bureaucracy, and that AI is a partner in solving tough problems to keep the Internet moving forward, you’ll fit right in.</p>
 	</div>
 </div>
-<p><strong>Available Locations: Austin, TX (prefered); Dallas, San Antonio, Houston (Secondary)</strong></p>
-<p><strong>About the Team</strong></p>
-<p>The Corporate Finance team is responsible for enterprise-wide planning, budgeting, forecasting, and capital allocation. We are strategic business partners who work cross-functionally to shape Cloudflare’s growth, investment strategy, and operational efficiency. If you thrive in fast-paced environments, love solving complex problems, and want direct exposure to executive leadership, this is the role for you.</p>
-<p><strong>About the Role</strong></p>
-<p>We’re looking for a high-performing Finance Manager to join our Corporate Finance team. In this highly visible IC role, you’ll partner directly with Cloudflare’s senior leaders to drive decision-making across the company. You’ll build models and insights that guide strategy, optimize investment, and support our mission to help build a better Internet.</p>
-<p><strong>What You'll Do</strong></p>
-<ul>
-	<li>Partner with senior leaders to support enterprise-level strategic planning, budgeting, and capital allocation decisions.</li>
-	<li>Lead the corporate forecasting and budgeting processes, including annual planning and regular business reviews.</li>
-	<li>Build, maintain, and improve financial models to inform decisions across the P&amp;L, Balance Sheet, and Cash Flow, including areas like tax, stock comp, share count, and EPS.</li>
-	<li>Deliver clear, actionable financial insights through monthly reporting, variance analysis, and executive presentations.</li>
-	<li>Work cross-functionally to identify business drivers, trends, opportunities, and risks, aligning stakeholders and driving operational efficiency.</li>
-	<li>Collaborate with Accounting to ensure accurate, timely closes and support management/external reporting.</li>
-	<li>Support Investor Relations with model inputs, earnings release prep, and Q&amp;A.</li>
-	<li>Contribute to M&amp;A activities, board materials, and other strategic initiatives.</li>
-	<li>Champion scalable, repeatable finance processes (automate, simplify, and eliminate routine work wherever possible).</li>
-	<li>Support high-impact special projects and ad hoc analysis as needed.</li>
-</ul>
-<p><em>This is an individual contributor role reporting to the Head of Corporate and G&amp;A Finance.</em></p>
-<p><strong>What We’re Looking For</strong></p>
-<ul>
-	<li>7+ years of progressive experience in Finance or Investment Banking with prior experience in a corporate FP&amp;A function; high-growth, public company SaaS experience preferred.</li>
-	<li>Finance-minded with strong attention to detail and a focus on scalable, repeatable process execution.</li>
-	<li>Intellectually curious with a problem-solving orientation and strong business acumen; able to apply rigorous logic and sound methods to solve complex problems. Not satisfied with easy or convenient answers.</li>
-	<li>Proven ability to build trust and align cross-functional stakeholders.&nbsp;</li>
-	<li>Strong verbal and written communication skills; able to distill complex business information into actionable takeaways for diverse audiences.&nbsp;</li>
-	<li>Willingness to play “up and down the stack” diving into the details as well as managing executive-level communications.</li>
-	<li>Expert financial modeling skills with strong working knowledge of US GAAP; advanced proficiency in MS Excel and Google Sheets required.</li>
-	<li>High proficiency with financial systems; experience with Anaplan, NetSuite, RevPro, Salesforce, and Tableau is a plus.</li>
-	<li>Bachelor’s degree in Finance, Accounting, Economics, or a quantitative field.</li>
-</ul>
-<p><strong>Why This Role?</strong></p>
-<ul>
-	<li>Direct collaboration with Cloudflare’s executive team. Be at the table where key decisions are made.</li>
-	<li>High visibility and impact in a mission-driven company transforming the Internet.</li>
-	<li>Career growth opportunity on a high-performance finance team.</li>
-</ul>
 <p>&nbsp;</p>
-<p>&nbsp;</p>
+<p><strong>Location:</strong> London, UK</p>
+<h3><strong>About the Team</strong></h3>
+<p>The Marketing team at Cloudflare is at the forefront of sharing our mission to help build a better internet. We are a dynamic and fast-paced team dedicated to showcasing Cloudflare's innovative products and solutions to a global audience. Through strategic campaigns, engaging events, and compelling content, we drive awareness, generate demand, and support our company's rapid growth. As an intern, you'll gain hands-on experience leveraging cutting-edge marketing strategies and technologies to directly impact our success.</p>
+<h3><strong>About the Role</strong></h3>
+<p>As an Account-Based Marketing (ABM) Intern, you will play a crucial role in scaling Cloudflare's targeted marketing initiatives to our highest-value prospects. This is an exciting opportunity to sit at the intersection of marketing, sales, and technology. You will help us modernize our approach by exploring AI adoption and developing new processes and tools to automate elements of our ABM program. From executing highly personalized campaigns to identifying productivity hacks, your work will directly support our ABM efforts and help deliver impactful, tailored experiences to our key accounts.</p>
+<h3><strong>Responsibilities</strong></h3>
+<ul>
+	<li><strong>Scale ABM Initiatives:</strong> Assist in the planning and execution of targeted 1:1 and 1:few ABM campaigns, helping the team expand the program to a wider list of strategic accounts.</li>
+	<li><strong>Drive AI &amp; Automation:</strong> Research, test, and help implement AI tools and automated workflows to increase team productivity, streamline asset creation, and personalize outreach at scale.</li>
+	<li><strong>Cross-Functional Collaboration:</strong> Partner with the broader marketing, design, and sales teams to coordinate the readiness of tailored marketing assets, such as account-specific landing pages, customized email sequences, and personalized digital ads.</li>
+	<li><strong>Data &amp; Engagement Tracking:</strong> Help manage and track account engagement and leads generated from targeted campaigns, ensuring data accuracy in our CRM and timely follow-ups from the sales team.</li>
+	<li><strong>Performance Analysis:</strong> Contribute to account engagement &amp; development by gathering data, analyzing account progression, and providing insights on how to continually optimize ABM efforts.</li>
+	<li><strong>Process Improvement:</strong> Actively participate in team meetings and bring a fresh perspective, contributing innovative ideas for improving our marketing processes and overall campaign effectiveness.</li>
+</ul>
+<h3><strong>Skills &amp; Qualifications</strong></h3>
+<ul>
+	<li>Currently pursuing a Bachelor's degree in Marketing, Communications, Business, Technology, or a related field.</li>
+	<li>Available for a full-time 12-week internship, working from our London office 3-5 days a week during the fall (Sept-Dec).</li>
+	<li>Strong organizational skills with a keen eye for detail and the ability to manage multiple targeted campaigns simultaneously.</li>
+	<li>Excellent written and verbal communication skills, with an understanding of account based marketing strategies.</li>
+	<li>A strong interest in marketing technology, AI adoption, and process automation.</li>
+	<li>Proactive attitude with a desire to learn, experiment, and contribute in a fast-paced environment.</li>
+	<li>Ability to collaborate effectively within a team and with cross-functional partners, particularly Sales.</li>
+	<li>Proficiency with standard office productivity tools (e.g., Google Workspace, Microsoft Office).</li>
+</ul>
+<h3><strong>Bonus Points</strong></h3>
+<ul>
+	<li>Previous experience (academic or professional) with B2B marketing, lead generation, or Account-Based Marketing.</li>
+	<li>Familiarity with generative AI tools (e.g., Gemini, ChatGPT, Jasper) and how they can be applied to marketing.</li>
+	<li>Understanding of lead tracking, CRM systems (like Salesforce), or marketing automation platforms (like Marketo).</li>
+</ul>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
 	<p><span style="font-weight: 400;">We’re not just a highly ambitious, large-scale technology company. We’re a highly ambitious, large-scale technology company with a soul. Fundamental to our mission to help build a better Internet is protecting the free and open Internet.</span></p>
