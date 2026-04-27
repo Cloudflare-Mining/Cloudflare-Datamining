@@ -247,7 +247,10 @@
 	ech_api_title_put: "Update Zone ECH setting",
 	enable_acm: {
 		card_title_alt: "Advanced Certificate Manager (ACM)",
-		cta: "Activate"
+		cta: "Activate",
+		video_guide: "Video guide",
+		video_modal_cta: "Activate ACM",
+		video_modal_title: "Unlock TLS control with Advanced Certificate Manager (ACM)"
 	},
 	ussl_ca_card_changed_notification: "Universal SSL Certificate Authority successfully changed.",
 	ussl_ca_card_title: "Universal SSL Certificate Authority",

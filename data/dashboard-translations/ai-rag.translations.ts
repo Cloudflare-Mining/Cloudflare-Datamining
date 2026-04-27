@@ -323,7 +323,7 @@
 			custom_headers: {
 				title: "Extra headers",
 				none: "no headers",
-				count: "{count} headers",
+				count: "%{count} headers",
 				drawer: {
 					title: "Add extra headers",
 					description: "Add extra headers to be used in crawling:",
@@ -333,7 +333,7 @@
 			specific_sitemaps: {
 				title: "Specific sitemaps",
 				none: "no sitemaps",
-				count: "{count} sitemaps",
+				count: "%{count} sitemaps",
 				drawer: {
 					title: "Specific sitemaps",
 					description: "Specify specific sitemap URLs to crawl instead of using the default sitemap discovery.",
@@ -343,7 +343,7 @@
 			content_selector: {
 				title: "Content selectors",
 				none: "no selectors",
-				count: "{count} selectors",
+				count: "%{count} selectors",
 				drawer: {
 					title: "Content selectors",
 					description: "Define path-to-selector mappings to extract specific content from crawled pages. Each entry pairs a URL glob pattern with a CSS selector. The first matching path wins. Only the matched HTML fragment is stored and indexed.",

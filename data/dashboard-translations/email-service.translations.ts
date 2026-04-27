@@ -343,15 +343,6 @@
 				deleting: "Deleting destination address...",
 				deleted: "Destination address deleted successfully",
 				failedToDelete: "Failed to delete destination address"
-			},
-			addDestinationAddressDialog: {
-				title: "Add Destination Address",
-				emailAddress: "Email address",
-				toast: {
-					loading: "Adding destination address...",
-					success: "Destination address added successfully",
-					error: "Failed to add destination address"
-				}
 			}
 		},
 		account: {
