@@ -13,7 +13,7 @@
 <p><strong>Skills &amp; Qualifications</strong></p>
 <ul>
 	<li>Currently pursuing a degree in Business, Project Management, Operations, Data Science, or a related field.</li>
-	<li>Available for a full-time 12-week internship, working from our Austin or San Francisco office 3-5 days a week during the summer (May-Aug).</li>
+	<li>Available for a full-time 12-week internship, working from our Austin office 3-5 days a week during the summer (May-Aug).</li>
 	<li>Business Strategy or Tech-focused student with a strong interest in AI/Automation, process improvement, program management, and technology exploration.</li>
 	<li>Strong organizational, communication, and analytical skills with the ability to manage multiple tasks and translate ideas into structured documentation.</li>
 	<li>A natural problem-solver who enjoys mapping out a process (using tools like Lucidchart or Miro) and thinking about how to make it simpler and faster.</li>
