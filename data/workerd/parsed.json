@@ -4113,6 +4113,14 @@
 						"compatEnableDate": "2026-05-19"
 					},
 					"type": "Bool"
+				},
+				{
+					"name": "workflowsStepRollback",
+					"annotations": {
+						"compatEnableFlag": "workflows_step_rollback",
+						"experimental": true
+					},
+					"type": "Bool"
 				}
 			]
 		},
@@ -6312,6 +6320,13 @@
 						"name": "NetworkSettings"
 					},
 					"type": "workerd/src/workerd/server/docker-api.capnp:Docker.NetworkSettings"
+				},
+				{
+					"name": "config",
+					"annotations": {
+						"name": "Config"
+					},
+					"type": "workerd/src/workerd/server/docker-api.capnp:Docker.ContainerConfig"
 				}
 			]
 		},
