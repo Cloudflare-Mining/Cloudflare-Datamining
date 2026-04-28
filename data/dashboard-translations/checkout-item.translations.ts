@@ -62,6 +62,10 @@
 		usage_based_analytics: "Usage-based analytics and logging",
 		data_ingestion: "Data Ingestion"
 	},
+	prod_ssl_for_saas: {
+		cloudflare_for_saas: "Cloudflare for SaaS",
+		subtitle: "Extend the benefits of Cloudflare to your SaaS customers"
+	},
 	prod_acm: {
 		advanced_certificate_manager: "Advanced Certificate Manager",
 		subtitle: "Dedicated and custom SSL certificates for your domain",

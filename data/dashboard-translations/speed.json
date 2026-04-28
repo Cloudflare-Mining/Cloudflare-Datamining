@@ -936,6 +936,13 @@
 	"speed.smart_shield.configurations.connection_reuse.description": "Package multiple requests into a single connection from your upper tier to your origin to reduce latency.",
 	"speed.overview.no_recurring_tests.title": "No recurring tests found",
 	"speed.overview.no_recurring_tests.description": "You haven't set up any recurring synthetic tests yet.<br /><0>Create a recurring test</0> to monitor your site's performance over time.",
+	"speed.shared_dictionary_mode.zone_versioning": "%{value} is a global setting and does not support zone versioning.",
+	"speed.shared_dictionary_mode.title": "Shared Dictionary Compression",
+	"speed.shared_dictionary_mode.description": "Compress new versions of files by using a previously cached version as a dictionary. Downloads are significantly smaller because only the difference between versions is transferred.",
+	"speed.shared_dictionary_mode.option.disabled": "Off",
+	"speed.shared_dictionary_mode.option.disabled.description": "Not recommended if your origin serves dictionary-compressed responses, as Cloudflare will not cache dictionary variants separately.",
+	"speed.shared_dictionary_mode.option.passthrough": "Passthrough",
+	"speed.shared_dictionary_mode.option.passthrough.description": "Your origin handles compression by detecting available dictionaries and serving the required headers. Cloudflare preserves the headers and caches the compressed responses.",
 	"speed.advanced_configuration.add_header": "Add header",
 	"speed.advanced_configuration.request_headers": "Request Headers",
 	"speed.advanced_configuration.customize_request_headers": "Customize HTTP request headers for your test"

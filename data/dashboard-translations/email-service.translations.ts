@@ -123,6 +123,7 @@
 			deleteDialogTitle: "Delete and disable",
 			deleteDialogDescription: "This will delete all DNS records and disable the service. This action cannot be undone.",
 			subdomainAlreadyExists: "This subdomain already exists.",
+			subdomainLabel: "Subdomain",
 			noSubdomains: "No subdomains yet.",
 			noSubdomainsDescription: "Use the form below to add a subdomain.",
 			addMissingRecords: "Add missing records"
@@ -137,7 +138,9 @@
 			networkError: "Unable to reach the server. Check your connection and try again.",
 			inputError: "An unexpected validation error occurred. Please reload the page and try again.",
 			unexpectedResponse: "Received an unexpected response. Please try again later.",
-			loadFailed: "Failed to load data. Please try again."
+			loadFailed: "Failed to load data. Please try again.",
+			required: "This field is required.",
+			invalidEmail: "Enter a valid email address."
 		},
 		retry: "Retry"
 	},
@@ -152,8 +155,6 @@
 				description: "No zones found"
 			},
 			onboardDomain: "Onboard Domain",
-			joinWaitingList: "Join the waiting list",
-			alreadyJoined: "Already joined to the waiting list!",
 			purchaseWorkersPaid: "Purchase Workers Paid",
 			purchaseWorkersPaidDescription: "Email Sending is currently only available with the Workers Paid plan. Upgrade your plan to start sending emails."
 		},
@@ -458,6 +459,12 @@
 					creatingAddress: "Creating address…",
 					createAddressError: "Failed to create address. Please try again.",
 					createAddress: 'Create "%{email}"'
+				},
+				errors: {
+					selectAction: "Select an action.",
+					selectDestination: "Select a destination.",
+					nameRequired: "Enter a custom address.",
+					domainRequired: "Select a domain."
 				}
 			},
 			settings: {
@@ -516,7 +523,10 @@
 					failedToDeploy: "Failed to deploy worker"
 				},
 				deploy: "Deploy",
-				deploying: "Deploying..."
+				deploying: "Deploying...",
+				errors: {
+					invalidName: "Worker name must start with a letter or number and contain only letters, numbers, hyphens, and underscores."
+				}
 			}
 		}
 	}

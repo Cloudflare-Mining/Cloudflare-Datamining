@@ -3,6 +3,7 @@
 	description: "Durable Execution Engine for Cloudflare Workers",
 	somethingWentWrong: "Something went wrong.",
 	workflowsPage: {
+		createWorkflow: "Create Workflow",
 		columns: {
 			workflow: "Workflow",
 			instances: "instances",
@@ -308,8 +309,7 @@
 	},
 	common: {
 		labels: {
-			documentation: "Documentation",
-			workflows_documentation: "Workflows documentation"
+			documentation: "Documentation"
 		},
 		search: "Search",
 		something_went_wrong: "Something went wrong. Please try again",
@@ -349,10 +349,31 @@
 	},
 	welcome: {
 		title: "Welcome to Workflows!",
+		createWorkflow: "Create Workflow",
 		onboarding: {
 			title: "Get started with Workflows",
 			subtitle: "Define your Workflow",
 			description: "Create your first Workflow, use the create cloudflare (C3) CLI tool, specifying the Workflows starter template:"
+		}
+	},
+	createFlow: {
+		header: "Create Workflow",
+		title: "Choose how to start",
+		description: "Start from the official Workflows starter template, then configure and deploy it just like the Workers template flow.",
+		templateName: "Workflows starter template",
+		templateDescription: "Build a data processing Workflow with an interactive UI",
+		continue: "Continue",
+		loadingTemplate: "Loading template details",
+		loadingGitConnections: "Loading...",
+		templateReady: "Workflows starter template selected",
+		continueWithGithub: "Continue with GitHub",
+		connectGithub: "Connect GitHub",
+		continueWithGitlab: "Continue with GitLab",
+		connectGitlab: "Connect GitLab",
+		popupBlocked: "Please allow popups to authenticate with %{providerName}. Redirecting...",
+		steps: {
+			template: "Starter template",
+			configure: "Create and deploy"
 		}
 	},
 	learnMore: {
