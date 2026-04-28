@@ -85,27 +85,29 @@
 								"errors": {
 									"items": {
 										"properties": {
+											"code": {
+												"type": "number"
+											},
 											"message": {
 												"type": "string"
 											}
 										},
 										"required": [
+											"code",
 											"message"
 										],
 										"type": "object"
 									},
 									"type": "array"
 								},
-								"result": {
-									"type": "object"
-								},
 								"success": {
-									"example": false,
+									"enum": [
+										false
+									],
 									"type": "boolean"
 								}
 							},
 							"required": [
-								"result",
 								"success",
 								"errors"
 							],
@@ -113,9 +115,9 @@
 						}
 					}
 				},
-				"description": "Bad Request."
+				"description": "This operation requires a managed instance."
 			},
-			"500": {
+			"404": {
 				"content": {
 					"application/json": {
 						"schema": {
@@ -153,7 +155,7 @@
 						}
 					}
 				},
-				"description": "Internal Error."
+				"description": "Item not found."
 			}
 		},
 		"security": [
@@ -232,6 +234,7 @@
 				"in": "query",
 				"name": "search",
 				"schema": {
+					"maxLength": 256,
 					"type": "string"
 				}
 			},
@@ -442,6 +445,53 @@
 				},
 				"description": "Returns the AI Search items."
 			},
+			"400": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"code": {
+												"type": "number"
+											},
+											"message": {
+												"type": "string"
+											},
+											"path": {
+												"items": {
+													"type": "string"
+												},
+												"type": "array"
+											}
+										},
+										"required": [
+											"code",
+											"message",
+											"path"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"success": {
+									"enum": [
+										false
+									],
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"errors"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Input Validation Error"
+			},
 			"404": {
 				"content": {
 					"application/json": {
@@ -480,9 +530,9 @@
 						}
 					}
 				},
-				"description": "Not Found"
+				"description": "Ai search not found."
 			},
-			"500": {
+			"503": {
 				"content": {
 					"application/json": {
 						"schema": {
@@ -520,7 +570,7 @@
 						}
 					}
 				},
-				"description": "Internal Error."
+				"description": "Unable to connect to ai search."
 			}
 		},
 		"security": [
@@ -703,45 +753,7 @@
 				},
 				"description": "Returns a AI Search Item detail."
 			},
-			"400": {
-				"content": {
-					"application/json": {
-						"schema": {
-							"properties": {
-								"errors": {
-									"items": {
-										"properties": {
-											"message": {
-												"type": "string"
-											}
-										},
-										"required": [
-											"message"
-										],
-										"type": "object"
-									},
-									"type": "array"
-								},
-								"result": {
-									"type": "object"
-								},
-								"success": {
-									"example": false,
-									"type": "boolean"
-								}
-							},
-							"required": [
-								"result",
-								"success",
-								"errors"
-							],
-							"type": "object"
-						}
-					}
-				},
-				"description": "Bad Request."
-			},
-			"500": {
+			"404": {
 				"content": {
 					"application/json": {
 						"schema": {
@@ -779,7 +791,47 @@
 						}
 					}
 				},
-				"description": "Internal Error."
+				"description": "Job not found."
+			},
+			"503": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"code": {
+												"type": "number"
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"success": {
+									"enum": [
+										false
+									],
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"errors"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Unable to connect to ai search."
 			}
 		},
 		"security": [
@@ -968,27 +1020,36 @@
 								"errors": {
 									"items": {
 										"properties": {
+											"code": {
+												"type": "number"
+											},
 											"message": {
 												"type": "string"
+											},
+											"path": {
+												"items": {
+													"type": "string"
+												},
+												"type": "array"
 											}
 										},
 										"required": [
-											"message"
+											"code",
+											"message",
+											"path"
 										],
 										"type": "object"
 									},
 									"type": "array"
 								},
-								"result": {
-									"type": "object"
-								},
 								"success": {
-									"example": false,
+									"enum": [
+										false
+									],
 									"type": "boolean"
 								}
 							},
 							"required": [
-								"result",
 								"success",
 								"errors"
 							],
@@ -996,9 +1057,9 @@
 						}
 					}
 				},
-				"description": "Bad Request."
+				"description": "Input Validation Error"
 			},
-			"500": {
+			"404": {
 				"content": {
 					"application/json": {
 						"schema": {
@@ -1036,7 +1097,47 @@
 						}
 					}
 				},
-				"description": "Internal Error."
+				"description": "Item not found."
+			},
+			"503": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"code": {
+												"type": "number"
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"success": {
+									"enum": [
+										false
+									],
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"errors"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Unable to connect to ai search."
 			}
 		},
 		"security": [
@@ -1131,27 +1232,29 @@
 								"errors": {
 									"items": {
 										"properties": {
+											"code": {
+												"type": "number"
+											},
 											"message": {
 												"type": "string"
 											}
 										},
 										"required": [
+											"code",
 											"message"
 										],
 										"type": "object"
 									},
 									"type": "array"
 								},
-								"result": {
-									"type": "object"
-								},
 								"success": {
-									"example": false,
+									"enum": [
+										false
+									],
 									"type": "boolean"
 								}
 							},
 							"required": [
-								"result",
 								"success",
 								"errors"
 							],
@@ -1159,9 +1262,9 @@
 						}
 					}
 				},
-				"description": "Bad Request."
+				"description": "Content download not available for external source items."
 			},
-			"500": {
+			"404": {
 				"content": {
 					"application/json": {
 						"schema": {
@@ -1199,7 +1302,47 @@
 						}
 					}
 				},
-				"description": "Internal Error."
+				"description": "Item not found."
+			},
+			"503": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"code": {
+												"type": "number"
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"success": {
+									"enum": [
+										false
+									],
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"errors"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Unable to connect to ai search."
 			}
 		},
 		"security": [
@@ -1388,27 +1531,36 @@
 								"errors": {
 									"items": {
 										"properties": {
+											"code": {
+												"type": "number"
+											},
 											"message": {
 												"type": "string"
+											},
+											"path": {
+												"items": {
+													"type": "string"
+												},
+												"type": "array"
 											}
 										},
 										"required": [
-											"message"
+											"code",
+											"message",
+											"path"
 										],
 										"type": "object"
 									},
 									"type": "array"
 								},
-								"result": {
-									"type": "object"
-								},
 								"success": {
-									"example": false,
+									"enum": [
+										false
+									],
 									"type": "boolean"
 								}
 							},
 							"required": [
-								"result",
 								"success",
 								"errors"
 							],
@@ -1416,9 +1568,9 @@
 						}
 					}
 				},
-				"description": "Bad Request."
+				"description": "Input Validation Error"
 			},
-			"500": {
+			"404": {
 				"content": {
 					"application/json": {
 						"schema": {
@@ -1456,7 +1608,47 @@
 						}
 					}
 				},
-				"description": "Internal Error."
+				"description": "Item not found."
+			},
+			"503": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"code": {
+												"type": "number"
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"success": {
+									"enum": [
+										false
+									],
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"errors"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Unable to connect to ai search."
 			}
 		},
 		"security": [
@@ -1541,6 +1733,11 @@
 									"INDEX"
 								],
 								"type": "string"
+							},
+							"wait_for_completion": {
+								"default": false,
+								"description": "Wait for indexing to fully complete before responding. On RAGs with vector indexing enabled, this additionally waits for Vectorize ingestion confirmation (up to 40s) so the returned item reflects a queryable state. On timeout the item is returned in `running` state and the background alarm continues polling. Defaults to false.",
+								"type": "boolean"
 							}
 						},
 						"required": [
@@ -1667,27 +1864,36 @@
 								"errors": {
 									"items": {
 										"properties": {
+											"code": {
+												"type": "number"
+											},
 											"message": {
 												"type": "string"
+											},
+											"path": {
+												"items": {
+													"type": "string"
+												},
+												"type": "array"
 											}
 										},
 										"required": [
-											"message"
+											"code",
+											"message",
+											"path"
 										],
 										"type": "object"
 									},
 									"type": "array"
 								},
-								"result": {
-									"type": "object"
-								},
 								"success": {
-									"example": false,
+									"enum": [
+										false
+									],
 									"type": "boolean"
 								}
 							},
 							"required": [
-								"result",
 								"success",
 								"errors"
 							],
@@ -1695,9 +1901,9 @@
 						}
 					}
 				},
-				"description": "Bad Request."
+				"description": "Input Validation Error"
 			},
-			"500": {
+			"404": {
 				"content": {
 					"application/json": {
 						"schema": {
@@ -1735,7 +1941,47 @@
 						}
 					}
 				},
-				"description": "Internal Error."
+				"description": "Ai search not found."
+			},
+			"503": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"code": {
+												"type": "number"
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"success": {
+									"enum": [
+										false
+									],
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"errors"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Unable to sync item."
 			}
 		},
 		"security": [
@@ -1818,7 +2064,7 @@
 							},
 							"wait_for_completion": {
 								"default": false,
-								"description": "Wait for indexing to complete before responding. Defaults to false.",
+								"description": "Wait for indexing to fully complete before responding. On RAGs with vector indexing enabled, this additionally waits for Vectorize ingestion confirmation (up to 40s) so the returned item reflects a queryable state. On timeout the item is returned in `running` state and the background alarm continues polling. Defaults to false.",
 								"type": "boolean"
 							}
 						},
@@ -1946,27 +2192,29 @@
 								"errors": {
 									"items": {
 										"properties": {
+											"code": {
+												"type": "number"
+											},
 											"message": {
 												"type": "string"
 											}
 										},
 										"required": [
+											"code",
 											"message"
 										],
 										"type": "object"
 									},
 									"type": "array"
 								},
-								"result": {
-									"type": "object"
-								},
 								"success": {
-									"example": false,
+									"enum": [
+										false
+									],
 									"type": "boolean"
 								}
 							},
 							"required": [
-								"result",
 								"success",
 								"errors"
 							],
@@ -1974,9 +2222,9 @@
 						}
 					}
 				},
-				"description": "Bad Request."
+				"description": "Invalid metadata format."
 			},
-			"500": {
+			"404": {
 				"content": {
 					"application/json": {
 						"schema": {
@@ -2014,7 +2262,7 @@
 						}
 					}
 				},
-				"description": "Internal Error."
+				"description": "Ai search not found."
 			}
 		},
 		"security": [
@@ -2095,6 +2343,11 @@
 									"INDEX"
 								],
 								"type": "string"
+							},
+							"wait_for_completion": {
+								"default": false,
+								"description": "Wait for indexing to fully complete before responding. On RAGs with vector indexing enabled, this additionally waits for Vectorize ingestion confirmation (up to 40s) so the returned item reflects a queryable state. On timeout the item is returned in `running` state and the background alarm continues polling. Defaults to false.",
+								"type": "boolean"
 							}
 						},
 						"required": [
@@ -2222,27 +2475,29 @@
 								"errors": {
 									"items": {
 										"properties": {
+											"code": {
+												"type": "number"
+											},
 											"message": {
 												"type": "string"
 											}
 										},
 										"required": [
+											"code",
 											"message"
 										],
 										"type": "object"
 									},
 									"type": "array"
 								},
-								"result": {
-									"type": "object"
-								},
 								"success": {
-									"example": false,
+									"enum": [
+										false
+									],
 									"type": "boolean"
 								}
 							},
 							"required": [
-								"result",
 								"success",
 								"errors"
 							],
@@ -2250,9 +2505,9 @@
 						}
 					}
 				},
-				"description": "Bad Request."
+				"description": "Filename exceeds maximum length."
 			},
-			"500": {
+			"404": {
 				"content": {
 					"application/json": {
 						"schema": {
@@ -2290,7 +2545,47 @@
 						}
 					}
 				},
-				"description": "Internal Error."
+				"description": "Ai search not found."
+			},
+			"503": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"code": {
+												"type": "number"
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"success": {
+									"enum": [
+										false
+									],
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"errors"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Unable to sync item."
 			}
 		},
 		"security": [

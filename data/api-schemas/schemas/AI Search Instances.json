@@ -1,29 +1,23 @@
 {
 	"DELETE /accounts/{account_id}/ai-search/instances/{id}": {
-		"description": "Delete instances.",
-		"operationId": "ai-search-delete-instances",
+		"description": "Delete instance.",
+		"operationId": "ai-search-delete-instance",
 		"parameters": [
-			{
-				"description": "AI Search instance ID. Lowercase alphanumeric, hyphens, and underscores.",
-				"in": "path",
-				"name": "id",
-				"required": true,
-				"schema": {
-					"description": "AI Search instance ID. Lowercase alphanumeric, hyphens, and underscores.",
-					"example": "my-ai-search",
-					"maxLength": 64,
-					"minLength": 1,
-					"pattern": "^[a-z0-9_]+(?:-[a-z0-9_]+)*$",
-					"type": "string",
-					"x-auditable": true
-				}
-			},
 			{
 				"in": "path",
 				"name": "account_id",
 				"required": true,
 				"schema": {
 					"example": "c3dc5f0b34a14ff8e1b3ec04895e1b22",
+					"type": "string"
+				}
+			},
+			{
+				"in": "path",
+				"name": "id",
+				"required": true,
+				"schema": {
+					"example": "my-ai-search",
 					"type": "string"
 				}
 			}
@@ -772,7 +766,7 @@
 						}
 					}
 				},
-				"description": "Returns the Object if it was successfully deleted"
+				"description": "Returns the deleted instance."
 			},
 			"404": {
 				"content": {
@@ -812,7 +806,7 @@
 						}
 					}
 				},
-				"description": "Not Found"
+				"description": "Ai search not found."
 			}
 		},
 		"security": [
@@ -824,7 +818,7 @@
 				"api_key": []
 			}
 		],
-		"summary": "Delete instances.",
+		"summary": "Delete instance.",
 		"tags": [
 			"AI Search Instances"
 		],
@@ -841,30 +835,24 @@
 		}
 	},
 	"DELETE /accounts/{account_id}/ai-search/namespaces/{name}/instances/{id}": {
-		"description": "Delete instances.",
-		"operationId": "ai-search-namespace-delete-instances",
+		"description": "Delete instance.",
+		"operationId": "ai-search-namespace-delete-instance",
 		"parameters": [
-			{
-				"description": "AI Search instance ID. Lowercase alphanumeric, hyphens, and underscores.",
-				"in": "path",
-				"name": "id",
-				"required": true,
-				"schema": {
-					"description": "AI Search instance ID. Lowercase alphanumeric, hyphens, and underscores.",
-					"example": "my-ai-search",
-					"maxLength": 64,
-					"minLength": 1,
-					"pattern": "^[a-z0-9_]+(?:-[a-z0-9_]+)*$",
-					"type": "string",
-					"x-auditable": true
-				}
-			},
 			{
 				"in": "path",
 				"name": "account_id",
 				"required": true,
 				"schema": {
 					"example": "c3dc5f0b34a14ff8e1b3ec04895e1b22",
+					"type": "string"
+				}
+			},
+			{
+				"in": "path",
+				"name": "id",
+				"required": true,
+				"schema": {
+					"example": "my-ai-search",
 					"type": "string"
 				}
 			},
@@ -1623,7 +1611,7 @@
 						}
 					}
 				},
-				"description": "Returns the Object if it was successfully deleted"
+				"description": "Returns the deleted instance."
 			},
 			"404": {
 				"content": {
@@ -1663,7 +1651,7 @@
 						}
 					}
 				},
-				"description": "Not Found"
+				"description": "Ai search not found."
 			}
 		},
 		"security": [
@@ -1675,7 +1663,7 @@
 				"api_key": []
 			}
 		],
-		"summary": "Delete instances.",
+		"summary": "Delete instance.",
 		"tags": [
 			"AI Search Instances"
 		],
@@ -1705,50 +1693,56 @@
 				}
 			},
 			{
+				"description": "Page number (1-indexed).",
 				"in": "query",
 				"name": "page",
 				"schema": {
 					"default": 1,
+					"description": "Page number (1-indexed).",
+					"example": 1,
 					"minimum": 1,
 					"type": "integer"
 				}
 			},
 			{
+				"description": "Number of results per page.",
 				"in": "query",
 				"name": "per_page",
 				"schema": {
 					"default": 20,
+					"description": "Number of results per page.",
+					"example": 20,
 					"maximum": 100,
 					"minimum": 1,
 					"type": "integer"
 				}
 			},
 			{
-				"in": "query",
-				"name": "namespace",
-				"schema": {
-					"nullable": true,
-					"pattern": "^[a-z0-9]([a-z0-9-]{0,26}[a-z0-9])?$",
-					"readOnly": true,
-					"type": "string"
-				}
-			},
-			{
-				"description": "Search by id",
+				"description": "Filter instances whose id contains this string (case-insensitive).",
 				"in": "query",
 				"name": "search",
 				"schema": {
-					"description": "Search by id",
+					"description": "Filter instances whose id contains this string (case-insensitive).",
 					"type": "string"
 				}
 			},
 			{
-				"description": "Order By Column Name",
+				"description": "Filter by namespace.",
+				"in": "query",
+				"name": "namespace",
+				"schema": {
+					"description": "Filter by namespace.",
+					"pattern": "^[a-z0-9]([a-z0-9-]{0,26}[a-z0-9])?$",
+					"type": "string"
+				}
+			},
+			{
+				"description": "Field to order results by.",
 				"in": "query",
 				"name": "order_by",
 				"schema": {
 					"default": "created_at",
-					"description": "Order By Column Name",
+					"description": "Field to order results by.",
 					"enum": [
 						"created_at"
 					],
@@ -1756,12 +1750,12 @@
 				}
 			},
 			{
-				"description": "Order By Direction",
+				"description": "Order direction.",
 				"in": "query",
 				"name": "order_by_direction",
 				"schema": {
 					"default": "desc",
-					"description": "Order By Direction",
+					"description": "Order direction.",
 					"enum": [
 						"asc",
 						"desc"
@@ -2505,19 +2499,46 @@
 									},
 									"type": "array"
 								},
+								"result_info": {
+									"properties": {
+										"count": {
+											"type": "number"
+										},
+										"page": {
+											"type": "number"
+										},
+										"per_page": {
+											"type": "number"
+										},
+										"total_count": {
+											"type": "number"
+										}
+									},
+									"required": [
+										"page",
+										"per_page",
+										"count",
+										"total_count"
+									],
+									"type": "object"
+								},
 								"success": {
+									"enum": [
+										true
+									],
 									"type": "boolean"
 								}
 							},
 							"required": [
 								"success",
-								"result"
+								"result",
+								"result_info"
 							],
 							"type": "object"
 						}
 					}
 				},
-				"description": "List objects"
+				"description": "List of instances."
 			},
 			"400": {
 				"content": {
@@ -2593,30 +2614,24 @@
 		}
 	},
 	"GET /accounts/{account_id}/ai-search/instances/{id}": {
-		"description": "Read instances.",
-		"operationId": "ai-search-fetch-instances",
+		"description": "Read instance.",
+		"operationId": "ai-search-fetch-instance",
 		"parameters": [
-			{
-				"description": "AI Search instance ID. Lowercase alphanumeric, hyphens, and underscores.",
-				"in": "path",
-				"name": "id",
-				"required": true,
-				"schema": {
-					"description": "AI Search instance ID. Lowercase alphanumeric, hyphens, and underscores.",
-					"example": "my-ai-search",
-					"maxLength": 64,
-					"minLength": 1,
-					"pattern": "^[a-z0-9_]+(?:-[a-z0-9_]+)*$",
-					"type": "string",
-					"x-auditable": true
-				}
-			},
 			{
 				"in": "path",
 				"name": "account_id",
 				"required": true,
 				"schema": {
 					"example": "c3dc5f0b34a14ff8e1b3ec04895e1b22",
+					"type": "string"
+				}
+			},
+			{
+				"in": "path",
+				"name": "id",
+				"required": true,
+				"schema": {
+					"example": "my-ai-search",
 					"type": "string"
 				}
 			}
@@ -3365,54 +3380,7 @@
 						}
 					}
 				},
-				"description": "Returns a single object if found"
-			},
-			"400": {
-				"content": {
-					"application/json": {
-						"schema": {
-							"properties": {
-								"errors": {
-									"items": {
-										"properties": {
-											"code": {
-												"type": "number"
-											},
-											"message": {
-												"type": "string"
-											},
-											"path": {
-												"items": {
-													"type": "string"
-												},
-												"type": "array"
-											}
-										},
-										"required": [
-											"code",
-											"message",
-											"path"
-										],
-										"type": "object"
-									},
-									"type": "array"
-								},
-								"success": {
-									"enum": [
-										false
-									],
-									"type": "boolean"
-								}
-							},
-							"required": [
-								"success",
-								"errors"
-							],
-							"type": "object"
-						}
-					}
-				},
-				"description": "Input Validation Error"
+				"description": "Returns the instance."
 			},
 			"404": {
 				"content": {
@@ -3452,7 +3420,7 @@
 						}
 					}
 				},
-				"description": "Not Found"
+				"description": "Ai search not found."
 			}
 		},
 		"security": [
@@ -3464,7 +3432,7 @@
 				"api_key": []
 			}
 		],
-		"summary": "Read instances.",
+		"summary": "Read instance.",
 		"tags": [
 			"AI Search Instances"
 		],
@@ -3686,50 +3654,56 @@
 				}
 			},
 			{
+				"description": "Page number (1-indexed).",
 				"in": "query",
 				"name": "page",
 				"schema": {
 					"default": 1,
+					"description": "Page number (1-indexed).",
+					"example": 1,
 					"minimum": 1,
 					"type": "integer"
 				}
 			},
 			{
+				"description": "Number of results per page.",
 				"in": "query",
 				"name": "per_page",
 				"schema": {
 					"default": 20,
+					"description": "Number of results per page.",
+					"example": 20,
 					"maximum": 100,
 					"minimum": 1,
 					"type": "integer"
 				}
 			},
 			{
-				"in": "query",
-				"name": "namespace",
-				"schema": {
-					"nullable": true,
-					"pattern": "^[a-z0-9]([a-z0-9-]{0,26}[a-z0-9])?$",
-					"readOnly": true,
-					"type": "string"
-				}
-			},
-			{
-				"description": "Search by id",
+				"description": "Filter instances whose id contains this string (case-insensitive).",
 				"in": "query",
 				"name": "search",
 				"schema": {
-					"description": "Search by id",
+					"description": "Filter instances whose id contains this string (case-insensitive).",
 					"type": "string"
 				}
 			},
 			{
-				"description": "Order By Column Name",
+				"description": "Filter by namespace.",
+				"in": "query",
+				"name": "namespace",
+				"schema": {
+					"description": "Filter by namespace.",
+					"pattern": "^[a-z0-9]([a-z0-9-]{0,26}[a-z0-9])?$",
+					"type": "string"
+				}
+			},
+			{
+				"description": "Field to order results by.",
 				"in": "query",
 				"name": "order_by",
 				"schema": {
 					"default": "created_at",
-					"description": "Order By Column Name",
+					"description": "Field to order results by.",
 					"enum": [
 						"created_at"
 					],
@@ -3737,12 +3711,12 @@
 				}
 			},
 			{
-				"description": "Order By Direction",
+				"description": "Order direction.",
 				"in": "query",
 				"name": "order_by_direction",
 				"schema": {
 					"default": "desc",
-					"description": "Order By Direction",
+					"description": "Order direction.",
 					"enum": [
 						"asc",
 						"desc"
@@ -4496,19 +4470,46 @@
 									},
 									"type": "array"
 								},
+								"result_info": {
+									"properties": {
+										"count": {
+											"type": "number"
+										},
+										"page": {
+											"type": "number"
+										},
+										"per_page": {
+											"type": "number"
+										},
+										"total_count": {
+											"type": "number"
+										}
+									},
+									"required": [
+										"page",
+										"per_page",
+										"count",
+										"total_count"
+									],
+									"type": "object"
+								},
 								"success": {
+									"enum": [
+										true
+									],
 									"type": "boolean"
 								}
 							},
 							"required": [
 								"success",
-								"result"
+								"result",
+								"result_info"
 							],
 							"type": "object"
 						}
 					}
 				},
-				"description": "List objects"
+				"description": "List of instances."
 			},
 			"400": {
 				"content": {
@@ -4584,30 +4585,24 @@
 		}
 	},
 	"GET /accounts/{account_id}/ai-search/namespaces/{name}/instances/{id}": {
-		"description": "Read instances.",
-		"operationId": "ai-search-namespace-fetch-instances",
+		"description": "Read instance.",
+		"operationId": "ai-search-namespace-fetch-instance",
 		"parameters": [
-			{
-				"description": "AI Search instance ID. Lowercase alphanumeric, hyphens, and underscores.",
-				"in": "path",
-				"name": "id",
-				"required": true,
-				"schema": {
-					"description": "AI Search instance ID. Lowercase alphanumeric, hyphens, and underscores.",
-					"example": "my-ai-search",
-					"maxLength": 64,
-					"minLength": 1,
-					"pattern": "^[a-z0-9_]+(?:-[a-z0-9_]+)*$",
-					"type": "string",
-					"x-auditable": true
-				}
-			},
 			{
 				"in": "path",
 				"name": "account_id",
 				"required": true,
 				"schema": {
 					"example": "c3dc5f0b34a14ff8e1b3ec04895e1b22",
+					"type": "string"
+				}
+			},
+			{
+				"in": "path",
+				"name": "id",
+				"required": true,
+				"schema": {
+					"example": "my-ai-search",
 					"type": "string"
 				}
 			},
@@ -5366,54 +5361,7 @@
 						}
 					}
 				},
-				"description": "Returns a single object if found"
-			},
-			"400": {
-				"content": {
-					"application/json": {
-						"schema": {
-							"properties": {
-								"errors": {
-									"items": {
-										"properties": {
-											"code": {
-												"type": "number"
-											},
-											"message": {
-												"type": "string"
-											},
-											"path": {
-												"items": {
-													"type": "string"
-												},
-												"type": "array"
-											}
-										},
-										"required": [
-											"code",
-											"message",
-											"path"
-										],
-										"type": "object"
-									},
-									"type": "array"
-								},
-								"success": {
-									"enum": [
-										false
-									],
-									"type": "boolean"
-								}
-							},
-							"required": [
-								"success",
-								"errors"
-							],
-							"type": "object"
-						}
-					}
-				},
-				"description": "Input Validation Error"
+				"description": "Returns the instance."
 			},
 			"404": {
 				"content": {
@@ -5453,7 +5401,7 @@
 						}
 					}
 				},
-				"description": "Not Found"
+				"description": "Ai search not found."
 			}
 		},
 		"security": [
@@ -5465,7 +5413,7 @@
 				"api_key": []
 			}
 		],
-		"summary": "Read instances.",
+		"summary": "Read instance.",
 		"tags": [
 			"AI Search Instances"
 		],
@@ -5684,8 +5632,8 @@
 		}
 	},
 	"POST /accounts/{account_id}/ai-search/instances": {
-		"description": "Create a new instances.",
-		"operationId": "ai-search-create-instances",
+		"description": "Create a new instance.",
+		"operationId": "ai-search-create-instance",
 		"parameters": [
 			{
 				"in": "path",
@@ -5924,12 +5872,6 @@
 								},
 								"type": "object",
 								"x-auditable": true
-							},
-							"namespace": {
-								"nullable": true,
-								"pattern": "^[a-z0-9]([a-z0-9-]{0,26}[a-z0-9])?$",
-								"readOnly": true,
-								"type": "string"
 							},
 							"public_endpoint_params": {
 								"properties": {
@@ -7125,7 +7067,7 @@
 						}
 					}
 				},
-				"description": "Returns the created Object"
+				"description": "Returns the new instance."
 			},
 			"400": {
 				"content": {
@@ -7140,18 +7082,11 @@
 											},
 											"message": {
 												"type": "string"
-											},
-											"path": {
-												"items": {
-													"type": "string"
-												},
-												"type": "array"
 											}
 										},
 										"required": [
 											"code",
-											"message",
-											"path"
+											"message"
 										],
 										"type": "object"
 									},
@@ -7172,7 +7107,47 @@
 						}
 					}
 				},
-				"description": "Input Validation Error"
+				"description": "Ai search instance invalid token."
+			},
+			"403": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"code": {
+												"type": "number"
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"success": {
+									"enum": [
+										false
+									],
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"errors"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Max instances reached."
 			}
 		},
 		"security": [
@@ -7184,7 +7159,7 @@
 				"api_key": []
 			}
 		],
-		"summary": "Create new instances.",
+		"summary": "Create new instance.",
 		"tags": [
 			"AI Search Instances"
 		],
@@ -7660,6 +7635,53 @@
 				},
 				"description": "Returns the chat completions results with retrieved files."
 			},
+			"400": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"code": {
+												"type": "number"
+											},
+											"message": {
+												"type": "string"
+											},
+											"path": {
+												"items": {
+													"type": "string"
+												},
+												"type": "array"
+											}
+										},
+										"required": [
+											"code",
+											"message",
+											"path"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"success": {
+									"enum": [
+										false
+									],
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"errors"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Input Validation Error"
+			},
 			"404": {
 				"content": {
 					"application/json": {
@@ -8107,6 +8129,53 @@
 				},
 				"description": "Returns the search results."
 			},
+			"400": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"code": {
+												"type": "number"
+											},
+											"message": {
+												"type": "string"
+											},
+											"path": {
+												"items": {
+													"type": "string"
+												},
+												"type": "array"
+											}
+										},
+										"required": [
+											"code",
+											"message",
+											"path"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"success": {
+									"enum": [
+										false
+									],
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"errors"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Input Validation Error"
+			},
 			"404": {
 				"content": {
 					"application/json": {
@@ -8174,8 +8243,8 @@
 		}
 	},
 	"POST /accounts/{account_id}/ai-search/namespaces/{name}/instances": {
-		"description": "Create a new instances.",
-		"operationId": "ai-search-namespace-create-instances",
+		"description": "Create a new instance.",
+		"operationId": "ai-search-namespace-create-instance",
 		"parameters": [
 			{
 				"in": "path",
@@ -8424,12 +8493,6 @@
 								},
 								"type": "object",
 								"x-auditable": true
-							},
-							"namespace": {
-								"nullable": true,
-								"pattern": "^[a-z0-9]([a-z0-9-]{0,26}[a-z0-9])?$",
-								"readOnly": true,
-								"type": "string"
 							},
 							"public_endpoint_params": {
 								"properties": {
@@ -9625,7 +9688,7 @@
 						}
 					}
 				},
-				"description": "Returns the created Object"
+				"description": "Returns the new instance."
 			},
 			"400": {
 				"content": {
@@ -9640,18 +9703,11 @@
 											},
 											"message": {
 												"type": "string"
-											},
-											"path": {
-												"items": {
-													"type": "string"
-												},
-												"type": "array"
 											}
 										},
 										"required": [
 											"code",
-											"message",
-											"path"
+											"message"
 										],
 										"type": "object"
 									},
@@ -9672,7 +9728,47 @@
 						}
 					}
 				},
-				"description": "Input Validation Error"
+				"description": "Ai search instance invalid token."
+			},
+			"403": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"code": {
+												"type": "number"
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"success": {
+									"enum": [
+										false
+									],
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"errors"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Max instances reached."
 			}
 		},
 		"security": [
@@ -9684,7 +9780,7 @@
 				"api_key": []
 			}
 		],
-		"summary": "Create new instances.",
+		"summary": "Create new instance.",
 		"tags": [
 			"AI Search Instances"
 		],
@@ -10170,6 +10266,53 @@
 				},
 				"description": "Returns the chat completions results with retrieved files."
 			},
+			"400": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"code": {
+												"type": "number"
+											},
+											"message": {
+												"type": "string"
+											},
+											"path": {
+												"items": {
+													"type": "string"
+												},
+												"type": "array"
+											}
+										},
+										"required": [
+											"code",
+											"message",
+											"path"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"success": {
+									"enum": [
+										false
+									],
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"errors"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Input Validation Error"
+			},
 			"404": {
 				"content": {
 					"application/json": {
@@ -10627,6 +10770,53 @@
 				},
 				"description": "Returns the search results."
 			},
+			"400": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"code": {
+												"type": "number"
+											},
+											"message": {
+												"type": "string"
+											},
+											"path": {
+												"items": {
+													"type": "string"
+												},
+												"type": "array"
+											}
+										},
+										"required": [
+											"code",
+											"message",
+											"path"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"success": {
+									"enum": [
+										false
+									],
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"errors"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Input Validation Error"
+			},
 			"404": {
 				"content": {
 					"application/json": {
@@ -10694,8 +10884,8 @@
 		}
 	},
 	"PUT /accounts/{account_id}/ai-search/instances/{id}": {
-		"description": "Update instances.",
-		"operationId": "ai-search-update-instances",
+		"description": "Update instance.",
+		"operationId": "ai-search-update-instance",
 		"parameters": [
 			{
 				"in": "path",
@@ -10707,18 +10897,12 @@
 				}
 			},
 			{
-				"description": "AI Search instance ID. Lowercase alphanumeric, hyphens, and underscores.",
 				"in": "path",
 				"name": "id",
 				"required": true,
 				"schema": {
-					"description": "AI Search instance ID. Lowercase alphanumeric, hyphens, and underscores.",
 					"example": "my-ai-search",
-					"maxLength": 64,
-					"minLength": 1,
-					"pattern": "^[a-z0-9_]+(?:-[a-z0-9_]+)*$",
-					"type": "string",
-					"x-auditable": true
+					"type": "string"
 				}
 			}
 		],
@@ -12173,7 +12357,7 @@
 						}
 					}
 				},
-				"description": "Returns the updated Object"
+				"description": "Returns the updated instance."
 			},
 			"400": {
 				"content": {
@@ -12183,27 +12367,29 @@
 								"errors": {
 									"items": {
 										"properties": {
+											"code": {
+												"type": "number"
+											},
 											"message": {
 												"type": "string"
 											}
 										},
 										"required": [
+											"code",
 											"message"
 										],
 										"type": "object"
 									},
 									"type": "array"
 								},
-								"result": {
-									"type": "object"
-								},
 								"success": {
-									"example": false,
+									"enum": [
+										false
+									],
 									"type": "boolean"
 								}
 							},
 							"required": [
-								"result",
 								"success",
 								"errors"
 							],
@@ -12211,7 +12397,47 @@
 						}
 					}
 				},
-				"description": "Bad Request."
+				"description": "Ai search instance invalid token."
+			},
+			"404": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"code": {
+												"type": "number"
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"success": {
+									"enum": [
+										false
+									],
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"errors"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Ai search not found."
 			}
 		},
 		"security": [
@@ -12223,7 +12449,7 @@
 				"api_key": []
 			}
 		],
-		"summary": "Update instances.",
+		"summary": "Update instance.",
 		"tags": [
 			"AI Search Instances"
 		],
@@ -12240,8 +12466,8 @@
 		}
 	},
 	"PUT /accounts/{account_id}/ai-search/namespaces/{name}/instances/{id}": {
-		"description": "Update instances.",
-		"operationId": "ai-search-namespace-update-instances",
+		"description": "Update instance.",
+		"operationId": "ai-search-namespace-update-instance",
 		"parameters": [
 			{
 				"in": "path",
@@ -12253,18 +12479,12 @@
 				}
 			},
 			{
-				"description": "AI Search instance ID. Lowercase alphanumeric, hyphens, and underscores.",
 				"in": "path",
 				"name": "id",
 				"required": true,
 				"schema": {
-					"description": "AI Search instance ID. Lowercase alphanumeric, hyphens, and underscores.",
 					"example": "my-ai-search",
-					"maxLength": 64,
-					"minLength": 1,
-					"pattern": "^[a-z0-9_]+(?:-[a-z0-9_]+)*$",
-					"type": "string",
-					"x-auditable": true
+					"type": "string"
 				}
 			},
 			{
@@ -13729,7 +13949,7 @@
 						}
 					}
 				},
-				"description": "Returns the updated Object"
+				"description": "Returns the updated instance."
 			},
 			"400": {
 				"content": {
@@ -13739,27 +13959,29 @@
 								"errors": {
 									"items": {
 										"properties": {
+											"code": {
+												"type": "number"
+											},
 											"message": {
 												"type": "string"
 											}
 										},
 										"required": [
+											"code",
 											"message"
 										],
 										"type": "object"
 									},
 									"type": "array"
 								},
-								"result": {
-									"type": "object"
-								},
 								"success": {
-									"example": false,
+									"enum": [
+										false
+									],
 									"type": "boolean"
 								}
 							},
 							"required": [
-								"result",
 								"success",
 								"errors"
 							],
@@ -13767,7 +13989,47 @@
 						}
 					}
 				},
-				"description": "Bad Request."
+				"description": "Ai search instance invalid token."
+			},
+			"404": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"code": {
+												"type": "number"
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"success": {
+									"enum": [
+										false
+									],
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"errors"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Ai search not found."
 			}
 		},
 		"security": [
@@ -13779,7 +14041,7 @@
 				"api_key": []
 			}
 		],
-		"summary": "Update instances.",
+		"summary": "Update instance.",
 		"tags": [
 			"AI Search Instances"
 		],

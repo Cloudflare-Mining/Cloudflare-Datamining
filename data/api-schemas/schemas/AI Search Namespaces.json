@@ -57,27 +57,29 @@
 								"errors": {
 									"items": {
 										"properties": {
+											"code": {
+												"type": "number"
+											},
 											"message": {
 												"type": "string"
 											}
 										},
 										"required": [
+											"code",
 											"message"
 										],
 										"type": "object"
 									},
 									"type": "array"
 								},
-								"result": {
-									"type": "object"
-								},
 								"success": {
-									"example": false,
+									"enum": [
+										false
+									],
 									"type": "boolean"
 								}
 							},
 							"required": [
-								"result",
 								"success",
 								"errors"
 							],
@@ -85,9 +87,9 @@
 						}
 					}
 				},
-				"description": "Bad Request."
+				"description": "Namespace not empty."
 			},
-			"500": {
+			"404": {
 				"content": {
 					"application/json": {
 						"schema": {
@@ -125,7 +127,7 @@
 						}
 					}
 				},
-				"description": "Internal Error."
+				"description": "Namespace not found."
 			}
 		},
 		"security": [
@@ -287,27 +289,36 @@
 								"errors": {
 									"items": {
 										"properties": {
+											"code": {
+												"type": "number"
+											},
 											"message": {
 												"type": "string"
+											},
+											"path": {
+												"items": {
+													"type": "string"
+												},
+												"type": "array"
 											}
 										},
 										"required": [
-											"message"
+											"code",
+											"message",
+											"path"
 										],
 										"type": "object"
 									},
 									"type": "array"
 								},
-								"result": {
-									"type": "object"
-								},
 								"success": {
-									"example": false,
+									"enum": [
+										false
+									],
 									"type": "boolean"
 								}
 							},
 							"required": [
-								"result",
 								"success",
 								"errors"
 							],
@@ -315,7 +326,7 @@
 						}
 					}
 				},
-				"description": "Bad Request."
+				"description": "Input Validation Error"
 			}
 		},
 		"security": [
@@ -415,45 +426,7 @@
 				},
 				"description": "Namespace details."
 			},
-			"400": {
-				"content": {
-					"application/json": {
-						"schema": {
-							"properties": {
-								"errors": {
-									"items": {
-										"properties": {
-											"message": {
-												"type": "string"
-											}
-										},
-										"required": [
-											"message"
-										],
-										"type": "object"
-									},
-									"type": "array"
-								},
-								"result": {
-									"type": "object"
-								},
-								"success": {
-									"example": false,
-									"type": "boolean"
-								}
-							},
-							"required": [
-								"result",
-								"success",
-								"errors"
-							],
-							"type": "object"
-						}
-					}
-				},
-				"description": "Bad Request."
-			},
-			"500": {
+			"404": {
 				"content": {
 					"application/json": {
 						"schema": {
@@ -491,7 +464,7 @@
 						}
 					}
 				},
-				"description": "Internal Error."
+				"description": "Namespace not found."
 			}
 		},
 		"security": [
@@ -610,27 +583,29 @@
 								"errors": {
 									"items": {
 										"properties": {
+											"code": {
+												"type": "number"
+											},
 											"message": {
 												"type": "string"
 											}
 										},
 										"required": [
+											"code",
 											"message"
 										],
 										"type": "object"
 									},
 									"type": "array"
 								},
-								"result": {
-									"type": "object"
-								},
 								"success": {
-									"example": false,
+									"enum": [
+										false
+									],
 									"type": "boolean"
 								}
 							},
 							"required": [
-								"result",
 								"success",
 								"errors"
 							],
@@ -638,9 +613,9 @@
 						}
 					}
 				},
-				"description": "Bad Request."
+				"description": "Ai search with this name already exist."
 			},
-			"500": {
+			"404": {
 				"content": {
 					"application/json": {
 						"schema": {
@@ -678,7 +653,7 @@
 						}
 					}
 				},
-				"description": "Internal Error."
+				"description": "Ai search not found."
 			}
 		},
 		"security": [
@@ -802,27 +777,36 @@
 								"errors": {
 									"items": {
 										"properties": {
+											"code": {
+												"type": "number"
+											},
 											"message": {
 												"type": "string"
+											},
+											"path": {
+												"items": {
+													"type": "string"
+												},
+												"type": "array"
 											}
 										},
 										"required": [
-											"message"
+											"code",
+											"message",
+											"path"
 										],
 										"type": "object"
 									},
 									"type": "array"
 								},
-								"result": {
-									"type": "object"
-								},
 								"success": {
-									"example": false,
+									"enum": [
+										false
+									],
 									"type": "boolean"
 								}
 							},
 							"required": [
-								"result",
 								"success",
 								"errors"
 							],
@@ -830,9 +814,9 @@
 						}
 					}
 				},
-				"description": "Bad Request."
+				"description": "Input Validation Error"
 			},
-			"500": {
+			"403": {
 				"content": {
 					"application/json": {
 						"schema": {
@@ -870,7 +854,47 @@
 						}
 					}
 				},
-				"description": "Internal Error."
+				"description": "Max namespaces reached."
+			},
+			"409": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"code": {
+												"type": "number"
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"success": {
+									"enum": [
+										false
+									],
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"errors"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Namespace already exists."
 			}
 		},
 		"security": [
@@ -996,27 +1020,29 @@
 								"errors": {
 									"items": {
 										"properties": {
+											"code": {
+												"type": "number"
+											},
 											"message": {
 												"type": "string"
 											}
 										},
 										"required": [
+											"code",
 											"message"
 										],
 										"type": "object"
 									},
 									"type": "array"
 								},
-								"result": {
-									"type": "object"
-								},
 								"success": {
-									"example": false,
+									"enum": [
+										false
+									],
 									"type": "boolean"
 								}
 							},
 							"required": [
-								"result",
 								"success",
 								"errors"
 							],
@@ -1024,9 +1050,9 @@
 						}
 					}
 				},
-				"description": "Bad Request."
+				"description": "Cannot modify default namespace."
 			},
-			"500": {
+			"404": {
 				"content": {
 					"application/json": {
 						"schema": {
@@ -1064,7 +1090,7 @@
 						}
 					}
 				},
-				"description": "Internal Error."
+				"description": "Namespace not found."
 			}
 		},
 		"security": [

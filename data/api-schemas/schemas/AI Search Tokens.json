@@ -58,27 +58,36 @@
 								"errors": {
 									"items": {
 										"properties": {
+											"code": {
+												"type": "number"
+											},
 											"message": {
 												"type": "string"
+											},
+											"path": {
+												"items": {
+													"type": "string"
+												},
+												"type": "array"
 											}
 										},
 										"required": [
-											"message"
+											"code",
+											"message",
+											"path"
 										],
 										"type": "object"
 									},
 									"type": "array"
 								},
-								"result": {
-									"type": "object"
-								},
 								"success": {
-									"example": false,
+									"enum": [
+										false
+									],
 									"type": "boolean"
 								}
 							},
 							"required": [
-								"result",
 								"success",
 								"errors"
 							],
@@ -86,9 +95,9 @@
 						}
 					}
 				},
-				"description": "Bad Request."
+				"description": "Input Validation Error"
 			},
-			"500": {
+			"404": {
 				"content": {
 					"application/json": {
 						"schema": {
@@ -126,7 +135,47 @@
 						}
 					}
 				},
-				"description": "Internal Error."
+				"description": "Token not found."
+			},
+			"409": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"code": {
+												"type": "number"
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"success": {
+									"enum": [
+										false
+									],
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"errors"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Token in use by instances."
 			}
 		},
 		"security": [
@@ -318,27 +367,36 @@
 								"errors": {
 									"items": {
 										"properties": {
+											"code": {
+												"type": "number"
+											},
 											"message": {
 												"type": "string"
+											},
+											"path": {
+												"items": {
+													"type": "string"
+												},
+												"type": "array"
 											}
 										},
 										"required": [
-											"message"
+											"code",
+											"message",
+											"path"
 										],
 										"type": "object"
 									},
 									"type": "array"
 								},
-								"result": {
-									"type": "object"
-								},
 								"success": {
-									"example": false,
+									"enum": [
+										false
+									],
 									"type": "boolean"
 								}
 							},
 							"required": [
-								"result",
 								"success",
 								"errors"
 							],
@@ -346,7 +404,7 @@
 						}
 					}
 				},
-				"description": "Bad Request."
+				"description": "Input Validation Error"
 			}
 		},
 		"security": [
@@ -484,27 +542,36 @@
 								"errors": {
 									"items": {
 										"properties": {
+											"code": {
+												"type": "number"
+											},
 											"message": {
 												"type": "string"
+											},
+											"path": {
+												"items": {
+													"type": "string"
+												},
+												"type": "array"
 											}
 										},
 										"required": [
-											"message"
+											"code",
+											"message",
+											"path"
 										],
 										"type": "object"
 									},
 									"type": "array"
 								},
-								"result": {
-									"type": "object"
-								},
 								"success": {
-									"example": false,
+									"enum": [
+										false
+									],
 									"type": "boolean"
 								}
 							},
 							"required": [
-								"result",
 								"success",
 								"errors"
 							],
@@ -512,9 +579,9 @@
 						}
 					}
 				},
-				"description": "Bad Request."
+				"description": "Input Validation Error"
 			},
-			"500": {
+			"404": {
 				"content": {
 					"application/json": {
 						"schema": {
@@ -552,7 +619,7 @@
 						}
 					}
 				},
-				"description": "Internal Error."
+				"description": "Token not found."
 			}
 		},
 		"security": [
@@ -714,44 +781,6 @@
 								"errors": {
 									"items": {
 										"properties": {
-											"message": {
-												"type": "string"
-											}
-										},
-										"required": [
-											"message"
-										],
-										"type": "object"
-									},
-									"type": "array"
-								},
-								"result": {
-									"type": "object"
-								},
-								"success": {
-									"example": false,
-									"type": "boolean"
-								}
-							},
-							"required": [
-								"result",
-								"success",
-								"errors"
-							],
-							"type": "object"
-						}
-					}
-				},
-				"description": "Bad Request."
-			},
-			"500": {
-				"content": {
-					"application/json": {
-						"schema": {
-							"properties": {
-								"errors": {
-									"items": {
-										"properties": {
 											"code": {
 												"type": "number"
 											},
@@ -782,7 +811,7 @@
 						}
 					}
 				},
-				"description": "Internal Error."
+				"description": "Ai search instance invalid token."
 			}
 		},
 		"security": [
@@ -954,27 +983,29 @@
 								"errors": {
 									"items": {
 										"properties": {
+											"code": {
+												"type": "number"
+											},
 											"message": {
 												"type": "string"
 											}
 										},
 										"required": [
+											"code",
 											"message"
 										],
 										"type": "object"
 									},
 									"type": "array"
 								},
-								"result": {
-									"type": "object"
-								},
 								"success": {
-									"example": false,
+									"enum": [
+										false
+									],
 									"type": "boolean"
 								}
 							},
 							"required": [
-								"result",
 								"success",
 								"errors"
 							],
@@ -982,9 +1013,9 @@
 						}
 					}
 				},
-				"description": "Bad Request."
+				"description": "Ai search instance invalid token."
 			},
-			"500": {
+			"404": {
 				"content": {
 					"application/json": {
 						"schema": {
@@ -1022,7 +1053,7 @@
 						}
 					}
 				},
-				"description": "Internal Error."
+				"description": "Token not found."
 			}
 		},
 		"security": [

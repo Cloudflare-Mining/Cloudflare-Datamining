@@ -493,6 +493,53 @@
 				},
 				"description": "Returns the chat completion result with merged chunks from all instances."
 			},
+			"400": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"code": {
+												"type": "number"
+											},
+											"message": {
+												"type": "string"
+											},
+											"path": {
+												"items": {
+													"type": "string"
+												},
+												"type": "array"
+											}
+										},
+										"required": [
+											"code",
+											"message",
+											"path"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"success": {
+									"enum": [
+										false
+									],
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"errors"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Input Validation Error"
+			},
 			"404": {
 				"content": {
 					"application/json": {
@@ -974,6 +1021,53 @@
 					}
 				},
 				"description": "Returns the merged search results from all instances."
+			},
+			"400": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"code": {
+												"type": "number"
+											},
+											"message": {
+												"type": "string"
+											},
+											"path": {
+												"items": {
+													"type": "string"
+												},
+												"type": "array"
+											}
+										},
+										"required": [
+											"code",
+											"message",
+											"path"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"success": {
+									"enum": [
+										false
+									],
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"errors"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Input Validation Error"
 			},
 			"404": {
 				"content": {

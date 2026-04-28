@@ -138,27 +138,36 @@
 								"errors": {
 									"items": {
 										"properties": {
+											"code": {
+												"type": "number"
+											},
 											"message": {
 												"type": "string"
+											},
+											"path": {
+												"items": {
+													"type": "string"
+												},
+												"type": "array"
 											}
 										},
 										"required": [
-											"message"
+											"code",
+											"message",
+											"path"
 										],
 										"type": "object"
 									},
 									"type": "array"
 								},
-								"result": {
-									"type": "object"
-								},
 								"success": {
-									"example": false,
+									"enum": [
+										false
+									],
 									"type": "boolean"
 								}
 							},
 							"required": [
-								"result",
 								"success",
 								"errors"
 							],
@@ -166,9 +175,9 @@
 						}
 					}
 				},
-				"description": "Bad Request."
+				"description": "Input Validation Error"
 			},
-			"500": {
+			"404": {
 				"content": {
 					"application/json": {
 						"schema": {
@@ -206,7 +215,47 @@
 						}
 					}
 				},
-				"description": "Internal Error."
+				"description": "Ai search not found."
+			},
+			"503": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"code": {
+												"type": "number"
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"success": {
+									"enum": [
+										false
+									],
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"errors"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Unable to connect to ai search."
 			}
 		},
 		"security": [
@@ -327,45 +376,7 @@
 				},
 				"description": "Returns a AI Search Job Details."
 			},
-			"400": {
-				"content": {
-					"application/json": {
-						"schema": {
-							"properties": {
-								"errors": {
-									"items": {
-										"properties": {
-											"message": {
-												"type": "string"
-											}
-										},
-										"required": [
-											"message"
-										],
-										"type": "object"
-									},
-									"type": "array"
-								},
-								"result": {
-									"type": "object"
-								},
-								"success": {
-									"example": false,
-									"type": "boolean"
-								}
-							},
-							"required": [
-								"result",
-								"success",
-								"errors"
-							],
-							"type": "object"
-						}
-					}
-				},
-				"description": "Bad Request."
-			},
-			"500": {
+			"404": {
 				"content": {
 					"application/json": {
 						"schema": {
@@ -403,7 +414,47 @@
 						}
 					}
 				},
-				"description": "Internal Error."
+				"description": "Job not found."
+			},
+			"503": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"code": {
+												"type": "number"
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"success": {
+									"enum": [
+										false
+									],
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"errors"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Unable to connect to ai search."
 			}
 		},
 		"security": [
@@ -565,27 +616,36 @@
 								"errors": {
 									"items": {
 										"properties": {
+											"code": {
+												"type": "number"
+											},
 											"message": {
 												"type": "string"
+											},
+											"path": {
+												"items": {
+													"type": "string"
+												},
+												"type": "array"
 											}
 										},
 										"required": [
-											"message"
+											"code",
+											"message",
+											"path"
 										],
 										"type": "object"
 									},
 									"type": "array"
 								},
-								"result": {
-									"type": "object"
-								},
 								"success": {
-									"example": false,
+									"enum": [
+										false
+									],
 									"type": "boolean"
 								}
 							},
 							"required": [
-								"result",
 								"success",
 								"errors"
 							],
@@ -593,9 +653,9 @@
 						}
 					}
 				},
-				"description": "Bad Request."
+				"description": "Input Validation Error"
 			},
-			"500": {
+			"404": {
 				"content": {
 					"application/json": {
 						"schema": {
@@ -633,7 +693,47 @@
 						}
 					}
 				},
-				"description": "Internal Error."
+				"description": "Ai search not found."
+			},
+			"503": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"code": {
+												"type": "number"
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"success": {
+									"enum": [
+										false
+									],
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"errors"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Unable to connect to ai search."
 			}
 		},
 		"security": [
@@ -810,27 +910,36 @@
 								"errors": {
 									"items": {
 										"properties": {
+											"code": {
+												"type": "number"
+											},
 											"message": {
 												"type": "string"
+											},
+											"path": {
+												"items": {
+													"type": "string"
+												},
+												"type": "array"
 											}
 										},
 										"required": [
-											"message"
+											"code",
+											"message",
+											"path"
 										],
 										"type": "object"
 									},
 									"type": "array"
 								},
-								"result": {
-									"type": "object"
-								},
 								"success": {
-									"example": false,
+									"enum": [
+										false
+									],
 									"type": "boolean"
 								}
 							},
 							"required": [
-								"result",
 								"success",
 								"errors"
 							],
@@ -838,9 +947,9 @@
 						}
 					}
 				},
-				"description": "Bad Request."
+				"description": "Input Validation Error"
 			},
-			"500": {
+			"404": {
 				"content": {
 					"application/json": {
 						"schema": {
@@ -878,7 +987,47 @@
 						}
 					}
 				},
-				"description": "Internal Error."
+				"description": "Ai search not found."
+			},
+			"503": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"code": {
+												"type": "number"
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"success": {
+									"enum": [
+										false
+									],
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"errors"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Unable to connect to ai search."
 			}
 		},
 		"security": [
@@ -1009,45 +1158,7 @@
 				},
 				"description": "Returns a AI Search Job Details."
 			},
-			"400": {
-				"content": {
-					"application/json": {
-						"schema": {
-							"properties": {
-								"errors": {
-									"items": {
-										"properties": {
-											"message": {
-												"type": "string"
-											}
-										},
-										"required": [
-											"message"
-										],
-										"type": "object"
-									},
-									"type": "array"
-								},
-								"result": {
-									"type": "object"
-								},
-								"success": {
-									"example": false,
-									"type": "boolean"
-								}
-							},
-							"required": [
-								"result",
-								"success",
-								"errors"
-							],
-							"type": "object"
-						}
-					}
-				},
-				"description": "Bad Request."
-			},
-			"500": {
+			"404": {
 				"content": {
 					"application/json": {
 						"schema": {
@@ -1085,7 +1196,47 @@
 						}
 					}
 				},
-				"description": "Internal Error."
+				"description": "Job not found."
+			},
+			"503": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"code": {
+												"type": "number"
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"success": {
+									"enum": [
+										false
+									],
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"errors"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Unable to connect to ai search."
 			}
 		},
 		"security": [
@@ -1257,27 +1408,36 @@
 								"errors": {
 									"items": {
 										"properties": {
+											"code": {
+												"type": "number"
+											},
 											"message": {
 												"type": "string"
+											},
+											"path": {
+												"items": {
+													"type": "string"
+												},
+												"type": "array"
 											}
 										},
 										"required": [
-											"message"
+											"code",
+											"message",
+											"path"
 										],
 										"type": "object"
 									},
 									"type": "array"
 								},
-								"result": {
-									"type": "object"
-								},
 								"success": {
-									"example": false,
+									"enum": [
+										false
+									],
 									"type": "boolean"
 								}
 							},
 							"required": [
-								"result",
 								"success",
 								"errors"
 							],
@@ -1285,9 +1445,9 @@
 						}
 					}
 				},
-				"description": "Bad Request."
+				"description": "Input Validation Error"
 			},
-			"500": {
+			"404": {
 				"content": {
 					"application/json": {
 						"schema": {
@@ -1325,7 +1485,47 @@
 						}
 					}
 				},
-				"description": "Internal Error."
+				"description": "Ai search not found."
+			},
+			"503": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"code": {
+												"type": "number"
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"success": {
+									"enum": [
+										false
+									],
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"errors"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Unable to connect to ai search."
 			}
 		},
 		"security": [
@@ -1474,27 +1674,29 @@
 								"errors": {
 									"items": {
 										"properties": {
+											"code": {
+												"type": "number"
+											},
 											"message": {
 												"type": "string"
 											}
 										},
 										"required": [
+											"code",
 											"message"
 										],
 										"type": "object"
 									},
 									"type": "array"
 								},
-								"result": {
-									"type": "object"
-								},
 								"success": {
-									"example": false,
+									"enum": [
+										false
+									],
 									"type": "boolean"
 								}
 							},
 							"required": [
-								"result",
 								"success",
 								"errors"
 							],
@@ -1502,9 +1704,9 @@
 						}
 					}
 				},
-				"description": "Bad Request."
+				"description": "Job cannot be cancelled."
 			},
-			"500": {
+			"404": {
 				"content": {
 					"application/json": {
 						"schema": {
@@ -1542,7 +1744,47 @@
 						}
 					}
 				},
-				"description": "Internal Error."
+				"description": "Job not found."
+			},
+			"503": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"code": {
+												"type": "number"
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"success": {
+									"enum": [
+										false
+									],
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"errors"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Unable to connect to ai search."
 			}
 		},
 		"security": [
@@ -1701,27 +1943,29 @@
 								"errors": {
 									"items": {
 										"properties": {
+											"code": {
+												"type": "number"
+											},
 											"message": {
 												"type": "string"
 											}
 										},
 										"required": [
+											"code",
 											"message"
 										],
 										"type": "object"
 									},
 									"type": "array"
 								},
-								"result": {
-									"type": "object"
-								},
 								"success": {
-									"example": false,
+									"enum": [
+										false
+									],
 									"type": "boolean"
 								}
 							},
 							"required": [
-								"result",
 								"success",
 								"errors"
 							],
@@ -1729,9 +1973,9 @@
 						}
 					}
 				},
-				"description": "Bad Request."
+				"description": "Job cannot be cancelled."
 			},
-			"500": {
+			"404": {
 				"content": {
 					"application/json": {
 						"schema": {
@@ -1769,7 +2013,47 @@
 						}
 					}
 				},
-				"description": "Internal Error."
+				"description": "Job not found."
+			},
+			"503": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"code": {
+												"type": "number"
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"success": {
+									"enum": [
+										false
+									],
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"errors"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Unable to connect to ai search."
 			}
 		},
 		"security": [
@@ -1905,27 +2189,36 @@
 								"errors": {
 									"items": {
 										"properties": {
+											"code": {
+												"type": "number"
+											},
 											"message": {
 												"type": "string"
+											},
+											"path": {
+												"items": {
+													"type": "string"
+												},
+												"type": "array"
 											}
 										},
 										"required": [
-											"message"
+											"code",
+											"message",
+											"path"
 										],
 										"type": "object"
 									},
 									"type": "array"
 								},
-								"result": {
-									"type": "object"
-								},
 								"success": {
-									"example": false,
+									"enum": [
+										false
+									],
 									"type": "boolean"
 								}
 							},
 							"required": [
-								"result",
 								"success",
 								"errors"
 							],
@@ -1933,9 +2226,9 @@
 						}
 					}
 				},
-				"description": "Bad Request."
+				"description": "Input Validation Error"
 			},
-			"500": {
+			"404": {
 				"content": {
 					"application/json": {
 						"schema": {
@@ -1973,7 +2266,87 @@
 						}
 					}
 				},
-				"description": "Internal Error."
+				"description": "Ai search not found."
+			},
+			"429": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"code": {
+												"type": "number"
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"success": {
+									"enum": [
+										false
+									],
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"errors"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Sync in cooldown."
+			},
+			"503": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"code": {
+												"type": "number"
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"success": {
+									"enum": [
+										false
+									],
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"errors"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Unable to connect to ai search."
 			}
 		},
 		"security": [
@@ -2119,27 +2492,36 @@
 								"errors": {
 									"items": {
 										"properties": {
+											"code": {
+												"type": "number"
+											},
 											"message": {
 												"type": "string"
+											},
+											"path": {
+												"items": {
+													"type": "string"
+												},
+												"type": "array"
 											}
 										},
 										"required": [
-											"message"
+											"code",
+											"message",
+											"path"
 										],
 										"type": "object"
 									},
 									"type": "array"
 								},
-								"result": {
-									"type": "object"
-								},
 								"success": {
-									"example": false,
+									"enum": [
+										false
+									],
 									"type": "boolean"
 								}
 							},
 							"required": [
-								"result",
 								"success",
 								"errors"
 							],
@@ -2147,9 +2529,9 @@
 						}
 					}
 				},
-				"description": "Bad Request."
+				"description": "Input Validation Error"
 			},
-			"500": {
+			"404": {
 				"content": {
 					"application/json": {
 						"schema": {
@@ -2187,7 +2569,87 @@
 						}
 					}
 				},
-				"description": "Internal Error."
+				"description": "Ai search not found."
+			},
+			"429": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"code": {
+												"type": "number"
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"success": {
+									"enum": [
+										false
+									],
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"errors"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Sync in cooldown."
+			},
+			"503": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"code": {
+												"type": "number"
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"success": {
+									"enum": [
+										false
+									],
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"errors"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Unable to connect to ai search."
 			}
 		},
 		"security": [
