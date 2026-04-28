@@ -312,6 +312,7 @@
 									{
 										"description": "An email address as a plain string.",
 										"example": "user@example.com",
+										"pattern": "^[\\x20-\\x7E]+$",
 										"type": "string"
 									},
 									{
@@ -321,6 +322,7 @@
 											"recipient-b@example.com"
 										],
 										"items": {
+											"pattern": "^[\\x20-\\x7E]+$",
 											"type": "string"
 										},
 										"type": "array"
@@ -333,6 +335,7 @@
 									{
 										"description": "An email address as a plain string.",
 										"example": "user@example.com",
+										"pattern": "^[\\x20-\\x7E]+$",
 										"type": "string"
 									},
 									{
@@ -342,6 +345,7 @@
 											"recipient-b@example.com"
 										],
 										"items": {
+											"pattern": "^[\\x20-\\x7E]+$",
 											"type": "string"
 										},
 										"type": "array"
@@ -354,6 +358,7 @@
 									{
 										"description": "An email address as a plain string.",
 										"example": "user@example.com",
+										"pattern": "^[\\x20-\\x7E]+$",
 										"type": "string"
 									},
 									{
@@ -365,6 +370,7 @@
 											"address": {
 												"description": "Email address (e.g., 'user@example.com').",
 												"example": "user@example.com",
+												"pattern": "^[\\x20-\\x7E]+$",
 												"type": "string"
 											},
 											"name": {
@@ -402,6 +408,7 @@
 									{
 										"description": "An email address as a plain string.",
 										"example": "user@example.com",
+										"pattern": "^[\\x20-\\x7E]+$",
 										"type": "string"
 									},
 									{
@@ -413,6 +420,7 @@
 											"address": {
 												"description": "Email address (e.g., 'user@example.com').",
 												"example": "user@example.com",
+												"pattern": "^[\\x20-\\x7E]+$",
 												"type": "string"
 											},
 											"name": {
@@ -445,6 +453,7 @@
 									{
 										"description": "An email address as a plain string.",
 										"example": "user@example.com",
+										"pattern": "^[\\x20-\\x7E]+$",
 										"type": "string"
 									},
 									{
@@ -454,6 +463,7 @@
 											"recipient-b@example.com"
 										],
 										"items": {
+											"pattern": "^[\\x20-\\x7E]+$",
 											"type": "string"
 										},
 										"type": "array"
@@ -529,7 +539,7 @@
 												"recipient@example.com"
 											],
 											"items": {
-												"format": "email",
+												"pattern": "^[\\x20-\\x7E]+$",
 												"type": "string"
 											},
 											"type": "array"
@@ -538,7 +548,7 @@
 											"description": "Email addresses that permanently bounced.",
 											"example": [],
 											"items": {
-												"format": "email",
+												"pattern": "^[\\x20-\\x7E]+$",
 												"type": "string"
 											},
 											"type": "array"
@@ -547,7 +557,7 @@
 											"description": "Email addresses for which delivery was queued for later.",
 											"example": [],
 											"items": {
-												"format": "email",
+												"pattern": "^[\\x20-\\x7E]+$",
 												"type": "string"
 											},
 											"type": "array"
@@ -908,7 +918,7 @@
 							"from": {
 								"description": "Sender email address.",
 								"example": "sender@example.com",
-								"format": "email",
+								"pattern": "^[\\x20-\\x7E]+$",
 								"type": "string"
 							},
 							"mime_message": {
@@ -922,7 +932,7 @@
 									"recipient@example.com"
 								],
 								"items": {
-									"format": "email",
+									"pattern": "^[\\x20-\\x7E]+$",
 									"type": "string"
 								},
 								"type": "array"
@@ -996,7 +1006,7 @@
 												"recipient@example.com"
 											],
 											"items": {
-												"format": "email",
+												"pattern": "^[\\x20-\\x7E]+$",
 												"type": "string"
 											},
 											"type": "array"
@@ -1005,7 +1015,7 @@
 											"description": "Email addresses that permanently bounced.",
 											"example": [],
 											"items": {
-												"format": "email",
+												"pattern": "^[\\x20-\\x7E]+$",
 												"type": "string"
 											},
 											"type": "array"
@@ -1014,7 +1024,7 @@
 											"description": "Email addresses for which delivery was queued for later.",
 											"example": [],
 											"items": {
-												"format": "email",
+												"pattern": "^[\\x20-\\x7E]+$",
 												"type": "string"
 											},
 											"type": "array"

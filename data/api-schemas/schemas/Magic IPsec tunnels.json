@@ -161,7 +161,7 @@
 														},
 														"automatic_return_routing": {
 															"default": false,
-															"description": "True if automatic stateful return routing should be enabled for a tunnel, false otherwise.",
+															"description": "True if automatic stateful return routing should be enabled for a tunnel, false otherwise. Requires the `coupler_integration` account flag to be enabled; requests setting this to `true` without that flag will be rejected.",
 															"example": true,
 															"type": "boolean",
 															"x-auditable": true
@@ -543,7 +543,7 @@
 																},
 																"automatic_return_routing": {
 																	"default": false,
-																	"description": "True if automatic stateful return routing should be enabled for a tunnel, false otherwise.",
+																	"description": "True if automatic stateful return routing should be enabled for a tunnel, false otherwise. Requires the `coupler_integration` account flag to be enabled; requests setting this to `true` without that flag will be rejected.",
 																	"example": true,
 																	"type": "boolean",
 																	"x-auditable": true
@@ -1055,7 +1055,7 @@
 															},
 															"automatic_return_routing": {
 																"default": false,
-																"description": "True if automatic stateful return routing should be enabled for a tunnel, false otherwise.",
+																"description": "True if automatic stateful return routing should be enabled for a tunnel, false otherwise. Requires the `coupler_integration` account flag to be enabled; requests setting this to `true` without that flag will be rejected.",
 																"example": true,
 																"type": "boolean",
 																"x-auditable": true
@@ -1435,7 +1435,7 @@
 																	},
 																	"automatic_return_routing": {
 																		"default": false,
-																		"description": "True if automatic stateful return routing should be enabled for a tunnel, false otherwise.",
+																		"description": "True if automatic stateful return routing should be enabled for a tunnel, false otherwise. Requires the `coupler_integration` account flag to be enabled; requests setting this to `true` without that flag will be rejected.",
 																		"example": true,
 																		"type": "boolean",
 																		"x-auditable": true
@@ -1961,7 +1961,7 @@
 														},
 														"automatic_return_routing": {
 															"default": false,
-															"description": "True if automatic stateful return routing should be enabled for a tunnel, false otherwise.",
+															"description": "True if automatic stateful return routing should be enabled for a tunnel, false otherwise. Requires the `coupler_integration` account flag to be enabled; requests setting this to `true` without that flag will be rejected.",
 															"example": true,
 															"type": "boolean",
 															"x-auditable": true
@@ -2339,7 +2339,7 @@
 																},
 																"automatic_return_routing": {
 																	"default": false,
-																	"description": "True if automatic stateful return routing should be enabled for a tunnel, false otherwise.",
+																	"description": "True if automatic stateful return routing should be enabled for a tunnel, false otherwise. Requires the `coupler_integration` account flag to be enabled; requests setting this to `true` without that flag will be rejected.",
 																	"example": true,
 																	"type": "boolean",
 																	"x-auditable": true
@@ -2746,7 +2746,7 @@
 								"properties": {
 									"automatic_return_routing": {
 										"default": false,
-										"description": "True if automatic stateful return routing should be enabled for a tunnel, false otherwise.",
+										"description": "True if automatic stateful return routing should be enabled for a tunnel, false otherwise. Requires the `coupler_integration` account flag to be enabled; requests setting this to `true` without that flag will be rejected.",
 										"example": true,
 										"type": "boolean",
 										"x-auditable": true
@@ -3037,7 +3037,7 @@
 												},
 												"automatic_return_routing": {
 													"default": false,
-													"description": "True if automatic stateful return routing should be enabled for a tunnel, false otherwise.",
+													"description": "True if automatic stateful return routing should be enabled for a tunnel, false otherwise. Requires the `coupler_integration` account flag to be enabled; requests setting this to `true` without that flag will be rejected.",
 													"example": true,
 													"type": "boolean",
 													"x-auditable": true
@@ -3410,7 +3410,7 @@
 														},
 														"automatic_return_routing": {
 															"default": false,
-															"description": "True if automatic stateful return routing should be enabled for a tunnel, false otherwise.",
+															"description": "True if automatic stateful return routing should be enabled for a tunnel, false otherwise. Requires the `coupler_integration` account flag to be enabled; requests setting this to `true` without that flag will be rejected.",
 															"example": true,
 															"type": "boolean",
 															"x-auditable": true
@@ -4366,7 +4366,7 @@
 															},
 															"automatic_return_routing": {
 																"default": false,
-																"description": "True if automatic stateful return routing should be enabled for a tunnel, false otherwise.",
+																"description": "True if automatic stateful return routing should be enabled for a tunnel, false otherwise. Requires the `coupler_integration` account flag to be enabled; requests setting this to `true` without that flag will be rejected.",
 																"example": true,
 																"type": "boolean",
 																"x-auditable": true
@@ -4750,7 +4750,7 @@
 																	},
 																	"automatic_return_routing": {
 																		"default": false,
-																		"description": "True if automatic stateful return routing should be enabled for a tunnel, false otherwise.",
+																		"description": "True if automatic stateful return routing should be enabled for a tunnel, false otherwise. Requires the `coupler_integration` account flag to be enabled; requests setting this to `true` without that flag will be rejected.",
 																		"example": true,
 																		"type": "boolean",
 																		"x-auditable": true
@@ -5166,7 +5166,7 @@
 						"properties": {
 							"automatic_return_routing": {
 								"default": false,
-								"description": "True if automatic stateful return routing should be enabled for a tunnel, false otherwise.",
+								"description": "True if automatic stateful return routing should be enabled for a tunnel, false otherwise. Requires the `coupler_integration` account flag to be enabled; requests setting this to `true` without that flag will be rejected.",
 								"example": true,
 								"type": "boolean",
 								"x-auditable": true
@@ -5461,7 +5461,7 @@
 														},
 														"automatic_return_routing": {
 															"default": false,
-															"description": "True if automatic stateful return routing should be enabled for a tunnel, false otherwise.",
+															"description": "True if automatic stateful return routing should be enabled for a tunnel, false otherwise. Requires the `coupler_integration` account flag to be enabled; requests setting this to `true` without that flag will be rejected.",
 															"example": true,
 															"type": "boolean",
 															"x-auditable": true
@@ -5843,7 +5843,7 @@
 																},
 																"automatic_return_routing": {
 																	"default": false,
-																	"description": "True if automatic stateful return routing should be enabled for a tunnel, false otherwise.",
+																	"description": "True if automatic stateful return routing should be enabled for a tunnel, false otherwise. Requires the `coupler_integration` account flag to be enabled; requests setting this to `true` without that flag will be rejected.",
 																	"example": true,
 																	"type": "boolean",
 																	"x-auditable": true
