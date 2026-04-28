@@ -313,6 +313,7 @@
 				"schema": {
 					"description": "Specifies the origin attribute by which to group the results.",
 					"enum": [
+						"ORIGIN",
 						"REGION",
 						"SUCCESS_RATE",
 						"PERCENTILE"
@@ -387,12 +388,11 @@
 				}
 			},
 			{
-				"description": "Filters results by origin.",
+				"description": "Filters results by origin. Required for all dimensions except ORIGIN.",
 				"in": "query",
 				"name": "origin",
-				"required": true,
 				"schema": {
-					"description": "Filters results by origin.",
+					"description": "Filters results by origin. Required for all dimensions except ORIGIN.",
 					"example": [
 						"AMAZON"
 					],
@@ -1194,6 +1194,7 @@
 				"schema": {
 					"description": "Specifies the origin attribute by which to group the results.",
 					"enum": [
+						"ORIGIN",
 						"REGION",
 						"SUCCESS_RATE",
 						"PERCENTILE"
@@ -1284,12 +1285,11 @@
 				}
 			},
 			{
-				"description": "Filters results by origin.",
+				"description": "Filters results by origin. Required for all dimensions except ORIGIN.",
 				"in": "query",
 				"name": "origin",
-				"required": true,
 				"schema": {
-					"description": "Filters results by origin.",
+					"description": "Filters results by origin. Required for all dimensions except ORIGIN.",
 					"example": [
 						"AMAZON"
 					],
