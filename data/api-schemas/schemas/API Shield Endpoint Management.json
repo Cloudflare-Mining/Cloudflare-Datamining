@@ -1375,6 +1375,15 @@
 					"type": "array",
 					"uniqueItems": true
 				}
+			},
+			{
+				"description": "When true, includes OpenAPI schemas (both uploaded and learned) for the operation in the response. Due to the conversion overhead, this parameter is only supported on single-operation retrieval.",
+				"in": "query",
+				"name": "with_schemas",
+				"schema": {
+					"default": false,
+					"type": "boolean"
+				}
 			}
 		],
 		"responses": {
@@ -1931,6 +1940,58 @@
 															"type": "object"
 														}
 													]
+												},
+												{
+													"properties": {
+														"schemas": {
+															"description": "OpenAPI JSON schemas for an operation, including both user-uploaded and Cloudflare-learned schemas.",
+															"properties": {
+																"learned": {
+																	"description": "An OpenAPI operation object fragment containing schema information for an operation. May include parameter definitions, request body specifications, and a component schema extension.",
+																	"nullable": true,
+																	"properties": {
+																		"parameters": {
+																			"description": "OpenAPI parameter objects describing path, query, header, or cookie parameters.",
+																			"items": {
+																				"additionalProperties": true,
+																				"type": "object"
+																			},
+																			"type": "array"
+																		},
+																		"requestBody": {
+																			"additionalProperties": true,
+																			"description": "OpenAPI request body object describing the expected request payload.",
+																			"type": "object"
+																		}
+																	},
+																	"type": "object"
+																},
+																"uploaded": {
+																	"description": "An OpenAPI operation object fragment containing schema information for an operation. May include parameter definitions, request body specifications, and a component schema extension.",
+																	"nullable": true,
+																	"properties": {
+																		"parameters": {
+																			"description": "OpenAPI parameter objects describing path, query, header, or cookie parameters.",
+																			"items": {
+																				"additionalProperties": true,
+																				"type": "object"
+																			},
+																			"type": "array"
+																		},
+																		"requestBody": {
+																			"additionalProperties": true,
+																			"description": "OpenAPI request body object describing the expected request payload.",
+																			"type": "object"
+																		}
+																	},
+																	"type": "object"
+																}
+															},
+															"readOnly": true,
+															"type": "object"
+														}
+													},
+													"type": "object"
 												}
 											]
 										}
@@ -3758,6 +3819,58 @@
 															"type": "object"
 														}
 													]
+												},
+												{
+													"properties": {
+														"schemas": {
+															"description": "OpenAPI JSON schemas for an operation, including both user-uploaded and Cloudflare-learned schemas.",
+															"properties": {
+																"learned": {
+																	"description": "An OpenAPI operation object fragment containing schema information for an operation. May include parameter definitions, request body specifications, and a component schema extension.",
+																	"nullable": true,
+																	"properties": {
+																		"parameters": {
+																			"description": "OpenAPI parameter objects describing path, query, header, or cookie parameters.",
+																			"items": {
+																				"additionalProperties": true,
+																				"type": "object"
+																			},
+																			"type": "array"
+																		},
+																		"requestBody": {
+																			"additionalProperties": true,
+																			"description": "OpenAPI request body object describing the expected request payload.",
+																			"type": "object"
+																		}
+																	},
+																	"type": "object"
+																},
+																"uploaded": {
+																	"description": "An OpenAPI operation object fragment containing schema information for an operation. May include parameter definitions, request body specifications, and a component schema extension.",
+																	"nullable": true,
+																	"properties": {
+																		"parameters": {
+																			"description": "OpenAPI parameter objects describing path, query, header, or cookie parameters.",
+																			"items": {
+																				"additionalProperties": true,
+																				"type": "object"
+																			},
+																			"type": "array"
+																		},
+																		"requestBody": {
+																			"additionalProperties": true,
+																			"description": "OpenAPI request body object describing the expected request payload.",
+																			"type": "object"
+																		}
+																	},
+																	"type": "object"
+																}
+															},
+															"readOnly": true,
+															"type": "object"
+														}
+													},
+													"type": "object"
 												}
 											]
 										}

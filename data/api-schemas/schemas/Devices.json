@@ -554,6 +554,36 @@
 														"description": "Determines which tunnel protocol to use.",
 														"example": "wireguard",
 														"type": "string"
+													},
+													"virtual_networks": {
+														"description": "Virtual network access settings for the device.",
+														"nullable": true,
+														"properties": {
+															"allowed": {
+																"description": "List of virtual network IDs the device is allowed to access. When virtual_networks is set, at least one entry is required.",
+																"example": [
+																	"f174e90a-fafe-4643-bbbc-4a0ed4fc8415"
+																],
+																"items": {
+																	"format": "uuid",
+																	"type": "string"
+																},
+																"minItems": 1,
+																"type": "array",
+																"uniqueItems": true
+															},
+															"default": {
+																"description": "The default virtual network ID. Must be included in the `allowed` list.",
+																"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
+																"format": "uuid",
+																"type": "string"
+															}
+														},
+														"required": [
+															"allowed",
+															"default"
+														],
+														"type": "object"
 													}
 												},
 												"type": "object"
@@ -1095,6 +1125,36 @@
 																"description": "Determines which tunnel protocol to use.",
 																"example": "wireguard",
 																"type": "string"
+															},
+															"virtual_networks": {
+																"description": "Virtual network access settings for the device.",
+																"nullable": true,
+																"properties": {
+																	"allowed": {
+																		"description": "List of virtual network IDs the device is allowed to access. When virtual_networks is set, at least one entry is required.",
+																		"example": [
+																			"f174e90a-fafe-4643-bbbc-4a0ed4fc8415"
+																		],
+																		"items": {
+																			"format": "uuid",
+																			"type": "string"
+																		},
+																		"minItems": 1,
+																		"type": "array",
+																		"uniqueItems": true
+																	},
+																	"default": {
+																		"description": "The default virtual network ID. Must be included in the `allowed` list.",
+																		"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
+																		"format": "uuid",
+																		"type": "string"
+																	}
+																},
+																"required": [
+																	"allowed",
+																	"default"
+																],
+																"type": "object"
 															}
 														},
 														"type": "object"
@@ -3558,6 +3618,36 @@
 														"description": "Determines which tunnel protocol to use.",
 														"example": "wireguard",
 														"type": "string"
+													},
+													"virtual_networks": {
+														"description": "Virtual network access settings for the device.",
+														"nullable": true,
+														"properties": {
+															"allowed": {
+																"description": "List of virtual network IDs the device is allowed to access. When virtual_networks is set, at least one entry is required.",
+																"example": [
+																	"f174e90a-fafe-4643-bbbc-4a0ed4fc8415"
+																],
+																"items": {
+																	"format": "uuid",
+																	"type": "string"
+																},
+																"minItems": 1,
+																"type": "array",
+																"uniqueItems": true
+															},
+															"default": {
+																"description": "The default virtual network ID. Must be included in the `allowed` list.",
+																"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
+																"format": "uuid",
+																"type": "string"
+															}
+														},
+														"required": [
+															"allowed",
+															"default"
+														],
+														"type": "object"
 													}
 												},
 												"type": "object"
@@ -4099,6 +4189,36 @@
 																"description": "Determines which tunnel protocol to use.",
 																"example": "wireguard",
 																"type": "string"
+															},
+															"virtual_networks": {
+																"description": "Virtual network access settings for the device.",
+																"nullable": true,
+																"properties": {
+																	"allowed": {
+																		"description": "List of virtual network IDs the device is allowed to access. When virtual_networks is set, at least one entry is required.",
+																		"example": [
+																			"f174e90a-fafe-4643-bbbc-4a0ed4fc8415"
+																		],
+																		"items": {
+																			"format": "uuid",
+																			"type": "string"
+																		},
+																		"minItems": 1,
+																		"type": "array",
+																		"uniqueItems": true
+																	},
+																	"default": {
+																		"description": "The default virtual network ID. Must be included in the `allowed` list.",
+																		"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
+																		"format": "uuid",
+																		"type": "string"
+																	}
+																},
+																"required": [
+																	"allowed",
+																	"default"
+																],
+																"type": "object"
 															}
 														},
 														"type": "object"
@@ -4681,6 +4801,36 @@
 													"description": "Determines which tunnel protocol to use.",
 													"example": "wireguard",
 													"type": "string"
+												},
+												"virtual_networks": {
+													"description": "Virtual network access settings for the device.",
+													"nullable": true,
+													"properties": {
+														"allowed": {
+															"description": "List of virtual network IDs the device is allowed to access. When virtual_networks is set, at least one entry is required.",
+															"example": [
+																"f174e90a-fafe-4643-bbbc-4a0ed4fc8415"
+															],
+															"items": {
+																"format": "uuid",
+																"type": "string"
+															},
+															"minItems": 1,
+															"type": "array",
+															"uniqueItems": true
+														},
+														"default": {
+															"description": "The default virtual network ID. Must be included in the `allowed` list.",
+															"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
+															"format": "uuid",
+															"type": "string"
+														}
+													},
+													"required": [
+														"allowed",
+														"default"
+													],
+													"type": "object"
 												}
 											},
 											"type": "object"
@@ -5150,6 +5300,36 @@
 															"description": "Determines which tunnel protocol to use.",
 															"example": "wireguard",
 															"type": "string"
+														},
+														"virtual_networks": {
+															"description": "Virtual network access settings for the device.",
+															"nullable": true,
+															"properties": {
+																"allowed": {
+																	"description": "List of virtual network IDs the device is allowed to access. When virtual_networks is set, at least one entry is required.",
+																	"example": [
+																		"f174e90a-fafe-4643-bbbc-4a0ed4fc8415"
+																	],
+																	"items": {
+																		"format": "uuid",
+																		"type": "string"
+																	},
+																	"minItems": 1,
+																	"type": "array",
+																	"uniqueItems": true
+																},
+																"default": {
+																	"description": "The default virtual network ID. Must be included in the `allowed` list.",
+																	"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
+																	"format": "uuid",
+																	"type": "string"
+																}
+															},
+															"required": [
+																"allowed",
+																"default"
+															],
+															"type": "object"
 														}
 													},
 													"type": "object"
@@ -5790,6 +5970,36 @@
 													"description": "Determines which tunnel protocol to use.",
 													"example": "wireguard",
 													"type": "string"
+												},
+												"virtual_networks": {
+													"description": "Virtual network access settings for the device.",
+													"nullable": true,
+													"properties": {
+														"allowed": {
+															"description": "List of virtual network IDs the device is allowed to access. When virtual_networks is set, at least one entry is required.",
+															"example": [
+																"f174e90a-fafe-4643-bbbc-4a0ed4fc8415"
+															],
+															"items": {
+																"format": "uuid",
+																"type": "string"
+															},
+															"minItems": 1,
+															"type": "array",
+															"uniqueItems": true
+														},
+														"default": {
+															"description": "The default virtual network ID. Must be included in the `allowed` list.",
+															"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
+															"format": "uuid",
+															"type": "string"
+														}
+													},
+													"required": [
+														"allowed",
+														"default"
+													],
+													"type": "object"
 												}
 											},
 											"type": "object"
@@ -6308,6 +6518,36 @@
 															"description": "Determines which tunnel protocol to use.",
 															"example": "wireguard",
 															"type": "string"
+														},
+														"virtual_networks": {
+															"description": "Virtual network access settings for the device.",
+															"nullable": true,
+															"properties": {
+																"allowed": {
+																	"description": "List of virtual network IDs the device is allowed to access. When virtual_networks is set, at least one entry is required.",
+																	"example": [
+																		"f174e90a-fafe-4643-bbbc-4a0ed4fc8415"
+																	],
+																	"items": {
+																		"format": "uuid",
+																		"type": "string"
+																	},
+																	"minItems": 1,
+																	"type": "array",
+																	"uniqueItems": true
+																},
+																"default": {
+																	"description": "The default virtual network ID. Must be included in the `allowed` list.",
+																	"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
+																	"format": "uuid",
+																	"type": "string"
+																}
+															},
+															"required": [
+																"allowed",
+																"default"
+															],
+															"type": "object"
 														}
 													},
 													"type": "object"
@@ -9898,6 +10138,36 @@
 								"description": "Determines which tunnel protocol to use.",
 								"example": "wireguard",
 								"type": "string"
+							},
+							"virtual_networks": {
+								"description": "Virtual network access settings for the device.",
+								"nullable": true,
+								"properties": {
+									"allowed": {
+										"description": "List of virtual network IDs the device is allowed to access. When virtual_networks is set, at least one entry is required.",
+										"example": [
+											"f174e90a-fafe-4643-bbbc-4a0ed4fc8415"
+										],
+										"items": {
+											"format": "uuid",
+											"type": "string"
+										},
+										"minItems": 1,
+										"type": "array",
+										"uniqueItems": true
+									},
+									"default": {
+										"description": "The default virtual network ID. Must be included in the `allowed` list.",
+										"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
+										"format": "uuid",
+										"type": "string"
+									}
+								},
+								"required": [
+									"allowed",
+									"default"
+								],
+								"type": "object"
 							}
 						},
 						"type": "object"
@@ -10361,6 +10631,36 @@
 													"description": "Determines which tunnel protocol to use.",
 													"example": "wireguard",
 													"type": "string"
+												},
+												"virtual_networks": {
+													"description": "Virtual network access settings for the device.",
+													"nullable": true,
+													"properties": {
+														"allowed": {
+															"description": "List of virtual network IDs the device is allowed to access. When virtual_networks is set, at least one entry is required.",
+															"example": [
+																"f174e90a-fafe-4643-bbbc-4a0ed4fc8415"
+															],
+															"items": {
+																"format": "uuid",
+																"type": "string"
+															},
+															"minItems": 1,
+															"type": "array",
+															"uniqueItems": true
+														},
+														"default": {
+															"description": "The default virtual network ID. Must be included in the `allowed` list.",
+															"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
+															"format": "uuid",
+															"type": "string"
+														}
+													},
+													"required": [
+														"allowed",
+														"default"
+													],
+													"type": "object"
 												}
 											},
 											"type": "object"
@@ -10830,6 +11130,36 @@
 															"description": "Determines which tunnel protocol to use.",
 															"example": "wireguard",
 															"type": "string"
+														},
+														"virtual_networks": {
+															"description": "Virtual network access settings for the device.",
+															"nullable": true,
+															"properties": {
+																"allowed": {
+																	"description": "List of virtual network IDs the device is allowed to access. When virtual_networks is set, at least one entry is required.",
+																	"example": [
+																		"f174e90a-fafe-4643-bbbc-4a0ed4fc8415"
+																	],
+																	"items": {
+																		"format": "uuid",
+																		"type": "string"
+																	},
+																	"minItems": 1,
+																	"type": "array",
+																	"uniqueItems": true
+																},
+																"default": {
+																	"description": "The default virtual network ID. Must be included in the `allowed` list.",
+																	"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
+																	"format": "uuid",
+																	"type": "string"
+																}
+															},
+															"required": [
+																"allowed",
+																"default"
+															],
+															"type": "object"
 														}
 													},
 													"type": "object"
@@ -11208,6 +11538,36 @@
 								"description": "Determines which tunnel protocol to use.",
 								"example": "wireguard",
 								"type": "string"
+							},
+							"virtual_networks": {
+								"description": "Virtual network access settings for the device.",
+								"nullable": true,
+								"properties": {
+									"allowed": {
+										"description": "List of virtual network IDs the device is allowed to access. When virtual_networks is set, at least one entry is required.",
+										"example": [
+											"f174e90a-fafe-4643-bbbc-4a0ed4fc8415"
+										],
+										"items": {
+											"format": "uuid",
+											"type": "string"
+										},
+										"minItems": 1,
+										"type": "array",
+										"uniqueItems": true
+									},
+									"default": {
+										"description": "The default virtual network ID. Must be included in the `allowed` list.",
+										"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
+										"format": "uuid",
+										"type": "string"
+									}
+								},
+								"required": [
+									"allowed",
+									"default"
+								],
+								"type": "object"
 							}
 						},
 						"type": "object"
@@ -11720,6 +12080,36 @@
 													"description": "Determines which tunnel protocol to use.",
 													"example": "wireguard",
 													"type": "string"
+												},
+												"virtual_networks": {
+													"description": "Virtual network access settings for the device.",
+													"nullable": true,
+													"properties": {
+														"allowed": {
+															"description": "List of virtual network IDs the device is allowed to access. When virtual_networks is set, at least one entry is required.",
+															"example": [
+																"f174e90a-fafe-4643-bbbc-4a0ed4fc8415"
+															],
+															"items": {
+																"format": "uuid",
+																"type": "string"
+															},
+															"minItems": 1,
+															"type": "array",
+															"uniqueItems": true
+														},
+														"default": {
+															"description": "The default virtual network ID. Must be included in the `allowed` list.",
+															"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
+															"format": "uuid",
+															"type": "string"
+														}
+													},
+													"required": [
+														"allowed",
+														"default"
+													],
+													"type": "object"
 												}
 											},
 											"type": "object"
@@ -12238,6 +12628,36 @@
 															"description": "Determines which tunnel protocol to use.",
 															"example": "wireguard",
 															"type": "string"
+														},
+														"virtual_networks": {
+															"description": "Virtual network access settings for the device.",
+															"nullable": true,
+															"properties": {
+																"allowed": {
+																	"description": "List of virtual network IDs the device is allowed to access. When virtual_networks is set, at least one entry is required.",
+																	"example": [
+																		"f174e90a-fafe-4643-bbbc-4a0ed4fc8415"
+																	],
+																	"items": {
+																		"format": "uuid",
+																		"type": "string"
+																	},
+																	"minItems": 1,
+																	"type": "array",
+																	"uniqueItems": true
+																},
+																"default": {
+																	"description": "The default virtual network ID. Must be included in the `allowed` list.",
+																	"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
+																	"format": "uuid",
+																	"type": "string"
+																}
+															},
+															"required": [
+																"allowed",
+																"default"
+															],
+															"type": "object"
 														}
 													},
 													"type": "object"
@@ -13007,6 +13427,36 @@
 								"description": "Determines which tunnel protocol to use.",
 								"example": "wireguard",
 								"type": "string"
+							},
+							"virtual_networks": {
+								"description": "Virtual network access settings for the device.",
+								"nullable": true,
+								"properties": {
+									"allowed": {
+										"description": "List of virtual network IDs the device is allowed to access. When virtual_networks is set, at least one entry is required.",
+										"example": [
+											"f174e90a-fafe-4643-bbbc-4a0ed4fc8415"
+										],
+										"items": {
+											"format": "uuid",
+											"type": "string"
+										},
+										"minItems": 1,
+										"type": "array",
+										"uniqueItems": true
+									},
+									"default": {
+										"description": "The default virtual network ID. Must be included in the `allowed` list.",
+										"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
+										"format": "uuid",
+										"type": "string"
+									}
+								},
+								"required": [
+									"allowed",
+									"default"
+								],
+								"type": "object"
 							}
 						},
 						"required": [
@@ -13524,6 +13974,36 @@
 													"description": "Determines which tunnel protocol to use.",
 													"example": "wireguard",
 													"type": "string"
+												},
+												"virtual_networks": {
+													"description": "Virtual network access settings for the device.",
+													"nullable": true,
+													"properties": {
+														"allowed": {
+															"description": "List of virtual network IDs the device is allowed to access. When virtual_networks is set, at least one entry is required.",
+															"example": [
+																"f174e90a-fafe-4643-bbbc-4a0ed4fc8415"
+															],
+															"items": {
+																"format": "uuid",
+																"type": "string"
+															},
+															"minItems": 1,
+															"type": "array",
+															"uniqueItems": true
+														},
+														"default": {
+															"description": "The default virtual network ID. Must be included in the `allowed` list.",
+															"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
+															"format": "uuid",
+															"type": "string"
+														}
+													},
+													"required": [
+														"allowed",
+														"default"
+													],
+													"type": "object"
 												}
 											},
 											"type": "object"
@@ -14042,6 +14522,36 @@
 															"description": "Determines which tunnel protocol to use.",
 															"example": "wireguard",
 															"type": "string"
+														},
+														"virtual_networks": {
+															"description": "Virtual network access settings for the device.",
+															"nullable": true,
+															"properties": {
+																"allowed": {
+																	"description": "List of virtual network IDs the device is allowed to access. When virtual_networks is set, at least one entry is required.",
+																	"example": [
+																		"f174e90a-fafe-4643-bbbc-4a0ed4fc8415"
+																	],
+																	"items": {
+																		"format": "uuid",
+																		"type": "string"
+																	},
+																	"minItems": 1,
+																	"type": "array",
+																	"uniqueItems": true
+																},
+																"default": {
+																	"description": "The default virtual network ID. Must be included in the `allowed` list.",
+																	"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
+																	"format": "uuid",
+																	"type": "string"
+																}
+															},
+															"required": [
+																"allowed",
+																"default"
+															],
+															"type": "object"
 														}
 													},
 													"type": "object"

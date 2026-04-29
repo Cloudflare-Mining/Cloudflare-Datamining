@@ -1161,26 +1161,6 @@
 															},
 															{
 																"properties": {
-																	"auth_state": {
-																		"description": "The set of Kolide device authentication states that pass the posture check. Device must match one of the specified states.",
-																		"example": [
-																			"Good",
-																			"Notified"
-																		],
-																		"items": {
-																			"enum": [
-																				"Good",
-																				"Notified",
-																				"Will Block",
-																				"Blocked"
-																			],
-																			"type": "string"
-																		},
-																		"minItems": 1,
-																		"type": "array",
-																		"uniqueItems": true,
-																		"x-auditable": true
-																	},
 																	"connection_id": {
 																		"description": "Posture Integration ID.",
 																		"example": "bc7cbfbb-600a-42e4-8a23-45b5e85f804f",
@@ -2218,26 +2198,6 @@
 																	},
 																	{
 																		"properties": {
-																			"auth_state": {
-																				"description": "The set of Kolide device authentication states that pass the posture check. Device must match one of the specified states.",
-																				"example": [
-																					"Good",
-																					"Notified"
-																				],
-																				"items": {
-																					"enum": [
-																						"Good",
-																						"Notified",
-																						"Will Block",
-																						"Blocked"
-																					],
-																					"type": "string"
-																				},
-																				"minItems": 1,
-																				"type": "array",
-																				"uniqueItems": true,
-																				"x-auditable": true
-																			},
 																			"connection_id": {
 																				"description": "Posture Integration ID.",
 																				"example": "bc7cbfbb-600a-42e4-8a23-45b5e85f804f",
@@ -3377,26 +3337,6 @@
 														},
 														{
 															"properties": {
-																"auth_state": {
-																	"description": "The set of Kolide device authentication states that pass the posture check. Device must match one of the specified states.",
-																	"example": [
-																		"Good",
-																		"Notified"
-																	],
-																	"items": {
-																		"enum": [
-																			"Good",
-																			"Notified",
-																			"Will Block",
-																			"Blocked"
-																		],
-																		"type": "string"
-																	},
-																	"minItems": 1,
-																	"type": "array",
-																	"uniqueItems": true,
-																	"x-auditable": true
-																},
 																"connection_id": {
 																	"description": "Posture Integration ID.",
 																	"example": "bc7cbfbb-600a-42e4-8a23-45b5e85f804f",
@@ -4411,26 +4351,6 @@
 																},
 																{
 																	"properties": {
-																		"auth_state": {
-																			"description": "The set of Kolide device authentication states that pass the posture check. Device must match one of the specified states.",
-																			"example": [
-																				"Good",
-																				"Notified"
-																			],
-																			"items": {
-																				"enum": [
-																					"Good",
-																					"Notified",
-																					"Will Block",
-																					"Blocked"
-																				],
-																				"type": "string"
-																			},
-																			"minItems": 1,
-																			"type": "array",
-																			"uniqueItems": true,
-																			"x-auditable": true
-																		},
 																		"connection_id": {
 																			"description": "Posture Integration ID.",
 																			"example": "bc7cbfbb-600a-42e4-8a23-45b5e85f804f",
@@ -5445,26 +5365,6 @@
 									},
 									{
 										"properties": {
-											"auth_state": {
-												"description": "The set of Kolide device authentication states that pass the posture check. Device must match one of the specified states.",
-												"example": [
-													"Good",
-													"Notified"
-												],
-												"items": {
-													"enum": [
-														"Good",
-														"Notified",
-														"Will Block",
-														"Blocked"
-													],
-													"type": "string"
-												},
-												"minItems": 1,
-												"type": "array",
-												"uniqueItems": true,
-												"x-auditable": true
-											},
 											"connection_id": {
 												"description": "Posture Integration ID.",
 												"example": "bc7cbfbb-600a-42e4-8a23-45b5e85f804f",
@@ -6477,26 +6377,6 @@
 														},
 														{
 															"properties": {
-																"auth_state": {
-																	"description": "The set of Kolide device authentication states that pass the posture check. Device must match one of the specified states.",
-																	"example": [
-																		"Good",
-																		"Notified"
-																	],
-																	"items": {
-																		"enum": [
-																			"Good",
-																			"Notified",
-																			"Will Block",
-																			"Blocked"
-																		],
-																		"type": "string"
-																	},
-																	"minItems": 1,
-																	"type": "array",
-																	"uniqueItems": true,
-																	"x-auditable": true
-																},
 																"connection_id": {
 																	"description": "Posture Integration ID.",
 																	"example": "bc7cbfbb-600a-42e4-8a23-45b5e85f804f",
@@ -7511,26 +7391,6 @@
 																},
 																{
 																	"properties": {
-																		"auth_state": {
-																			"description": "The set of Kolide device authentication states that pass the posture check. Device must match one of the specified states.",
-																			"example": [
-																				"Good",
-																				"Notified"
-																			],
-																			"items": {
-																				"enum": [
-																					"Good",
-																					"Notified",
-																					"Will Block",
-																					"Blocked"
-																				],
-																				"type": "string"
-																			},
-																			"minItems": 1,
-																			"type": "array",
-																			"uniqueItems": true,
-																			"x-auditable": true
-																		},
 																		"connection_id": {
 																			"description": "Posture Integration ID.",
 																			"example": "bc7cbfbb-600a-42e4-8a23-45b5e85f804f",
@@ -8560,26 +8420,6 @@
 									},
 									{
 										"properties": {
-											"auth_state": {
-												"description": "The set of Kolide device authentication states that pass the posture check. Device must match one of the specified states.",
-												"example": [
-													"Good",
-													"Notified"
-												],
-												"items": {
-													"enum": [
-														"Good",
-														"Notified",
-														"Will Block",
-														"Blocked"
-													],
-													"type": "string"
-												},
-												"minItems": 1,
-												"type": "array",
-												"uniqueItems": true,
-												"x-auditable": true
-											},
 											"connection_id": {
 												"description": "Posture Integration ID.",
 												"example": "bc7cbfbb-600a-42e4-8a23-45b5e85f804f",
@@ -9592,26 +9432,6 @@
 														},
 														{
 															"properties": {
-																"auth_state": {
-																	"description": "The set of Kolide device authentication states that pass the posture check. Device must match one of the specified states.",
-																	"example": [
-																		"Good",
-																		"Notified"
-																	],
-																	"items": {
-																		"enum": [
-																			"Good",
-																			"Notified",
-																			"Will Block",
-																			"Blocked"
-																		],
-																		"type": "string"
-																	},
-																	"minItems": 1,
-																	"type": "array",
-																	"uniqueItems": true,
-																	"x-auditable": true
-																},
 																"connection_id": {
 																	"description": "Posture Integration ID.",
 																	"example": "bc7cbfbb-600a-42e4-8a23-45b5e85f804f",
@@ -10626,26 +10446,6 @@
 																},
 																{
 																	"properties": {
-																		"auth_state": {
-																			"description": "The set of Kolide device authentication states that pass the posture check. Device must match one of the specified states.",
-																			"example": [
-																				"Good",
-																				"Notified"
-																			],
-																			"items": {
-																				"enum": [
-																					"Good",
-																					"Notified",
-																					"Will Block",
-																					"Blocked"
-																				],
-																				"type": "string"
-																			},
-																			"minItems": 1,
-																			"type": "array",
-																			"uniqueItems": true,
-																			"x-auditable": true
-																		},
 																		"connection_id": {
 																			"description": "Posture Integration ID.",
 																			"example": "bc7cbfbb-600a-42e4-8a23-45b5e85f804f",
