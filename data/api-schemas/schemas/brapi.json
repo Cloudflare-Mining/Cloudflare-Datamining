@@ -334,6 +334,7 @@
 					"default": 5,
 					"description": "Cache TTL default is 5s. Set to 0 to disable.",
 					"maximum": 86400,
+					"minimum": 0,
 					"type": "number"
 				}
 			},
@@ -1400,6 +1401,209 @@
 			}
 		],
 		"summary": "Activate a browser target.",
+		"tags": [
+			"brapi"
+		],
+		"x-api-token-group": [
+			"Browser Rendering Write",
+			"Browser Rendering Read"
+		],
+		"x-cfPermissionsRequired": {
+			"enum": [
+				"com.cloudflare.api.account.brapi.read"
+			],
+			"type": "string"
+		},
+		"x-cfPlanAvailability": {
+			"business": true,
+			"enterprise": true,
+			"free": true,
+			"pro": true
+		}
+	},
+	"GET /accounts/{account_id}/browser-rendering/devtools/browser/{session_id}/json/close/{target_id}": {
+		"description": "Closes a specific browser target (tab, page, etc.) by its ID. Returns 'Target is closing' on success or an error if the target is not found.",
+		"operationId": "brapi-get_DevtoolsJsonClose",
+		"parameters": [
+			{
+				"description": "Browser session ID.",
+				"in": "path",
+				"name": "session_id",
+				"required": true,
+				"schema": {
+					"description": "Browser session ID.",
+					"format": "uuid",
+					"type": "string"
+				}
+			},
+			{
+				"description": "Account ID.",
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"description": "Account ID.",
+					"type": "string"
+				}
+			},
+			{
+				"description": "Target ID to close.",
+				"in": "path",
+				"name": "target_id",
+				"required": true,
+				"schema": {
+					"description": "Target ID to close.",
+					"pattern": "^[a-zA-Z0-9]+$",
+					"type": "string"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"message": {
+									"description": "Target is closing.",
+									"type": "string"
+								}
+							},
+							"required": [
+								"message"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Target is closing."
+			},
+			"400": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"code": {
+												"description": "Error code.",
+												"type": "number"
+											},
+											"message": {
+												"description": "Error message.",
+												"type": "string"
+											}
+										},
+										"required": [
+											"message",
+											"code"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"success": {
+									"description": "Response status.",
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Bad request."
+			},
+			"404": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"code": {
+												"description": "Error code.",
+												"type": "number"
+											},
+											"message": {
+												"description": "Error message.",
+												"type": "string"
+											}
+										},
+										"required": [
+											"message",
+											"code"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"success": {
+									"description": "Response status.",
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Target not found."
+			},
+			"500": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"code": {
+												"description": "Error code.",
+												"type": "number"
+											},
+											"message": {
+												"description": "Error message.",
+												"type": "string"
+											}
+										},
+										"required": [
+											"message",
+											"code"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"success": {
+									"description": "Response status.",
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Internal server error."
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": [],
+				"api_token": []
+			}
+		],
+		"summary": "Close a browser target.",
 		"tags": [
 			"brapi"
 		],
@@ -2656,6 +2860,7 @@
 					"default": 5,
 					"description": "Cache TTL default is 5s. Set to 0 to disable.",
 					"maximum": 86400,
+					"minimum": 0,
 					"type": "number"
 				}
 			}
@@ -4158,6 +4363,7 @@
 					"default": 5,
 					"description": "Cache TTL default is 5s. Set to 0 to disable.",
 					"maximum": 86400,
+					"minimum": 0,
 					"type": "number"
 				}
 			}
@@ -5636,6 +5842,7 @@
 					"default": 5,
 					"description": "Cache TTL default is 5s. Set to 0 to disable.",
 					"maximum": 86400,
+					"minimum": 0,
 					"type": "number"
 				}
 			}
@@ -7256,6 +7463,7 @@
 					"default": 5,
 					"description": "Cache TTL default is 5s. Set to 0 to disable.",
 					"maximum": 86400,
+					"minimum": 0,
 					"type": "number"
 				}
 			}
@@ -8765,6 +8973,7 @@
 					"default": 5,
 					"description": "Cache TTL default is 5s. Set to 0 to disable.",
 					"maximum": 86400,
+					"minimum": 0,
 					"type": "number"
 				}
 			}
@@ -10255,6 +10464,7 @@
 					"default": 5,
 					"description": "Cache TTL default is 5s. Set to 0 to disable.",
 					"maximum": 86400,
+					"minimum": 0,
 					"type": "number"
 				}
 			}
@@ -12019,6 +12229,7 @@
 					"default": 5,
 					"description": "Cache TTL default is 5s. Set to 0 to disable.",
 					"maximum": 86400,
+					"minimum": 0,
 					"type": "number"
 				}
 			}
@@ -13617,6 +13828,7 @@
 					"default": 5,
 					"description": "Cache TTL default is 5s. Set to 0 to disable.",
 					"maximum": 86400,
+					"minimum": 0,
 					"type": "number"
 				}
 			}
@@ -15323,6 +15535,7 @@
 					"default": 5,
 					"description": "Cache TTL default is 5s. Set to 0 to disable.",
 					"maximum": 86400,
+					"minimum": 0,
 					"type": "number"
 				}
 			}
