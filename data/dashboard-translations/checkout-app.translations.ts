@@ -213,6 +213,7 @@
 				transfer_initiated: "Transfer initiated"
 			}
 		},
+		authorizing: "Authorizing",
 		confirming: "Confirming",
 		continue_billing: "Continue to billing address",
 		pay_credit_card: "Pay with credit card",

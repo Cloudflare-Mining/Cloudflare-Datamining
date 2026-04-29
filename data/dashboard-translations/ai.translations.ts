@@ -81,7 +81,9 @@
 	banner: {
 		daily_neuron_exceeded: (0, i.p)(h(), "neuronLimit"),
 		supported_models_title: "Can't find what you're looking for?",
-		supported_models_description: (0, i.p)(k())
+		supported_models_description: (0, i.p)(k()),
+		minimax_free_this_week_title: "Minimax Music 2.6 is free this week",
+		minimax_try_now_cta: "Try now"
 	},
 	pagination: {
 		models: {
@@ -156,7 +158,7 @@
 		no_results_found: "No results found",
 		sort_by_name: "Name",
 		sort_by_date_added: "Date added",
-		models_found: (0, i.p)(A(), "count")
+		models_found: (0, i.p)(y(), "count")
 	},
 	create_ai_worker: "Create an AI Model Worker",
 	create_ai_worker_description: "Choose an AI application template.",
@@ -178,7 +180,7 @@
 	},
 	model_catalog: "Model Catalog",
 	using_workers_ai_rest_api: "Using Workers AI REST API",
-	using_workers_ai_rest_api_description: (0, i.p)(y()),
+	using_workers_ai_rest_api_description: (0, i.p)(A()),
 	product_title: "Workers AI",
 	models_title: "Models",
 	models_tagline: "Browse and discover AI models available through Cloudflare",

@@ -94,7 +94,8 @@
 				close_reason: "Close Reason",
 				recording: "Recording"
 			},
-			view_recording: "View Recording"
+			view_recording: "View Recording",
+			recording_expired: "Recording expired after 30 days"
 		},
 		connection: {
 			title: "Connections Log",
@@ -136,7 +137,7 @@
 		tabTitle: "Title",
 		tabUrl: "URL",
 		getStarted: "Get started",
-		results: (0, r.p)(u(), "count")
+		results: (0, r.p)(d(), "count")
 	},
 	recording: {
 		replay: "Replay",
@@ -169,7 +170,7 @@
 		go_back: "Go back to sessions"
 	},
 	playground: {
-		ai_extraction_notice: (0, r.p)(d()),
+		ai_extraction_notice: (0, r.p)(u()),
 		usage_notice: (0, r.p)(_())
 	},
 	crawl: {

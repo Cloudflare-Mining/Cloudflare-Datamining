@@ -34,6 +34,7 @@
 		add: "Add",
 		done: "Done",
 		active: "Active",
+		usage: "Usage",
 		beta: "Beta",
 		details: "Details",
 		onboarding: "Onboarding",
@@ -94,6 +95,9 @@
 				sender: "Sender",
 				received: "Received",
 				result: "Result"
+			},
+			emptyState: {
+				title: "No activity logs found"
 			}
 		},
 		logDetail: {
@@ -142,7 +146,26 @@
 			required: "This field is required.",
 			invalidEmail: "Enter a valid email address."
 		},
-		retry: "Retry"
+		retry: "Retry",
+		suppressions: {
+			title: "Suppressions",
+			noSuppressionsFound: "No suppressions found",
+			noSuppressionsYet: "You have no suppressions yet.",
+			email: "Email",
+			reason: "Reason",
+			zones: "Zones",
+			allZones: "All",
+			reasons: {
+				manual: "Manual",
+				complaint: "Complaint",
+				hard_bounce: "Hard Bounce",
+				soft_bounce: "Soft Bounce",
+				policy: "Policy",
+				unknown: "Unknown"
+			},
+			createdAt: "Created",
+			expiresAt: "Expires"
+		}
 	},
 	emailSending: {
 		title: "Email Sending",
@@ -197,24 +220,7 @@
 				noActivityFound: "No activity found"
 			},
 			suppressions: {
-				title: "Suppressions",
 				description: "Suppressed addresses will not receive emails sent from this zone.",
-				noSuppressionsFound: "No suppressions found",
-				noSuppressionsYet: "You have no suppressions yet.",
-				email: "Email",
-				reason: "Reason",
-				zones: "Zones",
-				allZones: "All",
-				reasons: {
-					manual: "Manual",
-					complaint: "Complaint",
-					hard_bounce: "Hard Bounce",
-					soft_bounce: "Soft Bounce",
-					policy: "Policy",
-					unknown: "Unknown"
-				},
-				createdAt: "Created",
-				expiresAt: "Expires",
 				toast: {
 					deleting: "Deleting suppression",
 					deleted: "Suppression deleted",
@@ -399,9 +405,6 @@
 				},
 				table: {
 					to: "Custom Address"
-				},
-				emptyState: {
-					title: "No activity logs found"
 				}
 			},
 			rules: {

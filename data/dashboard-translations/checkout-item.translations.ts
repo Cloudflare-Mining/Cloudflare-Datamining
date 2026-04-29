@@ -219,11 +219,11 @@
 		seats_subtitle: "%{count} \xd7 %{price}/user/month",
 		browser_isolation_title: "Browser Isolation",
 		browser_isolation_subtitle: "%{count} \xd7 %{price}/user/month",
-		feature_unlimited_users: "Unlimited Users",
-		feature_50_locations: "Up to 50 Locations",
-		feature_30_day_logs: "30-day Log Retention",
-		feature_15_day_dex: "15-day DEX Tests",
-		feature_bi_addon: "Browser Isolation Add-on",
-		feature_chat_email_support: "Chat and Email Support"
+		feature_seats: "Add unlimited paid seats",
+		feature_log_retention: "30 days of log retention",
+		feature_dem_tests: "30 Digital Experience Monitoring tests",
+		feature_dns_locations: "25 DNS filtering locations",
+		feature_bi_addon: "Browser Isolation add on available",
+		feature_support: "Ticket support"
 	}
 }

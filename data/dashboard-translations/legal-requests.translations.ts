@@ -2,24 +2,23 @@
 	create_legal_request: "Create legal request",
 	landing_page: {
 		title: "Legal requests",
-		description: "View legal requests you've submitted to Cloudflare."
+		description: "View and manage legal requests you've submitted to Cloudflare. Only requests created by you are shown."
 	},
 	two_factor_required: "You cannot access this page until you have enabled two-factor authentication or single sign-on (SSO).",
 	two_factor_required_link: "Enable two-factor authentication",
 	table: {
 		columns: {
 			id: "Request ID",
-			summary: "Summary",
-			type: "Type",
 			status: "Status",
 			created: "Created"
 		},
 		status: {
-			open: "Open",
-			closed: "Closed",
-			in_progress: "In Progress",
-			awaiting_customer: "Awaiting Response",
-			declined: "Declined"
+			submitted: "Submitted",
+			closed: "Closed"
+		},
+		tooltip: {
+			submitted: "Your request has been received and is being reviewed. A Cloudflare representative will contact you as processing begins.",
+			closed: "This request has been closed. Contact Cloudflare if you have further questions."
 		},
 		empty_title: "No requests submitted yet",
 		empty_description: "Submit a legal request to get started."
@@ -42,6 +41,7 @@
 		required_field: "{label} is required",
 		required_field_legend: "Fields marked with * are required.",
 		invalid_format: "Invalid format",
+		prefill_notice: "Some fields have been pre-filled from your account. Please review before submitting.",
 		sections: {
 			general: "General Information"
 		}
