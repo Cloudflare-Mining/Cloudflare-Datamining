@@ -2533,7 +2533,7 @@ export interface R2ListOptions {
   startAfter?: string;
   include?: ("httpMetadata" | "customMetadata")[];
 }
-export declare abstract class R2Bucket {
+export interface R2Bucket {
   head(key: string): Promise<R2Object | null>;
   get(
     key: string,
@@ -4009,6 +4009,7 @@ export interface Container {
   interceptOutboundHttps(addr: string, binding: Fetcher): Promise<void>;
   exec(cmd: string[], options?: ContainerExecOptions): Promise<ExecProcess>;
   interceptOutboundTcp(addr: string, binding: Fetcher): Promise<void>;
+  inspect(): Promise<ContainerInfo | null>;
 }
 export interface ContainerDirectorySnapshot {
   id: string;
@@ -4040,6 +4041,9 @@ export interface ContainerStartupOptions {
   labels?: Record<string, string>;
   directorySnapshots?: ContainerDirectorySnapshotRestoreParams[];
   containerSnapshot?: ContainerSnapshot;
+}
+export interface ContainerInfo {
+  labels: Record<string, string>;
 }
 /**
  * The **`FileSystemHandle`** interface of the File System API is an object which represents a file or directory entry.
@@ -14326,16 +14330,28 @@ export declare namespace CloudflareWorkersModule {
     attempt: number;
     config: WorkflowStepConfig;
   };
+  export interface RollbackContext<T> {
+    error: Error;
+    output: NonNullable<T> | undefined;
+    stepName: string;
+  }
+  export interface StepPromise<T> extends Promise<T> {
+    rollback(fn: (ctx: RollbackContext<T>) => Promise<void>): StepPromise<T>;
+    rollback(
+      config: WorkflowStepConfig,
+      fn: (ctx: RollbackContext<T>) => Promise<void>,
+    ): StepPromise<T>;
+  }
   export abstract class WorkflowStep {
     do<T extends Rpc.Serializable<T>>(
       name: string,
       callback: (ctx: WorkflowStepContext) => Promise<T>,
-    ): Promise<T>;
+    ): StepPromise<T>;
     do<T extends Rpc.Serializable<T>>(
       name: string,
       config: WorkflowStepConfig,
       callback: (ctx: WorkflowStepContext) => Promise<T>,
-    ): Promise<T>;
+    ): StepPromise<T>;
     sleep: (name: string, duration: WorkflowSleepDuration) => Promise<void>;
     sleepUntil: (name: string, timestamp: Date | number) => Promise<void>;
     waitForEvent<T extends Rpc.Serializable<T>>(
@@ -14344,7 +14360,7 @@ export declare namespace CloudflareWorkersModule {
         type: string;
         timeout?: WorkflowTimeoutDuration | number;
       },
-    ): Promise<WorkflowStepEvent<T>>;
+    ): StepPromise<WorkflowStepEvent<T>>;
   }
   export type WorkflowInstanceStatus =
     | "queued"
