@@ -496,8 +496,10 @@
 																					{
 																						"oneOf": [
 																							{
+																								"description": "A Predefined AI prompt classification topic entry.",
 																								"properties": {
 																									"description": {
+																										"description": "A customer-facing explanation of what this predefined AI prompt topic represents.",
 																										"nullable": true,
 																										"type": "string"
 																									},
@@ -517,6 +519,26 @@
 																								},
 																								"required": [
 																									"topic_type",
+																									"type"
+																								],
+																								"type": "object"
+																							},
+																							{
+																								"description": "A general predefined entry.",
+																								"properties": {
+																									"description": {
+																										"description": "A customer-facing explanation of what this predefined entry represents.",
+																										"nullable": true,
+																										"type": "string"
+																									},
+																									"type": {
+																										"enum": [
+																											"General"
+																										],
+																										"type": "string"
+																									}
+																								},
+																								"required": [
 																									"type"
 																								],
 																								"type": "object"
@@ -1183,8 +1205,10 @@
 																						{
 																							"oneOf": [
 																								{
+																									"description": "A Predefined AI prompt classification topic entry.",
 																									"properties": {
 																										"description": {
+																											"description": "A customer-facing explanation of what this predefined AI prompt topic represents.",
 																											"nullable": true,
 																											"type": "string"
 																										},
@@ -1204,6 +1228,26 @@
 																									},
 																									"required": [
 																										"topic_type",
+																										"type"
+																									],
+																									"type": "object"
+																								},
+																								{
+																									"description": "A general predefined entry.",
+																									"properties": {
+																										"description": {
+																											"description": "A customer-facing explanation of what this predefined entry represents.",
+																											"nullable": true,
+																											"type": "string"
+																										},
+																										"type": {
+																											"enum": [
+																												"General"
+																											],
+																											"type": "string"
+																										}
+																									},
+																									"required": [
 																										"type"
 																									],
 																									"type": "object"
@@ -2370,8 +2414,10 @@
 																		{
 																			"oneOf": [
 																				{
+																					"description": "A Predefined AI prompt classification topic entry.",
 																					"properties": {
 																						"description": {
+																							"description": "A customer-facing explanation of what this predefined AI prompt topic represents.",
 																							"nullable": true,
 																							"type": "string"
 																						},
@@ -2391,6 +2437,26 @@
 																					},
 																					"required": [
 																						"topic_type",
+																						"type"
+																					],
+																					"type": "object"
+																				},
+																				{
+																					"description": "A general predefined entry.",
+																					"properties": {
+																						"description": {
+																							"description": "A customer-facing explanation of what this predefined entry represents.",
+																							"nullable": true,
+																							"type": "string"
+																						},
+																						"type": {
+																							"enum": [
+																								"General"
+																							],
+																							"type": "string"
+																						}
+																					},
+																					"required": [
 																						"type"
 																					],
 																					"type": "object"
@@ -3339,8 +3405,10 @@
 														{
 															"oneOf": [
 																{
+																	"description": "A Predefined AI prompt classification topic entry.",
 																	"properties": {
 																		"description": {
+																			"description": "A customer-facing explanation of what this predefined AI prompt topic represents.",
 																			"nullable": true,
 																			"type": "string"
 																		},
@@ -3360,6 +3428,26 @@
 																	},
 																	"required": [
 																		"topic_type",
+																		"type"
+																	],
+																	"type": "object"
+																},
+																{
+																	"description": "A general predefined entry.",
+																	"properties": {
+																		"description": {
+																			"description": "A customer-facing explanation of what this predefined entry represents.",
+																			"nullable": true,
+																			"type": "string"
+																		},
+																		"type": {
+																			"enum": [
+																				"General"
+																			],
+																			"type": "string"
+																		}
+																	},
+																	"required": [
 																		"type"
 																	],
 																	"type": "object"
