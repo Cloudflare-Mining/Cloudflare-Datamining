@@ -109,6 +109,14 @@
 														"serial_number": {
 															"type": "string",
 															"x-auditable": true
+														},
+														"type": {
+															"enum": [
+																"MANAGED",
+																"LICENSED"
+															],
+															"type": "string",
+															"x-auditable": true
 														}
 													},
 													"required": [
@@ -607,6 +615,18 @@
 					"readOnly": true,
 					"type": "string"
 				}
+			},
+			{
+				"description": "Filter connectors by device type.",
+				"in": "query",
+				"name": "device_type",
+				"schema": {
+					"enum": [
+						"MANAGED",
+						"LICENSED"
+					],
+					"type": "string"
+				}
 			}
 		],
 		"responses": {
@@ -693,6 +713,14 @@
 																"x-auditable": true
 															},
 															"serial_number": {
+																"type": "string",
+																"x-auditable": true
+															},
+															"type": {
+																"enum": [
+																	"MANAGED",
+																	"LICENSED"
+																],
 																"type": "string",
 																"x-auditable": true
 															}
@@ -1218,6 +1246,14 @@
 															"x-auditable": true
 														},
 														"serial_number": {
+															"type": "string",
+															"x-auditable": true
+														},
+														"type": {
+															"enum": [
+																"MANAGED",
+																"LICENSED"
+															],
 															"type": "string",
 															"x-auditable": true
 														}
@@ -7394,6 +7430,14 @@
 														"serial_number": {
 															"type": "string",
 															"x-auditable": true
+														},
+														"type": {
+															"enum": [
+																"MANAGED",
+																"LICENSED"
+															],
+															"type": "string",
+															"x-auditable": true
 														}
 													},
 													"required": [
@@ -8080,6 +8124,14 @@
 															"x-auditable": true
 														},
 														"serial_number": {
+															"type": "string",
+															"x-auditable": true
+														},
+														"type": {
+															"enum": [
+																"MANAGED",
+																"LICENSED"
+															],
 															"type": "string",
 															"x-auditable": true
 														}
@@ -8833,6 +8885,14 @@
 															"x-auditable": true
 														},
 														"serial_number": {
+															"type": "string",
+															"x-auditable": true
+														},
+														"type": {
+															"enum": [
+																"MANAGED",
+																"LICENSED"
+															],
 															"type": "string",
 															"x-auditable": true
 														}
