@@ -1480,6 +1480,98 @@
 		"bits": "Confidence interval for the corresponding point estimate",
 		"packets": "Confidence interval for the corresponding point estimate"
 	},
+	"AccountCf1AccessLogins1dGroups": {
+		"__description": "CF1 Access login analytics - 1 day rollup (up to 90d window, 365d back)",
+		"dimensions": "List of dimensions to group by",
+		"sum": "",
+		"uniq": ""
+	},
+	"AccountCf1AccessLogins1dGroupsDimensions": {
+		"__description": "",
+		"allowed": "Whether the login was allowed or denied",
+		"appName": "Application name",
+		"appType": "Application type",
+		"country": "Source country code",
+		"datetime": "Day start timestamp (daily granularity)",
+		"idp": "Identity provider",
+		"loginType": "Login event type (login, logout, sso)"
+	},
+	"AccountCf1AccessLogins1dGroupsFilter_InputObject": {
+		"__description": ""
+	},
+	"AccountCf1AccessLogins1dGroupsOrderBy": {
+		"__description": ""
+	},
+	"AccountCf1AccessLogins1dGroupsSum": {
+		"__description": "",
+		"logins": "Total login attempts"
+	},
+	"AccountCf1AccessLogins1dGroupsUniq": {
+		"__description": "",
+		"users": "Unique users"
+	},
+	"AccountCf1AccessLogins1hGroups": {
+		"__description": "CF1 Access login analytics - 1 hour rollup (up to 31d window, 62d back). Use cf1AccessLogins1dGroups for 10d+ ranges.",
+		"dimensions": "List of dimensions to group by",
+		"sum": "",
+		"uniq": ""
+	},
+	"AccountCf1AccessLogins1hGroupsDimensions": {
+		"__description": "",
+		"allowed": "Whether the login was allowed or denied",
+		"appName": "Application name",
+		"appType": "Application type",
+		"country": "Source country code",
+		"datetime": "Hour start timestamp (hourly granularity)",
+		"idp": "Identity provider",
+		"loginType": "Login event type (login, logout, sso)"
+	},
+	"AccountCf1AccessLogins1hGroupsFilter_InputObject": {
+		"__description": ""
+	},
+	"AccountCf1AccessLogins1hGroupsOrderBy": {
+		"__description": ""
+	},
+	"AccountCf1AccessLogins1hGroupsSum": {
+		"__description": "",
+		"logins": "Total login attempts"
+	},
+	"AccountCf1AccessLogins1hGroupsUniq": {
+		"__description": "",
+		"users": "Unique users"
+	},
+	"AccountCf1AccessLoginsRawGroups": {
+		"__description": "CF1 Access login analytics - raw data (max 3h window, up to 31d back). Supports unique user counts. Use cf1AccessLogins1hGroups for longer ranges.",
+		"dimensions": "List of dimensions to group by",
+		"sum": "",
+		"uniq": ""
+	},
+	"AccountCf1AccessLoginsRawGroupsDimensions": {
+		"__description": "",
+		"allowed": "Whether the login was allowed or denied",
+		"appName": "Application name",
+		"appType": "Application type",
+		"country": "Source country code",
+		"datetime": "Login timestamp",
+		"datetimeFiveMinutes": "Login timestamp truncated to five minutes",
+		"datetimeHour": "Login timestamp truncated to hour",
+		"idp": "Identity provider",
+		"loginType": "Login event type (login, logout, sso)"
+	},
+	"AccountCf1AccessLoginsRawGroupsFilter_InputObject": {
+		"__description": ""
+	},
+	"AccountCf1AccessLoginsRawGroupsOrderBy": {
+		"__description": ""
+	},
+	"AccountCf1AccessLoginsRawGroupsSum": {
+		"__description": "",
+		"logins": "Total login attempts"
+	},
+	"AccountCf1AccessLoginsRawGroupsUniq": {
+		"__description": "",
+		"users": "Unique users"
+	},
 	"AccountCf1GatewayDns1dGroups": {
 		"__description": "CF1 Gateway DNS analytics - 1 day rollup",
 		"dimensions": "List of dimensions to group by",
@@ -1586,6 +1678,333 @@
 		"responseBytes": "Total response bytes"
 	},
 	"AccountCf1GatewayDnsRawGroupsUniq": {
+		"__description": "",
+		"devices": "Unique devices",
+		"users": "Unique users"
+	},
+	"AccountCf1GatewayHttp1dGroups": {
+		"__description": "CF1 Gateway HTTP analytics - 1 day rollup (up to 90d window, 365d back)",
+		"dimensions": "List of dimensions to group by",
+		"sum": "",
+		"uniq": ""
+	},
+	"AccountCf1GatewayHttp1dGroupsDimensions": {
+		"__description": "",
+		"action": "Gateway action taken",
+		"country": "Source country code",
+		"datetime": "Day start timestamp (daily granularity)",
+		"httpHost": "HTTP hostname"
+	},
+	"AccountCf1GatewayHttp1dGroupsFilter_InputObject": {
+		"__description": ""
+	},
+	"AccountCf1GatewayHttp1dGroupsOrderBy": {
+		"__description": ""
+	},
+	"AccountCf1GatewayHttp1dGroupsSum": {
+		"__description": "",
+		"bodyBytesRcvd": "Total body bytes received",
+		"bodyBytesSent": "Total body bytes sent",
+		"httpHostBytesRcvd": "Total bytes received per host",
+		"httpHostBytesSent": "Total bytes sent per host",
+		"requests": "Total HTTP requests"
+	},
+	"AccountCf1GatewayHttp1dGroupsUniq": {
+		"__description": "",
+		"users": "Unique users"
+	},
+	"AccountCf1GatewayHttp1hGroups": {
+		"__description": "CF1 Gateway HTTP analytics - 1 hour rollup (up to 31d window, 62d back)",
+		"dimensions": "List of dimensions to group by",
+		"sum": "",
+		"uniq": ""
+	},
+	"AccountCf1GatewayHttp1hGroupsDimensions": {
+		"__description": "",
+		"action": "Gateway action taken",
+		"country": "Source country code",
+		"datetime": "Hour start timestamp (hourly granularity)",
+		"httpHost": "HTTP hostname"
+	},
+	"AccountCf1GatewayHttp1hGroupsFilter_InputObject": {
+		"__description": ""
+	},
+	"AccountCf1GatewayHttp1hGroupsOrderBy": {
+		"__description": ""
+	},
+	"AccountCf1GatewayHttp1hGroupsSum": {
+		"__description": "",
+		"bodyBytesRcvd": "Total body bytes received",
+		"bodyBytesSent": "Total body bytes sent",
+		"httpHostBytesRcvd": "Total bytes received per host",
+		"httpHostBytesSent": "Total bytes sent per host",
+		"requests": "Total HTTP requests"
+	},
+	"AccountCf1GatewayHttp1hGroupsUniq": {
+		"__description": "",
+		"users": "Unique users"
+	},
+	"AccountCf1GatewayHttpRawGroups": {
+		"__description": "CF1 Gateway HTTP analytics - raw data (max 3h query window, 4d lookback). Use cf1GatewayHttp1hGroups for longer ranges, or cf1GatewayHttp1dGroups for 10d+",
+		"dimensions": "List of dimensions to group by",
+		"sum": "",
+		"uniq": ""
+	},
+	"AccountCf1GatewayHttpRawGroupsDimensions": {
+		"__description": "",
+		"action": "Gateway action taken",
+		"country": "Source country code",
+		"datetime": "Request timestamp",
+		"datetimeFiveMinutes": "Request timestamp truncated to five minutes",
+		"datetimeHour": "Request timestamp truncated to hour",
+		"httpHost": "HTTP hostname"
+	},
+	"AccountCf1GatewayHttpRawGroupsFilter_InputObject": {
+		"__description": ""
+	},
+	"AccountCf1GatewayHttpRawGroupsOrderBy": {
+		"__description": ""
+	},
+	"AccountCf1GatewayHttpRawGroupsSum": {
+		"__description": "",
+		"bodyBytesRcvd": "Total body bytes received",
+		"bodyBytesSent": "Total body bytes sent",
+		"httpHostBytesRcvd": "Total bytes received per host",
+		"httpHostBytesSent": "Total bytes sent per host",
+		"requests": "Total HTTP requests"
+	},
+	"AccountCf1GatewayHttpRawGroupsUniq": {
+		"__description": "",
+		"users": "Unique users"
+	},
+	"AccountCf1GatewayNetwork1dGroups": {
+		"__description": "CF1 Gateway Network analytics (L4 firewall events) - 1 day rollup (up to 90d window, 365d back)",
+		"dimensions": "List of dimensions to group by",
+		"sum": "",
+		"uniq": ""
+	},
+	"AccountCf1GatewayNetwork1dGroupsDimensions": {
+		"__description": "",
+		"action": "Gateway firewall decision",
+		"coloName": "Cloudflare colo code",
+		"datetime": "Day start timestamp (daily granularity)",
+		"destinationCountry": "Destination country code (ISO 3166-1 alpha-2)",
+		"ruleId": "Policy rule ID",
+		"sni": "Server Name Indication from TLS handshake",
+		"sourceCountry": "Source country code (ISO 3166-1 alpha-2)",
+		"transport": "Transport protocol"
+	},
+	"AccountCf1GatewayNetwork1dGroupsFilter_InputObject": {
+		"__description": ""
+	},
+	"AccountCf1GatewayNetwork1dGroupsOrderBy": {
+		"__description": ""
+	},
+	"AccountCf1GatewayNetwork1dGroupsSum": {
+		"__description": "",
+		"requests": "Total network firewall events"
+	},
+	"AccountCf1GatewayNetwork1dGroupsUniq": {
+		"__description": "",
+		"devices": "Unique devices",
+		"users": "Unique users"
+	},
+	"AccountCf1GatewayNetwork1hGroups": {
+		"__description": "CF1 Gateway Network analytics (L4 firewall events) - 1 hour rollup (up to 31d window, 62d back)",
+		"dimensions": "List of dimensions to group by",
+		"sum": "",
+		"uniq": ""
+	},
+	"AccountCf1GatewayNetwork1hGroupsDimensions": {
+		"__description": "",
+		"action": "Gateway firewall decision",
+		"coloName": "Cloudflare colo code",
+		"datetime": "Hour start timestamp (hourly granularity)",
+		"destinationCountry": "Destination country code (ISO 3166-1 alpha-2)",
+		"ruleId": "Policy rule ID",
+		"sni": "Server Name Indication from TLS handshake",
+		"sourceCountry": "Source country code (ISO 3166-1 alpha-2)",
+		"transport": "Transport protocol"
+	},
+	"AccountCf1GatewayNetwork1hGroupsFilter_InputObject": {
+		"__description": ""
+	},
+	"AccountCf1GatewayNetwork1hGroupsOrderBy": {
+		"__description": ""
+	},
+	"AccountCf1GatewayNetwork1hGroupsSum": {
+		"__description": "",
+		"requests": "Total network firewall events"
+	},
+	"AccountCf1GatewayNetwork1hGroupsUniq": {
+		"__description": "",
+		"devices": "Unique devices",
+		"users": "Unique users"
+	},
+	"AccountCf1GatewayNetworkRawGroups": {
+		"__description": "CF1 Gateway Network analytics (L4 firewall events) - raw data (max 3h query window, 4d lookback). Use cf1GatewayNetwork1hGroups for longer ranges, or cf1GatewayNetwork1dGroups for 10d+",
+		"dimensions": "List of dimensions to group by",
+		"sum": "",
+		"uniq": ""
+	},
+	"AccountCf1GatewayNetworkRawGroupsDimensions": {
+		"__description": "",
+		"action": "Gateway firewall decision",
+		"coloName": "Cloudflare colo code",
+		"datetime": "Event timestamp",
+		"datetimeFiveMinutes": "Event timestamp truncated to five minutes",
+		"datetimeHour": "Event timestamp truncated to hour",
+		"destinationCountry": "Destination country code (ISO 3166-1 alpha-2)",
+		"ruleId": "Policy rule ID",
+		"sni": "Server Name Indication from TLS handshake",
+		"sourceCountry": "Source country code (ISO 3166-1 alpha-2)",
+		"transport": "Transport protocol"
+	},
+	"AccountCf1GatewayNetworkRawGroupsFilter_InputObject": {
+		"__description": ""
+	},
+	"AccountCf1GatewayNetworkRawGroupsOrderBy": {
+		"__description": ""
+	},
+	"AccountCf1GatewayNetworkRawGroupsSum": {
+		"__description": "",
+		"requests": "Total network firewall events"
+	},
+	"AccountCf1GatewayNetworkRawGroupsUniq": {
+		"__description": "",
+		"devices": "Unique devices",
+		"users": "Unique users"
+	},
+	"AccountCf1GatewayNetworkSession1dGroups": {
+		"__description": "CF1 Gateway Network Session Log analytics - 1 day rollup (up to 90d window, 365d back)",
+		"avg": "",
+		"dimensions": "List of dimensions to group by",
+		"sum": "",
+		"uniq": ""
+	},
+	"AccountCf1GatewayNetworkSession1dGroupsAvg": {
+		"__description": "",
+		"tcpHandshakeMs": "Average client TCP handshake duration in milliseconds"
+	},
+	"AccountCf1GatewayNetworkSession1dGroupsDimensions": {
+		"__description": "",
+		"connectionCloseReason": "Reason the connection was closed",
+		"datetime": "Day start timestamp (daily granularity)",
+		"destinationPort": "Destination port number",
+		"destinationTunnelId": "Destination tunnel ID",
+		"egressColoName": "Egress Cloudflare colo code",
+		"egressRuleId": "Egress policy rule ID",
+		"ingressColoName": "Ingress Cloudflare colo code",
+		"offramp": "Egress offramp type",
+		"onRamp": "Ingress onramp type (derived from flowPath)",
+		"protocol": "L4 protocol",
+		"sni": "Server Name Indication from TLS handshake",
+		"sourceCountry": "Source country code (ISO 3166-1 alpha-2)"
+	},
+	"AccountCf1GatewayNetworkSession1dGroupsFilter_InputObject": {
+		"__description": ""
+	},
+	"AccountCf1GatewayNetworkSession1dGroupsOrderBy": {
+		"__description": ""
+	},
+	"AccountCf1GatewayNetworkSession1dGroupsSum": {
+		"__description": "",
+		"bytesDownload": "Total bytes downloaded (origin to client)",
+		"bytesTotal": "Total bytes transferred (upload + download)",
+		"bytesUpload": "Total bytes uploaded (client to origin)",
+		"sessions": "Total network sessions"
+	},
+	"AccountCf1GatewayNetworkSession1dGroupsUniq": {
+		"__description": "",
+		"devices": "Unique devices",
+		"users": "Unique users"
+	},
+	"AccountCf1GatewayNetworkSession1hGroups": {
+		"__description": "CF1 Gateway Network Session Log analytics - 1 hour rollup (up to 31d window, 62d back)",
+		"avg": "",
+		"dimensions": "List of dimensions to group by",
+		"sum": "",
+		"uniq": ""
+	},
+	"AccountCf1GatewayNetworkSession1hGroupsAvg": {
+		"__description": "",
+		"tcpHandshakeMs": "Average client TCP handshake duration in milliseconds"
+	},
+	"AccountCf1GatewayNetworkSession1hGroupsDimensions": {
+		"__description": "",
+		"connectionCloseReason": "Reason the connection was closed",
+		"datetime": "Hour start timestamp (hourly granularity)",
+		"destinationPort": "Destination port number",
+		"destinationTunnelId": "Destination tunnel ID",
+		"egressColoName": "Egress Cloudflare colo code",
+		"egressRuleId": "Egress policy rule ID",
+		"ingressColoName": "Ingress Cloudflare colo code",
+		"offramp": "Egress offramp type",
+		"onRamp": "Ingress onramp type (derived from flowPath)",
+		"protocol": "L4 protocol",
+		"sni": "Server Name Indication from TLS handshake",
+		"sourceCountry": "Source country code (ISO 3166-1 alpha-2)"
+	},
+	"AccountCf1GatewayNetworkSession1hGroupsFilter_InputObject": {
+		"__description": ""
+	},
+	"AccountCf1GatewayNetworkSession1hGroupsOrderBy": {
+		"__description": ""
+	},
+	"AccountCf1GatewayNetworkSession1hGroupsSum": {
+		"__description": "",
+		"bytesDownload": "Total bytes downloaded (origin to client)",
+		"bytesTotal": "Total bytes transferred (upload + download)",
+		"bytesUpload": "Total bytes uploaded (client to origin)",
+		"sessions": "Total network sessions"
+	},
+	"AccountCf1GatewayNetworkSession1hGroupsUniq": {
+		"__description": "",
+		"devices": "Unique devices",
+		"users": "Unique users"
+	},
+	"AccountCf1GatewayNetworkSessionRawGroups": {
+		"__description": "CF1 Gateway Network Session Log (L4 sessions with bandwidth) - raw data (max 3h query window, 4d lookback). Use cf1GatewayNetworkSession1hGroups for longer ranges, or cf1GatewayNetworkSession1dGroups for 10d+",
+		"avg": "",
+		"dimensions": "List of dimensions to group by",
+		"sum": "",
+		"uniq": ""
+	},
+	"AccountCf1GatewayNetworkSessionRawGroupsAvg": {
+		"__description": "",
+		"tcpHandshakeMs": "Average client TCP handshake duration in milliseconds"
+	},
+	"AccountCf1GatewayNetworkSessionRawGroupsDimensions": {
+		"__description": "",
+		"connectionCloseReason": "Reason the connection was closed",
+		"datetime": "Session close timestamp",
+		"datetimeFiveMinutes": "Session close timestamp truncated to five minutes",
+		"datetimeHour": "Session close timestamp truncated to hour",
+		"destinationPort": "Destination port number",
+		"destinationTunnelId": "Destination tunnel ID",
+		"egressColoName": "Egress Cloudflare colo code",
+		"egressRuleId": "Egress policy rule ID",
+		"ingressColoName": "Ingress Cloudflare colo code",
+		"offramp": "Egress offramp type",
+		"onRamp": "Ingress onramp type (derived from flowPath)",
+		"protocol": "L4 protocol",
+		"sni": "Server Name Indication from TLS handshake",
+		"sourceCountry": "Source country code (ISO 3166-1 alpha-2)"
+	},
+	"AccountCf1GatewayNetworkSessionRawGroupsFilter_InputObject": {
+		"__description": ""
+	},
+	"AccountCf1GatewayNetworkSessionRawGroupsOrderBy": {
+		"__description": ""
+	},
+	"AccountCf1GatewayNetworkSessionRawGroupsSum": {
+		"__description": "",
+		"bytesDownload": "Total bytes downloaded (origin to client)",
+		"bytesTotal": "Total bytes transferred (upload + download)",
+		"bytesUpload": "Total bytes uploaded (client to origin)",
+		"sessions": "Total network sessions"
+	},
+	"AccountCf1GatewayNetworkSessionRawGroupsUniq": {
 		"__description": "",
 		"devices": "Unique devices",
 		"users": "Unique users"
@@ -1848,7 +2267,7 @@
 		"egressBits": "Confidence interval for the corresponding point estimate"
 	},
 	"AccountCloudforceOneDetectionsAdaptiveGroups": {
-		"__description": "Cloudforce One detection events for Workers scripts with adaptive sampling. Each row represents a single detection rule hit.",
+		"__description": "Cloudforce One detection events for Workers for Platforms scripts with adaptive sampling. Each row represents a single detection rule hit.",
 		"avg": "",
 		"confidence": "ALPHA - DO NOT USE",
 		"count": "Total number of detection rule hits",
@@ -1871,7 +2290,9 @@
 		"datetimeHour": "Detection event timestamp, truncated to hour",
 		"datetimeMinute": "Detection event timestamp, truncated to minute",
 		"detection": "Name of the detection rule that was triggered",
-		"workerName": "The name of the Workers script"
+		"dispatchNamespace": "Workers for Platforms dispatch namespace name",
+		"resource": "The name of the Workers script",
+		"source": "Detection rule source: 'managed' for Cloudflare-authored rules, 'custom' for customer-created rules"
 	},
 	"AccountCloudforceOneDetectionsAdaptiveGroupsFilter_InputObject": {
 		"__description": ""
@@ -4110,6 +4531,8 @@
 		"securityAction": "The code of the first-class action the Cloudflare Firewall took on this request",
 		"securitySource": "The Cloudflare security product triggered by this request",
 		"sessionIdHash": "API Security Session ID hash",
+		"threatIntelIpDatasets": "Threat Intelligence dataset(s) that matched the visitor IP address (e.g. ddos, waf)",
+		"threatIntelIpEventIds": "UUIDv4 identifiers linking to Threat Intelligence events that matched the visitor IP address",
 		"upperTierColoName": "",
 		"userAgent": "visitor's user-agent string",
 		"userAgentBrowser": "Browser parsed from the user agent",
@@ -4242,6 +4665,8 @@
 		"securityAction": "The code of the first-class action the Cloudflare Firewall took on this request",
 		"securitySource": "The Cloudflare security product triggered by this request",
 		"sessionIdHash": "API Security Session ID hash",
+		"threatIntelIpDatasets": "Threat Intelligence dataset(s) that matched the visitor IP address (e.g. ddos, waf)",
+		"threatIntelIpEventIds": "UUIDv4 identifiers linking to Threat Intelligence events that matched the visitor IP address",
 		"upperTierColoName": "",
 		"userAgent": "",
 		"userAgentBrowser": "Browser parsed from the user agent",
@@ -7950,6 +8375,132 @@
 		"billableOperations": "Confidence interval for the corresponding point estimate",
 		"bytes": "Confidence interval for the corresponding point estimate"
 	},
+	"AccountR2CatalogDataOperationsAdaptiveGroups": {
+		"__description": "R2 Data Catalog data plane operations (Iceberg REST API requests) with adaptive sampling",
+		"avg": "The average of values for a metric per dimension",
+		"confidence": "ALPHA - DO NOT USE",
+		"count": "Total number of catalog data plane requests",
+		"dimensions": "List of dimensions to group by",
+		"quantiles": "Quantiles of a metric per dimension",
+		"sum": "The sum of values for a metric per dimension"
+	},
+	"AccountR2CatalogDataOperationsAdaptiveGroupsAvg": {
+		"__description": "",
+		"requestDurationMs": "Average request duration in milliseconds",
+		"sampleInterval": "Average sample interval"
+	},
+	"AccountR2CatalogDataOperationsAdaptiveGroupsConfidence": {
+		"__description": "",
+		"count": "Total number of catalog data plane requests, with confidence intervals",
+		"level": "Confidence level that was requested",
+		"sum": "The sum of values for a metric per dimension, with confidence intervals"
+	},
+	"AccountR2CatalogDataOperationsAdaptiveGroupsDimensions": {
+		"__description": "",
+		"date": "Request timestamp, truncated to start of a day",
+		"datetime": "Request timestamp",
+		"datetimeFifteenMinutes": "Request timestamp, truncated to start of fifteen minutes",
+		"datetimeFiveMinutes": "Request timestamp, truncated to start of five minutes",
+		"datetimeHour": "Request timestamp, truncated to start of an hour",
+		"datetimeMinute": "Request timestamp, truncated to start of a minute",
+		"httpStatus": "HTTP response status code",
+		"namespaceName": "The Iceberg namespace targeted by the request, if applicable",
+		"operation": "The Iceberg REST API operation name (e.g. load-table, list-namespaces)",
+		"tableName": "The Iceberg table targeted by the request, if applicable",
+		"warehouseName": "The name of the R2 Data Catalog warehouse"
+	},
+	"AccountR2CatalogDataOperationsAdaptiveGroupsFilter_InputObject": {
+		"__description": ""
+	},
+	"AccountR2CatalogDataOperationsAdaptiveGroupsOrderBy": {
+		"__description": ""
+	},
+	"AccountR2CatalogDataOperationsAdaptiveGroupsQuantiles": {
+		"__description": "",
+		"requestDurationMsP25": "25th percentile request duration (milliseconds)",
+		"requestDurationMsP50": "50th percentile request duration (milliseconds)",
+		"requestDurationMsP75": "75th percentile request duration (milliseconds)",
+		"requestDurationMsP90": "90th percentile request duration (milliseconds)",
+		"requestDurationMsP95": "95th percentile request duration (milliseconds)",
+		"requestDurationMsP99": "99th percentile request duration (milliseconds)",
+		"requestDurationMsP999": "99.9th percentile request duration (milliseconds)"
+	},
+	"AccountR2CatalogDataOperationsAdaptiveGroupsSum": {
+		"__description": "",
+		"requestBodyBytes": "Sum of request body bytes",
+		"requestDurationMs": "Total request duration in milliseconds"
+	},
+	"AccountR2CatalogDataOperationsAdaptiveGroupsSumConfidence": {
+		"__description": "",
+		"requestBodyBytes": "Confidence interval for the corresponding point estimate",
+		"requestDurationMs": "Confidence interval for the corresponding point estimate"
+	},
+	"AccountR2CatalogTableMaintenanceAdaptiveGroups": {
+		"__description": "R2 Data Catalog table maintenance job metrics (compaction, snapshot expiration) with adaptive sampling",
+		"avg": "The average of values for a metric per dimension",
+		"confidence": "ALPHA - DO NOT USE",
+		"count": "Total number of table maintenance jobs",
+		"dimensions": "List of dimensions to group by",
+		"quantiles": "Quantiles of a metric per dimension",
+		"sum": "The sum of values for a metric per dimension"
+	},
+	"AccountR2CatalogTableMaintenanceAdaptiveGroupsAvg": {
+		"__description": "",
+		"jobDurationMs": "Average job duration in milliseconds",
+		"sampleInterval": "Average sample interval"
+	},
+	"AccountR2CatalogTableMaintenanceAdaptiveGroupsConfidence": {
+		"__description": "",
+		"count": "Total number of table maintenance jobs, with confidence intervals",
+		"level": "Confidence level that was requested",
+		"sum": "The sum of values for a metric per dimension, with confidence intervals"
+	},
+	"AccountR2CatalogTableMaintenanceAdaptiveGroupsDimensions": {
+		"__description": "",
+		"date": "Job timestamp, truncated to start of a day",
+		"datetime": "Job timestamp",
+		"datetimeFifteenMinutes": "Job timestamp, truncated to start of fifteen minutes",
+		"datetimeFiveMinutes": "Job timestamp, truncated to start of five minutes",
+		"datetimeHour": "Job timestamp, truncated to start of an hour",
+		"datetimeMinute": "Job timestamp, truncated to start of a minute",
+		"jobType": "The type of maintenance job (compaction, snapshot-expiration)",
+		"namespaceName": "The Iceberg namespace containing the table",
+		"success": "Whether the job succeeded (1) or failed (0)",
+		"tableName": "The Iceberg table that was maintained",
+		"warehouseName": "The name of the R2 Data Catalog warehouse"
+	},
+	"AccountR2CatalogTableMaintenanceAdaptiveGroupsFilter_InputObject": {
+		"__description": ""
+	},
+	"AccountR2CatalogTableMaintenanceAdaptiveGroupsOrderBy": {
+		"__description": ""
+	},
+	"AccountR2CatalogTableMaintenanceAdaptiveGroupsQuantiles": {
+		"__description": "",
+		"jobDurationMsP25": "25th percentile job duration (milliseconds)",
+		"jobDurationMsP50": "50th percentile job duration (milliseconds)",
+		"jobDurationMsP75": "75th percentile job duration (milliseconds)",
+		"jobDurationMsP90": "90th percentile job duration (milliseconds)",
+		"jobDurationMsP95": "95th percentile job duration (milliseconds)",
+		"jobDurationMsP99": "99th percentile job duration (milliseconds)",
+		"jobDurationMsP999": "99.9th percentile job duration (milliseconds)"
+	},
+	"AccountR2CatalogTableMaintenanceAdaptiveGroupsSum": {
+		"__description": "",
+		"filesOutput": "Sum of output files created by maintenance jobs",
+		"filesProcessed": "Sum of input files processed by maintenance jobs",
+		"inputBytes": "Sum of bytes read/scanned by maintenance jobs",
+		"jobDurationMs": "Total job duration in milliseconds",
+		"outputBytes": "Sum of bytes written by maintenance jobs"
+	},
+	"AccountR2CatalogTableMaintenanceAdaptiveGroupsSumConfidence": {
+		"__description": "",
+		"filesOutput": "Confidence interval for the corresponding point estimate",
+		"filesProcessed": "Confidence interval for the corresponding point estimate",
+		"inputBytes": "Confidence interval for the corresponding point estimate",
+		"jobDurationMs": "Confidence interval for the corresponding point estimate",
+		"outputBytes": "Confidence interval for the corresponding point estimate"
+	},
 	"AccountR2OperationsAdaptiveGroups": {
 		"__description": "Beta. R2 operations with adaptive sampling",
 		"confidence": "ALPHA - DO NOT USE",
@@ -8521,9 +9072,21 @@
 		"callsTurnUsageAdaptiveGroups": "",
 		"callsUsageAdaptiveGroups": "",
 		"cdnNetworkAnalyticsAdaptiveGroups": "",
+		"cf1AccessLogins1dGroups": "",
+		"cf1AccessLogins1hGroups": "",
+		"cf1AccessLoginsRawGroups": "",
 		"cf1GatewayDns1dGroups": "",
 		"cf1GatewayDns1hGroups": "",
 		"cf1GatewayDnsRawGroups": "",
+		"cf1GatewayHttp1dGroups": "",
+		"cf1GatewayHttp1hGroups": "",
+		"cf1GatewayHttpRawGroups": "",
+		"cf1GatewayNetwork1dGroups": "",
+		"cf1GatewayNetwork1hGroups": "",
+		"cf1GatewayNetworkRawGroups": "",
+		"cf1GatewayNetworkSession1dGroups": "",
+		"cf1GatewayNetworkSession1hGroups": "",
+		"cf1GatewayNetworkSessionRawGroups": "",
 		"cloudchamberMetricsAdaptiveGroups": "",
 		"cloudflareTunnelsAnalyticsAdaptiveGroups": "",
 		"cloudforceOneDetectionsAdaptiveGroups": "",
@@ -8631,6 +9194,8 @@
 		"queueConsumerMetricsAdaptiveGroups": "",
 		"queueDelayedBacklogAdaptiveGroups": "",
 		"queueMessageOperationsAdaptiveGroups": "",
+		"r2CatalogDataOperationsAdaptiveGroups": "",
+		"r2CatalogTableMaintenanceAdaptiveGroups": "",
 		"r2OperationsAdaptiveGroups": "",
 		"r2StorageAdaptiveGroups": "",
 		"realtimeKitUsageAdaptiveGroups": "",
@@ -10322,6 +10887,8 @@
 		"securityAction": "The code of the first-class action the Cloudflare Firewall took on this request",
 		"securitySource": "The Cloudflare security product triggered by this request",
 		"sessionIdHash": "API Security Session ID hash",
+		"threatIntelIpDatasets": "Threat Intelligence dataset(s) that matched the visitor IP address (e.g. ddos, waf)",
+		"threatIntelIpEventIds": "UUIDv4 identifiers linking to Threat Intelligence events that matched the visitor IP address",
 		"upperTierColoName": "",
 		"userAgent": "",
 		"userAgentBrowser": "Browser parsed from the user agent",
@@ -11955,6 +12522,8 @@
 		"securityAction": "The code of the first-class action the Cloudflare Firewall took on this request",
 		"securitySource": "The Cloudflare security product triggered by this request",
 		"sessionIdHash": "API Security Session ID hash",
+		"threatIntelIpDatasets": "Threat Intelligence dataset(s) that matched the visitor IP address (e.g. ddos, waf)",
+		"threatIntelIpEventIds": "UUIDv4 identifiers linking to Threat Intelligence events that matched the visitor IP address",
 		"upperTierColoName": "",
 		"userAgent": "visitor's user-agent string",
 		"userAgentBrowser": "Browser parsed from the user agent",
@@ -12086,6 +12655,8 @@
 		"securityAction": "The code of the first-class action the Cloudflare Firewall took on this request",
 		"securitySource": "The Cloudflare security product triggered by this request",
 		"sessionIdHash": "API Security Session ID hash",
+		"threatIntelIpDatasets": "Threat Intelligence dataset(s) that matched the visitor IP address (e.g. ddos, waf)",
+		"threatIntelIpEventIds": "UUIDv4 identifiers linking to Threat Intelligence events that matched the visitor IP address",
 		"upperTierColoName": "",
 		"userAgent": "",
 		"userAgentBrowser": "Browser parsed from the user agent",
@@ -12605,23 +13176,33 @@
 	"ZoneUserProfilesAdaptiveGroups": {
 		"__description": "User ID profiles for login and sign up attempts",
 		"dimensions": "List of dimensions to group by",
+		"max": "",
 		"sum": "",
 		"uniq": ""
 	},
 	"ZoneUserProfilesAdaptiveGroupsDimensions": {
 		"__description": "",
 		"date": "Profile aggregates for a given date.",
+		"eventType": "Type of the event. Possible values are login or signup.",
 		"userId": "Unique identifier for a user. 128-bit hash."
 	},
 	"ZoneUserProfilesAdaptiveGroupsFilter_InputObject": {
 		"__description": ""
+	},
+	"ZoneUserProfilesAdaptiveGroupsMax": {
+		"__description": "",
+		"lastSeen": "Timestamp of the most recent event for a user id."
 	},
 	"ZoneUserProfilesAdaptiveGroupsOrderBy": {
 		"__description": ""
 	},
 	"ZoneUserProfilesAdaptiveGroupsSum": {
 		"__description": "",
-		"topCountries": "Array of top 5 country codes (alpha2) for a user id."
+		"lccFailures": "Number of leaked credential check failures for a user id.",
+		"topASNs": "Array of top 5 ASNs for a user id.",
+		"topCountries": "Array of top 5 country codes (alpha2) for a user id.",
+		"topIPs": "Array of top 5 IP addresses for a user id.",
+		"topUserAgents": "Array of top 5 user agents for a user id."
 	},
 	"ZoneUserProfilesAdaptiveGroupsUniq": {
 		"__description": "",
@@ -13359,12 +13940,24 @@
 		"callsTurnUsageAdaptiveGroups": "Aggregated Calls TURN bandwidth usage with adaptive sampling\"",
 		"callsUsageAdaptiveGroups": "Beta. Aggregated Calls SFU bandwidth usage with adaptive sampling",
 		"cdnNetworkAnalyticsAdaptiveGroups": "Network analytics data for Cloudflare CDN traffic",
+		"cf1AccessLogins1dGroups": "CF1 Access login analytics - 1 day rollup (up to 90d window, 365d back)",
+		"cf1AccessLogins1hGroups": "CF1 Access login analytics - 1 hour rollup (up to 31d window, 62d back). Use cf1AccessLogins1dGroups for 10d+ ranges.",
+		"cf1AccessLoginsRawGroups": "CF1 Access login analytics - raw data (max 3h window, up to 31d back). Supports unique user counts. Use cf1AccessLogins1hGroups for longer ranges.",
 		"cf1GatewayDns1dGroups": "CF1 Gateway DNS analytics - 1 day rollup",
 		"cf1GatewayDns1hGroups": "CF1 Gateway DNS analytics - 1 hour rollup",
 		"cf1GatewayDnsRawGroups": "CF1 Gateway DNS analytics - raw data (max 3h query window). Use cf1GatewayDns1hGroups for longer ranges, or cf1GatewayDns1dGroups for 10d+",
+		"cf1GatewayHttp1dGroups": "CF1 Gateway HTTP analytics - 1 day rollup (up to 90d window, 365d back)",
+		"cf1GatewayHttp1hGroups": "CF1 Gateway HTTP analytics - 1 hour rollup (up to 31d window, 62d back)",
+		"cf1GatewayHttpRawGroups": "CF1 Gateway HTTP analytics - raw data (max 3h query window, 4d lookback). Use cf1GatewayHttp1hGroups for longer ranges, or cf1GatewayHttp1dGroups for 10d+",
+		"cf1GatewayNetwork1dGroups": "CF1 Gateway Network analytics (L4 firewall events) - 1 day rollup (up to 90d window, 365d back)",
+		"cf1GatewayNetwork1hGroups": "CF1 Gateway Network analytics (L4 firewall events) - 1 hour rollup (up to 31d window, 62d back)",
+		"cf1GatewayNetworkRawGroups": "CF1 Gateway Network analytics (L4 firewall events) - raw data (max 3h query window, 4d lookback). Use cf1GatewayNetwork1hGroups for longer ranges, or cf1GatewayNetwork1dGroups for 10d+",
+		"cf1GatewayNetworkSession1dGroups": "CF1 Gateway Network Session Log analytics - 1 day rollup (up to 90d window, 365d back)",
+		"cf1GatewayNetworkSession1hGroups": "CF1 Gateway Network Session Log analytics - 1 hour rollup (up to 31d window, 62d back)",
+		"cf1GatewayNetworkSessionRawGroups": "CF1 Gateway Network Session Log (L4 sessions with bandwidth) - raw data (max 3h query window, 4d lookback). Use cf1GatewayNetworkSession1hGroups for longer ranges, or cf1GatewayNetworkSession1dGroups for 10d+",
 		"cloudchamberMetricsAdaptiveGroups": "Metrics for Cloudchamber applications and deployments",
 		"cloudflareTunnelsAnalyticsAdaptiveGroups": "Cloudflare tunnel Device Analytics",
-		"cloudforceOneDetectionsAdaptiveGroups": "Cloudforce One detection events for Workers scripts with adaptive sampling. Each row represents a single detection rule hit.",
+		"cloudforceOneDetectionsAdaptiveGroups": "Cloudforce One detection events for Workers for Platforms scripts with adaptive sampling. Each row represents a single detection rule hit.",
 		"containersMetricsAdaptiveGroups": "Metrics for Cloudchamber applications and deployments",
 		"containersUsageAdaptiveGroups": "Used to compute usage queries for billing estimates in Dash",
 		"d1AnalyticsAdaptiveGroups": "Aggregated D1 analytics with adaptive sampling",
@@ -13469,6 +14062,8 @@
 		"queueConsumerMetricsAdaptiveGroups": "Beta. Queue consumer metrics with adaptive sampling. Inactive queues will not return data.",
 		"queueDelayedBacklogAdaptiveGroups": "Beta. Queue delayed backlog data with adaptive sampling. Queues that are not being written to, or read from, will not return data, even if they have a backlog.",
 		"queueMessageOperationsAdaptiveGroups": "Beta. Queue message operation data with adaptive sampling",
+		"r2CatalogDataOperationsAdaptiveGroups": "R2 Data Catalog data plane operations (Iceberg REST API requests) with adaptive sampling",
+		"r2CatalogTableMaintenanceAdaptiveGroups": "R2 Data Catalog table maintenance job metrics (compaction, snapshot expiration) with adaptive sampling",
 		"r2OperationsAdaptiveGroups": "Beta. R2 operations with adaptive sampling",
 		"r2StorageAdaptiveGroups": "Beta. R2 storage with adaptive sampling",
 		"realtimeKitUsageAdaptiveGroups": "RealtimeKit usage metrics",
