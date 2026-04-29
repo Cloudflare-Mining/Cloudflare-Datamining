@@ -293,6 +293,14 @@
 	"mon-authenticated-tests-q12026": {
 		"enabled": true
 	},
+	"mon-ra-test-reads-q22026": {
+		"enabled": true,
+		"branches": [
+			"ra",
+			"ra_fine",
+			"baseline"
+		]
+	},
 	"monitoring-magic-merge": {
 		"enabled": true
 	},
