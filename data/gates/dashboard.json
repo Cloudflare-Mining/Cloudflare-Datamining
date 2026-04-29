@@ -409,7 +409,7 @@
 		"enabled": false
 	},
 	"billing-unified-checkout-zaraz": {
-		"enabled": false
+		"enabled": true
 	},
 	"billing-unified-checkout-zero-trust": {
 		"enabled": true
@@ -1188,6 +1188,9 @@
 	"email-routing-email-worker-maze-study": {
 		"enabled": false
 	},
+	"email-routing-suppressions": {
+		"enabled": false
+	},
 	"email-services": {
 		"enabled": true
 	},
@@ -1415,6 +1418,9 @@
 	},
 	"kumo-authentication": {
 		"enabled": true
+	},
+	"kumo-client-side-security": {
+		"enabled": false
 	},
 	"kumo-health-checks": {
 		"enabled": false
