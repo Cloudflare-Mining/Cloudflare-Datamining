@@ -2,7 +2,7 @@
 	try {
 		var e = "undefined" != typeof window ? window : "undefined" != typeof global ? global : "undefined" != typeof globalThis ? globalThis : "undefined" != typeof self ? self : {},
 			n = (new e.Error).stack;
-		n && (e._sentryDebugIds = e._sentryDebugIds || {}, e._sentryDebugIds[n] = "a55ce981-6c2a-5215-8340-318b99a4b7c5")
+		n && (e._sentryDebugIds = e._sentryDebugIds || {}, e._sentryDebugIds[n] = "45b01822-e8c8-5117-af1e-2d8d7504c1cd")
 	} catch (e) {}
 }();
 (self.webpackChunk_cloudflare_app_dash = self.webpackChunk_cloudflare_app_dash || []).push([
@@ -1020,10 +1020,10 @@
 						}({}, {
 							branch: "master",
 							isReleaseCandidate: "true",
-							commit: "b201e18527907a16f6c5aaa8b6357a114a46c552",
-							dashVersion: "24448961",
+							commit: "4be24d53d7a765526e3b9d4a008ab45eb6a7a346",
+							dashVersion: "24466940",
 							env: "production",
-							builtAt: 0x19ddb4060ae,
+							builtAt: 0x19ddc071a77,
 							versions: {
 								"@cloudflare/app-dash": "25.161.23",
 								"@cloudflare/kumo": "1.19.0",
@@ -4114,7 +4114,9 @@
 			}
 
 			function V() {
-				return W() && !!(0, a.A)("devplat-resource-tagging")
+				let r = W(),
+					e = !!(0, a.A)("devplat-resource-tagging");
+				return r && e
 			}
 		},
 		"./react/common/components/ResourceTags/manifest.ts": function(r, e, o) {
@@ -10243,4 +10245,4 @@
 		}
 	}
 ]);
-//# debugId=a55ce981-6c2a-5215-8340-318b99a4b7c5
+//# debugId=45b01822-e8c8-5117-af1e-2d8d7504c1cd
