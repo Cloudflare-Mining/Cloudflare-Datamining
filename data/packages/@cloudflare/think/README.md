@@ -27,6 +27,42 @@ export class MyAgent extends Think<Env> {
 
 That's it. Think handles the WebSocket chat protocol, message persistence, the agentic loop, message sanitization, stream resumption, client tool support, and workspace file tools. Connect from the browser with `useAgentChat` from `@cloudflare/ai-chat`.
 
+## Agent tools
+
+Think subclasses can be dispatched as agent tools from another Agent. The parent
+uses `runAgentTool()` or `agentTool()` from `agents/agent-tools`; the child Think
+instance owns its own messages, resumable stream, tools, and storage.
+
+```ts
+import { Think } from "@cloudflare/think";
+import { agentTool } from "agents/agent-tools";
+import { z } from "zod";
+
+export class Researcher extends Think<Env> {
+  getSystemPrompt() {
+    return "Research the requested topic and end with a concise summary.";
+  }
+}
+
+export class Assistant extends Think<Env> {
+  getTools() {
+    return {
+      research: agentTool(Researcher, {
+        description: "Research one topic in depth.",
+        inputSchema: z.object({ query: z.string().min(3) }),
+        displayName: "Researcher"
+      })
+    };
+  }
+}
+```
+
+The parent broadcasts `agent-tool-event` frames for live UI rendering and keeps
+the child facet until `clearAgentToolRuns()` deletes retained runs.
+
+See the full [Agent Tools guide](../../docs/agent-tools.md) for rendering,
+drill-in, and cleanup patterns.
+
 ## Built-in workspace
 
 Every Think agent gets `this.workspace` — a virtual filesystem backed by the DO's SQLite storage. Workspace tools (`read`, `write`, `edit`, `list`, `find`, `grep`, `delete`) are automatically available to the model.
@@ -71,6 +107,7 @@ export class MyAgent extends Think<Env> {
 | `getSystemPrompt()`  | `"You are a helpful assistant."` | System prompt (fallback when no context blocks) |
 | `getTools()`         | `{}`                             | AI SDK `ToolSet` for the agentic loop           |
 | `maxSteps`           | `10`                             | Max tool-call rounds per turn (property)        |
+| `sendReasoning`      | `true`                           | Send reasoning chunks to chat clients           |
 | `configureSession()` | identity                         | Add context blocks, compaction, search, skills  |
 | `getExtensions()`    | `[]`                             | Sandboxed extension declarations (load order)   |
 | `extensionLoader`    | `undefined`                      | `WorkerLoader` binding — enables extensions     |
@@ -102,7 +139,9 @@ The AI SDK-derived contexts spread the SDK's own types at the top level — no i
 
 `beforeStep` is wired to the AI SDK's `prepareStep` callback. Return a `StepConfig` to override `model`, `toolChoice`, `activeTools`, `system`, `messages`, `experimental_context`, or `providerOptions` for the current step. The AI SDK does not expose `output` or `maxSteps` per step — set those at the turn level via `TurnConfig` (returned from `beforeTurn`). `beforeStep` is subclass-only; it is not dispatched to extensions because the prepareStep event surface includes a live `LanguageModel` instance which is not JSON-safe to snapshot.
 
-`TurnConfig` also accepts an `output` field that is forwarded to `streamText` as the AI SDK's structured-output spec. Combine with `activeTools: []` for providers (e.g. `workers-ai-provider`) that strip tools when `responseFormat: "json"` is active.
+`TurnConfig` also accepts `sendReasoning` to override whether reasoning chunks are emitted for the current UI message stream. The instance-level `sendReasoning` property defaults to `true`; return `{ sendReasoning: false }` from `beforeTurn` to hide reasoning for a single turn, for example on internal continuation turns.
+
+`TurnConfig` also accepts an `output` field that is forwarded to `streamText` as the AI SDK's structured-output spec. Combine with `activeTools: []` for providers (e.g. `workers-ai-provider`) that strip tools when `responseFormat: "json"` is active. Use `experimental_telemetry` to pass the AI SDK's per-call telemetry settings through to `streamText`; consider disabling `recordInputs` or `recordOutputs` if prompts or outputs may contain sensitive data.
 
 Per-tool hooks are wired so `beforeToolCall` fires _before_ `execute` (Think wraps every tool's `execute`) and `afterToolCall` fires _after_ (via the AI SDK's `experimental_onToolCallFinish`) with `durationMs` and a discriminated outcome. `beforeToolCall` can return a `ToolCallDecision` to:
 
@@ -217,7 +256,9 @@ interface TurnConfig {
   activeTools?: string[]; // limit which tools the model can call
   toolChoice?: ToolChoice; // force a specific tool
   maxSteps?: number; // override maxSteps for this turn
+  sendReasoning?: boolean; // send reasoning chunks for this turn
   providerOptions?: Record<string, unknown>;
+  experimental_telemetry?: TelemetrySettings;
 }
 ```
 
