@@ -197,6 +197,10 @@
 	"billing-unified-checkout-r2": {
 		"true": 100
 	},
+	"billing-unified-checkout-smart-shield": {
+		"false": 91,
+		"true": 9
+	},
 	"billing-unified-checkout-ssl-for-saas": {
 		"false": 90,
 		"true": 10
@@ -496,7 +500,7 @@
 		"false": 100
 	},
 	"hyperdrive-vpc-integration": {
-		"false": 100
+		"true": 100
 	},
 	"iam-frh-signup-require-bootstrap-jwt": {
 		"true": 100
@@ -556,6 +560,9 @@
 		"true": 100
 	},
 	"loui-web-assets-kumo": {
+		"false": 100
+	},
+	"lrsp-legal-request-intake-form-enabled": {
 		"false": 100
 	},
 	"magic-alerts-stepper-flow": {
@@ -912,6 +919,9 @@
 		"true": 100
 	},
 	"speed-rum-lite": {
+		"true": 100
+	},
+	"speed-shared-dictionary-card": {
 		"true": 100
 	},
 	"speed-test-feedback-banner": {
