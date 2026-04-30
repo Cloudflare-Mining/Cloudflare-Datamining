@@ -1519,6 +1519,260 @@
 			"Cloud Email Security: Write"
 		]
 	},
+	"DELETE /accounts/{account_id}/email-security/settings/url_ignore_patterns/{pattern_id}": {
+		"description": "Removes a URL rewrite ignore pattern. After deletion, URLs matching this pattern will be rewritten again.",
+		"operationId": "email_security_delete_url_ignore_pattern",
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"properties": {
+												"errors": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																},
+																"type": "object"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"messages": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																},
+																"type": "object"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"success": {
+													"description": "Whether the API call was successful.",
+													"enum": [
+														true
+													],
+													"example": true,
+													"type": "boolean"
+												}
+											},
+											"required": [
+												"success",
+												"errors",
+												"messages"
+											],
+											"type": "object"
+										}
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"result": {
+											"properties": {
+												"id": {
+													"description": "URL ignore pattern identifier",
+													"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
+													"format": "uuid",
+													"title": "identifier",
+													"type": "string",
+													"x-auditable": true
+												}
+											},
+											"required": [
+												"id"
+											],
+											"type": "object"
+										}
+									},
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "Deleted URL ignore pattern"
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"allOf": [
+										{
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														},
+														"type": "object"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										}
+									],
+									"example": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
+										}
+									],
+									"minLength": 1
+								},
+								"messages": {
+									"allOf": [
+										{
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														},
+														"type": "object"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										}
+									],
+									"example": []
+								},
+								"result": {
+									"enum": [
+										null
+									],
+									"nullable": true,
+									"type": "object"
+								},
+								"success": {
+									"description": "Whether the API call was successful.",
+									"enum": [
+										false
+									],
+									"example": false,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Client Error"
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Delete a URL ignore pattern",
+		"tags": [
+			"Email Security Settings"
+		],
+		"x-api-token-group": [
+			"Cloud Email Security: Write"
+		]
+	},
 	"GET /accounts/{account_id}/email-security/settings/allow_policies": {
 		"description": "Returns a paginated list of email allow policies. These policies exempt matching emails from security detection, allowing them to bypass disposition actions. Supports filtering by pattern type and policy attributes.",
 		"operationId": "email_security_list_allow_policies",
@@ -6496,6 +6750,363 @@
 			"Cloud Email Security: Read"
 		]
 	},
+	"GET /accounts/{account_id}/email-security/settings/url_ignore_patterns": {
+		"description": "Returns a paginated list of URL rewrite ignore patterns for the account. URLs matching these patterns will not be rewritten.",
+		"operationId": "email_security_list_url_ignore_patterns",
+		"parameters": [
+			{
+				"description": "Current page within paginated list of results.",
+				"in": "query",
+				"name": "page",
+				"schema": {
+					"default": 1,
+					"example": 1,
+					"minimum": 1,
+					"type": "integer"
+				}
+			},
+			{
+				"description": "The number of results per page. Maximum value is 1000.",
+				"in": "query",
+				"name": "per_page",
+				"schema": {
+					"default": 20,
+					"example": 20,
+					"maximum": 1000,
+					"minimum": 1,
+					"type": "integer"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"properties": {
+												"errors": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																},
+																"type": "object"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"messages": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																},
+																"type": "object"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"success": {
+													"description": "Whether the API call was successful.",
+													"enum": [
+														true
+													],
+													"example": true,
+													"type": "boolean"
+												}
+											},
+											"required": [
+												"success",
+												"errors",
+												"messages"
+											],
+											"type": "object"
+										},
+										{
+											"properties": {
+												"result_info": {
+													"properties": {
+														"count": {
+															"description": "Total number of results for the requested service.",
+															"example": 1,
+															"type": "number"
+														},
+														"page": {
+															"description": "Current page within paginated list of results.",
+															"example": 1,
+															"type": "number"
+														},
+														"per_page": {
+															"description": "Number of results per page of results.",
+															"example": 20,
+															"type": "number"
+														},
+														"total_count": {
+															"description": "Total results available without any search parameters.",
+															"example": 2000,
+															"type": "number"
+														}
+													},
+													"type": "object"
+												}
+											},
+											"type": "object"
+										}
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"result": {
+											"items": {
+												"description": "A URL ignore pattern that exempts matching URLs from being rewritten by Email Security.",
+												"properties": {
+													"comments": {
+														"description": "Optional note describing the reason for the ignore pattern.",
+														"example": "Trusted internal redirect service",
+														"maxLength": 1024,
+														"nullable": true,
+														"type": "string",
+														"x-auditable": true
+													},
+													"created_at": {
+														"format": "date-time",
+														"readOnly": true,
+														"type": "string",
+														"x-auditable": true
+													},
+													"id": {
+														"allOf": [
+															{
+																"description": "URL ignore pattern identifier",
+																"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
+																"format": "uuid",
+																"title": "identifier",
+																"type": "string",
+																"x-auditable": true
+															}
+														],
+														"readOnly": true
+													},
+													"last_modified": {
+														"deprecated": true,
+														"description": "Deprecated, use `modified_at` instead. End of life: November 1, 2026.",
+														"format": "date-time",
+														"readOnly": true,
+														"type": "string",
+														"x-auditable": true
+													},
+													"modified_at": {
+														"format": "date-time",
+														"readOnly": true,
+														"type": "string",
+														"x-auditable": true
+													},
+													"pattern": {
+														"description": "Regular expression matching URLs that should not be rewritten.",
+														"example": "https://example\\.com/.*",
+														"maxLength": 1024,
+														"minLength": 1,
+														"type": "string",
+														"x-auditable": true
+													}
+												},
+												"required": [
+													"id",
+													"created_at",
+													"pattern"
+												],
+												"type": "object"
+											},
+											"type": "array"
+										}
+									},
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "List of URL ignore patterns for the provided account"
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"allOf": [
+										{
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														},
+														"type": "object"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										}
+									],
+									"example": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
+										}
+									],
+									"minLength": 1
+								},
+								"messages": {
+									"allOf": [
+										{
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														},
+														"type": "object"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										}
+									],
+									"example": []
+								},
+								"result": {
+									"enum": [
+										null
+									],
+									"nullable": true,
+									"type": "object"
+								},
+								"success": {
+									"description": "Whether the API call was successful.",
+									"enum": [
+										false
+									],
+									"example": false,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Client Error"
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "List URL ignore patterns",
+		"tags": [
+			"Email Security Settings"
+		],
+		"x-api-token-group": [
+			"Cloud Email Security: Write",
+			"Cloud Email Security: Read"
+		]
+	},
 	"PATCH /accounts/{account_id}/email-security/settings/allow_policies/{policy_id}": {
 		"description": "Updates an existing allow policy. Only provided fields will be modified. Changes take effect for new emails matching the pattern.",
 		"operationId": "email_security_update_allow_policy",
@@ -9247,6 +9858,335 @@
 			}
 		],
 		"summary": "Update a trusted email domain",
+		"tags": [
+			"Email Security Settings"
+		],
+		"x-api-token-group": [
+			"Cloud Email Security: Write"
+		]
+	},
+	"PATCH /accounts/{account_id}/email-security/settings/url_ignore_patterns/{pattern_id}": {
+		"description": "Updates an existing URL rewrite ignore pattern. Only provided fields will be modified.",
+		"operationId": "email_security_update_url_ignore_pattern",
+		"requestBody": {
+			"content": {
+				"application/json": {
+					"schema": {
+						"additionalProperties": false,
+						"description": "Update a URL rewrite ignore pattern. Only provided fields will be modified.",
+						"minProperties": 1,
+						"properties": {
+							"comments": {
+								"description": "Optional note describing the reason for the ignore pattern.",
+								"example": "Trusted internal redirect service",
+								"maxLength": 1024,
+								"nullable": true,
+								"type": "string",
+								"x-auditable": true
+							},
+							"pattern": {
+								"description": "Regular expression matching URLs that should not be rewritten.",
+								"example": "https://example\\.com/.*",
+								"maxLength": 1024,
+								"minLength": 1,
+								"type": "string",
+								"x-auditable": true
+							}
+						},
+						"type": "object"
+					}
+				}
+			},
+			"required": true
+		},
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"properties": {
+												"errors": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																},
+																"type": "object"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"messages": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																},
+																"type": "object"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"success": {
+													"description": "Whether the API call was successful.",
+													"enum": [
+														true
+													],
+													"example": true,
+													"type": "boolean"
+												}
+											},
+											"required": [
+												"success",
+												"errors",
+												"messages"
+											],
+											"type": "object"
+										}
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"result": {
+											"description": "A URL ignore pattern that exempts matching URLs from being rewritten by Email Security.",
+											"properties": {
+												"comments": {
+													"description": "Optional note describing the reason for the ignore pattern.",
+													"example": "Trusted internal redirect service",
+													"maxLength": 1024,
+													"nullable": true,
+													"type": "string",
+													"x-auditable": true
+												},
+												"created_at": {
+													"format": "date-time",
+													"readOnly": true,
+													"type": "string",
+													"x-auditable": true
+												},
+												"id": {
+													"allOf": [
+														{
+															"description": "URL ignore pattern identifier",
+															"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
+															"format": "uuid",
+															"title": "identifier",
+															"type": "string",
+															"x-auditable": true
+														}
+													],
+													"readOnly": true
+												},
+												"last_modified": {
+													"deprecated": true,
+													"description": "Deprecated, use `modified_at` instead. End of life: November 1, 2026.",
+													"format": "date-time",
+													"readOnly": true,
+													"type": "string",
+													"x-auditable": true
+												},
+												"modified_at": {
+													"format": "date-time",
+													"readOnly": true,
+													"type": "string",
+													"x-auditable": true
+												},
+												"pattern": {
+													"description": "Regular expression matching URLs that should not be rewritten.",
+													"example": "https://example\\.com/.*",
+													"maxLength": 1024,
+													"minLength": 1,
+													"type": "string",
+													"x-auditable": true
+												}
+											},
+											"required": [
+												"id",
+												"created_at",
+												"pattern"
+											],
+											"type": "object"
+										}
+									},
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "Updated URL ignore pattern"
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"allOf": [
+										{
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														},
+														"type": "object"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										}
+									],
+									"example": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
+										}
+									],
+									"minLength": 1
+								},
+								"messages": {
+									"allOf": [
+										{
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														},
+														"type": "object"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										}
+									],
+									"example": []
+								},
+								"result": {
+									"enum": [
+										null
+									],
+									"nullable": true,
+									"type": "object"
+								},
+								"success": {
+									"description": "Whether the API call was successful.",
+									"enum": [
+										false
+									],
+									"example": false,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Client Error"
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Update a URL ignore pattern",
 		"tags": [
 			"Email Security Settings"
 		],
@@ -14712,6 +15652,966 @@
 			}
 		],
 		"summary": "Batch trusted domains operations",
+		"tags": [
+			"Email Security Settings"
+		],
+		"x-api-token-group": [
+			"Cloud Email Security: Write"
+		]
+	},
+	"POST /accounts/{account_id}/email-security/settings/url_ignore_patterns": {
+		"description": "Creates a new URL rewrite ignore pattern. URLs matching this pattern will not be rewritten.",
+		"operationId": "email_security_create_url_ignore_pattern",
+		"requestBody": {
+			"content": {
+				"application/json": {
+					"schema": {
+						"additionalProperties": false,
+						"description": "Create a URL ignore pattern for URLs that should not be rewritten.",
+						"properties": {
+							"comments": {
+								"description": "Optional note describing the reason for the ignore pattern.",
+								"example": "Trusted internal redirect service",
+								"maxLength": 1024,
+								"nullable": true,
+								"type": "string",
+								"x-auditable": true
+							},
+							"pattern": {
+								"description": "Regular expression matching URLs that should not be rewritten.",
+								"example": "https://example\\.com/.*",
+								"maxLength": 1024,
+								"minLength": 1,
+								"type": "string",
+								"x-auditable": true
+							}
+						},
+						"required": [
+							"pattern"
+						],
+						"type": "object"
+					}
+				}
+			},
+			"required": true
+		},
+		"responses": {
+			"201": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"properties": {
+												"errors": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																},
+																"type": "object"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"messages": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																},
+																"type": "object"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"success": {
+													"description": "Whether the API call was successful.",
+													"enum": [
+														true
+													],
+													"example": true,
+													"type": "boolean"
+												}
+											},
+											"required": [
+												"success",
+												"errors",
+												"messages"
+											],
+											"type": "object"
+										}
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"result": {
+											"description": "A URL ignore pattern that exempts matching URLs from being rewritten by Email Security.",
+											"properties": {
+												"comments": {
+													"description": "Optional note describing the reason for the ignore pattern.",
+													"example": "Trusted internal redirect service",
+													"maxLength": 1024,
+													"nullable": true,
+													"type": "string",
+													"x-auditable": true
+												},
+												"created_at": {
+													"format": "date-time",
+													"readOnly": true,
+													"type": "string",
+													"x-auditable": true
+												},
+												"id": {
+													"allOf": [
+														{
+															"description": "URL ignore pattern identifier",
+															"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
+															"format": "uuid",
+															"title": "identifier",
+															"type": "string",
+															"x-auditable": true
+														}
+													],
+													"readOnly": true
+												},
+												"last_modified": {
+													"deprecated": true,
+													"description": "Deprecated, use `modified_at` instead. End of life: November 1, 2026.",
+													"format": "date-time",
+													"readOnly": true,
+													"type": "string",
+													"x-auditable": true
+												},
+												"modified_at": {
+													"format": "date-time",
+													"readOnly": true,
+													"type": "string",
+													"x-auditable": true
+												},
+												"pattern": {
+													"description": "Regular expression matching URLs that should not be rewritten.",
+													"example": "https://example\\.com/.*",
+													"maxLength": 1024,
+													"minLength": 1,
+													"type": "string",
+													"x-auditable": true
+												}
+											},
+											"required": [
+												"id",
+												"created_at",
+												"pattern"
+											],
+											"type": "object"
+										}
+									},
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "Created URL ignore pattern"
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"allOf": [
+										{
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														},
+														"type": "object"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										}
+									],
+									"example": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
+										}
+									],
+									"minLength": 1
+								},
+								"messages": {
+									"allOf": [
+										{
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														},
+														"type": "object"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										}
+									],
+									"example": []
+								},
+								"result": {
+									"enum": [
+										null
+									],
+									"nullable": true,
+									"type": "object"
+								},
+								"success": {
+									"description": "Whether the API call was successful.",
+									"enum": [
+										false
+									],
+									"example": false,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Client Error"
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Create a URL ignore pattern",
+		"tags": [
+			"Email Security Settings"
+		],
+		"x-api-token-group": [
+			"Cloud Email Security: Write"
+		]
+	},
+	"POST /accounts/{account_id}/email-security/settings/url_ignore_patterns/batch": {
+		"description": "Send a Batch of URL Ignore Patterns API calls to be executed together.",
+		"operationId": "email_security_batch_url_ignore_patterns",
+		"requestBody": {
+			"content": {
+				"application/json": {
+					"schema": {
+						"properties": {
+							"deletes": {
+								"items": {
+									"properties": {
+										"id": {
+											"description": "URL ignore pattern identifier",
+											"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
+											"format": "uuid",
+											"title": "identifier",
+											"type": "string",
+											"x-auditable": true
+										}
+									},
+									"required": [
+										"id"
+									],
+									"type": "object"
+								},
+								"maxItems": 1000,
+								"type": "array"
+							},
+							"patches": {
+								"items": {
+									"allOf": [
+										{
+											"additionalProperties": false,
+											"description": "Update a URL rewrite ignore pattern. Only provided fields will be modified.",
+											"minProperties": 1,
+											"properties": {
+												"comments": {
+													"description": "Optional note describing the reason for the ignore pattern.",
+													"example": "Trusted internal redirect service",
+													"maxLength": 1024,
+													"nullable": true,
+													"type": "string",
+													"x-auditable": true
+												},
+												"pattern": {
+													"description": "Regular expression matching URLs that should not be rewritten.",
+													"example": "https://example\\.com/.*",
+													"maxLength": 1024,
+													"minLength": 1,
+													"type": "string",
+													"x-auditable": true
+												}
+											},
+											"type": "object"
+										},
+										{
+											"properties": {
+												"id": {
+													"allOf": [
+														{
+															"description": "URL ignore pattern identifier",
+															"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
+															"format": "uuid",
+															"title": "identifier",
+															"type": "string",
+															"x-auditable": true
+														}
+													]
+												}
+											},
+											"required": [
+												"id"
+											],
+											"type": "object"
+										}
+									]
+								},
+								"maxItems": 1000,
+								"type": "array"
+							},
+							"posts": {
+								"items": {
+									"additionalProperties": false,
+									"description": "Create a URL ignore pattern for URLs that should not be rewritten.",
+									"properties": {
+										"comments": {
+											"description": "Optional note describing the reason for the ignore pattern.",
+											"example": "Trusted internal redirect service",
+											"maxLength": 1024,
+											"nullable": true,
+											"type": "string",
+											"x-auditable": true
+										},
+										"pattern": {
+											"description": "Regular expression matching URLs that should not be rewritten.",
+											"example": "https://example\\.com/.*",
+											"maxLength": 1024,
+											"minLength": 1,
+											"type": "string",
+											"x-auditable": true
+										}
+									},
+									"required": [
+										"pattern"
+									],
+									"type": "object"
+								},
+								"maxItems": 1000,
+								"type": "array"
+							},
+							"puts": {
+								"items": {
+									"allOf": [
+										{
+											"additionalProperties": false,
+											"description": "Create a URL ignore pattern for URLs that should not be rewritten.",
+											"properties": {
+												"comments": {
+													"description": "Optional note describing the reason for the ignore pattern.",
+													"example": "Trusted internal redirect service",
+													"maxLength": 1024,
+													"nullable": true,
+													"type": "string",
+													"x-auditable": true
+												},
+												"pattern": {
+													"description": "Regular expression matching URLs that should not be rewritten.",
+													"example": "https://example\\.com/.*",
+													"maxLength": 1024,
+													"minLength": 1,
+													"type": "string",
+													"x-auditable": true
+												}
+											},
+											"required": [
+												"pattern"
+											],
+											"type": "object"
+										},
+										{
+											"properties": {
+												"id": {
+													"allOf": [
+														{
+															"description": "URL ignore pattern identifier",
+															"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
+															"format": "uuid",
+															"title": "identifier",
+															"type": "string",
+															"x-auditable": true
+														}
+													]
+												}
+											},
+											"required": [
+												"id"
+											],
+											"type": "object"
+										}
+									]
+								},
+								"maxItems": 1000,
+								"type": "array"
+							}
+						},
+						"required": [
+							"deletes",
+							"patches",
+							"puts",
+							"posts"
+						],
+						"type": "object"
+					}
+				}
+			},
+			"required": true
+		},
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"properties": {
+										"errors": {
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														},
+														"type": "object"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										},
+										"messages": {
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														},
+														"type": "object"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										},
+										"success": {
+											"description": "Whether the API call was successful.",
+											"enum": [
+												true
+											],
+											"example": true,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages"
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"result": {
+											"properties": {
+												"deletes": {
+													"items": {
+														"properties": {
+															"id": {
+																"description": "URL ignore pattern identifier",
+																"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
+																"format": "uuid",
+																"title": "identifier",
+																"type": "string",
+																"x-auditable": true
+															}
+														},
+														"required": [
+															"id"
+														],
+														"type": "object"
+													},
+													"type": "array"
+												},
+												"patches": {
+													"items": {
+														"description": "A URL ignore pattern that exempts matching URLs from being rewritten by Email Security.",
+														"properties": {
+															"comments": {
+																"description": "Optional note describing the reason for the ignore pattern.",
+																"example": "Trusted internal redirect service",
+																"maxLength": 1024,
+																"nullable": true,
+																"type": "string",
+																"x-auditable": true
+															},
+															"created_at": {
+																"format": "date-time",
+																"readOnly": true,
+																"type": "string",
+																"x-auditable": true
+															},
+															"id": {
+																"allOf": [
+																	{
+																		"description": "URL ignore pattern identifier",
+																		"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
+																		"format": "uuid",
+																		"title": "identifier",
+																		"type": "string",
+																		"x-auditable": true
+																	}
+																],
+																"readOnly": true
+															},
+															"last_modified": {
+																"deprecated": true,
+																"description": "Deprecated, use `modified_at` instead. End of life: November 1, 2026.",
+																"format": "date-time",
+																"readOnly": true,
+																"type": "string",
+																"x-auditable": true
+															},
+															"modified_at": {
+																"format": "date-time",
+																"readOnly": true,
+																"type": "string",
+																"x-auditable": true
+															},
+															"pattern": {
+																"description": "Regular expression matching URLs that should not be rewritten.",
+																"example": "https://example\\.com/.*",
+																"maxLength": 1024,
+																"minLength": 1,
+																"type": "string",
+																"x-auditable": true
+															}
+														},
+														"required": [
+															"id",
+															"created_at",
+															"pattern"
+														],
+														"type": "object"
+													},
+													"type": "array"
+												},
+												"posts": {
+													"items": {
+														"description": "A URL ignore pattern that exempts matching URLs from being rewritten by Email Security.",
+														"properties": {
+															"comments": {
+																"description": "Optional note describing the reason for the ignore pattern.",
+																"example": "Trusted internal redirect service",
+																"maxLength": 1024,
+																"nullable": true,
+																"type": "string",
+																"x-auditable": true
+															},
+															"created_at": {
+																"format": "date-time",
+																"readOnly": true,
+																"type": "string",
+																"x-auditable": true
+															},
+															"id": {
+																"allOf": [
+																	{
+																		"description": "URL ignore pattern identifier",
+																		"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
+																		"format": "uuid",
+																		"title": "identifier",
+																		"type": "string",
+																		"x-auditable": true
+																	}
+																],
+																"readOnly": true
+															},
+															"last_modified": {
+																"deprecated": true,
+																"description": "Deprecated, use `modified_at` instead. End of life: November 1, 2026.",
+																"format": "date-time",
+																"readOnly": true,
+																"type": "string",
+																"x-auditable": true
+															},
+															"modified_at": {
+																"format": "date-time",
+																"readOnly": true,
+																"type": "string",
+																"x-auditable": true
+															},
+															"pattern": {
+																"description": "Regular expression matching URLs that should not be rewritten.",
+																"example": "https://example\\.com/.*",
+																"maxLength": 1024,
+																"minLength": 1,
+																"type": "string",
+																"x-auditable": true
+															}
+														},
+														"required": [
+															"id",
+															"created_at",
+															"pattern"
+														],
+														"type": "object"
+													},
+													"type": "array"
+												},
+												"puts": {
+													"items": {
+														"description": "A URL ignore pattern that exempts matching URLs from being rewritten by Email Security.",
+														"properties": {
+															"comments": {
+																"description": "Optional note describing the reason for the ignore pattern.",
+																"example": "Trusted internal redirect service",
+																"maxLength": 1024,
+																"nullable": true,
+																"type": "string",
+																"x-auditable": true
+															},
+															"created_at": {
+																"format": "date-time",
+																"readOnly": true,
+																"type": "string",
+																"x-auditable": true
+															},
+															"id": {
+																"allOf": [
+																	{
+																		"description": "URL ignore pattern identifier",
+																		"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
+																		"format": "uuid",
+																		"title": "identifier",
+																		"type": "string",
+																		"x-auditable": true
+																	}
+																],
+																"readOnly": true
+															},
+															"last_modified": {
+																"deprecated": true,
+																"description": "Deprecated, use `modified_at` instead. End of life: November 1, 2026.",
+																"format": "date-time",
+																"readOnly": true,
+																"type": "string",
+																"x-auditable": true
+															},
+															"modified_at": {
+																"format": "date-time",
+																"readOnly": true,
+																"type": "string",
+																"x-auditable": true
+															},
+															"pattern": {
+																"description": "Regular expression matching URLs that should not be rewritten.",
+																"example": "https://example\\.com/.*",
+																"maxLength": 1024,
+																"minLength": 1,
+																"type": "string",
+																"x-auditable": true
+															}
+														},
+														"required": [
+															"id",
+															"created_at",
+															"pattern"
+														],
+														"type": "object"
+													},
+													"type": "array"
+												}
+											},
+											"required": [
+												"deletes",
+												"patches",
+												"puts",
+												"posts"
+											],
+											"type": "object"
+										}
+									},
+									"required": [
+										"result"
+									],
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "Batch operation results"
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"allOf": [
+										{
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														},
+														"type": "object"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										}
+									],
+									"example": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
+										}
+									],
+									"minLength": 1
+								},
+								"messages": {
+									"allOf": [
+										{
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														},
+														"type": "object"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										}
+									],
+									"example": []
+								},
+								"result": {
+									"enum": [
+										null
+									],
+									"nullable": true,
+									"type": "object"
+								},
+								"success": {
+									"description": "Whether the API call was successful.",
+									"enum": [
+										false
+									],
+									"example": false,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Client Error"
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Batch URL ignore patterns",
 		"tags": [
 			"Email Security Settings"
 		],
