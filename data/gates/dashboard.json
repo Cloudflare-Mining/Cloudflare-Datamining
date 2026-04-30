@@ -378,6 +378,9 @@
 	"billing-unified-checkout": {
 		"enabled": true
 	},
+	"billing-unified-checkout-cache-reserve": {
+		"enabled": false
+	},
 	"billing-unified-checkout-images": {
 		"enabled": true
 	},
@@ -392,6 +395,9 @@
 	},
 	"billing-unified-checkout-r2": {
 		"enabled": true
+	},
+	"billing-unified-checkout-realtimekit": {
+		"enabled": false
 	},
 	"billing-unified-checkout-registrar": {
 		"enabled": false
@@ -1590,7 +1596,7 @@
 		"enabled": true
 	},
 	"magic-virtual-appliance-self-serve": {
-		"enabled": false
+		"enabled": true
 	},
 	"magic-wan-site-breakout-traffic": {
 		"enabled": true
