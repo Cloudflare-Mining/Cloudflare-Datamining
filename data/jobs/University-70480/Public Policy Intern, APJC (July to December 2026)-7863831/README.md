@@ -5,53 +5,42 @@
 		<p>At Cloudflare, we’re not looking for people who wait for a polished roadmap; we’re looking for the builders who see the cracks in the Internet that everyone else has simply learned to live with. We value candidates who have the instinct to spot a "normalized" problem and the AI-native curiosity to create a solution using the latest tools. Our culture is built on iteration, leveraging AI to ship faster today to make it better tomorrow, while ensuring that every improvement, no matter how small, is shared across the team to lift everyone up. If you’re the type of person who values curiosity over bureaucracy, and that AI is a partner in solving tough problems to keep the Internet moving forward, you’ll fit right in.</p>
 	</div>
 </div>
-<p><strong>Available location:&nbsp;</strong>Singapore</p>
+<p><strong>Available location:&nbsp;</strong>Singapore, Bengaluru&nbsp;</p>
+<p><strong>Public Policy at Cloudflare</strong><br>Because of the scope, complexity, and diversity of Cloudflare’s work, our Public Policy team must be flexible, proactive, and collaborative. We work across multi-functional teams to present policy solutions, carry the Cloudflare narrative, and promote our brand externally.</p>
+<p>The APJC (Asia-Pacific, Japan &amp; China) team helps the company anticipate regulatory challenges, advocates for Cloudflare on priority issues, and builds relationships with external partners. In a region with fragmented regulatory regimes, we address fast-moving issues across cybersecurity, AI governance, data privacy, and connectivity.</p>
 <p><strong>About the Role</strong></p>
-<p>The Customer Advocacy Intern will support the team responsible for building, managing and growing customer marketing programs. Reporting to the Head of Customer Advocacy, the ideal candidate will be interested in a focus on both customer engagement and scaling customer programs in high growth SaaS companies. This is a fantastic opportunity to join a high growth company with a mission to build a better internet.</p>
-<p>You will shadow the Customer Advocacy Manager in APAC &amp; Japan cross functionally and globally in building customer participation with enterprise customers across many industries and partnering closely with stakeholders in Sales, Customer Success, Marketing, Product, and PR/AR.&nbsp;</p>
-<p>The candidate is an entry level intern who will work closely with the APAC &amp; Japan Customer Advocacy manager, who is driving all Customer Marketing and Customer Advocacy programs in region. Success is measured by the ability to drive forward efficiently and at the speed of the business, focused on quantity and quality of content, deep engagement with top accounts, brand equity, and levels/titles of participating customers.</p>
-<p>The main projects are:</p>
+<p>Based in Singapore or Bengaluru, you will support the APJC Public Policy team across three core pillars:</p>
+<p>1. Policy Analysis &amp; Research</p>
 <ul>
-	<li><strong>Customer References:</strong></li>
-	<ul>
-		<li>Support and fulfil sales 1:1 and RFP requests for customer references working across customer advocacy and account teams</li>
-		<li>Manage/track customer references requests via customer marketing tools</li>
-		<li>Support customer reference requests from key stakeholders across events, campaigns, product, analyst, and public relations teams&nbsp;</li>
-	</ul>
-	<li><strong>Customer Advocacy:&nbsp;</strong></li>
-	<ul>
-		<li>Qualify, develop and maintain a targeted pipeline of strategic customer relationships&nbsp;</li>
-		<li>Manage and qualify incoming nominations&nbsp;&nbsp;</li>
-		<li>Contribute to the development of high quality, world-class customer story content</li>
-	</ul>
-	<li><strong>Advisory Boards and Councils:&nbsp;</strong></li>
-	<ul>
-		<li>Shadow the process and contribute to our Sydney customer advisory boards/councils&nbsp;</li>
-		<li>Coordinate across many teams and executives, pre/post event success&nbsp;&nbsp;</li>
-		<li>Develop documents and reporting pre/post event</li>
-		<li>Assist in onsite, in-person, best-in-class customer experiences&nbsp;</li>
-	</ul>
+	<li>Regulatory Tracking: Monitor and evaluate legislative developments across APJC</li>
+	<li>Intelligence Mapping: Maintain internal knowledge databases and draft stakeholder maps covering government ministries, regional regulators, and industry bodies.</li>
+	<li>Content Development: Assist in drafting talking points, policy narratives, position papers, and consultation responses for regional government stakeholders.</li>
 </ul>
-<p><strong>Responsibilities</strong></p>
+<p>2. Policy Campaigns &amp; Programmatic Work</p>
 <ul>
-	<li>Collaborate with the APAC &amp; Japan GTM teams to develop and execute customer marketing strategies that align with business goals.</li>
-	<li>Support the research, writing, and editing of engaging case studies, customer interviews, and other marketing collateral.</li>
-	<li>Learn and support marketing and customer advocacy tech stack.</li>
-	<li>Contribute to planning and brainstorming sessions, bringing creative ideas and new efficiencies using AI to the table.</li>
-	<li>Support the team in analyzing advocacy activity performance and identifying opportunities for improvement.</li>
-	<li>Contribute to monthly and quarterly reporting, including newsletters</li>
+	<li>AI Advocacy: Support the execution of AI-focused policy programs and campaigns, identifying partnership opportunities with governments and civil society.</li>
+	<li>Regional Engagement: Help coordinate Cloudflare’s participation in regional forums and multi-stakeholder organizations.</li>
+	<li>External Representation: Help prepare materials for external events, meetings, and thought leadership pieces (e.g., company blog posts) to amplify Cloudflare’s regional voice.</li>
 </ul>
-<p><strong>Skills &amp; Qualifications</strong></p>
+<p>3. Internal Operations &amp; AI Innovation</p>
 <ul>
-	<li>Currently pursuing a degree in Journalism, English, Marketing, Communications, or a related field.</li>
-	<li>Available for a full-time 12-week internship, working from our Singapore office 3-5 days a week during the summer (May-Aug).</li>
-	<li>A strong portfolio of writing samples across different formats (e.g., blog posts, articles, essays).</li>
-	<li>Ability to write clearly and concisely with the flexibility to adapt tone for various digital platforms and audiences.</li>
-	<li>Strong project management skills.</li>
-	<li>Strong research skills and a keen eye for detail.</li>
-	<li>Excellent communication and collaboration skills.</li>
-	<li>Curiosity and a proactive approach to learning and problem-solving.</li>
-	<li><strong>Bonus: </strong>A passion for technology and its impact on the digital landscape is highly desirable.</li>
+	<li>AI Tooling &amp; Automation: Actively build and deploy AI-driven tools to streamline policy tracking, research, and internal reporting workflows.</li>
+	<li>Cross-Functional Support: Provide real-time updates to Legal, Trust &amp; Safety, and Sales teams, ensuring policy insights are translated into actionable business intelligence.</li>
+	<li>Commercial Enablement: Compile localized materials to help sales and marketing teams respond to policy-related inquiries from regional customers.</li>
+</ul>
+<p><strong>What We Are Looking For</strong></p>
+<p>We are seeking an active, self-starting individual with a strong academic background and a deep curiosity for the intersection of technology and society.</p>
+<p>Minimum Qualifications:</p>
+<ul>
+	<li>Current Student: Enrolled in a degree program in Law, Economics, Political Science, Public Policy, or a related social science field.</li>
+	<li>AI Proficiency: Must be highly comfortable with AI tools and demonstrate the ability to actively build with AI (e.g., using LLMs for automation, data analysis, or workflow optimization).</li>
+	<li>Available for a full-time 20-week internship, working from our Singapore or Bengaluru office 3-5 days a week from July - December.</li>
+</ul>
+<p>Preferred Qualifications:</p>
+<ul>
+	<li>Prior internship experience within a technology company, trade association, or government agency working on digital policy.</li>
+	<li>Familiarity with the specific regulatory landscapes of key APJC markets (e.g., India, Japan, Australia, or SE Asia).</li>
+	<li>Proficiency in a second regional language (e.g., Japanese, Korean or Bahasa) is a significant plus to understand and deal with policy in ASEAN countries</li>
 </ul>
 <p>You can check out our <a href="https://blog.cloudflare.com/tag/internship-experience/">internship blogs</a> to learn more about our program and hear directly from our past interns.</p>
 <div class="content-conclusion">
