@@ -248,25 +248,6 @@
 												"created_from_aisearch_wizard": {
 													"type": "boolean"
 												},
-												"search_for_agents": {
-													"properties": {
-														"hostname": {
-															"type": "string"
-														},
-														"zone_id": {
-															"type": "string"
-														},
-														"zone_name": {
-															"type": "string"
-														}
-													},
-													"required": [
-														"zone_id",
-														"zone_name",
-														"hostname"
-													],
-													"type": "object"
-												},
 												"worker_domain": {
 													"type": "string"
 												}
@@ -1092,25 +1073,6 @@
 											"properties": {
 												"created_from_aisearch_wizard": {
 													"type": "boolean"
-												},
-												"search_for_agents": {
-													"properties": {
-														"hostname": {
-															"type": "string"
-														},
-														"zone_id": {
-															"type": "string"
-														},
-														"zone_name": {
-															"type": "string"
-														}
-													},
-													"required": [
-														"zone_id",
-														"zone_name",
-														"hostname"
-													],
-													"type": "object"
 												},
 												"worker_domain": {
 													"type": "string"
@@ -1991,25 +1953,6 @@
 													"created_from_aisearch_wizard": {
 														"type": "boolean"
 													},
-													"search_for_agents": {
-														"properties": {
-															"hostname": {
-																"type": "string"
-															},
-															"zone_id": {
-																"type": "string"
-															},
-															"zone_name": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"zone_id",
-															"zone_name",
-															"hostname"
-														],
-														"type": "object"
-													},
 													"worker_domain": {
 														"type": "string"
 													}
@@ -2861,25 +2804,6 @@
 											"properties": {
 												"created_from_aisearch_wizard": {
 													"type": "boolean"
-												},
-												"search_for_agents": {
-													"properties": {
-														"hostname": {
-															"type": "string"
-														},
-														"zone_id": {
-															"type": "string"
-														},
-														"zone_name": {
-															"type": "string"
-														}
-													},
-													"required": [
-														"zone_id",
-														"zone_name",
-														"hostname"
-													],
-													"type": "object"
 												},
 												"worker_domain": {
 													"type": "string"
@@ -3962,25 +3886,6 @@
 													"created_from_aisearch_wizard": {
 														"type": "boolean"
 													},
-													"search_for_agents": {
-														"properties": {
-															"hostname": {
-																"type": "string"
-															},
-															"zone_id": {
-																"type": "string"
-															},
-															"zone_name": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"zone_id",
-															"zone_name",
-															"hostname"
-														],
-														"type": "object"
-													},
 													"worker_domain": {
 														"type": "string"
 													}
@@ -4842,25 +4747,6 @@
 											"properties": {
 												"created_from_aisearch_wizard": {
 													"type": "boolean"
-												},
-												"search_for_agents": {
-													"properties": {
-														"hostname": {
-															"type": "string"
-														},
-														"zone_id": {
-															"type": "string"
-														},
-														"zone_name": {
-															"type": "string"
-														}
-													},
-													"required": [
-														"zone_id",
-														"zone_name",
-														"hostname"
-													],
-													"type": "object"
 												},
 												"worker_domain": {
 													"type": "string"
@@ -5847,25 +5733,6 @@
 									"created_from_aisearch_wizard": {
 										"type": "boolean"
 									},
-									"search_for_agents": {
-										"properties": {
-											"hostname": {
-												"type": "string"
-											},
-											"zone_id": {
-												"type": "string"
-											},
-											"zone_name": {
-												"type": "string"
-											}
-										},
-										"required": [
-											"zone_id",
-											"zone_name",
-											"hostname"
-										],
-										"type": "object"
-									},
 									"worker_domain": {
 										"type": "string"
 									}
@@ -6548,25 +6415,6 @@
 											"properties": {
 												"created_from_aisearch_wizard": {
 													"type": "boolean"
-												},
-												"search_for_agents": {
-													"properties": {
-														"hostname": {
-															"type": "string"
-														},
-														"zone_id": {
-															"type": "string"
-														},
-														"zone_name": {
-															"type": "string"
-														}
-													},
-													"required": [
-														"zone_id",
-														"zone_name",
-														"hostname"
-													],
-													"type": "object"
 												},
 												"worker_domain": {
 													"type": "string"
@@ -8468,25 +8316,6 @@
 									"created_from_aisearch_wizard": {
 										"type": "boolean"
 									},
-									"search_for_agents": {
-										"properties": {
-											"hostname": {
-												"type": "string"
-											},
-											"zone_id": {
-												"type": "string"
-											},
-											"zone_name": {
-												"type": "string"
-											}
-										},
-										"required": [
-											"zone_id",
-											"zone_name",
-											"hostname"
-										],
-										"type": "object"
-									},
 									"worker_domain": {
 										"type": "string"
 									}
@@ -9169,25 +8998,6 @@
 											"properties": {
 												"created_from_aisearch_wizard": {
 													"type": "boolean"
-												},
-												"search_for_agents": {
-													"properties": {
-														"hostname": {
-															"type": "string"
-														},
-														"zone_id": {
-															"type": "string"
-														},
-														"zone_name": {
-															"type": "string"
-														}
-													},
-													"required": [
-														"zone_id",
-														"zone_name",
-														"hostname"
-													],
-													"type": "object"
 												},
 												"worker_domain": {
 													"type": "string"
@@ -11092,25 +10902,6 @@
 									"created_from_aisearch_wizard": {
 										"type": "boolean"
 									},
-									"search_for_agents": {
-										"properties": {
-											"hostname": {
-												"type": "string"
-											},
-											"zone_id": {
-												"type": "string"
-											},
-											"zone_name": {
-												"type": "string"
-											}
-										},
-										"required": [
-											"zone_id",
-											"zone_name",
-											"hostname"
-										],
-										"type": "object"
-									},
 									"worker_domain": {
 										"type": "string"
 									}
@@ -11838,25 +11629,6 @@
 											"properties": {
 												"created_from_aisearch_wizard": {
 													"type": "boolean"
-												},
-												"search_for_agents": {
-													"properties": {
-														"hostname": {
-															"type": "string"
-														},
-														"zone_id": {
-															"type": "string"
-														},
-														"zone_name": {
-															"type": "string"
-														}
-													},
-													"required": [
-														"zone_id",
-														"zone_name",
-														"hostname"
-													],
-													"type": "object"
 												},
 												"worker_domain": {
 													"type": "string"
@@ -12684,25 +12456,6 @@
 									"created_from_aisearch_wizard": {
 										"type": "boolean"
 									},
-									"search_for_agents": {
-										"properties": {
-											"hostname": {
-												"type": "string"
-											},
-											"zone_id": {
-												"type": "string"
-											},
-											"zone_name": {
-												"type": "string"
-											}
-										},
-										"required": [
-											"zone_id",
-											"zone_name",
-											"hostname"
-										],
-										"type": "object"
-									},
 									"worker_domain": {
 										"type": "string"
 									}
@@ -13430,25 +13183,6 @@
 											"properties": {
 												"created_from_aisearch_wizard": {
 													"type": "boolean"
-												},
-												"search_for_agents": {
-													"properties": {
-														"hostname": {
-															"type": "string"
-														},
-														"zone_id": {
-															"type": "string"
-														},
-														"zone_name": {
-															"type": "string"
-														}
-													},
-													"required": [
-														"zone_id",
-														"zone_name",
-														"hostname"
-													],
-													"type": "object"
 												},
 												"worker_domain": {
 													"type": "string"

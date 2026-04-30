@@ -114,6 +114,91 @@
 										"result": {
 											"additionalProperties": false,
 											"properties": {
+												"authentication_settings": {
+													"additionalProperties": false,
+													"description": "Configuration for classifying login authentication outcomes based on the origin response.\nRequires `user_profiles` to be enabled.\n\n- Success and failure criteria are independently updatable — sending only `success_criteria`\n  leaves failure codes untouched, and vice versa.\n- Omit `authentication_settings` entirely to leave both unchanged.\n- Status codes must not overlap between success and failure criteria.\n",
+													"properties": {
+														"failure_criteria": {
+															"allOf": [
+																{
+																	"additionalProperties": false,
+																	"description": "A criterion for determining authentication outcome. The `kind` field determines which\nother fields are used for matching.\n",
+																	"properties": {
+																		"kind": {
+																			"description": "The type of criterion. Currently only `status_code` is supported.",
+																			"enum": [
+																				"status_code"
+																			],
+																			"example": "status_code",
+																			"type": "string",
+																			"x-auditable": true
+																		},
+																		"status_codes": {
+																			"description": "HTTP status codes to match against the origin response.\n- Maximum of 10 codes per criterion.\n- Each code must be a valid HTTP status code (100-599).\n- Codes are deduplicated and sorted on save.\n- Omit to leave unchanged on update.\n- Provide an empty array `[]` to clear codes on update.\n",
+																			"example": [
+																				200,
+																				201
+																			],
+																			"items": {
+																				"maximum": 599,
+																				"minimum": 100,
+																				"type": "integer"
+																			},
+																			"maxItems": 10,
+																			"type": "array",
+																			"x-auditable": true
+																		}
+																	},
+																	"required": [
+																		"kind"
+																	],
+																	"type": "object"
+																}
+															],
+															"description": "Criterion for identifying failed login responses."
+														},
+														"success_criteria": {
+															"allOf": [
+																{
+																	"additionalProperties": false,
+																	"description": "A criterion for determining authentication outcome. The `kind` field determines which\nother fields are used for matching.\n",
+																	"properties": {
+																		"kind": {
+																			"description": "The type of criterion. Currently only `status_code` is supported.",
+																			"enum": [
+																				"status_code"
+																			],
+																			"example": "status_code",
+																			"type": "string",
+																			"x-auditable": true
+																		},
+																		"status_codes": {
+																			"description": "HTTP status codes to match against the origin response.\n- Maximum of 10 codes per criterion.\n- Each code must be a valid HTTP status code (100-599).\n- Codes are deduplicated and sorted on save.\n- Omit to leave unchanged on update.\n- Provide an empty array `[]` to clear codes on update.\n",
+																			"example": [
+																				200,
+																				201
+																			],
+																			"items": {
+																				"maximum": 599,
+																				"minimum": 100,
+																				"type": "integer"
+																			},
+																			"maxItems": 10,
+																			"type": "array",
+																			"x-auditable": true
+																		}
+																	},
+																	"required": [
+																		"kind"
+																	],
+																	"type": "object"
+																}
+															],
+															"description": "Criterion for identifying successful login responses."
+														}
+													},
+													"type": "object"
+												},
 												"user_profiles": {
 													"description": "Whether Fraud User Profiles is enabled for the zone.",
 													"enum": [
@@ -248,6 +333,91 @@
 												"result": {
 													"additionalProperties": false,
 													"properties": {
+														"authentication_settings": {
+															"additionalProperties": false,
+															"description": "Configuration for classifying login authentication outcomes based on the origin response.\nRequires `user_profiles` to be enabled.\n\n- Success and failure criteria are independently updatable — sending only `success_criteria`\n  leaves failure codes untouched, and vice versa.\n- Omit `authentication_settings` entirely to leave both unchanged.\n- Status codes must not overlap between success and failure criteria.\n",
+															"properties": {
+																"failure_criteria": {
+																	"allOf": [
+																		{
+																			"additionalProperties": false,
+																			"description": "A criterion for determining authentication outcome. The `kind` field determines which\nother fields are used for matching.\n",
+																			"properties": {
+																				"kind": {
+																					"description": "The type of criterion. Currently only `status_code` is supported.",
+																					"enum": [
+																						"status_code"
+																					],
+																					"example": "status_code",
+																					"type": "string",
+																					"x-auditable": true
+																				},
+																				"status_codes": {
+																					"description": "HTTP status codes to match against the origin response.\n- Maximum of 10 codes per criterion.\n- Each code must be a valid HTTP status code (100-599).\n- Codes are deduplicated and sorted on save.\n- Omit to leave unchanged on update.\n- Provide an empty array `[]` to clear codes on update.\n",
+																					"example": [
+																						200,
+																						201
+																					],
+																					"items": {
+																						"maximum": 599,
+																						"minimum": 100,
+																						"type": "integer"
+																					},
+																					"maxItems": 10,
+																					"type": "array",
+																					"x-auditable": true
+																				}
+																			},
+																			"required": [
+																				"kind"
+																			],
+																			"type": "object"
+																		}
+																	],
+																	"description": "Criterion for identifying failed login responses."
+																},
+																"success_criteria": {
+																	"allOf": [
+																		{
+																			"additionalProperties": false,
+																			"description": "A criterion for determining authentication outcome. The `kind` field determines which\nother fields are used for matching.\n",
+																			"properties": {
+																				"kind": {
+																					"description": "The type of criterion. Currently only `status_code` is supported.",
+																					"enum": [
+																						"status_code"
+																					],
+																					"example": "status_code",
+																					"type": "string",
+																					"x-auditable": true
+																				},
+																				"status_codes": {
+																					"description": "HTTP status codes to match against the origin response.\n- Maximum of 10 codes per criterion.\n- Each code must be a valid HTTP status code (100-599).\n- Codes are deduplicated and sorted on save.\n- Omit to leave unchanged on update.\n- Provide an empty array `[]` to clear codes on update.\n",
+																					"example": [
+																						200,
+																						201
+																					],
+																					"items": {
+																						"maximum": 599,
+																						"minimum": 100,
+																						"type": "integer"
+																					},
+																					"maxItems": 10,
+																					"type": "array",
+																					"x-auditable": true
+																				}
+																			},
+																			"required": [
+																				"kind"
+																			],
+																			"type": "object"
+																		}
+																	],
+																	"description": "Criterion for identifying successful login responses."
+																}
+															},
+															"type": "object"
+														},
 														"user_profiles": {
 															"description": "Whether Fraud User Profiles is enabled for the zone.",
 															"enum": [
@@ -437,6 +607,27 @@
 								"username_expressions": []
 							}
 						},
+						"configure_auth_status": {
+							"summary": "Configure authentication status codes",
+							"value": {
+								"authentication_settings": {
+									"failure_criteria": {
+										"kind": "status_code",
+										"status_codes": [
+											401,
+											403
+										]
+									},
+									"success_criteria": {
+										"kind": "status_code",
+										"status_codes": [
+											200,
+											201
+										]
+									}
+								}
+							}
+						},
 						"enable_user_profiles": {
 							"summary": "Enable user profiles and set two username extraction expressions",
 							"value": {
@@ -446,11 +637,109 @@
 									"lookup_json_string(http.request.body.raw, \"username\")"
 								]
 							}
+						},
+						"partial_update_auth_status": {
+							"summary": "Update only success codes, leave failure codes unchanged",
+							"value": {
+								"authentication_settings": {
+									"success_criteria": {
+										"kind": "status_code",
+										"status_codes": [
+											200
+										]
+									}
+								}
+							}
 						}
 					},
 					"schema": {
 						"additionalProperties": false,
 						"properties": {
+							"authentication_settings": {
+								"additionalProperties": false,
+								"description": "Configuration for classifying login authentication outcomes based on the origin response.\nRequires `user_profiles` to be enabled.\n\n- Success and failure criteria are independently updatable — sending only `success_criteria`\n  leaves failure codes untouched, and vice versa.\n- Omit `authentication_settings` entirely to leave both unchanged.\n- Status codes must not overlap between success and failure criteria.\n",
+								"properties": {
+									"failure_criteria": {
+										"allOf": [
+											{
+												"additionalProperties": false,
+												"description": "A criterion for determining authentication outcome. The `kind` field determines which\nother fields are used for matching.\n",
+												"properties": {
+													"kind": {
+														"description": "The type of criterion. Currently only `status_code` is supported.",
+														"enum": [
+															"status_code"
+														],
+														"example": "status_code",
+														"type": "string",
+														"x-auditable": true
+													},
+													"status_codes": {
+														"description": "HTTP status codes to match against the origin response.\n- Maximum of 10 codes per criterion.\n- Each code must be a valid HTTP status code (100-599).\n- Codes are deduplicated and sorted on save.\n- Omit to leave unchanged on update.\n- Provide an empty array `[]` to clear codes on update.\n",
+														"example": [
+															200,
+															201
+														],
+														"items": {
+															"maximum": 599,
+															"minimum": 100,
+															"type": "integer"
+														},
+														"maxItems": 10,
+														"type": "array",
+														"x-auditable": true
+													}
+												},
+												"required": [
+													"kind"
+												],
+												"type": "object"
+											}
+										],
+										"description": "Criterion for identifying failed login responses."
+									},
+									"success_criteria": {
+										"allOf": [
+											{
+												"additionalProperties": false,
+												"description": "A criterion for determining authentication outcome. The `kind` field determines which\nother fields are used for matching.\n",
+												"properties": {
+													"kind": {
+														"description": "The type of criterion. Currently only `status_code` is supported.",
+														"enum": [
+															"status_code"
+														],
+														"example": "status_code",
+														"type": "string",
+														"x-auditable": true
+													},
+													"status_codes": {
+														"description": "HTTP status codes to match against the origin response.\n- Maximum of 10 codes per criterion.\n- Each code must be a valid HTTP status code (100-599).\n- Codes are deduplicated and sorted on save.\n- Omit to leave unchanged on update.\n- Provide an empty array `[]` to clear codes on update.\n",
+														"example": [
+															200,
+															201
+														],
+														"items": {
+															"maximum": 599,
+															"minimum": 100,
+															"type": "integer"
+														},
+														"maxItems": 10,
+														"type": "array",
+														"x-auditable": true
+													}
+												},
+												"required": [
+													"kind"
+												],
+												"type": "object"
+											}
+										],
+										"description": "Criterion for identifying successful login responses."
+									}
+								},
+								"type": "object"
+							},
 							"user_profiles": {
 								"description": "Whether Fraud User Profiles is enabled for the zone.",
 								"enum": [
@@ -579,6 +868,91 @@
 										"result": {
 											"additionalProperties": false,
 											"properties": {
+												"authentication_settings": {
+													"additionalProperties": false,
+													"description": "Configuration for classifying login authentication outcomes based on the origin response.\nRequires `user_profiles` to be enabled.\n\n- Success and failure criteria are independently updatable — sending only `success_criteria`\n  leaves failure codes untouched, and vice versa.\n- Omit `authentication_settings` entirely to leave both unchanged.\n- Status codes must not overlap between success and failure criteria.\n",
+													"properties": {
+														"failure_criteria": {
+															"allOf": [
+																{
+																	"additionalProperties": false,
+																	"description": "A criterion for determining authentication outcome. The `kind` field determines which\nother fields are used for matching.\n",
+																	"properties": {
+																		"kind": {
+																			"description": "The type of criterion. Currently only `status_code` is supported.",
+																			"enum": [
+																				"status_code"
+																			],
+																			"example": "status_code",
+																			"type": "string",
+																			"x-auditable": true
+																		},
+																		"status_codes": {
+																			"description": "HTTP status codes to match against the origin response.\n- Maximum of 10 codes per criterion.\n- Each code must be a valid HTTP status code (100-599).\n- Codes are deduplicated and sorted on save.\n- Omit to leave unchanged on update.\n- Provide an empty array `[]` to clear codes on update.\n",
+																			"example": [
+																				200,
+																				201
+																			],
+																			"items": {
+																				"maximum": 599,
+																				"minimum": 100,
+																				"type": "integer"
+																			},
+																			"maxItems": 10,
+																			"type": "array",
+																			"x-auditable": true
+																		}
+																	},
+																	"required": [
+																		"kind"
+																	],
+																	"type": "object"
+																}
+															],
+															"description": "Criterion for identifying failed login responses."
+														},
+														"success_criteria": {
+															"allOf": [
+																{
+																	"additionalProperties": false,
+																	"description": "A criterion for determining authentication outcome. The `kind` field determines which\nother fields are used for matching.\n",
+																	"properties": {
+																		"kind": {
+																			"description": "The type of criterion. Currently only `status_code` is supported.",
+																			"enum": [
+																				"status_code"
+																			],
+																			"example": "status_code",
+																			"type": "string",
+																			"x-auditable": true
+																		},
+																		"status_codes": {
+																			"description": "HTTP status codes to match against the origin response.\n- Maximum of 10 codes per criterion.\n- Each code must be a valid HTTP status code (100-599).\n- Codes are deduplicated and sorted on save.\n- Omit to leave unchanged on update.\n- Provide an empty array `[]` to clear codes on update.\n",
+																			"example": [
+																				200,
+																				201
+																			],
+																			"items": {
+																				"maximum": 599,
+																				"minimum": 100,
+																				"type": "integer"
+																			},
+																			"maxItems": 10,
+																			"type": "array",
+																			"x-auditable": true
+																		}
+																	},
+																	"required": [
+																		"kind"
+																	],
+																	"type": "object"
+																}
+															],
+															"description": "Criterion for identifying successful login responses."
+														}
+													},
+													"type": "object"
+												},
 												"user_profiles": {
 													"description": "Whether Fraud User Profiles is enabled for the zone.",
 													"enum": [
@@ -734,6 +1108,91 @@
 												"result": {
 													"additionalProperties": false,
 													"properties": {
+														"authentication_settings": {
+															"additionalProperties": false,
+															"description": "Configuration for classifying login authentication outcomes based on the origin response.\nRequires `user_profiles` to be enabled.\n\n- Success and failure criteria are independently updatable — sending only `success_criteria`\n  leaves failure codes untouched, and vice versa.\n- Omit `authentication_settings` entirely to leave both unchanged.\n- Status codes must not overlap between success and failure criteria.\n",
+															"properties": {
+																"failure_criteria": {
+																	"allOf": [
+																		{
+																			"additionalProperties": false,
+																			"description": "A criterion for determining authentication outcome. The `kind` field determines which\nother fields are used for matching.\n",
+																			"properties": {
+																				"kind": {
+																					"description": "The type of criterion. Currently only `status_code` is supported.",
+																					"enum": [
+																						"status_code"
+																					],
+																					"example": "status_code",
+																					"type": "string",
+																					"x-auditable": true
+																				},
+																				"status_codes": {
+																					"description": "HTTP status codes to match against the origin response.\n- Maximum of 10 codes per criterion.\n- Each code must be a valid HTTP status code (100-599).\n- Codes are deduplicated and sorted on save.\n- Omit to leave unchanged on update.\n- Provide an empty array `[]` to clear codes on update.\n",
+																					"example": [
+																						200,
+																						201
+																					],
+																					"items": {
+																						"maximum": 599,
+																						"minimum": 100,
+																						"type": "integer"
+																					},
+																					"maxItems": 10,
+																					"type": "array",
+																					"x-auditable": true
+																				}
+																			},
+																			"required": [
+																				"kind"
+																			],
+																			"type": "object"
+																		}
+																	],
+																	"description": "Criterion for identifying failed login responses."
+																},
+																"success_criteria": {
+																	"allOf": [
+																		{
+																			"additionalProperties": false,
+																			"description": "A criterion for determining authentication outcome. The `kind` field determines which\nother fields are used for matching.\n",
+																			"properties": {
+																				"kind": {
+																					"description": "The type of criterion. Currently only `status_code` is supported.",
+																					"enum": [
+																						"status_code"
+																					],
+																					"example": "status_code",
+																					"type": "string",
+																					"x-auditable": true
+																				},
+																				"status_codes": {
+																					"description": "HTTP status codes to match against the origin response.\n- Maximum of 10 codes per criterion.\n- Each code must be a valid HTTP status code (100-599).\n- Codes are deduplicated and sorted on save.\n- Omit to leave unchanged on update.\n- Provide an empty array `[]` to clear codes on update.\n",
+																					"example": [
+																						200,
+																						201
+																					],
+																					"items": {
+																						"maximum": 599,
+																						"minimum": 100,
+																						"type": "integer"
+																					},
+																					"maxItems": 10,
+																					"type": "array",
+																					"x-auditable": true
+																				}
+																			},
+																			"required": [
+																				"kind"
+																			],
+																			"type": "object"
+																		}
+																	],
+																	"description": "Criterion for identifying successful login responses."
+																}
+															},
+															"type": "object"
+														},
 														"user_profiles": {
 															"description": "Whether Fraud User Profiles is enabled for the zone.",
 															"enum": [
