@@ -1,15 +1,15 @@
 {
 	"componentChunkName": "component---src-components-learning-center-templates-learning-center-article-template-tsx",
-	"path": "/learning/access-management/spear-phishing/",
+	"path": "/learning/access-management/dns-filtering-for-ai-security/",
 	"result": {
 		"data": {
 			"learningCenterArticle": {
 				"contentTypeId": "learningCenterArticle",
-				"contentfulId": "5Y1ZeV90BuoRcKPG4a8Lns",
-				"urlSlug": "access-management/spear-phishing",
+				"contentfulId": "12PoSqvzaGBLXEpqopuCfG",
+				"urlSlug": "access-management/dns-filtering-for-ai-security",
 				"metaTags": {
-					"metaTitle": "What is spear phishing? | Prevent spear phishing and whaling",
-					"metaDescription": "Spear phishing is a type of social engineering attack where an attacker creates a data breach by tricking a victim into handing over sensitive data.",
+					"metaTitle": "How to implement DNS filtering for AI security",
+					"metaDescription": "DNS filtering is a powerful first line of defense for AI security. Learn how to implement DNS filtering for security in order to better support AI adoption.",
 					"twitterCustomImage": null,
 					"metaImage": {
 						"file": {
@@ -17,12 +17,7 @@
 						},
 						"description": "DO NOT REMOVE, THIS IS CLOUDFLARE'S GLOBAL OG META ASSET"
 					},
-					"facebookCustomImage": {
-						"file": {
-							"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/53qCYhQbir5WtIU0VDWESo/954a48bfb17f429acf469e5f14345d83/unnamed-3.png"
-						},
-						"description": "DO NOT REMOVE, THIS IS CLOUDFLARE'S GLOBAL OG META ASSET"
-					}
+					"facebookCustomImage": null
 				},
 				"metaTitle": null,
 				"metaDescription": null,
@@ -891,16 +886,28 @@
 						]
 					}
 				},
-				"header": "What is spear phishing?",
-				"blurbSubHeader": "While some phishing scams get sent to millions of people in the hopes that someone will bite, a spear phishing attack focuses on a single target, and can be very convincing.",
-				"objectivesHeader": "Spear Phishing",
+				"header": "How to implement DNS filtering for AI security",
+				"blurbSubHeader": "DNS filtering can mitigate a number of AI-based security risks, including data poisoning, indirect prompt injection, and shadow AI.",
+				"objectivesHeader": "DNS Filtering for AI",
 				"objectivesList": [
-					"Define spear phishing",
-					"Explain the differences between phishing, spear phishing, and whaling",
-					"Outline strategies to prevent spear phishing and whaling"
+					"Understand how DNS filtering works",
+					"Explain how to apply DNS filtering for AI-based risks",
+					"Implement DNS filtering for AI"
 				],
 				"relatedContentLinkText": "Related Content",
 				"relatedContent": [
+					{
+						"contentTypeId": "learningCenterArticleLink",
+						"contentfulId": "6XvpGQTupqKx4DjPEcOLMj",
+						"displayText": "DNS filtering",
+						"url": "/learning/access-management/what-is-dns-filtering/"
+					},
+					{
+						"contentTypeId": "learningCenterArticleLink",
+						"contentfulId": "2xTviVL6gN4Ri1IZS63s31",
+						"displayText": "DNS filtering for guest WiFi",
+						"url": "/learning/access-management/how-to-secure-guest-wifi-dns-filtering/"
+					},
 					{
 						"contentTypeId": "learningCenterArticleLink",
 						"contentfulId": "4QoH8dVxKKYSsfePjHNKxD",
@@ -909,45 +916,33 @@
 					},
 					{
 						"contentTypeId": "learningCenterArticleLink",
-						"contentfulId": "5hgaSWVTO4fYkwfXbmMctc",
-						"displayText": "Smishing",
-						"url": "/learning/access-management/smishing/"
+						"contentfulId": "7qscNda3QrDnyAZknHtbLZ",
+						"displayText": "Access control",
+						"url": "/learning/access-management/what-is-access-control/"
 					},
 					{
 						"contentTypeId": "learningCenterArticleLink",
-						"contentfulId": "6OT3YMHacbSCBJMO2bBivb",
-						"displayText": "What is an insider threat?",
-						"url": "/learning/access-management/what-is-an-insider-threat/"
-					},
-					{
-						"contentTypeId": "learningCenterArticleLink",
-						"contentfulId": "11BjITFi6r2hDV21rZPAFR",
-						"displayText": "Zero Trust security",
-						"url": "/learning/security/glossary/what-is-zero-trust/"
-					},
-					{
-						"contentTypeId": "learningCenterArticleLink",
-						"contentfulId": "7p87aHcK9Ie2dylUSFYG9T",
-						"displayText": "Two-factor authentication ",
-						"url": "/learning/access-management/what-is-two-factor-authentication/"
+						"contentfulId": "77GMoHfbv1pOadgxJ3XFik",
+						"displayText": "How to implement Zero Trust",
+						"url": "/learning/access-management/how-to-implement-zero-trust/"
 					}
 				],
 				"enablementBlade": null,
-				"desktopMainContent": "<h2>Article Summary:</h2>\n<ul class=\"learning-list\">\n  <li>Spear phishing is a targeted email attack using personalized information to deceive specific individuals or organizations into revealing sensitive data or installing malicious software on their systems.</li>\n  <li>Unlike broad campaigns, spear phishing employs social engineering and reconnaissance to craft highly convincing messages, making these sophisticated threats much harder for traditional security filters to detect.</li>\n  <li>Organizations can prevent spear phishing by implementing Multi-Factor Authentication (MFA), using advanced email security solutions, and providing consistent employee training to recognize evolving social engineering tactics.</li>\n</ul>\n<h2 class=\"learning-content-h2 learning-content-h2--margin-top-16px\" itemprop=\"headline\">What is spear phishing?</h2>\n\n<p>While <a href='/learning/access-management/phishing-attack/'>phishing</a> is a broad term for attacks that aim to trick a victim into sharing sensitive information, spear phishing is a phishing attack that goes after a single target, which can be an individual, organization, or business.</p>\n\n<p>Spear phishing attacks are particularly effective because the attacker can use information about the victim, oftentimes public information found online, to create a convincing ruse.</p>\n\n<h4 class=\"learning-content-h4\">Spear phishing vs. 'bulk' phishing</h4>\n\n<p>The majority of phishing attacks are not directly targeted. Usually, phishing messages are sent in bulk to as many people as possible, and the attackers hope some small percentage fall for the ruse. This is the cheapest and fastest way to execute phishing attacks. Attackers may incorporate some degree of automation and personalization, especially using <a href='/learning/ai/what-is-artificial-intelligence/'>AI</a>, but extra customization for a single person or organization is not part of a typical bulk phishing campaign.</p>\n\n<p>The research and personalization that goes into spear phishing takes more effort (and often more money) than an ordinary phishing attack. For this reason spear phishing attacks are rarer by comparison. But, they have a very high rate of success. And when successful, they cause much more damage to their targets.</p>\n\n<h2 class=\"learning-content-h2\" itemprop=\"headline\">What social engineering tactics are used in spear phishing?</h2>\n\n<p>Spear phishers use tactics common to many types of <a href='/learning/security/threats/social-engineering-attack/'>social engineering attacks</a> in order to manipulate their victims. These include:</p>\n\n<ul class=\"learning-list\">\n  <li><strong>Introducing a time limit</strong> so that the victim feels they have to act quickly without taking the time to think the request through</li>\n  <li><strong>Using emotional appeals</strong>, such as including information about negative consequences if the recipient does not comply with the fake request</li>\n  <li><strong>Creating a convincing story</strong>, also known as \"pretexting\"</li>\n  <li><strong>Including directly relevant details:</strong> addressing the recipient by name, sending the email from someone at the recipient's place of employment, including real details about the recipient's life, and so on</li>\n</ul>\n\n<h2 class=\"learning-content-h2\" itemprop=\"headline\">What other tactics do spear phishing attacks use?</h2>\n\n<p>Beyond personalization, there are several steps attackers often take to make their spear phishing attacks more effective.</p>\n\n<ul class=\"learning-list\">\n  <li><a href='/learning/ssl/what-is-domain-spoofing/'>Domain</a> and <a href='/learning/email-security/what-is-email-spoofing/'>email spoofing</a>: Attackers may imitate email addresses and website URLs to make their scams more convincing.</li>\n  <li><a href='/learning/access-management/account-takeover/'>Account takeover</a>: Instead of faking the sender's email address, an attacker may first gain access to a trusted party's email account and send the spear phishing email from there.</li>\n  <li><a href='/learning/ai/what-is-generative-ai/'>Generative AI</a>: Attackers can use <a href='/learning/ai/what-is-large-language-model/'>large language models (LLMs)</a> to create or proofread their messages, or to research their targets.</li>\n</ul>\n\n<h2 class=\"learning-content-h2\" itemprop=\"headline\">What do spear phishing attacks look like?</h2>\n\n<p>A common spear phishing tactic is for the attacker to pose as someone in a position of authority, because people are much more likely to respond to an authority figure.</p>\n\n<p>Here is an example:</p>\n\n<p>Joe is an executive assistant to a CEO named Mary. One day when Mary is on vacation abroad, Joe gets an urgent email from her. The email states that her luggage and phone have been stolen. She says she has no money or passport and needs him to send over her PayPal credentials ASAP so that she can book a hotel and buy a flight home. Joe might see this harrowing message from his employer and immediately send over the requested information.</p>\n\n<p>This sort of \"I'm in trouble and need money\" request from a superior is a common spear phishing script. The attacker could be spoofing Mary's email, as well as sending the email to dozens of different combinations of Joe's name and initials in hopes of finding the correct one. The attacker may also have learned about Mary's vacation plans by following her on Twitter. Combining all of these tools, the attacker can devise a very convincing con.</p>\n\n<p>A notable real-life example of this <a href='https://money.cnn.com/2016/02/29/technology/snapchat-phishing-scam/index.html' target='_blank'>happened in 2016</a>, when an attacker posed as the CEO of Snapchat and was able to convince an employee to hand over confidential payroll information.</p>\n\n<p>Spear phishing attacks can also leverage information from <a href='/learning/security/what-is-a-data-breach/'>data breaches</a>. Another example:</p>\n\n<p>Steve buys a computer at a major <a href='/retail/'>online retailer</a>, but a few weeks later the retailer has a data breach. Although sensitive data like credit card numbers and passwords were hash-protected, customer email addresses and order histories were leaked.</p>\n\n<p>A few days later, Steve gets an email from the manufacturer of his new computer announcing that his model is being recalled, and providing a link to receive a refund. The link takes Steve to a fake version of the manufacturer's website and provides a form for Steve to enter his credit card number for the refund. The attacker used some fairly harmless data to gain Steve's confidence and trick him into handing over his financial information.</p>\n\n<h2 class=\"learning-content-h2\" itemprop=\"headline\">What is the difference between spear phishing and whaling?</h2>\n\n<p><a href='/learning/access-management/whaling-attack/'>Whaling</a> is a spear phishing attack that targets a very high-profile victim, usually a top executive at a company or a celebrity. Whaling attacks tend to be more sophisticated, and in many cases attackers will first carry out spear phishing attacks on smaller targets, such as employees of the \"whale,\" in order to gain access to their ultimate victim.</p>\n\n<p>For example:</p>\n\n<p>While on vacation, Mary the CEO gets an email or call from someone she knows on her IT team letting her know that they are enduring a cyber attack and requesting access to her work computer and her accounts to ensure that company data can be secured. It is possible that an attacker compromised her IT team in order to gain Mary's trust, in hopes of convincing her to hand over her credentials.</p>\n\n<h2 class=\"learning-content-h2\" itemprop=\"headline\">How to protect against spear phishing and whaling</h2>\n\n<p>Since spear phishing involves <a href='/learning/security/threats/social-engineering-attack/'>social engineering</a>, there are no foolproof ways to protect against these kinds of attacks. However, a number of precautions can be taken to prevent and mitigate attempts at spear phishing. These include:</p>\n\n<ul class=\"learning-list\">\n  <li>Never share financial information, passwords, or any other sensitive data over phone, chat, or email.</li>\n  <li>Do not click on links in <a href='/learning/email-security/what-is-email/'>emails</a>, even if they appear to be from a trusted source. Copying and pasting or hand-typing the URL can help protect from <a href='/learning/security/threats/cross-site-scripting/'>cross-site scripting</a> attacks.</li>\n  <li>Enable <a href='/learning/access-management/what-is-two-factor-authentication/'>2-factor authentication</a> on all important accounts, so that stolen login credentials are not enough.</li>\n  <li>Enable <a href='/learning/security/glossary/what-is-zero-trust/'>Zero Trust security</a> policies to ensure that an intruder does not have open access to a network.</li>\n</ul>",
+				"desktopMainContent": "<h2 class=\"learning-content-h2\" itemprop=\"headline\">How DNS filtering supports an AI security strategy</h2>\n <p><a href=\"/learning/access-management/what-is-dns-filtering/\">DNS filtering</a> refers to the use of the <a href=\"/learning/dns/what-is-dns/\">Domain Name System</a> to block certain <a href=\"/learning/dns/glossary/what-is-a-domain-name/\">domains</a> and IP addresses from loading within a given network. If domain queries are blocked and are not allowed to resolve to an <a href=\"/learning/dns/glossary/what-is-my-ip-address/\">IP address</a>, then network-connected client devices cannot load them. One of the most common for DNS filtering is blocking users from reaching malicious or inappropriate Internet content on a secure network. Doing so can help prevent cyber attacks like <a href=\"/learning/security/ransomware/what-is-ransomware/\">ransomware</a>, botnet activity, and <a href=\"/learning/access-management/phishing-attack/\">phishing</a> (since credential harvesting sites and other malicious sites can be blocked), and can help ensure that internal users do not violate company acceptable use policies.</p>\n <p>In addition to its value for overall web protection, DNS filtering can also support <a href=\"/learning/ai/what-is-artificial-intelligence/\">artificial intelligence (AI)</a> security specifically. The rapid adoption of <a href=\"/learning/ai/what-is-generative-ai/\">generative AI</a> tools created an environment where internal security teams lack visibility of how sensitive data is flowing. At the same time, attackers are using AI to enhance their attacks and exploit this expanding attack surface. DNS filtering can help keep these risks under control and secure AI usage.</p>\n <h2 class=\"learning-content-h2\" itemprop=\"headline\">How DNS filtering secures AI usage</h2>\n <div class=\"record-table\"><table><tr><th><strong>Type of AI security risk</strong></th><th><strong>How DNS filtering helps</strong></th></tr><tr><td>Shadow AI</td><td>Discovery based on domain resolution</td></tr><tr><td>Access to non-approved AI apps</td><td>Preventing untrusted app use by blocking domains</td></tr><tr><td>AI-enhanced attacks</td><td>Blocking phishing sites, C2 servers, DNS tunneling</td></tr><tr><td>Data poisoning via typosquatting</td><td>Blocking malicious imitations of AI services</td></tr><tr><td>Indirect prompt injection</td><td>Stopping model queries to untrusted domains</td></tr></table></div>\n <h4 class=\"learning-content-h4\">Shadow AI discovery</h4>\n <p>Organizations cannot plan for security risks if they do not know what or where they are. However, unapproved AI apps and models often end up integrated into business processes or application infrastructure. 98% of employees use unsanctioned apps across shadow AI and shadow IT use cases, per the <a href=\"/lp/security-signals-report/2026/\">2026 Cloudflare Security Signals Report</a>. Filtering DNS queries provides visibility into <a href=\"/learning/ai/what-is-shadow-ai/\">shadow AI</a> use by tracking which app domains are resolved. </p>\n <h4 class=\"learning-content-h4\">Access control for AI</h4>\n <p>DNS filtering is a lightweight way to restrict access to applications and services, including AI services. Administrators can use DNS filtering to see DNS queries, set the approval status for apps to which those queries are directed, and set block or allow policies for AI apps based on their approval status. Nonapproved, untrusted, or unreviewed AI tools can be blocked.</p>\n <h4 class=\"learning-content-h4\">Stopping AI-enhanced attacks</h4>\n <p>AI is a powerful tool in the hands of cyber attackers, and AI-enhanced attacks can help them breach systems far more efficiently than in years past. For example, AI can help attackers:</p>\n <ul class=\"learning-list\"><li>Craft highly convincing <a href=\"/learning/access-management/spear-phishing/\">spear phishing</a> campaigns, for instance by generating highly personalized emails based on the targets' online presence</li>\n<li>Discover and exploit vulnerabilities before they can be patched</li>\n<li>Automate previously manual activities so that attacks move much more quickly</li>\n</ul>\n<p>However, DNS filtering can inhibit or block a wide range of attacks by blocking phishing webpages, messages to command-and-control servers, algorithmically generated domains, and DNS tunneling (which is when attackers disguise their traffic as DNS queries).</p>\n <h4 class=\"learning-content-h4\">Blocking data poisoning attempts</h4>\n <p><a href=\"/learning/ai/data-poisoning/\">Data poisoning</a> is when a model's data is altered in a way that causes the model to behave unexpectedly. Protecting proprietary training data from unauthorized changes goes a long way for preventing data poisoning attacks.</p>\n <p>But the issue is that AI apps tend to also rely heavily on data from external libraries, pre-trained models, and feeds from third-party sources. Knowing this, attackers can <a href=\"/learning/dns/what-is-cybersquatting/\">typosquat</a> domains that host counterfeit AI services. AI developers may accidentally incorporate data from these malicious sources by mistyping a domain or clicking a link.</p>\n <p>DNS filtering can block these untrusted domains to ensure such mistakes do not corrupt a model's data.</p>\n <h4 class=\"learning-content-h4\">Blocking indirect prompt injections</h4>\n <p>In an indirect <a href=\"/learning/ai/prompt-injection/\">prompt injection</a>, malicious instructions are hidden in a third-party source that an AI model ingests. Attackers can hide instructions in a seemingly safe webpage to fetch data from a secondary domain that they control, a domain that hosts untrusted code or direct prompt injection attacks. DNS filtering can block AI models from being directed to these untrusted domains.</p>\n <h2 class=\"learning-content-h2\" itemprop=\"headline\">How to implement DNS filtering for AI security</h2>\n <p>DNS filtering is most often implemented by changing network policies to direct DNS queries to a trusted filtering provider. Organizations that rely on hybrid workforces (both on-premises and remote) will need to ensure the same policy applies to DNS queries even when workers are not connected to internal corporate networks. Adopting a <a href=\"/learning/access-management/coffee-shop-networking/\">coffee shop networking</a> model makes it simpler to roll out DNS filtering policies across all users at once.</p>\n <p>The basic steps for implementation:</p>\n <ul class=\"learning-list\"><li><strong>Step 1:</strong> Direct DNS queries to the filtering service by updating <a href=\"/learning/network-layer/what-is-a-router/\">router</a> settings and deploying device clients for remote users.</li>\n<li><strong>Step 2:</strong> Determine the goal. After gaining visibility of which AI tools are being used, decide on risk tolerance: which tools will be allowed, and which blocked? Finally, decide whether specific domains will be blocked, or entire categories of tools. If the latter, find a DNS filtering service that allows for customization.</li>\n<li><strong>Step 3: </strong>Vet the DNS filtering service to ensure the right domains are blocked.</li>\n<li><strong>Step 4: </strong><a href=\"/learning/access-management/how-to-implement-zero-trust/\">Adopt a zero trust architecture</a> to close other AI security holes. This can be a longer journey, but <a href=\"/learning/security/glossary/what-is-zero-trust/\">zero trust</a> is crucial for making sure AI tools are not overprivileged, and that attacks and breaches are contained.</li>\n</ul>\n It is important to note that DNS filtering is a powerful first line of defense, but it should not be relied upon for complete protection. A <a href=\"/ai-security/\">comprehensive AI security platform</a> should include multiple technologies to close AI security holes. Learn more about <a href=\"/lp/dns-filtering-ai-security/\">AI security</a>.\n<p>&nbsp;</p>\n<h2>FAQs</h2>\n<h4>What is DNS filtering?</h4>\n<p>DNS filtering uses the Domain Name System to block specific domains and IP addresses from loading on a network. If domain queries are blocked, network-connected client devices cannot load them. This prevents users from reaching malicious or inappropriate content. It also helps prevent cyber attacks like ransomware, botnet activity, and phishing.</p>\n<h4>Why is DNS filtering important for artificial intelligence (AI) security?</h4>\n<p>The rapid adoption of generative AI tools creates an environment where internal security teams lack visibility into sensitive data flows. At the same time, attackers use AI to enhance their attacks and exploit this expanding attack surface. DNS filtering keeps these risks under control and secures AI usage by giving administrators visibility into what tools are in use and allowing them to block unmanaged tools.</p>\n<h4>How does DNS filtering help manage shadow AI?</h4>\n<p>Unapproved AI apps are often integrated into business processes or application infrastructure. DNS filtering provides visibility into shadow AI use by tracking which app domains resolve.</p>\n<h4>Can administrators use DNS filtering to control access to AI applications?</h4>\n<p>DNS filtering is a lightweight way to restrict access to applications and services. Administrators can use DNS filtering to see DNS queries, set approval statuses for apps, and enforce block or allow policies. This ensures nonapproved, untrusted, or unreviewed AI tools remain blocked.</p>\n<h4>How does DNS filtering prevent data poisoning attacks?</h4>\n<p>AI applications rely on external libraries, pre-trained models, and feeds from third-party sources. Attackers may squat on domains hosting counterfeit AI services to exploit this reliance. AI developers might accidentally incorporate data from these malicious sources when they mistype a domain or click a link. DNS filtering blocks such untrusted domains to ensure these mistakes do not corrupt model data.</p>\n<script type=\"application/ld+json\">\n{\n\"@context\": \"https://schema.org\"\n,\n\"@type\": \"FAQPage\"\n,\n\"mainEntity\": [\n{\n\"@type\": \"Question\"\n,\n\"name\": \"What is DNS filtering?\"\n,\n\"acceptedAnswer\": {\n\"@type\": \"Answer\"\n,\n\"text\": \"DNS filtering uses the Domain Name System to block specific domains and IP addresses from loading on a network. If domain queries are blocked, network-connected client devices cannot load them. This prevents users from reaching malicious or inappropriate content. It also helps prevent cyber attacks like ransomware, botnet activity, and phishing.\n\"\n}\n},\n{\n\"@type\": \"Question\"\n,\n\"name\": \"Why is DNS filtering important for artificial intelligence (AI) security?\"\n,\n\"acceptedAnswer\": {\n\"@type\": \"Answer\"\n,\n\"text\": \"The rapid adoption of generative AI tools creates an environment where internal security teams lack visibility into sensitive data flows. At the same time, attackers use AI to enhance their attacks and exploit this expanding attack surface. DNS filtering keeps these risks under control and secures AI usage by giving administrators visibility into what tools are in use and allowing them to block unmanaged tools.\n\"\n}\n},\n{\n\"@type\": \"Question\"\n,\n\"name\": \"How does DNS filtering help manage shadow AI?\"\n,\n\"acceptedAnswer\": {\n\"@type\": \"Answer\"\n,\n\"text\": \"Unapproved AI apps are often integrated into business processes or application infrastructure. DNS filtering provides visibility into shadow AI use by tracking which app domains resolve.\n\"\n}\n},\n{\n\"@type\": \"Question\"\n,\n\"name\": \"Can administrators use DNS filtering to control access to AI applications?\"\n,\n\"acceptedAnswer\": {\n\"@type\": \"Answer\"\n,\n\"text\": \"DNS filtering is a lightweight way to restrict access to applications and services. Administrators can use DNS filtering to see DNS queries, set approval statuses for apps, and enforce block or allow policies. This ensures nonapproved, untrusted, or unreviewed AI tools remain blocked.\n\"\n}\n},\n{\n\"@type\": \"Question\"\n,\n\"name\": \"How does DNS filtering prevent data poisoning attacks?\"\n,\n\"acceptedAnswer\": {\n\"@type\": \"Answer\"\n,\n\"text\": \"AI applications rely on external libraries, pre-trained models, and feeds from third-party sources. Attackers may squat on domains hosting counterfeit AI services to exploit this reliance. AI developers might accidentally incorporate data from these malicious sources when they mistype a domain or click a link. DNS filtering blocks such untrusted domains to ensure these mistakes do not corrupt model data.\n\"\n}\n}\n]\n}\n</script>",
 				"availableLocales": null,
 				"localized": null,
 				"localeList": {
 					"enUS": "English for Locale",
-					"zhCN": "Translated for Locale",
-					"zhTW": "Translated for Locale",
-					"frFR": "Translated for Locale",
-					"deDE": "Translated for Locale",
-					"itIT": "Translated for Locale",
-					"jaJP": "Translated for Locale",
-					"koKR": "Translated for Locale",
-					"ptBR": "Translated for Locale",
-					"esES": "Translated for Locale",
-					"esLA": "Translated for Locale",
+					"zhCN": "English for Locale",
+					"zhTW": "English for Locale",
+					"frFR": "English for Locale",
+					"deDE": "English for Locale",
+					"itIT": "English for Locale",
+					"jaJP": "English for Locale",
+					"koKR": "English for Locale",
+					"ptBR": "English for Locale",
+					"esES": "English for Locale",
+					"esLA": "English for Locale",
 					"enAU": "English for Locale",
 					"enCA": "English for Locale",
 					"enIN": "English for Locale",
@@ -959,65 +954,20 @@
 					"svSE": "English for Locale",
 					"viVN": "English for Locale",
 					"trTR": "English for Locale",
-					"zhHansCN": "Translated for Locale",
+					"zhHansCN": "English for Locale",
 					"plPL": "English for Locale"
 				},
 				"proactivePopup": null,
-				"sidebarForm": {
-					"contentTypeId": "learningCenterArticleSidebarForm",
-					"contentfulId": "4ad3l3edBzH8KRefyi225g",
-					"heading": "Want to keep learning?",
-					"postSubmissionHeading": "Thank you for subscribing",
-					"description": "Subscribe to theNET, Cloudflare's monthly recap of the Internet's most popular insights!",
-					"postSubmissionDescription": "We're looking forward to sharing content with you.",
-					"marketoForm": {
-						"contentTypeId": "marketoEmbeddedForm",
-						"contentfulId": "4N6NOUDQwA5AAjxuGTnCMu",
-						"bladeName": "Form-Marketo Single Inline - Learning Center Newsletter Form",
-						"backgroundColor": "blue",
-						"marketoFormId": 2459,
-						"marketoFormLeadSource": "Inbound - Blog Subscriber",
-						"marketoFormLeadSourceDetail": "[BRD] Q4'24 WEB - GBL - Learning Center Subscription",
-						"marketoFormAssetName": null,
-						"marketoFormHeaderText": null,
-						"marketoFormDefaultComment": null,
-						"showCommentBox": null,
-						"marketoFormThankYouText": "Thank you for subscribing!",
-						"marketoFormCustomSuccessMessage": "We're looking forward to sharing content with you.",
-						"marketoFormPdfDownload": null,
-						"marketoFormPdfDownloadI18n": [],
-						"marketoFormAssetDownloadButtonText": null,
-						"marketoFormSuccessRedirectUrl": null,
-						"sendAdRoll": null,
-						"meta_adRollCustomSegment": null,
-						"enableSandbox": null,
-						"marketoFormSubmitButtonText": "Subscribe  to theNET",
-						"marketoFormSubmitButtonColor": null,
-						"enableEmailVerification": null,
-						"disableEnterpriseEmailNotification": null,
-						"enableRingout": null
-					}
-				}
+				"sidebarForm": null
 			}
 		},
 		"pageContext": {
 			"locale": "en-US",
-			"contentfulId": "5Y1ZeV90BuoRcKPG4a8Lns",
-			"pathname": "/learning/access-management/spear-phishing/",
+			"contentfulId": "12PoSqvzaGBLXEpqopuCfG",
+			"pathname": "/learning/access-management/dns-filtering-for-ai-security/",
 			"baseURL": "https://www.cloudflare.com",
 			"allowedHrefLangs": [
-				"en-US",
-				"zh-CN",
-				"zh-TW",
-				"fr-FR",
-				"de-DE",
-				"it-IT",
-				"ja-JP",
-				"ko-KR",
-				"pt-BR",
-				"es-ES",
-				"es-LA",
-				"zh-Hans-CN"
+				"en-US"
 			]
 		}
 	}

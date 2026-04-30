@@ -1,29 +1,13 @@
 {
 	"componentChunkName": "component---src-components-learning-center-templates-learning-center-article-template-tsx",
-	"path": "/learning/access-management/spear-phishing/",
+	"path": "/learning/access-management/how-to-secure-guest-wifi-dns-filtering/",
 	"result": {
 		"data": {
 			"learningCenterArticle": {
 				"contentTypeId": "learningCenterArticle",
-				"contentfulId": "5Y1ZeV90BuoRcKPG4a8Lns",
-				"urlSlug": "access-management/spear-phishing",
-				"metaTags": {
-					"metaTitle": "What is spear phishing? | Prevent spear phishing and whaling",
-					"metaDescription": "Spear phishing is a type of social engineering attack where an attacker creates a data breach by tricking a victim into handing over sensitive data.",
-					"twitterCustomImage": null,
-					"metaImage": {
-						"file": {
-							"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/53qCYhQbir5WtIU0VDWESo/954a48bfb17f429acf469e5f14345d83/unnamed-3.png"
-						},
-						"description": "DO NOT REMOVE, THIS IS CLOUDFLARE'S GLOBAL OG META ASSET"
-					},
-					"facebookCustomImage": {
-						"file": {
-							"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/53qCYhQbir5WtIU0VDWESo/954a48bfb17f429acf469e5f14345d83/unnamed-3.png"
-						},
-						"description": "DO NOT REMOVE, THIS IS CLOUDFLARE'S GLOBAL OG META ASSET"
-					}
-				},
+				"contentfulId": "4WLDt7sGnKkI6kEwezCSys",
+				"urlSlug": "access-management/how-to-secure-guest-wifi-dns-filtering",
+				"metaTags": null,
 				"metaTitle": null,
 				"metaDescription": null,
 				"learningCenterArticleSubHeader": {
@@ -891,33 +875,33 @@
 						]
 					}
 				},
-				"header": "What is spear phishing?",
-				"blurbSubHeader": "While some phishing scams get sent to millions of people in the hopes that someone will bite, a spear phishing attack focuses on a single target, and can be very convincing.",
-				"objectivesHeader": "Spear Phishing",
+				"header": "How to secure guest WiFi with DNS filtering",
+				"blurbSubHeader": "DNS filtering is an important guest WiFi security measure, helping to block malicious websites, illegal activities, and explicit content.",
+				"objectivesHeader": "DNS Filtering for Guest WiFi",
 				"objectivesList": [
-					"Define spear phishing",
-					"Explain the differences between phishing, spear phishing, and whaling",
-					"Outline strategies to prevent spear phishing and whaling"
+					"Explain how DNS filtering helps keep guest WiFi networks secure",
+					"List the steps for implementing DNS filtering",
+					"Understand how to block DNS queries designed to circumvent filtering policies"
 				],
 				"relatedContentLinkText": "Related Content",
 				"relatedContent": [
 					{
 						"contentTypeId": "learningCenterArticleLink",
-						"contentfulId": "4QoH8dVxKKYSsfePjHNKxD",
-						"displayText": "Phishing attack",
-						"url": "/learning/access-management/phishing-attack/"
+						"contentfulId": "6XvpGQTupqKx4DjPEcOLMj",
+						"displayText": "DNS filtering",
+						"url": "/learning/access-management/what-is-dns-filtering/"
 					},
 					{
 						"contentTypeId": "learningCenterArticleLink",
-						"contentfulId": "5hgaSWVTO4fYkwfXbmMctc",
-						"displayText": "Smishing",
-						"url": "/learning/access-management/smishing/"
+						"contentfulId": "2NaNMiijlKqxTxcrCMZmR9",
+						"displayText": "DNS filtering for AI security",
+						"url": "/learning/access-management/dns-filtering-for-ai-security/"
 					},
 					{
 						"contentTypeId": "learningCenterArticleLink",
-						"contentfulId": "6OT3YMHacbSCBJMO2bBivb",
-						"displayText": "What is an insider threat?",
-						"url": "/learning/access-management/what-is-an-insider-threat/"
+						"contentfulId": "65VABQOAzccr6p12Tlosw4",
+						"displayText": "Secure web gateway",
+						"url": "/learning/access-management/what-is-a-secure-web-gateway/"
 					},
 					{
 						"contentTypeId": "learningCenterArticleLink",
@@ -927,27 +911,27 @@
 					},
 					{
 						"contentTypeId": "learningCenterArticleLink",
-						"contentfulId": "7p87aHcK9Ie2dylUSFYG9T",
-						"displayText": "Two-factor authentication ",
-						"url": "/learning/access-management/what-is-two-factor-authentication/"
+						"contentfulId": "5TtqrotpypiEg485b2l2tf",
+						"displayText": "What is SASE?",
+						"url": "/learning/access-management/what-is-sase/"
 					}
 				],
 				"enablementBlade": null,
-				"desktopMainContent": "<h2>Article Summary:</h2>\n<ul class=\"learning-list\">\n  <li>Spear phishing is a targeted email attack using personalized information to deceive specific individuals or organizations into revealing sensitive data or installing malicious software on their systems.</li>\n  <li>Unlike broad campaigns, spear phishing employs social engineering and reconnaissance to craft highly convincing messages, making these sophisticated threats much harder for traditional security filters to detect.</li>\n  <li>Organizations can prevent spear phishing by implementing Multi-Factor Authentication (MFA), using advanced email security solutions, and providing consistent employee training to recognize evolving social engineering tactics.</li>\n</ul>\n<h2 class=\"learning-content-h2 learning-content-h2--margin-top-16px\" itemprop=\"headline\">What is spear phishing?</h2>\n\n<p>While <a href='/learning/access-management/phishing-attack/'>phishing</a> is a broad term for attacks that aim to trick a victim into sharing sensitive information, spear phishing is a phishing attack that goes after a single target, which can be an individual, organization, or business.</p>\n\n<p>Spear phishing attacks are particularly effective because the attacker can use information about the victim, oftentimes public information found online, to create a convincing ruse.</p>\n\n<h4 class=\"learning-content-h4\">Spear phishing vs. 'bulk' phishing</h4>\n\n<p>The majority of phishing attacks are not directly targeted. Usually, phishing messages are sent in bulk to as many people as possible, and the attackers hope some small percentage fall for the ruse. This is the cheapest and fastest way to execute phishing attacks. Attackers may incorporate some degree of automation and personalization, especially using <a href='/learning/ai/what-is-artificial-intelligence/'>AI</a>, but extra customization for a single person or organization is not part of a typical bulk phishing campaign.</p>\n\n<p>The research and personalization that goes into spear phishing takes more effort (and often more money) than an ordinary phishing attack. For this reason spear phishing attacks are rarer by comparison. But, they have a very high rate of success. And when successful, they cause much more damage to their targets.</p>\n\n<h2 class=\"learning-content-h2\" itemprop=\"headline\">What social engineering tactics are used in spear phishing?</h2>\n\n<p>Spear phishers use tactics common to many types of <a href='/learning/security/threats/social-engineering-attack/'>social engineering attacks</a> in order to manipulate their victims. These include:</p>\n\n<ul class=\"learning-list\">\n  <li><strong>Introducing a time limit</strong> so that the victim feels they have to act quickly without taking the time to think the request through</li>\n  <li><strong>Using emotional appeals</strong>, such as including information about negative consequences if the recipient does not comply with the fake request</li>\n  <li><strong>Creating a convincing story</strong>, also known as \"pretexting\"</li>\n  <li><strong>Including directly relevant details:</strong> addressing the recipient by name, sending the email from someone at the recipient's place of employment, including real details about the recipient's life, and so on</li>\n</ul>\n\n<h2 class=\"learning-content-h2\" itemprop=\"headline\">What other tactics do spear phishing attacks use?</h2>\n\n<p>Beyond personalization, there are several steps attackers often take to make their spear phishing attacks more effective.</p>\n\n<ul class=\"learning-list\">\n  <li><a href='/learning/ssl/what-is-domain-spoofing/'>Domain</a> and <a href='/learning/email-security/what-is-email-spoofing/'>email spoofing</a>: Attackers may imitate email addresses and website URLs to make their scams more convincing.</li>\n  <li><a href='/learning/access-management/account-takeover/'>Account takeover</a>: Instead of faking the sender's email address, an attacker may first gain access to a trusted party's email account and send the spear phishing email from there.</li>\n  <li><a href='/learning/ai/what-is-generative-ai/'>Generative AI</a>: Attackers can use <a href='/learning/ai/what-is-large-language-model/'>large language models (LLMs)</a> to create or proofread their messages, or to research their targets.</li>\n</ul>\n\n<h2 class=\"learning-content-h2\" itemprop=\"headline\">What do spear phishing attacks look like?</h2>\n\n<p>A common spear phishing tactic is for the attacker to pose as someone in a position of authority, because people are much more likely to respond to an authority figure.</p>\n\n<p>Here is an example:</p>\n\n<p>Joe is an executive assistant to a CEO named Mary. One day when Mary is on vacation abroad, Joe gets an urgent email from her. The email states that her luggage and phone have been stolen. She says she has no money or passport and needs him to send over her PayPal credentials ASAP so that she can book a hotel and buy a flight home. Joe might see this harrowing message from his employer and immediately send over the requested information.</p>\n\n<p>This sort of \"I'm in trouble and need money\" request from a superior is a common spear phishing script. The attacker could be spoofing Mary's email, as well as sending the email to dozens of different combinations of Joe's name and initials in hopes of finding the correct one. The attacker may also have learned about Mary's vacation plans by following her on Twitter. Combining all of these tools, the attacker can devise a very convincing con.</p>\n\n<p>A notable real-life example of this <a href='https://money.cnn.com/2016/02/29/technology/snapchat-phishing-scam/index.html' target='_blank'>happened in 2016</a>, when an attacker posed as the CEO of Snapchat and was able to convince an employee to hand over confidential payroll information.</p>\n\n<p>Spear phishing attacks can also leverage information from <a href='/learning/security/what-is-a-data-breach/'>data breaches</a>. Another example:</p>\n\n<p>Steve buys a computer at a major <a href='/retail/'>online retailer</a>, but a few weeks later the retailer has a data breach. Although sensitive data like credit card numbers and passwords were hash-protected, customer email addresses and order histories were leaked.</p>\n\n<p>A few days later, Steve gets an email from the manufacturer of his new computer announcing that his model is being recalled, and providing a link to receive a refund. The link takes Steve to a fake version of the manufacturer's website and provides a form for Steve to enter his credit card number for the refund. The attacker used some fairly harmless data to gain Steve's confidence and trick him into handing over his financial information.</p>\n\n<h2 class=\"learning-content-h2\" itemprop=\"headline\">What is the difference between spear phishing and whaling?</h2>\n\n<p><a href='/learning/access-management/whaling-attack/'>Whaling</a> is a spear phishing attack that targets a very high-profile victim, usually a top executive at a company or a celebrity. Whaling attacks tend to be more sophisticated, and in many cases attackers will first carry out spear phishing attacks on smaller targets, such as employees of the \"whale,\" in order to gain access to their ultimate victim.</p>\n\n<p>For example:</p>\n\n<p>While on vacation, Mary the CEO gets an email or call from someone she knows on her IT team letting her know that they are enduring a cyber attack and requesting access to her work computer and her accounts to ensure that company data can be secured. It is possible that an attacker compromised her IT team in order to gain Mary's trust, in hopes of convincing her to hand over her credentials.</p>\n\n<h2 class=\"learning-content-h2\" itemprop=\"headline\">How to protect against spear phishing and whaling</h2>\n\n<p>Since spear phishing involves <a href='/learning/security/threats/social-engineering-attack/'>social engineering</a>, there are no foolproof ways to protect against these kinds of attacks. However, a number of precautions can be taken to prevent and mitigate attempts at spear phishing. These include:</p>\n\n<ul class=\"learning-list\">\n  <li>Never share financial information, passwords, or any other sensitive data over phone, chat, or email.</li>\n  <li>Do not click on links in <a href='/learning/email-security/what-is-email/'>emails</a>, even if they appear to be from a trusted source. Copying and pasting or hand-typing the URL can help protect from <a href='/learning/security/threats/cross-site-scripting/'>cross-site scripting</a> attacks.</li>\n  <li>Enable <a href='/learning/access-management/what-is-two-factor-authentication/'>2-factor authentication</a> on all important accounts, so that stolen login credentials are not enough.</li>\n  <li>Enable <a href='/learning/security/glossary/what-is-zero-trust/'>Zero Trust security</a> policies to ensure that an intruder does not have open access to a network.</li>\n</ul>",
+				"desktopMainContent": "<h2 class=\"learning-content-h2\" itemprop=\"headline\">Who needs secure guest WiFi?</h2>\n <p>Organizations in the hospitality, travel, healthcare, and food and beverage service industries are often expected to have WiFi available for their customers and clients. Private offices and public spaces may wish to offer WiFi networks for guests as well.</p>\n <p>While guests and customers expect these networks to be fast, reliable, and safe, organizations offering guest WiFi need to ensure that they can enforce acceptable use policies and content filtering so they can minimize the risk from arbitrary devices connecting to their networks and browsing the Internet. Secure guest WiFi protects users too by ensuring they are not putting their devices and data at risk by connecting to the network.</p>\n <h2 class=\"learning-content-h2\" itemprop=\"headline\">Why use DNS filtering for guest WiFi security?</h2>\n <p>User devices loading untrusted <a href=\"/learning/dns/glossary/what-is-a-domain-name/\">domains</a> can result in attacks and breaches that compromise the whole network. Attackers, once inside, can <a href=\"/learning/security/glossary/what-is-lateral-movement/\">move laterally</a> to get to critical internal infrastructure — breached <a href=\"/learning/network-layer/what-is-a-router/\">routers</a> can log traffic from guest devices, for example.</p>\n <p>In addition, many organizations want to make sure they are not associated with illegal activities like pirating or with explicit content that might impact the experience of other guests. They may also see the ability to offer reliable and safe WiFi as a differentiator — airlines, for instance, may use secure and fast WiFi as a selling point for travelers.</p>\n <p><a href=\"/learning/access-management/what-is-dns-filtering/\">Domain Name System (DNS) filtering</a> is an effective first line of defense for preventing attacks and unwanted activities. DNS filtering works by preventing certain <a href=\"/learning/dns/what-is-dns/\">DNS</a> queries from resolving — stopping websites from matching to <a href=\"/learning/dns/glossary/what-is-my-ip-address/\">IP addresses</a>, which means client devices are unable to find those websites' host servers and connect. Think of phone books from the pre-Internet days: DNS filtering essentially takes the phone numbers and addresses of untrustworthy businesses out of the phone book so that they cannot be contacted.</p>\n <h2 class=\"learning-content-h2\" itemprop=\"headline\">How to secure guest WiFi with DNS filtering</h2>\n <div class=\"record-table\"><table><tr><td><strong>Steps to securing guest WiFi with DNS filtering</strong></td></tr><tr><td>Step 1</td><td>Select a DNS filtering service (offered by DNS resolvers)</td></tr><tr><td>Step 2</td><td>Point all routers to that DNS resolver</td></tr><tr><td>Step 3</td><td>Set DNS override policies to redirect blocked queries to safe landing pages</td></tr><tr><td>Step 4</td><td>Select categories of domains to block</td></tr><tr><td>Step 5</td><td>Use firewall to block DNS queries to other resolvers</td></tr><tr><td>Step 6</td><td>Block nonapproved VPN usage</td></tr><tr><td>Step 7</td><td>Consider adoption of more complete network security</td></tr></table></div>\n <h4 class=\"learning-content-h4\">1. Select a DNS filtering service</h4>\n <p>DNS filtering is offered by DNS resolvers. The DNS filtering service an organization should use depends on their use case. Some providers offer generic DNS filtering that blocks explicit content or unsafe websites. They should incorporate some form of <a href=\"/learning/security/glossary/what-is-threat-intelligence/\">threat intelligence</a> to identify and block known or likely malicious domains (they may simply block all newly registered domains; new domains are often used in attack campaigns).</p>\n <p>Other use cases may require customization. For instance, some organizations may wish to use <a href=\"https://docs.google.com/document/d/1-DP0YaBdjfTqVTTK44WkPDTIjdF4HXwqSq6-De4EXOA/edit?tab=t.0\" target=\"_blank\">DNS filtering for access control for AI apps</a>. Others may want to restrict content more thoroughly than offered by most providers.</p>\n <p>Organizations with a wide footprint and many branch locations should consider working with a recursive DNS resolver with a global presence to ensure filtering policies can be enforced regardless of location.</p>\n <h4 class=\"learning-content-h4\">2. Point routers or DHCP servers to that DNS filter's resolver</h4>\n <p>This is a setting to update in all guest network routers so that DNS queries go to that resolver. In some IT configurations, this may be a manual process, and there may be some gaps.</p>\n <h4 class=\"learning-content-h4\">3. Set DNS override policies</h4>\n <p>If guests attempt to reach a domain and it simply fails to load they may think there is something wrong with the network. To reduce complaints and IT tickets, set up policies to redirect blocked queries to safe landing pages, captive portals, specific pre-approved websites, or acceptable use policy pages. The latter can help remind users of the rules of the network to reduce the risk that they attempt to circumvent content and security policies in the future.</p>\n <h4 class=\"learning-content-h4\">4. Select categories of domains to block</h4>\n <p>Block domains based on type of content or security risk level (including programmatically generated domains, known spam domains, or cryptomining domains, for example). See the <a href=\"https://developers.cloudflare.com/cloudflare-one/traffic-policies/domain-categories/\" target=\"_blank\">list of categories available for DNS filtering</a> from Cloudflare.</p>\n <h4 class=\"learning-content-h4\">5. Enforce DNS filtering for guest WiFi by blocking DNS queries to other resolvers</h4>\n <p>This involves <a href=\"/learning/security/what-is-a-firewall/\">firewall</a> rules. Configure network firewalls to block outbound traffic on <a href=\"/learning/network-layer/what-is-a-computer-port/\">ports</a> 53 and 853. Port 53 is the port for DNS queries — reroute this traffic to the preferred resolver using network address translation (NAT). Port 853 is the official port for <a href=\"/learning/dns/dns-over-tls/\">DNS-over-TLS</a>, an <a href=\"/learning/ssl/what-is-encryption/\">encrypted</a> protocol for private DNS queries.</p>\n <p>Even with these firewall rules, guest devices will still be able to send DNS queries to alternative resolvers over port 443. This is the DNS-over-HTTPS port, and it is the same port that normal <a href=\"/learning/ssl/what-is-https/\">HTTPS</a> web traffic uses, so it cannot be blocked without blocking almost the entire Internet. Two possible approaches can help:</p>\n <ol class=\"learning-list\"><li><strong>Block traffic to known DoH provider IP addresses: </strong>This approach is difficult to sustain since there are so many addresses to block.</li>\n<li><strong>Onboard a firewall or secure web gateway (SWG) that offers HTTPS inspection: </strong><a href=\"/learning/security/what-is-https-inspection/\">HTTPS inspection</a> enables the firewall or SWG to inspect the contents of encrypted network traffic. </li>\n</ol>\n <h4 class=\"learning-content-h4\">6. Block nonapproved VPN usage on guest WiFi</h4>\n <p><a href=\"/learning/access-management/what-is-a-vpn/\">Virtual private networks (VPNs)</a> may provide a way around DNS filtering policies, since they encrypt traffic so that firewalls and SWGs cannot see its contents. This includes DNS queries.</p>\n <p>Administrators can block nonapproved VPNs by blocking known VPN ports (500/4500 for <a href=\"/learning/network-layer/what-is-ipsec/\">IPsec</a> VPNs, for instance) via firewall. They can use a firewall with deep packet inspection to identify and block VPN traffic. Or, they can block outbound traffic to known VPN server IP addresses or domains, though again, this blocklisting approach is not likely to work indefinitely.</p>\n <h4 class=\"learning-content-h4\">7. Consider the guest WiFi network's security as a whole</h4>\n <p>Even with all these steps taken, guests who are so inclined may be able to find a way around DNS filtering policies. For this reason, DNS filtering should be considered a first line of defense for protecting guests and internal infrastructure, not a complete solution. Many DNS filtering providers come with comprehensive network protection (<a href=\"/learning/ddos/layer-3-ddos-attacks/\">layer 3 DDoS mitigation</a>, <a href=\"/learning/security/glossary/what-is-zero-trust/\">zero trust security</a>, etc.) bundled as well. Consider adopting a <a href=\"/learning/access-management/what-is-sase/\">secure access service edge (SASE)</a> platform to secure all locations through a cloud-delivered network.</p>\n <h2 class=\"learning-content-h2\" itemprop=\"headline\">How to secure guest WiFi in all branches at once</h2>\n For organizations with many branch locations, manually updating DNS settings can be a nightmare, and gaps are likely. Applying security policies is simpler and faster with a coffee shop networking partner, or when adopting a SASE model. Doing so allows the organizations to point all local networks to the SASE provider, who can consistently apply granular security and DNS policies. Learn more about secure <a href=\"/sase/use-cases/coffee-shop-networking/\">branch/coffee shop networking</a>.\n<p>&nbsp;</p>\n<h2>FAQs</h2>\n<h4>Why should organizations prioritize securing their guest WiFi networks?</h4>\n<p>Many industries provide WiFi to maintain a positive customer experience. However, these networks face risks from allowing unknown devices and non-authorized users to connect. Securing the network through DNS filtering protects the organization from being linked to illegal activities or explicit content while preventing attackers from using guest devices to access critical internal systems.</p>\n<h4>How does DNS filtering prevent users from reaching unsafe websites?</h4>\n<p>DNS filtering acts as a digital defense by stopping specific DNS queries for untrusted domains from resolving into IP addresses. If a device cannot match a domain name to an IP, it cannot connect to the host server.</p>\n<h4>What are the primary steps to implement DNS filtering for guests?</h4>\n<p>To start, an organization selects a filtering service from a DNS resolver and updates their router settings to point to that resolver. They then choose which categories of domains to block and establish override policies to redirect users to safe landing pages. Finally, they should use firewalls to prevent users from bypassing these rules via other resolvers or nonapproved VPNs.</p>\n<h4>What should an organization consider when choosing a DNS filtering provider?</h4>\n<p>The choice depends on the specific needs of the business, such as the desire to block generic explicit content or the need for advanced threat intelligence to stop newly registered malicious domains. Organizations with many locations should look for a recursive DNS resolver with a global presence to maintain consistent security everywhere.</p>\n<h4>How can network administrators prevent guests from bypassing filtering policies?</h4>\n<p>Administrators can configure network firewalls to redirect or block outbound traffic on ports 53 and 853, which are used for standard and encrypted DNS queries. Because some queries can still travel over port 443, they may also need to block known DoH provider IP addresses or use a secure web gateway (SWG) that performs HTTPS inspection.</p>\n<script type=\"application/ld+json\">\n{\n\"@context\": \"https://schema.org\"\n,\n\"@type\": \"FAQPage\"\n,\n\"mainEntity\": [\n{\n\"@type\": \"Question\"\n,\n\"name\": \"Why should organizations prioritize securing their guest WiFi networks?\"\n,\n\"acceptedAnswer\": {\n\"@type\": \"Answer\"\n,\n\"text\": \"Many industries provide WiFi to maintain a positive customer experience. However, these networks face risks from allowing unknown devices and non-authorized users to connect. Securing the network through DNS filtering protects the organization from being linked to illegal activities or explicit content while preventing attackers from using guest devices to access critical internal systems.\n\"\n}\n},\n{\n\"@type\": \"Question\"\n,\n\"name\": \"How does DNS filtering prevent users from reaching unsafe websites?\"\n,\n\"acceptedAnswer\": {\n\"@type\": \"Answer\"\n,\n\"text\": \"DNS filtering acts as a digital defense by stopping specific DNS queries for untrusted domains from resolving into IP addresses. If a device cannot match a domain name to an IP, it cannot connect to the host server.\n\"\n}\n},\n{\n\"@type\": \"Question\"\n,\n\"name\": \"What are the primary steps to implement DNS filtering for guests?\"\n,\n\"acceptedAnswer\": {\n\"@type\": \"Answer\"\n,\n\"text\": \"To start, an organization selects a filtering service from a DNS resolver and updates their router settings to point to that resolver. They then choose which categories of domains to block and establish override policies to redirect users to safe landing pages. Finally, they should use firewalls to prevent users from bypassing these rules via other resolvers or nonapproved VPNs.\n\"\n}\n},\n{\n\"@type\": \"Question\"\n,\n\"name\": \"What should an organization consider when choosing a DNS filtering provider?\"\n,\n\"acceptedAnswer\": {\n\"@type\": \"Answer\"\n,\n\"text\": \"The choice depends on the specific needs of the business, such as the desire to block generic explicit content or the need for advanced threat intelligence to stop newly registered malicious domains. Organizations with many locations should look for a recursive DNS resolver with a global presence to maintain consistent security everywhere.\n\"\n}\n},\n{\n\"@type\": \"Question\"\n,\n\"name\": \"How can network administrators prevent guests from bypassing filtering policies?\"\n,\n\"acceptedAnswer\": {\n\"@type\": \"Answer\"\n,\n\"text\": \"Administrators can configure network firewalls to redirect or block outbound traffic on ports 53 and 853, which are used for standard and encrypted DNS queries. Because some queries can still travel over port 443, they may also need to block known DoH provider IP addresses or use a secure web gateway (SWG) that performs HTTPS inspection.\n\"\n}\n}\n]\n}\n</script>",
 				"availableLocales": null,
 				"localized": null,
 				"localeList": {
 					"enUS": "English for Locale",
-					"zhCN": "Translated for Locale",
-					"zhTW": "Translated for Locale",
-					"frFR": "Translated for Locale",
-					"deDE": "Translated for Locale",
-					"itIT": "Translated for Locale",
-					"jaJP": "Translated for Locale",
-					"koKR": "Translated for Locale",
-					"ptBR": "Translated for Locale",
-					"esES": "Translated for Locale",
-					"esLA": "Translated for Locale",
+					"zhCN": "English for Locale",
+					"zhTW": "English for Locale",
+					"frFR": "English for Locale",
+					"deDE": "English for Locale",
+					"itIT": "English for Locale",
+					"jaJP": "English for Locale",
+					"koKR": "English for Locale",
+					"ptBR": "English for Locale",
+					"esES": "English for Locale",
+					"esLA": "English for Locale",
 					"enAU": "English for Locale",
 					"enCA": "English for Locale",
 					"enIN": "English for Locale",
@@ -959,65 +943,20 @@
 					"svSE": "English for Locale",
 					"viVN": "English for Locale",
 					"trTR": "English for Locale",
-					"zhHansCN": "Translated for Locale",
+					"zhHansCN": "English for Locale",
 					"plPL": "English for Locale"
 				},
 				"proactivePopup": null,
-				"sidebarForm": {
-					"contentTypeId": "learningCenterArticleSidebarForm",
-					"contentfulId": "4ad3l3edBzH8KRefyi225g",
-					"heading": "Want to keep learning?",
-					"postSubmissionHeading": "Thank you for subscribing",
-					"description": "Subscribe to theNET, Cloudflare's monthly recap of the Internet's most popular insights!",
-					"postSubmissionDescription": "We're looking forward to sharing content with you.",
-					"marketoForm": {
-						"contentTypeId": "marketoEmbeddedForm",
-						"contentfulId": "4N6NOUDQwA5AAjxuGTnCMu",
-						"bladeName": "Form-Marketo Single Inline - Learning Center Newsletter Form",
-						"backgroundColor": "blue",
-						"marketoFormId": 2459,
-						"marketoFormLeadSource": "Inbound - Blog Subscriber",
-						"marketoFormLeadSourceDetail": "[BRD] Q4'24 WEB - GBL - Learning Center Subscription",
-						"marketoFormAssetName": null,
-						"marketoFormHeaderText": null,
-						"marketoFormDefaultComment": null,
-						"showCommentBox": null,
-						"marketoFormThankYouText": "Thank you for subscribing!",
-						"marketoFormCustomSuccessMessage": "We're looking forward to sharing content with you.",
-						"marketoFormPdfDownload": null,
-						"marketoFormPdfDownloadI18n": [],
-						"marketoFormAssetDownloadButtonText": null,
-						"marketoFormSuccessRedirectUrl": null,
-						"sendAdRoll": null,
-						"meta_adRollCustomSegment": null,
-						"enableSandbox": null,
-						"marketoFormSubmitButtonText": "Subscribe  to theNET",
-						"marketoFormSubmitButtonColor": null,
-						"enableEmailVerification": null,
-						"disableEnterpriseEmailNotification": null,
-						"enableRingout": null
-					}
-				}
+				"sidebarForm": null
 			}
 		},
 		"pageContext": {
 			"locale": "en-US",
-			"contentfulId": "5Y1ZeV90BuoRcKPG4a8Lns",
-			"pathname": "/learning/access-management/spear-phishing/",
+			"contentfulId": "4WLDt7sGnKkI6kEwezCSys",
+			"pathname": "/learning/access-management/how-to-secure-guest-wifi-dns-filtering/",
 			"baseURL": "https://www.cloudflare.com",
 			"allowedHrefLangs": [
-				"en-US",
-				"zh-CN",
-				"zh-TW",
-				"fr-FR",
-				"de-DE",
-				"it-IT",
-				"ja-JP",
-				"ko-KR",
-				"pt-BR",
-				"es-ES",
-				"es-LA",
-				"zh-Hans-CN"
+				"en-US"
 			]
 		}
 	}
