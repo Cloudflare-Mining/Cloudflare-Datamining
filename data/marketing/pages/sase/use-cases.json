@@ -2000,7 +2000,18 @@
 										"locale": "en-US",
 										"name": "Cloudflare TV",
 										"description": null,
-										"mainLink": null,
+										"mainLink": {
+											"contentTypeId": "elementNavLink",
+											"contentfulId": "4q6Z8fayr86bxrWR0IUcfV",
+											"locale": "en-US",
+											"title": "Cloudflare TV",
+											"description": null,
+											"url": "https://cloudflare.tv",
+											"badges": null,
+											"specialLinkType": null,
+											"openInNewWindow": true,
+											"isExternalUrl": null
+										},
 										"navigationLinks": [],
 										"navIcon": null,
 										"showIconOnly": false,
@@ -3822,6 +3833,135 @@
 									"standardText": "Learn More",
 									"text": null,
 									"url": "/sase/use-cases/remote-workforces/",
+									"loggedInUrl": null,
+									"buttonModal": null,
+									"openInNewTab": false,
+									"locale": "en-US"
+								}
+							},
+							{
+								"locale": "en-US",
+								"entryTitle": "Solution Hub: Secure Work-from-Anywhere - Improve compliance and protection of data and code",
+								"contentfulId": "170A2J2a2QsNevvaPY9itE",
+								"contentTypeId": "elementAddOn",
+								"iconAssetFile": {
+									"id": "aa6ded2d-0746-53f6-9a36-134291d9ad95",
+									"altText": "data protection - round icon",
+									"title": null,
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/1sPAjmUYBOp11ScXTqmr4A/9e70871e838652a7cbc1fbc008a23af2/data_protection_icon-round.png"
+										},
+										"description": "data protection - round icon"
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								},
+								"title": "Protect your sensitive data",
+								"description": {
+									"nodeType": "document",
+									"content": [
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "Regain visibility and control over sensitive data and source code across web, SaaS, and private applications, utilizing:\n",
+													"marks": [],
+													"content": null
+												}
+											]
+										},
+										{
+											"nodeType": "unordered-list",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "list-item",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": null,
+													"marks": null,
+													"content": [
+														{
+															"nodeType": "paragraph",
+															"data": {
+																"target": null,
+																"uri": null
+															},
+															"value": null,
+															"marks": null,
+															"content": [
+																{
+																	"nodeType": "text",
+																	"data": {
+																		"target": null,
+																		"uri": null
+																	},
+																	"value": "Cloudflare Zero Trust",
+																	"marks": [],
+																	"content": null
+																}
+															]
+														}
+													]
+												}
+											]
+										},
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "",
+													"marks": [],
+													"content": null
+												}
+											]
+										}
+									]
+								},
+								"category": null,
+								"pricingText": null,
+								"learnMoreLink": null,
+								"callToAction": {
+									"buttonAssetFile": null,
+									"buttonTextLoggedIn": null,
+									"contentTypeId": "button",
+									"contentfulId": "7CMisF5bUk3SJGhbrGmmWN",
+									"elementName": " Secure Work-from-Anywhere - Protect data - CTA",
+									"standardText": null,
+									"text": "Learn more",
+									"url": "/sase/use-cases/data-protection/",
 									"loggedInUrl": null,
 									"buttonModal": null,
 									"openInNewTab": false,
