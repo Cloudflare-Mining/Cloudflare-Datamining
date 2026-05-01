@@ -1,7 +1,7 @@
 {
 	"name": "@cloudflare/kumo",
 	"dist-tags": {
-		"latest": "2.0.1"
+		"latest": "2.0.2"
 	},
 	"versions": {
 		"1.0.0": {
@@ -1915,6 +1915,83 @@
 			"name": "@cloudflare/kumo",
 			"version": "2.0.1",
 			"dependencies": {
+				"clsx": "^2.1.1",
+				"shiki": "^4.0.0",
+				"motion": "^12.34.1",
+				"@base-ui/react": "^1.4.0",
+				"@shikijs/langs": "^4.0.0",
+				"tailwind-merge": "^3.4.0",
+				"@shikijs/themes": "^4.0.0",
+				"react-day-picker": "^9.13.2"
+			},
+			"devDependencies": {
+				"tsx": "^4.19.2",
+				"zod": "^4.0.0",
+				"glob": "13.0.0",
+				"plop": "4.0.4",
+				"vite": "^7.1.7",
+				"oxlint": "1.42.0",
+				"vitest": "^4.0.18",
+				"esbuild": "0.27.2",
+				"wrangler": "^4.59.1",
+				"happy-dom": "^20.8.8",
+				"@vitest/ui": "^4.0.18",
+				"playwright": "^1.57.0",
+				"typescript": "^5.9.2",
+				"@types/glob": "9.0.0",
+				"@types/node": "^22.10.2",
+				"tailwindcss": "^4.1.17",
+				"@types/react": "19.2.4",
+				"oxlint-tsgolint": "0.11.3",
+				"svg-path-parser": "^1.1.0",
+				"vite-plugin-dts": "^4.3.0",
+				"@tailwindcss/cli": "^4.1.17",
+				"@types/react-dom": "19.2.3",
+				"@tailwindcss/vite": "^4.1.17",
+				"@vitejs/plugin-react": "^5.1.4",
+				"vitest-browser-react": "^2.0.5",
+				"@testing-library/react": "16.3.1",
+				"@types/svg-path-parser": "^1.1.6",
+				"eslint-plugin-jsx-a11y": "^6.10.2",
+				"ts-json-schema-generator": "2.4.0",
+				"@vitest/browser-playwright": "^4.0.18",
+				"@testing-library/user-event": "14.6.1",
+				"rollup-plugin-preserve-directives": "0.4.0"
+			},
+			"peerDependencies": {
+				"zod": "^4.0.0",
+				"react": "^18.0.0 || ^19.0.0",
+				"echarts": "^6.0.0",
+				"react-dom": "^18.0.0 || ^19.0.0",
+				"@phosphor-icons/react": "^2.1.10"
+			},
+			"bin": {
+				"kumo": "bin/kumo.js"
+			},
+			"dist": {
+				"shasum": "df2f9b64e02b464431ba3e47a4f2c79b6baaa329",
+				"tarball": "https://registry.npmjs.org/@cloudflare/kumo/-/kumo-2.0.1.tgz",
+				"fileCount": 755,
+				"integrity": "sha512-YE4MAKADOPBRhWI+F5st7PQ7k+vyhptjUERdbjuEQrDbx8fr7fPPZjjvOOEUrZnue2Ydz/vICgJKMqBsdDWgeg==",
+				"signatures": [
+					{
+						"sig": "MEYCIQCvU2OzCtPN6pEUuG43x08oFyHjwmm9lAfDq2mLYV0vfQIhAJuabod47/ZLMN7lIb5mvoGJBSN0hTxg4JYxPdV0jySI",
+						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
+					}
+				],
+				"attestations": {
+					"url": "https://registry.npmjs.org/-/npm/v1/attestations/@cloudflare%2fkumo@2.0.1",
+					"provenance": {
+						"predicateType": "https://slsa.dev/provenance/v1"
+					}
+				},
+				"unpackedSize": 13664057
+			}
+		},
+		"2.0.2": {
+			"name": "@cloudflare/kumo",
+			"version": "2.0.2",
+			"dependencies": {
 				"@base-ui/react": "^1.4.0",
 				"@shikijs/langs": "^4.0.0",
 				"@shikijs/themes": "^4.0.0",
@@ -1969,13 +2046,13 @@
 				"kumo": "bin/kumo.js"
 			},
 			"dist": {
-				"integrity": "sha512-YE4MAKADOPBRhWI+F5st7PQ7k+vyhptjUERdbjuEQrDbx8fr7fPPZjjvOOEUrZnue2Ydz/vICgJKMqBsdDWgeg==",
-				"shasum": "df2f9b64e02b464431ba3e47a4f2c79b6baaa329",
-				"tarball": "https://registry.npmjs.org/@cloudflare/kumo/-/kumo-2.0.1.tgz",
+				"integrity": "sha512-OJQQVFErNEebLrbFnRvmmhZsXihs2GGqhvm9FhlNk8GNSg4suKlfA2jjT0kdHy0cJd482RLgwVFKziM2XTtMZA==",
+				"shasum": "bc246885733eab2f8ac117ec4dbbc3c0c1dd5c77",
+				"tarball": "https://registry.npmjs.org/@cloudflare/kumo/-/kumo-2.0.2.tgz",
 				"fileCount": 755,
-				"unpackedSize": 13664057,
+				"unpackedSize": 13700827,
 				"attestations": {
-					"url": "https://registry.npmjs.org/-/npm/v1/attestations/@cloudflare%2fkumo@2.0.1",
+					"url": "https://registry.npmjs.org/-/npm/v1/attestations/@cloudflare%2fkumo@2.0.2",
 					"provenance": {
 						"predicateType": "https://slsa.dev/provenance/v1"
 					}
@@ -1983,7 +2060,7 @@
 				"signatures": [
 					{
 						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U",
-						"sig": "MEYCIQCvU2OzCtPN6pEUuG43x08oFyHjwmm9lAfDq2mLYV0vfQIhAJuabod47/ZLMN7lIb5mvoGJBSN0hTxg4JYxPdV0jySI"
+						"sig": "MEQCIDuE+rV/KoNyYVPGZXP1xms93ffKx767BiESsvXROpGeAiBCu6bZC/L57uATmcqRHRW+uR+t4Whmv4EI9RtoGeXv7g=="
 					}
 				]
 			}
