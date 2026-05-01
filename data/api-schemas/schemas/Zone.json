@@ -269,6 +269,25 @@
 				}
 			},
 			{
+				"explode": false,
+				"in": "query",
+				"name": "type",
+				"schema": {
+					"description": "Zone types to filter by. Multiple types can be specified as a comma-separated list (e.g., ?type=full,partial,secondary). When this parameter is not provided, zones with type \"internal\" are excluded from the results.",
+					"items": {
+						"enum": [
+							"full",
+							"partial",
+							"secondary",
+							"internal"
+						],
+						"type": "string"
+					},
+					"type": "array"
+				},
+				"style": "form"
+			},
+			{
 				"in": "query",
 				"name": "account.id",
 				"schema": {

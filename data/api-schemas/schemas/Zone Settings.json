@@ -2979,6 +2979,67 @@
 															{
 																"properties": {
 																	"id": {
+																		"description": "ID of the zone setting.",
+																		"enum": [
+																			"search_for_agents"
+																		],
+																		"example": "search_for_agents"
+																	},
+																	"value": {
+																		"default": "off",
+																		"description": "Value of the zone setting.",
+																		"enum": [
+																			"off",
+																			"on"
+																		],
+																		"type": "string"
+																	}
+																}
+															}
+														],
+														"description": "When enabled, Cloudflare provisions an AI Search instance for the zone\nand exposes a /.well-known/ai-search endpoint that AI agents can query.\nMarkdown responses also receive an agent: YAML capability block advertising\nthe search endpoint.",
+														"title": "Search for Agents"
+													},
+													{
+														"allOf": [
+															{
+																"properties": {
+																	"editable": {
+																		"default": true,
+																		"description": "Whether or not this setting can be modified for this zone (based on your Cloudflare plan level).",
+																		"enum": [
+																			true,
+																			false
+																		],
+																		"readOnly": true,
+																		"type": "boolean"
+																	},
+																	"id": {
+																		"description": "Identifier of the zone setting.",
+																		"example": "development_mode",
+																		"type": "string"
+																	},
+																	"modified_on": {
+																		"description": "last time this setting was modified.",
+																		"example": "2014-01-01T05:20:00.12345Z",
+																		"format": "date-time",
+																		"nullable": true,
+																		"readOnly": true,
+																		"type": "string"
+																	},
+																	"value": {
+																		"description": "Current value of the zone setting.",
+																		"example": "on"
+																	}
+																},
+																"required": [
+																	"id",
+																	"value"
+																]
+															},
+															{
+																"properties": {
+																	"id": {
 																		"description": "ID of the zone's security header.",
 																		"enum": [
 																			"security_header"
@@ -7055,6 +7116,67 @@
 													],
 													"description": "[Automatic Platform Optimization for WordPress](https://developers.cloudflare.com/automatic-platform-optimization/) serves your WordPress site from Cloudflare's edge network and caches third-party fonts.",
 													"title": "Automatic Platform Optimization for WordPress"
+												},
+												{
+													"allOf": [
+														{
+															"properties": {
+																"editable": {
+																	"default": true,
+																	"description": "Whether or not this setting can be modified for this zone (based on your Cloudflare plan level).",
+																	"enum": [
+																		true,
+																		false
+																	],
+																	"readOnly": true,
+																	"type": "boolean"
+																},
+																"id": {
+																	"description": "Identifier of the zone setting.",
+																	"example": "development_mode",
+																	"type": "string"
+																},
+																"modified_on": {
+																	"description": "last time this setting was modified.",
+																	"example": "2014-01-01T05:20:00.12345Z",
+																	"format": "date-time",
+																	"nullable": true,
+																	"readOnly": true,
+																	"type": "string"
+																},
+																"value": {
+																	"description": "Current value of the zone setting.",
+																	"example": "on"
+																}
+															},
+															"required": [
+																"id",
+																"value"
+															]
+														},
+														{
+															"properties": {
+																"id": {
+																	"description": "ID of the zone setting.",
+																	"enum": [
+																		"search_for_agents"
+																	],
+																	"example": "search_for_agents"
+																},
+																"value": {
+																	"default": "off",
+																	"description": "Value of the zone setting.",
+																	"enum": [
+																		"off",
+																		"on"
+																	],
+																	"type": "string"
+																}
+															}
+														}
+													],
+													"description": "When enabled, Cloudflare provisions an AI Search instance for the zone\nand exposes a /.well-known/ai-search endpoint that AI agents can query.\nMarkdown responses also receive an agent: YAML capability block advertising\nthe search endpoint.",
+													"title": "Search for Agents"
 												},
 												{
 													"allOf": [
@@ -12618,6 +12740,67 @@
 										{
 											"properties": {
 												"id": {
+													"description": "ID of the zone setting.",
+													"enum": [
+														"search_for_agents"
+													],
+													"example": "search_for_agents"
+												},
+												"value": {
+													"default": "off",
+													"description": "Value of the zone setting.",
+													"enum": [
+														"off",
+														"on"
+													],
+													"type": "string"
+												}
+											}
+										}
+									],
+									"description": "When enabled, Cloudflare provisions an AI Search instance for the zone\nand exposes a /.well-known/ai-search endpoint that AI agents can query.\nMarkdown responses also receive an agent: YAML capability block advertising\nthe search endpoint.",
+									"title": "Search for Agents"
+								},
+								{
+									"allOf": [
+										{
+											"properties": {
+												"editable": {
+													"default": true,
+													"description": "Whether or not this setting can be modified for this zone (based on your Cloudflare plan level).",
+													"enum": [
+														true,
+														false
+													],
+													"readOnly": true,
+													"type": "boolean"
+												},
+												"id": {
+													"description": "Identifier of the zone setting.",
+													"example": "development_mode",
+													"type": "string"
+												},
+												"modified_on": {
+													"description": "last time this setting was modified.",
+													"example": "2014-01-01T05:20:00.12345Z",
+													"format": "date-time",
+													"nullable": true,
+													"readOnly": true,
+													"type": "string"
+												},
+												"value": {
+													"description": "Current value of the zone setting.",
+													"example": "on"
+												}
+											},
+											"required": [
+												"id",
+												"value"
+											]
+										},
+										{
+											"properties": {
+												"id": {
 													"description": "ID of the zone's security header.",
 													"enum": [
 														"security_header"
@@ -16410,6 +16593,67 @@
 															{
 																"properties": {
 																	"id": {
+																		"description": "ID of the zone setting.",
+																		"enum": [
+																			"search_for_agents"
+																		],
+																		"example": "search_for_agents"
+																	},
+																	"value": {
+																		"default": "off",
+																		"description": "Value of the zone setting.",
+																		"enum": [
+																			"off",
+																			"on"
+																		],
+																		"type": "string"
+																	}
+																}
+															}
+														],
+														"description": "When enabled, Cloudflare provisions an AI Search instance for the zone\nand exposes a /.well-known/ai-search endpoint that AI agents can query.\nMarkdown responses also receive an agent: YAML capability block advertising\nthe search endpoint.",
+														"title": "Search for Agents"
+													},
+													{
+														"allOf": [
+															{
+																"properties": {
+																	"editable": {
+																		"default": true,
+																		"description": "Whether or not this setting can be modified for this zone (based on your Cloudflare plan level).",
+																		"enum": [
+																			true,
+																			false
+																		],
+																		"readOnly": true,
+																		"type": "boolean"
+																	},
+																	"id": {
+																		"description": "Identifier of the zone setting.",
+																		"example": "development_mode",
+																		"type": "string"
+																	},
+																	"modified_on": {
+																		"description": "last time this setting was modified.",
+																		"example": "2014-01-01T05:20:00.12345Z",
+																		"format": "date-time",
+																		"nullable": true,
+																		"readOnly": true,
+																		"type": "string"
+																	},
+																	"value": {
+																		"description": "Current value of the zone setting.",
+																		"example": "on"
+																	}
+																},
+																"required": [
+																	"id",
+																	"value"
+																]
+															},
+															{
+																"properties": {
+																	"id": {
 																		"description": "ID of the zone's security header.",
 																		"enum": [
 																			"security_header"
@@ -18051,6 +18295,15 @@
 													"cache_by_device_type"
 												],
 												"type": "object"
+											},
+											{
+												"default": "off",
+												"description": "Value of the zone setting.",
+												"enum": [
+													"off",
+													"on"
+												],
+												"type": "string"
 											},
 											{
 												"default": {
@@ -21206,6 +21459,67 @@
 													],
 													"description": "[Automatic Platform Optimization for WordPress](https://developers.cloudflare.com/automatic-platform-optimization/) serves your WordPress site from Cloudflare's edge network and caches third-party fonts.",
 													"title": "Automatic Platform Optimization for WordPress"
+												},
+												{
+													"allOf": [
+														{
+															"properties": {
+																"editable": {
+																	"default": true,
+																	"description": "Whether or not this setting can be modified for this zone (based on your Cloudflare plan level).",
+																	"enum": [
+																		true,
+																		false
+																	],
+																	"readOnly": true,
+																	"type": "boolean"
+																},
+																"id": {
+																	"description": "Identifier of the zone setting.",
+																	"example": "development_mode",
+																	"type": "string"
+																},
+																"modified_on": {
+																	"description": "last time this setting was modified.",
+																	"example": "2014-01-01T05:20:00.12345Z",
+																	"format": "date-time",
+																	"nullable": true,
+																	"readOnly": true,
+																	"type": "string"
+																},
+																"value": {
+																	"description": "Current value of the zone setting.",
+																	"example": "on"
+																}
+															},
+															"required": [
+																"id",
+																"value"
+															]
+														},
+														{
+															"properties": {
+																"id": {
+																	"description": "ID of the zone setting.",
+																	"enum": [
+																		"search_for_agents"
+																	],
+																	"example": "search_for_agents"
+																},
+																"value": {
+																	"default": "off",
+																	"description": "Value of the zone setting.",
+																	"enum": [
+																		"off",
+																		"on"
+																	],
+																	"type": "string"
+																}
+															}
+														}
+													],
+													"description": "When enabled, Cloudflare provisions an AI Search instance for the zone\nand exposes a /.well-known/ai-search endpoint that AI agents can query.\nMarkdown responses also receive an agent: YAML capability block advertising\nthe search endpoint.",
+													"title": "Search for Agents"
 												},
 												{
 													"allOf": [
