@@ -1,0 +1,97 @@
+<div class="mb2 gray5">8 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3zQiVJjVEVyStCC4NM1DYV/8fceb089602b584454373b9ef8776bc7/Code_Orange_featured_image.png" alt="">
+<div class="post-content lh-copy gray1">
+	<p></p>
+	<p>Over the past two and a bit quarters, we've undertaken an intensive engineering effort, internally code-named "<a href="https://blog.cloudflare.com/fail-small-resilience-plan"><u>Code Orange: Fail Small</u></a>", focused on making Cloudflare's infrastructure more resilient, secure, and reliable for every customer.</p>
+	<p>Earlier this month, the Cloudflare team finished this work.</p>
+	<p>While improving resiliency will never be a “job done” and will always be a top priority across our development lifecycle, we have now completed the work that would have avoided the <a href="https://blog.cloudflare.com/18-november-2025-outage"><u>November 18, 2025</u></a> and <a href="https://blog.cloudflare.com/5-december-2025-outage"><u>December 5, 2025</u></a> global outages.</p>
+	<p>This work focused on several key areas: safer configuration changes, reducing the impact of failure, and revising our “break glass” procedures and incident management. We also introduced measures to prevent drift and regressions over time, and strengthened the way we communicate to our customers during an outage.</p>
+	<p>Here we explain in depth what we shipped, and what it means for you.</p>
+	<div class="flex anchor relative">
+		<h2 id="safer-configuration-changes">Safer configuration changes</h2>
+		<a href="https://blog.cloudflare.com/#safer-configuration-changes" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p><b><i>What it means for you</i></b><i>: In most cases, Cloudflare internal configuration changes no longer reach our network instantly and are instead rolled out progressively with real-time health monitoring. This allows our observability tools to catch problems and revert issues before they affect your traffic.</i></p>
+	<p>In order to catch potentially dangerous deployments before they reach production, we've identified high-risk configuration pipelines, and built new tools to manage configuration changes better.</p>
+	<p>For products that run on our network processing customer traffic and receive configuration changes, we no longer deploy these changes instantly across the network. Instead, relevant teams have adopted a “health-mediated deployment” methodology, the same <a href="https://blog.cloudflare.com/safe-change-at-any-scale"><u>we use when releasing software</u></a>, for all configuration deployments. This includes but is not limited to the product teams that were directly affected by the incidents.</p>
+	<p>Central to this is a new internal component we call Snapstone, which we built to bring health-mediated deployment to configuration changes. Snapstone is a system that bundles configuration change into a package, and then allows gradual release of the configuration change with health mediation principles. Before Snapstone, applying this methodology to config was possible but difficult. It required significant per-team effort and wasn't consistently applied across the network. Snapstone closes this gap by providing a unified way to bring progressive rollout, real-time health monitoring, and automated rollback to configuration deployments by default.</p>
+	<p>What makes Snapstone particularly powerful is its flexibility. Rather than being a fix for specific past failures, Snapstone allows teams to dynamically define any unit of configuration that needs health mediation, whether that's a data file like the one that caused the <a href="https://blog.cloudflare.com/18-november-2025-outage"><u>November 18 outage</u></a>, or a control flag in our global configuration system like the one involved in the <a href="https://blog.cloudflare.com/5-december-2025-outage"><u>December 5 outage</u></a>. Teams create these configuration units on demand, and Snapstone ensures they are deployed safely everywhere they're used.</p>
+	<p>This gives us something we didn't have before: when a risk review or operational experience identifies a dangerous configuration pattern, the fix is straightforward -- bring it into Snapstone, and the configuration pattern immediately inherits safe deployment.&nbsp;</p>
+	<div class="flex anchor relative">
+		<h2 id="reducing-the-impact-of-failure">Reducing the impact of failure</h2>
+		<a href="https://blog.cloudflare.com/#reducing-the-impact-of-failure" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p><b><i>What it means for you</i></b><i>: In the event an issue is observed on our network, our systems now fail more gracefully. This vastly reduces the potential impact radius, to ensure your traffic is delivered even in worst-case scenarios.</i></p>
+	<p>Product teams have carefully reviewed, both in a manual and programmatic fashion, their potential failure modes for products that are critical for serving customer traffic. Teams have removed non-essential runtime dependencies and implemented better failure modes. We will now use the last known good configuration where possible (“fail stale”), and if that isn’t possible we have reviewed each failure case and implemented “fail open” or “fail close” depending on whether serving traffic with reduced functionality is preferable to failing to serve traffic.</p>
+	<p>Let’s look at an example of how this works. Our November 2025 outage was triggered by a failed rollout of our Bot Management detection machine learning classifier. Under our new procedures, if data were generated again that our system could not read, the system would refuse to use the updated configuration and instead use the old configuration. If the old configuration was not available for some reason, it would fail open to ensure customer production traffic continues to be served, which is a much better outcome than downtime.</p>
+	<p>As a result, if the same Bot Management change that caused the failure in November were to roll out now, the system would detect the failure in an early stage of the deployment, before it had affected anything more than a small percentage of traffic.</p>
+	<p>We have also begun further segmenting our system so that independent copies of services run for different cohorts of traffic. Cloudflare already takes advantage of these customer cohorts for blast radius mitigation with traffic management techniques today, and this additional process segmentation work provides a powerful reliability capability for us going forward.&nbsp;&nbsp;</p>
+	<p>For example, the Workers runtime system is segmented into multiple independent services handling different cohorts of traffic, with one handling only traffic for our free customers. Changes are deployed to these segments based on customer cohorts, starting with free customers first. We’re also sending updates more quickly and frequently to the least critical segments, and at a slower pace to the most critical segments.</p>
+	<p>As a result, if a change were deployed to the Workers runtime system and it broke traffic, it would now only affect a small percentage of our free customers before being automatically detected and rolled back.</p>
+	<p>Sticking to the Workers runtime system as an example, in a seven-day period earlier this month, the deployment process was triggered more than 50 times. You can see how each happens in “waves” as the change propagates to the edge, often in parallel to the following and prior releases:</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/27Qu0u1iTXZ6MNI4GabAWs/b47737d63334808155e7dd8148818e06/3278-chart.png" alt="Edge-worker module change deployment graph -- over 50 changes in less than a week." class="kg-image" width="1473" height="981" loading="lazy">
+	</figure>
+	<p>We’re working on extending this pattern of deployment to many more of our systems in the future.</p>
+	<div class="flex anchor relative">
+		<h2 id="revised-break-glass-and-incident-management-procedures">Revised “break glass” and incident management procedures</h2>
+		<a href="https://blog.cloudflare.com/#revised-break-glass-and-incident-management-procedures" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p><b><i>What it means for you</i></b><i>: If an incident does occur, we have the tools and teams to communicate more clearly and resolve it faster, minimizing downtime.</i></p>
+	<p>Cloudflare runs on Cloudflare. We use our own Zero Trust products to secure our infrastructure, but this creates a dependency: if a network-wide outage impacts these tools, we lose the very pathways we need to fix them. Before this Code Orange initiative, our "break glass" pathways were restricted to a handful of people and offered limited tool access. We needed these tools and pathways to be more broadly available during an outage.</p>
+	<p>To solve this, we conducted a comprehensive audit of the tools essential for system visibility, debugging, and production changes. We ultimately developed backup authorization pathways for 18 key services, supported by new emergency scripts and proxies.</p>
+	<p>Throughout the Code Orange program, we moved from theory to practice. After small-team exercises, we conducted an engineering-wide drill on April 7, 2026, involving more than 200 team members. While automation keeps these pathways functional, drills like these ensure our engineers have the muscle memory to use them under pressure.</p>
+	<p>This effort also focused on the flow of information. When internal visibility is disrupted, our incident response slows down, and our ability to communicate with the outside world suffers. Historically, technical observations from the heat of the moment didn't always translate into clear updates for our customers.</p>
+	<p>To bridge this gap, we established a dedicated communications team to work in lockstep with incident responders during major events. Just as our engineers practiced their "break glass" procedures, this team used the Code Orange program to drill on streamlining the cadence and clarity of customer updates. By ensuring we have both the tools to see and the structure to speak, we can resolve incidents faster and keep our customers better informed.</p>
+	<div class="flex anchor relative">
+		<h2 id="we-have-codified-our-improvements">We have codified our improvements</h2>
+		<a href="https://blog.cloudflare.com/#we-have-codified-our-improvements" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p><b><i>What it means for you</i></b><i>: We will remember the learnings from our incidents and have codified the resolutions. Our network will only become more resilient.</i></p>
+	<p>To avoid drift and reintroducing regressions to the work done as part of Code Orange over time, the team has built an internal Codex that solidifies all our guidelines in clear and concise rules.</p>
+	<p>The Codex is now mandatory for all engineering and product teams, and has become a central part of Cloudflare internal procedures. Its rules are enforced via AI code reviews that automatically highlight any instance that might diverge from the guidelines, requiring additional manual reviews be performed. This is applied without exception to our entire codebase. The goal is simple: Build institutional memory that enforces itself.</p>
+	<p>The November and December outages shared a common failure mode: code that assumed inputs would always be valid, with no graceful degradation when that assumption broke. A Rust service called .unwrap() instead of handling an error; Lua code indexed an object that didn't exist. Both patterns are preventable if the lessons are captured and enforced.</p>
+	<p>The Codex is part of our answer. It's a living repository of engineering standards written by domain experts through our Request For Comments (RFC) process, then distilled into actionable rules. Best practices that previously lived in the heads of senior engineers, or were discovered only after an incident, now become shared knowledge accessible to everyone. Each rule follows a simple format: "If you need X, use Y" with a link to the RFC that explains why.</p>
+	<p>For example, one RFC now states: "Do not use .unwrap() outside of tests and `build.rs.`" Another captures a broader principle: "Services MUST validate that upstream dependencies are in an expected state before processing."</p>
+	<p>Had these rules been enforced earlier, the November and December outages would have been rejected merge requests instead of global incidents.</p>
+	<p>Rules without enforcement are suggestions. The Codex integrates with AI-powered agents at every stage of the software development lifecycle, from design review through deployment to incident analysis. This shifts enforcement left, from "global outage" to "rejected merge request." The blast radius of a violation shrinks from millions of affected requests to a single developer getting actionable feedback before their code ever reaches production.</p>
+	<p>The Codex is a living document and will be continuously improved over time. Domain experts write RFCs to codify best practices. Incidents surface gaps that become new RFCs. Every approved RFC generates Codex rules. Those rules feed the agents that review the next merge request. It's a flywheel: expertise becomes standards, standards become enforcement, enforcement raises the floor for everyone.</p>
+	<div class="flex anchor relative">
+		<h2 id="its-not-just-about-code-communication-is-key">It’s not just about code: communication is key</h2>
+		<a href="https://blog.cloudflare.com/#its-not-just-about-code-communication-is-key" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p><b><i>What it means for you</i></b><i>: Transparency is important to us. If something goes wrong, we’re committed to keeping you updated every step of the way so you can stay focused on what matters to you.</i></p>
+	<p>The global outages have made us review core processes and cultural approaches even beyond engineering and product development. As part of the broader Code Orange initiatives, we have introduced additional service level objectives (SLOs) to all our services, enforced a global changelog, onboarded all teams to our maintenance coordination system, and improved transparency across the company on our incident “prevents” ticket backlog.&nbsp;</p>
+	<p>We have also strengthened the way we communicate to our customers during an outage. Our goal is to alert you to an issue the moment we confirm it, before you even notice a problem. By the time you notice a lag or an error, our aim is to have an update already waiting in your notifications.</p>
+	<p>During an active incident, we now provide updates at predictable intervals (e.g., every 30 or 60 minutes), even if the update is simply, "We are still testing the fix; no new changes yet." This allows you to plan your day rather than constantly refreshing a status page.</p>
+	<p>Our job isn't done when the status returns to normal. We provide detailed post-mortems explaining what happened, why it happened, and the specific structural changes we are making to ensure it doesn't happen again.</p>
+	<div class="flex anchor relative">
+		<h2 id="this-initiative-is-complete-but-our-work-on-resiliency-is-never-done">This initiative is complete. But our work on resiliency is never done.</h2>
+		<a href="https://blog.cloudflare.com/#this-initiative-is-complete-but-our-work-on-resiliency-is-never-done" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>We take the incidents very seriously and adopted a shared ownership across the entire Cloudflare organization by asking every team: What could have been done better? This guided the work that we carried out over the last two quarters.</p>
+	<p>While this work is never truly done, we are confident that we are in a much better position and Cloudflare is now much stronger because of it.</p>
+</div>
