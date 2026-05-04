@@ -1,24 +1,79 @@
 {
 	"name": "@cloudflare/telescope",
 	"dist-tags": {
-		"latest": "0.0.0"
+		"latest": "1.1.0"
 	},
 	"versions": {
 		"0.0.0": {
 			"name": "@cloudflare/telescope",
 			"version": "0.0.0",
 			"dist": {
-				"integrity": "sha512-/LRF5uLN1LmAgPVm3h7PCE+40M5impK/+tiFX6mLdyCXcGdfzW/GYDZEVk0U4sWslLFfQuRDGy6iihgPn3E/Gg==",
 				"shasum": "83f82307d3bb7c4275486e1d55d3ab9339a54fbd",
 				"tarball": "https://registry.npmjs.org/@cloudflare/telescope/-/telescope-0.0.0.tgz",
 				"fileCount": 1,
-				"unpackedSize": 109,
+				"integrity": "sha512-/LRF5uLN1LmAgPVm3h7PCE+40M5impK/+tiFX6mLdyCXcGdfzW/GYDZEVk0U4sWslLFfQuRDGy6iihgPn3E/Gg==",
+				"signatures": [
+					{
+						"sig": "MEUCIQDCqfDo8Mebl1ab0vFgAQjJAMiIzEX8dqTFK65RYRyhuwIgO50ks/GjMcJ5nc35h85Od1fUnFld6cmAt04OYUiCySQ=",
+						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
+					}
+				],
+				"unpackedSize": 109
+			}
+		},
+		"1.1.0": {
+			"name": "@cloudflare/telescope",
+			"version": "1.1.0",
+			"dependencies": {
+				"@sitespeed.io/throttle": "^5.0.0",
+				"adm-zip": "^0.5.16",
+				"commander": "^10.0.0",
+				"ejs": "^3.1.10",
+				"ffmpeg": "^0.0.4",
+				"playwright": "^1.59.1",
+				"playwright-webkit": "^1.59.1",
+				"zod": "^3.25.76"
+			},
+			"devDependencies": {
+				"@playwright/test": "^1.59.1",
+				"@types/adm-zip": "^0.5.7",
+				"@types/ejs": "^3.1.5",
+				"@types/node": "^25.2.1",
+				"@typescript-eslint/eslint-plugin": "^8.54.0",
+				"@typescript-eslint/parser": "^8.54.0",
+				"@vitest/coverage-v8": "^4.0.6",
+				"eslint": "^9.39.2",
+				"msw": "^2.12.10",
+				"prettier": "^3.6.2",
+				"prettier-plugin-ejs": "^1.0.3",
+				"ts-node": "^10.9.2",
+				"typescript": "^5.9.3",
+				"vitest": "^4.0.6"
+			},
+			"bin": {
+				"telescope": "dist/src/cli.js"
+			},
+			"dist": {
+				"integrity": "sha512-SGvuTL4gkwjZKBYXTCfz9Z5Pab+d6mvrMuc06U/1uLmgIaQ6BOpcS2/USwiIAlasGftguGbu7Y4XnK+ZWwo3MA==",
+				"shasum": "edbb9d3fd06ab3a810bb0372360af837bdf559df",
+				"tarball": "https://registry.npmjs.org/@cloudflare/telescope/-/telescope-1.1.0.tgz",
+				"fileCount": 76,
+				"unpackedSize": 411462,
+				"attestations": {
+					"url": "https://registry.npmjs.org/-/npm/v1/attestations/@cloudflare%2ftelescope@1.1.0",
+					"provenance": {
+						"predicateType": "https://slsa.dev/provenance/v1"
+					}
+				},
 				"signatures": [
 					{
 						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U",
-						"sig": "MEUCIQDCqfDo8Mebl1ab0vFgAQjJAMiIzEX8dqTFK65RYRyhuwIgO50ks/GjMcJ5nc35h85Od1fUnFld6cmAt04OYUiCySQ="
+						"sig": "MEQCIA6dlIPvsvNenP6MKe882Yv/9PY7Hg2jyXY31oACpFXKAiBhs8vOaScyU3RiaPtyWVyyGXbaCGn5ojbpUIQ422CvPA=="
 					}
 				]
+			},
+			"engines": {
+				"node": ">=24"
 			}
 		}
 	}
