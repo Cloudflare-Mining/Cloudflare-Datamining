@@ -24,7 +24,7 @@
 </ul>
 <p>3. Internal Operations &amp; AI Innovation</p>
 <ul>
-	<li>AI Tooling &amp; Automation: Actively build and deploy AI-driven tools to streamline policy tracking, research, and internal reporting workflows.</li>
+	<li>AI Tooling &amp; Automation: Actively build and deploy AI-driven tools to streamline policy tracking, research, and internal reporting workflows. Leveraging internal AI tools to synthesize vast amounts of public policy data into actionable insights, ensuring the team can respond to legislative shifts with higher speed and accuracy.</li>
 	<li>Cross-Functional Support: Provide real-time updates to Legal, Trust &amp; Safety, and Sales teams, ensuring policy insights are translated into actionable business intelligence.</li>
 	<li>Commercial Enablement: Compile localized materials to help sales and marketing teams respond to policy-related inquiries from regional customers.</li>
 </ul>
@@ -34,7 +34,7 @@
 <ul>
 	<li>Current Student: Enrolled in a degree program in Law, Economics, Political Science, Public Policy, or a related social science field.</li>
 	<li>AI Proficiency: Must be highly comfortable with AI tools and demonstrate the ability to actively build with AI (e.g., using LLMs for automation, data analysis, or workflow optimization).</li>
-	<li>Available for a full-time 20-week internship, working from our Singapore or Bengaluru office 3-5 days a week from July - December.</li>
+	<li>Available for a full-time 20-week (minimum 12 week) internship, working from our Singapore or Bengaluru office 3-5 days a week from July - December.</li>
 </ul>
 <p>Preferred Qualifications:</p>
 <ul>
