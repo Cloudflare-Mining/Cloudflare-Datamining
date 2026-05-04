@@ -61,6 +61,7 @@
 				}
 			},
 			{
+				"explode": true,
 				"in": "query",
 				"name": "idp_id",
 				"required": true,
@@ -74,9 +75,11 @@
 						"type": "string"
 					},
 					"type": "array"
-				}
+				},
+				"style": "form"
 			},
 			{
+				"explode": true,
 				"in": "query",
 				"name": "status",
 				"schema": {
@@ -93,9 +96,11 @@
 						"type": "string"
 					},
 					"type": "array"
-				}
+				},
+				"style": "form"
 			},
 			{
+				"explode": true,
 				"in": "query",
 				"name": "resource_type",
 				"schema": {
@@ -112,9 +117,11 @@
 						"type": "string"
 					},
 					"type": "array"
-				}
+				},
+				"style": "form"
 			},
 			{
+				"explode": true,
 				"in": "query",
 				"name": "request_method",
 				"schema": {
@@ -133,43 +140,73 @@
 						"type": "string"
 					},
 					"type": "array"
-				}
+				},
+				"style": "form"
 			},
 			{
+				"explode": true,
 				"in": "query",
 				"name": "resource_user_email",
 				"schema": {
-					"description": "The email address of the SCIM User resource.",
-					"example": "john.smith@example.com",
-					"format": "email",
-					"type": "string"
-				}
+					"description": "The email address of the SCIM User resource. Pass once for a single\nlookup (`?resource_user_email=A`) or repeat the parameter\n(`?resource_user_email=A&resource_user_email=B`) to filter by multiple\nemails in one request.",
+					"example": [
+						"john.smith@example.com"
+					],
+					"items": {
+						"format": "email",
+						"type": "string"
+					},
+					"type": "array"
+				},
+				"style": "form"
 			},
 			{
+				"explode": true,
 				"in": "query",
 				"name": "resource_group_name",
 				"schema": {
-					"description": "The display name of the SCIM Group resource.",
-					"example": "ALL_EMPLOYEES",
-					"type": "string"
-				}
+					"description": "The display name of the SCIM Group resource. Pass once for a single\nlookup (`?resource_group_name=A`) or repeat the parameter\n(`?resource_group_name=A&resource_group_name=B`) to filter by multiple\ngroup names in one request.",
+					"example": [
+						"ALL_EMPLOYEES"
+					],
+					"items": {
+						"type": "string"
+					},
+					"type": "array"
+				},
+				"style": "form"
 			},
 			{
+				"explode": true,
 				"in": "query",
 				"name": "cf_resource_id",
 				"schema": {
-					"description": "The unique Cloudflare-generated Id of the SCIM resource.",
-					"example": "bd97ef8d-7986-43e3-9ee0-c25dda33e4b0",
-					"type": "string"
-				}
+					"description": "The unique Cloudflare-generated Id of the SCIM resource. Pass once for\na single lookup (`?cf_resource_id=A`) or repeat the parameter\n(`?cf_resource_id=A&cf_resource_id=B`) to filter by multiple resources\nin one request.",
+					"example": [
+						"bd97ef8d-7986-43e3-9ee0-c25dda33e4b0"
+					],
+					"items": {
+						"type": "string"
+					},
+					"type": "array"
+				},
+				"style": "form"
 			},
 			{
+				"explode": true,
 				"in": "query",
 				"name": "idp_resource_id",
 				"schema": {
-					"description": "The IdP-generated Id of the SCIM resource.",
-					"type": "string"
-				}
+					"description": "The IdP-generated Id of the SCIM resource. Pass once for a single\nlookup (`?idp_resource_id=A`) or repeat the parameter\n(`?idp_resource_id=A&idp_resource_id=B`) to filter by multiple\nresources in one request.",
+					"example": [
+						"all_employees"
+					],
+					"items": {
+						"type": "string"
+					},
+					"type": "array"
+				},
+				"style": "form"
 			},
 			{
 				"in": "query",

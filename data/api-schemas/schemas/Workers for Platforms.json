@@ -10601,6 +10601,666 @@
 			"Workers Scripts Write"
 		]
 	},
+	"PATCH /accounts/{account_id}/workers/dispatch/namespaces/{dispatch_namespace}/scripts/{script_name}/secrets-bulk": {
+		"description": "Create, update, or delete multiple secrets on a script in a single operation using JSON Merge Patch (RFC 7396).\n\nUsage:\n\n- To create or update a secret, set its value to a secret object.\n- To delete a secret, set its value to `null`.\n- Secrets not included in the request are left unchanged.\n",
+		"operationId": "namespace-worker-patch-script-secrets-bulk",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"description": "Identifier.",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"type": "string",
+					"x-auditable": true
+				}
+			},
+			{
+				"in": "path",
+				"name": "dispatch_namespace",
+				"required": true,
+				"schema": {
+					"description": "Name of the Workers for Platforms dispatch namespace.",
+					"example": "my-dispatch-namespace",
+					"pattern": "^.+$",
+					"type": "string",
+					"x-auditable": true
+				}
+			},
+			{
+				"in": "path",
+				"name": "script_name",
+				"required": true,
+				"schema": {
+					"description": "Name of the script, used in URLs and route configuration.",
+					"example": "this-is_my_script-01",
+					"pattern": "^[a-z0-9_][a-z0-9-_]*$",
+					"type": "string",
+					"x-auditable": true
+				}
+			}
+		],
+		"requestBody": {
+			"content": {
+				"application/merge-patch+json": {
+					"schema": {
+						"description": "JSON Merge Patch (RFC 7396) request body for bulk secret changes.\n",
+						"properties": {
+							"secrets": {
+								"additionalProperties": {
+									"allOf": [
+										{
+											"description": "A secret value accessible through a binding.",
+											"discriminator": {
+												"mapping": {
+													"secret_key": "#/components/schemas/workers_binding_kind_secret_key",
+													"secret_text": "#/components/schemas/workers_binding_kind_secret_text"
+												},
+												"propertyName": "type"
+											},
+											"oneOf": [
+												{
+													"properties": {
+														"name": {
+															"description": "A JavaScript variable name for the binding.",
+															"example": "myBinding",
+															"type": "string",
+															"x-auditable": true
+														},
+														"text": {
+															"description": "The secret value to use.",
+															"example": "My secret.",
+															"type": "string",
+															"writeOnly": true,
+															"x-sensitive": true
+														},
+														"type": {
+															"description": "The kind of resource that the binding provides.",
+															"enum": [
+																"secret_text"
+															],
+															"type": "string",
+															"x-auditable": true
+														}
+													},
+													"required": [
+														"name",
+														"type",
+														"text"
+													],
+													"type": "object"
+												},
+												{
+													"properties": {
+														"algorithm": {
+															"description": "Algorithm-specific key parameters. [Learn more](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#algorithm).",
+															"type": "object",
+															"x-auditable": true
+														},
+														"format": {
+															"description": "Data format of the key. [Learn more](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#format).",
+															"enum": [
+																"raw",
+																"pkcs8",
+																"spki",
+																"jwk"
+															],
+															"example": "raw",
+															"type": "string",
+															"x-auditable": true
+														},
+														"key_base64": {
+															"description": "Base64-encoded key data. Required if `format` is \"raw\", \"pkcs8\", or \"spki\".",
+															"type": "string",
+															"writeOnly": true,
+															"x-sensitive": true
+														},
+														"key_jwk": {
+															"description": "Key data in [JSON Web Key](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#json_web_key) format. Required if `format` is \"jwk\".",
+															"type": "object",
+															"writeOnly": true,
+															"x-sensitive": true
+														},
+														"name": {
+															"description": "A JavaScript variable name for the binding.",
+															"example": "myBinding",
+															"type": "string",
+															"x-auditable": true
+														},
+														"type": {
+															"description": "The kind of resource that the binding provides.",
+															"enum": [
+																"secret_key"
+															],
+															"type": "string",
+															"x-auditable": true
+														},
+														"usages": {
+															"description": "Allowed operations with the key. [Learn more](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#keyUsages).",
+															"example": [
+																"encrypt",
+																"decrypt"
+															],
+															"items": {
+																"enum": [
+																	"encrypt",
+																	"decrypt",
+																	"sign",
+																	"verify",
+																	"deriveKey",
+																	"deriveBits",
+																	"wrapKey",
+																	"unwrapKey"
+																],
+																"type": "string"
+															},
+															"type": "array",
+															"x-auditable": true,
+															"x-stainless-collection-type": "set"
+														}
+													},
+													"required": [
+														"name",
+														"type",
+														"format",
+														"algorithm",
+														"usages"
+													],
+													"type": "object"
+												}
+											],
+											"type": "object"
+										}
+									],
+									"nullable": true,
+									"type": "object"
+								},
+								"description": "Map of secret names to secret values:\n- Set to a secret object to create or update.\n- Set to `null` to delete.\n- Omit to leave unchanged.\n",
+								"type": "object"
+							},
+							"version_tags": {
+								"additionalProperties": true,
+								"description": "Optional version tags to apply to the new script version.",
+								"type": "object"
+							}
+						},
+						"type": "object"
+					}
+				}
+			},
+			"required": true
+		},
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"properties": {
+										"errors": {
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														},
+														"type": "object"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										},
+										"messages": {
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														},
+														"type": "object"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										},
+										"success": {
+											"description": "Whether the API call was successful.",
+											"enum": [
+												true
+											],
+											"example": true,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages"
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"result": {
+											"additionalProperties": {
+												"description": "A secret value accessible through a binding.",
+												"discriminator": {
+													"mapping": {
+														"secret_key": "#/components/schemas/workers_binding_kind_secret_key",
+														"secret_text": "#/components/schemas/workers_binding_kind_secret_text"
+													},
+													"propertyName": "type"
+												},
+												"oneOf": [
+													{
+														"properties": {
+															"name": {
+																"description": "A JavaScript variable name for the binding.",
+																"example": "myBinding",
+																"type": "string",
+																"x-auditable": true
+															},
+															"text": {
+																"description": "The secret value to use.",
+																"example": "My secret.",
+																"type": "string",
+																"writeOnly": true,
+																"x-sensitive": true
+															},
+															"type": {
+																"description": "The kind of resource that the binding provides.",
+																"enum": [
+																	"secret_text"
+																],
+																"type": "string",
+																"x-auditable": true
+															}
+														},
+														"required": [
+															"name",
+															"type",
+															"text"
+														],
+														"type": "object"
+													},
+													{
+														"properties": {
+															"algorithm": {
+																"description": "Algorithm-specific key parameters. [Learn more](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#algorithm).",
+																"type": "object",
+																"x-auditable": true
+															},
+															"format": {
+																"description": "Data format of the key. [Learn more](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#format).",
+																"enum": [
+																	"raw",
+																	"pkcs8",
+																	"spki",
+																	"jwk"
+																],
+																"example": "raw",
+																"type": "string",
+																"x-auditable": true
+															},
+															"key_base64": {
+																"description": "Base64-encoded key data. Required if `format` is \"raw\", \"pkcs8\", or \"spki\".",
+																"type": "string",
+																"writeOnly": true,
+																"x-sensitive": true
+															},
+															"key_jwk": {
+																"description": "Key data in [JSON Web Key](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#json_web_key) format. Required if `format` is \"jwk\".",
+																"type": "object",
+																"writeOnly": true,
+																"x-sensitive": true
+															},
+															"name": {
+																"description": "A JavaScript variable name for the binding.",
+																"example": "myBinding",
+																"type": "string",
+																"x-auditable": true
+															},
+															"type": {
+																"description": "The kind of resource that the binding provides.",
+																"enum": [
+																	"secret_key"
+																],
+																"type": "string",
+																"x-auditable": true
+															},
+															"usages": {
+																"description": "Allowed operations with the key. [Learn more](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#keyUsages).",
+																"example": [
+																	"encrypt",
+																	"decrypt"
+																],
+																"items": {
+																	"enum": [
+																		"encrypt",
+																		"decrypt",
+																		"sign",
+																		"verify",
+																		"deriveKey",
+																		"deriveBits",
+																		"wrapKey",
+																		"unwrapKey"
+																	],
+																	"type": "string"
+																},
+																"type": "array",
+																"x-auditable": true,
+																"x-stainless-collection-type": "set"
+															}
+														},
+														"required": [
+															"name",
+															"type",
+															"format",
+															"algorithm",
+															"usages"
+														],
+														"type": "object"
+													}
+												],
+												"type": "object"
+											},
+											"description": "Map of secret names to secret metadata for resulting secrets.",
+											"type": "object"
+										}
+									},
+									"required": [
+										"result"
+									],
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "Patch script secrets bulk success (Workers for Platforms)."
+			},
+			"429": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"allOf": [
+										{
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														},
+														"type": "object"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										}
+									],
+									"example": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
+										}
+									],
+									"minLength": 1
+								},
+								"messages": {
+									"allOf": [
+										{
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														},
+														"type": "object"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										}
+									],
+									"example": []
+								},
+								"result": {
+									"enum": [
+										null
+									],
+									"nullable": true,
+									"type": "object"
+								},
+								"success": {
+									"description": "Whether the API call was successful.",
+									"enum": [
+										false
+									],
+									"example": false,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Too many requests are currently modifying the script."
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"allOf": [
+										{
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														},
+														"type": "object"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										}
+									],
+									"example": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
+										}
+									],
+									"minLength": 1
+								},
+								"messages": {
+									"allOf": [
+										{
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														},
+														"type": "object"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										}
+									],
+									"example": []
+								},
+								"result": {
+									"enum": [
+										null
+									],
+									"nullable": true,
+									"type": "object"
+								},
+								"success": {
+									"description": "Whether the API call was successful.",
+									"enum": [
+										false
+									],
+									"example": false,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Patch script secrets bulk failure (Workers for Platforms)."
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Patch multiple script secrets",
+		"tags": [
+			"Workers for Platforms"
+		]
+	},
 	"PATCH /accounts/{account_id}/workers/dispatch/namespaces/{dispatch_namespace}/scripts/{script_name}/settings": {
 		"description": "Patch script metadata, such as bindings.",
 		"operationId": "namespace-worker-patch-script-settings",

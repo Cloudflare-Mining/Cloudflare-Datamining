@@ -77,7 +77,7 @@
 				}
 			},
 			{
-				"description": "Filter by user email. Defaults to substring matching. To force exact matching, set `email_exact=true`.\nExample (default): `email=@example.com` returns all events with that domain.\nExample (exact): `email=user@example.com&email_exact=true` returns only that user.\n",
+				"description": "Filter by user email. Match mode is controlled by `emailOp` (preferred) or the legacy `email_exact` flag.\n- Default (no `emailOp`, `email_exact=false` or unset): substring match — `email=@example.com` returns all events with that domain.\n- Exact match: set `emailOp=eq` (preferred) or `email_exact=true` — e.g. `email=user@example.com&email_exact=true` returns only that user.\n- Explicit substring match: set `emailOp=contains` (without `email_exact=true`). When both are set, `email_exact=true` takes precedence and the match is exact.\n- Exclusion: set `emailOp=neq`. With `email_exact=true` this is an exact-value exclusion; without it, a fuzzy substring exclusion.\n",
 				"in": "query",
 				"name": "email",
 				"schema": {
@@ -98,7 +98,8 @@
 				}
 			},
 			{
-				"description": "Filter by user UUID.\n",
+				"deprecated": true,
+				"description": "Deprecated. Accepted for backward compatibility but no longer applied\nas a filter. Use `email` instead.\n",
 				"in": "query",
 				"name": "user_id",
 				"schema": {
@@ -174,14 +175,15 @@
 				}
 			},
 			{
-				"description": "Operator for the `email` filter.",
+				"description": "Operator for the `email` filter.\n`contains` performs a substring (case-sensitive) match. When `email_exact=true`\nis also set, `email_exact` takes precedence and `contains` is ignored.\n",
 				"in": "query",
 				"name": "emailOp",
 				"schema": {
 					"default": "eq",
 					"enum": [
 						"eq",
-						"neq"
+						"neq",
+						"contains"
 					],
 					"type": "string"
 				}
@@ -213,7 +215,8 @@
 				}
 			},
 			{
-				"description": "Operator for the `user_id` filter.",
+				"deprecated": true,
+				"description": "Deprecated. Accepted for backward compatibility but no longer applied\nas a filter (the `user_id` parameter is itself deprecated).\n",
 				"in": "query",
 				"name": "user_idOp",
 				"schema": {

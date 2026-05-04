@@ -5074,22 +5074,38 @@
 				}
 			},
 			{
+				"explode": true,
 				"in": "query",
 				"name": "cf_resource_id",
 				"schema": {
-					"description": "The unique Cloudflare-generated Id of the SCIM Group resource; also known as the \"Id\".",
-					"example": "a2abeb50-59c9-4c01-8c5c-963d3bf5700f",
-					"type": "string"
-				}
+					"description": "The unique Cloudflare-generated Id of the SCIM Group resource; also known as the \"Id\".\nPass once for a single lookup (`?cf_resource_id=A`) or repeat the parameter\n(`?cf_resource_id=A&cf_resource_id=B`) to look up multiple groups in one request,\nup to 50 values. Mutually exclusive with `idp_resource_id`, `name`,\n`search_contains`, and `search_starts_with`.",
+					"example": [
+						"a2abeb50-59c9-4c01-8c5c-963d3bf5700f"
+					],
+					"items": {
+						"type": "string"
+					},
+					"maxItems": 50,
+					"type": "array"
+				},
+				"style": "form"
 			},
 			{
+				"explode": true,
 				"in": "query",
 				"name": "idp_resource_id",
 				"schema": {
-					"description": "The IdP-generated Id of the SCIM Group resource; also known as the \"external Id\".",
-					"example": "all_employees",
-					"type": "string"
-				}
+					"description": "The IdP-generated Id of the SCIM Group resource; also known as the \"external Id\".\nPass once for a single lookup (`?idp_resource_id=A`) or repeat the parameter\n(`?idp_resource_id=A&idp_resource_id=B`) to look up multiple groups in one request,\nup to 50 values. Mutually exclusive with `cf_resource_id`, `name`,\n`search_contains`, and `search_starts_with`.",
+					"example": [
+						"all_employees"
+					],
+					"items": {
+						"type": "string"
+					},
+					"maxItems": 50,
+					"type": "array"
+				},
+				"style": "form"
 			},
 			{
 				"in": "query",
@@ -5468,22 +5484,38 @@
 				}
 			},
 			{
+				"explode": true,
 				"in": "query",
 				"name": "cf_resource_id",
 				"schema": {
-					"description": "The unique Cloudflare-generated Id of the SCIM User resource; also known as the \"Id\".",
-					"example": "bd97ef8d-7986-43e3-9ee0-c25dda33e4b0",
-					"type": "string"
-				}
+					"description": "The unique Cloudflare-generated Id of the SCIM User resource; also known as the \"Id\".\nPass once for a single lookup (`?cf_resource_id=A`) or repeat the parameter\n(`?cf_resource_id=A&cf_resource_id=B`) to look up multiple users in one request,\nup to 50 values. Mutually exclusive with `idp_resource_id`, `username`, `email`,\n`name`, `search_contains`, and `search_starts_with`.",
+					"example": [
+						"bd97ef8d-7986-43e3-9ee0-c25dda33e4b0"
+					],
+					"items": {
+						"type": "string"
+					},
+					"maxItems": 50,
+					"type": "array"
+				},
+				"style": "form"
 			},
 			{
+				"explode": true,
 				"in": "query",
 				"name": "idp_resource_id",
 				"schema": {
-					"description": "The IdP-generated Id of the SCIM User resource; also known as the \"external Id\".",
-					"example": "john_smith_01",
-					"type": "string"
-				}
+					"description": "The IdP-generated Id of the SCIM User resource; also known as the \"external Id\".\nPass once for a single lookup (`?idp_resource_id=A`) or repeat the parameter\n(`?idp_resource_id=A&idp_resource_id=B`) to look up multiple users in one request,\nup to 50 values. Mutually exclusive with `cf_resource_id`, `username`, `email`,\n`name`, `search_contains`, and `search_starts_with`.",
+					"example": [
+						"john_smith_01"
+					],
+					"items": {
+						"type": "string"
+					},
+					"maxItems": 50,
+					"type": "array"
+				},
+				"style": "form"
 			},
 			{
 				"in": "query",
