@@ -1,5 +1,11 @@
 # Change Log
 
+## 9.0.35
+
+### Patch Changes
+
+- 50b26b7c0a: Add aria-labelledby prop to modal component
+
 ## 9.0.34
 
 ### Patch Changes

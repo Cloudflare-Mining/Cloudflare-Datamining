@@ -1,5 +1,12 @@
 # Change Log
 
+## 1.2.31
+
+### Patch Changes
+
+- Updated dependencies [74454c3efb]
+  - @cloudflare/util-en-garde@8.0.14
+
 ## 1.2.30
 
 ### Patch Changes

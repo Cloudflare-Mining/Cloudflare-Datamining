@@ -1,5 +1,15 @@
 # Change Log
 
+## 8.0.14
+
+### Patch Changes
+
+- 74454c3efb: Include the failing paths in `EnGardeAssertionError.message` so error-tracking
+  tools that fingerprint by message (e.g., Sentry) can group decode failures
+  per-codec instead of collapsing every codec validation failure across the app
+  into a single bucket. Backward compatible: the `.errors` array is unchanged
+  and `instanceof EnGardeAssertionError` still works.
+
 ## 8.0.13
 
 ### Patch Changes
