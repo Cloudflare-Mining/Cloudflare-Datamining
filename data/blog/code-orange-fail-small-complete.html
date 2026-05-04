@@ -7,7 +7,7 @@
 	<p>This work focused on several key areas: safer configuration changes, reducing the impact of failure, and revising our “break glass” procedures and incident management. We also introduced measures to prevent drift and regressions over time, and strengthened the way we communicate to our customers during an outage.</p>
 	<p>Here we explain in depth what we shipped, and what it means for you.</p>
 	<div class="flex anchor relative">
-		<h2 id="safer-configuration-changes">Safer configuration changes</h2>
+		<h3 id="safer-configuration-changes">Safer configuration changes</h3>
 		<a href="https://blog.cloudflare.com/#safer-configuration-changes" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
@@ -21,7 +21,7 @@
 	<p>What makes Snapstone particularly powerful is its flexibility. Rather than being a fix for specific past failures, Snapstone allows teams to dynamically define any unit of configuration that needs health mediation, whether that's a data file like the one that caused the <a href="https://blog.cloudflare.com/18-november-2025-outage"><u>November 18 outage</u></a>, or a control flag in our global configuration system like the one involved in the <a href="https://blog.cloudflare.com/5-december-2025-outage"><u>December 5 outage</u></a>. Teams create these configuration units on demand, and Snapstone ensures they are deployed safely everywhere they're used.</p>
 	<p>This gives us something we didn't have before: when a risk review or operational experience identifies a dangerous configuration pattern, the fix is straightforward -- bring it into Snapstone, and the configuration pattern immediately inherits safe deployment.&nbsp;</p>
 	<div class="flex anchor relative">
-		<h2 id="reducing-the-impact-of-failure">Reducing the impact of failure</h2>
+		<h3 id="reducing-the-impact-of-failure">Reducing the impact of failure</h3>
 		<a href="https://blog.cloudflare.com/#reducing-the-impact-of-failure" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
@@ -41,7 +41,7 @@
 	</figure>
 	<p>We’re working on extending this pattern of deployment to many more of our systems in the future.</p>
 	<div class="flex anchor relative">
-		<h2 id="revised-break-glass-and-incident-management-procedures">Revised “break glass” and incident management procedures</h2>
+		<h3 id="revised-break-glass-and-incident-management-procedures">Revised “break glass” and incident management procedures</h3>
 		<a href="https://blog.cloudflare.com/#revised-break-glass-and-incident-management-procedures" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
@@ -55,7 +55,7 @@
 	<p>This effort also focused on the flow of information. When internal visibility is disrupted, our incident response slows down, and our ability to communicate with the outside world suffers. Historically, technical observations from the heat of the moment didn't always translate into clear updates for our customers.</p>
 	<p>To bridge this gap, we established a dedicated communications team to work in lockstep with incident responders during major events. Just as our engineers practiced their "break glass" procedures, this team used the Code Orange program to drill on streamlining the cadence and clarity of customer updates. By ensuring we have both the tools to see and the structure to speak, we can resolve incidents faster and keep our customers better informed.</p>
 	<div class="flex anchor relative">
-		<h2 id="we-have-codified-our-improvements">We have codified our improvements</h2>
+		<h3 id="we-have-codified-our-improvements">We have codified our improvements</h3>
 		<a href="https://blog.cloudflare.com/#we-have-codified-our-improvements" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
@@ -65,27 +65,27 @@
 	<p><b><i>What it means for you</i></b><i>: We will remember the learnings from our incidents and have codified the resolutions. Our network will only become more resilient.</i></p>
 	<p>To avoid drift and reintroducing regressions to the work done as part of Code Orange over time, the team has built an internal Codex that solidifies all our guidelines in clear and concise rules.</p>
 	<p>The Codex is now mandatory for all engineering and product teams, and has become a central part of Cloudflare internal procedures. Its rules are enforced via AI code reviews that automatically highlight any instance that might diverge from the guidelines, requiring additional manual reviews be performed. This is applied without exception to our entire codebase. The goal is simple: Build institutional memory that enforces itself.</p>
-	<p>The November and December outages shared a common failure mode: code that assumed inputs would always be valid, with no graceful degradation when that assumption broke. A Rust service called .unwrap() instead of handling an error; Lua code indexed an object that didn't exist. Both patterns are preventable if the lessons are captured and enforced.</p>
+	<p>The November and December outages shared a common failure mode: code that assumed inputs would always be valid, with no graceful degradation when that assumption broke. A Rust service called <code>.unwrap()</code> instead of handling an error; Lua code indexed an object that didn't exist. Both patterns are preventable if the lessons are captured and enforced.</p>
 	<p>The Codex is part of our answer. It's a living repository of engineering standards written by domain experts through our Request For Comments (RFC) process, then distilled into actionable rules. Best practices that previously lived in the heads of senior engineers, or were discovered only after an incident, now become shared knowledge accessible to everyone. Each rule follows a simple format: "If you need X, use Y" with a link to the RFC that explains why.</p>
-	<p>For example, one RFC now states: "Do not use .unwrap() outside of tests and `build.rs.`" Another captures a broader principle: "Services MUST validate that upstream dependencies are in an expected state before processing."</p>
+	<p>For example, one RFC now states: "Do not use <code>.unwrap()</code> outside of tests and <code>build.rs.</code>" Another captures a broader principle: "Services MUST validate that upstream dependencies are in an expected state before processing."</p>
 	<p>Had these rules been enforced earlier, the November and December outages would have been rejected merge requests instead of global incidents.</p>
 	<p>Rules without enforcement are suggestions. The Codex integrates with AI-powered agents at every stage of the software development lifecycle, from design review through deployment to incident analysis. This shifts enforcement left, from "global outage" to "rejected merge request." The blast radius of a violation shrinks from millions of affected requests to a single developer getting actionable feedback before their code ever reaches production.</p>
 	<p>The Codex is a living document and will be continuously improved over time. Domain experts write RFCs to codify best practices. Incidents surface gaps that become new RFCs. Every approved RFC generates Codex rules. Those rules feed the agents that review the next merge request. It's a flywheel: expertise becomes standards, standards become enforcement, enforcement raises the floor for everyone.</p>
 	<div class="flex anchor relative">
-		<h2 id="its-not-just-about-code-communication-is-key">It’s not just about code: communication is key</h2>
+		<h3 id="its-not-just-about-code-communication-is-key">It’s not just about code: communication is key</h3>
 		<a href="https://blog.cloudflare.com/#its-not-just-about-code-communication-is-key" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
 		</a>
 	</div>
-	<p><b><i>What it means for you</i></b><i>: Transparency is important to us. If something goes wrong, we’re committed to keeping you updated every step of the way so you can stay focused on what matters to you.</i></p>
+	<p><b><i>What it means for you</i></b><i>: Transparency is important to us. If something goes wrong, we’re committed to keeping you updated every step of the way, so you can stay focused on what matters to you.</i></p>
 	<p>The global outages have made us review core processes and cultural approaches even beyond engineering and product development. As part of the broader Code Orange initiatives, we have introduced additional service level objectives (SLOs) to all our services, enforced a global changelog, onboarded all teams to our maintenance coordination system, and improved transparency across the company on our incident “prevents” ticket backlog.&nbsp;</p>
 	<p>We have also strengthened the way we communicate to our customers during an outage. Our goal is to alert you to an issue the moment we confirm it, before you even notice a problem. By the time you notice a lag or an error, our aim is to have an update already waiting in your notifications.</p>
 	<p>During an active incident, we now provide updates at predictable intervals (e.g., every 30 or 60 minutes), even if the update is simply, "We are still testing the fix; no new changes yet." This allows you to plan your day rather than constantly refreshing a status page.</p>
 	<p>Our job isn't done when the status returns to normal. We provide detailed post-mortems explaining what happened, why it happened, and the specific structural changes we are making to ensure it doesn't happen again.</p>
 	<div class="flex anchor relative">
-		<h2 id="this-initiative-is-complete-but-our-work-on-resiliency-is-never-done">This initiative is complete. But our work on resiliency is never done.</h2>
+		<h3 id="this-initiative-is-complete-but-our-work-on-resiliency-is-never-done">This initiative is complete. But our work on resiliency is never done.</h3>
 		<a href="https://blog.cloudflare.com/#this-initiative-is-complete-but-our-work-on-resiliency-is-never-done" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
