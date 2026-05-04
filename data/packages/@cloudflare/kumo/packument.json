@@ -1,7 +1,7 @@
 {
 	"name": "@cloudflare/kumo",
 	"dist-tags": {
-		"latest": "2.0.2"
+		"latest": "2.0.3"
 	},
 	"versions": {
 		"1.0.0": {
@@ -1992,6 +1992,83 @@
 			"name": "@cloudflare/kumo",
 			"version": "2.0.2",
 			"dependencies": {
+				"clsx": "^2.1.1",
+				"shiki": "^4.0.0",
+				"motion": "^12.34.1",
+				"@base-ui/react": "^1.4.0",
+				"@shikijs/langs": "^4.0.0",
+				"tailwind-merge": "^3.4.0",
+				"@shikijs/themes": "^4.0.0",
+				"react-day-picker": "^9.13.2"
+			},
+			"devDependencies": {
+				"tsx": "^4.19.2",
+				"zod": "^4.0.0",
+				"glob": "13.0.0",
+				"plop": "4.0.4",
+				"vite": "^7.1.7",
+				"oxlint": "1.42.0",
+				"vitest": "^4.0.18",
+				"esbuild": "0.27.2",
+				"wrangler": "^4.59.1",
+				"happy-dom": "^20.8.8",
+				"@vitest/ui": "^4.0.18",
+				"playwright": "^1.57.0",
+				"typescript": "^5.9.2",
+				"@types/glob": "9.0.0",
+				"@types/node": "^22.10.2",
+				"tailwindcss": "^4.1.17",
+				"@types/react": "19.2.4",
+				"oxlint-tsgolint": "0.11.3",
+				"svg-path-parser": "^1.1.0",
+				"vite-plugin-dts": "^4.3.0",
+				"@tailwindcss/cli": "^4.1.17",
+				"@types/react-dom": "19.2.3",
+				"@tailwindcss/vite": "^4.1.17",
+				"@vitejs/plugin-react": "^5.1.4",
+				"vitest-browser-react": "^2.0.5",
+				"@testing-library/react": "16.3.1",
+				"@types/svg-path-parser": "^1.1.6",
+				"eslint-plugin-jsx-a11y": "^6.10.2",
+				"ts-json-schema-generator": "2.4.0",
+				"@vitest/browser-playwright": "^4.0.18",
+				"@testing-library/user-event": "14.6.1",
+				"rollup-plugin-preserve-directives": "0.4.0"
+			},
+			"peerDependencies": {
+				"zod": "^4.0.0",
+				"react": "^18.0.0 || ^19.0.0",
+				"echarts": "^6.0.0",
+				"react-dom": "^18.0.0 || ^19.0.0",
+				"@phosphor-icons/react": "^2.1.10"
+			},
+			"bin": {
+				"kumo": "bin/kumo.js"
+			},
+			"dist": {
+				"shasum": "bc246885733eab2f8ac117ec4dbbc3c0c1dd5c77",
+				"tarball": "https://registry.npmjs.org/@cloudflare/kumo/-/kumo-2.0.2.tgz",
+				"fileCount": 755,
+				"integrity": "sha512-OJQQVFErNEebLrbFnRvmmhZsXihs2GGqhvm9FhlNk8GNSg4suKlfA2jjT0kdHy0cJd482RLgwVFKziM2XTtMZA==",
+				"signatures": [
+					{
+						"sig": "MEQCIDuE+rV/KoNyYVPGZXP1xms93ffKx767BiESsvXROpGeAiBCu6bZC/L57uATmcqRHRW+uR+t4Whmv4EI9RtoGeXv7g==",
+						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
+					}
+				],
+				"attestations": {
+					"url": "https://registry.npmjs.org/-/npm/v1/attestations/@cloudflare%2fkumo@2.0.2",
+					"provenance": {
+						"predicateType": "https://slsa.dev/provenance/v1"
+					}
+				},
+				"unpackedSize": 13700827
+			}
+		},
+		"2.0.3": {
+			"name": "@cloudflare/kumo",
+			"version": "2.0.3",
+			"dependencies": {
 				"@base-ui/react": "^1.4.0",
 				"@shikijs/langs": "^4.0.0",
 				"@shikijs/themes": "^4.0.0",
@@ -2046,13 +2123,13 @@
 				"kumo": "bin/kumo.js"
 			},
 			"dist": {
-				"integrity": "sha512-OJQQVFErNEebLrbFnRvmmhZsXihs2GGqhvm9FhlNk8GNSg4suKlfA2jjT0kdHy0cJd482RLgwVFKziM2XTtMZA==",
-				"shasum": "bc246885733eab2f8ac117ec4dbbc3c0c1dd5c77",
-				"tarball": "https://registry.npmjs.org/@cloudflare/kumo/-/kumo-2.0.2.tgz",
-				"fileCount": 755,
-				"unpackedSize": 13700827,
+				"integrity": "sha512-G4CAqs38zlh4jN8Y9p6CU34buxFTJ1HdneU63H5uL62yZfVZn5mB+fIxOqwYKqDtr0jLon962KE7inzvV23TJw==",
+				"shasum": "4fb699a63fc94eeae51f84b0447a501202e18e12",
+				"tarball": "https://registry.npmjs.org/@cloudflare/kumo/-/kumo-2.0.3.tgz",
+				"fileCount": 759,
+				"unpackedSize": 13717211,
 				"attestations": {
-					"url": "https://registry.npmjs.org/-/npm/v1/attestations/@cloudflare%2fkumo@2.0.2",
+					"url": "https://registry.npmjs.org/-/npm/v1/attestations/@cloudflare%2fkumo@2.0.3",
 					"provenance": {
 						"predicateType": "https://slsa.dev/provenance/v1"
 					}
@@ -2060,7 +2137,7 @@
 				"signatures": [
 					{
 						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U",
-						"sig": "MEQCIDuE+rV/KoNyYVPGZXP1xms93ffKx767BiESsvXROpGeAiBCu6bZC/L57uATmcqRHRW+uR+t4Whmv4EI9RtoGeXv7g=="
+						"sig": "MEYCIQCX5qyHzUYfQ44hwvkqdgnm0bD2vkHPmiTszneUPoWwMwIhAN4UongWRXFzQAOvGHFBOgFJfG+8fGUOWRvZshTFsLdM"
 					}
 				]
 			}
