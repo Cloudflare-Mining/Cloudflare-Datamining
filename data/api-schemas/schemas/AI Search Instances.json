@@ -89,6 +89,73 @@
 											"type": "string",
 											"x-auditable": true
 										},
+										"cache_ttl": {
+											"anyOf": [
+												{
+													"enum": [
+														600
+													],
+													"type": "number"
+												},
+												{
+													"enum": [
+														1800
+													],
+													"type": "number"
+												},
+												{
+													"enum": [
+														3600
+													],
+													"type": "number"
+												},
+												{
+													"enum": [
+														7200
+													],
+													"type": "number"
+												},
+												{
+													"enum": [
+														21600
+													],
+													"type": "number"
+												},
+												{
+													"enum": [
+														43200
+													],
+													"type": "number"
+												},
+												{
+													"enum": [
+														86400
+													],
+													"type": "number"
+												},
+												{
+													"enum": [
+														172800
+													],
+													"type": "number"
+												},
+												{
+													"enum": [
+														259200
+													],
+													"type": "number"
+												},
+												{
+													"enum": [
+														518400
+													],
+													"type": "number"
+												}
+											],
+											"default": 172800,
+											"description": "Cache entry TTL in seconds. Allowed values: 600 (10min), 1800 (30min), 3600 (1h), 7200 (2h), 21600 (6h), 43200 (12h), 86400 (24h), 172800 (48h), 259200 (72h), 518400 (6d).",
+											"x-auditable": true
+										},
 										"chunk_overlap": {
 											"default": 10,
 											"maximum": 30,
@@ -913,6 +980,73 @@
 												"anything_goes"
 											],
 											"type": "string",
+											"x-auditable": true
+										},
+										"cache_ttl": {
+											"anyOf": [
+												{
+													"enum": [
+														600
+													],
+													"type": "number"
+												},
+												{
+													"enum": [
+														1800
+													],
+													"type": "number"
+												},
+												{
+													"enum": [
+														3600
+													],
+													"type": "number"
+												},
+												{
+													"enum": [
+														7200
+													],
+													"type": "number"
+												},
+												{
+													"enum": [
+														21600
+													],
+													"type": "number"
+												},
+												{
+													"enum": [
+														43200
+													],
+													"type": "number"
+												},
+												{
+													"enum": [
+														86400
+													],
+													"type": "number"
+												},
+												{
+													"enum": [
+														172800
+													],
+													"type": "number"
+												},
+												{
+													"enum": [
+														259200
+													],
+													"type": "number"
+												},
+												{
+													"enum": [
+														518400
+													],
+													"type": "number"
+												}
+											],
+											"default": 172800,
+											"description": "Cache entry TTL in seconds. Allowed values: 600 (10min), 1800 (30min), 3600 (1h), 7200 (2h), 21600 (6h), 43200 (12h), 86400 (24h), 172800 (48h), 259200 (72h), 518400 (6d).",
 											"x-auditable": true
 										},
 										"chunk_overlap": {
@@ -1794,6 +1928,73 @@
 												"type": "string",
 												"x-auditable": true
 											},
+											"cache_ttl": {
+												"anyOf": [
+													{
+														"enum": [
+															600
+														],
+														"type": "number"
+													},
+													{
+														"enum": [
+															1800
+														],
+														"type": "number"
+													},
+													{
+														"enum": [
+															3600
+														],
+														"type": "number"
+													},
+													{
+														"enum": [
+															7200
+														],
+														"type": "number"
+													},
+													{
+														"enum": [
+															21600
+														],
+														"type": "number"
+													},
+													{
+														"enum": [
+															43200
+														],
+														"type": "number"
+													},
+													{
+														"enum": [
+															86400
+														],
+														"type": "number"
+													},
+													{
+														"enum": [
+															172800
+														],
+														"type": "number"
+													},
+													{
+														"enum": [
+															259200
+														],
+														"type": "number"
+													},
+													{
+														"enum": [
+															518400
+														],
+														"type": "number"
+													}
+												],
+												"default": 172800,
+												"description": "Cache entry TTL in seconds. Allowed values: 600 (10min), 1800 (30min), 3600 (1h), 7200 (2h), 21600 (6h), 43200 (12h), 86400 (24h), 172800 (48h), 259200 (72h), 518400 (6d).",
+												"x-auditable": true
+											},
 											"chunk_overlap": {
 												"default": 10,
 												"maximum": 30,
@@ -2644,6 +2845,73 @@
 												"anything_goes"
 											],
 											"type": "string",
+											"x-auditable": true
+										},
+										"cache_ttl": {
+											"anyOf": [
+												{
+													"enum": [
+														600
+													],
+													"type": "number"
+												},
+												{
+													"enum": [
+														1800
+													],
+													"type": "number"
+												},
+												{
+													"enum": [
+														3600
+													],
+													"type": "number"
+												},
+												{
+													"enum": [
+														7200
+													],
+													"type": "number"
+												},
+												{
+													"enum": [
+														21600
+													],
+													"type": "number"
+												},
+												{
+													"enum": [
+														43200
+													],
+													"type": "number"
+												},
+												{
+													"enum": [
+														86400
+													],
+													"type": "number"
+												},
+												{
+													"enum": [
+														172800
+													],
+													"type": "number"
+												},
+												{
+													"enum": [
+														259200
+													],
+													"type": "number"
+												},
+												{
+													"enum": [
+														518400
+													],
+													"type": "number"
+												}
+											],
+											"default": 172800,
+											"description": "Cache entry TTL in seconds. Allowed values: 600 (10min), 1800 (30min), 3600 (1h), 7200 (2h), 21600 (6h), 43200 (12h), 86400 (24h), 172800 (48h), 259200 (72h), 518400 (6d).",
 											"x-auditable": true
 										},
 										"chunk_overlap": {
@@ -3727,6 +3995,73 @@
 												"type": "string",
 												"x-auditable": true
 											},
+											"cache_ttl": {
+												"anyOf": [
+													{
+														"enum": [
+															600
+														],
+														"type": "number"
+													},
+													{
+														"enum": [
+															1800
+														],
+														"type": "number"
+													},
+													{
+														"enum": [
+															3600
+														],
+														"type": "number"
+													},
+													{
+														"enum": [
+															7200
+														],
+														"type": "number"
+													},
+													{
+														"enum": [
+															21600
+														],
+														"type": "number"
+													},
+													{
+														"enum": [
+															43200
+														],
+														"type": "number"
+													},
+													{
+														"enum": [
+															86400
+														],
+														"type": "number"
+													},
+													{
+														"enum": [
+															172800
+														],
+														"type": "number"
+													},
+													{
+														"enum": [
+															259200
+														],
+														"type": "number"
+													},
+													{
+														"enum": [
+															518400
+														],
+														"type": "number"
+													}
+												],
+												"default": 172800,
+												"description": "Cache entry TTL in seconds. Allowed values: 600 (10min), 1800 (30min), 3600 (1h), 7200 (2h), 21600 (6h), 43200 (12h), 86400 (24h), 172800 (48h), 259200 (72h), 518400 (6d).",
+												"x-auditable": true
+											},
 											"chunk_overlap": {
 												"default": 10,
 												"maximum": 30,
@@ -4587,6 +4922,73 @@
 												"anything_goes"
 											],
 											"type": "string",
+											"x-auditable": true
+										},
+										"cache_ttl": {
+											"anyOf": [
+												{
+													"enum": [
+														600
+													],
+													"type": "number"
+												},
+												{
+													"enum": [
+														1800
+													],
+													"type": "number"
+												},
+												{
+													"enum": [
+														3600
+													],
+													"type": "number"
+												},
+												{
+													"enum": [
+														7200
+													],
+													"type": "number"
+												},
+												{
+													"enum": [
+														21600
+													],
+													"type": "number"
+												},
+												{
+													"enum": [
+														43200
+													],
+													"type": "number"
+												},
+												{
+													"enum": [
+														86400
+													],
+													"type": "number"
+												},
+												{
+													"enum": [
+														172800
+													],
+													"type": "number"
+												},
+												{
+													"enum": [
+														259200
+													],
+													"type": "number"
+												},
+												{
+													"enum": [
+														518400
+													],
+													"type": "number"
+												}
+											],
+											"default": 172800,
+											"description": "Cache entry TTL in seconds. Allowed values: 600 (10min), 1800 (30min), 3600 (1h), 7200 (2h), 21600 (6h), 43200 (12h), 86400 (24h), 172800 (48h), 259200 (72h), 518400 (6d).",
 											"x-auditable": true
 										},
 										"chunk_overlap": {
@@ -5595,6 +5997,73 @@
 								"type": "string",
 								"x-auditable": true
 							},
+							"cache_ttl": {
+								"anyOf": [
+									{
+										"enum": [
+											600
+										],
+										"type": "number"
+									},
+									{
+										"enum": [
+											1800
+										],
+										"type": "number"
+									},
+									{
+										"enum": [
+											3600
+										],
+										"type": "number"
+									},
+									{
+										"enum": [
+											7200
+										],
+										"type": "number"
+									},
+									{
+										"enum": [
+											21600
+										],
+										"type": "number"
+									},
+									{
+										"enum": [
+											43200
+										],
+										"type": "number"
+									},
+									{
+										"enum": [
+											86400
+										],
+										"type": "number"
+									},
+									{
+										"enum": [
+											172800
+										],
+										"type": "number"
+									},
+									{
+										"enum": [
+											259200
+										],
+										"type": "number"
+									},
+									{
+										"enum": [
+											518400
+										],
+										"type": "number"
+									}
+								],
+								"default": 172800,
+								"description": "Cache entry TTL in seconds. Allowed values: 600 (10min), 1800 (30min), 3600 (1h), 7200 (2h), 21600 (6h), 43200 (12h), 86400 (24h), 172800 (48h), 259200 (72h), 518400 (6d).",
+								"x-auditable": true
+							},
 							"chunk": {
 								"default": true,
 								"type": "boolean",
@@ -6255,6 +6724,73 @@
 												"anything_goes"
 											],
 											"type": "string",
+											"x-auditable": true
+										},
+										"cache_ttl": {
+											"anyOf": [
+												{
+													"enum": [
+														600
+													],
+													"type": "number"
+												},
+												{
+													"enum": [
+														1800
+													],
+													"type": "number"
+												},
+												{
+													"enum": [
+														3600
+													],
+													"type": "number"
+												},
+												{
+													"enum": [
+														7200
+													],
+													"type": "number"
+												},
+												{
+													"enum": [
+														21600
+													],
+													"type": "number"
+												},
+												{
+													"enum": [
+														43200
+													],
+													"type": "number"
+												},
+												{
+													"enum": [
+														86400
+													],
+													"type": "number"
+												},
+												{
+													"enum": [
+														172800
+													],
+													"type": "number"
+												},
+												{
+													"enum": [
+														259200
+													],
+													"type": "number"
+												},
+												{
+													"enum": [
+														518400
+													],
+													"type": "number"
+												}
+											],
+											"default": 172800,
+											"description": "Cache entry TTL in seconds. Allowed values: 600 (10min), 1800 (30min), 3600 (1h), 7200 (2h), 21600 (6h), 43200 (12h), 86400 (24h), 172800 (48h), 259200 (72h), 518400 (6d).",
 											"x-auditable": true
 										},
 										"chunk_overlap": {
@@ -8178,6 +8714,73 @@
 								"type": "string",
 								"x-auditable": true
 							},
+							"cache_ttl": {
+								"anyOf": [
+									{
+										"enum": [
+											600
+										],
+										"type": "number"
+									},
+									{
+										"enum": [
+											1800
+										],
+										"type": "number"
+									},
+									{
+										"enum": [
+											3600
+										],
+										"type": "number"
+									},
+									{
+										"enum": [
+											7200
+										],
+										"type": "number"
+									},
+									{
+										"enum": [
+											21600
+										],
+										"type": "number"
+									},
+									{
+										"enum": [
+											43200
+										],
+										"type": "number"
+									},
+									{
+										"enum": [
+											86400
+										],
+										"type": "number"
+									},
+									{
+										"enum": [
+											172800
+										],
+										"type": "number"
+									},
+									{
+										"enum": [
+											259200
+										],
+										"type": "number"
+									},
+									{
+										"enum": [
+											518400
+										],
+										"type": "number"
+									}
+								],
+								"default": 172800,
+								"description": "Cache entry TTL in seconds. Allowed values: 600 (10min), 1800 (30min), 3600 (1h), 7200 (2h), 21600 (6h), 43200 (12h), 86400 (24h), 172800 (48h), 259200 (72h), 518400 (6d).",
+								"x-auditable": true
+							},
 							"chunk": {
 								"default": true,
 								"type": "boolean",
@@ -8838,6 +9441,73 @@
 												"anything_goes"
 											],
 											"type": "string",
+											"x-auditable": true
+										},
+										"cache_ttl": {
+											"anyOf": [
+												{
+													"enum": [
+														600
+													],
+													"type": "number"
+												},
+												{
+													"enum": [
+														1800
+													],
+													"type": "number"
+												},
+												{
+													"enum": [
+														3600
+													],
+													"type": "number"
+												},
+												{
+													"enum": [
+														7200
+													],
+													"type": "number"
+												},
+												{
+													"enum": [
+														21600
+													],
+													"type": "number"
+												},
+												{
+													"enum": [
+														43200
+													],
+													"type": "number"
+												},
+												{
+													"enum": [
+														86400
+													],
+													"type": "number"
+												},
+												{
+													"enum": [
+														172800
+													],
+													"type": "number"
+												},
+												{
+													"enum": [
+														259200
+													],
+													"type": "number"
+												},
+												{
+													"enum": [
+														518400
+													],
+													"type": "number"
+												}
+											],
+											"default": 172800,
+											"description": "Cache entry TTL in seconds. Allowed values: 600 (10min), 1800 (30min), 3600 (1h), 7200 (2h), 21600 (6h), 43200 (12h), 86400 (24h), 172800 (48h), 259200 (72h), 518400 (6d).",
 											"x-auditable": true
 										},
 										"chunk_overlap": {
@@ -10780,6 +11450,73 @@
 								"type": "string",
 								"x-auditable": true
 							},
+							"cache_ttl": {
+								"anyOf": [
+									{
+										"enum": [
+											600
+										],
+										"type": "number"
+									},
+									{
+										"enum": [
+											1800
+										],
+										"type": "number"
+									},
+									{
+										"enum": [
+											3600
+										],
+										"type": "number"
+									},
+									{
+										"enum": [
+											7200
+										],
+										"type": "number"
+									},
+									{
+										"enum": [
+											21600
+										],
+										"type": "number"
+									},
+									{
+										"enum": [
+											43200
+										],
+										"type": "number"
+									},
+									{
+										"enum": [
+											86400
+										],
+										"type": "number"
+									},
+									{
+										"enum": [
+											172800
+										],
+										"type": "number"
+									},
+									{
+										"enum": [
+											259200
+										],
+										"type": "number"
+									},
+									{
+										"enum": [
+											518400
+										],
+										"type": "number"
+									}
+								],
+								"default": 172800,
+								"description": "Cache entry TTL in seconds. Allowed values: 600 (10min), 1800 (30min), 3600 (1h), 7200 (2h), 21600 (6h), 43200 (12h), 86400 (24h), 172800 (48h), 259200 (72h), 518400 (6d).",
+								"x-auditable": true
+							},
 							"chunk": {
 								"default": true,
 								"type": "boolean",
@@ -11469,6 +12206,73 @@
 												"anything_goes"
 											],
 											"type": "string",
+											"x-auditable": true
+										},
+										"cache_ttl": {
+											"anyOf": [
+												{
+													"enum": [
+														600
+													],
+													"type": "number"
+												},
+												{
+													"enum": [
+														1800
+													],
+													"type": "number"
+												},
+												{
+													"enum": [
+														3600
+													],
+													"type": "number"
+												},
+												{
+													"enum": [
+														7200
+													],
+													"type": "number"
+												},
+												{
+													"enum": [
+														21600
+													],
+													"type": "number"
+												},
+												{
+													"enum": [
+														43200
+													],
+													"type": "number"
+												},
+												{
+													"enum": [
+														86400
+													],
+													"type": "number"
+												},
+												{
+													"enum": [
+														172800
+													],
+													"type": "number"
+												},
+												{
+													"enum": [
+														259200
+													],
+													"type": "number"
+												},
+												{
+													"enum": [
+														518400
+													],
+													"type": "number"
+												}
+											],
+											"default": 172800,
+											"description": "Cache entry TTL in seconds. Allowed values: 600 (10min), 1800 (30min), 3600 (1h), 7200 (2h), 21600 (6h), 43200 (12h), 86400 (24h), 172800 (48h), 259200 (72h), 518400 (6d).",
 											"x-auditable": true
 										},
 										"chunk_overlap": {
@@ -12334,6 +13138,73 @@
 								"type": "string",
 								"x-auditable": true
 							},
+							"cache_ttl": {
+								"anyOf": [
+									{
+										"enum": [
+											600
+										],
+										"type": "number"
+									},
+									{
+										"enum": [
+											1800
+										],
+										"type": "number"
+									},
+									{
+										"enum": [
+											3600
+										],
+										"type": "number"
+									},
+									{
+										"enum": [
+											7200
+										],
+										"type": "number"
+									},
+									{
+										"enum": [
+											21600
+										],
+										"type": "number"
+									},
+									{
+										"enum": [
+											43200
+										],
+										"type": "number"
+									},
+									{
+										"enum": [
+											86400
+										],
+										"type": "number"
+									},
+									{
+										"enum": [
+											172800
+										],
+										"type": "number"
+									},
+									{
+										"enum": [
+											259200
+										],
+										"type": "number"
+									},
+									{
+										"enum": [
+											518400
+										],
+										"type": "number"
+									}
+								],
+								"default": 172800,
+								"description": "Cache entry TTL in seconds. Allowed values: 600 (10min), 1800 (30min), 3600 (1h), 7200 (2h), 21600 (6h), 43200 (12h), 86400 (24h), 172800 (48h), 259200 (72h), 518400 (6d).",
+								"x-auditable": true
+							},
 							"chunk": {
 								"default": true,
 								"type": "boolean",
@@ -13023,6 +13894,73 @@
 												"anything_goes"
 											],
 											"type": "string",
+											"x-auditable": true
+										},
+										"cache_ttl": {
+											"anyOf": [
+												{
+													"enum": [
+														600
+													],
+													"type": "number"
+												},
+												{
+													"enum": [
+														1800
+													],
+													"type": "number"
+												},
+												{
+													"enum": [
+														3600
+													],
+													"type": "number"
+												},
+												{
+													"enum": [
+														7200
+													],
+													"type": "number"
+												},
+												{
+													"enum": [
+														21600
+													],
+													"type": "number"
+												},
+												{
+													"enum": [
+														43200
+													],
+													"type": "number"
+												},
+												{
+													"enum": [
+														86400
+													],
+													"type": "number"
+												},
+												{
+													"enum": [
+														172800
+													],
+													"type": "number"
+												},
+												{
+													"enum": [
+														259200
+													],
+													"type": "number"
+												},
+												{
+													"enum": [
+														518400
+													],
+													"type": "number"
+												}
+											],
+											"default": 172800,
+											"description": "Cache entry TTL in seconds. Allowed values: 600 (10min), 1800 (30min), 3600 (1h), 7200 (2h), 21600 (6h), 43200 (12h), 86400 (24h), 172800 (48h), 259200 (72h), 518400 (6d).",
 											"x-auditable": true
 										},
 										"chunk_overlap": {
