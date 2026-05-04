@@ -3803,6 +3803,14 @@
 				}
 			},
 			{
+				"description": "When true, return only submissions that were escalated by an end user (vs. by the security team). When false, return only submissions that were not escalated by an end user. When omitted, no filter is applied.",
+				"in": "query",
+				"name": "escalated_from_user",
+				"schema": {
+					"type": "boolean"
+				}
+			},
+			{
 				"description": "Current page within paginated list of results.",
 				"in": "query",
 				"name": "page",

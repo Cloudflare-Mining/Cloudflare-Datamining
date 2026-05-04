@@ -122,8 +122,8 @@
 												"type": "number"
 											},
 											"ConsumedUnit": {
-												"description": "Specifies the unit of measurement for consumed quantity.",
-												"example": "Requests",
+												"description": "A display name for the unit of measurement used for the product (for example, \"GB-months\", \"GB-seconds\"). May be empty when the unit is implicit in the service name.",
+												"example": "GB-months",
 												"type": "string"
 											},
 											"ContractedCost": {

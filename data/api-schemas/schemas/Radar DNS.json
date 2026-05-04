@@ -7230,7 +7230,8 @@
 						"QUERY_TYPE",
 						"RESPONSE_CODE",
 						"RESPONSE_TTL",
-						"TLD"
+						"TLD",
+						"TLD_DNS_MAGNITUDE"
 					],
 					"type": "string"
 				}
@@ -7659,7 +7660,8 @@
 					"description": "Normalization method applied to the results. Refer to [Normalization methods](https://developers.cloudflare.com/radar/concepts/normalization/).",
 					"enum": [
 						"PERCENTAGE",
-						"MIN0_MAX"
+						"MIN0_MAX",
+						"RANK"
 					],
 					"example": "PERCENTAGE",
 					"type": "string"
