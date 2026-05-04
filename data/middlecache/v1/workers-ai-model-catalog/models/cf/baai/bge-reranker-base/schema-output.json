@@ -1,0 +1,22 @@
+{
+	"type": "object",
+	"contentType": "application/json",
+	"properties": {
+		"response": {
+			"type": "array",
+			"items": {
+				"type": "object",
+				"properties": {
+					"id": {
+						"type": "integer",
+						"description": "Index of the context in the request"
+					},
+					"score": {
+						"type": "number",
+						"description": "Score of the context under the index."
+					}
+				}
+			}
+		}
+	}
+}

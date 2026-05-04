@@ -1,0 +1,116 @@
+{
+	"$schema": "https://json-schema.org/draft/2020-12/schema",
+	"type": "object",
+	"properties": {
+		"contents": {
+			"type": "array",
+			"items": {
+				"type": "object",
+				"properties": {
+					"role": {
+						"type": "string",
+						"enum": [
+							"user",
+							"model"
+						]
+					},
+					"parts": {
+						"type": "array",
+						"items": {
+							"type": "object",
+							"properties": {
+								"text": {
+									"type": "string"
+								}
+							},
+							"additionalProperties": {}
+						}
+					}
+				},
+				"required": [
+					"parts"
+				],
+				"additionalProperties": {}
+			}
+		},
+		"systemInstruction": {
+			"type": "object",
+			"properties": {
+				"parts": {
+					"type": "array",
+					"items": {
+						"type": "object",
+						"properties": {
+							"text": {
+								"type": "string"
+							}
+						},
+						"additionalProperties": {}
+					}
+				}
+			},
+			"required": [
+				"parts"
+			],
+			"additionalProperties": {}
+		},
+		"generationConfig": {
+			"type": "object",
+			"properties": {
+				"temperature": {
+					"type": "number"
+				},
+				"topP": {
+					"type": "number"
+				},
+				"topK": {
+					"type": "number"
+				},
+				"maxOutputTokens": {
+					"type": "number"
+				},
+				"candidateCount": {
+					"type": "number"
+				},
+				"stopSequences": {
+					"type": "array",
+					"items": {
+						"type": "string"
+					}
+				},
+				"responseMimeType": {
+					"type": "string"
+				}
+			},
+			"additionalProperties": {}
+		},
+		"safetySettings": {
+			"type": "array",
+			"items": {
+				"type": "object",
+				"properties": {
+					"category": {
+						"type": "string"
+					},
+					"threshold": {
+						"type": "string"
+					}
+				},
+				"required": [
+					"category",
+					"threshold"
+				],
+				"additionalProperties": {}
+			}
+		},
+		"tools": {
+			"type": "array",
+			"items": {}
+		},
+		"toolConfig": {}
+	},
+	"required": [
+		"contents"
+	],
+	"additionalProperties": {}
+}

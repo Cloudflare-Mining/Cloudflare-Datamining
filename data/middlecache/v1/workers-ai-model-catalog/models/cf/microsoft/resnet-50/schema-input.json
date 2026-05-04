@@ -1,0 +1,25 @@
+{
+	"oneOf": [
+		{
+			"type": "string",
+			"format": "binary",
+			"description": "The image to classify"
+		},
+		{
+			"type": "object",
+			"properties": {
+				"image": {
+					"type": "array",
+					"description": "An array of integers that represent the image data constrained to 8-bit unsigned integer values",
+					"items": {
+						"type": "number",
+						"description": "A value between 0 and 255 (unsigned 8bit)"
+					}
+				}
+			},
+			"required": [
+				"image"
+			]
+		}
+	]
+}

@@ -1,0 +1,17 @@
+{
+	"type": "array",
+	"contentType": "application/json",
+	"items": {
+		"type": "object",
+		"properties": {
+			"score": {
+				"type": "number",
+				"description": "A confidence value, between 0 and 1, indicating how certain the model is about the predicted label"
+			},
+			"label": {
+				"type": "string",
+				"description": "The predicted category or class for the input image based on analysis"
+			}
+		}
+	}
+}

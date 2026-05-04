@@ -1,0 +1,396 @@
+{
+	"flat": false,
+	"modes": [
+		"sync",
+		"batch"
+	],
+	"sync": {
+		"input": {
+			"rows": [
+				{
+					"id": "query",
+					"name": "query",
+					"type": "string",
+					"isArray": false,
+					"isObject": false,
+					"isOneOf": false,
+					"isOneOfChild": false,
+					"isFirstOneOfChild": false,
+					"isLastOneOfChild": false,
+					"required": false,
+					"description": "A query you wish to perform against the provided contexts. If no query is provided the model with respond with embeddings for contexts",
+					"metadata": {
+						"minLength": 1
+					},
+					"depth": 0,
+					"isLast": false,
+					"ancestorIsLast": []
+				},
+				{
+					"id": "contexts",
+					"name": "contexts",
+					"type": "array",
+					"isArray": true,
+					"isObject": false,
+					"isOneOf": false,
+					"isOneOfChild": false,
+					"isFirstOneOfChild": false,
+					"isLastOneOfChild": false,
+					"required": true,
+					"description": "List of provided contexts. Note that the index in this array is important, as the response will refer to it.",
+					"depth": 0,
+					"isLast": false,
+					"ancestorIsLast": [],
+					"children": [
+						{
+							"id": "contexts.text",
+							"name": "text",
+							"type": "string",
+							"isArray": false,
+							"isObject": false,
+							"isOneOf": false,
+							"isOneOfChild": false,
+							"isFirstOneOfChild": false,
+							"isLastOneOfChild": false,
+							"required": false,
+							"description": "One of the provided context content",
+							"metadata": {
+								"minLength": 1
+							},
+							"depth": 1,
+							"isLast": true,
+							"ancestorIsLast": [
+								false
+							]
+						}
+					]
+				},
+				{
+					"id": "truncate_inputs",
+					"name": "truncate_inputs",
+					"type": "boolean",
+					"isArray": false,
+					"isObject": false,
+					"isOneOf": false,
+					"isOneOfChild": false,
+					"isFirstOneOfChild": false,
+					"isLastOneOfChild": false,
+					"required": false,
+					"defaultValue": "false",
+					"description": "When provided with too long context should the model error out or truncate the context to fit?",
+					"depth": 0,
+					"isLast": true,
+					"ancestorIsLast": []
+				}
+			],
+			"variants": null,
+			"isFlat": false
+		},
+		"output": {
+			"rows": [
+				{
+					"id": "request_id",
+					"name": "request_id",
+					"type": "string",
+					"isArray": false,
+					"isObject": false,
+					"isOneOf": false,
+					"isOneOfChild": false,
+					"isFirstOneOfChild": false,
+					"isLastOneOfChild": false,
+					"required": false,
+					"description": "The async request id that can be used to obtain the results.",
+					"depth": 0,
+					"isLast": true,
+					"ancestorIsLast": []
+				}
+			],
+			"variants": null,
+			"isFlat": false
+		}
+	},
+	"batch": {
+		"input": {
+			"rows": [
+				{
+					"id": "requests",
+					"name": "requests",
+					"type": "array",
+					"isArray": true,
+					"isObject": false,
+					"isOneOf": false,
+					"isOneOfChild": false,
+					"isFirstOneOfChild": false,
+					"isLastOneOfChild": false,
+					"required": true,
+					"description": "Batch of the embeddings requests to run using async-queue",
+					"depth": 0,
+					"isLast": true,
+					"ancestorIsLast": [],
+					"children": [
+						{
+							"id": "requests.0",
+							"name": "Input Query and Contexts",
+							"type": "object",
+							"isArray": false,
+							"isObject": true,
+							"isOneOf": false,
+							"isOneOfChild": true,
+							"isFirstOneOfChild": true,
+							"isLastOneOfChild": false,
+							"required": false,
+							"depth": 1,
+							"isLast": false,
+							"ancestorIsLast": [
+								true
+							],
+							"children": [
+								{
+									"id": "requests.0.query",
+									"name": "query",
+									"type": "string",
+									"isArray": false,
+									"isObject": false,
+									"isOneOf": false,
+									"isOneOfChild": false,
+									"isFirstOneOfChild": false,
+									"isLastOneOfChild": false,
+									"required": false,
+									"description": "A query you wish to perform against the provided contexts. If no query is provided the model with respond with embeddings for contexts",
+									"metadata": {
+										"minLength": 1
+									},
+									"depth": 2,
+									"isLast": false,
+									"ancestorIsLast": [
+										true,
+										false
+									]
+								},
+								{
+									"id": "requests.0.contexts",
+									"name": "contexts",
+									"type": "array",
+									"isArray": true,
+									"isObject": false,
+									"isOneOf": false,
+									"isOneOfChild": false,
+									"isFirstOneOfChild": false,
+									"isLastOneOfChild": false,
+									"required": true,
+									"description": "List of provided contexts. Note that the index in this array is important, as the response will refer to it.",
+									"depth": 2,
+									"isLast": false,
+									"ancestorIsLast": [
+										true,
+										false
+									],
+									"children": [
+										{
+											"id": "requests.0.contexts.text",
+											"name": "text",
+											"type": "string",
+											"isArray": false,
+											"isObject": false,
+											"isOneOf": false,
+											"isOneOfChild": false,
+											"isFirstOneOfChild": false,
+											"isLastOneOfChild": false,
+											"required": false,
+											"description": "One of the provided context content",
+											"metadata": {
+												"minLength": 1
+											},
+											"depth": 3,
+											"isLast": true,
+											"ancestorIsLast": [
+												true,
+												false,
+												false
+											]
+										}
+									]
+								},
+								{
+									"id": "requests.0.truncate_inputs",
+									"name": "truncate_inputs",
+									"type": "boolean",
+									"isArray": false,
+									"isObject": false,
+									"isOneOf": false,
+									"isOneOfChild": false,
+									"isFirstOneOfChild": false,
+									"isLastOneOfChild": false,
+									"required": false,
+									"defaultValue": "false",
+									"description": "When provided with too long context should the model error out or truncate the context to fit?",
+									"depth": 2,
+									"isLast": true,
+									"ancestorIsLast": [
+										true,
+										false
+									]
+								}
+							]
+						},
+						{
+							"id": "requests.1",
+							"name": "Input Embedding",
+							"type": "object",
+							"isArray": false,
+							"isObject": true,
+							"isOneOf": false,
+							"isOneOfChild": true,
+							"isFirstOneOfChild": false,
+							"isLastOneOfChild": true,
+							"required": false,
+							"depth": 1,
+							"isLast": true,
+							"ancestorIsLast": [
+								true
+							],
+							"children": [
+								{
+									"id": "requests.1.text",
+									"name": "text",
+									"type": "one of",
+									"isArray": false,
+									"isObject": false,
+									"isOneOf": true,
+									"isOneOfChild": false,
+									"isFirstOneOfChild": false,
+									"isLastOneOfChild": false,
+									"required": true,
+									"depth": 2,
+									"isLast": false,
+									"ancestorIsLast": [
+										true,
+										true
+									],
+									"children": [
+										{
+											"id": "requests.1.text.0",
+											"name": "Option 1",
+											"type": "string",
+											"isArray": false,
+											"isObject": false,
+											"isOneOf": false,
+											"isOneOfChild": true,
+											"isFirstOneOfChild": true,
+											"isLastOneOfChild": false,
+											"required": false,
+											"description": "The text to embed",
+											"metadata": {
+												"minLength": 1
+											},
+											"depth": 3,
+											"isLast": false,
+											"ancestorIsLast": [
+												true,
+												true,
+												false
+											]
+										},
+										{
+											"id": "requests.1.text.1",
+											"name": "Option 2",
+											"type": "array",
+											"isArray": true,
+											"isObject": false,
+											"isOneOf": false,
+											"isOneOfChild": true,
+											"isFirstOneOfChild": false,
+											"isLastOneOfChild": true,
+											"required": false,
+											"description": "Batch of text values to embed",
+											"metadata": {
+												"maxItems": 100
+											},
+											"depth": 3,
+											"isLast": true,
+											"ancestorIsLast": [
+												true,
+												true,
+												false
+											],
+											"children": [
+												{
+													"id": "requests.1.text.1.items",
+													"name": "items",
+													"type": "string",
+													"isArray": false,
+													"isObject": false,
+													"isOneOf": false,
+													"isOneOfChild": false,
+													"isFirstOneOfChild": false,
+													"isLastOneOfChild": false,
+													"required": false,
+													"description": "The text to embed",
+													"metadata": {
+														"minLength": 1
+													},
+													"depth": 4,
+													"isLast": true,
+													"ancestorIsLast": [
+														true,
+														true,
+														false,
+														true
+													]
+												}
+											]
+										}
+									]
+								},
+								{
+									"id": "requests.1.truncate_inputs",
+									"name": "truncate_inputs",
+									"type": "boolean",
+									"isArray": false,
+									"isObject": false,
+									"isOneOf": false,
+									"isOneOfChild": false,
+									"isFirstOneOfChild": false,
+									"isLastOneOfChild": false,
+									"required": false,
+									"defaultValue": "false",
+									"description": "When provided with too long context should the model error out or truncate the context to fit?",
+									"depth": 2,
+									"isLast": true,
+									"ancestorIsLast": [
+										true,
+										true
+									]
+								}
+							]
+						}
+					]
+				}
+			],
+			"variants": null,
+			"isFlat": false
+		},
+		"output": {
+			"rows": [
+				{
+					"id": "request_id",
+					"name": "request_id",
+					"type": "string",
+					"isArray": false,
+					"isObject": false,
+					"isOneOf": false,
+					"isOneOfChild": false,
+					"isFirstOneOfChild": false,
+					"isLastOneOfChild": false,
+					"required": false,
+					"description": "The async request id that can be used to obtain the results.",
+					"depth": 0,
+					"isLast": true,
+					"ancestorIsLast": []
+				}
+			],
+			"variants": null,
+			"isFlat": false
+		}
+	}
+}

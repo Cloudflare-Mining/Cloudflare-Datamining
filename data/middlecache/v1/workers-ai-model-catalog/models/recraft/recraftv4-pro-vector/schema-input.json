@@ -1,0 +1,70 @@
+{
+	"$schema": "https://json-schema.org/draft/2020-12/schema",
+	"type": "object",
+	"properties": {
+		"prompt": {
+			"type": "string"
+		},
+		"size": {
+			"type": "string"
+		},
+		"style": {
+			"type": "string"
+		},
+		"substyle": {
+			"type": "string"
+		},
+		"controls": {
+			"type": "object",
+			"properties": {
+				"colors": {
+					"maxItems": 5,
+					"type": "array",
+					"items": {
+						"type": "object",
+						"properties": {
+							"rgb": {
+								"minItems": 3,
+								"maxItems": 3,
+								"type": "array",
+								"items": {
+									"type": "integer",
+									"minimum": 0,
+									"maximum": 255
+								}
+							}
+						},
+						"required": [
+							"rgb"
+						],
+						"additionalProperties": false
+					}
+				},
+				"background_color": {
+					"type": "object",
+					"properties": {
+						"rgb": {
+							"minItems": 3,
+							"maxItems": 3,
+							"type": "array",
+							"items": {
+								"type": "integer",
+								"minimum": 0,
+								"maximum": 255
+							}
+						}
+					},
+					"required": [
+						"rgb"
+					],
+					"additionalProperties": false
+				}
+			},
+			"additionalProperties": false
+		}
+	},
+	"required": [
+		"prompt"
+	],
+	"additionalProperties": false
+}

@@ -1,0 +1,24 @@
+{
+	"oneOf": [
+		{
+			"type": "string",
+			"format": "binary"
+		},
+		{
+			"type": "object",
+			"properties": {
+				"audio": {
+					"type": "array",
+					"description": "An array of integers that represent the audio data constrained to 8-bit unsigned integer values",
+					"items": {
+						"type": "number",
+						"description": "A value between 0 and 255"
+					}
+				}
+			},
+			"required": [
+				"audio"
+			]
+		}
+	]
+}

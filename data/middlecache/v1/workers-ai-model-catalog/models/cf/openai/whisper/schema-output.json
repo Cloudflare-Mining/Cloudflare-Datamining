@@ -1,0 +1,38 @@
+{
+	"type": "object",
+	"contentType": "application/json",
+	"properties": {
+		"text": {
+			"type": "string",
+			"description": "The transcription"
+		},
+		"word_count": {
+			"type": "number"
+		},
+		"words": {
+			"type": "array",
+			"items": {
+				"type": "object",
+				"properties": {
+					"word": {
+						"type": "string"
+					},
+					"start": {
+						"type": "number",
+						"description": "The second this word begins in the recording"
+					},
+					"end": {
+						"type": "number",
+						"description": "The ending second when the word completes"
+					}
+				}
+			}
+		},
+		"vtt": {
+			"type": "string"
+		}
+	},
+	"required": [
+		"text"
+	]
+}

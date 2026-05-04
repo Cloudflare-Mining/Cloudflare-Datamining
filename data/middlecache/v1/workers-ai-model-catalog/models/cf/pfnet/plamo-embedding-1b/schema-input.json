@@ -1,0 +1,22 @@
+{
+	"type": "object",
+	"properties": {
+		"text": {
+			"oneOf": [
+				{
+					"type": "string"
+				},
+				{
+					"type": "array",
+					"items": {
+						"type": "string"
+					}
+				}
+			],
+			"description": "Input text to embed. Can be a single string or a list of strings."
+		}
+	},
+	"required": [
+		"text"
+	]
+}

@@ -1,0 +1,15 @@
+{
+	"type": "object",
+	"properties": {
+		"translations": {
+			"type": "array",
+			"items": {
+				"type": "string"
+			},
+			"description": "Translated texts"
+		}
+	},
+	"required": [
+		"translations"
+	]
+}

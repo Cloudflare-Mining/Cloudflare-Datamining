@@ -1,0 +1,15 @@
+{
+	"$schema": "https://json-schema.org/draft/2020-12/schema",
+	"type": "object",
+	"properties": {
+		"audio": {
+			"description": "URL to the generated audio file",
+			"type": "string",
+			"format": "uri"
+		}
+	},
+	"required": [
+		"audio"
+	],
+	"additionalProperties": false
+}

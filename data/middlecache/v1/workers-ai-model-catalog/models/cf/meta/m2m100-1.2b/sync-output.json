@@ -1,0 +1,11 @@
+{
+	"type": "object",
+	"contentType": "application/json",
+	"title": "Async response",
+	"properties": {
+		"request_id": {
+			"type": "string",
+			"description": "The async request id that can be used to obtain the results."
+		}
+	}
+}

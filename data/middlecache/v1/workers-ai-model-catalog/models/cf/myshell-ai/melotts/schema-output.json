@@ -1,0 +1,20 @@
+{
+	"oneOf": [
+		{
+			"type": "object",
+			"contentType": "application/json",
+			"properties": {
+				"audio": {
+					"type": "string",
+					"description": "The generated audio in MP3 format, base64-encoded"
+				}
+			}
+		},
+		{
+			"type": "string",
+			"contentType": "audio/mpeg",
+			"format": "binary",
+			"description": "The generated audio in MP3 format"
+		}
+	]
+}

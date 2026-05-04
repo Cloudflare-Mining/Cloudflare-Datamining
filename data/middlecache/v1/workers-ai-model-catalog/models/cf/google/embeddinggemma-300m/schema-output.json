@@ -1,0 +1,23 @@
+{
+	"type": "object",
+	"contentType": "application/json",
+	"properties": {
+		"shape": {
+			"type": "array",
+			"items": {
+				"type": "number"
+			}
+		},
+		"data": {
+			"type": "array",
+			"description": "Embeddings of the requested text values",
+			"items": {
+				"type": "array",
+				"description": "Floating point embedding representation shaped by the embedding model",
+				"items": {
+					"type": "number"
+				}
+			}
+		}
+	}
+}

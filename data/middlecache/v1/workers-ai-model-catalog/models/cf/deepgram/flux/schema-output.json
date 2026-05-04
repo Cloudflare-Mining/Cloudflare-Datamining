@@ -1,0 +1,68 @@
+{
+	"type": "object",
+	"description": "Output will be returned as websocket messages.",
+	"properties": {
+		"request_id": {
+			"type": "string",
+			"description": "The unique identifier of the request (uuid)"
+		},
+		"sequence_id": {
+			"type": "integer",
+			"description": "Starts at 0 and increments for each message the server sends to the client.",
+			"minimum": 0
+		},
+		"event": {
+			"type": "string",
+			"description": "The type of event being reported.",
+			"enum": [
+				"Update",
+				"StartOfTurn",
+				"EagerEndOfTurn",
+				"TurnResumed",
+				"EndOfTurn"
+			]
+		},
+		"turn_index": {
+			"type": "integer",
+			"description": "The index of the current turn",
+			"minimum": 0
+		},
+		"audio_window_start": {
+			"type": "number",
+			"description": "Start time in seconds of the audio range that was transcribed"
+		},
+		"audio_window_end": {
+			"type": "number",
+			"description": "End time in seconds of the audio range that was transcribed"
+		},
+		"transcript": {
+			"type": "string",
+			"description": "Text that was said over the course of the current turn"
+		},
+		"words": {
+			"type": "array",
+			"description": "The words in the transcript",
+			"items": {
+				"type": "object",
+				"required": [
+					"word",
+					"confidence"
+				],
+				"properties": {
+					"word": {
+						"type": "string",
+						"description": "The individual punctuated, properly-cased word from the transcript"
+					},
+					"confidence": {
+						"type": "number",
+						"description": "Confidence that this word was transcribed correctly"
+					}
+				}
+			}
+		},
+		"end_of_turn_confidence": {
+			"type": "number",
+			"description": "Confidence that no more speech is coming in this turn"
+		}
+	}
+}

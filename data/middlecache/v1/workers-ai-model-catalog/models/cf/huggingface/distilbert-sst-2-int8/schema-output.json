@@ -1,0 +1,18 @@
+{
+	"type": "array",
+	"contentType": "application/json",
+	"description": "An array of classification results for the input text",
+	"items": {
+		"type": "object",
+		"properties": {
+			"score": {
+				"type": "number",
+				"description": "Confidence score indicating the likelihood that the text belongs to the specified label"
+			},
+			"label": {
+				"type": "string",
+				"description": "The classification label assigned to the text (e.g., 'POSITIVE' or 'NEGATIVE')"
+			}
+		}
+	}
+}

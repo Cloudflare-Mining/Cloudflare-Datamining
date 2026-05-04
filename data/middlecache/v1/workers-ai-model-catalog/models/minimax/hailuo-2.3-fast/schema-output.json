@@ -1,0 +1,27 @@
+{
+	"$schema": "https://json-schema.org/draft/2020-12/schema",
+	"type": "object",
+	"properties": {
+		"video": {
+			"type": "string",
+			"format": "uri"
+		},
+		"task_id": {
+			"type": "string"
+		},
+		"status": {
+			"type": "string",
+			"enum": [
+				"Preparing",
+				"Queueing",
+				"Processing",
+				"Success",
+				"Fail"
+			]
+		}
+	},
+	"required": [
+		"task_id"
+	],
+	"additionalProperties": false
+}

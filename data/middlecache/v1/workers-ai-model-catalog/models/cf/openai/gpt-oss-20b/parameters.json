@@ -1,0 +1,2794 @@
+{
+	"flat": false,
+	"modes": [
+		"sync",
+		"streaming",
+		"batch"
+	],
+	"sync": {
+		"input": {
+			"rows": [],
+			"variants": [
+				{
+					"title": "Prompt",
+					"rows": [
+						{
+							"id": "prompt",
+							"name": "prompt",
+							"type": "string",
+							"isArray": false,
+							"isObject": false,
+							"isOneOf": false,
+							"isOneOfChild": false,
+							"isFirstOneOfChild": false,
+							"isLastOneOfChild": false,
+							"required": true,
+							"description": "The input text prompt for the model to generate a response.",
+							"metadata": {
+								"minLength": 1
+							},
+							"depth": 0,
+							"isLast": false,
+							"ancestorIsLast": []
+						},
+						{
+							"id": "lora",
+							"name": "lora",
+							"type": "string",
+							"isArray": false,
+							"isObject": false,
+							"isOneOf": false,
+							"isOneOfChild": false,
+							"isFirstOneOfChild": false,
+							"isLastOneOfChild": false,
+							"required": false,
+							"description": "Name of the LoRA (Low-Rank Adaptation) model to fine-tune the base model.",
+							"depth": 0,
+							"isLast": false,
+							"ancestorIsLast": []
+						},
+						{
+							"id": "response_format",
+							"name": "response_format",
+							"type": "object",
+							"isArray": false,
+							"isObject": true,
+							"isOneOf": false,
+							"isOneOfChild": false,
+							"isFirstOneOfChild": false,
+							"isLastOneOfChild": false,
+							"required": false,
+							"depth": 0,
+							"isLast": false,
+							"ancestorIsLast": [],
+							"children": [
+								{
+									"id": "response_format.type",
+									"name": "type",
+									"type": "string",
+									"isArray": false,
+									"isObject": false,
+									"isOneOf": false,
+									"isOneOfChild": false,
+									"isFirstOneOfChild": false,
+									"isLastOneOfChild": false,
+									"required": false,
+									"enumValues": [
+										"json_object",
+										"json_schema"
+									],
+									"depth": 1,
+									"isLast": false,
+									"ancestorIsLast": [
+										false
+									]
+								},
+								{
+									"id": "response_format.json_schema",
+									"name": "json_schema",
+									"type": "",
+									"isArray": false,
+									"isObject": false,
+									"isOneOf": false,
+									"isOneOfChild": false,
+									"isFirstOneOfChild": false,
+									"isLastOneOfChild": false,
+									"required": false,
+									"depth": 1,
+									"isLast": true,
+									"ancestorIsLast": [
+										false
+									]
+								}
+							]
+						},
+						{
+							"id": "raw",
+							"name": "raw",
+							"type": "boolean",
+							"isArray": false,
+							"isObject": false,
+							"isOneOf": false,
+							"isOneOfChild": false,
+							"isFirstOneOfChild": false,
+							"isLastOneOfChild": false,
+							"required": false,
+							"defaultValue": "false",
+							"description": "If true, a chat template is not applied and you must adhere to the specific model's expected formatting.",
+							"depth": 0,
+							"isLast": false,
+							"ancestorIsLast": []
+						},
+						{
+							"id": "stream",
+							"name": "stream",
+							"type": "boolean",
+							"isArray": false,
+							"isObject": false,
+							"isOneOf": false,
+							"isOneOfChild": false,
+							"isFirstOneOfChild": false,
+							"isLastOneOfChild": false,
+							"required": false,
+							"defaultValue": "false",
+							"description": "If true, the response will be streamed back incrementally using SSE, Server Sent Events.",
+							"depth": 0,
+							"isLast": false,
+							"ancestorIsLast": []
+						},
+						{
+							"id": "max_tokens",
+							"name": "max_tokens",
+							"type": "integer",
+							"isArray": false,
+							"isObject": false,
+							"isOneOf": false,
+							"isOneOfChild": false,
+							"isFirstOneOfChild": false,
+							"isLastOneOfChild": false,
+							"required": false,
+							"defaultValue": "256",
+							"description": "The maximum number of tokens to generate in the response.",
+							"depth": 0,
+							"isLast": false,
+							"ancestorIsLast": []
+						},
+						{
+							"id": "temperature",
+							"name": "temperature",
+							"type": "number",
+							"isArray": false,
+							"isObject": false,
+							"isOneOf": false,
+							"isOneOfChild": false,
+							"isFirstOneOfChild": false,
+							"isLastOneOfChild": false,
+							"required": false,
+							"defaultValue": "0.6",
+							"description": "Controls the randomness of the output; higher values produce more random results.",
+							"metadata": {
+								"minimum": 0,
+								"maximum": 5
+							},
+							"depth": 0,
+							"isLast": false,
+							"ancestorIsLast": []
+						},
+						{
+							"id": "top_p",
+							"name": "top_p",
+							"type": "number",
+							"isArray": false,
+							"isObject": false,
+							"isOneOf": false,
+							"isOneOfChild": false,
+							"isFirstOneOfChild": false,
+							"isLastOneOfChild": false,
+							"required": false,
+							"description": "Adjusts the creativity of the AI's responses by controlling how many possible words it considers. Lower values make outputs more predictable; higher values allow for more varied and creative responses.",
+							"metadata": {
+								"minimum": 0.001,
+								"maximum": 1
+							},
+							"depth": 0,
+							"isLast": false,
+							"ancestorIsLast": []
+						},
+						{
+							"id": "top_k",
+							"name": "top_k",
+							"type": "integer",
+							"isArray": false,
+							"isObject": false,
+							"isOneOf": false,
+							"isOneOfChild": false,
+							"isFirstOneOfChild": false,
+							"isLastOneOfChild": false,
+							"required": false,
+							"description": "Limits the AI to choose from the top 'k' most probable words. Lower values make responses more focused; higher values introduce more variety and potential surprises.",
+							"metadata": {
+								"minimum": 1,
+								"maximum": 50
+							},
+							"depth": 0,
+							"isLast": false,
+							"ancestorIsLast": []
+						},
+						{
+							"id": "seed",
+							"name": "seed",
+							"type": "integer",
+							"isArray": false,
+							"isObject": false,
+							"isOneOf": false,
+							"isOneOfChild": false,
+							"isFirstOneOfChild": false,
+							"isLastOneOfChild": false,
+							"required": false,
+							"description": "Random seed for reproducibility of the generation.",
+							"metadata": {
+								"minimum": 1,
+								"maximum": 9999999999
+							},
+							"depth": 0,
+							"isLast": false,
+							"ancestorIsLast": []
+						},
+						{
+							"id": "repetition_penalty",
+							"name": "repetition_penalty",
+							"type": "number",
+							"isArray": false,
+							"isObject": false,
+							"isOneOf": false,
+							"isOneOfChild": false,
+							"isFirstOneOfChild": false,
+							"isLastOneOfChild": false,
+							"required": false,
+							"description": "Penalty for repeated tokens; higher values discourage repetition.",
+							"metadata": {
+								"minimum": 0,
+								"maximum": 2
+							},
+							"depth": 0,
+							"isLast": false,
+							"ancestorIsLast": []
+						},
+						{
+							"id": "frequency_penalty",
+							"name": "frequency_penalty",
+							"type": "number",
+							"isArray": false,
+							"isObject": false,
+							"isOneOf": false,
+							"isOneOfChild": false,
+							"isFirstOneOfChild": false,
+							"isLastOneOfChild": false,
+							"required": false,
+							"description": "Decreases the likelihood of the model repeating the same lines verbatim.",
+							"metadata": {
+								"minimum": -2,
+								"maximum": 2
+							},
+							"depth": 0,
+							"isLast": false,
+							"ancestorIsLast": []
+						},
+						{
+							"id": "presence_penalty",
+							"name": "presence_penalty",
+							"type": "number",
+							"isArray": false,
+							"isObject": false,
+							"isOneOf": false,
+							"isOneOfChild": false,
+							"isFirstOneOfChild": false,
+							"isLastOneOfChild": false,
+							"required": false,
+							"description": "Increases the likelihood of the model introducing new topics.",
+							"metadata": {
+								"minimum": -2,
+								"maximum": 2
+							},
+							"depth": 0,
+							"isLast": true,
+							"ancestorIsLast": []
+						}
+					]
+				},
+				{
+					"title": "Messages",
+					"rows": [
+						{
+							"id": "messages",
+							"name": "messages",
+							"type": "array",
+							"isArray": true,
+							"isObject": false,
+							"isOneOf": false,
+							"isOneOfChild": false,
+							"isFirstOneOfChild": false,
+							"isLastOneOfChild": false,
+							"required": true,
+							"description": "An array of message objects representing the conversation history.",
+							"depth": 0,
+							"isLast": false,
+							"ancestorIsLast": [],
+							"children": [
+								{
+									"id": "messages.role",
+									"name": "role",
+									"type": "string",
+									"isArray": false,
+									"isObject": false,
+									"isOneOf": false,
+									"isOneOfChild": false,
+									"isFirstOneOfChild": false,
+									"isLastOneOfChild": false,
+									"required": true,
+									"description": "The role of the message sender (e.g., 'user', 'assistant', 'system', 'tool').",
+									"depth": 1,
+									"isLast": false,
+									"ancestorIsLast": [
+										false
+									]
+								},
+								{
+									"id": "messages.content",
+									"name": "content",
+									"type": "one of",
+									"isArray": false,
+									"isObject": false,
+									"isOneOf": true,
+									"isOneOfChild": false,
+									"isFirstOneOfChild": false,
+									"isLastOneOfChild": false,
+									"required": true,
+									"depth": 1,
+									"isLast": true,
+									"ancestorIsLast": [
+										false
+									],
+									"children": [
+										{
+											"id": "messages.content.0",
+											"name": "Option 1",
+											"type": "string",
+											"isArray": false,
+											"isObject": false,
+											"isOneOf": false,
+											"isOneOfChild": true,
+											"isFirstOneOfChild": true,
+											"isLastOneOfChild": false,
+											"required": false,
+											"description": "The content of the message as a string.",
+											"depth": 2,
+											"isLast": false,
+											"ancestorIsLast": [
+												false,
+												true
+											]
+										},
+										{
+											"id": "messages.content.1",
+											"name": "Option 2",
+											"type": "array",
+											"isArray": true,
+											"isObject": false,
+											"isOneOf": false,
+											"isOneOfChild": true,
+											"isFirstOneOfChild": false,
+											"isLastOneOfChild": true,
+											"required": false,
+											"description": "Array of text content parts.",
+											"depth": 2,
+											"isLast": true,
+											"ancestorIsLast": [
+												false,
+												true
+											],
+											"children": [
+												{
+													"id": "messages.content.1.type",
+													"name": "type",
+													"type": "string",
+													"isArray": false,
+													"isObject": false,
+													"isOneOf": false,
+													"isOneOfChild": false,
+													"isFirstOneOfChild": false,
+													"isLastOneOfChild": false,
+													"required": false,
+													"description": "Type of the content (text)",
+													"depth": 3,
+													"isLast": false,
+													"ancestorIsLast": [
+														false,
+														true,
+														true
+													]
+												},
+												{
+													"id": "messages.content.1.text",
+													"name": "text",
+													"type": "string",
+													"isArray": false,
+													"isObject": false,
+													"isOneOf": false,
+													"isOneOfChild": false,
+													"isFirstOneOfChild": false,
+													"isLastOneOfChild": false,
+													"required": false,
+													"description": "Text content",
+													"depth": 3,
+													"isLast": true,
+													"ancestorIsLast": [
+														false,
+														true,
+														true
+													]
+												}
+											]
+										}
+									]
+								}
+							]
+						},
+						{
+							"id": "functions",
+							"name": "functions",
+							"type": "array",
+							"isArray": true,
+							"isObject": false,
+							"isOneOf": false,
+							"isOneOfChild": false,
+							"isFirstOneOfChild": false,
+							"isLastOneOfChild": false,
+							"required": false,
+							"depth": 0,
+							"isLast": false,
+							"ancestorIsLast": [],
+							"children": [
+								{
+									"id": "functions.name",
+									"name": "name",
+									"type": "string",
+									"isArray": false,
+									"isObject": false,
+									"isOneOf": false,
+									"isOneOfChild": false,
+									"isFirstOneOfChild": false,
+									"isLastOneOfChild": false,
+									"required": true,
+									"depth": 1,
+									"isLast": false,
+									"ancestorIsLast": [
+										false
+									]
+								},
+								{
+									"id": "functions.code",
+									"name": "code",
+									"type": "string",
+									"isArray": false,
+									"isObject": false,
+									"isOneOf": false,
+									"isOneOfChild": false,
+									"isFirstOneOfChild": false,
+									"isLastOneOfChild": false,
+									"required": true,
+									"depth": 1,
+									"isLast": true,
+									"ancestorIsLast": [
+										false
+									]
+								}
+							]
+						},
+						{
+							"id": "tools",
+							"name": "tools",
+							"type": "array",
+							"isArray": true,
+							"isObject": false,
+							"isOneOf": false,
+							"isOneOfChild": false,
+							"isFirstOneOfChild": false,
+							"isLastOneOfChild": false,
+							"required": false,
+							"description": "A list of tools available for the assistant to use.",
+							"depth": 0,
+							"isLast": false,
+							"ancestorIsLast": [],
+							"children": [
+								{
+									"id": "tools.0",
+									"name": "Option 1",
+									"type": "object",
+									"isArray": false,
+									"isObject": true,
+									"isOneOf": false,
+									"isOneOfChild": true,
+									"isFirstOneOfChild": true,
+									"isLastOneOfChild": false,
+									"required": false,
+									"depth": 1,
+									"isLast": false,
+									"ancestorIsLast": [
+										false
+									],
+									"children": [
+										{
+											"id": "tools.0.name",
+											"name": "name",
+											"type": "string",
+											"isArray": false,
+											"isObject": false,
+											"isOneOf": false,
+											"isOneOfChild": false,
+											"isFirstOneOfChild": false,
+											"isLastOneOfChild": false,
+											"required": true,
+											"description": "The name of the tool. More descriptive the better.",
+											"depth": 2,
+											"isLast": false,
+											"ancestorIsLast": [
+												false,
+												false
+											]
+										},
+										{
+											"id": "tools.0.description",
+											"name": "description",
+											"type": "string",
+											"isArray": false,
+											"isObject": false,
+											"isOneOf": false,
+											"isOneOfChild": false,
+											"isFirstOneOfChild": false,
+											"isLastOneOfChild": false,
+											"required": true,
+											"description": "A brief description of what the tool does.",
+											"depth": 2,
+											"isLast": false,
+											"ancestorIsLast": [
+												false,
+												false
+											]
+										},
+										{
+											"id": "tools.0.parameters",
+											"name": "parameters",
+											"type": "object",
+											"isArray": false,
+											"isObject": true,
+											"isOneOf": false,
+											"isOneOfChild": false,
+											"isFirstOneOfChild": false,
+											"isLastOneOfChild": false,
+											"required": true,
+											"description": "Schema defining the parameters accepted by the tool.",
+											"depth": 2,
+											"isLast": true,
+											"ancestorIsLast": [
+												false,
+												false
+											],
+											"children": [
+												{
+													"id": "tools.0.parameters.type",
+													"name": "type",
+													"type": "string",
+													"isArray": false,
+													"isObject": false,
+													"isOneOf": false,
+													"isOneOfChild": false,
+													"isFirstOneOfChild": false,
+													"isLastOneOfChild": false,
+													"required": true,
+													"description": "The type of the parameters object (usually 'object').",
+													"depth": 3,
+													"isLast": false,
+													"ancestorIsLast": [
+														false,
+														false,
+														true
+													]
+												},
+												{
+													"id": "tools.0.parameters.required",
+													"name": "required",
+													"type": "array",
+													"isArray": true,
+													"isObject": false,
+													"isOneOf": false,
+													"isOneOfChild": false,
+													"isFirstOneOfChild": false,
+													"isLastOneOfChild": false,
+													"required": false,
+													"description": "List of required parameter names.",
+													"depth": 3,
+													"isLast": false,
+													"ancestorIsLast": [
+														false,
+														false,
+														true
+													],
+													"children": [
+														{
+															"id": "tools.0.parameters.required.items",
+															"name": "items",
+															"type": "string",
+															"isArray": false,
+															"isObject": false,
+															"isOneOf": false,
+															"isOneOfChild": false,
+															"isFirstOneOfChild": false,
+															"isLastOneOfChild": false,
+															"required": false,
+															"depth": 4,
+															"isLast": true,
+															"ancestorIsLast": [
+																false,
+																false,
+																true,
+																false
+															]
+														}
+													]
+												},
+												{
+													"id": "tools.0.parameters.properties",
+													"name": "properties",
+													"type": "object",
+													"isArray": false,
+													"isObject": true,
+													"isOneOf": false,
+													"isOneOfChild": false,
+													"isFirstOneOfChild": false,
+													"isLastOneOfChild": false,
+													"required": true,
+													"description": "Definitions of each parameter.",
+													"depth": 3,
+													"isLast": true,
+													"ancestorIsLast": [
+														false,
+														false,
+														true
+													],
+													"children": [
+														{
+															"id": "tools.0.parameters.properties.additionalProperties",
+															"name": "additionalProperties",
+															"type": "object",
+															"isArray": false,
+															"isObject": true,
+															"isOneOf": false,
+															"isOneOfChild": false,
+															"isFirstOneOfChild": false,
+															"isLastOneOfChild": false,
+															"required": false,
+															"depth": 4,
+															"isLast": true,
+															"ancestorIsLast": [
+																false,
+																false,
+																true,
+																true
+															],
+															"children": [
+																{
+																	"id": "tools.0.parameters.properties.additionalProperties.type",
+																	"name": "type",
+																	"type": "string",
+																	"isArray": false,
+																	"isObject": false,
+																	"isOneOf": false,
+																	"isOneOfChild": false,
+																	"isFirstOneOfChild": false,
+																	"isLastOneOfChild": false,
+																	"required": true,
+																	"description": "The data type of the parameter.",
+																	"depth": 5,
+																	"isLast": false,
+																	"ancestorIsLast": [
+																		false,
+																		false,
+																		true,
+																		true,
+																		true
+																	]
+																},
+																{
+																	"id": "tools.0.parameters.properties.additionalProperties.description",
+																	"name": "description",
+																	"type": "string",
+																	"isArray": false,
+																	"isObject": false,
+																	"isOneOf": false,
+																	"isOneOfChild": false,
+																	"isFirstOneOfChild": false,
+																	"isLastOneOfChild": false,
+																	"required": true,
+																	"description": "A description of the expected parameter.",
+																	"depth": 5,
+																	"isLast": true,
+																	"ancestorIsLast": [
+																		false,
+																		false,
+																		true,
+																		true,
+																		true
+																	]
+																}
+															]
+														}
+													]
+												}
+											]
+										}
+									]
+								},
+								{
+									"id": "tools.1",
+									"name": "Option 2",
+									"type": "object",
+									"isArray": false,
+									"isObject": true,
+									"isOneOf": false,
+									"isOneOfChild": true,
+									"isFirstOneOfChild": false,
+									"isLastOneOfChild": true,
+									"required": false,
+									"depth": 1,
+									"isLast": true,
+									"ancestorIsLast": [
+										false
+									],
+									"children": [
+										{
+											"id": "tools.1.type",
+											"name": "type",
+											"type": "string",
+											"isArray": false,
+											"isObject": false,
+											"isOneOf": false,
+											"isOneOfChild": false,
+											"isFirstOneOfChild": false,
+											"isLastOneOfChild": false,
+											"required": true,
+											"description": "Specifies the type of tool (e.g., 'function').",
+											"depth": 2,
+											"isLast": false,
+											"ancestorIsLast": [
+												false,
+												true
+											]
+										},
+										{
+											"id": "tools.1.function",
+											"name": "function",
+											"type": "object",
+											"isArray": false,
+											"isObject": true,
+											"isOneOf": false,
+											"isOneOfChild": false,
+											"isFirstOneOfChild": false,
+											"isLastOneOfChild": false,
+											"required": true,
+											"description": "Details of the function tool.",
+											"depth": 2,
+											"isLast": true,
+											"ancestorIsLast": [
+												false,
+												true
+											],
+											"children": [
+												{
+													"id": "tools.1.function.name",
+													"name": "name",
+													"type": "string",
+													"isArray": false,
+													"isObject": false,
+													"isOneOf": false,
+													"isOneOfChild": false,
+													"isFirstOneOfChild": false,
+													"isLastOneOfChild": false,
+													"required": true,
+													"description": "The name of the function.",
+													"depth": 3,
+													"isLast": false,
+													"ancestorIsLast": [
+														false,
+														true,
+														true
+													]
+												},
+												{
+													"id": "tools.1.function.description",
+													"name": "description",
+													"type": "string",
+													"isArray": false,
+													"isObject": false,
+													"isOneOf": false,
+													"isOneOfChild": false,
+													"isFirstOneOfChild": false,
+													"isLastOneOfChild": false,
+													"required": true,
+													"description": "A brief description of what the function does.",
+													"depth": 3,
+													"isLast": false,
+													"ancestorIsLast": [
+														false,
+														true,
+														true
+													]
+												},
+												{
+													"id": "tools.1.function.parameters",
+													"name": "parameters",
+													"type": "object",
+													"isArray": false,
+													"isObject": true,
+													"isOneOf": false,
+													"isOneOfChild": false,
+													"isFirstOneOfChild": false,
+													"isLastOneOfChild": false,
+													"required": true,
+													"description": "Schema defining the parameters accepted by the function.",
+													"depth": 3,
+													"isLast": true,
+													"ancestorIsLast": [
+														false,
+														true,
+														true
+													],
+													"children": [
+														{
+															"id": "tools.1.function.parameters.type",
+															"name": "type",
+															"type": "string",
+															"isArray": false,
+															"isObject": false,
+															"isOneOf": false,
+															"isOneOfChild": false,
+															"isFirstOneOfChild": false,
+															"isLastOneOfChild": false,
+															"required": true,
+															"description": "The type of the parameters object (usually 'object').",
+															"depth": 4,
+															"isLast": false,
+															"ancestorIsLast": [
+																false,
+																true,
+																true,
+																true
+															]
+														},
+														{
+															"id": "tools.1.function.parameters.required",
+															"name": "required",
+															"type": "array",
+															"isArray": true,
+															"isObject": false,
+															"isOneOf": false,
+															"isOneOfChild": false,
+															"isFirstOneOfChild": false,
+															"isLastOneOfChild": false,
+															"required": false,
+															"description": "List of required parameter names.",
+															"depth": 4,
+															"isLast": false,
+															"ancestorIsLast": [
+																false,
+																true,
+																true,
+																true
+															],
+															"children": [
+																{
+																	"id": "tools.1.function.parameters.required.items",
+																	"name": "items",
+																	"type": "string",
+																	"isArray": false,
+																	"isObject": false,
+																	"isOneOf": false,
+																	"isOneOfChild": false,
+																	"isFirstOneOfChild": false,
+																	"isLastOneOfChild": false,
+																	"required": false,
+																	"depth": 5,
+																	"isLast": true,
+																	"ancestorIsLast": [
+																		false,
+																		true,
+																		true,
+																		true,
+																		false
+																	]
+																}
+															]
+														},
+														{
+															"id": "tools.1.function.parameters.properties",
+															"name": "properties",
+															"type": "object",
+															"isArray": false,
+															"isObject": true,
+															"isOneOf": false,
+															"isOneOfChild": false,
+															"isFirstOneOfChild": false,
+															"isLastOneOfChild": false,
+															"required": true,
+															"description": "Definitions of each parameter.",
+															"depth": 4,
+															"isLast": true,
+															"ancestorIsLast": [
+																false,
+																true,
+																true,
+																true
+															],
+															"children": [
+																{
+																	"id": "tools.1.function.parameters.properties.additionalProperties",
+																	"name": "additionalProperties",
+																	"type": "object",
+																	"isArray": false,
+																	"isObject": true,
+																	"isOneOf": false,
+																	"isOneOfChild": false,
+																	"isFirstOneOfChild": false,
+																	"isLastOneOfChild": false,
+																	"required": false,
+																	"depth": 5,
+																	"isLast": true,
+																	"ancestorIsLast": [
+																		false,
+																		true,
+																		true,
+																		true,
+																		true
+																	],
+																	"children": [
+																		{
+																			"id": "tools.1.function.parameters.properties.additionalProperties.type",
+																			"name": "type",
+																			"type": "string",
+																			"isArray": false,
+																			"isObject": false,
+																			"isOneOf": false,
+																			"isOneOfChild": false,
+																			"isFirstOneOfChild": false,
+																			"isLastOneOfChild": false,
+																			"required": true,
+																			"description": "The data type of the parameter.",
+																			"depth": 6,
+																			"isLast": false,
+																			"ancestorIsLast": [
+																				false,
+																				true,
+																				true,
+																				true,
+																				true,
+																				true
+																			]
+																		},
+																		{
+																			"id": "tools.1.function.parameters.properties.additionalProperties.description",
+																			"name": "description",
+																			"type": "string",
+																			"isArray": false,
+																			"isObject": false,
+																			"isOneOf": false,
+																			"isOneOfChild": false,
+																			"isFirstOneOfChild": false,
+																			"isLastOneOfChild": false,
+																			"required": true,
+																			"description": "A description of the expected parameter.",
+																			"depth": 6,
+																			"isLast": true,
+																			"ancestorIsLast": [
+																				false,
+																				true,
+																				true,
+																				true,
+																				true,
+																				true
+																			]
+																		}
+																	]
+																}
+															]
+														}
+													]
+												}
+											]
+										}
+									]
+								}
+							]
+						},
+						{
+							"id": "response_format",
+							"name": "response_format",
+							"type": "object",
+							"isArray": false,
+							"isObject": true,
+							"isOneOf": false,
+							"isOneOfChild": false,
+							"isFirstOneOfChild": false,
+							"isLastOneOfChild": false,
+							"required": false,
+							"depth": 0,
+							"isLast": false,
+							"ancestorIsLast": [],
+							"children": [
+								{
+									"id": "response_format.type",
+									"name": "type",
+									"type": "string",
+									"isArray": false,
+									"isObject": false,
+									"isOneOf": false,
+									"isOneOfChild": false,
+									"isFirstOneOfChild": false,
+									"isLastOneOfChild": false,
+									"required": false,
+									"enumValues": [
+										"json_object",
+										"json_schema"
+									],
+									"depth": 1,
+									"isLast": false,
+									"ancestorIsLast": [
+										false
+									]
+								},
+								{
+									"id": "response_format.json_schema",
+									"name": "json_schema",
+									"type": "",
+									"isArray": false,
+									"isObject": false,
+									"isOneOf": false,
+									"isOneOfChild": false,
+									"isFirstOneOfChild": false,
+									"isLastOneOfChild": false,
+									"required": false,
+									"depth": 1,
+									"isLast": true,
+									"ancestorIsLast": [
+										false
+									]
+								}
+							]
+						},
+						{
+							"id": "raw",
+							"name": "raw",
+							"type": "boolean",
+							"isArray": false,
+							"isObject": false,
+							"isOneOf": false,
+							"isOneOfChild": false,
+							"isFirstOneOfChild": false,
+							"isLastOneOfChild": false,
+							"required": false,
+							"defaultValue": "false",
+							"description": "If true, a chat template is not applied and you must adhere to the specific model's expected formatting.",
+							"depth": 0,
+							"isLast": false,
+							"ancestorIsLast": []
+						},
+						{
+							"id": "stream",
+							"name": "stream",
+							"type": "boolean",
+							"isArray": false,
+							"isObject": false,
+							"isOneOf": false,
+							"isOneOfChild": false,
+							"isFirstOneOfChild": false,
+							"isLastOneOfChild": false,
+							"required": false,
+							"defaultValue": "false",
+							"description": "If true, the response will be streamed back incrementally using SSE, Server Sent Events.",
+							"depth": 0,
+							"isLast": false,
+							"ancestorIsLast": []
+						},
+						{
+							"id": "max_tokens",
+							"name": "max_tokens",
+							"type": "integer",
+							"isArray": false,
+							"isObject": false,
+							"isOneOf": false,
+							"isOneOfChild": false,
+							"isFirstOneOfChild": false,
+							"isLastOneOfChild": false,
+							"required": false,
+							"defaultValue": "256",
+							"description": "The maximum number of tokens to generate in the response.",
+							"depth": 0,
+							"isLast": false,
+							"ancestorIsLast": []
+						},
+						{
+							"id": "temperature",
+							"name": "temperature",
+							"type": "number",
+							"isArray": false,
+							"isObject": false,
+							"isOneOf": false,
+							"isOneOfChild": false,
+							"isFirstOneOfChild": false,
+							"isLastOneOfChild": false,
+							"required": false,
+							"defaultValue": "0.6",
+							"description": "Controls the randomness of the output; higher values produce more random results.",
+							"metadata": {
+								"minimum": 0,
+								"maximum": 5
+							},
+							"depth": 0,
+							"isLast": false,
+							"ancestorIsLast": []
+						},
+						{
+							"id": "top_p",
+							"name": "top_p",
+							"type": "number",
+							"isArray": false,
+							"isObject": false,
+							"isOneOf": false,
+							"isOneOfChild": false,
+							"isFirstOneOfChild": false,
+							"isLastOneOfChild": false,
+							"required": false,
+							"description": "Adjusts the creativity of the AI's responses by controlling how many possible words it considers. Lower values make outputs more predictable; higher values allow for more varied and creative responses.",
+							"metadata": {
+								"minimum": 0.001,
+								"maximum": 1
+							},
+							"depth": 0,
+							"isLast": false,
+							"ancestorIsLast": []
+						},
+						{
+							"id": "top_k",
+							"name": "top_k",
+							"type": "integer",
+							"isArray": false,
+							"isObject": false,
+							"isOneOf": false,
+							"isOneOfChild": false,
+							"isFirstOneOfChild": false,
+							"isLastOneOfChild": false,
+							"required": false,
+							"description": "Limits the AI to choose from the top 'k' most probable words. Lower values make responses more focused; higher values introduce more variety and potential surprises.",
+							"metadata": {
+								"minimum": 1,
+								"maximum": 50
+							},
+							"depth": 0,
+							"isLast": false,
+							"ancestorIsLast": []
+						},
+						{
+							"id": "seed",
+							"name": "seed",
+							"type": "integer",
+							"isArray": false,
+							"isObject": false,
+							"isOneOf": false,
+							"isOneOfChild": false,
+							"isFirstOneOfChild": false,
+							"isLastOneOfChild": false,
+							"required": false,
+							"description": "Random seed for reproducibility of the generation.",
+							"metadata": {
+								"minimum": 1,
+								"maximum": 9999999999
+							},
+							"depth": 0,
+							"isLast": false,
+							"ancestorIsLast": []
+						},
+						{
+							"id": "repetition_penalty",
+							"name": "repetition_penalty",
+							"type": "number",
+							"isArray": false,
+							"isObject": false,
+							"isOneOf": false,
+							"isOneOfChild": false,
+							"isFirstOneOfChild": false,
+							"isLastOneOfChild": false,
+							"required": false,
+							"description": "Penalty for repeated tokens; higher values discourage repetition.",
+							"metadata": {
+								"minimum": 0,
+								"maximum": 2
+							},
+							"depth": 0,
+							"isLast": false,
+							"ancestorIsLast": []
+						},
+						{
+							"id": "frequency_penalty",
+							"name": "frequency_penalty",
+							"type": "number",
+							"isArray": false,
+							"isObject": false,
+							"isOneOf": false,
+							"isOneOfChild": false,
+							"isFirstOneOfChild": false,
+							"isLastOneOfChild": false,
+							"required": false,
+							"description": "Decreases the likelihood of the model repeating the same lines verbatim.",
+							"metadata": {
+								"minimum": -2,
+								"maximum": 2
+							},
+							"depth": 0,
+							"isLast": false,
+							"ancestorIsLast": []
+						},
+						{
+							"id": "presence_penalty",
+							"name": "presence_penalty",
+							"type": "number",
+							"isArray": false,
+							"isObject": false,
+							"isOneOf": false,
+							"isOneOfChild": false,
+							"isFirstOneOfChild": false,
+							"isLastOneOfChild": false,
+							"required": false,
+							"description": "Increases the likelihood of the model introducing new topics.",
+							"metadata": {
+								"minimum": -2,
+								"maximum": 2
+							},
+							"depth": 0,
+							"isLast": true,
+							"ancestorIsLast": []
+						}
+					]
+				}
+			],
+			"isFlat": false
+		},
+		"output": {
+			"rows": [
+				{
+					"id": "type",
+					"name": "type",
+					"type": "object",
+					"isArray": false,
+					"isObject": false,
+					"isOneOf": false,
+					"isOneOfChild": false,
+					"isFirstOneOfChild": false,
+					"isLastOneOfChild": false,
+					"required": false,
+					"depth": 0,
+					"isLast": false,
+					"ancestorIsLast": []
+				},
+				{
+					"id": "contentType",
+					"name": "contentType",
+					"type": "application/json",
+					"isArray": false,
+					"isObject": false,
+					"isOneOf": false,
+					"isOneOfChild": false,
+					"isFirstOneOfChild": false,
+					"isLastOneOfChild": false,
+					"required": false,
+					"depth": 0,
+					"isLast": true,
+					"ancestorIsLast": []
+				}
+			],
+			"variants": null,
+			"isFlat": true
+		}
+	},
+	"streaming": {
+		"input": {
+			"rows": [],
+			"variants": [
+				{
+					"title": "Prompt",
+					"rows": [
+						{
+							"id": "prompt",
+							"name": "prompt",
+							"type": "string",
+							"isArray": false,
+							"isObject": false,
+							"isOneOf": false,
+							"isOneOfChild": false,
+							"isFirstOneOfChild": false,
+							"isLastOneOfChild": false,
+							"required": true,
+							"description": "The input text prompt for the model to generate a response.",
+							"metadata": {
+								"minLength": 1
+							},
+							"depth": 0,
+							"isLast": false,
+							"ancestorIsLast": []
+						},
+						{
+							"id": "lora",
+							"name": "lora",
+							"type": "string",
+							"isArray": false,
+							"isObject": false,
+							"isOneOf": false,
+							"isOneOfChild": false,
+							"isFirstOneOfChild": false,
+							"isLastOneOfChild": false,
+							"required": false,
+							"description": "Name of the LoRA (Low-Rank Adaptation) model to fine-tune the base model.",
+							"depth": 0,
+							"isLast": false,
+							"ancestorIsLast": []
+						},
+						{
+							"id": "response_format",
+							"name": "response_format",
+							"type": "object",
+							"isArray": false,
+							"isObject": true,
+							"isOneOf": false,
+							"isOneOfChild": false,
+							"isFirstOneOfChild": false,
+							"isLastOneOfChild": false,
+							"required": false,
+							"depth": 0,
+							"isLast": false,
+							"ancestorIsLast": [],
+							"children": [
+								{
+									"id": "response_format.type",
+									"name": "type",
+									"type": "string",
+									"isArray": false,
+									"isObject": false,
+									"isOneOf": false,
+									"isOneOfChild": false,
+									"isFirstOneOfChild": false,
+									"isLastOneOfChild": false,
+									"required": false,
+									"enumValues": [
+										"json_object",
+										"json_schema"
+									],
+									"depth": 1,
+									"isLast": false,
+									"ancestorIsLast": [
+										false
+									]
+								},
+								{
+									"id": "response_format.json_schema",
+									"name": "json_schema",
+									"type": "",
+									"isArray": false,
+									"isObject": false,
+									"isOneOf": false,
+									"isOneOfChild": false,
+									"isFirstOneOfChild": false,
+									"isLastOneOfChild": false,
+									"required": false,
+									"depth": 1,
+									"isLast": true,
+									"ancestorIsLast": [
+										false
+									]
+								}
+							]
+						},
+						{
+							"id": "raw",
+							"name": "raw",
+							"type": "boolean",
+							"isArray": false,
+							"isObject": false,
+							"isOneOf": false,
+							"isOneOfChild": false,
+							"isFirstOneOfChild": false,
+							"isLastOneOfChild": false,
+							"required": false,
+							"defaultValue": "false",
+							"description": "If true, a chat template is not applied and you must adhere to the specific model's expected formatting.",
+							"depth": 0,
+							"isLast": false,
+							"ancestorIsLast": []
+						},
+						{
+							"id": "stream",
+							"name": "stream",
+							"type": "boolean",
+							"isArray": false,
+							"isObject": false,
+							"isOneOf": false,
+							"isOneOfChild": false,
+							"isFirstOneOfChild": false,
+							"isLastOneOfChild": false,
+							"required": false,
+							"defaultValue": "false",
+							"description": "If true, the response will be streamed back incrementally using SSE, Server Sent Events.",
+							"depth": 0,
+							"isLast": false,
+							"ancestorIsLast": []
+						},
+						{
+							"id": "max_tokens",
+							"name": "max_tokens",
+							"type": "integer",
+							"isArray": false,
+							"isObject": false,
+							"isOneOf": false,
+							"isOneOfChild": false,
+							"isFirstOneOfChild": false,
+							"isLastOneOfChild": false,
+							"required": false,
+							"defaultValue": "256",
+							"description": "The maximum number of tokens to generate in the response.",
+							"depth": 0,
+							"isLast": false,
+							"ancestorIsLast": []
+						},
+						{
+							"id": "temperature",
+							"name": "temperature",
+							"type": "number",
+							"isArray": false,
+							"isObject": false,
+							"isOneOf": false,
+							"isOneOfChild": false,
+							"isFirstOneOfChild": false,
+							"isLastOneOfChild": false,
+							"required": false,
+							"defaultValue": "0.6",
+							"description": "Controls the randomness of the output; higher values produce more random results.",
+							"metadata": {
+								"minimum": 0,
+								"maximum": 5
+							},
+							"depth": 0,
+							"isLast": false,
+							"ancestorIsLast": []
+						},
+						{
+							"id": "top_p",
+							"name": "top_p",
+							"type": "number",
+							"isArray": false,
+							"isObject": false,
+							"isOneOf": false,
+							"isOneOfChild": false,
+							"isFirstOneOfChild": false,
+							"isLastOneOfChild": false,
+							"required": false,
+							"description": "Adjusts the creativity of the AI's responses by controlling how many possible words it considers. Lower values make outputs more predictable; higher values allow for more varied and creative responses.",
+							"metadata": {
+								"minimum": 0.001,
+								"maximum": 1
+							},
+							"depth": 0,
+							"isLast": false,
+							"ancestorIsLast": []
+						},
+						{
+							"id": "top_k",
+							"name": "top_k",
+							"type": "integer",
+							"isArray": false,
+							"isObject": false,
+							"isOneOf": false,
+							"isOneOfChild": false,
+							"isFirstOneOfChild": false,
+							"isLastOneOfChild": false,
+							"required": false,
+							"description": "Limits the AI to choose from the top 'k' most probable words. Lower values make responses more focused; higher values introduce more variety and potential surprises.",
+							"metadata": {
+								"minimum": 1,
+								"maximum": 50
+							},
+							"depth": 0,
+							"isLast": false,
+							"ancestorIsLast": []
+						},
+						{
+							"id": "seed",
+							"name": "seed",
+							"type": "integer",
+							"isArray": false,
+							"isObject": false,
+							"isOneOf": false,
+							"isOneOfChild": false,
+							"isFirstOneOfChild": false,
+							"isLastOneOfChild": false,
+							"required": false,
+							"description": "Random seed for reproducibility of the generation.",
+							"metadata": {
+								"minimum": 1,
+								"maximum": 9999999999
+							},
+							"depth": 0,
+							"isLast": false,
+							"ancestorIsLast": []
+						},
+						{
+							"id": "repetition_penalty",
+							"name": "repetition_penalty",
+							"type": "number",
+							"isArray": false,
+							"isObject": false,
+							"isOneOf": false,
+							"isOneOfChild": false,
+							"isFirstOneOfChild": false,
+							"isLastOneOfChild": false,
+							"required": false,
+							"description": "Penalty for repeated tokens; higher values discourage repetition.",
+							"metadata": {
+								"minimum": 0,
+								"maximum": 2
+							},
+							"depth": 0,
+							"isLast": false,
+							"ancestorIsLast": []
+						},
+						{
+							"id": "frequency_penalty",
+							"name": "frequency_penalty",
+							"type": "number",
+							"isArray": false,
+							"isObject": false,
+							"isOneOf": false,
+							"isOneOfChild": false,
+							"isFirstOneOfChild": false,
+							"isLastOneOfChild": false,
+							"required": false,
+							"description": "Decreases the likelihood of the model repeating the same lines verbatim.",
+							"metadata": {
+								"minimum": -2,
+								"maximum": 2
+							},
+							"depth": 0,
+							"isLast": false,
+							"ancestorIsLast": []
+						},
+						{
+							"id": "presence_penalty",
+							"name": "presence_penalty",
+							"type": "number",
+							"isArray": false,
+							"isObject": false,
+							"isOneOf": false,
+							"isOneOfChild": false,
+							"isFirstOneOfChild": false,
+							"isLastOneOfChild": false,
+							"required": false,
+							"description": "Increases the likelihood of the model introducing new topics.",
+							"metadata": {
+								"minimum": -2,
+								"maximum": 2
+							},
+							"depth": 0,
+							"isLast": true,
+							"ancestorIsLast": []
+						}
+					]
+				},
+				{
+					"title": "Messages",
+					"rows": [
+						{
+							"id": "messages",
+							"name": "messages",
+							"type": "array",
+							"isArray": true,
+							"isObject": false,
+							"isOneOf": false,
+							"isOneOfChild": false,
+							"isFirstOneOfChild": false,
+							"isLastOneOfChild": false,
+							"required": true,
+							"description": "An array of message objects representing the conversation history.",
+							"depth": 0,
+							"isLast": false,
+							"ancestorIsLast": [],
+							"children": [
+								{
+									"id": "messages.role",
+									"name": "role",
+									"type": "string",
+									"isArray": false,
+									"isObject": false,
+									"isOneOf": false,
+									"isOneOfChild": false,
+									"isFirstOneOfChild": false,
+									"isLastOneOfChild": false,
+									"required": true,
+									"description": "The role of the message sender (e.g., 'user', 'assistant', 'system', 'tool').",
+									"depth": 1,
+									"isLast": false,
+									"ancestorIsLast": [
+										false
+									]
+								},
+								{
+									"id": "messages.content",
+									"name": "content",
+									"type": "one of",
+									"isArray": false,
+									"isObject": false,
+									"isOneOf": true,
+									"isOneOfChild": false,
+									"isFirstOneOfChild": false,
+									"isLastOneOfChild": false,
+									"required": true,
+									"depth": 1,
+									"isLast": true,
+									"ancestorIsLast": [
+										false
+									],
+									"children": [
+										{
+											"id": "messages.content.0",
+											"name": "Option 1",
+											"type": "string",
+											"isArray": false,
+											"isObject": false,
+											"isOneOf": false,
+											"isOneOfChild": true,
+											"isFirstOneOfChild": true,
+											"isLastOneOfChild": false,
+											"required": false,
+											"description": "The content of the message as a string.",
+											"depth": 2,
+											"isLast": false,
+											"ancestorIsLast": [
+												false,
+												true
+											]
+										},
+										{
+											"id": "messages.content.1",
+											"name": "Option 2",
+											"type": "array",
+											"isArray": true,
+											"isObject": false,
+											"isOneOf": false,
+											"isOneOfChild": true,
+											"isFirstOneOfChild": false,
+											"isLastOneOfChild": true,
+											"required": false,
+											"description": "Array of text content parts.",
+											"depth": 2,
+											"isLast": true,
+											"ancestorIsLast": [
+												false,
+												true
+											],
+											"children": [
+												{
+													"id": "messages.content.1.type",
+													"name": "type",
+													"type": "string",
+													"isArray": false,
+													"isObject": false,
+													"isOneOf": false,
+													"isOneOfChild": false,
+													"isFirstOneOfChild": false,
+													"isLastOneOfChild": false,
+													"required": false,
+													"description": "Type of the content (text)",
+													"depth": 3,
+													"isLast": false,
+													"ancestorIsLast": [
+														false,
+														true,
+														true
+													]
+												},
+												{
+													"id": "messages.content.1.text",
+													"name": "text",
+													"type": "string",
+													"isArray": false,
+													"isObject": false,
+													"isOneOf": false,
+													"isOneOfChild": false,
+													"isFirstOneOfChild": false,
+													"isLastOneOfChild": false,
+													"required": false,
+													"description": "Text content",
+													"depth": 3,
+													"isLast": true,
+													"ancestorIsLast": [
+														false,
+														true,
+														true
+													]
+												}
+											]
+										}
+									]
+								}
+							]
+						},
+						{
+							"id": "functions",
+							"name": "functions",
+							"type": "array",
+							"isArray": true,
+							"isObject": false,
+							"isOneOf": false,
+							"isOneOfChild": false,
+							"isFirstOneOfChild": false,
+							"isLastOneOfChild": false,
+							"required": false,
+							"depth": 0,
+							"isLast": false,
+							"ancestorIsLast": [],
+							"children": [
+								{
+									"id": "functions.name",
+									"name": "name",
+									"type": "string",
+									"isArray": false,
+									"isObject": false,
+									"isOneOf": false,
+									"isOneOfChild": false,
+									"isFirstOneOfChild": false,
+									"isLastOneOfChild": false,
+									"required": true,
+									"depth": 1,
+									"isLast": false,
+									"ancestorIsLast": [
+										false
+									]
+								},
+								{
+									"id": "functions.code",
+									"name": "code",
+									"type": "string",
+									"isArray": false,
+									"isObject": false,
+									"isOneOf": false,
+									"isOneOfChild": false,
+									"isFirstOneOfChild": false,
+									"isLastOneOfChild": false,
+									"required": true,
+									"depth": 1,
+									"isLast": true,
+									"ancestorIsLast": [
+										false
+									]
+								}
+							]
+						},
+						{
+							"id": "tools",
+							"name": "tools",
+							"type": "array",
+							"isArray": true,
+							"isObject": false,
+							"isOneOf": false,
+							"isOneOfChild": false,
+							"isFirstOneOfChild": false,
+							"isLastOneOfChild": false,
+							"required": false,
+							"description": "A list of tools available for the assistant to use.",
+							"depth": 0,
+							"isLast": false,
+							"ancestorIsLast": [],
+							"children": [
+								{
+									"id": "tools.0",
+									"name": "Option 1",
+									"type": "object",
+									"isArray": false,
+									"isObject": true,
+									"isOneOf": false,
+									"isOneOfChild": true,
+									"isFirstOneOfChild": true,
+									"isLastOneOfChild": false,
+									"required": false,
+									"depth": 1,
+									"isLast": false,
+									"ancestorIsLast": [
+										false
+									],
+									"children": [
+										{
+											"id": "tools.0.name",
+											"name": "name",
+											"type": "string",
+											"isArray": false,
+											"isObject": false,
+											"isOneOf": false,
+											"isOneOfChild": false,
+											"isFirstOneOfChild": false,
+											"isLastOneOfChild": false,
+											"required": true,
+											"description": "The name of the tool. More descriptive the better.",
+											"depth": 2,
+											"isLast": false,
+											"ancestorIsLast": [
+												false,
+												false
+											]
+										},
+										{
+											"id": "tools.0.description",
+											"name": "description",
+											"type": "string",
+											"isArray": false,
+											"isObject": false,
+											"isOneOf": false,
+											"isOneOfChild": false,
+											"isFirstOneOfChild": false,
+											"isLastOneOfChild": false,
+											"required": true,
+											"description": "A brief description of what the tool does.",
+											"depth": 2,
+											"isLast": false,
+											"ancestorIsLast": [
+												false,
+												false
+											]
+										},
+										{
+											"id": "tools.0.parameters",
+											"name": "parameters",
+											"type": "object",
+											"isArray": false,
+											"isObject": true,
+											"isOneOf": false,
+											"isOneOfChild": false,
+											"isFirstOneOfChild": false,
+											"isLastOneOfChild": false,
+											"required": true,
+											"description": "Schema defining the parameters accepted by the tool.",
+											"depth": 2,
+											"isLast": true,
+											"ancestorIsLast": [
+												false,
+												false
+											],
+											"children": [
+												{
+													"id": "tools.0.parameters.type",
+													"name": "type",
+													"type": "string",
+													"isArray": false,
+													"isObject": false,
+													"isOneOf": false,
+													"isOneOfChild": false,
+													"isFirstOneOfChild": false,
+													"isLastOneOfChild": false,
+													"required": true,
+													"description": "The type of the parameters object (usually 'object').",
+													"depth": 3,
+													"isLast": false,
+													"ancestorIsLast": [
+														false,
+														false,
+														true
+													]
+												},
+												{
+													"id": "tools.0.parameters.required",
+													"name": "required",
+													"type": "array",
+													"isArray": true,
+													"isObject": false,
+													"isOneOf": false,
+													"isOneOfChild": false,
+													"isFirstOneOfChild": false,
+													"isLastOneOfChild": false,
+													"required": false,
+													"description": "List of required parameter names.",
+													"depth": 3,
+													"isLast": false,
+													"ancestorIsLast": [
+														false,
+														false,
+														true
+													],
+													"children": [
+														{
+															"id": "tools.0.parameters.required.items",
+															"name": "items",
+															"type": "string",
+															"isArray": false,
+															"isObject": false,
+															"isOneOf": false,
+															"isOneOfChild": false,
+															"isFirstOneOfChild": false,
+															"isLastOneOfChild": false,
+															"required": false,
+															"depth": 4,
+															"isLast": true,
+															"ancestorIsLast": [
+																false,
+																false,
+																true,
+																false
+															]
+														}
+													]
+												},
+												{
+													"id": "tools.0.parameters.properties",
+													"name": "properties",
+													"type": "object",
+													"isArray": false,
+													"isObject": true,
+													"isOneOf": false,
+													"isOneOfChild": false,
+													"isFirstOneOfChild": false,
+													"isLastOneOfChild": false,
+													"required": true,
+													"description": "Definitions of each parameter.",
+													"depth": 3,
+													"isLast": true,
+													"ancestorIsLast": [
+														false,
+														false,
+														true
+													],
+													"children": [
+														{
+															"id": "tools.0.parameters.properties.additionalProperties",
+															"name": "additionalProperties",
+															"type": "object",
+															"isArray": false,
+															"isObject": true,
+															"isOneOf": false,
+															"isOneOfChild": false,
+															"isFirstOneOfChild": false,
+															"isLastOneOfChild": false,
+															"required": false,
+															"depth": 4,
+															"isLast": true,
+															"ancestorIsLast": [
+																false,
+																false,
+																true,
+																true
+															],
+															"children": [
+																{
+																	"id": "tools.0.parameters.properties.additionalProperties.type",
+																	"name": "type",
+																	"type": "string",
+																	"isArray": false,
+																	"isObject": false,
+																	"isOneOf": false,
+																	"isOneOfChild": false,
+																	"isFirstOneOfChild": false,
+																	"isLastOneOfChild": false,
+																	"required": true,
+																	"description": "The data type of the parameter.",
+																	"depth": 5,
+																	"isLast": false,
+																	"ancestorIsLast": [
+																		false,
+																		false,
+																		true,
+																		true,
+																		true
+																	]
+																},
+																{
+																	"id": "tools.0.parameters.properties.additionalProperties.description",
+																	"name": "description",
+																	"type": "string",
+																	"isArray": false,
+																	"isObject": false,
+																	"isOneOf": false,
+																	"isOneOfChild": false,
+																	"isFirstOneOfChild": false,
+																	"isLastOneOfChild": false,
+																	"required": true,
+																	"description": "A description of the expected parameter.",
+																	"depth": 5,
+																	"isLast": true,
+																	"ancestorIsLast": [
+																		false,
+																		false,
+																		true,
+																		true,
+																		true
+																	]
+																}
+															]
+														}
+													]
+												}
+											]
+										}
+									]
+								},
+								{
+									"id": "tools.1",
+									"name": "Option 2",
+									"type": "object",
+									"isArray": false,
+									"isObject": true,
+									"isOneOf": false,
+									"isOneOfChild": true,
+									"isFirstOneOfChild": false,
+									"isLastOneOfChild": true,
+									"required": false,
+									"depth": 1,
+									"isLast": true,
+									"ancestorIsLast": [
+										false
+									],
+									"children": [
+										{
+											"id": "tools.1.type",
+											"name": "type",
+											"type": "string",
+											"isArray": false,
+											"isObject": false,
+											"isOneOf": false,
+											"isOneOfChild": false,
+											"isFirstOneOfChild": false,
+											"isLastOneOfChild": false,
+											"required": true,
+											"description": "Specifies the type of tool (e.g., 'function').",
+											"depth": 2,
+											"isLast": false,
+											"ancestorIsLast": [
+												false,
+												true
+											]
+										},
+										{
+											"id": "tools.1.function",
+											"name": "function",
+											"type": "object",
+											"isArray": false,
+											"isObject": true,
+											"isOneOf": false,
+											"isOneOfChild": false,
+											"isFirstOneOfChild": false,
+											"isLastOneOfChild": false,
+											"required": true,
+											"description": "Details of the function tool.",
+											"depth": 2,
+											"isLast": true,
+											"ancestorIsLast": [
+												false,
+												true
+											],
+											"children": [
+												{
+													"id": "tools.1.function.name",
+													"name": "name",
+													"type": "string",
+													"isArray": false,
+													"isObject": false,
+													"isOneOf": false,
+													"isOneOfChild": false,
+													"isFirstOneOfChild": false,
+													"isLastOneOfChild": false,
+													"required": true,
+													"description": "The name of the function.",
+													"depth": 3,
+													"isLast": false,
+													"ancestorIsLast": [
+														false,
+														true,
+														true
+													]
+												},
+												{
+													"id": "tools.1.function.description",
+													"name": "description",
+													"type": "string",
+													"isArray": false,
+													"isObject": false,
+													"isOneOf": false,
+													"isOneOfChild": false,
+													"isFirstOneOfChild": false,
+													"isLastOneOfChild": false,
+													"required": true,
+													"description": "A brief description of what the function does.",
+													"depth": 3,
+													"isLast": false,
+													"ancestorIsLast": [
+														false,
+														true,
+														true
+													]
+												},
+												{
+													"id": "tools.1.function.parameters",
+													"name": "parameters",
+													"type": "object",
+													"isArray": false,
+													"isObject": true,
+													"isOneOf": false,
+													"isOneOfChild": false,
+													"isFirstOneOfChild": false,
+													"isLastOneOfChild": false,
+													"required": true,
+													"description": "Schema defining the parameters accepted by the function.",
+													"depth": 3,
+													"isLast": true,
+													"ancestorIsLast": [
+														false,
+														true,
+														true
+													],
+													"children": [
+														{
+															"id": "tools.1.function.parameters.type",
+															"name": "type",
+															"type": "string",
+															"isArray": false,
+															"isObject": false,
+															"isOneOf": false,
+															"isOneOfChild": false,
+															"isFirstOneOfChild": false,
+															"isLastOneOfChild": false,
+															"required": true,
+															"description": "The type of the parameters object (usually 'object').",
+															"depth": 4,
+															"isLast": false,
+															"ancestorIsLast": [
+																false,
+																true,
+																true,
+																true
+															]
+														},
+														{
+															"id": "tools.1.function.parameters.required",
+															"name": "required",
+															"type": "array",
+															"isArray": true,
+															"isObject": false,
+															"isOneOf": false,
+															"isOneOfChild": false,
+															"isFirstOneOfChild": false,
+															"isLastOneOfChild": false,
+															"required": false,
+															"description": "List of required parameter names.",
+															"depth": 4,
+															"isLast": false,
+															"ancestorIsLast": [
+																false,
+																true,
+																true,
+																true
+															],
+															"children": [
+																{
+																	"id": "tools.1.function.parameters.required.items",
+																	"name": "items",
+																	"type": "string",
+																	"isArray": false,
+																	"isObject": false,
+																	"isOneOf": false,
+																	"isOneOfChild": false,
+																	"isFirstOneOfChild": false,
+																	"isLastOneOfChild": false,
+																	"required": false,
+																	"depth": 5,
+																	"isLast": true,
+																	"ancestorIsLast": [
+																		false,
+																		true,
+																		true,
+																		true,
+																		false
+																	]
+																}
+															]
+														},
+														{
+															"id": "tools.1.function.parameters.properties",
+															"name": "properties",
+															"type": "object",
+															"isArray": false,
+															"isObject": true,
+															"isOneOf": false,
+															"isOneOfChild": false,
+															"isFirstOneOfChild": false,
+															"isLastOneOfChild": false,
+															"required": true,
+															"description": "Definitions of each parameter.",
+															"depth": 4,
+															"isLast": true,
+															"ancestorIsLast": [
+																false,
+																true,
+																true,
+																true
+															],
+															"children": [
+																{
+																	"id": "tools.1.function.parameters.properties.additionalProperties",
+																	"name": "additionalProperties",
+																	"type": "object",
+																	"isArray": false,
+																	"isObject": true,
+																	"isOneOf": false,
+																	"isOneOfChild": false,
+																	"isFirstOneOfChild": false,
+																	"isLastOneOfChild": false,
+																	"required": false,
+																	"depth": 5,
+																	"isLast": true,
+																	"ancestorIsLast": [
+																		false,
+																		true,
+																		true,
+																		true,
+																		true
+																	],
+																	"children": [
+																		{
+																			"id": "tools.1.function.parameters.properties.additionalProperties.type",
+																			"name": "type",
+																			"type": "string",
+																			"isArray": false,
+																			"isObject": false,
+																			"isOneOf": false,
+																			"isOneOfChild": false,
+																			"isFirstOneOfChild": false,
+																			"isLastOneOfChild": false,
+																			"required": true,
+																			"description": "The data type of the parameter.",
+																			"depth": 6,
+																			"isLast": false,
+																			"ancestorIsLast": [
+																				false,
+																				true,
+																				true,
+																				true,
+																				true,
+																				true
+																			]
+																		},
+																		{
+																			"id": "tools.1.function.parameters.properties.additionalProperties.description",
+																			"name": "description",
+																			"type": "string",
+																			"isArray": false,
+																			"isObject": false,
+																			"isOneOf": false,
+																			"isOneOfChild": false,
+																			"isFirstOneOfChild": false,
+																			"isLastOneOfChild": false,
+																			"required": true,
+																			"description": "A description of the expected parameter.",
+																			"depth": 6,
+																			"isLast": true,
+																			"ancestorIsLast": [
+																				false,
+																				true,
+																				true,
+																				true,
+																				true,
+																				true
+																			]
+																		}
+																	]
+																}
+															]
+														}
+													]
+												}
+											]
+										}
+									]
+								}
+							]
+						},
+						{
+							"id": "response_format",
+							"name": "response_format",
+							"type": "object",
+							"isArray": false,
+							"isObject": true,
+							"isOneOf": false,
+							"isOneOfChild": false,
+							"isFirstOneOfChild": false,
+							"isLastOneOfChild": false,
+							"required": false,
+							"depth": 0,
+							"isLast": false,
+							"ancestorIsLast": [],
+							"children": [
+								{
+									"id": "response_format.type",
+									"name": "type",
+									"type": "string",
+									"isArray": false,
+									"isObject": false,
+									"isOneOf": false,
+									"isOneOfChild": false,
+									"isFirstOneOfChild": false,
+									"isLastOneOfChild": false,
+									"required": false,
+									"enumValues": [
+										"json_object",
+										"json_schema"
+									],
+									"depth": 1,
+									"isLast": false,
+									"ancestorIsLast": [
+										false
+									]
+								},
+								{
+									"id": "response_format.json_schema",
+									"name": "json_schema",
+									"type": "",
+									"isArray": false,
+									"isObject": false,
+									"isOneOf": false,
+									"isOneOfChild": false,
+									"isFirstOneOfChild": false,
+									"isLastOneOfChild": false,
+									"required": false,
+									"depth": 1,
+									"isLast": true,
+									"ancestorIsLast": [
+										false
+									]
+								}
+							]
+						},
+						{
+							"id": "raw",
+							"name": "raw",
+							"type": "boolean",
+							"isArray": false,
+							"isObject": false,
+							"isOneOf": false,
+							"isOneOfChild": false,
+							"isFirstOneOfChild": false,
+							"isLastOneOfChild": false,
+							"required": false,
+							"defaultValue": "false",
+							"description": "If true, a chat template is not applied and you must adhere to the specific model's expected formatting.",
+							"depth": 0,
+							"isLast": false,
+							"ancestorIsLast": []
+						},
+						{
+							"id": "stream",
+							"name": "stream",
+							"type": "boolean",
+							"isArray": false,
+							"isObject": false,
+							"isOneOf": false,
+							"isOneOfChild": false,
+							"isFirstOneOfChild": false,
+							"isLastOneOfChild": false,
+							"required": false,
+							"defaultValue": "false",
+							"description": "If true, the response will be streamed back incrementally using SSE, Server Sent Events.",
+							"depth": 0,
+							"isLast": false,
+							"ancestorIsLast": []
+						},
+						{
+							"id": "max_tokens",
+							"name": "max_tokens",
+							"type": "integer",
+							"isArray": false,
+							"isObject": false,
+							"isOneOf": false,
+							"isOneOfChild": false,
+							"isFirstOneOfChild": false,
+							"isLastOneOfChild": false,
+							"required": false,
+							"defaultValue": "256",
+							"description": "The maximum number of tokens to generate in the response.",
+							"depth": 0,
+							"isLast": false,
+							"ancestorIsLast": []
+						},
+						{
+							"id": "temperature",
+							"name": "temperature",
+							"type": "number",
+							"isArray": false,
+							"isObject": false,
+							"isOneOf": false,
+							"isOneOfChild": false,
+							"isFirstOneOfChild": false,
+							"isLastOneOfChild": false,
+							"required": false,
+							"defaultValue": "0.6",
+							"description": "Controls the randomness of the output; higher values produce more random results.",
+							"metadata": {
+								"minimum": 0,
+								"maximum": 5
+							},
+							"depth": 0,
+							"isLast": false,
+							"ancestorIsLast": []
+						},
+						{
+							"id": "top_p",
+							"name": "top_p",
+							"type": "number",
+							"isArray": false,
+							"isObject": false,
+							"isOneOf": false,
+							"isOneOfChild": false,
+							"isFirstOneOfChild": false,
+							"isLastOneOfChild": false,
+							"required": false,
+							"description": "Adjusts the creativity of the AI's responses by controlling how many possible words it considers. Lower values make outputs more predictable; higher values allow for more varied and creative responses.",
+							"metadata": {
+								"minimum": 0.001,
+								"maximum": 1
+							},
+							"depth": 0,
+							"isLast": false,
+							"ancestorIsLast": []
+						},
+						{
+							"id": "top_k",
+							"name": "top_k",
+							"type": "integer",
+							"isArray": false,
+							"isObject": false,
+							"isOneOf": false,
+							"isOneOfChild": false,
+							"isFirstOneOfChild": false,
+							"isLastOneOfChild": false,
+							"required": false,
+							"description": "Limits the AI to choose from the top 'k' most probable words. Lower values make responses more focused; higher values introduce more variety and potential surprises.",
+							"metadata": {
+								"minimum": 1,
+								"maximum": 50
+							},
+							"depth": 0,
+							"isLast": false,
+							"ancestorIsLast": []
+						},
+						{
+							"id": "seed",
+							"name": "seed",
+							"type": "integer",
+							"isArray": false,
+							"isObject": false,
+							"isOneOf": false,
+							"isOneOfChild": false,
+							"isFirstOneOfChild": false,
+							"isLastOneOfChild": false,
+							"required": false,
+							"description": "Random seed for reproducibility of the generation.",
+							"metadata": {
+								"minimum": 1,
+								"maximum": 9999999999
+							},
+							"depth": 0,
+							"isLast": false,
+							"ancestorIsLast": []
+						},
+						{
+							"id": "repetition_penalty",
+							"name": "repetition_penalty",
+							"type": "number",
+							"isArray": false,
+							"isObject": false,
+							"isOneOf": false,
+							"isOneOfChild": false,
+							"isFirstOneOfChild": false,
+							"isLastOneOfChild": false,
+							"required": false,
+							"description": "Penalty for repeated tokens; higher values discourage repetition.",
+							"metadata": {
+								"minimum": 0,
+								"maximum": 2
+							},
+							"depth": 0,
+							"isLast": false,
+							"ancestorIsLast": []
+						},
+						{
+							"id": "frequency_penalty",
+							"name": "frequency_penalty",
+							"type": "number",
+							"isArray": false,
+							"isObject": false,
+							"isOneOf": false,
+							"isOneOfChild": false,
+							"isFirstOneOfChild": false,
+							"isLastOneOfChild": false,
+							"required": false,
+							"description": "Decreases the likelihood of the model repeating the same lines verbatim.",
+							"metadata": {
+								"minimum": -2,
+								"maximum": 2
+							},
+							"depth": 0,
+							"isLast": false,
+							"ancestorIsLast": []
+						},
+						{
+							"id": "presence_penalty",
+							"name": "presence_penalty",
+							"type": "number",
+							"isArray": false,
+							"isObject": false,
+							"isOneOf": false,
+							"isOneOfChild": false,
+							"isFirstOneOfChild": false,
+							"isLastOneOfChild": false,
+							"required": false,
+							"description": "Increases the likelihood of the model introducing new topics.",
+							"metadata": {
+								"minimum": -2,
+								"maximum": 2
+							},
+							"depth": 0,
+							"isLast": true,
+							"ancestorIsLast": []
+						}
+					]
+				}
+			],
+			"isFlat": false
+		},
+		"output": {
+			"rows": [
+				{
+					"id": "type",
+					"name": "type",
+					"type": "string",
+					"isArray": false,
+					"isObject": false,
+					"isOneOf": false,
+					"isOneOfChild": false,
+					"isFirstOneOfChild": false,
+					"isLastOneOfChild": false,
+					"required": false,
+					"depth": 0,
+					"isLast": false,
+					"ancestorIsLast": []
+				},
+				{
+					"id": "contentType",
+					"name": "contentType",
+					"type": "text/event-stream",
+					"isArray": false,
+					"isObject": false,
+					"isOneOf": false,
+					"isOneOfChild": false,
+					"isFirstOneOfChild": false,
+					"isLastOneOfChild": false,
+					"required": false,
+					"depth": 0,
+					"isLast": false,
+					"ancestorIsLast": []
+				},
+				{
+					"id": "format",
+					"name": "format",
+					"type": "binary",
+					"isArray": false,
+					"isObject": false,
+					"isOneOf": false,
+					"isOneOfChild": false,
+					"isFirstOneOfChild": false,
+					"isLastOneOfChild": false,
+					"required": false,
+					"depth": 0,
+					"isLast": true,
+					"ancestorIsLast": []
+				}
+			],
+			"variants": null,
+			"isFlat": true
+		}
+	},
+	"batch": {
+		"input": {
+			"rows": [
+				{
+					"id": "requests",
+					"name": "requests",
+					"type": "array",
+					"isArray": true,
+					"isObject": false,
+					"isOneOf": false,
+					"isOneOfChild": false,
+					"isFirstOneOfChild": false,
+					"isLastOneOfChild": false,
+					"required": true,
+					"depth": 0,
+					"isLast": true,
+					"ancestorIsLast": [],
+					"children": [
+						{
+							"id": "requests.input",
+							"name": "input",
+							"type": "one of",
+							"isArray": false,
+							"isObject": false,
+							"isOneOf": true,
+							"isOneOfChild": false,
+							"isFirstOneOfChild": false,
+							"isLastOneOfChild": false,
+							"required": true,
+							"depth": 1,
+							"isLast": false,
+							"ancestorIsLast": [
+								true
+							],
+							"children": [
+								{
+									"id": "requests.input.0",
+									"name": "Option 1",
+									"type": "string",
+									"isArray": false,
+									"isObject": false,
+									"isOneOf": false,
+									"isOneOfChild": true,
+									"isFirstOneOfChild": true,
+									"isLastOneOfChild": false,
+									"required": false,
+									"description": "Responses API Input messages. Refer to OpenAI Responses API docs to learn more about supported content types",
+									"depth": 2,
+									"isLast": false,
+									"ancestorIsLast": [
+										true,
+										false
+									]
+								},
+								{
+									"id": "requests.input.1",
+									"name": "Option 2",
+									"type": "array",
+									"isArray": true,
+									"isObject": false,
+									"isOneOf": false,
+									"isOneOfChild": true,
+									"isFirstOneOfChild": false,
+									"isLastOneOfChild": true,
+									"required": false,
+									"description": "Responses API Input messages. Refer to OpenAI Responses API docs to learn more about supported content types",
+									"depth": 2,
+									"isLast": true,
+									"ancestorIsLast": [
+										true,
+										false
+									]
+								}
+							]
+						},
+						{
+							"id": "requests.reasoning",
+							"name": "reasoning",
+							"type": "object",
+							"isArray": false,
+							"isObject": true,
+							"isOneOf": false,
+							"isOneOfChild": false,
+							"isFirstOneOfChild": false,
+							"isLastOneOfChild": false,
+							"required": false,
+							"depth": 1,
+							"isLast": true,
+							"ancestorIsLast": [
+								true
+							],
+							"children": [
+								{
+									"id": "requests.reasoning.effort",
+									"name": "effort",
+									"type": "string",
+									"isArray": false,
+									"isObject": false,
+									"isOneOf": false,
+									"isOneOfChild": false,
+									"isFirstOneOfChild": false,
+									"isLastOneOfChild": false,
+									"required": false,
+									"description": "Constrains effort on reasoning for reasoning models. Currently supported values are low, medium, and high. Reducing reasoning effort can result in faster responses and fewer tokens used on reasoning in a response.",
+									"enumValues": [
+										"low",
+										"medium",
+										"high"
+									],
+									"depth": 2,
+									"isLast": false,
+									"ancestorIsLast": [
+										true,
+										true
+									]
+								},
+								{
+									"id": "requests.reasoning.summary",
+									"name": "summary",
+									"type": "string",
+									"isArray": false,
+									"isObject": false,
+									"isOneOf": false,
+									"isOneOfChild": false,
+									"isFirstOneOfChild": false,
+									"isLastOneOfChild": false,
+									"required": false,
+									"description": "A summary of the reasoning performed by the model. This can be useful for debugging and understanding the model's reasoning process. One of auto, concise, or detailed.",
+									"enumValues": [
+										"auto",
+										"concise",
+										"detailed"
+									],
+									"depth": 2,
+									"isLast": true,
+									"ancestorIsLast": [
+										true,
+										true
+									]
+								}
+							]
+						}
+					]
+				}
+			],
+			"variants": null,
+			"isFlat": false
+		},
+		"output": {
+			"rows": [
+				{
+					"id": "type",
+					"name": "type",
+					"type": "object",
+					"isArray": false,
+					"isObject": false,
+					"isOneOf": false,
+					"isOneOfChild": false,
+					"isFirstOneOfChild": false,
+					"isLastOneOfChild": false,
+					"required": false,
+					"depth": 0,
+					"isLast": false,
+					"ancestorIsLast": []
+				},
+				{
+					"id": "contentType",
+					"name": "contentType",
+					"type": "application/json",
+					"isArray": false,
+					"isObject": false,
+					"isOneOf": false,
+					"isOneOfChild": false,
+					"isFirstOneOfChild": false,
+					"isLastOneOfChild": false,
+					"required": false,
+					"depth": 0,
+					"isLast": true,
+					"ancestorIsLast": []
+				}
+			],
+			"variants": null,
+			"isFlat": true
+		}
+	}
+}

@@ -1,0 +1,14 @@
+{
+	"type": "object",
+	"contentType": "application/json",
+	"properties": {
+		"is_complete": {
+			"type": "boolean",
+			"description": "if true, end-of-turn was detected"
+		},
+		"probability": {
+			"type": "number",
+			"description": "probability of the end-of-turn detection"
+		}
+	}
+}

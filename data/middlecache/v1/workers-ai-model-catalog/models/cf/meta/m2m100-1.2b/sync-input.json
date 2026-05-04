@@ -1,0 +1,22 @@
+{
+	"properties": {
+		"text": {
+			"type": "string",
+			"minLength": 1,
+			"description": "The text to be translated"
+		},
+		"source_lang": {
+			"type": "string",
+			"default": "en",
+			"description": "The language code of the source text (e.g., 'en' for English). Defaults to 'en' if not specified"
+		},
+		"target_lang": {
+			"type": "string",
+			"description": "The language code to translate the text into (e.g., 'es' for Spanish)"
+		}
+	},
+	"required": [
+		"text",
+		"target_lang"
+	]
+}

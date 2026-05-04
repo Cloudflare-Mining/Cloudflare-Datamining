@@ -1,0 +1,47 @@
+{
+	"$schema": "https://json-schema.org/draft/2020-12/schema",
+	"type": "object",
+	"properties": {
+		"prompt": {
+			"description": "Text prompt describing the image to generate or edit",
+			"type": "string"
+		},
+		"image": {
+			"description": "Base64-encoded input image for image editing",
+			"type": "string"
+		},
+		"quality": {
+			"description": "Quality of the generated image",
+			"type": "string",
+			"enum": [
+				"low",
+				"medium",
+				"high",
+				"auto"
+			]
+		},
+		"size": {
+			"description": "Size of the generated image",
+			"type": "string",
+			"enum": [
+				"256x256",
+				"512x512",
+				"1024x1024",
+				"1792x1024",
+				"1024x1792"
+			]
+		},
+		"style": {
+			"description": "Style of the generated image",
+			"type": "string",
+			"enum": [
+				"vivid",
+				"natural"
+			]
+		}
+	},
+	"required": [
+		"prompt"
+	],
+	"additionalProperties": false
+}

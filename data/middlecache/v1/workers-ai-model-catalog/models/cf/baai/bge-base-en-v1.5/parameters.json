@@ -1,0 +1,446 @@
+{
+	"flat": false,
+	"modes": [
+		"sync",
+		"batch"
+	],
+	"sync": {
+		"input": {
+			"rows": [
+				{
+					"id": "text",
+					"name": "text",
+					"type": "one of",
+					"isArray": false,
+					"isObject": false,
+					"isOneOf": true,
+					"isOneOfChild": false,
+					"isFirstOneOfChild": false,
+					"isLastOneOfChild": false,
+					"required": true,
+					"depth": 0,
+					"isLast": false,
+					"ancestorIsLast": [],
+					"children": [
+						{
+							"id": "text.0",
+							"name": "Option 1",
+							"type": "string",
+							"isArray": false,
+							"isObject": false,
+							"isOneOf": false,
+							"isOneOfChild": true,
+							"isFirstOneOfChild": true,
+							"isLastOneOfChild": false,
+							"required": false,
+							"description": "The text to embed",
+							"metadata": {
+								"minLength": 1
+							},
+							"depth": 1,
+							"isLast": false,
+							"ancestorIsLast": [
+								false
+							]
+						},
+						{
+							"id": "text.1",
+							"name": "Option 2",
+							"type": "array",
+							"isArray": true,
+							"isObject": false,
+							"isOneOf": false,
+							"isOneOfChild": true,
+							"isFirstOneOfChild": false,
+							"isLastOneOfChild": true,
+							"required": false,
+							"description": "Batch of text values to embed",
+							"metadata": {
+								"maxItems": 100
+							},
+							"depth": 1,
+							"isLast": true,
+							"ancestorIsLast": [
+								false
+							],
+							"children": [
+								{
+									"id": "text.1.items",
+									"name": "items",
+									"type": "string",
+									"isArray": false,
+									"isObject": false,
+									"isOneOf": false,
+									"isOneOfChild": false,
+									"isFirstOneOfChild": false,
+									"isLastOneOfChild": false,
+									"required": false,
+									"description": "The text to embed",
+									"metadata": {
+										"minLength": 1
+									},
+									"depth": 2,
+									"isLast": true,
+									"ancestorIsLast": [
+										false,
+										true
+									]
+								}
+							]
+						}
+					]
+				},
+				{
+					"id": "pooling",
+					"name": "pooling",
+					"type": "string",
+					"isArray": false,
+					"isObject": false,
+					"isOneOf": false,
+					"isOneOfChild": false,
+					"isFirstOneOfChild": false,
+					"isLastOneOfChild": false,
+					"required": false,
+					"defaultValue": "mean",
+					"description": "The pooling method used in the embedding process. `cls` pooling will generate more accurate embeddings on larger inputs - however, embeddings created with cls pooling are not compatible with embeddings generated with mean pooling. The default pooling method is `mean` in order for this to not be a breaking change, but we highly suggest using the new `cls` pooling for better accuracy.",
+					"enumValues": [
+						"mean",
+						"cls"
+					],
+					"depth": 0,
+					"isLast": true,
+					"ancestorIsLast": []
+				}
+			],
+			"variants": null,
+			"isFlat": false
+		},
+		"output": {
+			"rows": [
+				{
+					"id": "shape",
+					"name": "shape",
+					"type": "array",
+					"isArray": true,
+					"isObject": false,
+					"isOneOf": false,
+					"isOneOfChild": false,
+					"isFirstOneOfChild": false,
+					"isLastOneOfChild": false,
+					"required": false,
+					"depth": 0,
+					"isLast": false,
+					"ancestorIsLast": [],
+					"children": [
+						{
+							"id": "shape.items",
+							"name": "items",
+							"type": "number",
+							"isArray": false,
+							"isObject": false,
+							"isOneOf": false,
+							"isOneOfChild": false,
+							"isFirstOneOfChild": false,
+							"isLastOneOfChild": false,
+							"required": false,
+							"depth": 1,
+							"isLast": true,
+							"ancestorIsLast": [
+								false
+							]
+						}
+					]
+				},
+				{
+					"id": "data",
+					"name": "data",
+					"type": "array",
+					"isArray": true,
+					"isObject": false,
+					"isOneOf": false,
+					"isOneOfChild": false,
+					"isFirstOneOfChild": false,
+					"isLastOneOfChild": false,
+					"required": false,
+					"description": "Embeddings of the requested text values",
+					"depth": 0,
+					"isLast": false,
+					"ancestorIsLast": [],
+					"children": [
+						{
+							"id": "data.items",
+							"name": "items",
+							"type": "number",
+							"isArray": false,
+							"isObject": false,
+							"isOneOf": false,
+							"isOneOfChild": false,
+							"isFirstOneOfChild": false,
+							"isLastOneOfChild": false,
+							"required": false,
+							"depth": 1,
+							"isLast": true,
+							"ancestorIsLast": [
+								false
+							]
+						}
+					]
+				},
+				{
+					"id": "pooling",
+					"name": "pooling",
+					"type": "string",
+					"isArray": false,
+					"isObject": false,
+					"isOneOf": false,
+					"isOneOfChild": false,
+					"isFirstOneOfChild": false,
+					"isLastOneOfChild": false,
+					"required": false,
+					"description": "The pooling method used in the embedding process.",
+					"enumValues": [
+						"mean",
+						"cls"
+					],
+					"depth": 0,
+					"isLast": true,
+					"ancestorIsLast": []
+				}
+			],
+			"variants": null,
+			"isFlat": false
+		}
+	},
+	"batch": {
+		"input": {
+			"rows": [
+				{
+					"id": "requests",
+					"name": "requests",
+					"type": "array",
+					"isArray": true,
+					"isObject": false,
+					"isOneOf": false,
+					"isOneOfChild": false,
+					"isFirstOneOfChild": false,
+					"isLastOneOfChild": false,
+					"required": true,
+					"description": "Batch of the embeddings requests to run using async-queue",
+					"depth": 0,
+					"isLast": true,
+					"ancestorIsLast": [],
+					"children": [
+						{
+							"id": "requests.text",
+							"name": "text",
+							"type": "one of",
+							"isArray": false,
+							"isObject": false,
+							"isOneOf": true,
+							"isOneOfChild": false,
+							"isFirstOneOfChild": false,
+							"isLastOneOfChild": false,
+							"required": true,
+							"depth": 1,
+							"isLast": false,
+							"ancestorIsLast": [
+								true
+							],
+							"children": [
+								{
+									"id": "requests.text.0",
+									"name": "Option 1",
+									"type": "string",
+									"isArray": false,
+									"isObject": false,
+									"isOneOf": false,
+									"isOneOfChild": true,
+									"isFirstOneOfChild": true,
+									"isLastOneOfChild": false,
+									"required": false,
+									"description": "The text to embed",
+									"metadata": {
+										"minLength": 1
+									},
+									"depth": 2,
+									"isLast": false,
+									"ancestorIsLast": [
+										true,
+										false
+									]
+								},
+								{
+									"id": "requests.text.1",
+									"name": "Option 2",
+									"type": "array",
+									"isArray": true,
+									"isObject": false,
+									"isOneOf": false,
+									"isOneOfChild": true,
+									"isFirstOneOfChild": false,
+									"isLastOneOfChild": true,
+									"required": false,
+									"description": "Batch of text values to embed",
+									"metadata": {
+										"maxItems": 100
+									},
+									"depth": 2,
+									"isLast": true,
+									"ancestorIsLast": [
+										true,
+										false
+									],
+									"children": [
+										{
+											"id": "requests.text.1.items",
+											"name": "items",
+											"type": "string",
+											"isArray": false,
+											"isObject": false,
+											"isOneOf": false,
+											"isOneOfChild": false,
+											"isFirstOneOfChild": false,
+											"isLastOneOfChild": false,
+											"required": false,
+											"description": "The text to embed",
+											"metadata": {
+												"minLength": 1
+											},
+											"depth": 3,
+											"isLast": true,
+											"ancestorIsLast": [
+												true,
+												false,
+												true
+											]
+										}
+									]
+								}
+							]
+						},
+						{
+							"id": "requests.pooling",
+							"name": "pooling",
+							"type": "string",
+							"isArray": false,
+							"isObject": false,
+							"isOneOf": false,
+							"isOneOfChild": false,
+							"isFirstOneOfChild": false,
+							"isLastOneOfChild": false,
+							"required": false,
+							"defaultValue": "mean",
+							"description": "The pooling method used in the embedding process. `cls` pooling will generate more accurate embeddings on larger inputs - however, embeddings created with cls pooling are not compatible with embeddings generated with mean pooling. The default pooling method is `mean` in order for this to not be a breaking change, but we highly suggest using the new `cls` pooling for better accuracy.",
+							"enumValues": [
+								"mean",
+								"cls"
+							],
+							"depth": 1,
+							"isLast": true,
+							"ancestorIsLast": [
+								true
+							]
+						}
+					]
+				}
+			],
+			"variants": null,
+			"isFlat": false
+		},
+		"output": {
+			"rows": [
+				{
+					"id": "shape",
+					"name": "shape",
+					"type": "array",
+					"isArray": true,
+					"isObject": false,
+					"isOneOf": false,
+					"isOneOfChild": false,
+					"isFirstOneOfChild": false,
+					"isLastOneOfChild": false,
+					"required": false,
+					"depth": 0,
+					"isLast": false,
+					"ancestorIsLast": [],
+					"children": [
+						{
+							"id": "shape.items",
+							"name": "items",
+							"type": "number",
+							"isArray": false,
+							"isObject": false,
+							"isOneOf": false,
+							"isOneOfChild": false,
+							"isFirstOneOfChild": false,
+							"isLastOneOfChild": false,
+							"required": false,
+							"depth": 1,
+							"isLast": true,
+							"ancestorIsLast": [
+								false
+							]
+						}
+					]
+				},
+				{
+					"id": "data",
+					"name": "data",
+					"type": "array",
+					"isArray": true,
+					"isObject": false,
+					"isOneOf": false,
+					"isOneOfChild": false,
+					"isFirstOneOfChild": false,
+					"isLastOneOfChild": false,
+					"required": false,
+					"description": "Embeddings of the requested text values",
+					"depth": 0,
+					"isLast": false,
+					"ancestorIsLast": [],
+					"children": [
+						{
+							"id": "data.items",
+							"name": "items",
+							"type": "number",
+							"isArray": false,
+							"isObject": false,
+							"isOneOf": false,
+							"isOneOfChild": false,
+							"isFirstOneOfChild": false,
+							"isLastOneOfChild": false,
+							"required": false,
+							"depth": 1,
+							"isLast": true,
+							"ancestorIsLast": [
+								false
+							]
+						}
+					]
+				},
+				{
+					"id": "pooling",
+					"name": "pooling",
+					"type": "string",
+					"isArray": false,
+					"isObject": false,
+					"isOneOf": false,
+					"isOneOfChild": false,
+					"isFirstOneOfChild": false,
+					"isLastOneOfChild": false,
+					"required": false,
+					"description": "The pooling method used in the embedding process.",
+					"enumValues": [
+						"mean",
+						"cls"
+					],
+					"depth": 0,
+					"isLast": true,
+					"ancestorIsLast": []
+				}
+			],
+			"variants": null,
+			"isFlat": false
+		}
+	}
+}

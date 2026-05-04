@@ -1,0 +1,247 @@
+{
+	"flat": true,
+	"modes": null,
+	"input": {
+		"rows": [
+			{
+				"id": "prompt",
+				"name": "prompt",
+				"type": "string",
+				"isArray": false,
+				"isObject": false,
+				"isOneOf": false,
+				"isOneOfChild": false,
+				"isFirstOneOfChild": false,
+				"isLastOneOfChild": false,
+				"required": true,
+				"depth": 0,
+				"isLast": false,
+				"ancestorIsLast": []
+			},
+			{
+				"id": "size",
+				"name": "size",
+				"type": "string",
+				"isArray": false,
+				"isObject": false,
+				"isOneOf": false,
+				"isOneOfChild": false,
+				"isFirstOneOfChild": false,
+				"isLastOneOfChild": false,
+				"required": false,
+				"depth": 0,
+				"isLast": false,
+				"ancestorIsLast": []
+			},
+			{
+				"id": "style",
+				"name": "style",
+				"type": "string",
+				"isArray": false,
+				"isObject": false,
+				"isOneOf": false,
+				"isOneOfChild": false,
+				"isFirstOneOfChild": false,
+				"isLastOneOfChild": false,
+				"required": false,
+				"depth": 0,
+				"isLast": false,
+				"ancestorIsLast": []
+			},
+			{
+				"id": "substyle",
+				"name": "substyle",
+				"type": "string",
+				"isArray": false,
+				"isObject": false,
+				"isOneOf": false,
+				"isOneOfChild": false,
+				"isFirstOneOfChild": false,
+				"isLastOneOfChild": false,
+				"required": false,
+				"depth": 0,
+				"isLast": false,
+				"ancestorIsLast": []
+			},
+			{
+				"id": "controls",
+				"name": "controls",
+				"type": "object",
+				"isArray": false,
+				"isObject": true,
+				"isOneOf": false,
+				"isOneOfChild": false,
+				"isFirstOneOfChild": false,
+				"isLastOneOfChild": false,
+				"required": false,
+				"depth": 0,
+				"isLast": true,
+				"ancestorIsLast": [],
+				"children": [
+					{
+						"id": "controls.colors",
+						"name": "colors",
+						"type": "array",
+						"isArray": true,
+						"isObject": false,
+						"isOneOf": false,
+						"isOneOfChild": false,
+						"isFirstOneOfChild": false,
+						"isLastOneOfChild": false,
+						"required": false,
+						"metadata": {
+							"maxItems": 5
+						},
+						"depth": 1,
+						"isLast": false,
+						"ancestorIsLast": [
+							true
+						],
+						"children": [
+							{
+								"id": "controls.colors.rgb",
+								"name": "rgb",
+								"type": "array",
+								"isArray": true,
+								"isObject": false,
+								"isOneOf": false,
+								"isOneOfChild": false,
+								"isFirstOneOfChild": false,
+								"isLastOneOfChild": false,
+								"required": true,
+								"metadata": {
+									"minItems": 3,
+									"maxItems": 3
+								},
+								"depth": 2,
+								"isLast": true,
+								"ancestorIsLast": [
+									true,
+									false
+								],
+								"children": [
+									{
+										"id": "controls.colors.rgb.items",
+										"name": "items",
+										"type": "integer",
+										"isArray": false,
+										"isObject": false,
+										"isOneOf": false,
+										"isOneOfChild": false,
+										"isFirstOneOfChild": false,
+										"isLastOneOfChild": false,
+										"required": false,
+										"metadata": {
+											"minimum": 0,
+											"maximum": 255
+										},
+										"depth": 3,
+										"isLast": true,
+										"ancestorIsLast": [
+											true,
+											false,
+											true
+										]
+									}
+								]
+							}
+						]
+					},
+					{
+						"id": "controls.background_color",
+						"name": "background_color",
+						"type": "object",
+						"isArray": false,
+						"isObject": true,
+						"isOneOf": false,
+						"isOneOfChild": false,
+						"isFirstOneOfChild": false,
+						"isLastOneOfChild": false,
+						"required": false,
+						"depth": 1,
+						"isLast": true,
+						"ancestorIsLast": [
+							true
+						],
+						"children": [
+							{
+								"id": "controls.background_color.rgb",
+								"name": "rgb",
+								"type": "array",
+								"isArray": true,
+								"isObject": false,
+								"isOneOf": false,
+								"isOneOfChild": false,
+								"isFirstOneOfChild": false,
+								"isLastOneOfChild": false,
+								"required": true,
+								"metadata": {
+									"minItems": 3,
+									"maxItems": 3
+								},
+								"depth": 2,
+								"isLast": true,
+								"ancestorIsLast": [
+									true,
+									true
+								],
+								"children": [
+									{
+										"id": "controls.background_color.rgb.items",
+										"name": "items",
+										"type": "integer",
+										"isArray": false,
+										"isObject": false,
+										"isOneOf": false,
+										"isOneOfChild": false,
+										"isFirstOneOfChild": false,
+										"isLastOneOfChild": false,
+										"required": false,
+										"metadata": {
+											"minimum": 0,
+											"maximum": 255
+										},
+										"depth": 3,
+										"isLast": true,
+										"ancestorIsLast": [
+											true,
+											true,
+											true
+										]
+									}
+								]
+							}
+						]
+					}
+				]
+			}
+		],
+		"variants": null,
+		"isFlat": false
+	},
+	"output": {
+		"rows": [
+			{
+				"id": "image",
+				"name": "image",
+				"type": "string",
+				"isArray": false,
+				"isObject": false,
+				"isOneOf": false,
+				"isOneOfChild": false,
+				"isFirstOneOfChild": false,
+				"isLastOneOfChild": false,
+				"required": true,
+				"metadata": {
+					"format": "uri",
+					"contentMediaType": "image/svg+xml"
+				},
+				"depth": 0,
+				"isLast": true,
+				"ancestorIsLast": []
+			}
+		],
+		"variants": null,
+		"isFlat": false
+	}
+}

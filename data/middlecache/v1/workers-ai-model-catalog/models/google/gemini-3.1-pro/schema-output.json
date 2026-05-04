@@ -1,0 +1,83 @@
+{
+	"$schema": "https://json-schema.org/draft/2020-12/schema",
+	"type": "object",
+	"properties": {
+		"candidates": {
+			"type": "array",
+			"items": {
+				"type": "object",
+				"properties": {
+					"content": {
+						"type": "object",
+						"properties": {
+							"role": {
+								"type": "string"
+							},
+							"parts": {
+								"type": "array",
+								"items": {
+									"type": "object",
+									"properties": {
+										"text": {
+											"type": "string"
+										}
+									},
+									"additionalProperties": {}
+								}
+							}
+						},
+						"required": [
+							"parts"
+						],
+						"additionalProperties": {}
+					},
+					"finishReason": {
+						"type": "string"
+					},
+					"safetyRatings": {
+						"type": "array",
+						"items": {
+							"type": "object",
+							"properties": {
+								"category": {
+									"type": "string"
+								},
+								"probability": {
+									"type": "string"
+								}
+							},
+							"required": [
+								"category",
+								"probability"
+							],
+							"additionalProperties": {}
+						}
+					}
+				},
+				"required": [
+					"content"
+				],
+				"additionalProperties": {}
+			}
+		},
+		"usageMetadata": {
+			"type": "object",
+			"properties": {
+				"promptTokenCount": {
+					"type": "number"
+				},
+				"candidatesTokenCount": {
+					"type": "number"
+				},
+				"totalTokenCount": {
+					"type": "number"
+				}
+			},
+			"additionalProperties": {}
+		},
+		"modelVersion": {
+			"type": "string"
+		}
+	},
+	"additionalProperties": {}
+}

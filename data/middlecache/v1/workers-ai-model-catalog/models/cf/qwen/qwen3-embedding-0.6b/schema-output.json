@@ -1,0 +1,20 @@
+{
+	"type": "object",
+	"properties": {
+		"data": {
+			"items": {
+				"items": {
+					"type": "number"
+				},
+				"type": "array"
+			},
+			"type": "array"
+		},
+		"shape": {
+			"items": {
+				"type": "integer"
+			},
+			"type": "array"
+		}
+	}
+}

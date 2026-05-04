@@ -1,0 +1,195 @@
+{
+	"flat": false,
+	"modes": [
+		"sync",
+		"batch"
+	],
+	"sync": {
+		"input": {
+			"rows": [
+				{
+					"id": "text",
+					"name": "text",
+					"type": "string",
+					"isArray": false,
+					"isObject": false,
+					"isOneOf": false,
+					"isOneOfChild": false,
+					"isFirstOneOfChild": false,
+					"isLastOneOfChild": false,
+					"required": true,
+					"description": "The text to be translated",
+					"metadata": {
+						"minLength": 1
+					},
+					"depth": 0,
+					"isLast": false,
+					"ancestorIsLast": []
+				},
+				{
+					"id": "source_lang",
+					"name": "source_lang",
+					"type": "string",
+					"isArray": false,
+					"isObject": false,
+					"isOneOf": false,
+					"isOneOfChild": false,
+					"isFirstOneOfChild": false,
+					"isLastOneOfChild": false,
+					"required": false,
+					"defaultValue": "en",
+					"description": "The language code of the source text (e.g., 'en' for English). Defaults to 'en' if not specified",
+					"depth": 0,
+					"isLast": false,
+					"ancestorIsLast": []
+				},
+				{
+					"id": "target_lang",
+					"name": "target_lang",
+					"type": "string",
+					"isArray": false,
+					"isObject": false,
+					"isOneOf": false,
+					"isOneOfChild": false,
+					"isFirstOneOfChild": false,
+					"isLastOneOfChild": false,
+					"required": true,
+					"description": "The language code to translate the text into (e.g., 'es' for Spanish)",
+					"depth": 0,
+					"isLast": true,
+					"ancestorIsLast": []
+				}
+			],
+			"variants": null,
+			"isFlat": false
+		},
+		"output": {
+			"rows": [
+				{
+					"id": "request_id",
+					"name": "request_id",
+					"type": "string",
+					"isArray": false,
+					"isObject": false,
+					"isOneOf": false,
+					"isOneOfChild": false,
+					"isFirstOneOfChild": false,
+					"isLastOneOfChild": false,
+					"required": false,
+					"description": "The async request id that can be used to obtain the results.",
+					"depth": 0,
+					"isLast": true,
+					"ancestorIsLast": []
+				}
+			],
+			"variants": null,
+			"isFlat": false
+		}
+	},
+	"batch": {
+		"input": {
+			"rows": [
+				{
+					"id": "requests",
+					"name": "requests",
+					"type": "array",
+					"isArray": true,
+					"isObject": false,
+					"isOneOf": false,
+					"isOneOfChild": false,
+					"isFirstOneOfChild": false,
+					"isLastOneOfChild": false,
+					"required": true,
+					"description": "Batch of the embeddings requests to run using async-queue",
+					"depth": 0,
+					"isLast": true,
+					"ancestorIsLast": [],
+					"children": [
+						{
+							"id": "requests.text",
+							"name": "text",
+							"type": "string",
+							"isArray": false,
+							"isObject": false,
+							"isOneOf": false,
+							"isOneOfChild": false,
+							"isFirstOneOfChild": false,
+							"isLastOneOfChild": false,
+							"required": true,
+							"description": "The text to be translated",
+							"metadata": {
+								"minLength": 1
+							},
+							"depth": 1,
+							"isLast": false,
+							"ancestorIsLast": [
+								true
+							]
+						},
+						{
+							"id": "requests.source_lang",
+							"name": "source_lang",
+							"type": "string",
+							"isArray": false,
+							"isObject": false,
+							"isOneOf": false,
+							"isOneOfChild": false,
+							"isFirstOneOfChild": false,
+							"isLastOneOfChild": false,
+							"required": false,
+							"defaultValue": "en",
+							"description": "The language code of the source text (e.g., 'en' for English). Defaults to 'en' if not specified",
+							"depth": 1,
+							"isLast": false,
+							"ancestorIsLast": [
+								true
+							]
+						},
+						{
+							"id": "requests.target_lang",
+							"name": "target_lang",
+							"type": "string",
+							"isArray": false,
+							"isObject": false,
+							"isOneOf": false,
+							"isOneOfChild": false,
+							"isFirstOneOfChild": false,
+							"isLastOneOfChild": false,
+							"required": true,
+							"description": "The language code to translate the text into (e.g., 'es' for Spanish)",
+							"depth": 1,
+							"isLast": true,
+							"ancestorIsLast": [
+								true
+							]
+						}
+					]
+				}
+			],
+			"variants": null,
+			"isFlat": false
+		},
+		"output": {
+			"rows": [
+				{
+					"id": "request_id",
+					"name": "request_id",
+					"type": "string",
+					"isArray": false,
+					"isObject": false,
+					"isOneOf": false,
+					"isOneOfChild": false,
+					"isFirstOneOfChild": false,
+					"isLastOneOfChild": false,
+					"required": false,
+					"description": "The async request id that can be used to obtain the results.",
+					"depth": 0,
+					"isLast": true,
+					"ancestorIsLast": []
+				}
+			],
+			"variants": null,
+			"isFlat": false
+		}
+	}
+}

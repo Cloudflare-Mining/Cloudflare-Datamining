@@ -1,0 +1,81 @@
+{
+	"description": "A list of all available Cloudflare MCP servers, including the code-mode server for broad API access and domain-specific servers for individual Cloudflare products.",
+	"name": "cloudflare-mcps",
+	"servers": [
+		{
+			"name": "Code mode API",
+			"description": "Broad access to the full Cloudflare API via code execution, with minimal token overhead",
+			"url": "https://mcp.cloudflare.com/mcp"
+		},
+		{
+			"name": "Documentation server",
+			"description": "Get up to date reference information on Cloudflare",
+			"url": "https://docs.mcp.cloudflare.com/mcp"
+		},
+		{
+			"name": "Workers Bindings server",
+			"description": "Build Workers applications with storage, AI, and compute primitives",
+			"url": "https://bindings.mcp.cloudflare.com/mcp"
+		},
+		{
+			"name": "Workers Builds server",
+			"description": "Get insights and manage your Cloudflare Workers Builds",
+			"url": "https://builds.mcp.cloudflare.com/mcp"
+		},
+		{
+			"name": "Observability server",
+			"description": "Debug and get insight into your application's logs and analytics",
+			"url": "https://observability.mcp.cloudflare.com/mcp"
+		},
+		{
+			"name": "Radar server",
+			"description": "Get global Internet traffic insights, trends, URL scans, and other utilities",
+			"url": "https://radar.mcp.cloudflare.com/mcp"
+		},
+		{
+			"name": "Container server",
+			"description": "Spin up a sandbox development environment",
+			"url": "https://containers.mcp.cloudflare.com/mcp"
+		},
+		{
+			"name": "Browser rendering server",
+			"description": "Fetch web pages, convert them to markdown and take screenshots",
+			"url": "https://browser.mcp.cloudflare.com/mcp"
+		},
+		{
+			"name": "Logpush server",
+			"description": "Get quick summaries for Logpush job health",
+			"url": "https://logs.mcp.cloudflare.com/mcp"
+		},
+		{
+			"name": "AI Gateway server",
+			"description": "Search your logs, get details about the prompts and responses",
+			"url": "https://ai-gateway.mcp.cloudflare.com/mcp"
+		},
+		{
+			"name": "Audit Logs server",
+			"description": "Query audit logs and generate reports for review",
+			"url": "https://auditlogs.mcp.cloudflare.com/mcp"
+		},
+		{
+			"name": "DNS Analytics server",
+			"description": "Optimize DNS performance and debug issues based on current set up",
+			"url": "https://dns-analytics.mcp.cloudflare.com/mcp"
+		},
+		{
+			"name": "Digital Experience Monitoring server",
+			"description": "Get quick insight on critical applications for your organization",
+			"url": "https://dex.mcp.cloudflare.com/mcp"
+		},
+		{
+			"name": "Cloudflare One CASB server",
+			"description": "Quickly identify any security misconfigurations for SaaS applications to safeguard users & data",
+			"url": "https://casb.mcp.cloudflare.com/mcp"
+		},
+		{
+			"name": "GraphQL server",
+			"description": "Get analytics data using Cloudflare’s GraphQL API",
+			"url": "https://graphql.mcp.cloudflare.com/mcp"
+		}
+	]
+}

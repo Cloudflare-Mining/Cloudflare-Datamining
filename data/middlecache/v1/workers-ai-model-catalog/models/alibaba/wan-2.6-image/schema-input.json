@@ -1,0 +1,24 @@
+{
+	"$schema": "https://json-schema.org/draft/2020-12/schema",
+	"type": "object",
+	"properties": {
+		"prompt": {
+			"type": "string"
+		},
+		"size": {
+			"type": "string",
+			"pattern": "^\\d+x\\d+$"
+		},
+		"negative_prompt": {
+			"type": "string"
+		},
+		"n": {
+			"type": "number",
+			"const": 1
+		}
+	},
+	"required": [
+		"prompt"
+	],
+	"additionalProperties": false
+}

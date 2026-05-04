@@ -1,0 +1,14 @@
+{
+	"$schema": "https://json-schema.org/draft/2020-12/schema",
+	"type": "object",
+	"properties": {
+		"text": {
+			"description": "The transcribed text.",
+			"type": "string"
+		}
+	},
+	"required": [
+		"text"
+	],
+	"additionalProperties": false
+}

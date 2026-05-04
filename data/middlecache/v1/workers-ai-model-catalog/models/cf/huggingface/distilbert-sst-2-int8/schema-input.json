@@ -1,0 +1,13 @@
+{
+	"type": "object",
+	"properties": {
+		"text": {
+			"type": "string",
+			"minLength": 1,
+			"description": "The text that you want to classify"
+		}
+	},
+	"required": [
+		"text"
+	]
+}

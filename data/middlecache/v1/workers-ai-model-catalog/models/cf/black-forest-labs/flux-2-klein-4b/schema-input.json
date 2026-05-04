@@ -1,0 +1,19 @@
+{
+	"type": "object",
+	"properties": {
+		"multipart": {
+			"type": "object",
+			"properties": {
+				"body": {
+					"type": "object"
+				},
+				"contentType": {
+					"type": "string"
+				}
+			}
+		}
+	},
+	"required": [
+		"multipart"
+	]
+}

@@ -1,0 +1,57 @@
+{
+	"type": "object",
+	"oneOf": [
+		{
+			"properties": {
+				"audio": {
+					"type": "object",
+					"description": "readable stream with audio data and content-type specified for that data",
+					"properties": {
+						"body": {
+							"type": "object"
+						},
+						"contentType": {
+							"type": "string"
+						}
+					},
+					"required": [
+						"body",
+						"contentType"
+					]
+				},
+				"dtype": {
+					"type": "string",
+					"description": "type of data PCM data that's sent to the inference server as raw array",
+					"enum": [
+						"uint8",
+						"float32",
+						"float64"
+					]
+				}
+			},
+			"required": [
+				"audio"
+			]
+		},
+		{
+			"properties": {
+				"audio": {
+					"type": "string",
+					"description": "base64 encoded audio data"
+				},
+				"dtype": {
+					"type": "string",
+					"description": "type of data PCM data that's sent to the inference server as raw array",
+					"enum": [
+						"uint8",
+						"float32",
+						"float64"
+					]
+				}
+			},
+			"required": [
+				"audio"
+			]
+		}
+	]
+}

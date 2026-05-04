@@ -1,0 +1,49 @@
+{
+	"$schema": "https://json-schema.org/draft/2020-12/schema",
+	"type": "object",
+	"properties": {
+		"prompt": {
+			"type": "string"
+		},
+		"size": {
+			"type": "string",
+			"enum": [
+				"1K",
+				"2K",
+				"4K",
+				"custom"
+			]
+		},
+		"aspect_ratio": {
+			"type": "string",
+			"enum": [
+				"match_input_image",
+				"1:1",
+				"4:3",
+				"3:4",
+				"16:9",
+				"9:16",
+				"3:2",
+				"2:3",
+				"21:9"
+			]
+		},
+		"width": {
+			"type": "integer",
+			"minimum": 1024,
+			"maximum": 4096
+		},
+		"height": {
+			"type": "integer",
+			"minimum": 1024,
+			"maximum": 4096
+		},
+		"enhance_prompt": {
+			"type": "boolean"
+		}
+	},
+	"required": [
+		"prompt"
+	],
+	"additionalProperties": false
+}
