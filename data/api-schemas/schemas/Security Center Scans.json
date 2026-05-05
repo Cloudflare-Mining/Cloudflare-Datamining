@@ -1,6 +1,6 @@
 {
 	"GET /accounts/{account_id}/security-center/insights/scans": {
-		"description": "Returns the most recent on-demand scans for the account, up to a maximum of 5. Each scan includes its ID, start time, and current status. This includes both account-wide and zone-scoped scans.",
+		"description": "Returns the most recent on-demand scans for the account, up to a maximum of 5. Each scan includes its ID, start time, and current status. This includes both account-wide and zone-scoped scans. Also returns quota information showing how many scans have been used and how many remain in the current 24-hour window.",
 		"operationId": "get-security-center-account-scans",
 		"parameters": [
 			{
@@ -107,36 +107,66 @@
 								{
 									"properties": {
 										"result": {
-											"items": {
-												"properties": {
-													"scan_id": {
-														"description": "An opaque identifier for the scan.",
-														"example": "d5e94e48-504f-4a7f-a8c4-e0dc2e05e5f2",
-														"type": "string"
+											"properties": {
+												"quota": {
+													"description": "Quota information for on-demand scans. Scans are rate limited per account per 24-hour rolling window.",
+													"properties": {
+														"available": {
+															"description": "The number of on-demand scans remaining in the current 24-hour window.",
+															"example": 2,
+															"type": "integer"
+														},
+														"used": {
+															"description": "The number of on-demand scans initiated in the current 24-hour window.",
+															"example": 3,
+															"type": "integer"
+														}
 													},
-													"started_at": {
-														"description": "The time at which the scan was started, in RFC 3339 format.",
-														"example": "2026-04-13T23:59:59Z",
-														"format": "date-time",
-														"type": "string"
-													},
-													"status": {
-														"description": "The current status of the scan.",
-														"enum": [
-															"in_progress",
-															"completed"
-														],
-														"type": "string"
-													}
+													"required": [
+														"used",
+														"available"
+													],
+													"type": "object"
 												},
-												"required": [
-													"scan_id",
-													"started_at",
-													"status"
-												],
-												"type": "object"
+												"scans": {
+													"description": "List of on-demand scans.",
+													"items": {
+														"properties": {
+															"scan_id": {
+																"description": "An opaque identifier for the scan.",
+																"example": "d5e94e48-504f-4a7f-a8c4-e0dc2e05e5f2",
+																"type": "string"
+															},
+															"started_at": {
+																"description": "The time at which the scan was started, in RFC 3339 format.",
+																"example": "2026-04-13T23:59:59Z",
+																"format": "date-time",
+																"type": "string"
+															},
+															"status": {
+																"description": "The current status of the scan.",
+																"enum": [
+																	"in_progress",
+																	"completed"
+																],
+																"type": "string"
+															}
+														},
+														"required": [
+															"scan_id",
+															"started_at",
+															"status"
+														],
+														"type": "object"
+													},
+													"type": "array"
+												}
 											},
-											"type": "array"
+											"required": [
+												"scans",
+												"quota"
+											],
+											"type": "object"
 										}
 									},
 									"type": "object"
@@ -276,7 +306,7 @@
 		]
 	},
 	"GET /zones/{zone_id}/security-center/insights/scans": {
-		"description": "Returns the most recent on-demand scans for a specific zone, up to a maximum of 5. Each scan includes its ID, start time, and current status.",
+		"description": "Returns the most recent on-demand scans for a specific zone, up to a maximum of 5. Each scan includes its ID, start time, and current status. Results include both zone-specific scans and account-wide scans (which cover all zones). Also returns quota information showing how many scans have been used and how many remain in the current 24-hour window.",
 		"operationId": "get-security-center-zone-scans",
 		"parameters": [
 			{
@@ -383,36 +413,66 @@
 								{
 									"properties": {
 										"result": {
-											"items": {
-												"properties": {
-													"scan_id": {
-														"description": "An opaque identifier for the scan.",
-														"example": "d5e94e48-504f-4a7f-a8c4-e0dc2e05e5f2",
-														"type": "string"
+											"properties": {
+												"quota": {
+													"description": "Quota information for on-demand scans. Scans are rate limited per account per 24-hour rolling window.",
+													"properties": {
+														"available": {
+															"description": "The number of on-demand scans remaining in the current 24-hour window.",
+															"example": 2,
+															"type": "integer"
+														},
+														"used": {
+															"description": "The number of on-demand scans initiated in the current 24-hour window.",
+															"example": 3,
+															"type": "integer"
+														}
 													},
-													"started_at": {
-														"description": "The time at which the scan was started, in RFC 3339 format.",
-														"example": "2026-04-13T23:59:59Z",
-														"format": "date-time",
-														"type": "string"
-													},
-													"status": {
-														"description": "The current status of the scan.",
-														"enum": [
-															"in_progress",
-															"completed"
-														],
-														"type": "string"
-													}
+													"required": [
+														"used",
+														"available"
+													],
+													"type": "object"
 												},
-												"required": [
-													"scan_id",
-													"started_at",
-													"status"
-												],
-												"type": "object"
+												"scans": {
+													"description": "List of on-demand scans.",
+													"items": {
+														"properties": {
+															"scan_id": {
+																"description": "An opaque identifier for the scan.",
+																"example": "d5e94e48-504f-4a7f-a8c4-e0dc2e05e5f2",
+																"type": "string"
+															},
+															"started_at": {
+																"description": "The time at which the scan was started, in RFC 3339 format.",
+																"example": "2026-04-13T23:59:59Z",
+																"format": "date-time",
+																"type": "string"
+															},
+															"status": {
+																"description": "The current status of the scan.",
+																"enum": [
+																	"in_progress",
+																	"completed"
+																],
+																"type": "string"
+															}
+														},
+														"required": [
+															"scan_id",
+															"started_at",
+															"status"
+														],
+														"type": "object"
+													},
+													"type": "array"
+												}
 											},
-											"type": "array"
+											"required": [
+												"scans",
+												"quota"
+											],
+											"type": "object"
 										}
 									},
 									"type": "object"

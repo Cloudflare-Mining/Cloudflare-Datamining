@@ -1254,6 +1254,22 @@
 					"example": true,
 					"type": "boolean"
 				}
+			},
+			{
+				"description": "Filter shares by tag. Each value is either `key=value` (matches shares whose tags contain that key/value pair) or `key` alone (matches shares that have any value for that key). May be repeated; multiple `tag` parameters are ANDed together. Maximum 20 `tag` parameters per request.",
+				"explode": true,
+				"in": "query",
+				"name": "tag",
+				"schema": {
+					"items": {
+						"example": "env=production",
+						"maxLength": 1281,
+						"type": "string"
+					},
+					"maxItems": 20,
+					"type": "array"
+				},
+				"style": "form"
 			}
 		],
 		"responses": {

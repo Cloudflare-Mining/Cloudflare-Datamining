@@ -115,6 +115,13 @@
 													"nullable": true,
 													"type": "string"
 												},
+												"email": {
+													"description": "Current email address of the user.",
+													"example": "alice@example.com",
+													"format": "email",
+													"readOnly": true,
+													"type": "string"
+												},
 												"first_name": {
 													"description": "User's first name",
 													"example": "John",
@@ -243,6 +250,10 @@
 													"type": "string"
 												}
 											},
+											"required": [
+												"id",
+												"email"
+											],
 											"type": "object"
 										}
 									},
@@ -810,6 +821,13 @@
 													"nullable": true,
 													"type": "string"
 												},
+												"email": {
+													"description": "Current email address of the user.",
+													"example": "alice@example.com",
+													"format": "email",
+													"readOnly": true,
+													"type": "string"
+												},
 												"first_name": {
 													"description": "User's first name",
 													"example": "John",
@@ -938,6 +956,10 @@
 													"type": "string"
 												}
 											},
+											"required": [
+												"id",
+												"email"
+											],
 											"type": "object"
 										}
 									},
