@@ -1,5 +1,19 @@
 # @cloudflare/kumo
 
+## 2.0.5
+
+### Patch Changes
+
+- 8f8a55d: Export `Combobox.Trigger`, `Combobox.Value`, and `Combobox.Icon` — the raw Base UI primitives for building custom combobox triggers. Use these when you need full control over the trigger's visual treatment (e.g. a sidebar account switcher that renders as a plain button instead of an input-like control).
+
+## 2.0.4
+
+### Patch Changes
+
+- 8926ee7: fix(CloudflareLogo): remove registered trademark symbol from full logo variant
+- 75d4f4d: Fix Google Translate DOM mutation crash in Button
+- f2d356d: Remove z-50 from mobile Sidebar Dialog backdrop and panel. The z-50 caused portaled floating elements (Popover, DropdownMenu, Select, Combobox) opened from inside the Sidebar to render behind the Dialog backdrop. Matches the pattern used by Kumo's own Dialog component, which relies on DOM order for stacking with no explicit z-index. Also adds `data-sidebar-backdrop` and `data-sidebar-popup` attributes as stable CSS hooks.
+
 ## 2.0.3
 
 ### Patch Changes
