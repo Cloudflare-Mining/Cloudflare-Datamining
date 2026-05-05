@@ -1878,7 +1878,7 @@
 		]
 	},
 	"POST /accounts/{account_id}/logs/explorer/datasets": {
-		"description": "Create a new Log Explorer dataset for the account.\n\nUse the `/accounts/{account_id}/logs/explorer/datasets/available` endpoint\nto list dataset types you can create along with their available fields.\n\nThe `fields` property is optional. If not specified, all available fields\nwill be enabled.\n",
+		"description": "Create a new Log Explorer dataset for the account.\n\nUse the `/accounts/{account_id}/logs/explorer/datasets/available` endpoint\nto list dataset types you can create along with their available fields.\n\nThe `fields` property is optional. If not specified, all available fields\nwill be enabled.\n\nFor zone-level datasets use the zone-scoped endpoint: POST /zones/{zone_id}/logs/explorer/datasets\n\nFor dataset field definitions, see: https://developers.cloudflare.com/logs/logpush/logpush-job/datasets/\n",
 		"operationId": "accounts-logs-explorer-datasets-create",
 		"requestBody": {
 			"content": {
@@ -2313,7 +2313,7 @@
 		]
 	},
 	"POST /zones/{zone_id}/logs/explorer/datasets": {
-		"description": "Create a new Log Explorer dataset for the zone.\n\nUse the `/zones/{zone_id}/logs/explorer/datasets/available` endpoint\nto list dataset types you can create along with their available fields.\n\nThe `fields` property is optional. If not specified, all available fields\nwill be enabled.\n",
+		"description": "Create a new Log Explorer dataset for the zone.\n\nUse the `/zones/{zone_id}/logs/explorer/datasets/available` endpoint\nto list dataset types you can create along with their available fields.\n\nThe `fields` property is optional. If not specified, all available fields\nwill be enabled.\n\nFor account-level datasets use the account-scoped endpoint: POST /accounts/{account_id}/logs/explorer/datasets\n\nFor dataset field definitions, see: https://developers.cloudflare.com/logs/logpush/logpush-job/datasets/\n",
 		"operationId": "zones-logs-explorer-datasets-create",
 		"requestBody": {
 			"content": {
