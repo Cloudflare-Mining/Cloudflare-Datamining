@@ -619,11 +619,15 @@
 														"parse_options": {
 															"properties": {
 																"content_selector": {
-																	"description": "List of path-to-selector mappings for extracting specific content from crawled pages. Each entry pairs a URL glob pattern with a CSS selector. The first matching path wins. Only the matched HTML fragment is stored and indexed.",
+																	"description": "List of path-to-selector mappings for extracting specific content from crawled pages. Each entry pairs a URL glob pattern with a CSS selector. The first matching path wins. Only the matched HTML fragment is stored and indexed. Omit the field to disable content selection — empty arrays are rejected.",
 																	"example": [
 																		{
 																			"path": "**/blog/**",
-																			"selector": "article .post-body"
+																			"selector": "article div.post-body"
+																		},
+																		{
+																			"path": "**/docs/**",
+																			"selector": "main"
 																		}
 																	],
 																	"items": {
@@ -632,12 +636,14 @@
 																				"description": "Glob pattern to match against the page URL path. Uses standard glob syntax: * matches within a segment, ** crosses directories.",
 																				"example": "**/article/**",
 																				"maxLength": 200,
+																				"minLength": 1,
 																				"type": "string"
 																			},
 																			"selector": {
-																				"description": "CSS selector to extract content from pages matching the path pattern. Supports standard CSS selectors including class, ID, element, and attribute selectors.",
-																				"example": "article .post-body",
+																				"description": "CSS selector to extract content from pages matching the path pattern. Must not contain disallowed characters (;, `, $, {, }, \\). Must target a single element; if multiple elements match, the selector is ignored and the full page is used.",
+																				"example": "article div.post-body",
 																				"maxLength": 200,
+																				"minLength": 1,
 																				"type": "string"
 																			}
 																		},
@@ -648,12 +654,18 @@
 																		"type": "object"
 																	},
 																	"maxItems": 10,
+																	"minItems": 1,
 																	"type": "array"
 																},
 																"include_headers": {
 																	"additionalProperties": {
 																		"maxLength": 8192,
+																		"pattern": "^[\\t\\x20-\\x7E]*$",
 																		"type": "string"
+																	},
+																	"description": "Up to 5 custom HTTP headers sent with each crawl request. Names must be RFC-7230 token characters (no spaces, colons, or control characters); values must be HTAB + printable ASCII (no CR/LF).",
+																	"example": {
+																		"cache-control": "no-cache, no-store"
 																	},
 																	"type": "object"
 																},
@@ -1512,11 +1524,15 @@
 														"parse_options": {
 															"properties": {
 																"content_selector": {
-																	"description": "List of path-to-selector mappings for extracting specific content from crawled pages. Each entry pairs a URL glob pattern with a CSS selector. The first matching path wins. Only the matched HTML fragment is stored and indexed.",
+																	"description": "List of path-to-selector mappings for extracting specific content from crawled pages. Each entry pairs a URL glob pattern with a CSS selector. The first matching path wins. Only the matched HTML fragment is stored and indexed. Omit the field to disable content selection — empty arrays are rejected.",
 																	"example": [
 																		{
 																			"path": "**/blog/**",
-																			"selector": "article .post-body"
+																			"selector": "article div.post-body"
+																		},
+																		{
+																			"path": "**/docs/**",
+																			"selector": "main"
 																		}
 																	],
 																	"items": {
@@ -1525,12 +1541,14 @@
 																				"description": "Glob pattern to match against the page URL path. Uses standard glob syntax: * matches within a segment, ** crosses directories.",
 																				"example": "**/article/**",
 																				"maxLength": 200,
+																				"minLength": 1,
 																				"type": "string"
 																			},
 																			"selector": {
-																				"description": "CSS selector to extract content from pages matching the path pattern. Supports standard CSS selectors including class, ID, element, and attribute selectors.",
-																				"example": "article .post-body",
+																				"description": "CSS selector to extract content from pages matching the path pattern. Must not contain disallowed characters (;, `, $, {, }, \\). Must target a single element; if multiple elements match, the selector is ignored and the full page is used.",
+																				"example": "article div.post-body",
 																				"maxLength": 200,
+																				"minLength": 1,
 																				"type": "string"
 																			}
 																		},
@@ -1541,12 +1559,18 @@
 																		"type": "object"
 																	},
 																	"maxItems": 10,
+																	"minItems": 1,
 																	"type": "array"
 																},
 																"include_headers": {
 																	"additionalProperties": {
 																		"maxLength": 8192,
+																		"pattern": "^[\\t\\x20-\\x7E]*$",
 																		"type": "string"
+																	},
+																	"description": "Up to 5 custom HTTP headers sent with each crawl request. Names must be RFC-7230 token characters (no spaces, colons, or control characters); values must be HTAB + printable ASCII (no CR/LF).",
+																	"example": {
+																		"cache-control": "no-cache, no-store"
 																	},
 																	"type": "object"
 																},
@@ -2458,11 +2482,15 @@
 															"parse_options": {
 																"properties": {
 																	"content_selector": {
-																		"description": "List of path-to-selector mappings for extracting specific content from crawled pages. Each entry pairs a URL glob pattern with a CSS selector. The first matching path wins. Only the matched HTML fragment is stored and indexed.",
+																		"description": "List of path-to-selector mappings for extracting specific content from crawled pages. Each entry pairs a URL glob pattern with a CSS selector. The first matching path wins. Only the matched HTML fragment is stored and indexed. Omit the field to disable content selection — empty arrays are rejected.",
 																		"example": [
 																			{
 																				"path": "**/blog/**",
-																				"selector": "article .post-body"
+																				"selector": "article div.post-body"
+																			},
+																			{
+																				"path": "**/docs/**",
+																				"selector": "main"
 																			}
 																		],
 																		"items": {
@@ -2471,12 +2499,14 @@
 																					"description": "Glob pattern to match against the page URL path. Uses standard glob syntax: * matches within a segment, ** crosses directories.",
 																					"example": "**/article/**",
 																					"maxLength": 200,
+																					"minLength": 1,
 																					"type": "string"
 																				},
 																				"selector": {
-																					"description": "CSS selector to extract content from pages matching the path pattern. Supports standard CSS selectors including class, ID, element, and attribute selectors.",
-																					"example": "article .post-body",
+																					"description": "CSS selector to extract content from pages matching the path pattern. Must not contain disallowed characters (;, `, $, {, }, \\). Must target a single element; if multiple elements match, the selector is ignored and the full page is used.",
+																					"example": "article div.post-body",
 																					"maxLength": 200,
+																					"minLength": 1,
 																					"type": "string"
 																				}
 																			},
@@ -2487,12 +2517,18 @@
 																			"type": "object"
 																		},
 																		"maxItems": 10,
+																		"minItems": 1,
 																		"type": "array"
 																	},
 																	"include_headers": {
 																		"additionalProperties": {
 																			"maxLength": 8192,
+																			"pattern": "^[\\t\\x20-\\x7E]*$",
 																			"type": "string"
+																		},
+																		"description": "Up to 5 custom HTTP headers sent with each crawl request. Names must be RFC-7230 token characters (no spaces, colons, or control characters); values must be HTAB + printable ASCII (no CR/LF).",
+																		"example": {
+																			"cache-control": "no-cache, no-store"
 																		},
 																		"type": "object"
 																	},
@@ -3377,11 +3413,15 @@
 														"parse_options": {
 															"properties": {
 																"content_selector": {
-																	"description": "List of path-to-selector mappings for extracting specific content from crawled pages. Each entry pairs a URL glob pattern with a CSS selector. The first matching path wins. Only the matched HTML fragment is stored and indexed.",
+																	"description": "List of path-to-selector mappings for extracting specific content from crawled pages. Each entry pairs a URL glob pattern with a CSS selector. The first matching path wins. Only the matched HTML fragment is stored and indexed. Omit the field to disable content selection — empty arrays are rejected.",
 																	"example": [
 																		{
 																			"path": "**/blog/**",
-																			"selector": "article .post-body"
+																			"selector": "article div.post-body"
+																		},
+																		{
+																			"path": "**/docs/**",
+																			"selector": "main"
 																		}
 																	],
 																	"items": {
@@ -3390,12 +3430,14 @@
 																				"description": "Glob pattern to match against the page URL path. Uses standard glob syntax: * matches within a segment, ** crosses directories.",
 																				"example": "**/article/**",
 																				"maxLength": 200,
+																				"minLength": 1,
 																				"type": "string"
 																			},
 																			"selector": {
-																				"description": "CSS selector to extract content from pages matching the path pattern. Supports standard CSS selectors including class, ID, element, and attribute selectors.",
-																				"example": "article .post-body",
+																				"description": "CSS selector to extract content from pages matching the path pattern. Must not contain disallowed characters (;, `, $, {, }, \\). Must target a single element; if multiple elements match, the selector is ignored and the full page is used.",
+																				"example": "article div.post-body",
 																				"maxLength": 200,
+																				"minLength": 1,
 																				"type": "string"
 																			}
 																		},
@@ -3406,12 +3448,18 @@
 																		"type": "object"
 																	},
 																	"maxItems": 10,
+																	"minItems": 1,
 																	"type": "array"
 																},
 																"include_headers": {
 																	"additionalProperties": {
 																		"maxLength": 8192,
+																		"pattern": "^[\\t\\x20-\\x7E]*$",
 																		"type": "string"
+																	},
+																	"description": "Up to 5 custom HTTP headers sent with each crawl request. Names must be RFC-7230 token characters (no spaces, colons, or control characters); values must be HTAB + printable ASCII (no CR/LF).",
+																	"example": {
+																		"cache-control": "no-cache, no-store"
 																	},
 																	"type": "object"
 																},
@@ -4525,11 +4573,15 @@
 															"parse_options": {
 																"properties": {
 																	"content_selector": {
-																		"description": "List of path-to-selector mappings for extracting specific content from crawled pages. Each entry pairs a URL glob pattern with a CSS selector. The first matching path wins. Only the matched HTML fragment is stored and indexed.",
+																		"description": "List of path-to-selector mappings for extracting specific content from crawled pages. Each entry pairs a URL glob pattern with a CSS selector. The first matching path wins. Only the matched HTML fragment is stored and indexed. Omit the field to disable content selection — empty arrays are rejected.",
 																		"example": [
 																			{
 																				"path": "**/blog/**",
-																				"selector": "article .post-body"
+																				"selector": "article div.post-body"
+																			},
+																			{
+																				"path": "**/docs/**",
+																				"selector": "main"
 																			}
 																		],
 																		"items": {
@@ -4538,12 +4590,14 @@
 																					"description": "Glob pattern to match against the page URL path. Uses standard glob syntax: * matches within a segment, ** crosses directories.",
 																					"example": "**/article/**",
 																					"maxLength": 200,
+																					"minLength": 1,
 																					"type": "string"
 																				},
 																				"selector": {
-																					"description": "CSS selector to extract content from pages matching the path pattern. Supports standard CSS selectors including class, ID, element, and attribute selectors.",
-																					"example": "article .post-body",
+																					"description": "CSS selector to extract content from pages matching the path pattern. Must not contain disallowed characters (;, `, $, {, }, \\). Must target a single element; if multiple elements match, the selector is ignored and the full page is used.",
+																					"example": "article div.post-body",
 																					"maxLength": 200,
+																					"minLength": 1,
 																					"type": "string"
 																				}
 																			},
@@ -4554,12 +4608,18 @@
 																			"type": "object"
 																		},
 																		"maxItems": 10,
+																		"minItems": 1,
 																		"type": "array"
 																	},
 																	"include_headers": {
 																		"additionalProperties": {
 																			"maxLength": 8192,
+																			"pattern": "^[\\t\\x20-\\x7E]*$",
 																			"type": "string"
+																		},
+																		"description": "Up to 5 custom HTTP headers sent with each crawl request. Names must be RFC-7230 token characters (no spaces, colons, or control characters); values must be HTAB + printable ASCII (no CR/LF).",
+																		"example": {
+																			"cache-control": "no-cache, no-store"
 																		},
 																		"type": "object"
 																	},
@@ -5454,11 +5514,15 @@
 														"parse_options": {
 															"properties": {
 																"content_selector": {
-																	"description": "List of path-to-selector mappings for extracting specific content from crawled pages. Each entry pairs a URL glob pattern with a CSS selector. The first matching path wins. Only the matched HTML fragment is stored and indexed.",
+																	"description": "List of path-to-selector mappings for extracting specific content from crawled pages. Each entry pairs a URL glob pattern with a CSS selector. The first matching path wins. Only the matched HTML fragment is stored and indexed. Omit the field to disable content selection — empty arrays are rejected.",
 																	"example": [
 																		{
 																			"path": "**/blog/**",
-																			"selector": "article .post-body"
+																			"selector": "article div.post-body"
+																		},
+																		{
+																			"path": "**/docs/**",
+																			"selector": "main"
 																		}
 																	],
 																	"items": {
@@ -5467,12 +5531,14 @@
 																				"description": "Glob pattern to match against the page URL path. Uses standard glob syntax: * matches within a segment, ** crosses directories.",
 																				"example": "**/article/**",
 																				"maxLength": 200,
+																				"minLength": 1,
 																				"type": "string"
 																			},
 																			"selector": {
-																				"description": "CSS selector to extract content from pages matching the path pattern. Supports standard CSS selectors including class, ID, element, and attribute selectors.",
-																				"example": "article .post-body",
+																				"description": "CSS selector to extract content from pages matching the path pattern. Must not contain disallowed characters (;, `, $, {, }, \\). Must target a single element; if multiple elements match, the selector is ignored and the full page is used.",
+																				"example": "article div.post-body",
 																				"maxLength": 200,
+																				"minLength": 1,
 																				"type": "string"
 																			}
 																		},
@@ -5483,12 +5549,18 @@
 																		"type": "object"
 																	},
 																	"maxItems": 10,
+																	"minItems": 1,
 																	"type": "array"
 																},
 																"include_headers": {
 																	"additionalProperties": {
 																		"maxLength": 8192,
+																		"pattern": "^[\\t\\x20-\\x7E]*$",
 																		"type": "string"
+																	},
+																	"description": "Up to 5 custom HTTP headers sent with each crawl request. Names must be RFC-7230 token characters (no spaces, colons, or control characters); values must be HTAB + printable ASCII (no CR/LF).",
+																	"example": {
+																		"cache-control": "no-cache, no-store"
 																	},
 																	"type": "object"
 																},
@@ -6480,11 +6552,15 @@
 											"parse_options": {
 												"properties": {
 													"content_selector": {
-														"description": "List of path-to-selector mappings for extracting specific content from crawled pages. Each entry pairs a URL glob pattern with a CSS selector. The first matching path wins. Only the matched HTML fragment is stored and indexed.",
+														"description": "List of path-to-selector mappings for extracting specific content from crawled pages. Each entry pairs a URL glob pattern with a CSS selector. The first matching path wins. Only the matched HTML fragment is stored and indexed. Omit the field to disable content selection — empty arrays are rejected.",
 														"example": [
 															{
 																"path": "**/blog/**",
-																"selector": "article .post-body"
+																"selector": "article div.post-body"
+															},
+															{
+																"path": "**/docs/**",
+																"selector": "main"
 															}
 														],
 														"items": {
@@ -6493,12 +6569,14 @@
 																	"description": "Glob pattern to match against the page URL path. Uses standard glob syntax: * matches within a segment, ** crosses directories.",
 																	"example": "**/article/**",
 																	"maxLength": 200,
+																	"minLength": 1,
 																	"type": "string"
 																},
 																"selector": {
-																	"description": "CSS selector to extract content from pages matching the path pattern. Supports standard CSS selectors including class, ID, element, and attribute selectors.",
-																	"example": "article .post-body",
+																	"description": "CSS selector to extract content from pages matching the path pattern. Must not contain disallowed characters (;, `, $, {, }, \\). Must target a single element; if multiple elements match, the selector is ignored and the full page is used.",
+																	"example": "article div.post-body",
 																	"maxLength": 200,
+																	"minLength": 1,
 																	"type": "string"
 																}
 															},
@@ -6509,12 +6587,18 @@
 															"type": "object"
 														},
 														"maxItems": 10,
+														"minItems": 1,
 														"type": "array"
 													},
 													"include_headers": {
 														"additionalProperties": {
 															"maxLength": 8192,
+															"pattern": "^[\\t\\x20-\\x7E]*$",
 															"type": "string"
+														},
+														"description": "Up to 5 custom HTTP headers sent with each crawl request. Names must be RFC-7230 token characters (no spaces, colons, or control characters); values must be HTAB + printable ASCII (no CR/LF).",
+														"example": {
+															"cache-control": "no-cache, no-store"
 														},
 														"type": "object"
 													},
@@ -7256,11 +7340,15 @@
 														"parse_options": {
 															"properties": {
 																"content_selector": {
-																	"description": "List of path-to-selector mappings for extracting specific content from crawled pages. Each entry pairs a URL glob pattern with a CSS selector. The first matching path wins. Only the matched HTML fragment is stored and indexed.",
+																	"description": "List of path-to-selector mappings for extracting specific content from crawled pages. Each entry pairs a URL glob pattern with a CSS selector. The first matching path wins. Only the matched HTML fragment is stored and indexed. Omit the field to disable content selection — empty arrays are rejected.",
 																	"example": [
 																		{
 																			"path": "**/blog/**",
-																			"selector": "article .post-body"
+																			"selector": "article div.post-body"
+																		},
+																		{
+																			"path": "**/docs/**",
+																			"selector": "main"
 																		}
 																	],
 																	"items": {
@@ -7269,12 +7357,14 @@
 																				"description": "Glob pattern to match against the page URL path. Uses standard glob syntax: * matches within a segment, ** crosses directories.",
 																				"example": "**/article/**",
 																				"maxLength": 200,
+																				"minLength": 1,
 																				"type": "string"
 																			},
 																			"selector": {
-																				"description": "CSS selector to extract content from pages matching the path pattern. Supports standard CSS selectors including class, ID, element, and attribute selectors.",
-																				"example": "article .post-body",
+																				"description": "CSS selector to extract content from pages matching the path pattern. Must not contain disallowed characters (;, `, $, {, }, \\). Must target a single element; if multiple elements match, the selector is ignored and the full page is used.",
+																				"example": "article div.post-body",
 																				"maxLength": 200,
+																				"minLength": 1,
 																				"type": "string"
 																			}
 																		},
@@ -7285,12 +7375,18 @@
 																		"type": "object"
 																	},
 																	"maxItems": 10,
+																	"minItems": 1,
 																	"type": "array"
 																},
 																"include_headers": {
 																	"additionalProperties": {
 																		"maxLength": 8192,
+																		"pattern": "^[\\t\\x20-\\x7E]*$",
 																		"type": "string"
+																	},
+																	"description": "Up to 5 custom HTTP headers sent with each crawl request. Names must be RFC-7230 token characters (no spaces, colons, or control characters); values must be HTAB + printable ASCII (no CR/LF).",
+																	"example": {
+																		"cache-control": "no-cache, no-store"
 																	},
 																	"type": "object"
 																},
@@ -9197,11 +9293,15 @@
 											"parse_options": {
 												"properties": {
 													"content_selector": {
-														"description": "List of path-to-selector mappings for extracting specific content from crawled pages. Each entry pairs a URL glob pattern with a CSS selector. The first matching path wins. Only the matched HTML fragment is stored and indexed.",
+														"description": "List of path-to-selector mappings for extracting specific content from crawled pages. Each entry pairs a URL glob pattern with a CSS selector. The first matching path wins. Only the matched HTML fragment is stored and indexed. Omit the field to disable content selection — empty arrays are rejected.",
 														"example": [
 															{
 																"path": "**/blog/**",
-																"selector": "article .post-body"
+																"selector": "article div.post-body"
+															},
+															{
+																"path": "**/docs/**",
+																"selector": "main"
 															}
 														],
 														"items": {
@@ -9210,12 +9310,14 @@
 																	"description": "Glob pattern to match against the page URL path. Uses standard glob syntax: * matches within a segment, ** crosses directories.",
 																	"example": "**/article/**",
 																	"maxLength": 200,
+																	"minLength": 1,
 																	"type": "string"
 																},
 																"selector": {
-																	"description": "CSS selector to extract content from pages matching the path pattern. Supports standard CSS selectors including class, ID, element, and attribute selectors.",
-																	"example": "article .post-body",
+																	"description": "CSS selector to extract content from pages matching the path pattern. Must not contain disallowed characters (;, `, $, {, }, \\). Must target a single element; if multiple elements match, the selector is ignored and the full page is used.",
+																	"example": "article div.post-body",
 																	"maxLength": 200,
+																	"minLength": 1,
 																	"type": "string"
 																}
 															},
@@ -9226,12 +9328,18 @@
 															"type": "object"
 														},
 														"maxItems": 10,
+														"minItems": 1,
 														"type": "array"
 													},
 													"include_headers": {
 														"additionalProperties": {
 															"maxLength": 8192,
+															"pattern": "^[\\t\\x20-\\x7E]*$",
 															"type": "string"
+														},
+														"description": "Up to 5 custom HTTP headers sent with each crawl request. Names must be RFC-7230 token characters (no spaces, colons, or control characters); values must be HTAB + printable ASCII (no CR/LF).",
+														"example": {
+															"cache-control": "no-cache, no-store"
 														},
 														"type": "object"
 													},
@@ -9973,11 +10081,15 @@
 														"parse_options": {
 															"properties": {
 																"content_selector": {
-																	"description": "List of path-to-selector mappings for extracting specific content from crawled pages. Each entry pairs a URL glob pattern with a CSS selector. The first matching path wins. Only the matched HTML fragment is stored and indexed.",
+																	"description": "List of path-to-selector mappings for extracting specific content from crawled pages. Each entry pairs a URL glob pattern with a CSS selector. The first matching path wins. Only the matched HTML fragment is stored and indexed. Omit the field to disable content selection — empty arrays are rejected.",
 																	"example": [
 																		{
 																			"path": "**/blog/**",
-																			"selector": "article .post-body"
+																			"selector": "article div.post-body"
+																		},
+																		{
+																			"path": "**/docs/**",
+																			"selector": "main"
 																		}
 																	],
 																	"items": {
@@ -9986,12 +10098,14 @@
 																				"description": "Glob pattern to match against the page URL path. Uses standard glob syntax: * matches within a segment, ** crosses directories.",
 																				"example": "**/article/**",
 																				"maxLength": 200,
+																				"minLength": 1,
 																				"type": "string"
 																			},
 																			"selector": {
-																				"description": "CSS selector to extract content from pages matching the path pattern. Supports standard CSS selectors including class, ID, element, and attribute selectors.",
-																				"example": "article .post-body",
+																				"description": "CSS selector to extract content from pages matching the path pattern. Must not contain disallowed characters (;, `, $, {, }, \\). Must target a single element; if multiple elements match, the selector is ignored and the full page is used.",
+																				"example": "article div.post-body",
 																				"maxLength": 200,
+																				"minLength": 1,
 																				"type": "string"
 																			}
 																		},
@@ -10002,12 +10116,18 @@
 																		"type": "object"
 																	},
 																	"maxItems": 10,
+																	"minItems": 1,
 																	"type": "array"
 																},
 																"include_headers": {
 																	"additionalProperties": {
 																		"maxLength": 8192,
+																		"pattern": "^[\\t\\x20-\\x7E]*$",
 																		"type": "string"
+																	},
+																	"description": "Up to 5 custom HTTP headers sent with each crawl request. Names must be RFC-7230 token characters (no spaces, colons, or control characters); values must be HTAB + printable ASCII (no CR/LF).",
+																	"example": {
+																		"cache-control": "no-cache, no-store"
 																	},
 																	"type": "object"
 																},
@@ -11917,11 +12037,15 @@
 											"parse_options": {
 												"properties": {
 													"content_selector": {
-														"description": "List of path-to-selector mappings for extracting specific content from crawled pages. Each entry pairs a URL glob pattern with a CSS selector. The first matching path wins. Only the matched HTML fragment is stored and indexed.",
+														"description": "List of path-to-selector mappings for extracting specific content from crawled pages. Each entry pairs a URL glob pattern with a CSS selector. The first matching path wins. Only the matched HTML fragment is stored and indexed. Omit the field to disable content selection — empty arrays are rejected.",
 														"example": [
 															{
 																"path": "**/blog/**",
-																"selector": "article .post-body"
+																"selector": "article div.post-body"
+															},
+															{
+																"path": "**/docs/**",
+																"selector": "main"
 															}
 														],
 														"items": {
@@ -11930,12 +12054,14 @@
 																	"description": "Glob pattern to match against the page URL path. Uses standard glob syntax: * matches within a segment, ** crosses directories.",
 																	"example": "**/article/**",
 																	"maxLength": 200,
+																	"minLength": 1,
 																	"type": "string"
 																},
 																"selector": {
-																	"description": "CSS selector to extract content from pages matching the path pattern. Supports standard CSS selectors including class, ID, element, and attribute selectors.",
-																	"example": "article .post-body",
+																	"description": "CSS selector to extract content from pages matching the path pattern. Must not contain disallowed characters (;, `, $, {, }, \\). Must target a single element; if multiple elements match, the selector is ignored and the full page is used.",
+																	"example": "article div.post-body",
 																	"maxLength": 200,
+																	"minLength": 1,
 																	"type": "string"
 																}
 															},
@@ -11946,12 +12072,18 @@
 															"type": "object"
 														},
 														"maxItems": 10,
+														"minItems": 1,
 														"type": "array"
 													},
 													"include_headers": {
 														"additionalProperties": {
 															"maxLength": 8192,
+															"pattern": "^[\\t\\x20-\\x7E]*$",
 															"type": "string"
+														},
+														"description": "Up to 5 custom HTTP headers sent with each crawl request. Names must be RFC-7230 token characters (no spaces, colons, or control characters); values must be HTAB + printable ASCII (no CR/LF).",
+														"example": {
+															"cache-control": "no-cache, no-store"
 														},
 														"type": "object"
 													},
@@ -12738,11 +12870,15 @@
 														"parse_options": {
 															"properties": {
 																"content_selector": {
-																	"description": "List of path-to-selector mappings for extracting specific content from crawled pages. Each entry pairs a URL glob pattern with a CSS selector. The first matching path wins. Only the matched HTML fragment is stored and indexed.",
+																	"description": "List of path-to-selector mappings for extracting specific content from crawled pages. Each entry pairs a URL glob pattern with a CSS selector. The first matching path wins. Only the matched HTML fragment is stored and indexed. Omit the field to disable content selection — empty arrays are rejected.",
 																	"example": [
 																		{
 																			"path": "**/blog/**",
-																			"selector": "article .post-body"
+																			"selector": "article div.post-body"
+																		},
+																		{
+																			"path": "**/docs/**",
+																			"selector": "main"
 																		}
 																	],
 																	"items": {
@@ -12751,12 +12887,14 @@
 																				"description": "Glob pattern to match against the page URL path. Uses standard glob syntax: * matches within a segment, ** crosses directories.",
 																				"example": "**/article/**",
 																				"maxLength": 200,
+																				"minLength": 1,
 																				"type": "string"
 																			},
 																			"selector": {
-																				"description": "CSS selector to extract content from pages matching the path pattern. Supports standard CSS selectors including class, ID, element, and attribute selectors.",
-																				"example": "article .post-body",
+																				"description": "CSS selector to extract content from pages matching the path pattern. Must not contain disallowed characters (;, `, $, {, }, \\). Must target a single element; if multiple elements match, the selector is ignored and the full page is used.",
+																				"example": "article div.post-body",
 																				"maxLength": 200,
+																				"minLength": 1,
 																				"type": "string"
 																			}
 																		},
@@ -12767,12 +12905,18 @@
 																		"type": "object"
 																	},
 																	"maxItems": 10,
+																	"minItems": 1,
 																	"type": "array"
 																},
 																"include_headers": {
 																	"additionalProperties": {
 																		"maxLength": 8192,
+																		"pattern": "^[\\t\\x20-\\x7E]*$",
 																		"type": "string"
+																	},
+																	"description": "Up to 5 custom HTTP headers sent with each crawl request. Names must be RFC-7230 token characters (no spaces, colons, or control characters); values must be HTAB + printable ASCII (no CR/LF).",
+																	"example": {
+																		"cache-control": "no-cache, no-store"
 																	},
 																	"type": "object"
 																},
@@ -13605,11 +13749,15 @@
 											"parse_options": {
 												"properties": {
 													"content_selector": {
-														"description": "List of path-to-selector mappings for extracting specific content from crawled pages. Each entry pairs a URL glob pattern with a CSS selector. The first matching path wins. Only the matched HTML fragment is stored and indexed.",
+														"description": "List of path-to-selector mappings for extracting specific content from crawled pages. Each entry pairs a URL glob pattern with a CSS selector. The first matching path wins. Only the matched HTML fragment is stored and indexed. Omit the field to disable content selection — empty arrays are rejected.",
 														"example": [
 															{
 																"path": "**/blog/**",
-																"selector": "article .post-body"
+																"selector": "article div.post-body"
+															},
+															{
+																"path": "**/docs/**",
+																"selector": "main"
 															}
 														],
 														"items": {
@@ -13618,12 +13766,14 @@
 																	"description": "Glob pattern to match against the page URL path. Uses standard glob syntax: * matches within a segment, ** crosses directories.",
 																	"example": "**/article/**",
 																	"maxLength": 200,
+																	"minLength": 1,
 																	"type": "string"
 																},
 																"selector": {
-																	"description": "CSS selector to extract content from pages matching the path pattern. Supports standard CSS selectors including class, ID, element, and attribute selectors.",
-																	"example": "article .post-body",
+																	"description": "CSS selector to extract content from pages matching the path pattern. Must not contain disallowed characters (;, `, $, {, }, \\). Must target a single element; if multiple elements match, the selector is ignored and the full page is used.",
+																	"example": "article div.post-body",
 																	"maxLength": 200,
+																	"minLength": 1,
 																	"type": "string"
 																}
 															},
@@ -13634,12 +13784,18 @@
 															"type": "object"
 														},
 														"maxItems": 10,
+														"minItems": 1,
 														"type": "array"
 													},
 													"include_headers": {
 														"additionalProperties": {
 															"maxLength": 8192,
+															"pattern": "^[\\t\\x20-\\x7E]*$",
 															"type": "string"
+														},
+														"description": "Up to 5 custom HTTP headers sent with each crawl request. Names must be RFC-7230 token characters (no spaces, colons, or control characters); values must be HTAB + printable ASCII (no CR/LF).",
+														"example": {
+															"cache-control": "no-cache, no-store"
 														},
 														"type": "object"
 													},
@@ -14426,11 +14582,15 @@
 														"parse_options": {
 															"properties": {
 																"content_selector": {
-																	"description": "List of path-to-selector mappings for extracting specific content from crawled pages. Each entry pairs a URL glob pattern with a CSS selector. The first matching path wins. Only the matched HTML fragment is stored and indexed.",
+																	"description": "List of path-to-selector mappings for extracting specific content from crawled pages. Each entry pairs a URL glob pattern with a CSS selector. The first matching path wins. Only the matched HTML fragment is stored and indexed. Omit the field to disable content selection — empty arrays are rejected.",
 																	"example": [
 																		{
 																			"path": "**/blog/**",
-																			"selector": "article .post-body"
+																			"selector": "article div.post-body"
+																		},
+																		{
+																			"path": "**/docs/**",
+																			"selector": "main"
 																		}
 																	],
 																	"items": {
@@ -14439,12 +14599,14 @@
 																				"description": "Glob pattern to match against the page URL path. Uses standard glob syntax: * matches within a segment, ** crosses directories.",
 																				"example": "**/article/**",
 																				"maxLength": 200,
+																				"minLength": 1,
 																				"type": "string"
 																			},
 																			"selector": {
-																				"description": "CSS selector to extract content from pages matching the path pattern. Supports standard CSS selectors including class, ID, element, and attribute selectors.",
-																				"example": "article .post-body",
+																				"description": "CSS selector to extract content from pages matching the path pattern. Must not contain disallowed characters (;, `, $, {, }, \\). Must target a single element; if multiple elements match, the selector is ignored and the full page is used.",
+																				"example": "article div.post-body",
 																				"maxLength": 200,
+																				"minLength": 1,
 																				"type": "string"
 																			}
 																		},
@@ -14455,12 +14617,18 @@
 																		"type": "object"
 																	},
 																	"maxItems": 10,
+																	"minItems": 1,
 																	"type": "array"
 																},
 																"include_headers": {
 																	"additionalProperties": {
 																		"maxLength": 8192,
+																		"pattern": "^[\\t\\x20-\\x7E]*$",
 																		"type": "string"
+																	},
+																	"description": "Up to 5 custom HTTP headers sent with each crawl request. Names must be RFC-7230 token characters (no spaces, colons, or control characters); values must be HTAB + printable ASCII (no CR/LF).",
+																	"example": {
+																		"cache-control": "no-cache, no-store"
 																	},
 																	"type": "object"
 																},
