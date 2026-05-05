@@ -2686,6 +2686,17 @@
 			"variant-a"
 		]
 	},
+	"vrushabh-test-experiment-post-migration": {
+		"enabled": false,
+		"branches": [
+			"baseline",
+			"experiment",
+			"branch-2"
+		]
+	},
+	"vrushabh-test-gate-post-migration": {
+		"enabled": false
+	},
 	"vrushabh-test-gate-ui-plat": {
 		"enabled": false
 	},
