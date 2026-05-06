@@ -2242,8 +2242,8 @@
 				"in": "query",
 				"name": "start_time",
 				"schema": {
-					"description": "Start time (Unix timestamp).",
-					"example": 1700000000,
+					"description": "Start time as Unix timestamp in milliseconds.",
+					"example": 1700000000000,
 					"nullable": true,
 					"type": "number"
 				}
@@ -2252,8 +2252,8 @@
 				"in": "query",
 				"name": "end_time",
 				"schema": {
-					"description": "End time (Unix timestamp).",
-					"example": 1700086400,
+					"description": "End time as Unix timestamp in milliseconds.",
+					"example": 1700086400000,
 					"nullable": true,
 					"type": "number"
 				}

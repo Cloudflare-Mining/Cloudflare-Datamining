@@ -2642,8 +2642,506 @@
 			"Zone DNS Edit"
 		]
 	},
+	"POST /zones/{zone_id}/environments/{environment_id}/purge_cache": {
+		"description": "Purge cached content scoped to a specific environment. Supports the same purge types as the zone-level endpoint (purge everything, by URL, by tag, host, or prefix).\n\n### Availability and limits\nPlease refer to [purge cache availability and limits documentation page](https://developers.cloudflare.com/cache/how-to/purge-cache/#availability-and-limits).\n",
+		"operationId": "zone-environment-purge",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "zone_id",
+				"required": true,
+				"schema": {
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"type": "string"
+				}
+			},
+			{
+				"in": "path",
+				"name": "environment_id",
+				"required": true,
+				"schema": {
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"type": "string"
+				}
+			}
+		],
+		"requestBody": {
+			"content": {
+				"application/json": {
+					"examples": {
+						"Flex Purge with Hosts": {
+							"summary": "Flex purge example with hosts list",
+							"value": {
+								"hosts": [
+									"www.example.com",
+									"images.example.com"
+								]
+							}
+						},
+						"Flex Purge with Prefixes": {
+							"summary": "Flex purge example with prefixes list",
+							"value": {
+								"prefixes": [
+									"www.example.com/foo",
+									"images.example.com/bar/baz"
+								]
+							}
+						},
+						"Flex Purge with Tags": {
+							"summary": "Flex purge example with tags list",
+							"value": {
+								"tags": [
+									"a-cache-tag",
+									"another-cache-tag"
+								]
+							}
+						},
+						"Purge Everything": {
+							"summary": "Purge everything example",
+							"value": {
+								"purge_everything": true
+							}
+						},
+						"Single File Purge": {
+							"summary": "Single file purge example with files list",
+							"value": {
+								"files": [
+									"http://www.example.com/css/styles.css",
+									"http://www.example.com/js/index.js"
+								]
+							}
+						},
+						"Single File Purge with UrlAndHeaders": {
+							"summary": "Single file purge example with url and headers list",
+							"value": {
+								"files": [
+									{
+										"headers": {
+											"Accept-Language": "zh-CN",
+											"CF-Device-Type": "desktop",
+											"CF-IPCountry": "US"
+										},
+										"url": "http://www.example.com/cat_picture.jpg"
+									},
+									{
+										"headers": {
+											"Accept-Language": "en-US",
+											"CF-Device-Type": "mobile",
+											"CF-IPCountry": "EU"
+										},
+										"url": "http://www.example.com/dog_picture.jpg"
+									}
+								]
+							}
+						}
+					},
+					"schema": {
+						"anyOf": [
+							{
+								"properties": {
+									"tags": {
+										"description": "For more information on cache tags and purging by tags, please refer to [purge by cache-tags documentation page](https://developers.cloudflare.com/cache/how-to/purge-cache/purge-by-tags/).",
+										"example": [
+											"a-cache-tag",
+											"another-cache-tag"
+										],
+										"items": {
+											"type": "string",
+											"x-auditable": true
+										},
+										"type": "array"
+									}
+								},
+								"title": "Purge by tags",
+								"type": "object"
+							},
+							{
+								"properties": {
+									"hosts": {
+										"description": "For more information purging by hostnames, please refer to [purge by hostname documentation page](https://developers.cloudflare.com/cache/how-to/purge-cache/purge-by-hostname/).",
+										"example": [
+											"www.example.com",
+											"images.example.com"
+										],
+										"items": {
+											"type": "string",
+											"x-auditable": true
+										},
+										"type": "array"
+									}
+								},
+								"title": "Purge by hostnames",
+								"type": "object"
+							},
+							{
+								"properties": {
+									"prefixes": {
+										"description": "For more information on purging by prefixes, please refer to [purge by prefix documentation page](https://developers.cloudflare.com/cache/how-to/purge-cache/purge_by_prefix/).",
+										"example": [
+											"www.example.com/foo",
+											"images.example.com/bar/baz"
+										],
+										"items": {
+											"type": "string",
+											"x-auditable": true
+										},
+										"type": "array"
+									}
+								},
+								"title": "Purge by prefixes",
+								"type": "object"
+							},
+							{
+								"properties": {
+									"purge_everything": {
+										"description": "For more information, please refer to [purge everything documentation page](https://developers.cloudflare.com/cache/how-to/purge-cache/purge-everything/).",
+										"example": true,
+										"type": "boolean",
+										"x-auditable": true
+									}
+								},
+								"title": "Purge everything",
+								"type": "object"
+							},
+							{
+								"properties": {
+									"files": {
+										"description": "For more information on purging files, please refer to [purge by single-file documentation page](https://developers.cloudflare.com/cache/how-to/purge-cache/purge-by-single-file/).",
+										"example": [
+											"http://www.example.com/css/styles.css",
+											"http://www.example.com/js/index.js"
+										],
+										"items": {
+											"type": "string",
+											"x-auditable": true
+										},
+										"type": "array"
+									}
+								},
+								"title": "Purge files",
+								"type": "object"
+							},
+							{
+								"properties": {
+									"files": {
+										"description": "For more information on purging files with URL and headers, please refer to [purge by single-file documentation page](https://developers.cloudflare.com/cache/how-to/purge-cache/purge-by-single-file/).",
+										"example": [
+											{
+												"headers": {
+													"Accept-Language": "zh-CN",
+													"CF-Device-Type": "desktop",
+													"CF-IPCountry": "US"
+												},
+												"url": "http://www.example.com/cat_picture.jpg"
+											},
+											{
+												"headers": {
+													"Accept-Language": "en-US",
+													"CF-Device-Type": "mobile",
+													"CF-IPCountry": "EU"
+												},
+												"url": "http://www.example.com/dog_picture.jpg"
+											}
+										],
+										"items": {
+											"properties": {
+												"headers": {
+													"additionalProperties": {
+														"type": "string",
+														"x-auditable": true
+													},
+													"example": {
+														"CF-Device-Type": "desktop",
+														"CF-IPCountry": "US"
+													},
+													"type": "object"
+												},
+												"url": {
+													"example": "http://www.example.com/cat_picture.jpg",
+													"type": "string",
+													"x-auditable": true
+												}
+											},
+											"type": "object"
+										},
+										"type": "array"
+									}
+								},
+								"title": "Purge files with URL and headers",
+								"type": "object"
+							}
+						]
+					}
+				}
+			},
+			"required": true
+		},
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"example": [],
+									"items": {
+										"properties": {
+											"code": {
+												"minimum": 1000,
+												"type": "integer"
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object",
+										"uniqueItems": true
+									},
+									"type": "array"
+								},
+								"messages": {
+									"example": [],
+									"items": {
+										"properties": {
+											"code": {
+												"minimum": 1000,
+												"type": "integer"
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object",
+										"uniqueItems": true
+									},
+									"type": "array"
+								},
+								"result": {
+									"nullable": true,
+									"properties": {
+										"id": {
+											"example": "023e105f4ecef8ad9ca31a8372d0c353",
+											"maxLength": 32,
+											"type": "string"
+										}
+									},
+									"required": [
+										"id"
+									],
+									"type": "object"
+								},
+								"success": {
+									"description": "Indicates the API call's success or failure.",
+									"example": true,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Request to purge cached content successful."
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"properties": {
+										"errors": {
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										},
+										"messages": {
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										},
+										"result": {
+											"nullable": true,
+											"properties": {
+												"id": {
+													"example": "023e105f4ecef8ad9ca31a8372d0c353",
+													"maxLength": 32,
+													"type": "string"
+												}
+											},
+											"required": [
+												"id"
+											],
+											"type": "object"
+										},
+										"success": {
+											"description": "Indicates the API call's success or failure.",
+											"example": true,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages"
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"errors": {
+											"allOf": [
+												{
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												}
+											],
+											"example": [
+												{
+													"code": 7003,
+													"message": "No route for the URI"
+												}
+											],
+											"minLength": 1
+										},
+										"messages": {
+											"allOf": [
+												{
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												}
+											],
+											"example": []
+										},
+										"result": {
+											"nullable": true,
+											"type": "object"
+										},
+										"success": {
+											"description": "Indicates the API call's success or failure.",
+											"example": false,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
+									],
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "Request to purge cached content failed."
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Purge Cached Content by Environment",
+		"tags": [
+			"Zone"
+		],
+		"x-api-token-group": [
+			"Cache Purge"
+		],
+		"x-cfPermissionsRequired": {
+			"enum": [
+				"#cache_purge:edit"
+			]
+		}
+	},
 	"POST /zones/{zone_id}/purge_cache": {
-		"description": "### Purge All Cached Content\nRemoves ALL files from Cloudflare's cache. All tiers can purge everything.\n```\n{\"purge_everything\": true}\n```\n\n### Purge Cached Content by URL\nGranularly removes one or more files from Cloudflare's cache by specifying URLs. All tiers can purge by URL.\n\nTo purge files with custom cache keys, include the headers used to compute the cache key as in the example. If you have a device type or geo in your cache key, you will need to include the CF-Device-Type or CF-IPCountry headers. If you have lang in your cache key, you will need to include the Accept-Language header.\n\n**NB:** When including the Origin header, be sure to include the **scheme** and **hostname**. The port number can be omitted if it is the default port (80 for http, 443 for https), but must be included otherwise.\n\nSingle file purge example with files:\n```\n{\"files\": [\"http://www.example.com/css/styles.css\", \"http://www.example.com/js/index.js\"]}\n```\nSingle file purge example with url and header pairs:\n```\n{\"files\": [{url: \"http://www.example.com/cat_picture.jpg\", headers: { \"CF-IPCountry\": \"US\", \"CF-Device-Type\": \"desktop\", \"Accept-Language\": \"zh-CN\" }}, {url: \"http://www.example.com/dog_picture.jpg\", headers: { \"CF-IPCountry\": \"EU\", \"CF-Device-Type\": \"mobile\", \"Accept-Language\": \"en-US\" }}]}\n```\n\n### Purge Cached Content by Tag, Host or Prefix\nGranularly removes one or more files from Cloudflare's cache either by specifying the host, the associated Cache-Tag, or a Prefix.\n\nFlex purge with tags:\n```\n{\"tags\": [\"a-cache-tag\", \"another-cache-tag\"]}\n```\nFlex purge with hosts:\n```\n{\"hosts\": [\"www.example.com\", \"images.example.com\"]}\n```\nFlex purge with prefixes:\n```\n{\"prefixes\": [\"www.example.com/foo\", \"images.example.com/bar/baz\"]}\n```\n\n### Availability and limits\nplease refer to [purge cache availability and limits documentation page](https://developers.cloudflare.com/cache/how-to/purge-cache/#availability-and-limits).\n",
+		"description": "### Purge All Cached Content\nRemoves ALL files from Cloudflare's cache. All tiers can purge everything.\n```\n{\"purge_everything\": true}\n```\n\n### Purge Cached Content by URL\nGranularly removes one or more files from Cloudflare's cache by specifying URLs. All tiers can purge by URL.\n\nTo purge files with custom cache keys, include the headers used to compute the cache key as in the example. If you have a device type or geo in your cache key, you will need to include the CF-Device-Type or CF-IPCountry headers. If you have lang in your cache key, you will need to include the Accept-Language header.\n\n**NB:** When including the Origin header, be sure to include the **scheme** and **hostname**. The port number can be omitted if it is the default port (80 for http, 443 for https), but must be included otherwise.\n\nSingle file purge example with files:\n```\n{\"files\": [\"http://www.example.com/css/styles.css\", \"http://www.example.com/js/index.js\"]}\n```\nSingle file purge example with url and header pairs:\n```\n{\"files\": [{\"url\": \"http://www.example.com/cat_picture.jpg\", \"headers\": {\"CF-IPCountry\": \"US\", \"CF-Device-Type\": \"desktop\", \"Accept-Language\": \"zh-CN\"}}, {\"url\": \"http://www.example.com/dog_picture.jpg\", \"headers\": {\"CF-IPCountry\": \"EU\", \"CF-Device-Type\": \"mobile\", \"Accept-Language\": \"en-US\"}}]}\n```\n\n### Purge Cached Content by Tag, Host or Prefix\nGranularly removes one or more files from Cloudflare's cache either by specifying the host, the associated Cache-Tag, or a Prefix.\n\nFlex purge with tags:\n```\n{\"tags\": [\"a-cache-tag\", \"another-cache-tag\"]}\n```\nFlex purge with hosts:\n```\n{\"hosts\": [\"www.example.com\", \"images.example.com\"]}\n```\nFlex purge with prefixes:\n```\n{\"prefixes\": [\"www.example.com/foo\", \"images.example.com/bar/baz\"]}\n```\n\n### Availability and limits\nPlease refer to [purge cache availability and limits documentation page](https://developers.cloudflare.com/cache/how-to/purge-cache/#availability-and-limits).\n",
 		"operationId": "zone-purge",
 		"parameters": [
 			{
@@ -2842,7 +3340,10 @@
 														"type": "string",
 														"x-auditable": true
 													},
-													"example": "<HTTP header object>",
+													"example": {
+														"CF-Device-Type": "desktop",
+														"CF-IPCountry": "US"
+													},
 													"type": "object"
 												},
 												"url": {
@@ -2942,7 +3443,7 @@
 						}
 					}
 				},
-				"description": "Request to purge cached content successfull."
+				"description": "Request to purge cached content successful."
 			},
 			"4XX": {
 				"content": {
