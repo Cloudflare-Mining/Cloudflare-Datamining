@@ -1,6 +1,6 @@
 {
-	"generated_at": "2026-05-05T04:33:52.715Z",
-	"model_count": 149,
+	"generated_at": "2026-05-06T04:34:40.652Z",
+	"model_count": 150,
 	"models": [
 		{
 			"model_id": "alibaba/hh1-i2v",
@@ -1168,6 +1168,48 @@
 			"terms": "https://inworld.ai/terms",
 			"cover_image_url": "https://tjzk.replicate.delivery/models_models_cover_image/a6840701-0041-4a1f-a25b-77152468c505/tmpmk9wkimd.jpg",
 			"created_at": "2026-04-13 16:47:23"
+		},
+		{
+			"model_id": "inworld/tts-2",
+			"slug": "inworld/tts-2",
+			"display_name": "Inworld TTS 2",
+			"description": "Inworld's most powerful and expressive text-to-speech model. Builds on TTS 1.5 with rich expressive speech, real-time latency, natural language steering (e.g. [whisper], [say excitedly]), and stronger multilingual support across 15 production languages plus 90+ experimental languages.",
+			"task": {
+				"id": "",
+				"name": "Text-to-Speech",
+				"description": ""
+			},
+			"tags": [
+				"TTS",
+				"Speech Synthesis",
+				"Low Latency",
+				"Multilingual",
+				"Natural Language Steering",
+				"Expressive"
+			],
+			"context_length": null,
+			"max_output_tokens": null,
+			"supports_async": false,
+			"hosting": "proxied",
+			"data_source": "catalog",
+			"properties": [
+				{
+					"property_id": "terms",
+					"value": "https://inworld.ai/terms"
+				},
+				{
+					"property_id": "info",
+					"value": "https://docs.inworld.ai/tts/realtime-tts-2-preview"
+				}
+			],
+			"metadata": {
+				"Languages": "15 production + 90+ experimental",
+				"Steering": "Natural language"
+			},
+			"external_info": "https://docs.inworld.ai/tts/realtime-tts-2-preview",
+			"terms": "https://inworld.ai/terms",
+			"cover_image_url": "https://pub-26f1392c1b674324be6786695bd72257.r2.dev/inworld/tts-2.png",
+			"created_at": "2026-05-05 00:17:34"
 		},
 		{
 			"model_id": "minimax/hailuo-2.3-fast",
