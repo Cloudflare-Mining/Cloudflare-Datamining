@@ -4,67 +4,106 @@
 	"result": {
 		"data": {
 			"caseStudy": {
-				"name": "PicsArt",
-				"contentfulId": "2wy58E5GLeySGIwSakOOe6",
+				"name": "Picsart",
+				"contentfulId": "X28S2R1lbAd5C2U2N32tQ",
 				"nameUrlSlug": "picsart",
 				"metaTags": {
-					"metaTitle": "PicsArt",
-					"metaDescription": "The largest mobile image editing application optimizes and protects the platform with Cloudflare.",
-					"twitterCustomImage": null,
+					"metaTitle": "Picsart & Cloudflare | Customer Story",
+					"metaDescription": "Picsart, a global AI-powered creative platform, uses Cloudflare to deliver faster, safer creative experiences while scaling security and performance worldwide.",
+					"twitterCustomImage": {
+						"file": {
+							"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/3MPUSWdyg6GdzUT8ljeda1/573dcc6fa0b5c077f7b1a389b831e79a/Picsart_Logo_Purple.png"
+						},
+						"description": "Picsart logo"
+					},
 					"metaImage": {
 						"file": {
-							"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/53qCYhQbir5WtIU0VDWESo/954a48bfb17f429acf469e5f14345d83/unnamed-3.png"
+							"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/3MPUSWdyg6GdzUT8ljeda1/573dcc6fa0b5c077f7b1a389b831e79a/Picsart_Logo_Purple.png"
 						},
-						"description": "DO NOT REMOVE, THIS IS CLOUDFLARE'S GLOBAL OG META ASSET"
+						"description": "Picsart logo"
 					},
-					"facebookCustomImage": null
+					"facebookCustomImage": {
+						"file": {
+							"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/3MPUSWdyg6GdzUT8ljeda1/573dcc6fa0b5c077f7b1a389b831e79a/Picsart_Logo_Purple.png"
+						},
+						"description": "Picsart logo"
+					}
 				},
-				"orderDate": "2018-05-26",
+				"orderDate": "2026-04-24",
 				"homepageUrl": "https://picsart.com/",
-				"hideFromCaseStudiesPage": null,
-				"shortDescription": "The largest mobile image editing application optimizes and protects the platform with Cloudflare.",
-				"longDescription": "The largest mobile image editing application optimizes and protects the platform with Cloudflare.\n\n![picsart-graphic](//cf-assets.www.cloudflare.com/slt3lc6tev37/3fLCNlUL3GwCG2GoMeIWwy/816aac2de025085bdb2776872a8fa69f/picsart-graphic.png)\n\n[PicsArt](https://picsart.com/) is the largest mobile photo editing application with over 90 million active users and over 200 million images uploaded every month. \"With so many users, we create billions of impressions for our brand partners with uniquely active engagement activities that separates our platform from other media companies,\" explained PicsArt Chief Technology Officer Mikayel Vardanyan.\n\n__PicsArt's Challenge: Editing and Serving Millions of Images around the world__\n\nWhile PicsArt succeeds in offering their users great features and content, delivering these images to a global user base becomes a technical challenge at PicsArt's scale. \"We have a huge amount of content, especially images, being created and shared to millions of people around the world with PicsArt,\" Vardanyan related. As PicsArt grew and expanded, serving content from a single location could mean slow delivery and congested infrastructure, which would result in a poor experience for PicsArt's users. With that in mind, PicsArt set out to find a solution before it became an issue.\n\n__PicsArt's Solution: Content Distribution with Built-in Optimization and Protection__\n\nPicsArt knew that a Content Distribution Network (CDN) would solve their challenge and allow for seamless growth going forwards. Cloudflare's CDN now caches and serves PicsArt's content from data servers in over %{DataCenterCount} cities around the world reducing geographic latency for PicsArt's global users, while also saving PicsArt Bandwidth. \"With Cloudflare's CDN the load time of our images improved by 2-3x and on top of that we're saving over 50% on our monthly bandwidth usage,\" noted Vardanyan.\n\n## *\"With Cloudflare's CDN the load time of our images improved by 2-3x and on top of that we're saving over 50% on our monthly bandwidth usage\"*\n\nThough PicsArt was only searching for a performance partner, they also saw the benefits of enlisting Cloudflare's security and protection. \"In the last month Cloudflare blocked over 675 million threats aimed at our infrastructure,\" Vardanyan explained. Cloudflare's protection is multi-fold: the Web Application Firewall (WAF) leverages collective security intelligence from millions of Internet properties on the network to protect PicsArt from the latest known vulnerabilities and malicious actors. Furthermore, Cloudflare's DDoS mitigation is designed to allow normal traffic to freely flow, while blocking and absorbing malicious traffic at Cloudflare's edge. This allows PicsArt to stay online and functioning for their users, even in the case of a massive online attack.\n\nVardanyan concluded: \"We chose Cloudflare because they are the best CDN provider for our business and scaling needs, with continuous innovation, new services and great support.\"",
-				"cloudflareStreamVideoId": null,
-				"keyResults": null,
+				"hideFromCaseStudiesPage": false,
+				"shortDescription": "Picsart, a global AI-powered creative platform, uses Cloudflare to deliver faster, safer creative experiences while scaling security and performance worldwide.",
+				"longDescription": "## Picsart scales global creative experiences with Cloudflare\n\nPicsart's mission is to empower the creator in everyone, everywhere. The software company's digital creation platform serves a large global user base, as well as businesses that rely on fast, secure editing and publishing tools. With ambitions to become the world's largest AI creative platform, Picsart prioritizes performance, security, and developer velocity as they scale to hundreds of billions of requests each month.\n\n### Challenge: Mitigating security threats while optimizing service performance\n\nPicsart has grown rapidly since the company's founding in 2011, and faced higher standards when protecting their application and infrastructure. Specifically, they needed to stop injection attacks, distributed denial-of-service (DDoS) events, and malicious bots — and weather  sudden traffic spikes — without slowing down users or overwhelming on-call teams.\n\nPicsart also needed a better way to manage internal access, as the legacy VPN caused slow user experiences, latency, and operational complexity, while lacking the scalable, fine-grained access controls required as the company expanded globally.\n\nTo address both challenges, Picsart turned to Cloudflare's [connectivity cloud](https://www.cloudflare.com/connectivity-cloud/): a unified platform of security, connectivity, and developer services running on a programmable global network. \n\n\"We chose a single globally distributed platform for security, performance, and developer velocity so we can enforce consistent policy everywhere and keep teams focused,\" says Gevorg Khachatryan, who leads site reliability engineering and incident management at Picsart. \n\n### Protecting applications with WAF, DDoS, and rate limiting\n\nPicsart uses the [Cloudflare Web Application Firewall (WAF)](https://www.cloudflare.com/application-services/products/waf/), [DDoS protection](https://www.cloudflare.com/ddos/), and [Rate Limiting](https://www.cloudflare.com/application-services/products/rate-limiting/) to defend applications at scale. Managed, machine learning–driven protection absorbs attacks upstream — including traffic that could saturate last-mile links — preventing them from reaching Picsart's infrastructure. \n\nThis approach keeps PicArt services available for legitimate users. According to Khachatryan, \"Cloudflare blocks about 3 billion malicious requests per month, which means faster experiences worldwide, lower operational overhead, and fewer after-hours incidents.\" \n\nAdditionally, [bot management](https://www.cloudflare.com/application-services/products/bot-management/) services help protect monetized APIs by fronting them with Cloudflare WAF, DDoS, and rate limiting to absorb traffic spikes and malicious patterns at the edge before they reach the origin, which helped Picsart avoid major availability issues and on-call escalations as they scaled.\n\nThese services enable Picsart to automatically curb unwanted bot activity like scraping and fake signups across their web and mobile apps. This is primarily managed through content delivery—caching static assets, media, and preview content via Cloudflare CDN—while also protecting select public-facing endpoints to ensure a smooth product experience.\n\n### Boosting performance using globally distributed services\n\nPicsart uses [Cloudflare content delivery network (CDN)](https://www.cloudflare.com/cdn/) services to deliver a responsive experience to users. By employing content caching, static assets and previews are delivered closer to users, making creative workflows feel instant across regions.\n\n\"Each month we handle about 120 billion requests,\" says Khachatryan. \"Around 85% are served from cache, delivering roughly five petabytes of content, about four petabytes straight from Cloudflare's edge.\"\n\nBy proxying traffic through Cloudflare, Picsart also keeps their public IP addresses shielded. This approach simplifies infrastructure changes and adds another layer of protection.\n\nPicsart has further enhanced the performance of one of their most critical services by moving from a centralized architecture to globally distributed services built on Cloudflare. In particular, [Cloudflare Workers](https://www.cloudflare.com/developer-platform/products/workers/) and [Workers KV](https://www.cloudflare.com/developer-platform/products/workers-kv/) provide low-latency compute and a key-value store for applications running at the edge.\n\nRunning serverless compute at the edge allows Picsart to speed up developer velocity by automatically managing the infrastructure so engineers can concentrate on shipping code. \"We roll out updates in hours, not weeks, with no servers to manage,\" explains Khachatryan. For example, Cloudflare Workers powers Picsart's A/B experimentation platform at the edge, accelerating iteration and learning.\n\n### Simplifying access with Cloudflare Access\n\nPicsart modernized their remote access approach by replacing their legacy VPN setup of multiple regional gateways with [Cloudflare Access](https://www.cloudflare.com/zero-trust/products/access/), a [Zero Trust Network Access (ZTNA) solution](https://www.cloudflare.com/learning/access-management/what-is-ztna/).\nCloudflare authenticates every employee request to corporate resources based on identity and context, strengthening Picsart's security posture. This solution also streamlines the access experience for end users compared to the latency-prone VPNs.\n\n### What's next: Automating more at the edge and extending zero trust to move faster\n\nLooking ahead, Picsart plans to unify policy management, expand automation using Cloudflare Workers, and extend zero trust across more workflows. By continuing to build on a single Cloudflare platform, Picsart aims to further reduce complexity and deliver creative experiences without interruption.\n\n\"Cloudflare helps us deliver a faster, safer, creative experience to millions of users so they can focus on creating, not waiting,\" says Khachatryan. \"We block the bad, accelerate the good, and ship faster.\"",
+				"cloudflareStreamVideoId": "f73637cf88752ca1b37984deddab4987",
+				"keyResults": "\n- ~3 billion malicious requests blocked per month\n\n- Improves performance of critical services by moving from centralized to globally distributed architectures built on Cloudflare\n\n- 85% cache hit rate for 120 billion requests and ~5 petabytes of traffic per month\n\n\n\n\n\n\n",
 				"relatedCaseStudyLinks": [
 					{
-						"text": "Taringa!",
-						"url": "/case-studies/taringa/"
+						"text": "Canva",
+						"url": "/case-studies/canva"
 					},
 					{
-						"text": "Bidu",
-						"url": "/case-studies/bidu"
+						"text": "VSCO",
+						"url": "/case-studies/vsco/"
+					},
+					{
+						"text": "VistaPrint",
+						"url": "/case-studies/vistaprint/"
 					}
 				],
 				"inPartnershipWith": [],
 				"relatedCloudflareProducts": [
 					{
-						"title": "Content Delivery Network (CDN)",
-						"url": "/application-services/products/cdn/"
+						"title": "Web Application Firewall (WAF) ",
+						"url": "/application-services/products/waf/"
 					},
 					{
 						"title": "DDoS Mitigation",
 						"url": "/ddos/"
 					},
 					{
-						"title": "Web Application Firewall (WAF) ",
-						"url": "/application-services/products/waf/"
+						"title": "Rate Limiting",
+						"url": "/application-services/products/rate-limiting/"
+					},
+					{
+						"title": "Bot Management",
+						"url": "/application-services/products/bot-management/"
+					},
+					{
+						"title": "CDN",
+						"url": "/application-services/products/cdn/"
+					},
+					{
+						"title": "Workers",
+						"url": "https://workers.cloudflare.com/"
+					},
+					{
+						"title": "Workers KV",
+						"url": "https://www.cloudflare.com/developer-platform/products/workers-kv/"
+					},
+					{
+						"title": "Zero Trust",
+						"url": "/sase/"
 					}
 				],
 				"employeeHeadshot": null,
-				"employeeQuoteName": "Mikayel Vardanyan",
-				"employeeQuoteText": "We chose Cloudflare because they are the best CDN provider for our business and scaling needs, with continuous innovation, new services and great support.",
-				"employeeQuoteJobTitle": "CTO",
-				"employeeQuoteName2": null,
-				"employeeQuoteText2": null,
-				"employeeQuoteJobTitle2": null,
+				"employeeQuoteName": "Gevorg Khachatryan",
+				"employeeQuoteText": "Cloudflare blocks about 3 billion malicious requests per month, which means faster experiences worldwide, lower operational overhead, and fewer after-hours incidents.",
+				"employeeQuoteJobTitle": "Senior Manager SRE And Incident Management, Picsart",
+				"employeeQuoteName2": "Gevorg Khachatryan",
+				"employeeQuoteText2": "Cloudflare helps us deliver a faster, safer, creative experience to millions of users so they can focus on creating, not waiting",
+				"employeeQuoteJobTitle2": "Senior Manager SRE And Incident Management, Picsart",
 				"downloadPdfButtonLink": null,
-				"ref_streamVideoThumbnail": null,
+				"ref_streamVideoThumbnail": {
+					"file": {
+						"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/6torjvZOOYOCiHpcDPGcik/432a16d0b4c1826068ce9fe23b62b0d4/Picsart_video_thumbnail.png"
+					},
+					"description": "Picsart - Stream thumbnail"
+				},
 				"logo": {
 					"file": {
-						"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/5d7SxG6MRq0gQsuQAOsg0k/05dec228f625ff60ee1bf7bc13f15867/picsart.png"
+						"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/3MPUSWdyg6GdzUT8ljeda1/573dcc6fa0b5c077f7b1a389b831e79a/Picsart_Logo_Purple.png"
 					},
-					"description": null
+					"description": "Picsart logo"
 				},
 				"customCanonicalTag": null
 			},
@@ -76,16 +115,11 @@
 		},
 		"pageContext": {
 			"locale": "en-US",
-			"contentfulId": "2wy58E5GLeySGIwSakOOe6",
+			"contentfulId": "X28S2R1lbAd5C2U2N32tQ",
 			"pathname": "/case-studies/picsart/",
 			"baseURL": "https://www.cloudflare.com",
 			"allowedHrefLangs": [
-				"en-US",
-				"zh-CN",
-				"fr-FR",
-				"de-DE",
-				"ja-JP",
-				"zh-Hans-CN"
+				"en-US"
 			]
 		}
 	}
