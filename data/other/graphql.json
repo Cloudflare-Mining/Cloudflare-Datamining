@@ -2039,7 +2039,7 @@
 	},
 	"AccountCloudchamberMetricsAdaptiveGroupsDimensions": {
 		"__description": "",
-		"active": "Whether the container is active or not",
+		"active": "<small>DEPRECATED (Filtered implicitly to <code>1</code>):</small> Whether the container is active or not",
 		"applicationId": "The application ID",
 		"date": "The date the metric was received",
 		"datetime": "The date and time the metric was received",
@@ -2054,7 +2054,7 @@
 		"label": "Value of a specific container label. Requires the name argument.",
 		"location": "Location",
 		"placementId": "The placement ID",
-		"procType": "Process type",
+		"procType": "<small>DEPRECATED (Filtered implicitly to <code>user</code>):</small> Process type",
 		"region": "Region"
 	},
 	"AccountCloudchamberMetricsAdaptiveGroupsFilter_InputObject": {
@@ -2300,6 +2300,40 @@
 	"AccountCloudforceOneDetectionsAdaptiveGroupsOrderBy": {
 		"__description": ""
 	},
+	"AccountCloudforceOneDetectionsStagingAdaptiveGroups": {
+		"__description": "Cloudforce One detection events for Workers for Platforms scripts with adaptive sampling (staging). Each row represents a single detection rule hit.",
+		"avg": "",
+		"confidence": "ALPHA - DO NOT USE",
+		"count": "Total number of detection rule hits",
+		"dimensions": "List of dimensions to group by"
+	},
+	"AccountCloudforceOneDetectionsStagingAdaptiveGroupsAvg": {
+		"__description": "",
+		"sampleInterval": "Average sample interval"
+	},
+	"AccountCloudforceOneDetectionsStagingAdaptiveGroupsConfidence": {
+		"__description": "",
+		"count": "Total number of detection rule hits, with confidence intervals",
+		"level": "Confidence level that was requested"
+	},
+	"AccountCloudforceOneDetectionsStagingAdaptiveGroupsDimensions": {
+		"__description": "",
+		"date": "Detection event date",
+		"datetime": "Detection event timestamp",
+		"datetimeFiveMinutes": "Detection event timestamp, truncated to five minutes",
+		"datetimeHour": "Detection event timestamp, truncated to hour",
+		"datetimeMinute": "Detection event timestamp, truncated to minute",
+		"detection": "Name of the detection rule that was triggered",
+		"dispatchNamespace": "Workers for Platforms dispatch namespace name",
+		"resource": "The name of the Workers script",
+		"source": "Detection rule source: 'managed' for Cloudflare-authored rules, 'custom' for customer-created rules"
+	},
+	"AccountCloudforceOneDetectionsStagingAdaptiveGroupsFilter_InputObject": {
+		"__description": ""
+	},
+	"AccountCloudforceOneDetectionsStagingAdaptiveGroupsOrderBy": {
+		"__description": ""
+	},
 	"AccountContainersMetricsAdaptiveGroups": {
 		"__description": "Metrics for Cloudchamber applications and deployments",
 		"avg": "The average value of a metric per dimension",
@@ -2330,7 +2364,7 @@
 	},
 	"AccountContainersMetricsAdaptiveGroupsDimensions": {
 		"__description": "",
-		"active": "Whether the container is active or not",
+		"active": "<small>DEPRECATED (Filtered implicitly to <code>1</code>):</small> Whether the container is active or not",
 		"applicationId": "The application ID",
 		"date": "The date the metric was received",
 		"datetime": "The date and time the metric was received",
@@ -2345,7 +2379,7 @@
 		"label": "Value of a specific container label. Requires the name argument.",
 		"location": "Location",
 		"placementId": "The placement ID",
-		"procType": "Process type",
+		"procType": "<small>DEPRECATED (Filtered implicitly to <code>user</code>):</small> Process type",
 		"region": "Region"
 	},
 	"AccountContainersMetricsAdaptiveGroupsFilter_InputObject": {
@@ -3545,6 +3579,96 @@
 		"value": "The value of the metadata. Value format can vary by Cloudflare security product and can change over time."
 	},
 	"AccountFirewallEventsAdaptiveOrderBy": {
+		"__description": ""
+	},
+	"AccountFlagshipFlagEvaluationsAdaptive": {
+		"__description": "Flagship feature flag evaluations with adaptive sampling. Each row represents an individual flag evaluation.",
+		"appId": "The Flagship application identifier the evaluation belongs to",
+		"colo": "The Cloudflare colo that served the evaluation",
+		"datetime": "The time the flag evaluation occurred",
+		"durationMs": "End-to-end evaluation duration in milliseconds",
+		"evaluationContext": "The evaluation context (per-evaluation attributes supplied by the caller)",
+		"evaluationReason": "The reason the flag resolved to this value (for example: targeting match, default, fallback)",
+		"flagEnabled": "Whether the flag was enabled for this evaluation ('true' or 'false')",
+		"flagKey": "The key of the feature flag that was evaluated",
+		"flagValue": "The value returned by the flag evaluation. Note: high-cardinality - prefer filtering over grouping for large time windows",
+		"matchedRulePriority": "Priority of the targeting rule that matched (NaN if no rule matched)",
+		"sampleInterval": "ABR sample interval used for this row",
+		"variant": "The variant returned by the evaluation (for multi-variant flags)"
+	},
+	"AccountFlagshipFlagEvaluationsAdaptiveFilter_InputObject": {
+		"__description": ""
+	},
+	"AccountFlagshipFlagEvaluationsAdaptiveGroups": {
+		"__description": "Aggregated Flagship feature flag evaluations with adaptive sampling. Use this to build dashboards over evaluation volume, latency, and error rates.",
+		"avg": "The average value for a metric per dimension",
+		"confidence": "ALPHA - DO NOT USE",
+		"count": "The number of flag evaluations",
+		"dimensions": "List of dimensions to group by",
+		"quantiles": "Quantiles of a metric per dimension",
+		"sum": "The sum of values for a metric per dimension",
+		"uniq": "Exact count of unique values per dimension"
+	},
+	"AccountFlagshipFlagEvaluationsAdaptiveGroupsAvg": {
+		"__description": "",
+		"durationMs": "The average end-to-end evaluation duration in milliseconds",
+		"sampleInterval": "The average value used for sample interval"
+	},
+	"AccountFlagshipFlagEvaluationsAdaptiveGroupsConfidence": {
+		"__description": "",
+		"count": "The number of flag evaluations, with confidence intervals",
+		"level": "Confidence level that was requested",
+		"sum": "The sum of values for a metric per dimension, with confidence intervals"
+	},
+	"AccountFlagshipFlagEvaluationsAdaptiveGroupsDimensions": {
+		"__description": "",
+		"appId": "The Flagship application identifier the evaluation belongs to",
+		"colo": "The Cloudflare colo that served the evaluation",
+		"date": "The date the flag evaluation occurred",
+		"datetime": "The date and time the flag evaluation occurred",
+		"datetimeFifteenMinutes": "The date and time the flag evaluation occurred truncated to fifteen minutes",
+		"datetimeFiveMinutes": "The date and time the flag evaluation occurred truncated to five minutes",
+		"datetimeHour": "The date and time the flag evaluation occurred truncated to the hour",
+		"datetimeMinute": "The date and time the flag evaluation occurred truncated to the minute",
+		"datetimeSixHours": "The date and time the flag evaluation occurred truncated to start of six hour window",
+		"evaluationReason": "The reason the flag resolved to this value (for example: targeting match, default, fallback)",
+		"flagEnabled": "Whether the flag was enabled for this evaluation ('true' or 'false')",
+		"flagKey": "The key of the feature flag that was evaluated",
+		"flagValue": "The value returned by the flag evaluation. Note: high-cardinality - prefer filtering over grouping for large time windows",
+		"variant": "The variant returned by the evaluation (for multi-variant flags)"
+	},
+	"AccountFlagshipFlagEvaluationsAdaptiveGroupsFilter_InputObject": {
+		"__description": ""
+	},
+	"AccountFlagshipFlagEvaluationsAdaptiveGroupsOrderBy": {
+		"__description": ""
+	},
+	"AccountFlagshipFlagEvaluationsAdaptiveGroupsQuantiles": {
+		"__description": "",
+		"durationMsP25": "Evaluation duration in milliseconds (25th percentile)",
+		"durationMsP50": "Evaluation duration in milliseconds (50th percentile)",
+		"durationMsP75": "Evaluation duration in milliseconds (75th percentile)",
+		"durationMsP90": "Evaluation duration in milliseconds (90th percentile)",
+		"durationMsP95": "Evaluation duration in milliseconds (95th percentile)",
+		"durationMsP99": "Evaluation duration in milliseconds (99th percentile)",
+		"durationMsP999": "Evaluation duration in milliseconds (99.9th percentile)"
+	},
+	"AccountFlagshipFlagEvaluationsAdaptiveGroupsSum": {
+		"__description": "",
+		"durationMs": "The total end-to-end evaluation duration in milliseconds",
+		"errors": "The number of flag evaluations that resulted in an error"
+	},
+	"AccountFlagshipFlagEvaluationsAdaptiveGroupsSumConfidence": {
+		"__description": "",
+		"durationMs": "Confidence interval for the corresponding point estimate",
+		"errors": "Confidence interval for the corresponding point estimate"
+	},
+	"AccountFlagshipFlagEvaluationsAdaptiveGroupsUniq": {
+		"__description": "",
+		"appId": "The number of distinct Flagship applications",
+		"flagKey": "The number of distinct flag keys evaluated"
+	},
+	"AccountFlagshipFlagEvaluationsAdaptiveOrderBy": {
 		"__description": ""
 	},
 	"AccountFlowtrackdNetworkAnalyticsAdaptiveGroups": {
@@ -5295,6 +5419,62 @@
 		"bytesCompressed": "Confidence interval for the corresponding point estimate",
 		"records": "Confidence interval for the corresponding point estimate",
 		"uploads": "Confidence interval for the corresponding point estimate"
+	},
+	"AccountLogpushTransformersAdaptiveGroups": {
+		"__description": "Beta. Logpush transformer health metrics",
+		"avg": "",
+		"confidence": "ALPHA - DO NOT USE",
+		"count": "The number of transformer executions",
+		"dimensions": "List of dimensions to group by",
+		"max": "Maximum value of a metric per dimension",
+		"sum": "The sum of values for a metric per dimension"
+	},
+	"AccountLogpushTransformersAdaptiveGroupsAvg": {
+		"__description": "",
+		"durationSeconds": "Average transformer execution duration in seconds",
+		"sampleInterval": "Average sample interval"
+	},
+	"AccountLogpushTransformersAdaptiveGroupsConfidence": {
+		"__description": "",
+		"count": "The number of transformer executions, with confidence intervals",
+		"level": "Confidence level that was requested",
+		"sum": "The sum of values for a metric per dimension, with confidence intervals"
+	},
+	"AccountLogpushTransformersAdaptiveGroupsDimensions": {
+		"__description": "",
+		"date": "Date of the transformer execution",
+		"datetime": "Datetime of the transformer execution",
+		"datetimeFifteenMinutes": "Datetime of the transformer execution, truncated to multiple of 15 minutes",
+		"datetimeFiveMinutes": "Datetime of the transformer execution, truncated to multiple of 5 minutes",
+		"datetimeHour": "Datetime of the transformer execution, truncated to the hour",
+		"datetimeMinute": "Datetime of the transformer execution, truncated to the minute",
+		"errorCode": "Error code. 0 = success, 1300+ = transformer error codes",
+		"jobId": "The Logpush Job ID",
+		"product": "Product being transformed (e.g. http_requests)",
+		"success": "1 when the transformer executed successfully, otherwise 0",
+		"transformerId": "The Transformer ID"
+	},
+	"AccountLogpushTransformersAdaptiveGroupsFilter_InputObject": {
+		"__description": ""
+	},
+	"AccountLogpushTransformersAdaptiveGroupsMax": {
+		"__description": "",
+		"timestamp": "Latest timestamp of transformer executions"
+	},
+	"AccountLogpushTransformersAdaptiveGroupsOrderBy": {
+		"__description": ""
+	},
+	"AccountLogpushTransformersAdaptiveGroupsSum": {
+		"__description": "",
+		"bytesIn": "Input bytes before transformation",
+		"bytesOut": "Output bytes after transformation",
+		"records": "Number of records processed by transformer"
+	},
+	"AccountLogpushTransformersAdaptiveGroupsSumConfidence": {
+		"__description": "",
+		"bytesIn": "Confidence interval for the corresponding point estimate",
+		"bytesOut": "Confidence interval for the corresponding point estimate",
+		"records": "Confidence interval for the corresponding point estimate"
 	},
 	"AccountMagicEndpointHealthCheckAdaptiveGroups": {
 		"__description": "Magic Endpoint Healthcheck events with adaptive sampling.",
@@ -9090,6 +9270,7 @@
 		"cloudchamberMetricsAdaptiveGroups": "",
 		"cloudflareTunnelsAnalyticsAdaptiveGroups": "",
 		"cloudforceOneDetectionsAdaptiveGroups": "",
+		"cloudforceOneDetectionsStagingAdaptiveGroups": "",
 		"containersMetricsAdaptiveGroups": "",
 		"containersUsageAdaptiveGroups": "",
 		"d1AnalyticsAdaptiveGroups": "",
@@ -9109,6 +9290,8 @@
 		"fbmAttackAnalyticsGroups": "",
 		"firewallEventsAdaptive": "",
 		"firewallEventsAdaptiveGroups": "",
+		"flagshipFlagEvaluationsAdaptive": "",
+		"flagshipFlagEvaluationsAdaptiveGroups": "",
 		"flowtrackdNetworkAnalyticsAdaptiveGroups": "",
 		"gatewayL4DownstreamSessionsAdaptiveGroups": "",
 		"gatewayL4SessionsAdaptiveGroups": "",
@@ -9135,6 +9318,7 @@
 		"liveInputEventsAdaptiveGroups": "",
 		"logExplorerIngestionAdaptiveGroups": "",
 		"logpushHealthAdaptiveGroups": "",
+		"logpushTransformersAdaptiveGroups": "",
 		"magicEndpointHealthCheckAdaptiveGroups": "",
 		"magicFirewallNetworkAnalyticsAdaptiveGroups": "",
 		"magicFirewallRateLimitNetworkAnalyticsAdaptiveGroups": "",
@@ -13037,6 +13221,62 @@
 		"records": "Confidence interval for the corresponding point estimate",
 		"uploads": "Confidence interval for the corresponding point estimate"
 	},
+	"ZoneLogpushTransformersAdaptiveGroups": {
+		"__description": "Beta. Logpush transformer health metrics",
+		"avg": "",
+		"confidence": "ALPHA - DO NOT USE",
+		"count": "The number of transformer executions",
+		"dimensions": "List of dimensions to group by",
+		"max": "Maximum value of a metric per dimension",
+		"sum": "The sum of values for a metric per dimension"
+	},
+	"ZoneLogpushTransformersAdaptiveGroupsAvg": {
+		"__description": "",
+		"durationSeconds": "Average transformer execution duration in seconds",
+		"sampleInterval": "Average sample interval"
+	},
+	"ZoneLogpushTransformersAdaptiveGroupsConfidence": {
+		"__description": "",
+		"count": "The number of transformer executions, with confidence intervals",
+		"level": "Confidence level that was requested",
+		"sum": "The sum of values for a metric per dimension, with confidence intervals"
+	},
+	"ZoneLogpushTransformersAdaptiveGroupsDimensions": {
+		"__description": "",
+		"date": "Date of the transformer execution",
+		"datetime": "Datetime of the transformer execution",
+		"datetimeFifteenMinutes": "Datetime of the transformer execution, truncated to multiple of 15 minutes",
+		"datetimeFiveMinutes": "Datetime of the transformer execution, truncated to multiple of 5 minutes",
+		"datetimeHour": "Datetime of the transformer execution, truncated to the hour",
+		"datetimeMinute": "Datetime of the transformer execution, truncated to the minute",
+		"errorCode": "Error code. 0 = success, 1300+ = transformer error codes",
+		"jobId": "The Logpush Job ID",
+		"product": "Product being transformed (e.g. http_requests)",
+		"success": "1 when the transformer executed successfully, otherwise 0",
+		"transformerId": "The Transformer ID"
+	},
+	"ZoneLogpushTransformersAdaptiveGroupsFilter_InputObject": {
+		"__description": ""
+	},
+	"ZoneLogpushTransformersAdaptiveGroupsMax": {
+		"__description": "",
+		"timestamp": "Latest timestamp of transformer executions"
+	},
+	"ZoneLogpushTransformersAdaptiveGroupsOrderBy": {
+		"__description": ""
+	},
+	"ZoneLogpushTransformersAdaptiveGroupsSum": {
+		"__description": "",
+		"bytesIn": "Input bytes before transformation",
+		"bytesOut": "Output bytes after transformation",
+		"records": "Number of records processed by transformer"
+	},
+	"ZoneLogpushTransformersAdaptiveGroupsSumConfidence": {
+		"__description": "",
+		"bytesIn": "Confidence interval for the corresponding point estimate",
+		"bytesOut": "Confidence interval for the corresponding point estimate",
+		"records": "Confidence interval for the corresponding point estimate"
+	},
 	"ZoneNelReportsAdaptiveGroups": {
 		"__description": "Data to visualize network error logs",
 		"avg": "",
@@ -13153,6 +13393,7 @@
 		"loadBalancingRequestsAdaptive": "",
 		"loadBalancingRequestsAdaptiveGroups": "",
 		"logpushHealthAdaptiveGroups": "",
+		"logpushTransformersAdaptiveGroups": "",
 		"nelReportsAdaptiveGroups": "",
 		"pageShieldReportsAdaptiveGroups": "",
 		"userProfilesAdaptiveGroups": "",
@@ -13210,14 +13451,28 @@
 	},
 	"ZoneUserProfilesRawEventsGroups": {
 		"__description": "Historical login and signup events per user.",
+		"authenticationIdentityProvider": "The identity provider used for SSO authentication.",
+		"authenticationMethod": "The authentication method used in the event.",
+		"authenticationStatus": "The authentication status of the event.",
 		"bmDetectionTags": "Abuse detections.",
+		"botScore": "The final score originated from bot management detections.",
+		"clientASN": "The ASN number associated with the event.",
 		"clientCity": "City name.",
 		"clientCountry": "Country code (alpha2).",
+		"clientIP": "The visitor's IP address (IPv4 or IPv6).",
+		"clientRequestHTTPHost": "The HTTP hostname associated with the event.",
 		"date": "Date of the event.",
+		"detectionIds": "Array of detection IDs that matched this event.",
 		"deviceBrowser": "Device browser name.",
 		"deviceOS": "Device OS name.",
+		"deviceType": "The type of device associated with the event. Possible values are Mobile, Desktop, Tablet, Bot, Other, Unknown.",
 		"eventTimestamp": "When the event happened.",
 		"eventType": "Type of the event. Possible values are signup or login.",
+		"fraudEmailRisk": "Risk level of the email address in the event.",
+		"ja4": "JA4 TLS fingerprint associated with the event.",
+		"leakedCredentialCheckResult": "The distinct result of checking for leaked credentials. Possible values are clean, username_leaked, username_password_similar, username_and_password_leaked, password_leaked, none.",
+		"rayId": "The RayId of the event.",
+		"securityAction": "The first-class action the Cloudflare Firewall took on this event.",
 		"userId": "Unique identifier for a user."
 	},
 	"ZoneUserProfilesRawEventsGroupsFilter_InputObject": {
@@ -13958,6 +14213,7 @@
 		"cloudchamberMetricsAdaptiveGroups": "Metrics for Cloudchamber applications and deployments",
 		"cloudflareTunnelsAnalyticsAdaptiveGroups": "Cloudflare tunnel Device Analytics",
 		"cloudforceOneDetectionsAdaptiveGroups": "Cloudforce One detection events for Workers for Platforms scripts with adaptive sampling. Each row represents a single detection rule hit.",
+		"cloudforceOneDetectionsStagingAdaptiveGroups": "Cloudforce One detection events for Workers for Platforms scripts with adaptive sampling (staging). Each row represents a single detection rule hit.",
 		"containersMetricsAdaptiveGroups": "Metrics for Cloudchamber applications and deployments",
 		"containersUsageAdaptiveGroups": "Used to compute usage queries for billing estimates in Dash",
 		"d1AnalyticsAdaptiveGroups": "Aggregated D1 analytics with adaptive sampling",
@@ -13977,6 +14233,8 @@
 		"fbmAttackAnalyticsGroups": "FBM analytics metadata for attacks detected by dosd",
 		"firewallEventsAdaptive": "Raw Firewall events with adaptive sampling",
 		"firewallEventsAdaptiveGroups": "Aggregated Firewall events with adaptive sampling",
+		"flagshipFlagEvaluationsAdaptive": "Flagship feature flag evaluations with adaptive sampling. Each row represents an individual flag evaluation.",
+		"flagshipFlagEvaluationsAdaptiveGroups": "Aggregated Flagship feature flag evaluations with adaptive sampling. Use this to build dashboards over evaluation volume, latency, and error rates.",
 		"flowtrackdNetworkAnalyticsAdaptiveGroups": "<small>DEPRECATED (This node is an alias for <code>advancedTcpProtectionNetworkAnalyticsAdaptiveGroups</code>; prefer using the new name instead):</small> Network analytics data for flowtrackd",
 		"gatewayL4DownstreamSessionsAdaptiveGroups": "Aggregated metrics about downstream (client to edge) L4 Gateway Sessions. Metrics are reported on TCP or UDP session close",
 		"gatewayL4SessionsAdaptiveGroups": "BETA - Aggregate counts of Gateway L4 sessions with adaptive sampling",
@@ -14003,6 +14261,7 @@
 		"liveInputEventsAdaptiveGroups": "Aggregated live input events with adaptive sampling",
 		"logExplorerIngestionAdaptiveGroups": "Ingestion metrics for Log Explorer",
 		"logpushHealthAdaptiveGroups": "Beta. Logpush job health metrics",
+		"logpushTransformersAdaptiveGroups": "Beta. Logpush transformer health metrics",
 		"magicEndpointHealthCheckAdaptiveGroups": "Magic Endpoint Healthcheck events with adaptive sampling.",
 		"magicFirewallNetworkAnalyticsAdaptiveGroups": "Network analytics data for Magic Firewall",
 		"magicFirewallRateLimitNetworkAnalyticsAdaptiveGroups": "Network analytics data for Magic Firewall Ratelimiting",
@@ -14115,10 +14374,10 @@
 		"__description": "Scalar type []uint8"
 	},
 	"float32": {
-		"__description": "Scalar type float32"
+		"__description": "Scalar type types.Float32"
 	},
 	"float64": {
-		"__description": "Scalar type float64"
+		"__description": "Scalar type types.Float64"
 	},
 	"int16": {
 		"__description": "Scalar type int16"
@@ -14195,6 +14454,7 @@
 		"loadBalancingRequestsAdaptive": "Raw Load Balancing origin requests with adaptive sampling",
 		"loadBalancingRequestsAdaptiveGroups": "Aggregated Load Balancing origin requests with adaptive sampling",
 		"logpushHealthAdaptiveGroups": "Beta. Logpush job health metrics",
+		"logpushTransformersAdaptiveGroups": "Beta. Logpush transformer health metrics",
 		"nelReportsAdaptiveGroups": "Data to visualize network error logs",
 		"pageShieldReportsAdaptiveGroups": "Page Shield CSP reports",
 		"settings": "",
