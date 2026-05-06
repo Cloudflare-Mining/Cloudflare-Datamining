@@ -2152,6 +2152,113 @@
 																			],
 																			"type": "object"
 																		},
+																		"mpp": {
+																			"properties": {
+																				"details": {
+																					"type": "object"
+																				},
+																				"durationMs": {
+																					"type": "number"
+																				},
+																				"evidence": {
+																					"items": {
+																						"properties": {
+																							"action": {
+																								"example": "fetch",
+																								"type": "string"
+																							},
+																							"finding": {
+																								"properties": {
+																									"outcome": {
+																										"example": "positive",
+																										"type": "string"
+																									},
+																									"summary": {
+																										"example": "Found valid robots.txt",
+																										"type": "string"
+																									}
+																								},
+																								"required": [
+																									"outcome",
+																									"summary"
+																								],
+																								"type": "object"
+																							},
+																							"label": {
+																								"example": "GET /robots.txt",
+																								"type": "string"
+																							},
+																							"request": {
+																								"properties": {
+																									"headers": {
+																										"type": "object"
+																									},
+																									"method": {
+																										"example": "GET",
+																										"type": "string"
+																									},
+																									"url": {
+																										"example": "https://example.com/robots.txt",
+																										"type": "string"
+																									}
+																								},
+																								"required": [
+																									"url",
+																									"method"
+																								],
+																								"type": "object"
+																							},
+																							"response": {
+																								"properties": {
+																									"bodyPreview": {
+																										"type": "string"
+																									},
+																									"bodySize": {
+																										"type": "integer"
+																									},
+																									"headers": {
+																										"type": "object"
+																									},
+																									"redirectedTo": {
+																										"type": "string"
+																									},
+																									"status": {
+																										"example": 200,
+																										"type": "integer"
+																									},
+																									"statusText": {
+																										"example": "OK",
+																										"type": "string"
+																									}
+																								},
+																								"required": [
+																									"status",
+																									"statusText"
+																								],
+																								"type": "object"
+																							}
+																						},
+																						"required": [
+																							"action",
+																							"label"
+																						],
+																						"type": "object"
+																					},
+																					"type": "array"
+																				},
+																				"message": {
+																					"type": "string"
+																				},
+																				"status": {
+																					"example": "fail",
+																					"type": "string"
+																				}
+																			},
+																			"required": [
+																				"status"
+																			],
+																			"type": "object"
+																		},
 																		"ucp": {
 																			"properties": {
 																				"details": {
@@ -2370,6 +2477,7 @@
 																	"required": [
 																		"ucp",
 																		"x402",
+																		"mpp",
 																		"acp",
 																		"ap2"
 																	],

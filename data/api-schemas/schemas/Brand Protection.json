@@ -119,6 +119,138 @@
 			"Cloudforce One Write"
 		]
 	},
+	"DELETE /accounts/{account_id}/cloudforce-one/v2/brand-protection/takedown-notices/{notice_id}": {
+		"description": "Delete a takedown notice and all associated letters. PDFs are also removed from storage.",
+		"operationId": "delete_TakedownNoticeDelete",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"minLength": 1,
+					"type": "string"
+				}
+			},
+			{
+				"in": "path",
+				"name": "notice_id",
+				"required": true,
+				"schema": {
+					"exclusiveMinimum": true,
+					"minimum": 0,
+					"type": "integer"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"message": {
+									"type": "string"
+								},
+								"success": {
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"message"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Takedown notice deleted successfully"
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			}
+		],
+		"summary": "Delete takedown notice",
+		"tags": [
+			"Brand Protection"
+		],
+		"x-api-token-group": [
+			"Cloudforce One Write"
+		]
+	},
+	"DELETE /accounts/{account_id}/cloudforce-one/v2/brand-protection/takedown-notices/{notice_id}/letters/{letter_id}": {
+		"description": "Delete a specific takedown letter and its associated PDF from storage.",
+		"operationId": "delete_TakedownLetterDelete",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"minLength": 1,
+					"type": "string"
+				}
+			},
+			{
+				"in": "path",
+				"name": "notice_id",
+				"required": true,
+				"schema": {
+					"exclusiveMinimum": true,
+					"minimum": 0,
+					"type": "integer"
+				}
+			},
+			{
+				"in": "path",
+				"name": "letter_id",
+				"required": true,
+				"schema": {
+					"exclusiveMinimum": true,
+					"minimum": 0,
+					"type": "integer"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"message": {
+									"type": "string"
+								},
+								"success": {
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"message"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Takedown letter deleted successfully"
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			}
+		],
+		"summary": "Delete takedown letter",
+		"tags": [
+			"Brand Protection"
+		],
+		"x-api-token-group": [
+			"Cloudforce One Write"
+		]
+	},
 	"GET /accounts/{account_id}/cloudforce-one/v2/brand-protection/domain/matches": {
 		"description": "Get paginated list of domain matches for one or more brand protection queries. When multiple query_ids are provided (comma-separated), matches are deduplicated across queries and each match includes a match_details array with per-match query metadata and individual dismissed state.",
 		"operationId": "get_DomainMatchList",
@@ -872,6 +1004,374 @@
 			"Cloudforce One Read"
 		]
 	},
+	"GET /accounts/{account_id}/cloudforce-one/v2/brand-protection/takedown-notices": {
+		"description": "List all takedown notices for the account.",
+		"operationId": "get_TakedownNoticeList",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"minLength": 1,
+					"type": "string"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"notices": {
+									"items": {
+										"properties": {
+											"createdAt": {
+												"nullable": true,
+												"type": "string"
+											},
+											"domain": {
+												"type": "string"
+											},
+											"id": {
+												"type": "number"
+											},
+											"matchId": {
+												"nullable": true,
+												"type": "number"
+											},
+											"matchType": {
+												"enum": [
+													"logo",
+													"domain"
+												],
+												"nullable": true,
+												"type": "string"
+											},
+											"status": {
+												"enum": [
+													"draft",
+													"sent",
+													"resolved",
+													"expired"
+												],
+												"type": "string"
+											},
+											"updatedAt": {
+												"nullable": true,
+												"type": "string"
+											}
+										},
+										"required": [
+											"id",
+											"domain",
+											"status",
+											"matchId",
+											"matchType",
+											"createdAt",
+											"updatedAt"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								}
+							},
+							"required": [
+								"notices"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Takedown notices listed successfully"
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			}
+		],
+		"summary": "List takedown notices",
+		"tags": [
+			"Brand Protection"
+		],
+		"x-api-token-group": [
+			"Cloudforce One Write",
+			"Cloudforce One Read"
+		]
+	},
+	"GET /accounts/{account_id}/cloudforce-one/v2/brand-protection/takedown-notices/{notice_id}": {
+		"description": "Get a specific takedown notice by ID.",
+		"operationId": "get_TakedownNoticeGet",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"minLength": 1,
+					"type": "string"
+				}
+			},
+			{
+				"in": "path",
+				"name": "notice_id",
+				"required": true,
+				"schema": {
+					"exclusiveMinimum": true,
+					"minimum": 0,
+					"type": "integer"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"createdAt": {
+									"nullable": true,
+									"type": "string"
+								},
+								"domain": {
+									"type": "string"
+								},
+								"id": {
+									"type": "number"
+								},
+								"matchId": {
+									"nullable": true,
+									"type": "number"
+								},
+								"matchType": {
+									"enum": [
+										"logo",
+										"domain"
+									],
+									"nullable": true,
+									"type": "string"
+								},
+								"status": {
+									"enum": [
+										"draft",
+										"sent",
+										"resolved",
+										"expired"
+									],
+									"type": "string"
+								},
+								"updatedAt": {
+									"nullable": true,
+									"type": "string"
+								}
+							},
+							"required": [
+								"id",
+								"domain",
+								"status",
+								"matchId",
+								"matchType",
+								"createdAt",
+								"updatedAt"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Takedown notice retrieved successfully"
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			}
+		],
+		"summary": "Get takedown notice",
+		"tags": [
+			"Brand Protection"
+		],
+		"x-api-token-group": [
+			"Cloudforce One Write",
+			"Cloudforce One Read"
+		]
+	},
+	"GET /accounts/{account_id}/cloudforce-one/v2/brand-protection/takedown-notices/{notice_id}/letters": {
+		"description": "List all letters for a specific takedown notice.",
+		"operationId": "get_TakedownLetterList",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"minLength": 1,
+					"type": "string"
+				}
+			},
+			{
+				"in": "path",
+				"name": "notice_id",
+				"required": true,
+				"schema": {
+					"exclusiveMinimum": true,
+					"minimum": 0,
+					"type": "integer"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"letters": {
+									"items": {
+										"properties": {
+											"createdAt": {
+												"nullable": true,
+												"type": "string"
+											},
+											"id": {
+												"type": "number"
+											},
+											"letterType": {
+												"type": "string"
+											},
+											"takedownNoticeId": {
+												"type": "number"
+											},
+											"templateId": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"id",
+											"takedownNoticeId",
+											"templateId",
+											"letterType",
+											"createdAt"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								}
+							},
+							"required": [
+								"letters"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Takedown letters listed successfully"
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			}
+		],
+		"summary": "List takedown letters",
+		"tags": [
+			"Brand Protection"
+		],
+		"x-api-token-group": [
+			"Cloudforce One Write",
+			"Cloudforce One Read"
+		]
+	},
+	"GET /accounts/{account_id}/cloudforce-one/v2/brand-protection/takedown-notices/{notice_id}/letters/{letter_id}": {
+		"description": "Get a specific takedown letter by ID, including the rendered text.",
+		"operationId": "get_TakedownLetterGet",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"minLength": 1,
+					"type": "string"
+				}
+			},
+			{
+				"in": "path",
+				"name": "notice_id",
+				"required": true,
+				"schema": {
+					"exclusiveMinimum": true,
+					"minimum": 0,
+					"type": "integer"
+				}
+			},
+			{
+				"in": "path",
+				"name": "letter_id",
+				"required": true,
+				"schema": {
+					"exclusiveMinimum": true,
+					"minimum": 0,
+					"type": "integer"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"createdAt": {
+									"nullable": true,
+									"type": "string"
+								},
+								"id": {
+									"type": "number"
+								},
+								"letterText": {
+									"type": "string"
+								},
+								"letterType": {
+									"type": "string"
+								},
+								"takedownNoticeId": {
+									"type": "number"
+								},
+								"templateId": {
+									"type": "string"
+								}
+							},
+							"required": [
+								"id",
+								"takedownNoticeId",
+								"templateId",
+								"letterType",
+								"letterText",
+								"createdAt"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Takedown letter retrieved successfully"
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			}
+		],
+		"summary": "Get takedown letter",
+		"tags": [
+			"Brand Protection"
+		],
+		"x-api-token-group": [
+			"Cloudforce One Write",
+			"Cloudforce One Read"
+		]
+	},
 	"GET /accounts/{account_id}/cloudforce-one/v2/brand-protection/total-queries": {
 		"description": "Get the total number of saved brand protection queries (domain + logo) for an account",
 		"operationId": "get_TotalQueries",
@@ -1409,6 +1909,282 @@
 			"Cloudforce One Write"
 		]
 	},
+	"POST /accounts/{account_id}/cloudforce-one/v2/brand-protection/takedown-notices": {
+		"description": "Create a new takedown notice for a domain suspected of trademark infringement.",
+		"operationId": "post_TakedownNoticeCreate",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"minLength": 1,
+					"type": "string"
+				}
+			}
+		],
+		"requestBody": {
+			"content": {
+				"application/json": {
+					"schema": {
+						"properties": {
+							"domain": {
+								"maxLength": 253,
+								"minLength": 1,
+								"type": "string"
+							},
+							"matchId": {
+								"exclusiveMinimum": true,
+								"minimum": 0,
+								"type": "integer"
+							},
+							"matchType": {
+								"enum": [
+									"logo",
+									"domain"
+								],
+								"type": "string"
+							},
+							"status": {
+								"default": "draft",
+								"enum": [
+									"draft",
+									"sent",
+									"resolved",
+									"expired"
+								],
+								"type": "string"
+							}
+						},
+						"required": [
+							"domain"
+						],
+						"type": "object"
+					}
+				}
+			}
+		},
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"createdAt": {
+									"nullable": true,
+									"type": "string"
+								},
+								"domain": {
+									"type": "string"
+								},
+								"id": {
+									"type": "number"
+								},
+								"matchId": {
+									"nullable": true,
+									"type": "number"
+								},
+								"matchType": {
+									"enum": [
+										"logo",
+										"domain"
+									],
+									"nullable": true,
+									"type": "string"
+								},
+								"status": {
+									"enum": [
+										"draft",
+										"sent",
+										"resolved",
+										"expired"
+									],
+									"type": "string"
+								},
+								"updatedAt": {
+									"nullable": true,
+									"type": "string"
+								}
+							},
+							"required": [
+								"id",
+								"domain",
+								"status",
+								"matchId",
+								"matchType",
+								"createdAt",
+								"updatedAt"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Takedown notice created successfully"
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			}
+		],
+		"summary": "Create takedown notice",
+		"tags": [
+			"Brand Protection"
+		],
+		"x-api-token-group": [
+			"Cloudforce One Write"
+		]
+	},
+	"POST /accounts/{account_id}/cloudforce-one/v2/brand-protection/takedown-notices/{notice_id}/letters": {
+		"description": "Generate a takedown letter for a notice. Renders both text and PDF, stores the PDF in R2.",
+		"operationId": "post_TakedownLetterCreate",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"minLength": 1,
+					"type": "string"
+				}
+			},
+			{
+				"in": "path",
+				"name": "notice_id",
+				"required": true,
+				"schema": {
+					"exclusiveMinimum": true,
+					"minimum": 0,
+					"type": "integer"
+				}
+			}
+		],
+		"requestBody": {
+			"content": {
+				"application/json": {
+					"schema": {
+						"properties": {
+							"fields": {
+								"properties": {
+									"discoveryDate": {
+										"pattern": "^\\d{4}-\\d{2}-\\d{2}$",
+										"type": "string"
+									},
+									"domain": {
+										"maxLength": 500,
+										"type": "string"
+									},
+									"generationDate": {
+										"pattern": "^\\d{4}-\\d{2}-\\d{2}$",
+										"type": "string"
+									},
+									"registrantEmail": {
+										"maxLength": 500,
+										"type": "string"
+									},
+									"registrar": {
+										"maxLength": 500,
+										"type": "string"
+									},
+									"resolutionByDate": {
+										"pattern": "^\\d{4}-\\d{2}-\\d{2}$",
+										"type": "string"
+									},
+									"senderCompany": {
+										"maxLength": 500,
+										"type": "string"
+									},
+									"senderEmail": {
+										"maxLength": 500,
+										"type": "string"
+									},
+									"senderName": {
+										"maxLength": 500,
+										"type": "string"
+									},
+									"senderTitle": {
+										"maxLength": 500,
+										"type": "string"
+									},
+									"trademarkName": {
+										"maxLength": 500,
+										"type": "string"
+									},
+									"trademarkOwner": {
+										"maxLength": 500,
+										"type": "string"
+									}
+								},
+								"type": "object"
+							},
+							"templateId": {
+								"minLength": 1,
+								"type": "string"
+							}
+						},
+						"required": [
+							"templateId",
+							"fields"
+						],
+						"type": "object"
+					}
+				}
+			}
+		},
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"createdAt": {
+									"nullable": true,
+									"type": "string"
+								},
+								"id": {
+									"type": "number"
+								},
+								"letterText": {
+									"type": "string"
+								},
+								"letterType": {
+									"type": "string"
+								},
+								"takedownNoticeId": {
+									"type": "number"
+								},
+								"templateId": {
+									"type": "string"
+								}
+							},
+							"required": [
+								"id",
+								"takedownNoticeId",
+								"templateId",
+								"letterType",
+								"letterText",
+								"createdAt"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Takedown letter created successfully"
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			}
+		],
+		"summary": "Create takedown letter",
+		"tags": [
+			"Brand Protection"
+		],
+		"x-api-token-group": [
+			"Cloudforce One Write"
+		]
+	},
 	"PUT /accounts/{account_id}/cloudforce-one/v2/brand-protection/letter/templates/{template_id}": {
 		"description": "Update a user-defined takedown letter template. System templates cannot be modified.",
 		"operationId": "put_LetterTemplateUpdate",
@@ -1523,6 +2299,140 @@
 			}
 		],
 		"summary": "Update letter template",
+		"tags": [
+			"Brand Protection"
+		],
+		"x-api-token-group": [
+			"Cloudforce One Write"
+		]
+	},
+	"PUT /accounts/{account_id}/cloudforce-one/v2/brand-protection/takedown-notices/{notice_id}": {
+		"description": "Update a takedown notice (e.g. change status to sent, resolved, etc.).",
+		"operationId": "put_TakedownNoticeUpdate",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"minLength": 1,
+					"type": "string"
+				}
+			},
+			{
+				"in": "path",
+				"name": "notice_id",
+				"required": true,
+				"schema": {
+					"exclusiveMinimum": true,
+					"minimum": 0,
+					"type": "integer"
+				}
+			}
+		],
+		"requestBody": {
+			"content": {
+				"application/json": {
+					"schema": {
+						"properties": {
+							"domain": {
+								"maxLength": 253,
+								"minLength": 1,
+								"type": "string"
+							},
+							"matchId": {
+								"exclusiveMinimum": true,
+								"minimum": 0,
+								"nullable": true,
+								"type": "integer"
+							},
+							"matchType": {
+								"enum": [
+									"logo",
+									"domain"
+								],
+								"nullable": true,
+								"type": "string"
+							},
+							"status": {
+								"enum": [
+									"draft",
+									"sent",
+									"resolved",
+									"expired"
+								],
+								"type": "string"
+							}
+						},
+						"type": "object"
+					}
+				}
+			}
+		},
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"createdAt": {
+									"nullable": true,
+									"type": "string"
+								},
+								"domain": {
+									"type": "string"
+								},
+								"id": {
+									"type": "number"
+								},
+								"matchId": {
+									"nullable": true,
+									"type": "number"
+								},
+								"matchType": {
+									"enum": [
+										"logo",
+										"domain"
+									],
+									"nullable": true,
+									"type": "string"
+								},
+								"status": {
+									"enum": [
+										"draft",
+										"sent",
+										"resolved",
+										"expired"
+									],
+									"type": "string"
+								},
+								"updatedAt": {
+									"nullable": true,
+									"type": "string"
+								}
+							},
+							"required": [
+								"id",
+								"domain",
+								"status",
+								"matchId",
+								"matchType",
+								"createdAt",
+								"updatedAt"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Takedown notice updated successfully"
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			}
+		],
+		"summary": "Update takedown notice",
 		"tags": [
 			"Brand Protection"
 		],

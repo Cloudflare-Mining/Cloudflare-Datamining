@@ -14,7 +14,7 @@
 				}
 			},
 			{
-				"description": "Filter applications using key:value format. Supported filter keys:\n- name: Filter by application name (e.g., name:HR)\n- id: Filter by application ID (e.g., id:0b63249c-95bf-4cc0-a7cc-d7faaaf1dac0)\n- human_id: Filter by human-readable ID (e.g., human_id:HR)\n- hostname: Filter by hostname or support domain (e.g., hostname:portal.example.com)\n- source: Filter by application source name (e.g., source:cloudflare)\n- ip_subnet: Filter by IP subnet using CIDR containment — returns applications where any stored subnet contains the search value (e.g., ip_subnet:10.0.1.5/32 matches apps with 10.0.0.0/16)\n- intel_id: Filter by Intel API ID (e.g., intel_id:498).\n.\n",
+				"description": "Filter applications using key:value format. Supported filter keys:\n- name: Filter by application name (e.g., name:HR)\n- id: Filter by application ID (e.g., id:0b63249c-95bf-4cc0-a7cc-d7faaaf1dac0)\n- human_id: Filter by human-readable ID (e.g., human_id:HR)\n- hostname: Filter by hostname or support domain (e.g., hostname:portal.example.com)\n- source: Filter by application source name (e.g., source:cloudflare)\n- ip_subnet: Filter by IP subnet using CIDR containment — returns applications where any stored subnet contains the search value (e.g., ip_subnet:10.0.1.5/32 matches apps with 10.0.0.0/16)\n- intel_id: Filter by Intel API ID (e.g., intel_id:498). also supports multiple values (e.g., intel_id:498,1001)\n- category_id: Filter by category ID (e.g., category_id:37f8ec03-8766-49d4-9a15-369b044c842c).\n- category_name: Filter by category name (e.g., category_name:HR).\n- supported: Filter by supported Cloudflare product (e.g., supported:ACCESS). Values: GATEWAY, ACCESS, CASB.\n.\n",
 				"example": "filter=name:HR&filter=source:cloudflare&filter=intel_id:498",
 				"in": "query",
 				"name": "filter",
@@ -41,11 +41,22 @@
 				}
 			},
 			{
-				"description": "Order by result by field name and order (e.g., name:asc).",
+				"description": "Order results by field name and direction (e.g., name:asc). Ignored when search is provided; results are ranked by relevance instead.",
 				"example": "name:asc",
 				"in": "query",
 				"name": "order_by",
 				"schema": {
+					"type": "string"
+				}
+			},
+			{
+				"description": "Fuzzy search across application name and hostnames. Results are ranked by relevance. Must be between 2 and 200 characters. Can be combined with filter parameters.",
+				"example": "MyNewApp",
+				"in": "query",
+				"name": "search",
+				"schema": {
+					"maxLength": 200,
+					"minLength": 2,
 					"type": "string"
 				}
 			}
@@ -291,6 +302,22 @@
 														},
 														"type": "array"
 													},
+													"supported": {
+														"description": "Cloudflare products that support this application.",
+														"example": [
+															"GATEWAY",
+															"ACCESS"
+														],
+														"items": {
+															"enum": [
+																"GATEWAY",
+																"ACCESS",
+																"CASB"
+															],
+															"type": "string"
+														},
+														"type": "array"
+													},
 													"updated_at": {
 														"description": "Returns the application update time.",
 														"example": "2025-01-01T00:00:00Z",
@@ -309,6 +336,7 @@
 													"gen_ai_score",
 													"application_confidence_score",
 													"created_at",
+													"supported",
 													"hostnames",
 													"human_id",
 													"id",
@@ -574,6 +602,22 @@
 																},
 																"type": "array"
 															},
+															"supported": {
+																"description": "Cloudflare products that support this application.",
+																"example": [
+																	"GATEWAY",
+																	"ACCESS"
+																],
+																"items": {
+																	"enum": [
+																		"GATEWAY",
+																		"ACCESS",
+																		"CASB"
+																	],
+																	"type": "string"
+																},
+																"type": "array"
+															},
 															"updated_at": {
 																"description": "Returns the application update time.",
 																"example": "2025-01-01T00:00:00Z",
@@ -592,6 +636,7 @@
 															"gen_ai_score",
 															"application_confidence_score",
 															"created_at",
+															"supported",
 															"hostnames",
 															"human_id",
 															"id",
@@ -967,6 +1012,22 @@
 													},
 													"type": "array"
 												},
+												"supported": {
+													"description": "Cloudflare products that support this application.",
+													"example": [
+														"GATEWAY",
+														"ACCESS"
+													],
+													"items": {
+														"enum": [
+															"GATEWAY",
+															"ACCESS",
+															"CASB"
+														],
+														"type": "string"
+													},
+													"type": "array"
+												},
 												"updated_at": {
 													"description": "Returns the application update time.",
 													"example": "2025-01-01T00:00:00Z",
@@ -985,6 +1046,7 @@
 												"gen_ai_score",
 												"application_confidence_score",
 												"created_at",
+												"supported",
 												"hostnames",
 												"human_id",
 												"id",
@@ -1211,6 +1273,22 @@
 															},
 															"type": "array"
 														},
+														"supported": {
+															"description": "Cloudflare products that support this application.",
+															"example": [
+																"GATEWAY",
+																"ACCESS"
+															],
+															"items": {
+																"enum": [
+																	"GATEWAY",
+																	"ACCESS",
+																	"CASB"
+																],
+																"type": "string"
+															},
+															"type": "array"
+														},
 														"updated_at": {
 															"description": "Returns the application update time.",
 															"example": "2025-01-01T00:00:00Z",
@@ -1229,6 +1307,7 @@
 														"gen_ai_score",
 														"application_confidence_score",
 														"created_at",
+														"supported",
 														"hostnames",
 														"human_id",
 														"id",
