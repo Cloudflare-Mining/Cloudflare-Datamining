@@ -5,7 +5,7 @@
 		<p>At Cloudflare, we’re not looking for people who wait for a polished roadmap; we’re looking for the builders who see the cracks in the Internet that everyone else has simply learned to live with. We value candidates who have the instinct to spot a "normalized" problem and the AI-native curiosity to create a solution using the latest tools. Our culture is built on iteration, leveraging AI to ship faster today to make it better tomorrow, while ensuring that every improvement, no matter how small, is shared across the team to lift everyone up. If you’re the type of person who values curiosity over bureaucracy, and that AI is a partner in solving tough problems to keep the Internet moving forward, you’ll fit right in.</p>
 	</div>
 </div>
-<p><strong>Available Locations: London, UK&nbsp;</strong></p>
+<p><strong>Available Locations: Toronto, Canada</strong></p>
 <p><strong>Role Summary</strong></p>
 <p>Workers Observability (WOBS) Team provides a growing suite of tools to monitor, troubleshoot and optimize applications on the Cloudflare Developer platform. These tools increasingly work across Cloudflare products to provide complete visibility into user applications. We aim to make these tools not only best-in-class but also frictionless and intuitive to use. All this within the context of Cloudflare's scale and globally distributed infrastructure.</p>
 <p>Team members help design and ship core software features across the observability stack - including the frontend customer experience, integrations with other Cloudflare primitives, and our internal data stores and ingestion pipelines. You will own code across the development lifecycle from design to release including QA, incident management, and performance optimization.&nbsp;</p>
