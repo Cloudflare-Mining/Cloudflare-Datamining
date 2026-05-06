@@ -378,6 +378,9 @@
 	"billing-unified-checkout": {
 		"enabled": true
 	},
+	"billing-unified-checkout-apo": {
+		"enabled": false
+	},
 	"billing-unified-checkout-cache-reserve": {
 		"enabled": false
 	},
@@ -1058,6 +1061,13 @@
 	},
 	"dx-domain-onboarding-experiment": {
 		"enabled": true,
+		"branches": [
+			"baseline",
+			"experiment"
+		]
+	},
+	"dx-domain-onboarding-experiment-dns": {
+		"enabled": false,
 		"branches": [
 			"baseline",
 			"experiment"
