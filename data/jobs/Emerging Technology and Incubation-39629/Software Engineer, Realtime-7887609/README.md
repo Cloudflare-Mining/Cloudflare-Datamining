@@ -5,41 +5,64 @@
 		<p>At Cloudflare, we’re not looking for people who wait for a polished roadmap; we’re looking for the builders who see the cracks in the Internet that everyone else has simply learned to live with. We value candidates who have the instinct to spot a "normalized" problem and the AI-native curiosity to create a solution using the latest tools. Our culture is built on iteration, leveraging AI to ship faster today to make it better tomorrow, while ensuring that every improvement, no matter how small, is shared across the team to lift everyone up. If you’re the type of person who values curiosity over bureaucracy, and that AI is a partner in solving tough problems to keep the Internet moving forward, you’ll fit right in.</p>
 	</div>
 </div>
-<p><strong>Available Locations: Austin, TX</strong></p>
-<p><strong>About the role</strong></p>
-<p>Cloudflare protects and accelerates any Internet application online without adding hardware, installing software, or changing a line of code. Internet properties powered by Cloudflare all have web traffic routed through its intelligent global network, which gets smarter with every request. As a result, they see significant improvement in performance and a decrease in spam and other attacks. Cloudflare was named to Entrepreneur Magazine’s Top Company Cultures list and ranked among the World’s Most Innovative Companies by Fast Company.&nbsp;</p>
-<p>Cloudflare One is our SASE platform that is redefining how the world’s most sophisticated organizations secure and connect their global workforce. By unifying Zero Trust Network Access (ZTNA), Secure Web Gateway (SWG), Wide Area Network (WAN) and Cloud Access Security Broker (CASB) as well as Email Security into a single, seamless SASE architecture, we are moving the industry beyond the legacy "castle-and-moat" era.</p>
-<h4><strong>What you'll do</strong></h4>
-<p>We are looking for a product leader to lead the Cloudflare One portfolio. You are not someone to simply manage a steady ship; you are someone to invent the next generation of Access, Gateway, and WAN, unlocking new Total Addressable Markets (TAM) in the SASE space while executing your way into being the market leader for the current Service Addressable Market (SAM). You will operate as a ‘General Manager’ of your domain, equally formidable across Product, Engineering, Sales, and Strategy. You are deeply empathetic and entrepreneurial minded, translating market signals into a strategic, evolving organization.&nbsp;</p>
-<p>In this role, you will provide the vision and leadership to redefine how Cloudflare engages CIO’s and CISO’s to protect the data, devices, employees and networks that power their business - from teams of 50 to the Fortune 50. You will also act as a key evangelist and storyteller, articulating a compelling and optimistic vision for the future of development on Cloudflare while cultivating a passionate, hard-working, and collaborative culture, inspiring your team to overcome challenges and innovate.</p>
-<h4><strong>Desirable Skills, Knowledge, and Experience:</strong></h4>
-<p>We are looking for a leader who is more of a founder than a manager.<strong><br></strong></p>
+<p><strong>Available Locations: </strong>Austin,&nbsp;New York<strong><br></strong></p>
+<p><strong>About the role:</strong></p>
+<p>You’ll be part of a team pushing the envelope of global realtime communication over the Internet. We are using the power of Cloudflare’s network to build and operate systems and services for realtime video, voice and data across the world, building on WebRTC, MoQ and whatever new technologies emerge. We’re a team of researchers, experimenters and makers, who are all passionate about working together to create high-performance, resilient systems running at massive scale. Does this sound like you? If so, come join us!<strong><br></strong></p>
+<h4><strong>Responsibilities:</strong></h4>
 <ul>
-	<li>A deep empathy for customers and an understanding of the fundamental shifts happening in technology, the SSE and SASE space, especially around AI</li>
-	<li>Proven experience in a senior leadership role (e.g., former founder, Sr. Director, VP, CTO), having built and scaled both products and teams.</li>
-	<li>An entrepreneurial spirit with enterprise etiquette and a history of building things, whether in a successful venture or a passionate side project</li>
-	<li>Proven ability to pivot instantly from technical deep-dives to high-level strategic discussions. You have a track record of partnering with Sales to close Fortune 50 CIOs and presenting complex roadmaps to the Board of Directors with confidence</li>
-	<li>Exceptional storytelling ability with the passion and excitement to inspire internal teams, new customers, analysis and everyone in between</li>
-	<li>The ability to thrive in an autonomous environment, comfortable with ambiguity and defining your own path forward for the product and the team</li>
-	<li>A genuine optimism yet realistic view of things with resilience to navigate challenges and lead with a can-do attitude on all stages</li>
-	<li>You can synthesize complex information for diverse audiences - from the code-level details for developers to the ROI analysis for enterprise buyers.</li>
+	<li>Working with Product Management and customers to understand requirements.</li>
+	<li>Designing and implementing large-scale distributed systems.</li>
+	<li>Instrumenting global realtime services, creating dashboards, and analyzing data.</li>
+	<li>Monitoring and tuning system performance.</li>
+	<li>Researching and implementing Internet standards.</li>
+	<li>Effectively using all tools at your disposal, including AI.</li>
 </ul>
-<h4>Must-Have Skills</h4>
+<h4><strong>Requirements:</strong></h4>
 <ul>
-	<li>12+ years of experience in product management or a closely related role, with a focus on network and data security technologies (e.g., ZTNA, Gateways, DLP, CASB, data encryption, data classification, data privacy).</li>
-	<li>Own the SASE product roadmap. Make tough tactical prioritization decisions while helping the company think long-term. Build trust with stakeholders by maintaining an understandable, accurate roadmap.</li>
-	<li>Partner with leaders in other departments such as Product Marketing, Marketing, Sales, and Customer Support to drive adoption with and gather feedback from customers and prospects.</li>
-	<li>Develop and nurture relationships with engineering leadership and coordinate closely to ensure successful delivery of product</li>
-	<li>Deep understanding of the network and security landscapes, including current trends and threats, regulatory requirements, and emerging technologies.</li>
-	<li>A strong passion for and a clear vision for how AI and Machine Learning can fundamentally transform current SASE solutions in the modern era and in the future</li>
+	<li>Solid computer science and software engineering fundamentals.</li>
+	<li>Experience working with large-scale distributed systems.</li>
+	<li>Curiosity, initiative and a desire to collaborate closely with others.</li>
+	<li>Knowledge of a modern systems programming language such as Rust or Go.</li>
 </ul>
-<h4>Nice to haves</h4>
+<p><strong>Bonus Points:</strong></p>
 <ul>
-	<li>An understanding and real-world experience working with all types of channel partners (VARs, MSP, MSSP, etc)</li>
-	<li>A Computer Science degree or equivalent in-seat experience in product roles for technical products is highly preferred.</li>
-	<li>Experience leading product integrations during post-merger acquisitions (M&amp;A).</li>
-	<li>Deep familiarity with Zero Trust architecture and SD-WAN markets.</li>
+	<li>Experience working with realtime protocols such as WebRTC or MoQ.</li>
+	<li>Experience working with streaming media.</li>
+	<li>Relevant personal projects.</li>
 </ul>
+<p><strong>Compensation</strong></p>
+<p>Compensation may be adjusted depending on work location.</p>
+<ul>
+	<li><span data-sheets-root="1">For NYC based hires: estimated annual salary of $150,000 - 187,000.</span></li>
+</ul>
+<p><strong>Equity:</strong></p>
+<p>This role is eligible to participate in Cloudflare’s equity plan.</p>
+<p><strong>Benefits:</strong></p>
+<p>Cloudflare offers a complete package of benefits and programs to support you and your family.&nbsp; Our benefits programs can help you pay health care expenses, support caregiving, build capital for the future and make life a little easier and fun!&nbsp; The below is a description of our benefits for employees in the United States, and benefits may vary for employees based outside the U.S.</p>
+<p><strong>Health &amp; Welfare Benefits:</strong></p>
+<ul>
+	<li>Medical/Rx Insurance</li>
+	<li>Dental Insurance</li>
+	<li>Vision Insurance</li>
+	<li>Flexible Spending Accounts</li>
+	<li>Commuter Spending Accounts</li>
+	<li>Fertility &amp; Family Forming Benefits</li>
+	<li>On-demand mental health support and Employee Assistance Program</li>
+	<li>Global Travel Medical Insurance</li>
+</ul>
+<p><strong>Financial Benefits:</strong></p>
+<ul>
+	<li>Short and Long Term Disability Insurance</li>
+	<li>Life &amp; Accident Insurance</li>
+	<li>401(k) Retirement Savings Plan</li>
+	<li>Employee Stock Participation Plan</li>
+</ul>
+<p><strong>Time Off:</strong></p>
+<ul>
+	<li>Flexible paid time off covering vacation and sick leave</li>
+	<li>Leave programs, including parental, pregnancy health, medical, and bereavement leave</li>
+</ul>
+<p>This role may require flexibility to be on-call outside of standard working hours to address technical issues as needed.</p>
 <p>&nbsp;</p>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>

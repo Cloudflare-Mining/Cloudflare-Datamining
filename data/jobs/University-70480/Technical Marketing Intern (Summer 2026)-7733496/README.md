@@ -5,29 +5,32 @@
 		<p>At Cloudflare, we’re not looking for people who wait for a polished roadmap; we’re looking for the builders who see the cracks in the Internet that everyone else has simply learned to live with. We value candidates who have the instinct to spot a "normalized" problem and the AI-native curiosity to create a solution using the latest tools. Our culture is built on iteration, leveraging AI to ship faster today to make it better tomorrow, while ensuring that every improvement, no matter how small, is shared across the team to lift everyone up. If you’re the type of person who values curiosity over bureaucracy, and that AI is a partner in solving tough problems to keep the Internet moving forward, you’ll fit right in.</p>
 	</div>
 </div>
-<h4><strong>Available Locations: Lisbon, Portugal or London, UK</strong></h4>
-<h4><strong>About the department</strong></h4>
-<p>Cloudflare’s Billing Engineering Team is at the heart of every product launch, campaign, and initiative that Cloudflare undertakes. We build and maintain critical systems for billing, payments, usage metering, aggregation, invoicing and revenue recognition — powering billions in revenue and serving millions of customers.</p>
-<p>Currently we're rebuilding our entire billing platform, designing a metering and aggregation layer that scales effortlessly while ensuring financial accuracy. This is high-impact, high-stakes work that touches all Cloudflare’s cutting-edge products like AI, Zero Trust, Edge Compute, Bot Management, DDoS Protection, etc.</p>
-<p>As a Senior Systems Engineer, you’ll lead a team of talented, collaborative engineers working across Cloudflare’s ecosystem. You’ll navigate multiple high-profile projects, foster a culture of proactive communication and continuous learning, and drive technical excellence.</p>
-<p>If you thrive on solving hard challenges at the intersection of financial infrastructure and distributed systems, this is your opportunity to make a massive impact while growing with us.</p>
-<p><strong>What you'll do </strong><br><br>We are looking for an energetic team-focused engineer who is growth mindset oriented, able to drive their work from inception, requirements definition, technical specification phase, development, testing and go live.</p>
-<p>You will work on a range of transactional microservices written in Go. You will be involved in helping to maintain our operational excellence by triaging, solving various inbound tickets related to issues across services billing maintains. As you grow within the team you will be given opportunities to own bigger initiatives and lead projects from start to finish solo or as part of a smaller team.</p>
-<p>Our tech stack is a modern container-based microservice architecture. Technologies we use include Docker, Go (golang), PostgreSQL, Redis, Kafka, Kubernetes, Temporal and the usual Unix/Linux tools and workflows. We strive to build reliable, fault tolerant systems that can operate at Cloudflare’s scale.</p>
-<p><strong>Desirable skills and knowledge</strong></p>
+<p><strong>Available location:&nbsp;</strong>Austin, Texas, San Francisco, CA</p>
+<p><strong>About The Team</strong></p>
+<p>The Technical Marketing team works closely with product teams, sales and marketing to ensure our customers understand the technical details of how our products work. Our goal is to ensure the technical buyer and customer understands how Cloudflare products and solutions work in terms of their business needs. We are highly technical and get to touch every aspect of Cloudflare's technology.</p>
+<p><strong>About the Role</strong></p>
+<p>As a Technical Marketing Intern, you will help accelerate our plans to improve the content and tools we build for technical sales, partners and customers. You will be tasked with gathering feedback from the field, defining what customers are looking to understand and then helping build the videos, demonstrations and other technical assets. Your work will be key to improving our ability to explain to customers the complex technical details which will lead to an increase in sales.<br>The ideal candidate has a hands on mindset, a get-it-done attitude and is not afraid of challenging the status quo. You should feel comfortable facing a brand new technology and having to read documentation and being hands on with servers, scripts and APIs.</p>
+<p><strong>Responsibilities</strong></p>
 <ul>
-	<li>BS+ in Computer Science or equivalent experience</li>
-	<li>7+ years professional experience as a developer/engineer</li>
-	<li>Knowledge of Golang or desire to learn it</li>
-	<li>Solid understanding of RESTful APIs and service security</li>
-	<li>Working knowledge of SQL and relational databases such as PostgreSQL or MySQL</li>
-	<li>Experience with modern Unix/Linux development and runtime environment</li>
-	<li>Experience implementing secure and highly-available distributed systems/microservices</li>
-	<li>Familiarity with event driven architecture</li>
-	<li>Experience with API tooling and standards (Swagger/OpenAPI, OAuth/JWT)</li>
-	<li>Strong interpersonal and communication skills with a bias towards action</li>
+	<li>Gain experience with all of Cloudflare's amazing technology and work with the people that build it.</li>
+	<li>Understand complex technologies and explain them in simple terms and align solutions to customer problems.</li>
+	<li>Identify inefficiencies and implement automation to reduce the time it takes for technical sales to learn our solutions.</li>
+	<li>Collaborate with cross-functional teams to understand business needs and objectives, ensuring relevant and impactful content.</li>
+	<li>Partner with our Product Management and Special Projects team to improve strategies, products and services.</li>
 </ul>
-<p><strong>This role may require flexibility to be on-call outside of standard working hours to address technical issues as needed.</strong></p>
+<p><strong>Skills &amp; Qualifications</strong></p>
+<ul>
+	<li>Currently pursuing a degree in Computer Science, Marketing, or a related field.</li>
+	<li>Available for a full-time 12-week internship, working from our Austin or San Francisco office 3-5 days a week during the summer (May-Aug).</li>
+	<li>Strong communication skills. Ability to explain complex concepts in a manner that's understandable without dumbing down the content.</li>
+	<li>Strong analytical skills with the ability to collect, organize, analyze, and disseminate significant amounts of information with attention to detail and accuracy.</li>
+	<li>Strong understanding of AI technologies such as AI agents, MCP servers and LLMs.</li>
+	<li>Proficient in operating systems, networking, Internet technologies (SSL/TLS/HTTP/SSH etc) and ability to write code to solve simple problems.</li>
+	<li>Previous experience in technical &amp; product marketing/product management is a plus.</li>
+	<li>Excellent written and presentation skills. This role demands someone who is gifted in their ability to communicate effectively with all stakeholders, including executives, product management, sales, and marketing.</li>
+	<li>Self-starter who truly enjoys working in a fast-paced, innovative cloud services company.</li>
+</ul>
+<p>You can check out our <a href="https://blog.cloudflare.com/tag/internship-experience/">internship blogs</a> to learn more about our program and hear directly from our past interns.</p>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
 	<p><span style="font-weight: 400;">We’re not just a highly ambitious, large-scale technology company. We’re a highly ambitious, large-scale technology company with a soul. Fundamental to our mission to help build a better Internet is protecting the free and open Internet.</span></p>
