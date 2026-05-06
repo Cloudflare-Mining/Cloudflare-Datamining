@@ -98,7 +98,7 @@
 									"properties": {
 										"result": {
 											"properties": {
-												"created_at": {
+												"created_on": {
 													"description": "The timestamp of when the monitor group was created",
 													"example": "2014-01-01T05:20:00.12345Z",
 													"format": "date-time",
@@ -111,9 +111,14 @@
 													"type": "string"
 												},
 												"id": {
-													"description": "The ID of the Monitor Group to use for checking the health of origins within this pool.",
-													"type": "string",
-													"x-auditable": true
+													"allOf": [
+														{
+															"description": "The ID of the Monitor Group to use for checking the health of origins within this pool.",
+															"type": "string",
+															"x-auditable": true
+														}
+													],
+													"readOnly": true
 												},
 												"members": {
 													"description": "List of monitors in this group",
@@ -164,7 +169,7 @@
 													},
 													"type": "array"
 												},
-												"updated_at": {
+												"modified_on": {
 													"description": "The timestamp of when the monitor group was last updated",
 													"example": "2014-01-01T05:20:00.12345Z",
 													"format": "date-time",
@@ -259,7 +264,7 @@
 											"properties": {
 												"result": {
 													"properties": {
-														"created_at": {
+														"created_on": {
 															"description": "The timestamp of when the monitor group was created",
 															"example": "2014-01-01T05:20:00.12345Z",
 															"format": "date-time",
@@ -272,9 +277,14 @@
 															"type": "string"
 														},
 														"id": {
-															"description": "The ID of the Monitor Group to use for checking the health of origins within this pool.",
-															"type": "string",
-															"x-auditable": true
+															"allOf": [
+																{
+																	"description": "The ID of the Monitor Group to use for checking the health of origins within this pool.",
+																	"type": "string",
+																	"x-auditable": true
+																}
+															],
+															"readOnly": true
 														},
 														"members": {
 															"description": "List of monitors in this group",
@@ -325,7 +335,7 @@
 															},
 															"type": "array"
 														},
-														"updated_at": {
+														"modified_on": {
 															"description": "The timestamp of when the monitor group was last updated",
 															"example": "2014-01-01T05:20:00.12345Z",
 															"format": "date-time",
@@ -506,7 +516,7 @@
 											"properties": {
 												"result": {
 													"properties": {
-														"created_at": {
+														"created_on": {
 															"description": "The timestamp of when the monitor group was created",
 															"example": "2014-01-01T05:20:00.12345Z",
 															"format": "date-time",
@@ -519,9 +529,14 @@
 															"type": "string"
 														},
 														"id": {
-															"description": "The ID of the Monitor Group to use for checking the health of origins within this pool.",
-															"type": "string",
-															"x-auditable": true
+															"allOf": [
+																{
+																	"description": "The ID of the Monitor Group to use for checking the health of origins within this pool.",
+																	"type": "string",
+																	"x-auditable": true
+																}
+															],
+															"readOnly": true
 														},
 														"members": {
 															"description": "List of monitors in this group",
@@ -572,7 +587,7 @@
 															},
 															"type": "array"
 														},
-														"updated_at": {
+														"modified_on": {
 															"description": "The timestamp of when the monitor group was last updated",
 															"example": "2014-01-01T05:20:00.12345Z",
 															"format": "date-time",
@@ -784,7 +799,7 @@
 										"result": {
 											"items": {
 												"properties": {
-													"created_at": {
+													"created_on": {
 														"description": "The timestamp of when the monitor group was created",
 														"example": "2014-01-01T05:20:00.12345Z",
 														"format": "date-time",
@@ -797,9 +812,14 @@
 														"type": "string"
 													},
 													"id": {
-														"description": "The ID of the Monitor Group to use for checking the health of origins within this pool.",
-														"type": "string",
-														"x-auditable": true
+														"allOf": [
+															{
+																"description": "The ID of the Monitor Group to use for checking the health of origins within this pool.",
+																"type": "string",
+																"x-auditable": true
+															}
+														],
+														"readOnly": true
 													},
 													"members": {
 														"description": "List of monitors in this group",
@@ -850,7 +870,7 @@
 														},
 														"type": "array"
 													},
-													"updated_at": {
+													"modified_on": {
 														"description": "The timestamp of when the monitor group was last updated",
 														"example": "2014-01-01T05:20:00.12345Z",
 														"format": "date-time",
@@ -978,7 +998,7 @@
 												"result": {
 													"items": {
 														"properties": {
-															"created_at": {
+															"created_on": {
 																"description": "The timestamp of when the monitor group was created",
 																"example": "2014-01-01T05:20:00.12345Z",
 																"format": "date-time",
@@ -991,9 +1011,14 @@
 																"type": "string"
 															},
 															"id": {
-																"description": "The ID of the Monitor Group to use for checking the health of origins within this pool.",
-																"type": "string",
-																"x-auditable": true
+																"allOf": [
+																	{
+																		"description": "The ID of the Monitor Group to use for checking the health of origins within this pool.",
+																		"type": "string",
+																		"x-auditable": true
+																	}
+																],
+																"readOnly": true
 															},
 															"members": {
 																"description": "List of monitors in this group",
@@ -1044,7 +1069,7 @@
 																},
 																"type": "array"
 															},
-															"updated_at": {
+															"modified_on": {
 																"description": "The timestamp of when the monitor group was last updated",
 																"example": "2014-01-01T05:20:00.12345Z",
 																"format": "date-time",
@@ -1297,7 +1322,7 @@
 									"properties": {
 										"result": {
 											"properties": {
-												"created_at": {
+												"created_on": {
 													"description": "The timestamp of when the monitor group was created",
 													"example": "2014-01-01T05:20:00.12345Z",
 													"format": "date-time",
@@ -1310,9 +1335,14 @@
 													"type": "string"
 												},
 												"id": {
-													"description": "The ID of the Monitor Group to use for checking the health of origins within this pool.",
-													"type": "string",
-													"x-auditable": true
+													"allOf": [
+														{
+															"description": "The ID of the Monitor Group to use for checking the health of origins within this pool.",
+															"type": "string",
+															"x-auditable": true
+														}
+													],
+													"readOnly": true
 												},
 												"members": {
 													"description": "List of monitors in this group",
@@ -1363,7 +1393,7 @@
 													},
 													"type": "array"
 												},
-												"updated_at": {
+												"modified_on": {
 													"description": "The timestamp of when the monitor group was last updated",
 													"example": "2014-01-01T05:20:00.12345Z",
 													"format": "date-time",
@@ -1458,7 +1488,7 @@
 											"properties": {
 												"result": {
 													"properties": {
-														"created_at": {
+														"created_on": {
 															"description": "The timestamp of when the monitor group was created",
 															"example": "2014-01-01T05:20:00.12345Z",
 															"format": "date-time",
@@ -1471,9 +1501,14 @@
 															"type": "string"
 														},
 														"id": {
-															"description": "The ID of the Monitor Group to use for checking the health of origins within this pool.",
-															"type": "string",
-															"x-auditable": true
+															"allOf": [
+																{
+																	"description": "The ID of the Monitor Group to use for checking the health of origins within this pool.",
+																	"type": "string",
+																	"x-auditable": true
+																}
+															],
+															"readOnly": true
 														},
 														"members": {
 															"description": "List of monitors in this group",
@@ -1524,7 +1559,7 @@
 															},
 															"type": "array"
 														},
-														"updated_at": {
+														"modified_on": {
 															"description": "The timestamp of when the monitor group was last updated",
 															"example": "2014-01-01T05:20:00.12345Z",
 															"format": "date-time",
@@ -2039,7 +2074,7 @@
 				"application/json": {
 					"schema": {
 						"properties": {
-							"created_at": {
+							"created_on": {
 								"description": "The timestamp of when the monitor group was created",
 								"example": "2014-01-01T05:20:00.12345Z",
 								"format": "date-time",
@@ -2052,9 +2087,14 @@
 								"type": "string"
 							},
 							"id": {
-								"description": "The ID of the Monitor Group to use for checking the health of origins within this pool.",
-								"type": "string",
-								"x-auditable": true
+								"allOf": [
+									{
+										"description": "The ID of the Monitor Group to use for checking the health of origins within this pool.",
+										"type": "string",
+										"x-auditable": true
+									}
+								],
+								"readOnly": true
 							},
 							"members": {
 								"description": "List of monitors in this group",
@@ -2105,7 +2145,7 @@
 								},
 								"type": "array"
 							},
-							"updated_at": {
+							"modified_on": {
 								"description": "The timestamp of when the monitor group was last updated",
 								"example": "2014-01-01T05:20:00.12345Z",
 								"format": "date-time",
@@ -2195,7 +2235,7 @@
 									"properties": {
 										"result": {
 											"properties": {
-												"created_at": {
+												"created_on": {
 													"description": "The timestamp of when the monitor group was created",
 													"example": "2014-01-01T05:20:00.12345Z",
 													"format": "date-time",
@@ -2208,9 +2248,14 @@
 													"type": "string"
 												},
 												"id": {
-													"description": "The ID of the Monitor Group to use for checking the health of origins within this pool.",
-													"type": "string",
-													"x-auditable": true
+													"allOf": [
+														{
+															"description": "The ID of the Monitor Group to use for checking the health of origins within this pool.",
+															"type": "string",
+															"x-auditable": true
+														}
+													],
+													"readOnly": true
 												},
 												"members": {
 													"description": "List of monitors in this group",
@@ -2261,7 +2306,7 @@
 													},
 													"type": "array"
 												},
-												"updated_at": {
+												"modified_on": {
 													"description": "The timestamp of when the monitor group was last updated",
 													"example": "2014-01-01T05:20:00.12345Z",
 													"format": "date-time",
@@ -2356,7 +2401,7 @@
 											"properties": {
 												"result": {
 													"properties": {
-														"created_at": {
+														"created_on": {
 															"description": "The timestamp of when the monitor group was created",
 															"example": "2014-01-01T05:20:00.12345Z",
 															"format": "date-time",
@@ -2369,9 +2414,14 @@
 															"type": "string"
 														},
 														"id": {
-															"description": "The ID of the Monitor Group to use for checking the health of origins within this pool.",
-															"type": "string",
-															"x-auditable": true
+															"allOf": [
+																{
+																	"description": "The ID of the Monitor Group to use for checking the health of origins within this pool.",
+																	"type": "string",
+																	"x-auditable": true
+																}
+															],
+															"readOnly": true
 														},
 														"members": {
 															"description": "List of monitors in this group",
@@ -2422,7 +2472,7 @@
 															},
 															"type": "array"
 														},
-														"updated_at": {
+														"modified_on": {
 															"description": "The timestamp of when the monitor group was last updated",
 															"example": "2014-01-01T05:20:00.12345Z",
 															"format": "date-time",
@@ -2603,7 +2653,7 @@
 											"properties": {
 												"result": {
 													"properties": {
-														"created_at": {
+														"created_on": {
 															"description": "The timestamp of when the monitor group was created",
 															"example": "2014-01-01T05:20:00.12345Z",
 															"format": "date-time",
@@ -2616,9 +2666,14 @@
 															"type": "string"
 														},
 														"id": {
-															"description": "The ID of the Monitor Group to use for checking the health of origins within this pool.",
-															"type": "string",
-															"x-auditable": true
+															"allOf": [
+																{
+																	"description": "The ID of the Monitor Group to use for checking the health of origins within this pool.",
+																	"type": "string",
+																	"x-auditable": true
+																}
+															],
+															"readOnly": true
 														},
 														"members": {
 															"description": "List of monitors in this group",
@@ -2669,7 +2724,7 @@
 															},
 															"type": "array"
 														},
-														"updated_at": {
+														"modified_on": {
 															"description": "The timestamp of when the monitor group was last updated",
 															"example": "2014-01-01T05:20:00.12345Z",
 															"format": "date-time",
@@ -2814,7 +2869,7 @@
 				"application/json": {
 					"schema": {
 						"properties": {
-							"created_at": {
+							"created_on": {
 								"description": "The timestamp of when the monitor group was created",
 								"example": "2014-01-01T05:20:00.12345Z",
 								"format": "date-time",
@@ -2827,9 +2882,14 @@
 								"type": "string"
 							},
 							"id": {
-								"description": "The ID of the Monitor Group to use for checking the health of origins within this pool.",
-								"type": "string",
-								"x-auditable": true
+								"allOf": [
+									{
+										"description": "The ID of the Monitor Group to use for checking the health of origins within this pool.",
+										"type": "string",
+										"x-auditable": true
+									}
+								],
+								"readOnly": true
 							},
 							"members": {
 								"description": "List of monitors in this group",
@@ -2880,7 +2940,7 @@
 								},
 								"type": "array"
 							},
-							"updated_at": {
+							"modified_on": {
 								"description": "The timestamp of when the monitor group was last updated",
 								"example": "2014-01-01T05:20:00.12345Z",
 								"format": "date-time",
@@ -2970,7 +3030,7 @@
 									"properties": {
 										"result": {
 											"properties": {
-												"created_at": {
+												"created_on": {
 													"description": "The timestamp of when the monitor group was created",
 													"example": "2014-01-01T05:20:00.12345Z",
 													"format": "date-time",
@@ -2983,9 +3043,14 @@
 													"type": "string"
 												},
 												"id": {
-													"description": "The ID of the Monitor Group to use for checking the health of origins within this pool.",
-													"type": "string",
-													"x-auditable": true
+													"allOf": [
+														{
+															"description": "The ID of the Monitor Group to use for checking the health of origins within this pool.",
+															"type": "string",
+															"x-auditable": true
+														}
+													],
+													"readOnly": true
 												},
 												"members": {
 													"description": "List of monitors in this group",
@@ -3036,7 +3101,7 @@
 													},
 													"type": "array"
 												},
-												"updated_at": {
+												"modified_on": {
 													"description": "The timestamp of when the monitor group was last updated",
 													"example": "2014-01-01T05:20:00.12345Z",
 													"format": "date-time",
@@ -3131,7 +3196,7 @@
 											"properties": {
 												"result": {
 													"properties": {
-														"created_at": {
+														"created_on": {
 															"description": "The timestamp of when the monitor group was created",
 															"example": "2014-01-01T05:20:00.12345Z",
 															"format": "date-time",
@@ -3144,9 +3209,14 @@
 															"type": "string"
 														},
 														"id": {
-															"description": "The ID of the Monitor Group to use for checking the health of origins within this pool.",
-															"type": "string",
-															"x-auditable": true
+															"allOf": [
+																{
+																	"description": "The ID of the Monitor Group to use for checking the health of origins within this pool.",
+																	"type": "string",
+																	"x-auditable": true
+																}
+															],
+															"readOnly": true
 														},
 														"members": {
 															"description": "List of monitors in this group",
@@ -3197,7 +3267,7 @@
 															},
 															"type": "array"
 														},
-														"updated_at": {
+														"modified_on": {
 															"description": "The timestamp of when the monitor group was last updated",
 															"example": "2014-01-01T05:20:00.12345Z",
 															"format": "date-time",
@@ -3378,7 +3448,7 @@
 											"properties": {
 												"result": {
 													"properties": {
-														"created_at": {
+														"created_on": {
 															"description": "The timestamp of when the monitor group was created",
 															"example": "2014-01-01T05:20:00.12345Z",
 															"format": "date-time",
@@ -3391,9 +3461,14 @@
 															"type": "string"
 														},
 														"id": {
-															"description": "The ID of the Monitor Group to use for checking the health of origins within this pool.",
-															"type": "string",
-															"x-auditable": true
+															"allOf": [
+																{
+																	"description": "The ID of the Monitor Group to use for checking the health of origins within this pool.",
+																	"type": "string",
+																	"x-auditable": true
+																}
+															],
+															"readOnly": true
 														},
 														"members": {
 															"description": "List of monitors in this group",
@@ -3444,7 +3519,7 @@
 															},
 															"type": "array"
 														},
-														"updated_at": {
+														"modified_on": {
 															"description": "The timestamp of when the monitor group was last updated",
 															"example": "2014-01-01T05:20:00.12345Z",
 															"format": "date-time",
@@ -3599,7 +3674,7 @@
 				"application/json": {
 					"schema": {
 						"properties": {
-							"created_at": {
+							"created_on": {
 								"description": "The timestamp of when the monitor group was created",
 								"example": "2014-01-01T05:20:00.12345Z",
 								"format": "date-time",
@@ -3612,9 +3687,14 @@
 								"type": "string"
 							},
 							"id": {
-								"description": "The ID of the Monitor Group to use for checking the health of origins within this pool.",
-								"type": "string",
-								"x-auditable": true
+								"allOf": [
+									{
+										"description": "The ID of the Monitor Group to use for checking the health of origins within this pool.",
+										"type": "string",
+										"x-auditable": true
+									}
+								],
+								"readOnly": true
 							},
 							"members": {
 								"description": "List of monitors in this group",
@@ -3665,7 +3745,7 @@
 								},
 								"type": "array"
 							},
-							"updated_at": {
+							"modified_on": {
 								"description": "The timestamp of when the monitor group was last updated",
 								"example": "2014-01-01T05:20:00.12345Z",
 								"format": "date-time",
@@ -3755,7 +3835,7 @@
 									"properties": {
 										"result": {
 											"properties": {
-												"created_at": {
+												"created_on": {
 													"description": "The timestamp of when the monitor group was created",
 													"example": "2014-01-01T05:20:00.12345Z",
 													"format": "date-time",
@@ -3768,9 +3848,14 @@
 													"type": "string"
 												},
 												"id": {
-													"description": "The ID of the Monitor Group to use for checking the health of origins within this pool.",
-													"type": "string",
-													"x-auditable": true
+													"allOf": [
+														{
+															"description": "The ID of the Monitor Group to use for checking the health of origins within this pool.",
+															"type": "string",
+															"x-auditable": true
+														}
+													],
+													"readOnly": true
 												},
 												"members": {
 													"description": "List of monitors in this group",
@@ -3821,7 +3906,7 @@
 													},
 													"type": "array"
 												},
-												"updated_at": {
+												"modified_on": {
 													"description": "The timestamp of when the monitor group was last updated",
 													"example": "2014-01-01T05:20:00.12345Z",
 													"format": "date-time",
@@ -3916,7 +4001,7 @@
 											"properties": {
 												"result": {
 													"properties": {
-														"created_at": {
+														"created_on": {
 															"description": "The timestamp of when the monitor group was created",
 															"example": "2014-01-01T05:20:00.12345Z",
 															"format": "date-time",
@@ -3929,9 +4014,14 @@
 															"type": "string"
 														},
 														"id": {
-															"description": "The ID of the Monitor Group to use for checking the health of origins within this pool.",
-															"type": "string",
-															"x-auditable": true
+															"allOf": [
+																{
+																	"description": "The ID of the Monitor Group to use for checking the health of origins within this pool.",
+																	"type": "string",
+																	"x-auditable": true
+																}
+															],
+															"readOnly": true
 														},
 														"members": {
 															"description": "List of monitors in this group",
@@ -3982,7 +4072,7 @@
 															},
 															"type": "array"
 														},
-														"updated_at": {
+														"modified_on": {
 															"description": "The timestamp of when the monitor group was last updated",
 															"example": "2014-01-01T05:20:00.12345Z",
 															"format": "date-time",
@@ -4163,7 +4253,7 @@
 											"properties": {
 												"result": {
 													"properties": {
-														"created_at": {
+														"created_on": {
 															"description": "The timestamp of when the monitor group was created",
 															"example": "2014-01-01T05:20:00.12345Z",
 															"format": "date-time",
@@ -4176,9 +4266,14 @@
 															"type": "string"
 														},
 														"id": {
-															"description": "The ID of the Monitor Group to use for checking the health of origins within this pool.",
-															"type": "string",
-															"x-auditable": true
+															"allOf": [
+																{
+																	"description": "The ID of the Monitor Group to use for checking the health of origins within this pool.",
+																	"type": "string",
+																	"x-auditable": true
+																}
+															],
+															"readOnly": true
 														},
 														"members": {
 															"description": "List of monitors in this group",
@@ -4229,7 +4324,7 @@
 															},
 															"type": "array"
 														},
-														"updated_at": {
+														"modified_on": {
 															"description": "The timestamp of when the monitor group was last updated",
 															"example": "2014-01-01T05:20:00.12345Z",
 															"format": "date-time",
