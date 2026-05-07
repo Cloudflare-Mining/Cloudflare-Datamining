@@ -2290,6 +2290,7 @@
 		"datetimeHour": "Detection event timestamp, truncated to hour",
 		"datetimeMinute": "Detection event timestamp, truncated to minute",
 		"detection": "Name of the detection rule that was triggered",
+		"detectionType": "Detection type: 'static' for workers/customer_workers_scans and 'dynamic' for worker_invocations",
 		"dispatchNamespace": "Workers for Platforms dispatch namespace name",
 		"resource": "The name of the Workers script",
 		"source": "Detection rule source: 'managed' for Cloudflare-authored rules, 'custom' for customer-created rules"
@@ -2324,6 +2325,7 @@
 		"datetimeHour": "Detection event timestamp, truncated to hour",
 		"datetimeMinute": "Detection event timestamp, truncated to minute",
 		"detection": "Name of the detection rule that was triggered",
+		"detectionType": "Detection type: 'static' for workers/customer_workers_scans and 'dynamic' for worker_invocations",
 		"dispatchNamespace": "Workers for Platforms dispatch namespace name",
 		"resource": "The name of the Workers script",
 		"source": "Detection rule source: 'managed' for Cloudflare-authored rules, 'custom' for customer-created rules"
@@ -14377,7 +14379,7 @@
 		"__description": "Scalar type types.Float32"
 	},
 	"float64": {
-		"__description": "Scalar type types.Float64"
+		"__description": "Scalar type float64"
 	},
 	"int16": {
 		"__description": "Scalar type int16"
