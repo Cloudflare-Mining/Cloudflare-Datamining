@@ -1,0 +1,1138 @@
+{
+	"DELETE /accounts/{account_id}/ai-gateway/custom-providers/costs/{id}": {
+		"description": "Deletes an AI Gateway dataset.",
+		"operationId": "aig-config-delete-account-provider-cost",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"example": "3ebbcb006d4d46d7bb6a8c7f14676cb0",
+					"type": "string"
+				}
+			},
+			{
+				"in": "path",
+				"name": "id",
+				"required": true,
+				"schema": {
+					"format": "uuid",
+					"type": "string"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"result": {
+									"properties": {
+										"account_provider_id": {
+											"format": "uuid",
+											"type": "string"
+										},
+										"changed_by": {
+											"default": "manual",
+											"type": "string"
+										},
+										"cost_in": {
+											"type": "number"
+										},
+										"cost_out": {
+											"type": "number"
+										},
+										"cost_type": {
+											"default": "tokens",
+											"type": "string"
+										},
+										"created_at": {
+											"format": "date-time",
+											"type": "string"
+										},
+										"enable": {
+											"type": "boolean"
+										},
+										"id": {
+											"format": "uuid",
+											"type": "string"
+										},
+										"model": {
+											"type": "string"
+										},
+										"model_rule": {
+											"default": "equals",
+											"enum": [
+												"equals",
+												"starts-with",
+												"contains"
+											],
+											"type": "string"
+										},
+										"modified_at": {
+											"format": "date-time",
+											"type": "string"
+										},
+										"token_pricing": {
+											"type": "string"
+										},
+										"weight": {
+											"type": "integer"
+										}
+									},
+									"required": [
+										"account_provider_id",
+										"model",
+										"id",
+										"created_at",
+										"modified_at"
+									],
+									"type": "object"
+								},
+								"success": {
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"result"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Returns the Object if it was successfully deleted"
+			},
+			"404": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"code": {
+												"example": 7002,
+												"type": "number"
+											},
+											"message": {
+												"example": "Not Found",
+												"type": "string"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"success": {
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"errors"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Not Found"
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Delete a Account Provider Cost",
+		"tags": [
+			"AI Gateway Account Provider Costs"
+		],
+		"x-api-token-group": [
+			"AI Gateway Write"
+		],
+		"x-cfPermissionsRequired": {
+			"enum": [
+				"com.cloudflare.api.account.aig"
+			]
+		},
+		"x-cfPlanAvailability": {
+			"business": true,
+			"enterprise": true,
+			"free": true,
+			"pro": true
+		}
+	},
+	"GET /accounts/{account_id}/ai-gateway/custom-providers/costs": {
+		"description": "Lists all AI Gateway evaluator types configured for the account.",
+		"operationId": "aig-config-list-account-provider-cost",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"example": "3ebbcb006d4d46d7bb6a8c7f14676cb0",
+					"type": "string"
+				}
+			},
+			{
+				"in": "query",
+				"name": "page",
+				"schema": {
+					"default": 1,
+					"minimum": 1,
+					"type": "integer"
+				}
+			},
+			{
+				"in": "query",
+				"name": "per_page",
+				"schema": {
+					"default": 20,
+					"maximum": 100,
+					"minimum": 1,
+					"type": "integer"
+				}
+			},
+			{
+				"in": "query",
+				"name": "enable",
+				"schema": {
+					"type": "boolean"
+				}
+			},
+			{
+				"in": "query",
+				"name": "account_provider_id",
+				"schema": {
+					"format": "uuid",
+					"type": "string"
+				}
+			},
+			{
+				"in": "query",
+				"name": "model_rule",
+				"schema": {
+					"default": "equals",
+					"enum": [
+						"equals",
+						"starts-with",
+						"contains"
+					],
+					"type": "string"
+				}
+			},
+			{
+				"in": "query",
+				"name": "cost_type",
+				"schema": {
+					"default": "tokens",
+					"type": "string"
+				}
+			},
+			{
+				"in": "query",
+				"name": "search",
+				"schema": {
+					"description": "Search by model, changed_by",
+					"type": "string"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"result": {
+									"items": {
+										"properties": {
+											"account_provider_id": {
+												"format": "uuid",
+												"type": "string"
+											},
+											"changed_by": {
+												"default": "manual",
+												"type": "string"
+											},
+											"cost_in": {
+												"type": "number"
+											},
+											"cost_out": {
+												"type": "number"
+											},
+											"cost_type": {
+												"default": "tokens",
+												"type": "string"
+											},
+											"created_at": {
+												"format": "date-time",
+												"type": "string"
+											},
+											"enable": {
+												"type": "boolean"
+											},
+											"id": {
+												"format": "uuid",
+												"type": "string"
+											},
+											"model": {
+												"type": "string"
+											},
+											"model_rule": {
+												"default": "equals",
+												"enum": [
+													"equals",
+													"starts-with",
+													"contains"
+												],
+												"type": "string"
+											},
+											"modified_at": {
+												"format": "date-time",
+												"type": "string"
+											},
+											"token_pricing": {
+												"type": "string"
+											},
+											"weight": {
+												"type": "integer"
+											}
+										},
+										"required": [
+											"account_provider_id",
+											"model",
+											"id",
+											"created_at",
+											"modified_at"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"success": {
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"result"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "List objects"
+			},
+			"400": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"result": {
+									"type": "object"
+								},
+								"success": {
+									"example": false,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"result",
+								"success",
+								"errors"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Bad Request"
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "List Account Provider Costs",
+		"tags": [
+			"AI Gateway Account Provider Costs"
+		],
+		"x-api-token-group": [
+			"AI Gateway Write",
+			"AI Gateway Read"
+		],
+		"x-cfPermissionsRequired": {
+			"enum": [
+				"com.cloudflare.api.account.aig"
+			]
+		},
+		"x-cfPlanAvailability": {
+			"business": true,
+			"enterprise": true,
+			"free": true,
+			"pro": true
+		}
+	},
+	"GET /accounts/{account_id}/ai-gateway/custom-providers/costs/{id}": {
+		"description": "Retrieves details for a specific AI Gateway dataset.",
+		"operationId": "aig-config-fetch-account-provider-cost",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"example": "3ebbcb006d4d46d7bb6a8c7f14676cb0",
+					"type": "string"
+				}
+			},
+			{
+				"in": "path",
+				"name": "id",
+				"required": true,
+				"schema": {
+					"format": "uuid",
+					"type": "string"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"result": {
+									"properties": {
+										"account_provider_id": {
+											"format": "uuid",
+											"type": "string"
+										},
+										"changed_by": {
+											"default": "manual",
+											"type": "string"
+										},
+										"cost_in": {
+											"type": "number"
+										},
+										"cost_out": {
+											"type": "number"
+										},
+										"cost_type": {
+											"default": "tokens",
+											"type": "string"
+										},
+										"created_at": {
+											"format": "date-time",
+											"type": "string"
+										},
+										"enable": {
+											"type": "boolean"
+										},
+										"id": {
+											"format": "uuid",
+											"type": "string"
+										},
+										"model": {
+											"type": "string"
+										},
+										"model_rule": {
+											"default": "equals",
+											"enum": [
+												"equals",
+												"starts-with",
+												"contains"
+											],
+											"type": "string"
+										},
+										"modified_at": {
+											"format": "date-time",
+											"type": "string"
+										},
+										"token_pricing": {
+											"type": "string"
+										},
+										"weight": {
+											"type": "integer"
+										}
+									},
+									"required": [
+										"account_provider_id",
+										"model",
+										"id",
+										"created_at",
+										"modified_at"
+									],
+									"type": "object"
+								},
+								"success": {
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"result"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Returns a single object if found"
+			},
+			"404": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"code": {
+												"example": 7002,
+												"type": "number"
+											},
+											"message": {
+												"example": "Not Found",
+												"type": "string"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"success": {
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"errors"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Not Found"
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Fetch a Account Provider Cost",
+		"tags": [
+			"AI Gateway Account Provider Costs"
+		],
+		"x-api-token-group": [
+			"AI Gateway Write",
+			"AI Gateway Read"
+		],
+		"x-cfPermissionsRequired": {
+			"enum": [
+				"com.cloudflare.api.account.aig"
+			]
+		},
+		"x-cfPlanAvailability": {
+			"business": true,
+			"enterprise": true,
+			"free": true,
+			"pro": true
+		}
+	},
+	"PATCH /accounts/{account_id}/ai-gateway/custom-providers/costs/{id}": {
+		"description": "Updates an existing AI Gateway dataset.",
+		"operationId": "aig-config-update-account-provider-cost",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"example": "3ebbcb006d4d46d7bb6a8c7f14676cb0",
+					"type": "string"
+				}
+			},
+			{
+				"in": "path",
+				"name": "id",
+				"required": true,
+				"schema": {
+					"format": "uuid",
+					"type": "string"
+				}
+			}
+		],
+		"requestBody": {
+			"content": {
+				"application/json": {
+					"schema": {
+						"properties": {
+							"cost_in": {
+								"type": "number"
+							},
+							"cost_out": {
+								"type": "number"
+							},
+							"cost_type": {
+								"default": "tokens",
+								"type": "string"
+							},
+							"enable": {
+								"type": "boolean"
+							},
+							"model": {
+								"type": "string"
+							},
+							"model_rule": {
+								"default": "equals",
+								"enum": [
+									"equals",
+									"starts-with",
+									"contains"
+								],
+								"type": "string"
+							},
+							"token_pricing": {
+								"properties": {
+									"input_audio_tokens": {
+										"type": "number"
+									},
+									"input_cache_creation_tokens": {
+										"type": "number"
+									},
+									"input_cached_tokens": {
+										"type": "number"
+									},
+									"input_image_count": {
+										"type": "number"
+									},
+									"input_image_tokens": {
+										"type": "number"
+									},
+									"input_text_tokens": {
+										"type": "number"
+									},
+									"input_tokens": {
+										"type": "number"
+									},
+									"input_video_tokens": {
+										"type": "number"
+									},
+									"output_image_count": {
+										"type": "number"
+									},
+									"output_reasoning_tokens": {
+										"type": "number"
+									},
+									"output_tokens": {
+										"type": "number"
+									},
+									"total_tokens": {
+										"type": "number"
+									}
+								},
+								"type": "object"
+							}
+						},
+						"type": "object"
+					}
+				}
+			}
+		},
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"result": {
+									"properties": {
+										"account_provider_id": {
+											"format": "uuid",
+											"type": "string"
+										},
+										"changed_by": {
+											"default": "manual",
+											"type": "string"
+										},
+										"cost_in": {
+											"type": "number"
+										},
+										"cost_out": {
+											"type": "number"
+										},
+										"cost_type": {
+											"default": "tokens",
+											"type": "string"
+										},
+										"created_at": {
+											"format": "date-time",
+											"type": "string"
+										},
+										"enable": {
+											"type": "boolean"
+										},
+										"id": {
+											"format": "uuid",
+											"type": "string"
+										},
+										"model": {
+											"type": "string"
+										},
+										"model_rule": {
+											"default": "equals",
+											"enum": [
+												"equals",
+												"starts-with",
+												"contains"
+											],
+											"type": "string"
+										},
+										"modified_at": {
+											"format": "date-time",
+											"type": "string"
+										},
+										"token_pricing": {
+											"type": "string"
+										},
+										"weight": {
+											"type": "integer"
+										}
+									},
+									"required": [
+										"account_provider_id",
+										"model",
+										"id",
+										"created_at",
+										"modified_at"
+									],
+									"type": "object"
+								},
+								"success": {
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"result"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Returns the updated Object"
+			},
+			"400": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"code": {
+												"example": 7001,
+												"type": "number"
+											},
+											"message": {
+												"example": "Input Validation Error",
+												"type": "string"
+											},
+											"path": {
+												"items": {
+													"example": "body",
+													"type": "string"
+												},
+												"type": "array"
+											}
+										},
+										"required": [
+											"code",
+											"message",
+											"path"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"success": {
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"errors"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Input Validation Error"
+			},
+			"404": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"code": {
+												"example": 7002,
+												"type": "number"
+											},
+											"message": {
+												"example": "Not Found",
+												"type": "string"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"success": {
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"errors"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Not Found"
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Update a Account Provider Cost",
+		"tags": [
+			"AI Gateway Account Provider Costs"
+		],
+		"x-api-token-group": [
+			"AI Gateway Write"
+		],
+		"x-cfPermissionsRequired": {
+			"enum": [
+				"com.cloudflare.api.account.aig"
+			]
+		},
+		"x-cfPlanAvailability": {
+			"business": true,
+			"enterprise": true,
+			"free": true,
+			"pro": true
+		}
+	},
+	"POST /accounts/{account_id}/ai-gateway/custom-providers/costs": {
+		"description": "Creates a new AI Gateway.",
+		"operationId": "aig-config-create-account-provider-cost",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"example": "3ebbcb006d4d46d7bb6a8c7f14676cb0",
+					"type": "string"
+				}
+			}
+		],
+		"requestBody": {
+			"content": {
+				"application/json": {
+					"schema": {
+						"properties": {
+							"account_provider_id": {
+								"format": "uuid",
+								"type": "string"
+							},
+							"cost_in": {
+								"type": "number"
+							},
+							"cost_out": {
+								"type": "number"
+							},
+							"cost_type": {
+								"default": "tokens",
+								"type": "string"
+							},
+							"enable": {
+								"type": "boolean"
+							},
+							"model": {
+								"type": "string"
+							},
+							"model_rule": {
+								"default": "equals",
+								"enum": [
+									"equals",
+									"starts-with",
+									"contains"
+								],
+								"type": "string"
+							},
+							"token_pricing": {
+								"properties": {
+									"input_audio_tokens": {
+										"type": "number"
+									},
+									"input_cache_creation_tokens": {
+										"type": "number"
+									},
+									"input_cached_tokens": {
+										"type": "number"
+									},
+									"input_image_count": {
+										"type": "number"
+									},
+									"input_image_tokens": {
+										"type": "number"
+									},
+									"input_text_tokens": {
+										"type": "number"
+									},
+									"input_tokens": {
+										"type": "number"
+									},
+									"input_video_tokens": {
+										"type": "number"
+									},
+									"output_image_count": {
+										"type": "number"
+									},
+									"output_reasoning_tokens": {
+										"type": "number"
+									},
+									"output_tokens": {
+										"type": "number"
+									},
+									"total_tokens": {
+										"type": "number"
+									}
+								},
+								"type": "object"
+							}
+						},
+						"required": [
+							"account_provider_id",
+							"model"
+						],
+						"type": "object"
+					}
+				}
+			}
+		},
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"result": {
+									"properties": {
+										"account_provider_id": {
+											"format": "uuid",
+											"type": "string"
+										},
+										"changed_by": {
+											"default": "manual",
+											"type": "string"
+										},
+										"cost_in": {
+											"type": "number"
+										},
+										"cost_out": {
+											"type": "number"
+										},
+										"cost_type": {
+											"default": "tokens",
+											"type": "string"
+										},
+										"created_at": {
+											"format": "date-time",
+											"type": "string"
+										},
+										"enable": {
+											"type": "boolean"
+										},
+										"id": {
+											"format": "uuid",
+											"type": "string"
+										},
+										"model": {
+											"type": "string"
+										},
+										"model_rule": {
+											"default": "equals",
+											"enum": [
+												"equals",
+												"starts-with",
+												"contains"
+											],
+											"type": "string"
+										},
+										"modified_at": {
+											"format": "date-time",
+											"type": "string"
+										},
+										"token_pricing": {
+											"type": "string"
+										},
+										"weight": {
+											"type": "integer"
+										}
+									},
+									"required": [
+										"account_provider_id",
+										"model",
+										"id",
+										"created_at",
+										"modified_at"
+									],
+									"type": "object"
+								},
+								"success": {
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"result"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Returns the created Object"
+			},
+			"400": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"code": {
+												"example": 7001,
+												"type": "number"
+											},
+											"message": {
+												"example": "Input Validation Error",
+												"type": "string"
+											},
+											"path": {
+												"items": {
+													"example": "body",
+													"type": "string"
+												},
+												"type": "array"
+											}
+										},
+										"required": [
+											"code",
+											"message",
+											"path"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"success": {
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"errors"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Input Validation Error"
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Create a new Account Provider Cost",
+		"tags": [
+			"AI Gateway Account Provider Costs"
+		],
+		"x-api-token-group": [
+			"AI Gateway Write"
+		],
+		"x-cfPermissionsRequired": {
+			"enum": [
+				"com.cloudflare.api.account.aig"
+			]
+		},
+		"x-cfPlanAvailability": {
+			"business": true,
+			"enterprise": true,
+			"free": true,
+			"pro": true
+		}
+	}
+}

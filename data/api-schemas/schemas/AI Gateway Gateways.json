@@ -143,6 +143,223 @@
 												}
 											]
 										},
+										"guardrails": {
+											"nullable": true,
+											"properties": {
+												"prompt": {
+													"properties": {
+														"P1": {
+															"enum": [
+																"FLAG",
+																"BLOCK"
+															],
+															"type": "string"
+														},
+														"S1": {
+															"enum": [
+																"FLAG",
+																"BLOCK"
+															],
+															"type": "string"
+														},
+														"S10": {
+															"enum": [
+																"FLAG",
+																"BLOCK"
+															],
+															"type": "string"
+														},
+														"S11": {
+															"enum": [
+																"FLAG",
+																"BLOCK"
+															],
+															"type": "string"
+														},
+														"S12": {
+															"enum": [
+																"FLAG",
+																"BLOCK"
+															],
+															"type": "string"
+														},
+														"S13": {
+															"enum": [
+																"FLAG",
+																"BLOCK"
+															],
+															"type": "string"
+														},
+														"S2": {
+															"enum": [
+																"FLAG",
+																"BLOCK"
+															],
+															"type": "string"
+														},
+														"S3": {
+															"enum": [
+																"FLAG",
+																"BLOCK"
+															],
+															"type": "string"
+														},
+														"S4": {
+															"enum": [
+																"FLAG",
+																"BLOCK"
+															],
+															"type": "string"
+														},
+														"S5": {
+															"enum": [
+																"FLAG",
+																"BLOCK"
+															],
+															"type": "string"
+														},
+														"S6": {
+															"enum": [
+																"FLAG",
+																"BLOCK"
+															],
+															"type": "string"
+														},
+														"S7": {
+															"enum": [
+																"FLAG",
+																"BLOCK"
+															],
+															"type": "string"
+														},
+														"S8": {
+															"enum": [
+																"FLAG",
+																"BLOCK"
+															],
+															"type": "string"
+														},
+														"S9": {
+															"enum": [
+																"FLAG",
+																"BLOCK"
+															],
+															"type": "string"
+														}
+													},
+													"type": "object"
+												},
+												"response": {
+													"properties": {
+														"P1": {
+															"enum": [
+																"FLAG",
+																"BLOCK"
+															],
+															"type": "string"
+														},
+														"S1": {
+															"enum": [
+																"FLAG",
+																"BLOCK"
+															],
+															"type": "string"
+														},
+														"S10": {
+															"enum": [
+																"FLAG",
+																"BLOCK"
+															],
+															"type": "string"
+														},
+														"S11": {
+															"enum": [
+																"FLAG",
+																"BLOCK"
+															],
+															"type": "string"
+														},
+														"S12": {
+															"enum": [
+																"FLAG",
+																"BLOCK"
+															],
+															"type": "string"
+														},
+														"S13": {
+															"enum": [
+																"FLAG",
+																"BLOCK"
+															],
+															"type": "string"
+														},
+														"S2": {
+															"enum": [
+																"FLAG",
+																"BLOCK"
+															],
+															"type": "string"
+														},
+														"S3": {
+															"enum": [
+																"FLAG",
+																"BLOCK"
+															],
+															"type": "string"
+														},
+														"S4": {
+															"enum": [
+																"FLAG",
+																"BLOCK"
+															],
+															"type": "string"
+														},
+														"S5": {
+															"enum": [
+																"FLAG",
+																"BLOCK"
+															],
+															"type": "string"
+														},
+														"S6": {
+															"enum": [
+																"FLAG",
+																"BLOCK"
+															],
+															"type": "string"
+														},
+														"S7": {
+															"enum": [
+																"FLAG",
+																"BLOCK"
+															],
+															"type": "string"
+														},
+														"S8": {
+															"enum": [
+																"FLAG",
+																"BLOCK"
+															],
+															"type": "string"
+														},
+														"S9": {
+															"enum": [
+																"FLAG",
+																"BLOCK"
+															],
+															"type": "string"
+														}
+													},
+													"type": "object"
+												}
+											},
+											"required": [
+												"prompt",
+												"response"
+											],
+											"type": "object",
+											"x-auditable": true
+										},
 										"id": {
 											"description": "gateway id",
 											"example": "my-gateway",
@@ -191,6 +408,7 @@
 											"items": {
 												"properties": {
 													"authorization": {
+														"maxLength": 256,
 														"type": "string"
 													},
 													"content_type": {
@@ -203,11 +421,14 @@
 													},
 													"headers": {
 														"additionalProperties": {
+															"maxLength": 4096,
 															"type": "string"
 														},
 														"type": "object"
 													},
 													"url": {
+														"format": "uri",
+														"maxLength": 2048,
 														"type": "string"
 													}
 												},
@@ -218,6 +439,7 @@
 												],
 												"type": "object"
 											},
+											"maxItems": 5,
 											"nullable": true,
 											"type": "array",
 											"x-auditable": true
@@ -568,6 +790,223 @@
 													}
 												]
 											},
+											"guardrails": {
+												"nullable": true,
+												"properties": {
+													"prompt": {
+														"properties": {
+															"P1": {
+																"enum": [
+																	"FLAG",
+																	"BLOCK"
+																],
+																"type": "string"
+															},
+															"S1": {
+																"enum": [
+																	"FLAG",
+																	"BLOCK"
+																],
+																"type": "string"
+															},
+															"S10": {
+																"enum": [
+																	"FLAG",
+																	"BLOCK"
+																],
+																"type": "string"
+															},
+															"S11": {
+																"enum": [
+																	"FLAG",
+																	"BLOCK"
+																],
+																"type": "string"
+															},
+															"S12": {
+																"enum": [
+																	"FLAG",
+																	"BLOCK"
+																],
+																"type": "string"
+															},
+															"S13": {
+																"enum": [
+																	"FLAG",
+																	"BLOCK"
+																],
+																"type": "string"
+															},
+															"S2": {
+																"enum": [
+																	"FLAG",
+																	"BLOCK"
+																],
+																"type": "string"
+															},
+															"S3": {
+																"enum": [
+																	"FLAG",
+																	"BLOCK"
+																],
+																"type": "string"
+															},
+															"S4": {
+																"enum": [
+																	"FLAG",
+																	"BLOCK"
+																],
+																"type": "string"
+															},
+															"S5": {
+																"enum": [
+																	"FLAG",
+																	"BLOCK"
+																],
+																"type": "string"
+															},
+															"S6": {
+																"enum": [
+																	"FLAG",
+																	"BLOCK"
+																],
+																"type": "string"
+															},
+															"S7": {
+																"enum": [
+																	"FLAG",
+																	"BLOCK"
+																],
+																"type": "string"
+															},
+															"S8": {
+																"enum": [
+																	"FLAG",
+																	"BLOCK"
+																],
+																"type": "string"
+															},
+															"S9": {
+																"enum": [
+																	"FLAG",
+																	"BLOCK"
+																],
+																"type": "string"
+															}
+														},
+														"type": "object"
+													},
+													"response": {
+														"properties": {
+															"P1": {
+																"enum": [
+																	"FLAG",
+																	"BLOCK"
+																],
+																"type": "string"
+															},
+															"S1": {
+																"enum": [
+																	"FLAG",
+																	"BLOCK"
+																],
+																"type": "string"
+															},
+															"S10": {
+																"enum": [
+																	"FLAG",
+																	"BLOCK"
+																],
+																"type": "string"
+															},
+															"S11": {
+																"enum": [
+																	"FLAG",
+																	"BLOCK"
+																],
+																"type": "string"
+															},
+															"S12": {
+																"enum": [
+																	"FLAG",
+																	"BLOCK"
+																],
+																"type": "string"
+															},
+															"S13": {
+																"enum": [
+																	"FLAG",
+																	"BLOCK"
+																],
+																"type": "string"
+															},
+															"S2": {
+																"enum": [
+																	"FLAG",
+																	"BLOCK"
+																],
+																"type": "string"
+															},
+															"S3": {
+																"enum": [
+																	"FLAG",
+																	"BLOCK"
+																],
+																"type": "string"
+															},
+															"S4": {
+																"enum": [
+																	"FLAG",
+																	"BLOCK"
+																],
+																"type": "string"
+															},
+															"S5": {
+																"enum": [
+																	"FLAG",
+																	"BLOCK"
+																],
+																"type": "string"
+															},
+															"S6": {
+																"enum": [
+																	"FLAG",
+																	"BLOCK"
+																],
+																"type": "string"
+															},
+															"S7": {
+																"enum": [
+																	"FLAG",
+																	"BLOCK"
+																],
+																"type": "string"
+															},
+															"S8": {
+																"enum": [
+																	"FLAG",
+																	"BLOCK"
+																],
+																"type": "string"
+															},
+															"S9": {
+																"enum": [
+																	"FLAG",
+																	"BLOCK"
+																],
+																"type": "string"
+															}
+														},
+														"type": "object"
+													}
+												},
+												"required": [
+													"prompt",
+													"response"
+												],
+												"type": "object",
+												"x-auditable": true
+											},
 											"id": {
 												"description": "gateway id",
 												"example": "my-gateway",
@@ -616,6 +1055,7 @@
 												"items": {
 													"properties": {
 														"authorization": {
+															"maxLength": 256,
 															"type": "string"
 														},
 														"content_type": {
@@ -628,11 +1068,14 @@
 														},
 														"headers": {
 															"additionalProperties": {
+																"maxLength": 4096,
 																"type": "string"
 															},
 															"type": "object"
 														},
 														"url": {
+															"format": "uri",
+															"maxLength": 2048,
 															"type": "string"
 														}
 													},
@@ -643,6 +1086,7 @@
 													],
 													"type": "object"
 												},
+												"maxItems": 5,
 												"nullable": true,
 												"type": "array",
 												"x-auditable": true
@@ -1109,6 +1553,223 @@
 												}
 											]
 										},
+										"guardrails": {
+											"nullable": true,
+											"properties": {
+												"prompt": {
+													"properties": {
+														"P1": {
+															"enum": [
+																"FLAG",
+																"BLOCK"
+															],
+															"type": "string"
+														},
+														"S1": {
+															"enum": [
+																"FLAG",
+																"BLOCK"
+															],
+															"type": "string"
+														},
+														"S10": {
+															"enum": [
+																"FLAG",
+																"BLOCK"
+															],
+															"type": "string"
+														},
+														"S11": {
+															"enum": [
+																"FLAG",
+																"BLOCK"
+															],
+															"type": "string"
+														},
+														"S12": {
+															"enum": [
+																"FLAG",
+																"BLOCK"
+															],
+															"type": "string"
+														},
+														"S13": {
+															"enum": [
+																"FLAG",
+																"BLOCK"
+															],
+															"type": "string"
+														},
+														"S2": {
+															"enum": [
+																"FLAG",
+																"BLOCK"
+															],
+															"type": "string"
+														},
+														"S3": {
+															"enum": [
+																"FLAG",
+																"BLOCK"
+															],
+															"type": "string"
+														},
+														"S4": {
+															"enum": [
+																"FLAG",
+																"BLOCK"
+															],
+															"type": "string"
+														},
+														"S5": {
+															"enum": [
+																"FLAG",
+																"BLOCK"
+															],
+															"type": "string"
+														},
+														"S6": {
+															"enum": [
+																"FLAG",
+																"BLOCK"
+															],
+															"type": "string"
+														},
+														"S7": {
+															"enum": [
+																"FLAG",
+																"BLOCK"
+															],
+															"type": "string"
+														},
+														"S8": {
+															"enum": [
+																"FLAG",
+																"BLOCK"
+															],
+															"type": "string"
+														},
+														"S9": {
+															"enum": [
+																"FLAG",
+																"BLOCK"
+															],
+															"type": "string"
+														}
+													},
+													"type": "object"
+												},
+												"response": {
+													"properties": {
+														"P1": {
+															"enum": [
+																"FLAG",
+																"BLOCK"
+															],
+															"type": "string"
+														},
+														"S1": {
+															"enum": [
+																"FLAG",
+																"BLOCK"
+															],
+															"type": "string"
+														},
+														"S10": {
+															"enum": [
+																"FLAG",
+																"BLOCK"
+															],
+															"type": "string"
+														},
+														"S11": {
+															"enum": [
+																"FLAG",
+																"BLOCK"
+															],
+															"type": "string"
+														},
+														"S12": {
+															"enum": [
+																"FLAG",
+																"BLOCK"
+															],
+															"type": "string"
+														},
+														"S13": {
+															"enum": [
+																"FLAG",
+																"BLOCK"
+															],
+															"type": "string"
+														},
+														"S2": {
+															"enum": [
+																"FLAG",
+																"BLOCK"
+															],
+															"type": "string"
+														},
+														"S3": {
+															"enum": [
+																"FLAG",
+																"BLOCK"
+															],
+															"type": "string"
+														},
+														"S4": {
+															"enum": [
+																"FLAG",
+																"BLOCK"
+															],
+															"type": "string"
+														},
+														"S5": {
+															"enum": [
+																"FLAG",
+																"BLOCK"
+															],
+															"type": "string"
+														},
+														"S6": {
+															"enum": [
+																"FLAG",
+																"BLOCK"
+															],
+															"type": "string"
+														},
+														"S7": {
+															"enum": [
+																"FLAG",
+																"BLOCK"
+															],
+															"type": "string"
+														},
+														"S8": {
+															"enum": [
+																"FLAG",
+																"BLOCK"
+															],
+															"type": "string"
+														},
+														"S9": {
+															"enum": [
+																"FLAG",
+																"BLOCK"
+															],
+															"type": "string"
+														}
+													},
+													"type": "object"
+												}
+											},
+											"required": [
+												"prompt",
+												"response"
+											],
+											"type": "object",
+											"x-auditable": true
+										},
 										"id": {
 											"description": "gateway id",
 											"example": "my-gateway",
@@ -1157,6 +1818,7 @@
 											"items": {
 												"properties": {
 													"authorization": {
+														"maxLength": 256,
 														"type": "string"
 													},
 													"content_type": {
@@ -1169,11 +1831,14 @@
 													},
 													"headers": {
 														"additionalProperties": {
+															"maxLength": 4096,
 															"type": "string"
 														},
 														"type": "object"
 													},
 													"url": {
+														"format": "uri",
+														"maxLength": 2048,
 														"type": "string"
 													}
 												},
@@ -1184,6 +1849,7 @@
 												],
 												"type": "object"
 											},
+											"maxItems": 5,
 											"nullable": true,
 											"type": "array",
 											"x-auditable": true
@@ -1641,6 +2307,223 @@
 												}
 											]
 										},
+										"guardrails": {
+											"nullable": true,
+											"properties": {
+												"prompt": {
+													"properties": {
+														"P1": {
+															"enum": [
+																"FLAG",
+																"BLOCK"
+															],
+															"type": "string"
+														},
+														"S1": {
+															"enum": [
+																"FLAG",
+																"BLOCK"
+															],
+															"type": "string"
+														},
+														"S10": {
+															"enum": [
+																"FLAG",
+																"BLOCK"
+															],
+															"type": "string"
+														},
+														"S11": {
+															"enum": [
+																"FLAG",
+																"BLOCK"
+															],
+															"type": "string"
+														},
+														"S12": {
+															"enum": [
+																"FLAG",
+																"BLOCK"
+															],
+															"type": "string"
+														},
+														"S13": {
+															"enum": [
+																"FLAG",
+																"BLOCK"
+															],
+															"type": "string"
+														},
+														"S2": {
+															"enum": [
+																"FLAG",
+																"BLOCK"
+															],
+															"type": "string"
+														},
+														"S3": {
+															"enum": [
+																"FLAG",
+																"BLOCK"
+															],
+															"type": "string"
+														},
+														"S4": {
+															"enum": [
+																"FLAG",
+																"BLOCK"
+															],
+															"type": "string"
+														},
+														"S5": {
+															"enum": [
+																"FLAG",
+																"BLOCK"
+															],
+															"type": "string"
+														},
+														"S6": {
+															"enum": [
+																"FLAG",
+																"BLOCK"
+															],
+															"type": "string"
+														},
+														"S7": {
+															"enum": [
+																"FLAG",
+																"BLOCK"
+															],
+															"type": "string"
+														},
+														"S8": {
+															"enum": [
+																"FLAG",
+																"BLOCK"
+															],
+															"type": "string"
+														},
+														"S9": {
+															"enum": [
+																"FLAG",
+																"BLOCK"
+															],
+															"type": "string"
+														}
+													},
+													"type": "object"
+												},
+												"response": {
+													"properties": {
+														"P1": {
+															"enum": [
+																"FLAG",
+																"BLOCK"
+															],
+															"type": "string"
+														},
+														"S1": {
+															"enum": [
+																"FLAG",
+																"BLOCK"
+															],
+															"type": "string"
+														},
+														"S10": {
+															"enum": [
+																"FLAG",
+																"BLOCK"
+															],
+															"type": "string"
+														},
+														"S11": {
+															"enum": [
+																"FLAG",
+																"BLOCK"
+															],
+															"type": "string"
+														},
+														"S12": {
+															"enum": [
+																"FLAG",
+																"BLOCK"
+															],
+															"type": "string"
+														},
+														"S13": {
+															"enum": [
+																"FLAG",
+																"BLOCK"
+															],
+															"type": "string"
+														},
+														"S2": {
+															"enum": [
+																"FLAG",
+																"BLOCK"
+															],
+															"type": "string"
+														},
+														"S3": {
+															"enum": [
+																"FLAG",
+																"BLOCK"
+															],
+															"type": "string"
+														},
+														"S4": {
+															"enum": [
+																"FLAG",
+																"BLOCK"
+															],
+															"type": "string"
+														},
+														"S5": {
+															"enum": [
+																"FLAG",
+																"BLOCK"
+															],
+															"type": "string"
+														},
+														"S6": {
+															"enum": [
+																"FLAG",
+																"BLOCK"
+															],
+															"type": "string"
+														},
+														"S7": {
+															"enum": [
+																"FLAG",
+																"BLOCK"
+															],
+															"type": "string"
+														},
+														"S8": {
+															"enum": [
+																"FLAG",
+																"BLOCK"
+															],
+															"type": "string"
+														},
+														"S9": {
+															"enum": [
+																"FLAG",
+																"BLOCK"
+															],
+															"type": "string"
+														}
+													},
+													"type": "object"
+												}
+											},
+											"required": [
+												"prompt",
+												"response"
+											],
+											"type": "object",
+											"x-auditable": true
+										},
 										"id": {
 											"description": "gateway id",
 											"example": "my-gateway",
@@ -1689,6 +2572,7 @@
 											"items": {
 												"properties": {
 													"authorization": {
+														"maxLength": 256,
 														"type": "string"
 													},
 													"content_type": {
@@ -1701,11 +2585,14 @@
 													},
 													"headers": {
 														"additionalProperties": {
+															"maxLength": 4096,
 															"type": "string"
 														},
 														"type": "object"
 													},
 													"url": {
+														"format": "uri",
+														"maxLength": 2048,
 														"type": "string"
 													}
 												},
@@ -1716,6 +2603,7 @@
 												],
 												"type": "object"
 											},
+											"maxItems": 5,
 											"nullable": true,
 											"type": "array",
 											"x-auditable": true
@@ -2053,6 +2941,223 @@
 									}
 								]
 							},
+							"guardrails": {
+								"nullable": true,
+								"properties": {
+									"prompt": {
+										"properties": {
+											"P1": {
+												"enum": [
+													"FLAG",
+													"BLOCK"
+												],
+												"type": "string"
+											},
+											"S1": {
+												"enum": [
+													"FLAG",
+													"BLOCK"
+												],
+												"type": "string"
+											},
+											"S10": {
+												"enum": [
+													"FLAG",
+													"BLOCK"
+												],
+												"type": "string"
+											},
+											"S11": {
+												"enum": [
+													"FLAG",
+													"BLOCK"
+												],
+												"type": "string"
+											},
+											"S12": {
+												"enum": [
+													"FLAG",
+													"BLOCK"
+												],
+												"type": "string"
+											},
+											"S13": {
+												"enum": [
+													"FLAG",
+													"BLOCK"
+												],
+												"type": "string"
+											},
+											"S2": {
+												"enum": [
+													"FLAG",
+													"BLOCK"
+												],
+												"type": "string"
+											},
+											"S3": {
+												"enum": [
+													"FLAG",
+													"BLOCK"
+												],
+												"type": "string"
+											},
+											"S4": {
+												"enum": [
+													"FLAG",
+													"BLOCK"
+												],
+												"type": "string"
+											},
+											"S5": {
+												"enum": [
+													"FLAG",
+													"BLOCK"
+												],
+												"type": "string"
+											},
+											"S6": {
+												"enum": [
+													"FLAG",
+													"BLOCK"
+												],
+												"type": "string"
+											},
+											"S7": {
+												"enum": [
+													"FLAG",
+													"BLOCK"
+												],
+												"type": "string"
+											},
+											"S8": {
+												"enum": [
+													"FLAG",
+													"BLOCK"
+												],
+												"type": "string"
+											},
+											"S9": {
+												"enum": [
+													"FLAG",
+													"BLOCK"
+												],
+												"type": "string"
+											}
+										},
+										"type": "object"
+									},
+									"response": {
+										"properties": {
+											"P1": {
+												"enum": [
+													"FLAG",
+													"BLOCK"
+												],
+												"type": "string"
+											},
+											"S1": {
+												"enum": [
+													"FLAG",
+													"BLOCK"
+												],
+												"type": "string"
+											},
+											"S10": {
+												"enum": [
+													"FLAG",
+													"BLOCK"
+												],
+												"type": "string"
+											},
+											"S11": {
+												"enum": [
+													"FLAG",
+													"BLOCK"
+												],
+												"type": "string"
+											},
+											"S12": {
+												"enum": [
+													"FLAG",
+													"BLOCK"
+												],
+												"type": "string"
+											},
+											"S13": {
+												"enum": [
+													"FLAG",
+													"BLOCK"
+												],
+												"type": "string"
+											},
+											"S2": {
+												"enum": [
+													"FLAG",
+													"BLOCK"
+												],
+												"type": "string"
+											},
+											"S3": {
+												"enum": [
+													"FLAG",
+													"BLOCK"
+												],
+												"type": "string"
+											},
+											"S4": {
+												"enum": [
+													"FLAG",
+													"BLOCK"
+												],
+												"type": "string"
+											},
+											"S5": {
+												"enum": [
+													"FLAG",
+													"BLOCK"
+												],
+												"type": "string"
+											},
+											"S6": {
+												"enum": [
+													"FLAG",
+													"BLOCK"
+												],
+												"type": "string"
+											},
+											"S7": {
+												"enum": [
+													"FLAG",
+													"BLOCK"
+												],
+												"type": "string"
+											},
+											"S8": {
+												"enum": [
+													"FLAG",
+													"BLOCK"
+												],
+												"type": "string"
+											},
+											"S9": {
+												"enum": [
+													"FLAG",
+													"BLOCK"
+												],
+												"type": "string"
+											}
+										},
+										"type": "object"
+									}
+								},
+								"required": [
+									"prompt",
+									"response"
+								],
+								"type": "object",
+								"x-auditable": true
+							},
 							"log_management": {
 								"maximum": 10000000,
 								"minimum": 10000,
@@ -2084,6 +3189,7 @@
 								"items": {
 									"properties": {
 										"authorization": {
+											"maxLength": 256,
 											"type": "string"
 										},
 										"content_type": {
@@ -2096,11 +3202,14 @@
 										},
 										"headers": {
 											"additionalProperties": {
+												"maxLength": 4096,
 												"type": "string"
 											},
 											"type": "object"
 										},
 										"url": {
+											"format": "uri",
+											"maxLength": 2048,
 											"type": "string"
 										}
 									},
@@ -2111,6 +3220,7 @@
 									],
 									"type": "object"
 								},
+								"maxItems": 5,
 								"nullable": true,
 								"type": "array",
 								"x-auditable": true
@@ -2337,6 +3447,223 @@
 												}
 											]
 										},
+										"guardrails": {
+											"nullable": true,
+											"properties": {
+												"prompt": {
+													"properties": {
+														"P1": {
+															"enum": [
+																"FLAG",
+																"BLOCK"
+															],
+															"type": "string"
+														},
+														"S1": {
+															"enum": [
+																"FLAG",
+																"BLOCK"
+															],
+															"type": "string"
+														},
+														"S10": {
+															"enum": [
+																"FLAG",
+																"BLOCK"
+															],
+															"type": "string"
+														},
+														"S11": {
+															"enum": [
+																"FLAG",
+																"BLOCK"
+															],
+															"type": "string"
+														},
+														"S12": {
+															"enum": [
+																"FLAG",
+																"BLOCK"
+															],
+															"type": "string"
+														},
+														"S13": {
+															"enum": [
+																"FLAG",
+																"BLOCK"
+															],
+															"type": "string"
+														},
+														"S2": {
+															"enum": [
+																"FLAG",
+																"BLOCK"
+															],
+															"type": "string"
+														},
+														"S3": {
+															"enum": [
+																"FLAG",
+																"BLOCK"
+															],
+															"type": "string"
+														},
+														"S4": {
+															"enum": [
+																"FLAG",
+																"BLOCK"
+															],
+															"type": "string"
+														},
+														"S5": {
+															"enum": [
+																"FLAG",
+																"BLOCK"
+															],
+															"type": "string"
+														},
+														"S6": {
+															"enum": [
+																"FLAG",
+																"BLOCK"
+															],
+															"type": "string"
+														},
+														"S7": {
+															"enum": [
+																"FLAG",
+																"BLOCK"
+															],
+															"type": "string"
+														},
+														"S8": {
+															"enum": [
+																"FLAG",
+																"BLOCK"
+															],
+															"type": "string"
+														},
+														"S9": {
+															"enum": [
+																"FLAG",
+																"BLOCK"
+															],
+															"type": "string"
+														}
+													},
+													"type": "object"
+												},
+												"response": {
+													"properties": {
+														"P1": {
+															"enum": [
+																"FLAG",
+																"BLOCK"
+															],
+															"type": "string"
+														},
+														"S1": {
+															"enum": [
+																"FLAG",
+																"BLOCK"
+															],
+															"type": "string"
+														},
+														"S10": {
+															"enum": [
+																"FLAG",
+																"BLOCK"
+															],
+															"type": "string"
+														},
+														"S11": {
+															"enum": [
+																"FLAG",
+																"BLOCK"
+															],
+															"type": "string"
+														},
+														"S12": {
+															"enum": [
+																"FLAG",
+																"BLOCK"
+															],
+															"type": "string"
+														},
+														"S13": {
+															"enum": [
+																"FLAG",
+																"BLOCK"
+															],
+															"type": "string"
+														},
+														"S2": {
+															"enum": [
+																"FLAG",
+																"BLOCK"
+															],
+															"type": "string"
+														},
+														"S3": {
+															"enum": [
+																"FLAG",
+																"BLOCK"
+															],
+															"type": "string"
+														},
+														"S4": {
+															"enum": [
+																"FLAG",
+																"BLOCK"
+															],
+															"type": "string"
+														},
+														"S5": {
+															"enum": [
+																"FLAG",
+																"BLOCK"
+															],
+															"type": "string"
+														},
+														"S6": {
+															"enum": [
+																"FLAG",
+																"BLOCK"
+															],
+															"type": "string"
+														},
+														"S7": {
+															"enum": [
+																"FLAG",
+																"BLOCK"
+															],
+															"type": "string"
+														},
+														"S8": {
+															"enum": [
+																"FLAG",
+																"BLOCK"
+															],
+															"type": "string"
+														},
+														"S9": {
+															"enum": [
+																"FLAG",
+																"BLOCK"
+															],
+															"type": "string"
+														}
+													},
+													"type": "object"
+												}
+											},
+											"required": [
+												"prompt",
+												"response"
+											],
+											"type": "object",
+											"x-auditable": true
+										},
 										"id": {
 											"description": "gateway id",
 											"example": "my-gateway",
@@ -2385,6 +3712,7 @@
 											"items": {
 												"properties": {
 													"authorization": {
+														"maxLength": 256,
 														"type": "string"
 													},
 													"content_type": {
@@ -2397,11 +3725,14 @@
 													},
 													"headers": {
 														"additionalProperties": {
+															"maxLength": 4096,
 															"type": "string"
 														},
 														"type": "object"
 													},
 													"url": {
+														"format": "uri",
+														"maxLength": 2048,
 														"type": "string"
 													}
 												},
@@ -2412,6 +3743,7 @@
 												],
 												"type": "object"
 											},
+											"maxItems": 5,
 											"nullable": true,
 											"type": "array",
 											"x-auditable": true
