@@ -5,39 +5,46 @@
 		<p>At Cloudflare, we’re not looking for people who wait for a polished roadmap; we’re looking for the builders who see the cracks in the Internet that everyone else has simply learned to live with. We value candidates who have the instinct to spot a "normalized" problem and the AI-native curiosity to create a solution using the latest tools. Our culture is built on iteration, leveraging AI to ship faster today to make it better tomorrow, while ensuring that every improvement, no matter how small, is shared across the team to lift everyone up. If you’re the type of person who values curiosity over bureaucracy, and that AI is a partner in solving tough problems to keep the Internet moving forward, you’ll fit right in.</p>
 	</div>
 </div>
-<p><strong>Available Locations: Austin, TX</strong></p>
-<p><strong>About Cloudflare's Security Team</strong></p>
-<p>Security is at the heart of Cloudflare’s mission to help build a better Internet. Anytime we push code, it automatically affects the millions of Internet properties (powering websites, remote teams, APIs, mobile apps, etc.) running on our global network. Cloudflare's network is one of the largest in the world, spanning over 330 cities in more than 125 countries, and operating within 50 milliseconds of 95% of the Internet-connected population.</p>
-<p>Physical Security is a team dedicated to providing a safe and secure working environment through the use of modern technology, training, education, and collaboration with other partners and stakeholders. Physical Security plays an integral role in operational security, facility safety, crisis management, traveler safety, and overall duty of care, using various security systems and monitoring software to detect and triage critical incidents.</p>
-<p><strong>About the Internship Program</strong></p>
-<p>The ideal Security intern is passionate about making the Internet a more secure place. You will work alongside experienced security team members to partner with them in planning, executing and overseeing initiatives that help improve Cloudflare’s security posture. We are looking for interns who are curious, proactive, and able to approach problems with a "security-first" mindset. This is a unique opportunity for candidates who want to learn how to defend systems at a scale that few other companies can offer.</p>
-<p>What would you do as a Cloudflare intern?</p>
+<p><strong>Available Locations: London, UK or Lisbon, Portugal&nbsp;</strong></p>
+<p><strong>Role Summary</strong></p>
+<p>The Egress team was formed to own a very important aspect of Cloudflare's network-as-a-service: egress connectivity for our vast portfolio of products.</p>
+<p>As a member of the Egress team, you will be a key technical contributor to a cutting edge network software infrastructure used by a growing number of Cloudflare products to connect to any destination from Cloudflare's network. Among the products powered by this technology is WARP, our Zero Trust platform, and Cloudflare's egress proxy for the <a href="https://blog.cloudflare.com/icloud-private-relay/">iCloud Private Relay</a> product.</p>
+<p>You will work closely with various Engineering teams to translate their requirements into new capabilities on the platform. Likewise you will partner with Network Engineering and SRE to ensure that the technology makes the best use of Cloudflare's world-class edge network.</p>
+<p>You will participate in all stages of the software development lifecycle, from designing and documenting systems, to writing code and automated tests, to planning, managing, and monitoring production software deployments. You will work with a wide range of technologies and programming languages, including Rust, Go, Linux networking, ClickHouse, PostgreSQL, Grafana, Kubernetes, and more.</p>
+<p>Engineering teams at Cloudflare operate a Run What You Build model, including ours. We are responsible for the health of our system and participate in our team's on-call rotation as part of operational responsibilities.</p>
+<p>Because you’ll be solving problems of massive scale and significance, you are a growth-oriented individual who enjoys being outside of your comfort zone. You are comfortable in a fast-paced but sensible work environment. You value curiosity and empathy and lead with these values.</p>
+<p><strong>Role Responsibilities</strong></p>
 <ul>
-	<li>Execute a specialized security project over 12 weeks that directly improves Cloudflare’s defensive posture.</li>
-	<li>Support the development of global security operational procedures &amp; documents.</li>
-	<li>Coordinate response to incidents on company premises and/or sites of special interest (e.g., events, etc.) using the appropriate communication methods and tools.</li>
-	<li>Monitor and administrate various technical security systems, including access control, video management, alarm monitoring, PSIM systems, and mass-notification tools.</li>
-	<li>Assist in developing location risk assessments, threat assessments, and incident assessments on various incidents/subjects that may impact the safety and security of Cloudflare personnel, business operations, travelers, physical assets, and intellectual property.</li>
-	<li>Curate and regularly update the global distribution list, location coordinates, and point of contact databases.&nbsp;</li>
-	<li>Support tactical open-source monitoring efforts for offices and events.</li>
-	<li>Work cross-functionally with Legal, People, Engineering, and Finance teams to integrate security into the fabric of the company.</li>
-	<li>Work closely with a mentor who will provide hands-on guidance in your specific security domain.</li>
-	<li>Present your security project to the entire company at the end of the internship.</li>
-	<li>Connect and learn from our executives and leadership team including our co-founders.</li>
-	<li>Write for our Cloudflare blog and be featured on Cloudflare.tv sessions.</li>
+	<li>Make daily progress on assigned engineering tasks, such as designing systems, writing specs, writing and pushing code via git, writing release plans for complex changes, rolling out production releases and working with other teams to coordinate system actions</li>
+	<li>Participate in daily and ad-hoc team meetings to share progress and collaborate</li>
+	<li>Participate in the team’s on-call schedule to ensure uptime of our production systems</li>
+	<li>Investigating customer issues that are escalated to the Egress team for triage and resolution</li>
+	<li>Responding to questions from other teams in the Egress team’s internal, public chat room</li>
+	<li>Using AI-powered tools and systems as part of your daily workflow to analyze and extend codebases, introspect production systems and datasets, and accelerate problem-solving</li>
 </ul>
-<p>You can check out our <a href="https://blog.cloudflare.com/tag/internship-experience/">internship blogs</a> to learn more about our program and hear directly from our past interns.</p>
-<p><strong>Example of desirable skills, knowledge and experience</strong></p>
+<p><strong>Role Requirements</strong></p>
+<p><strong>Must-Have Skills</strong></p>
 <ul>
-	<li>Pursuing a degree in International Affairs, Business, Emergency Management, Political Science, Criminal Justice, or a related field</li>
-	<li>Experience drafting security procedures and templates</li>
-	<li>Bilingual is a plus</li>
-	<li>Demonstrated critical thinking skills and drive to learn and adapt new technologies.</li>
-	<li>Curiosity, empathy and ability to get things done.</li>
-	<li>Ability to commit to a minimum 12 week summer internship.</li>
-	<li>In office 3-5 days a week in the Austin office.&nbsp;</li>
+	<li>Programming experience in Go or Rust and a desire to improve your skills in both.</li>
+	<li>A solid grasp of networking protocols in Layers 3 and 4 of the OSI Model.</li>
+	<li>Knowledge of HTTP, TLS, and CDN networks.</li>
+	<li>Experience in implementing secure and highly-available distributed systems.</li>
+	<li>Strong ability to debug issues in complex systems.</li>
+	<li>Strong collaboration and communication skills.</li>
+	<li>Experience/interest in HTTP networking and VPN technologies.</li>
+	<li>Experience/interest in network performance monitoring and tuning.</li>
+	<li>Willingness to adopt and integrate AI tools and systems into your engineering workflow.</li>
 </ul>
-<p><strong>Bonus: Demonstrated passion for security &amp; software development, such as personal projects, open-source contributions, or experience with our developer platform using <a href="https://www.cloudflare.com/students/">Cloudflare for Students.</a></strong></p>
+<p><strong>Bonus Points</strong></p>
+<ul>
+	<li>Knowledge of TCP/IP and Internet routing.</li>
+	<li>Professional systems-level programming experience in Rust.</li>
+	<li>Experience building tools and APIs.</li>
+	<li>Experience with monitoring, alerting, and debugging large-scale distributed systems</li>
+	<li>Experience participating in an on-call rotation.</li>
+	<li>Experience using AI-assisted development tools (e.g., code completion, codebase analysis, log/data exploration) in a professional setting.</li>
+</ul>
+<p>&nbsp;</p>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
 	<p><span style="font-weight: 400;">We’re not just a highly ambitious, large-scale technology company. We’re a highly ambitious, large-scale technology company with a soul. Fundamental to our mission to help build a better Internet is protecting the free and open Internet.</span></p>
