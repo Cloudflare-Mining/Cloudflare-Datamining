@@ -5,47 +5,38 @@
 		<p>At Cloudflare, we’re not looking for people who wait for a polished roadmap; we’re looking for the builders who see the cracks in the Internet that everyone else has simply learned to live with. We value candidates who have the instinct to spot a "normalized" problem and the AI-native curiosity to create a solution using the latest tools. Our culture is built on iteration, leveraging AI to ship faster today to make it better tomorrow, while ensuring that every improvement, no matter how small, is shared across the team to lift everyone up. If you’re the type of person who values curiosity over bureaucracy, and that AI is a partner in solving tough problems to keep the Internet moving forward, you’ll fit right in.</p>
 	</div>
 </div>
-<p><strong>Available Locations: Austin, TX</strong></p>
-<h4><strong>About the department</strong></h4>
-<p>Cloudflare’s Research Team pursues strategic projects that have a large impact on Cloudflare systems and the Internet at large. Our focus is on solving difficult problems to connect and protect users, applications, and data, while helping to make the Internet more resilient, efficient, and transparent.</p>
-<p>In our quest to help make a better Internet, we frequently find ourselves exploring open problems at the boundaries of knowledge in scalable computing, with a focus on security and&nbsp; privacy, using techniques including AI/ML and performance analysis.&nbsp; We make cutting edge research contributions in-house, as well as in collaboration with academia, Internet standards organizations like the IETF, and more!</p>
-<p>Our team includes experts in many disciplines, including applied cryptography, privacy, network architectures and protocols, measurement, distributed systems, storage optimization, machine learning for systems, and more.&nbsp; We seek interns that augment our existing expertise as well as those who are working in broadly related areas. We have a vast set of potential projects focussed on our current priorities. We also welcome new ideas via concrete proposals that, more than just satisfying curiosity, may help to improve Cloudflare or aspects of the Internet and surrounding technologies touched by Cloudflare. We are, after all, researchers at heart and love learning, too!</p>
-<p>More information about Cloudflare's approach to research can be found <a href="https://blog.cloudflare.com/cloudflares-approach-to-research/">here</a>.</p>
-<h4><strong>What you'll do</strong></h4>
-<p>Cloudflare's Research Team solves difficult problems in security, privacy, and systems at scale. This involves engineering, data analysis, open source software development, protocol design, implementation of primitives, with lots of measurement alongside.&nbsp;</p>
-<p>Successful candidates will be matched to suitable projects in on-going research directions. We also welcome novel proposals and ideas that can help to inform or build a better Internet (in the form of a max 200 word proposal).</p>
-<p>The Internet is evolving in ways that challenge convention, and many existing assumptions no longer hold. Interns and internship projects are designed to help maintain the integrity of the Internet, its systems, and its applications. Some of the fundamental areas we’re investigating focus on include advanced cryptography, hardware isolation, balancing user privacy against notions of identity, network and internetwork observability in a seemingly fragmented world, even applications of formal methods at scale — and this is just a small view into our <a href="https://research.cloudflare.com/outreach/updates/">work</a>! We’re also acutely aware that AI will impact all layers of a globally distributed system and the wider Internet.</p>
-<p><strong>General Research Intern Requirements</strong></p>
+<p><strong>Available Location:&nbsp;</strong>Austin, USA</p>
+<p><strong>About The Team</strong></p>
+<p>The CxO Transformation Partners (CXTP) team serves as trusted advisors to Cloudflare’s most senior customers and prospects. We are a highly strategic group who simplify technical complexity and align our solutions with large-scale business objectives. Our mission is to unlock commercial outcomes by bridging the gap between deep technical capabilities and executive-level strategic goals.</p>
+<p>This is a high-stakes, senior executive facing environment. We are looking for a highly operational, polished, and strategic candidate who possesses a consulting mindset and is eager to design the foundational processes that enable executive-level transformation.</p>
+<p><strong>About The Internship</strong></p>
+<p>The Executive Engagement Intern will help operationalize our Executive Community experience enabling scale, consistency, and quality in CxO interactions. We define this "experience" as a curated, high-touch peer platform designed to foster trust and facilitate strategic dialogue among CxOs. This role focuses on supporting the program launch, which will include the creation of an Executive Council, designing executive engagements, and establishing foundational processes for:</p>
 <ul>
-	<li>Evidence of tackling hard or open-ended problems</li>
-	<li>Proven track record of peer-reviewed research, open-source software contributions, <strong>or</strong> standards development, that is commensurate with level of training --- students at all levels are welcome to apply</li>
-	<li>Experience clearly communicating research ideas through papers, pre-prints, standards documents, blogs, or similar media</li>
-	<li>Ability to work in a systems-level programming language (e.g. Rust, C, Go)&nbsp;</li>
-	<li>Passion for debugging and ensuring system reliability</li>
-	<li>Familiarity with continuous integration workflows and source control systems (e.g., Gitlab, Github)</li>
-	<li>Willing and eager to share knowledge, with the skills to do so</li>
+	<li>Summits, &amp; Networking Peer Networking Events:&nbsp; Designing the operational playbooks for these intimate, high-impact events.</li>
+	<li>&nbsp;Academy pilot. The CXO Academy is our premier executive education program. This pilot focuses on building a curriculum that helps CxOs navigate technological and business change. The intern will support the pilot by designing participant workflows, supporting development of curriculum and feedback mechanisms.</li>
 </ul>
-<p><strong>Additional Requirements</strong></p>
-<p>Knowledge or experience with at least one of the following:</p>
+<p><strong>What You’ll Get To Do In This Role</strong></p>
 <ul>
-	<li>Computer networking protocols (TCP/IP, DNS, BGP, QUIC, etc.) and related algorithms</li>
-	<li>Machine learning analysis, ideally in systems or network optimization</li>
-	<li>Authentication protocols, applied cryptography, PKI and SSL/TLS</li>
-	<li>Operating or distributed systems analysis or development</li>
-	<li>Measurement for network and computer systems</li>
-	<li>Proficiency in a scripting language, such as Python</li>
+	<li>Own the delivery of the Executive Engagement Playbook and the council operations toolkit, providing a strong portfolio deliverable and presentation to leadership.</li>
+	<li>Key projects will include:</li>
+	<ul>
+		<li>Building the Executive Council operations kit, encompassing bios, briefing notes, and tracking mechanisms.</li>
+		<li>Developing an executive event playbook for summits and dinners.</li>
+		<li>Supporting the Academy curriculum and participant workflow.</li>
+		<li>Creating standardized templates for immersion labs and sprints.</li>
+	</ul>
 </ul>
-<p>&nbsp;<strong>Bonus Points:</strong></p>
+<p><strong>Qualifications</strong></p>
 <ul>
-	<li>Proven track record of independently driving projects in a fast-paced environment</li>
-	<li>Experience working in groups, or with multiple stakeholders</li>
-	<li>Able to fluently work across multiple programming languages</li>
+	<li>Currently pursuing an Undergrad Masters MA/MS (MBA not required).</li>
+	<li>Available for a full-time 12-week internship, working from our Austin office 3 days a week during the summer (May26-Aug14).</li>
+	<li>Experience or strong interest in developing executive-level content, playbooks, operational kits, and program materials.</li>
+	<li>A tech-savvy and iterative creator, proficient in leveraging AI coding assistants (e.g., Copilot, ChatGPT) or low-code tools to rapidly build and improve functional prototypes, automation scripts, or operational materials based on stakeholder feedback.</li>
+	<li>Ability to own a high-impact project end-to-end and deliver portfolio-ready results.</li>
+	<li>Excellent written and presentation skills. This role demands someone who is gifted in their ability to communicate effectively with all stakeholders, including executives, sales, and marketing.</li>
+	<li>Self-starter who truly enjoys working in a fast-paced, innovative cloud services company.</li>
 </ul>
-<p><strong>Internship Availability and Expectations:</strong></p>
-<ul>
-	<li>Ability to commit to a 12 week summer internship</li>
-	<li>In office 3-4 days a week in Austin, TX.</li>
-</ul>
+<p>&nbsp;</p>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
 	<p><span style="font-weight: 400;">We’re not just a highly ambitious, large-scale technology company. We’re a highly ambitious, large-scale technology company with a soul. Fundamental to our mission to help build a better Internet is protecting the free and open Internet.</span></p>
