@@ -1002,7 +1002,7 @@
 														"description": "A DNS record status detected during preview, status, or fix.",
 														"properties": {
 															"code": {
-																"description": "Error code identifying the type of issue. `dkim.conflict` is\nreported whenever 2+ TXT records exist at the DKIM selector,\neven if one matches the canonical Cloudflare content — multi-record\nDKIM can permerror at recipient verification regardless of which\nentry is correct.\n",
+																"description": "Error code identifying the type of issue. `dkim.conflict` is\nreported whenever 2+ TXT records exist at the DKIM selector,\neven if one matches the canonical Cloudflare content — multi-record\nDKIM can permerror at recipient verification regardless of which\nentry is correct. `domainkey.delegated` indicates that\n`_domainkey.<subdomain>` has NS records in the Cloudflare zone,\ncreating a zone cut that shadows the DKIM TXT record we publish;\nthe customer must remove the NS delegation for DKIM to verify.\n",
 																"enum": [
 																	"mx.missing",
 																	"mx.foreign",
@@ -1012,7 +1012,8 @@
 																	"dkim.missing",
 																	"dkim.conflict",
 																	"dmarc.missing",
-																	"dmarc.multiple"
+																	"dmarc.multiple",
+																	"domainkey.delegated"
 																],
 																"example": "dkim.conflict",
 																"type": "string"
@@ -1729,7 +1730,7 @@
 														"description": "A DNS record status detected during preview, status, or fix.",
 														"properties": {
 															"code": {
-																"description": "Error code identifying the type of issue. `dkim.conflict` is\nreported whenever 2+ TXT records exist at the DKIM selector,\neven if one matches the canonical Cloudflare content — multi-record\nDKIM can permerror at recipient verification regardless of which\nentry is correct.\n",
+																"description": "Error code identifying the type of issue. `dkim.conflict` is\nreported whenever 2+ TXT records exist at the DKIM selector,\neven if one matches the canonical Cloudflare content — multi-record\nDKIM can permerror at recipient verification regardless of which\nentry is correct. `domainkey.delegated` indicates that\n`_domainkey.<subdomain>` has NS records in the Cloudflare zone,\ncreating a zone cut that shadows the DKIM TXT record we publish;\nthe customer must remove the NS delegation for DKIM to verify.\n",
 																"enum": [
 																	"mx.missing",
 																	"mx.foreign",
@@ -1739,7 +1740,8 @@
 																	"dkim.missing",
 																	"dkim.conflict",
 																	"dmarc.missing",
-																	"dmarc.multiple"
+																	"dmarc.multiple",
+																	"domainkey.delegated"
 																],
 																"example": "dkim.conflict",
 																"type": "string"
@@ -2247,7 +2249,7 @@
 														"description": "A DNS record status detected during preview, status, or fix.",
 														"properties": {
 															"code": {
-																"description": "Error code identifying the type of issue. `dkim.conflict` is\nreported whenever 2+ TXT records exist at the DKIM selector,\neven if one matches the canonical Cloudflare content — multi-record\nDKIM can permerror at recipient verification regardless of which\nentry is correct.\n",
+																"description": "Error code identifying the type of issue. `dkim.conflict` is\nreported whenever 2+ TXT records exist at the DKIM selector,\neven if one matches the canonical Cloudflare content — multi-record\nDKIM can permerror at recipient verification regardless of which\nentry is correct. `domainkey.delegated` indicates that\n`_domainkey.<subdomain>` has NS records in the Cloudflare zone,\ncreating a zone cut that shadows the DKIM TXT record we publish;\nthe customer must remove the NS delegation for DKIM to verify.\n",
 																"enum": [
 																	"mx.missing",
 																	"mx.foreign",
@@ -2257,7 +2259,8 @@
 																	"dkim.missing",
 																	"dkim.conflict",
 																	"dmarc.missing",
-																	"dmarc.multiple"
+																	"dmarc.multiple",
+																	"domainkey.delegated"
 																],
 																"example": "dkim.conflict",
 																"type": "string"

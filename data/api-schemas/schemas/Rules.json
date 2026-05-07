@@ -688,6 +688,369 @@
 			"Rules"
 		]
 	},
+	"GET /accounts/{account_id}/cloudforce-one/rules/search": {
+		"description": "Search rules using hybrid, vector, keyword, or exact retrieval, backed by AI Search with a SQL fallback.",
+		"operationId": "cloudforce-one-search-rules",
+		"parameters": [
+			{
+				"description": "Cloudflare account ID.",
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"type": "string"
+				}
+			},
+			{
+				"description": "Filter by namespace. Repeat the parameter to filter by multiple namespaces (e.g. namespace=foo&namespace=bar).",
+				"in": "query",
+				"name": "namespace",
+				"schema": {
+					"anyOf": [
+						{
+							"type": "string"
+						},
+						{
+							"items": {
+								"type": "string"
+							},
+							"maxItems": 50,
+							"type": "array"
+						}
+					],
+					"description": "Filter by namespace. Repeat the parameter to filter by multiple namespaces (e.g. namespace=foo&namespace=bar).",
+					"example": [
+						"yara/workers",
+						"yara/dns_record"
+					]
+				}
+			},
+			{
+				"in": "query",
+				"name": "recursive",
+				"schema": {
+					"enum": [
+						"true",
+						"false"
+					],
+					"example": "true",
+					"type": "string"
+				}
+			},
+			{
+				"in": "query",
+				"name": "search",
+				"schema": {
+					"example": "malicious",
+					"type": "string"
+				}
+			},
+			{
+				"description": "Filter by public visibility.",
+				"in": "query",
+				"name": "is_public",
+				"schema": {
+					"description": "Filter by public visibility.",
+					"enum": [
+						"true",
+						"false"
+					],
+					"example": "true",
+					"type": "string"
+				}
+			},
+			{
+				"in": "query",
+				"name": "limit",
+				"schema": {
+					"default": 50,
+					"example": 50,
+					"maximum": 100,
+					"minimum": 1,
+					"type": "number"
+				}
+			},
+			{
+				"in": "query",
+				"name": "offset",
+				"schema": {
+					"default": 0,
+					"example": 0,
+					"minimum": 0,
+					"nullable": true,
+					"type": "number"
+				}
+			},
+			{
+				"description": "Natural-language or keyword search query.",
+				"in": "query",
+				"name": "query",
+				"required": true,
+				"schema": {
+					"description": "Natural-language or keyword search query.",
+					"example": "obfuscated proxy worker",
+					"maxLength": 500,
+					"minLength": 1,
+					"type": "string"
+				}
+			},
+			{
+				"description": "Retrieval strategy used for the query.",
+				"in": "query",
+				"name": "mode",
+				"schema": {
+					"default": "hybrid",
+					"description": "Retrieval strategy used for the query.",
+					"enum": [
+						"exact",
+						"hybrid",
+						"vector",
+						"keyword"
+					],
+					"example": "hybrid",
+					"type": "string"
+				}
+			},
+			{
+				"description": "Filter results by rule language.",
+				"in": "query",
+				"name": "language",
+				"schema": {
+					"description": "Filter results by rule language.",
+					"enum": [
+						"yara",
+						"js"
+					],
+					"example": "yara",
+					"type": "string"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"fallback": {
+									"description": "True when AI Search was unavailable and the response is from a fallback path.",
+									"example": false,
+									"type": "boolean"
+								},
+								"interpreted": {
+									"description": "Parsed natural-language interpretation of the query, when available.",
+									"properties": {
+										"filters": {
+											"additionalProperties": {},
+											"description": "Filters applied during retrieval (account ACL plus user-supplied facets).",
+											"type": "object"
+										},
+										"retrieval_type": {
+											"type": "string"
+										}
+									},
+									"required": [
+										"retrieval_type"
+									],
+									"type": "object"
+								},
+								"mode": {
+									"description": "Retrieval strategy actually used to produce results.",
+									"example": "hybrid",
+									"type": "string"
+								},
+								"results": {
+									"items": {
+										"allOf": [
+											{
+												"properties": {
+													"content": {
+														"example": "rule example { condition: true }",
+														"type": "string"
+													},
+													"created_at": {
+														"example": 1679529600000,
+														"type": "number",
+														"x-auditable": true
+													},
+													"created_by": {
+														"example": "user@example.com",
+														"type": "string",
+														"x-auditable": true
+													},
+													"description": {
+														"example": "Detects malicious proxy workers",
+														"type": "string"
+													},
+													"enabled": {
+														"description": "Whether this rule is active for dice consumers.",
+														"example": true,
+														"type": "boolean"
+													},
+													"id": {
+														"example": "550e8400-e29b-41d4-a716-446655440000",
+														"format": "uuid",
+														"type": "string",
+														"x-auditable": true
+													},
+													"is_public": {
+														"description": "Whether this rule is visible to other internal accounts.",
+														"example": false,
+														"type": "boolean",
+														"x-auditable": true
+													},
+													"name": {
+														"example": "block-malicious-workers",
+														"type": "string",
+														"x-auditable": true
+													},
+													"namespaces": {
+														"example": [
+															"yara/workers"
+														],
+														"items": {
+															"type": "string"
+														},
+														"type": "array",
+														"x-auditable": true
+													},
+													"updated_at": {
+														"example": 1679529600000,
+														"type": "number",
+														"x-auditable": true
+													},
+													"updated_by": {
+														"example": "user@example.com",
+														"type": "string",
+														"x-auditable": true
+													}
+												},
+												"required": [
+													"id",
+													"name",
+													"description",
+													"namespaces",
+													"content",
+													"is_public",
+													"enabled",
+													"created_at",
+													"updated_at",
+													"created_by",
+													"updated_by"
+												],
+												"type": "object"
+											},
+											{
+												"properties": {
+													"score": {
+														"description": "Relevance score in [0,1]. Present only when AI Search powers the query.",
+														"example": 0.87,
+														"maximum": 1,
+														"minimum": 0,
+														"type": "number"
+													},
+													"scoring_details": {
+														"description": "Per-component scoring breakdown returned by AI Search hybrid retrieval.",
+														"properties": {
+															"fusion_method": {
+																"type": "string"
+															},
+															"keyword_rank": {
+																"type": "number"
+															},
+															"keyword_score": {
+																"type": "number"
+															},
+															"reranking_score": {
+																"type": "number"
+															},
+															"vector_rank": {
+																"type": "number"
+															},
+															"vector_score": {
+																"type": "number"
+															}
+														},
+														"type": "object"
+													}
+												},
+												"type": "object"
+											}
+										]
+									},
+									"type": "array"
+								},
+								"total": {
+									"example": 12,
+									"minimum": 0,
+									"type": "integer"
+								}
+							},
+							"required": [
+								"results",
+								"total",
+								"mode"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Hybrid/semantic rule search results"
+			},
+			"401": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"error": {
+									"example": "Not found",
+									"type": "string"
+								}
+							},
+							"required": [
+								"error"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Unauthorized"
+			},
+			"503": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"error": {
+									"example": "Not found",
+									"type": "string"
+								}
+							},
+							"required": [
+								"error"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "AI Search unavailable"
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Search rules",
+		"tags": [
+			"Rules"
+		]
+	},
 	"GET /accounts/{account_id}/cloudforce-one/rules/stats": {
 		"description": "Get statistics about rules for the dashboard.",
 		"operationId": "cloudforce-one-get-rule-stats",
