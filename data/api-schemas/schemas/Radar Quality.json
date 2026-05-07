@@ -760,41 +760,41 @@
 											"type": "object"
 										},
 										"serie_0": {
+											"additionalProperties": {
+												"items": {
+													"description": "A numeric string.",
+													"example": "10",
+													"nullable": true,
+													"pattern": "^-?\\d+(\\.\\d+)?$",
+													"type": "string"
+												},
+												"type": "array"
+											},
+											"example": {
+												"p25": [
+													"31.253439"
+												],
+												"p50": [
+													"60.337738"
+												],
+												"p75": [
+													"125.940175"
+												],
+												"timestamps": [
+													"2023-04-17T00:00:00Z"
+												]
+											},
 											"properties": {
-												"p25": {
-													"items": {
-														"example": "31.253439",
-														"type": "string"
-													},
-													"type": "array"
-												},
-												"p50": {
-													"items": {
-														"example": "60.337738",
-														"type": "string"
-													},
-													"type": "array"
-												},
-												"p75": {
-													"items": {
-														"example": "125.940175",
-														"type": "string"
-													},
-													"type": "array"
-												},
 												"timestamps": {
 													"items": {
-														"example": "2023-04-17T00:00:00Z",
+														"format": "date-time",
 														"type": "string"
 													},
 													"type": "array"
 												}
 											},
 											"required": [
-												"timestamps",
-												"p75",
-												"p50",
-												"p25"
+												"timestamps"
 											],
 											"type": "object"
 										}
