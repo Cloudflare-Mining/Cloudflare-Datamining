@@ -21,7 +21,6 @@
 	<li>Experience coding in multiple programming languages s.a. <strong>C++</strong>, <strong>Go</strong> and <strong>Typescript.</strong></li>
 	<li>Familiarity with <strong>Linux/UNIX</strong> systems.</li>
 	<li>Debugging across multiple distributed services.</li>
-	<li>Ability to effectively navigate, understand, and contribute to large codebases.</li>
 	<li>Solid foundation in computer science, with strong competencies in algorithms, data structures, software design, and building large, distributed systems.</li>
 	<li>Ability to work under ambiguity and solve difficult problems.</li>
 </ul>
@@ -31,6 +30,7 @@
 	<li>Experience with on-call and incident mitigation.</li>
 	<li>Experience with workload and container orchestration systems such as <strong>Nomad</strong>, <strong>Consul </strong>or <strong>Kubernetes.</strong></li>
 	<li>Knowledge of <strong>logging, metrics, billing, and health check systems</strong> for large-scale distributed infrastructure.</li>
+	<li>Ability to effectively navigate, understand, and contribute to large codebases.</li>
 </ul>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
