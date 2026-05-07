@@ -16,25 +16,26 @@
 					"koKR": "English for Locale",
 					"ptBR": "Translated for Locale",
 					"esES": "Translated for Locale",
+					"esLA": "Translated for Locale",
 					"enAU": "English for Locale",
 					"enCA": "English for Locale",
 					"enIN": "English for Locale",
 					"enGB": "English for Locale",
-					"nlNL": "No Page for Locale",
-					"idID": "No Page for Locale",
-					"thTH": "No Page for Locale",
-					"ruRU": "No Page for Locale",
-					"svSE": "No Page for Locale",
-					"viVN": "No Page for Locale",
-					"trTR": "No Page for Locale",
+					"nlNL": "English for Locale",
+					"idID": "English for Locale",
+					"thTH": "English for Locale",
+					"ruRU": "English for Locale",
+					"svSE": "English for Locale",
+					"viVN": "English for Locale",
+					"trTR": "English for Locale",
 					"zhHansCN": "English for Locale",
-					"plPL": "No Page for Locale",
-					"elGR": "No Page for Locale",
-					"nbNO": "No Page for Locale"
+					"plPL": "English for Locale",
+					"arAR": "No Page for Locale",
+					"heIL": null
 				},
 				"relativePath": "lp/pg-all-plans-multi-sku",
 				"topNavOptions": "no-phone",
-				"topNavButtonText": "Get started for free",
+				"topNavButtonText": "Get started",
 				"topNavButtonUrl": "https://dash.cloudflare.com/sign-up",
 				"footerOptions": "minimized",
 				"metaTags": {
@@ -44,9 +45,15 @@
 					"metaImage": {
 						"file": {
 							"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/53qCYhQbir5WtIU0VDWESo/954a48bfb17f429acf469e5f14345d83/unnamed-3.png"
-						}
+						},
+						"description": "DO NOT REMOVE, THIS IS CLOUDFLARE'S GLOBAL OG META ASSET"
 					},
-					"facebookCustomImage": null
+					"facebookCustomImage": null,
+					"author": []
+				},
+				"sys": {
+					"createdAt": "2023-02-21T22:01:30.738Z",
+					"updatedAt": "2025-10-03T00:20:47.279Z"
 				},
 				"contentfulId": "6XPRcWFyFZMXtn5Jd0sFed",
 				"contentTypeId": "page",
@@ -69,7 +76,7 @@
 						"buttonColor2": "orange",
 						"buttonText1": "Choose your plan",
 						"buttonText1LoggedIn": null,
-						"buttonUrl1": "https://dash.cloudflare.com/sign-up",
+						"buttonUrl1": "#chooseplan",
 						"buttonUrl1LoggedIn": null,
 						"button1ExtraClass": null,
 						"buttonText2": null,
@@ -80,7 +87,7 @@
 						"htmlId": null,
 						"textColor": "black",
 						"includeVideo": true,
-						"streamVideoId": "b7bdcb2257c35a6fe037ba6dbe98a9b4",
+						"streamVideoId": "4b5f3ff3004a7711043bab7bcb1f59b5",
 						"streamOptions": [
 							"controls",
 							"captions"
@@ -90,11 +97,11 @@
 						"popupText": null,
 						"button1OpenInNewTab": null,
 						"button2OpenInNewTab": null,
-						"streamThumbnails": null,
+						"streamThumbnails": "2s",
 						"sectionPadding": "tile--no-bottom-padding",
 						"streamPosterAssetFile": null,
 						"streamPoster": null,
-						"imageSize": "Medium",
+						"imageSize": "Large",
 						"imagePosition": false,
 						"leftLinkUrl": null,
 						"leftLink": null,
@@ -107,14 +114,15 @@
 						"image": {
 							"file": {
 								"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/WqgFnFMubekgOQKtrOAVG/fec396583d0ba4de4c1afff8e9fabd6c/pg-all-plans.png"
-							}
+							},
+							"description": ""
 						},
 						"imageAssetFile": null
 					},
 					{
 						"contentTypeId": "bladeHtml",
 						"contentfulId": "3FmpKYpNaHuiEJBXJmfjir",
-						"htmlContent": "<br>\n<IMG style= \"float: left; margin: 18.25px 10px 0px 0px;\" src=\"https://paygo-webflow-lps.builtforthis.workers.dev/images/627166964dba1c2aa8c2d5b5_performance-cloud-speed.png\" width=\"23\" />\n<p style=\"text-align: left;\"><span style=\"font-size: 12px; font-weight: normal; line-height: 9px;\"><span style=\"color: #000000;\">%{GlobalInternetConnectedPercent}% of the internet-connected world is within %{OperationMilliseconds}ms of a Cloudflare server.</span><br /><br /></span></p>\n",
+						"htmlContent": "<br>\n<img style= \"float: left; margin: 18.25px 10px 0px 0px;\" src=\"https://cf-assets.www.cloudflare.com/slt3lc6tev37/Hrl9MJuJGcsYRLaNNcCpS/3ca96c403b9a0195da1a8502d79ef76c/performance-cloud-speed.svg\" width=\"23\" />\n<p style=\"text-align: left;\"><span style=\"font-size: 12px; font-weight: normal; line-height: 9px;\"><span style=\"color: #000000;\">%{GlobalInternetConnectedPercent}% of the internet-connected world is within %{OperationMilliseconds}ms of a Cloudflare server.</span><br /><br /></span></p>\n",
 						"htmlId": null
 					},
 					{
@@ -132,65 +140,77 @@
 							{
 								"file": {
 									"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/2gYJroRozXfN4HfVTjYbCh/55f8f208e56415772af338686b5bb6be/logo_mars_trusted-by_gray-PG.svg"
-								}
+								},
+								"description": ""
 							},
 							{
 								"file": {
 									"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/6AhdnznpQuA2CRreVkVcsX/c6e8aa7b58fc4ed7dacf1e7d5d4bf56a/logo_loreal_trusted-by_gray-PG.svg"
-								}
+								},
+								"description": ""
 							},
 							{
 								"file": {
 									"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/40KBlLpxatMmmjIiaqDMFl/76f44e4451f477cf04ada6648299a270/627166964dba1c3626c2d704_doordash__2_.svg"
-								}
+								},
+								"description": ""
 							},
 							{
 								"file": {
 									"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/3FEILJekRa6kwc8kNZW2Aa/2c04f3c772b92d36e2fc33b7517171cb/logo_garmin_trusted-by_gray-PG.svg"
-								}
+								},
+								"description": ""
 							},
 							{
 								"file": {
 									"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/7rQAsv2IxDl8I3pSZbke46/d16a09e2d8fe1dbf75021d6635fe4a6d/logo_ibm_trusted-by_gray-pg.svg"
-								}
+								},
+								"description": ""
 							},
 							{
 								"file": {
 									"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/Umm9sVBhUarYKAzK9oiEo/03733f12737a4e78d311e23eaa95d101/logo_23andme-PG.svg"
-								}
+								},
+								"description": ""
 							},
 							{
 								"file": {
 									"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/6W4MFIY2ed48nYadt0RUlf/3689dc745bc25b2e4ca79b636f05559e/logo_shopify_trusted-by_gray-PG.svg"
-								}
+								},
+								"description": ""
 							},
 							{
 								"file": {
 									"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/33pTiGSCJQWyfUuOWpY755/ff5a76e7939013edca3e74b13bef63d7/logo_lending-tree-PG.svg"
-								}
+								},
+								"description": ""
 							},
 							{
 								"file": {
 									"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/2SCc0OpjZ79UGxVkholmzS/fa19251ca8c47bcd0ebb7ac50110c9ac/logo_labcorp_PG.svg"
-								}
+								},
+								"description": ""
 							},
 							{
 								"file": {
 									"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/1kL94dELyC3smNqFcsPAEZ/daec1e230760bdf040bffa686849f3ec/logo_ncr_gray_32px-wrapper-PG.svg"
-								}
+								},
+								"description": ""
 							},
 							{
 								"file": {
 									"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/3WaoGkn6z1tkHgbySYFKNo/166920b081fa085e52b7f6ddc820a2b5/logo_thomson-reuters_gray_-PG.svg"
-								}
+								},
+								"description": ""
 							},
 							{
 								"file": {
 									"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/79xsOA2pLrt5W2xKSEtTmU/32b550885f6b2f7402ad2eee60c12f51/logo_zendesk_gray_32px-wrapper-PG.svg"
-								}
+								},
+								"description": ""
 							}
 						],
-						"logoListAssetFile": null,
+						"logoListAssetFile": [],
 						"logoUrlList": null
 					},
 					{
@@ -212,6 +232,8 @@
 								"contentTypeId": "feature",
 								"contentfulId": "1fzRkq0GmnoGXeqVrDj7Pm",
 								"title": "Free plan",
+								"makeTitleLink": null,
+								"titleUrl": null,
 								"titleSize": null,
 								"description": "Best suited for personal projects. You get access to world-class DNS, CDN, and SSL protection and can enable further add-ons at the click of a button.",
 								"learnMoreUrl": null,
@@ -221,10 +243,13 @@
 								"removeCardBorder": null,
 								"icon": {
 									"file": {
-										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/e5jcTT4VoppIK0BjqAGbo/b95398f20e9d11b97b438e8b5a7641b8/Icon_Free_pg_1.svg"
-									}
+										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/2dKe8sFlto3hSh0tDfqwXh/76196ae258080a6fb2925af30456d8f0/tag-outline.svg"
+									},
+									"description": null
 								},
 								"iconAssetFile": null,
+								"imageOverlaySuperheader": null,
+								"imageOverlayText": null,
 								"imageAssetFile": null,
 								"streamId": null,
 								"streamThumbnail": null,
@@ -234,6 +259,8 @@
 								"contentTypeId": "feature",
 								"contentfulId": "7HAojxxtgz4a5AVnW9kw2y",
 								"title": "Pro plan",
+								"makeTitleLink": null,
+								"titleUrl": null,
 								"titleSize": null,
 								"description": "Choose this plan for your professional websites and applications. You get the same great DNS, CDN, and SSL but also Lossless Image Optimization and Accelerated Mobile Pages for faster loading speed.",
 								"learnMoreUrl": null,
@@ -243,10 +270,13 @@
 								"removeCardBorder": null,
 								"icon": {
 									"file": {
-										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/wuv1N2jYHf2esD0yhayjV/3c5d691fa040bac0b4c97dba244d64d2/Icon_Pro_pg_1.svg"
-									}
+										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/4nC4blUcOffvGbQwA4Z1is/d9f36076577d83bef87ab2042ce8b3d2/traffic-legit-browser.svg"
+									},
+									"description": "Global traffic management icon"
 								},
 								"iconAssetFile": null,
+								"imageOverlaySuperheader": null,
+								"imageOverlayText": null,
 								"imageAssetFile": null,
 								"streamId": null,
 								"streamThumbnail": null,
@@ -256,6 +286,8 @@
 								"contentTypeId": "feature",
 								"contentfulId": "6OwS0w8BOWzIuSNc0XFstN",
 								"title": "Business plan",
+								"makeTitleLink": null,
+								"titleUrl": null,
 								"titleSize": null,
 								"description": "Designed for business-critical websites and applications. It gives you the highest level of control and customization of all self-serve plans, plus 100% uptime SLA and prioritized ticket support.",
 								"learnMoreUrl": null,
@@ -265,10 +297,13 @@
 								"removeCardBorder": null,
 								"icon": {
 									"file": {
-										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/1rIQQ3nUtMPNgkF8nVknvP/7c3ffecfb49c3bcf580f032324ab92a1/Icon_Business_pg_1.svg"
-									}
+										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/55EY7tFWfWZje78rlQI565/bda13c3811f02ac5d00df535881762fc/benefits-returnship.svg"
+									},
+									"description": null
 								},
 								"iconAssetFile": null,
+								"imageOverlaySuperheader": null,
+								"imageOverlayText": null,
 								"imageAssetFile": null,
 								"streamId": null,
 								"streamThumbnail": null,
@@ -291,13 +326,14 @@
 						"image": {
 							"file": {
 								"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/3QqB4cfcemJgOd3EDfxOmu/2c8102621c6ae36a461c8f90ef516f08/Touch_of_Modern-Greyed_out_220x34.svg"
-							}
+							},
+							"description": ""
 						},
 						"imageAssetFile": null,
 						"imageLinkUrl": null,
-						"logoList": null,
-						"logoListAssetFile": null,
-						"quoteCarousel": null
+						"logoList": [],
+						"logoListAssetFile": [],
+						"quoteCarousel": []
 					},
 					{
 						"contentfulId": "3QTF0QSgesHmRNELGp6JWA",
@@ -318,6 +354,8 @@
 								"contentTypeId": "feature",
 								"contentfulId": "1HUuHBTEgkP1OPDqpOTvjr",
 								"title": "Ultra-fast network",
+								"makeTitleLink": null,
+								"titleUrl": null,
 								"titleSize": null,
 								"description": "Each of these plans gives you instant access to Cloudflare's vast global network placing your website or application within approximately %{OperationMilliseconds} ms from %{GlobalInternetConnectedPercent}% of the world's internet-connected population. ",
 								"learnMoreUrl": null,
@@ -327,10 +365,13 @@
 								"removeCardBorder": null,
 								"icon": {
 									"file": {
-										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/19TPG7cE7NpcR6YTf8Auw4/f1a853abe1b56dfeafd7fe57186e8d92/performance-acceleration-bolt.svg"
-									}
+										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/5sWqRe2bVBkaYdFk0OapeM/7104c2a5381e49f73144e8a6e1095b53/performance-acceleration-bolt.svg"
+									},
+									"description": "Lightning bolt icon"
 								},
 								"iconAssetFile": null,
+								"imageOverlaySuperheader": null,
+								"imageOverlayText": null,
 								"imageAssetFile": null,
 								"streamId": null,
 								"streamThumbnail": null,
@@ -340,6 +381,8 @@
 								"contentTypeId": "feature",
 								"contentfulId": "2ZUeAMM3PDL7u3GtNQlaei",
 								"title": "Unlimited DDoS protection",
+								"makeTitleLink": null,
+								"titleUrl": null,
 								"titleSize": null,
 								"description": "Enjoy peace of mind thanks to always-on and always-learning DDoS mitigation and attack alerts. For increased protection you can upgrade your plan to enable extra security features.",
 								"learnMoreUrl": null,
@@ -349,10 +392,13 @@
 								"removeCardBorder": null,
 								"icon": {
 									"file": {
-										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/1QuObXZejAN8yd1ih3RVhq/6f1e095f295b1986535c3639ff3daf07/ddos-attack.svg"
-									}
+										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/3fCtDJiVXAmgSWmlKenFBR/d25c631065e2c37cc74e991740434118/ddos-attack.svg"
+									},
+									"description": "DDoS attack icon"
 								},
 								"iconAssetFile": null,
+								"imageOverlaySuperheader": null,
+								"imageOverlayText": null,
 								"imageAssetFile": null,
 								"streamId": null,
 								"streamThumbnail": null,
@@ -362,6 +408,8 @@
 								"contentTypeId": "feature",
 								"contentfulId": "6rNfKuNHFOiPAZzk39XwRA",
 								"title": "No-code performance tools",
+								"makeTitleLink": null,
+								"titleUrl": null,
 								"titleSize": null,
 								"description": "You don't really know how to code? No problem. The setup is simple, fast, and intuitive and you can turn on extra features at the simple click of a button.",
 								"learnMoreUrl": null,
@@ -371,10 +419,13 @@
 								"removeCardBorder": null,
 								"icon": {
 									"file": {
-										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/6ROvZixpN3i0kX2XkDE1XG/d9c416142c9b78db6df6e028e3372519/no_code_pg.svg"
-									}
+										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/3yP8xasUuZA27tpg6marwM/a30b4cac4910de90519f6141964f0920/code-js__1_.svg"
+									},
+									"description": "Code Web approved - orange"
 								},
 								"iconAssetFile": null,
+								"imageOverlaySuperheader": null,
+								"imageOverlayText": null,
 								"imageAssetFile": null,
 								"streamId": null,
 								"streamThumbnail": null,
@@ -384,6 +435,8 @@
 								"contentTypeId": "feature",
 								"contentfulId": "5MQFXggv4QoQOKchK1jn6r",
 								"title": "Best-in-class WAF",
+								"makeTitleLink": null,
+								"titleUrl": null,
 								"titleSize": null,
 								"description": "Each plan comes with our free Managed Ruleset to protect your site from high severity vulnerabilities. Plus, you can build your own custom firewall rules to further secure your web properties.",
 								"learnMoreUrl": null,
@@ -393,10 +446,13 @@
 								"removeCardBorder": null,
 								"icon": {
 									"file": {
-										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/Mi2T9t4aPrJo7m3C9YOhj/ce1ecf469b2ff9135bb639c10946b989/_Pangea_security-waf-blue.svg"
-									}
+										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/ekrF3dQ9wlkBCY0Km9Rsw/2c6f76a6e909a6bec5d42ef5e83366e9/security-waf.svg"
+									},
+									"description": ""
 								},
 								"iconAssetFile": null,
+								"imageOverlaySuperheader": null,
+								"imageOverlayText": null,
 								"imageAssetFile": null,
 								"streamId": null,
 								"streamThumbnail": null,
@@ -406,6 +462,8 @@
 								"contentTypeId": "feature",
 								"contentfulId": "4eVK88u142z717yiizWUBg",
 								"title": "User-friendly and easy-to-use UI",
+								"makeTitleLink": null,
+								"titleUrl": null,
 								"titleSize": null,
 								"description": "Manage all your websites and applications through one single user-friendly interface or via an API, no matter where they are hosted.",
 								"learnMoreUrl": null,
@@ -415,10 +473,13 @@
 								"removeCardBorder": null,
 								"icon": {
 									"file": {
-										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/Y8HJYJs983VQwkzCxDL6A/840479e034f0003b02ab79099af0b7f0/cloudflare-browser.svg"
-									}
+										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/4HCrh1LL2UxeUZAEgQo9Oi/81d48b27248ae38a890b8e82adec9896/cloudflare-browser.svg"
+									},
+									"description": "Cloudflare browser orange"
 								},
 								"iconAssetFile": null,
+								"imageOverlaySuperheader": null,
+								"imageOverlayText": null,
 								"imageAssetFile": null,
 								"streamId": null,
 								"streamThumbnail": null,
@@ -428,6 +489,8 @@
 								"contentTypeId": "feature",
 								"contentfulId": "42grigK6LnTd23SQwz6HfK",
 								"title": "All your tools into one ",
+								"makeTitleLink": null,
+								"titleUrl": null,
 								"titleSize": null,
 								"description": "Cloudflare plans are designed to provide you with all the tools you need to launch, secure and accelerate your internet properties — so you can stop managing multiple vendors and plugins.",
 								"learnMoreUrl": null,
@@ -437,10 +500,13 @@
 								"removeCardBorder": null,
 								"icon": {
 									"file": {
-										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/2AIbSKgMa5C3f5WEwPKWYO/4390157aa183153f2feb161814533c08/performance-wrench.svg"
-									}
+										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/5wssqiGu7F5lhbklqwGJU/2d9d1e090229bf4b832b922f7bb821dc/performance-wrench.svg"
+									},
+									"description": "Wrench icon"
 								},
 								"iconAssetFile": null,
+								"imageOverlaySuperheader": null,
+								"imageOverlayText": null,
 								"imageAssetFile": null,
 								"streamId": null,
 								"streamThumbnail": null,
@@ -453,10 +519,10 @@
 						"title": null,
 						"copy": "<p> <span style = \"font-size: 32px;line-height:120%;\" > <strong>Upgrade your website security with the Pro plan</strong></span><br><br><span style = \"font-size:18px;\"> <b>Enable one-click bot mitigation and advanced Web Application Firewall (WAF)</B></span></p>\n\n- Cloudflare Pro is best suited for professional websites, high traffic blogs, and startups requiring increased security and performance.\n- The Pro plan gives you access to 20 WAF custom rules, managed rulesets that are constantly updated, and advanced bot reporting and mitigation.\n- Also includes Zone Lockdown Rules which allows for the whitelisting of specific IP addresses and IP ranges, while all other IPs are effectively blacklisted.",
 						"toggleText": null,
-						"button": null,
+						"button": [],
 						"learnMoreUrl": null,
 						"learnMoreText": null,
-						"link": null,
+						"link": [],
 						"subheadline": null,
 						"button1Text": null,
 						"button1Url": null,
@@ -475,10 +541,11 @@
 						"image": {
 							"file": {
 								"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/1sFkrQFMToSe2tH7qWsl2n/79a9142477525be712e3e871eaf7f10b/waf-spot-illustration_3x-8.png"
-							}
+							},
+							"description": "Illustration of a brick wall"
 						},
 						"imageAssetFile": null,
-						"featureList": null,
+						"featureList": [],
 						"contentTypeId": "bladeImageText",
 						"sectionTitle": null,
 						"htmlId": null,
@@ -489,17 +556,17 @@
 						"imagePosition": false,
 						"imageSize": "medium",
 						"imageTextAlignment": null,
-						"togglesTo": null
+						"togglesTo": []
 					},
 					{
 						"contentfulId": "6bM3lY3GTaep3pYvppgVAN",
 						"title": null,
-						"copy": "<p> <span style = \"font-size: 32px;line-height:120%;\" > <strong>Get sophisticated bot analytics with the Business plan</strong></span><br><br><span style = \"font-size:18px;\"> <b>Enhanced security and analytics helps you protect your customers and their transactions</B></span></p>\n\n- Cloudflare Business is the best option for small businesses like e-commerce websites requiring customizable security and performance, and PCI compliance.\n- Secure the transfer of data between you and your website visitors by uploading your own custom SSL certificate to Cloudflare.\n- Gain access to in-depth bot analytics to view traffic and filter traffic by IP address or user agent to pinpoint and stop attackers.\n",
+						"copy": "<p> <span style = \"font-size: 32px;line-height:120%;\" > <strong>Enhance security and analytics with the Business plan</strong></span><br><br><span style = \"font-size:18px;\"></span></p>\n\n- Detect and challenge sophisticated bots (highly variable traffic signatures and novel bot attacks) using machine learning. \n- Monitor all your HTTP traffic to identify new attacks, security gaps, and fine tune WAF settings to stop threats.\n- Protect against unknown application vulnerabilities with \nWAF Attack Score Lite's machine learning models.\n",
 						"toggleText": null,
-						"button": null,
+						"button": [],
 						"learnMoreUrl": null,
 						"learnMoreText": null,
-						"link": null,
+						"link": [],
 						"subheadline": null,
 						"button1Text": null,
 						"button1Url": null,
@@ -517,11 +584,12 @@
 						"streamPosterAssetFile": null,
 						"image": {
 							"file": {
-								"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/6WW1U5GljZcNbTmUJuXNNJ/edfe418b69ddd5e5c46765d035ccd640/analytics-privacy-hero_modified-616px.svg"
-							}
+								"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/6WW1U5GljZcNbTmUJuXNNJ/b2535180777ae2e403ba70b61b854f91/BDES-4910_-_analytics-privacy-hero_modified-616px.svg"
+							},
+							"description": null
 						},
 						"imageAssetFile": null,
-						"featureList": null,
+						"featureList": [],
 						"contentTypeId": "bladeImageText",
 						"sectionTitle": null,
 						"htmlId": null,
@@ -532,7 +600,7 @@
 						"imagePosition": true,
 						"imageSize": "large",
 						"imageTextAlignment": null,
-						"togglesTo": null
+						"togglesTo": []
 					},
 					{
 						"bladeBorder": "border-top",
@@ -542,7 +610,7 @@
 						"contentfulId": "6YUVBnoQTdaf96nUjJpotu",
 						"title": "Plans and pricing",
 						"description": null,
-						"htmlId": null,
+						"htmlId": "chooseplan",
 						"plansList": [
 							{
 								"contentTypeId": "plan",
@@ -558,7 +626,7 @@
 								"supportResponseTitleText": null,
 								"supportResponseTime": null,
 								"ctaButtonText": "Select Free plan",
-								"ctaButtonUrl": "https://dash.cloudflare.com/sign-up",
+								"ctaButtonUrl": "https://dash.cloudflare.com/sign-up?utm_content=cpc",
 								"ctaButton": null,
 								"additionalTermsText": null,
 								"learnMoreText": null,
@@ -650,7 +718,7 @@
 										},
 										{
 											"contentTypeId": "feature",
-											"title": "Up to 100K worker requests and 30 scripts",
+											"title": "Up to 100K workers requests and 30 scripts",
 											"description": null,
 											"displayBorder": false,
 											"learnMoreUrl": null,
@@ -664,7 +732,7 @@
 										},
 										{
 											"contentTypeId": "feature",
-											"title": "3 Page Rules",
+											"title": "Up to 65 Cloudflare Rules",
 											"description": null,
 											"displayBorder": false,
 											"learnMoreUrl": null,
@@ -696,7 +764,7 @@
 								"supportResponseTitleText": null,
 								"supportResponseTime": null,
 								"ctaButtonText": "Select Pro plan",
-								"ctaButtonUrl": "https://dash.cloudflare.com/sign-up?to=/:account/:zone/billing/checkout&add=cf_pro_20_20",
+								"ctaButtonUrl": "https://dash.cloudflare.com/sign-up?utm_content=cpc&to=/:account/:zone/billing/checkout&add=cf_pro_20_20",
 								"ctaButton": null,
 								"additionalTermsText": null,
 								"learnMoreText": null,
@@ -732,7 +800,7 @@
 										},
 										{
 											"contentTypeId": "feature",
-											"title": "20 Page Rules",
+											"title": "Up to 155 Cloudflare Rules",
 											"description": null,
 											"displayBorder": false,
 											"learnMoreUrl": null,
@@ -848,7 +916,7 @@
 								"supportResponseTitleText": null,
 								"supportResponseTime": null,
 								"ctaButtonText": "Select Business plan",
-								"ctaButtonUrl": "https://dash.cloudflare.com/sign-up?to=/:account/:zone/billing/checkout&add=cf_biz",
+								"ctaButtonUrl": "https://dash.cloudflare.com/sign-up?utm_content=cpc&to=/:account/:zone/billing/checkout&add=cf_biz",
 								"ctaButton": null,
 								"additionalTermsText": null,
 								"learnMoreText": null,
@@ -884,7 +952,7 @@
 										},
 										{
 											"contentTypeId": "feature",
-											"title": "50 Page Rules",
+											"title": "Up to 310 Cloudflare Rules",
 											"description": null,
 											"displayBorder": false,
 											"learnMoreUrl": null,
@@ -912,7 +980,7 @@
 										},
 										{
 											"contentTypeId": "feature",
-											"title": "Prioritized ticket support, chat support",
+											"title": "Chat and ticket support",
 											"description": null,
 											"displayBorder": false,
 											"learnMoreUrl": null,
@@ -1065,13 +1133,15 @@
 						"mainHeadline": null,
 						"backgroundColor": "light-gray",
 						"bladeBorder": "border-bottom",
-						"sectionPadding": "tile--no-top-bottom-padding",
+						"sectionPadding": "tile--no-bottom-padding",
 						"columnLayout": "Two Thirds & One Third",
 						"columns": [
 							{
 								"contentTypeId": "elementRichText",
 								"contentfulId": "2ZM5vo1HhE22rZO9vXJPEy",
 								"title": null,
+								"htmlId": null,
+								"elementPosition": null,
 								"column": {
 									"nodeType": "document",
 									"content": [
@@ -1145,6 +1215,8 @@
 								"contentTypeId": "elementRichText",
 								"contentfulId": "7JJPNp3pofxxWOgzhVKDpz",
 								"title": null,
+								"htmlId": null,
+								"elementPosition": null,
 								"column": {
 									"nodeType": "document",
 									"content": [
@@ -1396,6 +1468,8 @@
 								"contentTypeId": "feature",
 								"contentfulId": "1zHkHMflf8GEFX2BNFtHei",
 								"title": "Create an account",
+								"makeTitleLink": null,
+								"titleUrl": null,
 								"titleSize": null,
 								"description": "You only need an email and a password. That's all!",
 								"learnMoreUrl": null,
@@ -1406,9 +1480,12 @@
 								"icon": {
 									"file": {
 										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/7unmUhL3ruklyes7nvkaxb/2ff829f6d29809f18a8ee2329309c88b/One-circle_1.svg"
-									}
+									},
+									"description": ""
 								},
 								"iconAssetFile": null,
+								"imageOverlaySuperheader": null,
+								"imageOverlayText": null,
 								"imageAssetFile": null,
 								"streamId": null,
 								"streamThumbnail": null,
@@ -1418,6 +1495,8 @@
 								"contentTypeId": "feature",
 								"contentfulId": "7luIDTNUpnYFce39ZOEyZr",
 								"title": "Pick a plan",
+								"makeTitleLink": null,
+								"titleUrl": null,
 								"titleSize": null,
 								"description": "Add your site and choose a service plan based on the level of functionality and support you need.",
 								"learnMoreUrl": null,
@@ -1428,9 +1507,12 @@
 								"icon": {
 									"file": {
 										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/3syxRKQTwKT52u8EXoe15P/21d33d850f5e9f9f70978e92102a32db/two-circle_1.svg"
-									}
+									},
+									"description": "Icon of the number 2"
 								},
 								"iconAssetFile": null,
+								"imageOverlaySuperheader": null,
+								"imageOverlayText": null,
 								"imageAssetFile": null,
 								"streamId": null,
 								"streamThumbnail": null,
@@ -1440,6 +1522,8 @@
 								"contentTypeId": "feature",
 								"contentfulId": "2q8sDSyrzr5K3leH2eAOfN",
 								"title": "Update nameservers",
+								"makeTitleLink": null,
+								"titleUrl": null,
 								"titleSize": null,
 								"description": "Make a quick change to your DNS settings in your registrar's dashboard (don't worry we'll show you how!).",
 								"learnMoreUrl": null,
@@ -1450,9 +1534,12 @@
 								"icon": {
 									"file": {
 										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/1VGvwUcskbuWqW0k8u52yt/b11dab8f75cc5397f888a7d2aa4dd88f/three-circle_1.svg"
-									}
+									},
+									"description": "Icon of the number 3"
 								},
 								"iconAssetFile": null,
+								"imageOverlaySuperheader": null,
+								"imageOverlayText": null,
 								"imageAssetFile": null,
 								"streamId": null,
 								"streamThumbnail": null,
@@ -1462,6 +1549,8 @@
 								"contentTypeId": "feature",
 								"contentfulId": "5EA01xIbazh5iPCCEEDcfm",
 								"title": "Get going",
+								"makeTitleLink": null,
+								"titleUrl": null,
 								"titleSize": null,
 								"description": "Activate Cloudflare features in minutes to take advantage of all the performance benefits.",
 								"learnMoreUrl": null,
@@ -1472,9 +1561,12 @@
 								"icon": {
 									"file": {
 										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/mgWfDy6siXMP5xwIdvfnu/aba40164b3205b55cbc6ef7e2cc5b55b/four-circle_1.svg"
-									}
+									},
+									"description": ""
 								},
 								"iconAssetFile": null,
+								"imageOverlaySuperheader": null,
+								"imageOverlayText": null,
 								"imageAssetFile": null,
 								"streamId": null,
 								"streamThumbnail": null,
@@ -1493,8 +1585,10 @@
 						"accordionElements": [
 							{
 								"contentTypeId": "elementRichText",
-								"contentfulId": "5V3yeiRmUUsAOEsxnWTtD8",
-								"title": "Can I keep my current DNS provider and still use the other features of the Business plan? ",
+								"contentfulId": "56xyBKXJphlUio6a1sUrZX",
+								"title": "Can I keep my current DNS provider and still use the other features of the Pro plan? ",
+								"htmlId": null,
+								"elementPosition": null,
 								"column": {
 									"nodeType": "document",
 									"content": [
@@ -1513,7 +1607,7 @@
 														"target": null,
 														"uri": null
 													},
-													"value": "Absolutely! Cloudflare Business allows you to still leverage our network with a partial (CNAME) setup while maintaining your current DNS provider. All other tools included in the plan are available to you to use without restrictions.",
+													"value": "This feature requires a Business or Enterprise Plan. The Business and Enterprise plans allow you to still leverage our network with a partial (CNAME) setup while maintaining your current DNS provider. ",
 													"marks": [],
 													"content": null
 												}
@@ -1526,6 +1620,8 @@
 								"contentTypeId": "elementRichText",
 								"contentfulId": "6gJfYqRalyyL6sGKMAOcEt",
 								"title": "Cloudflare offers free CDN and DNS. Why should I pay for a Business plan?",
+								"htmlId": null,
+								"elementPosition": null,
 								"column": {
 									"nodeType": "document",
 									"content": [
@@ -1557,6 +1653,8 @@
 								"contentTypeId": "elementRichText",
 								"contentfulId": "5OLmy38rSS6wi65jmp4I8V",
 								"title": "I'm already a Cloudflare customer. How do I enable the Business plan? ",
+								"htmlId": null,
+								"elementPosition": null,
 								"column": {
 									"nodeType": "document",
 									"content": [
@@ -1762,6 +1860,8 @@
 								"contentTypeId": "elementRichText",
 								"contentfulId": "3p7U4s5qqhEfbp4qhneNxg",
 								"title": "What does the Business plan provide that other plans do not? ",
+								"htmlId": null,
+								"elementPosition": null,
 								"column": {
 									"nodeType": "document",
 									"content": [
@@ -1900,6 +2000,8 @@
 								"contentTypeId": "elementRichText",
 								"contentfulId": "GZZqhMQI2NmEZBT2CuPOF",
 								"title": "When is the right time to upgrade from the Free plan to Pro plan?",
+								"htmlId": null,
+								"elementPosition": null,
 								"column": {
 									"nodeType": "document",
 									"content": [
@@ -2145,6 +2247,8 @@
 								"contentTypeId": "elementRichText",
 								"contentfulId": "4IJNZHfAcBVzP9mNi2joHD",
 								"title": "What is a WAF (Web Application Firewall) and why does it matter?",
+								"htmlId": null,
+								"elementPosition": null,
 								"column": {
 									"nodeType": "document",
 									"content": [
@@ -2201,7 +2305,7 @@
 							"text": "Get started in just 5 minutes",
 							"url": "https://dash.cloudflare.com/sign-up",
 							"loggedInUrl": null,
-							"modal": null,
+							"buttonModal": null,
 							"openInNewTab": false,
 							"locale": "en-US"
 						},
@@ -2211,8 +2315,7 @@
 					}
 				],
 				"noindex": true,
-				"formModal": null,
-				"hasAdobeExperiment": null,
+				"formModal": [],
 				"keepHashUrlSyncedWithScrollPosition": false
 			},
 			"site": {
@@ -2229,10 +2332,10 @@
 			"allowedHrefLangs": [
 				"en-US",
 				"pt-BR",
-				"es-ES"
+				"es-ES",
+				"es-LA"
 			],
 			"hasPsaBanner": false,
-			"hasAdobeExperiment": null,
 			"baseURL": "https://www.cloudflare.com"
 		}
 	}
