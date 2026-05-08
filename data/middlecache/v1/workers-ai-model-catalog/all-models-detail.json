@@ -1,5 +1,5 @@
 {
-	"generated_at": "2026-05-07T04:33:47.428Z",
+	"generated_at": "2026-05-08T04:33:47.261Z",
 	"model_count": 150,
 	"models": {
 		"alibaba/hh1-i2v": {
@@ -16068,6 +16068,10 @@
 				{
 					"property_id": "max_total_tokens",
 					"value": "4096"
+				},
+				{
+					"property_id": "planned_deprecation_date",
+					"value": "2026-05-30"
 				}
 			],
 			"metadata": {
@@ -18892,21 +18896,6 @@
 					"value": "256000"
 				},
 				{
-					"property_id": "price",
-					"value": [
-						{
-							"unit": "per M input tokens",
-							"price": 0.1,
-							"currency": "USD"
-						},
-						{
-							"unit": "per M output tokens",
-							"price": 0.3,
-							"currency": "USD"
-						}
-					]
-				},
-				{
 					"property_id": "function_calling",
 					"value": "true"
 				},
@@ -19846,6 +19835,10 @@
 					"value": "true"
 				},
 				{
+					"property_id": "planned_deprecation_date",
+					"value": "2026-05-30"
+				},
+				{
 					"property_id": "terms",
 					"value": "https://ai.google.dev/gemma/terms"
 				}
@@ -20181,6 +20174,10 @@
 				{
 					"property_id": "lora",
 					"value": "true"
+				},
+				{
+					"property_id": "planned_deprecation_date",
+					"value": "2026-05-30"
 				}
 			],
 			"metadata": {
