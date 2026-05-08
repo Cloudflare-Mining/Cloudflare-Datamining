@@ -363,6 +363,9 @@
 	"billing-pay-my-bill-enabled": {
 		"enabled": true
 	},
+	"billing-preferred-locale": {
+		"enabled": false
+	},
 	"billing-registrar-stripe-paypal": {
 		"enabled": true
 	},
@@ -472,7 +475,7 @@
 		"enabled": false
 	},
 	"brand-protection-dismiss-matches-api-fix": {
-		"enabled": false
+		"enabled": true
 	},
 	"browser-rendering-live-view": {
 		"enabled": true
@@ -1521,6 +1524,9 @@
 	"loui-rules-ide-filter-editor": {
 		"enabled": false
 	},
+	"loui-schema-violated-ere-rule": {
+		"enabled": true
+	},
 	"loui-sentry-debug-error": {
 		"enabled": true
 	},
@@ -1669,7 +1675,7 @@
 		"enabled": true
 	},
 	"oauth-app-access-enabled": {
-		"enabled": false
+		"enabled": true
 	},
 	"oauth-management-ui": {
 		"enabled": false
@@ -2725,6 +2731,9 @@
 	"vrushabh-test-gate-ui-plat": {
 		"enabled": false
 	},
+	"vrushabh-test-post-migration": {
+		"enabled": false
+	},
 	"vs-code-container-in-dash": {
 		"enabled": true
 	},
@@ -2744,7 +2753,7 @@
 		"enabled": true
 	},
 	"web-analytics-kumo": {
-		"enabled": false
+		"enabled": true
 	},
 	"web-analytics-refactor": {
 		"enabled": true
