@@ -69,9 +69,9 @@
 						"contentTypeId": "bladeHeroAnimation",
 						"title": "Cloudflare DNS vs. Google Cloud DNS",
 						"titleSize": null,
-						"subtitle": "Cloudflare DNS delivers superior performance, high availability, and robust security",
+						"subtitle": "Cloudflare DNS delivers superior global performance, uncompromised availability, and robust built-in security",
 						"subtitleSize": null,
-						"copy": "Cloudflare DNS is an authoritative DNS service that offers significantly better query response performance than Google Cloud DNS. Coupling that performance with robust security and unparalleled redundancy, Cloudflare DNS is a better choice for most organizations.\n\nAccelerate web experiences with Cloudflare: ",
+						"copy": "Cloudflare DNS is an enterprise-grade authoritative DNS service that consistently delivers faster query response times than Google Cloud DNS. By combining industry-leading performance with unmetered DDoS protection, unparalleled redundancy, and predictable pricing, Cloudflare DNS is the strategic choice for organizations looking to secure and accelerate their web presence.",
 						"buttonColor": "orange",
 						"buttonColor2": "orange",
 						"buttonText1": "Get started",
@@ -415,7 +415,7 @@
 								"cellsInRow": [
 									{
 										"contentfulId": "3i6Zc2H5lrNvDZUtULaWqF",
-										"cellText": "Delivers ultra-low-latency response times that are more than 3x faster than Google.",
+										"cellText": "Consistently ranked as the fastest global authoritative DNS provider by independent monitors like DNSPerf, utilizing a massive Anycast network to ensure ultra-low latency everywhere.",
 										"cellTextLinkUrl": null,
 										"buttonText": null,
 										"buttonUrl": null,
@@ -424,7 +424,7 @@
 									},
 									{
 										"contentfulId": "1JsIksiQZA470khLSdCNid",
-										"cellText": "While advertising low latency, Google Cloud DNS delivers performance that is consistently poorer than Cloudflare DNS.",
+										"cellText": "Provides reliable performance, but typically trails Cloudflare in independent global speed benchmarks and operates across fewer edge locations.",
 										"cellTextLinkUrl": null,
 										"buttonText": null,
 										"buttonUrl": null,
@@ -447,7 +447,7 @@
 								"cellsInRow": [
 									{
 										"contentfulId": "5umHWOlXwy6BkXEv24ypNK",
-										"cellText": "Offers Free, Pro, Business, and Enterprise plans to support a wide range of organizations.",
+										"cellText": "Offers a generous Free tier, plus predictable flat-rate pricing for Pro and Business plans. Unmetered DDoS protection means you are never charged for attack spikes.",
 										"cellTextLinkUrl": null,
 										"buttonText": null,
 										"buttonUrl": null,
@@ -456,7 +456,7 @@
 									},
 									{
 										"contentfulId": "28fkFgJmQVVi6c0u7K7snX",
-										"cellText": "Has only one pricing plan, which includes charges per zone per month with fees for the numbers of queries.",
+										"cellText": "Relies on a complex pay-as-you-go model that charges per zone and per million queries. This can lead to unpredictable billing, especially if your DNS is targeted by high-volume attacks.",
 										"cellTextLinkUrl": null,
 										"buttonText": null,
 										"buttonUrl": null,
@@ -479,7 +479,7 @@
 								"cellsInRow": [
 									{
 										"contentfulId": "7wFZyu7PXiwJs6bI5m4jN8",
-										"cellText": "Provides DNS services in %{DataCenterCount} cities around the world, helping ensure fast resolution and high availability.",
+										"cellText": "Resolves queries from edge locations in %{DataCenterCount} cities worldwide, ensuring DNS resolution happens as close to the end-user as possible for maximum availability.\n",
 										"cellTextLinkUrl": null,
 										"buttonText": null,
 										"buttonUrl": null,
@@ -488,7 +488,7 @@
 									},
 									{
 										"contentfulId": "6uZdDAsQ38wPuvo5OdWNrT",
-										"cellText": "Supports DNS services in far fewer edge locations than Cloudflare.",
+										"cellText": "While backed by Google's infrastructure, Google Cloud DNS supports authoritative resolution in a significantly smaller edge footprint compared to Cloudflare.",
 										"cellTextLinkUrl": null,
 										"buttonText": null,
 										"buttonUrl": null,
@@ -511,7 +511,7 @@
 								"cellsInRow": [
 									{
 										"contentfulId": "6gnXgrvGIuyEUlevdcDC4W",
-										"cellText": " Includes integrated security features such as DDoS protection, DNSSEC, DNS Firewall, and access control.",
+										"cellText": "Features unmetered, built-in DDoS mitigation natively out-of-the-box, alongside one-click DNSSEC, advanced access controls, and custom DNS Firewall rules for Enterprise.",
 										"cellTextLinkUrl": null,
 										"buttonText": null,
 										"buttonUrl": null,
@@ -520,7 +520,7 @@
 									},
 									{
 										"contentfulId": "kDN43kHrNfJCTX9ZjcGRa",
-										"cellText": "Offers DNSSEC and access control, but no DDoS protection.",
+										"cellText": "Offers DNSSEC and IAM access controls, but mitigating large-scale attacks may require configuring additional paid services or absorbing the query costs of the attack traffic.",
 										"cellTextLinkUrl": null,
 										"buttonText": null,
 										"buttonUrl": null,
@@ -534,7 +534,7 @@
 					{
 						"contentTypeId": "bladeHtml",
 						"contentfulId": "YPxwvmuPVH5aLNDiTC0xI",
-						"htmlContent": "<style>\n  .legend {text-align:right; margin:-150px 0px 64px; font-size: 14px;}\n\n   @media (max-width: 768px) \n    { \n       .legend{margin:-64px 0px 80px;}\n    }\n</style>\n\n<div class=\"legend\">\n  <i>Accurate as of July 2024</i>\n</div>",
+						"htmlContent": "<style>\n  .legend {text-align:right; margin:-150px 0px 64px; font-size: 14px;}\n\n   @media (max-width: 768px) \n    { \n       .legend{margin:-64px 0px 80px;}\n    }\n</style>\n\n<div class=\"legend\">\n  <i>Accurate as of May 2026</i>\n</div>",
 						"htmlId": null
 					},
 					{
@@ -759,7 +759,7 @@
 														"target": null,
 														"uri": null
 													},
-													"value": "Yes. Cloudflare DNS regularly delivers query responses that are more than three times faster than Google Cloud DNS. The Cloudflare global Anycast network, which has more than 320 data center locations, helps ensure the rapid delivery of DNS lookup responses anywhere in the world.  ",
+													"value": "Yes. Cloudflare DNS is consistently ranked as one of the fastest global authoritative DNS providers by independent DNS monitors like DNSPerf, regularly outperforming Google Cloud DNS. Cloudflare's global network, which spans over 330 cities worldwide, ensures that DNS lookup responses are delivered rapidly from a location physically close to the user, anywhere in the world.",
 													"marks": [],
 													"content": null
 												}
@@ -792,7 +792,7 @@
 														"target": null,
 														"uri": null
 													},
-													"value": "Yes. Cloudflare DNS offers integrated security capabilities that help prevent DNS-related attacks. For example, it provides built-in DDoS protection, email security, and one-click DNSSEC, which protects users from on-path attacks that spoof domains or hijack DNS records. \n\nOnce your organization selects the Cloudflare DNS service, you can opt to use Cloudflare as a reverse proxy. Routing your website traffic through the Cloudflare network gives you options for choosing from a full range of cyber security capabilities.",
+													"value": "Yes. Security is built natively into Cloudflare DNS. Unlike some cloud providers, including Google Cloud DNS, that charge based on query volume, Cloudflare includes built-in, unmetered DDoS protection. This means Cloudflare absorbs volumetric DNS attacks without passing the cost of those malicious queries onto your monthly bill. It also features one-click DNSSEC to protect users from on-path attacks, DNS spoofing, and record hijacking.",
 													"marks": [],
 													"content": null
 												}
@@ -858,7 +858,7 @@
 														"target": null,
 														"uri": null
 													},
-													"value": " In addition to Google, several cloud and content delivery network (CDN) providers offer authoritative DNS services, such as Cloudflare DNS, AWS (Amazon Route 53), Akamai (Akamai Edge DNS), and Azure (Azure DNS). But for organizations looking for exceptional performance coupled with high availability and robust security capabilities, Cloudflare DNS will be the best choice for an authoritative DNS.",
+													"value": "For organizations looking for an enterprise-grade alternative to Google Cloud DNS, Cloudflare is widely considered the premier choice. While Google and other cloud providers (like AWS and Azure) offer authoritative DNS, Cloudflare stands out by providing exceptional global performance, unmetered DDoS protection, and predictable flat-rate pricing, ensuring you aren't penalized with unpredictable infrastructure bills during an attack.",
 													"marks": [],
 													"content": null
 												}
