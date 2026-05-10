@@ -53,7 +53,7 @@
 				},
 				"sys": {
 					"createdAt": "2020-08-11T22:48:50.098Z",
-					"updatedAt": "2026-05-10T03:45:52.790Z"
+					"updatedAt": "2026-05-10T18:33:40.144Z"
 				},
 				"contentfulId": "WHDVM2cjdh97lSI7gjC6G",
 				"contentTypeId": "page",
@@ -404,6 +404,58 @@
 											{
 												"contentTypeId": "planElementFeatureValueBoolean",
 												"contentfulId": "65oLUn0BCgRpstmBgpNlkf",
+												"value": true,
+												"plan": {
+													"contentfulId": "340voCDNPomfIrJeJLp8MC",
+													"contentTypeId": "planElementPlan",
+													"entryTitle": "Premium Success",
+													"name": "Premium success",
+													"description": "> ",
+													"pricingDescription": "Optional upgrade, tiered by annual contract value",
+													"price": null,
+													"currency": null,
+													"customPricingText": null,
+													"monthlyPricingText": null,
+													"annualPricingText": null,
+													"billingCycle": null,
+													"customPricingCta": null,
+													"monthlyPricingCta": null,
+													"annualPricingCta": null
+												}
+											}
+										]
+									},
+									{
+										"contentfulId": "6614VyiV84OSrvqyCpmxIx",
+										"contentTypeId": "planElementFeatures",
+										"name": "Communities: Cloudflare & Developer",
+										"description": null,
+										"planValues": [
+											{
+												"contentTypeId": "planElementFeatureValueBoolean",
+												"contentfulId": "4T35RTVYTMRsZ8GqxrAAPX",
+												"value": true,
+												"plan": {
+													"contentfulId": "5FjS0AD9W1kke1zhsrm16Q",
+													"contentTypeId": "planElementPlan",
+													"entryTitle": "Standard Success",
+													"name": "Standard success",
+													"description": "> ",
+													"pricingDescription": "Included with Enterprise plans",
+													"price": null,
+													"currency": null,
+													"customPricingText": null,
+													"monthlyPricingText": null,
+													"annualPricingText": null,
+													"billingCycle": null,
+													"customPricingCta": null,
+													"monthlyPricingCta": null,
+													"annualPricingCta": null
+												}
+											},
+											{
+												"contentTypeId": "planElementFeatureValueBoolean",
+												"contentfulId": "3kpRYPPA38lBr4VXiyszwg",
 												"value": true,
 												"plan": {
 													"contentfulId": "340voCDNPomfIrJeJLp8MC",
@@ -854,6 +906,162 @@
 												}
 											}
 										]
+									},
+									{
+										"contentfulId": "5GfDwn7vf9c3frPc5ZdQQJ",
+										"contentTypeId": "planElementFeatures",
+										"name": "P2 - High",
+										"description": null,
+										"planValues": [
+											{
+												"contentTypeId": "planElementFeatureValueText",
+												"contentfulId": "7E1ttzMbXA2X7SNGeda6dN",
+												"textValue": "<4 hr",
+												"plan": {
+													"contentfulId": "5FjS0AD9W1kke1zhsrm16Q",
+													"contentTypeId": "planElementPlan",
+													"entryTitle": "Standard Success",
+													"name": "Standard success",
+													"description": "> ",
+													"pricingDescription": "Included with Enterprise plans",
+													"price": null,
+													"currency": null,
+													"customPricingText": null,
+													"monthlyPricingText": null,
+													"annualPricingText": null,
+													"billingCycle": null,
+													"customPricingCta": null,
+													"monthlyPricingCta": null,
+													"annualPricingCta": null
+												}
+											},
+											{
+												"contentTypeId": "planElementFeatureValueText",
+												"contentfulId": "389CoTLjQGPpd5bZsLUpk4",
+												"textValue": "<2 hr",
+												"plan": {
+													"contentfulId": "340voCDNPomfIrJeJLp8MC",
+													"contentTypeId": "planElementPlan",
+													"entryTitle": "Premium Success",
+													"name": "Premium success",
+													"description": "> ",
+													"pricingDescription": "Optional upgrade, tiered by annual contract value",
+													"price": null,
+													"currency": null,
+													"customPricingText": null,
+													"monthlyPricingText": null,
+													"annualPricingText": null,
+													"billingCycle": null,
+													"customPricingCta": null,
+													"monthlyPricingCta": null,
+													"annualPricingCta": null
+												}
+											}
+										]
+									},
+									{
+										"contentfulId": "7jJCozxnNRysyuZt0fH5ot",
+										"contentTypeId": "planElementFeatures",
+										"name": "P3 - Normal",
+										"description": null,
+										"planValues": [
+											{
+												"contentTypeId": "planElementFeatureValueText",
+												"contentfulId": "3c7cc9oSr7hEDydgo2J5ih",
+												"textValue": "<48 hr",
+												"plan": {
+													"contentfulId": "5FjS0AD9W1kke1zhsrm16Q",
+													"contentTypeId": "planElementPlan",
+													"entryTitle": "Standard Success",
+													"name": "Standard success",
+													"description": "> ",
+													"pricingDescription": "Included with Enterprise plans",
+													"price": null,
+													"currency": null,
+													"customPricingText": null,
+													"monthlyPricingText": null,
+													"annualPricingText": null,
+													"billingCycle": null,
+													"customPricingCta": null,
+													"monthlyPricingCta": null,
+													"annualPricingCta": null
+												}
+											},
+											{
+												"contentTypeId": "planElementFeatureValueText",
+												"contentfulId": "1HhPzXajBT9Jo2UqGLg3na",
+												"textValue": "<24 hr",
+												"plan": {
+													"contentfulId": "340voCDNPomfIrJeJLp8MC",
+													"contentTypeId": "planElementPlan",
+													"entryTitle": "Premium Success",
+													"name": "Premium success",
+													"description": "> ",
+													"pricingDescription": "Optional upgrade, tiered by annual contract value",
+													"price": null,
+													"currency": null,
+													"customPricingText": null,
+													"monthlyPricingText": null,
+													"annualPricingText": null,
+													"billingCycle": null,
+													"customPricingCta": null,
+													"monthlyPricingCta": null,
+													"annualPricingCta": null
+												}
+											}
+										]
+									},
+									{
+										"contentfulId": "6xamYXIA9aopqVkFZIy6al",
+										"contentTypeId": "planElementFeatures",
+										"name": "P4 - Low",
+										"description": null,
+										"planValues": [
+											{
+												"contentTypeId": "planElementFeatureValueText",
+												"contentfulId": "6KCeK93KV7Z30e3JkPJLZD",
+												"textValue": "<48 hr",
+												"plan": {
+													"contentfulId": "5FjS0AD9W1kke1zhsrm16Q",
+													"contentTypeId": "planElementPlan",
+													"entryTitle": "Standard Success",
+													"name": "Standard success",
+													"description": "> ",
+													"pricingDescription": "Included with Enterprise plans",
+													"price": null,
+													"currency": null,
+													"customPricingText": null,
+													"monthlyPricingText": null,
+													"annualPricingText": null,
+													"billingCycle": null,
+													"customPricingCta": null,
+													"monthlyPricingCta": null,
+													"annualPricingCta": null
+												}
+											},
+											{
+												"contentTypeId": "planElementFeatureValueText",
+												"contentfulId": "5SQg00TfqgBTVXgbkTDxMV",
+												"textValue": "<24 hr",
+												"plan": {
+													"contentfulId": "340voCDNPomfIrJeJLp8MC",
+													"contentTypeId": "planElementPlan",
+													"entryTitle": "Premium Success",
+													"name": "Premium success",
+													"description": "> ",
+													"pricingDescription": "Optional upgrade, tiered by annual contract value",
+													"price": null,
+													"currency": null,
+													"customPricingText": null,
+													"monthlyPricingText": null,
+													"annualPricingText": null,
+													"billingCycle": null,
+													"customPricingCta": null,
+													"monthlyPricingCta": null,
+													"annualPricingCta": null
+												}
+											}
+										]
 									}
 								]
 							},
@@ -915,6 +1123,58 @@
 										]
 									},
 									{
+										"contentfulId": "3KVP8VKOliM7n4OjD98Ure",
+										"contentTypeId": "planElementFeatures",
+										"name": "Executive briefing program",
+										"description": "Entitlement frequency and dedication dependent upon Premium tier level, determined by annual contract value per region.",
+										"planValues": [
+											{
+												"contentTypeId": "planElementFeatureValueBoolean",
+												"contentfulId": "4hzacjaDnK5vmy9jb0Uke2",
+												"value": false,
+												"plan": {
+													"contentfulId": "5FjS0AD9W1kke1zhsrm16Q",
+													"contentTypeId": "planElementPlan",
+													"entryTitle": "Standard Success",
+													"name": "Standard success",
+													"description": "> ",
+													"pricingDescription": "Included with Enterprise plans",
+													"price": null,
+													"currency": null,
+													"customPricingText": null,
+													"monthlyPricingText": null,
+													"annualPricingText": null,
+													"billingCycle": null,
+													"customPricingCta": null,
+													"monthlyPricingCta": null,
+													"annualPricingCta": null
+												}
+											},
+											{
+												"contentTypeId": "planElementFeatureValueBoolean",
+												"contentfulId": "4CbHGpPsqDh7cUKihNfndg",
+												"value": true,
+												"plan": {
+													"contentfulId": "340voCDNPomfIrJeJLp8MC",
+													"contentTypeId": "planElementPlan",
+													"entryTitle": "Premium Success",
+													"name": "Premium success",
+													"description": "> ",
+													"pricingDescription": "Optional upgrade, tiered by annual contract value",
+													"price": null,
+													"currency": null,
+													"customPricingText": null,
+													"monthlyPricingText": null,
+													"annualPricingText": null,
+													"billingCycle": null,
+													"customPricingCta": null,
+													"monthlyPricingCta": null,
+													"annualPricingCta": null
+												}
+											}
+										]
+									},
+									{
 										"contentfulId": "DseOAIdJMc8AyEcdd4P5D",
 										"contentTypeId": "planElementFeatures",
 										"name": "Early adopter program access",
@@ -945,6 +1205,58 @@
 											{
 												"contentTypeId": "planElementFeatureValueBoolean",
 												"contentfulId": "4PmcUsSBeyligLXywmIFF4",
+												"value": true,
+												"plan": {
+													"contentfulId": "340voCDNPomfIrJeJLp8MC",
+													"contentTypeId": "planElementPlan",
+													"entryTitle": "Premium Success",
+													"name": "Premium success",
+													"description": "> ",
+													"pricingDescription": "Optional upgrade, tiered by annual contract value",
+													"price": null,
+													"currency": null,
+													"customPricingText": null,
+													"monthlyPricingText": null,
+													"annualPricingText": null,
+													"billingCycle": null,
+													"customPricingCta": null,
+													"monthlyPricingCta": null,
+													"annualPricingCta": null
+												}
+											}
+										]
+									},
+									{
+										"contentfulId": "580jeKyVDG7stQnvmlUH8z",
+										"contentTypeId": "planElementFeatures",
+										"name": "Periodic business reviews",
+										"description": "Entitlement frequency and dedication dependent upon Premium tier level, determined by annual contract value per region.",
+										"planValues": [
+											{
+												"contentTypeId": "planElementFeatureValueBoolean",
+												"contentfulId": "2LoPtoMpwlG2cJ3YdqTuq7",
+												"value": false,
+												"plan": {
+													"contentfulId": "5FjS0AD9W1kke1zhsrm16Q",
+													"contentTypeId": "planElementPlan",
+													"entryTitle": "Standard Success",
+													"name": "Standard success",
+													"description": "> ",
+													"pricingDescription": "Included with Enterprise plans",
+													"price": null,
+													"currency": null,
+													"customPricingText": null,
+													"monthlyPricingText": null,
+													"annualPricingText": null,
+													"billingCycle": null,
+													"customPricingCta": null,
+													"monthlyPricingCta": null,
+													"annualPricingCta": null
+												}
+											},
+											{
+												"contentTypeId": "planElementFeatureValueBoolean",
+												"contentfulId": "5BFIMfsoAf76aiqrhcyFHq",
 												"value": true,
 												"plan": {
 													"contentfulId": "340voCDNPomfIrJeJLp8MC",
