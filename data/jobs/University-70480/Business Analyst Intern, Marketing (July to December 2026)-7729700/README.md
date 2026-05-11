@@ -25,7 +25,7 @@
 	<li>Strong analytical and problem-solving skills with an ability to interpret complex datasets.</li>
 	<li>Excellent communication skills, both written and verbal, with the ability to articulate findings to both technical and non-technical audiences.</li>
 	<li>Curiosity and a proactive approach to learning new tools and methodologies.</li>
-	<li>Available for a full-time 20-week internship, working from our Singapore office 3-5 days a week from July - December.</li>
+	<li>Available for a full-time 20-week (minimum 12 week) internship, working from our Singapore office 3-5 days a week from July - December.</li>
 </ul>
 <p><strong>Bonus Points</strong></p>
 <ul>
