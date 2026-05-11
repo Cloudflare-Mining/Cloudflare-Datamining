@@ -691,7 +691,7 @@
 													"description": "Configuration for D1 read replication.",
 													"properties": {
 														"mode": {
-															"description": "The read replication mode for the database. Use 'auto' to create replicas and allow D1 automatically place them around the world, or 'disabled' to not use any database replicas (it can take a few hours for all replicas to be deleted).",
+															"description": "The read replication mode for the database. Mode 'auto' denotes that D1 creates replicas and automatically places them around the world. Mode 'disabled' denotes that no database replicas are used.",
 															"enum": [
 																"auto",
 																"disabled"
@@ -1260,7 +1260,7 @@
 													"description": "Configuration for D1 read replication.",
 													"properties": {
 														"mode": {
-															"description": "The read replication mode for the database. Use 'auto' to create replicas and allow D1 automatically place them around the world, or 'disabled' to not use any database replicas (it can take a few hours for all replicas to be deleted).",
+															"description": "The read replication mode for the database. Mode 'auto' denotes that D1 creates replicas and automatically places them around the world. Mode 'disabled' denotes that no database replicas are used.",
 															"enum": [
 																"auto",
 																"disabled"
@@ -1461,6 +1461,25 @@
 								"example": "wnam",
 								"type": "string",
 								"x-auditable": true
+							},
+							"read_replication": {
+								"description": "Configuration for D1 read replication.",
+								"properties": {
+									"mode": {
+										"description": "The read replication mode for the database. Use 'auto' to create replicas and allow D1 automatically place them around the world, or 'disabled' to not use any database replicas (it can take a few hours for all replicas to be deleted).",
+										"enum": [
+											"auto",
+											"disabled"
+										],
+										"example": "auto",
+										"type": "string",
+										"x-auditable": true
+									}
+								},
+								"required": [
+									"mode"
+								],
+								"type": "object"
 							}
 						},
 						"required": [
@@ -1588,7 +1607,7 @@
 													"description": "Configuration for D1 read replication.",
 													"properties": {
 														"mode": {
-															"description": "The read replication mode for the database. Use 'auto' to create replicas and allow D1 automatically place them around the world, or 'disabled' to not use any database replicas (it can take a few hours for all replicas to be deleted).",
+															"description": "The read replication mode for the database. Mode 'auto' denotes that D1 creates replicas and automatically places them around the world. Mode 'disabled' denotes that no database replicas are used.",
 															"enum": [
 																"auto",
 																"disabled"
@@ -3990,7 +4009,7 @@
 													"description": "Configuration for D1 read replication.",
 													"properties": {
 														"mode": {
-															"description": "The read replication mode for the database. Use 'auto' to create replicas and allow D1 automatically place them around the world, or 'disabled' to not use any database replicas (it can take a few hours for all replicas to be deleted).",
+															"description": "The read replication mode for the database. Mode 'auto' denotes that D1 creates replicas and automatically places them around the world. Mode 'disabled' denotes that no database replicas are used.",
 															"enum": [
 																"auto",
 																"disabled"

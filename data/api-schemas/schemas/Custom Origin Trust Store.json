@@ -1,6 +1,6 @@
 {
 	"DELETE /zones/{zone_id}/acm/custom_trust_store/{custom_origin_trust_store_id}": {
-		"description": "Removes a CA certificate from the custom origin trust store. Origins using certificates signed by this CA will no longer be trusted.",
+		"description": "Removes a root CA certificate from the custom origin trust store. Origins using certificates signed by this CA will no longer be trusted.",
 		"operationId": "custom-origin-trust-store-delete",
 		"parameters": [
 			{
@@ -487,7 +487,7 @@
 											"items": {
 												"properties": {
 													"certificate": {
-														"description": "The zone's SSL certificate or certificate and the intermediate(s).",
+														"description": "The root CA certificate in PEM format. Only root CA certificates are accepted; intermediate and leaf certificates are not supported.",
 														"example": "-----BEGIN CERTIFICATE-----\nMIIDdjCCAl6gAwIBAgIJAPnMg0Fs+/B0MA0GCSqGSIb3DQEBCwUAMFsx...\n-----END CERTIFICATE-----\n",
 														"type": "string"
 													},
@@ -709,7 +709,7 @@
 													"items": {
 														"properties": {
 															"certificate": {
-																"description": "The zone's SSL certificate or certificate and the intermediate(s).",
+																"description": "The root CA certificate in PEM format. Only root CA certificates are accepted; intermediate and leaf certificates are not supported.",
 																"example": "-----BEGIN CERTIFICATE-----\nMIIDdjCCAl6gAwIBAgIJAPnMg0Fs+/B0MA0GCSqGSIb3DQEBCwUAMFsx...\n-----END CERTIFICATE-----\n",
 																"type": "string"
 															},
@@ -935,7 +935,7 @@
 		}
 	},
 	"GET /zones/{zone_id}/acm/custom_trust_store/{custom_origin_trust_store_id}": {
-		"description": "Retrieves details about a specific certificate in the custom origin trust store, including expiration and subject information.",
+		"description": "Retrieves details about a specific root CA certificate in the custom origin trust store, including expiration and subject information.",
 		"operationId": "custom-origin-trust-store-details",
 		"parameters": [
 			{
@@ -1061,7 +1061,7 @@
 										"result": {
 											"properties": {
 												"certificate": {
-													"description": "The zone's SSL certificate or certificate and the intermediate(s).",
+													"description": "The root CA certificate in PEM format. Only root CA certificates are accepted; intermediate and leaf certificates are not supported.",
 													"example": "-----BEGIN CERTIFICATE-----\nMIIDdjCCAl6gAwIBAgIJAPnMg0Fs+/B0MA0GCSqGSIb3DQEBCwUAMFsx...\n-----END CERTIFICATE-----\n",
 													"type": "string"
 												},
@@ -1245,7 +1245,7 @@
 												"result": {
 													"properties": {
 														"certificate": {
-															"description": "The zone's SSL certificate or certificate and the intermediate(s).",
+															"description": "The root CA certificate in PEM format. Only root CA certificates are accepted; intermediate and leaf certificates are not supported.",
 															"example": "-----BEGIN CERTIFICATE-----\nMIIDdjCCAl6gAwIBAgIJAPnMg0Fs+/B0MA0GCSqGSIb3DQEBCwUAMFsx...\n-----END CERTIFICATE-----\n",
 															"type": "string"
 														},
@@ -1469,7 +1469,7 @@
 		}
 	},
 	"POST /zones/{zone_id}/acm/custom_trust_store": {
-		"description": "Add Custom Origin Trust Store for a Zone.",
+		"description": "Upload a root CA certificate to the Custom Origin Trust Store for a Zone. Only root CA certificates are accepted.",
 		"operationId": "custom-origin-trust-store-create",
 		"parameters": [
 			{
@@ -1491,7 +1491,7 @@
 					"schema": {
 						"properties": {
 							"certificate": {
-								"description": "The zone's SSL certificate or certificate and the intermediate(s).",
+								"description": "The root CA certificate in PEM format. Only root CA certificates are accepted; intermediate and leaf certificates are not supported.",
 								"example": "-----BEGIN CERTIFICATE-----\nMIIDdjCCAl6gAwIBAgIJAPnMg0Fs+/B0MA0GCSqGSIb3DQEBCwUAMFsx...\n-----END CERTIFICATE-----\n",
 								"type": "string"
 							}
@@ -1602,7 +1602,7 @@
 										"result": {
 											"properties": {
 												"certificate": {
-													"description": "The zone's SSL certificate or certificate and the intermediate(s).",
+													"description": "The root CA certificate in PEM format. Only root CA certificates are accepted; intermediate and leaf certificates are not supported.",
 													"example": "-----BEGIN CERTIFICATE-----\nMIIDdjCCAl6gAwIBAgIJAPnMg0Fs+/B0MA0GCSqGSIb3DQEBCwUAMFsx...\n-----END CERTIFICATE-----\n",
 													"type": "string"
 												},
@@ -1786,7 +1786,7 @@
 												"result": {
 													"properties": {
 														"certificate": {
-															"description": "The zone's SSL certificate or certificate and the intermediate(s).",
+															"description": "The root CA certificate in PEM format. Only root CA certificates are accepted; intermediate and leaf certificates are not supported.",
 															"example": "-----BEGIN CERTIFICATE-----\nMIIDdjCCAl6gAwIBAgIJAPnMg0Fs+/B0MA0GCSqGSIb3DQEBCwUAMFsx...\n-----END CERTIFICATE-----\n",
 															"type": "string"
 														},
