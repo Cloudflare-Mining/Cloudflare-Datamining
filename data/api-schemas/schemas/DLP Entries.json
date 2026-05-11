@@ -458,6 +458,56 @@
 																"allOf": [
 																	{
 																		"properties": {
+																			"created_at": {
+																				"format": "date-time",
+																				"type": "string"
+																			},
+																			"enabled": {
+																				"deprecated": true,
+																				"type": "boolean"
+																			},
+																			"id": {
+																				"format": "uuid",
+																				"type": "string"
+																			},
+																			"name": {
+																				"type": "string"
+																			},
+																			"updated_at": {
+																				"format": "date-time",
+																				"type": "string"
+																			}
+																		},
+																		"required": [
+																			"id",
+																			"name",
+																			"created_at",
+																			"updated_at",
+																			"enabled"
+																		],
+																		"type": "object"
+																	},
+																	{
+																		"properties": {
+																			"type": {
+																				"enum": [
+																					"custom_prompt_topic"
+																				],
+																				"type": "string"
+																			}
+																		},
+																		"required": [
+																			"type"
+																		],
+																		"type": "object"
+																	}
+																],
+																"title": "Custom Prompt Topic Entry"
+															},
+															{
+																"allOf": [
+																	{
+																		"properties": {
 																			"confidence": {
 																				"properties": {
 																					"ai_context_available": {
@@ -1162,6 +1212,56 @@
 																		}
 																	],
 																	"title": "Custom Entry"
+																},
+																{
+																	"allOf": [
+																		{
+																			"properties": {
+																				"created_at": {
+																					"format": "date-time",
+																					"type": "string"
+																				},
+																				"enabled": {
+																					"deprecated": true,
+																					"type": "boolean"
+																				},
+																				"id": {
+																					"format": "uuid",
+																					"type": "string"
+																				},
+																				"name": {
+																					"type": "string"
+																				},
+																				"updated_at": {
+																					"format": "date-time",
+																					"type": "string"
+																				}
+																			},
+																			"required": [
+																				"id",
+																				"name",
+																				"created_at",
+																				"updated_at",
+																				"enabled"
+																			],
+																			"type": "object"
+																		},
+																		{
+																			"properties": {
+																				"type": {
+																					"enum": [
+																						"custom_prompt_topic"
+																					],
+																					"type": "string"
+																				}
+																			},
+																			"required": [
+																				"type"
+																			],
+																			"type": "object"
+																		}
+																	],
+																	"title": "Custom Prompt Topic Entry"
 																},
 																{
 																	"allOf": [
@@ -2371,6 +2471,56 @@
 														}
 													],
 													"title": "Custom Entry"
+												},
+												{
+													"allOf": [
+														{
+															"properties": {
+																"created_at": {
+																	"format": "date-time",
+																	"type": "string"
+																},
+																"enabled": {
+																	"deprecated": true,
+																	"type": "boolean"
+																},
+																"id": {
+																	"format": "uuid",
+																	"type": "string"
+																},
+																"name": {
+																	"type": "string"
+																},
+																"updated_at": {
+																	"format": "date-time",
+																	"type": "string"
+																}
+															},
+															"required": [
+																"id",
+																"name",
+																"created_at",
+																"updated_at",
+																"enabled"
+															],
+															"type": "object"
+														},
+														{
+															"properties": {
+																"type": {
+																	"enum": [
+																		"custom_prompt_topic"
+																	],
+																	"type": "string"
+																}
+															},
+															"required": [
+																"type"
+															],
+															"type": "object"
+														}
+													],
+													"title": "Custom Prompt Topic Entry"
 												},
 												{
 													"allOf": [

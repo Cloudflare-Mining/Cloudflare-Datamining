@@ -531,6 +531,13 @@
 									"description": "Device identifier (human readable)",
 									"type": "string"
 								},
+								"deviceRegistration": {
+									"deprecated": true,
+									"description": "Deprecated: use registrationId. Device registration identifier (UUID v4).",
+									"nullable": true,
+									"type": "string",
+									"x-stainless-deprecation-message": "Use `registrationId` instead."
+								},
 								"diskReadBps": {
 									"format": "int64",
 									"nullable": true,
@@ -1525,6 +1532,13 @@
 													"deviceName": {
 														"description": "Device identifier (human readable)",
 														"type": "string"
+													},
+													"deviceRegistration": {
+														"deprecated": true,
+														"description": "Deprecated: use registrationId. Device registration identifier (UUID v4).",
+														"nullable": true,
+														"type": "string",
+														"x-stainless-deprecation-message": "Use `registrationId` instead."
 													},
 													"diskReadBps": {
 														"format": "int64",
