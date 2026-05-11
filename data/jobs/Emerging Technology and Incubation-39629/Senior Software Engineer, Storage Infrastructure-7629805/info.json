@@ -10,6 +10,7 @@
 			"demographic_data_consent_applies": false
 		}
 	],
+	"education": "education_optional",
 	"internal_job_id": 3365554,
 	"location": {
 		"name": "Hybrid"
@@ -26,10 +27,9 @@
 			"name": "Job Posting Location",
 			"value": [
 				"Austin, US",
+				"Lisbon, Portugal",
 				"London, UK",
-				"Seattle, US",
-				"Toronto, Canada",
-				"Washington DC, US"
+				"Seattle, US"
 			],
 			"value_type": "multi_select"
 		},
@@ -44,7 +44,7 @@
 		}
 	],
 	"id": 7629805,
-	"updated_at": "2026-05-10T11:37:38-04:00",
+	"updated_at": "2026-05-11T07:58:43-04:00",
 	"requisition_id": "804",
 	"title": "Senior Software Engineer, Storage Infrastructure",
 	"company_name": "Cloudflare",
@@ -75,11 +75,11 @@
 			"parent_id": 74843
 		},
 		{
-			"id": 19994,
-			"name": "Washington, DC",
-			"location": "Washington, DC, United States",
+			"id": 63782,
+			"name": "Lisbon, Portugal",
+			"location": "Lisboa, Lisboa, Portugal",
 			"child_ids": [],
-			"parent_id": 48752
+			"parent_id": 74843
 		},
 		{
 			"id": 72960,
@@ -87,13 +87,6 @@
 			"location": null,
 			"child_ids": [],
 			"parent_id": 48752
-		},
-		{
-			"id": 73335,
-			"name": "Toronto, ON",
-			"location": "Toronto, Ontario, Canada",
-			"child_ids": [],
-			"parent_id": 75883
 		}
 	]
 }

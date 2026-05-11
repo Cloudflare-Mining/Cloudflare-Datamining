@@ -5,58 +5,25 @@
 		<p>At Cloudflare, we’re not looking for people who wait for a polished roadmap; we’re looking for the builders who see the cracks in the Internet that everyone else has simply learned to live with. We value candidates who have the instinct to spot a "normalized" problem and the AI-native curiosity to create a solution using the latest tools. Our culture is built on iteration, leveraging AI to ship faster today to make it better tomorrow, while ensuring that every improvement, no matter how small, is shared across the team to lift everyone up. If you’re the type of person who values curiosity over bureaucracy, and that AI is a partner in solving tough problems to keep the Internet moving forward, you’ll fit right in.</p>
 	</div>
 </div>
-<h3><strong>Available Locations: Austin, TX | Seattle,WA |&nbsp; London, UK | Lisbon, PT</strong></h3>
-<h3><strong>About the Department</strong></h3>
-<p>Emerging Technologies &amp; Incubation (ETI) is where new and bold products are built and released within Cloudflare. Rather than being constrained by the structures which make Cloudflare a massively successful business, we are able to leverage them to deliver entirely new tools and products to our customers. Cloudflare’s edge and network make it possible to solve problems at massive scale and efficiency which would be impossible for almost any other organization.</p>
-<h3><strong>About the Team</strong></h3>
-<p>ETI’s Storage Infrastructure team is responsible for the core storage layer that underpins many of ETI's stateful services. Our scope ranges from managing the physical hardware to operating the distributed databases and storage systems built upon it. We run this infrastructure globally across Cloudflare's network, which presents unique and complex engineering puzzles. We navigate efficiently expanding storage capacity, optimizing rebuild operations, and coordinating operations across failure domains to uphold durability. While other service teams focus on product development, our mission is to ensure the underlying storage is reliable, performant, and scalable.</p>
-<p>You’ll be joining a highly motivated team that is building the next generation of distributed storage services.</p>
-<h3><strong>What You’ll Do</strong></h3>
-<p>In this role, you will help build and operate the next generation of globally distributed storage systems. You will own your code from inception to release, delivering solutions at all layers of the stack. On any given day, you might write a design document for a new provisioning system, model failure domain dependencies across edge locations, benchmark new storage hardware, build standardized observability and runbooks for distributed database clusters, or automate operational toil through purpose-built tooling and intelligent automation. You can expect to interact with a variety of languages and technologies including Rust, Go, Saltstack, and Terraform.</p>
-<h3><strong>Examples of desirable skills, knowledge, and experience</strong></h3>
-<ul>
-	<li>Strong programming skills with languages like Rust, Go, or Python</li>
-	<li>A solid understanding of distributed systems concepts such as consistency, consensus, data replication, fault tolerance, and partition tolerance</li>
-	<li>Experience with distributed databases and storage systems</li>
-	<li>Experience with infrastructure configuration tooling and infrastructure as code</li>
-	<li>Familiarity with storage fundamentals: block devices, filesystems, SSD characteristics</li>
-	<li>Experience building and maintaining high-throughput, low-latency systems</li>
-	<li>Understanding of network fundamentals as they relate to distributed storage -- bandwidth constraints, latency tradeoffs, cross-datacenter replication</li>
-	<li>Strong written and verbal communication skills and ability to explain technical decisions clearly</li>
-	<li>Comfortable operating in fast-paced environments with tight deadlines and evolving priorities</li>
-</ul>
-<h3><strong>Compensation</strong></h3>
-<p>Compensation may be adjusted depending on work location.</p>
-<ul>
-	<li>For New York City, New Jersey, Washington, Washington DC, and California (excluding Bay Area) based hires: Estimated annual salary of $185,000 - $254,000</li>
-</ul>
-<h3><strong>Equity</strong></h3>
-<p>This role is eligible to participate in Cloudflare’s equity plan.</p>
-<h3><strong>Benefits</strong></h3>
-<p>Cloudflare offers a complete package of benefits and programs to support you and your family.&nbsp; Our benefits programs can help you pay health care expenses, support caregiving, build capital for the future and make life a little easier and fun!&nbsp; The below is a description of our benefits for employees in the United States, and benefits may vary for employees based outside the U.S.</p>
-<h3><strong>Health &amp; Welfare Benefits</strong></h3>
-<ul>
-	<li>Medical/Rx Insurance</li>
-	<li>Dental Insurance</li>
-	<li>Vision Insurance</li>
-	<li>Flexible Spending Accounts</li>
-	<li>Commuter Spending Accounts</li>
-	<li>Fertility &amp; Family Forming Benefits</li>
-	<li>On-demand mental health support and Employee Assistance Program</li>
-	<li>Global Travel Medical Insurance</li>
-</ul>
-<h3><strong>Financial Benefits</strong></h3>
-<ul>
-	<li>Short and Long Term Disability Insurance</li>
-	<li>Life &amp; Accident Insurance</li>
-	<li>401(k) Retirement Savings Plan</li>
-	<li>Employee Stock Participation Plan</li>
-</ul>
-<h3><strong>Time Off</strong></h3>
-<ul>
-	<li>Flexible paid time off covering vacation and sick leave</li>
-	<li>Leave programs, including parental, pregnancy health, medical, and bereavement leave</li>
-</ul>
+<p><strong>Available Location: </strong>London, UK</p>
+<div><br><strong>About the Role</strong><br>As a Project Manager Intern specializing in Process &amp; AI Innovation within the Revenue Operations (Sales) teams, you will be pivotal in boosting our operational efficiency. This is a dynamic opportunity to apply project management principles and emerging AI technologies to streamline internal processes across the Go-To-Market organization. You will gain practical experience supporting key initiatives and enhancing team operations through process optimization. A major goal will be leveraging AI tools and 'No-Code' platforms to identify, automate, and accelerate manual, repetitive tasks, enabling teams to discover and implement more efficient ways of working.</div>
+<div><br><strong>What You’ll Do<br></strong>
+	<ul>
+		<li><strong>Build &amp; Architect:</strong> Design and deploy AI-powered solutions that automate complex workflows and solve real-world business bottlenecks.</li>
+		<li><strong>Be the Subject Matter Expert:</strong> Act as a consultant for the team on the latest AI tools and LLM capabilities.</li>
+		<li><strong>Listen &amp; Empathize:</strong> Deep-dive into the daily challenges of our Sales and Partner teams to understand where AI can have the highest impact.</li>
+		<li><strong>Global Liaison:</strong> Engage with Cloudflare’s Global AI Organization to position our team’s needs and ensure our infrastructure aligns with company-wide standards.</li>
+		<li><strong>Iterate &amp; Improve:</strong> Collect feedback from team members, troubleshoot technical hurdles, and constantly refine the tools you build.</li>
+	</ul>
+	<br><strong>Skills &amp; Qualifications</strong><br>
+	<ul>
+		<li>Currently pursuing a degree in Business, Project Management, Operations, Data Science, or a related field.</li>
+		<li>Available for a full-time 12-week internship, working from our Austin office 3-5 days a week during the summer (May-Aug).</li>
+		<li>Business Strategy or Tech-focused student with a strong interest in AI/Automation, process improvement, program management, and technology exploration.</li>
+		<li>Strong organizational, communication, and analytical skills with the ability to manage multiple tasks and translate ideas into structured documentation.</li>
+		<li>A natural problem-solver who enjoys mapping out a process (using tools like Lucidchart or Miro) and thinking about how to make it simpler and faster.</li>
+	</ul>
+</div>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
 	<p><span style="font-weight: 400;">We’re not just a highly ambitious, large-scale technology company. We’re a highly ambitious, large-scale technology company with a soul. Fundamental to our mission to help build a better Internet is protecting the free and open Internet.</span></p>
