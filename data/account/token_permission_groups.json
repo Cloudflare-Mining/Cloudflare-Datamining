@@ -1782,6 +1782,15 @@
 		"category": "app_security"
 	},
 	{
+		"id": "76ade66d66184468b2ae2c037e995ac4",
+		"name": "Fraud Events Write",
+		"description": "Grants write access to submit fraud detection events via the API",
+		"scopes": [
+			"com.cloudflare.api.account"
+		],
+		"category": "app_security"
+	},
+	{
 		"id": "fac65912d42144aa86b7dd33281bf79e",
 		"name": "Health Checks Read",
 		"description": "Grants read access to Health Checks",
