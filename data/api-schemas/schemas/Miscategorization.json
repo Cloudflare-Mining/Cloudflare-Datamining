@@ -1,6 +1,6 @@
 {
 	"POST /accounts/{account_id}/intel/miscategorization": {
-		"description": "Allows you to submit requests to change a domain’s category.",
+		"description": "Allows you to submit requests to change a domain’s category.\n\nRequests that include category `169` (New Domains) or category `177` (Newly Seen)\nin any of `content_adds`, `content_removes`, `security_adds`, or `security_removes`\nwill be rejected with a `400 Bad Request`. These categories are automatically\nmanaged and fall off 30 days after they are applied.\n",
 		"operationId": "miscategorization-create-miscategorization",
 		"parameters": [
 			{

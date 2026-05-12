@@ -1,0 +1,2355 @@
+{
+	"DELETE /accounts/{account_id}/magic/redundancy_groups/{redundancy_group_id}": {
+		"description": "Deletes a redundancy group. Member tunnels are not deleted — their redundancy_group_id is cleared.",
+		"operationId": "magic-redundancy-groups-delete-redundancy-group",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"description": "Identifier",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"readOnly": true,
+					"type": "string"
+				}
+			},
+			{
+				"in": "path",
+				"name": "redundancy_group_id",
+				"required": true,
+				"schema": {
+					"description": "Identifier",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"readOnly": true,
+					"type": "string"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"properties": {
+												"errors": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"messages": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"result": {
+													"anyOf": [
+														{
+															"type": "object"
+														},
+														{
+															"items": {},
+															"type": "array"
+														},
+														{
+															"type": "string"
+														}
+													]
+												},
+												"success": {
+													"description": "Whether the API call was successful",
+													"enum": [
+														true
+													],
+													"example": true,
+													"type": "boolean"
+												}
+											},
+											"required": [
+												"success",
+												"errors",
+												"messages",
+												"result"
+											],
+											"type": "object"
+										},
+										{
+											"properties": {
+												"result": {
+													"anyOf": [
+														{
+															"nullable": true,
+															"type": "object"
+														},
+														{
+															"nullable": true,
+															"type": "string"
+														}
+													]
+												}
+											}
+										}
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"result": {
+											"properties": {
+												"deleted": {
+													"type": "boolean"
+												},
+												"deleted_redundancy_group": {
+													"properties": {
+														"created_on": {
+															"format": "date-time",
+															"type": "string"
+														},
+														"description": {
+															"description": "Optional description",
+															"example": "Primary tunnel redundancy group",
+															"type": "string"
+														},
+														"id": {
+															"description": "Redundancy group identifier",
+															"example": "a1b2c3d4e5f647890a1b2c3d4e5f6789",
+															"type": "string"
+														},
+														"modified_on": {
+															"format": "date-time",
+															"type": "string"
+														},
+														"name": {
+															"description": "Human-readable name",
+															"example": "primary-group",
+															"type": "string"
+														}
+													},
+													"type": "object"
+												}
+											},
+											"required": [
+												"deleted",
+												"deleted_redundancy_group"
+											],
+											"type": "object"
+										}
+									}
+								}
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Delete Redundancy Group response"
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"allOf": [
+												{
+													"properties": {
+														"errors": {
+															"example": [],
+															"items": {
+																"properties": {
+																	"code": {
+																		"minimum": 1000,
+																		"type": "integer"
+																	},
+																	"message": {
+																		"type": "string"
+																	}
+																},
+																"required": [
+																	"code",
+																	"message"
+																],
+																"type": "object",
+																"uniqueItems": true
+															},
+															"type": "array"
+														},
+														"messages": {
+															"example": [],
+															"items": {
+																"properties": {
+																	"code": {
+																		"minimum": 1000,
+																		"type": "integer"
+																	},
+																	"message": {
+																		"type": "string"
+																	}
+																},
+																"required": [
+																	"code",
+																	"message"
+																],
+																"type": "object",
+																"uniqueItems": true
+															},
+															"type": "array"
+														},
+														"result": {
+															"anyOf": [
+																{
+																	"type": "object"
+																},
+																{
+																	"items": {},
+																	"type": "array"
+																},
+																{
+																	"type": "string"
+																}
+															]
+														},
+														"success": {
+															"description": "Whether the API call was successful",
+															"enum": [
+																true
+															],
+															"example": true,
+															"type": "boolean"
+														}
+													},
+													"required": [
+														"success",
+														"errors",
+														"messages",
+														"result"
+													],
+													"type": "object"
+												},
+												{
+													"properties": {
+														"result": {
+															"anyOf": [
+																{
+																	"nullable": true,
+																	"type": "object"
+																},
+																{
+																	"nullable": true,
+																	"type": "string"
+																}
+															]
+														}
+													}
+												}
+											],
+											"type": "object"
+										},
+										{
+											"properties": {
+												"result": {
+													"properties": {
+														"deleted": {
+															"type": "boolean"
+														},
+														"deleted_redundancy_group": {
+															"properties": {
+																"created_on": {
+																	"format": "date-time",
+																	"type": "string"
+																},
+																"description": {
+																	"description": "Optional description",
+																	"example": "Primary tunnel redundancy group",
+																	"type": "string"
+																},
+																"id": {
+																	"description": "Redundancy group identifier",
+																	"example": "a1b2c3d4e5f647890a1b2c3d4e5f6789",
+																	"type": "string"
+																},
+																"modified_on": {
+																	"format": "date-time",
+																	"type": "string"
+																},
+																"name": {
+																	"description": "Human-readable name",
+																	"example": "primary-group",
+																	"type": "string"
+																}
+															},
+															"type": "object"
+														}
+													},
+													"required": [
+														"deleted",
+														"deleted_redundancy_group"
+													],
+													"type": "object"
+												}
+											}
+										}
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"errors": {
+											"allOf": [
+												{
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												}
+											],
+											"example": [
+												{
+													"code": 7003,
+													"message": "No route for the URI"
+												}
+											],
+											"minLength": 1
+										},
+										"messages": {
+											"allOf": [
+												{
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												}
+											],
+											"example": []
+										},
+										"result": {
+											"enum": [
+												null
+											],
+											"nullable": true,
+											"type": "object"
+										},
+										"success": {
+											"description": "Whether the API call was successful",
+											"enum": [
+												false
+											],
+											"example": false,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
+									],
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "Delete Redundancy Group response failure"
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": [],
+				"api_token": []
+			}
+		],
+		"summary": "Delete a Redundancy Group",
+		"tags": [
+			"Magic Redundancy Groups"
+		],
+		"x-cfPlanAvailability": {
+			"business": false,
+			"enterprise": true,
+			"free": false,
+			"pro": false
+		}
+	},
+	"GET /accounts/{account_id}/magic/redundancy_groups": {
+		"description": "Lists redundancy groups associated with an account, including full member tunnel data.",
+		"operationId": "magic-redundancy-groups-list-redundancy-groups",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"description": "Identifier",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"readOnly": true,
+					"type": "string"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"properties": {
+												"errors": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"messages": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"result": {
+													"anyOf": [
+														{
+															"type": "object"
+														},
+														{
+															"items": {},
+															"type": "array"
+														},
+														{
+															"type": "string"
+														}
+													]
+												},
+												"success": {
+													"description": "Whether the API call was successful",
+													"enum": [
+														true
+													],
+													"example": true,
+													"type": "boolean"
+												}
+											},
+											"required": [
+												"success",
+												"errors",
+												"messages",
+												"result"
+											],
+											"type": "object"
+										},
+										{
+											"properties": {
+												"result": {
+													"anyOf": [
+														{
+															"nullable": true,
+															"type": "object"
+														},
+														{
+															"nullable": true,
+															"type": "string"
+														}
+													]
+												}
+											}
+										}
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"result": {
+											"properties": {
+												"redundancy_groups": {
+													"items": {
+														"allOf": [
+															{
+																"properties": {
+																	"created_on": {
+																		"format": "date-time",
+																		"type": "string"
+																	},
+																	"description": {
+																		"description": "Optional description",
+																		"example": "Primary tunnel redundancy group",
+																		"type": "string"
+																	},
+																	"id": {
+																		"description": "Redundancy group identifier",
+																		"example": "a1b2c3d4e5f647890a1b2c3d4e5f6789",
+																		"type": "string"
+																	},
+																	"modified_on": {
+																		"format": "date-time",
+																		"type": "string"
+																	},
+																	"name": {
+																		"description": "Human-readable name",
+																		"example": "primary-group",
+																		"type": "string"
+																	}
+																},
+																"type": "object"
+															},
+															{
+																"properties": {
+																	"member_data": {
+																		"items": {
+																			"properties": {
+																				"data": {
+																					"description": "Full tunnel object as returned by the corresponding endpoint",
+																					"type": "object"
+																				},
+																				"type": {
+																					"description": "Tunnel type",
+																					"enum": [
+																						"gre",
+																						"ipsec",
+																						"cni"
+																					],
+																					"type": "string"
+																				}
+																			},
+																			"required": [
+																				"type",
+																				"data"
+																			],
+																			"type": "object"
+																		},
+																		"type": "array"
+																	}
+																}
+															}
+														],
+														"type": "object"
+													},
+													"type": "array"
+												}
+											},
+											"type": "object"
+										}
+									}
+								}
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "List Redundancy Groups response"
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"allOf": [
+												{
+													"properties": {
+														"errors": {
+															"example": [],
+															"items": {
+																"properties": {
+																	"code": {
+																		"minimum": 1000,
+																		"type": "integer"
+																	},
+																	"message": {
+																		"type": "string"
+																	}
+																},
+																"required": [
+																	"code",
+																	"message"
+																],
+																"type": "object",
+																"uniqueItems": true
+															},
+															"type": "array"
+														},
+														"messages": {
+															"example": [],
+															"items": {
+																"properties": {
+																	"code": {
+																		"minimum": 1000,
+																		"type": "integer"
+																	},
+																	"message": {
+																		"type": "string"
+																	}
+																},
+																"required": [
+																	"code",
+																	"message"
+																],
+																"type": "object",
+																"uniqueItems": true
+															},
+															"type": "array"
+														},
+														"result": {
+															"anyOf": [
+																{
+																	"type": "object"
+																},
+																{
+																	"items": {},
+																	"type": "array"
+																},
+																{
+																	"type": "string"
+																}
+															]
+														},
+														"success": {
+															"description": "Whether the API call was successful",
+															"enum": [
+																true
+															],
+															"example": true,
+															"type": "boolean"
+														}
+													},
+													"required": [
+														"success",
+														"errors",
+														"messages",
+														"result"
+													],
+													"type": "object"
+												},
+												{
+													"properties": {
+														"result": {
+															"anyOf": [
+																{
+																	"nullable": true,
+																	"type": "object"
+																},
+																{
+																	"nullable": true,
+																	"type": "string"
+																}
+															]
+														}
+													}
+												}
+											],
+											"type": "object"
+										},
+										{
+											"properties": {
+												"result": {
+													"properties": {
+														"redundancy_groups": {
+															"items": {
+																"allOf": [
+																	{
+																		"properties": {
+																			"created_on": {
+																				"format": "date-time",
+																				"type": "string"
+																			},
+																			"description": {
+																				"description": "Optional description",
+																				"example": "Primary tunnel redundancy group",
+																				"type": "string"
+																			},
+																			"id": {
+																				"description": "Redundancy group identifier",
+																				"example": "a1b2c3d4e5f647890a1b2c3d4e5f6789",
+																				"type": "string"
+																			},
+																			"modified_on": {
+																				"format": "date-time",
+																				"type": "string"
+																			},
+																			"name": {
+																				"description": "Human-readable name",
+																				"example": "primary-group",
+																				"type": "string"
+																			}
+																		},
+																		"type": "object"
+																	},
+																	{
+																		"properties": {
+																			"member_data": {
+																				"items": {
+																					"properties": {
+																						"data": {
+																							"description": "Full tunnel object as returned by the corresponding endpoint",
+																							"type": "object"
+																						},
+																						"type": {
+																							"description": "Tunnel type",
+																							"enum": [
+																								"gre",
+																								"ipsec",
+																								"cni"
+																							],
+																							"type": "string"
+																						}
+																					},
+																					"required": [
+																						"type",
+																						"data"
+																					],
+																					"type": "object"
+																				},
+																				"type": "array"
+																			}
+																		}
+																	}
+																],
+																"type": "object"
+															},
+															"type": "array"
+														}
+													},
+													"type": "object"
+												}
+											}
+										}
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"errors": {
+											"allOf": [
+												{
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												}
+											],
+											"example": [
+												{
+													"code": 7003,
+													"message": "No route for the URI"
+												}
+											],
+											"minLength": 1
+										},
+										"messages": {
+											"allOf": [
+												{
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												}
+											],
+											"example": []
+										},
+										"result": {
+											"enum": [
+												null
+											],
+											"nullable": true,
+											"type": "object"
+										},
+										"success": {
+											"description": "Whether the API call was successful",
+											"enum": [
+												false
+											],
+											"example": false,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
+									],
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "List Redundancy Groups response failure"
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": [],
+				"api_token": []
+			}
+		],
+		"summary": "List Redundancy Groups",
+		"tags": [
+			"Magic Redundancy Groups"
+		],
+		"x-cfPlanAvailability": {
+			"business": false,
+			"enterprise": true,
+			"free": false,
+			"pro": false
+		}
+	},
+	"GET /accounts/{account_id}/magic/redundancy_groups/{redundancy_group_id}": {
+		"description": "Gets details for a specific redundancy group, including full member tunnel data.",
+		"operationId": "magic-redundancy-groups-get-redundancy-group",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"description": "Identifier",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"readOnly": true,
+					"type": "string"
+				}
+			},
+			{
+				"in": "path",
+				"name": "redundancy_group_id",
+				"required": true,
+				"schema": {
+					"description": "Identifier",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"readOnly": true,
+					"type": "string"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"properties": {
+												"errors": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"messages": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"result": {
+													"anyOf": [
+														{
+															"type": "object"
+														},
+														{
+															"items": {},
+															"type": "array"
+														},
+														{
+															"type": "string"
+														}
+													]
+												},
+												"success": {
+													"description": "Whether the API call was successful",
+													"enum": [
+														true
+													],
+													"example": true,
+													"type": "boolean"
+												}
+											},
+											"required": [
+												"success",
+												"errors",
+												"messages",
+												"result"
+											],
+											"type": "object"
+										},
+										{
+											"properties": {
+												"result": {
+													"anyOf": [
+														{
+															"nullable": true,
+															"type": "object"
+														},
+														{
+															"nullable": true,
+															"type": "string"
+														}
+													]
+												}
+											}
+										}
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"result": {
+											"allOf": [
+												{
+													"properties": {
+														"created_on": {
+															"format": "date-time",
+															"type": "string"
+														},
+														"description": {
+															"description": "Optional description",
+															"example": "Primary tunnel redundancy group",
+															"type": "string"
+														},
+														"id": {
+															"description": "Redundancy group identifier",
+															"example": "a1b2c3d4e5f647890a1b2c3d4e5f6789",
+															"type": "string"
+														},
+														"modified_on": {
+															"format": "date-time",
+															"type": "string"
+														},
+														"name": {
+															"description": "Human-readable name",
+															"example": "primary-group",
+															"type": "string"
+														}
+													},
+													"type": "object"
+												},
+												{
+													"properties": {
+														"member_data": {
+															"items": {
+																"properties": {
+																	"data": {
+																		"description": "Full tunnel object as returned by the corresponding endpoint",
+																		"type": "object"
+																	},
+																	"type": {
+																		"description": "Tunnel type",
+																		"enum": [
+																			"gre",
+																			"ipsec",
+																			"cni"
+																		],
+																		"type": "string"
+																	}
+																},
+																"required": [
+																	"type",
+																	"data"
+																],
+																"type": "object"
+															},
+															"type": "array"
+														}
+													}
+												}
+											],
+											"type": "object"
+										}
+									}
+								}
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Get Redundancy Group response"
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"allOf": [
+												{
+													"properties": {
+														"errors": {
+															"example": [],
+															"items": {
+																"properties": {
+																	"code": {
+																		"minimum": 1000,
+																		"type": "integer"
+																	},
+																	"message": {
+																		"type": "string"
+																	}
+																},
+																"required": [
+																	"code",
+																	"message"
+																],
+																"type": "object",
+																"uniqueItems": true
+															},
+															"type": "array"
+														},
+														"messages": {
+															"example": [],
+															"items": {
+																"properties": {
+																	"code": {
+																		"minimum": 1000,
+																		"type": "integer"
+																	},
+																	"message": {
+																		"type": "string"
+																	}
+																},
+																"required": [
+																	"code",
+																	"message"
+																],
+																"type": "object",
+																"uniqueItems": true
+															},
+															"type": "array"
+														},
+														"result": {
+															"anyOf": [
+																{
+																	"type": "object"
+																},
+																{
+																	"items": {},
+																	"type": "array"
+																},
+																{
+																	"type": "string"
+																}
+															]
+														},
+														"success": {
+															"description": "Whether the API call was successful",
+															"enum": [
+																true
+															],
+															"example": true,
+															"type": "boolean"
+														}
+													},
+													"required": [
+														"success",
+														"errors",
+														"messages",
+														"result"
+													],
+													"type": "object"
+												},
+												{
+													"properties": {
+														"result": {
+															"anyOf": [
+																{
+																	"nullable": true,
+																	"type": "object"
+																},
+																{
+																	"nullable": true,
+																	"type": "string"
+																}
+															]
+														}
+													}
+												}
+											],
+											"type": "object"
+										},
+										{
+											"properties": {
+												"result": {
+													"allOf": [
+														{
+															"properties": {
+																"created_on": {
+																	"format": "date-time",
+																	"type": "string"
+																},
+																"description": {
+																	"description": "Optional description",
+																	"example": "Primary tunnel redundancy group",
+																	"type": "string"
+																},
+																"id": {
+																	"description": "Redundancy group identifier",
+																	"example": "a1b2c3d4e5f647890a1b2c3d4e5f6789",
+																	"type": "string"
+																},
+																"modified_on": {
+																	"format": "date-time",
+																	"type": "string"
+																},
+																"name": {
+																	"description": "Human-readable name",
+																	"example": "primary-group",
+																	"type": "string"
+																}
+															},
+															"type": "object"
+														},
+														{
+															"properties": {
+																"member_data": {
+																	"items": {
+																		"properties": {
+																			"data": {
+																				"description": "Full tunnel object as returned by the corresponding endpoint",
+																				"type": "object"
+																			},
+																			"type": {
+																				"description": "Tunnel type",
+																				"enum": [
+																					"gre",
+																					"ipsec",
+																					"cni"
+																				],
+																				"type": "string"
+																			}
+																		},
+																		"required": [
+																			"type",
+																			"data"
+																		],
+																		"type": "object"
+																	},
+																	"type": "array"
+																}
+															}
+														}
+													],
+													"type": "object"
+												}
+											}
+										}
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"errors": {
+											"allOf": [
+												{
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												}
+											],
+											"example": [
+												{
+													"code": 7003,
+													"message": "No route for the URI"
+												}
+											],
+											"minLength": 1
+										},
+										"messages": {
+											"allOf": [
+												{
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												}
+											],
+											"example": []
+										},
+										"result": {
+											"enum": [
+												null
+											],
+											"nullable": true,
+											"type": "object"
+										},
+										"success": {
+											"description": "Whether the API call was successful",
+											"enum": [
+												false
+											],
+											"example": false,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
+									],
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "Get Redundancy Group response failure"
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": [],
+				"api_token": []
+			}
+		],
+		"summary": "Get Redundancy Group Details",
+		"tags": [
+			"Magic Redundancy Groups"
+		],
+		"x-cfPlanAvailability": {
+			"business": false,
+			"enterprise": true,
+			"free": false,
+			"pro": false
+		}
+	},
+	"POST /accounts/{account_id}/magic/redundancy_groups": {
+		"description": "Creates a new redundancy group, optionally with tunnel members.",
+		"operationId": "magic-redundancy-groups-create-redundancy-group",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"description": "Identifier",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"readOnly": true,
+					"type": "string"
+				}
+			}
+		],
+		"requestBody": {
+			"content": {
+				"application/json": {
+					"schema": {
+						"properties": {
+							"description": {
+								"default": "",
+								"description": "Optional description",
+								"maxLength": 1024,
+								"type": "string"
+							},
+							"members": {
+								"default": [],
+								"description": "Tunnels to add to the group",
+								"items": {
+									"properties": {
+										"id": {
+											"description": "UUID of the tunnel or interconnect",
+											"example": "a1b2c3d4e5f647890a1b2c3d4e5f6789",
+											"maxLength": 36,
+											"pattern": "^[a-fA-F0-9\\-]{32,36}$",
+											"type": "string"
+										},
+										"type": {
+											"description": "Tunnel type: gre, ipsec, or cni",
+											"enum": [
+												"gre",
+												"ipsec",
+												"cni"
+											],
+											"type": "string"
+										}
+									},
+									"required": [
+										"id",
+										"type"
+									],
+									"type": "object"
+								},
+								"type": "array"
+							},
+							"name": {
+								"description": "Human-readable name for the redundancy group",
+								"example": "primary-group",
+								"maxLength": 255,
+								"minLength": 1,
+								"type": "string"
+							}
+						},
+						"required": [
+							"name"
+						],
+						"type": "object"
+					}
+				}
+			},
+			"required": true
+		},
+		"responses": {
+			"201": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"properties": {
+												"errors": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"messages": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"result": {
+													"anyOf": [
+														{
+															"type": "object"
+														},
+														{
+															"items": {},
+															"type": "array"
+														},
+														{
+															"type": "string"
+														}
+													]
+												},
+												"success": {
+													"description": "Whether the API call was successful",
+													"enum": [
+														true
+													],
+													"example": true,
+													"type": "boolean"
+												}
+											},
+											"required": [
+												"success",
+												"errors",
+												"messages",
+												"result"
+											],
+											"type": "object"
+										},
+										{
+											"properties": {
+												"result": {
+													"anyOf": [
+														{
+															"nullable": true,
+															"type": "object"
+														},
+														{
+															"nullable": true,
+															"type": "string"
+														}
+													]
+												}
+											}
+										}
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"result": {
+											"properties": {
+												"created_on": {
+													"format": "date-time",
+													"type": "string"
+												},
+												"description": {
+													"description": "Optional description",
+													"example": "Primary tunnel redundancy group",
+													"type": "string"
+												},
+												"id": {
+													"description": "Redundancy group identifier",
+													"example": "a1b2c3d4e5f647890a1b2c3d4e5f6789",
+													"type": "string"
+												},
+												"modified_on": {
+													"format": "date-time",
+													"type": "string"
+												},
+												"name": {
+													"description": "Human-readable name",
+													"example": "primary-group",
+													"type": "string"
+												}
+											},
+											"type": "object"
+										}
+									}
+								}
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Create Redundancy Group response"
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"allOf": [
+												{
+													"properties": {
+														"errors": {
+															"example": [],
+															"items": {
+																"properties": {
+																	"code": {
+																		"minimum": 1000,
+																		"type": "integer"
+																	},
+																	"message": {
+																		"type": "string"
+																	}
+																},
+																"required": [
+																	"code",
+																	"message"
+																],
+																"type": "object",
+																"uniqueItems": true
+															},
+															"type": "array"
+														},
+														"messages": {
+															"example": [],
+															"items": {
+																"properties": {
+																	"code": {
+																		"minimum": 1000,
+																		"type": "integer"
+																	},
+																	"message": {
+																		"type": "string"
+																	}
+																},
+																"required": [
+																	"code",
+																	"message"
+																],
+																"type": "object",
+																"uniqueItems": true
+															},
+															"type": "array"
+														},
+														"result": {
+															"anyOf": [
+																{
+																	"type": "object"
+																},
+																{
+																	"items": {},
+																	"type": "array"
+																},
+																{
+																	"type": "string"
+																}
+															]
+														},
+														"success": {
+															"description": "Whether the API call was successful",
+															"enum": [
+																true
+															],
+															"example": true,
+															"type": "boolean"
+														}
+													},
+													"required": [
+														"success",
+														"errors",
+														"messages",
+														"result"
+													],
+													"type": "object"
+												},
+												{
+													"properties": {
+														"result": {
+															"anyOf": [
+																{
+																	"nullable": true,
+																	"type": "object"
+																},
+																{
+																	"nullable": true,
+																	"type": "string"
+																}
+															]
+														}
+													}
+												}
+											],
+											"type": "object"
+										},
+										{
+											"properties": {
+												"result": {
+													"properties": {
+														"created_on": {
+															"format": "date-time",
+															"type": "string"
+														},
+														"description": {
+															"description": "Optional description",
+															"example": "Primary tunnel redundancy group",
+															"type": "string"
+														},
+														"id": {
+															"description": "Redundancy group identifier",
+															"example": "a1b2c3d4e5f647890a1b2c3d4e5f6789",
+															"type": "string"
+														},
+														"modified_on": {
+															"format": "date-time",
+															"type": "string"
+														},
+														"name": {
+															"description": "Human-readable name",
+															"example": "primary-group",
+															"type": "string"
+														}
+													},
+													"type": "object"
+												}
+											}
+										}
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"errors": {
+											"allOf": [
+												{
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												}
+											],
+											"example": [
+												{
+													"code": 7003,
+													"message": "No route for the URI"
+												}
+											],
+											"minLength": 1
+										},
+										"messages": {
+											"allOf": [
+												{
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												}
+											],
+											"example": []
+										},
+										"result": {
+											"enum": [
+												null
+											],
+											"nullable": true,
+											"type": "object"
+										},
+										"success": {
+											"description": "Whether the API call was successful",
+											"enum": [
+												false
+											],
+											"example": false,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
+									],
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "Create Redundancy Group response failure"
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": [],
+				"api_token": []
+			}
+		],
+		"summary": "Create a Redundancy Group",
+		"tags": [
+			"Magic Redundancy Groups"
+		],
+		"x-cfPlanAvailability": {
+			"business": false,
+			"enterprise": true,
+			"free": false,
+			"pro": false
+		}
+	},
+	"PUT /accounts/{account_id}/magic/redundancy_groups/{redundancy_group_id}": {
+		"description": "Replaces the name, description, and full set of members for an existing redundancy group.",
+		"operationId": "magic-redundancy-groups-update-redundancy-group",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"description": "Identifier",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"readOnly": true,
+					"type": "string"
+				}
+			},
+			{
+				"in": "path",
+				"name": "redundancy_group_id",
+				"required": true,
+				"schema": {
+					"description": "Identifier",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"readOnly": true,
+					"type": "string"
+				}
+			}
+		],
+		"requestBody": {
+			"content": {
+				"application/json": {
+					"schema": {
+						"properties": {
+							"description": {
+								"default": "",
+								"description": "Optional description",
+								"maxLength": 1024,
+								"type": "string"
+							},
+							"members": {
+								"default": [],
+								"description": "Tunnels to add to the group",
+								"items": {
+									"properties": {
+										"id": {
+											"description": "UUID of the tunnel or interconnect",
+											"example": "a1b2c3d4e5f647890a1b2c3d4e5f6789",
+											"maxLength": 36,
+											"pattern": "^[a-fA-F0-9\\-]{32,36}$",
+											"type": "string"
+										},
+										"type": {
+											"description": "Tunnel type: gre, ipsec, or cni",
+											"enum": [
+												"gre",
+												"ipsec",
+												"cni"
+											],
+											"type": "string"
+										}
+									},
+									"required": [
+										"id",
+										"type"
+									],
+									"type": "object"
+								},
+								"type": "array"
+							},
+							"name": {
+								"description": "Human-readable name for the redundancy group",
+								"example": "primary-group",
+								"maxLength": 255,
+								"minLength": 1,
+								"type": "string"
+							}
+						},
+						"required": [
+							"name"
+						],
+						"type": "object"
+					}
+				}
+			},
+			"required": true
+		},
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"properties": {
+												"errors": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"messages": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"result": {
+													"anyOf": [
+														{
+															"type": "object"
+														},
+														{
+															"items": {},
+															"type": "array"
+														},
+														{
+															"type": "string"
+														}
+													]
+												},
+												"success": {
+													"description": "Whether the API call was successful",
+													"enum": [
+														true
+													],
+													"example": true,
+													"type": "boolean"
+												}
+											},
+											"required": [
+												"success",
+												"errors",
+												"messages",
+												"result"
+											],
+											"type": "object"
+										},
+										{
+											"properties": {
+												"result": {
+													"anyOf": [
+														{
+															"nullable": true,
+															"type": "object"
+														},
+														{
+															"nullable": true,
+															"type": "string"
+														}
+													]
+												}
+											}
+										}
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"result": {
+											"properties": {
+												"created_on": {
+													"format": "date-time",
+													"type": "string"
+												},
+												"description": {
+													"description": "Optional description",
+													"example": "Primary tunnel redundancy group",
+													"type": "string"
+												},
+												"id": {
+													"description": "Redundancy group identifier",
+													"example": "a1b2c3d4e5f647890a1b2c3d4e5f6789",
+													"type": "string"
+												},
+												"modified_on": {
+													"format": "date-time",
+													"type": "string"
+												},
+												"name": {
+													"description": "Human-readable name",
+													"example": "primary-group",
+													"type": "string"
+												}
+											},
+											"type": "object"
+										}
+									}
+								}
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Update Redundancy Group response"
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"allOf": [
+												{
+													"properties": {
+														"errors": {
+															"example": [],
+															"items": {
+																"properties": {
+																	"code": {
+																		"minimum": 1000,
+																		"type": "integer"
+																	},
+																	"message": {
+																		"type": "string"
+																	}
+																},
+																"required": [
+																	"code",
+																	"message"
+																],
+																"type": "object",
+																"uniqueItems": true
+															},
+															"type": "array"
+														},
+														"messages": {
+															"example": [],
+															"items": {
+																"properties": {
+																	"code": {
+																		"minimum": 1000,
+																		"type": "integer"
+																	},
+																	"message": {
+																		"type": "string"
+																	}
+																},
+																"required": [
+																	"code",
+																	"message"
+																],
+																"type": "object",
+																"uniqueItems": true
+															},
+															"type": "array"
+														},
+														"result": {
+															"anyOf": [
+																{
+																	"type": "object"
+																},
+																{
+																	"items": {},
+																	"type": "array"
+																},
+																{
+																	"type": "string"
+																}
+															]
+														},
+														"success": {
+															"description": "Whether the API call was successful",
+															"enum": [
+																true
+															],
+															"example": true,
+															"type": "boolean"
+														}
+													},
+													"required": [
+														"success",
+														"errors",
+														"messages",
+														"result"
+													],
+													"type": "object"
+												},
+												{
+													"properties": {
+														"result": {
+															"anyOf": [
+																{
+																	"nullable": true,
+																	"type": "object"
+																},
+																{
+																	"nullable": true,
+																	"type": "string"
+																}
+															]
+														}
+													}
+												}
+											],
+											"type": "object"
+										},
+										{
+											"properties": {
+												"result": {
+													"properties": {
+														"created_on": {
+															"format": "date-time",
+															"type": "string"
+														},
+														"description": {
+															"description": "Optional description",
+															"example": "Primary tunnel redundancy group",
+															"type": "string"
+														},
+														"id": {
+															"description": "Redundancy group identifier",
+															"example": "a1b2c3d4e5f647890a1b2c3d4e5f6789",
+															"type": "string"
+														},
+														"modified_on": {
+															"format": "date-time",
+															"type": "string"
+														},
+														"name": {
+															"description": "Human-readable name",
+															"example": "primary-group",
+															"type": "string"
+														}
+													},
+													"type": "object"
+												}
+											}
+										}
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"errors": {
+											"allOf": [
+												{
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												}
+											],
+											"example": [
+												{
+													"code": 7003,
+													"message": "No route for the URI"
+												}
+											],
+											"minLength": 1
+										},
+										"messages": {
+											"allOf": [
+												{
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												}
+											],
+											"example": []
+										},
+										"result": {
+											"enum": [
+												null
+											],
+											"nullable": true,
+											"type": "object"
+										},
+										"success": {
+											"description": "Whether the API call was successful",
+											"enum": [
+												false
+											],
+											"example": false,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
+									],
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "Update Redundancy Group response failure"
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": [],
+				"api_token": []
+			}
+		],
+		"summary": "Update a Redundancy Group",
+		"tags": [
+			"Magic Redundancy Groups"
+		],
+		"x-cfPlanAvailability": {
+			"business": false,
+			"enterprise": true,
+			"free": false,
+			"pro": false
+		}
+	}
+}
