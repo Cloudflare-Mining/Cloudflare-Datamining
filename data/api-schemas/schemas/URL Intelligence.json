@@ -1,0 +1,521 @@
+{
+	"GET /accounts/{account_id}/intel/url": {
+		"description": "Gets security information about a URL, including content categories and risk types. The URL must be provided as a query parameter.",
+		"operationId": "url-intelligence-get-url-intelligence",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"description": "Identifier.",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"readOnly": true,
+					"type": "string",
+					"x-auditable": true
+				}
+			},
+			{
+				"description": "The URL to look up.",
+				"example": "https://example.com/path",
+				"in": "query",
+				"name": "url",
+				"required": true,
+				"schema": {
+					"type": "string"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"properties": {
+												"errors": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																},
+																"type": "object"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"messages": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																},
+																"type": "object"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"success": {
+													"description": "Whether the API call was successful.",
+													"enum": [
+														true
+													],
+													"example": true,
+													"type": "boolean"
+												}
+											},
+											"required": [
+												"success",
+												"errors",
+												"messages"
+											],
+											"type": "object"
+										}
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"result": {
+											"properties": {
+												"content_categories": {
+													"description": "Content categories associated with this URL.",
+													"example": [
+														{
+															"id": 155,
+															"name": "Technology",
+															"source_id": 1,
+															"super_category_id": 26
+														}
+													],
+													"items": {
+														"properties": {
+															"id": {
+																"type": "integer",
+																"x-auditable": true
+															},
+															"name": {
+																"type": "string",
+																"x-auditable": true
+															},
+															"source_id": {
+																"type": "integer",
+																"x-auditable": true
+															},
+															"super_category_id": {
+																"type": "integer",
+																"x-auditable": true
+															}
+														},
+														"type": "object"
+													},
+													"type": "array"
+												},
+												"full_url": {
+													"description": "The full URL that was looked up.",
+													"example": "https://example.com/path",
+													"type": "string",
+													"x-auditable": true
+												},
+												"hostname": {
+													"description": "The hostname of the URL.",
+													"example": "example.com",
+													"type": "string",
+													"x-auditable": true
+												},
+												"risk_type": {
+													"description": "Security risk types associated with this URL.",
+													"example": [],
+													"items": {
+														"properties": {
+															"id": {
+																"type": "integer",
+																"x-auditable": true
+															},
+															"name": {
+																"type": "string",
+																"x-auditable": true
+															},
+															"source_id": {
+																"type": "integer",
+																"x-auditable": true
+															},
+															"super_category_id": {
+																"type": "integer",
+																"x-auditable": true
+															}
+														},
+														"type": "object"
+													},
+													"type": "array"
+												},
+												"url_path": {
+													"description": "The path component of the URL.",
+													"example": "/path",
+													"type": "string",
+													"x-auditable": true
+												}
+											},
+											"required": [
+												"full_url",
+												"hostname",
+												"url_path",
+												"risk_type",
+												"content_categories"
+											],
+											"type": "object"
+										}
+									},
+									"type": "object"
+								}
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Get URL Intelligence response."
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"allOf": [
+												{
+													"properties": {
+														"errors": {
+															"example": [],
+															"items": {
+																"properties": {
+																	"code": {
+																		"minimum": 1000,
+																		"type": "integer"
+																	},
+																	"documentation_url": {
+																		"type": "string"
+																	},
+																	"message": {
+																		"type": "string"
+																	},
+																	"source": {
+																		"properties": {
+																			"pointer": {
+																				"type": "string"
+																			}
+																		},
+																		"type": "object"
+																	}
+																},
+																"required": [
+																	"code",
+																	"message"
+																],
+																"type": "object",
+																"uniqueItems": true
+															},
+															"type": "array"
+														},
+														"messages": {
+															"example": [],
+															"items": {
+																"properties": {
+																	"code": {
+																		"minimum": 1000,
+																		"type": "integer"
+																	},
+																	"documentation_url": {
+																		"type": "string"
+																	},
+																	"message": {
+																		"type": "string"
+																	},
+																	"source": {
+																		"properties": {
+																			"pointer": {
+																				"type": "string"
+																			}
+																		},
+																		"type": "object"
+																	}
+																},
+																"required": [
+																	"code",
+																	"message"
+																],
+																"type": "object",
+																"uniqueItems": true
+															},
+															"type": "array"
+														},
+														"success": {
+															"description": "Whether the API call was successful.",
+															"enum": [
+																true
+															],
+															"example": true,
+															"type": "boolean"
+														}
+													},
+													"required": [
+														"success",
+														"errors",
+														"messages"
+													],
+													"type": "object"
+												}
+											],
+											"type": "object"
+										},
+										{
+											"properties": {
+												"result": {
+													"properties": {
+														"content_categories": {
+															"description": "Content categories associated with this URL.",
+															"example": [
+																{
+																	"id": 155,
+																	"name": "Technology",
+																	"source_id": 1,
+																	"super_category_id": 26
+																}
+															],
+															"items": {
+																"properties": {
+																	"id": {
+																		"type": "integer",
+																		"x-auditable": true
+																	},
+																	"name": {
+																		"type": "string",
+																		"x-auditable": true
+																	},
+																	"source_id": {
+																		"type": "integer",
+																		"x-auditable": true
+																	},
+																	"super_category_id": {
+																		"type": "integer",
+																		"x-auditable": true
+																	}
+																},
+																"type": "object"
+															},
+															"type": "array"
+														},
+														"full_url": {
+															"description": "The full URL that was looked up.",
+															"example": "https://example.com/path",
+															"type": "string",
+															"x-auditable": true
+														},
+														"hostname": {
+															"description": "The hostname of the URL.",
+															"example": "example.com",
+															"type": "string",
+															"x-auditable": true
+														},
+														"risk_type": {
+															"description": "Security risk types associated with this URL.",
+															"example": [],
+															"items": {
+																"properties": {
+																	"id": {
+																		"type": "integer",
+																		"x-auditable": true
+																	},
+																	"name": {
+																		"type": "string",
+																		"x-auditable": true
+																	},
+																	"source_id": {
+																		"type": "integer",
+																		"x-auditable": true
+																	},
+																	"super_category_id": {
+																		"type": "integer",
+																		"x-auditable": true
+																	}
+																},
+																"type": "object"
+															},
+															"type": "array"
+														},
+														"url_path": {
+															"description": "The path component of the URL.",
+															"example": "/path",
+															"type": "string",
+															"x-auditable": true
+														}
+													},
+													"required": [
+														"full_url",
+														"hostname",
+														"url_path",
+														"risk_type",
+														"content_categories"
+													],
+													"type": "object"
+												}
+											},
+											"type": "object"
+										}
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"errors": {
+											"allOf": [
+												{
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												}
+											],
+											"example": [
+												{
+													"code": 7003,
+													"message": "No route for the URI"
+												}
+											],
+											"minLength": 1
+										},
+										"messages": {
+											"allOf": [
+												{
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												}
+											],
+											"example": []
+										},
+										"result": {
+											"enum": [
+												null
+											],
+											"nullable": true,
+											"type": "object"
+										},
+										"success": {
+											"description": "Whether the API call was successful.",
+											"example": false,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
+									],
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "Get URL Intelligence response failure."
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Get URL Intelligence",
+		"tags": [
+			"URL Intelligence"
+		],
+		"x-api-token-group": [
+			"Intel Write",
+			"Intel Read"
+		]
+	}
+}
