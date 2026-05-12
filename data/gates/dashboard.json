@@ -1222,6 +1222,9 @@
 	"edge-slurper": {
 		"enabled": true
 	},
+	"email-consolidated-ui": {
+		"enabled": false
+	},
 	"email-deprecate-old-ui": {
 		"enabled": false
 	},
@@ -1235,9 +1238,6 @@
 		"enabled": true
 	},
 	"email-verify-login-interstitial": {
-		"enabled": true
-	},
-	"email-workers-paid": {
 		"enabled": true
 	},
 	"enable-advanced-test-configuration": {
@@ -1733,6 +1733,9 @@
 	},
 	"partners-mfe-app": {
 		"enabled": true
+	},
+	"partners-stratus-migration": {
+		"enabled": false
 	},
 	"partners-tenant-governance": {
 		"enabled": false
