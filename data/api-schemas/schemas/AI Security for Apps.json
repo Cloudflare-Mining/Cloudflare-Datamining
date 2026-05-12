@@ -1,7 +1,7 @@
 {
-	"GET /zones/{zone_id}/firewall-for-ai/custom-topics": {
-		"description": "Get the Firewall for AI custom topic categories for a zone.",
-		"operationId": "firewall-for-ai-custom-topics-get",
+	"GET /zones/{zone_id}/ai-security/custom-topics": {
+		"description": "Get the AI Security for Apps custom topic categories for a zone.",
+		"operationId": "ai-security-custom-topics-get",
 		"parameters": [
 			{
 				"in": "path",
@@ -125,7 +125,7 @@
 										"result": {
 											"properties": {
 												"topics": {
-													"description": "Custom topic categories for Firewall for AI content detection.",
+													"description": "Custom topic categories for AI Security for Apps content detection.",
 													"items": {
 														"properties": {
 															"label": {
@@ -163,7 +163,7 @@
 						}
 					}
 				},
-				"description": "Get Firewall for AI custom topics response."
+				"description": "Get AI Security for Apps custom topics response."
 			},
 			"4XX": {
 				"content": {
@@ -276,7 +276,7 @@
 												"result": {
 													"properties": {
 														"topics": {
-															"description": "Custom topic categories for Firewall for AI content detection.",
+															"description": "Custom topic categories for AI Security for Apps content detection.",
 															"items": {
 																"properties": {
 																	"label": {
@@ -400,7 +400,7 @@
 						}
 					}
 				},
-				"description": "Get Firewall for AI custom topics failure response."
+				"description": "Get AI Security for Apps custom topics failure response."
 			}
 		},
 		"security": [
@@ -410,14 +410,14 @@
 				"api_token": []
 			}
 		],
-		"summary": "Get Firewall for AI Custom Topics",
+		"summary": "Get AI Security for Apps Custom Topics",
 		"tags": [
-			"Firewall for AI"
+			"AI Security for Apps"
 		]
 	},
-	"GET /zones/{zone_id}/firewall-for-ai/settings": {
-		"description": "Get whether Firewall for AI is enabled or disabled for a zone.",
-		"operationId": "firewall-for-ai-settings-get",
+	"GET /zones/{zone_id}/ai-security/settings": {
+		"description": "Get whether AI Security for Apps is enabled or disabled for a zone.",
+		"operationId": "ai-security-settings-get",
 		"parameters": [
 			{
 				"in": "path",
@@ -539,10 +539,10 @@
 								{
 									"properties": {
 										"result": {
-											"description": "Firewall for AI enablement status for a zone.",
+											"description": "AI Security for Apps enablement status for a zone.",
 											"properties": {
 												"enabled": {
-													"description": "Whether Firewall for AI is enabled on the zone.",
+													"description": "Whether AI Security for Apps is enabled on the zone.",
 													"example": true,
 													"type": "boolean"
 												}
@@ -556,7 +556,7 @@
 						}
 					}
 				},
-				"description": "Get Firewall for AI status response."
+				"description": "Get AI Security for Apps status response."
 			},
 			"4XX": {
 				"content": {
@@ -667,10 +667,10 @@
 										{
 											"properties": {
 												"result": {
-													"description": "Firewall for AI enablement status for a zone.",
+													"description": "AI Security for Apps enablement status for a zone.",
 													"properties": {
 														"enabled": {
-															"description": "Whether Firewall for AI is enabled on the zone.",
+															"description": "Whether AI Security for Apps is enabled on the zone.",
 															"example": true,
 															"type": "boolean"
 														}
@@ -770,7 +770,7 @@
 						}
 					}
 				},
-				"description": "Get Firewall for AI status failure response."
+				"description": "Get AI Security for Apps status failure response."
 			}
 		},
 		"security": [
@@ -780,18 +780,14 @@
 				"api_token": []
 			}
 		],
-		"summary": "Get Firewall for AI Status",
+		"summary": "Get AI Security for Apps Status",
 		"tags": [
-			"Firewall for AI"
-		],
-		"x-api-token-group": [
-			"Firewall for AI Write",
-			"Firewall for AI Read"
+			"AI Security for Apps"
 		]
 	},
-	"PUT /zones/{zone_id}/firewall-for-ai/custom-topics": {
-		"description": "Set the Firewall for AI custom topic categories for a zone.\n\nA maximum of 20 custom topics can be configured per zone.\nEach topic label must be 2–20 characters using only lowercase letters (a–z), digits (0–9), and hyphens.\nEach topic description must be 2–50 printable ASCII characters.\n\nChanges can take up to a minute to propagate to the zone.\n",
-		"operationId": "firewall-for-ai-custom-topics-put",
+	"PUT /zones/{zone_id}/ai-security/custom-topics": {
+		"description": "Set the AI Security for Apps custom topic categories for a zone.\n\nA maximum of 20 custom topics can be configured per zone.\nEach topic label must be 2–20 characters using only lowercase letters (a–z), digits (0–9), and hyphens.\nEach topic description must be 2–50 printable ASCII characters.\n\nChanges can take up to a minute to propagate to the zone.\n",
+		"operationId": "ai-security-custom-topics-put",
 		"parameters": [
 			{
 				"in": "path",
@@ -811,7 +807,7 @@
 					"schema": {
 						"properties": {
 							"topics": {
-								"description": "Custom topic categories for Firewall for AI content detection.",
+								"description": "Custom topic categories for AI Security for Apps content detection.",
 								"items": {
 									"properties": {
 										"label": {
@@ -956,7 +952,7 @@
 										"result": {
 											"properties": {
 												"topics": {
-													"description": "Custom topic categories for Firewall for AI content detection.",
+													"description": "Custom topic categories for AI Security for Apps content detection.",
 													"items": {
 														"properties": {
 															"label": {
@@ -994,7 +990,7 @@
 						}
 					}
 				},
-				"description": "Set Firewall for AI custom topics response."
+				"description": "Set AI Security for Apps custom topics response."
 			},
 			"4XX": {
 				"content": {
@@ -1107,7 +1103,7 @@
 												"result": {
 													"properties": {
 														"topics": {
-															"description": "Custom topic categories for Firewall for AI content detection.",
+															"description": "Custom topic categories for AI Security for Apps content detection.",
 															"items": {
 																"properties": {
 																	"label": {
@@ -1231,7 +1227,7 @@
 						}
 					}
 				},
-				"description": "Set Firewall for AI custom topics failure response."
+				"description": "Set AI Security for Apps custom topics failure response."
 			}
 		},
 		"security": [
@@ -1241,14 +1237,14 @@
 				"api_token": []
 			}
 		],
-		"summary": "Set Firewall for AI Custom Topics",
+		"summary": "Set AI Security for Apps Custom Topics",
 		"tags": [
-			"Firewall for AI"
+			"AI Security for Apps"
 		]
 	},
-	"PUT /zones/{zone_id}/firewall-for-ai/settings": {
-		"description": "Enable or disable Firewall for AI for a zone.\n\nChanges can take up to a minute to propagate to the zone.\n",
-		"operationId": "firewall-for-ai-settings-put",
+	"PUT /zones/{zone_id}/ai-security/settings": {
+		"description": "Enable or disable AI Security for Apps for a zone.\n\nChanges can take up to a minute to propagate to the zone.\n",
+		"operationId": "ai-security-settings-put",
 		"parameters": [
 			{
 				"in": "path",
@@ -1266,10 +1262,10 @@
 			"content": {
 				"application/json": {
 					"schema": {
-						"description": "Firewall for AI enablement status for a zone.",
+						"description": "AI Security for Apps enablement status for a zone.",
 						"properties": {
 							"enabled": {
-								"description": "Whether Firewall for AI is enabled on the zone.",
+								"description": "Whether AI Security for Apps is enabled on the zone.",
 								"example": true,
 								"type": "boolean"
 							}
@@ -1388,10 +1384,10 @@
 								{
 									"properties": {
 										"result": {
-											"description": "Firewall for AI enablement status for a zone.",
+											"description": "AI Security for Apps enablement status for a zone.",
 											"properties": {
 												"enabled": {
-													"description": "Whether Firewall for AI is enabled on the zone.",
+													"description": "Whether AI Security for Apps is enabled on the zone.",
 													"example": true,
 													"type": "boolean"
 												}
@@ -1405,7 +1401,7 @@
 						}
 					}
 				},
-				"description": "Set Firewall for AI status response."
+				"description": "Set AI Security for Apps status response."
 			},
 			"4XX": {
 				"content": {
@@ -1516,10 +1512,10 @@
 										{
 											"properties": {
 												"result": {
-													"description": "Firewall for AI enablement status for a zone.",
+													"description": "AI Security for Apps enablement status for a zone.",
 													"properties": {
 														"enabled": {
-															"description": "Whether Firewall for AI is enabled on the zone.",
+															"description": "Whether AI Security for Apps is enabled on the zone.",
 															"example": true,
 															"type": "boolean"
 														}
@@ -1619,7 +1615,7 @@
 						}
 					}
 				},
-				"description": "Set Firewall for AI status failure response."
+				"description": "Set AI Security for Apps status failure response."
 			}
 		},
 		"security": [
@@ -1629,12 +1625,9 @@
 				"api_token": []
 			}
 		],
-		"summary": "Set Firewall for AI Status",
+		"summary": "Set AI Security for Apps Status",
 		"tags": [
-			"Firewall for AI"
-		],
-		"x-api-token-group": [
-			"Firewall for AI Write"
+			"AI Security for Apps"
 		]
 	}
 }
