@@ -23,6 +23,36 @@
 		}
 	},
 	{
+		"id": "75ad81fe9f440497e83b7cb68b53cf26",
+		"name": "Flagship Read",
+		"description": "Grants read access to Flagship flags",
+		"permissions": {
+			"zone": {
+				"read": true,
+				"edit": false
+			},
+			"organization": {
+				"read": true,
+				"edit": false
+			}
+		}
+	},
+	{
+		"id": "7bfe1d92f1152a210a6a93112c740cef",
+		"name": "Flagship Write",
+		"description": "Grants read and write access to Flagship flags",
+		"permissions": {
+			"zone": {
+				"read": true,
+				"edit": false
+			},
+			"organization": {
+				"read": true,
+				"edit": false
+			}
+		}
+	},
+	{
 		"id": "308416ae9b24e806205c406d0a32c8ec",
 		"name": "Cloudflare CASB Read",
 		"description": "Can read Cloudflare CASB.",
