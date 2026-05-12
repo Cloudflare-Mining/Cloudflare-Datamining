@@ -491,6 +491,26 @@
 					"example": "54442216",
 					"type": "string"
 				}
+			},
+			{
+				"description": "Page number",
+				"in": "query",
+				"name": "page",
+				"schema": {
+					"description": "Page number",
+					"example": 1,
+					"type": "integer"
+				}
+			},
+			{
+				"description": "Number of routes per page",
+				"in": "query",
+				"name": "per_page",
+				"schema": {
+					"description": "Number of routes per page",
+					"example": 20,
+					"type": "integer"
+				}
 			}
 		],
 		"responses": {
@@ -891,6 +911,9 @@
 															},
 															"data": {
 																"type": "string"
+															},
+															"is_valid": {
+																"type": "boolean"
 															},
 															"version_id": {
 																"type": "string"
@@ -1425,6 +1448,9 @@
 												"data": {
 													"type": "string"
 												},
+												"is_valid": {
+													"type": "boolean"
+												},
 												"version_id": {
 													"type": "string"
 												}
@@ -1765,6 +1791,9 @@
 													},
 													"data": {
 														"type": "string"
+													},
+													"is_valid": {
+														"type": "boolean"
 													},
 													"version_id": {
 														"type": "string"
@@ -2261,6 +2290,9 @@
 										},
 										"id": {
 											"type": "string"
+										},
+										"is_valid": {
+											"type": "boolean"
 										},
 										"modified_at": {
 											"format": "date-time",
@@ -2801,6 +2833,9 @@
 												},
 												"data": {
 													"type": "string"
+												},
+												"is_valid": {
+													"type": "boolean"
 												},
 												"version_id": {
 													"type": "string"
@@ -3989,6 +4024,9 @@
 												},
 												"data": {
 													"type": "string"
+												},
+												"is_valid": {
+													"type": "boolean"
 												},
 												"version_id": {
 													"type": "string"
