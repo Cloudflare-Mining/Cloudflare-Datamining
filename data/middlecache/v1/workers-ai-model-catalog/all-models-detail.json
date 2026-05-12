@@ -1,5 +1,5 @@
 {
-	"generated_at": "2026-05-11T04:33:41.891Z",
+	"generated_at": "2026-05-12T04:33:48.012Z",
 	"model_count": 150,
 	"models": {
 		"alibaba/hh1-i2v": {
@@ -18894,6 +18894,21 @@
 				{
 					"property_id": "context_window",
 					"value": "256000"
+				},
+				{
+					"property_id": "price",
+					"value": [
+						{
+							"unit": "per M input tokens",
+							"price": 0.1,
+							"currency": "USD"
+						},
+						{
+							"unit": "per M output tokens",
+							"price": 0.3,
+							"currency": "USD"
+						}
+					]
 				},
 				{
 					"property_id": "function_calling",
