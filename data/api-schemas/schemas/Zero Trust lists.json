@@ -2846,6 +2846,486 @@
 			"Zero Trust lists"
 		]
 	},
+	"POST /accounts/{account_id}/gateway/lists/upload": {
+		"description": "Create a new Zero Trust list by uploading a CSV file. The file must be `text/csv` or `text/plain` and cannot exceed 2 MB. The operation is processed asynchronously. Use the returned operation ID to poll for status.",
+		"operationId": "zero-trust-lists-create-zero-trust-list-from-csv",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"example": "699d98642c564d2e855e9661899b7252",
+					"type": "string",
+					"x-auditable": true
+				}
+			}
+		],
+		"requestBody": {
+			"content": {
+				"multipart/form-data": {
+					"schema": {
+						"properties": {
+							"file": {
+								"description": "The CSV file containing list items. Must be `text/csv` or `text/plain` and cannot exceed 2 MB.",
+								"format": "binary",
+								"type": "string"
+							}
+						},
+						"required": [
+							"file"
+						],
+						"type": "object"
+					}
+				}
+			},
+			"required": true
+		},
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"properties": {
+												"errors": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"messages": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"success": {
+													"description": "Indicate whether the API call was successful.",
+													"enum": [
+														true
+													],
+													"example": true,
+													"type": "boolean"
+												}
+											},
+											"required": [
+												"success",
+												"errors",
+												"messages"
+											],
+											"type": "object"
+										}
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"result": {
+											"properties": {
+												"created_at": {
+													"example": "2014-01-01T05:20:00.12345Z",
+													"format": "date-time",
+													"readOnly": true,
+													"type": "string"
+												},
+												"data": {
+													"properties": {
+														"description": {
+															"description": "Provide the list description.",
+															"example": "The serial numbers for administrators",
+															"type": "string",
+															"x-auditable": true,
+															"x-stainless-terraform-configurability": "computed_optional"
+														},
+														"list_type": {
+															"description": "Specify the list type.",
+															"enum": [
+																"SERIAL",
+																"URL",
+																"DOMAIN",
+																"EMAIL",
+																"IP",
+																"CATEGORY",
+																"LOCATION",
+																"DEVICE",
+																"AAGUID"
+															],
+															"example": "SERIAL",
+															"type": "string",
+															"x-auditable": true
+														},
+														"name": {
+															"description": "Specify the list name.",
+															"example": "Admin Serial Numbers",
+															"type": "string",
+															"x-auditable": true
+														}
+													},
+													"type": "object"
+												},
+												"id": {
+													"description": "Identify the API resource with a UUID.",
+													"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
+													"maxLength": 36,
+													"type": "string",
+													"x-auditable": true
+												},
+												"operation_type": {
+													"description": "The type of operation.",
+													"enum": [
+														"create_list"
+													],
+													"example": "create_list",
+													"type": "string"
+												},
+												"processing_error": {
+													"description": "A human-readable error message if the operation failed. Only present when the operation status is `failed`.",
+													"nullable": true,
+													"type": "string"
+												},
+												"result": {
+													"description": "The result of the operation. Only present when the operation has completed successfully.",
+													"nullable": true,
+													"type": "string"
+												},
+												"status": {
+													"description": "The status of the operation.",
+													"enum": [
+														"pending",
+														"active",
+														"failed",
+														"complete"
+													],
+													"example": "pending",
+													"type": "string"
+												},
+												"updated_at": {
+													"example": "2014-01-01T05:20:00.12345Z",
+													"format": "date-time",
+													"readOnly": true,
+													"type": "string"
+												}
+											},
+											"type": "object"
+										}
+									},
+									"type": "object"
+								}
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Create Zero Trust list from CSV response."
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"allOf": [
+												{
+													"properties": {
+														"errors": {
+															"example": [],
+															"items": {
+																"properties": {
+																	"code": {
+																		"minimum": 1000,
+																		"type": "integer"
+																	},
+																	"message": {
+																		"type": "string"
+																	}
+																},
+																"required": [
+																	"code",
+																	"message"
+																],
+																"type": "object",
+																"uniqueItems": true
+															},
+															"type": "array"
+														},
+														"messages": {
+															"example": [],
+															"items": {
+																"properties": {
+																	"code": {
+																		"minimum": 1000,
+																		"type": "integer"
+																	},
+																	"message": {
+																		"type": "string"
+																	}
+																},
+																"required": [
+																	"code",
+																	"message"
+																],
+																"type": "object",
+																"uniqueItems": true
+															},
+															"type": "array"
+														},
+														"success": {
+															"description": "Indicate whether the API call was successful.",
+															"enum": [
+																true
+															],
+															"example": true,
+															"type": "boolean"
+														}
+													},
+													"required": [
+														"success",
+														"errors",
+														"messages"
+													],
+													"type": "object"
+												}
+											],
+											"type": "object"
+										},
+										{
+											"properties": {
+												"result": {
+													"properties": {
+														"created_at": {
+															"example": "2014-01-01T05:20:00.12345Z",
+															"format": "date-time",
+															"readOnly": true,
+															"type": "string"
+														},
+														"data": {
+															"properties": {
+																"description": {
+																	"description": "Provide the list description.",
+																	"example": "The serial numbers for administrators",
+																	"type": "string",
+																	"x-auditable": true,
+																	"x-stainless-terraform-configurability": "computed_optional"
+																},
+																"list_type": {
+																	"description": "Specify the list type.",
+																	"enum": [
+																		"SERIAL",
+																		"URL",
+																		"DOMAIN",
+																		"EMAIL",
+																		"IP",
+																		"CATEGORY",
+																		"LOCATION",
+																		"DEVICE",
+																		"AAGUID"
+																	],
+																	"example": "SERIAL",
+																	"type": "string",
+																	"x-auditable": true
+																},
+																"name": {
+																	"description": "Specify the list name.",
+																	"example": "Admin Serial Numbers",
+																	"type": "string",
+																	"x-auditable": true
+																}
+															},
+															"type": "object"
+														},
+														"id": {
+															"description": "Identify the API resource with a UUID.",
+															"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
+															"maxLength": 36,
+															"type": "string",
+															"x-auditable": true
+														},
+														"operation_type": {
+															"description": "The type of operation.",
+															"enum": [
+																"create_list"
+															],
+															"example": "create_list",
+															"type": "string"
+														},
+														"processing_error": {
+															"description": "A human-readable error message if the operation failed. Only present when the operation status is `failed`.",
+															"nullable": true,
+															"type": "string"
+														},
+														"result": {
+															"description": "The result of the operation. Only present when the operation has completed successfully.",
+															"nullable": true,
+															"type": "string"
+														},
+														"status": {
+															"description": "The status of the operation.",
+															"enum": [
+																"pending",
+																"active",
+																"failed",
+																"complete"
+															],
+															"example": "pending",
+															"type": "string"
+														},
+														"updated_at": {
+															"example": "2014-01-01T05:20:00.12345Z",
+															"format": "date-time",
+															"readOnly": true,
+															"type": "string"
+														}
+													},
+													"type": "object"
+												}
+											},
+											"type": "object"
+										}
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"errors": {
+											"allOf": [
+												{
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												}
+											],
+											"example": [
+												{
+													"code": 7003,
+													"message": "No route for the URI"
+												}
+											],
+											"minLength": 1,
+											"type": "object"
+										},
+										"messages": {
+											"allOf": [
+												{
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												}
+											],
+											"example": [],
+											"type": "object"
+										},
+										"result": {
+											"enum": [
+												null
+											],
+											"nullable": true,
+											"type": "object"
+										},
+										"success": {
+											"description": "Indicate whether the API call was successful.",
+											"enum": [
+												false
+											],
+											"example": false,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
+									],
+									"type": "object"
+								}
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Create Zero Trust list from CSV response failure."
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": [],
+				"api_token": []
+			}
+		],
+		"summary": "Create Zero Trust list from CSV",
+		"tags": [
+			"Zero Trust lists"
+		]
+	},
 	"PUT /accounts/{account_id}/gateway/lists/{list_id}": {
 		"description": "Updates a configured Zero Trust list. Skips updating list items if not included in the payload. A non empty list items will overwrite the existing list.",
 		"operationId": "zero-trust-lists-update-zero-trust-list",

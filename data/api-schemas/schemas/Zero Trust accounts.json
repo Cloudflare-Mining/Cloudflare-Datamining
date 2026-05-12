@@ -2614,6 +2614,370 @@
 			"Zero Trust accounts"
 		]
 	},
+	"GET /accounts/{account_id}/gateway/egress_cidr_pairs": {
+		"description": "Retrieve the list of egress CIDRs allocated to this Zero Trust account.",
+		"operationId": "zero-trust-accounts-get-egress-cidr-pairs",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"example": "699d98642c564d2e855e9661899b7252",
+					"type": "string"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"properties": {
+												"errors": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"messages": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"success": {
+													"description": "Indicate whether the API call was successful.",
+													"enum": [
+														true
+													],
+													"example": true,
+													"type": "boolean"
+												}
+											},
+											"required": [
+												"success",
+												"errors",
+												"messages"
+											],
+											"type": "object"
+										}
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"result": {
+											"items": {
+												"properties": {
+													"geolocation": {
+														"description": "Specify the geographic location of this CIDR pair.",
+														"properties": {
+															"city": {
+																"description": "Specify the city of this egress IP.",
+																"type": "string"
+															},
+															"country": {
+																"description": "Specify the country of this egress IP.",
+																"type": "string"
+															}
+														},
+														"type": "object"
+													},
+													"ipv4": {
+														"description": "Specify the IPv4 address of this egress CIDR pair.",
+														"type": "string"
+													},
+													"ipv4_colo_name": {
+														"description": "Specify the colocation from which this IPv4 address egresses.",
+														"type": "string"
+													},
+													"ipv6_cidr": {
+														"description": "Specify the IPv6 network address of this egress CIDR pair.",
+														"type": "string"
+													}
+												},
+												"required": [
+													"ipv4",
+													"ipv4_colo_name",
+													"ipv6_cidr",
+													"geolocation"
+												],
+												"type": "object"
+											},
+											"type": "array"
+										}
+									},
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "List of egress CIDR pairs."
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"allOf": [
+												{
+													"properties": {
+														"errors": {
+															"example": [],
+															"items": {
+																"properties": {
+																	"code": {
+																		"minimum": 1000,
+																		"type": "integer"
+																	},
+																	"message": {
+																		"type": "string"
+																	}
+																},
+																"required": [
+																	"code",
+																	"message"
+																],
+																"type": "object",
+																"uniqueItems": true
+															},
+															"type": "array"
+														},
+														"messages": {
+															"example": [],
+															"items": {
+																"properties": {
+																	"code": {
+																		"minimum": 1000,
+																		"type": "integer"
+																	},
+																	"message": {
+																		"type": "string"
+																	}
+																},
+																"required": [
+																	"code",
+																	"message"
+																],
+																"type": "object",
+																"uniqueItems": true
+															},
+															"type": "array"
+														},
+														"success": {
+															"description": "Indicate whether the API call was successful.",
+															"enum": [
+																true
+															],
+															"example": true,
+															"type": "boolean"
+														}
+													},
+													"required": [
+														"success",
+														"errors",
+														"messages"
+													],
+													"type": "object"
+												}
+											],
+											"type": "object"
+										},
+										{
+											"properties": {
+												"result": {
+													"items": {
+														"properties": {
+															"geolocation": {
+																"description": "Specify the geographic location of this CIDR pair.",
+																"properties": {
+																	"city": {
+																		"description": "Specify the city of this egress IP.",
+																		"type": "string"
+																	},
+																	"country": {
+																		"description": "Specify the country of this egress IP.",
+																		"type": "string"
+																	}
+																},
+																"type": "object"
+															},
+															"ipv4": {
+																"description": "Specify the IPv4 address of this egress CIDR pair.",
+																"type": "string"
+															},
+															"ipv4_colo_name": {
+																"description": "Specify the colocation from which this IPv4 address egresses.",
+																"type": "string"
+															},
+															"ipv6_cidr": {
+																"description": "Specify the IPv6 network address of this egress CIDR pair.",
+																"type": "string"
+															}
+														},
+														"required": [
+															"ipv4",
+															"ipv4_colo_name",
+															"ipv6_cidr",
+															"geolocation"
+														],
+														"type": "object"
+													},
+													"type": "array"
+												}
+											},
+											"type": "object"
+										}
+									]
+								},
+								{
+									"properties": {
+										"errors": {
+											"allOf": [
+												{
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												}
+											],
+											"example": [
+												{
+													"code": 7003,
+													"message": "No route for the URI"
+												}
+											],
+											"minLength": 1,
+											"type": "object"
+										},
+										"messages": {
+											"allOf": [
+												{
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												}
+											],
+											"example": [],
+											"type": "object"
+										},
+										"result": {
+											"enum": [
+												null
+											],
+											"nullable": true,
+											"type": "object"
+										},
+										"success": {
+											"description": "Indicate whether the API call was successful.",
+											"enum": [
+												false
+											],
+											"example": false,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
+									],
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "List of egress CIDR pairs response failure."
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": [],
+				"api_token": []
+			}
+		],
+		"summary": "Get gateway egress CIDRs pairs assigned to this account",
+		"tags": [
+			"Zero Trust accounts"
+		],
+		"x-api-token-group": [
+			"Zero Trust Read",
+			"Zero Trust Write"
+		]
+	},
 	"GET /accounts/{account_id}/gateway/logging": {
 		"description": "Retrieve the current logging settings for the Zero Trust account.",
 		"operationId": "zero-trust-accounts-get-logging-settings-for-the-zero-trust-account",

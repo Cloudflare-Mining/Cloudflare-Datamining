@@ -1,0 +1,428 @@
+{
+	"GET /accounts/{account_id}/gateway/dns_destination_ips": {
+		"description": "List Zero Trust Gateway IPv4 address pairs for an account.",
+		"operationId": "zero-trust-dns-destination-ips-list-dns-destination-ips",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"example": "699d98642c564d2e855e9661899b7252",
+					"type": "string"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"properties": {
+												"errors": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"messages": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"success": {
+													"description": "Indicate whether the API call was successful.",
+													"enum": [
+														true
+													],
+													"example": true,
+													"type": "boolean"
+												}
+											},
+											"required": [
+												"success",
+												"errors",
+												"messages"
+											],
+											"type": "object"
+										},
+										{
+											"properties": {
+												"result_info": {
+													"properties": {
+														"count": {
+															"description": "Indicate the total number of results for the requested service.",
+															"example": 1,
+															"type": "number"
+														},
+														"page": {
+															"description": "Indicate the current page within a paginated list of results.",
+															"example": 1,
+															"type": "number"
+														},
+														"per_page": {
+															"description": "Indicate the number of results per page.",
+															"example": 20,
+															"type": "number"
+														},
+														"total_count": {
+															"description": "Indicate the total results available without any search parameters.",
+															"example": 2000,
+															"type": "number"
+														}
+													},
+													"type": "object"
+												}
+											},
+											"type": "object"
+										}
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"result": {
+											"items": {
+												"properties": {
+													"backup_ip": {
+														"example": "172.64.36.2",
+														"type": "string",
+														"x-auditable": true
+													},
+													"id": {
+														"example": "0e4a32c6-6fb8-4858-9296-98f51631e8e6",
+														"type": "string",
+														"x-auditable": true
+													},
+													"pair_type": {
+														"description": "Specify whether the pair shared across multiple accounts (shared) or available exclusively to this account. Non-shared pairs can contain Cloudflare-owned IPs (dedicated) or customer-provided IPs (byoip).",
+														"enum": [
+															"shared",
+															"dedicated",
+															"byoip"
+														],
+														"example": "shared",
+														"x-auditable": true
+													},
+													"primary_ip": {
+														"example": "172.64.36.1",
+														"type": "string",
+														"x-auditable": true
+													}
+												},
+												"required": [
+													"id",
+													"primary_ip",
+													"backup_ip",
+													"pair_type"
+												],
+												"type": "object"
+											},
+											"type": "array"
+										}
+									},
+									"type": "object"
+								}
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "List Zero Trust Gateway DNS destination IPv4 address pairs response."
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"allOf": [
+												{
+													"properties": {
+														"errors": {
+															"example": [],
+															"items": {
+																"properties": {
+																	"code": {
+																		"minimum": 1000,
+																		"type": "integer"
+																	},
+																	"message": {
+																		"type": "string"
+																	}
+																},
+																"required": [
+																	"code",
+																	"message"
+																],
+																"type": "object",
+																"uniqueItems": true
+															},
+															"type": "array"
+														},
+														"messages": {
+															"example": [],
+															"items": {
+																"properties": {
+																	"code": {
+																		"minimum": 1000,
+																		"type": "integer"
+																	},
+																	"message": {
+																		"type": "string"
+																	}
+																},
+																"required": [
+																	"code",
+																	"message"
+																],
+																"type": "object",
+																"uniqueItems": true
+															},
+															"type": "array"
+														},
+														"success": {
+															"description": "Indicate whether the API call was successful.",
+															"enum": [
+																true
+															],
+															"example": true,
+															"type": "boolean"
+														}
+													},
+													"required": [
+														"success",
+														"errors",
+														"messages"
+													],
+													"type": "object"
+												},
+												{
+													"properties": {
+														"result_info": {
+															"properties": {
+																"count": {
+																	"description": "Indicate the total number of results for the requested service.",
+																	"example": 1,
+																	"type": "number"
+																},
+																"page": {
+																	"description": "Indicate the current page within a paginated list of results.",
+																	"example": 1,
+																	"type": "number"
+																},
+																"per_page": {
+																	"description": "Indicate the number of results per page.",
+																	"example": 20,
+																	"type": "number"
+																},
+																"total_count": {
+																	"description": "Indicate the total results available without any search parameters.",
+																	"example": 2000,
+																	"type": "number"
+																}
+															},
+															"type": "object"
+														}
+													},
+													"type": "object"
+												}
+											],
+											"type": "object"
+										},
+										{
+											"properties": {
+												"result": {
+													"items": {
+														"properties": {
+															"backup_ip": {
+																"example": "172.64.36.2",
+																"type": "string",
+																"x-auditable": true
+															},
+															"id": {
+																"example": "0e4a32c6-6fb8-4858-9296-98f51631e8e6",
+																"type": "string",
+																"x-auditable": true
+															},
+															"pair_type": {
+																"description": "Specify whether the pair shared across multiple accounts (shared) or available exclusively to this account. Non-shared pairs can contain Cloudflare-owned IPs (dedicated) or customer-provided IPs (byoip).",
+																"enum": [
+																	"shared",
+																	"dedicated",
+																	"byoip"
+																],
+																"example": "shared",
+																"x-auditable": true
+															},
+															"primary_ip": {
+																"example": "172.64.36.1",
+																"type": "string",
+																"x-auditable": true
+															}
+														},
+														"required": [
+															"id",
+															"primary_ip",
+															"backup_ip",
+															"pair_type"
+														],
+														"type": "object"
+													},
+													"type": "array"
+												}
+											},
+											"type": "object"
+										}
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"errors": {
+											"allOf": [
+												{
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												}
+											],
+											"example": [
+												{
+													"code": 7003,
+													"message": "No route for the URI"
+												}
+											],
+											"minLength": 1,
+											"type": "object"
+										},
+										"messages": {
+											"allOf": [
+												{
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												}
+											],
+											"example": [],
+											"type": "object"
+										},
+										"result": {
+											"enum": [
+												null
+											],
+											"nullable": true,
+											"type": "object"
+										},
+										"success": {
+											"description": "Indicate whether the API call was successful.",
+											"enum": [
+												false
+											],
+											"example": false,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
+									],
+									"type": "object"
+								}
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "List Zero Trust Gateway DNS destination IPv4 address pairs response failure."
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": [],
+				"api_token": []
+			}
+		],
+		"summary": "List Zero Trust Gateway DNS destination IPv4 address pairs",
+		"tags": [
+			"Zero Trust Gateway DNS destination IPv4 address pairs"
+		],
+		"x-api-token-group": [
+			"Cloudflare Zero Trust Secure DNS Locations Write",
+			"Zero Trust Read",
+			"Zero Trust Write"
+		]
+	}
+}

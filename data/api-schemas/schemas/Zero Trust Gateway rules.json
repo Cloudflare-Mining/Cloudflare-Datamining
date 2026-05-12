@@ -6333,6 +6333,4087 @@
 			"Zero Trust Gateway rules"
 		]
 	},
+	"PATCH /accounts/{account_id}/gateway/rules": {
+		"description": "Update select fields of multiple Zero Trust Gateway rules in a single request. This is commonly used to reorder rules by updating their precedence values. Only the fields provided for each rule are updated.",
+		"operationId": "zero-trust-gateway-rules-patch-multiple-zero-trust-gateway-rules",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"example": "699d98642c564d2e855e9661899b7252",
+					"type": "string",
+					"x-auditable": true
+				}
+			}
+		],
+		"requestBody": {
+			"content": {
+				"application/json": {
+					"schema": {
+						"items": {
+							"properties": {
+								"description": {
+									"description": "Specify the rule description.",
+									"example": "Block bad websites based on their host name.",
+									"type": "string",
+									"x-auditable": true
+								},
+								"enabled": {
+									"default": false,
+									"description": "Specify whether the rule is enabled.",
+									"example": true,
+									"type": "boolean",
+									"x-auditable": true
+								},
+								"id": {
+									"description": "Identify the API resource with a UUID.",
+									"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
+									"maxLength": 36,
+									"type": "string",
+									"x-auditable": true
+								},
+								"name": {
+									"description": "Specify the rule name.",
+									"example": "block bad websites",
+									"type": "string",
+									"x-auditable": true
+								},
+								"precedence": {
+									"description": "Set the order of your rules. Lower values indicate higher precedence. At each processing phase, evaluate applicable rules in ascending order of this value. Refer to [Order of enforcement](http://developers.cloudflare.com/learning-paths/secure-internet-traffic/understand-policies/order-of-enforcement/#manage-precedence-with-terraform) to manage precedence via Terraform.",
+									"type": "integer",
+									"x-auditable": true,
+									"x-stainless-terraform-configurability": "computed_optional"
+								}
+							},
+							"required": [
+								"id"
+							],
+							"type": "object"
+						},
+						"type": "array"
+					}
+				}
+			},
+			"required": true
+		},
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"properties": {
+												"errors": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"messages": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"success": {
+													"description": "Indicate whether the API call was successful.",
+													"enum": [
+														true
+													],
+													"example": true,
+													"type": "boolean"
+												}
+											},
+											"required": [
+												"success",
+												"errors",
+												"messages"
+											],
+											"type": "object"
+										},
+										{
+											"properties": {
+												"result_info": {
+													"properties": {
+														"count": {
+															"description": "Indicate the total number of results for the requested service.",
+															"example": 1,
+															"type": "number"
+														},
+														"page": {
+															"description": "Indicate the current page within a paginated list of results.",
+															"example": 1,
+															"type": "number"
+														},
+														"per_page": {
+															"description": "Indicate the number of results per page.",
+															"example": 20,
+															"type": "number"
+														},
+														"total_count": {
+															"description": "Indicate the total results available without any search parameters.",
+															"example": 2000,
+															"type": "number"
+														}
+													},
+													"type": "object"
+												}
+											},
+											"type": "object"
+										}
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"result": {
+											"items": {
+												"properties": {
+													"action": {
+														"description": "Specify the action to perform when the associated traffic, identity, and device posture expressions either absent or evaluate to `true`.",
+														"enum": [
+															"on",
+															"off",
+															"allow",
+															"block",
+															"scan",
+															"noscan",
+															"safesearch",
+															"ytrestricted",
+															"isolate",
+															"noisolate",
+															"override",
+															"l4_override",
+															"egress",
+															"resolve",
+															"quarantine",
+															"redirect"
+														],
+														"example": "allow",
+														"type": "string",
+														"x-auditable": true
+													},
+													"created_at": {
+														"example": "2014-01-01T05:20:00.12345Z",
+														"format": "date-time",
+														"readOnly": true,
+														"type": "string"
+													},
+													"deleted_at": {
+														"description": "Indicate the date of deletion, if any.",
+														"format": "date-time",
+														"nullable": true,
+														"readOnly": true,
+														"type": "string",
+														"x-stainless-terraform-configurability": "computed"
+													},
+													"description": {
+														"description": "Specify the rule description.",
+														"example": "Block bad websites based on their host name.",
+														"type": "string",
+														"x-auditable": true
+													},
+													"device_posture": {
+														"default": "",
+														"description": "Specify the wirefilter expression used for device posture check. The API automatically formats and sanitizes expressions before storing them. To prevent Terraform state drift, use the formatted expression returned in the API response.",
+														"example": "any(device_posture.checks.passed[*] in {\"1308749e-fcfb-4ebc-b051-fe022b632644\"})",
+														"type": "string",
+														"x-auditable": true,
+														"x-stainless-terraform-configurability": "computed_optional"
+													},
+													"enabled": {
+														"default": false,
+														"description": "Specify whether the rule is enabled.",
+														"example": true,
+														"type": "boolean",
+														"x-auditable": true
+													},
+													"expiration": {
+														"description": "Defines the expiration time stamp and default duration of a DNS policy. Takes precedence over the policy's `schedule` configuration, if any. This  does not apply to HTTP or network policies. Settable only for `dns` rules.",
+														"nullable": true,
+														"properties": {
+															"duration": {
+																"description": "Defines the default duration a policy active in minutes. Must set in order to use the `reset_expiration` endpoint on this rule.",
+																"example": 10,
+																"minimum": 5,
+																"type": "integer",
+																"x-auditable": true
+															},
+															"expired": {
+																"description": "Indicates whether the policy is expired.",
+																"example": false,
+																"readOnly": true,
+																"type": "boolean",
+																"x-auditable": true,
+																"x-stainless-terraform-configurability": "computed"
+															},
+															"expires_at": {
+																"allOf": [
+																	{
+																		"example": "2014-01-01T05:20:00.12345Z",
+																		"format": "date-time",
+																		"type": "string"
+																	},
+																	{
+																		"description": "Show the timestamp when the policy expires and stops applying.  The value must follow RFC 3339 and include a UTC offset.  The system accepts non-zero offsets but converts them to the equivalent UTC+00:00  value and returns timestamps with a trailing Z. Expiration policies ignore client  timezones and expire globally at the specified expires_at time.",
+																		"example": "2014-01-01T05:20:20Z",
+																		"type": "string",
+																		"x-auditable": true
+																	}
+																]
+															}
+														},
+														"required": [
+															"expires_at"
+														],
+														"type": "object",
+														"x-stainless-terraform-configurability": "computed_optional"
+													},
+													"filters": {
+														"description": "Specify the protocol or layer to evaluate the traffic, identity, and device posture expressions. Can only contain a single value.",
+														"example": [
+															"http"
+														],
+														"items": {
+															"description": "Specify the protocol or layer to use.",
+															"enum": [
+																"http",
+																"dns",
+																"l4",
+																"egress",
+																"dns_resolver"
+															],
+															"example": "http",
+															"type": "string",
+															"x-auditable": true
+														},
+														"maxItems": 1,
+														"minItems": 1,
+														"type": "array"
+													},
+													"id": {
+														"description": "Identify the API resource with a UUID.",
+														"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
+														"maxLength": 36,
+														"type": "string",
+														"x-auditable": true
+													},
+													"identity": {
+														"default": "",
+														"description": "Specify the wirefilter expression used for identity matching. The API automatically formats and sanitizes expressions before storing them. To prevent Terraform state drift, use the formatted expression returned in the API response.",
+														"example": "any(identity.groups.name[*] in {\"finance\"})",
+														"type": "string",
+														"x-auditable": true,
+														"x-stainless-terraform-configurability": "computed_optional"
+													},
+													"name": {
+														"description": "Specify the rule name.",
+														"example": "block bad websites",
+														"type": "string",
+														"x-auditable": true
+													},
+													"precedence": {
+														"description": "Set the order of your rules. Lower values indicate higher precedence. At each processing phase, evaluate applicable rules in ascending order of this value. Refer to [Order of enforcement](http://developers.cloudflare.com/learning-paths/secure-internet-traffic/understand-policies/order-of-enforcement/#manage-precedence-with-terraform) to manage precedence via Terraform.",
+														"type": "integer",
+														"x-auditable": true,
+														"x-stainless-terraform-configurability": "computed_optional"
+													},
+													"read_only": {
+														"description": "Indicate that this rule is shared via the Orgs API and read only.",
+														"readOnly": true,
+														"type": "boolean",
+														"x-auditable": true,
+														"x-stainless-terraform-configurability": "computed"
+													},
+													"rule_settings": {
+														"description": "Defines settings for this rule. Settings apply only to specific rule types and must use compatible selectors. If Terraform detects drift, confirm the setting supports your rule type and check whether the API modifies the value. Use API-returned values in your configuration to prevent drift.",
+														"properties": {
+															"add_headers": {
+																"additionalProperties": {
+																	"items": {
+																		"type": "string"
+																	},
+																	"type": "array",
+																	"x-auditable": true
+																},
+																"description": "Add custom headers to allowed requests as key-value pairs. Use header names as keys that map to arrays of header values. Settable only for `http` rules with the action set to `allow`.",
+																"example": {
+																	"My-Next-Header": [
+																		"foo",
+																		"bar"
+																	],
+																	"X-Custom-Header-Name": [
+																		"somecustomvalue"
+																	]
+																},
+																"nullable": true,
+																"type": "object",
+																"x-stainless-terraform-configurability": "optional"
+															},
+															"allow_child_bypass": {
+																"description": "Set to enable MSP children to bypass this rule. Only parent MSP accounts can set this. this rule. Settable for all types of rules.",
+																"example": false,
+																"nullable": true,
+																"type": "boolean",
+																"x-auditable": true,
+																"x-stainless-terraform-configurability": "computed_optional"
+															},
+															"audit_ssh": {
+																"description": "Define the settings for the Audit SSH action. Settable only for `l4` rules with `audit_ssh` action.",
+																"nullable": true,
+																"properties": {
+																	"command_logging": {
+																		"description": "Enable SSH command logging.",
+																		"example": false,
+																		"type": "boolean",
+																		"x-auditable": true
+																	}
+																},
+																"type": "object",
+																"x-stainless-terraform-configurability": "optional"
+															},
+															"biso_admin_controls": {
+																"description": "Configure browser isolation behavior. Settable only for `http` rules with the action set to `isolate`.",
+																"properties": {
+																	"copy": {
+																		"description": "Configure copy behavior. If set to remote_only, users cannot copy isolated content from the remote browser to the local clipboard. If this field is absent, copying remains enabled. Applies only when version == \"v2\".",
+																		"enum": [
+																			"enabled",
+																			"disabled",
+																			"remote_only"
+																		],
+																		"example": "remote_only",
+																		"type": "string",
+																		"x-auditable": true
+																	},
+																	"dcp": {
+																		"description": "Set to false to enable copy-pasting. Only applies when `version == \"v1\"`.",
+																		"type": "boolean",
+																		"x-auditable": true
+																	},
+																	"dd": {
+																		"description": "Set to false to enable downloading. Only applies when `version == \"v1\"`.",
+																		"type": "boolean",
+																		"x-auditable": true
+																	},
+																	"dk": {
+																		"description": "Set to false to enable keyboard usage. Only applies when `version == \"v1\"`.",
+																		"type": "boolean",
+																		"x-auditable": true
+																	},
+																	"download": {
+																		"description": "Configure download behavior. When set to remote_only, users can view downloads but cannot save them. If this field is absent, downloading remains enabled. Applies only when version == \"v2\".",
+																		"enum": [
+																			"enabled",
+																			"disabled",
+																			"remote_only"
+																		],
+																		"example": "enabled",
+																		"type": "string",
+																		"x-auditable": true
+																	},
+																	"dp": {
+																		"description": "Set to false to enable printing. Only applies when `version == \"v1\"`.",
+																		"example": false,
+																		"type": "boolean",
+																		"x-auditable": true
+																	},
+																	"du": {
+																		"description": "Set to false to enable uploading. Only applies when `version == \"v1\"`.",
+																		"type": "boolean",
+																		"x-auditable": true
+																	},
+																	"keyboard": {
+																		"description": "Configure keyboard usage behavior. If this field is absent, keyboard usage remains enabled. Applies only when version == \"v2\".",
+																		"enum": [
+																			"enabled",
+																			"disabled"
+																		],
+																		"example": "enabled",
+																		"type": "string",
+																		"x-auditable": true
+																	},
+																	"paste": {
+																		"description": "Configure paste behavior. If set to remote_only, users cannot paste content from the local clipboard into isolated pages. If this field is absent, pasting remains enabled. Applies only when version == \"v2\".",
+																		"enum": [
+																			"enabled",
+																			"disabled",
+																			"remote_only"
+																		],
+																		"example": "enabled",
+																		"type": "string",
+																		"x-auditable": true
+																	},
+																	"printing": {
+																		"description": "Configure print behavior. Default, Printing is enabled. Applies only when version == \"v2\".",
+																		"enum": [
+																			"enabled",
+																			"disabled"
+																		],
+																		"example": "enabled",
+																		"type": "string",
+																		"x-auditable": true
+																	},
+																	"upload": {
+																		"description": "Configure upload behavior. If this field is absent, uploading remains enabled. Applies only when version == \"v2\".",
+																		"enum": [
+																			"enabled",
+																			"disabled"
+																		],
+																		"example": "enabled",
+																		"type": "string",
+																		"x-auditable": true
+																	},
+																	"version": {
+																		"default": "v1",
+																		"description": "Indicate which version of the browser isolation controls should apply.",
+																		"enum": [
+																			"v1",
+																			"v2"
+																		],
+																		"type": "string",
+																		"x-auditable": true
+																	},
+																	"wm_id": {
+																		"description": "Specify the watermark ID (UUID) to apply to the isolated browser session. When present, enables watermark rendering in the isolated browser.",
+																		"example": "475345dc-5299-4b6e-8f6a-3d3e4c8e9f1a",
+																		"format": "uuid",
+																		"maxLength": 36,
+																		"minLength": 1,
+																		"type": "string",
+																		"x-auditable": true
+																	}
+																},
+																"type": "object",
+																"x-stainless-terraform-configurability": "optional"
+															},
+															"block_page": {
+																"description": "Configure custom block page settings. If missing or null, use the account settings. Settable only for `http` rules with the action set to `block`.",
+																"nullable": true,
+																"properties": {
+																	"include_context": {
+																		"description": "Specify whether to pass the context information as query parameters.",
+																		"type": "boolean",
+																		"x-auditable": true
+																	},
+																	"target_uri": {
+																		"description": "Specify the URI to which the user is redirected.",
+																		"format": "uri",
+																		"type": "string",
+																		"x-auditable": true
+																	}
+																},
+																"required": [
+																	"target_uri"
+																],
+																"type": "object",
+																"x-stainless-terraform-configurability": "optional"
+															},
+															"block_page_enabled": {
+																"description": "Enable the custom block page. Settable only for `dns` rules with action `block`.",
+																"example": true,
+																"type": "boolean",
+																"x-auditable": true,
+																"x-stainless-terraform-configurability": "computed_optional"
+															},
+															"block_reason": {
+																"description": "Explain why the rule blocks the request. The custom block page shows this text (if enabled). Settable only for `dns`, `l4`, and `http` rules when the action set to `block`.",
+																"example": "This website is a security risk",
+																"nullable": true,
+																"type": "string",
+																"x-auditable": true,
+																"x-stainless-terraform-configurability": "computed_optional"
+															},
+															"bypass_parent_rule": {
+																"description": "Set to enable MSP accounts to bypass their parent's rules. Only MSP child accounts can set this. Settable for all types of rules.",
+																"example": false,
+																"nullable": true,
+																"type": "boolean",
+																"x-auditable": true,
+																"x-stainless-terraform-configurability": "optional"
+															},
+															"check_session": {
+																"description": "Configure session check behavior. Settable only for `l4` and `http` rules with the action set to `allow`.",
+																"nullable": true,
+																"properties": {
+																	"duration": {
+																		"description": "Sets the required session freshness threshold. The API returns a normalized version of this value.",
+																		"example": "300s",
+																		"type": "string",
+																		"x-auditable": true
+																	},
+																	"enforce": {
+																		"description": "Enable session enforcement.",
+																		"example": true,
+																		"type": "boolean",
+																		"x-auditable": true
+																	}
+																},
+																"type": "object",
+																"x-stainless-terraform-configurability": "optional"
+															},
+															"dns_resolvers": {
+																"description": "Configure custom resolvers to route queries that match the resolver policy. Unused with 'resolve_dns_through_cloudflare' or 'resolve_dns_internally' settings. DNS queries get routed to the address closest to their origin. Only valid when a rule's action set to 'resolve'. Settable only for `dns_resolver` rules.",
+																"nullable": true,
+																"properties": {
+																	"ipv4": {
+																		"items": {
+																			"properties": {
+																				"ip": {
+																					"description": "Specify the IPv4 address of the upstream resolver.",
+																					"example": "2.2.2.2",
+																					"type": "string",
+																					"x-auditable": true
+																				},
+																				"port": {
+																					"description": "Specify a port number to use for the upstream resolver. Defaults to 53 if unspecified.",
+																					"example": 5053,
+																					"type": "integer",
+																					"x-auditable": true
+																				},
+																				"route_through_private_network": {
+																					"description": "Indicate whether to connect to this resolver over a private network. Must set when vnet_id set.",
+																					"example": true,
+																					"type": "boolean",
+																					"x-auditable": true
+																				},
+																				"vnet_id": {
+																					"description": "Specify an optional virtual network for this resolver. Uses default virtual network id if omitted.",
+																					"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
+																					"type": "string",
+																					"x-auditable": true
+																				}
+																			},
+																			"required": [
+																				"ip"
+																			],
+																			"type": "object",
+																			"x-stainless-terraform-configurability": "computed_optional"
+																		},
+																		"type": "array"
+																	},
+																	"ipv6": {
+																		"items": {
+																			"properties": {
+																				"ip": {
+																					"description": "Specify the IPv6 address of the upstream resolver.",
+																					"example": "2001:DB8::",
+																					"type": "string",
+																					"x-auditable": true
+																				},
+																				"port": {
+																					"description": "Specify a port number to use for the upstream resolver. Defaults to 53 if unspecified.",
+																					"example": 5053,
+																					"type": "integer",
+																					"x-auditable": true
+																				},
+																				"route_through_private_network": {
+																					"description": "Indicate whether to connect to this resolver over a private network. Must set when vnet_id set.",
+																					"example": true,
+																					"type": "boolean",
+																					"x-auditable": true
+																				},
+																				"vnet_id": {
+																					"description": "Specify an optional virtual network for this resolver. Uses default virtual network id if omitted.",
+																					"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
+																					"type": "string",
+																					"x-auditable": true
+																				}
+																			},
+																			"required": [
+																				"ip"
+																			],
+																			"type": "object",
+																			"x-stainless-terraform-configurability": "computed_optional"
+																		},
+																		"type": "array"
+																	}
+																},
+																"type": "object",
+																"x-stainless-terraform-configurability": "optional"
+															},
+															"egress": {
+																"description": "Configure how Gateway Proxy traffic egresses. You can enable this setting for rules with Egress actions and filters, or omit it to indicate local egress via WARP IPs. Settable only for `egress` rules.",
+																"nullable": true,
+																"properties": {
+																	"ipv4": {
+																		"description": "Specify the IPv4 address to use for egress.",
+																		"example": "192.0.2.2",
+																		"type": "string",
+																		"x-auditable": true
+																	},
+																	"ipv4_fallback": {
+																		"description": "Specify the fallback IPv4 address to use for egress when the primary IPv4 fails. Set '0.0.0.0' to indicate local egress via WARP IPs.",
+																		"example": "192.0.2.3",
+																		"type": "string",
+																		"x-auditable": true
+																	},
+																	"ipv6": {
+																		"description": "Specify the IPv6 range to use for egress.",
+																		"example": "2001:DB8::/64",
+																		"type": "string",
+																		"x-auditable": true
+																	}
+																},
+																"type": "object",
+																"x-stainless-terraform-configurability": "optional"
+															},
+															"forensic_copy": {
+																"description": "Configure whether a copy of the HTTP request will be sent to storage when the rule matches.",
+																"nullable": true,
+																"properties": {
+																	"enabled": {
+																		"description": "Enable sending the copy to storage.",
+																		"type": "boolean",
+																		"x-auditable": true
+																	}
+																},
+																"type": "object",
+																"x-stainless-terraform-configurability": "optional"
+															},
+															"ignore_cname_category_matches": {
+																"description": "Ignore category matches at CNAME domains in a response. When off, evaluate categories in this rule against all CNAME domain categories in the response. Settable only for `dns` and `dns_resolver` rules.",
+																"example": true,
+																"type": "boolean",
+																"x-auditable": true,
+																"x-stainless-terraform-configurability": "computed_optional"
+															},
+															"insecure_disable_dnssec_validation": {
+																"description": "Specify whether to disable DNSSEC validation (for Allow actions) [INSECURE]. Settable only for `dns` rules.",
+																"example": false,
+																"type": "boolean",
+																"x-auditable": true,
+																"x-stainless-terraform-configurability": "computed_optional"
+															},
+															"ip_categories": {
+																"description": "Enable IPs in DNS resolver category blocks. The system blocks only domain name categories unless you enable this setting. Settable only for `dns` and `dns_resolver` rules.",
+																"example": true,
+																"type": "boolean",
+																"x-auditable": true,
+																"x-stainless-terraform-configurability": "computed_optional"
+															},
+															"ip_indicator_feeds": {
+																"description": "Indicates whether to include IPs in DNS resolver indicator feed blocks. Default, indicator feeds block only domain names. Settable only for `dns` and `dns_resolver` rules.",
+																"example": true,
+																"type": "boolean",
+																"x-auditable": true,
+																"x-stainless-terraform-configurability": "computed_optional"
+															},
+															"l4override": {
+																"description": "Send matching traffic to the supplied destination IP address and port. Settable only for `l4` rules with the action set to `l4_override`.",
+																"nullable": true,
+																"properties": {
+																	"ip": {
+																		"description": "Defines the IPv4 or IPv6 address.",
+																		"example": "1.1.1.1",
+																		"type": "string",
+																		"x-auditable": true
+																	},
+																	"port": {
+																		"description": "Defines a port number to use for TCP/UDP overrides.",
+																		"type": "integer",
+																		"x-auditable": true
+																	}
+																},
+																"type": "object",
+																"x-stainless-terraform-configurability": "optional"
+															},
+															"notification_settings": {
+																"description": "Configure a notification to display on the user's device when this rule matched. Settable for all types of rules with the action set to `block`.",
+																"nullable": true,
+																"properties": {
+																	"enabled": {
+																		"description": "Enable notification.",
+																		"type": "boolean",
+																		"x-auditable": true
+																	},
+																	"include_context": {
+																		"description": "Indicates whether to pass the context information as query parameters.",
+																		"type": "boolean",
+																		"x-auditable": true
+																	},
+																	"msg": {
+																		"description": "Customize the message shown in the notification.",
+																		"type": "string",
+																		"x-auditable": true
+																	},
+																	"support_url": {
+																		"description": "Defines an optional URL to direct users to additional information. If unset, the notification opens a block page.",
+																		"type": "string",
+																		"x-auditable": true
+																	}
+																},
+																"type": "object",
+																"x-stainless-terraform-configurability": "optional"
+															},
+															"override_host": {
+																"description": "Defines a hostname for override, for the matching DNS queries. Settable only for `dns` rules with the action set to `override`.",
+																"example": "example.com",
+																"type": "string",
+																"x-auditable": true,
+																"x-stainless-terraform-configurability": "computed_optional"
+															},
+															"override_ips": {
+																"description": "Defines a an IP or set of IPs for overriding matched DNS queries. Settable only for `dns` rules with the action set to `override`.",
+																"example": [
+																	"1.1.1.1",
+																	"2.2.2.2"
+																],
+																"items": {
+																	"description": "Defines the IPv4 or IPv6 address.",
+																	"example": "1.1.1.1",
+																	"type": "string",
+																	"x-auditable": true
+																},
+																"nullable": true,
+																"type": "array",
+																"x-stainless-terraform-configurability": "computed_optional"
+															},
+															"payload_log": {
+																"description": "Configure DLP payload logging. Settable only for `http` rules.",
+																"nullable": true,
+																"properties": {
+																	"enabled": {
+																		"description": "Enable DLP payload logging for this rule.",
+																		"example": true,
+																		"type": "boolean",
+																		"x-auditable": true
+																	}
+																},
+																"type": "object",
+																"x-stainless-terraform-configurability": "optional"
+															},
+															"quarantine": {
+																"description": "Configure settings that apply to quarantine rules. Settable only for `http` rules.",
+																"nullable": true,
+																"properties": {
+																	"file_types": {
+																		"description": "Specify the types of files to sandbox.",
+																		"items": {
+																			"enum": [
+																				"exe",
+																				"pdf",
+																				"doc",
+																				"docm",
+																				"docx",
+																				"rtf",
+																				"ppt",
+																				"pptx",
+																				"xls",
+																				"xlsm",
+																				"xlsx",
+																				"zip",
+																				"rar"
+																			],
+																			"type": "string",
+																			"x-auditable": true
+																		},
+																		"type": "array"
+																	}
+																},
+																"type": "object",
+																"x-stainless-terraform-configurability": "optional"
+															},
+															"redirect": {
+																"description": "Apply settings to redirect rules. Settable only for `http` rules with the action set to `redirect`.",
+																"nullable": true,
+																"properties": {
+																	"include_context": {
+																		"description": "Specify whether to pass the context information as query parameters.",
+																		"type": "boolean",
+																		"x-auditable": true
+																	},
+																	"preserve_path_and_query": {
+																		"description": "Specify whether to append the path and query parameters from the original request to target_uri.",
+																		"type": "boolean",
+																		"x-auditable": true
+																	},
+																	"target_uri": {
+																		"description": "Specify the URI to which the user is redirected.",
+																		"format": "uri",
+																		"type": "string",
+																		"x-auditable": true
+																	}
+																},
+																"required": [
+																	"target_uri"
+																],
+																"type": "object",
+																"x-stainless-terraform-configurability": "optional"
+															},
+															"resolve_dns_internally": {
+																"description": "Configure to forward the query to the internal DNS service, passing the specified 'view_id' as input. Not used when 'dns_resolvers' is specified or 'resolve_dns_through_cloudflare' is set. Only valid when a rule's action set to 'resolve'. Settable only for `dns_resolver` rules.",
+																"nullable": true,
+																"properties": {
+																	"fallback": {
+																		"description": "Specify the fallback behavior to apply when the internal DNS response code differs from 'NOERROR' or when the response data contains only CNAME records for 'A' or 'AAAA' queries.",
+																		"enum": [
+																			"none",
+																			"public_dns"
+																		],
+																		"type": "string",
+																		"x-auditable": true
+																	},
+																	"view_id": {
+																		"description": "Specify the internal DNS view identifier to pass to the internal DNS service.",
+																		"type": "string",
+																		"x-auditable": true
+																	}
+																},
+																"type": "object",
+																"x-stainless-terraform-configurability": "optional"
+															},
+															"resolve_dns_through_cloudflare": {
+																"description": "Enable to send queries that match the policy to Cloudflare's default 1.1.1.1 DNS resolver. Cannot set when 'dns_resolvers' specified or 'resolve_dns_internally' is set. Only valid when a rule's action set to 'resolve'. Settable only for `dns_resolver` rules.",
+																"example": true,
+																"nullable": true,
+																"type": "boolean",
+																"x-auditable": true,
+																"x-stainless-terraform-configurability": "computed_optional"
+															},
+															"untrusted_cert": {
+																"description": "Configure behavior when an upstream certificate is invalid or an SSL error occurs. Settable only for `http` rules with the action set to `allow`.",
+																"nullable": true,
+																"properties": {
+																	"action": {
+																		"description": "Defines the action performed when an untrusted certificate seen. The default action an error with HTTP code 526.",
+																		"enum": [
+																			"pass_through",
+																			"block",
+																			"error"
+																		],
+																		"example": "error",
+																		"type": "string",
+																		"x-auditable": true
+																	}
+																},
+																"type": "object",
+																"x-stainless-terraform-configurability": "optional"
+															}
+														},
+														"type": "object",
+														"x-stainless-terraform-configurability": "computed_optional"
+													},
+													"schedule": {
+														"description": "Defines the schedule for activating DNS policies. Settable only for `dns` and `dns_resolver` rules.",
+														"nullable": true,
+														"properties": {
+															"fri": {
+																"description": "Specify the time intervals when the rule is active on Fridays, in the increasing order from 00:00-24:00.  If this parameter omitted, the rule is deactivated on Fridays. API returns a formatted version of this string, which may cause Terraform drift if a unformatted value is used.",
+																"example": "08:00-12:30,13:30-17:00",
+																"type": "string",
+																"x-auditable": true
+															},
+															"mon": {
+																"description": "Specify the time intervals when the rule is active on Mondays, in the increasing order from 00:00-24:00(capped at maximum of 6 time splits). If this parameter omitted, the rule is deactivated on Mondays. API returns a formatted version of this string, which may cause Terraform drift if a unformatted value is used.",
+																"example": "08:00-12:30,13:30-17:00",
+																"type": "string",
+																"x-auditable": true
+															},
+															"sat": {
+																"description": "Specify the time intervals when the rule is active on Saturdays, in the increasing order from 00:00-24:00.  If this parameter omitted, the rule is deactivated on Saturdays. API returns a formatted version of this string, which may cause Terraform drift if a unformatted value is used.",
+																"example": "08:00-12:30,13:30-17:00",
+																"type": "string",
+																"x-auditable": true
+															},
+															"sun": {
+																"description": "Specify the time intervals when the rule is active on Sundays, in the increasing order from 00:00-24:00. If this parameter omitted, the rule is deactivated on Sundays. API returns a formatted version of this string, which may cause Terraform drift if a unformatted value is used.",
+																"example": "08:00-12:30,13:30-17:00",
+																"type": "string",
+																"x-auditable": true
+															},
+															"thu": {
+																"description": "Specify the time intervals when the rule is active on Thursdays, in the increasing order from 00:00-24:00. If this parameter omitted, the rule is deactivated on Thursdays. API returns a formatted version of this string, which may cause Terraform drift if a unformatted value is used.",
+																"example": "08:00-12:30,13:30-17:00",
+																"type": "string",
+																"x-auditable": true
+															},
+															"time_zone": {
+																"description": "Specify the time zone for rule evaluation. When a [valid time zone city name](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones#List) is provided, Gateway always uses the current time for that time zone. When this parameter is omitted, Gateway uses the time zone determined from the user's IP address. Colo time zone is used when the user's IP address does not resolve to a location.",
+																"example": "America/New York",
+																"type": "string",
+																"x-auditable": true
+															},
+															"tue": {
+																"description": "Specify the time intervals when the rule is active on Tuesdays, in the increasing order from 00:00-24:00. If this parameter omitted, the rule is deactivated on Tuesdays. API returns a formatted version of this string, which may cause Terraform drift if a unformatted value is used.",
+																"example": "08:00-12:30,13:30-17:00",
+																"type": "string",
+																"x-auditable": true
+															},
+															"wed": {
+																"description": "Specify the time intervals when the rule is active on Wednesdays, in the increasing order from 00:00-24:00. If this parameter omitted, the rule is deactivated on Wednesdays. API returns a formatted version of this string, which may cause Terraform drift if a unformatted value is used.",
+																"example": "08:00-12:30,13:30-17:00",
+																"type": "string",
+																"x-auditable": true
+															}
+														},
+														"type": "object",
+														"x-stainless-terraform-configurability": "computed_optional"
+													},
+													"sharable": {
+														"description": "Indicate that this rule is sharable via the Orgs API.",
+														"readOnly": true,
+														"type": "boolean",
+														"x-auditable": true,
+														"x-stainless-terraform-configurability": "computed"
+													},
+													"source_account": {
+														"description": "Provide the account tag of the account that created the rule.",
+														"readOnly": true,
+														"type": "string",
+														"x-auditable": true,
+														"x-stainless-terraform-configurability": "computed"
+													},
+													"traffic": {
+														"default": "",
+														"description": "Specify the wirefilter expression used for traffic matching. The API automatically formats and sanitizes expressions before storing them. To prevent Terraform state drift, use the formatted expression returned in the API response.",
+														"example": "http.request.uri matches \".*a/partial/uri.*\" and http.request.host in $01302951-49f9-47c9-a400-0297e60b6a10",
+														"type": "string",
+														"x-auditable": true,
+														"x-stainless-terraform-configurability": "computed_optional"
+													},
+													"updated_at": {
+														"example": "2014-01-01T05:20:00.12345Z",
+														"format": "date-time",
+														"readOnly": true,
+														"type": "string"
+													},
+													"version": {
+														"description": "Indicate the version number of the rule(read-only).",
+														"example": 1,
+														"readOnly": true,
+														"type": "integer",
+														"x-auditable": true,
+														"x-stainless-terraform-configurability": "computed"
+													},
+													"warning_status": {
+														"description": "Indicate a warning for a misconfigured rule, if any.",
+														"nullable": true,
+														"readOnly": true,
+														"type": "string",
+														"x-stainless-terraform-configurability": "computed"
+													}
+												},
+												"required": [
+													"name",
+													"precedence",
+													"enabled",
+													"action",
+													"traffic",
+													"filters"
+												],
+												"type": "object"
+											},
+											"type": "array"
+										}
+									},
+									"type": "object"
+								}
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Patch multiple Zero Trust Gateway rules response."
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"allOf": [
+												{
+													"properties": {
+														"errors": {
+															"example": [],
+															"items": {
+																"properties": {
+																	"code": {
+																		"minimum": 1000,
+																		"type": "integer"
+																	},
+																	"message": {
+																		"type": "string"
+																	}
+																},
+																"required": [
+																	"code",
+																	"message"
+																],
+																"type": "object",
+																"uniqueItems": true
+															},
+															"type": "array"
+														},
+														"messages": {
+															"example": [],
+															"items": {
+																"properties": {
+																	"code": {
+																		"minimum": 1000,
+																		"type": "integer"
+																	},
+																	"message": {
+																		"type": "string"
+																	}
+																},
+																"required": [
+																	"code",
+																	"message"
+																],
+																"type": "object",
+																"uniqueItems": true
+															},
+															"type": "array"
+														},
+														"success": {
+															"description": "Indicate whether the API call was successful.",
+															"enum": [
+																true
+															],
+															"example": true,
+															"type": "boolean"
+														}
+													},
+													"required": [
+														"success",
+														"errors",
+														"messages"
+													],
+													"type": "object"
+												},
+												{
+													"properties": {
+														"result_info": {
+															"properties": {
+																"count": {
+																	"description": "Indicate the total number of results for the requested service.",
+																	"example": 1,
+																	"type": "number"
+																},
+																"page": {
+																	"description": "Indicate the current page within a paginated list of results.",
+																	"example": 1,
+																	"type": "number"
+																},
+																"per_page": {
+																	"description": "Indicate the number of results per page.",
+																	"example": 20,
+																	"type": "number"
+																},
+																"total_count": {
+																	"description": "Indicate the total results available without any search parameters.",
+																	"example": 2000,
+																	"type": "number"
+																}
+															},
+															"type": "object"
+														}
+													},
+													"type": "object"
+												}
+											],
+											"type": "object"
+										},
+										{
+											"properties": {
+												"result": {
+													"items": {
+														"properties": {
+															"action": {
+																"description": "Specify the action to perform when the associated traffic, identity, and device posture expressions either absent or evaluate to `true`.",
+																"enum": [
+																	"on",
+																	"off",
+																	"allow",
+																	"block",
+																	"scan",
+																	"noscan",
+																	"safesearch",
+																	"ytrestricted",
+																	"isolate",
+																	"noisolate",
+																	"override",
+																	"l4_override",
+																	"egress",
+																	"resolve",
+																	"quarantine",
+																	"redirect"
+																],
+																"example": "allow",
+																"type": "string",
+																"x-auditable": true
+															},
+															"created_at": {
+																"example": "2014-01-01T05:20:00.12345Z",
+																"format": "date-time",
+																"readOnly": true,
+																"type": "string"
+															},
+															"deleted_at": {
+																"description": "Indicate the date of deletion, if any.",
+																"format": "date-time",
+																"nullable": true,
+																"readOnly": true,
+																"type": "string",
+																"x-stainless-terraform-configurability": "computed"
+															},
+															"description": {
+																"description": "Specify the rule description.",
+																"example": "Block bad websites based on their host name.",
+																"type": "string",
+																"x-auditable": true
+															},
+															"device_posture": {
+																"default": "",
+																"description": "Specify the wirefilter expression used for device posture check. The API automatically formats and sanitizes expressions before storing them. To prevent Terraform state drift, use the formatted expression returned in the API response.",
+																"example": "any(device_posture.checks.passed[*] in {\"1308749e-fcfb-4ebc-b051-fe022b632644\"})",
+																"type": "string",
+																"x-auditable": true,
+																"x-stainless-terraform-configurability": "computed_optional"
+															},
+															"enabled": {
+																"default": false,
+																"description": "Specify whether the rule is enabled.",
+																"example": true,
+																"type": "boolean",
+																"x-auditable": true
+															},
+															"expiration": {
+																"description": "Defines the expiration time stamp and default duration of a DNS policy. Takes precedence over the policy's `schedule` configuration, if any. This  does not apply to HTTP or network policies. Settable only for `dns` rules.",
+																"nullable": true,
+																"properties": {
+																	"duration": {
+																		"description": "Defines the default duration a policy active in minutes. Must set in order to use the `reset_expiration` endpoint on this rule.",
+																		"example": 10,
+																		"minimum": 5,
+																		"type": "integer",
+																		"x-auditable": true
+																	},
+																	"expired": {
+																		"description": "Indicates whether the policy is expired.",
+																		"example": false,
+																		"readOnly": true,
+																		"type": "boolean",
+																		"x-auditable": true,
+																		"x-stainless-terraform-configurability": "computed"
+																	},
+																	"expires_at": {
+																		"allOf": [
+																			{
+																				"example": "2014-01-01T05:20:00.12345Z",
+																				"format": "date-time",
+																				"type": "string"
+																			},
+																			{
+																				"description": "Show the timestamp when the policy expires and stops applying.  The value must follow RFC 3339 and include a UTC offset.  The system accepts non-zero offsets but converts them to the equivalent UTC+00:00  value and returns timestamps with a trailing Z. Expiration policies ignore client  timezones and expire globally at the specified expires_at time.",
+																				"example": "2014-01-01T05:20:20Z",
+																				"type": "string",
+																				"x-auditable": true
+																			}
+																		]
+																	}
+																},
+																"required": [
+																	"expires_at"
+																],
+																"type": "object",
+																"x-stainless-terraform-configurability": "computed_optional"
+															},
+															"filters": {
+																"description": "Specify the protocol or layer to evaluate the traffic, identity, and device posture expressions. Can only contain a single value.",
+																"example": [
+																	"http"
+																],
+																"items": {
+																	"description": "Specify the protocol or layer to use.",
+																	"enum": [
+																		"http",
+																		"dns",
+																		"l4",
+																		"egress",
+																		"dns_resolver"
+																	],
+																	"example": "http",
+																	"type": "string",
+																	"x-auditable": true
+																},
+																"maxItems": 1,
+																"minItems": 1,
+																"type": "array"
+															},
+															"id": {
+																"description": "Identify the API resource with a UUID.",
+																"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
+																"maxLength": 36,
+																"type": "string",
+																"x-auditable": true
+															},
+															"identity": {
+																"default": "",
+																"description": "Specify the wirefilter expression used for identity matching. The API automatically formats and sanitizes expressions before storing them. To prevent Terraform state drift, use the formatted expression returned in the API response.",
+																"example": "any(identity.groups.name[*] in {\"finance\"})",
+																"type": "string",
+																"x-auditable": true,
+																"x-stainless-terraform-configurability": "computed_optional"
+															},
+															"name": {
+																"description": "Specify the rule name.",
+																"example": "block bad websites",
+																"type": "string",
+																"x-auditable": true
+															},
+															"precedence": {
+																"description": "Set the order of your rules. Lower values indicate higher precedence. At each processing phase, evaluate applicable rules in ascending order of this value. Refer to [Order of enforcement](http://developers.cloudflare.com/learning-paths/secure-internet-traffic/understand-policies/order-of-enforcement/#manage-precedence-with-terraform) to manage precedence via Terraform.",
+																"type": "integer",
+																"x-auditable": true,
+																"x-stainless-terraform-configurability": "computed_optional"
+															},
+															"read_only": {
+																"description": "Indicate that this rule is shared via the Orgs API and read only.",
+																"readOnly": true,
+																"type": "boolean",
+																"x-auditable": true,
+																"x-stainless-terraform-configurability": "computed"
+															},
+															"rule_settings": {
+																"description": "Defines settings for this rule. Settings apply only to specific rule types and must use compatible selectors. If Terraform detects drift, confirm the setting supports your rule type and check whether the API modifies the value. Use API-returned values in your configuration to prevent drift.",
+																"properties": {
+																	"add_headers": {
+																		"additionalProperties": {
+																			"items": {
+																				"type": "string"
+																			},
+																			"type": "array",
+																			"x-auditable": true
+																		},
+																		"description": "Add custom headers to allowed requests as key-value pairs. Use header names as keys that map to arrays of header values. Settable only for `http` rules with the action set to `allow`.",
+																		"example": {
+																			"My-Next-Header": [
+																				"foo",
+																				"bar"
+																			],
+																			"X-Custom-Header-Name": [
+																				"somecustomvalue"
+																			]
+																		},
+																		"nullable": true,
+																		"type": "object",
+																		"x-stainless-terraform-configurability": "optional"
+																	},
+																	"allow_child_bypass": {
+																		"description": "Set to enable MSP children to bypass this rule. Only parent MSP accounts can set this. this rule. Settable for all types of rules.",
+																		"example": false,
+																		"nullable": true,
+																		"type": "boolean",
+																		"x-auditable": true,
+																		"x-stainless-terraform-configurability": "computed_optional"
+																	},
+																	"audit_ssh": {
+																		"description": "Define the settings for the Audit SSH action. Settable only for `l4` rules with `audit_ssh` action.",
+																		"nullable": true,
+																		"properties": {
+																			"command_logging": {
+																				"description": "Enable SSH command logging.",
+																				"example": false,
+																				"type": "boolean",
+																				"x-auditable": true
+																			}
+																		},
+																		"type": "object",
+																		"x-stainless-terraform-configurability": "optional"
+																	},
+																	"biso_admin_controls": {
+																		"description": "Configure browser isolation behavior. Settable only for `http` rules with the action set to `isolate`.",
+																		"properties": {
+																			"copy": {
+																				"description": "Configure copy behavior. If set to remote_only, users cannot copy isolated content from the remote browser to the local clipboard. If this field is absent, copying remains enabled. Applies only when version == \"v2\".",
+																				"enum": [
+																					"enabled",
+																					"disabled",
+																					"remote_only"
+																				],
+																				"example": "remote_only",
+																				"type": "string",
+																				"x-auditable": true
+																			},
+																			"dcp": {
+																				"description": "Set to false to enable copy-pasting. Only applies when `version == \"v1\"`.",
+																				"type": "boolean",
+																				"x-auditable": true
+																			},
+																			"dd": {
+																				"description": "Set to false to enable downloading. Only applies when `version == \"v1\"`.",
+																				"type": "boolean",
+																				"x-auditable": true
+																			},
+																			"dk": {
+																				"description": "Set to false to enable keyboard usage. Only applies when `version == \"v1\"`.",
+																				"type": "boolean",
+																				"x-auditable": true
+																			},
+																			"download": {
+																				"description": "Configure download behavior. When set to remote_only, users can view downloads but cannot save them. If this field is absent, downloading remains enabled. Applies only when version == \"v2\".",
+																				"enum": [
+																					"enabled",
+																					"disabled",
+																					"remote_only"
+																				],
+																				"example": "enabled",
+																				"type": "string",
+																				"x-auditable": true
+																			},
+																			"dp": {
+																				"description": "Set to false to enable printing. Only applies when `version == \"v1\"`.",
+																				"example": false,
+																				"type": "boolean",
+																				"x-auditable": true
+																			},
+																			"du": {
+																				"description": "Set to false to enable uploading. Only applies when `version == \"v1\"`.",
+																				"type": "boolean",
+																				"x-auditable": true
+																			},
+																			"keyboard": {
+																				"description": "Configure keyboard usage behavior. If this field is absent, keyboard usage remains enabled. Applies only when version == \"v2\".",
+																				"enum": [
+																					"enabled",
+																					"disabled"
+																				],
+																				"example": "enabled",
+																				"type": "string",
+																				"x-auditable": true
+																			},
+																			"paste": {
+																				"description": "Configure paste behavior. If set to remote_only, users cannot paste content from the local clipboard into isolated pages. If this field is absent, pasting remains enabled. Applies only when version == \"v2\".",
+																				"enum": [
+																					"enabled",
+																					"disabled",
+																					"remote_only"
+																				],
+																				"example": "enabled",
+																				"type": "string",
+																				"x-auditable": true
+																			},
+																			"printing": {
+																				"description": "Configure print behavior. Default, Printing is enabled. Applies only when version == \"v2\".",
+																				"enum": [
+																					"enabled",
+																					"disabled"
+																				],
+																				"example": "enabled",
+																				"type": "string",
+																				"x-auditable": true
+																			},
+																			"upload": {
+																				"description": "Configure upload behavior. If this field is absent, uploading remains enabled. Applies only when version == \"v2\".",
+																				"enum": [
+																					"enabled",
+																					"disabled"
+																				],
+																				"example": "enabled",
+																				"type": "string",
+																				"x-auditable": true
+																			},
+																			"version": {
+																				"default": "v1",
+																				"description": "Indicate which version of the browser isolation controls should apply.",
+																				"enum": [
+																					"v1",
+																					"v2"
+																				],
+																				"type": "string",
+																				"x-auditable": true
+																			},
+																			"wm_id": {
+																				"description": "Specify the watermark ID (UUID) to apply to the isolated browser session. When present, enables watermark rendering in the isolated browser.",
+																				"example": "475345dc-5299-4b6e-8f6a-3d3e4c8e9f1a",
+																				"format": "uuid",
+																				"maxLength": 36,
+																				"minLength": 1,
+																				"type": "string",
+																				"x-auditable": true
+																			}
+																		},
+																		"type": "object",
+																		"x-stainless-terraform-configurability": "optional"
+																	},
+																	"block_page": {
+																		"description": "Configure custom block page settings. If missing or null, use the account settings. Settable only for `http` rules with the action set to `block`.",
+																		"nullable": true,
+																		"properties": {
+																			"include_context": {
+																				"description": "Specify whether to pass the context information as query parameters.",
+																				"type": "boolean",
+																				"x-auditable": true
+																			},
+																			"target_uri": {
+																				"description": "Specify the URI to which the user is redirected.",
+																				"format": "uri",
+																				"type": "string",
+																				"x-auditable": true
+																			}
+																		},
+																		"required": [
+																			"target_uri"
+																		],
+																		"type": "object",
+																		"x-stainless-terraform-configurability": "optional"
+																	},
+																	"block_page_enabled": {
+																		"description": "Enable the custom block page. Settable only for `dns` rules with action `block`.",
+																		"example": true,
+																		"type": "boolean",
+																		"x-auditable": true,
+																		"x-stainless-terraform-configurability": "computed_optional"
+																	},
+																	"block_reason": {
+																		"description": "Explain why the rule blocks the request. The custom block page shows this text (if enabled). Settable only for `dns`, `l4`, and `http` rules when the action set to `block`.",
+																		"example": "This website is a security risk",
+																		"nullable": true,
+																		"type": "string",
+																		"x-auditable": true,
+																		"x-stainless-terraform-configurability": "computed_optional"
+																	},
+																	"bypass_parent_rule": {
+																		"description": "Set to enable MSP accounts to bypass their parent's rules. Only MSP child accounts can set this. Settable for all types of rules.",
+																		"example": false,
+																		"nullable": true,
+																		"type": "boolean",
+																		"x-auditable": true,
+																		"x-stainless-terraform-configurability": "optional"
+																	},
+																	"check_session": {
+																		"description": "Configure session check behavior. Settable only for `l4` and `http` rules with the action set to `allow`.",
+																		"nullable": true,
+																		"properties": {
+																			"duration": {
+																				"description": "Sets the required session freshness threshold. The API returns a normalized version of this value.",
+																				"example": "300s",
+																				"type": "string",
+																				"x-auditable": true
+																			},
+																			"enforce": {
+																				"description": "Enable session enforcement.",
+																				"example": true,
+																				"type": "boolean",
+																				"x-auditable": true
+																			}
+																		},
+																		"type": "object",
+																		"x-stainless-terraform-configurability": "optional"
+																	},
+																	"dns_resolvers": {
+																		"description": "Configure custom resolvers to route queries that match the resolver policy. Unused with 'resolve_dns_through_cloudflare' or 'resolve_dns_internally' settings. DNS queries get routed to the address closest to their origin. Only valid when a rule's action set to 'resolve'. Settable only for `dns_resolver` rules.",
+																		"nullable": true,
+																		"properties": {
+																			"ipv4": {
+																				"items": {
+																					"properties": {
+																						"ip": {
+																							"description": "Specify the IPv4 address of the upstream resolver.",
+																							"example": "2.2.2.2",
+																							"type": "string",
+																							"x-auditable": true
+																						},
+																						"port": {
+																							"description": "Specify a port number to use for the upstream resolver. Defaults to 53 if unspecified.",
+																							"example": 5053,
+																							"type": "integer",
+																							"x-auditable": true
+																						},
+																						"route_through_private_network": {
+																							"description": "Indicate whether to connect to this resolver over a private network. Must set when vnet_id set.",
+																							"example": true,
+																							"type": "boolean",
+																							"x-auditable": true
+																						},
+																						"vnet_id": {
+																							"description": "Specify an optional virtual network for this resolver. Uses default virtual network id if omitted.",
+																							"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
+																							"type": "string",
+																							"x-auditable": true
+																						}
+																					},
+																					"required": [
+																						"ip"
+																					],
+																					"type": "object",
+																					"x-stainless-terraform-configurability": "computed_optional"
+																				},
+																				"type": "array"
+																			},
+																			"ipv6": {
+																				"items": {
+																					"properties": {
+																						"ip": {
+																							"description": "Specify the IPv6 address of the upstream resolver.",
+																							"example": "2001:DB8::",
+																							"type": "string",
+																							"x-auditable": true
+																						},
+																						"port": {
+																							"description": "Specify a port number to use for the upstream resolver. Defaults to 53 if unspecified.",
+																							"example": 5053,
+																							"type": "integer",
+																							"x-auditable": true
+																						},
+																						"route_through_private_network": {
+																							"description": "Indicate whether to connect to this resolver over a private network. Must set when vnet_id set.",
+																							"example": true,
+																							"type": "boolean",
+																							"x-auditable": true
+																						},
+																						"vnet_id": {
+																							"description": "Specify an optional virtual network for this resolver. Uses default virtual network id if omitted.",
+																							"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
+																							"type": "string",
+																							"x-auditable": true
+																						}
+																					},
+																					"required": [
+																						"ip"
+																					],
+																					"type": "object",
+																					"x-stainless-terraform-configurability": "computed_optional"
+																				},
+																				"type": "array"
+																			}
+																		},
+																		"type": "object",
+																		"x-stainless-terraform-configurability": "optional"
+																	},
+																	"egress": {
+																		"description": "Configure how Gateway Proxy traffic egresses. You can enable this setting for rules with Egress actions and filters, or omit it to indicate local egress via WARP IPs. Settable only for `egress` rules.",
+																		"nullable": true,
+																		"properties": {
+																			"ipv4": {
+																				"description": "Specify the IPv4 address to use for egress.",
+																				"example": "192.0.2.2",
+																				"type": "string",
+																				"x-auditable": true
+																			},
+																			"ipv4_fallback": {
+																				"description": "Specify the fallback IPv4 address to use for egress when the primary IPv4 fails. Set '0.0.0.0' to indicate local egress via WARP IPs.",
+																				"example": "192.0.2.3",
+																				"type": "string",
+																				"x-auditable": true
+																			},
+																			"ipv6": {
+																				"description": "Specify the IPv6 range to use for egress.",
+																				"example": "2001:DB8::/64",
+																				"type": "string",
+																				"x-auditable": true
+																			}
+																		},
+																		"type": "object",
+																		"x-stainless-terraform-configurability": "optional"
+																	},
+																	"forensic_copy": {
+																		"description": "Configure whether a copy of the HTTP request will be sent to storage when the rule matches.",
+																		"nullable": true,
+																		"properties": {
+																			"enabled": {
+																				"description": "Enable sending the copy to storage.",
+																				"type": "boolean",
+																				"x-auditable": true
+																			}
+																		},
+																		"type": "object",
+																		"x-stainless-terraform-configurability": "optional"
+																	},
+																	"ignore_cname_category_matches": {
+																		"description": "Ignore category matches at CNAME domains in a response. When off, evaluate categories in this rule against all CNAME domain categories in the response. Settable only for `dns` and `dns_resolver` rules.",
+																		"example": true,
+																		"type": "boolean",
+																		"x-auditable": true,
+																		"x-stainless-terraform-configurability": "computed_optional"
+																	},
+																	"insecure_disable_dnssec_validation": {
+																		"description": "Specify whether to disable DNSSEC validation (for Allow actions) [INSECURE]. Settable only for `dns` rules.",
+																		"example": false,
+																		"type": "boolean",
+																		"x-auditable": true,
+																		"x-stainless-terraform-configurability": "computed_optional"
+																	},
+																	"ip_categories": {
+																		"description": "Enable IPs in DNS resolver category blocks. The system blocks only domain name categories unless you enable this setting. Settable only for `dns` and `dns_resolver` rules.",
+																		"example": true,
+																		"type": "boolean",
+																		"x-auditable": true,
+																		"x-stainless-terraform-configurability": "computed_optional"
+																	},
+																	"ip_indicator_feeds": {
+																		"description": "Indicates whether to include IPs in DNS resolver indicator feed blocks. Default, indicator feeds block only domain names. Settable only for `dns` and `dns_resolver` rules.",
+																		"example": true,
+																		"type": "boolean",
+																		"x-auditable": true,
+																		"x-stainless-terraform-configurability": "computed_optional"
+																	},
+																	"l4override": {
+																		"description": "Send matching traffic to the supplied destination IP address and port. Settable only for `l4` rules with the action set to `l4_override`.",
+																		"nullable": true,
+																		"properties": {
+																			"ip": {
+																				"description": "Defines the IPv4 or IPv6 address.",
+																				"example": "1.1.1.1",
+																				"type": "string",
+																				"x-auditable": true
+																			},
+																			"port": {
+																				"description": "Defines a port number to use for TCP/UDP overrides.",
+																				"type": "integer",
+																				"x-auditable": true
+																			}
+																		},
+																		"type": "object",
+																		"x-stainless-terraform-configurability": "optional"
+																	},
+																	"notification_settings": {
+																		"description": "Configure a notification to display on the user's device when this rule matched. Settable for all types of rules with the action set to `block`.",
+																		"nullable": true,
+																		"properties": {
+																			"enabled": {
+																				"description": "Enable notification.",
+																				"type": "boolean",
+																				"x-auditable": true
+																			},
+																			"include_context": {
+																				"description": "Indicates whether to pass the context information as query parameters.",
+																				"type": "boolean",
+																				"x-auditable": true
+																			},
+																			"msg": {
+																				"description": "Customize the message shown in the notification.",
+																				"type": "string",
+																				"x-auditable": true
+																			},
+																			"support_url": {
+																				"description": "Defines an optional URL to direct users to additional information. If unset, the notification opens a block page.",
+																				"type": "string",
+																				"x-auditable": true
+																			}
+																		},
+																		"type": "object",
+																		"x-stainless-terraform-configurability": "optional"
+																	},
+																	"override_host": {
+																		"description": "Defines a hostname for override, for the matching DNS queries. Settable only for `dns` rules with the action set to `override`.",
+																		"example": "example.com",
+																		"type": "string",
+																		"x-auditable": true,
+																		"x-stainless-terraform-configurability": "computed_optional"
+																	},
+																	"override_ips": {
+																		"description": "Defines a an IP or set of IPs for overriding matched DNS queries. Settable only for `dns` rules with the action set to `override`.",
+																		"example": [
+																			"1.1.1.1",
+																			"2.2.2.2"
+																		],
+																		"items": {
+																			"description": "Defines the IPv4 or IPv6 address.",
+																			"example": "1.1.1.1",
+																			"type": "string",
+																			"x-auditable": true
+																		},
+																		"nullable": true,
+																		"type": "array",
+																		"x-stainless-terraform-configurability": "computed_optional"
+																	},
+																	"payload_log": {
+																		"description": "Configure DLP payload logging. Settable only for `http` rules.",
+																		"nullable": true,
+																		"properties": {
+																			"enabled": {
+																				"description": "Enable DLP payload logging for this rule.",
+																				"example": true,
+																				"type": "boolean",
+																				"x-auditable": true
+																			}
+																		},
+																		"type": "object",
+																		"x-stainless-terraform-configurability": "optional"
+																	},
+																	"quarantine": {
+																		"description": "Configure settings that apply to quarantine rules. Settable only for `http` rules.",
+																		"nullable": true,
+																		"properties": {
+																			"file_types": {
+																				"description": "Specify the types of files to sandbox.",
+																				"items": {
+																					"enum": [
+																						"exe",
+																						"pdf",
+																						"doc",
+																						"docm",
+																						"docx",
+																						"rtf",
+																						"ppt",
+																						"pptx",
+																						"xls",
+																						"xlsm",
+																						"xlsx",
+																						"zip",
+																						"rar"
+																					],
+																					"type": "string",
+																					"x-auditable": true
+																				},
+																				"type": "array"
+																			}
+																		},
+																		"type": "object",
+																		"x-stainless-terraform-configurability": "optional"
+																	},
+																	"redirect": {
+																		"description": "Apply settings to redirect rules. Settable only for `http` rules with the action set to `redirect`.",
+																		"nullable": true,
+																		"properties": {
+																			"include_context": {
+																				"description": "Specify whether to pass the context information as query parameters.",
+																				"type": "boolean",
+																				"x-auditable": true
+																			},
+																			"preserve_path_and_query": {
+																				"description": "Specify whether to append the path and query parameters from the original request to target_uri.",
+																				"type": "boolean",
+																				"x-auditable": true
+																			},
+																			"target_uri": {
+																				"description": "Specify the URI to which the user is redirected.",
+																				"format": "uri",
+																				"type": "string",
+																				"x-auditable": true
+																			}
+																		},
+																		"required": [
+																			"target_uri"
+																		],
+																		"type": "object",
+																		"x-stainless-terraform-configurability": "optional"
+																	},
+																	"resolve_dns_internally": {
+																		"description": "Configure to forward the query to the internal DNS service, passing the specified 'view_id' as input. Not used when 'dns_resolvers' is specified or 'resolve_dns_through_cloudflare' is set. Only valid when a rule's action set to 'resolve'. Settable only for `dns_resolver` rules.",
+																		"nullable": true,
+																		"properties": {
+																			"fallback": {
+																				"description": "Specify the fallback behavior to apply when the internal DNS response code differs from 'NOERROR' or when the response data contains only CNAME records for 'A' or 'AAAA' queries.",
+																				"enum": [
+																					"none",
+																					"public_dns"
+																				],
+																				"type": "string",
+																				"x-auditable": true
+																			},
+																			"view_id": {
+																				"description": "Specify the internal DNS view identifier to pass to the internal DNS service.",
+																				"type": "string",
+																				"x-auditable": true
+																			}
+																		},
+																		"type": "object",
+																		"x-stainless-terraform-configurability": "optional"
+																	},
+																	"resolve_dns_through_cloudflare": {
+																		"description": "Enable to send queries that match the policy to Cloudflare's default 1.1.1.1 DNS resolver. Cannot set when 'dns_resolvers' specified or 'resolve_dns_internally' is set. Only valid when a rule's action set to 'resolve'. Settable only for `dns_resolver` rules.",
+																		"example": true,
+																		"nullable": true,
+																		"type": "boolean",
+																		"x-auditable": true,
+																		"x-stainless-terraform-configurability": "computed_optional"
+																	},
+																	"untrusted_cert": {
+																		"description": "Configure behavior when an upstream certificate is invalid or an SSL error occurs. Settable only for `http` rules with the action set to `allow`.",
+																		"nullable": true,
+																		"properties": {
+																			"action": {
+																				"description": "Defines the action performed when an untrusted certificate seen. The default action an error with HTTP code 526.",
+																				"enum": [
+																					"pass_through",
+																					"block",
+																					"error"
+																				],
+																				"example": "error",
+																				"type": "string",
+																				"x-auditable": true
+																			}
+																		},
+																		"type": "object",
+																		"x-stainless-terraform-configurability": "optional"
+																	}
+																},
+																"type": "object",
+																"x-stainless-terraform-configurability": "computed_optional"
+															},
+															"schedule": {
+																"description": "Defines the schedule for activating DNS policies. Settable only for `dns` and `dns_resolver` rules.",
+																"nullable": true,
+																"properties": {
+																	"fri": {
+																		"description": "Specify the time intervals when the rule is active on Fridays, in the increasing order from 00:00-24:00.  If this parameter omitted, the rule is deactivated on Fridays. API returns a formatted version of this string, which may cause Terraform drift if a unformatted value is used.",
+																		"example": "08:00-12:30,13:30-17:00",
+																		"type": "string",
+																		"x-auditable": true
+																	},
+																	"mon": {
+																		"description": "Specify the time intervals when the rule is active on Mondays, in the increasing order from 00:00-24:00(capped at maximum of 6 time splits). If this parameter omitted, the rule is deactivated on Mondays. API returns a formatted version of this string, which may cause Terraform drift if a unformatted value is used.",
+																		"example": "08:00-12:30,13:30-17:00",
+																		"type": "string",
+																		"x-auditable": true
+																	},
+																	"sat": {
+																		"description": "Specify the time intervals when the rule is active on Saturdays, in the increasing order from 00:00-24:00.  If this parameter omitted, the rule is deactivated on Saturdays. API returns a formatted version of this string, which may cause Terraform drift if a unformatted value is used.",
+																		"example": "08:00-12:30,13:30-17:00",
+																		"type": "string",
+																		"x-auditable": true
+																	},
+																	"sun": {
+																		"description": "Specify the time intervals when the rule is active on Sundays, in the increasing order from 00:00-24:00. If this parameter omitted, the rule is deactivated on Sundays. API returns a formatted version of this string, which may cause Terraform drift if a unformatted value is used.",
+																		"example": "08:00-12:30,13:30-17:00",
+																		"type": "string",
+																		"x-auditable": true
+																	},
+																	"thu": {
+																		"description": "Specify the time intervals when the rule is active on Thursdays, in the increasing order from 00:00-24:00. If this parameter omitted, the rule is deactivated on Thursdays. API returns a formatted version of this string, which may cause Terraform drift if a unformatted value is used.",
+																		"example": "08:00-12:30,13:30-17:00",
+																		"type": "string",
+																		"x-auditable": true
+																	},
+																	"time_zone": {
+																		"description": "Specify the time zone for rule evaluation. When a [valid time zone city name](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones#List) is provided, Gateway always uses the current time for that time zone. When this parameter is omitted, Gateway uses the time zone determined from the user's IP address. Colo time zone is used when the user's IP address does not resolve to a location.",
+																		"example": "America/New York",
+																		"type": "string",
+																		"x-auditable": true
+																	},
+																	"tue": {
+																		"description": "Specify the time intervals when the rule is active on Tuesdays, in the increasing order from 00:00-24:00. If this parameter omitted, the rule is deactivated on Tuesdays. API returns a formatted version of this string, which may cause Terraform drift if a unformatted value is used.",
+																		"example": "08:00-12:30,13:30-17:00",
+																		"type": "string",
+																		"x-auditable": true
+																	},
+																	"wed": {
+																		"description": "Specify the time intervals when the rule is active on Wednesdays, in the increasing order from 00:00-24:00. If this parameter omitted, the rule is deactivated on Wednesdays. API returns a formatted version of this string, which may cause Terraform drift if a unformatted value is used.",
+																		"example": "08:00-12:30,13:30-17:00",
+																		"type": "string",
+																		"x-auditable": true
+																	}
+																},
+																"type": "object",
+																"x-stainless-terraform-configurability": "computed_optional"
+															},
+															"sharable": {
+																"description": "Indicate that this rule is sharable via the Orgs API.",
+																"readOnly": true,
+																"type": "boolean",
+																"x-auditable": true,
+																"x-stainless-terraform-configurability": "computed"
+															},
+															"source_account": {
+																"description": "Provide the account tag of the account that created the rule.",
+																"readOnly": true,
+																"type": "string",
+																"x-auditable": true,
+																"x-stainless-terraform-configurability": "computed"
+															},
+															"traffic": {
+																"default": "",
+																"description": "Specify the wirefilter expression used for traffic matching. The API automatically formats and sanitizes expressions before storing them. To prevent Terraform state drift, use the formatted expression returned in the API response.",
+																"example": "http.request.uri matches \".*a/partial/uri.*\" and http.request.host in $01302951-49f9-47c9-a400-0297e60b6a10",
+																"type": "string",
+																"x-auditable": true,
+																"x-stainless-terraform-configurability": "computed_optional"
+															},
+															"updated_at": {
+																"example": "2014-01-01T05:20:00.12345Z",
+																"format": "date-time",
+																"readOnly": true,
+																"type": "string"
+															},
+															"version": {
+																"description": "Indicate the version number of the rule(read-only).",
+																"example": 1,
+																"readOnly": true,
+																"type": "integer",
+																"x-auditable": true,
+																"x-stainless-terraform-configurability": "computed"
+															},
+															"warning_status": {
+																"description": "Indicate a warning for a misconfigured rule, if any.",
+																"nullable": true,
+																"readOnly": true,
+																"type": "string",
+																"x-stainless-terraform-configurability": "computed"
+															}
+														},
+														"required": [
+															"name",
+															"precedence",
+															"enabled",
+															"action",
+															"traffic",
+															"filters"
+														],
+														"type": "object"
+													},
+													"type": "array"
+												}
+											},
+											"type": "object"
+										}
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"errors": {
+											"allOf": [
+												{
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												}
+											],
+											"example": [
+												{
+													"code": 7003,
+													"message": "No route for the URI"
+												}
+											],
+											"minLength": 1,
+											"type": "object"
+										},
+										"messages": {
+											"allOf": [
+												{
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												}
+											],
+											"example": [],
+											"type": "object"
+										},
+										"result": {
+											"enum": [
+												null
+											],
+											"nullable": true,
+											"type": "object"
+										},
+										"success": {
+											"description": "Indicate whether the API call was successful.",
+											"enum": [
+												false
+											],
+											"example": false,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
+									],
+									"type": "object"
+								}
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Patch multiple Zero Trust Gateway rules response failure."
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": [],
+				"api_token": []
+			}
+		],
+		"summary": "Patch multiple Zero Trust Gateway rules",
+		"tags": [
+			"Zero Trust Gateway rules"
+		]
+	},
+	"PATCH /accounts/{account_id}/gateway/rules/{rule_id}": {
+		"description": "Update select fields of an existing Zero Trust Gateway rule. Only the fields provided in the request body are updated. This endpoint supports a limited subset of fields (`name`, `description`, `precedence`, `enabled`). To update other fields such as `action`, `traffic`, `identity`, `device_posture`, `rule_settings`, `schedule`, or `expiration`, use the PUT endpoint for a full rule replacement.",
+		"operationId": "zero-trust-gateway-rules-patch-zero-trust-gateway-rule",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "rule_id",
+				"required": true,
+				"schema": {
+					"description": "Identify the API resource with a UUID.",
+					"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
+					"maxLength": 36,
+					"type": "string",
+					"x-auditable": true
+				}
+			},
+			{
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"example": "699d98642c564d2e855e9661899b7252",
+					"type": "string",
+					"x-auditable": true
+				}
+			}
+		],
+		"requestBody": {
+			"content": {
+				"application/json": {
+					"schema": {
+						"properties": {
+							"description": {
+								"description": "Specify the rule description.",
+								"example": "Block bad websites based on their host name.",
+								"type": "string",
+								"x-auditable": true
+							},
+							"enabled": {
+								"default": false,
+								"description": "Specify whether the rule is enabled.",
+								"example": true,
+								"type": "boolean",
+								"x-auditable": true
+							},
+							"name": {
+								"description": "Specify the rule name.",
+								"example": "block bad websites",
+								"type": "string",
+								"x-auditable": true
+							},
+							"precedence": {
+								"description": "Set the order of your rules. Lower values indicate higher precedence. At each processing phase, evaluate applicable rules in ascending order of this value. Refer to [Order of enforcement](http://developers.cloudflare.com/learning-paths/secure-internet-traffic/understand-policies/order-of-enforcement/#manage-precedence-with-terraform) to manage precedence via Terraform.",
+								"type": "integer",
+								"x-auditable": true,
+								"x-stainless-terraform-configurability": "computed_optional"
+							}
+						},
+						"type": "object"
+					}
+				}
+			},
+			"required": true
+		},
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"properties": {
+												"errors": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"messages": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"success": {
+													"description": "Indicate whether the API call was successful.",
+													"enum": [
+														true
+													],
+													"example": true,
+													"type": "boolean"
+												}
+											},
+											"required": [
+												"success",
+												"errors",
+												"messages"
+											],
+											"type": "object"
+										}
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"result": {
+											"properties": {
+												"action": {
+													"description": "Specify the action to perform when the associated traffic, identity, and device posture expressions either absent or evaluate to `true`.",
+													"enum": [
+														"on",
+														"off",
+														"allow",
+														"block",
+														"scan",
+														"noscan",
+														"safesearch",
+														"ytrestricted",
+														"isolate",
+														"noisolate",
+														"override",
+														"l4_override",
+														"egress",
+														"resolve",
+														"quarantine",
+														"redirect"
+													],
+													"example": "allow",
+													"type": "string",
+													"x-auditable": true
+												},
+												"created_at": {
+													"example": "2014-01-01T05:20:00.12345Z",
+													"format": "date-time",
+													"readOnly": true,
+													"type": "string"
+												},
+												"deleted_at": {
+													"description": "Indicate the date of deletion, if any.",
+													"format": "date-time",
+													"nullable": true,
+													"readOnly": true,
+													"type": "string",
+													"x-stainless-terraform-configurability": "computed"
+												},
+												"description": {
+													"description": "Specify the rule description.",
+													"example": "Block bad websites based on their host name.",
+													"type": "string",
+													"x-auditable": true
+												},
+												"device_posture": {
+													"default": "",
+													"description": "Specify the wirefilter expression used for device posture check. The API automatically formats and sanitizes expressions before storing them. To prevent Terraform state drift, use the formatted expression returned in the API response.",
+													"example": "any(device_posture.checks.passed[*] in {\"1308749e-fcfb-4ebc-b051-fe022b632644\"})",
+													"type": "string",
+													"x-auditable": true,
+													"x-stainless-terraform-configurability": "computed_optional"
+												},
+												"enabled": {
+													"default": false,
+													"description": "Specify whether the rule is enabled.",
+													"example": true,
+													"type": "boolean",
+													"x-auditable": true
+												},
+												"expiration": {
+													"description": "Defines the expiration time stamp and default duration of a DNS policy. Takes precedence over the policy's `schedule` configuration, if any. This  does not apply to HTTP or network policies. Settable only for `dns` rules.",
+													"nullable": true,
+													"properties": {
+														"duration": {
+															"description": "Defines the default duration a policy active in minutes. Must set in order to use the `reset_expiration` endpoint on this rule.",
+															"example": 10,
+															"minimum": 5,
+															"type": "integer",
+															"x-auditable": true
+														},
+														"expired": {
+															"description": "Indicates whether the policy is expired.",
+															"example": false,
+															"readOnly": true,
+															"type": "boolean",
+															"x-auditable": true,
+															"x-stainless-terraform-configurability": "computed"
+														},
+														"expires_at": {
+															"allOf": [
+																{
+																	"example": "2014-01-01T05:20:00.12345Z",
+																	"format": "date-time",
+																	"type": "string"
+																},
+																{
+																	"description": "Show the timestamp when the policy expires and stops applying.  The value must follow RFC 3339 and include a UTC offset.  The system accepts non-zero offsets but converts them to the equivalent UTC+00:00  value and returns timestamps with a trailing Z. Expiration policies ignore client  timezones and expire globally at the specified expires_at time.",
+																	"example": "2014-01-01T05:20:20Z",
+																	"type": "string",
+																	"x-auditable": true
+																}
+															]
+														}
+													},
+													"required": [
+														"expires_at"
+													],
+													"type": "object",
+													"x-stainless-terraform-configurability": "computed_optional"
+												},
+												"filters": {
+													"description": "Specify the protocol or layer to evaluate the traffic, identity, and device posture expressions. Can only contain a single value.",
+													"example": [
+														"http"
+													],
+													"items": {
+														"description": "Specify the protocol or layer to use.",
+														"enum": [
+															"http",
+															"dns",
+															"l4",
+															"egress",
+															"dns_resolver"
+														],
+														"example": "http",
+														"type": "string",
+														"x-auditable": true
+													},
+													"maxItems": 1,
+													"minItems": 1,
+													"type": "array"
+												},
+												"id": {
+													"description": "Identify the API resource with a UUID.",
+													"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
+													"maxLength": 36,
+													"type": "string",
+													"x-auditable": true
+												},
+												"identity": {
+													"default": "",
+													"description": "Specify the wirefilter expression used for identity matching. The API automatically formats and sanitizes expressions before storing them. To prevent Terraform state drift, use the formatted expression returned in the API response.",
+													"example": "any(identity.groups.name[*] in {\"finance\"})",
+													"type": "string",
+													"x-auditable": true,
+													"x-stainless-terraform-configurability": "computed_optional"
+												},
+												"name": {
+													"description": "Specify the rule name.",
+													"example": "block bad websites",
+													"type": "string",
+													"x-auditable": true
+												},
+												"precedence": {
+													"description": "Set the order of your rules. Lower values indicate higher precedence. At each processing phase, evaluate applicable rules in ascending order of this value. Refer to [Order of enforcement](http://developers.cloudflare.com/learning-paths/secure-internet-traffic/understand-policies/order-of-enforcement/#manage-precedence-with-terraform) to manage precedence via Terraform.",
+													"type": "integer",
+													"x-auditable": true,
+													"x-stainless-terraform-configurability": "computed_optional"
+												},
+												"read_only": {
+													"description": "Indicate that this rule is shared via the Orgs API and read only.",
+													"readOnly": true,
+													"type": "boolean",
+													"x-auditable": true,
+													"x-stainless-terraform-configurability": "computed"
+												},
+												"rule_settings": {
+													"description": "Defines settings for this rule. Settings apply only to specific rule types and must use compatible selectors. If Terraform detects drift, confirm the setting supports your rule type and check whether the API modifies the value. Use API-returned values in your configuration to prevent drift.",
+													"properties": {
+														"add_headers": {
+															"additionalProperties": {
+																"items": {
+																	"type": "string"
+																},
+																"type": "array",
+																"x-auditable": true
+															},
+															"description": "Add custom headers to allowed requests as key-value pairs. Use header names as keys that map to arrays of header values. Settable only for `http` rules with the action set to `allow`.",
+															"example": {
+																"My-Next-Header": [
+																	"foo",
+																	"bar"
+																],
+																"X-Custom-Header-Name": [
+																	"somecustomvalue"
+																]
+															},
+															"nullable": true,
+															"type": "object",
+															"x-stainless-terraform-configurability": "optional"
+														},
+														"allow_child_bypass": {
+															"description": "Set to enable MSP children to bypass this rule. Only parent MSP accounts can set this. this rule. Settable for all types of rules.",
+															"example": false,
+															"nullable": true,
+															"type": "boolean",
+															"x-auditable": true,
+															"x-stainless-terraform-configurability": "computed_optional"
+														},
+														"audit_ssh": {
+															"description": "Define the settings for the Audit SSH action. Settable only for `l4` rules with `audit_ssh` action.",
+															"nullable": true,
+															"properties": {
+																"command_logging": {
+																	"description": "Enable SSH command logging.",
+																	"example": false,
+																	"type": "boolean",
+																	"x-auditable": true
+																}
+															},
+															"type": "object",
+															"x-stainless-terraform-configurability": "optional"
+														},
+														"biso_admin_controls": {
+															"description": "Configure browser isolation behavior. Settable only for `http` rules with the action set to `isolate`.",
+															"properties": {
+																"copy": {
+																	"description": "Configure copy behavior. If set to remote_only, users cannot copy isolated content from the remote browser to the local clipboard. If this field is absent, copying remains enabled. Applies only when version == \"v2\".",
+																	"enum": [
+																		"enabled",
+																		"disabled",
+																		"remote_only"
+																	],
+																	"example": "remote_only",
+																	"type": "string",
+																	"x-auditable": true
+																},
+																"dcp": {
+																	"description": "Set to false to enable copy-pasting. Only applies when `version == \"v1\"`.",
+																	"type": "boolean",
+																	"x-auditable": true
+																},
+																"dd": {
+																	"description": "Set to false to enable downloading. Only applies when `version == \"v1\"`.",
+																	"type": "boolean",
+																	"x-auditable": true
+																},
+																"dk": {
+																	"description": "Set to false to enable keyboard usage. Only applies when `version == \"v1\"`.",
+																	"type": "boolean",
+																	"x-auditable": true
+																},
+																"download": {
+																	"description": "Configure download behavior. When set to remote_only, users can view downloads but cannot save them. If this field is absent, downloading remains enabled. Applies only when version == \"v2\".",
+																	"enum": [
+																		"enabled",
+																		"disabled",
+																		"remote_only"
+																	],
+																	"example": "enabled",
+																	"type": "string",
+																	"x-auditable": true
+																},
+																"dp": {
+																	"description": "Set to false to enable printing. Only applies when `version == \"v1\"`.",
+																	"example": false,
+																	"type": "boolean",
+																	"x-auditable": true
+																},
+																"du": {
+																	"description": "Set to false to enable uploading. Only applies when `version == \"v1\"`.",
+																	"type": "boolean",
+																	"x-auditable": true
+																},
+																"keyboard": {
+																	"description": "Configure keyboard usage behavior. If this field is absent, keyboard usage remains enabled. Applies only when version == \"v2\".",
+																	"enum": [
+																		"enabled",
+																		"disabled"
+																	],
+																	"example": "enabled",
+																	"type": "string",
+																	"x-auditable": true
+																},
+																"paste": {
+																	"description": "Configure paste behavior. If set to remote_only, users cannot paste content from the local clipboard into isolated pages. If this field is absent, pasting remains enabled. Applies only when version == \"v2\".",
+																	"enum": [
+																		"enabled",
+																		"disabled",
+																		"remote_only"
+																	],
+																	"example": "enabled",
+																	"type": "string",
+																	"x-auditable": true
+																},
+																"printing": {
+																	"description": "Configure print behavior. Default, Printing is enabled. Applies only when version == \"v2\".",
+																	"enum": [
+																		"enabled",
+																		"disabled"
+																	],
+																	"example": "enabled",
+																	"type": "string",
+																	"x-auditable": true
+																},
+																"upload": {
+																	"description": "Configure upload behavior. If this field is absent, uploading remains enabled. Applies only when version == \"v2\".",
+																	"enum": [
+																		"enabled",
+																		"disabled"
+																	],
+																	"example": "enabled",
+																	"type": "string",
+																	"x-auditable": true
+																},
+																"version": {
+																	"default": "v1",
+																	"description": "Indicate which version of the browser isolation controls should apply.",
+																	"enum": [
+																		"v1",
+																		"v2"
+																	],
+																	"type": "string",
+																	"x-auditable": true
+																},
+																"wm_id": {
+																	"description": "Specify the watermark ID (UUID) to apply to the isolated browser session. When present, enables watermark rendering in the isolated browser.",
+																	"example": "475345dc-5299-4b6e-8f6a-3d3e4c8e9f1a",
+																	"format": "uuid",
+																	"maxLength": 36,
+																	"minLength": 1,
+																	"type": "string",
+																	"x-auditable": true
+																}
+															},
+															"type": "object",
+															"x-stainless-terraform-configurability": "optional"
+														},
+														"block_page": {
+															"description": "Configure custom block page settings. If missing or null, use the account settings. Settable only for `http` rules with the action set to `block`.",
+															"nullable": true,
+															"properties": {
+																"include_context": {
+																	"description": "Specify whether to pass the context information as query parameters.",
+																	"type": "boolean",
+																	"x-auditable": true
+																},
+																"target_uri": {
+																	"description": "Specify the URI to which the user is redirected.",
+																	"format": "uri",
+																	"type": "string",
+																	"x-auditable": true
+																}
+															},
+															"required": [
+																"target_uri"
+															],
+															"type": "object",
+															"x-stainless-terraform-configurability": "optional"
+														},
+														"block_page_enabled": {
+															"description": "Enable the custom block page. Settable only for `dns` rules with action `block`.",
+															"example": true,
+															"type": "boolean",
+															"x-auditable": true,
+															"x-stainless-terraform-configurability": "computed_optional"
+														},
+														"block_reason": {
+															"description": "Explain why the rule blocks the request. The custom block page shows this text (if enabled). Settable only for `dns`, `l4`, and `http` rules when the action set to `block`.",
+															"example": "This website is a security risk",
+															"nullable": true,
+															"type": "string",
+															"x-auditable": true,
+															"x-stainless-terraform-configurability": "computed_optional"
+														},
+														"bypass_parent_rule": {
+															"description": "Set to enable MSP accounts to bypass their parent's rules. Only MSP child accounts can set this. Settable for all types of rules.",
+															"example": false,
+															"nullable": true,
+															"type": "boolean",
+															"x-auditable": true,
+															"x-stainless-terraform-configurability": "optional"
+														},
+														"check_session": {
+															"description": "Configure session check behavior. Settable only for `l4` and `http` rules with the action set to `allow`.",
+															"nullable": true,
+															"properties": {
+																"duration": {
+																	"description": "Sets the required session freshness threshold. The API returns a normalized version of this value.",
+																	"example": "300s",
+																	"type": "string",
+																	"x-auditable": true
+																},
+																"enforce": {
+																	"description": "Enable session enforcement.",
+																	"example": true,
+																	"type": "boolean",
+																	"x-auditable": true
+																}
+															},
+															"type": "object",
+															"x-stainless-terraform-configurability": "optional"
+														},
+														"dns_resolvers": {
+															"description": "Configure custom resolvers to route queries that match the resolver policy. Unused with 'resolve_dns_through_cloudflare' or 'resolve_dns_internally' settings. DNS queries get routed to the address closest to their origin. Only valid when a rule's action set to 'resolve'. Settable only for `dns_resolver` rules.",
+															"nullable": true,
+															"properties": {
+																"ipv4": {
+																	"items": {
+																		"properties": {
+																			"ip": {
+																				"description": "Specify the IPv4 address of the upstream resolver.",
+																				"example": "2.2.2.2",
+																				"type": "string",
+																				"x-auditable": true
+																			},
+																			"port": {
+																				"description": "Specify a port number to use for the upstream resolver. Defaults to 53 if unspecified.",
+																				"example": 5053,
+																				"type": "integer",
+																				"x-auditable": true
+																			},
+																			"route_through_private_network": {
+																				"description": "Indicate whether to connect to this resolver over a private network. Must set when vnet_id set.",
+																				"example": true,
+																				"type": "boolean",
+																				"x-auditable": true
+																			},
+																			"vnet_id": {
+																				"description": "Specify an optional virtual network for this resolver. Uses default virtual network id if omitted.",
+																				"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
+																				"type": "string",
+																				"x-auditable": true
+																			}
+																		},
+																		"required": [
+																			"ip"
+																		],
+																		"type": "object",
+																		"x-stainless-terraform-configurability": "computed_optional"
+																	},
+																	"type": "array"
+																},
+																"ipv6": {
+																	"items": {
+																		"properties": {
+																			"ip": {
+																				"description": "Specify the IPv6 address of the upstream resolver.",
+																				"example": "2001:DB8::",
+																				"type": "string",
+																				"x-auditable": true
+																			},
+																			"port": {
+																				"description": "Specify a port number to use for the upstream resolver. Defaults to 53 if unspecified.",
+																				"example": 5053,
+																				"type": "integer",
+																				"x-auditable": true
+																			},
+																			"route_through_private_network": {
+																				"description": "Indicate whether to connect to this resolver over a private network. Must set when vnet_id set.",
+																				"example": true,
+																				"type": "boolean",
+																				"x-auditable": true
+																			},
+																			"vnet_id": {
+																				"description": "Specify an optional virtual network for this resolver. Uses default virtual network id if omitted.",
+																				"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
+																				"type": "string",
+																				"x-auditable": true
+																			}
+																		},
+																		"required": [
+																			"ip"
+																		],
+																		"type": "object",
+																		"x-stainless-terraform-configurability": "computed_optional"
+																	},
+																	"type": "array"
+																}
+															},
+															"type": "object",
+															"x-stainless-terraform-configurability": "optional"
+														},
+														"egress": {
+															"description": "Configure how Gateway Proxy traffic egresses. You can enable this setting for rules with Egress actions and filters, or omit it to indicate local egress via WARP IPs. Settable only for `egress` rules.",
+															"nullable": true,
+															"properties": {
+																"ipv4": {
+																	"description": "Specify the IPv4 address to use for egress.",
+																	"example": "192.0.2.2",
+																	"type": "string",
+																	"x-auditable": true
+																},
+																"ipv4_fallback": {
+																	"description": "Specify the fallback IPv4 address to use for egress when the primary IPv4 fails. Set '0.0.0.0' to indicate local egress via WARP IPs.",
+																	"example": "192.0.2.3",
+																	"type": "string",
+																	"x-auditable": true
+																},
+																"ipv6": {
+																	"description": "Specify the IPv6 range to use for egress.",
+																	"example": "2001:DB8::/64",
+																	"type": "string",
+																	"x-auditable": true
+																}
+															},
+															"type": "object",
+															"x-stainless-terraform-configurability": "optional"
+														},
+														"forensic_copy": {
+															"description": "Configure whether a copy of the HTTP request will be sent to storage when the rule matches.",
+															"nullable": true,
+															"properties": {
+																"enabled": {
+																	"description": "Enable sending the copy to storage.",
+																	"type": "boolean",
+																	"x-auditable": true
+																}
+															},
+															"type": "object",
+															"x-stainless-terraform-configurability": "optional"
+														},
+														"ignore_cname_category_matches": {
+															"description": "Ignore category matches at CNAME domains in a response. When off, evaluate categories in this rule against all CNAME domain categories in the response. Settable only for `dns` and `dns_resolver` rules.",
+															"example": true,
+															"type": "boolean",
+															"x-auditable": true,
+															"x-stainless-terraform-configurability": "computed_optional"
+														},
+														"insecure_disable_dnssec_validation": {
+															"description": "Specify whether to disable DNSSEC validation (for Allow actions) [INSECURE]. Settable only for `dns` rules.",
+															"example": false,
+															"type": "boolean",
+															"x-auditable": true,
+															"x-stainless-terraform-configurability": "computed_optional"
+														},
+														"ip_categories": {
+															"description": "Enable IPs in DNS resolver category blocks. The system blocks only domain name categories unless you enable this setting. Settable only for `dns` and `dns_resolver` rules.",
+															"example": true,
+															"type": "boolean",
+															"x-auditable": true,
+															"x-stainless-terraform-configurability": "computed_optional"
+														},
+														"ip_indicator_feeds": {
+															"description": "Indicates whether to include IPs in DNS resolver indicator feed blocks. Default, indicator feeds block only domain names. Settable only for `dns` and `dns_resolver` rules.",
+															"example": true,
+															"type": "boolean",
+															"x-auditable": true,
+															"x-stainless-terraform-configurability": "computed_optional"
+														},
+														"l4override": {
+															"description": "Send matching traffic to the supplied destination IP address and port. Settable only for `l4` rules with the action set to `l4_override`.",
+															"nullable": true,
+															"properties": {
+																"ip": {
+																	"description": "Defines the IPv4 or IPv6 address.",
+																	"example": "1.1.1.1",
+																	"type": "string",
+																	"x-auditable": true
+																},
+																"port": {
+																	"description": "Defines a port number to use for TCP/UDP overrides.",
+																	"type": "integer",
+																	"x-auditable": true
+																}
+															},
+															"type": "object",
+															"x-stainless-terraform-configurability": "optional"
+														},
+														"notification_settings": {
+															"description": "Configure a notification to display on the user's device when this rule matched. Settable for all types of rules with the action set to `block`.",
+															"nullable": true,
+															"properties": {
+																"enabled": {
+																	"description": "Enable notification.",
+																	"type": "boolean",
+																	"x-auditable": true
+																},
+																"include_context": {
+																	"description": "Indicates whether to pass the context information as query parameters.",
+																	"type": "boolean",
+																	"x-auditable": true
+																},
+																"msg": {
+																	"description": "Customize the message shown in the notification.",
+																	"type": "string",
+																	"x-auditable": true
+																},
+																"support_url": {
+																	"description": "Defines an optional URL to direct users to additional information. If unset, the notification opens a block page.",
+																	"type": "string",
+																	"x-auditable": true
+																}
+															},
+															"type": "object",
+															"x-stainless-terraform-configurability": "optional"
+														},
+														"override_host": {
+															"description": "Defines a hostname for override, for the matching DNS queries. Settable only for `dns` rules with the action set to `override`.",
+															"example": "example.com",
+															"type": "string",
+															"x-auditable": true,
+															"x-stainless-terraform-configurability": "computed_optional"
+														},
+														"override_ips": {
+															"description": "Defines a an IP or set of IPs for overriding matched DNS queries. Settable only for `dns` rules with the action set to `override`.",
+															"example": [
+																"1.1.1.1",
+																"2.2.2.2"
+															],
+															"items": {
+																"description": "Defines the IPv4 or IPv6 address.",
+																"example": "1.1.1.1",
+																"type": "string",
+																"x-auditable": true
+															},
+															"nullable": true,
+															"type": "array",
+															"x-stainless-terraform-configurability": "computed_optional"
+														},
+														"payload_log": {
+															"description": "Configure DLP payload logging. Settable only for `http` rules.",
+															"nullable": true,
+															"properties": {
+																"enabled": {
+																	"description": "Enable DLP payload logging for this rule.",
+																	"example": true,
+																	"type": "boolean",
+																	"x-auditable": true
+																}
+															},
+															"type": "object",
+															"x-stainless-terraform-configurability": "optional"
+														},
+														"quarantine": {
+															"description": "Configure settings that apply to quarantine rules. Settable only for `http` rules.",
+															"nullable": true,
+															"properties": {
+																"file_types": {
+																	"description": "Specify the types of files to sandbox.",
+																	"items": {
+																		"enum": [
+																			"exe",
+																			"pdf",
+																			"doc",
+																			"docm",
+																			"docx",
+																			"rtf",
+																			"ppt",
+																			"pptx",
+																			"xls",
+																			"xlsm",
+																			"xlsx",
+																			"zip",
+																			"rar"
+																		],
+																		"type": "string",
+																		"x-auditable": true
+																	},
+																	"type": "array"
+																}
+															},
+															"type": "object",
+															"x-stainless-terraform-configurability": "optional"
+														},
+														"redirect": {
+															"description": "Apply settings to redirect rules. Settable only for `http` rules with the action set to `redirect`.",
+															"nullable": true,
+															"properties": {
+																"include_context": {
+																	"description": "Specify whether to pass the context information as query parameters.",
+																	"type": "boolean",
+																	"x-auditable": true
+																},
+																"preserve_path_and_query": {
+																	"description": "Specify whether to append the path and query parameters from the original request to target_uri.",
+																	"type": "boolean",
+																	"x-auditable": true
+																},
+																"target_uri": {
+																	"description": "Specify the URI to which the user is redirected.",
+																	"format": "uri",
+																	"type": "string",
+																	"x-auditable": true
+																}
+															},
+															"required": [
+																"target_uri"
+															],
+															"type": "object",
+															"x-stainless-terraform-configurability": "optional"
+														},
+														"resolve_dns_internally": {
+															"description": "Configure to forward the query to the internal DNS service, passing the specified 'view_id' as input. Not used when 'dns_resolvers' is specified or 'resolve_dns_through_cloudflare' is set. Only valid when a rule's action set to 'resolve'. Settable only for `dns_resolver` rules.",
+															"nullable": true,
+															"properties": {
+																"fallback": {
+																	"description": "Specify the fallback behavior to apply when the internal DNS response code differs from 'NOERROR' or when the response data contains only CNAME records for 'A' or 'AAAA' queries.",
+																	"enum": [
+																		"none",
+																		"public_dns"
+																	],
+																	"type": "string",
+																	"x-auditable": true
+																},
+																"view_id": {
+																	"description": "Specify the internal DNS view identifier to pass to the internal DNS service.",
+																	"type": "string",
+																	"x-auditable": true
+																}
+															},
+															"type": "object",
+															"x-stainless-terraform-configurability": "optional"
+														},
+														"resolve_dns_through_cloudflare": {
+															"description": "Enable to send queries that match the policy to Cloudflare's default 1.1.1.1 DNS resolver. Cannot set when 'dns_resolvers' specified or 'resolve_dns_internally' is set. Only valid when a rule's action set to 'resolve'. Settable only for `dns_resolver` rules.",
+															"example": true,
+															"nullable": true,
+															"type": "boolean",
+															"x-auditable": true,
+															"x-stainless-terraform-configurability": "computed_optional"
+														},
+														"untrusted_cert": {
+															"description": "Configure behavior when an upstream certificate is invalid or an SSL error occurs. Settable only for `http` rules with the action set to `allow`.",
+															"nullable": true,
+															"properties": {
+																"action": {
+																	"description": "Defines the action performed when an untrusted certificate seen. The default action an error with HTTP code 526.",
+																	"enum": [
+																		"pass_through",
+																		"block",
+																		"error"
+																	],
+																	"example": "error",
+																	"type": "string",
+																	"x-auditable": true
+																}
+															},
+															"type": "object",
+															"x-stainless-terraform-configurability": "optional"
+														}
+													},
+													"type": "object",
+													"x-stainless-terraform-configurability": "computed_optional"
+												},
+												"schedule": {
+													"description": "Defines the schedule for activating DNS policies. Settable only for `dns` and `dns_resolver` rules.",
+													"nullable": true,
+													"properties": {
+														"fri": {
+															"description": "Specify the time intervals when the rule is active on Fridays, in the increasing order from 00:00-24:00.  If this parameter omitted, the rule is deactivated on Fridays. API returns a formatted version of this string, which may cause Terraform drift if a unformatted value is used.",
+															"example": "08:00-12:30,13:30-17:00",
+															"type": "string",
+															"x-auditable": true
+														},
+														"mon": {
+															"description": "Specify the time intervals when the rule is active on Mondays, in the increasing order from 00:00-24:00(capped at maximum of 6 time splits). If this parameter omitted, the rule is deactivated on Mondays. API returns a formatted version of this string, which may cause Terraform drift if a unformatted value is used.",
+															"example": "08:00-12:30,13:30-17:00",
+															"type": "string",
+															"x-auditable": true
+														},
+														"sat": {
+															"description": "Specify the time intervals when the rule is active on Saturdays, in the increasing order from 00:00-24:00.  If this parameter omitted, the rule is deactivated on Saturdays. API returns a formatted version of this string, which may cause Terraform drift if a unformatted value is used.",
+															"example": "08:00-12:30,13:30-17:00",
+															"type": "string",
+															"x-auditable": true
+														},
+														"sun": {
+															"description": "Specify the time intervals when the rule is active on Sundays, in the increasing order from 00:00-24:00. If this parameter omitted, the rule is deactivated on Sundays. API returns a formatted version of this string, which may cause Terraform drift if a unformatted value is used.",
+															"example": "08:00-12:30,13:30-17:00",
+															"type": "string",
+															"x-auditable": true
+														},
+														"thu": {
+															"description": "Specify the time intervals when the rule is active on Thursdays, in the increasing order from 00:00-24:00. If this parameter omitted, the rule is deactivated on Thursdays. API returns a formatted version of this string, which may cause Terraform drift if a unformatted value is used.",
+															"example": "08:00-12:30,13:30-17:00",
+															"type": "string",
+															"x-auditable": true
+														},
+														"time_zone": {
+															"description": "Specify the time zone for rule evaluation. When a [valid time zone city name](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones#List) is provided, Gateway always uses the current time for that time zone. When this parameter is omitted, Gateway uses the time zone determined from the user's IP address. Colo time zone is used when the user's IP address does not resolve to a location.",
+															"example": "America/New York",
+															"type": "string",
+															"x-auditable": true
+														},
+														"tue": {
+															"description": "Specify the time intervals when the rule is active on Tuesdays, in the increasing order from 00:00-24:00. If this parameter omitted, the rule is deactivated on Tuesdays. API returns a formatted version of this string, which may cause Terraform drift if a unformatted value is used.",
+															"example": "08:00-12:30,13:30-17:00",
+															"type": "string",
+															"x-auditable": true
+														},
+														"wed": {
+															"description": "Specify the time intervals when the rule is active on Wednesdays, in the increasing order from 00:00-24:00. If this parameter omitted, the rule is deactivated on Wednesdays. API returns a formatted version of this string, which may cause Terraform drift if a unformatted value is used.",
+															"example": "08:00-12:30,13:30-17:00",
+															"type": "string",
+															"x-auditable": true
+														}
+													},
+													"type": "object",
+													"x-stainless-terraform-configurability": "computed_optional"
+												},
+												"sharable": {
+													"description": "Indicate that this rule is sharable via the Orgs API.",
+													"readOnly": true,
+													"type": "boolean",
+													"x-auditable": true,
+													"x-stainless-terraform-configurability": "computed"
+												},
+												"source_account": {
+													"description": "Provide the account tag of the account that created the rule.",
+													"readOnly": true,
+													"type": "string",
+													"x-auditable": true,
+													"x-stainless-terraform-configurability": "computed"
+												},
+												"traffic": {
+													"default": "",
+													"description": "Specify the wirefilter expression used for traffic matching. The API automatically formats and sanitizes expressions before storing them. To prevent Terraform state drift, use the formatted expression returned in the API response.",
+													"example": "http.request.uri matches \".*a/partial/uri.*\" and http.request.host in $01302951-49f9-47c9-a400-0297e60b6a10",
+													"type": "string",
+													"x-auditable": true,
+													"x-stainless-terraform-configurability": "computed_optional"
+												},
+												"updated_at": {
+													"example": "2014-01-01T05:20:00.12345Z",
+													"format": "date-time",
+													"readOnly": true,
+													"type": "string"
+												},
+												"version": {
+													"description": "Indicate the version number of the rule(read-only).",
+													"example": 1,
+													"readOnly": true,
+													"type": "integer",
+													"x-auditable": true,
+													"x-stainless-terraform-configurability": "computed"
+												},
+												"warning_status": {
+													"description": "Indicate a warning for a misconfigured rule, if any.",
+													"nullable": true,
+													"readOnly": true,
+													"type": "string",
+													"x-stainless-terraform-configurability": "computed"
+												}
+											},
+											"required": [
+												"name",
+												"precedence",
+												"enabled",
+												"action",
+												"traffic",
+												"filters"
+											],
+											"type": "object"
+										}
+									},
+									"type": "object"
+								}
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Patch a Zero Trust Gateway rule response."
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"allOf": [
+												{
+													"properties": {
+														"errors": {
+															"example": [],
+															"items": {
+																"properties": {
+																	"code": {
+																		"minimum": 1000,
+																		"type": "integer"
+																	},
+																	"message": {
+																		"type": "string"
+																	}
+																},
+																"required": [
+																	"code",
+																	"message"
+																],
+																"type": "object",
+																"uniqueItems": true
+															},
+															"type": "array"
+														},
+														"messages": {
+															"example": [],
+															"items": {
+																"properties": {
+																	"code": {
+																		"minimum": 1000,
+																		"type": "integer"
+																	},
+																	"message": {
+																		"type": "string"
+																	}
+																},
+																"required": [
+																	"code",
+																	"message"
+																],
+																"type": "object",
+																"uniqueItems": true
+															},
+															"type": "array"
+														},
+														"success": {
+															"description": "Indicate whether the API call was successful.",
+															"enum": [
+																true
+															],
+															"example": true,
+															"type": "boolean"
+														}
+													},
+													"required": [
+														"success",
+														"errors",
+														"messages"
+													],
+													"type": "object"
+												}
+											],
+											"type": "object"
+										},
+										{
+											"properties": {
+												"result": {
+													"properties": {
+														"action": {
+															"description": "Specify the action to perform when the associated traffic, identity, and device posture expressions either absent or evaluate to `true`.",
+															"enum": [
+																"on",
+																"off",
+																"allow",
+																"block",
+																"scan",
+																"noscan",
+																"safesearch",
+																"ytrestricted",
+																"isolate",
+																"noisolate",
+																"override",
+																"l4_override",
+																"egress",
+																"resolve",
+																"quarantine",
+																"redirect"
+															],
+															"example": "allow",
+															"type": "string",
+															"x-auditable": true
+														},
+														"created_at": {
+															"example": "2014-01-01T05:20:00.12345Z",
+															"format": "date-time",
+															"readOnly": true,
+															"type": "string"
+														},
+														"deleted_at": {
+															"description": "Indicate the date of deletion, if any.",
+															"format": "date-time",
+															"nullable": true,
+															"readOnly": true,
+															"type": "string",
+															"x-stainless-terraform-configurability": "computed"
+														},
+														"description": {
+															"description": "Specify the rule description.",
+															"example": "Block bad websites based on their host name.",
+															"type": "string",
+															"x-auditable": true
+														},
+														"device_posture": {
+															"default": "",
+															"description": "Specify the wirefilter expression used for device posture check. The API automatically formats and sanitizes expressions before storing them. To prevent Terraform state drift, use the formatted expression returned in the API response.",
+															"example": "any(device_posture.checks.passed[*] in {\"1308749e-fcfb-4ebc-b051-fe022b632644\"})",
+															"type": "string",
+															"x-auditable": true,
+															"x-stainless-terraform-configurability": "computed_optional"
+														},
+														"enabled": {
+															"default": false,
+															"description": "Specify whether the rule is enabled.",
+															"example": true,
+															"type": "boolean",
+															"x-auditable": true
+														},
+														"expiration": {
+															"description": "Defines the expiration time stamp and default duration of a DNS policy. Takes precedence over the policy's `schedule` configuration, if any. This  does not apply to HTTP or network policies. Settable only for `dns` rules.",
+															"nullable": true,
+															"properties": {
+																"duration": {
+																	"description": "Defines the default duration a policy active in minutes. Must set in order to use the `reset_expiration` endpoint on this rule.",
+																	"example": 10,
+																	"minimum": 5,
+																	"type": "integer",
+																	"x-auditable": true
+																},
+																"expired": {
+																	"description": "Indicates whether the policy is expired.",
+																	"example": false,
+																	"readOnly": true,
+																	"type": "boolean",
+																	"x-auditable": true,
+																	"x-stainless-terraform-configurability": "computed"
+																},
+																"expires_at": {
+																	"allOf": [
+																		{
+																			"example": "2014-01-01T05:20:00.12345Z",
+																			"format": "date-time",
+																			"type": "string"
+																		},
+																		{
+																			"description": "Show the timestamp when the policy expires and stops applying.  The value must follow RFC 3339 and include a UTC offset.  The system accepts non-zero offsets but converts them to the equivalent UTC+00:00  value and returns timestamps with a trailing Z. Expiration policies ignore client  timezones and expire globally at the specified expires_at time.",
+																			"example": "2014-01-01T05:20:20Z",
+																			"type": "string",
+																			"x-auditable": true
+																		}
+																	]
+																}
+															},
+															"required": [
+																"expires_at"
+															],
+															"type": "object",
+															"x-stainless-terraform-configurability": "computed_optional"
+														},
+														"filters": {
+															"description": "Specify the protocol or layer to evaluate the traffic, identity, and device posture expressions. Can only contain a single value.",
+															"example": [
+																"http"
+															],
+															"items": {
+																"description": "Specify the protocol or layer to use.",
+																"enum": [
+																	"http",
+																	"dns",
+																	"l4",
+																	"egress",
+																	"dns_resolver"
+																],
+																"example": "http",
+																"type": "string",
+																"x-auditable": true
+															},
+															"maxItems": 1,
+															"minItems": 1,
+															"type": "array"
+														},
+														"id": {
+															"description": "Identify the API resource with a UUID.",
+															"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
+															"maxLength": 36,
+															"type": "string",
+															"x-auditable": true
+														},
+														"identity": {
+															"default": "",
+															"description": "Specify the wirefilter expression used for identity matching. The API automatically formats and sanitizes expressions before storing them. To prevent Terraform state drift, use the formatted expression returned in the API response.",
+															"example": "any(identity.groups.name[*] in {\"finance\"})",
+															"type": "string",
+															"x-auditable": true,
+															"x-stainless-terraform-configurability": "computed_optional"
+														},
+														"name": {
+															"description": "Specify the rule name.",
+															"example": "block bad websites",
+															"type": "string",
+															"x-auditable": true
+														},
+														"precedence": {
+															"description": "Set the order of your rules. Lower values indicate higher precedence. At each processing phase, evaluate applicable rules in ascending order of this value. Refer to [Order of enforcement](http://developers.cloudflare.com/learning-paths/secure-internet-traffic/understand-policies/order-of-enforcement/#manage-precedence-with-terraform) to manage precedence via Terraform.",
+															"type": "integer",
+															"x-auditable": true,
+															"x-stainless-terraform-configurability": "computed_optional"
+														},
+														"read_only": {
+															"description": "Indicate that this rule is shared via the Orgs API and read only.",
+															"readOnly": true,
+															"type": "boolean",
+															"x-auditable": true,
+															"x-stainless-terraform-configurability": "computed"
+														},
+														"rule_settings": {
+															"description": "Defines settings for this rule. Settings apply only to specific rule types and must use compatible selectors. If Terraform detects drift, confirm the setting supports your rule type and check whether the API modifies the value. Use API-returned values in your configuration to prevent drift.",
+															"properties": {
+																"add_headers": {
+																	"additionalProperties": {
+																		"items": {
+																			"type": "string"
+																		},
+																		"type": "array",
+																		"x-auditable": true
+																	},
+																	"description": "Add custom headers to allowed requests as key-value pairs. Use header names as keys that map to arrays of header values. Settable only for `http` rules with the action set to `allow`.",
+																	"example": {
+																		"My-Next-Header": [
+																			"foo",
+																			"bar"
+																		],
+																		"X-Custom-Header-Name": [
+																			"somecustomvalue"
+																		]
+																	},
+																	"nullable": true,
+																	"type": "object",
+																	"x-stainless-terraform-configurability": "optional"
+																},
+																"allow_child_bypass": {
+																	"description": "Set to enable MSP children to bypass this rule. Only parent MSP accounts can set this. this rule. Settable for all types of rules.",
+																	"example": false,
+																	"nullable": true,
+																	"type": "boolean",
+																	"x-auditable": true,
+																	"x-stainless-terraform-configurability": "computed_optional"
+																},
+																"audit_ssh": {
+																	"description": "Define the settings for the Audit SSH action. Settable only for `l4` rules with `audit_ssh` action.",
+																	"nullable": true,
+																	"properties": {
+																		"command_logging": {
+																			"description": "Enable SSH command logging.",
+																			"example": false,
+																			"type": "boolean",
+																			"x-auditable": true
+																		}
+																	},
+																	"type": "object",
+																	"x-stainless-terraform-configurability": "optional"
+																},
+																"biso_admin_controls": {
+																	"description": "Configure browser isolation behavior. Settable only for `http` rules with the action set to `isolate`.",
+																	"properties": {
+																		"copy": {
+																			"description": "Configure copy behavior. If set to remote_only, users cannot copy isolated content from the remote browser to the local clipboard. If this field is absent, copying remains enabled. Applies only when version == \"v2\".",
+																			"enum": [
+																				"enabled",
+																				"disabled",
+																				"remote_only"
+																			],
+																			"example": "remote_only",
+																			"type": "string",
+																			"x-auditable": true
+																		},
+																		"dcp": {
+																			"description": "Set to false to enable copy-pasting. Only applies when `version == \"v1\"`.",
+																			"type": "boolean",
+																			"x-auditable": true
+																		},
+																		"dd": {
+																			"description": "Set to false to enable downloading. Only applies when `version == \"v1\"`.",
+																			"type": "boolean",
+																			"x-auditable": true
+																		},
+																		"dk": {
+																			"description": "Set to false to enable keyboard usage. Only applies when `version == \"v1\"`.",
+																			"type": "boolean",
+																			"x-auditable": true
+																		},
+																		"download": {
+																			"description": "Configure download behavior. When set to remote_only, users can view downloads but cannot save them. If this field is absent, downloading remains enabled. Applies only when version == \"v2\".",
+																			"enum": [
+																				"enabled",
+																				"disabled",
+																				"remote_only"
+																			],
+																			"example": "enabled",
+																			"type": "string",
+																			"x-auditable": true
+																		},
+																		"dp": {
+																			"description": "Set to false to enable printing. Only applies when `version == \"v1\"`.",
+																			"example": false,
+																			"type": "boolean",
+																			"x-auditable": true
+																		},
+																		"du": {
+																			"description": "Set to false to enable uploading. Only applies when `version == \"v1\"`.",
+																			"type": "boolean",
+																			"x-auditable": true
+																		},
+																		"keyboard": {
+																			"description": "Configure keyboard usage behavior. If this field is absent, keyboard usage remains enabled. Applies only when version == \"v2\".",
+																			"enum": [
+																				"enabled",
+																				"disabled"
+																			],
+																			"example": "enabled",
+																			"type": "string",
+																			"x-auditable": true
+																		},
+																		"paste": {
+																			"description": "Configure paste behavior. If set to remote_only, users cannot paste content from the local clipboard into isolated pages. If this field is absent, pasting remains enabled. Applies only when version == \"v2\".",
+																			"enum": [
+																				"enabled",
+																				"disabled",
+																				"remote_only"
+																			],
+																			"example": "enabled",
+																			"type": "string",
+																			"x-auditable": true
+																		},
+																		"printing": {
+																			"description": "Configure print behavior. Default, Printing is enabled. Applies only when version == \"v2\".",
+																			"enum": [
+																				"enabled",
+																				"disabled"
+																			],
+																			"example": "enabled",
+																			"type": "string",
+																			"x-auditable": true
+																		},
+																		"upload": {
+																			"description": "Configure upload behavior. If this field is absent, uploading remains enabled. Applies only when version == \"v2\".",
+																			"enum": [
+																				"enabled",
+																				"disabled"
+																			],
+																			"example": "enabled",
+																			"type": "string",
+																			"x-auditable": true
+																		},
+																		"version": {
+																			"default": "v1",
+																			"description": "Indicate which version of the browser isolation controls should apply.",
+																			"enum": [
+																				"v1",
+																				"v2"
+																			],
+																			"type": "string",
+																			"x-auditable": true
+																		},
+																		"wm_id": {
+																			"description": "Specify the watermark ID (UUID) to apply to the isolated browser session. When present, enables watermark rendering in the isolated browser.",
+																			"example": "475345dc-5299-4b6e-8f6a-3d3e4c8e9f1a",
+																			"format": "uuid",
+																			"maxLength": 36,
+																			"minLength": 1,
+																			"type": "string",
+																			"x-auditable": true
+																		}
+																	},
+																	"type": "object",
+																	"x-stainless-terraform-configurability": "optional"
+																},
+																"block_page": {
+																	"description": "Configure custom block page settings. If missing or null, use the account settings. Settable only for `http` rules with the action set to `block`.",
+																	"nullable": true,
+																	"properties": {
+																		"include_context": {
+																			"description": "Specify whether to pass the context information as query parameters.",
+																			"type": "boolean",
+																			"x-auditable": true
+																		},
+																		"target_uri": {
+																			"description": "Specify the URI to which the user is redirected.",
+																			"format": "uri",
+																			"type": "string",
+																			"x-auditable": true
+																		}
+																	},
+																	"required": [
+																		"target_uri"
+																	],
+																	"type": "object",
+																	"x-stainless-terraform-configurability": "optional"
+																},
+																"block_page_enabled": {
+																	"description": "Enable the custom block page. Settable only for `dns` rules with action `block`.",
+																	"example": true,
+																	"type": "boolean",
+																	"x-auditable": true,
+																	"x-stainless-terraform-configurability": "computed_optional"
+																},
+																"block_reason": {
+																	"description": "Explain why the rule blocks the request. The custom block page shows this text (if enabled). Settable only for `dns`, `l4`, and `http` rules when the action set to `block`.",
+																	"example": "This website is a security risk",
+																	"nullable": true,
+																	"type": "string",
+																	"x-auditable": true,
+																	"x-stainless-terraform-configurability": "computed_optional"
+																},
+																"bypass_parent_rule": {
+																	"description": "Set to enable MSP accounts to bypass their parent's rules. Only MSP child accounts can set this. Settable for all types of rules.",
+																	"example": false,
+																	"nullable": true,
+																	"type": "boolean",
+																	"x-auditable": true,
+																	"x-stainless-terraform-configurability": "optional"
+																},
+																"check_session": {
+																	"description": "Configure session check behavior. Settable only for `l4` and `http` rules with the action set to `allow`.",
+																	"nullable": true,
+																	"properties": {
+																		"duration": {
+																			"description": "Sets the required session freshness threshold. The API returns a normalized version of this value.",
+																			"example": "300s",
+																			"type": "string",
+																			"x-auditable": true
+																		},
+																		"enforce": {
+																			"description": "Enable session enforcement.",
+																			"example": true,
+																			"type": "boolean",
+																			"x-auditable": true
+																		}
+																	},
+																	"type": "object",
+																	"x-stainless-terraform-configurability": "optional"
+																},
+																"dns_resolvers": {
+																	"description": "Configure custom resolvers to route queries that match the resolver policy. Unused with 'resolve_dns_through_cloudflare' or 'resolve_dns_internally' settings. DNS queries get routed to the address closest to their origin. Only valid when a rule's action set to 'resolve'. Settable only for `dns_resolver` rules.",
+																	"nullable": true,
+																	"properties": {
+																		"ipv4": {
+																			"items": {
+																				"properties": {
+																					"ip": {
+																						"description": "Specify the IPv4 address of the upstream resolver.",
+																						"example": "2.2.2.2",
+																						"type": "string",
+																						"x-auditable": true
+																					},
+																					"port": {
+																						"description": "Specify a port number to use for the upstream resolver. Defaults to 53 if unspecified.",
+																						"example": 5053,
+																						"type": "integer",
+																						"x-auditable": true
+																					},
+																					"route_through_private_network": {
+																						"description": "Indicate whether to connect to this resolver over a private network. Must set when vnet_id set.",
+																						"example": true,
+																						"type": "boolean",
+																						"x-auditable": true
+																					},
+																					"vnet_id": {
+																						"description": "Specify an optional virtual network for this resolver. Uses default virtual network id if omitted.",
+																						"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
+																						"type": "string",
+																						"x-auditable": true
+																					}
+																				},
+																				"required": [
+																					"ip"
+																				],
+																				"type": "object",
+																				"x-stainless-terraform-configurability": "computed_optional"
+																			},
+																			"type": "array"
+																		},
+																		"ipv6": {
+																			"items": {
+																				"properties": {
+																					"ip": {
+																						"description": "Specify the IPv6 address of the upstream resolver.",
+																						"example": "2001:DB8::",
+																						"type": "string",
+																						"x-auditable": true
+																					},
+																					"port": {
+																						"description": "Specify a port number to use for the upstream resolver. Defaults to 53 if unspecified.",
+																						"example": 5053,
+																						"type": "integer",
+																						"x-auditable": true
+																					},
+																					"route_through_private_network": {
+																						"description": "Indicate whether to connect to this resolver over a private network. Must set when vnet_id set.",
+																						"example": true,
+																						"type": "boolean",
+																						"x-auditable": true
+																					},
+																					"vnet_id": {
+																						"description": "Specify an optional virtual network for this resolver. Uses default virtual network id if omitted.",
+																						"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
+																						"type": "string",
+																						"x-auditable": true
+																					}
+																				},
+																				"required": [
+																					"ip"
+																				],
+																				"type": "object",
+																				"x-stainless-terraform-configurability": "computed_optional"
+																			},
+																			"type": "array"
+																		}
+																	},
+																	"type": "object",
+																	"x-stainless-terraform-configurability": "optional"
+																},
+																"egress": {
+																	"description": "Configure how Gateway Proxy traffic egresses. You can enable this setting for rules with Egress actions and filters, or omit it to indicate local egress via WARP IPs. Settable only for `egress` rules.",
+																	"nullable": true,
+																	"properties": {
+																		"ipv4": {
+																			"description": "Specify the IPv4 address to use for egress.",
+																			"example": "192.0.2.2",
+																			"type": "string",
+																			"x-auditable": true
+																		},
+																		"ipv4_fallback": {
+																			"description": "Specify the fallback IPv4 address to use for egress when the primary IPv4 fails. Set '0.0.0.0' to indicate local egress via WARP IPs.",
+																			"example": "192.0.2.3",
+																			"type": "string",
+																			"x-auditable": true
+																		},
+																		"ipv6": {
+																			"description": "Specify the IPv6 range to use for egress.",
+																			"example": "2001:DB8::/64",
+																			"type": "string",
+																			"x-auditable": true
+																		}
+																	},
+																	"type": "object",
+																	"x-stainless-terraform-configurability": "optional"
+																},
+																"forensic_copy": {
+																	"description": "Configure whether a copy of the HTTP request will be sent to storage when the rule matches.",
+																	"nullable": true,
+																	"properties": {
+																		"enabled": {
+																			"description": "Enable sending the copy to storage.",
+																			"type": "boolean",
+																			"x-auditable": true
+																		}
+																	},
+																	"type": "object",
+																	"x-stainless-terraform-configurability": "optional"
+																},
+																"ignore_cname_category_matches": {
+																	"description": "Ignore category matches at CNAME domains in a response. When off, evaluate categories in this rule against all CNAME domain categories in the response. Settable only for `dns` and `dns_resolver` rules.",
+																	"example": true,
+																	"type": "boolean",
+																	"x-auditable": true,
+																	"x-stainless-terraform-configurability": "computed_optional"
+																},
+																"insecure_disable_dnssec_validation": {
+																	"description": "Specify whether to disable DNSSEC validation (for Allow actions) [INSECURE]. Settable only for `dns` rules.",
+																	"example": false,
+																	"type": "boolean",
+																	"x-auditable": true,
+																	"x-stainless-terraform-configurability": "computed_optional"
+																},
+																"ip_categories": {
+																	"description": "Enable IPs in DNS resolver category blocks. The system blocks only domain name categories unless you enable this setting. Settable only for `dns` and `dns_resolver` rules.",
+																	"example": true,
+																	"type": "boolean",
+																	"x-auditable": true,
+																	"x-stainless-terraform-configurability": "computed_optional"
+																},
+																"ip_indicator_feeds": {
+																	"description": "Indicates whether to include IPs in DNS resolver indicator feed blocks. Default, indicator feeds block only domain names. Settable only for `dns` and `dns_resolver` rules.",
+																	"example": true,
+																	"type": "boolean",
+																	"x-auditable": true,
+																	"x-stainless-terraform-configurability": "computed_optional"
+																},
+																"l4override": {
+																	"description": "Send matching traffic to the supplied destination IP address and port. Settable only for `l4` rules with the action set to `l4_override`.",
+																	"nullable": true,
+																	"properties": {
+																		"ip": {
+																			"description": "Defines the IPv4 or IPv6 address.",
+																			"example": "1.1.1.1",
+																			"type": "string",
+																			"x-auditable": true
+																		},
+																		"port": {
+																			"description": "Defines a port number to use for TCP/UDP overrides.",
+																			"type": "integer",
+																			"x-auditable": true
+																		}
+																	},
+																	"type": "object",
+																	"x-stainless-terraform-configurability": "optional"
+																},
+																"notification_settings": {
+																	"description": "Configure a notification to display on the user's device when this rule matched. Settable for all types of rules with the action set to `block`.",
+																	"nullable": true,
+																	"properties": {
+																		"enabled": {
+																			"description": "Enable notification.",
+																			"type": "boolean",
+																			"x-auditable": true
+																		},
+																		"include_context": {
+																			"description": "Indicates whether to pass the context information as query parameters.",
+																			"type": "boolean",
+																			"x-auditable": true
+																		},
+																		"msg": {
+																			"description": "Customize the message shown in the notification.",
+																			"type": "string",
+																			"x-auditable": true
+																		},
+																		"support_url": {
+																			"description": "Defines an optional URL to direct users to additional information. If unset, the notification opens a block page.",
+																			"type": "string",
+																			"x-auditable": true
+																		}
+																	},
+																	"type": "object",
+																	"x-stainless-terraform-configurability": "optional"
+																},
+																"override_host": {
+																	"description": "Defines a hostname for override, for the matching DNS queries. Settable only for `dns` rules with the action set to `override`.",
+																	"example": "example.com",
+																	"type": "string",
+																	"x-auditable": true,
+																	"x-stainless-terraform-configurability": "computed_optional"
+																},
+																"override_ips": {
+																	"description": "Defines a an IP or set of IPs for overriding matched DNS queries. Settable only for `dns` rules with the action set to `override`.",
+																	"example": [
+																		"1.1.1.1",
+																		"2.2.2.2"
+																	],
+																	"items": {
+																		"description": "Defines the IPv4 or IPv6 address.",
+																		"example": "1.1.1.1",
+																		"type": "string",
+																		"x-auditable": true
+																	},
+																	"nullable": true,
+																	"type": "array",
+																	"x-stainless-terraform-configurability": "computed_optional"
+																},
+																"payload_log": {
+																	"description": "Configure DLP payload logging. Settable only for `http` rules.",
+																	"nullable": true,
+																	"properties": {
+																		"enabled": {
+																			"description": "Enable DLP payload logging for this rule.",
+																			"example": true,
+																			"type": "boolean",
+																			"x-auditable": true
+																		}
+																	},
+																	"type": "object",
+																	"x-stainless-terraform-configurability": "optional"
+																},
+																"quarantine": {
+																	"description": "Configure settings that apply to quarantine rules. Settable only for `http` rules.",
+																	"nullable": true,
+																	"properties": {
+																		"file_types": {
+																			"description": "Specify the types of files to sandbox.",
+																			"items": {
+																				"enum": [
+																					"exe",
+																					"pdf",
+																					"doc",
+																					"docm",
+																					"docx",
+																					"rtf",
+																					"ppt",
+																					"pptx",
+																					"xls",
+																					"xlsm",
+																					"xlsx",
+																					"zip",
+																					"rar"
+																				],
+																				"type": "string",
+																				"x-auditable": true
+																			},
+																			"type": "array"
+																		}
+																	},
+																	"type": "object",
+																	"x-stainless-terraform-configurability": "optional"
+																},
+																"redirect": {
+																	"description": "Apply settings to redirect rules. Settable only for `http` rules with the action set to `redirect`.",
+																	"nullable": true,
+																	"properties": {
+																		"include_context": {
+																			"description": "Specify whether to pass the context information as query parameters.",
+																			"type": "boolean",
+																			"x-auditable": true
+																		},
+																		"preserve_path_and_query": {
+																			"description": "Specify whether to append the path and query parameters from the original request to target_uri.",
+																			"type": "boolean",
+																			"x-auditable": true
+																		},
+																		"target_uri": {
+																			"description": "Specify the URI to which the user is redirected.",
+																			"format": "uri",
+																			"type": "string",
+																			"x-auditable": true
+																		}
+																	},
+																	"required": [
+																		"target_uri"
+																	],
+																	"type": "object",
+																	"x-stainless-terraform-configurability": "optional"
+																},
+																"resolve_dns_internally": {
+																	"description": "Configure to forward the query to the internal DNS service, passing the specified 'view_id' as input. Not used when 'dns_resolvers' is specified or 'resolve_dns_through_cloudflare' is set. Only valid when a rule's action set to 'resolve'. Settable only for `dns_resolver` rules.",
+																	"nullable": true,
+																	"properties": {
+																		"fallback": {
+																			"description": "Specify the fallback behavior to apply when the internal DNS response code differs from 'NOERROR' or when the response data contains only CNAME records for 'A' or 'AAAA' queries.",
+																			"enum": [
+																				"none",
+																				"public_dns"
+																			],
+																			"type": "string",
+																			"x-auditable": true
+																		},
+																		"view_id": {
+																			"description": "Specify the internal DNS view identifier to pass to the internal DNS service.",
+																			"type": "string",
+																			"x-auditable": true
+																		}
+																	},
+																	"type": "object",
+																	"x-stainless-terraform-configurability": "optional"
+																},
+																"resolve_dns_through_cloudflare": {
+																	"description": "Enable to send queries that match the policy to Cloudflare's default 1.1.1.1 DNS resolver. Cannot set when 'dns_resolvers' specified or 'resolve_dns_internally' is set. Only valid when a rule's action set to 'resolve'. Settable only for `dns_resolver` rules.",
+																	"example": true,
+																	"nullable": true,
+																	"type": "boolean",
+																	"x-auditable": true,
+																	"x-stainless-terraform-configurability": "computed_optional"
+																},
+																"untrusted_cert": {
+																	"description": "Configure behavior when an upstream certificate is invalid or an SSL error occurs. Settable only for `http` rules with the action set to `allow`.",
+																	"nullable": true,
+																	"properties": {
+																		"action": {
+																			"description": "Defines the action performed when an untrusted certificate seen. The default action an error with HTTP code 526.",
+																			"enum": [
+																				"pass_through",
+																				"block",
+																				"error"
+																			],
+																			"example": "error",
+																			"type": "string",
+																			"x-auditable": true
+																		}
+																	},
+																	"type": "object",
+																	"x-stainless-terraform-configurability": "optional"
+																}
+															},
+															"type": "object",
+															"x-stainless-terraform-configurability": "computed_optional"
+														},
+														"schedule": {
+															"description": "Defines the schedule for activating DNS policies. Settable only for `dns` and `dns_resolver` rules.",
+															"nullable": true,
+															"properties": {
+																"fri": {
+																	"description": "Specify the time intervals when the rule is active on Fridays, in the increasing order from 00:00-24:00.  If this parameter omitted, the rule is deactivated on Fridays. API returns a formatted version of this string, which may cause Terraform drift if a unformatted value is used.",
+																	"example": "08:00-12:30,13:30-17:00",
+																	"type": "string",
+																	"x-auditable": true
+																},
+																"mon": {
+																	"description": "Specify the time intervals when the rule is active on Mondays, in the increasing order from 00:00-24:00(capped at maximum of 6 time splits). If this parameter omitted, the rule is deactivated on Mondays. API returns a formatted version of this string, which may cause Terraform drift if a unformatted value is used.",
+																	"example": "08:00-12:30,13:30-17:00",
+																	"type": "string",
+																	"x-auditable": true
+																},
+																"sat": {
+																	"description": "Specify the time intervals when the rule is active on Saturdays, in the increasing order from 00:00-24:00.  If this parameter omitted, the rule is deactivated on Saturdays. API returns a formatted version of this string, which may cause Terraform drift if a unformatted value is used.",
+																	"example": "08:00-12:30,13:30-17:00",
+																	"type": "string",
+																	"x-auditable": true
+																},
+																"sun": {
+																	"description": "Specify the time intervals when the rule is active on Sundays, in the increasing order from 00:00-24:00. If this parameter omitted, the rule is deactivated on Sundays. API returns a formatted version of this string, which may cause Terraform drift if a unformatted value is used.",
+																	"example": "08:00-12:30,13:30-17:00",
+																	"type": "string",
+																	"x-auditable": true
+																},
+																"thu": {
+																	"description": "Specify the time intervals when the rule is active on Thursdays, in the increasing order from 00:00-24:00. If this parameter omitted, the rule is deactivated on Thursdays. API returns a formatted version of this string, which may cause Terraform drift if a unformatted value is used.",
+																	"example": "08:00-12:30,13:30-17:00",
+																	"type": "string",
+																	"x-auditable": true
+																},
+																"time_zone": {
+																	"description": "Specify the time zone for rule evaluation. When a [valid time zone city name](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones#List) is provided, Gateway always uses the current time for that time zone. When this parameter is omitted, Gateway uses the time zone determined from the user's IP address. Colo time zone is used when the user's IP address does not resolve to a location.",
+																	"example": "America/New York",
+																	"type": "string",
+																	"x-auditable": true
+																},
+																"tue": {
+																	"description": "Specify the time intervals when the rule is active on Tuesdays, in the increasing order from 00:00-24:00. If this parameter omitted, the rule is deactivated on Tuesdays. API returns a formatted version of this string, which may cause Terraform drift if a unformatted value is used.",
+																	"example": "08:00-12:30,13:30-17:00",
+																	"type": "string",
+																	"x-auditable": true
+																},
+																"wed": {
+																	"description": "Specify the time intervals when the rule is active on Wednesdays, in the increasing order from 00:00-24:00. If this parameter omitted, the rule is deactivated on Wednesdays. API returns a formatted version of this string, which may cause Terraform drift if a unformatted value is used.",
+																	"example": "08:00-12:30,13:30-17:00",
+																	"type": "string",
+																	"x-auditable": true
+																}
+															},
+															"type": "object",
+															"x-stainless-terraform-configurability": "computed_optional"
+														},
+														"sharable": {
+															"description": "Indicate that this rule is sharable via the Orgs API.",
+															"readOnly": true,
+															"type": "boolean",
+															"x-auditable": true,
+															"x-stainless-terraform-configurability": "computed"
+														},
+														"source_account": {
+															"description": "Provide the account tag of the account that created the rule.",
+															"readOnly": true,
+															"type": "string",
+															"x-auditable": true,
+															"x-stainless-terraform-configurability": "computed"
+														},
+														"traffic": {
+															"default": "",
+															"description": "Specify the wirefilter expression used for traffic matching. The API automatically formats and sanitizes expressions before storing them. To prevent Terraform state drift, use the formatted expression returned in the API response.",
+															"example": "http.request.uri matches \".*a/partial/uri.*\" and http.request.host in $01302951-49f9-47c9-a400-0297e60b6a10",
+															"type": "string",
+															"x-auditable": true,
+															"x-stainless-terraform-configurability": "computed_optional"
+														},
+														"updated_at": {
+															"example": "2014-01-01T05:20:00.12345Z",
+															"format": "date-time",
+															"readOnly": true,
+															"type": "string"
+														},
+														"version": {
+															"description": "Indicate the version number of the rule(read-only).",
+															"example": 1,
+															"readOnly": true,
+															"type": "integer",
+															"x-auditable": true,
+															"x-stainless-terraform-configurability": "computed"
+														},
+														"warning_status": {
+															"description": "Indicate a warning for a misconfigured rule, if any.",
+															"nullable": true,
+															"readOnly": true,
+															"type": "string",
+															"x-stainless-terraform-configurability": "computed"
+														}
+													},
+													"required": [
+														"name",
+														"precedence",
+														"enabled",
+														"action",
+														"traffic",
+														"filters"
+													],
+													"type": "object"
+												}
+											},
+											"type": "object"
+										}
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"errors": {
+											"allOf": [
+												{
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												}
+											],
+											"example": [
+												{
+													"code": 7003,
+													"message": "No route for the URI"
+												}
+											],
+											"minLength": 1,
+											"type": "object"
+										},
+										"messages": {
+											"allOf": [
+												{
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												}
+											],
+											"example": [],
+											"type": "object"
+										},
+										"result": {
+											"enum": [
+												null
+											],
+											"nullable": true,
+											"type": "object"
+										},
+										"success": {
+											"description": "Indicate whether the API call was successful.",
+											"enum": [
+												false
+											],
+											"example": false,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
+									],
+									"type": "object"
+								}
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Patch a Zero Trust Gateway rule response failure."
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": [],
+				"api_token": []
+			}
+		],
+		"summary": "Patch a Zero Trust Gateway rule",
+		"tags": [
+			"Zero Trust Gateway rules"
+		]
+	},
 	"POST /accounts/{account_id}/gateway/rules": {
 		"description": "Create a new Zero Trust Gateway rule.",
 		"operationId": "zero-trust-gateway-rules-create-zero-trust-gateway-rule",
