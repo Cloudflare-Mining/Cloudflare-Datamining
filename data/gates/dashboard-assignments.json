@@ -188,6 +188,10 @@
 	"billing-pay-my-bill-enabled": {
 		"true": 100
 	},
+	"billing-preferred-locale": {
+		"false": 99,
+		"true": 1
+	},
 	"billing-registrar-stripe-paypal": {
 		"true": 100
 	},
@@ -585,9 +589,6 @@
 	},
 	"loui-ssl-byoca": {
 		"true": 100
-	},
-	"loui-web-assets-kumo": {
-		"false": 100
 	},
 	"lrsp-legal-request-intake-form-enabled": {
 		"false": 100
