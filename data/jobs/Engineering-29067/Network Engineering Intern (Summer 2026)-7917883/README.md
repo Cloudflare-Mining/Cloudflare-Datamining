@@ -5,33 +5,40 @@
 		<p>At Cloudflare, we’re not looking for people who wait for a polished roadmap; we’re looking for the builders who see the cracks in the Internet that everyone else has simply learned to live with. We value candidates who have the instinct to spot a "normalized" problem and the AI-native curiosity to create a solution using the latest tools. Our culture is built on iteration, leveraging AI to ship faster today to make it better tomorrow, while ensuring that every improvement, no matter how small, is shared across the team to lift everyone up. If you’re the type of person who values curiosity over bureaucracy, and that AI is a partner in solving tough problems to keep the Internet moving forward, you’ll fit right in.</p>
 	</div>
 </div>
-<h3><strong>Available Locations: </strong>Austin, TX</h3>
-<p>In this role, you’ll help us build <a href="https://www.cloudflare.com/zero-trust/products/browser-isolation/">Cloudflare Browser Isolation</a>, a secure remote browsing platform that protects users from security threats on the Internet. As an engineer on the Browser Isolation team, you will focus on designing, building, and scaling our Chromium-based distributed browsing engine. You will also contribute to the control plane that enables distributed Chromium-based browsers to deliver low-latency remote browsing for our users at scale across our global anycast network. You will solve problems of massive scale and significance, shaping the future of secure web browsing on the Internet.</p>
-<p><strong>Technologies we use:</strong></p>
+<p><strong>Available Location:</strong> Austin, TX&nbsp;</p>
+<p><strong>Role Summary</strong></p>
+<p>Cloudflare operates one of the world's largest and most interconnected networks, spanning 335+ cities across every region of the globe. As a Network Engineering Intern on the Edge Network &amp; Backbone team, you'll work under close mentorship from senior and principal network engineers on the real operational network that keeps that infrastructure running. From provisioning capacity to triaging faults, you'll be supported at every step by experienced engineers and AI-enabled tooling purpose-built for our network. This is a rare opportunity to enter the networking industry by gaining real experience with infrastructure that carries traffic for millions of websites and users — not a simulated lab environment.</p>
+<p><strong>Role Responsibilities</strong></p>
 <ul>
-	<li>Our client is written in WebAssembly, Typescript, and WebGL</li>
-	<li>Our remote streaming technology is based on WebRTC and Skia (<a href="https://blog.cloudflare.com/cloudflare-and-remote-browser-isolation/">read our blog to learn more</a>)</li>
-	<li>Our remote browser is based on Chromium and developed in C++</li>
-	<li>For our orchestration layer we use Nomad, Consul, Cloudflare Workers, Go and Typescript</li>
+	<li>Provision and configure network hardware and software as part of capacity expansion across Cloudflare's global edge network, following well-established playbooks under engineer guidance.</li>
+	<li>Monitor network health and investigate non-urgent faults using Cloudflare's AI-enabled troubleshooting tooling, escalating where needed and documenting findings to help the broader team resolve issues faster.</li>
+	<li>Triage and investigate network issues in collaboration with other internal teams, leveraging our internal tooling to accelerate diagnosis and resolution.</li>
+	<li>Create and maintain operational documentation, runbooks, and knowledge-base articles that improve the efficiency of our team and tooling.</li>
+	<li>Participate in structured troubleshooting sessions with senior engineers, building diagnostic skills across BGP, routing, and hardware faults in a production environment.</li>
+	<li>Support network operations by contributing to shift handoffs, status updates, and incident tracking as part of the day-to-day ops rhythm.</li>
 </ul>
-<p><strong>Examples of desirable skills, knowledge and experience</strong></p>
-<p>Members of the Browser Isolation team contribute to all areas of the product. These include everything from making patches to Chromium, orchestrating tasks at the edge, and working on our build infrastructure. We’re looking for motivated engineers who are excited to work broadly across our technology and service stack<strong>.</strong></p>
+<p><strong>Role Requirements (Must-Have Skills)</strong></p>
 <ul>
-	<li>3+ years of relevant experience required.</li>
-	<li>Experience coding in multiple programming languages s.a. <strong>C++</strong>, <strong>Go</strong> and <strong>Typescript.</strong></li>
-	<li>Familiarity with <strong>Linux/UNIX</strong> systems.</li>
-	<li>Debugging across multiple distributed services.</li>
-	<li>Solid foundation in computer science, with strong competencies in algorithms, data structures, software design, and building large, distributed systems.</li>
-	<li>Ability to work under ambiguity and solve difficult problems.</li>
+	<li>Currently enrolled in or recently completed a degree in Networking, Computer Science, or a related technical discipline.</li>
+	<li>Holds or is actively pursuing at least one industry networking certification (CCNA, JNCIA, or equivalent).</li>
+	<li>Working knowledge of BGP and the OSI model, with the ability to reason through network problems layer by layer.</li>
+	<li>Familiarity with at least one scripting language (Python, Bash, or similar), or demonstrated comfort using AI tools to write and adapt scripts for network automation tasks.</li>
+	<li>Demonstrated ability to learn new technologies quickly, including vendor operating systems and internal tooling, under the guidance of a mentor.</li>
+	<li>Strong written communication skills — you'll be writing documentation and ticket responses that engineers and customers will rely on.</li>
 </ul>
-<p><strong>Bonus Points</strong></p>
+<p><strong>Nice-to-Have Skills</strong></p>
 <ul>
-	<li>Experience working in low-latency real time environments such as video streaming, game engine architecture, high frequency trading, etc.&nbsp;</li>
-	<li>Experience with on-call and incident mitigation.</li>
-	<li>Experience with workload and container orchestration systems such as <strong>Nomad</strong>, <strong>Consul </strong>or <strong>Kubernetes.</strong></li>
-	<li>Knowledge of <strong>logging, metrics, billing, and health check systems</strong> for large-scale distributed infrastructure.</li>
-	<li>Ability to effectively navigate, understand, and contribute to large codebases.</li>
+	<li>Hands-on experience with network operating systems across multiple vendors, such as Juniper, Cisco, or Arista.</li>
+	<li>Understanding of anycast routing or how large-scale Internet networks distribute traffic.</li>
+	<li>Experience with Linux system administration.</li>
+	<li>Familiarity with optical transport technologies.</li>
+	<li>Experience working in a customer-facing technical support environment.</li>
 </ul>
+<p><strong>A note on this role</strong></p>
+<p>This internship is deliberately operational in scope. You won't be handed a greenfield project to present at the end of the summer. Instead, you'll be embedded in a lean, high-trust team and expected to contribute to real infrastructure from week one. The upside: by the end of six months, you'll have hands-on production experience that most networking graduates take years to obtain. We're looking for candidates who see that as a feature, not a bug.</p>
+<p><strong>I</strong><strong>nternship Duration:</strong> 6 Months</p>
+<p><strong data-path-to-node="3,0" data-index-in-node="30">Schedule:</strong> Full-time (3 days per week in office)&nbsp;</p>
+<p><strong>Compensation:</strong> 45/hr</p>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
 	<p><span style="font-weight: 400;">We’re not just a highly ambitious, large-scale technology company. We’re a highly ambitious, large-scale technology company with a soul. Fundamental to our mission to help build a better Internet is protecting the free and open Internet.</span></p>
