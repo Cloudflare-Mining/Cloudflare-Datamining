@@ -778,7 +778,7 @@
 		}
 	},
 	"GET /radar/post_quantum/tls/support": {
-		"description": "Tests whether a hostname or IP address supports Post-Quantum (PQ) TLS key exchange. Returns information about the negotiated key exchange algorithm and whether it uses PQ cryptography.",
+		"description": "Tests whether a hostname or IP address supports Post-Quantum (PQ) TLS key exchange. Returns information about the negotiated key exchange algorithm, whether it uses PQ cryptography, and any detected TLS implementation bugs (Split ClientHello, HRR failure, etc.).",
 		"operationId": "radar-get-post-quantum-tls-support",
 		"parameters": [
 			{
@@ -802,6 +802,28 @@
 							"properties": {
 								"result": {
 									"properties": {
+										"bugs": {
+											"properties": {
+												"hrrFailure": {
+													"description": "Server sends a HelloRetryRequest but fails to complete the handshake after the client sends the second ClientHello. Often caused by non-compliant TLS 1.3 implementations on shared hosting providers.",
+													"type": "boolean"
+												},
+												"splitClientHello": {
+													"description": "Server rejects fragmented ClientHello caused by large PQ keyshare, but accepts classical (non-PQ) handshakes. Typically caused by middleboxes or firewalls that cannot reassemble split TLS ClientHello messages.",
+													"type": "boolean"
+												},
+												"unknownKeyshare": {
+													"description": "Server cannot handle an unknown key exchange algorithm in the ClientHello keyshare extension. Compliant servers should respond with HelloRetryRequest for a supported algorithm.",
+													"type": "boolean"
+												}
+											},
+											"required": [
+												"splitClientHello",
+												"hrrFailure",
+												"unknownKeyshare"
+											],
+											"type": "object"
+										},
 										"host": {
 											"description": "The host that was tested",
 											"type": "string"
@@ -815,7 +837,7 @@
 											"type": "string"
 										},
 										"pq": {
-											"description": "Whether the negotiated key exchange uses Post-Quantum cryptography",
+											"description": "Whether the negotiated key exchange uses Post-Quantum cryptography (specifically X25519MLKEM768)",
 											"type": "boolean"
 										}
 									},
@@ -823,7 +845,8 @@
 										"kex",
 										"kexName",
 										"pq",
-										"host"
+										"host",
+										"bugs"
 									],
 									"type": "object"
 								},

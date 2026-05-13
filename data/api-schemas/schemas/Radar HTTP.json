@@ -12,6 +12,7 @@
 					"description": "Specifies the HTTP attribute by which to group the results.",
 					"enum": [
 						"ADM1",
+						"API_TRAFFIC",
 						"AS",
 						"BOT_CLASS",
 						"BROWSER",
@@ -131,6 +132,23 @@
 					"description": "Filters results by Geolocation. Specify a comma-separated list of GeoNames IDs. Prefix with `-` to exclude geoIds from results. For example, `-2267056,360689` excludes results from the 2267056 (Lisbon), but includes results from 5128638 (New York).",
 					"example": "2267056,360689",
 					"items": {
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
+				"description": "Filters results by API traffic classification. API traffic is identified by JSON or XML response content types on dynamic (non-cacheable) HTTP requests.",
+				"in": "query",
+				"name": "apiTraffic",
+				"schema": {
+					"description": "Filters results by API traffic classification. API traffic is identified by JSON or XML response content types on dynamic (non-cacheable) HTTP requests.",
+					"example": "API",
+					"items": {
+						"enum": [
+							"API",
+							"NON_API"
+						],
 						"type": "string"
 					},
 					"type": "array"
@@ -5091,6 +5109,23 @@
 				}
 			},
 			{
+				"description": "Filters results by API traffic classification. API traffic is identified by JSON or XML response content types on dynamic (non-cacheable) HTTP requests.",
+				"in": "query",
+				"name": "apiTraffic",
+				"schema": {
+					"description": "Filters results by API traffic classification. API traffic is identified by JSON or XML response content types on dynamic (non-cacheable) HTTP requests.",
+					"example": "API",
+					"items": {
+						"enum": [
+							"API",
+							"NON_API"
+						],
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
 				"description": "Filters results by bot class. Refer to [Bot classes](https://developers.cloudflare.com/radar/concepts/bot-classes/).",
 				"in": "query",
 				"name": "botClass",
@@ -5564,6 +5599,7 @@
 					"description": "Specifies the HTTP attribute by which to group the results.",
 					"enum": [
 						"ADM1",
+						"API_TRAFFIC",
 						"AS",
 						"BOT_CLASS",
 						"BROWSER",
@@ -5705,13 +5741,20 @@
 				}
 			},
 			{
-				"description": "Limits the number of objects per group to the top items within the specified time range. When item count exceeds the limit, extra items appear grouped under an \"other\" category.",
+				"description": "Filters results by API traffic classification. API traffic is identified by JSON or XML response content types on dynamic (non-cacheable) HTTP requests.",
 				"in": "query",
-				"name": "limitPerGroup",
+				"name": "apiTraffic",
 				"schema": {
-					"description": "Limits the number of objects per group to the top items within the specified time range. When item count exceeds the limit, extra items appear grouped under an \"other\" category.",
-					"example": 10,
-					"type": "integer"
+					"description": "Filters results by API traffic classification. API traffic is identified by JSON or XML response content types on dynamic (non-cacheable) HTTP requests.",
+					"example": "API",
+					"items": {
+						"enum": [
+							"API",
+							"NON_API"
+						],
+						"type": "string"
+					},
+					"type": "array"
 				}
 			},
 			{
@@ -5729,6 +5772,16 @@
 						"type": "string"
 					},
 					"type": "array"
+				}
+			},
+			{
+				"description": "Limits the number of objects per group to the top items within the specified time range. When item count exceeds the limit, extra items appear grouped under an \"other\" category.",
+				"in": "query",
+				"name": "limitPerGroup",
+				"schema": {
+					"description": "Limits the number of objects per group to the top items within the specified time range. When item count exceeds the limit, extra items appear grouped under an \"other\" category.",
+					"example": 10,
+					"type": "integer"
 				}
 			},
 			{
