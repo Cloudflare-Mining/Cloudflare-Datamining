@@ -733,6 +733,12 @@
 													"type": "object",
 													"x-auditable": true
 												},
+												"latest_upload_error": {
+													"description": "Human-readable error message describing why the latest upload\nfailed. Populated only when `latest_upload_status` is `Error`.\nReturns one of a small fixed set of category-level messages\n(invalid domain / IP / URL entries, malformed row or header,\ninvalid valid_until timestamp, etc.) or the generic\n`Upload failed` for unknown or infrastructure-level errors.\nNever echoes raw error text from the underlying loader.\nIntel accounts receive the verbatim loader/API error text\n(including specific offending values) instead of these\ncategory-level messages.\n",
+													"example": "Feed contains one or more invalid domain entries. Check your feed for wildcards or other values that are not valid DNS names.",
+													"type": "string",
+													"x-auditable": true
+												},
 												"latest_upload_status": {
 													"description": "Status of the latest snapshot uploaded",
 													"enum": [
@@ -1015,6 +1021,12 @@
 																}
 															},
 															"type": "object",
+															"x-auditable": true
+														},
+														"latest_upload_error": {
+															"description": "Human-readable error message describing why the latest upload\nfailed. Populated only when `latest_upload_status` is `Error`.\nReturns one of a small fixed set of category-level messages\n(invalid domain / IP / URL entries, malformed row or header,\ninvalid valid_until timestamp, etc.) or the generic\n`Upload failed` for unknown or infrastructure-level errors.\nNever echoes raw error text from the underlying loader.\nIntel accounts receive the verbatim loader/API error text\n(including specific offending values) instead of these\ncategory-level messages.\n",
+															"example": "Feed contains one or more invalid domain entries. Check your feed for wildcards or other values that are not valid DNS names.",
+															"type": "string",
 															"x-auditable": true
 														},
 														"latest_upload_status": {
