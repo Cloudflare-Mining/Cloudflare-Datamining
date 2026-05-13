@@ -1545,6 +1545,9 @@
 	"loui-ssl-byoca": {
 		"enabled": true
 	},
+	"loui-ssl-kumoify": {
+		"enabled": false
+	},
 	"loui-turnstile-kumo": {
 		"enabled": true
 	},
@@ -2184,6 +2187,9 @@
 			"activate-r2"
 		]
 	},
+	"r2-sql-studio": {
+		"enabled": false
+	},
 	"rachel-test-delete-okay": {
 		"enabled": true,
 		"branches": [
@@ -2232,7 +2238,7 @@
 		"enabled": true
 	},
 	"registrar-unified-checkout-restore": {
-		"enabled": false
+		"enabled": true
 	},
 	"registrar-unified-checkout-transfer": {
 		"enabled": false

@@ -189,8 +189,7 @@
 		"true": 100
 	},
 	"billing-preferred-locale": {
-		"false": 99,
-		"true": 1
+		"true": 100
 	},
 	"billing-registrar-stripe-paypal": {
 		"true": 100
@@ -591,7 +590,7 @@
 		"true": 100
 	},
 	"lrsp-legal-request-intake-form-enabled": {
-		"false": 100
+		"true": 100
 	},
 	"magic-alerts-stepper-flow": {
 		"true": 100
@@ -751,8 +750,7 @@
 		"false": 25
 	},
 	"prg-lb-setup-banner": {
-		"baseline": 50,
-		"variant-a": 50
+		"variant-a": 100
 	},
 	"prg-load-balancing-personalized-messaging": {
 		"true": 100
@@ -873,6 +871,10 @@
 	},
 	"registrar-unified-checkout-renew": {
 		"true": 100
+	},
+	"registrar-unified-checkout-restore": {
+		"true": 33,
+		"false": 67
 	},
 	"rl-throttle-behaviour": {
 		"true": 100
