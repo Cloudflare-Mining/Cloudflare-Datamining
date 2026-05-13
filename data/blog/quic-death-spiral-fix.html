@@ -12,7 +12,7 @@
 			</svg>
 		</a>
 	</div>
-	<p>Before we dive into the core problem, a quick refresher on CCAs may help to set the stage.</p>
+	<p>Before we dive into the core problem, a quick refresher on Congestion Control Algorithms (CCAs) may help to set the stage.</p>
 	<p>The central knob a CCA turns is the <b>congestion window</b> (<code>cwnd</code>): the sender-side cap on how many bytes can be in flight (sent but not yet acknowledged) at any moment. A larger <code>cwnd</code> lets the sender push more data per round trip; a smaller <code>cwnd</code> throttles it. Every loss-based CCA, CUBIC included, is ultimately a policy for how to grow <code>cwnd</code> when the network looks healthy and how to shrink it when it doesn't.</p>
 	<p>In essence, CCAs aim to maximize data transfer by inferring the "available bandwidth" of the network; because no one wants to pay for a 1 Gbps subscription and only use a fraction of it. The family of loss-based algorithms, to which CUBIC belongs, operate on a fundamental premise: (1) if there is no packet loss, increase the sending rate (i.e. increase the bandwidth utilization); (2) if there is loss, loss-based algorithms assume that the network's capacity has been exceeded, and the sender must back off (i.e. decrease the bandwidth utilization).</p>
 	<figure class="kg-card kg-image-card">
@@ -41,19 +41,19 @@
 			<p>RTT = 10ms (set up in the configuration)</p>
 		</li>
 		<li>
-			<p>A <b>10 MB file download</b> over HTTP/3</p>
+			<p>A 10 MB file download over HTTP/3</p>
 		</li>
 		<li>
-			<p>Using <b>CUBIC</b> congestion control</p>
+			<p>Using CUBIC congestion control</p>
 		</li>
 		<li>
-			<p>With <b>30% random packet loss</b> injected during the <b>first two seconds</b></p>
+			<p>With 30% random packet loss injected during the first two seconds</p>
 		</li>
 		<li>
 			<p>After two seconds, loss stops entirely</p>
 		</li>
 		<li>
-			<p>The test has a generous <b>10-second timeout</b> to complete the download, which is expected to be completed in four or five seconds</p>
+			<p>The test has a generous 10-second timeout to complete the download, which is expected to be completed in four or five seconds</p>
 		</li>
 	</ul>
 	<p>The expected behavior is straightforward: CUBIC should take some hits during the loss phase, reduce its congestion window, and once loss stops, steadily ramp up and finish the download well within the timeout. Instead, we observed in multiple 100-time runs that around 60% of our tests were not able to complete the download within the generous 10-second timeout.</p>
@@ -70,8 +70,8 @@
 		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1Lz0AbFsNqMz1c1HrB1n31/ecc425a25ab953bccbc3095768a38cc5/BLOG-3273_image10.png" alt="BLOG-3273 image10" class="kg-image" width="1999" height="1282" loading="lazy">
 	</figure>
 	<p><sup><i>Connection overview of a failing test. After T=2s, packet loss stops entirely — yet cwnd remains pinned at the minimum floor and the congestion state oscillates between recovery and congestion avoidance every ~14ms.</i></sup></p>
-	<p>After the two-second (2000 ms) mark, <b>packet loss stops entirely</b>. However, the number of bytes in flight remains flat, which contradicts the core logic of the CUBIC algorithm: in the absence of loss, apply more gas to increase throttle (more bytes in our world). <i>This raises the question: if the network is no longer dropping packets, why is the congestion window failing to grow?</i></p>
-	<p>When we zoom into that region, our analysis shows that CUBIC enters a rapid oscillation, shown in our plot as an extended recovery phase, between congestion avoidance state (the operational regime phase) and recovery state (the packet loss recovery state) — <b>999 transitions in approximately 6.7 seconds</b>. That’s one transition every ~14ms — suspiciously close to the connection's RTT (10ms). Throughout this entire period, cwnd is locked at the minimum floor: 2700 bytes, or two full-size packets.</p>
+	<p>After the two-second (2000 ms) mark, packet loss stops entirely. However, the number of bytes in flight remains flat, which contradicts the core logic of the CUBIC algorithm: in the absence of loss, apply more gas to increase throttle (more bytes in our world). <i>This raises the question: if the network is no longer dropping packets, why is the congestion window failing to grow?</i></p>
+	<p>When we zoom into that region, our analysis shows that CUBIC enters a rapid oscillation, shown in our plot as an extended recovery phase, between congestion avoidance state (the operational regime phase) and recovery state (the packet loss recovery state) — 999 transitions in approximately 6.7 seconds. That’s one transition every ~14ms — suspiciously close to the connection's RTT (10ms). Throughout this entire period, cwnd is locked at the minimum floor: 2700 bytes, or two full-size packets.</p>
 	<p>Clearly something in CUBIC's logic is misinterpreting the state of the connection. The key clue is the oscillation period: ~14ms matches the RTT. Whatever is triggering the recovery/avoidance flip is happening once per round trip, in lockstep with connection's ACK clock; the self-clocking rhythm in which each round-trip's ACKs from the client trigger the server's next send. Because this is a download (server to client), the ACKs in question travel client to server, and CUBIC's state machine runs on the server side: every time those ACKs land, bytes_in_flight drops to zero and the server sends the next two-packet burst, which is what triggers the bug.</p>
 	<p>To confirm this behavior was CUBIC-specific, we ran the same test with <a href="https://dl.acm.org/doi/10.1145/235160.235162" target="_blank" rel="noopener noreferrer"><u>Reno</u></a>, another member of the loss-based family but with a different growth rate. The results were conclusive: 100% pass rate, showing Reno recovered cleanly after the loss phase, and revealing that this is a CUBIC-related bug.</p>
 	<figure class="kg-card kg-image-card">
@@ -109,7 +109,7 @@
 	<blockquote>
 		<p>…it would ask the CUBIC algorithm to recalculate the curve so that we again start growing steeply upward from where cwnd is now (as CUBIC does just after a loss). Ideally we'd want the cwnd growth curve to be the same shape, just shifted later in time by the amount of the idle period.</p>
 	</blockquote>
-	<p>The elegant solution, authored by Eric Dumazet, Yuchung Cheng, and Neal Cardwell, was to <b>shift the epoch forward by the idle duration</b> rather than resetting it. This preserves the shape of the CUBIC growth curve — just sliding it in time so that the algorithm picks up where it left off.</p>
+	<p>The elegant solution, authored by Eric Dumazet, Yuchung Cheng, and Neal Cardwell, was to shift the epoch forward by the idle duration rather than resetting it. This preserves the shape of the CUBIC growth curve — just sliding it in time so that the algorithm picks up where it left off.</p>
 	<div class="flex anchor relative">
 		<h3 id="the-port-to-quiche-2020">The port to quiche (2020)</h3>
 		<a href="https://blog.cloudflare.com/#the-port-to-quiche-2020" aria-hidden="true" class="relative sm:absolute sm:-start-5">
@@ -168,7 +168,7 @@ fn on_packet_sent(&amp;mut self, bytes_in_flight: usize, now: Instant, ...) {
 			<p><b>False idle detection:</b> When the next burst is sent, on_packet_sent() sees bytes_in_flight == 0 and assumes the connection was idle, but it was congestion limited.</p>
 		</li>
 		<li>
-			<p><b>Inflated delta:</b> The calculation uses <b>now - last_sent_time</b> to determine the idle duration. When the congestion window (<code>cwnd</code>) is at its minimum, <code>last_sent_time</code> is the timestamp of the <i>start</i> of the previous RTT cycle. Therefore, the resulting delta is approximately <b>14ms</b> (the connection's RTT + additional rounding errors). This RTT-sized delta is incorrectly applied as the "idle" time. The <i>actual</i> time the connection was idle (the processing gap between the last ACK arriving and the next packet being sent) is effectively 0. By measuring the full RTT instead of the true gap, the delta is <b>inflated significantly</b>, aggressively shifting the recovery start time forward, possibly into the future.</p>
+			<p><b>Inflated delta:</b> The calculation uses now - last_sent_time to determine the idle duration. When the congestion window (<code>cwnd</code>) is at its minimum, <code>last_sent_time</code> is the timestamp of the <i>start</i> of the previous RTT cycle. Therefore, the resulting delta is approximately 14ms (the connection's RTT + additional rounding errors). This RTT-sized delta is incorrectly applied as the "idle" time. The <i>actual</i> time the connection was idle (the processing gap between the last ACK arriving and the next packet being sent) is effectively 0. By measuring the full RTT instead of the true gap, the delta is inflated significantly, aggressively shifting the recovery start time forward, possibly into the future.</p>
 		</li>
 		<li>
 			<p><b>Perceived recovery:</b> Because the recovery start time is now in the future, the <code>in_congestion_recovery()</code> check returns true for every incoming ACK.&nbsp; Processing of the next ACK exits recovery and sets the recovery start to the ACK time which is larger than last_sent_time, making it likely for the congestion controller to push the recovery time into the future when doing the next send.</p>
@@ -177,7 +177,7 @@ fn on_packet_sent(&amp;mut self, bytes_in_flight: usize, now: Instant, ...) {
 			<p><b>Stagnation:</b> Since CUBIC skips <code>cwnd</code> growth for any packet perceived to be in a recovery period, the window remains pinned at two packets — ensuring the pipe drains completely on the next ACK and restarting the cycle.</p>
 		</li>
 	</ol>
-	<p><b>And this loop repeats for thousands of cycles until the accumulation of small deviations — from scheduler jitter and ACK processing variance — lets the &lt;= boundary in </b><code><b>in_congestion_recovery()</b></code><b> slip behind the next packet's send time, breaking the cycle.</b></p>
+	<p>And this loop repeats for thousands of cycles until the accumulation of small deviations — from scheduler jitter and ACK processing variance — lets the &lt;= boundary in <code>in_congestion_recovery()</code> slip behind the next packet's send time, breaking the cycle.</p>
 	<div class="flex anchor relative">
 		<h2 id="the-fix-measuring-idle-from-the-right-moment">The fix: measuring idle from the right moment</h2>
 		<a href="https://blog.cloudflare.com/#the-fix-measuring-idle-from-the-right-moment" aria-hidden="true" class="relative sm:absolute sm:-start-5">
@@ -197,13 +197,13 @@ fn on_packet_sent(&amp;mut self, bytes_in_flight: usize, now: Instant, ...) {
 	</div>
 	<ol>
 		<li>
-			<p><b>Add last_ack_time timestamp</b> to the CUBIC state.</p>
+			<p>Add last_ack_time timestamp to the CUBIC state.</p>
 		</li>
 		<li>
-			<p><b>Update that timestamp</b> when ACKs arrive.</p>
+			<p>Update that timestamp when ACKs arrive.</p>
 		</li>
 		<li>
-			<p><b>Use it</b> for the idle delta computation:</p>
+			<p>Use it for the idle delta computation:</p>
 		</li>
 	</ol>
 	<pre class="language-Rust"><code class="language-Rust">// cubic.rs — on_packet_sent()
