@@ -133,6 +133,24 @@
 				}
 			},
 			{
+				"description": "Delivery status to filter by.",
+				"in": "query",
+				"name": "delivery_status",
+				"schema": {
+					"description": "Delivery status of the message.",
+					"enum": [
+						"delivered",
+						"moved",
+						"quarantined",
+						"rejected",
+						"deferred",
+						"bounced",
+						"queued"
+					],
+					"type": "string"
+				}
+			},
+			{
 				"in": "query",
 				"name": "cursor",
 				"schema": {
@@ -578,6 +596,14 @@
 														"nullable": true,
 														"type": "string"
 													},
+													"smtp_helo_server_ip": {
+														"nullable": true,
+														"type": "string"
+													},
+													"smtp_previous_hop_ip": {
+														"nullable": true,
+														"type": "string"
+													},
 													"subject": {
 														"nullable": true,
 														"type": "string"
@@ -647,6 +673,10 @@
 															}
 														},
 														"type": "object"
+													},
+													"x_originating_ip": {
+														"nullable": true,
+														"type": "string"
 													}
 												},
 												"required": [
@@ -1425,6 +1455,14 @@
 													"nullable": true,
 													"type": "string"
 												},
+												"smtp_helo_server_ip": {
+													"nullable": true,
+													"type": "string"
+												},
+												"smtp_previous_hop_ip": {
+													"nullable": true,
+													"type": "string"
+												},
 												"subject": {
 													"nullable": true,
 													"type": "string"
@@ -1494,6 +1532,10 @@
 														}
 													},
 													"type": "object"
+												},
+												"x_originating_ip": {
+													"nullable": true,
+													"type": "string"
 												}
 											},
 											"required": [

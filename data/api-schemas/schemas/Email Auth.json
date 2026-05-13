@@ -1,0 +1,1700 @@
+{
+	"GET /zones/{zone_id}/email/security/dmarc-reports": {
+		"description": "Retrieves the current DMARC report configuration and status for a zone.\nReturns the RUA prefix, enabled status, approved sources, and DNS records.\n",
+		"operationId": "get_dmarc_reports_status",
+		"parameters": [
+			{
+				"description": "Zone identifier.",
+				"in": "path",
+				"name": "zone_id",
+				"required": true,
+				"schema": {
+					"description": "Identifier.",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"type": "string",
+					"x-auditable": true
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"properties": {
+												"errors": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																},
+																"type": "object"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"messages": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																},
+																"type": "object"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"success": {
+													"description": "Whether the API call was successful.",
+													"enum": [
+														true
+													],
+													"example": true,
+													"type": "boolean"
+												}
+											},
+											"required": [
+												"success",
+												"errors",
+												"messages"
+											],
+											"type": "object"
+										}
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"result": {
+											"description": "Response for GET/PATCH /dmarc-reports",
+											"properties": {
+												"approved_sources": {
+													"description": "List of approved sending sources (omitted when empty)",
+													"items": {
+														"description": "A single approved sending source",
+														"properties": {
+															"created": {
+																"deprecated": true,
+																"description": "Deprecated, use created_at",
+																"example": "2024-01-15T10:30:00.12345Z",
+																"format": "date-time",
+																"type": "string"
+															},
+															"created_at": {
+																"description": "Creation timestamp",
+																"example": "2024-01-15T10:30:00.12345Z",
+																"format": "date-time",
+																"type": "string"
+															},
+															"domain": {
+																"description": "The source domain",
+																"example": "sendgrid.net",
+																"type": "string"
+															},
+															"ips": {
+																"description": "Resolved IP addresses from SPF",
+																"example": [
+																	"192.168.1.1",
+																	"10.0.0.1"
+																],
+																"items": {
+																	"type": "string"
+																},
+																"type": "array"
+															},
+															"modified": {
+																"deprecated": true,
+																"description": "Deprecated, use modified_at",
+																"example": "2024-01-15T11:45:00.12345Z",
+																"format": "date-time",
+																"type": "string"
+															},
+															"modified_at": {
+																"description": "Last modification timestamp",
+																"example": "2024-01-15T11:45:00.12345Z",
+																"format": "date-time",
+																"type": "string"
+															},
+															"name": {
+																"description": "Source name (typically same as domain)",
+																"example": "SendGrid",
+																"type": "string"
+															},
+															"slug": {
+																"description": "URL-friendly identifier",
+																"example": "sendgrid-net",
+																"type": "string"
+															},
+															"tag": {
+																"description": "Source UUID",
+																"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
+																"type": "string"
+															}
+														},
+														"type": "object"
+													},
+													"type": "array"
+												},
+												"created": {
+													"deprecated": true,
+													"description": "Deprecated, use created_at",
+													"example": "2024-01-15T10:30:00.12345Z",
+													"format": "date-time",
+													"type": "string"
+												},
+												"created_at": {
+													"description": "Creation timestamp",
+													"example": "2024-01-15T10:30:00.12345Z",
+													"format": "date-time",
+													"type": "string"
+												},
+												"enabled": {
+													"description": "Whether DMARC reports are enabled",
+													"example": true,
+													"type": "boolean"
+												},
+												"modified": {
+													"deprecated": true,
+													"description": "Deprecated, use modified_at",
+													"example": "2024-01-15T11:45:00.12345Z",
+													"format": "date-time",
+													"type": "string"
+												},
+												"modified_at": {
+													"description": "Last modification timestamp",
+													"example": "2024-01-15T11:45:00.12345Z",
+													"format": "date-time",
+													"type": "string"
+												},
+												"records": {
+													"description": "Live DNS records for the zone, grouped by type",
+													"properties": {
+														"bimi_records": {
+															"description": "BIMI TXT records",
+															"items": {
+																"description": "Summary of a single DNS record",
+																"properties": {
+																	"content": {
+																		"description": "Record content",
+																		"example": "\"v=DMARC1; p=none; rua=mailto:rua@dmarc-reports.cloudflare.net\"",
+																		"type": "string"
+																	},
+																	"id": {
+																		"description": "DNS record ID",
+																		"example": "e5bb46707a802688812d5d1c9f7977d4",
+																		"type": "string"
+																	},
+																	"name": {
+																		"description": "DNS record name",
+																		"example": "_dmarc.example.com",
+																		"type": "string"
+																	},
+																	"ttl": {
+																		"description": "Time to live in seconds",
+																		"example": 300,
+																		"type": "integer"
+																	},
+																	"type": {
+																		"description": "Record type",
+																		"example": "TXT",
+																		"type": "string"
+																	}
+																},
+																"type": "object"
+															},
+															"type": "array"
+														},
+														"cname_dkim_records": {
+															"description": "CNAME records for DKIM",
+															"items": {
+																"description": "Summary of a single DNS record",
+																"properties": {
+																	"content": {
+																		"description": "Record content",
+																		"example": "\"v=DMARC1; p=none; rua=mailto:rua@dmarc-reports.cloudflare.net\"",
+																		"type": "string"
+																	},
+																	"id": {
+																		"description": "DNS record ID",
+																		"example": "e5bb46707a802688812d5d1c9f7977d4",
+																		"type": "string"
+																	},
+																	"name": {
+																		"description": "DNS record name",
+																		"example": "_dmarc.example.com",
+																		"type": "string"
+																	},
+																	"ttl": {
+																		"description": "Time to live in seconds",
+																		"example": 300,
+																		"type": "integer"
+																	},
+																	"type": {
+																		"description": "Record type",
+																		"example": "TXT",
+																		"type": "string"
+																	}
+																},
+																"type": "object"
+															},
+															"type": "array"
+														},
+														"cname_dmarc_records": {
+															"description": "CNAME records at _dmarc (problematic)",
+															"items": {
+																"description": "Summary of a single DNS record",
+																"properties": {
+																	"content": {
+																		"description": "Record content",
+																		"example": "\"v=DMARC1; p=none; rua=mailto:rua@dmarc-reports.cloudflare.net\"",
+																		"type": "string"
+																	},
+																	"id": {
+																		"description": "DNS record ID",
+																		"example": "e5bb46707a802688812d5d1c9f7977d4",
+																		"type": "string"
+																	},
+																	"name": {
+																		"description": "DNS record name",
+																		"example": "_dmarc.example.com",
+																		"type": "string"
+																	},
+																	"ttl": {
+																		"description": "Time to live in seconds",
+																		"example": 300,
+																		"type": "integer"
+																	},
+																	"type": {
+																		"description": "Record type",
+																		"example": "TXT",
+																		"type": "string"
+																	}
+																},
+																"type": "object"
+															},
+															"type": "array"
+														},
+														"cname_spf_records": {
+															"description": "CNAME records for SPF",
+															"items": {
+																"description": "Summary of a single DNS record",
+																"properties": {
+																	"content": {
+																		"description": "Record content",
+																		"example": "\"v=DMARC1; p=none; rua=mailto:rua@dmarc-reports.cloudflare.net\"",
+																		"type": "string"
+																	},
+																	"id": {
+																		"description": "DNS record ID",
+																		"example": "e5bb46707a802688812d5d1c9f7977d4",
+																		"type": "string"
+																	},
+																	"name": {
+																		"description": "DNS record name",
+																		"example": "_dmarc.example.com",
+																		"type": "string"
+																	},
+																	"ttl": {
+																		"description": "Time to live in seconds",
+																		"example": 300,
+																		"type": "integer"
+																	},
+																	"type": {
+																		"description": "Record type",
+																		"example": "TXT",
+																		"type": "string"
+																	}
+																},
+																"type": "object"
+															},
+															"type": "array"
+														},
+														"dkim_records": {
+															"description": "DKIM TXT records",
+															"items": {
+																"description": "Summary of a single DNS record",
+																"properties": {
+																	"content": {
+																		"description": "Record content",
+																		"example": "\"v=DMARC1; p=none; rua=mailto:rua@dmarc-reports.cloudflare.net\"",
+																		"type": "string"
+																	},
+																	"id": {
+																		"description": "DNS record ID",
+																		"example": "e5bb46707a802688812d5d1c9f7977d4",
+																		"type": "string"
+																	},
+																	"name": {
+																		"description": "DNS record name",
+																		"example": "_dmarc.example.com",
+																		"type": "string"
+																	},
+																	"ttl": {
+																		"description": "Time to live in seconds",
+																		"example": 300,
+																		"type": "integer"
+																	},
+																	"type": {
+																		"description": "Record type",
+																		"example": "TXT",
+																		"type": "string"
+																	}
+																},
+																"type": "object"
+															},
+															"type": "array"
+														},
+														"dmarc_records": {
+															"description": "DMARC TXT records",
+															"items": {
+																"description": "Summary of a single DNS record",
+																"properties": {
+																	"content": {
+																		"description": "Record content",
+																		"example": "\"v=DMARC1; p=none; rua=mailto:rua@dmarc-reports.cloudflare.net\"",
+																		"type": "string"
+																	},
+																	"id": {
+																		"description": "DNS record ID",
+																		"example": "e5bb46707a802688812d5d1c9f7977d4",
+																		"type": "string"
+																	},
+																	"name": {
+																		"description": "DNS record name",
+																		"example": "_dmarc.example.com",
+																		"type": "string"
+																	},
+																	"ttl": {
+																		"description": "Time to live in seconds",
+																		"example": 300,
+																		"type": "integer"
+																	},
+																	"type": {
+																		"description": "Record type",
+																		"example": "TXT",
+																		"type": "string"
+																	}
+																},
+																"type": "object"
+															},
+															"type": "array"
+														},
+														"spf_records": {
+															"description": "SPF TXT records",
+															"items": {
+																"description": "Summary of a single DNS record",
+																"properties": {
+																	"content": {
+																		"description": "Record content",
+																		"example": "\"v=DMARC1; p=none; rua=mailto:rua@dmarc-reports.cloudflare.net\"",
+																		"type": "string"
+																	},
+																	"id": {
+																		"description": "DNS record ID",
+																		"example": "e5bb46707a802688812d5d1c9f7977d4",
+																		"type": "string"
+																	},
+																	"name": {
+																		"description": "DNS record name",
+																		"example": "_dmarc.example.com",
+																		"type": "string"
+																	},
+																	"ttl": {
+																		"description": "Time to live in seconds",
+																		"example": 300,
+																		"type": "integer"
+																	},
+																	"type": {
+																		"description": "Record type",
+																		"example": "TXT",
+																		"type": "string"
+																	}
+																},
+																"type": "object"
+															},
+															"type": "array"
+														}
+													},
+													"type": "object"
+												},
+												"rua_prefix": {
+													"description": "Prefix for DMARC RUA addresses (32-char hex string)",
+													"example": "9233c80fc89f43e3a7b749605f651868",
+													"type": "string"
+												},
+												"skip_wizard": {
+													"description": "Whether to skip the setup wizard",
+													"example": false,
+													"type": "boolean"
+												},
+												"status": {
+													"description": "DMARC configuration status",
+													"enum": [
+														"missing-dmarc-report",
+														"multiple-dmarc-reports",
+														"missing-dmarc-rua",
+														"cname-on-dmarc-record"
+													],
+													"type": "string"
+												},
+												"tag": {
+													"deprecated": true,
+													"description": "Use `zone_id` instead",
+													"example": "023e105f4ecef8ad9ca31a8372d0c353",
+													"type": "string"
+												},
+												"zone_id": {
+													"description": "Zone identifier",
+													"example": "023e105f4ecef8ad9ca31a8372d0c353",
+													"type": "string"
+												}
+											},
+											"type": "object"
+										}
+									},
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "DMARC report status retrieved successfully"
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"allOf": [
+										{
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														},
+														"type": "object"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										}
+									],
+									"example": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
+										}
+									],
+									"minLength": 1
+								},
+								"messages": {
+									"allOf": [
+										{
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														},
+														"type": "object"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										}
+									],
+									"example": []
+								},
+								"result": {
+									"enum": [
+										null
+									],
+									"nullable": true,
+									"type": "object"
+								},
+								"success": {
+									"description": "Whether the API call was successful.",
+									"enum": [
+										false
+									],
+									"example": false,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Client Error"
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Get DMARC Report Status",
+		"tags": [
+			"Email Auth"
+		],
+		"x-api-token-group": [
+			"Email Security DMARC Reports Write",
+			"Email Security DMARC Reports Read",
+			"Zone Settings Write",
+			"Zone Settings Read"
+		]
+	},
+	"GET /zones/{zone_id}/email/security/spf/inspect": {
+		"description": "Inspects a specific SPF TXT record and returns a parsed tree structure\nin the spflimit-worker format.\n\nThe record ID must be provided via the `id` query parameter.\n\nReturns a recursive tree showing:\n- Parsed components with their qualifiers and types\n- Nested includes recursively resolved within components\n- Per-component and total lookup counts\n- Detailed error information with context\n",
+		"operationId": "inspect_spf",
+		"parameters": [
+			{
+				"description": "Zone identifier.",
+				"in": "path",
+				"name": "zone_id",
+				"required": true,
+				"schema": {
+					"description": "Identifier.",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"type": "string",
+					"x-auditable": true
+				}
+			},
+			{
+				"description": "DNS record ID (rec_tag) to inspect",
+				"example": "e5bb46707a802688812d5d1c9f7977d4",
+				"in": "query",
+				"name": "id",
+				"required": true,
+				"schema": {
+					"pattern": "^[a-zA-Z0-9-]{1,64}$",
+					"type": "string"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"properties": {
+												"errors": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																},
+																"type": "object"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"messages": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																},
+																"type": "object"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"success": {
+													"description": "Whether the API call was successful.",
+													"enum": [
+														true
+													],
+													"example": true,
+													"type": "boolean"
+												}
+											},
+											"required": [
+												"success",
+												"errors",
+												"messages"
+											],
+											"type": "object"
+										}
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"result": {
+											"description": "Recursive SPF inspection tree (spflimit-worker format).\n\nBreaking change from previous format:\n- `raw` renamed to `record`\n- `num_lookups` renamed to `total_lookups`\n- `mechanisms` renamed to `components` with new structure\n- `child` array removed; nested trees now in `components[].nested`\n- `errors` is now an array of error objects (was single string)\n",
+											"properties": {
+												"components": {
+													"description": "Parsed SPF components (mechanisms)",
+													"items": {
+														"description": "A single SPF component (mechanism) in the inspection tree.\n\nThe `value` field includes the qualifier prefix (e.g., \"-all\", \"~mx:example.com\")\nto match the raw SPF record syntax. The qualifier is also available separately\nin the `result` field for programmatic access.\n",
+														"properties": {
+															"lookup_count": {
+																"description": "Number of DNS lookups this component requires (per RFC 7208).\n- MX, A, EXISTS, INCLUDE, REDIRECT, PTR: 1\n- IP4, IP6, ALL: 0\n",
+																"example": 0,
+																"type": "integer"
+															},
+															"nested": {
+																"allOf": [
+																	"[Circular ~.GET /zones/{zone_id}/email/security/spf/inspect.responses.200.content.application/json.schema.allOf.1.properties.result]"
+																],
+																"description": "Nested SPF tree for INCLUDE or REDIRECT mechanisms.\nOnly present for INCLUDE/REDIRECT components.\n"
+															},
+															"result": {
+																"description": "SPF mechanism result qualifier",
+																"enum": [
+																	"pass",
+																	"neutral",
+																	"fail",
+																	"soft_fail",
+																	"none",
+																	"temp_error",
+																	"perm_error"
+																],
+																"type": "string"
+															},
+															"type": {
+																"description": "Component type (UPPERCASE)",
+																"enum": [
+																	"ALL",
+																	"A",
+																	"MX",
+																	"IP4",
+																	"IP6",
+																	"EXISTS",
+																	"INCLUDE",
+																	"PTR",
+																	"REDIRECT"
+																],
+																"example": "IP4",
+																"type": "string"
+															},
+															"value": {
+																"description": "Component value with qualifier prefix.\nFor IP4/IP6, stores just the IP address (no \"ip4:\" or \"ip6:\" prefix).\nExamples: \"203.0.113.1\", \"203.0.113.0/24\", \"2001:db8::1/64\", \"-all\", \"~mx:example.com\", \"include:_spf.example.com\"\n",
+																"example": "203.0.113.1",
+																"type": "string"
+															}
+														},
+														"required": [
+															"type",
+															"value",
+															"result",
+															"lookup_count"
+														],
+														"type": "object"
+													},
+													"type": "array"
+												},
+												"domain": {
+													"description": "Domain being inspected",
+													"example": "example.com",
+													"type": "string"
+												},
+												"errors": {
+													"description": "All errors encountered during inspection, collected from the entire tree.\nThis includes errors from nested includes at any depth, providing a quick\noverview of all issues without needing to traverse the nested structure.\nEach error includes a `domain` field to identify where it occurred.\nEmpty array if no errors (omitted from JSON when empty).\n",
+													"example": [],
+													"items": {
+														"description": "An error encountered during SPF inspection",
+														"properties": {
+															"code": {
+																"description": "Error code. Known values:\n- `lookup_failed` — DNS TXT lookup failed\n- `spf_not_found` — no SPF record found\n- `invalid_spf` — record does not start with `v=spf1`\n- `invalid_domain` — PSL validation failed\n- `loop_detected` — include/redirect cycle detected\n- `invalid_mechanism` — unrecognised or malformed mechanism\n- `resource_limit_exceeded` — internal resource protection limits exceeded (recursion depth or query budget)\n- `max_lookups` — RFC 7208 10-lookup limit exceeded\n",
+																"example": "max_lookups",
+																"type": "string"
+															},
+															"details": {
+																"description": "Additional error-specific details (optional).\n- For `invalid_domain` errors: the invalid domain string\n- For `invalid_mechanism` errors: the invalid mechanism text (e.g., \"invalidmech123\")\n- For `loop_detected` errors: the domain that caused the loop\n- For other error types: not present\n",
+																"example": "invalid",
+																"type": "string"
+															},
+															"domain": {
+																"description": "Domain where the error occurred",
+																"example": "example.com",
+																"type": "string"
+															},
+															"message": {
+																"description": "Human-readable error message",
+																"example": "RFC 7208 10-lookup limit exceeded",
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message",
+															"domain"
+														],
+														"type": "object"
+													},
+													"type": "array"
+												},
+												"record": {
+													"description": "Raw SPF record content",
+													"example": "v=spf1 ip4:203.0.113.1 include:spf.example.com -all",
+													"type": "string"
+												},
+												"total_lookups": {
+													"description": "Total number of DNS lookups performed across all includes",
+													"example": 2,
+													"type": "integer"
+												}
+											},
+											"required": [
+												"domain",
+												"record",
+												"total_lookups",
+												"components"
+											],
+											"type": "object"
+										}
+									},
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "SPF record inspected successfully"
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"allOf": [
+										{
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														},
+														"type": "object"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										}
+									],
+									"example": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
+										}
+									],
+									"minLength": 1
+								},
+								"messages": {
+									"allOf": [
+										{
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														},
+														"type": "object"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										}
+									],
+									"example": []
+								},
+								"result": {
+									"enum": [
+										null
+									],
+									"nullable": true,
+									"type": "object"
+								},
+								"success": {
+									"description": "Whether the API call was successful.",
+									"enum": [
+										false
+									],
+									"example": false,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Client Error"
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Inspect SPF Record",
+		"tags": [
+			"Email Auth"
+		],
+		"x-api-token-group": [
+			"Email Security DMARC Reports Write",
+			"Email Security DMARC Reports Read",
+			"Zone Settings Write",
+			"Zone Settings Read"
+		]
+	},
+	"PATCH /zones/{zone_id}/email/security/dmarc-reports": {
+		"description": "Updates the DMARC report configuration for a zone.\nAt least one of `enabled` or `skip_wizard` must be provided.\nWhen enabling, the handler will ensure the DMARC RUA record exists in DNS.\n",
+		"operationId": "configure_dmarc_reports",
+		"parameters": [
+			{
+				"description": "Zone identifier.",
+				"in": "path",
+				"name": "zone_id",
+				"required": true,
+				"schema": {
+					"description": "Identifier.",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"type": "string",
+					"x-auditable": true
+				}
+			}
+		],
+		"requestBody": {
+			"content": {
+				"application/json": {
+					"schema": {
+						"description": "Request body for PATCH /dmarc-reports",
+						"properties": {
+							"enabled": {
+								"description": "Enable or disable DMARC reports for this zone",
+								"example": true,
+								"nullable": true,
+								"type": "boolean"
+							},
+							"skip_wizard": {
+								"description": "Skip the DMARC setup wizard",
+								"example": false,
+								"nullable": true,
+								"type": "boolean"
+							}
+						},
+						"type": "object"
+					}
+				}
+			},
+			"required": true
+		},
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"properties": {
+												"errors": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																},
+																"type": "object"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"messages": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																},
+																"type": "object"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"success": {
+													"description": "Whether the API call was successful.",
+													"enum": [
+														true
+													],
+													"example": true,
+													"type": "boolean"
+												}
+											},
+											"required": [
+												"success",
+												"errors",
+												"messages"
+											],
+											"type": "object"
+										}
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"result": {
+											"description": "Response for GET/PATCH /dmarc-reports",
+											"properties": {
+												"approved_sources": {
+													"description": "List of approved sending sources (omitted when empty)",
+													"items": {
+														"description": "A single approved sending source",
+														"properties": {
+															"created": {
+																"deprecated": true,
+																"description": "Deprecated, use created_at",
+																"example": "2024-01-15T10:30:00.12345Z",
+																"format": "date-time",
+																"type": "string"
+															},
+															"created_at": {
+																"description": "Creation timestamp",
+																"example": "2024-01-15T10:30:00.12345Z",
+																"format": "date-time",
+																"type": "string"
+															},
+															"domain": {
+																"description": "The source domain",
+																"example": "sendgrid.net",
+																"type": "string"
+															},
+															"ips": {
+																"description": "Resolved IP addresses from SPF",
+																"example": [
+																	"192.168.1.1",
+																	"10.0.0.1"
+																],
+																"items": {
+																	"type": "string"
+																},
+																"type": "array"
+															},
+															"modified": {
+																"deprecated": true,
+																"description": "Deprecated, use modified_at",
+																"example": "2024-01-15T11:45:00.12345Z",
+																"format": "date-time",
+																"type": "string"
+															},
+															"modified_at": {
+																"description": "Last modification timestamp",
+																"example": "2024-01-15T11:45:00.12345Z",
+																"format": "date-time",
+																"type": "string"
+															},
+															"name": {
+																"description": "Source name (typically same as domain)",
+																"example": "SendGrid",
+																"type": "string"
+															},
+															"slug": {
+																"description": "URL-friendly identifier",
+																"example": "sendgrid-net",
+																"type": "string"
+															},
+															"tag": {
+																"description": "Source UUID",
+																"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
+																"type": "string"
+															}
+														},
+														"type": "object"
+													},
+													"type": "array"
+												},
+												"created": {
+													"deprecated": true,
+													"description": "Deprecated, use created_at",
+													"example": "2024-01-15T10:30:00.12345Z",
+													"format": "date-time",
+													"type": "string"
+												},
+												"created_at": {
+													"description": "Creation timestamp",
+													"example": "2024-01-15T10:30:00.12345Z",
+													"format": "date-time",
+													"type": "string"
+												},
+												"enabled": {
+													"description": "Whether DMARC reports are enabled",
+													"example": true,
+													"type": "boolean"
+												},
+												"modified": {
+													"deprecated": true,
+													"description": "Deprecated, use modified_at",
+													"example": "2024-01-15T11:45:00.12345Z",
+													"format": "date-time",
+													"type": "string"
+												},
+												"modified_at": {
+													"description": "Last modification timestamp",
+													"example": "2024-01-15T11:45:00.12345Z",
+													"format": "date-time",
+													"type": "string"
+												},
+												"records": {
+													"description": "Live DNS records for the zone, grouped by type",
+													"properties": {
+														"bimi_records": {
+															"description": "BIMI TXT records",
+															"items": {
+																"description": "Summary of a single DNS record",
+																"properties": {
+																	"content": {
+																		"description": "Record content",
+																		"example": "\"v=DMARC1; p=none; rua=mailto:rua@dmarc-reports.cloudflare.net\"",
+																		"type": "string"
+																	},
+																	"id": {
+																		"description": "DNS record ID",
+																		"example": "e5bb46707a802688812d5d1c9f7977d4",
+																		"type": "string"
+																	},
+																	"name": {
+																		"description": "DNS record name",
+																		"example": "_dmarc.example.com",
+																		"type": "string"
+																	},
+																	"ttl": {
+																		"description": "Time to live in seconds",
+																		"example": 300,
+																		"type": "integer"
+																	},
+																	"type": {
+																		"description": "Record type",
+																		"example": "TXT",
+																		"type": "string"
+																	}
+																},
+																"type": "object"
+															},
+															"type": "array"
+														},
+														"cname_dkim_records": {
+															"description": "CNAME records for DKIM",
+															"items": {
+																"description": "Summary of a single DNS record",
+																"properties": {
+																	"content": {
+																		"description": "Record content",
+																		"example": "\"v=DMARC1; p=none; rua=mailto:rua@dmarc-reports.cloudflare.net\"",
+																		"type": "string"
+																	},
+																	"id": {
+																		"description": "DNS record ID",
+																		"example": "e5bb46707a802688812d5d1c9f7977d4",
+																		"type": "string"
+																	},
+																	"name": {
+																		"description": "DNS record name",
+																		"example": "_dmarc.example.com",
+																		"type": "string"
+																	},
+																	"ttl": {
+																		"description": "Time to live in seconds",
+																		"example": 300,
+																		"type": "integer"
+																	},
+																	"type": {
+																		"description": "Record type",
+																		"example": "TXT",
+																		"type": "string"
+																	}
+																},
+																"type": "object"
+															},
+															"type": "array"
+														},
+														"cname_dmarc_records": {
+															"description": "CNAME records at _dmarc (problematic)",
+															"items": {
+																"description": "Summary of a single DNS record",
+																"properties": {
+																	"content": {
+																		"description": "Record content",
+																		"example": "\"v=DMARC1; p=none; rua=mailto:rua@dmarc-reports.cloudflare.net\"",
+																		"type": "string"
+																	},
+																	"id": {
+																		"description": "DNS record ID",
+																		"example": "e5bb46707a802688812d5d1c9f7977d4",
+																		"type": "string"
+																	},
+																	"name": {
+																		"description": "DNS record name",
+																		"example": "_dmarc.example.com",
+																		"type": "string"
+																	},
+																	"ttl": {
+																		"description": "Time to live in seconds",
+																		"example": 300,
+																		"type": "integer"
+																	},
+																	"type": {
+																		"description": "Record type",
+																		"example": "TXT",
+																		"type": "string"
+																	}
+																},
+																"type": "object"
+															},
+															"type": "array"
+														},
+														"cname_spf_records": {
+															"description": "CNAME records for SPF",
+															"items": {
+																"description": "Summary of a single DNS record",
+																"properties": {
+																	"content": {
+																		"description": "Record content",
+																		"example": "\"v=DMARC1; p=none; rua=mailto:rua@dmarc-reports.cloudflare.net\"",
+																		"type": "string"
+																	},
+																	"id": {
+																		"description": "DNS record ID",
+																		"example": "e5bb46707a802688812d5d1c9f7977d4",
+																		"type": "string"
+																	},
+																	"name": {
+																		"description": "DNS record name",
+																		"example": "_dmarc.example.com",
+																		"type": "string"
+																	},
+																	"ttl": {
+																		"description": "Time to live in seconds",
+																		"example": 300,
+																		"type": "integer"
+																	},
+																	"type": {
+																		"description": "Record type",
+																		"example": "TXT",
+																		"type": "string"
+																	}
+																},
+																"type": "object"
+															},
+															"type": "array"
+														},
+														"dkim_records": {
+															"description": "DKIM TXT records",
+															"items": {
+																"description": "Summary of a single DNS record",
+																"properties": {
+																	"content": {
+																		"description": "Record content",
+																		"example": "\"v=DMARC1; p=none; rua=mailto:rua@dmarc-reports.cloudflare.net\"",
+																		"type": "string"
+																	},
+																	"id": {
+																		"description": "DNS record ID",
+																		"example": "e5bb46707a802688812d5d1c9f7977d4",
+																		"type": "string"
+																	},
+																	"name": {
+																		"description": "DNS record name",
+																		"example": "_dmarc.example.com",
+																		"type": "string"
+																	},
+																	"ttl": {
+																		"description": "Time to live in seconds",
+																		"example": 300,
+																		"type": "integer"
+																	},
+																	"type": {
+																		"description": "Record type",
+																		"example": "TXT",
+																		"type": "string"
+																	}
+																},
+																"type": "object"
+															},
+															"type": "array"
+														},
+														"dmarc_records": {
+															"description": "DMARC TXT records",
+															"items": {
+																"description": "Summary of a single DNS record",
+																"properties": {
+																	"content": {
+																		"description": "Record content",
+																		"example": "\"v=DMARC1; p=none; rua=mailto:rua@dmarc-reports.cloudflare.net\"",
+																		"type": "string"
+																	},
+																	"id": {
+																		"description": "DNS record ID",
+																		"example": "e5bb46707a802688812d5d1c9f7977d4",
+																		"type": "string"
+																	},
+																	"name": {
+																		"description": "DNS record name",
+																		"example": "_dmarc.example.com",
+																		"type": "string"
+																	},
+																	"ttl": {
+																		"description": "Time to live in seconds",
+																		"example": 300,
+																		"type": "integer"
+																	},
+																	"type": {
+																		"description": "Record type",
+																		"example": "TXT",
+																		"type": "string"
+																	}
+																},
+																"type": "object"
+															},
+															"type": "array"
+														},
+														"spf_records": {
+															"description": "SPF TXT records",
+															"items": {
+																"description": "Summary of a single DNS record",
+																"properties": {
+																	"content": {
+																		"description": "Record content",
+																		"example": "\"v=DMARC1; p=none; rua=mailto:rua@dmarc-reports.cloudflare.net\"",
+																		"type": "string"
+																	},
+																	"id": {
+																		"description": "DNS record ID",
+																		"example": "e5bb46707a802688812d5d1c9f7977d4",
+																		"type": "string"
+																	},
+																	"name": {
+																		"description": "DNS record name",
+																		"example": "_dmarc.example.com",
+																		"type": "string"
+																	},
+																	"ttl": {
+																		"description": "Time to live in seconds",
+																		"example": 300,
+																		"type": "integer"
+																	},
+																	"type": {
+																		"description": "Record type",
+																		"example": "TXT",
+																		"type": "string"
+																	}
+																},
+																"type": "object"
+															},
+															"type": "array"
+														}
+													},
+													"type": "object"
+												},
+												"rua_prefix": {
+													"description": "Prefix for DMARC RUA addresses (32-char hex string)",
+													"example": "9233c80fc89f43e3a7b749605f651868",
+													"type": "string"
+												},
+												"skip_wizard": {
+													"description": "Whether to skip the setup wizard",
+													"example": false,
+													"type": "boolean"
+												},
+												"status": {
+													"description": "DMARC configuration status",
+													"enum": [
+														"missing-dmarc-report",
+														"multiple-dmarc-reports",
+														"missing-dmarc-rua",
+														"cname-on-dmarc-record"
+													],
+													"type": "string"
+												},
+												"tag": {
+													"deprecated": true,
+													"description": "Use `zone_id` instead",
+													"example": "023e105f4ecef8ad9ca31a8372d0c353",
+													"type": "string"
+												},
+												"zone_id": {
+													"description": "Zone identifier",
+													"example": "023e105f4ecef8ad9ca31a8372d0c353",
+													"type": "string"
+												}
+											},
+											"type": "object"
+										}
+									},
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "DMARC report configuration updated successfully"
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"allOf": [
+										{
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														},
+														"type": "object"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										}
+									],
+									"example": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
+										}
+									],
+									"minLength": 1
+								},
+								"messages": {
+									"allOf": [
+										{
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														},
+														"type": "object"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										}
+									],
+									"example": []
+								},
+								"result": {
+									"enum": [
+										null
+									],
+									"nullable": true,
+									"type": "object"
+								},
+								"success": {
+									"description": "Whether the API call was successful.",
+									"enum": [
+										false
+									],
+									"example": false,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Client Error"
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Configure DMARC Reports",
+		"tags": [
+			"Email Auth"
+		],
+		"x-api-token-group": [
+			"Email Security DMARC Reports Write",
+			"Zone Settings Write"
+		]
+	}
+}
