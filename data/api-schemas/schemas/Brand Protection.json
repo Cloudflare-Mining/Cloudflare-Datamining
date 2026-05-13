@@ -2020,6 +2020,9 @@
 					}
 				},
 				"description": "Takedown notice created successfully"
+			},
+			"409": {
+				"description": "A takedown notice already exists for this domain"
 			}
 		},
 		"security": [
@@ -2178,6 +2181,127 @@
 			}
 		],
 		"summary": "Create takedown letter",
+		"tags": [
+			"Brand Protection"
+		],
+		"x-api-token-group": [
+			"Cloudforce One Write"
+		]
+	},
+	"POST /accounts/{account_id}/cloudforce-one/v2/brand-protection/takedown-notices/lookup": {
+		"description": "Bulk lookup of takedown notices by domain names. Returns a map of domain → notice (or null if no notice exists). Uses POST to avoid URL length limits when looking up many domains. This endpoint is read-only. Domains are normalized (trimmed, lowercased) and deduplicated — response keys are always lowercase.",
+		"operationId": "post_TakedownNoticeLookup",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"minLength": 1,
+					"type": "string"
+				}
+			}
+		],
+		"requestBody": {
+			"content": {
+				"application/json": {
+					"schema": {
+						"properties": {
+							"domains": {
+								"items": {
+									"maxLength": 253,
+									"minLength": 1,
+									"type": "string"
+								},
+								"maxItems": 100,
+								"minItems": 1,
+								"type": "array"
+							}
+						},
+						"required": [
+							"domains"
+						],
+						"type": "object"
+					}
+				}
+			}
+		},
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"notices": {
+									"additionalProperties": {
+										"nullable": true,
+										"properties": {
+											"createdAt": {
+												"nullable": true,
+												"type": "string"
+											},
+											"domain": {
+												"type": "string"
+											},
+											"id": {
+												"type": "number"
+											},
+											"matchId": {
+												"nullable": true,
+												"type": "number"
+											},
+											"matchType": {
+												"enum": [
+													"logo",
+													"domain"
+												],
+												"nullable": true,
+												"type": "string"
+											},
+											"status": {
+												"enum": [
+													"draft",
+													"sent",
+													"resolved",
+													"expired"
+												],
+												"type": "string"
+											},
+											"updatedAt": {
+												"nullable": true,
+												"type": "string"
+											}
+										},
+										"required": [
+											"id",
+											"domain",
+											"status",
+											"matchId",
+											"matchType",
+											"createdAt",
+											"updatedAt"
+										],
+										"type": "object"
+									},
+									"type": "object"
+								}
+							},
+							"required": [
+								"notices"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Takedown notice lookup results"
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			}
+		],
+		"summary": "Lookup takedown notices by domains",
 		"tags": [
 			"Brand Protection"
 		],
@@ -2425,6 +2549,9 @@
 					}
 				},
 				"description": "Takedown notice updated successfully"
+			},
+			"409": {
+				"description": "A takedown notice already exists for the target domain"
 			}
 		},
 		"security": [

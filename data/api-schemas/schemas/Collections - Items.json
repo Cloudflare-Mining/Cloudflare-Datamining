@@ -1,0 +1,440 @@
+{
+	"POST /accounts/{account_id}/cloudforce-one/v2/collections/{collection_id}/items": {
+		"description": "Create one or more items in a collection. Supports single item (data field) or bulk creation (data array). Item data is validated against the collection schema.",
+		"operationId": "post_ItemCreate",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"type": "string"
+				}
+			},
+			{
+				"in": "path",
+				"name": "collection_id",
+				"required": true,
+				"schema": {
+					"type": "string"
+				}
+			}
+		],
+		"requestBody": {
+			"content": {
+				"application/json": {
+					"schema": {
+						"anyOf": [
+							{
+								"properties": {
+									"data": {
+										"additionalProperties": true,
+										"description": "Single item data matching collection schema",
+										"type": "object"
+									}
+								},
+								"required": [
+									"data"
+								],
+								"type": "object"
+							},
+							{
+								"properties": {
+									"data": {
+										"description": "Array of items to create (max 1000)",
+										"items": {
+											"additionalProperties": true,
+											"type": "object"
+										},
+										"maxItems": 1000,
+										"minItems": 1,
+										"type": "array"
+									}
+								},
+								"required": [
+									"data"
+								],
+								"type": "object"
+							}
+						]
+					}
+				}
+			}
+		},
+		"responses": {
+			"201": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"anyOf": [
+								{
+									"properties": {
+										"result": {
+											"properties": {
+												"created_at": {
+													"type": "string"
+												},
+												"data": {
+													"additionalProperties": true,
+													"type": "object"
+												},
+												"id": {
+													"type": "string"
+												},
+												"updated_at": {
+													"type": "string"
+												}
+											},
+											"required": [
+												"id",
+												"data",
+												"created_at",
+												"updated_at"
+											],
+											"type": "object"
+										},
+										"success": {
+											"enum": [
+												true
+											],
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"result"
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"result": {
+											"properties": {
+												"errors": {
+													"items": {
+														"properties": {
+															"data": {
+																"additionalProperties": true,
+																"type": "object"
+															},
+															"error": {
+																"type": "string"
+															},
+															"index": {
+																"type": "number"
+															}
+														},
+														"required": [
+															"index",
+															"error",
+															"data"
+														],
+														"type": "object"
+													},
+													"type": "array"
+												},
+												"failed": {
+													"type": "number"
+												},
+												"inserted": {
+													"type": "number"
+												}
+											},
+											"required": [
+												"inserted"
+											],
+											"type": "object"
+										},
+										"success": {
+											"enum": [
+												true
+											],
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"result"
+									],
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "Item(s) created successfully"
+			},
+			"400": {
+				"description": "Validation error"
+			},
+			"404": {
+				"description": "Collection not found"
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			}
+		],
+		"summary": "Create item(s)",
+		"tags": [
+			"Collections - Items"
+		],
+		"x-api-token-group": [
+			"Cloudforce One Write"
+		]
+	},
+	"POST /accounts/{account_id}/cloudforce-one/v2/collections/{collection_id}/search": {
+		"description": "Search collection items with advanced filtering. Supports operators (eq, neq, gt, lt, gte, lte, contains, is_empty, is_not_empty) and AND/OR logic for complex queries.",
+		"operationId": "post_ItemSearch",
+		"parameters": [
+			{
+				"description": "Account ID",
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"description": "Account ID",
+					"type": "string"
+				}
+			},
+			{
+				"description": "Collection UUID",
+				"in": "path",
+				"name": "collection_id",
+				"required": true,
+				"schema": {
+					"description": "Collection UUID",
+					"type": "string"
+				}
+			}
+		],
+		"requestBody": {
+			"content": {
+				"application/json": {
+					"schema": {
+						"properties": {
+							"cursor": {
+								"type": "string"
+							},
+							"filter": {
+								"description": "Recursive filter supporting AND/OR nesting of conditions. Can be either a leaf condition (field/op/value) or a logical group (and/or array of nested filters).",
+								"oneOf": [
+									{
+										"description": "Leaf filter condition",
+										"properties": {
+											"field": {
+												"description": "Column name to filter on",
+												"type": "string"
+											},
+											"op": {
+												"description": "Comparison operator",
+												"enum": [
+													"eq",
+													"neq",
+													"gt",
+													"lt",
+													"gte",
+													"lte",
+													"contains",
+													"is_empty",
+													"is_not_empty"
+												],
+												"type": "string"
+											},
+											"value": {
+												"description": "Value to compare against (not needed for is_empty/is_not_empty)"
+											}
+										},
+										"required": [
+											"field",
+											"op"
+										],
+										"type": "object"
+									},
+									{
+										"properties": {
+											"and": {
+												"description": "All conditions must match (AND logic). Each item can recursively contain more filters.",
+												"items": {
+													"description": "Nested filter (can be a leaf condition or another AND/OR group)",
+													"type": "object"
+												},
+												"minItems": 1,
+												"type": "array"
+											}
+										},
+										"required": [
+											"and"
+										],
+										"type": "object"
+									},
+									{
+										"properties": {
+											"or": {
+												"description": "At least one condition must match (OR logic). Each item can recursively contain more filters.",
+												"items": {
+													"description": "Nested filter (can be a leaf condition or another AND/OR group)",
+													"type": "object"
+												},
+												"minItems": 1,
+												"type": "array"
+											}
+										},
+										"required": [
+											"or"
+										],
+										"type": "object"
+									}
+								],
+								"type": "object"
+							},
+							"limit": {
+								"default": 20,
+								"maximum": 100,
+								"minimum": 1,
+								"type": "integer"
+							},
+							"sort": {
+								"properties": {
+									"field": {
+										"description": "Column name to sort by",
+										"type": "string"
+									},
+									"order": {
+										"default": "asc",
+										"enum": [
+											"asc",
+											"desc"
+										],
+										"type": "string"
+									}
+								},
+								"required": [
+									"field"
+								],
+								"type": "object"
+							}
+						},
+						"type": "object"
+					}
+				}
+			}
+		},
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"pagination": {
+									"properties": {
+										"cursors": {
+											"properties": {
+												"current": {
+													"type": "string"
+												},
+												"first": {
+													"type": "string"
+												},
+												"next": {
+													"nullable": true,
+													"type": "string"
+												},
+												"prev": {
+													"nullable": true,
+													"type": "string"
+												}
+											},
+											"required": [
+												"first",
+												"current",
+												"prev",
+												"next"
+											],
+											"type": "object"
+										},
+										"limit": {
+											"type": "number"
+										},
+										"page": {
+											"type": "number"
+										},
+										"total": {
+											"type": "number"
+										}
+									},
+									"required": [
+										"page",
+										"limit",
+										"total",
+										"cursors"
+									],
+									"type": "object"
+								},
+								"result": {
+									"items": {
+										"properties": {
+											"created_at": {
+												"type": "string"
+											},
+											"data": {
+												"additionalProperties": true,
+												"type": "object"
+											},
+											"id": {
+												"type": "string"
+											},
+											"updated_at": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"id",
+											"data",
+											"created_at",
+											"updated_at"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"success": {
+									"enum": [
+										true
+									],
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"result",
+								"pagination"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Items matching search criteria"
+			},
+			"400": {
+				"description": "Invalid filter syntax or cursor"
+			},
+			"404": {
+				"description": "Collection not found"
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			}
+		],
+		"summary": "Search items (advanced filtering)",
+		"tags": [
+			"Collections - Items"
+		],
+		"x-api-token-group": [
+			"Cloudforce One Write"
+		]
+	}
+}

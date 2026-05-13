@@ -452,7 +452,7 @@
 		]
 	},
 	"GET /accounts/{account_id}/cloudforce-one/events/tags": {
-		"description": "Returns all Source-of-Truth tags for an account.",
+		"description": "Returns all Source-of-Truth tags for an account. Supports legacy free-text `search` on tag value and `categoryUuid` exact match, plus a structured `filters` JSON array for filtering by metadata fields (originCountryISO, actorCategory, motive, priority, etc.). Country values may be passed as alpha-2, alpha-3, name, or common alias.",
 		"operationId": "get_TagList",
 		"parameters": [
 			{
@@ -480,9 +480,11 @@
 				}
 			},
 			{
+				"description": "Legacy free-text substring match on tag value.",
 				"in": "query",
 				"name": "search",
 				"schema": {
+					"description": "Legacy free-text substring match on tag value.",
 					"type": "string"
 				}
 			},
@@ -491,6 +493,88 @@
 				"name": "categoryUuid",
 				"schema": {
 					"type": "string"
+				}
+			},
+			{
+				"description": "Structured filters as a JSON array of {field, op, value} objects. Searchable fields: value, actorCategory, aliasGroupNames, attributionConfidence, attributionOrganization, categoryName, motive, opsecLevel, originCountryISO, sophisticationLevel, priority, analyticPriority. Operators: equals, not, contains, startsWith, endsWith, gt, lt, gte, lte, like, in, find. Use 'in' for bulk OR within a single field, e.g. filters=[{\"field\":\"originCountryISO\",\"op\":\"in\",\"value\":[\"IR\",\"CN\"]}]. Multiple entries are AND-joined. Max 10 entries per request, max 100 values per 'in'. Performance notes: `originCountryISO` uses its B-tree index for equals/not/in. `priority` uses its B-tree index for numeric comparisons. Other string columns (`actorCategory`, `motive`, etc.) are case-insensitive and unindexed; current catalog size makes this a non-issue. `endsWith` and `aliasGroupNames` contains/like are leading-wildcard scans and slow on large result sets. `aliasGroupNames` matches on the JSON-encoded text, so substrings can cross alias boundaries (a search for \"apt28\" will also match \"apt280\" if both appear in the same tag's alias list).",
+				"in": "query",
+				"name": "filters",
+				"schema": {
+					"description": "Structured filters as a JSON array of {field, op, value} objects. Searchable fields: value, actorCategory, aliasGroupNames, attributionConfidence, attributionOrganization, categoryName, motive, opsecLevel, originCountryISO, sophisticationLevel, priority, analyticPriority. Operators: equals, not, contains, startsWith, endsWith, gt, lt, gte, lte, like, in, find. Use 'in' for bulk OR within a single field, e.g. filters=[{\"field\":\"originCountryISO\",\"op\":\"in\",\"value\":[\"IR\",\"CN\"]}]. Multiple entries are AND-joined. Max 10 entries per request, max 100 values per 'in'. Performance notes: `originCountryISO` uses its B-tree index for equals/not/in. `priority` uses its B-tree index for numeric comparisons. Other string columns (`actorCategory`, `motive`, etc.) are case-insensitive and unindexed; current catalog size makes this a non-issue. `endsWith` and `aliasGroupNames` contains/like are leading-wildcard scans and slow on large result sets. `aliasGroupNames` matches on the JSON-encoded text, so substrings can cross alias boundaries (a search for \"apt28\" will also match \"apt280\" if both appear in the same tag's alias list).",
+					"items": {
+						"properties": {
+							"field": {
+								"description": "Tag field to search on. Allowed: value, actorCategory, aliasGroupNames, attributionConfidence, attributionOrganization, categoryName, motive, opsecLevel, originCountryISO, sophisticationLevel, priority, analyticPriority.",
+								"enum": [
+									"value",
+									"actorCategory",
+									"aliasGroupNames",
+									"attributionConfidence",
+									"attributionOrganization",
+									"categoryName",
+									"motive",
+									"opsecLevel",
+									"originCountryISO",
+									"sophisticationLevel",
+									"priority",
+									"analyticPriority"
+								],
+								"example": "originCountryISO",
+								"type": "string"
+							},
+							"op": {
+								"description": "Search operator. Use 'in' for bulk OR within a single field, e.g. {field:\"originCountryISO\", op:\"in\", value:[\"IR\",\"CN\"]}.",
+								"enum": [
+									"equals",
+									"not",
+									"gt",
+									"gte",
+									"lt",
+									"lte",
+									"like",
+									"contains",
+									"startsWith",
+									"endsWith",
+									"in",
+									"find"
+								],
+								"example": "in",
+								"type": "string"
+							},
+							"value": {
+								"anyOf": [
+									{
+										"example": "IR",
+										"type": "string"
+									},
+									{
+										"example": 5,
+										"type": "number"
+									},
+									{
+										"items": {
+											"anyOf": [
+												{
+													"type": "string"
+												},
+												{
+													"type": "number"
+												}
+											]
+										},
+										"type": "array"
+									}
+								],
+								"description": "Search value. String or number for most operators. Array for 'in' (max 100 items). Country values may be passed as alpha-2, alpha-3, name, or common alias (e.g. 'iran', 'IR', 'IRN') and are normalized to alpha-2 server-side."
+							}
+						},
+						"required": [
+							"field",
+							"op"
+						],
+						"type": "object"
+					},
+					"type": "array"
 				}
 			}
 		],
