@@ -20,7 +20,7 @@ npm install @cloudflare/voice
 
 ## Server: full voice agent (`withVoice`)
 
-Adds the complete voice pipeline: continuous STT, LLM turn handling, streaming TTS, interruption, and conversation persistence.
+Adds the complete voice pipeline: continuous STT, LLM turn handling, streaming TTS, interruption, and conversation persistence. When the transcriber reports speech start, the pipeline aborts active LLM/TTS work and tells the client to stop any queued playback so users can barge in before a final transcript is available.
 
 ```typescript
 import { Agent } from "agents";
@@ -43,6 +43,22 @@ export class MyAgent extends VoiceAgent<Env> {
 }
 ```
 
+`onTurn()` can also return streaming text, including AI SDK `textStream` values:
+
+```typescript
+import { streamText } from "ai";
+
+async onTurn(transcript: string) {
+  const result = streamText({
+    model: myModel,
+    system: "You are a helpful voice assistant. Keep replies short.",
+    messages: [{ role: "user", content: transcript }]
+  });
+
+  return result.textStream;
+}
+```
+
 ### Provider properties
 
 | Property      | Type          | Required | Description                      |
@@ -52,15 +68,15 @@ export class MyAgent extends VoiceAgent<Env> {
 
 ### Lifecycle hooks
 
-| Method                           | Description                                                                        |
-| -------------------------------- | ---------------------------------------------------------------------------------- |
-| `onTurn(transcript, context)`    | **Required.** Handle a user utterance. Return `string` or `AsyncIterable<string>`. |
-| `createTranscriber(connection)`  | Override to create a transcriber dynamically per connection.                       |
-| `onCallStart(connection)`        | Called when a voice call begins.                                                   |
-| `onCallEnd(connection)`          | Called when a voice call ends.                                                     |
-| `onInterrupt(connection)`        | Called when user interrupts playback.                                              |
-| `beforeCallStart(connection)`    | Return `false` to reject a call.                                                   |
-| `onMessage(connection, message)` | Handle non-voice WebSocket messages (voice protocol is intercepted automatically). |
+| Method                           | Description                                                                                                    |
+| -------------------------------- | -------------------------------------------------------------------------------------------------------------- |
+| `onTurn(transcript, context)`    | **Required.** Handle a user utterance. Return `string` or `AsyncIterable<string>`.                             |
+| `createTranscriber(connection)`  | Override to create a transcriber dynamically per connection.                                                   |
+| `onCallStart(connection)`        | Called when a voice call begins.                                                                               |
+| `onCallEnd(connection)`          | Called when a voice call ends.                                                                                 |
+| `onInterrupt(connection)`        | Called when user interrupts playback, either from client audio-level detection or model-detected speech start. |
+| `beforeCallStart(connection)`    | Return `false` to reject a call.                                                                               |
+| `onMessage(connection, message)` | Handle non-voice WebSocket messages (voice protocol is intercepted automatically).                             |
 
 ### Pipeline hooks
 
@@ -117,11 +133,17 @@ function App() {
     toggleMute, // () => void
     sendText, // (text: string) => void
     sendJSON // (data: Record<string, unknown>) => void
-  } = useVoiceAgent({ agent: "my-agent" });
+  } = useVoiceAgent({
+    agent: "my-agent",
+    // Set false to delay connecting until async prerequisites are ready.
+    enabled: true
+  });
 
   return <div>Status: {status}</div>;
 }
 ```
+
+When `enabled` is `false`, the hook does not create or connect a `VoiceClient`, returns the idle/disconnected state, and action callbacks such as `startCall()`, `sendText()`, and `sendJSON()` are safe no-ops. The first change from disabled to enabled connects with the current options without firing `onReconnect`; later connection identity changes while enabled do fire `onReconnect`.
 
 For voice input only:
 
@@ -153,6 +175,8 @@ All default providers use Workers AI bindings -- no API keys required:
 | `WorkersAIFluxSTT`  | Continuous STT | `@cf/deepgram/flux`   | `withVoice`      |
 | `WorkersAINova3STT` | Continuous STT | `@cf/deepgram/nova-3` | `withVoiceInput` |
 | `WorkersAITTS`      | TTS            | `@cf/deepgram/aura-1` | Both             |
+
+`WorkersAIFluxSTT` uses Flux `StartOfTurn` events for low-latency barge-in and `EndOfTurn` events for final utterances. Custom transcribers can provide the same behavior by calling `onSpeechStart` from `TranscriberSessionOptions` when user speech begins, then `onUtterance` when the turn is complete.
 
 ## Third-party providers
 
