@@ -1,5 +1,5 @@
 {
-	"generated_at": "2026-05-13T04:34:02.959Z",
+	"generated_at": "2026-05-14T04:33:46.967Z",
 	"model_count": 150,
 	"models": {
 		"alibaba/hh1-i2v": {
@@ -15267,13 +15267,13 @@
 			"tags": [],
 			"context_length": 256000,
 			"max_output_tokens": null,
-			"supports_async": false,
+			"supports_async": true,
 			"hosting": "hosted",
 			"data_source": "legacy",
 			"properties": [
 				{
 					"property_id": "async_queue",
-					"value": "false"
+					"value": "true"
 				},
 				{
 					"property_id": "context_window",
@@ -16918,6 +16918,10 @@
 			"hosting": "hosted",
 			"data_source": "legacy",
 			"properties": [
+				{
+					"property_id": "async_queue",
+					"value": "false"
+				},
 				{
 					"property_id": "context_window",
 					"value": "262144"
