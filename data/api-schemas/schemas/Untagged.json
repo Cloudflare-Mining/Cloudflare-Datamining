@@ -1806,7 +1806,7 @@
 			}
 		}
 	],
-	"PARAMETERS /zones/{zone_id}/api_gateway/discovery/operations/{operation_id}": [
+	"PARAMETERS /zones/{zone_id}/api_gateway/discovery/operations/{discovery_id}": [
 		{
 			"in": "path",
 			"name": "zone_id",
@@ -1829,9 +1829,9 @@
 			}
 		},
 		{
-			"description": "Identifier for the discovered operation",
+			"description": "Discovery ID of a discovered operation",
 			"in": "path",
-			"name": "operation_id",
+			"name": "discovery_id",
 			"required": true,
 			"schema": {
 				"allOf": [
