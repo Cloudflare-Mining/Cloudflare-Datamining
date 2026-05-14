@@ -212,23 +212,27 @@
 	"billing-unified-checkout-load-balancer": {
 		"true": 100
 	},
+	"billing-unified-checkout-pay-bad-debt": {
+		"false": 90,
+		"true": 10
+	},
 	"billing-unified-checkout-r2": {
 		"true": 100
 	},
 	"billing-unified-checkout-smart-shield": {
-		"true": 50,
-		"false": 50
+		"true": 74,
+		"false": 26
 	},
 	"billing-unified-checkout-ssl-for-saas": {
-		"true": 53,
-		"false": 47
+		"true": 76,
+		"false": 25
 	},
 	"billing-unified-checkout-stream": {
 		"true": 100
 	},
 	"billing-unified-checkout-zaraz": {
-		"true": 52,
-		"false": 48
+		"true": 75,
+		"false": 25
 	},
 	"billing-unified-checkout-zero-trust": {
 		"true": 100
@@ -348,6 +352,9 @@
 	"deseng-create-architecture": {
 		"false": 100
 	},
+	"deseng-domain-tab-register": {
+		"true": 100
+	},
 	"deseng-font-updates": {
 		"false": 100
 	},
@@ -364,6 +371,9 @@
 		"false": 100
 	},
 	"deseng-support-portal": {
+		"true": 100
+	},
+	"deseng-worker-domain-tab": {
 		"true": 100
 	},
 	"design-smart-shield-kumo": {
@@ -1038,6 +1048,9 @@
 	},
 	"tsf-chat-widget-portal-restriction": {
 		"true": 100
+	},
+	"tsf-form-ask-ai": {
+		"false": 100
 	},
 	"tsf-frictionless-experience": {
 		"true": 100
