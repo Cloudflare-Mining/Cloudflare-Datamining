@@ -615,7 +615,7 @@
 																"nullable": true,
 																"type": "boolean",
 																"x-auditable": true,
-																"x-stainless-terraform-configurability": "computed_optional"
+																"x-stainless-terraform-configurability": "optional"
 															},
 															"audit_ssh": {
 																"description": "Define the settings for the Audit SSH action. Settable only for `l4` rules with `audit_ssh` action.",
@@ -773,7 +773,7 @@
 																"example": true,
 																"type": "boolean",
 																"x-auditable": true,
-																"x-stainless-terraform-configurability": "computed_optional"
+																"x-stainless-terraform-configurability": "optional"
 															},
 															"block_reason": {
 																"description": "Explain why the rule blocks the request. The custom block page shows this text (if enabled). Settable only for `dns`, `l4`, and `http` rules when the action set to `block`.",
@@ -781,7 +781,7 @@
 																"nullable": true,
 																"type": "string",
 																"x-auditable": true,
-																"x-stainless-terraform-configurability": "computed_optional"
+																"x-stainless-terraform-configurability": "optional"
 															},
 															"bypass_parent_rule": {
 																"description": "Set to enable MSP accounts to bypass their parent's rules. Only MSP child accounts can set this. Settable for all types of rules.",
@@ -935,28 +935,28 @@
 																"example": true,
 																"type": "boolean",
 																"x-auditable": true,
-																"x-stainless-terraform-configurability": "computed_optional"
+																"x-stainless-terraform-configurability": "optional"
 															},
 															"insecure_disable_dnssec_validation": {
 																"description": "Specify whether to disable DNSSEC validation (for Allow actions) [INSECURE]. Settable only for `dns` rules.",
 																"example": false,
 																"type": "boolean",
 																"x-auditable": true,
-																"x-stainless-terraform-configurability": "computed_optional"
+																"x-stainless-terraform-configurability": "optional"
 															},
 															"ip_categories": {
 																"description": "Enable IPs in DNS resolver category blocks. The system blocks only domain name categories unless you enable this setting. Settable only for `dns` and `dns_resolver` rules.",
 																"example": true,
 																"type": "boolean",
 																"x-auditable": true,
-																"x-stainless-terraform-configurability": "computed_optional"
+																"x-stainless-terraform-configurability": "optional"
 															},
 															"ip_indicator_feeds": {
 																"description": "Indicates whether to include IPs in DNS resolver indicator feed blocks. Default, indicator feeds block only domain names. Settable only for `dns` and `dns_resolver` rules.",
 																"example": true,
 																"type": "boolean",
 																"x-auditable": true,
-																"x-stainless-terraform-configurability": "computed_optional"
+																"x-stainless-terraform-configurability": "optional"
 															},
 															"l4override": {
 																"description": "Send matching traffic to the supplied destination IP address and port. Settable only for `l4` rules with the action set to `l4_override`.",
@@ -1010,7 +1010,7 @@
 																"example": "example.com",
 																"type": "string",
 																"x-auditable": true,
-																"x-stainless-terraform-configurability": "computed_optional"
+																"x-stainless-terraform-configurability": "optional"
 															},
 															"override_ips": {
 																"description": "Defines a an IP or set of IPs for overriding matched DNS queries. Settable only for `dns` rules with the action set to `override`.",
@@ -1026,7 +1026,7 @@
 																},
 																"nullable": true,
 																"type": "array",
-																"x-stainless-terraform-configurability": "computed_optional"
+																"x-stainless-terraform-configurability": "optional"
 															},
 															"payload_log": {
 																"description": "Configure DLP payload logging. Settable only for `http` rules.",
@@ -1128,7 +1128,7 @@
 																"nullable": true,
 																"type": "boolean",
 																"x-auditable": true,
-																"x-stainless-terraform-configurability": "computed_optional"
+																"x-stainless-terraform-configurability": "optional"
 															},
 															"untrusted_cert": {
 																"description": "Configure behavior when an upstream certificate is invalid or an SSL error occurs. Settable only for `http` rules with the action set to `allow`.",
@@ -1572,7 +1572,7 @@
 																		"nullable": true,
 																		"type": "boolean",
 																		"x-auditable": true,
-																		"x-stainless-terraform-configurability": "computed_optional"
+																		"x-stainless-terraform-configurability": "optional"
 																	},
 																	"audit_ssh": {
 																		"description": "Define the settings for the Audit SSH action. Settable only for `l4` rules with `audit_ssh` action.",
@@ -1730,7 +1730,7 @@
 																		"example": true,
 																		"type": "boolean",
 																		"x-auditable": true,
-																		"x-stainless-terraform-configurability": "computed_optional"
+																		"x-stainless-terraform-configurability": "optional"
 																	},
 																	"block_reason": {
 																		"description": "Explain why the rule blocks the request. The custom block page shows this text (if enabled). Settable only for `dns`, `l4`, and `http` rules when the action set to `block`.",
@@ -1738,7 +1738,7 @@
 																		"nullable": true,
 																		"type": "string",
 																		"x-auditable": true,
-																		"x-stainless-terraform-configurability": "computed_optional"
+																		"x-stainless-terraform-configurability": "optional"
 																	},
 																	"bypass_parent_rule": {
 																		"description": "Set to enable MSP accounts to bypass their parent's rules. Only MSP child accounts can set this. Settable for all types of rules.",
@@ -1892,28 +1892,28 @@
 																		"example": true,
 																		"type": "boolean",
 																		"x-auditable": true,
-																		"x-stainless-terraform-configurability": "computed_optional"
+																		"x-stainless-terraform-configurability": "optional"
 																	},
 																	"insecure_disable_dnssec_validation": {
 																		"description": "Specify whether to disable DNSSEC validation (for Allow actions) [INSECURE]. Settable only for `dns` rules.",
 																		"example": false,
 																		"type": "boolean",
 																		"x-auditable": true,
-																		"x-stainless-terraform-configurability": "computed_optional"
+																		"x-stainless-terraform-configurability": "optional"
 																	},
 																	"ip_categories": {
 																		"description": "Enable IPs in DNS resolver category blocks. The system blocks only domain name categories unless you enable this setting. Settable only for `dns` and `dns_resolver` rules.",
 																		"example": true,
 																		"type": "boolean",
 																		"x-auditable": true,
-																		"x-stainless-terraform-configurability": "computed_optional"
+																		"x-stainless-terraform-configurability": "optional"
 																	},
 																	"ip_indicator_feeds": {
 																		"description": "Indicates whether to include IPs in DNS resolver indicator feed blocks. Default, indicator feeds block only domain names. Settable only for `dns` and `dns_resolver` rules.",
 																		"example": true,
 																		"type": "boolean",
 																		"x-auditable": true,
-																		"x-stainless-terraform-configurability": "computed_optional"
+																		"x-stainless-terraform-configurability": "optional"
 																	},
 																	"l4override": {
 																		"description": "Send matching traffic to the supplied destination IP address and port. Settable only for `l4` rules with the action set to `l4_override`.",
@@ -1967,7 +1967,7 @@
 																		"example": "example.com",
 																		"type": "string",
 																		"x-auditable": true,
-																		"x-stainless-terraform-configurability": "computed_optional"
+																		"x-stainless-terraform-configurability": "optional"
 																	},
 																	"override_ips": {
 																		"description": "Defines a an IP or set of IPs for overriding matched DNS queries. Settable only for `dns` rules with the action set to `override`.",
@@ -1983,7 +1983,7 @@
 																		},
 																		"nullable": true,
 																		"type": "array",
-																		"x-stainless-terraform-configurability": "computed_optional"
+																		"x-stainless-terraform-configurability": "optional"
 																	},
 																	"payload_log": {
 																		"description": "Configure DLP payload logging. Settable only for `http` rules.",
@@ -2085,7 +2085,7 @@
 																		"nullable": true,
 																		"type": "boolean",
 																		"x-auditable": true,
-																		"x-stainless-terraform-configurability": "computed_optional"
+																		"x-stainless-terraform-configurability": "optional"
 																	},
 																	"untrusted_cert": {
 																		"description": "Configure behavior when an upstream certificate is invalid or an SSL error occurs. Settable only for `http` rules with the action set to `allow`.",
@@ -2623,7 +2623,7 @@
 															"nullable": true,
 															"type": "boolean",
 															"x-auditable": true,
-															"x-stainless-terraform-configurability": "computed_optional"
+															"x-stainless-terraform-configurability": "optional"
 														},
 														"audit_ssh": {
 															"description": "Define the settings for the Audit SSH action. Settable only for `l4` rules with `audit_ssh` action.",
@@ -2781,7 +2781,7 @@
 															"example": true,
 															"type": "boolean",
 															"x-auditable": true,
-															"x-stainless-terraform-configurability": "computed_optional"
+															"x-stainless-terraform-configurability": "optional"
 														},
 														"block_reason": {
 															"description": "Explain why the rule blocks the request. The custom block page shows this text (if enabled). Settable only for `dns`, `l4`, and `http` rules when the action set to `block`.",
@@ -2789,7 +2789,7 @@
 															"nullable": true,
 															"type": "string",
 															"x-auditable": true,
-															"x-stainless-terraform-configurability": "computed_optional"
+															"x-stainless-terraform-configurability": "optional"
 														},
 														"bypass_parent_rule": {
 															"description": "Set to enable MSP accounts to bypass their parent's rules. Only MSP child accounts can set this. Settable for all types of rules.",
@@ -2943,28 +2943,28 @@
 															"example": true,
 															"type": "boolean",
 															"x-auditable": true,
-															"x-stainless-terraform-configurability": "computed_optional"
+															"x-stainless-terraform-configurability": "optional"
 														},
 														"insecure_disable_dnssec_validation": {
 															"description": "Specify whether to disable DNSSEC validation (for Allow actions) [INSECURE]. Settable only for `dns` rules.",
 															"example": false,
 															"type": "boolean",
 															"x-auditable": true,
-															"x-stainless-terraform-configurability": "computed_optional"
+															"x-stainless-terraform-configurability": "optional"
 														},
 														"ip_categories": {
 															"description": "Enable IPs in DNS resolver category blocks. The system blocks only domain name categories unless you enable this setting. Settable only for `dns` and `dns_resolver` rules.",
 															"example": true,
 															"type": "boolean",
 															"x-auditable": true,
-															"x-stainless-terraform-configurability": "computed_optional"
+															"x-stainless-terraform-configurability": "optional"
 														},
 														"ip_indicator_feeds": {
 															"description": "Indicates whether to include IPs in DNS resolver indicator feed blocks. Default, indicator feeds block only domain names. Settable only for `dns` and `dns_resolver` rules.",
 															"example": true,
 															"type": "boolean",
 															"x-auditable": true,
-															"x-stainless-terraform-configurability": "computed_optional"
+															"x-stainless-terraform-configurability": "optional"
 														},
 														"l4override": {
 															"description": "Send matching traffic to the supplied destination IP address and port. Settable only for `l4` rules with the action set to `l4_override`.",
@@ -3018,7 +3018,7 @@
 															"example": "example.com",
 															"type": "string",
 															"x-auditable": true,
-															"x-stainless-terraform-configurability": "computed_optional"
+															"x-stainless-terraform-configurability": "optional"
 														},
 														"override_ips": {
 															"description": "Defines a an IP or set of IPs for overriding matched DNS queries. Settable only for `dns` rules with the action set to `override`.",
@@ -3034,7 +3034,7 @@
 															},
 															"nullable": true,
 															"type": "array",
-															"x-stainless-terraform-configurability": "computed_optional"
+															"x-stainless-terraform-configurability": "optional"
 														},
 														"payload_log": {
 															"description": "Configure DLP payload logging. Settable only for `http` rules.",
@@ -3136,7 +3136,7 @@
 															"nullable": true,
 															"type": "boolean",
 															"x-auditable": true,
-															"x-stainless-terraform-configurability": "computed_optional"
+															"x-stainless-terraform-configurability": "optional"
 														},
 														"untrusted_cert": {
 															"description": "Configure behavior when an upstream certificate is invalid or an SSL error occurs. Settable only for `http` rules with the action set to `allow`.",
@@ -3547,7 +3547,7 @@
 																	"nullable": true,
 																	"type": "boolean",
 																	"x-auditable": true,
-																	"x-stainless-terraform-configurability": "computed_optional"
+																	"x-stainless-terraform-configurability": "optional"
 																},
 																"audit_ssh": {
 																	"description": "Define the settings for the Audit SSH action. Settable only for `l4` rules with `audit_ssh` action.",
@@ -3705,7 +3705,7 @@
 																	"example": true,
 																	"type": "boolean",
 																	"x-auditable": true,
-																	"x-stainless-terraform-configurability": "computed_optional"
+																	"x-stainless-terraform-configurability": "optional"
 																},
 																"block_reason": {
 																	"description": "Explain why the rule blocks the request. The custom block page shows this text (if enabled). Settable only for `dns`, `l4`, and `http` rules when the action set to `block`.",
@@ -3713,7 +3713,7 @@
 																	"nullable": true,
 																	"type": "string",
 																	"x-auditable": true,
-																	"x-stainless-terraform-configurability": "computed_optional"
+																	"x-stainless-terraform-configurability": "optional"
 																},
 																"bypass_parent_rule": {
 																	"description": "Set to enable MSP accounts to bypass their parent's rules. Only MSP child accounts can set this. Settable for all types of rules.",
@@ -3867,28 +3867,28 @@
 																	"example": true,
 																	"type": "boolean",
 																	"x-auditable": true,
-																	"x-stainless-terraform-configurability": "computed_optional"
+																	"x-stainless-terraform-configurability": "optional"
 																},
 																"insecure_disable_dnssec_validation": {
 																	"description": "Specify whether to disable DNSSEC validation (for Allow actions) [INSECURE]. Settable only for `dns` rules.",
 																	"example": false,
 																	"type": "boolean",
 																	"x-auditable": true,
-																	"x-stainless-terraform-configurability": "computed_optional"
+																	"x-stainless-terraform-configurability": "optional"
 																},
 																"ip_categories": {
 																	"description": "Enable IPs in DNS resolver category blocks. The system blocks only domain name categories unless you enable this setting. Settable only for `dns` and `dns_resolver` rules.",
 																	"example": true,
 																	"type": "boolean",
 																	"x-auditable": true,
-																	"x-stainless-terraform-configurability": "computed_optional"
+																	"x-stainless-terraform-configurability": "optional"
 																},
 																"ip_indicator_feeds": {
 																	"description": "Indicates whether to include IPs in DNS resolver indicator feed blocks. Default, indicator feeds block only domain names. Settable only for `dns` and `dns_resolver` rules.",
 																	"example": true,
 																	"type": "boolean",
 																	"x-auditable": true,
-																	"x-stainless-terraform-configurability": "computed_optional"
+																	"x-stainless-terraform-configurability": "optional"
 																},
 																"l4override": {
 																	"description": "Send matching traffic to the supplied destination IP address and port. Settable only for `l4` rules with the action set to `l4_override`.",
@@ -3942,7 +3942,7 @@
 																	"example": "example.com",
 																	"type": "string",
 																	"x-auditable": true,
-																	"x-stainless-terraform-configurability": "computed_optional"
+																	"x-stainless-terraform-configurability": "optional"
 																},
 																"override_ips": {
 																	"description": "Defines a an IP or set of IPs for overriding matched DNS queries. Settable only for `dns` rules with the action set to `override`.",
@@ -3958,7 +3958,7 @@
 																	},
 																	"nullable": true,
 																	"type": "array",
-																	"x-stainless-terraform-configurability": "computed_optional"
+																	"x-stainless-terraform-configurability": "optional"
 																},
 																"payload_log": {
 																	"description": "Configure DLP payload logging. Settable only for `http` rules.",
@@ -4060,7 +4060,7 @@
 																	"nullable": true,
 																	"type": "boolean",
 																	"x-auditable": true,
-																	"x-stainless-terraform-configurability": "computed_optional"
+																	"x-stainless-terraform-configurability": "optional"
 																},
 																"untrusted_cert": {
 																	"description": "Configure behavior when an upstream certificate is invalid or an SSL error occurs. Settable only for `http` rules with the action set to `allow`.",
@@ -4614,7 +4614,7 @@
 																"nullable": true,
 																"type": "boolean",
 																"x-auditable": true,
-																"x-stainless-terraform-configurability": "computed_optional"
+																"x-stainless-terraform-configurability": "optional"
 															},
 															"audit_ssh": {
 																"description": "Define the settings for the Audit SSH action. Settable only for `l4` rules with `audit_ssh` action.",
@@ -4772,7 +4772,7 @@
 																"example": true,
 																"type": "boolean",
 																"x-auditable": true,
-																"x-stainless-terraform-configurability": "computed_optional"
+																"x-stainless-terraform-configurability": "optional"
 															},
 															"block_reason": {
 																"description": "Explain why the rule blocks the request. The custom block page shows this text (if enabled). Settable only for `dns`, `l4`, and `http` rules when the action set to `block`.",
@@ -4780,7 +4780,7 @@
 																"nullable": true,
 																"type": "string",
 																"x-auditable": true,
-																"x-stainless-terraform-configurability": "computed_optional"
+																"x-stainless-terraform-configurability": "optional"
 															},
 															"bypass_parent_rule": {
 																"description": "Set to enable MSP accounts to bypass their parent's rules. Only MSP child accounts can set this. Settable for all types of rules.",
@@ -4934,28 +4934,28 @@
 																"example": true,
 																"type": "boolean",
 																"x-auditable": true,
-																"x-stainless-terraform-configurability": "computed_optional"
+																"x-stainless-terraform-configurability": "optional"
 															},
 															"insecure_disable_dnssec_validation": {
 																"description": "Specify whether to disable DNSSEC validation (for Allow actions) [INSECURE]. Settable only for `dns` rules.",
 																"example": false,
 																"type": "boolean",
 																"x-auditable": true,
-																"x-stainless-terraform-configurability": "computed_optional"
+																"x-stainless-terraform-configurability": "optional"
 															},
 															"ip_categories": {
 																"description": "Enable IPs in DNS resolver category blocks. The system blocks only domain name categories unless you enable this setting. Settable only for `dns` and `dns_resolver` rules.",
 																"example": true,
 																"type": "boolean",
 																"x-auditable": true,
-																"x-stainless-terraform-configurability": "computed_optional"
+																"x-stainless-terraform-configurability": "optional"
 															},
 															"ip_indicator_feeds": {
 																"description": "Indicates whether to include IPs in DNS resolver indicator feed blocks. Default, indicator feeds block only domain names. Settable only for `dns` and `dns_resolver` rules.",
 																"example": true,
 																"type": "boolean",
 																"x-auditable": true,
-																"x-stainless-terraform-configurability": "computed_optional"
+																"x-stainless-terraform-configurability": "optional"
 															},
 															"l4override": {
 																"description": "Send matching traffic to the supplied destination IP address and port. Settable only for `l4` rules with the action set to `l4_override`.",
@@ -5009,7 +5009,7 @@
 																"example": "example.com",
 																"type": "string",
 																"x-auditable": true,
-																"x-stainless-terraform-configurability": "computed_optional"
+																"x-stainless-terraform-configurability": "optional"
 															},
 															"override_ips": {
 																"description": "Defines a an IP or set of IPs for overriding matched DNS queries. Settable only for `dns` rules with the action set to `override`.",
@@ -5025,7 +5025,7 @@
 																},
 																"nullable": true,
 																"type": "array",
-																"x-stainless-terraform-configurability": "computed_optional"
+																"x-stainless-terraform-configurability": "optional"
 															},
 															"payload_log": {
 																"description": "Configure DLP payload logging. Settable only for `http` rules.",
@@ -5127,7 +5127,7 @@
 																"nullable": true,
 																"type": "boolean",
 																"x-auditable": true,
-																"x-stainless-terraform-configurability": "computed_optional"
+																"x-stainless-terraform-configurability": "optional"
 															},
 															"untrusted_cert": {
 																"description": "Configure behavior when an upstream certificate is invalid or an SSL error occurs. Settable only for `http` rules with the action set to `allow`.",
@@ -5571,7 +5571,7 @@
 																		"nullable": true,
 																		"type": "boolean",
 																		"x-auditable": true,
-																		"x-stainless-terraform-configurability": "computed_optional"
+																		"x-stainless-terraform-configurability": "optional"
 																	},
 																	"audit_ssh": {
 																		"description": "Define the settings for the Audit SSH action. Settable only for `l4` rules with `audit_ssh` action.",
@@ -5729,7 +5729,7 @@
 																		"example": true,
 																		"type": "boolean",
 																		"x-auditable": true,
-																		"x-stainless-terraform-configurability": "computed_optional"
+																		"x-stainless-terraform-configurability": "optional"
 																	},
 																	"block_reason": {
 																		"description": "Explain why the rule blocks the request. The custom block page shows this text (if enabled). Settable only for `dns`, `l4`, and `http` rules when the action set to `block`.",
@@ -5737,7 +5737,7 @@
 																		"nullable": true,
 																		"type": "string",
 																		"x-auditable": true,
-																		"x-stainless-terraform-configurability": "computed_optional"
+																		"x-stainless-terraform-configurability": "optional"
 																	},
 																	"bypass_parent_rule": {
 																		"description": "Set to enable MSP accounts to bypass their parent's rules. Only MSP child accounts can set this. Settable for all types of rules.",
@@ -5891,28 +5891,28 @@
 																		"example": true,
 																		"type": "boolean",
 																		"x-auditable": true,
-																		"x-stainless-terraform-configurability": "computed_optional"
+																		"x-stainless-terraform-configurability": "optional"
 																	},
 																	"insecure_disable_dnssec_validation": {
 																		"description": "Specify whether to disable DNSSEC validation (for Allow actions) [INSECURE]. Settable only for `dns` rules.",
 																		"example": false,
 																		"type": "boolean",
 																		"x-auditable": true,
-																		"x-stainless-terraform-configurability": "computed_optional"
+																		"x-stainless-terraform-configurability": "optional"
 																	},
 																	"ip_categories": {
 																		"description": "Enable IPs in DNS resolver category blocks. The system blocks only domain name categories unless you enable this setting. Settable only for `dns` and `dns_resolver` rules.",
 																		"example": true,
 																		"type": "boolean",
 																		"x-auditable": true,
-																		"x-stainless-terraform-configurability": "computed_optional"
+																		"x-stainless-terraform-configurability": "optional"
 																	},
 																	"ip_indicator_feeds": {
 																		"description": "Indicates whether to include IPs in DNS resolver indicator feed blocks. Default, indicator feeds block only domain names. Settable only for `dns` and `dns_resolver` rules.",
 																		"example": true,
 																		"type": "boolean",
 																		"x-auditable": true,
-																		"x-stainless-terraform-configurability": "computed_optional"
+																		"x-stainless-terraform-configurability": "optional"
 																	},
 																	"l4override": {
 																		"description": "Send matching traffic to the supplied destination IP address and port. Settable only for `l4` rules with the action set to `l4_override`.",
@@ -5966,7 +5966,7 @@
 																		"example": "example.com",
 																		"type": "string",
 																		"x-auditable": true,
-																		"x-stainless-terraform-configurability": "computed_optional"
+																		"x-stainless-terraform-configurability": "optional"
 																	},
 																	"override_ips": {
 																		"description": "Defines a an IP or set of IPs for overriding matched DNS queries. Settable only for `dns` rules with the action set to `override`.",
@@ -5982,7 +5982,7 @@
 																		},
 																		"nullable": true,
 																		"type": "array",
-																		"x-stainless-terraform-configurability": "computed_optional"
+																		"x-stainless-terraform-configurability": "optional"
 																	},
 																	"payload_log": {
 																		"description": "Configure DLP payload logging. Settable only for `http` rules.",
@@ -6084,7 +6084,7 @@
 																		"nullable": true,
 																		"type": "boolean",
 																		"x-auditable": true,
-																		"x-stainless-terraform-configurability": "computed_optional"
+																		"x-stainless-terraform-configurability": "optional"
 																	},
 																	"untrusted_cert": {
 																		"description": "Configure behavior when an upstream certificate is invalid or an SSL error occurs. Settable only for `http` rules with the action set to `allow`.",
@@ -6691,7 +6691,7 @@
 																"nullable": true,
 																"type": "boolean",
 																"x-auditable": true,
-																"x-stainless-terraform-configurability": "computed_optional"
+																"x-stainless-terraform-configurability": "optional"
 															},
 															"audit_ssh": {
 																"description": "Define the settings for the Audit SSH action. Settable only for `l4` rules with `audit_ssh` action.",
@@ -6849,7 +6849,7 @@
 																"example": true,
 																"type": "boolean",
 																"x-auditable": true,
-																"x-stainless-terraform-configurability": "computed_optional"
+																"x-stainless-terraform-configurability": "optional"
 															},
 															"block_reason": {
 																"description": "Explain why the rule blocks the request. The custom block page shows this text (if enabled). Settable only for `dns`, `l4`, and `http` rules when the action set to `block`.",
@@ -6857,7 +6857,7 @@
 																"nullable": true,
 																"type": "string",
 																"x-auditable": true,
-																"x-stainless-terraform-configurability": "computed_optional"
+																"x-stainless-terraform-configurability": "optional"
 															},
 															"bypass_parent_rule": {
 																"description": "Set to enable MSP accounts to bypass their parent's rules. Only MSP child accounts can set this. Settable for all types of rules.",
@@ -7011,28 +7011,28 @@
 																"example": true,
 																"type": "boolean",
 																"x-auditable": true,
-																"x-stainless-terraform-configurability": "computed_optional"
+																"x-stainless-terraform-configurability": "optional"
 															},
 															"insecure_disable_dnssec_validation": {
 																"description": "Specify whether to disable DNSSEC validation (for Allow actions) [INSECURE]. Settable only for `dns` rules.",
 																"example": false,
 																"type": "boolean",
 																"x-auditable": true,
-																"x-stainless-terraform-configurability": "computed_optional"
+																"x-stainless-terraform-configurability": "optional"
 															},
 															"ip_categories": {
 																"description": "Enable IPs in DNS resolver category blocks. The system blocks only domain name categories unless you enable this setting. Settable only for `dns` and `dns_resolver` rules.",
 																"example": true,
 																"type": "boolean",
 																"x-auditable": true,
-																"x-stainless-terraform-configurability": "computed_optional"
+																"x-stainless-terraform-configurability": "optional"
 															},
 															"ip_indicator_feeds": {
 																"description": "Indicates whether to include IPs in DNS resolver indicator feed blocks. Default, indicator feeds block only domain names. Settable only for `dns` and `dns_resolver` rules.",
 																"example": true,
 																"type": "boolean",
 																"x-auditable": true,
-																"x-stainless-terraform-configurability": "computed_optional"
+																"x-stainless-terraform-configurability": "optional"
 															},
 															"l4override": {
 																"description": "Send matching traffic to the supplied destination IP address and port. Settable only for `l4` rules with the action set to `l4_override`.",
@@ -7086,7 +7086,7 @@
 																"example": "example.com",
 																"type": "string",
 																"x-auditable": true,
-																"x-stainless-terraform-configurability": "computed_optional"
+																"x-stainless-terraform-configurability": "optional"
 															},
 															"override_ips": {
 																"description": "Defines a an IP or set of IPs for overriding matched DNS queries. Settable only for `dns` rules with the action set to `override`.",
@@ -7102,7 +7102,7 @@
 																},
 																"nullable": true,
 																"type": "array",
-																"x-stainless-terraform-configurability": "computed_optional"
+																"x-stainless-terraform-configurability": "optional"
 															},
 															"payload_log": {
 																"description": "Configure DLP payload logging. Settable only for `http` rules.",
@@ -7204,7 +7204,7 @@
 																"nullable": true,
 																"type": "boolean",
 																"x-auditable": true,
-																"x-stainless-terraform-configurability": "computed_optional"
+																"x-stainless-terraform-configurability": "optional"
 															},
 															"untrusted_cert": {
 																"description": "Configure behavior when an upstream certificate is invalid or an SSL error occurs. Settable only for `http` rules with the action set to `allow`.",
@@ -7645,7 +7645,7 @@
 																		"nullable": true,
 																		"type": "boolean",
 																		"x-auditable": true,
-																		"x-stainless-terraform-configurability": "computed_optional"
+																		"x-stainless-terraform-configurability": "optional"
 																	},
 																	"audit_ssh": {
 																		"description": "Define the settings for the Audit SSH action. Settable only for `l4` rules with `audit_ssh` action.",
@@ -7803,7 +7803,7 @@
 																		"example": true,
 																		"type": "boolean",
 																		"x-auditable": true,
-																		"x-stainless-terraform-configurability": "computed_optional"
+																		"x-stainless-terraform-configurability": "optional"
 																	},
 																	"block_reason": {
 																		"description": "Explain why the rule blocks the request. The custom block page shows this text (if enabled). Settable only for `dns`, `l4`, and `http` rules when the action set to `block`.",
@@ -7811,7 +7811,7 @@
 																		"nullable": true,
 																		"type": "string",
 																		"x-auditable": true,
-																		"x-stainless-terraform-configurability": "computed_optional"
+																		"x-stainless-terraform-configurability": "optional"
 																	},
 																	"bypass_parent_rule": {
 																		"description": "Set to enable MSP accounts to bypass their parent's rules. Only MSP child accounts can set this. Settable for all types of rules.",
@@ -7965,28 +7965,28 @@
 																		"example": true,
 																		"type": "boolean",
 																		"x-auditable": true,
-																		"x-stainless-terraform-configurability": "computed_optional"
+																		"x-stainless-terraform-configurability": "optional"
 																	},
 																	"insecure_disable_dnssec_validation": {
 																		"description": "Specify whether to disable DNSSEC validation (for Allow actions) [INSECURE]. Settable only for `dns` rules.",
 																		"example": false,
 																		"type": "boolean",
 																		"x-auditable": true,
-																		"x-stainless-terraform-configurability": "computed_optional"
+																		"x-stainless-terraform-configurability": "optional"
 																	},
 																	"ip_categories": {
 																		"description": "Enable IPs in DNS resolver category blocks. The system blocks only domain name categories unless you enable this setting. Settable only for `dns` and `dns_resolver` rules.",
 																		"example": true,
 																		"type": "boolean",
 																		"x-auditable": true,
-																		"x-stainless-terraform-configurability": "computed_optional"
+																		"x-stainless-terraform-configurability": "optional"
 																	},
 																	"ip_indicator_feeds": {
 																		"description": "Indicates whether to include IPs in DNS resolver indicator feed blocks. Default, indicator feeds block only domain names. Settable only for `dns` and `dns_resolver` rules.",
 																		"example": true,
 																		"type": "boolean",
 																		"x-auditable": true,
-																		"x-stainless-terraform-configurability": "computed_optional"
+																		"x-stainless-terraform-configurability": "optional"
 																	},
 																	"l4override": {
 																		"description": "Send matching traffic to the supplied destination IP address and port. Settable only for `l4` rules with the action set to `l4_override`.",
@@ -8040,7 +8040,7 @@
 																		"example": "example.com",
 																		"type": "string",
 																		"x-auditable": true,
-																		"x-stainless-terraform-configurability": "computed_optional"
+																		"x-stainless-terraform-configurability": "optional"
 																	},
 																	"override_ips": {
 																		"description": "Defines a an IP or set of IPs for overriding matched DNS queries. Settable only for `dns` rules with the action set to `override`.",
@@ -8056,7 +8056,7 @@
 																		},
 																		"nullable": true,
 																		"type": "array",
-																		"x-stainless-terraform-configurability": "computed_optional"
+																		"x-stainless-terraform-configurability": "optional"
 																	},
 																	"payload_log": {
 																		"description": "Configure DLP payload logging. Settable only for `http` rules.",
@@ -8158,7 +8158,7 @@
 																		"nullable": true,
 																		"type": "boolean",
 																		"x-auditable": true,
-																		"x-stainless-terraform-configurability": "computed_optional"
+																		"x-stainless-terraform-configurability": "optional"
 																	},
 																	"untrusted_cert": {
 																		"description": "Configure behavior when an upstream certificate is invalid or an SSL error occurs. Settable only for `http` rules with the action set to `allow`.",
@@ -8733,7 +8733,7 @@
 															"nullable": true,
 															"type": "boolean",
 															"x-auditable": true,
-															"x-stainless-terraform-configurability": "computed_optional"
+															"x-stainless-terraform-configurability": "optional"
 														},
 														"audit_ssh": {
 															"description": "Define the settings for the Audit SSH action. Settable only for `l4` rules with `audit_ssh` action.",
@@ -8891,7 +8891,7 @@
 															"example": true,
 															"type": "boolean",
 															"x-auditable": true,
-															"x-stainless-terraform-configurability": "computed_optional"
+															"x-stainless-terraform-configurability": "optional"
 														},
 														"block_reason": {
 															"description": "Explain why the rule blocks the request. The custom block page shows this text (if enabled). Settable only for `dns`, `l4`, and `http` rules when the action set to `block`.",
@@ -8899,7 +8899,7 @@
 															"nullable": true,
 															"type": "string",
 															"x-auditable": true,
-															"x-stainless-terraform-configurability": "computed_optional"
+															"x-stainless-terraform-configurability": "optional"
 														},
 														"bypass_parent_rule": {
 															"description": "Set to enable MSP accounts to bypass their parent's rules. Only MSP child accounts can set this. Settable for all types of rules.",
@@ -9053,28 +9053,28 @@
 															"example": true,
 															"type": "boolean",
 															"x-auditable": true,
-															"x-stainless-terraform-configurability": "computed_optional"
+															"x-stainless-terraform-configurability": "optional"
 														},
 														"insecure_disable_dnssec_validation": {
 															"description": "Specify whether to disable DNSSEC validation (for Allow actions) [INSECURE]. Settable only for `dns` rules.",
 															"example": false,
 															"type": "boolean",
 															"x-auditable": true,
-															"x-stainless-terraform-configurability": "computed_optional"
+															"x-stainless-terraform-configurability": "optional"
 														},
 														"ip_categories": {
 															"description": "Enable IPs in DNS resolver category blocks. The system blocks only domain name categories unless you enable this setting. Settable only for `dns` and `dns_resolver` rules.",
 															"example": true,
 															"type": "boolean",
 															"x-auditable": true,
-															"x-stainless-terraform-configurability": "computed_optional"
+															"x-stainless-terraform-configurability": "optional"
 														},
 														"ip_indicator_feeds": {
 															"description": "Indicates whether to include IPs in DNS resolver indicator feed blocks. Default, indicator feeds block only domain names. Settable only for `dns` and `dns_resolver` rules.",
 															"example": true,
 															"type": "boolean",
 															"x-auditable": true,
-															"x-stainless-terraform-configurability": "computed_optional"
+															"x-stainless-terraform-configurability": "optional"
 														},
 														"l4override": {
 															"description": "Send matching traffic to the supplied destination IP address and port. Settable only for `l4` rules with the action set to `l4_override`.",
@@ -9128,7 +9128,7 @@
 															"example": "example.com",
 															"type": "string",
 															"x-auditable": true,
-															"x-stainless-terraform-configurability": "computed_optional"
+															"x-stainless-terraform-configurability": "optional"
 														},
 														"override_ips": {
 															"description": "Defines a an IP or set of IPs for overriding matched DNS queries. Settable only for `dns` rules with the action set to `override`.",
@@ -9144,7 +9144,7 @@
 															},
 															"nullable": true,
 															"type": "array",
-															"x-stainless-terraform-configurability": "computed_optional"
+															"x-stainless-terraform-configurability": "optional"
 														},
 														"payload_log": {
 															"description": "Configure DLP payload logging. Settable only for `http` rules.",
@@ -9246,7 +9246,7 @@
 															"nullable": true,
 															"type": "boolean",
 															"x-auditable": true,
-															"x-stainless-terraform-configurability": "computed_optional"
+															"x-stainless-terraform-configurability": "optional"
 														},
 														"untrusted_cert": {
 															"description": "Configure behavior when an upstream certificate is invalid or an SSL error occurs. Settable only for `http` rules with the action set to `allow`.",
@@ -9654,7 +9654,7 @@
 																	"nullable": true,
 																	"type": "boolean",
 																	"x-auditable": true,
-																	"x-stainless-terraform-configurability": "computed_optional"
+																	"x-stainless-terraform-configurability": "optional"
 																},
 																"audit_ssh": {
 																	"description": "Define the settings for the Audit SSH action. Settable only for `l4` rules with `audit_ssh` action.",
@@ -9812,7 +9812,7 @@
 																	"example": true,
 																	"type": "boolean",
 																	"x-auditable": true,
-																	"x-stainless-terraform-configurability": "computed_optional"
+																	"x-stainless-terraform-configurability": "optional"
 																},
 																"block_reason": {
 																	"description": "Explain why the rule blocks the request. The custom block page shows this text (if enabled). Settable only for `dns`, `l4`, and `http` rules when the action set to `block`.",
@@ -9820,7 +9820,7 @@
 																	"nullable": true,
 																	"type": "string",
 																	"x-auditable": true,
-																	"x-stainless-terraform-configurability": "computed_optional"
+																	"x-stainless-terraform-configurability": "optional"
 																},
 																"bypass_parent_rule": {
 																	"description": "Set to enable MSP accounts to bypass their parent's rules. Only MSP child accounts can set this. Settable for all types of rules.",
@@ -9974,28 +9974,28 @@
 																	"example": true,
 																	"type": "boolean",
 																	"x-auditable": true,
-																	"x-stainless-terraform-configurability": "computed_optional"
+																	"x-stainless-terraform-configurability": "optional"
 																},
 																"insecure_disable_dnssec_validation": {
 																	"description": "Specify whether to disable DNSSEC validation (for Allow actions) [INSECURE]. Settable only for `dns` rules.",
 																	"example": false,
 																	"type": "boolean",
 																	"x-auditable": true,
-																	"x-stainless-terraform-configurability": "computed_optional"
+																	"x-stainless-terraform-configurability": "optional"
 																},
 																"ip_categories": {
 																	"description": "Enable IPs in DNS resolver category blocks. The system blocks only domain name categories unless you enable this setting. Settable only for `dns` and `dns_resolver` rules.",
 																	"example": true,
 																	"type": "boolean",
 																	"x-auditable": true,
-																	"x-stainless-terraform-configurability": "computed_optional"
+																	"x-stainless-terraform-configurability": "optional"
 																},
 																"ip_indicator_feeds": {
 																	"description": "Indicates whether to include IPs in DNS resolver indicator feed blocks. Default, indicator feeds block only domain names. Settable only for `dns` and `dns_resolver` rules.",
 																	"example": true,
 																	"type": "boolean",
 																	"x-auditable": true,
-																	"x-stainless-terraform-configurability": "computed_optional"
+																	"x-stainless-terraform-configurability": "optional"
 																},
 																"l4override": {
 																	"description": "Send matching traffic to the supplied destination IP address and port. Settable only for `l4` rules with the action set to `l4_override`.",
@@ -10049,7 +10049,7 @@
 																	"example": "example.com",
 																	"type": "string",
 																	"x-auditable": true,
-																	"x-stainless-terraform-configurability": "computed_optional"
+																	"x-stainless-terraform-configurability": "optional"
 																},
 																"override_ips": {
 																	"description": "Defines a an IP or set of IPs for overriding matched DNS queries. Settable only for `dns` rules with the action set to `override`.",
@@ -10065,7 +10065,7 @@
 																	},
 																	"nullable": true,
 																	"type": "array",
-																	"x-stainless-terraform-configurability": "computed_optional"
+																	"x-stainless-terraform-configurability": "optional"
 																},
 																"payload_log": {
 																	"description": "Configure DLP payload logging. Settable only for `http` rules.",
@@ -10167,7 +10167,7 @@
 																	"nullable": true,
 																	"type": "boolean",
 																	"x-auditable": true,
-																	"x-stainless-terraform-configurability": "computed_optional"
+																	"x-stainless-terraform-configurability": "optional"
 																},
 																"untrusted_cert": {
 																	"description": "Configure behavior when an upstream certificate is invalid or an SSL error occurs. Settable only for `http` rules with the action set to `allow`.",
@@ -10593,7 +10593,7 @@
 										"nullable": true,
 										"type": "boolean",
 										"x-auditable": true,
-										"x-stainless-terraform-configurability": "computed_optional"
+										"x-stainless-terraform-configurability": "optional"
 									},
 									"audit_ssh": {
 										"description": "Define the settings for the Audit SSH action. Settable only for `l4` rules with `audit_ssh` action.",
@@ -10751,7 +10751,7 @@
 										"example": true,
 										"type": "boolean",
 										"x-auditable": true,
-										"x-stainless-terraform-configurability": "computed_optional"
+										"x-stainless-terraform-configurability": "optional"
 									},
 									"block_reason": {
 										"description": "Explain why the rule blocks the request. The custom block page shows this text (if enabled). Settable only for `dns`, `l4`, and `http` rules when the action set to `block`.",
@@ -10759,7 +10759,7 @@
 										"nullable": true,
 										"type": "string",
 										"x-auditable": true,
-										"x-stainless-terraform-configurability": "computed_optional"
+										"x-stainless-terraform-configurability": "optional"
 									},
 									"bypass_parent_rule": {
 										"description": "Set to enable MSP accounts to bypass their parent's rules. Only MSP child accounts can set this. Settable for all types of rules.",
@@ -10913,28 +10913,28 @@
 										"example": true,
 										"type": "boolean",
 										"x-auditable": true,
-										"x-stainless-terraform-configurability": "computed_optional"
+										"x-stainless-terraform-configurability": "optional"
 									},
 									"insecure_disable_dnssec_validation": {
 										"description": "Specify whether to disable DNSSEC validation (for Allow actions) [INSECURE]. Settable only for `dns` rules.",
 										"example": false,
 										"type": "boolean",
 										"x-auditable": true,
-										"x-stainless-terraform-configurability": "computed_optional"
+										"x-stainless-terraform-configurability": "optional"
 									},
 									"ip_categories": {
 										"description": "Enable IPs in DNS resolver category blocks. The system blocks only domain name categories unless you enable this setting. Settable only for `dns` and `dns_resolver` rules.",
 										"example": true,
 										"type": "boolean",
 										"x-auditable": true,
-										"x-stainless-terraform-configurability": "computed_optional"
+										"x-stainless-terraform-configurability": "optional"
 									},
 									"ip_indicator_feeds": {
 										"description": "Indicates whether to include IPs in DNS resolver indicator feed blocks. Default, indicator feeds block only domain names. Settable only for `dns` and `dns_resolver` rules.",
 										"example": true,
 										"type": "boolean",
 										"x-auditable": true,
-										"x-stainless-terraform-configurability": "computed_optional"
+										"x-stainless-terraform-configurability": "optional"
 									},
 									"l4override": {
 										"description": "Send matching traffic to the supplied destination IP address and port. Settable only for `l4` rules with the action set to `l4_override`.",
@@ -10988,7 +10988,7 @@
 										"example": "example.com",
 										"type": "string",
 										"x-auditable": true,
-										"x-stainless-terraform-configurability": "computed_optional"
+										"x-stainless-terraform-configurability": "optional"
 									},
 									"override_ips": {
 										"description": "Defines a an IP or set of IPs for overriding matched DNS queries. Settable only for `dns` rules with the action set to `override`.",
@@ -11004,7 +11004,7 @@
 										},
 										"nullable": true,
 										"type": "array",
-										"x-stainless-terraform-configurability": "computed_optional"
+										"x-stainless-terraform-configurability": "optional"
 									},
 									"payload_log": {
 										"description": "Configure DLP payload logging. Settable only for `http` rules.",
@@ -11106,7 +11106,7 @@
 										"nullable": true,
 										"type": "boolean",
 										"x-auditable": true,
-										"x-stainless-terraform-configurability": "computed_optional"
+										"x-stainless-terraform-configurability": "optional"
 									},
 									"untrusted_cert": {
 										"description": "Configure behavior when an upstream certificate is invalid or an SSL error occurs. Settable only for `http` rules with the action set to `allow`.",
@@ -11468,7 +11468,7 @@
 															"nullable": true,
 															"type": "boolean",
 															"x-auditable": true,
-															"x-stainless-terraform-configurability": "computed_optional"
+															"x-stainless-terraform-configurability": "optional"
 														},
 														"audit_ssh": {
 															"description": "Define the settings for the Audit SSH action. Settable only for `l4` rules with `audit_ssh` action.",
@@ -11626,7 +11626,7 @@
 															"example": true,
 															"type": "boolean",
 															"x-auditable": true,
-															"x-stainless-terraform-configurability": "computed_optional"
+															"x-stainless-terraform-configurability": "optional"
 														},
 														"block_reason": {
 															"description": "Explain why the rule blocks the request. The custom block page shows this text (if enabled). Settable only for `dns`, `l4`, and `http` rules when the action set to `block`.",
@@ -11634,7 +11634,7 @@
 															"nullable": true,
 															"type": "string",
 															"x-auditable": true,
-															"x-stainless-terraform-configurability": "computed_optional"
+															"x-stainless-terraform-configurability": "optional"
 														},
 														"bypass_parent_rule": {
 															"description": "Set to enable MSP accounts to bypass their parent's rules. Only MSP child accounts can set this. Settable for all types of rules.",
@@ -11788,28 +11788,28 @@
 															"example": true,
 															"type": "boolean",
 															"x-auditable": true,
-															"x-stainless-terraform-configurability": "computed_optional"
+															"x-stainless-terraform-configurability": "optional"
 														},
 														"insecure_disable_dnssec_validation": {
 															"description": "Specify whether to disable DNSSEC validation (for Allow actions) [INSECURE]. Settable only for `dns` rules.",
 															"example": false,
 															"type": "boolean",
 															"x-auditable": true,
-															"x-stainless-terraform-configurability": "computed_optional"
+															"x-stainless-terraform-configurability": "optional"
 														},
 														"ip_categories": {
 															"description": "Enable IPs in DNS resolver category blocks. The system blocks only domain name categories unless you enable this setting. Settable only for `dns` and `dns_resolver` rules.",
 															"example": true,
 															"type": "boolean",
 															"x-auditable": true,
-															"x-stainless-terraform-configurability": "computed_optional"
+															"x-stainless-terraform-configurability": "optional"
 														},
 														"ip_indicator_feeds": {
 															"description": "Indicates whether to include IPs in DNS resolver indicator feed blocks. Default, indicator feeds block only domain names. Settable only for `dns` and `dns_resolver` rules.",
 															"example": true,
 															"type": "boolean",
 															"x-auditable": true,
-															"x-stainless-terraform-configurability": "computed_optional"
+															"x-stainless-terraform-configurability": "optional"
 														},
 														"l4override": {
 															"description": "Send matching traffic to the supplied destination IP address and port. Settable only for `l4` rules with the action set to `l4_override`.",
@@ -11863,7 +11863,7 @@
 															"example": "example.com",
 															"type": "string",
 															"x-auditable": true,
-															"x-stainless-terraform-configurability": "computed_optional"
+															"x-stainless-terraform-configurability": "optional"
 														},
 														"override_ips": {
 															"description": "Defines a an IP or set of IPs for overriding matched DNS queries. Settable only for `dns` rules with the action set to `override`.",
@@ -11879,7 +11879,7 @@
 															},
 															"nullable": true,
 															"type": "array",
-															"x-stainless-terraform-configurability": "computed_optional"
+															"x-stainless-terraform-configurability": "optional"
 														},
 														"payload_log": {
 															"description": "Configure DLP payload logging. Settable only for `http` rules.",
@@ -11981,7 +11981,7 @@
 															"nullable": true,
 															"type": "boolean",
 															"x-auditable": true,
-															"x-stainless-terraform-configurability": "computed_optional"
+															"x-stainless-terraform-configurability": "optional"
 														},
 														"untrusted_cert": {
 															"description": "Configure behavior when an upstream certificate is invalid or an SSL error occurs. Settable only for `http` rules with the action set to `allow`.",
@@ -12392,7 +12392,7 @@
 																	"nullable": true,
 																	"type": "boolean",
 																	"x-auditable": true,
-																	"x-stainless-terraform-configurability": "computed_optional"
+																	"x-stainless-terraform-configurability": "optional"
 																},
 																"audit_ssh": {
 																	"description": "Define the settings for the Audit SSH action. Settable only for `l4` rules with `audit_ssh` action.",
@@ -12550,7 +12550,7 @@
 																	"example": true,
 																	"type": "boolean",
 																	"x-auditable": true,
-																	"x-stainless-terraform-configurability": "computed_optional"
+																	"x-stainless-terraform-configurability": "optional"
 																},
 																"block_reason": {
 																	"description": "Explain why the rule blocks the request. The custom block page shows this text (if enabled). Settable only for `dns`, `l4`, and `http` rules when the action set to `block`.",
@@ -12558,7 +12558,7 @@
 																	"nullable": true,
 																	"type": "string",
 																	"x-auditable": true,
-																	"x-stainless-terraform-configurability": "computed_optional"
+																	"x-stainless-terraform-configurability": "optional"
 																},
 																"bypass_parent_rule": {
 																	"description": "Set to enable MSP accounts to bypass their parent's rules. Only MSP child accounts can set this. Settable for all types of rules.",
@@ -12712,28 +12712,28 @@
 																	"example": true,
 																	"type": "boolean",
 																	"x-auditable": true,
-																	"x-stainless-terraform-configurability": "computed_optional"
+																	"x-stainless-terraform-configurability": "optional"
 																},
 																"insecure_disable_dnssec_validation": {
 																	"description": "Specify whether to disable DNSSEC validation (for Allow actions) [INSECURE]. Settable only for `dns` rules.",
 																	"example": false,
 																	"type": "boolean",
 																	"x-auditable": true,
-																	"x-stainless-terraform-configurability": "computed_optional"
+																	"x-stainless-terraform-configurability": "optional"
 																},
 																"ip_categories": {
 																	"description": "Enable IPs in DNS resolver category blocks. The system blocks only domain name categories unless you enable this setting. Settable only for `dns` and `dns_resolver` rules.",
 																	"example": true,
 																	"type": "boolean",
 																	"x-auditable": true,
-																	"x-stainless-terraform-configurability": "computed_optional"
+																	"x-stainless-terraform-configurability": "optional"
 																},
 																"ip_indicator_feeds": {
 																	"description": "Indicates whether to include IPs in DNS resolver indicator feed blocks. Default, indicator feeds block only domain names. Settable only for `dns` and `dns_resolver` rules.",
 																	"example": true,
 																	"type": "boolean",
 																	"x-auditable": true,
-																	"x-stainless-terraform-configurability": "computed_optional"
+																	"x-stainless-terraform-configurability": "optional"
 																},
 																"l4override": {
 																	"description": "Send matching traffic to the supplied destination IP address and port. Settable only for `l4` rules with the action set to `l4_override`.",
@@ -12787,7 +12787,7 @@
 																	"example": "example.com",
 																	"type": "string",
 																	"x-auditable": true,
-																	"x-stainless-terraform-configurability": "computed_optional"
+																	"x-stainless-terraform-configurability": "optional"
 																},
 																"override_ips": {
 																	"description": "Defines a an IP or set of IPs for overriding matched DNS queries. Settable only for `dns` rules with the action set to `override`.",
@@ -12803,7 +12803,7 @@
 																	},
 																	"nullable": true,
 																	"type": "array",
-																	"x-stainless-terraform-configurability": "computed_optional"
+																	"x-stainless-terraform-configurability": "optional"
 																},
 																"payload_log": {
 																	"description": "Configure DLP payload logging. Settable only for `http` rules.",
@@ -12905,7 +12905,7 @@
 																	"nullable": true,
 																	"type": "boolean",
 																	"x-auditable": true,
-																	"x-stainless-terraform-configurability": "computed_optional"
+																	"x-stainless-terraform-configurability": "optional"
 																},
 																"untrusted_cert": {
 																	"description": "Configure behavior when an upstream certificate is invalid or an SSL error occurs. Settable only for `http` rules with the action set to `allow`.",
@@ -13441,7 +13441,7 @@
 															"nullable": true,
 															"type": "boolean",
 															"x-auditable": true,
-															"x-stainless-terraform-configurability": "computed_optional"
+															"x-stainless-terraform-configurability": "optional"
 														},
 														"audit_ssh": {
 															"description": "Define the settings for the Audit SSH action. Settable only for `l4` rules with `audit_ssh` action.",
@@ -13599,7 +13599,7 @@
 															"example": true,
 															"type": "boolean",
 															"x-auditable": true,
-															"x-stainless-terraform-configurability": "computed_optional"
+															"x-stainless-terraform-configurability": "optional"
 														},
 														"block_reason": {
 															"description": "Explain why the rule blocks the request. The custom block page shows this text (if enabled). Settable only for `dns`, `l4`, and `http` rules when the action set to `block`.",
@@ -13607,7 +13607,7 @@
 															"nullable": true,
 															"type": "string",
 															"x-auditable": true,
-															"x-stainless-terraform-configurability": "computed_optional"
+															"x-stainless-terraform-configurability": "optional"
 														},
 														"bypass_parent_rule": {
 															"description": "Set to enable MSP accounts to bypass their parent's rules. Only MSP child accounts can set this. Settable for all types of rules.",
@@ -13761,28 +13761,28 @@
 															"example": true,
 															"type": "boolean",
 															"x-auditable": true,
-															"x-stainless-terraform-configurability": "computed_optional"
+															"x-stainless-terraform-configurability": "optional"
 														},
 														"insecure_disable_dnssec_validation": {
 															"description": "Specify whether to disable DNSSEC validation (for Allow actions) [INSECURE]. Settable only for `dns` rules.",
 															"example": false,
 															"type": "boolean",
 															"x-auditable": true,
-															"x-stainless-terraform-configurability": "computed_optional"
+															"x-stainless-terraform-configurability": "optional"
 														},
 														"ip_categories": {
 															"description": "Enable IPs in DNS resolver category blocks. The system blocks only domain name categories unless you enable this setting. Settable only for `dns` and `dns_resolver` rules.",
 															"example": true,
 															"type": "boolean",
 															"x-auditable": true,
-															"x-stainless-terraform-configurability": "computed_optional"
+															"x-stainless-terraform-configurability": "optional"
 														},
 														"ip_indicator_feeds": {
 															"description": "Indicates whether to include IPs in DNS resolver indicator feed blocks. Default, indicator feeds block only domain names. Settable only for `dns` and `dns_resolver` rules.",
 															"example": true,
 															"type": "boolean",
 															"x-auditable": true,
-															"x-stainless-terraform-configurability": "computed_optional"
+															"x-stainless-terraform-configurability": "optional"
 														},
 														"l4override": {
 															"description": "Send matching traffic to the supplied destination IP address and port. Settable only for `l4` rules with the action set to `l4_override`.",
@@ -13836,7 +13836,7 @@
 															"example": "example.com",
 															"type": "string",
 															"x-auditable": true,
-															"x-stainless-terraform-configurability": "computed_optional"
+															"x-stainless-terraform-configurability": "optional"
 														},
 														"override_ips": {
 															"description": "Defines a an IP or set of IPs for overriding matched DNS queries. Settable only for `dns` rules with the action set to `override`.",
@@ -13852,7 +13852,7 @@
 															},
 															"nullable": true,
 															"type": "array",
-															"x-stainless-terraform-configurability": "computed_optional"
+															"x-stainless-terraform-configurability": "optional"
 														},
 														"payload_log": {
 															"description": "Configure DLP payload logging. Settable only for `http` rules.",
@@ -13954,7 +13954,7 @@
 															"nullable": true,
 															"type": "boolean",
 															"x-auditable": true,
-															"x-stainless-terraform-configurability": "computed_optional"
+															"x-stainless-terraform-configurability": "optional"
 														},
 														"untrusted_cert": {
 															"description": "Configure behavior when an upstream certificate is invalid or an SSL error occurs. Settable only for `http` rules with the action set to `allow`.",
@@ -14362,7 +14362,7 @@
 																	"nullable": true,
 																	"type": "boolean",
 																	"x-auditable": true,
-																	"x-stainless-terraform-configurability": "computed_optional"
+																	"x-stainless-terraform-configurability": "optional"
 																},
 																"audit_ssh": {
 																	"description": "Define the settings for the Audit SSH action. Settable only for `l4` rules with `audit_ssh` action.",
@@ -14520,7 +14520,7 @@
 																	"example": true,
 																	"type": "boolean",
 																	"x-auditable": true,
-																	"x-stainless-terraform-configurability": "computed_optional"
+																	"x-stainless-terraform-configurability": "optional"
 																},
 																"block_reason": {
 																	"description": "Explain why the rule blocks the request. The custom block page shows this text (if enabled). Settable only for `dns`, `l4`, and `http` rules when the action set to `block`.",
@@ -14528,7 +14528,7 @@
 																	"nullable": true,
 																	"type": "string",
 																	"x-auditable": true,
-																	"x-stainless-terraform-configurability": "computed_optional"
+																	"x-stainless-terraform-configurability": "optional"
 																},
 																"bypass_parent_rule": {
 																	"description": "Set to enable MSP accounts to bypass their parent's rules. Only MSP child accounts can set this. Settable for all types of rules.",
@@ -14682,28 +14682,28 @@
 																	"example": true,
 																	"type": "boolean",
 																	"x-auditable": true,
-																	"x-stainless-terraform-configurability": "computed_optional"
+																	"x-stainless-terraform-configurability": "optional"
 																},
 																"insecure_disable_dnssec_validation": {
 																	"description": "Specify whether to disable DNSSEC validation (for Allow actions) [INSECURE]. Settable only for `dns` rules.",
 																	"example": false,
 																	"type": "boolean",
 																	"x-auditable": true,
-																	"x-stainless-terraform-configurability": "computed_optional"
+																	"x-stainless-terraform-configurability": "optional"
 																},
 																"ip_categories": {
 																	"description": "Enable IPs in DNS resolver category blocks. The system blocks only domain name categories unless you enable this setting. Settable only for `dns` and `dns_resolver` rules.",
 																	"example": true,
 																	"type": "boolean",
 																	"x-auditable": true,
-																	"x-stainless-terraform-configurability": "computed_optional"
+																	"x-stainless-terraform-configurability": "optional"
 																},
 																"ip_indicator_feeds": {
 																	"description": "Indicates whether to include IPs in DNS resolver indicator feed blocks. Default, indicator feeds block only domain names. Settable only for `dns` and `dns_resolver` rules.",
 																	"example": true,
 																	"type": "boolean",
 																	"x-auditable": true,
-																	"x-stainless-terraform-configurability": "computed_optional"
+																	"x-stainless-terraform-configurability": "optional"
 																},
 																"l4override": {
 																	"description": "Send matching traffic to the supplied destination IP address and port. Settable only for `l4` rules with the action set to `l4_override`.",
@@ -14757,7 +14757,7 @@
 																	"example": "example.com",
 																	"type": "string",
 																	"x-auditable": true,
-																	"x-stainless-terraform-configurability": "computed_optional"
+																	"x-stainless-terraform-configurability": "optional"
 																},
 																"override_ips": {
 																	"description": "Defines a an IP or set of IPs for overriding matched DNS queries. Settable only for `dns` rules with the action set to `override`.",
@@ -14773,7 +14773,7 @@
 																	},
 																	"nullable": true,
 																	"type": "array",
-																	"x-stainless-terraform-configurability": "computed_optional"
+																	"x-stainless-terraform-configurability": "optional"
 																},
 																"payload_log": {
 																	"description": "Configure DLP payload logging. Settable only for `http` rules.",
@@ -14875,7 +14875,7 @@
 																	"nullable": true,
 																	"type": "boolean",
 																	"x-auditable": true,
-																	"x-stainless-terraform-configurability": "computed_optional"
+																	"x-stainless-terraform-configurability": "optional"
 																},
 																"untrusted_cert": {
 																	"description": "Configure behavior when an upstream certificate is invalid or an SSL error occurs. Settable only for `http` rules with the action set to `allow`.",
@@ -15313,7 +15313,7 @@
 										"nullable": true,
 										"type": "boolean",
 										"x-auditable": true,
-										"x-stainless-terraform-configurability": "computed_optional"
+										"x-stainless-terraform-configurability": "optional"
 									},
 									"audit_ssh": {
 										"description": "Define the settings for the Audit SSH action. Settable only for `l4` rules with `audit_ssh` action.",
@@ -15471,7 +15471,7 @@
 										"example": true,
 										"type": "boolean",
 										"x-auditable": true,
-										"x-stainless-terraform-configurability": "computed_optional"
+										"x-stainless-terraform-configurability": "optional"
 									},
 									"block_reason": {
 										"description": "Explain why the rule blocks the request. The custom block page shows this text (if enabled). Settable only for `dns`, `l4`, and `http` rules when the action set to `block`.",
@@ -15479,7 +15479,7 @@
 										"nullable": true,
 										"type": "string",
 										"x-auditable": true,
-										"x-stainless-terraform-configurability": "computed_optional"
+										"x-stainless-terraform-configurability": "optional"
 									},
 									"bypass_parent_rule": {
 										"description": "Set to enable MSP accounts to bypass their parent's rules. Only MSP child accounts can set this. Settable for all types of rules.",
@@ -15633,28 +15633,28 @@
 										"example": true,
 										"type": "boolean",
 										"x-auditable": true,
-										"x-stainless-terraform-configurability": "computed_optional"
+										"x-stainless-terraform-configurability": "optional"
 									},
 									"insecure_disable_dnssec_validation": {
 										"description": "Specify whether to disable DNSSEC validation (for Allow actions) [INSECURE]. Settable only for `dns` rules.",
 										"example": false,
 										"type": "boolean",
 										"x-auditable": true,
-										"x-stainless-terraform-configurability": "computed_optional"
+										"x-stainless-terraform-configurability": "optional"
 									},
 									"ip_categories": {
 										"description": "Enable IPs in DNS resolver category blocks. The system blocks only domain name categories unless you enable this setting. Settable only for `dns` and `dns_resolver` rules.",
 										"example": true,
 										"type": "boolean",
 										"x-auditable": true,
-										"x-stainless-terraform-configurability": "computed_optional"
+										"x-stainless-terraform-configurability": "optional"
 									},
 									"ip_indicator_feeds": {
 										"description": "Indicates whether to include IPs in DNS resolver indicator feed blocks. Default, indicator feeds block only domain names. Settable only for `dns` and `dns_resolver` rules.",
 										"example": true,
 										"type": "boolean",
 										"x-auditable": true,
-										"x-stainless-terraform-configurability": "computed_optional"
+										"x-stainless-terraform-configurability": "optional"
 									},
 									"l4override": {
 										"description": "Send matching traffic to the supplied destination IP address and port. Settable only for `l4` rules with the action set to `l4_override`.",
@@ -15708,7 +15708,7 @@
 										"example": "example.com",
 										"type": "string",
 										"x-auditable": true,
-										"x-stainless-terraform-configurability": "computed_optional"
+										"x-stainless-terraform-configurability": "optional"
 									},
 									"override_ips": {
 										"description": "Defines a an IP or set of IPs for overriding matched DNS queries. Settable only for `dns` rules with the action set to `override`.",
@@ -15724,7 +15724,7 @@
 										},
 										"nullable": true,
 										"type": "array",
-										"x-stainless-terraform-configurability": "computed_optional"
+										"x-stainless-terraform-configurability": "optional"
 									},
 									"payload_log": {
 										"description": "Configure DLP payload logging. Settable only for `http` rules.",
@@ -15826,7 +15826,7 @@
 										"nullable": true,
 										"type": "boolean",
 										"x-auditable": true,
-										"x-stainless-terraform-configurability": "computed_optional"
+										"x-stainless-terraform-configurability": "optional"
 									},
 									"untrusted_cert": {
 										"description": "Configure behavior when an upstream certificate is invalid or an SSL error occurs. Settable only for `http` rules with the action set to `allow`.",
@@ -16188,7 +16188,7 @@
 															"nullable": true,
 															"type": "boolean",
 															"x-auditable": true,
-															"x-stainless-terraform-configurability": "computed_optional"
+															"x-stainless-terraform-configurability": "optional"
 														},
 														"audit_ssh": {
 															"description": "Define the settings for the Audit SSH action. Settable only for `l4` rules with `audit_ssh` action.",
@@ -16346,7 +16346,7 @@
 															"example": true,
 															"type": "boolean",
 															"x-auditable": true,
-															"x-stainless-terraform-configurability": "computed_optional"
+															"x-stainless-terraform-configurability": "optional"
 														},
 														"block_reason": {
 															"description": "Explain why the rule blocks the request. The custom block page shows this text (if enabled). Settable only for `dns`, `l4`, and `http` rules when the action set to `block`.",
@@ -16354,7 +16354,7 @@
 															"nullable": true,
 															"type": "string",
 															"x-auditable": true,
-															"x-stainless-terraform-configurability": "computed_optional"
+															"x-stainless-terraform-configurability": "optional"
 														},
 														"bypass_parent_rule": {
 															"description": "Set to enable MSP accounts to bypass their parent's rules. Only MSP child accounts can set this. Settable for all types of rules.",
@@ -16508,28 +16508,28 @@
 															"example": true,
 															"type": "boolean",
 															"x-auditable": true,
-															"x-stainless-terraform-configurability": "computed_optional"
+															"x-stainless-terraform-configurability": "optional"
 														},
 														"insecure_disable_dnssec_validation": {
 															"description": "Specify whether to disable DNSSEC validation (for Allow actions) [INSECURE]. Settable only for `dns` rules.",
 															"example": false,
 															"type": "boolean",
 															"x-auditable": true,
-															"x-stainless-terraform-configurability": "computed_optional"
+															"x-stainless-terraform-configurability": "optional"
 														},
 														"ip_categories": {
 															"description": "Enable IPs in DNS resolver category blocks. The system blocks only domain name categories unless you enable this setting. Settable only for `dns` and `dns_resolver` rules.",
 															"example": true,
 															"type": "boolean",
 															"x-auditable": true,
-															"x-stainless-terraform-configurability": "computed_optional"
+															"x-stainless-terraform-configurability": "optional"
 														},
 														"ip_indicator_feeds": {
 															"description": "Indicates whether to include IPs in DNS resolver indicator feed blocks. Default, indicator feeds block only domain names. Settable only for `dns` and `dns_resolver` rules.",
 															"example": true,
 															"type": "boolean",
 															"x-auditable": true,
-															"x-stainless-terraform-configurability": "computed_optional"
+															"x-stainless-terraform-configurability": "optional"
 														},
 														"l4override": {
 															"description": "Send matching traffic to the supplied destination IP address and port. Settable only for `l4` rules with the action set to `l4_override`.",
@@ -16583,7 +16583,7 @@
 															"example": "example.com",
 															"type": "string",
 															"x-auditable": true,
-															"x-stainless-terraform-configurability": "computed_optional"
+															"x-stainless-terraform-configurability": "optional"
 														},
 														"override_ips": {
 															"description": "Defines a an IP or set of IPs for overriding matched DNS queries. Settable only for `dns` rules with the action set to `override`.",
@@ -16599,7 +16599,7 @@
 															},
 															"nullable": true,
 															"type": "array",
-															"x-stainless-terraform-configurability": "computed_optional"
+															"x-stainless-terraform-configurability": "optional"
 														},
 														"payload_log": {
 															"description": "Configure DLP payload logging. Settable only for `http` rules.",
@@ -16701,7 +16701,7 @@
 															"nullable": true,
 															"type": "boolean",
 															"x-auditable": true,
-															"x-stainless-terraform-configurability": "computed_optional"
+															"x-stainless-terraform-configurability": "optional"
 														},
 														"untrusted_cert": {
 															"description": "Configure behavior when an upstream certificate is invalid or an SSL error occurs. Settable only for `http` rules with the action set to `allow`.",
@@ -17112,7 +17112,7 @@
 																	"nullable": true,
 																	"type": "boolean",
 																	"x-auditable": true,
-																	"x-stainless-terraform-configurability": "computed_optional"
+																	"x-stainless-terraform-configurability": "optional"
 																},
 																"audit_ssh": {
 																	"description": "Define the settings for the Audit SSH action. Settable only for `l4` rules with `audit_ssh` action.",
@@ -17270,7 +17270,7 @@
 																	"example": true,
 																	"type": "boolean",
 																	"x-auditable": true,
-																	"x-stainless-terraform-configurability": "computed_optional"
+																	"x-stainless-terraform-configurability": "optional"
 																},
 																"block_reason": {
 																	"description": "Explain why the rule blocks the request. The custom block page shows this text (if enabled). Settable only for `dns`, `l4`, and `http` rules when the action set to `block`.",
@@ -17278,7 +17278,7 @@
 																	"nullable": true,
 																	"type": "string",
 																	"x-auditable": true,
-																	"x-stainless-terraform-configurability": "computed_optional"
+																	"x-stainless-terraform-configurability": "optional"
 																},
 																"bypass_parent_rule": {
 																	"description": "Set to enable MSP accounts to bypass their parent's rules. Only MSP child accounts can set this. Settable for all types of rules.",
@@ -17432,28 +17432,28 @@
 																	"example": true,
 																	"type": "boolean",
 																	"x-auditable": true,
-																	"x-stainless-terraform-configurability": "computed_optional"
+																	"x-stainless-terraform-configurability": "optional"
 																},
 																"insecure_disable_dnssec_validation": {
 																	"description": "Specify whether to disable DNSSEC validation (for Allow actions) [INSECURE]. Settable only for `dns` rules.",
 																	"example": false,
 																	"type": "boolean",
 																	"x-auditable": true,
-																	"x-stainless-terraform-configurability": "computed_optional"
+																	"x-stainless-terraform-configurability": "optional"
 																},
 																"ip_categories": {
 																	"description": "Enable IPs in DNS resolver category blocks. The system blocks only domain name categories unless you enable this setting. Settable only for `dns` and `dns_resolver` rules.",
 																	"example": true,
 																	"type": "boolean",
 																	"x-auditable": true,
-																	"x-stainless-terraform-configurability": "computed_optional"
+																	"x-stainless-terraform-configurability": "optional"
 																},
 																"ip_indicator_feeds": {
 																	"description": "Indicates whether to include IPs in DNS resolver indicator feed blocks. Default, indicator feeds block only domain names. Settable only for `dns` and `dns_resolver` rules.",
 																	"example": true,
 																	"type": "boolean",
 																	"x-auditable": true,
-																	"x-stainless-terraform-configurability": "computed_optional"
+																	"x-stainless-terraform-configurability": "optional"
 																},
 																"l4override": {
 																	"description": "Send matching traffic to the supplied destination IP address and port. Settable only for `l4` rules with the action set to `l4_override`.",
@@ -17507,7 +17507,7 @@
 																	"example": "example.com",
 																	"type": "string",
 																	"x-auditable": true,
-																	"x-stainless-terraform-configurability": "computed_optional"
+																	"x-stainless-terraform-configurability": "optional"
 																},
 																"override_ips": {
 																	"description": "Defines a an IP or set of IPs for overriding matched DNS queries. Settable only for `dns` rules with the action set to `override`.",
@@ -17523,7 +17523,7 @@
 																	},
 																	"nullable": true,
 																	"type": "array",
-																	"x-stainless-terraform-configurability": "computed_optional"
+																	"x-stainless-terraform-configurability": "optional"
 																},
 																"payload_log": {
 																	"description": "Configure DLP payload logging. Settable only for `http` rules.",
@@ -17625,7 +17625,7 @@
 																	"nullable": true,
 																	"type": "boolean",
 																	"x-auditable": true,
-																	"x-stainless-terraform-configurability": "computed_optional"
+																	"x-stainless-terraform-configurability": "optional"
 																},
 																"untrusted_cert": {
 																	"description": "Configure behavior when an upstream certificate is invalid or an SSL error occurs. Settable only for `http` rules with the action set to `allow`.",
