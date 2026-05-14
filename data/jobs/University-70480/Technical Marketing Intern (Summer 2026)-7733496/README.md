@@ -5,7 +5,7 @@
 		<p>At Cloudflare, we’re not looking for people who wait for a polished roadmap; we’re looking for the builders who see the cracks in the Internet that everyone else has simply learned to live with. We value candidates who have the instinct to spot a "normalized" problem and the AI-native curiosity to create a solution using the latest tools. Our culture is built on iteration, leveraging AI to ship faster today to make it better tomorrow, while ensuring that every improvement, no matter how small, is shared across the team to lift everyone up. If you’re the type of person who values curiosity over bureaucracy, and that AI is a partner in solving tough problems to keep the Internet moving forward, you’ll fit right in.</p>
 	</div>
 </div>
-<p><strong>Available location:&nbsp;</strong>Austin, Texas, San Francisco, CA</p>
+<p><strong>Available location:&nbsp;</strong>Austin, Texas, San Francisco, CA<br><strong>Internship Dates:</strong> June 8 - August 28, June 22 - September 11</p>
 <p><strong>About The Team</strong></p>
 <p>The Technical Marketing team works closely with product teams, sales and marketing to ensure our customers understand the technical details of how our products work. Our goal is to ensure the technical buyer and customer understands how Cloudflare products and solutions work in terms of their business needs. We are highly technical and get to touch every aspect of Cloudflare's technology.</p>
 <p><strong>About the Role</strong></p>
