@@ -22,7 +22,7 @@
 		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5XdIuQkEWKat2c9YanaCY0/aa873b127b5eea8cea19982f3552ccc2/image11-3.png" alt="Lava lamps with flowing wax." class="kg-image" width="1612" height="381" loading="lazy">
 
 	</figure>
-	<p>Lava lamps with flowing wax.</p>
+	<p><sup><i>Lava lamps with flowing wax.</i></sup></p>
 	<p>Cloudflare’s servers collectively handle upwards of 55 million HTTP requests per second, the <a href="https://radar.cloudflare.com/adoption-and-usage#http-vs-https" target="_blank" rel="noopener noreferrer">vast majority of which are secured via the TLS protocol</a> to ensure authenticity and confidentiality. Under the hood, cryptographic protocols like TLS require an underlying source of secure randomness – otherwise, the security guarantees fall apart.</p>
 	<p>Secure randomness used in cryptography needs to be computationally indistinguishable from “true” randomness. For this, it must both pass <a href="https://en.wikipedia.org/wiki/Randomness_test" target="_blank" rel="noopener noreferrer">statistical randomness tests</a>, and the output needs to be unpredictable to any computationally-bounded adversary, no matter how much previous output they’ve already seen. The typical way to achieve this is to take some random ‘seed’ and feed it into a <a href="https://en.wikipedia.org/wiki/Cryptographically_secure_pseudorandom_number_generator" target="_blank" rel="noopener noreferrer"><i>Cryptographically Secure Pseudorandom Number Generator</i></a> (CSPRNG) that can produce an essentially-endless stream of unpredictable bytes upon request. The properties of a CSPRNG ensure that all outputs are practically indistinguishable from truly random outputs to anyone that does not know its internal state. However, this all depends on having a secure random seed to begin with. Take a look at <a href="https://blog.cloudflare.com/lavarand-in-production-the-nitty-gritty-technical-details">this blog</a> for more details on true randomness versus pseudorandomness, and this blog for some great examples of <a href="https://blog.cloudflare.com/why-randomness-matters">what can go wrong with insecure randomness</a>.</p>
 	<p>For many years, Cloudflare’s servers relied on local sources of entropy (such as the precise timing of packet arrivals or keyboard events) to seed their entropy pools. While there’s no reason to believe that the local entropy sources on those servers are insecure or could be easily compromised, we wanted to hedge our bets against that possibility. Our solution was to set up a system where our servers could periodically refresh their entropy pools with true randomness from an external source.</p>
@@ -32,7 +32,7 @@
 		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1IPp9Lizp0pL83clLWGGNa/19d397787b5a5adbb337f581d9639fce/image10.jpg" alt="Lava lamps in Cloudflare’s San Francisco office." class="kg-image" width="1999" height="1125" loading="lazy">
 
 	</figure>
-	<p>Lava lamps in Cloudflare’s San Francisco office.</p>
+	<p><sup><i>Lava lamps in Cloudflare’s San Francisco office.</i></sup></p>
 	<div class="flex anchor relative">
 		<h2 id="adding-to-the-office-chaos">Adding to the office chaos</h2>
 		<a href="https://blog.cloudflare.com/#adding-to-the-office-chaos" aria-hidden="true" class="relative sm:absolute sm:-start-5">
@@ -56,14 +56,14 @@
 		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1JjgKso6GgfvLX74LEyYsE/7688dcdd10f3f3219f0c569724cb42ab/image8.jpg" alt="Close-up of double pendulum display in Cloudflare’s London office." class="kg-image" width="512" height="341" loading="lazy">
 
 	</figure>
-	<p>Close-up of double pendulum display in Cloudflare’s London office.</p>
+	<p><sup><i>Close-up of double pendulum display in Cloudflare’s London office.</i></sup></p>
 	<p>To the untrained eye the shadows of the pendulum stands and those cast by the rotating arms on the rear wall might seem chaotic. If so, then this installation should be labeled a success! Different light conditions and those shadows add to the chaos that is captured from this entropy source.</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
 		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2JWrKSqoaPJQC2VSbHygj/e87c2936282e55730a1db4af7d4f7e7f/Screenshot-2024-03-08-at-13.13.12.png" alt="Double pendulum display in Cloudflare’s London office with changing light conditions." class="kg-image" width="1616" height="408" loading="lazy">
 
 	</figure>
-	<p>Double pendulum display in Cloudflare’s London office with changing light conditions.</p>
+	<p><sup><i>Double pendulum display in Cloudflare’s London office with changing light conditions.</i></sup></p>
 	<p>Indeed, even with these arms restricted to motion in two dimensions, the path traced by the arms is mesmerizingly varied, and can be shown to be <a href="https://en.wikipedia.org/wiki/Double_pendulum" target="_blank" rel="noopener noreferrer">mathematically chaotic</a>. Even if we forget air resistance, temperature, and the environment, and then assume that the mutation is completely deterministic, still the resulting long-term motion is hard to predict. In particular the system is very sensitive to initial conditions, this initial state – how they are set in motion – paired with deterministic behavior produces a unique path that is traced until the pendulum comes to rest, and the system is set in motion by a Cloudflare employee in London once again.</p>
 	<div class="flex anchor relative">
 		<h3 id="austins-mesmerizing-mobiles">Austin’s mesmerizing mobiles</h3>
@@ -79,7 +79,7 @@
 		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5mfXP2V8pX0C0CoheE369Q/83fe1b4bdba232b8c8c722bc49987bfe/Screenshot-2024-03-08-at-13.14.22.png" alt="Hanging rainbow mobiles in Cloudflare’s Austin office." class="kg-image" width="1594" height="1568" loading="lazy">
 
 	</figure>
-	<p>Hanging rainbow mobiles in Cloudflare’s Austin office.</p>
+	<p><sup><i>Hanging rainbow mobiles in Cloudflare’s Austin office.</i></sup></p>
 	<div class="flex anchor relative">
 		<h2 id="mixing-new-sources-into-lavarand">Mixing new sources into LavaRand</h2>
 		<a href="https://blog.cloudflare.com/#mixing-new-sources-into-lavarand" aria-hidden="true" class="relative sm:absolute sm:-start-5">
@@ -95,14 +95,14 @@
 		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7zrgpZA2xosqvTzU6dk8V/6e1f061640192f7de4585d7f2959f4a7/Screenshot-2024-03-08-at-13.16.23.png" alt="Close-up of hanging rainbow mobiles in Cloudflare’s Austin office." class="kg-image" width="1624" height="786" loading="lazy">
 
 	</figure>
-	<p>Close-up of hanging rainbow mobiles in Cloudflare’s Austin office.</p>
+	<p><sup><i>Close-up of hanging rainbow mobiles in Cloudflare’s Austin office.</i></sup></p>
 	<p>Once we have a still image that captures the state of the randomness display at a particular point in time, we compute a compact representation – a hash – of the image to derive a fixed-sized output of truly random bytes.</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
 		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1VjuWFkK83t3EkTjPxYGc6/2ddc9da8c2553a8a1dbb04513de6acbd/image4-26.png" alt="Process of converting physical entropy displays into random byte strings." class="kg-image" width="1491" height="400" loading="lazy">
 
 	</figure>
-	<p>Process of converting physical entropy displays into random byte strings.</p>
+	<p><sup><i>Process of converting physical entropy displays into random byte strings.</i></sup></p>
 	<p>The random bytes are then used as an input (along with the previous seed and some randomness from the system’s local entropy sources) to a <i>Key Derivation Function</i> (KDF) to compute a new randomness seed that is fed into a <a href="https://en.wikipedia.org/wiki/Cryptographically_secure_pseudorandom_number_generator" target="_blank" rel="noopener noreferrer"><i>Cryptographically Secure Pseudorandom Number Generator</i></a> (CSPRNG) that can produce an essentially-endless stream of unpredictable bytes upon request. The properties of a CSPRNG ensure that all outputs are practically indistinguishable from truly random outputs to anyone that does not know its internal state. LavaRand then exposes this stream of randomness via a simple internal API where clients can request fresh randomness.</p>
 	<pre class="language-bash"><code class="language-bash">seed = KDF(new image || previous seed || system randomness)
 rng = CSPRNG(seed)
@@ -124,7 +124,7 @@ rand2 = rng.random()</code></pre>
 	<p>In addition to being unpredictable and unbiased, it’s also desirable for public randomness to be <i>trustworthy</i> so that consumers of the randomness are assured that the values were faithfully produced. Not many people would buy lottery tickets if they believed that the winning ticket was going to be chosen unfairly! Indeed, there are known cases of corrupt insiders subverting public randomness for personal gain, like the <a href="https://www.nytimes.com/interactive/2018/05/03/magazine/money-issue-iowa-lottery-fraud-mystery.html" target="_blank" rel="noopener noreferrer">state lottery employee</a> who co-opted the lottery random number generator, allowing his friends and family to win millions of dollars.</p>
 	<p>A fundamental challenge of public randomness is that one must trust the authority producing the random outputs. Trusting a well-known authority like <a href="https://beacon.nist.gov/home" target="_blank" rel="noopener noreferrer">NIST</a> may suffice for many applications, but could be problematic for others (especially for applications where decentralization is important).</p>
 	<div class="flex anchor relative">
-		<h2 id="drand-distributed-and-verifiable-public-randomness">drand: distributed and verifiable public randomness</h2>
+		<h2 id="drand-distributed-and-verifiable-public-randomness"><code>drand</code>: distributed and verifiable public randomness</h2>
 		<a href="https://blog.cloudflare.com/#drand-distributed-and-verifiable-public-randomness" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
@@ -187,7 +187,7 @@ signature = group_sign(round)</code></pre>
 		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5PVw1hyLALNYG3p20U2f2D/eeac0fd2fe805cabc1b75055cc0b0076/image7-7.png" alt="Rotating double pendulums." class="kg-image" width="1999" height="381" loading="lazy">
 
 	</figure>
-	<p>Rotating double pendulums.</p>
+	<p><sup><i>Rotating double pendulums.</i></sup></p>
 	<div class="flex anchor relative">
 		<h2 id="timelock-encryption">Timelock encryption</h2>
 		<a href="https://blog.cloudflare.com/#timelock-encryption" aria-hidden="true" class="relative sm:absolute sm:-start-5">
@@ -247,7 +247,7 @@ curl -X POST --data-binary @encrypted.pem --fail --show-error https://tlock-work
 		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/aUx8oEz7t6W649nYlAmzD/f4658fe8a6b467804f2e6c21c9dec2cb/image1-30.png" alt="A snail on a whale." class="kg-image" width="1999" height="381" loading="lazy">
 
 	</figure>
-	<p>A snail on a whale.</p><!--kg-card-begin: html-->
+	<p><sup><i>A snail on a whale.</i></sup></p><!--kg-card-begin: html-->
 	<div style="position: relative; padding-top: 56.25%;">
 		<iframe src="https://customer-rhnwzxvb3mg4wz3v.cloudflarestream.com/52095915c232273e4d91f11ab6ae4004/iframe?preload=true&amp;poster=https%3A%2F%2Fcustomer-rhnwzxvb3mg4wz3v.cloudflarestream.com%2F52095915c232273e4d91f11ab6ae4004%2Fthumbnails%2Fthumbnail.jpg%3Ftime%3D%26height%3D600" loading="lazy" style="border: none; position: absolute; top: 0; left: 0; height: 100%; width: 100%;" allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;" allowfullscreen="true"></iframe>
 	</div><!--kg-card-end: html-->
