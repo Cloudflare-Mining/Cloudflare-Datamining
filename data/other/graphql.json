@@ -358,6 +358,7 @@
 	},
 	"AccountAegisIpUtilizationAdaptiveGroupsDimensions": {
 		"__description": "",
+		"date": "Timestamp truncated to the start of a day",
 		"datetime": "Timestamp",
 		"datetimeFifteenMinutes": "Timestamp bucketed by 15 minutes",
 		"datetimeFiveMinutes": "Timestamp bucketed by 5 minutes",
@@ -947,6 +948,7 @@
 	},
 	"AccountBrowserIsolationSessionsAdaptiveGroupsDimensions": {
 		"__description": "",
+		"date": "Timestamp truncated to the start of a day",
 		"datetime": "",
 		"datetimeFifteenMinutes": "Timestamp truncated to fifteen minutes",
 		"datetimeFiveMinutes": "Timestamp truncated to five minutes",
@@ -972,6 +974,7 @@
 	},
 	"AccountBrowserIsolationUserActionsAdaptiveGroupsDimensions": {
 		"__description": "",
+		"date": "Timestamp truncated to the start of a day",
 		"datetime": "",
 		"datetimeFifteenMinutes": "Timestamp truncated to fifteen minutes",
 		"datetimeFiveMinutes": "Timestamp truncated to five minutes",
@@ -3917,6 +3920,7 @@
 		"categoryIds": "IDs of the categories that matched the session parameters",
 		"categoryNames": "Names of the categories that matched the session parameters",
 		"coloCode": "Colo Code of edge server",
+		"date": "Date that the session was started, truncated to the start of a day",
 		"datetime": "Datetime that the session was started",
 		"datetimeFifteenMinutes": "Datetime that the session was started truncated to fifteen minutes",
 		"datetimeFiveMinutes": "Datetime that the session was started truncated to five minutes",
@@ -4055,6 +4059,7 @@
 		"categoryIds": "IDs of the categories that matched the request parameters",
 		"categoryNames": "Names of the categories that matched the request parameters",
 		"coloCode": "Colo Code of edge server",
+		"date": "Date that the request happened, truncated to the start of a day",
 		"datetime": "Datetime that the request happened",
 		"datetimeFifteenMinutes": "Datetime that the request happened truncated to fifteen minutes",
 		"datetimeFiveMinutes": "Datetime that the request happened truncated to five minutes",
@@ -4107,6 +4112,7 @@
 		"customResolverAddress": "Address at which the custom resolver query was resolved at",
 		"customResolverCacheStatus": "Whether the custom resolver response was cached or not",
 		"customResolverResponseCode": "Response code recieved from the custom resolver 0 => unknown 27 => dnsFirewallSuccess 29 => dnsFirewallCustomerRatelimit 31 => dnsFirewallUpstreamFailure 32 => dnsFirewallUpstreamServfail\n",
+		"date": "The date the DNS query was resolved, truncated to the start of a day",
 		"datetime": "The date and time the DNS query was resolved",
 		"datetimeFifteenMinutes": "The date and time the event occurred at the edge truncated to fifteen minutes",
 		"datetimeFiveMinutes": "The date and time the event occurred at the edge truncated to five minutes",
@@ -4168,6 +4174,7 @@
 		"customResolverAddress": "address at which custom resolver query was resolved at",
 		"customResolverResponseCode": "Response code recieved from the custom resolver 0 => unknown 27 => dnsFirewallSuccess 29 => dnsFirewallCustomerRatelimit 31 => dnsFirewallUpstreamFailure 32 => dnsFirewallUpstreamServfail\n",
 		"customResolverTimeInMs": "time took for custom resolver to respond",
+		"date": "The date the DNS query was resolved, truncated to the start of a day",
 		"datetime": "The date and time the DNS query was resolved",
 		"datetimeFifteenMinutes": "The date and time the event occurred at the edge truncated to fifteen minutes",
 		"datetimeFiveMinutes": "The date and time the event occurred at the edge truncated to five minutes",
@@ -4207,6 +4214,7 @@
 	},
 	"AccountGatewayResolverByRuleExecutionPerformanceAdaptiveGroupsDimensions": {
 		"__description": "",
+		"date": "Request date, truncated to the start of a day",
 		"datetime": "Request timestamp",
 		"datetimeFifteenMinutes": "Request timestamp truncated to fifteen minutes",
 		"datetimeFiveMinutes": "Request timestamp truncated to five minutes",
@@ -4255,6 +4263,7 @@
 		"customResolverAddress": "Address at which the custom resolver query was resolved at",
 		"customResolverCacheStatus": "Whether the custom resolver response was cached or not",
 		"customResolverResponseCode": "Response code recieved from the custom resolver 0 => unknown 27 => dnsFirewallSuccess 29 => dnsFirewallCustomerRatelimit 31 => dnsFirewallUpstreamFailure 32 => dnsFirewallUpstreamServfail\n",
+		"date": "The date the DNS query was resolved, truncated to the start of a day",
 		"datetime": "The date and time the DNS query was resolved",
 		"datetimeFifteenMinutes": "The date and time the event occurred at the edge truncated to fifteen minutes",
 		"datetimeFiveMinutes": "The date and time the event occurred at the edge truncated to five minutes",
@@ -4654,8 +4663,10 @@
 		"originTcpHandshakeDurationMs": "The time elapsed between the start and completion of the TCP handshake with the origin",
 		"originTlsHandshakeDurationMs": "The time elapsed between the start and completion of the TLS handshake with the origin",
 		"payPerCrawlStatus": "Pay Per Crawl outcome, when applicable (e.g. request enabled for charging and not blocked by a WAF rule)",
+		"productMatches": "Cloudflare products (Snippets, Transform Rules, Cloud Connector Rules, etc.) whose rulesets matched this request",
 		"rayName": "The RayId of the request",
 		"requestSource": "",
+		"rulesMetadata": "Key-value metadata annotations attached to rules that matched this request",
 		"securityAction": "The code of the first-class action the Cloudflare Firewall took on this request",
 		"securitySource": "The Cloudflare security product triggered by this request",
 		"sessionIdHash": "API Security Session ID hash",
@@ -4740,6 +4751,7 @@
 		"clientRequestHTTPProtocol": "HTTP protocol version",
 		"clientRequestPath": "Path of client request",
 		"clientRequestQuery": "Query parameters of client request",
+		"clientRequestQueryParameterNames": "Beta. Query parameter names of client request",
 		"clientRequestReferer": "HTTP request referrer",
 		"clientRequestScheme": "HTTP request URI scheme (http/https)",
 		"clientSSLProtocol": "SSL protocol version",
@@ -4895,6 +4907,12 @@
 		"originResponseHeaderReceiveDurationMs": "The sum of originResponseHeaderReceiveDuration, in milliseconds",
 		"originTcpHandshakeDurationMs": "The sum of originTcpHandshakeDuration, in milliseconds",
 		"originTlsHandshakeDurationMs": "The sum of originTlsHandshakeDuration, in milliseconds",
+		"productMatchProductArray": "Distinct Cloudflare product IDs whose rulesets matched across aggregated requests",
+		"productMatchProductCountArray": "Estimated request count per product ID. Elements correspond to productMatchProductArray by index.",
+		"productMatchRulesetIdArray": "Distinct ruleset UUIDs (hex-encoded) that matched across aggregated requests",
+		"productMatchRulesetIdCountArray": "Estimated request count per ruleset ID. Elements correspond to productMatchRulesetIdArray by index.",
+		"rulesMetadataKeyArray": "Distinct rule metadata keys observed across aggregated requests",
+		"rulesMetadataKeyCountArray": "Estimated request count per metadata key. Elements correspond to rulesMetadataKeyArray by index.",
 		"visits": "The number of requests by end-users that were initiated from a different website (i.e. where the request HTTP Referer header does not match the host in the HTTP Host header)"
 	},
 	"AccountHttpRequestsAdaptiveGroupsSumConfidence": {
@@ -4917,6 +4935,19 @@
 	},
 	"AccountHttpRequestsAdaptiveOrderBy": {
 		"__description": ""
+	},
+	"AccountHttpRequestsAdaptiveProductMatchesElem": {
+		"__description": "",
+		"product": "Numeric identifier of the Cloudflare product whose ruleset matched (e.g. WAF, Bot Management)",
+		"ruleIds": "Hex-encoded UUIDs of individual rules within the ruleset that matched this request",
+		"rulesetId": "Unique identifier of the ruleset that matched, as a hex-encoded UUID",
+		"rulesetVersion": "Version number of the ruleset that was evaluated against the request"
+	},
+	"AccountHttpRequestsAdaptiveRulesMetadataElem": {
+		"__description": "",
+		"metadataKey": "Key of the metadata annotation on the matched rule (e.g. action, category)",
+		"metadataValue": "Value of the metadata annotation on the matched rule",
+		"ruleId": "Hex-encoded UUID of the rule this metadata entry belongs to"
 	},
 	"AccountHttpRequestsOverviewAdaptiveGroups": {
 		"__description": "A high-level summary of HTTP requests made by end users.",
@@ -5299,6 +5330,7 @@
 	},
 	"AccountLiveInputEventsAdaptiveGroupsDimensions": {
 		"__description": "",
+		"date": "Live input events date, truncated to the start of a day",
 		"datetime": "Live input events timestamp",
 		"datetimeFifteenMinutes": "The date and time of the event truncated to fifteen minutes",
 		"datetimeFiveMinutes": "The date and time of the event truncated to five minutes",
@@ -5838,6 +5870,7 @@
 	},
 	"AccountMagicFirewallSamplesAdaptiveGroupsDimensions": {
 		"__description": "",
+		"date": "Date that the packet was received, truncated to the start of a day",
 		"datetime": "Date and time that the packet was received",
 		"datetimeFifteenMinutes": "Date and time that the packet was received, rounded to the start of the nearest fifteen minutes",
 		"datetimeFiveMinute": "<small>DEPRECATED (Deprecated in favor of datetimeFiveMinutes):</small> Date and time that the packet was received, rounded to the start of the nearest five minutes",
@@ -6225,6 +6258,7 @@
 	"AccountMagicTransitTunnelHealthChecksAdaptiveGroupsDimensions": {
 		"__description": "",
 		"active": "Returns 1 if the colo had traffic for this tunnel in the last 6 hours, otherwise 0",
+		"date": "The date the healthcheck request was sent, truncated to the start of a day",
 		"datetime": "The time the healthcheck request was sent",
 		"datetimeFifteenMinutes": "The time the healthcheck request was sent, truncated to multiple of 15 minutes",
 		"datetimeFiveMinutes": "The time the healthcheck request was sent, truncated to multiple of 5 minutes",
@@ -6357,6 +6391,7 @@
 	},
 	"AccountMagicWANConnectorMetricsAdaptiveGroupsDimensions": {
 		"__description": "",
+		"date": "The date the event was recorded, truncated to the start of a day",
 		"datetime": "The date and time the event was recorded",
 		"datetimeFifteenMinutes": "The date and time the event occurred at the edge truncated to fifteen minutes",
 		"datetimeFiveMinutes": "The date and time the event occurred at the edge truncated to a multiple of 5 minutes",
@@ -6392,6 +6427,7 @@
 	"AccountMconnTelemetryEventsAdaptiveGroupsDimensions": {
 		"__description": "",
 		"connectorId": "Connector identifier",
+		"date": "Timestamp truncated to the start of a day",
 		"datetime": "Timestamp",
 		"datetimeFifteenMinutes": "Timestamp bucketed by 15 minutes",
 		"datetimeFiveMinutes": "Timestamp bucketed by 5 minutes",
@@ -6420,6 +6456,7 @@
 	"AccountMconnTelemetryEventsStagingAdaptiveGroupsDimensions": {
 		"__description": "",
 		"connectorId": "Connector identifier",
+		"date": "Timestamp truncated to the start of a day",
 		"datetime": "Timestamp",
 		"datetimeFifteenMinutes": "Timestamp bucketed by 15 minutes",
 		"datetimeFiveMinutes": "Timestamp bucketed by 5 minutes",
@@ -6450,6 +6487,7 @@
 		"__description": "",
 		"clientId": "Client ID of the device the IP Address was leased to",
 		"connectorId": "Connector identifier",
+		"date": "Timestamp truncated to the start of a day",
 		"datetime": "Timestamp",
 		"datetimeFifteenMinutes": "Timestamp bucketed by 15 minutes",
 		"datetimeFiveMinutes": "Timestamp bucketed by 5 minutes",
@@ -6487,6 +6525,7 @@
 		"__description": "",
 		"clientId": "Client ID of the device the IP Address was leased to",
 		"connectorId": "Connector identifier",
+		"date": "Timestamp truncated to the start of a day",
 		"datetime": "Timestamp",
 		"datetimeFifteenMinutes": "Timestamp bucketed by 15 minutes",
 		"datetimeFiveMinutes": "Timestamp bucketed by 5 minutes",
@@ -6524,6 +6563,7 @@
 	"AccountMconnTelemetrySnapshotDisksAdaptiveGroupsDimensions": {
 		"__description": "",
 		"connectorId": "Connector identifier",
+		"date": "Timestamp truncated to the start of a day",
 		"datetime": "Timestamp",
 		"datetimeFifteenMinutes": "Timestamp bucketed by 15 minutes",
 		"datetimeFiveMinutes": "Timestamp bucketed by 5 minutes",
@@ -6573,6 +6613,7 @@
 	"AccountMconnTelemetrySnapshotDisksStagingAdaptiveGroupsDimensions": {
 		"__description": "",
 		"connectorId": "Connector identifier",
+		"date": "Timestamp truncated to the start of a day",
 		"datetime": "Timestamp",
 		"datetimeFifteenMinutes": "Timestamp bucketed by 15 minutes",
 		"datetimeFiveMinutes": "Timestamp bucketed by 5 minutes",
@@ -6620,6 +6661,7 @@
 	"AccountMconnTelemetrySnapshotInterfaceAddressesAdaptiveGroupsDimensions": {
 		"__description": "",
 		"connectorId": "Connector identifier",
+		"date": "Timestamp truncated to the start of a day",
 		"datetime": "Timestamp",
 		"datetimeFifteenMinutes": "Timestamp bucketed by 15 minutes",
 		"datetimeFiveMinutes": "Timestamp bucketed by 5 minutes",
@@ -6649,6 +6691,7 @@
 	"AccountMconnTelemetrySnapshotInterfaceAddressesStagingAdaptiveGroupsDimensions": {
 		"__description": "",
 		"connectorId": "Connector identifier",
+		"date": "Timestamp truncated to the start of a day",
 		"datetime": "Timestamp",
 		"datetimeFifteenMinutes": "Timestamp bucketed by 15 minutes",
 		"datetimeFiveMinutes": "Timestamp bucketed by 5 minutes",
@@ -6679,6 +6722,7 @@
 	"AccountMconnTelemetrySnapshotInterfacesAdaptiveGroupsDimensions": {
 		"__description": "",
 		"connectorId": "Connector identifier",
+		"date": "Timestamp truncated to the start of a day",
 		"datetime": "Timestamp",
 		"datetimeFifteenMinutes": "Timestamp bucketed by 15 minutes",
 		"datetimeFiveMinutes": "Timestamp bucketed by 5 minutes",
@@ -6713,6 +6757,7 @@
 	"AccountMconnTelemetrySnapshotInterfacesStagingAdaptiveGroupsDimensions": {
 		"__description": "",
 		"connectorId": "Connector identifier",
+		"date": "Timestamp truncated to the start of a day",
 		"datetime": "Timestamp",
 		"datetimeFifteenMinutes": "Timestamp bucketed by 15 minutes",
 		"datetimeFiveMinutes": "Timestamp bucketed by 5 minutes",
@@ -6747,6 +6792,7 @@
 	"AccountMconnTelemetrySnapshotMountsAdaptiveGroupsDimensions": {
 		"__description": "",
 		"connectorId": "Connector identifier",
+		"date": "Timestamp truncated to the start of a day",
 		"datetime": "Timestamp",
 		"datetimeFifteenMinutes": "Timestamp bucketed by 15 minutes",
 		"datetimeFiveMinutes": "Timestamp bucketed by 5 minutes",
@@ -6786,6 +6832,7 @@
 	"AccountMconnTelemetrySnapshotMountsStagingAdaptiveGroupsDimensions": {
 		"__description": "",
 		"connectorId": "Connector identifier",
+		"date": "Timestamp truncated to the start of a day",
 		"datetime": "Timestamp",
 		"datetimeFifteenMinutes": "Timestamp bucketed by 15 minutes",
 		"datetimeFiveMinutes": "Timestamp bucketed by 5 minutes",
@@ -6825,6 +6872,7 @@
 	"AccountMconnTelemetrySnapshotNetdevsAdaptiveGroupsDimensions": {
 		"__description": "",
 		"connectorId": "Connector identifier",
+		"date": "Timestamp truncated to the start of a day",
 		"datetime": "Timestamp",
 		"datetimeFifteenMinutes": "Timestamp bucketed by 15 minutes",
 		"datetimeFiveMinutes": "Timestamp bucketed by 5 minutes",
@@ -6873,6 +6921,7 @@
 	"AccountMconnTelemetrySnapshotNetdevsStagingAdaptiveGroupsDimensions": {
 		"__description": "",
 		"connectorId": "Connector identifier",
+		"date": "Timestamp truncated to the start of a day",
 		"datetime": "Timestamp",
 		"datetimeFifteenMinutes": "Timestamp bucketed by 15 minutes",
 		"datetimeFiveMinutes": "Timestamp bucketed by 5 minutes",
@@ -6921,6 +6970,7 @@
 	"AccountMconnTelemetrySnapshotThermalsAdaptiveGroupsDimensions": {
 		"__description": "",
 		"connectorId": "Connector identifier",
+		"date": "Timestamp truncated to the start of a day",
 		"datetime": "Timestamp",
 		"datetimeFifteenMinutes": "Timestamp bucketed by 15 minutes",
 		"datetimeFiveMinutes": "Timestamp bucketed by 5 minutes",
@@ -6956,6 +7006,7 @@
 	"AccountMconnTelemetrySnapshotThermalsStagingAdaptiveGroupsDimensions": {
 		"__description": "",
 		"connectorId": "Connector identifier",
+		"date": "Timestamp truncated to the start of a day",
 		"datetime": "Timestamp",
 		"datetimeFifteenMinutes": "Timestamp bucketed by 15 minutes",
 		"datetimeFiveMinutes": "Timestamp bucketed by 5 minutes",
@@ -6991,6 +7042,7 @@
 	"AccountMconnTelemetrySnapshotTunnelsAdaptiveGroupsDimensions": {
 		"__description": "",
 		"connectorId": "Connector identifier",
+		"date": "Timestamp truncated to the start of a day",
 		"datetime": "Timestamp",
 		"datetimeFifteenMinutes": "Timestamp bucketed by 15 minutes",
 		"datetimeFiveMinutes": "Timestamp bucketed by 5 minutes",
@@ -7025,6 +7077,7 @@
 	"AccountMconnTelemetrySnapshotTunnelsStagingAdaptiveGroupsDimensions": {
 		"__description": "",
 		"connectorId": "Connector identifier",
+		"date": "Timestamp truncated to the start of a day",
 		"datetime": "Timestamp",
 		"datetimeFifteenMinutes": "Timestamp bucketed by 15 minutes",
 		"datetimeFiveMinutes": "Timestamp bucketed by 5 minutes",
@@ -7059,6 +7112,7 @@
 	"AccountMconnTelemetrySnapshotsAdaptiveGroupsDimensions": {
 		"__description": "",
 		"connectorId": "Connector identifier",
+		"date": "Timestamp truncated to the start of a day",
 		"datetime": "Timestamp",
 		"datetimeFifteenMinutes": "Timestamp bucketed by 15 minutes",
 		"datetimeFiveMinutes": "Timestamp bucketed by 5 minutes",
@@ -7105,6 +7159,7 @@
 	"AccountMconnTelemetrySnapshotsStagingAdaptiveGroupsDimensions": {
 		"__description": "",
 		"connectorId": "Connector identifier",
+		"date": "Timestamp truncated to the start of a day",
 		"datetime": "Timestamp",
 		"datetimeFifteenMinutes": "Timestamp bucketed by 15 minutes",
 		"datetimeFiveMinutes": "Timestamp bucketed by 5 minutes",
@@ -9504,6 +9559,7 @@
 	"AccountSinkholeRequestLogsAdaptiveGroupsDimensions": {
 		"__description": "",
 		"body": "The request body",
+		"date": "The date the event was recorded, truncated to the start of a day",
 		"datetime": "The date and time the event was recorded",
 		"datetimeFifteenMinutes": "The date and time the event was recorded truncated to fifteen minutes",
 		"datetimeFiveMinutes": "The date and time the event was recorded truncated to five minutes",
@@ -9767,6 +9823,7 @@
 		"contentId": "Content ID",
 		"country": "Viewer country",
 		"creatorId": "Creator ID",
+		"date": "Ingest event date, truncated to the start of a day",
 		"datetime": "Ingest event timestamp",
 		"datetimeFifteenMinutes": "The date and time of the ingest event truncated to fifteen minutes",
 		"datetimeFiveMinutes": "The date and time of the ingest event truncated to five minutes",
@@ -10470,6 +10527,7 @@
 	},
 	"AccountWorkersBuildsBuildMinutesAdaptiveGroupsDimensions": {
 		"__description": "",
+		"date": "Build minutes recorded date, truncated to start of a day",
 		"datetime": "Build minutes recorded timestamp",
 		"datetimeFifteenMinutes": "Build minutes recorded timestamp, truncated to start of fifteen minutes",
 		"datetimeFiveMinutes": "Build minutes recorded timestamp, truncated to start of five minutes",
@@ -10511,6 +10569,7 @@
 	},
 	"AccountWorkersInvocationsAdaptiveDimensions": {
 		"__description": "",
+		"cacheStatus": "Cache status for cache-enabled Worker invocation, if applicable",
 		"coloCode": "IATA airport code for the Cloudflare datacenter where the script ran.",
 		"date": "Request datetime, truncated to start of a day",
 		"datetime": "Request datetime",
@@ -10643,6 +10702,7 @@
 	},
 	"AccountWorkersOverviewDataAdaptiveGroupsDimensions": {
 		"__description": "",
+		"date": "Request datetime, truncated to start of a day",
 		"datetime": "Request datetime",
 		"datetimeFifteenMinutes": "Request datetime, truncated to start of fifteen minutes",
 		"datetimeFiveMinutes": "Request datetime, truncated to start of five minutes",
@@ -10681,6 +10741,7 @@
 	},
 	"AccountWorkersOverviewRequestsAdaptiveGroupsDimensions": {
 		"__description": "",
+		"date": "Request datetime, truncated to start of a day",
 		"datetime": "Request datetime",
 		"datetimeFifteenMinutes": "Request datetime, truncated to start of fifteen minutes",
 		"datetimeFiveMinutes": "Request datetime, truncated to start of five minutes",
@@ -12753,8 +12814,10 @@
 		"originTcpHandshakeDurationMs": "The time elapsed between the start and completion of the TCP handshake with the origin",
 		"originTlsHandshakeDurationMs": "The time elapsed between the start and completion of the TLS handshake with the origin",
 		"payPerCrawlStatus": "Pay Per Crawl outcome, when applicable (e.g. request enabled for charging and not blocked by a WAF rule)",
+		"productMatches": "Cloudflare products (Snippets, Transform Rules, Cloud Connector Rules, etc.) whose rulesets matched this request",
 		"rayName": "The RayId of the request",
 		"requestSource": "",
+		"rulesMetadata": "Key-value metadata annotations attached to rules that matched this request",
 		"securityAction": "The code of the first-class action the Cloudflare Firewall took on this request",
 		"securitySource": "The Cloudflare security product triggered by this request",
 		"sessionIdHash": "API Security Session ID hash",
@@ -12838,6 +12901,7 @@
 		"clientRequestHTTPProtocol": "HTTP protocol version",
 		"clientRequestPath": "Path of client request",
 		"clientRequestQuery": "Query parameters of client request",
+		"clientRequestQueryParameterNames": "Beta. Query parameter names of client request",
 		"clientRequestReferer": "HTTP request referrer",
 		"clientRequestScheme": "HTTP request URI scheme (http/https)",
 		"clientSSLProtocol": "SSL protocol version",
@@ -12992,6 +13056,12 @@
 		"originResponseHeaderReceiveDurationMs": "The sum of originResponseHeaderReceiveDuration, in milliseconds",
 		"originTcpHandshakeDurationMs": "The sum of originTcpHandshakeDuration, in milliseconds",
 		"originTlsHandshakeDurationMs": "The sum of originTlsHandshakeDuration, in milliseconds",
+		"productMatchProductArray": "Distinct Cloudflare product IDs whose rulesets matched across aggregated requests",
+		"productMatchProductCountArray": "Estimated request count per product ID. Elements correspond to productMatchProductArray by index.",
+		"productMatchRulesetIdArray": "Distinct ruleset UUIDs (hex-encoded) that matched across aggregated requests",
+		"productMatchRulesetIdCountArray": "Estimated request count per ruleset ID. Elements correspond to productMatchRulesetIdArray by index.",
+		"rulesMetadataKeyArray": "Distinct rule metadata keys observed across aggregated requests",
+		"rulesMetadataKeyCountArray": "Estimated request count per metadata key. Elements correspond to rulesMetadataKeyArray by index.",
 		"visits": "The number of requests by end-users that were initiated from a different website (i.e. where the request HTTP Referer header does not match the host in the HTTP Host header)"
 	},
 	"ZoneHttpRequestsAdaptiveGroupsSumConfidence": {
@@ -13014,6 +13084,19 @@
 	},
 	"ZoneHttpRequestsAdaptiveOrderBy": {
 		"__description": ""
+	},
+	"ZoneHttpRequestsAdaptiveProductMatchesElem": {
+		"__description": "",
+		"product": "Numeric identifier of the Cloudflare product whose ruleset matched (e.g. WAF, Bot Management)",
+		"ruleIds": "Hex-encoded UUIDs of individual rules within the ruleset that matched this request",
+		"rulesetId": "Unique identifier of the ruleset that matched, as a hex-encoded UUID",
+		"rulesetVersion": "Version number of the ruleset that was evaluated against the request"
+	},
+	"ZoneHttpRequestsAdaptiveRulesMetadataElem": {
+		"__description": "",
+		"metadataKey": "Key of the metadata annotation on the matched rule (e.g. action, category)",
+		"metadataValue": "Value of the metadata annotation on the matched rule",
+		"ruleId": "Hex-encoded UUID of the rule this metadata entry belongs to"
 	},
 	"ZoneHttpRequestsOverviewAdaptiveGroups": {
 		"__description": "A high-level summary of HTTP requests made by end users.",
@@ -13162,6 +13245,7 @@
 	"ZoneLoadBalancingRequestsAdaptiveGroupsDimensions": {
 		"__description": "",
 		"coloCode": "IATA airport code of data center that received the request",
+		"date": "Request date, truncated to the start of a day",
 		"datetime": "Request datetime",
 		"datetimeFifteenMinutes": "Request datetime truncated to multiple of 15 minutes",
 		"datetimeFiveMinutes": "Request datetime truncated to multiple of 5 minutes",
