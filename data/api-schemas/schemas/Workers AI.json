@@ -364,6 +364,18 @@
 					"description": "Search",
 					"type": "string"
 				}
+			},
+			{
+				"description": "If set, return models in the requested marketplace format instead of the default response.",
+				"in": "query",
+				"name": "format",
+				"schema": {
+					"description": "If set, return models in the requested marketplace format instead of the default response.",
+					"enum": [
+						"openrouter"
+					],
+					"type": "string"
+				}
 			}
 		],
 		"responses": {
@@ -371,40 +383,59 @@
 				"content": {
 					"application/json": {
 						"schema": {
-							"properties": {
-								"errors": {
-									"items": {
-										"type": "object"
+							"anyOf": [
+								{
+									"properties": {
+										"errors": {
+											"items": {
+												"type": "object"
+											},
+											"type": "array"
+										},
+										"messages": {
+											"items": {
+												"type": "string"
+											},
+											"type": "array"
+										},
+										"result": {
+											"items": {
+												"type": "object"
+											},
+											"type": "array"
+										},
+										"success": {
+											"type": "boolean"
+										}
 									},
-									"type": "array"
+									"required": [
+										"success",
+										"result",
+										"errors",
+										"messages"
+									],
+									"type": "object"
 								},
-								"messages": {
-									"items": {
-										"type": "string"
+								{
+									"description": "Marketplace-format response. See https://openrouter.ai/docs/guides/get-started/for-providers",
+									"properties": {
+										"data": {
+											"items": {
+												"type": "object"
+											},
+											"type": "array"
+										}
 									},
-									"type": "array"
-								},
-								"result": {
-									"items": {
-										"type": "object"
-									},
-									"type": "array"
-								},
-								"success": {
-									"type": "boolean"
+									"required": [
+										"data"
+									],
+									"type": "object"
 								}
-							},
-							"required": [
-								"success",
-								"result",
-								"errors",
-								"messages"
-							],
-							"type": "object"
+							]
 						}
 					}
 				},
-				"description": "Returns a list of models"
+				"description": "Returns a list of models. Default shape is the standard envelope; when `format` is supplied the marketplace-specific shape is returned instead."
 			},
 			"404": {
 				"content": {
