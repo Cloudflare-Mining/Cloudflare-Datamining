@@ -1,5 +1,5 @@
 {
-	"generated_at": "2026-05-14T04:33:46.967Z",
+	"generated_at": "2026-05-15T04:33:57.562Z",
 	"model_count": 150,
 	"models": [
 		{
@@ -4303,13 +4303,13 @@
 			"tags": [],
 			"context_length": 262144,
 			"max_output_tokens": null,
-			"supports_async": false,
+			"supports_async": true,
 			"hosting": "hosted",
 			"data_source": "legacy",
 			"properties": [
 				{
 					"property_id": "async_queue",
-					"value": "false"
+					"value": "true"
 				},
 				{
 					"property_id": "context_window",
