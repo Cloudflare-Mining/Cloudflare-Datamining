@@ -143,7 +143,7 @@ const darkMode = client.getBooleanValue('dark-mode', false);
 
 ## Documentation
 
-- [API reference](../../docs/API.md)
+- [API reference](./API.md)
 - [OpenFeature specification](https://openfeature.dev/specification/)
 - [Examples](./examples/)
 
