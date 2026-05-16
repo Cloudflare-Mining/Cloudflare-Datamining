@@ -1,6 +1,6 @@
 {
-	"generated_at": "2026-05-15T04:33:57.562Z",
-	"model_count": 91,
+	"generated_at": "2026-05-16T04:34:04.277Z",
+	"model_count": 73,
 	"models": [
 		{
 			"model_id": "@cf/pipecat-ai/smart-turn-v2",
@@ -28,7 +28,7 @@
 					"value": [
 						{
 							"unit": "per audio minute",
-							"price": 0.00034,
+							"price": 0.000338,
 							"currency": "USD"
 						}
 					]
@@ -108,52 +108,6 @@
 			"created_at": "2025-08-05 10:27:29.131"
 		},
 		{
-			"model_id": "@cf/qwen/qwen1.5-0.5b-chat",
-			"slug": "cf/qwen/qwen1.5-0.5b-chat",
-			"display_name": "qwen1.5-0.5b-chat",
-			"description": "Qwen1.5 is the improved version of Qwen, the large language model series developed by Alibaba Cloud.",
-			"task": {
-				"id": "c329a1f9-323d-4e91-b2aa-582dd4188d34",
-				"name": "Text Generation",
-				"description": "Family of generative text models, such as large language models (LLM), that can be adapted for a variety of natural language tasks."
-			},
-			"tags": [],
-			"context_length": 32000,
-			"max_output_tokens": null,
-			"supports_async": false,
-			"hosting": "hosted",
-			"data_source": "legacy",
-			"properties": [
-				{
-					"property_id": "beta",
-					"value": "true"
-				},
-				{
-					"property_id": "context_window",
-					"value": "32000"
-				},
-				{
-					"property_id": "info",
-					"value": "https://huggingface.co/qwen/qwen1.5-0.5b-chat"
-				},
-				{
-					"property_id": "planned_deprecation_date",
-					"value": "2025-10-01"
-				}
-			],
-			"metadata": {
-				"beta": true,
-				"lora": false,
-				"function_calling": false,
-				"partner": false,
-				"realtime": false
-			},
-			"external_info": "https://huggingface.co/qwen/qwen1.5-0.5b-chat",
-			"terms": null,
-			"cover_image_url": null,
-			"created_at": "2024-02-27 18:23:37.344"
-		},
-		{
 			"model_id": "@cf/baai/bge-m3",
 			"slug": "cf/baai/bge-m3",
 			"display_name": "bge-m3",
@@ -179,7 +133,7 @@
 					"value": [
 						{
 							"unit": "per M input tokens",
-							"price": 0.012,
+							"price": 0.0118,
 							"currency": "USD"
 						}
 					]
@@ -219,7 +173,7 @@
 					"value": [
 						{
 							"unit": "per M input tokens",
-							"price": 0.026,
+							"price": 0.0263,
 							"currency": "USD"
 						}
 					]
@@ -284,64 +238,6 @@
 			"created_at": "2024-04-02 00:19:34.669"
 		},
 		{
-			"model_id": "@hf/nexusflow/starling-lm-7b-beta",
-			"slug": "hf/nexusflow/starling-lm-7b-beta",
-			"display_name": "starling-lm-7b-beta",
-			"description": "We introduce Starling-LM-7B-beta, an open large language model (LLM) trained by Reinforcement Learning from AI Feedback (RLAIF). Starling-LM-7B-beta is trained from Openchat-3.5-0106 with our new reward model Nexusflow/Starling-RM-34B and policy optimization method Fine-Tuning Language Models from Human Preferences (PPO).",
-			"task": {
-				"id": "c329a1f9-323d-4e91-b2aa-582dd4188d34",
-				"name": "Text Generation",
-				"description": "Family of generative text models, such as large language models (LLM), that can be adapted for a variety of natural language tasks."
-			},
-			"tags": [],
-			"context_length": 4096,
-			"max_output_tokens": null,
-			"supports_async": false,
-			"hosting": "hosted",
-			"data_source": "legacy",
-			"properties": [
-				{
-					"property_id": "beta",
-					"value": "true"
-				},
-				{
-					"property_id": "context_window",
-					"value": "4096"
-				},
-				{
-					"property_id": "info",
-					"value": "https://huggingface.co/Nexusflow/Starling-LM-7B-beta"
-				},
-				{
-					"property_id": "max_batch_prefill_tokens",
-					"value": "8192"
-				},
-				{
-					"property_id": "max_input_length",
-					"value": "3072"
-				},
-				{
-					"property_id": "max_total_tokens",
-					"value": "4096"
-				},
-				{
-					"property_id": "planned_deprecation_date",
-					"value": "2025-10-01"
-				}
-			],
-			"metadata": {
-				"beta": true,
-				"lora": false,
-				"function_calling": false,
-				"partner": false,
-				"realtime": false
-			},
-			"external_info": "https://huggingface.co/Nexusflow/Starling-LM-7B-beta",
-			"terms": null,
-			"cover_image_url": null,
-			"created_at": "2024-04-01 23:49:31.797"
-		},
-		{
 			"model_id": "@cf/black-forest-labs/flux-2-klein-9b",
 			"slug": "cf/black-forest-labs/flux-2-klein-9b",
 			"display_name": "flux-2-klein-9b",
@@ -401,12 +297,12 @@
 					"value": [
 						{
 							"unit": "per M input tokens",
-							"price": 0.28,
+							"price": 0.282,
 							"currency": "USD"
 						},
 						{
 							"unit": "per M output tokens",
-							"price": 0.83,
+							"price": 0.827,
 							"currency": "USD"
 						}
 					]
@@ -462,12 +358,12 @@
 					"value": [
 						{
 							"unit": "per M input tokens",
-							"price": 0.051,
+							"price": 0.0509,
 							"currency": "USD"
 						},
 						{
 							"unit": "per M output tokens",
-							"price": 0.34,
+							"price": 0.335,
 							"currency": "USD"
 						}
 					]
@@ -572,48 +468,6 @@
 			"created_at": "2026-02-02 21:11:49.874"
 		},
 		{
-			"model_id": "@hf/thebloke/neural-chat-7b-v3-1-awq",
-			"slug": "hf/thebloke/neural-chat-7b-v3-1-awq",
-			"display_name": "neural-chat-7b-v3-1-awq",
-			"description": "This model is a fine-tuned 7B parameter LLM on the Intel Gaudi 2 processor from the mistralai/Mistral-7B-v0.1 on the open source dataset Open-Orca/SlimOrca.",
-			"task": {
-				"id": "c329a1f9-323d-4e91-b2aa-582dd4188d34",
-				"name": "Text Generation",
-				"description": "Family of generative text models, such as large language models (LLM), that can be adapted for a variety of natural language tasks."
-			},
-			"tags": [],
-			"context_length": 4096,
-			"max_output_tokens": null,
-			"supports_async": false,
-			"hosting": "hosted",
-			"data_source": "legacy",
-			"properties": [
-				{
-					"property_id": "beta",
-					"value": "true"
-				},
-				{
-					"property_id": "context_window",
-					"value": "4096"
-				},
-				{
-					"property_id": "planned_deprecation_date",
-					"value": "2025-10-01"
-				}
-			],
-			"metadata": {
-				"beta": true,
-				"lora": false,
-				"function_calling": false,
-				"partner": false,
-				"realtime": false
-			},
-			"external_info": null,
-			"terms": null,
-			"cover_image_url": null,
-			"created_at": "2024-02-06 18:12:30.722"
-		},
-		{
 			"model_id": "@cf/meta/llama-guard-3-8b",
 			"slug": "cf/meta/llama-guard-3-8b",
 			"display_name": "llama-guard-3-8b",
@@ -644,7 +498,7 @@
 					"value": [
 						{
 							"unit": "per M input tokens",
-							"price": 0.48,
+							"price": 0.484,
 							"currency": "USD"
 						},
 						{
@@ -697,7 +551,7 @@
 					"value": [
 						{
 							"unit": "per M input tokens",
-							"price": 0.012,
+							"price": 0.0118,
 							"currency": "USD"
 						}
 					]
@@ -737,12 +591,12 @@
 					"value": [
 						{
 							"unit": "per M input tokens",
-							"price": 0.56,
+							"price": 0.556,
 							"currency": "USD"
 						},
 						{
 							"unit": "per M output tokens",
-							"price": 6.67,
+							"price": 6.667,
 							"currency": "USD"
 						}
 					]
@@ -859,7 +713,7 @@
 					"value": [
 						{
 							"unit": "per audio minute",
-							"price": 0.0002,
+							"price": 0.000205,
 							"currency": "USD"
 						}
 					]
@@ -997,7 +851,7 @@
 					"value": [
 						{
 							"unit": "per audio minute",
-							"price": 0.00045,
+							"price": 0.000453,
 							"currency": "USD"
 						}
 					]
@@ -1018,52 +872,6 @@
 			"terms": null,
 			"cover_image_url": null,
 			"created_at": "2023-09-25 19:21:11.898"
-		},
-		{
-			"model_id": "@cf/tinyllama/tinyllama-1.1b-chat-v1.0",
-			"slug": "cf/tinyllama/tinyllama-1.1b-chat-v1.0",
-			"display_name": "tinyllama-1.1b-chat-v1.0",
-			"description": "The TinyLlama project aims to pretrain a 1.1B Llama model on 3 trillion tokens. This is the chat model finetuned on top of TinyLlama/TinyLlama-1.1B-intermediate-step-1431k-3T.",
-			"task": {
-				"id": "c329a1f9-323d-4e91-b2aa-582dd4188d34",
-				"name": "Text Generation",
-				"description": "Family of generative text models, such as large language models (LLM), that can be adapted for a variety of natural language tasks."
-			},
-			"tags": [],
-			"context_length": 2048,
-			"max_output_tokens": null,
-			"supports_async": false,
-			"hosting": "hosted",
-			"data_source": "legacy",
-			"properties": [
-				{
-					"property_id": "beta",
-					"value": "true"
-				},
-				{
-					"property_id": "context_window",
-					"value": "2048"
-				},
-				{
-					"property_id": "info",
-					"value": "https://huggingface.co/TinyLlama/TinyLlama-1.1B-Chat-v1.0"
-				},
-				{
-					"property_id": "planned_deprecation_date",
-					"value": "2025-10-01"
-				}
-			],
-			"metadata": {
-				"beta": true,
-				"lora": false,
-				"function_calling": false,
-				"partner": false,
-				"realtime": false
-			},
-			"external_info": "https://huggingface.co/TinyLlama/TinyLlama-1.1B-Chat-v1.0",
-			"terms": null,
-			"cover_image_url": null,
-			"created_at": "2024-02-27 18:25:37.524"
 		},
 		{
 			"model_id": "@cf/pfnet/plamo-embedding-1b",
@@ -1087,7 +895,7 @@
 					"value": [
 						{
 							"unit": "per M input tokens",
-							"price": 0.019,
+							"price": 0.0186,
 							"currency": "USD"
 						}
 					]
@@ -1168,48 +976,6 @@
 			"created_at": "2024-04-02 13:00:59.244"
 		},
 		{
-			"model_id": "@cf/fblgit/una-cybertron-7b-v2-bf16",
-			"slug": "cf/fblgit/una-cybertron-7b-v2-bf16",
-			"display_name": "una-cybertron-7b-v2-bf16",
-			"description": "Cybertron 7B v2 is a 7B MistralAI based model, best on it's series. It was trained with SFT, DPO and UNA (Unified Neural Alignment) on multiple datasets.",
-			"task": {
-				"id": "c329a1f9-323d-4e91-b2aa-582dd4188d34",
-				"name": "Text Generation",
-				"description": "Family of generative text models, such as large language models (LLM), that can be adapted for a variety of natural language tasks."
-			},
-			"tags": [],
-			"context_length": 15000,
-			"max_output_tokens": null,
-			"supports_async": false,
-			"hosting": "hosted",
-			"data_source": "legacy",
-			"properties": [
-				{
-					"property_id": "beta",
-					"value": "true"
-				},
-				{
-					"property_id": "context_window",
-					"value": "15000"
-				},
-				{
-					"property_id": "planned_deprecation_date",
-					"value": "2025-10-01"
-				}
-			],
-			"metadata": {
-				"beta": true,
-				"lora": false,
-				"function_calling": false,
-				"partner": false,
-				"realtime": false
-			},
-			"external_info": null,
-			"terms": null,
-			"cover_image_url": null,
-			"created_at": "2024-04-24 14:37:19.494"
-		},
-		{
 			"model_id": "@cf/llava-hf/llava-1.5-7b-hf",
 			"slug": "cf/llava-hf/llava-1.5-7b-hf",
 			"display_name": "llava-1.5-7b-hf",
@@ -1269,12 +1035,12 @@
 					"value": [
 						{
 							"unit": "per M input tokens",
-							"price": 0.5,
+							"price": 0.497,
 							"currency": "USD"
 						},
 						{
 							"unit": "per M output tokens",
-							"price": 4.88,
+							"price": 4.881,
 							"currency": "USD"
 						}
 					]
@@ -1487,12 +1253,12 @@
 					"value": [
 						{
 							"unit": "per 512 by 512 tile",
-							"price": 0.000053,
+							"price": 0.0000528,
 							"currency": "USD"
 						},
 						{
 							"unit": "per step",
-							"price": 0.00011,
+							"price": 0.000106,
 							"currency": "USD"
 						}
 					]
@@ -1513,52 +1279,6 @@
 			"terms": "https://bfl.ai/legal/terms-of-service",
 			"cover_image_url": null,
 			"created_at": "2024-08-29 16:37:39.541"
-		},
-		{
-			"model_id": "@cf/thebloke/discolm-german-7b-v1-awq",
-			"slug": "cf/thebloke/discolm-german-7b-v1-awq",
-			"display_name": "discolm-german-7b-v1-awq",
-			"description": "DiscoLM German 7b is a Mistral-based large language model with a focus on German-language applications. AWQ is an efficient, accurate and blazing-fast low-bit weight quantization method, currently supporting 4-bit quantization.",
-			"task": {
-				"id": "c329a1f9-323d-4e91-b2aa-582dd4188d34",
-				"name": "Text Generation",
-				"description": "Family of generative text models, such as large language models (LLM), that can be adapted for a variety of natural language tasks."
-			},
-			"tags": [],
-			"context_length": 4096,
-			"max_output_tokens": null,
-			"supports_async": false,
-			"hosting": "hosted",
-			"data_source": "legacy",
-			"properties": [
-				{
-					"property_id": "beta",
-					"value": "true"
-				},
-				{
-					"property_id": "context_window",
-					"value": "4096"
-				},
-				{
-					"property_id": "info",
-					"value": "https://huggingface.co/TheBloke/DiscoLM_German_7b_v1-AWQ"
-				},
-				{
-					"property_id": "planned_deprecation_date",
-					"value": "2025-10-01"
-				}
-			],
-			"metadata": {
-				"beta": true,
-				"lora": false,
-				"function_calling": false,
-				"partner": false,
-				"realtime": false
-			},
-			"external_info": "https://huggingface.co/TheBloke/DiscoLM_German_7b_v1-AWQ",
-			"terms": null,
-			"cover_image_url": null,
-			"created_at": "2024-02-27 18:23:05.178"
 		},
 		{
 			"model_id": "@cf/meta/llama-2-7b-chat-int8",
@@ -1620,12 +1340,12 @@
 					"value": [
 						{
 							"unit": "per M input tokens",
-							"price": 0.15,
+							"price": 0.152,
 							"currency": "USD"
 						},
 						{
 							"unit": "per M output tokens",
-							"price": 0.29,
+							"price": 0.287,
 							"currency": "USD"
 						}
 					]
@@ -1650,98 +1370,6 @@
 			"terms": "https://github.com/meta-llama/llama-models/blob/main/models/llama3_1/LICENSE",
 			"cover_image_url": null,
 			"created_at": "2024-07-25 17:28:43.328"
-		},
-		{
-			"model_id": "@hf/thebloke/mistral-7b-instruct-v0.1-awq",
-			"slug": "hf/thebloke/mistral-7b-instruct-v0.1-awq",
-			"display_name": "mistral-7b-instruct-v0.1-awq",
-			"description": "Mistral 7B Instruct v0.1 AWQ is an efficient, accurate and blazing-fast low-bit weight quantized Mistral variant.",
-			"task": {
-				"id": "c329a1f9-323d-4e91-b2aa-582dd4188d34",
-				"name": "Text Generation",
-				"description": "Family of generative text models, such as large language models (LLM), that can be adapted for a variety of natural language tasks."
-			},
-			"tags": [],
-			"context_length": 4096,
-			"max_output_tokens": null,
-			"supports_async": false,
-			"hosting": "hosted",
-			"data_source": "legacy",
-			"properties": [
-				{
-					"property_id": "beta",
-					"value": "true"
-				},
-				{
-					"property_id": "context_window",
-					"value": "4096"
-				},
-				{
-					"property_id": "info",
-					"value": "https://huggingface.co/TheBloke/Mistral-7B-Instruct-v0.1-AWQ"
-				},
-				{
-					"property_id": "planned_deprecation_date",
-					"value": "2025-10-01"
-				}
-			],
-			"metadata": {
-				"beta": true,
-				"lora": false,
-				"function_calling": false,
-				"partner": false,
-				"realtime": false
-			},
-			"external_info": "https://huggingface.co/TheBloke/Mistral-7B-Instruct-v0.1-AWQ",
-			"terms": null,
-			"cover_image_url": null,
-			"created_at": "2023-11-24 00:27:15.869"
-		},
-		{
-			"model_id": "@cf/qwen/qwen1.5-7b-chat-awq",
-			"slug": "cf/qwen/qwen1.5-7b-chat-awq",
-			"display_name": "qwen1.5-7b-chat-awq",
-			"description": "Qwen1.5 is the improved version of Qwen, the large language model series developed by Alibaba Cloud. AWQ is an efficient, accurate and blazing-fast low-bit weight quantization method, currently supporting 4-bit quantization.",
-			"task": {
-				"id": "c329a1f9-323d-4e91-b2aa-582dd4188d34",
-				"name": "Text Generation",
-				"description": "Family of generative text models, such as large language models (LLM), that can be adapted for a variety of natural language tasks."
-			},
-			"tags": [],
-			"context_length": 20000,
-			"max_output_tokens": null,
-			"supports_async": false,
-			"hosting": "hosted",
-			"data_source": "legacy",
-			"properties": [
-				{
-					"property_id": "beta",
-					"value": "true"
-				},
-				{
-					"property_id": "context_window",
-					"value": "20000"
-				},
-				{
-					"property_id": "info",
-					"value": "https://huggingface.co/qwen/qwen1.5-7b-chat-awq"
-				},
-				{
-					"property_id": "planned_deprecation_date",
-					"value": "2025-10-01"
-				}
-			],
-			"metadata": {
-				"beta": true,
-				"lora": false,
-				"function_calling": false,
-				"partner": false,
-				"realtime": false
-			},
-			"external_info": "https://huggingface.co/qwen/qwen1.5-7b-chat-awq",
-			"terms": null,
-			"cover_image_url": null,
-			"created_at": "2024-02-27 18:24:11.709"
 		},
 		{
 			"model_id": "@cf/meta/llama-3.2-1b-instruct",
@@ -1770,7 +1398,7 @@
 						},
 						{
 							"unit": "per M output tokens",
-							"price": 0.2,
+							"price": 0.201,
 							"currency": "USD"
 						}
 					]
@@ -1896,7 +1524,7 @@
 					"value": [
 						{
 							"unit": "per M input tokens",
-							"price": 0.06,
+							"price": 0.0605,
 							"currency": "USD"
 						},
 						{
@@ -1928,52 +1556,6 @@
 			"created_at": "2026-01-28 16:04:39.346"
 		},
 		{
-			"model_id": "@hf/thebloke/llama-2-13b-chat-awq",
-			"slug": "hf/thebloke/llama-2-13b-chat-awq",
-			"display_name": "llama-2-13b-chat-awq",
-			"description": "Llama 2 13B Chat AWQ is an efficient, accurate and blazing-fast low-bit weight quantized Llama 2 variant.",
-			"task": {
-				"id": "c329a1f9-323d-4e91-b2aa-582dd4188d34",
-				"name": "Text Generation",
-				"description": "Family of generative text models, such as large language models (LLM), that can be adapted for a variety of natural language tasks."
-			},
-			"tags": [],
-			"context_length": 4096,
-			"max_output_tokens": null,
-			"supports_async": false,
-			"hosting": "hosted",
-			"data_source": "legacy",
-			"properties": [
-				{
-					"property_id": "beta",
-					"value": "true"
-				},
-				{
-					"property_id": "context_window",
-					"value": "4096"
-				},
-				{
-					"property_id": "info",
-					"value": "https://huggingface.co/TheBloke/Llama-2-13B-chat-AWQ"
-				},
-				{
-					"property_id": "planned_deprecation_date",
-					"value": "2025-10-01"
-				}
-			],
-			"metadata": {
-				"beta": true,
-				"lora": false,
-				"function_calling": false,
-				"partner": false,
-				"realtime": false
-			},
-			"external_info": "https://huggingface.co/TheBloke/Llama-2-13B-chat-AWQ",
-			"terms": null,
-			"cover_image_url": null,
-			"created_at": "2023-11-24 00:27:15.869"
-		},
-		{
 			"model_id": "@cf/microsoft/resnet-50",
 			"slug": "cf/microsoft/resnet-50",
 			"display_name": "resnet-50",
@@ -1995,7 +1577,7 @@
 					"value": [
 						{
 							"unit": "per inference request",
-							"price": 0.0000025,
+							"price": 0.00000251,
 							"currency": "USD"
 						}
 					]
@@ -2064,52 +1646,6 @@
 			"terms": null,
 			"cover_image_url": null,
 			"created_at": "2024-02-27 17:41:29.578"
-		},
-		{
-			"model_id": "@hf/thebloke/deepseek-coder-6.7b-base-awq",
-			"slug": "hf/thebloke/deepseek-coder-6.7b-base-awq",
-			"display_name": "deepseek-coder-6.7b-base-awq",
-			"description": "Deepseek Coder is composed of a series of code language models, each trained from scratch on 2T tokens, with a composition of 87% code and 13% natural language in both English and Chinese.",
-			"task": {
-				"id": "c329a1f9-323d-4e91-b2aa-582dd4188d34",
-				"name": "Text Generation",
-				"description": "Family of generative text models, such as large language models (LLM), that can be adapted for a variety of natural language tasks."
-			},
-			"tags": [],
-			"context_length": 4096,
-			"max_output_tokens": null,
-			"supports_async": false,
-			"hosting": "hosted",
-			"data_source": "legacy",
-			"properties": [
-				{
-					"property_id": "beta",
-					"value": "true"
-				},
-				{
-					"property_id": "context_window",
-					"value": "4096"
-				},
-				{
-					"property_id": "planned_deprecation_date",
-					"value": "2025-10-01"
-				},
-				{
-					"property_id": "terms",
-					"value": "https://huggingface.co/TheBloke/deepseek-coder-6.7B-base-AWQ"
-				}
-			],
-			"metadata": {
-				"beta": true,
-				"lora": false,
-				"function_calling": false,
-				"partner": false,
-				"realtime": false
-			},
-			"external_info": null,
-			"terms": "https://huggingface.co/TheBloke/deepseek-coder-6.7B-base-AWQ",
-			"cover_image_url": null,
-			"created_at": "2024-02-06 18:16:27.183"
 		},
 		{
 			"model_id": "@cf/meta-llama/llama-2-7b-chat-hf-lora",
@@ -2183,12 +1719,12 @@
 					"value": [
 						{
 							"unit": "per M input tokens",
-							"price": 0.29,
+							"price": 0.293,
 							"currency": "USD"
 						},
 						{
 							"unit": "per M output tokens",
-							"price": 2.25,
+							"price": 2.253,
 							"currency": "USD"
 						}
 					]
@@ -2245,7 +1781,7 @@
 						},
 						{
 							"unit": "per M output tokens",
-							"price": 0.11,
+							"price": 0.112,
 							"currency": "USD"
 						}
 					]
@@ -2323,7 +1859,7 @@
 					"value": [
 						{
 							"unit": "per 512 by 512 tile",
-							"price": 0.0058,
+							"price": 0.00583,
 							"currency": "USD"
 						},
 						{
@@ -2407,48 +1943,6 @@
 			"created_at": "2023-11-10 10:54:43.694"
 		},
 		{
-			"model_id": "@hf/thebloke/openhermes-2.5-mistral-7b-awq",
-			"slug": "hf/thebloke/openhermes-2.5-mistral-7b-awq",
-			"display_name": "openhermes-2.5-mistral-7b-awq",
-			"description": "OpenHermes 2.5 Mistral 7B is a state of the art Mistral Fine-tune, a continuation of OpenHermes 2 model, which trained on additional code datasets.",
-			"task": {
-				"id": "c329a1f9-323d-4e91-b2aa-582dd4188d34",
-				"name": "Text Generation",
-				"description": "Family of generative text models, such as large language models (LLM), that can be adapted for a variety of natural language tasks."
-			},
-			"tags": [],
-			"context_length": 4096,
-			"max_output_tokens": null,
-			"supports_async": false,
-			"hosting": "hosted",
-			"data_source": "legacy",
-			"properties": [
-				{
-					"property_id": "beta",
-					"value": "true"
-				},
-				{
-					"property_id": "context_window",
-					"value": "4096"
-				},
-				{
-					"property_id": "planned_deprecation_date",
-					"value": "2025-10-01"
-				}
-			],
-			"metadata": {
-				"beta": true,
-				"lora": false,
-				"function_calling": false,
-				"partner": false,
-				"realtime": false
-			},
-			"external_info": null,
-			"terms": null,
-			"cover_image_url": null,
-			"created_at": "2024-02-06 18:04:22.846"
-		},
-		{
 			"model_id": "@cf/meta/m2m100-1.2b",
 			"slug": "cf/meta/m2m100-1.2b",
 			"display_name": "m2m100-1.2b",
@@ -2474,12 +1968,12 @@
 					"value": [
 						{
 							"unit": "per M input tokens",
-							"price": 0.34,
+							"price": 0.342,
 							"currency": "USD"
 						},
 						{
 							"unit": "per M output tokens",
-							"price": 0.34,
+							"price": 0.342,
 							"currency": "USD"
 						}
 					]
@@ -2531,12 +2025,12 @@
 					"value": [
 						{
 							"unit": "per M input tokens",
-							"price": 0.34,
+							"price": 0.342,
 							"currency": "USD"
 						},
 						{
 							"unit": "per M output tokens",
-							"price": 0.34,
+							"price": 0.342,
 							"currency": "USD"
 						}
 					]
@@ -2553,52 +2047,6 @@
 			"terms": null,
 			"cover_image_url": null,
 			"created_at": "2025-09-23 18:19:17.382"
-		},
-		{
-			"model_id": "@hf/thebloke/deepseek-coder-6.7b-instruct-awq",
-			"slug": "hf/thebloke/deepseek-coder-6.7b-instruct-awq",
-			"display_name": "deepseek-coder-6.7b-instruct-awq",
-			"description": "Deepseek Coder is composed of a series of code language models, each trained from scratch on 2T tokens, with a composition of 87% code and 13% natural language in both English and Chinese.",
-			"task": {
-				"id": "c329a1f9-323d-4e91-b2aa-582dd4188d34",
-				"name": "Text Generation",
-				"description": "Family of generative text models, such as large language models (LLM), that can be adapted for a variety of natural language tasks."
-			},
-			"tags": [],
-			"context_length": 4096,
-			"max_output_tokens": null,
-			"supports_async": false,
-			"hosting": "hosted",
-			"data_source": "legacy",
-			"properties": [
-				{
-					"property_id": "beta",
-					"value": "true"
-				},
-				{
-					"property_id": "context_window",
-					"value": "4096"
-				},
-				{
-					"property_id": "planned_deprecation_date",
-					"value": "2025-10-01"
-				},
-				{
-					"property_id": "terms",
-					"value": "https://huggingface.co/TheBloke/deepseek-coder-6.7B-instruct-AWQ"
-				}
-			],
-			"metadata": {
-				"beta": true,
-				"lora": false,
-				"function_calling": false,
-				"partner": false,
-				"realtime": false
-			},
-			"external_info": null,
-			"terms": "https://huggingface.co/TheBloke/deepseek-coder-6.7B-instruct-AWQ",
-			"cover_image_url": null,
-			"created_at": "2024-02-06 18:18:27.462"
 		},
 		{
 			"model_id": "@cf/black-forest-labs/flux-2-klein-4b",
@@ -2664,7 +2112,7 @@
 					"value": [
 						{
 							"unit": "per M input tokens",
-							"price": 0.02,
+							"price": 0.0202,
 							"currency": "USD"
 						}
 					]
@@ -2746,102 +2194,6 @@
 			"terms": null,
 			"cover_image_url": null,
 			"created_at": "2025-02-27 00:31:43.829"
-		},
-		{
-			"model_id": "@cf/deepseek-ai/deepseek-math-7b-instruct",
-			"slug": "cf/deepseek-ai/deepseek-math-7b-instruct",
-			"display_name": "deepseek-math-7b-instruct",
-			"description": "DeepSeekMath-Instruct 7B is a mathematically instructed tuning model derived from DeepSeekMath-Base 7B. DeepSeekMath is initialized with DeepSeek-Coder-v1.5 7B and continues pre-training on math-related tokens sourced from Common Crawl, together with natural language and code data for 500B tokens.",
-			"task": {
-				"id": "c329a1f9-323d-4e91-b2aa-582dd4188d34",
-				"name": "Text Generation",
-				"description": "Family of generative text models, such as large language models (LLM), that can be adapted for a variety of natural language tasks."
-			},
-			"tags": [],
-			"context_length": 4096,
-			"max_output_tokens": null,
-			"supports_async": false,
-			"hosting": "hosted",
-			"data_source": "legacy",
-			"properties": [
-				{
-					"property_id": "beta",
-					"value": "true"
-				},
-				{
-					"property_id": "context_window",
-					"value": "4096"
-				},
-				{
-					"property_id": "info",
-					"value": "https://huggingface.co/deepseek-ai/deepseek-math-7b-instruct"
-				},
-				{
-					"property_id": "planned_deprecation_date",
-					"value": "2025-10-01"
-				},
-				{
-					"property_id": "terms",
-					"value": "https://github.com/deepseek-ai/DeepSeek-Math/blob/main/LICENSE-MODEL"
-				}
-			],
-			"metadata": {
-				"beta": true,
-				"lora": false,
-				"function_calling": false,
-				"partner": false,
-				"realtime": false
-			},
-			"external_info": "https://huggingface.co/deepseek-ai/deepseek-math-7b-instruct",
-			"terms": "https://github.com/deepseek-ai/DeepSeek-Math/blob/main/LICENSE-MODEL",
-			"cover_image_url": null,
-			"created_at": "2024-02-27 17:54:17.459"
-		},
-		{
-			"model_id": "@cf/tiiuae/falcon-7b-instruct",
-			"slug": "cf/tiiuae/falcon-7b-instruct",
-			"display_name": "falcon-7b-instruct",
-			"description": "Falcon-7B-Instruct is a 7B parameters causal decoder-only model built by TII based on Falcon-7B and finetuned on a mixture of chat/instruct datasets.",
-			"task": {
-				"id": "c329a1f9-323d-4e91-b2aa-582dd4188d34",
-				"name": "Text Generation",
-				"description": "Family of generative text models, such as large language models (LLM), that can be adapted for a variety of natural language tasks."
-			},
-			"tags": [],
-			"context_length": 4096,
-			"max_output_tokens": null,
-			"supports_async": false,
-			"hosting": "hosted",
-			"data_source": "legacy",
-			"properties": [
-				{
-					"property_id": "beta",
-					"value": "true"
-				},
-				{
-					"property_id": "context_window",
-					"value": "4096"
-				},
-				{
-					"property_id": "info",
-					"value": "https://huggingface.co/tiiuae/falcon-7b-instruct"
-				},
-				{
-					"property_id": "planned_deprecation_date",
-					"value": "2025-10-01"
-				}
-			],
-			"metadata": {
-				"beta": true,
-				"lora": false,
-				"function_calling": false,
-				"partner": false,
-				"realtime": false
-			},
-			"external_info": "https://huggingface.co/tiiuae/falcon-7b-instruct",
-			"terms": null,
-			"cover_image_url": null,
-			"created_at": "2024-02-27 18:21:15.796"
 		},
 		{
 			"model_id": "@hf/nousresearch/hermes-2-pro-mistral-7b",
@@ -2984,7 +2336,7 @@
 					"value": [
 						{
 							"unit": "per M input tokens",
-							"price": 0.067,
+							"price": 0.0666,
 							"currency": "USD"
 						}
 					]
@@ -3040,12 +2392,12 @@
 					"value": [
 						{
 							"unit": "per M input tokens",
-							"price": 0.35,
+							"price": 0.351,
 							"currency": "USD"
 						},
 						{
 							"unit": "per M output tokens",
-							"price": 0.56,
+							"price": 0.555,
 							"currency": "USD"
 						}
 					]
@@ -3093,12 +2445,12 @@
 					"value": [
 						{
 							"unit": "per M input tokens",
-							"price": 0.051,
+							"price": 0.0509,
 							"currency": "USD"
 						},
 						{
 							"unit": "per M output tokens",
-							"price": 0.34,
+							"price": 0.335,
 							"currency": "USD"
 						}
 					]
@@ -3146,12 +2498,12 @@
 					"value": [
 						{
 							"unit": "per M input tokens",
-							"price": 0.12,
+							"price": 0.123,
 							"currency": "USD"
 						},
 						{
 							"unit": "per M output tokens",
-							"price": 0.27,
+							"price": 0.266,
 							"currency": "USD"
 						}
 					]
@@ -3262,52 +2614,6 @@
 			"created_at": "2025-11-24 15:44:06.050"
 		},
 		{
-			"model_id": "@hf/thebloke/zephyr-7b-beta-awq",
-			"slug": "hf/thebloke/zephyr-7b-beta-awq",
-			"display_name": "zephyr-7b-beta-awq",
-			"description": "Zephyr 7B Beta AWQ is an efficient, accurate and blazing-fast low-bit weight quantized Zephyr model variant.",
-			"task": {
-				"id": "c329a1f9-323d-4e91-b2aa-582dd4188d34",
-				"name": "Text Generation",
-				"description": "Family of generative text models, such as large language models (LLM), that can be adapted for a variety of natural language tasks."
-			},
-			"tags": [],
-			"context_length": 4096,
-			"max_output_tokens": null,
-			"supports_async": false,
-			"hosting": "hosted",
-			"data_source": "legacy",
-			"properties": [
-				{
-					"property_id": "beta",
-					"value": "true"
-				},
-				{
-					"property_id": "context_window",
-					"value": "4096"
-				},
-				{
-					"property_id": "info",
-					"value": "https://huggingface.co/TheBloke/zephyr-7B-beta-AWQ"
-				},
-				{
-					"property_id": "planned_deprecation_date",
-					"value": "2025-10-01"
-				}
-			],
-			"metadata": {
-				"beta": true,
-				"lora": false,
-				"function_calling": false,
-				"partner": false,
-				"realtime": false
-			},
-			"external_info": "https://huggingface.co/TheBloke/zephyr-7B-beta-AWQ",
-			"terms": null,
-			"cover_image_url": null,
-			"created_at": "2023-11-24 00:27:15.869"
-		},
-		{
 			"model_id": "@cf/google/gemma-7b-it-lora",
 			"slug": "cf/google/gemma-7b-it-lora",
 			"display_name": "gemma-7b-it-lora",
@@ -3415,52 +2721,6 @@
 			"created_at": "2026-04-02 15:05:22.642"
 		},
 		{
-			"model_id": "@cf/qwen/qwen1.5-1.8b-chat",
-			"slug": "cf/qwen/qwen1.5-1.8b-chat",
-			"display_name": "qwen1.5-1.8b-chat",
-			"description": "Qwen1.5 is the improved version of Qwen, the large language model series developed by Alibaba Cloud.",
-			"task": {
-				"id": "c329a1f9-323d-4e91-b2aa-582dd4188d34",
-				"name": "Text Generation",
-				"description": "Family of generative text models, such as large language models (LLM), that can be adapted for a variety of natural language tasks."
-			},
-			"tags": [],
-			"context_length": 32000,
-			"max_output_tokens": null,
-			"supports_async": false,
-			"hosting": "hosted",
-			"data_source": "legacy",
-			"properties": [
-				{
-					"property_id": "beta",
-					"value": "true"
-				},
-				{
-					"property_id": "context_window",
-					"value": "32000"
-				},
-				{
-					"property_id": "info",
-					"value": "https://huggingface.co/qwen/qwen1.5-1.8b-chat"
-				},
-				{
-					"property_id": "planned_deprecation_date",
-					"value": "2025-10-01"
-				}
-			],
-			"metadata": {
-				"beta": true,
-				"lora": false,
-				"function_calling": false,
-				"partner": false,
-				"realtime": false
-			},
-			"external_info": "https://huggingface.co/qwen/qwen1.5-1.8b-chat",
-			"terms": null,
-			"cover_image_url": null,
-			"created_at": "2024-02-27 18:30:31.723"
-		},
-		{
 			"model_id": "@cf/mistralai/mistral-small-3.1-24b-instruct",
 			"slug": "cf/mistralai/mistral-small-3.1-24b-instruct",
 			"display_name": "mistral-small-3.1-24b-instruct",
@@ -3486,12 +2746,12 @@
 					"value": [
 						{
 							"unit": "per M input tokens",
-							"price": 0.35,
+							"price": 0.351,
 							"currency": "USD"
 						},
 						{
 							"unit": "per M output tokens",
-							"price": 0.56,
+							"price": 0.555,
 							"currency": "USD"
 						}
 					]
@@ -3535,12 +2795,12 @@
 					"value": [
 						{
 							"unit": "per M input tokens",
-							"price": 0.12,
+							"price": 0.123,
 							"currency": "USD"
 						},
 						{
 							"unit": "per M output tokens",
-							"price": 0.27,
+							"price": 0.266,
 							"currency": "USD"
 						}
 					]
@@ -3600,12 +2860,12 @@
 					"value": [
 						{
 							"unit": "per M input tokens",
-							"price": 0.049,
+							"price": 0.0485,
 							"currency": "USD"
 						},
 						{
 							"unit": "per M output tokens",
-							"price": 0.68,
+							"price": 0.676,
 							"currency": "USD"
 						}
 					]
@@ -3695,7 +2955,7 @@
 					"value": [
 						{
 							"unit": "per audio minute",
-							"price": 0.00051,
+							"price": 0.000513,
 							"currency": "USD"
 						}
 					]
@@ -4073,7 +3333,7 @@
 					"value": [
 						{
 							"unit": "per M input tokens",
-							"price": 0.0031,
+							"price": 0.00311,
 							"currency": "USD"
 						}
 					]
@@ -4172,7 +3432,7 @@
 						},
 						{
 							"unit": "per step",
-							"price": 0.00013,
+							"price": 0.000132,
 							"currency": "USD"
 						}
 					]
@@ -4197,98 +3457,6 @@
 			"terms": "https://leonardo.ai/terms-of-service/",
 			"cover_image_url": null,
 			"created_at": "2025-08-25 19:21:28.770"
-		},
-		{
-			"model_id": "@cf/qwen/qwen1.5-14b-chat-awq",
-			"slug": "cf/qwen/qwen1.5-14b-chat-awq",
-			"display_name": "qwen1.5-14b-chat-awq",
-			"description": "Qwen1.5 is the improved version of Qwen, the large language model series developed by Alibaba Cloud. AWQ is an efficient, accurate and blazing-fast low-bit weight quantization method, currently supporting 4-bit quantization.",
-			"task": {
-				"id": "c329a1f9-323d-4e91-b2aa-582dd4188d34",
-				"name": "Text Generation",
-				"description": "Family of generative text models, such as large language models (LLM), that can be adapted for a variety of natural language tasks."
-			},
-			"tags": [],
-			"context_length": 7500,
-			"max_output_tokens": null,
-			"supports_async": false,
-			"hosting": "hosted",
-			"data_source": "legacy",
-			"properties": [
-				{
-					"property_id": "beta",
-					"value": "true"
-				},
-				{
-					"property_id": "context_window",
-					"value": "7500"
-				},
-				{
-					"property_id": "info",
-					"value": "https://huggingface.co/qwen/qwen1.5-14b-chat-awq"
-				},
-				{
-					"property_id": "planned_deprecation_date",
-					"value": "2025-10-01"
-				}
-			],
-			"metadata": {
-				"beta": true,
-				"lora": false,
-				"function_calling": false,
-				"partner": false,
-				"realtime": false
-			},
-			"external_info": "https://huggingface.co/qwen/qwen1.5-14b-chat-awq",
-			"terms": null,
-			"cover_image_url": null,
-			"created_at": "2024-02-27 18:24:45.316"
-		},
-		{
-			"model_id": "@cf/openchat/openchat-3.5-0106",
-			"slug": "cf/openchat/openchat-3.5-0106",
-			"display_name": "openchat-3.5-0106",
-			"description": "OpenChat is an innovative library of open-source language models, fine-tuned with C-RLFT - a strategy inspired by offline reinforcement learning.",
-			"task": {
-				"id": "c329a1f9-323d-4e91-b2aa-582dd4188d34",
-				"name": "Text Generation",
-				"description": "Family of generative text models, such as large language models (LLM), that can be adapted for a variety of natural language tasks."
-			},
-			"tags": [],
-			"context_length": 8192,
-			"max_output_tokens": null,
-			"supports_async": false,
-			"hosting": "hosted",
-			"data_source": "legacy",
-			"properties": [
-				{
-					"property_id": "beta",
-					"value": "true"
-				},
-				{
-					"property_id": "context_window",
-					"value": "8192"
-				},
-				{
-					"property_id": "info",
-					"value": "https://huggingface.co/openchat/openchat-3.5-0106"
-				},
-				{
-					"property_id": "planned_deprecation_date",
-					"value": "2025-10-01"
-				}
-			],
-			"metadata": {
-				"beta": true,
-				"lora": false,
-				"function_calling": false,
-				"partner": false,
-				"realtime": false
-			},
-			"external_info": "https://huggingface.co/openchat/openchat-3.5-0106",
-			"terms": null,
-			"cover_image_url": null,
-			"created_at": "2024-02-27 18:20:39.169"
 		},
 		{
 			"model_id": "@cf/meta/llama-4-scout-17b-16e-instruct",
@@ -4381,12 +3549,12 @@
 					"value": [
 						{
 							"unit": "per M input tokens",
-							"price": 0.35,
+							"price": 0.345,
 							"currency": "USD"
 						},
 						{
 							"unit": "per M output tokens",
-							"price": 0.56,
+							"price": 0.556,
 							"currency": "USD"
 						}
 					]
@@ -4495,7 +3663,7 @@
 					"value": [
 						{
 							"unit": "per M input tokens",
-							"price": 0.2,
+							"price": 0.204,
 							"currency": "USD"
 						}
 					]
