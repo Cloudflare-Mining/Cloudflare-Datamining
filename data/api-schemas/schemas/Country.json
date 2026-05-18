@@ -23,6 +23,10 @@
 									"result": {
 										"items": {
 											"properties": {
+												"alpha2": {
+													"example": "AF",
+													"type": "string"
+												},
 												"alpha3": {
 													"example": "AF",
 													"type": "string"
@@ -34,7 +38,8 @@
 											},
 											"required": [
 												"name",
-												"alpha3"
+												"alpha3",
+												"alpha2"
 											],
 											"type": "object"
 										},

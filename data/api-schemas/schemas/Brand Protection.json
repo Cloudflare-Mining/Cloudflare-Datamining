@@ -1049,6 +1049,10 @@
 												"nullable": true,
 												"type": "string"
 											},
+											"queryId": {
+												"nullable": true,
+												"type": "number"
+											},
 											"status": {
 												"enum": [
 													"draft",
@@ -1066,6 +1070,7 @@
 										"required": [
 											"id",
 											"domain",
+											"queryId",
 											"status",
 											"matchId",
 											"matchType",
@@ -1153,6 +1158,10 @@
 									"nullable": true,
 									"type": "string"
 								},
+								"queryId": {
+									"nullable": true,
+									"type": "number"
+								},
 								"status": {
 									"enum": [
 										"draft",
@@ -1170,6 +1179,7 @@
 							"required": [
 								"id",
 								"domain",
+								"queryId",
 								"status",
 								"matchId",
 								"matchType",
@@ -1372,6 +1382,67 @@
 			"Cloudforce One Read"
 		]
 	},
+	"GET /accounts/{account_id}/cloudforce-one/v2/brand-protection/takedown-notices/{notice_id}/letters/{letter_id}/pdf": {
+		"description": "Download the PDF for a stored takedown letter. If no PDF exists yet, it is generated from the stored letter text and cached for future downloads.",
+		"operationId": "get_TakedownLetterPdfGet",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"minLength": 1,
+					"type": "string"
+				}
+			},
+			{
+				"in": "path",
+				"name": "notice_id",
+				"required": true,
+				"schema": {
+					"exclusiveMinimum": true,
+					"minimum": 0,
+					"type": "integer"
+				}
+			},
+			{
+				"in": "path",
+				"name": "letter_id",
+				"required": true,
+				"schema": {
+					"exclusiveMinimum": true,
+					"minimum": 0,
+					"type": "integer"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/pdf": {
+						"schema": {
+							"format": "binary",
+							"type": "string"
+						}
+					}
+				},
+				"description": "Takedown letter PDF downloaded successfully"
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			}
+		],
+		"summary": "Download takedown letter PDF",
+		"tags": [
+			"Brand Protection"
+		],
+		"x-api-token-group": [
+			"Cloudforce One Write",
+			"Cloudforce One Read"
+		]
+	},
 	"GET /accounts/{account_id}/cloudforce-one/v2/brand-protection/total-queries": {
 		"description": "Get the total number of saved brand protection queries (domain + logo) for an account",
 		"operationId": "get_TotalQueries",
@@ -1443,6 +1514,10 @@
 				"application/json": {
 					"schema": {
 						"properties": {
+							"createNotice": {
+								"default": false,
+								"type": "boolean"
+							},
 							"fields": {
 								"properties": {
 									"discoveryDate": {
@@ -1457,11 +1532,19 @@
 										"pattern": "^\\d{4}-\\d{2}-\\d{2}$",
 										"type": "string"
 									},
+									"jurisdiction": {
+										"maxLength": 500,
+										"type": "string"
+									},
 									"registrantEmail": {
 										"maxLength": 500,
 										"type": "string"
 									},
 									"registrar": {
+										"maxLength": 500,
+										"type": "string"
+									},
+									"registrarEmail": {
 										"maxLength": 500,
 										"type": "string"
 									},
@@ -1489,6 +1572,10 @@
 										"maxLength": 500,
 										"type": "string"
 									},
+									"trademarkNumber": {
+										"maxLength": 500,
+										"type": "string"
+									},
 									"trademarkOwner": {
 										"maxLength": 500,
 										"type": "string"
@@ -1503,6 +1590,34 @@
 									"pdf"
 								],
 								"type": "string"
+							},
+							"noticeParams": {
+								"properties": {
+									"domain": {
+										"maxLength": 253,
+										"minLength": 1,
+										"type": "string"
+									},
+									"queryId": {
+										"exclusiveMinimum": true,
+										"minimum": 0,
+										"type": "integer"
+									},
+									"status": {
+										"default": "sent",
+										"enum": [
+											"draft",
+											"sent",
+											"resolved",
+											"expired"
+										],
+										"type": "string"
+									}
+								},
+								"required": [
+									"domain"
+								],
+								"type": "object"
 							},
 							"templateId": {
 								"minLength": 1,
@@ -1526,6 +1641,65 @@
 							"properties": {
 								"letter": {
 									"type": "string"
+								},
+								"letterId": {
+									"exclusiveMinimum": true,
+									"minimum": 0,
+									"type": "integer"
+								},
+								"notice": {
+									"properties": {
+										"createdAt": {
+											"nullable": true,
+											"type": "string"
+										},
+										"domain": {
+											"type": "string"
+										},
+										"id": {
+											"type": "number"
+										},
+										"matchId": {
+											"nullable": true,
+											"type": "number"
+										},
+										"matchType": {
+											"enum": [
+												"logo",
+												"domain"
+											],
+											"nullable": true,
+											"type": "string"
+										},
+										"queryId": {
+											"nullable": true,
+											"type": "number"
+										},
+										"status": {
+											"enum": [
+												"draft",
+												"sent",
+												"resolved",
+												"expired"
+											],
+											"type": "string"
+										},
+										"updatedAt": {
+											"nullable": true,
+											"type": "string"
+										}
+									},
+									"required": [
+										"id",
+										"domain",
+										"queryId",
+										"status",
+										"matchId",
+										"matchType",
+										"createdAt",
+										"updatedAt"
+									],
+									"type": "object"
 								}
 							},
 							"required": [
@@ -1945,6 +2119,11 @@
 								],
 								"type": "string"
 							},
+							"queryId": {
+								"exclusiveMinimum": true,
+								"minimum": 0,
+								"type": "integer"
+							},
 							"status": {
 								"default": "draft",
 								"enum": [
@@ -1992,6 +2171,10 @@
 									"nullable": true,
 									"type": "string"
 								},
+								"queryId": {
+									"nullable": true,
+									"type": "number"
+								},
 								"status": {
 									"enum": [
 										"draft",
@@ -2009,6 +2192,7 @@
 							"required": [
 								"id",
 								"domain",
+								"queryId",
 								"status",
 								"matchId",
 								"matchType",
@@ -2039,7 +2223,7 @@
 		]
 	},
 	"POST /accounts/{account_id}/cloudforce-one/v2/brand-protection/takedown-notices/{notice_id}/letters": {
-		"description": "Generate a takedown letter for a notice. Renders both text and PDF, stores the PDF in R2.",
+		"description": "Generate a takedown letter for a notice and persist the rendered text. The PDF is generated lazily on download.",
 		"operationId": "post_TakedownLetterCreate",
 		"parameters": [
 			{
@@ -2081,11 +2265,19 @@
 										"pattern": "^\\d{4}-\\d{2}-\\d{2}$",
 										"type": "string"
 									},
+									"jurisdiction": {
+										"maxLength": 500,
+										"type": "string"
+									},
 									"registrantEmail": {
 										"maxLength": 500,
 										"type": "string"
 									},
 									"registrar": {
+										"maxLength": 500,
+										"type": "string"
+									},
+									"registrarEmail": {
 										"maxLength": 500,
 										"type": "string"
 									},
@@ -2110,6 +2302,10 @@
 										"type": "string"
 									},
 									"trademarkName": {
+										"maxLength": 500,
+										"type": "string"
+									},
+									"trademarkNumber": {
 										"maxLength": 500,
 										"type": "string"
 									},
@@ -2189,7 +2385,7 @@
 		]
 	},
 	"POST /accounts/{account_id}/cloudforce-one/v2/brand-protection/takedown-notices/lookup": {
-		"description": "Bulk lookup of takedown notices by domain names. Returns a map of domain → notice (or null if no notice exists). Uses POST to avoid URL length limits when looking up many domains. This endpoint is read-only. Domains are normalized (trimmed, lowercased) and deduplicated — response keys are always lowercase.",
+		"description": "Bulk lookup of takedown notices by domain names. Returns an array of { domain, queryId, notice } entries (notice is null when no match exists). Supports optional queryId or queryIds to scope lookups per query. Uses POST to avoid URL length limits when looking up many domains. This endpoint is read-only. Domains are normalized (trimmed, lowercased) and deduplicated.",
 		"operationId": "post_TakedownNoticeLookup",
 		"parameters": [
 			{
@@ -2216,6 +2412,20 @@
 								"maxItems": 100,
 								"minItems": 1,
 								"type": "array"
+							},
+							"queryId": {
+								"exclusiveMinimum": true,
+								"minimum": 0,
+								"type": "integer"
+							},
+							"queryIds": {
+								"items": {
+									"exclusiveMinimum": true,
+									"minimum": 0,
+									"type": "integer"
+								},
+								"maxItems": 100,
+								"type": "array"
 							}
 						},
 						"required": [
@@ -2233,57 +2443,79 @@
 						"schema": {
 							"properties": {
 								"notices": {
-									"additionalProperties": {
-										"nullable": true,
+									"items": {
 										"properties": {
-											"createdAt": {
-												"nullable": true,
-												"type": "string"
-											},
 											"domain": {
 												"type": "string"
 											},
-											"id": {
-												"type": "number"
-											},
-											"matchId": {
+											"notice": {
 												"nullable": true,
-												"type": "number"
-											},
-											"matchType": {
-												"enum": [
-													"logo",
-													"domain"
+												"properties": {
+													"createdAt": {
+														"nullable": true,
+														"type": "string"
+													},
+													"domain": {
+														"type": "string"
+													},
+													"id": {
+														"type": "number"
+													},
+													"matchId": {
+														"nullable": true,
+														"type": "number"
+													},
+													"matchType": {
+														"enum": [
+															"logo",
+															"domain"
+														],
+														"nullable": true,
+														"type": "string"
+													},
+													"queryId": {
+														"nullable": true,
+														"type": "number"
+													},
+													"status": {
+														"enum": [
+															"draft",
+															"sent",
+															"resolved",
+															"expired"
+														],
+														"type": "string"
+													},
+													"updatedAt": {
+														"nullable": true,
+														"type": "string"
+													}
+												},
+												"required": [
+													"id",
+													"domain",
+													"queryId",
+													"status",
+													"matchId",
+													"matchType",
+													"createdAt",
+													"updatedAt"
 												],
-												"nullable": true,
-												"type": "string"
+												"type": "object"
 											},
-											"status": {
-												"enum": [
-													"draft",
-													"sent",
-													"resolved",
-													"expired"
-												],
-												"type": "string"
-											},
-											"updatedAt": {
+											"queryId": {
 												"nullable": true,
-												"type": "string"
+												"type": "number"
 											}
 										},
 										"required": [
-											"id",
 											"domain",
-											"status",
-											"matchId",
-											"matchType",
-											"createdAt",
-											"updatedAt"
+											"queryId",
+											"notice"
 										],
 										"type": "object"
 									},
-									"type": "object"
+									"type": "array"
 								}
 							},
 							"required": [
@@ -2478,6 +2710,12 @@
 								"nullable": true,
 								"type": "string"
 							},
+							"queryId": {
+								"exclusiveMinimum": true,
+								"minimum": 0,
+								"nullable": true,
+								"type": "integer"
+							},
 							"status": {
 								"enum": [
 									"draft",
@@ -2521,6 +2759,10 @@
 									"nullable": true,
 									"type": "string"
 								},
+								"queryId": {
+									"nullable": true,
+									"type": "number"
+								},
 								"status": {
 									"enum": [
 										"draft",
@@ -2538,6 +2780,7 @@
 							"required": [
 								"id",
 								"domain",
+								"queryId",
 								"status",
 								"matchId",
 								"matchType",
