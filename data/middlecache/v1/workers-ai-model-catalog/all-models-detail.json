@@ -1,6 +1,6 @@
 {
-	"generated_at": "2026-05-17T04:33:55.367Z",
-	"model_count": 132,
+	"generated_at": "2026-05-18T04:33:49.117Z",
+	"model_count": 137,
 	"models": {
 		"alibaba/hh1-i2v": {
 			"model_id": "alibaba/hh1-i2v",
@@ -1899,6 +1899,277 @@
 			"code_snippets": [],
 			"schema_manifest": {
 				"parameters_json": "v1/workers-ai-model-catalog/models/assemblyai/universal-3-pro/parameters.json",
+				"raw_files": [
+					"schema-input.json",
+					"schema-output.json"
+				]
+			}
+		},
+		"bytedance/seedance-2.0-fast": {
+			"model_id": "bytedance/seedance-2.0-fast",
+			"slug": "bytedance/seedance-2.0-fast",
+			"display_name": "Seedance 2.0 Fast",
+			"description": "Faster variant of ByteDance's Seedance 2.0 video model. Trades some quality for speed while sharing the same multimodal architecture. Supports text-to-video, image-to-video, native audio generation, multimodal references (images, videos, audio), video editing, and video extension.",
+			"task": {
+				"id": "",
+				"name": "Text-to-Video",
+				"description": ""
+			},
+			"tags": [
+				"Video Generation",
+				"Image-to-Video",
+				"Fast",
+				"Multimodal"
+			],
+			"context_length": null,
+			"max_output_tokens": null,
+			"supports_async": false,
+			"hosting": "proxied",
+			"data_source": "catalog",
+			"properties": [
+				{
+					"property_id": "info",
+					"value": "https://seed.bytedance.com/en/seedance"
+				}
+			],
+			"metadata": {
+				"Aspect Ratios": "16:9, 4:3, 1:1, 3:4, 9:16, 21:9, 9:21",
+				"Max Duration": "12 seconds",
+				"Native Audio": "Yes",
+				"Resolutions": "480p, 720p"
+			},
+			"external_info": "https://seed.bytedance.com/en/seedance",
+			"terms": null,
+			"cover_image_url": "https://pub-26f1392c1b674324be6786695bd72257.r2.dev/bytedance/seedance-2.0-fast.png",
+			"schema_version": "1.0.0",
+			"created_at": "2026-05-17 16:58:59",
+			"updated_at": null,
+			"examples": [
+				{
+					"name": "Quick Video",
+					"description": "Fast text-to-video with default settings",
+					"input": {
+						"aspect_ratio": "16:9",
+						"duration": 5,
+						"prompt": "A golden retriever running through a field of sunflowers on a sunny day",
+						"resolution": "720p"
+					},
+					"output": {
+						"video": "https://examples.ai-platform-apps.cfdata.org/bytedance/seedance-2.0-fast/quick-video.mp4"
+					},
+					"raw_response": {
+						"state": "Completed",
+						"result": {
+							"video": "https://examples.ai-platform-apps.cfdata.org/bytedance/seedance-2.0-fast/quick-video.mp4"
+						},
+						"gatewayMetadata": {
+							"keySource": "Unified"
+						}
+					},
+					"code_snippets": [
+						{
+							"label": "typescript",
+							"code": "const response = await env.AI.run(\n  'bytedance/seedance-2.0-fast',\n  {\n    prompt: 'A golden retriever running through a field of sunflowers on a sunny day',\n    duration: 5,\n    resolution: '720p',\n    aspect_ratio: '16:9',\n  },\n  {\n    gateway: { id: 'default' },\n  }\n)\nconsole.log(response)"
+						}
+					]
+				},
+				{
+					"name": "Portrait Video",
+					"description": "Vertical video for social media",
+					"input": {
+						"aspect_ratio": "9:16",
+						"duration": 5,
+						"prompt": "A barista pouring latte art in a cozy coffee shop, close-up with shallow depth of field",
+						"resolution": "720p"
+					},
+					"output": {
+						"video": "https://examples.ai-platform-apps.cfdata.org/bytedance/seedance-2.0-fast/portrait-video.mp4"
+					},
+					"raw_response": {
+						"state": "Completed",
+						"result": {
+							"video": "https://examples.ai-platform-apps.cfdata.org/bytedance/seedance-2.0-fast/portrait-video.mp4"
+						},
+						"gatewayMetadata": {
+							"keySource": "Unified"
+						}
+					},
+					"code_snippets": [
+						{
+							"label": "typescript",
+							"code": "const response = await env.AI.run(\n  'bytedance/seedance-2.0-fast',\n  {\n    prompt: 'A barista pouring latte art in a cozy coffee shop, close-up with shallow depth of field',\n    duration: 5,\n    aspect_ratio: '9:16',\n    resolution: '720p',\n  },\n  {\n    gateway: { id: 'default' },\n  }\n)\nconsole.log(response)"
+						}
+					]
+				}
+			],
+			"default_example": null,
+			"code_snippets": [],
+			"schema_manifest": {
+				"parameters_json": "v1/workers-ai-model-catalog/models/bytedance/seedance-2.0-fast/parameters.json",
+				"raw_files": [
+					"schema-input.json",
+					"schema-output.json"
+				]
+			}
+		},
+		"bytedance/seedance-2.0": {
+			"model_id": "bytedance/seedance-2.0",
+			"slug": "bytedance/seedance-2.0",
+			"display_name": "Seedance 2.0",
+			"description": "ByteDance's next-generation video model with a unified multimodal architecture. Generates high-quality video with synchronized audio from text, images, video clips, and audio inputs. Supports multimodal references (up to 9 images, 3 videos, 3 audio files), native audio generation, video editing, video extension, intelligent duration, and adaptive aspect ratio.",
+			"task": {
+				"id": "",
+				"name": "Text-to-Video",
+				"description": ""
+			},
+			"tags": [
+				"Video Generation",
+				"Image-to-Video",
+				"Audio Generation",
+				"Multimodal"
+			],
+			"context_length": null,
+			"max_output_tokens": null,
+			"supports_async": false,
+			"hosting": "proxied",
+			"data_source": "catalog",
+			"properties": [
+				{
+					"property_id": "info",
+					"value": "https://seed.bytedance.com/en/seedance2_0"
+				}
+			],
+			"metadata": {
+				"Aspect Ratios": "16:9, 4:3, 1:1, 3:4, 9:16, 21:9, 9:21",
+				"Max Duration": "12 seconds",
+				"Native Audio": "Yes",
+				"Resolutions": "480p, 720p, 1080p"
+			},
+			"external_info": "https://seed.bytedance.com/en/seedance2_0",
+			"terms": null,
+			"cover_image_url": "https://pub-26f1392c1b674324be6786695bd72257.r2.dev/bytedance/seedance-2.0.png",
+			"schema_version": "1.0.0",
+			"created_at": "2026-05-17 16:57:05",
+			"updated_at": null,
+			"examples": [
+				{
+					"name": "Simple Video",
+					"description": "Basic text-to-video with default settings",
+					"input": {
+						"aspect_ratio": "16:9",
+						"duration": 5,
+						"prompt": "A golden retriever running through a field of sunflowers on a sunny day",
+						"resolution": "720p"
+					},
+					"output": {
+						"video": "https://examples.ai-platform-apps.cfdata.org/bytedance/seedance-2.0/simple-video.mp4"
+					},
+					"raw_response": {
+						"state": "Completed",
+						"result": {
+							"video": "https://examples.ai-platform-apps.cfdata.org/bytedance/seedance-2.0/simple-video.mp4"
+						},
+						"gatewayMetadata": {
+							"keySource": "Unified"
+						}
+					},
+					"code_snippets": [
+						{
+							"label": "typescript",
+							"code": "const response = await env.AI.run(\n  'bytedance/seedance-2.0',\n  {\n    prompt: 'A golden retriever running through a field of sunflowers on a sunny day',\n    duration: 5,\n    resolution: '720p',\n    aspect_ratio: '16:9',\n  },\n  {\n    gateway: { id: 'default' },\n  }\n)\nconsole.log(response)"
+						}
+					]
+				},
+				{
+					"name": "High Resolution Cinematic",
+					"description": "Cinematic video in 1080p",
+					"input": {
+						"aspect_ratio": "16:9",
+						"duration": 10,
+						"prompt": "A dramatic drone shot flying through misty mountain peaks at sunrise, cinematic lighting with volumetric fog",
+						"resolution": "1080p"
+					},
+					"output": {
+						"video": "https://examples.ai-platform-apps.cfdata.org/bytedance/seedance-2.0/high-resolution-cinematic.mp4"
+					},
+					"raw_response": {
+						"state": "Completed",
+						"result": {
+							"video": "https://examples.ai-platform-apps.cfdata.org/bytedance/seedance-2.0/high-resolution-cinematic.mp4"
+						},
+						"gatewayMetadata": {
+							"keySource": "Unified"
+						}
+					},
+					"code_snippets": [
+						{
+							"label": "typescript",
+							"code": "const response = await env.AI.run(\n  'bytedance/seedance-2.0',\n  {\n    prompt: 'A dramatic drone shot flying through misty mountain peaks at sunrise, cinematic lighting with volumetric fog',\n    duration: 10,\n    resolution: '1080p',\n    aspect_ratio: '16:9',\n  },\n  {\n    gateway: { id: 'default' },\n  }\n)\nconsole.log(response)"
+						}
+					]
+				},
+				{
+					"name": "Image to Video",
+					"description": "Generate video from a reference image",
+					"input": {
+						"aspect_ratio": "16:9",
+						"duration": 5,
+						"image": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAnklEQVR42u2XQRLAIAgD8/839i/26qFCACm0ozPe1KwcQsAoXvgcAABxpwFowl4QWITHxW0LCBhxVngF4gKIirMQyBRnIJAtrkE8AuwWnyFEgKzfS1UA+3sWTju3BGAu7gKYIfBW+Q/AAQgBeMCkt1wVsLZjcwUYG2Z9wGLHZitWk1DEisubUYt2XB5IWkSyFqG0RSxvMZi0Gc1+Ox3fm00ZJ5mGVtkAAAAASUVORK5CYII=",
+						"prompt": "The character begins walking forward through the scene",
+						"resolution": "720p"
+					},
+					"output": {
+						"video": "https://examples.ai-platform-apps.cfdata.org/bytedance/seedance-2.0/image-to-video.mp4"
+					},
+					"raw_response": {
+						"state": "Completed",
+						"result": {
+							"video": "https://examples.ai-platform-apps.cfdata.org/bytedance/seedance-2.0/image-to-video.mp4"
+						},
+						"gatewayMetadata": {
+							"keySource": "Unified"
+						}
+					},
+					"code_snippets": [
+						{
+							"label": "typescript",
+							"code": "const response = await env.AI.run(\n  'bytedance/seedance-2.0',\n  {\n    prompt: 'The character begins walking forward through the scene',\n    image: 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAnklEQVR42u2XQRLAIAgD8/839i/26qFCACm0ozPe1KwcQsAoXvgcAABxpwFowl4QWITHxW0LCBhxVngF4gKIirMQyBRnIJAtrkE8AuwWnyFEgKzfS1UA+3sWTju3BGAu7gKYIfBW+Q/AAQgBeMCkt1wVsLZjcwUYG2Z9wGLHZitWk1DEisubUYt2XB5IWkSyFqG0RSxvMZi0Gc1+Ox3fm00ZJ5mGVtkAAAAASUVORK5CYII=',\n    duration: 5,\n    resolution: '720p',\n    aspect_ratio: '16:9',\n  },\n  {\n    gateway: { id: 'default' },\n  }\n)\nconsole.log(response)"
+						}
+					]
+				},
+				{
+					"name": "Portrait Video",
+					"description": "Vertical video for social media",
+					"input": {
+						"aspect_ratio": "9:16",
+						"duration": 5,
+						"prompt": "Abstract ink drops spreading through water, vivid colors mixing in slow motion",
+						"resolution": "720p"
+					},
+					"output": {
+						"video": "https://examples.ai-platform-apps.cfdata.org/bytedance/seedance-2.0/portrait-video.mp4"
+					},
+					"raw_response": {
+						"state": "Completed",
+						"result": {
+							"video": "https://examples.ai-platform-apps.cfdata.org/bytedance/seedance-2.0/portrait-video.mp4"
+						},
+						"gatewayMetadata": {
+							"keySource": "Unified"
+						}
+					},
+					"code_snippets": [
+						{
+							"label": "typescript",
+							"code": "const response = await env.AI.run(\n  'bytedance/seedance-2.0',\n  {\n    prompt: 'Abstract ink drops spreading through water, vivid colors mixing in slow motion',\n    duration: 5,\n    aspect_ratio: '9:16',\n    resolution: '720p',\n  },\n  {\n    gateway: { id: 'default' },\n  }\n)\nconsole.log(response)"
+						}
+					]
+				}
+			],
+			"default_example": null,
+			"code_snippets": [],
+			"schema_manifest": {
+				"parameters_json": "v1/workers-ai-model-catalog/models/bytedance/seedance-2.0/parameters.json",
 				"raw_files": [
 					"schema-input.json",
 					"schema-output.json"
@@ -13521,6 +13792,212 @@
 				]
 			}
 		},
+		"recraft/recraftv3": {
+			"model_id": "recraft/recraftv3",
+			"slug": "recraft/recraftv3",
+			"display_name": "Recraft V3",
+			"description": "Recraft V3 is the previous-generation text-to-image model from Recraft, well-suited to design-quality compositions, brand-aware imagery, and accurate text rendering.",
+			"task": {
+				"id": "",
+				"name": "Text-to-Image",
+				"description": ""
+			},
+			"tags": [
+				"Image Generation",
+				"Design",
+				"Text Rendering"
+			],
+			"context_length": null,
+			"max_output_tokens": null,
+			"supports_async": false,
+			"hosting": "proxied",
+			"data_source": "catalog",
+			"properties": [
+				{
+					"property_id": "terms",
+					"value": "https://www.recraft.ai/terms"
+				},
+				{
+					"property_id": "info",
+					"value": "https://www.recraft.ai/"
+				}
+			],
+			"metadata": {
+				"Resolution": "1024px",
+				"Text Rendering": "Yes"
+			},
+			"external_info": "https://www.recraft.ai/",
+			"terms": "https://www.recraft.ai/terms",
+			"cover_image_url": "https://pub-26f1392c1b674324be6786695bd72257.r2.dev/recraft/recraftv3.png",
+			"schema_version": "1.0.0",
+			"created_at": "2026-05-17 17:00:42",
+			"updated_at": null,
+			"examples": [
+				{
+					"name": "Simple Generation",
+					"description": "Basic text-to-image with just a prompt",
+					"input": {
+						"prompt": "A minimalist logo of a mountain range with a sun rising behind it"
+					},
+					"output": {
+						"image": "https://examples.ai-platform-apps.cfdata.org/recraft/recraftv3/simple-generation.png"
+					},
+					"raw_response": {
+						"state": "Completed",
+						"result": {
+							"image": "https://examples.ai-platform-apps.cfdata.org/recraft/recraftv3/simple-generation.png"
+						},
+						"gatewayMetadata": {
+							"keySource": "Unified"
+						}
+					},
+					"code_snippets": [
+						{
+							"label": "typescript",
+							"code": "const response = await env.AI.run(\n  'recraft/recraftv3',\n  {\n    prompt: 'A minimalist logo of a mountain range with a sun rising behind it',\n  },\n  {\n    gateway: { id: 'default' },\n  }\n)\nconsole.log(response)"
+						}
+					]
+				},
+				{
+					"name": "Scene Composition",
+					"description": "Generate a complex compositional scene",
+					"input": {
+						"prompt": "A cozy cabin in the woods surrounded by tall pine trees, smoke rising from the chimney"
+					},
+					"output": {
+						"image": "https://examples.ai-platform-apps.cfdata.org/recraft/recraftv3/scene-composition.png"
+					},
+					"raw_response": {
+						"state": "Completed",
+						"result": {
+							"image": "https://examples.ai-platform-apps.cfdata.org/recraft/recraftv3/scene-composition.png"
+						},
+						"gatewayMetadata": {
+							"keySource": "Unified"
+						}
+					},
+					"code_snippets": [
+						{
+							"label": "typescript",
+							"code": "const response = await env.AI.run(\n  'recraft/recraftv3',\n  {\n    prompt:\n      'A cozy cabin in the woods surrounded by tall pine trees, smoke rising from the chimney',\n  },\n  {\n    gateway: { id: 'default' },\n  }\n)\nconsole.log(response)"
+						}
+					]
+				},
+				{
+					"name": "Custom Size",
+					"description": "Specify output dimensions",
+					"input": {
+						"prompt": "A flat illustration of a workspace with a laptop, coffee cup, and potted plant",
+						"size": "1024x1024"
+					},
+					"output": {
+						"image": "https://examples.ai-platform-apps.cfdata.org/recraft/recraftv3/custom-size.png"
+					},
+					"raw_response": {
+						"state": "Completed",
+						"result": {
+							"image": "https://examples.ai-platform-apps.cfdata.org/recraft/recraftv3/custom-size.png"
+						},
+						"gatewayMetadata": {
+							"keySource": "Unified"
+						}
+					},
+					"code_snippets": [
+						{
+							"label": "typescript",
+							"code": "const response = await env.AI.run(\n  'recraft/recraftv3',\n  {\n    prompt:\n      'A flat illustration of a workspace with a laptop, coffee cup, and potted plant',\n    size: '1024x1024',\n  },\n  {\n    gateway: { id: 'default' },\n  }\n)\nconsole.log(response)"
+						}
+					]
+				},
+				{
+					"name": "With Color Controls",
+					"description": "Guide generation with specific brand colors",
+					"input": {
+						"controls": {
+							"colors": [
+								{
+									"rgb": [
+										255,
+										107,
+										53
+									]
+								},
+								{
+									"rgb": [
+										0,
+										43,
+										91
+									]
+								}
+							]
+						},
+						"prompt": "An abstract geometric pattern suitable for a tech company brand identity"
+					},
+					"output": {
+						"image": "https://examples.ai-platform-apps.cfdata.org/recraft/recraftv3/with-color-controls.png"
+					},
+					"raw_response": {
+						"state": "Completed",
+						"result": {
+							"image": "https://examples.ai-platform-apps.cfdata.org/recraft/recraftv3/with-color-controls.png"
+						},
+						"gatewayMetadata": {
+							"keySource": "Unified"
+						}
+					},
+					"code_snippets": [
+						{
+							"label": "typescript",
+							"code": "const response = await env.AI.run(\n  'recraft/recraftv3',\n  {\n    prompt:\n      'An abstract geometric pattern suitable for a tech company brand identity',\n    controls: {\n      colors: [\n        {\n          rgb: [255, 107, 53],\n        },\n        {\n          rgb: [0, 43, 91],\n        },\n      ],\n    },\n  },\n  {\n    gateway: { id: 'default' },\n  }\n)\nconsole.log(response)"
+						}
+					]
+				},
+				{
+					"name": "Background Color",
+					"description": "Set a specific background color",
+					"input": {
+						"controls": {
+							"background_color": {
+								"rgb": [
+									245,
+									245,
+									245
+								]
+							}
+						},
+						"prompt": "A clean icon of a lightning bolt",
+						"size": "1024x1024"
+					},
+					"output": {
+						"image": "https://examples.ai-platform-apps.cfdata.org/recraft/recraftv3/background-color.png"
+					},
+					"raw_response": {
+						"state": "Completed",
+						"result": {
+							"image": "https://examples.ai-platform-apps.cfdata.org/recraft/recraftv3/background-color.png"
+						},
+						"gatewayMetadata": {
+							"keySource": "Unified"
+						}
+					},
+					"code_snippets": [
+						{
+							"label": "typescript",
+							"code": "const response = await env.AI.run(\n  'recraft/recraftv3',\n  {\n    prompt: 'A clean icon of a lightning bolt',\n    size: '1024x1024',\n    controls: {\n      background_color: {\n        rgb: [245, 245, 245],\n      },\n    },\n  },\n  {\n    gateway: { id: 'default' },\n  }\n)\nconsole.log(response)"
+						}
+					]
+				}
+			],
+			"default_example": null,
+			"code_snippets": [],
+			"schema_manifest": {
+				"parameters_json": "v1/workers-ai-model-catalog/models/recraft/recraftv3/parameters.json",
+				"raw_files": [
+					"schema-input.json",
+					"schema-output.json"
+				]
+			}
+		},
 		"recraft/recraftv4-pro-vector": {
 			"model_id": "recraft/recraftv4-pro-vector",
 			"slug": "recraft/recraftv4-pro-vector",
@@ -14621,6 +15098,277 @@
 			"code_snippets": [],
 			"schema_manifest": {
 				"parameters_json": "v1/workers-ai-model-catalog/models/vidu/q3-turbo/parameters.json",
+				"raw_files": [
+					"schema-input.json",
+					"schema-output.json"
+				]
+			}
+		},
+		"xai/grok-imagine-image": {
+			"model_id": "xai/grok-imagine-image",
+			"slug": "xai/grok-imagine-image",
+			"display_name": "Grok Imagine Image",
+			"description": "xAI's Grok Imagine image model. Generates and edits images from text and reference-image inputs with configurable aspect ratio and resolution.",
+			"task": {
+				"id": "",
+				"name": "Text-to-Image",
+				"description": ""
+			},
+			"tags": [
+				"Image Generation",
+				"Image Editing",
+				"Multimodal"
+			],
+			"context_length": null,
+			"max_output_tokens": null,
+			"supports_async": false,
+			"hosting": "proxied",
+			"data_source": "catalog",
+			"properties": [
+				{
+					"property_id": "terms",
+					"value": "https://x.ai/legal/terms-of-service"
+				},
+				{
+					"property_id": "info",
+					"value": "https://docs.x.ai/developers/models/grok-imagine-image"
+				}
+			],
+			"metadata": {
+				"Aspect Ratios": "1:1, 3:4, 4:3, 9:16, 16:9, 2:3, 3:2, 9:19.5, 19.5:9, 9:20, 20:9, 1:2, 2:1, auto",
+				"Resolutions": "1k, 2k",
+				"Response Formats": "url, b64_json",
+				"Text Rendering": "Yes"
+			},
+			"external_info": "https://docs.x.ai/developers/models/grok-imagine-image",
+			"terms": "https://x.ai/legal/terms-of-service",
+			"cover_image_url": "https://pub-26f1392c1b674324be6786695bd72257.r2.dev/xai/grok-imagine-image.png",
+			"schema_version": "1.0.0",
+			"created_at": "2026-05-17 16:55:13",
+			"updated_at": null,
+			"examples": [
+				{
+					"name": "Simple Generation",
+					"description": "Basic text-to-image with just a prompt",
+					"input": {
+						"prompt": "A golden retriever puppy playing in autumn leaves"
+					},
+					"output": {
+						"image": "https://examples.ai-platform-apps.cfdata.org/xai/grok-imagine-image/simple-generation.jpeg"
+					},
+					"raw_response": {
+						"state": "Completed",
+						"result": {
+							"image": "https://examples.ai-platform-apps.cfdata.org/xai/grok-imagine-image/simple-generation.jpeg"
+						},
+						"gatewayMetadata": {
+							"keySource": "Unified"
+						}
+					},
+					"code_snippets": [
+						{
+							"label": "typescript",
+							"code": "const response = await env.AI.run(\n  'xai/grok-imagine-image',\n  {\n    prompt: 'A golden retriever puppy playing in autumn leaves',\n  },\n  {\n    gateway: { id: 'default' },\n  }\n)\nconsole.log(response)"
+						}
+					]
+				},
+				{
+					"name": "Custom Aspect Ratio",
+					"description": "Portrait orientation render at 2K resolution",
+					"input": {
+						"aspect_ratio": "3:4",
+						"prompt": "A detailed botanical illustration of exotic tropical flowers with fine line work and watercolor textures",
+						"resolution": "2k"
+					},
+					"output": {
+						"image": "https://examples.ai-platform-apps.cfdata.org/xai/grok-imagine-image/custom-aspect-ratio.png"
+					},
+					"raw_response": {
+						"state": "Completed",
+						"result": {
+							"image": "https://examples.ai-platform-apps.cfdata.org/xai/grok-imagine-image/custom-aspect-ratio.png"
+						},
+						"gatewayMetadata": {
+							"keySource": "Unified"
+						}
+					},
+					"code_snippets": [
+						{
+							"label": "typescript",
+							"code": "const response = await env.AI.run(\n  'xai/grok-imagine-image',\n  {\n    prompt: 'A detailed botanical illustration of exotic tropical flowers with fine line work and watercolor textures',\n    aspect_ratio: '3:4',\n    resolution: '2k',\n  },\n  {\n    gateway: { id: 'default' },\n  }\n)\nconsole.log(response)"
+						}
+					]
+				},
+				{
+					"name": "Cinematic Landscape",
+					"description": "Widescreen landscape at 2K resolution",
+					"input": {
+						"aspect_ratio": "16:9",
+						"prompt": "A neon-lit cyberpunk figure standing in the rain beneath a holographic billboard, cinematic lighting",
+						"resolution": "2k"
+					},
+					"output": {
+						"image": "https://examples.ai-platform-apps.cfdata.org/xai/grok-imagine-image/cinematic-landscape.png"
+					},
+					"raw_response": {
+						"state": "Completed",
+						"result": {
+							"image": "https://examples.ai-platform-apps.cfdata.org/xai/grok-imagine-image/cinematic-landscape.png"
+						},
+						"gatewayMetadata": {
+							"keySource": "Unified"
+						}
+					},
+					"code_snippets": [
+						{
+							"label": "typescript",
+							"code": "const response = await env.AI.run(\n  'xai/grok-imagine-image',\n  {\n    prompt: 'A neon-lit cyberpunk figure standing in the rain beneath a holographic billboard, cinematic lighting',\n    aspect_ratio: '16:9',\n    resolution: '2k',\n  },\n  {\n    gateway: { id: 'default' },\n  }\n)\nconsole.log(response)"
+						}
+					]
+				}
+			],
+			"default_example": null,
+			"code_snippets": [],
+			"schema_manifest": {
+				"parameters_json": "v1/workers-ai-model-catalog/models/xai/grok-imagine-image/parameters.json",
+				"raw_files": [
+					"schema-input.json",
+					"schema-output.json"
+				]
+			}
+		},
+		"xai/grok-imagine-video": {
+			"model_id": "xai/grok-imagine-video",
+			"slug": "xai/grok-imagine-video",
+			"display_name": "Grok Imagine Video",
+			"description": "xAI's video generation model. Generates, edits, and extends videos from text and image inputs with native synchronized audio including dialogue, sound effects, and music. Supports multiple creative modes (normal, fun, custom).",
+			"task": {
+				"id": "",
+				"name": "Text-to-Video",
+				"description": ""
+			},
+			"tags": [
+				"Video Generation",
+				"Image-to-Video",
+				"Multimodal"
+			],
+			"context_length": null,
+			"max_output_tokens": null,
+			"supports_async": false,
+			"hosting": "proxied",
+			"data_source": "catalog",
+			"properties": [
+				{
+					"property_id": "terms",
+					"value": "https://x.ai/legal/terms-of-service"
+				},
+				{
+					"property_id": "info",
+					"value": "https://docs.x.ai/developers/models/grok-imagine-video"
+				}
+			],
+			"metadata": {
+				"Aspect Ratios": "1:1, 16:9, 9:16, 4:3, 3:4, 3:2, 2:3",
+				"Input Modalities": "Text, Image, Video",
+				"Max Duration": "15 seconds",
+				"Resolutions": "480p, 720p"
+			},
+			"external_info": "https://docs.x.ai/developers/models/grok-imagine-video",
+			"terms": "https://x.ai/legal/terms-of-service",
+			"cover_image_url": "https://pub-26f1392c1b674324be6786695bd72257.r2.dev/xai/grok-imagine-video.png",
+			"schema_version": "1.0.0",
+			"created_at": "2026-05-17 16:49:14",
+			"updated_at": null,
+			"examples": [
+				{
+					"name": "Simple Video",
+					"description": "Basic text-to-video with default settings",
+					"input": {
+						"aspect_ratio": "16:9",
+						"duration": 5,
+						"prompt": "A golden retriever running through a field of sunflowers on a sunny day",
+						"resolution": "720p"
+					},
+					"output": {
+						"video": "https://examples.ai-platform-apps.cfdata.org/xai/grok-imagine-video/simple-video.mp4"
+					},
+					"raw_response": {
+						"state": "Completed",
+						"result": {
+							"video": "https://examples.ai-platform-apps.cfdata.org/xai/grok-imagine-video/simple-video.mp4"
+						},
+						"gatewayMetadata": {
+							"keySource": "Unified"
+						}
+					},
+					"code_snippets": [
+						{
+							"label": "typescript",
+							"code": "const response = await env.AI.run(\n  'xai/grok-imagine-video',\n  {\n    prompt: 'A golden retriever running through a field of sunflowers on a sunny day',\n    duration: 5,\n    aspect_ratio: '16:9',\n    resolution: '720p',\n  },\n  {\n    gateway: { id: 'default' },\n  }\n)\nconsole.log(response)"
+						}
+					]
+				},
+				{
+					"name": "Portrait Video",
+					"description": "Vertical video for social media",
+					"input": {
+						"aspect_ratio": "9:16",
+						"duration": 5,
+						"prompt": "Slow-motion close-up of ink drops blooming through water against a black background",
+						"resolution": "720p"
+					},
+					"output": {
+						"video": "https://examples.ai-platform-apps.cfdata.org/xai/grok-imagine-video/portrait-video.mp4"
+					},
+					"raw_response": {
+						"state": "Completed",
+						"result": {
+							"video": "https://examples.ai-platform-apps.cfdata.org/xai/grok-imagine-video/portrait-video.mp4"
+						},
+						"gatewayMetadata": {
+							"keySource": "Unified"
+						}
+					},
+					"code_snippets": [
+						{
+							"label": "typescript",
+							"code": "const response = await env.AI.run(\n  'xai/grok-imagine-video',\n  {\n    prompt: 'Slow-motion close-up of ink drops blooming through water against a black background',\n    duration: 5,\n    aspect_ratio: '9:16',\n    resolution: '720p',\n  },\n  {\n    gateway: { id: 'default' },\n  }\n)\nconsole.log(response)"
+						}
+					]
+				},
+				{
+					"name": "Cinematic Landscape",
+					"description": "Widescreen cinematic shot at extended duration",
+					"input": {
+						"aspect_ratio": "16:9",
+						"duration": 10,
+						"prompt": "A wide drone shot over snow-covered mountain peaks at sunrise, dramatic lighting with low clouds",
+						"resolution": "720p"
+					},
+					"output": {
+						"video": "https://examples.ai-platform-apps.cfdata.org/xai/grok-imagine-video/cinematic-landscape.mp4"
+					},
+					"raw_response": {
+						"state": "Completed",
+						"result": {
+							"video": "https://examples.ai-platform-apps.cfdata.org/xai/grok-imagine-video/cinematic-landscape.mp4"
+						},
+						"gatewayMetadata": {
+							"keySource": "Unified"
+						}
+					},
+					"code_snippets": [
+						{
+							"label": "typescript",
+							"code": "const response = await env.AI.run(\n  'xai/grok-imagine-video',\n  {\n    prompt: 'A wide drone shot over snow-covered mountain peaks at sunrise, dramatic lighting with low clouds',\n    duration: 10,\n    aspect_ratio: '16:9',\n    resolution: '720p',\n  },\n  {\n    gateway: { id: 'default' },\n  }\n)\nconsole.log(response)"
+						}
+					]
+				}
+			],
+			"default_example": null,
+			"code_snippets": [],
+			"schema_manifest": {
+				"parameters_json": "v1/workers-ai-model-catalog/models/xai/grok-imagine-video/parameters.json",
 				"raw_files": [
 					"schema-input.json",
 					"schema-output.json"
