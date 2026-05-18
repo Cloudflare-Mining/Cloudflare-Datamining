@@ -424,7 +424,7 @@
 		"enabled": true
 	},
 	"billing-unified-checkout-wfp": {
-		"enabled": false
+		"enabled": true
 	},
 	"billing-unified-checkout-workers": {
 		"enabled": false
@@ -527,6 +527,9 @@
 	},
 	"cfone-cloudy-threat-events-enabled": {
 		"enabled": true
+	},
+	"cfone-threat-actor-profiles-enabled": {
+		"enabled": false
 	},
 	"cfone-threat-events-visualizations-enabled": {
 		"enabled": true
@@ -2576,6 +2579,9 @@
 	},
 	"testt": {
 		"enabled": false
+	},
+	"threat-events-appsec-integration": {
+		"enabled": true
 	},
 	"threat-events-industry-graph": {
 		"enabled": true
