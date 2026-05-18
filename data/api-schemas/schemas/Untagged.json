@@ -1696,6 +1696,28 @@
 			}
 		}
 	],
+	"PARAMETERS /accounts/{account_id}/workers/observability/shared/query": [
+		{
+			"description": "Your Cloudflare account ID.",
+			"in": "path",
+			"name": "account_id",
+			"required": true,
+			"schema": {
+				"type": "string"
+			}
+		}
+	],
+	"PARAMETERS /accounts/{account_id}/workers/observability/shared/query/{id}": [
+		{
+			"description": "Your Cloudflare account ID.",
+			"in": "path",
+			"name": "account_id",
+			"required": true,
+			"schema": {
+				"type": "string"
+			}
+		}
+	],
 	"PARAMETERS /accounts/{account_id}/workers/observability/telemetry/keys": [
 		{
 			"description": "Your Cloudflare account ID.",

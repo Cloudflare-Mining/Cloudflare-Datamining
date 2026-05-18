@@ -1,0 +1,2778 @@
+{
+	"GET /accounts/{account_id}/workers/observability/shared/query/{id}": {
+		"description": "Shared queries store the results of a previously run query, allowing you to share the results with others.",
+		"operationId": "shared.query.get",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "id",
+				"required": true,
+				"schema": {
+					"description": "Specify the ID of the shared query.",
+					"type": "string"
+				}
+			},
+			{
+				"in": "query",
+				"name": "view",
+				"schema": {
+					"description": "Select the view of the query result to return, defaults to events.",
+					"enum": [
+						"events",
+						"invocations",
+						"calculations"
+					],
+					"type": "string"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"messages": {
+									"items": {
+										"properties": {
+											"message": {
+												"enum": [
+													"Successful request"
+												],
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"result": {
+									"description": "Complete results of a query run. The populated fields depend on the requested view type (events, calculations, invocations, traces, or agents).",
+									"properties": {
+										"agents": {
+											"description": "Durable Object agent summaries. Present when the query view is 'agents'. Each entry represents an agent with its event counts and status.",
+											"items": {
+												"properties": {
+													"agentClass": {
+														"description": "Class name of the Durable Object agent.",
+														"type": "string"
+													},
+													"eventTypeCounts": {
+														"additionalProperties": {
+															"type": "number"
+														},
+														"description": "Breakdown of event counts by event type.",
+														"type": "object"
+													},
+													"firstEventMs": {
+														"description": "Timestamp of the earliest event from this agent in the queried window (Unix epoch ms).",
+														"type": "number"
+													},
+													"hasErrors": {
+														"description": "Whether the agent emitted any error events in the queried window.",
+														"type": "boolean"
+													},
+													"lastEventMs": {
+														"description": "Timestamp of the most recent event from this agent (Unix epoch ms).",
+														"type": "number"
+													},
+													"namespace": {
+														"description": "Durable Object namespace the agent belongs to.",
+														"type": "string"
+													},
+													"service": {
+														"description": "Worker service name that hosts this agent.",
+														"type": "string"
+													},
+													"totalEvents": {
+														"description": "Total number of events emitted by this agent in the queried window.",
+														"type": "number"
+													}
+												},
+												"required": [
+													"namespace",
+													"agentClass",
+													"service",
+													"lastEventMs",
+													"firstEventMs",
+													"totalEvents",
+													"eventTypeCounts",
+													"hasErrors"
+												],
+												"type": "object"
+											},
+											"type": "array"
+										},
+										"calculations": {
+											"description": "Aggregated calculation results. Present when the query view is 'calculations'. Contains computed metrics (count, avg, p99, etc.) with optional group-by breakdowns and time-series data.",
+											"items": {
+												"properties": {
+													"aggregates": {
+														"items": {
+															"properties": {
+																"count": {
+																	"type": "number"
+																},
+																"groups": {
+																	"items": {
+																		"properties": {
+																			"key": {
+																				"type": "string"
+																			},
+																			"value": {
+																				"anyOf": [
+																					{
+																						"type": "string"
+																					},
+																					{
+																						"type": "number"
+																					},
+																					{
+																						"type": "boolean"
+																					}
+																				]
+																			}
+																		},
+																		"required": [
+																			"key",
+																			"value"
+																		],
+																		"type": "object"
+																	},
+																	"type": "array"
+																},
+																"interval": {
+																	"type": "number"
+																},
+																"sampleInterval": {
+																	"type": "number"
+																},
+																"value": {
+																	"type": "number"
+																}
+															},
+															"required": [
+																"value",
+																"count",
+																"interval",
+																"sampleInterval"
+															],
+															"type": "object"
+														},
+														"type": "array"
+													},
+													"alias": {
+														"type": "string"
+													},
+													"calculation": {
+														"type": "string"
+													},
+													"series": {
+														"items": {
+															"properties": {
+																"data": {
+																	"items": {
+																		"properties": {
+																			"count": {
+																				"type": "number"
+																			},
+																			"firstSeen": {
+																				"type": "string"
+																			},
+																			"groups": {
+																				"items": {
+																					"properties": {
+																						"key": {
+																							"type": "string"
+																						},
+																						"value": {
+																							"anyOf": [
+																								{
+																									"type": "string"
+																								},
+																								{
+																									"type": "number"
+																								},
+																								{
+																									"type": "boolean"
+																								}
+																							]
+																						}
+																					},
+																					"required": [
+																						"key",
+																						"value"
+																					],
+																					"type": "object"
+																				},
+																				"type": "array"
+																			},
+																			"interval": {
+																				"type": "number"
+																			},
+																			"lastSeen": {
+																				"type": "string"
+																			},
+																			"sampleInterval": {
+																				"type": "number"
+																			},
+																			"value": {
+																				"type": "number"
+																			}
+																		},
+																		"required": [
+																			"value",
+																			"count",
+																			"interval",
+																			"sampleInterval"
+																		],
+																		"type": "object"
+																	},
+																	"type": "array"
+																},
+																"time": {
+																	"type": "string"
+																}
+															},
+															"required": [
+																"time",
+																"data"
+															],
+															"type": "object"
+														},
+														"type": "array"
+													}
+												},
+												"required": [
+													"calculation",
+													"aggregates",
+													"series"
+												],
+												"type": "object"
+											},
+											"type": "array"
+										},
+										"compare": {
+											"description": "Comparison calculation results from the previous time period. Present when the compare option is enabled. Same structure as calculations.",
+											"items": {
+												"properties": {
+													"aggregates": {
+														"items": {
+															"properties": {
+																"count": {
+																	"type": "number"
+																},
+																"groups": {
+																	"items": {
+																		"properties": {
+																			"key": {
+																				"type": "string"
+																			},
+																			"value": {
+																				"anyOf": [
+																					{
+																						"type": "string"
+																					},
+																					{
+																						"type": "number"
+																					},
+																					{
+																						"type": "boolean"
+																					}
+																				]
+																			}
+																		},
+																		"required": [
+																			"key",
+																			"value"
+																		],
+																		"type": "object"
+																	},
+																	"type": "array"
+																},
+																"interval": {
+																	"type": "number"
+																},
+																"sampleInterval": {
+																	"type": "number"
+																},
+																"value": {
+																	"type": "number"
+																}
+															},
+															"required": [
+																"value",
+																"count",
+																"interval",
+																"sampleInterval"
+															],
+															"type": "object"
+														},
+														"type": "array"
+													},
+													"alias": {
+														"type": "string"
+													},
+													"calculation": {
+														"type": "string"
+													},
+													"series": {
+														"items": {
+															"properties": {
+																"data": {
+																	"items": {
+																		"properties": {
+																			"count": {
+																				"type": "number"
+																			},
+																			"firstSeen": {
+																				"type": "string"
+																			},
+																			"groups": {
+																				"items": {
+																					"properties": {
+																						"key": {
+																							"type": "string"
+																						},
+																						"value": {
+																							"anyOf": [
+																								{
+																									"type": "string"
+																								},
+																								{
+																									"type": "number"
+																								},
+																								{
+																									"type": "boolean"
+																								}
+																							]
+																						}
+																					},
+																					"required": [
+																						"key",
+																						"value"
+																					],
+																					"type": "object"
+																				},
+																				"type": "array"
+																			},
+																			"interval": {
+																				"type": "number"
+																			},
+																			"lastSeen": {
+																				"type": "string"
+																			},
+																			"sampleInterval": {
+																				"type": "number"
+																			},
+																			"value": {
+																				"type": "number"
+																			}
+																		},
+																		"required": [
+																			"value",
+																			"count",
+																			"interval",
+																			"sampleInterval"
+																		],
+																		"type": "object"
+																	},
+																	"type": "array"
+																},
+																"time": {
+																	"type": "string"
+																}
+															},
+															"required": [
+																"time",
+																"data"
+															],
+															"type": "object"
+														},
+														"type": "array"
+													}
+												},
+												"required": [
+													"calculation",
+													"aggregates",
+													"series"
+												],
+												"type": "object"
+											},
+											"type": "array"
+										},
+										"events": {
+											"description": "Individual event results. Present when the query view is 'events'. Contains the matching log lines and their metadata.",
+											"properties": {
+												"count": {
+													"description": "Total number of events matching the query (may exceed the number returned due to limits).",
+													"type": "number"
+												},
+												"events": {
+													"description": "List of individual telemetry events matching the query.",
+													"items": {
+														"additionalProperties": false,
+														"description": "A single telemetry event representing a log line, span, or metric data point emitted by a Worker.",
+														"properties": {
+															"$containers": {
+																"description": "Cloudflare Containers event information that enriches your logs for identifying and debugging issues.",
+																"type": "object"
+															},
+															"$metadata": {
+																"description": "Structured metadata extracted from the event. These fields are indexed and available for filtering and aggregation.",
+																"properties": {
+																	"account": {
+																		"description": "Cloudflare account identifier.",
+																		"type": "string"
+																	},
+																	"cloudService": {
+																		"description": "Cloudflare product that generated this event (e.g. workers, pages).",
+																		"type": "string"
+																	},
+																	"coldStart": {
+																		"description": "Whether this was a cold start (1) or warm invocation (0).",
+																		"exclusiveMinimum": true,
+																		"minimum": 0,
+																		"type": "integer"
+																	},
+																	"cost": {
+																		"description": "Estimated cost units for this invocation.",
+																		"exclusiveMinimum": true,
+																		"minimum": 0,
+																		"type": "integer"
+																	},
+																	"duration": {
+																		"description": "Span duration in milliseconds.",
+																		"exclusiveMinimum": true,
+																		"minimum": 0,
+																		"type": "integer"
+																	},
+																	"endTime": {
+																		"description": "Span end time as a Unix epoch in milliseconds.",
+																		"minimum": 0,
+																		"type": "integer"
+																	},
+																	"error": {
+																		"description": "Error message, present when the log represents an error.",
+																		"type": "string"
+																	},
+																	"errorTemplate": {
+																		"description": "Templatized version of the error message used for grouping similar errors.",
+																		"type": "string"
+																	},
+																	"fingerprint": {
+																		"description": "Content-based fingerprint used to group similar events.",
+																		"type": "string"
+																	},
+																	"id": {
+																		"description": "Unique event ID. Use as the cursor value for offset-based pagination.",
+																		"type": "string"
+																	},
+																	"level": {
+																		"description": "Log level (e.g. log, debug, info, warn, error).",
+																		"type": "string"
+																	},
+																	"message": {
+																		"description": "Log message text.",
+																		"type": "string"
+																	},
+																	"messageTemplate": {
+																		"description": "Templatized version of the log message used for grouping similar messages.",
+																		"type": "string"
+																	},
+																	"metricName": {
+																		"description": "Metric name when the event represents a metric data point.",
+																		"type": "string"
+																	},
+																	"origin": {
+																		"description": "Origin of the event (e.g. fetch, scheduled, queue).",
+																		"type": "string"
+																	},
+																	"parentSpanId": {
+																		"description": "Span ID of the parent span in the trace hierarchy.",
+																		"type": "string"
+																	},
+																	"provider": {
+																		"description": "Infrastructure provider identifier.",
+																		"type": "string"
+																	},
+																	"region": {
+																		"description": "Cloudflare data center / region that handled the request.",
+																		"type": "string"
+																	},
+																	"requestId": {
+																		"description": "Cloudflare request ID that ties all logs from a single invocation together.",
+																		"type": "string"
+																	},
+																	"service": {
+																		"description": "Worker script name that produced this event.",
+																		"type": "string"
+																	},
+																	"spanId": {
+																		"description": "Span ID for this individual unit of work within a trace.",
+																		"type": "string"
+																	},
+																	"spanName": {
+																		"description": "Human-readable name for this span.",
+																		"type": "string"
+																	},
+																	"stackId": {
+																		"description": "Stack / deployment identifier.",
+																		"type": "string"
+																	},
+																	"startTime": {
+																		"description": "Span start time as a Unix epoch in milliseconds.",
+																		"minimum": 0,
+																		"type": "integer"
+																	},
+																	"statusCode": {
+																		"description": "HTTP response status code returned by the Worker.",
+																		"exclusiveMinimum": true,
+																		"minimum": 0,
+																		"type": "integer"
+																	},
+																	"traceDuration": {
+																		"description": "Total duration of the entire trace in milliseconds.",
+																		"exclusiveMinimum": true,
+																		"minimum": 0,
+																		"type": "integer"
+																	},
+																	"traceId": {
+																		"description": "Distributed trace ID linking spans across services.",
+																		"type": "string"
+																	},
+																	"transactionName": {
+																		"description": "Logical transaction name for this request.",
+																		"type": "string"
+																	},
+																	"trigger": {
+																		"description": "What triggered the invocation (e.g. GET /users, POST /orders, queue message).",
+																		"type": "string"
+																	},
+																	"type": {
+																		"description": "Event type classifier (e.g. cf-worker-event, cf-worker-log).",
+																		"type": "string"
+																	},
+																	"url": {
+																		"description": "Request URL that triggered the Worker invocation.",
+																		"type": "string"
+																	}
+																},
+																"required": [
+																	"id"
+																],
+																"type": "object"
+															},
+															"$workers": {
+																"anyOf": [
+																	{
+																		"properties": {
+																			"durableObjectId": {
+																				"type": "string"
+																			},
+																			"entrypoint": {
+																				"type": "string"
+																			},
+																			"event": {
+																				"additionalProperties": true,
+																				"type": "object"
+																			},
+																			"eventType": {
+																				"enum": [
+																					"fetch",
+																					"scheduled",
+																					"alarm",
+																					"cron",
+																					"queue",
+																					"email",
+																					"tail",
+																					"rpc",
+																					"websocket",
+																					"workflow",
+																					"unknown"
+																				],
+																				"type": "string"
+																			},
+																			"executionModel": {
+																				"enum": [
+																					"durableObject",
+																					"stateless"
+																				],
+																				"type": "string"
+																			},
+																			"outcome": {
+																				"type": "string"
+																			},
+																			"requestId": {
+																				"type": "string"
+																			},
+																			"scriptName": {
+																				"type": "string"
+																			},
+																			"scriptVersion": {
+																				"properties": {
+																					"id": {
+																						"type": "string"
+																					},
+																					"message": {
+																						"type": "string"
+																					},
+																					"tag": {
+																						"type": "string"
+																					}
+																				},
+																				"type": "object"
+																			},
+																			"spanId": {
+																				"type": "string"
+																			},
+																			"traceId": {
+																				"type": "string"
+																			},
+																			"truncated": {
+																				"type": "boolean"
+																			}
+																		},
+																		"required": [
+																			"scriptName",
+																			"eventType",
+																			"requestId"
+																		],
+																		"type": "object"
+																	},
+																	{
+																		"properties": {
+																			"cpuTimeMs": {
+																				"type": "number"
+																			},
+																			"diagnosticsChannelEvents": {
+																				"items": {
+																					"properties": {
+																						"channel": {
+																							"type": "string"
+																						},
+																						"message": {
+																							"type": "string"
+																						},
+																						"timestamp": {
+																							"type": "number"
+																						}
+																					},
+																					"required": [
+																						"timestamp",
+																						"channel",
+																						"message"
+																					],
+																					"type": "object"
+																				},
+																				"type": "array"
+																			},
+																			"dispatchNamespace": {
+																				"type": "string"
+																			},
+																			"durableObjectId": {
+																				"type": "string"
+																			},
+																			"entrypoint": {
+																				"type": "string"
+																			},
+																			"event": {
+																				"additionalProperties": true,
+																				"type": "object"
+																			},
+																			"eventType": {
+																				"enum": [
+																					"fetch",
+																					"scheduled",
+																					"alarm",
+																					"cron",
+																					"queue",
+																					"email",
+																					"tail",
+																					"rpc",
+																					"websocket",
+																					"workflow",
+																					"unknown"
+																				],
+																				"type": "string"
+																			},
+																			"executionModel": {
+																				"enum": [
+																					"durableObject",
+																					"stateless"
+																				],
+																				"type": "string"
+																			},
+																			"outcome": {
+																				"type": "string"
+																			},
+																			"requestId": {
+																				"type": "string"
+																			},
+																			"scriptName": {
+																				"type": "string"
+																			},
+																			"scriptVersion": {
+																				"properties": {
+																					"id": {
+																						"type": "string"
+																					},
+																					"message": {
+																						"type": "string"
+																					},
+																					"tag": {
+																						"type": "string"
+																					}
+																				},
+																				"type": "object"
+																			},
+																			"spanId": {
+																				"type": "string"
+																			},
+																			"traceId": {
+																				"type": "string"
+																			},
+																			"truncated": {
+																				"type": "boolean"
+																			},
+																			"wallTimeMs": {
+																				"type": "number"
+																			}
+																		},
+																		"required": [
+																			"scriptName",
+																			"outcome",
+																			"eventType",
+																			"wallTimeMs",
+																			"cpuTimeMs",
+																			"requestId"
+																		],
+																		"type": "object"
+																	}
+																],
+																"description": "Cloudflare Workers event information that enriches your logs for identifying and debugging issues."
+															},
+															"dataset": {
+																"description": "The dataset this event belongs to (e.g. cloudflare-workers).",
+																"type": "string"
+															},
+															"source": {
+																"anyOf": [
+																	{
+																		"type": "string"
+																	},
+																	{
+																		"type": "object"
+																	}
+																],
+																"description": "Raw log payload. May be a string or a structured object depending on how the log was emitted."
+															},
+															"timestamp": {
+																"description": "Event timestamp as a Unix epoch in milliseconds.",
+																"minimum": 0,
+																"type": "integer"
+															}
+														},
+														"required": [
+															"dataset",
+															"timestamp",
+															"source",
+															"$metadata"
+														],
+														"type": "object"
+													},
+													"type": "array"
+												},
+												"fields": {
+													"description": "List of fields discovered in the matched events. Useful for building dynamic UIs.",
+													"items": {
+														"properties": {
+															"key": {
+																"description": "Field name present in the matched events.",
+																"type": "string"
+															},
+															"type": {
+																"description": "Data type of the field (string, number, or boolean).",
+																"type": "string"
+															}
+														},
+														"required": [
+															"key",
+															"type"
+														],
+														"type": "object"
+													},
+													"type": "array"
+												},
+												"series": {
+													"description": "Time-series data for the matched events, bucketed by the query granularity.",
+													"items": {
+														"properties": {
+															"data": {
+																"items": {
+																	"properties": {
+																		"aggregates": {
+																			"properties": {
+																				"_count": {
+																					"deprecated": true,
+																					"exclusiveMinimum": true,
+																					"minimum": 0,
+																					"type": "integer"
+																				},
+																				"_firstSeen": {
+																					"deprecated": true,
+																					"type": "string"
+																				},
+																				"_interval": {
+																					"deprecated": true,
+																					"exclusiveMinimum": true,
+																					"minimum": 0,
+																					"type": "number"
+																				},
+																				"_lastSeen": {
+																					"deprecated": true,
+																					"type": "string"
+																				},
+																				"bin": {
+																					"deprecated": true,
+																					"type": "object"
+																				}
+																			},
+																			"required": [
+																				"_count",
+																				"_interval"
+																			],
+																			"type": "object"
+																		},
+																		"count": {
+																			"type": "number"
+																		},
+																		"errors": {
+																			"type": "number"
+																		},
+																		"groups": {
+																			"additionalProperties": {
+																				"anyOf": [
+																					{
+																						"type": "string"
+																					},
+																					{
+																						"type": "number"
+																					},
+																					{
+																						"type": "boolean"
+																					}
+																				]
+																			},
+																			"description": "Groups in the query results.",
+																			"type": "object"
+																		},
+																		"interval": {
+																			"type": "number"
+																		},
+																		"sampleInterval": {
+																			"type": "number"
+																		}
+																	},
+																	"required": [
+																		"aggregates",
+																		"count",
+																		"interval",
+																		"sampleInterval"
+																	],
+																	"type": "object"
+																},
+																"type": "array"
+															},
+															"time": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"time",
+															"data"
+														],
+														"type": "object"
+													},
+													"type": "array"
+												}
+											},
+											"type": "object"
+										},
+										"invocations": {
+											"additionalProperties": {
+												"items": {
+													"additionalProperties": false,
+													"description": "A single telemetry event representing a log line, span, or metric data point emitted by a Worker.",
+													"properties": {
+														"$containers": {
+															"description": "Cloudflare Containers event information that enriches your logs for identifying and debugging issues.",
+															"type": "object"
+														},
+														"$metadata": {
+															"description": "Structured metadata extracted from the event. These fields are indexed and available for filtering and aggregation.",
+															"properties": {
+																"account": {
+																	"description": "Cloudflare account identifier.",
+																	"type": "string"
+																},
+																"cloudService": {
+																	"description": "Cloudflare product that generated this event (e.g. workers, pages).",
+																	"type": "string"
+																},
+																"coldStart": {
+																	"description": "Whether this was a cold start (1) or warm invocation (0).",
+																	"exclusiveMinimum": true,
+																	"minimum": 0,
+																	"type": "integer"
+																},
+																"cost": {
+																	"description": "Estimated cost units for this invocation.",
+																	"exclusiveMinimum": true,
+																	"minimum": 0,
+																	"type": "integer"
+																},
+																"duration": {
+																	"description": "Span duration in milliseconds.",
+																	"exclusiveMinimum": true,
+																	"minimum": 0,
+																	"type": "integer"
+																},
+																"endTime": {
+																	"description": "Span end time as a Unix epoch in milliseconds.",
+																	"minimum": 0,
+																	"type": "integer"
+																},
+																"error": {
+																	"description": "Error message, present when the log represents an error.",
+																	"type": "string"
+																},
+																"errorTemplate": {
+																	"description": "Templatized version of the error message used for grouping similar errors.",
+																	"type": "string"
+																},
+																"fingerprint": {
+																	"description": "Content-based fingerprint used to group similar events.",
+																	"type": "string"
+																},
+																"id": {
+																	"description": "Unique event ID. Use as the cursor value for offset-based pagination.",
+																	"type": "string"
+																},
+																"level": {
+																	"description": "Log level (e.g. log, debug, info, warn, error).",
+																	"type": "string"
+																},
+																"message": {
+																	"description": "Log message text.",
+																	"type": "string"
+																},
+																"messageTemplate": {
+																	"description": "Templatized version of the log message used for grouping similar messages.",
+																	"type": "string"
+																},
+																"metricName": {
+																	"description": "Metric name when the event represents a metric data point.",
+																	"type": "string"
+																},
+																"origin": {
+																	"description": "Origin of the event (e.g. fetch, scheduled, queue).",
+																	"type": "string"
+																},
+																"parentSpanId": {
+																	"description": "Span ID of the parent span in the trace hierarchy.",
+																	"type": "string"
+																},
+																"provider": {
+																	"description": "Infrastructure provider identifier.",
+																	"type": "string"
+																},
+																"region": {
+																	"description": "Cloudflare data center / region that handled the request.",
+																	"type": "string"
+																},
+																"requestId": {
+																	"description": "Cloudflare request ID that ties all logs from a single invocation together.",
+																	"type": "string"
+																},
+																"service": {
+																	"description": "Worker script name that produced this event.",
+																	"type": "string"
+																},
+																"spanId": {
+																	"description": "Span ID for this individual unit of work within a trace.",
+																	"type": "string"
+																},
+																"spanName": {
+																	"description": "Human-readable name for this span.",
+																	"type": "string"
+																},
+																"stackId": {
+																	"description": "Stack / deployment identifier.",
+																	"type": "string"
+																},
+																"startTime": {
+																	"description": "Span start time as a Unix epoch in milliseconds.",
+																	"minimum": 0,
+																	"type": "integer"
+																},
+																"statusCode": {
+																	"description": "HTTP response status code returned by the Worker.",
+																	"exclusiveMinimum": true,
+																	"minimum": 0,
+																	"type": "integer"
+																},
+																"traceDuration": {
+																	"description": "Total duration of the entire trace in milliseconds.",
+																	"exclusiveMinimum": true,
+																	"minimum": 0,
+																	"type": "integer"
+																},
+																"traceId": {
+																	"description": "Distributed trace ID linking spans across services.",
+																	"type": "string"
+																},
+																"transactionName": {
+																	"description": "Logical transaction name for this request.",
+																	"type": "string"
+																},
+																"trigger": {
+																	"description": "What triggered the invocation (e.g. GET /users, POST /orders, queue message).",
+																	"type": "string"
+																},
+																"type": {
+																	"description": "Event type classifier (e.g. cf-worker-event, cf-worker-log).",
+																	"type": "string"
+																},
+																"url": {
+																	"description": "Request URL that triggered the Worker invocation.",
+																	"type": "string"
+																}
+															},
+															"required": [
+																"id"
+															],
+															"type": "object"
+														},
+														"$workers": {
+															"anyOf": [
+																{
+																	"properties": {
+																		"durableObjectId": {
+																			"type": "string"
+																		},
+																		"entrypoint": {
+																			"type": "string"
+																		},
+																		"event": {
+																			"additionalProperties": true,
+																			"type": "object"
+																		},
+																		"eventType": {
+																			"enum": [
+																				"fetch",
+																				"scheduled",
+																				"alarm",
+																				"cron",
+																				"queue",
+																				"email",
+																				"tail",
+																				"rpc",
+																				"websocket",
+																				"workflow",
+																				"unknown"
+																			],
+																			"type": "string"
+																		},
+																		"executionModel": {
+																			"enum": [
+																				"durableObject",
+																				"stateless"
+																			],
+																			"type": "string"
+																		},
+																		"outcome": {
+																			"type": "string"
+																		},
+																		"requestId": {
+																			"type": "string"
+																		},
+																		"scriptName": {
+																			"type": "string"
+																		},
+																		"scriptVersion": {
+																			"properties": {
+																				"id": {
+																					"type": "string"
+																				},
+																				"message": {
+																					"type": "string"
+																				},
+																				"tag": {
+																					"type": "string"
+																				}
+																			},
+																			"type": "object"
+																		},
+																		"spanId": {
+																			"type": "string"
+																		},
+																		"traceId": {
+																			"type": "string"
+																		},
+																		"truncated": {
+																			"type": "boolean"
+																		}
+																	},
+																	"required": [
+																		"scriptName",
+																		"eventType",
+																		"requestId"
+																	],
+																	"type": "object"
+																},
+																{
+																	"properties": {
+																		"cpuTimeMs": {
+																			"type": "number"
+																		},
+																		"diagnosticsChannelEvents": {
+																			"items": {
+																				"properties": {
+																					"channel": {
+																						"type": "string"
+																					},
+																					"message": {
+																						"type": "string"
+																					},
+																					"timestamp": {
+																						"type": "number"
+																					}
+																				},
+																				"required": [
+																					"timestamp",
+																					"channel",
+																					"message"
+																				],
+																				"type": "object"
+																			},
+																			"type": "array"
+																		},
+																		"dispatchNamespace": {
+																			"type": "string"
+																		},
+																		"durableObjectId": {
+																			"type": "string"
+																		},
+																		"entrypoint": {
+																			"type": "string"
+																		},
+																		"event": {
+																			"additionalProperties": true,
+																			"type": "object"
+																		},
+																		"eventType": {
+																			"enum": [
+																				"fetch",
+																				"scheduled",
+																				"alarm",
+																				"cron",
+																				"queue",
+																				"email",
+																				"tail",
+																				"rpc",
+																				"websocket",
+																				"workflow",
+																				"unknown"
+																			],
+																			"type": "string"
+																		},
+																		"executionModel": {
+																			"enum": [
+																				"durableObject",
+																				"stateless"
+																			],
+																			"type": "string"
+																		},
+																		"outcome": {
+																			"type": "string"
+																		},
+																		"requestId": {
+																			"type": "string"
+																		},
+																		"scriptName": {
+																			"type": "string"
+																		},
+																		"scriptVersion": {
+																			"properties": {
+																				"id": {
+																					"type": "string"
+																				},
+																				"message": {
+																					"type": "string"
+																				},
+																				"tag": {
+																					"type": "string"
+																				}
+																			},
+																			"type": "object"
+																		},
+																		"spanId": {
+																			"type": "string"
+																		},
+																		"traceId": {
+																			"type": "string"
+																		},
+																		"truncated": {
+																			"type": "boolean"
+																		},
+																		"wallTimeMs": {
+																			"type": "number"
+																		}
+																	},
+																	"required": [
+																		"scriptName",
+																		"outcome",
+																		"eventType",
+																		"wallTimeMs",
+																		"cpuTimeMs",
+																		"requestId"
+																	],
+																	"type": "object"
+																}
+															],
+															"description": "Cloudflare Workers event information that enriches your logs for identifying and debugging issues."
+														},
+														"dataset": {
+															"description": "The dataset this event belongs to (e.g. cloudflare-workers).",
+															"type": "string"
+														},
+														"source": {
+															"anyOf": [
+																{
+																	"type": "string"
+																},
+																{
+																	"type": "object"
+																}
+															],
+															"description": "Raw log payload. May be a string or a structured object depending on how the log was emitted."
+														},
+														"timestamp": {
+															"description": "Event timestamp as a Unix epoch in milliseconds.",
+															"minimum": 0,
+															"type": "integer"
+														}
+													},
+													"required": [
+														"dataset",
+														"timestamp",
+														"source",
+														"$metadata"
+													],
+													"type": "object"
+												},
+												"type": "array"
+											},
+											"description": "Events grouped by invocation (request ID). Present when the query view is 'invocations'. Each key is a request ID mapping to all events from that invocation.",
+											"type": "object"
+										},
+										"run": {
+											"description": "The query run metadata including the query definition, execution status, and timeframe.",
+											"properties": {
+												"accountId": {
+													"description": "Cloudflare account ID that owns this query run.",
+													"type": "string"
+												},
+												"created": {
+													"description": "ISO-8601 timestamp when the query run was created.",
+													"type": "string"
+												},
+												"dry": {
+													"description": "Whether this was a dry run (results not persisted).",
+													"type": "boolean"
+												},
+												"granularity": {
+													"description": "Number of time-series buckets used for the query. Higher values produce more detailed series data.",
+													"type": "number"
+												},
+												"id": {
+													"description": "Unique identifier for this query run.",
+													"type": "string"
+												},
+												"query": {
+													"allOf": [
+														{
+															"properties": {
+																"adhoc": {
+																	"description": "If the query wasn't explcitly saved",
+																	"type": "boolean"
+																},
+																"created": {
+																	"type": "string"
+																},
+																"createdBy": {
+																	"type": "string"
+																},
+																"description": {
+																	"example": "Query description",
+																	"maxLength": 1000,
+																	"nullable": true,
+																	"type": "string"
+																},
+																"id": {
+																	"type": "string"
+																},
+																"name": {
+																	"description": "Query name",
+																	"maxLength": 250,
+																	"minLength": 1,
+																	"type": "string"
+																},
+																"parameters": {
+																	"properties": {
+																		"calculations": {
+																			"description": "Create Calculations to compute as part of the query.",
+																			"items": {
+																				"properties": {
+																					"alias": {
+																						"type": "string"
+																					},
+																					"key": {
+																						"type": "string"
+																					},
+																					"keyType": {
+																						"enum": [
+																							"string",
+																							"number",
+																							"boolean"
+																						],
+																						"type": "string"
+																					},
+																					"operator": {
+																						"enum": [
+																							"uniq",
+																							"count",
+																							"max",
+																							"min",
+																							"sum",
+																							"avg",
+																							"median",
+																							"p001",
+																							"p01",
+																							"p05",
+																							"p10",
+																							"p25",
+																							"p75",
+																							"p90",
+																							"p95",
+																							"p99",
+																							"p999",
+																							"stddev",
+																							"variance",
+																							"COUNT_DISTINCT",
+																							"COUNT",
+																							"MAX",
+																							"MIN",
+																							"SUM",
+																							"AVG",
+																							"MEDIAN",
+																							"P001",
+																							"P01",
+																							"P05",
+																							"P10",
+																							"P25",
+																							"P75",
+																							"P90",
+																							"P95",
+																							"P99",
+																							"P999",
+																							"STDDEV",
+																							"VARIANCE"
+																						],
+																						"type": "string"
+																					}
+																				},
+																				"required": [
+																					"operator"
+																				],
+																				"type": "object"
+																			},
+																			"type": "array"
+																		},
+																		"datasets": {
+																			"description": "Set the Datasets to query. Leave it empty to query all the datasets.",
+																			"example": [],
+																			"items": {
+																				"type": "string"
+																			},
+																			"type": "array"
+																		},
+																		"filterCombination": {
+																			"description": "Set a Flag to describe how to combine the filters on the query.",
+																			"enum": [
+																				"and",
+																				"or",
+																				"AND",
+																				"OR"
+																			],
+																			"type": "string"
+																		},
+																		"filters": {
+																			"description": "Configure the Filters to apply to the query. Supports nested groups via kind: 'group'.",
+																			"items": {
+																				"anyOf": [
+																					{
+																						"properties": {
+																							"filterCombination": {
+																								"enum": [
+																									"and",
+																									"or",
+																									"AND",
+																									"OR"
+																								],
+																								"type": "string"
+																							},
+																							"filters": {
+																								"items": "[Circular ~.GET /accounts/{account_id}/workers/observability/shared/query/{id}.responses.200.content.application/json.schema.properties.result.properties.run.properties.query.allOf.0.properties.parameters.properties.filters.items]",
+																								"minItems": 1,
+																								"type": "array"
+																							},
+																							"kind": {
+																								"enum": [
+																									"group"
+																								],
+																								"type": "string"
+																							}
+																						},
+																						"required": [
+																							"kind",
+																							"filterCombination",
+																							"filters"
+																						],
+																						"type": "object"
+																					},
+																					{
+																						"description": "A filter condition applied to query results. Use the keys and values endpoints to discover available fields and their values before constructing filters.",
+																						"properties": {
+																							"key": {
+																								"description": "Filter field name. Use verified keys from previous query results or the keys endpoint. Common keys include $metadata.service, $metadata.origin, $metadata.trigger, $metadata.message, and $metadata.error.",
+																								"type": "string"
+																							},
+																							"kind": {
+																								"description": "Discriminator for leaf filter nodes. Always 'filter' when present; may be omitted.",
+																								"enum": [
+																									"filter"
+																								],
+																								"type": "string"
+																							},
+																							"operation": {
+																								"description": "Comparison operator. String operators: includes, not_includes, starts_with, regex. Existence: exists, is_null. Set membership: in, not_in (comma-separated values). Numeric: eq, neq, gt, gte, lt, lte.",
+																								"enum": [
+																									"includes",
+																									"not_includes",
+																									"starts_with",
+																									"regex",
+																									"exists",
+																									"is_null",
+																									"in",
+																									"not_in",
+																									"eq",
+																									"neq",
+																									"gt",
+																									"gte",
+																									"lt",
+																									"lte",
+																									"=",
+																									"!=",
+																									">",
+																									">=",
+																									"<",
+																									"<=",
+																									"INCLUDES",
+																									"DOES_NOT_INCLUDE",
+																									"MATCH_REGEX",
+																									"EXISTS",
+																									"DOES_NOT_EXIST",
+																									"IN",
+																									"NOT_IN",
+																									"STARTS_WITH"
+																								],
+																								"type": "string"
+																							},
+																							"type": {
+																								"description": "Data type of the filter field. Must match the actual type of the key being filtered.",
+																								"enum": [
+																									"string",
+																									"number",
+																									"boolean"
+																								],
+																								"type": "string"
+																							},
+																							"value": {
+																								"anyOf": [
+																									{
+																										"type": "string"
+																									},
+																									{
+																										"type": "number"
+																									},
+																									{
+																										"type": "boolean"
+																									}
+																								],
+																								"description": "Comparison value. Must match actual values in your data — verify with the values endpoint. Ensure the value type (string/number/boolean) matches the field type. String comparisons are case-sensitive. Regex uses RE2 syntax (no lookaheads/lookbehinds)."
+																							}
+																						},
+																						"required": [
+																							"key",
+																							"operation",
+																							"type"
+																						],
+																						"type": "object"
+																					}
+																				],
+																				"description": "Supports nested groups via kind: 'group'.",
+																				"type": "object"
+																			},
+																			"type": "array"
+																		},
+																		"groupBys": {
+																			"description": "Define how to group the results of the query.",
+																			"items": {
+																				"properties": {
+																					"type": {
+																						"enum": [
+																							"string",
+																							"number",
+																							"boolean"
+																						],
+																						"type": "string"
+																					},
+																					"value": {
+																						"type": "string"
+																					}
+																				},
+																				"required": [
+																					"type",
+																					"value"
+																				],
+																				"type": "object"
+																			},
+																			"type": "array"
+																		},
+																		"havings": {
+																			"description": "Configure the Having clauses that filter on calculations in the query result.",
+																			"items": {
+																				"properties": {
+																					"key": {
+																						"type": "string"
+																					},
+																					"operation": {
+																						"enum": [
+																							"eq",
+																							"neq",
+																							"gt",
+																							"gte",
+																							"lt",
+																							"lte"
+																						],
+																						"type": "string"
+																					},
+																					"value": {
+																						"type": "number"
+																					}
+																				},
+																				"required": [
+																					"key",
+																					"operation",
+																					"value"
+																				],
+																				"type": "object"
+																			},
+																			"type": "array"
+																		},
+																		"limit": {
+																			"description": "Set a limit on the number of results / records returned by the query",
+																			"maximum": 100,
+																			"minimum": 0,
+																			"type": "integer"
+																		},
+																		"needle": {
+																			"description": "Define an expression to search using full-text search.",
+																			"properties": {
+																				"isRegex": {
+																					"type": "boolean"
+																				},
+																				"matchCase": {
+																					"type": "boolean"
+																				},
+																				"value": {
+																					"allOf": [
+																						{
+																							"anyOf": [
+																								{
+																									"type": "string"
+																								},
+																								{
+																									"type": "number"
+																								},
+																								{
+																									"type": "boolean"
+																								}
+																							]
+																						},
+																						{
+																							"maxLength": 1000,
+																							"type": "string"
+																						}
+																					]
+																				}
+																			},
+																			"required": [
+																				"value"
+																			],
+																			"type": "object"
+																		},
+																		"orderBy": {
+																			"description": "Configure the order of the results returned by the query.",
+																			"properties": {
+																				"order": {
+																					"description": "Set the order of the results",
+																					"enum": [
+																						"asc",
+																						"desc"
+																					],
+																					"type": "string"
+																				},
+																				"value": {
+																					"description": "Configure which Calculation to order the results by.",
+																					"type": "string"
+																				}
+																			},
+																			"required": [
+																				"value"
+																			],
+																			"type": "object"
+																		}
+																	},
+																	"type": "object"
+																},
+																"updated": {
+																	"type": "string"
+																},
+																"updatedBy": {
+																	"type": "string"
+																}
+															},
+															"required": [
+																"id",
+																"name",
+																"description",
+																"adhoc",
+																"parameters",
+																"created",
+																"createdBy",
+																"updated",
+																"updatedBy"
+															],
+															"type": "object"
+														},
+														{
+															"properties": {
+																"created": {
+																	"anyOf": [
+																		{
+																			"type": "string"
+																		},
+																		{
+																			"type": "string"
+																		}
+																	]
+																},
+																"updated": {
+																	"anyOf": [
+																		{
+																			"type": "string"
+																		},
+																		{
+																			"type": "string"
+																		}
+																	]
+																}
+															},
+															"type": "object"
+														}
+													],
+													"description": "A saved query definition with its parameters, metadata, and ownership information."
+												},
+												"statistics": {
+													"description": "Query performance statistics from the database (does not include network latency).",
+													"properties": {
+														"abr_level": {
+															"description": "The level of Adaptive Bit Rate (ABR) sampling used for the query. If empty the ABR level is 1",
+															"type": "number"
+														},
+														"bytes_read": {
+															"description": "Number of uncompressed bytes read from the table.",
+															"type": "number"
+														},
+														"elapsed": {
+															"description": "Time in seconds for the query to run.",
+															"type": "number"
+														},
+														"rows_read": {
+															"description": "Number of rows scanned from the table.",
+															"type": "number"
+														}
+													},
+													"required": [
+														"elapsed",
+														"rows_read",
+														"bytes_read"
+													],
+													"type": "object"
+												},
+												"status": {
+													"description": "Current execution status of the query run.",
+													"enum": [
+														"STARTED",
+														"COMPLETED"
+													],
+													"type": "string"
+												},
+												"timeframe": {
+													"description": "Time range for the query execution",
+													"properties": {
+														"from": {
+															"description": "Start timestamp for the query timeframe (Unix timestamp in milliseconds)",
+															"type": "number"
+														},
+														"to": {
+															"description": "End timestamp for the query timeframe (Unix timestamp in milliseconds)",
+															"type": "number"
+														}
+													},
+													"required": [
+														"to",
+														"from"
+													],
+													"type": "object"
+												},
+												"updated": {
+													"description": "ISO-8601 timestamp when the query run was last updated.",
+													"type": "string"
+												},
+												"userId": {
+													"description": "ID of the user who initiated the query run.",
+													"type": "string"
+												}
+											},
+											"required": [
+												"id",
+												"query",
+												"accountId",
+												"timeframe",
+												"userId",
+												"status",
+												"granularity",
+												"dry"
+											],
+											"type": "object"
+										},
+										"statistics": {
+											"description": "Query performance statistics from the database. Includes execution time, rows scanned, and bytes read. Does not include network latency.",
+											"properties": {
+												"abr_level": {
+													"description": "The level of Adaptive Bit Rate (ABR) sampling used for the query. If empty the ABR level is 1",
+													"type": "number"
+												},
+												"bytes_read": {
+													"description": "Number of uncompressed bytes read from the table.",
+													"type": "number"
+												},
+												"elapsed": {
+													"description": "Time in seconds for the query to run.",
+													"type": "number"
+												},
+												"rows_read": {
+													"description": "Number of rows scanned from the table.",
+													"type": "number"
+												}
+											},
+											"required": [
+												"elapsed",
+												"rows_read",
+												"bytes_read"
+											],
+											"type": "object"
+										},
+										"traces": {
+											"description": "Trace summaries matching the query. Present when the query view is 'traces'. Each entry represents a distributed trace with its spans, duration, and services involved.",
+											"items": {
+												"properties": {
+													"errors": {
+														"description": "Error messages encountered during the trace, if any.",
+														"items": {
+															"type": "string"
+														},
+														"type": "array"
+													},
+													"rootSpanName": {
+														"description": "Name of the root span that initiated the trace.",
+														"type": "string"
+													},
+													"rootTransactionName": {
+														"description": "Logical transaction name for the root span.",
+														"type": "string"
+													},
+													"service": {
+														"description": "List of Worker services involved in the trace.",
+														"items": {
+															"type": "string"
+														},
+														"type": "array"
+													},
+													"spans": {
+														"description": "Total number of spans in the trace.",
+														"type": "number"
+													},
+													"traceDurationMs": {
+														"description": "Total duration of the trace in milliseconds.",
+														"type": "number"
+													},
+													"traceEndMs": {
+														"description": "Trace end time as a Unix epoch in milliseconds.",
+														"type": "number"
+													},
+													"traceId": {
+														"description": "Unique identifier for the distributed trace.",
+														"type": "string"
+													},
+													"traceStartMs": {
+														"description": "Trace start time as a Unix epoch in milliseconds.",
+														"type": "number"
+													}
+												},
+												"required": [
+													"traceId",
+													"spans",
+													"service",
+													"traceStartMs",
+													"traceEndMs",
+													"traceDurationMs",
+													"rootSpanName",
+													"rootTransactionName"
+												],
+												"type": "object"
+											},
+											"type": "array"
+										}
+									},
+									"required": [
+										"run",
+										"statistics"
+									],
+									"type": "object"
+								},
+								"success": {
+									"enum": [
+										true
+									],
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"messages",
+								"success",
+								"errors",
+								"result"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Successful request"
+			},
+			"400": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"detail": {
+												"type": "string"
+											},
+											"message": {
+												"enum": [
+													"Bad Request"
+												],
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"messages": {
+									"items": {
+										"properties": {
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"success": {
+									"enum": [
+										false
+									],
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"errors",
+								"success",
+								"messages"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Bad Request"
+			},
+			"401": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"detail": {
+												"type": "string"
+											},
+											"message": {
+												"enum": [
+													"Unauthorized"
+												],
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"messages": {
+									"items": {
+										"properties": {
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"success": {
+									"enum": [
+										false
+									],
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"errors",
+								"success",
+								"messages"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Unauthorized"
+			},
+			"500": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"detail": {
+												"type": "string"
+											},
+											"message": {
+												"enum": [
+													"Internal error"
+												],
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"messages": {
+									"items": {
+										"properties": {
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"success": {
+									"enum": [
+										false
+									],
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"errors",
+								"success",
+								"messages"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Internal error"
+			}
+		},
+		"summary": "View a query that has been shared",
+		"tags": [
+			"Shared",
+			"Query"
+		],
+		"x-api-token-group": [
+			"Workers Observability Write",
+			"Workers Observability Read"
+		]
+	},
+	"POST /accounts/{account_id}/workers/observability/shared/query": {
+		"description": "Shared queries store the results of a previously run query, allowing you to share the results with others.",
+		"operationId": "shared.query.post",
+		"requestBody": {
+			"content": {
+				"application/json": {
+					"schema": {
+						"properties": {
+							"chart": {
+								"description": "Whether to include timeseties data in the response",
+								"type": "boolean"
+							},
+							"compare": {
+								"description": "Whether to include comparison data with previous time periods",
+								"type": "boolean"
+							},
+							"dry": {
+								"default": false,
+								"description": "Whether to perform a dry run without saving the results of the query. Useful for validation",
+								"type": "boolean"
+							},
+							"granularity": {
+								"description": "This is only used when the view is calculations. Leaving it empty lets Workers Observability detect the correct granularity.",
+								"type": "number"
+							},
+							"ignoreSeries": {
+								"default": false,
+								"description": "Whether to ignore time-series data in the results and return only aggregated values",
+								"type": "boolean"
+							},
+							"limit": {
+								"default": 50,
+								"description": "Use this limit to cap the number of events returned when the view is events.",
+								"maximum": 2000,
+								"type": "number"
+							},
+							"offset": {
+								"description": "Cursor pagination for event/trace/invocation views. Pass the last item's $metadata.id as the next offset.",
+								"type": "string"
+							},
+							"offsetBy": {
+								"description": "Numeric offset for pattern results (top-N list). Use with limit to page pattern groups; not used by cursor pagination.",
+								"type": "number"
+							},
+							"offsetDirection": {
+								"description": "Direction for offset-based pagination (e.g., 'next', 'prev')",
+								"type": "string"
+							},
+							"parameters": {
+								"description": "Optional parameters to pass to the query execution",
+								"properties": {
+									"calculations": {
+										"description": "Create Calculations to compute as part of the query.",
+										"items": {
+											"properties": {
+												"alias": {
+													"type": "string"
+												},
+												"key": {
+													"description": "The key to use for the calculation. This key must exist in the logs. Use the observability_keys response to confirm. Do not guess keys.",
+													"type": "string"
+												},
+												"keyType": {
+													"enum": [
+														"string",
+														"number",
+														"boolean"
+													],
+													"type": "string"
+												},
+												"operator": {
+													"enum": [
+														"uniq",
+														"count",
+														"max",
+														"min",
+														"sum",
+														"avg",
+														"median",
+														"p001",
+														"p01",
+														"p05",
+														"p10",
+														"p25",
+														"p75",
+														"p90",
+														"p95",
+														"p99",
+														"p999",
+														"stddev",
+														"variance",
+														"COUNT_DISTINCT",
+														"COUNT",
+														"MAX",
+														"MIN",
+														"SUM",
+														"AVG",
+														"MEDIAN",
+														"P001",
+														"P01",
+														"P05",
+														"P10",
+														"P25",
+														"P75",
+														"P90",
+														"P95",
+														"P99",
+														"P999",
+														"STDDEV",
+														"VARIANCE"
+													],
+													"type": "string"
+												}
+											},
+											"required": [
+												"operator"
+											],
+											"type": "object"
+										},
+										"type": "array"
+									},
+									"datasets": {
+										"description": "Set the Datasets to query. Leave it empty to query all the datasets.",
+										"example": [],
+										"items": {
+											"type": "string"
+										},
+										"type": "array"
+									},
+									"filterCombination": {
+										"description": "Set a Flag to describe how to combine the filters on the query.",
+										"enum": [
+											"and",
+											"or",
+											"AND",
+											"OR"
+										],
+										"type": "string"
+									},
+									"filters": {
+										"description": "Configure the Filters to apply to the query. Supports nested groups via kind: 'group'. Maximum nesting depth is 4.",
+										"items": {
+											"allOf": [
+												{
+													"anyOf": [
+														{
+															"properties": {
+																"filterCombination": {
+																	"enum": [
+																		"and",
+																		"or",
+																		"AND",
+																		"OR"
+																	],
+																	"type": "string"
+																},
+																"filters": {
+																	"items": "[Circular ~.POST /accounts/{account_id}/workers/observability/shared/query.requestBody.content.application/json.schema.properties.parameters.properties.filters.items.allOf.0]",
+																	"minItems": 1,
+																	"type": "array"
+																},
+																"kind": {
+																	"enum": [
+																		"group"
+																	],
+																	"type": "string"
+																}
+															},
+															"required": [
+																"kind",
+																"filterCombination",
+																"filters"
+															],
+															"type": "object"
+														},
+														{
+															"description": "A filter condition applied to query results. Use the keys and values endpoints to discover available fields and their values before constructing filters.",
+															"properties": {
+																"key": {
+																	"description": "Filter field name. Use verified keys from previous query results or the keys endpoint. Common keys include $metadata.service, $metadata.origin, $metadata.trigger, $metadata.message, and $metadata.error.",
+																	"type": "string"
+																},
+																"kind": {
+																	"description": "Discriminator for leaf filter nodes. Always 'filter' when present; may be omitted.",
+																	"enum": [
+																		"filter"
+																	],
+																	"type": "string"
+																},
+																"operation": {
+																	"description": "Comparison operator. String operators: includes, not_includes, starts_with, regex. Existence: exists, is_null. Set membership: in, not_in (comma-separated values). Numeric: eq, neq, gt, gte, lt, lte.",
+																	"enum": [
+																		"includes",
+																		"not_includes",
+																		"starts_with",
+																		"regex",
+																		"exists",
+																		"is_null",
+																		"in",
+																		"not_in",
+																		"eq",
+																		"neq",
+																		"gt",
+																		"gte",
+																		"lt",
+																		"lte",
+																		"=",
+																		"!=",
+																		">",
+																		">=",
+																		"<",
+																		"<=",
+																		"INCLUDES",
+																		"DOES_NOT_INCLUDE",
+																		"MATCH_REGEX",
+																		"EXISTS",
+																		"DOES_NOT_EXIST",
+																		"IN",
+																		"NOT_IN",
+																		"STARTS_WITH"
+																	],
+																	"type": "string"
+																},
+																"type": {
+																	"description": "Data type of the filter field. Must match the actual type of the key being filtered.",
+																	"enum": [
+																		"string",
+																		"number",
+																		"boolean"
+																	],
+																	"type": "string"
+																},
+																"value": {
+																	"anyOf": [
+																		{
+																			"type": "string"
+																		},
+																		{
+																			"type": "number"
+																		},
+																		{
+																			"type": "boolean"
+																		}
+																	],
+																	"description": "Comparison value. Must match actual values in your data — verify with the values endpoint. Ensure the value type (string/number/boolean) matches the field type. String comparisons are case-sensitive. Regex uses RE2 syntax (no lookaheads/lookbehinds)."
+																}
+															},
+															"required": [
+																"key",
+																"operation",
+																"type"
+															],
+															"type": "object"
+														}
+													],
+													"description": "Supports nested groups via kind: 'group'.",
+													"type": "object"
+												},
+												{
+													"description": "Supports nested groups via kind: 'group'. Maximum nesting depth is 4."
+												}
+											]
+										},
+										"type": "array"
+									},
+									"groupBys": {
+										"description": "Define how to group the results of the query.",
+										"items": {
+											"properties": {
+												"type": {
+													"enum": [
+														"string",
+														"number",
+														"boolean"
+													],
+													"type": "string"
+												},
+												"value": {
+													"type": "string"
+												}
+											},
+											"required": [
+												"type",
+												"value"
+											],
+											"type": "object"
+										},
+										"type": "array"
+									},
+									"havings": {
+										"description": "Configure the Having clauses that filter on calculations in the query result.",
+										"items": {
+											"properties": {
+												"key": {
+													"type": "string"
+												},
+												"operation": {
+													"enum": [
+														"eq",
+														"neq",
+														"gt",
+														"gte",
+														"lt",
+														"lte"
+													],
+													"type": "string"
+												},
+												"value": {
+													"type": "number"
+												}
+											},
+											"required": [
+												"key",
+												"operation",
+												"value"
+											],
+											"type": "object"
+										},
+										"type": "array"
+									},
+									"limit": {
+										"description": "Set a limit on the number of results / records returned by the query",
+										"maximum": 2000,
+										"minimum": 0,
+										"type": "integer"
+									},
+									"needle": {
+										"description": "Define an expression to search using full-text search.",
+										"properties": {
+											"isRegex": {
+												"type": "boolean"
+											},
+											"matchCase": {
+												"type": "boolean"
+											},
+											"value": {
+												"allOf": [
+													{
+														"anyOf": [
+															{
+																"type": "string"
+															},
+															{
+																"type": "number"
+															},
+															{
+																"type": "boolean"
+															}
+														]
+													},
+													{
+														"maxLength": 1000,
+														"type": "string"
+													}
+												]
+											}
+										},
+										"required": [
+											"value"
+										],
+										"type": "object"
+									},
+									"orderBy": {
+										"description": "Configure the order of the results returned by the query.",
+										"properties": {
+											"order": {
+												"description": "Set the order of the results",
+												"enum": [
+													"asc",
+													"desc"
+												],
+												"type": "string"
+											},
+											"value": {
+												"description": "Configure which Calculation to order the results by.",
+												"type": "string"
+											}
+										},
+										"required": [
+											"value"
+										],
+										"type": "object"
+									}
+								},
+								"type": "object"
+							},
+							"queryId": {
+								"description": "Unique identifier for the query to execute",
+								"type": "string"
+							},
+							"timeframe": {
+								"description": "Timeframe for your query using Unix timestamps in milliseconds. Provide from/to epoch ms; narrower timeframes provide faster responses and more specific results.",
+								"properties": {
+									"from": {
+										"description": "Start timestamp for the query timeframe (Unix timestamp in milliseconds)",
+										"type": "number"
+									},
+									"to": {
+										"description": "End timestamp for the query timeframe (Unix timestamp in milliseconds)",
+										"type": "number"
+									}
+								},
+								"required": [
+									"to",
+									"from"
+								],
+								"type": "object"
+							},
+							"view": {
+								"default": "calculations",
+								"description": "Examples by view type. Events: show errors for a worker in the last 30 minutes. Calculations: p99 of wall time or count by status code. Invocations: find a specific request that resulted in a 500.",
+								"enum": [
+									"traces",
+									"events",
+									"calculations",
+									"invocations",
+									"requests",
+									"agents"
+								],
+								"type": "string"
+							}
+						},
+						"required": [
+							"queryId",
+							"timeframe"
+						],
+						"type": "object"
+					}
+				}
+			},
+			"description": "Create a sharable link to a query result.",
+			"required": true
+		},
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"messages": {
+									"items": {
+										"properties": {
+											"message": {
+												"enum": [
+													"Successful request"
+												],
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"result": {
+									"properties": {
+										"id": {
+											"description": "Specify the ID of the shared query.",
+											"type": "string"
+										}
+									},
+									"required": [
+										"id"
+									],
+									"type": "object"
+								},
+								"success": {
+									"enum": [
+										true
+									],
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"messages",
+								"success",
+								"errors",
+								"result"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Successful request"
+			},
+			"400": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"detail": {
+												"type": "string"
+											},
+											"message": {
+												"enum": [
+													"Bad Request"
+												],
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"messages": {
+									"items": {
+										"properties": {
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"success": {
+									"enum": [
+										false
+									],
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"errors",
+								"success",
+								"messages"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Bad Request"
+			},
+			"401": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"detail": {
+												"type": "string"
+											},
+											"message": {
+												"enum": [
+													"Unauthorized"
+												],
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"messages": {
+									"items": {
+										"properties": {
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"success": {
+									"enum": [
+										false
+									],
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"errors",
+								"success",
+								"messages"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Unauthorized"
+			},
+			"500": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"detail": {
+												"type": "string"
+											},
+											"message": {
+												"enum": [
+													"Internal error"
+												],
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"messages": {
+									"items": {
+										"properties": {
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"success": {
+									"enum": [
+										false
+									],
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"errors",
+								"success",
+								"messages"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Internal error"
+			}
+		},
+		"summary": "Create a sharable link to a query result",
+		"tags": [
+			"Shared",
+			"Query"
+		],
+		"x-api-token-group": [
+			"Workers Observability Write"
+		]
+	}
+}

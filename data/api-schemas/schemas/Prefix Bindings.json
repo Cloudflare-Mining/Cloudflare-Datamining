@@ -1,0 +1,2362 @@
+{
+	"DELETE /accounts/{account_id}/dls/regional_services/prefix_bindings/{binding_id}": {
+		"operationId": "publicDeletePrefixBinding",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"format": "int64",
+					"type": "integer"
+				}
+			},
+			{
+				"in": "path",
+				"name": "binding_id",
+				"required": true,
+				"schema": {
+					"description": "Unique identifier for the prefix binding.",
+					"example": "a1b2c3d4-e5f6-7890-abcd-ef1234567890",
+					"type": "string"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"properties": {
+										"messages": {
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object"
+											},
+											"type": "array"
+										},
+										"success": {
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"messages"
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"errors": {
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object"
+											},
+											"maxLength": 0,
+											"type": "array"
+										}
+									}
+								}
+							]
+						}
+					}
+				},
+				"description": "Binding deleted successfully."
+			},
+			"401": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"properties": {
+										"messages": {
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object"
+											},
+											"type": "array"
+										},
+										"success": {
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"messages"
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"errors": {
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object"
+											},
+											"minLength": 1,
+											"type": "array"
+										},
+										"result": {
+											"nullable": true,
+											"type": "object"
+										}
+									},
+									"required": [
+										"errors"
+									]
+								}
+							]
+						}
+					}
+				},
+				"description": "Unauthorized."
+			},
+			"403": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"properties": {
+										"messages": {
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object"
+											},
+											"type": "array"
+										},
+										"success": {
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"messages"
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"errors": {
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object"
+											},
+											"minLength": 1,
+											"type": "array"
+										},
+										"result": {
+											"nullable": true,
+											"type": "object"
+										}
+									},
+									"required": [
+										"errors"
+									]
+								}
+							]
+						}
+					}
+				},
+				"description": "Forbidden."
+			},
+			"404": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"properties": {
+										"messages": {
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object"
+											},
+											"type": "array"
+										},
+										"success": {
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"messages"
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"errors": {
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object"
+											},
+											"minLength": 1,
+											"type": "array"
+										},
+										"result": {
+											"nullable": true,
+											"type": "object"
+										}
+									},
+									"required": [
+										"errors"
+									]
+								}
+							]
+						}
+					}
+				},
+				"description": "Not found."
+			},
+			"500": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"properties": {
+										"messages": {
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object"
+											},
+											"type": "array"
+										},
+										"success": {
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"messages"
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"errors": {
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object"
+											},
+											"minLength": 1,
+											"type": "array"
+										},
+										"result": {
+											"nullable": true,
+											"type": "object"
+										}
+									},
+									"required": [
+										"errors"
+									]
+								}
+							]
+						}
+					}
+				},
+				"description": "Internal server error."
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Delete a DLS prefix binding",
+		"tags": [
+			"Prefix Bindings"
+		]
+	},
+	"GET /accounts/{account_id}/dls/regional_services/prefix_bindings": {
+		"operationId": "publicListPrefixBindings",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"format": "int64",
+					"type": "integer"
+				}
+			},
+			{
+				"description": "Opaque token for cursor-based pagination. Omit for the first page. Pass the value from a previous response to fetch the next page.",
+				"in": "query",
+				"name": "cursor",
+				"schema": {
+					"type": "string"
+				}
+			},
+			{
+				"in": "query",
+				"name": "per_page",
+				"schema": {
+					"default": 25,
+					"maximum": 100,
+					"minimum": 1,
+					"type": "integer"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"code": {
+												"minimum": 1000,
+												"type": "integer"
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"messages": {
+									"items": {
+										"properties": {
+											"code": {
+												"minimum": 1000,
+												"type": "integer"
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"result": {
+									"items": {
+										"properties": {
+											"cidr": {
+												"description": "The CIDR that is bound.",
+												"type": "string"
+											},
+											"id": {
+												"description": "The ID of the binding.",
+												"type": "string"
+											},
+											"prefix_id": {
+												"description": "The ID of the parent prefix.",
+												"type": "string"
+											},
+											"region_key": {
+												"description": "The region key used for the binding.",
+												"maxLength": 128,
+												"minLength": 1,
+												"pattern": "^[a-z0-9_-]+$",
+												"type": "string"
+											}
+										},
+										"required": [
+											"id",
+											"prefix_id",
+											"cidr",
+											"region_key"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"result_info": {
+									"properties": {
+										"count": {
+											"description": "Number of items in the current page.",
+											"type": "integer"
+										},
+										"cursor": {
+											"description": "Opaque cursor for the next page. Empty string when there are no more results.",
+											"type": "string"
+										},
+										"per_page": {
+											"description": "Maximum number of items per page.",
+											"type": "integer"
+										}
+									},
+									"required": [
+										"count",
+										"cursor",
+										"per_page"
+									],
+									"type": "object"
+								},
+								"success": {
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result",
+								"result_info"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "List of bindings."
+			},
+			"400": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"properties": {
+										"messages": {
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object"
+											},
+											"type": "array"
+										},
+										"success": {
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"messages"
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"errors": {
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object"
+											},
+											"minLength": 1,
+											"type": "array"
+										},
+										"result": {
+											"nullable": true,
+											"type": "object"
+										}
+									},
+									"required": [
+										"errors"
+									]
+								}
+							]
+						}
+					}
+				},
+				"description": "Bad request."
+			},
+			"401": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"properties": {
+										"messages": {
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object"
+											},
+											"type": "array"
+										},
+										"success": {
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"messages"
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"errors": {
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object"
+											},
+											"minLength": 1,
+											"type": "array"
+										},
+										"result": {
+											"nullable": true,
+											"type": "object"
+										}
+									},
+									"required": [
+										"errors"
+									]
+								}
+							]
+						}
+					}
+				},
+				"description": "Unauthorized."
+			},
+			"403": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"properties": {
+										"messages": {
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object"
+											},
+											"type": "array"
+										},
+										"success": {
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"messages"
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"errors": {
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object"
+											},
+											"minLength": 1,
+											"type": "array"
+										},
+										"result": {
+											"nullable": true,
+											"type": "object"
+										}
+									},
+									"required": [
+										"errors"
+									]
+								}
+							]
+						}
+					}
+				},
+				"description": "Forbidden."
+			},
+			"500": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"properties": {
+										"messages": {
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object"
+											},
+											"type": "array"
+										},
+										"success": {
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"messages"
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"errors": {
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object"
+											},
+											"minLength": 1,
+											"type": "array"
+										},
+										"result": {
+											"nullable": true,
+											"type": "object"
+										}
+									},
+									"required": [
+										"errors"
+									]
+								}
+							]
+						}
+					}
+				},
+				"description": "Internal server error."
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "List DLS prefix bindings for an account",
+		"tags": [
+			"Prefix Bindings"
+		]
+	},
+	"GET /accounts/{account_id}/dls/regional_services/prefix_bindings/{binding_id}": {
+		"operationId": "publicGetPrefixBinding",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"format": "int64",
+					"type": "integer"
+				}
+			},
+			{
+				"in": "path",
+				"name": "binding_id",
+				"required": true,
+				"schema": {
+					"description": "Unique identifier for the prefix binding.",
+					"example": "a1b2c3d4-e5f6-7890-abcd-ef1234567890",
+					"type": "string"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"properties": {
+												"messages": {
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object"
+													},
+													"type": "array"
+												},
+												"success": {
+													"type": "boolean"
+												}
+											},
+											"required": [
+												"success",
+												"messages"
+											],
+											"type": "object"
+										},
+										{
+											"properties": {
+												"errors": {
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object"
+													},
+													"maxLength": 0,
+													"type": "array"
+												}
+											}
+										}
+									]
+								},
+								{
+									"properties": {
+										"result": {
+											"properties": {
+												"cidr": {
+													"description": "The CIDR that is bound.",
+													"type": "string"
+												},
+												"id": {
+													"description": "The ID of the binding.",
+													"type": "string"
+												},
+												"prefix_id": {
+													"description": "The ID of the parent prefix.",
+													"type": "string"
+												},
+												"region_key": {
+													"description": "The region key used for the binding.",
+													"maxLength": 128,
+													"minLength": 1,
+													"pattern": "^[a-z0-9_-]+$",
+													"type": "string"
+												}
+											},
+											"required": [
+												"id",
+												"prefix_id",
+												"cidr",
+												"region_key"
+											],
+											"type": "object"
+										}
+									},
+									"required": [
+										"result"
+									]
+								}
+							]
+						}
+					}
+				},
+				"description": "Binding found."
+			},
+			"401": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"properties": {
+										"messages": {
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object"
+											},
+											"type": "array"
+										},
+										"success": {
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"messages"
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"errors": {
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object"
+											},
+											"minLength": 1,
+											"type": "array"
+										},
+										"result": {
+											"nullable": true,
+											"type": "object"
+										}
+									},
+									"required": [
+										"errors"
+									]
+								}
+							]
+						}
+					}
+				},
+				"description": "Unauthorized."
+			},
+			"403": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"properties": {
+										"messages": {
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object"
+											},
+											"type": "array"
+										},
+										"success": {
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"messages"
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"errors": {
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object"
+											},
+											"minLength": 1,
+											"type": "array"
+										},
+										"result": {
+											"nullable": true,
+											"type": "object"
+										}
+									},
+									"required": [
+										"errors"
+									]
+								}
+							]
+						}
+					}
+				},
+				"description": "Forbidden."
+			},
+			"404": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"properties": {
+										"messages": {
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object"
+											},
+											"type": "array"
+										},
+										"success": {
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"messages"
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"errors": {
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object"
+											},
+											"minLength": 1,
+											"type": "array"
+										},
+										"result": {
+											"nullable": true,
+											"type": "object"
+										}
+									},
+									"required": [
+										"errors"
+									]
+								}
+							]
+						}
+					}
+				},
+				"description": "Not found."
+			},
+			"500": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"properties": {
+										"messages": {
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object"
+											},
+											"type": "array"
+										},
+										"success": {
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"messages"
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"errors": {
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object"
+											},
+											"minLength": 1,
+											"type": "array"
+										},
+										"result": {
+											"nullable": true,
+											"type": "object"
+										}
+									},
+									"required": [
+										"errors"
+									]
+								}
+							]
+						}
+					}
+				},
+				"description": "Internal server error."
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Get a DLS prefix binding",
+		"tags": [
+			"Prefix Bindings"
+		]
+	},
+	"PATCH /accounts/{account_id}/dls/regional_services/prefix_bindings/{binding_id}": {
+		"operationId": "publicPatchPrefixBinding",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"format": "int64",
+					"type": "integer"
+				}
+			},
+			{
+				"in": "path",
+				"name": "binding_id",
+				"required": true,
+				"schema": {
+					"description": "Unique identifier for the prefix binding.",
+					"example": "a1b2c3d4-e5f6-7890-abcd-ef1234567890",
+					"type": "string"
+				}
+			}
+		],
+		"requestBody": {
+			"content": {
+				"application/json": {
+					"schema": {
+						"properties": {
+							"region_key": {
+								"description": "New region key to assign (e.g., \"us\", \"eu\", \"cfcanary\").",
+								"example": "eu",
+								"maxLength": 128,
+								"minLength": 1,
+								"pattern": "^[a-z0-9_-]+$",
+								"type": "string"
+							}
+						},
+						"required": [
+							"region_key"
+						],
+						"type": "object"
+					}
+				}
+			},
+			"required": true
+		},
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"properties": {
+												"messages": {
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object"
+													},
+													"type": "array"
+												},
+												"success": {
+													"type": "boolean"
+												}
+											},
+											"required": [
+												"success",
+												"messages"
+											],
+											"type": "object"
+										},
+										{
+											"properties": {
+												"errors": {
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object"
+													},
+													"maxLength": 0,
+													"type": "array"
+												}
+											}
+										}
+									]
+								},
+								{
+									"properties": {
+										"result": {
+											"properties": {
+												"cidr": {
+													"description": "The CIDR that is bound.",
+													"type": "string"
+												},
+												"id": {
+													"description": "The ID of the binding.",
+													"type": "string"
+												},
+												"prefix_id": {
+													"description": "The ID of the parent prefix.",
+													"type": "string"
+												},
+												"region_key": {
+													"description": "The region key used for the binding.",
+													"maxLength": 128,
+													"minLength": 1,
+													"pattern": "^[a-z0-9_-]+$",
+													"type": "string"
+												}
+											},
+											"required": [
+												"id",
+												"prefix_id",
+												"cidr",
+												"region_key"
+											],
+											"type": "object"
+										}
+									},
+									"required": [
+										"result"
+									]
+								}
+							]
+						}
+					}
+				},
+				"description": "Binding updated."
+			},
+			"400": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"properties": {
+										"messages": {
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object"
+											},
+											"type": "array"
+										},
+										"success": {
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"messages"
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"errors": {
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object"
+											},
+											"minLength": 1,
+											"type": "array"
+										},
+										"result": {
+											"nullable": true,
+											"type": "object"
+										}
+									},
+									"required": [
+										"errors"
+									]
+								}
+							]
+						}
+					}
+				},
+				"description": "Bad request."
+			},
+			"401": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"properties": {
+										"messages": {
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object"
+											},
+											"type": "array"
+										},
+										"success": {
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"messages"
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"errors": {
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object"
+											},
+											"minLength": 1,
+											"type": "array"
+										},
+										"result": {
+											"nullable": true,
+											"type": "object"
+										}
+									},
+									"required": [
+										"errors"
+									]
+								}
+							]
+						}
+					}
+				},
+				"description": "Unauthorized."
+			},
+			"403": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"properties": {
+										"messages": {
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object"
+											},
+											"type": "array"
+										},
+										"success": {
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"messages"
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"errors": {
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object"
+											},
+											"minLength": 1,
+											"type": "array"
+										},
+										"result": {
+											"nullable": true,
+											"type": "object"
+										}
+									},
+									"required": [
+										"errors"
+									]
+								}
+							]
+						}
+					}
+				},
+				"description": "Forbidden."
+			},
+			"404": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"properties": {
+										"messages": {
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object"
+											},
+											"type": "array"
+										},
+										"success": {
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"messages"
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"errors": {
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object"
+											},
+											"minLength": 1,
+											"type": "array"
+										},
+										"result": {
+											"nullable": true,
+											"type": "object"
+										}
+									},
+									"required": [
+										"errors"
+									]
+								}
+							]
+						}
+					}
+				},
+				"description": "Not found."
+			},
+			"500": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"properties": {
+										"messages": {
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object"
+											},
+											"type": "array"
+										},
+										"success": {
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"messages"
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"errors": {
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object"
+											},
+											"minLength": 1,
+											"type": "array"
+										},
+										"result": {
+											"nullable": true,
+											"type": "object"
+										}
+									},
+									"required": [
+										"errors"
+									]
+								}
+							]
+						}
+					}
+				},
+				"description": "Internal server error."
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Update a DLS prefix binding",
+		"tags": [
+			"Prefix Bindings"
+		]
+	},
+	"POST /accounts/{account_id}/dls/regional_services/prefix_bindings": {
+		"operationId": "publicCreatePrefixBinding",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"format": "int64",
+					"type": "integer"
+				}
+			}
+		],
+		"requestBody": {
+			"content": {
+				"application/json": {
+					"schema": {
+						"properties": {
+							"cidr": {
+								"description": "IP prefix in CIDR notation to bind.",
+								"example": "10.0.1.0/24",
+								"type": "string"
+							},
+							"prefix_id": {
+								"description": "The ID of the parent IP prefix that contains the CIDR.",
+								"example": "a1b2c3d4-e5f6-7890-abcd-ef1234567890",
+								"maxLength": 64,
+								"type": "string"
+							},
+							"region_key": {
+								"description": "Region key from managed regions (e.g., \"us\", \"eu\").",
+								"example": "eu",
+								"maxLength": 128,
+								"minLength": 1,
+								"pattern": "^[a-z0-9_-]+$",
+								"type": "string"
+							}
+						},
+						"required": [
+							"prefix_id",
+							"cidr",
+							"region_key"
+						],
+						"type": "object"
+					}
+				}
+			},
+			"required": true
+		},
+		"responses": {
+			"201": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"properties": {
+												"messages": {
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object"
+													},
+													"type": "array"
+												},
+												"success": {
+													"type": "boolean"
+												}
+											},
+											"required": [
+												"success",
+												"messages"
+											],
+											"type": "object"
+										},
+										{
+											"properties": {
+												"errors": {
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object"
+													},
+													"maxLength": 0,
+													"type": "array"
+												}
+											}
+										}
+									]
+								},
+								{
+									"properties": {
+										"result": {
+											"properties": {
+												"cidr": {
+													"description": "The CIDR that is bound.",
+													"type": "string"
+												},
+												"id": {
+													"description": "The ID of the binding.",
+													"type": "string"
+												},
+												"prefix_id": {
+													"description": "The ID of the parent prefix.",
+													"type": "string"
+												},
+												"region_key": {
+													"description": "The region key used for the binding.",
+													"maxLength": 128,
+													"minLength": 1,
+													"pattern": "^[a-z0-9_-]+$",
+													"type": "string"
+												}
+											},
+											"required": [
+												"id",
+												"prefix_id",
+												"cidr",
+												"region_key"
+											],
+											"type": "object"
+										}
+									},
+									"required": [
+										"result"
+									]
+								}
+							]
+						}
+					}
+				},
+				"description": "Binding created."
+			},
+			"400": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"properties": {
+										"messages": {
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object"
+											},
+											"type": "array"
+										},
+										"success": {
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"messages"
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"errors": {
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object"
+											},
+											"minLength": 1,
+											"type": "array"
+										},
+										"result": {
+											"nullable": true,
+											"type": "object"
+										}
+									},
+									"required": [
+										"errors"
+									]
+								}
+							]
+						}
+					}
+				},
+				"description": "Bad request."
+			},
+			"401": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"properties": {
+										"messages": {
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object"
+											},
+											"type": "array"
+										},
+										"success": {
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"messages"
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"errors": {
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object"
+											},
+											"minLength": 1,
+											"type": "array"
+										},
+										"result": {
+											"nullable": true,
+											"type": "object"
+										}
+									},
+									"required": [
+										"errors"
+									]
+								}
+							]
+						}
+					}
+				},
+				"description": "Unauthorized."
+			},
+			"403": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"properties": {
+										"messages": {
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object"
+											},
+											"type": "array"
+										},
+										"success": {
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"messages"
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"errors": {
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object"
+											},
+											"minLength": 1,
+											"type": "array"
+										},
+										"result": {
+											"nullable": true,
+											"type": "object"
+										}
+									},
+									"required": [
+										"errors"
+									]
+								}
+							]
+						}
+					}
+				},
+				"description": "Forbidden."
+			},
+			"409": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"properties": {
+										"messages": {
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object"
+											},
+											"type": "array"
+										},
+										"success": {
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"messages"
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"errors": {
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object"
+											},
+											"minLength": 1,
+											"type": "array"
+										},
+										"result": {
+											"nullable": true,
+											"type": "object"
+										}
+									},
+									"required": [
+										"errors"
+									]
+								}
+							]
+						}
+					}
+				},
+				"description": "Conflict."
+			},
+			"500": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"properties": {
+										"messages": {
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object"
+											},
+											"type": "array"
+										},
+										"success": {
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"messages"
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"errors": {
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object"
+											},
+											"minLength": 1,
+											"type": "array"
+										},
+										"result": {
+											"nullable": true,
+											"type": "object"
+										}
+									},
+									"required": [
+										"errors"
+									]
+								}
+							]
+						}
+					}
+				},
+				"description": "Internal server error."
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Create a DLS prefix binding",
+		"tags": [
+			"Prefix Bindings"
+		]
+	}
+}

@@ -1,5 +1,6 @@
 {
 	"GET /accounts/{account_id}/intel/sinkholes": {
+		"description": "Lists sinkholes owned by the account for redirecting malicious traffic.",
 		"operationId": "sinkhole-config-get-sinkholes",
 		"parameters": [
 			{
@@ -7,7 +8,7 @@
 				"name": "account_id",
 				"required": true,
 				"schema": {
-					"description": "Identifier",
+					"description": "Identifier.",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
 					"readOnly": true,
@@ -141,46 +142,48 @@
 												},
 												"properties": {
 													"account_tag": {
-														"description": "The account tag that owns this sinkhole",
+														"description": "The account tag that owns this sinkhole.",
 														"type": "string"
 													},
 													"created_on": {
-														"description": "The date and time when the sinkhole was created",
+														"description": "The date and time when the sinkhole was created.",
 														"format": "date-time",
 														"type": "string"
 													},
 													"id": {
-														"description": "The unique identifier for the sinkhole",
+														"description": "The unique identifier for the sinkhole.",
 														"type": "integer"
 													},
 													"modified_on": {
-														"description": "The date and time when the sinkhole was last modified",
+														"description": "The date and time when the sinkhole was last modified.",
 														"format": "date-time",
 														"type": "string"
 													},
 													"name": {
-														"description": "The name of the sinkhole",
+														"description": "The name of the sinkhole.",
 														"type": "string"
 													},
 													"r2_bucket": {
-														"description": "The name of the R2 bucket to store results",
+														"description": "The name of the R2 bucket to store results.",
 														"type": "string"
 													},
 													"r2_id": {
-														"description": "The id of the R2 instance",
+														"description": "The id of the R2 instance.",
 														"type": "string"
 													}
-												}
+												},
+												"type": "object"
 											},
 											"type": "array"
 										}
-									}
+									},
+									"type": "object"
 								}
 							]
 						}
 					}
 				},
-				"description": "Successful Response"
+				"description": "Successful Response."
 			}
 		},
 		"security": [
