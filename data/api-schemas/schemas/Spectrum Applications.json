@@ -154,7 +154,8 @@
 											],
 											"type": "object"
 										}
-									}
+									},
+									"type": "object"
 								}
 							],
 							"type": "object"
@@ -486,6 +487,11 @@
 															"description": "Total results available without any search parameters.",
 															"example": 2000,
 															"type": "number"
+														},
+														"total_pages": {
+															"description": "The number of total pages in the entire result set.",
+															"example": 100,
+															"type": "number"
 														}
 													},
 													"type": "object"
@@ -743,6 +749,12 @@
 																			"https"
 																		],
 																		"example": "direct",
+																		"type": "string"
+																	},
+																	"virtual_network_id": {
+																		"description": "Optional UUID of a virtual network for routing origin traffic through tunnel virtual networks.",
+																		"example": "aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee",
+																		"format": "uuid",
 																		"type": "string"
 																	}
 																},
@@ -1398,6 +1410,12 @@
 																	],
 																	"example": "direct",
 																	"type": "string"
+																},
+																"virtual_network_id": {
+																	"description": "Optional UUID of a virtual network for routing origin traffic through tunnel virtual networks.",
+																	"example": "aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee",
+																	"format": "uuid",
+																	"type": "string"
 																}
 															},
 															"required": [
@@ -1933,6 +1951,12 @@
 												],
 												"example": "direct",
 												"type": "string"
+											},
+											"virtual_network_id": {
+												"description": "Optional UUID of a virtual network for routing origin traffic through tunnel virtual networks.",
+												"example": "aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee",
+												"format": "uuid",
+												"type": "string"
 											}
 										},
 										"required": [
@@ -2396,6 +2420,12 @@
 																		"https"
 																	],
 																	"example": "direct",
+																	"type": "string"
+																},
+																"virtual_network_id": {
+																	"description": "Optional UUID of a virtual network for routing origin traffic through tunnel virtual networks.",
+																	"example": "aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee",
+																	"format": "uuid",
 																	"type": "string"
 																}
 															},
@@ -2953,6 +2983,12 @@
 												],
 												"example": "direct",
 												"type": "string"
+											},
+											"virtual_network_id": {
+												"description": "Optional UUID of a virtual network for routing origin traffic through tunnel virtual networks.",
+												"example": "aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee",
+												"format": "uuid",
+												"type": "string"
 											}
 										},
 										"required": [
@@ -3416,6 +3452,12 @@
 																		"https"
 																	],
 																	"example": "direct",
+																	"type": "string"
+																},
+																"virtual_network_id": {
+																	"description": "Optional UUID of a virtual network for routing origin traffic through tunnel virtual networks.",
+																	"example": "aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee",
+																	"format": "uuid",
 																	"type": "string"
 																}
 															},
