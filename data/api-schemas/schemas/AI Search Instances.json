@@ -3728,6 +3728,10 @@
 										"completed": {
 											"type": "integer"
 										},
+										"degraded": {
+											"description": "True when status counts are unavailable (e.g. legacy stats query exceeded D1 statement-size limit). Counts are omitted in this case.",
+											"type": "boolean"
+										},
 										"engine": {
 											"description": "Engine-specific metadata. Present only for managed (v3) instances.",
 											"properties": {
@@ -5838,6 +5842,10 @@
 									"properties": {
 										"completed": {
 											"type": "integer"
+										},
+										"degraded": {
+											"description": "True when status counts are unavailable (e.g. legacy stats query exceeded D1 statement-size limit). Counts are omitted in this case.",
+											"type": "boolean"
 										},
 										"engine": {
 											"description": "Engine-specific metadata. Present only for managed (v3) instances.",
