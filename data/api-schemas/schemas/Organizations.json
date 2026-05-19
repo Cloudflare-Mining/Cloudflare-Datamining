@@ -1,6 +1,6 @@
 {
 	"DELETE /organizations/{organization_id}": {
-		"description": "Delete an organization. The organization MUST be empty before deleting.\nIt must not contain any sub-organizations, accounts, members or users. (Currently in Closed Beta - see https://developers.cloudflare.com/fundamentals/organizations/)",
+		"description": "Delete an organization. The organization MUST be empty before deleting.\nIt must not contain any sub-organizations, accounts, members or users. (Currently in Public Beta - see https://developers.cloudflare.com/fundamentals/organizations/)",
 		"operationId": "Organizations_delete",
 		"parameters": [
 			{
@@ -313,7 +313,7 @@
 		]
 	},
 	"GET /organizations": {
-		"description": "Retrieve a list of organizations a particular user has access to. (Currently in Closed Beta - see https://developers.cloudflare.com/fundamentals/organizations/)",
+		"description": "Retrieve a list of organizations a particular user has access to. (Currently in Public Beta - see https://developers.cloudflare.com/fundamentals/organizations/)",
 		"operationId": "Organization_listOrganizations",
 		"parameters": [
 			{
@@ -704,7 +704,7 @@
 		]
 	},
 	"GET /organizations/{organization_id}": {
-		"description": "Retrieve the details of a certain organization. (Currently in Closed Beta - see https://developers.cloudflare.com/fundamentals/organizations/)",
+		"description": "Retrieve the details of a certain organization. (Currently in Public Beta - see https://developers.cloudflare.com/fundamentals/organizations/)",
 		"operationId": "Organizations_retrieve",
 		"parameters": [
 			{
@@ -966,7 +966,7 @@
 		]
 	},
 	"GET /organizations/{organization_id}/accounts": {
-		"description": "Retrieve a list of accounts that belong to a specific organization. (Currently in Closed Beta - see https://developers.cloudflare.com/fundamentals/organizations/)",
+		"description": "Retrieve a list of accounts that belong to a specific organization. (Currently in Public Beta - see https://developers.cloudflare.com/fundamentals/organizations/)",
 		"operationId": "Organizations_getAccounts",
 		"parameters": [
 			{
@@ -1317,7 +1317,7 @@
 		]
 	},
 	"GET /organizations/{organization_id}/profile": {
-		"description": "Get an organizations profile if it exists. (Currently in Closed Beta - see https://developers.cloudflare.com/fundamentals/organizations/)",
+		"description": "Get an organizations profile if it exists. (Currently in Public Beta - see https://developers.cloudflare.com/fundamentals/organizations/)",
 		"operationId": "Organizations_getProfile",
 		"parameters": [
 			{
@@ -1485,7 +1485,7 @@
 		]
 	},
 	"POST /organizations": {
-		"description": "Create a new organization for a user. (Currently in Closed Beta - see https://developers.cloudflare.com/fundamentals/organizations/)",
+		"description": "Create a new organization for a user. (Currently in Public Beta - see https://developers.cloudflare.com/fundamentals/organizations/)",
 		"operationId": "Organizations_createUserOrganization",
 		"requestBody": {
 			"content": {
@@ -1864,7 +1864,7 @@
 		]
 	},
 	"PUT /organizations/{organization_id}": {
-		"description": "Modify organization. (Currently in Closed Beta - see https://developers.cloudflare.com/fundamentals/organizations/)",
+		"description": "Modify organization. (Currently in Public Beta - see https://developers.cloudflare.com/fundamentals/organizations/)",
 		"operationId": "Organizations_modify",
 		"parameters": [
 			{
@@ -2255,7 +2255,7 @@
 		]
 	},
 	"PUT /organizations/{organization_id}/profile": {
-		"description": "Modify organization profile. (Currently in Closed Beta - see https://developers.cloudflare.com/fundamentals/organizations/)",
+		"description": "Modify organization profile. (Currently in Public Beta - see https://developers.cloudflare.com/fundamentals/organizations/)",
 		"operationId": "Organizations_modifyProfile",
 		"parameters": [
 			{
