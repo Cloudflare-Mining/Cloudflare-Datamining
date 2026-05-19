@@ -69,6 +69,12 @@
 																"opentelemetry-logs"
 															],
 															"type": "string"
+														},
+														{
+															"enum": [
+																"opentelemetry-metrics"
+															],
+															"type": "string"
 														}
 													]
 												},
@@ -449,6 +455,12 @@
 																	"opentelemetry-logs"
 																],
 																"type": "string"
+															},
+															{
+																"enum": [
+																	"opentelemetry-metrics"
+																],
+																"type": "string"
 															}
 														]
 													},
@@ -813,6 +825,12 @@
 																"opentelemetry-logs"
 															],
 															"type": "string"
+														},
+														{
+															"enum": [
+																"opentelemetry-metrics"
+															],
+															"type": "string"
 														}
 													]
 												},
@@ -1149,6 +1167,12 @@
 													"opentelemetry-logs"
 												],
 												"type": "string"
+											},
+											{
+												"enum": [
+													"opentelemetry-metrics"
+												],
+												"type": "string"
 											}
 										]
 									},
@@ -1246,6 +1270,12 @@
 														{
 															"enum": [
 																"opentelemetry-logs"
+															],
+															"type": "string"
+														},
+														{
+															"enum": [
+																"opentelemetry-metrics"
 															],
 															"type": "string"
 														}

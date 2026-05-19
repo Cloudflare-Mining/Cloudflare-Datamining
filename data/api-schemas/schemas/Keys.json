@@ -67,11 +67,12 @@
 															"type": "string"
 														},
 														"operation": {
-															"description": "Comparison operator. String operators: includes, not_includes, starts_with, regex. Existence: exists, is_null. Set membership: in, not_in (comma-separated values). Numeric: eq, neq, gt, gte, lt, lte.",
+															"description": "Comparison operator. String operators: includes, not_includes, starts_with, ends_with, regex. Existence: exists, is_null. Set membership: in, not_in (comma-separated values). Numeric: eq, neq, gt, gte, lt, lte.",
 															"enum": [
 																"includes",
 																"not_includes",
 																"starts_with",
+																"ends_with",
 																"regex",
 																"exists",
 																"is_null",
@@ -96,7 +97,8 @@
 																"DOES_NOT_EXIST",
 																"IN",
 																"NOT_IN",
-																"STARTS_WITH"
+																"STARTS_WITH",
+																"ENDS_WITH"
 															],
 															"type": "string"
 														},
@@ -199,11 +201,12 @@
 																				"type": "string"
 																			},
 																			"operation": {
-																				"description": "Comparison operator. String operators: includes, not_includes, starts_with, regex. Existence: exists, is_null. Set membership: in, not_in (comma-separated values). Numeric: eq, neq, gt, gte, lt, lte.",
+																				"description": "Comparison operator. String operators: includes, not_includes, starts_with, ends_with, regex. Existence: exists, is_null. Set membership: in, not_in (comma-separated values). Numeric: eq, neq, gt, gte, lt, lte.",
 																				"enum": [
 																					"includes",
 																					"not_includes",
 																					"starts_with",
+																					"ends_with",
 																					"regex",
 																					"exists",
 																					"is_null",
@@ -228,7 +231,8 @@
 																					"DOES_NOT_EXIST",
 																					"IN",
 																					"NOT_IN",
-																					"STARTS_WITH"
+																					"STARTS_WITH",
+																					"ENDS_WITH"
 																				],
 																				"type": "string"
 																			},
@@ -300,11 +304,12 @@
 															"type": "string"
 														},
 														"operation": {
-															"description": "Comparison operator. String operators: includes, not_includes, starts_with, regex. Existence: exists, is_null. Set membership: in, not_in (comma-separated values). Numeric: eq, neq, gt, gte, lt, lte.",
+															"description": "Comparison operator. String operators: includes, not_includes, starts_with, ends_with, regex. Existence: exists, is_null. Set membership: in, not_in (comma-separated values). Numeric: eq, neq, gt, gte, lt, lte.",
 															"enum": [
 																"includes",
 																"not_includes",
 																"starts_with",
+																"ends_with",
 																"regex",
 																"exists",
 																"is_null",
@@ -329,7 +334,8 @@
 																"DOES_NOT_EXIST",
 																"IN",
 																"NOT_IN",
-																"STARTS_WITH"
+																"STARTS_WITH",
+																"ENDS_WITH"
 															],
 															"type": "string"
 														},

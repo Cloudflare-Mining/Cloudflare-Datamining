@@ -72,7 +72,7 @@
 													"type": "string"
 												},
 												"operator": {
-													"description": "Aggregation operator to apply. Examples: count, avg, sum, min, max, p50, p90, p95, p99, uniq, stddev, variance.",
+													"description": "Aggregation operator to apply. Examples: count, avg, sum, min, max, median, p90, p95, p99, uniq, stddev, variance.",
 													"enum": [
 														"uniq",
 														"count",
@@ -192,11 +192,12 @@
 																	"type": "string"
 																},
 																"operation": {
-																	"description": "Comparison operator. String operators: includes, not_includes, starts_with, regex. Existence: exists, is_null. Set membership: in, not_in (comma-separated values). Numeric: eq, neq, gt, gte, lt, lte.",
+																	"description": "Comparison operator. String operators: includes, not_includes, starts_with, ends_with, regex. Existence: exists, is_null. Set membership: in, not_in (comma-separated values). Numeric: eq, neq, gt, gte, lt, lte.",
 																	"enum": [
 																		"includes",
 																		"not_includes",
 																		"starts_with",
+																		"ends_with",
 																		"regex",
 																		"exists",
 																		"is_null",
@@ -221,7 +222,8 @@
 																		"DOES_NOT_EXIST",
 																		"IN",
 																		"NOT_IN",
-																		"STARTS_WITH"
+																		"STARTS_WITH",
+																		"ENDS_WITH"
 																	],
 																	"type": "string"
 																},
@@ -324,11 +326,12 @@
 																						"type": "string"
 																					},
 																					"operation": {
-																						"description": "Comparison operator. String operators: includes, not_includes, starts_with, regex. Existence: exists, is_null. Set membership: in, not_in (comma-separated values). Numeric: eq, neq, gt, gte, lt, lte.",
+																						"description": "Comparison operator. String operators: includes, not_includes, starts_with, ends_with, regex. Existence: exists, is_null. Set membership: in, not_in (comma-separated values). Numeric: eq, neq, gt, gte, lt, lte.",
 																						"enum": [
 																							"includes",
 																							"not_includes",
 																							"starts_with",
+																							"ends_with",
 																							"regex",
 																							"exists",
 																							"is_null",
@@ -353,7 +356,8 @@
 																							"DOES_NOT_EXIST",
 																							"IN",
 																							"NOT_IN",
-																							"STARTS_WITH"
+																							"STARTS_WITH",
+																							"ENDS_WITH"
 																						],
 																						"type": "string"
 																					},
@@ -425,11 +429,12 @@
 																	"type": "string"
 																},
 																"operation": {
-																	"description": "Comparison operator. String operators: includes, not_includes, starts_with, regex. Existence: exists, is_null. Set membership: in, not_in (comma-separated values). Numeric: eq, neq, gt, gte, lt, lte.",
+																	"description": "Comparison operator. String operators: includes, not_includes, starts_with, ends_with, regex. Existence: exists, is_null. Set membership: in, not_in (comma-separated values). Numeric: eq, neq, gt, gte, lt, lte.",
 																	"enum": [
 																		"includes",
 																		"not_includes",
 																		"starts_with",
+																		"ends_with",
 																		"regex",
 																		"exists",
 																		"is_null",
@@ -454,7 +459,8 @@
 																		"DOES_NOT_EXIST",
 																		"IN",
 																		"NOT_IN",
-																		"STARTS_WITH"
+																		"STARTS_WITH",
+																		"ENDS_WITH"
 																	],
 																	"type": "string"
 																},
@@ -1078,6 +1084,7 @@
 														"description": "A single telemetry event representing a log line, span, or metric data point emitted by a Worker.",
 														"properties": {
 															"$containers": {
+																"additionalProperties": true,
 																"description": "Cloudflare Containers event information that enriches your logs for identifying and debugging issues.",
 																"type": "object"
 															},
@@ -1093,7 +1100,6 @@
 																		"type": "string"
 																	},
 																	"coldStart": {
-																		"description": "Whether this was a cold start (1) or warm invocation (0).",
 																		"exclusiveMinimum": true,
 																		"minimum": 0,
 																		"type": "integer"
@@ -1266,6 +1272,20 @@
 																			"outcome": {
 																				"type": "string"
 																			},
+																			"preview": {
+																				"properties": {
+																					"id": {
+																						"type": "string"
+																					},
+																					"name": {
+																						"type": "string"
+																					},
+																					"slug": {
+																						"type": "string"
+																					}
+																				},
+																				"type": "object"
+																			},
 																			"requestId": {
 																				"type": "string"
 																			},
@@ -1369,6 +1389,20 @@
 																			"outcome": {
 																				"type": "string"
 																			},
+																			"preview": {
+																				"properties": {
+																					"id": {
+																						"type": "string"
+																					},
+																					"name": {
+																						"type": "string"
+																					},
+																					"slug": {
+																						"type": "string"
+																					}
+																				},
+																				"type": "object"
+																			},
 																			"requestId": {
 																				"type": "string"
 																			},
@@ -1425,6 +1459,7 @@
 																		"type": "string"
 																	},
 																	{
+																		"additionalProperties": true,
 																		"type": "object"
 																	}
 																],
@@ -1569,6 +1604,7 @@
 													"description": "A single telemetry event representing a log line, span, or metric data point emitted by a Worker.",
 													"properties": {
 														"$containers": {
+															"additionalProperties": true,
 															"description": "Cloudflare Containers event information that enriches your logs for identifying and debugging issues.",
 															"type": "object"
 														},
@@ -1584,7 +1620,6 @@
 																	"type": "string"
 																},
 																"coldStart": {
-																	"description": "Whether this was a cold start (1) or warm invocation (0).",
 																	"exclusiveMinimum": true,
 																	"minimum": 0,
 																	"type": "integer"
@@ -1757,6 +1792,20 @@
 																		"outcome": {
 																			"type": "string"
 																		},
+																		"preview": {
+																			"properties": {
+																				"id": {
+																					"type": "string"
+																				},
+																				"name": {
+																					"type": "string"
+																				},
+																				"slug": {
+																					"type": "string"
+																				}
+																			},
+																			"type": "object"
+																		},
 																		"requestId": {
 																			"type": "string"
 																		},
@@ -1860,6 +1909,20 @@
 																		"outcome": {
 																			"type": "string"
 																		},
+																		"preview": {
+																			"properties": {
+																				"id": {
+																					"type": "string"
+																				},
+																				"name": {
+																					"type": "string"
+																				},
+																				"slug": {
+																					"type": "string"
+																				}
+																			},
+																			"type": "object"
+																		},
 																		"requestId": {
 																			"type": "string"
 																		},
@@ -1916,6 +1979,7 @@
 																	"type": "string"
 																},
 																{
+																	"additionalProperties": true,
 																	"type": "object"
 																}
 															],
@@ -1941,7 +2005,7 @@
 											"type": "object"
 										},
 										"run": {
-											"description": "The query run metadata including the query definition, execution status, and timeframe.",
+											"description": "Represents a single execution of a query against Workers Observability data, including the query definition, execution status, and performance statistics.",
 											"properties": {
 												"accountId": {
 													"description": "Cloudflare account ID that owns this query run.",
@@ -2130,11 +2194,12 @@
 																								"type": "string"
 																							},
 																							"operation": {
-																								"description": "Comparison operator. String operators: includes, not_includes, starts_with, regex. Existence: exists, is_null. Set membership: in, not_in (comma-separated values). Numeric: eq, neq, gt, gte, lt, lte.",
+																								"description": "Comparison operator. String operators: includes, not_includes, starts_with, ends_with, regex. Existence: exists, is_null. Set membership: in, not_in (comma-separated values). Numeric: eq, neq, gt, gte, lt, lte.",
 																								"enum": [
 																									"includes",
 																									"not_includes",
 																									"starts_with",
+																									"ends_with",
 																									"regex",
 																									"exists",
 																									"is_null",
@@ -2159,7 +2224,8 @@
 																									"DOES_NOT_EXIST",
 																									"IN",
 																									"NOT_IN",
-																									"STARTS_WITH"
+																									"STARTS_WITH",
+																									"ENDS_WITH"
 																								],
 																								"type": "string"
 																							},
