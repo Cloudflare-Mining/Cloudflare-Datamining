@@ -1,10 +1,10 @@
 {
-	"GET /accounts/{account_id}/billing/usage/paygo": {
+	"GET /accounts/{account_id}/paygo-usage": {
 		"description": "Returns billable usage data for PayGo (self-serve) accounts.\nWhen no query parameters are provided, returns usage for the current\nbilling period.\nThis endpoint is currently in alpha and access is restricted to select\naccounts. While in alpha, the endpoint may get breaking changes.\n",
 		"operationId": "billable-usage-get-paygo-account-usage",
 		"parameters": [
 			{
-				"description": "Identifies the account.",
+				"description": "Identifies the Cloudflare account.",
 				"in": "path",
 				"name": "account_id",
 				"required": true,
@@ -17,21 +17,21 @@
 				}
 			},
 			{
-				"description": "Defines the start date for the usage query (e.g., 2025-02-01).",
+				"description": "Start date for the usage query (ISO 8601).",
 				"in": "query",
 				"name": "from",
 				"schema": {
-					"example": "2025-02-01",
+					"example": "2025-05-01",
 					"format": "date",
 					"type": "string"
 				}
 			},
 			{
-				"description": "Defines the end date for the usage query (e.g., 2025-03-01).",
+				"description": "End date for the usage query (ISO 8601).",
 				"in": "query",
 				"name": "to",
 				"schema": {
-					"example": "2025-03-01",
+					"example": "2025-05-31",
 					"format": "date",
 					"type": "string"
 				}
@@ -282,14 +282,18 @@
 				"api_key": []
 			}
 		],
-		"summary": "Get PayGo Account Billable Usage (Alpha)",
+		"summary": "Get PayGo Account Billable Usage (Version 1, Alpha)",
 		"tags": [
 			"Billable Usage"
 		],
 		"x-api-token-group": [
-			"Billing Write",
 			"Billing Read"
 		],
+		"x-cfPermissionsRequired": {
+			"enum": [
+				"#billing:read"
+			]
+		},
 		"x-cfPlanAvailability": {
 			"business": true,
 			"enterprise": false,

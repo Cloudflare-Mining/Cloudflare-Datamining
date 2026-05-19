@@ -1,0 +1,884 @@
+{
+	"GET /accounts/{account_id}/billable/usage": {
+		"description": "Returns cost and usage data for a single Cloudflare account, aligned\nwith the [FinOps FOCUS v1.3](https://focus.finops.org/focus-specification/v1-3/)\nCost and Usage dataset specification.\n\nEach record represents one billable metric for one account on one day.\nThis includes all metered usage, including usage that falls within\nfree-tier allowances and may result in zero cost.\n\n**Note:** Cost and pricing fields are not yet populated and\nwill be absent from responses until billing integration is complete.\n\nWhen `from` and `to` are omitted, defaults to the start of the current\nmonth through today. The maximum date range is 31 days.\n",
+		"operationId": "billable-usage-v2-get-account-usage",
+		"parameters": [
+			{
+				"description": "Identifies the Cloudflare account.",
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"description": "Represents a Cloudflare resource identifier tag.",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"pattern": "^[0-9a-f]{32}$",
+					"type": "string"
+				}
+			},
+			{
+				"description": "Start date for the usage query (ISO 8601). Required if `to` is set. When omitted along with `to`, defaults to the start of the current month. Filters by charge period (when consumption happened), not billing period. The maximum date range is 31 days.",
+				"in": "query",
+				"name": "from",
+				"schema": {
+					"example": "2025-05-01",
+					"format": "date",
+					"type": "string"
+				}
+			},
+			{
+				"description": "End date for the usage query (ISO 8601). Required if `from` is set. When omitted along with `from`, defaults to today. Filters by charge period (when consumption happened), not billing period. The maximum date range is 31 days.",
+				"in": "query",
+				"name": "to",
+				"schema": {
+					"example": "2025-05-31",
+					"format": "date",
+					"type": "string"
+				}
+			},
+			{
+				"description": "Filter results by billable metric id (e.g., workers_standard_requests).",
+				"in": "query",
+				"name": "metric",
+				"schema": {
+					"example": "workers_standard_requests",
+					"maxLength": 128,
+					"type": "string"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"description": "Successful response containing an array of FOCUS-aligned cost and usage records.",
+							"properties": {
+								"errors": {
+									"description": "Contains error details if the request failed.",
+									"items": {
+										"description": "Represents an API notice or error detail.",
+										"properties": {
+											"code": {
+												"description": "Identifies the error or notice type.",
+												"type": "integer"
+											},
+											"message": {
+												"description": "Describes the error or notice.",
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									},
+									"nullable": true,
+									"type": "array"
+								},
+								"messages": {
+									"description": "Contains informational notices about the response.",
+									"items": {
+										"description": "Represents an API notice or error detail.",
+										"properties": {
+											"code": {
+												"description": "Identifies the error or notice type.",
+												"type": "integer"
+											},
+											"message": {
+												"description": "Describes the error or notice.",
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									},
+									"nullable": true,
+									"type": "array"
+								},
+								"result": {
+									"description": "Contains the array of cost and usage records.",
+									"items": {
+										"description": "A single cost and usage record for a metered product within a specific charge period, aligned with the FinOps FOCUS v1.3 specification.",
+										"properties": {
+											"BilledCost": {
+												"description": "A charge serving as the basis for invoicing, inclusive of all reduced rates and discounts while excluding the amortization of upfront charges (one-time or recurring).",
+												"example": 0,
+												"nullable": true,
+												"type": "number"
+											},
+											"BillingAccountId": {
+												"description": "Public identifier of the Cloudflare account (account tag).",
+												"example": "023e105f4ecef8ad9ca31a8372d0c353",
+												"type": "string"
+											},
+											"BillingAccountName": {
+												"description": "Display name of the Cloudflare account.",
+												"example": "My Account",
+												"type": "string"
+											},
+											"BillingCurrency": {
+												"description": "Currency that a charge was billed in (ISO 4217).",
+												"example": "USD",
+												"nullable": true,
+												"type": "string"
+											},
+											"BillingPeriodEnd": {
+												"description": "Exclusive end of the billing cycle that contains this usage record.",
+												"example": "2025-06-01T00:00:00Z",
+												"format": "date-time",
+												"nullable": true,
+												"type": "string"
+											},
+											"BillingPeriodStart": {
+												"description": "Inclusive start of the billing cycle that contains this usage record.",
+												"example": "2025-05-01T00:00:00Z",
+												"format": "date-time",
+												"nullable": true,
+												"type": "string"
+											},
+											"ChargeCategory": {
+												"description": "Highest-level classification of a charge based on the nature of how it gets billed. Currently only \"Usage\" is supported.",
+												"enum": [
+													"Usage"
+												],
+												"example": "Usage",
+												"type": "string"
+											},
+											"ChargeClass": {
+												"description": "Indicates whether the row represents a correction to one or more charges invoiced in a previous billing period.",
+												"enum": [
+													"Correction"
+												],
+												"nullable": true,
+												"type": "string"
+											},
+											"ChargeDescription": {
+												"description": "Self-contained summary of the charge's purpose and price.",
+												"example": "Workers Standard Requests — daily usage",
+												"type": "string"
+											},
+											"ChargeFrequency": {
+												"description": "Indicates how often a charge occurs. Currently only \"Usage-Based\" is supported.",
+												"enum": [
+													"Usage-Based"
+												],
+												"example": "Usage-Based",
+												"type": "string"
+											},
+											"ChargePeriodEnd": {
+												"description": "Exclusive end of the time interval during which the usage was consumed.",
+												"example": "2025-05-02T00:00:00Z",
+												"format": "date-time",
+												"type": "string"
+											},
+											"ChargePeriodStart": {
+												"description": "Inclusive start of the time interval during which the usage was consumed.",
+												"example": "2025-05-01T00:00:00Z",
+												"format": "date-time",
+												"type": "string"
+											},
+											"ConsumedQuantity": {
+												"description": "Measured usage amount within the charge period. Reflects raw metered consumption before pricing transformations.",
+												"example": 150000,
+												"type": "number"
+											},
+											"ConsumedUnit": {
+												"description": "Unit of measure for the consumed quantity (e.g., \"GB\", \"Requests\", \"vCPU-Hours\").",
+												"example": "Requests",
+												"type": "string"
+											},
+											"ContractedCost": {
+												"description": "Cost calculated by multiplying ContractedUnitPrice and the corresponding PricingQuantity.",
+												"example": 0.75,
+												"nullable": true,
+												"type": "number"
+											},
+											"ContractedUnitPrice": {
+												"description": "The agreed-upon unit price for a single PricingUnit of the associated billable metric, inclusive of negotiated discounts, if present, while excluding any other discounts.",
+												"example": 0.000005,
+												"nullable": true,
+												"type": "number"
+											},
+											"EffectiveCost": {
+												"description": "The amortized cost of the charge after applying all reduced rates, discounts, and the applicable portion of relevant, prepaid purchases (one-time or recurring) that covered the charge.",
+												"example": 0,
+												"nullable": true,
+												"type": "number"
+											},
+											"HostProviderName": {
+												"description": "Name of the entity providing the underlying infrastructure or platform.",
+												"example": "Cloudflare",
+												"type": "string"
+											},
+											"InvoiceIssuerName": {
+												"description": "Name of the entity responsible for invoicing for the services consumed.",
+												"example": "Cloudflare",
+												"type": "string"
+											},
+											"ListCost": {
+												"description": "Cost calculated by multiplying ListUnitPrice and the corresponding PricingQuantity.",
+												"example": 0.75,
+												"nullable": true,
+												"type": "number"
+											},
+											"ListUnitPrice": {
+												"description": "Suggested provider-published unit price for a single PricingUnit of the associated billable metric, exclusive of any discounts.",
+												"example": 0.000005,
+												"nullable": true,
+												"type": "number"
+											},
+											"PricingQuantity": {
+												"description": "Volume of a given service used or purchased, based on the PricingUnit.",
+												"example": 150000,
+												"nullable": true,
+												"type": "number"
+											},
+											"PricingUnit": {
+												"description": "Provider-specified measurement unit for determining unit prices, indicating how the provider rates measured usage after applying pricing rules like block pricing.",
+												"example": "Requests",
+												"nullable": true,
+												"type": "string"
+											},
+											"RegionId": {
+												"description": "Provider-assigned identifier for an isolated geographic area where a service is provided.",
+												"example": "EEUR",
+												"nullable": true,
+												"type": "string"
+											},
+											"RegionName": {
+												"description": "Name of an isolated geographic area where a service is provided.",
+												"example": "Eastern Europe",
+												"nullable": true,
+												"type": "string"
+											},
+											"ServiceProviderName": {
+												"description": "Name of the entity that made the services available for purchase.",
+												"example": "Cloudflare",
+												"type": "string"
+											},
+											"SubAccountId": {
+												"description": "Unique identifier assigned to a grouping of services. For Cloudflare, this is the subscription or contract ID.",
+												"example": "c9bd752d-9ca8-411d-b804-be44a758057f",
+												"type": "string"
+											},
+											"SubAccountName": {
+												"description": "Name assigned to a grouping of services. For Cloudflare, this is the subscription or contract display name.",
+												"example": "My Subscription",
+												"type": "string"
+											},
+											"x_BillableMetricId": {
+												"description": "The unique identifier for the billable metric in the Cloudflare catalog. Cloudflare extension; replaces FOCUS SkuId.",
+												"example": "workers_standard_requests",
+												"type": "string"
+											},
+											"x_BillableMetricName": {
+												"description": "The display name of the billable metric. Cloudflare extension; replaces FOCUS SkuMeter.",
+												"example": "Workers Standard Requests",
+												"type": "string"
+											},
+											"x_ProductFamilyName": {
+												"description": "The product family the charge belongs to (e.g., \"R2\", \"Workers\"). Cloudflare extension; replaces FOCUS ServiceName.",
+												"example": "Workers",
+												"type": "string"
+											},
+											"x_ZoneId": {
+												"description": "The identifier for the Cloudflare zone (zone tag). Cloudflare extension.",
+												"example": "023e105f4ecef8ad9ca31a8372d0c353",
+												"nullable": true,
+												"type": "string"
+											},
+											"x_ZoneName": {
+												"description": "The display name of the Cloudflare zone. Cloudflare extension.",
+												"example": "example.com",
+												"nullable": true,
+												"type": "string"
+											}
+										},
+										"required": [
+											"ServiceProviderName",
+											"InvoiceIssuerName",
+											"HostProviderName",
+											"BillingAccountId",
+											"BillingAccountName",
+											"ChargePeriodStart",
+											"ChargePeriodEnd",
+											"x_BillableMetricName",
+											"ChargeCategory",
+											"ChargeFrequency",
+											"ChargeDescription",
+											"ConsumedQuantity",
+											"ConsumedUnit"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"success": {
+									"description": "Indicates whether the API call was successful.",
+									"enum": [
+										true
+									],
+									"example": true,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Account usage data was successfully retrieved."
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"description": "Represents a failed API response.",
+							"properties": {
+								"errors": {
+									"description": "Contains error details describing why the request failed.",
+									"example": [
+										{
+											"code": 1183,
+											"message": "Invalid request parameters: Please ensure all required parameters are included and correctly formatted."
+										}
+									],
+									"items": {
+										"description": "Represents an API notice or error detail.",
+										"properties": {
+											"code": {
+												"description": "Identifies the error or notice type.",
+												"type": "integer"
+											},
+											"message": {
+												"description": "Describes the error or notice.",
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									},
+									"minItems": 1,
+									"type": "array"
+								},
+								"messages": {
+									"description": "Contains informational notices about the response.",
+									"items": {
+										"description": "Represents an API notice or error detail.",
+										"properties": {
+											"code": {
+												"description": "Identifies the error or notice type.",
+												"type": "integer"
+											},
+											"message": {
+												"description": "Describes the error or notice.",
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									},
+									"nullable": true,
+									"type": "array"
+								},
+								"result": {
+									"description": "Contains the response payload (always null on failure).",
+									"nullable": true,
+									"type": "object"
+								},
+								"success": {
+									"description": "Indicates whether the API call was successful.",
+									"enum": [
+										false
+									],
+									"example": false,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Indicates the request failed."
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Get Account Usage (Version 2, Alpha, Restricted)",
+		"tags": [
+			"Billable Usage V2"
+		],
+		"x-cfPlanAvailability": {
+			"business": true,
+			"enterprise": true,
+			"free": true,
+			"pro": true
+		}
+	},
+	"GET /organizations/{organization_id}/billable/usage": {
+		"description": "Returns cost and usage data for all accounts within an organization,\naligned with the [FinOps FOCUS v1.3](https://focus.finops.org/focus-specification/v1-3/)\nCost and Usage dataset specification.\n\nEach record represents one billable metric for one account on one day.\nThis includes all metered usage, including usage that falls within\nfree-tier allowances and may result in zero cost. The response\nincludes usage for every account belonging to the specified\norganization.\n\n**Note:** Cost and pricing fields are not yet populated and\nwill be absent from responses until billing integration is complete.\n\nWhen `from` and `to` are omitted, defaults to the start of the current\nmonth through today. The maximum date range is 31 days.\n",
+		"operationId": "billable-usage-v2-get-organization-usage",
+		"parameters": [
+			{
+				"description": "Identifies the Cloudflare organization.",
+				"in": "path",
+				"name": "organization_id",
+				"required": true,
+				"schema": {
+					"description": "Represents a Cloudflare resource identifier tag.",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"pattern": "^[0-9a-f]{32}$",
+					"type": "string"
+				}
+			},
+			{
+				"description": "Start date for the usage query (ISO 8601). Required if `to` is set. When omitted along with `to`, defaults to the start of the current month. Filters by charge period (when consumption happened), not billing period. The maximum date range is 31 days.",
+				"in": "query",
+				"name": "from",
+				"schema": {
+					"example": "2025-05-01",
+					"format": "date",
+					"type": "string"
+				}
+			},
+			{
+				"description": "End date for the usage query (ISO 8601). Required if `from` is set. When omitted along with `from`, defaults to today. Filters by charge period (when consumption happened), not billing period. The maximum date range is 31 days.",
+				"in": "query",
+				"name": "to",
+				"schema": {
+					"example": "2025-05-31",
+					"format": "date",
+					"type": "string"
+				}
+			},
+			{
+				"description": "Filter results by billable metric id (e.g., workers_standard_requests).",
+				"in": "query",
+				"name": "metric",
+				"schema": {
+					"example": "workers_standard_requests",
+					"maxLength": 128,
+					"type": "string"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"description": "Successful response containing an array of FOCUS-aligned cost and usage records.",
+							"properties": {
+								"errors": {
+									"description": "Contains error details if the request failed.",
+									"items": {
+										"description": "Represents an API notice or error detail.",
+										"properties": {
+											"code": {
+												"description": "Identifies the error or notice type.",
+												"type": "integer"
+											},
+											"message": {
+												"description": "Describes the error or notice.",
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									},
+									"nullable": true,
+									"type": "array"
+								},
+								"messages": {
+									"description": "Contains informational notices about the response.",
+									"items": {
+										"description": "Represents an API notice or error detail.",
+										"properties": {
+											"code": {
+												"description": "Identifies the error or notice type.",
+												"type": "integer"
+											},
+											"message": {
+												"description": "Describes the error or notice.",
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									},
+									"nullable": true,
+									"type": "array"
+								},
+								"result": {
+									"description": "Contains the array of cost and usage records.",
+									"items": {
+										"description": "A single cost and usage record for a metered product within a specific charge period, aligned with the FinOps FOCUS v1.3 specification.",
+										"properties": {
+											"BilledCost": {
+												"description": "A charge serving as the basis for invoicing, inclusive of all reduced rates and discounts while excluding the amortization of upfront charges (one-time or recurring).",
+												"example": 0,
+												"nullable": true,
+												"type": "number"
+											},
+											"BillingAccountId": {
+												"description": "Public identifier of the Cloudflare account (account tag).",
+												"example": "023e105f4ecef8ad9ca31a8372d0c353",
+												"type": "string"
+											},
+											"BillingAccountName": {
+												"description": "Display name of the Cloudflare account.",
+												"example": "My Account",
+												"type": "string"
+											},
+											"BillingCurrency": {
+												"description": "Currency that a charge was billed in (ISO 4217).",
+												"example": "USD",
+												"nullable": true,
+												"type": "string"
+											},
+											"BillingPeriodEnd": {
+												"description": "Exclusive end of the billing cycle that contains this usage record.",
+												"example": "2025-06-01T00:00:00Z",
+												"format": "date-time",
+												"nullable": true,
+												"type": "string"
+											},
+											"BillingPeriodStart": {
+												"description": "Inclusive start of the billing cycle that contains this usage record.",
+												"example": "2025-05-01T00:00:00Z",
+												"format": "date-time",
+												"nullable": true,
+												"type": "string"
+											},
+											"ChargeCategory": {
+												"description": "Highest-level classification of a charge based on the nature of how it gets billed. Currently only \"Usage\" is supported.",
+												"enum": [
+													"Usage"
+												],
+												"example": "Usage",
+												"type": "string"
+											},
+											"ChargeClass": {
+												"description": "Indicates whether the row represents a correction to one or more charges invoiced in a previous billing period.",
+												"enum": [
+													"Correction"
+												],
+												"nullable": true,
+												"type": "string"
+											},
+											"ChargeDescription": {
+												"description": "Self-contained summary of the charge's purpose and price.",
+												"example": "Workers Standard Requests — daily usage",
+												"type": "string"
+											},
+											"ChargeFrequency": {
+												"description": "Indicates how often a charge occurs. Currently only \"Usage-Based\" is supported.",
+												"enum": [
+													"Usage-Based"
+												],
+												"example": "Usage-Based",
+												"type": "string"
+											},
+											"ChargePeriodEnd": {
+												"description": "Exclusive end of the time interval during which the usage was consumed.",
+												"example": "2025-05-02T00:00:00Z",
+												"format": "date-time",
+												"type": "string"
+											},
+											"ChargePeriodStart": {
+												"description": "Inclusive start of the time interval during which the usage was consumed.",
+												"example": "2025-05-01T00:00:00Z",
+												"format": "date-time",
+												"type": "string"
+											},
+											"ConsumedQuantity": {
+												"description": "Measured usage amount within the charge period. Reflects raw metered consumption before pricing transformations.",
+												"example": 150000,
+												"type": "number"
+											},
+											"ConsumedUnit": {
+												"description": "Unit of measure for the consumed quantity (e.g., \"GB\", \"Requests\", \"vCPU-Hours\").",
+												"example": "Requests",
+												"type": "string"
+											},
+											"ContractedCost": {
+												"description": "Cost calculated by multiplying ContractedUnitPrice and the corresponding PricingQuantity.",
+												"example": 0.75,
+												"nullable": true,
+												"type": "number"
+											},
+											"ContractedUnitPrice": {
+												"description": "The agreed-upon unit price for a single PricingUnit of the associated billable metric, inclusive of negotiated discounts, if present, while excluding any other discounts.",
+												"example": 0.000005,
+												"nullable": true,
+												"type": "number"
+											},
+											"EffectiveCost": {
+												"description": "The amortized cost of the charge after applying all reduced rates, discounts, and the applicable portion of relevant, prepaid purchases (one-time or recurring) that covered the charge.",
+												"example": 0,
+												"nullable": true,
+												"type": "number"
+											},
+											"HostProviderName": {
+												"description": "Name of the entity providing the underlying infrastructure or platform.",
+												"example": "Cloudflare",
+												"type": "string"
+											},
+											"InvoiceIssuerName": {
+												"description": "Name of the entity responsible for invoicing for the services consumed.",
+												"example": "Cloudflare",
+												"type": "string"
+											},
+											"ListCost": {
+												"description": "Cost calculated by multiplying ListUnitPrice and the corresponding PricingQuantity.",
+												"example": 0.75,
+												"nullable": true,
+												"type": "number"
+											},
+											"ListUnitPrice": {
+												"description": "Suggested provider-published unit price for a single PricingUnit of the associated billable metric, exclusive of any discounts.",
+												"example": 0.000005,
+												"nullable": true,
+												"type": "number"
+											},
+											"PricingQuantity": {
+												"description": "Volume of a given service used or purchased, based on the PricingUnit.",
+												"example": 150000,
+												"nullable": true,
+												"type": "number"
+											},
+											"PricingUnit": {
+												"description": "Provider-specified measurement unit for determining unit prices, indicating how the provider rates measured usage after applying pricing rules like block pricing.",
+												"example": "Requests",
+												"nullable": true,
+												"type": "string"
+											},
+											"RegionId": {
+												"description": "Provider-assigned identifier for an isolated geographic area where a service is provided.",
+												"example": "EEUR",
+												"nullable": true,
+												"type": "string"
+											},
+											"RegionName": {
+												"description": "Name of an isolated geographic area where a service is provided.",
+												"example": "Eastern Europe",
+												"nullable": true,
+												"type": "string"
+											},
+											"ServiceProviderName": {
+												"description": "Name of the entity that made the services available for purchase.",
+												"example": "Cloudflare",
+												"type": "string"
+											},
+											"SubAccountId": {
+												"description": "Unique identifier assigned to a grouping of services. For Cloudflare, this is the subscription or contract ID.",
+												"example": "c9bd752d-9ca8-411d-b804-be44a758057f",
+												"type": "string"
+											},
+											"SubAccountName": {
+												"description": "Name assigned to a grouping of services. For Cloudflare, this is the subscription or contract display name.",
+												"example": "My Subscription",
+												"type": "string"
+											},
+											"x_BillableMetricId": {
+												"description": "The unique identifier for the billable metric in the Cloudflare catalog. Cloudflare extension; replaces FOCUS SkuId.",
+												"example": "workers_standard_requests",
+												"type": "string"
+											},
+											"x_BillableMetricName": {
+												"description": "The display name of the billable metric. Cloudflare extension; replaces FOCUS SkuMeter.",
+												"example": "Workers Standard Requests",
+												"type": "string"
+											},
+											"x_ProductFamilyName": {
+												"description": "The product family the charge belongs to (e.g., \"R2\", \"Workers\"). Cloudflare extension; replaces FOCUS ServiceName.",
+												"example": "Workers",
+												"type": "string"
+											},
+											"x_ZoneId": {
+												"description": "The identifier for the Cloudflare zone (zone tag). Cloudflare extension.",
+												"example": "023e105f4ecef8ad9ca31a8372d0c353",
+												"nullable": true,
+												"type": "string"
+											},
+											"x_ZoneName": {
+												"description": "The display name of the Cloudflare zone. Cloudflare extension.",
+												"example": "example.com",
+												"nullable": true,
+												"type": "string"
+											}
+										},
+										"required": [
+											"ServiceProviderName",
+											"InvoiceIssuerName",
+											"HostProviderName",
+											"BillingAccountId",
+											"BillingAccountName",
+											"ChargePeriodStart",
+											"ChargePeriodEnd",
+											"x_BillableMetricName",
+											"ChargeCategory",
+											"ChargeFrequency",
+											"ChargeDescription",
+											"ConsumedQuantity",
+											"ConsumedUnit"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"success": {
+									"description": "Indicates whether the API call was successful.",
+									"enum": [
+										true
+									],
+									"example": true,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Organization usage data was successfully retrieved."
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"description": "Represents a failed API response.",
+							"properties": {
+								"errors": {
+									"description": "Contains error details describing why the request failed.",
+									"example": [
+										{
+											"code": 1183,
+											"message": "Invalid request parameters: Please ensure all required parameters are included and correctly formatted."
+										}
+									],
+									"items": {
+										"description": "Represents an API notice or error detail.",
+										"properties": {
+											"code": {
+												"description": "Identifies the error or notice type.",
+												"type": "integer"
+											},
+											"message": {
+												"description": "Describes the error or notice.",
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									},
+									"minItems": 1,
+									"type": "array"
+								},
+								"messages": {
+									"description": "Contains informational notices about the response.",
+									"items": {
+										"description": "Represents an API notice or error detail.",
+										"properties": {
+											"code": {
+												"description": "Identifies the error or notice type.",
+												"type": "integer"
+											},
+											"message": {
+												"description": "Describes the error or notice.",
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									},
+									"nullable": true,
+									"type": "array"
+								},
+								"result": {
+									"description": "Contains the response payload (always null on failure).",
+									"nullable": true,
+									"type": "object"
+								},
+								"success": {
+									"description": "Indicates whether the API call was successful.",
+									"enum": [
+										false
+									],
+									"example": false,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Indicates the request failed."
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Get Organization Usage (Version 2, Alpha, Restricted)",
+		"tags": [
+			"Billable Usage V2"
+		],
+		"x-cfPlanAvailability": {
+			"business": true,
+			"enterprise": true,
+			"free": true,
+			"pro": true
+		}
+	}
+}
