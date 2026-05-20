@@ -1587,12 +1587,15 @@
 		"country": "Source country code",
 		"datetime": "Day start timestamp (daily granularity)",
 		"destination": "Query name (destination domain)",
+		"deviceId": "Device ID. Requires the #teams:pii permission; otherwise returned as the literal \"REDACTED\"",
+		"email": "User email address. Requires the #teams:pii permission; otherwise returned as the literal \"REDACTED\"",
 		"location": "Gateway location ID",
 		"policyId": "Policy ID",
 		"protocol": "DNS protocol",
 		"queryType": "DNS query type",
 		"rcode": "DNS response code",
-		"resolverDecision": "Gateway resolver decision"
+		"resolverDecision": "Gateway resolver decision",
+		"sourceIP": "Source IP address. Requires the #teams:pii permission; otherwise returned as the literal \"REDACTED\""
 	},
 	"AccountCf1GatewayDns1dGroupsFilter_InputObject": {
 		"__description": ""
@@ -1623,12 +1626,15 @@
 		"country": "Source country code",
 		"datetime": "Hour start timestamp (hourly granularity)",
 		"destination": "Query name (destination domain)",
+		"deviceId": "Device ID. Requires the #teams:pii permission; otherwise returned as the literal \"REDACTED\"",
+		"email": "User email address. Requires the #teams:pii permission; otherwise returned as the literal \"REDACTED\"",
 		"location": "Gateway location ID",
 		"policyId": "Policy ID",
 		"protocol": "DNS protocol",
 		"queryType": "DNS query type",
 		"rcode": "DNS response code",
-		"resolverDecision": "Gateway resolver decision"
+		"resolverDecision": "Gateway resolver decision",
+		"sourceIP": "Source IP address. Requires the #teams:pii permission; otherwise returned as the literal \"REDACTED\""
 	},
 	"AccountCf1GatewayDns1hGroupsFilter_InputObject": {
 		"__description": ""
@@ -1661,12 +1667,15 @@
 		"datetimeFiveMinutes": "Query timestamp truncated to five minutes",
 		"datetimeHour": "Query timestamp truncated to hour",
 		"destination": "Query name (destination domain)",
+		"deviceId": "Device ID. Requires the #teams:pii permission; otherwise returned as the literal \"REDACTED\"",
+		"email": "User email address. Requires the #teams:pii permission; otherwise returned as the literal \"REDACTED\"",
 		"location": "Gateway location ID",
 		"policyId": "Policy ID",
 		"protocol": "DNS protocol",
 		"queryType": "DNS query type",
 		"rcode": "DNS response code",
-		"resolverDecision": "Gateway resolver decision"
+		"resolverDecision": "Gateway resolver decision",
+		"sourceIP": "Source IP address. Requires the #teams:pii permission; otherwise returned as the literal \"REDACTED\""
 	},
 	"AccountCf1GatewayDnsRawGroupsFilter_InputObject": {
 		"__description": ""
