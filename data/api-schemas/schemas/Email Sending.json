@@ -398,7 +398,7 @@
 								"type": "object"
 							},
 							"html": {
-								"description": "HTML body of the email. At least one of text or html must be provided.",
+								"description": "HTML body of the email. At least one of text or html must be provided (non-empty).",
 								"example": "<h1>Hello</h1><p>Please find your report attached.</p>",
 								"type": "string"
 							},
@@ -443,7 +443,7 @@
 								"type": "string"
 							},
 							"text": {
-								"description": "Plain text body of the email. At least one of text or html must be provided.",
+								"description": "Plain text body of the email. At least one of text or html must be provided (non-empty).",
 								"example": "Hello\n\nPlease find your report attached.",
 								"type": "string"
 							},
