@@ -146,6 +146,11 @@
 												"example": 150000,
 												"type": "integer"
 											},
+											"ServiceFamilyName": {
+												"description": "Identifies the product family for the Cloudflare service.",
+												"example": "Workers",
+												"type": "string"
+											},
 											"ServiceName": {
 												"description": "Identifies the Cloudflare service.",
 												"example": "Workers Standard",
