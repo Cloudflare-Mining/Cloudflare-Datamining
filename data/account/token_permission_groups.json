@@ -1791,6 +1791,15 @@
 		"category": "app_security"
 	},
 	{
+		"id": "b071dbca5f0a412e96ab95749da01a7c",
+		"name": "Granular Workers Scripts Read",
+		"description": "Grants read access to a single Cloudflare Worker resource.",
+		"scopes": [
+			"com.cloudflare.edge.worker.script"
+		],
+		"category": "developer_platform"
+	},
+	{
 		"id": "fac65912d42144aa86b7dd33281bf79e",
 		"name": "Health Checks Read",
 		"description": "Grants read access to Health Checks",
