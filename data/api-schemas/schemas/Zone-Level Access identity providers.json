@@ -504,7 +504,8 @@
 																			"okta",
 																			"onelogin",
 																			"pingone",
-																			"yandex"
+																			"yandex",
+																			"cloudflare"
 																		],
 																		"example": "onetimepin",
 																		"type": "string"
@@ -656,7 +657,8 @@
 																			"okta",
 																			"onelogin",
 																			"pingone",
-																			"yandex"
+																			"yandex",
+																			"cloudflare"
 																		],
 																		"example": "onetimepin",
 																		"type": "string"
@@ -796,7 +798,8 @@
 																			"okta",
 																			"onelogin",
 																			"pingone",
-																			"yandex"
+																			"yandex",
+																			"cloudflare"
 																		],
 																		"example": "onetimepin",
 																		"type": "string"
@@ -917,7 +920,8 @@
 																			"okta",
 																			"onelogin",
 																			"pingone",
-																			"yandex"
+																			"yandex",
+																			"cloudflare"
 																		],
 																		"example": "onetimepin",
 																		"type": "string"
@@ -1038,7 +1042,8 @@
 																			"okta",
 																			"onelogin",
 																			"pingone",
-																			"yandex"
+																			"yandex",
+																			"cloudflare"
 																		],
 																		"example": "onetimepin",
 																		"type": "string"
@@ -1159,7 +1164,8 @@
 																			"okta",
 																			"onelogin",
 																			"pingone",
-																			"yandex"
+																			"yandex",
+																			"cloudflare"
 																		],
 																		"example": "onetimepin",
 																		"type": "string"
@@ -1294,7 +1300,8 @@
 																			"okta",
 																			"onelogin",
 																			"pingone",
-																			"yandex"
+																			"yandex",
+																			"cloudflare"
 																		],
 																		"example": "onetimepin",
 																		"type": "string"
@@ -1415,7 +1422,8 @@
 																			"okta",
 																			"onelogin",
 																			"pingone",
-																			"yandex"
+																			"yandex",
+																			"cloudflare"
 																		],
 																		"example": "onetimepin",
 																		"type": "string"
@@ -1583,7 +1591,8 @@
 																			"okta",
 																			"onelogin",
 																			"pingone",
-																			"yandex"
+																			"yandex",
+																			"cloudflare"
 																		],
 																		"example": "onetimepin",
 																		"type": "string"
@@ -1718,7 +1727,8 @@
 																			"okta",
 																			"onelogin",
 																			"pingone",
-																			"yandex"
+																			"yandex",
+																			"cloudflare"
 																		],
 																		"example": "onetimepin",
 																		"type": "string"
@@ -1853,7 +1863,8 @@
 																			"okta",
 																			"onelogin",
 																			"pingone",
-																			"yandex"
+																			"yandex",
+																			"cloudflare"
 																		],
 																		"example": "onetimepin",
 																		"type": "string"
@@ -1988,7 +1999,8 @@
 																			"okta",
 																			"onelogin",
 																			"pingone",
-																			"yandex"
+																			"yandex",
+																			"cloudflare"
 																		],
 																		"example": "onetimepin",
 																		"type": "string"
@@ -2152,7 +2164,8 @@
 																			"okta",
 																			"onelogin",
 																			"pingone",
-																			"yandex"
+																			"yandex",
+																			"cloudflare"
 																		],
 																		"example": "onetimepin",
 																		"type": "string"
@@ -2273,7 +2286,8 @@
 																			"okta",
 																			"onelogin",
 																			"pingone",
-																			"yandex"
+																			"yandex",
+																			"cloudflare"
 																		],
 																		"example": "onetimepin",
 																		"type": "string"
@@ -2306,6 +2320,130 @@
 															}
 														],
 														"title": "One Time Pin",
+														"type": "object"
+													},
+													{
+														"allOf": [
+															{
+																"properties": {
+																	"config": {
+																		"description": "The configuration parameters for the identity provider. To view the required parameters for a specific provider, refer to our [developer documentation](https://developers.cloudflare.com/cloudflare-one/identity/idp-integration/).",
+																		"type": "object"
+																	},
+																	"id": {
+																		"description": "UUID.",
+																		"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
+																		"maxLength": 36,
+																		"type": "string",
+																		"x-auditable": true
+																	},
+																	"name": {
+																		"description": "The name of the identity provider, shown to users on the login page.",
+																		"example": "Widget Corps IDP",
+																		"type": "string"
+																	},
+																	"scim_config": {
+																		"description": "The configuration settings for enabling a System for Cross-Domain Identity Management (SCIM) with the identity provider.",
+																		"properties": {
+																			"enabled": {
+																				"default": false,
+																				"description": "A flag to enable or disable SCIM for the identity provider.",
+																				"type": "boolean",
+																				"x-stainless-terraform-configurability": "computed_optional"
+																			},
+																			"identity_update_behavior": {
+																				"default": "no_action",
+																				"description": "Indicates how a SCIM event updates a user identity used for policy evaluation. Use \"automatic\" to automatically update a user's identity and augment it with fields from the SCIM user resource. Use \"reauth\" to force re-authentication on group membership updates, user identity update will only occur after successful re-authentication. With \"reauth\" identities will not contain fields from the SCIM user resource. With \"no_action\" identities will not be changed by SCIM updates in any way and users will not be prompted to reauthenticate.",
+																				"enum": [
+																					"automatic",
+																					"reauth",
+																					"no_action"
+																				],
+																				"type": "string",
+																				"x-stainless-terraform-configurability": "computed_optional"
+																			},
+																			"scim_base_url": {
+																				"description": "The base URL of Cloudflare's SCIM V2.0 API endpoint.",
+																				"readOnly": true,
+																				"type": "string"
+																			},
+																			"seat_deprovision": {
+																				"default": false,
+																				"description": "A flag to remove a user's seat in Zero Trust when they have been deprovisioned in the Identity Provider.  This cannot be enabled unless user_deprovision is also enabled.",
+																				"type": "boolean",
+																				"x-stainless-terraform-configurability": "computed_optional"
+																			},
+																			"secret": {
+																				"description": "A read-only token generated when the SCIM integration is enabled for the first time.  It is redacted on subsequent requests. If you lose this you will need to refresh it at /access/identity_providers/:idpID/refresh_scim_secret.",
+																				"readOnly": true,
+																				"type": "string",
+																				"x-sensitive": true
+																			},
+																			"user_deprovision": {
+																				"default": false,
+																				"description": "A flag to enable revoking a user's session in Access and Gateway when they have been deprovisioned in the Identity Provider.",
+																				"type": "boolean",
+																				"x-stainless-terraform-configurability": "computed_optional"
+																			}
+																		},
+																		"type": "object"
+																	},
+																	"type": {
+																		"description": "The type of identity provider. To determine the value for a specific provider, refer to our [developer documentation](https://developers.cloudflare.com/cloudflare-one/identity/idp-integration/).",
+																		"enum": [
+																			"onetimepin",
+																			"azureAD",
+																			"saml",
+																			"centrify",
+																			"facebook",
+																			"github",
+																			"google-apps",
+																			"google",
+																			"linkedin",
+																			"oidc",
+																			"okta",
+																			"onelogin",
+																			"pingone",
+																			"yandex",
+																			"cloudflare"
+																		],
+																		"example": "onetimepin",
+																		"type": "string"
+																	}
+																},
+																"required": [
+																	"name",
+																	"type",
+																	"config"
+																],
+																"type": "object"
+															},
+															{
+																"properties": {
+																	"config": {
+																		"properties": {
+																			"redirect_url": {
+																				"readOnly": true,
+																				"type": "string"
+																			},
+																			"restrict_to_account_members": {
+																				"default": false,
+																				"description": "When enabled, only users who are members of your Cloudflare account can authenticate through this identity provider. When disabled, any user with a Cloudflare account can authenticate, subject to your Access policies.",
+																				"type": "boolean"
+																			}
+																		},
+																		"type": "object"
+																	},
+																	"type": {
+																		"enum": [
+																			"cloudflare"
+																		],
+																		"type": "string"
+																	}
+																}
+															}
+														],
+														"title": "Cloudflare",
 														"type": "object"
 													}
 												]
@@ -2659,7 +2797,8 @@
 																		"okta",
 																		"onelogin",
 																		"pingone",
-																		"yandex"
+																		"yandex",
+																		"cloudflare"
 																	],
 																	"example": "onetimepin",
 																	"type": "string"
@@ -2811,7 +2950,8 @@
 																		"okta",
 																		"onelogin",
 																		"pingone",
-																		"yandex"
+																		"yandex",
+																		"cloudflare"
 																	],
 																	"example": "onetimepin",
 																	"type": "string"
@@ -2951,7 +3091,8 @@
 																		"okta",
 																		"onelogin",
 																		"pingone",
-																		"yandex"
+																		"yandex",
+																		"cloudflare"
 																	],
 																	"example": "onetimepin",
 																	"type": "string"
@@ -3072,7 +3213,8 @@
 																		"okta",
 																		"onelogin",
 																		"pingone",
-																		"yandex"
+																		"yandex",
+																		"cloudflare"
 																	],
 																	"example": "onetimepin",
 																	"type": "string"
@@ -3193,7 +3335,8 @@
 																		"okta",
 																		"onelogin",
 																		"pingone",
-																		"yandex"
+																		"yandex",
+																		"cloudflare"
 																	],
 																	"example": "onetimepin",
 																	"type": "string"
@@ -3314,7 +3457,8 @@
 																		"okta",
 																		"onelogin",
 																		"pingone",
-																		"yandex"
+																		"yandex",
+																		"cloudflare"
 																	],
 																	"example": "onetimepin",
 																	"type": "string"
@@ -3449,7 +3593,8 @@
 																		"okta",
 																		"onelogin",
 																		"pingone",
-																		"yandex"
+																		"yandex",
+																		"cloudflare"
 																	],
 																	"example": "onetimepin",
 																	"type": "string"
@@ -3570,7 +3715,8 @@
 																		"okta",
 																		"onelogin",
 																		"pingone",
-																		"yandex"
+																		"yandex",
+																		"cloudflare"
 																	],
 																	"example": "onetimepin",
 																	"type": "string"
@@ -3738,7 +3884,8 @@
 																		"okta",
 																		"onelogin",
 																		"pingone",
-																		"yandex"
+																		"yandex",
+																		"cloudflare"
 																	],
 																	"example": "onetimepin",
 																	"type": "string"
@@ -3873,7 +4020,8 @@
 																		"okta",
 																		"onelogin",
 																		"pingone",
-																		"yandex"
+																		"yandex",
+																		"cloudflare"
 																	],
 																	"example": "onetimepin",
 																	"type": "string"
@@ -4008,7 +4156,8 @@
 																		"okta",
 																		"onelogin",
 																		"pingone",
-																		"yandex"
+																		"yandex",
+																		"cloudflare"
 																	],
 																	"example": "onetimepin",
 																	"type": "string"
@@ -4143,7 +4292,8 @@
 																		"okta",
 																		"onelogin",
 																		"pingone",
-																		"yandex"
+																		"yandex",
+																		"cloudflare"
 																	],
 																	"example": "onetimepin",
 																	"type": "string"
@@ -4307,7 +4457,8 @@
 																		"okta",
 																		"onelogin",
 																		"pingone",
-																		"yandex"
+																		"yandex",
+																		"cloudflare"
 																	],
 																	"example": "onetimepin",
 																	"type": "string"
@@ -4344,6 +4495,130 @@
 														}
 													],
 													"title": "Yandex",
+													"type": "object"
+												},
+												{
+													"allOf": [
+														{
+															"properties": {
+																"config": {
+																	"description": "The configuration parameters for the identity provider. To view the required parameters for a specific provider, refer to our [developer documentation](https://developers.cloudflare.com/cloudflare-one/identity/idp-integration/).",
+																	"type": "object"
+																},
+																"id": {
+																	"description": "UUID.",
+																	"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
+																	"maxLength": 36,
+																	"type": "string",
+																	"x-auditable": true
+																},
+																"name": {
+																	"description": "The name of the identity provider, shown to users on the login page.",
+																	"example": "Widget Corps IDP",
+																	"type": "string"
+																},
+																"scim_config": {
+																	"description": "The configuration settings for enabling a System for Cross-Domain Identity Management (SCIM) with the identity provider.",
+																	"properties": {
+																		"enabled": {
+																			"default": false,
+																			"description": "A flag to enable or disable SCIM for the identity provider.",
+																			"type": "boolean",
+																			"x-stainless-terraform-configurability": "computed_optional"
+																		},
+																		"identity_update_behavior": {
+																			"default": "no_action",
+																			"description": "Indicates how a SCIM event updates a user identity used for policy evaluation. Use \"automatic\" to automatically update a user's identity and augment it with fields from the SCIM user resource. Use \"reauth\" to force re-authentication on group membership updates, user identity update will only occur after successful re-authentication. With \"reauth\" identities will not contain fields from the SCIM user resource. With \"no_action\" identities will not be changed by SCIM updates in any way and users will not be prompted to reauthenticate.",
+																			"enum": [
+																				"automatic",
+																				"reauth",
+																				"no_action"
+																			],
+																			"type": "string",
+																			"x-stainless-terraform-configurability": "computed_optional"
+																		},
+																		"scim_base_url": {
+																			"description": "The base URL of Cloudflare's SCIM V2.0 API endpoint.",
+																			"readOnly": true,
+																			"type": "string"
+																		},
+																		"seat_deprovision": {
+																			"default": false,
+																			"description": "A flag to remove a user's seat in Zero Trust when they have been deprovisioned in the Identity Provider.  This cannot be enabled unless user_deprovision is also enabled.",
+																			"type": "boolean",
+																			"x-stainless-terraform-configurability": "computed_optional"
+																		},
+																		"secret": {
+																			"description": "A read-only token generated when the SCIM integration is enabled for the first time.  It is redacted on subsequent requests. If you lose this you will need to refresh it at /access/identity_providers/:idpID/refresh_scim_secret.",
+																			"readOnly": true,
+																			"type": "string",
+																			"x-sensitive": true
+																		},
+																		"user_deprovision": {
+																			"default": false,
+																			"description": "A flag to enable revoking a user's session in Access and Gateway when they have been deprovisioned in the Identity Provider.",
+																			"type": "boolean",
+																			"x-stainless-terraform-configurability": "computed_optional"
+																		}
+																	},
+																	"type": "object"
+																},
+																"type": {
+																	"description": "The type of identity provider. To determine the value for a specific provider, refer to our [developer documentation](https://developers.cloudflare.com/cloudflare-one/identity/idp-integration/).",
+																	"enum": [
+																		"onetimepin",
+																		"azureAD",
+																		"saml",
+																		"centrify",
+																		"facebook",
+																		"github",
+																		"google-apps",
+																		"google",
+																		"linkedin",
+																		"oidc",
+																		"okta",
+																		"onelogin",
+																		"pingone",
+																		"yandex",
+																		"cloudflare"
+																	],
+																	"example": "onetimepin",
+																	"type": "string"
+																}
+															},
+															"required": [
+																"name",
+																"type",
+																"config"
+															],
+															"type": "object"
+														},
+														{
+															"properties": {
+																"config": {
+																	"properties": {
+																		"redirect_url": {
+																			"readOnly": true,
+																			"type": "string"
+																		},
+																		"restrict_to_account_members": {
+																			"default": false,
+																			"description": "When enabled, only users who are members of your Cloudflare account can authenticate through this identity provider. When disabled, any user with a Cloudflare account can authenticate, subject to your Access policies.",
+																			"type": "boolean"
+																		}
+																	},
+																	"type": "object"
+																},
+																"type": {
+																	"enum": [
+																		"cloudflare"
+																	],
+																	"type": "string"
+																}
+															}
+														}
+													],
+													"title": "Cloudflare",
 													"type": "object"
 												}
 											]
@@ -4590,7 +4865,8 @@
 													"okta",
 													"onelogin",
 													"pingone",
-													"yandex"
+													"yandex",
+													"cloudflare"
 												],
 												"example": "onetimepin",
 												"type": "string"
@@ -4742,7 +5018,8 @@
 													"okta",
 													"onelogin",
 													"pingone",
-													"yandex"
+													"yandex",
+													"cloudflare"
 												],
 												"example": "onetimepin",
 												"type": "string"
@@ -4882,7 +5159,8 @@
 													"okta",
 													"onelogin",
 													"pingone",
-													"yandex"
+													"yandex",
+													"cloudflare"
 												],
 												"example": "onetimepin",
 												"type": "string"
@@ -5003,7 +5281,8 @@
 													"okta",
 													"onelogin",
 													"pingone",
-													"yandex"
+													"yandex",
+													"cloudflare"
 												],
 												"example": "onetimepin",
 												"type": "string"
@@ -5124,7 +5403,8 @@
 													"okta",
 													"onelogin",
 													"pingone",
-													"yandex"
+													"yandex",
+													"cloudflare"
 												],
 												"example": "onetimepin",
 												"type": "string"
@@ -5245,7 +5525,8 @@
 													"okta",
 													"onelogin",
 													"pingone",
-													"yandex"
+													"yandex",
+													"cloudflare"
 												],
 												"example": "onetimepin",
 												"type": "string"
@@ -5380,7 +5661,8 @@
 													"okta",
 													"onelogin",
 													"pingone",
-													"yandex"
+													"yandex",
+													"cloudflare"
 												],
 												"example": "onetimepin",
 												"type": "string"
@@ -5501,7 +5783,8 @@
 													"okta",
 													"onelogin",
 													"pingone",
-													"yandex"
+													"yandex",
+													"cloudflare"
 												],
 												"example": "onetimepin",
 												"type": "string"
@@ -5669,7 +5952,8 @@
 													"okta",
 													"onelogin",
 													"pingone",
-													"yandex"
+													"yandex",
+													"cloudflare"
 												],
 												"example": "onetimepin",
 												"type": "string"
@@ -5804,7 +6088,8 @@
 													"okta",
 													"onelogin",
 													"pingone",
-													"yandex"
+													"yandex",
+													"cloudflare"
 												],
 												"example": "onetimepin",
 												"type": "string"
@@ -5939,7 +6224,8 @@
 													"okta",
 													"onelogin",
 													"pingone",
-													"yandex"
+													"yandex",
+													"cloudflare"
 												],
 												"example": "onetimepin",
 												"type": "string"
@@ -6074,7 +6360,8 @@
 													"okta",
 													"onelogin",
 													"pingone",
-													"yandex"
+													"yandex",
+													"cloudflare"
 												],
 												"example": "onetimepin",
 												"type": "string"
@@ -6238,7 +6525,8 @@
 													"okta",
 													"onelogin",
 													"pingone",
-													"yandex"
+													"yandex",
+													"cloudflare"
 												],
 												"example": "onetimepin",
 												"type": "string"
@@ -6275,6 +6563,130 @@
 									}
 								],
 								"title": "Yandex",
+								"type": "object"
+							},
+							{
+								"allOf": [
+									{
+										"properties": {
+											"config": {
+												"description": "The configuration parameters for the identity provider. To view the required parameters for a specific provider, refer to our [developer documentation](https://developers.cloudflare.com/cloudflare-one/identity/idp-integration/).",
+												"type": "object"
+											},
+											"id": {
+												"description": "UUID.",
+												"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
+												"maxLength": 36,
+												"type": "string",
+												"x-auditable": true
+											},
+											"name": {
+												"description": "The name of the identity provider, shown to users on the login page.",
+												"example": "Widget Corps IDP",
+												"type": "string"
+											},
+											"scim_config": {
+												"description": "The configuration settings for enabling a System for Cross-Domain Identity Management (SCIM) with the identity provider.",
+												"properties": {
+													"enabled": {
+														"default": false,
+														"description": "A flag to enable or disable SCIM for the identity provider.",
+														"type": "boolean",
+														"x-stainless-terraform-configurability": "computed_optional"
+													},
+													"identity_update_behavior": {
+														"default": "no_action",
+														"description": "Indicates how a SCIM event updates a user identity used for policy evaluation. Use \"automatic\" to automatically update a user's identity and augment it with fields from the SCIM user resource. Use \"reauth\" to force re-authentication on group membership updates, user identity update will only occur after successful re-authentication. With \"reauth\" identities will not contain fields from the SCIM user resource. With \"no_action\" identities will not be changed by SCIM updates in any way and users will not be prompted to reauthenticate.",
+														"enum": [
+															"automatic",
+															"reauth",
+															"no_action"
+														],
+														"type": "string",
+														"x-stainless-terraform-configurability": "computed_optional"
+													},
+													"scim_base_url": {
+														"description": "The base URL of Cloudflare's SCIM V2.0 API endpoint.",
+														"readOnly": true,
+														"type": "string"
+													},
+													"seat_deprovision": {
+														"default": false,
+														"description": "A flag to remove a user's seat in Zero Trust when they have been deprovisioned in the Identity Provider.  This cannot be enabled unless user_deprovision is also enabled.",
+														"type": "boolean",
+														"x-stainless-terraform-configurability": "computed_optional"
+													},
+													"secret": {
+														"description": "A read-only token generated when the SCIM integration is enabled for the first time.  It is redacted on subsequent requests. If you lose this you will need to refresh it at /access/identity_providers/:idpID/refresh_scim_secret.",
+														"readOnly": true,
+														"type": "string",
+														"x-sensitive": true
+													},
+													"user_deprovision": {
+														"default": false,
+														"description": "A flag to enable revoking a user's session in Access and Gateway when they have been deprovisioned in the Identity Provider.",
+														"type": "boolean",
+														"x-stainless-terraform-configurability": "computed_optional"
+													}
+												},
+												"type": "object"
+											},
+											"type": {
+												"description": "The type of identity provider. To determine the value for a specific provider, refer to our [developer documentation](https://developers.cloudflare.com/cloudflare-one/identity/idp-integration/).",
+												"enum": [
+													"onetimepin",
+													"azureAD",
+													"saml",
+													"centrify",
+													"facebook",
+													"github",
+													"google-apps",
+													"google",
+													"linkedin",
+													"oidc",
+													"okta",
+													"onelogin",
+													"pingone",
+													"yandex",
+													"cloudflare"
+												],
+												"example": "onetimepin",
+												"type": "string"
+											}
+										},
+										"required": [
+											"name",
+											"type",
+											"config"
+										],
+										"type": "object"
+									},
+									{
+										"properties": {
+											"config": {
+												"properties": {
+													"redirect_url": {
+														"readOnly": true,
+														"type": "string"
+													},
+													"restrict_to_account_members": {
+														"default": false,
+														"description": "When enabled, only users who are members of your Cloudflare account can authenticate through this identity provider. When disabled, any user with a Cloudflare account can authenticate, subject to your Access policies.",
+														"type": "boolean"
+													}
+												},
+												"type": "object"
+											},
+											"type": {
+												"enum": [
+													"cloudflare"
+												],
+												"type": "string"
+											}
+										}
+									}
+								],
+								"title": "Cloudflare",
 								"type": "object"
 							}
 						]
@@ -6462,7 +6874,8 @@
 																		"okta",
 																		"onelogin",
 																		"pingone",
-																		"yandex"
+																		"yandex",
+																		"cloudflare"
 																	],
 																	"example": "onetimepin",
 																	"type": "string"
@@ -6614,7 +7027,8 @@
 																		"okta",
 																		"onelogin",
 																		"pingone",
-																		"yandex"
+																		"yandex",
+																		"cloudflare"
 																	],
 																	"example": "onetimepin",
 																	"type": "string"
@@ -6754,7 +7168,8 @@
 																		"okta",
 																		"onelogin",
 																		"pingone",
-																		"yandex"
+																		"yandex",
+																		"cloudflare"
 																	],
 																	"example": "onetimepin",
 																	"type": "string"
@@ -6875,7 +7290,8 @@
 																		"okta",
 																		"onelogin",
 																		"pingone",
-																		"yandex"
+																		"yandex",
+																		"cloudflare"
 																	],
 																	"example": "onetimepin",
 																	"type": "string"
@@ -6996,7 +7412,8 @@
 																		"okta",
 																		"onelogin",
 																		"pingone",
-																		"yandex"
+																		"yandex",
+																		"cloudflare"
 																	],
 																	"example": "onetimepin",
 																	"type": "string"
@@ -7117,7 +7534,8 @@
 																		"okta",
 																		"onelogin",
 																		"pingone",
-																		"yandex"
+																		"yandex",
+																		"cloudflare"
 																	],
 																	"example": "onetimepin",
 																	"type": "string"
@@ -7252,7 +7670,8 @@
 																		"okta",
 																		"onelogin",
 																		"pingone",
-																		"yandex"
+																		"yandex",
+																		"cloudflare"
 																	],
 																	"example": "onetimepin",
 																	"type": "string"
@@ -7373,7 +7792,8 @@
 																		"okta",
 																		"onelogin",
 																		"pingone",
-																		"yandex"
+																		"yandex",
+																		"cloudflare"
 																	],
 																	"example": "onetimepin",
 																	"type": "string"
@@ -7541,7 +7961,8 @@
 																		"okta",
 																		"onelogin",
 																		"pingone",
-																		"yandex"
+																		"yandex",
+																		"cloudflare"
 																	],
 																	"example": "onetimepin",
 																	"type": "string"
@@ -7676,7 +8097,8 @@
 																		"okta",
 																		"onelogin",
 																		"pingone",
-																		"yandex"
+																		"yandex",
+																		"cloudflare"
 																	],
 																	"example": "onetimepin",
 																	"type": "string"
@@ -7811,7 +8233,8 @@
 																		"okta",
 																		"onelogin",
 																		"pingone",
-																		"yandex"
+																		"yandex",
+																		"cloudflare"
 																	],
 																	"example": "onetimepin",
 																	"type": "string"
@@ -7946,7 +8369,8 @@
 																		"okta",
 																		"onelogin",
 																		"pingone",
-																		"yandex"
+																		"yandex",
+																		"cloudflare"
 																	],
 																	"example": "onetimepin",
 																	"type": "string"
@@ -8110,7 +8534,8 @@
 																		"okta",
 																		"onelogin",
 																		"pingone",
-																		"yandex"
+																		"yandex",
+																		"cloudflare"
 																	],
 																	"example": "onetimepin",
 																	"type": "string"
@@ -8147,6 +8572,130 @@
 														}
 													],
 													"title": "Yandex",
+													"type": "object"
+												},
+												{
+													"allOf": [
+														{
+															"properties": {
+																"config": {
+																	"description": "The configuration parameters for the identity provider. To view the required parameters for a specific provider, refer to our [developer documentation](https://developers.cloudflare.com/cloudflare-one/identity/idp-integration/).",
+																	"type": "object"
+																},
+																"id": {
+																	"description": "UUID.",
+																	"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
+																	"maxLength": 36,
+																	"type": "string",
+																	"x-auditable": true
+																},
+																"name": {
+																	"description": "The name of the identity provider, shown to users on the login page.",
+																	"example": "Widget Corps IDP",
+																	"type": "string"
+																},
+																"scim_config": {
+																	"description": "The configuration settings for enabling a System for Cross-Domain Identity Management (SCIM) with the identity provider.",
+																	"properties": {
+																		"enabled": {
+																			"default": false,
+																			"description": "A flag to enable or disable SCIM for the identity provider.",
+																			"type": "boolean",
+																			"x-stainless-terraform-configurability": "computed_optional"
+																		},
+																		"identity_update_behavior": {
+																			"default": "no_action",
+																			"description": "Indicates how a SCIM event updates a user identity used for policy evaluation. Use \"automatic\" to automatically update a user's identity and augment it with fields from the SCIM user resource. Use \"reauth\" to force re-authentication on group membership updates, user identity update will only occur after successful re-authentication. With \"reauth\" identities will not contain fields from the SCIM user resource. With \"no_action\" identities will not be changed by SCIM updates in any way and users will not be prompted to reauthenticate.",
+																			"enum": [
+																				"automatic",
+																				"reauth",
+																				"no_action"
+																			],
+																			"type": "string",
+																			"x-stainless-terraform-configurability": "computed_optional"
+																		},
+																		"scim_base_url": {
+																			"description": "The base URL of Cloudflare's SCIM V2.0 API endpoint.",
+																			"readOnly": true,
+																			"type": "string"
+																		},
+																		"seat_deprovision": {
+																			"default": false,
+																			"description": "A flag to remove a user's seat in Zero Trust when they have been deprovisioned in the Identity Provider.  This cannot be enabled unless user_deprovision is also enabled.",
+																			"type": "boolean",
+																			"x-stainless-terraform-configurability": "computed_optional"
+																		},
+																		"secret": {
+																			"description": "A read-only token generated when the SCIM integration is enabled for the first time.  It is redacted on subsequent requests. If you lose this you will need to refresh it at /access/identity_providers/:idpID/refresh_scim_secret.",
+																			"readOnly": true,
+																			"type": "string",
+																			"x-sensitive": true
+																		},
+																		"user_deprovision": {
+																			"default": false,
+																			"description": "A flag to enable revoking a user's session in Access and Gateway when they have been deprovisioned in the Identity Provider.",
+																			"type": "boolean",
+																			"x-stainless-terraform-configurability": "computed_optional"
+																		}
+																	},
+																	"type": "object"
+																},
+																"type": {
+																	"description": "The type of identity provider. To determine the value for a specific provider, refer to our [developer documentation](https://developers.cloudflare.com/cloudflare-one/identity/idp-integration/).",
+																	"enum": [
+																		"onetimepin",
+																		"azureAD",
+																		"saml",
+																		"centrify",
+																		"facebook",
+																		"github",
+																		"google-apps",
+																		"google",
+																		"linkedin",
+																		"oidc",
+																		"okta",
+																		"onelogin",
+																		"pingone",
+																		"yandex",
+																		"cloudflare"
+																	],
+																	"example": "onetimepin",
+																	"type": "string"
+																}
+															},
+															"required": [
+																"name",
+																"type",
+																"config"
+															],
+															"type": "object"
+														},
+														{
+															"properties": {
+																"config": {
+																	"properties": {
+																		"redirect_url": {
+																			"readOnly": true,
+																			"type": "string"
+																		},
+																		"restrict_to_account_members": {
+																			"default": false,
+																			"description": "When enabled, only users who are members of your Cloudflare account can authenticate through this identity provider. When disabled, any user with a Cloudflare account can authenticate, subject to your Access policies.",
+																			"type": "boolean"
+																		}
+																	},
+																	"type": "object"
+																},
+																"type": {
+																	"enum": [
+																		"cloudflare"
+																	],
+																	"type": "string"
+																}
+															}
+														}
+													],
+													"title": "Cloudflare",
 													"type": "object"
 												}
 											]
@@ -8404,7 +8953,8 @@
 													"okta",
 													"onelogin",
 													"pingone",
-													"yandex"
+													"yandex",
+													"cloudflare"
 												],
 												"example": "onetimepin",
 												"type": "string"
@@ -8556,7 +9106,8 @@
 													"okta",
 													"onelogin",
 													"pingone",
-													"yandex"
+													"yandex",
+													"cloudflare"
 												],
 												"example": "onetimepin",
 												"type": "string"
@@ -8696,7 +9247,8 @@
 													"okta",
 													"onelogin",
 													"pingone",
-													"yandex"
+													"yandex",
+													"cloudflare"
 												],
 												"example": "onetimepin",
 												"type": "string"
@@ -8817,7 +9369,8 @@
 													"okta",
 													"onelogin",
 													"pingone",
-													"yandex"
+													"yandex",
+													"cloudflare"
 												],
 												"example": "onetimepin",
 												"type": "string"
@@ -8938,7 +9491,8 @@
 													"okta",
 													"onelogin",
 													"pingone",
-													"yandex"
+													"yandex",
+													"cloudflare"
 												],
 												"example": "onetimepin",
 												"type": "string"
@@ -9059,7 +9613,8 @@
 													"okta",
 													"onelogin",
 													"pingone",
-													"yandex"
+													"yandex",
+													"cloudflare"
 												],
 												"example": "onetimepin",
 												"type": "string"
@@ -9194,7 +9749,8 @@
 													"okta",
 													"onelogin",
 													"pingone",
-													"yandex"
+													"yandex",
+													"cloudflare"
 												],
 												"example": "onetimepin",
 												"type": "string"
@@ -9315,7 +9871,8 @@
 													"okta",
 													"onelogin",
 													"pingone",
-													"yandex"
+													"yandex",
+													"cloudflare"
 												],
 												"example": "onetimepin",
 												"type": "string"
@@ -9483,7 +10040,8 @@
 													"okta",
 													"onelogin",
 													"pingone",
-													"yandex"
+													"yandex",
+													"cloudflare"
 												],
 												"example": "onetimepin",
 												"type": "string"
@@ -9618,7 +10176,8 @@
 													"okta",
 													"onelogin",
 													"pingone",
-													"yandex"
+													"yandex",
+													"cloudflare"
 												],
 												"example": "onetimepin",
 												"type": "string"
@@ -9753,7 +10312,8 @@
 													"okta",
 													"onelogin",
 													"pingone",
-													"yandex"
+													"yandex",
+													"cloudflare"
 												],
 												"example": "onetimepin",
 												"type": "string"
@@ -9888,7 +10448,8 @@
 													"okta",
 													"onelogin",
 													"pingone",
-													"yandex"
+													"yandex",
+													"cloudflare"
 												],
 												"example": "onetimepin",
 												"type": "string"
@@ -10052,7 +10613,8 @@
 													"okta",
 													"onelogin",
 													"pingone",
-													"yandex"
+													"yandex",
+													"cloudflare"
 												],
 												"example": "onetimepin",
 												"type": "string"
@@ -10089,6 +10651,130 @@
 									}
 								],
 								"title": "Yandex",
+								"type": "object"
+							},
+							{
+								"allOf": [
+									{
+										"properties": {
+											"config": {
+												"description": "The configuration parameters for the identity provider. To view the required parameters for a specific provider, refer to our [developer documentation](https://developers.cloudflare.com/cloudflare-one/identity/idp-integration/).",
+												"type": "object"
+											},
+											"id": {
+												"description": "UUID.",
+												"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
+												"maxLength": 36,
+												"type": "string",
+												"x-auditable": true
+											},
+											"name": {
+												"description": "The name of the identity provider, shown to users on the login page.",
+												"example": "Widget Corps IDP",
+												"type": "string"
+											},
+											"scim_config": {
+												"description": "The configuration settings for enabling a System for Cross-Domain Identity Management (SCIM) with the identity provider.",
+												"properties": {
+													"enabled": {
+														"default": false,
+														"description": "A flag to enable or disable SCIM for the identity provider.",
+														"type": "boolean",
+														"x-stainless-terraform-configurability": "computed_optional"
+													},
+													"identity_update_behavior": {
+														"default": "no_action",
+														"description": "Indicates how a SCIM event updates a user identity used for policy evaluation. Use \"automatic\" to automatically update a user's identity and augment it with fields from the SCIM user resource. Use \"reauth\" to force re-authentication on group membership updates, user identity update will only occur after successful re-authentication. With \"reauth\" identities will not contain fields from the SCIM user resource. With \"no_action\" identities will not be changed by SCIM updates in any way and users will not be prompted to reauthenticate.",
+														"enum": [
+															"automatic",
+															"reauth",
+															"no_action"
+														],
+														"type": "string",
+														"x-stainless-terraform-configurability": "computed_optional"
+													},
+													"scim_base_url": {
+														"description": "The base URL of Cloudflare's SCIM V2.0 API endpoint.",
+														"readOnly": true,
+														"type": "string"
+													},
+													"seat_deprovision": {
+														"default": false,
+														"description": "A flag to remove a user's seat in Zero Trust when they have been deprovisioned in the Identity Provider.  This cannot be enabled unless user_deprovision is also enabled.",
+														"type": "boolean",
+														"x-stainless-terraform-configurability": "computed_optional"
+													},
+													"secret": {
+														"description": "A read-only token generated when the SCIM integration is enabled for the first time.  It is redacted on subsequent requests. If you lose this you will need to refresh it at /access/identity_providers/:idpID/refresh_scim_secret.",
+														"readOnly": true,
+														"type": "string",
+														"x-sensitive": true
+													},
+													"user_deprovision": {
+														"default": false,
+														"description": "A flag to enable revoking a user's session in Access and Gateway when they have been deprovisioned in the Identity Provider.",
+														"type": "boolean",
+														"x-stainless-terraform-configurability": "computed_optional"
+													}
+												},
+												"type": "object"
+											},
+											"type": {
+												"description": "The type of identity provider. To determine the value for a specific provider, refer to our [developer documentation](https://developers.cloudflare.com/cloudflare-one/identity/idp-integration/).",
+												"enum": [
+													"onetimepin",
+													"azureAD",
+													"saml",
+													"centrify",
+													"facebook",
+													"github",
+													"google-apps",
+													"google",
+													"linkedin",
+													"oidc",
+													"okta",
+													"onelogin",
+													"pingone",
+													"yandex",
+													"cloudflare"
+												],
+												"example": "onetimepin",
+												"type": "string"
+											}
+										},
+										"required": [
+											"name",
+											"type",
+											"config"
+										],
+										"type": "object"
+									},
+									{
+										"properties": {
+											"config": {
+												"properties": {
+													"redirect_url": {
+														"readOnly": true,
+														"type": "string"
+													},
+													"restrict_to_account_members": {
+														"default": false,
+														"description": "When enabled, only users who are members of your Cloudflare account can authenticate through this identity provider. When disabled, any user with a Cloudflare account can authenticate, subject to your Access policies.",
+														"type": "boolean"
+													}
+												},
+												"type": "object"
+											},
+											"type": {
+												"enum": [
+													"cloudflare"
+												],
+												"type": "string"
+											}
+										}
+									}
+								],
+								"title": "Cloudflare",
 								"type": "object"
 							}
 						]
@@ -10276,7 +10962,8 @@
 																		"okta",
 																		"onelogin",
 																		"pingone",
-																		"yandex"
+																		"yandex",
+																		"cloudflare"
 																	],
 																	"example": "onetimepin",
 																	"type": "string"
@@ -10428,7 +11115,8 @@
 																		"okta",
 																		"onelogin",
 																		"pingone",
-																		"yandex"
+																		"yandex",
+																		"cloudflare"
 																	],
 																	"example": "onetimepin",
 																	"type": "string"
@@ -10568,7 +11256,8 @@
 																		"okta",
 																		"onelogin",
 																		"pingone",
-																		"yandex"
+																		"yandex",
+																		"cloudflare"
 																	],
 																	"example": "onetimepin",
 																	"type": "string"
@@ -10689,7 +11378,8 @@
 																		"okta",
 																		"onelogin",
 																		"pingone",
-																		"yandex"
+																		"yandex",
+																		"cloudflare"
 																	],
 																	"example": "onetimepin",
 																	"type": "string"
@@ -10810,7 +11500,8 @@
 																		"okta",
 																		"onelogin",
 																		"pingone",
-																		"yandex"
+																		"yandex",
+																		"cloudflare"
 																	],
 																	"example": "onetimepin",
 																	"type": "string"
@@ -10931,7 +11622,8 @@
 																		"okta",
 																		"onelogin",
 																		"pingone",
-																		"yandex"
+																		"yandex",
+																		"cloudflare"
 																	],
 																	"example": "onetimepin",
 																	"type": "string"
@@ -11066,7 +11758,8 @@
 																		"okta",
 																		"onelogin",
 																		"pingone",
-																		"yandex"
+																		"yandex",
+																		"cloudflare"
 																	],
 																	"example": "onetimepin",
 																	"type": "string"
@@ -11187,7 +11880,8 @@
 																		"okta",
 																		"onelogin",
 																		"pingone",
-																		"yandex"
+																		"yandex",
+																		"cloudflare"
 																	],
 																	"example": "onetimepin",
 																	"type": "string"
@@ -11355,7 +12049,8 @@
 																		"okta",
 																		"onelogin",
 																		"pingone",
-																		"yandex"
+																		"yandex",
+																		"cloudflare"
 																	],
 																	"example": "onetimepin",
 																	"type": "string"
@@ -11490,7 +12185,8 @@
 																		"okta",
 																		"onelogin",
 																		"pingone",
-																		"yandex"
+																		"yandex",
+																		"cloudflare"
 																	],
 																	"example": "onetimepin",
 																	"type": "string"
@@ -11625,7 +12321,8 @@
 																		"okta",
 																		"onelogin",
 																		"pingone",
-																		"yandex"
+																		"yandex",
+																		"cloudflare"
 																	],
 																	"example": "onetimepin",
 																	"type": "string"
@@ -11760,7 +12457,8 @@
 																		"okta",
 																		"onelogin",
 																		"pingone",
-																		"yandex"
+																		"yandex",
+																		"cloudflare"
 																	],
 																	"example": "onetimepin",
 																	"type": "string"
@@ -11924,7 +12622,8 @@
 																		"okta",
 																		"onelogin",
 																		"pingone",
-																		"yandex"
+																		"yandex",
+																		"cloudflare"
 																	],
 																	"example": "onetimepin",
 																	"type": "string"
@@ -11961,6 +12660,130 @@
 														}
 													],
 													"title": "Yandex",
+													"type": "object"
+												},
+												{
+													"allOf": [
+														{
+															"properties": {
+																"config": {
+																	"description": "The configuration parameters for the identity provider. To view the required parameters for a specific provider, refer to our [developer documentation](https://developers.cloudflare.com/cloudflare-one/identity/idp-integration/).",
+																	"type": "object"
+																},
+																"id": {
+																	"description": "UUID.",
+																	"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
+																	"maxLength": 36,
+																	"type": "string",
+																	"x-auditable": true
+																},
+																"name": {
+																	"description": "The name of the identity provider, shown to users on the login page.",
+																	"example": "Widget Corps IDP",
+																	"type": "string"
+																},
+																"scim_config": {
+																	"description": "The configuration settings for enabling a System for Cross-Domain Identity Management (SCIM) with the identity provider.",
+																	"properties": {
+																		"enabled": {
+																			"default": false,
+																			"description": "A flag to enable or disable SCIM for the identity provider.",
+																			"type": "boolean",
+																			"x-stainless-terraform-configurability": "computed_optional"
+																		},
+																		"identity_update_behavior": {
+																			"default": "no_action",
+																			"description": "Indicates how a SCIM event updates a user identity used for policy evaluation. Use \"automatic\" to automatically update a user's identity and augment it with fields from the SCIM user resource. Use \"reauth\" to force re-authentication on group membership updates, user identity update will only occur after successful re-authentication. With \"reauth\" identities will not contain fields from the SCIM user resource. With \"no_action\" identities will not be changed by SCIM updates in any way and users will not be prompted to reauthenticate.",
+																			"enum": [
+																				"automatic",
+																				"reauth",
+																				"no_action"
+																			],
+																			"type": "string",
+																			"x-stainless-terraform-configurability": "computed_optional"
+																		},
+																		"scim_base_url": {
+																			"description": "The base URL of Cloudflare's SCIM V2.0 API endpoint.",
+																			"readOnly": true,
+																			"type": "string"
+																		},
+																		"seat_deprovision": {
+																			"default": false,
+																			"description": "A flag to remove a user's seat in Zero Trust when they have been deprovisioned in the Identity Provider.  This cannot be enabled unless user_deprovision is also enabled.",
+																			"type": "boolean",
+																			"x-stainless-terraform-configurability": "computed_optional"
+																		},
+																		"secret": {
+																			"description": "A read-only token generated when the SCIM integration is enabled for the first time.  It is redacted on subsequent requests. If you lose this you will need to refresh it at /access/identity_providers/:idpID/refresh_scim_secret.",
+																			"readOnly": true,
+																			"type": "string",
+																			"x-sensitive": true
+																		},
+																		"user_deprovision": {
+																			"default": false,
+																			"description": "A flag to enable revoking a user's session in Access and Gateway when they have been deprovisioned in the Identity Provider.",
+																			"type": "boolean",
+																			"x-stainless-terraform-configurability": "computed_optional"
+																		}
+																	},
+																	"type": "object"
+																},
+																"type": {
+																	"description": "The type of identity provider. To determine the value for a specific provider, refer to our [developer documentation](https://developers.cloudflare.com/cloudflare-one/identity/idp-integration/).",
+																	"enum": [
+																		"onetimepin",
+																		"azureAD",
+																		"saml",
+																		"centrify",
+																		"facebook",
+																		"github",
+																		"google-apps",
+																		"google",
+																		"linkedin",
+																		"oidc",
+																		"okta",
+																		"onelogin",
+																		"pingone",
+																		"yandex",
+																		"cloudflare"
+																	],
+																	"example": "onetimepin",
+																	"type": "string"
+																}
+															},
+															"required": [
+																"name",
+																"type",
+																"config"
+															],
+															"type": "object"
+														},
+														{
+															"properties": {
+																"config": {
+																	"properties": {
+																		"redirect_url": {
+																			"readOnly": true,
+																			"type": "string"
+																		},
+																		"restrict_to_account_members": {
+																			"default": false,
+																			"description": "When enabled, only users who are members of your Cloudflare account can authenticate through this identity provider. When disabled, any user with a Cloudflare account can authenticate, subject to your Access policies.",
+																			"type": "boolean"
+																		}
+																	},
+																	"type": "object"
+																},
+																"type": {
+																	"enum": [
+																		"cloudflare"
+																	],
+																	"type": "string"
+																}
+															}
+														}
+													],
+													"title": "Cloudflare",
 													"type": "object"
 												}
 											]

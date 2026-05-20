@@ -5174,6 +5174,36 @@
 				}
 			},
 			{
+				"description": "Filters results by content type category.",
+				"in": "query",
+				"name": "contentType",
+				"schema": {
+					"description": "Filters results by content type category.",
+					"items": {
+						"enum": [
+							"HTML",
+							"IMAGES",
+							"JSON",
+							"JAVASCRIPT",
+							"CSS",
+							"PLAIN_TEXT",
+							"FONTS",
+							"XML",
+							"YAML",
+							"VIDEO",
+							"AUDIO",
+							"MARKDOWN",
+							"DOCUMENTS",
+							"BINARY",
+							"SERIALIZATION",
+							"OTHER"
+						],
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
 				"description": "Filters results by device type.",
 				"in": "query",
 				"name": "deviceType",

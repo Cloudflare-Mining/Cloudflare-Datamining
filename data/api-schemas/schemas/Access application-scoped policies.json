@@ -1135,6 +1135,28 @@
 																					],
 																					"title": "User Risk Score",
 																					"type": "object"
+																				},
+																				{
+																					"description": "Matches users who are members of a specific Cloudflare account.\nRequires a Cloudflare identity provider.",
+																					"properties": {
+																						"cloudflare_account_member": {
+																							"properties": {
+																								"account_id": {
+																									"description": "Identifier.",
+																									"example": "023e105f4ecef8ad9ca31a8372d0c353",
+																									"maxLength": 32,
+																									"type": "string",
+																									"x-auditable": true
+																								}
+																							},
+																							"type": "object"
+																						}
+																					},
+																					"required": [
+																						"cloudflare_account_member"
+																					],
+																					"title": "Cloudflare Account Member",
+																					"type": "object"
 																				}
 																			],
 																			"type": "object"
@@ -1793,6 +1815,28 @@
 																					],
 																					"title": "User Risk Score",
 																					"type": "object"
+																				},
+																				{
+																					"description": "Matches users who are members of a specific Cloudflare account.\nRequires a Cloudflare identity provider.",
+																					"properties": {
+																						"cloudflare_account_member": {
+																							"properties": {
+																								"account_id": {
+																									"description": "Identifier.",
+																									"example": "023e105f4ecef8ad9ca31a8372d0c353",
+																									"maxLength": 32,
+																									"type": "string",
+																									"x-auditable": true
+																								}
+																							},
+																							"type": "object"
+																						}
+																					},
+																					"required": [
+																						"cloudflare_account_member"
+																					],
+																					"title": "Cloudflare Account Member",
+																					"type": "object"
 																				}
 																			],
 																			"type": "object"
@@ -2449,6 +2493,28 @@
 																						"user_risk_score"
 																					],
 																					"title": "User Risk Score",
+																					"type": "object"
+																				},
+																				{
+																					"description": "Matches users who are members of a specific Cloudflare account.\nRequires a Cloudflare identity provider.",
+																					"properties": {
+																						"cloudflare_account_member": {
+																							"properties": {
+																								"account_id": {
+																									"description": "Identifier.",
+																									"example": "023e105f4ecef8ad9ca31a8372d0c353",
+																									"maxLength": 32,
+																									"type": "string",
+																									"x-auditable": true
+																								}
+																							},
+																							"type": "object"
+																						}
+																					},
+																					"required": [
+																						"cloudflare_account_member"
+																					],
+																					"title": "Cloudflare Account Member",
 																					"type": "object"
 																				}
 																			],
@@ -3583,6 +3649,28 @@
 																				],
 																				"title": "User Risk Score",
 																				"type": "object"
+																			},
+																			{
+																				"description": "Matches users who are members of a specific Cloudflare account.\nRequires a Cloudflare identity provider.",
+																				"properties": {
+																					"cloudflare_account_member": {
+																						"properties": {
+																							"account_id": {
+																								"description": "Identifier.",
+																								"example": "023e105f4ecef8ad9ca31a8372d0c353",
+																								"maxLength": 32,
+																								"type": "string",
+																								"x-auditable": true
+																							}
+																						},
+																						"type": "object"
+																					}
+																				},
+																				"required": [
+																					"cloudflare_account_member"
+																				],
+																				"title": "Cloudflare Account Member",
+																				"type": "object"
 																			}
 																		],
 																		"type": "object"
@@ -4241,6 +4329,28 @@
 																				],
 																				"title": "User Risk Score",
 																				"type": "object"
+																			},
+																			{
+																				"description": "Matches users who are members of a specific Cloudflare account.\nRequires a Cloudflare identity provider.",
+																				"properties": {
+																					"cloudflare_account_member": {
+																						"properties": {
+																							"account_id": {
+																								"description": "Identifier.",
+																								"example": "023e105f4ecef8ad9ca31a8372d0c353",
+																								"maxLength": 32,
+																								"type": "string",
+																								"x-auditable": true
+																							}
+																						},
+																						"type": "object"
+																					}
+																				},
+																				"required": [
+																					"cloudflare_account_member"
+																				],
+																				"title": "Cloudflare Account Member",
+																				"type": "object"
 																			}
 																		],
 																		"type": "object"
@@ -4897,6 +5007,28 @@
 																					"user_risk_score"
 																				],
 																				"title": "User Risk Score",
+																				"type": "object"
+																			},
+																			{
+																				"description": "Matches users who are members of a specific Cloudflare account.\nRequires a Cloudflare identity provider.",
+																				"properties": {
+																					"cloudflare_account_member": {
+																						"properties": {
+																							"account_id": {
+																								"description": "Identifier.",
+																								"example": "023e105f4ecef8ad9ca31a8372d0c353",
+																								"maxLength": 32,
+																								"type": "string",
+																								"x-auditable": true
+																							}
+																						},
+																						"type": "object"
+																					}
+																				},
+																				"required": [
+																					"cloudflare_account_member"
+																				],
+																				"title": "Cloudflare Account Member",
 																				"type": "object"
 																			}
 																		],
@@ -5926,6 +6058,28 @@
 															],
 															"title": "User Risk Score",
 															"type": "object"
+														},
+														{
+															"description": "Matches users who are members of a specific Cloudflare account.\nRequires a Cloudflare identity provider.",
+															"properties": {
+																"cloudflare_account_member": {
+																	"properties": {
+																		"account_id": {
+																			"description": "Identifier.",
+																			"example": "023e105f4ecef8ad9ca31a8372d0c353",
+																			"maxLength": 32,
+																			"type": "string",
+																			"x-auditable": true
+																		}
+																	},
+																	"type": "object"
+																}
+															},
+															"required": [
+																"cloudflare_account_member"
+															],
+															"title": "Cloudflare Account Member",
+															"type": "object"
 														}
 													],
 													"type": "object"
@@ -6577,6 +6731,28 @@
 																"user_risk_score"
 															],
 															"title": "User Risk Score",
+															"type": "object"
+														},
+														{
+															"description": "Matches users who are members of a specific Cloudflare account.\nRequires a Cloudflare identity provider.",
+															"properties": {
+																"cloudflare_account_member": {
+																	"properties": {
+																		"account_id": {
+																			"description": "Identifier.",
+																			"example": "023e105f4ecef8ad9ca31a8372d0c353",
+																			"maxLength": 32,
+																			"type": "string",
+																			"x-auditable": true
+																		}
+																	},
+																	"type": "object"
+																}
+															},
+															"required": [
+																"cloudflare_account_member"
+															],
+															"title": "Cloudflare Account Member",
 															"type": "object"
 														}
 													],
@@ -7234,6 +7410,28 @@
 																"user_risk_score"
 															],
 															"title": "User Risk Score",
+															"type": "object"
+														},
+														{
+															"description": "Matches users who are members of a specific Cloudflare account.\nRequires a Cloudflare identity provider.",
+															"properties": {
+																"cloudflare_account_member": {
+																	"properties": {
+																		"account_id": {
+																			"description": "Identifier.",
+																			"example": "023e105f4ecef8ad9ca31a8372d0c353",
+																			"maxLength": 32,
+																			"type": "string",
+																			"x-auditable": true
+																		}
+																	},
+																	"type": "object"
+																}
+															},
+															"required": [
+																"cloudflare_account_member"
+															],
+															"title": "Cloudflare Account Member",
 															"type": "object"
 														}
 													],
@@ -8177,6 +8375,28 @@
 																				],
 																				"title": "User Risk Score",
 																				"type": "object"
+																			},
+																			{
+																				"description": "Matches users who are members of a specific Cloudflare account.\nRequires a Cloudflare identity provider.",
+																				"properties": {
+																					"cloudflare_account_member": {
+																						"properties": {
+																							"account_id": {
+																								"description": "Identifier.",
+																								"example": "023e105f4ecef8ad9ca31a8372d0c353",
+																								"maxLength": 32,
+																								"type": "string",
+																								"x-auditable": true
+																							}
+																						},
+																						"type": "object"
+																					}
+																				},
+																				"required": [
+																					"cloudflare_account_member"
+																				],
+																				"title": "Cloudflare Account Member",
+																				"type": "object"
 																			}
 																		],
 																		"type": "object"
@@ -8835,6 +9055,28 @@
 																				],
 																				"title": "User Risk Score",
 																				"type": "object"
+																			},
+																			{
+																				"description": "Matches users who are members of a specific Cloudflare account.\nRequires a Cloudflare identity provider.",
+																				"properties": {
+																					"cloudflare_account_member": {
+																						"properties": {
+																							"account_id": {
+																								"description": "Identifier.",
+																								"example": "023e105f4ecef8ad9ca31a8372d0c353",
+																								"maxLength": 32,
+																								"type": "string",
+																								"x-auditable": true
+																							}
+																						},
+																						"type": "object"
+																					}
+																				},
+																				"required": [
+																					"cloudflare_account_member"
+																				],
+																				"title": "Cloudflare Account Member",
+																				"type": "object"
 																			}
 																		],
 																		"type": "object"
@@ -9491,6 +9733,28 @@
 																					"user_risk_score"
 																				],
 																				"title": "User Risk Score",
+																				"type": "object"
+																			},
+																			{
+																				"description": "Matches users who are members of a specific Cloudflare account.\nRequires a Cloudflare identity provider.",
+																				"properties": {
+																					"cloudflare_account_member": {
+																						"properties": {
+																							"account_id": {
+																								"description": "Identifier.",
+																								"example": "023e105f4ecef8ad9ca31a8372d0c353",
+																								"maxLength": 32,
+																								"type": "string",
+																								"x-auditable": true
+																							}
+																						},
+																						"type": "object"
+																					}
+																				},
+																				"required": [
+																					"cloudflare_account_member"
+																				],
+																				"title": "Cloudflare Account Member",
 																				"type": "object"
 																			}
 																		],
@@ -10533,6 +10797,28 @@
 															],
 															"title": "User Risk Score",
 															"type": "object"
+														},
+														{
+															"description": "Matches users who are members of a specific Cloudflare account.\nRequires a Cloudflare identity provider.",
+															"properties": {
+																"cloudflare_account_member": {
+																	"properties": {
+																		"account_id": {
+																			"description": "Identifier.",
+																			"example": "023e105f4ecef8ad9ca31a8372d0c353",
+																			"maxLength": 32,
+																			"type": "string",
+																			"x-auditable": true
+																		}
+																	},
+																	"type": "object"
+																}
+															},
+															"required": [
+																"cloudflare_account_member"
+															],
+															"title": "Cloudflare Account Member",
+															"type": "object"
 														}
 													],
 													"type": "object"
@@ -11184,6 +11470,28 @@
 																"user_risk_score"
 															],
 															"title": "User Risk Score",
+															"type": "object"
+														},
+														{
+															"description": "Matches users who are members of a specific Cloudflare account.\nRequires a Cloudflare identity provider.",
+															"properties": {
+																"cloudflare_account_member": {
+																	"properties": {
+																		"account_id": {
+																			"description": "Identifier.",
+																			"example": "023e105f4ecef8ad9ca31a8372d0c353",
+																			"maxLength": 32,
+																			"type": "string",
+																			"x-auditable": true
+																		}
+																	},
+																	"type": "object"
+																}
+															},
+															"required": [
+																"cloudflare_account_member"
+															],
+															"title": "Cloudflare Account Member",
 															"type": "object"
 														}
 													],
@@ -11841,6 +12149,28 @@
 																"user_risk_score"
 															],
 															"title": "User Risk Score",
+															"type": "object"
+														},
+														{
+															"description": "Matches users who are members of a specific Cloudflare account.\nRequires a Cloudflare identity provider.",
+															"properties": {
+																"cloudflare_account_member": {
+																	"properties": {
+																		"account_id": {
+																			"description": "Identifier.",
+																			"example": "023e105f4ecef8ad9ca31a8372d0c353",
+																			"maxLength": 32,
+																			"type": "string",
+																			"x-auditable": true
+																		}
+																	},
+																	"type": "object"
+																}
+															},
+															"required": [
+																"cloudflare_account_member"
+															],
+															"title": "Cloudflare Account Member",
 															"type": "object"
 														}
 													],
@@ -12784,6 +13114,28 @@
 																				],
 																				"title": "User Risk Score",
 																				"type": "object"
+																			},
+																			{
+																				"description": "Matches users who are members of a specific Cloudflare account.\nRequires a Cloudflare identity provider.",
+																				"properties": {
+																					"cloudflare_account_member": {
+																						"properties": {
+																							"account_id": {
+																								"description": "Identifier.",
+																								"example": "023e105f4ecef8ad9ca31a8372d0c353",
+																								"maxLength": 32,
+																								"type": "string",
+																								"x-auditable": true
+																							}
+																						},
+																						"type": "object"
+																					}
+																				},
+																				"required": [
+																					"cloudflare_account_member"
+																				],
+																				"title": "Cloudflare Account Member",
+																				"type": "object"
 																			}
 																		],
 																		"type": "object"
@@ -13442,6 +13794,28 @@
 																				],
 																				"title": "User Risk Score",
 																				"type": "object"
+																			},
+																			{
+																				"description": "Matches users who are members of a specific Cloudflare account.\nRequires a Cloudflare identity provider.",
+																				"properties": {
+																					"cloudflare_account_member": {
+																						"properties": {
+																							"account_id": {
+																								"description": "Identifier.",
+																								"example": "023e105f4ecef8ad9ca31a8372d0c353",
+																								"maxLength": 32,
+																								"type": "string",
+																								"x-auditable": true
+																							}
+																						},
+																						"type": "object"
+																					}
+																				},
+																				"required": [
+																					"cloudflare_account_member"
+																				],
+																				"title": "Cloudflare Account Member",
+																				"type": "object"
 																			}
 																		],
 																		"type": "object"
@@ -14098,6 +14472,28 @@
 																					"user_risk_score"
 																				],
 																				"title": "User Risk Score",
+																				"type": "object"
+																			},
+																			{
+																				"description": "Matches users who are members of a specific Cloudflare account.\nRequires a Cloudflare identity provider.",
+																				"properties": {
+																					"cloudflare_account_member": {
+																						"properties": {
+																							"account_id": {
+																								"description": "Identifier.",
+																								"example": "023e105f4ecef8ad9ca31a8372d0c353",
+																								"maxLength": 32,
+																								"type": "string",
+																								"x-auditable": true
+																							}
+																						},
+																						"type": "object"
+																					}
+																				},
+																				"required": [
+																					"cloudflare_account_member"
+																				],
+																				"title": "Cloudflare Account Member",
 																				"type": "object"
 																			}
 																		],
@@ -15265,6 +15661,28 @@
 																					],
 																					"title": "User Risk Score",
 																					"type": "object"
+																				},
+																				{
+																					"description": "Matches users who are members of a specific Cloudflare account.\nRequires a Cloudflare identity provider.",
+																					"properties": {
+																						"cloudflare_account_member": {
+																							"properties": {
+																								"account_id": {
+																									"description": "Identifier.",
+																									"example": "023e105f4ecef8ad9ca31a8372d0c353",
+																									"maxLength": 32,
+																									"type": "string",
+																									"x-auditable": true
+																								}
+																							},
+																							"type": "object"
+																						}
+																					},
+																					"required": [
+																						"cloudflare_account_member"
+																					],
+																					"title": "Cloudflare Account Member",
+																					"type": "object"
 																				}
 																			],
 																			"type": "object"
@@ -15923,6 +16341,28 @@
 																					],
 																					"title": "User Risk Score",
 																					"type": "object"
+																				},
+																				{
+																					"description": "Matches users who are members of a specific Cloudflare account.\nRequires a Cloudflare identity provider.",
+																					"properties": {
+																						"cloudflare_account_member": {
+																							"properties": {
+																								"account_id": {
+																									"description": "Identifier.",
+																									"example": "023e105f4ecef8ad9ca31a8372d0c353",
+																									"maxLength": 32,
+																									"type": "string",
+																									"x-auditable": true
+																								}
+																							},
+																							"type": "object"
+																						}
+																					},
+																					"required": [
+																						"cloudflare_account_member"
+																					],
+																					"title": "Cloudflare Account Member",
+																					"type": "object"
 																				}
 																			],
 																			"type": "object"
@@ -16579,6 +17019,28 @@
 																						"user_risk_score"
 																					],
 																					"title": "User Risk Score",
+																					"type": "object"
+																				},
+																				{
+																					"description": "Matches users who are members of a specific Cloudflare account.\nRequires a Cloudflare identity provider.",
+																					"properties": {
+																						"cloudflare_account_member": {
+																							"properties": {
+																								"account_id": {
+																									"description": "Identifier.",
+																									"example": "023e105f4ecef8ad9ca31a8372d0c353",
+																									"maxLength": 32,
+																									"type": "string",
+																									"x-auditable": true
+																								}
+																							},
+																							"type": "object"
+																						}
+																					},
+																					"required": [
+																						"cloudflare_account_member"
+																					],
+																					"title": "Cloudflare Account Member",
 																					"type": "object"
 																				}
 																			],

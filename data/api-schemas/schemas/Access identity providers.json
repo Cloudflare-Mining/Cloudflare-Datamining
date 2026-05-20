@@ -622,7 +622,8 @@
 																			"okta",
 																			"onelogin",
 																			"pingone",
-																			"yandex"
+																			"yandex",
+																			"cloudflare"
 																		],
 																		"example": "onetimepin",
 																		"type": "string"
@@ -892,7 +893,8 @@
 																			"okta",
 																			"onelogin",
 																			"pingone",
-																			"yandex"
+																			"yandex",
+																			"cloudflare"
 																		],
 																		"example": "onetimepin",
 																		"type": "string"
@@ -1147,7 +1149,8 @@
 																			"okta",
 																			"onelogin",
 																			"pingone",
-																			"yandex"
+																			"yandex",
+																			"cloudflare"
 																		],
 																		"example": "onetimepin",
 																		"type": "string"
@@ -1357,7 +1360,8 @@
 																			"okta",
 																			"onelogin",
 																			"pingone",
-																			"yandex"
+																			"yandex",
+																			"cloudflare"
 																		],
 																		"example": "onetimepin",
 																		"type": "string"
@@ -1567,7 +1571,8 @@
 																			"okta",
 																			"onelogin",
 																			"pingone",
-																			"yandex"
+																			"yandex",
+																			"cloudflare"
 																		],
 																		"example": "onetimepin",
 																		"type": "string"
@@ -1805,7 +1810,8 @@
 																			"okta",
 																			"onelogin",
 																			"pingone",
-																			"yandex"
+																			"yandex",
+																			"cloudflare"
 																		],
 																		"example": "onetimepin",
 																		"type": "string"
@@ -2053,7 +2059,8 @@
 																			"okta",
 																			"onelogin",
 																			"pingone",
-																			"yandex"
+																			"yandex",
+																			"cloudflare"
 																		],
 																		"example": "onetimepin",
 																		"type": "string"
@@ -2263,7 +2270,8 @@
 																			"okta",
 																			"onelogin",
 																			"pingone",
-																			"yandex"
+																			"yandex",
+																			"cloudflare"
 																		],
 																		"example": "onetimepin",
 																		"type": "string"
@@ -2537,7 +2545,8 @@
 																			"okta",
 																			"onelogin",
 																			"pingone",
-																			"yandex"
+																			"yandex",
+																			"cloudflare"
 																		],
 																		"example": "onetimepin",
 																		"type": "string"
@@ -2791,7 +2800,8 @@
 																			"okta",
 																			"onelogin",
 																			"pingone",
-																			"yandex"
+																			"yandex",
+																			"cloudflare"
 																		],
 																		"example": "onetimepin",
 																		"type": "string"
@@ -3040,7 +3050,8 @@
 																			"okta",
 																			"onelogin",
 																			"pingone",
-																			"yandex"
+																			"yandex",
+																			"cloudflare"
 																		],
 																		"example": "onetimepin",
 																		"type": "string"
@@ -3289,7 +3300,8 @@
 																			"okta",
 																			"onelogin",
 																			"pingone",
-																			"yandex"
+																			"yandex",
+																			"cloudflare"
 																		],
 																		"example": "onetimepin",
 																		"type": "string"
@@ -3553,7 +3565,8 @@
 																			"okta",
 																			"onelogin",
 																			"pingone",
-																			"yandex"
+																			"yandex",
+																			"cloudflare"
 																		],
 																		"example": "onetimepin",
 																		"type": "string"
@@ -3589,6 +3602,429 @@
 															}
 														],
 														"title": "Yandex",
+														"type": "object"
+													},
+													{
+														"allOf": [
+															{
+																"properties": {
+																	"config": {
+																		"description": "The configuration parameters for the identity provider. To view the required parameters for a specific provider, refer to our [developer documentation](https://developers.cloudflare.com/cloudflare-one/identity/idp-integration/).",
+																		"type": "object"
+																	},
+																	"id": {
+																		"description": "UUID.",
+																		"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
+																		"maxLength": 36,
+																		"type": "string",
+																		"x-auditable": true
+																	},
+																	"name": {
+																		"description": "The name of the identity provider, shown to users on the login page.",
+																		"example": "Widget Corps IDP",
+																		"type": "string"
+																	},
+																	"saml_certificate_set": {
+																		"allOf": [
+																			{
+																				"description": "A SAML encryption certificate set containing current and optionally previous certificates for encryption key rotation.",
+																				"properties": {
+																					"created_at": {
+																						"description": "Timestamp when the certificate set was created",
+																						"example": "2026-05-07T19:16:19.821162Z",
+																						"format": "date-time",
+																						"type": "string"
+																					},
+																					"current_certificate": {
+																						"allOf": [
+																							{
+																								"description": "A single SAML encryption certificate with metadata",
+																								"properties": {
+																									"is_current": {
+																										"description": "Indicates whether this is the currently active certificate",
+																										"example": true,
+																										"type": "boolean"
+																									},
+																									"not_after": {
+																										"description": "Certificate expiration date. Certificates are automatically rotated 30 days before expiration.",
+																										"example": "2027-05-07T19:11:00Z",
+																										"format": "date-time",
+																										"type": "string"
+																									},
+																									"public_certificate": {
+																										"description": "PEM-encoded X.509 certificate containing the public key.\nConfigure this certificate in your external SAML Identity Provider to enable encryption.\n",
+																										"example": "-----BEGIN CERTIFICATE-----\nMIIEpzCCA4+gAwIBAgIUTh2VSDDJ0oB/gabio6j1L9QwWoUwDQYJKoZIhvcNAQEL\n...\n-----END CERTIFICATE-----\n",
+																										"type": "string"
+																									},
+																									"uid": {
+																										"description": "Unique identifier for the certificate",
+																										"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
+																										"format": "uuid",
+																										"type": "string"
+																									}
+																								},
+																								"required": [
+																									"uid",
+																									"public_certificate",
+																									"not_after",
+																									"is_current"
+																								],
+																								"type": "object"
+																							}
+																						],
+																						"description": "The currently active certificate used for encrypting SAML assertions"
+																					},
+																					"previous_certificate": {
+																						"description": "The previous certificate, maintained during rotation to ensure continuity. Null if no rotation has occurred. Mirrors the structure of `saml_certificate`.",
+																						"nullable": true,
+																						"type": "object"
+																					},
+																					"uid": {
+																						"description": "Unique identifier for the certificate set",
+																						"example": "c409ef44-e72c-41c8-8c0b-278c8a6f4fd8",
+																						"format": "uuid",
+																						"type": "string"
+																					},
+																					"updated_at": {
+																						"description": "Timestamp when the certificate set was last updated (e.g., during rotation)",
+																						"example": "2026-05-07T19:16:19.821162Z",
+																						"format": "date-time",
+																						"type": "string"
+																					}
+																				},
+																				"required": [
+																					"uid",
+																					"created_at",
+																					"updated_at"
+																				],
+																				"type": "object"
+																			}
+																		],
+																		"description": "The SAML encryption certificate set details, including current and previous certificates.\nOnly present for SAML identity providers with a certificate set assigned.\n",
+																		"readOnly": true
+																	},
+																	"saml_certificate_set_id": {
+																		"description": "The UID of the SAML encryption certificate set assigned to this Identity Provider.\nOnly present for SAML identity providers with encryption configured.\nCreate a certificate set via POST to `/identity_providers/{id}/saml_certificate`.\n",
+																		"example": "c409ef44-e72c-41c8-8c0b-278c8a6f4fd8",
+																		"format": "uuid",
+																		"type": "string"
+																	},
+																	"scim_config": {
+																		"description": "The configuration settings for enabling a System for Cross-Domain Identity Management (SCIM) with the identity provider.",
+																		"properties": {
+																			"enabled": {
+																				"default": false,
+																				"description": "A flag to enable or disable SCIM for the identity provider.",
+																				"type": "boolean",
+																				"x-auditable": true,
+																				"x-stainless-terraform-configurability": "computed_optional"
+																			},
+																			"identity_update_behavior": {
+																				"default": "no_action",
+																				"description": "Indicates how a SCIM event updates a user identity used for policy evaluation. Use \"automatic\" to automatically update a user's identity and augment it with fields from the SCIM user resource. Use \"reauth\" to force re-authentication on group membership updates, user identity update will only occur after successful re-authentication. With \"reauth\" identities will not contain fields from the SCIM user resource. With \"no_action\" identities will not be changed by SCIM updates in any way and users will not be prompted to reauthenticate.",
+																				"enum": [
+																					"automatic",
+																					"reauth",
+																					"no_action"
+																				],
+																				"type": "string",
+																				"x-auditable": true,
+																				"x-stainless-terraform-configurability": "computed_optional"
+																			},
+																			"scim_base_url": {
+																				"description": "The base URL of Cloudflare's SCIM V2.0 API endpoint.",
+																				"readOnly": true,
+																				"type": "string",
+																				"x-auditable": true
+																			},
+																			"seat_deprovision": {
+																				"default": false,
+																				"description": "A flag to remove a user's seat in Zero Trust when they have been deprovisioned in the Identity Provider.  This cannot be enabled unless user_deprovision is also enabled.",
+																				"type": "boolean",
+																				"x-auditable": true,
+																				"x-stainless-terraform-configurability": "computed_optional"
+																			},
+																			"secret": {
+																				"description": "A read-only token generated when the SCIM integration is enabled for the first time.  It is redacted on subsequent requests.  If you lose this you will need to refresh it at /access/identity_providers/:idpID/refresh_scim_secret.",
+																				"readOnly": true,
+																				"type": "string",
+																				"x-sensitive": true
+																			},
+																			"user_deprovision": {
+																				"default": false,
+																				"description": "A flag to enable revoking a user's session in Access and Gateway when they have been deprovisioned in the Identity Provider.",
+																				"type": "boolean",
+																				"x-auditable": true,
+																				"x-stainless-terraform-configurability": "computed_optional"
+																			}
+																		},
+																		"type": "object"
+																	},
+																	"type": {
+																		"description": "The type of identity provider. To determine the value for a specific provider, refer to our [developer documentation](https://developers.cloudflare.com/cloudflare-one/identity/idp-integration/).",
+																		"enum": [
+																			"onetimepin",
+																			"azureAD",
+																			"saml",
+																			"centrify",
+																			"facebook",
+																			"github",
+																			"google-apps",
+																			"google",
+																			"linkedin",
+																			"oidc",
+																			"okta",
+																			"onelogin",
+																			"pingone",
+																			"yandex",
+																			"cloudflare"
+																		],
+																		"example": "onetimepin",
+																		"type": "string"
+																	}
+																},
+																"required": [
+																	"name",
+																	"type",
+																	"config"
+																],
+																"type": "object"
+															},
+															{
+																"properties": {
+																	"config": {
+																		"properties": {
+																			"redirect_url": {
+																				"readOnly": true,
+																				"type": "string"
+																			}
+																		},
+																		"type": "object"
+																	},
+																	"type": {
+																		"enum": [
+																			"onetimepin"
+																		],
+																		"type": "string"
+																	}
+																}
+															}
+														],
+														"title": "One Time Pin",
+														"type": "object"
+													},
+													{
+														"allOf": [
+															{
+																"properties": {
+																	"config": {
+																		"description": "The configuration parameters for the identity provider. To view the required parameters for a specific provider, refer to our [developer documentation](https://developers.cloudflare.com/cloudflare-one/identity/idp-integration/).",
+																		"type": "object"
+																	},
+																	"id": {
+																		"description": "UUID.",
+																		"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
+																		"maxLength": 36,
+																		"type": "string",
+																		"x-auditable": true
+																	},
+																	"name": {
+																		"description": "The name of the identity provider, shown to users on the login page.",
+																		"example": "Widget Corps IDP",
+																		"type": "string"
+																	},
+																	"saml_certificate_set": {
+																		"allOf": [
+																			{
+																				"description": "A SAML encryption certificate set containing current and optionally previous certificates for encryption key rotation.",
+																				"properties": {
+																					"created_at": {
+																						"description": "Timestamp when the certificate set was created",
+																						"example": "2026-05-07T19:16:19.821162Z",
+																						"format": "date-time",
+																						"type": "string"
+																					},
+																					"current_certificate": {
+																						"allOf": [
+																							{
+																								"description": "A single SAML encryption certificate with metadata",
+																								"properties": {
+																									"is_current": {
+																										"description": "Indicates whether this is the currently active certificate",
+																										"example": true,
+																										"type": "boolean"
+																									},
+																									"not_after": {
+																										"description": "Certificate expiration date. Certificates are automatically rotated 30 days before expiration.",
+																										"example": "2027-05-07T19:11:00Z",
+																										"format": "date-time",
+																										"type": "string"
+																									},
+																									"public_certificate": {
+																										"description": "PEM-encoded X.509 certificate containing the public key.\nConfigure this certificate in your external SAML Identity Provider to enable encryption.\n",
+																										"example": "-----BEGIN CERTIFICATE-----\nMIIEpzCCA4+gAwIBAgIUTh2VSDDJ0oB/gabio6j1L9QwWoUwDQYJKoZIhvcNAQEL\n...\n-----END CERTIFICATE-----\n",
+																										"type": "string"
+																									},
+																									"uid": {
+																										"description": "Unique identifier for the certificate",
+																										"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
+																										"format": "uuid",
+																										"type": "string"
+																									}
+																								},
+																								"required": [
+																									"uid",
+																									"public_certificate",
+																									"not_after",
+																									"is_current"
+																								],
+																								"type": "object"
+																							}
+																						],
+																						"description": "The currently active certificate used for encrypting SAML assertions"
+																					},
+																					"previous_certificate": {
+																						"description": "The previous certificate, maintained during rotation to ensure continuity. Null if no rotation has occurred. Mirrors the structure of `saml_certificate`.",
+																						"nullable": true,
+																						"type": "object"
+																					},
+																					"uid": {
+																						"description": "Unique identifier for the certificate set",
+																						"example": "c409ef44-e72c-41c8-8c0b-278c8a6f4fd8",
+																						"format": "uuid",
+																						"type": "string"
+																					},
+																					"updated_at": {
+																						"description": "Timestamp when the certificate set was last updated (e.g., during rotation)",
+																						"example": "2026-05-07T19:16:19.821162Z",
+																						"format": "date-time",
+																						"type": "string"
+																					}
+																				},
+																				"required": [
+																					"uid",
+																					"created_at",
+																					"updated_at"
+																				],
+																				"type": "object"
+																			}
+																		],
+																		"description": "The SAML encryption certificate set details, including current and previous certificates.\nOnly present for SAML identity providers with a certificate set assigned.\n",
+																		"readOnly": true
+																	},
+																	"saml_certificate_set_id": {
+																		"description": "The UID of the SAML encryption certificate set assigned to this Identity Provider.\nOnly present for SAML identity providers with encryption configured.\nCreate a certificate set via POST to `/identity_providers/{id}/saml_certificate`.\n",
+																		"example": "c409ef44-e72c-41c8-8c0b-278c8a6f4fd8",
+																		"format": "uuid",
+																		"type": "string"
+																	},
+																	"scim_config": {
+																		"description": "The configuration settings for enabling a System for Cross-Domain Identity Management (SCIM) with the identity provider.",
+																		"properties": {
+																			"enabled": {
+																				"default": false,
+																				"description": "A flag to enable or disable SCIM for the identity provider.",
+																				"type": "boolean",
+																				"x-auditable": true,
+																				"x-stainless-terraform-configurability": "computed_optional"
+																			},
+																			"identity_update_behavior": {
+																				"default": "no_action",
+																				"description": "Indicates how a SCIM event updates a user identity used for policy evaluation. Use \"automatic\" to automatically update a user's identity and augment it with fields from the SCIM user resource. Use \"reauth\" to force re-authentication on group membership updates, user identity update will only occur after successful re-authentication. With \"reauth\" identities will not contain fields from the SCIM user resource. With \"no_action\" identities will not be changed by SCIM updates in any way and users will not be prompted to reauthenticate.",
+																				"enum": [
+																					"automatic",
+																					"reauth",
+																					"no_action"
+																				],
+																				"type": "string",
+																				"x-auditable": true,
+																				"x-stainless-terraform-configurability": "computed_optional"
+																			},
+																			"scim_base_url": {
+																				"description": "The base URL of Cloudflare's SCIM V2.0 API endpoint.",
+																				"readOnly": true,
+																				"type": "string",
+																				"x-auditable": true
+																			},
+																			"seat_deprovision": {
+																				"default": false,
+																				"description": "A flag to remove a user's seat in Zero Trust when they have been deprovisioned in the Identity Provider.  This cannot be enabled unless user_deprovision is also enabled.",
+																				"type": "boolean",
+																				"x-auditable": true,
+																				"x-stainless-terraform-configurability": "computed_optional"
+																			},
+																			"secret": {
+																				"description": "A read-only token generated when the SCIM integration is enabled for the first time.  It is redacted on subsequent requests.  If you lose this you will need to refresh it at /access/identity_providers/:idpID/refresh_scim_secret.",
+																				"readOnly": true,
+																				"type": "string",
+																				"x-sensitive": true
+																			},
+																			"user_deprovision": {
+																				"default": false,
+																				"description": "A flag to enable revoking a user's session in Access and Gateway when they have been deprovisioned in the Identity Provider.",
+																				"type": "boolean",
+																				"x-auditable": true,
+																				"x-stainless-terraform-configurability": "computed_optional"
+																			}
+																		},
+																		"type": "object"
+																	},
+																	"type": {
+																		"description": "The type of identity provider. To determine the value for a specific provider, refer to our [developer documentation](https://developers.cloudflare.com/cloudflare-one/identity/idp-integration/).",
+																		"enum": [
+																			"onetimepin",
+																			"azureAD",
+																			"saml",
+																			"centrify",
+																			"facebook",
+																			"github",
+																			"google-apps",
+																			"google",
+																			"linkedin",
+																			"oidc",
+																			"okta",
+																			"onelogin",
+																			"pingone",
+																			"yandex",
+																			"cloudflare"
+																		],
+																		"example": "onetimepin",
+																		"type": "string"
+																	}
+																},
+																"required": [
+																	"name",
+																	"type",
+																	"config"
+																],
+																"type": "object"
+															},
+															{
+																"properties": {
+																	"config": {
+																		"properties": {
+																			"redirect_url": {
+																				"readOnly": true,
+																				"type": "string"
+																			},
+																			"restrict_to_account_members": {
+																				"default": false,
+																				"description": "When enabled, only users who are members of your Cloudflare account can authenticate through this identity provider. When disabled, any user with a Cloudflare account can authenticate, subject to your Access policies.",
+																				"type": "boolean"
+																			}
+																		},
+																		"type": "object"
+																	},
+																	"type": {
+																		"enum": [
+																			"cloudflare"
+																		],
+																		"type": "string"
+																	}
+																}
+															}
+														],
+														"title": "Cloudflare",
 														"type": "object"
 													}
 												]
@@ -4033,7 +4469,8 @@
 																		"okta",
 																		"onelogin",
 																		"pingone",
-																		"yandex"
+																		"yandex",
+																		"cloudflare"
 																	],
 																	"example": "onetimepin",
 																	"type": "string"
@@ -4303,7 +4740,8 @@
 																		"okta",
 																		"onelogin",
 																		"pingone",
-																		"yandex"
+																		"yandex",
+																		"cloudflare"
 																	],
 																	"example": "onetimepin",
 																	"type": "string"
@@ -4558,7 +4996,8 @@
 																		"okta",
 																		"onelogin",
 																		"pingone",
-																		"yandex"
+																		"yandex",
+																		"cloudflare"
 																	],
 																	"example": "onetimepin",
 																	"type": "string"
@@ -4768,7 +5207,8 @@
 																		"okta",
 																		"onelogin",
 																		"pingone",
-																		"yandex"
+																		"yandex",
+																		"cloudflare"
 																	],
 																	"example": "onetimepin",
 																	"type": "string"
@@ -4978,7 +5418,8 @@
 																		"okta",
 																		"onelogin",
 																		"pingone",
-																		"yandex"
+																		"yandex",
+																		"cloudflare"
 																	],
 																	"example": "onetimepin",
 																	"type": "string"
@@ -5216,7 +5657,8 @@
 																		"okta",
 																		"onelogin",
 																		"pingone",
-																		"yandex"
+																		"yandex",
+																		"cloudflare"
 																	],
 																	"example": "onetimepin",
 																	"type": "string"
@@ -5464,7 +5906,8 @@
 																		"okta",
 																		"onelogin",
 																		"pingone",
-																		"yandex"
+																		"yandex",
+																		"cloudflare"
 																	],
 																	"example": "onetimepin",
 																	"type": "string"
@@ -5674,7 +6117,8 @@
 																		"okta",
 																		"onelogin",
 																		"pingone",
-																		"yandex"
+																		"yandex",
+																		"cloudflare"
 																	],
 																	"example": "onetimepin",
 																	"type": "string"
@@ -5948,7 +6392,8 @@
 																		"okta",
 																		"onelogin",
 																		"pingone",
-																		"yandex"
+																		"yandex",
+																		"cloudflare"
 																	],
 																	"example": "onetimepin",
 																	"type": "string"
@@ -6202,7 +6647,8 @@
 																		"okta",
 																		"onelogin",
 																		"pingone",
-																		"yandex"
+																		"yandex",
+																		"cloudflare"
 																	],
 																	"example": "onetimepin",
 																	"type": "string"
@@ -6451,7 +6897,8 @@
 																		"okta",
 																		"onelogin",
 																		"pingone",
-																		"yandex"
+																		"yandex",
+																		"cloudflare"
 																	],
 																	"example": "onetimepin",
 																	"type": "string"
@@ -6700,7 +7147,8 @@
 																		"okta",
 																		"onelogin",
 																		"pingone",
-																		"yandex"
+																		"yandex",
+																		"cloudflare"
 																	],
 																	"example": "onetimepin",
 																	"type": "string"
@@ -6964,7 +7412,8 @@
 																		"okta",
 																		"onelogin",
 																		"pingone",
-																		"yandex"
+																		"yandex",
+																		"cloudflare"
 																	],
 																	"example": "onetimepin",
 																	"type": "string"
@@ -7174,7 +7623,8 @@
 																		"okta",
 																		"onelogin",
 																		"pingone",
-																		"yandex"
+																		"yandex",
+																		"cloudflare"
 																	],
 																	"example": "onetimepin",
 																	"type": "string"
@@ -7208,6 +7658,220 @@
 														}
 													],
 													"title": "One Time Pin",
+													"type": "object"
+												},
+												{
+													"allOf": [
+														{
+															"properties": {
+																"config": {
+																	"description": "The configuration parameters for the identity provider. To view the required parameters for a specific provider, refer to our [developer documentation](https://developers.cloudflare.com/cloudflare-one/identity/idp-integration/).",
+																	"type": "object"
+																},
+																"id": {
+																	"description": "UUID.",
+																	"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
+																	"maxLength": 36,
+																	"type": "string",
+																	"x-auditable": true
+																},
+																"name": {
+																	"description": "The name of the identity provider, shown to users on the login page.",
+																	"example": "Widget Corps IDP",
+																	"type": "string"
+																},
+																"saml_certificate_set": {
+																	"allOf": [
+																		{
+																			"description": "A SAML encryption certificate set containing current and optionally previous certificates for encryption key rotation.",
+																			"properties": {
+																				"created_at": {
+																					"description": "Timestamp when the certificate set was created",
+																					"example": "2026-05-07T19:16:19.821162Z",
+																					"format": "date-time",
+																					"type": "string"
+																				},
+																				"current_certificate": {
+																					"allOf": [
+																						{
+																							"description": "A single SAML encryption certificate with metadata",
+																							"properties": {
+																								"is_current": {
+																									"description": "Indicates whether this is the currently active certificate",
+																									"example": true,
+																									"type": "boolean"
+																								},
+																								"not_after": {
+																									"description": "Certificate expiration date. Certificates are automatically rotated 30 days before expiration.",
+																									"example": "2027-05-07T19:11:00Z",
+																									"format": "date-time",
+																									"type": "string"
+																								},
+																								"public_certificate": {
+																									"description": "PEM-encoded X.509 certificate containing the public key.\nConfigure this certificate in your external SAML Identity Provider to enable encryption.\n",
+																									"example": "-----BEGIN CERTIFICATE-----\nMIIEpzCCA4+gAwIBAgIUTh2VSDDJ0oB/gabio6j1L9QwWoUwDQYJKoZIhvcNAQEL\n...\n-----END CERTIFICATE-----\n",
+																									"type": "string"
+																								},
+																								"uid": {
+																									"description": "Unique identifier for the certificate",
+																									"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
+																									"format": "uuid",
+																									"type": "string"
+																								}
+																							},
+																							"required": [
+																								"uid",
+																								"public_certificate",
+																								"not_after",
+																								"is_current"
+																							],
+																							"type": "object"
+																						}
+																					],
+																					"description": "The currently active certificate used for encrypting SAML assertions"
+																				},
+																				"previous_certificate": {
+																					"description": "The previous certificate, maintained during rotation to ensure continuity. Null if no rotation has occurred. Mirrors the structure of `saml_certificate`.",
+																					"nullable": true,
+																					"type": "object"
+																				},
+																				"uid": {
+																					"description": "Unique identifier for the certificate set",
+																					"example": "c409ef44-e72c-41c8-8c0b-278c8a6f4fd8",
+																					"format": "uuid",
+																					"type": "string"
+																				},
+																				"updated_at": {
+																					"description": "Timestamp when the certificate set was last updated (e.g., during rotation)",
+																					"example": "2026-05-07T19:16:19.821162Z",
+																					"format": "date-time",
+																					"type": "string"
+																				}
+																			},
+																			"required": [
+																				"uid",
+																				"created_at",
+																				"updated_at"
+																			],
+																			"type": "object"
+																		}
+																	],
+																	"description": "The SAML encryption certificate set details, including current and previous certificates.\nOnly present for SAML identity providers with a certificate set assigned.\n",
+																	"readOnly": true
+																},
+																"saml_certificate_set_id": {
+																	"description": "The UID of the SAML encryption certificate set assigned to this Identity Provider.\nOnly present for SAML identity providers with encryption configured.\nCreate a certificate set via POST to `/identity_providers/{id}/saml_certificate`.\n",
+																	"example": "c409ef44-e72c-41c8-8c0b-278c8a6f4fd8",
+																	"format": "uuid",
+																	"type": "string"
+																},
+																"scim_config": {
+																	"description": "The configuration settings for enabling a System for Cross-Domain Identity Management (SCIM) with the identity provider.",
+																	"properties": {
+																		"enabled": {
+																			"default": false,
+																			"description": "A flag to enable or disable SCIM for the identity provider.",
+																			"type": "boolean",
+																			"x-auditable": true,
+																			"x-stainless-terraform-configurability": "computed_optional"
+																		},
+																		"identity_update_behavior": {
+																			"default": "no_action",
+																			"description": "Indicates how a SCIM event updates a user identity used for policy evaluation. Use \"automatic\" to automatically update a user's identity and augment it with fields from the SCIM user resource. Use \"reauth\" to force re-authentication on group membership updates, user identity update will only occur after successful re-authentication. With \"reauth\" identities will not contain fields from the SCIM user resource. With \"no_action\" identities will not be changed by SCIM updates in any way and users will not be prompted to reauthenticate.",
+																			"enum": [
+																				"automatic",
+																				"reauth",
+																				"no_action"
+																			],
+																			"type": "string",
+																			"x-auditable": true,
+																			"x-stainless-terraform-configurability": "computed_optional"
+																		},
+																		"scim_base_url": {
+																			"description": "The base URL of Cloudflare's SCIM V2.0 API endpoint.",
+																			"readOnly": true,
+																			"type": "string",
+																			"x-auditable": true
+																		},
+																		"seat_deprovision": {
+																			"default": false,
+																			"description": "A flag to remove a user's seat in Zero Trust when they have been deprovisioned in the Identity Provider.  This cannot be enabled unless user_deprovision is also enabled.",
+																			"type": "boolean",
+																			"x-auditable": true,
+																			"x-stainless-terraform-configurability": "computed_optional"
+																		},
+																		"secret": {
+																			"description": "A read-only token generated when the SCIM integration is enabled for the first time.  It is redacted on subsequent requests.  If you lose this you will need to refresh it at /access/identity_providers/:idpID/refresh_scim_secret.",
+																			"readOnly": true,
+																			"type": "string",
+																			"x-sensitive": true
+																		},
+																		"user_deprovision": {
+																			"default": false,
+																			"description": "A flag to enable revoking a user's session in Access and Gateway when they have been deprovisioned in the Identity Provider.",
+																			"type": "boolean",
+																			"x-auditable": true,
+																			"x-stainless-terraform-configurability": "computed_optional"
+																		}
+																	},
+																	"type": "object"
+																},
+																"type": {
+																	"description": "The type of identity provider. To determine the value for a specific provider, refer to our [developer documentation](https://developers.cloudflare.com/cloudflare-one/identity/idp-integration/).",
+																	"enum": [
+																		"onetimepin",
+																		"azureAD",
+																		"saml",
+																		"centrify",
+																		"facebook",
+																		"github",
+																		"google-apps",
+																		"google",
+																		"linkedin",
+																		"oidc",
+																		"okta",
+																		"onelogin",
+																		"pingone",
+																		"yandex",
+																		"cloudflare"
+																	],
+																	"example": "onetimepin",
+																	"type": "string"
+																}
+															},
+															"required": [
+																"name",
+																"type",
+																"config"
+															],
+															"type": "object"
+														},
+														{
+															"properties": {
+																"config": {
+																	"properties": {
+																		"redirect_url": {
+																			"readOnly": true,
+																			"type": "string"
+																		},
+																		"restrict_to_account_members": {
+																			"default": false,
+																			"description": "When enabled, only users who are members of your Cloudflare account can authenticate through this identity provider. When disabled, any user with a Cloudflare account can authenticate, subject to your Access policies.",
+																			"type": "boolean"
+																		}
+																	},
+																	"type": "object"
+																},
+																"type": {
+																	"enum": [
+																		"cloudflare"
+																	],
+																	"type": "string"
+																}
+															}
+														}
+													],
+													"title": "Cloudflare",
 													"type": "object"
 												}
 											],
@@ -8413,7 +9077,8 @@
 													"okta",
 													"onelogin",
 													"pingone",
-													"yandex"
+													"yandex",
+													"cloudflare"
 												],
 												"example": "onetimepin",
 												"type": "string"
@@ -8683,7 +9348,8 @@
 													"okta",
 													"onelogin",
 													"pingone",
-													"yandex"
+													"yandex",
+													"cloudflare"
 												],
 												"example": "onetimepin",
 												"type": "string"
@@ -8938,7 +9604,8 @@
 													"okta",
 													"onelogin",
 													"pingone",
-													"yandex"
+													"yandex",
+													"cloudflare"
 												],
 												"example": "onetimepin",
 												"type": "string"
@@ -9148,7 +9815,8 @@
 													"okta",
 													"onelogin",
 													"pingone",
-													"yandex"
+													"yandex",
+													"cloudflare"
 												],
 												"example": "onetimepin",
 												"type": "string"
@@ -9358,7 +10026,8 @@
 													"okta",
 													"onelogin",
 													"pingone",
-													"yandex"
+													"yandex",
+													"cloudflare"
 												],
 												"example": "onetimepin",
 												"type": "string"
@@ -9596,7 +10265,8 @@
 													"okta",
 													"onelogin",
 													"pingone",
-													"yandex"
+													"yandex",
+													"cloudflare"
 												],
 												"example": "onetimepin",
 												"type": "string"
@@ -9844,7 +10514,8 @@
 													"okta",
 													"onelogin",
 													"pingone",
-													"yandex"
+													"yandex",
+													"cloudflare"
 												],
 												"example": "onetimepin",
 												"type": "string"
@@ -10054,7 +10725,8 @@
 													"okta",
 													"onelogin",
 													"pingone",
-													"yandex"
+													"yandex",
+													"cloudflare"
 												],
 												"example": "onetimepin",
 												"type": "string"
@@ -10328,7 +11000,8 @@
 													"okta",
 													"onelogin",
 													"pingone",
-													"yandex"
+													"yandex",
+													"cloudflare"
 												],
 												"example": "onetimepin",
 												"type": "string"
@@ -10582,7 +11255,8 @@
 													"okta",
 													"onelogin",
 													"pingone",
-													"yandex"
+													"yandex",
+													"cloudflare"
 												],
 												"example": "onetimepin",
 												"type": "string"
@@ -10831,7 +11505,8 @@
 													"okta",
 													"onelogin",
 													"pingone",
-													"yandex"
+													"yandex",
+													"cloudflare"
 												],
 												"example": "onetimepin",
 												"type": "string"
@@ -11080,7 +11755,8 @@
 													"okta",
 													"onelogin",
 													"pingone",
-													"yandex"
+													"yandex",
+													"cloudflare"
 												],
 												"example": "onetimepin",
 												"type": "string"
@@ -11344,7 +12020,8 @@
 													"okta",
 													"onelogin",
 													"pingone",
-													"yandex"
+													"yandex",
+													"cloudflare"
 												],
 												"example": "onetimepin",
 												"type": "string"
@@ -11554,7 +12231,8 @@
 													"okta",
 													"onelogin",
 													"pingone",
-													"yandex"
+													"yandex",
+													"cloudflare"
 												],
 												"example": "onetimepin",
 												"type": "string"
@@ -11588,6 +12266,220 @@
 									}
 								],
 								"title": "One Time Pin",
+								"type": "object"
+							},
+							{
+								"allOf": [
+									{
+										"properties": {
+											"config": {
+												"description": "The configuration parameters for the identity provider. To view the required parameters for a specific provider, refer to our [developer documentation](https://developers.cloudflare.com/cloudflare-one/identity/idp-integration/).",
+												"type": "object"
+											},
+											"id": {
+												"description": "UUID.",
+												"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
+												"maxLength": 36,
+												"type": "string",
+												"x-auditable": true
+											},
+											"name": {
+												"description": "The name of the identity provider, shown to users on the login page.",
+												"example": "Widget Corps IDP",
+												"type": "string"
+											},
+											"saml_certificate_set": {
+												"allOf": [
+													{
+														"description": "A SAML encryption certificate set containing current and optionally previous certificates for encryption key rotation.",
+														"properties": {
+															"created_at": {
+																"description": "Timestamp when the certificate set was created",
+																"example": "2026-05-07T19:16:19.821162Z",
+																"format": "date-time",
+																"type": "string"
+															},
+															"current_certificate": {
+																"allOf": [
+																	{
+																		"description": "A single SAML encryption certificate with metadata",
+																		"properties": {
+																			"is_current": {
+																				"description": "Indicates whether this is the currently active certificate",
+																				"example": true,
+																				"type": "boolean"
+																			},
+																			"not_after": {
+																				"description": "Certificate expiration date. Certificates are automatically rotated 30 days before expiration.",
+																				"example": "2027-05-07T19:11:00Z",
+																				"format": "date-time",
+																				"type": "string"
+																			},
+																			"public_certificate": {
+																				"description": "PEM-encoded X.509 certificate containing the public key.\nConfigure this certificate in your external SAML Identity Provider to enable encryption.\n",
+																				"example": "-----BEGIN CERTIFICATE-----\nMIIEpzCCA4+gAwIBAgIUTh2VSDDJ0oB/gabio6j1L9QwWoUwDQYJKoZIhvcNAQEL\n...\n-----END CERTIFICATE-----\n",
+																				"type": "string"
+																			},
+																			"uid": {
+																				"description": "Unique identifier for the certificate",
+																				"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
+																				"format": "uuid",
+																				"type": "string"
+																			}
+																		},
+																		"required": [
+																			"uid",
+																			"public_certificate",
+																			"not_after",
+																			"is_current"
+																		],
+																		"type": "object"
+																	}
+																],
+																"description": "The currently active certificate used for encrypting SAML assertions"
+															},
+															"previous_certificate": {
+																"description": "The previous certificate, maintained during rotation to ensure continuity. Null if no rotation has occurred. Mirrors the structure of `saml_certificate`.",
+																"nullable": true,
+																"type": "object"
+															},
+															"uid": {
+																"description": "Unique identifier for the certificate set",
+																"example": "c409ef44-e72c-41c8-8c0b-278c8a6f4fd8",
+																"format": "uuid",
+																"type": "string"
+															},
+															"updated_at": {
+																"description": "Timestamp when the certificate set was last updated (e.g., during rotation)",
+																"example": "2026-05-07T19:16:19.821162Z",
+																"format": "date-time",
+																"type": "string"
+															}
+														},
+														"required": [
+															"uid",
+															"created_at",
+															"updated_at"
+														],
+														"type": "object"
+													}
+												],
+												"description": "The SAML encryption certificate set details, including current and previous certificates.\nOnly present for SAML identity providers with a certificate set assigned.\n",
+												"readOnly": true
+											},
+											"saml_certificate_set_id": {
+												"description": "The UID of the SAML encryption certificate set assigned to this Identity Provider.\nOnly present for SAML identity providers with encryption configured.\nCreate a certificate set via POST to `/identity_providers/{id}/saml_certificate`.\n",
+												"example": "c409ef44-e72c-41c8-8c0b-278c8a6f4fd8",
+												"format": "uuid",
+												"type": "string"
+											},
+											"scim_config": {
+												"description": "The configuration settings for enabling a System for Cross-Domain Identity Management (SCIM) with the identity provider.",
+												"properties": {
+													"enabled": {
+														"default": false,
+														"description": "A flag to enable or disable SCIM for the identity provider.",
+														"type": "boolean",
+														"x-auditable": true,
+														"x-stainless-terraform-configurability": "computed_optional"
+													},
+													"identity_update_behavior": {
+														"default": "no_action",
+														"description": "Indicates how a SCIM event updates a user identity used for policy evaluation. Use \"automatic\" to automatically update a user's identity and augment it with fields from the SCIM user resource. Use \"reauth\" to force re-authentication on group membership updates, user identity update will only occur after successful re-authentication. With \"reauth\" identities will not contain fields from the SCIM user resource. With \"no_action\" identities will not be changed by SCIM updates in any way and users will not be prompted to reauthenticate.",
+														"enum": [
+															"automatic",
+															"reauth",
+															"no_action"
+														],
+														"type": "string",
+														"x-auditable": true,
+														"x-stainless-terraform-configurability": "computed_optional"
+													},
+													"scim_base_url": {
+														"description": "The base URL of Cloudflare's SCIM V2.0 API endpoint.",
+														"readOnly": true,
+														"type": "string",
+														"x-auditable": true
+													},
+													"seat_deprovision": {
+														"default": false,
+														"description": "A flag to remove a user's seat in Zero Trust when they have been deprovisioned in the Identity Provider.  This cannot be enabled unless user_deprovision is also enabled.",
+														"type": "boolean",
+														"x-auditable": true,
+														"x-stainless-terraform-configurability": "computed_optional"
+													},
+													"secret": {
+														"description": "A read-only token generated when the SCIM integration is enabled for the first time.  It is redacted on subsequent requests.  If you lose this you will need to refresh it at /access/identity_providers/:idpID/refresh_scim_secret.",
+														"readOnly": true,
+														"type": "string",
+														"x-sensitive": true
+													},
+													"user_deprovision": {
+														"default": false,
+														"description": "A flag to enable revoking a user's session in Access and Gateway when they have been deprovisioned in the Identity Provider.",
+														"type": "boolean",
+														"x-auditable": true,
+														"x-stainless-terraform-configurability": "computed_optional"
+													}
+												},
+												"type": "object"
+											},
+											"type": {
+												"description": "The type of identity provider. To determine the value for a specific provider, refer to our [developer documentation](https://developers.cloudflare.com/cloudflare-one/identity/idp-integration/).",
+												"enum": [
+													"onetimepin",
+													"azureAD",
+													"saml",
+													"centrify",
+													"facebook",
+													"github",
+													"google-apps",
+													"google",
+													"linkedin",
+													"oidc",
+													"okta",
+													"onelogin",
+													"pingone",
+													"yandex",
+													"cloudflare"
+												],
+												"example": "onetimepin",
+												"type": "string"
+											}
+										},
+										"required": [
+											"name",
+											"type",
+											"config"
+										],
+										"type": "object"
+									},
+									{
+										"properties": {
+											"config": {
+												"properties": {
+													"redirect_url": {
+														"readOnly": true,
+														"type": "string"
+													},
+													"restrict_to_account_members": {
+														"default": false,
+														"description": "When enabled, only users who are members of your Cloudflare account can authenticate through this identity provider. When disabled, any user with a Cloudflare account can authenticate, subject to your Access policies.",
+														"type": "boolean"
+													}
+												},
+												"type": "object"
+											},
+											"type": {
+												"enum": [
+													"cloudflare"
+												],
+												"type": "string"
+											}
+										}
+									}
+								],
+								"title": "Cloudflare",
 								"type": "object"
 							}
 						],
@@ -11866,7 +12758,8 @@
 																		"okta",
 																		"onelogin",
 																		"pingone",
-																		"yandex"
+																		"yandex",
+																		"cloudflare"
 																	],
 																	"example": "onetimepin",
 																	"type": "string"
@@ -12136,7 +13029,8 @@
 																		"okta",
 																		"onelogin",
 																		"pingone",
-																		"yandex"
+																		"yandex",
+																		"cloudflare"
 																	],
 																	"example": "onetimepin",
 																	"type": "string"
@@ -12391,7 +13285,8 @@
 																		"okta",
 																		"onelogin",
 																		"pingone",
-																		"yandex"
+																		"yandex",
+																		"cloudflare"
 																	],
 																	"example": "onetimepin",
 																	"type": "string"
@@ -12601,7 +13496,8 @@
 																		"okta",
 																		"onelogin",
 																		"pingone",
-																		"yandex"
+																		"yandex",
+																		"cloudflare"
 																	],
 																	"example": "onetimepin",
 																	"type": "string"
@@ -12811,7 +13707,8 @@
 																		"okta",
 																		"onelogin",
 																		"pingone",
-																		"yandex"
+																		"yandex",
+																		"cloudflare"
 																	],
 																	"example": "onetimepin",
 																	"type": "string"
@@ -13049,7 +13946,8 @@
 																		"okta",
 																		"onelogin",
 																		"pingone",
-																		"yandex"
+																		"yandex",
+																		"cloudflare"
 																	],
 																	"example": "onetimepin",
 																	"type": "string"
@@ -13297,7 +14195,8 @@
 																		"okta",
 																		"onelogin",
 																		"pingone",
-																		"yandex"
+																		"yandex",
+																		"cloudflare"
 																	],
 																	"example": "onetimepin",
 																	"type": "string"
@@ -13507,7 +14406,8 @@
 																		"okta",
 																		"onelogin",
 																		"pingone",
-																		"yandex"
+																		"yandex",
+																		"cloudflare"
 																	],
 																	"example": "onetimepin",
 																	"type": "string"
@@ -13781,7 +14681,8 @@
 																		"okta",
 																		"onelogin",
 																		"pingone",
-																		"yandex"
+																		"yandex",
+																		"cloudflare"
 																	],
 																	"example": "onetimepin",
 																	"type": "string"
@@ -14035,7 +14936,8 @@
 																		"okta",
 																		"onelogin",
 																		"pingone",
-																		"yandex"
+																		"yandex",
+																		"cloudflare"
 																	],
 																	"example": "onetimepin",
 																	"type": "string"
@@ -14284,7 +15186,8 @@
 																		"okta",
 																		"onelogin",
 																		"pingone",
-																		"yandex"
+																		"yandex",
+																		"cloudflare"
 																	],
 																	"example": "onetimepin",
 																	"type": "string"
@@ -14533,7 +15436,8 @@
 																		"okta",
 																		"onelogin",
 																		"pingone",
-																		"yandex"
+																		"yandex",
+																		"cloudflare"
 																	],
 																	"example": "onetimepin",
 																	"type": "string"
@@ -14797,7 +15701,8 @@
 																		"okta",
 																		"onelogin",
 																		"pingone",
-																		"yandex"
+																		"yandex",
+																		"cloudflare"
 																	],
 																	"example": "onetimepin",
 																	"type": "string"
@@ -15007,7 +15912,8 @@
 																		"okta",
 																		"onelogin",
 																		"pingone",
-																		"yandex"
+																		"yandex",
+																		"cloudflare"
 																	],
 																	"example": "onetimepin",
 																	"type": "string"
@@ -15041,6 +15947,220 @@
 														}
 													],
 													"title": "One Time Pin",
+													"type": "object"
+												},
+												{
+													"allOf": [
+														{
+															"properties": {
+																"config": {
+																	"description": "The configuration parameters for the identity provider. To view the required parameters for a specific provider, refer to our [developer documentation](https://developers.cloudflare.com/cloudflare-one/identity/idp-integration/).",
+																	"type": "object"
+																},
+																"id": {
+																	"description": "UUID.",
+																	"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
+																	"maxLength": 36,
+																	"type": "string",
+																	"x-auditable": true
+																},
+																"name": {
+																	"description": "The name of the identity provider, shown to users on the login page.",
+																	"example": "Widget Corps IDP",
+																	"type": "string"
+																},
+																"saml_certificate_set": {
+																	"allOf": [
+																		{
+																			"description": "A SAML encryption certificate set containing current and optionally previous certificates for encryption key rotation.",
+																			"properties": {
+																				"created_at": {
+																					"description": "Timestamp when the certificate set was created",
+																					"example": "2026-05-07T19:16:19.821162Z",
+																					"format": "date-time",
+																					"type": "string"
+																				},
+																				"current_certificate": {
+																					"allOf": [
+																						{
+																							"description": "A single SAML encryption certificate with metadata",
+																							"properties": {
+																								"is_current": {
+																									"description": "Indicates whether this is the currently active certificate",
+																									"example": true,
+																									"type": "boolean"
+																								},
+																								"not_after": {
+																									"description": "Certificate expiration date. Certificates are automatically rotated 30 days before expiration.",
+																									"example": "2027-05-07T19:11:00Z",
+																									"format": "date-time",
+																									"type": "string"
+																								},
+																								"public_certificate": {
+																									"description": "PEM-encoded X.509 certificate containing the public key.\nConfigure this certificate in your external SAML Identity Provider to enable encryption.\n",
+																									"example": "-----BEGIN CERTIFICATE-----\nMIIEpzCCA4+gAwIBAgIUTh2VSDDJ0oB/gabio6j1L9QwWoUwDQYJKoZIhvcNAQEL\n...\n-----END CERTIFICATE-----\n",
+																									"type": "string"
+																								},
+																								"uid": {
+																									"description": "Unique identifier for the certificate",
+																									"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
+																									"format": "uuid",
+																									"type": "string"
+																								}
+																							},
+																							"required": [
+																								"uid",
+																								"public_certificate",
+																								"not_after",
+																								"is_current"
+																							],
+																							"type": "object"
+																						}
+																					],
+																					"description": "The currently active certificate used for encrypting SAML assertions"
+																				},
+																				"previous_certificate": {
+																					"description": "The previous certificate, maintained during rotation to ensure continuity. Null if no rotation has occurred. Mirrors the structure of `saml_certificate`.",
+																					"nullable": true,
+																					"type": "object"
+																				},
+																				"uid": {
+																					"description": "Unique identifier for the certificate set",
+																					"example": "c409ef44-e72c-41c8-8c0b-278c8a6f4fd8",
+																					"format": "uuid",
+																					"type": "string"
+																				},
+																				"updated_at": {
+																					"description": "Timestamp when the certificate set was last updated (e.g., during rotation)",
+																					"example": "2026-05-07T19:16:19.821162Z",
+																					"format": "date-time",
+																					"type": "string"
+																				}
+																			},
+																			"required": [
+																				"uid",
+																				"created_at",
+																				"updated_at"
+																			],
+																			"type": "object"
+																		}
+																	],
+																	"description": "The SAML encryption certificate set details, including current and previous certificates.\nOnly present for SAML identity providers with a certificate set assigned.\n",
+																	"readOnly": true
+																},
+																"saml_certificate_set_id": {
+																	"description": "The UID of the SAML encryption certificate set assigned to this Identity Provider.\nOnly present for SAML identity providers with encryption configured.\nCreate a certificate set via POST to `/identity_providers/{id}/saml_certificate`.\n",
+																	"example": "c409ef44-e72c-41c8-8c0b-278c8a6f4fd8",
+																	"format": "uuid",
+																	"type": "string"
+																},
+																"scim_config": {
+																	"description": "The configuration settings for enabling a System for Cross-Domain Identity Management (SCIM) with the identity provider.",
+																	"properties": {
+																		"enabled": {
+																			"default": false,
+																			"description": "A flag to enable or disable SCIM for the identity provider.",
+																			"type": "boolean",
+																			"x-auditable": true,
+																			"x-stainless-terraform-configurability": "computed_optional"
+																		},
+																		"identity_update_behavior": {
+																			"default": "no_action",
+																			"description": "Indicates how a SCIM event updates a user identity used for policy evaluation. Use \"automatic\" to automatically update a user's identity and augment it with fields from the SCIM user resource. Use \"reauth\" to force re-authentication on group membership updates, user identity update will only occur after successful re-authentication. With \"reauth\" identities will not contain fields from the SCIM user resource. With \"no_action\" identities will not be changed by SCIM updates in any way and users will not be prompted to reauthenticate.",
+																			"enum": [
+																				"automatic",
+																				"reauth",
+																				"no_action"
+																			],
+																			"type": "string",
+																			"x-auditable": true,
+																			"x-stainless-terraform-configurability": "computed_optional"
+																		},
+																		"scim_base_url": {
+																			"description": "The base URL of Cloudflare's SCIM V2.0 API endpoint.",
+																			"readOnly": true,
+																			"type": "string",
+																			"x-auditable": true
+																		},
+																		"seat_deprovision": {
+																			"default": false,
+																			"description": "A flag to remove a user's seat in Zero Trust when they have been deprovisioned in the Identity Provider.  This cannot be enabled unless user_deprovision is also enabled.",
+																			"type": "boolean",
+																			"x-auditable": true,
+																			"x-stainless-terraform-configurability": "computed_optional"
+																		},
+																		"secret": {
+																			"description": "A read-only token generated when the SCIM integration is enabled for the first time.  It is redacted on subsequent requests.  If you lose this you will need to refresh it at /access/identity_providers/:idpID/refresh_scim_secret.",
+																			"readOnly": true,
+																			"type": "string",
+																			"x-sensitive": true
+																		},
+																		"user_deprovision": {
+																			"default": false,
+																			"description": "A flag to enable revoking a user's session in Access and Gateway when they have been deprovisioned in the Identity Provider.",
+																			"type": "boolean",
+																			"x-auditable": true,
+																			"x-stainless-terraform-configurability": "computed_optional"
+																		}
+																	},
+																	"type": "object"
+																},
+																"type": {
+																	"description": "The type of identity provider. To determine the value for a specific provider, refer to our [developer documentation](https://developers.cloudflare.com/cloudflare-one/identity/idp-integration/).",
+																	"enum": [
+																		"onetimepin",
+																		"azureAD",
+																		"saml",
+																		"centrify",
+																		"facebook",
+																		"github",
+																		"google-apps",
+																		"google",
+																		"linkedin",
+																		"oidc",
+																		"okta",
+																		"onelogin",
+																		"pingone",
+																		"yandex",
+																		"cloudflare"
+																	],
+																	"example": "onetimepin",
+																	"type": "string"
+																}
+															},
+															"required": [
+																"name",
+																"type",
+																"config"
+															],
+															"type": "object"
+														},
+														{
+															"properties": {
+																"config": {
+																	"properties": {
+																		"redirect_url": {
+																			"readOnly": true,
+																			"type": "string"
+																		},
+																		"restrict_to_account_members": {
+																			"default": false,
+																			"description": "When enabled, only users who are members of your Cloudflare account can authenticate through this identity provider. When disabled, any user with a Cloudflare account can authenticate, subject to your Access policies.",
+																			"type": "boolean"
+																		}
+																	},
+																	"type": "object"
+																},
+																"type": {
+																	"enum": [
+																		"cloudflare"
+																	],
+																	"type": "string"
+																}
+															}
+														}
+													],
+													"title": "Cloudflare",
 													"type": "object"
 												}
 											],
@@ -16124,7 +17244,8 @@
 													"okta",
 													"onelogin",
 													"pingone",
-													"yandex"
+													"yandex",
+													"cloudflare"
 												],
 												"example": "onetimepin",
 												"type": "string"
@@ -16394,7 +17515,8 @@
 													"okta",
 													"onelogin",
 													"pingone",
-													"yandex"
+													"yandex",
+													"cloudflare"
 												],
 												"example": "onetimepin",
 												"type": "string"
@@ -16649,7 +17771,8 @@
 													"okta",
 													"onelogin",
 													"pingone",
-													"yandex"
+													"yandex",
+													"cloudflare"
 												],
 												"example": "onetimepin",
 												"type": "string"
@@ -16859,7 +17982,8 @@
 													"okta",
 													"onelogin",
 													"pingone",
-													"yandex"
+													"yandex",
+													"cloudflare"
 												],
 												"example": "onetimepin",
 												"type": "string"
@@ -17069,7 +18193,8 @@
 													"okta",
 													"onelogin",
 													"pingone",
-													"yandex"
+													"yandex",
+													"cloudflare"
 												],
 												"example": "onetimepin",
 												"type": "string"
@@ -17307,7 +18432,8 @@
 													"okta",
 													"onelogin",
 													"pingone",
-													"yandex"
+													"yandex",
+													"cloudflare"
 												],
 												"example": "onetimepin",
 												"type": "string"
@@ -17555,7 +18681,8 @@
 													"okta",
 													"onelogin",
 													"pingone",
-													"yandex"
+													"yandex",
+													"cloudflare"
 												],
 												"example": "onetimepin",
 												"type": "string"
@@ -17765,7 +18892,8 @@
 													"okta",
 													"onelogin",
 													"pingone",
-													"yandex"
+													"yandex",
+													"cloudflare"
 												],
 												"example": "onetimepin",
 												"type": "string"
@@ -18039,7 +19167,8 @@
 													"okta",
 													"onelogin",
 													"pingone",
-													"yandex"
+													"yandex",
+													"cloudflare"
 												],
 												"example": "onetimepin",
 												"type": "string"
@@ -18293,7 +19422,8 @@
 													"okta",
 													"onelogin",
 													"pingone",
-													"yandex"
+													"yandex",
+													"cloudflare"
 												],
 												"example": "onetimepin",
 												"type": "string"
@@ -18542,7 +19672,8 @@
 													"okta",
 													"onelogin",
 													"pingone",
-													"yandex"
+													"yandex",
+													"cloudflare"
 												],
 												"example": "onetimepin",
 												"type": "string"
@@ -18791,7 +19922,8 @@
 													"okta",
 													"onelogin",
 													"pingone",
-													"yandex"
+													"yandex",
+													"cloudflare"
 												],
 												"example": "onetimepin",
 												"type": "string"
@@ -19055,7 +20187,8 @@
 													"okta",
 													"onelogin",
 													"pingone",
-													"yandex"
+													"yandex",
+													"cloudflare"
 												],
 												"example": "onetimepin",
 												"type": "string"
@@ -19265,7 +20398,8 @@
 													"okta",
 													"onelogin",
 													"pingone",
-													"yandex"
+													"yandex",
+													"cloudflare"
 												],
 												"example": "onetimepin",
 												"type": "string"
@@ -19299,6 +20433,220 @@
 									}
 								],
 								"title": "One Time Pin",
+								"type": "object"
+							},
+							{
+								"allOf": [
+									{
+										"properties": {
+											"config": {
+												"description": "The configuration parameters for the identity provider. To view the required parameters for a specific provider, refer to our [developer documentation](https://developers.cloudflare.com/cloudflare-one/identity/idp-integration/).",
+												"type": "object"
+											},
+											"id": {
+												"description": "UUID.",
+												"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
+												"maxLength": 36,
+												"type": "string",
+												"x-auditable": true
+											},
+											"name": {
+												"description": "The name of the identity provider, shown to users on the login page.",
+												"example": "Widget Corps IDP",
+												"type": "string"
+											},
+											"saml_certificate_set": {
+												"allOf": [
+													{
+														"description": "A SAML encryption certificate set containing current and optionally previous certificates for encryption key rotation.",
+														"properties": {
+															"created_at": {
+																"description": "Timestamp when the certificate set was created",
+																"example": "2026-05-07T19:16:19.821162Z",
+																"format": "date-time",
+																"type": "string"
+															},
+															"current_certificate": {
+																"allOf": [
+																	{
+																		"description": "A single SAML encryption certificate with metadata",
+																		"properties": {
+																			"is_current": {
+																				"description": "Indicates whether this is the currently active certificate",
+																				"example": true,
+																				"type": "boolean"
+																			},
+																			"not_after": {
+																				"description": "Certificate expiration date. Certificates are automatically rotated 30 days before expiration.",
+																				"example": "2027-05-07T19:11:00Z",
+																				"format": "date-time",
+																				"type": "string"
+																			},
+																			"public_certificate": {
+																				"description": "PEM-encoded X.509 certificate containing the public key.\nConfigure this certificate in your external SAML Identity Provider to enable encryption.\n",
+																				"example": "-----BEGIN CERTIFICATE-----\nMIIEpzCCA4+gAwIBAgIUTh2VSDDJ0oB/gabio6j1L9QwWoUwDQYJKoZIhvcNAQEL\n...\n-----END CERTIFICATE-----\n",
+																				"type": "string"
+																			},
+																			"uid": {
+																				"description": "Unique identifier for the certificate",
+																				"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
+																				"format": "uuid",
+																				"type": "string"
+																			}
+																		},
+																		"required": [
+																			"uid",
+																			"public_certificate",
+																			"not_after",
+																			"is_current"
+																		],
+																		"type": "object"
+																	}
+																],
+																"description": "The currently active certificate used for encrypting SAML assertions"
+															},
+															"previous_certificate": {
+																"description": "The previous certificate, maintained during rotation to ensure continuity. Null if no rotation has occurred. Mirrors the structure of `saml_certificate`.",
+																"nullable": true,
+																"type": "object"
+															},
+															"uid": {
+																"description": "Unique identifier for the certificate set",
+																"example": "c409ef44-e72c-41c8-8c0b-278c8a6f4fd8",
+																"format": "uuid",
+																"type": "string"
+															},
+															"updated_at": {
+																"description": "Timestamp when the certificate set was last updated (e.g., during rotation)",
+																"example": "2026-05-07T19:16:19.821162Z",
+																"format": "date-time",
+																"type": "string"
+															}
+														},
+														"required": [
+															"uid",
+															"created_at",
+															"updated_at"
+														],
+														"type": "object"
+													}
+												],
+												"description": "The SAML encryption certificate set details, including current and previous certificates.\nOnly present for SAML identity providers with a certificate set assigned.\n",
+												"readOnly": true
+											},
+											"saml_certificate_set_id": {
+												"description": "The UID of the SAML encryption certificate set assigned to this Identity Provider.\nOnly present for SAML identity providers with encryption configured.\nCreate a certificate set via POST to `/identity_providers/{id}/saml_certificate`.\n",
+												"example": "c409ef44-e72c-41c8-8c0b-278c8a6f4fd8",
+												"format": "uuid",
+												"type": "string"
+											},
+											"scim_config": {
+												"description": "The configuration settings for enabling a System for Cross-Domain Identity Management (SCIM) with the identity provider.",
+												"properties": {
+													"enabled": {
+														"default": false,
+														"description": "A flag to enable or disable SCIM for the identity provider.",
+														"type": "boolean",
+														"x-auditable": true,
+														"x-stainless-terraform-configurability": "computed_optional"
+													},
+													"identity_update_behavior": {
+														"default": "no_action",
+														"description": "Indicates how a SCIM event updates a user identity used for policy evaluation. Use \"automatic\" to automatically update a user's identity and augment it with fields from the SCIM user resource. Use \"reauth\" to force re-authentication on group membership updates, user identity update will only occur after successful re-authentication. With \"reauth\" identities will not contain fields from the SCIM user resource. With \"no_action\" identities will not be changed by SCIM updates in any way and users will not be prompted to reauthenticate.",
+														"enum": [
+															"automatic",
+															"reauth",
+															"no_action"
+														],
+														"type": "string",
+														"x-auditable": true,
+														"x-stainless-terraform-configurability": "computed_optional"
+													},
+													"scim_base_url": {
+														"description": "The base URL of Cloudflare's SCIM V2.0 API endpoint.",
+														"readOnly": true,
+														"type": "string",
+														"x-auditable": true
+													},
+													"seat_deprovision": {
+														"default": false,
+														"description": "A flag to remove a user's seat in Zero Trust when they have been deprovisioned in the Identity Provider.  This cannot be enabled unless user_deprovision is also enabled.",
+														"type": "boolean",
+														"x-auditable": true,
+														"x-stainless-terraform-configurability": "computed_optional"
+													},
+													"secret": {
+														"description": "A read-only token generated when the SCIM integration is enabled for the first time.  It is redacted on subsequent requests.  If you lose this you will need to refresh it at /access/identity_providers/:idpID/refresh_scim_secret.",
+														"readOnly": true,
+														"type": "string",
+														"x-sensitive": true
+													},
+													"user_deprovision": {
+														"default": false,
+														"description": "A flag to enable revoking a user's session in Access and Gateway when they have been deprovisioned in the Identity Provider.",
+														"type": "boolean",
+														"x-auditable": true,
+														"x-stainless-terraform-configurability": "computed_optional"
+													}
+												},
+												"type": "object"
+											},
+											"type": {
+												"description": "The type of identity provider. To determine the value for a specific provider, refer to our [developer documentation](https://developers.cloudflare.com/cloudflare-one/identity/idp-integration/).",
+												"enum": [
+													"onetimepin",
+													"azureAD",
+													"saml",
+													"centrify",
+													"facebook",
+													"github",
+													"google-apps",
+													"google",
+													"linkedin",
+													"oidc",
+													"okta",
+													"onelogin",
+													"pingone",
+													"yandex",
+													"cloudflare"
+												],
+												"example": "onetimepin",
+												"type": "string"
+											}
+										},
+										"required": [
+											"name",
+											"type",
+											"config"
+										],
+										"type": "object"
+									},
+									{
+										"properties": {
+											"config": {
+												"properties": {
+													"redirect_url": {
+														"readOnly": true,
+														"type": "string"
+													},
+													"restrict_to_account_members": {
+														"default": false,
+														"description": "When enabled, only users who are members of your Cloudflare account can authenticate through this identity provider. When disabled, any user with a Cloudflare account can authenticate, subject to your Access policies.",
+														"type": "boolean"
+													}
+												},
+												"type": "object"
+											},
+											"type": {
+												"enum": [
+													"cloudflare"
+												],
+												"type": "string"
+											}
+										}
+									}
+								],
+								"title": "Cloudflare",
 								"type": "object"
 							}
 						],
@@ -19577,7 +20925,8 @@
 																		"okta",
 																		"onelogin",
 																		"pingone",
-																		"yandex"
+																		"yandex",
+																		"cloudflare"
 																	],
 																	"example": "onetimepin",
 																	"type": "string"
@@ -19847,7 +21196,8 @@
 																		"okta",
 																		"onelogin",
 																		"pingone",
-																		"yandex"
+																		"yandex",
+																		"cloudflare"
 																	],
 																	"example": "onetimepin",
 																	"type": "string"
@@ -20102,7 +21452,8 @@
 																		"okta",
 																		"onelogin",
 																		"pingone",
-																		"yandex"
+																		"yandex",
+																		"cloudflare"
 																	],
 																	"example": "onetimepin",
 																	"type": "string"
@@ -20312,7 +21663,8 @@
 																		"okta",
 																		"onelogin",
 																		"pingone",
-																		"yandex"
+																		"yandex",
+																		"cloudflare"
 																	],
 																	"example": "onetimepin",
 																	"type": "string"
@@ -20522,7 +21874,8 @@
 																		"okta",
 																		"onelogin",
 																		"pingone",
-																		"yandex"
+																		"yandex",
+																		"cloudflare"
 																	],
 																	"example": "onetimepin",
 																	"type": "string"
@@ -20760,7 +22113,8 @@
 																		"okta",
 																		"onelogin",
 																		"pingone",
-																		"yandex"
+																		"yandex",
+																		"cloudflare"
 																	],
 																	"example": "onetimepin",
 																	"type": "string"
@@ -21008,7 +22362,8 @@
 																		"okta",
 																		"onelogin",
 																		"pingone",
-																		"yandex"
+																		"yandex",
+																		"cloudflare"
 																	],
 																	"example": "onetimepin",
 																	"type": "string"
@@ -21218,7 +22573,8 @@
 																		"okta",
 																		"onelogin",
 																		"pingone",
-																		"yandex"
+																		"yandex",
+																		"cloudflare"
 																	],
 																	"example": "onetimepin",
 																	"type": "string"
@@ -21492,7 +22848,8 @@
 																		"okta",
 																		"onelogin",
 																		"pingone",
-																		"yandex"
+																		"yandex",
+																		"cloudflare"
 																	],
 																	"example": "onetimepin",
 																	"type": "string"
@@ -21746,7 +23103,8 @@
 																		"okta",
 																		"onelogin",
 																		"pingone",
-																		"yandex"
+																		"yandex",
+																		"cloudflare"
 																	],
 																	"example": "onetimepin",
 																	"type": "string"
@@ -21995,7 +23353,8 @@
 																		"okta",
 																		"onelogin",
 																		"pingone",
-																		"yandex"
+																		"yandex",
+																		"cloudflare"
 																	],
 																	"example": "onetimepin",
 																	"type": "string"
@@ -22244,7 +23603,8 @@
 																		"okta",
 																		"onelogin",
 																		"pingone",
-																		"yandex"
+																		"yandex",
+																		"cloudflare"
 																	],
 																	"example": "onetimepin",
 																	"type": "string"
@@ -22508,7 +23868,8 @@
 																		"okta",
 																		"onelogin",
 																		"pingone",
-																		"yandex"
+																		"yandex",
+																		"cloudflare"
 																	],
 																	"example": "onetimepin",
 																	"type": "string"
@@ -22718,7 +24079,8 @@
 																		"okta",
 																		"onelogin",
 																		"pingone",
-																		"yandex"
+																		"yandex",
+																		"cloudflare"
 																	],
 																	"example": "onetimepin",
 																	"type": "string"
@@ -22752,6 +24114,220 @@
 														}
 													],
 													"title": "One Time Pin",
+													"type": "object"
+												},
+												{
+													"allOf": [
+														{
+															"properties": {
+																"config": {
+																	"description": "The configuration parameters for the identity provider. To view the required parameters for a specific provider, refer to our [developer documentation](https://developers.cloudflare.com/cloudflare-one/identity/idp-integration/).",
+																	"type": "object"
+																},
+																"id": {
+																	"description": "UUID.",
+																	"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
+																	"maxLength": 36,
+																	"type": "string",
+																	"x-auditable": true
+																},
+																"name": {
+																	"description": "The name of the identity provider, shown to users on the login page.",
+																	"example": "Widget Corps IDP",
+																	"type": "string"
+																},
+																"saml_certificate_set": {
+																	"allOf": [
+																		{
+																			"description": "A SAML encryption certificate set containing current and optionally previous certificates for encryption key rotation.",
+																			"properties": {
+																				"created_at": {
+																					"description": "Timestamp when the certificate set was created",
+																					"example": "2026-05-07T19:16:19.821162Z",
+																					"format": "date-time",
+																					"type": "string"
+																				},
+																				"current_certificate": {
+																					"allOf": [
+																						{
+																							"description": "A single SAML encryption certificate with metadata",
+																							"properties": {
+																								"is_current": {
+																									"description": "Indicates whether this is the currently active certificate",
+																									"example": true,
+																									"type": "boolean"
+																								},
+																								"not_after": {
+																									"description": "Certificate expiration date. Certificates are automatically rotated 30 days before expiration.",
+																									"example": "2027-05-07T19:11:00Z",
+																									"format": "date-time",
+																									"type": "string"
+																								},
+																								"public_certificate": {
+																									"description": "PEM-encoded X.509 certificate containing the public key.\nConfigure this certificate in your external SAML Identity Provider to enable encryption.\n",
+																									"example": "-----BEGIN CERTIFICATE-----\nMIIEpzCCA4+gAwIBAgIUTh2VSDDJ0oB/gabio6j1L9QwWoUwDQYJKoZIhvcNAQEL\n...\n-----END CERTIFICATE-----\n",
+																									"type": "string"
+																								},
+																								"uid": {
+																									"description": "Unique identifier for the certificate",
+																									"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
+																									"format": "uuid",
+																									"type": "string"
+																								}
+																							},
+																							"required": [
+																								"uid",
+																								"public_certificate",
+																								"not_after",
+																								"is_current"
+																							],
+																							"type": "object"
+																						}
+																					],
+																					"description": "The currently active certificate used for encrypting SAML assertions"
+																				},
+																				"previous_certificate": {
+																					"description": "The previous certificate, maintained during rotation to ensure continuity. Null if no rotation has occurred. Mirrors the structure of `saml_certificate`.",
+																					"nullable": true,
+																					"type": "object"
+																				},
+																				"uid": {
+																					"description": "Unique identifier for the certificate set",
+																					"example": "c409ef44-e72c-41c8-8c0b-278c8a6f4fd8",
+																					"format": "uuid",
+																					"type": "string"
+																				},
+																				"updated_at": {
+																					"description": "Timestamp when the certificate set was last updated (e.g., during rotation)",
+																					"example": "2026-05-07T19:16:19.821162Z",
+																					"format": "date-time",
+																					"type": "string"
+																				}
+																			},
+																			"required": [
+																				"uid",
+																				"created_at",
+																				"updated_at"
+																			],
+																			"type": "object"
+																		}
+																	],
+																	"description": "The SAML encryption certificate set details, including current and previous certificates.\nOnly present for SAML identity providers with a certificate set assigned.\n",
+																	"readOnly": true
+																},
+																"saml_certificate_set_id": {
+																	"description": "The UID of the SAML encryption certificate set assigned to this Identity Provider.\nOnly present for SAML identity providers with encryption configured.\nCreate a certificate set via POST to `/identity_providers/{id}/saml_certificate`.\n",
+																	"example": "c409ef44-e72c-41c8-8c0b-278c8a6f4fd8",
+																	"format": "uuid",
+																	"type": "string"
+																},
+																"scim_config": {
+																	"description": "The configuration settings for enabling a System for Cross-Domain Identity Management (SCIM) with the identity provider.",
+																	"properties": {
+																		"enabled": {
+																			"default": false,
+																			"description": "A flag to enable or disable SCIM for the identity provider.",
+																			"type": "boolean",
+																			"x-auditable": true,
+																			"x-stainless-terraform-configurability": "computed_optional"
+																		},
+																		"identity_update_behavior": {
+																			"default": "no_action",
+																			"description": "Indicates how a SCIM event updates a user identity used for policy evaluation. Use \"automatic\" to automatically update a user's identity and augment it with fields from the SCIM user resource. Use \"reauth\" to force re-authentication on group membership updates, user identity update will only occur after successful re-authentication. With \"reauth\" identities will not contain fields from the SCIM user resource. With \"no_action\" identities will not be changed by SCIM updates in any way and users will not be prompted to reauthenticate.",
+																			"enum": [
+																				"automatic",
+																				"reauth",
+																				"no_action"
+																			],
+																			"type": "string",
+																			"x-auditable": true,
+																			"x-stainless-terraform-configurability": "computed_optional"
+																		},
+																		"scim_base_url": {
+																			"description": "The base URL of Cloudflare's SCIM V2.0 API endpoint.",
+																			"readOnly": true,
+																			"type": "string",
+																			"x-auditable": true
+																		},
+																		"seat_deprovision": {
+																			"default": false,
+																			"description": "A flag to remove a user's seat in Zero Trust when they have been deprovisioned in the Identity Provider.  This cannot be enabled unless user_deprovision is also enabled.",
+																			"type": "boolean",
+																			"x-auditable": true,
+																			"x-stainless-terraform-configurability": "computed_optional"
+																		},
+																		"secret": {
+																			"description": "A read-only token generated when the SCIM integration is enabled for the first time.  It is redacted on subsequent requests.  If you lose this you will need to refresh it at /access/identity_providers/:idpID/refresh_scim_secret.",
+																			"readOnly": true,
+																			"type": "string",
+																			"x-sensitive": true
+																		},
+																		"user_deprovision": {
+																			"default": false,
+																			"description": "A flag to enable revoking a user's session in Access and Gateway when they have been deprovisioned in the Identity Provider.",
+																			"type": "boolean",
+																			"x-auditable": true,
+																			"x-stainless-terraform-configurability": "computed_optional"
+																		}
+																	},
+																	"type": "object"
+																},
+																"type": {
+																	"description": "The type of identity provider. To determine the value for a specific provider, refer to our [developer documentation](https://developers.cloudflare.com/cloudflare-one/identity/idp-integration/).",
+																	"enum": [
+																		"onetimepin",
+																		"azureAD",
+																		"saml",
+																		"centrify",
+																		"facebook",
+																		"github",
+																		"google-apps",
+																		"google",
+																		"linkedin",
+																		"oidc",
+																		"okta",
+																		"onelogin",
+																		"pingone",
+																		"yandex",
+																		"cloudflare"
+																	],
+																	"example": "onetimepin",
+																	"type": "string"
+																}
+															},
+															"required": [
+																"name",
+																"type",
+																"config"
+															],
+															"type": "object"
+														},
+														{
+															"properties": {
+																"config": {
+																	"properties": {
+																		"redirect_url": {
+																			"readOnly": true,
+																			"type": "string"
+																		},
+																		"restrict_to_account_members": {
+																			"default": false,
+																			"description": "When enabled, only users who are members of your Cloudflare account can authenticate through this identity provider. When disabled, any user with a Cloudflare account can authenticate, subject to your Access policies.",
+																			"type": "boolean"
+																		}
+																	},
+																	"type": "object"
+																},
+																"type": {
+																	"enum": [
+																		"cloudflare"
+																	],
+																	"type": "string"
+																}
+															}
+														}
+													],
+													"title": "Cloudflare",
 													"type": "object"
 												}
 											],
