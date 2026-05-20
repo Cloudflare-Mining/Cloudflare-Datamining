@@ -148,6 +148,8 @@ The AI SDK-derived contexts spread the SDK's own types at the top level — no i
 
 `TurnConfig` also accepts stable AI SDK `streamText` call settings such as `maxOutputTokens`, `temperature`, `stopSequences`, `seed`, `maxRetries`, `timeout`, and `headers`. Use them to tune model behavior per turn, for example disabling retries or adding a chunk timeout during recovery flows.
 
+`TurnConfig.stopWhen` accepts AI SDK stop conditions such as `hasToolCall("finalAnswer")` for ending a turn early. Think composes these with its own `maxSteps` bound, so a custom condition can stop before the cap without removing the safety limit. Because stop conditions are functions, return `stopWhen` from a Think subclass's `beforeTurn`; sandboxed extension hooks cannot provide it over RPC.
+
 `TurnConfig` also accepts an `output` field that is forwarded to `streamText` as the AI SDK's structured-output spec. Combine with `activeTools: []` for providers (e.g. `workers-ai-provider`) that strip tools when `responseFormat: "json"` is active. Use `experimental_telemetry` to pass the AI SDK's per-call telemetry settings through to `streamText`; consider disabling `recordInputs` or `recordOutputs` if prompts or outputs may contain sensitive data.
 
 Per-tool hooks are wired so `beforeToolCall` fires _before_ `execute` (Think wraps every tool's `execute`) and `afterToolCall` fires _after_ (via the AI SDK's `experimental_onToolCallFinish`) with `durationMs` and a discriminated outcome. `beforeToolCall` can return a `ToolCallDecision` to:
@@ -263,6 +265,7 @@ interface TurnConfig {
   activeTools?: string[]; // limit which tools the model can call
   toolChoice?: ToolChoice; // force a specific tool
   maxSteps?: number; // override maxSteps for this turn
+  stopWhen?: StopCondition | StopCondition[]; // additional early-exit conditions
   sendReasoning?: boolean; // send reasoning chunks for this turn
   maxOutputTokens?: number;
   temperature?: number;
@@ -355,6 +358,12 @@ your code owns forwarding and replay policy. Use `agentTool()` or
 `runAgentTool()` when a parent agent delegates work to a retained child and you
 want event replay, abort bridging, and UI drill-in.
 
+Use `startFiber()` from `agents` outside Think when the durable unit is an
+application-owned job around a turn, such as accepting a webhook once, restoring
+provider state, and posting a visible reply. `submitMessages()` owns Think's
+conversation admission; managed fibers own external side effects and recovery
+policy around that turn.
+
 See [Choosing a turn API](../../docs/think/index.md#choosing-a-turn-api) and
 [Programmatic Submissions](../../docs/think/programmatic-submissions.md) for the
 full API comparison.
@@ -365,16 +374,19 @@ When used as a sub-agent (via `this.subAgent()`), the `chat()` method runs a ful
 
 ```ts
 interface StreamCallback {
+  onStart?(event: { requestId: string }): void | Promise<void>;
   onEvent(json: string): void | Promise<void>;
   onDone(): void | Promise<void>;
   onError?(error: string): void | Promise<void>;
 }
 
 const agent = await this.subAgent(MyAgent, "thread-1");
-await agent.chat("Summarize the project", relay, {
-  signal: abortController.signal
-});
+await agent.chat("Summarize the project", relay);
 ```
+
+`onStart` exposes the request id for RPC-safe cancellation. Call
+`agent.cancelChat(requestId, reason)` if the parent needs to stop the child turn
+after it has started.
 
 Tools belong to the child agent; define them with `getTools()` or use
 `agentTool()` / `runAgentTool()` for parent-child orchestration.
