@@ -1127,64 +1127,6 @@
 			}
 		}
 	],
-	"PARAMETERS /accounts/{account_id}/logs/explorer/datasets": [
-		{
-			"description": "Cloudflare account ID.",
-			"in": "path",
-			"name": "account_id",
-			"required": true,
-			"schema": {
-				"pattern": "^[a-f0-9]{32}$",
-				"type": "string"
-			}
-		}
-	],
-	"PARAMETERS /accounts/{account_id}/logs/explorer/datasets/{dataset_id}": [
-		{
-			"description": "Cloudflare account ID.",
-			"in": "path",
-			"name": "account_id",
-			"required": true,
-			"schema": {
-				"pattern": "^[a-f0-9]{32}$",
-				"type": "string"
-			}
-		},
-		{
-			"description": "Log Explorer dataset ID.",
-			"in": "path",
-			"name": "dataset_id",
-			"required": true,
-			"schema": {
-				"pattern": "^[a-f0-9]{32}$",
-				"type": "string"
-			}
-		}
-	],
-	"PARAMETERS /accounts/{account_id}/logs/explorer/datasets/available": [
-		{
-			"description": "Cloudflare account ID.",
-			"in": "path",
-			"name": "account_id",
-			"required": true,
-			"schema": {
-				"pattern": "^[a-f0-9]{32}$",
-				"type": "string"
-			}
-		}
-	],
-	"PARAMETERS /accounts/{account_id}/logs/explorer/query/sql": [
-		{
-			"description": "Cloudflare account ID.",
-			"in": "path",
-			"name": "account_id",
-			"required": true,
-			"schema": {
-				"pattern": "^[a-f0-9]{32}$",
-				"type": "string"
-			}
-		}
-	],
 	"PARAMETERS /accounts/{account_id}/realtime/kit/{app_id}/livestreams": [
 		{
 			"in": "path",
@@ -2539,64 +2481,6 @@
 			"name": "environment_id",
 			"required": true,
 			"schema": {
-				"type": "string"
-			}
-		}
-	],
-	"PARAMETERS /zones/{zone_id}/logs/explorer/datasets": [
-		{
-			"description": "Cloudflare zone ID.",
-			"in": "path",
-			"name": "zone_id",
-			"required": true,
-			"schema": {
-				"pattern": "^[a-f0-9]{32}$",
-				"type": "string"
-			}
-		}
-	],
-	"PARAMETERS /zones/{zone_id}/logs/explorer/datasets/{dataset_id}": [
-		{
-			"description": "Cloudflare zone ID.",
-			"in": "path",
-			"name": "zone_id",
-			"required": true,
-			"schema": {
-				"pattern": "^[a-f0-9]{32}$",
-				"type": "string"
-			}
-		},
-		{
-			"description": "Log Explorer dataset ID.",
-			"in": "path",
-			"name": "dataset_id",
-			"required": true,
-			"schema": {
-				"pattern": "^[a-f0-9]{32}$",
-				"type": "string"
-			}
-		}
-	],
-	"PARAMETERS /zones/{zone_id}/logs/explorer/datasets/available": [
-		{
-			"description": "Cloudflare zone ID.",
-			"in": "path",
-			"name": "zone_id",
-			"required": true,
-			"schema": {
-				"pattern": "^[a-f0-9]{32}$",
-				"type": "string"
-			}
-		}
-	],
-	"PARAMETERS /zones/{zone_id}/logs/explorer/query/sql": [
-		{
-			"description": "Cloudflare zone ID.",
-			"in": "path",
-			"name": "zone_id",
-			"required": true,
-			"schema": {
-				"pattern": "^[a-f0-9]{32}$",
 				"type": "string"
 			}
 		}

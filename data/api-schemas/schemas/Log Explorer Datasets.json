@@ -4,6 +4,16 @@
 		"operationId": "accounts-logs-explorer-datasets-list",
 		"parameters": [
 			{
+				"description": "Cloudflare account ID.",
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"pattern": "^[a-f0-9]{32}$",
+					"type": "string"
+				}
+			},
+			{
 				"description": "Set to true to include zone-scoped datasets belonging to this account.",
 				"in": "query",
 				"name": "include_zones",
@@ -316,6 +326,28 @@
 	"GET /accounts/{account_id}/logs/explorer/datasets/{dataset_id}": {
 		"description": "Retrieve a single Log Explorer dataset by ID for the account.",
 		"operationId": "accounts-logs-explorer-datasets-get",
+		"parameters": [
+			{
+				"description": "Cloudflare account ID.",
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"pattern": "^[a-f0-9]{32}$",
+					"type": "string"
+				}
+			},
+			{
+				"description": "Log Explorer dataset ID.",
+				"in": "path",
+				"name": "dataset_id",
+				"required": true,
+				"schema": {
+					"pattern": "^[a-f0-9]{32}$",
+					"type": "string"
+				}
+			}
+		],
 		"responses": {
 			"200": {
 				"content": {
@@ -649,6 +681,18 @@
 	"GET /accounts/{account_id}/logs/explorer/datasets/available": {
 		"description": "Returns all dataset types that this account can create. Each entry\nincludes the dataset schema and timestamp field.\n\nThe schema shows all possible fields for a dataset. However, not all\nfields may be available for your account. When creating or updating a\ndataset, only fields available to your account can be enabled. If you\nrequest a field that is not available, you will receive an error.\n",
 		"operationId": "accounts-logs-explorer-datasets-available-list",
+		"parameters": [
+			{
+				"description": "Cloudflare account ID.",
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"pattern": "^[a-f0-9]{32}$",
+					"type": "string"
+				}
+			}
+		],
 		"responses": {
 			"200": {
 				"content": {
@@ -946,6 +990,18 @@
 	"GET /zones/{zone_id}/logs/explorer/datasets": {
 		"description": "Returns all Log Explorer datasets configured for the zone.\n\nList responses omit the `fields` property; use the single-dataset\nendpoint to retrieve field configuration.\n",
 		"operationId": "zones-logs-explorer-datasets-list",
+		"parameters": [
+			{
+				"description": "Cloudflare zone ID.",
+				"in": "path",
+				"name": "zone_id",
+				"required": true,
+				"schema": {
+					"pattern": "^[a-f0-9]{32}$",
+					"type": "string"
+				}
+			}
+		],
 		"responses": {
 			"200": {
 				"content": {
@@ -1250,6 +1306,28 @@
 	"GET /zones/{zone_id}/logs/explorer/datasets/{dataset_id}": {
 		"description": "Retrieve a single Log Explorer dataset by ID for the zone.",
 		"operationId": "zones-logs-explorer-datasets-get",
+		"parameters": [
+			{
+				"description": "Cloudflare zone ID.",
+				"in": "path",
+				"name": "zone_id",
+				"required": true,
+				"schema": {
+					"pattern": "^[a-f0-9]{32}$",
+					"type": "string"
+				}
+			},
+			{
+				"description": "Log Explorer dataset ID.",
+				"in": "path",
+				"name": "dataset_id",
+				"required": true,
+				"schema": {
+					"pattern": "^[a-f0-9]{32}$",
+					"type": "string"
+				}
+			}
+		],
 		"responses": {
 			"200": {
 				"content": {
@@ -1583,6 +1661,18 @@
 	"GET /zones/{zone_id}/logs/explorer/datasets/available": {
 		"description": "Returns all dataset types that this zone can create. Each entry includes\nthe dataset schema and timestamp field.\n\nThe schema shows all possible fields for a dataset. However, not all\nfields may be available for your account. When creating or updating a\ndataset, only fields available to your account can be enabled. If you\nrequest a field that is not available, you will receive an error.\n",
 		"operationId": "zones-logs-explorer-datasets-available-list",
+		"parameters": [
+			{
+				"description": "Cloudflare zone ID.",
+				"in": "path",
+				"name": "zone_id",
+				"required": true,
+				"schema": {
+					"pattern": "^[a-f0-9]{32}$",
+					"type": "string"
+				}
+			}
+		],
 		"responses": {
 			"200": {
 				"content": {
@@ -1880,6 +1970,18 @@
 	"POST /accounts/{account_id}/logs/explorer/datasets": {
 		"description": "Create a new Log Explorer dataset for the account.\n\nUse the `/accounts/{account_id}/logs/explorer/datasets/available` endpoint\nto list dataset types you can create along with their available fields.\n\nThe `fields` property is optional. If not specified, all available fields\nwill be enabled.\n\nFor zone-level datasets use the zone-scoped endpoint: POST /zones/{zone_id}/logs/explorer/datasets\n\nFor dataset field definitions, see: https://developers.cloudflare.com/logs/logpush/logpush-job/datasets/\n",
 		"operationId": "accounts-logs-explorer-datasets-create",
+		"parameters": [
+			{
+				"description": "Cloudflare account ID.",
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"pattern": "^[a-f0-9]{32}$",
+					"type": "string"
+				}
+			}
+		],
 		"requestBody": {
 			"content": {
 				"application/json": {
@@ -2315,6 +2417,18 @@
 	"POST /zones/{zone_id}/logs/explorer/datasets": {
 		"description": "Create a new Log Explorer dataset for the zone.\n\nUse the `/zones/{zone_id}/logs/explorer/datasets/available` endpoint\nto list dataset types you can create along with their available fields.\n\nThe `fields` property is optional. If not specified, all available fields\nwill be enabled.\n\nFor account-level datasets use the account-scoped endpoint: POST /accounts/{account_id}/logs/explorer/datasets\n\nFor dataset field definitions, see: https://developers.cloudflare.com/logs/logpush/logpush-job/datasets/\n",
 		"operationId": "zones-logs-explorer-datasets-create",
+		"parameters": [
+			{
+				"description": "Cloudflare zone ID.",
+				"in": "path",
+				"name": "zone_id",
+				"required": true,
+				"schema": {
+					"pattern": "^[a-f0-9]{32}$",
+					"type": "string"
+				}
+			}
+		],
 		"requestBody": {
 			"content": {
 				"application/json": {
@@ -2750,6 +2864,28 @@
 	"PUT /accounts/{account_id}/logs/explorer/datasets/{dataset_id}": {
 		"description": "Updates the enabled state and/or field configuration of an account dataset.",
 		"operationId": "accounts-logs-explorer-datasets-update",
+		"parameters": [
+			{
+				"description": "Cloudflare account ID.",
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"pattern": "^[a-f0-9]{32}$",
+					"type": "string"
+				}
+			},
+			{
+				"description": "Log Explorer dataset ID.",
+				"in": "path",
+				"name": "dataset_id",
+				"required": true,
+				"schema": {
+					"pattern": "^[a-f0-9]{32}$",
+					"type": "string"
+				}
+			}
+		],
 		"requestBody": {
 			"content": {
 				"application/json": {
@@ -3126,6 +3262,28 @@
 	"PUT /zones/{zone_id}/logs/explorer/datasets/{dataset_id}": {
 		"description": "Updates the enabled state and/or field configuration of a zone dataset.",
 		"operationId": "zones-logs-explorer-datasets-update",
+		"parameters": [
+			{
+				"description": "Cloudflare zone ID.",
+				"in": "path",
+				"name": "zone_id",
+				"required": true,
+				"schema": {
+					"pattern": "^[a-f0-9]{32}$",
+					"type": "string"
+				}
+			},
+			{
+				"description": "Log Explorer dataset ID.",
+				"in": "path",
+				"name": "dataset_id",
+				"required": true,
+				"schema": {
+					"pattern": "^[a-f0-9]{32}$",
+					"type": "string"
+				}
+			}
+		],
 		"requestBody": {
 			"content": {
 				"application/json": {

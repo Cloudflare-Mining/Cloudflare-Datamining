@@ -1,5 +1,5 @@
 {
-	"GET /zones/{zone_id}/email/security/dmarc-reports": {
+	"GET /zones/{zone_id}/email/auth/dmarc-reports": {
 		"description": "Retrieves the current DMARC report configuration and status for a zone.\nReturns the RUA prefix, enabled status, approved sources, and DNS records.\n",
 		"operationId": "get_dmarc_reports_status",
 		"parameters": [
@@ -633,15 +633,9 @@
 		"summary": "Get DMARC Report Status",
 		"tags": [
 			"Email Auth"
-		],
-		"x-api-token-group": [
-			"Email Security DMARC Reports Write",
-			"Email Security DMARC Reports Read",
-			"Zone Settings Write",
-			"Zone Settings Read"
 		]
 	},
-	"GET /zones/{zone_id}/email/security/spf/inspect": {
+	"GET /zones/{zone_id}/email/auth/spf/inspect": {
 		"description": "Inspects a specific SPF TXT record and returns a parsed tree structure\nin the spflimit-worker format.\n\nThe record ID must be provided via the `id` query parameter.\n\nReturns a recursive tree showing:\n- Parsed components with their qualifiers and types\n- Nested includes recursively resolved within components\n- Per-component and total lookup counts\n- Detailed error information with context\n",
 		"operationId": "inspect_spf",
 		"parameters": [
@@ -780,7 +774,7 @@
 															},
 															"nested": {
 																"allOf": [
-																	"[Circular ~.GET /zones/{zone_id}/email/security/spf/inspect.responses.200.content.application/json.schema.allOf.1.properties.result]"
+																	"[Circular ~.GET /zones/{zone_id}/email/auth/spf/inspect.responses.200.content.application/json.schema.allOf.1.properties.result]"
 																],
 																"description": "Nested SPF tree for INCLUDE or REDIRECT mechanisms.\nOnly present for INCLUDE/REDIRECT components.\n"
 															},
@@ -1024,15 +1018,9 @@
 		"summary": "Inspect SPF Record",
 		"tags": [
 			"Email Auth"
-		],
-		"x-api-token-group": [
-			"Email Security DMARC Reports Write",
-			"Email Security DMARC Reports Read",
-			"Zone Settings Write",
-			"Zone Settings Read"
 		]
 	},
-	"PATCH /zones/{zone_id}/email/security/dmarc-reports": {
+	"PATCH /zones/{zone_id}/email/auth/dmarc-reports": {
 		"description": "Updates the DMARC report configuration for a zone.\nAt least one of `enabled` or `skip_wizard` must be provided.\nWhen enabling, the handler will ensure the DMARC RUA record exists in DNS.\n",
 		"operationId": "configure_dmarc_reports",
 		"parameters": [
@@ -1691,10 +1679,6 @@
 		"summary": "Configure DMARC Reports",
 		"tags": [
 			"Email Auth"
-		],
-		"x-api-token-group": [
-			"Email Security DMARC Reports Write",
-			"Zone Settings Write"
 		]
 	}
 }

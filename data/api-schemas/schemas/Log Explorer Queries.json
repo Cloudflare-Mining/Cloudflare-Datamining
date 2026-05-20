@@ -5,6 +5,16 @@
 		"operationId": "accounts-logs-explorer-query-get",
 		"parameters": [
 			{
+				"description": "Cloudflare account ID.",
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"pattern": "^[a-f0-9]{32}$",
+					"type": "string"
+				}
+			},
+			{
 				"description": "SQL query to execute.",
 				"in": "query",
 				"name": "query",
@@ -307,6 +317,16 @@
 		"operationId": "zones-logs-explorer-query-get",
 		"parameters": [
 			{
+				"description": "Cloudflare zone ID.",
+				"in": "path",
+				"name": "zone_id",
+				"required": true,
+				"schema": {
+					"pattern": "^[a-f0-9]{32}$",
+					"type": "string"
+				}
+			},
+			{
 				"description": "SQL query to execute.",
 				"in": "query",
 				"name": "query",
@@ -606,6 +626,18 @@
 	"POST /accounts/{account_id}/logs/explorer/query/sql": {
 		"description": "Run a SQL query against account-level datasets.\n\nTimestamp fields are RFC3339 strings. Filter with:\n  WHERE {timestamp_field} >= now() - INTERVAL '30' DAY\n  WHERE {timestamp_field} >= '2026-04-01T00:00:00Z'\n  WHERE {timestamp_field} BETWEEN '2026-04-01T00:00:00Z' AND '2026-04-30T23:59:59Z'\n\nCheck /accounts/{account_id}/logs/explorer/datasets to see enabled account level datasets.\nZone-level datasets will not appear here.\nCheck /accounts/{account_id}/logs/explorer/datasets/available for the schemas, and the name of the timestamp fields.\n\nFor zone-level datasets use the zone-scoped endpoint: POST /zones/{zone_id}/logs/explorer/query/sql\n\nFor more information about the datasets, and the meaning of each field, check out https://developers.cloudflare.com/logs/logpush/logpush-job/datasets/\n",
 		"operationId": "accounts-logs-explorer-query-post",
+		"parameters": [
+			{
+				"description": "Cloudflare account ID.",
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"pattern": "^[a-f0-9]{32}$",
+					"type": "string"
+				}
+			}
+		],
 		"requestBody": {
 			"content": {
 				"text/plain": {
@@ -906,6 +938,18 @@
 	"POST /zones/{zone_id}/logs/explorer/query/sql": {
 		"description": "Run a SQL query against zone-level datasets.\n\nTimestamp fields are RFC3339 strings. Filter with:\n  WHERE {timestamp_field} >= now() - INTERVAL '30' DAY\n  WHERE {timestamp_field} >= '2026-04-01T00:00:00Z'\n  WHERE {timestamp_field} BETWEEN '2026-04-01T00:00:00Z' AND '2026-04-30T23:59:59Z'\n\nCheck /zones/{zone_id}/logs/explorer/datasets to see enabled zone level datasets.\nCheck /zones/{zone_id}/logs/explorer/datasets/available for the schemas and the name of the timestamp fields.\n\nFor account-level datasets use the account-scoped endpoint: POST /accounts/{account_id}/logs/explorer/query/sql\n\nFor more information about the datasets, and the meaning of each field, check out https://developers.cloudflare.com/logs/logpush/logpush-job/datasets/\n",
 		"operationId": "zones-logs-explorer-query-post",
+		"parameters": [
+			{
+				"description": "Cloudflare zone ID.",
+				"in": "path",
+				"name": "zone_id",
+				"required": true,
+				"schema": {
+					"pattern": "^[a-f0-9]{32}$",
+					"type": "string"
+				}
+			}
+		],
 		"requestBody": {
 			"content": {
 				"text/plain": {

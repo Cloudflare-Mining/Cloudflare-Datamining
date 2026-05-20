@@ -42,15 +42,6 @@
 				}
 			},
 			{
-				"description": "Whether to include the message action log in the response.",
-				"in": "query",
-				"name": "action_log",
-				"schema": {
-					"default": true,
-					"type": "boolean"
-				}
-			},
-			{
 				"description": "Dispositions to filter by.",
 				"in": "query",
 				"name": "final_disposition",
